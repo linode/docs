@@ -21,7 +21,7 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
-# Basic System Configuration
+## Basic System Configuration
 
 Issue the following commands to set your system hostname, substituting a unique value for "hostname." :
 
@@ -37,7 +37,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 {{< /file >}}
 
 
-# Install Required Packages
+## Install Required Packages
 
 Make sure you have the "universe" repositories enabled in `/etc/apt/sources.list`. Your file should resemble the following:
 
@@ -70,7 +70,7 @@ Issue the following commands to update your system and install the nginx web ser
     echo "console output" >> /etc/init.d/nginx
     /etc/init.d/nginx start
 
-# Configure Your Site
+## Configure Your Site
 
 In this guide, we'll be using the domain "example.com" as our example site. You should substitute your own domain name in the configuration steps that follow. First, we'll need to create directories to hold our content and log files:
 
@@ -112,7 +112,7 @@ Issue the following commands to enable the site:
 
 You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/platform/manager/dns-manager/) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Cloud Manager](http://cloud.linode.com//)).
 
-# Configure spawn-fcgi
+## Configure spawn-fcgi
 
 Install the Perl module for FastCGI using the [CPAN Minus](/docs/development/perl/manage-cpan-modules-with-cpan-minus/) interface for CPAN. Install CPAN Minus and FCGI by issuing the following sequence of commands:
 
@@ -135,7 +135,7 @@ Issue the following command sequence to download the FastCGI wrapper script (cre
     update-rc.d perl-fastcgi defaults
     /etc/init.d/perl-fastcgi start
 
-# Test Perl with FastCGI
+## Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
@@ -164,7 +164,7 @@ Make the script executable by issuing the following command:
 
 When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

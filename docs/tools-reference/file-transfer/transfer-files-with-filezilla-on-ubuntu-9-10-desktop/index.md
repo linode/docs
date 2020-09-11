@@ -19,7 +19,7 @@ Filezilla is a free, open source file transfer program written for Linux, Mac OS
 
 You'll need to make sure your Linode is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/docs/tools-reference/linux-users-and-groups) on the server after doing so.
 
-# Installing Filezilla
+## Installing Filezilla
 
 On your desktop, click "System" -\> "Administration" -\> "Synaptic Package Manager" as shown below to start the package installer.
 
@@ -35,7 +35,7 @@ You will be asked to confirm your installation request. Click the "Apply" button
 
 Filezilla and required dependency files will be installed on your system. You may close Synaptic once the install has completed.
 
-# Using Filezilla
+## Using Filezilla
 
 On your desktop, click "Applications" -\> "Internet" -\> "Filezilla" to launch the program.
 
@@ -57,7 +57,7 @@ The key fingerprints should match; click "Yes" to accept the warning and cache t
 
 When you're ready to proceed, click the "Ok" button. You'll be presented with a split view, with your local filesystem on the left and your Linode's filesystem on the right. You may transfer files by dragging and dropping them between each side.
 
-# Connecting Without a Password (SSH Keys)
+## Connecting Without a Password (SSH Keys)
 
 If you'd like to use SSH keys to allow access to your Linode without the need to specify a password, you'll need to make sure you have an SSH keypair generated for your local user account. To verify this, open a terminal (click "Applications" -\> "Accessories" -\> "Terminal") and type the following command:
 
@@ -78,7 +78,7 @@ Test the ability to log in without a password by issuing the following command:
 
 If you're asked for a password, please double-check the preceding steps in this section. If you're logged into your Linode, you may type `exit` to close the SSH connection. Provided you were able to log in without entering a password, return to Filezilla and initiate a new connection. You should now be able to connect to your Linode without entering a password in the "Password" field.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -19,7 +19,7 @@ title: 'Nginx and Perl-FastCGI on Fedora 14'
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Fedora 14 system.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,7 +28,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Required Packages
+## Install Required Packages
 
 Issue the following commands to update your system and install the nginx web server and compiler tools (Perl should already be installed):
 
@@ -38,7 +38,7 @@ Issue the following commands to update your system and install the nginx web ser
     chkconfig --level 35 nginx on
     /etc/init.d/nginx start
 
-# Configure Your Site
+## Configure Your Site
 
 In this guide, the domain "example.com" will be used as an example. You should substitute your own domain name in the configuration steps that follow. First, create directories to hold your content and log files:
 
@@ -94,7 +94,7 @@ Issue the following commands to enable the site:
 
 You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Cloud Manager](http://cloud.linode.com//)).
 
-# Configure FastCGI Wrapper
+## Configure FastCGI Wrapper
 
 First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www.ruby-forum.com/topic/145858)) at `/usr/bin/fastcgi-wrapper.pl` with the following contents:
 
@@ -313,7 +313,7 @@ Next issue the following commands to make the scripts executable and set the per
     chkconfig --add perl-fastcgi
     chkconfig perl-fastcgi on
 
-# Test Perl with FastCGI
+## Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
@@ -342,7 +342,7 @@ Make the script executable by issuing the following command:
 
 When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -16,7 +16,7 @@ tags: ["debian","database","postgresql"]
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 6 (Squeeze). It is assumed that you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-# Installing PostgreSQL
+## Installing PostgreSQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -27,7 +27,7 @@ Issue the following command to install PostgreSQL, required dependencies, and so
 
     apt-get install postgresql postgresql-contrib
 
-# Configure PostgreSQL
+## Configure PostgreSQL
 
 ### Install the adminpack
 
@@ -151,7 +151,7 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

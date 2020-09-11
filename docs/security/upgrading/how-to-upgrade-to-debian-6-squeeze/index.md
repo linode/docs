@@ -19,7 +19,7 @@ title: 'How to Upgrade to Debian 6 (Squeeze)'
 
 This guide explains how to upgrade your system to Debian 6 (Squeeze) from Debian 5 (Lenny). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 
-# Preparing to Upgrade
+## Preparing to Upgrade
 
 Make sure that you have properly set your hostname in `/etc/hostname`. If you have not set a hostname for your system yet, issue the following commands:
 
@@ -62,7 +62,7 @@ If at any time you get disconnected from your server, you can log back in and is
 
     screen -Dr
 
-# Upgrading
+## Upgrading
 
 Issue the following command to grab the latest version of key system utilities:
 
@@ -80,7 +80,7 @@ You will also be advised that services using "NSS" (Network Security Services) a
 
 The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
 
-# System Errors
+## System Errors
 
 You may receive some errors similar to "missing LSB tags and overrides" or "package removed but not purged" when attempting to upgrade your system. The LSB tags error can be safely ignored. More information on why you are receiving this error can be found in [Debian's dependency based boot sequence article](http://wiki.debian.org/LSBInitScripts/DependencyBasedBoot).
 

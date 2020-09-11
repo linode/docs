@@ -21,7 +21,7 @@ For the purpose of this guide, we assume that you have running and functional se
 
 Beyond the basics, Piwik requires a functioning LAMP stack, which is outlined in our [Debian 5 (Lenny) LAMP guide](/docs/web-servers/lamp/lamp-server-on-debian-5-lenny/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 
-# Prerequisites
+## Prerequisites
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -48,7 +48,7 @@ You'll need to restart Apache after installing php5-gd and modifying the PHP set
 
     /etc/init.d/apache2 restart
 
-# Configure a Dedicated Virtual Host for Piwik
+## Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
@@ -81,7 +81,7 @@ Enable the virtual host and reload the web server's configuration with the follo
 
 Remember that the configuration of a special virtual host for Piwik is optional. If you use a web server other than Apache, you will need to pursue different steps to configure the virtual host.
 
-# Installing Piwik
+## Installing Piwik
 
 First we'll download the latest distribution of the Piwik package. Issue the following two commands:
 
@@ -106,7 +106,7 @@ When Piwik's installation process is complete, you will receive JavaScript snipp
 
 Congratulations! You now have a fully functional statistics and web traffic analytics package running on your own server.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 

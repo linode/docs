@@ -19,7 +19,7 @@ Plone is an advanced system for managing complex and content rich websites. Writ
 
 Before installing the Plone content management system, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). At the end of this document, we will briefly discuss configuring the [Apache](/docs/web-servers/apache/) and [nginx](/docs/web-servers/nginx) web servers for use with Plone as a front end server.
 
-# Installing Plone
+## Installing Plone
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -44,7 +44,7 @@ Now, assuming that you have an [A Record](/docs/networking/dns/dns-records-an-in
 
 You can now proceed with the development of your Plone website!
 
-# Using Plone in Production Environments
+## Using Plone in Production Environments
 
 Although the Plone application server is capable of generating and providing dynamic content, it's advisable to use a more general purpose web server as a front end running on port `80`. You can use either the [Apache HTTP server](/docs/web-servers/apache/) or the [nginx server](/docs/web-servers/nginx/). Basic instructions for setting up the front-end proxy servers can be found below. Both options are functionally equivalent, and your choice is simply a matter of personal preference.
 
@@ -162,7 +162,7 @@ In this example, nginx listens for incoming requests on port `80` of the public 
 
 Congratulations, you now have a fully functional Plone system that is ready for deployment in a production environment.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

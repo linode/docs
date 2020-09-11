@@ -19,7 +19,7 @@ MongoDB is a database engine that provides access to non-relational key-value da
 
 Before installing MongoDB, it is assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Installing MongoDB
+## Installing MongoDB
 
 ### Install Prerequisites
 
@@ -44,7 +44,7 @@ MongoDB is now deployed in the `/opt/mongodb/` folder with the binaries located 
 
 In this example the name of the database will be `mongodb`; however, you can modify this name with another name or naming scheme as needed.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -55,7 +55,7 @@ Please monitor the following MongoDB mailing lists for updates to ensure that yo
 
 When upstream sources offer new releases, repeat the instructions for installing MongoDB and recompile your software when needed.
 
-# Create Basic Control Scripts
+## Create Basic Control Scripts
 
 In typical installations, the MongoDB server process is controlled using command line arguments to binaries located at `/opt/mongodb/bin/mongod`. In order to simplify commands, you can create control scripts named `mongodb-start` and `mongodb-stop` in the `/opt/bin/` directory. Issue the following commands to create the required directories:
 
@@ -100,7 +100,7 @@ If the `bind_ip` option is not specified, MongoDB will bind to and listen for re
 
 Setting the `fork` option to equal `true` configures MongoDB to run as a daemon process in the background independently of the current user's session. Please note that MongoDB will run under the user that executes the `mongodb-start` script. We **strongly** recommend that this user *not* be root or another privileged user account. To provide additional security, it is recommended that you set the `auth` option to `true` in order to take advantage of MongoDB's internal authentication capabilities. If you need to test the database without authentication, you can replace the `auth` option to `noauth`.
 
-# Using a Basic Init Script
+## Using a Basic Init Script
 
 We've also created a *very* basic "init script" as a wrapper around the `mongodb-start` and `mongo-stop` scripts described above. You will still need to modify and manage the configuration of your MongoDB server in the files above. This script only provides a means for ensuring that MongoDB will start at boot. Issue the following commands:
 
@@ -125,13 +125,13 @@ To start and stop MongoDB using the init script, issue the appropriate command f
 
 Congratulations, you now have a fully functional installation of the MongoDB system.
 
-# Additional MongoDB Functionality
+## Additional MongoDB Functionality
 
 Now that MongoDB is running properly, you can begin to explore some of its features. Most interaction with MongoDB is done via the rich set of [language-specific drivers](http://www.mongodb.org/display/DOCS/Drivers). There are also a number of tools in the `/opt/mongodb/bin/` directory that you might find useful for interacting with MongoDB databases. The `mongo` utility provides an interactive JavaScript shell for MongoDB including commands such as `mongodump` and `mongorestore` for creating and restoring backups and snapshots as well `mongoexport` and `mongoimportjson` for exporting individual collections in JSON format.
 
 You can now fully enjoy application development with MongoDB!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

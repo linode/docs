@@ -21,7 +21,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This document assumes that your system is already running the Cherokee web server. If you haven't already installed Cherokee, please follow our [Fedora 13 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-fedora-13) guide before continuing with these instructions. Please make sure you are logged into your Linode as root via SSH.
 
-# Install Required Packages
+## Install Required Packages
 
 Make sure your repositories and packages are up to date by issuing the following command:
 
@@ -52,7 +52,7 @@ Issue the following commands to change ownership of needed directories to the `w
     chown -R www-data:www-data /var/lib/cherokee/
     service cherokee start
 
-# Configure Your Site
+## Configure Your Site
 
 Create directories for your site by issuing the following commands. Substitute your domain name for "example.com" in these commands.
 
@@ -126,7 +126,7 @@ Save your changes and restart Cherokee.
 
 Cherokee should now be properly configured. If you receive any errors when restarting the server, please go back and review each step you took for accuracy.
 
-# Test Your Configuration
+## Test Your Configuration
 
 Create a test PHP script as follows:
 
@@ -138,7 +138,7 @@ Create a test PHP script as follows:
 
 Visit `/test.php` on your site to verify PHP-FastCGI is operating correctly. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

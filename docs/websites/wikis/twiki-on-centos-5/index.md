@@ -17,7 +17,7 @@ deprecated: true
 
 TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/websites/wikis/confluence-on-centos-5). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 
-# Prepare System and Install TWiki
+## Prepare System and Install TWiki
 
 ### Install Prerequisites
 
@@ -40,7 +40,7 @@ At the time of writing the most recent release of TWiki is 5.0.1. Check the [TWi
 
 The TWiki files are now installed in the `/srv/www/example.com/` directory. This is not, and should not be, within the public `DocumentRoot` for your site.
 
-# Configure Software
+## Configure Software
 
 ### Configure Apache Web Server
 
@@ -139,7 +139,7 @@ When you've completed these modifications, issue the following commands to start
     /etc/init.d/httpd start
     chkconfig httpd on
 
-# Install TWiki
+## Install TWiki
 
 If your wiki is accessible at `http://example.com`, visit `http://example.com/bin/configure` to begin the configuration process. Enter an administrative password, and click the "Configure" button. Next, click on the "General path settings" option to ensure that the configuration script has properly deduced the location of all required files. Once you have confirmed these setting click on the "Next" option. On the next page select the "Save" option to save these settings.
 
@@ -155,7 +155,7 @@ Log into the configuration section at `http://example.com/bin/configure`, using 
 
 Congratulations! You have successfully installed TWiki. You can now visit your wiki at `http://example.com/`
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

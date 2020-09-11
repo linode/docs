@@ -19,7 +19,7 @@ external_resources:
 
 ![How to Create a Private Python Package Repository](Private_Python_Pack_Repo.jpg "How to Create a Private Python Package Repository")
 
-# How Does Python Handle Package Management?
+## How Does Python Handle Package Management?
 
 Package management in Python is available through a variety of different tools:
 
@@ -27,7 +27,7 @@ Package management in Python is available through a variety of different tools:
 
 - PyPI (Python Package Index) is a public repository of user-submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then using PyPiServer, creates a private repository by uploading the package to a Linode.
 
-## Before You Begin
+### Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
 
@@ -35,7 +35,7 @@ Package management in Python is available through a variety of different tools:
 
 3.  Apache 2.4 is used in this guide. Older versions may lack identical directives and will have slightly different configurations.
 
-# Minimalist Python Package
+## Minimalist Python Package
 
 The basic scaffolding of a Python package is a `__init__.py` file containing code that interfaces with the user.
 
@@ -103,7 +103,7 @@ description-file = README.md
 
     A **tar.gz** file will be generated in `~/linode_example/dist/`.
 
-# Install PyPI Server
+## Install PyPI Server
 
 Next, set up a server to host a package index. This guide will use `pypiserver`, a wrapper built on the Bottle framework that makes setting up a package index on a server much easier.
 
@@ -140,7 +140,7 @@ Alternatively, [download pypiserver from Github](https://github.com/pypiserver/p
 
     You are now able to install the `linode_example` package by declaring an external url `pip install --extra-index-url http://192.0.2.0:8080/simple/ --trusted-host 192.0.2.0 linode_example`.
 
-# Authentication with Apache and passlib
+## Authentication with Apache and passlib
 
 1.  Install Apache and `passlib` for password-based authentication for uploads. Make sure you are still in your activated virtual environment (`(venv)` should appear before the terminal prompt) and then execute the following:
 

@@ -19,13 +19,13 @@ phpFox is a proprietary social networking platform that allows groups to create 
 
 Please note that you must obtain a license from phpFox in order to run this software. License types and pricing can be obtained from [the phpFox website](http://www.phpfox.com/pricing/).
 
-# Install Prerequisites
+## Install Prerequisites
 
 Before installing phpFox, make sure you have set up a [LAMP stack](/docs/lamp-guides/debian-5-lenny/). You will also need to install the `curl` and `gd` modules for PHP. Issue the following command:
 
     apt-get install php5-curl php5-gd
 
-# Download phpFox
+## Download phpFox
 
 You will need to download phpFox from the member's area of the [phpFox website](http://www.phpfox.com). Additionally, you will be required to fill out some basic information such as the location (URL) of your future phpFox site. Once you have downloaded the source, you will need to upload it to your server. It is advisable to upload the source outside of the document root. Issue the following command to unzip the source code and move it to your `DocumentRoot`. If your phpFox version or package is different from the one used here, adjust the commands accordingly.
 
@@ -44,7 +44,7 @@ You will now need to rename the settings file and change file permissions on a f
 
 You will now be able to visit `http://www.example.com/install/` to complete the installation of phpFox. Follow the instructions provided by the installation script in order to configure the database and admin user for your site. Once the installation is complete, you will be able to configure other aspects of your site via the admin control panel. Congratulations! Your phpFox site is now ready for use.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

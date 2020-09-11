@@ -19,7 +19,7 @@ PHP Fusion is a lightweight content management system built on the popular LAMP 
 
 Before installing PHP Fusion, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, prior to installing PHP Fusion, you will need to install a fully functional [LAMP stack](/docs/lamp-guides/) on your Linode.
 
-# Install Prerequisites
+## Install Prerequisites
 
 After installing the [LAMP stack](/docs/lamp-guides/), there are a few additional prerequisites that you will need in order to complete this installation of PHP Fusion. Ensure that your distribution provides `wget` and `unzip` tools. On Debian and Ubuntu based systems, issue the following command:
 
@@ -44,7 +44,7 @@ On Gentoo Linux systems, issue the following commands to update the package data
 
 Now we are ready to begin installing PHP Fusion. For the purposes of this document we will assume that the `DocumentRoot` for the virtual host where you will be installing PHP Fusion is located at `/srv/www/example.com/public_html/` for the domain `example.com`.
 
-# Install PHP Fusion
+## Install PHP Fusion
 
 At the time of publication, the latest stable version of PHP Fusion is 7.00.07. Remember to check the [PHP Fusion upstream](http://www.php-fusion.co.uk/downloads.php?cat_id=19) to determine and install the latest version of the software so that you will be able to take advantage of any bug and security fixes that the development team has released. Alter the commands in the following procedure to reflect the specifics of your deployment:
 
@@ -67,7 +67,7 @@ Now visit the PHP Fusion setup page located at `http://example.com/setup.php` an
 
 Congratulations! You now have a fully functional PHP Fusion instance to power your website.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -78,7 +78,7 @@ Please monitor the PHP Fusion security forum and news page to ensure that you ar
 
 When upstream sources offer new releases, repeat the instructions for installing the PHP Fusion software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

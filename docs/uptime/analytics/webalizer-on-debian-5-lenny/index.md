@@ -19,7 +19,7 @@ Webalizer is an industry standard statistics generation tool. It is useful to an
 
 We assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We'll also be installing the [Apache 2 web server](/docs/web-servers/apache/installation/debian-5-lenny/) with very minimal configuration. If you already have Apache installed and configured, feel free to skip these steps. If this is your first time installing Apache on this Linode, make sure to read the installation guide for additional guidance.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,7 +28,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Software
+## Install Software
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -57,7 +57,7 @@ By default, Webalizer will create configuration files for the Apache 2 default s
     a2dissite default-ssl
     /etc/init.d/apache2 reload
 
-# Configuring Webalizer for Virtual Hosts
+## Configuring Webalizer for Virtual Hosts
 
 This section assumes that you've already configured at least one virtual host. If you do not have virtual hosting configured, please refer to the guide for [installing Apache](/docs/web-servers/apache/installation/debian-5-lenny/) to further clarify this process and create at least one virtual host. Then, webalizer can generate distinct statistic sets for multiple virtual hosts, using the `webalizer` command line with arguments to process statistics for different virtual host log files. The syntax resembles the following:
 
@@ -116,11 +116,11 @@ Many administrators generate their Webalizer statistics automatically every day.
 
 Congratulations, you have successfully installed Webalizer! You can leave future usage statistics generation to cron!
 
-# Other Considerations
+## Other Considerations
 
 Even with a low traffic site, Apache logs can become large. If your logs are routinely large, processing those logs can be time-consuming. You should look into [log rotation](http://www.webalizer.org/faq.html#rotation) to prevent potential performance issues.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

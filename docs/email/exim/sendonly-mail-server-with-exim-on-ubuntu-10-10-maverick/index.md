@@ -23,14 +23,14 @@ You'll gain the ability to send mail from `localhost` through either a tradition
 
 We assume that you've already followed the steps outlined in our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
-# Install Required Packages
+## Install Required Packages
 
 Issue the following commands to update your package repositories, upgrade your system, and install Exim:
 
@@ -38,7 +38,7 @@ Issue the following commands to update your package repositories, upgrade your s
     apt-get upgrade
     apt-get install exim4-daemon-light mailutils
 
-# Configure Exim for Local Mail Service
+## Configure Exim for Local Mail Service
 
 Issue the following command to start Exim configuration:
 
@@ -82,7 +82,7 @@ Enter at least one external email address (choose one that you check frequently)
 
 [![Exim4 postmaster recipient configuration on Ubuntu 10.10 (Maverick).](151-10-exim4-ubuntu-10.04-postmater-mail.png)](151-10-exim4-ubuntu-10.04-postmater-mail.png)
 
-# Test Your Mail Configuration
+## Test Your Mail Configuration
 
 Issue the following command to send a test email, substituting an external email address for `someone@somedomain.com`.
 
@@ -90,7 +90,7 @@ Issue the following command to send a test email, substituting an external email
 
 Congratulations! You've configured Exim to send email.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

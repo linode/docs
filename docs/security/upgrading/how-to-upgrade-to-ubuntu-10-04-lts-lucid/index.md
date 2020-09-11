@@ -23,7 +23,7 @@ Ubuntu recommends waiting until the ".1" release of any version increment before
 
 **Important:** You must change your Linode's configuration profile to use the "Latest 3.0" kernel for the appropriate architecture before proceeding.
 
-# Upgrade Instructions
+## Upgrade Instructions
 
 You should stop as many services as possible before upgrading your system. This should include web server daemons (Apache, NGINX, etc), database servers (PostgreSQL, MySQL, etc), and any other non-critical services.
 
@@ -93,7 +93,7 @@ Enter "n" to avoid rebooting from the console. Reboot your Linode using the "Reb
 
 If you were running Ubuntu 9.04 previously and have gone through this guide once, you're now running Ubuntu 9.10. You'll need to repeat these steps (making sure to modify `/etc/fstab` as indicated above) to complete your upgrade to Ubuntu 10.04.
 
-# Fixing a Broken System
+## Fixing a Broken System
 
 If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/troubleshooting/finnix-rescue-mode). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
 

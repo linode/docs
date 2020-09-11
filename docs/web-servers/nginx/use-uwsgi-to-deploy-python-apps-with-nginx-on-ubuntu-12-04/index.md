@@ -17,7 +17,7 @@ title: 'Use uWSGI to deploy Python apps with Nginx on Ubuntu 12.04'
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 
-# Prerequisites
+## Prerequisites
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -31,7 +31,7 @@ You should also make sure your system is up to date. Enter the following command
     apt-get update
     apt-get upgrade
 
-# Installing uWSGI and Configuring Nginx
+## Installing uWSGI and Configuring Nginx
 
 To get started, you'll install uWSGI and other packages, and then configure nginx. Here's how:
 
@@ -87,7 +87,7 @@ server {
 
 All requests to URLs ending in `/static` will be served directly from the `/srv/www/example.com/public_html/static` directory.
 
-# Configuring uWSGI
+## Configuring uWSGI
 
 Now, we need to configure uWSGI. Here's how:
 
@@ -160,7 +160,7 @@ def application(environ, start_response):
 
 You can test by pointing a web browser to your domain. If you see `Hello World!` than you have successfully configured your Linode for uWSGI with Nginx!
 
-# Additional Application Servers
+## Additional Application Servers
 
 If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances. These instances run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
 
@@ -195,7 +195,7 @@ server {
 
 In this example, we create the `uwsgicluster` upstream, which has five components. One runs on the local interface, and four run on the local network interface of distinct Linodes (the `192.168.` addresses or the private "back-end" network). The application servers that run on those dedicated application servers are identical to the application servers described above. However, the application server process must be configured to bind to the appropriate network interface to be capable of responding to requests.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

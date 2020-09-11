@@ -21,7 +21,7 @@ Please note that Zimbra is a fairly "heavy" (resource-intensive) product compare
 
 Please note that as of this writing, Zimbra is not officially supported on Debian 6. The software should function as expected, but your support options may be limited by choosing to install it on Debian 6. If this is a concern for you, you may wish to consider following our [Debian 5 (Lenny) Zimbra guide](/docs/email/zimbra/install-zimbra-debian-5-lenny) instead.
 
-# Basic System Configuration
+## Basic System Configuration
 
 Issue the following commands to set your system hostname, substituting a unique value for "hostname." :
 
@@ -39,7 +39,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 
 Before proceeding with the rest of this guide, you should create a DNS entry for your system's FQDN (fully qualified domain name). This means you'll need to make sure "hostname.example.com" (substituting your FQDN) points to your Linode's IP address. Additionally, you should create or edit the MX record for your domain to use your FQDN as the host that handles your email. For more information on this topic, please refer to our guides on [DNS basics](/docs/dns-guides/introduction-to-dns) and the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
-# Install Prerequisite Packages
+## Install Prerequisite Packages
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -52,7 +52,7 @@ Issue the following commands to install several packages required by Zimbra:
 
 Depending on the requirements for the current version of Zimbra, you may need to install additional packages later. The install program will notify you if additional packages are required.
 
-# Install Zimbra
+## Install Zimbra
 
 Visit the download page for [Zimbra Open Source Edition](http://www.zimbra.com/downloads/os-downloads.html) and copy the link to the current version of the software for Debian 5 (Lenny) to your clipboard (unless there is a new link for Debian 6, in which case you should use that instead). Issue the following commands on your Linode via the shell to download and unpack the install package, replacing the filenames shown below after `wget` and `tar` with the current version. Please note that the version you download (32 or 64-bit) must match your Linode's architecture.
 
@@ -185,7 +185,7 @@ After installation has completed, you may wish to reboot your Linode to make sur
 
 Once you have configured the server and added accounts, users may log in using a link similar to `http://hostname.example.com/zimbra/mail`. Enjoy!
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -193,7 +193,7 @@ Please monitor the [Zimbra Updates](http://www.zimbra.com/alerts/) page to ensur
 
 When upstream sources offer new releases, repeat the instructions for installing Zimbra and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

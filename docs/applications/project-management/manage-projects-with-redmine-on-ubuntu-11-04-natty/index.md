@@ -17,7 +17,7 @@ deprecated: true
 
 This guide will help you install Redmine on your Ubuntu 11.04 (Natty) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -26,7 +26,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Rails Packages and nginx with Phusion Passenger
+## Install Rails Packages and nginx with Phusion Passenger
 
 Issue the following commands to update your local package database and install any outstanding updates.
 
@@ -145,7 +145,7 @@ Issue the following commands the make the script executable and set it to start 
     chmod +x /etc/init.d/nginx
     update-rc.d -f nginx defaults
 
-# Optional: Proxy Redmine with Apache
+## Optional: Proxy Redmine with Apache
 
 If you're already running Apache on your Linode, you'll need to tell nginx to run on a different port and proxy requests for your Redmine installation back to it. If you're running another web server, you'll need to perform similar steps to modify its configuration to support this. This section is entirely optional, and only applies to Apache users.
 
@@ -185,7 +185,7 @@ listen 8080;
 {{< /file >}}
 
 
-# Install and Configure Redmine
+## Install and Configure Redmine
 
 ### Obtain Redmine
 
@@ -356,7 +356,7 @@ Start nginx:
 
 Your Redmine installation should be accessible at `http://redmine.example.com`; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". You should change the admin password immediately. Congratulations, you've installed Redmine for project management on your Linode!
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -365,7 +365,7 @@ Please monitor the Redmine project issue queue and news feed to ensure that you 
 -   [Redmine News Feed](http://www.redmine.org/projects/redmine/issues)
 -   [Redmine Issue Queue](http://www.redmine.org/projects/redmine/news)
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

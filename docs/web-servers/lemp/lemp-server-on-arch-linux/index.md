@@ -19,7 +19,7 @@ This document describes a compatible alternative to the "LAMP" (Linux, Apache, M
 
 Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,7 +28,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install the Nginx Web Server
+## Install the Nginx Web Server
 
 Before installing the nginx server, issue the following command to ensure that your system has an up to date version of the Arch Linux package repository. Issue the following command to update the package database:
 
@@ -40,7 +40,7 @@ You can then install the nginx server with the following command:
 
 Remember to update your system regularly using the `pacman -Su` command to take advantage of the latest updates and security fixes. However, when running full system updates, consult the `pacman` output carefully and follow reports within the [Arch Linux Community](http://archlinux.org/) to avoid unintended side effects or conflicts with packages that you have built yourself.
 
-# Configure nginx Virtual Hosting
+## Configure nginx Virtual Hosting
 
 In the default installation of nginx, the main configuration file is located at `/etc/nginx/conf/nginx.conf`; however, there are a number of approaches to organizing configuration within nginx. Regardless of the organizational strategy, all virtual host configurations are contained within `server` configuration blocks that are in turn contained within the `http` block in the `nginx.conf` file. Consider the following nginx virtual host configuration:
 
@@ -101,7 +101,7 @@ Once you've configured and loaded the nginx configuration, restart the web serve
 
 You will want to add the `nginx` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the nginx process starts following then next reboot cycle.
 
-# Deploy PHP with FastCGI
+## Deploy PHP with FastCGI
 
 If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. Issue the following sequence of commands to build and install the packages required to run PHP as a FastCGI process:
 
@@ -178,7 +178,7 @@ When you've completed the modifications to the configuration, make sure that the
 
 Congratulations! You can now deploy PHP scripts with your LEMP stack.
 
-# Install MySQL Database Server
+## Install MySQL Database Server
 
 The MySQL database engine may be the leading open source relational database engine, and is a popular database solution for web-based applications. Issue the following command to install the MySQL server packages:
 
@@ -209,7 +209,7 @@ You may now provide the credentials for the `example` database and the `bagman` 
 
 Congratulations! You now have a fully functional and fully featured LEMP stack for application deployment.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

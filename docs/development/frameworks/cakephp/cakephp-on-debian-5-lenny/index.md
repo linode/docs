@@ -19,7 +19,7 @@ CakePHP is a framework used to develop PHP applications quickly. Many people cho
 
 Before installing CakePHP, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-debian-5-lenny/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Installation
+## Installation
 
 For this guide, we'll be installing the latest version of CakePHP, which is currently at 1.2.6. Make sure you download the latest version of CakePHP by checking [the CakePHP website](http://cakephp.org/). Issue the following commands to install CakePHP on your Linode:
 
@@ -32,7 +32,7 @@ For this guide, we'll be installing the latest version of CakePHP, which is curr
 
 At this point, your installation of CakePHP is considered to be deployed for development purposes. You can now begin developing CakePHP applications. If you're using your domain for a single CakePHP application, continue following the guide to deploy CakePHP in production mode.
 
-# Production
+## Production
 
 The transition from a development installation of CakePHP to a production installation is easy. After following the steps above, open the Apache configuration file for the website you're installing CakePHP to. In our example, this file is located at `/etc/apache2/sites-available/example.com`. You'll need to change the `DocumentRoot` to reflect the path of the application in CakePHP, which in our example is `/srv/www/example.com/public_html/cake_1_2/app/webroot/`
 
@@ -63,11 +63,11 @@ Change the `2` to a `0`. Run the following command after saving and closing the 
 
 You're now running a production version of CakePHP, ready for development!
 
-# Testing CakePHP
+## Testing CakePHP
 
 If you're new to CakePHP, you may want to begin with their 15 minute blog tutorial. You can find the [15 Minute Blog Tutorial](http://book.cakephp.org/view/219/Blog) on their manual page. Congratulations! You have now successfully installed CakePHP on your Debian Linode!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

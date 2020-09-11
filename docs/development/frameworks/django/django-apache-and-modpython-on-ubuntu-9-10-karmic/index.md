@@ -23,7 +23,7 @@ This guide provides an introduction to getting started with the Django framework
 
 We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 9.10 (Karmic) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-10-karmic) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9-10-karmic) installed.
 
-# Enabling the "Universe" Repository
+## Enabling the "Universe" Repository
 
 The package that contains the Django application is contained in the "universe" repository for Ubuntu Karmic. Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by removing the hash symbol in front of the universe lines. The file should resemble the following example:
 
@@ -54,7 +54,7 @@ When you have saved this file, issue the following command to refresh your syste
 
 With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
 
-# Installing Python Dependencies
+## Installing Python Dependencies
 
 There are a number of packages that we need to install before we can deploy a Django application. The following command will download and install all of these dependencies:
 
@@ -71,7 +71,7 @@ You may also want to install the following libraries and tools with apt:
 
 Any of these tools can be installed with `apt-get install` followed by the package or packages listed above. There are many additional Python-related packages in the operating system repositories. You can search the package database using the `apt-cache search python` command. If you need more information about a package, use the `apt-cache show [package-name]` command.
 
-# Configuring Apache
+## Configuring Apache
 
 With all of the dependencies installed, we must configure Apache for virtual hosting. You will want to insert a `Location` block inside of the virtual hosting block for the domain where you want the Django application to run. The location block looks like this:
 
@@ -121,7 +121,7 @@ The `Location` block tells Apache what to do when a request comes in for a given
 
 Given this configuration the `DocumentRoot` is optional, but we recommend that you keep this directive in your configuration.
 
-# Hosting Static Content
+## Hosting Static Content
 
 If you wanted to have a static page located at the root of the domain and only use Django to power a blog at the URL `http://example.com/blog/`, the above block would begin with `<Location "/blog">`. In this situation, you would need to set up a DocumentRoot to contain the files for the static portion of the site.
 
@@ -137,7 +137,7 @@ Typically, Django applications use a secondary "media" web server to more effici
 
 In the above example, this would allow any static content requested with the URL `http://example.com/files/` to be served without Django interference. An alternate, and potentially easier solution, would use a second VirtualHost for all non-Python content.
 
-# Hosting Multiple Django Applications
+## Hosting Multiple Django Applications
 
 The easiest way to host multiple Django applications with one instance of Apache is to place each application in its own virtual host. If, however, you need to host more than one application within a single `VirtualHost` entry you'll need to specify different locations in `Location` blocks *within* that `VirtualHost` entry. Here are two example location blocks that would be inserted in your `VirtualHost` entry:
 
@@ -164,7 +164,7 @@ PythonInterpreter funnyjoke
 
 Note that the `PythonInterpreter` option needs to be set in these situations to avoid confusing `mod_python`, and your applications must be configured to properly handle these requests.
 
-# Using Django
+## Using Django
 
 Once you have the base system installed and `mod_python` configured properly with Django, the majority of your time can be spent developing your application. There are, however, a few concerns you should be aware of.
 
@@ -176,7 +176,7 @@ As the site and your Django application begin receiving additional traffic, ther
 
 The first step is to separate services onto different servers. If you're having performance issues, move the database (e.g. MySQL or PostgreSQL) onto its own server or even a cluster of database servers. We alluded to this earlier with regard to static files, but it's often easier and more efficient to use a separate high-performance web server like nginx or lighttpd for static content. Such a server may also run on a separate Linode, isolated from the Apache instance running the Django application. Advanced solutions including front end reverse proxies like Squid, or hosting duplicate copies of your application servers and using a round-robin DNS setup, can offer you a great deal of scalability for high-demand situations.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

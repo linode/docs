@@ -19,7 +19,7 @@ In some cases, administrators find that while Apache meets most of their general
 
 We assume you already have Apache running on your Linode; if you don't, you may wish to review our [Apache on Debian 6 (Squeeze) guide](/docs/web-servers/apache/installation/debian-6-squeeze) before proceeding. These steps should be performed as root via a shell session.
 
-# Enabling the Proxy Module
+## Enabling the Proxy Module
 
 We'll edit the file `/etc/apache2/mods-available/proxy.conf` as follows:
 
@@ -52,7 +52,7 @@ This turns on proxy support in the module configuration. **Please note** the war
 
 Apache should restart cleanly. If you encounter any issues, you may wish to inspect the logs available under `/var/log/apache2/` for more information.
 
-# Proxying a Domain to Lighttpd
+## Proxying a Domain to Lighttpd
 
 We already have a site called "www.firstsite.org" running under Apache as a normal virtual host. We'll use Apache to send requests for the site "www.secondsite.org" to lighttpd, which we've configured to run on port 8080 on localhost. Here's the configuration file for "www.secondsite.org":
 
@@ -84,7 +84,7 @@ Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
 [![Website running under Lighttpd on Debian 6 (Squeeze).](197-proxypass-lighttpd-site.png)](197-proxypass-lighttpd-site.png)
 
-# Proxying a Specific URL to Lighttpd
+## Proxying a Specific URL to Lighttpd
 
 If we wanted to have `http://www.firstsite.org/myapp/` served by a web application running under lighttpd, we'd simply modify its configuration file to look like this:
 
@@ -109,7 +109,7 @@ Now the location "/myapp" will be served by lighttpd instead of Apache. After re
 
 This is an easy method for hosting multiple application servers (with different web server requirements) under a single domain.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

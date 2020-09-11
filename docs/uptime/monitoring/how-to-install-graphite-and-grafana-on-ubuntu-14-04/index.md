@@ -27,11 +27,11 @@ external_resources:
 
 ![Graphite with Grafana](Deploy_Graphite_smg.jpg)
 
-# Set Up Graphite Monitoring Software with Grafana on Ubuntu
+## Set Up Graphite Monitoring Software with Grafana on Ubuntu
 
 [Graphite](http://graphite.readthedocs.org/en/latest/index.html) is an enterprise-level monitoring tool renowned for performing well on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to the installation and basic setup of Graphite together with [Grafana](http://grafana.org/), a popular open source application for visualizing large-scale measurement data, on Ubuntu 14.04.
 
-## Before You Begin
+### Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -42,7 +42,7 @@ external_resources:
         sudo apt-get update && sudo apt-get upgrade
 
 
-## Install Apache, Python Tools and Graphite
+### Install Apache, Python Tools and Graphite
 
 1.  Install the system packages required for working with Graphite:
 
@@ -50,7 +50,7 @@ external_resources:
 
     During the installation of `graphite-carbon`, you will be asked if you want to remove the whisper database files should you ever uninstall Graphite. Answer **No** to this prompt. You can always remove the files later (which are located in `/var/lib/graphite/whisper`).
 
-## Configure Carbon
+### Configure Carbon
 
 1.  Configure the retention rate for test metrics by adding a `[test]` block to Carbon's `storage-schemas.conf` file. *This step is given for testing purposes only and can be safely skipped if you have no use to generate test metrics.*
 
@@ -91,7 +91,7 @@ CARBON_CACHE_ENABLED=true
         sudo service carbon-cache start
 
 
-## Install and Configure PostgreSQL
+### Install and Configure PostgreSQL
 
 1.  Install PostgreSQL for the graphite-web application:
 
@@ -111,7 +111,7 @@ CARBON_CACHE_ENABLED=true
 
         su - graphite
 
-## Configure Graphite
+### Configure Graphite
 
 1.  Update Graphite's `DATABASES` dictionary definition with the settings for the PostgreSQL database created earlier:
 
@@ -149,7 +149,7 @@ SECRET_KEY = 'somelonganduniquesecretstring'
 4.  Then answer the prompts to create a superuser account which will be used to access Graphite's web interface.
 
 
-## Configure Apache for Graphite
+### Configure Apache for Graphite
 
 1.  Copy Graphite's Apache config template into Apache's `sites-available` directory:
 
@@ -186,7 +186,7 @@ Listen 8080
 
     ![Graphite landing page](graphite_landing_page.png)
 
-## Create Sample Data
+### Create Sample Data
 
 1.  Generate some test metrics with the following command:
 
@@ -196,7 +196,7 @@ Listen 8080
 
     ![Graphite test metric](graphite_test_metric.png)
 
-## Install and Configure Grafana
+### Install and Configure Grafana
 
 1.  Add Grafana's repository to `sources.list`:
 
@@ -273,7 +273,7 @@ secret_key = somelongrandomstringkey
     At this point, you should be able to open your Linode's domain or IP address in a browser to see Grafana's login page.
 
 
-## Add a Graphite Data Source to Grafana
+### Add a Graphite Data Source to Grafana
 
 1.  Log in into Grafana using the `admin` credentials you specified in `grafana.ini` above.
 

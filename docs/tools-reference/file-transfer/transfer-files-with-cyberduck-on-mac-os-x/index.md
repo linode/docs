@@ -18,7 +18,7 @@ Cyberduck is a free, open source file transfer program written for Mac OS X. It 
 
 You'll need to make sure your Linode is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/docs/tools-reference/linux-users-and-groups) on the server after doing so.
 
-# Obtaining and Installing Cyberduck
+## Obtaining and Installing Cyberduck
 
 You can obtain the software from the [Cyberduck home page](http://cyberduck.ch/). Click the link for the "dmg" installation image. You may save the file to your desktop and double-click it to view its contents, or you may instruct your browser to open it automatically. The contents of the installation image will resemble this:
 
@@ -30,7 +30,7 @@ Copy the "Cyberduck" file shown above to your "Applications" folder by dragging 
 
 You may wish to drag the Cyberduck icon from the "Applications" folder to your dock to provide easy access to the program.
 
-# Using Cyberduck
+## Using Cyberduck
 
 Run the program by single-clicking its icon on the dock or by double-clicking the icon in "Applications" folder. You'll be presented with the main program window:
 
@@ -50,7 +50,7 @@ To navigate up the directory tree on your Linode's filesystem, click the control
 
 You may double-click any folder (directory) to view its contents. Files may be copied to and from your Mac by dragging and dropping them to or from a Finder window.
 
-# Connecting Without a Password (SSH Keys)
+## Connecting Without a Password (SSH Keys)
 
 If you'd like to use SSH keys to allow access to your Linode without the need to specify a password, you'll need to make sure you have an SSH keypair generated on your Mac. To verify this, open a terminal (you can search for "Terminal.app" on your Mac to find the version included with your operating system) and type the following command:
 
@@ -75,7 +75,7 @@ If you're asked for a password, please double-check the preceding steps in this 
 
 In the window that appears, select the `id_rsa` or `id_dsa` file contained without the `.ssh` directory. Click "Open" to verify the selection. You should now be able to connect to your Linode without entering a password in the "Password" field of the connection details window.
 
-# Bookmarking Connections
+## Bookmarking Connections
 
 You can bookmark your connection for later use via the "Bookmark" toolbar menu at the top of your screen, which will display a window similar to the following:
 
@@ -83,7 +83,7 @@ You can bookmark your connection for later use via the "Bookmark" toolbar menu a
 
 This allows you to maintain connection information for multiple servers or user accounts in an easily accessible manner.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

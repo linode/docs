@@ -21,7 +21,7 @@ Apache Tomcat is an open source software implementation of the Java Servlet and 
 
 Before following this guide, ensure that your system is up to date and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -30,7 +30,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Choose and Install Java Implementation
+## Choose and Install Java Implementation
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -85,7 +85,7 @@ Now you are ready to install Sun Java with the following command (after agreeing
 
     apt-get install sun-java6-jdk
 
-# Install Apache Tomcat
+## Install Apache Tomcat
 
 To install Tomcat, issue the following command:
 
@@ -101,7 +101,7 @@ Tomcat should now be totally functional, following installation and your next sy
     /etc/init.d/tomcat6 stop
     /etc/init.d/tomcat6 restart
 
-# Test and Use Tomcat
+## Test and Use Tomcat
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file, substituting your own username and password. Make sure you keep the "manager" role.
 
@@ -118,7 +118,7 @@ Issue the following command to restart the Tomcat server, which will allow this 
 
 Congratulations! You know have a working Apache Tomcat installation.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -19,7 +19,7 @@ title: 'Installing Prosody XMPP Server on Ubuntu 10.10 (Maverick)'
 
 Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [ejabberd](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin) or [OpenFire](/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin) may be better suited for larger applications, but for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.
 
-# Adding Software Repositories
+## Adding Software Repositories
 
 The developers of Prosody provide software repositories for Debian and Ubuntu to more effectively distribute current versions of the software to users. In order to make these repositories accessible to your system we must append the following line to the `/etc/apt/sources.list` file:
 
@@ -38,7 +38,7 @@ Issue the following command to refresh the package database:
     apt-get update
     apt-get upgrade
 
-# Install Prosody
+## Install Prosody
 
 With the proper repository enabled, we're now ready to install the Prosody server. Use the following command:
 
@@ -51,7 +51,7 @@ When `apt` finishes, the Prosody server will have been successfully installed (w
     /etc/init.d/prosody stop
     /etc/init.d/prosody restart
 
-# Configure Prosody Server
+## Configure Prosody Server
 
 The configuration file for Prosody is located in `/etc/prosody/prosody.cfg.lua`, and is written in Lua syntax.
 
@@ -117,7 +117,7 @@ Do not forget to reload the configuration for the Prosody server after making an
 
     /etc/init.d/prosody restart
 
-# XMPP Federation and DNS
+## XMPP Federation and DNS
 
 To ensure that your Prosody instance will federate properly with the rest of the XMPP network, particularly with Google's "GTalk" service (i.e. the ["@gmail.com](mailto:"@gmail.com)" chat tool,) we must set the SRV records for the domain to point to the server where the Prosody instance is running. We need three records, which can be created in the DNS Management tool of your choice:
 
@@ -127,7 +127,7 @@ To ensure that your Prosody instance will federate properly with the rest of the
 
 The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "username.example.com"). The priority and weight should both be set to `0`.
 
-# Enabling Components
+## Enabling Components
 
 In the XMPP world, many services are provided in components, which allows for greater ease of customization within a basic framework. A common example of this is the MUC or multi-user chat functionality. To enable MUC services in Prosody you need to add a line like the following to your `/etc/prosody/prosody.cfg.lua` file.
 
@@ -159,7 +159,7 @@ component_ports = { 8888, 8887 }
 {{< /file >}}
 
 
-# Using prosodyctl
+## Using prosodyctl
 
 The XMPP protocol supports "in-band" registration, where users can register for accounts with your server via the XMPP interface. However, this is often an undesirable function as it doesn't permit the server administrator the ability to moderate the creation of new accounts and can lead to spam-related problems. As a result, Prosody has this functionality disabled by default. While you can enable in-band registration, we recommend using the `prosodyctl` interface at the terminal prompt.
 
@@ -183,7 +183,7 @@ Additionally, `prosodyctl` can provide a report on the status of the server in r
 
 Note that all of the `prosodyctl` commands require root privileges, unless you've logged in as the same user that Prosody runs under (not recommended).
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

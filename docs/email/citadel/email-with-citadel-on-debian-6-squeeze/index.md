@@ -17,7 +17,7 @@ title: 'Email with Citadel on Debian 6 (Squeeze)'
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -26,7 +26,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Citadel
+## Install Citadel
 
 Issue the following commands to install any outstanding package updates:
 
@@ -69,7 +69,7 @@ hostname.example.com
 {{< /file >}}
 
 
-# Enable Spamassassin Filtering
+## Enable Spamassassin Filtering
 
 You'll need to edit the SpamAssassin configuration file to enable spamd:
 
@@ -86,7 +86,7 @@ Start the spamassassin service as follows:
 
 Please note that you'll finish enabling SpamAssassin support within Citadel later in the "Notes" section.
 
-# Configure SSL
+## Configure SSL
 
 Issue the following commands to back up the default Citadel SSL files.
 
@@ -145,7 +145,7 @@ Issue the following command to create a self-signed certificate and copy require
     openssl x509 -req -days 365 -in citadel.csr -signkey citadel.key -out citadel.cer
     cp -a citadel* /etc/ssl/webcit/
 
-# Running Citadel
+## Running Citadel
 
 Customize the logon banner for your Citadel server by editing the `/etc/citadel/messages/hello` file:
 
@@ -168,7 +168,7 @@ Visit the web interface in your web browser. Using our preceding example, the We
 
 At this point, your email system should be fully functional and can be configured through the web interface. To finish enabling SpamAssassin support, select "Administration" in the control panel. Next, click "Domain names and Internet mail configuration". Enter "127.0.0.1" in the box for the SpamAssassin host.
 
-# Lost Password Recovery
+## Lost Password Recovery
 
 If you lose the password to your administrator account, issue the following command:
 
@@ -176,7 +176,7 @@ If you lose the password to your administrator account, issue the following comm
 
 When prompted for administrative account information, specify a new username and password. You may accept all other default settings. You should be able to log in as the new admin user. You may then reset the password for your original administrator account. After this is done, log back in as the original administrator and delete the temporary admin account.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

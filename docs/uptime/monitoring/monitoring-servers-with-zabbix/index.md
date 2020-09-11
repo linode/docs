@@ -17,7 +17,7 @@ title: Monitoring Servers with Zabbix
 
 Zabbix is an open source software application that can monitor servers, networks, and applications. You can use Zabbix with any of our plans, and it works on every Linux distribution we offer. Full hardware and software requirements can be found on the [Zabbix requirements page](http://www.zabbix.com/requirements.php).
 
-# Deciding How to Install Zabbix
+## Deciding How to Install Zabbix
 
 There are two ways to install Zabbix. You can compile and install Zabbix from source, or you can install Zabbix packages, if your distribution supports it.
 
@@ -53,7 +53,7 @@ If you install the Zabbix packages, you do not need to follow the rest of the in
 
 If you decide not install the Zabbix packages, or your distribution does not support it, use the instructions in the rest of this guide to compile and install Zabbix from source.
 
-# Prerequisites
+## Prerequisites
 
 You'll need to install some software before you actually install Zabbix itself. It requires a database backend, and in this example we'll use MySQL, but you can also use PostgreSQL, SQLite, Oracle, or IBM DB2. Other mandatory requirements are a C compiler and GNU Make. Optionally, you can also include NET-SNMP for SNMP support, lksemel to enable Jabber messaging, and/or Libcurl to enable the WEB monitoring module.
 
@@ -164,7 +164,7 @@ You'll need a C compiler and `make` to install Zabbix. If your Linode is running
 
 You have installed the C compiler and `make` on your Linode.
 
-# Zabbix Server
+## Zabbix Server
 
 Now that all of the Zabbix prerequisites are ready, we can start installing.
 
@@ -369,7 +369,7 @@ Once you have your files copied and the configuration file in place, start the a
 
 The agent is now running.
 
-# Zabbix Web Interface
+## Zabbix Web Interface
 
 Zabbix also has a front-end component that you'll want to install. These instructions show you how.
 
@@ -435,7 +435,7 @@ You'll need to complete the installation of the Zabbix web interface with your w
 
 After you've finished the front-end installation, you'll be forwarded to the Zabbix login page. The default username is `Admin`, the default password is `zabbix`.
 
-# Monitoring a Host
+## Monitoring a Host
 
 Now you have the Zabbix server and web admin installed, and you just set up the `zabbix_agentd` on your first monitored host. Now you can add that host to your web admin so you can actually monitor it. Here's how:
 
@@ -467,7 +467,7 @@ If you would like the base graphs for your new monitored host, you can copy thos
 
 Note that the [Zabbix manual](http://www.zabbix.com/documentation/2.0) has complete documentation on setting up the various actions and operations Zabbix can perform.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

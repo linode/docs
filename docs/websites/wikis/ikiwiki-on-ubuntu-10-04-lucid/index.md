@@ -19,7 +19,7 @@ title: 'Ikiwiki on Ubuntu 10.04 (Lucid)'
 
 Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/development/version-control/how-to-configure-git) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
 
-# Basic System Configuration
+## Basic System Configuration
 
 Issue the following commands to set your system hostname, substituting a unique value for "hostname":
 
@@ -41,7 +41,7 @@ If you haven't already added an unprivileged system user, create one now. This w
 
 As with all user accounts, be sure assign a strong password consisting of letters, numbers, and other characters.
 
-# Install Ikiwiki
+## Install Ikiwiki
 
 Issue the following commands to update your system's package database and upgrade all installed packages.
 
@@ -52,7 +52,7 @@ Issue the following command to install Ikiwiki and other required software:
 
     apt-get install ikiwiki git-core build-essential libcgi-session-perl libcgi-formbuilder-perl libnet-openid-consumer-perl libyaml-perl xapian-omega libsearch-xapian-perl libmath-bigint-gmp-perl
 
-# Install and Configure a Web Server
+## Install and Configure a Web Server
 
 Both of the following subsections assume that you will deploy your ikiwiki site within the top level of the `example.com` virtual host. You will need to modify the domains and file system paths to match your domain name.
 
@@ -278,7 +278,7 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/example.com
     /etc/init.d/nginx restart
 
-# Configure Ikiwiki
+## Configure Ikiwiki
 
 Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "username." :
 
@@ -338,7 +338,7 @@ Rerun this command any time you edit the `ikiwiki.setup` file. You can now visit
 
     git clone ssh://example.com:/srv/git/wiki.git
 
-# Administration Notes
+## Administration Notes
 
 The `ikiwiki.cgi` binary and the `post-update` hook need to be able to write and operate on the source repository and wiki destination, as specified in the `ikiwiki.yaml` file. These scripts can be run with "suid" permissions set, which may eliminate some complexity. If your wiki stops regenerating, make sure the file permissions are set correctly. If you are using gitosis or gitolite to manage your git repositories, the git repository user needs to own the ikiwiki scripts and have write access to the repositories and wiki destination.
 
@@ -346,7 +346,7 @@ The directory ikiwiki uses as its source directory (e.g. `~/wiki/source`) and th
 
 Some functions for viewing wiki histories and recent changes are dependent upon setting up and configuring the "git-web" package, which is outside of the scope of this document.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

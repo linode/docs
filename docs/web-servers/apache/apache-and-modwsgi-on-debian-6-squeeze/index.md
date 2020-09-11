@@ -17,7 +17,7 @@ title: 'Apache and mod_wsgi on Debian 6 (Squeeze)'
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -26,7 +26,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Dependencies
+## Install Dependencies
 
 Issue the following commands to ensure that your system's package repositories and installed programs are up to date and that all required software is installed:
 
@@ -36,7 +36,7 @@ Issue the following commands to ensure that your system's package repositories a
 
 Your application may require additional dependencies. Install these either using the Debian package tools or by using the `easy_install` command included in `python-setuptools` before proceeding.
 
-# Configure WSGI Handler
+## Configure WSGI Handler
 
 In order for `mod_wsgi` to be able to provide access to your application, you will need to create a `application.wsgi` file inside of your application directory. The application directory should be located *outside* of your `DocumentRoot`. The following three sections each present a different `application.wsgi` example file to illustrate the basic structure of this file:
 
@@ -115,7 +115,7 @@ application = django.core.handlers.wsgi.WSGIHandler()
 
 `Django` must be installed on your system and a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the `settings.py` file for your application, which would be located in the `/srv/www/example.com/application/settings.py` in the case of this example.
 
-# Configure Apache
+## Configure Apache
 
 Deploy the following `VirtualHost` configuration and modify the paths and domains to reflect the requirements of your application:
 
@@ -149,7 +149,7 @@ When you have configured your Apache `VirtualHost`, issue the following command 
 
 You will need to restart the web server every time the `application.wsgi` file changes. However, all other modifications to your application do not require a web server restart. Congratulations! You have now successfully deployed a WSGI application using `mod_wsgi`.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

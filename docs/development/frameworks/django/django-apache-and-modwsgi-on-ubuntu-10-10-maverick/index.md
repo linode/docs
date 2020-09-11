@@ -19,7 +19,7 @@ Django is a web development framework for the Python programing language. It was
 
 This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-10-10-maverick) and a functional [MySQL database](/docs/databases/mysql/ubuntu-10-10-maverick) system installed.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,7 +28,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Dependencies
+## Install Dependencies
 
 Issue the following commands to ensure that your system's package repositories and installed programs are up to date:
 
@@ -50,7 +50,7 @@ If you want to use the SQLite embedded database, issue the following command:
 
 Your application may require additional dependencies. You may install these using the Ubuntu package tools or by using the `easy_install` command included in `python-setuptools`.
 
-# Install Django
+## Install Django
 
 There are two methods for installing Django. You may choose to install the Django packages from the Ubuntu repositories, or you can install using the python `easy_install` method. If you choose to install using the Ubuntu packages, you will work with the 1.2.3 version of the framework, but you will have the benefit of ongoing security and bug fixes from the Ubuntu maintainers. To install Django from the Ubuntu repositories, issue the following command:
 
@@ -62,7 +62,7 @@ If you want to install Django using the `easy_install` tool, issue the following
 
 At the time of writing, this will install version 1.2.5 of the Django framework, but may update to a more recent version. Consider the [package information for Django](http://pypi.python.org/pypi/Django) for more information.
 
-# Configure Django Applications for WSGI
+## Configure Django Applications for WSGI
 
 In order for `mod_wsgi` to be able to provide access to your Django application, you will need to create a `django.wsgi` file inside of your application directory. For the purposes of this example, we assume that your application will be located *outside* of your `DocumentRoot` in the directory `/srv/www/example.com/application`. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
 
@@ -83,7 +83,7 @@ application = django.core.handlers.wsgi.WSGIHandler()
 
 You must append the path of your application to the system path as above. Additionally, declaration of the `PYTHON_EGG_CACHE` variable is optional, but may be required for some applications when WSGI scripts are executed with the permissions of the web server. Finally, the `DJANGO_SETTINGS_MODULE` must refer to the Django `settings.py` file for your project. You will need to restart Apache after modifying the `django.wsgi` file.
 
-# Configure Apache
+## Configure Apache
 
 Consider the following example virtual host configuration:
 
@@ -121,7 +121,7 @@ When you have successfully configured your Apache virtual host, issue the follow
 
 You will need to restart the web server every time the `django.wsgi` file changes. However, all other modifications to your application do not require a web server restart. Congratulations! You have now successfully deployed a Django application using `mod_wsgi`.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

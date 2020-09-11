@@ -17,7 +17,7 @@ deprecated: true
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -26,7 +26,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Installing Web.py
+## Installing Web.py
 
 ### Install Prerequisites
 
@@ -55,7 +55,7 @@ Issue the following commands to download and install Web.py, using a packaged ve
 
 If you want to upload a more recent version, consider [this procedure](/docs/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/), to install Web.py from source.
 
-# Create a Basic Application with Web.py
+## Create a Basic Application with Web.py
 
 There are a number of examples of basic applications developed using the web.py framework. The "main" application file is typically called "code.py". Consider the following "Hello World" application:
 
@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
 Save this file at `/srv/www/example.com/application/code.py` or the equivalent path depending on your virtual hosting deployment, and proceed with the deployment of the application.
 
-# Deploy Web.py Applications
+## Deploy Web.py Applications
 
 Web.py provides a number of different possibilities for deploying and hosting applications. This document will describe a deployment using the Apache web server and the `mod_wsgi` process. However, you may choose to deploy your Web.py application using whatever web server and application interface method you are most comfortable with: nginx, lighttpd, or Cherokee with FastCGI, CGI, or embedded python interpreters are all viable options.
 
@@ -141,7 +141,7 @@ Ensure that this virtual host has been enabled, and issue the following command 
 
 In the above example, requests for the `example.com` domain will be handled by WSGI, with the application files located in `/srv/www/example.com/application`. All static files can be stored in `/srv/www/example.com/public_html` and served directly by Apache. Furthermore, the rewrite rules convert requests so that paths beneath `example.com` are handled by the Web.py application without including `code.py` in the URL. For example, the request for `http://example.com/about` would be processed as `http://example.com/code.py/about` but requests for `http://example.com/static` would not be rewritten and content would be served from `/srv/www/example.com/public_html`.
 
-# Build a Database Driven Application with Web.py
+## Build a Database Driven Application with Web.py
 
 The "Hello World" application above is functional, but isn't able to store or access persistent data in a database system. The following example is simple but inserts and retrieves data from a database system. Consider the following code:
 
@@ -191,7 +191,7 @@ While the application is running you can issue the following SQL statements to P
 
 Congratulations on the development of your new Web.py application!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

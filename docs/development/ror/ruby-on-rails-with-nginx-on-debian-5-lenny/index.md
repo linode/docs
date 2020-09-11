@@ -17,7 +17,7 @@ title: 'Ruby on Rails with Nginx on Debian 5 (Lenny)'
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Debian 5 (Lenny).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -26,7 +26,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Required Packages
+## Install Required Packages
 
 To install a more current version of Ruby Gems, which is required for running Ruby on Rails on Debian 5 (Lenny), you must install several packages from the [Backports project](http://backports.debian.org). Insert the following line in your `/etc/apt/sources.list` file:
 
@@ -78,7 +78,7 @@ If you are unsure of the version you require, you can install the latest version
 
 Additionally, the application you deploy will likely have additional dependencies. Install these dependencies before proceeding.
 
-# Install Passenger and Nginx
+## Install Passenger and Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):
 
@@ -99,7 +99,7 @@ When prompted for the Nginx installation method, we recommend you choose "1" to 
 
 Please do **not** remove the Passenger files from `opt` after the install. They need to stay in place or your install will not function correctly.
 
-# Set up an Init Script for Nginx
+## Set up an Init Script for Nginx
 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
@@ -115,14 +115,14 @@ You can now start, stop, and restart Nginx just like any other server daemon. Fo
 
 The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. This is the file you'll need to edit to add support for your Rails applications. A default server is already configured in this file, and it also contains examples for alternate virtual host and SSL configurations.
 
-# Install MySQL Support (optional)
+## Install MySQL Support (optional)
 
 If your application uses MySQL, install the database server by following our [MySQL on Debian 5 (Lenny) guide](/docs/databases/mysql/debian-5-lenny). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -19,7 +19,7 @@ The eGroupware suite provides a group of server-based applications that offer co
 
 Before installing eGroupware, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/) as a prerequisite for installing eGroupware.
 
-# Install eGroupware
+## Install eGroupware
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -70,7 +70,7 @@ mbstring.func_overload = 7
 
 Congratulations, you've now installed eGroupware!
 
-# Configure Access to eGroupware
+## Configure Access to eGroupware
 
 If you do not have any virtual hosts enabled and your domain is `example.com`, you should be able to visit `http://example.com/egroupware/setup` to access the remainder of the eGroupware setup provided that `example.com` points to the IP of your Linode. However, if you have virtual hosting setup, you will need to issue the following command to create a symbolic link to eGroupware:
 
@@ -78,13 +78,13 @@ If you do not have any virtual hosts enabled and your domain is `example.com`, y
 
 Replace `/srv/example.com/public_html/` with the path to your virtual host's `DocumentRoot`, or other location within the `DocumentRoot` where you want eGroupware to be located. Then, visit `http://example.com/egroupware/setup/` to complete the setup process. You will be prompted for a password then brought to a configuration interface. Review the settings and modify them to reflect the specifics of your deployment, and create an "eGW Database Instance" for your deployment. Do not forget to create an administrative user for the database instance you are creating. When you have completed the eGroupware configuration, select the "'Write' Configuration file" option. Continue to the "Login" page.
 
-# Configure eGroupware
+## Configure eGroupware
 
 When you have completed the initial "Header Setup," select the option to write the "header" file and then continue to the "Setup/Admin." Ensure that you've selected the correct "Domain" if you configured more than one. At this juncture you must install the eGroupware applications that you will expect to use. Select the proper character set and then select the button to "'Install' all applications." You can now "Recheck" your installation. Supply eGroupware with the configuration for your email server. Additionally, you will need to create an admin account for your eGroupware domain, which you can accomplish from this page.
 
 When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system. Consider running [Postfix with Courier and MySQL](/docs/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/).
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
