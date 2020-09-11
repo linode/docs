@@ -469,7 +469,7 @@ The steps in this section cover configuring Network Interfaces for Linodes that 
     link/ether ba:c2:6d:9c:e3:f9 brd ff:ff:ff:ff:ff:ff
   {{</ output >}}
 
-1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth1`) with a configuration entry for the Linode's `eth1` Private Network Interface along with the Interface's Private IP and subnet mask. The subnet mask that you use is the same as your VLAN's `cidr_block`.
+1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth1`) with a configuration entry for the Linode's `eth1` Private Network Interface along with the Interface's Private IP address and subnet mask. The Private IP address must be unique within the LAN. The subnet mask that you use is the same as your VLAN's `cidr_block`.
 
     {{< note >}}
 The location of the Network Interface configuration file varies based on the Linux distribution deployed to your Linode. The example below was created using a Debian 10 Linode. See our [Network Helper](/docs/platform/network-helper/#what-files-are-modified) guide for information on where different distributions store Network Interface configuration files.
@@ -587,7 +587,7 @@ Find your `{configId}` by sending a request to the [List Configuration Profiles]
     link/ether ba:c2:6d:9c:e3:f9 brd ff:ff:ff:ff:ff:ff
   {{</ output >}}
 
-1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth0`) with a configuration entry for the Linode's `eth0` Private Network Interface along with the Interface's Private IP and subnet mask. The subnet mask that you use is the same as your LAN's `cidr_block`.
+1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth0`) with a configuration entry for the Linode's `eth0` Private Network Interface along with the Interface's Private IP address and subnet mask. The Private IP address must be unique within the LAN. The subnet mask that you use is the same as your LAN's `cidr_block`.
 
     {{< note >}}
 The location of the Network Interface configuration file varies based on the Linux distribution deployed to your Linode. The example below was created using a Debian 10 Linode. See our [Network Helper](/docs/platform/network-helper/#what-files-are-modified) guide for information on where different distributions store Network Interface configuration files.
