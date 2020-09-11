@@ -25,7 +25,7 @@ from pathlib import Path
 # Create a regex cookbook!
 
 
-IGNORE_DIRS = ['/docs/api/*']
+IGNORE_DIRS = ['^/docs/api/[/A-Za-z0-9_-]*']
 REPORT_KEYS = ['files', 'excluded_files', 'directories']
 BASE_URL = 'http://localhost:1313/docs/'
 OPTIONAL_PARAMS = ['args', 'kwargs']
@@ -227,7 +227,7 @@ def readfile(filename, section=None):
     try:
         with open(filename, 'rb') as f:
             for oneDir in IGNORE_DIRS:
-                if re.match(oneDir, filename):
+                if re.match(oneDir, str(filename)):
                     print("skipping file: " + f"{filename}")
                     return
                 else:
