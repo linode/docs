@@ -213,8 +213,8 @@ def find_files(path='.', extension='md', recursive=False):
     for f in allfiles:
         for oneDir in IGNORE_DIRS:
             print("eliminating directory " + oneDir)
-            if re.match(oneDir, f):
-                print("skipping file: " + f)
+            if re.match(oneDir, f.filename):
+                print("skipping file: " + f.filename)
                 continue
             else:
                 filesToCheck.append(f)
