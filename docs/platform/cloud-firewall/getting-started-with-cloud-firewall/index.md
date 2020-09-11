@@ -5,6 +5,7 @@ author:
 description: 'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You will also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
 og_description:  'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You will also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
 keywords: ["firewall", "cloud firewall", "security", "securing"]
+tags: ["security", "linode platform", "cloud manager", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-24
 modified_by:
@@ -20,7 +21,7 @@ Linode Cloud Firewalls is a free service used to create, configure, and add stat
 
 ### Features
 
-Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls work as an allowlist with an implicit deny rule-- it will block all traffic by default and only pass through network traffic that meets the parameters of the configured rules.
+Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls work as an allowlist with an implicit deny rule-- it will block all traffic by default and only pass through network traffic that meets the parameters of the configured rules. If there are no outbound rules set, all outbound traffic will be permitted.
 
 ### Limitations
 
