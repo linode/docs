@@ -1,5 +1,69 @@
-[context.deploy-preview.environment]
-HUGO_VERSION = "0.52"
+[build]
+publish = "public"
+command = "hugo --gc --minify -d public/docs;"
 
-[context.deploy-preview]
-command = "hugo --buildDrafts --buildFuture --baseURL $DEPLOY_PRIME_URL && echo '/docs/* /:splat' >> public/_redirects"
+[context.production.environment]
+HUGO_VERSION = "0.74.3"
+
+
+[context.branch-deploy]
+command = "hugo --minify --gc -d public/docs -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+HUGO_VERSION = "0.74.3"
+
+[[plugins]]
+package = "netlify-plugin-hugo-cache-resources"
+
+[plugins.inputs]
+debug = true
+
+[[headers]]
+for = "/*.jpg"
+
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.png"
+
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.css"
+
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.js"
+
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/webfonts/*"
+
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "no-referrer"
+Content-Security-Policy = "script-src 'self' https://*.trustarc.com 'unsafe-eval' 'unsafe-inline'"
+
+[[redirects]]
+from = "/docs/blog/*"
+to = "/docs/blog/"
+status = 200
+
+[[redirects]]
+from = "/docs/sections/*"
+to = "/docs/sections/"
+status = 200
