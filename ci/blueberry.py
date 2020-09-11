@@ -206,34 +206,40 @@ def find_files(path='.', extension='md', recursive=False):
        construct_path = '**/'
     glob_path = '{}[!_]*.{}'.format(construct_path, extension)
 
-    #return list(p.glob(glob_path))
-    allfiles = list(p.glob(glob_path))
-    filesToCheck = []
+    return list(p.glob(glob_path))
+    #allfiles = list(p.glob(glob_path))
+    #filesToCheck = []
 
-    for f in allfiles:
-        for oneDir in IGNORE_DIRS:
-            print("eliminating directory " + oneDir)
-            if re.match(oneDir, f.filename):
-                print("skipping file: " + f.filename)
-                continue
-            else:
-                filesToCheck.append(f)
-    return(filesToCheck)
+    #for f in allfiles:
+        #for oneDir in IGNORE_DIRS:
+        #    print("eliminating directory " + oneDir)
+        #    if re.match(oneDir, f.filename):
+        #        print("skipping file: " + f.filename)
+        #        continue
+        #    else:
+        #        filesToCheck.append(f)
+    #return(filesToCheck)
 
 
 def readfile(filename, section=None):
     """Opens a filename and returns either yaml or content"""
+
     try:
         with open(filename, 'rb') as f:
-            post = frontmatter.loads(f.read())
-            if section == 'content':
-                # TODO:
-                # Check case of \r\n for Windows
-                # WARNING: Removes trailing newlines
-                return post.content.splitlines()
-            elif section == 'metadata':
-                # WARNING: Implicitly converts dates to datetime
-                return post.metadata
+            for oneDir in IGNORE_DIRS:
+                if re.match(oneDir, f):
+                    print("skipping file: " + f"{filename}")
+                    return
+                else:
+                    post = frontmatter.loads(f.read())
+                    if section == 'content':
+                        # TODO:
+                        # Check case of \r\n for Windows
+                        # WARNING: Removes trailing newlines
+                        return post.content.splitlines()
+                    elif section == 'metadata':
+                        # WARNING: Implicitly converts dates to datetime
+                        return post.metadata
 
     except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError):
         # Return Error; require utf-8
