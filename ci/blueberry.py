@@ -137,7 +137,7 @@ def lowercase_filename(filepath):
 
     if filename in exempt_files:
         return
-    elif filename is None
+    elif filename is None:
         return
     elif not filename.islower():
         print("not lower file found: " + str(filename))
