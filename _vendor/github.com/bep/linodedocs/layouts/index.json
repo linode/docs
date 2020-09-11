@@ -5,7 +5,7 @@
 {{- $thumb := $img.Fill "640x400" -}}
 {{- $firstPublishedTime := (time (.Params.published | default 0)).Unix -}}
 {{- $category := .Params.category -}}
-{{- $tags := .Keywords -}}
+{{- $tags := .Params.tags -}}
 {{- $sections := slice -}}
 {{- $section :=  replace .SectionsPath "/" " > " }}
 {{- if ne .Section "products" -}}

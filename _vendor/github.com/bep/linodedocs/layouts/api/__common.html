@@ -1,7 +1,13 @@
 This template includes common API logic and functions.
 
 {{ define "partials/openapi3/get" }}
-  {{ $api := resources.Get "api/openapi.yaml" | openapi3.Unmarshal }}
+  {{ $apiPath := "api/openapi.yaml"}}
+  {{ $api := resources.Get $apiPath }}
+  {{ if not $api }}
+    {{ errorf "%q not found" $apiPath }}
+  {{ else }}
+    {{ $api = $api | openapi3.Unmarshal }}
+  {{ end }}
   {{ return $api }}
 {{ end }}
 
