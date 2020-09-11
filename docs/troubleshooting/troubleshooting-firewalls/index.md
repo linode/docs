@@ -14,55 +14,63 @@ title: Troubleshooting Firewalls
 h1_title: Diagnose & Resolve Issues with Firewalls
 ---
 
-This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall.
+This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall. This could be a [Linode Cloud Firewall](/docs/platform/cloud-firewall/getting-started-with-cloud-firewall/), which is applied on the network level or a firewall, like Uncomplicated Firewall (UFW), that is applied on the Linode level.
 
-In many cases, you might suspect a firewall issue if only some of your services are inaccessible, or in situations of limited access. A firewall may also be suspected if an issue was noticed not long after implementing new firewall rules.
+In many cases, you might suspect a firewall issue if some of your services are inaccessible, or in situations of limited access. A firewall issue may also be suspected if you have connectivity problems not long after implementing new firewall rules.
 
-It's important to note that while a firewall is often responsible for cases of limited access, these issues may also potentially be caused by a wide array of other issues such as limited network access, resource contention like throttled memory, or internal processes or services that are not configured to communicate over the internet.
+While a firewall is often responsible for cases of limited access, these issues may also potentially be caused by a wide array of other issues such as limited network access, resource contention like throttled memory, or internal processes or services that are not configured to communicate over the internet.
 
-## Before You Begin
+## The Linode Shell (Lish)
 
-You should familiarize yourself with *Lish*. It is a helpful troubleshooting tool for diagnosing connection problems.
+[*Lish*](/docs/platform/manager/using-the-linode-shell-lish/) is a shell that provides access to your Linode's serial console and is a helpful tool for diagnosing and troubleshooting connection problems. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or your Linode's Secure Shell (SSH) port is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
 
-### The Linode Shell (Lish)
-
-[*Lish*](/docs/platform/manager/using-the-linode-shell-lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
-
-To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide. In particular, [using your web browser](/docs/platform/manager/using-the-linode-shell-lish/#use-a-web-browser) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/platform/manager/using-the-linode-shell-lish/#use-a-web-browser).
 
 {{< note >}}
-The root user is available in Lish even if root user login is disabled in your SSH configuration.
+When using Lish, you can log into your Linode with the `root` user, even if `root` user login is disabled by your Linode's SSH configuration file.
 {{< /note >}}
 
 ## Is my Linode Powered On?
 
-To begin, log into the [Cloud Manager](https://cloud.linode.com/) and inspect the Linode's dashboard. If the Linode is powered off, turn it on.
+Ensure that your Linode is powered on and running.
 
-## Is my Cloud Firewall Effecting Me?
+1. Log into the [Cloud Manager](https://cloud.linode.com/) and navigate to the Linode Listing page.
 
-If you are using Linode's Cloud Firewall then it's important to check your rules and observe which Linodes are currently affected by Cloud Firewall.
+1. Verify your Linode's displayed status to determine if it's running or offline. If it your Linode is offline, use the **more options** ellipsis to power it on.
+
+## Is there a Cloud Firewall Assigned to my Linode?
+
+If you are using Linode Cloud Firewall, then it's important to verify which Cloud Firewall(s) your Linode is assigned to and to check its Cloud Firewall rules.
 
 1.  Log into [Cloud Manager](https://cloud.linode.com) and select **Firewalls** from the menu.
-1.  The Firewalls screen displays a list of all the firewalls currently active on your account.
 
-    [![firewall-home](firewall-home.png)](firewall-home.png)
+1.  The Firewalls Listing page displays a list of all the Cloud Firewalls currently active on your account.
 
-1.  To find the Linode that you believe is being affected, look in the `Linodes` column for the label you've assigned it.
-1.  Next, check the `Status` column to confirm that the firewall is `Enabled`.
-1.  If so, check what rules are currently applied by clicking on the `Edit` link in the row for the firewall you wish to edit, or by clicking on the label of the firewall itself. Doing either opens the **Rules** page.
+1.  Find the Linode you are troubleshooting under the **Linodes** column to determin which Cloud Firewall(s) is assigned to it.
 
-    [![firewall-details](firewall-details.png)](firewall-details.png)
+1.  Next, check the **Status** column to confirm that the Cloud Firewalls is **Enabled**.
 
-1.  The **Rules** page displays a list of all of the firewall rules that are affecting Linodes that the firewall has been applied to. You can also view these individual rules by `Type`, `Protocol`, `Port Range`, and `Sources` by clicking those words in the header.
-1.  If these rules seem to be affecting your service or services, you can remove or edit these rules independently by clicking the `Edit` or `Delete` links to the right of each rule respectively.
+    [![firewall-home](firewall-listing-non-cmr.png)](firewall-listing-non-cmr.png)
+
+1.  If the Cloud Firewall is enabled, check what rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
+
+1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your Linode's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/platform/cloud-firewall/getting-started-with-cloud-firewall/#edit-cloud-firewall-rules) to allow connections for that port.
 
     {{< note >}}
-Cloud Firewall rules are applied on the host level and are not detectable internally on Linodes. For more on how to setup and use Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/platform/cloud-firewall/getting-started-with-cloud-firewall).
+If the Cloud Firewall is assigned to more than one Linode, modifying the Cloud Firewall rules affect all Linodes assigned to the Cloud Firewall.
+    {{</ note >}}
+
+    {{< note >}}
+Cloud Firewall rules are applied on the network level and are not detectable internally on Linodes. For more information on setting up and using Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/platform/cloud-firewall/getting-started-with-cloud-firewall).
 {{< /note >}}
 
 ## Checking Firewall Rules with UFW
 
-**Uncomplicated Firewall** or **UFW** is an iptables frontend that is designed for ease-of-use. To find more information, see our guide on [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+*Uncomplicated Firewall (UFW)* is an [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) for a deeper dive into UFW.
+
+{{< note >}}
+All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) or using [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
+{{</ note >}}
 
 To see all active UFW rules, enter the following command:
 
@@ -93,7 +101,11 @@ For example, to delete the Allow rule for port 80 from the example output above,
 
 ## Checking Firewall Rules with FirewallD
 
-`firewalld` is the default firewall tool for CentOS and Fedora. While also a frontend for iptables like UFW, firewalld has some behaviours that are unique, like configuration sets and zones.
+*firewalld* is the default firewall tool for CentOS and Fedora. While also a frontend for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
+
+{{< note >}}
+All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) or using [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
+{{</ note >}}
 
 To list all all configurations for all zones, enter the following command:
 
@@ -103,12 +115,16 @@ If you find a rule that doesn't belong, you can safely remove it using the follo
 
     sudo firewall-cmd --zone=zonename --remove-service=servicename --permanent
 
-For more information on understanding firewalld, see our guide to firewalld, [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
+For more information on understanding firewalld, see our [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/) guide.
 
 
 ## Checking Firewall Rules with iptables
 
-`iptables` is the most common firewall used on Linux systems. If you're unsure of which firewall software you may be using, chances are that it's iptables in some form.
+*iptables* is the most common firewall used on Linux systems. If you're unsure of which firewall software you may be using, chances are that it's iptables in some form.
+
+{{< note >}}
+All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) or using [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
+{{</ note >}}
 
 To list all active firewall rules using iptables, enter the following commands for IPv4 and IPv6 respectfully:
 
