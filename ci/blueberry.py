@@ -144,7 +144,7 @@ def lowercase_filename(filepath):
 @add_rule
 def lowercase_extension(filepath):
     """File extensions must be lowercase."""
-    filename, file_extension = os.path.splitext(filepath)
+    filename, file_extension = os.path.splitext(str(filepath))
     if file_extension != file_extension.lower():
         return str(filepath), "File extensions must be lowercase."
 
