@@ -1,0 +1,31 @@
+---
+title: Guides
+tab_group_main:
+    weight: 30
+---
+
+## Building Blocks
+
+These introductory guides to the Linode API will get you up and running with this service.
+
+- [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token): You need an access token to make changes to your account with the API, you can get one in the Cloud Manager.
+
+- [Authenticate Requests](/docs/products/tools/linode-api/guides/authenticate-requests): Use your access token to authenticate requests.
+
+- [Get Configuration Parameters](/docs/products/tools/linode-api/guides/get-config-parameters): Get type, region, or image for Linodes.
+
+- [Build the Final Query](/docs/products/tools/linode-api/guides/build-final-query): Use the example below and replace the values with your own to build your query.
+
+For more on the basics on the Linode API see the full [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) guide.
+
+## Themes
+
+These additional guides will help you with targeted topics such as how to use the Linode API to manage specific Linode tasks.
+
+### Advanced Topics
+
+- [Configure NodeBalancers with the Linode API](/docs/platform/api/nodebalancers/)
+
+- [How to Create an OAuth App with the Linode Python API Library](/docs/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/)
+
+- [Manage Block Storage Volumes with the Linode API](/docs/platform/api/create-block-storage-volumes-with-the-linode-api/)
