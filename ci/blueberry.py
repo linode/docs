@@ -227,7 +227,7 @@ def readfile(filename, section=None):
     try:
         with open(filename, 'rb') as f:
             for oneDir in IGNORE_DIRS:
-                if re.match(oneDir, f):
+                if re.match(oneDir, filename):
                     print("skipping file: " + f"{filename}")
                     return
                 else:
