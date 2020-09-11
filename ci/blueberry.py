@@ -25,6 +25,7 @@ from pathlib import Path
 # Create a regex cookbook!
 
 
+IGNORE_DIRS = ['/docs/api/*']
 REPORT_KEYS = ['files', 'excluded_files', 'directories']
 BASE_URL = 'http://localhost:1313/docs/'
 OPTIONAL_PARAMS = ['args', 'kwargs']
@@ -204,7 +205,20 @@ def find_files(path='.', extension='md', recursive=False):
     if recursive:
        construct_path = '**/'
     glob_path = '{}[!_]*.{}'.format(construct_path, extension)
-    return list(p.glob(glob_path))
+
+    #return list(p.glob(glob_path))
+    allfiles = list(p.glob(glob_path))
+    filesToCheck = []
+
+    for f in allfiles:
+        for oneDir in IGNORE_DIRS:
+            print("eliminating directory " + oneDir)
+            if re.match(oneDir, f):
+                print("skipping file: " + f)
+                continue
+            else:
+                filesToCheck.append(f)
+    return(filesToCheck)
 
 
 def readfile(filename, section=None):
