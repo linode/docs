@@ -51,10 +51,9 @@ The Linode Cloud Manager provides a list of *predefined rules* that you can add 
     | **Configuration** | **Description** |
     | :---------------: | :---------------: |
     | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
-    | **Rules** | The Firewall rule(s) to add to this Firewall. Choose from a list of predefined Inbound and Outbound Firewall rules that support common networking use cases. You can select more than one Firewall rule. You can [edit your selected rules](#edit-cloud-firewall-rules) after adding the Firewall, if needed. *Required*|
     | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account will be visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
-1. Click on the **Create** button. This will create the Cloud Firewall and you will see it appear on the **Firewalls** listing page.
+1. Click on the **Create** button. This creates the Cloud Firewall and it appears on the **Firewalls** listing page. By default, the Firewall has two Inbound rules applied to it; one for DNS queries (port `53`) and a second for SSH connections (port `22`). You can [edit](#edit-cloud-firewall-rules) or [delete](#delete-cloud-firewall-rules) the rules after adding the Firewall, if needed.
 
     ![Click on the Create button to create your Firewall.](create-your-firewall.png)
 
