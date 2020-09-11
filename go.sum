@@ -6,10 +6,15 @@ github.com/bep/hugo-jslibs/turbolinks v0.1.2/go.mod h1:CQHa51PjmF5gavvhS3JKSE9yw
 github.com/bep/linodedocs v0.0.0-20200907181511-0147907b2c32 h1:zCV40Hxitmya8zWvcUDg7EAPX7llhNZBWgYL02Blhl8=
 github.com/bep/linodedocs v0.0.0-20200907181511-0147907b2c32/go.mod h1:S6J2bvTp/BMG2Qau6jZkapEQZOQZjIPSvNoKToJlHIg=
 github.com/bep/linodedocs v0.0.0-20200908101729-24d9c800d647/go.mod h1:S6J2bvTp/BMG2Qau6jZkapEQZOQZjIPSvNoKToJlHIg=
+github.com/bep/linodedocs v0.0.0-20200911084526-695f379cfe6b h1:onBwKESoM3RvJ/jhvtIckQTqZKG+OhrSiaFacRf8AxU=
+github.com/bep/linodedocs v0.0.0-20200911084526-695f379cfe6b/go.mod h1:4RgqXcW+15KBtJqqvGaM2SuZcnRJPmpWRbAOXEg6sN0=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1/go.mod h1:N4EUbbL7Cw4Yq+GHeK3MUSiOJQbzfuUFRyvBKvnVBR8=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.5.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
 github.com/instantpage/instant.page v5.1.0+incompatible/go.mod h1:GXVDktwI+K4T9o5mcK2NYDqPFxAUrB9U9goR9oG1SaI=
+github.com/linode/linode-api-docs v0.16.17 h1:2oWsvh2q3IYmaxy1XUBN64NH2FRhwdceD9gwlX5mlBA=
+github.com/linode/linode-api-docs v0.16.17/go.mod h1:mTkxejkk3Y6N4IfEQRGb1xC0EOPl12bWNWt3PzAUD7g=
+github.com/linode/linode-api-docs v4.73.0+incompatible h1:KT1fyjk4X9hqw4A1hv6wVHr3I1Ewihi5orjvonzHcfM=
 github.com/linode/linode-api-docs v4.73.0+incompatible/go.mod h1:mTkxejkk3Y6N4IfEQRGb1xC0EOPl12bWNWt3PzAUD7g=
 github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible/go.mod h1:Cl0Br9tUXkQvxumVNGTvyaa7dqpFC2kPMrsS0Ttc94U=
