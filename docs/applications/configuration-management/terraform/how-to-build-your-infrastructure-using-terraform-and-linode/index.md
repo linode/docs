@@ -72,7 +72,7 @@ The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://w
 
 ### Verify the Download
 
-1.  Import the HashiCorp Security GPG key (listed on the [HashiCorp Security](https://www.hashicorp.com/security.html) page under *Secure Communications*):
+1.  Import the HashiCorp Security GPG key (listed on the [HashiCorp Security](https://www.hashicorp.com/security) page under *Secure Communications*):
 
         gpg --recv-keys 51852D87348FFC4C
 

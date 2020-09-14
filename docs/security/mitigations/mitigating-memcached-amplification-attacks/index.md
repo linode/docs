@@ -32,7 +32,7 @@ Memcached should not be exposed to the internet. There are a few basic steps you
 
     1.  Bind memcached to a specific private IP address and port.
 
-    2.  Configure your Linode's firewall accordingly. If you need help setting up a firewall on your distribution, see [our firewall guides](/docs/security/firewalls/) for more information.
+    2.  Configure your Linode's firewall accordingly. If you need help setting up a firewall, see [our firewall guides](/docs/security/firewalls/) for more information.
 
 * If you do not require memcached to communicate over any network connection, disable UDP for memcached and ensure it is only listening on `localhost`.
 
