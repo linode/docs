@@ -46,7 +46,7 @@ If you are using Linode Cloud Firewall, then it's important to verify which Clou
 
 1.  The Firewalls Listing page displays a list of all the Cloud Firewalls currently active on your account.
 
-1.  Find the Linode you are troubleshooting under the **Linodes** column to determin which Cloud Firewall(s) is assigned to it.
+1.  Find the Linode you are troubleshooting under the **Linodes** column to determine which Cloud Firewall(s) is assigned to it.
 
 1.  Next, check the **Status** column to confirm that the Cloud Firewalls is **Enabled**.
 
