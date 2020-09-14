@@ -216,6 +216,7 @@ def find_files(path='.', extension='md', recursive=False):
         # x = temp_list.pop()
         # get the filename
         f = ntpath.basename(str(x))
+        print("checking file: " + f"{f}")
         # for each directory in the ignore directory list
         for oneDir in IGNORE_DIRS:
             # if the filename matches
