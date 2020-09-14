@@ -43,4 +43,3 @@ https://developers.linode.com/changelog/cloud-manager/
 ## Pricing
 
 Linode's Cloud Manager is provided for free to all customers.
-
