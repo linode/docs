@@ -30,9 +30,6 @@ If you are running Docker, by default Docker directly manipulates iptables. Any 
 
     This guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, you can use the relevant commands for the outlined tasks on various Linux distributions.
 
-
-1.  This guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, these commands may work on other Linux distributions that are supported by UFW.
-
 1.  Update your system.
 
     **Arch Linux**
