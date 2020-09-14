@@ -203,6 +203,7 @@ def check_hugo_version():
 
 def find_files(path='.', extension='md', recursive=False):
     # Returns list of absolute paths
+    print("in find files")
     p = Path(path).resolve()
     construct_path = ''
     if recursive:
@@ -210,15 +211,21 @@ def find_files(path='.', extension='md', recursive=False):
     glob_path = '{}[!_]*.{}'.format(construct_path, extension)
     temp_list = list(p.glob(glob_path))
     new_list = []
-    while temp_list:
-        x = temp_list.pop()
+    # for each path in the original list
+    for x in temp_list:
+        # x = temp_list.pop()
+        # get the filename
         f = ntpath.basename(str(x))
+        # for each directory in the ignore directory list
         for oneDir in IGNORE_DIRS:
+            # if the filename matches
             if re.match(oneDir, str(f)):
-                print("skip: " + str(f))
-                continue
+                # don't add this file
+                print("skip: " + f"{f}")
             else:
+                # add this file to the new list
                 new_list.append(x)
+    # return the new list
     return new_list
 
     #return list(p.glob(glob_path))
