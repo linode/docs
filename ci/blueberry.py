@@ -214,11 +214,10 @@ def find_files(path='.', extension='md', recursive=False):
     new_list = []
     # for each path in the original list
     for x in temp_list:
-        # x = temp_list.pop()
         # get the filename
         #f = ntpath.basename(str(x))
         f, file_extension = os.path.splitext(str(x))
-        print("checking file: " + f"{f}")
+        #print("checking file: " + f"{f}")
         # for each directory in the ignore directory list
         for oneDir in IGNORE_DIRS:
             # if the filename matches
