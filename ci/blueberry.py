@@ -140,7 +140,7 @@ def lowercase_filename(filepath):
     elif filename is None:
         return
     elif not filename.islower():
-        print("not lower file found: " + filename)
+        print("File not lower: " + f"{filename}")
         return str(filepath), "File name must be all lowercase."
 
 
@@ -210,18 +210,6 @@ def find_files(path='.', extension='md', recursive=False):
     glob_path = '{}[!_]*.{}'.format(construct_path, extension)
 
     return list(p.glob(glob_path))
-    #allfiles = list(p.glob(glob_path))
-    #filesToCheck = []
-
-    #for f in allfiles:
-        #for oneDir in IGNORE_DIRS:
-        #    print("eliminating directory " + oneDir)
-        #    if re.match(oneDir, f.filename):
-        #        print("skipping file: " + f.filename)
-        #        continue
-        #    else:
-        #        filesToCheck.append(f)
-    #return(filesToCheck)
 
 
 def readfile(filename, section=None):
@@ -330,7 +318,7 @@ class TestManager(object):
 
     def __call__(self, input_dir, recursive=False):
         self.input_dir = input_dir
-        self.files = file_files(input_dir, recursive=recursive)
+        self.files = find_files(input_dir, recursive=recursive)
 
     def set_reporter(self, reporter):
         self._reporter = reporter
