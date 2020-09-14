@@ -140,8 +140,8 @@ def lowercase_filename(filepath):
     elif filename is None:
         return
     elif not filename.islower():
-        print("File not lower: " + f"{filename}")
-        return str(filepath), "File name must be all lowercase."
+        print("File not lower: " + str(filename))
+        return str(filename), "File name must be all lowercase."
 
 
 @add_rule
@@ -208,8 +208,20 @@ def find_files(path='.', extension='md', recursive=False):
     if recursive:
        construct_path = '**/'
     glob_path = '{}[!_]*.{}'.format(construct_path, extension)
+    temp_list = list(p.glob(glob_path))
+    new_list = []
+    while temp_list:
+        x = temp_list.pop()
+        f = ntpath.basename(str(x))
+        for oneDir in IGNORE_DIRS:
+            if re.match(oneDir, str(f)):
+                print("skip: " + str(f))
+                continue
+            else:
+                new_list.append(x)
+    return new_list
 
-    return list(p.glob(glob_path))
+    #return list(p.glob(glob_path))
 
 
 def readfile(filename, section=None):
