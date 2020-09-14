@@ -8,6 +8,8 @@ rssLimit = 30
 summaryLength = 15
 timeout = "2m"
 
+disqusShortname="linode-1"
+
 [outputs]
 # The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
 home = ["HTML", "JSON", "RSS"]
