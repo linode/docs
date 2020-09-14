@@ -53,11 +53,11 @@ These introductory guides to the Linode Cloud Manager will get you up and runnin
 
 - [OAuth Apps](/docs/products/tools/cloud-manager/guides/cloud-oauth): An overview of OAuth 2 support in Cloud Manager.
 
-For more information on all the features in Cloud Manager, see the full guide, [An Overview of the Linode Cloud Manager](https://www.linode.com/docs/platform/manager/an-overview-of-the-linode-cloud-manager/).
+For more information on all the features in Cloud Manager, see the full guide, [An Overview of the Linode Cloud Manager](/docs/platform/manager/an-overview-of-the-linode-cloud-manager/).
 
-- [Understanding Common Cloud Manager Errors](https://www.linode.com/docs/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/)
+- [Understanding Common Cloud Manager Errors](/docs/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/)
 
-- [Searching in the Cloud Manager](https://www.linode.com/docs/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/)
+- [Searching in the Cloud Manager](/docs/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/)
 
 ## Themes
 
@@ -65,30 +65,30 @@ These additional guides will help you with targeted topics like how to manage yo
 
 ### Manage Your Account
 
-- [Understanding the Cloud Manager Events and Activity Feeds](https://www.linode.com/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
+- [Understanding the Cloud Manager Events and Activity Feeds](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
 
-- [Manage Billing in Cloud Manager](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+- [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
 
-- [Cancelling Your Account](https://www.linode.com/docs/quick-answers/linode-platform/how-to-cancel-your-account/)
+- [Cancelling Your Account](/docs/quick-answers/linode-platform/how-to-cancel-your-account/)
 
-- [Changing Your Email Address](https://www.linode.com/docs/quick-answers/linode-platform/how-to-change-your-email/)
+- [Changing Your Email Address](/docs/quick-answers/linode-platform/how-to-change-your-email/)
 
-- [Tags and Groups](https://www.linode.com/docs/quick-answers/linode-platform/tags-and-groups/)
+- [Tags and Groups](/docs/quick-answers/linode-platform/tags-and-groups/)
 
-- [Linode Cloud Manager Security Controls](https://www.linode.com/docs/security/authentication/two-factor-authentication/linode-manager-security-controls/)
+- [Linode Cloud Manager Security Controls](/docs/security/authentication/two-factor-authentication/linode-manager-security-controls/)
 
 ### Manage Your Linodes
 
-- [Reset the Root Password on your Linode](https://www.linode.com/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/)
+- [Reset the Root Password on your Linode](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/)
 
-- [Resize a Linode Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/)
+- [Resize a Linode Disk](/docs/quick-answers/linode-platform/resize-a-linode-disk/)
 
-- [Deploy an Image to a Linode](https://www.linode.com/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/)
+- [Deploy an Image to a Linode](/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/)
 
 ### Networking
 
-- [Find Your Linode’s IP Address](https://www.linode.com/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)
+- [Find Your Linode’s IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)
 
-- [Add CAA Records in the Linode Cloud Manager](https://www.linode.com/docs/quick-answers/linode-platform/add-caa-dns-records/)
+- [Add CAA Records in the Linode Cloud Manager](/docs/quick-answers/linode-platform/add-caa-dns-records/)
 
-- [Proxy Burp Suite Traffic Through a Linode](https://www.linode.com/docs/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/)
+- [Proxy Burp Suite Traffic Through a Linode](/docs/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/)
