@@ -126,7 +126,8 @@ def valid_alias(file_yaml, **kwargs):
 def lowercase_filename(filepath):
     """File name must be all lowercase."""
     # Handle Windows filepaths. See https://stackoverflow.com/q/8384737
-    filename = ntpath.basename(str(filepath))
+    #filename = ntpath.basename(str(filepath))
+    filename, file_extension = os.path.splitext(str(filepath))
 
     # Cartesian product of filenames and extension
     # e.g. README.txt, README.md, CHANGELOG.txt, CHANGELOG.md ...
@@ -215,7 +216,8 @@ def find_files(path='.', extension='md', recursive=False):
     for x in temp_list:
         # x = temp_list.pop()
         # get the filename
-        f = ntpath.basename(str(x))
+        #f = ntpath.basename(str(x))
+        f, file_extension = os.path.splitext(str(x))
         print("checking file: " + f"{f}")
         # for each directory in the ignore directory list
         for oneDir in IGNORE_DIRS:
