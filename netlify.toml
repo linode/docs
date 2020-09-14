@@ -59,7 +59,7 @@ X-Frame-Options = "DENY"
 X-XSS-Protection = "1; mode=block"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "no-referrer"
-Content-Security-Policy = "script-src 'self' https://*.trustarc.com 'unsafe-eval' 'unsafe-inline'"
+Content-Security-Policy = "script-src 'self' *.disqus.com *.googletagmanager.com *.trustarc.com 'unsafe-eval' 'unsafe-inline'"
 
 [[redirects]]
 from = "/docs/blog/*"
