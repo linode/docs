@@ -1,5 +1,0 @@
----
-title: Regions
-slug: regions
----
-

@@ -1,5 +1,0 @@
----
-title: Managed
-slug: managed
----
-
