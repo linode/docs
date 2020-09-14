@@ -129,6 +129,8 @@ If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and 
     sudo setsebool -P httpd_can_network_connect on
       {{< /note >}}
 
+{{< content "cloud-firewall-shortguide" >}}
+
 1. Verify that there are no syntax errors in your site's configuration file.
 
         sudo nginx -t

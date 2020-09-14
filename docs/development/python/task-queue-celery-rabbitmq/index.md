@@ -325,6 +325,8 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
             sudo firewall-cmd --reload
 
+{{< content "cloud-firewall-shortguide" >}}
+
 3.  Navigate to the directory with your Celery app and start Flower. 5555 is the default port, but this can be changed using the `--port` flag:
 
         cd /home/celery/downloaderApp
