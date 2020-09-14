@@ -1,0 +1,94 @@
+---
+title: Guides
+tab_group_main:
+    weight: 30
+---
+
+## Building Blocks
+
+These introductory guides to the Linode Cloud Manager will get you up and running with this service.
+
+### Linodes
+- [Linodes](/docs/products/tools/cloud-manager/guides/cloud-create-linode): The Linodes section of Cloud Manager allows you to create and manage your Linodes.
+
+- [Find Your Disks](/docs/products/tools/cloud-manager/guides/cloud-find-disks): You can find and manage your disks in the Disks/Configs tab in the Linode’s detail page.
+
+- [Reboot Your Linode](/docs/products/tools/cloud-manager/guides/cloud-reboot-linode): You can reboot your Linode from two places within Cloud Manager.
+
+- [Delete a Public IP Address](/docs/products/tools/cloud-manager/guides/cloud-delete-ip): You can delete a public IP address under the Networking tab in the Linode detail page.
+
+### Services
+
+- [Volumes](/docs/products/tools/cloud-manager/guides/cloud-block-storage): This section gives you access to the Linode Block Storage service.
+
+- [Object Storage](/docs/products/tools/cloud-manager/guides/cloud-object-storage): This section gives you access to the Linode’s S3 compatible Object Storage service.
+
+- [NodeBalancers](/docs/products/tools/cloud-manager/guides/cloud-nodebalancers): Here you can create and manage load balancers for your applications making them highly available for your users.
+
+- [Domains](/docs/products/tools/cloud-manager/guides/cloud-domains): The DNS Manager allows you to control and manage your domains.
+
+- [Longview](/docs/products/tools/cloud-manager/guides/cloud-longview): This section gives you access to Linode’s Longview service where you can track metrics for CPU, memory, and network bandwidth and more.
+
+- [Marketplace](/docs/products/tools/cloud-manager/guides/cloud-marketplace): This section gives you access to the One-Click Application Marketplace where you can easily deploy and configure software for your Linodes.
+
+- [Kubernetes](/docs/products/tools/cloud-manager/guides/cloud-kubernetes): This section gives you access to Linode’s managed Kubernetes service, the Linode Kubernetes Engine (LKE).
+
+- [StackScripts](/docs/products/tools/cloud-manager/guides/cloud-stackscripts): This section takes you to the area where you can manage your StackScripts.
+
+- [Images](/docs/products/tools/cloud-manager/guides/cloud-images): The Images section of Cloud Manager gives you access to the Linode Images service where you can take snapshots of your disks and deploy them to any Linode on your account.
+
+### Account Management
+
+- [Management and Billing](/docs/products/tools/cloud-manager/guides/cloud-billing): Under Account you will be able to manage your account billing information, users, and other account-wide settings.
+
+- [Credits](/docs/products/tools/cloud-manager/guides/cloud-credits): Find credit remaining in the Account section.
+
+- [Invoices](/docs/products/tools/cloud-manager/guides/cloud-invoices): In the Account section you can print an invoice.
+
+- [Manage Email Notifications](/docs/products/tools/cloud-manager/guides/cloud-email-notifications): Email event notifications alert you when new events such as booting, shutting down, or updates to a Linode occur on your account.
+
+### API Access
+
+- [API Keys and Tokens](/docs/products/tools/cloud-manager/guides/cloud-api-keys): You can generate and manage your API Keys and Tokens from the Cloud Manager.
+
+- [OAuth Apps](/docs/products/tools/cloud-manager/guides/cloud-oauth): An overview of OAuth 2 support in Cloud Manager.
+
+For more information on all the features in Cloud Manager, see the full guide, [An Overview of the Linode Cloud Manager](https://www.linode.com/docs/platform/manager/an-overview-of-the-linode-cloud-manager/).
+
+- [Understanding Common Cloud Manager Errors](https://www.linode.com/docs/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/)
+
+- [Searching in the Cloud Manager](https://www.linode.com/docs/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/)
+
+## Themes
+
+These additional guides will help you with targeted topics like how to manage your account, Linodes, and networking through the Cloud Manager.
+
+### Manage Your Account
+
+- [Understanding the Cloud Manager Events and Activity Feeds](https://www.linode.com/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
+
+- [Manage Billing in Cloud Manager](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+
+- [Cancelling Your Account](https://www.linode.com/docs/quick-answers/linode-platform/how-to-cancel-your-account/)
+
+- [Changing Your Email Address](https://www.linode.com/docs/quick-answers/linode-platform/how-to-change-your-email/)
+
+- [Tags and Groups](https://www.linode.com/docs/quick-answers/linode-platform/tags-and-groups/)
+
+- [Linode Cloud Manager Security Controls](https://www.linode.com/docs/security/authentication/two-factor-authentication/linode-manager-security-controls/)
+
+### Manage Your Linodes
+
+- [Reset the Root Password on your Linode](https://www.linode.com/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/)
+
+- [Resize a Linode Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/)
+
+- [Deploy an Image to a Linode](https://www.linode.com/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/)
+
+### Networking
+
+- [Find Your Linode’s IP Address](https://www.linode.com/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)
+
+- [Add CAA Records in the Linode Cloud Manager](https://www.linode.com/docs/quick-answers/linode-platform/add-caa-dns-records/)
+
+- [Proxy Burp Suite Traffic Through a Linode](https://www.linode.com/docs/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/)
