@@ -246,6 +246,7 @@
           <h6>Networking</h6>
           <nav class="o-menu">
             <ul id="menu-submenu-products-networking" class="o-menu__list">
+              <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/products/firewall/"><span class="o-menu__title">Cloud Firewall</span></a></li>
               <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/products/ddos/"><span class="o-menu__title">DDoS Protection</span></a></li>
               <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/products/nodebalancers/"><span class="o-menu__title">NodeBalancers</span></a></li>
               <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/products/dns-manager/"><span class="o-menu__title">DNS Manager</span></a></li>
@@ -354,7 +355,8 @@
               <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/video-channel/"><span class="o-menu__title">Linode Video Channel</span></a></li>
               <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/newsletter/"><span class="o-menu__title">Newsletter</span></a></li>
               <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/company/press/"><span class="o-menu__title">Press Center</span></a></li>
-              <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/referral-program/"><span class="o-menu__title">Referral Program</span></a></li>
+              <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/lp/affiliate-program/"><span class="o-menu__title">Affiliate Program</span></a></li>
+              <li class="o-menu__item"><a class="o-menu__link" href="https://www.linode.com/referral-program/"><span class="o-menu__title">Customer Referral Program</span></a></li>
               <li class="o-menu__item"><a class="o-menu__link" href="https://linodestore.com/products"><span class="o-menu__title">Swag Store</span></a></li>
             </ul>
           </nav>
@@ -486,8 +488,11 @@
 
   if (!$html.classList.contains('fl-builder-edit')) {
     bindElements();
-    bindEvents();
-    setActiveMenuItem();
+
+    if ($header && $main_menu && $sub_menus) {
+      bindEvents();
+      setActiveMenuItem();
+    }
   }
 
 }());
