@@ -35,5 +35,3 @@ tab_group_main:
 1. Select a specific StackScript from the menu that appears, and fill in all required fields.
 
 1. Click on the `Create` button to complete the creation of your new Linode.
-
-
