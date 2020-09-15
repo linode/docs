@@ -40,7 +40,7 @@ The following configuration options will create a secure [Limited User](/docs/se
 |--------------|------------|
 | **Limited User Name** | The [username](/docs/security/basics/securing-your-server/#add-a-limited-user-account) for SSH access to your Linode. *Required*. <br><br> If the username `root` is specified, a limited user will not be created and extra security features will not be configured. In this case, you can access your Plex Server and complete this guide as `root` using your [Linode Options](#linode-options) credentials. |
 | **Limited User Password** | The user password for SSH access to your Linode. *Required*. |
-| **Limited User SSH Key** | The user public SSH key for SSH access to your Linode. *Optional*. <br><br> You can find instructions on generating an SSH key pair in our guide on [Using Publicy Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/). For an additional layer of security, you can require SSH key access by [disabling password authentication](/docs/security/basics/securing-your-server/#ssh-daemon-options). |
+| **Limited User SSH Key** | The user public SSH key for SSH access to your Linode. *Optional*. <br><br> You can find instructions on generating an SSH key pair in our guide on [Using Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/). For an additional layer of security, you can require SSH key access by [disabling password authentication](/docs/security/basics/securing-your-server/#ssh-daemon-options). |
 
 ### Linode Options
 
