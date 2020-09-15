@@ -1,8 +1,7 @@
 {{ $p := .page }}
 {{ $wrap := .wrap }}
-{{ $pageJSON := dict "href" $p.RelPermalink "linkTitle" $p.LinkTitle "title" $p.Title "isStatic" (or $p.IsPage (eq $p.Section "api") (eq $p.Section "products") ) "sectionsEntries" $p.SectionsEntries | jsonify }}
 <nav class="breadcrumbs text-sm w-full{{if not $wrap }} overflow-scroll{{ end }}" id="breadcrumbs-component" aria-label="breadcrumbs" x-data="lnBreadcrumbs.New(lnSearchConfig)"
-    x-init="init({{ $pageJSON }})" @search:results-blank.document="receiveData($event.detail);">
+    x-init="init(lnPageInfo)" @search:results-blank.document="receiveData($event.detail);">
   <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}}w-full -mt-2" x-show.transition.opacity="loaded">
     <li class="flex items-center mt-2">
       <a class="max-w-32 truncate" href="{{ site.Home.RelPermalink }}">
