@@ -15,6 +15,9 @@ HUGO_VERSION = "0.75.0"
 [context.deploy-preview]
 command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
+[context.deploy-preview.environment]
+HUGO_VERSION = "0.75.0"
+
 [[plugins]]
 package = "netlify-plugin-hugo-cache-resources"
 
