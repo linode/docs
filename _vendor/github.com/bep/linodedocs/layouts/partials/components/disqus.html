@@ -1,10 +1,6 @@
-<a href="/docs/development/nodejs/how-to-install-nodejs-and-nginx-on-centos-8/">
-  Doc1
-</a>
-<div class="mt-10" x-data="lnOnIntersection.New()" x-init="() => init();">
+<div class="pt-10" x-data="lnOnIntersection.New()" x-init="() => init();">
   <template x-if="visible">
     <div>
-      <script src="//{{ site.DisqusShortname }}.disqus.com/embed.js"></script>
       <div x-data="lnDisqus.New('{{ .Site.DisqusShortname }}', lnPageInfo)" x-init="() => init()">
         <div id="disqus_thread"></div>
         <noscript>

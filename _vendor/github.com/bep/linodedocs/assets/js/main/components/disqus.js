@@ -19,6 +19,26 @@ var lnDisqus = {};
 		});
 	};
 
+	const loadScript = function(shortName) {
+		const scriptID = 'disqus-embed';
+		var script = document.getElementById(scriptID);
+		if (script) {
+			script.setAttribute('data-timestamp', +new Date());
+			return false;
+		}
+
+		script = document.createElement('script');
+		script.src = `//${shortName}.disqus.com/embed.js`;
+		script.setAttribute('id', scriptID);
+		{
+			script.setAttribute('data-timestamp', +new Date());
+		}
+		script.async = true;
+		(document.head || document.body).appendChild(script);
+
+		return true;
+	};
+
 	ctx.New = function(disqusShortname, page) {
 		window.disqus_shortname = disqusShortname;
 		window.disqus_identifier = page.permalink;
@@ -29,11 +49,10 @@ var lnDisqus = {};
 
 		return {
 			page: page,
-			loaded: false,
 			init: function() {
-				debug('init', this.page);
-				this.loaded = true;
-				if (window.DISQUS) {
+				if (!loadScript(disqusShortname)) {
+					// The scrip tag already exist.
+					// This is a navigation via Turbolinks so just do a DISQUS.reset.
 					reset(this.page);
 				}
 			}
