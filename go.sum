@@ -1,5 +1,6 @@
 github.com/alpinejs/alpine v2.5.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/alpinejs/alpine v2.6.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
+github.com/alpinejs/alpine v2.7.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/bep/hugo-jslibs/alpinejs v0.5.14/go.mod h1:AKan86yhrI16Cp+ga/+UuRkBgaO25SpubHWFgMTzh3o=
 github.com/bep/hugo-jslibs/instantpage v0.0.0-20200822093604-7b6e0aaba587/go.mod h1:Ezl32tElGtVVOdR7j1MZQHJOTbKL/iXO2Qtj4NOGkBs=
 github.com/bep/hugo-jslibs/turbolinks v0.1.2/go.mod h1:CQHa51PjmF5gavvhS3JKSE9ywo8h7QgOj3D88ry6qu0=
@@ -12,7 +13,10 @@ github.com/bep/linodedocs v0.0.0-20200914110745-760afd3e2646 h1:9P6HVCD9ekgaAjdA
 github.com/bep/linodedocs v0.0.0-20200914110745-760afd3e2646/go.mod h1:4RgqXcW+15KBtJqqvGaM2SuZcnRJPmpWRbAOXEg6sN0=
 github.com/bep/linodedocs v0.0.0-20200915074751-a06e0aad0cc5 h1:Za1rngQmymGkAoHyRX8v8w+Xxmcqwt1BXm5jU+SFT8g=
 github.com/bep/linodedocs v0.0.0-20200915074751-a06e0aad0cc5/go.mod h1:4RgqXcW+15KBtJqqvGaM2SuZcnRJPmpWRbAOXEg6sN0=
+github.com/bep/linodedocs v0.0.0-20200915104855-f00dc48df479 h1:dCOvEJMuyPxl/R43yenHBUXOjJrWZAXgap9cmnWiofo=
+github.com/bep/linodedocs v0.0.0-20200915104855-f00dc48df479/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
+github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1/go.mod h1:N4EUbbL7Cw4Yq+GHeK3MUSiOJQbzfuUFRyvBKvnVBR8=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.5.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
 github.com/instantpage/instant.page v5.1.0+incompatible/go.mod h1:GXVDktwI+K4T9o5mcK2NYDqPFxAUrB9U9goR9oG1SaI=
