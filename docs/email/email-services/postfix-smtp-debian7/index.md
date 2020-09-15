@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2014-05-30
 title: Configure Postfix to Send Mail Using an External SMTP Server
-aliases: ['email/postfix/postfix-smtp-debian7/']
+aliases: ['/email/postfix/postfix-smtp-debian7/']
 ---
 
 {{< note >}}

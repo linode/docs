@@ -5,7 +5,7 @@ author:
 description: 'Best practices to apply when deploying HTTPS websites with NGINX.'
 keywords: ["ssl", "tls", "nginx", "https", "certificate", "hsts", "ocsp", "http2"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/nginx/nginx-ssl-and-tls-deployment-best-practices/','web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/']
+aliases: ['/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/','/websites/nginx/nginx-ssl-and-tls-deployment-best-practices/']
 published: 2018-02-09
 modified: 2018-02-09
 modified_by:

@@ -15,7 +15,7 @@ h1_title: 'A Tutorial for Learning Adhoc Commands in Ansible'
 contributor:
   name: Avi
   link: https://github.com/avidunken/
-aliases: ['applications/configuration-management/ansible-adhoc-commands/']
+aliases: ['/applications/configuration-management/ansible-adhoc-commands/']
 ---
 
 In this tutorial, you'll learn about several Ansible adhoc commands which are used by system and devops engineers.

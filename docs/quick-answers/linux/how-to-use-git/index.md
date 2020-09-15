@@ -4,7 +4,7 @@ author:
   email: aguarisma@linode.com
 description: 'This Quick Answer guide explains how to use Git to create a repository, stage a commit, and then push that commit.'
 keywords: ["Linux", " how to use Git", " github", " create git repo"]
-aliases: ['quick-answers/how-to-use-git/']
+aliases: ['/quick-answers/how-to-use-git/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-07-17
 modified_by:

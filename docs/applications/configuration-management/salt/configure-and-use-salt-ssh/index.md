@@ -13,7 +13,7 @@ image: ConfigureandUseSaltSSHtoManageyourLinodes.png
 title: 'Configure and Use Salt SSH to Manage Your Linodes'
 contributor:
   name: Sergey Bulavintsev
-aliases: ['applications/configuration-management/configure-and-use-salt-ssh/']
+aliases: ['/applications/configuration-management/configure-and-use-salt-ssh/']
 ---
 
 ## Introduction to Salt SSH

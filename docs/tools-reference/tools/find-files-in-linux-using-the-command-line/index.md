@@ -5,7 +5,7 @@ author:
 description: Use the Find command from the Linux command line to locate files in a file system
 keywords: ["find command", "linux", "command line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/find/','tools-reference/tools/filter-file-systems-with-the-find-command/']
+aliases: ['/tools-reference/tools/filter-file-systems-with-the-find-command/','/linux-tools/common-commands/find/']
 modified: 2016-09-15
 modified_by:
   name: Edward Angert

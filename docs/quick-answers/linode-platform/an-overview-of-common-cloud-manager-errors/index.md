@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22
 modified_by:
   name: Linode
-aliases: ['quick-answers/linode-platform/understanding-cloud-manager-errors/']
+aliases: ['/quick-answers/linode-platform/understanding-cloud-manager-errors/']
 image: UnderstandingCommonCloudManagerErrors.png
 title: "An Overview of Common Cloud Manager Errors"
 h1_title: "Understanding Common Cloud Manager Errors"

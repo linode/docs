@@ -5,7 +5,7 @@ author:
 description: 'A step-by-step guide to updating virtual host settings from Apache 2.2 to Apache 2.4'
 keywords: ["Apache 2.2", " Apache 2.4", " Ubuntu", " Debian", " CentOS", " Fedora", " Arch", " Gentoo", " update", " upgrade"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/2-2-2-4-upgrade/']
+aliases: ['/web-servers/apache/2-2-2-4-upgrade/']
 modified: 2014-03-12
 modified_by:
   name: Linode

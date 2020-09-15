@@ -5,7 +5,7 @@ author:
 description: 'Set up, configure, and customize a Minecraft server using Spigot'
 keywords: ["minecraft", "spigot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-with-spigot-ubuntu/']
+aliases: ['/web-applications/game-servers/minecraft-ubuntu12-04/','/applications/game-servers/minecraft-with-spigot-ubuntu/']
 published: 2015-04-21
 modified: 2019-02-01
 modified_by:

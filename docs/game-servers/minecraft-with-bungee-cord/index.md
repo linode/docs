@@ -18,7 +18,7 @@ title: 'How to Set Up BungeeCord to Link Spigot Servers'
 contributor:
     name: Thomas Wemyss
     link: https://github.com/twemyss
-aliases: ['applications/game-servers/minecraft-with-bungee-cord/']
+aliases: ['/applications/game-servers/minecraft-with-bungee-cord/']
 dedicated_cpu_link: true
 ---
 

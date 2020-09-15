@@ -10,7 +10,7 @@ published: 2018-02-28
 modified_by:
   name: Linode
 title: 'Manage a Docker Cluster with Kubernetes'
-aliases: ['applications/containers/kubernetes/manage-a-docker-cluster-with-kubernetes/','applications/containers/manage-a-docker-cluster-with-kubernetes/']
+aliases: ['/applications/containers/manage-a-docker-cluster-with-kubernetes/','/applications/containers/kubernetes/manage-a-docker-cluster-with-kubernetes/']
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja

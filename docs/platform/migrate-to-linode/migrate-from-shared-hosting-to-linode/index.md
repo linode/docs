@@ -5,7 +5,7 @@ author:
 description: 'Migrate your website from a shared host to a Linode cloud server running a LAMP stack.'
 keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['migrate-from-shared/','migrate-to-linode/migrate-from-shared-hosting/','migrate-to-linode/migrate-from-shared-hosting-to-linode/']
+aliases: ['/migrate-to-linode/migrate-from-shared-hosting-to-linode/','/migrate-to-linode/migrate-from-shared-hosting/','/migrate-from-shared/']
 modified: 2019-03-06
 modified_by:
   name: Linode

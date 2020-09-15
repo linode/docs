@@ -6,7 +6,7 @@ author:
 description: 'Use OpenVPN to securely connect separate networks on a CentOS 6 Linode.'
 keywords: ["openvpn", "networking", "vpn", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/openvpn/centos-6/']
+aliases: ['/networking/openvpn/centos-6/']
 modified: 2013-12-23
 modified_by:
   name: Linode

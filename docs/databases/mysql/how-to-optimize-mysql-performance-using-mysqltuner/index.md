@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
-aliases: ['databases/mysql/tuning-your-mysql-database/','databases/mysql/mysql-performance-tuning-tutorial/']
+aliases: ['/databases/mysql/mysql-performance-tuning-tutorial/','/databases/mysql/tuning-your-mysql-database/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
 modified_by:

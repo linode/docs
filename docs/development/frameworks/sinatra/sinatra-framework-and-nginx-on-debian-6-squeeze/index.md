@@ -6,7 +6,7 @@ author:
 description: 'Deploy simple web applications with the Sinatra web development framework.'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/sinatra/debian-6-squeeze/','development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','websites/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/']
+aliases: ['/frameworks/sinatra/debian-6-squeeze/','/websites/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/']
 modified: 2013-09-27
 modified_by:
   name: Linode

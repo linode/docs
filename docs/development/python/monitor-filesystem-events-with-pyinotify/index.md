@@ -19,7 +19,7 @@ external_resources:
 - '[Inotify manpage](http://www.kernel.org/doc/man-pages/online/pages/man7/inotify.7.html)'
 audiences: ["intermediate"]
 languages: ["python"]
-aliases: ['development/monitor-filesystem-events-with-pyinotify/']
+aliases: ['/development/monitor-filesystem-events-with-pyinotify/']
 ---
 
 ![banner_image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg)

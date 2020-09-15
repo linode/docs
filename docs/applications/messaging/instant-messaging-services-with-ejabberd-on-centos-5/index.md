@@ -6,7 +6,7 @@ author:
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on CentOS 5.'
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/ejabberd/centos-5/']
+aliases: ['/communications/xmpp/ejabberd/centos-5/']
 modified: 2011-08-22
 modified_by:
   name: Linode

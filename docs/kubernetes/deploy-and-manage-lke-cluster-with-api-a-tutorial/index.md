@@ -14,7 +14,7 @@ title: "Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode
 h1_title: "A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine and the Linode API"
 contributor:
   name: Linode
-aliases: ['applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
+aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 ---
 
 ## What is the Linode Kubernetes Engine (LKE)?

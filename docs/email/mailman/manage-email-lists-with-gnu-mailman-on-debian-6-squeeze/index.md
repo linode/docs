@@ -6,7 +6,7 @@ author:
 description: 'Use the GNU Mailman software to manage email listservs.'
 keywords: ["mailman", "listserv", "email", "postfix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/mailman/debian-6-squeeze/']
+aliases: ['/email/mailman/debian-6-squeeze/']
 modified: 2011-05-23
 modified_by:
   name: Linode

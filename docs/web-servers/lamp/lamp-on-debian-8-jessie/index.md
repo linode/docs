@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2015-06-29
 title: 'LAMP on Debian 8 (Jessie)'
-aliases: ['websites/lamp/lamp-server-debian-8/','websites/lamp/lamp-on-debian-8-jessie/']
+aliases: ['/websites/lamp/lamp-server-debian-8/','/websites/lamp/lamp-on-debian-8-jessie/']
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

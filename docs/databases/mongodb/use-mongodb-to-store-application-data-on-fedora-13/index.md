@@ -6,7 +6,7 @@ author:
 description: 'Install MongoDB for use in application development on Fedora 13.'
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mongodb/fedora-13/']
+aliases: ['/databases/mongodb/fedora-13/']
 modified: 2011-04-29
 modified_by:
   name: Linode

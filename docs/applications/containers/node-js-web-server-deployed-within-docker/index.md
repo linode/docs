@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2015-03-23
 title: 'Node.js Web Server Deployed within Docker'
-aliases: ['applications/containers/nodejs-node-js-web-server-docker-container/']
+aliases: ['/applications/containers/nodejs-node-js-web-server-docker-container/']
 external_resources:
 - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
 - '[Docker Docs](http://docs.docker.com/)'

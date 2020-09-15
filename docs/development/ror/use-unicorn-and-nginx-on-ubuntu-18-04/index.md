@@ -5,7 +5,7 @@ author:
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 18.04 '
 keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 18.04", " nginx", "reverse proxy", "ubuntu 18.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/ror/use-unicorn-and-nginx-on-ubuntu-18-04/']
+aliases: ['/websites/ror/use-unicorn-and-nginx-on-ubuntu-18-04/']
 published: 2020-01-03
 modified: 2020-01-03
 modified_by:

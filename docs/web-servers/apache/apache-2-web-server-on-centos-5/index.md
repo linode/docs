@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on CentOS 5.'
 keywords: ["Apache", "web sever", "CentOS 5"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/centos-5/','websites/apache/apache-2-web-server-on-centos-5/']
+aliases: ['/web-servers/apache/installation/centos-5/','/websites/apache/apache-2-web-server-on-centos-5/']
 modified: 2013-11-18
 modified_by:
   name: Linode

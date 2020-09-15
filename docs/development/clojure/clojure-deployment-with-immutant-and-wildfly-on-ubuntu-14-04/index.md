@@ -5,7 +5,7 @@ author:
 description: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
 keywords: ["clojure", "luminus", "leiningen", "immutant", "jvm", "wildfly", "jboss", "oracle jdk 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/','development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/']
+aliases: ['/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/','/applications/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/']
 modified: 2015-12-21
 modified_by:
   name: Sergey Pariev

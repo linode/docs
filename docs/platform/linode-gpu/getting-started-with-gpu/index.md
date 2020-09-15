@@ -6,7 +6,6 @@ description: This guide will help you get your Linode GPU Instance up and runnin
 og_description: This guide will help you get your Linode GPU Instance up and running on a number of popular distributions. To prepare your Linode, you will need to install NVIDIA's proprietary drivers using NVIDIA's CUDA Toolkit.
 keywords: ["GPU", "AI", "Machine Learning", "Video Encoding", "Linode GPU"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-aliases: []
 published: 2019-06-05
 title: A Beginner's Guide to Linode GPU Instances
 h1_title: Getting Started with Linode GPU Instances

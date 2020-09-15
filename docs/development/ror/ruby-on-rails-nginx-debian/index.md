@@ -6,7 +6,7 @@ description: "This guide shows how to host a Ruby on Rails application on Debian
 og_description: "This guide shows how to host a Ruby on Rails application on Debian using the NGINX web server and the Passenger app server."
 keywords: ["ruby on rails", "ruby on nginx", "rails apps", "debian", "debian 9", " ruby", " nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/ror/ruby-on-rails-nginx-debian-8/','development/ror/ruby-on-rails-nginx-debian-8/']
+aliases: ['/websites/ror/ruby-on-rails-nginx-debian-8/','/development/ror/ruby-on-rails-nginx-debian-8/']
 modified: 2017-12-28
 modified_by:
   name: Jared Kobos

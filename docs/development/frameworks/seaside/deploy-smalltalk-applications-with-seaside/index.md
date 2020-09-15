@@ -5,7 +5,7 @@ author:
 description: An introductory guide to deploying applications with the Seaside Framework
 keywords: ["seaside", "smalltalk", "pharo", "squeak", "apache", "framework"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/deploy-smalltalk-applications-with-seaside/','websites/frameworks/deploy-smalltalk-applications-with-seaside/','frameworks/seaside/']
+aliases: ['/frameworks/seaside/','/development/frameworks/deploy-smalltalk-applications-with-seaside/','/websites/frameworks/deploy-smalltalk-applications-with-seaside/']
 modified: 2013-09-27
 modified_by:
   name: Linode

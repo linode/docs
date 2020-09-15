@@ -6,7 +6,7 @@ author:
 description: 'Deploy simple web applications with the Sinatra web development framework.'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/frameworks/sinatra-framework-and-nginx-on-fedora-14/','frameworks/sinatra/fedora-14/','development/frameworks/sinatra-framework-and-nginx-on-fedora-14/']
+aliases: ['/frameworks/sinatra/fedora-14/','/development/frameworks/sinatra-framework-and-nginx-on-fedora-14/','/websites/frameworks/sinatra-framework-and-nginx-on-fedora-14/']
 modified: 2013-09-26
 modified_by:
   name: Linode

@@ -6,7 +6,7 @@ author:
 description: 'This guide shows how to manage source code with Subversion, an open source version control system.'
 keywords: ["svn", "version control", "source control management", "subversion"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/version-control/svn/','applications/development/manage-source-code-versions-with-subversion/']
+aliases: ['/linux-tools/version-control/svn/','/applications/development/manage-source-code-versions-with-subversion/']
 modified: 2018-01-01
 modified_by:
   name: Linode

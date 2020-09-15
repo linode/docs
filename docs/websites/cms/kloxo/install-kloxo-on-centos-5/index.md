@@ -5,7 +5,7 @@ author:
 description: 'Manage your Linode with the Kloxo control panel on CentOS 5.'
 keywords: ["kloxo", "control panel", "cpanel", "plesk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/control-panels/kloxo/installation/','websites/cms/install-kloxo-on-centos-5/']
+aliases: ['/web-applications/control-panels/kloxo/installation/','/websites/cms/install-kloxo-on-centos-5/']
 modified: 2013-10-03
 modified_by:
   name: Linode

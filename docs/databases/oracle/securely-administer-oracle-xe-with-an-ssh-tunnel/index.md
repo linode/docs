@@ -5,7 +5,7 @@ author:
 description: 'Accessing Oracle databases remotely using an SSH tunnel.'
 keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/oracle/ssh-tunnel/']
+aliases: ['/databases/oracle/ssh-tunnel/']
 modified: 2011-05-17
 modified_by:
   name: Linode

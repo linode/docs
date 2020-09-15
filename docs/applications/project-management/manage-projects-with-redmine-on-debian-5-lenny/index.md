@@ -6,7 +6,7 @@ author:
 description: 'Installing and configuring Redmine, an open source project management system on a Debian 5 (Lenny) Linode running nginx.'
 keywords: ["redmine", "redmine debian", "redmine linux", "project management software", "redmine postgresql", "redmine linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/project-management/redmine/debian-5-lenny/']
+aliases: ['/web-applications/project-management/redmine/debian-5-lenny/']
 modified: 2011-05-17
 modified_by:
   name: Linode

@@ -5,7 +5,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 10.10 (Maverick).'
 keywords: ["nginx", "nginx ubuntu 10.10", "nginx fastcgi", "nginx php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/php-fastcgi/ubuntu-10-10-maverick/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-10-10-maverick/']
+aliases: ['/web-servers/nginx/php-fastcgi/ubuntu-10-10-maverick/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

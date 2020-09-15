@@ -5,7 +5,7 @@ author:
 description: 'Mango publishes markdown documents from plain text files into a dynamic website.'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/cms-guides/mango/debian-6-squeeze/','websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/']
+aliases: ['/web-applications/cms-guides/mango/debian-6-squeeze/','/websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/']
 modified: 2013-10-02
 modified_by:
   name: Linode

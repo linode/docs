@@ -6,7 +6,7 @@ description: 'This Linode tutorial guides you through deploying ntopng, a powerf
 keywords: ["ntopng", "network monitor", "diagnostics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-05-10
-aliases: ['networking/diagnostics/deploy-ntopng-on-debian-8/']
+aliases: ['/networking/diagnostics/deploy-ntopng-on-debian-8/']
 modified: 2018-04-16
 modified_by:
   name: Linode

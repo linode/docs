@@ -5,7 +5,7 @@ author:
 description: Learn how to use Linux commands killall and kill to manage and kill processes on Linux distributions in this simple tutorial.
 keywords: ["kill", "killall", "linux", "common linux commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/killall-kill/','tools-reference/tools/manage-processes-with-killall-and-kill/']
+aliases: ['/tools-reference/tools/manage-processes-with-killall-and-kill/','/linux-tools/common-commands/killall-kill/']
 modified: 2018-02-21
 modified_by:
   name: Linode

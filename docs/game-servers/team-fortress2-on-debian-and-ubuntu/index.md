@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2015-03-12
 title: 'Team Fortress 2 on Debian and Ubuntu'
-aliases: ['applications/game-servers/team-fortress2-on-debian-and-ubuntu/']
+aliases: ['/applications/game-servers/team-fortress2-on-debian-and-ubuntu/']
 dedicated_cpu_link: true
 ---
 

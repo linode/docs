@@ -5,7 +5,7 @@ author:
 description: 'Use the FlatPress blogging tool to manage your blog and manage web content.'
 keywords: ["flatpress", "cms", "php", "content management", "content management systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/manage-web-content-with-flatpress/','web-applications/cms-guides/flatpress/']
+aliases: ['/web-applications/cms-guides/flatpress/','/websites/cms/manage-web-content-with-flatpress/']
 modified: 2013-10-02
 modified_by:
   name: Linode

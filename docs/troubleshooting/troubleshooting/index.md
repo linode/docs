@@ -5,7 +5,7 @@ author:
 description: An overview of different troubleshooting topics.
 keywords: ['troubleshooting']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['quick-start-troubleshooting/']
+aliases: ['/quick-start-troubleshooting/']
 modified: 2019-02-01
 modified_by:
   name: Linode

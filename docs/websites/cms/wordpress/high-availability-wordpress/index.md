@@ -10,7 +10,7 @@ modified_by:
   name: James Stewart
 published: 2015-01-09
 title: High Availability WordPress Hosting
-aliases: ['websites/cms/high-availability-wordpress/']
+aliases: ['/websites/cms/high-availability-wordpress/']
 ---
 
 This guide configures a high availability WordPress site with a two-Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer front-end.

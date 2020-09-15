@@ -13,7 +13,7 @@ title: Getting Started with Puppet - Basic Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppetlabs.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
-aliases: ['applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
+aliases: ['/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
 ---
 
 [Puppet](https://puppetlabs.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.

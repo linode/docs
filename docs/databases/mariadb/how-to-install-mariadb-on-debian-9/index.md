@@ -6,7 +6,7 @@ description: 'This guide shows how to install and configure the MariaDB server o
 og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
 keywords: ["mariadb", "Debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mariadb/mariadb-setup-debian/']
+aliases: ['/databases/mariadb/mariadb-setup-debian/']
 modified: 2020-01-31
 contributor:
     name: Ryan Syracuse

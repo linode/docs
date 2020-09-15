@@ -6,7 +6,7 @@ author:
 description: 'Use Confluence on Ubuntu 10.04 (Lucid) to power a full-featured wiki system.'
 keywords: ["confluence ubuntu 10.04", "confluence", "confluence wiki", "confluence linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/confluence/ubuntu-10-04-lucid/']
+aliases: ['/web-applications/wikis/confluence/ubuntu-10-04-lucid/']
 modified: 2011-06-07
 modified_by:
   name: Linode

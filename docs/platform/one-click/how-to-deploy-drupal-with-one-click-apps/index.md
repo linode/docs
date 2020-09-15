@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Drupal with One-Click Apps"
 h1_title: "Deploying Drupal with One-Click Apps"
-aliases: ['platform/one-click/deploying-drupal-with-one-click-apps/']
+aliases: ['/platform/one-click/deploying-drupal-with-one-click-apps/']
 contributor:
   name: Linode
 external_resources:

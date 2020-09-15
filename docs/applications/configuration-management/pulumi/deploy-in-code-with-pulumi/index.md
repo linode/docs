@@ -13,7 +13,7 @@ external_resources:
 - '[Pulumi Documentation](https://pulumi.io/reference/)'
 - '[Pulumi API reference](https://pulumi.io/reference/pkg/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
-aliases: ['applications/configuration-management/deploy-in-code-with-pulumi/']
+aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/']
 ---
 
 ## What is Pulumi?

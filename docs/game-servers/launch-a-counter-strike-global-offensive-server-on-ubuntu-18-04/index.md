@@ -11,7 +11,7 @@ modified_by:
 title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 18.04'
 contributor:
     name: Linode
-aliases: ['applications/game-servers/csgo-server-debian-ubuntu/','applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
+aliases: ['/applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/','/applications/game-servers/csgo-server-debian-ubuntu/']
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 dedicated_cpu_link: true

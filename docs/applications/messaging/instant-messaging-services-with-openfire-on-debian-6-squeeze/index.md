@@ -6,7 +6,7 @@ author:
 description: 'Get started with Openfire on Debian 6 (Squeeze), an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: ["openfire debian 6", "openfire debian squeeze", "openfire linux", "linux xmpp", "instant messaging", "real-time messaging", "xmpp server", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/openfire/debian-6-squeeze/']
+aliases: ['/communications/xmpp/openfire/debian-6-squeeze/']
 modified: 2011-05-17
 modified_by:
   name: Linode

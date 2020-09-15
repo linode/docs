@@ -6,7 +6,7 @@ author:
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/openvpn/ubuntu-9-10-karmic/']
+aliases: ['/networking/openvpn/ubuntu-9-10-karmic/']
 modified: 2011-05-17
 modified_by:
   name: Linode

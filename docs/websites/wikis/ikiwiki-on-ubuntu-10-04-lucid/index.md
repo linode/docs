@@ -6,7 +6,7 @@ author:
 description: 'Using Ikiwiki on Ubuntu 10.04 (Lucid) to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/ikiwiki/ubuntu-10-04-lucid/']
+aliases: ['/web-applications/wikis/ikiwiki/ubuntu-10-04-lucid/']
 modified: 2013-10-04
 modified_by:
   name: Linode

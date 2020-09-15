@@ -5,7 +5,7 @@ author:
 description: 'This tutorial details how to install Shadowsocks-libev, a full-featured, resource-efficient port of the web proxy tool, Shadowsocks.'
 keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " strong vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/']
+aliases: ['/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/']
 published: 2017-12-07
 modified: 2018-07-10
 modified_by:

@@ -6,7 +6,7 @@ author:
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: ["redis centos 5", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/redis/centos-5/']
+aliases: ['/databases/redis/centos-5/']
 modified: 2013-07-07
 modified_by:
   name: Linode

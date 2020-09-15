@@ -5,7 +5,7 @@ author:
 description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Chef'
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/configuration-management/creating-your-first-chef-cookbook/','applications/chef/creating-your-first-chef-cookbook/']
+aliases: ['/applications/configuration-management/creating-your-first-chef-cookbook/','/applications/chef/creating-your-first-chef-cookbook/']
 modified: 2019-12-03
 modified_by:
   name: Linode

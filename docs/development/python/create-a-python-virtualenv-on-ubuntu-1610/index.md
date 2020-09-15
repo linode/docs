@@ -6,7 +6,7 @@ author:
 description: 'This guide will show you how to create a Python virtual environment on your Ubuntu 16.10 Linode.'
 keywords: ["python", "python virtual environment", "virtualenv"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/create-a-python-virtualenv-on-ubuntu-1610/']
+aliases: ['/development/create-a-python-virtualenv-on-ubuntu-1610/']
 modified: 2017-08-14
 modified_by:
   name: Linode

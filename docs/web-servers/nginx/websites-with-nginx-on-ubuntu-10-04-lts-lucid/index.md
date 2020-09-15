@@ -6,7 +6,7 @@ author:
 description: 'A basic guide to installing nginx from source on Ubuntu 10.04 LTS (Lucid)'
 keywords: ["nginx", "nginx ubuntu 10.04", "http", "web servers", "ubuntu", "ubuntu l0.04", "ubuntu lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/installation/ubuntu-10-04-lucid/','websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/']
+aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/installation/ubuntu-10-04-lucid/']
 modified: 2013-10-07
 modified_by:
   name: Linode

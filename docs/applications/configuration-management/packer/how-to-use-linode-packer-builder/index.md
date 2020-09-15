@@ -13,7 +13,7 @@ title: "How to Use the Linode Packer Builder"
 h1_title: "Use the Linode Packer Builder to Create Linode Images"
 contributor:
   name: Linode
-aliases: ['applications/configuration-management/how-to-use-linode-packer-builder/']
+aliases: ['/applications/configuration-management/how-to-use-linode-packer-builder/']
 ---
 
 ## What is Packer?

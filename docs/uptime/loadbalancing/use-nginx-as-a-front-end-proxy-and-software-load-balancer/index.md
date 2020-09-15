@@ -5,7 +5,7 @@ author:
 description: 'Use NGINX as a Front-end Proxy and Software Load-Balancer.'
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/', 'uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
+aliases: ['/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/websites/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
 modified: 2019-02-01
 modified_by:
   name: Linode

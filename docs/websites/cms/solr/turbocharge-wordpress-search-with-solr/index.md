@@ -13,7 +13,7 @@ modified_by:
     name: James Stewart
 published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
-aliases: ['websites/cms/turbocharge-wordpress-search-with-solr/']
+aliases: ['/websites/cms/turbocharge-wordpress-search-with-solr/']
 ---
 
 

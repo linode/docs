@@ -6,7 +6,7 @@ author:
 description: 'Install and configure the Postfix MTA to work with Courier and MySQL for virtual domains on Fedora 13.'
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on fedora 13", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/courier-mysql-fedora-13/']
+aliases: ['/email/postfix/courier-mysql-fedora-13/']
 modified: 2011-05-17
 modified_by:
   name: Linode

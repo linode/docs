@@ -12,7 +12,7 @@ modified_by:
 published: 2020-02-29
 title: How to Install Drupal using Drush on Ubuntu 18.04
 h1_title: Install Drupal using Drush on Ubuntu 18.04
-aliases: ['websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/']
+aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/']
 ---
 
 [Drupal](https://www.drupal.org/docs/8) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive “community” websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.

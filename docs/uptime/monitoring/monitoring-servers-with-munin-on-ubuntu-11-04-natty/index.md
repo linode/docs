@@ -6,7 +6,7 @@ author:
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 11.04 (Natty'
 keywords: ["munin", "monitoring", "ubuntu", " ubuntu 11.04", "natty", " ubuntu natty"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/munin/ubuntu-11-04-natty/']
+aliases: ['/server-monitoring/munin/ubuntu-11-04-natty/']
 modified: 2013-02-18
 modified_by:
   name: Linode

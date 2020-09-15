@@ -6,7 +6,7 @@ author:
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["postfix ubuntu 10.04", "dovecot ubuntu 10.04", "ubuntu 10.04 mail server", "dovecot", "email", "ubuntu", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/dovecot-mysql-ubuntu-10-04-lucid/']
+aliases: ['/email/postfix/dovecot-mysql-ubuntu-10-04-lucid/']
 modified: 2013-05-13
 modified_by:
   name: Linode

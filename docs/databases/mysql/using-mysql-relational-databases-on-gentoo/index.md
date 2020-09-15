@@ -6,7 +6,7 @@ author:
 description: 'Getting started with MySQL for web and server applications on Gentoo.'
 keywords: ["MySQL", "Gentoo", "database", "rdbms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/gentoo/']
+aliases: ['/databases/mysql/gentoo/']
 modified: 2014-01-28
 modified_by:
   name: Alex Fornuto

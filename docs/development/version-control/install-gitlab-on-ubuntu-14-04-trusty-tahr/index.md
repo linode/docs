@@ -5,7 +5,7 @@ author:
 description: 'Install GitLab on an Ubuntu 14.04 (Trusty Tahr).'
 keywords: ["version control", "git", "gitlab", "ruby", " ruby on rails", "mysql", "postgresql", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/','applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/', 'applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/']
+aliases: ['/gitlab-with-ubuntu/','/applications/development/gitlab-on-ubuntu-14-04/','/applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/','/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/']
 contributor:
     name: Nashruddin Amin
     link: https://twitter.com/bsd_noobz

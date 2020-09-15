@@ -6,7 +6,7 @@ author:
 description: 'Use OpenVPN to securely connect separate networks on Ubuntu 10.10 (Maverick).'
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu maverick", "ubuntu 10.10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/openvpn/ubuntu-10-10-maverick/']
+aliases: ['/networking/openvpn/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

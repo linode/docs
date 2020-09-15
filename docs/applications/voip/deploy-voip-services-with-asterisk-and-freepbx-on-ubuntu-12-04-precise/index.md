@@ -6,7 +6,7 @@ author:
 description: 'Install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange.'
 keywords: ["ubuntu 12.04", "asterisk", "freepbx", "pbx", "voip", "google voice", "grub", "lamp stack", "apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: [ 'communications/voip-services-ubuntu-12-04/' ]
+aliases: ['/communications/voip-services-ubuntu-12-04/']
 modified: 2014-06-17
 modified_by:
   name: Alex Fornuto

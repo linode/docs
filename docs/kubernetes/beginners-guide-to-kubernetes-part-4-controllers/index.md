@@ -15,7 +15,7 @@ concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
-aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/','applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/']
+aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/']
 ---
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")

@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Fedora 12.'
 keywords: ["Apache", "web sever", "Fedora 12"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/fedora-12/','websites/apache/apache-2-web-server-on-fedora-12/']
+aliases: ['/websites/apache/apache-2-web-server-on-fedora-12/','/web-servers/apache/installation/fedora-12/']
 modified: 2011-04-29
 modified_by:
   name: Linode

@@ -5,7 +5,7 @@ author:
 description: 'Use mysqldump to back up MySQL databases, tables, or entire database management systems.'
 keywords: ["mysql", "mariadb", "backup", "back up", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/backup-options/','security/backups/back-up-your-mysql-databases/','databases/mysql/back-up-your-mysql-databases/']
+aliases: ['/databases/mysql/backup-options/','/databases/mysql/back-up-your-mysql-databases/','/security/backups/back-up-your-mysql-databases/']
 published: 2018-01-30
 modified: 2018-01-30
 modified_by:

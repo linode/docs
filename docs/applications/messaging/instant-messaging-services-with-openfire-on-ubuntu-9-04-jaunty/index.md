@@ -6,7 +6,7 @@ author:
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 9.04 (Jaunty).'
 keywords: ["openfire", "openfire ubuntu 9.04", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/openfire/ubuntu-9-04-jaunty/']
+aliases: ['/communications/xmpp/openfire/ubuntu-9-04-jaunty/']
 modified: 2011-04-29
 modified_by:
   name: Linode

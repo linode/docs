@@ -5,7 +5,7 @@ author:
 description: 'This guide teaches basic setup and configuration of Linux, NGINX, MySQL/MariaDB, and PHP (LEMP stack) on Debian 9.'
 keywords: ["nginx", "lemp", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/lemp/lemp-server-on-debian-8/','web-servers/lemp/lemp-server-on-debian-8/','web-servers/lemp/lemp-stack-on-debian-8/']
+aliases: ['/websites/lemp/lemp-server-on-debian-8/','/web-servers/lemp/lemp-stack-on-debian-8/','/web-servers/lemp/lemp-server-on-debian-8/']
 modified: 2018-03-21
 modified_by:
   name: Linode

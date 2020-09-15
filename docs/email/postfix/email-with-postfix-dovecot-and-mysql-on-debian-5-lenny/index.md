@@ -6,7 +6,7 @@ author:
 description: 'Installing Postfix with Dovecot and MySQL on Debian 5 (Lenny).'
 keywords: ["postfix", "dovecot", "email", "debian", "lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/dovecot-mysql-debian-5-lenny/']
+aliases: ['/email/postfix/dovecot-mysql-debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode

@@ -6,7 +6,7 @@ description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alterna
 og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
 keywords: ["nginx", "lemp", "php", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/lemp/lemp-server-on-ubuntu-16-04/','websites/lemp/lemp-server-on-ubuntu-16-04/','web-servers/lemp/lemp-server-on-ubuntu-16-04/']
+aliases: ['/websites/lemp/lemp-server-on-ubuntu-16-04/','/web-servers/lemp/lemp-server-on-ubuntu-16-04/']
 modified: 2018-03-26
 modified_by:
   name: Linode

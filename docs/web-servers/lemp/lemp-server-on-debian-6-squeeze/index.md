@@ -6,7 +6,7 @@ author:
 description: 'Install web applications with "LEMP", a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: ["nginx","lemp","lepp","perl","python","php","linux","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/debian-6-squeeze/','websites/lemp/lemp-server-on-debian-6-squeeze/']
+aliases: ['/lemp-guides/debian-6-squeeze/','/websites/lemp/lemp-server-on-debian-6-squeeze/']
 modified: 2012-06-21
 modified_by:
   name: Linode

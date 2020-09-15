@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2012-03-13
 title: Set up a Web Server and Host a Website on Linode
-aliases: ['websites/set-up-web-server-host-website/']
+aliases: ['/websites/set-up-web-server-host-website/']
 ---
 
 ![Hosting a Website](Hosting-a-Website-smg.jpg "Hosting a Website")

@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Fedora 13.'
 keywords: ["apache fedora 13", "fedora web server", "linux web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/fedora-13/','websites/apache/apache-2-web-server-on-fedora-13/']
+aliases: ['/web-servers/apache/installation/fedora-13/','/websites/apache/apache-2-web-server-on-fedora-13/']
 modified: 2011-04-29
 modified_by:
   name: Linode

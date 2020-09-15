@@ -6,7 +6,7 @@ author:
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: ["redis ubuntu 12.04", "redis precise pangolin", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/redis/ubuntu-12-04-precise-pangolin/']
+aliases: ['/databases/redis/ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-25
 modified_by:
   name: Linode

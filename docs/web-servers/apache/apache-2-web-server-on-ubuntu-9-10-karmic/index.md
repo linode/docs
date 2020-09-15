@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Ubuntu 9.10 (Karmic).'
 keywords: ["apache", "apache ubuntu 9.10", "apache ubuntu karmic", "web server", "apache on ubuntu", "apache karmic"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/ubuntu-9-10-karmic/','websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic/']
+aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic/','/web-servers/apache/installation/ubuntu-9-10-karmic/']
 modified: 2011-05-17
 modified_by:
   name: Linode

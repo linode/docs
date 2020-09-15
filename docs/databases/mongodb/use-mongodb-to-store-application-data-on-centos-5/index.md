@@ -6,7 +6,7 @@ author:
 description: 'Install MongoDB for use in application development on CentOS 5.'
 keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mongodb/centos-5/']
+aliases: ['/databases/mongodb/centos-5/']
 modified: 2011-04-29
 modified_by:
   name: Linode

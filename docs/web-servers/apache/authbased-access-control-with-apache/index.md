@@ -5,7 +5,7 @@ author:
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
 keywords: ["access control", "http auth", "mod\\_auth", "http", "apache", "web server", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/http-authentication/','websites/apache/authbased-access-control-with-apache/']
+aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/authbased-access-control-with-apache/']
 modified: 2011-08-22
 modified_by:
   name: Linode

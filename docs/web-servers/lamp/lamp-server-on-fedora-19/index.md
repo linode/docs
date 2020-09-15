@@ -6,7 +6,7 @@ author:
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 19.'
 keywords: ["fedora 19 lamp","lamp server","linux lamp","fedora 19 apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/fedora-19/','websites/lamp/lamp-server-on-fedora-19/']
+aliases: ['/websites/lamp/lamp-server-on-fedora-19/','/lamp-guides/fedora-19/']
 modified: 2014-04-11
 modified_by:
   name: Alex Fornuto

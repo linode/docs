@@ -6,7 +6,7 @@ author:
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Debian 5 (Lenny).'
 keywords: ["munin", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/munin/debian-5-lenny/']
+aliases: ['/server-monitoring/munin/debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode

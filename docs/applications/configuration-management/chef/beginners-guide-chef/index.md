@@ -5,7 +5,7 @@ author:
 description: 'A look into Chef''s primary components, features, and configurations for the new Chef user'
 keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit", "cookbooks", "beginners", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/configuration-management/beginners-guide-chef/','applications/chef/beginners-guide-chef/']
+aliases: ['/applications/chef/beginners-guide-chef/','/applications/configuration-management/beginners-guide-chef/']
 modified: 2019-01-11
 modified_by:
   name: Linode

@@ -6,7 +6,7 @@ description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alterna
 og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on CentOS 7.'
 keywords: ["nginx", "lemp", "php", 'mariadb']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/lemp-guides/centos-7/','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
+aliases: ['/websites/lemp/lemp-server-on-centos-7-with-fastcgi/','/websites/lemp-guides/centos-7/','/web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
 modified: 2018-03-26
 modified_by:
     name: Linode

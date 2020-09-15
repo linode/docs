@@ -7,7 +7,7 @@ contributor:
   link: https://github.com/finid
 description: 'Install and configure OSSEC HIDS on Debian 7'
 keywords: ["IDS", " Intrusion Detection System"]
-aliases: ['security/ossec-ids-debian-7/']
+aliases: ['/security/ossec-ids-debian-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-02-05
 modified_by:

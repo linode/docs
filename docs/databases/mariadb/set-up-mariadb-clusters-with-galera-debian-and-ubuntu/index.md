@@ -4,7 +4,7 @@ author:
   email: jstewart@linode.com
 description: 'A guide to configuring MariaDB database replication with Galera on Debian and Ubuntu distributions.'
 keywords: ["mariadb", "mysql", "galera", "high availability", "HA", "cluster", "debian", "ubuntu"]
-aliases: ['databases/mariadb/clustering-with-mariadb-and-galera/']
+aliases: ['/databases/mariadb/clustering-with-mariadb-and-galera/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-27
 modified_by:

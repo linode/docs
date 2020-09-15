@@ -14,7 +14,7 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
-aliases: ['websites/cms/install-wordpress-ubuntu-18-04/']
+aliases: ['/websites/cms/install-wordpress-ubuntu-18-04/']
 ---
 
 ## What is WordPress?

@@ -5,7 +5,7 @@ author:
 description: 'Configure MongoDB for use in clustered environments.'
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mongodb/clusters/']
+aliases: ['/databases/mongodb/clusters/']
 modified_by:
   name: Linode
 published: 2010-09-30

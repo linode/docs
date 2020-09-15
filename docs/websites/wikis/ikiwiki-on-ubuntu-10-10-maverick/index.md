@@ -6,7 +6,7 @@ author:
 description: 'Using Ikiwiki on Ubuntu 10.10 (Maverick) to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/ikiwiki/ubuntu-10-10-maverick/']
+aliases: ['/web-applications/wikis/ikiwiki/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

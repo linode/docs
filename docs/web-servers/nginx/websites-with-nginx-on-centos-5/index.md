@@ -6,7 +6,7 @@ author:
 description: A basic guide to installing nginx from source on CentOS 5
 keywords: ["nginx", "http", "web servers", "centos", "centos", "centos 5"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/installation/centos-5/','websites/nginx/websites-with-nginx-on-centos-5/']
+aliases: ['/web-servers/nginx/installation/centos-5/','/websites/nginx/websites-with-nginx-on-centos-5/']
 modified: 2014-03-27
 modified_by:
   name: Alex Fornuto

@@ -6,7 +6,7 @@ author:
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Debian 5 (Lenny).'
 keywords: ["prosody", "prosody debian lenny", "prosody.im", "xmpp", "real time messaging", "lua"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/prosody/debian-5-lenny/']
+aliases: ['/communications/xmpp/prosody/debian-5-lenny/']
 modified: 2011-08-22
 modified_by:
   name: Linode

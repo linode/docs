@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 published: 2016-12-28
 title: 'Create an ARK: Survival Evolved Server on Ubuntu 16.04'
-aliases: ['applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
+aliases: ['/applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
 dedicated_cpu_link: true
 ---
 

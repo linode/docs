@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2017-09-21
 title: Find Your Linode's IP Address
-aliases: ['quick-answers/linode-platform/find-your-linodes-ip-address/','quick-answers/linode-platform/find-your-linodes-ip-address-classic-manager/']
+aliases: ['/quick-answers/linode-platform/find-your-linodes-ip-address-classic-manager/','/quick-answers/linode-platform/find-your-linodes-ip-address/']
 ---
 
 Finding your Linode's IP address (or addresses) is easy and can be done in two different ways.

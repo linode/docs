@@ -5,7 +5,7 @@ author:
 description: 'Use cPanel to manage services on your CentOS Linode.'
 keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/','websites/cms/cpanel-on-centos/','websites/cms/install-cpanel-on-centos/','web-applications/control-panels/cpanel/centos-6/']
+aliases: ['/web-applications/control-panels/cpanel/centos-6/','/websites/cms/cpanel-on-centos-6-5/','/websites/cms/cpanel-on-centos/','/websites/cms/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos-5/']
 modified: 2018-08-09
 modified_by:
   name: Edward Angert

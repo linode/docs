@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
-aliases: ['websites/cms/install-wordpress-using-wp-cli-on-ubuntu-18-04/','websites/cms/install-and-configure-wordpress-using-wp-cli/']
+aliases: ['/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-18-04/','/websites/cms/install-and-configure-wordpress-using-wp-cli/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2018-08-10

@@ -6,7 +6,7 @@ author:
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.'
 keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['upgrading/upgrade-to-ubuntu-10-04-lucid/']
+aliases: ['/upgrading/upgrade-to-ubuntu-10-04-lucid/']
 modified: 2013-10-01
 modified_by:
   name: Linode
