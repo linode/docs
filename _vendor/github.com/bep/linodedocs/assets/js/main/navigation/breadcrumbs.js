@@ -33,7 +33,7 @@ var lnBreadcrumbs = {};
 			},
 
 			init: function(page) {
-				debug('init', page);
+				debug('init', page.sectionsEntries);
 				this.$nextTick(() => {
 					dispatcher.searchBlank();
 				});
