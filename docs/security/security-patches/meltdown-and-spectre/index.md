@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: "Intel recently disclosed two vulnerabilities that affect processors in most devices over the last 23 years. Here's how that affects you and what you can do about it."
 keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
-aliases: ['security/meltdown-and-spectre/','"platform/meltdown_statement/"/']
+aliases: ['security/meltdown-and-spectre/','platform/meltdown_statement/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
 modified: 2018-11-08
