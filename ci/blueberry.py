@@ -24,8 +24,6 @@ from pathlib import Path
 # TODO:
 # Create a regex cookbook!
 
-
-IGNORE_DIRS = ['^/home/travis/build/linode/docs/docs/api/[/A-Za-z0-9_-]*']
 REPORT_KEYS = ['files', 'excluded_files', 'directories']
 BASE_URL = 'http://localhost:1313/docs/'
 OPTIONAL_PARAMS = ['args', 'kwargs']
@@ -141,8 +139,7 @@ def lowercase_filename(filepath):
     elif filename is None:
         return
     elif not filename.islower():
-        print("File not lower: " + str(filename))
-        return str(filename), "File name must be all lowercase."
+        return str(filepath), "File name must be all lowercase."
 
 
 @add_rule
@@ -202,56 +199,45 @@ def check_hugo_version():
         print("Check if Hugo is installed.")
         sys.exit(1)
 
-def find_files(path='.', extension='md', recursive=False):
+def find_files(path='.', ignore_paths = [], extensions=['MD', 'md'], recursive=False):
     # Returns list of absolute paths
-    print("in find files")
     p = Path(path).resolve()
     construct_path = ''
     if recursive:
        construct_path = '**/'
-    glob_path = '{}[!_]*.{}'.format(construct_path, extension)
-    temp_list = list(p.glob(glob_path))
-    new_list = []
-    # for each path in the original list
-    for x in temp_list:
-        # get the filename
-        #f = ntpath.basename(str(x))
-        f, file_extension = os.path.splitext(str(x))
-        #print("checking file: " + f"{f}")
-        # for each directory in the ignore directory list
-        for oneDir in IGNORE_DIRS:
-            # if the filename matches
-            if re.match(oneDir, str(f)):
-                # don't add this file
-                print("skip: " + f"{f}")
-            else:
-                # add this file to the new list
-                new_list.append(x)
-    # return the new list
-    return new_list
+    list_of_files = list()
+    for extension in extensions:
+        glob_path = '{}[!_]*.{}'.format(construct_path, extension)
+        list_of_files.extend(p.glob(glob_path))
 
-    #return list(p.glob(glob_path))
+    if ignore_paths:
+        # Map() returns an array like:
+        # ['/home/travis/build/linode/docs/ignored_dir1/', '/home/travis/build/linode/docs/ignored_dir2']
+        ignore_paths_resolved = list(map(lambda path: str(Path(path).resolve()), ignore_paths))
+        # Map() returns an array like:
+        # ['^/home/travis/build/linode/docs/ignored_dir1/*', '^/home/travis/build/linode/docs/ignored_dir2*']
+        ignore_paths_as_regexes = list(map(lambda path: "^{}.*".format(path), ignore_paths_resolved))
+        # ignore_path_regex_or looks like:
+        # '(^/home/travis/build/linode/docs/ignored_dir1/*|^/home/travis/build/linode/docs/ignored_dir2*)'
+        ignore_path_regex_or = '({})'.format("|".join(ignore_paths_as_regexes))
+        list_of_files = list(filter(lambda path: not re.match(ignore_path_regex_or, str(path)), list_of_files))
 
+    return list_of_files
 
 def readfile(filename, section=None):
     """Opens a filename and returns either yaml or content"""
 
     try:
         with open(filename, 'rb') as f:
-            for oneDir in IGNORE_DIRS:
-                if re.match(oneDir, str(filename)):
-                    print("skipping file: " + f"{filename}")
-                    return
-                else:
-                    post = frontmatter.loads(f.read())
-                    if section == 'content':
-                        # TODO:
-                        # Check case of \r\n for Windows
-                        # WARNING: Removes trailing newlines
-                        return post.content.splitlines()
-                    elif section == 'metadata':
-                        # WARNING: Implicitly converts dates to datetime
-                        return post.metadata
+            post = frontmatter.loads(f.read())
+            if section == 'content':
+                # TODO:
+                # Check case of \r\n for Windows
+                # WARNING: Removes trailing newlines
+                return post.content.splitlines()
+            elif section == 'metadata':
+                # WARNING: Implicitly converts dates to datetime
+                return post.metadata
 
     except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError):
         # Return Error; require utf-8
@@ -333,13 +319,13 @@ class TestManager(object):
     # TODO:
     # Gracefully handle non-existent filepath
 
-    def __init__(self, input_dir='docs/', **kwargs):
+    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/websites/'], **kwargs):
         self.input_dir = input_dir
-        self.files = find_files(path=input_dir, recursive=True)
+        self.files = find_files(path=input_dir, ignore_paths=ignore_paths, recursive=True)
 
     def __call__(self, input_dir, recursive=False):
         self.input_dir = input_dir
-        self.files = find_files(input_dir, recursive=recursive)
+        self.files = find_files(path=input_dir, ignore_paths=ignore_paths, recursive=True)
 
     def set_reporter(self, reporter):
         self._reporter = reporter
