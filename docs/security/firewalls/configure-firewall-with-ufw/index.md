@@ -14,7 +14,7 @@ title: How to Configure a Firewall with UFW
 
 ## What is UFW?
 
-UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
+UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian, or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
 {{< note >}}
 If you are running Docker, by default Docker directly manipulates iptables. Any UFW rules that you specify do not apply to Docker containers.
@@ -42,7 +42,7 @@ If you are running Docker, by default Docker directly manipulates iptables. Any 
 
 ## Install UFW
 
-Debian will start UFW's systemd unit automatically and enable it to start on reboots, but Arch will not. *This is not the same as telling UFW to enable the firewall rules*, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
+Debian starts UFW's systemd unit automatically and enables it to start on reboots, but Arch does not. *This is not the same as telling UFW to enable the firewall rules*. Enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
 
 By default, UFW's rulesets are blank so it is not enforcing any firewall rules--even when the daemon is running. Enforcing your firewall ruleset is covered [further down the page](#enable-the-firewall).
 
@@ -67,7 +67,7 @@ Install UFW
 
 ### Set Default Rules
 
-Most systems will need a only a small number of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
+Most systems need a only a small number of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
 
     sudo ufw default allow outgoing
     sudo ufw default deny incoming
@@ -75,7 +75,7 @@ Most systems will need a only a small number of ports open for incoming connecti
 The `ufw default` command also allows for the use of the `reject` parameter.
 
 {{< caution >}}
-Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place.  Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
+Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place. Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
 {{< /caution >}}
 
 ### Add Rules
@@ -94,7 +94,7 @@ Similarly, to **deny** traffic on a certain port (in this example, 111) you woul
 
     sudo ufw deny 111
 
-To further fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
+To further fine-tune your rules, you can also allow packets based on TCP or UDP. The following allows TCP packets on port 80:
 
     sudo ufw allow 80/tcp
     sudo ufw allow http/tcp

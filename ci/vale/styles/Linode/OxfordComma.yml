@@ -1,0 +1,13 @@
+---
+# Warning: OxfordComma
+#
+# Checks for the lack of an Oxford comma. In some cases, will catch overly
+# complex sentence structures with lots of commas.
+#
+# Based on Vale rule from GitLab: https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/.vale/gitlab
+extends: existence
+message: 'Use a comma before the last "and" or "or" in a list of four or more items.'
+link: https://docs.gitlab.com/ee/development/documentation/styleguide.html#punctuation
+level: warning
+raw:
+  - '(?:[\w-_` ]+,){2,}(?:[\w-_` ]+) (and |or )'
