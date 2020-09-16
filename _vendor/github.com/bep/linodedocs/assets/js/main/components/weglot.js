@@ -22,7 +22,7 @@
 		});
 
 		Weglot.on('languageChanged', function() {
-			currentLang = Weglot.getCurrentLang();
+			var currentLang = Weglot.getCurrentLang();
 			console.log('Language changed to ' + currentLang);
 			if (currentLang == 'es') {
 				//$('.library-github').after(
