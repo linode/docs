@@ -79,7 +79,7 @@ Virtualmin is now installed and ready to use.
 
     ![Virtualmin Post-Installation Wizard](virtualmin-post-installation-wizard.png "Virtualmin Post-Installation Wizard")
 
-1.  On the main dashboard, Virtualmin would like to check the configuration. Click the **Re-check and refresh configuration** button.
+1.  On the main dashboard, Virtualmin must check its configuration before virtual servers can be added. Click the **Re-check and refresh configuration** button.
 
     ![Virtualmin Check Configuration](virtualmin-check-config.png "Virtualmin Check Configuration")
 
