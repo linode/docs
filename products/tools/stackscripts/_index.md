@@ -9,12 +9,6 @@ cascade:
     description: "Use StackScripts to automatically configure new Linode instances using simple scripts. Create your own or browse the community StackScript library."
 ---
 
-## StackScripts
-
-Use StackScripts to automatically configure new Linode instances using simple scripts. Create your own or browse the community StackScript library.
-
-- [Linode Instances Endpoint Collection](https://developers.linode.com/api/v4/linode-instances)
-
 ## Features
 
 ### Quick and Easy Customization
