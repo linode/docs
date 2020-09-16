@@ -9,6 +9,10 @@ cascade:
     description: "Use StackScripts to automatically configure new Linode instances using simple scripts. Create your own or browse the community StackScript library."
 ---
 
+## Availability
+
+Tokyo, Japan; Mumbai, India; Singapore, Singapore; Sydney, Australia; Frankfurt, Germany; London, United Kingdom; Toronto, Canada; Newark, NJ, USA; Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA
+
 ## Features
 
 ### Quick and Easy Customization
@@ -22,3 +26,7 @@ Customize your Linode with one of the many StackScripts in our library or discov
 ### Create Your Own
 
 Writing new StackScripts is simple. If you can’t find the right StackScript for your Linode, author your own using our [StackScripts guides](https://www.linode.com/docs/platform/stackscripts/).
+
+## Pricing
+
+Linode's StackScripts are available for free to all customers.
