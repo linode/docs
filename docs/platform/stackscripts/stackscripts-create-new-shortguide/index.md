@@ -18,11 +18,11 @@ show_on_rss_feed: false
 
 1. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the *StackScripts* page.
 
-      {{< image src="stackscripts-sidebar-link.png" alt="Click on the StackScripts link in the left-hand navigation menu" title="Click on the StackScripts link in the left-hand navigation menu" >}}
+      ![Click on the StackScripts link in the left-hand navigation menu](stackscripts-sidebar-link.png "Click on the StackScripts link in the left-hand navigation menu")
 
 1. Viewing the **Account StackScripts** section, click on the **Create New StackScript** link at the top of the page.
 
-      {{< image src="create-new-stackscript-link.png" alt="Click on the Create New StackScript link" title="Click on the Create New StackScript link" >}}
+      ![Click on the Create New StackScript link](create-new-stackscript-link.png "Click on the Create New StackScript link")
 
 1. On the **Create New StackScript** page, provide the required configurations to create your StackScript.
 
@@ -71,4 +71,4 @@ echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
 To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/#deploy-a-linode-from-an-account-stackscript) guide.
     {{</ note >}}
 
-    {{< image src="stackscript-create-success.png" alt="View your new StackScript on the StackScripts page" title="View your new StackScript on the StackScripts page" >}}
+    ![View your new StackScript on the StackScripts page](stackscript-create-success.png "View your new StackScript on the StackScripts page")

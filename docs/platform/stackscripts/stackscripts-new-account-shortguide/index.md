@@ -24,11 +24,11 @@ Once you make an Account StackScript public, you will not be able to make it pri
 
 1. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the *StackScripts* page.
 
-      {{< image src="stackscripts-sidebar-link.png" alt="Click on the StackScripts link in the left-hand navigation menu" title="Click on the StackScripts link in the left-hand navigation menu" >}}
+      ![Click on the StackScripts link in the left-hand navigation menu](stackscripts-sidebar-link.png "Click on the StackScripts link in the left-hand navigation menu")
 
 1. Viewing the **Account StackScripts** tab, you will see a list of all of your account's StackScripts. This will include both private and public StackScripts. Click on the **more options ellipsis** corresponding to the StackScript you'd like to make public and select **Make StackScript Public** from the dropdown menu.
 
-      {{< image src="select-make-stackscript-public.png" alt="Select Make StackScript Public from the dropdown menu" title="Select Make StackScript Public from the dropdown menu" >}}
+      ![Select Make StackScript Public from the dropdown menu](select-make-stackscript-public.png "Select Make StackScript Public from the dropdown menu")
 
     A dialog box will appear asking you to confirm the action. Click on **Yes, make me a star!** if you would like to proceed. You will be brought back to the Account StackScripts page.
 

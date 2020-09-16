@@ -20,10 +20,10 @@ After you've created an Account StackScript, you can go back and edit it as requ
 
 1. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the *StackScripts* page.
 
-      {{< image src="stackscripts-sidebar-link.png" alt="Click on the StackScripts link in the left-hand navigation menu" title="Click on the StackScripts link in the left-hand navigation menu" >}}
+      ![Click on the StackScripts link in the left-hand navigation menu](stackscripts-sidebar-link.png "Click on the StackScripts link in the left-hand navigation menu")
 
 1. Viewing the **Account StackScripts** tab, you will see a list of all of your account's StackScripts. This will include both private and public StackScripts. Click on the **more options ellipsis** corresponding to the StackScript you'd like to modify and select **Edit** from the dropdown menu.
 
-      {{< image src="edit-your-stackscript.png" alt="Select Edit from the dropdown menu to edit your StackScript" title="Select Edit from the dropdown menu to edit your StackScript" >}}
+      ![Select Edit from the dropdown menu to edit your StackScript](edit-your-stackscript.png "Select Edit from the dropdown menu to edit your StackScript")
 
 1. On your StackScript's *Edit page*, modify it as needed and click **Save** to keep your changes.

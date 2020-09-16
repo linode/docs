@@ -2,4 +2,4 @@
 title: Create a Public Stackscript
 ---
 
-{{< content "create-a-public-stackscript-shortguide" >}}
+{{< content "stackscripts-new-account-shortguide" >}}
