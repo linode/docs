@@ -167,59 +167,7 @@ The files you reference within your script must exist and be accessible via `HTT
 
 ### Using an External Script
 
-- If you have an existing deployment script, you can use a StackScript to deploy Linode instances with it. The following example StackScript installs PHP on the Linode, downloads an external PHP script from the URL `http://example.com/deployment-script.php`, makes it executable, and then runs the downloaded script.
-
-    {{< file "StackScript" bash >}}
-#!/bin/bash
-if [ -f /etc/apt/sources.list ]; then
-   apt-get upgrade
-   apt-get -y install php
-elif [-f /etc/yum.conf ]; then
-   yum -y install php
-elif [-f /etc/pacman.conf ]; then
-   pacman -Sy
-   pacman -S --noconfirm pacman
-   pacman -S --noconfirm php
-else
-   echo "Your distribution is not supported by this StackScript"
-   exit
-fi
-
-wget http://example.com/deployment-script.php --output-document=/opt/deployment-script.php
-chmod +x /opt/deployment-script.php
-
-./opt/deployment-script.php
-    {{< /file >}}
-
-- If you do not want to rely on an existing external server to host your scripts for download, you can embed the bootstrapped script into the StackScript.
-
-    {{< file "StackScript" bash >}}
-#!/bin/bash
-
-if [ -f /etc/apt/sources.list ]; then
-   apt-get upgrade
-   apt-get -y install php5
-elif [-f /etc/yum.conf ]; then
-   yum -y install php
-elif [-f /etc/pacman.conf ]; then
-   pacman -Sy
-   pacman -S --noconfirm pacman
-   pacman -S --noconfirm php
-else
-   echo "Your distribution is not supported by this StackScript"
-   exit
-fi
-
-cat >/opt/deployment-script.php <<EOF
-#!/usr/bin/php
-<?php print('Hello World!'); ?>
-EOF
-
-chmod +x /opt/deployment-script.php
-
-./opt/deployment-script.php
-
-    {{< /file >}}
+{{< content "stackscripts-create-linode-shortguide" >}}
 
 ## Next Steps
 
