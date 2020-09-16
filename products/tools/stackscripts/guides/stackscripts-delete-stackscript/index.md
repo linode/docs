@@ -2,4 +2,4 @@
 title: Delete a Stackscript
 ---
 
-{{< content "delete-a-stackscript-shortguide" >}}
+{{< content "stackscripts-delete-account-shortguide" >}}

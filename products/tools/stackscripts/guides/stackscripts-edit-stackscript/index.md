@@ -2,4 +2,4 @@
 title: Edit a Stackscript
 ---
 
-{{< content "create-a-stackscript-shortguide" >}}
+{{< content "stackscripts-edit-account-shortguide" >}}

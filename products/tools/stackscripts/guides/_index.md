@@ -8,15 +8,15 @@ tab_group_main:
 
 These introductory guides to StackScripts will help you to quickly deploy using this service.
 
-- [Create a New Linode Using StackScripts](/docs/products/tools/stackscripts/guides/stackscripts-create-linode)
+- [Create a New Linode Using StackScripts](/docs/products/tools/stackscripts/guides/stackscripts-create-linode): Create a new Linode using a deployment script.
 
-- [Create a New StackScript](/docs/products/tools/stackscripts/guides/stackscripts-create-stackscript)
+- [Create a New StackScript](/docs/products/tools/stackscripts/guides/stackscripts-create-stackscript): Create a new basic account StackScript.
 
-- [Edit an Account StackScript](/docs/products/tools/stackscripts/guides/stackscripts-edit-stackscript)
+- [Edit an Account StackScript](/docs/products/tools/stackscripts/guides/stackscripts-edit-stackscript): Once you've created an account StackScript you can go back and edit it later.
 
-- [Make an Account StackScript Public](/docs/products/tools/stackscripts/guides/stackscripts-create-public-stackscript)
+- [Make an Account StackScript Public](/docs/products/tools/stackscripts/guides/stackscripts-create-public-stackscript): Making an account StackScript public allows the rest of the Linode community to access your script as a Community StackScript.
 
-- [Delete an Account StackScript](/docs/products/tools/stackscripts/guides/stackscripts-delete-stackscript)
+- [Delete an Account StackScript](/docs/products/tools/stackscripts/guides/stackscripts-delete-stackscript): Unless you've made an account StackScript public, you can always delete it.
 
 ## Themes
 
