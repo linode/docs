@@ -22,9 +22,8 @@ tab_group_main:
 
 - [How do I Rebuild with a StackScript](https://www.linode.com/community/questions/17655/resolved-how-do-i-rebuild-from-stackscript-in-the-new-linode-cloud-manager)
 
+Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=stackscripts).
+
 ## Press Releases
 
-[Simplify Your Linode Deployment with StackScripts](https://medium.com/linode-cube/simplify-your-linode-deployment-with-stackscript-automation-e39ab3a2affb)
-
-
-
+- [Simplify Your Linode Deployment with StackScripts](https://medium.com/linode-cube/simplify-your-linode-deployment-with-stackscript-automation-e39ab3a2affb)

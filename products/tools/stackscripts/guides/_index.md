@@ -28,5 +28,4 @@ These additional guides in our library will help you to edit and deploy stackscr
 
 - [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/)
 
-- [Deploy a Wordpress Site Using Terraform and StackScripts](/docs/applications/configuration-management/terraform/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/)
-
+- [Deploy a WordPress Site Using Terraform and StackScripts](/docs/applications/configuration-management/terraform/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/)

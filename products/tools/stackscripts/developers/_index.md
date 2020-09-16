@@ -6,9 +6,9 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s [API v4](https://developers.linode.com/api/v4) provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
--  [StackScripts Endpoint Collection](https://developers.linode.com/api/v4/linode-stackscripts)
+-  [StackScripts Endpoint Collection](/docs/api/stackscripts)
 
 ## Linode CLI
 
