@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Webmin is an open source interface for Unix system administration. Deploay Webmin using Linode''s One-Click Apps.'
-og_description: 'Webmin is an open source interface Unix system administration. Deploay Webmin using Linode''s One-Click Apps.'
+description: 'Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode''s One-Click Apps.'
+og_description: 'Webmin is an open source interface Unix system administration. Deploy Webmin using Linode''s One-Click Apps.'
 keywords: ['webmin','system administration','one-click']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
@@ -27,7 +27,7 @@ external_resources:
 
 ### Webmin Options
 
-The Webmin One-Click form includes advanced fields to setup your Webmin's limited user account and DNS records. These are optional configurations and are not required for installation.
+The Webmin One-Click form includes advanced fields to setup your Webmin's limited user account and DNS records. These are optional configuration options and are not required for installation.
 
 | **Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** | **Description** |
 |-----------|-----------------|
@@ -36,6 +36,8 @@ The Webmin One-Click form includes advanced fields to setup your Webmin's limite
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](https://www.linode.com/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Enable passwordless sudo access for the limited user?** | If you entered an SSH Public Key above and it is for the limited user account, select `Yes` to allow SSH to use Public Key login for the limited user. Select `No` if you want SSH to rely on using password login for the limited user account. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
+| **Configure automatic security updates** | Select `yes` to automate security updates as part of this installation. |
+| **Use fail2ban to prevent automated intrusion attempts** | Select `yes` to [Install and Configure Fail2ban](https://www.linode.com/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/) to protect against brute force attacks. |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation will attempt to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create a token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) to use in this field before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain can only be created if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name where you wish to host your Webmin server. The installer creates a DNS record for this domain during setup if you provide this field along with the required `API Token`. |
@@ -65,7 +67,7 @@ Webmin is now installed and ready to use.
 1.  If you filled out the optional Webmin configuration fields:
 
     - In the Cloud Manager [DNS Manager](/docs/platform/manager/dns-manager/#add-a-domain), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
-    - [Configure the rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Linode.
+    - [Configure rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Linode to point to your new domain name.
 
 1.  Webmin is served on port 10000. To access Webmin, navigate to either the IP address of your server, or to your domain name followed by port 10000. For example, entering `http://example.com:10000` or `http://203.0.113.0:10000` while replacing the domain name or IP address with values for your server will allow you to reach the Webmin login screen.
 
