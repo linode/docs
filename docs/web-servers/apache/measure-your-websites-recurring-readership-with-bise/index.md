@@ -289,7 +289,7 @@ Let's step through the file's available `test_type` configuration directives, an
 
 Row definitions with a `test_type` set to `path` will count any access whose requested URL path matches the value of `test`, exactly.
 
-The following row definition will count any request for the the path `/`, and only that path, as a "Front page" access:
+The following row definition will count any request for the path `/`, and only that path, as a "Front page" access:
 
 {{< file "" yaml >}}
 - label: Front page

@@ -134,7 +134,7 @@ In order to configure and run the GitLab container, you need to provide a few op
 
 `--restart` specifies a restart policy for the container. Here it is set to  `always`, meaning that the container, if exited, will automatically be restarted.
 
-`--volume` defines the host mounted volumes the container uses to store persistent data. These three volumes store application data, log files, and configuration files. The value to the left of the the semi-colon is the local location, and the value to the right is the container location.
+`--volume` defines the host mounted volumes the container uses to store persistent data. These three volumes store application data, log files, and configuration files. The value to the left of the semi-colon is the local location, and the value to the right is the container location.
 
 `--env` supplies the variable `GITLAB_OMNIBUS_CONFIG`, which can hold a series of values, separated by a colon, that correspond to the [GitLab Omnibus configuration settings](https://docs.gitlab.com/omnibus/settings/configuration.html). In this case, an external URL is supplied. Some additional settings might include SMTP configuration values so that GitLab can send activity emails.
 

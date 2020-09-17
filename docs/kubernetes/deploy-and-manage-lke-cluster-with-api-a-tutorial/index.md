@@ -259,7 +259,7 @@ You can use the Linode API to access details about an individual LKE cluster. Yo
 |-------|-------|
 | `clusterId` | ID of the LKE cluster to lookup. |
 
-To view your LKE cluster, send a `GET` request to the the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID:
+To view your LKE cluster, send a `GET` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID:
 
     curl -H "Authorization: Bearer $TOKEN" \
             https://api.linode.com/v4/lke/clusters/12345

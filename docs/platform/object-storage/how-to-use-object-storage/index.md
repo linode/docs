@@ -480,7 +480,7 @@ For more information on hosting a static website with Object Storage, read our [
 
 ### Other s3cmd Commands
 
-To upload an entire directory of files, you can use the the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
+To upload an entire directory of files, you can use the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
 
     s3cmd sync . s3://my-example-bucket -P
 

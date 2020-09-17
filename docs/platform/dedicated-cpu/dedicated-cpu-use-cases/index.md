@@ -52,7 +52,7 @@ Depending on the intensity of demands they place on your Linode, [game servers](
 
 ### Big Data and Data Analysis
 
-[Big Data and Data Analysis](/docs/applications/big-data/) is the process of analyzing and extracting meaningful insights from datasets so large they often require specialized software and hardware. Big data is most easily recognized with the the **"three V's"** of big data:
+[Big Data and Data Analysis](/docs/applications/big-data/) is the process of analyzing and extracting meaningful insights from datasets so large they often require specialized software and hardware. Big data is most easily recognized with the **"three V's"** of big data:
 
 - **Volume:** Generally, if you are working with terabytes, petabytes, exabytes, or more amounts of information you are in the realm of big data.
 - **Velocity:** With Big Data, you are using data that is being created, called, moved, and interacted with at a high velocity. One example is the real time data generated on social media platforms by their users.

@@ -16,4 +16,4 @@ show_on_rss_feed: false
 
 For websites like WordPress, WooCommerce, and Drupal, it's much more desirable to have a domain name rather than using an IP address to access your app.
 
-For information on how to add a domain name to your app, visit our [DNS Manager](/docs/platform/manager/dns-manager/) guide. Specifically, you will want to [set up an *A record*](/docs/platform/manager/dns-manager/#add-dns-records) and assign your IP address to it. For more general information about how DNS works, review the the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
+For information on how to add a domain name to your app, visit our [DNS Manager](/docs/platform/manager/dns-manager/) guide. Specifically, you will want to [set up an *A record*](/docs/platform/manager/dns-manager/#add-dns-records) and assign your IP address to it. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.

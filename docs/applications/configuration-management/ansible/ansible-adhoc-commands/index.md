@@ -262,7 +262,7 @@ node1 | SUCCESS => {
 
 ### Create Directories
 
-The [`file` module](https://docs.ansible.com/ansible/latest/modules/file_module.html) is used to create, remove, and set permissions on files and directories, and create symlinks. This command will create a directory at `/root/linode/new/` on the the managed node with the owner and permissions defined in the options:
+The [`file` module](https://docs.ansible.com/ansible/latest/modules/file_module.html) is used to create, remove, and set permissions on files and directories, and create symlinks. This command will create a directory at `/root/linode/new/` on the managed node with the owner and permissions defined in the options:
 
     ansible Client -m file -a "dest=/root/linode/new/ mode=755 owner=root group=root state=directory" -u non_root_user --become -K
 
