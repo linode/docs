@@ -13,7 +13,7 @@ contributor:
   name: Linode
 headless: true
 show_on_rss_feed: false
-aliases: ['applications/containers/kubernetes/how-to-install-kubectl/']
+aliases: ['/applications/containers/kubernetes/how-to-install-kubectl/']
 ---
 
 **macOS:**

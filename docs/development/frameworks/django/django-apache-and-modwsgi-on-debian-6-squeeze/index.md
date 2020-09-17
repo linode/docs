@@ -6,7 +6,7 @@ author:
 description: 'Installing and configuring the Django web application development framework for Apache on Debian 6.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/apache/apache-and-modwsgi-on-debian-6-squeeze/','development/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze/','frameworks/django-apache-mod-wsgi/debian-6-squeeze/']
+aliases: ['/development/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze/','/websites/apache/apache-and-modwsgi-on-debian-6-squeeze/','/frameworks/django-apache-mod-wsgi/debian-6-squeeze/']
 modified: 2011-05-13
 modified_by:
   name: Linode

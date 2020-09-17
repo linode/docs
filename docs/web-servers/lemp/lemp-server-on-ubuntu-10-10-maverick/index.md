@@ -6,7 +6,7 @@ author:
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/ubuntu-10-10-maverick/','websites/lemp/lemp-server-on-ubuntu-10-10-maverick/']
+aliases: ['/lemp-guides/ubuntu-10-10-maverick/','/websites/lemp/lemp-server-on-ubuntu-10-10-maverick/']
 modified: 2012-10-03
 modified_by:
   name: Linode

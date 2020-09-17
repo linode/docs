@@ -6,7 +6,7 @@ description: 'mod_evasive is an Apache module that implements evasive action to 
 og_description: "Configure your Apache web server to evade DoS attacks with mod_evasive."
 keywords: ["mod_evasive", "modevasive", "evasive", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/mod-evasive/','websites/apache-tips-and-tricks/modevasive-on-apache/']
+aliases: ['/websites/apache-tips-and-tricks/modevasive-on-apache/','/web-servers/apache/mod-evasive/']
 modified: 2018-03-01
 modified_by:
   name: Linode

@@ -5,7 +5,7 @@ author:
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
 keywords: ["Linux", "Unix-Like systems", "history"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/introduction-to-linux-concepts/','/using-linux/linux-concepts/']
+aliases: ['/using-linux/linux-concepts/','/tools-reference/introduction-to-linux-concepts/']
 modified: 2013-12-19
 modified_by:
   name: Linode

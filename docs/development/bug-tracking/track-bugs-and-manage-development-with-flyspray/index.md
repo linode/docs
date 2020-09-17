@@ -5,7 +5,7 @@ author:
 description: 'Install and begin using Flyspray to track project development.'
 keywords: ["bug tracking", "flyspray", "issue management", "feature development"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/project-management/flyspray/','applications/development/track-bugs-and-manage-development-with-flyspray/','development/track-bugs-and-manage-development-with-flyspray/']
+aliases: ['/development/track-bugs-and-manage-development-with-flyspray/','/applications/development/track-bugs-and-manage-development-with-flyspray/','/web-applications/project-management/flyspray/']
 modified: 2013-10-04
 modified_by:
   name: Linode

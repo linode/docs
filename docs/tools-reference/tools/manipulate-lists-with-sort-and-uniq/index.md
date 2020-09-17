@@ -5,7 +5,7 @@ author:
 description: Use the sort and uniq Linux utilities to manage and order
 keywords: ["linux", "common commands", "sort", "uniq", "shell", "bash"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/sort-uniq/']
+aliases: ['/linux-tools/common-commands/sort-uniq/']
 modified: 2018-01-23
 modified_by:
   name: Linode

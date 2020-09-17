@@ -6,7 +6,7 @@ author:
 description: 'Installing and configuring Redmine, an open source project management system on a Debian 6 (Squeeze) Linode running nginx.'
 keywords: ["redmine", "redmine debian 6", "redmine linux", "project management software", "redmine postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/project-management/redmine/debian-6-squeeze/']
+aliases: ['/web-applications/project-management/redmine/debian-6-squeeze/']
 modified: 2011-06-07
 modified_by:
   name: Linode

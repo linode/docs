@@ -5,7 +5,7 @@ author:
 description: 'An introduction to the principal concepts and use of the users and groups system in Linux systems.'
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/docs/using-linux/users-and-groups/','/tools-reference/linux-users-and-groups/']
+aliases: ['/tools-reference/linux-users-and-groups/','/docs/using-linux/users-and-groups/']
 modified: 2017-03-23
 modified_by:
   name: Linode

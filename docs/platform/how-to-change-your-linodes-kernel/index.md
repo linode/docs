@@ -5,7 +5,7 @@ author:
 description: 'Use the Linode Manager to change which kernel your Linode boots.'
 keywords: ["kernel", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-aliases: ['run-a-distribution-supplied-kernel-with-kvm/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/']
+aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/run-a-distribution-supplied-kernel-with-kvm/']
 modified: 2018-11-08
 modified_by:
   name: Linode

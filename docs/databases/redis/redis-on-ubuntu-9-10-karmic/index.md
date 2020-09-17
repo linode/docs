@@ -6,7 +6,7 @@ author:
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: ["redis ubuntu 9.10", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/redis/ubuntu-9-10-karmic/']
+aliases: ['/databases/redis/ubuntu-9-10-karmic/']
 modified: 2011-04-29
 modified_by:
   name: Linode

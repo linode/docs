@@ -14,7 +14,7 @@ external_resources:
  - '[Vagrant](http://www.vagrantup.com)'
  - '[vagrant-linode Plugin](https://github.com/displague/vagrant-linode)'
 deprecated: true
-aliases: ['applications/configuration-management/vagrant-linode-environments/']
+aliases: ['/applications/configuration-management/vagrant-linode-environments/']
 ---
 
 {{< note >}}

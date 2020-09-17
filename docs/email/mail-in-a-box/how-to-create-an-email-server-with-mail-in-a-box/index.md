@@ -15,7 +15,7 @@ contributor:
 external_resources:
 - '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 - '[Mail-in-a-Box Forums](https://discourse.mailinabox.email/)'
-aliases: ['email/how-to-create-an-email-server-with-mail-in-a-box/']
+aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/']
 ---
 
 

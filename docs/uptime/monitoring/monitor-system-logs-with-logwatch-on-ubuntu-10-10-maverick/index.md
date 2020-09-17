@@ -6,7 +6,7 @@ author:
 description: 'Use Logwatch to monitor system logs and generate reports.'
 keywords: ["logwatch", "security", "logging", "audit"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/logwatch/ubuntu-10-10-maverick/']
+aliases: ['/server-monitoring/logwatch/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

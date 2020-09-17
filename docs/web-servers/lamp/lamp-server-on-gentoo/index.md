@@ -6,7 +6,7 @@ author:
 description: 'Creating a LAMP stack with Apache, MySQL, and PHP on a Gentoo Linux powered Linode.'
 keywords: ["LAMP","Gentoo Linux","Gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/gentoo-10-2013/','websites/lamp/lamp-server-on-gentoo/']
+aliases: ['/lamp-guides/gentoo-10-2013/','/websites/lamp/lamp-server-on-gentoo/']
 modified: 2014-02-10
 modified_by:
   name: Alex Fornuto

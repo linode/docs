@@ -6,7 +6,7 @@ author:
 description: 'Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP to Track Resource Usage on Ubuntu 12.04.'
 keywords: ["Cacti", "Ubuntu", " Ubuntu 12.04", "SNMP", "spine", "client machine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/cacti/ubuntu-12-04-precise-pangolin/','uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-12-04-precise/']
+aliases: ['/server-monitoring/cacti/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-12-04-precise/']
 modified: 2012-10-11
 modified_by:
   name: Linode

@@ -16,7 +16,7 @@ image: kube-reference-guide.jpg
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
-aliases: ['applications/containers/kubernetes-reference/','applications/containers/kubernetes/kubernetes-reference/']
+aliases: ['/applications/containers/kubernetes/kubernetes-reference/','/applications/containers/kubernetes-reference/']
 ---
 
 ## Introduction

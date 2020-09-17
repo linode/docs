@@ -5,7 +5,7 @@ author:
 description: 'Configure and optimize NGINX to best suit your web server needs. Host multiple sites, configure caching, disable content sniffing, and more.'
 keywords: ["nginx", "web server", "nginx configuration", "multiple sites", "configure caching"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/configure-nginx-for-optimized-performance/','websites/nginx/configure-nginx-for-optimized-performance/']
+aliases: ['/web-servers/nginx/configure-nginx-for-optimized-performance/','/websites/nginx/configure-nginx-for-optimized-performance/']
 modified: 2018-02-09
 modified_by:
   name: Linode

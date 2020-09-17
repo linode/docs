@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["cherokee", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/']
+aliases: ['/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid/','/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/']
 modified: 2013-10-07
 modified_by:
   name: Linode

@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 10.04", "nginx fastcgi", "nginx perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/']
+aliases: ['/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/']
 modified: 2013-10-07
 modified_by:
   name: Linode

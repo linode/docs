@@ -6,7 +6,7 @@ author:
 description: 'Getting started with MySQL for web and server applications on Arch Linux.'
 keywords: ["mysql arch linux", "mysql linux", "arch linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/arch-linux/']
+aliases: ['/databases/mysql/arch-linux/']
 modified: 2014-01-23
 modified_by:
   name: Alex Fornuto

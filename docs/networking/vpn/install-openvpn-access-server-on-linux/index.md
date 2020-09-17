@@ -3,7 +3,7 @@ author:
     name: James Stewart
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
 keywords: ["openvpn", "vpn"]
-aliases: ['networking/vpn/openvpn-access-server/','networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
+aliases: ['/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/','/networking/vpn/openvpn-access-server/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-12
 modified_by:

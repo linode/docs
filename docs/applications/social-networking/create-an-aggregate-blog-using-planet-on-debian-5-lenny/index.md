@@ -5,7 +5,7 @@ author:
 description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/social-networking/planet/debian-5-lenny/']
+aliases: ['/web-applications/social-networking/planet/debian-5-lenny/']
 modified: 2013-10-04
 modified_by:
   name: Linode

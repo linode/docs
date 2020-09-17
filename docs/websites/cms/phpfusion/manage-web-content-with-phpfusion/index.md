@@ -5,7 +5,7 @@ author:
 description: 'Learn to build and deploy websites using the PHP Fusion content management system.'
 keywords: ["cms", "php fusion", "content mangement system", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/cms-guides/php-fusion/','websites/cms/manage-web-content-with-phpfusion/']
+aliases: ['/websites/cms/manage-web-content-with-phpfusion/','/web-applications/cms-guides/php-fusion/']
 modified: 2013-10-02
 modified_by:
   name: Linode

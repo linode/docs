@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 published: 2017-11-27
 title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
-aliases: ['applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
+aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
 contributor:
   name: Kiran Singh
   link: https://github.com/snarik

@@ -5,7 +5,7 @@ author:
 description: 'This guide shows you how to use the Zipkin tracking system to collect and search timing data in order to identify latency problems on your website.'
 keywords: ["zipkin", " tracking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['uptime/set-up-a-zipkin-server-with-sample-website-tracking/','uptime/set-up-a-zipkin-server/']
+aliases: ['/uptime/set-up-a-zipkin-server/','/uptime/set-up-a-zipkin-server-with-sample-website-tracking/']
 modified: 2017-09-28
 modified_by:
   name: Luis Cortes

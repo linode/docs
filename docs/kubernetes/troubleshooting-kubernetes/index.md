@@ -13,7 +13,7 @@ image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Documentation - Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)'
-aliases: ['applications/containers/troubleshooting-kubernetes/','applications/containers/kubernetes/troubleshooting-kubernetes/']
+aliases: ['/applications/containers/kubernetes/troubleshooting-kubernetes/','/applications/containers/troubleshooting-kubernetes/']
 ---
 
 <!-- EDITOR'S NOTE: This guide is split into two halves:

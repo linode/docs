@@ -6,7 +6,7 @@ author:
 description: 'Configure NSD to Handle DNS Queries on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["NSD", "DNS", "Ubuntu", "networking", "zone file", "name server daemon"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/nsd-authoritative-dns-ubuntu-12-04-precise-pangolin/','networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04-precise-pangolin/']
+aliases: ['/dns-guides/nsd-authoritative-dns-ubuntu-12-04-precise-pangolin/','/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-09
 modified_by:
   name: Linode

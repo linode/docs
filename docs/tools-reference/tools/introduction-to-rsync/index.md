@@ -5,7 +5,7 @@ author:
 description: 'This guide provides an introduction to rsync, the incremental file transfer utility.'
 keywords: ["rsync", "backup", "back up", "copy", "file transfer", "synchronize", "sync"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/utilities/rsync/']
+aliases: ['/linux-tools/utilities/rsync/']
 modified: 2017-09-14
 modified_by:
   name: Linode

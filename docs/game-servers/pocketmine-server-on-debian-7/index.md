@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 published: 2015-04-02
 title: 'PocketMine Server on Debian 7'
-aliases: ['applications/game-servers/pocketmine-server-on-debian-7/']
+aliases: ['/applications/game-servers/pocketmine-server-on-debian-7/']
 dedicated_cpu_link: true
 ---
 

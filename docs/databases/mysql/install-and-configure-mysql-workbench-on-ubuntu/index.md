@@ -5,7 +5,7 @@ author:
 description: 'This guide shows how to install and configure MySQL Workbench and includes a sample MySQL database for testing.'
 keywords: ["mysql", "mysql workbench", "mysql sample database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/mysql-workbench/']
+aliases: ['/databases/mysql/mysql-workbench/']
 modified: 2017-08-08
 modified_by:
   name: Linode

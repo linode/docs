@@ -5,7 +5,7 @@ author:
 description: 'If you are switching to Debian 10, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.'
 og_description: 'If you are switching to Debian 10, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.'
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
-aliases: ['quick-answers/linux/install-selinux-on-ubuntu/']
+aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode

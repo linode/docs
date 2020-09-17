@@ -6,7 +6,7 @@ description: 'Set up and configure WildFly as your Java Application Server to de
 keywords: ["java", "jboss", "jboss as", "wildfly", "apache", "mysql", "mariaDB"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-18
-aliases: ['applications/development/java-development-wildfly-centos-7/','development/java-development-wildfly-centos-7/']
+aliases: ['/development/java-development-wildfly-centos-7/','/applications/development/java-development-wildfly-centos-7/']
 modified: 2015-09-18
 modified_by:
     name: Linode

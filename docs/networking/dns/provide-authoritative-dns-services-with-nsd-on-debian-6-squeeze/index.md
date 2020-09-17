@@ -6,7 +6,7 @@ author:
 description: 'Install and configure NSD to handle DNS queries.'
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/nsd-authoritative-dns-debian-6-squeeze/']
+aliases: ['/dns-guides/nsd-authoritative-dns-debian-6-squeeze/']
 modified: 2011-06-08
 modified_by:
   name: Linode

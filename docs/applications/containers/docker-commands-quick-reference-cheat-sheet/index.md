@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A quick reference cheat sheet on Docker commands for installation, containers, images and more.'
 keywords: ["docker", "quick reference", "cheat sheet", "commands"]
-aliases: ['applications/containers/docker-quick-reference-cheat-sheet/']
+aliases: ['/applications/containers/docker-quick-reference-cheat-sheet/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-18
 modified_by:

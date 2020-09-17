@@ -16,7 +16,7 @@ external_resources:
 - '[Apache Web Server](https://httpd.apache.org/)'
 - '[Keepalived](http://www.keepalived.org/)'
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
-aliases: ['websites/host-a-website-with-high-availability/']
+aliases: ['/websites/host-a-website-with-high-availability/']
 ---
 
 ![Host a Website with High Availability](host-a-website-with-high-availability-title-graphic.jpg "Host a Website with High Availability")

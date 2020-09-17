@@ -10,7 +10,7 @@ modified: 2019-02-01
 modified_by:
     name: Linode
 title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
-aliases: ['applications/game-servers/dont-starve-together-on-ubuntu/','applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/']
+aliases: ['/applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/','/applications/game-servers/dont-starve-together-on-ubuntu/']
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling

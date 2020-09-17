@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 11.04 (Natty).'
 keywords: ["nginx perl ubuntu 11.04", "nginx perl fastcgi", "nginx ubuntu natty", "fastscgi perl", "nginx ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/perl-fastcgi/ubuntu-11-04-natty/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/']
+aliases: ['/web-servers/nginx/perl-fastcgi/ubuntu-11-04-natty/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/']
 modified: 2012-10-31
 modified_by:
   name: Linode

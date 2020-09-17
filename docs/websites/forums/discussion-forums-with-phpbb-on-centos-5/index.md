@@ -6,7 +6,7 @@ author:
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Centos 5.'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/bulletin-boards/phpbb/centos-5/']
+aliases: ['/web-applications/bulletin-boards/phpbb/centos-5/']
 modified: 2011-05-09
 modified_by:
   name: Linode

@@ -5,7 +5,7 @@ author:
 description: 'This tutorial will teach you how to generate and manipulate dates using the Linux date command including examples and help with formatting.'
 keywords: ["date", "time", "linux commands", "shell", "timey wimey"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/date/','tools-reference/tools/linux-date-command/']
+aliases: ['/tools-reference/tools/linux-date-command/','/linux-tools/common-commands/date/']
 modified: 2017-08-21
 modified_by:
   name: Linode

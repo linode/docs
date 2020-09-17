@@ -6,7 +6,7 @@ description: 'This guide outlines steps to protect your data and recover your sy
 og_description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['troubleshooting/compromise-recovery/','security/recovering-from-a-system-compromise/']
+aliases: ['/troubleshooting/compromise-recovery/','/security/recovering-from-a-system-compromise/']
 modified: 2018-04-18
 modified_by:
   name: Linode

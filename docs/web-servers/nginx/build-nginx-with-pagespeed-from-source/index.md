@@ -5,7 +5,7 @@ author:
 description: 'Compile NGINX to use the PageSpeed module.'
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/']
+aliases: ['/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/']
 published: 2019-02-01
 modified: 2018-02-12
 modified_by:

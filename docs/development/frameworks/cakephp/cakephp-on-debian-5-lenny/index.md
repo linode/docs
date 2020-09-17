@@ -5,7 +5,7 @@ author:
 description: 'Installing and configuring CakePHP for developing PHP applications on your Debian 5 (Lenny) Linode.'
 keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/cakephp-on-debian-5-lenny/','frameworks/cakephp/','websites/frameworks/cakephp-on-debian-5-lenny/']
+aliases: ['/frameworks/cakephp/','/development/frameworks/cakephp-on-debian-5-lenny/','/websites/frameworks/cakephp-on-debian-5-lenny/']
 modified: 2014-02-10
 modified_by:
   name: Alex Fornuto

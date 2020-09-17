@@ -6,7 +6,7 @@ author:
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Debian 6 (Squeeze).'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/bulletin-boards/phpbb/debian-6-squeeze/']
+aliases: ['/web-applications/bulletin-boards/phpbb/debian-6-squeeze/']
 modified: 2011-05-09
 modified_by:
   name: Linode

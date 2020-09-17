@@ -6,7 +6,7 @@ author:
 description: 'Install and configure NSD to handle DNS queries.'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/nsd-authoritative-dns-ubuntu-11-04-natty/']
+aliases: ['/dns-guides/nsd-authoritative-dns-ubuntu-11-04-natty/']
 modified: 2013-02-18
 modified_by:
   name: Linode

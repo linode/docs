@@ -6,7 +6,7 @@ published: 2017-03-02
 description: 'Install a Custom Distribution or Linux Appliance on your KVM Linode.'
 keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
+aliases: ['/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
 modified_by:
   name: Linode
 modified: 2018-10-16

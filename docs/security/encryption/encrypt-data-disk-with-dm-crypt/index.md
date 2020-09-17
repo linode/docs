@@ -13,7 +13,7 @@ modified_by:
 title: 'How to Encrypt Your Data with dm-crypt'
 contributor:
   name: Alexandru Andrei
-aliases: ['security/encrypt-data-disk-with-dm-crypt/']
+aliases: ['/security/encrypt-data-disk-with-dm-crypt/']
 ---
 
 ![How to Encrypt Your Data with dm-crypt](How_to_Encrypt_Your_Data_with_dm-crypt_smg.png "How to Encrypt Your Data with dm-crypt")

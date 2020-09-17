@@ -5,7 +5,7 @@ author:
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 10.04 (Lucid).'
 keywords: ["web.py","web applications","python","web frameworks"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/webpy-on-ubuntu-10-04-lucid/','websites/frameworks/webpy-on-ubuntu-10-04-lucid/','frameworks/webpy/ubuntu-10-04-lucid/']
+aliases: ['/frameworks/webpy/ubuntu-10-04-lucid/','/development/frameworks/webpy-on-ubuntu-10-04-lucid/','/websites/frameworks/webpy-on-ubuntu-10-04-lucid/']
 modified: 2013-11-27
 modified_by:
   name: Linode

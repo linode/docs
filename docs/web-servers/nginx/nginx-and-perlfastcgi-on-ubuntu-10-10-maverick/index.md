@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 10.10 (Maverick).'
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 10.10", "nginx fastcgi", "nginx perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/perl-fastcgi/ubuntu-10-10-maverick/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-10-maverick/']
+aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-10-maverick/','/web-servers/nginx/perl-fastcgi/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

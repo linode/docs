@@ -5,7 +5,7 @@ author:
 description: 'How to use the mod_rewrite engine to generate URLs with the Apache HTTP server.'
 keywords: ["mod_rewrite", "REST", "URLs", "redirect", "apache", "httpd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/rewriting-urls/','websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/']
+aliases: ['/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/','/web-servers/apache/configuration/rewriting-urls/']
 modified: 2017-02-21
 modified_by:
   name: Phil Zona

@@ -6,7 +6,7 @@ description: 'Use Cron to run programs at specified times on your Linux server.'
 og_description: 'Cron is a classic UNIX utility that runs tasks at specific times or intervals. This guide shows how to automate a variety of tasks using Cron.'
 keywords: ["cron", "crontab", "automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/utilities/cron/']
+aliases: ['/linux-tools/utilities/cron/']
 modified: 2018-03-15
 modified_by:
   name: Linode

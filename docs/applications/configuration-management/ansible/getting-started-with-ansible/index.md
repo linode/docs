@@ -6,7 +6,7 @@ description: 'Ansible is an automation tool for server configuration, provisioni
 og_description: 'Ansible is an automation tool for server configuration, provisioning, and management. This guide shows how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server.'
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/configuration-management/getting-started-with-ansible/','applications/ansible/getting-started-with-ansible/']
+aliases: ['/applications/ansible/getting-started-with-ansible/','/applications/configuration-management/getting-started-with-ansible/']
 published: 2018-03-21
 modified: 2019-06-19
 modified_by:

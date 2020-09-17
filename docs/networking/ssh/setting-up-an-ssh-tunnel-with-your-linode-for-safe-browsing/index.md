@@ -5,7 +5,7 @@ author:
 description: 'Follow these instructions to launch a SOCKS server on your computer and browse the web securely using your Linode.'
 keywords: ["socks", "proxy", "socks proxy", "tunnel", "tunnelling"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/socks-proxy/']
+aliases: ['/networking/socks-proxy/']
 contributor:
     name: Arnaldo Ariel Arrieta
 modified: 2014-02-17

@@ -6,7 +6,7 @@ author:
 description: 'Learn how to Switch to a 64-bit Linux Kernel with Your Existing Distribution.'
 keywords: ["linux kernel", "64-bit", "switch kernel", "migrate", "disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['switching-kernels/','migrate-to-linode/disk-images/switching-to-a-64bit-kernel/','migrate-to-linode/disk-images/switch-to-a-64-bit-linux-kernel/']
+aliases: ['/migrate-to-linode/disk-images/switch-to-a-64-bit-linux-kernel/','/migrate-to-linode/disk-images/switching-to-a-64bit-kernel/','/switching-kernels/']
 modified: 2016-10-13
 modified_by:
   name: Edward Angert

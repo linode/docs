@@ -5,7 +5,7 @@ author:
 description: 'Automating offsite backups with the open source rdiff-backup package and SSHFS for remote filesystem mounting.'
 keywords: ["rdiff-backup", "sshfs", "network backup", "linux backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/rdiff-backup/']
+aliases: ['/linux-tools/rdiff-backup/']
 modified: 2017-11-29
 modified_by:
   name: Linode

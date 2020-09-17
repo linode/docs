@@ -6,7 +6,7 @@ author:
 description: 'Installing and configuring the Django web application development framework for Apache on Fedora 14.'
 keywords: ["django", "python", "apache", "mod_wsgi"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/django-apache-mod-wsgi/fedora-14/','development/frameworks/django-apache-and-modwsgi-on-fedora-14/','websites/apache/apache-and-modwsgi-on-fedora-14/']
+aliases: ['/development/frameworks/django-apache-and-modwsgi-on-fedora-14/','/websites/apache/apache-and-modwsgi-on-fedora-14/','/frameworks/django-apache-mod-wsgi/fedora-14/']
 modified: 2013-09-26
 modified_by:
   name: Linode

@@ -6,7 +6,7 @@ author:
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 9.10 (Karmic).'
 keywords: ["exim", "mail server", "linux mail", "smtp server", "ubuntu exim", "ubuntu 9.10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/exim/send-only-mta-ubuntu-9-10-karmic/']
+aliases: ['/email/exim/send-only-mta-ubuntu-9-10-karmic/']
 modified: 2011-04-29
 modified_by:
   name: Linode

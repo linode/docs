@@ -5,7 +5,7 @@ author:
 description: View and organize your media library with Plex on Ubuntu 18.04
 keywords: ["plex media server", " install plex", " plex ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/media-servers/install-plex-media-server-on-ubuntu-16-04/']
+aliases: ['/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/']
 modified: 2019-01-31
 modified_by:
   name: Linode

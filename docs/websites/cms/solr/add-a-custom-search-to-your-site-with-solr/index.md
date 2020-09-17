@@ -15,7 +15,7 @@ contributor:
   link: https://www.linkedin.com/in/andrew-lescher-87027940
 external_resources:
   - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'
-aliases: ['websites/cms/add-a-custom-search-to-your-site-with-solr/']
+aliases: ['/websites/cms/add-a-custom-search-to-your-site-with-solr/']
 ---
 
 

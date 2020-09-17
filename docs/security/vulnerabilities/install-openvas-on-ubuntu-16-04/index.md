@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Install OpenVAS 8 to scan your system for vulnerabilities.
 keywords: ["openvas", "ubuntu", "install openvas"]
-aliases: ['security/install-openvas-on-ubuntu-16-04/']
+aliases: ['/security/install-openvas-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-12-19
 modified_by:

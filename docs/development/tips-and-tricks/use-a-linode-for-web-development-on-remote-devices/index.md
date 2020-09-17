@@ -18,7 +18,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Portainer](https://portainer.io/)'
 audiences: ["beginner"]
-aliases: ['development/use-a-linode-for-web-development-on-remote-devices/']
+aliases: ['/development/use-a-linode-for-web-development-on-remote-devices/']
 ---
 
 ![Use a Linode for Web Development on Remote Devices](Linode_WebDev.jpg "WebDev_Title Graphic")

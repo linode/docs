@@ -10,7 +10,7 @@ modified: 2019-06-20
 modified_by:
   name: Linode
 published: 2019-02-04
-aliases: ['platform/migrating-to-a-different-data-center/']
+aliases: ['/platform/migrating-to-a-different-data-center/']
 title: How to Initiate a Cross Data Center Migration for your Linode
 h1_title: Initiating a Cross Data Center Migration for your Linode
 ---

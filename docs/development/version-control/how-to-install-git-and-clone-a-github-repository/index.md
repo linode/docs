@@ -5,7 +5,7 @@ author:
 description: 'This tutorial is an introduction to developing with Git and GitHub with instructions on installing Git and creating your first GitHub test repository.'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "github"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/development/developing-git-github/','development/version-control/developing-git-github/']
+aliases: ['/development/version-control/developing-git-github/','/applications/development/developing-git-github/']
 modified: 2015-02-06
 external_resources:
  - '[Working with the Git Repository](/docs/development/version-control/how-to-configure-git/)'

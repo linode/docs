@@ -12,7 +12,7 @@ published: 2015-02-05
 title: Installing McMyAdmin for Minecraft on Debian
 external_resources:
  - '[McMyAdmin Home Page](https://mcmyadmin.com/)'
-aliases: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
+aliases: ['/applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 dedicated_cpu_link: true
 ---
 

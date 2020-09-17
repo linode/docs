@@ -7,7 +7,7 @@ og_description: 'The Linode Kubernetes Engine (LKE) provides access to Linode''s
 keywords: ['load balancers','kubernetes','nodebalancers','services']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-14
-aliases: ['kubernetes/deploy-nodebalancers-with-linode-ccm/']
+aliases: ['/kubernetes/deploy-nodebalancers-with-linode-ccm/']
 modified_by:
   name: Linode
 title: "Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster"

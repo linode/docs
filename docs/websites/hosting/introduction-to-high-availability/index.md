@@ -12,7 +12,7 @@ modified_by:
 title: 'Introduction to High Availability'
 external_resources:
 - '[Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)'
-aliases: ['websites/introduction-to-high-availability/']
+aliases: ['/websites/introduction-to-high-availability/']
 ---
 
 ![Introduction to High Availability](Introduction_to_High_Availability_smg.jpg)

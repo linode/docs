@@ -5,7 +5,7 @@ author:
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
 keywords: ["debian 7 LAMP server", "debian LAMP guide", "LAMP howto", "debian", "debian 7", "lamp server", "lamp", "apache", "mysql", "php", "linux web"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/debian-7-wheezy/','websites/lamp/lamp-server-on-debian-7-wheezy/']
+aliases: ['/websites/lamp/lamp-server-on-debian-7-wheezy/','/lamp-guides/debian-7-wheezy/']
 modified: 2015-12-01
 modified_by:
   name: Alex Fornuto

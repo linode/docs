@@ -5,7 +5,7 @@ author:
 description: 'This tutorial will teach you how to access your CouchDB database remotely by creating an SSH tunnel with PuTTY.'
 keywords: ["futon", " couchdb", " apache", " ssh", " putty", " windows", " os x", " osx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/couchdb/ssh-tunnel/','databases/couchdb/securely-administer-couchdb-with-an-ssh-tunnel/']
+aliases: ['/databases/couchdb/securely-administer-couchdb-with-an-ssh-tunnel/','/databases/couchdb/ssh-tunnel/']
 modified: 2017-07-19
 modified_by:
   name: Linode

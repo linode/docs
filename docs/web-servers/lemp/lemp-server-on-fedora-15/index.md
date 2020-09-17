@@ -6,7 +6,7 @@ author:
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/fedora-15/','websites/lemp/lemp-server-on-fedora-15/']
+aliases: ['/websites/lemp/lemp-server-on-fedora-15/','/lemp-guides/fedora-15/']
 modified: 2012-06-21
 modified_by:
   name: Linode

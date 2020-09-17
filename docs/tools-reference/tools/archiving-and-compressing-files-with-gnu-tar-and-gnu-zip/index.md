@@ -6,7 +6,7 @@ description: 'Use GNU tools to compress and archive files.'
 og_description: 'This guide will show you how to use GNU tar and Gzip to compress and archive files.'
 keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive", "compress", "tarball"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/tar-gzip/']
+aliases: ['/linux-tools/common-commands/tar-gzip/']
 modified: 2018-01-29
 modified_by:
   name: Linode

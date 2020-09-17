@@ -5,7 +5,7 @@ author:
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
 keywords: ["yesod", " nginx", " mysql", " debian 7"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/']
+aliases: ['/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/']
 contributor:
     name: Si-Qi Liu
 modified: 2014-09-25

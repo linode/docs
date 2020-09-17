@@ -6,7 +6,7 @@ author:
 description: 'Getting started with MySQL for web and server applications on Ubuntu Hardy.'
 keywords: ["MySQL on Linux", "MySQL Ubuntu", "MySQL Hardy", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/ubuntu-8-04-hardy/']
+aliases: ['/databases/mysql/ubuntu-8-04-hardy/']
 modified: 2012-10-08
 modified_by:
   name: Linode

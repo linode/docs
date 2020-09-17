@@ -6,7 +6,7 @@ author:
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 9.04 (Jaunty).'
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on ubuntu", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/courier-mysql-ubuntu-9-04-jaunty/']
+aliases: ['/email/postfix/courier-mysql-ubuntu-9-04-jaunty/']
 modified: 2011-05-17
 modified_by:
   name: Linode
