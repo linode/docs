@@ -10,8 +10,6 @@ show_on_frontpage: true
 title_short: "Email"
 weight: 80
 icon: "envelope"
-cascade:
-    tags: ["email"]
 ---
 
 

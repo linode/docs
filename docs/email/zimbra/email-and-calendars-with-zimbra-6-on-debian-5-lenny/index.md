@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Debian 5 (Lenny) Linode.'
 keywords: ["zimbra debian 5", "zimbra lenny", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
+tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-debian-5-lenny/']
 modified: 2012-10-08

@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Ubuntu 10.04 (Lucid) Linode.'
 keywords: ["zimbra ubuntu 10.04", "zimbra lucid", "zimbra on ubuntu", "zimbra groupware", "zimbra mail server", "linux mail server"]
+tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-ubuntu-10-04-lucid/']
 modified: 2011-05-17
