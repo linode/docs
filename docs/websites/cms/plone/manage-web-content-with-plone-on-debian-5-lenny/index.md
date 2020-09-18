@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the Plone Content Management System, built on the Zope framework, to deploy complex and content rich sites on Debian 5 (Lenny) systems.'
 keywords: ["plone", "zope", "python", "debian", "web framework", "content management systems", "cms"]
-tags: ["debian", "apache", "nginx"]
+tags: ["nginx","apache","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-web-content-with-plone-on-debian-5-lenny/','/web-applications/cms-guides/plone/']
 modified: 2011-06-03

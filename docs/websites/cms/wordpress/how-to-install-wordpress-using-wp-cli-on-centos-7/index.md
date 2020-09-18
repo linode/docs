@@ -5,7 +5,7 @@ author:
 description: 'Install WordPress Using WP-CLI on CentOS 7'
 og_description: 'Install WordPress Using WP-CLI on CentOS 7'
 keywords: ["install WP-CLI", "centos", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
-tags: ["centos", "lamp"]
+tags: ["centos","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2020-02-17

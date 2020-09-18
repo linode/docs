@@ -6,7 +6,7 @@ description: 'Drush is a command line tool for creating, maintaining, and modify
 og_description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on Ubuntu 18.04'
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
 aliases: ['/websites/cms/drush-drupal/','/websites/cms/drupal/drush-drupal/how-to-install-drush-on-ubuntu-18-04/']
-tags: ["lamp", "ubuntu"]
+tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-29
 modified_by:

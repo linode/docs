@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install and configure a structured wiki with TWiki.'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
-tags: ["ubuntu"]
+tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/twiki/ubuntu-10-10-maverick/']
 modified: 2012-10-08

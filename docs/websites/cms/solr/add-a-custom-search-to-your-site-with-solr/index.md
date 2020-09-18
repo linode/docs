@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Index and search your site''s content with Apache Solr, a custom, fast, enterprise-grade, open source search solution.'
 keywords: ["solr", "enterprise search", "lucene", "web search"]
-tags: ["apache", "java", "linux"]
+tags: ["linux","java","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-13
 modified: 2017-09-13

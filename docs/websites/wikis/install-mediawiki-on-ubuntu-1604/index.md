@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A guide for getting started with the popular MediaWiki engine for powering wiki sites.'
 keywords: ["mediawiki", "wiki", "web-applications"]
-tags: ["ubuntu"]
+tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/mediawiki/','/websites/wikis/mediawiki-engine/']
 modified: 2019-08-23

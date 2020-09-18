@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Use cPanel to Manage Domains and Databases
 keywords: ["cpanel", "database", "managing domain", "subdomain", "add-on domain", "parked domain", "phpmyadmin", "mysql", "create database", "manage database"]
-tags: ["dns", "centos"]
+tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/managing-domains-and-databases/','/websites/cms/use-cpanel-to-manage-domains-and-databases/','/web-applications/control-panels/cpanel/managing-domains-and-databases/']
 modified: 2017-02-15

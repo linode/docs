@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
 keywords: ["htaccess", "apache", "wordpress"]
-tags: ["docker", "php", "linux", "analytics"]
+tags: ["docker","linux","analytics","php","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-26
 modified: 2018-06-26

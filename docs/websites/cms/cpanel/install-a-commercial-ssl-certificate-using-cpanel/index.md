@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Generate a CSR and install a commercial SSL certificate through the cPanel interface.'
 keywords: ["ssl", "ip"]
-tags: ["security", "ssl", "centos", "cms"]
+tags: ["centos","cpanel","ssl","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/cpanel/ssl-on-cpanel/','/websites/cms/install-a-commercial-ssl-certificate-using-cpanel/']
 modified: 2017-04-28

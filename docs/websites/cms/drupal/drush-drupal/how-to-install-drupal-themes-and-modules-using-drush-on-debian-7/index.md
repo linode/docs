@@ -5,7 +5,7 @@ author:
 description: 'Using Drush to install themes, modules, and backup systems'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", "debian", "drush"]
 aliases: ['/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/drupal/themes-modules-backups-drupal-drush-on-debian-7/']
-tags: ["debian"]
+tags: ["drupal","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-12-05
 modified_by:

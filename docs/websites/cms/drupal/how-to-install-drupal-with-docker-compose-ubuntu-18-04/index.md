@@ -5,7 +5,7 @@ author:
 description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Ubuntu 18.04 Linode so you can begin developing your own websites.'
 description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Ubuntu 18.04 Linode so you can begin developing your own websites.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04", "docker compose"]
-tags: ["debian", "lamp", "docker", "container"]
+tags: ["drupal","docker","container","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode

@@ -5,7 +5,7 @@ author:
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
 og_description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
-tags: ["lamp", "ubuntu"]
+tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-11
 modified_by:

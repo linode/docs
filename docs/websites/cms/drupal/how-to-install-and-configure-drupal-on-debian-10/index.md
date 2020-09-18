@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Debian 10 Linode so you can begin developing your own websites.'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
-tags: ["apache", "php", "lamp", "debian"]
+tags: ["drupal","apache","lamp","php","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
