@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2011-11-08
 title: How to Use Nano Text Editor Commands in Linux
+tags: ["linux"]
 ---
 
 GNU nano is a popular command line text editor that is included in most Linux distributions. Its interface is comparable to GUI-based text editors, which makes it a popular choice for those who find `vi` or `emacs` commands non-intuitive.

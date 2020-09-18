@@ -19,6 +19,7 @@ external_resources:
  - '[NeoVim official website](https://neovim.io)'
  - '[Neovim-completion-manager](https://github.com/roxma/nvim-completion-manager)'
  - '[Far.vim](https://github.com/brooth/far.vim)'
+tags: ["linux"]
 ---
 
 

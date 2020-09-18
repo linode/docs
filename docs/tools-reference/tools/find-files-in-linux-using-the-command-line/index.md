@@ -14,6 +14,7 @@ title: Find Files in Linux, Using the Command Line
 external_resources:
 - '[Online man Pages](http://man7.org/linux/man-pages/man1/find.1.html)'
 - '[ExplainShell](http://explainshell.com/explain/1/find)'
+tags: ["linux"]
 ---
 
 `find` is a command for recursively filtering objects in the file system based on a simple conditional mechanism. Use `find` to search for a file or directory on your file system. Using the `-exec` flag, files can be found and immediately [processed within the same command](#how-to-find-and-process-files-using-the-find-command).
