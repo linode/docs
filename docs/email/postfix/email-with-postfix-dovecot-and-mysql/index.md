@@ -177,8 +177,8 @@ Note which `id` corresponds to which domain, the `id` value is necessary for the
         INSERT INTO `mailserver`.`virtual_users`
           (`id`, `domain_id`, `password` , `email`)
         VALUES
-          ('1', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email1@example.com'),
-          ('2', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email2@example.com');
+          ('1', '1', SHA2('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email1@example.com'),
+          ('2', '1', SHA2('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email2@example.com');
 
 1.  An email alias will forward all email from one email address to another. To set up an email alias, add it to the `virtual_aliases` table:
 
@@ -847,7 +847,7 @@ To add new domains, email addresses, and aliases to the mailserver you will need
         INSERT INTO `mailserver`.`virtual_users`
           (`domain_id`, `password` , `email`)
         VALUES
-          ('5', ENCRYPT('newpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) , 'email3@newdomain.com');
+          ('5', SHA2('newpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) , 'email3@newdomain.com');
 
     {{< note >}}
 The `domain_id` should correspond to the `id` value of the domain in the `virtual_domains` table. In the example, we are creating an email address for `newdomain.com` added in the previous section.
