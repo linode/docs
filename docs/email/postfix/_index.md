@@ -9,8 +9,6 @@ aliases: ['/email/postfix/postfix2.9.6-dovecot2.0.19-mysql/']
 published: 2009-07-16
 title: Postfix
 show_in_lists: true
-cascade:
-    tags: ["postfix"]
 ---
 
 

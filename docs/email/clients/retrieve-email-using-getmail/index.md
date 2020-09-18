@@ -16,6 +16,7 @@ external_resources:
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
+tags: ["email"]
 ---
 
 Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers.

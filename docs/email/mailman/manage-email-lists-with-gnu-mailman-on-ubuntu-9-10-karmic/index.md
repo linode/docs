@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use the GNU Mailman software to manage email listservs.'
 keywords: ["mailman", "listserv", "email", "postfix"]
-tags: ["ubuntu"]
+tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/mailman/ubuntu-9-10-karmic/']
 modified: 2011-05-17

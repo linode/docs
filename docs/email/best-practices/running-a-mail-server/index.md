@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2013-06-05
 title: Running a Mail Server
+tags: ["email"]
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.

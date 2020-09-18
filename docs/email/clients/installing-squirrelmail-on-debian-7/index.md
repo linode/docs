@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'A guide to installing the SquirrelMail web client for email on Debian 7.'
 keywords: ["squirrelmail", "debian", "debian 7", "mail client"]
-tags: ["debian", "lamp"]
+tags: ["debian","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/squirrelmail-debian7/']
 modified: 2014-01-15

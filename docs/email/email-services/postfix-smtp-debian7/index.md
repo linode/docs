@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn how to use Postfix to send mail through an external SMTP server.'
 keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
-tags: ["postfix", "debian"]
+tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
     name: Santiago Ti
