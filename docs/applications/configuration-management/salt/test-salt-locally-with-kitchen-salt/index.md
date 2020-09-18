@@ -18,6 +18,7 @@ external_resources:
 - '[Writing a Test](https://kitchen.ci/docs/getting-started/writing-test/)'
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
 aliases: ['/applications/configuration-management/test-salt-locally-with-kitchen-salt/']
+tags: ["automation","salt"]
 ---
 
 KitchenSalt allows you to use Test Kitchen to test your Salt configurations locally without a Salt master or minions. In this guide you will install KitchenSalt and use Docker to test a Salt state. This guide was created using a system running Ubuntu 18.04.

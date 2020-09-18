@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Instructions on how to configure a Chef server and a virtual workstation, and how to bootstrap a client node on Ubuntu 18.04.'
 keywords: ["chef", "configuration management", "server automation", "chef server", "chef workstation", "chef-client"]
+tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2019-12-03

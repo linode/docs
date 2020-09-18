@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content.'
 keywords: ['salt','saltstack','github','webhooks','hugo','static site','deployment']
+tags: ["web server","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-15
 modified: 2019-01-02

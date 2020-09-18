@@ -15,6 +15,7 @@ contributor:
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 aliases: ['/applications/configuration-management/deploy-linodes-using-ansible/']
+tags: ["automation"]
 ---
 
 ![How to use the Linode Ansible Module to Deploy Linodes](how-to-use-the-linode-ansible-module-to-deploy-linodes.png "How to use the Linode Ansible Module to Deploy Linodes")

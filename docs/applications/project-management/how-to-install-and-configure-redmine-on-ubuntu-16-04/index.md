@@ -5,6 +5,7 @@ author:
 description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
 og_description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
 keywords: ["nginx", "ubuntu", "redmine"]
+tags: ["ubuntu", "nginx", "ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
 modified: 2018-03-28

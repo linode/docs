@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Build a groupware system with eGroupware.'
 keywords: ["groupware", "email", "collaboration", "fedora"]
+tags: ["fedora", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/project-management/egroupware/fedora-13/']
 modified: 2013-10-04

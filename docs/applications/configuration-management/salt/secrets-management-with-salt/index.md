@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'An overview of available options to manage secrets with SaltStack'
 keywords: ['salt','saltstack','secret','secure','management','sdb','gpg','vault']
+tags: ["security","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-11-06
 modified: 2019-01-02

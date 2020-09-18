@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use phpFox to create and maintain a social networking platform on Debian 5 (Lenny).'
 keywords: ["phpfox", "social networking", "community"]
+tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/phpfox/debian-5-lenny/']
 modified: 2013-10-04
@@ -20,7 +21,7 @@ Please note that you must obtain a license from phpFox in order to run this soft
 
 # Install Prerequisites
 
-Before installing phpFox, make sure you have set up a [LAMP stack](/docs/lamp-guides/debian-5-lenny/). You will also need to install the "curl" and "gd" modules for PHP. Issue the following command:
+Before installing phpFox, make sure you have set up a [LAMP stack](/docs/lamp-guides/debian-5-lenny/). You will also need to install the `curl` and `gd` modules for PHP. Issue the following command:
 
     apt-get install php5-curl php5-gd
 

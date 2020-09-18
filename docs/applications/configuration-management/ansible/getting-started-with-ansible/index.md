@@ -19,6 +19,7 @@ external_resources:
  - '[Ansible Home Page](http://www.ansible.com/home)'
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
+tags: ["automation"]
 ---
 
 ![Automatically Configure Servers with Ansible and Playbooks](automatically-configure-servers-with-ansible-title.jpg "Automatically Configure Servers with Ansible and Playbooks")

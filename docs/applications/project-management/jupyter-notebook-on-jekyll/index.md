@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
 og_description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
-keywords: ["Jupyter", " ruby", " python", " Jekyll"]
+keywords: ["Jupyter", " ruby", " Jekyll"]
+tags: ["ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/project-management/jupyter-nobook-on-jekyll/']
 modified: 2017-11-06

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to use the open source Rancher platform to deploy applications and containers to remote hosts.'
 keywords: ["rancher", "docker", "kubernetes", "container"]
+tags: ["container","docker","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-29
 modified: 2018-01-16

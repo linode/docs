@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Niche and community social networking with Elgg.'
 keywords: ["social networking", "lamp", "elgg", "elgg debian lenny"]
+tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/elgg/']
 modified: 2013-10-04

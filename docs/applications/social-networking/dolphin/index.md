@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
 og_description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
-keywords: ["social network", " dolphin", " boonex"]
+keywords: ["social network", "dolphin", "boonex"]
+tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/dolphin/']
 modified: 2013-10-04

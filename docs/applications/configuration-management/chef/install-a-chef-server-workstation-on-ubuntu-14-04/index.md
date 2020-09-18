@@ -5,6 +5,7 @@ author:
   name: Elle Krout
 description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
 keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
+tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/chef/setting-up-chef-ubuntu-14-04/','/applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/','/applications/configuration-management/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/']
 modified: 2015-06-10
