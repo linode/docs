@@ -3,7 +3,7 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide will walk you through the basics of Fish'
-keywords: ["fish", " fish shell", " fish scripting", " bash", " command line shell", " The Friendly Interactive Shell"]
+keywords: ["fish", "fish shell", "fish scripting", "bash", "command line shell", "The Friendly Interactive Shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-07-18
 modified: 2017-07-18
@@ -15,6 +15,7 @@ external_resources:
 - '[Fish Shell Tutorial](https://geowarin.github.io/the-missing-fish-shell-tutorial.html)'
 - '[Arch Wiki Fish Entry](https://wiki.archlinux.org/index.php/Fish)'
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
+tags: ["linux"]
 ---
 
 ![How to Install, Configure, and Run the Fish Shell](fish_banner.jpg)

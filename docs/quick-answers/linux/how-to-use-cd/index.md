@@ -12,6 +12,7 @@ modified_by:
 published: 2020-06-22
 title: How to Use the cd Command
 h1_title: Using the cd Command
+tags: ["linux"]
 ---
 
 ## What is cd?

@@ -12,6 +12,7 @@ modified_by:
 title: 'Alias Frequently Used Commands in Linux'
 external_resources:
 - '[alias on man7.org](http://man7.org/linux/man-pages/man1/alias.1p.html)'
+tags: ["linux"]
 ---
 
 ## What is an Alias?
