@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-10-28
 title: 'Redis on Ubuntu 10.10 (Maverick)'
+tags: ["ubuntu","database","nosql"]
 ---
 
 

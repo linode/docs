@@ -13,6 +13,7 @@ published: 2017-12-07
 title: Configure PostgreSQL
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
+tags: ["database","postgresql"]
 ---
 
 ![Configure PostgreSQL](Configure_PostgreSQL.jpg)

@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Oracle 10g Express Edition on Ubuntu 10.10 (Maverick)'
+tags: ["ubuntu","database"]
 ---
 
 

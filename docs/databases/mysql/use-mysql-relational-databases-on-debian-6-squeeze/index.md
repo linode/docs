@@ -12,6 +12,7 @@ modified_by:
   name: Alex Fornuto
 published: 2011-01-26
 title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
+tags: ["debian","database","mysql"]
 ---
 
 

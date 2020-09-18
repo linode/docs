@@ -12,6 +12,7 @@ modified_by:
   name: Alex Fornuto
 published: 2014-01-28
 title: Using MySQL Relational Databases on Fedora 20
+tags: ["database","mysql","fedora"]
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 14 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.

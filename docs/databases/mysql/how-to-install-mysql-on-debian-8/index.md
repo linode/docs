@@ -17,6 +17,7 @@ external_resources:
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance)'
+tags: ["debian","database","mysql"]
 ---
 
 ![How to Install MySQL on Debian 8](how-to-install-mysql-on-debian-8.jpg "How to Install MySQL on Debian 8")

@@ -11,6 +11,7 @@ modified_by:
     name: Elle Krout
 published: 2014-01-02
 title: 'How to Install and Configure phpMyAdmin on Debian 8'
+tags: ["debian","database","mysql","php"]
 ---
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.

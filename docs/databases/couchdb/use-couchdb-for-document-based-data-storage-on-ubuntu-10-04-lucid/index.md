@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Use CouchDB for Document Based Data Storage on Ubuntu 10.04 (Lucid)'
+tags: ["ubuntu","database","nosql"]
 ---
 
 

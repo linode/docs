@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-08-05
 title: 'Redis on Ubuntu 9.10 (Karmic)'
+tags: ["ubuntu","database","nosql"]
 ---
 
 

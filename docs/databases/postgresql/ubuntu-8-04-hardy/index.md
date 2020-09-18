@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-09-13
 title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
+tags: ["ubuntu","database","postgresql"]
 ---
 
 

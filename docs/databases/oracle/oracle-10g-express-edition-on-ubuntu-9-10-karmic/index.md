@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-05-09
 title: 'Oracle 10g Express Edition on Ubuntu 9.10 (Karmic)'
+tags: ["ubuntu","database"]
 ---
 
 

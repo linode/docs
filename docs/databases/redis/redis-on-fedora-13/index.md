@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-08-05
 title: Redis on Fedora 13
+tags: ["nosql","database","fedora"]
 ---
 
 

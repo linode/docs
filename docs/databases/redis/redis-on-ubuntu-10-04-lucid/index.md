@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-07-28
 title: 'Redis on Ubuntu 10.04 (Lucid)'
+tags: ["ubuntu","database","nosql"]
 ---
 
 

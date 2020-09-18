@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2009-08-11
 title: Use MySQL Relational Databases on Fedora 12
+tags: ["database","mysql","fedora"]
 ---
 
 
