@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'How to link your Minecraft servers together using BungeeCord on your Linode with Ubuntu/Debian'
 keywords: ["minecraft", "spigot", "bungeecord", "link", "bukkit", "25565", "minecraft servers", "linking minecraft servers", "how to set up bungeecord"]
+tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'

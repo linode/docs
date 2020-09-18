@@ -4,6 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'A basic Team Fortress 2 server installation guide for Debian and Ubuntu'
 keywords: ["team fortress 2", "team fortress", "steam", "ubuntu", "debian"]
+tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
 modified_by:
