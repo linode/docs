@@ -12,6 +12,7 @@ title: How to Return JSON Output from the Linode CLI
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 The CLI will return output in tabulated format for easy readability. If you prefer to work with JSON, use the `--json` flag. Adding the `--pretty` flag will format the JSON output to make it more readable:

@@ -12,6 +12,7 @@ title: How to Deploy a New Linode from a Saved Linode Disk Image
 keywords: ["images"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Deploying one of your saved images to any Linode under your account is a simple process.

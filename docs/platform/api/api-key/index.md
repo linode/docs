@@ -3,7 +3,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Learn how to generate, update, and disable your Linode API key.'
-keywords: ["linode api", " api key", " key"]
+keywords: ["linode api", "api key", "key"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/api/key/']
 deprecated: true

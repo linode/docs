@@ -14,6 +14,7 @@ title: "Common Linode StackScripts Use Cases"
 h1_title: "Common Use Cases for Linode StackScripts"
 contributor:
   name: Linode
+tags: ["linode platform","automation"]
 ---
 ## What are StackScripts?
 

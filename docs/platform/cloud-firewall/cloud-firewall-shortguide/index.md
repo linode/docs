@@ -12,6 +12,7 @@ title: Cloud Firewall Availability
 keywords: ["cloud firewall"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 {{< note >}}

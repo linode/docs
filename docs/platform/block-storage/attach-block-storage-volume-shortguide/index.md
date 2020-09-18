@@ -12,6 +12,7 @@ title: Attach an existing Block Storage Volume
 keywords: ["block storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  Click on the **Volumes** link in the sidebar to see your account's Volume list:

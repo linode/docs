@@ -15,6 +15,7 @@ title: Using the Linode CLI
 external_resources:
   - '[Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/)'
   - '[Linode API Documentation](https://developers.linode.com/)'
+tags: ["linode platform"]
 ---
 
 ![Linode CLI](using-the-linode-cli.png "Linode CLI")

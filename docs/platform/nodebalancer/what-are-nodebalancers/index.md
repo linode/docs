@@ -13,6 +13,7 @@ published: 2020-07-16
 title: What Are NodeBalancers
 h1_title: Understanding NodeBalancers
 image: getting-started-with-nodebalancers.png
+tags: ["linode platform","networking"]
 ---
 
 Load balancing allows you to distribute incoming network traffic across multiple servers so that no one server takes on all the demand. This allows high traffic sites and applications to field a large number of users without performance degradation. It also allows you to scale a site or application by adding more servers as your need grows, or remove them if your need diminishes.

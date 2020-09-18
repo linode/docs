@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2011-07-08
 title: NodeBalancer Reference Guide
+tags: ["linode platform","networking"]
 ---
 
 ![NodeBalancer Reference Guide](nodebalancer-reference-guide.png "NodeBalancer Reference Guide")

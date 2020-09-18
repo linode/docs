@@ -5,6 +5,7 @@ author:
 description: 'Deploy Django on Linode using One-Click Apps. Django is a Python based web development framework that allows for quick development with less code. Out of the box, Django provides much of the core functionality most web developers require so they can focus on developing application code.'
 og_description: 'Deploy Django on Linode using One-Click Apps. Django is a Python based web development framework that allows for quick development with less code. Out of the box, Django provides much of the core functionality most web developers require so they can focus on developing application code.'
 keywords: ['django','one-click', 'cms']
+tags: ["cloud-manager","linode platform","cms","django","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2020-03-11

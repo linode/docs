@@ -12,6 +12,7 @@ title: How to Build a Query for the Linode API
 keywords: ["api"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Replace the values in the command below with your chosen type, region, and image, and choose a label and secure password.

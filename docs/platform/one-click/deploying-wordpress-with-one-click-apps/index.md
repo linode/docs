@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy a WordPress website on Linode using One-Click Apps.'
 keywords: ['wordpress','wp cli','one-click apps', 'cms']
+tags: ["cloud-manager","linode platform","cms","wordpress","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-09
 modified: 2020-04-09

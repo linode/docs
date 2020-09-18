@@ -12,6 +12,7 @@ title: How to Restore a Backup to a New Linode
 keywords: ["backups"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 These steps cover how to restore a backup to a new Linode that does not already have any disks deployed to it. The new Linode will be located in the same data center.

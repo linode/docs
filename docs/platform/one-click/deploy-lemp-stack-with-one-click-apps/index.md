@@ -5,6 +5,7 @@ author:
 description: 'Use One-Click Apps to deploy a LEMP stack on Linode'
 og_description: 'Use One-Click Apps to deploy a LEMP stack on Linode'
 keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
+tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2020-03-11

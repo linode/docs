@@ -12,6 +12,7 @@ title: How to Get Configuration Parameters from the Linode API
 keywords: ["api"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Specify the type, region, and image for the new Linode.

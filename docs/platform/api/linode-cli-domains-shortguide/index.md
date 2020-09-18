@@ -12,6 +12,7 @@ title: How to manage Domains with the CLI
 keywords: ["domains"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  List the Domains on your account:

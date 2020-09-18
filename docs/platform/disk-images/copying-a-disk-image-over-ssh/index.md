@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: "Create a disk image using dd and download it to another machine over SSH."
 keywords: ["copy", "disk", "ssh", "dd"]
+tags: ["linode platform","ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/disk-images/copying-a-disk-image-over-ssh/','/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/','/migration/ssh-copy/']
 modified_by:

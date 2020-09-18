@@ -12,6 +12,7 @@ title: How to Generate a Key Pair for the Linode Object Storage Service
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  Log into the [Linode Cloud Manager](https://cloud.linode.com).

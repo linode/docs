@@ -12,6 +12,7 @@ modified_by:
 published: 2014-02-28
 title: Billing and Payments
 deprecated: true
+tags: ["linode platform"]
 ---
 
 {{< note >}}

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to upgrading and resizing your Linode
 keywords: ["upgrading", "resizing", "disk space"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/disk-images/resizing-a-linode-classic-manager/','/resizing/','/migrate-to-linode/disk-images/resizing-a-linode/']
 modified: 2019-03-28

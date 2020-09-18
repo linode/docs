@@ -11,6 +11,7 @@ title: A Beginner's Guide to Linode GPU Instances
 h1_title: Getting Started with Linode GPU Instances
 modified_by:
   name: Linode
+tags: ["linode platform"]
 ---
 
 ![Getting Started with Linode GPU Instances](getting-started-with-linode-gpu-instances.png "Getting Started with Linode GPU Instances")
