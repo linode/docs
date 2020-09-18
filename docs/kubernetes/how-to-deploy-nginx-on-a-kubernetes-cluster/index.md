@@ -3,6 +3,7 @@ author:
   name: Kiran Singh
 description: 'This guide shows how to install Kubernetes on a Linode with CentOS or Ubuntu. Includes a section on how to deploy nginx to the example cluster.'
 keywords: ["kubernetes","docker","container","deployment","nginx"]
+tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode

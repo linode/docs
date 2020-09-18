@@ -8,6 +8,7 @@ contributor:
 description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
 og_description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster", "ssl", "certbot", "lets-encrypt", "tls"]
+tags: ["secuity","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-13
 modified_by:

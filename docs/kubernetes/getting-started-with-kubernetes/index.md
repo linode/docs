@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use kubeadm to deploy a cluster on Linode and get started with Kubernetes.'
 keywords: ['kubernetes','orchestration','docker','container']
+tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-30
 modified_by:

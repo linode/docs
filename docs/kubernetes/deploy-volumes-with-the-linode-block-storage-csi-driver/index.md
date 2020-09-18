@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver.'
 keywords: ['container','kubernetes','block','storage','volume','csi','interface','driver']
+tags: ["linode platform","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-18
 modified: 2020-07-29

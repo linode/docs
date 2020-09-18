@@ -15,6 +15,7 @@ keywords:
     "elk",
     "helm",
   ]
+tags: ["monitoring","container","kubernetes","docker"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-07-07
 modified_by:

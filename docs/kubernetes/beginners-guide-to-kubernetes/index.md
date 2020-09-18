@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'An introduction to Kubernetes concepts and components.'
 keywords: ['kubernetes','k8s','beginner','architecture']
+tags: ["kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
@@ -12,7 +13,7 @@ title: "A Beginner's Guide to Kubernetes"
 aliases: ['/applications/containers/beginners-guide-to-kubernetes/','/applications/containers/kubernetes/beginners-guide-to-kubernetes/']
 contributor:
   name: Linode
-concentrations: ["Kubernetes"]
+concentrations: ["Kubernetes", "container"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'

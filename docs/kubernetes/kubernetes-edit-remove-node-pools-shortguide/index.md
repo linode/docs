@@ -12,6 +12,7 @@ title: How to Edit, Recycle, or Remove Node Pools in Your Linode Kubernetes Engi
 keywords: ["kubernetes"]
 headless: true
 show_on_rss_feed: false
+tags: ["kubernetes"]
 ---
 
 1. On your [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page), click the **Resize Pool** option at the top-right of each entry in the **Node Pools** section.

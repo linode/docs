@@ -15,6 +15,7 @@ h1_title: "A Tutorial for Deploying and Managing a Cluster with Linode Kubernete
 contributor:
   name: Linode
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
+tags: ["kubernetes"]
 ---
 
 ## What is the Linode Kubernetes Engine (LKE)?

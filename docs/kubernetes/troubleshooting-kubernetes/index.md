@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn frequently-used troubleshooting commands for Kubernetes and review common Kubernetes issues.'
 keywords: ['kubernetes','cluster','troubleshooting','k8s','kubectl']
+tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
