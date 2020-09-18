@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A quick answer on how to proxy Burp Suite traffic through a Linode.'
 keywords: ["burp suite", "burp", "proxy"]
-tags: ["proxy"]
+tags: ["linode platform","cloud manager","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-06
 modified_by:

@@ -15,6 +15,7 @@ external_resources:
 - '[Fish Shell Tutorial](https://geowarin.github.io/the-missing-fish-shell-tutorial.html)'
 - '[Arch Wiki Fish Entry](https://wiki.archlinux.org/index.php/Fish)'
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
+tags: ["linux"]
 ---
 
 ![How to Install, Configure, and Run the Fish Shell](fish_banner.jpg)

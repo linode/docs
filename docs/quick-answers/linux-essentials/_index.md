@@ -8,6 +8,4 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-05-22
 title: Linux Essentials
 show_in_lists: true
-cascade:
-    tags: ["linux"]
 ---

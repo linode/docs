@@ -6,7 +6,7 @@ description: 'If you are switching to Ubuntu 18.04, are already familiar with SE
 og_description: 'If you are switching to Ubuntu 18.04, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.'
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/']
-tags: ["ubuntu"]
+tags: ["ubuntu","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-17
 modified_by:

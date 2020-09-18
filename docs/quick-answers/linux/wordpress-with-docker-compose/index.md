@@ -3,7 +3,7 @@ author:
   name: Nathan Melehan
   email: nmelehan@linode.com
 keywords: ["Docker", "Docker Compose", "WordPress"]
-tags: ["wordpress", "docker"]
+tags: ["wordpress","docker","linux"]
 description: This guide explains how to set up WordPress with Docker Compose.
 og_description: This guide explains how to set up WordPress with Docker Compose.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
