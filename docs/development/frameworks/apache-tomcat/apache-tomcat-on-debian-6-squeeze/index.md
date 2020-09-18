@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Squeeze.)'
 keywords: ["java", "apache tomcat", "java debian", "java lenny"]
-tags: ["debian"]
+tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/apache-tomcat-on-debian-6-squeeze/','/development/frameworks/apache-tomcat-on-debian-6-squeeze/','/frameworks/apache-tomcat/debian-6-squeeze/']
 modified: 2011-05-13

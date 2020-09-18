@@ -18,6 +18,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
+tags: ["python"]
 ---
 
 ![How to Set Up a Task Queue with Celery and RabbitMQ](how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.10 (Karmic).'
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.10", "karmic"]
-tags: ["python", "apache", "ubuntu", "database"]
+tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/','/frameworks/django-apache-mod-python/ubuntu-9-10-karmic/','/development/frameworks/django-apache-and-modpython-on-ubuntu-9-10-karmic/']
 modified: 2011-05-17

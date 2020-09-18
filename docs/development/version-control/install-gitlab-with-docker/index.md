@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to install GitLab with Docker.'
 keywords: ['gitlab', 'git', 'docker']
-tags: ["docker"]
+tags: ["version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-11
 modified: 2019-01-11

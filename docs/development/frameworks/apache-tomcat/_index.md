@@ -9,6 +9,4 @@ aliases: ['/tomcat/']
 published: 2020-04-15
 title: Apache Tomcat
 show_in_lists: true
-cascade:
-    tags: ["java"]
 ---

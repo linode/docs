@@ -17,6 +17,7 @@ external_resources:
  - '[cpanminus Development](http://github.com/miyagawa/cpanminus/)'
 audiences: ["beginner"]
 languages: ["perl"]
+tags: ["perl"]
 ---
 
 ![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)

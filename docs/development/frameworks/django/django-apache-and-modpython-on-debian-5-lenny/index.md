@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Debian 5.'
 keywords: ["django", "python", "apache", "mod\\_python"]
-tags: ["python", "apache", "debian", "database"]
+tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/django-apache-mod-python/debian-5-lenny/','/development/frameworks/django-apache-and-modpython-on-debian-5-lenny/','/websites/frameworks/django-apache-and-modpython-on-debian-5-lenny/']
 modified: 2013-09-27

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Debian 6 Squeeze to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
-tags: ["debian", "apache", "web applications"]
+tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/ruby-on-rails-apache/debian-6-squeeze/','/websites/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/']
 modified: 2013-09-26

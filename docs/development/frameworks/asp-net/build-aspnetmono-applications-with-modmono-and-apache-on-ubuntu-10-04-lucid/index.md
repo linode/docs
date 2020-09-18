@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
-tags: ["apache", "mysql", "php", "ubuntu"]
+tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/','/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/','/frameworks/mod-mono/ubuntu-10-04-lucid/']
 modified: 2013-09-27

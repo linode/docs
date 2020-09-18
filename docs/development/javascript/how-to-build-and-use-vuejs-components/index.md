@@ -18,6 +18,7 @@ external_resources:
 - '[VueJS](https://vuejs.org/)'
 audiences: ["beginner"]
 languages: ["javascript"]
+tags: ["web applications"]
 ---
 
 ## What are VueJS Components

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install the Oracle Java development kit'
 keywords: ["oracle", "java", "JDK", "install java", "ubuntu"]
-tags: ["ubuntu"]
+tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/install-java-on-ubuntu-16-04/','/development/install-java-on-ubuntu-16-04/']
 modified: 2017-05-30

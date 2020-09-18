@@ -20,6 +20,7 @@ external_resources:
 audiences: ["intermediate"]
 languages: ["python"]
 aliases: ['/development/monitor-filesystem-events-with-pyinotify/']
+tags: ["python"]
 ---
 
 ![banner_image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg)

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Deploy simple web applications with the Sinatra web development framework.'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
-tags: ["debian", "nginx"]
+tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/sinatra/debian-6-squeeze/','/websites/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/']
 modified: 2013-09-27

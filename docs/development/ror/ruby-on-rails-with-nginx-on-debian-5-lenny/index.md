@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Debian 5 (Lenny) operating system.'
 keywords: ["ruby on rails", "rails on debian", "ruby on nginx", "rails apps"]
-tags: ["debian", "nginx", "web applications"]
+tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/','/frameworks/ruby-on-rails-nginx/debian-5-lenny/']
 modified: 2011-08-22

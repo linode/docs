@@ -9,8 +9,6 @@ aliases: ['/frameworks/']
 published: 2009-07-16
 title: Web Application Frameworks
 show_in_lists: true
-cascade:
-    tags: ["web applications"]
 ---
 
 

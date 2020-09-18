@@ -4,7 +4,7 @@ author:
   email: abalarin@linode.com
 description: 'This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode.'
 keywords: ['python','flask','gunicorn','nginx', 'flask deployment', 'python flask']
-tags: ["ubuntu", "nginx", "monitoring"]
+tags: ["monitoring","python","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-10
 modified: 2020-07-11

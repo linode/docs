@@ -12,6 +12,7 @@ title: "How to install Python 3 with Miniconda"
 published: 2018-01-09
 headless: true
 show_on_rss_feed: false
+tags: ["python"]
 ---
 <!-- Installation instructions for Python 3. -->
 

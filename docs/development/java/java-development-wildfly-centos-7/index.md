@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications'
 keywords: ["java", "jboss", "jboss as", "wildfly", "apache", "mysql", "mariaDB"]
-tags: ["centos", "mysql", "apache"]
+tags: ["mysql","apache","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-18
 aliases: ['/development/java-development-wildfly-centos-7/','/applications/development/java-development-wildfly-centos-7/']

@@ -12,6 +12,7 @@ title: "How to install Git on Linux"
 published: 2018-01-08
 headless: true
 show_on_rss_feed: false
+tags: ["version control system"]
 ---
 
 - Debian and Ubuntu:

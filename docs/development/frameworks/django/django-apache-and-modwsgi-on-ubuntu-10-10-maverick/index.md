@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 10.10 Maverick.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
-tags: ["python", "apache", "ubuntu", "database"]
+tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/frameworks/django-apache-mod-wsgi/ubuntu-10-10-maverick/','/websites/frameworks/django-apache-and-modwsgi-on-ubuntu-10-10-maverick/','/development/frameworks/django-apache-and-modwsgi-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08
