@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Get in-depth web analytics with Piwik, a self-hosted, open source solution on Debian Lenny.'
 keywords: ["open source analytics", "piwik debian", "piwik", "analytics", "debian. tracking", "statistics"]
+tags: ["debian","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/debian-5-lenny/']
 modified: 2014-01-28

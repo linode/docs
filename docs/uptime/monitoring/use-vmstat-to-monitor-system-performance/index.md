@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use the vmstat tool to monitor your system''s virtual memory usage.'
 keywords: ["virtual memory", "memory", "linux", "ram", "usage", "troubleshooting."]
+tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/common-commands/vmstat/']
 modified: 2017-10-04

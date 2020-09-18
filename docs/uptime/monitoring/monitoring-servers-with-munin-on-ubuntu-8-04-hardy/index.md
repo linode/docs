@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 8.04 (Hardy).'
 keywords: ["munin", "monitoring"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/munin/ubuntu-8-04-hardy/']
 modified: 2011-05-17

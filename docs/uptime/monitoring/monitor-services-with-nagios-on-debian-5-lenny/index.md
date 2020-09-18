@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Debian 5 (Lenny).'
 keywords: ["nagios", "monitoring"]
+tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/debian-5-lenny/']
 modified: 2011-06-30
