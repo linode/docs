@@ -5,6 +5,7 @@ author:
 description: 'Configurations for common DNS records.'
 og_description: 'This guide explains how to use the Linode Cloud Manger to configure DNS records'
 keywords: ["dns", "dnssec"]
+tags: ["dns","networking","cloud manager","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/','/dns-manager/']
 modified: 2019-03-14

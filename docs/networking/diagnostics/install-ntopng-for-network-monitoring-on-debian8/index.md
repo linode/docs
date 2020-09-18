@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows.'
 keywords: ["ntopng", "network monitor", "diagnostics"]
+tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-05-10
 aliases: ['/networking/diagnostics/deploy-ntopng-on-debian-8/']
