@@ -34,6 +34,8 @@ The Jitsi One-Click form includes advanced fields to setup your Jitsi server's d
 
 {{< note >}}
 To use Jitsi with encrypted connections, you need an SSL certificate. If you choose to create the free SSL certificate during setup, you must have a fully qualified domain name registered prior to installation.
+
+If Jitsi is not created with the SSL option enabled, it will use a self-signed certificate which may trigger an `invalid certificate` response in some browsers.
 {{</ note >}}
 
 | **Field** | **Description** |
