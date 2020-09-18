@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 10.04 operating system.'
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
+tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-10-04-lucid/','/frameworks/ruby-on-rails-nginx/ubuntu-10-04-lucid/']
 modified: 2014-02-05

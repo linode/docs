@@ -11,6 +11,7 @@ published: 2015-12-02
 title: "A Beginner's Guide to GitHub"
 h1_title: "Getting Started with GitHub"
 aliases: ['/github-guide/']
+tags: ["version control system"]
 ---
 
 ![GitHub Beginner's Guide](github-beginners-guide.png "GitHub Beginner's Guide")

@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Debian 5 (Lenny).'
 keywords: ["mantis", "mantis debian", "mantis linux", "bug tracker", "development"]
+tags: ["debian", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/','/web-applications/project-management/mantis/debian-5-lenny/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/']
 modified: 2011-04-29

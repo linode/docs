@@ -5,6 +5,7 @@ author:
 description: 'How to install NGINX for static content and Node.js for dynamic requests.'
 og_description: 'How to install NGINX for static content and Node.js for dynamic requests.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", " debian", " front-end requests", " back-end requests"]
+tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/']
 modified: 2017-04-11

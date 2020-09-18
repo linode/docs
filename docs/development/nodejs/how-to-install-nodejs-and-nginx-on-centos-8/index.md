@@ -5,6 +5,7 @@ author:
 description: 'In this guide you will install and configure NGINX to serve static site content on an CentOS 8 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
 og_description: 'In this guide you will install and configure NGINX to serve static site content on an CentOS8 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "centos", " front-end requests", " back-end requests"]
+tags: ["centos", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-14
 modified_by:
@@ -124,7 +125,7 @@ http {
         sudo firewall-cmd --reload
 
       {{< note >}}
-If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
+If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
 
     sudo setsebool -P httpd_can_network_connect on
       {{< /note >}}

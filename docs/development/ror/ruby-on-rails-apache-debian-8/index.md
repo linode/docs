@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Debian 8 Wheezy to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
+tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ror/ruby-on-rails-apache-debian-8/']
 modified: 2017-09-13

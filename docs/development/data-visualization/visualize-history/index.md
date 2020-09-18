@@ -4,6 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'An overview of popular open source data visualization packages for R, Python, and JavaScript.'
 keywords: ["Visualization", "R", "Python", "Perl", "pandas"]
+tags: ["python", "perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-27
 modified_by:

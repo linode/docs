@@ -5,6 +5,7 @@ author:
 description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
 og_description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
 keywords: ["wercker", "docker", "development"]
+tags: ["automation","version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/how-to-develop-and-deploy-your-applications-using-wercker/']
 published: 2017-11-06
