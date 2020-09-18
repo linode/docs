@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Index and search your site''s content with Apache Solr, a custom, fast, enterprise-grade, open source search solution.'
 keywords: ["solr", "enterprise search", "lucene", "web search"]
+tags: ["linux","java","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-13
 modified: 2017-09-13
@@ -17,7 +18,6 @@ external_resources:
   - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'
 aliases: ['/websites/cms/add-a-custom-search-to-your-site-with-solr/']
 ---
-
 
 Apache Solr is an open source search platform that provides administrators with a customizable and scalable solution for managing online content. Solr can be configured to index all uploaded data, resulting in fast search results, whether used enterprise-wide or with a single website. In addition to a built-in web control interface, developers can also link access via a client API.
 

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the Movable Type dynamic content platform to publish a website.'
 keywords: ["Movable Type", "MT HOWTO"]
+tags: ["cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/cms-guides/movable-type/','/websites/cms/manage-web-content-with-movable-type/']
 modified: 2013-10-02

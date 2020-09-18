@@ -5,6 +5,7 @@ author:
 description: 'Install WordPress Using WP-CLI on Debian 9'
 og_description: 'Install WordPress Using WP-CLI on Debian 9'
 keywords: ["install WP-CLI", "debian", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
+tags: ["debian","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2020-02-17

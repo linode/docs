@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Centos 5.'
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
+tags: ["proxy","centos","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-centos-5/']
 modified: 2011-04-29
