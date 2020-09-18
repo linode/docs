@@ -12,6 +12,7 @@ modified_by:
 image: GettingStartedwithSalt.png
 published: 2015-09-22
 title: Getting Started with Salt - Basic Installation and Setup
+tags: ["automation","salt"]
 ---
 
 [Salt](https://saltstack.com/) is a Python-based configuration management platform designed to control a number of slave servers (called Minions in Salt terminology) from a single master server. This guide walks you through configuring a Salt Master and Minion, and is relevant to any supported Linux distribution.

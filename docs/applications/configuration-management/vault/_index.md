@@ -5,8 +5,6 @@ author:
 description: "HashiCorp Vault is a secrets management tool that helps to provide secure, automated access to sensitive data. Vault meets these use cases by coupling authentication methods to secret engines using policies to control how access is granted."
 og_description: 'HashiCorp Vault is a secrets management tool that helps to provide secure, automated access to sensitive data. Vault meets these use cases by coupling authentication methods to secret engines using policies to control how access is granted.'
 keywords: ["hashicorp", "Vault", "configuration management"]
-cascade:
-    tags: ["security", "automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
 title: Vault

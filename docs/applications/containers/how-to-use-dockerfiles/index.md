@@ -7,7 +7,7 @@ contributor:
   link: https://twitter.com/jlwallen
 description: 'This guide introduces Dockerfiles and how to use them to build a Docker Image on your Linode.'
 keywords: ["docker", "container", "dockerfile"]
-tags: ["docker"]
+tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-08-29
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to monitor Salt minions with beacons.'
 keywords: ['salt','saltstack','minion','minions','beacon','beacons','reactor','reactors','monitor','configuration drift','slack']
-tags: ["monitoring"]
+tags: ["monitoring","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-19
 modified: 2019-01-02

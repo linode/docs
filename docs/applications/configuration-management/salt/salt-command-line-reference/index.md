@@ -17,6 +17,7 @@ external_resources:
 - '[SaltStack Command Line Documentation](https://docs.saltstack.com/en/latest/ref/cli/index.html)'
 - '[Linode Cloud Module](https://docs.saltstack.com/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
 aliases: ['/applications/configuration-management/salt-command-line-reference/']
+tags: ["automation","salt"]
 ---
 
 [SaltStack](https://github.com/saltstack/salt) is a powerful configuration management tool. The following is a quick-reference guide for Salt's command line interface (CLI).

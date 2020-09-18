@@ -5,7 +5,7 @@ author:
 description: 'This tutorial will explain how to configure Filebeat and Metricbeat to monitor Docker container logs and metrics to be stored in Elasticsearch and visualized in Kibana.'
 og_description: 'Monitor Docker containers using the Elastic Stack.'
 keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "docker", "container", "nginx"]
-tags: ["docker", "nginx"]
+tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-10
 modified_by:

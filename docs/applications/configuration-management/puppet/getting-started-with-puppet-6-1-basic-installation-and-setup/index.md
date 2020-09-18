@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu and CentOS servers.'
 keywords: ["puppet installation", "configuration change management", "server automation"]
-tags: ["ubuntu", "centos"]
+tags: ["ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-15
 modified_by:

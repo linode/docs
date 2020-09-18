@@ -5,7 +5,7 @@ author:
 description: 'Shortguide for installing Docker CE'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "containers", "docker CE"]
-tags: ["docker"]
+tags: ["container","docker"]
 modified: 2018-04-24
 modified_by:
   name: Sam Foo

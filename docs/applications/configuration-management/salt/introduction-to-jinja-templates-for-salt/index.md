@@ -17,6 +17,7 @@ external_resources:
 - '[Salt States Tutorial](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html)'
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
 aliases: ['/applications/configuration-management/introduction-to-jinja-templates-for-salt/']
+tags: ["automation","salt"]
 ---
 ## Introduction to Templating Languages
 

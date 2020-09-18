@@ -17,6 +17,7 @@ external_resources:
 - '[Salt Formulas](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
 - '[Git Fileserver Backend Walkthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
 aliases: ['/applications/configuration-management/use-and-modify-official-saltstack-formulas/']
+tags: ["automation","salt"]
 ---
 
 ## Salt State Files

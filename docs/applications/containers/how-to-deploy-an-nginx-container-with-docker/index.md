@@ -7,7 +7,7 @@ contributor:
   link: https://twitter.com/jlwallen
 description: 'An introduction to deploying and using Docker containers on your Linode.'
 keywords: ["docker", "container", "dockerfile", "nginx container"]
-tags: ["docker", "nginx"]
+tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-07-19
 modified_by:

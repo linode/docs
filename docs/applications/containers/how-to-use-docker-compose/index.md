@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: "How to Use Docker Compose"
 keywords: ["docker", "compose"]
-tags: ["docker"]
+tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-28
 modified_by:

@@ -5,7 +5,7 @@ author:
 description: 'This guide will show you how to link Docker containers using a Node.js application and PostgreSQL.'
 og_description: "Learn to link Docker containers using a Node.js application and PostgreSQL through a simple 'Hello World' application."
 keywords: ['docker','containers','database','container communication']
-tags: ["docker", "postgresql", "database"]
+tags: ["postgresql","database","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-28
 modified: 2017-11-29
