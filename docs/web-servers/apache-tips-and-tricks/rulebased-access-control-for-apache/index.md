@@ -20,6 +20,7 @@ external_resources:
  - '[Apache Troubleshooting](/docs/web-servers/apache/troubleshooting/)'
  - '[Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)'
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
+tags: ["web server","apache"]
 ---
 
 

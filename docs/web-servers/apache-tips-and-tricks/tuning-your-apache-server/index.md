@@ -16,6 +16,7 @@ external_resources:
  - '[Apache MPM Common Directives](http://httpd.apache.org/docs/2.4/mod/mpm_common.html)'
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
 dedicated_cpu_link: true
+tags: ["web server","apache"]
 ---
 
 ![Tuning Your Apache Server](tuning-your-apache-server.png "Tuning Your Apache Server")

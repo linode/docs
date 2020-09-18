@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2018-02-09
 title: 'Getting Started with NGINX - Part 1: Installation and Basic Setup'
+tags: ["web server","nginx"]
 ---
 
 ![Getting Started with NGINX - Part 1: Installation and Basic Setup](Getting-Started-with-NGINX-Part-1-smg.jpg)

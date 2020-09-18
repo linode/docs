@@ -5,6 +5,7 @@ author:
 description: 'Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership.'
 og_description: 'Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership.'
 keywords: ["Bise", "Apache", "Analytics", "Blogging"]
+tags: ["web server","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-17
 modified_by:

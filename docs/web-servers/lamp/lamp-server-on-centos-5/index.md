@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Creating a LAMP stack on a CentOS 5 Linode.'
 keywords: ["LAMP", "CentOS", "CentOS 5"]
+tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/centos-5/','/websites/lamp/lamp-server-on-centos-5/']
 modified: 2011-07-19

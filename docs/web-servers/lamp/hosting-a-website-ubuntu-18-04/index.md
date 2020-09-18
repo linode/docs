@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to hosting a website on your Linode.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
+tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/hosting-a-website-ubuntu-18-04/','/websites/hosting-a-website/','/hosting-website/']
 modified: 2018-08-03

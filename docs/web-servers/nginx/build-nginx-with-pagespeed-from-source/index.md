@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: 'Build NGINX with PageSpeed From Source'
 dedicated_cpu_link: true
+tags: ["web server","nginx"]
 ---
 
 ![Build NGINX with PageSpeed From Source](build-nginx-pagespeed-from-source-title.jpg "Build NGINX with PageSpeed From Source title graphic")

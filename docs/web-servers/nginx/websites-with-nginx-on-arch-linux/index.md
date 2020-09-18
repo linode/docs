@@ -12,6 +12,7 @@ modified_by:
   name: Alex Fornuto
 published: 2011-02-02
 title: Websites with NGINX on Arch Linux
+tags: ["web server","nginx"]
 ---
 
 Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, NGINX uses an asynchronous event-driven model to provide more predictable performance under load.

@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 8.04 LTS (Hardy).'
 keywords: ["apache", "apache ubuntu 8.04", "apache ubuntu hardy", "web server", "apache on ubuntu", "apache hardy"]
+tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/ubuntu-8-04-hardy/','/websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
 modified: 2011-05-17

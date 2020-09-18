@@ -19,6 +19,7 @@ external_resources:
  - '[Guide for URL Rewriting with Apache](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/)'
  - '[Troubleshooting Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
  - '[Linode User Community](http://linode.com/community/)'
+tags: ["web server","apache"]
 ---
 
 In many cases, all of the resources served by an Apache host are located in that host's `DocumentRoot`. The `DocumentRoot` is a directory specified in the `<VirtualHost>` configuration block. This directory is intended to represent the various files, directories, and resources that users access over HTTP on the file system. However, it is common for administrators to provide HTTP access to a resource on the file system which is *not* located in the `DocumentRoot`. While Apache will follow symbolic links in some situations, this can be difficult to maintain. As a result Apache makes it possible to specify an `Alias` that connects a location in the request to an alternate location.

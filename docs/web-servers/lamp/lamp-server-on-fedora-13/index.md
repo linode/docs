@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode.'
 keywords: ["fedora 13 lamp", "lamp server", "linux lamp", "fedora 13 apache"]
+tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/fedora-13/','/websites/lamp/lamp-server-on-fedora-13/']
 modified: 2011-05-02

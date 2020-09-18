@@ -17,6 +17,7 @@ external_resources:
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
+tags: ["web server","php","mysql","apache","lamp"]
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack an Arch Linux server.

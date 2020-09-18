@@ -17,6 +17,7 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+tags: ["web server","php","mysql","apache","lamp"]
 ---
 
 

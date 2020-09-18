@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Methods for enabling dynamic content run as individual users with PHP on Debian 5 (Lenny).'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
+tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/debian-5-lenny/','/websites/apache/run-php-applications-under-cgi-with-apache-on-debian-5-lenny/']
 modified: 2014-01-13
