@@ -12,6 +12,7 @@ modified_by:
 og_description: “Learn how to use split for practical applications including dividing larger files into smaller files.”
 published: 2018-01-29
 title: How to Divide Files with split
+tags: ["linux"]
 ---
 
 ## What is split?

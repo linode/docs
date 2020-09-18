@@ -14,6 +14,7 @@ contributor:
   name: Alexandru Andrei
 external_resources:
  - '[Midnight Commander](https://midnight-commander.org/)'
+tags: ["linux"]
 ---
 
 

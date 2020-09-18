@@ -3,7 +3,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure your CentOS 6 Linode to use the distribution-supplied kernel'
-keywords: ["centos 6", " custom kernel", " grub legacy"]
+keywords: ["centos 6", "custom kernel", "grub legacy"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-03-10
 modified_by:

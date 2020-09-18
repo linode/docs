@@ -4,6 +4,7 @@ author:
   email: rainbow@linode.com
 description: 'FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970''s. Today FreeBSD is used all over the world.'
 keywords: ["freebsd", "bsd"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-07
 modified_by:

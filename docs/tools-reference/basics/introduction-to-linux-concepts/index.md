@@ -16,6 +16,7 @@ external_resources:
  - '[Using the Terminal](/docs/using-linux/using-the-terminal)'
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/using-linux/package-management)'
+tags: ["linux"]
 ---
 
 Linodes run **Linux**. Linux is an operating system that works just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.

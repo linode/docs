@@ -15,6 +15,7 @@ title: How to Grep for Text in Files
 external_resources:
   - '[Grep | Regular-Expressions.info](https://www.regular-expressions.info/grep.html)'
   - '[Perl Regular Expressions](https://perldoc.perl.org/perlre.html)'
+tags: ["linux"]
 ---
 
 ![Using Grep](search_and_filter_text_with_grep_smg.png "Search and filter text with Grep")
