@@ -12,6 +12,7 @@ modified_by:
 title: Protecting Your Linode with TCP Wrappers
 contributor:
     name: Francis McNamee
+tags: ["networking","security"]
 ---
 
 

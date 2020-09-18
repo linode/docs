@@ -6,6 +6,7 @@ description: 'Use Google Authenticator to enable two-factor authentication for S
 og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on CentOS 7.'
 keywords: ["two factor authentication", "ssh", "google authenticator", "centos"]
 aliases: ['/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/','/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/']
+tags: ["centos","ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:

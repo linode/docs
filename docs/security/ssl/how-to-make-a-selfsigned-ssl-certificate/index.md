@@ -14,6 +14,7 @@ published: 2009-11-16
 title: 'How to Make a Self-Signed SSL Certificate'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
+tags: ["security","ssl"]
 ---
 
 {{< caution >}}
