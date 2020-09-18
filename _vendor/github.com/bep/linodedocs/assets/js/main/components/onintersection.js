@@ -9,7 +9,7 @@ var lnOnIntersection = {};
 				self.visible = true;
 			}
 		};
-		const io = new IntersectionObserver(onIntersection, { threshold: 1 });
+		const io = new IntersectionObserver(onIntersection, { threshold: 0 });
 		io.observe(el);
 	};
 
