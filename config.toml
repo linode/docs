@@ -16,6 +16,7 @@ home = ["HTML", "JSON", "RSS"]
 
 [frontmatter]
 lastmod = [":git", "lastmod", "date", "publishDate"]
+publishDate = ["published", "publishDate", "date"]
 
 [params]
 description = "Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration."
