@@ -8,9 +8,9 @@ tab_group_main:
 
 These introductory guides to the Linode API will get you up and running with this service.
 
-- [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token): You need an access token to make changes to your account with the API, you can get one in the Cloud Manager.
+- [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token): You need an access token to make changes to your account with the API. You can get one in the Cloud Manager.
 
-- [Authenticate Requests](/docs/products/tools/linode-api/guides/authenticate-requests): Use your access token to authenticate requests.
+- [Authenticate Requests](/docs/products/tools/linode-api/guides/authenticate-requests): Use your access token to authenticate requests to API endpoints.
 
 - [Get Configuration Parameters](/docs/products/tools/linode-api/guides/get-config-parameters): Get type, region, or image for Linodes.
 
