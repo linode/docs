@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: "This guide shows how to use Graphite to monitor server data and connect it to Grafana for an informative, customizable, graphical interface."
 keywords: ['grafana','graphite','monitoring','dashboard', 'docker']
-tags: ["docker"]
+tags: ["docker","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-30
 modified: 2018-04-30

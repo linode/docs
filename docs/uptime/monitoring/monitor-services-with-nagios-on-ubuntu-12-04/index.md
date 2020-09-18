@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use Nagios to Monitor Services and Send Status Updates on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["nagios", "monitor services", "ubuntu 12.04", "smtp", "pop3", "http", "icmp", "ssh", "notifications", "alerts"]
-tags: ["ubuntu"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04-precise-pangolin/']
 modified: 2013-04-05

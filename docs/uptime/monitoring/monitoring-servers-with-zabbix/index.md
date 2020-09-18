@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: Zabbix
 keywords: ["zabbix", "server monitoring", "monitoring", "server monitor"]
-tags: ["database", "apache", "php"]
+tags: ["php","monitoring","database","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/zabbix/']
 modified: 2012-08-20

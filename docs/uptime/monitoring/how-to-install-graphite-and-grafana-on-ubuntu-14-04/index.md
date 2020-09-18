@@ -5,7 +5,7 @@ author:
 description: 'This guide provides an introduction to the installation and basic setup of Graphite together with Grafana on Ubuntu 14.04.'
 keywords: ["graphite", "grafana", "monitor", "monitoring", "monitoring tool", "analytics"]
 aliases: ['/uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/','/deploy-graphite-with-grafana-on-ubuntu-14-04/']
-tags: ["ubuntu", "apache", "postregsql"]
+tags: ["monitoring","postregsql","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-12-02
 modified_by:

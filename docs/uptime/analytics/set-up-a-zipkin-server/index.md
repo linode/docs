@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows you how to use the Zipkin tracking system to collect and search timing data in order to identify latency problems on your website.'
 keywords: ["zipkin", "tracking"]
-tags: ["fedora"]
+tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/set-up-a-zipkin-server/','/uptime/set-up-a-zipkin-server-with-sample-website-tracking/']
 modified: 2017-09-28
