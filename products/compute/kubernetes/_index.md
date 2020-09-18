@@ -1,5 +1,6 @@
 ---
 title: Linode Kubernetes Engine
+linkTitle: Kubernetes
 tab_group_main:
     is_root: true
     title: Overview

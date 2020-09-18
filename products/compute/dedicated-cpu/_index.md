@@ -1,5 +1,6 @@
 ---
 title: Dedicated CPU Linodes
+linkTitle: Dedicated CPU
 tab_group_main:
     is_root: true
     title: Overview
