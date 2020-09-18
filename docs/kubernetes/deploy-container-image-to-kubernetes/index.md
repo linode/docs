@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide will show you how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy the container image on a Kubernetes cluster running on Linode.'
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
-tags: ["container", "docker"]
+tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-07
 modified_by:

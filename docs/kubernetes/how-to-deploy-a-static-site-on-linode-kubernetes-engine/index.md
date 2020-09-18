@@ -5,7 +5,7 @@ author:
 description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
 og_description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
-tags: ["linode platform", "container", "docker", "version control system"]
+tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
 modified_by:

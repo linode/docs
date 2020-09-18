@@ -9,8 +9,6 @@ aliases: ['/applications/containers/kubernetes/']
 published: 2019-07-29
 title: Kubernetes
 show_in_lists: true
-cascade:
-    tags: ["kubernetes"]
 ---
 
 

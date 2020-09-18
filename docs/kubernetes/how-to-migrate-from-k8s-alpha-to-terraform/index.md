@@ -5,7 +5,7 @@ author:
 description: 'The Linode k8s-alpha CLI tool is deprecated. This guide will help you migrate from the k8s-alpha CLI to Terraform to maintain and manage existing clusters as well as create new clusters.'
 og_description: 'The Linode k8s-alpha CLI tool is deprecated. This guide will help you migrate from the k8s-alpha CLI to Terraform to maintain and manage existing clusters as well as create new clusters.'
 keywords: ['kubernetes','k8s','beginner','architecture','migrate','terraform','k8s-alpha']
-tags: ["automation", "linode platform"]
+tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-14
 modified_by:

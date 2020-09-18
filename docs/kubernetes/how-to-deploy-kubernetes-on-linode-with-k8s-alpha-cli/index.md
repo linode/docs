@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Create and manage Kubernetes clusters with the k8s-alpha CLI.'
 keywords: ["rancher", "docker", "kubernetes", "container"]
-tags: ["linode platform"]
+tags: ["linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-29
 modified_by:

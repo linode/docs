@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Create and manage Kubernetes clusters with Rancher and deploy apps from the Rancher app library.'
 keywords: ["rancher", "docker", "kubernetes", "container"]
-tags: ["container", "docker", "ubuntu", "wordpress"]
+tags: ["docker","kubernetes","container","ubuntu","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
