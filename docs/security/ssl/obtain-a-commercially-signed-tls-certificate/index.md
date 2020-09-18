@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2017-12-20
 title: 'Obtain a Commercially Signed TLS Certificate'
+tags: ["security","ssl"]
 ---
 
 ![Obtain a Commercially Signed TLS Certificate](Obtain-a-Commercially-Signed-TLS-Certificate-smg.jpg)

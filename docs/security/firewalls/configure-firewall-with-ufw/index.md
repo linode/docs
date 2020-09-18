@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 2015-11-17
 title: How to Configure a Firewall with UFW
+tags: ["networking","security"]
 ---
 
 ## What is UFW?

@@ -5,7 +5,7 @@ author:
 description: 'How to upgrade your Debian system.'
 keywords: ['debian','upgrade','update']
 aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/']
-tags: ["debian"]
+tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11
 modified: 2018-12-14

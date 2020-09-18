@@ -5,7 +5,7 @@ author:
 description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
 og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
 keywords: ["two factor authentication", "ssh", "google authenticator", "ubuntu"]
-tags: ["ssh", "ubuntu"]
+tags: ["ssh","security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:

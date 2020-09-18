@@ -6,8 +6,6 @@ show_on_frontpage: true
 title_short: "Security, Upgrades & Backups"
 weight: 70
 icon: "lock"
-cascade:
-    tags: ["security"]
 ---
 
 

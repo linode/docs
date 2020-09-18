@@ -17,6 +17,7 @@ external_resources:
   - '[How to Install Software Updates](/docs/getting-started/#install-software-updates)'
   - '[Reboot Survival Guide](/docs/uptime/reboot-survival-guide/)'
   - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
+tags: ["security"]
 ---
 
 ## Summary

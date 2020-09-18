@@ -5,7 +5,7 @@ author:
 description: 'This guide shows how to use the Elastic Stack (Elasticsearch, Logstash, and Kibana) to collect, log, and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection.'
 og_description: 'An Elastic Stack combines Elasticsearch, Logstash, and Kibana. With the help of Wazuh endpoint security, this guide shows how to visualize server security data on your Linode.'
 keywords: ["ossec", "elk stack", "elk,ossec-hids"]
-tags: ["centos", "lemp"]
+tags: ["monitoring","security","lemp","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-17
 modified: 2019-01-31

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Debian 5 (Lenny).'
 keywords: ["apache SSL", "ssl on debian", "web sever", "debian lenny"]
-tags: ["apache", "debian"]
+tags: ["apache","security","ssl","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/debian-5-lenny/']
 modified: 2012-10-15

@@ -5,7 +5,7 @@ author:
 description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
 og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
 keywords: ["two factor authentication", "ssh", "google authenticator", "debian"]
-tags: ["ssh"," debian"]
+tags: ["ssh","security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
