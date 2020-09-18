@@ -15,6 +15,7 @@ title: 'mod_evasive on Apache'
 h1_title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
 external_resources:
  - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
+tags: ["web server","apache"]
 ---
 
 ## What is mod_evasive?

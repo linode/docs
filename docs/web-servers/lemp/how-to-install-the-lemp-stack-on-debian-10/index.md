@@ -5,7 +5,7 @@ author:
 description: 'The LEMP stack (Linux, NGINX, MariaDB, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Debian.'
 og_description: 'The LEMP stack (Linux, NGINX, MariaDB, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Debian.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
-tags: ["debian"]
+tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
 modified_by:

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
-tags: ["python", "debian"]
+tags: ["web server","python","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/python-uwsgi/debian-6-squeeze/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/']
 modified: 2011-05-09

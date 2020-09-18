@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2018-02-09
 title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurations'
+tags: ["web server","nginx"]
 ---
 
 ![Getting Started with NGINX - Part 2](Getting-Started-with-NGINX-Part-2-smg.jpg)

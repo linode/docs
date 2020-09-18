@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
 keywords: ["debian 7 LAMP server", "debian LAMP guide", "LAMP howto", "debian", "debian 7", "lamp server", "lamp", "apache", "mysql", "php", "linux web"]
-tags: ["debian"]
+tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-debian-7-wheezy/','/lamp-guides/debian-7-wheezy/']
 modified: 2015-12-01

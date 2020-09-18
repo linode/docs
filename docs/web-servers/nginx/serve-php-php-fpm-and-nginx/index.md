@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Proxy PHP requests with NGINX and FastCGI using PHP-FPM.'
 keywords: ["php", "php-fpm", "fastcgi"]
-tags: ["php", "ubuntu"]
+tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/']
 modified: 2018-02-19

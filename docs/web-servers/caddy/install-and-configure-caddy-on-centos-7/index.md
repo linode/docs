@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide will show you how to install and configure Caddy and run it as a systemd service.'
 keywords: ["caddy", "web server"]
-tags: ["centos"]
+tags: ["centos","web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
 modified: 2018-02-02

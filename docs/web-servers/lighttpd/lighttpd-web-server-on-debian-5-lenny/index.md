@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using lighttpd to host multiple websites from your Linode.'
 keywords: ["lighttpd server", "lighttpd Linode", "web server", "Linode web server", "Linode hosting"]
-tags: ["debian"]
+tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/lighttpd/debian-5-lenny/','/websites/lighttpd/lighttpd-web-server-on-debian-5-lenny/']
 modified: 2011-08-22

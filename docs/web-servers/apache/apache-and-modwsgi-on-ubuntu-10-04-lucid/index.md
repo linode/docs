@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi.'
 keywords: ["python", "apache", "mod\\_wsgi"]
-tags: ["python", "ubuntu"]
+tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/mod-wsgi/ubuntu-10-04-lucid/','/websites/apache/apache-and-modwsgi-on-ubuntu-10-04-lucid/']
 modified: 2013-10-04

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 14.'
 keywords: ["fedora 14 lamp", "lamp server", "linux lamp", "fedora 14 apache"]
-tags: ["fedora"]
+tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/fedora-14/','/websites/lamp/lamp-server-on-fedora-14/']
 modified: 2012-10-03

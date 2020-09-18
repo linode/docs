@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Install Apache on your CentOS 6 server, configure virtual hosting, and set up mod and scripting support.'
 keywords: ["Apache", "web sever", "CentOS 6", "centos", "apache 2", "httpd"]
-tags: ["centos"]
+tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/installation/centos-6/','/websites/apache/apache-2-web-server-on-centos-6/']
 modified: 2018-12-31

@@ -5,7 +5,7 @@ author:
 description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Ubuntu 18.04.'
 og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Ubuntu 18.04.'
 keywords: ["nginx", "load balancing", "ubuntu", "ubuntu 18", "web server", "static content", "install nginx"]
-tags: ["ubuntu"]
+tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-14
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
 keywords: ["install lamp ubuntu 16.04", "apache install", "mysql install", "php 7.0", "ubuntu 16.04 "]
-tags: ["ubuntu"]
+tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/install-lamp-on-ubuntu-16-04/','/web-servers/lamp/install-lamp-on-ubuntu-18-04/']
 modified: 2017-07-28

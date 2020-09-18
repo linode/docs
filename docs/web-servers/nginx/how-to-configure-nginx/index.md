@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-01-18
 title: How to Configure NGINX
+tags: ["web server","nginx"]
 ---
 
 ![Introduction to NGINX](how_to_configure_nginx.png "Introduction to NGINX")

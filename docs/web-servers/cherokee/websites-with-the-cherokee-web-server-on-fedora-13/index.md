@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Fedora 13.'
 keywords: ["cherokee fedora 13", "cherokee web sever", "cherokee", "fedora 13"]
-tags: ["fedora"]
+tags: ["web server","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/cherokee/installing-cherokee-fedora-13/','/websites/cherokee/websites-with-the-cherokee-web-server-on-fedora-13/']
 modified: 2011-05-09

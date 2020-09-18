@@ -5,7 +5,7 @@ author:
 description: 'Install Apache on your Ubuntu 18.04 LTS server, configure virtual hosting, and set up modules and scripting.'
 og_description: 'Install Apache on your Ubuntu 18.04 LTS server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "ubuntu", "ubuntu 18.04", "http", "web server"]
-tags: ["ubuntu"]
+tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-31
 modified_by:

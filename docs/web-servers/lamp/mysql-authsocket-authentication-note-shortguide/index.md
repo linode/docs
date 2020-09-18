@@ -10,7 +10,7 @@ modified_by:
 published: 2018-08-03
 title: About MySQL auth_socket Authentication
 keywords: []
-tags: ["mysql", "security"]
+tags: ["web server","php","mysql","apache","security","lamp"]
 headless: true
 show_on_rss_feed: false
 ---

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["nginx", "nginx ubuntu 12.04", "nginx fastcgi", "nginx php", "unix socket", "tcp socket", "php", "fastcgi"]
-tags: ["ubuntu", "php"]
+tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/','/websites/nginx/how-to-install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-09
