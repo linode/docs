@@ -5,7 +5,7 @@ author:
 description: 'Deploy a Docker on Linode using One-Click Apps.'
 og_description: 'Deploy a Docker on Linode using One-Click Apps.'
 keywords: ['docker','one-click', 'container']
-tags: ["docker", "container"]
+tags: ["container","cloud-manager","linode platform","docker","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2020-03-11

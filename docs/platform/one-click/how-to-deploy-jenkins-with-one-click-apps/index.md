@@ -5,7 +5,7 @@ author:
 description: 'Jenkins is an open source automation tool which can build, test, and deploy your infrastructure. Deploay a Jenkins instance using Linode''s One-Click Apps.'
 og_description: 'Jenkins is an open source automation tool which can build, test, and deploy your infrastructure. Deploay a Jenkins instance using Linode''s One-Click Apps.'
 keywords: ['jenkins','one-click','pipeline','continuous delivery']
-tags: ["automation"]
+tags: ["linode platform","automation","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified_by:

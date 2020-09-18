@@ -5,7 +5,7 @@ author:
 description: 'This guide teaches you how to secure your Linode Object Storage data with server-side encryption using an example script written in Python.'
 og_description: 'Learn how to secure your Linode Object Storage data with server-side encryption.'
 keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
-tags: ["ssl", "python"]
+tags: ["linode platform","python","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-14
 modified_by:

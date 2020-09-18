@@ -4,7 +4,7 @@ author:
   email: jkruger@linode.com
 description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
-tags: ["ssl", "security"]
+tags: ["linode platform","security","networking","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-04-06
 modified_by:

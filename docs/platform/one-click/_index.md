@@ -8,6 +8,4 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
 title: One-Click Apps
 show_in_lists: true
-cascade:
-    tags: ["one-click", "cloud-manager"]
 ---

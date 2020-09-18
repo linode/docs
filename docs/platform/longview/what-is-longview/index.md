@@ -13,6 +13,7 @@ title: "What is Linode Longview"
 h1_title: "Understanding Linode Longview"
 contributor:
   name: Linode
+tags: ["linode platform","cloud manager","statistics","monitoring"]
 ---
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
 

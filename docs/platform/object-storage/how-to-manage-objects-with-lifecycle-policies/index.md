@@ -13,6 +13,7 @@ h1_title: "Managing Objects with Lifecycle Policies"
 contributor:
   name: Linode
 aliases: ['/platform/object-storage/lifecycle-policies/']
+tags: ["linode platform"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

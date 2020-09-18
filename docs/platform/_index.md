@@ -7,6 +7,4 @@ show_on_frontpage: true
 title_short: "Linode Platform"
 weight: 30
 icon: "cube"
-cascade:
-    tags: ["linode platform"]
 ---

@@ -12,6 +12,7 @@ title: How to Reboot Your Linode in the Cloud Manager
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 You can reboot a Linode from two places within the Cloud manager.

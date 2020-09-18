@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
-tags: ["cloud manager"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/']
 modified: 2019-07-09

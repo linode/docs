@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Shows how to use the CPanel Transfer Tool to copy CPanel accounts to a new Linode running WHM and CPanel.'
 keywords: ["cpanel", "transfer tool", "migrate", "website migration"]
-tags: ["cpanel"]
+tags: ["cpanel","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-21
 modified_by:

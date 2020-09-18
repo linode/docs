@@ -11,6 +11,7 @@ modified_by:
   name: Alex Fornuto
 published: 2015-06-15
 title: 'KVM Migration Reference'
+tags: ["linode platform"]
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: "Get started using Linode's Object Storage."
 keywords: ['object','storage','bucket']
-tags: ["cloud manager"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-12
 modified: 2019-04-12

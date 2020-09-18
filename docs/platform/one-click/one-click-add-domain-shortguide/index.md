@@ -12,6 +12,7 @@ title: Add a Domain Name to a One-Click Marketplace App from Cloud Manager
 keywords: ["one-click", "marketplace"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 For websites like WordPress, WooCommerce, and Drupal, it's much more desirable to have a domain name rather than using an IP address to access your app.

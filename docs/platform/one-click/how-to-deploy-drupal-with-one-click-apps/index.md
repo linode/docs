@@ -5,7 +5,7 @@ author:
 description: 'Use the Drupal One-Click App to easily install the popular open source content management system. You can use Drupal to build websites for a variety of applications. The Drupal community is very active and provides many contributed modules to help you expand on Drupal''s core functionality.'
 og_description: 'Use the Drupal One-Click App to easily install the popular open source content management system. You can use Drupal to build websites for a variety of applications. The Drupal community is very active and provides many contributed modules to help you expand on Drupal''s core functionality.'
 keywords: ['drupal','one-click', 'cms']
-tags: ["drupal", "cms"]
+tags: ["cloud-manager","linode platform","drupal","cms","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
 modified: 2019-03-25

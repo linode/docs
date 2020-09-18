@@ -5,7 +5,7 @@ author:
 description: 'MySQL/MariaDB is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. Easily deploy MySQL/MariaDB using One-Click Apps.'
 og_description: 'MySQL/MariaDB is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. Easily deploy MySAL/MariaDB using One-Click Apps.'
 keywords: ['database','mysql','rdbms','relational database','mariadb']
-tags: ["database", "mysql", "mariadb"]
+tags: ["database","cloud-manager","linode platform","mysql","one-click","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified: 2020-03-13

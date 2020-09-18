@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2015-08-28
 title: 'Using the Linode Graphical Shell (Glish)'
+tags: ["linode platform","cloud manager"]
 ---
 
 ![Using the Linode Graphical Shell Glish](using-linode-glish-title.jpg "Using the Linode Graphical Shell Glish title graphic")

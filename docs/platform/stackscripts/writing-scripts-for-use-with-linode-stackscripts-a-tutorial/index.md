@@ -5,7 +5,7 @@ author:
 description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide will provide you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
 og_description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide will provide you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
 keywords: ["automation", "scripts", "deployments", "instance"]
-tags: ["cloud manager"]
+tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
 image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png

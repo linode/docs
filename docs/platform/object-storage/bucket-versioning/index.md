@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to use bucket versioning with Linode Object Storage to track and saves changes to your objects.'
 keywords: ['object','storage','bucket','version','versioning']
-tags: ["version control system"]
+tags: ["linode platform","version control system"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-22
 modified_by:

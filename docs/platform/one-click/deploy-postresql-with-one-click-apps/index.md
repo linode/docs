@@ -5,7 +5,7 @@ author:
 description: 'PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. Easily deploy PostgreSQL using One-Click Apps.'
 og_description: 'PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. Easily deploy PostgreSQL using One-Click Apps.'
 keywords: ['database','postgresql','rdbms','relational database']
-tags: ["postgresql"]
+tags: ["linode platform","postgresql","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
 modified: 2020-03-17

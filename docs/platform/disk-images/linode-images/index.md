@@ -5,7 +5,7 @@ author:
 description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
 og_description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
 keywords: ["linode Images", "imagize"]
-tags: ["cloud manager"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/linode-images/','/platform/disk-images/linode-images-new-manager/']
 modified: 2018-08-22

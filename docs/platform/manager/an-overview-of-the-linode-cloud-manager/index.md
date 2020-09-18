@@ -16,6 +16,7 @@ title: 'An Overview of the Linode Cloud Manager'
 h1_title: 'An Overview of the Linode Cloud Manager'
 contributor:
   name: Linode
+tags: ["linode platform","cloud manager"]
 ---
 
 The [Linode Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, managed Kubernetes clusters, add backups to your Linodes, deploy One-Click Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](https://developers.linode.com/api/v4), which gives you access to all our latest products and services.

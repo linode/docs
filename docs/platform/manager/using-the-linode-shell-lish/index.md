@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
+tags: ["linode platform","cloud manager"]
 ---
 
 ![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)

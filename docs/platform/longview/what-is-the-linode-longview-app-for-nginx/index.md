@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Using the Linode Longview App for Nginx
 keywords: ["Longview", " Nginx", " statistics", " HttpStubStatusModule"]
-tags: ["nginx"]
+tags: ["cloud manager","statistics","monitoring","linode platform","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/longview/longview-app-for-nginx/','/longview/longview-for-nginx/']
 modified: 2013-11-12

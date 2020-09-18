@@ -12,6 +12,7 @@ title: Change a Username on Your Account
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 You can update a username, including your own, from the Linode Cloud Manager.

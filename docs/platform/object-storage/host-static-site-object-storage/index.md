@@ -16,6 +16,7 @@ external_resources:
 - '[Hugo Documentation](https://gohugo.io/documentation/)'
 - '[s3cmd Options and Commands](https://s3tools.org/usage)'
 - '[s3cmd Sync How-To](https://s3tools.org/s3cmd-sync)'
+tags: ["linode platform"]
 ---
 
 ![Host a Static Site using Linode Object Storage](host-a-static-site-using-linode-object-storage.png "Host a Static Site using Linode Object Storage")

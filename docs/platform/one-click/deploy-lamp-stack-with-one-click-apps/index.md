@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use One-Click Apps to deploy a LAMP stack on Linode'
 keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
-tags: ["lamp", "apache", "mysql", "php"]
+tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
 modified: 2019-03-26

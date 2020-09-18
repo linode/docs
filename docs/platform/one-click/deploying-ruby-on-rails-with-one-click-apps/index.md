@@ -5,7 +5,7 @@ author:
 description: 'Deploy Ruby on Rails on Linode using One-Click Apps.'
 og_description: 'Deploy Ruby on Rails on Linode using One-Click Apps.'
 keywords: ['ruby on rails','one-click', 'one-click apps']
-tags: ["ruby"]
+tags: ["ruby","linode platform","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2020-03-11
