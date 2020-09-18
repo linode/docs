@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2009-10-29
 title: 'Use MySQL Relational Databases on Ubuntu 9.10 (Karmic)'
-tags: ["mysql","ubuntu"]
+tags: ["ubuntu","database","mysql"]
 ---
 
 

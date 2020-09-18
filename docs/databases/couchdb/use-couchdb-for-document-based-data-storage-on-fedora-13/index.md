@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2010-05-27
 title: Use CouchDB for Document Based Data Storage on Fedora 13
-tags: ["fedora","nosql"]
+tags: ["fedora","database","nosql"]
 ---
 
 

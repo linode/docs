@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2010-02-18
 title: 'Use CouchDB for Document Based Data Storage on Ubuntu 9.10 (Karmic)'
-tags: ["ubuntu","nosql"]
+tags: ["ubuntu","database","nosql"]
 ---
 
 

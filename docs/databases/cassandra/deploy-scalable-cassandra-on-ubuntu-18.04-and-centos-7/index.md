@@ -20,7 +20,7 @@ external_resources:
    - '[Cassandra .yaml Configuration File Overview](http://cassandra.apache.org/doc/latest/configuration/cassandra_config_file.html)'
    - '[Recommended Production Settings For Apache Cassandra](http://docs.datastax.com/en/landing_page/doc/landing_page/recommendedSettings.html)'
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
-tags: ["ubuntu","centos","nosql"]
+tags: ["ubuntu","centos","database","nosql"]
 ---
 
 ## Introduction to Apache Cassandra

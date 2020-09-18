@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2010-07-27
 title: 'Redis on Debian 5 (Lenny)'
-tags: ["nosql","debian"]
+tags: ["debian","database","nosql"]
 ---
 
 

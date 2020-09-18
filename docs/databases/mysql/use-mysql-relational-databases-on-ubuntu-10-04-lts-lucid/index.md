@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2010-04-30
 title: 'Use MySQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
-tags: ["mysql","ubuntu"]
+tags: ["ubuntu","database","mysql"]
 ---
 
 

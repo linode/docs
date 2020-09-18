@@ -16,7 +16,7 @@ contributor:
   link: https://twitter.com/francisndungu83
 external_resources:
 - '[Working with MySQL stored procedures](https://dev.mysql.com/doc/connector-net/en/connector-net-tutorials-stored-procedures.html)'
-tags: ["mysql"]
+tags: ["database","mysql"]
 ---
 
 Stored procedures are user-defined SQL statements that are stored in a MySQL database and executed on-demand to perform a specific database operation. These predefined subroutines help in moving the business logic to the database, which offers a few benefits:

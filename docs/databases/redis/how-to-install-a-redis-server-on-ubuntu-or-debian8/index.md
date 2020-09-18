@@ -20,7 +20,7 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/security)'
-tags: ["ubuntu","debian","nosql"]
+tags: ["ubuntu","debian","database","nosql"]
 ---
 
 

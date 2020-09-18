@@ -14,7 +14,7 @@ aliases: ['/databases/postgresql/pgadmin-macos-x/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
-tags: ["postgresql"]
+tags: ["database","postgresql"]
 ---
 
 ![Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](Securely_Manage_Remote_PostgreSQL_Servers_with_pgAdmin_on_Mac_OS_X_smg.jpg)

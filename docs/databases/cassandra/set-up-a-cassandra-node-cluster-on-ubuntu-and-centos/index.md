@@ -17,7 +17,7 @@ contributor:
 external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
-tags: ["ubuntu","centos","nosql"]
+tags: ["ubuntu","centos","database","nosql"]
 ---
 
 

@@ -12,7 +12,7 @@ modified_by:
   name: Alex Fornuto
 published: 2009-08-11
 title: Use MySQL Relational Databases on CentOS 5
-tags: ["mysql","centos"]
+tags: ["database","mysql","centos"]
 ---
 
 

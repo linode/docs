@@ -14,7 +14,7 @@ external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
 aliases: ['/databases/postgresql/use-postgresql-relational-databases-on-centos-7/']
-tags: ["postgresql","centos"]
+tags: ["database","postgresql","centos"]
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your CentOS 7 Linode.

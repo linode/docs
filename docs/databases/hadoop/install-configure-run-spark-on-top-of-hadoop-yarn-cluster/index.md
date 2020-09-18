@@ -15,7 +15,7 @@ contributor:
 external_resources:
 - '[Apache Spark project page](https://spark.apache.org/)'
 - '[Apache Hadoop project page](http://hadoop.apache.org/)'
-tags: ["debian","ubuntu","centos"]
+tags: ["ubuntu","debian","database","centos"]
 ---
 
 

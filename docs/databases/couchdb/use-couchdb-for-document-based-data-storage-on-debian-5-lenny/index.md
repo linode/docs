@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2010-02-08
 title: 'Use CouchDB for Document Based Data Storage on Debian 5 (Lenny)'
-tags: ["debian","nosql"]
+tags: ["debian","database","nosql"]
 ---
 
 

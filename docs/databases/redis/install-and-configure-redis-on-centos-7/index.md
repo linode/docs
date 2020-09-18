@@ -16,7 +16,7 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/topics/security)'
-tags: ["nosql","centos"]
+tags: ["nosql","database","centos"]
 ---
 
 ![Deploy Redis on CentOS 7](install-configure-redis-centos.png "Deploy Redis on CentOS 7")

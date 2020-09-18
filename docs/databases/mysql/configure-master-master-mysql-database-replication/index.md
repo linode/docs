@@ -14,7 +14,7 @@ published: 2014-12-24
 title: Configure Master-Master MySQL Database Replication
 external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
-tags: ["mysql","debian","ubuntu"]
+tags: ["ubuntu","debian","database","mysql"]
 ---
 
 ![Configure Master-Master MySQL Database Replication](mysql-master-master-replication-title.jpg "Configure Master-Master MySQL Database Replication")
