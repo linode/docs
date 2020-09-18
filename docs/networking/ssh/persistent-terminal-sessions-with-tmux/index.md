@@ -5,7 +5,7 @@ author:
 description: 'Keep processes running even if your SSH connection drops. This guide includes examples on managing tmux sessions, windows and panes'
 og_description: 'This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window'
 keywords: ['tmux','terminal','multiplexer','attach','detach','panes','sessions']
-tags: ["debian", "ubuntu"]
+tags: ["networking","ssh","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-06
 modified: 2017-12-06

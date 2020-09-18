@@ -11,6 +11,7 @@ modified_by:
 title: "Update DNS Records at Common Name Server Authorities"
 published: 2018-09-27
 headless: true
+tags: ["dns","networking"]
 ---
 
 {{< disclosure-note "Updating DNS records at common nameserver authorities" >}}

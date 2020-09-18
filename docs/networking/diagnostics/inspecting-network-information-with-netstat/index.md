@@ -4,7 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'A practical introduction to the netstat utility on Linux, including examples of the different options available.'
 keywords: ["UNIX", "shell", "netstat", "TCP/IP", "UDP", "network", "sockets", "unix sockets", "network connections", "network statistics"]
-tags: ["statistics", "linux", "monitoring"]
+tags: ["monitoring","networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-02
 modified_by:

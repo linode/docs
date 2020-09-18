@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on a Debian 5 (Lenny) Linode.'
 keywords: ["openvpn", "networking", "vpn", "debian", "lenny"]
-tags: ["debian"]
+tags: ["networking","security","vpn","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/openvpn/debian-5-lenny/']
 modified: 2012-10-08

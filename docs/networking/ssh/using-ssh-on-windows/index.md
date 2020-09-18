@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-09-20
 title: Using SSH on Windows
+tags: ["networking","ssh","security"]
 ---
 
 ![Using SSH on Windows](using-ssh-on-windows.png "Using SSH on Windows")

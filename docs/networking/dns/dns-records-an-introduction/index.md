@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-07-29
 title: "DNS Records: An Introduction"
+tags: ["dns","networking"]
 ---
 
 ![DNS Records: an Introduction](dns-records-an-introduction.png "DNS Records: an Introduction")

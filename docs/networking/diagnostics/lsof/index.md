@@ -4,7 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'An introduction to lsof.'
 keywords: ["UNIX", "lsof", "TCP/IP", "network", "utility"]
-tags: ["linux"]
+tags: ["networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-16
 modified_by:

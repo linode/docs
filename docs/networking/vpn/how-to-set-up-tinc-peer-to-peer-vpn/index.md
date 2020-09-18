@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide details how to set up tinc, an open-source, peer-to-peer VPN on your Linode.'
 keywords: ["VPN", "tinc", "Ubuntu", "security"]
-tags: ["Ubuntu"]
+tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/how-to-set-up-tinc-peer-to-peer-vpn/','/security/how-to-set-up-tinc-peer-to-peer-vpn/']
 published: 2017-09-19

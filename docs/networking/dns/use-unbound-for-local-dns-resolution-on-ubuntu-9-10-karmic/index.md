@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu 9.10 (Karmic).'
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
-tags: ["ubuntu", "resolving"]
+tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-ubuntu-9-10-karmic/']
 modified: 2013-07-15

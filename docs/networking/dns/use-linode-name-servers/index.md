@@ -5,7 +5,7 @@ author:
 description: "Shortguide for setting Linode's nameservers as the authoritative nameservers for a domain"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
-tags: ["linux platform"]
+tags: ["dns","networking","linux platform"]
 modified: 2018-07-19
 modified_by:
   name: Nathan Melehan
