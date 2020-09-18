@@ -7,11 +7,11 @@
     {{ if .Params.contributor.link }}
     <a href="{{ .Params.contributor.link }}">{{ .Params.contributor.name }}
       {{ if strings.Contains .Params.contributor.link "twitter.com" }}
-      <i class="fa fa-twitter"></i>
+      <i class="fab fa-twitter"></i>
       {{ else if strings.Contains .Params.contributor.link "github.com" }}
-      <i class="fa fa-github"></i>
+      <i class="fab fa-github"></i>
       {{ else if strings.Contains .Params.contributor.link "linkedin.com" }}
-      <i class="fa fa-linkedin"></i>
+      <i class="fab fa-linkedin"></i>
       {{ end }}
     </a>
     {{ else }}
