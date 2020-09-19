@@ -3,15 +3,15 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#010101;}
-	.st1{clip-path:url(#SVGID_2_);}
-	.st2{fill:#10B057;}
-	.st3{fill:none;stroke:#010101;stroke-width:1.2641;stroke-linecap:round;stroke-miterlimit:10;}
+	.st0-bccdabbd6e9c7718ec46be071d2a8ed8{fill:#010101;}
+	.st1-bccdabbd6e9c7718ec46be071d2a8ed8{clip-path:url(#SVGID_2_);}
+	.st2-bccdabbd6e9c7718ec46be071d2a8ed8{fill:currentColor;}
+	.st3-bccdabbd6e9c7718ec46be071d2a8ed8{fill:none;stroke:#010101;stroke-width:1.2641;stroke-linecap:round;stroke-miterlimit:10;}
 </style>
 <title>highRAM</title>
 <g>
 	<g id="Layer_1-2">
-		<path class="st0" d="M71.1,19.8H28.9c-5,0-9.1,4-9.1,9c0,0,0,0,0,0.1v42.1c0,5,4.1,9.1,9.1,9.1c0,0,0,0,0,0h42.1
+		<path class="st0-bccdabbd6e9c7718ec46be071d2a8ed8" d="M71.1,19.8H28.9c-5,0-9.1,4-9.1,9c0,0,0,0,0,0.1v42.1c0,5,4.1,9.1,9.1,9.1c0,0,0,0,0,0h42.1
 			c5,0,9.1-4.1,9.1-9.1l0,0V28.9C80.1,23.9,76.1,19.8,71.1,19.8C71.1,19.8,71.1,19.8,71.1,19.8z M77.1,70.7c0,3.5-2.8,6.3-6.3,6.3
 			H29.2c-3.5,0-6.3-2.8-6.3-6.3V29.2c0-3.5,2.8-6.3,6.3-6.3h41.6c3.5,0,6.3,2.8,6.3,6.3L77.1,70.7z"/>
 		<g>
@@ -22,48 +22,48 @@
 			<clipPath id="SVGID_2_">
 				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 			</clipPath>
-			<g class="st1">
-				<path class="st2" d="M18.6,19.8v58.5h65.7V19.8H18.6z M40.1,66.4h-6.5V60h6.5V66.4z M40.1,53.2h-6.5v-6.5h6.5V53.2z M40.3,40
+			<g class="st1-bccdabbd6e9c7718ec46be071d2a8ed8">
+				<path class="st2-bccdabbd6e9c7718ec46be071d2a8ed8" d="M18.6,19.8v58.5h65.7V19.8H18.6z M40.1,66.4h-6.5V60h6.5V66.4z M40.1,53.2h-6.5v-6.5h6.5V53.2z M40.3,40
 					h-6.5v-6.5h6.5L40.3,40z M53,66.5h-6.5V60H53V66.5z M53,53.3h-6.5v-6.5H53V53.3z M53.2,40h-6.5v-6.5h6.5L53.2,40z M66.2,66.5
 					h-6.5V60h6.5V66.5z M66.2,53.3h-6.5v-6.5h6.5V53.3z M66.4,40h-6.5v-6.5h6.5V40z"/>
 			</g>
 		</g>
-		<line class="st3" x1="10" y1="29.5" x2="16.3" y2="29.5"/>
-		<line class="st3" x1="10" y1="34.7" x2="16.3" y2="34.7"/>
-		<line class="st3" x1="10" y1="39.8" x2="16.3" y2="39.8"/>
-		<line class="st3" x1="10" y1="44.9" x2="16.3" y2="44.9"/>
-		<line class="st3" x1="10" y1="50" x2="16.3" y2="50"/>
-		<line class="st3" x1="10" y1="55.1" x2="16.3" y2="55.1"/>
-		<line class="st3" x1="10" y1="60.2" x2="16.3" y2="60.2"/>
-		<line class="st3" x1="10" y1="65.3" x2="16.3" y2="65.3"/>
-		<line class="st3" x1="10" y1="70.4" x2="16.3" y2="70.4"/>
-		<line class="st3" x1="90" y1="29.5" x2="83.7" y2="29.5"/>
-		<line class="st3" x1="90" y1="34.7" x2="83.7" y2="34.7"/>
-		<line class="st3" x1="90" y1="39.8" x2="83.7" y2="39.8"/>
-		<line class="st3" x1="90" y1="44.9" x2="83.7" y2="44.9"/>
-		<line class="st3" x1="90" y1="50" x2="83.7" y2="50"/>
-		<line class="st3" x1="90" y1="55.1" x2="83.7" y2="55.1"/>
-		<line class="st3" x1="90" y1="60.2" x2="83.7" y2="60.2"/>
-		<line class="st3" x1="90" y1="65.3" x2="83.7" y2="65.3"/>
-		<line class="st3" x1="90" y1="70.4" x2="83.7" y2="70.4"/>
-		<line class="st3" x1="70.4" y1="10" x2="70.4" y2="16.3"/>
-		<line class="st3" x1="65.3" y1="10" x2="65.3" y2="16.3"/>
-		<line class="st3" x1="60.2" y1="10" x2="60.2" y2="16.3"/>
-		<line class="st3" x1="55.1" y1="10" x2="55.1" y2="16.3"/>
-		<line class="st3" x1="50" y1="10" x2="50" y2="16.3"/>
-		<line class="st3" x1="44.9" y1="10" x2="44.9" y2="16.3"/>
-		<line class="st3" x1="39.8" y1="10" x2="39.8" y2="16.3"/>
-		<line class="st3" x1="34.7" y1="10" x2="34.7" y2="16.3"/>
-		<line class="st3" x1="29.5" y1="10" x2="29.5" y2="16.3"/>
-		<line class="st3" x1="70.4" y1="90" x2="70.4" y2="83.7"/>
-		<line class="st3" x1="65.3" y1="90" x2="65.3" y2="83.7"/>
-		<line class="st3" x1="60.2" y1="90" x2="60.2" y2="83.7"/>
-		<line class="st3" x1="55.1" y1="90" x2="55.1" y2="83.7"/>
-		<line class="st3" x1="50" y1="90" x2="50" y2="83.7"/>
-		<line class="st3" x1="44.9" y1="90" x2="44.9" y2="83.7"/>
-		<line class="st3" x1="39.8" y1="90" x2="39.8" y2="83.7"/>
-		<line class="st3" x1="34.7" y1="90" x2="34.7" y2="83.7"/>
-		<line class="st3" x1="29.5" y1="90" x2="29.5" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="29.5" x2="16.3" y2="29.5"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="34.7" x2="16.3" y2="34.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="39.8" x2="16.3" y2="39.8"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="44.9" x2="16.3" y2="44.9"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="50" x2="16.3" y2="50"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="55.1" x2="16.3" y2="55.1"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="60.2" x2="16.3" y2="60.2"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="65.3" x2="16.3" y2="65.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="70.4" x2="16.3" y2="70.4"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="29.5" x2="83.7" y2="29.5"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="34.7" x2="83.7" y2="34.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="39.8" x2="83.7" y2="39.8"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="44.9" x2="83.7" y2="44.9"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="50" x2="83.7" y2="50"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="55.1" x2="83.7" y2="55.1"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="60.2" x2="83.7" y2="60.2"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="65.3" x2="83.7" y2="65.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="70.4" x2="83.7" y2="70.4"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="70.4" y1="10" x2="70.4" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="65.3" y1="10" x2="65.3" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="60.2" y1="10" x2="60.2" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="55.1" y1="10" x2="55.1" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="50" y1="10" x2="50" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="44.9" y1="10" x2="44.9" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="39.8" y1="10" x2="39.8" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="34.7" y1="10" x2="34.7" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="29.5" y1="10" x2="29.5" y2="16.3"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="70.4" y1="90" x2="70.4" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="65.3" y1="90" x2="65.3" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="60.2" y1="90" x2="60.2" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="55.1" y1="90" x2="55.1" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="50" y1="90" x2="50" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="44.9" y1="90" x2="44.9" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="39.8" y1="90" x2="39.8" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="34.7" y1="90" x2="34.7" y2="83.7"/>
+		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="29.5" y1="90" x2="29.5" y2="83.7"/>
 	</g>
 </g>
 </svg>

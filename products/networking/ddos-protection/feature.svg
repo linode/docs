@@ -4,8 +4,8 @@
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 288 288"
 	 style="enable-background:new 0 0 288 288;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#00A64F;}
-	.st1{fill:#FFFFFF;stroke:#040404;stroke-width:10.48;stroke-linecap:round;stroke-linejoin:round;}
+	.st0-6f23f6637e2513c17f77c8296b52aec5{fill:#00A64F;}
+	.st1-6f23f6637e2513c17f77c8296b52aec5{fill:#FFFFFF;stroke:#040404;stroke-width:10.48;stroke-linecap:round;stroke-linejoin:round;}
 </style>
 <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c148 79.164050, 2019/10/01-18:03:16        ">
@@ -81,9 +81,9 @@
 <?xpacket end="w"?>
 	</metadata>
 <title>advanced-ddos-2color</title>
-<path class="st0" d="M246.8,57.6c-42.7,0-75.4-12.2-103-39.1c-27.7,26.9-60.3,39.1-103,39.1c0,70-14.5,170.3,103,211.1
+<path class="st0-6f23f6637e2513c17f77c8296b52aec5" d="M246.8,57.6c-42.7,0-75.4-12.2-103-39.1c-27.7,26.9-60.3,39.1-103,39.1c0,70-14.5,170.3,103,211.1
 	C261.2,227.9,246.8,127.6,246.8,57.6z"/>
-<path class="st1" d="M191.2,135.6c4.5-17.7-6.2-35.6-23.8-40.1c-15.4-3.9-31.4,3.7-38.1,18.1c-6.5-6-16.6-5.5-22.6,1
+<path class="st1-6f23f6637e2513c17f77c8296b52aec5" d="M191.2,135.6c4.5-17.7-6.2-35.6-23.8-40.1c-15.4-3.9-31.4,3.7-38.1,18.1c-6.5-6-16.6-5.5-22.6,1
 	c-2.7,2.9-4.2,6.8-4.2,10.7v0.4c-13.9,0.1-25.1,11.5-25,25.4c0.1,13.3,10.6,24.3,24,24.9l90-0.1c11.2-1.1,19.3-11.1,18.2-22.2
 	C208.7,144.1,201,136.5,191.2,135.6L191.2,135.6z"/>
 </svg>
