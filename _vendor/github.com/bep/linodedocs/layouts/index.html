@@ -87,7 +87,11 @@
 {{ end }}
 
 {{ define "home/products-strip"}}
-  <div class="mt-8 w-full h-auto" x-show.transition.in.origin.top.left="data.loaded">
+  <div class="mt-8 w-full h-56"
+    :class="{
+      'invisible': !data.loaded,
+      'visible': data.loaded
+    }">
     <div class="flex items-center justify-between">
       {{ template  "home/section-title" . }}
       <div class="mr-8 hidden md:flex space-x-1">
