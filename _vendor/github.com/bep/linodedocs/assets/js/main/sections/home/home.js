@@ -16,9 +16,9 @@ var lnHome = {};
 		const dispatcher = lnSearchEventDispatcher.New();
 
 		// Number of tiles per paginated page.
-		const tilesPageSize = 4;
+		const tilesPageSize = isMobile() ? 3 : 4;
 		const tilesAlgoliaPreloadPages = 4; // Load 16 articles per section per query.
-		const productsStripPageSize = 6;
+		const productsStripPageSize = isMobile() ? 3 : 6;
 
 		// The section names we paginate on the home page.
 		// This maps to the name attribute in the search configuration.
