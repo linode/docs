@@ -62,6 +62,16 @@ var lnSearchEventDispatcher = {};
 				debug('searchNode', detail);
 				sendEvent(events.EVENT_SEARCHEXPLORER_SEARCH_NODE, detail, document);
 			},
+			// A standalone search is a search that has nothing to do with the global
+			// filtering. Therefore the result can be safely cached and reused.
+			// TODO(bep) names
+			searchStandalone: function(requests, toEvent) {
+				debug('searchStandalone', requests);
+				sendEvent(events.EVENT_SEARCH_TRIGGER, {
+					requests: requests,
+					event: toEvent
+				});
+			},
 			subscribe: function(name, opts, toEvent) {
 				debug('subscribe', name, 'with', opts, 'to', toEvent);
 				sendEvent(events.EVENT_SUBSCRIBE, {

@@ -11,6 +11,11 @@ This template includes common API logic and functions.
   {{ return $api }}
 {{ end }}
 
+{{ define "partials/openapi3/get-resource" }}
+  {{ $apiPath := "api/openapi.yaml"}}
+  {{ return (resources.Get $apiPath) }}
+{{ end }}
+
 {{ define "partials/openapi3/get-tags-title-op" }}
   {{ $title := "" }}
   {{ with .Tags }}

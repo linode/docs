@@ -5,8 +5,9 @@
     {{ block "title" . }}{{ if .IsPage }}{{ .FirstSection.Title }} | {{ end }}{{ .Title }}{{ end }}
   </title>
   {{ partial "sections/head.html" . }}
+  {{ block "head" . }}{{ end }}
 </head>
-<body class="{{ .Type }} page-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
+<body class="type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
      h-auto
      is-not-topbar-pinned
      is-not-explorer-open

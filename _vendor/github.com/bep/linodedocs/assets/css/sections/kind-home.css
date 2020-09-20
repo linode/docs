@@ -1,0 +1,6 @@
+@screen xl {
+    .kind-home .container {
+        /* The main container on the home page is extra wide on larger screens, 1040px + padding = */
+        max-width: 1184px;
+    }
+}

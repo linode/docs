@@ -6,8 +6,7 @@ var lnSectionsController = {};
 	var debug =
 		(typeof LN_DEBUG !== 'undefined' && LN_DEBUG) || 0 ? console.log.bind(console, '[list]') : function() {};
 
-	// The event where we will receive the serch result.
-	const EVENT_SEARCHRESULT_FILTERED = 'search:categories-results-filtered';
+	const searchName = 'search:data-categories-filtered';
 
 	const designMode = false;
 
@@ -18,8 +17,6 @@ var lnSectionsController = {};
 
 		const dispatcher = lnSearchEventDispatcher.New();
 		const hrefFactory = lnCreateHref.New(searchConfig);
-
-		const searchName = 'section-list';
 
 		function sortObject(obj, less) {
 			return Object.keys(obj).sort(less).reduce(function(result, key) {
@@ -190,13 +187,13 @@ var lnSectionsController = {};
 				};
 			},
 
-			dispatchQuery: function(hitsPerPage) {
+			dispatchQuery: function() {
 				let opts = {
 					// This is used to apply the correct filters.
 					sectionConfig: this.data.sectionConfig,
 					requests: [ this.request ]
 				};
-				dispatcher.subscribe(searchName, opts, EVENT_SEARCHRESULT_FILTERED);
+				dispatcher.subscribe(searchName, opts, searchName);
 			},
 
 			receiveData: function(data) {

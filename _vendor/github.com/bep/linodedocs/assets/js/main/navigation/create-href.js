@@ -36,7 +36,7 @@ var lnCreateHref = {};
 				return `${SECTIONS_BASEPATH}${parts.join('/').toLowerCase()}/`;
 			},
 			hrefEntry: function(hit) {
-				if (!hit.section.startsWith('blog')) {
+				if (hit.section && !hit.section.startsWith('blog')) {
 					let objectID = hit.objectID.replace('#', '/');
 					return `${BLOG_BASEPATH}${objectID}/`;
 				}

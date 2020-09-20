@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <div class="w-full" x-data="lnSectionsController.New(lnSearchConfig)" x-init="init() " @search:categories-results-filtered.document="receiveData($event.detail);" ,
+  <div class="w-full" x-data="lnSectionsController.New(lnSearchConfig)" x-init="init() " @search:data-categories-filtered.document="receiveData($event.detail);" ,
     @search:search:results.document="searchUpdated($event.detail);">
     {{ partial "components/error.html" . }}
     <div class="mb-8" x-show="loaded">
@@ -135,10 +135,9 @@
             <div class="bg-gray-200 flex-none bg-cover w-64" :style="'background-image: url(' + item.thumbnailUrl + ')'" title=""></div>
             <div class="pl-10 pr-2 flex flex-col justify-center content-center leading-normal ">
               <div>
-                <a class="tracking-tight cursor-pointer" :href="item.href"></a>
-                <h3 class="mb-2 text-2xl " x-html="item.title">
-                </h3>
-              </a>
+                <a class="tracking-tight cursor-pointer" :href="item.href">
+                  <h3 class="mb-2 text-2xl " x-html="item.title"></h3>
+                </a>
                 <p class="text-darkgray text-base" x-html="item.excerptTruncated()"></p>
               </div>
             </div>

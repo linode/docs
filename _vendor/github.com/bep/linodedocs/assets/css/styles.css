@@ -46,6 +46,7 @@ html {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  fill: currentColor; /* Applies to SVG only */
 }
 
 .is-not-explorer-open .container {
@@ -60,6 +61,17 @@ body {
 
 .pull-out {
   @apply mobile:-mx-4 mobile:rounded-none;
+}
+
+@screen md {
+  .full-width {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .is-explorer-open .full-width {
+    margin-left: -4.5rem;
+  }
 }
 
 @screen md {

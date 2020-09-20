@@ -10,7 +10,7 @@ Palette (as a reference from Invisionn:
 
 brand: #02B159
 titlecolor: #32363B
-backgroundcolor: #5E6065
+textcolor: #5E6065
 divider: #EAEAEB
 basicGray: #A9AAB0
 
@@ -259,14 +259,14 @@ module.exports = {
 			xs: '0.75rem',
 			sm: '0.875rem',
 			base: '1rem',
-			lg: '1.125rem',
-			xl: '1.25rem',
-			'2': '2rem',
+			lg: [ '1.125rem', { letterSpacing: '-0.01111111em', lineHeight: '1.333333em' } ],
+			xl: [ '1.25rem', { letterSpacing: '-0.011111111em', lineHeight: '1.333333em' } ],
+			'2': [ '2rem', { letterSpacing: '-0.02em', lineHeight: '1.2em' } ],
 			'2xl': [ '1.5rem', { letterSpacing: '-0.02em', lineHeight: '1.2em' } ],
-			'3xl': '1.875rem',
-			'4xl': '2.25rem',
-			'5xl': '3rem',
-			'6xl': '4rem'
+			'3xl': [ '2rem', { letterSpacing: '-0.015625em', lineHeight: '1.2em' } ],
+			'4xl': [ '2.25rem', { letterSpacing: '-.03125em', lineHeight: '1.2em' } ],
+			'5xl': [ '3rem', { letterSpacing: '-.03125em', lineHeight: '1.2em' } ],
+			'6xl': [ '4rem', { letterSpacing: '-.03125em', lineHeight: '1.2em' } ]
 		},
 		letterSpacing: {
 			tighter: '-.05em',

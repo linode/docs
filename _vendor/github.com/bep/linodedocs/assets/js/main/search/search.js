@@ -41,6 +41,11 @@ class Searcher {
 
 		this.debug('execute', this.requests);
 
+		if (queries.requests.length == 0) {
+			done();
+			return;
+		}
+
 		this.search(queries, function(data) {
 			let results = data.results;
 			self.callbacks.forEach((cb) => {
@@ -63,10 +68,6 @@ class Searcher {
 			console.log(error);
 		}
 	) {
-		if (queries.requests.length == 0) {
-			return;
-		}
-
 		fetch(this.urlQueries, {
 			method: 'POST',
 			headers: this.headers,
@@ -255,6 +256,9 @@ class Searcher {
 					}
 					return self.filters.facets.isSectionEnabled(section.config.name);
 				};
+				section.getFacet = function(name) {
+					return this.searchData.result.facets[name];
+				};
 				sections.push(section);
 			}
 
@@ -271,6 +275,10 @@ class Searcher {
 					stats.totalNbPages += data.nbPages;
 				});
 				return stats;
+			};
+
+			result.findSectionByName = function(name) {
+				return this.sections.find((section) => section.config.name === name);
 			};
 
 			result.getMatchedWords = function() {
@@ -345,8 +353,14 @@ class Searcher {
 					},
 					false
 				),
+
 				namedSearches: new Map(),
-				expandedNodes: new Map()
+				expandedNodes: new Map(),
+
+				// For the standalone searches on the home page etc.
+				staticSearchRequests: [],
+				staticSearchRequestsResults: [],
+				staticSearchCache: new Map()
 			};
 
 			s.items = function() {
@@ -361,7 +375,14 @@ class Searcher {
 			};
 
 			s.publish = function() {
-				if (!self.publish) {
+				// The staticSearchRequestsResults standalone searches that's not participating in the global
+				// filtering game, so publish it whenever it's set.
+				for (let i = 0; i < this.staticSearchRequestsResults.length; i++) {
+					let r = this.staticSearchRequestsResults.pop();
+					sendEvent(r.event, r.results);
+				}
+
+				if (!this.publish) {
 					return;
 				}
 				let events = [];
@@ -501,6 +522,13 @@ class Searcher {
 					this.searchState.blankSearch.publish = true;
 				}
 
+				if (opts.requests) {
+					this.searchState.staticSearchRequests.push({
+						requests: opts.requests,
+						event: event
+					});
+				}
+
 				// Refresh the main search result on query or filter changes.
 				this.searchState.mainSearch.dirty = regularSearch && !this.filters.isZero();
 
@@ -553,9 +581,28 @@ class Searcher {
 						if (this.excerpt.length <= maxLen) {
 							return this.excerpt;
 						}
-						return `${this.excerpt.substring(0, maxLen)}…`;
+						return `${this.excerpt.substring(0, maxLen)}`;
 					};
 				});
+
+				if (this.searchState.staticSearchRequests.length > 0) {
+					for (let i = 0; i < this.searchState.staticSearchRequests.length; i++) {
+						let r = this.searchState.staticSearchRequests.pop();
+						let requests = r.requests.requests;
+						let event = r.event;
+						let key = r.requests.key;
+
+						let cachedResults = this.searchState.staticSearchCache.get(key);
+						if (cachedResults) {
+							self.searchState.staticSearchRequestsResults.push({ event: event, results: cachedResults });
+						} else {
+							searcher.add({ requests: requests }, (results) => {
+								self.searchState.staticSearchRequestsResults.push({ event: event, results: results });
+								self.searchState.staticSearchCache.set(key, results);
+							});
+						}
+					}
+				}
 
 				if (this.searchState.metaSearch.dirty) {
 					searcher.add(
@@ -591,16 +638,19 @@ class Searcher {
 					});
 				};
 
-				var createSectionRequest = function(sectionConfig) {
+				var createSectionRequest = function(sectionConfig, isBlank = false) {
 					let facets = [ 'section.*' ];
 					let filteringFacetNames = [];
 					if (sectionConfig.filtering_facets) {
 						filteringFacetNames = sectionConfig.filtering_facets.map((facet) => facet.name);
 						facets = facets.concat(filteringFacetNames);
 					}
-					let hitsPerPage = self.showFullSearchResult
-						? 1000
-						: sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
+					let hitsPerPage = 0;
+					if (!isBlank) {
+						hitsPerPage = self.showFullSearchResult
+							? 1000
+							: sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
+					}
 					let filters = sectionConfig.filters || '';
 					let indexFilters = self.filters.facets.get(sectionConfig.name) || new Set();
 					let facetFilters = Array.from(indexFilters);
@@ -625,7 +675,9 @@ class Searcher {
 				this.searchState.namedSearches.forEach((v, k) => {
 					v.publish = true;
 
-					applySectionFilters(v.query);
+					if (v.query.sectionConfig) {
+						applySectionFilters(v.query);
+					}
 
 					searcher.add({ requests: v.query.requests }, (results) => {
 						v.results = results;
@@ -658,7 +710,7 @@ class Searcher {
 					let requests = [];
 					for (let section of sectionsIndices) {
 						requests.push(
-							createSectionRequest(this.searchState.mainSearch.results.sections[section].config)
+							createSectionRequest(this.searchState.mainSearch.results.sections[section].config, true)
 						);
 					}
 

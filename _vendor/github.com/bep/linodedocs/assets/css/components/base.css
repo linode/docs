@@ -15,7 +15,7 @@ h4 {
 }
 
 a {
-  @apply no-underline text-basicgray font-normal;
+  @apply cursor-pointer no-underline text-basicgray font-normal;
 }
 
 a:focus {

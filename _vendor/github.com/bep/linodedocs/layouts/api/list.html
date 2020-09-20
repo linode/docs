@@ -6,8 +6,9 @@
     <h1>
       {{ $info.Title }}
     </h1>
-    <p>
-      {{ $info.Description | .RenderString }}
-    </p>
+    {{ $apiResource := partial "openapi3/get-resource" . }}
+    {{/* Make sure it gets published. */}}
+    {{ $tmp := $apiResource.RelPermalink }}
+    {{ $info.Description | .RenderString }}
   </div>
 {{ end }}
