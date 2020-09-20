@@ -18,6 +18,10 @@ target = "static"
 # https://github.com/gohugoio/hugo/issues/7635
 source = "tailwind.config.js"
 target = "assets/css/tailwind.config.js"
+[hugoVersion]
+extended = false
+min = "0.75.0"
+
 
 # The main theme.
 # Note that the theme itself contains the mount configuration.
