@@ -10,4 +10,4 @@ require (
 	github.com/linode/linode-api-docs v4.73.0+incompatible // indirect
 )
 
-replace github.com/bep/linodedocs => ../linodedocs
+
