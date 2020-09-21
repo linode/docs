@@ -17,7 +17,7 @@ var lnHome = {};
 
 		// Number of tiles per paginated page.
 		const tilesPageSize = isMobile() ? 3 : 4;
-		const tilesAlgoliaPreloadPages = 4; // Load 16 articles per section per query.
+		const tilesAlgoliaPreloadPages = 5;
 		const productsStripPageSize = isMobile() ? 3 : 6;
 
 		// The section names we paginate on the home page.
@@ -35,7 +35,8 @@ var lnHome = {};
 				low: 0,
 				high: pageSize,
 				sectionConfig: sectionConfig,
-				pageSize: pageSize
+				pageSize: pageSize,
+				end: false
 			};
 
 			pager.loadMore = loadMore;
@@ -57,7 +58,7 @@ var lnHome = {};
 			};
 
 			pager.hasNext = function() {
-				return !(this.end && this.high() >= this.items.length);
+				return !this.end || this.high() < this.items.length;
 			};
 
 			pager.next = function() {
@@ -111,9 +112,7 @@ var lnHome = {};
 				throw `no index with name ${name} found`;
 			}
 
-			sectionTiles[name] = newPager(sectionConfig, tilesPageSize, function(high) {
-				sectionTiles.dispatchQueries(name, high / tilesAlgoliaPreloadPages);
-			});
+			sectionTiles[name] = newPager(sectionConfig, tilesPageSize, null);
 		});
 
 		sectionTiles.dispatchQueries = function(sections, page = 0) {
@@ -153,7 +152,7 @@ var lnHome = {};
 		return {
 			data: {
 				// Data for the top level products strip.
-				productTiles: newPager(null, productsStripPageSize),
+				productTiles: newPager(null, productsStripPageSize, null),
 
 				// Maps the values in sectionNames to their tiles data.
 				sectionTiles: sectionTiles,
@@ -213,8 +212,7 @@ var lnHome = {};
 			receiveData: function(results) {
 				debug('receiveData', results);
 				var self = this;
-				// We can get a partial result set, so we need
-				// to match by index name.
+				// Match results by index name.
 				results.forEach((result) => {
 					let sectionConfig = searchConfig.sections.find((s) => {
 						if (s.index !== result.index) {
@@ -232,7 +230,7 @@ var lnHome = {};
 					}
 
 					var section = self.data.sectionTiles[sectionConfig.name];
-					section.end = result.hits.length === 0;
+					section.end = section.end || result.hits.length === 0;
 					if (result.page === 0) {
 						section.setItems(result.hits);
 					} else {
