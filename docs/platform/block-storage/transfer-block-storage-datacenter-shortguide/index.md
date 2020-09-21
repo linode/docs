@@ -29,6 +29,6 @@ Consult our [Network Transfer Quota](/docs/platform/billing-and-support/network-
 You will need a device that has enough storage capacity to receive the entirety of your Block Storage Volume's data.
 {{</ note >}}
 
-1. Once your Block Storage Volume's data has been copied, [create a new Block Storage Volume in the desired data center and attach it to a Linode](/docs/storage/block-storage/guides/add-volume/).
+1. Once your Block Storage Volume's data has been copied, [create a new Block Storage Volume in the desired data center and attach it to a Linode](/docs/products/storage/block-storage/guides/add-volume/).
 
 1. [Use SCP to upload the data from the receiving computer or Linode](/docs/security/data-portability/download-files-from-your-linode/#download-specific-files-or-directories-over-ssh) to the new Block Storage Volume. The new Block Storage Volume must be attached and mounted to a Linode.
