@@ -257,12 +257,13 @@ module.exports = {
 		fontSize: {
 			xxs: '0.65625rem',
 			xs: '0.75rem',
-			sm: '0.875rem',
+			sm: '0.85714rem',
 			base: '1rem',
 			lg: [ '1.125rem', { letterSpacing: '-0.01111111em', lineHeight: '1.333333em' } ],
 			xl: [ '1.25rem', { letterSpacing: '-0.011111111em', lineHeight: '1.333333em' } ],
 			'2': [ '2rem', { letterSpacing: '-0.02em', lineHeight: '1.2em' } ],
 			'2xl': [ '1.5rem', { letterSpacing: '-0.02em', lineHeight: '1.2em' } ],
+			'3': [ '1.7142857rem', { letterSpacing: '-0.016666666666667em', lineHeight: '1.333333em' } ],
 			'3xl': [ '2rem', { letterSpacing: '-0.015625em', lineHeight: '1.2em' } ],
 			'4xl': [ '2.25rem', { letterSpacing: '-.03125em', lineHeight: '1.2em' } ],
 			'5xl': [ '3rem', { letterSpacing: '-.03125em', lineHeight: '1.2em' } ],
@@ -275,6 +276,7 @@ module.exports = {
 		},
 		extend: {
 			spacing: {
+				'2-5': '0.625rem',
 				'7': '1.75rem',
 				'9': '2.25rem',
 				'14': '3.5rem',
@@ -304,17 +306,18 @@ module.exports = {
 					700: '#616266', // Dropdown text.
 					800: colorTitle
 				},
-				// Generated on https://javisperez.github.io/tailwindcolorshades/#/?green=1DB35B&tv=1
+				// Generated on https://javisperez.github.io/tailwindcolorshades/#/?green=02B159&tv=1
 				green: {
-					100: '#E8F7EF',
-					200: '#C7ECD6',
-					300: '#A5E1BD',
-					400: '#61CA8C',
-					500: '#1DB35B',
-					600: '#1AA152',
-					700: '#116B37',
-					800: '#0D5129',
-					900: '#09361B'
+					50: '#F2FBF7',
+					100: '#E6F7EE',
+					200: '#C0ECD6',
+					300: '#9AE0BD',
+					400: '#4EC88B',
+					500: '#02B159',
+					600: '#029F50',
+					700: '#016A35',
+					800: '#015028',
+					900: '#01351B'
 				}
 			}
 		}

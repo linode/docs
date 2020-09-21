@@ -260,9 +260,9 @@ var lnSectionsController = {};
 					return;
 				}
 
-				let newSection = function(key) {
+				let newSection = function(key, value) {
 					let m = self.data.sectionMetaMap.get(key);
-					let s = { key, title: '', thumbnail: '' };
+					let s = { key, title: '', thumbnail: '', count: value };
 					s.href = hrefFactory.hrefSection(key);
 
 					if (m) {
@@ -272,7 +272,11 @@ var lnSectionsController = {};
 					return s;
 				};
 
-				this.data.sections = Object.keys(sectionFacet).map((key) => newSection(key));
+				this.data.sections = [];
+				for (var key in sectionFacet) {
+					this.data.sections.push(newSection(key, sectionFacet[key]));
+				}
+
 				this.loaded = true;
 			},
 

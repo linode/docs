@@ -21,19 +21,18 @@
     <template x-if="uiState.showSectionsTiles()">
       <section class="mb-6 w-full">
         <h2 class="mb-12 text-2" x-text="data.meta.title + ' Categories'"></h2>
-        <div class="flex flex-wrap items-stretch -mx-2">
+        <div class="flex flex-wrap items-stretch -mx-2-5">
           <template x-for="(item, i) in data.sections" :key="item.key">
-            <div class="px-2 w-full md:w-1/3 pb-8">
-              <div class="bg-white h-full rounded-lg overflow-hidden shadow-sm w-full">
-                <a :href="item.href" class="text-base block">
-                  <div class="relative overflow-hidden pb-30/9 sm:pb-16/9">
-                    <img class="absolute h-full w-full object-cover ease-in duration-300" :src="item.thumbnail">
+            <div class="px-2-5 w-full md:w-1/4 pb-5" x-show.transition.duration.500ms.in.origin.left="item.href">
+              <a class="w-56 h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-gray-700 hover:text-brand" :href="item.href">
+                <div class="flex flex-col justify-center w-full">
+                  <div class="w-full flex justify-center mb-8">
+                    <div class="w-24 h-24" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.thumbnail)"></div>
                   </div>
-                  <div class="p-8">
-                    <h3 class="font-bold text-2xl tracking-tight" x-html="item.title"></h3>
-                  </div>
-                </a>
-              </div>
+                  <h3 x-html="item.title" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
+                  <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
+                </div>
+              </a>
             </div>
           </template>
         </div>

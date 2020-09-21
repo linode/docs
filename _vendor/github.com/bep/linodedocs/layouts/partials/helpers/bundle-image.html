@@ -8,4 +8,4 @@
 {{ else if eq $command "Resize" }}
   {{ $img = $img.Resize $options }}
 {{ end }}
-<img src="{{ $img.RelPermalink }}" alt="{{ $img.Title }}" width="{{ $img.Width }}" height="{{ $img.Height }}" class="w-full {{ .class }}">
+<img src="{{ $img.RelPermalink }}" alt="{{ $img.Title }}" width="{{ $img.Width }}" height="{{ $img.Height }}" class="w-full {{ .class }}" loading="lazy">
