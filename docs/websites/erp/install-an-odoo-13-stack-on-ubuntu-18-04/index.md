@@ -218,11 +218,11 @@ It's considered a best practice to isolate Odoo's Python modules from the module
 
 1. Create a new `virtualenv` environment for Odoo 13 application:
 
-        python3 -m venv /tmp/odoo-env
+        python3 -m venv /home/<user>/odoo-env
 
 2. Activate the `odoo-env` virtual environment you created in the previous step:
 
-        source /tmp/odoo-env/bin/activate
+        source /home/<user>/odoo-env/bin/activate
 
 3. Update `pip3` using the following command:
 
@@ -235,7 +235,7 @@ It's considered a best practice to isolate Odoo's Python modules from the module
 Let's review the the virtual environment creation:
 
 * `python3 -m venv`: Runs `venv` module using Python 3, this module is in charge of creating the virtual environment.
-* `/tmp/odoo-env`: Indicates the path used for the virtual Python environment. For the purpose of this guide, `tmp` directory was used but you can change it to any location that suits your needs as long as you remember to grant the `odoo` user with proper permissions afterward.
+* `/home/<user>/odoo-env`: Indicates the path used for the virtual Python environment. For the purpose of this guide, `home` directory of the current user was used but you can change it to any location that suits your needs as long as you remember to grant the `odoo` user with proper permissions afterward.
 
 ### Install Odoo's Python modules
 
@@ -244,7 +244,11 @@ Let's review the the virtual environment creation:
         pip3 install -r /opt/odoo/doc/requirements.txt
         pip3 install -r /opt/odoo/requirements.txt
 
-4. Exit from the Python virtual environment by issuing the command:
+1. Check that all requirements are properly installed in your virtual environment:
+
+        pip3 list
+
+1. Exit from the Python virtual environment by issuing the command:
 
         deactivate
 
@@ -277,7 +281,7 @@ xmlrpc_port = 8069
 
 ### Create an Odoo Service
 
-Create a systemd unit called `odoo-server` to allow your application to behave as a service. Create a new file at `/lib/systemd/system/odoo-server.service` and add the following:
+Create a systemd unit called `odoo-server` to allow your application to behave as a service. Create a new file at `/lib/systemd/system/odoo-server.service` and add the following, replace `/home/<user>` with the directory where you setup your virtual Python environment:
 
 {{< file "/lib/systemd/system/odoo-server.service" shell >}}
 [Unit]
@@ -289,7 +293,7 @@ PermissionsStartOnly=true
 SyslogIdentifier=odoo-server
 User=odoo
 Group=odoo
-ExecStart=/tmp/odoo-env/bin/python3 /opt/odoo/odoo-bin --config=/etc/odoo-server.conf --addons-path=/opt/odoo/addons/
+ExecStart=/home/<user>/odoo-env/bin/python3 /opt/odoo/odoo-bin --config=/etc/odoo-server.conf --addons-path=/opt/odoo/addons/
 WorkingDirectory=/opt/odoo/
 StandardOutput=journal+console
 
@@ -304,9 +308,9 @@ WantedBy=multi-user.target
         sudo chmod 755 /lib/systemd/system/odoo-server.service \
         && sudo chown root: /lib/systemd/system/odoo-server.service
 
-2.  Since the `odoo` user runs the application, change its ownership accordingly:
+2.  Since the `odoo` user runs the application, change its ownership accordingly. Replace `/home/<user>` with the directory where you setup your virtual Python environment:
 
-        sudo chown -R odoo: /opt/odoo/
+        sudo chown -R odoo: /opt/odoo/ && sudo chown -R odoo: /home/<user>/odoo-env
 
 3.  Protect the server configuration file. Change its ownership and permissions so no other non-root user can access it:
 
@@ -353,13 +357,13 @@ Confirm that everything is working as expected.
 
 ## Back Up Odoo Databases
 
-If all components of the Odoo stack are running on a single server, it is simple to back up your databases using the Odoo web interface. However, this does not work with the configuration in this guide, since PostgreSQL was not installed on the **odoo** Linode server.
+If all components of the Odoo stack are running on a single server, it is simple to back up your databases using the Odoo web interface. However, this does not work with the configuration in this guide, since PostgreSQL was not installed on the **Odoo** Linode server.
 
 You have two options to backup your production database:
 
-1. You can install PostgreSQL 10 on the **odoo** server using the procedure described on this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo GUI as before. Since Odoo configuration is explicit about database connection you do not have to worry about anything else. This method restores the database to the **postgresql** server rather than **odoo**.
+1. You can install PostgreSQL 10 on the **Odoo** server using the procedure described on this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo GUI as before. Since Odoo configuration is explicit about database connection you do not have to worry about anything else. This method restores the database to the **PostgreSQL** server rather than **Odoo**.
 
-2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](https://www.linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **postgresql** server.
+2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](https://www.linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** server.
 
 ### Update Odoo Modules
 
