@@ -2,15 +2,20 @@
 author:
   name: Angel D'az
   email: angel@ocelotdata.com
-description: 'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
-og_description:  'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
+description: ' 'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
+og_description: 'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
 keywords: ['apache airflow tutorial', 'apache airflow features']
-tags: ["apache", "automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-30
+modified_by:
+  name: Angel D'az
 title: "An Apache Airflow Tutorial: How to Create Connections and Variables"
 h1_title: "An Apache Airflow Tutorial: Creating Connections and Variables"
-show_on_rss_feed: false
+contributor:
+  name: Angel D'az
+  link: https://github.com/angelddaz/
+external_resources:
+- '[Apache Airflow Official Documentation](https://airflow.apache.org/docs/stable/)'
 ---
 
 ## What is Apache Airflow?
