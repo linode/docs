@@ -482,15 +482,9 @@ PREFIX2="24"
 
     > **Debian 10, Ubuntu 18.04 & CentOS 8**
     >
-    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
-    >
-    >
         sudo ifdown eth0
         sudo ifup eth0
     > **Ubuntu 20.04**
-    >
-    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
-    >
     >
         systemctl restart systemd-networkd
 
