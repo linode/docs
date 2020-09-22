@@ -138,8 +138,8 @@ The Linode CCM accepts annotations that configure the behavior and settings of y
 | `check-interval` | integer | None | The duration, in seconds, between health checks. |
 | `check-timeout` | &bull; integer <br> &bull; value between `1`-`30` | None | Duration, in seconds, to wait for a health check to succeed before it is considered a failure. |
 | `check-attempts` | &bull; integer <br> &bull; value between `1`-`30` | None | Number of health checks to perform before removing a back-end Node from service. |
-| `check-passive` | boolean | `false` | When `true`, `5xx` status codes will cause the health check to fail. |
-| `preserve` | boolean | `false` | When `true`, deleting a LoadBalancer service does not delete the underlying NodeBalancer |
+| `check-passive` | Boolean | `false` | When `true`, `5xx` status codes will cause the health check to fail. |
+| `preserve` | Boolean | `false` | When `true`, deleting a LoadBalancer service does not delete the underlying NodeBalancer |
 
 {{< note >}}
 To view a list of deprecated annotations, visit the [Linode CCM GitHub repository](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md#deprecated-annotations).
@@ -150,7 +150,7 @@ To view a list of deprecated annotations, visit the [Linode CCM GitHub repositor
 This section describes how to set up TLS termination on your Linode NodeBalancers so a Kubernetes Service can be accessed over HTTPS.
 
 {{< note >}}
-Linode NodeBalancers do not currently support ProxyProtocol. For this reason, Kubernetes LoadBalancer Services running on Linode do not support ProxyProtocol either. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to Linode NodeBalancers.
+While Linode NodeBalancers do support ProxyProtocol, the Linode CCM does not. For this reason, the Linode Kubernetes Engine does not support ProxyProtocol yet. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to the Linode CCM.
 {{</ note >}}
 
 #### Generating a TLS type Secret
