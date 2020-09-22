@@ -27,7 +27,7 @@ These introductory guides to the Linode Cloud Manager will get you up and runnin
 
 - [Domains](/docs/products/tools/cloud-manager/guides/cloud-domains): The DNS Manager allows you to control and manage your domains.
 
-- [Longview](/docs/products/tools/cloud-manager/guides/cloud-longview): This section gives you access to Linode’s Longview service where you can track metrics for CPU, memory, and network bandwidth and more.
+- [Longview](/docs/products/tools/cloud-manager/guides/cloud-longview): This section gives you access to Linode’s Longview service where you can track metrics for CPU, memory, network bandwidth and more.
 
 - [Marketplace](/docs/products/tools/cloud-manager/guides/cloud-marketplace): This section gives you access to the One-Click Application Marketplace where you can easily deploy and configure software for your Linodes.
 
@@ -39,9 +39,9 @@ These introductory guides to the Linode Cloud Manager will get you up and runnin
 
 ### Account Management
 
-- [Management and Billing](/docs/products/tools/cloud-manager/guides/cloud-billing): Under Account you will be able to manage your account billing information, users, and other account-wide settings.
+- [Management and Billing](/docs/products/tools/cloud-manager/guides/cloud-billing): Under the Account section of Cloud Manager you will be able to manage your account billing information, users, and other account-wide settings.
 
-- [Credits](/docs/products/tools/cloud-manager/guides/cloud-credits): Find credit remaining in the Account section.
+- [Credits](/docs/products/tools/cloud-manager/guides/cloud-credits): Find credit remaining on your account in the Account section.
 
 - [Invoices](/docs/products/tools/cloud-manager/guides/cloud-invoices): In the Account section you can print an invoice.
 
@@ -53,17 +53,17 @@ These introductory guides to the Linode Cloud Manager will get you up and runnin
 
 - [OAuth Apps](/docs/products/tools/cloud-manager/guides/cloud-oauth): An overview of OAuth 2 support in Cloud Manager.
 
-For more information on all the features in Cloud Manager, see the full guide, [An Overview of the Linode Cloud Manager](/docs/platform/manager/an-overview-of-the-linode-cloud-manager/).
-
-- [Understanding Common Cloud Manager Errors](/docs/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/)
-
-- [Searching in the Cloud Manager](/docs/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/)
-
 ## Themes
 
 These additional guides will help you with targeted topics like how to manage your account, Linodes, and networking through the Cloud Manager.
 
 ### Manage Your Account
+
+- [An Overview of the Linode Cloud Manager](/docs/platform/manager/an-overview-of-the-linode-cloud-manager/)
+
+- [Understanding Common Cloud Manager Errors](/docs/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/)
+
+- [Searching in the Cloud Manager](/docs/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/)
 
 - [Understanding the Cloud Manager Events and Activity Feeds](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
 
@@ -75,7 +75,7 @@ These additional guides will help you with targeted topics like how to manage yo
 
 - [Tags and Groups](/docs/quick-answers/linode-platform/tags-and-groups/)
 
-- [Linode Cloud Manager Security Controls](/docs/security/authentication/two-factor-authentication/linode-manager-security-controls/)
+- [Linode Cloud Manager Security Controls](/docs/security/authentication/linode-manager-security-controls/)
 
 ### Manage Your Linodes
 
