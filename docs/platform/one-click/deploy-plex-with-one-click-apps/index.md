@@ -17,7 +17,7 @@ external_resources:
 
 ## Plex One-Click App
 
-[Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide will show you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex One-Click App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this app.
+[Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex One-Click App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode) service with this app.
 
 ### Why Use Plex Media Server
 
@@ -29,7 +29,7 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ### Plex One-Click App Options
 
-The following configuration options will create a secure [Limited User](/docs/security/basics/securing-your-server/#add-a-limited-user-account) to run your Plex Media Server.
+The following configuration options create a secure [Limited User](/docs/security/basics/securing-your-server/#add-a-limited-user-account) to run your Plex Media Server.
 
 {{< note >}}
 -   As a security measure, [root login over SSH](/docs/security/basics/securing-your-server/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
@@ -38,7 +38,7 @@ The following configuration options will create a secure [Limited User](/docs/se
 
 | **Configuration** | **Description** |
 |--------------|------------|
-| **Limited User Name** | The [username](/docs/security/basics/securing-your-server/#add-a-limited-user-account) for SSH access to your Linode. *Required*. <br><br> If the username `root` is specified, a limited user will not be created and extra security features will not be configured. In this case, you can access your Plex Server and complete this guide as `root` using your [Linode Options](#linode-options) credentials. |
+| **Limited User Name** | The [username](/docs/security/basics/securing-your-server/#add-a-limited-user-account) for SSH access to your Linode. *Required*. <br><br> If the username `root` is specified, a limited user is not be created and extra security features are not configured. In this case, you can access your Plex Server and complete this guide as `root` using your [Linode Options](#linode-options) credentials. |
 | **Limited User Password** | The user password for SSH access to your Linode. *Required*. |
 | **Limited User SSH Key** | The user public SSH key for SSH access to your Linode. *Optional*. <br><br> You can find instructions on generating an SSH key pair in our guide on [Using Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/). For an additional layer of security, you can require SSH key access by [disabling password authentication](/docs/security/basics/securing-your-server/#ssh-daemon-options). |
 
@@ -48,17 +48,17 @@ The following configuration options are possible for your Linode server:
 
 | **Configuration** | **Description** |
 |--------------|------------|
-| **Select an Image** | Debian 10 is currently the only images supported by the Plex One-Click App. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
+| **Select an Image** | Debian 10 is currently the only image supported by the Plex One-Click App. *Required*. |
+| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a data center, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Plex recommends 2GB of RAM to run Plex Media Server on its own, and more if you plan to run additional applications. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
+| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you access the root user. The password must meet complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
 When you have provided all required Linode Options, select on the **Create** button. **Your Plex app will complete installation anywhere between 1-5 minutes after your Linode has finished provisioning**.
 
 ### Software Included
 
-The Plex One-Click App will install the following required software on your Linode:
+The Plex One-Click App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
@@ -75,18 +75,18 @@ Before you begin, ensure that you have signed up for a [Plex account](https://ww
 
 ### Initial Setup
 
-Administration of your Plex Server is performed from its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode.
+Administration of your Plex Server is performed from its web interface. Before you can connect to the web interface from your workstation, you first need to create an SSH tunnel to your Linode.
 
 {{< note >}}
-This guide will occasionally direct you to substitute variables beginning with `$` in certain commands.
+This guide occasionally directs you to substitute variables beginning with `$` in certain commands.
 
-An easy way to make these substitutions is to set the variables in your shell, then simply copy the commands as they are provided in this guide — your shell will automatically substitute the `$` variables in those commands with the values you have set.
+An easy way to make these substitutions is to set the variables in your shell, then simply copy the commands as they are provided in this guide — your shell automatically substitutes the `$` variables in those commands with the values you have set.
 
 For example, you can set configure a substitution for `$IP_ADDRESS` like so:
 
     IP_ADDRESS=192.0.2.0
 
-Your shell will then interpret `$IP_ADDRESS` as the value you have provided in following commands, for example:
+Your shell then interprets `$IP_ADDRESS` as the value you have provided in following commands, for example:
 
     echo $IP_ADDRESS
 
@@ -95,7 +95,7 @@ Your shell will then interpret `$IP_ADDRESS` as the value you have provided in f
 {{< /output >}}
 {{< /note >}}
 
-1.  From your workstation [terminal](/docs/tools-reference/tools/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-options), and `$IP_ADDRESS` with the [IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) of your Plex Server Linode:
+1.  From your workstation [terminal](/docs/tools-reference/tools/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-one-click-app-options), and `$IP_ADDRESS` with the [IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) of your Plex Server Linode:
 
         ssh $USERNAME@$IP_ADDRESS -L 8888:localhost:32400
 
@@ -137,7 +137,7 @@ You can now access [uploaded media](#upload-media) and manage your Plex Server f
 
 ### (Optional) Connect a Linode Block Storage Volume
 
-If your media collection is larger than the space available from your Linode plan, [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) is a convenient solution. This section outlines the steps for creating and connecting a Block Storage Volume for use with your Plex Server.
+If your media collection is larger than the space available from your Linode plan, [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode) is a convenient solution. This section outlines the steps for creating and connecting a Block Storage Volume for use with your Plex Server.
 
 {{< note >}}
 For future reference, you can find examples of the instructions provided in this section in Cloud Manager by navigating to [**Volumes**](https://cloud.linode.com/volumes), then selecting **Show Configuration** from the option menu for your Volume.
@@ -145,7 +145,7 @@ For future reference, you can find examples of the instructions provided in this
 
 1.  [Create a Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#add-a-volume-from-the-linode-detail-page) if you do not already have one prepared.
 
-1.  Establish an SSH connection to your Plex Server Linode as your [Limited User](#plex-options).
+1.  Establish an SSH connection to your Plex Server Linode as your [Limited User](#plex-one-click-app-options).
 
 1.  On your Plex Server Linode, create a directory to your Volume's mountpoint:
 
@@ -196,7 +196,7 @@ This section directs you to run commands either on your Plex Server Linode throu
 
         mkdir ~/plex/media/movies
 
-1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-options), and `$IP_ADDRESS` with the [IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) of your Plex Server Linode:
+1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-one-click-app-options), and `$IP_ADDRESS` with the [IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) of your Plex Server Linode:
 
         scp example_video.mp4 $USERNAME@$IP_ADDRESS:~/plex/media/movies
 
@@ -208,7 +208,7 @@ There are other ways to upload files to your Plex Server Linode. See our section
 
 ### Add Media Libraries
 
-1.  Log into a Plex Client, such as the [Plex Web App](https://app.plex.tv), then select **MORE >** on the Plex side bar.
+1.  Log into a Plex Client, such as the [Plex Web App](https://app.plex.tv), then select the **MORE >** link on the Plex side bar.
 
     ![Plex Home Side Bar — More](media-library-side-bar.png "Plex Home Side Bar — More.")
 
@@ -216,15 +216,15 @@ There are other ways to upload files to your Plex Server Linode. See our section
 
     ![Add Media Library — Start](media-library-add.png "Add Media Library — Start.")
 
-1.  Select your library type, set the name for your media library, select your language, then select **NEXT**.
+1.  Select your library type, set the name for your media library, select your language, then select the **NEXT** button.
 
     ![Set Media Library Type, Name, and Language](media-library-type-name-language.png "Set Media Library Type, Name, and Language.")
 
-1.  Click **BROWSE FOR MEDIA FOLDER**, navigate to the directory within `/media` where your files are stored, then select **ADD**.
+1.  Click **BROWSE FOR MEDIA FOLDER**, navigate to the directory within `/media` where your files are stored, then select the **ADD** button.
 
     ![Select Media Library Directory](media-library-select-directory.png "Select Media Library Directory.")
 
-1.  Once you are satisfied with your selection, select **ADD LIBRARY**.
+1.  Once you are satisfied with your selection, select the **ADD LIBRARY** button.
 
     ![Add Media Library — Finish](media-library-finish.png "Add Media Library — Finish.")
 
