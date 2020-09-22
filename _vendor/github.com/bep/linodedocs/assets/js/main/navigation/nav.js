@@ -6,9 +6,16 @@ var lnNavController = {};
 	var debug =
 		(typeof LN_DEBUG !== 'undefined' && LN_DEBUG) || 0 ? console.log.bind(console, '[navbar]') : function() {};
 
+	const isOrIsNotClass = function(baseClass, b) {
+		if (b) {
+			return `is-${baseClass}`;
+		}
+		return `is-not-${baseClass}`;
+	};
+
 	const baseClass = 'topbar-pinned';
-	const is = `is-${baseClass}`;
-	const isNot = `is-not-${baseClass}`;
+	const is = isOrIsNotClass(baseClass, true);
+	const isNot = isOrIsNotClass(baseClass, false);
 
 	const addClassOnScroll = () => {
 		document.body.classList.add(is);
@@ -75,6 +82,9 @@ var lnNavController = {};
 			},
 			init: function() {
 				var self = this;
+
+				// Set up watcher to synchronize Alpine model changes with the classes we set on the
+				// body element to get proper CSS state.
 				this.$watch('pinned', () => {
 					if (self.pinned) {
 						addClassOnScroll();

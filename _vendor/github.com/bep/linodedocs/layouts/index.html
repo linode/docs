@@ -14,7 +14,7 @@
     {{ $articleStarters = partial "funcs/build-query.html" $whereDoIStartData.queries.getting_started | first 2 }}
   {{ end }}
   
-  <div id="home-component" x-data="lnHome.New(lnSearchConfig)" x-init="() => init()"
+  <div id="home-component" x-data="lnHome.New(lnSearchConfig)" x-init="() => mounted()"
     @search:results-blank.once.document="receiveCommonData($event.detail)" 
     @search:data-home.document="receiveData($event.detail);">
     <section class="mb-10">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </section>
-    <section class="kind-home__products mb-8">
+    <section class="kind-home__products-tiles mb-8">
       {{ template "home/products-strip" (dict "section" "products" "title" "Products") }}
     </section>
     {{ with $articleFeatured }}
@@ -112,17 +112,31 @@
   </template>
 {{ end }}
 
+{{ define "home/products-strip-tile" }}
+  <div class="kind-home__tile {{ . }}" x-show.transition.duration.500ms.in.origin.left="item.href">
+    <a class="h-40 w-40 flex items-center rounded-lg text-gray-700" :href="item.href">
+      <div class="flex flex-col justify-center w-full">
+        <div class="w-full flex justify-center mb-2">
+          <div class="w-16 h-16" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.icon)"></div>
+        </div>
+        <h3 x-html="item.title" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
+        <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
+      </div>
+    </a>
+  </div>
+{{ end }}
+
 {{ define "home/products-strip"}}
   <div class="mt-8 w-full h-56"
   :class="{
     'invisible': !data.loaded,
     'visible': data.loaded
   }">
-    <div x-show.transition.in.duration.800ms.origin.top.left="data.loaded">
+    <div x-show.transition.in.origin.top.left="data.loaded">
       <div class="flex items-center justify-between">
         {{ template  "home/section-title" . }}
         <div class="mr-8 hidden md:flex space-x-1">
-          <template x-for="(bar, i) in data.productTiles.progress(4)">
+          <template x-for="(bar, i) in data.productTiles.progress()">
             <div style="height: 3px; width: 16px"
             :class="{
               'bg-brand': bar,
@@ -139,17 +153,15 @@
             <use href="#icon--arrow-right"></use>
           </svg>
         </button>
-        <div class="flex flex-no-wrap w-full space-x-2" :class="{ 'justify-between': data.productTiles.current().length === 6}">
+        <div x-ref="tiles-products" class="flex flex-no-wrap w-full space-x-2" :class="{ 'justify-between': data.productTiles.current().length === 6}">
           <template x-for="(item, i) in data.productTiles.current()" :key="item.href">
-            <a class="h-40 w-40 flex items-center rounded-lg hover:shadow-lg text-gray-700 hover:text-brand" :href="item.href" x-show.transition.duration.500ms.in.origin.left="item.href">
-              <div class="flex flex-col justify-center w-full">
-                <div class="w-full flex justify-center mb-2">
-                  <div class="w-16 h-16" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.icon)"></div>
-                </div>
-                <h3 x-html="item.title" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
-                <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
-              </div>
-            </a>
+            {{ template "home/products-strip-tile" }}
+          </template>
+          {{/* On mobile (with no arrow buttons), we show a small part of the next tile to hint at swiping. */}}
+          <template x-if="data.productTiles.hasNext()">
+            <template x-for="(item, i) in data.productTiles.peek().slice(0, 1)" :key="item.href">
+              {{ template "home/products-strip-tile" "md:hidden" }}
+            </template>
           </template>
         </div>
         <button class="ml-8 -mr-10 object-right btn-icon hidden md:block" 
@@ -163,32 +175,42 @@
   </div>
 {{ end }}
 
+{{ define "home/section-tiles-item"}}
+  <div class="kind-home__tile md:w-1/4 {{ . }}" x-show.transition.duration.500ms.in.origin.left="item.objectID">
+    <div class="bg-white h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg">
+      <a :href="item.href" class="no-underline block">
+        <div class="relative overflow-hidden pb-16/9">
+          <img :src="item.thumbnailUrl" class="absolute h-full w-full object-cover" loading="lazy">
+        </div>
+        <div class="px-4 pt-4 pb-6">
+          <h3 class="two-line-ellipsis font-semibold text-sm md:text-lg text-gray-700" x-html="item.title"></h3>
+        </div>
+      </a>
+    </div>
+  </div>
+{{ end }}
+
 {{ define "home/section-tiles"}}
 {{ $section := .section }}
-<div class="w-full" x-show.transition.in.origin.top.left="data.loaded">
+<div class="w-full kind-home__sections-tiles" x-show.transition.in.origin.top.left="data.loaded">
   {{ template  "home/section-title" . }}
   {{ $section := .section }}
   <div class="flex flex-no-wrap content-start w-full mt-8">
-    <button  x-bind:disabled="data.sectionTiles.{{ $section }}.low === 0" class="btn-icon"
+    <button  x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
            @click="data.sectionTiles.{{ $section }}.prev()">
       <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
         <use href="#icon--arrow-right"></use>
       </svg>
     </button>
-    <div class="flex flex-no-wrap w-full space-x-4">
+    <div x-ref="tiles-{{ $section }}" class="flex flex-no-wrap w-full space-x-4">
       <template x-for="(item, i) in data.sectionTiles.{{ $section }}.current()" :key="item.objectID">
-        <div class="w-full md:w-1/4" x-show.transition.duration.500ms.in.origin.left="item.objectID">
-          <div class="bg-white h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg">
-            <a :href="item.href" class="no-underline block">
-              <div class="relative overflow-hidden pb-16/9">
-                <img :src="item.thumbnailUrl" class="absolute h-full w-full object-cover" loading="lazy">
-              </div>
-              <div class="px-4 pt-4 pb-6">
-                <h3 class="two-line-ellipsis font-semibold text-sm md:text-lg text-gray-700" x-html="item.title"></h3>
-              </div>
-            </a>
-          </div>
-        </div>
+        {{ template "home/section-tiles-item" }}
+      </template>
+      {{/* On mobile (with no arrow buttons), we show a small part of the next tile to hint at swiping. */}}
+      <template x-if="data.sectionTiles.{{ $section }}.hasNext()">
+        <template x-for="(item, i) in data.sectionTiles.{{ $section }}.peek().slice(0, 1)" :key="item.objectID">
+          {{ template "home/section-tiles-item" "md:hidden" }}
+        </template>
       </template>
     </div>
     <button x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"

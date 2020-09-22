@@ -16,89 +16,91 @@ var lnHome = {};
 		const dispatcher = lnSearchEventDispatcher.New();
 
 		// Number of tiles per paginated page.
-		const tilesPageSize = isMobile() ? 3 : 4;
+		const tilesPageSize = isMobile() ? 2 : 4;
 		const tilesAlgoliaPreloadPages = 5;
-		const productsStripPageSize = isMobile() ? 3 : 6;
+		const productsStripPageSize = isMobile() ? 2 : 6;
 
 		// The section names we paginate on the home page.
 		// This maps to the name attribute in the search configuration.
 		// No filters are currently applied, and the order will be the order from Algolia.
 		const sectionNames = [ 'docs', 'blog', 'resources', 'marketplace' ];
 
-		const newPager = function(sectionConfig, pageSize, loadMore) {
+		const newPager = function(pageSize) {
 			// The reason this is a plain object and not a class is because of limitations in AlpineJS'
 			// reactivity.
 			// The reasoning behind this comment is to prevent some wasteful work for the next person thinking
 			// "Oh, wouldn't this be nicer as a class?"
+			//
+			// Note that we currently do not use the "loadMore" function.
 			let pager = {
-				items: [],
-				low: 0,
-				high: pageSize,
-				sectionConfig: sectionConfig,
-				pageSize: pageSize,
-				end: false
-			};
+				pages: [ [] ], // two dimensional array of pages of items.
+				index: 0, // current page, zero based
 
-			pager.loadMore = loadMore;
-			if (!loadMore) {
-				pager.end = true;
-			}
+				pageSize: pageSize
+			};
 
 			pager.setItems = function(items) {
-				this.items.length = 0;
-				this.addItems(items);
-			};
-
-			pager.addItems = function(items) {
-				this.items = this.items.concat(items);
+				this.pages = [];
+				for (var i = 0; i < items.length; i += this.pageSize) {
+					this.pages[this.pages.length] = items.slice(i, i + this.pageSize);
+				}
+				this.adjustIndex(0);
 			};
 
 			pager.current = function() {
-				return this.items.slice(this.low, this.high());
+				if (this.pages.length === 0) {
+					return [];
+				}
+				return this.pages[this.index];
+			};
+
+			pager.hasPages = function() {
+				return this.pages.length > 0;
 			};
 
 			pager.hasNext = function() {
-				return !this.end || this.high() < this.items.length;
+				return this.index < this.pages.length - 1;
+			};
+
+			// peek returns the next page without moving the cursor.
+			// You need to check with hasNext before calling this.
+			pager.peek = function() {
+				return this.pages[this.index + 1];
 			};
 
 			pager.next = function() {
-				this.adjustLow(this.pageSize);
-				let high = this.high();
-				if (this.loadMore && this.items.length - high <= this.pageSize) {
-					// We need to load more data.
-					this.loadMore(high);
-				}
+				this.adjustIndex(1);
+			};
+
+			pager.hasPrev = function() {
+				return this.index > 0;
 			};
 
 			pager.prev = function() {
-				this.adjustLow(-this.pageSize);
+				this.adjustIndex(-1);
 			};
 
-			pager.high = function() {
-				return Math.min(this.low + this.pageSize, this.items.length);
-			};
-
-			pager.adjustLow = function(incr) {
-				let low = this.low + incr;
-				if (low < 0) {
-					low = 0;
+			pager.adjustIndex = function(incr) {
+				let index = this.index + incr;
+				if (index < 0) {
+					index = 0;
+				} else if (index >= this.pages.length) {
+					index = this.pages.length - 1;
 				}
-				this.low = low;
+				this.index = index;
 			};
 
 			// progress returns a slice of bools of size length indicating the progress of this pager.
-			// Note that this currently only works for the products strip where all items
-			// are loaded at once.
-			pager.progress = function(size) {
-				if (this.items.length === 0) {
+			// This construct may look a little odd, but it makes the AlpineJS template construct simple.
+			pager.progress = function() {
+				if (this.pages.length === 0) {
 					return [];
 				}
-				let progress = this.high() / this.items.length;
-				let progressAdjusted = Math.floor(progress * size);
-
+				let numPages = this.pages.length;
+				let page = this.index + 1;
 				let progressSlice = [];
-				for (let i = 0; i < size; i++) {
-					progressSlice.push(i < progressAdjusted);
+				for (let i = 1; i <= numPages; i++) {
+					progressSlice.push(i <= page);
 				}
 				return progressSlice;
 			};
@@ -106,53 +108,36 @@ var lnHome = {};
 		};
 
 		var sectionTiles = {};
+		var searchRequests = [];
 		sectionNames.forEach((name) => {
 			let sectionConfig = searchConfig.sections.find((s) => s.name === name);
 			if (!sectionConfig) {
 				throw `no index with name ${name} found`;
 			}
 
-			sectionTiles[name] = newPager(sectionConfig, tilesPageSize, null);
+			sectionTiles[name] = newPager(tilesPageSize);
+
+			let filters = sectionConfig.filters || '';
+			searchRequests.push({
+				page: 0,
+				params: `query=&hitsPerPage=${tilesPageSize * tilesAlgoliaPreloadPages}`,
+				indexName: sectionConfig.index,
+				filters: filters
+			});
 		});
 
-		sectionTiles.dispatchQueries = function(sections, page = 0) {
-			var sections = Array.isArray(sections) ? sections : [ sections ];
-
-			var requests = [];
-
-			Object.values(this).forEach((val) => {
-				if (!val.sectionConfig) {
-					return;
-				}
-				if (!sections.includes(val.sectionConfig.name)) {
-					return;
-				}
-				let filters = val.sectionConfig.filters || '';
-				requests.push({
-					page: page,
-					params: `query=&hitsPerPage=${tilesPageSize * tilesAlgoliaPreloadPages}`,
-					indexName: val.sectionConfig.index,
-					filters: filters
-				});
-			});
-
-			let cacheKey = `home:section-tiles:${sections.join('|')}/${page}`;
-
-			debug('dispatchQueries', sections, requests);
-
-			dispatcher.searchStandalone(
-				{
-					key: cacheKey,
-					requests: requests
-				},
-				searchName
-			);
-		};
+		dispatcher.searchStandalone(
+			{
+				key: `home:section-tiles`,
+				requests: searchRequests
+			},
+			searchName
+		);
 
 		return {
 			data: {
 				// Data for the top level products strip.
-				productTiles: newPager(null, productsStripPageSize, null),
+				productTiles: newPager(productsStripPageSize),
 
 				// Maps the values in sectionNames to their tiles data.
 				sectionTiles: sectionTiles,
@@ -165,11 +150,36 @@ var lnHome = {};
 				loaded: false
 			},
 
-			init: function() {
-				debug('init');
-				this.data.sectionTiles.dispatchQueries(sectionNames);
+			mounted: function() {
+				debug('mounted');
+				if (isTouchDevice()) {
+					// Set up swipe listeners for the pagers on this page.
+					var self = this;
+					const addSwipeListeners = function(pager, el) {
+						lnSwipe.New(el, function(direction) {
+							switch (direction) {
+								case 'left':
+									pager.next();
+									break;
+								case 'right':
+									pager.prev();
+									break;
+							}
+						});
+					};
+					let tilesEl = self.$refs['tiles-products'];
+					let pager = self.data.productTiles;
+					addSwipeListeners(pager, tilesEl);
+					sectionNames.forEach((name) => {
+						let tilesEl = self.$refs[`tiles-${name}`];
+						let pager = self.data.sectionTiles[name];
+						addSwipeListeners(pager, tilesEl);
+					});
+				}
 			},
 
+			// receiveCommonData receives the common search data also used in other components,
+			// such as section metadata and facets.
 			receiveCommonData: function(results) {
 				debug('receiveCommonData', results);
 				if (this.commonDataLoaded) {
@@ -230,12 +240,7 @@ var lnHome = {};
 					}
 
 					var section = self.data.sectionTiles[sectionConfig.name];
-					section.end = section.end || result.hits.length === 0;
-					if (result.page === 0) {
-						section.setItems(result.hits);
-					} else {
-						section.addItems(result.hits);
-					}
+					section.setItems(result.hits);
 				});
 
 				this.data.loaded = true;

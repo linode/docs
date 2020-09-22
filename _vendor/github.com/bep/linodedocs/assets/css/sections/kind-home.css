@@ -4,3 +4,19 @@
         max-width: 1184px;
     }
 }
+
+@screen mobile {
+    .kind-home__sections-tiles .kind-home__tile {
+        min-width: 45%;
+    }
+
+    .kind-home__products-tiles .kind-home__tile {
+        min-width: 42%;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .kind-home__tile a:hover {
+        @apply shadow-lg hover:text-brand;
+    }
+}
