@@ -2,7 +2,8 @@
 author:
   name: Angel D'az
   email: angel@ocelotdata.com
-description: 'A shortguide that shows how to automate your Airflow Variables and Connections deployment.'
+description: 'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
+og_description:  'This Apache Airflow tutorial introduces you to Airflow Variables and Connections. You also learn how to use the Airflow CLI to quickly create variables that you can encrypt and source control. Similarly, the tutorial provides a basic example for creating Connections using a Bash script and the Airflow CLI. These two examples can be incorporated into your Airflow data pipelines using Python.'
 keywords: ['apache airflow tutorial', 'apache airflow features']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-30
@@ -12,164 +13,111 @@ show_on_rss_feed: false
 ---
 
 ## What is Apache Airflow?
-[Airflow](https://airflow.apache.org/) is an open source platform that you can use to automate, orchestrate, and monitor workflows. One of Airflow’s greatest features is that you can create and execute workflows with code. When you use workflows that are powered by code, you can version control, collaborate on, and debug your workflows.
+[Airflow](https://airflow.apache.org/) is an open source platform that you can use to automate, orchestrate, and monitor workflows and data pipelines. One of Airflow’s greatest features is that you can create and execute workflows with code. When you use workflows that are powered by code, you can version control, collaborate on, and debug your workflows.
 
 Airflow refers to workflows as *Directed Acyclic Graphs (DAGs)*. A DAG includes the sequence of tasks to execute along with the relationship between tasks and their dependencies. You can execute an [ETL process](https://en.wikipedia.org/wiki/Extract,_transform,_load) (extract, load, and transform data) with Airflow and also automate emails with CSV attachments, and create Machine Learning (ML) workflows.
 
-You can connect your Airflow data sources to a central data *warehouse* so your data analysts have access to all relevant data, which prevents data silos from developing across an organization. Similarly, transparent and reproducible code-driven workflows, reduce bottlenecks, because anyone with access to the workflow's code can debug it.
+You can connect your Airflow data sources to a central data *warehouse* so your data analysts have access to all relevant data, which prevents data silos from developing across an organization. Similarly, transparent and reproducible code-driven workflows reduce bottlenecks, because anyone with access to the workflow's code can debug it.
+
+Airflow provides a [Python application programming interface (API)](https://airflow.apache.org/docs/stable/_api/index.html) that you can use to code your DAGs and call any connection scripts you create.
 
 ### In this Guide
 
-You learn how to:
+This tutorial provides an introduction with basic examples to two fundamental Airflow concepts, *Variables* and *Connections*. You can incorporate the ideas covered in this guide into more sophisticated Python scripts when creating your DAGs and data pipelines.
 
-- store your Airflow data connection details in variables
-- automate connecting to your data sources using a simple script and the Airflow command-line interface (CLI)
+In this Apache Airflow tutorial, you learn how to:
+
+- [store Airflow values in variables](#create-your-dag-variables) using the Airflow command-line interface (CLI)
+- [automate connecting to your data sources](#create-your-connection-script) using a simple script and the Airflow CLI
 
 ## Airflow Variables and Connections
 
-Airflow needs to access data from external sources, like [databases](https://www.linode.com/blog/one-click-apps/new-web-development-and-database-one-click-apps/), [APIs](https://developers.linode.com/api/v4), and [servers](https://www.linode.com/products/shared/). You use Airflow *Connections* to create connections to your data sources and you use variables to store reusable connection values, like URIs, database usernames, [Object Storage](https://www.linode.com/products/object-storage/) bucket names, and any other connection values required by your workflows. Your connections form the building blocks of your Airflow DAGs, because they define your data's sources, staging area, and destination.
+Airflow needs to access data from external sources, like [databases](https://www.linode.com/blog/one-click-apps/new-web-development-and-database-one-click-apps/), [APIs](https://developers.linode.com/api/v4), and [servers](https://www.linode.com/products/shared/). You use [Airflow *Connections*](https://airflow.apache.org/docs/stable/howto/connection/index.html) to create connections to your data sources. Your connections form the building blocks of your Airflow DAGs, because they define your data's sources, [staging area](https://airflow.apache.org/docs/stable/best-practices.html#staging-environment), and destination.
+
+You use Airflow variables to store reusable values, like URIs, database usernames, configurations, and any other values required by your DAGs. The variables are stored in Airflow's metadata database.
 
 ### The Airflow CLI
 
-You can use the Airflow CLI to manage your DAGs and create, edit, and delete Airflow objects like connections and variables. This also allows you to create scripts to automate those steps. In this guide, you learn how to leverage the Airflow CLI to automate creating your Airflow connections.
+You can use the Airflow CLI to manage your DAGs and create, edit, and delete Airflow objects like connections and variables. You can incorporate CLI commands into scripts to automate your frequently used Airflow CLI commands. In this guide, you learn how to leverage the Airflow CLI to automate creating your Airflow Variables and Connections.
 
-## Automate Your Airflow Connections
+## Automate Creating Airflow Variables and Connections
 
-### Create Your Connection Variables
+### Create Your DAG Variables
 
-1. Using a text editor, create a new JSON file to store key-value pairs of your data sources connection variables and values. The example file includes connection information for Linode Object Storage and buckets, a MySQL database, and a Google Analytics account.
+Using a JSON file to load [Airflow variables](https://airflow.apache.org/docs/stable/concepts.html#variables) is a more reproducible and faster method than using the Airflow graphical user interface (GUI) to create variables. This section uses a simple example to demonstrate how to create and store Airflow variables using the Airflow CLI.
 
-    {{< file "~/connections.json">}}
+1. Using a text editor, create a new JSON file to store key-value pairs of any values you need to reuse in your DAGs. The example file includes connection information for a MySQL database.
+
+    {{< file "~/example_vars.json">}}
 {
-    "AWS_ACCESS_KEY_ID": "AAAAAAAAAAAA",
-    "AWS_SECRET_ACCESS_KEY": "BBBBBBBBBBBB",
-    "mysql_db": "dbname",
-    "relationaldb_host": "your_database.us-weast-1.rds.amazonaws.com",
-    "relationaldb_port": "9999",
-    "relationaldb_pw": "airflow",
-    "relationaldb_user": "airflow",
-    "s3_bucket": "data_staging",
-    "google_analytics": "[\"website_name\", \"view_id\"]",
-    "TEAM_NAMES": "[\"name_1\",\"name_2\",\"name_3\",\"name_n\"]"
+    "my_prod_db": "dbname",
+    "my_prod_db_user": "username",
+    "my_prod_db_pass": "securepassword",
+    "my_prod_db_uri": "mysql://192.0.2.0:3306/"
 }
     {{</ file >}}
 
+
+1. Issue the following command to load all your variables. Replace the path with the location of your `example_vars.json` file.
+
+        airflow variables --import /home/username/example_vars.json
+
+1. To retrieve a variable value from Airflow, use the following command:
+
+        airflow variables -g my_prod_db
+
+    Airflow returns the value of the `my_prod_db` variable.
+    {{< output >}}
+dbname
+    {{</ output >}}
+
     {{< note >}}
-To load all your connection variables issue the following command. Replace the path with the location of your `connection.json` file.
-
-    airflow variables --import /home/username/connection.json
-
-This command is used to load your connection variables within the script you write in the next section.
-
+Airflow saves the passwords for connections and any variable values in plain text within the metadata database. See the [A Recommended Workflow for Sensitive Variables](#a-recommended-workflow-for-sensitive-variables) section for ways to keep your variables secure.
     {{</ note >}}
 
 ### Create Your Connection Script
 
-Airflow Connections are currently handled a bit differently than Variables.
-You cannot store in a JSON document and load them with a single command.
-I recommend using a bash script.
+The Airflow CLI can be used to create your [Connections](https://airflow.apache.org/docs/stable/howto/connection/index.html) to any external system required by you DAGs. This section shows you how to create a simple connection with a reusable bash script that you can adopt for your own Airflow Connections. The example below includes a connection for a MySQL database.
 
-Use an executable bash script.
-I have provided an example bash script with three types of connections:
-    1. AWS IAM Credentials stored in the Connection’s “extra” field
-    2. Multi-Line JSON API Credentials stored in the Connection’s “extra” field
-    3. An Example Database Connection
+1. Create a new file named `connection.sh`. Replace the values with your own values or expand on the script to create the Connections required by your DAGs.
 
-There is a more detailed explanation after this example script.
-{{< file "connection.sh">}}
+    {{< file "connection.sh">}}
 #!/usr/bin/env bash
 
-airflow connections -d --conn_id aws_iam_user
-airflow connections -d --conn_id googleanalytics_rest_api
 airflow connections -d --conn_id db_conn
 
-airflow connections -a --conn_id aws_iam_user --conn_type s3 --conn_extra '{"aws_access_key_id":"AAAAAAAAAAAAAAA","aws_secret_access_key": "BBBBBBBBBBBB"}'
+airflow connections -a --conn_id db_conn --conn_type mysql --conn_host 'mysql://192.0.2.0:3306/' --conn_schema 'dbname' --conn_login 'username' --conn_port '3306' --conn_password 'securepassword'
+    {{</ file >}}
 
-airflow connections -a --conn_id googleanalytics_rest_api --conn_type None --conn_extra '{"client_secrets":
-{
-"type": "service_account",
-     "project_id": "Google_Analytics_Data",
-"private_key_id": "id",
-"private_key": "-----BEGIN PRIVATE
-KEY-----\n_secretstuf_\n-----END
-PRIVATE KEY-----\n",
-"client_email": "projectname@projectname.iam.gserviceaccount.com",
-"client_id": "id",
-"auth_uri": "https://accounts.google.com/o/oauth2/auth",
-"token_uri": "https://oauth2.googleapis.com/token",
-"auth_provider_x509_cert_url": "cert_url",
-"client_x509_cert_url":
-"cert_url"
-                   }
-               }'
+    The third line of the script deletes any connections that the script may have created previously to maintain [*idempotency*](https://en.wikipedia.org/wiki/Idempotence). This means your script can be run as many times as desired with the same expected result.
 
-airflow connections -a --conn_id db_conn --conn_type mysql --conn_host 'yourhost.region.provider.com' --conn_schema 'dbname' --conn_login airflow --conn_port '9999' --conn_password 'AAAAAAAAAA'
-{{</ file >}}
+1. Ensure that you can execute your Connections script:
 
-#### Bash Script Explanation
-Always delete your connections first for idempotency.
-Meaning, you can run this script as many times as you want, for the same result.
-Idempotency reduces manual work.
+        chmod u+x /home/username/connection.sh
 
-```bash
-airflow connections -d --conn_id your_conn
-```
+1. Load your connections by executing your completed script:
 
-Both AWS IAM and the Google Analytics Reporting REST API examples store the credentials in the extra section in this example.
-However, the REST API example shows how to store multi-line credentials with single quotes surrounding the whole field.
+        bash /home/username/connection.sh
 
-Cloud Databases; MySQL, Postgres, SQL Server, all have consistent fields to fill in.
-These type of connections allow your DAGs to execute SQL directly into these databases with relative ease.
+1. Use the Airflow CLI to verify that your new Connection was created. Replace `db_conn` with the name of your Connection.
 
-Finally, after finishing up your connections script.
-You need to ensure that it is executable by your Airflow user.
-```bash
-chmod u+x /home/your_user/airflow/load_conns.sh
-```
+        airflow connections --list | grep 'db_conn'
 
-And you can load your connections by executing your completed script from your terminal:
-```bash
-/home/your_user/airflow/load_conns.sh
-```
-## Finally; Two Commands to Automate
+## A Recommended Workflow for Sensitive Variables
 
-After setting all of your connection and variable strings, you are left with two commands to add to your Airflow automation and pre-DAG configuration.
-```bash
-airflow variables --import /home/your_user/airflow/your_vars.json
-/home/your_user/airflow/load_conns.sh
-```
+ If you use a JSON file to store sensitive connection variables or if you use a script to automate your Airflow Connections, you should develop a workflow for encrypting and decrypting sensitive values. Airflow saves the passwords for connections in plain text within the metadata database. A workflow for your sensitive connection data ensures that these values are never exposed in a raw string format. The section below includes a sketch for a workflow you can consider to keep your sensitive variables secure.
 
-You can automate these commands how you see fit.
-There are many Data Infrastructure as Code (DIAC) solutions but that goes beyond the scope of this post.
-There also remains the question of how to handle sensitive variables so that your user’s data is secure!
+- **Encrypt**: You can use tools like [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html) to encrypt sensitive values before storing them in a remote repository, like [GitHub](https://github.com/). Another popular tool for storing sensitive values is [HashiCorp Vault](https://www.vaultproject.io/). The Python [Crypto](https://airflow.apache.org/docs/stable/howto/secure-connections.html#securing-connections) package is another tool that you can use to enable encryption for passwords.
 
-## What about Sensitive Variables?
-I recommend you protect your sensitive variables by automating the decryption, loading, and final encryption of your sensitive strings.
-This ensures that your sensitive Variables and Connections are never exposed in a raw string format, unless you manually download (clone) and decrypt for your management.
+- **Decrypt**: In order to run any automation scripts containing your encrypted variable values, you must include a decryption step before executing them. Airflow needs the decrypted values in order to run your DAGs. Both Ansible Vault and HaschiCorp Vault include mechanisms for providing decrypted variable values to Airflow.
 
-I recommend these general steps to be automated once you have completed writing up your two final commands.
-1. **Encrypt**
+- **Load**: Once your values are decrypted, execute your scripts.
 
-    Always encrypt your sensitive strings before loading into a repository.
-    I have used Ansible vault encryption with Jinja templating in the past.
-
-2. **Decrypt**
-
-    Inside of your Data Infrastructure as Code (DIAC) solution; you need to add steps for decryption before executing your two commands so that Airflow can read what the Variables and Connections you’re trying to load.
-
-3. **Load**
-
-    Execute your Airflow Variables command and Connections script
-
-4. **Encrypt before Merging Repos**
-
-    After your automated infrastructure loads both Airflow Variables and Connections, encrypt the strings again so that your sensitive data is only exposed through an encrypted Airflow Database that only Airflow can access.
+- **Encrypt**: After your automated infrastructure loads both Airflow Variables and Connections, encrypt your sensitive values. This way sensitive data is only exposed through an encrypted Airflow Database that only Airflow can access.
 
 ## Conclusion
-There is a never-ending battle between over-engineering and setting your organization up for success.
-Having all of your relevant data connections in a central and secure repository sets up your organization for success.
-You can spend less time on the Extract and Load steps of workflows and more time on the Transformation step.
-Spending more time on Transformation means that you start serving higher level organization data needs.
-You start spending time optimizing analysis rather than fixing broken connections; because they’re securely automated from creation to usage.
 
-Ultimately, automating your Airflow Variables and Connections is a fundamental step towards transparent Data for quick Experimentation, Prototyping, and Analysis.
+Automating creating your Airflow Variables and Connections is a fundamental step towards transparent data for quick experimentation, prototyping, and analysis. Having all of your relevant data connections in a central and secure repository sets up your organization for collaboration. This allows you to spend less time on the extract and load steps of workflows and more time on the transformation step.
+
+After completing this tutorial, learn how to build a data pipeline using Python using Airflow's [example Pipeline tutorial](https://airflow.apache.org/docs/stable/tutorial.html).
+
