@@ -12,6 +12,7 @@ var lnHome = {};
 		if (!searchConfig) {
 			throw 'lnHome.New: must provide searchConfig';
 		}
+		debug('New');
 
 		const dispatcher = lnSearchEventDispatcher.New();
 
@@ -107,40 +108,13 @@ var lnHome = {};
 			return pager;
 		};
 
-		var sectionTiles = {};
-		var searchRequests = [];
-		sectionNames.forEach((name) => {
-			let sectionConfig = searchConfig.sections.find((s) => s.name === name);
-			if (!sectionConfig) {
-				throw `no index with name ${name} found`;
-			}
-
-			sectionTiles[name] = newPager(tilesPageSize);
-
-			let filters = sectionConfig.filters || '';
-			searchRequests.push({
-				page: 0,
-				params: `query=&hitsPerPage=${tilesPageSize * tilesAlgoliaPreloadPages}`,
-				indexName: sectionConfig.index,
-				filters: filters
-			});
-		});
-
-		dispatcher.searchStandalone(
-			{
-				key: `home:section-tiles`,
-				requests: searchRequests
-			},
-			searchName
-		);
-
 		return {
 			data: {
 				// Data for the top level products strip.
 				productTiles: newPager(productsStripPageSize),
 
 				// Maps the values in sectionNames to their tiles data.
-				sectionTiles: sectionTiles,
+				sectionTiles: {},
 
 				// Metadata about sections.
 				sectionMeta: {},
@@ -152,6 +126,31 @@ var lnHome = {};
 
 			mounted: function() {
 				debug('mounted');
+
+				var searchRequests = [];
+				sectionNames.forEach((name) => {
+					let sectionConfig = searchConfig.sections.find((s) => s.name === name);
+					if (!sectionConfig) {
+						throw `no index with name ${name} found`;
+					}
+
+					let filters = sectionConfig.filters || '';
+					searchRequests.push({
+						page: 0,
+						params: `query=&hitsPerPage=${tilesPageSize * tilesAlgoliaPreloadPages}`,
+						indexName: sectionConfig.index,
+						filters: filters
+					});
+				});
+
+				dispatcher.searchStandalone(
+					{
+						key: `home:section-tiles`,
+						requests: searchRequests
+					},
+					searchName
+				);
+
 				if (isTouchDevice()) {
 					// Set up swipe listeners for the pagers on this page.
 					var self = this;
@@ -239,7 +238,8 @@ var lnHome = {};
 						throw `no index ${result.index} found`;
 					}
 
-					var section = self.data.sectionTiles[sectionConfig.name];
+					let section = newPager(tilesPageSize);
+					self.data.sectionTiles[sectionConfig.name] = section;
 					section.setItems(result.hits);
 				});
 

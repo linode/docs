@@ -394,6 +394,7 @@ class Searcher {
 					item.loading = false;
 				});
 				if (events.length > 0) {
+					debug('broadcast', this);
 					dispatcher.broadCastSearchResult(this, events);
 				}
 			};
