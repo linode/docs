@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: "How to Install and Configure the Caddy Web Server on Ubuntu 18.04"
 h1_title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
+image: feature.png
 contributor:
   name: Linode
 ---

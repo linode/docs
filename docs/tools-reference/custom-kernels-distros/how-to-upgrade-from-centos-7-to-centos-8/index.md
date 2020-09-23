@@ -13,6 +13,7 @@ modified_by:
 published: 2020-01-23
 title: 'How to Upgrade from CentOS 7 to CentOS 8'
 h1_title: "Upgrading from CentOS 7 to CentOS 8"
+image: feature.png
 ---
 
 [CentOS](https://www.centos.org) is a Linux distribution derived from [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux). Some key features new for [CentOS 8](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.1905) are:

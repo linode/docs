@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy MongoDB with One-Click Apps"
 h1_title: "Deploying MongoDB with One-Click Apps"
+image: feature.png
 contributor:
   name: Linode
 external_resources:
