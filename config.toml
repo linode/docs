@@ -106,6 +106,17 @@ explorer_regular_pages_start_level = 2
 hits_per_page = 4
 filtering_facets = [{ name = "category", title = "Doc Category" }]
 
+
+[[params.search_config.sections]]
+name = "qa"
+index = "linode-community"
+title = "Q&A"
+section_facet = "objectType"
+explorer_icon = "#icon--todo"
+explorer_regular_pages_start_level = 4 # Not relevant, set it high to avoid triggering any search.
+hits_per_page = 4
+#filtering_facets = [{ name = "category", title = "Doc Category" }]
+
 [minify]
 disableSVG = true
 
