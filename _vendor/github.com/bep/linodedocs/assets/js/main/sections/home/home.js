@@ -124,10 +124,11 @@ var lnHome = {};
 				loaded: false
 			},
 
-			mounted: function() {
-				debug('mounted');
+			init: function() {
+				debug('init');
 
 				var searchRequests = [];
+				var self = this;
 				sectionNames.forEach((name) => {
 					let sectionConfig = searchConfig.sections.find((s) => s.name === name);
 					if (!sectionConfig) {
@@ -141,6 +142,9 @@ var lnHome = {};
 						indexName: sectionConfig.index,
 						filters: filters
 					});
+
+					// The data will be added later.
+					self.data.sectionTiles[name] = newPager(tilesPageSize);
 				});
 
 				dispatcher.searchStandalone(
@@ -151,30 +155,39 @@ var lnHome = {};
 					searchName
 				);
 
-				if (isTouchDevice()) {
-					// Set up swipe listeners for the pagers on this page.
-					var self = this;
-					const addSwipeListeners = function(pager, el) {
-						lnSwipe.New(el, function(direction) {
-							switch (direction) {
-								case 'left':
-									pager.next();
-									break;
-								case 'right':
-									pager.prev();
-									break;
+				// This needs to be run after the component has mounted to be able
+				// to work on the DOM element directly.
+				const onMount = function() {
+					if (isTouchDevice()) {
+						// Set up swipe listeners for the pagers on this page.
+						const addSwipeListeners = function(pager, el) {
+							if (!el) {
+								console.warn('no element to attach swipe listener to');
+								return;
 							}
-						});
-					};
-					let tilesEl = self.$refs['tiles-products'];
-					let pager = self.data.productTiles;
-					addSwipeListeners(pager, tilesEl);
-					sectionNames.forEach((name) => {
-						let tilesEl = self.$refs[`tiles-${name}`];
-						let pager = self.data.sectionTiles[name];
+							lnSwipe.New(el, function(direction) {
+								switch (direction) {
+									case 'left':
+										pager.next();
+										break;
+									case 'right':
+										pager.prev();
+										break;
+								}
+							});
+						};
+						let tilesEl = self.$refs['tiles-products'];
+						let pager = self.data.productTiles;
 						addSwipeListeners(pager, tilesEl);
-					});
-				}
+						sectionNames.forEach((name) => {
+							let tilesEl = self.$refs[`tiles-${name}`];
+							let pager = self.data.sectionTiles[name];
+							addSwipeListeners(pager, tilesEl);
+						});
+					}
+				};
+
+				return onMount;
 			},
 
 			// receiveCommonData receives the common search data also used in other components,
@@ -184,6 +197,7 @@ var lnHome = {};
 				if (this.commonDataLoaded) {
 					return;
 				}
+
 				this.commonDataLoaded = true;
 
 				let meta = results.metaSearch.results;
@@ -238,9 +252,7 @@ var lnHome = {};
 						throw `no index ${result.index} found`;
 					}
 
-					let section = newPager(tilesPageSize);
-					self.data.sectionTiles[sectionConfig.name] = section;
-					section.setItems(result.hits);
+					self.data.sectionTiles[sectionConfig.name].setItems(result.hits);
 				});
 
 				this.data.loaded = true;

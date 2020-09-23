@@ -14,7 +14,7 @@
     {{ $articleStarters = partial "funcs/build-query.html" $whereDoIStartData.queries.getting_started | first 2 }}
   {{ end }}
   
-  <div id="home-component" x-data="lnHome.New(lnSearchConfig)" x-init="() => mounted()"
+  <div id="home-component" x-data="lnHome.New(lnSearchConfig)" x-init="init()"
     @search:results-blank.once.document="receiveCommonData($event.detail)" 
     @search:data-home.document="receiveData($event.detail);">
     <section class="mb-10">
@@ -191,37 +191,35 @@
 {{ end }}
 
 {{ define "home/section-tiles"}}
+{{ $section := .section }}
+<div x-show="data.loaded" class="w-full kind-home__sections-tiles">
+  {{ template  "home/section-title" . }}
   {{ $section := .section }}
-  <template x-if="data.loaded">
-    <div class="w-full kind-home__sections-tiles">
-    {{ template  "home/section-title" . }}
-    {{ $section := .section }}
-    <div class="flex flex-no-wrap content-start w-full mt-8">
-      <button  x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
+  <div class="flex flex-no-wrap content-start w-full mt-8">
+    <button  x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
            @click="data.sectionTiles.{{ $section }}.prev()">
-        <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
-          <use href="#icon--arrow-right"></use>
-        </svg>
-      </button>
-      <div x-ref="tiles-{{ $section }}" class="flex flex-no-wrap w-full space-x-4">
-        <template x-for="(item, i) in data.sectionTiles.{{ $section }}.current()" :key="item.objectID">
-          {{ template "home/section-tiles-item" }}
+      <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
+        <use href="#icon--arrow-right"></use>
+      </svg>
+    </button>
+    <div x-ref="tiles-{{ $section }}" class="flex flex-no-wrap w-full space-x-4">
+      <template x-for="(item, i) in data.sectionTiles.{{ $section }}.current()" :key="item.objectID">
+        {{ template "home/section-tiles-item" }}
+      </template>
+      {{/* On mobile (with no arrow buttons), we show a small part of the next tile to hint at swiping. */}}
+      <template x-if="data.sectionTiles.{{ $section }}.hasNext()">
+        <template x-for="(item, i) in data.sectionTiles.{{ $section }}.peek().slice(0, 1)" :key="item.objectID">
+          {{ template "home/section-tiles-item" "md:hidden" }}
         </template>
-        {{/* On mobile (with no arrow buttons), we show a small part of the next tile to hint at swiping. */}}
-        <template x-if="data.sectionTiles.{{ $section }}.hasNext()">
-          <template x-for="(item, i) in data.sectionTiles.{{ $section }}.peek().slice(0, 1)" :key="item.objectID">
-            {{ template "home/section-tiles-item" "md:hidden" }}
-          </template>
-        </template>
-      </div>
-      <button x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"
-      class="btn-icon ml-8 -mr-10 object-right" @click="data.sectionTiles.{{ $section }}.next()">
-        <svg class="w-3">
-          <use href="#icon--arrow-right"></use>
-        </svg>
-      </button>
+      </template>
     </div>
-  </template>
+    <button x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"
+      class="btn-icon ml-8 -mr-10 object-right" @click="data.sectionTiles.{{ $section }}.next()">
+      <svg class="w-3">
+        <use href="#icon--arrow-right"></use>
+      </svg>
+    </button>
+  </div>
 {{ end }}
 
 {{/* TODO(bep) remove me if still unused. */}}

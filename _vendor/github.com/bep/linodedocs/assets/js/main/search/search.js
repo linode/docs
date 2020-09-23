@@ -102,6 +102,52 @@ class Searcher {
 
 		const designMode = false;
 
+		// Normalization of a search hit across the search indixes.
+		const normalizeHit = function(self) {
+			return function(opts, hit) {
+				hit.sectionTitle = hit.section;
+				if (hit.section) {
+					hit.section = hit.section.toLowerCase();
+				}
+
+				if (self.searchState.metaSearch.results.get) {
+					let m = self.searchState.metaSearch.results.get(hit.section);
+					if (m) {
+						hit.sectionTitle = m.linkTitle;
+					}
+				}
+
+				hit.titleHighlighted = hit._highlightResult ? hit._highlightResult.title.value : hit.title;
+
+				let href;
+				if (opts.isSectionMeta) {
+					href = router.hrefSection(hit.objectID);
+				} else if (hit.url) {
+					// A blog entry.
+					href = router.hrefEntry(hit);
+				} else {
+					href = hit.href;
+				}
+				hit.href = href;
+				hit.firstPublishedDateString = '';
+				if (hit.firstPublishedTime) {
+					hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
+				}
+
+				hit.excerptTruncated = function(maxLen = 300) {
+					if (!this.excerpt) {
+						return '';
+					}
+					if (this.excerpt.length <= maxLen) {
+						return this.excerpt;
+					}
+					return `${this.excerpt.substring(0, maxLen)}`;
+				};
+			};
+		};
+
+		// Creates a search filters from the browser location,
+		// e.g. "?sections=docs&q=apache".
 		const createSearchFiltersFromLocation = function(self) {
 			if (!window.location.search) {
 				return false;
@@ -227,17 +273,46 @@ class Searcher {
 
 				searchData.resultSections = function() {
 					let sections = [];
+
 					if (!this.result.facets) {
 						return sections;
 					}
+
+					if (sectionCfg.section_facet) {
+						// Special case for the community section
+						// which is one level only with the objectID
+						// facet separating questions and answers.
+						let name = sectionCfg.name;
+						let sectionFacets = this.result.facets[sectionCfg.section_facet];
+						if (!sectionFacets) {
+							return sections;
+						}
+						let total = 0;
+						let s = [];
+						for (let k in sectionFacets) {
+							let count = sectionFacets[k];
+							total += count;
+							s.push({ key: `${name} > ${k}`, count: count, isGhostSection: true });
+						}
+
+						// First add the top level node.
+						sections.push({ key: `${name}`, count: total, isGhostSection: true });
+						// Then the children.
+						sections = sections.concat(s);
+
+						return sections;
+					}
+
 					for (let i = 0; ; i++) {
 						// webserver
 						// webserver apache
 						let key = this.facetKey(i);
 						let sectionFacets = this.result.facets[key];
+
 						if (!sectionFacets) {
 							break;
 						}
+
 						for (let k in sectionFacets) {
 							sections.push({ key: k, count: sectionFacets[k] });
 						}
@@ -247,6 +322,7 @@ class Searcher {
 				};
 
 				let section = { config: sectionCfg, searchData: searchData };
+
 				section.isEnabled = function() {
 					if (this.disabledPermanent) {
 						return false;
@@ -256,8 +332,10 @@ class Searcher {
 					}
 					return self.filters.facets.isSectionEnabled(section.config.name);
 				};
+
 				section.getFacet = function(name) {
-					return this.searchData.result.facets[name];
+					let facets = this.searchData.result.facets;
+					return facets[name];
 				};
 				sections.push(section);
 			}
@@ -289,11 +367,13 @@ class Searcher {
 
 					hits.forEach((hit) => {
 						var highlightResult = hit._highlightResult;
+						if (!highlightResult) {
+							return;
+						}
 
 						attributesToHighlight.forEach((attr) => {
-							var attrVals = Array.isArray(highlightResult[attr])
-								? highlightResult[attr]
-								: [ highlightResult[attr] ];
+							let val = highlightResult[attr];
+							let attrVals = Array.isArray(val) ? val : [ val ];
 							attrVals.forEach((attrVal) => {
 								if (attrVal && attrVal.matchedWords !== undefined) {
 									attrVal.matchedWords.forEach((word) => {
@@ -312,25 +392,63 @@ class Searcher {
 			return result;
 		};
 
-		var newSearcher = function(hitNormalizer) {
+		const newSearcher = function(hitNormalizer) {
 			return new Searcher(searchConfig, hitNormalizer, debug);
 		};
 
-		var newSearchItem = function(name, results, query, concurrent, subscribers = []) {
-			return {
+		// searchItemLoadingStates represents the main loading state of a search item.
+		const searchItemLoadingStates = {
+			INITIAL: 0, // Initial state, also set when it needs a refresh.
+			LOADING: 1, // It's loading, so do not start another.
+			LOADED: 2 // Loaded and ready to use.
+		};
+
+		const newSearchItem = function(name, results, query, concurrent, subscribers = []) {
+			let item = {
 				name: name,
-				dirty: true,
+
 				publish: false,
-				loaded: false,
-				loading: false,
 				concurrent: concurrent,
+				loadingState: searchItemLoadingStates.INITIAL,
+
 				subscribers: subscribers,
 				query: query,
 				results: results
 			};
+
+			item.shouldLoad = function() {
+				return this.loadingState === searchItemLoadingStates.INITIAL;
+			};
+
+			item.resetLoadingStateIf = function(b) {
+				if (b) {
+					this.loadingState = searchItemLoadingStates.INITIAL;
+					this.publish = false;
+				}
+			};
+
+			item.setResults = function(results) {
+				this.results = results;
+				this.loadingState = searchItemLoadingStates.LOADED;
+			};
+
+			item.markAsLoaded = function() {
+				this.loadingState = searchItemLoadingStates.LOADED;
+				this.publish = true;
+			};
+
+			item.isLoading = function() {
+				return this.loadingState === searchItemLoadingStates.LOADING;
+			};
+
+			item.isLoaded = function() {
+				return this.loadingState === searchItemLoadingStates.LOADED;
+			};
+
+			return item;
 		};
 
-		var newSearchState = function(self) {
+		const newSearchState = function(self) {
 			let s = {
 				mainSearch: newSearchItem('main', newSearchResults(self, false), {}, true, [
 					dispatcher.events.EVENT_SEARCHRESULT
@@ -385,14 +503,15 @@ class Searcher {
 				if (!this.publish) {
 					return;
 				}
+
 				let events = [];
 				this.items().forEach((item) => {
-					if (item.publish) {
+					if (item.publish && item.isLoaded()) {
 						// TODO(bep) check how to limit the publishing?
 						events = events.concat(item.subscribers);
 					}
-					item.loading = false;
 				});
+
 				if (events.length > 0) {
 					debug('broadcast', this);
 					dispatcher.broadCastSearchResult(this, events);
@@ -406,11 +525,11 @@ class Searcher {
 				let publish = false;
 				for (let item of this.items()) {
 					if (item.subscribers.includes(event)) {
-						if (item.concurrent && item.loading) {
+						if (item.concurrent && item.isLoading()) {
 							// In progress, it will eventually be sent.
 							return true;
 						}
-						publish = !item.dirty;
+						publish = item.isLoading();
 						if (publish) {
 							break;
 						}
@@ -519,7 +638,7 @@ class Searcher {
 				}
 
 				if (!this.show) {
-					this.searchState.mainSearch.loaded = false;
+					this.searchState.mainSearch.resetLoadingStateIf(true);
 					this.searchState.blankSearch.publish = true;
 				}
 
@@ -531,7 +650,7 @@ class Searcher {
 				}
 
 				// Refresh the main search result on query or filter changes.
-				this.searchState.mainSearch.dirty = regularSearch && !this.filters.isZero();
+				this.searchState.mainSearch.resetLoadingStateIf(regularSearch && !this.filters.isZero());
 
 				// Refresh the expanded explorer nodes on query or filter changes,
 				// or if a new node is expanded.
@@ -547,44 +666,7 @@ class Searcher {
 				}
 
 				var self = this;
-				var searcher = newSearcher(function(opts, hit) {
-					let href;
-					hit.sectionTitle = hit.section;
-					if (hit.section) {
-						hit.section = hit.section.toLowerCase();
-					}
-					if (self.searchState.metaSearch.results.get) {
-						let m = self.searchState.metaSearch.results.get(hit.section);
-						if (m) {
-							hit.sectionTitle = m.linkTitle;
-						}
-					}
-
-					if (opts.isSectionMeta) {
-						href = router.hrefSection(hit.objectID);
-					} else if (hit.url) {
-						// A blog entry.
-						href = router.hrefEntry(hit);
-					} else {
-						href = hit.href;
-					}
-
-					hit.href = href;
-					hit.firstPublishedDateString = '';
-					if (hit.firstPublishedTime) {
-						hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
-					}
-
-					hit.excerptTruncated = function(maxLen = 300) {
-						if (!this.excerpt) {
-							return '';
-						}
-						if (this.excerpt.length <= maxLen) {
-							return this.excerpt;
-						}
-						return `${this.excerpt.substring(0, maxLen)}`;
-					};
-				});
+				var searcher = newSearcher(normalizeHit(self));
 
 				if (this.searchState.staticSearchRequests.length > 0) {
 					for (let i = 0; i < this.searchState.staticSearchRequests.length; i++) {
@@ -605,7 +687,7 @@ class Searcher {
 					}
 				}
 
-				if (this.searchState.metaSearch.dirty) {
+				if (this.searchState.metaSearch.shouldLoad()) {
 					searcher.add(
 						{ requests: this.searchState.metaSearch.query.requests, isSectionMeta: true },
 						(results) => {
@@ -613,9 +695,7 @@ class Searcher {
 								m.set(hit.objectID.toLowerCase(), hit);
 								return m;
 							}, new Map());
-							this.searchState.metaSearch.results = m;
-							this.searchState.metaSearch.dirty = false;
-							this.searchState.metaSearch.loaded = true;
+							this.searchState.metaSearch.setResults(m);
 						}
 					);
 				}
@@ -640,7 +720,7 @@ class Searcher {
 				};
 
 				var createSectionRequest = function(sectionConfig, isBlank = false) {
-					let facets = [ 'section.*' ];
+					let facets = sectionConfig.section_facet ? [ sectionConfig.section_facet ] : [ 'section.*' ];
 					let filteringFacetNames = [];
 					if (sectionConfig.filtering_facets) {
 						filteringFacetNames = sectionConfig.filtering_facets.map((facet) => facet.name);
@@ -685,7 +765,7 @@ class Searcher {
 					});
 				});
 
-				if (regularSearch && this.searchState.mainSearch.dirty) {
+				if (regularSearch && this.searchState.mainSearch.shouldLoad()) {
 					let requests = [];
 
 					for (let section of sectionsIndices) {
@@ -698,31 +778,22 @@ class Searcher {
 						results.forEach((res, i) => {
 							this.searchState.mainSearch.results.sections[sectionsIndices[i]].searchData.setResult(res);
 						});
-						this.searchState.mainSearch.dirty = false;
-						this.searchState.mainSearch.loaded = true;
-						this.searchState.mainSearch.publish = true;
+						this.searchState.mainSearch.markAsLoaded();
 					});
 				}
 
-				if (
-					!this.searchState.blankSearch.loaded ||
-					(event === dispatcher.events.EVENT_SEARCHRESULT_BLANK && this.searchState.blankSearch.dirty)
-				) {
+				if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK && this.searchState.blankSearch.shouldLoad()) {
 					let requests = [];
-					for (let section of sectionsIndices) {
-						requests.push(
-							createSectionRequest(this.searchState.mainSearch.results.sections[section].config, true)
-						);
+					for (let section of searchConfig.sections) {
+						requests.push(createSectionRequest(section, true));
 					}
 
 					this.searchState.blankSearch.loading = true;
 					searcher.add({ requests: requests }, (results) => {
 						results.forEach((res, i) => {
-							this.searchState.blankSearch.results.sections[sectionsIndices[i]].searchData.setResult(res);
+							this.searchState.blankSearch.results.sections[i].searchData.setResult(res);
 						});
-						this.searchState.blankSearch.dirty = false;
-						this.searchState.blankSearch.loaded = true;
-						this.searchState.blankSearch.publish = true;
+						this.searchState.blankSearch.markAsLoaded();
 					});
 				}
 
@@ -782,33 +853,6 @@ class Searcher {
 
 				this.searchState.expandedNodes.set(n.key, n);
 				this.search({ isNodeToggle: true, event: dispatcher.events.EVENT_SEARCHRESULT });
-			}
-		};
-	};
-
-	ctx.NewSimpleData = function() {
-		const dispatcher = lnSearchEventDispatcher.New();
-
-		return {
-			data: { stats: {} },
-
-			sprintfStatsProperty: function(index, property, format) {
-				let v = this.data.stats[index];
-				if (!v) {
-					return '';
-				}
-				return sprintf(format, v[property]);
-			},
-
-			init: function() {
-				dispatcher.searchBlank();
-			},
-
-			initSearchResult: function(data) {
-				let results = data.blankSearch.results;
-				for (let section of results.sections) {
-					this.data.stats[section.config.name] = section.searchData.result;
-				}
 			}
 		};
 	};

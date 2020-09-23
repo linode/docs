@@ -52,9 +52,6 @@ var lnSearchExplorer = {};
 			scrollTop: 0,
 			pathname: '',
 
-			isOpen: function() {
-				return this.open && this.initState === initStates.LOADED;
-			},
 			sendData: function() {
 				var self = this;
 				self.$nextTick(function() {
@@ -62,16 +59,27 @@ var lnSearchExplorer = {};
 				});
 			},
 
+			// Receives the initial, blank, result set with all the initial
+			// facets and their counts.
 			receiveDataInit: function(data) {
 				debug('receiveDataInit', data, this.open, this.initState);
 				this.data.searchState = data;
 				this.load();
 			},
 
+			// Receives an updated result set based on a query or a filter applied.
+			// Note that we cannot apply this until the initial data set is loaded.
 			receiveData: function(data) {
+				if (this.initState < initStates.LOADED) {
+					return;
+				}
 				debug('receiveData', data, this.open, this.initState);
 				this.data.searchState = data;
 				this.load();
+			},
+
+			isOpen: function() {
+				return this.open && this.initState === initStates.LOADED;
 			},
 
 			toggleOpen: function() {
@@ -179,8 +187,6 @@ var lnSearchExplorer = {};
 			},
 
 			createNode: function(opts) {
-				var self = this;
-
 				let title = opts.level === 1 ? opts.section.config.title : opts.name;
 				let ordinal = 1;
 				if (opts.level > 1) {
@@ -207,7 +213,12 @@ var lnSearchExplorer = {};
 					sections: [],
 					pages: [], // Leaf nodes
 					open: false,
-					disabled: false
+					disabled: false,
+					isGhostSection: opts.isGhostSection
+				};
+
+				n.isLeaf = function() {
+					return n.level > 1 && (n.count === 0 || n.isGhostSection);
 				};
 
 				return n;
@@ -243,8 +254,8 @@ var lnSearchExplorer = {};
 					};
 				};
 
-				this.data.add = function(section, key, count) {
-					let kp = this.parseKey(key);
+				this.data.add = function(section, sectionResult) {
+					let kp = this.parseKey(sectionResult.key);
 
 					let n = this.nodes[kp.key];
 
@@ -255,8 +266,16 @@ var lnSearchExplorer = {};
 							href: kp.href,
 							name: kp.name,
 							level: kp.level,
-							count: count
+							count: sectionResult.count,
+							isGhostSection: sectionResult.isGhostSection
 						});
+
+						n.onClick = function(e) {
+							if (n.isGhostSection) {
+								e.preventDefault();
+								sendEvent('search:search-filters', `sections=${section.config.name}`);
+							}
+						};
 
 						this.nodes[kp.key] = n;
 					} else {
@@ -277,10 +296,10 @@ var lnSearchExplorer = {};
 					}
 				};
 
-				for (let index of sections) {
-					let searchData = index.searchData;
-					for (let section of searchData.resultSections()) {
-						this.data.add(index, section.key, section.count);
+				for (let section of sections) {
+					let searchData = section.searchData;
+					for (let sectionResult of searchData.resultSections()) {
+						this.data.add(section, sectionResult);
 					}
 				}
 
@@ -310,10 +329,11 @@ var lnSearchExplorer = {};
 					return null;
 				}
 
-				if (this.data.searchState.mainSearch.loaded) {
-					return this.data.searchState.mainSearch.results;
+				if (this.initState == initStates.LOADING || !this.data.searchState.mainSearch.isLoaded()) {
+					return this.data.searchState.blankSearch.results;
 				}
-				return this.data.searchState.blankSearch.results;
+
+				return this.data.searchState.mainSearch.results;
 			},
 
 			// Rebuilds and renders the node tree based on the search result given.
@@ -339,7 +359,8 @@ var lnSearchExplorer = {};
 						let kp = this.data.parseKey(resultSection.key);
 						let n = this.data.nodes[kp.key];
 						if (!n) {
-							throw `node with key ${kp.key} not set`;
+							console.warn(`node with key ${kp.key} not set`);
+							continue;
 						}
 
 						n.count = resultSection.count;
@@ -396,6 +417,10 @@ var lnSearchExplorer = {};
 
 		let n = { title: '' };
 		n.isActive = function() {
+			return false;
+		};
+
+		n.isLeaf = function() {
 			return false;
 		};
 

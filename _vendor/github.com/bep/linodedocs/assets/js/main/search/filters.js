@@ -10,7 +10,11 @@ var lnSearchFilters = {};
 		var dispatcher = lnSearchEventDispatcher.New();
 
 		const applySearchFiltersFromLocation = function(self) {
-			let params = new URLSearchParams(window.location.hash.slice(1));
+			return applySearchFiltersFromSearchParams(self, indow.location.hash.slice(1));
+		};
+
+		const applySearchFiltersFromSearchParams = function(self, searchParams) {
+			let params = new URLSearchParams(searchParams);
 			let hasSearchParam = false;
 			params.forEach((paramVal, paramKey) => {
 				let filter = self.data.filters.get(paramKey);
@@ -62,6 +66,10 @@ var lnSearchFilters = {};
 			},
 
 			open: false,
+
+			receiveSearchFilters: function(data) {
+				applySearchFiltersFromSearchParams(this, data);
+			},
 
 			receiveData: function(data) {
 				debug('receiveData', data.mainSearch.results);

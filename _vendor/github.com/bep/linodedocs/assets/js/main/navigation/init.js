@@ -15,15 +15,17 @@ var lnInitController = {};
 			init: function() {
 				if (window.location.hash) {
 					debug('init:', window.location.hash);
-					let el = document.querySelector(window.location.hash);
-					if (el) {
-						var elTop = el.offsetTop;
+					try {
+						let el = document.querySelector(window.location.hash);
+						if (el) {
+							var elTop = el.offsetTop;
 
-						window.scrollTo({
-							left: 0,
-							top: elTop - 80
-						});
-					}
+							window.scrollTo({
+								left: 0,
+								top: elTop - 80
+							});
+						}
+					} catch (e) {}
 				}
 			}
 		};

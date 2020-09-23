@@ -34,7 +34,7 @@
                 <use x-bind:href="data.node.icon"></use>
               </svg>
             </div>
-            <a x-bind:href="data.node.href" x-bind:class="{
+            <a x-bind:href="data.node.href" @click="data.node.onClick($event)" x-bind:class="{
                 'text-brand': data.node.level === 1 && data.open,
                 'text-titlecolor': !data.node.disabled && data.node.level === 1 && !data.open,
                 'pl-4': data.node.level === 1,
@@ -54,10 +54,10 @@
             <span x-bind:class="{ 
                 'text-gray-100': data.node.disabled,
                 'text-basicgray': !data.node.disabled }" x-show="data.count !== undefined" x-html="data.count" class="text-xs font-semibold pr-6"></span>
-            <template x-if="data.node.disabled || !data.count">
+            <template x-if="data.node.disabled || data.node.isLeaf()">
               <div class="w-3"></div>
             </template>
-            <div class="z-10" x-show="!data.node.disabled && data.count">
+            <div class="z-10" x-show="!data.node.disabled && !data.node.isLeaf()">
               <button type="button" class="btn-icon h-full flex items-center justify-center" x-bind:class="{ 'text-gray-200': data.node.disabled, 'text-textcolor': !data.node.disabled }"
                 @click.stop="toggleOpen()" @mouseover.once.stop="loadPages()">
                 <svg class="w-4 h-3 titlecolor" x-show="data.loading || !data.open">
