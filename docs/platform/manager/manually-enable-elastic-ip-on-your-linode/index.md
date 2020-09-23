@@ -362,13 +362,13 @@ bgpd=yes
 With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s).
 
 {{< note >}}
-Prior to starting this section, ensure that you have received the information listed in the table from Linode Support. You need these values to configure Elastic IP on a Linode.
+Prior to starting this section, ensure that **you have received a `DC_ID` and an `ELASTIC_IP` from Linode Support**. You need these values to configure Elastic IP on a Linode. Refer to the table below for details on each configuration value.
 
 | Value to replace in the configuration template | Description |
 | :-------: | :-------: |
-| `NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
 | `DC_ID` | The ID number of this data center. |
 | `ELASTIC_IP` | The Elastic IP address to assign to this Linode. |
+| `NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
 
 When you configure Elastic IP you need to define the Linode's _ROLE_ within the configuration as `primary` or `secondary`.
 
