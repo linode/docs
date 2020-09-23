@@ -6,17 +6,17 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides to monitoring will get you up and running with monitoring your Linode services.
+These introductory guides will get you up and running with monitoring your Linode services.
 
-- [Configure Shutdown Watchdog](/docs/products/tools/monitoring/guides/monitoring-configure-watchdog): While not exactly a monitoring tool, Lassie, or Shutdown Watchdog will watch your Linodes and automatically restart them if they are shutdown unexpectedly.
+- [Configure Shutdown Watchdog](/docs/products/tools/monitoring/guides/monitoring-configure-watchdog): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
 
 - [Cloud Manager Graphs](/docs/products/tools/monitoring/guides/monitoring-cloud-graphs): Cloud Manager provides several basic graphs to give you a view into the performance of your Linodes.
 
-- [Configure Email Alerts](/docs/products/tools/monitoring/guides/monitoring-email-alerts): In Cloud Manager, you can configure several server alerts to automatically email you.
+- [Configure Email Alerts](/docs/products/tools/monitoring/guides/monitoring-email-alerts): In Cloud Manager, you can configure several server alerts to automatically email you when certain thresholds are met.
 
 - [Use Third-Party Tools](/docs/products/tools/monitoring/guides/monitoring-third-party-tools): For a more detailed view of your systems, you can use third-party tools.
 
-For more basics, see the full guide [Monitoring and Maintaining Your Server](/docs/uptime/monitoring/monitoring-and-maintaining-your-server/) guide.
+For more basics, see the full guide on [Monitoring and Maintaining Your Server](/docs/uptime/monitoring/monitoring-and-maintaining-your-server/).
 
 ## Themes
 
