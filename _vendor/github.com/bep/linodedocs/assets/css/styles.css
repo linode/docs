@@ -86,7 +86,7 @@ body {
   }
 }
 
-.two-line-ellipsis {
+.two-lines-ellipsis {
   display: block;
   display: -webkit-box;
   -webkit-line-clamp: 2;

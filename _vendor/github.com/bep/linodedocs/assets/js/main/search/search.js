@@ -135,13 +135,14 @@ class Searcher {
 				}
 
 				hit.excerptTruncated = function(maxLen = 300) {
-					if (!this.excerpt) {
+					let excerpt = this.excerpt || this.description;
+					if (!excerpt) {
 						return '';
 					}
-					if (this.excerpt.length <= maxLen) {
-						return this.excerpt;
+					if (excerpt.length <= maxLen) {
+						return excerpt;
 					}
-					return `${this.excerpt.substring(0, maxLen)}`;
+					return `${excerpt.substring(0, maxLen)} …`;
 				};
 			};
 		};

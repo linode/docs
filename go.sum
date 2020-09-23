@@ -36,6 +36,8 @@ github.com/bep/linodedocs v0.0.0-20200922150359-a28505bc25bb h1:wLkjSPLPlJx10Y07
 github.com/bep/linodedocs v0.0.0-20200922150359-a28505bc25bb/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
 github.com/bep/linodedocs v0.0.0-20200923144729-23a3a783c671 h1:jKo/sJYEOWw8Dj1djObvxOfwF6Rofor2WOSXuGrB4AY=
 github.com/bep/linodedocs v0.0.0-20200923144729-23a3a783c671/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
+github.com/bep/linodedocs v0.0.0-20200923154029-13a3697ee8be h1:D2ZVD+e2LfArVcZKzu6m+wcUoxKXKWSmWCrbWU0z2MI=
+github.com/bep/linodedocs v0.0.0-20200923154029-13a3697ee8be/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1/go.mod h1:N4EUbbL7Cw4Yq+GHeK3MUSiOJQbzfuUFRyvBKvnVBR8=

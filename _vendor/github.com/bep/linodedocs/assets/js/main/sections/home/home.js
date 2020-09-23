@@ -24,7 +24,7 @@ var lnHome = {};
 		// The section names we paginate on the home page.
 		// This maps to the name attribute in the search configuration.
 		// No filters are currently applied, and the order will be the order from Algolia.
-		const sectionNames = [ 'docs', 'blog', 'resources', 'marketplace' ];
+		const sectionNames = [ 'docs', 'blog', 'resources', 'marketplace', 'qa' ];
 
 		const newPager = function(pageSize) {
 			// The reason this is a plain object and not a class is because of limitations in AlpineJS'
