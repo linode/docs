@@ -4,6 +4,7 @@ author:
     email: ekrout@linode.com
 description: 'Use Vagrant to manage development environments and content on Linode.'
 keywords: ["linode", "vagrant", "content management", "management", "automation", "development", "ruby", "vagrantfile", "api", "apache"]
+tags: ["cms","automation","ruby","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-06-25
 modified_by:
@@ -14,7 +15,7 @@ external_resources:
  - '[Vagrant](http://www.vagrantup.com)'
  - '[vagrant-linode Plugin](https://github.com/displague/vagrant-linode)'
 deprecated: true
-aliases: ['applications/configuration-management/vagrant-linode-environments/']
+aliases: ['/applications/configuration-management/vagrant-linode-environments/']
 ---
 
 {{< note >}}

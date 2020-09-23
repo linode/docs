@@ -5,6 +5,7 @@ author:
 description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on CentOS 8.'
 og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on CentOS 8.'
 keywords: ["nginx", "load balancing", "centos", "centos 8", "web server", "static content", "install nginx"]
+tags: ["centos","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-14
 modified_by:
@@ -14,7 +15,7 @@ title: How to Install NGINX on CentOS 8
 h1_title: Installing NGINX on CentOS 8
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
-aliases: ['web-servers/nginx/install-nginx-ubuntu/']
+aliases: ['/web-servers/nginx/install-nginx-ubuntu/']
 ---
 
 ## What is NGINX?

@@ -15,6 +15,7 @@ external_resources:
 - '[Emacs Evil Guide](https://github.com/noctuid/evil-guide)'
 - '[Evil Surround](https://github.com/emacs-evil/evil-surround)'
 - '[EmacsWiki](https://www.emacswiki.org/emacs/)'
+tags: ["linux"]
 ---
 
 ## A Vi/m Layer Makes Emacs Evil

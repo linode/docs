@@ -12,6 +12,7 @@ title: How to manage Object Storage with the CLI
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  List the current Object Storage Clusters available to use:

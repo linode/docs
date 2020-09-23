@@ -12,6 +12,7 @@ title: Add a Service to Linode Managed
 keywords: ["linode managed"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 To add a new monitored service to Linode Managed:

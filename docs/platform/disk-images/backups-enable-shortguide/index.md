@@ -12,6 +12,7 @@ title: How to Enable the Linode Backup Service
 keywords: ["backups"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Use the Linode Cloud Manager to enable the Backup Service on a Linode. Here's how:

@@ -4,8 +4,9 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for configuring your Debian or Ubuntu Linode to run a custom compiled kernel with PV-GRUB.'
-aliases: ['custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu']
-keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", " debian", "ubuntu"]
+aliases: ['/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu/']
+keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "debian", "ubuntu"]
+tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-04-03
 modified_by:

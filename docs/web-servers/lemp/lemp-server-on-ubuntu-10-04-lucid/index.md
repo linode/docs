@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/ubuntu-10-04-lucid/','websites/lemp/lemp-server-on-ubuntu-10-04-lucid/']
+aliases: ['/websites/lemp/lemp-server-on-ubuntu-10-04-lucid/','/lemp-guides/ubuntu-10-04-lucid/']
 modified: 2013-09-23
 modified_by:
   name: Linode

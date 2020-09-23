@@ -20,6 +20,7 @@ external_resources:
   - "[HtmlWebpackPlugin | webpack](https://webpack.js.org/plugins/html-webpack-plugin/)"
 audiences: ["beginner"]
 languages: ["javascript"]
+tags: ["web applications"]
 ---
 
 When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/docs/development/javascript/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.

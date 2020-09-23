@@ -4,6 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'Create a TCP and UDP client and server using the Go programming language.'
 keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli"]
+tags: ["networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-06-26
 modified_by:

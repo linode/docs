@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: "Troubleshooting steps for when you can't connect to your Linode via SSH."
 keywords: ['linux','reboot','lish','ssh']
+tags: ["ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-01
 modified: 2019-02-01

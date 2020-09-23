@@ -14,7 +14,7 @@ contributor:
   link: https://www.mtsoukalos.eu/
 external_resources:
   - '[GNU awk](https://www.gnu.org/software/gawk/)'
-aliases: ['development/introduction-to-awk/']
+aliases: ['/development/introduction-to-awk/']
 ---
 
 ## What is AWK?

@@ -5,12 +5,13 @@ author:
 description: 'Learn about DNS records and system structure.'
 keywords: ["dns", "record", "domain", "resolution"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
+aliases: ['/networking/dns/introduction-to-dns-records/','/dns-guides/introduction-to-dns-records/','/dns-guides/introduction-to-dns/']
 modified: 2018-05-22
 modified_by:
   name: Linode
 published: 2009-07-29
 title: "DNS Records: An Introduction"
+tags: ["dns","networking"]
 ---
 
 ![DNS Records: an Introduction](dns-records-an-introduction.png "DNS Records: an Introduction")

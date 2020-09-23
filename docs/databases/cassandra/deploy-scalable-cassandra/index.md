@@ -4,7 +4,7 @@ author:
    email: docs@linode.com
 description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 17.04 and CentOS 7 distros.'
 keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 17.04", " database", " nosql"]
-aliases: ['databases/deploy-scalable-cassandra/']
+aliases: ['/databases/deploy-scalable-cassandra/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-06-12
 modified: 2017-06-24
@@ -20,6 +20,7 @@ external_resources:
    - '[Cassandra .yaml Configuration File Overview](http://cassandra.apache.org/doc/latest/configuration/cassandra_config_file.html)'
    - '[Recommended Production Settings For Apache Cassandra](http://docs.datastax.com/en/landing_page/doc/landing_page/recommendedSettings.html)'
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
+tags: ["ubuntu","centos","database","nosql"]
 ---
 
 

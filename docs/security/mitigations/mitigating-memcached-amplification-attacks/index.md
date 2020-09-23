@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 2018-03-02
 title: Mitigating memcached Amplification Attacks
+tags: ["security"]
 ---
 
 ## What is Memcrashed?

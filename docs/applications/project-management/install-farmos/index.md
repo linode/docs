@@ -3,6 +3,7 @@ author:
   name: Angel G
   email: docs@linode.com
 keywords: ["farmos", "Drupal", "LAMP"]
+tags: ["drupal", "lamp", "cms"]
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, FarmOS.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-09

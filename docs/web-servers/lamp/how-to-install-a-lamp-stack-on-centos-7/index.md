@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
+tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-20
 modified_by:
@@ -11,7 +12,7 @@ modified_by:
 published: 2015-12-01
 title: LAMP on CentOS 7
 h1_title: How to Install a LAMP Stack on CentOS 7
-aliases: ['websites/lamp/lamp-server-on-centos-7/','websites/lamp/lamp-on-centos-7/', 'web-servers/lamp/lamp-on-centos-7/']
+aliases: ['/web-servers/lamp/lamp-on-centos-7/','/websites/lamp/lamp-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'

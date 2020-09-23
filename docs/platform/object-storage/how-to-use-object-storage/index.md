@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: "Get started using Linode's Object Storage."
 keywords: ['object','storage','bucket']
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-12
 modified: 2019-04-12
@@ -480,7 +481,7 @@ For more information on hosting a static website with Object Storage, read our [
 
 ### Other s3cmd Commands
 
-To upload an entire directory of files, you can use the the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
+To upload an entire directory of files, you can use the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
 
     s3cmd sync . s3://my-example-bucket -P
 

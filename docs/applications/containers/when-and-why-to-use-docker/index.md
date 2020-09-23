@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide discusses the pros and cons of using Docker, and when Docker is a good choice for a project.'
 keywords: ['docker','containers','docker hub']
+tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-20
 modified: 2017-11-20

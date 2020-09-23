@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages system containers which each work just like typical servers. This guide shows how to install and setup LXD 3, run an Apache Web server in a system container and expose it to the Internet.'
 keywords: ["container", "lxd", "lxc", "apache", "virtual machine", "virtualization"]
+tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-01
 modified: 2019-05-01
@@ -41,7 +42,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 1.  Complete the [Getting Started](/docs/getting-started/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
 
-2.  This guide will use `sudo` wherever necessary. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited (non-root) user account, harden SSH access, and remove unnecessary network services.
+2.  This guide uses `sudo` wherever necessary. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited (non-root) user account, harden SSH access, and remove unnecessary network services.
 
 3.  Update your system:
 

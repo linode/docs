@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ## Ark: Survival Evolved One-Click App

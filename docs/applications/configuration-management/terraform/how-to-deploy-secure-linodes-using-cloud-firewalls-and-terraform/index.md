@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "How To Deploy Secure Linodes using Cloud Firewalls and Terraform"
 h1_title: "Deploying Secure Linodes using Cloud Firewalls and Terraform"
+image: feature.png
 contributor:
   name: Leslie Salazar
   link: https://github.com/leslitagordita/

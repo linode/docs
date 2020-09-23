@@ -4,6 +4,7 @@ author:
   email: scm.mymail@gmail.com
 description: 'This guide will give a brief introduction to WebSocket as well as introduce the reader to WebSocket API.'
 keywords: ["websocket", "sockets", "introduction to websockets", "full duplex"]
+tags: ["http", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-05
 modified: 2018-01-02
@@ -19,7 +20,7 @@ external_resources:
   - '[About HTML5 WebSocket](https://www.websocket.org/aboutwebsocket.html)'
   - '[The WebSocket Protocol](https://tools.ietf.org/html/rfc6455)'
 audiences: ["beginner"]
-aliases: ['development/introduction-to-websockets/']
+aliases: ['/development/introduction-to-websockets/']
 ---
 
 ## What are WebSockets?

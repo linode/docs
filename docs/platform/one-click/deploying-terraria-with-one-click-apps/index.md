@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ## Terraria One-Click App

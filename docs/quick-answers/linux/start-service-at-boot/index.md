@@ -15,6 +15,7 @@ external_resources:
   - '[systemd – Wikipedia](https://en.wikipedia.org/wiki/Systemd)'
   - '[systemd man page](http://man7.org/linux/man-pages/man1/init.1.html)'
   - '[systemd Documentation](https://www.freedesktop.org/wiki/Software/systemd/)'
+tags: ["linux"]
 ---
 
 ## What is systemd?

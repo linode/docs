@@ -12,6 +12,7 @@ title: Overview About Dedicated CPU Linode Instances
 keywords: ["dedicated linodes"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Dedicated CPU instances offer entire dedicated CPU cores for your own Linode's use. No other instances can run processes on the same cores that you're using, which means that your software can run at peak speed and efficiency.

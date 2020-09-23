@@ -12,6 +12,7 @@ modified_by:
 title: "How to Resell Linode Services"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 ![How to Resell Linode Services](how-to-resell-linode-services.png "How to Resell Linode Services")

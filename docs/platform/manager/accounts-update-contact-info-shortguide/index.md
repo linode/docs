@@ -12,6 +12,7 @@ title: Update the Contact Information on Your Account
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 Use the *Account & Billing* webpage to update the contact information for the Linode account. The email address saved on this webpage receives invoices, receipts, and credit card expiration warnings. Support tickets are *not* sent to this email address.

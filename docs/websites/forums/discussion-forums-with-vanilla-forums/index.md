@@ -5,7 +5,7 @@ author:
 description: 'Install the lightweight Vanilla Forums software to power discussion forums on your Linode.'
 keywords: ["vanilla", "bb", "fourms", "lamp", "discussion forums"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/bulletin-boards/vanilla/']
+aliases: ['/web-applications/bulletin-boards/vanilla/']
 modified: 2013-10-01
 modified_by:
   name: Linode

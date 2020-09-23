@@ -6,7 +6,7 @@ author:
 description: 'Deploying osCommerce, a popular e-commerce web application, on Ubuntu 9.10 (Karmic).'
 keywords: ["oscommerce", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/']
+aliases: ['/web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/']
 modified: 2011-08-22
 modified_by:
   name: Linode

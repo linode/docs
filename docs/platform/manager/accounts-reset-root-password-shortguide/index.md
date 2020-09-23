@@ -12,6 +12,7 @@ title: Reset the Root Password on a Linode
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 If you can't remember the password for the `root` user on a Linode, use the Linode Cloud Manager to reset it. Here's how:

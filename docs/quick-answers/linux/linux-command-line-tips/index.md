@@ -4,13 +4,14 @@ author:
   email: docs@linode.com
 description: 'Easy to remember Linux command line time savers.'
 keywords: ["terminal", "command line", "shell", "tips", "tricks", "easy linux", "cli"]
-aliases: ['quick-answers/linux-command-line-tips/']
+aliases: ['/quick-answers/linux-command-line-tips/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-04-13
 modified: 2017-07-17
 modified_by:
   name: Edward Angert
 title: 'Linux Command Line Tips'
+tags: ["linux"]
 ---
 
 These are just a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/tools-reference/introduction-to-linux-concepts/).

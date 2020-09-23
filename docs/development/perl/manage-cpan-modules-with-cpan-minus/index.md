@@ -7,7 +7,7 @@ og_description: "This guide shows how to use cpanminus to easily install and man
 keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-20
-aliases: ['linux-tools/utilities/cpanm/','applications/development/manage-cpan-modules-with-cpan-minus/','development/manage-cpan-modules-with-cpan-minus/']
+aliases: ['/linux-tools/utilities/cpanm/','/applications/development/manage-cpan-modules-with-cpan-minus/','/development/manage-cpan-modules-with-cpan-minus/']
 modified_by:
   name: Linode
 published: 2010-04-12
@@ -17,6 +17,7 @@ external_resources:
  - '[cpanminus Development](http://github.com/miyagawa/cpanminus/)'
 audiences: ["beginner"]
 languages: ["perl"]
+tags: ["perl"]
 ---
 
 ![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)

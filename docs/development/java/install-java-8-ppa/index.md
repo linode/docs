@@ -12,6 +12,7 @@ title: "How to Install Java 8 JDK"
 published: 2018-01-09
 headless: true
 show_on_rss_feed: false
+tags: ["java"]
 ---
 The steps in this section will install the Java 8 JDK on Ubuntu 16.04. For other distributions, see the [official docs](https://docs.oracle.com/javase/8/docs/technotes/guides/install/linux_jdk.html#BJFGGEFG).
 

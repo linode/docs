@@ -5,7 +5,7 @@ author:
 description: 'Installation, configuration and usage guides for phpFox.'
 keywords: ["social networking", "phpfox", "community"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/social-networking/phpfox/']
+aliases: ['/web-applications/social-networking/phpfox/']
 modified: 2013-10-04
 modified_by:
   name: Linode

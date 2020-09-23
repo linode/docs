@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Ubuntu 9.10 to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
+tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/ruby-on-rails-apache/ubuntu-9-10-karmic/','websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/']
+aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/','/frameworks/ruby-on-rails-apache/ubuntu-9-10-karmic/']
 modified: 2011-05-17
 modified_by:
   name: Linode
@@ -97,7 +98,7 @@ In typical Passenger-based Rails deployments, the application directory would be
     rmdir /srv/www/example.com/public_html/
     ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html
 
-Passenger requires that the log files within your application be world writable (eg. `chmod 666`) and will produce an "HTTP 500 Internal Server Error" if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "my-app" application:
+Passenger requires that the log files within your application be world writable (e.g. `chmod 666`) and will produce an "HTTP 500 Internal Server Error" if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "my-app" application:
 
     chmod 666 /srv/www/example.com/my-app/log/
 

@@ -10,6 +10,7 @@ modified_by:
     name: Linode
 published: 2019-02-04
 title: How to Choose a Linode Plan
+tags: ["linode platform"]
 ---
 
 Linode offers four instance types: **Shared**, **High Memory**, **Dedicated CPU**, and **GPU Instances**. For all Linode Instance types, there are several hardware resource tiers, or plans, that you can choose from.

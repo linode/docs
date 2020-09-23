@@ -5,6 +5,7 @@ author:
 description: 'This quick answer shows how to create CAA records for domains and subdomains.'
 og_description: 'This quick answer will show you how to create a CAA record for domains and subdomains'
 keywords: ["caa", "dns", "records", "subdomain", "domain"]
+tags: ["linode platform","cloud manager","dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
@@ -13,7 +14,7 @@ title: Add CAA Records in the Linode Cloud Manager
 external_resources:
  - '[CAA Records, DNSimple](https://support.dnsimple.com/articles/caa-record/)'
  - '[RFC 6844: DNS Certification Authority Authorization (CAA) Resource Record](https://tools.ietf.org/html/rfc6844)'
-aliases: ['quick-answers/linode-platform/add-caa-dns-records-classic-manager/']
+aliases: ['/quick-answers/linode-platform/add-caa-dns-records-classic-manager/']
 ---
 
 Certification Authority Authorization (CAA) is a type of DNS record that allows the owner of a domain to specify which certificate authority (or authorities) are allowed to issue SSL/TLS certificates for their domain(s). This quick answer shows you how to set up CAA records on your Linode.

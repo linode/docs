@@ -19,6 +19,7 @@ external_resources:
  - '[VimAwesome](http://vimawesome.com/)'
  - '[Vim-Plug Project Github Page](https://github.com/junegunn/vim-plug)'
  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
+tags: ["linux"]
 ---
 
 ![Introduction to Vim Customization](Vim_Customization.jpg)

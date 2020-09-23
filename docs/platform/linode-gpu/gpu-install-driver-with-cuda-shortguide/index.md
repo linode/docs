@@ -12,6 +12,7 @@ title: How to Install the NVIDIA driver with CUDA for Linode GPU Instances
 keywords: ["gpu"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 In this section, you will install your GPU driver using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).

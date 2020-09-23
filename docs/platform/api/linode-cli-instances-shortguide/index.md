@@ -12,6 +12,7 @@ title: How to manage Instances with the CLI
 keywords: ["instances", "gpu", "shared", "high mem", "dedicated"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Tasks related to Linode instances are performed with `linode-cli linodes [ACTION]`.

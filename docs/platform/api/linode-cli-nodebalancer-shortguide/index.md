@@ -12,6 +12,7 @@ title: How to manage NodeBalancers with the CLI
 keywords: ["nodebalancer"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  Create a new NodeBalancer:

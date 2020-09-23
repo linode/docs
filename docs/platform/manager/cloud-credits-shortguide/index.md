@@ -12,6 +12,7 @@ title: How to Find Credits Remaining in the Cloud Manager
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 To find the amount of available credit that you have:
