@@ -514,7 +514,7 @@ class Searcher {
 				});
 
 				if (events.length > 0) {
-					debug('broadcast', this);
+					debug('broadcast', this, events);
 					dispatcher.broadCastSearchResult(this, events);
 				}
 			};
@@ -762,7 +762,7 @@ class Searcher {
 					}
 
 					searcher.add({ requests: v.query.requests }, (results) => {
-						v.results = results;
+						v.setResults(results);
 					});
 				});
 
