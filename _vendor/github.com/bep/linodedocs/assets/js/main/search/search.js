@@ -506,12 +506,20 @@ class Searcher {
 				}
 
 				let events = [];
+
+				// TODO(bep) improve
+				if (s.expandedNodes.size > 0) {
+					events.push(dispatcher.events.EVENT_SEARCHRESULT);
+				}
+
 				this.items().forEach((item) => {
 					if (item.publish && item.isLoaded()) {
 						// TODO(bep) check how to limit the publishing?
 						events = events.concat(item.subscribers);
 					}
 				});
+
+				events = [ ...new Set(events) ];
 
 				if (events.length > 0) {
 					debug('broadcast', this, events);
