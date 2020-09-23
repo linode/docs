@@ -1,4 +1,4 @@
----
+ ---
 author:
   name: Linode Community
   email: docs@linode.com
@@ -10,7 +10,7 @@ published: 2020-09-17
 modified: 2020-09-17
 modified_by:
   name: Linode
-title: 'Install an Odoo 13 Stack on Ubuntu 18.04'
+title: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 h1_title: Installing an Odoo 13 Stack on Ubuntu 18.04
 image: install-an-odoo-13-stack-on-ubuntu-18-04-using-linode.png
 contributor:
@@ -31,7 +31,7 @@ external_resources:
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company's processes.
 
-For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu](/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide for details). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
+For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu 16.04](/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide for an example of this). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
 
 ## System Requirements
 
