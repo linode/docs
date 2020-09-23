@@ -8,7 +8,7 @@ keywords: ['wordpress','wp cli','one-click apps', 'cms', 'deploy wordpress with 
 tags: ["cloud-manager","linode platform","cms","wordpress","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-09
-modified: 2020-04-09
+modified: 2020-09-23
 modified_by:
   name: Linode
 title: "How to Deploy WordPress with One-Click Apps"
