@@ -482,8 +482,7 @@ PREFIX2="24"
 
     > **Debian 10, Ubuntu 18.04 & CentOS 8**
     >
-        sudo ifdown eth0
-        sudo ifup eth0
+        sudo ifdown eth0 && sudo ifup eth0
     > **Ubuntu 20.04**
     >
         systemctl restart systemd-networkd
