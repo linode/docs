@@ -467,7 +467,7 @@ var lnSearchExplorer = {};
 			href: '',
 
 			show: function() {
-				return !this.hidden;
+				return !this.data.hidden;
 			},
 
 			toggleOpen: function() {
@@ -543,13 +543,13 @@ var lnSearchExplorer = {};
 			},
 
 			receiveData: function(e) {
-				var self = this;
-				self.data.node = e.detail.nodes[self.id];
-				self.data.count = self.data.node.count;
-				self.data.pages = self.data.node.pages;
+				this.data.node = e.detail.nodes[this.id];
+				this.data.count = this.data.node.count;
+				this.data.pages = this.data.node.pages;
 
 				// Set if node not in current search.
 				this.data.hidden = this.data.node.hidden;
+
 				loading = false;
 			},
 
