@@ -74,6 +74,7 @@ var lnNavController = {};
 		return {
 			pinned: false,
 			reloaded: false,
+			explorerPreloaded: false,
 			toggles: {
 				searchInput: false,
 				searchResults: false,
@@ -142,6 +143,13 @@ var lnNavController = {};
 					default:
 						debug('ignore', detail.what);
 				}
+			},
+			preloadExplorer: function() {
+				if (this.explorerPreloaded) {
+					return;
+				}
+				sendEvent('nav:toggle', { what: 'explorer-preload', open: true });
+				this.explorerPreloaded = true;
 			},
 			onScroll: function() {
 				const thresholdOn = 150;

@@ -147,17 +147,20 @@ var lnHome = {};
 					self.data.sectionTiles[name] = newPager(tilesPageSize);
 				});
 
-				dispatcher.searchStandalone(
-					{
-						key: `home:section-tiles`,
-						requests: searchRequests
-					},
-					searchName
-				);
+				this.$nextTick(function() {
+					dispatcher.searchStandalone(
+						{
+							key: `home:section-tiles`,
+							requests: searchRequests
+						},
+						searchName
+					);
+				});
 
 				// This needs to be run after the component has mounted to be able
 				// to work on the DOM element directly.
 				const onMount = function() {
+					debug('onMount');
 					if (isTouchDevice()) {
 						// Set up swipe listeners for the pagers on this page.
 						const addSwipeListeners = function(pager, el) {
@@ -194,11 +197,16 @@ var lnHome = {};
 			// such as section metadata and facets.
 			receiveCommonData: function(results) {
 				debug('receiveCommonData', results);
+
 				if (this.commonDataLoaded) {
 					return;
 				}
 
 				this.commonDataLoaded = true;
+
+				if (!results.blankSearch.isLoaded()) {
+					throw 'missing data';
+				}
 
 				let meta = results.metaSearch.results;
 				let sectionsResults = results.blankSearch.results;
@@ -222,14 +230,14 @@ var lnHome = {};
 					}
 				}
 
+				debug('receiveCommonData: productsItems', productsItems);
+
 				this.data.productTiles.setItems(productsItems);
 
 				this.data.sectionMeta['products'] = meta.get('products');
 				sectionNames.forEach((name) => {
 					this.data.sectionMeta[name] = meta.get(name);
 				});
-
-				debug('receiveCommonData: productsFacets', productsFacets);
 			},
 
 			receiveData: function(results) {

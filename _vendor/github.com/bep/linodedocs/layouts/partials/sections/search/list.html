@@ -25,7 +25,7 @@
             <template x-for="(item, j) in section.searchData.result.hits" :key="item.objectID">
               <div class="py-3 mb-1 tablet:mb-4" x-bind:class="{ 'bg-selected rounded -ml-4 pl-4': (j === 0) }">
                 <template x-if="item.href">
-                  <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" @click="show = false" x-bind:href="item.href"></a>
+                  <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" @click="if (!item.isExternalLink) { show = false }" x-bind:href="item.href" x-bind:target="item.isExternalLink ? '_blank' : '_self'"></a>
                 </template>
                 <template x-if="!item.href">
                   <p x-html="item.description"></p>

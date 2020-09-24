@@ -1,7 +1,7 @@
 var lnSearch = {};
 
 class Searcher {
-	constructor(searchConfig, hitNormalizer, debug = function() {}) {
+	constructor(searchConfig, hitNormalizer, onError, debug = function() {}) {
 		const algoliaHost = `https://${searchConfig.app_id}-dsn.algolia.net`;
 		this.headers = {
 			'X-Algolia-Application-Id': searchConfig.app_id,
@@ -12,6 +12,7 @@ class Searcher {
 		this.requests = [];
 		this.callbacks = [];
 		this.debug = debug;
+		this.onError = onError;
 	}
 
 	add(opts, callback) {
@@ -20,7 +21,7 @@ class Searcher {
 		let end = start + requests.length;
 		requests.forEach((query) => {
 			if (!query.params) {
-				query.params = 'query=&hitsPerPage=2345';
+				query.params = 'query=&hitsPerPage=500';
 			}
 		});
 
@@ -66,6 +67,7 @@ class Searcher {
 		handleData,
 		handleError = (error) => {
 			console.log(error);
+			this.onError(error);
 		}
 	) {
 		fetch(this.urlQueries, {
@@ -125,10 +127,16 @@ class Searcher {
 				} else if (hit.url) {
 					// A blog entry.
 					href = router.hrefEntry(hit);
+				} else if (hit.objectType === 'question') {
+					// A question.
+					href = `https://www.linode.com/community/questions/${hit.linodeId}`;
 				} else {
 					href = hit.href;
 				}
 				hit.href = href;
+				if (href) {
+					hit.isExternalLink = href.startsWith('http');
+				}
 				hit.firstPublishedDateString = '';
 				if (hit.firstPublishedTime) {
 					hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
@@ -393,8 +401,8 @@ class Searcher {
 			return result;
 		};
 
-		const newSearcher = function(hitNormalizer) {
-			return new Searcher(searchConfig, hitNormalizer, debug);
+		const newSearcher = function(hitNormalizer, onError) {
+			return new Searcher(searchConfig, hitNormalizer, onError, debug);
 		};
 
 		// searchItemLoadingStates represents the main loading state of a search item.
@@ -421,6 +429,14 @@ class Searcher {
 				return this.loadingState === searchItemLoadingStates.INITIAL;
 			};
 
+			item.isLoading = function() {
+				return this.loadingState === searchItemLoadingStates.LOADING;
+			};
+
+			item.reset = function() {
+				this.resetLoadingStateIf(true);
+			};
+
 			item.resetLoadingStateIf = function(b) {
 				if (b) {
 					this.loadingState = searchItemLoadingStates.INITIAL;
@@ -431,6 +447,10 @@ class Searcher {
 			item.setResults = function(results) {
 				this.results = results;
 				this.loadingState = searchItemLoadingStates.LOADED;
+			};
+
+			item.markAsLoading = function() {
+				this.loadingState = searchItemLoadingStates.LOADING;
 			};
 
 			item.markAsLoaded = function() {
@@ -482,6 +502,15 @@ class Searcher {
 				staticSearchCache: new Map()
 			};
 
+			s.reset = function() {
+				this.mainSearch.reset();
+				this.blankSearch.reset();
+				this.metaSearch.reset();
+				this.namedSearches.forEach((v, k) => {
+					v.reset();
+				});
+			};
+
 			s.items = function() {
 				return [ this.mainSearch, this.blankSearch, this.metaSearch ].concat(
 					Array.from(this.namedSearches.values())
@@ -494,27 +523,30 @@ class Searcher {
 			};
 
 			s.publish = function() {
+				debug('publish');
+				let events = [];
+
+				if (this.staticSearchRequestsResults.length > 0) {
+					if (!this.blankSearch.isLoaded()) {
+						throw 'invalid state: blank search not loaded';
+					}
+					events.push(dispatcher.events.EVENT_SEARCHRESULT_BLANK);
+				}
+
 				// The staticSearchRequestsResults standalone searches that's not participating in the global
 				// filtering game, so publish it whenever it's set.
-				for (let i = 0; i < this.staticSearchRequestsResults.length; i++) {
+				let len = this.staticSearchRequestsResults.length;
+				for (let i = 0; i < len; i++) {
 					let r = this.staticSearchRequestsResults.pop();
 					sendEvent(r.event, r.results);
 				}
 
-				if (!this.publish) {
-					return;
-				}
-
-				let events = [];
-
-				// TODO(bep) improve
-				if (s.expandedNodes.size > 0) {
+				if (this.expandedNodes.size > 0) {
 					events.push(dispatcher.events.EVENT_SEARCHRESULT);
 				}
 
 				this.items().forEach((item) => {
 					if (item.publish && item.isLoaded()) {
-						// TODO(bep) check how to limit the publishing?
 						events = events.concat(item.subscribers);
 					}
 				});
@@ -594,8 +626,6 @@ class Searcher {
 				}
 
 				this.$nextTick(function() {
-					// Broadcast the blank result set to components that needs it.
-					dispatcher.searchBlank();
 					if (designMode) {
 						dispatcher.search({ query: 'apache centos' });
 					}
@@ -633,7 +663,7 @@ class Searcher {
 				debug('search', opts);
 
 				var event = opts.event;
-				if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK && this.searchState.blankSearch.loading) {
+				if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK && this.searchState.blankSearch.isLoading()) {
 					// One is already in progress.
 					return;
 				}
@@ -646,9 +676,10 @@ class Searcher {
 					this.show = false;
 				}
 
+				var needsBlankResult = event === dispatcher.events.EVENT_SEARCHRESULT_BLANK;
+
 				if (!this.show) {
-					this.searchState.mainSearch.resetLoadingStateIf(true);
-					this.searchState.blankSearch.publish = true;
+					needsBlankResult = true;
 				}
 
 				if (opts.requests) {
@@ -656,6 +687,11 @@ class Searcher {
 						requests: opts.requests,
 						event: event
 					});
+					needsBlankResult = true;
+				}
+
+				if (needsBlankResult) {
+					this.searchState.blankSearch.publish = true;
 				}
 
 				// Refresh the main search result on query or filter changes.
@@ -675,7 +711,9 @@ class Searcher {
 				}
 
 				var self = this;
-				var searcher = newSearcher(normalizeHit(self));
+				var searcher = newSearcher(normalizeHit(self), function(err) {
+					self.searchState.reset();
+				});
 
 				if (this.searchState.staticSearchRequests.length > 0) {
 					for (let i = 0; i < this.searchState.staticSearchRequests.length; i++) {
@@ -686,11 +724,11 @@ class Searcher {
 
 						let cachedResults = this.searchState.staticSearchCache.get(key);
 						if (cachedResults) {
-							self.searchState.staticSearchRequestsResults.push({ event: event, results: cachedResults });
+							this.searchState.staticSearchRequestsResults.push({ event: event, results: cachedResults });
 						} else {
 							searcher.add({ requests: requests }, (results) => {
-								self.searchState.staticSearchRequestsResults.push({ event: event, results: results });
-								self.searchState.staticSearchCache.set(key, results);
+								this.searchState.staticSearchRequestsResults.push({ event: event, results: results });
+								this.searchState.staticSearchCache.set(key, results);
 							});
 						}
 					}
@@ -791,13 +829,13 @@ class Searcher {
 					});
 				}
 
-				if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK && this.searchState.blankSearch.shouldLoad()) {
+				if (needsBlankResult && this.searchState.blankSearch.shouldLoad()) {
 					let requests = [];
 					for (let section of searchConfig.sections) {
 						requests.push(createSectionRequest(section, true));
 					}
 
-					this.searchState.blankSearch.loading = true;
+					this.searchState.blankSearch.markAsLoading();
 					searcher.add({ requests: requests }, (results) => {
 						results.forEach((res, i) => {
 							this.searchState.blankSearch.results.sections[i].searchData.setResult(res);

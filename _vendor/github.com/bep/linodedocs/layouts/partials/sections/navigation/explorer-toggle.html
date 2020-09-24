@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center h-full w-full explorer-toggle__header" @click.stop="toggles.explorer = !toggles.explorer"
-    @mouseenter.once="$dispatch('search:trigger', { event: 'search:results-blank' });">
+    @mouseenter.once="preloadExplorer();">
   <div class="hide-if-topbar-is-pinned md:hidden h-full">
     <button type="button" class="btn-icon flex items-center justify-between h-full">
       <svg class="md:hidden text-titlecolor" style="width: 1rem;height:0.85rem;">

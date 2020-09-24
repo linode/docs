@@ -15,15 +15,30 @@ var lnSearchExplorer = {};
 
 		const router = lnCreateHref.New(searchConfig);
 		const dispatcher = lnSearchEventDispatcher.New();
+		const component = 'explorer';
 
 		// Toggle this on to expand the tree on load.
 		// But also remember to revert it when done.
 		const designMode = false;
 
 		const setOpenStatus = function(self, open) {
-			debug('setOpenStatus', open);
+			debug('setOpenStatus', open, self.initState);
+			if (open) {
+				prepare(self);
+			}
 			self.open = open;
-			sendEvent('nav:toggle', { what: 'explorer', open: self.open });
+			sendEvent('nav:toggle', { what: component, open: self.open, source: component });
+		};
+
+		const prepare = function(self) {
+			switch (self.initState) {
+				case initStates.INITIAL:
+					dispatcher.searchBlank();
+					break;
+				default:
+					self.loadIf(true);
+					break;
+			}
 		};
 
 		// initStates represents the state of the loading of the initial data set.
@@ -31,8 +46,9 @@ var lnSearchExplorer = {};
 		// and we need to prevent those building before we're ready.
 		const initStates = {
 			INITIAL: 0,
-			LOADING: 1,
-			LOADED: 2
+			DATA_LOADED: 1,
+			LOADING: 2,
+			LOADED: 3
 		};
 
 		return {
@@ -64,6 +80,9 @@ var lnSearchExplorer = {};
 			receiveDataInit: function(data) {
 				debug('receiveDataInit', data, this.open, this.initState);
 				this.data.searchState = data;
+				if (this.initState === initStates.INITIAL) {
+					this.initState = initStates.DATA_LOADED;
+				}
 				this.load();
 			},
 
@@ -82,10 +101,6 @@ var lnSearchExplorer = {};
 				return this.open && this.initState === initStates.LOADED;
 			},
 
-			toggleOpen: function() {
-				setOpenStatus(this, !this.open);
-			},
-
 			closeIfMobile: function() {
 				if (this.open && isMobile()) {
 					setOpenStatus(this, false);
@@ -93,6 +108,9 @@ var lnSearchExplorer = {};
 			},
 
 			receiveToggle: function(detail) {
+				if (detail.source === component) {
+					return;
+				}
 				debug('receiveToggle', detail);
 				switch (detail.what) {
 					case 'search-input':
@@ -101,7 +119,10 @@ var lnSearchExplorer = {};
 						}
 						break;
 					case 'explorer':
-						this.open = detail.open;
+						setOpenStatus(this, detail.open);
+						break;
+					case 'explorer-preload':
+						prepare(this);
 						break;
 					default:
 					// Ignore
@@ -109,6 +130,19 @@ var lnSearchExplorer = {};
 			},
 
 			load: function() {
+				this.loadIf(this.open);
+			},
+
+			loadIf: function(open) {
+				if (!open) {
+					return;
+				}
+
+				if (this.initState < initStates.DATA_LOADED) {
+					// It will eventually get here.
+					return;
+				}
+
 				if (this.initState === initStates.LOADING) {
 					return;
 				}
@@ -118,10 +152,6 @@ var lnSearchExplorer = {};
 					return;
 				}
 
-				if (!this.data.searchState) {
-					// It will eventually get here.
-					return;
-				}
 				this.initState = initStates.LOADING;
 				this.buildNodes();
 				this.filterNodes();
@@ -435,6 +465,10 @@ var lnSearchExplorer = {};
 				node: n
 			},
 			href: '',
+
+			show: function() {
+				return !this.hidden;
+			},
 
 			toggleOpen: function() {
 				this.toggleOpenLocal(!this.data.open);

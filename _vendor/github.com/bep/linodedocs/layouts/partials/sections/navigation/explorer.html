@@ -11,7 +11,7 @@
     <li class="explorer__node" x-bind:class="{
       'explorer__node--after-first': data.node.level > 1,
       'pl-10': data.node.level === 2
-    }" x-show.transition.200ms="!data.hidden" @search:facetfilters.document="applyFacetFilters($event.detail)" @search:toggle-node.document="receiveToggledOpen($event.detail);"
+    }" x-show.transition.200ms="show()" @search:facetfilters.document="applyFacetFilters($event.detail)" @search:toggle-node.document="receiveToggledOpen($event.detail);"
       @search:toggle-node="receiveToggledOpenDescendant($event.detail);">
       <div x-bind:class="{
         'border-l-2 ml-2': data.node.level > 1,

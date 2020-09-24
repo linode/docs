@@ -34,10 +34,10 @@ var lnBreadcrumbs = {};
 
 			init: function(page) {
 				debug('init', page.sectionsEntries);
+				this.page = page;
 				this.$nextTick(() => {
 					dispatcher.searchBlank();
 				});
-				this.page = page;
 			},
 
 			createBreadcrumbs: function() {
