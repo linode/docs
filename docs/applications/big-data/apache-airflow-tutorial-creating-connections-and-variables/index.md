@@ -11,6 +11,7 @@ modified_by:
   name: Angel D'az
 title: "An Apache Airflow Tutorial: How to Create Connections and Variables"
 h1_title: "An Apache Airflow Tutorial: Creating Connections and Variables"
+image: feature.png
 contributor:
   name: Angel D'az
   link: https://github.com/angelddaz/

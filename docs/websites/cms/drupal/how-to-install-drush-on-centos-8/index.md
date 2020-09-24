@@ -14,6 +14,7 @@ modified_by:
 published: 2020-02-29
 title: How to Install Drush on CentOS 8
 h1_title: Install Drush on CentOS 8
+image: feature.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'

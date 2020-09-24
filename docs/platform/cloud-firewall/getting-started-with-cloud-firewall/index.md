@@ -13,6 +13,7 @@ modified_by:
 published: 2020-07-24
 title: Adding and Configuring Linode Cloud Firewall - A Tutorial
 h1_title: A Tutorial for Adding and Configuring Linode Cloud Firewall
+image: feature.png
 ---
 
 ## What is Linode Cloud Firewall?

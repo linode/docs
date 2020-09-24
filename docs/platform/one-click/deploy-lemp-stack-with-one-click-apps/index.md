@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "Deploy a LEMP Stack With One-Click Apps"
 h1_title: "Deploying a LEMP Stack with One-Click Apps"
+image: feature.png
 contributor:
   name: Linode
 external_resources:
