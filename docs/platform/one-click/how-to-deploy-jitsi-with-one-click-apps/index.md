@@ -22,7 +22,7 @@ external_resources:
 
 ## Jitsi One-Click App
 
-[Jitsi](https://jitsi.org) is suite of open source projects that allows you to host your own virtual video conferences.
+[Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.
 
 ## Deploy Jitsi with One-Click Apps
 
@@ -43,7 +43,7 @@ If Jitsi is not created with the SSL option enabled, it will use a self-signed c
 | **The hostname for your server** | The [hostname](/docs/getting-started/#set-the-hostname) for the server. The default value "meet" is filled in when you select Jitsi from the Marketplace Apps; feel free to change this. |
 | **Your domain** | The domain name where you wish to host your Jitsi server. For example, `example.com`. |
 | **Your Linode API Token.** | Your Linode API access token is needed to create your DNS records and to create the Let's Encrypt SSL certificate. If you don't have a token, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
-| **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. |
+| **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. If `No` is selected, the Jitsi app will trigger security warnings in most web browsers. |
 | **Admin Email for Let's Encrypt certificate** | The email you wish to use for the SSL certificate. This email address will receive notifications when the certificate needs to be renewed. |
 
 {{< note >}}
