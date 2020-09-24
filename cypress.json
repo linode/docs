@@ -1,0 +1,8 @@
+{
+	"projectId": "ld",
+	"baseUrl": "http://localhost:1313/docs/",
+	"viewportWidth": 1280,
+	"viewportHeight": 860,
+	"chromeWebSecurity": false,
+	"video": false
+}
