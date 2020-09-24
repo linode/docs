@@ -111,6 +111,7 @@ filtering_facets = [{ name = "category", title = "Doc Category" }]
 name = "qa"
 index = "linode-community"
 title = "Q&A"
+filters = "objectType:question"
 section_facet = "objectType"
 explorer_icon = "#icon--todo"
 explorer_regular_pages_start_level = 4 # Not relevant, set it high to avoid triggering any search.
