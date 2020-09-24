@@ -1,0 +1,8 @@
+{
+	"selection": [
+		{ "href": "/", "bodyClass": "kind-home" },
+		{ "href": "/platform/object-storage/server-side-encryption/", "bodyClass": "kind-page" },
+		{ "href": "/api/regions/#view-region", "bodyClass": "kind-page" },
+		{ "href": "/products/storage/object-storage/", "bodyClass": "kind-section" }
+	]
+}

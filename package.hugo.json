@@ -1,4 +1,10 @@
 {
+	"dependencies": {},
+	"devDependencies": {
+		"axe-core": "^4.0.2",
+		"cypress": "^5.2.0",
+		"cypress-axe": "^0.8.1"
+	},
 	"name": "linode-docs",
 	"version": "0.1.0"
 }

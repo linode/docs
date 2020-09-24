@@ -23,7 +23,10 @@
   "@tailwindcss/custom-forms": "^0.2.1",
   "@tailwindcss/typography": "^0.1.4",
   "autoprefixer": "~9.7.6",
+  "axe-core": "^4.0.2",
   "core-js": "^3.6.5",
+  "cypress": "^5.2.0",
+  "cypress-axe": "^0.8.1",
   "postcss-cli": "^7.1.1",
   "tailwindcss": "~1.7.3"
  },

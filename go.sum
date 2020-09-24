@@ -45,17 +45,6 @@ github.com/bep/linodedocs v0.0.0-20200923181125-181b9fb92043 h1:qcrjGuEbfaY89eyX
 github.com/bep/linodedocs v0.0.0-20200923181125-181b9fb92043/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
 github.com/bep/linodedocs v0.0.0-20200924142447-6d0d190e7561 h1:dd7NVoY+zX8LTJHBhHwT6pm9m/kaJFPqzNzvwGCFyzk=
 github.com/bep/linodedocs v0.0.0-20200924142447-6d0d190e7561/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
-github.com/bep/linodedocs v0.0.0-20200924175204-62beaee75e78 h1:YT90L1LT1CO3JPiAt0mzoPt5jqAr46ketjSPzxe+RfQ=
-github.com/bep/linodedocs v0.0.0-20200924175204-62beaee75e78/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
-github.com/bep/linodedocs v0.0.0-20200925151128-69d7245ca21c h1:MyvpsxVC+4XJm5WLw5Wa/p8LrbGGNIuJW4AaUlx6mzY=
-github.com/bep/linodedocs v0.0.0-20200925151128-69d7245ca21c/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
-github.com/bep/linodedocs v0.0.0-20200925154737-f6c1c8cba967 h1:tVfPE/q1Ocbu0WgzAHBzbsAyd2CoaTFyMxpw63Hxx0s=
-github.com/bep/linodedocs v0.0.0-20200925154737-f6c1c8cba967/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
-github.com/bep/linodedocs v0.0.0-20200927121301-96d8e6ab5ee3 h1:tUQprEmKvPrUA2ePpCCHsCwuqxZWZuchzOKfZPk5Qks=
-github.com/bep/linodedocs v0.0.0-20200927121301-96d8e6ab5ee3/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
-github.com/bep/linodedocs v0.0.0-20200927152305-45ecda66f5e0 h1:oE3rUtbWHBYhctHw79/fw1hmgOLFX7IlTNxEsWKKHuc=
-github.com/bep/linodedocs v0.0.0-20200927152305-45ecda66f5e0/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
-github.com/bep/linodedocs v0.0.0-20200928093229-3bd4ecbc3363 h1:lAZEbzl4R7kEayxkkL77H/J6j93iM9QmnG38Efp5/b4=
 github.com/bep/linodedocs v0.0.0-20200928093229-3bd4ecbc3363/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
