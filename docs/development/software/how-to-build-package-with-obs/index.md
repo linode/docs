@@ -268,7 +268,9 @@ If you are running OpenSUSE on a Linode, you first need to copy your files to a 
 
 ### Upload your files to OBS
 
-You can create an RPM package for the Python program using the following steps.
+OBS organizes packages into projects. You have a main *Home Project*, this will have a name `home:Username`. In your Home Project, you create a *Subproject* for this program. The structure looks like this in the interface: `home:UserName:subproject_name/package_name`.
+
+Create an RPM package for the Python program using the following steps.
 
 1.  Log into OBS account with your registered username and password.
 
