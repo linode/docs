@@ -155,7 +155,10 @@ var lnSearchExplorer = {};
 				this.initState = initStates.LOADING;
 				this.buildNodes();
 				this.filterNodes();
-				this.initState = initStates.LOADED;
+				var self = this;
+				this.$nextTick(function() {
+					self.initState = initStates.LOADED;
+				});
 			},
 
 			// Turbolinks replaces the body that we may have changed, so restore the

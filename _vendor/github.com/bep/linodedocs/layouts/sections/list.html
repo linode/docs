@@ -7,7 +7,7 @@
         <h1 class="tracking-tighter pb-4 lg:pb-0" x-text="data.meta.title"></h1>
         <div x-show="!uiState.noToggleGuidesLink">
           <button @click="toggleShowGuides();" x-text="data.result.nbHits + ' Guides Available'"
-                    class="lg:ml-4 py-1 px-3 text-sm text-brand focus:outline-none no-underline font-semibold border border-brand rounded-full"></button>
+                    class="lg:ml-4 py-1 px-3 text-sm text-brand focus:outline-none no-underline font-semibold border border-brand rounded-full" data-testid="showGuides"></button>
         </div>
         <div x-show="uiState.noToggleGuidesLink">
           <span x-text="data.result.nbHits + ' Guides Available'" class="lg:ml-4 py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full"></span>
@@ -47,14 +47,14 @@
         <div class="md:absolute right-0 w-full md:w-64 rounded border bg-white border-basicgray">
           <div class="flex items-center justify-between px-4 h-8 border-b-gray">
             <div class="font-semibold text-xs text-gray-700" x-text="'Sort ' + data.meta.title + ' Guides'"></div>
-            <button @click="uiState.sorting.open = !uiState.sorting.open" type="button" class="btn-icon text-basicgray">
+            <button @click="uiState.sorting.open = !uiState.sorting.open" type="button" class="btn-icon text-basicgray" data-testid="openSort">
               <template x-if="uiState.sorting.open">
-                <svg class="text-titlecolor fill-current -mr-1 ml-2 h-3 w-3">
+                <svg class="text-titlecolor fill-current h-3 w-3">
                   <use href="#icon--times"></use>
                 </svg>
               </template>
               <template x-if="!uiState.sorting.open">
-                <svg class="fill-current -mr-1 ml-2 h-3 w-3">
+                <svg class="fill-current h-3 w-3">
                   <use href="#icon--arrow-down"></use>
                 </svg>
               </template>
@@ -64,10 +64,10 @@
             <template x-for="(sortOption, i) in uiState.sorting.options" :key="sortOption.field">
               <div class="flex justify-between">
                 <button @click="uiState.sorting.sort(sortOption)" x-text="sortOption.title" :class="{ 'text-titlecolor': sortOption.enabled, 'text-basicgray': !sortOption.enabled }"
-                                class="block px-4 text-xs leading-none focus:outline-none"></button>
+                                class="block px-4 text-xs leading-none focus:outline-none" data-testid="sortTitle"></button>
                 <div class="flex justify-end pr-2 space-x-1">
                   <button class="p-2" :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  !sortOption.down }"
-                                    @click="sortOption.down = false; uiState.sorting.sort(sortOption)">
+                                    @click="sortOption.down = false; uiState.sorting.sort(sortOption)" data-testid="sortUp">
                     <svg :class="{ 'text-titlecolor':  sortOption.enabled &&  !sortOption.down, 'text-basicgray':  !sortOption.enabled ||  sortOption.down }"
                                         class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                       <path
@@ -75,7 +75,7 @@
                     </svg>
                   </button>
                   <button class="p-2" :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  sortOption.down }"
-                                    @click="sortOption.down = true; uiState.sorting.sort(sortOption)">
+                                    @click="sortOption.down = true; uiState.sorting.sort(sortOption)" data-testid="sortDown">
                     <svg :class="{ 'text-titlecolor':  sortOption.enabled &&  sortOption.down, 'text-basicgray':  !sortOption.enabled ||  !sortOption.down }"
                                         class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                       <path

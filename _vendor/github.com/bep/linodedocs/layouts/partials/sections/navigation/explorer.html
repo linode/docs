@@ -12,7 +12,7 @@
       'explorer__node--after-first': data.node.level > 1,
       'pl-10': data.node.level === 2
     }" x-show.transition.200ms="show()" @search:facetfilters.document="applyFacetFilters($event.detail)" @search:toggle-node.document="receiveToggledOpen($event.detail);"
-      @search:toggle-node="receiveToggledOpenDescendant($event.detail);">
+      @search:toggle-node="receiveToggledOpenDescendant($event.detail);" :data-cy="`li-${ data.node.level }`">
       <div x-bind:class="{
         'border-l-2 ml-2': data.node.level > 1,
         'border-gray-500': showBorder2(),
@@ -53,13 +53,13 @@
           <div class="flex items-center h-full">
             <span x-bind:class="{ 
                 'text-gray-100': data.node.disabled,
-                'text-basicgray': !data.node.disabled }" x-show="data.count !== undefined" x-html="data.count" class="text-xs font-semibold pr-6"></span>
+                'text-basicgray': !data.node.disabled }" x-html="data.count" class="text-xs font-semibold pr-6"></span>
             <template x-if="data.node.disabled || data.node.isLeaf()">
               <div class="w-3"></div>
             </template>
             <div class="z-10" x-show="!data.disabled && !data.node.isLeaf()">
               <button type="button" class="btn-icon h-full flex items-center justify-center" x-bind:class="{ 'text-gray-200': data.node.disabled, 'text-textcolor': !data.node.disabled }"
-                @click.stop="toggleOpen()" @mouseover.once.stop="loadPages()">
+                @click.stop="toggleOpen()" @mouseover.once.stop="loadPages()" :data-cy="`open-${ data.node.level }`">
                 <svg class="w-4 h-3 titlecolor" x-show="!data.open">
                   <use href="#icon--arrow-down"></use>
                 </svg>
@@ -70,7 +70,7 @@
             </div>
           </div>
         </div>
-        <ul class="node-tree border-l-transparent pl-2" x-bind:class="{ 
+        <ul class="node-tree h-full border-l-transparent pl-2" x-bind:class="{ 
           'pl-2':  (data.node.level === 2 && !data.open)
          }" x-show="data.open"></ul>
         <ul class="explorer-node__pages" x-bind:class="{ 'pl-6': (data.node.level > 1) }" x-show="data.open">
