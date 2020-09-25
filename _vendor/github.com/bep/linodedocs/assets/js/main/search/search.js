@@ -119,7 +119,8 @@ class Searcher {
 					}
 				}
 
-				hit.titleHighlighted = hit._highlightResult ? hit._highlightResult.title.value : hit.title;
+				hit.titleHighlighted =
+					hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : hit.title;
 
 				let href;
 				if (opts.isSectionMeta) {
