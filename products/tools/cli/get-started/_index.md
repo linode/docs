@@ -3,7 +3,6 @@ title: Get Started
 tab_group_main:
     weight: 20
 ---
-The Linode CLI is a wrapper around the [Linode API](https://developers.linode.com) that allows you to manage your Linode account from the command line. Virtually any task that can be done through the Linode Manager can be done through the CLI, making it an excellent tool for scripting.
 
 This guide describes the basics of installing and working with the CLI. It also offers examples illustrating how to complete common tasks using the CLI.
 

@@ -4,7 +4,7 @@ tab_group_main:
     weight: 30
 ---
 
-These introductory guides to Linode CLI will get you up and running; consider some common use cases; and show you how to use Linode CLI.
+These introductory guides to Linode CLI will get you up and running and show you how to use Linode CLI with Linode's most popular platforms and services.
 
 - [Account](/docs/products/tools/cli/guides/account/): View or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and do other related tasks.
 

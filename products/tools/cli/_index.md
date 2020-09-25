@@ -6,11 +6,12 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "The Linode CLI is a wrapper around the Linode API that allows you to manage your Linode account from the command line."
+    description: "The Linode CLI is a wrapper around the Linode API that allows you to manage your Linode account from the command line. Virtually any task that can be done through the Linode Manager can be done through the CLI, making it an excellent tool for scripting."
 ---
 
-The Linode CLI is a wrapper around the Linode API that allows you to manage your Linode account from the command line. Virtually any task that can be done through the Linode Manager can be done through the CLI, making it an excellent tool for scripting.
+## Availability
 
+Tokyo, Japan; Mumbai, India; Singapore, Singapore; Sydney, Australia; Frankfurt, Germany; London, United Kingdom; Toronto, Canada; Newark, NJ, USA; Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA
 
 ## Features
 
@@ -25,3 +26,7 @@ The Linode CLI prints easily readable output by default. You can also specify wh
 ### Easy Scripting
 
 Everything you can do with the Linode Cloud Manager can be done through the CLI. The Linode CLI has an easy-to-use interface that makes it perfect for scripting.
+
+## Pricing
+
+Linode's CLI is provided for free to all customers.
