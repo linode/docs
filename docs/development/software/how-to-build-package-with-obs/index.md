@@ -2,194 +2,160 @@
 author:
   name: Linode Community
   email: kwaku@tutanota.com
-description: 'This guide shows how to build packages with Open Build Service using the web client and osc command-line tool.'
-og_description: 'This guide shows how to build packages with Open Build Service using the web client and osc command-line tool.'
+description: 'This guide shows how to build packages with Open Build Service using the web client and osc command line tool.'
+og_description: 'This guide shows how to build packages with Open Build Service using the web client and osc command line tool.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'How to Build RPM Packages with Open Build Service'
-h1_title: 'Building RPM Packages with Open Build Service'
+keywords: ['rpm packages in linux', 'rpm package install', 'open build service tutorial', 'osc command line tool']
+tags: ['python', 'linux']
+modified: 2020-09-24
+modified_by:
+  name: Linode
+published: 2020-09-24
+title: 'How to Build RPM Packages with Open Build Service on OpenSUSE 15.1'
+h1_title: 'Building RPM Packages with Open Build Service on OpenSUSE 15.1'
 contributor:
   name: Michael Aboagye
   link: https://twitter.com/kwaku_mikey
 ---
 
-
 ## Introduction
 
-Assuming you are a systems developer. You have developed a tool written in C language to track and log all active processes to a log file. If you want to make this tool available for Linux distributions such as `OpenSuse_Leap 15.1`, you can make use of [Open Build Service](https://openbuildservice.org/) to package your tool and allow system administrators to install it via rpm package manager.
+[Open Build Service](https://openbuildservice.org/) supports a variety of package formats such as *RPM package format* used by Red Hat, OpenSUSE, and Fedora, *DEB package format* used by Debian, Ubuntu and other debian-based platforms, as well as *Arch package format* for Arch Linux. It also provides [build recipe formats](https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.package_formats.html#id-1.5.5.2.5) for the aforementioned packages. For example, there is a *spec format* for RPM packages, and a *dsc format* for DEB packages.
 
-**Open Build Service** supports a variety of package formats such as `RPM package format` used by Red Hat, OpenSUSE and Fedora, `DEB package format` used by Debian, Ubuntu and other debian-based platforms, as well as `Arch package format` for Arch Linux.
+Let's assume you are a systems developer and you have developed a tool written in the C language to track and log all active processes to a log file. If you want to make this tool available for Linux distributions, such as *OpenSuse_Leap 15.1*, you can make use of Open Build Service to package your tool and allow system administrators to install it via RPM package manager.
 
-It also provides [build recipe formats](https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.package_formats.html#id-1.5.5.2.5) for the above mentioned packages. For instance there is a *Spec format* for RPM packages only, and *dsc format* for DEB packages only.
-
-It has a command line tool known as `osc`. It is written in python and works just like `git`. You can use this tool to upload archived source files to Open Build Service and query build results on your computer.
+Open Build Service has a command line tool called `osc`. It is written in Python and works similarly to `git`. You can use this tool to upload archived source files to Open Build Service and query build results on your computer.
 
 Open Build Service is an open-source project managed by OpenSUSE and a community of open source developers. You need an [OpenSUSE account](https://www.microfocus.com/selfreg/jsp/createOpenSuseAccount.jsp?login=Sign+up) to use Open Build Service to create a package.
 
 
 ### Advantages of Open Build Service
 
-There are several ways available for software developers or System administrators to create software packages and distribute it to various platforms. Open Build Service makes it easier for package development because of the following reasons:
+There are several ways for software developers or System administrators to create and distribute software packages to various platforms. Open Build Service makes package development easier in following ways:
 
-* It is open source. It is free for everyone to use.
+* It is open source and free for everyone to use.
 
-* Supports various package formats.
+* It supports multiple package formats.
 
-* osc command line tool can be installed on all major Linux distributions.
+* The osc command line tool can be installed on all major Linux distributions.
 
 * You can build packages via the command line tool and the web client.
 
-
-
 ## In this Guide
 
-You will learn how to:
+You learn how to:
 
-* Install `osc` command line tool.
+* [Install `osc` command line tool](#install-osc-and-py2pack-command-line-tools).
 
-* Create an OpenSUSE account
+* [Create an OpenSUSE account](#create-an-opensuse-service-account).
 
-* Configure osc with your OBS instance credentials
+* [Configure osc with your OBS instance credentials](#configure-osc-with-your-obs-credentials).
 
-* Create a hello world program in python
+* [Build an RPM package using OBS web client](#build-an-rpm-package-using-obs-web-client)
 
-* Create `.spec` file for a python program
-
-* Archive source files of a python program
-
-* Use the web client tool to build rpm packages for OpenSuse_Leap_15
-
-* Download source files with wget from Python Package Index
-
-* Generate .spec file with py2pack
-
-* Use osc command line tool to build rpm packages for OpenSuse_Leap_15
-
+* [Build RPM packages using osc](#build-rpm-packages-using-osc)
 
 ## Before You Begin
 
-To run the examples in this guide, you need to install the `osc` command line tool and create an OpenSUSE account if you don't have one.
+- This guide assumes you are running OpenSUSE 15.1 either on a Linode or as your local machine. If you need help creating a Linode with OpenSUSE, see our [Getting Started](https://www.linode.com/docs/getting-started/) and [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/) guides.
 
-If you do not know how to install and set up `osc`, check how to do so in the installation section of this guide.
+- To run the examples in this guide, you need to [install the `osc` command line tool](#install-osc-and-py2pack-command-line-tools) and [create an OpenSUSE account](#create-an-opensuse-service-account) if you don't have one.
 
 {{< note >}}
-This guide is written for both root users and non-root users. So you can choose to run commands as a root user or non-root user. For a non-root user, prepend `sudo` to all commands.
+This guide is written for either root or non-root users. If you choose to run commands as a non-root user, prepend `sudo` to all commands.
 {{< /note >}}
 
 {{< note >}}
-In this guide we refer to Open Build Service as **OBS**. Anytime we make mention of OBS, we are referring to Open Build Service.
+For the remainder of this guide, Open Build Service is referred to as **OBS**.
 {{< /note >}}
 
+## Install osc and py2pack command line tools
 
+Install OBS command line tools known as `osc` and `py2pack`.
 
-## Install osc and py2pack command line tool
+1.  In the terminal, use the following command to refresh or update repositories:
 
-In this section we will install OBS command line tool known as `osc` and `py2pack`.
+        zypper ref
 
-On the terminal, type the following command to refresh or update repositories on OpenSuse_Leap_15:
+1.  Run the following commands to install `osc` and `py2pack` via the `zypper` package manager.
 
-    zypper   ref
+        zypper in osc
+        zypper in python3-py2pack
 
-The command `zypper ref` updates or refreshes repositories.
+1.  Use the following commands to verify whether you have installed each package correctly.
 
-Run the following commands to install `osc` and `py2pack` via `zypper` package manager.
+        osc --help
+        py2pack --help
 
-    zypper in osc
-
-    zypper in py2pack
-
-You can type the following command to verify whether you have installed it correctly.
-
-    osc --help
-
-    py2pack --help
-
-Now that you have installed *osc* and *py2pack* tool on your workstation, it's time to create an OpenSUSE account.
-
-
-## Create OpenSUSE service account:
+## Create an OpenSUSE service account
 
 Before you can create packages with OBS, you need to create an OpenSUSE account.
 
-Locate your web browser and navigate to [OBS](https://build.opensuse.org/) below to create an account.
+1.  In your web browser and navigate to [OBS](https://build.opensuse.org/) to create an account.
 
-Click on the **signup button** to create an [OpenSUSE](https://www.microfocus.com/selfreg/jsp/createOpenSuseAccount.jsp?target=http://www.opensuse.org) account.
+1.  Click on the **signup button** to create an [OpenSUSE](https://idp-portal.suse.com/univention/self-service/#page=createaccount) account.
 
-{{< note >}}
+    {{< note >}}
 You don't need to be an OpenSUSE developer to set up OpenSUSE account.
 {{< /note >}}
 
-Fill the form presented to you and login with your registered `username` and `password`.
-
-You have successfully set up an OpenSUSE account to create packages using Open Build Service.
-
-
+1.  Fill out the form and verify your account through email, but then return to the [OBS page](https://build.opensuse.org/) to login with your registered `username` and `password`. **Note:** The Univention portal does not allow you to create a profile or continue with your account, you must return to the OBS page.
 
 ## Configure osc with your OBS credentials
 
-In this section you will configure the `osc` command line tool with your OBS instance username and password. It is necessary to configure osc with your username and password because you will make use of it to upload files to OBS public instance and build packages on your computer.
+You need to configure osc with your OBS username and password so you can upload files to your OBS public instance and build packages on your computer.
 
-Use the same `username` and `password` you used for your OpenSUSE account registration.
+1.  In the terminal, execute the following command to prompt `osc` to ask you to set up a username and password for your OBS project. Use the same `username` and `password` you used for your OpenSUSE account registration.
 
-On the terminal, execute the following command to prompt `osc` to ask you to set up a username and password for your OBS project:
+        osc
 
-    osc
+1.  There are several methods `osc` offers to store users' password. In this tutorial, choose method 4. With method 4, osc prompts you for the password each time you execute an `osc` command to work on packages.
 
-There are several methods `osc` offers to store users' password. Pick any of the methods based on your preference to save your password.
+    {{< output >}}
+1) fail Keyring (Backend provided by python-keyring)
+2) Config file credentials manager (Store the credentials in the config file (plain text))
+3) Obfuscated Config file credentials manager (Store the credentials in the config file (obfuscated))
+4) Transient password store (Do not store the password and always ask for the password)
+{{</ output >}}
 
-{{< note >}}
-If you are good at remembering password, you can choose method 4.
-{{< /note >}}
+## Build an RPM package using OBS web client
 
-If you selected method 4, osc will always prompt you for the password you used for osc configuration each time you execute `osc` command to work on packages.
+The following section demonstrates how to use the OBS web client to build an RPM package for a simple `hello world` python program using a `.spec` file and an archived source file. OBS uses the `.spec` file to build packages for OpenSuse, Fedora, and Red Hat because it contains build process instructions.
 
+### Create a Simple "Hello World" Python Program
 
-## Build rpm package using OBS web client
+1.  Use the `touch` command to create a file called `program.py`:
 
-In this section, you will make use of OBS web client to build rpm package for a simple `hello world` python program.
+        touch program.py
 
-You will need a `.spec` file and archived source file to create rpm package using OBS web client. OBS make
-use of *.spec* file to build packages for OpenSuse, Fedora and Red Hat because it contains build process instructions.
+1.  Afterwards, edit the `program.py` file with the vim editor:
 
+        vim program.py
 
-###  Create a Simple Hello World Python Program
-
-Use the `touch` command to create a file as shown below:
-
-    `touch program.py`
-
-Afterwards edit the `program.py` file with the vim editor:
-
-    `vim program.py`
-
-Then copy and paste the following content inside the `program.py` file:
+1.  Then copy and paste the following content inside the `program.py` file:
 
 {{< file "program.py" python >}}
     #!/usr/bin/env python
     print("Hello World")
 {{< /file >}}
 
-Press the **escape** button. Then save and close the `program.py` file using the `:wq` command.
-
+1.  Press the **escape** button. Then save and close the `program.py` file using the `:wq` command.
 
 ### Create a .spec File
 
-In this section, we will create a `.spec` file for our python program.
+A `.spec` file usually contains RPM macros or commands, and metadata describing the package name, version, license, the name of the source file, and a brief summary of the program or software.
 
-A `spec` file is usually made up of rpm macros or commands and a metadata describing package name and version, license, the name of the
-source file and a brief summary of the program or software.
+1.  Use the following command to create and edit the `program.spec` file for our python program.
 
-Use the command below to create and edit the `program.spec` file for our python program.
+        vim program.spec
 
-    `vim program.spec`
+1.  Inside the `program.spec` file, copy and paste the following content:
 
-Inside the `program.spec` file, copy and paste the following content
-
-
-{{< file "program.spec" spec >}}
+    {{< file "program.spec" spec >}}
     Name:           program
     Version:        0.1.1
     Release:        1%{?dist}
-    Summary:        a simple `hello world` python program
+    Summary:        a simple `hello world` Python program
 
     License:        GPLv3+
     URL:            https://www.example.com/%{name}
@@ -202,42 +168,38 @@ Inside the `program.spec` file, copy and paste the following content
     BuildArch:      noarch
 {{< /file >}}
 
+    These directives defines basic information about the Python program.
 
-These directives defines basic information about the python program.
+    - The `Name` directive defines the name of the Python program.
 
+    - The `Version` directive defines the version number or type of the Python program.
 
-* The `Name` directive defines the name of the python program.
+    - The `Release` directive indicates the release number.
 
-* The `version` directive defines the version number or type of the python program.
+    - The `Summary` directive gives a brief description of the software.
 
-* The `release` directive
-
-* The `summary` directive gives a brief description of the software.
-
-* The `License` directive defines the software license associated with the source code. `GPLv3` simply
+    - The `License` directive defines the software license associated with the source code. `GPLv3` simply
 stands for **GNU General Public License version 3**.
 
-* For the `url` directive, it contains URL link to the software page.
+    - The `URL` directive contains URL link to the software page.
 
-* The `Source` directive provides the URL link to the software source code.
+    - The `Source` directive provides the URL link to the software source code.
 
-* `BuildRequires` directive make mention of dependencies needed during build-time.
+    - `BuildRequires` directive make mention of dependencies needed during build-time.
 
-*  The `Requires` directive specifies required dependencies during runtime.
+    -  The `Requires` directive specifies required dependencies during runtime.
 
-{{< note >}}
-   Build-Time refers to the process during which a program's source code is converted into an executable
-program whilst Run-Time refers to when the program is running.
+    {{< note >}}
+   `Build-time` refers to the process during which a program's source code is converted into an executable program, whilst `runtime` refers to when the program is running.
 {{< /note >}}
 
-*  `BuildArch` directive specifies the type of architecture. `noarch` means no specific architecture specified.
+    -  `BuildArch` directive specifies the type of architecture. `noarch` means no specific architecture specified.
 
+1.  Beneath the `BuildArch` directive, copy and paste the following the content into the `program.spec` file.
 
-Beneath the `BuildArch` directive, copy and paste the following the content into the `program.spec` file.
-
-{{< file "program.spec" spec >}}
+    {{< file "program.spec" spec >}}
     %description
-    A simple hello world python program for the beginners.
+    A simple hello world Python program for the beginners.
 
     %prep
     %setup -q
@@ -268,168 +230,169 @@ Beneath the `BuildArch` directive, copy and paste the following the content into
 
     %changelog
     * Wed April 10 2020 Linode <Linode.org> - 0.1.1-1
-      - Demo python package
+      - Demo Python package
 {{< /file >}}
 
-
-In the `%description` section, provide a detailed information about the program than the one
+    - In the `%description` section, provide detailed information about the program other than the one
 provided by `Summary` directive.
 
-In the `%prep` section, the source code is prepared by expanding the archived source code and so on.
+    - In the `%prep` section, the source code is prepared by expanding the archived source code.
 
-In the `%build` section, OBS builds the python program.
+    - In the `%build` section, OBS builds the Python program.
 
-In the `%install` section, OBS installs the python program inside the `buildroot` directory. `buildroot` is a chroot
-base directory.
+    - In the `%install` section, OBS installs the Python program inside the `buildroot` directory. `buildroot` is a chroot base directory.
 
-{{< note >}}
-In Linux, `chroot` is an operation that locks the user or a process in their own directory without been able to access files outside
-their directory.
+    {{< note >}}
+In Linux, `chroot` is an operation that locks the user or a process in their own directory without been able to access files outside their directory.
 {{< /note >}}
 
-In the `%files` section, there is a list of files provided by RPM and these files will live on the system even after installation.
-It also informs OBS of the license type via the `%license` macro.
+    - In the `%files` section, there is a list of files provided by RPM and these files live on the system even after installation. It also informs OBS of the license type via the `%license` macro.
 
-Finally the `%changelog` section will contain information or logs related to package changes.
-
+    - The `%changelog` section contains information or logs related to package changes.
 
 ### Create an archived file for the source code
 
-Use the `tar` command to create an archived file for the source code of the python program as shown below:
+1.  Use the `tar` command to create an archived file for the source code of the Python program:
 
-    tar -zvcf program.tar.gz  program.py
+        tar -zvcf program.tar.gz  program.py
 
-Finally you can move on to create rpm package for the python program using the following:
+### Download your files (optional)
 
-*  Log into OBS account with your registered username and password.
+If you are running OpenSUSE on a Linode, you first need to copy your files to a local machine before you can upload them to the OBS site.
 
-*  Go to your home project
+1.  In the terminal on your local machine use `scp` to copy the files from your Linode to your machine:
 
-*  Click on the **subproject** link to create a subproject. You can name it **Test** project.
+        scp your_linode_username@your_linode_ip:/path/to/your/file.txt /path/to/your/local/directory/
 
-*  Briefly describe the **Test** subproject inside the **description box**.
+    Replace all fields with the appropriate values for both the `program.spec` and `program.tar.gz` files.
 
-*  Click on the **create package** link to create rpm package for the python program.
+### Upload your files to OBS
 
-*  Assign a name to it, and briefly describe the purpose of this package.
+You can create an RPM package for the Python program using the following steps.
 
-*  Upload `program.spec` file and `program.tar.gz` file by clicking on the **add files** link.
+1.  Log into OBS account with your registered username and password.
 
-*  Specify the distribution platform to install the package on via the `build targets` link.
+1.  Click the **Home Project** link by your profile name.
 
-OBS then proceeds to build the rpm package for the python program. You can download the rpm package afterwards.
+1.  Click on the **Subprojects** tab. Then click on the **Create Subproject** link to create a subproject.
 
+1.  Give the Subproject a name, title, and description. Click the **Accept** button to continue to the Subproject Overview screen for this new Subproject you created.
 
-## Build rpm packages using osc
+1.  In the Packages panel, click on the **Create Package** link to create RPM package for the Python program.
 
-In this section, you will makes use of `osc` tool to build OpenSUSE rpm package for a python module from the terminal.
+1.  Assign a name, title, and briefly describe the purpose of this package. Then click the **Create** button to continue to the Package Overview screen.
 
+1.  In the Source Files panel, click the **Add File** link. Upload the `program.spec` and `program.tar.gz` files using the upload screen.
+
+1.  In the **Build Results** panel, click the **build targets** link. Select the distributions you wish to install the package to on this screen. As each distribution is checked, they are built.
+
+1.  Click the **Overview** tab to view the **Build Results** panel. Here you can see that OBS has proceeded to build the RPM package for the Python program for each selection you made on the build target screen. If there was a problem with the build, an information icon informs you with the reason why. Usually this is due to an error in your `.spec` file.
+
+1.  You can download the RPM package by clicking on the **Repositories** tab.
+
+## Build RPM packages using osc
+
+In this section, you use the `osc` tool to build an OpenSUSE RPM package for a Python module from the terminal.
 
 ### Download Pytricia source files from Python Index
 
-`wget` tool is available on every Unix platform. Use it download source files for `pytricia` module from [Python Package Index](https://pypi.org/project/pytricia/#files)
+1.  The `wget` tool is available on every Unix platform. Use it download source files for `pytricia` module from [Python Package Index](https://pypi.org/project/pytricia/#files)
 
-    wget https://files.pythonhosted.org/packages/12/28/0019f3d14d442d967ec7b4808951232519c8ba1a7574998a178cc82ac76e/pytricia-1.0.1.tar.gz
+        wget https://files.pythonhosted.org/packages/12/28/0019f3d14d442d967ec7b4808951232519c8ba1a7574998a178cc82ac76e/pytricia-1.0.1.tar.gz
 
 
 ### Generate .spec file for Pytricia Module with py2pack
 
-You can create a `.spec` file manually or generate it automatically with `py2pack` command:
+The `py2pack` tool generates `.spec` files using [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) templates. Sometimes you have to make slight changes to the generated `.spec` file such as including additional `BuildRequires` directives.
 
-    py2pack generate pytricia -f pytricia.spec
+1.  You can create a `.spec` file manually or generate it automatically with `py2pack` command:
 
-`py2pack` tool generates `.spec` files using [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/) templates. Sometimes you have to make slight changes to the generated `spec` file such as including additional `BuildRequires` directives.
+        py2pack generate pytricia -f pytricia.spec
 
-You can view the content of `pytricia.spec` file using the command below:
+1.  You can view the content of `pytricia.spec` file using the following command:
 
-    cat pytricia.spec
-
+        cat pytricia.spec
 
 ### Configure your Build Target from the Terminal
 
-Type the following command on the terminal to edit your build target.
+1.  Type the following command in the terminal to edit your build target:
 
-    osc meta prj --edit home:mickwaku
+        osc meta prj --edit home:username
 
-The command above will show a XML structure like the one below
+The command above shows a XML structure like the one below.
 
 {{< note >}}
- Build targets are defined as project-wide and every package in a project is built for a specific build target such `openSUSE_Leap_15.2`.
-In other words, every package in a specific project is built for a build target selected or defined for that project.
+Build targets are defined as project-wide and every package in a project is built for a specific build target such `openSUSE_Leap_15.2`. In other words, every package in a specific project is built for a build target selected or defined for that project.
 {{< /note >}}
 
-Replace the following values with your own. You can add more build targets by making use of the
+1.  Replace the following values with your own. You can add more build targets by making use of the
 `repository` element.
 
-
-    <project name="home:mickwaku">
+{{< file >}}
+    <project name="home:username">
       <title>IP address</title>
-      <description>description of the project</description
-      <person userid="mickwaku" role="maintainer"/>
+      <description>description of the project</description>
+      <person userid="username" role="maintainer"/>
     <repository name="openSUSE_Leap_15.2">
       <path project="openSUSE:Leap:15.2" repository="standard"/>
       <arch>x86_64</arch>
     </repository>
     </project>
+{{</ file >}}
 
+Below are the definitions of the following elements above:
 
-Below are the definition of the following elements above:
+*  project name: This is the project name.
 
-*  project name: this is the project name
+*  title: Title of home project.
 
-*  title: Title of home project
+*  description: The description of the project.
 
-*  description: description of the project
+*  person: This defines the owners' username via `userid`.
 
-*  person: defines owners' username via `userid`
+*  repository: This defines the build target for the package via `name`.
 
-*  repository: defines the build target for the package via `name`
+*  arch: This specifies the type of architecture such as `x86_64`.
 
-*  arch: specifies the type of architecture such as `x86_64`
+1.  Press the **escape** button. Then type `:wq` to save and exit the `vim` editor. If the above XML configuration is valid, osc saves and shows the following output:
 
-
-Press the *escape* button. Save and exit `vim` editor via `:wq` command. If the above XML configuration is valid, osc will save and show
-this output
-
+    {{< output >}}
     Sending meta data...
     Done.
+{{</ output >}}
 
-Next use the `osc checkout` command to checkout your home project. This command creates a local
-working directory `home:mickwaku` inside your current directory.
+1.  Next, use the `osc checkout` command to checkout your home project. This command creates a local
+working directory `home:username` inside your current directory.
 
-    osc checkout home:mickwaku
+        osc checkout home:username
 
-Then change into the local working directory as shown below and create a new package `pytricia`:
+1.  Then change into the local working directory and create a new package `pytricia`:
 
-    cd home:mickwaku
+        cd home:username
+        osc mkpac pytricia
 
-    osc mkpac pytricia
+1.  Change into the package directory `pytricia` with the `cd` command:
 
-Afterwards change into the package directory `pytricia` with the `cd` command
+        cd pytricia
 
-    cd pytricia
+1.  Assuming you have already downloaded the archived source files for the Python program and created the `pytricia.spec` file, upload these files to the `pytricia` directory with the following command:
 
-Assuming you have already downloaded the archived source files for the python program and created `pytricia.spec` file, use the command below to upload these files to the `pytricia` directory.
+        osc add pytricia.tar.gz pytricia.spec
 
-    osc add pytricia.tar.gz pytricia.spec
-
-{{< note >}}
+    {{< note >}}
 If the files `pytricia.tar.gz` and `pytricia.spec` are not within the `package` directory, move them into the `package` directory using `mv` command.
 {{< /note >}}
 
-Then build the package for `OpenSuse Leap 15.2` with the architecture `x86_64` using the command below. This
-command builds the package locally on your computer.
+1.  Then build the package for `OpenSuse Leap 15.2` with the architecture `x86_64` using the following command. This command builds the package locally on your computer.
 
-    osc build --local-package openSUSE_Leap_15.2 x86_64 *.spec
+        osc build --local-package openSUSE_Leap_15.2 x86_64 *.spec
 
-You can also make use of the command below to build packages locally on your computer. The `osc build` command
-builds packages on your computer based on the information you provided in the XML file.
+1.  Alternatively, you can use the `osc build` command without options and arguments to build the package locally on your computer. The `osc build` command uses the information you provided in the XML file for the build.
 
-    osc build
+        osc build
 
-Finally use the command `osc commit`to commit the files to your package to your home project on OBS.
+1.  Finally use the command `osc commit` to commit the files in your package to your home project on OBS.
 
-    osc commit
+        osc commit
 
-The package is built on your computer and can be accessed at `/var/tmp/build-root/openSUSE_Leap_15.2-x86_64/home/abuild/rpmbuild/RPMS/x86_64/` if the build process completed without any errors.
-
+    If the build process completed without any errors, the package is built on your computer and can be accessed at `/var/tmp/build-root/openSUSE_Leap_15.2-x86_64/home/abuild/rpmbuild/RPMS/x86_64/`.
