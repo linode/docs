@@ -21,10 +21,10 @@
     <template x-if="uiState.showSectionsTiles()">
       <section class="mb-6 w-full">
         <h2 class="mb-12 text-2" x-text="data.meta.title + ' Categories'"></h2>
-        <div class="flex flex-wrap items-stretch -mx-2-5">
+        <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
           <template x-for="(item, i) in data.sections" :key="item.key">
-            <div class="px-2-5 w-full md:w-1/4 pb-5">
-              <a class="w-56 h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-gray-700 hover:text-brand" :href="item.href">
+            <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
+              <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-gray-700 hover:text-brand" :href="item.href">
                 <div class="flex flex-col justify-center w-full">
                   <div class="w-full flex justify-center mb-8">
                     <div class="w-24 h-24" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.thumbnail)"></div>
