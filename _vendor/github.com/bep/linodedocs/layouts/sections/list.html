@@ -109,7 +109,7 @@
           </h4>
           <ul class="mb-5">
             <template x-for="(item, j) in data.hitsBySection[k]" :key="item.href">
-              <li class="pb-2">
+              <li class="pb-2" data-testid="sorted-item">
                 <a :href="item.href" x-html="item.title"></a>
               </li>
             </template>
@@ -119,7 +119,7 @@
       </template>
     </div>
     <template x-if="uiState.showSortedGuideList()" x-for="(item, i) in data.result.hits" :key="item.href">
-      <div class="w-2/3 flex flex-col">
+      <div class="w-2/3 flex flex-col" data-testid="sorted-item">
         <a class="mb-1" x-text="item.title" :href="item.href"></a>
         <div class="text-titlecolor text-sm mb-4">
           <span x-text="item.firstPublishedDateString"></span>

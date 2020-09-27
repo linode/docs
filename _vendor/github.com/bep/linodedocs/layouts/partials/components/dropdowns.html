@@ -9,7 +9,7 @@
       <div class="relative inline-block text-left">
         <div>
           <span class="rounded-md">
-            <button type="button" @click="toggleOpen({{ $i }})" style="width: 80px; height: 40px;" :class="{ 'bg-white border-basicgray': isOpen({{ $i }})}"
+            <button type="button" aria-label="open" @click="toggleOpen({{ $i }})" style="width: 80px; height: 40px;" :class="{ 'bg-white border-basicgray': isOpen({{ $i }})}"
                         class="btn-icon inline-flex w-full rounded-md border border-gray-300 px-4 py-2 text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-titlecolor transition ease-in-out duration-150">
               {{ with .icon }}
                 <svg class="fill-current text-textcolor w-5 h-5">

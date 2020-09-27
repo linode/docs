@@ -1,6 +1,6 @@
 {{ $p := .page }}
 {{ $wrap := .wrap }}
-<nav class="breadcrumbs text-sm w-full{{if not $wrap }} overflow-scroll{{ end }}" id="breadcrumbs-component" aria-label="breadcrumbs" x-data="lnBreadcrumbs.New(lnSearchConfig)"
+<nav class="breadcrumbs text-sm w-full{{if not $wrap }} overflow-scroll{{ end }}" aria-label="breadcrumbs" x-data="lnBreadcrumbs.New(lnSearchConfig)"
     x-init="init(lnPageInfo)" @search:results-blank.document="receiveData($event.detail);">
   <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}}w-full -mt-2" x-show.transition.opacity="loaded">
     <li class="flex items-center mt-2">

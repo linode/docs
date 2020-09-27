@@ -199,9 +199,15 @@ var lnSearchExplorer = {};
 
 			renderNode: function(node) {
 				let li = document.importNode(this.templateNode.content.querySelector('.explorer__node'), true);
+				let ul = li.querySelector('.node-tree');
+				let inner = li.querySelector('.explorer__node__inner');
+				let ifTempl = document.createElement('template');
+				ifTempl.setAttribute('x-if', 'show()');
+				inner.parentNode.insertBefore(ifTempl, inner);
+				ifTempl.content.appendChild(inner);
 				li.setAttribute('x-data', `lnSearchExplorer.NewNode('${node.key}')`);
 				li.setAttribute('x-init', 'init();');
-				let ul = li.querySelector('.node-tree');
+
 				for (let i in node.sections) {
 					ul.appendChild(this.renderNode(node.sections[i]));
 				}

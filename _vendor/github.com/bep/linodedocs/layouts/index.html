@@ -48,7 +48,7 @@
               {{ .Summary }}
             </p>
             <a href="{{ .RelPermalink }}" class="mt-6 text-center md:text-left">
-              <button class="w-full md:w-40 h-10 md:h-16 border-2 text-sm md:text-lg font-semibold text-green-500 hover:text-opacity-75 border-brand rounded-md">
+              <button aria-label="visit" class="w-full md:w-40 h-10 md:h-16 border-2 text-sm md:text-lg font-semibold text-green-500 hover:text-opacity-75 border-brand rounded-md">
                 Read the Doc
               </button>
             </a>
@@ -104,29 +104,29 @@
 {{ end }}
 
 {{ define "home/developer-section"}}
-  <div class="flex">
+  <div class="flex flex-col md:flex-row">
     <div class="flex flex-col space-y-2">
-      <h2 class="text-3 md:text-3xl">
+      <h2 class="text-3 md:text-3xl mb-4">
         API
       </h2>
-      <div class="flex space-x-2">
-        <div>
+      <div class="flex space-x-2 justify-center">
+        <div class="w-1/2 md:w1/4">
           {{ template "home/developer-section-tile" (dict "href" "/docs/api/" "title" "API Reference" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
-        <div>
+        <div class="w-1/2 md:w1/4">
           {{ template "home/developer-section-tile" (dict "href" "/docs/sections/docs/platform/api/" "title" "API Guides" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
       </div>
     </div>
-    <div class="flex flex-col space-y-2">
-      <h2 class="text-3 md:text-3xl">
+    <div class="flex flex-col space-y-2 mt-8 md:mt-0">
+      <h2 class="text-3 md:text-3xl mb-4">
         Developers
       </h2>
-      <div class="flex space-x-2">
-        <div>
+      <div class="flex space-x-2 justify-center">
+        <div class="w-1/2 md:w1/4">
           {{ template "home/developer-section-tile" (dict "href" "https://developers.linode.com/changelog/" "title" "Changelog" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
-        <div>
+        <div class="w-1/2 md:w1/4">
           {{ template "home/developer-section-tile" (dict "href" "https://developers.linode.com/libraries-tools" "title" "Resource & Tools" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
       </div>
@@ -136,17 +136,17 @@
 
 {{ define "home/developer-section-tile" }}
   <div class="kind-home__tile">
-    <a class="h-64 w-64 flex items-center rounded-lg text-gray-700" href="{{ .href }}">
+    <a class=" md:h-64 md:w-64 py-4 flex items-center rounded-lg text-gray-700" href="{{ .href }}">
       <div class="flex flex-col justify-center w-full">
         <div class="w-full flex justify-center mb-8">
           <svg class="w-24 h-24">
             <use href="#{{ .svgRef }}"></use>
           </svg>
         </div>
-        <h3 class="text-center text-lg mb-2" style="letter-spacing: -0.2px;">
+        <h3 class="text-center text-xl md:text-lg mb-2" style="letter-spacing: -0.2px;">
           {{ .title }}
         </h3>
-        <span class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;">
+        <span class="text-center text-basicgray text-base md:text-sm" style="letter-spacing: -0.3px;">
           {{ .count }} Docs
         </span>
       </div>
@@ -221,7 +221,7 @@
         </div>
       </div>
       <div class="flex flex-no-wrap content-start w-full mt-7">
-        <button x-bind:disabled="!data.productTiles.hasPrev()"
+        <button aria-label="previous" x-bind:disabled="!data.productTiles.hasPrev()"
       class="btn-icon -ml-10 w-10 hidden md:block" @click="data.productTiles.prev()">
           <svg class="w-3" style="display: block; transform: scale(-1,1)" >
             <use href="#icon--arrow-right"></use>
@@ -238,7 +238,7 @@
             </template>
           </template>
         </div>
-        <button class="ml-8 -mr-10 object-right btn-icon hidden md:block" 
+        <button aria-label="next" class="ml-8 -mr-10 object-right btn-icon hidden md:block" 
        @click="data.productTiles.next()" x-bind:disabled="!data.productTiles.hasNext()">
           <svg class="w-3">
             <use href="#icon--arrow-right"></use>
@@ -254,7 +254,7 @@
     <div class="bg-white h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg">
       <a :href="item.href" class="no-underline block">
         <div class="relative overflow-hidden pb-16/9">
-          <img :src="item.thumbnailUrl" class="absolute h-full w-full object-cover" loading="lazy">
+          <img :src="item.thumbnailUrl" alt="Article image" class="absolute h-full w-full object-cover" loading="lazy">
         </div>
         <div class="px-4 pt-4 pb-6">
           <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg text-gray-700" x-html="item.title"></h3>
@@ -278,7 +278,7 @@
   {{ template  "home/section-title" . }}
   {{ $section := .section }}
   <div class="flex flex-no-wrap content-start w-full mt-8">
-    <button  x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
+    <button aria-label="previous" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
            @click="data.sectionTiles.{{ $section }}.prev()">
       <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
         <use href="#icon--arrow-right"></use>
@@ -303,7 +303,7 @@
         </template>
       </template>
     </div>
-    <button x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"
+    <button aria-label="next" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"
       class="btn-icon ml-8 -mr-10 object-right" @click="data.sectionTiles.{{ $section }}.next()">
       <svg class="w-3">
         <use href="#icon--arrow-right"></use>

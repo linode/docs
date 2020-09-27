@@ -6,7 +6,7 @@
         <li class="cursor-pointer navbar__row bg-white border-b-gray">
           <div class="hide-if-topbar-is-pinned md:hidden h-full pr-container">
             <div class="flex items-center h-full justify-end md:hidden">
-              <button type="button" class="btn-icon">
+              <button aria-label="open" type="button" class="btn-icon">
                 <svg class="fill-current w-5 h-5" :class="{'text-brand': open, 'text-titlecolor': !open}">
                   <use href="#icon--book"></use>
                 </svg>
@@ -23,7 +23,7 @@
               <template x-if="showHeading && activeHeading.title !== ''">
                 <div class="font-semibold text-titlecolor text-xs tracking-wide md:tracking-widest md:text-sm truncate w-48" x-html="activeHeading.title"></div>
               </template>
-              <button type="button" class="btn-icon">
+              <button :aria-label="open ? 'close' : 'open'" type="button" class="btn-icon">
                 <template x-if="!open">
                   <div class="pl-2 pr-7">
                     <svg class="text-titlecolor h-4 w-4">

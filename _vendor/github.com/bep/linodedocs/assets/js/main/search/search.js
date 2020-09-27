@@ -66,8 +66,8 @@ class Searcher {
 		queries,
 		handleData,
 		handleError = (error) => {
-			console.log(error);
 			this.onError(error);
+			throw error;
 		}
 	) {
 		fetch(this.urlQueries, {

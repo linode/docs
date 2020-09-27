@@ -12,13 +12,13 @@
       'explorer__node--after-first': data.node.level > 1,
       'pl-10': data.node.level === 2
     }" x-show.transition.200ms="show()" @search:facetfilters.document="applyFacetFilters($event.detail)" @search:toggle-node.document="receiveToggledOpen($event.detail);"
-      @search:toggle-node="receiveToggledOpenDescendant($event.detail);" :data-cy="`li-${ data.node.level }`">
-      <div x-bind:class="{
+      @search:toggle-node="receiveToggledOpenDescendant($event.detail);" :data-testid="`li-${ data.node.level }`" >
+      <div class="explorer__node__inner" x-bind:class="{
         'border-l-2 ml-2': data.node.level > 1,
         'border-gray-500': showBorder2(),
         'border-brand': showBorder1(),
         'border-l-transparent': (!showBorder1() && !showBorder2())
-      }">
+      }" :data-testid="`node-${ data.node.key }`">
         <div x-bind:class="{ 
       'explorer__row--first pl-container bg-white border-b-gray text-gray-900' : (data.node.level===1), 
       'bg-gray-300': showBorder1(),
@@ -58,8 +58,8 @@
               <div class="w-3"></div>
             </template>
             <div class="z-10" x-show="!data.disabled && !data.node.isLeaf()">
-              <button type="button" class="btn-icon h-full flex items-center justify-center" x-bind:class="{ 'text-gray-200': data.node.disabled, 'text-textcolor': !data.node.disabled }"
-                @click.stop="toggleOpen()" @mouseover.once.stop="loadPages()" :data-cy="`open-${ data.node.level }`">
+              <button type="button" name="open" class="btn-icon h-full flex items-center justify-center" x-bind:class="{ 'text-gray-200': data.node.disabled, 'text-textcolor': !data.node.disabled }"
+                @click.stop="toggleOpen()" @mouseover.once.stop="loadPages()" :data-testid="`open-${ data.node.level }`">
                 <svg class="w-4 h-3 titlecolor" x-show="!data.open">
                   <use href="#icon--arrow-down"></use>
                 </svg>

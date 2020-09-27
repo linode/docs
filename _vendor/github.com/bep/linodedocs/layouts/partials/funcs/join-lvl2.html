@@ -18,7 +18,12 @@ This partial is meant to be used with partialCached.
   {{ errorf "Must provide the key path as the argument (on the form lvl1/lvl2)"}}
 {{ end }}
 
-{{ $keyParts := split $path "/" }}{{ $base := "" }}{{ $key1 := index $keyParts 0 }}{{ $key2 := index $keyParts 1 }}{{ $m := newScratch }}{{ $pages := index (partialCached "funcs/join-lvl1.html" $key1 $key1) $path }}
+{{ $keyParts := split $path "/" }}
+{{ $base := "" }}
+{{ $key1 := index $keyParts 0 }}
+{{ $key2 := index $keyParts 1 }}
+{{ $m := newScratch }}
+{{ $pages := index (partialCached "funcs/join-lvl1.html" $key1 $key1) $path }}
 {{ range $i, $p := $pages }}
   {{ $r := index .Params.relations $key1 }}
   {{ with $r }}

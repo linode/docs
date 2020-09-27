@@ -6,6 +6,6 @@ require (
 	github.com/bep/hugo-jslibs/alpinejs v0.5.14 // indirect
 	github.com/bep/hugo-jslibs/instantpage v0.0.0-20200822093604-7b6e0aaba587 // indirect
 	github.com/bep/hugo-jslibs/turbolinks v0.1.2 // indirect
-	github.com/bep/linodedocs v0.0.0-20200925154737-f6c1c8cba967
+	github.com/bep/linodedocs v0.0.0-20200927121301-96d8e6ab5ee3
 	github.com/linode/linode-api-docs v4.73.0+incompatible // indirect
 )

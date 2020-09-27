@@ -1,6 +1,7 @@
 {{ $platform := .Params.relations.platform }}
 {{ if $platform }}
-  {{ $joined := partialCached "funcs/join-lvl2.html" (printf "platform/%s" $platform.key) }}
+  {{ $key := (printf "platform/%s" $platform.key) }}
+  {{ $joined := partialCached "funcs/join-lvl2.html" $key $key}}
   <div class="flex flex-wrap justify-start">
     {{ $basePath := "" }}
     {{ $nestedPath := "" }}
