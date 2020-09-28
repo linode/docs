@@ -75,7 +75,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 After WordPress has finished installing, you can access your WordPress site by copying your Linode's IPv4 address and entering it in the browser of your choice. If you've set up DNS during installation, you can go to your domain name in the browser. To find your Linode's IPv4 address:
 
-1. Click on the **Linodes** link in the sidebar. You see a list of all your Linodes.
+1. Click on the **Linodes** link in the sidebar to see a list of all your Linodes.
 
 1. Find the Linode you just created when deploying your app and select it.
 
