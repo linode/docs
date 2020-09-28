@@ -154,7 +154,6 @@ li.weglot-hide,
   width: 13px;
   height: 7px;
   -ms-interpolation-mode: nearest-neighbor;
-      image-rendering: -moz-crisp-edges;
       image-rendering: pixelated;
   content: "";
   transition: all 200ms;
@@ -482,7 +481,14 @@ body.admin-bar .c-site-header {
   transform: translateY(-100px);
   transition: opacity .175s ease-out, transform .25s ease-out;
   will-change: position, transform;
+  display: initial;
   padding-top: 108px;
+}
+
+@media (max-width: 61.99em) {
+  .c-sub-menu {
+    display: none;
+  }
 }
 
 .c-sub-menu.active {
@@ -705,11 +711,18 @@ body.admin-bar .c-site-header {
 }
 
 .c-sub-menu--mobile {
+  display: none;
   font-size: 18px;
   line-height: 1.33333;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   letter-spacing: 0;
+}
+
+@media (max-width: 61.99em) {
+  .c-sub-menu--mobile {
+    display: initial;
+  }
 }
 
 .c-sub-menu--mobile .o-layout__colset {

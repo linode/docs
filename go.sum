@@ -1,3 +1,4 @@
+github.com/SimoTod/alpine-turbolinks-adapter v0.3.0/go.mod h1:KebmHFXD933AzXtw24J3MbhcN7lrdMvIbmU3H7sex+M=
 github.com/alpinejs/alpine v2.5.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/alpinejs/alpine v2.6.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/alpinejs/alpine v2.7.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
@@ -54,14 +55,19 @@ github.com/bep/linodedocs v0.0.0-20200927121301-96d8e6ab5ee3 h1:tUQprEmKvPrUA2eP
 github.com/bep/linodedocs v0.0.0-20200927121301-96d8e6ab5ee3/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
 github.com/bep/linodedocs v0.0.0-20200927152305-45ecda66f5e0 h1:oE3rUtbWHBYhctHw79/fw1hmgOLFX7IlTNxEsWKKHuc=
 github.com/bep/linodedocs v0.0.0-20200927152305-45ecda66f5e0/go.mod h1:aO5BIS0rbuZkNsAEn4A2084hu6apCqFAd823pWP/jQk=
+github.com/bep/linodedocs v0.0.0-20200928093229-3bd4ecbc3363 h1:lAZEbzl4R7kEayxkkL77H/J6j93iM9QmnG38Efp5/b4=
+github.com/bep/linodedocs v0.0.0-20200928093229-3bd4ecbc3363/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
+github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=
 github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1/go.mod h1:N4EUbbL7Cw4Yq+GHeK3MUSiOJQbzfuUFRyvBKvnVBR8=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.5.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
+github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.6.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
 github.com/instantpage/instant.page v5.1.0+incompatible/go.mod h1:GXVDktwI+K4T9o5mcK2NYDqPFxAUrB9U9goR9oG1SaI=
 github.com/linode/linode-api-docs v0.16.17 h1:2oWsvh2q3IYmaxy1XUBN64NH2FRhwdceD9gwlX5mlBA=
 github.com/linode/linode-api-docs v0.16.17/go.mod h1:mTkxejkk3Y6N4IfEQRGb1xC0EOPl12bWNWt3PzAUD7g=
 github.com/linode/linode-api-docs v4.73.0+incompatible h1:KT1fyjk4X9hqw4A1hv6wVHr3I1Ewihi5orjvonzHcfM=
 github.com/linode/linode-api-docs v4.73.0+incompatible/go.mod h1:mTkxejkk3Y6N4IfEQRGb1xC0EOPl12bWNWt3PzAUD7g=
 github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
+github.com/linode/linode-website-partials v0.0.0-20200921210751-887bbecdd5dd/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible/go.mod h1:Cl0Br9tUXkQvxumVNGTvyaa7dqpFC2kPMrsS0Ttc94U=

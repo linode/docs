@@ -103,7 +103,7 @@
     for (var i = 0; i < $header_links.length; i++) {
       // strip the URL string and/or fragment identifier
       var $link = $header_links[i];
-      var href_path = $link.href.split(/[?]/)[0]; // skip if not a match
+      var href_path = $link.getAttribute('href').split(/[?]/)[0]; // skip if not a match
 
       if (!href_path.endsWith(current_path)) {
         continue;

@@ -10,7 +10,7 @@ var lnSearchFilters = {};
 		var dispatcher = lnSearchEventDispatcher.New();
 
 		const applySearchFiltersFromLocation = function(self) {
-			return applySearchFiltersFromSearchParams(self, indow.location.hash.slice(1));
+			return applySearchFiltersFromSearchParams(self, window.location.hash.slice(1));
 		};
 
 		const applySearchFiltersFromSearchParams = function(self, searchParams) {

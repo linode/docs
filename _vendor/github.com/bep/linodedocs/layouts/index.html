@@ -1,6 +1,11 @@
 {{ define "head" }}
+  {{/* Turbolinks previews does not work that well for pages with lots of JS rendered content. */}}
   <meta name="turbolinks-cache-control" content="no-preview">
 {{ end }}
+
+{{- define "body-class" -}}
+  x-cloak
+{{- end -}}
 
 {{ define "main" }}
   {{/* Set up the static content shown on this page. See content/headless/home for the queries. */}}
