@@ -2,15 +2,6 @@
   <div class="hidden sm:block">
     {{ partial "sections/content/tags.html" .page }}
   </div>
-  
-  {{ with .page.Description }}
-    <div class="py-4">
-      <p class="text-textcolor leading-tight">
-        {{ . }}
-      </p>
-    </div>
-  {{ end }}
-  
   {{ $borderBottomImage := "media/images/ui/border-b-gray.png" | relURL }}
   {{ $mainNavPartial := "sections/content/other-versions.html" }}
   {{ if .mainNavPartial }}
