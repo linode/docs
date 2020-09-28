@@ -668,6 +668,7 @@ jenkinsfile
 jenkinsx
 jetpack
 jez
+jitsi
 jk
 jks
 jobd
