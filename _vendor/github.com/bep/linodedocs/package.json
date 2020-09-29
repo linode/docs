@@ -11,6 +11,8 @@
 		"autoprefixer": "~9.7.6",
 		"core-js": "^3.6.5",
 		"postcss-cli": "^7.1.1",
-		"tailwindcss": "~1.7.3"
+		"tailwindcss": "~1.7.3",
+		"cypress": "^5.2.0",
+		"cypress-axe": "^0.8.1"
 	}
 }

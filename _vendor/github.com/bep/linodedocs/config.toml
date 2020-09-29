@@ -1,4 +1,7 @@
 
+[params]
+weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
+
 [module]
 [[module.mounts]]
 source = "content"
