@@ -26,7 +26,7 @@ tab_group_main:
 
 - [Creating a MongoDB Cluster from the Marketplace](https://www.linode.com/community/questions/19677/creating-a-mongodb-cluster-from-the-marketplace)
 
-- [How do I see the stackscript behind a marketplace app?](https://www.linode.com/community/questions/19690/how-do-i-see-the-stackscript-behind-a-marketplace-app)
+- [How do I see the StackScript behind a marketplace app?](https://www.linode.com/community/questions/19690/how-do-i-see-the-stackscript-behind-a-marketplace-app)
 
 - [Rust-OneClick](https://www.linode.com/community/questions/19877/rust-oneclick)
 

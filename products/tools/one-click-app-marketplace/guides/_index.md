@@ -6,13 +6,13 @@ tab_group_main:
 
 ## Building Blocks
 
-This introductory guide to the Linode’s One-Click Apps will get you up and running with this easy-to-use service.
+Review these introductory guides to Linode’s One-Click Apps to get up and running with the service.
 
 ### One-Click Marketplace Basics
 
 - [Deploying an App](/docs/products/tools/one-click-app-marketplace/guides/one-click-deploy-app): Quickly deploy an app from the Cloud Manager.
 
-- [Access Your App](/docs/products/tools/one-click-app-marketplace/guides/one-click-access-app): Access to your application will depend on what you deployed, but you will likely need the IP address. Here’s how you find it.
+- [Access Your App](/docs/products/tools/one-click-app-marketplace/guides/one-click-access-app): Access to your application depends on what you deployed, but the app's IP address is likely required. Here’s how you find it.
 
 - [Add a Domain Name](/docs/products/tools/one-click-app-marketplace/guides/one-click-add-domain-name): Add a domain name for your application.
 
@@ -20,7 +20,7 @@ For more on getting started with Linode’s One-Click Marketplace see the guide 
 
 ## Themes
 
-These additional guides will help you deploy each of Linode’s One-Click apps in the Marketplace.
+These additional guides help you deploy each of Linode’s One-Click apps in the Marketplace.
 
 ### Control Panels
 
