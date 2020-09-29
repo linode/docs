@@ -41,13 +41,20 @@ For a more detailed information on PMM's architecture see [Percona's official do
 
 {{< content "deploy-one-click-apps">}}
 
+### Percona (PMM) Options
+
+| **Configuration** | **Description** |
+|--------------|------------|
+| **Admin Password** | The password you will use to log in to the monitoring dashboard. *Required*. |
+
+
 ### Linode Options
 
 The following configuration options are possible for your Linode server:
 
 | **Configuration** | **Description** |
 |--------------|------------|
-| **Select an Image** | Debian 10 and Ubuntu 20.04 are currently the only images supported by the Percona (PMM) One-Click App. *Required*. |
+| **Select an Image** | Debian 10 is currently the only image supported by the Percona (PMM) One-Click App. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Percona recommends roughly 1 GB of storage on your PMM Server for each database node you would like to monitor. For more information on Percona's system requirements see their [official documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#what-are-the-minimum-system-requirements-for-pmm). If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
@@ -92,11 +99,7 @@ After the [PMM Server](https://www.percona.com/doc/percona-monitoring-and-manage
     | **Entry** | **Default Value** |
     |:---:|:---:|
     | Username | admin |
-    | Password | admin |
-
-  1. Next you will be prompted to configure a new password. Enter a new password, confirm it, then select **Save**:
-
-    ![Change Grafana Password Prompt](grafana-change-password.png "Change Grafana Password Prompt.")
+    | Password | The admin password you selected when you create the app. |
 
   1. You will then see the PMM Home Dashboard actively monitoring your server:
 
