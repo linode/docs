@@ -17,11 +17,11 @@ tags: ["linode platform"]
 
 Deploying one of your saved images to any Linode under your account is a simple process.
 
-1.  Navigate to the **Images** page, click on the **more options ellipsis** to open the menu for the Image from which you would like to deploy, and select **Deploy New Linode**.
+1.  Navigate to the **Images** page, click on the **more options ellipsis** corresponding to the image you'd like to use, and select **Deploy New Linode**.
 
     ![Select 'Deploy New Linode' from the Image menu](images-select-deploy-from-menu.png "Select 'Deploy New Linode' from the Image menu")
 
-1.  Select your Image from *My Images* under the *Create from Image* tab.
+    You are brought to the **Lionde Create** page where your image is preselected.
 
     ![Select your Image from the 'My Images' tab](images-create-linode-from-image.png "Select your Image from the 'My Images' tab")
 
@@ -29,8 +29,6 @@ Deploying one of your saved images to any Linode under your account is a simple 
 You cannot deploy an image that was created from a RAW disk format. Attempting to do so will result in a failure.
 {{< /caution >}}
 
-1.  Select your desired Region, Linode Plan, Label, and set your root password, then click **Create** to create a Linode with your saved image.
+1.  Provide the remaining configurations for your new Linode instancy by selecting your desired **Region**, **Linode Plan**, **Label**, and set your **Root Password**, then click **Create** to create a Linode from your saved image.
 
-    ![A new Linode has been created from a disk](images-master-from-image.png "A new Linode has been created from a disk")
-
-Once you've completed these steps, your saved image will be deployed on your new Linode.
+    You are brought to your new Linode's Details page where you can monitor its creation from your stored image.

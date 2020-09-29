@@ -15,10 +15,16 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
-Linode Images captures an exact copy of your disk at the moment when the process is kicked off. Here's how to capture your first image.
+Linode Images captures an exact copy of your disk at the moment when the process is kicked off. This section shows you how to create an image from an existing Linode.
 
 {{< note >}}
-While an image can be captured while your Linode is running, we would recommend shutting your Linode down first if you are running any active databases. Capturing an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
+- If your Linode is running any active databases, we recommend shutting your Linode down prior to capturing your image. Capturing an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
+
+- Linode Images are limited to 6144MB of data per disk. Ensure that the data within your disk does not exceed this size limit.
+
+- Linode Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems.
+
+- When an image is created, it is the smallest possible size based on the data present on the disk rather than the full Disk Allocation.
 {{< /note >}}
 
 1.  Navigate to your the Images page in the Linode Cloud Manager and select **Add an Image**.
@@ -30,14 +36,11 @@ While an image can be captured while your Linode is running, we would recommend 
     ![Create an Image menu](images-create-image-menu.png "Create an Image menu")
 
     {{< caution >}}
-CoreOS disk images are in RAW format. Images made from CoreOS disks will not be able to be used to deploy new Linodes.
+CoreOS disk images are in RAW format. Images made from CoreOS disks can't be used to deploy new Linodes.
 {{< /caution >}}
 
-1.  Once you click the **Create** button, your image will be frozen for later use. You can view the progress under the bell notifications at the top of the page.
+1.  Once you click the **Create** button, your image is frozen for later use. You can view the progress under the bell notifications at the top of the page.
 
     ![Image creation status under the bell notifications](images-image-being-created.png "Image creation status under the bell notifications")
 
-    {{< note >}}
-Linode Images are limited to 6144MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit. Additionally, Linode Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems. Additionally, the Image will be the smallest possible size based on the data present on the disk rather than the full Disk Allocation. {{< /note >}}
-
-    Once the job has completed, your Linode's disk has been captured and stored.
+    Once the job has completed, your Linode's disk is captured, stored, and can be used to [deploy new Linode instances from your saved image](/docs/products/tools/images/guides/deploy-from-a-saved-image/).

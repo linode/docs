@@ -15,12 +15,12 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
-The images captured from your Linodes are stored for future usage, and can be modified or removed at any time.
+The images captured from your Linodes are stored for future usage. This section shows you how to access your Linode Images for editing or deleting.
 
 1.  Click on the **Images** link in the sidebar.
 
     ![Manage your Images](images-manage-images.png "Manage your Images")
 
-1.  From this page, you can delete existing disks, edit labels and descriptions, and deploy Linodes from disk images.
+1.  From this page, you can select any image's **more options ellipsis** menu for options to delete the image, edit its label and description, and [deploy a new Linode from the image](/docs/products/tools/images/guides/deploy-from-a-saved-image/).
 
     ![Select the Image menu](images-edit-image-menu.png "Select the Image menu")
