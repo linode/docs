@@ -41,13 +41,6 @@ For a more detailed information on PMM's architecture see [Percona's official do
 
 {{< content "deploy-one-click-apps">}}
 
-### Percona (PMM) Options
-
-| **Configuration** | **Description** |
-|--------------|------------|
-| **Hostname** | The [hostname](https://www.linode.com/docs/getting-started/#set-the-hostname) to assign to your new Linode. *Required*. |
-
-
 ### Linode Options
 
 The following configuration options are possible for your Linode server:
