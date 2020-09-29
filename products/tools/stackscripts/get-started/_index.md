@@ -8,7 +8,7 @@ tab_group_main:
 
 1. Log into the Linode Cloud Manager.
 
-2. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the StackScripts page.
+2. Click on the **StackScripts** link in the left-hand navigation menu. You are brought to the StackScripts page.
 
 3. Viewing the **Account StackScripts** section, click on the Create New StackScript link at the top of the page.
 

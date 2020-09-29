@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide will provide you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
-og_description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide will provide you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
+description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide provides you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
+og_description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide provides you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
 keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,15 +18,21 @@ contributor:
 ---
 ## What are StackScripts?
 
-[StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of Linode's default Linux distribution images. For example, every time you deploy a new Linode you might execute the same tasks, like updating your system's software, installing your favorite Linux tools, and adding a limited user account. These tasks can be automated using a StackScript that will perform these actions for you as part of your Linode's first boot process.
+[StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of Linode's default Linux distribution images. For example, every time you deploy a new Linode you might execute the same tasks, including:
+
+- Updating your system's software
+- Installing your favorite Linux tools
+- Adding a limited user account
+
+These tasks can be automated using a StackScript that performs these actions for you as part of your Linode's first boot process.
 
 All StackScripts are stored in the Linode Cloud Manager and can be accessed whenever you deploy a Linode. A StackScript authored by you is an *Account StackScript*. While a *Community StackScript* is a StackScript created by a Linode community member that has made their StackScript publicly available in the Linode Cloud Manager.
 
 ## In this Guide
 
-Writing a script for use in a StackScript will generally be the same as writing a script that will be executed from the command line or another program. This guide includes information about the StackScript system, including the following:
+Writing a script for use in a StackScript is generally the same as writing a script that is executed from the command line or another program. This guide includes information about the StackScript system, including the following:
 
--  [Base requirements for any script that will be used as a StackScript](#stackscript-requirements).
+-  [Base requirements for any script that is used as a StackScript](#stackscript-requirements).
 -  [Importing an existing StackScript into your own script for code reuse](#import-a-stackscript).
 -  [Accessing a StackScript's ID number](#access-a-stackscript-s-id-number).
 -  [Incorporating user defined fields (UDFs) into your scripts to allow for custom behavior when deploying a new Linode with a StackScript](#user-defined-fields-udfs).
@@ -58,7 +64,7 @@ Linode images are created using "vanilla" versions of its given distribution. Co
 
 Your scripts can import any Account StackScript that you own or any Community StackScript. This allows you to reuse code minimizing what you need to write in your own scripts.
 
-- The example below shows the syntax to import another StackScript. As a result of including this line in a script, the imported StackScript will be downloaded as `ssinclude-[NUMBER]` to your Linode. However, it must be run in order to execute its contents.
+- The example below shows the syntax to import another StackScript. As a result of including this line in a script, the imported StackScript is downloaded as `ssinclude-[NUMBER]` to your Linode. However, it must be run in order to execute its contents.
 
     {{< file >}}
 <ssinclude StackScriptID="[NUMBER]">
@@ -89,23 +95,23 @@ Follow the steps in this section to find the ID number of a StackScript.
 
 1. Log into the [Linode Cloud Manager](https://cloud.linode.com/).
 
-1. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the *StackScripts* page.
+1. Click on the **StackScripts** link in the left-hand navigation menu. You are brought to the *StackScripts* page.
 
       ![Click on the StackScripts link in the left-hand navigation menu.](stackscripts-sidebar-link.png)
 
 1. Click on the **Account StackScripts** tab or the **Community StackScripts** tab, depending on the type of StackScript whose ID you'd like to find
 
-1. Click on the StackScript whose ID you'd like to access. This will bring you to its **StackScript detail page**.
+1. Click on the StackScript whose ID you'd like to access. This brings you to its **StackScript detail page**.
 
     ![View the details and contents of an Account StackScript.](access-stackscript-detail-page.png)
 
-1. The StackScript detail page's URL will display the StackScript's ID number. You can now use this number to [import the StackScript](#import-a-stackscript) into your own script.
+1. The StackScript detail page's URL displays the StackScript's ID number. You can now use this number to [import the StackScript](#import-a-stackscript) into your own script.
 
     ![Access a StackScript's ID number.](access-stackscript-id-number.png)
 
 ### User Defined Fields (UDFs)
 
-The StackScript system provides a basic markup specification that interfaces with the Linode deployment process so that users can customize the behavior of a StackScript on a per-deployment basis. When a StackScript contains a user defined field (UDF), the Linode Cloud Manager will present the UDF as a form field, so a user can insert a corresponding custom value. The values and their related variables are inserted into the script's environment when used to deploy a new Linode.
+The StackScript system provides a basic markup specification that interfaces with the Linode deployment process. This syntax allows users to customize the behavior of a StackScript on a per-deployment basis. When a StackScript contains a *user defined field (UDF)*, the Linode Cloud Manager presents the UDF as a form field. The user can then insert a corresponding custom value into the field. The values and their related variables are inserted into the script's environment when used to deploy a new Linode.
 
 - Use the following format to insert a UDF tag into a StackScript.
 
@@ -125,10 +131,10 @@ The UDF tags are commented out to prevent execution errors, as the StackScript s
 If you would like to create a masked password input field, use the word `password` anywhere in the UDF `name` attribute.
     {{< /note >}}*required*.    | String. Alphanumeric and underscore, length must be less than 64 characters, and the name must be unique within the StackScript. |
     |*label*    | The form field's label to present to a user in the Linode Cloud Manager. *required*.| String.
-    |*default*  | The UDF's default value. If no value is specified by the user, the default value will be used when deploying a new Linode with the StackScript.     | String. |
+    |*default*  | The UDF's default value. If no value is specified by the user, the default value is used when deploying a new Linode with the StackScript.     | String. |
     |*example*  | An example input value to present to a user in the Linode Cloud Manager.| String. |
-    |*oneof*      | A comma separated list of acceptable single values for the field. When this attribute is provided, a dropdown menu will be presented to a user with a list of values to choose from within the Linode Cloud Manager. Only one value can be selected by the user. If your StackScript uses the *oneof* attribute, you cannot use the *manyof* attribute.| Comma separated list of strings. |
-    |*manyof*     | A comma separated list of acceptable values for the field in any quantity, combination, or order. When this attribute is used, a dropdown menu will be presented to a user with a list of acceptable values they can choose from with the Linode Cloud Manager. Multiple values can be selected by the user.  If your StackScript uses the *manyof* attribute, you cannot use the *oneof* attribute. | Comma separated list of strings. |
+    |*oneof*      | A comma separated list of acceptable single values for the field. When this attribute is provided, a dropdown menu is presented to a user with a list of values to choose from within the Linode Cloud Manager. Only one value can be selected by the user. If your StackScript uses the *oneof* attribute, you cannot use the *manyof* attribute.| Comma separated list of strings. |
+    |*manyof*     | A comma separated list of acceptable values for the field in any quantity, combination, or order. When this attribute is used, a dropdown menu is presented to a user. The menu lists the acceptable values they can choose from with the Linode Cloud Manager. Multiple values can be selected by the user. If your StackScript uses the *manyof* attribute, you cannot use the *oneof* attribute. | Comma separated list of strings. |
 
 ### Default Environment Variables
 
@@ -143,7 +149,7 @@ Linode StackScripts provide a set of default environment variables that you can 
 
 {{< disclosure-note "Set your Environment Variables Using an External File" >}}
 
-It is possible to set your script's environment variables using externally hosted files. The example Bash script uses the wget utility to download two files named `base.env` and `$IPADDR.env` from the external site `http://example.com/`. The `source` command will load the downloaded files into the script.
+It is possible to set your script's environment variables using externally hosted files. The example Bash script uses the wget utility to download two files named `base.env` and `$IPADDR.env` from the external site `http://example.com/`. The `source` command loads the downloaded files into the script.
 
 {{< file "StackScript" bash >}}
 # [...]

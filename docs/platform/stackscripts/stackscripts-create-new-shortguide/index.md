@@ -16,7 +16,7 @@ show_on_rss_feed: false
 
 1. Log into the [Linode Cloud Manager](https://cloud.linode.com/).
 
-1. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the *StackScripts* page.
+1. Click on the **StackScripts** link in the left-hand navigation menu. You are brought to the *StackScripts* page.
 
       ![Click on the StackScripts link in the left-hand navigation menu](stackscripts-sidebar-link.png "Click on the StackScripts link in the left-hand navigation menu")
 
@@ -65,7 +65,7 @@ echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
 {{< /file >}}
     {{</ disclosure-note >}}
 
-1. Click **Save** when you are done. You can always edit your script later if needed. You will be brought back to the **StackScripts** page, where your new StackScript will be visible and ready to use with a new Linode deployment.
+1. Click **Save** when you are done (and you can always edit your script later if needed). You are brought back to the **StackScripts** page, where your new StackScript is visible and ready to use with a new Linode deployment.
 
     {{< note >}}
 To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/#deploy-a-linode-from-an-account-stackscript) guide.

@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides to StackScripts will help you to quickly deploy using this service.
+These introductory guides to StackScripts help you quickly deploy use the service.
 
 - [Create a New Linode Using StackScripts](/docs/products/tools/stackscripts/guides/stackscripts-create-linode): Create a new Linode using a deployment script.
 
@@ -20,7 +20,7 @@ These introductory guides to StackScripts will help you to quickly deploy using 
 
 ## Themes
 
-These additional guides in our library will help you to edit and deploy stackscripts in a higher level of detail.
+These additional guides in our library help you edit and deploy StackScripts in a higher level of detail.
 
 - [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/)
 
