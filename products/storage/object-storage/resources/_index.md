@@ -28,7 +28,7 @@ tab_group_main:
 
 ## Community Posts
 
-- [Hierarchical Key for linode object storage](https://www.linode.com/community/questions/19284/hierarchical-key-for-linode-object-storage)
+- [Hierarchical Key for Linode Object Storage](https://www.linode.com/community/questions/19284/hierarchical-key-for-linode-object-storage)
 
 - [Backing up Object Storage and downloading all files in OBJ bucket](https://www.linode.com/community/questions/19781/backing-up-object-storage-and-downloading-all-files-in-obj-bucket)
 
@@ -48,7 +48,7 @@ tab_group_main:
 
 - [Does s3cmd or the linode-cli support the ability to save a stream as an object the way the AWS utility’s s3 subcommand does?](https://www.linode.com/community/questions/19706/does-s3cmd-or-the-linode-cli-support-the-ability-to-save-a-stream-as-an-object-t)
 
-Browse our Linode Community Questions & Answers page for more related questions.
+Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=object+storage).
 
 ## Customer Stories
 

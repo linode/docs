@@ -21,8 +21,8 @@ Linode Backups is a managed service that automatically backs up your Linode disk
 
 ### Easy & Configurable
 
-Enable the Backup Service with a single click. It activates instantly, and your first backups will be automatically scheduled. No software to install or configure. You can choose when your Linode backups are generated. Select a two-hour window that suits you.
+Enable the Backup Service with a single click. It activates instantly, and your first backups are automatically scheduled. No software to install or configure. You can choose when your Linode backups are generated. Select a two-hour window that suits you.
 
 ## Pricing
 
-Block Storage pricing may be viewed on the [Linode Pricing](https://www.linode.com/pricing/#row--storage) page.
+Backup pricing may be viewed on the [Linode Pricing](https://www.linode.com/pricing/#row--storage) page.

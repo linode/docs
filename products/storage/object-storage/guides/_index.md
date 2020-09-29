@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides to Linode Object Storage will get you up and running; consider some common use cases; pricing; and show you how to access your objects.
+These introductory guides to Linode Object Storage help get you up and running with the service:
 
 - [Enable Object Storage](/docs/products/storage/object-storage/guides/enable/): Object Storage is not enabled by default; you can enable it in Cloud Manager.
 
@@ -26,7 +26,7 @@ These introductory guides to Linode Object Storage will get you up and running; 
 
 ## Themes
 
-These additional guides will help you with targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
+These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
 
 ### Object Storage Basics
 

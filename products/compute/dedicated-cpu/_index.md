@@ -22,4 +22,4 @@ Hypervisor resources for Dedicated CPU Linodes are not shared. The vCPU threads 
 
 ## Pricing
 
-Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for Shared Linode costs.
+Review the [Pricing page](https://www.linode.com/pricing/#row--dedicated) for Dedicated CPU Linode costs.

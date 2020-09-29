@@ -12,8 +12,8 @@ You can attach a Block Storage Volume to an existing Linode. Storage Volumes can
 1. Select the Linode to which you want to attach a Block Storage Volume from the Linode Detail page.
 1. Click on the Volumes tab, then click on the Add a Volume button.
 1. Select “Create and Attach Volume” to create a new Volume and assign it a unique label and storage size. Then, click submit.
-1. Once you add a Volume it will appear under your Linode’s Volumes tab with the new Volume’s label, size, and file system path.
-1. Create a filesystem in your new Volume and mount it to your Linode. This will require you to SSH into your booted Linode. These Volume configuration steps will appear in the Cloud Manager’s Volume Configuration panel.
+1. Once you add a Volume it appears under your Linode’s Volumes tab. The new Volume’s label, size, and file system path are displayed.
+1. Create a file system in your new Volume and mount it to your Linode. This requires you to SSH into your booted Linode. These Volume configuration steps appear in the Cloud Manager’s Volume Configuration panel.
 
 
 ## Increase the Size of an Attached Volume
@@ -32,6 +32,6 @@ You can increase the storage capacity of any Block Storage Volume.
 
 1. [Detach your Block Storage Volume](/docs/products/storage/block-storage/guides/detach-volume/) from its current Linode.
 1. Navigate to the “Volumes” section of the Cloud Manager and click on the more options ellipsis next to the Volume you would like to attach to a Linode.
-1. Select “Attach” from the dropdown menu and a panel will appear.
+1. Select “Attach” from the dropdown menu and a panel appears.
 1. From the “Linode” dropdown menu, select the Linode you want the Volume to attach to, and click on “Save”.
-1. Mount the Volume to your Linode. This will require you to SSH into your booted Linode. These Volume configuration steps can be accessed by clicking on the more option ellipsis next to the Volume you are transferring and selecting “Show Configuration”.
+1. Mount the Volume to your Linode. This requires you to SSH into your booted Linode. These Volume configuration steps can be accessed by clicking on the more option ellipsis next to the Volume you are transferring and selecting “Show Configuration”.

@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These how-tos will teach you what you need to know to get started:
+These guides teach you what you need to know to get started:
 
 ### Block Storage Basics
 
@@ -28,7 +28,7 @@ These how-tos will teach you what you need to know to get started:
 
 ## Themes
 
-These additional guides in our library will help you with targeted topics like management, Kubernetes, and using Block Storage with third party applications:
+These additional guides in our library explore targeted topics like management, Kubernetes, and using Block Storage with third party applications:
 
 ### Use Cases
 

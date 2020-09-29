@@ -6,19 +6,17 @@ tab_group_main:
 
 ## Themes
 
-These guides will help you with targeted topics like how to host a website, setting up a web server, and migrating to Linode from other cloud providers.
+These guides explore targeted topics like how to host a website, setting up a web server, and migrating to Linode from other cloud providers.
 
 ### Shared Linode Basics
 
 - [Getting Started with Linode](/docs/getting-started/)
 
-- [Securing Your Server](/docs/security/securing-your-server/)
+- [Securing Your Server](/docs/security/basics/securing-your-server/)
 
 ### Choosing a Linode Plan
 
 - [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#1-shared)
-
-- [Use Cases for Linode Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guides.
 
 ### Hosting a Website
 

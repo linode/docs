@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-- [Install NVIDIA Driver Dependencies](/docs/products/compute/gpu/guides/install-nvidia-driver-dependencies/): Before installing the driver, you’ll need some dependencies.
+- [Install NVIDIA Driver Dependencies](/docs/products/compute/gpu/guides/install-nvidia-driver-dependencies/): Some dependencies need to be installed before the drivers are installed.
 
 - [NVIDIA Driver CUDA Installation](/docs/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/): If you're running Ubuntu 18.04, CentOS 7, or OpenSUSE, install the NVIDIA driver with CUDA.
 
@@ -14,7 +14,7 @@ tab_group_main:
 
 ## Themes
 
-These guides will help you with targeted topics like the basics of GPU Linodes, and how to decide if GPU Linodes are right for you.
+These guides explore targeted topics like the basics of GPU Linodes, and how to decide if GPU Linodes are right for you.
 
 ### GPU Linode Basics
 
@@ -22,7 +22,7 @@ These guides will help you with targeted topics like the basics of GPU Linodes, 
 
 - [Getting Started with Linode](/docs/getting-started/)
 
-- [Securing Your Server](/docs/security/securing-your-server/)
+- [Securing Your Server](/docs/security/basics/securing-your-server/)
 
 ### Choosing a Linode Plan
 
