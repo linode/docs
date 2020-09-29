@@ -6,8 +6,8 @@ tab_group_main:
 
 ## Linode API
 
-One-Click Marketplace applications are deployed in the API via StackScripts.
-[StackScripts Endpoint Collection](/docs/api/stackscripts)
+One-Click Marketplace applications are deployed in the API via the
+[StackScripts Endpoint Collection](/docs/api/stackscripts).
 
 ## Linode CLI
 
