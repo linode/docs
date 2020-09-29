@@ -6,13 +6,19 @@ tab_group_main:
 
 ## Add a Domain
 
-If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
+If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain. Domains can be created and managed in the **Domains** section of the Cloud Manager.
+
+{{< note >}}
+Domains can't be purchased through Linode. Instead, purchase a domain through a domain name *registrar*. The domain can then be added to the Cloud Manager.
+{{< /note >}}
+
+If you don't know what DNS records to add to your new domain, the DNS Manager can insert some basic records when you create the new domain.
 
 {{< note >}}
 Creating a domain also creates its corresponding domain zone.
 {{</ note >}}
 
-1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel will appear where you can fill out the form fields with your domain's information.
+1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel appears, and this panel displays a form for your domain's information.
 
 1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
 
@@ -41,20 +47,20 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 
       - Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
 
-1.  Click **Create**. If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible on the Domains detail page. The created records should include SOA, NS, MX, and A/AAA.
+1.  Click **Create**. If you selected the option to have the DNS Manager insert basic DNS records, those records are now visible on the Domain's detail page. The created records should include SOA, NS, MX, and A/AAA.
 
-   If you elected to keep the zone empty, you can start adding DNS records now. The Domain detail page will contain an SOA and NS record for the domain. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview/##add-dns-records) section for instructions.
+   If you elected to keep the zone empty, you can start adding DNS records now. The Domain detail page contains an SOA and NS record for the domain. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview/##add-dns-records) section for instructions.
 
 ## Add DNS Records
 
-When you first create a domain, you'll need to add some DNS records. This section explains how to add your own records.
+When you first create a domain, you also need to add some DNS records to the domain. This section explains how to add your own records.
 
 1.  Select a domain from within the **Domains** section of the Cloud Manager. The domain's detail page appears.
 
 1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a Record**.
 
       {{< note >}}
-The exact form fields will vary depending on the type of DNS record you select.
+The exact form fields vary depending on the type of DNS record you select.
 {{< /note >}}
 
 1.  Enter a hostname in the **Hostname** field.
@@ -63,4 +69,4 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
 
-1.  Click **Save**. It will only take a few minutes for new DNS records to become active.
+1.  Click **Save**. After a few minutes, the new DNS records become active.

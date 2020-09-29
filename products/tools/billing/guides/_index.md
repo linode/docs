@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides to billing will get you up and running with your Linode account.
+These introductory guides to billing help get you up and running with your Linode account.
 
 - [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/)
 
@@ -18,7 +18,7 @@ These introductory guides to billing will get you up and running with your Linod
 
 ## Themes
 
-These additional guides will help you with additional services and pricing.
+These additional guides explore additional services and pricing.
 
 - [Longview Pricing and Plans](/docs/platform/longview/pricing/)
 

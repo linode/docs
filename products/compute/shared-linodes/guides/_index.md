@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Themes
 
-These guides will help you with targeted topics like how to host a website, setting up a web server, and migrating to Linode from other cloud providers.
+These guides explore targeted topics like how to host a website, setting up a web server, and migrating to Linode from other cloud providers.
 
 ### Shared Linode Basics
 

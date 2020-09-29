@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Themes
 
-These guides will help you with targeted topics like the basics of High Memory Linodes and how to decide if High Memory Linodes are right for you.
+These guides explore targeted topics like the basics of High Memory Linodes and how to decide if High Memory Linodes are right for you.
 
 ### High Memory Basics
 

@@ -20,7 +20,7 @@ tab_group_main:
 
 - [Linode Professional Services (trials)](https://www.linode.com/community/questions/7030/linode-professional-services-trials)
 
-- [Can I have Linode configure and update my system for  me?](https://www.linode.com/community/questions/342/can-i-have-linode-configure-and-update-my-system-for-me)
+- [Can I have Linode configure and update my system for me?](https://www.linode.com/community/questions/342/can-i-have-linode-configure-and-update-my-system-for-me)
 
 - [Can you help me migrate to Linode?](https://www.linode.com/community/questions/50/can-you-help-me-migrate-to-linode)
 

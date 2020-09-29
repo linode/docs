@@ -21,6 +21,7 @@ aker
 alef
 alertmanager
 alexey
+alfano
 alives
 allmasquerade
 allowlist
@@ -94,6 +95,7 @@ backtick
 backticks
 backupninja
 bampton
+balarin
 barebones
 base64
 basearch
@@ -171,6 +173,7 @@ chefspec
 chgrp
 chmod
 chown
+christianwan
 chromecast
 chroot
 chrooting
@@ -204,6 +207,7 @@ comodo
 completekey
 conda
 config
+configr
 configs
 configtest
 configurability
@@ -439,6 +443,7 @@ firstsite
 flamegraph
 flamegraphs
 flatpress
+flowlens
 flyspray
 foodcritic
 fortran
@@ -850,6 +855,7 @@ metabase
 metacity
 metapackage
 metaparameters
+metorik
 metricbeat
 microblogs
 microservice
@@ -1217,6 +1223,7 @@ resolvconf
 respawn
 resque
 restapi
+retargetly
 retpoline
 retrans
 reusability
@@ -1269,10 +1276,12 @@ saslauth
 saslauthd
 sasldb
 savas
+savvii
 sbackup
 sbin
 sbopkg
 scgi
+schaeffer
 scm
 scp
 scrapy

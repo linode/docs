@@ -24,7 +24,7 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 
 1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
 
-1. Click **Create**. You will be directed back to the Linodes page which will report the status of your Linode as it boots up. You can now use the Cloud Manager to:
+1. Click **Create**. You are directed back to the Linode's page, and this page reports the status of your Linode as it boots up. You can now use the Cloud Manager to:
 
     - Boot and shut down your Linode
 

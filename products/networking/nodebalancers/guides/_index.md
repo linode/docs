@@ -10,7 +10,7 @@ tab_group_main:
 
 ## Themes
 
-These additional guides will help you with targeted topics like creating a Linode NodeBalancer using a variety of tools and SSL Configuration.
+These additional guides explore targeted topics like creating a Linode NodeBalancer using a variety of tools and SSL Configuration.
 
 ### NodeBalancer Basics
 

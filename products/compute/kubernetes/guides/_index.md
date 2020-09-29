@@ -6,11 +6,11 @@ tab_group_main:
 
 ## Building Blocks
 
-- [Install kubectl](/docs/products/compute/kubernetes/guides/install-kubectl): Before you create a cluster with LKE, you’ll need to install kubectl on your local machine.
+- [Install kubectl](/docs/products/compute/kubernetes/guides/install-kubectl): Before you create a cluster with LKE, you need to install kubectl on your local machine.
 
 - [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-lke-cluster): Quickly and easily create an LKE cluster from the Cloud Manager with a just a few clicks.
 
-- [Download Your kubeconfg](/docs/products/compute/kubernetes/guides/download-kubeconfig): Download the kubeconfig file so you can interact with your cluster with kubectl from the command line.
+- [Download Your kubeconfig](/docs/products/compute/kubernetes/guides/download-kubeconfig): Download the kubeconfig file so you can interact with your cluster with kubectl from the command line.
 
 - [Delete an LKE Cluster](/docs/products/compute/kubernetes/guides/delete-cluster): You can delete an entire cluster from the Cloud Manager.
 
@@ -20,7 +20,7 @@ tab_group_main:
 
 ## Themes
 
-These guides will help you with topics such as using Docker, networking, deploying websites, and using LKE with third-party tools.
+These guides explore topics such as using Docker, networking, deploying websites, and using LKE with third-party tools.
 
 ### Kubernetes Basics
 

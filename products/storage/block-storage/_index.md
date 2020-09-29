@@ -14,7 +14,7 @@ cascade:
 Dallas, TX, USA; Mumbai, India; Toronto, Canada; Sydney, Australia; Fremont, CA, USA; Newark, NJ, USA; London, United Kingdom; Singapore, Singapore; Frankfurt, Germany; Tokyo, Japan
 
 {{< note >}}
-A Block Storage Volume must be located in the same data center as the Linode it will be attached to.
+To attach a Block Storage Volume to a Linode, the Volume and the Linode must be located in the same data center.
 {{< /note >}}
 
 ## Features
