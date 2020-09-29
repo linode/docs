@@ -11,7 +11,7 @@ Only authorized users can add Linodes and make changes to your account, and each
 The easiest way to get a token is through the [Cloud Manager](https://cloud.linode.com).
 
   {{< note >}}
-If you are building an application which will need to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](/docs/api/#oauth) to generate tokens for each user.
+If you are building an application which needs to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](/docs/api/#oauth) to generate tokens for each user.
 {{< /note >}}
 
 ### Create an API Token
@@ -56,7 +56,7 @@ Specify the type, region, and image for the new Linode.
 
 ## Build the Final Query
 
-Replace the values in the command below with your chosen type, region, and image, and choose a label and secure password.
+Replace the values in the command below with your chosen type, region, image, label, and a secure root password.
 
     curl -X POST https://api.linode.com/v4/linode/instances \
     -H "Authorization: Bearer $TOKEN" -H "Content-type: application/json" \

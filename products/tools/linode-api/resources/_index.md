@@ -16,7 +16,7 @@ tab_group_main:
 
 - [Linode Kubernetes Engine (LKE) General Availability](https://www.linode.com/blog/kubernetes/linode-kubernetes-engine-general-availability/)
 
-- [Notice: Lindoe Classic Manager Users](https://www.linode.com/blog/linode/notice-legacy-linode-manager-users/)
+- [Notice: Linode Classic Manager Users](https://www.linode.com/blog/linode/notice-legacy-linode-manager-users/)
 
 - [October Docs Roundup: Rancher, Data Visualization, and More](https://www.linode.com/blog/open-source/october-docs-roundup-rancher-data-visualization-and-more/)
 
@@ -46,7 +46,7 @@ tab_group_main:
 
 - [Can I call Private Stackscripts using the API?](https://www.linode.com/community/questions/18287/can-i-call-private-stackscripts-using-the-api)
 
-- [How do I clone a linode via API?](https://www.linode.com/community/questions/18074/how-do-i-clone-a-linode-via-api)
+- [How do I clone a Linode via API?](https://www.linode.com/community/questions/18074/how-do-i-clone-a-linode-via-api)
 
 - [How to check the status of a disk resize with the API?](https://www.linode.com/community/questions/20197/how-to-check-the-status-of-a-disk-resize-with-the-api)
 

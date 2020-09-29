@@ -44,7 +44,7 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 - [vagrant-linode](https://github.com/displague/vagrant-linode): Vagrant-linode is a provider plugin for Vagrant that supports the management of Linode instances by [Marques Johansson](https://github.com/displague).
 
-- [Pharmer](https://github.com/pharmer/pharmer): Kubernetes Cluster Manager for Kubeadm (Technical Preview).
+- [Pharmer](https://github.com/pharmer/pharmer): Kubernetes Cluster Manager for kubeadm (Technical Preview).
 
 - [kube-linode](https://github.com/kahkhang/kube-linode): Provision a Kubernetes/CoreOS cluster on Linode by [Andrew Low](https://github.com/kahkhang/).
 

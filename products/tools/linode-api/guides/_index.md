@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides to the Linode API will get you up and running with this service.
+These introductory guides to the Linode API help you get up and running with this service.
 
 - [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token): You need an access token to make changes to your account with the API. You can get one in the Cloud Manager.
 
@@ -20,7 +20,7 @@ For more on the basics on the Linode API see the full [Getting Started with the 
 
 ## Themes
 
-These additional guides will help you with targeted topics such as how to use the Linode API to manage specific Linode tasks.
+These additional guides help you with targeted topics such as how to use the Linode API to manage specific Linode tasks.
 
 ### Advanced Topics
 

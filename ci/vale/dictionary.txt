@@ -670,6 +670,7 @@ jez
 jk
 jks
 jobd
+johansson
 joomla
 journalctl
 journald
@@ -758,6 +759,7 @@ ligttpd
 linewise
 linkerd
 linode
+linodego
 linodes
 lish
 listdir
@@ -1069,6 +1071,7 @@ permalink
 permalinks
 pflogsumm
 pgpass
+pharmer
 pharo
 phonebook
 php
@@ -1495,6 +1498,7 @@ turtl
 tw
 txt
 txz
+tzurbaev
 ucd
 udp
 ufw
