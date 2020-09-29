@@ -15,4 +15,4 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
-Use Linode Images to take snapshots of your disk images, and deploy an identical copy to any Linode under your account. Linode Images are retained whether or not you have an active Linode on your account, which makes them useful for long term storage of a private image template.
+Use Linode Images to take snapshots of your disk images, and deploy an identical copy to any Linode under your account. Linode Images are retained whether or not you have an active Linode on your account. Because of this, they are useful for long term storage of a private image template.

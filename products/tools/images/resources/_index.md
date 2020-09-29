@@ -18,7 +18,7 @@ tab_group_main:
 
 - [What’s the deal with Linode Images?](https://www.linode.com/community/questions/17805/whats-the-deal-with-linode-images)
 
-- [How do I  restore a deleted Linode?](https://www.linode.com/community/questions/17441/how-do-i-restore-a-deleted-linode)
+- [How do I restore a deleted Linode?](https://www.linode.com/community/questions/17441/how-do-i-restore-a-deleted-linode)
 
 - [Unable to create an image of my disk from the Cloud Manager interface](https://www.linode.com/community/questions/17929/unable-to-create-an-image-of-my-disk-from-the-cloud-manager-interface)
 

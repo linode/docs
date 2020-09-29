@@ -27,7 +27,7 @@ Deploying one of your saved images to any Linode under your account is a simple 
 
     {{< caution >}}
 You cannot deploy an image that was created from a RAW disk format. Attempting to do so will result in a failure.
-    {{< /caution >}}
+{{< /caution >}}
 
 1.  Provide the remaining configurations for your new Linode instancy by selecting your desired **Region**, **Linode Plan**, **Label**, and set your **Root Password**, then click **Create** to create a Linode from your saved image.
 

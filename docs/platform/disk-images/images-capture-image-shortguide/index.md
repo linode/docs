@@ -36,7 +36,7 @@ Linode Images captures an exact copy of your disk at the moment when the process
     ![Create an Image menu](images-create-image-menu.png "Create an Image menu")
 
     {{< caution >}}
-CoreOS disk images are in RAW format. Images made from CoreOS disks will not be able to be used to deploy new Linodes.
+CoreOS disk images are in RAW format. Images made from CoreOS disks can't be used to deploy new Linodes.
 {{< /caution >}}
 
 1.  Once you click the **Create** button, your image is frozen for later use. You can view the progress under the bell notifications at the top of the page.
