@@ -12,6 +12,7 @@ title: How to Create an API Token in the Cloud Manager
 keywords: ["api"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  Log in to the Cloud Manager.

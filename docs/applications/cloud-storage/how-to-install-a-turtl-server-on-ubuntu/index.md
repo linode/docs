@@ -4,6 +4,7 @@ author:
   email: aguarisma@linode.com
 description: 'This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.'
 keywords: ["install turtl", " cloud-based storage", " monitor system security", " ubuntu"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-06
 modified_by:

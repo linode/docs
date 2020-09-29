@@ -11,6 +11,7 @@ modified_by:
 title: "Install Elasticsearch on Debian and Ubuntu"
 published: 2018-01-09
 headless: true
+tags: ["database"]
 ---
 
 1.  Install the official Elastic APT package signing key:

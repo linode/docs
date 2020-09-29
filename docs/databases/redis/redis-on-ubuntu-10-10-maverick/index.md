@@ -6,12 +6,13 @@ author:
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: ["redis ubuntu 10.10", "redis maverick", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/redis/ubuntu-10-10-maverick/']
+aliases: ['/databases/redis/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-10-28
 title: 'Redis on Ubuntu 10.10 (Maverick)'
+tags: ["ubuntu","database","nosql"]
 ---
 
 

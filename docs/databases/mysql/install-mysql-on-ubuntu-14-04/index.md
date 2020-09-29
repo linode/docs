@@ -5,7 +5,7 @@ author:
 description: 'Install MySQL on Ubuntu 14.04. - a getting-started guide.'
 keywords: ["MySQL on Linux", "Ubuntu", "Ubuntu 14.04", "Linux", "MySQL", "install MySQL", "install MySQL on ubuntu", "mysqltuner", "MySQL tuner", "harden mysql", "root password", "sample table"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/ubuntu-14.04-trusty-pangolin/', 'databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/', 'databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
+aliases: ['/databases/mysql/ubuntu-14.04-trusty-pangolin/','/databases/mysql/how-to-install-mysql-on-ubuntu-14-04/','/databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/']
 modified: 2015-08-26
 modified_by:
   name: Linode
@@ -16,6 +16,7 @@ external_resources:
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
+tags: ["ubuntu","database","mysql"]
 ---
 
 ![Install MySQL on Ubuntu 14.04](install-mysql-on-ubuntu-1404.png "Install MySQL on Ubuntu 14.04")

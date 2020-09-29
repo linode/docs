@@ -6,7 +6,7 @@ author:
 description: 'Set up and manage an online storefront with OpenCart.'
 keywords: ["opencart", "ecommerce", "commerce", "store", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/e-commerce/opencart/fedora-15/']
+aliases: ['/web-applications/e-commerce/opencart/fedora-15/']
 modified: 2013-10-03
 modified_by:
   name: Linode

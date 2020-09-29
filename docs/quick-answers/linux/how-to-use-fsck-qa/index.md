@@ -13,6 +13,7 @@ modified_by:
 title: 'How to use fsck - Quick Answer'
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
+tags: ["linux"]
 ---
 
 ## What is fsck?

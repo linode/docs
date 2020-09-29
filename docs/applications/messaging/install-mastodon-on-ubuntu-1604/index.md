@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installation and basic usage guide of Mastodon, an open source alternative to Twitter.'
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-16
 modified_by:

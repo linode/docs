@@ -4,13 +4,14 @@ author:
   email: docs@linode.com
 description: 'Deploy a Node.js Server in a Docker Container.'
 keywords: ["docker", "node.js", "node", "debian", "ubuntu", "web server", "javascript", "container"]
+tags: ["container","docker","web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-01-18
 modified_by:
   name: Linode
 published: 2015-03-23
 title: 'Node.js Web Server Deployed within Docker'
-aliases: ['applications/containers/nodejs-node-js-web-server-docker-container/']
+aliases: ['/applications/containers/nodejs-node-js-web-server-docker-container/']
 external_resources:
 - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
 - '[Docker Docs](http://docs.docker.com/)'

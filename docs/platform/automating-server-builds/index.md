@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to automating server builds with the Linode Manager.
 keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
+tags: ["linode platform","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-11
 modified_by:

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: "Troubleshooting steps for when you can't connect to a service that your Linode runs."
 keywords: ['linux','reboot','lish']
+tags: ["web server", "database", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-01
 modified: 2019-02-01
@@ -185,7 +186,7 @@ One common reason that a database may not start is if your disk is full. To chec
     df -h
 
 {{< note >}}
-This reported disk usage is not the same as the reported storage usage in the Linode Manager. The storage usage in the Linode Manager refers to how much of the the disk space you pay for is allocated to your Linode's disks. The output of `df -h` shows how full those disks are.
+This reported disk usage is not the same as the reported storage usage in the Linode Manager. The storage usage in the Linode Manager refers to how much of the disk space you pay for is allocated to your Linode's disks. The output of `df -h` shows how full those disks are.
 {{< /note >}}
 
 You have several options for resolving disk space issues:

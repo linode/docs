@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Troubleshooting steps to access your Linode after maintenance has been applied to your host.'
 keywords: ['linux','reboot','lish']
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true
 deprecated_link: 'troubleshooting/troubleshooting-basic-connection-issues/'

@@ -4,13 +4,14 @@ author:
   email: docs@linode.com
 description: 'What is Network Helper and how to use it.'
 keywords: ["network helper", "static"]
+tags: ["linode platform","networking","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-07
 published: 2014-12-08
 modified_by:
   name: Linode
 title: Network Helper
-aliases: ['platform/network-helper-new-manager/','platform/network-helper-classic-manager/']
+aliases: ['/platform/network-helper-classic-manager/','/platform/network-helper-new-manager/']
 ---
 
 ![Network Helper](network-helper-title-graphic.jpg "Network Helper")

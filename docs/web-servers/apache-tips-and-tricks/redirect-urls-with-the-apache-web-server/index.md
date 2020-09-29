@@ -5,7 +5,7 @@ author:
 description: 'An introduction to redirecting existing URLs to new resources with the Apache HTTP server.'
 keywords: ["apache", "redirect", "mod_alias", "URLs", "REST"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/redirecting-urls/','websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/']
+aliases: ['/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/','/web-servers/apache/configuration/redirecting-urls/']
 modified: 2017-02-21
 modified_by:
   name: Phil Zona
@@ -16,6 +16,7 @@ external_resources:
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Apache Redirect Guide](https://httpd.apache.org/docs/current/mod/mod_alias.html#redirect)'
  - '[Rewrite URLs with mod_rewrite and Apache](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/)'
+tags: ["web server","apache"]
 ---
 
 In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL allows you to return an HTTP status code that directs the client to a different URL, making it useful for cases in which you've moved a piece of content. Redirect is part of Apache's [mod_alias](https://httpd.apache.org/docs/current/mod/mod_alias.html) module.

@@ -12,6 +12,7 @@ title: Edit DNS Records in Cloud Manager
 keywords: ["dns"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 To modify a Domain's existing DNS records:

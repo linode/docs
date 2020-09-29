@@ -12,6 +12,7 @@ title: Access a One-Click Marketplace App from Cloud Manager
 keywords: ["one-click", "marketplace"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 Depending on the type of app you created, the app will be accessible in different ways. All the ways to access your app require the IP address of your Linode. Follow the instructions below to find your IP address.

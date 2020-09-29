@@ -12,6 +12,7 @@ title: How to Manage Your Linode Disk Images
 keywords: ["images"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 The images captured from your Linodes are stored for future usage, and can be modified or removed at any time.

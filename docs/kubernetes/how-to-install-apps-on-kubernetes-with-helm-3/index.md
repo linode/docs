@@ -4,13 +4,14 @@ author:
   email: docs@linode.com
 description: 'Learn how to install apps on your K8s cluster with Helm 3, a popular package management system for Kubernetes.'
 keywords: ["helm", "kubernetes", "container", "k8s"]
+tags: ["kubernetes","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-06
 modified_by:
   name: Linode
 title: 'How to Install Apps on Kubernetes with Helm 3'
 h1_title: 'Installing Apps on Kubernetes with Helm 3'
-aliases: ['kubernetes/how-to-install-apps-on-kubernetes-with-helm/','applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','applications/containers/how-to-install-apps-on-kubernetes-with-helm/']
+aliases: ['/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','/applications/containers/how-to-install-apps-on-kubernetes-with-helm/','/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm Documentation](https://helm.sh/docs/)'

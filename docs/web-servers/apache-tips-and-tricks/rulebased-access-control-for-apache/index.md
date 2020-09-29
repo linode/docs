@@ -5,7 +5,7 @@ author:
 description: 'Deploying and configuring granular access control with the Apache web server.'
 keywords: ["apache", "access control", "security", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/rule-based-access-control/','websites/apache-tips-and-tricks/rulebased-access-control-for-apache/']
+aliases: ['/web-servers/apache/configuration/rule-based-access-control/','/websites/apache-tips-and-tricks/rulebased-access-control-for-apache/']
 modified: 2017-08-30
 modified_by:
   name: Linode
@@ -20,6 +20,7 @@ external_resources:
  - '[Apache Troubleshooting](/docs/web-servers/apache/troubleshooting/)'
  - '[Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)'
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
+tags: ["web server","apache"]
 ---
 
 

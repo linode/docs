@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Turbocharge your WordPress blog search using Solr search engine.'
 keywords: ["wordpress", "search", "solr", "ubuntu", "debian"]
+tags: ["ubuntu","wordpress","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
     name: Karthik Shiraly
@@ -13,7 +14,7 @@ modified_by:
     name: James Stewart
 published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
-aliases: ['websites/cms/turbocharge-wordpress-search-with-solr/']
+aliases: ['/websites/cms/turbocharge-wordpress-search-with-solr/']
 ---
 
 

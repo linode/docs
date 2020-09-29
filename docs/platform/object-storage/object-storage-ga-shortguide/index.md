@@ -12,6 +12,7 @@ title: Object Storage General Availability Notice
 keywords: []
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 {{< note >}}

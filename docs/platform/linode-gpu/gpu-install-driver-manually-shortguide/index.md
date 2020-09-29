@@ -12,6 +12,7 @@ title: How to Install the NVIDIA driver manually for Linode GPU Instances
 keywords: ["gpu"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 This section will walk you through the process of downloading and installing the latest NVIDIA driver on Debian 9. This process can also be completed on another distribution of your choice, if needed:

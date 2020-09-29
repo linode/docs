@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'The Planet Venus feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/social-networking/planet/ubuntu-12-04-precise-pangolin/']
+aliases: ['/web-applications/social-networking/planet/ubuntu-12-04-precise-pangolin/']
 modified: 2013-10-04
 modified_by:
   name: Linode

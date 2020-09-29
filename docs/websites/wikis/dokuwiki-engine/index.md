@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Build a fully featured wiki text with the DokuWiki software.'
 keywords: ["wiki", "doku wiki", "php"]
+tags: ["wiki","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/dokuwiki/']
+aliases: ['/web-applications/wikis/dokuwiki/']
 modified: 2017-07-27
 modified_by:
   name: Linode

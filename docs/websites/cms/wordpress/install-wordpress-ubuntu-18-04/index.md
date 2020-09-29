@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
 keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
+tags: ["ubuntu","lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-04
 modified_by:
@@ -14,7 +15,7 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
-aliases: ['websites/cms/install-wordpress-ubuntu-18-04/']
+aliases: ['/websites/cms/install-wordpress-ubuntu-18-04/']
 ---
 
 ## What is WordPress?

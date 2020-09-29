@@ -19,6 +19,7 @@ audiences: ["intermediate"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["python"]
 dedicated_cpu_link: true
+tags: ["python"]
 ---
 
 ![Introduction to PySpark](PySpark.jpg)

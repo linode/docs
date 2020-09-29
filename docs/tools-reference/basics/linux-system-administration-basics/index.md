@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-12-13
 title: Linux System Administration Basics
+tags: ["linux"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.

@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.04 (Jaunty).'
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.04", "jaunty"]
+tags: ["web applications","apache","django","mysql","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/django-apache-mod-python/ubuntu-9-04-jaunty/','websites/frameworks/django-apache-and-modpython-on-ubuntu-9-04-jaunty/']
+aliases: ['/frameworks/django-apache-mod-python/ubuntu-9-04-jaunty/','/websites/frameworks/django-apache-and-modpython-on-ubuntu-9-04-jaunty/']
 modified: 2011-05-17
 modified_by:
   name: Linode

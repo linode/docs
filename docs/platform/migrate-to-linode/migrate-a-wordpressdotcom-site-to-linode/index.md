@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Shows how to export posts from a WordPress.com website and import them to WordPress on a Linode.'
 keywords: ["wordpress", "wordpress.com", "migrate", "website migration"]
+tags: ["linode platform","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-07
 modified_by:

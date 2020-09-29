@@ -5,7 +5,7 @@ author:
 description: 'Practical examples for using grep to find strings in text files and streams.'
 keywords: ["grep", "search", "files", "filtering", "regular expressions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/grep/', 'tools-reference/search-and-filter-text-with-grep/','tools-reference/how-to-grep-for-text-in-files/']
+aliases: ['/tools-reference/how-to-grep-for-text-in-files/','/tools-reference/search-and-filter-text-with-grep/','/linux-tools/common-commands/grep/']
 modified: 2018-02-01
 modified_by:
   name: Linode
@@ -15,6 +15,7 @@ title: How to Grep for Text in Files
 external_resources:
   - '[Grep | Regular-Expressions.info](https://www.regular-expressions.info/grep.html)'
   - '[Perl Regular Expressions](https://perldoc.perl.org/perlre.html)'
+tags: ["linux"]
 ---
 
 ![Using Grep](search_and_filter_text_with_grep_smg.png "Search and filter text with Grep")

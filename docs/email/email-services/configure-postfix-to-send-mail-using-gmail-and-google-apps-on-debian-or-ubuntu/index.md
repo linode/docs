@@ -3,14 +3,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Install and configure Postfix on Debian and Ubuntu to send email through Gmail and Google Apps.'
-keywords: ["Postfix", " Ubuntu", " Debian", " SMTP", " Gmail"]
+keywords: ["Postfix", "Ubuntu", "Debian", "SMTP", "Gmail"]
+tags: ["debian","ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-27
 modified_by:
   name: Linode
 published: 2016-12-13
 title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
-aliases: ['email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
+aliases: ['/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
 ---
 
 ![Configure Postfix to Send Mail Using Gmail and Google Apps](Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)

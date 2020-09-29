@@ -5,6 +5,7 @@ author:
 description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
 og_description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
+tags: ["docker", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-08
 modified_by:

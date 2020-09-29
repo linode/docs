@@ -5,6 +5,7 @@ author:
 description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
 og_description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
 keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"]
+tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-09
 modified: 2018-03-09

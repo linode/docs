@@ -3,7 +3,8 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'This Counter Strike: Global Offensive (CS:GO) server guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.'
-keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", " steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
+keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", "steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-07
 modified_by:
@@ -11,7 +12,7 @@ modified_by:
 title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 18.04'
 contributor:
     name: Linode
-aliases: ['applications/game-servers/csgo-server-debian-ubuntu/','applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
+aliases: ['/applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/','/applications/game-servers/csgo-server-debian-ubuntu/']
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 dedicated_cpu_link: true

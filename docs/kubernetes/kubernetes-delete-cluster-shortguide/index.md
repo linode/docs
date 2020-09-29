@@ -12,6 +12,7 @@ title: How to Delete a Linode Kubernetes Engine Cluster
 keywords: ["kubernetes"]
 headless: true
 show_on_rss_feed: false
+tags: ["kubernetes"]
 ---
 
 You can delete an entire cluster using the Linode Cloud Manager. These changes cannot be reverted once completed.

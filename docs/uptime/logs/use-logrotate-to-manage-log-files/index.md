@@ -6,7 +6,7 @@ description: 'This guide shows how to use logrotate to manage log files at sched
 og_description: 'Make system logs easier to keep track of with logrotate. Use this guide to configure logrotate to automatically compress and remove old log files at regular intervals that you control.'
 keywords: ["logrotate", "log files", "access logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/utilities/logrotate/']
+aliases: ['/linux-tools/utilities/logrotate/']
 modified: 2018-03-20
 modified_by:
   name: Linode
