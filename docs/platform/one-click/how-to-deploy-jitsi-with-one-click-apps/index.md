@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy Jitsi on Linode using One-Click Apps.'
-og_description: 'Deploy Jitsi on Linode using One-Click Apps.'
+description: 'Jitsi is an open source suite that helps you host your own virtual video conferences. Follow this guide to deploy Jitsi on Linode using One-Click Apps.'
+og_description: 'Jitsi is an open source suite that helps you host your own virtual video conferences. Follow this guide to deploy Jitsi on Linode using One-Click Apps.'
 keywords: ['jitsi','one-click', 'server']
+tags: ["ubuntu","one-click", "web applications","linode platform", "cloud manager", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-08-19
-modified: 2020-08-19
+published: 2020-09-28
 modified_by:
   name: Linode
 title: "How to Deploy Jitsi with One-Click Apps"
