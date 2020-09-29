@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides to the Linode Cloud Manager will get you up and running with this service.
+These introductory guides to the Linode Cloud Manager help you get up and running with this service.
 
 ### Linodes
 - [Linodes](/docs/products/tools/cloud-manager/guides/cloud-create-linode): The Linodes section of Cloud Manager allows you to create and manage your Linodes.
@@ -27,7 +27,7 @@ These introductory guides to the Linode Cloud Manager will get you up and runnin
 
 - [Domains](/docs/products/tools/cloud-manager/guides/cloud-domains): The DNS Manager allows you to control and manage your domains.
 
-- [Longview](/docs/products/tools/cloud-manager/guides/cloud-longview): This section gives you access to Linode’s Longview service where you can track metrics for CPU, memory, network bandwidth and more.
+- [Longview](/docs/products/tools/cloud-manager/guides/cloud-longview): This section gives you access to Linode’s Longview service where you can track metrics for CPU, memory, network bandwidth, and more.
 
 - [Marketplace](/docs/products/tools/cloud-manager/guides/cloud-marketplace): This section gives you access to the One-Click Application Marketplace where you can easily deploy and configure software for your Linodes.
 
@@ -39,7 +39,7 @@ These introductory guides to the Linode Cloud Manager will get you up and runnin
 
 ### Account Management
 
-- [Management and Billing](/docs/products/tools/cloud-manager/guides/cloud-billing): Under the Account section of Cloud Manager you will be able to manage your account billing information, users, and other account-wide settings.
+- [Management and Billing](/docs/products/tools/cloud-manager/guides/cloud-billing): Under the Account section of Cloud Manager you are able to manage your account billing information, users, and other account-wide settings.
 
 - [Credits](/docs/products/tools/cloud-manager/guides/cloud-credits): Find credit remaining on your account in the Account section.
 
@@ -55,7 +55,7 @@ These introductory guides to the Linode Cloud Manager will get you up and runnin
 
 ## Themes
 
-These additional guides will help you with targeted topics like how to manage your account, Linodes, and networking through the Cloud Manager.
+These additional guides help you with targeted topics like how to manage your account, Linodes, and networking through the Cloud Manager.
 
 ### Manage Your Account
 
