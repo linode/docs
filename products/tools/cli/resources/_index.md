@@ -5,7 +5,7 @@ tab_group_main:
 ---
 ## Blog Posts
 
-- [Linode CLI](/docs/blog/linode/linode-cli/)
+- [Linode CLI](https://www.linode.com/blog/linode/linode-cli/)
 
 ## Community Posts
 

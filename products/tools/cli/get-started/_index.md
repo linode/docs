@@ -51,7 +51,7 @@ Specify exactly which fields you would like to receive with the `-format` option
 
 ### JSON Output
 
-The CLI will return output in tabulated format for easy readability. If you prefer to work with JSON, use the `--json` flag. Adding the `--pretty` flag will format the JSON output to make it more readable:
+The CLI returns output in tabulated format for easy readability. If you prefer to work with JSON, use the `--json` flag. Adding the `--pretty` flag formats the JSON output to make it more readable:
 
     linode-cli regions list --json --pretty
 
