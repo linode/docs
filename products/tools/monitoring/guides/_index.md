@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides will get you up and running with monitoring your Linode services.
+These introductory guides help you get up and running with monitoring your Linode services.
 
 - [Configure Shutdown Watchdog](/docs/products/tools/monitoring/guides/monitoring-configure-watchdog): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
 
@@ -20,7 +20,7 @@ For more basics, see the full guide on [Monitoring and Maintaining Your Server](
 
 ## Themes
 
-These additional guides will help you with targeted topics like how to use command line and graphical tools to monitor your servers and applications.
+These additional guides help you with targeted topics like how to use command line and graphical tools to monitor your servers and applications.
 
 ### Command Line Tools
 
