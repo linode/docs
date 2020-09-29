@@ -2,13 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy a WordPress website on Linode using One-Click Apps.'
-og_description: 'Deploy a WordPress website on Linode using One-Click Apps.'
+description: 'WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using One-Click Apps.'
+og_description: 'WordPress is an industry standard CMS. Follow this guide to deploy WordPress on Linode using One-Click Apps.'
 keywords: ['wordpress','wp cli','one-click apps', 'cms', 'deploy wordpress with one-click', 'easy install wordpress']
-tags: ["cloud-manager","linode platform","cms","wordpress","one-click"]
+tags: ["debian","cloud manager","linode platform","cms","wordpress","one-click","ssl","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-09
-modified: 2020-09-23
+published: 2020-09-28
 modified_by:
   name: Linode
 title: "How to Deploy WordPress with One-Click Apps"

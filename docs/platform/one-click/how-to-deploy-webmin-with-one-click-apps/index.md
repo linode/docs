@@ -5,8 +5,9 @@ author:
 description: 'Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode''s One-Click Apps.'
 og_description: 'Webmin is an open source interface Unix system administration. Deploy Webmin using Linode''s One-Click Apps.'
 keywords: ['webmin','system administration','one-click']
+tags: ["debian","one-click", "web applications","linode platform", "cloud manager", "cms", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-11
+published: 2020-09-28
 modified_by:
   name: Linode
 title: "How to Deploy Webmin with One-Click Apps"

@@ -2,11 +2,12 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Virtualmin is an open source control panel for web hosting management. Deploay a Virtualmin server using Linode''s One-Click Apps.'
-og_description: 'Virtualmin is an open source control panel for web hosting management. Deploay a Virtualmin server using Linode''s One-Click Apps.'
+description: 'Virtualmin is an open source control panel for web hosting management. Deploy a Virtualmin server using Linode''s One-Click Apps.'
+og_description: 'Virtualmin is an open source control panel for web hosting management. Deploy a Virtualmin server using Linode''s One-Click Apps.'
 keywords: ['virtualmin','control panel','dashboard','one-click']
+tags: ["debian","one-click", "web applications","linode platform", "cloud manager", "cms", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-11
+published: 2020-09-28
 modified_by:
   name: Linode
 title: "How to Deploy Virtualmin with One-Click Apps"

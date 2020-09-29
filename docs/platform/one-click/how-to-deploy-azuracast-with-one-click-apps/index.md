@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy AzuraCast on Linode using One-Click Apps.'
-og_description: 'Deploy AzuraCast on Linode using One-Click Apps.'
+description: 'AzuraCast is a self-hosted web radio station and management suite. Follow this guide to deploy AzuraCast on Linode using One-Click Apps.'
+og_description: 'AzuraCast is a self-hosted web radio station and management suite. Follow this guide to deploy AzuraCast on Linode using One-Click Apps.'
 keywords: ['azuracast','one-click', 'server']
+tags: ["debian","ubuntu","one-click", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-08-19
-modified: 2020-08-19
+published: 2020-09-28
 modified_by:
   name: Linode
 title: "How to Deploy AzuraCast with One-Click Apps"
