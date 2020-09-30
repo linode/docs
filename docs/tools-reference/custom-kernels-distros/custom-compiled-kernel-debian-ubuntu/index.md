@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 2017-08-01
 title: 'Custom Compiled Kernel on Debian & Ubuntu'
+relations:
+    platform:
+        key: custom-compiled-kernel
+        keywords:
+            - distribution: Debian/Ubuntu
 ---
 
 ![Custom Compiled Kernel on Debian & Ubuntu](custom-compiled-kernel-on-debian-and-ubuntu.png "Custom Compiled Kernel on Debian & Ubuntu")
