@@ -4,6 +4,7 @@ author:
   email: bulavintsev.sergey@gmail.com
 description: 'Learn how to configure and use Salt SSH in this simple tutorial'
 keywords: ["Saltstack", " salt", " salt-ssh"]
+tags: ["automation","salt","ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-07-25
 modified: 2019-01-02
@@ -13,7 +14,7 @@ image: ConfigureandUseSaltSSHtoManageyourLinodes.png
 title: 'Configure and Use Salt SSH to Manage Your Linodes'
 contributor:
   name: Sergey Bulavintsev
-aliases: ['applications/configuration-management/configure-and-use-salt-ssh/']
+aliases: ['/applications/configuration-management/configure-and-use-salt-ssh/']
 ---
 
 ## Introduction to Salt SSH

@@ -13,7 +13,8 @@ modified_by:
 title: 'Configure and Use Salt Cloud and Cloud Maps to Provision Systems'
 contributor:
   name: Sergey Bulavintsev
-aliases: ['applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/']
+aliases: ['/applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/']
+tags: ["automation","salt"]
 ---
 
 ![Salt Cloud](SaltCloud.jpg)

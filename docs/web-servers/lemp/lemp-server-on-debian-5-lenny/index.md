@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx,MySQL, PHP.'
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/debian-5-lenny/','websites/lemp/lemp-server-on-debian-5-lenny/']
+aliases: ['/lemp-guides/debian-5-lenny/','/websites/lemp/lemp-server-on-debian-5-lenny/']
 modified: 2013-02-18
 modified_by:
   name: Linode

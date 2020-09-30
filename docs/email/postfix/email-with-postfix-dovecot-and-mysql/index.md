@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "debian", "ubuntu", "dovecot 2"]
+tags: ["debian","email","ubuntu","mysql","postfix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-11
 modified_by:
@@ -15,6 +16,11 @@ external_resources:
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
+relations:
+    platform:
+        key: email-postfix-dovecot-mysql
+        keywords:
+            - distribution: Debian/Ubuntu
 ---
 
 In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MySQL on Debian or Ubuntu. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.

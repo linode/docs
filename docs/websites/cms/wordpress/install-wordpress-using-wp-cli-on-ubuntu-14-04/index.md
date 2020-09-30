@@ -4,7 +4,8 @@ author:
     email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
-aliases: ['websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/','websites/cms/install-and-configure-wordpress-using-wp-cli/']
+aliases: ['/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-14-04/','/websites/cms/install-and-configure-wordpress-using-wp-cli/']
+tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-03-11
 modified: 2017-02-15
@@ -17,6 +18,11 @@ contributor:
 external_resources:
  - '[WP-CLI Commands](http://wp-cli.org/commands/)'
  - '[WP-CLI Community Commands](https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands)'
+relations:
+    platform:
+        key: how-to-install-wordpress-using-wp-cli
+        keywords:
+           - distribution: Ubuntu 14.04
 ---
 
 

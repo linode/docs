@@ -4,7 +4,8 @@ author:
     email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
-aliases: ['websites/cms/install-wordpress-using-wp-cli-on-ubuntu-18-04/','websites/cms/install-and-configure-wordpress-using-wp-cli/']
+aliases: ['/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-18-04/','/websites/cms/install-and-configure-wordpress-using-wp-cli/']
+tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
 modified: 2018-08-10
@@ -18,6 +19,11 @@ external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
 - '[WP-CLI Tools](https://make.wordpress.org/cli/handbook/tools/)'
+relations:
+    platform:
+        key: how-to-install-wordpress-using-wp-cli
+        keywords:
+           - distribution: Ubuntu 18.04
 ---
 
 Everyone is probably familiar with WordPress and its renowned 5-minute install routine. It's simple and works without fuss. But when you have multiple sites to manage, repeating the same routine can waste plenty of time which you could have used elsewhere.

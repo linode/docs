@@ -20,6 +20,7 @@ relations:
         key: install-caddy-server
         keywords:
             - distribution: Arch Linux
+tags: ["web server"]
 ---
 
 ## Before You Begin

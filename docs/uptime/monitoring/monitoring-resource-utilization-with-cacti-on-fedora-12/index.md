@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on Fedora 12.'
 keywords: ["Cacti", "Fedora", "Monitoring", "SNMP"]
+tags: ["monitoring","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/cacti/fedora-12/']
+aliases: ['/server-monitoring/cacti/fedora-12/']
 modified: 2013-10-01
 modified_by:
   name: Linode
@@ -14,6 +15,11 @@ published: 2010-02-11
 expiryDate: 2015-10-01
 deprecated: true
 title: Monitoring Resource Utilization with Cacti on Fedora 12
+relations:
+    platform:
+        key: install-cacti-monitoring
+        keywords:
+            - distribution: Fedora 12
 ---
 
 
@@ -33,7 +39,7 @@ Before proceeding with the installation of Cacti, ensure your package repositori
 
 ### Set the Timezone
 
-Begin by setting the timezone of your server if it isn't already set. Set your server to your timezone or to that of the bulk of your users. If you're unsure which timezone would be best, consider using Universal Coordinated Time (or UTC, ie. Greenwich Mean Time). Keep in mind that Cacti uses the timezone set on the monitoring machine when generating its graphs. To change the time zone, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. Please note that all contents following the double hashes (eg. `##`) are comments and need not be copied into your terminal.
+Begin by setting the timezone of your server if it isn't already set. Set your server to your timezone or to that of the bulk of your users. If you're unsure which timezone would be best, consider using Universal Coordinated Time (or UTC, ie. Greenwich Mean Time). Keep in mind that Cacti uses the timezone set on the monitoring machine when generating its graphs. To change the time zone, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. Please note that all contents following the double hashes (e.g. `##`) are comments and need not be copied into your terminal.
 
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time
 

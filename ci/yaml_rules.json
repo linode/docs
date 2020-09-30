@@ -232,6 +232,12 @@
     "type": "text",
     "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
   },
+  "tags": {
+    "elements": "list",
+    "required": false,
+    "type": "list",
+    "description": "Comma-separated array of tags that are relevant to this guide. These tags will appear at the top of a guide, and they are available as search filters in the new docs UI."
+  },
   "title": {
     "elements": false,
     "required": true,

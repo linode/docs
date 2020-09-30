@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.04 operating system.'
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
+tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/']
+aliases: ['/frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-08-19
 title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 

@@ -12,6 +12,7 @@ title: Access Account Management and Billing in the Cloud Manager
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 The **Account** section of Cloud Manager allows you to manage your account's billing information and users, and to configure various account-wide settings.

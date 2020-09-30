@@ -4,14 +4,20 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.10 (Maverick) Linode.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
+tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/','web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/']
+aliases: ['/web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/','/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-10-29
 title: 'Manage an Ubuntu 10.10 (Maverick) Linode with ISPConfig'
 deprecated: true
+relations:
+    platform:
+        key: manage-a-linode-with-ISPConfig
+        keywords:
+           - distribution: Ubuntu 10.10
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.

@@ -5,6 +5,7 @@ author:
 description: "This guide describes the process of troubleshooting Longview"
 og_description: "Learn how to troubleshoot Linode's Longview service."
 keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
+tags: ["resolving","cloud manager","statistics","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode

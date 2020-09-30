@@ -8,6 +8,7 @@ contributor:
 description: 'This guide shows you how to use Linode to create a Docker Swarm Manager and deploy a service to several Nodes.'
 og_description: 'Docker Swarm is a software tool by which sysadmins can create and manage a cluster of Docker nodes in a singular, virtualized system. This guide shows how to create and run a Docker Swarm - and thereby manage a Docker cluster - on Linode.'
 keywords: ["docker", "container", "docker swarm", "swarm manager", "swarm nodes"]
+tags: ["ubuntu","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-28
 modified_by:

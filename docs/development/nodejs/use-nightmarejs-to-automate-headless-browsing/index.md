@@ -5,6 +5,7 @@ author:
 description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
 og_description: 'Nightmare.js is an automated, headless browsing tool that can be configured to self-navigate websites, automate data scraping, and quicken QA.'
 keywords: ["nightmare.js", " node.js", " headless browser", " automation"]
+tags: ["automation", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
 modified: 2017-10-09
@@ -133,7 +134,7 @@ nightmare
 
         xvfb-run node linode.js
 
-    The script visits the [Linode docs](/docs) page, enters 'ubuntu' into the input box, and clicks the submit button. It then waits for the results to load and prints the url and title each entry on the first page of results.
+    The script visits the [Linode docs](/docs) page, enters 'Ubuntu' into the input box, and clicks the submit button. It then waits for the results to load and prints the url and title each entry on the first page of results.
 
     The output will resemble the following:
 

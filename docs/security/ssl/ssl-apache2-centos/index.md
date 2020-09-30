@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the HTTPD web server.'
 keywords: ["apache SSL", "ssl on centos", "ssl on fedora", "ssl", "contos", "fedora", "apache", "httpd"]
+tags: ["fedora","lamp","centos","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-08-17
 modified_by:
@@ -13,6 +14,11 @@ title: 'SSL Certificates with Apache on CentOS 7'
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)'
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![SSL Certificates with Apache on CentOS](SSL_Certificates_with_Apache_on_CentOS_7_smg.jpg)

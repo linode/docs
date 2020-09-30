@@ -12,6 +12,7 @@ title: How to Get Help from the Linode CLI
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 View information about any part of the CLI, including available actions and required parameters, with the `--help` flag:

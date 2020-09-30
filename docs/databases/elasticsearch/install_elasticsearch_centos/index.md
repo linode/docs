@@ -11,6 +11,7 @@ modified_by:
 title: "Install Elasticsearch on Fedora, Red Hat, and CentOS"
 published: 2018-01-09
 headless: true
+tags: ["database"]
 ---
 
 1.  Trust the Elastic signing key:

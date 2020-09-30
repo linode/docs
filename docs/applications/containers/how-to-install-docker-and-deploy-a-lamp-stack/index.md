@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'LAMP container with Docker on Linode'
 keywords: ["docker", "lamp", "LAMP", "ubuntu", "debian"]
+tags: ["lamp","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/containers/install-docker-and-lamp-stack/','applications/containers/linode-lamp-container-docker/']
+aliases: ['/applications/containers/install-docker-and-lamp-stack/','/applications/containers/linode-lamp-container-docker/']
 modified: 2015-02-23
 modified_by:
   name: Linode

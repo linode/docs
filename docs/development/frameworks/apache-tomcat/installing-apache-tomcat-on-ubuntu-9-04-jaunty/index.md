@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.04 (Jaunty).'
 keywords: ["Tomcat", "Java", "Apache Tomcat", "Ubuntu Jaunty", "Ubuntu 9.04", "Tomcat Linode"]
+tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/','websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/','frameworks/apache-tomcat/ubuntu-9-04-jaunty/']
+aliases: ['/websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/','/frameworks/apache-tomcat/ubuntu-9-04-jaunty/','/development/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-08-06
 title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 

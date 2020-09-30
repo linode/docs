@@ -12,6 +12,7 @@ title: How to Take a Manual Snapshot with the Linode Backup Service
 keywords: ["backups"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 You can make a manual backup of your Linode by taking a *snapshot*. Here's how:

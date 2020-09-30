@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on CentOS 5.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
+tags: ["web applications","django","apache","python","centos","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/django-apache-mod-wsgi/centos-5/','development/frameworks/django-apache-and-modwsgi-on-centos-5/','websites/frameworks/django-apache-and-modwsgi-on-centos-5/']
+aliases: ['/development/frameworks/django-apache-and-modwsgi-on-centos-5/','/websites/frameworks/django-apache-and-modwsgi-on-centos-5/','/frameworks/django-apache-mod-wsgi/centos-5/']
 modified: 2011-08-22
 modified_by:
   name: Linode
@@ -19,6 +20,11 @@ external_resources:
  - '[Deploying Django Applications](http://www.djangobook.com/en/2.0/chapter12/)'
  - '[A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)'
  - '[Integrating Django and mod\_wsgi](http://code.google.com/p/modwsgi/wiki/IntegrationWithDjango)'
+relations:
+    platform:
+        key: django-apache-modwsgi
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.

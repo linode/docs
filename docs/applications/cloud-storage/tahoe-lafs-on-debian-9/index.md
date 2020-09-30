@@ -3,7 +3,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
-keywords: ["confidential", " encrypted", " integrity", " redundant", " private", " filesystem", " storage"]
+keywords: ["confidential", "encrypted", "integrity", "redundant", "private", "filesystem", "storage"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-24
 modified: 2017-10-26

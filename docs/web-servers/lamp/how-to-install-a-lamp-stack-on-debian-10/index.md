@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install a LAMP stack on a Debian 10. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["debian 10 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 10", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
+tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-19
 modified_by:
@@ -163,9 +164,9 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 {{< /file >}}
 
-1.  Assign ownership of `public_html` directory to the user `$www-data`:
+1.  Assign ownership of `public_html` directory to the user `www-data`:
 
-        sudo chown -R $www-data:$www-data /var/www/html/example.com/public_html
+        sudo chown -R www-data:www-data /var/www/html/example.com/public_html
 
 1. Set the permissions for the `public_html` directory:
 

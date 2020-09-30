@@ -12,6 +12,7 @@ title: How to Manage Your Account with the Linode CLI
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 View or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and do other related tasks through the `account` action:

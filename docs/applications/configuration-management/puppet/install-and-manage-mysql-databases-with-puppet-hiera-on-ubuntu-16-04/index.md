@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use this guide to install Puppet with MySQL modules and Puppet Hiera configuration manifests to manage MySQL in a variety of environments.'
 keywords: ["puppet installation", "configuration change management", "server automation", "mysql", "database", "hiera"]
+tags: ["database","ubuntu","automation","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-11
 modified: 2017-09-11
@@ -21,7 +22,7 @@ external_resources:
   - '[Facter](https://docs.puppet.com/facter/)'
 deprecated: true
 deprecated_link: 'applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/'
-aliases: ['applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/']
+aliases: ['/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/']
 ---
 
 

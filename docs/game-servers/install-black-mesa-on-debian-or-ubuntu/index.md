@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Black Mesa on Debian or Ubuntu'
 keywords: ["black mesa", "steam", "steamcmd", "sourcemod", "metamod"]
+tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-26
 modified: 2019-02-01
@@ -18,7 +19,7 @@ external_resources:
 - '[The Official Black Mesa Wiki](http://wiki.blackmesasource.com/)'
 - '[The Valve Wiki](https://developer.valvesoftware.com/)'
 - '[SourceMod.net](https://www.sourcemod.net)'
-aliases: ['applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
+aliases: ['/applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 dedicated_cpu_link: true
 ---
 

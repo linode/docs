@@ -11,6 +11,7 @@ modified_by:
 published: 2018-09-25
 title: Download Files from your Linode - Shortguide
 headless: true
+tags: ["security"]
 ---
 
 ## Download Specific Files or Directories over SSH

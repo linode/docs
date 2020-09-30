@@ -12,6 +12,7 @@ title: Remove Domains in Cloud Manager
 keywords: ["dns"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 If one of your domain names has expired or if you want to start hosting it on another DNS provider, you should permanently remove the domain and all of its associated DNS records.

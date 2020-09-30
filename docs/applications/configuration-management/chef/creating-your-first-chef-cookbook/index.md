@@ -5,7 +5,7 @@ author:
 description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Chef'
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/configuration-management/creating-your-first-chef-cookbook/','applications/chef/creating-your-first-chef-cookbook/']
+aliases: ['/applications/configuration-management/creating-your-first-chef-cookbook/','/applications/chef/creating-your-first-chef-cookbook/']
 modified: 2019-12-03
 modified_by:
   name: Linode
@@ -17,6 +17,7 @@ external_resources:
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'
  - '[About Knife](https://docs.chef.io/knife.html)'
  - '[About Nodes](https://docs.chef.io/nodes.html)'
+tags: ["automation"]
 ---
 
 Chef cookbooks describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. In this guide you will learn how to create a cookbook that configures A LAMP stack on a Linode.

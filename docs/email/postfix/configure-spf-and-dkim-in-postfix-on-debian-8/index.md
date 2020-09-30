@@ -4,6 +4,7 @@ author:
     email: contribute@linode.com
 description: 'Configure SPF and DKIM in Postfix on Debian 8.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 8", "opendkim", "dns", "dmarc"]
+tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-14
 modified_by:
@@ -20,6 +21,11 @@ external_resources:
  - '[OpenDKIM](http://www.opendkim.org/)'
  - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discussion and additional references.'
  - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
+relations:
+    platform:
+        key: configure-spf-dkim-postfix
+        keywords:
+            - distribution: Debian 8
 ---
 
 {{< note >}}

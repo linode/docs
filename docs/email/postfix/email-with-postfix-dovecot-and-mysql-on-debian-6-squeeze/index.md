@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Debian 6 (Squeeze).'
 keywords: ["postfix debian 6", "dovecot debian 6", "debian 6 mail server", "dovecot", "email", "debian", "squeeze"]
+tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/dovecot-mysql-debian-6-squeeze/']
+aliases: ['/email/postfix/dovecot-mysql-debian-6-squeeze/']
 modified: 2011-07-01
 modified_by:
   name: Linode
 published: 2011-07-01
 title: 'Email with Postfix, Dovecot and MySQL on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: email-postfix-dovecot-mysql
+        keywords:
+            - distribution: Debian 6
 ---
 
 The Postfix Mail Transfer Agent (MTA) is a high performance open source e-mail server system. This guide will help you get Postfix running on your Debian 6 (Squeeze) Linode, using Dovecot for IMAP/POP3 service and MySQL to store information on virtual domains and users. This guide is largely based on Christoph Haas's great [ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny) and HowtoForge [Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny), with some packages omitted.
@@ -267,13 +273,12 @@ This completes configuration for `saslauthd`. Next, you'll configure Dovecot to 
 
 Edit the file `/etc/postfix/master.cf` and add the dovecot service to the bottom of the file.
 
-{{< file >}}
-/etc/postfix/master.cf
+{{< file "/etc/postfix/master.cf" >}}
+ dovecot unix - n n - - pipe
+ :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
+
 {{< /file >}}
 
-> dovecot unix - n n - - pipe
-> :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
->
 Issue the following command to make a backup copy of your `/etc/dovecot/dovecot.conf` file.
 
     cp -a /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.bak

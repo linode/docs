@@ -12,6 +12,7 @@ title: Disable Service Monitoring in Linode Managed
 keywords: ["linode managed"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Service monitoring can be temporarily disabled:

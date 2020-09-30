@@ -12,6 +12,7 @@ title: Remove a User From Your Account
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 You can permanently remove a user account from the Linode Cloud Manager. Here's how:

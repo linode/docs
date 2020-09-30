@@ -5,6 +5,7 @@ author:
 description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
 og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
 keywords: ["two factor authentication", "ssh", "google authenticator", "debian"]
+tags: ["ssh","security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
@@ -17,7 +18,12 @@ contributor:
 external_resources:
 - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
 - '[Linux PAM Documentation](http://www.linux-pam.org/)'
-aliases: ['security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/']
+relations:
+    platform:
+        key: one-time-pass-for-2fa
+        keywords:
+            - distribution: Debian 9
+aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/']
 ---
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on Debian 9. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).

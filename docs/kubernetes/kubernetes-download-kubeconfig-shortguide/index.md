@@ -12,6 +12,7 @@ title: How to Download the kubeconfig File for Your Linode Kubernetes Engine Clu
 keywords: ["kubernetes"]
 headless: true
 show_on_rss_feed: false
+tags: ["kubernetes"]
 ---
 
 Anytime after your cluster is created you can download its *kubeconfig*. The kubeconfig is a YAML file that will allow you to use kubectl to communicate with your cluster. Here is an example kubeconfig file:

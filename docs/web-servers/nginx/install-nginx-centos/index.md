@@ -17,6 +17,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: CentOS 7
+tags: ["web server","nginx"]
 ---
 
 These instructions install NGINX Mainline on CentOS 7 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.

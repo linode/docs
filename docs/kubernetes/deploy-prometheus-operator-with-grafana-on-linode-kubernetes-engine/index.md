@@ -5,8 +5,10 @@ author:
 description: 'Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
 og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
 keywords: ['kubernetes', 'lke', 'prometheus', 'grafana']
+tags: ["monitoring","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
+image: feature.png
 modified_by:
   name: Linode
 title: "How to Deploy Prometheus Operator and Grafana on Linode Kubernetes Engine"
@@ -401,7 +403,7 @@ In this section, you will use `htpasswd` to generate credentials for basic authe
 
 1. Create a Kubernetes Secret for the `monitoring` namespace using the file you created above:
 
-        kubectl -n monitoring create secret generic basic-auth --from-file=auth
+        kubectl -n monitoring create secret generic basic-auth --from-file=~/lke-monitor/auth
 
 1.  Verify that the `basic-auth` secret has been created on your LKE cluster:
 

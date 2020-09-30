@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Debian 5 (Lenny).'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/bulletin-boards/phpbb/debian-5-lenny/']
+aliases: ['/web-applications/bulletin-boards/phpbb/debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2009-09-30
 title: 'Discussion Forums with phpBB on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: Debian 5
 ---
 
 

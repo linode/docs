@@ -12,6 +12,7 @@ title: Deploy a One-Click Marketplace App from Cloud Manager
 keywords: ["one-click", "marketplace"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 1.  Log into the Linode [Cloud Manager](https://cloud.linode.com).

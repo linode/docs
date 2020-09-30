@@ -12,6 +12,7 @@ title: How to Delete a Linode Object Storage Bucket
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 {{< note >}}

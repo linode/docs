@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on CentOS 6'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/centos-6/','websites/lemp/lemp-server-on-centos-6/']
+aliases: ['/lemp-guides/centos-6/','/websites/lemp/lemp-server-on-centos-6/']
 modified: 2013-01-08
 modified_by:
   name: Doug Freed

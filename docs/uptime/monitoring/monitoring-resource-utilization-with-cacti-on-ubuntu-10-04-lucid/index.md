@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Cacti is a powerful server monitoring solution that uses SNMP to track resource usage on Ubuntu 10.04 (Lucid).'
 keywords: ["Cacti", "Ubuntu", "Ubuntu Lucid", "Lucid", "SNMP"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/cacti/ubuntu-10-04-lucid/']
+aliases: ['/server-monitoring/cacti/ubuntu-10-04-lucid/']
 modified: 2013-10-01
 modified_by:
   name: Linode
 published: 2010-05-18
 title: 'Monitoring Resource Utilization with Cacti on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: install-cacti-monitoring
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/deploy-munin-to-monitor-servers-on-ubuntu-12-04) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.

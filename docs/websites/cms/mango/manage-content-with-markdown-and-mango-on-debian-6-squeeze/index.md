@@ -4,14 +4,20 @@ author:
   email: docs@linode.com
 description: 'Mango publishes markdown documents from plain text files into a dynamic website.'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
+tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/cms-guides/mango/debian-6-squeeze/','websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/']
+aliases: ['/web-applications/cms-guides/mango/debian-6-squeeze/','/websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze/']
 modified: 2013-10-02
 modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Manage Content with Markdown and Mango on Debian 6 (Squeeze)'
 deprecated: true
+relations:
+    platform:
+        key: manage-content-with-markdown-and-mango
+        keywords:
+           - distribution: Debian 6
 ---
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.

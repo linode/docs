@@ -12,6 +12,7 @@ modified_by:
 title: "Network Transfer Quota"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 Your *network transfer quota* represents the total monthly amount of traffic your services can use as part of your Linode plans' basic pricing. Each Linode plan includes a specified amount of transfer. Transfer amounts are listed for each plan on the Linode [pricing page](https://www.linode.com/pricing).

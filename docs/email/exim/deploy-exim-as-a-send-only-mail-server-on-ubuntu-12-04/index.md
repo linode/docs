@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: ["exim", "ubuntu 12.04", "send-only email", "mail server", "linux mail", "smtp server"]
+tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/']
+aliases: ['/email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/','/email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/']
 modified: 2014-01-21
 modified_by:
   name: Alex Fornuto
@@ -15,6 +16,11 @@ title: 'Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 '
 external_resources:
  - '[Exim Homepage](http://www.exim.org/)'
  - '[Email Guides](/docs/email/)'
+relations:
+    platform:
+        key: deploy-exim-sendonly-email
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.

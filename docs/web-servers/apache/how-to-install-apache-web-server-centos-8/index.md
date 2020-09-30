@@ -5,6 +5,7 @@ author:
 description: 'Install Apache on your CentOS 8 server, configure virtual hosting, and set up modules and scripting.'
 og_description: 'Install Apache on your CentOS 8 server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "centos", "centos 8", "http", "web server"]
+tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-19
 modified_by:

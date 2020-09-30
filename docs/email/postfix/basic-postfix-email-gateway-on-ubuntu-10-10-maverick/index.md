@@ -3,15 +3,21 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure the Postfix MTA as a basic email gateway.'
-keywords: ["email", "postfix", "mta", "forwarding", ""]
+keywords: ["email", "postfix", "mta", "forwarding"]
+tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/gateway-ubuntu-10-10-maverick/']
+aliases: ['/email/postfix/gateway-ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-11-09
 title: 'Basic Postfix Email Gateway on Ubuntu 10.10 (Maverick)'
 deprecated: true
+relations:
+    platform:
+        key: basic-postifx-gateway
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 Postfix is an efficient, stable, and modern Mail Transfer Agent, or "MTA", used for transmitting email messages between severs on the Internet. Most configurations involving Postfix combine the MTA with a server to allow users to download email using a protocol like IMAP or POP3. This document outlines a very simple configuration of Postfix that makes it possible to forward email, and deliver email to local mailboxes on your Linode instance. This guide *does not* provide any way to download this email or remotely access these mailboxes. In addition, this document provides instructions for sending email with this configuration. If you want to deploy a complete and fully featured email solution that includes the ability download locally delivered email, consider one of our other [postfix email guides](/docs/email/postfix/).

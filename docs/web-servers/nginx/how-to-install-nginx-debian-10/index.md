@@ -5,6 +5,7 @@ author:
 description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Debian 10.'
 og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Debian 10.'
 keywords: ["nginx", "load balancing", "debian", "debian 10", "web server", "static content", "install nginx"]
+tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-14
 modified_by:
@@ -14,12 +15,12 @@ title: How to Install NGINX on Debian 10
 h1_title: Installing NGINX on Debian 10
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
-aliases: ['web-servers/nginx/install-nginx-ubuntu/']
 relations:
     platform:
         key: how-to-install-nginx
         keywords:
             - distribution: Debian 10
+aliases: ['/web-servers/nginx/install-nginx-ubuntu/']
 ---
 
 ## What is NGINX?

@@ -3,7 +3,8 @@ author:
   name: Nick Brewer
   email: docs@linode.com
 description: 'A basic ARK server installation guide for Ubuntu 16.04'
-keywords: ["ark survival evolved", " ubuntu", " server"]
+keywords: ["ark survival evolved", "ubuntu", "server"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
  - '[PlayARK.com](http://www.playark.com/)'
@@ -13,7 +14,7 @@ modified_by:
   name: Linode
 published: 2016-12-28
 title: 'Create an ARK: Survival Evolved Server on Ubuntu 16.04'
-aliases: ['applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
+aliases: ['/applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
 dedicated_cpu_link: true
 ---
 

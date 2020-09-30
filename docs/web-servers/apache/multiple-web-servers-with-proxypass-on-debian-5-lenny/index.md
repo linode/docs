@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
 keywords: ["apache", "proxypass", "apache on debian", "multiple web servers"]
+tags: ["proxy","web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny/','websites/apache/multiple-web-servers-with-proxypass-on-debian-5-lenny/']
+aliases: ['/websites/apache/multiple-web-servers-with-proxypass-on-debian-5-lenny/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode

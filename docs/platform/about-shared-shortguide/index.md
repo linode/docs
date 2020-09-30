@@ -12,6 +12,7 @@ title: Overview About Shared Linode Instances
 keywords: ["shared linodes"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Shared instances start with 1GB of RAM and 1 vCPU and can go all the way up to 192GB of RAM with 32 vCPUs. These instances offer a balanced array of resources and can support a wide range of modern cloud applications, from personal projects to production deployments of an enterprise application.

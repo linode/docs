@@ -5,14 +5,20 @@ author:
   email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Debian 6 (Squeeze).'
 keywords: ["munin", "monitoring"]
+tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/munin/debian-6-squeeze/']
+aliases: ['/server-monitoring/munin/debian-6-squeeze/']
 modified: 2011-11-08
 modified_by:
   name: Tim Heckman
 published: 2011-04-05
 deprecated: true
 title: 'Monitoring Servers with Munin on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Debian 6
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.

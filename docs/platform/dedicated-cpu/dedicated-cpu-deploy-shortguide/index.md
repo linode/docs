@@ -12,6 +12,7 @@ title: How to Deploy a Dedicated CPU in the Linode Cloud Manager
 keywords: ["dedicated CPU"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 {{< image src="dedi-cpu-with-new-manager.gif" alt="Create a Dedicated CPU Linode in the Cloud Manager" title="Create a Dedicated CPU Linode in the Cloud Manager" >}}

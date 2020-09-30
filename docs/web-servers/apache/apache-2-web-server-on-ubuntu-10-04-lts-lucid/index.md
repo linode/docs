@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["apache", "apache ubuntu 10.04", "apache ubuntu lucid", "web server", "apache on ubuntu", "apache lucid"]
+tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/ubuntu-10-04-lucid/','websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/']
+aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/apache/installation/ubuntu-10-04-lucid/']
 modified: 2013-10-04
 modified_by:
   name: Linode

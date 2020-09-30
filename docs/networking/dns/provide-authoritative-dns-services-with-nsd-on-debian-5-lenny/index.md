@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Install and configure NSD to handle DNS queries.'
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
+tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/nsd-authoritative-dns-debian-5-lenny/']
+aliases: ['/dns-guides/nsd-authoritative-dns-debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-01-25
 title: 'Provide Authoritative DNS Services with NSD on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Debian 5
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

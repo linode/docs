@@ -15,6 +15,7 @@ contributor:
 external_resources:
 - '[systemd Wiki](https://www.freedesktop.org/wiki/Software/systemd/)'
 - '[systemd GitHub](https://github.com/systemd/systemd)'
+tags: ["linux"]
 ---
 
 systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups. systemd provides a logging daemon and other tools and utilities to help with common system administration tasks.

@@ -2,14 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-description: >-
-  Install Magento Community Edition on Ubuntu 18.04 to manage your e-commerce
-  site.
-keywords:
-  - magento
-  - ubuntu
-  - e-commerce
-  - magento ubuntu
+description: "Install Magento Community Edition on Ubuntu 18.04 to manage your e-commerce site."
+keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
+tags: ["ubuntu", "ssl", "lamp", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-29
 modified_by:
@@ -17,10 +12,13 @@ modified_by:
 published: 2016-12-28T00:00:00.000Z
 title: Install Magento on Ubuntu 18.04
 external_resources:
-  - >-
-    [Magento
-    Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)
+  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
   - '[Magento Resources Library](https://magento.com/resources)'
+relations:
+    platform:
+        key: how-to-install-magento
+        keywords:
+           - distribution: Ubuntu 18.04
 ---
 
 In this guide you'll learn how to install Magento on Ubuntu 18.04\. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.

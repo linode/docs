@@ -12,6 +12,7 @@ title: Overview About High Memory Linode Instances
 keywords: ["high memory linodes"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 High Memory instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications. As of June 16, 2020, all High Memory plans utilize dedicated CPU cores.

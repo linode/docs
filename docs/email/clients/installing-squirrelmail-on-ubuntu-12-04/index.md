@@ -3,9 +3,10 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu 12.04.'
-keywords: ["squirrelmail", " ubuntu", " 12.04", " mail client"]
+keywords: ["squirrelmail", "ubuntu", "12.04", "mail client"]
+tags: ["ubuntu","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/squirrelmail-ubuntu12-04/']
+aliases: ['/email/squirrelmail-ubuntu12-04/']
 modified: 2014-01-15
 modified_by:
   name: Alex Fornuto
@@ -14,6 +15,11 @@ title: 'Installing SquirrelMail on Ubuntu 12.04'
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 deprecated: true
+relations:
+    platform:
+        key: how-to-install-squirrelmail
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide.

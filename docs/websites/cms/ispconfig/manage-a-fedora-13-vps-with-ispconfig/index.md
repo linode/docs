@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Linode.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
+tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/manage-a-fedora-13-vps-with-ispconfig/','web-applications/control-panels/ispconfig/fedora-13/']
+aliases: ['/web-applications/control-panels/ispconfig/fedora-13/','/websites/cms/manage-a-fedora-13-vps-with-ispconfig/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-10-25
 title: Manage a Fedora 13 Linode with ISPConfig
+relations:
+    platform:
+        key: manage-a-linode-with-ISPConfig
+        keywords:
+           - distribution: Fedora 13
 ---
 
 

@@ -5,14 +5,20 @@ author:
   email: afornuto@linode.com
 description: 'A basic Minecraft server installation for Ubuntu 12.04'
 keywords: ["minecraft", "ubuntu", "ubuntu precise", "12.04"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-on-linode-with-ubuntu-12-04/']
+aliases: ['/web-applications/game-servers/minecraft-ubuntu12-04/','/applications/game-servers/minecraft-on-linode-with-ubuntu-12-04/']
 modified: 2013-10-01
 modified_by:
   name: Linode
 published: 2013-09-30
 title: 'Minecraft on Linode with Ubuntu 12.04'
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: install-minecraft-server
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 This guide shows you how to set up a personal Minecraft server on a Linode running Ubuntu 12.04 LTS (64 bit).

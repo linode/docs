@@ -12,6 +12,7 @@ title: Recover a Username on Your Account
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 Did you forget your Cloud Manager username? Recover it with the *Forgot Username* webpage. Here's how:
