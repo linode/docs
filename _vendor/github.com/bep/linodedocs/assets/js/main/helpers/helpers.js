@@ -12,11 +12,13 @@ function toggleBooleanClass(baseClass, el, truthy) {
 
 	if (truthy) {
 		if (el.classList.contains(isNot)) {
-			el.classList.add(is);
 			el.classList.remove(isNot);
 		}
-	} else if (el.classList.contains(is)) {
-		el.classList.remove(is);
+		el.classList.add(is);
+	} else {
+		if (el.classList.contains(is)) {
+			el.classList.remove(is);
+		}
 		el.classList.add(isNot);
 	}
 }

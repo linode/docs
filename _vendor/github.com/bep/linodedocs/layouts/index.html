@@ -315,7 +315,7 @@
 {{ define "home/section/carousel/item-qa"}}
   <div class="h-40">
     <a :href="item.href" target="_blank">
-      <div x-html="item.excerptTruncated(90)" class="bg-gradient-to-b from-green-500 to-green-600 p-5 text-white font-semibold text-xl w-full h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg"></div>
+      <div x-html="item.excerptTruncated(60)" class="bg-gradient-to-b from-green-500 to-green-600 p-5 text-white font-semibold text-xl break-all w-full h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg"></div>
     </a>
   </div>
 {{ end }}

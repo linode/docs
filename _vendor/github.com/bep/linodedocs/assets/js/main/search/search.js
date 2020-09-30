@@ -528,10 +528,9 @@ class Searcher {
 				let events = [];
 
 				if (this.staticSearchRequestsResults.length > 0) {
-					if (!this.blankSearch.isLoaded()) {
-						throw 'invalid state: blank search not loaded';
+					if (this.blankSearch.isLoaded()) {
+						events.push(dispatcher.events.EVENT_SEARCHRESULT_BLANK);
 					}
-					events.push(dispatcher.events.EVENT_SEARCHRESULT_BLANK);
 				}
 
 				// The staticSearchRequestsResults standalone searches that's not participating in the global

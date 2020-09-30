@@ -9,19 +9,26 @@
     /* These are set by the JS client. */
     --carousel-page: 0;
     --carousel-page-size: 1;
+    --carousel-translatex-factor: var(--carousel-page-size);
 
     /* Calculated. */
     --carousel-slide-width: calc(100% / var(--carousel-page-size));
     --carousel-translate-x: calc(
-        -100% * var(--carousel-page) * var(--carousel-page-size) / var(--carousel-slide-count)
+        -100% * var(--carousel-page) * var(--carousel-translatex-factor) / var(--carousel-slide-count)
     );
 }
 
 @screen mobile {
     .kind-home .carousel {
         /* Important because it needs to override style set in JS. */
-        /* A float because we want to show parts of the third tile to hint at swiping. */
-        --carousel-page-size: 2.2 !important;
+        /* Set it to a float because we want to show parts of the third tile to hint at swiping. */
+        --carousel-page-size: calc(2 + var(--carousel-mobile-overlap)) !important;
+        --carousel-translatex-factor: 2;
+    }
+
+    .kind-home .carousel.is-last-slide {
+        --carousel-page-size: 2 !important;
+        --carousel-translatex-factor: 2;
     }
 }
 
@@ -40,8 +47,7 @@
     @apply shadow-sm;
     width: var(--carousel-slide-width);
 }
-
-@media (hover: hover) and (pointer: fine) {
+. @media (hover: hover) and (pointer: fine) {
     .kind-home .carousel__item {
         @apply hover:shadow-lg;
     }

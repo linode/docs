@@ -26,7 +26,7 @@ var lnHome = {};
 		// No filters are currently applied, and the order will be the order from Algolia.
 		const sectionNames = [ 'docs', 'blog', 'resources', 'marketplace', 'qa' ];
 
-		const newPager = function(pageSize, el, items) {
+		const newPager = function(pageSize, el, items, mobileOverlap = 0.1) {
 			if (!el) {
 				throw 'pager element must be provided';
 			}
@@ -53,24 +53,8 @@ var lnHome = {};
 				}
 				this.index = index;
 				this.el.style.setProperty('--carousel-page', this.index);
+				toggleBooleanClass('last-slide', pager.el, !this.hasNext());
 			};
-
-			pager.adjustIndex(0);
-			pager.el.style.setProperty('--carousel-page-size', pager.pageSize);
-			pager.el.style.setProperty('--carousel-slide-count', pager.items.length);
-
-			if (isTouchDevice()) {
-				lnSwipe.New(el, function(direction) {
-					switch (direction) {
-						case 'left':
-							pager.next();
-							break;
-						case 'right':
-							pager.prev();
-							break;
-					}
-				});
-			}
 
 			pager.ready = function() {
 				return pager.el && pager.items && pager.items.length > 0;
@@ -105,6 +89,24 @@ var lnHome = {};
 				}
 				return progressSlice;
 			};
+
+			pager.adjustIndex(0);
+			pager.el.style.setProperty('--carousel-page-size', pager.pageSize);
+			pager.el.style.setProperty('--carousel-slide-count', pager.items.length);
+			pager.el.style.setProperty('--carousel-mobile-overlap', mobileOverlap);
+
+			if (isTouchDevice()) {
+				lnSwipe.New(el, function(direction) {
+					switch (direction) {
+						case 'left':
+							pager.next();
+							break;
+						case 'right':
+							pager.prev();
+							break;
+					}
+				});
+			}
 
 			return pager;
 		};
@@ -200,7 +202,7 @@ var lnHome = {};
 					this.data.sectionMeta[name] = meta.get(name);
 				});
 				let el = this.$refs[`carousel-products`];
-				this.data.productsTiles = newPager(productsStripPageSize, el, productsItems);
+				this.data.productsTiles = newPager(productsStripPageSize, el, productsItems, 0.5);
 			},
 
 			receiveData: function(results) {
