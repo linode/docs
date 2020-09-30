@@ -5,6 +5,7 @@ author:
 description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
 og_description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
 keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
+tags: ["mysql","kubernetes","container","cms","drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:

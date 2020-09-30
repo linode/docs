@@ -12,6 +12,7 @@ title: Add a Block Storage Volume
 keywords: ["block storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  Click on the **Linodes** link in the sidebar.

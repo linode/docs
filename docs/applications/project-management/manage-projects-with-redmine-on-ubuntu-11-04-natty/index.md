@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system, on an Ubuntu 11.04 LTS (Natty) Linode.'
 keywords: ["redmine", "redmine ubuntu 11.04", "redmine linux", "project management software", "redmine postgresql"]
+tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/project-management/redmine/ubuntu-11-04-natty/']
+aliases: ['/web-applications/project-management/redmine/ubuntu-11-04-natty/']
 modified: 2013-02-18
 modified_by:
   name: Linode

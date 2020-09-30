@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 2018-08-08
 title: Download a Local Copy of your Linode Backup
+tags: ["security"]
 ---
 
 ![Download a Local Copy of your Linode Backup](download-a-local-copy-of-your-linode-backup.png "Download a Local Copy of your Linode Backup")

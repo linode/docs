@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 10.04 (Lucid).'
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 10.04", "lucid"]
+tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/','frameworks/django-apache-mod-python/ubuntu-10-04-lucid/','websites/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/']
+aliases: ['/websites/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/','/development/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/','/frameworks/django-apache-mod-python/ubuntu-10-04-lucid/']
 modified: 2013-09-27
 modified_by:
   name: Linode

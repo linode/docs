@@ -12,6 +12,7 @@ modified_by:
 title: "Use Cases for Linode Object Storage"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

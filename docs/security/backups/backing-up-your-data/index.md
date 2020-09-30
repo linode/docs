@@ -14,6 +14,7 @@ title: Backing Up Your Data
 external_resources:
  - '[rsync Man Page](http://linux.die.net/man/1/rsync)'
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
+tags: ["security"]
 ---
 
 ![Backing Up Your Data](Backing_Up_Your_Data_smg.jpg)

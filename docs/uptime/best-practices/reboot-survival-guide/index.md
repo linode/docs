@@ -10,7 +10,7 @@ modified_by:
   name: Alex Fornuto
 published: 2015-02-27
 title: Reboot Survival Guide
-aliases: ['uptime/reboot-survival-guide/']
+aliases: ['/uptime/reboot-survival-guide/']
 ---
 
 ![Reboot Survival Guide](reboot-survival-guide.png "Reboot Survival Guide")
@@ -57,7 +57,7 @@ If you aren't implementing a system wide backups solution like Linode Backups, y
 For future reboots, ensure that any critical stack software is configured to start at boot. This differs depending on operating systems.
 
 {{< note >}}
-This guide is a high-level overview, and does not discuss runlevels. Read more about runlevels [here](https://www.centos.org/docs/5/html/5.2/Installation_Guide/s2-init-boot-shutdown-rl.html).
+This guide is a high-level overview, and does not discuss runlevels. Read more about runlevels [here](https://en.wikipedia.org/wiki/Runlevel).
 {{< /note >}}
 
 ### Debian and Ubuntu

@@ -6,7 +6,7 @@ author:
 description: 'An introduction to mod_alias for managing file system resources with the Apache web server.'
 keywords: ["resources", "http", "files", "management", "mod_alias", "Alias", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/managing-resources-with-apache-alias/','websites/apache-tips-and-tricks/managing-resources-with-apache-modalias/']
+aliases: ['/websites/apache-tips-and-tricks/managing-resources-with-apache-modalias/','/web-servers/apache/configuration/managing-resources-with-apache-alias/']
 modified: 2011-08-22
 modified_by:
   name: Linode
@@ -19,6 +19,7 @@ external_resources:
  - '[Guide for URL Rewriting with Apache](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/)'
  - '[Troubleshooting Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
  - '[Linode User Community](http://linode.com/community/)'
+tags: ["web server","apache"]
 ---
 
 In many cases, all of the resources served by an Apache host are located in that host's `DocumentRoot`. The `DocumentRoot` is a directory specified in the `<VirtualHost>` configuration block. This directory is intended to represent the various files, directories, and resources that users access over HTTP on the file system. However, it is common for administrators to provide HTTP access to a resource on the file system which is *not* located in the `DocumentRoot`. While Apache will follow symbolic links in some situations, this can be difficult to maintain. As a result Apache makes it possible to specify an `Alias` that connects a location in the request to an alternate location.

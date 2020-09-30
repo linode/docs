@@ -5,6 +5,7 @@ author:
 description: 'Deploy a Shadowsocks Server on Linode using One-Click Apps.'
 og_description: 'Deploy a Shadowsocks Server on Linode using One-Click Apps.'
 keywords: ['shadowsocks','one-click', 'server']
+tags: ["proxy","cloud-manager","linode platform","security","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
 modified: 2020-03-18

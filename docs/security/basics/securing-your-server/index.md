@@ -5,8 +5,9 @@ author:
 description: 'This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.'
 og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
+tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/basics/','securing-your-server/','security/linux-security-basics/','security/securing-your-server/','security/securing-your-server/index.cfm/']
+aliases: ['/security/securing-your-server/','/security/securing-your-server/index.cfm/','/security/linux-security-basics/','/security/basics/','/securing-your-server/']
 modified: 2019-08-19
 modified_by:
   name: Linode
@@ -287,6 +288,8 @@ How to remove the offending packages will differ depending on your distribution'
 Run `ss -atup` again to verify that the unwanted services are no longer running.
 
 ## Configure a Firewall
+
+{{< content "cloud-firewall-shortguide" >}}
 
 Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 

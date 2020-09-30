@@ -11,6 +11,7 @@ modified_by:
 title: "Object Storage Pricing and Limitations"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

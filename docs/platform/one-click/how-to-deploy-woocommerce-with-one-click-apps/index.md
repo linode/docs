@@ -5,13 +5,14 @@ author:
 description: 'Use One-Click Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. WooCommerce allows you to build a marketplace where you can sell both digital and physical products. You can also customize WooCommerce to match your WordPress site''s theme and branding.'
 og_description:  'Use One-Click Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. WooCommerce allows you to build a marketplace where you can sell both digital and physical products. You can also customize WooCommerce to match your WordPress site''s theme and branding.'
 keywords: ['woocommerce','wordpress','one-click apps','ecommerce','e-commerce','cms']
+tags: ["cloud-manager","linode platform","cms","wordpress","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
 modified_by:
   name: Linode
 title: "How to Deploy WooCommerce with One-Click Apps"
 h1_title: "Deploying WooCommerce with One-Click Apps"
-aliases: ['platform/one-click/one-click-woocommerce/']
+aliases: ['/platform/one-click/one-click-woocommerce/']
 contributor:
   name: Linode
 external_resources:

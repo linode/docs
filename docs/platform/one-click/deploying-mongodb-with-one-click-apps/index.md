@@ -5,6 +5,7 @@ author:
 description: 'Deploy MongoDB on Linode using One-Click Apps.'
 og_description: 'Deploy MongoDB on Linode using One-Click Apps.'
 keywords: ['mongodb','one-click', 'one-click apps']
+tags: ["linode platform","database","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2020-03-11
@@ -12,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy MongoDB with One-Click Apps"
 h1_title: "Deploying MongoDB with One-Click Apps"
+image: feature.png
 contributor:
   name: Linode
 external_resources:

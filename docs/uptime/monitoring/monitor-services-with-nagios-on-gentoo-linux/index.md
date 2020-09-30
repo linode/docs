@@ -6,7 +6,7 @@ author:
 description: 'Use Nagios to monitor services and send status updates on your Gentoo Linode.'
 keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/nagios/gentoo/']
+aliases: ['/server-monitoring/nagios/gentoo/']
 modified: 2013-10-01
 modified_by:
   name: Linode
@@ -17,6 +17,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Gentoo
+tags: ["monitoring"]
 ---
 
 

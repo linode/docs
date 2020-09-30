@@ -5,6 +5,7 @@ author:
 description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
 og_description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
+tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
 modified_by:
@@ -15,7 +16,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
-aliases: ['applications/containers/kubernetes/static-site-linode-kubernetes-engine/','applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/']
+aliases: ['/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/static-site-linode-kubernetes-engine/']
 ---
 
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.
@@ -234,11 +235,10 @@ In this section you will create a Docker container for your static site, which y
 
     {{< file "lke-example/Dockerfile" >}}
 # Install the latest Debain operating system.
-FROM debian:latest as HUGO
+FROM alpine:3.12.0 as HUGO
 
 # Install Hugo.
-RUN apt-get update -y
-RUN apt-get install hugo -y
+RUN apk update && apk add hugo
 
 # Copy the contents of the current working directory to the
 # static-site directory.

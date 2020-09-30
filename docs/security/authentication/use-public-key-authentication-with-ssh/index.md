@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Access your Linode via SSH using Public Key authentication.'
 keywords: ["ssh", "public key"]
+tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/ssh-keys/', 'tools-reference/ssh/use-public-key-authentication-with-ssh/','security/use-public-key-authentication-with-ssh/','security/authentication/use-public-key-authentication-with-ssh/']
+aliases: ['/security/authentication/use-public-key-authentication-with-ssh/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/ssh-keys/']
 modified_by:
   name: Linode
 published: 2011-04-05

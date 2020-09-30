@@ -12,6 +12,7 @@ title: Add Users to Your Account
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 When you add a user, you give that individual permission to log in to the Linode Cloud Manager and, depending on the access level they are assigned, receive email notifications. There are two types of users: *Restricted users*, who have limited access to the Linode Cloud Manager, and *unrestricted users*, who have full access.

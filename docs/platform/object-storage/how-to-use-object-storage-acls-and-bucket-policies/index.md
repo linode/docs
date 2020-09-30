@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
 keywords: ['object storage','acl','access control list','bucket policy','bucket policies']
+tags: ["linode platform","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
 modified_by:

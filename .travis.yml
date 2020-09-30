@@ -18,5 +18,12 @@ before_install:
     fi
   - sleep 7
 
+before_script:
+  - if [ $TRAVIS_BRANCH == master ]; then
+      git remote set-branches --add origin master;
+      git fetch --unshallow;
+    fi
+  - sleep 7
+
 script:
   - ./ci/scripts/$TEST_SUITE.sh

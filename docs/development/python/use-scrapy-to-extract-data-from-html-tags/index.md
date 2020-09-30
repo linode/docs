@@ -18,6 +18,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
+tags: ["python"]
 ---
 
 ![Use Scrapy to Extract Data from HTML Tags](Use-Scrapy-to-Extract-Data-From-HTML-Tags-smg.jpg)

@@ -17,6 +17,7 @@ modified_by:
   name: Linode
 title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
 dedicated_cpu_link: true
+tags: ["debian","analytics","database","monitoring"]
 ---
 
 

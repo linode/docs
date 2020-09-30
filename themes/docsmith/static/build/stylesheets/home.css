@@ -22602,7 +22602,13 @@ body.admin-bar .c-site-header {
   transition: opacity 0.175s ease-out, transform 0.25s ease-out;
   transition: opacity 0.175s ease-out, transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
   will-change: position, transform;
+  display: initial;
   padding-top: 108px;
+}
+@media (max-width: 61.99em) {
+  .c-sub-menu {
+    display: none;
+  }
 }
 .c-sub-menu.active,
 .c-sub-menu:focus-within {
@@ -22811,11 +22817,17 @@ body.admin-bar .c-site-header {
           justify-content: center;
 }
 .c-sub-menu--mobile {
+  display: none;
   font-size: 18px;
   line-height: 1.33333;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   letter-spacing: 0;
+}
+@media (max-width: 61.99em) {
+  .c-sub-menu--mobile {
+    display: initial;
+  }
 }
 .c-sub-menu--mobile .o-layout__colset {
   border-bottom: 0;

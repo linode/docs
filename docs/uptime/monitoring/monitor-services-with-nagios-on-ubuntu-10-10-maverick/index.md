@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.10 (Maverick) Linode.'
 keywords: ["nagios", "monitoring"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/nagios/ubuntu-10-10-maverick/']
+aliases: ['/server-monitoring/nagios/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

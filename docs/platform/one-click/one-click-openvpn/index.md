@@ -3,7 +3,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Deploy an OpenVPN Server on Linode with One-Click Apps.'
-keywords: ['vpn','openvpn','tunnel',one-click app']
+keywords: ['vpn','openvpn','tunnel','one-click app']
+tags: ["ssl","cloud-manager","linode platform","security","one-click","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
 modified_by:

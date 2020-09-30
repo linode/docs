@@ -12,6 +12,7 @@ title: How to Find the Disks/Config Section in the Cloud Manager
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 You can find your Linode's disks in the **Disks/Configs** tab of the Linode's detail page.

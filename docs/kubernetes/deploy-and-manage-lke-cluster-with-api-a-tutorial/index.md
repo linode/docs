@@ -14,7 +14,8 @@ title: "Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode
 h1_title: "A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine and the Linode API"
 contributor:
   name: Linode
-aliases: ['applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
+aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
+tags: ["kubernetes"]
 ---
 
 ## What is the Linode Kubernetes Engine (LKE)?
@@ -259,7 +260,7 @@ You can use the Linode API to access details about an individual LKE cluster. Yo
 |-------|-------|
 | `clusterId` | ID of the LKE cluster to lookup. |
 
-To view your LKE cluster, send a `GET` request to the the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID:
+To view your LKE cluster, send a `GET` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID:
 
     curl -H "Authorization: Bearer $TOKEN" \
             https://api.linode.com/v4/lke/clusters/12345

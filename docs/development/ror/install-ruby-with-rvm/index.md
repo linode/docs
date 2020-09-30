@@ -12,6 +12,7 @@ modified_by:
 headless: true
 show_on_rss_feed: false
 title: 'Install Ruby Using RVM'
+tags: ["ruby"]
 ---
 
 1.  Install the mpapis GPG key:

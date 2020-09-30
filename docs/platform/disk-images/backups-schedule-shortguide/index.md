@@ -12,6 +12,7 @@ title: How to Schedule Your Backups with the Linode Backup Service
 keywords: ["backups"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 You can configure when automatic backups are initiated. Here's how:
