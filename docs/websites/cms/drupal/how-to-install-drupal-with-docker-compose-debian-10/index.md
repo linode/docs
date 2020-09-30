@@ -13,7 +13,7 @@ published: 2020-02-18
 title: How to Install Drupal with Docker Compose on Debian 10
 h1_title: Install Drupal with Docker Compose on Debian 10
 relations:
-    websites:
+    platform:
         key: how-to-install-drupal-docker-compose
         keywords:
            - distribution: Debian 10

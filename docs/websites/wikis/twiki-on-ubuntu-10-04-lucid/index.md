@@ -14,7 +14,7 @@ modified_by:
 published: 2011-02-15
 title: 'TWiki on Ubuntu 10.04 (Lucid)'
 relations:
-    websites:
+    platform:
         key: install-twiki
         keywords:
            - distribution: Ubuntu 10.04

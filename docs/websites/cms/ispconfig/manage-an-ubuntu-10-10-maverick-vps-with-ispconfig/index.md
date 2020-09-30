@@ -14,7 +14,7 @@ published: 2010-10-29
 title: 'Manage an Ubuntu 10.10 (Maverick) Linode with ISPConfig'
 deprecated: true
 relations:
-    websites:
+    platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Ubuntu 10.10

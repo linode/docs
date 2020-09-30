@@ -14,7 +14,7 @@ published: 2011-04-05
 title: TWiki on CentOS 5
 deprecated: true
 relations:
-    websites:
+    platform:
         key: install-twiki
         keywords:
            - distribution: CentOS 5

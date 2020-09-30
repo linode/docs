@@ -19,7 +19,7 @@ external_resources:
 - '[Ghost API Documentation](https://api.ghost.org/v1.0.0)'
 - '[Ghost on Docker Hub](https://docs.docker.com/samples/library/ghost/)'
 relations:
-    websites:
+    platform:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Docker

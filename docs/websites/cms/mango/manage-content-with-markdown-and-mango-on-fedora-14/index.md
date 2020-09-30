@@ -14,7 +14,7 @@ modified_by:
 published: 2011-04-05
 title: Manage Content with Markdown and Mango on Fedora 14
 relations:
-    websites:
+    platform:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Fedora 14

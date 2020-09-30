@@ -17,7 +17,7 @@ external_resources:
  - '[Confluence Homepage](http://www.atlassian.com/software/confluence/)'
  - '[Confluence Documentation](http://confluence.atlassian.com/display/DOC/Confluence+Documentation+Home)'
 relations:
-    websites:
+    platform:
         key: using-confluence
         keywords:
            - distribution: CentOS 5

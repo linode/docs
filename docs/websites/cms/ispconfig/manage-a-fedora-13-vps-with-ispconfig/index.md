@@ -14,7 +14,7 @@ modified_by:
 published: 2010-10-25
 title: Manage a Fedora 13 Linode with ISPConfig
 relations:
-    websites:
+    platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Fedora 13

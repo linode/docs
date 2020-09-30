@@ -13,7 +13,7 @@ modified_by:
 published: 2011-09-16
 title: 'OpenCart on Debian 6 (Squeeze)'
 relations:
-    websites:
+    platform:
         key: how-to-install-opencart
         keywords:
            - distribution: Debian 6

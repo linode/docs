@@ -14,7 +14,7 @@ published: 2012-10-18
 title: 'Ikiwiki on Ubuntu 12.04 (Precise Pangolin)'
 deprecated: true
 relations:
-    websites:
+    platform:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 12.04

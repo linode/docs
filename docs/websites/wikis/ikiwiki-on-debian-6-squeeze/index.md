@@ -14,7 +14,7 @@ published: 2011-04-05
 title: 'Ikiwiki on Debian 6 (Squeeze)'
 deprecated: true
 relations:
-    websites:
+    platform:
         key: using-ikiwiki
         keywords:
            - distribution: Debian 6

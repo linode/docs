@@ -19,7 +19,7 @@ external_resources:
  - '[WP-CLI Commands](http://wp-cli.org/commands/)'
  - '[WP-CLI Community Commands](https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands)'
 relations:
-    websites:
+    platform:
         key: how-to-install-wordpress-using-wp-cli
         keywords:
            - distribution: Ubuntu 14.04

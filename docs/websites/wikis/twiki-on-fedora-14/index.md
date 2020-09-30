@@ -14,7 +14,7 @@ modified_by:
 published: 2011-04-05
 title: TWiki on Fedora 14
 relations:
-    websites:
+    platform:
         key: install-twiki
         keywords:
            - distribution: Fedora 14

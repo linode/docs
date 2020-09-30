@@ -18,7 +18,7 @@ external_resources:
 - '[Ghost Theme Documentation](https://ghost.org/docs/api/v3/handlebars-themes/)'
 - '[Ghost API Documentation](https://ghost.org/docs/api/v3/)'
 relations:
-    websites:
+    platform:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Debian 10

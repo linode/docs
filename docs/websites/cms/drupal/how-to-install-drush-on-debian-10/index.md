@@ -19,7 +19,7 @@ external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'
 relations:
-    websites:
+    platform:
         key: how-to-install-drush
         keywords:
            - distribution: Debian 10

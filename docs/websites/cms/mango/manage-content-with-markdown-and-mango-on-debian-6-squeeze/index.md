@@ -14,7 +14,7 @@ published: 2011-04-05
 title: 'Manage Content with Markdown and Mango on Debian 6 (Squeeze)'
 deprecated: true
 relations:
-    websites:
+    platform:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Debian 6

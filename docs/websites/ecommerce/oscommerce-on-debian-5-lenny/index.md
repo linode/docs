@@ -13,7 +13,7 @@ modified_by:
 published: 2010-01-22
 title: 'osCommerce on Debian 5 (Lenny)'
 relations:
-    websites:
+    platform:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Debian 5

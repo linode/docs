@@ -19,7 +19,7 @@ external_resources:
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
  - '[Backup and Migrate](https://www.drupal.org/docs/8/modules/backup-and-migrate/howto-for-backup-and-migrate)'
 relations:
-    websites:
+    platform:
         key: how-to-install-drupal-themes
         keywords:
            - distribution: Debian 10

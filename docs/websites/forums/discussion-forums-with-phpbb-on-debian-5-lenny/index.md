@@ -14,7 +14,7 @@ modified_by:
 published: 2009-09-30
 title: 'Discussion Forums with phpBB on Debian 5 (Lenny)'
 relations:
-    websites:
+    platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Debian 5

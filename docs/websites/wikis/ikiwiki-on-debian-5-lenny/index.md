@@ -14,7 +14,7 @@ modified_by:
 published: 2011-01-31
 title: 'Ikiwiki on Debian 5 (Lenny)'
 relations:
-    websites:
+    platform:
         key: using-ikiwiki
         keywords:
            - distribution: Debian 5

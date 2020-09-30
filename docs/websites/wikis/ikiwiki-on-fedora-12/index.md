@@ -14,7 +14,7 @@ modified_by:
 published: 2010-03-23
 title: Ikiwiki on Fedora 12
 relations:
-    websites:
+    platform:
         key: using-ikiwiki
         keywords:
            - distribution: fedora-12

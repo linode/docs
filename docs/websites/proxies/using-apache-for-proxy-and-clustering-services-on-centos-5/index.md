@@ -17,7 +17,7 @@ external_resources:
  - '[Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)'
 relations:
-    websites:
+    platform:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: CentOS 5

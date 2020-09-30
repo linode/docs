@@ -13,7 +13,7 @@ modified_by:
 published: 2010-10-13
 title: osCommerce on Fedora 13
 relations:
-    websites:
+    platform:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Fedora 13

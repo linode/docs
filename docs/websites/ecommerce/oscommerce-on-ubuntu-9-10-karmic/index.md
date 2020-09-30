@@ -13,7 +13,7 @@ modified_by:
 published: 2010-02-08
 title: 'osCommerce on Ubuntu 9.10 (Karmic)'
 relations:
-    websites:
+    platform:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Ubuntu 9.10

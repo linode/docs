@@ -14,7 +14,7 @@ published: 2020-02-29
 title: How to Install Drupal using Drush on Ubuntu 18.04
 h1_title: Install Drupal using Drush on Ubuntu 18.04
 relations:
-    websites:
+    platform:
         key: how-to-install-drupal-drush
         keywords:
            - distribution: Ubuntu 18.04

@@ -14,7 +14,7 @@ published: 2012-10-24
 title: 'TWiki on Ubuntu 12.04 (Precise Pangolin)'
 deprecated: true
 relations:
-    websites:
+    platform:
         key: install-twiki
         keywords:
            - distribution: Ubuntu 12.04

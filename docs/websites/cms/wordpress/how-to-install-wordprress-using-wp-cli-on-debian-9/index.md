@@ -20,7 +20,7 @@ external_resources:
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
 - '[WP-CLI Tools](https://make.wordpress.org/cli/handbook/tools/)'
 relations:
-    websites:
+    platform:
         key: how-to-install-wordpress-using-wp-cli
         keywords:
            - distribution: Debian 9

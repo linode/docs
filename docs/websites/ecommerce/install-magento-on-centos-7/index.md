@@ -15,7 +15,7 @@ external_resources:
  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
  - '[Magento Resources Library](https://magento.com/resources)'
 relations:
-    websites:
+    platform:
         key: how-to-install-magento
         keywords:
            - distribution: CentOS 7

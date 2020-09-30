@@ -12,7 +12,7 @@ published: 2020-02-18
 title: How to Install and Configure Drupal on CentOS 8
 h1_title: Install and Configure Drupal on CentOS 8
 relations:
-    websites:
+    platform:
         key: how-to-install-drupal
         keywords:
            - distribution: centOS 8

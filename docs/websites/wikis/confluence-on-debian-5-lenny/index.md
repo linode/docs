@@ -14,7 +14,7 @@ modified_by:
 published: 2010-09-06
 title: 'Confluence on Debian 5 (Lenny)'
 relations:
-    websites:
+    platform:
         key: using-confluence
         keywords:
            - distribution: Debian 5

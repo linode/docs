@@ -14,7 +14,7 @@ modified_by:
 published: 2011-04-05
 title: Discussion Forums with phpBB on Fedora 14
 relations:
-    websites:
+    platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Fedora 14

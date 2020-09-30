@@ -14,7 +14,7 @@ modified_by:
 published: 2010-09-05
 title: 'Confluence on Ubuntu 10.04 (Lucid)'
 relations:
-    websites:
+    platform:
         key: using-confluence
         keywords:
            - distribution: Ubuntu 10.04

@@ -14,7 +14,7 @@ modified_by:
 published: 2011-04-05
 title: 'Manage a Debian 6 (Squeeze) Linode with ISPConfig'
 relations:
-    websites:
+    platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Debian 6

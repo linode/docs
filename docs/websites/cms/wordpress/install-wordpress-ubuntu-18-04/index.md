@@ -16,7 +16,7 @@ external_resources:
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 relations:
-    websites:
+    platform:
         key: how-to-install-wordpress
         keywords:
            - distribution: Ubuntu 18.04

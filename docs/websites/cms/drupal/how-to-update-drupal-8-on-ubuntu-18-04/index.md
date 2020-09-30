@@ -14,7 +14,7 @@ published: 2020-02-21
 title: How to Update Drupal 8 on Ubuntu 18.04
 h1_title: Update Drupal 8 on Ubuntu 18.04
 relations:
-    websites:
+    platform:
         key: how-to-update-drupal-8
         keywords:
            - distribution: Ubuntu 18.04

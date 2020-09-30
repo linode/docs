@@ -19,7 +19,7 @@ external_resources:
  - '[phpBB Modifications](http://www.phpbb.com/mods/)'
  - '[Modifications Forum](http://www.phpbb.com/community/viewforum.php?f=81)'
 relations:
-    websites:
+    platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: CentOS 5

@@ -13,7 +13,7 @@ modified_by:
 published: 2010-01-18
 title: 'Magento on Debian 5 (Lenny)'
 relations:
-    websites:
+    platform:
         key: how-to-install-magento
         keywords:
            - distribution: Debian 5

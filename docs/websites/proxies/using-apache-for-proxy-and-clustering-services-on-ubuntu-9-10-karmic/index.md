@@ -14,7 +14,7 @@ published: 2010-03-24
 title: 'Using Apache for Proxy and Clustering Services on Ubuntu 9.10 (Karmic)'
 deprecated: true
 relations:
-    websites:
+    platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 9.10

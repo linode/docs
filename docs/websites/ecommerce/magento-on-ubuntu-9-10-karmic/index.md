@@ -13,7 +13,7 @@ modified_by:
 published: 2010-02-05
 title: 'Magento on Ubuntu 9.10 (Karmic)'
 relations:
-    websites:
+    platform:
         key: how-to-install-magento
         keywords:
            - distribution: Ubuntu 9.10

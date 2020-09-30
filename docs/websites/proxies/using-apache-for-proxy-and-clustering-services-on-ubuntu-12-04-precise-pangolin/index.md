@@ -14,7 +14,7 @@ modified_by:
 published: 2012-10-18
 title: 'Using Apache for Proxy and Clustering Services on Ubuntu 12.04 (Precise Pangolin)'
 relations:
-    websites:
+    platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 12.04

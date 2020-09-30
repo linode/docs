@@ -14,7 +14,7 @@ modified_by:
 published: 2010-09-09
 title: Confluence on Fedora 13
 relations:
-    websites:
+    platform:
         key: using-confluence
         keywords:
            - distribution: Fedora 13

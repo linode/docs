@@ -13,7 +13,7 @@ modified_by:
 published: 2011-09-20
 title: OpenCart on CentOS 6
 relations:
-    websites:
+    platform:
         key: how-to-install-opencart
         keywords:
            - distribution: CentOS 6

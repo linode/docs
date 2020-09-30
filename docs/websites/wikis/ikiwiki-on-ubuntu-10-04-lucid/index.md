@@ -14,7 +14,7 @@ modified_by:
 published: 2011-04-05
 title: 'Ikiwiki on Ubuntu 10.04 (Lucid)'
 relations:
-    websites:
+    platform:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 10.04

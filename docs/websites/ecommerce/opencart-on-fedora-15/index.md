@@ -13,7 +13,7 @@ modified_by:
 published: 2011-09-27
 title: OpenCart on Fedora 15
 relations:
-    websites:
+    platform:
         key: how-to-install-opencart
         keywords:
            - distribution: Fedora 15

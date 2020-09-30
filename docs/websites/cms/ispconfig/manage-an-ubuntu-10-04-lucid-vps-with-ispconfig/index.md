@@ -14,7 +14,7 @@ modified_by:
 published: 2010-05-19
 title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 relations:
-    websites:
+    platform:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Ubuntu 10.04

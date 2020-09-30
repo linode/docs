@@ -21,7 +21,7 @@ external_resources:
 - '[Ghost Theme Documentation](https://themes.ghost.org/v1.0.0)'
 - '[Ghost API Documentation](https://api.ghost.org/v1.0.0)'
 relations:
-    websites:
+    platform:
         key: how-to-install-ghost-cms
         keywords:
            - distribution: Ubuntu 16.04

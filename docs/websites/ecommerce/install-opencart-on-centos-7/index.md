@@ -17,7 +17,7 @@ external_resources:
  - '[OpenCart Documentation](http://docs.opencart.com/)'
  - '[OpenCart Community Forums](http://forum.opencart.com/)'
 relations:
-    websites:
+    platform:
         key: how-to-install-opencart
         keywords:
            - distribution: CentOS 7

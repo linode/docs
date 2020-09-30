@@ -14,7 +14,7 @@ modified_by:
 published: 2011-04-05
 title: 'Discussion Forums with phpBB on Debian 6 (Squeeze)'
 relations:
-    websites:
+    platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Debian 6

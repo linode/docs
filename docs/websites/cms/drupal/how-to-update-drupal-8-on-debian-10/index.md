@@ -14,7 +14,7 @@ published: 2020-02-21
 title: How to Update Drupal 8 on Debian 10
 h1_title: Update Drupal 8 on Debian 10
 relations:
-    websites:
+    platform:
         key: how-to-update-drupal-8
         keywords:
            - distribution: Debian 10

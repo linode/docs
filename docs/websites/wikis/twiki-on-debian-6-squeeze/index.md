@@ -14,7 +14,7 @@ published: 2011-04-05
 title: 'TWiki on Debian 6 (Squeeze)'
 deprecated: true
 relations:
-    websites:
+    platform:
         key: install-twiki
         keywords:
            - distribution: Debian 6

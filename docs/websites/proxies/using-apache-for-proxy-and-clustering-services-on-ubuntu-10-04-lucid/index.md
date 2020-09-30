@@ -14,7 +14,7 @@ modified_by:
 published: 2010-05-04
 title: 'Using Apache for Proxy and Clustering Services on Ubuntu 10.04 (Lucid)'
 relations:
-    websites:
+    platform:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 10.04

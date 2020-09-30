@@ -13,7 +13,7 @@ published: 2020-02-18
 title: How to Install Drupal with Docker Compose on Ubuntu 18.04
 h1_title: Install Drupal with Docker Compose on Ubuntu 18.04
 relations:
-    websites:
+    platform:
         key: how-to-install-drupal-docker-compose
         keywords:
            - distribution: Ubuntu 18.04
