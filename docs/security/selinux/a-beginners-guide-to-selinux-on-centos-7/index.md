@@ -18,6 +18,11 @@ external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
  - '[CentOS SELinux Wiki](https://wiki.centos.org/HowTos/SELinux)'
+relations:
+    platform:
+        key: get-started-selinux
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![Getting Started with SELinux](selinux_centos.jpg)

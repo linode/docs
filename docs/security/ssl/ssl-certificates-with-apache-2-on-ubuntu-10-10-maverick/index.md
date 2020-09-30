@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-12-07
 title: 'SSL Certificates with Apache 2 on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

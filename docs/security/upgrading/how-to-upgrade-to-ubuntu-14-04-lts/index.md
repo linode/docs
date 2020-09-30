@@ -12,6 +12,11 @@ modified_by:
   name: Dave Russell
 published: 2014-10-21
 title: 'How to Upgrade to Ubuntu 14.04 LTS'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 ![How to Upgrade to Ubuntu 14.04 LTS](How_to_Upgrade_to_Ubuntu_1404_LTS_smg.jpg)
