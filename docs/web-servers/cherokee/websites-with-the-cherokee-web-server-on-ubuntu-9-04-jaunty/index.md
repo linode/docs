@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-09-14
 title: 'Websites with the Cherokee Web Server on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key: install-cherokee-server
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 

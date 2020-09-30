@@ -13,6 +13,11 @@ modified_by:
 published: 2011-01-07
 title: 'Nginx and PHP-FastCGI on Fedora 14'
 deprecated: true
+relations:
+    platform:
+        key: nginx-php-fastcgi
+        keywords:
+            - distribution: Fedora 13
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Fedora 14 system.

@@ -15,6 +15,11 @@ contributor:
   link: https://github.com/streamer45
 external_resources:
 - '[Caddy Official Documentation](https://caddyserver.com/docs)'
+relations:
+    platform:
+        key: install-caddy-server
+        keywords:
+            - distribution: Arch Linux
 tags: ["web server"]
 ---
 

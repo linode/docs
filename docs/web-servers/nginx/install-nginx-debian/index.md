@@ -10,6 +10,11 @@ modified_by:
   name: Linode
 published: 2018-03-20
 title: Install NGINX on Debian from the Official NGINX Repository
+relations:
+    platform:
+        key: how-to-install-nginx
+        keywords:
+            - distribution: Debian 9
 tags: ["web server","nginx"]
 ---
 

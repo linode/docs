@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-10-29
 title: 'Apache 2 Web Server on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

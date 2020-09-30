@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2014-02-07
 title: Install a LEMP Stack on Debian 9
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Debian 9
 ---
 
 ## What is a LEMP Stack?

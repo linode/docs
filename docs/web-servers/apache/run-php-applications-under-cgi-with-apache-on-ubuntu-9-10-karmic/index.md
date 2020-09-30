@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-02-17
 title: 'Run PHP Applications under CGI with Apache on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

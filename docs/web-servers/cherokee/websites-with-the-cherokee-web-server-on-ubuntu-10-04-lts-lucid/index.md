@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Websites with the Cherokee Web Server on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: install-cherokee-server
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

@@ -17,6 +17,11 @@ external_resources:
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Debian 14.04
 ---
 
 ![Lamp on Ubuntu 14.04](lamp-on-ubuntu-1404-title-graphic.jpg "Lamp on Ubuntu 14.04")

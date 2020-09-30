@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2012-11-13
 title: 'Use uWSGI to deploy Python apps with Nginx on Ubuntu 12.04'
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.

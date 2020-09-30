@@ -17,6 +17,11 @@ external_resources:
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Arch Linux
 tags: ["web server","php","mysql","apache","lamp"]
 ---
 

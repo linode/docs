@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-07-08
 title: LEMP Server on Arch Linux
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Arch Linux
 tags: ["lemp","web server","php","mysql","nginx"]
 ---
 

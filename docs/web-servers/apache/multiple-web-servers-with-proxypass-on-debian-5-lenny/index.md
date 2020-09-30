@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-11-30
 title: 'Multiple Web Servers with ProxyPass on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: multiple-servers-proxypass
+        keywords:
+            - distribution: Debian 5
 ---
 
 

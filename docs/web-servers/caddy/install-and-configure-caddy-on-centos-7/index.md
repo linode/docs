@@ -16,6 +16,11 @@ contributor:
   link: https://github.com/coocheenin
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
+relations:
+    platform:
+        key: install-caddy-server
+        keywords:
+            - distribution: CentOS 7
 ---
 
 

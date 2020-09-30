@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: Multiple Web Servers with ProxyPass on Fedora 14
+relations:
+    platform:
+        key: multiple-servers-proxypass
+        keywords:
+            - distribution: Fedora 14
 ---
 
 

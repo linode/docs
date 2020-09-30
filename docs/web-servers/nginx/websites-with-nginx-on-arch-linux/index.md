@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 2011-02-02
 title: Websites with NGINX on Arch Linux
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Arch Linux
 tags: ["web server","nginx"]
 ---
 

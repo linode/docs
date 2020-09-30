@@ -12,6 +12,11 @@ published: 2018-03-19
 show_on_rss_feed: false
 headless: true
 title: Install NGINX on Ubuntu from the Official NGINX Repository
+relations:
+    platform:
+        key: how-to-install-nginx
+        keywords:
+            - distribution: CentOS 7
 tags: ["web server","nginx"]
 ---
 
