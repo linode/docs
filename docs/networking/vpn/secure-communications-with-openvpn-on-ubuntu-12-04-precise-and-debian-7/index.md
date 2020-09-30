@@ -18,6 +18,11 @@ external_resources:
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
  - '[OpenVPN GUI for Windows](http://openvpn.se/)'
  - '[Network Manager GNOME Configuration Management Tool](http://projects.gnome.org/NetworkManager/)'
+relations:
+    platform:
+        key: secure-communications-openvpn
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.

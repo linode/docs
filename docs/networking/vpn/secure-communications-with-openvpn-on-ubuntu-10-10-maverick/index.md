@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-11-29
 title: 'Secure Communications with OpenVPN on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: secure-communications-openvpn
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

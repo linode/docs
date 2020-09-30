@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-06-08
 title: 'Provide Authoritative DNS Services with NSD on Ubuntu 11.04 (Natty)'
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Ubuntu 11.04
 ---
 
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.

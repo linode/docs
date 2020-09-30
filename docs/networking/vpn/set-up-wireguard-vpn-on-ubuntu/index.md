@@ -14,6 +14,11 @@ modified_by:
 title: "Set Up WireGuard VPN on Ubuntu"
 contributor:
   name: Sunit Nandi
+relations:
+    platform:
+        key: secure-communications-openvpn
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ![Set Up WireGuard VPN on Ubuntu](wireguard-one-click-apps.png "Set Up WireGuard VPN on Ubuntu")

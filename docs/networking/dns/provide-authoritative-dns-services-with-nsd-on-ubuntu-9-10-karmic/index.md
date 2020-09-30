@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-08-27
 title: 'Provide Authoritative DNS Services with NSD on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 
