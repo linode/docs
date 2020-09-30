@@ -13,6 +13,11 @@ modified_by:
   name: Alex Fornuto
 published: 2012-11-05
 title: 'Email with Citadel on Ubuntu 12.04 LTS (Precise Pangolin)'
+relations:
+    platform:
+        key: email-with-citadel
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Email and Calendars with Zimbra 6 on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: zimbra-groupware
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your Ubuntu 10.04 LTS (Lucid) Linode.

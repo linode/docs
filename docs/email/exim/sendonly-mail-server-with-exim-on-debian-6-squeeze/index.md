@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-15
 title: 'Send-only Mail Server with Exim on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: deploy-exim-sendonly-email
+        keywords:
+            - distribution: Debian 6
 ---
 
 Many Linux server applications need to send email; cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Debian 6 (Squeeze) Linode.
