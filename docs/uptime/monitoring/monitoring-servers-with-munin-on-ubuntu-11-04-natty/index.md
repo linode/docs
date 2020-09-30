@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-11-14
 title: 'Monitoring Servers with Munin on Ubuntu 11.04 (Natty)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Ubuntu 11.04
 ---
 
 

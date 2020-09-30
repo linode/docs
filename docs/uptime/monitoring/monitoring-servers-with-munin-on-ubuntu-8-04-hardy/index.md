@@ -15,6 +15,11 @@ published: 2010-02-22
 expiryDate: 2013-05-17
 deprecated: true
 title: 'Monitoring Servers with Munin on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

@@ -18,6 +18,11 @@ contributor:
 external_resources:
  - '[Nagios Website](http://www.nagios.org/)'
  - '[Nagios Library](http://library.nagios.com/)'
+relations:
+    platform:
+        key: install-nagios-monitoring
+        keywords:
+            - distribution: Debian 8
 ---
 
 ![Install Nagios 4 on Ubuntu and Debian 8](Install_Nagios_4_smg.jpg)
