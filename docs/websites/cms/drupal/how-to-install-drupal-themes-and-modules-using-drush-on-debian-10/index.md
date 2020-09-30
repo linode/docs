@@ -18,6 +18,11 @@ external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
  - '[Backup and Migrate](https://www.drupal.org/docs/8/modules/backup-and-migrate/howto-for-backup-and-migrate)'
+relations:
+    platform:
+        key: how-to-install-drupal-themes
+        keywords:
+           - distribution: Debian 10
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/']
 ---
 

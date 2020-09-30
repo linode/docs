@@ -11,6 +11,11 @@ modified_by:
 published: 2020-02-18
 title: How to Install and Configure Drupal on Debian 10
 h1_title: Install and Configure Drupal on Debian 10 (Buster)
+relations:
+    platform:
+        key: how-to-install-drupal
+        keywords:
+           - distribution: Debian 10
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian 10.

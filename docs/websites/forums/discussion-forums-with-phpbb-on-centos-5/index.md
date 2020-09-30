@@ -18,6 +18,11 @@ external_resources:
  - '[Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)'
  - '[phpBB Modifications](http://www.phpbb.com/mods/)'
  - '[Modifications Forum](http://www.phpbb.com/community/viewforum.php?f=81)'
+relations:
+    platform:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: CentOS 5
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.

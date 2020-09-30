@@ -16,6 +16,11 @@ external_resources:
  - '[OpenCart Website](https://www.opencart.com)'
  - '[OpenCart Documentation](http://docs.opencart.com/)'
  - '[OpenCart Community Forums](http://forum.opencart.com/)'
+relations:
+    platform:
+        key: how-to-install-opencart
+        keywords:
+           - distribution: CentOS 7
 ---
 
 ![banner_image](How_to_Install_OpenCart_on_CentOS_smg.jpg)

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Discussion Forums with phpBB on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: Debian 6
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-09-22
 title: 'Discussion Forums with phpBB on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: Ubuntu 10.04
 ---
 
 

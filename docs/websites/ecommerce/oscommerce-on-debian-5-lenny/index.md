@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-01-22
 title: 'osCommerce on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: how-to-install-osCommerce
+        keywords:
+           - distribution: Debian 5
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.

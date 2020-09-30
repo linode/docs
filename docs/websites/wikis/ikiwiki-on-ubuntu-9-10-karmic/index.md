@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-03-23
 title: 'Ikiwiki on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: using-ikiwiki
+        keywords:
+           - distribution: Ubuntu 9.10
 ---
 
 
