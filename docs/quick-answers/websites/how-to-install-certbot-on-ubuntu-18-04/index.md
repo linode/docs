@@ -15,6 +15,11 @@ title: 'How to Install Certbot for TLS on Ubuntu 18.04'
 h1_title: 'Installing Certbot for TLS on Ubuntu 18.04'
 image: 'How-to-Install-Certbot-for-TLS-on-Ubuntu1804_1200x631.png'
 aliases: ['/quick-answers/websites/certbot/how-to-install-certbot-on-ubuntu-18-04/']
+relations:
+    platform:
+        key: how-to-install-certbot
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 ## What is Certbot?
 
