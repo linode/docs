@@ -26,47 +26,58 @@ var lnHome = {};
 		// No filters are currently applied, and the order will be the order from Algolia.
 		const sectionNames = [ 'docs', 'blog', 'resources', 'marketplace', 'qa' ];
 
-		const newPager = function(pageSize) {
-			// The reason this is a plain object and not a class is because of limitations in AlpineJS'
-			// reactivity.
-			// The reasoning behind this comment is to prevent some wasteful work for the next person thinking
-			// "Oh, wouldn't this be nicer as a class?"
-			//
-			// Note that we currently do not use the "loadMore" function.
+		const newPager = function(pageSize, el, items) {
+			if (!el) {
+				throw 'pager element must be provided';
+			}
+
+			if (!items) {
+				throw 'items must be provided';
+			}
+
 			let pager = {
-				pages: [ [] ], // two dimensional array of pages of items.
-				index: 0, // current page, zero based
-
-				pageSize: pageSize
+				index: 0, // current page, zero based.
+				numPages: 0, // The total number of pages.
+				el: el,
+				items: items,
+				pageSize: pageSize,
+				numPages: Math.ceil(items.length / pageSize)
 			};
 
-			pager.setItems = function(items) {
-				this.pages = [];
-				for (var i = 0; i < items.length; i += this.pageSize) {
-					this.pages[this.pages.length] = items.slice(i, i + this.pageSize);
+			pager.adjustIndex = function(incr) {
+				let index = this.index + incr;
+				if (index < 0) {
+					index = 0;
+				} else if (index >= this.numPages) {
+					index = this.numPages - 1;
 				}
-				this.adjustIndex(0);
+				this.index = index;
+				this.el.style.setProperty('--carousel-page', this.index);
 			};
 
-			pager.current = function() {
-				if (this.pages.length === 0) {
-					return [];
-				}
-				return this.pages[this.index];
-			};
+			pager.adjustIndex(0);
+			pager.el.style.setProperty('--carousel-page-size', pager.pageSize);
+			pager.el.style.setProperty('--carousel-slide-count', pager.items.length);
 
-			pager.hasPages = function() {
-				return this.pages.length > 0;
+			if (isTouchDevice()) {
+				lnSwipe.New(el, function(direction) {
+					switch (direction) {
+						case 'left':
+							pager.next();
+							break;
+						case 'right':
+							pager.prev();
+							break;
+					}
+				});
+			}
+
+			pager.ready = function() {
+				return pager.el && pager.items && pager.items.length > 0;
 			};
 
 			pager.hasNext = function() {
-				return this.index < this.pages.length - 1;
-			};
-
-			// peek returns the next page without moving the cursor.
-			// You need to check with hasNext before calling this.
-			pager.peek = function() {
-				return this.pages[this.index + 1];
+				return this.index < this.numPages - 1;
 			};
 
 			pager.next = function() {
@@ -81,37 +92,27 @@ var lnHome = {};
 				this.adjustIndex(-1);
 			};
 
-			pager.adjustIndex = function(incr) {
-				let index = this.index + incr;
-				if (index < 0) {
-					index = 0;
-				} else if (index >= this.pages.length) {
-					index = this.pages.length - 1;
-				}
-				this.index = index;
-			};
-
 			// progress returns a slice of bools of size length indicating the progress of this pager.
 			// This construct may look a little odd, but it makes the AlpineJS template construct simple.
 			pager.progress = function() {
-				if (this.pages.length === 0) {
+				if (this.numPages === 0) {
 					return [];
 				}
-				let numPages = this.pages.length;
 				let page = this.index + 1;
 				let progressSlice = [];
-				for (let i = 1; i <= numPages; i++) {
+				for (let i = 1; i <= this.numPages; i++) {
 					progressSlice.push(i <= page);
 				}
 				return progressSlice;
 			};
+
 			return pager;
 		};
 
 		return {
 			data: {
 				// Data for the top level products strip.
-				productTiles: newPager(productsStripPageSize),
+				productsTiles: null,
 
 				// Maps the values in sectionNames to their tiles data.
 				sectionTiles: {},
@@ -142,9 +143,6 @@ var lnHome = {};
 						indexName: sectionConfig.index,
 						filters: filters
 					});
-
-					// The data will be added later.
-					self.data.sectionTiles[name] = newPager(tilesPageSize);
 				});
 
 				this.$nextTick(function() {
@@ -156,41 +154,6 @@ var lnHome = {};
 						searchName
 					);
 				});
-
-				// This needs to be run after the component has mounted to be able
-				// to work on the DOM element directly.
-				const onMount = function() {
-					debug('onMount');
-					if (isTouchDevice()) {
-						// Set up swipe listeners for the pagers on this page.
-						const addSwipeListeners = function(pager, el) {
-							if (!el) {
-								console.warn('no element to attach swipe listener to');
-								return;
-							}
-							lnSwipe.New(el, function(direction) {
-								switch (direction) {
-									case 'left':
-										pager.next();
-										break;
-									case 'right':
-										pager.prev();
-										break;
-								}
-							});
-						};
-						let tilesEl = self.$refs['tiles-products'];
-						let pager = self.data.productTiles;
-						addSwipeListeners(pager, tilesEl);
-						sectionNames.forEach((name) => {
-							let tilesEl = self.$refs[`tiles-${name}`];
-							let pager = self.data.sectionTiles[name];
-							addSwipeListeners(pager, tilesEl);
-						});
-					}
-				};
-
-				return onMount;
 			},
 
 			// receiveCommonData receives the common search data also used in other components,
@@ -232,12 +195,12 @@ var lnHome = {};
 
 				debug('receiveCommonData: productsItems', productsItems);
 
-				this.data.productTiles.setItems(productsItems);
-
 				this.data.sectionMeta['products'] = meta.get('products');
 				sectionNames.forEach((name) => {
 					this.data.sectionMeta[name] = meta.get(name);
 				});
+				let el = this.$refs[`carousel-products`];
+				this.data.productsTiles = newPager(productsStripPageSize, el, productsItems);
 			},
 
 			receiveData: function(results) {
@@ -260,7 +223,10 @@ var lnHome = {};
 						throw `no index ${result.index} found`;
 					}
 
-					self.data.sectionTiles[sectionConfig.name].setItems(result.hits);
+					let name = sectionConfig.name;
+					let el = self.$refs[`carousel-${name}`];
+					let pager = newPager(tilesPageSize, el, result.hits);
+					self.data.sectionTiles[name] = pager;
 				});
 
 				this.data.loaded = true;

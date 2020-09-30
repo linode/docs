@@ -5,18 +5,44 @@
     }
 }
 
-@screen mobile {
-    .kind-home__sections-tiles .kind-home__tile {
-        min-width: 45%;
-    }
+.kind-home .carousel {
+    /* These are set by the JS client. */
+    --carousel-page: 0;
+    --carousel-page-size: 1;
 
-    .kind-home__products-tiles .kind-home__tile {
-        min-width: 42%;
+    /* Calculated. */
+    --carousel-slide-width: calc(100% / var(--carousel-page-size));
+    --carousel-translate-x: calc(
+        -100% * var(--carousel-page) * var(--carousel-page-size) / var(--carousel-slide-count)
+    );
+}
+
+@screen mobile {
+    .kind-home .carousel {
+        /* Important because it needs to override style set in JS. */
+        /* A float because we want to show parts of the third tile to hint at swiping. */
+        --carousel-page-size: 2.2 !important;
     }
 }
 
+.kind-home .carousel__viewport {
+    overflow-x: hidden;
+}
+
+.kind-home .carousel__tray {
+    width: calc(var(--carousel-slide-count) * var(--carousel-slide-width));
+    will-change: transform;
+    transition: transform 0.5s;
+    transform: translateX(var(--carousel-translate-x));
+}
+
+.kind-home .carousel__item {
+    @apply shadow-sm;
+    width: var(--carousel-slide-width);
+}
+
 @media (hover: hover) and (pointer: fine) {
-    .kind-home__tile a:hover {
-        @apply shadow-lg hover:text-brand;
+    .kind-home .carousel__item {
+        @apply hover:shadow-lg;
     }
 }

@@ -86,6 +86,9 @@ body {
   }
 }
 
+.foobar {
+  color: green;
+}
 .two-lines-ellipsis {
   display: block;
   display: -webkit-box;

@@ -19,7 +19,9 @@
     {{ $articleStarters = partial "funcs/build-query.html" $whereDoIStartData.queries.getting_started | first 2 }}
   {{ end }}
   
-  {{ template "home/svg-icons" . }}
+  {{ template "home/icons" . }}
+  
+  {{/* */}}
   <div id="home-component" x-data="lnHome.New(lnSearchConfig)" x-init="init()"
     @search:results-blank.once.document="receiveCommonData($event.detail)" 
     @search:data-home.document="receiveData($event.detail);">
@@ -33,9 +35,13 @@
         </div>
       </div>
     </section>
-    <section class="kind-home__products-tiles mb-8">
-      {{ template "home/products-strip" (dict "section" "products" "title" "Products") }}
+    
+    {{/* The top level products carousel */}}
+    <section class="mb-8">
+      {{ template "home/products/carousel" (dict "section" "products" "title" "Products") }}
     </section>
+    
+    {{/* Featured guides section */}}
     {{ with $articleFeatured }}
       <section class="mb-8 py-8 bg-gradient-to-b from-gray-200 to-gray-300 full-width pull-out">
         <div class="flex flex-col md:flex-row h-auto container">
@@ -61,21 +67,25 @@
         </div>
       </section>
     {{ end }}
+    
+    {{/* Carousels showing recent content in the different sections. */}}
     <section class="mb-10">
-      {{ template "home/section-tiles" (dict "section" "docs" "title" "Guides") }}
+      {{ template "home/section/carousel" (dict "section" "docs" "title" "Guides") }}
     </section>
     <section class="mb-10">
-      {{ template "home/developer-section" . }}
+      {{ template "home/developer" . }}
     </section>
     <section class="mb-10">
-      {{ template "home/section-tiles" (dict "section" "blog" "title" "Blogs") }}
+      {{ template "home/section/carousel" (dict "section" "blog" "title" "Blogs") }}
     </section>
     <section class="mb-10">
-      {{ template "home/section-tiles" (dict "section" "resources" "title" "Resources") }}
+      {{ template "home/section/carousel" (dict "section" "resources" "title" "Resources") }}
     </section>
     <section class="mb-10">
-      {{ template "home/section-tiles" (dict "section" "marketplace" "title" "Marketplace") }}
+      {{ template "home/section/carousel" (dict "section" "marketplace" "title" "Marketplace") }}
     </section>
+    
+    {{/* Starter guides section */}}
     {{ with $articleStarters }}
       <section class="mb-8 py-8 bg-gradient-to-r from-gray-200 to-gray-300 full-width pull-out">
         <div class="flex w-full space-x-4 h-auto container">
@@ -102,13 +112,16 @@
         </div>
       </section>
     {{ end }}
+    
+    {{/* Q&A carousel. */}}
     <section class="mb-10">
-      {{ template "home/section-tiles" (dict "section" "qa" "title" "Q&A") }}
+      {{ template "home/section/carousel" (dict "section" "qa" "title" "Q&A") }}
     </section>
   </div>
 {{ end }}
 
-{{ define "home/developer-section"}}
+{{/* Developer section with links out to change log etc. */}}
+{{ define "home/developer"}}
   <div class="flex flex-col md:flex-row">
     <div class="flex flex-col space-y-2">
       <h2 class="text-3 md:text-3xl mb-4">
@@ -116,10 +129,10 @@
       </h2>
       <div class="flex space-x-2 justify-center">
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer-section-tile" (dict "href" "/docs/api/" "title" "API Reference" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "/docs/api/" "title" "API Reference" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer-section-tile" (dict "href" "/docs/sections/docs/platform/api/" "title" "API Guides" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "/docs/sections/docs/platform/api/" "title" "API Guides" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
       </div>
     </div>
@@ -129,18 +142,18 @@
       </h2>
       <div class="flex space-x-2 justify-center">
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer-section-tile" (dict "href" "https://developers.linode.com/changelog/" "title" "Changelog" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "https://developers.linode.com/changelog/" "title" "Changelog" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer-section-tile" (dict "href" "https://developers.linode.com/libraries-tools" "title" "Resource & Tools" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "https://developers.linode.com/libraries-tools" "title" "Resource & Tools" "svgRef" "icon-home--developer-todo" "count" 99 )}}
         </div>
       </div>
     </div>
   </div>
 {{ end }}
 
-{{ define "home/developer-section-tile" }}
-  <div class="kind-home__tile">
+{{ define "home/developer/tile" }}
+  <div>
     <a class=" md:h-64 md:w-64 py-4 flex items-center rounded-lg text-gray-700" href="{{ .href }}">
       <div class="flex flex-col justify-center w-full">
         <div class="w-full flex justify-center mb-8">
@@ -160,7 +173,7 @@
 {{ end }}
 
 {{/*  */}}
-{{ define "home/section-title"}}
+{{ define "home/section/title"}}
   {{ if eq .section "qa" }}
     <div class="flex items-center">
       <h2 class="text-3 md:text-3xl">
@@ -191,9 +204,52 @@
   {{ end }}
 {{ end }}
 
-{{ define "home/products-strip-tile" }}
-  <div class="kind-home__tile {{ . }}" x-show.transition.duration.500ms.in.origin.left="item.href">
-    <a class="h-40 w-40 flex items-center rounded-lg text-gray-700" :href="item.href">
+{{ define "home/products/carousel"}}
+  <div x-ref="carousel-products" class="carousel w-full my-8 h-56">
+    <template x-if="data.productsTiles">
+      <div class="w-full" data-testid="carousel-products" x-show.transition.origin.top.left="true">
+        <div class="flex items-center justify-between">
+          {{ template  "home/section/title" . }}
+          <div class="mr-8 hidden md:flex space-x-1">
+            <template x-for="(bar, i) in data.productsTiles.progress()">
+              <div style="height: 3px; width: 16px"
+            :class="{
+              'bg-brand': bar,
+              'bg-gray-500': !bar
+            }"
+          ></div>
+            </template>
+          </div>
+        </div>
+        <div class="flex flex-no-wrap w-full mt-7">
+          <button aria-label="previous" x-bind:disabled="!data.productsTiles.hasPrev()"
+      class="btn-icon -ml-10 w-10 hidden md:block" @click="data.productsTiles.prev()" data-testid="prev">
+            <svg class="w-3" style="display: block; transform: scale(-1,1)">
+              <use href="#icon--arrow-right"></use>
+            </svg>
+          </button>
+          <div class="carousel__viewport">
+            <div class="carousel__tray flex flex-no-wrap justify-between" :class="{ 'sjustify-between': true}">
+              <template x-for="(item, i) in data.productsTiles.items" :key="item.href">
+                {{ template "home/products/carousel/tile" }}
+              </template>
+            </div>
+          </div>
+          <button aria-label="next" class="-mr-10 object-right btn-icon hidden md:block" 
+       @click="data.productsTiles.next()" x-bind:disabled="!data.productsTiles.hasNext()" data-testid="next">
+            <svg class="w-3">
+              <use href="#icon--arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </template>
+  </div>
+{{ end }}
+
+{{ define "home/products/carousel/tile" }}
+  <div class="{{ . }}" x-show.transition.duration.500ms.in.origin.left="item.href">
+    <a class="h-40 w-40 flex items-center rounded-lg text-gray-700 hover:text-brand" :href="item.href">
       <div class="flex flex-col justify-center w-full">
         <div class="w-full flex justify-center mb-2">
           <div class="w-16 h-16" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.icon)"></div>
@@ -205,136 +261,66 @@
   </div>
 {{ end }}
 
-{{ define "home/products-strip"}}
-  <div class="mt-8 w-full h-56"
-  :class="{
-    'invisible': !data.loaded,
-    'visible': data.loaded
-  }">
-    <div x-show.transition.in.origin.top.left="data.loaded">
-      <div class="flex items-center justify-between">
-        {{ template  "home/section-title" . }}
-        <div class="mr-8 hidden md:flex space-x-1">
-          <template x-for="(bar, i) in data.productTiles.progress()">
-            <div style="height: 3px; width: 16px"
-            :class="{
-              'bg-brand': bar,
-              'bg-gray-500': !bar
-            }"
-          ></div>
-          </template>
-        </div>
-      </div>
-      <div class="flex flex-no-wrap content-start w-full mt-7">
-        <button aria-label="previous" x-bind:disabled="!data.productTiles.hasPrev()"
-      class="btn-icon -ml-10 w-10 hidden md:block" @click="data.productTiles.prev()">
-          <svg class="w-3" style="display: block; transform: scale(-1,1)" >
-            <use href="#icon--arrow-right"></use>
-          </svg>
-        </button>
-        <div x-ref="tiles-products" class="flex flex-no-wrap w-full space-x-2" :class="{ 'justify-between': data.productTiles.current().length === 6}">
-          <template x-for="(item, i) in data.productTiles.current()" :key="item.href">
-            {{ template "home/products-strip-tile" }}
-          </template>
-          {{/* On mobile (with no arrow buttons), we show a small part of the next tile to hint at swiping. */}}
-          <template x-if="data.productTiles.hasNext()">
-            <template x-for="(item, i) in data.productTiles.peek().slice(0, 1)" :key="item.href">
-              {{ template "home/products-strip-tile" "md:hidden" }}
+{{ define "home/section/carousel"}}
+{{ $section := .section }}
+<div x-ref="carousel-{{ $section }}" x-show="data.loaded" class="carousel w-full">
+  {{ template  "home/section/title" . }}
+  {{ $section := .section }}
+  <template x-if="data.sectionTiles.{{ $section }}">
+    <div class="flex flex-no-wrap content-start w-full mt-8" data-testid="carousel-{{ $section }}">
+      <button aria-label="previous" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon w-full"
+           @click="data.sectionTiles.{{ $section }}.prev()" data-testid="prev">
+        <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
+          <use href="#icon--arrow-right"></use>
+        </svg>
+      </button>
+      <div class="w-full">
+        <div class="carousel__viewport">
+          <div class="carousel__tray flex flex-no-wrap space-x-2 py-4">
+            <template x-for="(item, i) in data.sectionTiles.{{ $section }}.items" :key="item.objectID">
+              <div class="carousel__item">
+                {{ if eq $section "qa" }}
+                  {{ template "home/section/carousel/item-qa" }}
+                {{ else }}
+                  {{ template "home/section/carousel/item" }}
+                {{ end }}
+              </div>
             </template>
-          </template>
+          </div>
         </div>
-        <button aria-label="next" class="ml-8 -mr-10 object-right btn-icon hidden md:block" 
-       @click="data.productTiles.next()" x-bind:disabled="!data.productTiles.hasNext()">
-          <svg class="w-3">
-            <use href="#icon--arrow-right"></use>
-          </svg>
-        </button>
       </div>
+      <button aria-label="next" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"
+      class="btn-icon w-full ml-6 -mr-10 object-right" @click="data.sectionTiles.{{ $section }}.next()" data-testid="next">
+        <svg class="w-3">
+          <use href="#icon--arrow-right"></use>
+        </svg>
+      </button>
     </div>
-  </div>
+  </template>
 {{ end }}
 
-{{ define "home/section-tiles-item"}}
-  <div class="kind-home__tile md:w-1/4 {{ . }}" x-show.transition.duration.500ms.in.origin.left="item.objectID">
-    <div class="bg-white h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg">
-      <a :href="item.href" class="no-underline block">
-        <div class="relative overflow-hidden pb-16/9">
-          <img :src="item.thumbnailUrl" alt="Article image" class="absolute h-full w-full object-cover" loading="lazy">
-        </div>
-        <div class="px-4 pt-4 pb-6">
-          <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.title"></h3>
-        </div>
-      </a>
-    </div>
-  </div>
-{{ end }}
-
-{{ define "home/section-tiles-item-qa"}}
-  <div class="kind-home__tile md:w-1/4 {{ . }}" x-show.transition.duration.500ms.in.origin.left="item.objectID">
-    <a :href="item.href" target="_blank">
-      <div x-html="item.excerptTruncated(68)" class="bg-gradient-to-b from-green-500 to-green-600 p-5 text-white font-semibold text-xl w-full h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg"></div>
+{{ define "home/section/carousel/item"}}
+  <div class="bg-white h-full rounded-lg overflow-hidden">
+    <a :href="item.href" class="no-underline block">
+      <div class="relative overflow-hidden pb-16/9">
+        <img :src="item.thumbnailUrl" alt="Article image" class="absolute h-full w-full object-cover" loading="lazy">
+      </div>
+      <div class="px-4 pt-4 pb-6">
+        <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.title"></h3>
+      </div>
     </a>
   </div>
 {{ end }}
 
-{{ define "home/section-tiles"}}
-{{ $section := .section }}
-<div x-show="data.loaded" class="w-full kind-home__sections-tiles">
-  {{ template  "home/section-title" . }}
-  {{ $section := .section }}
-  <div class="flex flex-no-wrap content-start w-full mt-8">
-    <button aria-label="previous" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
-           @click="data.sectionTiles.{{ $section }}.prev()">
-      <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
-        <use href="#icon--arrow-right"></use>
-      </svg>
-    </button>
-    <div x-ref="tiles-{{ $section }}" class="flex flex-no-wrap w-full space-x-4">
-      <template x-for="(item, i) in data.sectionTiles.{{ $section }}.current()" :key="item.objectID">
-        {{ if eq $section "qa" }}
-          {{ template "home/section-tiles-item-qa" }}
-        {{ else }}
-          {{ template "home/section-tiles-item" }}
-        {{ end }}
-      </template>
-      {{/* On mobile (with no arrow buttons), we show a small part of the next tile to hint at swiping. */}}
-      <template x-if="data.sectionTiles.{{ $section }}.hasNext()">
-        <template x-for="(item, i) in data.sectionTiles.{{ $section }}.peek().slice(0, 1)" :key="item.objectID">
-          {{ if eq $section "qa" }}
-            {{ template "home/section-tiles-item-qa"  "md:hidden" }}
-          {{ else }}
-            {{ template "home/section-tiles-item"  "md:hidden" }}
-          {{ end }}
-        </template>
-      </template>
-    </div>
-    <button aria-label="next" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"
-      class="btn-icon ml-8 -mr-10 object-right" @click="data.sectionTiles.{{ $section }}.next()">
-      <svg class="w-3">
-        <use href="#icon--arrow-right"></use>
-      </svg>
-    </button>
+{{ define "home/section/carousel/item-qa"}}
+  <div class="h-40">
+    <a :href="item.href" target="_blank">
+      <div x-html="item.excerptTruncated(90)" class="bg-gradient-to-b from-green-500 to-green-600 p-5 text-white font-semibold text-xl w-full h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg"></div>
+    </a>
   </div>
 {{ end }}
 
-{{/* TODO(bep) remove me if still unused. */}}
-{{ define "home/collect-products-icons" }}
-  {{ $s := .s }}
-  {{ $m := .m }}
-  {{ $ic := ($s.Resources.GetMatch "feature.svg" ) }}
-  
-  {{ with $ic }}
-    {{ $svg := .Content }}
-    {{ $path := replaceRE `(?s).*(<g.*>.*</g>).*` "<g>$1</g>" $svg}}
-    {{ $viewBox := replaceRE `(?s).*viewBox=\"(.*?)\".*` "$1" $svg}}
-    {{ $m.Add "icons" (dict "id" .RelPermalink "path" ($path | safeHTML) "viewBox" $viewBox)}}
-  {{ end }}
-  {{ range $s.Sections }}
-    {{ template "home/collect-products-icons" (dict "m" $m "s" . )}}
-  {{ end }}
-{{ end }}
-
-{{ define "home/svg-icons" }}
+{{ define "home/icons" }}
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="icon-home--developer-todo" viewBox="0 0 512 512">
       <path fill="currentColor"
