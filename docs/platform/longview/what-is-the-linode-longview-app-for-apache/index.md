@@ -18,6 +18,11 @@ external_resources:
  - '[cPanel Products News](https://news.cpanel.com/category/products/)'
  - '[cPanel Security News](https://news.cpanel.com/category/security/)'
  - '[Unix Toolbox](http://cb.vu/unixtoolbox.xhtml)'
+relations:
+    platform:
+        key: what-is-longview
+        keywords:
+            - distribution: Apache
 ---
 
 Longview for Apache is a Longview App. The Longview Apache tab appears in the Linode Cloud Manager when Longview detects that you have Apache installed on your Linode. With the Longview Apache App, you'll be able to view statistics for Apache on your Linode. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
