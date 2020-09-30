@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-10-12
 title: 'Use MongoDB to Store Application Data on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: use-mongodb-store-app-data
+        keywords:
+            - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","nosql"]
 ---
 

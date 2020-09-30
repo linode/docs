@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 2010-05-28
 title: Use PostgreSQL Relational Databases on Fedora 13
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Fedora 13
 tags: ["database","postgresql","fedora"]
 ---
 
@@ -129,17 +134,17 @@ Resume these instructions as the `postgres` user:
 
     su - postgres
 
-To grant all privileges on the table "employees" to a user named "alison", issue the following commands:
+To grant all privileges on the table `employees` to a user named `alison`, issue the following commands:
 
     psql mytestdb
 
     GRANT ALL ON employees TO alison;
 
-To use the database "mytestdb" as "alison", issue the following command:
+To use the database `mytestdb` as `alison`, issue the following command:
 
     psql -U alison -W mytestdb
 
-You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
+You will be prompted to enter the password for the `alison` user and given `psql` shell access to the database.
 
 # Secure Remote Database Access
 

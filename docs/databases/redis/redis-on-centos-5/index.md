@@ -17,6 +17,11 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Data Durability](https://redis-docs.readthedocs.org/en/latest/AppendOnlyFileHowto.html)'
  - '[Redis Command Reference](http://redis.io/commands)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: CentOS 5
 tags: ["nosql","database","centos"]
 ---
 

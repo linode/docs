@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-09
 title: 'Oracle 10g Express Edition on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: install-oracle10g-express
+        keywords:
+            - distribution: Ubuntu 9.10
 tags: ["ubuntu","database"]
 ---
 

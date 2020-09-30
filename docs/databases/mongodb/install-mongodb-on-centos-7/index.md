@@ -14,6 +14,11 @@ external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
+relations:
+    platform:
+        key: how-to-install-mongodb
+        keywords:
+            - distribution: CentOS 7
 tags: ["nosql","database","centos"]
 ---
 

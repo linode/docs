@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-01-28
 title: 'Oracle 10g Express Edition on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: install-oracle10g-express
+        keywords:
+            - distribution: Debian 5
 tags: ["debian","database"]
 ---
 

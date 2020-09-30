@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Use CouchDB for Document Based Data Storage on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: couchdb-document-data-storage
+        keywords:
+            - distribution: Debian 6
 tags: ["debian","database","nosql"]
 ---
 

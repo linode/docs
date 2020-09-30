@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 2011-01-21
 title: Using MySQL Relational Databases on Gentoo
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Gentoo
 tags: ["database","mysql"]
 ---
 

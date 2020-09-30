@@ -15,6 +15,11 @@ title: 'Manage MySQL with phpMyAdmin on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
+relations:
+    platform:
+        key: manage-mysql-with-phpmyadmin
+        keywords:
+            - distribution: Ubuntu 9.10
 tags: ["ubuntu","php","database","mysql"]
 ---
 

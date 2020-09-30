@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Redis on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Debian 6
 tags: ["debian","database","nosql"]
 ---
 

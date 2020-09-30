@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 2011-04-05
 title: Using MySQL Relational Databases on Arch Linux
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Arch Linux
 tags: ["arch","database","mysql"]
 ---
 

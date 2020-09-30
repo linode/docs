@@ -13,6 +13,11 @@ title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: CentOS 7
 aliases: ['/databases/postgresql/use-postgresql-relational-databases-on-centos-7/']
 tags: ["database","postgresql","centos"]
 ---

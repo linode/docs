@@ -15,6 +15,11 @@ title: Use CouchDB for Document Based Data Storage on CentOS 5
 external_resources:
  - '[CouchDB Project](http://couchdb.apache.org/)'
  - '[CouchDB Community Wiki](http://wiki.apache.org/couchdb/)'
+relations:
+    platform:
+        key: couchdb-document-data-storage
+        keywords:
+            - distribution: CentOS 5
 tags: ["centos","database","nosql"]
 ---
 
