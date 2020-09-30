@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-08-11
 title: 'Use MySQL Relational Databases on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Ubuntu 8.04
 tags: ["ubuntu","database","mysql"]
 ---
 

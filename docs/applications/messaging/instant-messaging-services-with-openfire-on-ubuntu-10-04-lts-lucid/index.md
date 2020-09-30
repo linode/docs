@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Instant Messaging Services with Openfire on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: how-to-install-openfire
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

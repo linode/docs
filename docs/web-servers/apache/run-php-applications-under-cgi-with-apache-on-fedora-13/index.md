@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-08-05
 title: Run PHP Applications under CGI with Apache on Fedora 13
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

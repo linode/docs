@@ -14,6 +14,11 @@ external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
+relations:
+    platform:
+        key: how-to-install-mongodb
+        keywords:
+            - distribution: Ubuntu 16.04
 tags: ["ubuntu","database","nosql"]
 ---
 

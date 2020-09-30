@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Oracle 10g Express Edition on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: install-oracle10g-express
+        keywords:
+            - distribution: Ubuntu 10.10
 tags: ["ubuntu","database"]
 ---
 

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-08-01
 title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key:  asp-mono-apache
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

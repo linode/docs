@@ -18,6 +18,11 @@ external_resources:
  - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: install-minecraft-server
+        keywords:
+            - distribution: Ubuntu/Debian
 ---
 
 ![Set Up a Minecraft Server](How_to_Set_Up_a_Minecraft_Server_smg.jpg)

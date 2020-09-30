@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-12-28
 title: Piwik on Fedora 13
+relations:
+    platform:
+        key: using-piwik-analytics
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

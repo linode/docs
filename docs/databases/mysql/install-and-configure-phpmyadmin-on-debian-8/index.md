@@ -11,6 +11,11 @@ modified_by:
     name: Elle Krout
 published: 2014-01-02
 title: 'How to Install and Configure phpMyAdmin on Debian 8'
+relations:
+    platform:
+        key: how-to-install-phpmyadmin
+        keywords:
+            - distribution: Debian 8
 tags: ["debian","database","mysql","php"]
 ---
 

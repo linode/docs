@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-03-24
 title: Use MongoDB to Store Application Data on CentOS 5
+relations:
+    platform:
+        key: use-mongodb-store-app-data
+        keywords:
+            - distribution: CentOS 5
 tags: ["nosql","database","centos"]
 ---
 

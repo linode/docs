@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 2009-09-08
 title: 'Use PostgreSQL Relational Databases on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Debian 5
 tags: ["debian","database","postgresql"]
 ---
 
@@ -140,17 +145,17 @@ Issue the following command as root to restart the database daemon and ensure th
 
     /etc/init.d/postgresql-8.3 restart
 
-To grant all privileges on the table "employees" to a user named "alison", issue the following commands as the `postgres` user:
+To grant all privileges on the table `employees` to a user named `alison`, issue the following commands as the `postgres` user:
 
     psql mytestdb
 
     GRANT ALL ON employees TO alison;
 
-To use the database "mytestdb" as "alison", issue the following command:
+To use the database `mytestdb` as `alison`, issue the following command:
 
     psql -U alison -W mytestdb
 
-You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
+You will be prompted to enter the password for the `alison` user and given `psql` shell access to the database.
 
 ## More Information
 

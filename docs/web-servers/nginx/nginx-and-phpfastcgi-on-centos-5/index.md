@@ -19,6 +19,11 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
  - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5/)'
  - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+relations:
+    platform:
+        key: nginx-php-fastcgi
+        keywords:
+            - distribution: CentOS 5
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your CentOS 5 Linode.

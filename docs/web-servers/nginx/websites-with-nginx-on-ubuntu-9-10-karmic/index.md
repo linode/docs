@@ -14,6 +14,11 @@ modified_by:
 published: 2010-02-24
 expiryDate: 2011-04-29
 title: 'Websites with nginx on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

@@ -13,6 +13,11 @@ modified_by:
 published: 2009-10-29
 title: 'Email with Postfix, Courier and MySQL on Ubuntu 9.10 (Karmic)'
 deprecated: true
+relations:
+    platform:
+        key: email-postfix-courier-mysql
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
@@ -27,17 +32,15 @@ We assume you've followed the steps outlined in our [getting started guide](/doc
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{{< file >}}
-/etc/apt/sources.list
-{{< /file >}}
+{{< file "/etc/apt/sources.list" >}}
+ \#\# main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> karmic main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic main restricted
 
-> \#\# main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> karmic main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic main restricted
->
-> deb <http://security.ubuntu.com/ubuntu> karmic-security main restricted deb-src <http://security.ubuntu.com/ubuntu> karmic-security main restricted
->
-> \#\# universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> karmic universe deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic universe deb <http://us.archive.ubuntu.com/ubuntu/> karmic-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic-updates universe
->
-> deb <http://security.ubuntu.com/ubuntu> karmic-security universe deb-src <http://security.ubuntu.com/ubuntu> karmic-security universe
+ deb <http://security.ubuntu.com/ubuntu> karmic-security main restricted deb-src <http://security.ubuntu.com/ubuntu> karmic-security main restricted
+
+ \#\# universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> karmic universe deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic universe deb <http://us.archive.ubuntu.com/ubuntu/> karmic-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic-updates universe
+
+ deb <http://security.ubuntu.com/ubuntu> karmic-security universe deb-src <http://security.ubuntu.com/ubuntu> karmic-security universe
+{{< /file >}}
 
 If you had to enable new repositories, issue the following command to update your package lists:
 

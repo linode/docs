@@ -15,6 +15,11 @@ published: 2010-01-22
 expiryDate: 2013-05-17
 deprecated: true
 title: 'Monitoring Servers with Munin on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

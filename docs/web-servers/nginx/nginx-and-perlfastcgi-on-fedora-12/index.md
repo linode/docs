@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-03-11
 title: 'Nginx and Perl-FastCGI on Fedora 12'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: Fedora 12
 ---
 
 

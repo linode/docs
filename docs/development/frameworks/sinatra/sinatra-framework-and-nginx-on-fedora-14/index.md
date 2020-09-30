@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: Sinatra Framework and nginx on Fedora 14
+relations:
+    platform:
+        key: sinatra-nginx
+        keywords:
+            - distribution: Fedora 14
 ---
 
 

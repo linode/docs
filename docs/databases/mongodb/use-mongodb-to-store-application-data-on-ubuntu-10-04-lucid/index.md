@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Use MongoDB to Store Application Data on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: use-mongodb-store-app-data
+        keywords:
+            - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]
 ---
 

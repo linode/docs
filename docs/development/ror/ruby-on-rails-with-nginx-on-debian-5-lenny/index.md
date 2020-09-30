@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-08-21
 title: 'Ruby on Rails with Nginx on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Debian 5
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Debian 5 (Lenny).

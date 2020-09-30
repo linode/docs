@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "How to Build a Video Streaming Application with React and Node"
 h1_title: "Building a Video Streaming Application with React and Node"
+image: feature.png
 contributor:
   name: Deven Rathore
   link: https://codesource.io/

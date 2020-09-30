@@ -16,6 +16,11 @@ deprecated: true
 title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
+relations:
+    platform:
+        key: ruby-on-rails-apache
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 

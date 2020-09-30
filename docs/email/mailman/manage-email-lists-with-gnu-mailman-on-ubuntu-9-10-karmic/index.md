@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-03-19
 title: 'Manage Email Lists with GNU Mailman on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: use-gnu-mailman
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

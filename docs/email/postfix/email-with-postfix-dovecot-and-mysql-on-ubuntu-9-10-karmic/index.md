@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-02-26
 title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: email-postfix-dovecot-mysql
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 
@@ -281,13 +286,11 @@ This completes configuration for `saslauthd`. Next, you'll configure Dovecot to 
 
 Edit the file `/etc/postfix/master.cf` and add the dovecot service to the bottom of the file.
 
-{{< file >}}
-/etc/postfix/master.cf
+{{< file "/etc/postfix/master.cf" >}}
+ dovecot unix - n n - - pipe
+ :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
 {{< /file >}}
 
-> dovecot unix - n n - - pipe
-> :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
->
 Issue the following command to make a backup copy of your `/etc/dovecot/dovecot.conf` file.
 
     cp -a /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.bak

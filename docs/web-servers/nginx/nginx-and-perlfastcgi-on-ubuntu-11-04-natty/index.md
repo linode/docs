@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-05-03
 title: 'Nginx and Perl-FastCGI on Ubuntu 11.04 (Natty)'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: Ubuntu 11.04
 ---
 
 

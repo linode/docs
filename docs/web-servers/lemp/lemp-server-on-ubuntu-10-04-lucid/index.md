@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-06-29
 title: 'LEMP Server on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

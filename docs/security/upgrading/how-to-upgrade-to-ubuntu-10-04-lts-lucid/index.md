@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-04-29
 title: 'How to Upgrade to Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

@@ -15,6 +15,11 @@ aliases: ['/databases/postgresql/ubuntu-12-04-precise-pangolin/']
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","postgresql"]
 ---
 
@@ -143,17 +148,17 @@ If you changed the authentication method as shown above, restart PostgreSQL with
 
     service postgresql restart
 
-To grant all privileges on the table "employees" to a user named "alison", issue the following commands:
+To grant all privileges on the table `employees` to a user named `alison`, issue the following commands:
 
     psql mytestdb
 
     GRANT ALL ON employees TO alison;
 
-To use the database "mytestdb" as "alison", issue the following command:
+To use the database `mytestdb` as `alison`, issue the following command:
 
     psql -U alison -W mytestdb
 
-You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
+You will be prompted to enter the password for the `alison` user and given `psql` shell access to the database.
 
 ## Secure Remote Database Access
 

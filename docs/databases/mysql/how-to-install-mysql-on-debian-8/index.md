@@ -17,6 +17,11 @@ external_resources:
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance)'
+relations:
+    platform:
+        key: how-to-install-mysql
+        keywords:
+            - distribution: Debian 8
 tags: ["debian","database","mysql"]
 ---
 
@@ -50,6 +55,10 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Install MySQL
 
     sudo apt-get install mysql-server
+
+{{< note >}}
+The mysql-server package may not be available in the latest versions of Debian in such a case try `sudo apt-get install default-mysql-server`.
+{{< /note >}}
 
 During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 

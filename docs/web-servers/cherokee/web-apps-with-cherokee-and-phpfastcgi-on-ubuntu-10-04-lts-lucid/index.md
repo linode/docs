@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-06-11
 title: 'Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: cherokee-php-fastcgi
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

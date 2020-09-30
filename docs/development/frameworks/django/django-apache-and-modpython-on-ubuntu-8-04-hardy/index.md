@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-09-10
 title: 'Django, Apache and mod_python on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: django-apache-modpython
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

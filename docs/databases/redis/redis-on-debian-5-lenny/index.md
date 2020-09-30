@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-07-27
 title: 'Redis on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Debian 5
 tags: ["debian","database","nosql"]
 ---
 

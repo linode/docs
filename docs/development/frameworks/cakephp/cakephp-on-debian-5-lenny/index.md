@@ -13,6 +13,11 @@ modified_by:
 published: 2010-05-26
 title: 'CakePHP on Debian 5 (Lenny)'
 deprecated: true
+relations:
+    platform:
+        key:  cake-php
+        keywords:
+            - distribution: Debian 5
 ---
 
 CakePHP is a framework used to develop PHP applications quickly. Many people choose CakePHP because of the simple deployment process and extensive documentation available on the CakePHP website.

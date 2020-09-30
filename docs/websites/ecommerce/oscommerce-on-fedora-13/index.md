@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-10-13
 title: osCommerce on Fedora 13
+relations:
+    platform:
+        key: how-to-install-osCommerce
+        keywords:
+           - distribution: Fedora 13
 ---
 
 

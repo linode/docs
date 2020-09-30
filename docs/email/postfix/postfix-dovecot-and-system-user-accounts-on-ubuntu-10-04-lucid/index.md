@@ -15,6 +15,11 @@ published: 2010-11-09
 expiryDate: 2015-09-25
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.04 (Lucid)'
 deprecated: true
+relations:
+    platform:
+        key: postfix-dovecot-user-accounts
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

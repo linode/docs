@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Flask with One-Click Apps"
 h1_title: "Deploying Flask with One-Click Apps"
+image: feature.png
 contributor:
   name: Linode
 external_resources:

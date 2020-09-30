@@ -14,6 +14,11 @@ published: 2010-05-10
 title: 'lighttpd Web Server on Ubuntu 9.10 (Karmic)'
 deprecated: true
 expiryDate: 2017-11-08
+relations:
+    platform:
+        key: install-lighttpd
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 This tutorial explains how to install and configure the lighttpd (e.g. "lighty") web server on Ubuntu 9.10 (Karmic). Lighttpd is designed to provide a lightweight web server that is capable of serving large loads and using less memory than servers like the Apache HTTP server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.

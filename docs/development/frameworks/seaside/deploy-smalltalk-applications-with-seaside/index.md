@@ -12,7 +12,13 @@ modified_by:
   name: Linode
 published: 2010-01-12
 title: Deploy Smalltalk Applications with Seaside
+h1_title: Deploying Smalltalk Apps with Seaside on Debian 5
 deprecated: true
+relations:
+    platform:
+        key: seaside-framework
+        keywords:
+            - distribution: Debian 5
 ---
 
 Seaside is a web development framework for the Smalltalk programing language. Seaside offers web developers a number of unique capabilities to create unique applications in an entirely object oriented manner. Seaside also provides helpful abstractions that allow developers to forgo manually generating HTML or managing URL callbacks. This also makes it possible for developers to design applications around user sessions rather than around pages.

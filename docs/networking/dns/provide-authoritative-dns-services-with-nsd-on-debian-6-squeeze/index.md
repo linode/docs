@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-06-08
 title: 'Provide Authoritative DNS Services with NSD on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Debian 6
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

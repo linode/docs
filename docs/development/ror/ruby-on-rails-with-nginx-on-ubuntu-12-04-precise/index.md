@@ -19,6 +19,11 @@ external_resources:
  - '[Nginx Home Page](http://nginx.org/)'
  - '[Nginx Documentation](http://nginx.org/en/docs/)'
  - '[Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with [Phusion Passenger](https://www.phusionpassenger.com/) and the [Nginx](https://www.nginx.com/) web server on Debian 8.

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-02-24
 title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: secure-communications-openvpn
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

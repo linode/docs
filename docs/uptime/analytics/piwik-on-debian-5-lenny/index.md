@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-12-10
 title: 'Piwik on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: using-piwik-analytics
+        keywords:
+            - distribution: Debian 5
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of control of the data collected from your visitors.

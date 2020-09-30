@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 2010-04-29
 title: 'Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","postgresql"]
 ---
 
@@ -141,17 +146,17 @@ If you changed the authentication method as shown above, restart PostgreSQL with
 
     /etc/init.d/postgresql-8.4 restart
 
-To grant all privileges on the table "employees" to a user named "alison", issue the following commands:
+To grant all privileges on the table `employees` to a user named `alison`, issue the following commands:
 
     psql mytestdb
 
     GRANT ALL ON employees TO alison;
 
-To use the database "mytestdb" as "alison", issue the following command:
+To use the database `mytestdb` as `alison`, issue the following command:
 
     psql -U alison -W mytestdb
 
-You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
+You will be prompted to enter the password for the `alison` user and given `psql` shell access to the database.
 
 ## Secure Remote Database Access
 

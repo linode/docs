@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-17
 title: 'WSGI using uWSGI and nginx on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

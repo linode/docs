@@ -20,6 +20,11 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["java"]
+relations:
+    platform:
+        key: spring-boot-nginx
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 ![How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04](deploy-spring-boot-nginx-reverse-proxy.jpg "How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04")

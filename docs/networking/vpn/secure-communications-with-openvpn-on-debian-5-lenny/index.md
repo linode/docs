@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-02-24
 title: 'Secure Communications with OpenVPN on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: secure-communications-openvpn
+        keywords:
+            - distribution: Debian 5
 ---
 
 

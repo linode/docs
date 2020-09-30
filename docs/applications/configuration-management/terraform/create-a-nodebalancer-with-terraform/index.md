@@ -276,7 +276,7 @@ Run the `apply` command:
 
     terraform apply
 
-You will be prompted to approve the `apply` action. Type *yes* and hit **Enter**. Terraform will begin to create the resources you have configured in the previous steps. This will take a few minutes, after which you will start to see the output of the the `remote-exec` commands you defined in your Linode instance resource. Once all of the actions are completed you should see output like the following:
+You will be prompted to approve the `apply` action. Type *yes* and hit **Enter**. Terraform will begin to create the resources you have configured in the previous steps. This will take a few minutes, after which you will start to see the output of the `remote-exec` commands you defined in your Linode instance resource. Once all of the actions are completed you should see output like the following:
 
 {{< output >}}
 Apply complete! Resources: 7 added, 0 changed, 0 destroyed.

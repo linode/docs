@@ -19,6 +19,11 @@ external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
 - '[WP-CLI Tools](https://make.wordpress.org/cli/handbook/tools/)'
+relations:
+    platform:
+        key: how-to-install-wordpress-using-wp-cli
+        keywords:
+           - distribution: CentOS 7
 aliases: ['/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-centos-7/']
 ---
 

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-11-30
 title: 'Manage Projects with Redmine on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: manage-projects-with-redmine
+        keywords:
+            - distribution: Debian 5
 ---
 
 

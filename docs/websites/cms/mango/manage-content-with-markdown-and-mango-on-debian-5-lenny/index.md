@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-15
 title: 'Manage Content with Markdown and Mango on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: manage-content-with-markdown-and-mango
+        keywords:
+           - distribution: Debian 5
 ---
 
 

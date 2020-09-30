@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-12-06
 title: Redis on Fedora 14
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Fedora 14
 tags: ["nosql","database","fedora"]
 ---
 

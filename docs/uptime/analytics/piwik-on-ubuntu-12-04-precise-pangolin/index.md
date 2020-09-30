@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2012-10-10
 title: 'Piwik on Ubuntu 12.04 (Precise Pangolin)'
+relations:
+    platform:
+        key: using-piwik-analytics
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program". As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.

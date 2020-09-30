@@ -13,10 +13,16 @@ modified_by:
 published: 2014-12-05
 title: How to Install Drupal Themes and Modules Using Drush on CentOS 8
 h1_title: Install Drupal Themes and Modules Using Drush on CentOS 8
+image: feature.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
  - '[Backup and Migrate](https://www.drupal.org/docs/8/modules/backup-and-migrate/howto-for-backup-and-migrate)'
+relations:
+    platform:
+        key: how-to-install-drupal-themes
+        keywords:
+           - distribution: CentOS 8
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/']
 ---
 

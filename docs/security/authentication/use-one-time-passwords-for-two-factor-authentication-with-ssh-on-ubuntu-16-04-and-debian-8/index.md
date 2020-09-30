@@ -15,6 +15,11 @@ title: Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 1
 external_resources:
  - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
  - '[Linux PAM Documentation](http://www.linux-pam.org/)'
+relations:
+    platform:
+        key: one-time-pass-for-2fa
+        keywords:
+            - distribution: Ubuntu/Debian
 ---
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on Ubuntu 16.04 and Debian 8.

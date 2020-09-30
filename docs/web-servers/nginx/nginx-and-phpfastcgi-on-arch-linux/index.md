@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-02
 title: 'Nginx and PHP-FastCGI on Arch Linux'
+relations:
+    platform:
+        key: nginx-php-fastcgi
+        keywords:
+            - distribution: Arch Linux
 ---
 
 

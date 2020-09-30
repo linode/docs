@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-11-10
 title: 'WSGI using uWSGI and nginx on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

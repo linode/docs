@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-09-18
 title: 'Instant Messaging Services with Openfire on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: how-to-install-openfire
+        keywords:
+            - distribution: Debian 5
 ---
 
 

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-01-22
 title: 'Use Unbound for Local DNS Resolution on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: unbound-local-dns-resolution
+        keywords:
+            - distribution: Debian 5
 ---
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.

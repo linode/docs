@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-09-06
 title: 'Confluence on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: using-confluence
+        keywords:
+           - distribution: Ubuntu 9.10
 ---
 
 

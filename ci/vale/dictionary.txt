@@ -124,6 +124,7 @@ boto
 bounceback
 brackley
 bram
+brd
 browserify
 bs4
 bufio
@@ -674,6 +675,7 @@ jenkinsfile
 jenkinsx
 jetpack
 jez
+jitsi
 jk
 jks
 jobd
@@ -757,6 +759,7 @@ libphp
 libpri
 libracy
 libsasl2
+libyang
 libuv
 lifecycle
 lighthttpd
@@ -880,6 +883,7 @@ misconfigured
 mitigations
 mkdir
 mnesia
+mngtmpaddr
 moby
 moddable
 modsecurity
@@ -1139,6 +1143,7 @@ procs
 productpage
 prosodyctl
 proto
+protobuf
 protocode
 proxied
 proxying

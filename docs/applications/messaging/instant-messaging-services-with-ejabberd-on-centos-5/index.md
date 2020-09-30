@@ -17,6 +17,11 @@ external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
  - '[XMPP Client Software](http://xmpp.org/software/clients.shtml)'
+relations:
+    platform:
+        key: how-to-install-ejabberd
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Ejabberd, the "Erlang Jabber Daemon," is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some, mostly due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.

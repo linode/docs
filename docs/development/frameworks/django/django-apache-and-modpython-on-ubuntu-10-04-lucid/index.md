@@ -13,6 +13,11 @@ modified_by:
 published: 2010-05-13
 title: 'Django, Apache and mod_python on Ubuntu 10.04 (Lucid)'
 deprecated: true
+relations:
+    platform:
+        key: django-apache-modpython
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.

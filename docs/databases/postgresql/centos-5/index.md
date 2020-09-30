@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 2009-09-13
 title: Use PostgreSQL Relational Databases on CentOS 5
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: CentOS 5
 tags: ["database","postgresql","centos"]
 ---
 
@@ -130,17 +135,17 @@ Resume these instructions as the `postgres` user:
 
     su - postgres
 
-To grant all privileges on the table "employees" to a user named "alison", issue the following commands:
+To grant all privileges on the table `employees` to a user named `alison`, issue the following commands:
 
     psql mytestdb
 
     GRANT ALL ON employees TO alison;
 
-To use the database "mytestdb" as "alison", issue the following command:
+To use the database `mytestdb` as `alison`, issue the following command:
 
     psql -U alison -W mytestdb
 
-You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
+You will be prompted to enter the password for the `alison` user and given `psql` shell access to the database.
 
 ## Secure Remote Database Access
 

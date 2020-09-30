@@ -52,8 +52,6 @@ The optimal solution for a highly available site or application is to have multi
 
 - Nodebalancers have a maximum connection limit of 10,000 concurrent connections.
 
--  Linode NodeBalancers do not currently support ProxyProtocol. This means you cannot pass client connection information to backend nodes when using Linode NodeBalancers. ProxyProtocol support is coming soon to Linode NodeBalancers.
-
 ## Next Steps
 
 For more on NodeBalancers see the [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) guide and the [NodeBalancer Reference](/docs/platform/nodebalancer/nodebalancer-reference-guide/) guide.

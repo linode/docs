@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-09-11
 title: 'Monitor System Logs with Logwatch on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: install-logwatch-monitoring
+        keywords:
+            - distribution: Debian 5
 ---
 
 Logwatch is a utility used to monitor system logs and create reports. These reports include failed login attempts, successful login attempts, and storage space used/available.

@@ -14,6 +14,11 @@ modified_by:
   name: Linode
 published: 2010-07-27
 title: LEMP Server on CentOS 5
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: CentOS 5
 ---
 
 

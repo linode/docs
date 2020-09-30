@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Websites with nginx on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Debian 6
 ---
 
 

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-09-30
 title: 'Discussion Forums with phpBB on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: Debian 5
 ---
 
 

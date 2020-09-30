@@ -25,6 +25,11 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
+relations:
+    platform:
+        key: install-nodejs-nginx
+        keywords:
+            - distribution: Debian 8
 ---
 
 ![Install Node.js and NGINX on Debian](How_to_Install_Nodejs_and_Nginx_on_Debian_smg.jpg)

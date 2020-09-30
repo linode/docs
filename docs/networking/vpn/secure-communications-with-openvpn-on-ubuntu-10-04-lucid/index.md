@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-05-10
 title: 'Secure Communications with OpenVPN on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: secure-communications-openvpn
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

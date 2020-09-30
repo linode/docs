@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-12-17
 title: 'Send-only Mail Server with Exim on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: deploy-exim-sendonly-email
+        keywords:
+            - distribution: Debian 5
 ---
 
 

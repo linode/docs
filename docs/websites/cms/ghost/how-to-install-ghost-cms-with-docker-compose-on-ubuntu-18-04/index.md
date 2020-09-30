@@ -18,6 +18,11 @@ external_resources:
 - '[Ghost Theme Documentation](https://themes.ghost.org/v1.0.0)'
 - '[Ghost API Documentation](https://api.ghost.org/v1.0.0)'
 - '[Ghost on Docker Hub](https://docs.docker.com/samples/library/ghost/)'
+relations:
+    platform:
+        key: how-to-install-ghost-cms
+        keywords:
+           - distribution: Docker
 ---
 
 <!-- ![How to Install Ghost CMS on Ubuntu 16.04](ghost-blog-ubuntu-16-04-title-graphic.png "How to Install Ghost CMS on Ubuntu 16.04") -->

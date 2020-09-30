@@ -15,6 +15,11 @@ title: 'How to Install MySQL with phpMyAdmin on Ubuntu 12.04'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
+relations:
+    platform:
+        key: how-to-install-phpmyadmin
+        keywords:
+            - distribution: Ubuntu 12.04
 tags: ["ubuntu","php","database","mysql"]
 ---
 

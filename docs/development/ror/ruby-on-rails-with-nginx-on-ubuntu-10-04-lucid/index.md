@@ -13,6 +13,11 @@ modified_by:
   name: Alex Fornuto
 published: 2010-07-29
 title: 'Ruby on Rails with Nginx on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

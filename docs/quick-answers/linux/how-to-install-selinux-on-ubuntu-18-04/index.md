@@ -14,6 +14,11 @@ modified_by:
 published: 2017-06-30
 title: How to Install SELinux on Ubuntu 18.04
 h1_title: Installing SELinux on Ubuntu 18.04
+relations:
+    platform:
+        key: how-to-install-selinux
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ![How to Install SELinux on Ubuntu](selinux-ubuntu-title.jpg "How to Install SELinux on Ubuntu title graphic")

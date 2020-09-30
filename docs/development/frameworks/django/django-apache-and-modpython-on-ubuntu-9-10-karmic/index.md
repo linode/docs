@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-02-05
 title: 'Django, Apache and mod_python on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: django-apache-modpython
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

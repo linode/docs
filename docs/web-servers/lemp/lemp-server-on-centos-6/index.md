@@ -20,6 +20,11 @@ external_resources:
  - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/centos-5)'
  - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/centos-5)'
  - '[Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/centos-5)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: CentOS 6
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.

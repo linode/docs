@@ -17,6 +17,11 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Command Reference](http://redis.io/commands)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
 ---
 

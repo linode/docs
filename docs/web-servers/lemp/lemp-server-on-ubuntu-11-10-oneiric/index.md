@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-11-07
 title: 'LEMP Server on Ubuntu 11.10 (Oneiric)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 11.10
 ---
 
 

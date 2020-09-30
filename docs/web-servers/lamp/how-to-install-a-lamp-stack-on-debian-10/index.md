@@ -18,6 +18,11 @@ external_resources:
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Debian 10
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 10 (Buster).
@@ -159,9 +164,9 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 {{< /file >}}
 
-1.  Assign ownership of `public_html` directory to the user `$www-data`:
+1.  Assign ownership of `public_html` directory to the user `www-data`:
 
-        sudo chown -R $www-data:$www-data /var/www/html/example.com/public_html
+        sudo chown -R www-data:www-data /var/www/html/example.com/public_html
 
 1. Set the permissions for the `public_html` directory:
 

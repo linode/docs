@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-11-08
 title: 'WSGI using uWSGI and nginx on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

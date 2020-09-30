@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-10-13
 title: 'Instant Messaging Services with ejabberd on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: how-to-install-ejabberd
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

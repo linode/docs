@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-05
 title: 'How to Upgrade to Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: how-to-upgrade-debian
+        keywords:
+            - distribution: Debian 6
 ---
 
 

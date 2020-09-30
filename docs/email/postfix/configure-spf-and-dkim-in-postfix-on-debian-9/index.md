@@ -20,6 +20,11 @@ external_resources:
  - '[OpenDKIM](http://www.opendkim.org/)'
  - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discussion and additional references.'
  - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
+relations:
+    platform:
+        key: configure-spf-dkim-postfix
+        keywords:
+            - distribution: Debian 9
 ---
 
 This guide will instruct you on how to set up SPF and DKIM with Postfix.
@@ -270,8 +275,8 @@ example.com
 
     Replace `YYYYMM` with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
 
-        mv YYYYMM.private example.private
-        mv YYYYMM.txt example.txt
+        mv /etc/opendkim/keys/YYYYMM.private /etc/opendkim/keys/example.private
+        mv /etc/opendkim/keys/YYYYMM.txt /etc/opendkim/keys/example.txt
 
     Repeat the commands in this step for every entry in the key table. The `-b 2048` indicates the number of bits in the RSA key pair used for signing and verification. 1024 bits is the minimum, but with modern hardware 2048 bits is safer. (It's possible 4096 bits will be required at some point.)
 
