@@ -12,6 +12,7 @@ title: Overview of the Linode Section in the Cloud Manager
 keywords: ["cloud manager"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 The Linodes section of Cloud Manager allows you to create and manage your Linodes. Each Linode instance in Cloud Manager includes:

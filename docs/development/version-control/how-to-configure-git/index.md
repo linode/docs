@@ -16,6 +16,7 @@ external_resources:
  - '[Pro Git Book](https://git-scm.com/book/en/v2)'
  - '[Github Guides](https://guides.github.com/)'
 audiences: ["foundational"]
+tags: ["version control system"]
 ---
 
 ![Git Started Today](git_getting_started.png)

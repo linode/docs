@@ -5,6 +5,7 @@ author:
 description: 'In this guide you will install and configure NGINX to serve static site content on a Debian 10 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
 og_description: 'In this guide you will install and configure NGINX to serve static site content on a Debian 10 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "debian", " front-end requests", " back-end requests"]
+tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-14
 modified_by:

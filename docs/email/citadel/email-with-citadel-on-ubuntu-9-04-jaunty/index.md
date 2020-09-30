@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 9.04 (Jaunty) Linode.'
 keywords: ["citadel", "ubuntu 9.04 mail server", "groupware", "email server", "email howto"]
+tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/citadel/ubuntu-9-04-jaunty/']
+aliases: ['/email/citadel/ubuntu-9-04-jaunty/']
 modified: 2011-05-17
 modified_by:
   name: Linode

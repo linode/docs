@@ -5,6 +5,7 @@ author:
 published: 2017-06-16
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
 keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Andrew Miller

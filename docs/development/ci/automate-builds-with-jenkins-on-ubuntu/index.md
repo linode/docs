@@ -7,7 +7,8 @@ contributor:
 description: 'This how-to guide lets you create easy automation workflows with Jenkins.'
 og_description: 'Jenkins builds pipelines that automate setup, testing and deploying applications. Following this guide will expedite your Continuous Integration and Continuous Delivery (CI/CD) process in a basic workflow.'
 keywords: ['jenkins','pipeline','ci','automation']
-aliases: ['development/automate-builds-with-jenkins-on-ubuntu/']
+aliases: ['/development/automate-builds-with-jenkins-on-ubuntu/']
+tags: ["automation","version control system","docker","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
 modified: 2019-02-01

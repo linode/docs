@@ -6,12 +6,13 @@ author:
 description: 'An introduction and getting started guide for CouchDB on Fedora 13 systems.'
 keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/couchdb/fedora-13/']
+aliases: ['/databases/couchdb/fedora-13/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-05-27
 title: Use CouchDB for Document Based Data Storage on Fedora 13
+tags: ["fedora","database","nosql"]
 ---
 
 

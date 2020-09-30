@@ -5,13 +5,14 @@ author:
 description: Our guide to billing and payments.
 keywords: ["billing", "payments","cancel account"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/billing-and-payments/','billing-and-payments/','platform/billing-and-support/billing-and-payments-new-manager/','platform/billing-and-support/billing-and-payments-classic-manager/']
+aliases: ['/platform/billing-and-payments/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-support/billing-and-payments-classic-manager/']
 modified: 2018-05-17
 modified_by:
   name: Linode
 published: 2014-02-28
 title: Billing and Payments
 deprecated: true
+tags: ["linode platform"]
 ---
 
 {{< note >}}

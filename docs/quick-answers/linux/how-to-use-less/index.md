@@ -11,6 +11,7 @@ modified_by:
   name: Nathan Melehan
 published: 2018-09-05
 title: How to Use the Less Command
+tags: ["linux"]
 ---
 
 ## What is Less?

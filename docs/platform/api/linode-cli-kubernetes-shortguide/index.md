@@ -12,6 +12,7 @@ title: How to manage Kubernetes with the CLI
 keywords: ["kubernetes"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  Lists current Kubernetes Clusters available on your account:

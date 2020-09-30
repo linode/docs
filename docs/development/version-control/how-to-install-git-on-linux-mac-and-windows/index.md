@@ -5,7 +5,7 @@ author:
 description: 'Installing git on GNU/Linux, MacOSX, and Windows'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/','development/version-control/how-to-install-git-on-mac-and-windows/']
+aliases: ['/linux-tools/version-control/git/','/applications/development/git-source-control-management/','/development/version-control/how-to-install-git-on-mac-and-windows/','/development/version-control/git-source-control-management/']
 modified: 2019-01-24
 modified_by:
   name: Linode
@@ -18,6 +18,7 @@ external_resources:
  - '[Pro Git Book](https://git-scm.com/book/en/v2)'
  - '[Github Guides](https://guides.github.com/)'
 audiences: ["foundational"]
+tags: ["version control system"]
 ---
 
 ## Introduction to Git

@@ -13,6 +13,7 @@ published: 2018-05-18
 title: Introduction to Backups
 external_resources:
   - '[Backing Up Your Data](/docs/security/backups/backing-up-your-data/)'
+tags: ["linux"]
 ---
 
 ![Introduction to Backups](introduction-to-backups.png "Introduction to Backups")

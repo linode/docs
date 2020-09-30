@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ## Counter-Strike: Global Offensive One-Click App

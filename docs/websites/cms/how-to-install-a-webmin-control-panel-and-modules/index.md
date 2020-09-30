@@ -5,8 +5,9 @@ author:
 description: 'This guide teaches you how to install and configure a Webmin control panel for system administration.'
 og_description: 'Install the Webmin control panel to manage your Linux system administration from a web browser, without needing to SSH into your machine. This guide shows you how.'
 keywords: ["webmin", "control", "panel", "admin panel"]
+tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/control-panels/webmin/installing-webmin/', 'websites/cms/webmin-control-panel/']
+aliases: ['/websites/cms/webmin-control-panel/','/web-applications/control-panels/webmin/installing-webmin/']
 modified: 2017-11-10
 modified_by:
   name: Linode

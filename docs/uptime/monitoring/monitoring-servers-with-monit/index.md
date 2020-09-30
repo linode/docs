@@ -16,6 +16,7 @@ contributor:
 external_resources:
  - '[Monit Documentation](https://mmonit.com/monit/documentation/monit.html)'
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
+tags: ["monitoring"]
 ---
 
 

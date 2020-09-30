@@ -6,12 +6,13 @@ author:
 description: 'Getting started with MySQL for web and server applications on Ubuntu 9.10 (Karmic).'
 keywords: ["mysql on linux", "mysql ubuntu", "mysql karmic", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/ubuntu-9-10-karmic/']
+aliases: ['/databases/mysql/ubuntu-9-10-karmic/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2009-10-29
 title: 'Use MySQL Relational Databases on Ubuntu 9.10 (Karmic)'
+tags: ["ubuntu","database","mysql"]
 ---
 
 

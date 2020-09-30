@@ -15,6 +15,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ![Installing Nextcloud OCA](deploying_nextcloud_oca.png)

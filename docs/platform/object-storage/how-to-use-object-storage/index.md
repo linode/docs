@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: "Get started using Linode's Object Storage."
 keywords: ['object','storage','bucket']
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-12
 modified: 2019-04-12
@@ -65,6 +66,61 @@ Each Object Storage key pair on the Linode account has complete access to all of
 ### Generate a Key Pair
 
 {{< content "object-storage-key-pair-shortguide" >}}
+
+## Limited Access Key Pairs
+
+Limited Access Key Pairs can be used to assign limited access to a single bucket or a group of buckets, instead of the full account access that a [standard key pair](#object-storage-key-pairs) provides. Permissions for limited Limited Access Keys are further divided between `read_write` and `read_only` permissions, which each allow access to a subset of s3 actions.
+
+`read_only` permissions gives access to:
+
+- `s3:GetBucketAcl`
+- `s3:GetBucketCORS`
+- `s3:GetBucketLocation`
+- `s3:GetBucketLogging`
+- `s3:GetBucketNotification`
+- `s3:GetBucketPolicy`
+- `s3:GetBucketTagging`
+- `s3:GetBucketVersioning`
+- `s3:GetBucketWebsite`
+- `s3:GetLifecycleConfiguration`
+- `s3:GetObjectAcl`
+- `s3:GetObject`
+- `s3:GetObjectTorrent`
+- `s3:GetReplicationConfiguration`
+- `s3:GetObjectVersionAcl`
+- `s3:GetObjectVersion`
+- `s3:GetObjectVersionTorrent`
+- `s3:ListBucketMultipartUploads`
+- `s3:ListBucket`
+- `s3:ListBucketVersions`
+- `s3:ListMultipartUploadParts`
+
+
+`read_write` permissions gives access to all of the `read_only` permissions, as well as:
+
+- `s3:AbortMultipartUpload`
+- `s3:DeleteBucketWebsite`
+- `s3:DeleteObject`
+- `s3:DeleteObjectVersion`
+- `s3:DeleteReplicationConfiguration`
+- `s3:PutBucketCORS`
+- `s3:PutBucketLogging`
+- `s3:PutBucketNotification`
+- `s3:PutBucketTagging`
+- `s3:PutBucketVersioning`
+- `s3:PutBucketWebsite`
+- `s3:PutLifecycleConfiguration`
+- `s3:PutObject`
+- `s3:PutObjectAcl`
+- `s3:PutObjectVersionAcl`
+- `s3:PutReplicationConfiguration`
+- `s3:RestoreObject`
+
+Currently, Limited Access Key Pairs are only available using the [Linode API](https://developers.linode.com/api/v4/object-storage-keys/#post).
+
+{{< note >}}
+Limited Access Keys are able to list all Buckets under the Linode user account. Limited access keys do not otherwise have access to buckets on a single user account.
+{{< /note >}}
 
 ## Bucket Names
 
@@ -425,7 +481,7 @@ For more information on hosting a static website with Object Storage, read our [
 
 ### Other s3cmd Commands
 
-To upload an entire directory of files, you can use the the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
+To upload an entire directory of files, you can use the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
 
     s3cmd sync . s3://my-example-bucket -P
 

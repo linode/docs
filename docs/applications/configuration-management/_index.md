@@ -1,5 +1,5 @@
 ---
 title: Configuration Management
-aliases: ['applications/salt/','applications/ansible/','applications/puppet/','applications/chef/']
+aliases: ['/applications/chef/','/applications/puppet/','/applications/salt/','/applications/ansible/']
 show_in_lists: true
 ---

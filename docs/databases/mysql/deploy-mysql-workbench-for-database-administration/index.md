@@ -16,6 +16,7 @@ contributor:
 external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
+tags: ["database","mysql"]
 ---
 
 

@@ -5,6 +5,7 @@ author:
 description: 'This guide shows how to install and configure HAProxy for TCP/HTTP load balancing.'
 og_description: 'HAProxy (High Availability Proxy) is a TCP/HTTP load balancer and proxy server that allows a webserver to spread incoming requests across multiple endpoints. This guide shows how to install and configure HAProxy on a Linode.'
 keywords: ["haproxy", "load balancing", "high availability"]
+tags: ["proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-30
 modified: 2019-02-01

@@ -12,6 +12,7 @@ title: How to Install the Linode CLI
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip/):

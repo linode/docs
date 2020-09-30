@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: "This guide will show you how to install Certbot on the Ubuntu 18.04 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
 og_description: "This guide will show you how to install Certbot on the Ubuntu 18.04 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
-keywords: [ubuntu, certbot, TLS]
+keywords: ["ubuntu", "certbot", "TLS"]
+tags: ["centos", "security", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-22
 modified: 2020-03-22

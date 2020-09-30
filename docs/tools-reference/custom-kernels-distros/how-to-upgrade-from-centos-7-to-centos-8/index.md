@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: 'Instructions for upgrading from CentOS 7 to CentOS 8.'
 og_description: 'Instructions for upgrading from CentOS 7 to CentOS 8.'
-keywords: ["upgrade", "centos8", "centos7", "upgrade centos", " centos"]
+keywords: ["upgrade", "centos8", "centos7", "upgrade centos", "centos"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-01-23
 modified_by:
@@ -12,6 +13,7 @@ modified_by:
 published: 2020-01-23
 title: 'How to Upgrade from CentOS 7 to CentOS 8'
 h1_title: "Upgrading from CentOS 7 to CentOS 8"
+image: feature.png
 ---
 
 [CentOS](https://www.centos.org) is a Linux distribution derived from [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux). Some key features new for [CentOS 8](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.1905) are:

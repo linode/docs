@@ -10,6 +10,7 @@ modified_by:
   name: Elle Krout
 published: 2015-08-12
 title: Monitor System Logs with Logwatch
+tags: ["monitoring"]
 ---
 
 ![Monitor System Logs with Logwatch](monitor-system-logs-logwatch.jpg)

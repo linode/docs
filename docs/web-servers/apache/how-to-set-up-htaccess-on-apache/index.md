@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[HTTP Error and Status Codes](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)'
 - '[Apache .htaccess Documentation](https://httpd.apache.org/docs/current/howto/htaccess.html)'
+tags: ["web server","apache"]
 ---
 
 ![How to Set Up the htaccess File on Apache](how-to-set-up-the-htaccess-file-on-apache-smg.jpg)

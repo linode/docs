@@ -5,12 +5,14 @@ author:
 description: 'Flask is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. Deploy a Flask app on Linode with One-Click Apps.'
 og_description: 'Flask is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. Deploy a Flask app on Linode with One-Click Apps.'
 keywords: ['flask','python','one-click']
+tags: ["linode platform","python","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified_by:
   name: Linode
 title: "How to Deploy Flask with One-Click Apps"
 h1_title: "Deploying Flask with One-Click Apps"
+image: feature.png
 contributor:
   name: Linode
 external_resources:

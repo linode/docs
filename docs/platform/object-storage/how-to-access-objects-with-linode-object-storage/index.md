@@ -15,6 +15,7 @@ title: "How to Access Objects with Linode Object Storage"
 h1_title: "Accessing Objects with Linode Object Storage"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

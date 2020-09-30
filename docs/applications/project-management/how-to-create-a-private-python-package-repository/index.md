@@ -4,6 +4,7 @@ author:
   email: sfoo@linode.com
 description: 'This tutorial will show how to create your own private, Python package repository.'
 keywords: ["pip", "Python", "PyPA", "virtualenv", "package management"]
+tags: ["python", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-12
 modified_by:

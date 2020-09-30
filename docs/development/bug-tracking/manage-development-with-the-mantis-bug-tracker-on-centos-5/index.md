@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on CentOS 5.'
 keywords: ["mantis", "mantis fedora", "mantis linux", "bug tracker", "development"]
+tags: ["centos", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/project-management/mantis/centos-5/','applications/development/manage-development-with-the-mantis-bug-tracker-on-centos-5/','development/manage-development-with-the-jmantis-bug-tracker-on-centos-5/']
+aliases: ['/web-applications/project-management/mantis/centos-5/','/development/manage-development-with-the-jmantis-bug-tracker-on-centos-5/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-centos-5/']
 modified: 2011-04-29
 modified_by:
   name: Linode

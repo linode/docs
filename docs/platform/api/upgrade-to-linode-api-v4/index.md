@@ -14,6 +14,7 @@ deprecated_link: 'platform/api/getting-started-with-the-linode-api/'
 published: 2018-05-14
 external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
+tags: ["linode platform"]
 ---
 
 Version 4 of the Linode API is now in general release and it is a major improvement over previous versions. Almost any task which can be done through the Linode Manager can now be performed through the API. This guide will show you how to adapt existing code for previous API versions in order to take advantage of these new features.

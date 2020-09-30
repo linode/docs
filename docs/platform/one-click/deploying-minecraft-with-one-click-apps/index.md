@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ![Deploy a Minecraft Server with One-Click Apps](deploy-a-minecraft-server-with-oneclick-apps.png "Deploy a Minecraft Server with One-Click Apps")

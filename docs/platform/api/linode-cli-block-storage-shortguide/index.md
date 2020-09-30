@@ -12,6 +12,7 @@ title: How to manage Block Storage with the CLI
 keywords: ["block storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  List your current Volumes:

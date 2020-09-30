@@ -5,7 +5,7 @@ author:
 description: 'Manage email retrieval via multiple protocols with Fetchmail.'
 keywords: ["mail", "fetchmail", "unix", "esr", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/fetchmail/']
+aliases: ['/email/fetchmail/']
 modified: 2013-09-11
 modified_by:
   name: Linode
@@ -16,6 +16,7 @@ external_resources:
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
+tags: ["email"]
 ---
 
 ![Using Fetchmail to Retrieve Email](using-fetchmail-to-retrieve-email.jpg "Using Fetchmail to Retrieve Email")

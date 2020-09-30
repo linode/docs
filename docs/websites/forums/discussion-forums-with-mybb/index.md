@@ -5,7 +5,7 @@ author:
 description: 'Configuring the MyBB system for hosting web-based discussion forums.'
 keywords: ["mybb", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/bulletin-boards/mybb/']
+aliases: ['/web-applications/bulletin-boards/mybb/']
 modified: 2013-10-01
 modified_by:
   name: Linode

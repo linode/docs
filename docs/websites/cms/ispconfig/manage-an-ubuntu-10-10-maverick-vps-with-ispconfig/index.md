@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.10 (Maverick) Linode.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
+tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/','web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/']
+aliases: ['/web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/','/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/']
 modified: 2012-10-08
 modified_by:
   name: Linode

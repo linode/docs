@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: Using the Linode Longview App for Apache
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
+tags: ["apache","cloud manager","statistics","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/longview-for-apache/', 'platform/longview/longview-app-for-apache/']
+aliases: ['/longview/longview-for-apache/','/platform/longview/longview-app-for-apache/']
 modified: 2018-12-26
 modified_by:
   name: Linode

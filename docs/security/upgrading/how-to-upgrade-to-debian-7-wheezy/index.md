@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'How to upgrade from Debian 6 (Squeeze) to Debian 7 (Wheezy).'
 keywords: ["debian upgrade", "upgrade distro", "wheezy upgrade", "wheezy"]
+tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['upgrading/upgrade-to-debian-7-wheezy/']
+aliases: ['/upgrading/upgrade-to-debian-7-wheezy/']
 modified: 2013-05-10
 modified_by:
   name: Linode

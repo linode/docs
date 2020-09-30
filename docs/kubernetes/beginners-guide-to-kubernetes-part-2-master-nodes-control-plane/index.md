@@ -15,7 +15,8 @@ concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
-aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/','applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/']
+aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/']
+tags: ["kubernetes"]
 ---
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
