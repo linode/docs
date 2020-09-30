@@ -4,6 +4,7 @@ author:
   email: jkruger@linode.com
 description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
+tags: ["linode platform","security","networking","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-04-06
 modified_by:
@@ -19,11 +20,6 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 {{< note >}}
 Throughout this guide we will offer several suggested values for specific configuration settings; some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 {{< /note >}}
-
-{{< note >}}
-Linode NodeBalancers do not currently support ProxyProtocol. This means you cannot pass client connection information to backend nodes when using Linode NodeBalancers. ProxyProtocol support is coming soon to Linode NodeBalancers.
-{{</ note >}}
-
 
 ## Before you Begin
 

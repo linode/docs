@@ -5,7 +5,7 @@ author:
 description: Our guide to getting starting with version control
 keywords: ["version control", "introduction to version control", "git", "introduction to git"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['intro-version-control/','applications/development/introduction-to-version-control/']
+aliases: ['/applications/development/introduction-to-version-control/','/intro-version-control/']
 modified: 2013-09-18
 modified_by:
   name: Linode
@@ -14,6 +14,7 @@ title: Introduction to Version Control
 external_resources:
  - '[Version Control Systems](/docs/development/version-control/)'
 audiences: ["foundational"]
+tags: ["version control system"]
 ---
 
 In the [Hosting a Website](/docs/websites/hosting-a-website/) guide, you learned how to host your website by installing and configuring a web server, database, and PHP. Now it's time to implement version control to protect your data and handle code updates smoothly. By the time you reach the end of this guide, you'll know how to use many of the version control methods and tools used by large organizations.

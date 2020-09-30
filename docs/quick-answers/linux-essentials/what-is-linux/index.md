@@ -12,6 +12,7 @@ modified_by:
 title: "What is Linux?"
 contributor:
   name: Linode
+tags: ["linux"]
 ---
 
 Linux refers to the *Linux Kernel* plus all the tools, utilities and libraries running on top of the kernel, many of which are managed under the umbrella of the GNU project. Colloquially, Linux refers to an *operating system* (OS). There are Linux community members that find it more correct and precise to use the term [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html) over Linux alone as a name for the OS.

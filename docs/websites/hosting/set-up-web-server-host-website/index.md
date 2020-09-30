@@ -4,13 +4,14 @@ author:
   email: docs@linode.com
 description: 'How to set up your first web server and point a domain name to your Linode.'
 keywords: ["hosting a website", "website", "linode quickstart guide"]
+tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-07
 modified_by:
   name: Linode
 published: 2012-03-13
 title: Set up a Web Server and Host a Website on Linode
-aliases: ['websites/set-up-web-server-host-website/']
+aliases: ['/websites/set-up-web-server-host-website/']
 ---
 
 ![Hosting a Website](Hosting-a-Website-smg.jpg "Hosting a Website")

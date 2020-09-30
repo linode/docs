@@ -5,6 +5,7 @@ author:
 description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
 og_description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
 keywords: ["linux", "sysadmin", "administration"]
+tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-31
 modified_by:

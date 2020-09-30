@@ -12,6 +12,7 @@ title: How to Manage Events with the Linode CLI
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  View a list of events on your account:

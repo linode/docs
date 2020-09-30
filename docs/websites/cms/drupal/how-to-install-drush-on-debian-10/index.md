@@ -5,7 +5,8 @@ author:
 description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on Debian 10'
 og_description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on Debian 10'
 keywords: ["drupal", "cms", "content management system", "content management framework", "debian", "drush"]
-aliases: ['websites/cms/drush-drupal/','websites/cms/drupal/drush-drupal/how-to-install-drush-on-debian-10/']
+aliases: ['/websites/cms/drush-drupal/','/websites/cms/drupal/drush-drupal/how-to-install-drush-on-debian-10/']
+tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-28
 modified_by:
@@ -13,6 +14,7 @@ modified_by:
 published: 2020-02-28
 title: How to Install Drush on Debian 10
 h1_title: Install Drush on Debian 10
+image: feature.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'

@@ -10,6 +10,7 @@ title: Use Cases for Linode GPU Instances
 image: use-cases-for-linode-gpu-instance.png
 modified_by:
   name: Linode
+tags: ["linode platform"]
 ---
 
 ## What are GPUs?

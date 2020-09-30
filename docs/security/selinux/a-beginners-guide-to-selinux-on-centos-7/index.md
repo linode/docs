@@ -5,6 +5,7 @@ author:
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
 og_description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
+tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 modified: 2017-07-21
 modified_by:
@@ -12,7 +13,7 @@ modified_by:
 published: 2020-03-18
 title: A Beginner's Guide to SELinux on CentOS 7
 h1_title: Getting Started with SELinux on CentOS 7
-aliases: ['security/getting-started-with-selinux/']
+aliases: ['/security/getting-started-with-selinux/']
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
@@ -183,7 +184,7 @@ drwxrwxr-x. example_user example_user unconfined_u:object_r:user_home_t:s0 examp
 
 An SELinux Boolean is a variable that can be toggled on and off without needing to reload or recompile an SELinux policy.
 
-1. You can view the list of boolean variables using the `getsebool -a` command. Pipe the command through `grep` to narrow down your results.
+1. You can view the list of Boolean variables using the `getsebool -a` command. Pipe the command through `grep` to narrow down your results.
 
         sudo getsebool -a | grep "httpd_can"
 

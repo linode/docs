@@ -5,7 +5,8 @@ author:
 description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on CentOS 8'
 og_description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on CentOS 8'
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
-aliases: ['websites/cms/drush-drupal/','websites/cms/drupal/drush-drupal/how-to-install-drush-on-centos-8/']
+aliases: ['/websites/cms/drush-drupal/','/websites/cms/drupal/drush-drupal/how-to-install-drush-on-centos-8/']
+tags: ["drupal","centos","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-29
 modified_by:
@@ -13,6 +14,7 @@ modified_by:
 published: 2020-02-29
 title: How to Install Drush on CentOS 8
 h1_title: Install Drush on CentOS 8
+image: feature.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'

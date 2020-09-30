@@ -3,9 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: Using the Linode Longview App for MySQL
-keywords: ["Longview", " MySQL", " statistics"]
+keywords: ["Longview", "MySQL", "statistics"]
+tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/longview-for-mysql/', 'platform/longview/longview-app-for-mysql/']
+aliases: ['/platform/longview/longview-app-for-mysql/','/longview/longview-for-mysql/']
 modified: 2020-01-28
 modified_by:
   name: Linode

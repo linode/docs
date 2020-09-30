@@ -12,6 +12,7 @@ title: How to Restore a Backup to an Existing Linode
 keywords: ["backups"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 You can restore a backup to the Linode that the backup was created from. You can also restore to any other existing Linode in the same data center, even if the target does not have the Backup Service enabled. To restore a backup to an existing Linode, you will need to make sure that it has enough storage space that is not currently assigned to disk images.

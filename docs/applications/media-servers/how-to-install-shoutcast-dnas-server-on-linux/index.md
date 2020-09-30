@@ -5,7 +5,7 @@ author:
 description: 'This tutorial will guide you through setup and configuration of a SHOUTcast DNAS server for media streaming on Linux.'
 keywords: ["shoutcast", " internet radio", " streaming media", " streaming audio"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/media-servers/shoutcast/','applications/media-servers/shoutcast/']
+aliases: ['/communications/media-servers/shoutcast/','/applications/media-servers/shoutcast/']
 modified: 2019-03-25
 modified_by:
   name: Linode

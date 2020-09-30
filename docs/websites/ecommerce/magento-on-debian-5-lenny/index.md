@@ -6,7 +6,7 @@ author:
 description: 'Selling products online with Magento, an open source e-commerce solution on a Debian 5 (Lenny) Linode.'
 keywords: ["Magento", "Debian", "ecommerce", "Store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/e-commerce/magento/debian-5-lenny/']
+aliases: ['/web-applications/e-commerce/magento/debian-5-lenny/']
 modified: 2011-08-22
 modified_by:
   name: Linode

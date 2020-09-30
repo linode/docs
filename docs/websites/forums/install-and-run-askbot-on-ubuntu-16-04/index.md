@@ -4,6 +4,7 @@ author:
   email: gopalraha@outlook.com
 description: 'This guide shows how to Install and Deploy an AskBot Question and Answer Forum with LetsEncrypt SSL.'
 keywords: ["askbot", "Gunicorn", "LetsEncrypt", "Python", "WSGI"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-22
 modified_by:

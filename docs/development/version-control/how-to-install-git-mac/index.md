@@ -12,6 +12,7 @@ title: "How to install Git on Mac"
 published: 2018-01-08
 headless: true
 show_on_rss_feed: false
+tags: ["version control system"]
 ---
 
 There are different ways to install Git on Mac OS. You can install Git using Homebrew, MacPorts, or by downloading the Git installer package.

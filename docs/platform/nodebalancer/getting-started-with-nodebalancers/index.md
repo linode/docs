@@ -5,8 +5,9 @@ author:
 description: 'Using a NodeBalancer to begin managing a simple web application.'
 og_description: 'Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
+tags: ["cloud manager","linode platform","networking","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/','nodebalancers/getting-started/','linode-platform/nodebalancer-howto/','platform/nodebalancer/getting-started-with-nodebalancers-new-manager/']
+aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/','/linode-platform/nodebalancer-howto/']
 modified: 2018-08-21
 modified_by:
   name: Linode
@@ -18,10 +19,6 @@ image: getting-started-with-nodebalancers.png
 Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode provides NodeBalancers, which can ease the deployment and administration of a load balancer.
 
 This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/platform/nodebalancer/).
-
-{{< note >}}
-Linode NodeBalancers do not currently support ProxyProtocol. This means you cannot pass client connection information to backend nodes when using Linode NodeBalancers. ProxyProtocol support is coming soon to Linode NodeBalancers.
-{{</ note >}}
 
 ## Configuring a NodeBalancer
 

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Magento Community Edition on Ubuntu 16.04 to manage your e-commerce site.'
 keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
+tags: ["ubuntu", "lamp", "ssl", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-12-28
 modified_by:

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Magento Community Edition on CentOS 7 to manage your e-commerce site.'
 keywords: ["magento", "centos", "e-commerce", "magento centos"]
+tags: ["centos", "lamp", "cms", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-12-28
 modified_by:

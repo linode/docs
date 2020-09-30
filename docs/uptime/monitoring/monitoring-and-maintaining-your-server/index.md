@@ -5,8 +5,9 @@ author:
 description: This guide introduces concepts and tools for monitoring and maintaining your server.
 og_description: This guide introduces concepts and tools for monitoring and maintaining your server.
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
+tags: ["cloud manager","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['uptime/monitoring-and-maintaining-your-server-classic-manager/','monitoring-and-maintaining/','uptime/monitoring-and-maintaining-your-server-new-manager/','uptime/monitoring-and-maintaining-your-server/']
+aliases: ['/monitoring-and-maintaining/','/uptime/monitoring-and-maintaining-your-server-new-manager/','/uptime/monitoring-and-maintaining-your-server-classic-manager/','/uptime/monitoring-and-maintaining-your-server/']
 modified: 2018-08-21
 modified_by:
   name: Linode

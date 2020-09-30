@@ -6,7 +6,7 @@ author:
 description: 'Set up and manage an online storefront with OpenCart.'
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/e-commerce/opencart/centos-6/']
+aliases: ['/web-applications/e-commerce/opencart/centos-6/']
 modified: 2011-09-20
 modified_by:
   name: Linode

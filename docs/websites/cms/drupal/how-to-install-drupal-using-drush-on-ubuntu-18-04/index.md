@@ -5,6 +5,7 @@ author:
 description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Ubuntu 18.04. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
 og_description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Ubuntu 18.04. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "drush", "ubuntu"]
+tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-29
 modified_by:
@@ -12,12 +13,13 @@ modified_by:
 published: 2020-02-29
 title: How to Install Drupal using Drush on Ubuntu 18.04
 h1_title: Install Drupal using Drush on Ubuntu 18.04
-aliases: ['websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/']
 relations:
     websites:
         key: how-to-install-drupal-drush
         keywords:
            - distribution: Ubuntu 18.04
+image: feature.png
+aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/']
 ---
 
 [Drupal](https://www.drupal.org/docs/8) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive “community” websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.

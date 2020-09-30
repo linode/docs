@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Mango publishes markdown documents from plain text files into a dynamic website.'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
+tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/cms-guides/mango/fedora-14/','websites/cms/manage-content-with-markdown-and-mango-on-fedora-14/']
+aliases: ['/web-applications/cms-guides/mango/fedora-14/','/websites/cms/manage-content-with-markdown-and-mango-on-fedora-14/']
 modified: 2013-10-02
 modified_by:
   name: Linode

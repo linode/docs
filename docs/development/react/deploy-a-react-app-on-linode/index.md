@@ -5,6 +5,7 @@ author:
 description: 'Learn to deploy a locally developed React application to your Linode using Rsync.'
 og_description: 'Use Rsync to deploy a React application from your local computer to a Linode.'
 keywords: ['react','reactjs','deploy','rsync']
+tags: ["web applications","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-31
 modified: 2018-01-31
@@ -14,7 +15,7 @@ title: "Deploy a React Application on Linode"
 contributor:
   name: Phil Zona
   link: https://twitter.com/philzona
-aliases: ['development/javascript/deploy-a-react-app-on-linode/']
+aliases: ['/development/javascript/deploy-a-react-app-on-linode/']
 deprecated: true
 deprecated_link: 'development/react/'
 external_resources:

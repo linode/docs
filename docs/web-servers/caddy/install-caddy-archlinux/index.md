@@ -15,6 +15,7 @@ contributor:
   link: https://github.com/streamer45
 external_resources:
 - '[Caddy Official Documentation](https://caddyserver.com/docs)'
+tags: ["web server"]
 ---
 
 ## Before You Begin

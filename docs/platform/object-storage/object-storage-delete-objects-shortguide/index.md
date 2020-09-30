@@ -12,6 +12,7 @@ title: How to Delete Objects in a Linode Object Storage Bucket
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).

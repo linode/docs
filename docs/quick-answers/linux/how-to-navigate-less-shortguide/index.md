@@ -12,6 +12,7 @@ modified_by:
 published: 2018-09-05
 title: Less Keyboard Navigation Commands
 headless: true
+tags: ["linux"]
 ---
 
 | Key command | Action |

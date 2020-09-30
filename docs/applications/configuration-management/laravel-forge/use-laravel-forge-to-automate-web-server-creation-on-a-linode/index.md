@@ -4,6 +4,7 @@ author:
     email: dongidomed@gmail.com
 description: 'This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.'
 keywords: ["content management", "web-server automation", "laravel", "php", "wordpress", "drupal", "cms", "joomla", "Laravel Forge"]
+tags: ["automation", "php", "drupal", "wordpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-18
 modified_by:
@@ -12,7 +13,7 @@ published: 2017-09-18
 title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
-aliases: ['applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/']
+aliases: ['/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/']
 ---
 
 ![Laravel Forge Banner](Laravel_Forge.jpg)

@@ -4,6 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Installation of MultiCraft on a Linode running Debian or Ubuntu'
 keywords: ["minecraft", "debian", "multicraft"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
@@ -14,7 +15,7 @@ modified_by:
 deprecated: true
 published: 2015-02-04
 title: 'Installing Multicraft on Debian'
-aliases: ['applications/game-servers/multicraft-on-debian/']
+aliases: ['/applications/game-servers/multicraft-on-debian/']
 dedicated_cpu_link: true
 ---
 

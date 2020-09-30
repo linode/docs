@@ -13,7 +13,7 @@ external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
  - '[Dedicated Steam Servers for Linux](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers)'
  - '[Steam Support: Required Ports for Steam](https://support.steampowered.com/kb_article.php)'
-aliases: ['applications/game-servers/install-steamcmd-for-a-steam-game-server/']
+aliases: ['/applications/game-servers/install-steamcmd-for-a-steam-game-server/']
 dedicated_cpu_link: true
 ---
 

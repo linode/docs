@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Install and configure a structured wiki with TWiki.'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
+tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/twiki/fedora-14/']
+aliases: ['/web-applications/wikis/twiki/fedora-14/']
 modified: 2013-10-04
 modified_by:
   name: Linode

@@ -12,6 +12,7 @@ title: How to Customize Output from the Linode CLI
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 By default, the CLI displays a set of pre-selected fields for each type of response. If you would like to see all available fields, use the `--all` flag:

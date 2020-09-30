@@ -5,7 +5,7 @@ author:
 description: 'Install the simple and lightweight Discussion forum FluxBB on your Linode.'
 keywords: ["bulletin board", "forum", "discussion forum", "fluxbb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/bulletin-boards/fluxbb/']
+aliases: ['/web-applications/bulletin-boards/fluxbb/']
 modified: 2013-10-01
 modified_by:
   name: Linode

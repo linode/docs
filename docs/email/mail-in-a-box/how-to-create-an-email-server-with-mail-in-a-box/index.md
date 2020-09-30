@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package.'
 keywords: ["install mail-in-a-box", "webmail control panel", "caldav", "cardav", " TLS certificate"]
+tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-29
 modified: 2019-03-19
@@ -15,7 +16,7 @@ contributor:
 external_resources:
 - '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 - '[Mail-in-a-Box Forums](https://discourse.mailinabox.email/)'
-aliases: ['email/how-to-create-an-email-server-with-mail-in-a-box/']
+aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/']
 ---
 
 

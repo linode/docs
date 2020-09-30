@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Odoo is an open-source suite of over 5,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 11", "Ubuntu 16.04"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-21
 modified: 2018-01-21
@@ -13,7 +14,7 @@ title: 'Install an Odoo 11 Stack on Ubuntu 16.04'
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
-aliases: ['websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/']
+aliases: ['/websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/11.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/11.0)'

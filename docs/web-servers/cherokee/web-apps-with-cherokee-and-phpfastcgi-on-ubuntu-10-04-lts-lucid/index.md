@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Using PHP-FastCGI for dynamic sites under Cherokee on Ubuntu 10.04 LTS (Lucid)'
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
+tags: ["web server","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid/','websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/']
+aliases: ['/websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid/']
 modified: 2013-10-07
 modified_by:
   name: Linode

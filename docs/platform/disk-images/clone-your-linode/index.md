@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: Clone your Linode to another Linode.
 keywords: ["clone", " cloning", "cloud manager"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['migrate-to-linode/disk-images/clone-your-linode/','platform/disk-images/clone-your-linode-classic-manager/']
+aliases: ['/platform/disk-images/clone-your-linode-classic-manager/','/migrate-to-linode/disk-images/clone-your-linode/']
 modified_by:
   name: Linode
 published: 2019-03-18

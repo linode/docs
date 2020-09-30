@@ -12,6 +12,7 @@ title: How to Create a Linode Object Storage Bucket
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 The Cloud Manager provides a web interface for creating buckets. To create a bucket:

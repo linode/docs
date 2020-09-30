@@ -6,12 +6,13 @@ author:
 description: 'Install a LEMP stack to serve websites and applications on Arch Linux'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/arch-linux/','websites/lemp/lemp-server-on-arch-linux/']
+aliases: ['/lemp-guides/arch-linux/','/websites/lemp/lemp-server-on-arch-linux/']
 modified: 2012-06-21
 modified_by:
   name: Linode
 published: 2010-07-08
 title: LEMP Server on Arch Linux
+tags: ["lemp","web server","php","mysql","nginx"]
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.

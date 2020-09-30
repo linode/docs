@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 9.04 (Jaunty).'
 keywords: ["open source analytics", "piwik ubuntu 9.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
+tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/analytics/piwik/ubuntu-9-04-jaunty/']
+aliases: ['/web-applications/analytics/piwik/ubuntu-9-04-jaunty/']
 modified: 2011-04-27
 modified_by:
   name: Linode

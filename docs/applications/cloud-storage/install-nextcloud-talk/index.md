@@ -5,6 +5,7 @@ author:
 description: "Nextcloud is an open source solution to hosting your own content online. In addition to the total control users gain over their own files, Nextcloud offers customizable security features that allow the user to take control of sharing and access privileges."
 og_description: "Nextcloud 14 brings improved UI, video and text chat, and end-to-end encryption wrapped into a cloud storage platform. This guide shows you how to install Nextcloud 14 using Docker."
 keywords: ["nextcloud", "cloud", "open source hosting", "video chat"]
+tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-03-12
 modified: 2018-12-04

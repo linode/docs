@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Learn how to install Pulumi, import the Linode module for Pulumi, and write your first Pulumi programs.'
 keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
@@ -13,7 +14,7 @@ external_resources:
 - '[Pulumi Documentation](https://pulumi.io/reference/)'
 - '[Pulumi API reference](https://pulumi.io/reference/pkg/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
-aliases: ['applications/configuration-management/deploy-in-code-with-pulumi/']
+aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/']
 ---
 
 ## What is Pulumi?
