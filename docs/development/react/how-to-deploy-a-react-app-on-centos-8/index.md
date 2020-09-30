@@ -21,6 +21,11 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
+relations:
+    platform:
+        key: deploy-react-app
+        keywords:
+            - distribution: CentOS 8
 ---
 
 ## What is React?

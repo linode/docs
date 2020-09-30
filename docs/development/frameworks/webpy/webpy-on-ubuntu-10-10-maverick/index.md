@@ -13,6 +13,11 @@ modified_by:
 published: 2011-01-25
 title: 'Web.py on Ubuntu 10.10 (Maverick)'
 deprecated: true
+relations:
+    platform:
+        key: webpy
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.

@@ -20,6 +20,11 @@ external_resources:
     - '[Gogs documentation](http://gogs.io/docs)'
     - '[Gogs: GitLab alternative in Go](http://blog.gopheracademy.com/birthday-bash-2014/gogs-gitlab-alternative-in-go/)'
 audiences: ["intermediate"]
+relations:
+    platform:
+        key: install-gogs
+        keywords:
+            - distribution: Debian 9
 ---
 
 

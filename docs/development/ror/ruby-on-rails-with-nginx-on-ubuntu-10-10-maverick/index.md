@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-12-06
 title: 'Ruby on Rails with Nginx on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

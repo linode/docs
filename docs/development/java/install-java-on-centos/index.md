@@ -16,6 +16,11 @@ external_resources:
 - '[Fedora Wiki Java Entry](https://fedoraproject.org/wiki/Java)'
 audiences: ["beginner"]
 languages: ["java"]
+relations:
+    platform:
+        key: install-java
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![Install Java on CentOS 7](install-java-on-centos-7-title-graphic.jpg "Install Java on CentOS 7")

@@ -22,6 +22,11 @@ external_resources:
 audiences: ["beginner"]
 
 languages: ["java"]
+relations:
+    platform:
+        key: install-java
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 ![Java](Install_Oracle_Java.jpg)

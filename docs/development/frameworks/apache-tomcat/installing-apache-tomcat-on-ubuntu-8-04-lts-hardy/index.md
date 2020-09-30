@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-09-23
 title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

@@ -18,6 +18,11 @@ external_resources:
  - '[MantisBT Plugin Page](http://deboutv.free.fr/mantis/)'
  - '[MantisBT Wiki](http://www.mantisbt.org/wiki/doku.php)'
  - '[MantisBT Administration Guide](http://www.mantisbt.org/manual/)'
+relations:
+    platform:
+        key:  mantis-bug-tracker
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.

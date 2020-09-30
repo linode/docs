@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-08-21
 title: 'Ruby on Rails with Nginx on Ubuntu 8.04 LTS (Hardy)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

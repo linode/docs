@@ -20,6 +20,11 @@ external_resources:
  - '[Information for *yesod-platform*](http://hackage.haskell.org/package/yesod-platform)'
  - '[Yesod Quick Start Guide](http://www.yesodweb.com/page/quickstart)'
 concentrations: ["Web Applications"]
+relations:
+    platform:
+        key: yesod-nginx-mysql
+        keywords:
+            - distribution: Debian 7
 ---
 
 

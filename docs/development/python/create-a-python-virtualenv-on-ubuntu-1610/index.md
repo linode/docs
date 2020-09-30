@@ -20,6 +20,11 @@ external_resources:
 - '[virtualenv Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
+relations:
+    platform:
+        key: python-virtual-env
+        keywords:
+            - distribution: Ubuntu 16.10
 ---
 
 ![Create a Python Virtual Environment on Ubuntu 16.10](python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")
