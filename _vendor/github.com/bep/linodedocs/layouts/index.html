@@ -229,7 +229,7 @@
             </svg>
           </button>
           <div class="carousel__viewport">
-            <div class="carousel__tray flex flex-no-wrap justify-between" :class="{ 'sjustify-between': true}">
+            <div class="carousel__tray flex flex-no-wrap justify-between py-4" :class="{ 'sjustify-between': true}">
               <template x-for="(item, i) in data.productsTiles.items" :key="item.href">
                 {{ template "home/products/carousel/tile" }}
               </template>
@@ -249,7 +249,7 @@
 
 {{ define "home/products/carousel/tile" }}
   <div class="{{ . }}" x-show.transition.duration.500ms.in.origin.left="item.href">
-    <a class="h-40 w-40 flex items-center rounded-lg text-gray-700 hover:text-brand" :href="item.href">
+    <a class=" carousel__item h-40 w-40 flex items-center rounded-lg text-gray-700 hover:text-brand" :href="item.href">
       <div class="flex flex-col justify-center w-full">
         <div class="w-full flex justify-center mb-2">
           <div class="w-16 h-16" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.icon)"></div>
