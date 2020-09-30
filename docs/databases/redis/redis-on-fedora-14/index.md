@@ -6,7 +6,7 @@ author:
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: ["redis fedora 14", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/redis/fedora-14/']
+aliases: ['/databases/redis/fedora-14/']
 modified: 2013-09-24
 modified_by:
   name: Linode
@@ -17,6 +17,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: Fedora 14
+tags: ["nosql","database","fedora"]
 ---
 
 

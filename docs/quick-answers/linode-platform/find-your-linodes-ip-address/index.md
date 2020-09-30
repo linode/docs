@@ -4,13 +4,14 @@ author:
   email: docs@linode.com
 description: 'This quick answer guide shows how to find the IP address of your Linode either through the Linode Manager or while in an SSH session.'
 keywords: ["ip address", "ip addresses", "address", "addresses"]
+tags: ["linode platform","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-21
 modified_by:
   name: Linode
 published: 2017-09-21
 title: Find Your Linode's IP Address
-aliases: ['quick-answers/linode-platform/find-your-linodes-ip-address/','quick-answers/linode-platform/find-your-linodes-ip-address-classic-manager/']
+aliases: ['/quick-answers/linode-platform/find-your-linodes-ip-address-classic-manager/','/quick-answers/linode-platform/find-your-linodes-ip-address/']
 ---
 
 Finding your Linode's IP address (or addresses) is easy and can be done in two different ways.

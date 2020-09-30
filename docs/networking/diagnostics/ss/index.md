@@ -4,6 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'An introduction to the ss utility.'
 keywords: ["UNIX", "shell", "AWK", "ss", "TCP/IP", "network", "socket"]
+tags: ["networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
 modified_by:

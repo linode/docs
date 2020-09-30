@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Mango publishes markdown documents from plain text files into a dynamic website.'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
+tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick/','web-applications/cms-guides/mango/ubuntu-10-10-maverick/']
+aliases: ['/websites/cms/manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick/','/web-applications/cms-guides/mango/ubuntu-10-10-maverick/']
 modified: 2013-10-02
 modified_by:
   name: Linode

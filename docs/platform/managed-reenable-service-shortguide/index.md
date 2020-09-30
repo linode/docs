@@ -12,6 +12,7 @@ title: Reenable a Disabled Service in Linode Managed
 keywords: ["linode managed"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 To reenable monitoring for a service:

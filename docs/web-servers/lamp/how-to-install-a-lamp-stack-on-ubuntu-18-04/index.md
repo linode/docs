@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on Ubuntu 18.04 Long Term Support (LTS).'
 keywords: ["install lamp ubuntu 18.04", "apache install", "mysql install", "php", "ubuntu 18.04"]
-aliases: ['web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/']
+aliases: ['/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/']
+tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-27
 modified_by:
@@ -168,9 +169,9 @@ The `ServerAlias` directive allows you to include multiple domain names or subdo
 Make sure that you do not put a space after the comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
 {{< /note >}}
 
-1.  Assign ownership of `public_html` directory to the user `$www-data`:
+1.  Assign ownership of `public_html` directory to the user `www-data`:
 
-        sudo chown -R $www-data:$www-data /var/www/html/example.com/public_html
+        sudo chown -R www-data:www-data /var/www/html/example.com/public_html
 
 1. Set the permissions for the `public_html` directory:
 

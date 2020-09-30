@@ -4,6 +4,7 @@ author:
     email: afornuto@linode.com
 description: 'Installing and Configuring ownCloud on Debian 7.4'
 keywords: ["ownCloud", "Debian", "MySQL", "cloud storage"]
+tags: ["debian", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-06-21
 modified_by:

@@ -6,7 +6,7 @@ author:
 description: 'Getting started with MySQL for web and server applications on Gentoo.'
 keywords: ["MySQL", "Gentoo", "database", "rdbms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/gentoo/']
+aliases: ['/databases/mysql/gentoo/']
 modified: 2014-01-28
 modified_by:
   name: Alex Fornuto
@@ -17,6 +17,7 @@ relations:
         key: use-mysql-relationaldb
         keywords:
             - distribution: Gentoo
+tags: ["database","mysql"]
 ---
 
 MySQL is a relational database management system (RDBMS) that is used as a backend for countless web and server applications. Originally released in 1995, it remains a popular choice for developers as a database server.

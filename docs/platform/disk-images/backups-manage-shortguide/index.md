@@ -12,6 +12,7 @@ title: How to Manage Your Backups with the Linode Backup Service
 keywords: ["backups"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 You'll manage your backups with a simple web interface in the Linode Cloud Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Cloud Manager, navigate to the **Linodes** page by clicking on the link in the sidebar, select a Linode, and then click the **Backups** tab. The backups interface is shown below.

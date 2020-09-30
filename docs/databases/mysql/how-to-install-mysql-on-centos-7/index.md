@@ -21,6 +21,7 @@ relations:
         key: how-to-install-mysql
         keywords:
             - distribution: CentOS 7
+tags: ["database","mysql","centos"]
 ---
 
 ![Install MySQL on CentOS 7](how-to-install-mysql-on-centos-7.png "Install MySQL on CentOS 7")

@@ -16,6 +16,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: Debian 5
+tags: ["debian","database","postgresql"]
 ---
 
 

@@ -19,6 +19,7 @@ relations:
         key: how-to-install-mongodb
         keywords:
             - distribution: CentOS 7
+tags: ["nosql","database","centos"]
 ---
 
 In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.

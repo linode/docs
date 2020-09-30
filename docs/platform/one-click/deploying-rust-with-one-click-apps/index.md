@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ## Rust One-Click App

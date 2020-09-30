@@ -16,6 +16,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: Fedora 12
+tags: ["database","postgresql","fedora"]
 ---
 
 

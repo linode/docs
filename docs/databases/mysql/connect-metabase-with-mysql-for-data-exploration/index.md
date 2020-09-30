@@ -15,6 +15,7 @@ external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
  - '[Metabase](https://metabase.com/)'
  - '[Employees Testing Database](https://github.com/datacharmer/test_db)'
+tags: ["ubuntu","debian","database","mysql"]
 ---
 
 ![Connect Metabase with mysql for data exploration](Connect_Metabase_with_MySQL_for_Data_Exploration_smg.jpg)
@@ -192,6 +193,8 @@ WantedBy=multi-user.target
         sudo systemctl status metabase
 
 ### Firewall Rules
+
+{{< content "cloud-firewall-shortguide" >}}
 
 UFW is great for preventing unauthorized access to your database. A reasonable default is to allow port 80/443 and SSH:
 

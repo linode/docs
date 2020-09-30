@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Deploy simple web applications with the Sinatra web development framework.'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
+tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/sinatra/debian-5-lenny/','websites/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/','development/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/']
+aliases: ['/development/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/','/websites/frameworks/sinatra-framework-and-nginx-on-debian-5-lenny/','/frameworks/sinatra/debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode

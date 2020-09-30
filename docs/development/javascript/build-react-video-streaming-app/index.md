@@ -11,12 +11,14 @@ modified_by:
   name: Linode
 title: "How to Build a Video Streaming Application with React and Node"
 h1_title: "Building a Video Streaming Application with React and Node"
+image: feature.png
 contributor:
   name: Deven Rathore
   link: https://codesource.io/
 external_resources:
 - '[Video Stream With Node.js and HTML5](https://medium.com/better-programming/video-stream-with-node-js-and-html5-320b3191a6b6)'
 - '[Adding captions and subtitles to HTML5 video](https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video)'
+tags: ["web applications"]
 ---
 
 ## Introduction

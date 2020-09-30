@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: "This guide will show you how to install Certbot on the CentOS 8 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
 og_description:  "This guide will show you how to install Certbot on the CentOS 8 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
-keywords: [centos, certbot, TLS]
+keywords: ["centos", "certbot", "TLS"]
+tags: ["centos", "security", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-22
 modified: 2020-03-22
@@ -83,8 +84,9 @@ Certbot recommends pointing your web server configuration to the default certifi
 
     Finally, Certbot will update your web server configuration so that it uses the new certificate, and also redirects HTTP traffic to HTTPS if you chose that option.
 
-1.  If you have a firewall configured on your Linode, you may need to add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On CentOS 8, *firewalld* is the default tool for managing firewall rules. Configure firewalld for HTTP and HTTPS traffic:
+1.  If you have a firewall configured on your Linode, you may need to add [Firewall Rules](/docs/security/securing-your-server/#configure-a-firewall) to allow incoming and outgoing connections to the HTTPS service. On CentOS 8, *firewalld* is the default tool for managing firewall rules. Configure firewalld for HTTP and HTTPS traffic:
 
         sudo firewall-cmd --zone=public --permanent --add-service=http
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
+

@@ -6,7 +6,7 @@ author:
 description: 'Configure a MongoDB ReplSet (Debian)'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mongodb/debian-7/']
+aliases: ['/databases/mongodb/debian-7/']
 modified_by:
   name: Linode
 published: 2014-04-09
@@ -22,6 +22,7 @@ relations:
         key: create-mongodb-replica-set
         keywords:
             - distribution: Debian 7
+tags: ["debian","database","nosql"]
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

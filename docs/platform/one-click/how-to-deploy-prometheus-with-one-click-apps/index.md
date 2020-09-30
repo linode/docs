@@ -5,6 +5,7 @@ author:
 description: 'Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using One-Click Apps.'
 og_description: 'Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using One-Click Apps.'
 keywords: ['prometheus','monitoring','time series','metrics']
+tags: ["linode platform","monitoring","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified_by:

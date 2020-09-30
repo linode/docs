@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Debian Linux.'
 keywords: ["exim", "mail server", "linux mail", "smtp server", "debian exim", "debian lenny"]
+tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/exim/send-only-mta-debian-5-lenny/']
+aliases: ['/email/exim/send-only-mta-debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode

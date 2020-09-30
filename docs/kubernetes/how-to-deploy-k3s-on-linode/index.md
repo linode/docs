@@ -5,6 +5,7 @@ author:
 description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
 og_description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
 keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
+tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-30
 modified_by:

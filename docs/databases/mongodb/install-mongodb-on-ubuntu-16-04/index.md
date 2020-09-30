@@ -19,6 +19,7 @@ relations:
         key: how-to-install-mongodb
         keywords:
             - distribution: Ubuntu 16.04
+tags: ["ubuntu","database","nosql"]
 ---
 
 In this MongoDB tutorial, we explain how to install the database on Ubuntu 16.04, and then provide a short guide on some basic features and functions.

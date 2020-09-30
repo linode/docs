@@ -10,13 +10,14 @@ modified: 2017-06-24
 modified_by:
   name: Andrew Lescher
 title: 'Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
-aliases: ['databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
+aliases: ['/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
+tags: ["ubuntu","centos","database","nosql"]
 ---
 
 

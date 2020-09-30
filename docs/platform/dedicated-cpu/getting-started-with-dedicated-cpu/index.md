@@ -9,6 +9,7 @@ modified_by:
   name: Linode
 published: 2019-09-20
 title: Getting Started with Dedicated CPUs
+tags: ["linode platform"]
 ---
 
 This guide will serve as a brief introduction into what a Dedicated CPU Linode is and how to add one to your Linode account. Review our [Use Cases for Dedicated CPUs](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guide for more information about the tasks that work well on this instance type.

@@ -16,6 +16,7 @@ relations:
         key: install-elasticsearch
         keywords:
             - distribution: CentOS
+tags: ["database"]
 ---
 
 1.  Trust the Elastic signing key:

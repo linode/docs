@@ -5,6 +5,7 @@ author:
 description: 'In this guide you enable Nextcloud''s External Storage app and then configure it to use Linode Object Storage as a secondary storage location. Nextcloud is a full-featured file hosting and sharing solution that can be easily installed on a Linode using One-Click Apps.'
 og_description: 'In this guide you enable Nextcloud''s External Storage app and then configure it to use Linode Object Storage as a secondary storage location. Nextcloud is a full-featured file hosting and sharing solution that can be easily installed on a Linode using One-Click Apps.'
 keywords: ['file hosting','nextcloud','object storage','s3']
+tags: ["linode platform","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-16
 modified_by:

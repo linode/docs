@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Use system user accounts, postfix, and dovecot to provide'
 keywords: ["postfix", "dovecot", "system users", "email"]
+tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/dovecot-system-users-ubuntu-10-10-maverick/']
+aliases: ['/email/postfix/dovecot-system-users-ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

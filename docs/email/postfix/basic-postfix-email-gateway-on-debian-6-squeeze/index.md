@@ -3,9 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure the Postfix MTA as a basic email gateway.'
-keywords: ["email", "postfix", "mta", "forwarding", ""]
+keywords: ["email", "postfix", "mta", "forwarding"]
+tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/gateway-debian-6-squeeze/']
+aliases: ['/email/postfix/gateway-debian-6-squeeze/']
 modified: 2013-09-25
 modified_by:
   name: Linode

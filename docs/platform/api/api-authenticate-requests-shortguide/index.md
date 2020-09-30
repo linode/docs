@@ -12,6 +12,7 @@ title: How to Authenticate Requests with the Linode API
 keywords: ["api"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 This token must be sent as a header on all requests to authenticated endpoints. The header should use the format:

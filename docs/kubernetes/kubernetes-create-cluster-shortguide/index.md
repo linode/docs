@@ -12,6 +12,7 @@ title: How to Create a Linode Kubernetes Engine Cluster
 keywords: ["kubernetes"]
 headless: true
 show_on_rss_feed: false
+tags: ["kubernetes"]
 ---
 
 1.  Log into your [Linode Cloud Manager](https://cloud.linode.com/) account.

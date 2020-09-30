@@ -15,6 +15,7 @@ external_resources:
   - '[journalctl man page](https://www.freedesktop.org/software/systemd/man/journalctl.html)'
   - '[systemd-journald man page](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html#)'
   - '[journald.conf man page](https://www.freedesktop.org/software/systemd/man/journald.conf.html)'
+tags: ["linux"]
 ---
 
 ## What is journalctl?

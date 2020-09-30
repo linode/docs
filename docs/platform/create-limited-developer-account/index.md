@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Shows how to create an account with access restrictions for developers and maintainers.
 keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
+tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-07-26
 modified_by:

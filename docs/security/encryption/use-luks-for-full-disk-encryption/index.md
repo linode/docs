@@ -3,8 +3,9 @@ author:
   name: Nick Brewer
   email: docs@linode.com
 description: This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.
-aliases: ['security/full-disk-encryption/','security/use-luks-for-full-disk-encryption/']
+aliases: ['/security/use-luks-for-full-disk-encryption/','/security/full-disk-encryption/']
 keywords: ["full disk encryption", "debian", "luks", "lassie"]
+tags: ["security","debian","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-11-02
 modified_by:

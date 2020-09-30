@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
 keywords: ["django", "uwsgi", "nginx", "python"]
+tags: ["web server","ubuntu","python","nginx","django"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-11-25
 modified_by:
@@ -14,7 +15,7 @@ contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
 deprecated: True
-aliases: ['websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/','websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/']
+aliases: ['/websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/']
 external_resources:
   - '[Writing your first Django app Tutorial](https://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)'
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'

@@ -3,7 +3,8 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Instructions for compiling and configuring a custom kernel on your CentOS 7 Linode'
-keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", " centos"]
+keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", "centos"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-08-01
 modified_by:

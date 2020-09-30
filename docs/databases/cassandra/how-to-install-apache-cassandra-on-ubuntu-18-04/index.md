@@ -24,6 +24,7 @@ relations:
         key: install-apache-cassandra
         keywords:
             - distribution: Ubuntu 18.04
+tags: ["ubuntu","database","nosql"]
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running Ubuntu 18.04. This tutorial will cover basic configuration options, as well as harden database security.

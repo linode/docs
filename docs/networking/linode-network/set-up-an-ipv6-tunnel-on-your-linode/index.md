@@ -5,12 +5,13 @@ author:
 description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/set-up-an-ipv6-tunnel-on-your-linode/','/networking/ipv6-tunnels/']
+aliases: ['/networking/ipv6-tunnels/','/networking/set-up-an-ipv6-tunnel-on-your-linode/']
 modified: 2018-12-11
 modified_by:
   name: Linode
 published: 2011-04-29
 title: Set Up an IPv6 Tunnel on Your Linode
+tags: ["networking","linode platform"]
 ---
 
 ![Set up an IPv6 Tunnel on Your Linode](Set_Up_an_IPv6_Tunnel_on_Your_Linode_smg.jpg)

@@ -12,6 +12,7 @@ title: Resize a Block Storage Volume
 keywords: ["block storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing your Volumes.

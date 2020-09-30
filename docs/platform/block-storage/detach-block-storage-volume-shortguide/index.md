@@ -12,6 +12,7 @@ title: Detach a Block Storage Volume
 keywords: ["block storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  Go to the detail page page of the Linode which the Volume is attached to. Shut down the Linode.

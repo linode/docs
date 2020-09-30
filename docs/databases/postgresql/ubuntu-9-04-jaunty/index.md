@@ -16,6 +16,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: Ubuntu 9.04
+tags: ["ubuntu","database","postgresql"]
 ---
 
 

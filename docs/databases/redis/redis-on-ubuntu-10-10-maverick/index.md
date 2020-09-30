@@ -6,7 +6,7 @@ author:
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: ["redis ubuntu 10.10", "redis maverick", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/redis/ubuntu-10-10-maverick/']
+aliases: ['/databases/redis/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode
@@ -17,6 +17,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: Ubuntu 10.10
+tags: ["ubuntu","database","nosql"]
 ---
 
 

@@ -13,6 +13,7 @@ title: "Immutable Infrastructure"
 contributor:
   name: Linode
 audiences: ["intermediate"]
+tags: ["automation"]
 ---
 
 ## What is Immutable Infrastructure?

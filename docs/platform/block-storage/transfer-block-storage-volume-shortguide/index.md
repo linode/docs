@@ -12,6 +12,7 @@ title: Transfer Your Block Storage to Another Linode
 keywords: ["block storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1. Follow the steps to safely detach your volume as mentioned in [How to Detach a Block Storage Volume from a Linode]

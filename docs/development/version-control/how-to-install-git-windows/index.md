@@ -12,6 +12,7 @@ title: "How to install Git on Windows"
 published: 2018-01-08
 headless: true
 show_on_rss_feed: false
+tags: ["version control system"]
 ---
 
 To install Git on Windows you will need to download the installer from the [Git](http://git-scm.com/downloads) website:

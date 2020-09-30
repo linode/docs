@@ -6,7 +6,7 @@ author:
 description: 'An introduction and getting started guide for CouchDB on Ubuntu 10.04 (Lucid) systems.'
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/couchdb/ubuntu-10-04-lucid/']
+aliases: ['/databases/couchdb/ubuntu-10-04-lucid/']
 modified: 2013-09-24
 modified_by:
   name: Linode
@@ -17,6 +17,7 @@ relations:
         key: couchdb-document-data-storage
         keywords:
             - distribution: Ubuntu 10.04
+tags: ["ubuntu","database","nosql"]
 ---
 
 

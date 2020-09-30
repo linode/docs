@@ -5,7 +5,7 @@ author:
 description: 'Execute commands on a remote MySQL server though PuTTY or mysql-client. This guide will teach you how to gain remote access to your MySQL Database using an SSH tunnel.'
 keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/mysql-ssh-tunnel/','databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/']
+aliases: ['/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/','/databases/mysql/mysql-ssh-tunnel/']
 modified: 2018-03-05
 modified_by:
   name: Linode
@@ -16,6 +16,7 @@ external_resources:
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
+tags: ["ssh","database","mysql"]
 ---
 
 This guide will show you how to make a secure connection to your remote MySQL or MariaDB server from your local computer, using an *SSH tunnel*. This is useful if you want to use administration tools on your local computer to do work on your server.

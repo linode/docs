@@ -5,7 +5,7 @@ author:
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
 keywords: ["mysql", "phpmyadmin", "sql", "debian", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/phpmyadmin-debian-7-wheezy/','docs/databases/mysql/managing-mysql-with-phpmyadmin-on-debian-7-wheezy/']
+aliases: ['/docs/databases/mysql/managing-mysql-with-phpmyadmin-on-debian-7-wheezy/','/databases/mysql/phpmyadmin-debian-7-wheezy/']
 modified: 2015-09-16
 modified_by:
     name: Linode
@@ -19,6 +19,7 @@ relations:
         key: how-to-install-phpmyadmin
         keywords:
             - distribution: Debian 7
+tags: ["debian","database","mysql","php"]
 ---
 
 ![Install MySQL with phpMyAdmin on Debian](How_to_Install_MySQL_with_phpMyAdmin_on_Debian_7_smg.jpg)

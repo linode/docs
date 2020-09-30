@@ -5,7 +5,7 @@ author:
 description: 'Configure MongoDB for use in clustered environments.'
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mongodb/clusters/']
+aliases: ['/databases/mongodb/clusters/']
 modified_by:
   name: Linode
 published: 2010-09-30
@@ -17,6 +17,7 @@ external_resources:
  - '[MongoDB Documentation for Sharding](https://docs.mongodb.com/manual/sharding/)'
  - '[MongoDB Documentation for Auto Sharding Configuration](https://docs.mongodb.com/manual/sharding/)'
  - '[Configure MongoDB for SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/)'
+tags: ["ubuntu","database","nosql","centos"]
 ---
 
 MongoDB is a leading non-relational database management system, and a prominent member of the [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement. Rather than using the tables and fixed schemas of a relational database management system (RDBMS), MongoDB uses key-value storage in collection of documents. It also supports a number of options for horizontal scaling in large, production environments. In this guide, we'll explain how to set up a *sharded cluster* for highly available distributed datasets.

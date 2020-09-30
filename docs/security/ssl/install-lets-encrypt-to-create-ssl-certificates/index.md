@@ -17,6 +17,7 @@ deprecated: true
 deprecated_link: quick-answers/websites/secure-http-traffic-certbot/
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
+tags: ["security","ssl"]
 ---
 
 ![Let's Encrypt](Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)

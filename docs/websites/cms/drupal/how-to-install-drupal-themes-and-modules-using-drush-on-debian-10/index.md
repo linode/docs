@@ -5,6 +5,7 @@ author:
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Debian 10.'
 og_description: 'Use Drush to install and enable themes and modules on your Drupal site running on Debian 10.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "debian", "drush"]
+tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-11
 modified_by:
@@ -12,11 +13,12 @@ modified_by:
 published: 2014-12-05
 title: How to Install Drupal Themes and Modules Using Drush on Debian 10
 h1_title: Install Drupal Themes and Modules Using Drush on Debian 10
+image: feature.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
  - '[Backup and Migrate](https://www.drupal.org/docs/8/modules/backup-and-migrate/howto-for-backup-and-migrate)'
-aliases: ['websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/']
+aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/']
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.
