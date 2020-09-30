@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy the MERN stack on Linode with One-Click Apps.'
 keywords: ['mongodb','mern','react','express', 'web app']
+tags: ["web server","database","cloud-manager","linode platform","web applications","one-click"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
 modified: 2019-04-02

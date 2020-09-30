@@ -5,6 +5,7 @@ author:
 description: 'This guide demonstrates how to use the NGINX Ingress Controller, cert-manager, and Linode NodeBalancers in order to expose a Kubernetes application externally via HTTPS. You will create an example application throughout this guide, but you can replace the example application with your Kubernetes Service and Deployment.'
 og_description: 'This guide demonstrates how to use the NGINX Ingress Controller, cert-manager, and Linode NodeBalancers in order to expose a Kubernetes application externally via HTTPS. You will create an example application throughout this guide, but you can replace the example application with your Kubernetes Service and Deployment.'
 keywords: ['load balancers','kubernetes','pods','cloud controller manager']
+tags: ["kubernetes","container","nginx","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-17
 modified_by:
@@ -24,7 +25,7 @@ The [*Linode Cloud Controller Manager*](https://github.com/linode/linode-cloud-c
 
 To learn about the various configurations available for Linode NodeBalancers via [Kubernetes annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/), see [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations).
 
-Linode NodeBalancers do not currently support ProxyProtocol. For this reason, Kubernetes LoadBalancer Services running on Linode do not support ProxyProtocol either. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to Linode NodeBalancers.
+While Linode NodeBalancers do support ProxyProtocol, the Linode CCM does not. For this reason, the Linode Kubernetes Engine does not support ProxyProtocol yet. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to the Linode CCM.
 
 {{</ note >}}
 

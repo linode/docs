@@ -5,12 +5,13 @@ author:
 description: Guides for installing and managing software on major Linux operating systems on a Linode.
 keywords: ["Linux package management", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/using-linux/package-management/','/tools-reference/linux-package-management/']
+aliases: ['/tools-reference/linux-package-management/','/using-linux/package-management/']
 modified: 2017-02-23
 modified_by:
   name: Linode
 published: 2009-07-16
 title: Linux Package Management
+tags: ["linux"]
 ---
 
 Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.

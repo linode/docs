@@ -14,6 +14,7 @@ external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
+tags: ["wordpress","mariadb","database"]
 ---
 
 ![Configure WordPress to use a Remote Database](Configure_WordPress_to_use_a_Remote_Database_smg.jpg)
@@ -54,6 +55,8 @@ Run these steps on the database server.
         sudo mysql_secure_installation
 
 ### Accept Remote Connections
+
+{{< content "cloud-firewall-shortguide" >}}
 
 1.  Change the `bind-address` to the database server's private IP to configure the MariaDB to accept remote connections:
 

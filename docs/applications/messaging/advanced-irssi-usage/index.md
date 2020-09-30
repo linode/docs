@@ -5,8 +5,9 @@ author:
 description: 'Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpeter. This guide shows how to use these tools to customize your Irssi experience.'
 og_description: 'Irssi is a popular IRC client featuring a flexible plugin architecture and embedded Perl interpeter. This guide shows how to use these tools to customize your Irssi experience.'
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
+tags: ["perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/irc/advanced-irssi/']
+aliases: ['/communications/irc/advanced-irssi/']
 modified: 2018-04-10
 modified_by:
   name: Linode

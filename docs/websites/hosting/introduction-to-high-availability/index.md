@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Introduction to high availability concepts'
 keywords: ["high availability", "hosting", "website", "failover", "ssd ha"]
+tags: ["web server","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
 modified: 2016-07-12
@@ -12,7 +13,7 @@ modified_by:
 title: 'Introduction to High Availability'
 external_resources:
 - '[Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)'
-aliases: ['websites/introduction-to-high-availability/']
+aliases: ['/websites/introduction-to-high-availability/']
 ---
 
 ![Introduction to High Availability](Introduction_to_High_Availability_smg.jpg)

@@ -8,7 +8,7 @@ keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
 modified: 2018-10-19
-aliases: ['platform/how-to-build-your-infrastructure-using-terraform-and-linode/','applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/']
+aliases: ['/platform/how-to-build-your-infrastructure-using-terraform-and-linode/','/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/']
 modified_by:
   name: Linode
 title: 'Use Terraform to Provision Linode Environments'
@@ -72,7 +72,7 @@ The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://w
 
 ### Verify the Download
 
-1.  Import the HashiCorp Security GPG key (listed on the [HashiCorp Security](https://www.hashicorp.com/security.html) page under *Secure Communications*):
+1.  Import the HashiCorp Security GPG key (listed on the [HashiCorp Security](https://www.hashicorp.com/security) page under *Secure Communications*):
 
         gpg --recv-keys 51852D87348FFC4C
 

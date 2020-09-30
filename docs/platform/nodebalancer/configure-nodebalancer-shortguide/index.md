@@ -12,6 +12,7 @@ title: Configure a NodeBalancer
 keywords: ["nodebalancer"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","networking"]
 ---
 
 1.  Visit the NodeBalancers page in the Linode [Cloud Manager](http://cloud.linode.com) and select **Add a NodeBalancer**.

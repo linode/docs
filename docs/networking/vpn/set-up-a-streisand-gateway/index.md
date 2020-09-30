@@ -12,6 +12,7 @@ modified_by:
 title: 'How to Set Up a Streisand Gateway'
 external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'
+tags: ["networking","security","vpn"]
 ---
 
 ![Streisand Gateway](Streisand_Gateway.jpg)

@@ -3,7 +3,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn how to use Postfix to send mail through an external SMTP server.'
-keywords: ["Postfix", " Debian", " SMTP", " Email", " Mail"]
+keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
+tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
     name: Santiago Ti
@@ -12,7 +13,7 @@ modified_by:
   name: Linode
 published: 2014-05-30
 title: Configure Postfix to Send Mail Using an External SMTP Server
-aliases: ['email/postfix/postfix-smtp-debian7/']
+aliases: ['/email/postfix/postfix-smtp-debian7/']
 ---
 
 {{< note >}}

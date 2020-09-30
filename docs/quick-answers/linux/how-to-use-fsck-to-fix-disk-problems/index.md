@@ -13,6 +13,7 @@ modified_by:
 title: 'How to use fsck to Find and Repair Disk Errors and Bad Sectors'
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
+tags: ["linux"]
 ---
 
 ![banner_image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg)

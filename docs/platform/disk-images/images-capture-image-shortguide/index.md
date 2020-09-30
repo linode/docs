@@ -12,6 +12,7 @@ title: How to Capture a Linode Disk Image
 keywords: ["images"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Linode Images captures an exact copy of your disk at the moment when the process is kicked off. Here's how to capture your first image.

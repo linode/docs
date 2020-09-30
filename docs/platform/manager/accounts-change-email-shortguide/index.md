@@ -12,6 +12,7 @@ title: Change Your Email Address on Your Account
 keywords: ["users", "permissions", "accounts", "passwords"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","cloud manager"]
 ---
 
 Use the *My Profile* page to modify the email address associated with your user account. The email address saved on this webpage receives IP whitelist warnings, password reset messages, and support tickets for services that you have permission to access. You may also receive invoices and receipts, if the primary account holder grants you access to that information.

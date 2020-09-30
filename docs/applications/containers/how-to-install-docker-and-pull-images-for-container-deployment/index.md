@@ -7,6 +7,7 @@ contributor:
   link: https://twitter.com/jlwallen
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
 keywords: ["docker", "container", "dockerfile", "install docker"]
+tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-07-17
 modified: 2017-10-23

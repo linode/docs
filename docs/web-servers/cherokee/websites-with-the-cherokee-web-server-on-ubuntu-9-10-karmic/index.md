@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.10 (Karmic).'
 keywords: ["cherokee", "web sever", "cherokee ubuntu 9.10", "cherokee ubuntu karmic", "ubuntu karmic"]
+tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/cherokee/installing-cherokee-ubuntu-9-10-karmic/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/']
+aliases: ['/web-servers/cherokee/installing-cherokee-ubuntu-9-10-karmic/','/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/']
 modified: 2011-05-09
 modified_by:
   name: Linode

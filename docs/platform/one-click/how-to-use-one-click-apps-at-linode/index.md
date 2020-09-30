@@ -13,6 +13,7 @@ title: "How to Use Linode's One-Click Apps"
 h1_title: "Using Linode's One-Click Apps"
 contributor:
   name: Linode
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ![How to Use Linode's One-Click Apps](how-to-use-linode-oneclick-apps.png "How to Use Linode's One-Click Apps")

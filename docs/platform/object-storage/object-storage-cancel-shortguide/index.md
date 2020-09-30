@@ -12,6 +12,7 @@ title: How to Cancel the Linode Object Storage Service
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 1.  To cancel Object Storage, you must first delete all the buckets. To delete a bucket, the bucket must be empty. For buckets that contain large amounts of objects, consider employing [lifecycle policies](/docs/platform/object-storage/lifecycle-policies/) to delete the objects.

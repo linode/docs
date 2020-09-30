@@ -5,7 +5,7 @@ author:
 description: An advanced overview of configuration for the Apache web server including virtual hosts and configuration file management
 keywords: ["configuration", "apache", "web server", "virtual hosting", "http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/configuration-basics/','websites/apache-tips-and-tricks/apache-configuration-basics/']
+aliases: ['/web-servers/apache/configuration/configuration-basics/','/websites/apache-tips-and-tricks/apache-configuration-basics/']
 modified: 2011-08-22
 modified_by:
   name: Linode
@@ -20,6 +20,7 @@ external_resources:
  - '[Virtual Host Directives](http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost)'
  - '[Apache Control Interface](http://httpd.apache.org/docs/2.2/programs/apachectl.html)'
  - '[HTTP Command](http://httpd.apache.org/docs/2.2/programs/httpd.html)'
+tags: ["web server","apache"]
 ---
 
 ![Apache Configuration Basics](Apache_Configuration_Basics_smg.png)

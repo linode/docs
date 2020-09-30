@@ -3,9 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", " how to install wordpress", " how to configure wordpress"]
+keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", "how to install wordpress", "how to configure wordpress"]
+tags: ["lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/manage-web-content-with-wordpress/','web-applications/cms-guides/wordpress/','websites/cms/how-to-install-and-configure-wordpress/']
+aliases: ['/web-applications/cms-guides/wordpress/','/websites/cms/how-to-install-and-configure-wordpress/','/websites/cms/manage-web-content-with-wordpress/']
 modified: 2015-10-05
 modified_by:
   name: Elle Krout

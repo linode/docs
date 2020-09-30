@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Longview App for MySQL
 keywords: ["Longview", " MySQL", " statistics"]
+tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode

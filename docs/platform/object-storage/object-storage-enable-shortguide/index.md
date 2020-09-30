@@ -12,6 +12,7 @@ title: How to Enable the Linode Object Storage Service
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Object Storage is not enabled for a Linode account by default. All that is required to enable Object Storage is to create a bucket or an Object Storage access key. To cancel Object Storage, see the [Cancel Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) section.

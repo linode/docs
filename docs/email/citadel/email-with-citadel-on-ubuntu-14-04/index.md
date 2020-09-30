@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 14.04 LTS (Truly Tahr) Linode.'
 keywords: ["citadel", "citadel ubuntu 14.04", "ubuntu 14.04 mail server", "groupware", "email server"]
+tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-09-20
 modified_by:

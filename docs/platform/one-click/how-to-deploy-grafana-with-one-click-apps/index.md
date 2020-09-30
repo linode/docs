@@ -5,12 +5,14 @@ author:
 description: 'Grafana is an open source analytics and monitoring solution with a focus on accessibility for metric visualization. Deploay a Grafana instance using Linode''s One-Click Apps.'
 og_description: 'Grafana is an open source analytics and monitoring solution with a focus on accessibility for metric visualization. Deploay a Grafana instance using Linode''s One-Click Apps.'
 keywords: ['grafana','monitoring','dashboard','one-click']
+tags: ["linode platform","monitoring","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified_by:
   name: Linode
 title: "How to Deploy Grafana with One-Click Apps"
 h1_title: "Deploying Grafana with One-Click Apps"
+image: feature.png
 contributor:
   name: Linode
 external_resources:

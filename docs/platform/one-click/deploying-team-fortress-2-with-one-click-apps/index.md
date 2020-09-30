@@ -12,6 +12,7 @@ modified_by:
 title: "Deploy a Team Fortress 2 Server with One-Click Apps"
 contributor:
   name: Linode
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ## Team Fortress 2 One-Click App

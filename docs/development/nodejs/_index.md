@@ -1,5 +1,5 @@
 ---
 title: Node.js
-aliases: ['websites/nodejs/']
+aliases: ['/websites/nodejs/']
 show_in_lists: true
 ---

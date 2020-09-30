@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 11.04 (Natty).'
 keywords: ["exim ubuntu 11.04", "exim", "send email ubuntu", "mail server", "linux mail", "smtp server", "ubuntu exim"]
+tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/exim/send-only-mta-ubuntu-11-04-natty/']
+aliases: ['/email/exim/send-only-mta-ubuntu-11-04-natty/']
 modified: 2013-02-18
 modified_by:
   name: Linode

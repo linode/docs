@@ -1,16 +1,17 @@
- ---
+---
 author:
   name: Linode
   email: docs@linode.com
 description: 'Learn how to use Lish as a shell for managing or rescuing your Linode.'
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/manager/using-the-linode-shell-lish-classic-manager/','networking/using-the-linode-shell-lish/','using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','platform/using-the-linode-shell-lish/']
+aliases: ['/using-lish-the-linode-shell/','/networking/using-the-linode-shell-lish/','/platform/manager/using-the-linode-shell-lish-classic-manager/','/troubleshooting/using-lish-the-linode-shell/','/platform/using-the-linode-shell-lish/']
 modified: 2019-06-20
 modified_by:
   name: Linode
 published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
+tags: ["linode platform","cloud manager"]
 ---
 
 ![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)

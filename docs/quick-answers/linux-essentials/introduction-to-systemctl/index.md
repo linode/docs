@@ -16,6 +16,7 @@ external_resources:
 - '[Systemctl man page](https://www.freedesktop.org/software/systemd/man/systemctl.html)'
 - '[Creating and modifying systemd unit files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files)'
 - '[Working with systemd targets](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets)'
+tags: ["linux"]
 ---
 
 ## What is systemctl?

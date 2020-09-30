@@ -12,6 +12,7 @@ title: How to Install NVIDIA driver dependencies for Linode GPU Instances
 keywords: ["gpu"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 Prior to installing the driver, you should install the required dependencies. Listed below are commands for installing these packages on many popular distributions.

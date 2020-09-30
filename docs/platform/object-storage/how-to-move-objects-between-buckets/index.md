@@ -17,6 +17,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Cyberduck duck documentation](https://trac.cyberduck.io/wiki/help/en/howto/cli)'
+tags: ["linode platform"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

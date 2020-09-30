@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Install and configure NSD to handle DNS queries.'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
+tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/nsd-authoritative-dns-ubuntu-10-10-maverick/']
+aliases: ['/dns-guides/nsd-authoritative-dns-ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode

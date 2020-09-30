@@ -5,7 +5,7 @@ author:
 description: 'Use IRC and GNU Screen to maintain persistent connections to IRC networks.'
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/irc/irssi/']
+aliases: ['/communications/irc/irssi/']
 modified: 2015-01-09
 modified_by:
   name: Elle Krout

@@ -8,6 +8,7 @@ contributor:
 description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode Cloud Manager. The Cloud Manager provides interfaces for selecting hardware resources for your cluster's node pools, and you can modify these after cluster creation."
 og_description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode Cloud Manager. The Cloud Manager provides interfaces for selecting hardware resources for your cluster's node pools, and you can modify these after cluster creation."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
+tags: ["linode platform","kubernetes","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
 modified_by:
@@ -17,7 +18,7 @@ h1_title: A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes
 image: deploy-and-manage-cluster.png
 external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'
-aliases: ['applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/','applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/']
+aliases: ['/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/']
 ---
 
 ## What is the Linode Kubernetes Engine (LKE)

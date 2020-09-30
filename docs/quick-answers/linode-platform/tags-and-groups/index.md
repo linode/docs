@@ -11,6 +11,7 @@ modified_by:
 title: "Tags and Groups"
 contributor:
   name: Linode
+tags: ["linode platform","cloud manager"]
 ---
 
 Linode's [Cloud Manager](https://cloud.linode.com) and [API](https://developers.linode.com) allow you to create tags to help organize and group your Linode resources. Tags can be applied to Linodes, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/), and [Domains](/docs/platform/manager/dns-manager-new-manager/).

@@ -21,7 +21,7 @@ external_resources:
 - '[linode_instance Resource Reference](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 - '[Terraform Random Provider Reference](https://www.terraform.io/docs/providers/random/index.html)'
 - '[Terraform Built-In Function Reference](https://www.terraform.io/docs/configuration/interpolation.html#supported-built-in-functions)'
-aliases: ['applications/configuration-management/create-a-nodebalancer-with-terraform/']
+aliases: ['/applications/configuration-management/create-a-nodebalancer-with-terraform/']
 ---
 
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.
@@ -276,7 +276,7 @@ Run the `apply` command:
 
     terraform apply
 
-You will be prompted to approve the `apply` action. Type *yes* and hit **Enter**. Terraform will begin to create the resources you have configured in the previous steps. This will take a few minutes, after which you will start to see the output of the the `remote-exec` commands you defined in your Linode instance resource. Once all of the actions are completed you should see output like the following:
+You will be prompted to approve the `apply` action. Type *yes* and hit **Enter**. Terraform will begin to create the resources you have configured in the previous steps. This will take a few minutes, after which you will start to see the output of the `remote-exec` commands you defined in your Linode instance resource. Once all of the actions are completed you should see output like the following:
 
 {{< output >}}
 Apply complete! Resources: 7 added, 0 changed, 0 destroyed.

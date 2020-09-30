@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 9.10 (Karmic).'
 keywords: ["postfix", "courier", "mail server", "postfix ubuntu karmic", "postfix ubuntu 9.10", "imap", "postfix on ubuntu", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
+tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/courier-mysql-ubuntu-9-10-karmic/']
+aliases: ['/email/postfix/courier-mysql-ubuntu-9-10-karmic/']
 modified: 2011-05-17
 modified_by:
   name: Linode

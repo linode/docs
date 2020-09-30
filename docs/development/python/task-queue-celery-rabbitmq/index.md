@@ -18,6 +18,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
+tags: ["python"]
 ---
 
 ![How to Set Up a Task Queue with Celery and RabbitMQ](how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)
@@ -324,6 +325,8 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
     3.  Reload the firewall:
 
             sudo firewall-cmd --reload
+
+{{< content "cloud-firewall-shortguide" >}}
 
 3.  Navigate to the directory with your Celery app and start Flower. 5555 is the default port, but this can be changed using the `--port` flag:
 

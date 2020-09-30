@@ -6,7 +6,7 @@ author:
 description: Configure a MongoDB ReplSet
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mongodb/centos-6/']
+aliases: ['/databases/mongodb/centos-6/']
 modified_by:
   name: Linode
 published: 2014-04-09
@@ -17,6 +17,7 @@ external_resources:
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/tutorial/getting-started-with-the-mongo-shell/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/core/replication-introduction/)'
+tags: ["nosql","database","centos"]
 ---
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

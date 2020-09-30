@@ -11,6 +11,7 @@ modified_by:
 title: "Use Cases for Block Storage"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 ## What is Block Storage

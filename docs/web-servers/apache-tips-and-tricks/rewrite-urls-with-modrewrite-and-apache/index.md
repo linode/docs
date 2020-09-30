@@ -5,7 +5,7 @@ author:
 description: 'How to use the mod_rewrite engine to generate URLs with the Apache HTTP server.'
 keywords: ["mod_rewrite", "REST", "URLs", "redirect", "apache", "httpd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/rewriting-urls/','websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/']
+aliases: ['/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/','/web-servers/apache/configuration/rewriting-urls/']
 modified: 2017-02-21
 modified_by:
   name: Phil Zona
@@ -16,6 +16,7 @@ external_resources:
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
  - '[Redirect URLs with the Apache Web Server](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/)'
+tags: ["web server","apache"]
 ---
 
 In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rewriting a URL is a server-side operation that allows you to serve content from a file system location that doesn't correspond exactly with the client's request. This can be useful for improving URL readability by search engines and users, or updating locations of resources when your site architecture changes.

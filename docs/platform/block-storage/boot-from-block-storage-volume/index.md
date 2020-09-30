@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2018-05-04
 title: Boot a Linode from a Block Storage Volume
+tags: ["linode platform"]
 ---
 
 ![Boot from a Block Storage Volume](block-storage-title-graphic.png)

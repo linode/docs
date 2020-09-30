@@ -12,6 +12,7 @@ title: Object Storage Cluster Definiton
 keywords: []
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 {{< note >}}
