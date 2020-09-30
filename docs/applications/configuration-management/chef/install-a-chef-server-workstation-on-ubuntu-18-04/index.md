@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 title: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
 h1_title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
+relations:
+    platform:
+        key: install-chef-workstation
+        keywords:
+            - distribution: Ubuntu 18.04
 aliases: ['/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/']
 ---
 

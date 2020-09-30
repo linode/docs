@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-11-09
 title: 'Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: how-to-install-ejabberd
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

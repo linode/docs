@@ -11,6 +11,11 @@ modified_by:
     name: Alex Fornuto
 published: 2014-06-10
 title: 'Installing and Configuring ownCloud on Debian 7.4'
+relations:
+    platform:
+        key: how-to-install-owncloud
+        keywords:
+            - distribution: Debian 7
 ---
 
 ownCloud is an open source platform that allows easy access to files from multiple locations and platforms. It's compatible with most major operating systems and mobile devices. With ownCloud you can store files on your Linode and then access them wherever you go.

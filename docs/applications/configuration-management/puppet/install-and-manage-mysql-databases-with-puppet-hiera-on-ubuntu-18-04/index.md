@@ -19,6 +19,11 @@ external_resources:
   - '[The Puppet Forge](https://forge.puppet.com/)'
   - '[Hiera documentation](https://docs.puppet.com/hiera/)'
   - '[Facter](https://docs.puppet.com/facter/)'
+relations:
+    platform:
+        key: install-puppet-mysql-hiera
+        keywords:
+            - distribution: Ubuntu 18.04
 aliases: ['/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/']
 ---
 

@@ -17,6 +17,11 @@ external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
  - '[XMPP Software Clients](http://xmpp.org/software/clients.shtml)'
+relations:
+    platform:
+        key: how-to-install-openfire
+        keywords:
+            - distribution: CentOS 5
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your CentOS 5 Linode.

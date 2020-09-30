@@ -18,6 +18,11 @@ external_resources:
  - '[Cygwin/X](http://x.cygwin.com/)'
  - '[MobaXterm](http://mobaxterm.mobatek.net/)'
  - '[XQuartz](http://xquartz.macosforge.org/)'
+relations:
+    platform:
+        key: forward-x11-gui
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 On occasion you may want to run an application that requires a graphic interface from your Linode. By using X forwarding, this is easy to accomplish.

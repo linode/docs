@@ -14,6 +14,11 @@ title: 'How to Install Asterisk on CentOS 7'
 contributor:
     name: Nick Rahl
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: asterisk-freepbx-telephone
+        keywords:
+            - distribution: CentOS 7
 ---
 
 

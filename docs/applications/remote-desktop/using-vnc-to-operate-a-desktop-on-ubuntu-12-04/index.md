@@ -16,6 +16,11 @@ title: 'Using VNC to Operate a Desktop on Ubuntu 12.04'
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'
+relations:
+    platform:
+        key: install-vnc
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 ![Using VNC to Operate a Desktop on Ubuntu 12.04](using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")
