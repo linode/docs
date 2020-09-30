@@ -17,7 +17,7 @@ relations:
     platform:
         key: using-ikiwiki
         keywords:
-           - distribution: fedora-12
+           - distribution: Fedora 12
 ---
 
 

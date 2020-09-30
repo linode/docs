@@ -15,7 +15,7 @@ relations:
     platform:
         key: how-to-install-drupal
         keywords:
-           - distribution: centOS 8
+           - distribution: CentOS 8
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running CentOS 8.

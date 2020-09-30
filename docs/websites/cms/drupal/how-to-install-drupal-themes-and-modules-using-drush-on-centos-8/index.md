@@ -22,7 +22,7 @@ relations:
     platform:
         key: how-to-install-drupal-themes
         keywords:
-           - distribution: centOS 8
+           - distribution: CentOS 8
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/']
 ---
 
