@@ -193,8 +193,16 @@ This template includes common API logic and functions.
 {{ define "partials/openapi3/print-schema" }}
   {{ $ctx := .Values }}
   {{ $s := $ctx.dot }}
+  {{ $p := $ctx.page }}
   {{ $.Set "oneOfPickFirst" false }}
   {{ $m := (partial "openapi3/schema-to-map" $)}}
+  
+  {{ if not $m.Properties }}
+    <p>
+      {{  $m.Description | $p.RenderString }}
+    </p>
+  {{ end }}
+  
   {{ $.Set "dot" $m }}
   {{ template "openapi3/print-schema-property" $ }}
 {{ end }}
@@ -480,10 +488,15 @@ This template includes common API logic and functions.
     {{ $.Set "oneOfPickFirst" true }}
     {{ $schema := partial "openapi3/schema-to-map" $ }}
     {{ $body := "" }}
-    {{ $properties := $schema.Properties }}
-    {{ with $properties }}
-      {{ $v :=  partial "openapi3/get-response-example-properties" $properties }}
-      {{ $body = $v | jsonify (dict "indent" "  ") }}
+    {{ with $schema.Example }}
+      {{ $body = . | jsonify (dict "indent" "  ") }}
+      {{ warnf "FOOO %v" $body }}
+    {{ else }}
+      {{ $properties := $schema.Properties }}
+      {{ with $properties }}
+        {{ $v :=  partial "openapi3/get-response-example-properties" $properties }}
+        {{ $body = $v | jsonify (dict "indent" "  ") }}
+      {{ end }}
     {{ end }}
     {{ $response.Set "body" $body }}
   {{ end }}
