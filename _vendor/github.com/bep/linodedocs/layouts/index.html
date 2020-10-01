@@ -266,7 +266,7 @@
   {{ $section := .section }}
   <template x-if="data.sectionTiles.{{ $section }}">
     <div class="flex flex-no-wrap content-start w-full mt-4 p-0" data-testid="carousel-{{ $section }}">
-      <button aria-label="previous" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
+      <button aria-label="previous" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon w-10"
            @click="data.sectionTiles.{{ $section }}.prev()" data-testid="prev">
         <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
           <use href="#icon--arrow-right"></use>

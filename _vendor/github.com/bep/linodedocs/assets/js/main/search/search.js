@@ -139,6 +139,9 @@ class Searcher {
 				if (href) {
 					hit.isExternalLink = href.startsWith('http');
 				}
+				hit.isLinkToSelf = function() {
+					return this.href && window.location.href.endsWith(hit.href);
+				};
 				hit.firstPublishedDateString = '';
 				if (hit.firstPublishedTime) {
 					hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
