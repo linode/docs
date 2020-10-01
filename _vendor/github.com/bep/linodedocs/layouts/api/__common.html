@@ -490,7 +490,6 @@ This template includes common API logic and functions.
     {{ $body := "" }}
     {{ with $schema.Example }}
       {{ $body = . | jsonify (dict "indent" "  ") }}
-      {{ warnf "FOOO %v" $body }}
     {{ else }}
       {{ $properties := $schema.Properties }}
       {{ with $properties }}
