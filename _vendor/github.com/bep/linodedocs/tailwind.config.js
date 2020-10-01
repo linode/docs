@@ -282,6 +282,7 @@ module.exports = {
 				'14': '3.5rem',
 				'18': '4.5rem',
 				'36': '9rem',
+				'62': '15.5rem',
 				// For images
 				'16/9': '56.25%',
 				'30/9': '30.13%' // Cards' images on mobile.

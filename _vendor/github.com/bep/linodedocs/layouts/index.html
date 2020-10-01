@@ -19,8 +19,6 @@
     {{ $articleStarters = partial "funcs/build-query.html" $whereDoIStartData.queries.getting_started | first 2 }}
   {{ end }}
   
-  {{ template "home/icons" . }}
-  
   {{/* */}}
   <div id="home-component" x-data="lnHome.New(lnSearchConfig)" x-init="init()"
     @search:results-blank.once.document="receiveCommonData($event.detail)" 
@@ -38,12 +36,12 @@
     
     {{/* The top level products carousel */}}
     <section class="mb-8">
-      {{ template "home/products/carousel" (dict "section" "products" "title" "Products") }}
+      {{ template "home/products/carousel" (dict "section" "products" "title" "Product Docs") }}
     </section>
     
     {{/* Featured guides section */}}
     {{ with $articleFeatured }}
-      <section class="mb-8 py-8 bg-gradient-to-b from-gray-200 to-gray-300 full-width pull-out">
+      <section class="mb-10 py-8 bg-gradient-to-b from-gray-200 to-gray-300 full-width pull-out">
         <div class="flex flex-col md:flex-row h-auto container">
           <div class="w-full md:w-2/3 md:mr-7">
             {{ partial "helpers/bundle-image.html" (dict "page" . "class" "rounded-lg" "command" "Fit" "options" "693x364 center") }}
@@ -122,30 +120,32 @@
 
 {{/* Developer section with links out to change log etc. */}}
 {{ define "home/developer"}}
-  <div class="flex flex-col md:flex-row">
-    <div class="flex flex-col space-y-2">
+  {{/* Load the icons. */}}
+  {{ partial "icons/developer.html" . }}
+  <div class="flex flex-col md:flex-row w-full">
+    <div class="flex flex-col space-y-2 w-full">
       <h2 class="text-3 md:text-3xl mb-4">
         API
       </h2>
-      <div class="flex space-x-2 justify-center">
+      <div class="flex space-x-4 justify-center">
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer/tile" (dict "href" "/docs/api/" "title" "API Reference" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "/docs/api/" "title" "API Reference" "svgRef" "icon-developer--splash1" "count" 99 )}}
         </div>
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer/tile" (dict "href" "/docs/sections/docs/platform/api/" "title" "API Guides" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "/docs/sections/docs/platform/api/" "title" "API Guides" "svgRef" "icon-developer--splash2" "count" 99 )}}
         </div>
       </div>
     </div>
-    <div class="flex flex-col space-y-2 mt-8 md:mt-0">
+    <div class="flex flex-col space-y-2 mt-8 md:mt-0 md:ml-4 w-full">
       <h2 class="text-3 md:text-3xl mb-4">
         Developers
       </h2>
-      <div class="flex space-x-2 justify-center">
+      <div class="flex space-x-4 justify-center">
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer/tile" (dict "href" "https://developers.linode.com/changelog/" "title" "Changelog" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "https://developers.linode.com/changelog/" "title" "Changelog" "svgRef" "icon-developer--sting1" "count" 99 )}}
         </div>
         <div class="w-1/2 md:w1/4">
-          {{ template "home/developer/tile" (dict "href" "https://developers.linode.com/libraries-tools" "title" "Resource & Tools" "svgRef" "icon-home--developer-todo" "count" 99 )}}
+          {{ template "home/developer/tile" (dict "href" "https://developers.linode.com/libraries-tools" "title" "Resource & Tools" "svgRef" "icon-developer--sting2" "count" 99 )}}
         </div>
       </div>
     </div>
@@ -153,23 +153,21 @@
 {{ end }}
 
 {{ define "home/developer/tile" }}
-  <div>
-    <a class=" md:h-64 md:w-64 py-4 flex items-center rounded-lg text-gray-700" href="{{ .href }}">
-      <div class="flex flex-col justify-center w-full">
-        <div class="w-full flex justify-center mb-8">
-          <svg class="w-24 h-24">
-            <use href="#{{ .svgRef }}"></use>
-          </svg>
-        </div>
-        <h3 class="text-center text-xl md:text-lg mb-2" style="letter-spacing: -0.2px;">
-          {{ .title }}
-        </h3>
-        <span class="text-center text-basicgray text-base md:text-sm" style="letter-spacing: -0.3px;">
-          {{ .count }} Docs
-        </span>
+  <a class="py-4 flex items-center rounded-lg bg-white shadow-sm hover:shadow-lg text-textcolor hover:text-brand h-48 md:h-62" href="{{ .href }}">
+    <div class="flex flex-col justify-center w-full">
+      <div class="w-full flex justify-center mb-4 md:mb-8">
+        <svg class="w-16 h-16 md:w-24 md:h-24">
+          <use href="#{{ .svgRef }}"></use>
+        </svg>
       </div>
-    </a>
-  </div>
+      <h3 class="text-center text-xl md:text-lg mb-2" style="letter-spacing: -0.2px;">
+        {{ .title }}
+      </h3>
+      <span class="text-center text-basicgray text-base md:text-sm" style="letter-spacing: -0.3px;">
+        {{ .count }} Docs
+      </span>
+    </div>
+  </a>
 {{ end }}
 
 {{/*  */}}
@@ -229,7 +227,7 @@
             </svg>
           </button>
           <div class="carousel__viewport">
-            <div class="carousel__tray flex flex-no-wrap justify-between py-4" :class="{ 'sjustify-between': true}">
+            <div class="carousel__tray flex flex-no-wrap justify-between py-4">
               <template x-for="(item, i) in data.productsTiles.items" :key="item.href">
                 {{ template "home/products/carousel/tile" }}
               </template>
@@ -249,7 +247,7 @@
 
 {{ define "home/products/carousel/tile" }}
   <div class="{{ . }}" x-show.transition.duration.500ms.in.origin.left="item.href">
-    <a class=" carousel__item h-40 w-40 flex items-center rounded-lg text-gray-700 hover:text-brand" :href="item.href">
+    <a class="carousel__item h-40 w-40 flex items-center rounded-lg hover:shadow-lg text-textcolor hover:text-brand" :href="item.href">
       <div class="flex flex-col justify-center w-full">
         <div class="w-full flex justify-center mb-2">
           <div class="w-16 h-16" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.icon)"></div>
@@ -267,18 +265,18 @@
   {{ template  "home/section/title" . }}
   {{ $section := .section }}
   <template x-if="data.sectionTiles.{{ $section }}">
-    <div class="flex flex-no-wrap content-start w-full mt-8" data-testid="carousel-{{ $section }}">
-      <button aria-label="previous" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon w-full"
+    <div class="flex flex-no-wrap content-start w-full mt-4 p-0" data-testid="carousel-{{ $section }}">
+      <button aria-label="previous" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasPrev()" class="btn-icon"
            @click="data.sectionTiles.{{ $section }}.prev()" data-testid="prev">
         <svg class="-ml-10 w-3" style="display: block; transform: scale(-1,1)" >
           <use href="#icon--arrow-right"></use>
         </svg>
       </button>
       <div class="w-full">
-        <div class="carousel__viewport">
-          <div class="carousel__tray flex flex-no-wrap space-x-2 py-4">
+        <div class="carousel__viewport -mr-4">
+          <div class="carousel__tray flex flex-no-wrap py-4">
             <template x-for="(item, i) in data.sectionTiles.{{ $section }}.items" :key="item.objectID">
-              <div class="carousel__item">
+              <div class="carousel__item pr-4">
                 {{ if eq $section "qa" }}
                   {{ template "home/section/carousel/item-qa" }}
                 {{ else }}
@@ -290,7 +288,7 @@
         </div>
       </div>
       <button aria-label="next" x-bind:disabled="!data.sectionTiles.{{ $section }}.hasNext()"
-      class="btn-icon w-full ml-6 -mr-10 object-right" @click="data.sectionTiles.{{ $section }}.next()" data-testid="next">
+      class="btn-icon ml-6 -mr-10 object-right" @click="data.sectionTiles.{{ $section }}.next()" data-testid="next">
         <svg class="w-3">
           <use href="#icon--arrow-right"></use>
         </svg>
@@ -300,7 +298,7 @@
 {{ end }}
 
 {{ define "home/section/carousel/item"}}
-  <div class="bg-white h-full rounded-lg overflow-hidden">
+  <div class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
     <a :href="item.href" class="no-underline block">
       <div class="relative overflow-hidden pb-16/9">
         <img :src="item.thumbnailUrl" alt="Article image" class="absolute h-full w-full object-cover" loading="lazy">
@@ -313,18 +311,9 @@
 {{ end }}
 
 {{ define "home/section/carousel/item-qa"}}
-  <div class="h-40">
+  <div class="h-40 bg-gradient-to-b from-green-500 to-green-600 p-5 rounded-lg shadow-sm hover:shadow-lg overflow-hidden">
     <a :href="item.href" target="_blank">
-      <div x-html="item.excerptTruncated(60)" class="bg-gradient-to-b from-green-500 to-green-600 p-5 text-white font-semibold text-xl break-all w-full h-full rounded-lg overflow-hidden shadow-sm  hover:shadow-lg"></div>
+      <div x-html="item.excerptTruncated(60)" class="text-white font-semibold text-xl"></div>
     </a>
   </div>
-{{ end }}
-
-{{ define "home/icons" }}
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="icon-home--developer-todo" viewBox="0 0 512 512">
-      <path fill="currentColor"
-      d="M256 64C132.26 64 32 164.29 32 288a222.69 222.69 0 0 0 44.75 134l-40.1 40.09a16 16 0 0 0 0 22.63l22.63 22.62a16 16 0 0 0 22.62 0l40.1-40.12a222.82 222.82 0 0 0 268 0l40.1 40.09a16 16 0 0 0 22.63 0l22.62-22.62a16 16 0 0 0 0-22.63L435.21 422A222.7 222.7 0 0 0 480 288c0-123.71-100.3-224-224-224zm0 400a176 176 0 1 1 176-176 176 176 0 0 1-176 176zM96 0A96 96 0 0 0 0 96a94.81 94.81 0 0 0 15.3 51.26L161.2 25.68A95.63 95.63 0 0 0 96 0zm184 292.47V168a8 8 0 0 0-8-8h-32a8 8 0 0 0-8 8v132.16a32 32 0 0 0 12 25l64.54 51.57a8.58 8.58 0 0 0 5.87 1.72 8 8 0 0 0 5.35-2.95l20-25a8 8 0 0 0-1.25-11.27zM416 0a95.66 95.66 0 0 0-65.18 25.66l145.89 121.57A94.85 94.85 0 0 0 512 96a96 96 0 0 0-96-96z" />
-    </symbol>
-  </svg>
 {{ end }}

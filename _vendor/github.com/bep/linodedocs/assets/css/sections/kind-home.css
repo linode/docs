@@ -44,6 +44,5 @@
 }
 
 .kind-home .carousel__item {
-    @apply shadow-sm hover:shadow-lg;
     width: var(--carousel-slide-width);
 }
