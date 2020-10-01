@@ -57,7 +57,7 @@
               {{ .Summary }}
             </p>
             <a href="{{ .RelPermalink }}" class="mt-6 text-center md:text-left">
-              <button aria-label="visit" class="w-full md:w-40 h-10 md:h-16 border-2 text-sm md:text-lg font-semibold text-green-500 hover:text-opacity-75 border-brand rounded-md" data-testid="mainButton">
+              <button aria-label="visit" class="w-full md:w-40 h-10 md:h-16 border-2 text-sm md:text-lg font-semibold text-green-500 hover:text-opacity-75 focus: outline-none border-brand rounded-md" data-testid="mainButton">
                 Read the Doc
               </button>
             </a>
@@ -252,7 +252,7 @@
         <div class="w-full flex justify-center mb-2">
           <div class="w-16 h-16" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.icon)"></div>
         </div>
-        <h3 x-html="item.title" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
+        <h3 x-html="item.linkTitle" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
         <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
       </div>
     </a>
@@ -304,7 +304,7 @@
         <img :src="item.thumbnailUrl" alt="Article image" class="absolute h-full w-full object-cover" loading="lazy">
       </div>
       <div class="px-4 pt-4 pb-6">
-        <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.title"></h3>
+        <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.linkTitle"></h3>
       </div>
     </a>
   </div>

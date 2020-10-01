@@ -104,7 +104,7 @@ class Searcher {
 
 		const designMode = false;
 
-		// Normalization of a search hit across the search indixes.
+		// Normalization of a search hit across the search indices.
 		const normalizeHit = function(self) {
 			return function(opts, hit) {
 				hit.sectionTitle = hit.section;
@@ -121,6 +121,7 @@ class Searcher {
 
 				hit.titleHighlighted =
 					hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : hit.title;
+				hit.linkTitle = hit.linkTitle || hit.title;
 
 				let href;
 				if (opts.isSectionMeta) {

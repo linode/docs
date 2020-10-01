@@ -38,7 +38,7 @@
                   <div class="w-full flex justify-center mb-8">
                     <div class="w-24 h-24" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], item.thumbnail)"></div>
                   </div>
-                  <h3 x-html="item.title" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
+                  <h3 x-html="item.linkTitle" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
                   <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
                 </div>
               </a>
@@ -119,7 +119,7 @@
           <ul class="mb-5">
             <template x-for="(item, j) in data.hitsBySection[k]" :key="item.href">
               <li class="pb-2" data-testid="sorted-item">
-                <a :href="item.href" x-html="item.title"></a>
+                <a :href="item.href" x-html="item.linkTitle"></a>
               </li>
             </template>
           </ul>
@@ -129,7 +129,7 @@
     </div>
     <template x-if="uiState.showSortedGuideList()" x-for="(item, i) in data.result.hits" :key="item.href">
       <div class="w-2/3 flex flex-col" data-testid="sorted-item">
-        <a class="mb-1" x-text="item.title" :href="item.href"></a>
+        <a class="mb-1" x-text="item.linkTitle" :href="item.href"></a>
         <div class="text-titlecolor text-sm mb-4">
           <span x-text="item.firstPublishedDateString"></span>
           <span x-text="item.sectionTitle"></span>
@@ -144,7 +144,7 @@
             <div class="pl-10 pr-2 flex flex-col justify-center content-center leading-normal ">
               <div>
                 <a class="tracking-tight cursor-pointer" :href="item.href">
-                  <h3 class="mb-2 text-2xl " x-html="item.title"></h3>
+                  <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
                 </a>
                 <p class="text-darkgray text-base" x-html="item.excerptTruncated()"></p>
               </div>

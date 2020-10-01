@@ -26,6 +26,9 @@ var lnHome = {};
 		// No filters are currently applied, and the order will be the order from Algolia.
 		const sectionNames = [ 'docs', 'blog', 'resources', 'marketplace', 'qa' ];
 
+		// Create a new pager for the given el and items.
+		// pageSize is the number of items per page.
+		// mobileOverlap is how much of the third tile we show (to indicate swipe).
 		const newPager = function(pageSize, el, items, mobileOverlap = 0.1) {
 			if (!el) {
 				throw 'pager element must be provided';
@@ -187,7 +190,8 @@ var lnHome = {};
 					let m = meta.get(k);
 					if (m) {
 						productsItems.push({
-							title: m.linkTitle,
+							title: m.title,
+							linkTitle: m.linkTitle || m.title,
 							href: m.href,
 							count: count,
 							icon: m.thumbnail

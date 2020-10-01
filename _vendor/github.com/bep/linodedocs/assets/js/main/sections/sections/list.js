@@ -262,11 +262,12 @@ var lnSectionsController = {};
 
 				let newSection = function(key, value) {
 					let m = self.data.sectionMetaMap.get(key);
-					let s = { key, title: '', thumbnail: '', count: value };
+					let s = { key, title: '', linkTitle: '', thumbnail: '', count: value };
 					s.href = hrefFactory.hrefSection(key);
 
 					if (m) {
 						s.title = m.title;
+						s.linkTitle = m.linkTitle || m.title;
 						s.thumbnail = m.thumbnail;
 					}
 					return s;

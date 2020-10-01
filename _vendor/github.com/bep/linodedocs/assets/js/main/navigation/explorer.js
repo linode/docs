@@ -432,7 +432,7 @@ var lnSearchExplorer = {};
 									section: n.section,
 									key: href,
 									href: href,
-									name: item.title,
+									name: item.linkTitle,
 									level: n.level + 1,
 									count: 0
 								})

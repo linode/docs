@@ -47,7 +47,8 @@ var lnTocController = {};
 				var row = [];
 
 				headerEls().forEach((el) => {
-					if (!el) {
+					// Skip hidden elements.
+					if (!el || el.offsetParent === null) {
 						return;
 					}
 					self.enabled = true;
@@ -57,6 +58,7 @@ var lnTocController = {};
 					var li = document.createElement('li');
 
 					li.classList.add(`level-${level}`);
+					li.classList.add('truncate');
 
 					var a = document.createElement('a');
 
