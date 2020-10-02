@@ -62,5 +62,11 @@
         </div>
       </div>
     </template>
+    <template x-if="data.filters.get('tags')">
+      <div class="mb-8">
+        <h4 class="uppercase font-semibold text-xs pb-4" x-html="data.filters.get('tags').title"></h4>
+        {{ partial "sections/search/filters__tags.html" . }}
+      </div>
+    </template>
   </div>
 </div>

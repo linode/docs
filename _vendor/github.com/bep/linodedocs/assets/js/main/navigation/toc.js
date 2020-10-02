@@ -47,8 +47,8 @@ var lnTocController = {};
 				var row = [];
 
 				headerEls().forEach((el) => {
-					// Skip hidden elements.
-					if (!el || el.offsetParent === null) {
+					// Skip hidden elements and headers without ID.
+					if (!el || el.offsetParent === null || !el.id) {
 						return;
 					}
 					self.enabled = true;

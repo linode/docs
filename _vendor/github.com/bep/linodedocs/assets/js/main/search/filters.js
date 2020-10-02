@@ -27,11 +27,6 @@ var lnSearchFilters = {};
 				let vals = paramVal.split(',');
 
 				filter.checkboxes.forEach((e) => {
-					// TODO(bep) the tags checkboxes are hidden, so there is currently no
-					// way to turn them off. So do this here for now.
-					if (paramKey === 'tags') {
-						e.checked = false;
-					}
 					if (vals.includes(e.value.toLowerCase())) {
 						e.checked = true;
 						filter.allChecked = false;
@@ -60,12 +55,32 @@ var lnSearchFilters = {};
 				// Maps a facet name to a filter. The filter maps to the owning section.
 				filters: filters,
 
+				// Holds the state for the tags filters.
+				tagsFilters: {
+					open: false,
+					searchString: '' // to filter the tags by.
+				},
+
 				stats: {
 					totalNbHits: 0
 				}
 			},
 
 			open: false,
+
+			getTagsFiltered: function() {
+				let tags = this.data.filters.get('tags');
+				if (!tags) {
+					return [];
+				}
+				let checkboxes = tags.checkboxes;
+				if (!this.data.tagsFilters.searchString) {
+					return checkboxes;
+				}
+
+				let searchString = this.data.tagsFilters.searchString.toUpperCase();
+				return checkboxes.filter((cb) => cb.title.toUpperCase().includes(searchString));
+			},
 
 			receiveSearchFilters: function(data) {
 				applySearchFiltersFromSearchParams(this, data);
