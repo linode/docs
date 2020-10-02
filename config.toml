@@ -42,7 +42,8 @@ explorer_map_title = true
 filtering_facets = [
     { name = "category", title = "Doc Category" },
     { name = "skillLevel", title = "Skill Level" },
-    { name = "languages", title = "Languages" }
+    { name = "languages", title = "Languages" },
+     { name = "tags", title = "Tags", isTags = true }
 ]
 explorer_regular_pages_start_level = 2
 hits_per_page = 4
