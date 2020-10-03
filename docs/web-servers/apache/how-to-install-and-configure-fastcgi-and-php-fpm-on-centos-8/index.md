@@ -32,7 +32,7 @@ This guide assumes that you are familiar and comfortable with setting up a [LAMP
 1. Complete the steps in the [How to Install a LAMP Stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide. After completing the LAMP stack guide, you should have an Apache virtual hosts configuration for your own website. This guide will continue to refer to the site as `example.com`.
 
     {{< note >}}
-This guide's examples will use PHP version 7.3. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.
+This guide's examples will use PHP version 7.2. By default, PHP 7.2 is available for installation from the default CentOS 8 repositories. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.
     {{</ note >}}
 
 ## Install mod_fcgid and PHP-FPM
@@ -168,7 +168,7 @@ listen = /var/run/php-fpm/example.com.sock
 {{< /file >}}
 
 
-1.  Restart the `php7.3-fpm` process for the new pool to be created.
+1.  Restart the `php7.2-fpm` process for the new pool to be created.
 
         sudo systemctl restart php-fpm
 
