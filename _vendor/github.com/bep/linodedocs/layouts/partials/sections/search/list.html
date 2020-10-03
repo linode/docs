@@ -14,7 +14,7 @@
             </div>
           </template>
         </div>
-        <div x-show="section.searchData.result.nbHits == 0" class="flex content-start items-center text-titlecolor mb-5 md:mb-10">
+        <div x-show="section.searchData.result.nbHits == 0" class="flex content-start items-center text-titlecolor mb-5 md:mb-10" :data-testid="'no-search-results-in-' + section.config.name">
           <svg class="h-5 w-5">
             <use href="#icon--times"></use>
           </svg>
@@ -24,8 +24,12 @@
           <div class="pb-2 md:pb-6">
             <template x-for="(item, j) in section.searchData.result.hits" :key="item.objectID">
               <div class="py-3 mb-1 tablet:mb-4" x-bind:class="{ 'bg-selected rounded -ml-4 pl-4': (j === 0) }">
-                <template x-if="item.href">
-                  <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" @click="if (item.isLinkToSelf()) { show = false }" x-bind:href="item.href" x-bind:target="item.isExternalLink ? '_blank' : '_self'" data-testid="link-hit"></a>
+                {{/* This duplication looks odd, but is currently needed to make sure we navigate via Turbolinks for local links. */}}
+                <template x-if="item.href && item.isExternalLink">
+                  <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" x-bind:href="item.href" target="_blank" data-testid="link-hit"></a>
+                </template>
+                <template x-if="item.href && !item.isExternalLink">
+                  <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" @click="if (item.isLinkToSelf()) { show = false }" x-bind:href="item.href" data-testid="link-hit"></a>
                 </template>
                 <template x-if="!item.href">
                   <p x-html="item.description"></p>

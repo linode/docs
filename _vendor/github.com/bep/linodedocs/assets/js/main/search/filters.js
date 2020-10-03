@@ -101,6 +101,7 @@ var lnSearchFilters = {};
 				this.data.filters.set('sections', {
 					isSectionToggle: true,
 					title: 'Doc Type',
+					name: 'type',
 					allChecked: true,
 					wasAllChecked: true,
 					checkboxes: sectionFilterCheckBoxes
@@ -147,6 +148,7 @@ var lnSearchFilters = {};
 							this.data.filters.set(facetConfig.name, {
 								hidden: facetConfig.isTags,
 								title: facetConfig.title,
+								name: facetConfig.title,
 								sections: [ section.config.name ],
 								allChecked: true,
 								wasAllChecked: true,
