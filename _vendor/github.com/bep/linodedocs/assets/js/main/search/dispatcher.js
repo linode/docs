@@ -34,15 +34,8 @@ var lnSearchEventDispatcher = {};
 			// Event that register a named search to be refreshed on any filter changes..
 			EVENT_SUBSCRIBE: 'search:subscribe',
 
-			// Event that sends the current explorer data set.
-			EVENT_SEARCHEXPLORER_DATA: 'search:explorer-data',
-
-			// Event that toggles the open state on a node in the explorer accordeon.
-			// $event.detail will contain a data container with the node and its open state.
-			EVENT_SEARCHEXPLORER_TOGGLE_NODE: 'search:toggle-node',
-
-			// Event that triggers a search update for a node in the explorer accordeon.
-			EVENT_SEARCHEXPLORER_SEARCH_NODE: 'search:node'
+			// Event that triggers a search update for nodes in the explorer accordeon.
+			EVENT_SEARCHEXPLORER_SEARCH_NODES: 'search:nodes'
 		};
 
 		return {
@@ -58,9 +51,9 @@ var lnSearchEventDispatcher = {};
 				debug('searchBlank');
 				sendEvent(events.EVENT_SEARCH_TRIGGER, { event: events.EVENT_SEARCHRESULT_BLANK });
 			},
-			searchNode: function(detail) {
-				debug('searchNode', detail);
-				sendEvent(events.EVENT_SEARCHEXPLORER_SEARCH_NODE, detail, document);
+			searchNodes: function(detail) {
+				debug('searchNodes', detail);
+				sendEvent(events.EVENT_SEARCHEXPLORER_SEARCH_NODES, detail, document);
 			},
 			// A standalone search is a search that has nothing to do with the global
 			// filtering. Therefore the result can be safely cached and reused.
@@ -96,16 +89,6 @@ var lnSearchEventDispatcher = {};
 			broadCastFilteredSearchResult: function(searchresult, toEvent) {
 				debug('broadCastFilteredSearchResult', searchresult, 'to', toEvent);
 				sendEvent(toEvent, searchresult);
-			},
-
-			toggleExplorerNode: function(detail, el = document) {
-				debug('toggleExplorerNode', detail, el === document);
-				sendEvent(events.EVENT_SEARCHEXPLORER_TOGGLE_NODE, detail, el);
-			},
-
-			broadcastExplorerData: function(detail, el = document) {
-				debug('broadcastExplorerData', detail, el === document);
-				sendEvent(events.EVENT_SEARCHEXPLORER_DATA, detail, el);
 			},
 
 			events: events

@@ -51,29 +51,48 @@ var lnSearchExplorer = {};
 			LOADED: 3
 		};
 
-		return {
-			data: {
-				// All nodes in the tree (all indices).
-				nodes: {},
+		var templates = {};
 
-				// The search results.
-				searchState: null,
+		var data = {
+			// All nodes in the tree (all indices).
+			nodes: {},
 
-				// Maps Algolia section to the Hugo section.
-				sectionMapping: {}
+			// Contains all the root nodes (level === 1).
+			rootNode: {
+				sections: []
 			},
 
+			// The search results.
+			searchState: null,
+
+			// Maps Algolia section to the Hugo section.
+			sectionMapping: {}
+		};
+
+		data.walk = function(rootNode, shouldSkip) {
+			const walkRecursive = function(n) {
+				for (let nn of n.sections) {
+					if (shouldSkip(nn)) {
+						continue;
+					}
+					walkRecursive(nn);
+				}
+			};
+
+			for (let n of rootNode.sections) {
+				if (shouldSkip(n)) {
+					continue;
+				}
+				walkRecursive(n);
+			}
+		};
+
+		return {
+			data: data,
 			initState: initStates.INITIAL,
 			open: false,
 			scrollTop: 0,
 			pathname: '',
-
-			sendData: function() {
-				var self = this;
-				self.$nextTick(function() {
-					dispatcher.broadcastExplorerData(self.data);
-				});
-			},
 
 			// Receives the initial, blank, result set with all the initial
 			// facets and their counts.
@@ -187,39 +206,43 @@ var lnSearchExplorer = {};
 
 			render: function() {
 				this.target.innerHTML = '';
-				for (let k in this.data.nodes) {
-					let n = this.data.nodes[k];
-					if (n.level !== 1) {
-						continue;
-					}
-					this.target.appendChild(this.renderNode(n));
-				}
+				this.renderNodesRecursive(this.target, 1);
 				this.loaded = true;
 			},
 
-			renderNode: function(node) {
-				let li = document.importNode(this.templateNode.content.querySelector('.explorer__node'), true);
-				let ul = li.querySelector('.node-tree');
-				let inner = li.querySelector('.explorer__node__inner');
-				let ifTempl = document.createElement('template');
-				ifTempl.setAttribute('x-if', 'show()');
-				inner.parentNode.insertBefore(ifTempl, inner);
-				ifTempl.content.appendChild(inner);
-				li.setAttribute('x-data', `lnSearchExplorer.NewNode('${node.key}')`);
-				li.setAttribute('x-init', 'init();');
+			renderNodesRecursive: function(ulEl, level) {
+				let templ =
+					level === 1
+						? document.importNode(templates.templateLoopRoot.content.querySelector('template'), true)
+						: document.importNode(templates.templateLoopNested.content.querySelector('template'), true);
 
-				for (let i in node.sections) {
-					ul.appendChild(this.renderNode(node.sections[i]));
+				let li = document.importNode(templates.templateTree.content.querySelector('.explorer__node'), true);
+
+				let mainLoop = templ.content.querySelector('template');
+				mainLoop.content.appendChild(li);
+				ulEl.appendChild(templ);
+
+				ulEl = li.querySelector('.node-tree');
+
+				if (level >= 5) {
+					// configure
+					return;
 				}
 
-				return li;
+				level++;
+
+				this.renderNodesRecursive(ulEl, level);
 			},
 
 			// Initialize the component with the DOM templates to use for rendering.
 			// This needs to be done AFTER Alpine has made its initial updates to the DOM.
 			init: function(templateNode, target) {
-				this.templateNode = templateNode;
-				this.target = target;
+				templates = {
+					templateLoopRoot: this.$refs['templateLoopRoot'],
+					templateLoopNested: this.$refs['templateLoopNested'],
+					templateTree: this.$refs['templateTree']
+				};
+				this.target = this.$refs['explorer'];
 				if (designMode) {
 					setOpenStatus(this, true);
 				}
@@ -260,7 +283,33 @@ var lnSearchExplorer = {};
 					return n.level > 1 && (n.count === 0 || n.isGhostSection);
 				};
 
+				n.isActive = function() {
+					return window.location.href.endsWith(this.href);
+				};
+
 				return n;
+			},
+
+			// loadPages loads any leaf pages into node if not already loaded.
+			loadPages: function(node) {
+				let nodes = [];
+
+				this.data.walk(this.data.rootNode, function(nn) {
+					if (nn.open) {
+						nodes.push(nn);
+					}
+
+					// If it's not open we skip any descendants.
+					return !nn.open;
+				});
+
+				if (!node.open) {
+					// Preload
+					nodes.push(node);
+				}
+
+				let detail = { data: nodes };
+				dispatcher.searchNodes(detail);
 			},
 
 			buildNodes: function() {
@@ -316,6 +365,52 @@ var lnSearchExplorer = {};
 							}
 						};
 
+						n.toggleOpen = function() {
+							if (!this.open) {
+								// Close open nodes on the same or lower level.
+								self.data.walk(this.parent, function(nn) {
+									if (nn.open && nn !== n) {
+										nn.open = false;
+									}
+									return false;
+								});
+							}
+							this.open = !this.open;
+							if (!this.open) {
+								this.loading = false;
+							} else if (!this.loading) {
+								this.loadPages();
+							}
+						};
+
+						n.loadPages = function() {
+							self.loadPages(this);
+							this.loading = true;
+						};
+
+						n.hasOpenDescendants = function() {
+							for (let s of n.sections) {
+								if (s.open) {
+									return true;
+								}
+							}
+
+							for (let s of n.sections) {
+								if (s.hasOpenDescendants()) {
+									return true;
+								}
+							}
+							return false;
+						};
+
+						n.showBorder1 = function() {
+							return this.level > 1 && this.open && !this.hasOpenDescendants();
+						};
+
+						n.showBorder2 = function() {
+							return this.level > 1 && this.open && this.hasOpenDescendants();
+						};
+
 						this.nodes[kp.key] = n;
 					} else {
 						// Update the existing node.
@@ -331,6 +426,7 @@ var lnSearchExplorer = {};
 
 						if (parentNode) {
 							parentNode.sections.push(n);
+							n.parent = parentNode;
 						}
 					}
 				};
@@ -359,8 +455,17 @@ var lnSearchExplorer = {};
 
 				debug('nodes', this.data.nodes);
 
+				for (let k in this.data.nodes) {
+					let n = this.data.nodes[k];
+
+					if (n.level !== 1) {
+						continue;
+					}
+					n.parent = this.data.rootNode;
+					this.data.rootNode.sections.push(n);
+				}
+
 				self.render();
-				self.sendData();
 			},
 
 			getResults: function() {
@@ -375,7 +480,7 @@ var lnSearchExplorer = {};
 				return this.data.searchState.mainSearch.results;
 			},
 
-			// Rebuilds and renders the node tree based on the search result given.
+			// Update hidden state and facet counts based on a updated search result.
 			filterNodes: function() {
 				debug('filterNodes', this.data);
 				let results = this.getResults();
@@ -383,8 +488,6 @@ var lnSearchExplorer = {};
 				let seen = new Set();
 				var self = this;
 
-				// There should be no new nodes.
-				// So first, update what's changed and hide the rest.
 				for (let section of results.sections) {
 					let searchData = section.searchData;
 
@@ -403,7 +506,6 @@ var lnSearchExplorer = {};
 						}
 
 						n.count = resultSection.count;
-						n.hidden = false;
 						seen.add(kp.key);
 					}
 				}
@@ -419,6 +521,8 @@ var lnSearchExplorer = {};
 						}
 
 						continue;
+					} else {
+						n.hidden = false;
 					}
 
 					let expanded = this.data.searchState.expandedNodes.get(n.key);
@@ -443,132 +547,6 @@ var lnSearchExplorer = {};
 						n.pages = [];
 					}
 				}
-
-				this.sendData();
-			}
-		};
-	};
-
-	ctx.NewNode = function(id) {
-		const dispatcher = lnSearchEventDispatcher.New();
-
-		var loading = false;
-
-		let n = { title: '' };
-		n.isActive = function() {
-			return false;
-		};
-
-		n.isLeaf = function() {
-			return false;
-		};
-
-		return {
-			id: id,
-			data: {
-				hidden: false,
-				open: false,
-				numOpenDescendants: 0,
-				dirty: 0, // We increment this in some cases to force re-render.
-				pages: [],
-				node: n
-			},
-			href: '',
-
-			show: function() {
-				return !this.data.hidden;
-			},
-
-			toggleOpen: function() {
-				this.toggleOpenLocal(!this.data.open);
-			},
-
-			toggleOpenLocal: function(open) {
-				let detail = { data: this.data, open: open };
-				if (!loading && open) {
-					loading = true;
-					dispatcher.searchNode(detail);
-				}
-
-				this.data.open = open;
-
-				// Also send it upwards to do descendant calculations.
-				dispatcher.toggleExplorerNode(detail, this.$el);
-			},
-
-			loadPages: function() {
-				if (!loading && !this.data.open) {
-					loading = true;
-					let detail = { data: this.data, open: true };
-					dispatcher.searchNode(detail);
-				}
-			},
-
-			showBorder1: function() {
-				return this.data.node.level > 1 && this.data.open && this.data.numOpenDescendants === 0;
-			},
-
-			showBorder2: function() {
-				return this.data.node.level > 1 && this.data.open && this.data.numOpenDescendants > 0;
-			},
-
-			receiveToggledOpenDescendant: function(detail) {
-				let data = detail.data;
-
-				if (data.node.key !== this.data.node.key) {
-					if (data.open) {
-						this.data.numOpenDescendants++;
-					} else {
-						this.data.numOpenDescendants--;
-					}
-				}
-			},
-
-			receiveToggledOpen: function(detail) {
-				let data = detail.data;
-
-				if (data.node.key !== this.data.node.key) {
-					if (data.open && this.data.open) {
-						if (!data.node.key.startsWith(this.data.node.key)) {
-							this.toggleOpenLocal(false);
-						}
-					}
-				}
-			},
-
-			onTurbolinksBeforeRender: function(data) {
-				this.href = window.location.href;
-			},
-
-			applyFacetFilters: function(filters) {
-				if (this.data.node.level !== 1) {
-					return;
-				}
-
-				// Toggle the disabled state on the top level nodes.
-				// We do this via the facet filter event to avoid the delay having to
-				// wait for the search to finish.
-				this.data.node.disabled = !filters.isSectionEnabled(this.data.node.section.config.name);
-			},
-
-			receiveData: function(e) {
-				this.data.node = e.detail.nodes[this.id];
-				this.data.count = this.data.node.count;
-				this.data.pages = this.data.node.pages;
-
-				// Set if node not in current search.
-				this.data.hidden = this.data.node.hidden;
-
-				loading = false;
-			},
-
-			isActive: function(page) {
-				return window.location.href.endsWith(page.href);
-			},
-
-			init: function() {
-				document.addEventListener('search:explorer-data', this.receiveData.bind(this));
-				document.addEventListener('turbolinks:before-render', this.onTurbolinksBeforeRender.bind(this));
 			}
 		};
 	};

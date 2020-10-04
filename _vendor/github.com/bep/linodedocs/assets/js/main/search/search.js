@@ -881,29 +881,33 @@ class Searcher {
 				});
 			},
 
-			searchNode: function(detail) {
-				let n = detail.data.node;
-				let closing = !detail.open;
-				let key = n.key;
+			searchNodes: function(detail) {
+				let nodes = detail.data;
+				let doSearch = false;
+				let keys = new Set();
 
-				if (closing) {
-					// Close this and descendant leaf queries.
-					for (let [ k, expandedNode ] of this.searchState.expandedNodes.entries()) {
-						if (expandedNode.key.startsWith(key)) {
-							this.searchState.expandedNodes.delete(k);
-						}
+				nodes.forEach((n) => {
+					keys.add(n.key);
+					let regularPagesStartLevel = n.section.config.explorer_regular_pages_start_level || 3;
+
+					if (n.level < regularPagesStartLevel || this.searchState.expandedNodes.has(n.key)) {
+						return;
 					}
-					return;
+
+					doSearch = true;
+
+					this.searchState.expandedNodes.set(n.key, n);
+				});
+
+				for (let k of this.searchState.expandedNodes.keys()) {
+					if (!keys.has(k)) {
+						this.searchState.expandedNodes.delete(k);
+					}
 				}
 
-				let regularPagesStartLevel = n.section.config.explorer_regular_pages_start_level || 3;
-
-				if (n.level < regularPagesStartLevel || this.searchState.expandedNodes.has(n.key)) {
-					return;
+				if (doSearch) {
+					this.search({ isNodeToggle: true, event: dispatcher.events.EVENT_SEARCHRESULT });
 				}
-
-				this.searchState.expandedNodes.set(n.key, n);
-				this.search({ isNodeToggle: true, event: dispatcher.events.EVENT_SEARCHRESULT });
 			}
 		};
 	};
