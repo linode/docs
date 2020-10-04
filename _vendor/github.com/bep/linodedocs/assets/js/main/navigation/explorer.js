@@ -376,9 +376,7 @@ var lnSearchExplorer = {};
 								});
 							}
 							this.open = !this.open;
-							if (!this.open) {
-								this.loading = false;
-							} else if (!this.loading) {
+							if (this.open) {
 								this.loadPages();
 							}
 						};
@@ -483,10 +481,42 @@ var lnSearchExplorer = {};
 			// Update hidden state and facet counts based on a updated search result.
 			filterNodes: function() {
 				debug('filterNodes', this.data);
+
+				var self = this;
+
+				const addPagesToNode = function(n, hits) {
+					let pages = [];
+					for (let item of hits) {
+						let href = item.href;
+						pages.push(
+							self.createNode({
+								section: n.section,
+								key: href,
+								href: href,
+								name: item.linkTitle,
+								level: n.level + 1,
+								count: 0
+							})
+						);
+					}
+					n.pages = pages;
+				};
+
+				if (this.data.searchState.searchOpts.isNodeToggle) {
+					// No need to update everything.
+					for (let [ key, val ] of this.data.searchState.expandedNodes.entries()) {
+						if (val && val.searchResult && val.searchResult.hits) {
+							let hits = val.searchResult.hits;
+							let n = this.data.nodes[key];
+							addPagesToNode(n, hits);
+						}
+					}
+					return;
+				}
+
 				let results = this.getResults();
 
 				let seen = new Set();
-				var self = this;
 
 				for (let section of results.sections) {
 					let searchData = section.searchData;
@@ -528,21 +558,7 @@ var lnSearchExplorer = {};
 					let expanded = this.data.searchState.expandedNodes.get(n.key);
 
 					if (expanded && expanded.searchResult && expanded.searchResult.hits) {
-						let pages = [];
-						for (let item of expanded.searchResult.hits) {
-							let href = item.href;
-							pages.push(
-								self.createNode({
-									section: n.section,
-									key: href,
-									href: href,
-									name: item.linkTitle,
-									level: n.level + 1,
-									count: 0
-								})
-							);
-						}
-						n.pages = pages;
+						addPagesToNode(n, expanded.searchResult.hits);
 					} else {
 						n.pages = [];
 					}

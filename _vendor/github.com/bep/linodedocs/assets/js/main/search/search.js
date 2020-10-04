@@ -672,6 +672,8 @@ class Searcher {
 					return;
 				}
 
+				this.searchState.searchOpts = opts;
+
 				let regularSearch = opts.regularSearch !== undefined ? opts.regularSearch : false;
 				this.filters.query = regularSearch ? opts.query || '' : this.filters.query;
 				if (designMode || (regularSearch && (this.filters.query.length > 0 || opts.allowEmptyQuery))) {
