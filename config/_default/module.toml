@@ -35,7 +35,7 @@ path = "github.com/bep/linodedocs"
 
 # Linode's OpenAPI definition.
 [[imports]]
-path = "github.com/linode/linode-api-docs"
+path = "github.com/linode/linode-api-docs/v4"
 
 [[imports.mounts]]
 source = "openapi.yaml"

@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.73.0
+  version: 4.77.0
 
   title: Linode API
   description: |
@@ -382,7 +382,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: View Account
+      summary: Account View
       description: >
         Returns the contact and billing information related to
         your Account.
@@ -413,7 +413,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Update Account
+      summary: Account Update
       description: >
         Updates contact and billing information
         related to your Account.
@@ -470,7 +470,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Cancel Account
+      summary: Account Cancel
       description: >
         Cancels an active Linode account. This action will cause
         Linode to attempt to charge the credit card on file for the remaining
@@ -553,7 +553,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Add/Edit Credit Card
+      summary: Credit Card Add/Edit
       description: >
         Adds/edit credit card information to your Account.
 
@@ -616,7 +616,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Account
-      summary: List Events
+      summary: Events List
       description: >
          Returns a collection of Event objects representing
          actions taken on your Account from the last 90 days.
@@ -670,7 +670,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: View Event
+      summary: Event View
       description: >
          Returns a single Event object.
       operationId: getEvent
@@ -709,7 +709,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Mark Event as Read
+      summary: Event Mark as Read
       description: Marks a single Event as read.
       operationId: eventRead
       x-linode-cli-action: mark-read
@@ -749,7 +749,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Mark Event as Seen
+      summary: Event Mark as Seen
       description: >
         Marks all Events up to and including this Event by ID as seen.
       operationId: eventSeen
@@ -786,7 +786,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Account
-      summary: List Invoices
+      summary: Invoices List
       description: >
         Returns a paginated list of Invoices against your Account.
       operationId: getInvoices
@@ -836,7 +836,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: View Invoice
+      summary: Invoice View
       description: Returns a single Invoice object.
       operationId: getInvoice
       x-linode-cli-action: invoice-view
@@ -877,7 +877,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Account
-      summary: List Invoice Items
+      summary: Invoice Items List
       description: Returns a paginated list of Invoice items.
       operationId: getInvoiceItems
       x-linode-cli-action: invoice-items
@@ -918,7 +918,7 @@ paths:
     get:
       tags:
       - Account
-      summary: List All User Logins
+      summary: User Logins List All
       description: >
         Returns a collection of successful logins for all users on the account during the last
         90 days. This command can only be accessed by the unrestricted users of an account.
@@ -964,7 +964,7 @@ paths:
     get:
       tags:
       - Account
-      summary: View Login
+      summary: Login View
       description: >
         Returns a Login object that displays information about a successful login.
         The logins that can be viewed can be for any user on the account, and are not
@@ -1001,7 +1001,7 @@ paths:
       - url: https://api.linode.com/v4beta
       tags:
       - Account
-      summary: List Maintenance
+      summary: Maintenance List
       description: >
         Returns a collection of Maintenance objects for any entity
         a user has permissions to view.
@@ -1054,7 +1054,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: List Notifications
+      summary: Notifications List
       description: >
         Returns a collection of Notification objects representing
         important, often time-sensitive items related to your Account.
@@ -1106,7 +1106,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Account
-      summary: List OAuth Clients
+      summary: OAuth Clients List
       description: >
         Returns a paginated list of OAuth Clients registered to your Account.  OAuth
         Clients allow users to log into applications you write or host using their
@@ -1149,7 +1149,7 @@ paths:
     post:
       tags:
       - Account
-      summary: Create OAuth Client
+      summary: OAuth Client Create
       description: >
         Creates an OAuth Client, which can be used to allow users
         (using their Linode account) to log in to your own application, and optionally grant
@@ -1214,7 +1214,7 @@ paths:
     get:
       tags:
       - Account
-      summary: View OAuth Client
+      summary: OAuth Client View
       description: >
         Returns information about a single OAuth client.
       operationId: getClient
@@ -1244,7 +1244,7 @@ paths:
     put:
       tags:
       - Account
-      summary: Update OAuth Client
+      summary: OAuth Client Update
       description: >
         Update information about an OAuth Client on your Account. This can be
         especially useful to update the `redirect_uri` of your client in the event
@@ -1289,7 +1289,7 @@ paths:
     delete:
       tags:
       - Account
-      summary: Delete OAuth Client
+      summary: OAuth Client Delete
       description: >
         Deletes an OAuth Client registered with Linode. The Client ID and
         Client secret will no longer be accepted by <a target="_top" href="https://login.linode.com">https://login.linode.com</a>,
@@ -1332,7 +1332,7 @@ paths:
     post:
       tags:
       - Account
-      summary: Reset OAuth Client Secret
+      summary: OAuth Client Secret Reset
       description: >
         Resets the OAuth Client secret for a client you own, and returns the
         OAuth Client with the plaintext secret. This secret is not supposed to
@@ -1378,7 +1378,7 @@ paths:
     get:
       tags:
       - Account
-      summary: View OAuth Client Thumbnail
+      summary: OAuth Client Thumbnail View
       description: >
         Returns the thumbnail for this OAuth Client.  This is a
         publicly-viewable endpoint, and can be accessed without authentication.
@@ -1403,7 +1403,7 @@ paths:
     put:
       tags:
       - Account
-      summary: Update OAuth Client Thumbnail
+      summary: OAuth Client Thumbnail Update
       description: >
         Upload a thumbnail for a client you own.  You must upload an image file
         that will be returned when the thumbnail is retrieved.  This image will
@@ -1449,7 +1449,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: List Payments
+      summary: Payments List
       description: >
         Returns a paginated list of Payments made on this Account.
       operationId: getPayments
@@ -1490,7 +1490,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Make Payment
+      summary: Payment Make
       description: >
         Makes a Payment to your Account via credit card. This will charge your
         credit card the requested amount.
@@ -1544,7 +1544,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: View Payment
+      summary: Payment View
       description: >
         Returns information about a specific Payment.
       operationId: getPayment
@@ -1576,7 +1576,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: Stage PayPal Payment
+      summary: PayPal Payment Stage
       description: >
         This begins the process of submitting a Payment via PayPal. After calling
         this endpoint, you must take the resulting `payment_id` along with
@@ -1642,7 +1642,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Execute Staged/Approved PayPal Payment
+      summary: Staged/Approved PayPal Payment Execute
       description: >
         Given a PaymentID and PayerID - as generated by PayPal during the
         transaction authorization process - this endpoint executes the Payment
@@ -1689,7 +1689,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: View Account Settings
+      summary: Account Settings View
       description: >
         Returns information related to
         your Account settings: Managed service subscription, Longview
@@ -1721,7 +1721,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Update Account Settings
+      summary: Account Settings Update
       description: >
         Updates your Account settings.
 
@@ -1768,7 +1768,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Account
-      summary: Enable Linode Managed
+      summary: Linode Managed Enable
       description: >
         Enables Linode Managed for the entire account and sends a welcome email to the account's associated
         email address. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. See
@@ -1804,7 +1804,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Account
-      summary: View Network Utilization
+      summary: Network Utilization View
       description: >
         Returns a Transfer object showing your network utilization,
         in GB, for the current month.
@@ -1840,7 +1840,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Account
-      summary: List Users
+      summary: Users List
       description: >
         Returns a paginated list of Users on your Account. Users may access all
         or part of your Account based on their restricted status and grants.  An
@@ -1885,7 +1885,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Account
-      summary: Create User
+      summary: User Create
       description: >
         Creates a User on your Account. Once created, the User will be
         able to log in and access portions of your Account. Access is
@@ -1968,7 +1968,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Account
-      summary: View User
+      summary: User View
       description: >
         Returns information about a single User on your Account.
       operationId: getUser
@@ -1998,7 +1998,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Account
-      summary: Update User
+      summary: User Update
       description: >
         Update information about a User on your Account. This can be used to
         change the restricted status of a User. When making a User restricted,
@@ -2044,7 +2044,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Account
-      summary: Delete User
+      summary: User Delete
       description: >
         Deletes a User. The deleted User will be immediately logged out and
         may no longer log in or perform any actions. All of the User's Grants
@@ -2086,13 +2086,16 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Account
-      summary: View User's grants
+      summary: User's Grants View
       description: >
-        Returns the full grants structure for this User. This includes all
-        entities on the Account alongside what level of access this User has
-        to each of them. Individual users may view their own grants at the
-        [/profile/grants](/api/v4/profile-grants)
-        endpoint, but will not see entities that they have no access to.
+        Returns the full grants structure for the specified account User
+        (other than the account owner, see below for details). This includes all entities
+        on the Account alongside the level of access this User has to each of them.
+
+
+        The current authenticated User, including the account owner, may view their
+        own grants at the [/profile/grants](/api/v4/profile-grants)
+        endpoint, but will not see entities that they do not have access to.
       operationId: getUserGrants
       x-linode-cli-action: grants
       x-linode-cli-skip: true
@@ -2122,7 +2125,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Account
-      summary: Update User's grants
+      summary: User's Grants Update
       description: >
         Update the grants a User has. This can be used to give a User access
         to new entities or actions, or take access away.  You do not need to
@@ -2238,7 +2241,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Domains
-      summary: List Domains
+      summary: Domains List
       description: >
         This is a collection of Domains that you have registered in Linode's DNS
         Manager.  Linode is not a registrar, and in order for these to work you
@@ -2281,7 +2284,7 @@ paths:
       x-linode-grant: add_domains
       tags:
       - Domains
-      summary: Create Domain
+      summary: Domain Create
       description: >
         Adds a new Domain to Linode's DNS Manager. Linode is not a registrar, and
         you must own the domain before adding it here. Be sure to point your
@@ -2349,7 +2352,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Domains
-      summary: View Domain
+      summary: Domain View
       description: >
         This is a single Domain that you have registered in Linode's DNS Manager.
         Linode is not a registrar, and in order for this Domain record to work you
@@ -2382,7 +2385,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Domains
-      summary: Update Domain
+      summary: Domain Update
       description: |
         Update information about a Domain in Linode's DNS Manager.
       operationId: updateDomain
@@ -2436,7 +2439,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Domains
-      summary: Delete Domain
+      summary: Domain Delete
       description: >
         Deletes a Domain from Linode's DNS Manager. The Domain will be removed
         from Linode's nameservers shortly after this operation completes. This
@@ -2471,7 +2474,7 @@ paths:
       x-linode-cli-command: domains
       tags:
       - Domains
-      summary: Import Domain
+      summary: Domain Import
       description: >
         Imports a domain zone from a remote nameserver.
 
@@ -2542,7 +2545,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Domains
-      summary: Clone Domain
+      summary: Domain Clone
       description: >
         Clones a Domain and all associated DNS records from a Domain that is
         registered in Linode's DNS manager.
@@ -2608,7 +2611,7 @@ paths:
       - personalAccessToken: []
       - oauth:
         - domains:read_only
-      summary: List Domain Records
+      summary: Domain Records List
       description: |
         Returns a paginated list of Records configured on a Domain in Linode's
         DNS Manager.
@@ -2648,7 +2651,7 @@ paths:
       - personalAccessToken: []
       - oauth:
         - domains:read_write
-      summary: Create Domain Record
+      summary: Domain Record Create
       description: >
         Adds a new Domain Record to the zonefile this Domain represents.
       operationId: createDomainRecord
@@ -2723,7 +2726,7 @@ paths:
       - personalAccessToken: []
       - oauth:
         - domains:read_only
-      summary: View Domain Record
+      summary: Domain Record View
       description: >
         View a single Record on this Domain.
       operationId: getDomainRecord
@@ -2753,7 +2756,7 @@ paths:
       - personalAccessToken: []
       - oauth:
         - domains:read_write
-      summary: Update Domain Record
+      summary: Domain Record Update
       description: >
         Updates a single Record on this Domain.
       operationId: updateDomainRecord
@@ -2810,7 +2813,7 @@ paths:
       - personalAccessToken: []
       - oauth:
         - domains:read_write
-      summary: Delete Domain Record
+      summary: Domain Record Delete
       description: >
         Deletes a Record on this Domain.
       operationId: deleteDomainRecord
@@ -2842,7 +2845,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Images
-      summary: List Images
+      summary: Images List
       description: >
         Returns a paginated list of Images.
 
@@ -2889,7 +2892,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Images
-      summary: Create Image
+      summary: Image Create
       description: >
         Creates a private gold-master Image from a Linode Disk. There is no
         additional charge to store Images for Linode users.
@@ -2963,7 +2966,7 @@ paths:
     get:
       tags:
       - Images
-      summary: View Image
+      summary: Image View
       description: >
         Get information about a single Image.
       operationId: getImage
@@ -2988,7 +2991,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Images
-      summary: Update Image
+      summary: Image Update
       description: >
         Updates a private Image that you have permission to
         `read_write`.
@@ -3035,7 +3038,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Images
-      summary: Delete Image
+      summary: Image Delete
       description: |
         Deletes a private Image you have permission to `read_write`.
 
@@ -3072,7 +3075,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
-      summary: List Linodes
+      summary: Linodes List
       description: >
         Returns a paginated list of Linodes you have permission to view.
       tags:
@@ -3114,7 +3117,7 @@ paths:
     post:
       x-linode-charge: true
       x-linode-grant: add_linodes
-      summary: Create Linode
+      summary: Linode Create
       description: |
         Creates a Linode Instance on your Account. In order for this
         request to complete successfully, your User must have the `add_linodes` grant. Creating a
@@ -3353,7 +3356,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Linode Instances
-      summary: View Linode
+      summary: Linode View
       description: Get a specific Linode by ID.
       operationId: getLinodeInstance
       x-linode-cli-action: view
@@ -3403,7 +3406,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Update Linode
+      summary: Linode Update
       description: >
         Updates a Linode that you have permission to `read_write`.
 
@@ -3473,7 +3476,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Delete Linode
+      summary: Linode Delete
       description: |
         Deletes a Linode you have permission to `read_write`.
 
@@ -3520,7 +3523,7 @@ paths:
     x-linode-cli-command: linodes
     get:
       x-linode-grant: read_only
-      summary: List Backups
+      summary: Backups List
       description: >
         Returns information about this Linode's available backups.
       tags:
@@ -3573,7 +3576,7 @@ paths:
           linode-cli linodes backups-list 123
     post:
       x-linode-grant: read_write
-      summary: Create Snapshot
+      summary: Snapshot Create
       description: >
         Creates a snapshot Backup of a Linode.
 
@@ -3634,7 +3637,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Cancel Backups
+      summary: Backups Cancel
       description: >
         Cancels the Backup service on the given Linode. Deletes all of this Linode's
         existing backups forever.
@@ -3676,7 +3679,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Enable Backups
+      summary: Backups Enable
       description: >
         Enables backups for the specified Linode.
       tags:
@@ -3723,7 +3726,7 @@ paths:
     x-linode-cli-command: linodes
     get:
       x-linode-grant: read_only
-      summary: View Backup
+      summary: Backup View
       description: >
         Returns information about a Backup.
       tags:
@@ -3768,7 +3771,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Restore Backup
+      summary: Backup Restore
       description: >
         Restores a Linode's Backup to the specified Linode.
       tags:
@@ -3839,7 +3842,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Boot Linode
+      summary: Linode Boot
       description: |
         Boots a Linode you have permission to modify. If no parameters are given, a Config profile
         will be chosen for this boot based on the following criteria:
@@ -3901,7 +3904,7 @@ paths:
     post:
       x-linode-charge: true
       x-linode-grant: add_linodes
-      summary: Clone Linode
+      summary: Linode Clone
       description: |
         You can clone your Linode's existing Disks or Configuration profiles to
         another Linode on your Account. In order for this request to complete
@@ -4083,7 +4086,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Linode Instances
-      summary: List Configuration Profiles
+      summary: Configuration Profiles List
       description: |
         Lists Configuration profiles associated with a Linode.
       operationId: getLinodeConfigs
@@ -4122,7 +4125,7 @@ paths:
     post:
       tags:
       - Linode Instances
-      summary: Create Configuration Profile
+      summary: Configuration Profile Create
       description: >
         Adds a new Configuration profile to a Linode.
       operationId: addLinodeConfig
@@ -4207,7 +4210,7 @@ paths:
       tags:
       - Linode Instances
       x-linode-grant: read_only
-      summary: View Configuration Profile
+      summary: Configuration Profile View
       description: >
         Returns information about a specific Configuration profile.
       operationId: getLinodeConfig
@@ -4235,7 +4238,7 @@ paths:
           linode-cli linodes config-view 123 23456
     put:
       x-linode-grant: read_write
-      summary: Update Configuration Profile
+      summary: Configuration Profile Update
       description: >
         Updates a Configuration profile.
       tags:
@@ -4370,7 +4373,7 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
     delete:
-      summary: Delete Configuration Profile
+      summary: Configuration Profile Delete
       description: >
         Deletes the specified Configuration profile from the specified Linode.
       x-linode-grant: read_write
@@ -4417,7 +4420,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Linode Instances
-      summary: List Disks
+      summary: Disks List
       description: >
         View Disk information for Disks associated with this Linode.
       operationId: getLinodeDisks
@@ -4457,7 +4460,7 @@ paths:
     post:
       tags:
       - Linode Instances
-      summary: Create Disk
+      summary: Disk Create
       description: >
         Adds a new Disk to a Linode. You can optionally create a Disk
         from an Image (see [/images](/api/v4/images) for a list of available public images,
@@ -4539,7 +4542,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Linode Instances
-      summary: View Disk
+      summary: Disk View
       description: >
         View Disk information for a Disk associated with this Linode.
       operationId: getLinodeDisk
@@ -4569,7 +4572,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Update Disk
+      summary: Disk Update
       description: >
         Updates a Disk that you have permission to `read_write`.
       operationId: updateDisk
@@ -4612,7 +4615,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Delete Disk
+      summary: Disk Delete
       description: |
         Deletes a Disk you have permission to `read_write`.
 
@@ -4660,7 +4663,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Clone Disk
+      summary: Disk Clone
       description: >
         Copies a disk, byte-for-byte, into a new Disk belonging to the same Linode.
         The Linode must have enough storage space available to accept a new Disk
@@ -4699,7 +4702,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Reset Disk Root Password
+      summary: Disk Root Password Reset
       description: >
         Resets the password of a Disk you have permission to `read_write`.
       operationId: resetDiskPassword
@@ -4766,7 +4769,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Resize Disk
+      summary: Disk Resize
       description: >
         Resizes a Disk you have permission to `read_write`.
 
@@ -4833,7 +4836,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Linode Instances
-      summary: List Networking Information
+      summary: Networking Information List
       description: >
         Returns networking information for a single Linode.
       operationId: getLinodeIPs
@@ -4909,7 +4912,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Allocate IPv4 Address
+      summary: IPv4 Address Allocate
       description: >
         Allocates a public or private IPv4 address to a Linode.
         Public IP Addresses, after the one included with each Linode,
@@ -4990,7 +4993,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Linode Instances
-      summary: View IP Address
+      summary: IP Address View
       description: >
         View information about the specified IP address associated
         with the specified Linode.
@@ -5021,7 +5024,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Update IP Address
+      summary: IP Address Update
       description: >
         Updates a particular IP Address associated with this Linode.
         Only allows setting/resetting reverse DNS.
@@ -5065,7 +5068,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Linode Instances
-      summary: Delete IPv4 Address
+      summary: IPv4 Address Delete
       description: >
         Deletes a public IPv4 address associated with this Linode. This will
         fail if it is the Linode's last remaining public IPv4 address. Private
@@ -5103,7 +5106,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Linode Instances
-      summary: List Kernels
+      summary: Kernels List
       description: |
         Lists available Kernels.
       operationId: getKernels
@@ -5147,7 +5150,7 @@ paths:
     get:
       tags:
       - Linode Instances
-      summary: View Kernel
+      summary: Kernel View
       description: >
         Returns information about a single Kernel.
       operationId: getKernel
@@ -5179,7 +5182,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Initiate DC Migration/Pending Host Migration
+      summary: DC Migration/Pending Host Migration Initiate
       description: >
         Initiate a pending host migration that has been scheduled by Linode or
         initiate a cross data center (DC) migration.  A list of pending migrations,
@@ -5273,7 +5276,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Upgrade Linode
+      summary: Linode Upgrade
       description: >
         Linodes created with now-deprecated Types are entitled to a free
         upgrade to the next generation. A mutating Linode will be allocated any new
@@ -5325,6 +5328,72 @@ paths:
       - lang: CLI
         source: >
           linode-cli linodes upgrade 123
+  /linode/instances/{linodeId}/password:
+    parameters:
+    - name: linodeId
+      in: path
+      description: ID of the Linode for which to reset its root password.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: linodes
+    post:
+      x-linode-grant: read_write
+      summary: Linode Root Password Reset
+      description: >
+        Resets the root password for this Linode.
+
+        * Your Linode must be [shut down](/api/v4/linode-instances-linode-id-shutdown/#post) for a password reset to complete.
+
+        * If your Linode has more than one disk (not counting its swap disk), use the
+        [Reset Disk Root Password](/api/v4/linode-instances-linode-id-disks-disk-id-password/#post) endpoint to update a specific disk's root password.
+
+        * A `password_reset` event is generated when a root password reset is successful.
+      tags:
+      - Linode Instances
+      operationId: resetLinodePassword
+      x-linode-cli-action: linode-reset-password
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_write
+      requestBody:
+        description: This Linode's new root password.
+        content:
+          'application/json':
+            schema:
+              required:
+                - root_pass
+              properties:
+                root_pass:
+                  type: string
+                  description: >
+                    The root user's password on this Linode. Linode passwords
+                    must meet a password strength score requirement that is calculated internally
+                    by the API. If the strength requirement is not met, you will receive a
+                    Password does not meet strength requirement error.
+                  example: a$eCure4assw0rd!43v51
+      responses:
+        '200':
+          description: Password Reset.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "root_pass": "a$eCure4assw0rd!43v51"
+              }' \
+              https://api.linode.com/v4/linode/instances/123/password
+      - lang: CLI
+        source: >
+          linode-cli linodes linode-reset-password 123 a$eCure4assw0rd!43v51
   /linode/instances/{linodeId}/reboot:
     parameters:
     - name: linodeId
@@ -5336,7 +5405,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Reboot Linode
+      summary: Linode Reboot
       description: >
         Reboots a Linode you have permission to modify. If any actions are currently running or
         queued, those actions must be completed first before you can initiate a reboot.
@@ -5393,7 +5462,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Rebuild Linode
+      summary: Linode Rebuild
       description: >
         Rebuilds a Linode you have the `read_write` permission to modify.
 
@@ -5478,7 +5547,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Boot Linode into Rescue Mode
+      summary: Linode Boot into Rescue Mode
       description: >
         Rescue Mode is a safe environment for performing many system recovery
         and disk management tasks. Rescue Mode is based on the Finnix recovery
@@ -5548,7 +5617,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Resize Linode
+      summary: Linode Resize
       description: >
         Resizes a Linode you have the `read_write` permission to a different
         Type. If any actions are currently running or queued, those actions must
@@ -5625,7 +5694,7 @@ paths:
     x-linode-cli-command: linodes
     post:
       x-linode-grant: read_write
-      summary: Shut Down Linode
+      summary: Linode Shut Down
       description: >
         Shuts down a Linode you have permission to modify. If any actions are currently running or
         queued, those actions must be completed first before you can initiate a shutdown.
@@ -5669,7 +5738,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Linode Instances
-      summary: View Network Transfer
+      summary: Network Transfer View
       description: >
         Returns a Linode's network transfer pool statistics for the current month.
       operationId: getLinodeTransfer
@@ -5742,7 +5811,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Linode Instances
-      summary: View Network Transfer (year/month)
+      summary: Network Transfer View (year/month)
       description: >
         Returns a Linode's network transfer statistics for a specific month. The year/month
         values must be either a date in the past, or the current month.
@@ -5802,7 +5871,7 @@ paths:
     get:
       tags:
       - Linode Instances
-      summary: View Linode Statistics
+      summary: Linode Statistics View
       description: >
         Returns CPU, IO, IPv4, and IPv6 statistics for your Linode
         for the past 24 hours.
@@ -5853,7 +5922,7 @@ paths:
     get:
       tags:
       - Linode Instances
-      summary: View Statistics (year/month)
+      summary: Statistics View (year/month)
       description: >
         Returns statistics for a specific month. The year/month
         values must be either a date in the past, or the current month. If the
@@ -5894,7 +5963,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Linode Instances
-      summary: List Linode's Volumes
+      summary: Linode's Volumes List
       description: >
         View Block Storage Volumes attached to this Linode.
       operationId: getLinodeVolumes
@@ -5941,7 +6010,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - StackScripts
-      summary: List StackScripts
+      summary: StackScripts List
       description: >
         If the request is not authenticated, only public StackScripts are returned.
 
@@ -5987,7 +6056,7 @@ paths:
       x-linode-grant: add_stackscripts
       tags:
       - StackScripts
-      summary: Create StackScript
+      summary: StackScript Create
       description: >
         Creates a StackScript in your Account.
       operationId: addStackScript
@@ -6057,7 +6126,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - StackScripts
-      summary: View StackScript
+      summary: StackScript View
       description: >
         Returns all of the information about a specified
         StackScript, including the contents of the script.
@@ -6087,7 +6156,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - StackScripts
-      summary: Update StackScript
+      summary: StackScript Update
       description: >
         Updates a StackScript.
 
@@ -6146,7 +6215,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - StackScripts
-      summary: Delete StackScript
+      summary: StackScript Delete
       description: >
         Deletes a private StackScript you have permission to `read_write`. You cannot delete a public StackScript.
       operationId: deleteStackScript
@@ -6178,7 +6247,7 @@ paths:
     get:
       tags:
       - Linode Types
-      summary: List Types
+      summary: Types List
       description: >
         Returns collection of Linode Types, including pricing and
         specifications for each Type. These are used when
@@ -6227,7 +6296,7 @@ paths:
     get:
       tags:
       - Linode Types
-      summary: View Type
+      summary: Type View
       description: >
         Returns information about a specific Linode Type, including pricing and
         specifications. This is used when
@@ -6264,7 +6333,7 @@ paths:
         - lke:read_only
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: List Kubernetes Clusters
+      summary: Kubernetes Clusters List
       description: >
         Lists current Kubernetes clusters available on your account.
       responses:
@@ -6306,7 +6375,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Create Kubernetes Cluster
+      summary: Kubernetes Cluster Create
       description: |
         Creates a Kubernetes cluster. The Kubernetes cluster will be created
         asynchronously. You can use the events system to determine when the
@@ -6336,6 +6405,9 @@ paths:
                   $ref: '#/components/schemas/LKECluster/properties/tags'
                 node_pools:
                   type: array
+                  required:
+                  - type
+                  - count
                   items:
                     $ref: '#/components/schemas/LKENodePoolRequestBody'
       responses:
@@ -6360,13 +6432,7 @@ paths:
                   "node_pools": [
                     {
                       "type": "g6-standard-4",
-                      "count": 6,
-                      "disks": [
-                        {
-                          "size": 1028,
-                          "type": "ext4"
-                        }
-                      ]
+                      "count": 6
                     },
                     {
                       "type": "g6-standard-8",
@@ -6381,7 +6447,7 @@ paths:
             --label cluster12345 \
             --region us-central \
             --k8s_version 1.16 \
-            --node_pools.type g6-standard-4 --node_pools.count 6 --node_pools.disks '[{"size": 1028, "type": "ext4"}]' \
+            --node_pools.type g6-standard-4 --node_pools.count 6 \
             --node_pools.type g6-standard-8 --node_pools.count 3 \
             --tags ecomm
   /lke/clusters/{clusterId}:
@@ -6402,7 +6468,7 @@ paths:
         - lke:read_only
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: View Kubernetes Cluster
+      summary: Kubernetes Cluster View
       description: >
         Get a specific Cluster by ID.
       responses:
@@ -6431,7 +6497,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Update Kubernetes Cluster
+      summary: Kubernetes Cluster Update
       description: >
         Updates a Kubernetes cluster.
       requestBody:
@@ -6510,7 +6576,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Delete Kubernetes Cluster
+      summary: Kubernetes Cluster Delete
       description: |
         Deletes a Cluster you have permission to `read_write`.
 
@@ -6559,7 +6625,7 @@ paths:
         - lke:read_only
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: List Node Pools
+      summary: Node Pools List
       description: >
         Returns all active Node Pools on a Kubernetes cluster.
       responses:
@@ -6613,7 +6679,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Create Node Pool
+      summary: Node Pool Create
       description: >
         Creates a new Node Pool for the designated Kubernetes cluster.
       requestBody:
@@ -6655,21 +6721,14 @@ paths:
                 -H "Authorization: Bearer $TOKEN" \
                 -X POST -d '{
                   "type": "g6-standard-4",
-                  "count": 6,
-                  "disks": [
-                        {
-                          "size": 1028,
-                          "type": "ext4"
-                        }
-                      ]
+                  "count": 6
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345/pools
       - lang: CLI
         source: >
           linode-cli lke pool-create 12345 \
             --type g6-standard-4 \
-            --count 6 \
-            --disks '[{"size": 1028, "type": "ext4"}]'
+            --count 6
   /lke/clusters/{clusterId}/pools/{poolId}:
     parameters:
     - name: clusterId
@@ -6694,7 +6753,7 @@ paths:
         - lke:read_only
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: View Node Pool
+      summary: Node Pool View
       description: >
         Get a specific Node Pool by ID.
       responses:
@@ -6732,7 +6791,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Update Node Pool
+      summary: Node Pool Update
       description: |
         Updates a Node Pool's count.
 
@@ -6787,7 +6846,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Delete Node Pool
+      summary: Node Pool Delete
       description: |
         Delete a specific Node Pool from a Kubernetes cluster.
 
@@ -6836,7 +6895,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Recycle Node Pool
+      summary: Node Pool Recycle
       description: |
         Recycles a Node Pool for the designated Kubernetes Cluster. All Linodes within the Node Pool will be deleted
         and replaced with new Linodes on a rolling basis, which may take several minutes. Replacement Nodes are
@@ -6880,7 +6939,7 @@ paths:
         - lke:read_only
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: List Kubernetes API Endpoints
+      summary: Kubernetes API Endpoints List
       description: >
         List the Kubernetes API server endpoints for this cluster. Please note that it often takes
         2-5 minutes before the endpoint is ready after first [creating a new cluster](/api/v4/lke-clusters/#post).
@@ -6939,7 +6998,7 @@ paths:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: View Kubeconfig
+      summary: Kubeconfig View
       description: |
         Get the Kubeconfig file for a Cluster. Please note that it often takes 2-5 minutes before
         the Kubeconfig file is ready after first [creating a new cluster](/api/v4/lke-clusters/#post).
@@ -6978,7 +7037,7 @@ paths:
         - lke:read_only
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: List Kubernetes Versions
+      summary: Kubernetes Versions List
       description: >
         List the Kubernetes versions available for deployment
         to a Kubernetes cluster.
@@ -7031,7 +7090,7 @@ paths:
         - lke:read_only
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: View Kubernetes Version
+      summary: Kubernetes Version View
       description: >
         View a Kubernetes version available for deployment
         to a Kubernetes cluster.
@@ -7063,7 +7122,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Longview
-      summary: List Longview Clients
+      summary: Longview Clients List
       description: >
         Returns a paginated list of Longview Clients you have access
         to. Longview Client is used to monitor stats on your Linode
@@ -7106,7 +7165,7 @@ paths:
       x-linode-grant: add_longview
       tags:
       - Longview
-      summary: Create Longview Client
+      summary: Longview Client Create
       description: >
         Creates a Longview Client.  This Client will not begin monitoring
         the status of your server until you configure the Longview
@@ -7160,7 +7219,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Longview
-      summary: View Longview Client
+      summary: Longview Client View
       description: >
         Returns a single Longview Client you can access.
       operationId: getLongviewClient
@@ -7190,7 +7249,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Longview
-      summary: Update Longview Client
+      summary: Longview Client Update
       description: >
         Updates a Longview Client.  This cannot update how it monitors your
         server; use the Longview Client application on your Linode for
@@ -7234,7 +7293,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Longview
-      summary: Delete Longview Client
+      summary: Longview Client Delete
       description: >
         Deletes a Longview Client from your Account.
 
@@ -7273,7 +7332,7 @@ paths:
     get:
       tags:
       - Longview
-      summary: View Longview Plan
+      summary: Longview Plan View
       description: >
         Get the details of your current Longview plan. This returns a `LongviewSubscription` object
         for your current Longview Pro plan, or an empty set `{}` if your current plan is Longview Free.
@@ -7315,7 +7374,7 @@ paths:
     put:
       tags:
       - Longview
-      summary: Update Longview Plan
+      summary: Longview Plan Update
       description: >
         Update your Longview plan to that of the given subcription ID. This returns a `LongviewSubscription` object for
         the updated Longview Pro plan, or an empty set `{}` if the updated plan is Longview Free.
@@ -7369,7 +7428,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Longview
-      summary: List Longview Subscriptions
+      summary: Longview Subscriptions List
       description: >
         Returns a paginated list of available Longview Subscriptions. This is
         a public endpoint and requires no authentication.
@@ -7415,7 +7474,7 @@ paths:
     get:
       tags:
       - Longview
-      summary: View Longview Subscription
+      summary: Longview Subscription View
       description: >
         Get the Longview plan details as a single `LongviewSubscription` object for the provided subscription ID. This is a public endpoint
         and requires no authentication.
@@ -7448,7 +7507,7 @@ paths:
         - $ref: '#/components/parameters/pageSize'
       tags:
       - Managed
-      summary: List Managed Contacts
+      summary: Managed Contacts List
       description: >
         Returns a paginated list of Managed Contacts on your Account.
       operationId: getManagedContacts
@@ -7489,7 +7548,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Create Managed Contact
+      summary: Managed Contact Create
       description: >
         Creates a Managed Contact.  A Managed Contact is someone Linode
         special forces can contact in the course of attempting to resolve an issue
@@ -7549,7 +7608,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: View Managed Contact
+      summary: Managed Contact View
       description: >
         Returns a single Managed Contact.
       operationId: getManagedContact
@@ -7579,7 +7638,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Update Managed Contact
+      summary: Managed Contact Update
       description: >
         Updates information about a Managed Contact.
       operationId: updateManagedContact
@@ -7629,7 +7688,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Delete Managed Contact
+      summary: Managed Contact Delete
       description: >
         Deletes a Managed Contact.
       operationId: deleteManagedContact
@@ -7665,7 +7724,7 @@ paths:
         - $ref: '#/components/parameters/pageSize'
       tags:
       - Managed
-      summary: List Managed Credentials
+      summary: Managed Credentials List
       description: >
         Returns a paginated list of Managed Credentials on your Account.
       operationId: getManagedCredentials
@@ -7706,7 +7765,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Create Managed Credential
+      summary: Managed Credential Create
       description: >
         Creates a Managed Credential. A Managed Credential is stored securely
         to allow Linode special forces to access your Managed Services and resolve
@@ -7780,7 +7839,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: View Managed Credential
+      summary: Managed Credential View
       description: >
         Returns a single Managed Credential.
       operationId: getManagedCredential
@@ -7810,7 +7869,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Update Managed Credential
+      summary: Managed Credential Update
       description: >
         Updates the label of a Managed Credential. This endpoint
         does not update the username and password for a Managed Credential.
@@ -7865,7 +7924,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Update Managed Credential Username and Password
+      summary: Managed Credential Username and Password Update
       description: >
         Updates the username and password for a Managed Credential.
       operationId: updateManagedCredentialUsernamePassword
@@ -7933,7 +7992,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Delete Managed Credential
+      summary: Managed Credential Delete
       description: >
         Deletes a Managed Credential.  Linode special forces will no longer
         have access to this Credential when attempting to resolve issues.
@@ -7967,7 +8026,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: View Managed SSH Key
+      summary: Managed SSH Key View
       description: >
         Returns the unique SSH public key assigned to your Linode account's
         Managed service. If you [add this public key](https://linode.com/docs/platform/linode-managed/#adding-the-public-key) to a Linode on your account,
@@ -8016,7 +8075,7 @@ paths:
         - $ref: '#/components/parameters/pageSize'
       tags:
       - Managed
-      summary: List Managed Issues
+      summary: Managed Issues List
       description: >
         Returns a paginated list of recent and ongoing issues detected on your
         Managed Services.
@@ -8068,7 +8127,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: View Managed Issue
+      summary: Managed Issue View
       description: >
         Returns a single Issue that is impacting or did impact one of your
         Managed Services.
@@ -8104,7 +8163,7 @@ paths:
         - $ref: '#/components/parameters/pageSize'
       tags:
       - Managed
-      summary: List Managed Linode Settings
+      summary: Managed Linode Settings List
       description: >
         Returns a paginated list of Managed Settings for your Linodes. There will
         be one entry per Linode on your Account.
@@ -8156,7 +8215,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: View Linode's Managed Settings
+      summary: Linode's Managed Settings View
       description: >
         Returns a single Linode's Managed settings.
       operationId: getManagedLinodeSetting
@@ -8186,7 +8245,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Update Linode's Managed Settings
+      summary: Linode's Managed Settings Update
       description: >
         Updates a single Linode's Managed settings.
       operationId: updateManagedLinodeSetting
@@ -8239,7 +8298,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: List Managed Services
+      summary: Managed Services List
       description: >
         Returns a paginated list of Managed Services on your Account. These
         are the services Linode Managed is monitoring and will report and attempt
@@ -8282,7 +8341,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Create Managed Service
+      summary: Managed Service Create
       description: >
         Creates a Managed Service. Linode Managed will begin monitoring this
         service and reporting and attempting to resolve any Issues.
@@ -8356,7 +8415,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: View Managed Service
+      summary: Managed Service View
       description: >
         Returns information about a single Managed Service on your Account.
       operationId: getManagedService
@@ -8386,7 +8445,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Update Managed Service
+      summary: Managed Service Update
       description: >
         Updates information about a Managed Service.
       operationId: updateManagedService
@@ -8444,7 +8503,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Delete Managed Service
+      summary: Managed Service Delete
       description: >
         Deletes a Managed Service.  This service will no longer be monitored by
         Linode Managed.
@@ -8485,7 +8544,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Disable Managed Service
+      summary: Managed Service Disable
       description: >
         Temporarily disables monitoring of a Managed Service.
       operationId: disableManagedService
@@ -8526,7 +8585,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: Enable Managed Service
+      summary: Managed Service Enable
       description: >
         Enables monitoring of a Managed Service.
       operationId: enableManagedService
@@ -8562,7 +8621,7 @@ paths:
       x-linode-grant: unrestricted only
       tags:
       - Managed
-      summary: List Managed Stats
+      summary: Managed Stats List
       description: |
         Returns a list of Managed Stats on your Account in the form of x and y data points.
         You can use these data points to plot your own graph visualizations. These stats
@@ -8616,7 +8675,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Networking
-      summary: List IP Addresses
+      summary: IP Addresses List
       description: >
         Returns a paginated list of IP Addresses on your Account, excluding
         private addresses.
@@ -8658,7 +8717,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Networking
-      summary: Allocate IP Address
+      summary: IP Address Allocate
       description: >
         Allocates a new IPv4 Address on your Account. The Linode must be
         configured to support additional addresses - please
@@ -8741,7 +8800,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Networking
-      summary: View IP Address
+      summary: IP Address View
       description: >
         Returns information about a single IP Address on your Account.
       operationId: getIP
@@ -8771,7 +8830,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Networking
-      summary: Update IP Address RDNS
+      summary: IP Address RDNS Update
       description: >
         Sets RDNS on an IP Address. Forward DNS must already be set up for
         reverse DNS to be applied. If you set the RDNS to `null` for public
@@ -8824,7 +8883,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Networking
-      summary: Assign IPs to Linodes
+      summary: Linodes Assign IPs
       description: >
         Assign multiple IPs to multiple Linodes in one Region. This allows
         swapping, shuffling, or otherwise reorganizing IPv4 Addresses to your
@@ -8925,7 +8984,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Networking
-      summary: Configure IP Sharing
+      summary: IP Sharing Configure
       description: >
         Configure shared IPs.  A shared IP may be brought up on a Linode other
         than the one it lists in its response.  This can be used to allow one
@@ -8999,7 +9058,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Networking
-      summary: List IPv6 Pools
+      summary: IPv6 Pools List
       description: >
         Displays the IPv6 pools on your Account. A pool of IPv6 addresses are routed to all of your
         Linodes in a single [Region](https://developers.linode.com/api/v4/regions). Any Linode on your Account may bring up any address in this
@@ -9046,11 +9105,16 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Networking
-      summary: List IPv6 Ranges
+      summary: IPv6 Ranges List
       description: >
-        Displays the IPv6 ranges on your Account. A range of IPv6 addresses is routed to a single
-        Linode in a given [Region](https://developers.linode.com/api/v4/regions). Your Linode is responsible for routing individual addresses in
-        the range, or handling traffic for all the addresses in the range.
+        Displays the IPv6 ranges on your Account.
+
+
+          * An IPv6 range is a `/64` block of IPv6 addresses routed to a single Linode in a given [Region](https://developers.linode.com/api/v4/regions).
+
+          * Your Linode is responsible for routing individual addresses in the range, or handling traffic for all the addresses in the range.
+
+          * You must [open a support ticket](/api/v4/support-tickets/#post) to request a `/64` block of IPv6 addresses to be added to your account.
       operationId: getIPv6Ranges
       x-linode-cli-action: v6-ranges
       security:
@@ -9085,6 +9149,769 @@ paths:
       - lang: CLI
         source: >
           linode-cli networking v6-ranges
+  /networking/firewalls:
+    x-linode-cli-command: firewalls
+    get:
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewalls List
+      description: |
+        Returns a paginated list of your Firewalls.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: getFirewalls
+      x-linode-cli-action: list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewalls:read_only
+      responses:
+        '200':
+          description: Returns an array of Firewalls.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Firewall'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/networking/firewalls
+      - lang: CLI
+        source: >
+          linode-cli firewalls list
+    post:
+      x-linode-grant: read_write
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Create
+      description: |
+        Creates a Firewall to filter network traffic. Use the `rules` property to
+        create inbound and outbound access rules. Use the `devices` property to assign the
+        Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode
+        instances.
+
+        A Firewall can be assigned to multiple Linode services, and up to three active Firewalls
+        can be assigned to a single Linode service.
+
+        A `firewall_create` Event is generated when this endpoint returns successfully.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: createFirewalls
+      x-linode-cli-action: create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_write
+      requestBody:
+        description: Creates a Firewall object that can be applied to a Linode service to filter the service's network traffic.
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - rules
+              properties:
+                label:
+                  $ref: '#/components/schemas/Firewall/properties/label'
+                rules:
+                  $ref: '#/components/schemas/Firewall/properties/rules'
+                tags:
+                  $ref: '#/components/schemas/Firewall/properties/tags'
+                devices:
+                  type: object
+                  description: >
+                    A Firewall Device assigns a Firewall to a Linode service. Currently, Firewalls
+                    can only be assigned to Linode instances.
+
+                    * A Firewall can be assigned to multiple Linode services, and up to three active Firewalls can
+                    be assigned to a single Linode service.
+
+                    * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if three other active Firewalls
+                    are already assigned to the same service.
+
+
+                    **Note:** When a Firewall is assigned to a Linode and you attempt
+                    to [migrate the Linode to a data center](/api/v4/linode-instances-linode-id-migrate/#post) that does not support Cloud Firewalls, the migration will fail.
+                    Use the [List Regions](/api/v4/regions) endpoint to view a list of a data center's capabilities.
+                  properties:
+                    linodes:
+                      description: >
+                        An array of Linode IDs. A Firewall Device will be created for each ID.
+                      type: array
+                      items:
+                        type: integer
+                      example:
+                        - 123
+                        - 456
+      responses:
+        '200':
+          description: Returns information about the created Firewall.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Firewall'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "label": "firewall123",
+                "rules": {
+                  "inbound": [
+                    {
+                      "protocol": "TCP",
+                      "ports": "22, 80, 443",
+                      "addresses": {
+                        "ipv4": [
+                          "192.0.2.1",
+                          "192.0.2.0/24"
+                        ],
+                        "ipv6": [
+                          "2001:DB8::/32"
+                        ]
+                      }
+                    }
+                  ],
+                  "outbound": [
+                    {
+                      "protocol": "TCP",
+                      "ports": "49152-65535",
+                      "addresses": {
+                        "ipv4": [
+                          "192.0.2.1",
+                          "192.0.2.0/24"
+                        ],
+                        "ipv6": [
+                          "2001:DB8::/32"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "devices": {
+                  "linodes": [
+                    123,
+                    456
+                    ]
+                },
+                "tags": [
+                  "example tag",
+                  "another example"
+                ]
+              }' \
+              https://api.linode.com/v4beta/networking/firewalls
+      - lang: CLI
+        source: >
+          linode-cli firewalls create \
+            --rules '{"inbound": [{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]}' \
+  /networking/firewalls/{firewallId}:
+    parameters:
+      - name: firewallId
+        in: path
+        description: >
+          ID of the Firewall to access.
+        required: true
+        schema:
+          type: integer
+    x-linode-cli-command: firewalls
+    get:
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall View
+      operationId: getFirewall
+      x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_only
+      description: |
+        Get a specific Firewall resource by its ID. The Firewall's Devices will not be
+        returned in the response. Instead, use the
+        [List Firewall Devices](http://developers.linode.com/api/v4/networking-firewalls-firewall-id-devices/#get)
+        endpoint to review them.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      responses:
+        '200':
+          description: Returns information about this Firewall.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Firewall'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/networking/firewalls/123
+      - lang: CLI
+        source: >
+          linode-cli firewalls view 123
+    put:
+      x-linode-grant: read_write
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Update
+      description: |
+        Updates information for a Firewall. Some parts of a Firewall's configuration cannot
+        be manipulated by this endpoint:
+
+        - A Firewall's Devices cannot be set with this endpoint. Instead, use the
+        [Create Firewall Device](http://developers.linode.com/api/v4/networking-firewalls-firewall-id-devices/#post)
+        and [Delete Firewall Device](http://developers.linode.com/api/v4/networking-firewalls-firewall-id-devices/#delete)
+        endpoints to assign and remove this Firewall from Linode services.
+
+        - A Firewall's Rules cannot be changed with this endpoint. Instead, use the
+        [Update Firewall Rules](http://developers.linode.com/api/v4/networking-firewalls-firewall-id-rules/#put)
+        endpoint to update your Rules.
+
+        - A Firewall's status can be set to `enabled` or `disabled` by this endpoint, but it cannot be
+        set to `deleted`. Instead, use the
+        [Delete Firewall](http://developers.linode.com/api/v4/networking-firewalls-firewall-id/#delete)
+        endpoint to delete a Firewall.
+
+        If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
+        `firewall_disable` Event will be generated.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: updateFirewall
+      x-linode-cli-action: update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_write
+      requestBody:
+        description: The Firewall information to update.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tags:
+                  $ref: '#/components/schemas/Firewall/properties/tags'
+                label:
+                  $ref: '#/components/schemas/Firewall/properties/label'
+                status:
+                  $ref: '#/components/schemas/Firewall/properties/status'
+      responses:
+        '200':
+          description: Firewall updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Firewall'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X PUT -d '{
+                "status": "disabled"
+              }' \
+              https://api.linode.com/v4beta/networking/firewalls/123
+      - lang: CLI
+        source: >
+          linode-cli firewalls update 123 \
+            --status disabled
+    delete:
+      x-linode-grant: read_write
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Delete
+      operationId: deleteFirewall
+      x-linode-cli-action: delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_write
+      description: |
+        Delete a Firewall resource by its ID. This will remove all of the Firewall's Rules
+        from any Linode services that the Firewall was assigned to.
+
+        A `firewall_delete` Event is generated when this endpoint returns successfully.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      responses:
+        '200':
+          description: Delete Successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4beta/networking/firewalls/123
+      - lang: CLI
+        source: >
+          linode-cli firewalls delete 123
+  /networking/firewalls/{firewallId}/devices:
+    parameters:
+      - name: firewallId
+        in: path
+        description: >
+          ID of the Firewall to access.
+        required: true
+        schema:
+          type: integer
+    x-linode-cli-command: firewalls
+    get:
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      summary: Firewall Devices List
+      description: |
+        Returns a paginated list of a Firewall's Devices. A Firewall Device assigns a
+        Firewall to a Linode service (referred to as the Device's `entity`). Currently,
+        only Devices with an entity of type `linode` are accepted.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: getFirewallDevices
+      x-linode-cli-action: devices-list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_only
+      responses:
+        '200':
+          description: A paginated list of Firewall Devices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FirewallDevices'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/networking/firewalls/123/devices
+      - lang: CLI
+        source: >
+          linode-cli firewalls devices-list 123
+    post:
+      x-linode-grant: read_write
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Device Create
+      description: |
+        Creates a Firewall Device, which assigns a Firewall to a Linode service (referred to
+        as the Device's `entity`). Currently, only Devices with an entity of type `linode` are accepted.
+        A Firewall can be assigned to multiple Linode services, and up to three active Firewalls can
+        be assigned to a single Linode service. Additional disabled Firewalls can be
+        assigned to a service, but they cannot be enabled if three other active Firewalls
+        are already assigned to the same service.
+
+        Creating a Firewall Device will apply the Rules from a Firewall to a Linode service.
+        A `firewall_device_add` Event is generated when the Firewall Device is added successfully.
+
+        **Note:** When a Firewall is assigned to a Linode and you attempt
+        to [migrate the Linode to a data center](/api/v4/linode-instances-linode-id-migrate/#post) that does not support Cloud Firewalls, the migration will fail.
+        Use the [List Regions](/api/v4/regions) endpoint to view a list of a data center's capabilities.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: createFirewallDevice
+      x-linode-cli-action: device-create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_write
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - type
+              allOf:
+                - $ref: '#/components/schemas/FirewallDevices/properties/entity'
+      responses:
+        '200':
+          description: Returns information about the created Firewall Device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirewallDevices'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "type": "linode",
+                "id": 123
+              }' \
+              https://api.linode.com/v4beta/networking/firewalls/123/devices
+      - lang: CLI
+        source: >
+          linode-cli firewalls device-create 123 \
+            --id 456 \
+            --type "linode"
+  /networking/firewalls/{firewallId}/devices/{deviceId}:
+    parameters:
+      - name: firewallId
+        in: path
+        description: >
+          ID of the Firewall to access.
+        required: true
+        schema:
+          type: integer
+      - name: deviceId
+        in: path
+        description: >
+          ID of the Firewall Device to access.
+        required: true
+        schema:
+          type: integer
+    x-linode-cli-command: firewalls
+    get:
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Device View
+      description: |
+        Returns information for a Firewall Device, which assigns a Firewall
+        to a Linode service (referred to as the Device's `entity`). Currently,
+        only Devices with an entity of type `linode` are accepted.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: getFirewallDevice
+      x-linode-cli-action: device-view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_only
+      responses:
+        '200':
+          description: The requested Firewall Device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirewallDevices'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/networking/firewalls/123/devices/456
+      - lang: CLI
+        source: >
+          linode-cli firewalls device-view \
+            123 456
+    delete:
+      x-linode-grant: read_write
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Device Delete
+      operationId: deleteFirewallDevice
+      x-linode-cli-action: device-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_write
+      description: |
+        Removes a Firewall Device, which removes a Firewall from the Linode service it was
+        assigned to by the Device. This will remove all of the Firewall's Rules from the Linode
+        service. If any other Firewalls have been assigned to the Linode service, then those Rules
+        will remain in effect.
+
+        A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      responses:
+        '200':
+          description: Delete Successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+               -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4beta/networking/firewalls/123/devices/456
+      - lang: CLI
+        source: >
+          linode-cli firewalls device-delete 123 456
+  /networking/firewalls/{firewallId}/rules:
+    parameters:
+      - name: firewallId
+        in: path
+        description: >
+          ID of the Firewall to access.
+        required: true
+        schema:
+          type: integer
+    x-linode-cli-command: firewalls
+    get:
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Rules List
+      description: |
+        Returns the inbound and outbound Rules for a Firewall.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: getFirewallRules
+      x-linode-cli-action: rules-list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_only
+      responses:
+        '200':
+          description: The requested Firewall Rules.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Firewall/properties/rules'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/networking/firewalls/123/rules
+      - lang: CLI
+        source: >
+          linode-cli firewalls rules-list 123
+    put:
+      x-linode-grant: read_write
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: Firewall Rules Update
+      description: |
+        Updates the inbound and outbound Rules for a Firewall. Using this endpoint will
+        replace all of a Firewall's ruleset with the Rules specified in your request.
+
+        This endpoint is in **beta**.
+
+
+        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
+        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/api/v4/regions).
+        * Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future.  This notice will be removed when this endpoint is out of
+        beta.
+      operationId: updateFirewallRules
+      x-linode-cli-action: rules-update
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - firewall:read_write
+      requestBody:
+        description: The Firewall Rules information to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Firewall/properties/rules'
+      responses:
+        '200':
+          description: Firewall Rules updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Firewall/properties/rules'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X PUT -d '{
+                  "inbound": [
+                    {
+                      "protocol": "TCP",
+                      "ports": "22, 80, 443",
+                        "addresses": {
+                        "ipv4": [
+                          "192.0.2.1",
+                          "192.0.2.0/24"
+                        ],
+                        "ipv6": [
+                          "2001:DB8::/32"
+                        ]
+                      }
+                    }
+                  ],
+                  "outbound": [
+                    {
+                      "protocol": "TCP",
+                      "ports": "49152-65535",
+                      "addresses": {
+                        "ipv4": [
+                          "192.0.2.1",
+                          "192.0.2.0/24"
+                        ],
+                        "ipv6": [
+                          "2001:DB8::/32"
+                        ]
+                      }
+                    }
+                  ]
+              }' \
+              https://api.linode.com/v4beta/networking/firewalls/123/rules
+      - lang: CLI
+        source: >
+          linode-cli firewalls rules-update 123 \
+            --inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
+            --outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
   /nodebalancers:
     x-linode-cli-command: nodebalancers
     get:
@@ -9094,7 +9921,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
-      summary: List NodeBalancers
+      summary: NodeBalancers List
       description: >
         Returns a paginated list of NodeBalancers you have access to.
       operationId: getNodeBalancers
@@ -9135,7 +9962,7 @@ paths:
       x-linode-grant: add_nodebalancers
       tags:
       - NodeBalancers
-      summary: Create NodeBalancer
+      summary: NodeBalancer Create
       description: >
         Creates a NodeBalancer in the requested Region. This NodeBalancer
         will not start serving requests until it is configured.
@@ -9220,7 +10047,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - NodeBalancers
-      summary: View NodeBalancer
+      summary: NodeBalancer View
       description: >
         Returns a single NodeBalancer you can access.
       operationId: getNodeBalancer
@@ -9250,7 +10077,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Update NodeBalancer
+      summary: NodeBalancer Update
       description: >
         Updates information about a NodeBalancer you can access.
       operationId: updateNodeBalancer
@@ -9294,7 +10121,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Delete NodeBalancer
+      summary: NodeBalancer Delete
       description: >
         Deletes a NodeBalancer.
 
@@ -9346,7 +10173,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
-      summary: List Configs
+      summary: Configs List
       description: >
         Returns a paginated list of NodeBalancer Configs associated
         with this NodeBalancer. NodeBalancer Configs represent
@@ -9394,7 +10221,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Create Config
+      summary: Config Create
       description: >
         Creates a NodeBalancer Config, which allows the NodeBalancer to
         accept traffic on a new port. You will need to add NodeBalancer Nodes
@@ -9437,6 +10264,7 @@ paths:
                 "check_path": "/test",
                 "check_body": "it works",
                 "check_passive": true,
+                "proxy_protocol": "v1",
                 "cipher_suite": "recommended"
               }' \
               https://api.linode.com/v4/nodebalancers/12345/configs
@@ -9454,6 +10282,7 @@ paths:
             --check_path "/test" \
             --check_body "it works" \
             --check_passive true \
+            --proxy_protocol "v1" \
             --cipher_suite recommended
   /nodebalancers/{nodeBalancerId}/configs/{configId}:
     parameters:
@@ -9474,7 +10303,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - NodeBalancers
-      summary: View Config
+      summary: Config View
       description: >
         Returns configuration information for a single port of this
         NodeBalancer.
@@ -9506,7 +10335,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Update Config
+      summary: Config Update
       description: >
         Updates the configuration for a single port on a NodeBalancer.
       operationId: updateNodeBalancerConfig
@@ -9548,6 +10377,7 @@ paths:
                 "check_path": "/test",
                 "check_body": "it works",
                 "check_passive": true,
+                "proxy_protocol": "v1",
                 "cipher_suite": "recommended"
               }' \
               https://api.linode.com/v4/nodebalancers/12345/configs/4567
@@ -9566,12 +10396,13 @@ paths:
             --check_path "/test" \
             --check_body "it works" \
             --check_passive true \
+            --proxy_protocol "v1" \
             --cipher_suite recommended
     delete:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Delete Config
+      summary: Config Delete
       description: >
         Deletes the Config for a port of this NodeBalancer.
 
@@ -9627,7 +10458,7 @@ paths:
       x-linode-grant: add_nodebalancers
       tags:
       - NodeBalancers
-      summary: Rebuild Config
+      summary: Config Rebuild
       description: >
         Rebuilds a NodeBalancer Config and its Nodes that you have
         permission to modify.
@@ -9697,6 +10528,7 @@ paths:
                 "check_path": "/test",
                 "check_body": "it works",
                 "check_passive": true,
+                "proxy_protocol": "v1",
                 "cipher_suite": "recommended",
                 "nodes": [
                   {
@@ -9730,6 +10562,7 @@ paths:
             --check_path "/test" \
             --check_body "it works" \
             --check_passive true \
+            --proxy_protocol "v1" \
             --cipher_suite recommended
   /nodebalancers/{nodeBalancerId}/configs/{configId}/nodes:
     parameters:
@@ -9753,7 +10586,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
-      summary: List Nodes
+      summary: Nodes List
       description: >
         Returns a paginated list of NodeBalancer nodes associated with
         this Config. These are the backends that will be sent traffic
@@ -9796,7 +10629,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Create Node
+      summary: Node Create
       description: >
         Creates a NodeBalancer Node, a backend that can accept
         traffic for this NodeBalancer Config. Nodes are routed
@@ -9872,7 +10705,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - NodeBalancers
-      summary: View Node
+      summary: Node View
       description: >
         Returns information about a single Node, a backend for this
         NodeBalancer's configured port.
@@ -9903,7 +10736,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Update Node
+      summary: Node Update
       description: >
         Updates information about a Node, a backend for this NodeBalancer's
         configured port.
@@ -9953,7 +10786,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - NodeBalancers
-      summary: Delete Node
+      summary: Node Delete
       description: >
         Deletes a Node from this Config. This backend will no longer
         receive traffic for the configured port of this NodeBalancer.
@@ -9999,7 +10832,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - NodeBalancers
-      summary: View NodeBalancer Statistics
+      summary: NodeBalancer Statistics View
       description: >
           Returns detailed statistics about the requested NodeBalancer.
       x-linode-cli-action: stats
@@ -10023,7 +10856,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: List Object Storage Buckets
+      summary: Object Storage Buckets List
       description: |
         Returns a paginated list of all Object Storage Buckets that you own.
 
@@ -10066,7 +10899,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: Create Object Storage Bucket
+      summary: Object Storage Bucket Create
       description: |
         Creates an Object Storage Bucket in the cluster specified. If the
         bucket already exists and is owned by you, this endpoint will return a
@@ -10168,7 +11001,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: View Object Storage Bucket
+      summary: Object Storage Bucket View
       description: |
         Returns a single Object Storage Bucket.
 
@@ -10200,7 +11033,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: Remove Object Storage Bucket
+      summary: Object Storage Bucket Remove
       description: >
         Removes a single bucket. While buckets containing objects _may_ be
         deleted by including the `force` option in the request, such operations
@@ -10245,7 +11078,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: List Object Storage Buckets in Cluster
+      summary: Object Storage Buckets in Cluster List
       description: |
         Returns a list of Buckets in this cluster belonging to this Account.
 
@@ -10302,7 +11135,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: Modify Object Storage Bucket Access
+      summary: Object Storage Bucket Access Modify
       description: |
         Allows changing basic Cross-origin Resource Sharing (CORS) and Access Control Level (ACL) settings.
         Only allows enabling/disabling CORS for all origins, and/or setting canned ACLs.
@@ -10378,7 +11211,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: List Object Storage Bucket Contents
+      summary: Object Storage Bucket Contents List
       description: |
         Returns the contents of a bucket. The contents are paginated using a `marker`,
         which is the name of the last object on the previous page.  Objects may
@@ -10464,7 +11297,7 @@ paths:
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
-      summary: Create Object Storage Object URL
+      summary: Object Storage Object URL Create
       description: |
         Creates a pre-signed URL to access a single Object in a bucket. This
         can be used to share objects, and also to create/delete objects by using
@@ -10550,7 +11383,7 @@ paths:
       x-linode-cli-action: clusters-list
       servers:
       - url: https://api.linode.com/v4
-      summary: List Clusters
+      summary: Clusters List
       description: |
         Returns a paginated list of Object Storage Clusters that are available for
         use.  Users can connect to the clusters with third party clients to create buckets
@@ -10599,7 +11432,7 @@ paths:
       x-linode-cli-action: clusters-view
       servers:
       - url: https://api.linode.com/v4
-      summary: View Cluster
+      summary: Cluster View
       description: |
         Returns a single Object Storage Cluster.
       tags:
@@ -10630,7 +11463,7 @@ paths:
       - url: https://api.linode.com/v4
       tags:
       - Object Storage
-      summary: List Object Storage Keys
+      summary: Object Storage Keys List
       description: |
         Returns a paginated list of Object Storage Keys for authenticating to
         the Object Storage S3 API.
@@ -10671,39 +11504,38 @@ paths:
       x-linode-cli-action: keys-create
       servers:
       - url: https://api.linode.com/v4
-      summary: Create an Object Storage Key
+      summary: Object Storage Key Create
       description: |
         Provisions a new Object Storage Key on your account.
+
+        * To create a Limited Access Key with specific permissions, send a `bucket_access`
+        array.
+
+        * To create a Limited Access Key without access to any buckets, send an empty
+        `bucket_access` array.
+
+        * To create an Access Key with unlimited access to all clusters and all buckets,
+        omit the `bucket_access` array.
       tags:
       - Object Storage
       security:
       - personalAccessToken: []
       - oauth:
-        - object_storage:read_only
+        - object_storage:read_write
       requestBody:
         description: >
           The label of the key to create. This is used to identify the created key.
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                label:
-                  type: string
-                  description: The label for this keypair, for display purposes only.
-                  example: my-key
+              $ref: '#/components/schemas/ObjectStorageKey'
       responses:
         '200':
           description: The new keypair.  **This is the only time** the secret key is returned.
           content:
             application/json:
               schema:
-                allOf:
-                  - $ref: '#/components/schemas/ObjectStorageKey'
-                  - type: object
-                    properties:
-                      secret_key:
-                        example: OiA6F5r0niLs3QA2stbyq7mY5VCV7KqOzcmitmHw
+                $ref: '#/components/schemas/ObjectStorageKey'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -10712,13 +11544,26 @@ paths:
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
             -X POST -d '{
-                "label": "my-object-storage-key"
-            }' \
-            https://api.linode.com/v4/object-storage/keys
+            "label": "my-object-storage-key",
+            "bucket_access": [
+              {
+                "cluster": "ap-south-1",
+                "bucket_name": "bucket-example-1",
+                "permissions": "read_write"
+              },
+              {
+                "cluster": "us-east-1",
+                "bucket_name": "bucket-example-2",
+                "permissions": "read_only"
+              }
+            ]
+          }' \
+          https://api.linode.com/v4/object-storage/keys
       - lang: CLI
         source: >
           linode-cli object-storage keys-create \
-            --label "my-object-storage-key"
+            --label "my-object-storage-key" \
+            --bucket_access '[{"cluster": "ap-south-1", "bucket_name": "bucket-example-1", "permissions": "read_write" }]'
   /object-storage/keys/{keyId}:
     x-linode-cli-command: object-storage
     parameters:
@@ -10733,7 +11578,7 @@ paths:
       x-linode-cli-action: keys-view
       servers:
       - url: https://api.linode.com/v4
-      summary: View Object Storage Key
+      summary: Object Storage Key View
       description: |
         Returns a single Object Storage Key provisioned for your account.
       security:
@@ -10765,7 +11610,7 @@ paths:
       x-linode-cli-action: keys-update
       servers:
       - url: https://api.linode.com/v4
-      summary: Update an Object Storage Key
+      summary: Object Storage Key Update
       description: |
         Updates an Object Storage Key on your account.
       security:
@@ -10779,7 +11624,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ObjectStorageKey'
+              type: object
+              properties:
+                label:
+                  type: string
+                  description: The label for this keypair, for display purposes only.
+                  example: my-key
       responses:
         '200':
           description: Update Successful
@@ -10794,7 +11644,7 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
-            -x PUT -d '{
+            -X PUT -d '{
               "label": "my-object-storage-key"
             }' \
             https://api.linode.com/v4/object-storage/keys/12345
@@ -10808,7 +11658,7 @@ paths:
       x-linode-cli-action: keys-delete
       servers:
       - url: https://api.linode.com/v4
-      summary: Revoke Object Storage Key
+      summary: Object Storage Key Revoke
       description: |
         Revokes an Object Storage Key.  This keypair will no longer be usable by third-party clients.
       security:
@@ -10830,7 +11680,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-            -x DELETE \
+            -X DELETE \
             https://api.linode.com/v4/object-storage/keys/12345
       - lang: CLI
         source: >
@@ -10842,7 +11692,7 @@ paths:
       x-linode-cli-action: cancel
       servers:
       - url: https://api.linode.com/v4
-      summary: Cancel Object Storage
+      summary: Object Storage Cancel
       description: |
         Cancel Object Storage on an Account. All buckets on the Account must be empty
         before Object Storage can be cancelled:
@@ -10876,12 +11726,145 @@ paths:
         - lang: CLI
           source: >
             linode-cli object-storage cancel
+  /object-storage/buckets/{clusterId}/{bucket}/ssl:
+    x-linode-cli-command: object-storage
+    parameters:
+    - name: clusterId
+      in: path
+      description: The ID of the cluster this bucket exists in.
+      required: true
+      schema:
+        type: string
+    - name: bucket
+      in: path
+      description: The bucket name.
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getObjectStorageSSL
+      x-linode-cli-action: ssl-view
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Object Storage TLS/SSL Cert View
+      description: |
+        Returns a boolean value indicating if this bucket has a corresponding TLS/SSL certificate that was
+        uploaded by an Account user.
+      tags:
+      - Object Storage
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - object_storage:read_only
+      responses:
+        '200':
+          description: >
+            Returns a boolean value indicating if this bucket has a corresponding TLS/SSL certificate that was
+            uploaded by an Account user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageSSLResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/ssl
+      - lang: CLI
+        source: >
+          linode-cli object-storage ssl-view \
+            us-east-1 example-bucket
+    post:
+      operationId: createObjectStorageSSL
+      x-linode-cli-action: ssl-upload
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Object Storage TLS/SSL Cert Upload
+      description: |
+        Upload a TLS/SSL certificate and private key to be served when you visit your Object Storage bucket via HTTPS.
+        Your TLS/SSL certificate and private key are stored encrypted at rest.
+
+
+        To replace an expired certificate, [delete your current certificate](/api/v4/object-storage-buckets-cluster-id-bucket-ssl/#delete)
+        and upload a new one.
+      tags:
+      - Object Storage
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - object_storage:read_write
+      requestBody:
+        description: Upload this TLS/SSL certificate with its corresponding secret key.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageSSL'
+      responses:
+        '200':
+          description: Returns whether this bucket has a corresponding TLS/SSL certificate that was uploaded by a user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageSSLResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d ‘{
+                  "certificate": "-----BEGIN CERTIFICATE-----\nMIIDbDCCAlQCCQCl\n-----END CERTIFICATE-----",
+                  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADIAQCQI\n-----END PRIVATE KEY-----"
+                }’ \
+              https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/ssl
+      - lang: CLI
+        source: >
+          linode-cli object-storage ssl-upload \
+            us-east-1 example-bucket \
+            --certificate "-----BEGIN CERTIFICATE-----\nMIIDbDCCAlQCCQCl\n-----END CERTIFICATE-----" \
+            --private_key "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADIAQCQI\n-----END PRIVATE KEY-----"
+    delete:
+      operationId: getObjectStorageSSL
+      x-linode-cli-action: ssl-delete
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Object Storage TLS/SSL Cert Delete
+      description: |
+        Deletes this Object Storage bucket's user uploaded TLS/SSL certificate and private key.
+      tags:
+      - Object Storage
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - object_storage:read_write
+      responses:
+        '200':
+          description: Deletes this Object Storage bucket's user uploaded TLS/SSL certificate and private key.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/ssl
+      - lang: CLI
+        source: >
+          linode-cli object-storage ssl-delete \
+            us-east-1 example-bucket
   /profile:
     x-linode-cli-command: profile
     get:
       tags:
       - Profile
-      summary: View Profile
+      summary: Profile View
       description: >
         Returns information about the current User. This can be used to see
         who is acting in applications where more than one token is managed. For
@@ -10914,7 +11897,7 @@ paths:
     put:
       tags:
       - Profile
-      summary: Update Profile
+      summary: Profile Update
       description: >
         Update information in your Profile.  This endpoint requires the
         "account:read_write" OAuth Scope.
@@ -10974,7 +11957,7 @@ paths:
         - $ref: '#/components/parameters/pageSize'
       tags:
         - Profile
-      summary: List Authorized Apps
+      summary: Authorized Apps List
       description: >
         This is a collection of OAuth apps that you've given access to your Account, and
         includes the level of access granted.
@@ -11025,7 +12008,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: View Authorized App
+      summary: Authorized App View
       description: >
         Returns information about a single app you've authorized to access your
         Account.
@@ -11055,7 +12038,7 @@ paths:
     delete:
       tags:
       - Profile
-      summary: Revoke App Access
+      summary: App Access Revoke
       description: >
         Expires this app token. This token may no longer be used to
         access your Account.
@@ -11088,7 +12071,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: List Grants
+      summary: Grants List
       description: >
         This returns a GrantsResponse describing what the acting User has been
         granted access to.  For unrestricted users, this will return a  204 and
@@ -11132,7 +12115,7 @@ paths:
     post:
       tags:
       - Profile
-      summary: Disable Two Factor Authentication
+      summary: Two Factor Authentication Disable
       description: >
         Disables Two Factor Authentication for your User. Once successful,
         login attempts from untrusted computers will only require a password
@@ -11167,7 +12150,7 @@ paths:
     post:
       tags:
       - Profile
-      summary: Create Two Factor Secret
+      summary: Two Factor Secret Create
       description: >
         Generates a Two Factor secret for your User. TFA will
         not be enabled until you have successfully confirmed the code you
@@ -11217,7 +12200,7 @@ paths:
     post:
       tags:
       - Profile
-      summary: Confirm/Enable Two Factor Authentication
+      summary: Two Factor Authentication Confirm/Enable
       description: >
         Confirms that you can successfully generate Two Factor codes and
         enables TFA on your Account. Once this is complete, login attempts
@@ -11278,7 +12261,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: List Personal Access Tokens
+      summary: Personal Access Tokens List
       description: >
         Returns a paginated list of Personal Access Tokens currently active for
         your User.
@@ -11319,7 +12302,7 @@ paths:
     post:
       tags:
       - Profile
-      summary: Create Personal Access Token
+      summary: Personal Access Token Create
       description: >
         Creates a Personal Access Token for your User. The raw token will
         be returned in the response, but will never be returned again afterward
@@ -11396,7 +12379,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: View Personal Access Token
+      summary: Personal Access Token View
       description: >
         Returns a single Personal Access Token.
       operationId: getPersonalAccessToken
@@ -11425,7 +12408,7 @@ paths:
     put:
       tags:
       - Profile
-      summary: Update Personal Access Token
+      summary: Personal Access Token Update
       description: >
         Updates a Personal Access Token.
       operationId: updatePersonalAccessToken
@@ -11466,7 +12449,7 @@ paths:
     delete:
       tags:
       - Profile
-      summary: Revoke Personal Access Token
+      summary: Personal Access Token Revoke
       description: >
         Revokes a Personal Access Token. The token will be invalidated
         immediately, and requests using that token will fail with a 401. It is
@@ -11505,7 +12488,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: List Logins
+      summary: Logins List
       description: >
         Returns a collection of successful account logins from this user during the last
         90 days.
@@ -11554,7 +12537,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: View Login
+      summary: Login View
       description: >
         Returns a login object displaying information about a successful
         account login from this user.
@@ -11588,7 +12571,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: List Trusted Devices
+      summary: Trusted Devices List
       description: >
         Returns a paginated list of active TrustedDevices for your User.
         Browsers with an active Remember Me Session are logged into your account
@@ -11642,7 +12625,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: View Trusted Device
+      summary: Trusted Device View
       description: >
         Returns a single active TrustedDevice for your User.
       operationId: getTrustedDevice
@@ -11672,7 +12655,7 @@ paths:
     delete:
       tags:
       - Profile
-      summary: Revoke Trusted Device
+      summary: Trusted Device Revoke
       description: >
         Revoke an active TrustedDevice for your User.  Once a TrustedDevice is revoked, this
         device will have to log in again before accessing your Linode account.
@@ -11712,7 +12695,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Profile
-      summary: List SSH Keys
+      summary: SSH Keys List
       description: >
         Returns a collection of SSH Keys you've added to your Profile.
       operationId: getSSHKeys
@@ -11753,7 +12736,7 @@ paths:
     post:
       tags:
       - Profile
-      summary: Add SSH Key
+      summary: SSH Key Add
       description: >
         Adds an SSH Key to your Account profile.
       operationId: addSSHKey
@@ -11804,7 +12787,7 @@ paths:
     get:
       tags:
       - Profile
-      summary: View SSH Key
+      summary: SSH Key View
       description: >
         Returns a single SSH Key object identified by `id` that you have access
         to view.
@@ -11834,7 +12817,7 @@ paths:
     put:
       tags:
       - Profile
-      summary: Update SSH Key
+      summary: SSH Key Update
       description: >
         Updates an SSH Key that you have permission to `read_write`.
       operationId: updateSSHKey
@@ -11876,7 +12859,7 @@ paths:
     delete:
       tags:
       - Profile
-      summary: Delete SSH Key
+      summary: SSH Key Delete
       description: >
         Deletes an SSH Key you have access to.
 
@@ -11916,7 +12899,7 @@ paths:
       x-linode-grant: read_only
       tags:
         - Profile
-      summary: View User Preferences
+      summary: User Preferences View
       description: |
         View a list of user preferences tied to the OAuth client that generated
         the token making the request. The user preferences endpoints allow
@@ -11952,7 +12935,7 @@ paths:
     put:
       tags:
       - Profile
-      summary: Update User Preferences
+      summary: User Preferences Update
       description: >
         Updates a user's preferences. These preferences are tied to the
         OAuth client that generated the token making the request. The user
@@ -12005,7 +12988,7 @@ paths:
     get:
       tags:
       - Regions
-      summary: List Regions
+      summary: Regions List
       description: |
         Lists the Regions available for Linode services. Not all services are guaranteed to be
         available in all Regions.
@@ -12051,7 +13034,7 @@ paths:
     get:
       tags:
       - Regions
-      summary: View Region
+      summary: Region View
       description: >
         Returns a single Region.
       operationId: getRegion
@@ -12081,7 +13064,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Support
-      summary: List Support Tickets
+      summary: Support Tickets List
       description: >
         Returns a collection of Support Tickets on your
         Account. Support Tickets can be both tickets you open with Linode
@@ -12128,7 +13111,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Support
-      summary: Open Support Ticket
+      summary: Support Ticket Open
       description: >
         Open a Support Ticket.
 
@@ -12185,7 +13168,7 @@ paths:
       x-linode-grant: read_only
       tags:
       - Support
-      summary: View Support Ticket
+      summary: Support Ticket View
       description: >
         Returns a Support Ticket under your Account.
       operationId: getTicket
@@ -12224,7 +13207,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Support
-      summary: Create Ticket Attachment
+      summary: Ticket Attachment Create
       description: >
         Adds a file attachment to an existing Support
         Ticket on your Account. File attachments are used to assist our
@@ -12284,7 +13267,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Support
-      summary: Close Support Ticket
+      summary: Support Ticket Close
       description: >
         Closes a Support Ticket you have access to modify.
       operationId: closeTicket
@@ -12327,7 +13310,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Support
-      summary: List Replies
+      summary: Replies List
       description: >
         Returns a collection of replies to a Support Ticket on
         your Account.
@@ -12369,7 +13352,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Support
-      summary: Create Reply
+      summary: Reply Create
       description: >
         Adds a reply to an existing Support Ticket.
       operationId: createTicketReply
@@ -12428,7 +13411,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Tags
-      summary: List Tags
+      summary: Tags List
       description: >
         Tags are User-defined labels attached to objects in your Account, such
         as Linodes. They are used for specifying and grouping attributes of
@@ -12470,7 +13453,7 @@ paths:
     post:
       tags:
       - Tags
-      summary: Create New Tag
+      summary: New Tag Create
       description: >
         Creates a new Tag and optionally tags requested objects with it
         immediately.
@@ -12582,7 +13565,7 @@ paths:
         type: string
       required: true
     get:
-      summary: List Tagged Objects
+      summary: Tagged Objects List
       description: >
         Returns a paginated list of all objects you've tagged with the requested
         Tag. This is a mixed collection of all object types.
@@ -12641,7 +13624,7 @@ paths:
           curl -H "Authorization: Bearer $TOKEN" \
               "https://api.linode.com/v4/tags/example tag"
     delete:
-      summary: Delete a Tag
+      summary: Tag Delete
       description: >
         Remove a Tag from all objects and delete it.
 
@@ -12672,7 +13655,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
-      summary: List Volumes
+      summary: Volumes List
       description: >
         Returns a paginated list of Volumes you have permission to view.
       tags:
@@ -12714,7 +13697,7 @@ paths:
     post:
       x-linode-charge: true
       x-linode-grant: add_volumes
-      summary: Create Volume
+      summary: Volume Create
       description: >
         Creates a Volume on your Account. In order
         for this to complete successfully, your User must have the `add_volumes`
@@ -12835,7 +13818,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Volumes
-      summary: View Volume
+      summary: Volume View
       description: >
         Get information about a single Volume.
       operationId: getVolume
@@ -12874,7 +13857,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Volumes
-      summary: Update Volume
+      summary: Volume Update
       description: >
         Updates a Volume that you have permission to `read_write`.
       operationId: updateVolume
@@ -12925,7 +13908,7 @@ paths:
       x-linode-grant: read_write
       tags:
       - Volumes
-      summary: Delete Volume
+      summary: Volume Delete
       description: |
         Deletes a Volume you have permission to `read_write`.
 
@@ -12968,7 +13951,7 @@ paths:
         type: integer
     x-linode-cli-command: volumes
     post:
-      summary: Attach Volume
+      summary: Volume Attach
       description: >
         Attaches a Volume on your Account
         to an existing Linode on your Account. In order for this request to
@@ -13051,7 +14034,7 @@ paths:
     post:
       x-linode-charge: true
       x-linode-grant: add_volumes
-      summary: Clone Volume
+      summary: Volume Clone
       description: >
         Creates a Volume on your Account. In
         order for this request to complete successfully, your User must have the
@@ -13110,7 +14093,7 @@ paths:
         type: integer
     x-linode-cli-command: volumes
     post:
-      summary: Detach Volume
+      summary: Volume Detach
       description: >
         Detaches a Volume on your Account
         from a Linode on your Account. In order for this request to
@@ -13155,7 +14138,7 @@ paths:
     x-linode-cli-command: volumes
     post:
       x-linode-charge: true
-      summary: Resize Volume
+      summary: Volume Resize
       description: >
         Resize an existing Volume on your Account. In
         order for this request to complete successfully, your User must have the
@@ -13609,8 +14592,8 @@ components:
           type: string
           format: date-time
           description: >
-            When this app's access token expires.  Please note that apps may still have active
-            refresh tokens after this time passes.
+            When the app's access to your account expires. If `null`, the app's
+            access must be revoked manually.
           example: '2018-01-15T00:01:01'
           readOnly: true
           x-linode-cli-display: 6
@@ -13857,13 +14840,13 @@ components:
         created:
           type: string
           format: date-time
-          description: When this Linode was created.
+          description: When this Disk was created.
           example: '2018-01-01T00:01:01'
           readOnly: true
         updated:
           type: string
           format: date-time
-          description: When this Linode was last updated.
+          description: When this Disk was last updated.
           example: '2018-01-01T00:01:01'
           readOnly: true
     DiskRequest:
@@ -14263,6 +15246,13 @@ components:
           - dns_zone_delete
           - dns_zone_import
           - dns_zone_update
+          - firewall_create
+          - firewall_delete
+          - firewall_disable
+          - firewall_enable
+          - firewall_update
+          - firewall_device_add
+          - firewall_device_remove
           - host_reboot
           - image_delete
           - image_update
@@ -14409,6 +15399,7 @@ components:
               - community
               - disks
               - domain
+              - firewall
               - image
               - ipaddress
               - linode
@@ -14527,6 +15518,232 @@ components:
             The username of the User who caused the Event.
           example: exampleUser
           x-linode-cli-display: 2
+        message:
+          type: string
+          nullable: true
+          description: >
+            Provides additional information about the event. Additional
+            information may include, but is not limited to, a more detailed
+            representation of events which can help diagnose non-obvious failures.
+          example: None
+    Firewall:
+      type: object
+      description: >
+        A resource that controls incoming and outgoing network traffic to a Linode service. A Firewall can
+        be assigned to multiple Linode services, and up to three active Firewalls can be assigned to a single Linode service.
+        [Create a Firewall Device](http://developers.linode.com/api/v4/networking-firewalls-firewall-id-devices/#post)
+        to assign a Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode instances.
+      properties:
+        id:
+          x-linode-filterable: true
+          type: integer
+          readOnly: true
+          description: >
+            The Firewall's unique ID.
+          example: 123
+          x-linode-cli-display: 1
+        label:
+          x-linode-filterable: true
+          type: string
+          description: >
+            The Firewall's label, for display purposes only. If no label is provided for a Firewall,
+            a default will be assigned.
+
+            Firewall labels have the following constraints:
+
+              * Must begin and end with an alphanumeric character.
+              * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
+              * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
+              * Must be between 3 and 32 characters.
+          example: firewall123
+          minLength: 3
+          maxLength: 32
+          pattern: '^[a-zA-Z]((?!--|__|..)[a-zA-Z0-9-_.])+$'
+          x-linode-cli-display: 2
+        created:
+          x-linode-filterable: true
+          type: string
+          format: date-time
+          readOnly: true
+          description: >
+            When this Firewall was created.
+          example: '2018-01-01T00:01:01'
+          x-linode-cli-display: 4
+        updated:
+          x-linode-filterable: true
+          type: string
+          format: date-time
+          readOnly: true
+          description: >
+            When this Firewall was last updated.
+          example: '2018-01-02T00:01:01'
+          x-linode-cli-display: 5
+        status:
+          type: string
+          description: >
+           The status of this Firewall.
+
+             * When a Firewall is first created its status is `enabled`.
+             * Use the [Update Firewall](/api/v4/networking-firewalls-firewall-id/#put) endpoint to set a Firewall's status to `enbaled` or `disabled`.
+             * Use the [Delete Firewall](/api/v4/networking-firewalls-firewall-id/#delete) endpoint to delete a Firewall.
+          enum:
+          - enabled
+          - disabled
+          - deleted
+          example: enabled
+          x-linode-cli-display: 3
+        rules:
+          type: object
+          description: |
+            The inbound and outbound access rules to apply to the Firewall.
+
+              * A minimum of one open inbound rule is required. Any inbound
+                traffic that is not permitted by your rules will be blocked.
+              * Outbound rules are optional. When no outbound rules are specified,
+                all outbound traffic is allowed. If one or more outbound rules are
+                specified, all outbound traffic that is not permitted by your rules
+                will be blocked.
+
+            A Firewall may have up to 25 rules across its inbound and outbound rulesets.
+          properties:
+            inbound:
+              type: array
+              items:
+                $ref: '#/components/schemas/FirewallRuleConfig'
+            outbound:
+              type: array
+              items:
+                $ref: '#/components/schemas/FirewallRuleConfig'
+          required:
+            - inbound
+        tags:
+          x-linode-filterable: true
+          description: >
+            An array of tags applied to this object. Tags are for organizational
+            purposes only.
+          type: array
+          items:
+            type: string
+          example:
+          - example tag
+          - another example
+    FirewallRuleConfig:
+      type: object
+      description: >
+        One of a Firewall's inbound or outbound access rules. The `ports` property
+        can be used to allow traffic on a comma-separated list of different ports.
+      required:
+      - protocol
+      properties:
+        protocol:
+          type: string
+          enum:
+          - TCP
+          - UDP
+          - ICMP
+          description: >
+            The type of network traffic to allow.
+          example: TCP
+        ports:
+          type: string
+          description: |
+            A string representing the port or ports on which traffic will be allowed:
+
+            - The string may be a single port, a range of ports, or a comma-separated list
+            of single ports and port ranges. A space is permitted following each comma.
+            - A range of ports is inclusive of the start and end values for the range. The
+            end value of the range must be greater than the start value.
+            - Ports must be within 1 and 65535.
+            - Ports may not be specified if a rule's protocol is `ICMP`. At least one port
+            must be specified if a rule's protocol is `TCP` or `UDP`.
+            - The ports string can have up to 15 *pieces*, where a single port is treated
+            as one piece, and a port range is treated as two pieces. For example,
+            the string "22-24, 80, 443" has four pieces.
+          example: '22-24, 80, 443'
+        addresses:
+          type: object
+          description: >
+            Allowed IPv4 or IPv6 addresses. A Rule can have up to 255 addresses
+            or networks listed across its IPv4 and IPv6 arrays. A network and a single IP
+            are treated as equivalent when accounting for this limit.
+          properties:
+            ipv4:
+              description: A list of IPv4 addresses or networks.
+              type: array
+              items:
+                type: string
+              example:
+              - 192.0.2.1
+              - 192.0.2.0/24
+            ipv6:
+              description: A list of IPv6 addresses or networks.
+              type: array
+              items:
+                type: string
+              example:
+              - 2001:DB8::/32
+    FirewallDevices:
+      type: object
+      description: >
+        Associates a Firewall with a Linode service. A Firewall can be assigned
+        to multiple Linode services, and up to three active Firewalls can
+        be assigned to a single Linode service. Additional disabled Firewalls can be
+        assigned to a service, but they cannot be enabled if three other active Firewalls
+        are already assigned to the same service.
+      properties:
+        id:
+          x-linode-filterable: true
+          type: integer
+          description: >
+            The Device's unique ID
+          example: 123
+          x-linode-cli-display: 2
+        created:
+          x-linode-filterable: true
+          type: string
+          format: date-time
+          readOnly: true
+          description: >
+            When this Device was created.
+          example: '2018-01-01T00:01:01'
+          x-linode-cli-display: 3
+        updated:
+          x-linode-filterable: true
+          type: string
+          format: date-time
+          readOnly: true
+          description: >
+            When this Device was last updated.
+          example: '2018-01-02T00:01:01'
+          x-linode-cli-display: 4
+        entity:
+          type: object
+          readOnly: true
+          description: >
+            The Linode service that this Firewall has been applied to.
+          properties:
+            id:
+              description: The entity's ID
+              type: integer
+              example: 123
+            type:
+              description: The entity's type.
+              type: string
+              enum:
+              - linode
+              example: linode
+            label:
+              description: The entity's label.
+              type: string
+              readOnly: true
+              example: my-linode
+            url:
+              description: >
+                The URL you can use to access this entity.
+              type: string
+              format: url
+              readOnly: true
+              example: /v4/linode/instances/123
     Grant:
       type: object
       description: >
@@ -15264,7 +16481,7 @@ components:
           type: string
           description: >
             The IPv6 range of addresses in this pool.
-          example: '2600:3c01::02:5000::'
+          example: '2600:3c01::2:5000:0'
           readOnly: true
           x-linode-cli-display: 1
         prefix:
@@ -15286,7 +16503,7 @@ components:
           type: string
           description: >
             The last address in this block of IPv6 addresses.
-          example: '2600:3c01::02:5000::ca72'
+          example: '2600:3c01::2:5000:f'
           nullable: true
     IPv6Range:
       type: object
@@ -15297,16 +16514,29 @@ components:
           type: string
           description: >
             The IPv6 range of addresses in this pool.
-          example: '2600:3c01::02:5000::'
+          example: '2600:3c01::'
           readOnly: true
           x-linode-cli-display: 1
+        prefix:
+          type: integer
+          description: >
+            The prefix length of the address, denoting how many addresses can be
+            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+          example: 64
+          x-linode-cli-display: 2
         region:
           type: string
           description: >
             The region for this range of IPv6 addresses.
           example: us-east
           readOnly: true
-          x-linode-cli-display: 2
+          x-linode-cli-display: 3
+        route_target:
+          type: string
+          description: >
+            The last address in this block of IPv6 addresses.
+          example: '2600:3c01::ffff:ffff:ffff:ffff'
+          nullable: true
     Kernel:
       type: object
       description: Linux kernel object
@@ -15357,6 +16587,13 @@ components:
           x-linode-filterable: true
           type: boolean
           description: If this Kernel is suitable for paravirtualized operations.
+          example: false
+          readOnly: true
+        deprecated:
+          x-linode-filterable: true
+          type: boolean
+          description: If this Kernel is marked as deprecated, this field has a value of true;
+            otherwise, this field is false.
           example: false
           readOnly: true
     Linode:
@@ -16197,7 +17434,13 @@ components:
           example: 6
         disks:
           type: array
+          x-linode-cli-format: json
           description: >
+            **Note**: This field should be omitted except for special use cases. The disks specified here are
+            partitions in *addition* to the primary partition and reduce the size of the primary partition,
+            which can lead to stability problems for the Node.
+
+
             This Node Pool's custom disk layout. Each item in this array will create a new disk
             partition for each node in this Node Pool.
 
@@ -16205,9 +17448,6 @@ components:
               * The maximum number of custom disk partitions that can be configured is 7.
               * Once the requested disk paritions are allocated, the remaining disk space is allocated to the node's boot disk.
               * A Node Pool's custom disk layout is immutable over the lifetime of the Node Pool.
-
-            **Note**: If this field is omitted, the node will have a default disk layout consisting of a single partition.
-            A custom layout is only required for specific use cases.
           items:
             type: object
             description: >
@@ -17138,6 +18378,27 @@ components:
             enough for it to be considered unhealthy and taken out of rotation.
           example: true
           x-linode-cli-display: 6
+        proxy_protocol:
+          description: >
+            ProxyProtocol is a TCP extension that sends initial TCP connection
+            information such as source/destination IPs and ports to backend devices.
+            This information would be lost otherwise. Backend devices must be
+            configured to work with ProxyProtocol if enabled.
+
+
+            * If ommited, or set to `none`, the NodeBalancer doesn't send any auxilary
+            data over TCP connections. This is the default.
+
+            * If set to `v1`, the human-readable header format (Version 1) is used.
+
+            * If set to `v2`, the binary header format (Version 2) is used.
+          type: string
+          enum:
+          - none
+          - v1
+          - v2
+          example: none
+          default: none
         cipher_suite:
           type: string
           enum:
@@ -17693,8 +18954,86 @@ components:
           readOnly: true
         secret_key:
           type: string
-          description: This keypair's secret key. **Only returned on key creation**.
-          example: '[REDACTED]'
+          description: This keypair's secret key. Only returned on key creation.
+          example: OiA6F5r0niLs3QA2stbyq7mY5VCV7KqOzcmitmHw
+          readOnly: true
+        limited:
+          type: boolean
+          description: Whether or not this key is a limited access key. Will return `false` if this key grants full access to all buckets on the user's account.
+          example: true
+          readOnly: true
+        bucket_access:
+          type: array
+          description: >
+            Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key's access to only the bucket(s) declared in this array and define their bucket-level permissions.
+
+
+              Limited Access Keys can:
+
+              * [list all buckets](/api/v4/object-storage-buckets/) available on this Account, but cannot perform any actions on a bucket unless it has access to the bucket.
+
+              * [create new buckets](/api/v4/object-storage-buckets/#post), but do not have any access to the buckets it creates, unless explicitly given access to them.
+
+
+              **Note:** You can create an Object Storage Limited Access Key without access to any buckets.
+              This is achieved by sending a request with an empty `bucket_access` array.
+
+
+              **Note:** If this field is omitted, a regular unlimited access key is issued.
+          items:
+            type: object
+            properties:
+              cluster:
+                type: string
+                description: The Object Storage cluster where a bucket to which the key is granting access is hosted.
+                example: ap-south-1
+              bucket_name:
+                type: string
+                description: The unique label of the bucket to which the key will grant limited access.
+                example: example-bucket
+              permissions:
+                type: string
+                enum:
+                - read_write
+                - read_only
+                description: This Limited Access Key's permissions for the selected bucket.
+                example: read_only
+    ObjectStorageSSL:
+      type: object
+      required:
+      - certificate
+      - private_key
+      description: >
+        Upload a TLS/SSL certificate and private key to be served when you visit your Object Storage bucket via HTTPS.
+      properties:
+        certificate:
+          type: string
+          description: >
+            Your Base64 encoded and PEM formatted SSL certificate.
+          example: >
+            "-----BEGIN CERTIFICATE-----
+            MIIFTTCCAzWgAwIBAgIURwtqMl
+            ...
+            -----END CERTIFICATE-----"
+        private_key:
+          type: string
+          description: >
+            The private key associated with this TLS/SSL certificate.
+          example: >
+            "-----BEGIN PRIVATE KEY-----
+            MIIEvgIBADANBgkqhkiG9w0BAQE
+            ...
+            -----END PRIVATE KEY-----"
+    ObjectStorageSSLResponse:
+      type: object
+      description: >
+        If this Object Storage bucket has a corresponding TLS/SSL Certificate.
+      properties:
+        ssl:
+          type: boolean
+          description: >
+            A boolean indicating if this Bucket has a corresponding TLS/SSL certificate that was uploaded by an Account user.
+          example: true
           readOnly: true
     PaginationEnvelope:
       type: object
@@ -17909,8 +19248,9 @@ components:
         timezone:
           type: string
           description: >
-            The timezone you prefer to see times in.  This is not used by the API, and is
-            for the benefit of clients only.  All times the API returns are in UTC.
+            The timezone you prefer to see times in. This is not used by the API directly.
+            It is provided for the benefit of clients such as the Linode Cloud Manager and
+            other clients built on the API. All times returned by the API are in UTC.
           example: US/Eastern
         email_notifications:
           type: boolean
@@ -18216,6 +19556,7 @@ components:
             The script to execute when provisioning a new Linode with this StackScript.
           example: >
             "#!/bin/bash"
+          x-linode-cli-format: file
         user_defined_fields:
           type: array
           description: >
