@@ -72,7 +72,7 @@ PROXY TCP4 68.80.83.127 45.79.247.228 56147 80
 {{< /output >}}
   - **v2**: Proxy Protocol v2 prepends a header with more specialized binary data, which will appear similar to the following output:
 {{< output >}}
-\x11
+\r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
 {{< /output >}}
 
 ### Algorithm
