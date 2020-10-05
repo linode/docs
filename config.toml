@@ -49,7 +49,7 @@ explorer_regular_pages_start_level = 2
 hits_per_page = 4
 
 [[params.search_config.sections]]
-name = "docs"
+name = "guides"
 index = "linode-docs-bep"
 title = "Guides"
 filters = "section.lvl0:guides"
