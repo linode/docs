@@ -7,7 +7,7 @@ HUGO_VERSION = "0.75.1"
 
 
 [context.deploy-preview]
-command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL -d public/docs;"
 
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.75.1"
