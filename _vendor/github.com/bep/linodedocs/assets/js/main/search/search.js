@@ -102,6 +102,8 @@ class Searcher {
 		const dispatcher = lnSearchEventDispatcher.New();
 		const router = lnCreateHref.New(searchConfig);
 
+		// Toggle this on to always show the search results.
+		// Useful for search related style changes, but remember to turn it off!
 		const designMode = false;
 
 		// Normalization of a search hit across the search indices.
@@ -414,7 +416,8 @@ class Searcher {
 		const searchItemLoadingStates = {
 			INITIAL: 0, // Initial state, also set when it needs a refresh.
 			LOADING: 1, // It's loading, so do not start another.
-			LOADED: 2 // Loaded and ready to use.
+			LOADED: 2, // Loaded and ready to use.
+			DISABLED: 3 // May be loaded, but the data is stale.
 		};
 
 		const newSearchItem = function(name, results, query, concurrent, subscribers = []) {
@@ -447,6 +450,14 @@ class Searcher {
 					this.loadingState = searchItemLoadingStates.INITIAL;
 					this.publish = false;
 				}
+				return b;
+			};
+
+			item.disableIf = function(b) {
+				if (b) {
+					this.loadingState = searchItemLoadingStates.DISABLED;
+				}
+				return b;
 			};
 
 			item.setResults = function(results) {
@@ -469,6 +480,10 @@ class Searcher {
 
 			item.isLoaded = function() {
 				return this.loadingState === searchItemLoadingStates.LOADED;
+			};
+
+			item.shouldPublish = function() {
+				return this.publish && this.loadingState >= searchItemLoadingStates.LOADED;
 			};
 
 			return item;
@@ -550,7 +565,7 @@ class Searcher {
 				}
 
 				this.items().forEach((item) => {
-					if (item.publish && item.isLoaded()) {
+					if (item.shouldPublish()) {
 						events = events.concat(item.subscribers);
 					}
 				});
@@ -696,12 +711,20 @@ class Searcher {
 					needsBlankResult = true;
 				}
 
+				// Refresh the main search result on query or filter changes.
+				this.searchState.mainSearch.resetLoadingStateIf(regularSearch && !this.filters.isZero());
+
+				// Disable main search if all filters are cleared.
+				// This means that the explorer etc. will fall back to the blank search result.
+				if (this.searchState.mainSearch.disableIf(regularSearch && this.filters.isZero())) {
+					needsBlankResult = true;
+					// Make sure that also this gets published, even if the search data has not changed.
+					this.searchState.mainSearch.publish = true;
+				}
+
 				if (needsBlankResult) {
 					this.searchState.blankSearch.publish = true;
 				}
-
-				// Refresh the main search result on query or filter changes.
-				this.searchState.mainSearch.resetLoadingStateIf(regularSearch && !this.filters.isZero());
 
 				// Refresh the expanded explorer nodes on query or filter changes,
 				// or if a new node is expanded.

@@ -8,14 +8,14 @@
       </button>
     </div>
     <div class="hide-if-topbar-is-not-pinned md:hidden">
-      <button type="button" class="btn-icon"  :aria-label="toggles.searchInput ? 'close' : 'open'">
+      <button type="button" class="btn-icon"  :aria-label="toggles.searchInput ? 'close' : 'open'" data-testid="search-input-toggle">
         <svg style="width: 0.85rem;height:0.85rem;" :class="{ 'text-titlecolor' : !toggles.searchInput, 'text-brand': toggles.searchInput }">
           <use href="#icon--search"></use>
         </svg>
       </button>
     </div>
     <div class="hide-if-topbar-is-not-pinned hidden md:block">
-      <button type="button" class="btn-icon" :aria-label="toggles.searchInput ? 'close' : 'open'">
+      <button type="button" class="btn-icon" :aria-label="toggles.searchInput ? 'close' : 'open'" data-testid="search-input-toggle">
         <svg style="width: 0.85rem;height:0.85rem;" :class="{ 'text-titlecolor' : !toggles.searchInput, 'text-brand': toggles.searchInput }">
           <use href="#icon--search"></use>
         </svg>

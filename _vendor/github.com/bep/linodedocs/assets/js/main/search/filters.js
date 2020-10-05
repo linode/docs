@@ -50,37 +50,41 @@ var lnSearchFilters = {};
 			return count;
 		};
 
-		return {
-			data: {
-				// Maps a facet name to a filter. The filter maps to the owning section.
-				filters: filters,
+		// The UI state.
+		var data = {
+			// Maps a facet name to a filter. The filter maps to the owning section.
+			filters: filters,
 
-				// Holds the state for the tags filters.
-				tagsFilters: {
-					open: false,
-					searchString: '' // to filter the tags by.
-				},
+			stats: {
+				totalNbHits: 0
+			}
+		};
 
-				stats: {
-					totalNbHits: 0
-				}
-			},
-
+		// Holds the state for the tags filters.
+		data.tags = {
 			open: false,
-
-			getTagsFiltered: function() {
-				let tags = this.data.filters.get('tags');
+			searchString: '', // to filter the tags by.
+			getFilter: function() {
+				return data.filters.get('tags');
+			},
+			filterBySearchString: function() {
+				let tags = this.getFilter();
 				if (!tags) {
 					return [];
 				}
 				let checkboxes = tags.checkboxes;
-				if (!this.data.tagsFilters.searchString) {
+				if (!this.searchString) {
 					return checkboxes;
 				}
 
-				let searchString = this.data.tagsFilters.searchString.toUpperCase();
+				let searchString = this.searchString.toUpperCase();
 				return checkboxes.filter((cb) => cb.title.toUpperCase().includes(searchString));
-			},
+			}
+		};
+
+		return {
+			data: data,
+			open: false,
 
 			receiveSearchFilters: function(data) {
 				applySearchFiltersFromSearchParams(this, data);
