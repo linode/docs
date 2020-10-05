@@ -1,5 +1,4 @@
 {{- $sections := where site.Pages "Kind" "section" -}}
-{{- $sections = $sections | append site.Home -}}
 {{- $list := slice -}}
 {{- range $i, $e := $sections -}}
 {{- $thumb := "" -}}
@@ -10,11 +9,9 @@
 {{- $img := partial "funcs/get-bundle-image.html" . -}}
 {{- $thumb = $img.Fill "640x400" -}}
 {{- end -}}
-{{- $section := cond (eq .Section "products") "products" "docs" -}}
-{{- $baseSection := cond (eq $section "products") "" "docs > " -}}
-{{- $objectID := (printf "%s%s" $baseSection (replace .SectionsPath "/" " > ")) -}}
+{{- $objectID := (printf "%s" (replace .SectionsPath "/" " > ")) -}}
 {{-  $objectID =  $objectID | strings.TrimRight " >" -}}
-{{- $list = $list | append  (dict "objectID" $objectID "section" $section "title" .Title "linkTitle" .LinkTitle "excerpt" ((.Params.description | markdownify )| default .Summary ) "thumbnail" $thumb.RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix) -}}
+{{- $list = $list | append  (dict "objectID" $objectID "section" .Section "title" .Title "linkTitle" .LinkTitle "excerpt" ((.Params.description | markdownify )| default .Summary ) "thumbnail" $thumb.RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix) -}}
 {{- end -}}
 {{- $api := resources.Get "api/openapi.yaml" | openapi3.Unmarshal -}}
 {{ range $i, $e := $api.Tags -}}
