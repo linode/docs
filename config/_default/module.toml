@@ -9,6 +9,10 @@ source = "products"
 target = "content/products"
 
 [[mounts]]
+source = "docs/api"
+target = "content/api"
+
+[[mounts]]
 source = "static"
 target = "static"
 
