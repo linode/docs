@@ -1,8 +1,8 @@
 
 # Mounts in this project.
 [[mounts]]
-source = "docs"
-target = "content"
+source = "docs/guides"
+target = "content/guides"
 
 [[mounts]]
 source = "products"

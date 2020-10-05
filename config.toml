@@ -52,7 +52,7 @@ hits_per_page = 4
 name = "docs"
 index = "linode-docs-bep"
 title = "Guides"
-filters = "section.lvl0:docs"
+filters = "section.lvl0:guides"
 explorer_icon = "#icon-explorer--guides"
 explorer_map_title = true
 filtering_facets = [
@@ -126,3 +126,6 @@ disableSVG = true
 resampleFilter = "CatmullRom"
 quality = 75
 anchor = "smart"
+
+[permalinks]
+  guides = "/guides/:slug/"
