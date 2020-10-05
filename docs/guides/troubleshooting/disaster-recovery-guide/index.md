@@ -13,6 +13,7 @@ modified: 2018-07-27
 modified_by:
   name: Linode
 title: "Access Your Linode After Maintenance"
+aliases: ['/troubleshooting/disaster-recovery-guide/']
 ---
 
 If you are having issues accessing your Linode after maintenance has been applied to your host, here are a few troubleshooting steps to follow.

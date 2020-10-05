@@ -5,6 +5,7 @@ show_on_frontpage: true
 title_short: "Troubleshooting"
 weight: 140
 icon: "question-circle"
+aliases: ['/troubleshooting/']
 ---
 
 

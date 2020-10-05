@@ -6,7 +6,7 @@ description: 'Help with common Linode memory use and networking issues.'
 keywords: ["Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
 tags: ["networking", "mysql", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/troubleshooting/memory-networking/']
+aliases: ['/troubleshooting/troubleshooting-memory-and-networking-issues/','/troubleshooting/memory-networking/']
 modified: 2013-11-19
 modified_by:
   name: Linode

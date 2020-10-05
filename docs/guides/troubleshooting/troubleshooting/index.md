@@ -6,7 +6,7 @@ description: An overview of different troubleshooting topics.
 keywords: ['troubleshooting']
 tags: ["linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-start-troubleshooting/']
+aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
 modified: 2019-02-01
 modified_by:
   name: Linode
