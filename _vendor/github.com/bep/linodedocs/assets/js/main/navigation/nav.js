@@ -166,6 +166,7 @@ var lnNavController = {};
 				self.reloaded = false;
 			},
 			onTurbolinksBeforeRender: function(data) {
+				this.toggles.searchInput = false;
 				if (isMobile()) {
 					this.toggles.explorer = false;
 				}

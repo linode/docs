@@ -75,7 +75,7 @@
           <div class="flex items-center h-full">
             <span x-bind:class="{ 
                 'text-gray-100': node.disabled,
-                'text-basicgray': !node.disabled }" x-html="node.count" class="text-xs font-semibold pr-6"></span>
+                'text-basicgray': !node.disabled }" x-html="node.count" class="text-xs font-semibold pr-6" data-testid="node-count"></span>
             <template x-if="node.disabled || node.isLeaf()">
               <div class="w-3"></div>
             </template>
@@ -95,7 +95,7 @@
         <ul class="node-tree h-full border-l-transparent pl-2" x-bind:class="{ 
           'pl-2':  (node.level === 2 && !node.open)
          }" x-show="node.open"></ul>
-        <ul class="explorer-node__pages" x-bind:class="{ 'pl-6': (node.level > 1) }" x-show="node.open">
+        <ul class="explorer-node__pages" x-bind:class="{ 'pl-6': (node.level > 1) }" x-show.transition.in.opacity="node.open">
           <template x-for="(p, index) in node.pages" :key="p.href">
             <li class="w-56">
               <a @click="data.dirty++" x-html="p.title" x-bind:href="p.href" :class="{

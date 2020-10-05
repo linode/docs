@@ -191,6 +191,7 @@ var lnSearchExplorer = {};
 				let nav = this.$el.parentNode;
 				this.scrollTop = nav.scrollTop;
 			},
+
 			onHashchange: function() {
 				debug('onHashchange');
 				if (this.open && isMobile()) {
@@ -207,7 +208,6 @@ var lnSearchExplorer = {};
 			render: function() {
 				this.target.innerHTML = '';
 				this.renderNodesRecursive(this.target, 1);
-				this.loaded = true;
 			},
 
 			renderNodesRecursive: function(ulEl, level) {
@@ -383,7 +383,6 @@ var lnSearchExplorer = {};
 
 						n.loadPages = function() {
 							self.loadPages(this);
-							this.loading = true;
 						};
 
 						n.hasOpenDescendants = function() {
