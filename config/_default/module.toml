@@ -5,7 +5,7 @@ source = "docs/guides"
 target = "content/guides"
 
 [[mounts]]
-source = "products"
+source = "docs/products"
 target = "content/products"
 
 [[mounts]]
