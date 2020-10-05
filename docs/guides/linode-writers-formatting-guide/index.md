@@ -5,7 +5,7 @@ author:
 description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/linode-writers-guide/','/style-guide/']
+aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 modified_by:
   name: Linode
 published: 2014-01-15
