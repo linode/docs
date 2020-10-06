@@ -51,7 +51,7 @@ The public port for this configuration. Ports 1 through 65534 are available for 
 
 You can choose either TCP, HTTP, or HTTPS. HTTP and HTTPS enable some additional options described below.
 
-**TCP**: Use TCP mode to balance non-HTTP services.
+**TCP**: Use TCP mode to balance non-HTTP services and/or enable ProxyProtocol.
 
 **HTTP:** HTTP KeepAlives are forced off in HTTP mode.
 
@@ -62,6 +62,19 @@ If **HTTP** or **HTTPS** is selected, the NodeBalancer will add an X-Forwarded-P
  {{< note >}}
 Note that HTTPS requests (and HTTP requests, for that matter) are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
 {{< /note >}}
+
+### Proxy Protocol
+
+When using TCP as your selected protocol, **Proxy Protocol** can be used to add a header with information regarding client information to backend Linodes, instead of only showing information related to the connecting NodeBalancer. Proxy Protocol can be used via two different selectable versions:
+
+  - **v1**: Proxy Protocol v1 add a human readable string to all requests, similar to the following:
+    {{< output >}}
+PROXY TCP4 68.80.83.127 45.79.247.228 56147 80
+{{< /output >}}
+  - **v2**: Proxy Protocol v2 adds a header with more specialized binary data, which will appear similar to the following output:
+{{< output >}}
+\r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
+{{< /output >}}
 
 ### Algorithm
 
