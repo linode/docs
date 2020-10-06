@@ -2,17 +2,17 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Custom SSL/TLS on Object Storage"
-og_description: "Creating Custom SSL/TLS on Object Storage"
-keywords: ['object','storage','bucket']
+description: "Learn how to upload a custom SSL/TLS certificate to enable SSL on a bucket on Linode Object Storage."
+og_description: "Learn how to upload a custom SSL/TLS certificate to enable SSL on a bucket on Linode Object Storage."
+keywords: ['object','storage','object storage','s3','bucket']
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-10-06
 modified: 2020-10-06
 modified_by:
   name: Linode
-title: "Custom SSL/TLS Certificates on Object Storage"
-h1_title: "Creating Custom SSL/TLS on Object Storage"
+title: "Upload a Custom SSL/TLS Certificate on Object Storage"
+h1_title: "Uploading a Custom SSL/TLS Certificate on Object Storage"
 contributor:
   name: Linode
 external_resources:
