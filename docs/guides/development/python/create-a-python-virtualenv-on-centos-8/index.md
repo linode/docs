@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Create a Python Virtual Environment
 
 {{< note >}}
-CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/development/python/how-to-install-python-on-centos)
+CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/development/python/how-to-install-python-on-centos-8)
 {{</ note >}}
 
 1.  To install Python's virtual environment:
@@ -58,7 +58,7 @@ CentOS 8 does not include any version of Python by default. To install Python on
 
         mkdir ~/python-environments && cd ~/python-environments
 
-1. Create a Python virtual environment. By default, virtualenv will attempt to use your system's default Python interpreter to create a new environment. Replace `env` with the name you would like to assign to your virtual environment.
+1. Create a Python virtual environment. By default, virtualenv attempts to use your system's default Python interpreter to create a new environment. Replace `env` with the name you would like to assign to your virtual environment.
 
         virtualenv env
 
@@ -84,7 +84,7 @@ python3.6.8
 
         source env/bin/activate
 
-    The name of the working environment will appear in parentheses after it's created.
+    The name of the working environment appears in parentheses after it's created.
 
       {{< output >}}
 (env) example_user@hostname:~/python-environments$
@@ -98,7 +98,7 @@ python3.6.8
 
         deactivate
 
-    Your virtual environment will be deactivated and you should no longer see its name listed next to your command line's prompt
+    Your virtual environment is deactivated and you should no longer see its name listed next to your command line's prompt
 
     {{< output >}}
 example_user@hostname:~/python-environments$
