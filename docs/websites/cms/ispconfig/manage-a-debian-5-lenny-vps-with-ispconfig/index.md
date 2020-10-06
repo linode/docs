@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-04-19
 title: 'Manage a Debian 5 (Lenny) Linode with ISPConfig'
+relations:
+    platform:
+        key: manage-a-linode-with-ISPConfig
+        keywords:
+           - distribution: Debian 5
 ---
 
 

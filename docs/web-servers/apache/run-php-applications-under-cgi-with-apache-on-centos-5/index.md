@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-02-03
 title: Run PHP Applications under CGI with Apache on CentOS 5
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: CentOS 5
 ---
 
 

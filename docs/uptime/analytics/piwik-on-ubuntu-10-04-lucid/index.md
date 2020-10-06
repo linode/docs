@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-12-06
 title: 'Piwik on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: using-piwik-analytics
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-05
 title: 'Oracle 10g Express Edition on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: install-oracle10g-express
+        keywords:
+            - distribution: Ubuntu 10.04
 tags: ["ubuntu","database"]
 ---
 

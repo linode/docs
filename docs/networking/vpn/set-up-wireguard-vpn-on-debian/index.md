@@ -14,6 +14,11 @@ modified_by:
 title: "Set Up WireGuard VPN on Debian"
 contributor:
   name: Linode
+relations:
+    platform:
+        key: setup-wireguard-vpn
+        keywords:
+            - distribution: Debian 9
 ---
 
 ## What is WireGuard?

@@ -15,6 +15,11 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
+relations:
+    platform:
+        key: how-to-install-wordpress
+        keywords:
+           - distribution: Ubuntu 16.04
 aliases: ['/websites/cms/install-wordpress-on-ubuntu-16-04/']
 ---
 

@@ -11,6 +11,11 @@ modified_by:
   name: Edward Angert
 published: 2018-04-27
 title: 'How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ![Upgrade to Ubuntu 18.04](upgrade-ubuntu-18-title.jpg)

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Oracle 10g Express Edition on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: install-oracle10g-express
+        keywords:
+            - distribution: Debian 6
 tags: ["debian","database"]
 ---
 

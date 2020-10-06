@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-11-09
 title: 'Email with Citadel on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: email-with-citadel
+        keywords:
+            - distribution: Debian 5
 ---
 
 

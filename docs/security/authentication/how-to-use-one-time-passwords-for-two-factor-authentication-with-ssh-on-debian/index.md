@@ -18,6 +18,11 @@ contributor:
 external_resources:
 - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
 - '[Linux PAM Documentation](http://www.linux-pam.org/)'
+relations:
+    platform:
+        key: one-time-pass-for-2fa
+        keywords:
+            - distribution: Debian 9
 aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/']
 ---
 

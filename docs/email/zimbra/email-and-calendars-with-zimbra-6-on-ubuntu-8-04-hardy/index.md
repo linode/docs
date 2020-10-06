@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2009-09-14
 title: 'Email and Calendars with Zimbra 6 on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: zimbra-groupware
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

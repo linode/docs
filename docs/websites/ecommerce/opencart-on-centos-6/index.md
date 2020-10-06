@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-09-20
 title: OpenCart on CentOS 6
+relations:
+    platform:
+        key: how-to-install-opencart
+        keywords:
+           - distribution: CentOS 6
 ---
 
 OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#setting-the-hostname).

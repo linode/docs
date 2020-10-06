@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-04-29
 title: 'Websites with nginx on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

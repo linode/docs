@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-06-08
 title: Use Unbound for Local DNS Resolution on Fedora 15
+relations:
+    platform:
+        key: unbound-local-dns-resolution
+        keywords:
+            - distribution: Fedora 15
 ---
 
 

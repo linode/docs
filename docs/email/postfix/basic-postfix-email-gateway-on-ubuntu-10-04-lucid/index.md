@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-11-09
 title: 'Basic Postfix Email Gateway on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: basic-postifx-gateway
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

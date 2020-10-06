@@ -15,6 +15,11 @@ title: 'Apache Web Server on Ubuntu 14.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 ![How to Install and Configure Apache Web Server on Ubuntu 14.04 LTS](Apache_Web_Server_on_Ubuntu_1404_LTS_smg.jpg)

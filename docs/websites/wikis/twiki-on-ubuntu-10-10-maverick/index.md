@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-02-15
 title: 'TWiki on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: install-twiki
+        keywords:
+           - distribution: Ubuntu 10.10
 ---
 
 

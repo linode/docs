@@ -14,6 +14,11 @@ title: 'How to Install MySQL with phpMyAdmin on Debian 7'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
+relations:
+    platform:
+        key: how-to-install-phpmyadmin
+        keywords:
+            - distribution: Debian 7
 tags: ["debian","database","mysql","php"]
 ---
 

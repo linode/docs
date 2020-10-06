@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Apache and mod_wsgi on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: apache-mod-wsgi
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

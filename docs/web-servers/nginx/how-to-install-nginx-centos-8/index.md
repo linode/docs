@@ -15,6 +15,11 @@ title: How to Install NGINX on CentOS 8
 h1_title: Installing NGINX on CentOS 8
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
+relations:
+    platform:
+        key: how-to-install-nginx
+        keywords:
+            - distribution: CentOS 8
 aliases: ['/web-servers/nginx/install-nginx-ubuntu/']
 ---
 

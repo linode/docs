@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-04-29
 title: 'Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: manage-projects-with-redmine
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.

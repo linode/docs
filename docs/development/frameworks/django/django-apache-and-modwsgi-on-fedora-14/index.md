@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Django, Apache and mod_wsgi on Fedora 14'
+relations:
+    platform:
+        key: django-apache-modwsgi
+        keywords:
+            - distribution: Fedora 14
 ---
 
 

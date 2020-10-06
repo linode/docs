@@ -18,6 +18,11 @@ external_resources:
  - '[mod\_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
  - '[HowtoForge Guides for lighttpd (howtoforge.com)](http://www.howtoforge.com/howtos/lighttpd)'
  - '[NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)'
+relations:
+    platform:
+        key: install-lighttpd
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 This tutorial explains how to install and configure the lighttpd (e.g. "lighty") web server on Ubuntu 12.04 (Precise). Lighttpd is designed to provide a lightweight web server that is capable of serving large loads and using less memory than servers like the Apache HTTP server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.

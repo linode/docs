@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-04-28
 title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 11.04
 ---
 
 

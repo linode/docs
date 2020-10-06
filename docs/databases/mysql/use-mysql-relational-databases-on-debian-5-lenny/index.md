@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-08-07
 title: 'Use MySQL Relational Databases on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Debian 5
 tags: ["debian","database","mysql"]
 ---
 

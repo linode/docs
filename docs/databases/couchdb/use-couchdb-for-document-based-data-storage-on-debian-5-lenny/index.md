@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-08
 title: 'Use CouchDB for Document Based Data Storage on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: couchdb-document-data-storage
+        keywords:
+            - distribution: Debian 5
 tags: ["debian","database","nosql"]
 ---
 

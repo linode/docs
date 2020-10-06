@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-09-08
 title: Provide Authoritative DNS Services with NSD on Fedora 13
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

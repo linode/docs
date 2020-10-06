@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-06-23
 title: 'Basic Postfix Email Gateway on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: basic-postifx-gateway
+        keywords:
+            - distribution: Debian 5
 ---
 
 

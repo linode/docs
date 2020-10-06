@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Nginx and Perl-FastCGI on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

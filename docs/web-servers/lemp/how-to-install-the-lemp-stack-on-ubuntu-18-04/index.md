@@ -14,6 +14,11 @@ published: 2018-06-04
 title: 'How to Install the LEMP Stack on Ubuntu 18.04'
 h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
 image: How-to-Install-LEMP-Stack-on-Ubuntu-1804_1200x631.png
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 18.04
 aliases: ['/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/']
 ---
 

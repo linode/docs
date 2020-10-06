@@ -15,6 +15,11 @@ title: Apache Web Server on CentOS 6
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: CentOS 6
 ---
 
 ![Apache Web Server on CentOS 6](Apache_Web_Server_smg.jpg)

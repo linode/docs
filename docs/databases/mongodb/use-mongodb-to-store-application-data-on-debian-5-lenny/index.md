@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-03
 title: 'Use MongoDB to Store Application Data on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: use-mongodb-store-app-data
+        keywords:
+            - distribution: Debian 5
 tags: ["debian","database","nosql"]
 ---
 

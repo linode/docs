@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-28
 title: Use MySQL Relational Databases on Fedora 13
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Fedora 13
 tags: ["database","mysql","fedora"]
 ---
 

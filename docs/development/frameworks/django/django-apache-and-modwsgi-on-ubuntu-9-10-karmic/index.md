@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-05-18
 title: 'Django, Apache and mod_wsgi on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: django-apache-modwsgi
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-12-01
 title: LEMP Server on Fedora 14
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Fedora 14
 ---
 
 

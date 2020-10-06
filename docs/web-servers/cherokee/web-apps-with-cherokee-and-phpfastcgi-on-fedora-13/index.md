@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-09-17
 title: 'Web Apps with Cherokee and PHP-FastCGI on Fedora 13'
+relations:
+    platform:
+        key: cherokee-php-fastcgi
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

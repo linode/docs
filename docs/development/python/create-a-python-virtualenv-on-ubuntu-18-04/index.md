@@ -18,6 +18,11 @@ external_resources:
 audiences: ["beginner"]
 languages: ["python"]
 image: 'Creating_a_Python_Virtual_Environment_on_Ubuntu_1804_1200x631.png'
+relations:
+    platform:
+        key: python-virtual-env
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ## What is a Python Virtual Environment?

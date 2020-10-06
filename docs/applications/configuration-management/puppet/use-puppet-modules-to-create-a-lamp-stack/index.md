@@ -14,6 +14,11 @@ modified_by:
     name: Elle Krout
 published: 2015-11-12
 title: Use Puppet Modules to Create a LAMP Stack
+relations:
+    platform:
+        key: install-puppet-lamp-master
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 ![Use Puppet Modules to Create a LAMP Stack](Use_Puppet_Modules_to_Create_a_LAMP_Stack_smg.jpg)

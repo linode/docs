@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-07-23
 title: 'Apache Tomcat on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

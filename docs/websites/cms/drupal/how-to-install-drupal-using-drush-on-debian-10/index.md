@@ -13,6 +13,11 @@ modified_by:
 published: 2020-02-29
 title: How to Install Drupal using Drush on Debian 10
 h1_title: Install Drupal using Drush on Debian 10
+relations:
+    platform:
+        key: how-to-install-drupal-drush
+        keywords:
+           - distribution: Debian 10
 image: feature.png
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/']
 ---

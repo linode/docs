@@ -15,6 +15,11 @@ external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
  - '[What is Media Wiki](https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F)'
  - '[Media Wiki Extensions Blog](https://phabricator.wikimedia.org/source/extensions/browse/)'
+relations:
+    platform:
+        key: install-mediawiki
+        keywords:
+           - distribution: Ubuntu 18.04
 ---
 
 

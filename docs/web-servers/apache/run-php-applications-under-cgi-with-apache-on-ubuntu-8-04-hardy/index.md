@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2010-02-22
 title: 'Run PHP Applications under CGI with Apache on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

@@ -20,6 +20,11 @@ external_resources:
  - '[Deploying Django Applications](http://www.djangobook.com/en/2.0/chapter12/)'
  - '[A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)'
  - '[Integrating Django and mod\_wsgi](http://code.google.com/p/modwsgi/wiki/IntegrationWithDjango)'
+relations:
+    platform:
+        key: django-apache-modwsgi
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.

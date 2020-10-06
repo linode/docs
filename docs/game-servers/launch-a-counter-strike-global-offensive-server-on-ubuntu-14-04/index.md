@@ -18,6 +18,11 @@ external_resources:
 deprecated: true
 deprecated_link: 'game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/'
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: launch-counterstrike-server
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 

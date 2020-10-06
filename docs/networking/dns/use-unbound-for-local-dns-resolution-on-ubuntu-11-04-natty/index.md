@@ -13,6 +13,11 @@ modified_by:
   name: Linode
 published: 2011-06-08
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 11.04 (Natty)'
+relations:
+    platform:
+        key: unbound-local-dns-resolution
+        keywords:
+            - distribution: Ubuntu 11.04
 ---
 
 

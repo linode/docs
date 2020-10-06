@@ -17,6 +17,11 @@ external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
  - '[Tuning Your Apache Sever](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: Debian 7
 ---
 
 ![Apache Web Server on Debian](Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)

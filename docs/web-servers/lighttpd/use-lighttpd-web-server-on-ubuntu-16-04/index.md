@@ -17,6 +17,11 @@ external_resources:
  - '[mod_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
  - '[HowtoForge Guides for lighttpd (howtoforge.com)](http://www.howtoforge.com/howtos/lighttpd)'
  - '[NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)'
+relations:
+    platform:
+        key: install-lighttpd
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd.
