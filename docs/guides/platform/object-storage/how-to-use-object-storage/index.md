@@ -136,6 +136,16 @@ Bucket names, also referred to as labels, need to be unique within the same clus
 
 {{< content "object-storage-cluster-shortguide" >}}
 
+## Object Storage TLS/SSL Certificates
+
+Object storage supports the importing of [TLS/SSL Certificates](https://www.linode.com/docs/security/ssl/) in order to encrypt connections with your bucket in transit. Currently, you can Upload, View, or Delete TLS/SSL certificates using the following API Endpoints:
+
+- [Upload Object Storage TLS/SSL Cert](https://developers.linode.com/api/v4/object-storage-buckets-cluster-id-bucket-ssl/#post)
+- [View Object Storage TLS/SSL Cert](https://developers.linode.com/api/v4/object-storage-buckets-cluster-id-bucket-ssl/#get)
+- [Delete Object Storage TLS/SSL Cert](https://developers.linode.com/api/v4/object-storage-buckets-cluster-id-bucket-ssl/#delete)
+
+Like all API endpoints, TLS/SSL certificates can additionally be added using the [Linode CLI](https://www.linode.com/docs/platform/api/linode-cli/).
+
 ## Object Storage Tools
 
 There are a number of tools that are available to help manage Linode Object Storage. This guide explains how to install and use the following options:
