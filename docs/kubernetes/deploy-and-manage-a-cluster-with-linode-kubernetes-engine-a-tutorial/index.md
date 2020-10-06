@@ -31,7 +31,7 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 {{< disclosure-note "Additional LKE features">}}
 * **etcd Backups** : A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
-* **High Availability** : All of your control plane components are monitored and will automatically recover if they fail.
+* **High Availability** : All of your control plane components are monitored and automatically recover if they fail.
 {{</ disclosure-note>}}
 
 ### In this Guide
@@ -47,7 +47,7 @@ In this guide you will learn:
  - [Next Steps after deploying your cluster.](#next-steps)
 
 {{< caution >}}
-This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](#delete-a-cluster) when you have finished the guide.
+This guide's example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
 {{< /caution >}}
@@ -56,7 +56,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ### Install kubectl
 
-You will need to install the kubectl client to your computer before proceeding. Follow the steps corresponding to your computer's operating system.
+You need to install the kubectl client to your computer before proceeding. Follow the steps corresponding to your computer's operating system.
 
 {{< content "how-to-install-kubectl" >}}
 
@@ -66,7 +66,7 @@ You will need to install the kubectl client to your computer before proceeding. 
 
 ## Connect to your LKE Cluster with kubectl
 
-After you've created your LKE cluster using the Cloud Manager, you can begin interacting with and managing your cluster. You connect to it using the kubectl client on your computer. To configure kubectl, you'll download your cluster's *kubeconfig* file.
+After you've created your LKE cluster using the Cloud Manager, you can begin interacting with and managing your cluster. You connect to it using the kubectl client on your computer. To configure kubectl, download your cluster's *kubeconfig* file.
 
 ### Access and Download your kubeconfig
 
@@ -74,13 +74,13 @@ After you've created your LKE cluster using the Cloud Manager, you can begin int
 
 ### Persist the Kubeconfig Context
 
-If you create a new terminal window, it will not have access to the context that you specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in your shell's configuration file.
+If you create a new terminal window, it does not have access to the context that you specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in your shell's configuration file.
 
 {{< note >}}
 If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) for how to persist your context.
 {{< /note >}}
 
-These instructions will persist the context for users of the Bash terminal. They will be similar for users of other terminals:
+These instructions persist the context for users of the Bash terminal. They are similar for users of other terminals:
 
 1.  Navigate to the `$HOME/.kube` directory:
 
@@ -157,15 +157,15 @@ kube-system   kube-proxy-qcjg9                          1/1     Running   0     
 
 ## Modify a Cluster's Node Pools
 
-You can use the Linode Cloud Manager to modify a cluster's existing node pools by adding or removing nodes. You can also recycle your node pools to replace all of their nodes with new ones that are upgraded to the most recent patch of your cluster's Kubernetes version, or remove entire node pools from your cluster. This section will cover completing those tasks. For any other changes to your LKE cluster, you should use kubectl.
+You can use the Linode Cloud Manager to modify a cluster's existing node pools by adding or removing nodes. You can also recycle your node pools to replace all of their nodes with new ones that are upgraded to the most recent patch of your cluster's Kubernetes version, or remove entire node pools from your cluster. This section covers completing those tasks. For any other changes to your LKE cluster, you should use kubectl.
 
 ### Access your Cluster's Details Page
 
-1.  Click the **Kubernetes** link in the sidebar. The Kubernetes listing page will appear and you will see all your clusters listed.
+1.  Click the **Kubernetes** link in the sidebar. The Kubernetes listing page appears and you see all of your clusters listed.
 
     ![Kubernetes cluster listing page](kubernetes-listing-page.png "Kubernetes cluster listing page.")
 
-1.  Click the cluster that you wish to modify. The Kubernetes cluster's details page will appear.
+1.  Click the cluster that you wish to modify. The Kubernetes cluster's details page appears.
 
     ![Kubernetes cluster's details page](cluster-details-page.png "Kubernetes cluster's details page.")
 
