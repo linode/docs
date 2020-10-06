@@ -18,11 +18,11 @@ By default when using Linode's NodeBalancers to balance traffic, it is normal to
 
 ## What is Proxy Protocol
 
-[Proxy protocol](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) is an internet protocol generally used in various high availability and load balancing solutions to carry information from a client directly to backend servers. Currrently, there are two different versions of Proxy Protocol available, `v1` and `v2`.
+[Proxy protocol](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) is an internet protocol generally used in various high availability and load balancing solutions to carry information from a client directly to backend servers. Currently, there are two different versions of Proxy Protocol available, `v1` and `v2`.
 
-When using TCP as your selected protocol, **Proxy Protocol** can be used to prepend a header with information regarding client information to backend Linodes, instead of only showing information related to the connecting NodeBalancer. Proxy Protocol can be used via two different selectable versions:
+When using TCP as your selected protocol, **Proxy Protocol** can be used to add a header with information regarding client information to backend Linodes, instead of only showing information related to the connecting NodeBalancer. Proxy Protocol can be used via two different selectable versions:
 
-  - **v1**: Proxy Protocol v1 prepends a human readable string to all requests, similar to the following:
+  - **v1**: Proxy Protocol v1 adds a human readable string to all requests, similar to the following:
     {{< output >}}
 PROXY TCP4 68.80.83.127 45.79.247.228 56147 80
     {{< /output >}}
@@ -34,7 +34,7 @@ PROXY, PROTOCOL, CLIENT_IP, NODEBALANCER_IP, CLIENT ORIGIN PORT, NODEBALANCER PO
 {{< /output>}}
 
 
-  - **v2**: Proxy Protocol v2 prepends a header with more specialized binary data, which will appear similar to the following output:
+  - **v2**: Proxy Protocol v2 adds a header with more specialized binary data, which will appear similar to the following output:
 {{< output >}}
 \r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
 {{< /output >}}
@@ -49,11 +49,11 @@ To enable Proxy protocol for your Linode's NodeBalancer:
 
 1. Select the NodeBalancer you'd like to add ProxyProtocol to, or [Create and Configure a New One](https://www.linode.com/docs/platform/nodebalancer/nodebalancer-reference-guide/#adding-a-nodebalancer) using TCP mode.
 
-1. Select the `Cofigurations` tab for your Nodebalancer followed by the configuration you will be enabling Proxy Protocol for.
+1. Select the `Cofigurations` tab for your NodeBalancer followed by the configuration you will be enabling Proxy Protocol for.
 
 1. Ensure that the `Protocol` option is set to `TCP`, and the `Proxy Protocol` dropdown menu will appear. Select the version of Proxy Protocol version you would like to use.
 
-    ![Proxypass Config](proxypass.png "Proxypass Configuration")
+    ![Proxy Config](proxyconfig.png "Proxy Configuration")
 
 1. Click the `Save` button on the bottom of the page to Save your changes.
 
