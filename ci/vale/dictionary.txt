@@ -181,6 +181,7 @@ chrooting
 chrooted
 citad
 cjones
+clamav
 clearsign
 clearspace
 cli
