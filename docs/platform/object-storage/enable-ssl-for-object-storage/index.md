@@ -27,7 +27,7 @@ In this guide, you will learn how to add your own SSL Certificates and Private K
 
 ## Before you Begin
 
-- [Purchase or Create an SSL certificate](https://www.linode.com/docs/security/ssl/) for a domain you'd like to use to point to your object storage bucket. This certificate must share a common name, SAN, or Wilcard SAN which is capable of matching the FQDN of the bucket that will be created in a later step.
+- [Purchase or Create an SSL certificate](https://www.linode.com/docs/security/ssl/) for a domain you'd like to use to point to your object storage bucket. This certificate must share a common name, SAN, or wildcard SAN which is capable of matching the FQDN of the bucket that will be created in a later step.
 
 ## Create an Object Storage Bucket
 
@@ -35,9 +35,9 @@ All Object Storage Buckets using an SSL certificate created by a user **must mat
 
 {{< content "object-storage-create-bucket-shortguide" >}}
 
-## Configue DNS
+## Configure DNS
 
-It is recommended that CNAME records are used in order to give you control of the domains that will require the use of custom SSL certificates. For example, to enable an SSL certificate for the bucket `test.example.com` hosting a static site in the `us-east-1.linodeobjects.com` cluster location, you would point the cname record to `test.example.com.website-us-east-1.linodeobjects.com`. For more information on DNS records and CNAME records, see our [Introduction to DNS Records](https://www.linode.com/docs/networking/dns/dns-records-an-introduction/#cname) guide.
+It is recommended that CNAME records are used in order to give you control of the domains that will require the use of custom SSL certificates. For example, to enable an SSL certificate for the bucket `test.example.com` hosting a static site in the `us-east-1.linodeobjects.com` cluster location, you would point the CNAME record to `test.example.com.website-us-east-1.linodeobjects.com`. For more information on DNS records and CNAME records, see our [Introduction to DNS Records](https://www.linode.com/docs/networking/dns/dns-records-an-introduction/#cname) guide.
 
 ## Upload Your SSL Certificate
 
