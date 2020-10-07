@@ -20,6 +20,6 @@ to = "/docs/blog/"
 status = 200
 
 [[redirects]]
-from = "/docs/sections/**"
+from = "/docs/**"
 to = "/docs/sections/"
 status = 200

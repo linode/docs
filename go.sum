@@ -93,6 +93,10 @@ github.com/bep/linodedocs v0.0.0-20201005101139-3dd7e8d0d4a7 h1:38p2OE8JImrwWtc9
 github.com/bep/linodedocs v0.0.0-20201005101139-3dd7e8d0d4a7/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
 github.com/bep/linodedocs v0.0.0-20201005164818-fe5566d691eb h1:TrrZjqqruSworulwUqZjpj6iIlm1QMTohbxR7iMmyng=
 github.com/bep/linodedocs v0.0.0-20201005164818-fe5566d691eb/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
+github.com/bep/linodedocs v0.0.0-20201007065254-d6ae604ee027 h1:1JFqvV0CekBh1NBsF0vmnxBR/qYL8P8U5LL9UZsXiBE=
+github.com/bep/linodedocs v0.0.0-20201007065254-d6ae604ee027/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
+github.com/bep/linodedocs v0.0.0-20201007072802-ef9a55d5c496 h1:c1fZdnsKLRPY8RzU6AqUwXOFRDagwKd+Ow6Sno4ctpI=
+github.com/bep/linodedocs v0.0.0-20201007072802-ef9a55d5c496/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=

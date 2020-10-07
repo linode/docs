@@ -3,14 +3,14 @@ publish = "public"
 command = "hugo --gc --minify -d public/docs;"
 
 [context.production.environment]
-HUGO_VERSION = "0.75.1"
+HUGO_VERSION = "0.76.2"
 
 
 [context.deploy-preview]
-command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL -d public/docs;"
+command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL/docs -d public/docs;"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.75.1"
+HUGO_VERSION = "0.76.2"
 
 [[plugins]]
 package = "netlify-plugin-hugo-cache-resources"
@@ -64,6 +64,6 @@ to = "/docs/blog/"
 status = 200
 
 [[redirects]]
-from = "/docs/sections/*"
+from = "/docs/*"
 to = "/docs/sections/"
 status = 200
