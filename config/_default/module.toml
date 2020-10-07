@@ -9,6 +9,10 @@ source = "docs/products"
 target = "content/products"
 
 [[mounts]]
+source = "docs/assets"
+target = "content/assets"
+
+[[mounts]]
 source = "docs/api"
 target = "content/api"
 
