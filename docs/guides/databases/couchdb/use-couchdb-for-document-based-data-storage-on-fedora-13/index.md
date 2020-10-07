@@ -1,4 +1,5 @@
 ---
+slug: use-couchdb-for-document-based-data-storage-on-fedora-13
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: solving-real-world-problems-with-bash-scripts-a-tutorial
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

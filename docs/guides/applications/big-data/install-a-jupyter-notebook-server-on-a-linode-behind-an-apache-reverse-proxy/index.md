@@ -1,4 +1,5 @@
 ---
+slug: install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy
 author:
     name: Sam Foo
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: pricing-and-limitations
 author:
   name: Linode Community
   email: docs@linode.com

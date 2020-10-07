@@ -1,4 +1,5 @@
 ---
+slug: deploy-plex-with-one-click-apps
 author:
   name: Ben Bigger
   email: docs@linode.com

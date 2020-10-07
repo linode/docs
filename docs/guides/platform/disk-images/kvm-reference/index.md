@@ -1,4 +1,5 @@
 ---
+slug: kvm-reference
 author:
   name: Josh Sager
   email: docs@linode.com

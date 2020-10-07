@@ -1,4 +1,5 @@
 ---
+slug: managed-signup-shortguide
 author:
   name: Linode
   email: docs@linode.com

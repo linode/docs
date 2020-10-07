@@ -1,4 +1,5 @@
 ---
+slug: lemp-stack-on-centos-7-with-fastcgi
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: find-your-linodes-ip-address
 author:
   name: Linode
   email: docs@linode.com

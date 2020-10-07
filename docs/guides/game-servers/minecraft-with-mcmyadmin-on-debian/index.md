@@ -1,4 +1,5 @@
 ---
+slug: minecraft-with-mcmyadmin-on-debian
 author:
   name: James Stewart
   email: jstewart@linode.com

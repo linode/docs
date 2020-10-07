@@ -1,4 +1,5 @@
 ---
+slug: automating-server-builds
 author:
   name: Linode
   email: docs@linode.com

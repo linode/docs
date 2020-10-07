@@ -1,4 +1,5 @@
 ---
+slug: install-ntopng-for-network-monitoring-on-debian8
 author:
   name: Andrew Lescher
   email: docs@linode.com

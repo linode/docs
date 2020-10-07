@@ -1,4 +1,5 @@
 ---
+slug: secrets-management-with-salt
 author:
   name: Linode Community
   email: docs@linode.com

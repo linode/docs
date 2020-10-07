@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-certbot-on-ubuntu-18-04
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com

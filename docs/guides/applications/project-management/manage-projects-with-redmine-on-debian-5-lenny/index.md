@@ -1,4 +1,5 @@
 ---
+slug: manage-projects-with-redmine-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: installing-directadmin-on-debian-6
 author:
   name: Chris Ciufo
   email: docs@linode.com

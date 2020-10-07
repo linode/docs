@@ -1,4 +1,5 @@
 ---
+slug: web-apps-with-cherokee-and-phpfastcgi-on-fedora-13
 deprecated: true
 author:
   name: Linode

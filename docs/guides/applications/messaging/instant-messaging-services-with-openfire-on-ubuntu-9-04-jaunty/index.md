@@ -1,4 +1,5 @@
 ---
+slug: instant-messaging-services-with-openfire-on-ubuntu-9-04-jaunty
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: using-google-apps-for-email
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-public-key-authentication-with-ssh
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: lemp-server-on-ubuntu-11-10-oneiric
 deprecated: true
 author:
   name: Linode

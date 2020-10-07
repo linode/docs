@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-graphite-and-grafana-on-ubuntu-14-04
 author:
     name: Linode Community
     email: docs@linode.com

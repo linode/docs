@@ -1,4 +1,5 @@
 ---
+slug: dns-manager-add-dns-records-shortguide
 author:
   name: Linode
   email: docs@linode.com

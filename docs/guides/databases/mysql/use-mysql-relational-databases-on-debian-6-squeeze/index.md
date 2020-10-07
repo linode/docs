@@ -1,4 +1,5 @@
 ---
+slug: use-mysql-relational-databases-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

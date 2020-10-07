@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-courier-and-mysql-on-ubuntu-8-04-hardy
 deprecated: true
 author:
   name: Linode

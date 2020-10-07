@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-a-lamp-stack-on-debian-10
 author:
   name: Linode
   email: docs@linode.com

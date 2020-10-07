@@ -1,4 +1,5 @@
 ---
+slug: social-networking-with-phpfox-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

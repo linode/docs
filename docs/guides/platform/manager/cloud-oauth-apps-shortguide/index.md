@@ -1,4 +1,5 @@
 ---
+slug: cloud-oauth-apps-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: detach-block-storage-volume-shortguide
 author:
   name: Linode
   email: docs@linode.com

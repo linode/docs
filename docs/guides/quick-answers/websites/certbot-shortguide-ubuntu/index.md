@@ -1,4 +1,5 @@
 ---
+slug: certbot-shortguide-ubuntu
 author:
   name: Edward Angert
   email: docs@linode.com

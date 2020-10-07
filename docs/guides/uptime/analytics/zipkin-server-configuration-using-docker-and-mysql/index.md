@@ -1,4 +1,5 @@
 ---
+slug: zipkin-server-configuration-using-docker-and-mysql
 author:
   name: Luis Cortés
   email: docs@linode.com

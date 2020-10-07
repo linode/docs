@@ -1,4 +1,5 @@
 ---
+slug: managed-add-service-shortguide
 author:
   name: Linode
   email: docs@linode.com

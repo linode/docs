@@ -1,4 +1,5 @@
 ---
+slug: cloud-domains-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

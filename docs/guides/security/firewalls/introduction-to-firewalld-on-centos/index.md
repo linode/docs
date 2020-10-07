@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-firewalld-on-centos
 author:
     name: Linode Community
     email: docs@linode.com

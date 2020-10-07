@@ -1,4 +1,5 @@
 ---
+slug: a-guide-to-elasticsearch-plugins
 author:
   name: Linode
   email: docs@linode.com

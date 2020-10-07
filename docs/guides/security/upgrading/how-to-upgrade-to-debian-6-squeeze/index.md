@@ -1,4 +1,5 @@
 ---
+slug: how-to-upgrade-to-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

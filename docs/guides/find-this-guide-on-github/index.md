@@ -1,4 +1,5 @@
 ---
+slug: find-this-guide-on-github
 author:
   name: Linode
   email: docs@linode.com

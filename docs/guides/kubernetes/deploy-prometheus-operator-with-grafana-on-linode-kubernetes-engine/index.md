@@ -1,4 +1,5 @@
 ---
+slug: deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine
 author:
   name: Ben Bigger
   email: docs@linode.com

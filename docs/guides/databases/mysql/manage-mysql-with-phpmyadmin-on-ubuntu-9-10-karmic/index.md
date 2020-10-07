@@ -1,4 +1,5 @@
 ---
+slug: manage-mysql-with-phpmyadmin-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Brett Kaplan

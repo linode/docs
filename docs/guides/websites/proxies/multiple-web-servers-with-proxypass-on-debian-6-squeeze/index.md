@@ -1,4 +1,5 @@
 ---
+slug: multiple-web-servers-with-proxypass-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

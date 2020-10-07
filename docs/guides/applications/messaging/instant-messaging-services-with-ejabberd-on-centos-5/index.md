@@ -1,4 +1,5 @@
 ---
+slug: instant-messaging-services-with-ejabberd-on-centos-5
 deprecated: true
 author:
   name: Linode

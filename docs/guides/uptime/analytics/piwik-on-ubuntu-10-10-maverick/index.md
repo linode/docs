@@ -1,4 +1,5 @@
 ---
+slug: piwik-on-ubuntu-10-10-maverick
 deprecated: true
 author:
   name: Stan Schwertly

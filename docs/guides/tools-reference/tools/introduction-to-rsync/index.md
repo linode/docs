@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-rsync
 author:
   name: Linode
   email: docs@linode.com

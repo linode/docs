@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-nodejs-and-nginx-on-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com

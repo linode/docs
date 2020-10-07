@@ -1,4 +1,5 @@
 ---
+slug: host-static-site-object-storage
 author:
   name: Linode Community
   email: docs@linode.com

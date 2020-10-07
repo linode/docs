@@ -1,4 +1,5 @@
 ---
+slug: migrate-a-wordpressdotcom-site-to-linode
 author:
   name: Nathan Melehan
   email: docs@linode.com

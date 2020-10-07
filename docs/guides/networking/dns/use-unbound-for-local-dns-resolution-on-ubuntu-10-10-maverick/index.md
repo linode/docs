@@ -1,4 +1,5 @@
 ---
+slug: use-unbound-for-local-dns-resolution-on-ubuntu-10-10-maverick
 deprecated: true
 author:
   name: Linode

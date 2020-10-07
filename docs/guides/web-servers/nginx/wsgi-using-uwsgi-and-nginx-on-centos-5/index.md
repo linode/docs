@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-centos-5
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: webalizer-on-centos-5
 deprecated: true
 author:
   name: Brett Kaplan

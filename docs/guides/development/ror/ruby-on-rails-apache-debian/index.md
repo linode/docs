@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails-apache-debian
 author:
   name: Linode
   email: docs@linode.com

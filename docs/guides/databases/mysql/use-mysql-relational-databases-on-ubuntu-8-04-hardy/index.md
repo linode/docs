@@ -1,4 +1,5 @@
 ---
+slug: use-mysql-relational-databases-on-ubuntu-8-04-hardy
 deprecated: true
 author:
   name: Linode

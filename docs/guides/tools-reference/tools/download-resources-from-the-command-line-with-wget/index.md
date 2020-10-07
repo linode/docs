@@ -1,4 +1,5 @@
 ---
+slug: download-resources-from-the-command-line-with-wget
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: install-black-mesa-on-debian-or-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com

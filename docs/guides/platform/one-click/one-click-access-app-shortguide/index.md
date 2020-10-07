@@ -1,4 +1,5 @@
 ---
+slug: one-click-access-app-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-webmin-with-one-click-apps
 author:
   name: Linode Community
   email: docs@linode.com

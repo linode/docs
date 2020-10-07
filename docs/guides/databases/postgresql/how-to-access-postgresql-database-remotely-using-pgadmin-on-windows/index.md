@@ -1,4 +1,5 @@
 ---
+slug: how-to-access-postgresql-database-remotely-using-pgadmin-on-windows
 author:
   name: Linode
   email: docs@linode.com

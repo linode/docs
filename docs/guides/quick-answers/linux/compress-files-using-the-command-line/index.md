@@ -1,4 +1,5 @@
 ---
+slug: compress-files-using-the-command-line
 author:
   name: Angel Guarisma
   email: docs@linode.com

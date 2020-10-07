@@ -1,4 +1,5 @@
 ---
+slug: custom-compiled-kernel-with-pvgrub-debian-ubuntu
 deprecated: true
 author:
   name: Linode

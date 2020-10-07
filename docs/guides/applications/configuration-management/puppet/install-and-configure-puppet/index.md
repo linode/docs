@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-puppet
 author:
     name: Elle Krout
     email: ekrout@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-support-tickets-shortguide
 author:
   name: Linode
   email: docs@linode.com

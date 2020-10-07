@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails-with-apache-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

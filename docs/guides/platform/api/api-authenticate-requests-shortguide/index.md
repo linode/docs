@@ -1,4 +1,5 @@
 ---
+slug: api-authenticate-requests-shortguide
 author:
   name: Linode
   email: docs@linode.com

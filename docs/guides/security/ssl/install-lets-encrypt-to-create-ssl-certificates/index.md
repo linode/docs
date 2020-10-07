@@ -1,4 +1,5 @@
 ---
+slug: install-lets-encrypt-to-create-ssl-certificates
 author:
   name: 'Linode Community'
   email: 'docs@linode.com'

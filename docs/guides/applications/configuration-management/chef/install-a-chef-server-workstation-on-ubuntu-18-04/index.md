@@ -1,4 +1,5 @@
 ---
+slug: install-a-chef-server-workstation-on-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com

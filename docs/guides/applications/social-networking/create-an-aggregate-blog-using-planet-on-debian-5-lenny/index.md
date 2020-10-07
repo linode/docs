@@ -1,4 +1,5 @@
 ---
+slug: create-an-aggregate-blog-using-planet-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: install-freebsd-on-linode
 author:
   name: Rainbow
   email: rainbow@linode.com

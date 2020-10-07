@@ -1,4 +1,5 @@
 ---
+slug: squid-http-proxy-centos-6-4
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

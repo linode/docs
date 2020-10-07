@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-certbot-on-centos-8
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com

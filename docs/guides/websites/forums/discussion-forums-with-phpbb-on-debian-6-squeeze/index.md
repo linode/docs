@@ -1,4 +1,5 @@
 ---
+slug: discussion-forums-with-phpbb-on-debian-6-squeeze
 deprecated: true
 author:
   name: Stan Schwertly

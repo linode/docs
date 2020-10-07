@@ -1,4 +1,5 @@
 ---
+slug: longview-app-for-nginx-classic
 author:
   name: Linode
   email: docs@linode.com

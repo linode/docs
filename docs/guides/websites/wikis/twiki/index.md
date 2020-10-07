@@ -1,4 +1,5 @@
 ---
+slug: twiki
 deprecated: true
 author:
   name: Linode

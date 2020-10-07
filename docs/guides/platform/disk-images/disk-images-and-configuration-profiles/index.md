@@ -1,4 +1,5 @@
 ---
+slug: disk-images-and-configuration-profiles
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: test-kitchen-shortguide
 author:
   name: Linode
   email: docs@linode.com

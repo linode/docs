@@ -1,4 +1,5 @@
 ---
+slug: custom-compiled-kernel-debian-ubuntu
 author:
   name: Alex Fornuto
   email: docs@linode.com

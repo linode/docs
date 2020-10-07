@@ -1,4 +1,5 @@
 ---
+slug: upgrade-debian-to-the-newest-release
 author:
   name: Linode
   email: docs@linode.com

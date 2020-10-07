@@ -1,4 +1,5 @@
 ---
+slug: tokyo2-migration
 author:
   name: Linode
   email: docs@linode.com

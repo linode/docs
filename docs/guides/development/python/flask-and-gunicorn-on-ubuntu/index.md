@@ -1,4 +1,5 @@
 ---
+slug: flask-and-gunicorn-on-ubuntu
 author:
   name: Austin Balarin
   email: abalarin@linode.com

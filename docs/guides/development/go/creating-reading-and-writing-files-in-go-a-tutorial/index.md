@@ -1,4 +1,5 @@
 ---
+slug: creating-reading-and-writing-files-in-go-a-tutorial
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

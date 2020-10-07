@@ -1,4 +1,5 @@
 ---
+slug: vagrant-linode-environments
 author:
     name: Elle Krout
     email: ekrout@linode.com

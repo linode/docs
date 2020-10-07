@@ -1,4 +1,5 @@
 ---
+slug: lamp-on-centos-6
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

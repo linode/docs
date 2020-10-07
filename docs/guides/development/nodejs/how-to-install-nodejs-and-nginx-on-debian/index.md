@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-nodejs-and-nginx-on-debian
 author:
     name: Joe D.
     email: docs@linode.com

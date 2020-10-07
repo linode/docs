@@ -1,4 +1,5 @@
 ---
+slug: build-nginx-with-pagespeed-from-source
 author:
   name: Linode
   email: docs@linode.com

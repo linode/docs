@@ -1,4 +1,5 @@
 ---
+slug: use-buildbot-for-software-testing-on-ubuntu
 author:
   name: Tyler Langlois
   email: ty@tjll.net

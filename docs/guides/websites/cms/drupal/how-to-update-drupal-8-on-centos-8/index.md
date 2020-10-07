@@ -1,4 +1,5 @@
 ---
+slug: how-to-update-drupal-8-on-centos-8
 author:
     name: Linode
     email: docs@linode.com

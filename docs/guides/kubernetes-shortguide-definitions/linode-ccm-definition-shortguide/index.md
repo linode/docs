@@ -1,4 +1,5 @@
 ---
+slug: linode-ccm-definition-shortguide
 author:
   name: Linode
   email: docs@linode.com

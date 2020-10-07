@@ -1,4 +1,5 @@
 ---
+slug: how-to-create-a-private-python-package-repository
 author:
   name: Sam Foo
   email: sfoo@linode.com

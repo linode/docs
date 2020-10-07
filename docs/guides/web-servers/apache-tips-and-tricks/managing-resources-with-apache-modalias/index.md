@@ -1,4 +1,5 @@
 ---
+slug: managing-resources-with-apache-modalias
 deprecated: true
 author:
   name: Linode

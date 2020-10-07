@@ -1,4 +1,5 @@
 ---
+slug: run-php-cgi-apache-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

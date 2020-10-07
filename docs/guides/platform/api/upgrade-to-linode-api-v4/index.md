@@ -1,4 +1,5 @@
 ---
+slug: upgrade-to-linode-api-v4
 author:
   name: Jared Kobos
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: installing-squirrelmail-on-ubuntu-12-04
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

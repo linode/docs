@@ -1,4 +1,5 @@
 ---
+slug: transfer-files-with-cyberduck-on-mac-os-x
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: one-click-deploy-app-shortguide
 author:
   name: Linode
   email: docs@linode.com

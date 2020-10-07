@@ -1,4 +1,5 @@
 ---
+slug: tunnel-your-internet-traffic-through-an-openvpn-server
 author:
   name: Linode
   email: docs@linode.com

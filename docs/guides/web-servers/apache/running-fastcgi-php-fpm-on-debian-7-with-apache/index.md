@@ -1,4 +1,5 @@
 ---
+slug: running-fastcgi-php-fpm-on-debian-7-with-apache
 author:
   name: Linode Community
   email: docs@linode.com

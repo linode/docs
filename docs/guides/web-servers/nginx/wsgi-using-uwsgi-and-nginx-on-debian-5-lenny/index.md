@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

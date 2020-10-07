@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-openjdk-on-ubuntu-20-04
 author:
   name: Linode Community
   email: docs@linode.com

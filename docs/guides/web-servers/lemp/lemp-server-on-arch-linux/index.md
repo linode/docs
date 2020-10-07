@@ -1,4 +1,5 @@
 ---
+slug: lemp-server-on-arch-linux
 deprecated: true
 author:
   name: Linode

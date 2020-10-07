@@ -1,4 +1,5 @@
 ---
+slug: configure-firewall-with-ufw
 author:
   name: Elle Krout
   email: ekrout@linode.com

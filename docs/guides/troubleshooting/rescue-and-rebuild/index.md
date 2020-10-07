@@ -1,4 +1,5 @@
 ---
+slug: rescue-and-rebuild
 author:
   name: Linode
   email: docs@linode.com

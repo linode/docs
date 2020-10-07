@@ -1,4 +1,5 @@
 ---
+slug: install-go-on-ubuntu
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: django-apache-and-modpython-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

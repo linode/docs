@@ -1,4 +1,5 @@
 ---
+slug: monitoring-servers-with-munin-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Stan Schwertly

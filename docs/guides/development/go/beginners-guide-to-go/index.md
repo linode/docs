@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-to-go
 author:
   name: Linode Community
   email: docs@linode.com

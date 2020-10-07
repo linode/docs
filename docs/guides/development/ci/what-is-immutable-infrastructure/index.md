@@ -1,4 +1,5 @@
 ---
+slug: what-is-immutable-infrastructure
 author:
   name: Linode
   email: docs@linode.com

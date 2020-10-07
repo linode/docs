@@ -1,4 +1,5 @@
 ---
+slug: cloud-nodebalancers-shortguide
 author:
   name: Linode
   email: docs@linode.com

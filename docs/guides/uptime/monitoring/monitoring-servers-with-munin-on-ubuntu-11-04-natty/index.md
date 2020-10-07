@@ -1,4 +1,5 @@
 ---
+slug: monitoring-servers-with-munin-on-ubuntu-11-04-natty
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: dedicated-cpu-deploy-shortguide
 author:
   name: Linode
   email: docs@linode.com

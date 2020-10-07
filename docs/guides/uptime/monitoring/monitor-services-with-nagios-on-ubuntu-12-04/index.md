@@ -1,4 +1,5 @@
 ---
+slug: monitor-services-with-nagios-on-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

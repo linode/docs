@@ -1,4 +1,5 @@
 ---
+slug: network-transfer-quota
 author:
   name: Linode Community
   email: docs@linode.com

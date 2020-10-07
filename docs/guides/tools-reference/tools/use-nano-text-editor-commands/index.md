@@ -1,4 +1,5 @@
 ---
+slug: use-nano-text-editor-commands
 author:
   name: Linode
   email: docs@linode.com

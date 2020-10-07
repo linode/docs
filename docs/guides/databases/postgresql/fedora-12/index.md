@@ -1,4 +1,5 @@
 ---
+slug: fedora-12
 deprecated: true
 author:
   name: Linode

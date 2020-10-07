@@ -1,4 +1,5 @@
 ---
+slug: how-to-migrate-from-gcp-to-linode
 author:
   name: Linode Community
   email: docs@linode.com

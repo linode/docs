@@ -1,4 +1,5 @@
 ---
+slug: update-kernel
 author:
   name: Linode Community
   email: docs@linode.com

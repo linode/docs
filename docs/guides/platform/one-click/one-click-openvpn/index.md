@@ -1,4 +1,5 @@
 ---
+slug: one-click-openvpn
 author:
   name: Linode Community
   email: docs@linode.com

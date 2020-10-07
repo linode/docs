@@ -1,4 +1,5 @@
 ---
+slug: apache-2-web-server-on-fedora-13
 deprecated: true
 author:
   name: Linode

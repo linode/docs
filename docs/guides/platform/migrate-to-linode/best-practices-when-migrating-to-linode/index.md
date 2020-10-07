@@ -1,4 +1,5 @@
 ---
+slug: best-practices-when-migrating-to-linode
 author:
   name: Nathan Melehan
   email: nmelehan@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: install-ruby-with-rvm
 author:
   name: Linode
   email: docs@linode.com

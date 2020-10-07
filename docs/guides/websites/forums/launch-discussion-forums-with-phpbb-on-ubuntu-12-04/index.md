@@ -1,4 +1,5 @@
 ---
+slug: launch-discussion-forums-with-phpbb-on-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

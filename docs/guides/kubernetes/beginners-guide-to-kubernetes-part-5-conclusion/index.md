@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-to-kubernetes-part-5-conclusion
 author:
   name: Andy Stevens
   email: docs@linode.com

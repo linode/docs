@@ -1,4 +1,5 @@
 ---
+slug: use-the-date-command-in-linux
 author:
   name: Christopher S. Aker
   email: caker@linode.com

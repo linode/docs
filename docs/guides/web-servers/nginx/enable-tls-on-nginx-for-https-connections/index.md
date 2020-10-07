@@ -1,4 +1,5 @@
 ---
+slug: enable-tls-on-nginx-for-https-connections
 author:
   name: Linode
   email: docs@linode.com

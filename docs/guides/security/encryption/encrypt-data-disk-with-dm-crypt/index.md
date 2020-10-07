@@ -1,4 +1,5 @@
 ---
+slug: encrypt-data-disk-with-dm-crypt
 author:
   name: Linode Community
   email: docs@linode.com

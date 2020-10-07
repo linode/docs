@@ -1,4 +1,5 @@
 ---
+slug: how-to-move-objects-between-buckets
 author:
   name: Linode Community
   email: docs@linode.com

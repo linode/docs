@@ -1,4 +1,5 @@
 ---
+slug: measure-your-websites-recurring-readership-with-bise
 author:
   name: Jason McIntosh
   email: jmac@jmac.org

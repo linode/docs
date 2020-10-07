@@ -1,4 +1,5 @@
 ---
+slug: set-up-mariadb-clusters-with-galera-debian-and-ubuntu
 author:
   name: James Stewart
   email: jstewart@linode.com

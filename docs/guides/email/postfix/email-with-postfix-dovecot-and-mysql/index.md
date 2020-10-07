@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-dovecot-and-mysql
 author:
   name: Linode
   email: docs@linode.com

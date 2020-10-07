@@ -1,4 +1,5 @@
 ---
+slug: squid-http-proxy-centos-8
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: django-apache-and-modpython-on-ubuntu-10-04-lucid
 author:
   name: Linode
   email: docs@linode.com

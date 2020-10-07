@@ -1,4 +1,5 @@
 ---
+slug: developing-udp-and-tcp-clients-and-servers-in-go
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

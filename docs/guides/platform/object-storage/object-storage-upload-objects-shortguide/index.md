@@ -1,4 +1,5 @@
 ---
+slug: object-storage-upload-objects-shortguide
 author:
   name: Linode
   email: docs@linode.com

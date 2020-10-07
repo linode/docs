@@ -1,4 +1,5 @@
 ---
+slug: install-plex-media-server-on-ubuntu-18-04
 author:
   name: Nick Brewer
   email: nbrewer@linode.com

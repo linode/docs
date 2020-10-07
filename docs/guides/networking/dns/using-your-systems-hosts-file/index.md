@@ -1,4 +1,5 @@
 ---
+slug: using-your-systems-hosts-file
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: download-files-from-your-linode-shortguide
 author:
   name: Linode
   email: docs@linode.com

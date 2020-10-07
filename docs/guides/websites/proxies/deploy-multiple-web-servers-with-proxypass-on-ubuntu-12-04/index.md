@@ -1,4 +1,5 @@
 ---
+slug: deploy-multiple-web-servers-with-proxypass-on-ubuntu-12-04
 deprecated: true
 author:
   name: Alex Fornuto

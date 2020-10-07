@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-one-click-apps-at-linode
 author:
   name: Linode Community
   email: docs@linode.com

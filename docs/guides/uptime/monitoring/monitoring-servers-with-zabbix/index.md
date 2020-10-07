@@ -1,4 +1,5 @@
 ---
+slug: monitoring-servers-with-zabbix
 deprecated: true
 author:
   name: Chris Ciufo

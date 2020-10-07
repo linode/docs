@@ -1,4 +1,5 @@
 ---
+slug: install-opencart-on-centos-7
 author:
   name: Jonathan Chun
   email: docs@linode.com

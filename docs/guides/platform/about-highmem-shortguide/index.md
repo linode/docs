@@ -1,4 +1,5 @@
 ---
+slug: about-highmem-shortguide
 author:
   name: Linode
   email: docs@linode.com

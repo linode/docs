@@ -1,4 +1,5 @@
 ---
+slug: using-mysql-relational-databases-on-gentoo
 deprecated: true
 author:
   name: Linode

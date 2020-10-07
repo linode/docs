@@ -1,4 +1,5 @@
 ---
+slug: host-a-website-with-high-availability
 author:
   name: Phil Zona
   email: docs@linode.com

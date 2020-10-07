@@ -1,4 +1,5 @@
 ---
+slug: use-nightmarejs-to-automate-headless-browsing
 author:
   name: Nashruddin Amin
   email: nashruddin.amin@gmail.com

@@ -1,4 +1,5 @@
 ---
+slug: install-openfire-on-ubuntu-12-04-for-instant-messaging
 deprecated: true
 author:
   name: Alex Fornuto

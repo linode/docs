@@ -1,4 +1,5 @@
 ---
+slug: api-key
 author:
   name: Linode
   email: docs@linode.com

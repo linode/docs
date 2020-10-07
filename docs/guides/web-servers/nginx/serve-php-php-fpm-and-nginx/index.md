@@ -1,4 +1,5 @@
 ---
+slug: serve-php-php-fpm-and-nginx
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: object-storage-delete-bucket-shortguide
 author:
   name: Linode
   email: docs@linode.com

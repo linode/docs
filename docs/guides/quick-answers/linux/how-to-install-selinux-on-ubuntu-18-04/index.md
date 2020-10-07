@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-selinux-on-ubuntu-18-04
 author:
   name: Angel
   email: docs@linode.com

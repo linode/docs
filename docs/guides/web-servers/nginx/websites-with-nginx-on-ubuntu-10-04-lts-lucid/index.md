@@ -1,4 +1,5 @@
 ---
+slug: websites-with-nginx-on-ubuntu-10-04-lts-lucid
 deprecated: true
 author:
   name: Linode

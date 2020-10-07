@@ -1,4 +1,5 @@
 ---
+slug: updating-virtual-host-settings-from-apache-2-2-to-apache-2-4
 author:
   name: Linode
   email: docs@linode.com

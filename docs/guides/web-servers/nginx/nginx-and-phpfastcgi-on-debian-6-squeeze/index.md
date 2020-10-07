@@ -1,4 +1,5 @@
 ---
+slug: nginx-and-phpfastcgi-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

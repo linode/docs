@@ -1,4 +1,5 @@
 ---
+slug: deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-journalctl
 author:
   name: Linode
   email: docs@linode.com

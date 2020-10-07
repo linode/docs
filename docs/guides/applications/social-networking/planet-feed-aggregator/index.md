@@ -1,4 +1,5 @@
 ---
+slug: planet-feed-aggregator
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: custom-compiled-kernel-with-pvgrub-centos-7
 deprecated: true
 author:
   name: Linode

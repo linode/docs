@@ -1,4 +1,5 @@
 ---
+slug: using-rdiff-backup-with-sshfs
 author:
   name: Linode
   email: docs@linode.com

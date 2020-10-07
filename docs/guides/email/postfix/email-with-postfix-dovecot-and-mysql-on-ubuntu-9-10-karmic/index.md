@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Brett Kaplan

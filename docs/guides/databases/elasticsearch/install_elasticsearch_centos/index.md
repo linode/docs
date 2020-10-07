@@ -1,4 +1,5 @@
 ---
+slug: install_elasticsearch_centos
 author:
   name: Jared Kobos
   email: sfoo@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: postfix-dovecot-and-system-user-accounts-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

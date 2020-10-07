@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-the-lemp-stack-on-debian-10
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: manipulate-lists-with-sort-and-uniq
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: salt-command-line-reference
 author:
   name: Linode Community
   email: docs@linode.com

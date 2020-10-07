@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

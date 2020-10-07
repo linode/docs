@@ -1,4 +1,5 @@
 ---
+slug: backups-manual-snapshot-shortguide
 author:
   name: Linode
   email: docs@linode.com

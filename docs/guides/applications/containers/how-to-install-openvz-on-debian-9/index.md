@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-openvz-on-debian-9
 author:
   name: Linode Community
   email: docs@Linode.com

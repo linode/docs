@@ -1,4 +1,5 @@
 ---
+slug: how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount
 author:
   name: Linode Community
   email: docs@linode.com

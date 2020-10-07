@@ -1,4 +1,5 @@
 ---
+slug: monitoring-resource-utilization-with-cacti-on-centos-5
 deprecated: true
 author:
   name: Stan Schwertly

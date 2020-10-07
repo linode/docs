@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-apache-web-server-debian-10
 author:
   name: Linode
   email: docs@linode.com

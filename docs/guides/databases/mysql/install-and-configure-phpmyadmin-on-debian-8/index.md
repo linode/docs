@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-phpmyadmin-on-debian-8
 author:
     name: Linode
     email: docs@linode.com

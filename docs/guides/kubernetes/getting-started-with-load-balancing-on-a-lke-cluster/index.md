@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-load-balancing-on-a-lke-cluster
 author:
   name: Linode Community
   email: docs@linode.com

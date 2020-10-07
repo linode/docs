@@ -1,4 +1,5 @@
 ---
+slug: install-coreos-on-your-linode
 deprecated: true
 author:
   name: Linode Community

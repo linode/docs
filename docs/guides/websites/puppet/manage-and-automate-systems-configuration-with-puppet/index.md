@@ -1,4 +1,5 @@
 ---
+slug: manage-and-automate-systems-configuration-with-puppet
 author:
   name: Linode
   email: docs@linode.com

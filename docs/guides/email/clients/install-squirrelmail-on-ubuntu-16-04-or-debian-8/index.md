@@ -1,4 +1,5 @@
 ---
+slug: install-squirrelmail-on-ubuntu-16-04-or-debian-8
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

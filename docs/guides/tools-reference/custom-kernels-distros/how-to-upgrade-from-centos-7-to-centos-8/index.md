@@ -1,4 +1,5 @@
 ---
+slug: how-to-upgrade-from-centos-7-to-centos-8
 author:
   name: Linode
   email: docs@linode.com

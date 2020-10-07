@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-systemctl
 author:
   name: Linode
   email: docs@linode.com

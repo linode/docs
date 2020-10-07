@@ -1,4 +1,5 @@
 ---
+slug: securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x
 author:
   name: Linode
   email: docs@linode.com

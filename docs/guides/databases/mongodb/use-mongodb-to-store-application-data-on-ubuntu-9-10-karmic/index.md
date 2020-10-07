@@ -1,4 +1,5 @@
 ---
+slug: use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

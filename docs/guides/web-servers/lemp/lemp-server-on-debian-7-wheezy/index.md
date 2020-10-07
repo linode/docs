@@ -1,4 +1,5 @@
 ---
+slug: lemp-server-on-debian-7-wheezy
 author:
   name: Linode
   email: docs@linode.com

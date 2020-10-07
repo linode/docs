@@ -1,4 +1,5 @@
 ---
+slug: visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh
 author:
   name: Linode Community
   email: docs@linode.com

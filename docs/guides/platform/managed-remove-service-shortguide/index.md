@@ -1,4 +1,5 @@
 ---
+slug: managed-remove-service-shortguide
 author:
   name: Linode
   email: docs@linode.com

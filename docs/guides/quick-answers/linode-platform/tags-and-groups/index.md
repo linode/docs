@@ -1,4 +1,5 @@
 ---
+slug: tags-and-groups
 author:
   name: Linode Community
   email: docs@linode.com

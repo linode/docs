@@ -1,4 +1,5 @@
 ---
+slug: install_python_miniconda
 author:
   name: Jared Kobos
   email: sfoo@linode.com

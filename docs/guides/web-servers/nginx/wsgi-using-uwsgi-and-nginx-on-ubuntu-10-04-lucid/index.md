@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

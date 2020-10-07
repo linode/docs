@@ -1,4 +1,5 @@
 ---
+slug: cloud-delete-ip-shortguide
 author:
   name: Linode
   email: docs@linode.com

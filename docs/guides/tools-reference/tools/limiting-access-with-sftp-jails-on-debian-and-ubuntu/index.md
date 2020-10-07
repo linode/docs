@@ -1,4 +1,5 @@
 ---
+slug: limiting-access-with-sftp-jails-on-debian-and-ubuntu
 author:
   name: Linode
   email: docs@linode.com

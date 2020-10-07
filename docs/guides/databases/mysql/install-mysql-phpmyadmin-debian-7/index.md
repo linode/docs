@@ -1,4 +1,5 @@
 ---
+slug: install-mysql-phpmyadmin-debian-7
 author:
     name: Brett Kaplan
     email: docs@linode.com

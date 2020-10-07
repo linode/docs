@@ -1,4 +1,5 @@
 ---
+slug: rewrite-urls-with-modrewrite-and-apache
 author:
   name: Linode
   email: docs@linode.com

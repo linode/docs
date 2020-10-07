@@ -1,4 +1,5 @@
 ---
+slug: stackscripts-create-linode-shortguide
 author:
   name: Linode
   email: docs@linode.com

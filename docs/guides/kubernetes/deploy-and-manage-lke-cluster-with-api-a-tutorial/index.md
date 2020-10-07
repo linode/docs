@@ -1,4 +1,5 @@
 ---
+slug: deploy-and-manage-lke-cluster-with-api-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com

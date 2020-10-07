@@ -1,4 +1,5 @@
 ---
+slug: kubernetes-edit-remove-node-pools-shortguide
 author:
   name: Linode
   email: docs@linode.com

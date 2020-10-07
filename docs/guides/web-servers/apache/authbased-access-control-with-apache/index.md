@@ -1,4 +1,5 @@
 ---
+slug: authbased-access-control-with-apache
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: what-is-linux
 author:
   name: Linode
   email: docs@linode.com

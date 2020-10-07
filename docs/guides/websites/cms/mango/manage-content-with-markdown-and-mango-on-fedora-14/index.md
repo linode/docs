@@ -1,4 +1,5 @@
 ---
+slug: manage-content-with-markdown-and-mango-on-fedora-14
 deprecated: true
 author:
   name: Linode

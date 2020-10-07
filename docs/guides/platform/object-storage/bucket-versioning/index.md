@@ -1,4 +1,5 @@
 ---
+slug: bucket-versioning
 author:
   name: Linode Community
   email: docs@linode.com

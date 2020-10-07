@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-kubernetes
 author:
   name: Linode Community
   email: docs@linode.com

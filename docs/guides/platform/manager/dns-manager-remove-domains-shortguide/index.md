@@ -1,4 +1,5 @@
 ---
+slug: dns-manager-remove-domains-shortguide
 author:
   name: Linode
   email: docs@linode.com

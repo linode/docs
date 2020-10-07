@@ -1,4 +1,5 @@
 ---
+slug: install-nagios-4-on-ubuntu-debian-8
 author:
   name: Linode Community
   email: docs@linode.com

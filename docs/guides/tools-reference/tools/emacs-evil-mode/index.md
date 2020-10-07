@@ -1,4 +1,5 @@
 ---
+slug: emacs-evil-mode
 author:
   name: Edward Angert
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: certbot-shortguide-debian
 author:
   name: Edward Angert
   email: docs@linode.com

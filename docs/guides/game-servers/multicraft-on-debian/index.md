@@ -1,4 +1,5 @@
 ---
+slug: multicraft-on-debian
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

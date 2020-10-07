@@ -1,4 +1,5 @@
 ---
+slug: set-up-dns-services-on-cpanel
 author:
   name: Chris Ciufo
   email: docs@linode.com

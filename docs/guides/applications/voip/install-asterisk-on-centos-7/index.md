@@ -1,4 +1,5 @@
 ---
+slug: install-asterisk-on-centos-7
 author:
     name: Linode Community
     email: docs@linode.com

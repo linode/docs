@@ -1,4 +1,5 @@
 ---
+slug: sinatra-framework-and-nginx-on-fedora-14
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-apache-on-centos-7
 author:
     name: Linode
     email: docs@linode.com

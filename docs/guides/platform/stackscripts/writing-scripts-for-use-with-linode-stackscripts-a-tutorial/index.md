@@ -1,4 +1,5 @@
 ---
+slug: writing-scripts-for-use-with-linode-stackscripts-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com

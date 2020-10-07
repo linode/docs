@@ -1,4 +1,5 @@
 ---
+slug: sendonly-mail-server-with-exim-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

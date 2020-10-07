@@ -1,4 +1,5 @@
 ---
+slug: create-a-python-virtualenv-on-debian-10
 author:
   name: Linode
   email: docs@linode.com

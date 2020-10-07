@@ -1,4 +1,5 @@
 ---
+slug: magento-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Stan Schwertly

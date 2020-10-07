@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-kubeflow-on-linode-kubernetes-engine
 author:
   name: Daniele Polencic
   email: daniele@learnk8s.io

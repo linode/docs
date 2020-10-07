@@ -1,4 +1,5 @@
 ---
+slug: dns-manager-transfer-domain-zone-shortguide
 author:
   name: Linode
   email: docs@linode.com

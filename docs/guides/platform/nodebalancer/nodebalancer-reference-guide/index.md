@@ -1,4 +1,5 @@
 ---
+slug: nodebalancer-reference-guide
 author:
   name: Christopher S. Aker
   email: caker@linode.com

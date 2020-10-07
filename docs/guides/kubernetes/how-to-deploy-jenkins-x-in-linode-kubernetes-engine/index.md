@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-jenkins-x-in-linode-kubernetes-engine
 author:
   name: Daniele Polencic
   email: daniele@learnk8s.io

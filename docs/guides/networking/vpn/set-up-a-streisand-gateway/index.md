@@ -1,4 +1,5 @@
 ---
+slug: set-up-a-streisand-gateway
 author:
   name: Jared Kobos
   email: docs@linode.com

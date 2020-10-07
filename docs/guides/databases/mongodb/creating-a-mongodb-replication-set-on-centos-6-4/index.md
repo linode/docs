@@ -1,4 +1,5 @@
 ---
+slug: creating-a-mongodb-replication-set-on-centos-6-4
 deprecated: true
 author:
   name: Linode

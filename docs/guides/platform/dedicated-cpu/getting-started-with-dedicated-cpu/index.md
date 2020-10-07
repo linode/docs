@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-dedicated-cpu
 author:
   name: Ryan Syracuse
   email: rsyracuse@linode.com

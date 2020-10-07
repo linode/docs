@@ -1,4 +1,5 @@
 ---
+slug: running-ansible-playbooks
 author:
     name: Linode Community
     email: docs@linode.com

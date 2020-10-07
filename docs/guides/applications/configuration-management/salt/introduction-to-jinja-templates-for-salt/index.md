@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-jinja-templates-for-salt
 author:
   name: Linode
 description: 'An introduction to Jinja using Salt configuration management examples.'

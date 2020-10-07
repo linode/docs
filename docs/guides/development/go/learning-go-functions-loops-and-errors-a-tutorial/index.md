@@ -1,4 +1,5 @@
 ---
+slug: learning-go-functions-loops-and-errors-a-tutorial
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

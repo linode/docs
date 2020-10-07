@@ -1,4 +1,5 @@
 ---
+slug: object-storage-view-bucket-objects-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: manage-billing-in-cloud-manager
 author:
   name: Linode
   email: docs@linode.com

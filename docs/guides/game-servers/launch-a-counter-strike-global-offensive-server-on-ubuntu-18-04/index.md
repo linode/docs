@@ -1,4 +1,5 @@
 ---
+slug: launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04
 author:
     name: Linode Community
     email: docs@linode.com

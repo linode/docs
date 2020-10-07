@@ -1,4 +1,5 @@
 ---
+slug: copying-a-disk-image-over-ssh
 author:
   name: Linode
   email: docs@linode.com

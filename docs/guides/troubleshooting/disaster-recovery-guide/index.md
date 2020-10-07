@@ -1,4 +1,5 @@
 ---
+slug: disaster-recovery-guide
 author:
   name: Linode
   email: docs@linode.com

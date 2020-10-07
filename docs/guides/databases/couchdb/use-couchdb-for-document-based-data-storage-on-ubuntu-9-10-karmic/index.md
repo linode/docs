@@ -1,4 +1,5 @@
 ---
+slug: use-couchdb-for-document-based-data-storage-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

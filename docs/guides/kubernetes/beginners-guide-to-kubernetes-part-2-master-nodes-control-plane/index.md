@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-to-kubernetes-part-2-master-nodes-control-plane
 author:
   name: Andy Stevens
   email: docs@linode.com

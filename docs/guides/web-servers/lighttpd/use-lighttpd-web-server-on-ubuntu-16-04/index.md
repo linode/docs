@@ -1,4 +1,5 @@
 ---
+slug: use-lighttpd-web-server-on-ubuntu-16-04
 author:
   name: Dave Messina
   email: docs@linode.com

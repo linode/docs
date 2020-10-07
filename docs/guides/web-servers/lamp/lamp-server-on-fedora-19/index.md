@@ -1,4 +1,5 @@
 ---
+slug: lamp-server-on-fedora-19
 deprecated: true
 author:
   name: James Stewart

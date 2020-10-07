@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-mariadb-on-centos-7
 author:
     name: Linode
     email: docs@linode.com

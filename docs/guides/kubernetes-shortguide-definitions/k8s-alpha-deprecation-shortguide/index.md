@@ -1,4 +1,5 @@
 ---
+slug: k8s-alpha-deprecation-shortguide
 author:
   name: Linode
   email: docs@linode.com

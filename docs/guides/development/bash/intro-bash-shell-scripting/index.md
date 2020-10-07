@@ -1,4 +1,5 @@
 ---
+slug: intro-bash-shell-scripting
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

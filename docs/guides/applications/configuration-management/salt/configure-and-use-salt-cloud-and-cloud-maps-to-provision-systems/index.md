@@ -1,4 +1,5 @@
 ---
+slug: configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems
 author:
   name: Sergey Bulavintsev
   email: bulavintsev.sergey@gmail.com

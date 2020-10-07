@@ -1,4 +1,5 @@
 ---
+slug: provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze
 deprecated: true
 author:
   name: Brett Kaplan

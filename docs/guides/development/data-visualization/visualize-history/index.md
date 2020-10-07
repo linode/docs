@@ -1,4 +1,5 @@
 ---
+slug: visualize-history
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

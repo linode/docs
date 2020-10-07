@@ -1,4 +1,5 @@
 ---
+slug: configure-apache-with-salt-stack
 author:
   name: Linode
   email: docs@linode.com

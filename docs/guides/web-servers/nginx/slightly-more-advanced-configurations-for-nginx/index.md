@@ -1,4 +1,5 @@
 ---
+slug: slightly-more-advanced-configurations-for-nginx
 author:
   name: Linode
   email: docs@linode.com

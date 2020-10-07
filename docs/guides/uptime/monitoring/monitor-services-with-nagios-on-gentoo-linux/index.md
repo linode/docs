@@ -1,4 +1,5 @@
 ---
+slug: monitor-services-with-nagios-on-gentoo-linux
 deprecated: true
 author:
   name: Linode

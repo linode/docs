@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-to-salt
 author:
   name: Linode
   email: docs@linode.com

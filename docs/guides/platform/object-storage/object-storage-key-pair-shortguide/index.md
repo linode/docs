@@ -1,4 +1,5 @@
 ---
+slug: object-storage-key-pair-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: an-overview-of-ipv6-on-linode
 author:
   name: Linode
   email: docs@linode.com

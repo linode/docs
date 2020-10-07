@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-a-lamp-stack-on-centos-7
 author:
     name: Joel Kruger
     email: docs@linode.com

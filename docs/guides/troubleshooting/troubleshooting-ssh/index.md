@@ -1,4 +1,5 @@
 ---
+slug: troubleshooting-ssh
 author:
   name: Linode
   email: docs@linode.com

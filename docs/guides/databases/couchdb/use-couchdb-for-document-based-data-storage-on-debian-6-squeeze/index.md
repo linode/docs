@@ -1,4 +1,5 @@
 ---
+slug: use-couchdb-for-document-based-data-storage-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

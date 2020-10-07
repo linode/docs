@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-fsck-qa
 author:
   name: Edward Angert
   email: docs@linode.com

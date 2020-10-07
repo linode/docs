@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-puppet-6-1-basic-installation-and-setup
 author:
     name: Linode
     email: docs@linode.com

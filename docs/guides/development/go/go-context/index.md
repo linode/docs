@@ -1,4 +1,5 @@
 ---
+slug: go-context
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

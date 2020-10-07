@@ -1,4 +1,5 @@
 ---
+slug: common-dns-configurations
 author:
   name: Linode
   email: docs@linode.com

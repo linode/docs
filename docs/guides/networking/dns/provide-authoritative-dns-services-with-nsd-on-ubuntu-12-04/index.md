@@ -1,4 +1,5 @@
 ---
+slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

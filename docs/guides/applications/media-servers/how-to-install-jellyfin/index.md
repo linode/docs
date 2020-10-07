@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-jellyfin
 author:
   name: The Linux Gamer
 contributor:

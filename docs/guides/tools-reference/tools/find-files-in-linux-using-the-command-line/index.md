@@ -1,4 +1,5 @@
 ---
+slug: find-files-in-linux-using-the-command-line
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: create-a-python-virtualenv-on-ubuntu-1610
 deprecated: true
 author:
   name: Christopher Piccini

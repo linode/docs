@@ -1,4 +1,5 @@
 ---
+slug: using-the-linode-shell-lish
 author:
   name: Linode
   email: docs@linode.com

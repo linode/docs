@@ -1,4 +1,5 @@
 ---
+slug: secure-communications-with-openvpn-on-debian-6-squeeze
 author:
   name: Linode
   email: docs@linode.com

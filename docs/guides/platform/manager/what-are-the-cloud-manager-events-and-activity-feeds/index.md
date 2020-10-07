@@ -1,4 +1,5 @@
 ---
+slug: what-are-the-cloud-manager-events-and-activity-feeds
 author:
   name: Linode
   email: docs@linode.com

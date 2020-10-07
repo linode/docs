@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-nodejs
 author:
   name: Linode
   email: docs@linode.com

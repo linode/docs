@@ -1,4 +1,5 @@
 ---
+slug: how-to-work-with-triggers-in-mysql-database
 author:
   name: Francis Ndungu
   email: francisndungu83@gmail.com

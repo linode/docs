@@ -1,4 +1,5 @@
 ---
+slug: monitor-filesystem-events-with-pyinotify
 author:
   name: Md. Sabuj Sarker
   email: md.sabuj.sarker@gmail.com

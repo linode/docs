@@ -1,4 +1,5 @@
 ---
+slug: manage-distributed-source-branches-with-bazaar
 author:
   name: Linode
   email: docs@linode.com

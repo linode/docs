@@ -1,4 +1,5 @@
 ---
+slug: how-to-update-drupal-8-on-debian-10
 author:
     name: Linode
     email: docs@linode.com

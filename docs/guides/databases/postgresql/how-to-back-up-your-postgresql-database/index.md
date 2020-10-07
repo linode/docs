@@ -1,4 +1,5 @@
 ---
+slug: how-to-back-up-your-postgresql-database
 author:
   name: Jared Kobos
   email: docs@linode.com

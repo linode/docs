@@ -1,4 +1,5 @@
 ---
+slug: configure-your-linode-for-reverse-dns
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: protecting-your-linode-using-tcp-wrappers
 author:
   name: Linode Community
   email: docs@linode.com

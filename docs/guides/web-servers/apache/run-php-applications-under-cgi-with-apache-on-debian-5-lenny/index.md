@@ -1,4 +1,5 @@
 ---
+slug: run-php-applications-under-cgi-with-apache-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

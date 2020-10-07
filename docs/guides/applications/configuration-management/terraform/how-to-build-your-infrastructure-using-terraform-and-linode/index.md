@@ -1,4 +1,5 @@
 ---
+slug: how-to-build-your-infrastructure-using-terraform-and-linode
 author:
   name: Linode Community
   email: docs@linode.com

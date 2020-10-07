@@ -1,4 +1,5 @@
 ---
+slug: apache-2-web-server-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: accounts-update-contact-info-shortguide
 author:
   name: Linode
   email: docs@linode.com

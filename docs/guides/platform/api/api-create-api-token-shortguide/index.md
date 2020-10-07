@@ -1,4 +1,5 @@
 ---
+slug: api-create-api-token-shortguide
 author:
   name: Linode
   email: docs@linode.com

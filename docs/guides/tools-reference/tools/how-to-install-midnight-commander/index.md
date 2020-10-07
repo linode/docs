@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-midnight-commander
 author:
   name: Linode Community
   email: docs@linode.com

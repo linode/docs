@@ -1,4 +1,5 @@
 ---
+slug: how-to-choose-a-linode-plan
 author:
     name: Linode
     email: docs@linode.com

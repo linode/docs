@@ -1,4 +1,5 @@
 ---
+slug: how-to-change-your-password
 author:
   name: Linode
   email: docs@linode.com

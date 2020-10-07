@@ -1,4 +1,5 @@
 ---
+slug: websites-with-nginx-on-fedora-12
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: transfer-files-with-winscp-on-windows
 author:
   name: Linode
   email: docs@linode.com

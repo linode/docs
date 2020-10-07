@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-docker-compose
 author:
   name: Linode
   email: docs@linode.com

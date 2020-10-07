@@ -1,4 +1,5 @@
 ---
+slug: apache-tomcat-on-centos-8
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-nginx-ingress-on-linode-kubernetes-engine
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-ejabberd-for-instant-messaging-on-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

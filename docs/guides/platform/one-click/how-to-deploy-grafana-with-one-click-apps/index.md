@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-grafana-with-one-click-apps
 author:
   name: Linode Community
   email: docs@linode.com

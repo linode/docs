@@ -1,4 +1,5 @@
 ---
+slug: nginx-phpfastcgi-ubuntu-14-04
 deprecated: true
 author:
   name: Linode

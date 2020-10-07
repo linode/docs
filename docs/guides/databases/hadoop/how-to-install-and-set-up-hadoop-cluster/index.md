@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-and-set-up-hadoop-cluster
 author:
   name: Florent Houbart
   email: docs@Linode.com

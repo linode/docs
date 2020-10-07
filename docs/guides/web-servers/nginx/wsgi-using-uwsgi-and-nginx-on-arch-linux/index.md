@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-arch-linux
 deprecated: true
 author:
   name: Linode

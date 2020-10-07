@@ -1,4 +1,5 @@
 ---
+slug: left-4-dead-2-multiplayer-server-installation
 author:
     name: Linode Community
     email: docs@linode.com

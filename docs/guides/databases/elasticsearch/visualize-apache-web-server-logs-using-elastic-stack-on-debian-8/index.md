@@ -1,4 +1,5 @@
 ---
+slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-8
 author:
   name: Linode
   email: docs@linode.com

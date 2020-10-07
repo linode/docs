@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-the-linode-api
 author:
   name: Jared Kobos
   email: docs@linode.com

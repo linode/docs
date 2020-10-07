@@ -1,4 +1,5 @@
 ---
+slug: how-to-resell-linode-services
 author:
   name: Linode Community
   email: docs@linode.com

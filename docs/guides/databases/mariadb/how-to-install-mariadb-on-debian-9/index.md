@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-mariadb-on-debian-9
 author:
   name: Linode Community
   email: docs@linode.com

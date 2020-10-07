@@ -1,4 +1,5 @@
 ---
+slug: update-dns-at-common-name-server-authorities
 author:
   name: Nathan Melehan
   email: docs@linode.com

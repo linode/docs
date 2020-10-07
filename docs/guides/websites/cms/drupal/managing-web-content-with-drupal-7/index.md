@@ -1,4 +1,5 @@
 ---
+slug: managing-web-content-with-drupal-7
 author:
   name: Linode
   email: docs@linode.com

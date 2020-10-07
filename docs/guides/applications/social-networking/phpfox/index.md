@@ -1,4 +1,5 @@
 ---
+slug: phpfox
 author:
   name: Linode
   email: docs@linode.com

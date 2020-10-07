@@ -1,4 +1,5 @@
 ---
+slug: install-configure-run-spark-on-top-of-hadoop-yarn-cluster
 author:
   name: Florent Houbart
   email: docs@linode.com

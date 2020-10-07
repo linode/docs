@@ -1,4 +1,5 @@
 ---
+slug: install-a-chef-server-workstation-on-ubuntu-14-04
 deprecated: true
 deprecated_link: 'applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/'
 author:

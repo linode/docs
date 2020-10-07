@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-instances-shortguide
 author:
   name: Linode
   email: docs@linode.com

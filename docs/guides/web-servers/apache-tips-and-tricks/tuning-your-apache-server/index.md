@@ -1,4 +1,5 @@
 ---
+slug: tuning-your-apache-server
 author:
   name: Elle Krout
   email: ekrout@linode.com

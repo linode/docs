@@ -1,4 +1,5 @@
 ---
+slug: install-openvas-on-ubuntu-16-04
 author:
   name: Phil Zona
   email: docs@linode.com

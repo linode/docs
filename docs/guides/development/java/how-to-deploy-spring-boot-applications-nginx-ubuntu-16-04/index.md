@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04
 author:
   name: Sam Foo
   email: docs@linode.com

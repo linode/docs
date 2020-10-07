@@ -1,4 +1,5 @@
 ---
+slug: using-fail2ban-to-secure-your-server-a-tutorial
 author:
   name: Linode
 description: 'This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'

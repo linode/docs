@@ -1,4 +1,5 @@
 ---
+slug: install-graphite-and-grafana
 author:
   name: Jared Kobos
   email: docs@linode.com

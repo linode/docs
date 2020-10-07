@@ -1,4 +1,5 @@
 ---
+slug: cloud-invoices-shortguide
 author:
   name: Linode
   email: docs@linode.com

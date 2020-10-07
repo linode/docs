@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-openjdk-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com

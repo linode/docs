@@ -1,4 +1,5 @@
 ---
+slug: create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy
 author:
   name: Kulshekhar Kabra
   email: docs@linode.com

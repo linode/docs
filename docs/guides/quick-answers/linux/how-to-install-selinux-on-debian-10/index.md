@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-selinux-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com

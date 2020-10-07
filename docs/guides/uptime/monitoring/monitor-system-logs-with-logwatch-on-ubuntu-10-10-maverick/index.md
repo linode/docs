@@ -1,4 +1,5 @@
 ---
+slug: monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick
 deprecated: true
 author:
   name: Linode

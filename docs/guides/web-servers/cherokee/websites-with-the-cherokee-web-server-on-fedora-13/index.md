@@ -1,4 +1,5 @@
 ---
+slug: websites-with-the-cherokee-web-server-on-fedora-13
 deprecated: true
 author:
   name: Linode

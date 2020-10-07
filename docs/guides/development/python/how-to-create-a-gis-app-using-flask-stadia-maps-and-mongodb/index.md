@@ -1,4 +1,5 @@
 ---
+slug: how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb
 author:
   name: Linode Community
   email: docs@linode.com

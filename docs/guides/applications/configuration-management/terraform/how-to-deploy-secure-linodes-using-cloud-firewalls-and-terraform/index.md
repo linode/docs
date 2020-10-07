@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform
 author:
   name: Linode Community
   email: docs@linode.com

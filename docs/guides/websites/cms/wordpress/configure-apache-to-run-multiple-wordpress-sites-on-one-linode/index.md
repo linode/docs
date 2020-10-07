@@ -1,4 +1,5 @@
 ---
+slug: configure-apache-to-run-multiple-wordpress-sites-on-one-linode
 author:
   name: Jonathan Tsai
   email: docs@linode.com

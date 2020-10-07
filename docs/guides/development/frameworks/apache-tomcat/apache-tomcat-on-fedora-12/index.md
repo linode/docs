@@ -1,4 +1,5 @@
 ---
+slug: apache-tomcat-on-fedora-12
 deprecated: true
 author:
   name: Linode

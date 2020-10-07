@@ -1,4 +1,5 @@
 ---
+slug: install-a-commercial-ssl-certificate-using-cpanel
 author:
   name: Chris Ciufo
   email: docs@linode.com

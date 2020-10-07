@@ -1,4 +1,5 @@
 ---
+slug: access-your-box-account-from-your-linode
 author:
   name: Tyler Nelson
   email: tylernelson12@gmail.com

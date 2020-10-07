@@ -1,4 +1,5 @@
 ---
+slug: install-iperf-to-diagnose-network-speed-in-linux
 author:
   name: Dave R.
   email: docs@linode.com

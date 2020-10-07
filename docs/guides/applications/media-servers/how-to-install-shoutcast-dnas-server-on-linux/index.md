@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-shoutcast-dnas-server-on-linux
 author:
   name: Chris Ciufo
   email: docs@linode.com

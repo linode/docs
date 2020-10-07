@@ -1,4 +1,5 @@
 ---
+slug: nginx-and-phpfastcgi-on-fedora-14
 author:
   name: Linode
   email: docs@linode.com

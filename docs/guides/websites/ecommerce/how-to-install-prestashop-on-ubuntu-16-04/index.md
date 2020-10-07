@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-prestashop-on-ubuntu-16-04
 author:
   name: Linode Community
   email: docs@linode.com

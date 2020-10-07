@@ -1,4 +1,5 @@
 ---
+slug: a-beginners-guide-to-github
 author:
     name: Linode
     email: docs@linode.com

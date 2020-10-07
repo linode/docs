@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-docker-and-pull-images-for-container-deployment
 author:
   name: Linode Community
   email: docs@linode.com

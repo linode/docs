@@ -1,4 +1,5 @@
 ---
+slug: docker-container-communication
 author:
   name: Jared Kobos
   email: docs@linode.com

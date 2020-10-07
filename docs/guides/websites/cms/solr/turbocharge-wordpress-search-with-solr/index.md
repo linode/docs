@@ -1,4 +1,5 @@
 ---
+slug: turbocharge-wordpress-search-with-solr
 author:
     name: Karthik Shiraly
     email: docs@linode.com

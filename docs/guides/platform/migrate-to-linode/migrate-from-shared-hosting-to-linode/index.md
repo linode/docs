@@ -1,4 +1,5 @@
 ---
+slug: migrate-from-shared-hosting-to-linode
 author:
   name: Linode
   email: docs@linode.com

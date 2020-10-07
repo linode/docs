@@ -1,4 +1,5 @@
 ---
+slug: creating-accounts-on-directadmin
 author:
   name: Chris Ciufo
   email: docs@linode.com

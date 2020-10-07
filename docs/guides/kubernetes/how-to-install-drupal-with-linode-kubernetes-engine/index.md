@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-drupal-with-linode-kubernetes-engine
 author:
   name: Linode
   email: docs@linode.com

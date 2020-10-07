@@ -1,4 +1,5 @@
 ---
+slug: about-dedicated-shortguide
 author:
   name: Linode
   email: docs@linode.com

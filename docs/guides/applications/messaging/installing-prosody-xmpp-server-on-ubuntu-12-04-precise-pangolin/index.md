@@ -1,4 +1,5 @@
 ---
+slug: installing-prosody-xmpp-server-on-ubuntu-12-04-precise-pangolin
 deprecated: true
 author:
   name: Linode

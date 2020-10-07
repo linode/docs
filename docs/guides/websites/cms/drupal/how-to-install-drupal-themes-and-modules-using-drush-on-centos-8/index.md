@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-drupal-themes-and-modules-using-drush-on-centos-8
 author:
     name: Linode
     email: docs@linode.com

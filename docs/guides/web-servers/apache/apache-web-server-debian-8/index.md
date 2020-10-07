@@ -1,4 +1,5 @@
 ---
+slug: apache-web-server-debian-8
 author:
   name: Linode
   email: docs@linode.com

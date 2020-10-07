@@ -1,4 +1,5 @@
 ---
+slug: automate-builds-with-jenkins-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com

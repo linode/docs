@@ -1,4 +1,5 @@
 ---
+slug: setting-up-taskwarrior-on-ubuntu-16-10
 deprecated: true
 author:
   name: Angel Guarisma

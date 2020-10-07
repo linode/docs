@@ -1,4 +1,5 @@
 ---
+slug: mongodb-example-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: twiki-on-centos-5
 author:
   name: Linode
   email: docs@linode.com

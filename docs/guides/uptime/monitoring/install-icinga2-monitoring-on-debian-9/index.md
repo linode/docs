@@ -1,4 +1,5 @@
 ---
+slug: install-icinga2-monitoring-on-debian-9
 author:
   name: Linode Community
   email: docs@linode.com

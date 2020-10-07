@@ -1,4 +1,5 @@
 ---
+slug: how-to-choose-static-site-generator
 author:
   name: Edward Angert
   email: docs@linode.com

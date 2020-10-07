@@ -1,4 +1,5 @@
 ---
+slug: use-cpanel-to-manage-domains-and-databases
 author:
   name: Chris C.
   email: docs@linode.com

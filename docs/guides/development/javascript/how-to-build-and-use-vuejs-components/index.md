@@ -1,4 +1,5 @@
 ---
+slug: how-to-build-and-use-vuejs-components
 author:
   name: Linode Community
   email: docs@linode.com

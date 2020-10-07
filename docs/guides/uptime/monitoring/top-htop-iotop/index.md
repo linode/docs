@@ -1,4 +1,5 @@
 ---
+slug: top-htop-iotop
 author:
   name: Elle Krout
   email: ekrout@linode.com

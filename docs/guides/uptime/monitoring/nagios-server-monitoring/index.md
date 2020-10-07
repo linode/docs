@@ -1,4 +1,5 @@
 ---
+slug: nagios-server-monitoring
 deprecated: true
 author:
   name: Stan Schwertly

@@ -1,4 +1,5 @@
 ---
+slug: log-in-to-coreos-container-linux
 author:
   name: Linode
   email: docs@linode.com

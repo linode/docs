@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-ghost-cms-on-ubuntu-16-04
 author:
   name: Blago Eres
   email: blagoeres100@gmail.com

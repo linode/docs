@@ -1,4 +1,5 @@
 ---
+slug: squid-http-proxy-debian-10
 author:
   name: Linode
   email: docs@linode.com

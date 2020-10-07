@@ -1,4 +1,5 @@
 ---
+slug: install-nextcloud-talk
 author:
   name: Angel
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: cloud-images-shortguide
 author:
   name: Linode
   email: docs@linode.com

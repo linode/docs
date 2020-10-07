@@ -1,4 +1,5 @@
 ---
+slug: debian-5-lenny
 deprecated: true
 author:
   name: Linode

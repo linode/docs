@@ -1,4 +1,5 @@
 ---
+slug: secure-http-traffic-certbot
 author:
   name: Edward Angert
   email: docs@linode.com

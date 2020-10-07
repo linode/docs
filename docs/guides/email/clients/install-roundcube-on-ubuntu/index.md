@@ -1,4 +1,5 @@
 ---
+slug: install-roundcube-on-ubuntu
 author:
   name: 'Linode Community'
   email: 'docs@linode.com'

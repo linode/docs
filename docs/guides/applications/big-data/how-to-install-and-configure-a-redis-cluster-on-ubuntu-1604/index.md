@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604
 author:
   name: Sam Foo
   email: docs@linode.com

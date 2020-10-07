@@ -1,4 +1,5 @@
 ---
+slug: ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

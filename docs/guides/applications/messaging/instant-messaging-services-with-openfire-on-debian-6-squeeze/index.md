@@ -1,4 +1,5 @@
 ---
+slug: instant-messaging-services-with-openfire-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

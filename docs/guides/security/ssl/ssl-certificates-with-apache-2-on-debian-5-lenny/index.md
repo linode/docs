@@ -1,4 +1,5 @@
 ---
+slug: ssl-certificates-with-apache-2-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

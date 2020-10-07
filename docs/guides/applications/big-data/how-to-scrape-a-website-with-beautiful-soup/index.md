@@ -1,4 +1,5 @@
 ---
+slug: how-to-scrape-a-website-with-beautiful-soup
 author:
   name: Luis Cortés
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: apache-web-server-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

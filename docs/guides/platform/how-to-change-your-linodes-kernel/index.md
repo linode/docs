@@ -1,4 +1,5 @@
 ---
+slug: how-to-change-your-linodes-kernel
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: install-java-8-ppa
 author:
   name: Jared Kobos
   email: sfoo@linode.com

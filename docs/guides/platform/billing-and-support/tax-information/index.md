@@ -1,4 +1,5 @@
 ---
+slug: tax-information
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: multiple-web-servers-with-proxypass-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

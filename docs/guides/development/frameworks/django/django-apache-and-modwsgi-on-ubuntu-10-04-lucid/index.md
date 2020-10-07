@@ -1,4 +1,5 @@
 ---
+slug: django-apache-and-modwsgi-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

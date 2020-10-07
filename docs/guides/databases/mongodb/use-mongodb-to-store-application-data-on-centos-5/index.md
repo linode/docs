@@ -1,4 +1,5 @@
 ---
+slug: use-mongodb-to-store-application-data-on-centos-5
 deprecated: true
 author:
   name: Linode

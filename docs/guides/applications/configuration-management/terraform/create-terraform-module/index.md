@@ -1,4 +1,5 @@
 ---
+slug: create-terraform-module
 author:
   name: Linode Community
   email: docs@linode.com

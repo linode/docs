@@ -1,4 +1,5 @@
 ---
+slug: images-deploy-from-image-shortguide
 author:
   name: Linode
   email: docs@linode.com

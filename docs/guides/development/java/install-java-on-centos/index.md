@@ -1,4 +1,5 @@
 ---
+slug: install-java-on-centos
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com

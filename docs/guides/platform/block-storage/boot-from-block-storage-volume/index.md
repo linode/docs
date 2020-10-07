@@ -1,4 +1,5 @@
 ---
+slug: boot-from-block-storage-volume
 author:
   name: Linode
   email: docs@linode.com

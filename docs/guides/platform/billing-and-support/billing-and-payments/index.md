@@ -1,4 +1,5 @@
 ---
+slug: billing-and-payments
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: jupyter-notebook-on-jekyll
 author:
   name: Sam Foo
   email: docs@linode.com

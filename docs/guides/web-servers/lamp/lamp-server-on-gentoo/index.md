@@ -1,4 +1,5 @@
 ---
+slug: lamp-server-on-gentoo
 deprecated: true
 author:
   name: James Stewart

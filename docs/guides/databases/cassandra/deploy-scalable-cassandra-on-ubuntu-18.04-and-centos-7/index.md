@@ -1,4 +1,5 @@
 ---
+slug: deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7
 author:
    name: Andrew Lescher
    email: docs@linode.com

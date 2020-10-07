@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-apps-on-kubernetes-with-helm-2
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-a-new-linode-using-a-stackscript
 author:
   name: Linode
   email: docs@linode.com

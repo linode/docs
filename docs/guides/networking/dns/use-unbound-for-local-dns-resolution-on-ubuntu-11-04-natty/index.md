@@ -1,4 +1,5 @@
 ---
+slug: use-unbound-for-local-dns-resolution-on-ubuntu-11-04-natty
 deprecated: true
 author:
   name: Linode

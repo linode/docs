@@ -1,4 +1,5 @@
 ---
+slug: install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04
 author:
     name: Linode Community
     email: docs@linode.com

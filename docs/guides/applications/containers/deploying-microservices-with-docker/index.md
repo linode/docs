@@ -1,4 +1,5 @@
 ---
+slug: deploying-microservices-with-docker
 author:
   name: Bob Strecansky
 description: 'This guide describes how to effectively use Docker in production using a sample NGINX/Flask/Gunicorn/Redis/Postgresql Application Stack.'

@@ -1,4 +1,5 @@
 ---
+slug: track-bugs-and-manage-development-with-bug-genie
 author:
   name: Linode
   email: docs@linode.com

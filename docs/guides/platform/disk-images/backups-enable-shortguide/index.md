@@ -1,4 +1,5 @@
 ---
+slug: backups-enable-shortguide
 author:
   name: Linode
   email: docs@linode.com

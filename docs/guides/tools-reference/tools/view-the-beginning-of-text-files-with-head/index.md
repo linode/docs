@@ -1,4 +1,5 @@
 ---
+slug: view-the-beginning-of-text-files-with-head
 author:
   name: Linode
   email: docs@linode.com

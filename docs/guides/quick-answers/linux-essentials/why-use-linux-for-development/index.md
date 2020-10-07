@@ -1,4 +1,5 @@
 ---
+slug: why-use-linux-for-development
 author:
   name: Linode
   email: docs@linode.com

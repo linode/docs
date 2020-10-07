@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-rshiny-server-on-ubuntu-and-debian
 author:
   name: Jared Kobos
   email: docs@linode.com

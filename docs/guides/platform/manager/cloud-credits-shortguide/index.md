@@ -1,4 +1,5 @@
 ---
+slug: cloud-credits-shortguide
 author:
   name: Linode
   email: docs@linode.com

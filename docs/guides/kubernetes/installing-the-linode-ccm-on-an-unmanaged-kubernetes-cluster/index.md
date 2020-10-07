@@ -1,4 +1,5 @@
 ---
+slug: installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster
 author:
   name: Linode Community
   email: docs@linode.com

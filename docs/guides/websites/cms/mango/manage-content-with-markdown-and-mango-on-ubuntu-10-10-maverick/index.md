@@ -1,4 +1,5 @@
 ---
+slug: manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick
 author:
   name: Linode
   email: docs@linode.com

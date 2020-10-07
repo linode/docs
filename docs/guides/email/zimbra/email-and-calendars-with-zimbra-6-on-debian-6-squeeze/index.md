@@ -1,4 +1,5 @@
 ---
+slug: email-and-calendars-with-zimbra-6-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-apache-cassandra-on-debian-9
 author:
   name: Linode Community
   email: docs@linode.com

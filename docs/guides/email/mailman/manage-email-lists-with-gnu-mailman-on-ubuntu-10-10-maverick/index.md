@@ -1,4 +1,5 @@
 ---
+slug: manage-email-lists-with-gnu-mailman-on-ubuntu-10-10-maverick
 deprecated: true
 author:
   name: Linode

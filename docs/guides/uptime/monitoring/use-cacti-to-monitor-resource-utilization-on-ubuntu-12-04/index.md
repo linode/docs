@@ -1,4 +1,5 @@
 ---
+slug: use-cacti-to-monitor-resource-utilization-on-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

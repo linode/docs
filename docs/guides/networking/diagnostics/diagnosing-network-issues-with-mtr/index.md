@@ -1,4 +1,5 @@
 ---
+slug: diagnosing-network-issues-with-mtr
 author:
   name: Brett Kaplan
   email: docs@linode.com

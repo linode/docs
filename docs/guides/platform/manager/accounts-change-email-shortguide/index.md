@@ -1,4 +1,5 @@
 ---
+slug: accounts-change-email-shortguide
 author:
   name: Linode
   email: docs@linode.com

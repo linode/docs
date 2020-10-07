@@ -1,4 +1,5 @@
 ---
+slug: deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04
 deprecated: true
 author:
   name: Lukas Sabota

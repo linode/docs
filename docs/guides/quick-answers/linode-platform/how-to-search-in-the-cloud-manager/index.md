@@ -1,4 +1,5 @@
 ---
+slug: how-to-search-in-the-cloud-manager
 author:
   name: Linode
   email: docs@linode.com

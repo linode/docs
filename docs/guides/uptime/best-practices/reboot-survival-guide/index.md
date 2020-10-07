@@ -1,4 +1,5 @@
 ---
+slug: reboot-survival-guide
 author:
   name: Alex Fornuto
   email: docs@linode.com

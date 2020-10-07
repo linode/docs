@@ -1,4 +1,5 @@
 ---
+slug: remote-access
 author:
   name: Linode
   email: docs@linode.com

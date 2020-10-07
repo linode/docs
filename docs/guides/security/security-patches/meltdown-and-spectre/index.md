@@ -1,4 +1,5 @@
 ---
+slug: meltdown-and-spectre
 author:
   name: Linode
   email: docs@linode.com

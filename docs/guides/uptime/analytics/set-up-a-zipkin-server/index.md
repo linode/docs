@@ -1,4 +1,5 @@
 ---
+slug: set-up-a-zipkin-server
 author:
   name: Luis Cortes
   email: docs@linode.com

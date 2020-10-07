@@ -1,4 +1,5 @@
 ---
+slug: manage-source-code-versions-with-subversion
 deprecated: true
 author:
   name: Linode

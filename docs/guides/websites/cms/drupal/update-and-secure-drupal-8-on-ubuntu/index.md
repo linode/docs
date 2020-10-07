@@ -1,4 +1,5 @@
 ---
+slug: update-and-secure-drupal-8-on-ubuntu
 author:
     name: Edward Angert
     email: docs@linode.com

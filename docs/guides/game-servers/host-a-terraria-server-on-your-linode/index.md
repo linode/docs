@@ -1,4 +1,5 @@
 ---
+slug: host-a-terraria-server-on-your-linode
 author:
   name: Linode Community
   email: docs@linode.com

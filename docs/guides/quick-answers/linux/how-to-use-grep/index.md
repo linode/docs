@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-grep
 author:
   name: Phil Zona
   email: docs@linode.com

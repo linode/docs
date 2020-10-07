@@ -1,4 +1,5 @@
 ---
+slug: how-to-configure-git
 author:
   name: Linode
   email: docs@linode.com

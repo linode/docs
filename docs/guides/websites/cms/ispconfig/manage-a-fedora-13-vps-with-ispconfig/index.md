@@ -1,4 +1,5 @@
 ---
+slug: manage-a-fedora-13-vps-with-ispconfig
 deprecated: true
 author:
   name: Linode

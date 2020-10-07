@@ -1,4 +1,5 @@
 ---
+slug: using-mysql-relational-databases-on-arch-linux
 deprecated: true
 author:
   name: Alex Fornuto

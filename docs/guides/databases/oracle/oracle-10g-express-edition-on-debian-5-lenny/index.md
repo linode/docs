@@ -1,4 +1,5 @@
 ---
+slug: oracle-10g-express-edition-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

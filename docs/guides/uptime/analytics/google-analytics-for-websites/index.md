@@ -1,4 +1,5 @@
 ---
+slug: google-analytics-for-websites
 author:
   name: Elle Krout
   email: ekrout@linode.com

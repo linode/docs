@@ -1,4 +1,5 @@
 ---
+slug: manage-mysql-with-phpmyadmin-on-debian-5-lenny
 author:
   name: Brett Kaplan
   email: docs@linode.com

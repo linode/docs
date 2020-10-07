@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-get-help-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: hosting-a-website-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com

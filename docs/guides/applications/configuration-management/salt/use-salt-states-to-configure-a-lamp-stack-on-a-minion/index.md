@@ -1,4 +1,5 @@
 ---
+slug: use-salt-states-to-configure-a-lamp-stack-on-a-minion
 author:
     name: Linode
     email: docs@linode.com

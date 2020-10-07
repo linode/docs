@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-version-control
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: kube-controller-manager-definition-shortguide
 author:
   name: Linode
   email: docs@linode.com

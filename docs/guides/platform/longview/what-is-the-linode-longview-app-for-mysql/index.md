@@ -1,4 +1,5 @@
 ---
+slug: what-is-the-linode-longview-app-for-mysql
 author:
   name: Linode
   email: docs@linode.com

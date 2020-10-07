@@ -1,4 +1,5 @@
 ---
+slug: how-to-navigate-less-shortguide
 author:
   name: Nathan Melehan
   email: docs@linode.com

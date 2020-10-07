@@ -1,4 +1,5 @@
 ---
+slug: redis-on-centos-5
 deprecated: true
 author:
   name: Linode

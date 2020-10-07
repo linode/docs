@@ -1,4 +1,5 @@
 ---
+slug: install-dont-starve-together-game-server-on-ubuntu
 author:
     name: Linode Community
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin
 deprecated: true
 author:
   name: Linode

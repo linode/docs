@@ -1,4 +1,5 @@
 ---
+slug: install-nixos-on-linode
 author:
   name: Andrew Miller
   email: docs@linode.com

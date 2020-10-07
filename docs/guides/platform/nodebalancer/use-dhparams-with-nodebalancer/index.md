@@ -1,4 +1,5 @@
 ---
+slug: use-dhparams-with-nodebalancer
 author:
   name: Nathan Melehan
   email: nmelehan@linode.com

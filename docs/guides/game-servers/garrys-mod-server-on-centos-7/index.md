@@ -1,4 +1,5 @@
 ---
+slug: garrys-mod-server-on-centos-7
 author:
   name: Julian Meyer
   email: --

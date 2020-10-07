@@ -1,4 +1,5 @@
 ---
+slug: an-overview-of-common-cloud-manager-errors
 author:
   name: Linode
   email: docs@linode.com

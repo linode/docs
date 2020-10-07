@@ -1,4 +1,5 @@
 ---
+slug: kubernetes-download-kubeconfig-shortguide
 author:
   name: Linode
   email: docs@linode.com

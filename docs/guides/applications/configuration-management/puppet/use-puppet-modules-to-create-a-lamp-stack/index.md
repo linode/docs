@@ -1,4 +1,5 @@
 ---
+slug: use-puppet-modules-to-create-a-lamp-stack
 author:
     name: Elle Krout
     email: ekrout@linode.com

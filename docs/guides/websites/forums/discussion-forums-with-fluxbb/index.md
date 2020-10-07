@@ -1,4 +1,5 @@
 ---
+slug: discussion-forums-with-fluxbb
 author:
   name: Linode
   email: docs@linode.com

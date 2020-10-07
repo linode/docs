@@ -1,4 +1,5 @@
 ---
+slug: provide-authoritative-dns-services-with-nsd-on-debian-5-lenny
 deprecated: true
 author:
   name: Brett Kaplan

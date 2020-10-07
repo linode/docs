@@ -1,4 +1,5 @@
 ---
+slug: running-graphic-software-xforwarding-debian
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

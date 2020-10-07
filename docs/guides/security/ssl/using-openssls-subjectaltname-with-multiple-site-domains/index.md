@@ -1,4 +1,5 @@
 ---
+slug: using-openssls-subjectaltname-with-multiple-site-domains
 author:
   name: Linode
   email: docs@linode.com

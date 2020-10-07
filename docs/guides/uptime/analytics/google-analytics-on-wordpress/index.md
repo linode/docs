@@ -1,4 +1,5 @@
 ---
+slug: google-analytics-on-wordpress
 author:
   name: Elle Krout
   email: ekrout@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: synchronize-files-with-unison
 deprecated: true
 author:
   name: Linode

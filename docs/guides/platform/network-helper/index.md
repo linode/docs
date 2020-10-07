@@ -1,4 +1,5 @@
 ---
+slug: network-helper
 author:
   name: Linode
   email: docs@linode.com

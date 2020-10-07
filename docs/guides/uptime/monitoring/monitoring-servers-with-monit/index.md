@@ -1,4 +1,5 @@
 ---
+slug: monitoring-servers-with-monit
 author:
     name: Linode Community
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: install-cpanel-on-centos
 author:
   name: Linode
   email: docs@Linode.com

@@ -1,4 +1,5 @@
 ---
+slug: troubleshooting-dns
 author:
   name: Linode
   email: docs@linode.com

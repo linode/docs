@@ -1,4 +1,5 @@
 ---
+slug: linode-images
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: set-up-an-ipv6-tunnel-on-your-linode
 author:
   name: Linode
   email: docs@linode.com

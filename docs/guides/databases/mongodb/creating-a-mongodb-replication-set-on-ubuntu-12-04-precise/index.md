@@ -1,4 +1,5 @@
 ---
+slug: creating-a-mongodb-replication-set-on-ubuntu-12-04-precise
 deprecated: true
 author:
   name: Linode

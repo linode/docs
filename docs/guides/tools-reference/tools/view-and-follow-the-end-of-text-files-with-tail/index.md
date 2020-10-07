@@ -1,4 +1,5 @@
 ---
+slug: view-and-follow-the-end-of-text-files-with-tail
 author:
   name: Linode
   email: docs@linode.com

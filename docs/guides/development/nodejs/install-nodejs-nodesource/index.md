@@ -1,4 +1,5 @@
 ---
+slug: install-nodejs-nodesource
 author:
   name: Jared Kobos
   email: docs@linode.com

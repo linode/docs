@@ -1,4 +1,5 @@
 ---
+slug: managing-mysql-with-phpmyadmin-on-centos-6-4
 author:
     name: Linode
     email: docs@linode.com

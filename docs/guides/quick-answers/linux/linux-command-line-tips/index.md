@@ -1,4 +1,5 @@
 ---
+slug: linux-command-line-tips
 author:
   name: Edward Angert
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-hashicorp-vault-for-secret-management
 author:
   name: Tyler Langlois
   email: ty@tjll.net

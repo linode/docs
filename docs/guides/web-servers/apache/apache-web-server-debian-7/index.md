@@ -1,4 +1,5 @@
 ---
+slug: apache-web-server-debian-7
 deprecated: true
 author:
   name: Linode

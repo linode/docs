@@ -1,4 +1,5 @@
 ---
+slug: django-apache-and-modwsgi-on-centos-5
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: running-a-mail-server
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: why-learn-julia
 author:
   name: Linode
   email: docs@linode.com

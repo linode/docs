@@ -1,4 +1,5 @@
 ---
+slug: lamp-server-on-fedora-20
 deprecated: true
 author:
   name: Alex Fornuto

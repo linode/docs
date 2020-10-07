@@ -1,4 +1,5 @@
 ---
+slug: monitor-system-logs-with-logwatch-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

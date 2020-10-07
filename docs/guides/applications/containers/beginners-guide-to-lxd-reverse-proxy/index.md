@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-to-lxd-reverse-proxy
 author:
   name: Linode
   email: docs@linode.com

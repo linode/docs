@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-chef
 author:
   name: Elle Krout
   email: ekrout@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: how-to-create-and-use-single-file-components-vuejs
 author:
   name: Linode Community
   email: docs@linode.com

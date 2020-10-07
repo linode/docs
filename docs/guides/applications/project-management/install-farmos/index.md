@@ -1,4 +1,5 @@
 ---
+slug: install-farmos
 author:
   name: Angel G
   email: docs@linode.com

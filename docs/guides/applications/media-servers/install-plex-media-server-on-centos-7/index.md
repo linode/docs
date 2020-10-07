@@ -1,4 +1,5 @@
 ---
+slug: install-plex-media-server-on-centos-7
 author:
   name: Nick Brewer
   email: nbrewer@linode.com

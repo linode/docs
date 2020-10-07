@@ -1,4 +1,5 @@
 ---
+slug: deploy-smalltalk-applications-with-seaside
 author:
   name: Linode
   email: docs@linode.com

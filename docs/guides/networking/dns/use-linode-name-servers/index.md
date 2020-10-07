@@ -1,4 +1,5 @@
 ---
+slug: use-linode-name-servers
 author:
   name: Nathan Melehan
   email: nmelehan@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-varnish-cache
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: secure-communications-with-openvpn-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

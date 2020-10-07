@@ -1,4 +1,5 @@
 ---
+slug: how-to-move-machine-learning-model-to-production
 author:
   name: Jared Kobos
   email: docs@linode.com

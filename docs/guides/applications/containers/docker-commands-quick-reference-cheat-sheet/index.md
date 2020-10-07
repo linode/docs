@@ -1,4 +1,5 @@
 ---
+slug: docker-commands-quick-reference-cheat-sheet
 author:
   name: Linode
   email: docs@linode.com

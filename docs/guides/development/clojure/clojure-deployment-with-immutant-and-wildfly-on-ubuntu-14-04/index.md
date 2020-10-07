@@ -1,4 +1,5 @@
 ---
+slug: clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04
 author:
     name: Linode Community
     email: docs@linode.com

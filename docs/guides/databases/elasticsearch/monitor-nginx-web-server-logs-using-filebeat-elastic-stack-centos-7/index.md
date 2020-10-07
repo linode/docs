@@ -1,4 +1,5 @@
 ---
+slug: monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7
 author:
   name: Linode
   email: docs@linode.com

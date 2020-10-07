@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-nodejs-and-nginx-on-debian-10
 author:
     name: Linode
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: nginx-and-perlfastcgi-on-arch-linux
 deprecated: true
 author:
   name: Linode

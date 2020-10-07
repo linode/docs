@@ -1,4 +1,5 @@
 ---
+slug: nginx-and-perlfastcgi-on-ubuntu-10-10-maverick
 deprecated: true
 author:
   name: Linode

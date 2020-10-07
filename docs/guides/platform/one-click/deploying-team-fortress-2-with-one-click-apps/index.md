@@ -1,4 +1,5 @@
 ---
+slug: deploying-team-fortress-2-with-one-click-apps
 author:
   name: Linode Community
   email: docs@linode.com

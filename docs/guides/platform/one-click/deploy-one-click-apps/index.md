@@ -1,4 +1,5 @@
 ---
+slug: deploy-one-click-apps
 author:
   name: Linode Community
   email: docs@linode.com

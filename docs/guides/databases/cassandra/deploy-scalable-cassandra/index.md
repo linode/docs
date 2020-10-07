@@ -1,4 +1,5 @@
 ---
+slug: deploy-scalable-cassandra
 author:
    name: Andrew Lescher
    email: docs@linode.com

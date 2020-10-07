@@ -1,4 +1,5 @@
 ---
+slug: squid-http-proxy-ubuntu-12-04
 deprecated: true
 author:
   name: Alex Fornuto

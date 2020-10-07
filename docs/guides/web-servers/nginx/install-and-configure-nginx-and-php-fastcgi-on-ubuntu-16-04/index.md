@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04
 deprecated: true
 author:
   name: Linode

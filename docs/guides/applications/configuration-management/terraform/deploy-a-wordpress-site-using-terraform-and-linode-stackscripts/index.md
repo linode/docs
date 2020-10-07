@@ -1,4 +1,5 @@
 ---
+slug: deploy-a-wordpress-site-using-terraform-and-linode-stackscripts
 author:
   name: Linode Community
   email: docs@linode.com

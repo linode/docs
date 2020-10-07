@@ -1,4 +1,5 @@
 ---
+slug: wordpress-with-docker-compose
 author:
   name: Nathan Melehan
   email: nmelehan@linode.com

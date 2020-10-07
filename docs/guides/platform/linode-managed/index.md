@@ -1,4 +1,5 @@
 ---
+slug: linode-managed
 author:
   name: Linode
   email: docs@linode.com

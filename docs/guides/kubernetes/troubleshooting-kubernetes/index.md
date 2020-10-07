@@ -1,4 +1,5 @@
 ---
+slug: troubleshooting-kubernetes
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-docker-and-deploy-a-lamp-stack
 author:
   name: Joe D.
   email: docs@linode.com

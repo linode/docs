@@ -1,4 +1,5 @@
 ---
+slug: getting-started
 author:
   name: Linode
   email: docs@linode.com

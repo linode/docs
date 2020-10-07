@@ -1,4 +1,5 @@
 ---
+slug: introduction-ci-cd
 author:
   name: Linode
   email: docs@linode.com

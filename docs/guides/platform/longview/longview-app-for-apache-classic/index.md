@@ -1,4 +1,5 @@
 ---
+slug: longview-app-for-apache-classic
 author:
   name: Linode
   email: docs@linode.com

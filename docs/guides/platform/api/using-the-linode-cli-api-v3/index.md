@@ -1,4 +1,5 @@
 ---
+slug: using-the-linode-cli-api-v3
 author:
   name: Linode
   email: docs@linode.com

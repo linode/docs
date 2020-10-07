@@ -1,4 +1,5 @@
 ---
+slug: install-subsonic-media-server-on-ubuntu-or-debian
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

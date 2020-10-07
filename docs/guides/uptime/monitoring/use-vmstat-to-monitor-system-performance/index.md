@@ -1,4 +1,5 @@
 ---
+slug: use-vmstat-to-monitor-system-performance
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: configure-master-master-mysql-database-replication
 author:
   name: James Stewart
   email: jstewart@linode.com

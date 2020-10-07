@@ -1,4 +1,5 @@
 ---
+slug: use-logrotate-to-manage-log-files
 author:
   name: Linode
   email: docs@linode.com

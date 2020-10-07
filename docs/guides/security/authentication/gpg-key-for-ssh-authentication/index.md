@@ -1,4 +1,5 @@
 ---
+slug: gpg-key-for-ssh-authentication
 author:
   name: Linode Community
   email: docs@linode.com

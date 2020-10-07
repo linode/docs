@@ -1,4 +1,5 @@
 ---
+slug: using-apache-for-proxy-and-clustering-services-on-fedora-14
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: enable-backups-on-a-linode
 author:
   name: Nick Brewer
   email: docs@linode.com

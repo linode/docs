@@ -1,4 +1,5 @@
 ---
+slug: using-mysql-relational-databases-on-fedora-20
 deprecated: true
 author:
   name: Alex Fornuto

@@ -1,4 +1,5 @@
 ---
+slug: compile-caddy-from-source
 author:
   name: Linode
   email: docs@linode.com

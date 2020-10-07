@@ -1,4 +1,5 @@
 ---
+slug: backups-restore-to-an-existing-linode-shortguide
 author:
   name: Linode
   email: docs@linode.com

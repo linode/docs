@@ -1,4 +1,5 @@
 ---
+slug: mitigating-memcached-amplification-attacks
 author:
   name: Linode
   email: docs@linode.com

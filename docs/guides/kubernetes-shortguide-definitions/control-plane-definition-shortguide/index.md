@@ -1,4 +1,5 @@
 ---
+slug: control-plane-definition-shortguide
 author:
   name: Linode
   email: docs@linode.com

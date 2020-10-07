@@ -1,4 +1,5 @@
 ---
+slug: inspecting-network-information-with-netstat
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

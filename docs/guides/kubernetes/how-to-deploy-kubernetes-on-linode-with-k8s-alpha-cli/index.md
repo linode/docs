@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: create-tag-and-upload-your-own-docker-image
 author:
   name: Linode Community
   email: docs@linode.com

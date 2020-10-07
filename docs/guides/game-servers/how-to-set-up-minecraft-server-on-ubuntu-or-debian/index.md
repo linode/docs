@@ -1,4 +1,5 @@
 ---
+slug: how-to-set-up-minecraft-server-on-ubuntu-or-debian
 author:
   name: Alex Fornuto
   email: docs@linode.com

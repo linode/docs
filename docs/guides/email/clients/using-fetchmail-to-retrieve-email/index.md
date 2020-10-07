@@ -1,4 +1,5 @@
 ---
+slug: using-fetchmail-to-retrieve-email
 author:
   name: Linode
   email: docs@linode.com

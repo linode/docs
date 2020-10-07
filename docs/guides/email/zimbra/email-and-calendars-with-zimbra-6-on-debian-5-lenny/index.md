@@ -1,4 +1,5 @@
 ---
+slug: email-and-calendars-with-zimbra-6-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

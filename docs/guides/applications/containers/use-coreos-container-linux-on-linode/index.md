@@ -1,4 +1,5 @@
 ---
+slug: use-coreos-container-linux-on-linode
 author:
   name: Linode
   email: docs@linode.com

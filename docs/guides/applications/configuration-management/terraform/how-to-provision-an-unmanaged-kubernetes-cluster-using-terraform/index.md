@@ -1,4 +1,5 @@
 ---
+slug: how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform
 author:
   name: Linode Community
   email: docs@linode.com

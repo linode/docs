@@ -1,4 +1,5 @@
 ---
+slug: manage-a-debian-5-lenny-vps-with-ispconfig
 deprecated: true
 author:
   name: Linode

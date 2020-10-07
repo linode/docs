@@ -1,4 +1,5 @@
 ---
+slug: create-an-aggregate-blog-using-planet-venus-on-ubuntu-12-04-precise-pangolin
 author:
   name: Linode
   email: docs@linode.com

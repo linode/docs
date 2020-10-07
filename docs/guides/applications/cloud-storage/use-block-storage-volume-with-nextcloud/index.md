@@ -1,4 +1,5 @@
 ---
+slug: use-block-storage-volume-with-nextcloud
 author:
   name: Jared Kobos
   email: docs@linode.com

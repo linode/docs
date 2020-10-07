@@ -1,4 +1,5 @@
 ---
+slug: custom-compiled-kernel-with-pvgrub-on-arch
 deprecated: true
 author:
     name: Linode

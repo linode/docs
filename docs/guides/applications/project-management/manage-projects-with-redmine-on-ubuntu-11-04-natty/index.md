@@ -1,4 +1,5 @@
 ---
+slug: manage-projects-with-redmine-on-ubuntu-11-04-natty
 author:
   name: Linode
   email: docs@linode.com

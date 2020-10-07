@@ -1,4 +1,5 @@
 ---
+slug: add-caa-dns-records
 author:
   name: Linode
   email: docs@linode.com

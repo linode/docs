@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails-with-nginx-on-ubuntu-12-04-precise
 deprecated: true
 author:
   name: Jonathan Frederickson

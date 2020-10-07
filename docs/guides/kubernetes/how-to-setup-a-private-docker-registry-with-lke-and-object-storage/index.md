@@ -1,4 +1,5 @@
 ---
+slug: how-to-setup-a-private-docker-registry-with-lke-and-object-storage
 author:
   name: Linode Community
   email: docs@linode.com

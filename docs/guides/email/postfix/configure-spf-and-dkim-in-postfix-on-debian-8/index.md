@@ -1,4 +1,5 @@
 ---
+slug: configure-spf-and-dkim-in-postfix-on-debian-8
 author:
     name: Linode Community
     email: contribute@linode.com

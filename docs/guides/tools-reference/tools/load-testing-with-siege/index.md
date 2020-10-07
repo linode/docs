@@ -1,4 +1,5 @@
 ---
+slug: load-testing-with-siege
 author:
   name: Elle Krout
   email: ekrout@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: when-and-why-to-use-docker
 author:
   name: Jared Kobos
   email: docs@linode.com

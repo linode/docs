@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-and-configure-wordpress
 author:
   name: Linode
   email: docs@linode.com

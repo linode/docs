@@ -1,4 +1,5 @@
 ---
+slug: apache-and-modwsgi-on-fedora-14
 deprecated: true
 author:
   name: Linode

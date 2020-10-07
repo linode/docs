@@ -1,4 +1,5 @@
 ---
+slug: apache-web-server-on-centos-6
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

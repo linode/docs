@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-wordprress-using-wp-cli-on-debian-9
 author:
     name: Linode Community
     email: docs@linode.com

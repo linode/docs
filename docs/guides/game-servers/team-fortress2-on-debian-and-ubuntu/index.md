@@ -1,4 +1,5 @@
 ---
+slug: team-fortress2-on-debian-and-ubuntu
 author:
   name: Elle Krout
   email: ekrout@linode.com

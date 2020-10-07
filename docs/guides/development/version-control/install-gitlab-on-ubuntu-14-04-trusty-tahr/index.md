@@ -1,4 +1,5 @@
 ---
+slug: install-gitlab-on-ubuntu-14-04-trusty-tahr
 author:
   name: Linode Community
   email: docs@linode.com

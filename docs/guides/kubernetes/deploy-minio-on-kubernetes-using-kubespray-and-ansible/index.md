@@ -1,4 +1,5 @@
 ---
+slug: deploy-minio-on-kubernetes-using-kubespray-and-ansible
 author:
   name: Sam Foo
   email: docs@linode.com

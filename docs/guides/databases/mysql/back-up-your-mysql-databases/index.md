@@ -1,4 +1,5 @@
 ---
+slug: back-up-your-mysql-databases
 deprecated: true
 author:
   name: Brett Kaplan

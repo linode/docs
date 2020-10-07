@@ -1,4 +1,5 @@
 ---
+slug: install-mastodon-on-ubuntu-1604
 author:
   name: Linode
   email: docs@linode.com

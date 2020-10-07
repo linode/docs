@@ -1,4 +1,5 @@
 ---
+slug: manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid
 deprecated: true
 author:
   name: Linode

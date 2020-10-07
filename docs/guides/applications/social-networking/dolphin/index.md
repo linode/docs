@@ -1,4 +1,5 @@
 ---
+slug: dolphin
 author:
   name: Chris Ciufo
   email: docs@linode.com

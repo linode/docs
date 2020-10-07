@@ -1,4 +1,5 @@
 ---
+slug: migrate-cpanel-to-linode
 author:
   name: Nathan Melehan
   email: docs@linode.com

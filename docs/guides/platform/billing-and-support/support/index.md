@@ -1,4 +1,5 @@
 ---
+slug: support
 author:
   name: Linode
   email: docs@linode.com

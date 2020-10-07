@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-dockerfiles
 author:
   name: Linode Community
   email: docs@linode.com

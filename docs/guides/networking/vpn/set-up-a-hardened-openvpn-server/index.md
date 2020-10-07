@@ -1,4 +1,5 @@
 ---
+slug: set-up-a-hardened-openvpn-server
 author:
   name: Linode
   email: docs@linode.com

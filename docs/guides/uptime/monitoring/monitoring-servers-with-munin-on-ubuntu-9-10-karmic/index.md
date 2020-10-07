@@ -1,4 +1,5 @@
 ---
+slug: monitoring-servers-with-munin-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

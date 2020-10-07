@@ -1,4 +1,5 @@
 ---
+slug: set-up-wireguard-vpn-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com

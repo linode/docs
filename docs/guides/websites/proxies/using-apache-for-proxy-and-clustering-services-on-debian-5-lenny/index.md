@@ -1,4 +1,5 @@
 ---
+slug: using-apache-for-proxy-and-clustering-services-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: install-and-run-askbot-on-ubuntu-16-04
 author:
   name: Gopal Raha
   email: gopalraha@outlook.com

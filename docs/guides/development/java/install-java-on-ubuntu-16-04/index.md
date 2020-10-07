@@ -1,4 +1,5 @@
 ---
+slug: install-java-on-ubuntu-16-04
 author:
   name: Linode Community
   email: docs@linode.com

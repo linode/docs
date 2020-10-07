@@ -1,4 +1,5 @@
 ---
+slug: install-nginx-centos
 author:
   name: Linode
   email: docs@linode.com

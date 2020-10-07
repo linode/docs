@@ -1,4 +1,5 @@
 ---
+slug: lamp-server-on-fedora-11
 deprecated: true
 author:
   name: Linode

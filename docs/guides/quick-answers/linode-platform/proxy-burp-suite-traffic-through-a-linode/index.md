@@ -1,4 +1,5 @@
 ---
+slug: proxy-burp-suite-traffic-through-a-linode
 author:
   name: Linode
   email: docs@linode.com

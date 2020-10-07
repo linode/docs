@@ -1,4 +1,5 @@
 ---
+slug: use-nginx-reverse-proxy
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com

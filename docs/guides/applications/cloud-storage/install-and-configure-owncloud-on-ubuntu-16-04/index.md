@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-owncloud-on-ubuntu-16-04
 author:
   name: Angel Guarisma
   email: docs@linode.com

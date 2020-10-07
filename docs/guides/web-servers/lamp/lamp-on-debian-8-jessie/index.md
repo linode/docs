@@ -1,4 +1,5 @@
 ---
+slug: lamp-on-debian-8-jessie
 author:
   name: Elle K.
   email: docs@linode.com

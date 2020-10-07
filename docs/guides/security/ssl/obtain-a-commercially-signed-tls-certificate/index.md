@@ -1,4 +1,5 @@
 ---
+slug: obtain-a-commercially-signed-tls-certificate
 author:
   name: Linode
   email: docs@linode.com

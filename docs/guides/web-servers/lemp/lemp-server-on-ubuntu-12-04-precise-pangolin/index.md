@@ -1,4 +1,5 @@
 ---
+slug: lemp-server-on-ubuntu-12-04-precise-pangolin
 deprecated: true
 author:
   name: Linode

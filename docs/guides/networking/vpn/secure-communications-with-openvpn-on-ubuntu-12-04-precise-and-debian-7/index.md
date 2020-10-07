@@ -1,4 +1,5 @@
 ---
+slug: secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7
 deprecated: true
 author:
   name: Alex Fornuto

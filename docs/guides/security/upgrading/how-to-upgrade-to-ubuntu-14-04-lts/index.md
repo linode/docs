@@ -1,4 +1,5 @@
 ---
+slug: how-to-upgrade-to-ubuntu-14-04-lts
 author:
   name: Dave Russell
   email: drussell@linode.com

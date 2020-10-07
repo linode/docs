@@ -1,4 +1,5 @@
 ---
+slug: lighttpd-web-server-on-ubuntu-12-04-preci
 deprecated: true
 author:
   name: Dave Messina

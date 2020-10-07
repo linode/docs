@@ -1,4 +1,5 @@
 ---
+slug: use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master
 author:
     name: Linode
 description: 'Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera in this simple tutorial.'

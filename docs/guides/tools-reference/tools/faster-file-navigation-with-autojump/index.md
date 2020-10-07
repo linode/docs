@@ -1,4 +1,5 @@
 ---
+slug: faster-file-navigation-with-autojump
 author:
   name: Sam Foo
   email: docs@linode.com

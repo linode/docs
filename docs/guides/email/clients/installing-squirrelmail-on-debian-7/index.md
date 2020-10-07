@@ -1,4 +1,5 @@
 ---
+slug: installing-squirrelmail-on-debian-7
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

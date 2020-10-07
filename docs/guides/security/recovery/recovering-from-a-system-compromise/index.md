@@ -1,4 +1,5 @@
 ---
+slug: recovering-from-a-system-compromise
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-killall-and-kill-to-stop-processes-on-linux
 author:
   name: Linode
   email: docs@linode.com

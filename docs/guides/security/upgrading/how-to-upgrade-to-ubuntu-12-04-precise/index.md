@@ -1,4 +1,5 @@
 ---
+slug: how-to-upgrade-to-ubuntu-12-04-precise
 deprecated: true
 author:
   name: Linode

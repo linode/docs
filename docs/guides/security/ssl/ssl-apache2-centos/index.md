@@ -1,4 +1,5 @@
 ---
+slug: ssl-apache2-centos
 author:
   name: Linode
   email: docs@linode.com

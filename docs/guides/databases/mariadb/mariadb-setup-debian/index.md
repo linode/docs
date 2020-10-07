@@ -1,4 +1,5 @@
 ---
+slug: mariadb-setup-debian
 author:
   name: Linode Community
   email: docs@linode.com

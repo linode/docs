@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-customize-output-shortguide
 author:
   name: Linode
   email: docs@linode.com

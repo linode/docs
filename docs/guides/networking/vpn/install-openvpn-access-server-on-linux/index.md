@@ -1,4 +1,5 @@
 ---
+slug: install-openvpn-access-server-on-linux
 author:
     name: James Stewart
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'

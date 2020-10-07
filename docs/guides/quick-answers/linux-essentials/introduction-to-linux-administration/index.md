@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-linux-administration
 author:
   name: Jared Kobos
   email: docs@linode.com

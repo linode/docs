@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-mysql-on-centos-6
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

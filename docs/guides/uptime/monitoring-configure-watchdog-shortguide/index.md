@@ -1,4 +1,5 @@
 ---
+slug: monitoring-configure-watchdog-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-object-storage-shortguide
 author:
   name: Linode
   email: docs@linode.com

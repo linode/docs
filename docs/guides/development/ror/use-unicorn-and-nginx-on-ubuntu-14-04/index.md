@@ -1,4 +1,5 @@
 ---
+slug: use-unicorn-and-nginx-on-ubuntu-14-04
 author:
     name: Linode Community
     email: docs@linode.com

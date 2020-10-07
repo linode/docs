@@ -1,4 +1,5 @@
 ---
+slug: freenas-blockstorage
 author:
   name: Edward Angert
   email: docs@linode.com

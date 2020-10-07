@@ -1,4 +1,5 @@
 ---
+slug: nginx-and-perlfastcgi-on-fedora-12
 deprecated: true
 author:
   name: Linode

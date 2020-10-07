@@ -1,4 +1,5 @@
 ---
+slug: an-intermediate-guide-to-bash-scripting
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

@@ -1,4 +1,5 @@
 ---
+slug: linux-users-and-groups
 author:
   name: Linode
   email: docs@linode.com

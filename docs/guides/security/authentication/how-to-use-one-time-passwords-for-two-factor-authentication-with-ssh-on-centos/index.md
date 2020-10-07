@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos
 author:
   name: Linode Community
   email: docs@linode.com

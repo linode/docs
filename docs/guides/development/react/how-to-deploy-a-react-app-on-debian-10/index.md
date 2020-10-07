@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-a-react-app-on-debian-10
 author:
   name: Linode
 description: This guide will show you how to deploy a React app to a Ubuntu 18.04 Linode that is running a web server. You will configure your Linode to host a React app by installing and configuring a web server, like Apache or NGINX. Then, you will configure your computer to ensure you can develop a React app locally. Finally, you will deploy all of your site's build files to your remote Linode using Rsync.

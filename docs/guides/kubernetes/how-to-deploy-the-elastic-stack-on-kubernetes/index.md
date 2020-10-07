@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-the-elastic-stack-on-kubernetes
 author:
   name: Tyler Langlois
   email: ty@tjll.net

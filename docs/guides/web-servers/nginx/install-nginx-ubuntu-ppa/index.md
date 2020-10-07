@@ -1,4 +1,5 @@
 ---
+slug: install-nginx-ubuntu-ppa
 author:
   name: Jared Kobos
   email: docs@linode.com

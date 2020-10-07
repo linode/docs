@@ -1,4 +1,5 @@
 ---
+slug: manage-an-ubuntu-9-10-karmic-vps-with-ispconfig
 deprecated: true
 author:
   name: Linode

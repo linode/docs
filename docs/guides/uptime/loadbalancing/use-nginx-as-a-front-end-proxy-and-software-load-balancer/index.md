@@ -1,4 +1,5 @@
 ---
+slug: use-nginx-as-a-front-end-proxy-and-software-load-balancer
 author:
   name: Linode
   email: docs@linode.com

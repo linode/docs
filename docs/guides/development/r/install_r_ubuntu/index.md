@@ -1,4 +1,5 @@
 ---
+slug: install_r_ubuntu
 author:
   name: Sam Foo
   email: sfoo@linode.com

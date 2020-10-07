@@ -1,4 +1,5 @@
 ---
+slug: install-direnv
 author:
   name: Leslie Salazar
 description: 'Shortguide for installing direnv'

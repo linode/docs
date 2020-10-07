@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-apache-web-server-centos-8
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: monitor-system-logs-with-logwatch-on-fedora-14
 deprecated: true
 author:
   name: Linode

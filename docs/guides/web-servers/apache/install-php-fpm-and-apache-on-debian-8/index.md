@@ -1,4 +1,5 @@
 ---
+slug: install-php-fpm-and-apache-on-debian-8
 author:
   name: Alex Fornuto
   email: docs@linode.com

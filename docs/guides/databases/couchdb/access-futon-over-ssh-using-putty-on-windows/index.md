@@ -1,4 +1,5 @@
 ---
+slug: access-futon-over-ssh-using-putty-on-windows
 author:
   name: Linode
   email: docs@linode.com

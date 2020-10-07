@@ -1,4 +1,5 @@
 ---
+slug: using-apache-for-proxy-and-clustering-services-on-ubuntu-9-10-karmic
 author:
   name: Linode
   email: docs@linode.com

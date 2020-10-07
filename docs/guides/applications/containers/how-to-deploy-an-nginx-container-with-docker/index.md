@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-an-nginx-container-with-docker
 author:
   name: Linode Community
   email: docs@linode.com

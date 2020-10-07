@@ -1,4 +1,5 @@
 ---
+slug: use-laravel-forge-to-automate-web-server-creation-on-a-linode
 author:
     name: Onwuka Gideon
     email: dongidomed@gmail.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-cd
 author:
   name: Linode
   email: docs@linode.com

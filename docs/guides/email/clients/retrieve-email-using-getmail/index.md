@@ -1,4 +1,5 @@
 ---
+slug: retrieve-email-using-getmail
 author:
   name: Linode
   email: docs@linode.com

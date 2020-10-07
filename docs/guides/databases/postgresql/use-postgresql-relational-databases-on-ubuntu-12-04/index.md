@@ -1,4 +1,5 @@
 ---
+slug: use-postgresql-relational-databases-on-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-git-and-clone-a-github-repository
 author:
   name: Joe D.
   email: docs@linode.com

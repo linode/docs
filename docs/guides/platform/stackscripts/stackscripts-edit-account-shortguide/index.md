@@ -1,4 +1,5 @@
 ---
+slug: stackscripts-edit-account-shortguide
 author:
   name: Linode
   email: docs@linode.com

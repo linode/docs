@@ -1,4 +1,5 @@
 ---
+slug: search
 layout: search
 author:
   name: Steven Jacobs

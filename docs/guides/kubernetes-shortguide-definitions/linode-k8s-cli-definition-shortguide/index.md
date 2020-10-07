@@ -1,4 +1,5 @@
 ---
+slug: linode-k8s-cli-definition-shortguide
 author:
   name: Linode
   email: docs@linode.com

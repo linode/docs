@@ -1,4 +1,5 @@
 ---
+slug: kubernetes-add-node-pool-shortguide
 author:
   name: Linode
   email: docs@linode.com

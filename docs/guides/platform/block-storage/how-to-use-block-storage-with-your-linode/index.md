@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-block-storage-with-your-linode
 author:
   name: Linode
   email: docs@linode.com

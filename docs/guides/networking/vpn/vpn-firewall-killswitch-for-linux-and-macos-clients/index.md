@@ -1,4 +1,5 @@
 ---
+slug: vpn-firewall-killswitch-for-linux-and-macos-clients
 author:
   name: Linode
   email: docs@linode.com

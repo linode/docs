@@ -1,4 +1,5 @@
 ---
+slug: how-to-monitor-containers-with-the-elastic-stack
 author:
   name: Tyler Langlois
   email: ty@tjll.net

@@ -1,4 +1,5 @@
 ---
+slug: string-manipulation-python-3
 author:
   name: Jared Kobos
   email: docs@linode.com

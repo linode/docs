@@ -1,4 +1,5 @@
 ---
+slug: reset-the-root-password-on-your-linode
 author:
   name: Nick Brewer
   email: docs@linode.com

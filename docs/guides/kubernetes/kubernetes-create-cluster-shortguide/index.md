@@ -1,4 +1,5 @@
 ---
+slug: kubernetes-create-cluster-shortguide
 author:
   name: Linode
   email: docs@linode.com

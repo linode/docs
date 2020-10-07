@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-certbot-on-debian-10
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com

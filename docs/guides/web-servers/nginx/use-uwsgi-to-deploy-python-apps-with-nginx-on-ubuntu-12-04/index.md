@@ -1,4 +1,5 @@
 ---
+slug: use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04
 deprecated: true
 author:
   name: Alex Fornuto

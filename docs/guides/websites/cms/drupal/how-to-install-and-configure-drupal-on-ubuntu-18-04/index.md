@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-and-configure-drupal-on-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

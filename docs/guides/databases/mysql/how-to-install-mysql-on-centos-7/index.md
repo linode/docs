@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-mysql-on-centos-7
 author:
   name: Linode
   email: docs@linode.com

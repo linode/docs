@@ -1,4 +1,5 @@
 ---
+slug: webpy-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

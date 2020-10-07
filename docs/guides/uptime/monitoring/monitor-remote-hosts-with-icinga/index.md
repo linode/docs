@@ -1,4 +1,5 @@
 ---
+slug: monitor-remote-hosts-with-icinga
 author:
   name: Matt Vass
   email: linuxboxgo@gmail.com

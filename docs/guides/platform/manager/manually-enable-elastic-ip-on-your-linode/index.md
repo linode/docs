@@ -1,4 +1,5 @@
 ---
+slug: manually-enable-elastic-ip-on-your-linode
 author:
   name: Linode Community
   email: docs@linode.com

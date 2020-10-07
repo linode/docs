@@ -1,4 +1,5 @@
 ---
+slug: deploy-volumes-with-the-linode-block-storage-csi-driver
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: troubleshooting-memory-and-networking-issues
 author:
   name: Linode
   email: docs@linode.com

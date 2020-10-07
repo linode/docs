@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-head
 author:
   name: Phil Zona
   email: docs@linode.com

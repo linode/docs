@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-vim-customization
 author:
   name: Linode
   email: docs@linode.com

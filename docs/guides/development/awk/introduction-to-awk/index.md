@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-awk
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

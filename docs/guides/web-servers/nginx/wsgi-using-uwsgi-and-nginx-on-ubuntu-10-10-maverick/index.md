@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick
 deprecated: true
 author:
   name: Linode

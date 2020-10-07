@@ -1,4 +1,5 @@
 ---
+slug: monitoring-and-maintaining-your-server
 author:
   name: Linode
   email: docs@linode.com

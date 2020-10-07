@@ -1,4 +1,5 @@
 ---
+slug: filezilla
 author:
   name: Linode
   email: docs@linode.com

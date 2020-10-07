@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-nodebalancer-shortguide
 author:
   name: Linode
   email: docs@linode.com

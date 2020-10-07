@@ -1,4 +1,5 @@
 ---
+slug: manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

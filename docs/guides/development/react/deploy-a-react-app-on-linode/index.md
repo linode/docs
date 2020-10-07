@@ -1,4 +1,5 @@
 ---
+slug: deploy-a-react-app-on-linode
 author:
   name: Phil Zona
   email: phil.b.zona@gmail.com

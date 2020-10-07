@@ -1,4 +1,5 @@
 ---
+slug: nginx-installation-and-basic-setup
 author:
   name: Linode
   email: docs@linode.com

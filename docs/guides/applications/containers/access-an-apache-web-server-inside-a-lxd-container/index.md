@@ -1,4 +1,5 @@
 ---
+slug: access-an-apache-web-server-inside-a-lxd-container
 author:
   name: Linode
   email: docs@linode.com

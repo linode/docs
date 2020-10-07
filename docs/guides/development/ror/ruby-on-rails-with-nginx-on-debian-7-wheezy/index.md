@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails-with-nginx-on-debian-7-wheezy
 author:
   name: Jonathan Frederickson
   email: docs@linode.com

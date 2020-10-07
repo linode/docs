@@ -1,4 +1,5 @@
 ---
+slug: use-block-storage-with-plex-media-server
 author:
   name: Sam Foo
   email: docs@linode.com

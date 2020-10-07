@@ -1,4 +1,5 @@
 ---
+slug: minecraft-on-linode-with-ubuntu-12-04
 deprecated: true
 author:
   name: Alex Fornuto

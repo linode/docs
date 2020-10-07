@@ -1,4 +1,5 @@
 ---
+slug: install-plex-media-server-with-salt
 author:
   name: Linode
   email: docs@linode.com

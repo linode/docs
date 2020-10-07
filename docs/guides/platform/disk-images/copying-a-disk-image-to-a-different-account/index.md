@@ -1,4 +1,5 @@
 ---
+slug: copying-a-disk-image-to-a-different-account
 author:
   name: Linode
   email: docs@linode.com

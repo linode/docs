@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-git
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com

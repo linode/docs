@@ -1,4 +1,5 @@
 ---
+slug: one-click-update-note
 author:
   name: Linode
   email: docs@linode.com

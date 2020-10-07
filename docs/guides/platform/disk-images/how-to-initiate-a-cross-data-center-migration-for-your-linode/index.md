@@ -1,4 +1,5 @@
 ---
+slug: how-to-initiate-a-cross-data-center-migration-for-your-linode
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: archiving-and-compressing-files-with-gnu-tar-and-gnu-zip
 author:
   name: Linode
   email: docs@linode.com

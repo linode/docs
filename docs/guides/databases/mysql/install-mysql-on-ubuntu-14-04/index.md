@@ -1,4 +1,5 @@
 ---
+slug: install-mysql-on-ubuntu-14-04
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-and-configure-caddy-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com

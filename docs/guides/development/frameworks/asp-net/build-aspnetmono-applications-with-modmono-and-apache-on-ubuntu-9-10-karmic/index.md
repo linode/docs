@@ -1,4 +1,5 @@
 ---
+slug: build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Brett Kaplan

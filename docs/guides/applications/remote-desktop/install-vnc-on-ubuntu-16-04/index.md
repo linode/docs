@@ -1,4 +1,5 @@
 ---
+slug: install-vnc-on-ubuntu-16-04
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

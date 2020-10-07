@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-gpu
 author:
   name: Linode
   email: docs@linode.com

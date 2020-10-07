@@ -1,4 +1,5 @@
 ---
+slug: choosing-a-distribution
 author:
   name: Ryan Syracuse
   email: docs@linode.com

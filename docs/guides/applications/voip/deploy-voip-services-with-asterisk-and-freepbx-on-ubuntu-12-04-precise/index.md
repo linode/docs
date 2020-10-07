@@ -1,4 +1,5 @@
 ---
+slug: deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise
 deprecated: true
 author:
   name: Alex Fornuto

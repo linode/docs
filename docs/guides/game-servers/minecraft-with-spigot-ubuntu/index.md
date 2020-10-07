@@ -1,4 +1,5 @@
 ---
+slug: minecraft-with-spigot-ubuntu
 author:
   name: Linode Community
   email: contribute@linode.com

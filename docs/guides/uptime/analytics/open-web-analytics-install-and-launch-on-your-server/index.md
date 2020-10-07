@@ -1,4 +1,5 @@
 ---
+slug: open-web-analytics-install-and-launch-on-your-server
 author:
     name: Linode Community
     email: contribute@linode.com

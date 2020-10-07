@@ -1,4 +1,5 @@
 ---
+slug: run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

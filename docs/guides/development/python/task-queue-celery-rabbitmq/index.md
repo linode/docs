@@ -1,4 +1,5 @@
 ---
+slug: task-queue-celery-rabbitmq
 author:
   name: Florent Houbart
   email: docs@linode.com

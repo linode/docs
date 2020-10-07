@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-courier-and-mysql-on-fedora-13
 deprecated: true
 author:
   name: Linode

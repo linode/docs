@@ -1,4 +1,5 @@
 ---
+slug: tls-deployment-best-practices-for-nginx
 author:
   name: Linode
   email: docs@linode.com

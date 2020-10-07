@@ -1,4 +1,5 @@
 ---
+slug: helm-client-definition-shortguide
 author:
   name: Linode
   email: docs@linode.com

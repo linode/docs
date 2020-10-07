@@ -1,4 +1,5 @@
 ---
+slug: accounts-and-passwords
 author:
   name: Linode
   email: docs@linode.com

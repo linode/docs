@@ -1,4 +1,5 @@
 ---
+slug: troubleshooting-web-servers-databases-other-services
 author:
   name: Linode
   email: docs@linode.com

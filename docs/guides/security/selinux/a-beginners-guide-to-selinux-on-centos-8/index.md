@@ -1,4 +1,5 @@
 ---
+slug: a-beginners-guide-to-selinux-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com

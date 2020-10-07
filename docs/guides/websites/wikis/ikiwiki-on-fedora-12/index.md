@@ -1,4 +1,5 @@
 ---
+slug: ikiwiki-on-fedora-12
 deprecated: true
 author:
   name: Linode

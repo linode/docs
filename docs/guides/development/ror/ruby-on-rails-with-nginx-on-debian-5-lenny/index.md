@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails-with-nginx-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

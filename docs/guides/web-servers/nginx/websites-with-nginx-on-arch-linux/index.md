@@ -1,4 +1,5 @@
 ---
+slug: websites-with-nginx-on-arch-linux
 deprecated: true
 author:
   name: Linode

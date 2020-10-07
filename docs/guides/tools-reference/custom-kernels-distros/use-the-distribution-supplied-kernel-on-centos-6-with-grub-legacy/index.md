@@ -1,4 +1,5 @@
 ---
+slug: use-the-distribution-supplied-kernel-on-centos-6-with-grub-legacy
 author:
   name: Linode
   email: docs@linode.com

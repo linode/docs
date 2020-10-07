@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-configure-and-run-fish
 author:
   name: Angel Guarisma
   email: docs@linode.com

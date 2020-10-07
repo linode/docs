@@ -1,4 +1,5 @@
 ---
+slug: how-to-set-up-cloudflare-with-linode
 author:
   name: Nathan Melehan
   email: nmelehan@linode.com

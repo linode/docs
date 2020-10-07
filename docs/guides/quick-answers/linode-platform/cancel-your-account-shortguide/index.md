@@ -1,4 +1,5 @@
 ---
+slug: cancel-your-account-shortguide
 author:
   name: Linode
   email: docs@linode.com

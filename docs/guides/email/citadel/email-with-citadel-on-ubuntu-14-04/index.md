@@ -1,4 +1,5 @@
 ---
+slug: email-with-citadel-on-ubuntu-14-04
 deprecated: false
 author:
   name: Linode

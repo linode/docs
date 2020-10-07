@@ -1,4 +1,5 @@
 ---
+slug: manage-email-lists-with-gnu-mailman-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

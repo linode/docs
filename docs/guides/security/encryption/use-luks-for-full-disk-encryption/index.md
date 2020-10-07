@@ -1,4 +1,5 @@
 ---
+slug: use-luks-for-full-disk-encryption
 author:
   name: Nick Brewer
   email: docs@linode.com

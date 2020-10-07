@@ -1,4 +1,5 @@
 ---
+slug: basic-postfix-email-gateway-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

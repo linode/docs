@@ -1,4 +1,5 @@
 ---
+slug: what-are-nodebalancers
 author:
   name: Linode
   email: docs@linode.com

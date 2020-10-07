@@ -1,4 +1,5 @@
 ---
+slug: remote-desktop-using-apache-guacamole-on-docker
 author:
   name: Sam Foo
   email: sfoo@linode.com

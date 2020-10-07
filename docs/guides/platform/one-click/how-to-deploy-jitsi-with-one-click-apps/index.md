@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-jitsi-with-one-click-apps
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-make-a-selfsigned-ssl-certificate
 deprecated: true
 author:
   name: Linode

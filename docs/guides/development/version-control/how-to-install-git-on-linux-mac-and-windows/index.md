@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-git-on-linux-mac-and-windows
 author:
   name: Linode
   email: docs@linode.com

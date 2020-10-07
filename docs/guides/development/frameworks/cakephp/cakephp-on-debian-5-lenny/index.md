@@ -1,4 +1,5 @@
 ---
+slug: cakephp-on-debian-5-lenny
 author:
   name: Stan Schwertly
   email: docs@linode.com

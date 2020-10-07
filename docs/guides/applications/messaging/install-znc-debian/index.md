@@ -1,4 +1,5 @@
 ---
+slug: install-znc-debian
 author:
     name: Alex Fornuto
     email: docs@linode.com

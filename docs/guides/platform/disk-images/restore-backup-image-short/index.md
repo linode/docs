@@ -1,4 +1,5 @@
 ---
+slug: restore-backup-image-short
 author:
   name: Linode
   email: docs@linode.com

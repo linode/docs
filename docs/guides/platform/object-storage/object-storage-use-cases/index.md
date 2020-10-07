@@ -1,4 +1,5 @@
 ---
+slug: object-storage-use-cases
 author:
   name: Linode Community
   email: docs@linode.com

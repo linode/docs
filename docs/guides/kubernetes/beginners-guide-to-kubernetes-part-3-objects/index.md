@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-to-kubernetes-part-3-objects
 author:
   name: Andy Stevens
   email: docs@linode.com

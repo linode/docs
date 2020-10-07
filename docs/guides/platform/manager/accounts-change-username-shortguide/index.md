@@ -1,4 +1,5 @@
 ---
+slug: accounts-change-username-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: linux-package-management
 author:
   name: Linode
   email: docs@linode.com

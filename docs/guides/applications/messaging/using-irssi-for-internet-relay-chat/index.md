@@ -1,4 +1,5 @@
 ---
+slug: using-irssi-for-internet-relay-chat
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

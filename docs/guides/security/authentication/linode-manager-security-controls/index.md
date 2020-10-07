@@ -1,4 +1,5 @@
 ---
+slug: linode-manager-security-controls
 author:
   name: Linode
   email: docs@linode.com

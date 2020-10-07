@@ -1,4 +1,5 @@
 ---
+slug: ss
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

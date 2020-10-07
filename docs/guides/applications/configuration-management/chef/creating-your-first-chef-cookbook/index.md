@@ -1,4 +1,5 @@
 ---
+slug: creating-your-first-chef-cookbook
 author:
   name: Elle Krout
   email: ekrout@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-unbound-for-local-dns-resolution-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

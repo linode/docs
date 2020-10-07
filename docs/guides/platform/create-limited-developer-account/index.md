@@ -1,4 +1,5 @@
 ---
+slug: create-limited-developer-account
 author:
   name: Edward Angert
   email: docs@linode.com

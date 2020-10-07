@@ -1,4 +1,5 @@
 ---
+slug: alias-frequently-used-commands
 author:
   name: Edward Angert
   email: docs@linode.com

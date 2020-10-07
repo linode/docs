@@ -1,4 +1,5 @@
 ---
+slug: common-stackscripts-use-cases
 author:
   name: Linode Community
   email: docs@linode.com

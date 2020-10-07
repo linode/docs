@@ -1,4 +1,5 @@
 ---
+slug: monitor-systems-logwatch
 author:
   name: Elle Krout
   email: ekrout@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: django-apache-and-modpython-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

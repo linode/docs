@@ -1,4 +1,5 @@
 ---
+slug: create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

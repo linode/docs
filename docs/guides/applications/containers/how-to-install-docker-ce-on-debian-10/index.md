@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-docker-ce-on-debian-10
 author:
   name: Linode
   email: docs@linode.com

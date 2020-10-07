@@ -1,4 +1,5 @@
 ---
+slug: use-cherokee-web-server-on-ubuntu-12-04
 deprecated: true
 author:
   name: Linode

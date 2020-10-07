@@ -1,4 +1,5 @@
 ---
+slug: disabling-sslv3-for-poodle
 author:
   name: Dave Russell
   email: drussell@linode.com

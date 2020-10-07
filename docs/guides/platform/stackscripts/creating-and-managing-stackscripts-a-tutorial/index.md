@@ -1,4 +1,5 @@
 ---
+slug: creating-and-managing-stackscripts-a-tutorial
 author:
   name: Linode
   email: docs@linode.com

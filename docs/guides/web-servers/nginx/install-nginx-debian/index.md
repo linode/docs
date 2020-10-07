@@ -1,4 +1,5 @@
 ---
+slug: install-nginx-debian
 author:
   name: Linode
   email: docs@linode.com

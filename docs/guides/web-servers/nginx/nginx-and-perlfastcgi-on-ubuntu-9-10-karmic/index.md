@@ -1,4 +1,5 @@
 ---
+slug: nginx-and-perlfastcgi-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

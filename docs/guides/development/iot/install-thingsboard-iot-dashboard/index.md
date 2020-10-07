@@ -1,4 +1,5 @@
 ---
+slug: install-thingsboard-iot-dashboard
 author:
   name: Jared Kobos
   email: docs@linode.com

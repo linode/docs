@@ -1,4 +1,5 @@
 ---
+slug: using-the-linode-graphical-shell-glish
 author:
   name: Alex Fornuto
   email: docs@linode.com

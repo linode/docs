@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-linkerd-with-linode-kubernetes-engine
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: provide-authoritative-dns-services-with-nsd-on-fedora-14
 deprecated: true
 author:
   name: Brett Kaplan

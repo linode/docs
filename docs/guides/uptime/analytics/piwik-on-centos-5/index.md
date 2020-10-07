@@ -1,4 +1,5 @@
 ---
+slug: piwik-on-centos-5
 deprecated: true
 author:
   name: Stan Schwertly

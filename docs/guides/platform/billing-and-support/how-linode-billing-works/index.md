@@ -1,4 +1,5 @@
 ---
+slug: how-linode-billing-works
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: ossec-ids-debian-7
 author:
   name: Sunday Ogwu-Chinuwa
   email: finid@vivaldi.net

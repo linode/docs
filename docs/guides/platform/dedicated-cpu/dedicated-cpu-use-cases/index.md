@@ -1,4 +1,5 @@
 ---
+slug: dedicated-cpu-use-cases
 author:
   name: Ryan Syracuse
   email: rsyracuse@linode.com

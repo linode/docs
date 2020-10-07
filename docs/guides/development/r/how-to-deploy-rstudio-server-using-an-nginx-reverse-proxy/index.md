@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy
 author:
   name: Sam Foo
   email: docs@linode.com

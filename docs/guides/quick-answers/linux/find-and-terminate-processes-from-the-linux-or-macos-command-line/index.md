@@ -1,4 +1,5 @@
 ---
+slug: find-and-terminate-processes-from-the-linux-or-macos-command-line
 author:
   name: Sam Foo
   email: docs@linode.com

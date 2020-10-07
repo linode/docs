@@ -1,4 +1,5 @@
 ---
+slug: install-a-simple-machines-forum-on-your-website
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-mongodb-to-store-application-data-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

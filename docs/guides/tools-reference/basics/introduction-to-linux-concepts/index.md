@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-linux-concepts
 author:
   name: Linode
   email: docs@linode.com

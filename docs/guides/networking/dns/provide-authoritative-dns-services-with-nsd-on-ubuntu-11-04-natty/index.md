@@ -1,4 +1,5 @@
 ---
+slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-11-04-natty
 deprecated: true
 author:
   name: Brett Kaplan

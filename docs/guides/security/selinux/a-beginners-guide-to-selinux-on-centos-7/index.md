@@ -1,4 +1,5 @@
 ---
+slug: a-beginners-guide-to-selinux-on-centos-7
 author:
   name: Angel Guarisma
   email: docs@linode.com

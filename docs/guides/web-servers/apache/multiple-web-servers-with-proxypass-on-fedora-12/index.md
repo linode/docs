@@ -1,4 +1,5 @@
 ---
+slug: multiple-web-servers-with-proxypass-on-fedora-12
 deprecated: true
 author:
   name: Linode

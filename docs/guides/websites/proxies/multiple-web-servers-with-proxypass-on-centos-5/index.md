@@ -1,4 +1,5 @@
 ---
+slug: multiple-web-servers-with-proxypass-on-centos-5
 deprecated: true
 author:
   name: Linode

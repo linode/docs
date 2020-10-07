@@ -1,4 +1,5 @@
 ---
+slug: ssl-certificates-with-apache-2-on-centos
 deprecated: true
 author:
   name: Linode

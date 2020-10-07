@@ -1,4 +1,5 @@
 ---
+slug: build-react-video-streaming-app
 author:
   name: Linode Community
   email: docs@linode.com

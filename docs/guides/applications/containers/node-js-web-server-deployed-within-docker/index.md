@@ -1,4 +1,5 @@
 ---
+slug: node-js-web-server-deployed-within-docker
 author:
   name: Joe D.
   email: docs@linode.com

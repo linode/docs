@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails-with-apache-on-debian-7-wheezy
 author:
   name: James Stewart
   email: jstewart@linode.com

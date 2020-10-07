@@ -1,4 +1,5 @@
 ---
+slug: what-is-docker
 deprecated: true
 author:
   name: Jon Chen

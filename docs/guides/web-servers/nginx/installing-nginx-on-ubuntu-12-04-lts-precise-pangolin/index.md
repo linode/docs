@@ -1,4 +1,5 @@
 ---
+slug: installing-nginx-on-ubuntu-12-04-lts-precise-pangolin
 deprecated: true
 author:
     name: Linode

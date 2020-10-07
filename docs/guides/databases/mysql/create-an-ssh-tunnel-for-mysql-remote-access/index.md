@@ -1,4 +1,5 @@
 ---
+slug: create-an-ssh-tunnel-for-mysql-remote-access
 author:
   name: Linode
   email: docs@linode.com

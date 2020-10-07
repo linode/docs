@@ -1,4 +1,5 @@
 ---
+slug: use-mongodb-to-store-application-data-on-ubuntu-12-04-precise
 deprecated: true
 author:
   name: Linode

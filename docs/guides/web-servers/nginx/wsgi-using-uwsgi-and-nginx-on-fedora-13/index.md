@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-fedora-13
 deprecated: true
 author:
   name: Linode

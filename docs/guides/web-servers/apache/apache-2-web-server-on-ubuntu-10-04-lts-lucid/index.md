@@ -1,4 +1,5 @@
 ---
+slug: apache-2-web-server-on-ubuntu-10-04-lts-lucid
 deprecated: true
 author:
   name: Linode

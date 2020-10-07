@@ -1,4 +1,5 @@
 ---
+slug: create-block-storage-volumes-with-the-linode-api
 author:
   name: Jared Kobos
   email: docs@linode.com

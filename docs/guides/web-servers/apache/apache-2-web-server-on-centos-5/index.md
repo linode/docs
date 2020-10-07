@@ -1,4 +1,5 @@
 ---
+slug: apache-2-web-server-on-centos-5
 deprecated: true
 author:
   name: Linode

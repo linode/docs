@@ -1,4 +1,5 @@
 ---
+slug: how-to-upgrade-to-debian-7-wheezy
 deprecated: yes
 author:
   name: Linode

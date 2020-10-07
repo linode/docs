@@ -1,4 +1,5 @@
 ---
+slug: backups-schedule-shortguide
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: advanced-irssi-usage
 author:
   name: Linode
   email: docs@linode.com

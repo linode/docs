@@ -1,4 +1,5 @@
 ---
+slug: create-a-self-signed-tls-certificate
 author:
   name: Linode
   email: docs@linode.com

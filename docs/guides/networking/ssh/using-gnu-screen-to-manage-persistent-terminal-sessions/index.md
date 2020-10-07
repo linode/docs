@@ -1,4 +1,5 @@
 ---
+slug: using-gnu-screen-to-manage-persistent-terminal-sessions
 author:
   name: Linode
   email: docs@linode.com

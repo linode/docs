@@ -1,4 +1,5 @@
 ---
+slug: host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7
 author:
   name: Linode Community
   email: docs@linode.com

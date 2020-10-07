@@ -1,4 +1,5 @@
 ---
+slug: redis-on-ubuntu-12-04-precise-pangolin
 deprecated: true
 author:
   name: Alex Fornuto

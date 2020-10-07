@@ -1,4 +1,5 @@
 ---
+slug: how-to-choose-a-control-panel
 author:
   name: Nathan Melehan
   email: docs@linode.com

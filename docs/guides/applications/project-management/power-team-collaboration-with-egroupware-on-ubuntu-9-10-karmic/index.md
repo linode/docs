@@ -1,4 +1,5 @@
 ---
+slug: power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

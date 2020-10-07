@@ -1,4 +1,5 @@
 ---
+slug: how-to-grep-for-text-in-files
 author:
   name: Linode
   email: docs@linode.com

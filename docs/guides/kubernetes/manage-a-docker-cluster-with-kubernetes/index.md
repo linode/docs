@@ -1,4 +1,5 @@
 ---
+slug: manage-a-docker-cluster-with-kubernetes
 author:
   name: Linode Community
   email: docs@linode.com

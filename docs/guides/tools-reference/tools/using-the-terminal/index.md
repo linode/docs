@@ -1,4 +1,5 @@
 ---
+slug: using-the-terminal
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: redirect-urls-with-the-apache-web-server
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: deploy-in-code-with-pulumi
 author:
     name: Linode
     email: docs@linode.com

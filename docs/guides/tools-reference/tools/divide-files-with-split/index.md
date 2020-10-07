@@ -1,4 +1,5 @@
 ---
+slug: divide-files-with-split
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8
 author:
   name: Linode Community
   email: docs@linode.com

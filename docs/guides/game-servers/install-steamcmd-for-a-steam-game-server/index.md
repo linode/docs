@@ -1,4 +1,5 @@
 ---
+slug: install-steamcmd-for-a-steam-game-server
 author:
   name: Linode
   email: docs@linode.com

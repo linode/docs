@@ -1,4 +1,5 @@
 ---
+slug: nginx-and-phpfastcgi-on-arch-linux
 deprecated: true
 author:
   name: Linode

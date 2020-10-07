@@ -1,4 +1,5 @@
 ---
+slug: securely-administer-oracle-xe-with-an-ssh-tunnel
 author:
   name: Linode
   email: docs@linode.com

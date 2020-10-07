@@ -1,4 +1,5 @@
 ---
+slug: advanced-ssh-server-security
 author:
   name: Linode Community
   email: docs@linode.com

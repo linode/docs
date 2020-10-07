@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-json-output-shortguide
 author:
   name: Linode
   email: docs@linode.com

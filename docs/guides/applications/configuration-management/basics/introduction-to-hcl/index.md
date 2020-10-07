@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-hcl
 author:
     name: Linode
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: use-mysql-relational-databases-on-fedora-13
 deprecated: true
 author:
   name: Linode

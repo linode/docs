@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-wget
 author:
   name: Angel
   email: docs@linode.com

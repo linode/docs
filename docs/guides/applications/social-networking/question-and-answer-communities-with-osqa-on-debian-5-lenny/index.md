@@ -1,4 +1,5 @@
 ---
+slug: question-and-answer-communities-with-osqa-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

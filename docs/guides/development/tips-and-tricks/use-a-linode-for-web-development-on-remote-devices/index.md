@@ -1,4 +1,5 @@
 ---
+slug: use-a-linode-for-web-development-on-remote-devices
 author:
   name: Linode Community
   email: docs@linode.com

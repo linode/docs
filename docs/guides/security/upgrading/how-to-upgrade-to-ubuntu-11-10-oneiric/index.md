@@ -1,4 +1,5 @@
 ---
+slug: how-to-upgrade-to-ubuntu-11-10-oneiric
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-and-configure-caddy-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com

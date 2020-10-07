@@ -1,4 +1,5 @@
 ---
+slug: configure-postgresql
 author:
   name: Angel
   email: docs@linode.com

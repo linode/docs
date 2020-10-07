@@ -1,4 +1,5 @@
 ---
+slug: create-file-system-links-with-ln
 author:
   name: Linode
   email: docs@linode.com

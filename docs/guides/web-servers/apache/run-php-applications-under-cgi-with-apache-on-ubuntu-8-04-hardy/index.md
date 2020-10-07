@@ -1,4 +1,5 @@
 ---
+slug: run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy
 deprecated: true
 author:
   name: Linode

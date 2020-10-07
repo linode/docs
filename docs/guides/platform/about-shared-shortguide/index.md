@@ -1,4 +1,5 @@
 ---
+slug: about-shared-shortguide
 author:
   name: Linode
   email: docs@linode.com

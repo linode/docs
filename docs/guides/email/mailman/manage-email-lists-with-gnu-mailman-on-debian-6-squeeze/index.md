@@ -1,4 +1,5 @@
 ---
+slug: manage-email-lists-with-gnu-mailman-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

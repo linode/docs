@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-kubernetes-on-linode-with-rancher-2-x
 author:
   name: Linode
   email: docs@linode.com

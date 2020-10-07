@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-linode-packer-builder
 author:
   name: Linode Community
   email: docs@linode.com

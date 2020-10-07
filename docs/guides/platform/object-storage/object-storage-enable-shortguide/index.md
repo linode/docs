@@ -1,4 +1,5 @@
 ---
+slug: object-storage-enable-shortguide
 author:
   name: Linode
   email: docs@linode.com

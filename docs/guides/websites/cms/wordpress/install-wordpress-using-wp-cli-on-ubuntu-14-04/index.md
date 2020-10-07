@@ -1,4 +1,5 @@
 ---
+slug: install-wordpress-using-wp-cli-on-ubuntu-14-04
 author:
     name: Linode Community
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: cloud-marketplace-shortguide
 author:
   name: Linode
   email: docs@linode.com

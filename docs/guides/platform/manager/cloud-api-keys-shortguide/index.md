@@ -1,4 +1,5 @@
 ---
+slug: cloud-api-keys-shortguide
 author:
   name: Linode
   email: docs@linode.com

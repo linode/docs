@@ -1,4 +1,5 @@
 ---
+slug: resize-a-linode-disk
 author:
   name: Linode Community
   email: docs@linode.com

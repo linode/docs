@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-a-webmin-control-panel-and-modules
 author:
   name: Linode
   email: docs@linode.com

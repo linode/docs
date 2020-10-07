@@ -1,4 +1,5 @@
 ---
+slug: install-caddy-archlinux
 author:
   name: Linode Community
   email: docs@linode.com

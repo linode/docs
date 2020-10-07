@@ -1,4 +1,5 @@
 ---
+slug: discussion-forums-with-phpbb-on-debian-5-lenny
 deprecated: true
 author:
   name: Stan Schwertly

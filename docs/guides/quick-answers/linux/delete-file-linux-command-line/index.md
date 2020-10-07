@@ -1,4 +1,5 @@
 ---
+slug: delete-file-linux-command-line
 author:
   name: Edward Angert
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: zimbra-on-ubuntu-14-04
 author:
     name: Linode Community
     email: docs@linode.com

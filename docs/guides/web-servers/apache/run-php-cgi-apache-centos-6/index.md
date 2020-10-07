@@ -1,4 +1,5 @@
 ---
+slug: run-php-cgi-apache-centos-6
 deprecated: true
 author:
   name: Linode

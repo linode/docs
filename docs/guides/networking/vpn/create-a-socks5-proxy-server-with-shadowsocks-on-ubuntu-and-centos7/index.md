@@ -1,4 +1,5 @@
 ---
+slug: create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7
 author:
   name: Linode Community
   email: docs@linode.com

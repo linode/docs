@@ -1,4 +1,5 @@
 ---
+slug: monitoring-salt-minions-with-beacons
 author:
   name: Linode
   email: docs@linode.com

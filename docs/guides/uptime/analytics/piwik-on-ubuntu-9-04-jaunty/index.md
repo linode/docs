@@ -1,4 +1,5 @@
 ---
+slug: piwik-on-ubuntu-9-04-jaunty
 author:
   name: Stan Schwertly
   email: docs@linode.com

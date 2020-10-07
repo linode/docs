@@ -1,4 +1,5 @@
 ---
+slug: modify-file-permissions-with-chmod
 author:
   name: Linode
   email: docs@linode.com

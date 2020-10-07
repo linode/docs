@@ -1,4 +1,5 @@
 ---
+slug: gpg-keys-to-send-encrypted-messages
 author:
   name: Linode
 description: 'How to Use GPG Keys to Send Encrypted Messages'

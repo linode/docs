@@ -1,4 +1,5 @@
 ---
+slug: use-mongodb-to-store-application-data-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

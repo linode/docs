@@ -1,4 +1,5 @@
 ---
+slug: install-java-jdk
 author:
   name: Jared Kobos
   email: docs@linode.com

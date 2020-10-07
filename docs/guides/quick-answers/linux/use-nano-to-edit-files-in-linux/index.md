@@ -1,4 +1,5 @@
 ---
+slug: use-nano-to-edit-files-in-linux
 author:
   name: Edward Angert
   email: docs@linode.com

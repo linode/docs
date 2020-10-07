@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-install-shortguide
 author:
   name: Linode
   email: docs@linode.com

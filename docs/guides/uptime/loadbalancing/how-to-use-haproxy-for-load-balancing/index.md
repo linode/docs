@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-haproxy-for-load-balancing
 author:
   name: Linode Community
   email: docs@linode.com

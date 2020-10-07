@@ -1,4 +1,5 @@
 ---
+slug: set-up-a-cassandra-node-cluster-on-ubuntu-and-centos
 author:
   name: Andrew Lescher
   email: docs@linode.com

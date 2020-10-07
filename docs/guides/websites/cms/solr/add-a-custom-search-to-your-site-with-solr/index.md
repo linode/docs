@@ -1,4 +1,5 @@
 ---
+slug: add-a-custom-search-to-your-site-with-solr
 author:
   name: Linode Community
   email: docs@linode.com

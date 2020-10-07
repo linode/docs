@@ -1,4 +1,5 @@
 ---
+slug: api-get-configuration-parameters-shortguide
 author:
   name: Linode
   email: docs@linode.com

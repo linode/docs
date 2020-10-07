@@ -1,4 +1,5 @@
 ---
+slug: kube-scheduler-definition-shortguide
 author:
   name: Linode
   email: docs@linode.com

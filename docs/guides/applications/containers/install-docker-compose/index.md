@@ -1,4 +1,5 @@
 ---
+slug: install-docker-compose
 author:
   name: Jared Kobos
   email: sfoo@linode.com

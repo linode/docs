@@ -1,4 +1,5 @@
 ---
+slug: install-docker-ce
 author:
   name: Sam Foo
   email: sfoo@linode.com

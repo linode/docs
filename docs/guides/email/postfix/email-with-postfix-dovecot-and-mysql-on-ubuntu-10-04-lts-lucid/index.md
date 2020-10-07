@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid
 deprecated: true
 author:
   name: Brett Kaplan

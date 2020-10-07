@@ -1,4 +1,5 @@
 ---
+slug: ssl-certificates-with-apache-2-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: use-couchdb-for-document-based-data-storage-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

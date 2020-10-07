@@ -1,4 +1,5 @@
 ---
+slug: what-is-kubernetes-cert-manager
 author:
   name: Linode
   email: docs@linode.com

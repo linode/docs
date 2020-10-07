@@ -1,4 +1,5 @@
 ---
+slug: install-mysql-phpmyadmin-on-ubuntu-12-04
 deprecated: true
 author:
     name: James Stewart

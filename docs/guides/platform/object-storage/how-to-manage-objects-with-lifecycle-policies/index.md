@@ -1,4 +1,5 @@
 ---
+slug: how-to-manage-objects-with-lifecycle-policies
 author:
   name: Linode Community
   email: docs@linode.com

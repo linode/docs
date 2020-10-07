@@ -1,4 +1,5 @@
 ---
+slug: deploy-a-flask-application-with-dokku
 author:
   name: Sam Foo
   email: docs@linode.com

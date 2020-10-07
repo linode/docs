@@ -1,4 +1,5 @@
 ---
+slug: manage-an-ubuntu-10-10-maverick-vps-with-ispconfig
 author:
   name: Linode
   email: docs@linode.com

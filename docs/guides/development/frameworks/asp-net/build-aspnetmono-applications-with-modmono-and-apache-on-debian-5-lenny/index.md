@@ -1,4 +1,5 @@
 ---
+slug: build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny
 author:
   name: Brett Kaplan
   email: docs@linode.com

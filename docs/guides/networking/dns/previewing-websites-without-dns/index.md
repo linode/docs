@@ -1,4 +1,5 @@
 ---
+slug: previewing-websites-without-dns
 author:
   name: Linode
   email: afornuto@linode.com

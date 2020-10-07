@@ -1,4 +1,5 @@
 ---
+slug: configure-a-firewall-with-arno-iptables-in-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

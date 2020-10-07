@@ -1,4 +1,5 @@
 ---
+slug: transfer-block-storage-datacenter-shortguide
 author:
   name: Linode
   email: docs@linode.com

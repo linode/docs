@@ -1,4 +1,5 @@
 ---
+slug: installing-prosody-xmpp-server-on-ubuntu-10-10-maverick
 deprecated: true
 author:
   name: Linode

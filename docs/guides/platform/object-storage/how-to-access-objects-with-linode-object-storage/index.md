@@ -1,4 +1,5 @@
 ---
+slug: how-to-access-objects-with-linode-object-storage
 author:
   name: Linode Community
   email: docs@linode.com

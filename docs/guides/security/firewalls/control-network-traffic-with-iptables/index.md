@@ -1,4 +1,5 @@
 ---
+slug: control-network-traffic-with-iptables
 author:
   name: Linode
   email: docs@linode.com

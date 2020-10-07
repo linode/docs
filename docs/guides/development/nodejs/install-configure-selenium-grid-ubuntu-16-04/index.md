@@ -1,4 +1,5 @@
 ---
+slug: install-configure-selenium-grid-ubuntu-16-04
 author:
   name: Jared Kobos
   email: docs@linode.com

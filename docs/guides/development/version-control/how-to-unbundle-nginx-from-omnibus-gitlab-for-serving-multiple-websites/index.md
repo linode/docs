@@ -1,4 +1,5 @@
 ---
+slug: how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites
 author:
   name: Linode Community
   email: docs@linode.com

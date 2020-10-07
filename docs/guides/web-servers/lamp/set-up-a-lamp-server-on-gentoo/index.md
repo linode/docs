@@ -1,4 +1,5 @@
 ---
+slug: set-up-a-lamp-server-on-gentoo
 deprecated: true
 author:
   name: Linode

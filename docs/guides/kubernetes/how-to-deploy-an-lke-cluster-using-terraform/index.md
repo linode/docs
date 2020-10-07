@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-an-lke-cluster-using-terraform
 author:
   name: Linode Community
   email: docs@linode.com

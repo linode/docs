@@ -1,4 +1,5 @@
 ---
+slug: manage-a-debian-6-squeeze-vps-with-ispconfig
 deprecated: true
 author:
   name: Linode

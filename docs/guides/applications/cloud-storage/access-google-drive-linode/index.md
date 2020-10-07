@@ -1,4 +1,5 @@
 ---
+slug: access-google-drive-linode
 author:
     name: Scott Sumner
     email: scottinthebooth@gmail.com

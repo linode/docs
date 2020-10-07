@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-neovim-and-plugins-with-vim-plug
 author:
   name: Gabriel A. Cánepa
   email: gacanepa@gmail.com

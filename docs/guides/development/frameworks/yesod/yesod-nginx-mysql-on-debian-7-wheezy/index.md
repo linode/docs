@@ -1,4 +1,5 @@
 ---
+slug: yesod-nginx-mysql-on-debian-7-wheezy
 author:
   name: Si-Qi Liu
   email: liusq@tsinghua.edu.cn

@@ -1,4 +1,5 @@
 ---
+slug: linode-cli
 author:
   name: Jared Kobos
   email: docs@linode.com

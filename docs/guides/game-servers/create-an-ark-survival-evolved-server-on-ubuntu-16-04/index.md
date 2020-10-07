@@ -1,4 +1,5 @@
 ---
+slug: create-an-ark-survival-evolved-server-on-ubuntu-16-04
 author:
   name: Nick Brewer
   email: docs@linode.com

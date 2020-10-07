@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-salt-basic-installation-and-setup
 author:
     name: Linode
     email: docs@linode.com

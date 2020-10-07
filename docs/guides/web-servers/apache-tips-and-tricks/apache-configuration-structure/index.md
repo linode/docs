@@ -1,4 +1,5 @@
 ---
+slug: apache-configuration-structure
 author:
   name: Linode
   email: docs@linode.com

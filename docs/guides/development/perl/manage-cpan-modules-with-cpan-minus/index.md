@@ -1,4 +1,5 @@
 ---
+slug: manage-cpan-modules-with-cpan-minus
 author:
   name: Linode
   email: docs@linode.com

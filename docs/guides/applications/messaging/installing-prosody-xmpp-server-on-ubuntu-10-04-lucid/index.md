@@ -1,4 +1,5 @@
 ---
+slug: installing-prosody-xmpp-server-on-ubuntu-10-04-lucid
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: manage-distributed-version-control-with-mercurial
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: manage-web-content-with-flatpress
 author:
   name: Linode
   email: docs@linode.com

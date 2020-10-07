@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-apps-with-rancher-1
 author:
   name: Angel
   email: docs@linode.com

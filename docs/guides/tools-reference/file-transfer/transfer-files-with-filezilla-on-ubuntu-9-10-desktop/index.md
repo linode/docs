@@ -1,4 +1,5 @@
 ---
+slug: transfer-files-with-filezilla-on-ubuntu-9-10-desktop
 author:
   name: Linode
   email: docs@linode.com

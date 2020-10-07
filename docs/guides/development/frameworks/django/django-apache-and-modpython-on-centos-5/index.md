@@ -1,4 +1,5 @@
 ---
+slug: django-apache-and-modpython-on-centos-5
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: monitoring-resource-utilization-with-cacti-on-debian-6-squeeze
 deprecated: true
 author:
   name: Stan Schwertly

@@ -1,4 +1,5 @@
 ---
+slug: lemp-server-on-centos-5
 deprecated: true
 deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 author:

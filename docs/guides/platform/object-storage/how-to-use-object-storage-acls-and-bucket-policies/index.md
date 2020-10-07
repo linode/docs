@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-object-storage-acls-and-bucket-policies
 author:
   name: Linode Community
   email: docs@linode.com

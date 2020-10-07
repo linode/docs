@@ -1,4 +1,5 @@
 ---
+slug: use-dig-to-perform-manual-dns-queries
 author:
   name: Linode
   email: docs@linode.com

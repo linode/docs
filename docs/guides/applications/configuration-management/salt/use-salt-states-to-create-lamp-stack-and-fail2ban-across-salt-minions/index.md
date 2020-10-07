@@ -1,4 +1,5 @@
 ---
+slug: use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions
 author:
     name: Linode
     email: docs@linode.com

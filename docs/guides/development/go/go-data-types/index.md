@@ -1,4 +1,5 @@
 ---
+slug: go-data-types
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

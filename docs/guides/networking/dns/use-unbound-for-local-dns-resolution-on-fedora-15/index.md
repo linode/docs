@@ -1,4 +1,5 @@
 ---
+slug: use-unbound-for-local-dns-resolution-on-fedora-15
 deprecated: true
 author:
   name: Linode

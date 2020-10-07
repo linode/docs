@@ -1,4 +1,5 @@
 ---
+slug: run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: third-party-authentication
 author:
   name: Linode Community
   email: docs@linode.com

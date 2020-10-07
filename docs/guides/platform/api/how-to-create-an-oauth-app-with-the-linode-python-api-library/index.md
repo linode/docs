@@ -1,4 +1,5 @@
 ---
+slug: how-to-create-an-oauth-app-with-the-linode-python-api-library
 author:
   name: Linode Community
   email: docs@linode.com

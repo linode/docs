@@ -1,4 +1,5 @@
 ---
+slug: deploy-mysql-workbench-for-database-administration
 author:
     name: Linode Community
     email: docs@linode.com

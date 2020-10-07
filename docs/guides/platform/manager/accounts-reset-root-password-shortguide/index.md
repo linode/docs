@@ -1,4 +1,5 @@
 ---
+slug: accounts-reset-root-password-shortguide
 author:
   name: Linode
   email: docs@linode.com

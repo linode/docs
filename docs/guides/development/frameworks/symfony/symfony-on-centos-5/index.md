@@ -1,4 +1,5 @@
 ---
+slug: symfony-on-centos-5
 author:
   name: Ozan Yerli
   email: oyerli@gmail.com

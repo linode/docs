@@ -1,4 +1,5 @@
 ---
+slug: install-gitlab-with-docker
 author:
   name: Linode Community
   email: docs@linode.com

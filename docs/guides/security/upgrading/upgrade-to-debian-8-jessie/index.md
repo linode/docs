@@ -1,4 +1,5 @@
 ---
+slug: upgrade-to-debian-8-jessie
 deprecated: true
 author:
   name: Alex Fornuto

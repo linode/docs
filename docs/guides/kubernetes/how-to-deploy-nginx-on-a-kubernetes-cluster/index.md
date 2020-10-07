@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-nginx-on-a-kubernetes-cluster
 author:
   name: Kiran Singh
 description: 'This guide shows how to install Kubernetes on a Linode with CentOS or Ubuntu. Includes a section on how to deploy nginx to the example cluster.'

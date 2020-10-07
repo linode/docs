@@ -1,4 +1,5 @@
 ---
+slug: creating-a-mongodb-replication-set-on-debian-7-wheezy
 deprecated: true
 author:
   name: Linode

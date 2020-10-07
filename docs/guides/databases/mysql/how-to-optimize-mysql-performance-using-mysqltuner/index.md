@@ -1,4 +1,5 @@
 ---
+slug: how-to-optimize-mysql-performance-using-mysqltuner
 author:
   name: Elle Krout
   email: ekrout@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: using-sshfs-on-linux
 author:
   name: Linode
   email: docs@linode.com

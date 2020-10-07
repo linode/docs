@@ -1,4 +1,5 @@
 ---
+slug: sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

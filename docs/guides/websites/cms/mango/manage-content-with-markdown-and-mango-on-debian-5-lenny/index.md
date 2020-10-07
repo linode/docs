@@ -1,4 +1,5 @@
 ---
+slug: manage-content-with-markdown-and-mango-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

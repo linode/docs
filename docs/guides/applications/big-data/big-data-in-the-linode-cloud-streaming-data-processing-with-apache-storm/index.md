@@ -1,4 +1,5 @@
 ---
+slug: big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm
 author:
     name: Karthik Shiraly
     email: docs@linode.com

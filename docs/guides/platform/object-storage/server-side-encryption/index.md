@@ -1,4 +1,5 @@
 ---
+slug: server-side-encryption
 author:
   name: Ben Bigger
   email: docs@linode.com

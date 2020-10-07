@@ -1,4 +1,5 @@
 ---
+slug: use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8
 author:
   name: Phil Zona
   email: docs@linode.com

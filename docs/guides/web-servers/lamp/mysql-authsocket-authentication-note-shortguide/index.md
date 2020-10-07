@@ -1,4 +1,5 @@
 ---
+slug: mysql-authsocket-authentication-note-shortguide
 author:
   name: Linode
   email: docs@linode.com

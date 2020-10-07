@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-less
 author:
   name: Nathan Melehan
   email: docs@linode.com

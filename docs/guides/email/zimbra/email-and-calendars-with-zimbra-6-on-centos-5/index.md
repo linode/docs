@@ -1,4 +1,5 @@
 ---
+slug: email-and-calendars-with-zimbra-6-on-centos-5
 deprecated: true
 author:
   name: Linode

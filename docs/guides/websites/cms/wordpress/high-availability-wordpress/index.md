@@ -1,4 +1,5 @@
 ---
+slug: high-availability-wordpress
 author:
   name: James Stewart
   email: jstewart@linode.com

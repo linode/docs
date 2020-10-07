@@ -1,4 +1,5 @@
 ---
+slug: start-service-at-boot
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: standalone-mysql-server
 deprecated: true
 author:
   name: Stan Schwertly

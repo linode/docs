@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-git-mac
 author:
   name: Sam Foo
   email: sfoo@linode.com

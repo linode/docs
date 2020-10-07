@@ -1,4 +1,5 @@
 ---
+slug: social-networking-with-elgg-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

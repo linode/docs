@@ -1,4 +1,5 @@
 ---
+slug: connect-metabase-with-mysql-for-data-exploration
 author:
   name: Sam Foo
   email: docs@linode.com

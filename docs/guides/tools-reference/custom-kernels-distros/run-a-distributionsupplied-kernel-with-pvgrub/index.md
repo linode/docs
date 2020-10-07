@@ -1,4 +1,5 @@
 ---
+slug: run-a-distributionsupplied-kernel-with-pvgrub
 author:
   name: Linode
   email: docs@linode.com

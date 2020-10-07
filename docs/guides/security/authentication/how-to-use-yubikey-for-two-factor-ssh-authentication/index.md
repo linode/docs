@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-yubikey-for-two-factor-ssh-authentication
 author:
   name: Huw Evans
   email: me@huw.nu

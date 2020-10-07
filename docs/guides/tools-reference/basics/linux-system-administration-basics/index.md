@@ -1,4 +1,5 @@
 ---
+slug: linux-system-administration-basics
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: manage-web-content-with-joomla
 deprecated: true
 author:
   name: Linode

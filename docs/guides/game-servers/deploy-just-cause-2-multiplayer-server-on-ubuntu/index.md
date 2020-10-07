@@ -1,4 +1,5 @@
 ---
+slug: deploy-just-cause-2-multiplayer-server-on-ubuntu
 author:
     name: Linode Community
     email: docs@linode.com

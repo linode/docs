@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-and-configure-drupal-8
 author:
     name: Linode
     email: docs@linode.com

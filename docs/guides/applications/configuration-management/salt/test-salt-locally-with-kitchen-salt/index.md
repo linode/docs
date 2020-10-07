@@ -1,4 +1,5 @@
 ---
+slug: test-salt-locally-with-kitchen-salt
 author:
   name: Linode
   email: docs@linode.com

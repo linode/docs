@@ -1,4 +1,5 @@
 ---
+slug: use-couchdb-for-document-based-data-storage-on-centos-5
 deprecated: true
 author:
   name: Linode

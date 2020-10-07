@@ -1,4 +1,5 @@
 ---
+slug: run-php-cgi-apache-debian-7
 deprecated: true
 author:
   name: Linode

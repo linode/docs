@@ -1,4 +1,5 @@
 ---
+slug: how-to-develop-and-deploy-your-applications-using-wercker
 author:
   name: Linode Community
   email: docs@linode.com

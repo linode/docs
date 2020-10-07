@@ -1,4 +1,5 @@
 ---
+slug: install_elasticsearch_debian_ubuntu
 author:
   name: Jared Kobos
   email: sfoo@linode.com

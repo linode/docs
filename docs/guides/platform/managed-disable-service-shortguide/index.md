@@ -1,4 +1,5 @@
 ---
+slug: managed-disable-service-shortguide
 author:
   name: Linode
   email: docs@linode.com

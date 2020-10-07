@@ -1,4 +1,5 @@
 ---
+slug: accounts-remove-user-shortguide
 author:
   name: Linode
   email: docs@linode.com

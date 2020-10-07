@@ -1,4 +1,5 @@
 ---
+slug: configure-modsecurity-on-apache
 author:
   name: Linode
   email: docs@linode.com

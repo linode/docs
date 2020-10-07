@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-dovecot-and-mysql-on-centos-5
 deprecated: true
 author:
   name: Linode

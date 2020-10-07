@@ -1,4 +1,5 @@
 ---
+slug: build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid
 author:
   name: Brett Kaplan
   email: docs@linode.com

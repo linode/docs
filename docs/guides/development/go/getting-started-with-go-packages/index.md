@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-go-packages
 author:
   name: Kamesh Balasubramanian
   email: kamesh@wirecog.com

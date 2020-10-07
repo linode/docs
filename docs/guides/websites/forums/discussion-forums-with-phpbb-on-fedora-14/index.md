@@ -1,4 +1,5 @@
 ---
+slug: discussion-forums-with-phpbb-on-fedora-14
 deprecated: true
 author:
   name: Stan Schwertly

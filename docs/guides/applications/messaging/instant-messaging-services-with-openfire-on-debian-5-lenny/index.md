@@ -1,4 +1,5 @@
 ---
+slug: instant-messaging-services-with-openfire-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: discussion-forums-with-vanilla-forums
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: configure-and-use-salt-ssh
 author:
   name: Sergey Bulavintsev
   email: bulavintsev.sergey@gmail.com

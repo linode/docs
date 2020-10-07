@@ -1,4 +1,5 @@
 ---
+slug: install-a-custom-distribution-on-a-xen-linode
 deprecated: true
 author:
   name: Linode

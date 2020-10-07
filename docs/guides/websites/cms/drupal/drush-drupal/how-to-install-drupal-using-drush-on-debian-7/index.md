@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-drupal-using-drush-on-debian-7
 author:
     name: Linode
     email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: linux-static-ip-configuration
 author:
   name: Linode
   email: docs@linode.com

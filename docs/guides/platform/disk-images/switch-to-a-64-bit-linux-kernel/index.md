@@ -1,4 +1,5 @@
 ---
+slug: switch-to-a-64-bit-linux-kernel
 deprecated: false
 author:
   name: Alex Fornuto

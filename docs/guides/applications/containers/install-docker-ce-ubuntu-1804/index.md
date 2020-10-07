@@ -1,4 +1,5 @@
 ---
+slug: install-docker-ce-ubuntu-1804
 author:
   name: Linode
   email: docs@linode.com

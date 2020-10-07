@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-mysql-workbench-on-ubuntu
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: discussion-forums-with-phpbb-on-centos-5
 deprecated: true
 author:
   name: Stan Schwertly

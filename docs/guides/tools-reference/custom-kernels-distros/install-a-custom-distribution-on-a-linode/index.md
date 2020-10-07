@@ -1,4 +1,5 @@
 ---
+slug: install-a-custom-distribution-on-a-linode
 author:
   name: Nick Brewer
   email: docs@linode.com

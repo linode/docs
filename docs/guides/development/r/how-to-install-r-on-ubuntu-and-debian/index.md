@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-r-on-ubuntu-and-debian
 author:
   name: Sam Foo
   email: docs@linode.com

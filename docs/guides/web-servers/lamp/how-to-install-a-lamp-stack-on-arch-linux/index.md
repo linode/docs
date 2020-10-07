@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-a-lamp-stack-on-arch-linux
 author:
     name: Alex Fornuto
     email: afornuto@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: cloud-email-notifications-shortguide
 author:
   name: Linode
   email: docs@linode.com

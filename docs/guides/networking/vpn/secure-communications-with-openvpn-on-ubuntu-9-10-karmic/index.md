@@ -1,4 +1,5 @@
 ---
+slug: secure-communications-with-openvpn-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

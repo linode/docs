@@ -1,4 +1,5 @@
 ---
+slug: using-weechat-for-irc
 author:
     name: Linode Community
     email: docs@linode.com

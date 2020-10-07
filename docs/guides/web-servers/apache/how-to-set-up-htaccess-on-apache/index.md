@@ -1,4 +1,5 @@
 ---
+slug: how-to-set-up-htaccess-on-apache
 author:
   name: Linode
   email: docs@linode.com

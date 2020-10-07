@@ -1,4 +1,5 @@
 ---
+slug: create-physical-backups-of-your-mariadb-or-mysql-databases
 author:
   name: Linode
   email: docs@linode.com

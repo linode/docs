@@ -1,4 +1,5 @@
 ---
+slug: use-scrapy-to-extract-data-from-html-tags
 author:
   name: Florent Houbart
   email: docs@linode.com

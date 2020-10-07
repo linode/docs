@@ -1,4 +1,5 @@
 ---
+slug: deploying-wordpress-with-one-click-apps
 author:
   name: Linode
   email: docs@linode.com

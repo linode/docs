@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-dovecot-and-mysql-on-debian-5-lenny
 deprecated: true
 author:
   name: Brett Kaplan

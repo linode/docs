@@ -1,4 +1,5 @@
 ---
+slug: oscommerce-on-fedora-13
 deprecated: true
 author:
   name: Stan Schwertly

@@ -1,4 +1,5 @@
 ---
+slug: minecraft-with-bungee-cord
 author:
     name: Linode Community
     email: docs@linode.com

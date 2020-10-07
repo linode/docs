@@ -1,4 +1,5 @@
 ---
+slug: beginners-guide-to-kubernetes
 author:
   name: Andy Stevens
   email: docs@linode.com

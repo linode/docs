@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-mumble-on-debian
 author:
     name: Linode Community
     email: docs@linode.com

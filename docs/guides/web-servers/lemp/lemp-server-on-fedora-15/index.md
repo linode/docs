@@ -1,4 +1,5 @@
 ---
+slug: lemp-server-on-fedora-15
 deprecated: true
 author:
   name: Linode

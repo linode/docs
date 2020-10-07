@@ -1,4 +1,5 @@
 ---
+slug: nodebalancer-ssl-configuration
 author:
   name: Joel Kruger
   email: jkruger@linode.com

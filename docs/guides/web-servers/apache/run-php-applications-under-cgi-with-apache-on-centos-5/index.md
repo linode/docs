@@ -1,4 +1,5 @@
 ---
+slug: run-php-applications-under-cgi-with-apache-on-centos-5
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: creating-a-mongodb-replication-set-on-ubuntu-16-04
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: secrets-management-with-terraform
 author:
   name: Linode
   email: docs@linode.com

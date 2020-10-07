@@ -1,4 +1,5 @@
 ---
+slug: using-octant-with-kubernetes-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com

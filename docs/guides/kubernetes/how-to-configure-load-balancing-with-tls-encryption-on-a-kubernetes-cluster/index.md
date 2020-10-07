@@ -1,4 +1,5 @@
 ---
+slug: how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster
 author:
   name: Linode Community
   email: docs@linode.com

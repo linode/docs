@@ -1,4 +1,5 @@
 ---
+slug: gpu-install-driver-manually-shortguide
 author:
   name: Linode
   email: docs@linode.com

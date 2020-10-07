@@ -1,4 +1,5 @@
 ---
+slug: oracle-10g-express-edition-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: install-iredmail-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com

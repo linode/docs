@@ -1,4 +1,5 @@
 ---
+slug: install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com

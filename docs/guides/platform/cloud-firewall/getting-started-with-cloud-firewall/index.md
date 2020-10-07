@@ -1,4 +1,5 @@
 ---
+slug: getting-started-with-cloud-firewall
 author:
   name: Linode
   email: docs@linode.com

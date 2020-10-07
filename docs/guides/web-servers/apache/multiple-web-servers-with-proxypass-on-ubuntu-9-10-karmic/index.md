@@ -1,4 +1,5 @@
 ---
+slug: multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic
 deprecated: true
 author:
   name: Linode

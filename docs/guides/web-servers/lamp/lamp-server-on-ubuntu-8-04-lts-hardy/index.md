@@ -1,4 +1,5 @@
 ---
+slug: lamp-server-on-ubuntu-8-04-lts-hardy
 deprecated: true
 author:
   name: Linode

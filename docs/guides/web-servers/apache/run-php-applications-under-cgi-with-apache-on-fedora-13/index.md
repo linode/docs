@@ -1,4 +1,5 @@
 ---
+slug: run-php-applications-under-cgi-with-apache-on-fedora-13
 deprecated: true
 author:
   name: Linode

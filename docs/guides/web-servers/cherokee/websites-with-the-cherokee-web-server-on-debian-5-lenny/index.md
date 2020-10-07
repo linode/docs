@@ -1,4 +1,5 @@
 ---
+slug: websites-with-the-cherokee-web-server-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: apache-and-mod-wsgi-on-ubuntu-10-10-maverick
 author:
   name: Linode
   email: docs@linode.com

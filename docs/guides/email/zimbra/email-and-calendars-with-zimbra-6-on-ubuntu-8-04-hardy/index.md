@@ -1,4 +1,5 @@
 ---
+slug: email-and-calendars-with-zimbra-6-on-ubuntu-8-04-hardy
 deprecated: true
 author:
   name: Linode

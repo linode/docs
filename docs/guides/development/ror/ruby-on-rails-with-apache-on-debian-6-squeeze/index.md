@@ -1,4 +1,5 @@
 ---
+slug: ruby-on-rails-with-apache-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

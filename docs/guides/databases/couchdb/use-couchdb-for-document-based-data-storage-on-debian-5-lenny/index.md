@@ -1,4 +1,5 @@
 ---
+slug: use-couchdb-for-document-based-data-storage-on-debian-5-lenny
 deprecated: true
 author:
   name: Linode

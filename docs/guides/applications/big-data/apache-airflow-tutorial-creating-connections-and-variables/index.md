@@ -1,4 +1,5 @@
 ---
+slug: apache-airflow-tutorial-creating-connections-and-variables
 author:
   name: Angel D'az
   email: angel@ocelotdata.com

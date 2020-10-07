@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-postgresql-on-ubuntu-16-04
 author:
   name: Linode
   email: docs@linode.com

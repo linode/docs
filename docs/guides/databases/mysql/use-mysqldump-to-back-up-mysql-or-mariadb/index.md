@@ -1,4 +1,5 @@
 ---
+slug: use-mysqldump-to-back-up-mysql-or-mariadb
 author:
   name: Linode
   email: docs@linode.com

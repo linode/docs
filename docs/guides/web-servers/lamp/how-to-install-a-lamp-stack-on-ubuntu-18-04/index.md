@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-a-lamp-stack-on-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com

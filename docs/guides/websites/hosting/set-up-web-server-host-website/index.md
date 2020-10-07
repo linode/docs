@@ -1,4 +1,5 @@
 ---
+slug: set-up-web-server-host-website
 author:
   name: Linode
   email: docs@linode.com

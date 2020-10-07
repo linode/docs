@@ -1,4 +1,5 @@
 ---
+slug: monitoring-configure-email-alerts-shortguide
 author:
   name: Linode
   email: docs@linode.com

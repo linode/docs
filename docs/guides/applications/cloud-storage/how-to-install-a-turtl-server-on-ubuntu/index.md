@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-a-turtl-server-on-ubuntu
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com

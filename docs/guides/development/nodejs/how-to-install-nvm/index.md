@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-nvm
 author:
   name: Linode
 description: 'Shortguide for installing the Node Version Manager (NVM)'

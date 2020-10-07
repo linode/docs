@@ -1,4 +1,5 @@
 ---
+slug: manage-an-ubuntu-10-04-lucid-vps-with-ispconfig
 deprecated: true
 author:
   name: Linode

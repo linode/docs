@@ -1,4 +1,5 @@
 ---
+slug: using-cobra
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com

@@ -1,4 +1,5 @@
 ---
+slug: migrate-a-lamp-website-to-linode
 author:
   name: Nathan Melehan
   email: nmelehan@linode.com

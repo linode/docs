@@ -1,4 +1,5 @@
 ---
+slug: dns-manager-add-domain-shortguide
 author:
   name: Linode
   email: docs@linode.com

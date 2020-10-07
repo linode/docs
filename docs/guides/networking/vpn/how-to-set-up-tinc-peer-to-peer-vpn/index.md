@@ -1,4 +1,5 @@
 ---
+slug: how-to-set-up-tinc-peer-to-peer-vpn
 author:
   name: Linode Community
   email: docs@linode.com

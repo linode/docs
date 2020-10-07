@@ -1,4 +1,5 @@
 ---
+slug: ansible-adhoc-commands
 author:
   name: Avi
   email: avi.dunken1991@gmail.com

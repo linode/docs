@@ -1,4 +1,5 @@
 ---
+slug: lke-network-firewall-information-shortguide
 author:
   name: Linode
   email: docs@linode.com

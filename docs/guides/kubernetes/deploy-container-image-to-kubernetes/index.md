@@ -1,4 +1,5 @@
 ---
+slug: deploy-container-image-to-kubernetes
 author:
   name: Linode Community
   email: docs@linode.com

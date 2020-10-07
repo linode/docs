@@ -1,4 +1,5 @@
 ---
+slug: create-a-mongodb-replica-set
 author:
   name: Linode
   email: docs@linode.com

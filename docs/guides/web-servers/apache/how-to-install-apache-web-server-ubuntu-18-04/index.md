@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-apache-web-server-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com

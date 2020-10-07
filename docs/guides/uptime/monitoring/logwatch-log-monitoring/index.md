@@ -1,4 +1,5 @@
 ---
+slug: logwatch-log-monitoring
 deprecated: true
 author:
   name: Linode

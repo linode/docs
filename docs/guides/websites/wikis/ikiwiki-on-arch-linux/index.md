@@ -1,4 +1,5 @@
 ---
+slug: ikiwiki-on-arch-linux
 deprecated: true
 author:
   name: Linode

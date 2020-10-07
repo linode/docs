@@ -1,4 +1,5 @@
 ---
+slug: apache-2-web-server-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-fsck-to-fix-disk-problems
 author:
   name: Edward Angert
   email: docs@linode.com

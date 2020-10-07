@@ -1,4 +1,5 @@
 ---
+slug: configure-wordpress-remote-database
 author:
   name: Edward Angert
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: cloud-reboot-shortguide
 author:
   name: Linode
   email: docs@linode.com

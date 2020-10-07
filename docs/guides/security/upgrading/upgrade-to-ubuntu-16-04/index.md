@@ -1,4 +1,5 @@
 ---
+slug: upgrade-to-ubuntu-16-04
 author:
   name: Alex Fornuto
   email: docs@linode.com

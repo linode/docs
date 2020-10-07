@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com

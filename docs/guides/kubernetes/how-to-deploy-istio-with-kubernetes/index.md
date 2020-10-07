@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-istio-with-kubernetes
 author:
   name: Linode
   email: docs@linode.com

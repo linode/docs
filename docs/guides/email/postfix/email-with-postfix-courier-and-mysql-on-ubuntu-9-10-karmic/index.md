@@ -1,4 +1,5 @@
 ---
+slug: email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic
 author:
   name: Linode
   email: docs@linode.com

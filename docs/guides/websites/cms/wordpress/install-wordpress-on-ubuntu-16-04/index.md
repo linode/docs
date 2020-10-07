@@ -1,4 +1,5 @@
 ---
+slug: install-wordpress-on-ubuntu-16-04
 author:
   name: Edward Angert
   email: docs@linode.com

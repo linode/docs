@@ -1,4 +1,5 @@
 ---
+slug: migrating-a-server-to-your-linode
 deprecated: true
 author:
   name: Linode

@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-apache-cassandra-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-change-selinux-modes
 author:
   name: Angel Guarisma
   email: docs@linode.com

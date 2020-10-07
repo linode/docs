@@ -1,4 +1,5 @@
 ---
+slug: manage-development-with-the-mantis-bug-tracker-on-centos-5
 deprecated: true
 author:
   name: Stan Schwertly

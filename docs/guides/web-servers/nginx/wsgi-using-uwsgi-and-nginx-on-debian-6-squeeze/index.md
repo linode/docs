@@ -1,4 +1,5 @@
 ---
+slug: wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

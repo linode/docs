@@ -1,4 +1,5 @@
 ---
+slug: monitoring-cloud-manager-graphs-shortguide
 author:
   name: Linode
   email: docs@linode.com

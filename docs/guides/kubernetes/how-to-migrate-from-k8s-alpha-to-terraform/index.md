@@ -1,4 +1,5 @@
 ---
+slug: how-to-migrate-from-k8s-alpha-to-terraform
 author:
   name: Ryan Syracuse
   email: docs@linode.com

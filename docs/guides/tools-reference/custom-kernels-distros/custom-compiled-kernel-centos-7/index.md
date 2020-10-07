@@ -1,4 +1,5 @@
 ---
+slug: custom-compiled-kernel-centos-7
 author:
   name: Alex Fornuto
   email: docs@linode.com

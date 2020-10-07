@@ -1,4 +1,5 @@
 ---
+slug: websites-with-nginx-on-centos-5
 deprecated: true
 author:
   name: Linode

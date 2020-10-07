@@ -1,4 +1,5 @@
 ---
+slug: full-disk-encryption-xen
 deprecated: true
 author:
   name: Quintin Riis

@@ -1,4 +1,5 @@
 ---
+slug: deploy-mern-with-one-click-apps
 author:
   name: Linode Community
   email: docs@linode.com

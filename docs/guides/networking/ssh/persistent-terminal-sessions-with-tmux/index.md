@@ -1,4 +1,5 @@
 ---
+slug: persistent-terminal-sessions-with-tmux
 author:
   name: Linode Community
   email: docs@linode.com

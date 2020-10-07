@@ -1,4 +1,5 @@
 ---
+slug: install-mosh-server-as-ssh-alternative-on-linux
 author:
   name: Quintin Riis
   email: docs@linode.com

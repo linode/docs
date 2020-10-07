@@ -1,4 +1,5 @@
 ---
+slug: linode-backup-service
 author:
   name: Alex Fornuto
 description: The Linode Backup Service automatically performs daily, weekly, and biweekly backups of your Linode. This guide explains how to enable and schedule your backups, make a manual backup snapshot, restore from a backup, and disable the Backup Service.

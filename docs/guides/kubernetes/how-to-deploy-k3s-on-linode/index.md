@@ -1,4 +1,5 @@
 ---
+slug: how-to-deploy-k3s-on-linode
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com

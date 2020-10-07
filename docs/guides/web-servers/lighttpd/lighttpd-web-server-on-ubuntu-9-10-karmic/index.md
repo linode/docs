@@ -1,4 +1,5 @@
 ---
+slug: lighttpd-web-server-on-ubuntu-9-10-karmic
 author:
   name: Linode
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-create-a-docker-swarm-manager-and-nodes-on-linode
 author:
   name: Linode Community
   email: docs@linode.com

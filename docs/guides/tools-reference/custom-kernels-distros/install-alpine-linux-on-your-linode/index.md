@@ -1,4 +1,5 @@
 ---
+slug: install-alpine-linux-on-your-linode
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: introduction-to-high-availability
 author:
   name: Phil Zona
   email: docs@linode.com

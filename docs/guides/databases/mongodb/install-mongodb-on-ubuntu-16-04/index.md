@@ -1,4 +1,5 @@
 ---
+slug: install-mongodb-on-ubuntu-16-04
 author:
   name: Linode
   email: docs@linode.com

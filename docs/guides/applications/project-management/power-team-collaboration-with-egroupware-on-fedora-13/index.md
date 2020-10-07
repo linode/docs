@@ -1,4 +1,5 @@
 ---
+slug: power-team-collaboration-with-egroupware-on-fedora-13
 deprecated: true
 author:
   name: Linode

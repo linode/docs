@@ -1,4 +1,5 @@
 ---
+slug: pflogsumm-for-postfix-monitoring-on-centos-6
 author:
   name: Linode Community
   email: docs@linode.com

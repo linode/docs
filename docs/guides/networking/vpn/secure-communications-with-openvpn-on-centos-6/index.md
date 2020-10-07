@@ -1,4 +1,5 @@
 ---
+slug: secure-communications-with-openvpn-on-centos-6
 deprecated: true
 author:
   name: Linode

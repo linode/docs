@@ -1,4 +1,5 @@
 ---
+slug: backups-manage-shortguide
 author:
   name: Linode
   email: docs@linode.com

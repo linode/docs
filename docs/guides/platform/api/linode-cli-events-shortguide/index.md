@@ -1,4 +1,5 @@
 ---
+slug: linode-cli-events-shortguide
 author:
   name: Linode
   email: docs@linode.com

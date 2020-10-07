@@ -1,4 +1,5 @@
 ---
+slug: how-to-speed-up-a-wordpress-website
 author:
   name: Nathan Melehan
   email: docs@linode.com

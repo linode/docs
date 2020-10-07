@@ -1,4 +1,5 @@
 ---
+slug: create-a-nodebalancer-with-terraform
 author:
   name: Linode
   email: docs@linode.com

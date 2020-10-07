@@ -1,4 +1,5 @@
 ---
+slug: create-a-salt-execution-module
 author:
   name: Linode
   email: docs@linode.com

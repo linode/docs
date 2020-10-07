@@ -1,4 +1,5 @@
 ---
+slug: git-based-development-networks-with-girocco-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com

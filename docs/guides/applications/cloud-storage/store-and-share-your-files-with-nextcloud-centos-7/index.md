@@ -1,4 +1,5 @@
 ---
+slug: store-and-share-your-files-with-nextcloud-centos-7
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: how-to-create-an-email-server-with-mail-in-a-box
 author:
   name: Linode Community
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: longview-app-for-mysql-classic
 author:
   name: Linode
   email: docs@linode.com

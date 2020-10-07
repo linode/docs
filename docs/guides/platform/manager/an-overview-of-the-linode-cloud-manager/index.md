@@ -1,4 +1,5 @@
 ---
+slug: an-overview-of-the-linode-cloud-manager
 author:
   name: Linode
   email: docs@linode.com

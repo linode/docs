@@ -1,4 +1,5 @@
 ---
+slug: redis-on-debian-6-squeeze
 deprecated: true
 author:
   name: Linode

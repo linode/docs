@@ -1,4 +1,5 @@
 ---
+slug: download-backups-locally
 author:
   name: Edward Angert
   email: docs@linode.com

@@ -1,4 +1,5 @@
 ---
+slug: instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy
 deprecated: true
 author:
   name: Linode

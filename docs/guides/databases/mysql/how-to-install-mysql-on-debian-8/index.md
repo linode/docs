@@ -1,4 +1,5 @@
 ---
+slug: how-to-install-mysql-on-debian-8
 author:
   name: Mike Rosabal
   email: docs@linode.com
