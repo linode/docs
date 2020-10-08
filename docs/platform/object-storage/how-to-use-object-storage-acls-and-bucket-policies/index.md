@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
 keywords: ['object storage','acl','access control list','bucket policy','bucket policies']
+tags: ["linode platform","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
 modified_by:
@@ -15,6 +16,8 @@ contributor:
 external_resources:
 - '[Ceph Bucket Policy Supported Actions](https://docs.ceph.com/docs/master/radosgw/bucketpolicy/#limitations)'
 ---
+
+{{< content "object-storage-ga-shortguide" >}}
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
@@ -31,6 +34,10 @@ In this guide you will learn:
 - This guide will use the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
 
 - You'll also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
+
+{{< note >}}
+Currently, you can only create a new canonical ID by creating a completely new Linode account. A canonical ID is not assigned to a limited access user on an existing Linode account.
+{{< /note >}}
 
 ### Retrieve a User's Canonical ID
 
@@ -181,6 +188,10 @@ The owner of the bucket will always have the `full_control` permission.
 
 Bucket policies can offer finer control over the types of permissions you can grant to a user.
 
+{{< caution >}}
+In the below examples, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined, creation of a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
+{{< /caution >}}
+
 ### Basic Access Policy
 Below is an example bucket policy written in JSON:
 
@@ -262,7 +273,7 @@ You can also define a finer level of control over the level of access to your bu
 This example shows how you can grant read-only access to a user by allowing them to list buckets and get objects from the bucket only from the `test` directory. However, they will not be able to perform any other actions.
 
 ### Denying Access by IP Address
-If you wanted to deny access to a user by IP address, you can change the `Effect` field from `Allow` to `Deny` and supply an IP address in a condition.
+If you wanted to deny all access to a resource and whitelist by IP address, you can change the `Effect` field from `Allow` to `Deny` and supply an IP address in a condition.
 
 {{< file "bucket-policy-deny.json" json >}}
 {

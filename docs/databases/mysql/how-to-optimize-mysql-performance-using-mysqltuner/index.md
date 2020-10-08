@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
-aliases: ['databases/mysql/tuning-your-mysql-database/','databases/mysql/mysql-performance-tuning-tutorial/']
+aliases: ['/databases/mysql/mysql-performance-tuning-tutorial/','/databases/mysql/tuning-your-mysql-database/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
 modified_by:
@@ -14,15 +14,16 @@ title: How to Optimize MySQL Performance Using MySQLTuner
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
- - '[MySQLTuner](http://mysqltuner.com/)'
+ - '[MySQLTuner](https://github.com/major/MySQLTuner-perl)'
 dedicated_cpu_link: true
+tags: ["database","mysql"]
 ---
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads, it is beneficial to tune MySQL to additional connections.
 
 ![Optimize MySQL Performance Using MySQLTuner](optimize_mysql_using_mysql_tuner_title_graphic.png)
 
-Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](/pricing#high-memory) for such setups.
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) for such setups.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -37,7 +38,7 @@ In order to determine if your MySQL database needs to be reconfigured, it is bes
 
 ### MySQLTuner
 
-The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation, and then outputs suggestions for increasing your server's performance and stability.
+The [MySQLTuner](https://github.com/major/MySQLTuner-perl) script assesses your MySQL installation, and then outputs suggestions for increasing your server's performance and stability.
 
 1. Download the MySQLTuner script:
 

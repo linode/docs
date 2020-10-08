@@ -8,9 +8,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-22
 modified_by:
   name: Linode
+image: LongviewPricingandPlans.png
 title: "Longview Pricing and Plans"
 contributor:
   name: Linode
+tags: ["linode platform","cloud manager","statistics","monitoring"]
 ---
 
 Longview is free for all customers for up to ten clients. You also have the option to purchase **Longview Pro** which includes additional analytics for an added cost. Longview's free version updates every 5 minutes and provides twelve hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 12 hours.

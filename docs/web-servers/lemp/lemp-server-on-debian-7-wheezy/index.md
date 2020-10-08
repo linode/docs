@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on Debian 7'
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/debian-7-wheezy/','websites/lemp/lemp-server-on-debian-7-wheezy/']
+aliases: ['/websites/lemp/lemp-server-on-debian-7-wheezy/','/lemp-guides/debian-7-wheezy/']
 modified: 2014-02-07
 modified_by:
   name: Alex Fornuto
@@ -19,6 +20,11 @@ external_resources:
  - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
  - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)'
  - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Debian 7
 ---
 
 This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.

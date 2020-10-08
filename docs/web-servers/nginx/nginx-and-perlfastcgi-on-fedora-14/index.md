@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 14.'
 keywords: ["nginx", "nginx fedora 14", "nginx fastcgi", "nginx perl"]
+tags: ["web server","perl","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/perl-fastcgi/fedora-14/','websites/nginx/nginx-and-perlfastcgi-on-fedora-14/']
+aliases: ['/web-servers/nginx/perl-fastcgi/fedora-14/','/websites/nginx/nginx-and-perlfastcgi-on-fedora-14/']
 modified: 2013-10-07
 modified_by:
   name: Linode
 published: 2011-01-07
 title: 'Nginx and Perl-FastCGI on Fedora 14'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: Fedora 14
 ---
 
 
@@ -91,7 +97,7 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Cloud Manager](http://cloud.linode.com//)).
 
 # Configure FastCGI Wrapper
 

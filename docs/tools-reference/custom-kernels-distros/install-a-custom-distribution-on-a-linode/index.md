@@ -5,8 +5,9 @@ author:
 published: 2017-03-02
 description: 'Install a Custom Distribution or Linux Appliance on your KVM Linode.'
 keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
+tags: ["debian", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
+aliases: ['/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
 modified_by:
   name: Linode
 modified: 2018-10-16
@@ -45,7 +46,7 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 ### Prepare your Linode
 
-1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. You can use a Nanode for this guide.
+1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. You can use a 1GB Linode (Nanode) for this guide.
 
 1.  After the Linode is finished provisioning, power it down.
 
@@ -150,7 +151,7 @@ If you're still not able to access your Linode via Lish after updating your GRUB
 
 If you've followed the steps so far, you should have a working custom distribution with raw disks, using the *direct disk* boot option. While this setup is functional, it's not compatible with several features of the Linode Manager that require the ability to mount your filesystem, such as:
 
-*  **Disk Resizing:** Since the Linode Cloud Manager cannot determine the amount of *used* storage space on a raw disk, it can only **increase** the size. The Linode Cloud Manager cannot be used to make a raw disk smaller, and it cannot resize the filesystem on the disk - this would need to be done manually.
+*  **Disk Resizing:** Since the Linode Cloud Manager cannot determine the amount of *used* storage space on a raw disk, it can only **increase** the size. The Linode Cloud Manager cannot be used to make a raw disk smaller, and it cannot resize the filesystem on the disk - this would need to be done manually. Also, some ext4 features like enabled metadata_csum are not supported for custom distribution images.
 
 *  **Backups:** The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.
 

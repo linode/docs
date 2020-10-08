@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 15.'
 keywords: ["fedora 15 lamp", "lamp server", "linux lamp", "fedora 15 apache"]
+tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/fedora-15/','websites/lamp/lamp-server-on-fedora-15/']
+aliases: ['/lamp-guides/fedora-15/','/websites/lamp/lamp-server-on-fedora-15/']
 modified: 2013-11-19
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Fedora 15
 ---
 
 

@@ -4,8 +4,9 @@ author:
     email: docs@linode.com
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 14.04 '
 keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 14.04", " nginx", "reverse proxy", "ubuntu 14.04"]
+tags: ["web applications","proxy","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/']
+aliases: ['/websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/']
 published: 2016-03-30
 modified: 2016-03-30
 deprecated: true
@@ -21,6 +22,11 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
+relations:
+    platform:
+        key: unicorn-nginx
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.

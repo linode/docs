@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.10.'
 keywords: ["ubuntu 10.10 upgrade", "ubuntu maverick upgrade", "distro upgrade", "linux upgrade howto"]
+tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['upgrading/upgrade-to-ubuntu-10-10-maverick/']
+aliases: ['/upgrading/upgrade-to-ubuntu-10-10-maverick/']
 modified: 2013-05-10
 modified_by:
   name: Linode
 published: 2010-10-13
 title: 'How to Upgrade to Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

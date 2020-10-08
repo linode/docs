@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your CentOS 5 Linode.'
 keywords: ["zimbra on centos", "zimbra groupware", "zimbra mail server", "linux mail server"]
+tags: ["centos","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/zimbra/install-zimbra-centos-5/']
+aliases: ['/email/zimbra/install-zimbra-centos-5/']
 modified: 2011-05-17
 modified_by:
   name: Linode
@@ -16,6 +17,11 @@ external_resources:
  - '[Zimbra Community Documentation](http://www.zimbra.com/community/documentation.html)'
  - '[Zimbra Wiki](http://wiki.zimbra.com/index.php?title=Main_Page)'
  - '[Zimbra Developer Zone](http://www.zimbra.com/community/developer_zone.html)'
+relations:
+    platform:
+        key: zimbra-groupware
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your CentOS 5 Linode.

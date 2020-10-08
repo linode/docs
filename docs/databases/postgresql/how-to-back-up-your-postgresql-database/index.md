@@ -13,6 +13,7 @@ modified_by:
 title: "How to Back Up Your PostgreSQL Database"
 external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'
+tags: ["database","postgresql"]
 ---
 
 ![How to Back Up Your PostgreSQL Database](back-up-postgresql-database-title.jpg "How to Back Up Your PostgreSQL Database")

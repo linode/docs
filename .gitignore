@@ -35,3 +35,6 @@ Thumbs.dbi
 *.elc
 .\#*
 *.sublime-workspace
+node_modules
+resources/_gen/assets/css/docs/css/styles.css_0a7609e807cbb0441390b6ce32d26025.content
+resources/_gen/assets/css/docs/css/styles.css_0a7609e807cbb0441390b6ce32d26025.json

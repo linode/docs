@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Help with common Linode memory use and networking issues.'
 keywords: ["Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
+tags: ["networking", "mysql", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['troubleshooting/memory-networking/']
+aliases: ['/troubleshooting/memory-networking/']
 modified: 2013-11-19
 modified_by:
   name: Linode
@@ -96,4 +97,4 @@ If you've added multiple IP addresses to your Linode, you must set up static net
 
 If you just added an IP address to your Linode, please be sure to reboot before attempting to use it. This is required to properly route the IP address on our network.
 
-If you've added a private IP address, please be sure to use the network settings shown in the "Remote Access" of the Linode Manager, paying special attention to the subnet mask. Note that private IP addresses do not require a gateway (nor should one be specified).
+If you've added a private IP address, please be sure to use the network settings shown in the **Networking** tab of the Linode Cloud Manager, paying special attention to the subnet mask. Note that private IP addresses do not require a gateway (nor should one be specified).

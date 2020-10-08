@@ -5,14 +5,20 @@ author:
   email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Debian 5 (Lenny).'
 keywords: ["munin", "monitoring"]
+tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/munin/debian-5-lenny/']
+aliases: ['/server-monitoring/munin/debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-01-07
 expiryDate: 2013-10-08
 title: 'Monitoring Servers with Munin on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Debian 5
 ---
 
 

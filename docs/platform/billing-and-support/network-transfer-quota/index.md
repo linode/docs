@@ -12,6 +12,7 @@ modified_by:
 title: "Network Transfer Quota"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 Your *network transfer quota* represents the total monthly amount of traffic your services can use as part of your Linode plans' basic pricing. Each Linode plan includes a specified amount of transfer. Transfer amounts are listed for each plan on the Linode [pricing page](https://www.linode.com/pricing).
@@ -45,7 +46,7 @@ Linode does not offer private IPv6 address allocations. Our IPv6 accounting was 
 
 ## Transfer Resets, Proration, and Overages
 
-Your transfer quota is reset at the beginning of each month.
+Your transfer quota is reset at the beginning of each month at midnight EST/EDT.
 
 ### Why is My Linode's Network Transfer less than My Plan's Transfer?
 
@@ -71,7 +72,7 @@ If you have gone over your quota, or you think you may before the end of the mon
 
 1. Purchase (an) additional Linode(s) with the specific purpose of increasing your pool total. You may want to delete any Linodes created for this purpose at the end of the month if you don't anticipate needing a higher pool total in the future.
 
-When taking one of these actions, keep in mind that the quota amount that will be added is [prorated](#why-is-my-linode-s-quota-less-than-my-plan-s-quota) according to the current date.
+When taking one of these actions, keep in mind that the quota amount that will be added is [prorated](#why-is-my-linode-s-network-transfer-less-than-my-plan-s-transfer) according to the current date.
 
 ## View Network Pool Usage
 

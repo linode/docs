@@ -3,7 +3,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
-keywords: ["confidential", " encrypted", " integrity", " redundant", " private", " filesystem", " storage"]
+keywords: ["confidential", "encrypted", "integrity", "redundant", "private", "filesystem", "storage"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-24
 modified: 2017-10-26
@@ -222,7 +223,7 @@ To confirm each successful setup instead of launching all instances before verif
 This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
 {{< /note >}}
 
-1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://manager.linode.com/stackscripts/index) to add a new StackScript.
+1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://cloud.linode.com/stackscripts/index) to add a new StackScript.
 
 2.  Select Debian 9 as the distribution and paste the following in the **Script** section:
 

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using master/slave replication on CentOS 7.'
 keywords: ["redis", " centos 7", " redis cluster", " centos"]
-aliases: ['databases/redis/deploy-redis-on-centos-7/']
+aliases: ['/databases/redis/deploy-redis-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-02-20
 modified_by:
@@ -16,13 +16,19 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/topics/security)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: CentOS 7
+tags: ["nosql","database","centos"]
 ---
 
 ![Deploy Redis on CentOS 7](install-configure-redis-centos.png "Deploy Redis on CentOS 7")
 
 Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster.
 
-This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7. Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory) with this guide.
+This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7. Since Redis serves all data from memory, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) with this guide.
 
 ## Before You Begin
 
@@ -194,9 +200,11 @@ Your master/slave replication setup is working properly.
 
 ## Secure the Redis Installation
 
+{{< content "cloud-firewall-shortguide" >}}
+
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 
-- Set up a firewall using [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/).
+- Set up a firewall using [your tool of choice](/docs/security/securing-your-server/#configure-a-firewall).
 
 - Encrypt Redis traffic using an SSH tunnel, or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

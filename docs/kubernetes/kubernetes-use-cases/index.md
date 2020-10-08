@@ -11,7 +11,8 @@ modified_by:
 title: "Advantages of Using Kubernetes"
 contributor:
   name: Linode
-aliases: ['applications/containers/kubernetes/kubernetes-use-cases/']
+aliases: ['/applications/containers/kubernetes/kubernetes-use-cases/']
+tags: ["kubernetes"]
 ---
 
 ## What is Kubernetes

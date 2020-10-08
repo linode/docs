@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","nginx","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/fedora-13/','websites/lemp/lemp-server-on-fedora-13/']
+aliases: ['/websites/lemp/lemp-server-on-fedora-13/','/lemp-guides/fedora-13/']
 modified: 2011-05-03
 modified_by:
   name: Linode
 published: 2010-06-30
 title: LEMP Server on Fedora 13
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

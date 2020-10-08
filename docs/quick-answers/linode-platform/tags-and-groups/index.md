@@ -11,6 +11,7 @@ modified_by:
 title: "Tags and Groups"
 contributor:
   name: Linode
+tags: ["linode platform","cloud manager"]
 ---
 
 Linode's [Cloud Manager](https://cloud.linode.com) and [API](https://developers.linode.com) allow you to create tags to help organize and group your Linode resources. Tags can be applied to Linodes, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/), and [Domains](/docs/platform/manager/dns-manager-new-manager/).
@@ -184,6 +185,56 @@ To remove a tag from a domain:
 1.  Locate the **Tags** pane. A list of your tags for the Domain will be displayed.
 
 1.  Click on the **x** icon attached to the tag you would like to remove from your domain.
+
+## Tagging an LKE Cluster
+
+### Tag an LKE Cluster at Creation
+
+1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and [create your LKE cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster).
+
+1. After the cluster is created, your cluster's summary page will appear. Click on the **Add a tag** link to begin adding tags to your cluster.
+
+      ![Click on the Add Tags link to begin adding tags](add-tags-lke.png)
+
+1. You can create a new tag and assign it to your cluster by typing the tag into the text entry box and clicking on the **Create my-new-tag** entry that appears.
+
+      ![Create a new tag and add it to your LKE cluster](create-new-tag-lke.png)
+
+    If you'd like to use an existing tag, select it from the dropdown list that appears.
+
+      ![Select and existing tag and add it to your LKE cluster](select-existing-tag-lke.png)
+
+    When your tag has been added to your cluster, you will see it appear on your cluster's summary page.
+
+      ![Select and existing tag and add it to your LKE cluster](view-clusters-tags-lke.png)
+
+### Tag an Existing LKE Cluster
+
+1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and select the cluster you'd like to add a tag to.
+
+1. Viewing your cluster's summary page, click on the **Add a tag** link to begin adding tags to your cluster.
+
+    ![Click on the Add Tags link to begin adding tags](add-tags-lke.png)
+
+1. You can create a new tag and assign it to your cluster by typing the tag into the text entry box and clicking on the **Create my-new-tag** entry that appears.
+
+    ![Create a new tag and add it to your LKE cluster](create-new-tag-lke.png)
+
+    If you'd like to use an existing tag, select it from the dropdown list that appears.
+
+      ![Select and existing tag and add it to your LKE cluster](select-existing-tag-lke.png)
+
+    When your tag has been added to your cluster, you will see it appear on your cluster's summary page.
+
+      ![Your tag has been successfully added to your cluster](view-clusters-tags-lke.png)
+
+### Remove a Tag from an LKE Cluster
+
+1. Navigate to the **Kubernetes** section of the Linode Cloud Manager and select the cluster from which you'd like to remove a tag.
+
+1. Viewing the cluster's summary page, you will see a list of all of your cluster's tags. To remove a tag, click on the **x** next to the tag you'd like to remove.
+
+      ![Remove an existing LKE cluster's tag.](remove-tag-lke.png)
 
 ## Grouping by Tag
 

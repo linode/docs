@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the CentOS 5 operating system.'
 keywords: ["ruby on rails", "rails on CentOS", "ruby on nginx", "rails apps"]
+tags: ["web applications","nginx","centos","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/ruby-on-rails-nginx/centos-5/','websites/ror/ruby-on-rails-with-nginx-on-centos-5/']
+aliases: ['/frameworks/ruby-on-rails-nginx/centos-5/','/websites/ror/ruby-on-rails-with-nginx-on-centos-5/']
 modified: 2011-07-20
 modified_by:
   name: Linode
 published: 2009-08-21
 title: Ruby on Rails with Nginx on CentOS 5
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on CentOS 5.

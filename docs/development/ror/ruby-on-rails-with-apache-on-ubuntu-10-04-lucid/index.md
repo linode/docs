@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Ubuntu 10.04 to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
+tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/ruby-on-rails-apache/ubuntu-10-04-lucid/','websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-04-lucid/']
+aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-04-lucid/','/frameworks/ruby-on-rails-apache/ubuntu-10-04-lucid/']
 modified: 2011-08-22
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
   - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
   - '[Install the Apache HTTP Server on Ubuntu 10.04 (Lucid)](/docs/web-servers/apache/installation/ubuntu-10-04-lucid)'
   - '[Install the MySQL Database System on Ubuntu 10.04 (Lucid)](/docs/databases/mysql/ubuntu-10-04-lucid)'
+relations:
+    platform:
+        key: ruby-on-rails-apache
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.

@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Install Apache on your Debian 8 (Jessie) server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache debian 8", "apache debian jessie", "linux web server", "apache on debian", "apache jessie", "apache", "debian", "web server"]
+tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/apache/apache-web-server-debian-8/']
+aliases: ['/websites/apache/apache-web-server-debian-8/']
 modified: 2018-12-31
 modified_by:
   name: Linode
@@ -14,6 +15,11 @@ title: 'Apache Web Server on Debian 8 (Jessie)'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: Debian 8
 ---
 
 ![How to Install and Configure Apache Web Server on Debian 8](Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)

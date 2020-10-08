@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 10.10 (Maverick).'
 keywords: ["ubuntu lamp server", "ubuntu 10.10 lamp", "maverick lamp", "ubuntu web server", "ubuntu maverick"]
+tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/ubuntu-10-10-maverick/','websites/lamp/lamp-server-on-ubuntu-10-10-maverick/']
+aliases: ['/lamp-guides/ubuntu-10-10-maverick/','/websites/lamp/lamp-server-on-ubuntu-10-10-maverick/']
 modified: 2012-10-03
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

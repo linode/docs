@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 6.0 (Squeeze).'
 keywords: ["debian 6 LAMP server", "debian LAMP guide", "LAMP howto"]
+tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/debian-6-squeeze/','websites/lamp/lamp-server-on-debian-6-squeeze/']
+aliases: ['/lamp-guides/debian-6-squeeze/','/websites/lamp/lamp-server-on-debian-6-squeeze/']
 modified: 2013-10-09
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Debian 6
 ---
 
 

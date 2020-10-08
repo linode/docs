@@ -4,12 +4,14 @@ author:
   email: docs@linode.com
 description: 'Create and manage Kubernetes clusters with Rancher and deploy apps from the Rancher app library.'
 keywords: ["rancher", "docker", "kubernetes", "container"]
+tags: ["docker","kubernetes","container","ubuntu","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
   name: Linode
 title: 'How to Deploy Kubernetes on Linode with Rancher 2.3'
-aliases: ['applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','applications/containers/how-to-deploy-apps-with-rancher/','applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','applications/containers/how-to-deploy-apps-with-rancher-2-3/']
+h1_title: 'Deploying Kubernetes on Linode with Rancher 2.3'
+aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
@@ -65,7 +67,7 @@ You will be able to create Kubernetes clusters in any Linode data center from th
 
 You will also need to generate an API token and prepare a domain zone:
 
-1.  Rancher will need a Linode APIv4 token from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
+1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
 
 1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/platform/manager/dns-manager/#create-and-manage-domains) guide.
 
@@ -151,6 +153,12 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 
 ### Add a Node Template
 
+{{< note >}}
+Nodes created using Rancher are dependent on the [Network Helper](/docs/platform/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
+{{< /note >}}
+
+
+
 [*Node templates*](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are used by Rancher to provision cluster nodes. When you create a node template, you can specify configuration parameters, like the region, instance type, and Linux image that should be used for any node in the cluster. You can set different templates for different clusters, which allows you to choose the right resources for your different workloads.
 
 Before provisioning your cluster, you will need to add the node template it will use. To add a node template:
@@ -220,14 +228,6 @@ All other node template settings are optional and will not be used in this guide
 1.  Toggle on the checkboxes for **etcd**, **Control Plane**, and **Worker**. In our example cluster, the nodes for this node pool will run each of these components. Your configured form should look like the following:
 
     ![Rancher Add Node Template form - single node pool configuration](add-cluster-form-3-node-all-role-pool.png "A node pool with a count of 3 that runs all cluster components")
-
-    {{< note >}}
-When you set up a cluster for production, avoid having a node pool that runs your workloads alongside your etcd or control plane components. An example node pool configuration which splits the etcd and control plane components from your workloads would look like the following:
-
-![Rancher Add Node Template form - example production node pool configuration](add-cluster-form-example-production-node-pools.png "An example node pool configuration for a production cluster")
-
-Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/production/) documentation for more guidance on setting up production clusters.
-    {{< /note >}}
 
 1.  The last part in creating your cluster is to configure Linode's CCM and CSI. In the **Cluster Options** section, toggle on the **Custom** option for the **Cloud Provider** field, then click on the **Edit as YAML** button above the section.
 

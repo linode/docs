@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
 keywords: ["postfix centos 5", "dovecot centos 5", "linux mail server", "email", "centos5"]
+tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/dovecot-mysql-centos-5/']
+aliases: ['/email/postfix/dovecot-mysql-centos-5/']
 modified: 2015-03-26
 modified_by:
   name: Elle Krout
@@ -19,6 +20,11 @@ external_resources:
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Documentation Wiki](http://wiki.dovecot.org/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+relations:
+    platform:
+        key: email-postfix-dovecot-mysql
+        keywords:
+            - distribution: CentOS 5
 ---
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 5 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.

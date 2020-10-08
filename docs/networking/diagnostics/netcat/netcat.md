@@ -4,6 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'An introduction to netcat.'
 keywords: ["UNIX", "TCP", "UDP", "netcat", "nc", "network"]
+tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
 modified_by:

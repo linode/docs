@@ -2,20 +2,23 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use iptables to manage Netfilter rules.'
+description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
+og_description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/firewalls/iptables/','networking/firewalls/control-network-traffic-with-iptables/']
+aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/']
 modified: 2017-02-28
 modified_by:
   name: Linode
 published: 2010-07-30
-title: Control Network Traffic with iptables
+title: Controlling Network Traffic with iptables - A Tutorial
+h1_title: A Tutorial for Controlling Network Traffic with iptables
 external_resources:
  - '[Security Basics](/docs/security/linux-security-basics)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
+tags: ["networking","security"]
 ---
 
 **iptables** is an application that allows users to configure specific rules that will be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol and other criteria. This guide will focus on the configuration and application of iptables rulesets and will provide examples of ways they are commonly used.
@@ -608,7 +611,7 @@ While some rules are configured in these files already, either file can be edite
 
 ### Save iptables-persistent Rules Through Reboot
 
-By default, iptables-persistent rules save on reboot for IPv4 only. Therefore, if you are running both IPv4 and IPv6 together you will need to manually edit both the `rules.v4` and `rules.v6` files. On older systems, `iptables-save` was used to write the changes to the `rules` file. Now that `iptables-persistent` is an option, do not use the `iptables-save > /etc/iptables/rules.v4` or `iptables-save > /etc/iptables/rules.v6` commands as any IPv6 changes will be overwritten by the IPv4 rules.
+By default, iptables-persistent rules save on reboot for IPv4 only. Therefore, if you are running both IPv4 and IPv6 together you will need to manually edit both the `rules.v4` and `rules.v6` files. On older systems, `iptables-save` was used to write the changes to the `rules` file. Now that `iptables-persistent` is an option, use `ip6tables-save > /etc/iptables/rules.v6` command on reboot for IPv6 .
 
 To enforce the iptables rules and ensure that they persist after reboot run `dpkg-reconfigure` and respond **Yes** when prompted. (If you ever edit your saved rules in the future, use this same command to save them again.)
 
@@ -623,9 +626,9 @@ To verify the rules are applied and available after the system reboot use the co
 
 When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/platform/manager/using-the-linode-shell-lish/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
 
-1.  Connect to your Linode Manager.
-2.  Click on the Remote Access tab.
-3.  Under the section entitled "Console Access," click on the **Launch Lish Console** link.
+1.  Connect to the Linode Cloud Manager.
+2.  Select the Linode you wish to gain access to.
+3.  Click the **Launch Console** link to launch the Lish Console.
 4.  Login with your root or sudo user name and password.
 5.  [Remove any rules](#configure-iptables) causing the connectivity issues.
 6.  Log out of the Lish window.

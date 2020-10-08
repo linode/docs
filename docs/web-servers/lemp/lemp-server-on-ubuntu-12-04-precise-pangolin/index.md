@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on Ubuntu 12.04'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/ubuntu-12-04-precise-pangolin/','websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/']
+aliases: ['/websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/','/lemp-guides/ubuntu-12-04-precise-pangolin/']
 modified: 2013-09-12
 modified_by:
   name: Linode
@@ -18,6 +19,11 @@ external_resources:
  - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid)'
  - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-10-04-lucid)'
  - '[Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-10-04-lucid)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.

@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on CentOS 5.'
 keywords: ["nginx", "nginx centos 5", "nginx fastcgi", "nginx php"]
+tags: ["centos","web server","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/php-fastcgi/centos-5/','websites/nginx/nginx-and-phpfastcgi-on-centos-5/']
+aliases: ['/web-servers/nginx/php-fastcgi/centos-5/','/websites/nginx/nginx-and-phpfastcgi-on-centos-5/']
 modified: 2011-05-17
 modified_by:
   name: Linode
@@ -18,6 +19,11 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
  - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5/)'
  - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+relations:
+    platform:
+        key: nginx-php-fastcgi
+        keywords:
+            - distribution: CentOS 5
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your CentOS 5 Linode.
@@ -54,7 +60,7 @@ Issue the following commands to update your system and install the nginx web ser
     chkconfig --level 35 nginx on
     service nginx start
 
-You'll be asked to accept the key for EPEL, as it gets imported the first time you install an EPEL package. Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com/)). You should get the default NGINX page.
+You'll be asked to accept the key for EPEL, as it gets imported the first time you install an EPEL package. Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the **Networking** tab in the [Linode Cloud Manager](http://cloud.linode.com/)). You should get the default NGINX page.
 
 ## Configure Your Site
 

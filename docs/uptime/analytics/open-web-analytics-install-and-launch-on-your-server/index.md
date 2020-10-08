@@ -5,6 +5,7 @@ author:
 description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
 og_description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
 keywords: ['open web analytics','owa','mysql','analytics']
+tags: ["centos","debian","ubuntu","analytics","statistics","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-01-05
 modified: 2016-01-05
@@ -33,7 +34,7 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
     {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
+Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the **Networking** tab next to your public IP address.
 {{< /note >}}
 
 

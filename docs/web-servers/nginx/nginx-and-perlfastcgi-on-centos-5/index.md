@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on CentOS 5.'
 keywords: ["nginx", "nginx centos 5", "nginx fastcgi", "nginx perl"]
+tags: ["centos","web server","perl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/perl-fastcgi/centos-5/','websites/nginx/nginx-and-perlfastcgi-on-centos-5/index.cfm/','websites/nginx/nginx-and-perlfastcgi-on-centos-5/']
+aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-centos-5/','/web-servers/nginx/perl-fastcgi/centos-5/','/websites/nginx/nginx-and-perlfastcgi-on-centos-5/index.cfm/']
 modified: 2011-07-20
 modified_by:
   name: Linode
@@ -18,6 +19,11 @@ external_resources:
  - '[Perl Documentation](http://perldoc.perl.org/)'
  - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)'
  - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: CentOS 5
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your CentOS 5 Linode.
@@ -104,7 +110,7 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Manager](http://cloud.linode.com//)).
 
 ## Configure FastCGI Wrapper
 

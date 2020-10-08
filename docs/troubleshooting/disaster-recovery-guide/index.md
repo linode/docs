@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Troubleshooting steps to access your Linode after maintenance has been applied to your host.'
 keywords: ['linux','reboot','lish']
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true
 deprecated_link: 'troubleshooting/troubleshooting-basic-connection-issues/'
@@ -20,7 +21,7 @@ If you are having issues accessing your Linode after maintenance has been applie
 
 Confirm that the Linode is fully booted.
 
-1. Log in to the Linode Manager. On the [*Linodes*](https://manager.linode.com/linodes) page, under the *Status* column look for *Running* as the status of your Linode.
+1. Log in to the Linode Manager. On the [*Linodes*](https://cloud.linode.com/linodes) page, under the *Status* column look for *Running* as the status of your Linode.
 
 1. If your Linode's status displays *Powered Off*, click on the *Dashboard* link. Under the *Dashboard* section, click the grey **Boot** button to boot your Linode.
 
@@ -30,9 +31,9 @@ Confirm that the Linode is fully booted.
 
 If you have ensured that your Linode is booted, but do not have SSH access, you can use Lish to access your Linode via SSH and continue any necessary troubleshooting steps.
 
-1.  Log into the Linode Manager and click on the *Dashboard* link for your Linode.
+1.  Log into the Linode Cloud Manager and click on your Linode to open the *Dashboard*.
 
-1.  Click on the *Remote Access* tab. Under the *Console Access* section, click on the *Launch Lish Console* link. This launches the Lish Console via your browser window and you will be prompted to enter your Linode user and password.
+1.  Click on the **Launch Console** link. This launches the Lish Console via your browser window and you will be prompted to enter your Linode user and password.
 
     If you have trouble logging in with your root password, consider [resetting the root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/) to rule out any password issues.
 

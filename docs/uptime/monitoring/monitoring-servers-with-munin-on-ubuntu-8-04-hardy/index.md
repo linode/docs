@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 8.04 (Hardy).'
 keywords: ["munin", "monitoring"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/munin/ubuntu-8-04-hardy/']
+aliases: ['/server-monitoring/munin/ubuntu-8-04-hardy/']
 modified: 2011-05-17
 modified_by:
   name: Linode
@@ -14,6 +15,11 @@ published: 2010-02-22
 expiryDate: 2013-05-17
 deprecated: true
 title: 'Monitoring Servers with Munin on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

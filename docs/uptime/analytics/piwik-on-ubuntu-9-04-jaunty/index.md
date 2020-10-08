@@ -4,14 +4,20 @@ author:
   email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 9.04 (Jaunty).'
 keywords: ["open source analytics", "piwik ubuntu 9.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
+tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/analytics/piwik/ubuntu-9-04-jaunty/']
+aliases: ['/web-applications/analytics/piwik/ubuntu-9-04-jaunty/']
 modified: 2011-04-27
 modified_by:
   name: Linode
 published: 2009-12-23
 title: 'Piwik on Ubuntu 9.04 (Jaunty)'
 deprecated: true
+relations:
+    platform:
+        key: using-piwik-analytics
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.

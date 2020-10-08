@@ -3,9 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to the remote access area of the Linode Manager.
-keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access"]
+keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access", "add additional ipv4 address", "add ip address", "add additional ip address"]
+tags: ["linode platform","resolving","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['remote-access/','networking/remote-access/','platform/manager/remote-access-classic-manager/']
+aliases: ['/networking/remote-access/','/platform/manager/remote-access-classic-manager/','/remote-access/']
 modified: 2019-03-05
 modified_by:
   name: Phil Zona
@@ -72,7 +73,7 @@ The reverse DNS will be reset.
 ## Configuring IP Sharing
 
 {{< note >}}
-This feature is not yet supported in the Toronto data center.
+This feature is not yet supported in the Toronto, Sydney, or Mumbai data centers.
 {{</ note >}}
 
 *IP sharing*, called IP failover in the Classic Manager, is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
@@ -93,6 +94,10 @@ This feature is not yet supported in the Toronto data center.
 8.  Click **Save**.
 
 You have successfully configured IP sharing. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability/).
+
+{{< note >}}
+IP sharing does not change ownership of the origin IP address, and the IP address will continue to belong to the same origin Linode. By default, IP sharing alone does not change the behavior of how traffic reaches your Linode and the capability must be further configured with tools like [keepalived](https://keepalived.org/) which affect routing, or a similar services.
+{{< /note >}}
 
 ## Networking Restrictions
 
@@ -140,7 +145,7 @@ If the IP is unreachable after a few minutes, you may need to notify the router 
     arping -c5 -I eth0 -S 198.51.100.10 198.51.100.1
     ping -c5 198.51.100.10 198.51.100.1
 
-Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
+Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Networking tab under "Default Gateways".
 {{< /note >}}
 
 ## Adding Private IP Addresses

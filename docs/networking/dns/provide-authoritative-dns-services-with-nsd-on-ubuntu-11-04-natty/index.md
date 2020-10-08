@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Install and configure NSD to handle DNS queries.'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
+tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/nsd-authoritative-dns-ubuntu-11-04-natty/']
+aliases: ['/dns-guides/nsd-authoritative-dns-ubuntu-11-04-natty/']
 modified: 2013-02-18
 modified_by:
   name: Linode
 published: 2011-06-08
 title: 'Provide Authoritative DNS Services with NSD on Ubuntu 11.04 (Natty)'
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Ubuntu 11.04
 ---
 
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.

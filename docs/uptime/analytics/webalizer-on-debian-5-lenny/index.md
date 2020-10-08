@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Get detailed website statistics such as visitor counts, pageviews, user agents percentages, and much more using the open source Webalizer package on Debian 5 (Lenny).'
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "debian"]
+tags: ["debian","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/analytics/webalizer/debian-5-lenny/']
+aliases: ['/web-applications/analytics/webalizer/debian-5-lenny/']
 modified: 2011-05-17
 modified_by:
   name: Linode
 published: 2010-01-27
 title: 'Webalizer on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: using-webalizer-analytics
+        keywords:
+            - distribution: Debian 5
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.

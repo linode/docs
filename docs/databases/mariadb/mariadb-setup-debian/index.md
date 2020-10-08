@@ -6,7 +6,7 @@ description: 'This guide shows how to install and configure the MariaDB database
 og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
 keywords: ["mariadb", "debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mariadb/mariadb-setup-debian/']
+aliases: ['/databases/mariadb/mariadb-setup-debian/']
 modified: 2017-11-22
 contributor:
     name: Nashruddin Amin
@@ -19,6 +19,9 @@ external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
+deprecated: true
+hiddenguide: true
+tags: ["debian","mariadb","database"]
 ---
 
 ![How to Set Up MariaDB on Debian 9](how-to-set-up-mariadb-on-debian-smg.jpg)
@@ -207,6 +210,8 @@ Opening a MariaDB server up to the internet makes it less secure. If you need to
 3.  Configure MariaDB to listen to all network interfaces. Open the `/etc/mysql/my.cnf` file and edit the `bind-address` variable to listen to all network interfaces:
 
     {{< file "/etc/mysql/my.cnf" >}}
+[mysqld]
+
 bind-address = 0.0.0.0
 {{< /file >}}
 

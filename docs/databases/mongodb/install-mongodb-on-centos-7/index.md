@@ -14,6 +14,12 @@ external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
+relations:
+    platform:
+        key: how-to-install-mongodb
+        keywords:
+            - distribution: CentOS 7
+tags: ["nosql","database","centos"]
 ---
 
 In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.

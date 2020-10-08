@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode'
 keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine linux", "alpine linux packages"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 modified: 2018-12-18
 modified_by:
@@ -16,6 +17,11 @@ contributor:
   link: http://github.com/andyleap
 external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
+relations:
+    platform:
+        key: how-to-install-linux
+        keywords:
+            - distribution: Alpine
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")
@@ -43,7 +49,7 @@ While this guide will provide you with a fully operational Alpine installation, 
 
 In this section, we'll create the disk images necessary to install Alpine Linux. Although it is not strictly necessary, giving each disk a descriptive name upon creation will make it easier to keep track of its role in the system.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/linodes/) and select the Linode to install Alpine Linux on.
+1.  Log in to the [Linode Manager](https://cloud.linode.com/linodes/) and select the Linode to install Alpine Linux on.
 
 2.  Create your boot disk image by selecting **Create a new Disk** under the Disks section. The size should be between 128 and 256 MB, and the type should be **ext4**.
 
@@ -71,9 +77,9 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
 ### Boot into Rescue Mode
 
-1.  From the Linode Manager, boot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
+1.  From the Linode Cloud Manager, boot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
 
-2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it located under the **Remote Access** tab in the Linode Manager.
+2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it in the Linode Cloud Manager. Access it by clicking the **Launch Console** link from the Linode's dashboard.
 
 ### Mount Drives
 

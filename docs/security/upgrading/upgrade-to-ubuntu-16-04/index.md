@@ -4,12 +4,18 @@ author:
   email: docs@linode.com
 description: 'Our guide to upgrading to Ubuntu 16.04 LTS'
 keywords: ["upgrading", "ubuntu", "16.04"]
+tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-03-15
 modified_by:
   name: Nick Brewer
 published: 2016-04-26
 title: 'How to Upgrade to Ubuntu 16.04 LTS'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 ![Upgrade to Ubuntu 16.04](How_to_Upgrade_to_Ubuntu_smg.jpg)

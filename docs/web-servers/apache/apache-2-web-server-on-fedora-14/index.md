@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Fedora 14.'
 keywords: ["apache fedora 14", "fedora web server", "linux web server"]
+tags: ["web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/fedora-14/','websites/apache/apache-2-web-server-on-fedora-14/']
+aliases: ['/websites/apache/apache-2-web-server-on-fedora-14/','/web-servers/apache/installation/fedora-14/']
 modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2010-12-07
 title: Apache 2 Web Server on Fedora 14
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: Fedora 14
 ---
 
 
@@ -220,7 +226,7 @@ RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
 
 Let's parse this rule. First, note that the first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Mod\_rewrite patterns use regular expression syntax: the `^` matches to the beginning of the string, and the `$` matches to the end of the string, meaning that the rewrite engine won't rewrite strings that partially match the pattern.
 
-The string in question rewrites all URLs that specify paths that begin with `/post-id/` and contain one or more numbers (eg. `[0-9]+`), serving a corresponding `.html` file in the `/posts/` directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as `$1`, `$2`, `$3` and so forth.
+The string in question rewrites all URLs that specify paths that begin with `/post-id/` and contain one or more numbers (e.g. `[0-9]+`), serving a corresponding `.html` file in the `/posts/` directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as `$1`, `$2`, `$3` and so forth.
 
 There are many other possibilities for using mod\_rewrite to allow users to see and interact with useful URLs, while maintaining a file structure that makes sense from a development or deployment perspective.
 

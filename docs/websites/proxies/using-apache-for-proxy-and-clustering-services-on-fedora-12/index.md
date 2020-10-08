@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Fedora 12.'
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
+tags: ["proxy","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/proxy-configuration/proxy-and-clustering-services-fedora-12/']
+aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-fedora-12/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-03-08
 title: Using Apache for Proxy and Clustering Services on Fedora 12
+relations:
+    platform:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: Fedora 12
 ---
 
 

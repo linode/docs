@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Shows how to create an account with access restrictions for developers and maintainers.
 keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
+tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-07-26
 modified_by:
@@ -32,7 +33,7 @@ Access to the Linode Manager provides high-level methods for controlling your Li
 
 ### Who Has Access to My Linode Account?
 
-Log in to the Linode Manager and navigate to the [**Users and Permissions**](https://manager.linode.com/user/index/) section of the **Account** tab. You may be prompted to reauthenticate your password. This section will display all of your Linode account's users.
+Log in to the Linode Manager and navigate to the [**Users and Permissions**](https://cloud.linode.com/account/users) section of the **Account** tab. You may be prompted to reauthenticate your password. This section will display all of your Linode account's users.
 
 If you're not sure whether you're logged in as the account administrator, look for a `No` in the **Restricted** column of your username's row in the User Manager.
 
@@ -53,9 +54,9 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 1.  If you suspect that the user may have access to the Linode Manager password, [change that first](/docs/platform/manager/accounts-and-passwords/#changing-your-linode-manager-password).
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/) and click [**Users and Permissions**](https://manager.linode.com/user/index/) in the **Account** tab. You may be prompted to reauthenticate your password.
+1.  Log in to the [Linode Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
-1.  Locate the user in the Username column, and click **Remove** at the end of the row. Click **Yes. Delete!** to confirm deletion.
+1.  Locate the user in the Username column, and click the three dots and select **Delete** to remove the user. Click **Delete** to confirm deletion.
 
 ## SSH Logins
 

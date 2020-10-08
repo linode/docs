@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
 keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
+tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/debian-6-squeeze/','websites/apache/apache-2-web-server-on-debian-6-squeeze/']
+aliases: ['/web-servers/apache/installation/debian-6-squeeze/','/websites/apache/apache-2-web-server-on-debian-6-squeeze/']
 modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: Debian 6
 ---
 
 

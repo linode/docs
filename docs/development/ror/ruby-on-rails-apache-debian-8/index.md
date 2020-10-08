@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Debian 8 Wheezy to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
+tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/ror/ruby-on-rails-apache-debian-8/']
+aliases: ['/websites/ror/ruby-on-rails-apache-debian-8/']
 modified: 2017-09-13
 modified_by:
   name: Elle Krout
@@ -20,6 +21,11 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
+relations:
+    platform:
+        key: ruby-on-rails-apache
+        keywords:
+            - distribution: Debian 8
 ---
 
 Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.

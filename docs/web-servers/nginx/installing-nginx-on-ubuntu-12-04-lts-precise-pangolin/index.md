@@ -5,8 +5,9 @@ author:
     email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 12.04 LTS (Precise Pangolin)'
 keywords: ["nginx", "nginx ubuntu 12.04", "http", "web servers", "ubuntu", "ubuntu l2.04", "ubuntu precise pangolin"]
+tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/installation/ubuntu-12-04-precise-pangolin','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/install-nginx-ubuntu-12-04/','websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/']
+aliases: ['/websites/nginx/install-nginx-ubuntu-12-04/','/web-servers/nginx/installation/ubuntu-12-04-precise-pangolin/','/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/']
 modified: 2015-09-16
 modified_by:
   name: Elle Krout
@@ -17,6 +18,11 @@ external_resources:
  - '[nginx Community Documentation](http://wiki.nginx.org)'
  - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/)'
  - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/)'
+relations:
+    platform:
+        key: how-to-install-nginx
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.

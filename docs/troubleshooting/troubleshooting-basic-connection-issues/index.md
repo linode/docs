@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Troubleshooting steps to help restore basic connectivity to your Linode when it is unresponsive.'
 keywords: ['linux','reboot','lish']
+tags: ["networking", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-01
 modified: 2019-02-01
@@ -46,7 +47,7 @@ Review the installation instructions in Linode's [Diagnosing Network Issues with
 
 ## Is your Linode Running?
 
-Log in to the [Linode Manager](https://manager.linode.com/) and inspect the Linode's dashboard. If the Linode is powered off, turn it on.
+Log in to the [Linode Manager](https://cloud.linode.com/) and inspect the Linode's dashboard. If the Linode is powered off, turn it on.
 
 ### Inspect the Lish Console
 

@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Using lighttpd to host multiple websites on Ubuntu 12.04 (Precise)'
 keywords: ["lighttpd", "web server", "web hosting"]
+tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/lighttpd/ubuntu-12-04-precise/','websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/']
+aliases: ['/websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/','/web-servers/lighttpd/ubuntu-12-04-precise/']
 modified: 2013-09-11
 modified_by:
   name: Linode
@@ -17,9 +18,14 @@ external_resources:
  - '[mod\_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
  - '[HowtoForge Guides for lighttpd (howtoforge.com)](http://www.howtoforge.com/howtos/lighttpd)'
  - '[NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)'
+relations:
+    platform:
+        key: install-lighttpd
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
-This tutorial explains how to install and configure the lighttpd (eg. "lighty") web server on Ubuntu 12.04 (Precise). Lighttpd is designed to provide a lightweight web server that is capable of serving large loads and using less memory than servers like the Apache HTTP server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
+This tutorial explains how to install and configure the lighttpd (e.g. "lighty") web server on Ubuntu 12.04 (Precise). Lighttpd is designed to provide a lightweight web server that is capable of serving large loads and using less memory than servers like the Apache HTTP server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
 
 Our example will illustrate the installation of a lighttpd server on an Ubuntu 12.04 (Precise) system. We assume that you've followed the [getting started guide](/docs/getting-started/) and are running on an updated system. This document does not, however, include instructions for deploying other common services in the web development stack. We recommend you consult additional resources (a few are listed at the end of this tutorial) to deploy the remainder of your web stack.
 
@@ -174,7 +180,7 @@ We read domain names backwards, so `com` is the tld or "top level domain", `exam
 
 ## Virtual Hosting Best Practices
 
-The way you set up virtual hosting on your web server is highly dependent upon what kind of sites you need to host, their traffic, the number of domains, and the workflows associated with these domains. We recommend hosting all of your domains in a centralized top level directory (eg. `/var/www/` or `/srv/www`) and then symbolically linking these directories into more useful locations.
+The way you set up virtual hosting on your web server is highly dependent upon what kind of sites you need to host, their traffic, the number of domains, and the workflows associated with these domains. We recommend hosting all of your domains in a centralized top level directory (e.g. `/var/www/` or `/srv/www`) and then symbolically linking these directories into more useful locations.
 
 For instance, you can create a series of "web editor" user accounts. You may then link the "DocumentRoot" of each domain into a folder in the home folder of the account of the editor for that domain. For the user account "abraham-brown" that manages the "brackley.com" site, the link would be created like so:
 
@@ -244,7 +250,7 @@ While lighttpd is an effective and capable web server there are two caveats rega
 
 First, server side includes, which allow you to dynamically include content from one file into another do not function in lighttpd in the same way that they function in Apache's mod\_ssi. While it is an effective method for quickly assembling content, lighttpd's script handling via SSI is not a recommended work flow. [See lighttpd project documentation on mod\_ssi](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModSSI)
 
-Secondly, because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (eg. mod\_perl, mod\_python, mod\_php, etc.). This is especially true for [effective optimizations](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
+Secondly, because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g. mod\_perl, mod\_python, mod\_php, etc.). This is especially true for [effective optimizations](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
 
 ## Additional Ubuntu Configuration
 

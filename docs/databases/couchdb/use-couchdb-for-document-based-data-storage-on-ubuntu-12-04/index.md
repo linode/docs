@@ -6,7 +6,7 @@ author:
 description: 'Deploy CouchDB on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["couchdb", "nosql", "json", "ubuntu", "futon"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/couchdb/ubuntu-12-04-precise-pangolin/','databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04-precise-pangolin/']
+aliases: ['/databases/couchdb/ubuntu-12-04-precise-pangolin/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-09
 modified_by:
   name: Linode
@@ -15,6 +15,12 @@ title: 'Use CouchDB for Document-Based Data Storage on Ubuntu 12.04'
 external_resources:
  - '[CouchDB Project](http://couchdb.apache.org/)'
  - '[CouchDB Community Wiki](http://wiki.apache.org/couchdb/)'
+relations:
+    platform:
+        key: couchdb-document-data-storage
+        keywords:
+            - distribution: Ubuntu 12.04
+tags: ["ubuntu","database","nosql"]
 ---
 
 CouchDB is a non-relational document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. While CouchDB does not use an SQL interface, it uses an HTTP interface and JSON as a data format for easy integration in application development.

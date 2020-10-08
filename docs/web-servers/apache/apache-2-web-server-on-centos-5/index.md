@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on CentOS 5.'
 keywords: ["Apache", "web sever", "CentOS 5"]
+tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/centos-5/','websites/apache/apache-2-web-server-on-centos-5/']
+aliases: ['/web-servers/apache/installation/centos-5/','/websites/apache/apache-2-web-server-on-centos-5/']
 modified: 2013-11-18
 modified_by:
   name: Linode
 published: 2009-07-27
 title: Apache 2 Web Server on CentOS 5
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: CentOS 5
 ---
 
 
@@ -201,7 +207,7 @@ Using the `htpasswd` command we'll create a new password entry for a user named 
 
     htpasswd -c .htpasswd cecil
 
-Note, you can specify an alternate name for the password file (eg. `.htpasswd`), which might be prudent if you wanted to store a number of `.htpasswd` files for different directories in the same location.
+Note, you can specify an alternate name for the password file (e.g. `.htpasswd`), which might be prudent if you wanted to store a number of `.htpasswd` files for different directories in the same location.
 
 These usernames and passwords need not (and should not) correspond to system usernames and passwords. Also, you can specify how passwords are encrypted/hashed with the `-m` flag for MD5, or `-s` for SHA hashes. Furthermore, note that when you're adding additional users to the `.htpasswd` file you should not use the `-c` option (which creates a new file).
 
@@ -240,7 +246,7 @@ RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
 
 Let's parse this rule. First, note that the first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Mod\_rewrite patterns use regular expression syntax: the `^` matches to the beginning of the string, and the `$` matches to the end of the string, meaning that the rewrite engine won't rewrite strings that partially match the pattern.
 
-The string in question rewrites all URLs that specify paths that begin with `/post-id/` and contain one or more numbers (eg. `[0-9]+`), serving a corresponding `.html` file in the `/posts/` directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as `$1`, `$2`, `$3` and so forth.
+The string in question rewrites all URLs that specify paths that begin with `/post-id/` and contain one or more numbers (e.g. `[0-9]+`), serving a corresponding `.html` file in the `/posts/` directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as `$1`, `$2`, `$3` and so forth.
 
 There are many other possibilities for using mod\_rewrite to allow users to see and interact with useful URLs, while maintaining a file structure that makes sense from a development or deployment perspective.
 

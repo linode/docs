@@ -10,10 +10,11 @@ modified_by:
   name: Linode
 published: 2010-04-28
 title: How to Access PostgreSQL Database Remotely Using pgAdmin on Windows
-aliases: ['databases/postgresql/pgadmin-windows/','databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-windows/']
+aliases: ['/databases/postgresql/pgadmin-windows/','/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-windows/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
+tags: ["database","postgresql"]
 ---
 
 ![How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](how-to-access-postgresql-database-remotely-using-pgpmyadmin-on-windows-smg.jpg)

@@ -4,10 +4,12 @@ author:
   email: docs@linode.com
 description: 'This guide will use Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask. Your Flask application will use a MongoDB database to store GeoJSON data to display as markers on your Stadia Map powered map.'
 keywords: ['maps','GIS','flask','mongodb', 'python']
+tags: ["web applications","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-21
 modified_by:
   name: Linode
+image: HowtoCreateaGISApplicationusingFlaskStadiaMapsandMongoDB.png
 title: "How to Create a GIS Application using Flask, Stadia Maps, and MongoDB"
 h1_title: "Create a GIS Application using Flask, Stadia Maps, and MongoDB"
 contributor:

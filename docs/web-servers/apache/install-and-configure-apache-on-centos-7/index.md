@@ -4,8 +4,9 @@ author:
     email: docs@linode.com
 description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
 keywords: ["CentOS", "CentOS 7", "apache"]
+tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/apache/install-and-configure-apache-on-centos-7/']
+aliases: ['/websites/apache/install-and-configure-apache-on-centos-7/']
 modified: 2017-09-05
 modified_by:
     name: Edward Angert
@@ -14,6 +15,11 @@ title: How to Install Apache on CentOS 7
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![How to Install and Configure Apache Web Server on CentOS 7](How_to_Install_Apache_on_CentOS_7_smg.jpg)

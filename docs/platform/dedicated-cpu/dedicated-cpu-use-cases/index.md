@@ -9,11 +9,12 @@ modified_by:
   name: Linode
 published: 2019-09-20
 title: Use Cases for Linode Dedicated CPU Instances
+tags: ["linode platform"]
 ---
 
 ## Why Dedicated CPU
 
-Dedicated CPU Linodes offer a complement to CPU intensive tasks, and have the potential to significantly reduce issues that arise from shared cloud hosting environments. Normally, when creating a Linode via our standard plan, you are paying for access to virtualized CPU cores, which are allocated to you from a host's shared physical CPU. While a standard plan is designed to maximize performance, the reality of a shared virtualized environment is that your processes are scheduled to use the same physical CPU cores as other customers. This can produce a level of competition that results in **CPU steal**, or a higher wait time from the underlying hypervisor to the physical CPU.
+Dedicated CPU Linodes offer a complement to CPU intensive tasks, and have the potential to significantly reduce issues that arise from shared cloud hosting environments. Normally, when creating a Linode via our shared plan, you are paying for access to virtualized CPU cores, which are allocated to you from a host's shared physical CPU. While a shared plan is designed to maximize performance, the reality of a shared virtualized environment is that your processes are scheduled to use the same physical CPU cores as other customers. This can produce a level of competition that results in **CPU steal**, or a higher wait time from the underlying hypervisor to the physical CPU.
 
 *CPU Steal* can be defined more strictly as a measure of *expected* CPU cycles against *actual* CPU cycles as your virtualized environment is scheduled access to the physical CPU. Although this number is generally small enough that it does not heavily impact standard workloads and use cases, if you are expecting high and constant consumption of CPU resources, you are at risk of being negatively impacted by *CPU Steal*.
 
@@ -21,7 +22,7 @@ Dedicated CPU Linodes have private access to entire physical CPU cores, meaning 
 
 ## Dedicated CPU Use Cases
 
-While a standard plan is usually a good fit for most use cases, a Dedicated CPU Linode may be recommended for a number of workloads related to high and constant CPU processing. Such examples include:
+While a shared plan is usually a good fit for most use cases, a Dedicated CPU Linode may be recommended for a number of workloads related to high and constant CPU processing. Such examples include:
 
   - [CI/CD Toolchains and Build Servers](#ci-cd-toolchains-and-build-servers)
   - [Game Servers](#game-servers)
@@ -52,7 +53,7 @@ Depending on the intensity of demands they place on your Linode, [game servers](
 
 ### Big Data and Data Analysis
 
-[Big Data and Data Analysis](/docs/applications/big-data/) is the process of analyzing and extracting meaningful insights from datasets so large they often require specialized software and hardware. Big data is most easily recognized with the the **"three V's"** of big data:
+[Big Data and Data Analysis](/docs/applications/big-data/) is the process of analyzing and extracting meaningful insights from datasets so large they often require specialized software and hardware. Big data is most easily recognized with the **"three V's"** of big data:
 
 - **Volume:** Generally, if you are working with terabytes, petabytes, exabytes, or more amounts of information you are in the realm of big data.
 - **Velocity:** With Big Data, you are using data that is being created, called, moved, and interacted with at a high velocity. One example is the real time data generated on social media platforms by their users.

@@ -4,6 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'Create a TCP and UDP client and server using the Go programming language.'
 keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli"]
+tags: ["networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-06-26
 modified_by:
@@ -57,7 +58,7 @@ Go's [`net` package](https://golang.org/pkg/net/) provides a portable interface 
 Use the table below as a quick reference for some of the `net` package functions used throughout this guide. To view all types and functions included in the `net` package, see [Golang's official documentation](https://golang.org/pkg/net/).
 
 {{< note >}}
-All versions of `net.Dial()` and `net.Listen()` return data types that implement the [`io.Reader`](https://golang.org/pkg/io/#Reader) and [`io.Writer`](https://golang.org/pkg/io/#Writer) interfaces. This means that you can use regular [File I/O](https://golang.org/pkg/io/) functions to send and receive data from a TCP/IP connections.
+All versions of `net.Dial()` and `net.Listen()` return data types that implement the [`io.Reader`](https://golang.org/pkg/io/#Reader) and [`io.Writer`](https://golang.org/pkg/io/#Writer) interfaces. This means that you can use regular [File I/O](https://golang.org/pkg/io/) functions to send and receive data from a TCP/IP connection.
 {{< /note >}}
 
 

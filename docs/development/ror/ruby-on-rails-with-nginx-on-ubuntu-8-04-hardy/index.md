@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 8.04 LTS operating system.'
 keywords: ["ruby on rails", "rails on ubuntu", "ruby on nginx", "rails apps"]
+tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/ruby-on-rails-nginx/ubuntu-8-04-hardy/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/']
+aliases: ['/frameworks/ruby-on-rails-nginx/ubuntu-8-04-hardy/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-08-21
 title: 'Ruby on Rails with Nginx on Ubuntu 8.04 LTS (Hardy)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

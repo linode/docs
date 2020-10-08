@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ![Deploy a Minecraft Server with One-Click Apps](deploy-a-minecraft-server-with-oneclick-apps.png "Deploy a Minecraft Server with One-Click Apps")
@@ -76,9 +77,9 @@ After providing the app specific options, provide configurations for your Linode
 |:--------------|:------------|
 | **Select an Image** | Debian 9 is currently the only image supported by Minecraft One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your MineCraft App should be sized based on the amount of traffic you expect to see on your server. We recommend 1GB of RAM for every 15 players maximum on your server. For example, If you are expecting a small group of players (between 1-15), you should be okay with a Nanode. Up to 30 players, a 2GB Linode, and so on. *Required*. |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your MineCraft App should be sized based on the amount of traffic you expect to see on your server. We recommend 1GB of RAM for every 15 players maximum on your server. For example, If you are expecting a small group of players (between 1-15), you should be okay with a 1GB Linode (Nanode). Up to 30 players, a 2GB Linode, and so on. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
+| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
 When you've provided all required Linode Options, click on the **Create** button. **MineCraft should install between 5-10 minutes after your Linode has successfully provisioned**.
 
@@ -116,7 +117,9 @@ The Minecraft One-Click App will install the following required software on your
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| [**Minecraft 1.13**](https://www.minecraft.net/en-us/) | Game server. |
+| [**Minecraft 1.16**](https://www.minecraft.net/en-us/) | Game server. |
 | [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 25575 will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+
+{{< content "one-click-update-note">}}

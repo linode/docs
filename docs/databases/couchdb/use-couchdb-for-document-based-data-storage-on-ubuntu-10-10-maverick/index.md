@@ -6,12 +6,18 @@ author:
 description: 'An introduction and getting started guide for CouchDB on Ubuntu 10.10 (Maverick) systems.'
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/couchdb/ubuntu-10-10-maverick/']
+aliases: ['/databases/couchdb/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-12-06
 title: 'Use CouchDB for Document Based Data Storage on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: couchdb-document-data-storage
+        keywords:
+            - distribution: Ubuntu 10.10
+tags: ["ubuntu","database","nosql"]
 ---
 
 

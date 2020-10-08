@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["redmine", "redmine ubuntu 9.10", "project management software", "redmine postgresql", "redmine linux"]
+tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/project-management/redmine/ubuntu-9-10-karmic/']
+aliases: ['/web-applications/project-management/redmine/ubuntu-9-10-karmic/']
 modified: 2011-05-17
 modified_by:
   name: Linode
 published: 2009-11-23
 title: 'Manage Projects with Redmine on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: manage-projects-with-redmine
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

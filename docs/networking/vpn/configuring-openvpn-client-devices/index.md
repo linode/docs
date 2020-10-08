@@ -15,6 +15,7 @@ external_resources:
  - '[Tunnelblick OS X OpenVPN Client](https://www.tunnelblick.net/)'
  - '[OpenVPN GUI for Windows](https://openvpn.net/index.php/open-source/downloads.html)'
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
+tags: ["networking","security","vpn"]
 ---
 
 This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/docs/networking/vpn/set-up-a-hardened-openvpn-server) and [Two](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.

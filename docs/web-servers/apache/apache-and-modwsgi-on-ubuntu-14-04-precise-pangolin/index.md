@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
 keywords: ["python", "apache", "mod\\_wsgi", "django"]
+tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/']
+aliases: ['/websites/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/']
 modified: 2015-11-18
 modified_by:
   name: Linode
@@ -19,6 +20,11 @@ external_resources:
  - '[Werkzug](http://werkzeug.pocoo.org/)'
  - '[Django](http://www.djangoproject.com/)'
  - '[Web.py](http://webpy.org/)'
+relations:
+    platform:
+        key: apache-mod-wsgi
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 ![Apache and mod_wsgi on Ubuntu](Apache_and_mod_wsgi_on_Ubuntu_1404_Trusty_Tahr_smg.png)

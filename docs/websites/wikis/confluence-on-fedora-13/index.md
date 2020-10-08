@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Use Confluence on Fedora 13 to power a full-featured wiki system.'
 keywords: ["confluence fedora 13", "confluence", "confluence wiki", "confluence linux"]
+tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/confluence/fedora-13/']
+aliases: ['/web-applications/wikis/confluence/fedora-13/']
 modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2010-09-09
 title: Confluence on Fedora 13
+relations:
+    platform:
+        key: using-confluence
+        keywords:
+           - distribution: Fedora 13
 ---
 
 

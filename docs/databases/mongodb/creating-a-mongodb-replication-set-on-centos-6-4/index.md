@@ -6,7 +6,7 @@ author:
 description: Configure a MongoDB ReplSet
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mongodb/centos-6/']
+aliases: ['/databases/mongodb/centos-6/']
 modified_by:
   name: Linode
 published: 2014-04-09
@@ -17,6 +17,12 @@ external_resources:
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/tutorial/getting-started-with-the-mongo-shell/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/core/replication-introduction/)'
+relations:
+    platform:
+        key: create-mongodb-replica-set
+        keywords:
+            - distribution: CentOS 6.4
+tags: ["nosql","database","centos"]
 ---
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
@@ -71,7 +77,7 @@ A 32-bit system is not recommended for production deployments.
 
 It is imperative that the networking configurations are set and working properly, or you will not be able to add members to the replication set. This section will provide in detail how to configure three (3) Linodes as a MongoDB replication set.
 
-Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Remote Access** tab there is a section called, "Private/LAN Network". Click on the "Add a Private IP" link to assign a private IP address to your Linode. This is the address you will use to configure your `hosts` file. Again, we are working with a three member replication set so you will need to acquire this information for each member.
+Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Cloud Manager. Under the **Networking** tab, click on the "Add a Private IP" link to assign a private IP address to your Linode. This is the address you will use to configure your `hosts` file. Again, we are working with a three member replication set so you will need to acquire this information for each member.
 
 [![Finding your private IP address.](1716-private_ip-v2.png)](1716-private_ip-v2.png)
 

@@ -5,8 +5,9 @@ author:
 description: 'Configurations for common DNS records.'
 og_description: 'This guide explains how to use the Linode Cloud Manger to configure DNS records'
 keywords: ["dns", "dnssec"]
+tags: ["dns","networking","cloud manager","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/common-dns-configurations-classic-manager/','dns-manager/']
+aliases: ['/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/','/dns-manager/']
 modified: 2019-03-14
 modified_by:
   name: Linode
@@ -28,9 +29,9 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 ## Configure Subdomains
 
-1.  To configure a subdomain (e.g. `staging.example-site-demo.com`), create an A record with the subdomain's hostname. Click **Add an A/AAA Record**:
+1.  To configure a subdomain (e.g. `staging.example-site-demo.com`), create an A record with the subdomain's hostname. Click **Add an A/AAAA Record**:
 
-    [![Create a new A record by first click on "Add an A/AAA Record"](common-dns-add-an-a-record.png)](common-dns-add-an-a-record.png)
+    [![Create a new A record by first click on "Add an A/AAAA Record"](common-dns-add-an-a-record.png)](common-dns-add-an-a-record.png)
 
 1.  Add the subdomain under the **Hostname** field. Assign the IP address of the server you want to host the subdomain:
 

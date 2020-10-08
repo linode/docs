@@ -1,16 +1,17 @@
- ---
+---
 author:
   name: Linode
   email: docs@linode.com
 description: 'Learn how to use Lish as a shell for managing or rescuing your Linode.'
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/manager/using-the-linode-shell-lish-classic-manager/','networking/using-the-linode-shell-lish/','using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','platform/using-the-linode-shell-lish/']
+aliases: ['/using-lish-the-linode-shell/','/networking/using-the-linode-shell-lish/','/platform/manager/using-the-linode-shell-lish-classic-manager/','/troubleshooting/using-lish-the-linode-shell/','/platform/using-the-linode-shell-lish/']
 modified: 2019-06-20
 modified_by:
   name: Linode
 published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
+tags: ["linode platform","cloud manager"]
 ---
 
 ![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)
@@ -111,13 +112,17 @@ You can also connect to Lish using a web browser. This is useful when you don't 
 
 1. From here, you can log in to your Linode with your root username and password, or any other username and password.
 
+{{< note >}}
+If you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you will not be able to log in to your Linode through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
+{{</ note >}}
+
 Now you can use the console, or exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
 
 ### Add Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
+If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
 
-1. Log in to the [Linode Cloud Manager](https://manager.linode.com).
+1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1. Click on your profile icon in the top right hand corner of the Manager and select **My Profile**.
 
@@ -239,7 +244,7 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
 
 These are the fingerprints for the Lish gateway in our Mumbai data center (lish-mum1.linode.com):
 
-    RSA 5:57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed
+    RSA 57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed
     ECDSA SHA256:uWVLSBPZ0E72VawrP4yWsW3YYHPM9b7A/seeEy7GG0c
     Ed25519 SHA256:5VkP3/dLsfrKic9p6y9QnFq4sKa92RBzxGJrsX5/dBQ
     Ed25519 MD5:e8:a7:f2:7c:5e:b3:ee:1d:bf:a3:37:68:d7:1d:b2:bf
@@ -268,8 +273,8 @@ These are the fingerprints for the Lish gateway in our Sydney data center (lish-
 
     RSA 31:89:80:92:aa:c0:2f:12:f6:2d:20:3a:27:88:ea:ba
     ECDSA SHA256:whZwcrXeixljj6ZrrRYzLc6UguvkNqKmtXz+JrMSI9w
-    Ed25519 SHA256:NhA76h4AHunCS+MIne1BKkiJUZyCsbkslvx9MI5Yd70
-    Ed25519 MD5:32:1d:95:a1:96:a4:86:6e:d0:45:70:72:fc:c6:07:c8
+    Ed25519 SHA256:0lOHVxRAMMOY3HDFIE4nMz11W4y+9OYqdtFqhi8NkWs
+    Ed25519 MD5:ef:2d:cc:c7:aa:10:6f:cd:de:8f:c1:5d:8b:68:56:2b
 
 ### Tokyo 2
 

@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 10.04 (Lucid).'
 keywords: ["prosody", "prosody ubuntu lucid", "prosody.im", "xmpp", "real time messaging", "lua"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/prosody/ubuntu-10-04-lucid/']
+aliases: ['/communications/xmpp/prosody/ubuntu-10-04-lucid/']
 modified: 2013-09-24
 modified_by:
   name: Linode
 published: 2010-12-06
 title: 'Installing Prosody XMPP Server on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: how-to-install-prosody
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

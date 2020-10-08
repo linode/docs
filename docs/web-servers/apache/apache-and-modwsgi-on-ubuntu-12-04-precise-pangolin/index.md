@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
 keywords: ["python", "apache", "mod_wsgi", "django"]
+tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/mod-wsgi/ubuntu-12-04-precise-pangolin/','websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/']
+aliases: ['/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/','/web-servers/apache/mod-wsgi/ubuntu-12-04-precise-pangolin/']
 modified: 2015-11-18
 modified_by:
   name: Linode
@@ -20,6 +21,11 @@ external_resources:
  - '[Werkzug](http://werkzeug.pocoo.org/)'
  - '[Django](http://www.djangoproject.com/)'
  - '[Web.py](http://webpy.org/)'
+relations:
+    platform:
+        key: apache-mod-wsgi
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. This guides outline this installation and configuration process for WSGI with Apache on Ubuntu 12.04.

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'An introduction to Kubernetes concepts and components.'
 keywords: ['kubernetes','k8s','beginner','architecture']
+tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
@@ -13,9 +14,9 @@ contributor:
   name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
-- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/)'
+- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
-aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/','applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/']
+aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/']
 ---
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
@@ -64,7 +65,7 @@ In the case of this example, the API in use is `v1`, and the `kind` is a Pod. Th
 
 The spec is where the desired state of the resource is defined. In this case, a Pod with a single Apache container is desired, so the `containers` field is supplied with a name, 'apache-container', and an image, the latest version of Apache. The image is pulled from [Docker Hub](https://hub.docker.com), as that is the default container registry for Kubernetes.
 
-For more information on the type of fields you can supply in a Pod manifest, refer to the [Kubernetes Pod API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#pod-v1-core).
+For more information on the type of fields you can supply in a Pod manifest, refer to the [Kubernetes Pod API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#pod-v1-core).
 
 Now that you have the manifest, you can create the Pod using the `create` command:
 
@@ -133,7 +134,7 @@ spec:
 
 The above example Service uses the `v1` API, and its `kind` is Service. Like the Pod example in the previous section, this manifest has a name and a label. Unlike the Pod example, this spec uses the `ports` field to define the exposed port on the container (`port`), and the target port on the Pod (`targetPort`). The `type` `NodePort` unlocks the use of `nodePort` field, which allows traffic on the host Node at that port. Lastly, the `selector` field is used to target only the Pods that have been assigned the `app: web` label.
 
-For more information on Services, visit the [Kubernetes Service API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#service-v1-core).
+For more information on Services, visit the [Kubernetes Service API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#service-v1-core).
 
 To create the Service from the YAML file, issue the create command:
 
@@ -185,7 +186,7 @@ spec:
 
 A Volume has two unique aspects to its definition. In this example, the first aspect is the `volumes` block that defines the type of Volume you want to create, which in this case is a simple empty directory (`emptyDir`). The second aspect is the `volumeMounts` field within the container's `spec`. This field is given the name of the Volume you are creating and a mount path within the container.
 
-There are a number of different Volume types you could create in addition to `emptyDir` depending on your cloud host. For more information on Volume types, visit the [Kubernetes Volumes API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#volume-v1-core).
+There are a number of different Volume types you could create in addition to `emptyDir` depending on your cloud host. For more information on Volume types, visit the [Kubernetes Volumes API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#volume-v1-core).
 
 
 ## Namespaces
@@ -240,7 +241,7 @@ To delete a Namespace, issue the `delete namespace` command. Note that this will
 
     kubectl delete namespace my-app
 
-For more information on Namespaces, visit the [Kubernetes Namespaces API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#namespace-v1-core)
+For more information on Namespaces, visit the [Kubernetes Namespaces API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#namespace-v1-core)
 
 ## Next Steps
 

@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on CentOS 5.'
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/ejabberd/centos-5/']
+aliases: ['/communications/xmpp/ejabberd/centos-5/']
 modified: 2011-08-22
 modified_by:
   name: Linode
@@ -16,6 +17,11 @@ external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
  - '[XMPP Client Software](http://xmpp.org/software/clients.shtml)'
+relations:
+    platform:
+        key: how-to-install-ejabberd
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Ejabberd, the "Erlang Jabber Daemon," is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some, mostly due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.
@@ -141,7 +147,7 @@ Additionally, you may want to enable SSL access for client-to-server (c2s) SSL/T
 
 The `ejabberd.cfg` file is complete and well commented, and from this point forward your server should run. However, you should take the time to become familiar with the options provided in this file. We would only add, regarding the multi-user chats:
 
-By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" subdomain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (eg. subdomain) to the IP address where the ejabberd instance is running.
+By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" subdomain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (e.g. subdomain) to the IP address where the ejabberd instance is running.
 
 ## Using Ejabberd
 

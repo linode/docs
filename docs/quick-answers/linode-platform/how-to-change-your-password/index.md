@@ -4,11 +4,13 @@ author:
   email: docs@linode.com
 description: 'This quick answer guide shows how to change your account password in Cloud Manager.'
 keywords: ["password", "change password", "update password", "cloud manager"]
+tags: ["linode platform","cloud manager","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-01-20
 modified_by:
   name: Linode
 published: 2020-01-20
+image: ChangingYourAccountPassword.png
 title: How to Change Your Account Password
 h1_title: Changing Your Account Password
 

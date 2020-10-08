@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/ubuntu-9-10-karmic/','websites/lemp/lemp-server-on-ubuntu-9-10-karmic/']
+aliases: ['/websites/lemp/lemp-server-on-ubuntu-9-10-karmic/','/lemp-guides/ubuntu-9-10-karmic/']
 modified: 2011-05-03
 modified_by:
   name: Linode
 published: 2010-12-01
 title: 'LEMP Server on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

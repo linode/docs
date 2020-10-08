@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/social-networking/planet/ubuntu-9-10-karmic/']
+aliases: ['/web-applications/social-networking/planet/ubuntu-9-10-karmic/']
 modified: 2012-10-08
 modified_by:
   name: Linode
@@ -15,6 +16,11 @@ title: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
+relations:
+    platform:
+        key: aggregate-blog-planet
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

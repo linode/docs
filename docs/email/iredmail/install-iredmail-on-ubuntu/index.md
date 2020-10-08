@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
 keywords: ["email", "mail", "iredmail"]
+tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['installing-iredmail/','email/iredmail/installing-iredmail/']
+aliases: ['/installing-iredmail/','/email/iredmail/installing-iredmail/']
 contributor:
     name: Nick Reichley
     link: https://github.com/reichley
@@ -65,12 +66,12 @@ A DNS MX record tells the internet where to send email directed at you domain. B
 3. Download the latest release of iRedMail. The current release, as of 16 September 2014, is 0.8.7 and can be downloaded by entering the following:
 
         cd /root/
-        wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.8.7.tar.bz2
+        wget https://github.com/iredmail/iRedMail/releases/download/1.3.1/iRedMail-1.3.1.tar.gz
 
 4. Uncompress the package and run the script:
 
-        tar xjf iRedMail-0.8.7.tar.bz2
-        cd iRedMail-0.8.7
+        tar zxf iRedMail-1.3.1.tar.gz
+        cd iRedMail-1.3.1
         bash iRedMail.sh
 
 

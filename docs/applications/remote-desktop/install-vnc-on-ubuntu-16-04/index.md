@@ -5,6 +5,7 @@ author:
 description: 'This guide shows how to install and connect to a desktop environment on your Linode'
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "16.04"]
+tags: [ubuntu]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-27
 modified_by:
@@ -16,6 +17,11 @@ deprecated_link: 'applications/remote-desktop/install-vnc-on-ubuntu-18-04/'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'
+relations:
+    platform:
+        key: install-vnc
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.

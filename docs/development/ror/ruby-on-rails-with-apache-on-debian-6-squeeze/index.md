@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Debian 6 Squeeze to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
+tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/ruby-on-rails-apache/debian-6-squeeze/','websites/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/']
+aliases: ['/frameworks/ruby-on-rails-apache/debian-6-squeeze/','/websites/ror/ruby-on-rails-with-apache-on-debian-6-squeeze/']
 modified: 2013-09-26
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
 - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
 - '[Install the Apache HTTP Server on Debian 6 (Squeeze)](/docs/web-servers/apache/installation/debian-6-squeeze)'
 - '[Install the MySQL Database System on Debian 6 (Squeeze)](/docs/databases/mysql/debian-6-squeeze)'
+relations:
+    platform:
+        key: ruby-on-rails-apache
+        keywords:
+            - distribution: Debian 6
 ---
 
 

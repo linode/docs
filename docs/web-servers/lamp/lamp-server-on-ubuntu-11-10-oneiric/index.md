@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.10 (Oneiric).'
 keywords: ["ubuntu lamp server", "ubuntu 11.10 lamp", "oneiric lamp", "ubuntu web server", "ubuntu oneiric"]
+tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/ubuntu-11-10-oneiric/','websites/lamp/lamp-server-on-ubuntu-11-10-oneiric/']
+aliases: ['/websites/lamp/lamp-server-on-ubuntu-11-10-oneiric/','/lamp-guides/ubuntu-11-10-oneiric/']
 modified: 2013-09-23
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Ubuntu 11.10
 ---
 
 

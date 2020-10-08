@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 14.04 LTS'
 keywords: ["nginx", "nginx ubuntu 14.04", "nginx fastcgi", "nginx php", "php", "fastcgi", "ubuntu"]
+tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
+aliases: ['/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
 modified: 2015-06-12
 modified_by:
   name: Elle Krout
@@ -17,6 +18,11 @@ external_resources:
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
  - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+relations:
+    platform:
+        key: nginx-php-fastcgi
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 14.04 Linode.

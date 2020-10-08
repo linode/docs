@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: "Troubleshooting steps for when you can't connect to a service that your Linode runs."
 keywords: ['linux','reboot','lish']
+tags: ["web server", "database", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-01
 modified: 2019-02-01
@@ -176,7 +177,7 @@ If your web server is responding with an error code, your troubleshooting will v
 
     The web server requested a resource from a process it depends on, but the process did not respond as expected. For example, if a database query needs to be performed for a web request, but the database isn't running, then a 50X code will be returned. To troubleshoot these issues, investigate the service that the web server depends on.
 
-### Troubleshoot Databases
+## Troubleshoot Databases
 
 ### Is your Disk Full?
 
@@ -185,7 +186,7 @@ One common reason that a database may not start is if your disk is full. To chec
     df -h
 
 {{< note >}}
-This reported disk usage is not the same as the reported storage usage in the Linode Manager. The storage usage in the Linode Manager refers to how much of the the disk space you pay for is allocated to your Linode's disks. The output of `df -h` shows how full those disks are.
+This reported disk usage is not the same as the reported storage usage in the Linode Manager. The storage usage in the Linode Manager refers to how much of the disk space you pay for is allocated to your Linode's disks. The output of `df -h` shows how full those disks are.
 {{< /note >}}
 
 You have several options for resolving disk space issues:

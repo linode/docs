@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MariaDB on CentOS.'
 keywords: ["postfix centos 7", "dovecot centos 7", "linux mail server", "email", "centos 7"]
+tags: ["centos","postfix","email","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-7/']
+aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-7/']
 modified: 2018-10-10
 modified_by:
   name: Linode
@@ -59,10 +60,6 @@ Verify that the `hosts` file contains a line for the Linode's public IP address 
 ## Install SSL Certificate
 
 You will need to install a SSL certificate on your mail server prior to completing the [Dovecot](#dovecot) configuration steps. The SSL certificate will authenticate the identity of the mail server to users and encrypt the transmitted data between the user's mail client and the mail server.
-
-{{< note >}}
-
-{{</ note >}}
 
 {{< content "certbot-shortguide-centos" >}}
 

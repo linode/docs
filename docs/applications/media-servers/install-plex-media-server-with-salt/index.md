@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Plex Media Server on Ubuntu 18.04 with Salt masterless.'
 keywords: ['plex','media','server','ubuntu 18.04','ubuntu','salt','saltstack']
+tags: ["ubuntu", "salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-31
 modified: 2019-01-02
@@ -16,8 +17,6 @@ external_resources:
   - '[Salt Masterless Walkthough](https://docs.saltstack.com/en/latest/topics/tutorials/quickstart.html)'
   - '[Salt Fileserver Backend Walthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
-promo_code_amount: '20'
-promo_code: 'Salt20'
 dedicated_cpu_link: true
 ---
 

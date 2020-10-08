@@ -6,7 +6,7 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['getting-started-new-manager/','getting-started-classic-manager/']
+aliases: ['/getting-started-classic-manager/','/getting-started-new-manager/']
 modified: 2019-03-08
 modified_by:
   name: Linode
@@ -38,6 +38,10 @@ If you haven't already signed up for a Linode account, start here.
 
 1.  Create a new account at the [Sign Up page](https://login.linode.com/signup?promo=DOCS20AA00X1).
 
+    {{< disclosure-note "Sending Email on Linode">}}
+Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`. If you'd like to send email from a Linode, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
+    {{</ disclosure-note >}}
+
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
 ## Create a Linode
@@ -59,17 +63,13 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
 1.  Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories:
-
-    - lowercase and uppercase case letters
-    - numbers
-    - punctuation characters
+1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
 
 1.  Click **Create**. You will be directed back to the *Linodes* page which will report the status of your Linode as it boots up. You can now use the Cloud Manager to:
 
     * Boot and shut down your Linode
     * Access monitoring statistics
-    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments-new-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
+    * Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
     * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
     * Open a [support](/docs/platform/billing-and-support/support-new-manager/) ticket and perform other administrative tasks
 
@@ -210,29 +210,36 @@ A hostname is used to identify your Linode using an easy-to-remember name. Your 
 
 ### Arch / CentOS 7 / Debian 8 / Fedora / Ubuntu 16.04 and above
 
-Replace `example_hostname` with one of your choice.
+Replace `example-hostname` with one of your choice.
 
-    hostnamectl set-hostname example_hostname
+    hostnamectl set-hostname example-hostname
 
 ### CentOS 6
 
-Replace `hostname` with one of your choice.
+Replace `example-hostname` with one of your choice.
 
-    echo "HOSTNAME=example_hostname" >> /etc/sysconfig/network
-    hostname "hostname"
+    echo "HOSTNAME=example-hostname" >> /etc/sysconfig/network
+    hostname "example-hostname"
 
-### Debian 7 / Slackware / Ubuntu 14.04
+### Debian 7 / Ubuntu 14.04
 
-Replace `example_hostname` with one of your choice.
+Replace `example-hostname` with one of your choice.
 
-    echo "example_hostname" > /etc/hostname
+    echo "example-hostname" > /etc/hostname
     hostname -F /etc/hostname
+
+### Slackware
+
+Replace `example-hostname` with one of your choice.
+
+    echo "example-hostname" > /etc/HOSTNAME
+    hostname -F /etc/HOSTNAME
 
 ### Gentoo
 
-Enter the following commands to set the hostname, replacing `example_hostname` with the hostname of your choice:
+Enter the following commands to set the hostname, replacing `example-hostname` with the hostname of your choice:
 
-    echo "HOSTNAME=\"example_hostname\"" > /etc/conf.d/hostname
+    echo "HOSTNAME=\"example-hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
 ### OpenSUSE
@@ -244,24 +251,24 @@ Replace `example-hostname` with one of your choice.
 
 ### Update Your System's hosts File
 
-The `hosts` file creates static associations between IP addresses and hostnames or domains which the system prioritizes before DNS for name resolution. Open this file in a text editor and add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is the public IP address, `hostname` is the local hostname, and `hostname.example.com` is the FQDN.
+The `hosts` file creates static associations between IP addresses and hostnames or domains which the system prioritizes before DNS for name resolution. Open this file in a text editor and add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is the public IP address, `example-hostname` is the local hostname, and `example-hostname.example.com` is the FQDN.
 
   {{< file "/etc/hosts"  conf >}}
 127.0.0.1 localhost.localdomain localhost
-203.0.113.10 hostname.example.com hostname
+203.0.113.10 example-hostname.example.com example-hostname
 {{< /file >}}
 
 Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
   {{< file "/etc/hosts" conf >}}
 127.0.0.1 localhost.localdomain localhost
-203.0.113.10 hostname.example.com hostname
-2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
+203.0.113.10 example-hostname.example.com example-hostname
+2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
 {{< /file >}}
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/platform/manager/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
 
 ## Set the Timezone
 

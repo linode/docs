@@ -5,8 +5,9 @@ author:
   email: afornuto@linode.com
 description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
 keywords: ["x11", "x-forwarding", "ssh", "x over ssh", "ubuntu", " ubuntu 12.04"]
+tags: ["ubuntu", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['remote-desktops/x-forwarding-ubuntu-12-04/','applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04']
+aliases: ['/remote-desktops/x-forwarding-ubuntu-12-04/','/applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04/']
 modified: 2014-04-25
 modified_by:
   name: Alex Fornuto
@@ -17,6 +18,11 @@ external_resources:
  - '[Cygwin/X](http://x.cygwin.com/)'
  - '[MobaXterm](http://mobaxterm.mobatek.net/)'
  - '[XQuartz](http://xquartz.macosforge.org/)'
+relations:
+    platform:
+        key: forward-x11-gui
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 On occasion you may want to run an application that requires a graphic interface from your Linode. By using X forwarding, this is easy to accomplish.

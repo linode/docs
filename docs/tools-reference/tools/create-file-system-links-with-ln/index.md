@@ -5,7 +5,7 @@ author:
 description: 'Create hard and symbolic links with ln on Linux Systems.'
 keywords: ["linux", "common commands", "unix", "command line", "file systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/ln/']
+aliases: ['/linux-tools/common-commands/ln/']
 modified: 2018-03-12
 modified_by:
   name: Linode
@@ -13,6 +13,7 @@ published: 2010-10-11
 title: Create File System Links with ln
 external_resources:
   - '[What is the Difference Between a Hard Link and a Symbolic Link? (Ask Ubuntu)](https://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link)'
+tags: ["linux"]
 ---
 
 ![Create File System Links with ln](create_file_system_links_with_ln_smg.png)

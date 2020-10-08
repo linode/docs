@@ -12,6 +12,7 @@ title: Object Storage Cancellation Notice
 keywords: ["object storage"]
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 {{< caution >}}

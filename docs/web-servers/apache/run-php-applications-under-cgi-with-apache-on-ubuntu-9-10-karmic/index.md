@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Methods for enabling dynamic content run as individual users with PHP on Ubuntu 9.10 (Karmic).'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
+tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/php-cgi/ubuntu-9-10-karmic/','websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic/']
+aliases: ['/web-servers/apache/php-cgi/ubuntu-9-10-karmic/','/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-02-17
 title: 'Run PHP Applications under CGI with Apache on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

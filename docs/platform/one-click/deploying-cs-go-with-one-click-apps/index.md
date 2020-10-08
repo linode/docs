@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 ## Counter-Strike: Global Offensive One-Click App
@@ -56,15 +57,17 @@ After providing the app specific options, provide configurations for your Linode
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your CS:GO server should be sized based on the amount of traffic you are expecting on your server. Higher-tier plans may also provide better network game performance than lower-tier plans. We recommend using a 4GB Linode as the minimum plan for CS:GO servers. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | Create a root password for your Linode in the Root Password field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. *Required*. |
+| **Root Password** | Create a root password for your Linode in the Root Password field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
 When you've provided all required Linode Options, click on the **Create** button. **CS:GO should complete its installation between 5-15 minutes after your Linode has successfully provisioned**.
 
 ## Getting Started after Deployment
 
+### Connect with the CS:GO Client
+
 After CS:GO has finished installing, you will be able to access your game server by connecting to its IP address. To find your Linode's IPv4 address:
 
-1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
+1. Click on the **Linodes** link in the [Linode Cloud Manager](https://cloud.linode.com) sidebar. You will see a list of all your Linodes.
 
 1. Find the Linode you just created when deploying your app and select it.
 
@@ -74,13 +77,17 @@ After CS:GO has finished installing, you will be able to access your game server
 
 1. Copy the IPv4 address.
 
-1. In CS:GO, use the back tick key (**&#96;**) to open the developer's console. Type `connect 192.0.2.240` and click **Submit**, where `192.0.2.240` is the IP address of your Linode:
-
-    ![The CS:GO developer's console.](cs-go-developers-console.png)
-
-1.  If pressing the back tick key does not bring up the developer's console, you might need to enable it in the settings. Under *Game Settings* choose **Enable Developer's Console** and select **Yes**:
+1. In CS:GO, use the back tick key (**&#96;**) to open the developer's console. If pressing the back tick key does not bring up the developer's console, you might need to enable it in the settings. Under *Game Settings* choose **Enable Developer's Console** and select **Yes**:
 
     ![Enable the developer's console if it is not currently enabled.](cs-go-enable-developer-console.png)
+
+1. In the CS:GO developer's console, type `connect 192.0.2.240` and click **Submit**, where `192.0.2.240` is the IP address of your Linode.
+
+    {{< note >}}
+If you included a **CS:GO Server Password** in your [CS:GO Options](#cs-go-options) when installing, submit `connect 192.0.2.240; password your_server_password` instead.
+    {{< /note >}}
+
+    ![The CS:GO developer's console.](cs-go-developers-console.png)
 
 ### Software Included
 
@@ -92,3 +99,5 @@ The CS:GO One-Click App will install the following required software on your Lin
 | [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 27015, 27020/udp, 27005/udp, will allow outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+
+{{< content "one-click-update-note">}}

@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 10.04 LTS (Lucid).'
 keywords: ["openfire", "openfire ubuntu 10.04", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/openfire/ubuntu-10-04-lucid/']
+aliases: ['/communications/xmpp/openfire/ubuntu-10-04-lucid/']
 modified: 2013-09-24
 modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Instant Messaging Services with Openfire on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: how-to-install-openfire
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','disk-images-config-profiles/','platform/disk-images/disk-images-and-configuration-profiles-classic-manager/']
+aliases: ['/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/']
 modified: 2019-07-09
 modified_by:
   name: Linode
@@ -95,7 +96,11 @@ The disk will be created. Monitor your bell notifications at the top of the Clou
 Resizing allows you to allocate more storage to a disk so you can store more files on it, or shrink a disk so you have more allocatable space for the other disks.
 
 {{< note >}}
-Resizing a disk requires you to power your Linode off, if it is currently in use by your Linode. Shrinking a disk takes longer than increasing its size.
+Resizing a disk requires you to power your Linode off, if it is currently in use by your Linode.
+
+When shrinking a disk that is using more space than you wish to allocate, you must first delete or compress files until it is within the reduced allocation size. Use the command `df -h` to determine how much space your disk is using.
+
+Shrinking a disk takes longer than increasing its size.
 {{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
@@ -119,7 +124,7 @@ Duplicating a disk is not yet available in the Cloud Manager, but this feature i
 
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 1.  Click the **Linodes** tab.
 1.  Select a Linode. The Linode's dashboard appears.
 1.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
@@ -211,7 +216,7 @@ You have successfully selected and booted your Linode from a configuration profi
 
 You can remove a configuration profile from the Linode Cloud Manager at any time. Here's how:
 
-1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link from the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
 4.  Click on the **Disks/Configs** tab.
@@ -230,7 +235,7 @@ To clone an entire Linode, see our [Clone Your Linode guide](/docs/platform/disk
 We recommend that you power off your Linode first, and keep it powered off until your disks have completed the cloning process.
 {{< /note >}}
 
-1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Linodes** link from the sidebar.
 

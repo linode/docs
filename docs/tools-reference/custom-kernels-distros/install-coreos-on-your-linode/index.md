@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'CoreOS is a container-centric Linux distribution designed for clustered systems running in the cloud. This guide details installing CoreOS on a KVM Linode.'
 keywords: ["coreos", "custom", "finnix", "lish", "kvm"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-01-07
 modified: 2016-01-08
@@ -16,6 +17,11 @@ contributor:
   link:
   external_resources:
   - '[CoreOS official documentation pages](https://coreos.com/docs/)'
+relations:
+    platform:
+        key: how-to-install-linux
+        keywords:
+            - distribution: CoreOS
 ---
 
 
@@ -58,7 +64,7 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
     [![Set /dev/sda to CoreOS disk image](coreos-device-identifier-small.png)](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) to access your Linode. From the **Remote Access** tab, go to the bottom of the page and under **Console Access**, click the link to the right of **Lish via SSH** to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 

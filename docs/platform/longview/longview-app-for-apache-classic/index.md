@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Longview App for Apache
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
+tags: ["apache","cloud manager","statistics","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-26
 modified_by:

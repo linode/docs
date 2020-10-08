@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'A guide for getting started with the popular MediaWiki engine for powering wiki sites.'
 keywords: ["mediawiki", "wiki", "web-applications"]
+tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/mediawiki/','websites/wikis/mediawiki-engine/']
+aliases: ['/web-applications/wikis/mediawiki/','/websites/wikis/mediawiki-engine/']
 modified_by:
   name: Linode
 published: 2019-08-28
@@ -14,6 +15,11 @@ external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
  - '[What is Media Wiki](https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F)'
  - '[Media Wiki Extensions Blog](https://phabricator.wikimedia.org/source/extensions/browse/)'
+relations:
+    platform:
+        key: install-mediawiki
+        keywords:
+           - distribution: Ubuntu 18.04
 ---
 
 
