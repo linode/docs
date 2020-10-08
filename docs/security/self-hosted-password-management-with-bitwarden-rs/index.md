@@ -133,6 +133,11 @@ example.com {
 }
 {{< /file >}}
 
+   {{< note >}}
+The site name you choose in this file must match the desired URL that bitwarden_rs will be served under. When navigating to the web interface later in this guide, ensure that you enter the same hostname chosen in this configuration file (in this example, `example.com`).
+{{</ note >}}
+
+
 1. Prepare a directory for Caddy in `/etc` to store state information such as Let's Encrypt certificates.
 
         sudo mkdir /etc/caddy
@@ -182,6 +187,10 @@ example.com {
    ![Bitwarden Login](bitwarden_rs_login.png "Bitwarden Login")
 
    If you see the login page, congratulations! bitwarden_rs is running and operational. The first step in using the password manager is to create an account. Do so now by clicking on the "Create Account" button on the login page.
+
+   {{< note >}}
+Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide.
+{{</ note >}}
 
 1. A new page will appear with several fields.
 
