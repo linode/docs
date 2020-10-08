@@ -189,7 +189,7 @@ The site name you choose in this file must match the desired URL that bitwarden_
    If you see the login page, congratulations! bitwarden_rs is running and operational. The first step in using the password manager is to create an account. Do so now by clicking on the "Create Account" button on the login page.
 
    {{< note >}}
-Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide.
+Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide. A mismatched hostname in your browser can cause TLS errors.
 {{</ note >}}
 
 1. A new page will appear with several fields.
