@@ -98,7 +98,7 @@ For all available options, see the [iptables man page](https://manpages.debian.o
 
 Example command:
 
-    iptables -t filter -I INPUT -m tcp -p tcp --dport 80 -j REJECT
+    sudo iptables -t filter -I INPUT -m tcp -p tcp --dport 80 -j REJECT
 
 The above command blocks any incoming traffic to the web server/HTTP.
 
@@ -106,9 +106,20 @@ The above command blocks any incoming traffic to the web server/HTTP.
 
 You can list all of the available chains in the filter table by using the list command:
 
-    iptables -L
+    sudo iptables -L
 
 This displays all the chains in the filter table and all the rules within the `INPUT`, `FORWARD`, and `OUTPUT` chains.
+
+{{< output >}}
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+{{</ output >}}
 
 ### Specifying Default Policy
 
@@ -116,11 +127,11 @@ During a fresh configuration, you do not have any predefined rules, so you have 
 
 You can specify the default policy for all the chains by running the following commands:
 
-    iptables --policy INPUT ACCEPT
+    sudo iptables --policy INPUT ACCEPT
 
-    iptables --policy FORWARD ACCEPT
+    sudo iptables --policy FORWARD ACCEPT
 
-    iptables --policy OUTPUT ACCEPT
+    sudo iptables --policy OUTPUT ACCEPT
 
 This sets the default policy for all chains to `ACCEPT`. You can also change this to `DROP` or `REJECT` if you wish to disable access to any services on the server and manually allow the services you wish to expose.
 
@@ -132,15 +143,15 @@ In the following examples, replace the sample 198.168.1.1 IP address with the IP
 
 You can block all incoming requests from an IP address by adding the following rule:
 
-    iptables -A INPUT -s 192.168.1.1 -j DROP
+    sudo iptables -A INPUT -s 192.168.1.1 -j DROP
 
 You can also block all incoming connections from an entire subnet by adding the following rule:
 
-    iptables -A INPUT -s 192.168.1.1/24 -j DROP
+    sudo iptables -A INPUT -s 192.168.1.1/24 -j DROP
 
 To block all outgoing connections to a particular IP or subnet you can add the following rule to the `OUTPUT` chain:
 
-    iptables -I OUTPUT -s 192.168.1.1 -j DROP
+    sudo iptables -I OUTPUT -s 192.168.1.1 -j DROP
 
 To allow connections to these services and ports change the target to `ACCEPT` instead of `DROP`.
 
@@ -148,15 +159,15 @@ To allow connections to these services and ports change the target to `ACCEPT` i
 
 To block connections to ports and services, specify the protocol and the destination port. For example, if you want to block any incoming SSH connections to the server, add the following rule:
 
-    iptables -I INPUT -p tcp --dport 22 -j DROP
+    sudo iptables -I INPUT -p tcp --dport 22 -j DROP
 
 You can also block any incoming connections to your web server running on port 80 by adding the following rule:
 
-    iptables -I INPUT -p tcp --dport 80 -j DROP
+    sudo iptables -I INPUT -p tcp --dport 80 -j DROP
 
 You can go a step further and block a particular IP from connecting to a particular service. For example, you can block an IP from accessing our web server by adding the following rule:
 
-    iptables -I INPUT -p tcp --dport 80 -s <IP> -j DROP
+    sudo iptables -I INPUT -p tcp --dport 80 -s <IP> -j DROP
 
 To allow connections to these services and ports change the target to `ACCEPT` instead of `DROP`.
 
