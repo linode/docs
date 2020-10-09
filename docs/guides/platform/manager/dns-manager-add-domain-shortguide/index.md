@@ -27,10 +27,9 @@ Creating a domain also creates its corresponding domain zone.
 
     ![This page lets you add a new domain](add-new-domain.png "This page lets you add a new domain")
 
-1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
+1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button. If not, you may skip to the next step.
 
-    {{< note >}}
-In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
+In order for Linode's DNS servers to function as slaves,your DNS master server must notify and allow AXFR requests from the following IP addresses:
 
     104.237.137.10
     65.19.178.10
@@ -42,7 +41,10 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
     2600:3c02::a
     2600:3c03::a
     2a01:7e00::a
-{{< /note >}}
+
+{{< caution >}}
+On **December 15th, 2020** the IP address `75.127.96.10` will be replaced with the IP address `74.207.225.10`. Users will need to replace this IP on the 15th of December, 2020 for long term AXFR support.
+{{< /caution >}}
 
 1.  Enter your domain name in the **Domain** field. An example is shown above.
 1.  Enter an administrator's email address in the **SOA Email Address** field.
