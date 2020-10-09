@@ -1,4 +1,4 @@
-# github.com/bep/linodedocs v0.0.0-20201007072802-ef9a55d5c496
+# github.com/bep/linodedocs v0.0.0-20201009061038-bc8f34802ba0
 # github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c
 # github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0
 # github.com/alpinejs/alpine v2.7.0+incompatible

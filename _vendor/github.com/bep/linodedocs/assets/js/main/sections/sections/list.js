@@ -283,7 +283,7 @@ var lnSectionsController = {};
 
 			/**
 			 * Function triggered when the main search gets updated.
-			 * 
+			 *
 			 * @param  {} results
 			 */
 			searchUpdated: function(results) {

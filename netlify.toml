@@ -59,8 +59,8 @@ Referrer-Policy = "no-referrer"
 Content-Security-Policy = "script-src 'self' *.googletagmanager.com *.trustarc.com *.weglot.com *.disqus.com 'unsafe-eval' 'unsafe-inline'"
 
 [[redirects]]
-from = "/docs/blog/*"
-to = "/docs/blog/"
+from = "/docs/content/*"
+to = "/docs/content/"
 status = 200
 
 [[redirects]]

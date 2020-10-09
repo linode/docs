@@ -12,7 +12,7 @@ var lnCreateHref = {};
 		}
 
 		const SECTIONS_BASEPATH = '/docs/';
-		const BLOG_BASEPATH = '/docs/blog/';
+		const WP_CONTENT_BASEPATH = '/docs/content/';
 
 		return {
 			sectionsFromPath: function() {
@@ -25,14 +25,10 @@ var lnCreateHref = {};
 				return `${SECTIONS_BASEPATH}${parts.join('/').toLowerCase()}/`;
 			},
 			hrefEntry: function(hit) {
-				if (hit.section && !hit.section.startsWith('blog')) {
-					let objectID = hit.objectID.replace('#', '/');
-					return `${BLOG_BASEPATH}${objectID}/`;
-				}
-
 				let urlParts = hit.url.split('/');
+				let contentType = hit.objectID.split("#").shift().replace("content", "resource");
 				let slug = urlParts.pop() || urlParts.pop();
-				return `${BLOG_BASEPATH}${slug}/`;
+				return `${WP_CONTENT_BASEPATH}${contentType}/${slug}/`;
 			}
 		};
 	};
