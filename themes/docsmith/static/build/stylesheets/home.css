@@ -22142,6 +22142,18 @@ blockquote div.btn-copy .glyphicon.glyphicon-copy {
 .o-layout__row {
   padding: 16px;
 }
+@media (min-width: 48em) and (max-width: 61.99em) {
+  .o-layout__row {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+@media (max-width: 47.99em) {
+  .o-layout__row {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
 .o-layout__colset {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
