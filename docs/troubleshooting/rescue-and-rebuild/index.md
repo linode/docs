@@ -17,7 +17,7 @@ title: Rescue and Rebuild
 
 Even the best system administrators may need to deal with unplanned events in the operation of their services. The Linode Cloud Manager provides recovery tools that you can leverage if you are having trouble connecting to one of your Linodes, and this guide describes those tools:
 
--  You can boot your Linode into [*Rescue Mode*](#rescuing) to perform system recovery tasks and transfer data off your disks, if necessary.
+- You can boot your Linode into [*Rescue Mode*](#rescuing) to perform system recovery tasks and transfer data off your disks, if necessary.
 
 - If you are unable to resolve your system's issues, you can [*rebuild*](#rebuilding) your Linode from a backup or start over with a fresh Linux distribution.
 
@@ -80,8 +80,17 @@ Make a note of which devices your disks are assigned to (e.g. `/dev/sda`, `/dev/
     [![Linode Cloud Manager Rescue form - Add Disk highlighted](cloud-manager-rescue-form-add-disk-highlighted.png "Linode Cloud Manager Rescue form with the Add Disk option highlighted")](cloud-manager-rescue-form-add-disk-highlighted.png)
 
     {{< note >}}
+
 You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
 {{< /note >}}
+
+    {{< caution >}}
+For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify on the Rescue form before starting Rescue Mode.
+
+Matching these names will be especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Linode's `/etc/fstab` file, which defines where and how your Linode mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
+
+A mismatch in the names of your disks between your Linode's configuration profile and your Rescue Mode environment may cause the chroot to mount these disks in the wrong location or with the wrong mount options. As a result, it is important to ensure that these names match.
+{{< /caution >}}
 
 1.  Click the **Submit** button. The Linode will reboot into Rescue Mode, and a progress bar will appear. When this progress bar completes, proceed to [Connecting to a Linode Running in Rescue Mode](#connecting-to-a-linode-running-in-rescue-mode).
 
@@ -101,7 +110,7 @@ To connect with Lish:
 
     [![Linode Cloud Manager Linode detail page - Launch Console button highlighted](cloud-manager-rescue-tab-launch-console-highlighted.png "Linode Cloud Manager Linode detail page with the Launch Console button highlighted")](cloud-manager-rescue-tab-launch-console-highlighted.png)
 
-1.  A new window will appear which displays your Lish console, a `Welcome to Finnix!` message, and a root prompt:
+1.  Clicking this link should open up a new window, where you should see the Lish console displaying a command prompt for the Finnix environment's root user:
 
     [![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png "Linode Cloud Manager Lish console")](cloud-manager-new-lish-window.png)
 
@@ -127,7 +136,7 @@ This root password is separate from the root password of the disk that you norma
 
         service ssh start
 
-You can now connect to the server as root with the SSH client on your computer. You can also access mounted disks with an SFTP client:
+You should now be able to connect to the server as `root` with the SSH client on your computer. You can also access mounted disks with an SFTP client:
 
 - For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/).
 
@@ -139,13 +148,19 @@ You can use the `fsck` system utility (short for "file system check") to check t
 
 1.  Enter the `df -h` command to verify that your primary disks are not currently mounted:
 
-        root@ttyS0:~# df -h
+        root@0:~# df -h
         Filesystem      Size  Used Avail Use% Mounted on
-        tmpfs           739M 1016K  738M   1% /media/ramdisk
-        /dev/sdh        160M  160M     0 100% /media/sdh
-        /dev/loop0      146M  146M     0 100% /media/compressed_root
-        unionfs         739M 1016K  738M   1% /
-        devtmpfs         10M     0   10M   0% /dev
+        udev            1.9G     0  1.9G   0% /dev
+        tmpfs           395M  516K  394M   1% /run
+        /dev/sr0        503M  503M     0 100% /run/live/medium
+        /dev/loop0      426M  426M     0 100% /run/live/rootfs/filesystem.squashfs
+        tmpfs           2.0G   17M  2.0G   1% /run/live/overlay
+        overlay         2.0G   17M  2.0G   1% /
+        tmpfs           2.0G     0  2.0G   0% /dev/shm
+        tmpfs           5.0M     0  5.0M   0% /run/lock
+        tmpfs           4.0M     0  4.0M   0% /sys/fs/cgroup
+        tmpfs           2.0G     0  2.0G   0% /tmp
+        tmpfs           395M     0  395M   0% /run/user/0
 
     Your primary disks should not appear in the list. In the [example screenshot](cloud-manager-rescue-form-dev-sda-highlighted.png) from the [Booting into Rescue Mode](#booting-into-rescue-mode) section, we assigned the Ubuntu 18.04 disk to `/dev/sda`. Because this device does not appear in the example output from `df -h`, we can run a filesystem check on it.
 
@@ -159,50 +174,70 @@ Never run `fsck` on a mounted disk. Do not continue unless you're sure that the 
 
 1.  If no problems are detected, `fsck` will display the tests it performed:
 
-        e2fsck -f /dev/sda
-        e2fsck 1.42.13 (17-May-2015)
+        root@0:~# e2fsck -f /dev/sda
+        e2fsck 1.45.6 (20-Mar-2020)
         Pass 1: Checking inodes, blocks, and sizes
         Pass 2: Checking directory structure
         Pass 3: Checking directory connectivity
         Pass 4: Checking reference counts
         Pass 5: Checking group summary information
-        /dev/sda: 109771/1568000 files (0.5% non-contiguous), 675014/6422528 blocks
+        /dev/sda: 44611/2564096 files (0.1% non-contiguous), 602550/10240000 blocks
 
 1.  If `fsck` determines that there is a problem with your filesystem, it will prompt you to fix problems as they are found during each test:
 
-        root@ttyS0:~# e2fsck -f /dev/sda
-        e2fsck 1.42.13 (17-May-2015)
-        ext2fs_check_desc: Corrupt group descriptor: bad block for block bitmap
-        e2fsck: Group descriptors look bad... trying backup blocks...
-        e2fsck: Bad magic number in super-block while using the backup blockse2fsck: gok
-        Superblock has an invalid journal (inode 8).
-        Clear<y>?
+        root@0:~# e2fsck -f /dev/sda
+        e2fsck 1.45.6 (20-Mar-2020)
+        ext2fs_open2: Bad magic number in super-block
+        e2fsck: Superblock invalid, trying backup blocks...
+        Resize inode not valid.  Recreate<y>?
 
     Press **enter** to automatically attempt to fix the problems.
 
-    Once the filesystem check completes, any problems detected should be fixed. Try rebooting the Linode from the Cloud Manager. If `fsck` fixed the issues, the Linode should boot normally.
+Once the filesystem check completes, any problems detected should be fixed. Try rebooting the Linode from the Cloud Manager. If `fsck` fixed the issues, the Linode should boot normally.
 
 ### Installing Packages
 
-The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/tools-reference/linux-package-management/#debian-and-ubuntu-package-management) to install additional software packages in the temporary rescue environment. For example, you could install and run the `htop` utility by issuing the following commands:
+The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/tools-reference/linux-package-management/#debian-and-ubuntu-package-management) to install additional software packages in the temporary rescue environment. For example, you could install and run the `nmon` utility by issuing the following commands:
 
     apt update
-    apt install htop
-    htop
+    apt install nmon
+    nmon
 
 The software packages you install will be available as long as your Linode is running in Rescue Mode.
 
 ### Mounting Disks
 
-By default, your disks are not mounted when your Linode boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks. Run the `mount` command, replacing `/dev/sda` with the location of the disk you want to mount:
+By default, your disks are not mounted when your Linode boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
 
-    mount -o barrier=0 /dev/sda
+These instructions will mount the `/dev/sda` disk. If you are mounting a different disk, replace `sda` with the name of your disk throughout these instructions.
 
-Disks that contain a single filesystem will have mount points under `/media` in the rescue environment's `/etc/fstab` file. To view the directories on the disk, enter the following command:
+First, you will need to create a directory for your disk:
+
+    mkdir -p /media/sda
+
+Now you can run a `mount` command which will make this disk's contents accessible at the `/media/sda` directory:
+
+    mount -o barrier=0 /dev/sda /media/sda
+
+To view the directories on the disk, enter the following command:
 
     ls /media/sda
 
-Now you can read and write to files on the mounted disk.
+You can now read and write to files on the mounted disk.
+
+In case you need to unmount your disk for whatever reason (for example, to [run a file system check](#performing-a-file-system-check)), you may do so by running the `umount` command.
+
+The `umount` command requires you to specify the device you want to unmount. You may specify this device in one of two ways:
+
+1.  Specify the device name itself:
+
+        umount /dev/sda
+
+2.  Specify the mount directory:
+
+        umount /media/sda
+
+If you would like to mount or unmount additional disks on your system, you will need to repeat these instructions with the appropriate substitutions.
 
 ### Change Root
 
@@ -210,16 +245,17 @@ Now you can read and write to files on the mounted disk.
 
 Chroot will allow you to change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Linode's normal Linux environment.
 
+These instructions assume that your Linode's root directory resides on `/dev/sda`. If your Linode uses a different disk for its root environment, replace `sda` with the name of that disk throughout these instructions.
+
 1.  Before you can use chroot, you need to mount your root disk with execute permissions:
 
-        mount -o exec,barrier=0 /dev/sda
+        mkdir -p /media/sda
+        mount -o exec,barrier=0 /dev/sda /media/sda
 
     {{< note >}}
-If you mounted your disk prior to reviewing this section, unmount the disk:
+If you mounted your disk without `exec` prior to reviewing this section, you will need to include the `remount` option in your `mount` command:
 
-    umount /dev/sda
-
-Then, remount it with the `exec` option.
+    mount -o remount,exec,barrier=0 /dev/sda /media/sda
 {{< /note >}}
 
 1.  Then to create the chroot, you need to mount the temporary filesystems:
@@ -234,7 +270,23 @@ Then, remount it with the `exec` option.
 
         chroot /media/sda /bin/bash
 
-1.  To exit the chroot and get back to Finnix type "exit" :
+1.  Your Linode may expect its other disks to be mounted in specific directories during its regular operations. These disks and their expected directories will be defined in the `/etc/fstab` file.
+
+    In order to be accessible within the chroot, you will need to mount these volumes from within the chroot. For example, if your Linode defines `/dev/sdc` in its `/etc/fstab`, you may run this command to mount it:
+
+        mount /dev/sdc
+
+    {{< caution >}}
+This `mount` command only specifies a disk name without specifying a mount point. This will cause `mount` to use the `/etc/fstab` file in the chroot to determine the mount point and apply the correct mount options.
+
+As a result, this command will depend on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles).
+
+If these names do not match, mounting your disks using only a device name will either fail completely, mount them at the wrong directory, and/or apply the wrong mount options to them.
+
+The easiest way to alleviate this problem is by [starting a new Rescue Mode session from Cloud Manager](#booting-into-rescue-mode) which properly matches these disk names between your Rescue Mode environment and your Linode's configuration profile.
+{{< /caution >}}
+
+1.  To exit the chroot and get back to Finnix, run the `exit` command:
 
         exit
 
