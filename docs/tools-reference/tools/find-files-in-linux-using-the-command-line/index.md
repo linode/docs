@@ -33,8 +33,8 @@ The following example searches for `*.err` files in the `/home/username/` direct
 
     find options starting/path expression
 
-* The `options` attribute will control the behavior and optimization method of the `find` process.
-* The `starting/path` attribute will define the top level directory where `find` begins filtering.
+* The `options` attribute controls the behavior and optimization method of the `find` process.
+* The `starting/path` attribute defines the top level directory where `find` begins filtering.
 * The `expression` attribute controls the tests that search the directory hierarchy to produce output.
 
 Consider the following example command:
@@ -55,7 +55,7 @@ This command enables the maximum optimization level (-O3) and allows `find` to f
 
 ## Options and Optimization for Find
 
-The default configuration for `find` will ignore symbolic links (shortcut files). If you want `find` to follow and return symbolic links, you can add the `-L` option to the command, as shown in the example above.
+The default configuration for `find` ignores symbolic links (shortcut files). If you want `find` to follow and return symbolic links, you can add the `-L` option to the command, as shown in the example above.
 
 `find` optimizes its filtering strategy to increase performance. Three user-selectable optimization levels are specified as `-O1`, `-O2`, and `-O3`. The `-O1` optimization is the default and forces `find` to filter based on filename before running all other tests.
 
@@ -113,7 +113,7 @@ Use this option with extreme caution.
 
 Add the option `-delete` to the end of a match expression to delete all files that match. Use this option when you are certain that the results *only* match the files that you wish to delete.
 
-In the following example, `find` locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, `find` will delete all files that end with the characters `.bak`:
+In the following example, `find` locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, `find` deletes all files that end with the characters `.bak`:
 
     find . -name "*.bak" -delete
 
