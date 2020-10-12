@@ -2,6 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
+author:
+  name: Linode
+  email: docs@linode.com
 description: 'Shortguide that shows you how to manage your images with Linode Images.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-20

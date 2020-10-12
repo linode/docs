@@ -1,4 +1,7 @@
 ---
+author:
+  name: Linode
+  email: docs@linode.com
 title: Enable Object Storage
 ---
 

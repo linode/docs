@@ -1,4 +1,7 @@
 ---
+author:
+  name: Linode
+  email: docs@linode.com
 title: Take a Manual Snapshot
 ---
 
