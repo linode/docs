@@ -231,12 +231,6 @@
     "type": "bool",
     "description": "If false, any social media image set with the image frontmatter field will not be displayed in the guide."
   },
-  "slug": {
-    "elements": false,
-    "required": false,
-    "type": "text",
-    "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
-  },
   "tags": {
     "elements": "list",
     "required": false,
