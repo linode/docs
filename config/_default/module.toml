@@ -1,20 +1,8 @@
 
 # Mounts in this project.
 [[mounts]]
-source = "docs/guides"
-target = "content/guides"
-
-[[mounts]]
-source = "docs/products"
-target = "content/products"
-
-[[mounts]]
-source = "docs/assets"
-target = "content/assets"
-
-[[mounts]]
-source = "docs/api"
-target = "content/api"
+source = "docs"
+target = "content"
 
 [[mounts]]
 source = "static"
