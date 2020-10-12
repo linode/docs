@@ -76,7 +76,7 @@ filtering_facets = [{ name = "category", title = "Doc Category" }]
 
 [[params.search_config.sections]]
 name = "marketplace"
-index = "linode-wp"
+index = "linode-wp-resources"
 title = "Marketplace"
 filters = "section.lvl0:Marketplace"
 explorer_icon = "#icon-explorer--products"
