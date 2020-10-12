@@ -11,39 +11,24 @@ var lnCreateHref = {};
 			throw 'lnCreateHref.New: must provide searchConfig';
 		}
 
-		const SECTIONS_BASEPATH = '/docs/sections/';
-		const BLOG_BASEPATH = '/docs/blog/';
+		const SECTIONS_BASEPATH = '/docs/';
+		const WP_CONTENT_BASEPATH = '/docs/content/';
 
 		return {
 			sectionsFromPath: function() {
-				let pathname = decodeURIComponent(window.location.pathname);
-				let match = pathname.match(/sections\/(.+)/);
-				if (!match) {
-					return null;
-				}
-
-				match = match.slice(1, match.length);
-
-				let path = match[0].replace(/\/$/, '');
-				return path.split('/');
+				let pathname = decodeURIComponent(window.location.pathname).replace(/^\/|\/$/g, '');
+				let sections = pathname.split('/').slice(1);
+				return sections;
 			},
 			hrefSection: function(key) {
 				let parts = key.split(' > ');
-				if ((parts.length > 1 && parts[0] === 'products') || parts[0] === 'api') {
-					// TODO(bep)
-					return `/docs/${parts.join('/')}/`;
-				}
 				return `${SECTIONS_BASEPATH}${parts.join('/').toLowerCase()}/`;
 			},
 			hrefEntry: function(hit) {
-				if (hit.section && !hit.section.startsWith('blog')) {
-					let objectID = hit.objectID.replace('#', '/');
-					return `${BLOG_BASEPATH}${objectID}/`;
-				}
-
 				let urlParts = hit.url.split('/');
+				let contentType = hit.objectID.split("#").shift().replace("content", "resource");
 				let slug = urlParts.pop() || urlParts.pop();
-				return `${BLOG_BASEPATH}${slug}/`;
+				return `${WP_CONTENT_BASEPATH}${contentType}/${slug}/`;
 			}
 		};
 	};

@@ -85,22 +85,17 @@ var lnArticleController = {};
 			init: function() {
 				var self = this;
 				let pathname = decodeURIComponent(window.location.pathname);
-				let match = pathname.match(/docs\/blog\/(.+)/);
+				let match = pathname.match(/docs\/content\/(.+)\/(.+)/);
 				match = match.slice(1, match.length);
 
-				if (match.length < 1) {
+				if (match.length < 2) {
 					return;
 				}
 
-				let slugOrObjectPath = match[0].replace(/\/$/, '');
+				let contentType = match[0].replace("resource", "content").replace("post", "posts");
+				let slug = match[1].replace(/\/$/, '');
 
-				var url;
-
-				if (slugOrObjectPath.includes('/')) {
-					url = `https://www.linode.com/wp-json/wp/v2/${slugOrObjectPath}/`;
-				} else {
-					url = `https://www.linode.com/wp-json/wp/v2/posts?slug=${slugOrObjectPath}&_embed=1`;
-				}
+				var url = `https://www.linode.com/wp-json/wp/v2/${contentType}?slug=${slug}&_embed=1`;
 
 				var onSuccess = (article) => {
 					self.data.article = article;

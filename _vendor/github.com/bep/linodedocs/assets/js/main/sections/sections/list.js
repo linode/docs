@@ -105,14 +105,14 @@ var lnSectionsController = {};
 				}
 
 				let parts = hrefFactory.sectionsFromPath();
-				if (!parts) {
-					return;
-				}
 
 				let last = parts[parts.length - 1];
 				let indexName = parts[0];
 				this.key = parts.join(' > ');
 				let sectionConfig = searchConfig.sections.find((s) => s.name === indexName);
+				if (!sectionConfig) {
+					throw `no search config found for section ${indexName}`;
+				}
 				this.data.lvl = parts.length - 1;
 
 				this.request = {
@@ -283,7 +283,7 @@ var lnSectionsController = {};
 
 			/**
 			 * Function triggered when the main search gets updated.
-			 * 
+			 *
 			 * @param  {} results
 			 */
 			searchUpdated: function(results) {
