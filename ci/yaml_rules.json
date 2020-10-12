@@ -202,6 +202,11 @@
     "type": "bool",
     "description": "If true, this guide will be hidden from all layouts and search index."
   },
+  "slug": {
+    "required": true,
+    "type": "text",
+    "description": "Guides will render to the URL /docs/guides/:slug/. Supply the slug for the URL with this frontmatter attribute."
+  },
   "hiddenguide": {
     "elements": false,
     "required": false,
