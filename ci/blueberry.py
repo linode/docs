@@ -319,7 +319,7 @@ class TestManager(object):
     # TODO:
     # Gracefully handle non-existent filepath
 
-    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/websites/'], **kwargs):
+    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/headless/'], **kwargs):
         self.input_dir = input_dir
         self.files = find_files(path=input_dir, ignore_paths=ignore_paths, recursive=True)
 
