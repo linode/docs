@@ -131,6 +131,7 @@ The Linode CCM accepts annotations that configure the behavior and settings of y
 |---------------------|--------|---------------|-------------|
 | `throttle` | &bull; integer <br>&bull; `0`-`20` <br> &bull; `0` disables the throttle | `20` | The client connection throttle limits the number of new connections-per-second from the same client IP. |
 | `default-protocol` | &bull; string <br> &bull;`tcp`, `http`, `https` | `tcp` | Specifies the protocol for the NodeBalancer to use. |
+| `proxy-protocol` | &bull; string <br> &bull;`none`, `v1`, `v2` | `none` | Enables Proxy Protocol on the underlying NodeBalancer and specifies the version of Proxy Protocol to use. The Proxy Protocol allows TCP client connection information, like IP address and port number, to be transferred to cluster nodes. See the [Using Proxy Protocol with NodeBalancers](/docs/platform/nodebalancer/nodebalancer-proxypass-configuration/#what-is-proxy-protocol) guide for details on each Proxy Protocol version. |
 | `port-*`| A JSON object of port configurations<br> For example: <br> `{ "tls-secret-name": "prod-app-tls", "protocol": "https"})` | None | &bull;  Specifies a NodeBalancer port to configure, i.e. `port-443`. <br><br> &bull; Ports `1-65534` are available for balancing. <br><br> &bull; The available port configurations are: <br><br> `"tls-secret-name"` use this key to provide a Kubernetes secret name when setting up TLS termination for a service to be accessed over HTTPS. The secret type should be `kubernetes.io/tls`.  <br><br> `"protocol"` specifies the protocol to use for this port, i.e. `tcp`, `http`, `https`. The default protocol is `tcp`, unless you provided a different configuration for the `default-protocol` annotation. |
 | `check-type` | &bull; string <br> &bull; `none`, `connection`, `http`, `http_body` | None | &bull; The type of health check to perform on Nodes to ensure that they are serving requests. The behavior for each check is the following: <br><br> `none` no check is performed <br><br> `connection` checks for a valid TCP handshake <br><br> `http` checks for a `2xx` or `3xx` response code <br><br> `http_body` checks for a specific string within the response body of the healthcheck URL. Use the `check-body` annotation to provide the string to use for the check. |
 | `check-path` | string | None | The URL path that the NodeBalancer will use to check on the health of the back-end Nodes. |
@@ -148,10 +149,6 @@ To view a list of deprecated annotations, visit the [Linode CCM GitHub repositor
 ### Configuring Linode NodeBalancers for TLS Encryption
 
 This section describes how to set up TLS termination on your Linode NodeBalancers so a Kubernetes Service can be accessed over HTTPS.
-
-{{< note >}}
-While Linode NodeBalancers do support ProxyProtocol, the Linode CCM does not. For this reason, the Linode Kubernetes Engine does not support ProxyProtocol yet. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to the Linode CCM.
-{{</ note >}}
 
 #### Generating a TLS type Secret
 
