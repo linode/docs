@@ -3,8 +3,8 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 99.4 99.4" style="enable-background:new 0 0 99.4 99.4;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFFFF;}
-	.st1{fill:#22AF5E;}
+	.st0-242329adbc97b9901df9eb653284400a{fill:#FFFFFF;}
+	.st1-242329adbc97b9901df9eb653284400a{fill:#22AF5E;}
 </style>
 <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c148 79.164050, 2019/10/01-18:03:16        ">
@@ -83,16 +83,16 @@
 <g>
 	<g>
 		<g>
-			<rect x="9.3" y="9.8" class="st0" width="81.3" height="81.3"/>
+			<rect x="9.3" y="9.8" class="st0-242329adbc97b9901df9eb653284400a" width="81.3" height="81.3"/>
 			<path d="M91.8,93.9H8.2c-0.8,0-1.5-0.7-1.5-1.5V8.7c0-0.8,0.7-1.5,1.5-1.5h83.7c0.8,0,1.5,0.7,1.5,1.5v83.7
 				C93.4,93.2,92.7,93.9,91.8,93.9z M11.9,90H88c0.8,0,1.4-0.6,1.4-1.4V12.4c0-0.8-0.6-1.4-1.4-1.4H11.9c-0.8,0-1.4,0.6-1.4,1.4
 				v76.1C10.5,89.4,11.1,90,11.9,90z"/>
 		</g>
-		<path class="st1" d="M10.5,88.6V12.4c0-0.7,0.6-1.4,1.4-1.4h16v79h-16C11.1,90,10.5,89.4,10.5,88.6z M74.1,54.5
+		<path class="st1-242329adbc97b9901df9eb653284400a" d="M10.5,88.6V12.4c0-0.7,0.6-1.4,1.4-1.4h16v79h-16C11.1,90,10.5,89.4,10.5,88.6z M74.1,54.5
 			c1.4-5.7-2.1-11.5-7.8-13c-5-1.2-10.1,1.2-12.3,5.8c-2.1-1.9-5.4-1.8-7.3,0.4c-0.9,0.9-1.3,2.2-1.3,3.5v0.1
 			c-4.5,0.1-8.1,3.8-8.1,8.3c0.1,4.3,3.4,7.8,7.7,8h29.2c3.6-0.4,6.3-3.6,5.9-7.2C79.8,57.2,77.3,54.7,74.1,54.5z M62.8,24.1h19.7
 			v-7.6H62.8V24.1z"/>
 	</g>
-	<polygon class="st0" points="28.7,24.1 16.9,37.5 28.7,50.8 	"/>
+	<polygon class="st0-242329adbc97b9901df9eb653284400a" points="28.7,24.1 16.9,37.5 28.7,50.8 	"/>
 </g>
 </svg>
