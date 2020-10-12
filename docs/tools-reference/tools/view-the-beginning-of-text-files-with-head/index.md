@@ -6,12 +6,13 @@ description: 'Use the Linux command head to view the beginning of a text file'
 og_description: 'Head is a Unix command line utility for viewing the beginning of text files. This guide shows how to use head and gives practical examples.'
 keywords: ["head", "linux", "utilities", "cli", "text files"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/head/']
+aliases: ['/linux-tools/common-commands/head/']
 modified: 2018-02-02
 modified_by:
   name: Linode
 published: 2010-10-25
 title: View the Beginning of Text Files with head
+tags: ["linux"]
 ---
 
 The `head` command is a core Linux utility used to view the very beginning of a text file. Despite its narrow functionality, `head` is useful in many systems administration and scripting tasks. For similar functionality that address the end of a file, use the [tail](/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/) utility instead.

@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
+tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-20
 modified_by:
@@ -11,12 +12,17 @@ modified_by:
 published: 2015-12-01
 title: LAMP on CentOS 7
 h1_title: How to Install a LAMP Stack on CentOS 7
-aliases: ['websites/lamp/lamp-server-on-centos-7/','websites/lamp/lamp-on-centos-7/', 'web-servers/lamp/lamp-on-centos-7/']
+aliases: ['/web-servers/lamp/lamp-on-centos-7/','/websites/lamp/lamp-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![LAMP on CentOS 7](lamp-on-centos-7-title-graphic.jpg "LAMP on CentOS 7")
@@ -184,7 +190,7 @@ ssh dhcpv6-client
 Rename Apache's default welcome page. When this file is present it will take precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
-    {{</ note >}}
+{{</ note >}}
 
 ## MariaDB
 

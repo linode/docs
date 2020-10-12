@@ -5,8 +5,9 @@ author:
 description: MTR is a network diagnostic tool similar to ping and traceroute. This guide shows how to create and interpret MTR reports on your Linode or home computer.
 og_description: MTR is a network diagnostic tool similar to ping and traceroute. This guide shows how to create and interpret MTR reports on your Linode or home computer.
 keywords: ["mtr", "traceroute", "latency", "loss"]
+tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/mtr/','networking/diagnosing-network-issues-with-mtr/']
+aliases: ['/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/']
 modified: 2018-05-10
 modified_by:
   name: Linode
@@ -20,13 +21,13 @@ external_resources:
 
 ![Diagnosing Network Issues with MTR](diagnosing-network-issues-with-mtr.png)
 
-[MTR](http://www.bitwizard.nl/mtr/) is a powerful tool which enables administrators to diagnose and isolate networking errors and provide reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample, as if augmenting `traceroute` with `ping` output. This document provides an in depth overview of MTR, the data it generates, and how to interpret and draw conclusions based on the data provided by it.
+[MTR](http://www.bitwizard.nl/mtr/) is a powerful tool that enables administrators to diagnose and isolate networking errors and provide reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample as if augmenting `traceroute` with `ping` output. This document provides an in-depth overview of MTR, the data it generates, and how to interpret and draw conclusions based on the data provided by it.
 
 For a basic overview of network diagnostic techniques, see our introduction to [network diagnostics](/docs/tools-reference/linux-system-administration-basics/#network-diagnostics). If you are having general issues with your system, read our overview of general [system diagnostics](/docs/using-linux/administration-basics/#system-diagnostics).
 
 ## Network Diagnostics Background
 
-Networking diagnostic tools including `ping`, `traceroute`, and `mtr` use Internet Control Message Protocol (ICMP) packets to test contention and traffic between two points on the Internet. When a user pings a host on the Internet, a series of ICMP packets are sent to the host, which responds by sending packets in return. The user's client is then able to compute the round trip time between two points on the Internet.
+Networking diagnostic tools including `ping`, `traceroute`, and `mtr` use Internet Control Message Protocol (ICMP) packets to test contention and traffic between two points on the Internet. When a user pings a host on the Internet, a series of ICMP packets are sent to the host which in turn responds by sending reply packets. The user's client is then able to compute the round trip time between two points on the Internet.
 
 In contrast, tools such as traceroute and MTR send ICMP packets with incrementally increasing TTLs in order to view the route or series of hops that the packet makes between the origin and its destination. The TTL, or time to live, controls how many hops a packet will make before "dying" and returning to the host. By sending a series of packets and causing them to return after one hop, then two, then three, MTR is able to assemble the route that traffic takes between hosts on the Internet.
 
@@ -48,7 +49,7 @@ Rather than provide a simple outline of the route that traffic takes across the 
 
 ### Windows
 
-For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](https://sourceforge.net/projects/winmtr/).
+For Windows, there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](https://sourceforge.net/projects/winmtr/).
 
 ### macOS
 
@@ -62,7 +63,7 @@ To install MTR with MacPorts, run:
 
 ## Generate an MTR Report
 
-Because MTR provides an image of the route traffic takes from one host to another, it is essentially a directional tool. The route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream. For this reason it is a good idea to collect MTR reports in both directions for all hosts that are experiencing connectivity issues.
+Because MTR provides an image of the route traffic takes from one host to another, it is essentially a directional tool. The route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream. For this reason, it is a good idea to collect MTR reports in both directions for all hosts that are experiencing connectivity issues.
 
 Linode Customer Support will often request MTR reports both **to** and **from** your Linode if you are experiencing networking issues. This is because, from time to time, MTR reports will not detect errors from one direction when there is still packet loss from the opposite direction.
 
@@ -101,7 +102,7 @@ The `r` option flag generates the report (short for `--report`).
 
 The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).
 
-The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but for faster intervals you may want to set it to 50 or 100. The report can take longer to finish when doing this.
+The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but, for faster intervals, you may want to set it to 50 or 100. The report can take longer to finish when doing this.
 {{< /note >}}
 
 ### Use MTR on Windows Systems
@@ -151,13 +152,13 @@ HOST:  deleuze                       Loss%   Snt   Last  Avg  Best  Wrst   StDev
 
 Beyond simply seeing the path between servers that packets take to reach their host, MTR provides valuable statistics regarding the durability of that connection in the seven columns that follow. The `Loss%` column shows the percentage of packet loss at each hop. The `Snt` column counts the number of packets sent. The `--report` option will send 10 packets unless specified with `--report-cycles=[number-of-packets]`, where `[number-of-packets]` represents the total number of packets that you want to send to the remote host.
 
-The next four columns `Last`, `Avg`, `Best`, and `Wrst` are all measurements of latency in milliseconds (e.g. `ms`). `Last` is the latency of the last packet sent, `Avg` is average latency of all packets, while `Best` and `Wrst` display the best (shortest) and worst (longest) round trip time for a packet to this host. In most cases, the average (`Avg`) column should be the focus of your attention.
+The next four columns `Last`, `Avg`, `Best`, and `Wrst` are all measurements of latency in milliseconds (e.g. `ms`). `Last` is the latency of the last packet sent, `Avg` is the average latency of all packets, while `Best` and `Wrst` display the best (shortest) and worst (longest) round trip time for a packet to this host. In most cases, the average (`Avg`) column should be the focus of your attention.
 
 The final column, `StDev`, provides the standard deviation of the latencies to each host. The higher the standard deviation, the greater the difference is between measurements of latency. Standard deviation allows you to assess if the mean (average) provided represents the true center of the data set, or has been skewed by some sort of phenomena or measurement error. If the standard deviation is high, the latency measurements were inconsistent. After averaging the latencies of the 10 packets sent, the average looks normal but may in fact not represent the data very well. If the standard deviation is high, take a look at the best and worst latency measurements to make sure the average is a good representation of the actual latency and not the result of too much fluctuation.
 
 In most circumstances, you may think of the MTR output in three major sections. Depending on configurations, the first 2 or 3 hops often represent the source host's ISP, while the last 2 or 3 hops represent the destination host's ISP. The hops in between are the routers the packet traverses to reach its destination.
 
-For example, if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to your ISP. The last 3 hops belong to the data center where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine. Unfortunately, in cases where there are problems on the intermediate hops, both service providers will have limited ability to address the issue.
+For example, if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to your ISP. The last 3 hops belong to the data center where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine. Unfortunately, in cases where there are problems at the intermediate hops, both service providers will have limited ability to address the issue.
 
 ## Analyze MTR Reports
 
@@ -195,7 +196,7 @@ HOST: localhost                      Loss%   Snt   Last  Avg  Best  Wrst   StDev
 
 In this case, there is 60% loss between hops 2 and 3 as well as between hops 3 and 4. You can assume that the third and fourth hop is likely losing some amount of traffic because no subsequent host reports zero loss. However, some of the loss is due to rate limiting as several of the final hops are only experiencing 40% loss. When different amounts of loss are reported, always trust the reports from later hops.
 
-Some loss can also be explained by problems in the return route. Packets will reach their destination without error, but have a hard time making the return trip. For this reason it is often best to collect MTR reports in both directions when you're experiencing an issue.
+Some loss can also be explained by problems in the return route. Packets will reach their destination without error but have a hard time making the return trip. For this reason, it is often best to collect MTR reports in both directions when you're experiencing an issue.
 
 Resist the temptation to investigate or report all incidences of packet loss in your connections. The Internet protocols are designed to be resilient to some network degradation, and the routes that data takes across the Internet can fluctuate in response to load, brief maintenance events, and other routing issues. If your MTR report shows small amounts of loss in the neighborhood of 10%, there is no cause for real concern as the application layer will compensate for the loss which is likely transient.
 
@@ -222,7 +223,7 @@ The amount of latency jumps significantly between hops 3 and 4 and remains high.
 
 Unfortunately, high latency does not always mean a problem with the current route. A report like the one above means that despite some sort of issue with the 4th hop, traffic is still reaching the destination host *and* returning to the source host. Latency could be caused by a problem with the return route as well. The return route will not be seen in your MTR report, and packets can take completely different routes to and from a particular destination.
 
-In the above example, while there is a large jump in latency between hosts 3 and 4 the latency does not increase unusually in any subsequent hops. From this it is logical to assume that there is some issue with the 4th router.
+In the above example, while there is a large jump in latency between hosts 3 and 4 the latency does not increase unusually in any subsequent hops. From this, it is logical to assume that there is some issue with the 4th router.
 
 ICMP rate limiting can also create the appearance of latency, similar to the way that it can create the appearance of packet loss:
 
@@ -239,15 +240,15 @@ HOST:  localhost                     Loss%   Snt   Last  Avg  Best  Wrst   StDev
     8. gw-in-f147.1e100.net          0.0%    10   39.6  40.5  39.5  46.7   2.2
 {{</ output >}}
 
-At first glance, the latency between hops 4 and 5 draws attention. However after the fifth hop, the latency drops drastically. The actual latency measured here is about 40ms. In cases like this, MTR draws attention to an issue which does not affect the service. Consider the latency to the final hop when evaluating an MTR report.
+At first glance, the latency between hops 4 and 5 draws attention. However, after the fifth hop, the latency drops drastically. The actual latency measured here is about 40ms. In cases like this, MTR draws attention to an issue that does not affect the service. Consider the latency to the final hop when evaluating an MTR report.
 
 ## Common MTR Reports
 
-Some networking issues are novel and require escalation to the operators of the upstream networks. However, there are a selection of common MTR reports that describe common networking issues. If you're experiencing some sort of networking issue and want to diagnose your problem, consider the following examples.
+Some networking issues are novel and require escalation to the operators of the upstream networks. However, there are a number of common MTR reports that describe common networking issues. If you're experiencing some sort of networking issue and want to diagnose your problem, consider the following examples.
 
 ### Destination Host Networking Improperly Configured
 
-In the next example, it appears that there is 100% loss to the destination host because of an incorrectly configured router. At first glance it appears that the packets are not reaching the host but this is not the case.
+In the next example, it appears that there is 100% loss to the destination host because of an incorrectly configured router. At first glance, it appears that the packets are not reaching the host but this is not the case.
 
 {{< output >}}
 root@localhost:~# mtr --report www.google.com

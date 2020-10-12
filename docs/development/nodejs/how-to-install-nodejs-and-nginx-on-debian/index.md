@@ -5,14 +5,15 @@ author:
 description: 'How to install NGINX for static content and Node.js for dynamic requests.'
 og_description: 'How to install NGINX for static content and Node.js for dynamic requests.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", " debian", " front-end requests", " back-end requests"]
+tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/']
+aliases: ['/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/']
 modified: 2017-04-11
 modified_by:
     name: Linode
 published: 2015-01-14
 title: 'How to Install Node.js and NGINX on Debian'
-aliases: ['websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/','websites/nodejs/nodejs-nginx-debian/','websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/']
+aliases: ['/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/','/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/','/websites/nodejs/nodejs-nginx-debian/']
 deprecated: true
 deprecated_link: 'development/nodejs/how-to-install-nodejs-and-nginx-on-debian-10/'
 external_resources:
@@ -24,6 +25,11 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
+relations:
+    platform:
+        key: install-nodejs-nginx
+        keywords:
+            - distribution: Debian 8
 ---
 
 ![Install Node.js and NGINX on Debian](How_to_Install_Nodejs_and_Nginx_on_Debian_smg.jpg)

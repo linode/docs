@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 13.'
 keywords: ["apache tomcat fedora 13", "java", "java fedora 13", "java servlets fedora 13", "java fedora"]
+tags: ["web applications","java","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/apache-tomcat-on-fedora-13/','websites/frameworks/apache-tomcat-on-fedora-13/','frameworks/apache-tomcat/fedora-13/']
+aliases: ['/websites/frameworks/apache-tomcat-on-fedora-13/','/frameworks/apache-tomcat/fedora-13/','/development/frameworks/apache-tomcat-on-fedora-13/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-07-23
 title: Apache Tomcat on Fedora 13
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

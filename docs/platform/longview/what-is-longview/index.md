@@ -5,7 +5,7 @@ author:
 description: 'This guide shows how to install and use Linode Longview. Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems.'
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/longview/longview/','longview/', 'uptime/longview/']
+aliases: ['/uptime/longview/','/platform/longview/longview/','/longview/']
 published: 2019-12-09
 modified_by:
   name: Linode
@@ -13,16 +13,13 @@ title: "What is Linode Longview"
 h1_title: "Understanding Linode Longview"
 contributor:
   name: Linode
+tags: ["linode platform","cloud manager","statistics","monitoring"]
 ---
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
 
 Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems.
 
 The Longview client is [open source](https://github.com/linode/longview) and provides an agent that can be installed on any Linux distribution–including systems not hosted by Linode. However, Linode only offers technical support for **CentOS**, **Debian**, and **Ubuntu**.
-
-{{< note >}}
-Longview does not currently support CentOS 8.
-{{</ note >}}
 
 ## In this Guide:
 
@@ -82,7 +79,7 @@ Ensure you replace the example `curl` command below with your own Longview Clien
 
     You should see a similar output:
 
-    > **Centos**:
+    > **CentOS**:
     >
        {{< output >}}
     ● longview.service - SYSV: Longview statistics gathering

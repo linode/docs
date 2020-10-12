@@ -5,13 +5,14 @@ author:
 description: 'Use our guide to filter system output with the grep command.'
 og_description: 'Use the grep command to filter output from administrative commands, so you get only relevant data. This guide shows you how.'
 keywords: ["linux", "how to", "grep", "filter"]
-aliases: ['quick-answers/how-to-use-grep/']
+aliases: ['/quick-answers/how-to-use-grep/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-27
 modified_by:
   name: Phil Zona
 published: 2017-04-10
 title: How to Use the Grep Command
+tags: ["linux"]
 ---
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/pz2xgdch29?videoFoam=true" title="Linode - How to use the grep command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>

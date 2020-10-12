@@ -6,7 +6,7 @@ description: 'This guide shows how to install and configure the MariaDB server o
 og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
 keywords: ["mariadb", "Debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mariadb/mariadb-setup-debian/']
+aliases: ['/databases/mariadb/mariadb-setup-debian/']
 modified: 2020-01-31
 contributor:
     name: Ryan Syracuse
@@ -20,6 +20,12 @@ external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
+relations:
+    platform:
+        key: how-to-install-mariadb
+        keywords:
+            - distribution: Debian 9
+tags: ["debian","mariadb","database"]
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.

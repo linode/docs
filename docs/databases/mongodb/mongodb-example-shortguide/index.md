@@ -12,6 +12,7 @@ title: MongoDB Example
 keywords: []
 headless: true
 show_on_rss_feed: false
+tags: ["database"]
 ---
 
 Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](https://docs.mongodb.com/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.

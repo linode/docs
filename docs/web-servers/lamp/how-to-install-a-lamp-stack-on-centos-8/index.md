@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install a LAMP stack on a CentOS 8 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["LAMP", "CentOS", "CentOS 8", "apache", "mysql", "php", "centos lamp"]
+tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-19
 modified_by:
@@ -17,6 +18,11 @@ external_resources:
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: CentOS 8
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 8 Linode.
@@ -30,7 +36,9 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
         hostname
         hostname -f
 
-2.  Update your system:
+    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+
+1.  Update your system:
 
         sudo yum update
 
@@ -161,7 +169,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl restart httpd.service
 
 {{< note >}}
-In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
+In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
 {{</ note >}}
 
 ### Configure FirewallD to Allow HTTP and HTTPS Connections

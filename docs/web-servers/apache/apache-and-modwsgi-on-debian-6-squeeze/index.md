@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi.'
 keywords: ["python", "apache", "mod\\_wsgi"]
+tags: ["web server","apache","debian","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/mod-wsgi/debian-6-squeeze/','websites/apache/apache-and-modwsgi-on-debian-6-squeeze/']
+aliases: ['/websites/apache/apache-and-modwsgi-on-debian-6-squeeze/','/web-servers/apache/mod-wsgi/debian-6-squeeze/']
 modified: 2012-01-26
 modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Apache and mod_wsgi on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: apache-mod-wsgi
+        keywords:
+            - distribution: Debian 6
 ---
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.

@@ -14,6 +14,7 @@ contributor:
   name: Linode
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 {{< note >}}

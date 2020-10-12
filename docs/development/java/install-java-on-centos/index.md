@@ -4,8 +4,9 @@ author:
   email: aguarisma@linode.com
 description: This tutorial shows how to install Java on CentOS 7.
 keywords: ["CentOS", "install Java", "CENTOS", "Java JRE", "Java JDK"]
+tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/install-java-on-centos/','development/installing-java-on-centos/']
+aliases: ['/development/install-java-on-centos/','/development/installing-java-on-centos/']
 modified: 2017-06-01
 modified_by:
   name: Angel Guarisma
@@ -15,6 +16,11 @@ external_resources:
 - '[Fedora Wiki Java Entry](https://fedoraproject.org/wiki/Java)'
 audiences: ["beginner"]
 languages: ["java"]
+relations:
+    platform:
+        key: install-java
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![Install Java on CentOS 7](install-java-on-centos-7-title-graphic.jpg "Install Java on CentOS 7")

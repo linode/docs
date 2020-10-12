@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 9.10 (Karmic).'
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 9.10", "nginx fastcgi", "nginx perl"]
+tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/']
+aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/','/web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic/']
 modified: 2011-05-17
 modified_by:
   name: Linode
 published: 2009-12-16
 title: 'Nginx and Perl-FastCGI on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

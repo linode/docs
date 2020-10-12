@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on Ubuntu 12.04'
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
+tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/ruby-on-rails-nginx/ubuntu-12-04-precise/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/index.cfm/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/']
+aliases: ['/frameworks/ruby-on-rails-nginx/ubuntu-12-04-precise/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/index.cfm/']
 modified: 2014-02-11
 modified_by:
   name: Alex Fornuto
@@ -18,6 +19,11 @@ external_resources:
  - '[Nginx Home Page](http://nginx.org/)'
  - '[Nginx Documentation](http://nginx.org/en/docs/)'
  - '[Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with [Phusion Passenger](https://www.phusionpassenger.com/) and the [Nginx](https://www.nginx.com/) web server on Debian 8.

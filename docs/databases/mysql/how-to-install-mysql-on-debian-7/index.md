@@ -5,7 +5,7 @@ author:
 description: 'Getting started with MySQL on Debian 7.'
 keywords: ["MySQL on Linux", "Debian 7", "Debian Wheezy", "Debian", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/debian-7-wheezy/','databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
+aliases: ['/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/','/databases/mysql/debian-7-wheezy/']
 modified: 2017-09-05
 modified_by:
   name: Linode
@@ -17,13 +17,19 @@ external_resources:
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance/)'
+relations:
+    platform:
+        key: how-to-install-mysql
+        keywords:
+            - distribution: Debian 7
+tags: ["debian","database","mysql"]
 ---
 
 ![How to Install MySQL on Debian 7](How_to_Install_MySQL_on_Debian_7_smg.jpg)
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Debian 7 (Wheezy).
 
-Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory) for such setups.
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) for such setups.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.

@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Install and configure a structured wiki with TWiki.'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
+tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/twiki/ubuntu-10-04-lucid/']
+aliases: ['/web-applications/wikis/twiki/ubuntu-10-04-lucid/']
 modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2011-02-15
 title: 'TWiki on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: install-twiki
+        keywords:
+           - distribution: Ubuntu 10.04
 ---
 
 

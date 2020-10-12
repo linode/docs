@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 9.04 (Jaunty).'
 keywords: ["ejabberd", "ejabberd ubuntu jaunty", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/ejabberd/ubuntu-9-04-jaunty/']
+aliases: ['/communications/xmpp/ejabberd/ubuntu-9-04-jaunty/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-10-13
 title: 'Instant Messaging Services with ejabberd on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key: how-to-install-ejabberd
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 
@@ -131,7 +137,7 @@ Additionally, you may want to enable SSL access for client-to-server (c2s) SSL/T
 
 The `ejabberd.cfg` file is complete and well commented, and from this point forward your server should run. However, you should take the time to become familiar with the options provided in this file.
 
-By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" sub-domain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (eg. subdomain) to the IP address where the ejabberd instance is running.
+By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" sub-domain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (e.g. subdomain) to the IP address where the ejabberd instance is running.
 
 # Using Ejabberd
 

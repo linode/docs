@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/ubuntu-10-10-maverick/','websites/lemp/lemp-server-on-ubuntu-10-10-maverick/']
+aliases: ['/lemp-guides/ubuntu-10-10-maverick/','/websites/lemp/lemp-server-on-ubuntu-10-10-maverick/']
 modified: 2012-10-03
 modified_by:
   name: Linode
 published: 2010-11-22
 title: 'LEMP Server on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

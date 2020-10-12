@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: An overview of different troubleshooting topics.
 keywords: ['troubleshooting']
+tags: ["linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['quick-start-troubleshooting/']
+aliases: ['/quick-start-troubleshooting/']
 modified: 2019-02-01
 modified_by:
   name: Linode
@@ -102,17 +103,6 @@ The applications on your Linode require a certain amount of physical memory to f
 1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
 1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
 
-    {{< disclosure-note "Steps for the Linode Classic Manager" >}}
-  If you are using the Linode Classic Manager, you can follow these steps:
-
-  1.  Log in to the [Linode Classic Manager](https://manager.linode.com).
-  1.  Click the **Linode** tab. A list of your Linodes appears.
-  1.  Select a Linode. The Linode's dashboard appears.
-  1.  Select the **Launch Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
-  1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
-  1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
-    {{</ disclosure-note >}}
-
 If your Linode is not out of memory, continue to the next section.
 
 ### Is there a Disk I/O Bottleneck?
@@ -194,14 +184,3 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
     [![Disk storage allocation](disk-storage-allocation.png)](disk-storage-allocation.png)
 
     Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.
-
-    {{< disclosure-note "Steps for the Linode Classic Manager" >}}
-  If you are using the Linode Classic Manager, you can follow these steps:
-
-  1.  Log in to the [Linode Manager](https://manager.linode.com).
-  1.  Click the **Linode** tab. A list of your Linodes appears.
-  1.  Select a Linode. The Linode's dashboard appears.
-  1.  Examine the *Storage* pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disks.
-
-      [![Resize disks.](944-troubleshooting4-1.png)](944-troubleshooting4-1.png)
-    {{</ disclosure-note >}}

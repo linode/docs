@@ -4,12 +4,18 @@ author:
   email: docs@linode.com
 description: 'Our guide to upgrading to Ubuntu 18.04 LTS (Bionic Beaver)'
 keywords: ["upgrading", "ubuntu", "18.04","bionic beaver"]
+tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-04-27
 modified_by:
   name: Edward Angert
 published: 2018-04-27
 title: 'How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ![Upgrade to Ubuntu 18.04](upgrade-ubuntu-18-title.jpg)

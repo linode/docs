@@ -4,6 +4,7 @@ author:
     email: scottinthebooth@gmail.com
 description: 'Access Google Drive from your Linode with Ubuntu 14.04 using OCamlfuse to connect directly with the Google Drive API.'
 keywords: ["google", "drive", "console", "fuse", "apt", "ubuntu"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-28
 modified: 2016-03-17

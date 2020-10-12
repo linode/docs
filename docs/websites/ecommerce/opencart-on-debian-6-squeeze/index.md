@@ -6,12 +6,17 @@ author:
 description: 'Set up and manage an online storefront with OpenCart.'
 keywords: ["opencart", "ecommerce", "commerce", "store", "debian", "squeeze"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/e-commerce/opencart/debian-6/']
+aliases: ['/web-applications/e-commerce/opencart/debian-6/']
 modified: 2011-09-20
 modified_by:
   name: Linode
 published: 2011-09-16
 title: 'OpenCart on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: how-to-install-opencart
+        keywords:
+           - distribution: Debian 6
 ---
 
 OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/web-servers/lamp/) on your Linode. You should have also [set the hostname](/docs/getting-started/#setting-the-hostname).

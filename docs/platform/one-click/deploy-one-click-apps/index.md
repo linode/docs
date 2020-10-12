@@ -14,6 +14,7 @@ contributor:
   name: Linode
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform","one-click","cloud-manager"]
 ---
 
 <!-- Use title convention: Deploy a X One-Click App. -->
@@ -28,6 +29,6 @@ Linode's One-Click App Marketplace allow you to easily deploy software on a Lino
 
 1. Under the **Select App** section, select the app you would like to deploy:
 
-    {{< image src="one-click-apps-create.png" alt="Select a One-Click App to deploy" title="Select a One-Click App to deploy" >}}
+    {{< image src="marketplace-create-one-click.png" alt="Select a One-Click App to deploy" title="Select a One-Click App to deploy" >}}
 
 1. Once you have selected the app, proceed to the app's **Options** section and provide values for the required fields.

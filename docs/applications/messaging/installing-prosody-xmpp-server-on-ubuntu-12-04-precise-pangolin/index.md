@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 12.04 (Lucid).'
 keywords: ["prosody", "prosody ubuntu", "prosody.im", "xmpp", "real time messaging", "lua"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/']
+aliases: ['/communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-03
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
  - '[Prosody Configuration Overview](http://prosody.im/doc/configure#overview)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
  - '[XMPP Client Software](http://xmpp.org/software/clients.shtml)'
+relations:
+    platform:
+        key: how-to-install-prosody
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [Ejabberd](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin) or [OpenFire](/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin) may be better suited for larger applications, but for most independent and small-scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.

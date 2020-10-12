@@ -16,6 +16,7 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
+tags: ["python"]
 ---
 
 ## Strings in Python

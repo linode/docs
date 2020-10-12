@@ -6,12 +6,13 @@ description: 'NGINX is a high-performance web server that delivers large amounts
 og_description: 'NGINX is a high-performance web server that delivers large amounts of static content quickly. This tutorial will outline the basic NGINX parameters and conventions.'
 keywords: ["nginx", "web server", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/','websites/nginx/how-to-configure-nginx/index.cfm/','websites/nginx/how-to-configure-nginx/']
+aliases: ['/web-servers/nginx/configuration/basic/','/websites/nginx/basic-nginx-configuration/index.cfm/','/websites/nginx/how-to-configure-nginx/','/websites/nginx/basic-nginx-configuration/','/websites/nginx/how-to-configure-nginx/index.cfm/']
 modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2010-01-18
 title: How to Configure NGINX
+tags: ["web server","nginx"]
 ---
 
 ![Introduction to NGINX](how_to_configure_nginx.png "Introduction to NGINX")

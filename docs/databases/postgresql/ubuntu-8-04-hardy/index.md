@@ -11,6 +11,12 @@ modified_by:
   name: Linode
 published: 2009-09-13
 title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 8.04
+tags: ["ubuntu","database","postgresql"]
 ---
 
 
@@ -106,17 +112,17 @@ Change it to the following to use password authentication:
 
     local   all   all   md5
 
-To grant all privileges on the table "employees" to a user named "alison", issue the following commands:
+To grant all privileges on the table `employees` to a user named `alison`, issue the following commands:
 
     psql mytestdb
 
     GRANT ALL ON employees TO alison;
 
-To use the database "mytestdb" as "alison", issue the following command:
+To use the database `mytestdb` as `alison`, issue the following command:
 
     psql -U alison -W mytestdb
 
-You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
+You will be prompted to enter the password for the `alison` user and given `psql` shell access to the database.
 
 # More Information
 

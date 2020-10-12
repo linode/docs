@@ -12,6 +12,7 @@ h1_title: "Understanding the Cloud Manager Events and Activity Feeds"
 published: 2019-12-26
 modified_by:
   name: Linode
+tags: ["linode platform","cloud manager"]
 ---
 
 Tasks performed using the Linode Cloud Manager or other account specific tools like Linode's [CLI](https://www.linode.com/docs/platform/api/linode-cli/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode's activity feed, or on your account's [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.

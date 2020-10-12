@@ -17,6 +17,7 @@ modified_by:
   name: Linode
 title: 'Monitor an NGINX Web Server Using the Elastic Stack on Centos 7'
 dedicated_cpu_link: true
+tags: ["analytics","database","centos","monitoring"]
 ---
 ![Monitor NGINX Logs with Elastic](Monitor_NGINX_Elastic.jpg)
 

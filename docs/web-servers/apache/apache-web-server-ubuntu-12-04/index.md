@@ -4,10 +4,11 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install Apache on your Ubuntu 12.04 Server, configure virtual hosting, and set up module and scripting support.'
-keywords: ["apache", "ubuntu", "ubuntu 12.04", "precise", "pengolin", "apache web server", "web server", ""]
+keywords: ["apache", "ubuntu", "ubuntu 12.04", "precise", "pengolin", "apache web server", "web server"]
+tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-07-15
-aliases: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/apache-web-server-ubuntu-12-04/']
+aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','/websites/apache/apache-web-server-ubuntu-12-04/','/websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
 modified_by:
   name: Linode
 published: 2012-10-10
@@ -15,6 +16,11 @@ title: 'Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.

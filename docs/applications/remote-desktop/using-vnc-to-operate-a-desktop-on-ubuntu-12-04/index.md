@@ -5,8 +5,9 @@ author:
   email: afornuto@linode.com
 description: How to install and connect to a desktop environment on your Linode
 keywords: ["vnc", "remote desktop", "ubuntu", "12.04"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['remote-desktops/vnc-desktop-ubuntu-12-04/']
+aliases: ['/remote-desktops/vnc-desktop-ubuntu-12-04/']
 modified: 2014-08-21
 modified_by:
   name: James Stewart
@@ -15,6 +16,11 @@ title: 'Using VNC to Operate a Desktop on Ubuntu 12.04'
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'
+relations:
+    platform:
+        key: install-vnc
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 ![Using VNC to Operate a Desktop on Ubuntu 12.04](using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")

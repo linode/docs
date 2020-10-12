@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
+tags: ["web server","python","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/python-uwsgi/debian-5-lenny/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/']
+aliases: ['/web-servers/nginx/python-uwsgi/debian-5-lenny/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-11-08
 title: 'WSGI using uWSGI and nginx on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Debian 5
 ---
 
 

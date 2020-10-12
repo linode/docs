@@ -5,6 +5,7 @@ author:
 description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
 og_description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
 keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
+tags: ["web server", "nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-12-11
 modified_by:

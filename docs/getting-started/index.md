@@ -6,7 +6,7 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['getting-started-new-manager/','getting-started-classic-manager/']
+aliases: ['/getting-started-classic-manager/','/getting-started-new-manager/']
 modified: 2019-03-08
 modified_by:
   name: Linode
@@ -63,11 +63,7 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
 1.  Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories:
-
-    - lowercase and uppercase case letters
-    - numbers
-    - punctuation characters
+1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
 
 1.  Click **Create**. You will be directed back to the *Linodes* page which will report the status of your Linode as it boots up. You can now use the Cloud Manager to:
 

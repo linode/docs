@@ -3,16 +3,17 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Decide which Linode plan is right for you.'
-keywords: ["choose", "help", "plan", "size", "nanode", "standard", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
+keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-06-20
 modified_by:
     name: Linode
 published: 2019-02-04
 title: How to Choose a Linode Plan
+tags: ["linode platform"]
 ---
 
-Linode offers five instance types: **Nanode**, **Standard**, **High Memory**, **Dedicated CPU**, and **GPU Instances**. For the Standard, High Memory, Dedicated CPU, and GPU Instance types, there are several hardware resource tiers, or plans, that you can choose from.
+Linode offers four instance types: **Shared**, **High Memory**, **Dedicated CPU**, and **GPU Instances**. For all Linode Instance types, there are several hardware resource tiers, or plans, that you can choose from.
 
 When selecting a plan, it is important to understand the hardware resources allocated to your instance, like CPU, transfer, storage, and RAM. An understanding of your project's own needs and requirements is also useful. This guide provides an overview of all Linode instance types and plans, their corresponding use cases, and how to choose which one is right for you.
 
@@ -33,28 +34,32 @@ Start by reviewing what each resource means for your application. If you're conf
 | Network In | The maximum bandwidth for inbound traffic sent to your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center/) guide. |
 | Network Out | The maximum bandwidth for outbound traffic emitted by your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center/) guide.
 | GPU | GPU's, or Graphical Processing Units are specialized hardware units only available on our GPU instances. Originally designed to manipulate computer graphics and handle image processing, GPUs are now commonly also used for many compute intensive tasks that require thousands of simultaneous threads and the higher number of logical cores that a CPU can not provide alone.
+
 ## General Principles when Choosing a Plan
 
-The different Linode instance types represent different balances of the above resources. Nanode and Standard instances offer a general-purpose array of resources, High Memory instances favor higher memory allocations, Dedicated CPU instances reserve physical CPU cores for you, and GPU instances give you access to both dedicated CPU cores and are the only plan type that gives you access to a GPU.
+The different Linode instance types represent different balances of the above resources. Shared instances offer a general-purpose array of resources, High Memory instances favor higher memory allocations, Dedicated CPU instances reserve physical CPU cores for you, and GPU instances give you access to both dedicated CPU cores and are the only plan type that gives you access to a GPU.
 
 At the same time, different kinds of applications have different resource requirements. Some applications may need to store a lot of data but require less processing power, some may need more memory than CPU, and some may be especially CPU-intensive. As a result, certain instance types can better serve certain applications. When creating your instances, consider what resources your application needs and then compare it with the resources specified by each of the instance types. The following sections include common use cases for each type, and one of these may resemble your needs.
 
-Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. For more information, see [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/). You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU,    GPU, memory, and network usage of your application to determine if you need more of those resources.
+Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. For more information, see [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/). You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU, GPU, memory, and network usage of your application to determine if you need more of those resources.
 
-## 1. Nanode
+## 1. Shared
 
-The Nanode instance is a great place to begin if you are new to the world of cloud hosting and are unsure of your requirements. The Nanode offers the essentials and costs $5/month. With this instance you have a fully functioning server with your preferred Linux distribution.
+{{< content "about-shared-shortguide" >}}
 
 ### Use Cases
 
-- Personal projects
-- Portfolio [websites](/docs/websites/)
-- Small self-hosted services
-- Small [code repositories](/docs/development/version-control/)
+- [Websites](/docs/websites/) and web applications
+- [Code repositories](/docs/development/version-control/)
+- [Game servers](/docs/game-servers/)
+- [Database servers](/docs/databases/)
+- [Code repositories](/docs/development/version-control/)
 - [Virtual private networks](/docs/networking/vpn/) (VPNs)
-- Prototypes and proof-of-concept demonstrations
+- [Container](/docs/applications/containers/) clusters
+- Application and database clusters
+- Content delivery network (CDN) nodes
 
-### Resource Specifications
+### Base Plan
 
 | Resource | Value |
 | -------- | ----- |
@@ -65,37 +70,11 @@ The Nanode instance is a great place to begin if you are new to the world of clo
 | Network In | 40 Gbps |
 | Network Out | 1000 Mbps |
 
-## 2. Standard
+To view a full list of the Shared instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
-Standard instances start with 2GB of RAM and 1 vCPU and can go all the way up to 192GB of RAM with 32 vCPUs. These instances offer a balanced array of resources and can support a wide range of modern cloud applications, from personal projects to production deployments of an enterprise application.
+## 2. High Memory
 
-### Use Cases
-
-- Web applications and [websites](/docs/websites/)
-- [Game servers](/docs/game-servers/)
-- [Database servers](/docs/databases/)
-- [Code repositories](/docs/development/version-control/)
-- Corporate [VPNs](/docs/networking/vpn/)
-- [Container](/docs/applications/containers/) clusters
-- Application and database clusters
-- Content delivery network (CDN) nodes
-
-### Base Plan
-
-| Resource | Value |
-| -------- | ----- |
-| RAM | 2GB |
-| CPU | 1 vCPU |
-| Storage | 50 GB SSD Storage |
-| Transfer | 2 TB |
-| Network In | 40 Gbps |
-| Network Out | 2000 Mbps |
-
-To view a full list of the Standard instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
-
-## 3. High Memory
-
-High Memory instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications.
+{{< content "about-highmem-shortguide" >}}
 
 ### Use Cases
 
@@ -116,11 +95,9 @@ The kinds of data you might store in one of these applications includes: informa
 
 To view a full list of the High Memory instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
-## 4. Dedicated CPU
+## 3. Dedicated CPU
 
-Dedicated CPU instances offer entire dedicated CPU cores for your own Linode's use. No other instances can run processes on the same cores that you're using, which means that your software can run at peak speed and efficiency.
-
-Under the Nanode, Standard, and High Memory instances, your processes are scheduled on the same CPU cores as the processes from other servers. This shared scheduling is done in a secure and performant manner, and Linode works to minimize competition for CPU resources between your server and other servers, but the Dedicated CPU instances provide an environment with zero competition. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations.
+{{< content "about-dedicated-shortguide" >}}
 
 ### Dedicated CPUs and the Linode API
 
@@ -150,9 +127,9 @@ Furthermore, some CPU-intensive tasks may be triggered from other events in your
 
 To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
-## 5. GPU Instances
+## 4. GPU Instances
 
-GPU instances are the only plan that give you access to [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) with Tensor, ray tracing (RT), and CUDA cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
+{{< content "about-gpu-shortguide" >}}
 
 ### Use Cases
 
@@ -175,3 +152,11 @@ GPU instances are the only plan that give you access to [NVIDIA Quadro RTX 6000 
 | Network Out | 100000 Mbps |
 
 To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
+
+## Pricing
+
+Think about pricing when considering which Linode plan is right for you. You can view all the pricing at [Linode Pricing](https://www.linode.com/pricing/).
+
+You can also compare cost per month and save with Linode's predictable and transparent pricing with our [Cloud Estimator](https://www.linode.com/estimator/). Explore bundled compute, storage, and transfer packages against AWS, GCP, and Azure.
+
+Migrating from on-premise or between cloud providers for hosting, cloud storage, or cloud computing? Use our [Total Cost of Ownership (TCO) cloud pricing calculator](https://www.linode.com/cloud-pricing-calculator/) to receive a full cost breakdown and technical recommendations.

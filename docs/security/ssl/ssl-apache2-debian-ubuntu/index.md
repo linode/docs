@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache web server.'
 keywords: ["apache SSL", "ssl on debian", "web server", "debian", "apache", "ssl", "ubuntu", "ssl on ubuntu"]
+tags: ["ubuntu","debian","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/ssl/ssl-certificates-with-apache-2-on-ubuntu/']
+aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-ubuntu/']
 modified: 2016-08-24
 modified_by:
   name: Nick Brewer
@@ -13,6 +14,11 @@ published: 2014-11-19
 title: 'SSL Certificates with Apache on Debian & Ubuntu'
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.4/)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: Debian/Ubuntu
 ---
 
 This guide will show you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.

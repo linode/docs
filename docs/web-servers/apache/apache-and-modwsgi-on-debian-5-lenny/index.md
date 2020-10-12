@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi'
 keywords: ["python", "apache", "mod\\_wsgi"]
+tags: ["web server","apache","debian","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/mod-wsgi/debian-5-lenny/','websites/apache/apache-and-modwsgi-on-debian-5-lenny/']
+aliases: ['/websites/apache/apache-and-modwsgi-on-debian-5-lenny/','/web-servers/apache/mod-wsgi/debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2011-02-17
 title: 'Apache and mod_wsgi on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: apache-mod-wsgi
+        keywords:
+            - distribution: Debian 5
 ---
 
 

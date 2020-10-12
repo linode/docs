@@ -5,6 +5,7 @@ author:
 published: 2017-06-16
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
 keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Andrew Miller
@@ -13,6 +14,11 @@ title: Install and Configure NixOS on a Linode
 external_resources:
  - '[NixOS](https://nixos.org/nixos/manual/)'
  - '[Nixpkgs](https://nixos.org/nixpkgs/manual/)'
+relations:
+    platform:
+        key: how-to-install-linux
+        keywords:
+            - distribution: NixOS
 ---
 
 ![How to Install NixOS on Linode](nixos-title.png "How to Install NixOS on Linode")
@@ -296,4 +302,4 @@ services.longview = {
         export longview_key="01234567-89AB-CDEF-0123456789ABCDEF" # This is an example, fill with your own key
         echo $longview_key > /var/lib/longview/apiKeyFile | sudo tee /var/lib/longview/apiKeyFile
 
-    Replace the value of `longview_key` above with with the one you got from [Longview](https://manager.linode.com/longview/add).
+    Replace the value of `longview_key` above with with the one you got from [Longview](https://cloud.linode.com/longview/clients).

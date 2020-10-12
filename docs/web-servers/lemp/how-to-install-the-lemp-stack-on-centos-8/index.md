@@ -5,6 +5,7 @@ author:
 description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on CentOS.'
 og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on CentOS.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "centos"]
+tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
 modified_by:
@@ -12,6 +13,12 @@ modified_by:
 published: 2018-06-04
 title: 'How to Install the LEMP Stack on CentOS 8'
 h1_title: 'Installing the LEMP Stack on CentOS 8'
+image: How-to-Install-LEMP-Stack-on-CentOS-8_1200x631.png
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: CentOS 8
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
@@ -23,7 +30,10 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 ## Before You Begin
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
-2.  Update your system:
+
+    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+
+1.  Update your system:
 
         sudo dnf update
 
@@ -190,7 +200,7 @@ cockpit dhcpv6-client ssh
         sudo firewall-cmd --zone=public --add-service=https --permanent
         sudo firewall-cmd --reload
 
-{{< note >}}In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.{{< /note >}}
+{{< note >}}In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.{{< /note >}}
 
 ## Test the LEMP Stack
 

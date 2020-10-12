@@ -5,14 +5,20 @@ author:
   email: docs@linode.com
 description: 'Install Asterisk and FreePBX on your Linode to use and manage a telephone exchange.'
 keywords: ["asterisk ubuntu 9.10", "asterisk", "asterisk linux", "freepbx", "freepbx ubuntu", "pbx", "voip"]
+tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/voip-services-ubuntu9-10/']
+aliases: ['/communications/voip-services-ubuntu9-10/']
 modified: 2013-08-02
 modified_by:
   name: Linode
 published: 2010-04-23
 title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: asterisk-freepbx-telephone
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.
@@ -289,7 +295,7 @@ To update your Apache configuration, you will need to restart the server. Issue 
 
     /etc/init.d/apache2 restart
 
-You will also need to edit your `nano /etc/rc.local` file to enable some features of FreePBX on boot. You will need to add the "perl /var/www/html/panel/op\_server.pl -d" line to this file. **Please note:** You need to add this line before any lines that way "exit", as follows:
+You will also need to edit your `nano /etc/rc.local` file to enable some features of FreePBX on boot. You will need to add the `perl /var/www/html/panel/op\_server.pl -d` line to this file. **Please note:** You need to add this line before any lines that way "exit", as follows:
 
 {{< file "/etc/rc.local" bash >}}
 # [..]

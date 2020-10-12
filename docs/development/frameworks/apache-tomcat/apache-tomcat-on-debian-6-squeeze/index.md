@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Squeeze.)'
 keywords: ["java", "apache tomcat", "java debian", "java lenny"]
+tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/apache-tomcat/debian-6-squeeze/','websites/frameworks/apache-tomcat-on-debian-6-squeeze/','development/frameworks/apache-tomcat-on-debian-6-squeeze/']
+aliases: ['/websites/frameworks/apache-tomcat-on-debian-6-squeeze/','/development/frameworks/apache-tomcat-on-debian-6-squeeze/','/frameworks/apache-tomcat/debian-6-squeeze/']
 modified: 2011-05-13
 modified_by:
   name: Linode
 published: 2011-02-17
 title: 'Apache Tomcat on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Debian 6
 ---
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.

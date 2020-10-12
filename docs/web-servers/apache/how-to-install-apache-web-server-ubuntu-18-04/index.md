@@ -5,6 +5,7 @@ author:
 description: 'Install Apache on your Ubuntu 18.04 LTS server, configure virtual hosting, and set up modules and scripting.'
 og_description: 'Install Apache on your Ubuntu 18.04 LTS server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "ubuntu", "ubuntu 18.04", "http", "web server"]
+tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-31
 modified_by:
@@ -15,6 +16,12 @@ h1_title: 'Installing Apache Web Server on Ubuntu 18.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+image: 'How_to_Install_Apache_Web_Server_on_Ubuntu_1804_LTS_1200x631.png'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 18.04 LTS.

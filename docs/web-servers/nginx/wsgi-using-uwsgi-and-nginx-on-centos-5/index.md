@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
+tags: ["centos","web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/python-uwsgi/centos-5/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/']
+aliases: ['/web-servers/nginx/python-uwsgi/centos-5/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/']
 modified: 2011-05-09
 modified_by:
   name: Linode
 published: 2010-11-10
 title: WSGI using uWSGI and nginx on CentOS 5
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: CentOS 5
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.

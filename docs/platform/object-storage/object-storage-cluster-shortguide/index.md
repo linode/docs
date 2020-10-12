@@ -12,8 +12,9 @@ title: Object Storage Cluster Definiton
 keywords: []
 headless: true
 show_on_rss_feed: false
+tags: ["linode platform"]
 ---
 
 {{< note >}}
-A *cluster* is defined as all buckets hosted by a unique URL; for example: `us-east-1.linodeobjects.com`, `us-east-2.linodeobjects.com`, or `eu-central-1.linodeobjects.com`.
+A *cluster* is defined as all buckets hosted by a unique URL; for example: `us-east-1.linodeobjects.com`, `ap-south-1.linodeobjects.com`, or `eu-central-1.linodeobjects.com`.
 {{</ note >}}

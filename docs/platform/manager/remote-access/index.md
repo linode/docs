@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: Our guide to the remote access area of the Linode Manager.
 keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access", "add additional ipv4 address", "add ip address", "add additional ip address"]
+tags: ["linode platform","resolving","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['remote-access/','networking/remote-access/','platform/manager/remote-access-classic-manager/']
+aliases: ['/networking/remote-access/','/platform/manager/remote-access-classic-manager/','/remote-access/']
 modified: 2019-03-05
 modified_by:
   name: Phil Zona
@@ -93,6 +94,10 @@ This feature is not yet supported in the Toronto, Sydney, or Mumbai data centers
 8.  Click **Save**.
 
 You have successfully configured IP sharing. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability/).
+
+{{< note >}}
+IP sharing does not change ownership of the origin IP address, and the IP address will continue to belong to the same origin Linode. By default, IP sharing alone does not change the behavior of how traffic reaches your Linode and the capability must be further configured with tools like [keepalived](https://keepalived.org/) which affect routing, or a similar services.
+{{< /note >}}
 
 ## Networking Restrictions
 

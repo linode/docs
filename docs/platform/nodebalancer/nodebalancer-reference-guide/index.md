@@ -5,12 +5,13 @@ author:
 description: NodeBalancer Reference Guide
 keywords: ["load balancing", "nodebalancer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/nodebalancer/nodebalancer-reference-guide-classic-manager/','nodebalancers/reference/','platform/nodebalancer/nodebalancer-reference-guide-new-manager/','linode-platform/nodebalancer-reference/']
+aliases: ['/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/']
 modified: 2018-08-21
 modified_by:
   name: Linode
 published: 2011-07-08
 title: NodeBalancer Reference Guide
+tags: ["linode platform","networking"]
 ---
 
 ![NodeBalancer Reference Guide](nodebalancer-reference-guide.png "NodeBalancer Reference Guide")
@@ -49,7 +50,7 @@ The public port for this configuration. Ports 1 through 65534 are available for 
 
 You can choose either TCP, HTTP, or HTTPS. HTTP and HTTPS enable some additional options described below.
 
-**TCP**: Use TCP mode to balance non-HTTP services.
+**TCP**: Use TCP mode to balance non-HTTP services and/or enable ProxyProtocol.
 
 **HTTP:** HTTP KeepAlives are forced off in HTTP mode.
 
@@ -60,6 +61,19 @@ If **HTTP** or **HTTPS** is selected, the NodeBalancer will add an X-Forwarded-P
  {{< note >}}
 Note that HTTPS requests (and HTTP requests, for that matter) are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
 {{< /note >}}
+
+### Proxy Protocol
+
+When using TCP as your selected protocol, **Proxy Protocol** can be used to add a header with information regarding client information to backend Linodes, instead of only showing information related to the connecting NodeBalancer. Proxy Protocol can be used via two different selectable versions:
+
+  - **v1**: Proxy Protocol v1 add a human readable string to all requests, similar to the following:
+    {{< output >}}
+PROXY TCP4 68.80.83.127 45.79.247.228 56147 80
+{{< /output >}}
+  - **v2**: Proxy Protocol v2 adds a header with more specialized binary data, which will appear similar to the following output:
+{{< output >}}
+\r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
+{{< /output >}}
 
 ### Algorithm
 
@@ -75,7 +89,7 @@ NodeBalancers have the ability for Session Persistence - meaning subsequent requ
 
 -   **None** - No additional Session Stickiness will be performed.
 -   **Table** - The NodeBalancer itself remembers which backend a given client IP was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. Each entry in the table will expire 30 minutes from the time that it was added. If a backend node goes offline, entries in the table for that node are removed.
--   **HTTP Cookie** - Requires the configuration protocol be set to HTTP. The NodeBalancer sets a cookie named `NB_SRVID` identifying the backend a client was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. If a backend node goes offline, the client is balanced to another backend and the cookie is rewritten.
+-   **HTTP Cookie** - Requires the configuration protocol be set to HTTP or HTTPS. The NodeBalancer sets a cookie named `NB_SRVID` identifying the backend a client was initially load balanced to (see Algorithm, above), and will route subsequent requests to the backend specified in the cookie, regardless of changes to the number of healthy backend nodes. If a backend node goes offline, the client is balanced to another backend and the cookie is rewritten. If a client does not respect cookies or has disabled them this method will not work, as the NodeBalancer will see each request without a cookie as a new request.
 
 If you need Session Persistence it is our recommendation to utilize both the Source IP algorithm in combination with either Table or HTTP Cookie if possible.
 

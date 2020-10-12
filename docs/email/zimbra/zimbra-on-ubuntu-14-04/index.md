@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode'
 keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
+tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-01
 modified: 2015-10-01
@@ -14,6 +15,11 @@ contributor:
     name: Bill Bardon
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
+relations:
+    platform:
+        key: zimbra-groupware
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)

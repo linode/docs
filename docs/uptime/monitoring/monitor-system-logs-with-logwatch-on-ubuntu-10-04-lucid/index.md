@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Use logwatch to monitor system logs and generate reports.'
 keywords: ["logwatch", "security", "logging", "audit"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/logwatch/ubuntu-10-04-lucid/']
+aliases: ['/server-monitoring/logwatch/ubuntu-10-04-lucid/']
 modified: 2013-10-01
 modified_by:
   name: Linode
 published: 2010-09-11
 title: 'Monitor System Logs with Logwatch on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: install-logwatch-monitoring
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

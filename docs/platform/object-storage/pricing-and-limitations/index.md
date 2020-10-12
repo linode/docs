@@ -11,6 +11,7 @@ modified_by:
 title: "Object Storage Pricing and Limitations"
 contributor:
   name: Linode
+tags: ["linode platform"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}
@@ -35,6 +36,7 @@ Below is a table of data center locations where Object Storage is available, and
 | ------------| ------------------| ---------------------|
 | Newark | November 1, 2019 | us-east-1.linodeobjects.com |
 | Frankfurt | February 28, 2020 | eu-central-1.linodeobjects.com |
+| Singapore | June 24th, 2020 | ap-south-1.linodeobjects.com |
 
 {{< content "object-storage-cluster-shortguide" >}}
 

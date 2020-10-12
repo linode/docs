@@ -6,7 +6,7 @@ description: 'An introduction to the structure of the Apache web server configur
 og_description: 'This guide is an introduction to the structure of an Apache configuration file. This guide offers a base for begining to understand the different configuration directives Apache has to offer.'
 keywords: ["apache", "httpd", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/configuration/configuration-structure/','websites/apache-tips-and-tricks/apache-configuration-structure/']
+aliases: ['/web-servers/apache/configuration/configuration-structure/','/websites/apache-tips-and-tricks/apache-configuration-structure/']
 modified: 2018-03-06
 modified_by:
   name: Linode
@@ -16,6 +16,7 @@ external_resources:
  - '[Apache Installation](/docs/web-servers/apache/)'
  - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
  - '[Troubleshooting Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
+tags: ["web server","apache"]
 ---
 
 Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/web-servers/lamp/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.

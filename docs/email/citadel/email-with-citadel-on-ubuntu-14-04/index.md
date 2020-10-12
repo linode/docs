@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 14.04 LTS (Truly Tahr) Linode.'
 keywords: ["citadel", "citadel ubuntu 14.04", "ubuntu 14.04 mail server", "groupware", "email server"]
+tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-09-20
 modified_by:
@@ -18,6 +19,11 @@ external_resources:
  - '[Spamassassin Home Page](http://spamassassin.apache.org/)'
  - '[Spamassassin Wiki](http://wiki.apache.org/spamassassin/)'
  - '[Spamassassin Documentation](http://spamassassin.apache.org/doc.html)'
+relations:
+    platform:
+        key: email-with-citadel
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.

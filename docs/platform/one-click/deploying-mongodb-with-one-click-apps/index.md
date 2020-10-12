@@ -5,6 +5,7 @@ author:
 description: 'Deploy MongoDB on Linode using One-Click Apps.'
 og_description: 'Deploy MongoDB on Linode using One-Click Apps.'
 keywords: ['mongodb','one-click', 'one-click apps']
+tags: ["linode platform","database","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2020-03-11
@@ -12,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy MongoDB with One-Click Apps"
 h1_title: "Deploying MongoDB with One-Click Apps"
+image: feature.png
 contributor:
   name: Linode
 external_resources:
@@ -48,9 +50,9 @@ After providing the app specific options, provide configurations for your Linode
 |:--------------|:------------|
 | **Select an Image** | Debian 9 is currently the only image supported by MongoDB One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Since MongoDB can require a significant amount of RAM, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory). You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you don't need you need these resources are needed. *Required*. |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Since MongoDB can require a significant amount of RAM, we recommend using a [High Memory Linode](https://www.linode.com/pricing/). You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you don't need you need these resources are needed. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
+| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
 When you've provided all required Linode Options, click on the **Create** button. **Your MongoDB app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
 

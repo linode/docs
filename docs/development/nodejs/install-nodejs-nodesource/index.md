@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install an up to date Node.js binary from NodeSource on Debian or Ubuntu.'
 keywords: []
+tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-06
 modified: 2018-12-27

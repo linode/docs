@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions.'
 keywords: ["postgresql", "ubuntu 16.04", "postgresql database", "open source database", "relational database"]
-aliases: ['databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
+aliases: ['/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-05-20
 modified_by:
@@ -14,6 +14,12 @@ title: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
+relations:
+    platform:
+        key: install-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 16.04
+tags: ["ubuntu","database","postgresql"]
 ---
 
 ![How to Install PostgreSQL on Ubuntu 16.04](how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")

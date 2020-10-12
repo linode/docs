@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Deploy a Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: ["cherokee", "web sever", "ubuntu 12.04", "precise pangolin", "cherokee-admin"]
+tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/']
+aliases: ['/web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/','/websites/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/','/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: 2012-10-10
 modified_by:
   name: Linode
@@ -15,6 +16,11 @@ title: 'Deploy Websites with a Cherokee Web Server on Ubuntu 12.04'
 external_resources:
  - '[Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)'
  - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid)'
+relations:
+    platform:
+        key: install-cherokee-server
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.

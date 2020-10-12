@@ -5,7 +5,8 @@ author:
 description: 'If you are switching to Ubuntu 18.04, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.'
 og_description: 'If you are switching to Ubuntu 18.04, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.'
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
-aliases: ['quick-answers/linux/install-selinux-on-ubuntu/']
+aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/']
+tags: ["ubuntu","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-17
 modified_by:
@@ -13,6 +14,11 @@ modified_by:
 published: 2017-06-30
 title: How to Install SELinux on Ubuntu 18.04
 h1_title: Installing SELinux on Ubuntu 18.04
+relations:
+    platform:
+        key: how-to-install-selinux
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ![How to Install SELinux on Ubuntu](selinux-ubuntu-title.jpg "How to Install SELinux on Ubuntu title graphic")

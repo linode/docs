@@ -5,7 +5,7 @@ author:
 description: 'Getting started with MySQL on Debian 8'
 keywords: ["MySQL on Linux", "Debian 8", "Debian", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/debian-7-wheezy/','databases/mysql/mysql-relational-databases-debian-8/']
+aliases: ['/databases/mysql/mysql-relational-databases-debian-8/','/databases/mysql/debian-7-wheezy/']
 modified: 2015-08-26
 modified_by:
   name: Linode
@@ -17,13 +17,19 @@ external_resources:
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance)'
+relations:
+    platform:
+        key: how-to-install-mysql
+        keywords:
+            - distribution: Debian 8
+tags: ["debian","database","mysql"]
 ---
 
 ![How to Install MySQL on Debian 8](how-to-install-mysql-on-debian-8.jpg "How to Install MySQL on Debian 8")
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Debian 8 (Jessie).
 
-Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory) for such setups.
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) for such setups.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -49,6 +55,10 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Install MySQL
 
     sudo apt-get install mysql-server
+
+{{< note >}}
+The mysql-server package may not be available in the latest versions of Debian in such a case try `sudo apt-get install default-mysql-server`.
+{{< /note >}}
 
 During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 

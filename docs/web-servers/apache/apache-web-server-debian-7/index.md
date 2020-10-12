@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Install Apache on your Debian 7 server, configure virtual hosting, and set up module and scripting support.'
 keywords: ["apache", "apache 2", "debian", "debian 7", "wheezy", "apache web server"]
+tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/installation/debian-7-wheezy/','websites/apache/apache-2-web-server-on-debian-7-wheezy/','websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/','websites/apache/apache-web-server-debian-7/']
+aliases: ['/websites/apache/apache-web-server-debian-7/','/websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/','/websites/apache/apache-2-web-server-on-debian-7-wheezy/','/web-servers/apache/installation/debian-7-wheezy/']
 modified: 2018-12-31
 modified_by:
   name: Linode
@@ -16,6 +17,11 @@ external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
  - '[Tuning Your Apache Sever](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: Debian 7
 ---
 
 ![Apache Web Server on Debian](Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)

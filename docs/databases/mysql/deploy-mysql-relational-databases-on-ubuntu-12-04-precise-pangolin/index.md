@@ -6,7 +6,7 @@ author:
 description: 'Get Started with MySQL for Web and Server Applications on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: ["mysql", "ubuntu 12.04", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/ubuntu-12-04-precise-pangolin/','databases/using-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin']
+aliases: ['/databases/mysql/ubuntu-12-04-precise-pangolin/','/databases/using-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin/']
 modified: 2015-09-11
 modified_by:
     name: Linode
@@ -17,6 +17,7 @@ external_resources:
     - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
     - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
     - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
+tags: ["ubuntu","database","mysql"]
 ---
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 12.04 LTS (Precise Pangolin).

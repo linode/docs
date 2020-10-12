@@ -4,14 +4,16 @@ author:
   email: docs@linode.com
 description: Our guide to managing accounts and passwords.
 keywords: ["accounts", "passwords", "Linode Cloud Manager", "manager"]
+tags: ["linode platform","security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['accounts-and-passwords/','platform/accounts-and-passwords/','platform/manager/accounts-and-passwords-classic-manager/','platform/manager/accounts-and-passwords-new-manager/']
+aliases: ['/accounts-and-passwords/','/platform/accounts-and-passwords/','/platform/manager/accounts-and-passwords-classic-manager/','/platform/manager/accounts-and-passwords-new-manager/']
 modified: 2018-08-23
 modified_by:
   name: Linode
 published: 2012-04-03
 title: Accounts and Passwords
 ---
+
 ![Accounts and Passwords](Accounts_and_Passwords_smg.jpg)
 
 Maintaining your user Linode Cloud Manager accounts, passwords, and contact information is just as important as administering your Linode. This guide shows you how to control access to the Cloud Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Cloud Manager only, except for the section on resetting the root password.
@@ -26,26 +28,11 @@ A single user was automatically created for your account when you signed up for 
 
 ### Adding a User
 
-When you add a user, you give that individual permission to log in to the Linode Cloud Manager and, depending on the access level they are assigned, receive email notifications. There are two types of users: *Restricted users*, who have limited access to the Linode Cloud Manager, and *unrestricted users*, who have full access.
+{{< content "accounts-add-users-shortguide" >}}
 
-Here's how to add a user to your Linode account:
+### Permissions Explained
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
-1.  Click the **Account** link in the sidebar.
-1.  Click the **Users** link.
-    [![Click on the 'Account' link and then click 'Users'](accounts-overview-small.png "Click on the 'Account' link then click 'Users')](accounts-overview.png)
-1.  Click on **Add a User**. The *Add a User* menu appears.
-    ![The 'Add a User' menu](accounts-add-a-user-menu.png "The 'Add a User' menu.")
-1.  Enter a username for the user in the **Username** field.
-1.  Enter the user's email address in the **Email** field. A password creation link will be sent to the new user's email address.
-1.  To give the new user restricted access, toggle the **Restricted Access** button.
-1.  Click **Submit**.
-
-If you granted the user full access, the account will be created and no further action is required. If you opted to restrict the user, follow the instructions in the next section.
-
-### Setting Permissions
-
-Setting permissions restricts a user's access to certain areas of the Linode Cloud Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don't worry--these settings aren't permanent. You can add or remove access for a user at any time in the future.
+Setting permissions restricts a user's access to certain areas of the Linode Cloud Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don't worry--these settings aren't permanent. You can add or remove access for a user at any time in the future. User Permissions are divided into three categories. **Global Permissions**, **Billing Access Permissions**, and **Specific Permissions**.
 
 Here's how to set a user's access permissions:
 
@@ -56,48 +43,37 @@ Here's how to set a user's access permissions:
 
     [![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions-small.png "Configure User permissions in the Linode Cloud Manager")](accounts-user-permissions.png)
 
-1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/) and frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account.
+1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/), frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
 {{< /note >}}
 
-1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Permissions** section to allow the user access your Linodes, StackSripts, Images, NodeBalancers and Domains.
+1. Select an option for Billing Access permissions. These options are as follows:
+
+  - **None**: The user will be unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous step.
+  - **Read Only**: The user can [View Billing Info](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), and will receive copies of all invoices. Will also receive emails related to payments.
+  - **Read-Write**: The user has full access to [Billing Information](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), can make payments, edit billing information, view billing information, will receive copies of all invoices, and will receive email related to payments.
+
+1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Permissions** section to allow the user to access individual Linodes, StackSripts, Block Storage Volumes, Images, NodeBalancers and Domains. Unlike Global Permissions, Specific Permissions can apply to individual resources and not the service as a whole. Specific Permission options are as follows:
+
+    - **None**: The user will not be able to view or otherwise interact with the selected resource.
+    - **Read Only**: The user can view the resource and all of it's associated information typically visible within the Linode Manager, however they will not be able to otherwise interact with it any way.
+    - **Read-Write**: The user has full access to the selected resource, and can make any changes that only an administrator is otherwise able to. This includes resource deletion, cloning, and all other applicable edits.
+
 1.  When you have finished configuring the user's permissions, click **Save**. The user's permissions will be saved and effective immediately.
 
 ### Recovering a Lost Username
 
-Did you forget your Cloud Manager username? Recover it with the *Forgot Username* webpage. Here's how:
-
-1.  Visit the [Forgot Username](https://login.linode.com/forgot/username) webpage.
-1.  Enter your email address in the **Email** field.
-1.  Click **Submit**.
-
-In a couple minutes, you'll receive an email message with any Linode Cloud Manager users that correspond to that email. If you do not receive information about any users, then you may have registered your account with a different email.
+{{< content "accounts-recover-username-shortguide" >}}
 
 ### Removing a User
 
-You can permanently remove a user account from the Linode Cloud Manager. Here's how:
-
-1.  Click the **Account** link in the sidebar.
-1.  Click the **Users** tab.
-1.  Locate the user in the list and click on the **more options ellipsis** to the right of the user.
-1.  Select the **Delete** link from the menu. A warning appears asking you to confirm that you want to delete the user.
-    ![Use the Linode Cloud Manager to delete a User](accounts-delete-a-user.png "Use the Linode Cloud Manager to delete a User.")
-1.  Click **Delete**.
-
-The account will be removed, and the user will no longer be able to access the Linode Cloud Manager.
+{{< content "accounts-remove-user-shortguide" >}}
 
 ### Changing a Username
 
-You can update a username, including your own, from the Linode Cloud Manager.
-
-1.  Click the **Account** link in the sidebar.
-1.  Click the **Users** tab.
-1.  Locate the user in the list and click on their current username.
-1.  Enter a new username in the **Username** field.
-    ![Use the Linode Cloud Manager to Update a Username](accounts-update-a-username.png "Use the Linode Cloud Manager to Update a Username.")
-1.  Click **Save**.
+{{< content "accounts-change-username-shortguide" >}}
 
 ## Email Addresses and Contact Information
 
@@ -111,31 +87,11 @@ Only unrestricted users can receive threshold notification emails.
 
 ### Updating Contact Information
 
-Use the *Account & Billing* webpage to update the contact information for the Linode account. The email address saved on this webpage receives invoices, receipts, and credit card expiration warnings. Support tickets are *not* sent to this email address.
-
-Here's how to update the contact information and the email address on the *Account* webpage:
-
-1.  Click the **Account** link in the sidebar.
-1.  Click the **Account & Billing** tab.
-1.  Expand the **Update Contact Information** panel and update the contact information and the email address for the account.
-    [![Update your Contact Information in the Linode Cloud Manager](accounts-update-billing-info-small.png "Update your Contact Information in the Linode Cloud Manager")](accounts-update-billing-info.png)
-1.  Click **Save**.
-
-The account's contact information will be updated.
+{{< content "accounts-update-contact-info-shortguide" >}}
 
 ### Changing Your Email Address
 
-Use the *My Profile* page to modify the email address associated with your user account. The email address saved on this webpage receives IP whitelist warnings, password reset messages, and support tickets for services that you have permission to access. You may also receive invoices and receipts, if the primary account holder grants you access to that information.
-
-Here's how to change your email address on the *My Profile* webpage:
-
-1.  Select the **My Profile** link by clicking on your username at the top of the page.
-   ![Select 'My Profile' in the Linode Cloud Manager](accounts-select-my-profile.png "Select 'My Profile' in the Linode Cloud Manager.")
-1.  In the **Display** tab, enter your email address in the **Email** field.
-    [![Modify the email address associated with your user account.](accounts-my-profile-change-email-small.png "Modify the email address associated with your user account")](accounts-my-profile-change-email.png)
-1.  Click **Save**.
-
-Your profile's email account will be updated.
+{{< content "accounts-change-email-shortguide" >}}
 
 ## Passwords
 
@@ -147,21 +103,7 @@ Creating strong passwords is essential to protecting your Linode and your Linode
 
 ### Resetting the Root Password
 
-If you can't remember the password for the `root` user on a Linode, use the Linode Cloud Manager to reset it. Here's how:
-
-1.  Click the **Linodes** link in the sidebar.
-1.  Select a Linode. The Linode's details page appears.
-1.  Click **Power Off** from the status menu to turn off your Linode. Monitor your bell notifications at the top of the page for a message indicating that your Linode has shut down.
-
-    [![Power Off your Linode.](accounts-power-off-linode-small.png "Power Off your Linode")](accounts-power-off-linode.png)
-
-1.  Click the **Settings** tab.
-1.  Under the **Reset Root Password** panel, select your primary disk from the **Disk** menu.
-1.  Enter a new password for the `root` user in the **Password** field.
-1.  Click **Save**. The Linode's dashboard appears.
-1.  Click **Power On** to turn on your Linode.
-
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/platform/manager/using-the-linode-shell-lish/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.
+{{< content "accounts-reset-root-password-shortguide" >}}
 
 ## Next Steps
 

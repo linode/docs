@@ -6,12 +6,18 @@ author:
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.10 Maverick'
 keywords: ["mysql ubuntu 10.10", "mysql maverick", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/mysql/ubuntu-10-10-maverick/']
+aliases: ['/databases/mysql/ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-10-21
 title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Ubuntu 10.10
+tags: ["ubuntu","database","mysql"]
 ---
 
 

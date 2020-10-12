@@ -6,12 +6,18 @@ author:
 description: 'Using Ikiwiki on Arch Linux to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/ikiwiki/arch-linux/']
+aliases: ['/web-applications/wikis/ikiwiki/arch-linux/']
 modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2011-02-23
 title: Ikiwiki on Arch Linux
+relations:
+    platform:
+        key: using-ikiwiki
+        keywords:
+           - distribution: Arch
+tags: ["wiki"]
 ---
 
 

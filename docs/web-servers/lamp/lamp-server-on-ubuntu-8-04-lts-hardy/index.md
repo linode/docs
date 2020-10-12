@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'How to install and configure configuring a LAMP stack with the Hardy Heron (8.04 LTS) release of Ubuntu Linux.'
 keywords: ["ubuntu 8.04 lamp", "lamp guide", "ubuntu lamp"]
+tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/ubuntu-8-04-hardy/','websites/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/']
+aliases: ['/lamp-guides/ubuntu-8-04-hardy/','/websites/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/']
 modified: 2011-05-02
 modified_by:
   name: Linode
@@ -17,11 +18,16 @@ external_resources:
 - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'
 - '[MySQL Documentation](http://dev.mysql.com/doc/)'
 - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 
 
-This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 8.04 (eg. Hardy) system. The 8.04 release is considered a long term support release and the server edition will be supported until April of 2013.
+This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 8.04 (e.g. Hardy) system. The 8.04 release is considered a long term support release and the server edition will be supported until April of 2013.
 
 In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 

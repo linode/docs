@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Use logwatch to monitor system logs and generate reports.'
 keywords: ["logwatch", "security", "logging", "audit"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/logwatch/ubuntu-12-04-precise-pangolin/']
+aliases: ['/server-monitoring/logwatch/ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-22
 modified_by:
   name: Linode
 published: 2012-10-22
 title: 'Monitor System Logs with Logwatch on Ubuntu 12.04 (Precise Pangolin)'
+relations:
+    platform:
+        key: install-logwatch-monitoring
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Logwatch is a utility used to monitor system logs and create reports. These reports include failed login attempts, successful login attempts, and storage space used/available.

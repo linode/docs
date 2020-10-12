@@ -5,6 +5,7 @@ author:
 description: 'This guide will show you how to install mod_fcgid and PHP-FPM on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
 og_description: 'This guide will show you how to install mod_fcgid and PHP-FPM on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
 keywords: ['list','of','keywords','and key phrases']
+tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
 modified_by:
@@ -13,6 +14,11 @@ title: "How to Install and Configure FastCGI and PHP-FPM on CentOS 8"
 h1_title: "Install and Configure FastCGI and PHP-FPM on CentOS 8"
 contributor:
   name: Linode
+relations:
+    platform:
+        key: install-fastcgi-php-fpm
+        keywords:
+            - distribution: CentOS 8
 ---
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.

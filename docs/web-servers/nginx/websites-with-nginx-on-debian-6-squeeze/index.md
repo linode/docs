@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Debian 6 (Squeeze)'
 keywords: ["nginx", "http", "web servers", "debian", "debian squeeze", "debian 6"]
+tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/installation/debian-6-squeeze/','websites/nginx/websites-with-nginx-on-debian-6-squeeze/']
+aliases: ['/web-servers/nginx/installation/debian-6-squeeze/','/websites/nginx/websites-with-nginx-on-debian-6-squeeze/']
 modified: 2014-01-28
 modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Websites with nginx on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Debian 6
 ---
 
 

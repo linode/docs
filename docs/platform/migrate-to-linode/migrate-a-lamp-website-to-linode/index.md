@@ -4,6 +4,7 @@ author:
   email: nmelehan@linode.com
 description: 'How to migrate a LAMP website from another hosting provider to Linode.'
 keywords: ["lamp", "migrate", "website migration"]
+tags: ["linode platform","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-07-31
 modified_by:

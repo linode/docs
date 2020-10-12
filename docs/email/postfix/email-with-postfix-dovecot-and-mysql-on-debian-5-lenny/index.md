@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MySQL on Debian 5 (Lenny).'
 keywords: ["postfix", "dovecot", "email", "debian", "lenny"]
+tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/dovecot-mysql-debian-5-lenny/']
+aliases: ['/email/postfix/dovecot-mysql-debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-02-08
 title: 'Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: email-postfix-dovecot-mysql
+        keywords:
+            - distribution: Debian 5
 ---
 
 
@@ -265,13 +271,12 @@ This completes configuration for `saslauthd`. Next, you'll configure Dovecot to 
 
 Edit the file `/etc/postfix/master.cf` and add the dovecot service to the bottom of the file.
 
-{{< file >}}
-/etc/postfix/master.cf
+{{< file "/etc/postfix/master.cf" >}}
+ dovecot unix - n n - - pipe
+ :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
+
 {{< /file >}}
 
-> dovecot unix - n n - - pipe
-> :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
->
 Issue the following command to make a backup copy of your `/etc/dovecot/dovecot.conf` file.
 
     cp -a /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf.bak

@@ -3,6 +3,7 @@ author:
   name: Edward Angert
   email: docs@linode.com
 keywords: ["let's encrypt", "certbot", "ssl", "tls", "https"]
+tags: ["security", "web server"]
 description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
 og_description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +13,8 @@ modified_by:
 published: 2018-06-27
 title: Secure HTTP Traffic with Certbot
 deprecated: true
-deprecated_link: 'quick-answers/websites/certbot/'
-aliases: ['quick-answers/websites/secure-http-traffic-certbot/']
+deprecated_link: 'quick-answers/websites/'
+aliases: ['/quick-answers/websites/certbot/secure-http-traffic-certbot/']
 external_resources:
   - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
 ---

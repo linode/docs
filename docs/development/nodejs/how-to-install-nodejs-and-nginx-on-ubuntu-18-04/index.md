@@ -5,6 +5,7 @@ author:
 description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
 og_description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "ubuntu", " front-end requests", " back-end requests"]
+tags: ["ubuntu", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-14
 modified_by:
@@ -21,6 +22,12 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
+image: 'Installing_Nodejs_and_NGINX_on_Ubuntu_1804_1200x631.png'
+relations:
+    platform:
+        key: install-nodejs-nginx
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 Node.js is an open-source JavaScript runtime environment that can serve dynamic and responsive content and is often used to create and serve web applications. When serving Node.js applications, NGINX is commonly used to create a reverse proxy that points at a running Node.js server. In this guide, you will install and configure NGINX on an Ubuntu 18.04 Linode. NGINX will handle requests to static files, like `index.html` and also, create a reverse proxy to a Node.js server. You will then create a test JavaScript file in order to test your running Node.js server.

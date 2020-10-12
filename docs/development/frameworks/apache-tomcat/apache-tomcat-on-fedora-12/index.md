@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 12.'
 keywords: ["apache tomcat fedora 12", "java", "java fedora 12", "java servlets fedora 12", "java fedora"]
+tags: ["web applications","java","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['development/frameworks/apache-tomcat-on-fedora-12/','websites/frameworks/apache-tomcat-on-fedora-12/','frameworks/apache-tomcat/fedora-12/']
+aliases: ['/websites/frameworks/apache-tomcat-on-fedora-12/','/frameworks/apache-tomcat/fedora-12/','/development/frameworks/apache-tomcat-on-fedora-12/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-07-23
 title: Apache Tomcat on Fedora 12
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Fedora 12
 ---
 
 Apache Tomcat is a free and open source software implementation for Java Servlets. It provides support for the Java Server Pages (JSP) that power many popular web-based applications.

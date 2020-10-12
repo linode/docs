@@ -5,6 +5,7 @@ author:
 description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
 og_description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
 keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
+tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-30
 modified_by:
@@ -17,11 +18,11 @@ external_resources:
   - '[Kubernetes Official Docs] (https://kubernetes.io/docs/)'
 ---
 
-[K3s](https://k3s.io/) is a lightweight, easy-to-install Kubernetes distribution. Built for the edge, K3s includes an embedded SQLite database as the default datastore and supports external datastore such as PostgreSQL, MySQL, and etcd. K3s includes a command line cluster controller, a local storage provider, a service load balancer, a Helm controller, and the Traefik ingress controller. It also automates and manages complex cluster operations such as distributing certificates. With K3s, you can run a highly available, certified Kubernetes distribution designed for production workloads on resource-light machines like [Nanodes](https://www.linode.com/products/nanodes/).
+[K3s](https://k3s.io/) is a lightweight, easy-to-install Kubernetes distribution. Built for the edge, K3s includes an embedded SQLite database as the default datastore and supports external datastore such as PostgreSQL, MySQL, and etcd. K3s includes a command line cluster controller, a local storage provider, a service load balancer, a Helm controller, and the Traefik ingress controller. It also automates and manages complex cluster operations such as distributing certificates. With K3s, you can run a highly available, certified Kubernetes distribution designed for production workloads on resource-light machines like [1GB Linodes](https://www.linode.com/pricing) (Nanodes).
 
 {{< note >}}
 *   While you can deploy a K3s cluster on just about any flavor of Linux, K3s is officially tested on Ubuntu 16.04 and Ubuntu 18.04. If you are deploying K3s on CentOS where SELinux is enabled by default, then you must ensure that proper SELinux policies are installed. For more information, see Rancher's documentation on [SELinux support](https://rancher.com/docs/k3s/latest/en/advanced/#experimental-selinux-support).
-*   Nanode instances are suitable for low-duty workloads where performance isn't critical. Depending on your requirements, you can choose to use Linodes with greater resources for your K3s cluster.
+*   1GB Linode (Nanode) instances are suitable for low-duty workloads where performance isn't critical. Depending on your requirements, you can choose to use Linodes with greater resources for your K3s cluster.
 {{< /note >}}
 
 ## Before You Begin

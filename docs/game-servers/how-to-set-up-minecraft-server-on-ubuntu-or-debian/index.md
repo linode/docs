@@ -3,8 +3,9 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 keywords: ["minecraft", "ubuntu", "debian"]
+tags: ["ubuntu", "debian"]
 description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian'
-aliases: ['applications/game-servers/minecraft-on-debian-and-ubuntu/','game-servers/minecraft-on-debian-and-ubuntu/']
+aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
 modified_by:
@@ -17,6 +18,11 @@ external_resources:
  - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: install-minecraft-server
+        keywords:
+            - distribution: Ubuntu/Debian
 ---
 
 ![Set Up a Minecraft Server](How_to_Set_Up_a_Minecraft_Server_smg.jpg)
@@ -70,7 +76,7 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 
         wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar -O minecraft_server.1.13.jar
 
-    Refer to the [Minecraft server page](https://minecraft.net/en/download/server) to check for the latest release.
+    Refer to the [Minecraft server page](https://minecraft.net/en-us/download/server) to check for the latest release.
 
 3.  Create a script to run the Minecraft server:
 

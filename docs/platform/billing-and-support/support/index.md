@@ -5,12 +5,13 @@ author:
 description: Our guide to submitting support tickets and getting technical support.
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/billing-and-support/support-classic-manager/','platform/support/','platform/billing-and-support/support-new-manager/','support/']
+aliases: ['/platform/billing-and-support/support-classic-manager/','/support/','/platform/billing-and-support/support-new-manager/','/platform/support/']
 modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2012-03-21
 title: Linode Support
+tags: ["linode platform"]
 ---
 
 Linode provides live technical support services 24 hours a day, 7 days a week. Linode Support ensures network availability, verifies that you can access your Linode, resolves performance issues with hosts, and works to fix any service-related issues you may be experiencing.
@@ -21,7 +22,7 @@ Linode also offers a number of resources you can refer to when troubleshooting a
 
 Linode provides community spaces, an AI-powered assistant, libraries of reference material, and status updates for infrastructure components:
 
--   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the [IRC channel](/chat/).
+-   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the **IRC channel** listed on [Support](https://www.linode.com/support/) page.
 
     ![Linode Community Site](community-site-header.png "Linode Community Site")
 

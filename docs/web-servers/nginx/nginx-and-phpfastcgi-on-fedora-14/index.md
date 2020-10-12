@@ -4,14 +4,20 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 14'
 keywords: ["nginx", "nginx fedora 14", "nginx fastcgi", "nginx php"]
+tags: ["web server","fedora","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/php-fastcgi/fedora-14/','websites/nginx/nginx-and-phpfastcgi-on-fedora-14/']
+aliases: ['/web-servers/nginx/php-fastcgi/fedora-14/','/websites/nginx/nginx-and-phpfastcgi-on-fedora-14/']
 modified: 2013-10-07
 modified_by:
   name: Linode
 published: 2011-01-07
 title: 'Nginx and PHP-FastCGI on Fedora 14'
 deprecated: true
+relations:
+    platform:
+        key: nginx-php-fastcgi
+        keywords:
+            - distribution: Fedora 13
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Fedora 14 system.

@@ -5,6 +5,7 @@ author:
 description: 'Jenkins is an open source automation tool which can build, test, and deploy your infrastructure. Deploay a Jenkins instance using Linode''s One-Click Apps.'
 og_description: 'Jenkins is an open source automation tool which can build, test, and deploy your infrastructure. Deploay a Jenkins instance using Linode''s One-Click Apps.'
 keywords: ['jenkins','one-click','pipeline','continuous delivery']
+tags: ["linode platform","automation","one-click","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified_by:
@@ -31,7 +32,7 @@ After providing the app-specific options, provide configurations for your Linode
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). The resources needed for a Jenkins master can vary widely depending on your organization's needs (the RAM allotted for it can range from 200 MB for a small installation to 70+ GB for a single and massive Jenkins master). See [Jenkins' hardware recommendations](https://jenkins.io/doc/book/hardware-recommendations/#hardware-recommendations) page for a detailed outline about resource requirements. We recommend, at minimum, starting with a 4 GB Linode plan. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease your system resources. *Required* |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Add Tags** | A tag to help organize and group your Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
+| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
 
 When you've provided all required Linode Options, click on the **Create** button. **Your Jenkins app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
 

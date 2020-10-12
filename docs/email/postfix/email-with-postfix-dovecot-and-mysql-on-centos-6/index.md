@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
 keywords: ["postfix centos 6", "dovecot centos 6", "linux mail server", "email", "centos 6"]
+tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-03-26
 modified_by:
@@ -17,6 +18,11 @@ external_resources:
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Documentation Wiki](http://wiki.dovecot.org/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+relations:
+    platform:
+        key: email-postfix-dovecot-mysql
+        keywords:
+            - distribution: CentOS 6
 ---
 
 ![Email with Postfix, Dovecot, and MySQL on CentOS](Email-with-Postfix-Dovecot-and-MySQL-on-CentOS-smg.jpg)

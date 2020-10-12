@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 9.10 (Karmic)'
 keywords: ["munin", "monitoring"]
+tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['server-monitoring/munin/ubuntu-9-10-karmic/']
+aliases: ['/server-monitoring/munin/ubuntu-9-10-karmic/']
 modified: 2011-05-17
 modified_by:
   name: Linode
@@ -14,6 +15,11 @@ published: 2010-01-22
 expiryDate: 2013-05-17
 deprecated: true
 title: 'Monitoring Servers with Munin on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

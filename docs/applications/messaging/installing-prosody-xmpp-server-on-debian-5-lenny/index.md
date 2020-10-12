@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Debian 5 (Lenny).'
 keywords: ["prosody", "prosody debian lenny", "prosody.im", "xmpp", "real time messaging", "lua"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['communications/xmpp/prosody/debian-5-lenny/']
+aliases: ['/communications/xmpp/prosody/debian-5-lenny/']
 modified: 2011-08-22
 modified_by:
   name: Linode
 published: 2009-10-13
 title: 'Installing Prosody XMPP Server on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: how-to-install-prosody
+        keywords:
+            - distribution: Debian 5
 ---
 
 Prosody is a lightweight and simple XMPP/Jabber server that aims to be easy to use. Written in the Lua programming language, it has minimal resource requirements and aims to be easy to configure and run. While Prosody may not be able to scale to the same extent as [ejabberd](/docs/applications/messaging/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze/), for many independent and small scale uses, Prosody may perform as well as "larger" servers while being more efficient with resources. If you're considering doing XMPP development, or running an XMPP server for a very small base of users, we recommend that you consider Prosody as a possible provider for this service.

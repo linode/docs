@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.10 (Maverick).'
 keywords: ["apache tomcat ubuntu 10.10", "java", "java ubuntu 10.10", "java servlets ubuntu maverick", "java ubuntu"]
+tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/','development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/','frameworks/apache-tomcat/ubuntu-10-10-maverick/']
+aliases: ['/development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/','/frameworks/apache-tomcat/ubuntu-10-10-maverick/','/websites/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-12-07
 title: 'Apache Tomcat on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

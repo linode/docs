@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installation and basic usage guide for Rocket.Chat, a lightweight XMPP server on Ubuntu 16.04.'
 keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-17
 modified_by:

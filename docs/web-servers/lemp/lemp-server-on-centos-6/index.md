@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on CentOS 6'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
+tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lemp-guides/centos-6/','websites/lemp/lemp-server-on-centos-6/']
+aliases: ['/lemp-guides/centos-6/','/websites/lemp/lemp-server-on-centos-6/']
 modified: 2013-01-08
 modified_by:
   name: Doug Freed
@@ -19,6 +20,11 @@ external_resources:
  - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/centos-5)'
  - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/centos-5)'
  - '[Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/centos-5)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: CentOS 6
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.

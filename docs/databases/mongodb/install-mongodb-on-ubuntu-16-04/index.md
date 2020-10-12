@@ -14,6 +14,12 @@ external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
+relations:
+    platform:
+        key: how-to-install-mongodb
+        keywords:
+            - distribution: Ubuntu 16.04
+tags: ["ubuntu","database","nosql"]
 ---
 
 In this MongoDB tutorial, we explain how to install the database on Ubuntu 16.04, and then provide a short guide on some basic features and functions.
@@ -24,7 +30,7 @@ MongoDB is a database engine that provides access to non-relational, document-or
 
 MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized, language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.com/community/deployments) and is currently one of the most popular database engines across all systems.
 
-Since MongoDB can require a significant amount of RAM, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory) with this guide.
+Since MongoDB can require a significant amount of RAM, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) with this guide.
 
 ## Before You Begin
 

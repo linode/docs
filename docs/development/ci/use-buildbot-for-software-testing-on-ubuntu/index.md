@@ -5,17 +5,24 @@ author:
 description: 'This tutorial will explain how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds.'
 og_description: 'Deploy self-hosted continuous integration using Buildbot.'
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
+tags: ["automation","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2018-09-06
 title: Use Buildbot for Software Testing on Ubuntu 18.04
+h1_title: 'Using Buildbot to Test Software on Ubuntu 18.04'
 external_resources:
 - '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
+relations:
+    platform:
+        key:  buildbot-software-testing
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 [Buildbot](https://buildbot.net/) is an open source system for testing software projects. In this guide, you will set up a Linode as a Buildbot server to use as a continuous integration platform to test code. Similarly to hosted solutions like Travis CI, Buildbot is an automated testing platform that can watch for code changes, test a project's code, and send notifications regarding build failures.

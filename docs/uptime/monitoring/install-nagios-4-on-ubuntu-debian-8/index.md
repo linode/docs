@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: 'Nagios is a widely used tool for monitoring systems and services.'
 keywords: ["nagios", "ubuntu", "monitoring", "install nagios", "nagios 4 ubuntu", "debian 8"]
-aliases: ['uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/']
+aliases: ['/uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','/uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/']
+tags: ["debian","monitoring","lamp","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-04-12
 modified: 2016-04-12
@@ -17,6 +18,11 @@ contributor:
 external_resources:
  - '[Nagios Website](http://www.nagios.org/)'
  - '[Nagios Library](http://library.nagios.com/)'
+relations:
+    platform:
+        key: install-nagios-monitoring
+        keywords:
+            - distribution: Debian 8
 ---
 
 ![Install Nagios 4 on Ubuntu and Debian 8](Install_Nagios_4_smg.jpg)

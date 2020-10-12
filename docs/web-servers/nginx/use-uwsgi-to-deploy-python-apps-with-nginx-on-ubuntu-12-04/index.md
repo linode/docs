@@ -5,13 +5,19 @@ author:
   email: afornuto@linode.com
 description: 'Use uWSGI to Deploy Python Application Servers in Conjunction with Nginx.'
 keywords: ["uwsgi", "wsgi", "nginx", "python", "ubuntu", "install uwsgi", "deploy python applications with nginx", "virtual host"]
+tags: ["web server","python","ubuntu","web applications","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/use-uwsgi-to-deploy-Python-apps-with-nginx-on-ubuntu-12-04/']
+aliases: ['/websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/','/web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/use-uwsgi-to-deploy-python-apps-with-nginx-on-ubuntu-12-04/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/']
 modified: 2012-11-13
 modified_by:
   name: Linode
 published: 2012-11-13
 title: 'Use uWSGI to deploy Python apps with Nginx on Ubuntu 12.04'
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.

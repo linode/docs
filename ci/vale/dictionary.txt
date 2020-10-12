@@ -8,6 +8,7 @@ addon
 addons
 addr
 adduser
+adhoc
 adminpack
 adnanh
 adodb
@@ -18,9 +19,12 @@ ahvz
 ajp
 aker
 alef
+alertmanager
 alexey
 alives
 allmasquerade
+allowlist
+allowlisting
 alphanumerics
 amavis
 amavisd
@@ -37,6 +41,7 @@ apiserver
 apparmor
 appimage
 appletalk
+approvers
 appserver
 apxs
 aren
@@ -101,6 +106,7 @@ biomes
 bitbucket
 bitnami
 bitrate
+blkid
 blocklists
 blockwise
 bluehost
@@ -115,6 +121,8 @@ boto
 bounceback
 brackley
 bram
+brd
+browserify
 bs4
 bufio
 bugtracker
@@ -169,6 +177,7 @@ chrooting
 chrooted
 citad
 cjones
+clamav
 clearsign
 clearspace
 cli
@@ -286,6 +295,7 @@ dev
 devel
 devops
 devtmpfs
+dex
 df
 dhclient
 dhparams
@@ -304,6 +314,7 @@ distros
 dists
 django
 dkim
+dlncr
 dmg
 dmitriy
 dmz
@@ -351,6 +362,7 @@ elisp
 elgg
 elpaso
 email2email
+emojivoto
 ender
 enix
 env
@@ -390,6 +402,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
+favicon
 fb4c
 fcgi
 fcgid
@@ -411,6 +424,7 @@ file1
 filebeat
 filecap
 filecaps
+fileglob
 filemode
 filepath
 filepaths
@@ -476,6 +490,7 @@ gitolite
 gitosis
 gitpython
 gitweb
+gke
 glibc
 glish
 globals
@@ -489,6 +504,7 @@ gnulinux
 gnutls
 gogs
 golang
+goldmark
 goroutine
 goroutines
 goto
@@ -566,6 +582,7 @@ hulu
 hvc0
 hybla
 hyperefficient
+hyperparameter
 hypervisor
 hypervisors
 IaC
@@ -603,6 +620,7 @@ impor
 incentivized
 inet
 inet6
+ingressgateway
 ini
 initializer
 initramfs
@@ -648,8 +666,10 @@ jdbc
 jdk
 Jellyfin
 jenkinsfile
+jenkinsx
 jetpack
 jez
+jitsi
 jk
 jks
 jobd
@@ -666,6 +686,7 @@ jsonpath
 julialang
 jumpbox
 jupyter
+jx
 kakfa
 kbits
 keepalive
@@ -699,10 +720,12 @@ kube
 kubeadm
 kubeconfig
 kubectl
+kubeflow
 kubelet
 kubelets
 kubernetes
 kubespray
+kustomize
 kuznetosv
 lambdabunker
 laravel
@@ -729,6 +752,7 @@ libphp
 libpri
 libracy
 libsasl2
+libyang
 libuv
 lifecycle
 lighthttpd
@@ -736,6 +760,7 @@ lighttpd
 lighty
 ligttpd
 linewise
+linkerd
 linode
 linodes
 lish
@@ -750,6 +775,7 @@ loadout
 localdomain
 localhost
 lockdown
+lodash
 logallrefupdates
 logdir
 logfile
@@ -836,6 +862,7 @@ mineshafts
 miniconda
 miniconda3
 minification
+minikf
 minikube
 minimalistic
 minio
@@ -847,6 +874,7 @@ misconfigured
 mitigations
 mkdir
 mnesia
+mngtmpaddr
 moby
 moddable
 modsecurity
@@ -935,6 +963,7 @@ nexthop
 nftables
 ng
 nginx
+nginxdemos
 ngrok
 ngx
 nickcolor
@@ -957,12 +986,14 @@ noloadbalance
 noninteractive
 nonprivileged
 nonrecursive
+noscript
 nosync
 nouveau
 novaclient
 novell
 npm
 npmjs
+npx
 nrcpt
 ns1
 ns2
@@ -975,6 +1006,7 @@ nullval
 num
 numpy
 nvim
+nvm
 octopress
 odoo
 oftc
@@ -1082,12 +1114,14 @@ pre4
 precompiled
 preconfigured
 prefork
+preinstall
 preinstalled
 premade
 prepend
 prepended
 prepending
 preprocessing
+preprocessors
 prerotate
 prerouting
 prestashop
@@ -1099,6 +1133,8 @@ procs
 productpage
 prosodyctl
 proto
+protobuf
+protocode
 proxied
 proxying
 pscp
@@ -1157,9 +1193,12 @@ redir
 redis
 redmin
 redmine
+redstone
 reenable
 reenabling
+referer
 refspec
+regexes
 reimported
 reindexing
 reinstalls
@@ -1345,6 +1384,7 @@ steamlab
 stopwait
 stopword
 stopwords
+storages
 su
 subcommand
 subcommands
@@ -1449,6 +1489,7 @@ transcode
 transcoder
 transcoding
 trello
+triaging
 truststore
 tt
 ttl
@@ -1504,6 +1545,7 @@ untruncated
 untrust
 untrusted
 unversioned
+upserted
 upsize
 uri
 uris
@@ -1576,6 +1618,7 @@ webdriver
 weblish
 webmail
 webmin
+webpack
 webpages
 webpy
 webroot

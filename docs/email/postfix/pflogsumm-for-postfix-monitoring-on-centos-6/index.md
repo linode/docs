@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'Receive daily emails with Postfix mail server stats from Pflogsumm.'
 keywords: ["pflogsumm", " postfix", " monitoring", " mail server"]
+tags: ["centos","perl","monitoring","email","postfix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['email/postfix/pflogsumm-centos-6/']
+aliases: ['/email/postfix/pflogsumm-centos-6/']
 contributor:
     name: Robert Accettura
 modified: 2014-02-05

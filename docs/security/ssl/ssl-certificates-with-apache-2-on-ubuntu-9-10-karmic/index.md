@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 9.10 (Karmic).'
 keywords: ["ssl", "apache ssl", "ssl on ubuntu", "web sever", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
+tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/ssl-guides/ubuntu-9-10-karmic/']
+aliases: ['/web-servers/apache/ssl-guides/ubuntu-9-10-karmic/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-26
 title: 'SSL Certificates with Apache 2 on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

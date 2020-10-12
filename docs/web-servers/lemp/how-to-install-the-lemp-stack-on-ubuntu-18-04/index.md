@@ -5,6 +5,7 @@ author:
 description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
 og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
+tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
 modified_by:
@@ -12,7 +13,13 @@ modified_by:
 published: 2018-06-04
 title: 'How to Install the LEMP Stack on Ubuntu 18.04'
 h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
-aliases: ['web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/']
+image: How-to-Install-LEMP-Stack-on-Ubuntu-1804_1200x631.png
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 18.04
+aliases: ['/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/']
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
@@ -24,6 +31,8 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 ## Before You Begin
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+
+    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 

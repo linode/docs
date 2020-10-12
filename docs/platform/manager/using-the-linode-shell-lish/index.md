@@ -1,16 +1,17 @@
- ---
+---
 author:
   name: Linode
   email: docs@linode.com
 description: 'Learn how to use Lish as a shell for managing or rescuing your Linode.'
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/manager/using-the-linode-shell-lish-classic-manager/','networking/using-the-linode-shell-lish/','using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','platform/using-the-linode-shell-lish/']
+aliases: ['/using-lish-the-linode-shell/','/networking/using-the-linode-shell-lish/','/platform/manager/using-the-linode-shell-lish-classic-manager/','/troubleshooting/using-lish-the-linode-shell/','/platform/using-the-linode-shell-lish/']
 modified: 2019-06-20
 modified_by:
   name: Linode
 published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
+tags: ["linode platform","cloud manager"]
 ---
 
 ![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)
@@ -111,13 +112,17 @@ You can also connect to Lish using a web browser. This is useful when you don't 
 
 1. From here, you can log in to your Linode with your root username and password, or any other username and password.
 
+{{< note >}}
+If you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you will not be able to log in to your Linode through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
+{{</ note >}}
+
 Now you can use the console, or exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
 
 ### Add Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
+If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
 
-1. Log in to the [Linode Cloud Manager](https://manager.linode.com).
+1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1. Click on your profile icon in the top right hand corner of the Manager and select **My Profile**.
 

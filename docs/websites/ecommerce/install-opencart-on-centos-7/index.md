@@ -4,8 +4,9 @@ author:
   email: docs@linode.com
 description: 'This tutorial will guide you through basic installation and set-up of popular ecommerce platform OpenCart on CentOS 7.'
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/e-commerce/opencart/centos-7/','websites/ecommerce/opencart-on-centos-7/']
+aliases: ['/web-applications/e-commerce/opencart/centos-7/','/websites/ecommerce/opencart-on-centos-7/']
 modified: 2017-08-21
 modified_by:
   name: Jonathan Chun
@@ -15,6 +16,11 @@ external_resources:
  - '[OpenCart Website](https://www.opencart.com)'
  - '[OpenCart Documentation](http://docs.opencart.com/)'
  - '[OpenCart Community Forums](http://forum.opencart.com/)'
+relations:
+    platform:
+        key: how-to-install-opencart
+        keywords:
+           - distribution: CentOS 7
 ---
 
 ![banner_image](How_to_Install_OpenCart_on_CentOS_smg.jpg)

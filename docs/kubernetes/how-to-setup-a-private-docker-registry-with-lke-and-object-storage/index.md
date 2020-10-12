@@ -5,6 +5,7 @@ author:
 description: 'In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry.'
 og_description: 'In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry'
 keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
+tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: private-docker-registry.png
 published: 2020-03-26
@@ -121,7 +122,7 @@ In this section you will install cert-manager using Helm and the required cert-m
 
 1. Install cert-manager's CRDs.
 
-        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.1/cert-manager.crds.yaml
+        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.1/cert-manager.crds.yaml
 
 1. Create a cert-manager namespace.
 
@@ -140,7 +141,7 @@ In this section you will install cert-manager using Helm and the required cert-m
         helm install \
         cert-manager jetstack/cert-manager \
         --namespace cert-manager \
-        --version v0.14.1
+        --version v0.15.1
 
 1. Verify that the corresponding cert-manager pods are now running.
 
@@ -290,8 +291,8 @@ If you have not yet [generated an Object Storage key pair](/docs/platform/object
 
 1. Create a new file named `docker-configs.yaml` using the example configurations. Ensure you replace the following values in your file:
       - `ingress.hosts` with your own Docker registry's domain
-      - `ingress.tls.secretName` with the secret name you used when [creating your ClusterIssuer](#create-a-clusterissuer-resource)
-      - `ingress.tls.secretName.hosts` with the domain for which you wish to secure with your TLS certificate.
+      - `ingress.tls.secretName` with the name you used when [creating your Certificate](#create-a-certificate-resource)
+      - `ingress.tls.hosts` with the domain for which you wish to secure with your TLS certificate.
       - `secrets.s3.accessKey` with the value of your [Object Storage account's access key](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and `secrets.s3.secretKey` with the corresponding secret key.
       - `secrets.htpasswd` with the value returned when you view the contents of your `my_docker_pass` file. However, ensure you do not remove the `|-` characters. This ensures that your YAML is properly formatted. See step 4 in the [Enable Basic Authentication](#enable-basic-authentication) section for details on viewing the contents of your password file.
       - `s3.region` with your Object Storage bucket's cluster region, `s3.regionEndpoint` with your Object Storage bucket's region endpoint, and `s3.bucket` with your registry's Object Storage bucket name.

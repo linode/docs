@@ -3,9 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Learn how to generate, update, and disable your Linode API key.'
-keywords: ["linode api", " api key", " key"]
+keywords: ["linode api", "api key", "key"]
+tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['api/key/']
+aliases: ['/api/key/']
 deprecated: true
 deprecated_link: platform/api/getting-started-with-the-linode-api
 modified: 2014-02-14
@@ -23,7 +24,7 @@ Learn how to generate and remove your Linode API keys for use with the [Linode A
 
 Follow the steps below to generate an API key for your Linode account. This will enable access to the Linode API for this user.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/).
+1.  Log in to the [Linode Manager](https://cloud.linode.com/).
 2.  Select the **my profile** link.
 3.  Enter your password and click **Authenticate**.
 4.  Select the **API Keys** tab.

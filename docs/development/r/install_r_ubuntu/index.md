@@ -5,6 +5,7 @@ author:
 description: 'Shortguide for installing R on Ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
+tags: ["ubuntu", "debian"]
 modified: 2018-02-07
 modified_by:
   name: Sam Foo

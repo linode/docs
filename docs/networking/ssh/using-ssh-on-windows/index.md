@@ -5,12 +5,13 @@ author:
 description: 'Accessing remote servers with SSH on Windows systems.'
 keywords: ["ssh", "windows", "putty", "cygwin", "openssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/using-putty/','networking/ssh/ssh-connections-using-putty-on-windows/']
+aliases: ['/networking/using-putty/','/networking/ssh/ssh-connections-using-putty-on-windows/']
 modified: 2019-01-14
 modified_by:
   name: Linode
 published: 2009-09-20
 title: Using SSH on Windows
+tags: ["networking","ssh","security"]
 ---
 
 ![Using SSH on Windows](using-ssh-on-windows.png "Using SSH on Windows")

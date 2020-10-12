@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'Configuring the LAMP stack on Ubuntu Linux 9.04 (Jaunty).'
 keywords: ["ubuntu lamp server", "ubuntu web server", "ubuntu jaunty"]
+tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/ubuntu-9-04-jaunty/','websites/lamp/lamp-server-on-ubuntu-9-04-jaunty/']
+aliases: ['/lamp-guides/ubuntu-9-04-jaunty/','/websites/lamp/lamp-server-on-ubuntu-9-04-jaunty/']
 modified: 2011-05-02
 modified_by:
   name: Linode
@@ -17,11 +18,16 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 
 
-This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 9.04 (eg. Jaunty) system.
+This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 9.04 (e.g. Jaunty) system.
 
 In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 

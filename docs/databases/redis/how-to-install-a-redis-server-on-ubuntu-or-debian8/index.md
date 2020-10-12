@@ -5,7 +5,7 @@ author:
 description: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
 keywords: ["redis", "redis ubuntu 14.04", "redis server", "redis ubuntu 16.04", "debian 8", "redis cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['databases/redis/deploy-redis-on-ubuntu-or-debian/']
+aliases: ['/databases/redis/deploy-redis-on-ubuntu-or-debian/']
 modified: 2017-09-13
 modified_by:
   name: Edward Angert
@@ -20,6 +20,12 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/security)'
+relations:
+    platform:
+        key: how-to-install-redis
+        keywords:
+            - distribution: Ubuntu/Debian
+tags: ["ubuntu","debian","database","nosql"]
 ---
 
 
@@ -27,7 +33,7 @@ external_resources:
 
 Redis is an open-source, in-memory, data-structure store with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
-Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory) with this guide.
+Since Redis serves all data from memory, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) with this guide.
 
 ## Before You Begin
 

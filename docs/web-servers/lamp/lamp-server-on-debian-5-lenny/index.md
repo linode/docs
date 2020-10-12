@@ -5,8 +5,9 @@ author:
   email: docs@linode.com
 description: 'How to build a LAMP application server with Debian 5.0 (Lenny).'
 keywords: ["Debian LAMP Server", "Debian LAMP guide", "LAMP howto"]
+tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['lamp-guides/debian-5-lenny/','websites/lamp/lamp-server-on-debian-5-lenny/']
+aliases: ['/lamp-guides/debian-5-lenny/','/websites/lamp/lamp-server-on-debian-5-lenny/']
 modified: 2012-10-03
 modified_by:
   name: Linode
@@ -17,6 +18,11 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Debian 5
 ---
 
 

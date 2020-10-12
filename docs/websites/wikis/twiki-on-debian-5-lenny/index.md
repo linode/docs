@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Install and configure a structured wiki with TWiki.'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
+tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/wikis/twiki/debian-5-lenny/']
+aliases: ['/web-applications/wikis/twiki/debian-5-lenny/']
 modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2011-01-28
 title: 'TWiki on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: install-twiki
+        keywords:
+           - distribution: Debian 5
 ---
 
 

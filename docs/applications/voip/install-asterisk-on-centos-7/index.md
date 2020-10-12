@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Installing Asterisk on CentOS 7'
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-30
 modified: 2019-02-01
@@ -13,6 +14,11 @@ title: 'How to Install Asterisk on CentOS 7'
 contributor:
     name: Nick Rahl
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: asterisk-freepbx-telephone
+        keywords:
+            - distribution: CentOS 7
 ---
 
 

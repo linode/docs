@@ -5,6 +5,7 @@ author:
 description: 'Learn how to deploy the NGINX Ingress Controller on LKE. After creating a cluster on LKE, this guide will walk through how to: deploy the NGINX Ingress Controller on your Linode Kubernetes Engine.'
 og_description: 'Learn how to deploy NGINX Ingress Controller on LKE. After creating a cluster on LKE, this guide will walk through how to: deploy the NGINX Ingress Controller on your Linode Kubernetes Engine.'
 keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 'ingress','nginx']
+tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
 modified_by:
@@ -34,6 +35,10 @@ This guide will show you how to:
 - Use [HELM](https://helm.sh/) to install an NGINX Ingress Controller.
 - Create two instances of sample application Deployments to create two separate mock websites on a single Kubernetes cluster served over port 80.
 - Create an Ingress and a NodeBalancer to route traffic from the internet to Kubernetes Services.
+
+    {{< note >}}
+[Linode NodeBalancers](https://www.linode.com/products/nodebalancers/0) do not currently support ProxyProtocol. For this reason, Kubernetes LoadBalancer Services running on Linode do not support ProxyProtocol either. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to Linode NodeBalancers.
+    {{</ note >}}
 
 ## Before You Begin
 
@@ -222,7 +227,7 @@ Once the Ingress has been created, try accessing your subdomains from a browser.
 
 ## Next Steps
 
-If you would like to secure your site with TLS encryption, you can use [cert-manager](https://cert-manager.io/docs/) to easily generate and manage your certificates.
+If you would like to secure your site with TLS encryption, you can follow the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/).
 
 If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove the billable Linode resources that were generated.
 

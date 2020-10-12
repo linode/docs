@@ -5,13 +5,19 @@ author:
   email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
+tags: ["web server","python","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/python-uwsgi/debian-6-squeeze/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/']
+aliases: ['/web-servers/nginx/python-uwsgi/debian-6-squeeze/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/']
 modified: 2011-05-09
 modified_by:
   name: Linode
 published: 2011-02-23
 title: 'WSGI using uWSGI and nginx on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Debian 6
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
