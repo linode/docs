@@ -506,7 +506,7 @@ class Searcher {
 						requests: [
 							{
 								indexName: searchConfig.meta_index,
-								params: 'query=&hitsPerPage=500'
+								params: 'query=&hitsPerPage=600'
 							}
 						]
 					},
@@ -768,7 +768,7 @@ class Searcher {
 						{ requests: this.searchState.metaSearch.query.requests, isSectionMeta: true },
 						(results) => {
 							let m = results[0].hits.reduce(function(m, hit) {
-								m.set(hit.objectID.toLowerCase(), hit);
+								m.set(hit.objectID, hit);
 								return m;
 							}, new Map());
 							this.searchState.metaSearch.setResults(m);

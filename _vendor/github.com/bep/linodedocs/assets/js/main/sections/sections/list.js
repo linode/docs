@@ -270,6 +270,7 @@ var lnSectionsController = {};
 						s.linkTitle = m.linkTitle || m.title;
 						s.thumbnail = m.thumbnail;
 					}
+
 					return s;
 				};
 
