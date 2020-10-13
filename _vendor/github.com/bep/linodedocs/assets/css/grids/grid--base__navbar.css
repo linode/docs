@@ -45,12 +45,12 @@
     @apply pl-6 m-0 bg-white;
 }
 
-.is-topbar-pinned .grid--base #navbar__toc {
+.grid--base #navbar__toc {
     width: 181px;
 }
 
 @screen md {
-    .is-topbar-pinned .grid--base #navbar__toc {
+    .grid--base #navbar__toc {
         width: var(--width-right-column);
     }
 }

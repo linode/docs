@@ -1,5 +1,5 @@
 <h1 class="leading-tight tracking-tight text-5xl text-titlecolor w-full lg:w-3/4">
-    {{ .CurrentSection.Parent.Params.title }} - {{ .Title }}
+  {{ .CurrentSection.Parent.Params.title }} - {{ .Title }}
 </h1>
 <p class="pt-2 md:pt-6 text-basicgray">
   Posted on
@@ -15,3 +15,8 @@
   {{ end }}
   .
 </p>
+{{ with .Params.product_description }}
+  <p class="mt-8">
+    {{ . | $.RenderString }}
+  </p>
+{{ end }}

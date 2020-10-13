@@ -3,11 +3,11 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <style type="text/css">
-	.st0-1c97bdbf978b6e1d6fbff0022b2ffa88{fill:#333233;}
-	.st1-1c97bdbf978b6e1d6fbff0022b2ffa88{fill:#CCCCCC;}
+	.st0{fill:#333233;}
+	.st1{fill:#CCCCCC;}
 </style>
 <g id="Big_data">
-	<path class="st0-1c97bdbf978b6e1d6fbff0022b2ffa88" d="M448,329.1V182.9c17.1-4.3,27.4-21.7,23.1-38.8s-21.7-27.4-38.8-23.1c-5,1.3-9.7,3.8-13.6,7.3L287.6,52.5
+	<path class="st0" d="M448,329.1V182.9c17.1-4.3,27.4-21.7,23.1-38.8s-21.7-27.4-38.8-23.1c-5,1.3-9.7,3.8-13.6,7.3L287.6,52.5
 		c0.3-1.5,0.4-3,0.4-4.5c0-17.7-14.3-32-32-32s-32,14.3-32,32c0,1.5,0.2,3,0.5,4.5L93.3,128.2c-13.1-11.8-33.3-10.7-45.1,2.4
 		s-10.7,33.3,2.4,45.1c3.8,3.4,8.4,5.9,13.4,7.2v146.3c-17.1,4.3-27.4,21.7-23.1,38.8s21.7,27.4,38.8,23.1c5-1.3,9.7-3.8,13.6-7.3
 		l131.2,75.7c-0.3,1.5-0.4,3-0.4,4.5c0,17.7,14.3,32,32,32s32-14.3,32-32c0-1.5-0.2-3-0.5-4.5l131.2-75.7
@@ -33,11 +33,11 @@
 		 M278.6,441.4l43.3-73.4h87.2c0.2,0.8,0.5,1.6,0.8,2.4l-128.6,74.2C280.5,443.5,279.6,442.4,278.6,441.4z M440,376
 		c-8.8,0-16-7.2-16-16s7.2-16,16-16s16,7.2,16,16S448.8,376,440,376z"/>
 </g>
-<circle class="st1-1c97bdbf978b6e1d6fbff0022b2ffa88" cx="256" cy="256" r="16"/>
-<circle class="st1-1c97bdbf978b6e1d6fbff0022b2ffa88" cx="440" cy="152" r="16"/>
-<circle class="st1-1c97bdbf978b6e1d6fbff0022b2ffa88" cx="256" cy="48" r="16"/>
-<circle class="st1-1c97bdbf978b6e1d6fbff0022b2ffa88" cx="72" cy="152" r="16"/>
-<circle class="st1-1c97bdbf978b6e1d6fbff0022b2ffa88" cx="72" cy="360" r="16"/>
-<circle class="st1-1c97bdbf978b6e1d6fbff0022b2ffa88" cx="256" cy="464" r="16"/>
-<circle class="st1-1c97bdbf978b6e1d6fbff0022b2ffa88" cx="440" cy="360" r="16"/>
+<circle class="st1" cx="256" cy="256" r="16"/>
+<circle class="st1" cx="440" cy="152" r="16"/>
+<circle class="st1" cx="256" cy="48" r="16"/>
+<circle class="st1" cx="72" cy="152" r="16"/>
+<circle class="st1" cx="72" cy="360" r="16"/>
+<circle class="st1" cx="256" cy="464" r="16"/>
+<circle class="st1" cx="440" cy="360" r="16"/>
 </svg>

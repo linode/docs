@@ -1,9 +1,0 @@
-[[queries.featured]]
-key = "Title"
-operator = "eq"
-match = "How to Configure Nextcloud to use Linode Object Storage as an External Storage Mount"
-
-[[queries.getting_started]]
-key = "Type"
-operator = "in"
-match = ["getting-started", "development"]

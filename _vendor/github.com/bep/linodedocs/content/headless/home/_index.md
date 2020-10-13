@@ -1,8 +1,0 @@
----
-title: Headless Home
-
----
-
-
-
-

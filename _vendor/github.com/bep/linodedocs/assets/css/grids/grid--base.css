@@ -48,7 +48,7 @@
         --col-navbar: 1;
         --height-navbar-row: 60px;
         --width-left-column: 334px; /* Includes 1px right border. */
-        --width-right-column: 308px; /* Incudes 1px left border. */
+        --width-right-column: 308px; /* Includes 1px left border. */
         --height-linode-menu-row: 70px;
     }
 }

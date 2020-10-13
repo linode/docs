@@ -1,6 +1,12 @@
 {{ $img := dict "img" "" "isResource" false }}
 {{- with $.Params.image }}
-  {{ $img = dict "img" (index . 0 | absURL) "isResource" false }}
+  {{ $ref := "" }}
+  {{ if reflect.IsSlice .}}
+    {{ $ref = (index . 0) }}
+  {{ else }}
+    {{ $ref = .}}
+  {{ end }}
+  {{ $img = dict "img" $ref "isResource" false }}
 {{ else }}
   {{ $images := $.Resources.ByType "image" }}
   {{ $featured := $images.GetMatch "*feature*" }}

@@ -1,5 +1,5 @@
 nav.toc {
-    @apply w-full;
+    @apply w-full relative;
     left: calc(100% - var(--width-right-column));
     top: calc(var(--height-navbar-row) + 1px);
     width: var(--width-right-column);
@@ -13,20 +13,23 @@ nav.toc {
 }
 
 nav.toc li > span {
-    @apply relative h-full py-2;
+    @apply h-full py-2;
 }
 
 nav.toc li a {
-    @apply font-normal text-textcolor leading-snug box-border w-full h-full truncate;
+    @apply font-normal text-textcolor leading-8 box-border w-full h-full truncate;
+}
+
+nav.toc li > span > a > span {
 }
 
 nav.toc li.active > span > a > span,
 nav.toc li > span > a:hover > span {
-    @apply absolute top-0;
-    z-index: -10;
-    margin-left: -310px;
-    height: 100%;
-    width: 500px;
+    @apply absolute;
+    z-index: -1;
+    left: -200px;
+    height: 2rem;
+    width: 900px;
 }
 
 nav.toc li a:hover > span {
@@ -38,7 +41,7 @@ nav.toc li.active a > span {
 }
 
 nav.toc li {
-    @apply z-10 w-full pr-1 pt-2 pb-2 pl-4;
+    @apply z-10 w-full pr-1 pt-0 pb-0 pl-4;
     list-style-position: inside;
 }
 
@@ -47,11 +50,11 @@ nav.toc li:last-of-type {
 }
 
 nav.toc li:first-of-type {
-    @apply pt-4;
+    @apply pt-0;
 }
 
 nav .toc__inner > ol {
-    @apply pl-5;
+    @apply pl-4;
 }
 
 nav.toc li.level-2 {

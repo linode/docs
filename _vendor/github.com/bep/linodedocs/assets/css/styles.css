@@ -95,22 +95,32 @@ body {
   text-overflow: ellipsis;
 }
 
-/* These matches the padding elements of the container class (but without the width attributes)
+/* 
+These matches the padding elements of the container class (but without the width attributes)
 for the smaller screens.
  */
-.pl-container {
+.pl-container,
+.ml-container {
   padding-left: 1rem;
 }
 
-.pr-container {
+.pr-container,
+.mr-container {
   padding-right: 1rem;
 }
 
 @screen md {
-  .pl-container {
+  .pl-container,
+  .ml-container {
     padding-left: 1.5rem;
   }
-  .pr-container {
+  .pr-container,
+  .mr-container {
     padding-right: 1.5rem;
   }
+}
+
+.px-container,
+.mx-container {
+  @apply pl-container pr-container;
 }
