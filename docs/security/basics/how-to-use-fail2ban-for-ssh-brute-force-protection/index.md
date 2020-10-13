@@ -1,8 +1,8 @@
 ---
 author:
   name: Hackersploit
-description: 'This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'
-og_description: 'Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attack through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.'
+description: 'Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server.'
+og_description: 'Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server.'
 keywords: ["using fail2ban for SSH brute-force protection", "brute-force protection with fail2ban"]
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
