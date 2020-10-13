@@ -41,7 +41,7 @@ In order for Linode's DNS servers to function as slaves,your DNS master server m
     2a01:7e00::a
 
 {{< caution >}}
-On **December 15th, 2020** the IP address `75.127.96.10` will be replaced with the IP address `74.207.225.10`. While both IP addresses currently provide AXFR support, users will need to replace `75.127.96.10` with `74.207.225.10` in their configurations by the 15th of December, 2020,for long term AXFR support.
+On **December 15th, 2020** the IP address `75.127.96.10` will be replaced with the IP address `74.207.225.10`. While both IP addresses currently provide AXFR support, users will need to replace `75.127.96.10` with `74.207.225.10` in their configurations by the 15th of December, 2020, for long term AXFR support.
 {{< /caution >}}
 
 1.  Enter your domain name in the **Domain** field. An example is shown above.
