@@ -94,6 +94,7 @@ backtick
 backticks
 backupninja
 bampton
+bantime
 barebones
 base64
 basearch
@@ -433,6 +434,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+findtime
 finnix
 firewalld
 firewalling
@@ -608,6 +610,7 @@ ifnames
 iframe
 iframes
 ifup
+ignoreip
 ikiwiki
 im
 imagize
@@ -781,6 +784,7 @@ logdir
 logfile
 logfiles
 loglevel
+logpath
 logrotate
 logstash
 logwatch
@@ -830,6 +834,7 @@ matplotlib
 mawk
 maxconn
 maxdepth
+maxretry
 mbit
 mbits
 mbox
