@@ -26,7 +26,19 @@ var lnSvgLoader = {};
 		el.replaceWith(newEl);
 	};
 
+	const createImgEl = function(el, str) {
+		let img = document.createElement('img');
+		let clazz = el.getAttribute('class');
+		img.setAttribute('class', clazz);
+		img.setAttribute('src', str);
+		el.replaceWith(img);
+	};
+
 	ctx.Load = function(el, src) {
+		if (src.startsWith('http')) {
+			createImgEl(el, src);
+			return;
+		}
 		if (!src.endsWith('svg')) {
 			replaceIn(el, '');
 			return;
