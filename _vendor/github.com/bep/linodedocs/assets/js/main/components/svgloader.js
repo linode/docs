@@ -3,8 +3,6 @@ var lnSvgLoader = {};
 (function(ctx) {
 	'use strict';
 
-	const fetchSvg = (image) => {};
-
 	var debug =
 		(typeof LN_DEBUG !== 'undefined' && LN_DEBUG) || 0 ? console.log.bind(console, '[svgloader]') : function() {};
 

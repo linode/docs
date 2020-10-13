@@ -300,8 +300,9 @@
 {{ define "home/section/carousel/item"}}
   <div class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
     <a :href="item.href" class="no-underline block">
-      <div class="relative overflow-hidden pb-16/9">
-        <img :src="item.thumbnailUrl" alt="Article image" class="absolute h-full w-full object-cover" loading="lazy">
+      <div class="relative overflow-hidden pb-16/9 bg-gray-200">
+        <img :src="item.thumbnailUrl"
+        alt="Article image" class="absolute fade h-full w-full object-cover transparent" @load="$event.target.classList.remove('transparent')" loading="lazy">
       </div>
       <div class="px-4 pt-4 pb-6">
         <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.linkTitle"></h3>

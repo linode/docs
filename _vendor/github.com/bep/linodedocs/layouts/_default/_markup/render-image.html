@@ -2,7 +2,7 @@
 {{- with $img -}}
   {{/* We could resize/process the images here if needed. */}}
   {{/* The elements from Markdown are: ![.Text](.Destination ".Title") */}}
-  <img alt="{{ $.Text }}" src="{{ $img.RelPermalink }}" />
+  <img alt="{{ $.Text }}" src="{{ $img.RelPermalink }}" loading="lazy" />
 {{- else -}}
   <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" loading="lazy"/>
 {{- end -}}

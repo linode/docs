@@ -13,20 +13,22 @@ var lnInitController = {};
 			// We do any scroll to hash location here, because Turbolinks's implementation
 			// of the same is buggy; most likely because they do it too early.
 			init: function() {
-				if (window.location.hash) {
-					debug('init:', window.location.hash);
-					try {
-						let el = document.querySelector(window.location.hash);
-						if (el) {
-							var elTop = el.offsetTop;
+				return function() {
+					if (window.location.hash) {
+						debug('init:', window.location.hash);
+						try {
+							let el = document.querySelector(window.location.hash);
+							if (el) {
+								var elTop = el.offsetTop;
 
-							window.scrollTo({
-								left: 0,
-								top: elTop - 80
-							});
-						}
-					} catch (e) {}
-				}
+								window.scrollTo({
+									left: 0,
+									top: elTop - 80
+								});
+							}
+						} catch (e) {}
+					}
+				};
 			}
 		};
 	};
