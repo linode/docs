@@ -2,19 +2,30 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install and configure supervisor on CentOS.'
-og_description: 'Install and confgiure supervisor on CentOS.'
+description: 'Install and configure supervisor on CentOS'
+og_description: 'Install and confgiure supervisor on CentOS'
 keywords: ['centos', 'system', 'supervisor', 'supervisord']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-10
 modified_by:
   name: Linode
 title: "Install and configure supervisor on CentOS"
-h1_title: "Install and configure supervisor on CentOS."
+h1_title: "Install and configure supervisor on CentOS"
 contributor:
   name: Dan Nielsen
   link: https://github.com/danielsen
 ---
+
+## Introduction
+
+**supervisor** is a process control system based on the client/server model. It can be used to simplify process management
+by providing a centralized location for process control. It is most often deployed to control services that don't have
+initialization/auto-start/management scripts. Remote process control is also supported via RPC.
+
+{{< note >}}
+This guide will use a dummy program called `app.py` as an example for process control. However, it should not be assumed
+that `supervisor` can only control Python applications.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -29,28 +40,17 @@ contributor:
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Introduction
-
-**supervisor** is a process control system based on the client/server model. It can be used to simplify process management
-by providing a centralized location for process control. It is most often deployed to control services that don't have
-initialization/auto-start/management scripts. Remote process control is also supported via RPC.
-
-{{< note >}}
-This guide will use a dummy program called `app.py` as an example for process control. However, it should not be assumed
-that `supervisor` can only control Python applications.
-{{< /note >}}
-
 ## Prepare System
 
-        sudo yum update
+    sudo yum update
 
 `supervisor` is in the EPEL package repository for CentOS.
 
-        sudo yum install epel-release
+    sudo yum install epel-release
 
 ## Install and Configure Supervisor
 
-        sudo yum install supervisor
+    sudo yum install supervisor
 
 If you intend supervisor to manage processes that require the network to be online edit `/usr/lib/systemd/system/supervisord.service` and add `network-online.target` to the `After` parameter of the `[Unit]` section. For example:
 
@@ -100,12 +100,12 @@ stopasgroup=true
 
 Enable and start the `supervisord` service.
 
-        sudo systemctl enable supervisord
-        sudo systemctl start supervisord
+    sudo systemctl enable supervisord
+    sudo systemctl start supervisord
 
 Once `supervisord` has been started you can access it via the command line with the `supervisorctl`, e.g.
 
-        sudo supervisorctl
+    sudo supervisorctl
 
 The `supervisorctl` documentation can be found at (http://supervisord.org/running.html#running-supervisorctl).
 
@@ -132,14 +132,14 @@ password=A!VeryS3cuReP@5sw0rd  ; Service password, make it a good one.
 
 Enable a firewall rule to allow access for your remote IP or a trusted network.
 
-        sudo firewall-cmd --permanent --zone=public --add-rich-rule='
-          rule family="ipv4"
-          source address="4.3.2.1/32"
-          port protocol="tcp" port="9001" accept'
-        sudo firewall-cmd --reload
+    sudo firewall-cmd --permanent --zone=public --add-rich-rule='
+      rule family="ipv4"
+      source address="4.3.2.1/32"
+      port protocol="tcp" port="9001" accept'
+    sudo firewall-cmd --reload
 
 Restart `supervisord`
 
-        sudo systemctl restart supervisord
+    sudo systemctl restart supervisord
 
 You should now be able to visit `http://<yourIPOrDomain>:9001` and log in with the configured user name and password.
