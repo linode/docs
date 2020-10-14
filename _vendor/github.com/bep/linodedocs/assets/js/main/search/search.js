@@ -768,7 +768,8 @@ class Searcher {
 						{ requests: this.searchState.metaSearch.query.requests, isSectionMeta: true },
 						(results) => {
 							let m = results[0].hits.reduce(function(m, hit) {
-								m.set(hit.objectID, hit);
+								// The blog sections have mixed-case objectIDs, but we need this lookup to be case insensitive.
+								m.set(hit.objectID.toLowerCase(), hit);
 								return m;
 							}, new Map());
 							this.searchState.metaSearch.setResults(m);

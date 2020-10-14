@@ -276,7 +276,7 @@ var lnSectionsController = {};
 
 				this.data.sections = [];
 				for (var key in sectionFacet) {
-					this.data.sections.push(newSection(key, sectionFacet[key]));
+					this.data.sections.push(newSection(key.toLowerCase(), sectionFacet[key]));
 				}
 
 				this.loaded = true;

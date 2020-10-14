@@ -33,7 +33,7 @@ var lnBreadcrumbs = {};
 			},
 
 			init: function(page) {
-				debug('init', page.sectionsEntries);
+				debug('init', page);
 				this.page = page;
 				this.$nextTick(() => {
 					dispatcher.searchBlank();
@@ -44,14 +44,7 @@ var lnBreadcrumbs = {};
 				debug('createBreadcrumbs', this.page);
 				if (this.page.isStatic && this.page.sectionsEntries) {
 					let parts = this.page.sectionsEntries;
-					let isDocs = parts[0] !== 'products' && parts[0] !== 'api';
-					if (isDocs) {
-						parts.unshift('docs');
-					}
 					let sections = this.assembleSections(parts);
-					if (!isDocs) {
-						sections.pop();
-					}
 					sections.push(this.page);
 					this.data.breadcrumbs = sections;
 					debug('route', parts, this.data.breadcrumbs);
@@ -62,6 +55,7 @@ var lnBreadcrumbs = {};
 				if (!parts) {
 					return;
 				}
+
 				this.data.breadcrumbs = this.assembleSections(parts);
 			},
 
