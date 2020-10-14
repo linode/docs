@@ -199,3 +199,7 @@ Status for the jail: sshd
     The output above shows you the status and information regarding the sshd jail. You can see that you have four total failed authentication attempts and one banned IP address. This is helpful as it can alert you to potential targeted attacks.
 
 You have successfully been able to set up, implement, test, and analyze Fail2Ban for brute-force protection. You have completed setting up your remote authentication security.
+
+## Next Steps
+
+For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/) guide.
