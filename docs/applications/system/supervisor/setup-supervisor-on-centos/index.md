@@ -19,8 +19,8 @@ contributor:
 ## Introduction
 
 **supervisor** is a process control system based on the client/server model. It can be used to simplify process management
-by providing a centralized location for process control. It is most often deployed to control services that don't have
-initialization/auto-start/management scripts. Remote process control is also supported via RPC.
+by providing a centralized location for process control and is most often deployed to control services that don't have
+initialization, auto-start, or management scripts. Remote process control is also supported via [Remote Procedure Calls](https://man7.org/linux/man-pages/man3/rpc.3.html), or RPC.
 
 {{< note >}}
 This guide will use a dummy program called `app.py` as an example for process control. However, it should not be assumed
@@ -29,7 +29,7 @@ that `supervisor` can only control Python applications.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, [Create a New Linode](/docs/getting-started/#create-a-linode) using our latest CentOS image, and complete the steps for setting your [Linode's Hostname](/docs/getting-started/#set-the-hostname) and [Timezone](/docs/getting-started/#set-the-timezone).
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
@@ -52,7 +52,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     sudo yum install supervisor
 
-If you intend supervisor to manage processes that require the network to be online edit `/usr/lib/systemd/system/supervisord.service` and add `network-online.target` to the `After` parameter of the `[Unit]` section. For example:
+If you intend to use supervisor to manage processes that require the network to be online, edit the `/usr/lib/systemd/system/supervisord.service` file and add `network-online.target` to the `After` parameter of the `[Unit]` section. For example:
 
 {{< file "/usr/lib/systemd/system/supervisord.service" conf >}}
 [Unit]
