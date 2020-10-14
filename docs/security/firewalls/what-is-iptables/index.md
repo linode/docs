@@ -190,3 +190,7 @@ This lists out the relevant line numbers for each rule. Once the rule is identif
 If you want to clear all the rules that you have added to start over, you can use the flush option:
 
     sudo iptables -F
+
+## Next Steps
+
+For more detailed information on iptables, including using ip6tables, rulesets, and iptables-persistent, see the [Controlling Network Traffic with iptables - A Tutorial](/docs/security/firewalls/control-network-traffic-with-iptables/) guide.
