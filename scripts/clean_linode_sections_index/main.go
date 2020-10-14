@@ -10,12 +10,12 @@ import (
 )
 
 var (
-	version = "v0.5"
+	version = "v0.6"
 )
 
 const (
 	defaultAppID = "KGUN8FAIPF"
-	index        = "linode-docs-sections-bep"
+	index        = "linode-documentation-sections"
 )
 
 type config struct {

@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	version = "v0.5"
+	version = "v0.6"
 )
 
 const (
@@ -60,12 +60,12 @@ func main() {
 
 	indices := []algoliaIndex{
 		algoliaIndex{
-			name:    "linode-docs-bep",
+			name:    "linode-documentation",
 			source:  "index.json",
 			replace: true,
 		},
 		algoliaIndex{
-			name: "linode-docs-sections-bep",
+			name: "linode-documentation-sections",
 
 			source: "data/sections/index.json",
 			// This index is shared between Hugo and WordPress,
@@ -77,7 +77,7 @@ func main() {
 			replace: false,
 		},
 		algoliaIndex{
-			name:    "linode-docs-api-bep",
+			name:    "linode-documentation-api",
 			source:  "api/index.json",
 			replace: true,
 		},

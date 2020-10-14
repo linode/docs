@@ -27,13 +27,14 @@ time_format_default = "Monday, January 2, 2006"
 [params.search_config]
 app_id = "KGUN8FAIPF"
 api_key = "d4847002cd30392fe0fbd00a1da933ed"
-meta_index = "linode-docs-sections-bep"
+meta_index = "linode-documentation-sections"
 explorer_max_leafnodes = 50
 hits_per_page = 4
 
 [[params.search_config.sections]]
 name = "products"
-index = "linode-docs-bep"
+index = "linode-documentation"
+index_by_pubdate = "linode-documentation-sorted"
 title = "Products"
 filters = "section.lvl0:products"
 # The icons are fetched from layouts/sections/navigation/explorer-icons.html
@@ -50,7 +51,8 @@ hits_per_page = 4
 
 [[params.search_config.sections]]
 name = "guides"
-index = "linode-docs-bep"
+index = "linode-documentation"
+index_by_pubdate = "linode-documentation-sorted"
 title = "Guides"
 filters = "section.lvl0:guides"
 explorer_icon = "#icon-explorer--guides"
@@ -66,7 +68,7 @@ hits_per_page = 4
 
 [[params.search_config.sections]]
 name = "api"
-index = "linode-docs-api-bep"
+index = "linode-documentation-api"
 title = "API"
 filters = "section.lvl0:api"
 explorer_icon = "#icon-explorer--api"
@@ -76,7 +78,8 @@ filtering_facets = [{ name = "category", title = "Doc Category" }]
 
 [[params.search_config.sections]]
 name = "marketplace"
-index = "linode-wp-resources"
+index = "linode-wp"
+index_by_pubdate = "linode-wp-sorted"
 title = "Marketplace"
 filters = "section.lvl0:Marketplace"
 explorer_icon = "#icon-explorer--products"
@@ -86,7 +89,8 @@ filtering_facets = [{ name = "category", title = "Doc Category" }]
 
 [[params.search_config.sections]]
 name = "blog"
-index = "linode-wp-blog"
+index = "linode-wp"
+index_by_pubdate = "linode-wp-sorted"
 title = "Blog"
 filters = "section.lvl0:Blog"
 explorer_icon = "#icon-explorer--blog"
@@ -99,7 +103,8 @@ filtering_facets = [{ name = "category", title = "Doc Category" }]
 # If you need to map several sections to one Algolia index,
 # set the index attribute.
 name = "resources"
-index = "linode-wp-resources"
+index = "linode-wp"
+index_by_pubdate = "linode-wp-sorted"
 title = "Resources"
 filters = "section.lvl0:Resources"
 explorer_icon = "#icon-explorer--resources"

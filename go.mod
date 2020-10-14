@@ -10,3 +10,4 @@ require (
 	github.com/linode/linode-api-docs/v4 v4.77.0 // indirect
 	github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c // indirect
 )
+replace github.com/bep/linodedocs => ../linodedocs
