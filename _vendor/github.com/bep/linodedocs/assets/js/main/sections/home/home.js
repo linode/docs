@@ -145,7 +145,7 @@ var lnHome = {};
 					searchRequests.push({
 						page: 0,
 						params: `query=&hitsPerPage=${tilesPageSize * tilesAlgoliaPreloadPages}`,
-						indexName: sectionConfig.index,
+						indexName: sectionConfig.index_by_pubdate || sectionConfig.index,
 						filters: filters
 					});
 				});
@@ -213,27 +213,16 @@ var lnHome = {};
 				debug('receiveData', results);
 				var self = this;
 				// Match results by index name.
-				results.forEach((result) => {
-					let sectionConfig = searchConfig.sections.find((s) => {
-						if (s.index !== result.index) {
-							return false;
-						}
-						if (s.filters) {
-							// We have some sections that share the same index.
-							return result.params.endsWith(encodeURIComponent(s.filters));
-						}
-						return true;
-					});
+				let sectionConfigs = searchConfig.findSectionsBySearchResults(results);
 
-					if (!sectionConfig) {
-						throw `no index ${result.index} found`;
-					}
-
+				for (let i in sectionConfigs) {
+					let sectionConfig = sectionConfigs[i];
+					let result = results[i];
 					let name = sectionConfig.name;
 					let el = self.$refs[`carousel-${name}`];
 					let pager = newPager(tilesPageSize, el, result.hits);
 					self.data.sectionTiles[name] = pager;
-				});
+				}
 
 				this.data.loaded = true;
 			}
