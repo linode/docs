@@ -316,7 +316,7 @@ Lines written to the files configured in the `filebeat.yml` file now appear in t
 
 ## Cleaning Up
 
-If you ran Logstash manually to test and didn't change to the `logstash` user beforehand, there are some file permissions that need to be corrected before running Logstash through `systemd`.
+If you ran Logstash manually to test but didn't change to the `logstash` user beforehand, there are some file permissions that need to be corrected before running Logstash through `systemd`.
 
 1.  Run the following commands to remove these files:
 
