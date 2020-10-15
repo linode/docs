@@ -181,21 +181,26 @@ class Searcher {
 				section.disabledPermanent = !sections.includes(section.config.name);
 			});
 
-			// Assume only one for now.
-			let sectionConfig = searchConfig.sections.find((s) => s.name === sections);
+			sections.split(',').forEach((section) => {
+				let sectionConfig = searchConfig.sections.find((s) => s.name === section);
 
-			var filters = new Set();
-			sectionConfig.facetFilterNames().forEach((filterName) => {
-				let filterCsv = params.get(filterName);
-				if (filterCsv) {
-					let values = filterCsv.split(',');
-					values.forEach((v) => {
-						filters.add(`${filterName}:${v}`);
-					});
+				if (!sectionConfig) {
+					throw `section ${section} not found`;
 				}
-			});
 
-			self.filters.facets.set(sectionConfig.name, filters);
+				var filters = new Set();
+				sectionConfig.facetFilterNames().forEach((filterName) => {
+					let filterCsv = params.get(filterName);
+					if (filterCsv) {
+						let values = filterCsv.split(',');
+						values.forEach((v) => {
+							filters.add(`${filterName}:${v}`);
+						});
+					}
+				});
+
+				self.filters.facets.set(sectionConfig.name, filters);
+			});
 
 			return true;
 		};
