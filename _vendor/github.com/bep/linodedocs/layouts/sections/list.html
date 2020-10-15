@@ -144,7 +144,7 @@
         <template x-for="(item, i) in data.result.hits">
           <div :class="{ 'bg-white': i === 0, 'bg-gray-100': i > 0 }" class="w-full break-normal overflow-hidden  md:flex mb-4 border rounded-lg shadow-sm h-40">
             <div class="bg-gray-200 flex-none bg-cover w-64" :style="'background-image: url(' + item.thumbnailUrl + ')'" title=""></div>
-            <div class="pl-10 pr-2 py-4 flex flex-col justify-center content-center leading-normal ">
+            <div class="pl-10 pr-2 py-4 flex flex-col items-start content-center leading-normal ">
               <div>
                 <a class="tracking-tight cursor-pointer" :href="item.href">
                   <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
