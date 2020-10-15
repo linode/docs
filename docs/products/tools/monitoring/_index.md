@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "Easily analyze performance graphs and keep track of your transfer usage right from the Linode Cloud Manager. Create custom alerts for when you near thresholds you set."
+    product_description: "Easily analyze performance graphs and keep track of your transfer usage right from the Linode Cloud Manager. Create custom alerts for when you near thresholds you set."
 ---
 
 ## Availability

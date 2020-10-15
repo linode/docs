@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "Affordable Shared instance plans are ideal for general workloads and include generous amounts of free bundled transfer."
+    product_description: "Affordable Shared instance plans are ideal for general workloads and include generous amounts of free bundled transfer."
 ---
 
 ## Availability

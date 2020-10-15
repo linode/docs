@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "Cloud Manager is a user and mobile-friendly interface to deploy and manage virtual machines, configure networking, and control user accounts."
+    product_description: "Cloud Manager is a user and mobile-friendly interface to deploy and manage virtual machines, configure networking, and control user accounts."
 ---
 
 ## Availability

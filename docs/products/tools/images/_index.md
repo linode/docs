@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "Use Linode Images to take snapshots of your disk images, and deploy an identical copy to any Linode under your account. Linode Images are retained whether or not you have an active Linode on your account. Because of this, they are useful for long term storage of a private image template."
+    product_description: "Use Linode Images to take snapshots of your disk images, and deploy an identical copy to any Linode under your account. Linode Images are retained whether or not you have an active Linode on your account. Because of this, they are useful for long term storage of a private image template."
 ---
 
 ## Availability

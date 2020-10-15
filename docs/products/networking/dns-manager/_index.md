@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "Linode's DNS Manager is a comprehensive interface within the Linode Cloud Manager that gives you complete oversight of DNS records."
+    product_description: "Linode's DNS Manager is a comprehensive interface within the Linode Cloud Manager that gives you complete oversight of DNS records."
 ---
 
 ## Availability

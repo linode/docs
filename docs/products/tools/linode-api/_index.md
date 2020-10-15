@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-09-11
-    description: "Your gateway to everything Linode offers: Automate tasks in the Cloud Manager, create Linodes, manage IP addresses, and open support tickets using an intuitive REST API."
+    product_description: "Your gateway to everything Linode offers: Automate tasks in the Cloud Manager, create Linodes, manage IP addresses, and open support tickets using an intuitive REST API."
 ---
 
 ## Availability

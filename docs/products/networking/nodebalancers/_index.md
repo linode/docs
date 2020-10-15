@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "NodeBalancers are load balancers-as-a-service in the cloud, managed by Linode. They intelligently route incoming requests to backend Linodes to help your application cope with any load increase."
+    product_description: "NodeBalancers are load balancers-as-a-service in the cloud, managed by Linode. They intelligently route incoming requests to backend Linodes to help your application cope with any load increase."
 ---
 
 ## Availability

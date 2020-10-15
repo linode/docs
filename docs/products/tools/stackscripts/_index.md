@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "Use StackScripts to automatically configure new Linode instances using simple scripts. Create your own or browse the community StackScript library."
+    product_description: "Use StackScripts to automatically configure new Linode instances using simple scripts. Create your own or browse the community StackScript library."
 ---
 
 ## Availability

@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "No more surprise bills. Linode makes budgeting for your cloud infrastructure easy. Enjoy flat, no lock-in pricing consistent across every data center."
+    product_description: "No more surprise bills. Linode makes budgeting for your cloud infrastructure easy. Enjoy flat, no lock-in pricing consistent across every data center."
 ---
 
 ## Availability

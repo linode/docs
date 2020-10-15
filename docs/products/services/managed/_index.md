@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    description: "Downtime is expensive and puts your company’s reputation at risk. Linode Managed is an incident response service designed to help businesses cut out costly downtime. Our highly experienced Managed Service team is here around the clock to help."
+    product_description: "Downtime is expensive and puts your company’s reputation at risk. Linode Managed is an incident response service designed to help businesses cut out costly downtime. Our highly experienced Managed Service team is here around the clock to help."
 ---
 
 ## Availability
