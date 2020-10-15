@@ -1,4 +1,7 @@
-{{ define "head" }}
+{{ define "head-meta-main" }}
+  {{/* title and SEO are set in JS. */}}
+{{ end }}
+{{ define "head-meta-addons" }}
   {{/* Turbolinks previews does not work that well for pages with lots of JS rendered content. */}}
   <meta name="turbolinks-cache-control" content="no-preview">
 {{ end }}

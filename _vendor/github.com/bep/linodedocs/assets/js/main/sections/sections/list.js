@@ -210,6 +210,11 @@ var lnSectionsController = {};
 					this.data.meta = this.data.sectionMeta;
 				}
 
+				// Update <head>
+				setDocumentMeta({
+					title: this.data.meta.title
+				});
+
 				this.data.result = ns.results[0];
 
 				if (!this.data.result) {

@@ -6,6 +6,10 @@ function sendEvent(name, data, el = document) {
 	el.dispatchEvent(event);
 }
 
+function setDocumentMeta(meta) {
+	document.title = meta.title;
+}
+
 function toggleBooleanClass(baseClass, el, truthy) {
 	const is = `is-${baseClass}`;
 	const isNot = `is-not-${baseClass}`;

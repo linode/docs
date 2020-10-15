@@ -92,7 +92,7 @@ var lnArticleController = {};
 					return;
 				}
 
-				let contentType = match[0].replace("resource", "content").replace("post", "posts");
+				let contentType = match[0].replace('resource', 'content').replace('post', 'posts');
 				let slug = match[1].replace(/\/$/, '');
 
 				var url = `https://www.linode.com/wp-json/wp/v2/${contentType}?slug=${slug}&_embed=1`;
@@ -103,8 +103,8 @@ var lnArticleController = {};
 
 				fetchArticle(url, onSuccess, (err) => {
 					self.status.ok = false;
-					self.status.message = `Failed to get ${url}`;
-					console.log(err);
+					self.status.message = `Failed to get resource.`;
+					console.warn(err);
 				});
 
 				self.status.ok = true;

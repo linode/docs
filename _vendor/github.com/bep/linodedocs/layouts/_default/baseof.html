@@ -2,11 +2,16 @@
 {{/* Note that the TailwindCSS config is "scoped" by the ln-docs ID, so don't change it for no good reason. */}}
 <html id="ln-docs" lang="{{ site.Language.Lang }}">
 <head>
-  <title>
-    {{ block "title" . }}{{ if .IsPage }}{{ .FirstSection.Title }} | {{ end }}{{ .Title }}{{ end }}
-  </title>
   {{ partial "sections/head.html" . }}
-  {{ block "head" . }}{{ end }}
+  {{ block "head-meta-main" . }}
+    {{/* The default static title and SEO meta markup. */}}
+    <title>
+      {{ if .IsPage }}{{ .FirstSection.Title }} | {{ end }}{{ .Title }}
+    </title>
+    {{/* SEO */}}
+    {{ partial "sections/head-seo.html" . }}
+  {{ end }}
+  {{ block "head-meta-addons" . }}{{ end }}
 </head>
 <body class="type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
      h-auto
