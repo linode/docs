@@ -27,18 +27,25 @@ type config struct {
 }
 
 func (config) Version() string {
-	return "update_linode_docs_search_indices " + version
+	return "generate_wp_section_pages " + version
 }
 
 type algoliaIndex struct {
 	name    string // The name of the index in Algolia.
 }
 
-// This programs updates the Algolia indices defined below.
+// This program will query the sections index in Algolia for blog, marketplace, and apps.
+// For each sections record, it will copy public/sections/index.html to a corresponding location in
+// public/. For example, for the Blog > CMS record in the sections index, public/blog/cms/index.html
+// will be created. This is used to statically create section pages, where each page then dynamically
+// queries Algolia to display the section contents.
+//
+// **NOTE**: this script is not currently being used, and would require other adjustments to the
+// theme to support if we were to start using it again.
 //
 // Usage:
 //
-//     ALGOLIA_SEARCH_API_KEY=<mysecret> update_linode_docs_search_indices --sourcedir ../../public
+//     ALGOLIA_SEARCH_API_KEY=<mysecret> generate_wp_section_pages --sourcedir ../../public
 //
 // Also note that you need to build the site with Hugo first.
 func main() {

@@ -48,6 +48,7 @@ filtering_facets = [
 ]
 explorer_regular_pages_start_level = 2
 hits_per_page = 4
+download_settings = true
 
 [[params.search_config.sections]]
 name = "guides"
@@ -75,6 +76,7 @@ explorer_icon = "#icon-explorer--api"
 explorer_regular_pages_start_level = 2
 hits_per_page = 4
 filtering_facets = [{ name = "category", title = "Doc Category" }]
+download_settings = true
 
 [[params.search_config.sections]]
 name = "marketplace"
@@ -111,7 +113,6 @@ explorer_icon = "#icon-explorer--resources"
 explorer_regular_pages_start_level = 2
 hits_per_page = 4
 filtering_facets = [{ name = "category", title = "Doc Category" }]
-
 
 [[params.search_config.sections]]
 name = "qa"
