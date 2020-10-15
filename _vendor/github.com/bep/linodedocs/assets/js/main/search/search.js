@@ -15,6 +15,11 @@ class Searcher {
 		this.onError = onError;
 	}
 
+	addSearchItem(item, callback) {
+		item.markAsLoading();
+		this.add({ requests: item.query.requests, isSectionMeta: item.name === 'meta' }, callback);
+	}
+
 	add(opts, callback) {
 		let requests = opts.requests;
 		let start = this.requests.length;
@@ -764,17 +769,14 @@ class Searcher {
 				}
 
 				if (this.searchState.metaSearch.shouldLoad()) {
-					searcher.add(
-						{ requests: this.searchState.metaSearch.query.requests, isSectionMeta: true },
-						(results) => {
-							let m = results[0].hits.reduce(function(m, hit) {
-								// The blog sections have mixed-case objectIDs, but we need this lookup to be case insensitive.
-								m.set(hit.objectID.toLowerCase(), hit);
-								return m;
-							}, new Map());
-							this.searchState.metaSearch.setResults(m);
-						}
-					);
+					searcher.addSearchItem(this.searchState.metaSearch, (results) => {
+						let m = results[0].hits.reduce(function(m, hit) {
+							// The blog sections have mixed-case objectIDs, but we need this lookup to be case insensitive.
+							m.set(hit.objectID.toLowerCase(), hit);
+							return m;
+						}, new Map());
+						this.searchState.metaSearch.setResults(m);
+					});
 				}
 
 				var applySectionFilters = function(opts) {
@@ -786,7 +788,7 @@ class Searcher {
 					requests.forEach((req) => {
 						req.facetFilters = [ facetFilters ];
 						if (!req.params) {
-							req.params = `query=${encodeURIComponent(self.filters.query)}&hitsPerPage=2345`;
+							req.params = `query=${encodeURIComponent(self.filters.query)}&hitsPerPage=100`;
 						} else if (req.params.includes('query=&')) {
 							req.params = req.params.replace(
 								'query=&',
@@ -837,7 +839,7 @@ class Searcher {
 						applySectionFilters(v.query);
 					}
 
-					searcher.add({ requests: v.query.requests }, (results) => {
+					searcher.addSearchItem(v, (results) => {
 						v.setResults(results);
 					});
 				});

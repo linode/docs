@@ -33,10 +33,17 @@ var lnSvgLoader = {};
 	};
 
 	ctx.Load = function(el, src) {
+		if (src.includes('<svg')) {
+			// Already inlined.
+			replaceIn(el, src);
+			return;
+		}
+
 		if (src.startsWith('http')) {
 			createImgEl(el, src);
 			return;
 		}
+
 		if (!src.endsWith('svg')) {
 			replaceIn(el, '');
 			return;

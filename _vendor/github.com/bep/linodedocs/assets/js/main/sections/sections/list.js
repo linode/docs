@@ -269,6 +269,7 @@ var lnSectionsController = {};
 						s.title = m.title;
 						s.linkTitle = m.linkTitle || m.title;
 						s.thumbnail = m.thumbnail;
+						s.thumbnailInline = m.thumbnailInline || m.thumbnailinline;
 					}
 
 					return s;
