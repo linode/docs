@@ -129,7 +129,7 @@ We'll use Nginx as our webserver and Let's Encrypt to secure the services.
         listen [::]:80;
 
         server_name riot.demochat.com;
-        root /var/www/html/riot.demochat.com;
+        root /var/www/html/riot.demochat.com/riot;
         index index.html;
 
         location / {
