@@ -14,9 +14,9 @@
     --row-main: 3; /* The grid row for the main content. */
     --col-navbar: 1; /* The grid column for the top navbar. */
     --height-linode-menu-row: 58px;
-    --height-navbar-row: 50px;
-    --width-left-column: 280px;
-    --width-right-column: 280px;
+    --height-navbar-row: 45px;
+    --width-left-column: 240px;
+    --width-right-column: 240px;
     display: grid;
     grid-auto-rows: minmax(var(--height-navbar-row), auto);
     grid-template-columns: var(--width-left-column) minmax(0, 1fr);
@@ -25,6 +25,39 @@
 
 .is-explorer-open .grid--base {
     --col-navbar: 2;
+}
+
+@screen md {
+    .is-explorer-open .grid--base {
+        --col-navbar: 1;
+    }
+
+    .grid--base {
+        --row-explorer: 3;
+        --col-navbar: 1;
+        --height-navbar-row: 45px;
+        --width-left-column: 255px;
+        --width-right-column: 255px;
+        --height-linode-menu-row: 70px;
+    }
+}
+
+@screen lg {
+    .is-explorer-open .grid--base {
+        --col-navbar: 1;
+    }
+
+    .grid--base {
+        --height-navbar-row: 65px;
+        --width-left-column: 334px;
+        --width-right-column: 334px;
+    }
+}
+
+@screen lg {
+    .grid--base {
+        --height-linode-menu-row: 107px;
+    }
 }
 
 .is-topbar-pinned .grid--base {
@@ -36,27 +69,6 @@
 
 .is-topbar-pinned .grid--base #linode-menus {
     display: none;
-}
-
-@screen md {
-    .is-explorer-open .grid--base {
-        --col-navbar: 1;
-    }
-
-    .grid--base {
-        --row-explorer: 3;
-        --col-navbar: 1;
-        --height-navbar-row: 60px;
-        --width-left-column: 334px; /* Includes 1px right border. */
-        --width-right-column: 308px; /* Includes 1px left border. */
-        --height-linode-menu-row: 70px;
-    }
-}
-
-@screen lg {
-    .grid--base {
-        --height-linode-menu-row: 107px;
-    }
 }
 
 .grid--base #linode-menus {

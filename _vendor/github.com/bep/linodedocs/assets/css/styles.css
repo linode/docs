@@ -6,7 +6,6 @@
   --color-title: #32363b;
   --color-body-text: #5e6065;
   --color-divider: #eaeaeb;
-  --colortest: red;
 }
 
 @tailwind base;
@@ -86,6 +85,7 @@ body {
   }
 }
 
+/* Helper class to limit a text block to two lines. */
 .two-lines-ellipsis {
   display: block;
   display: -webkit-box;

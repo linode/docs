@@ -46,22 +46,5 @@
 }
 
 .grid--base #navbar__toc {
-    width: 181px;
-}
-
-@screen md {
-    .grid--base #navbar__toc {
-        width: var(--width-right-column);
-    }
-}
-
-.is-not-topbar-pinned .grid--base #navbar__toc {
-    @apply border-l-gray--md;
-}
-.is-topbar-pinned .grid--base #navbar__icons--left {
-    @apply border-r-gray--md;
-}
-
-.grid--base #navbar__toc {
-    @apply border-l-gray--md;
+    width: var(--width-right-column);
 }

@@ -1,7 +1,3 @@
-.navbar__breadcrumbs {
-    @apply bg-white w-full;
-}
-
 .main__breadcrumbs {
     @apply bg-backgroundcolor max-w-screen-lg;
 }

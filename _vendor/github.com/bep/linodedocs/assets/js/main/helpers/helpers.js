@@ -6,6 +6,10 @@ function sendEvent(name, data, el = document) {
 	el.dispatchEvent(event);
 }
 
+function pageNotFound() {
+	window.location.href = '/docs/404.html';
+}
+
 function setDocumentMeta(meta) {
 	document.title = meta.title;
 }

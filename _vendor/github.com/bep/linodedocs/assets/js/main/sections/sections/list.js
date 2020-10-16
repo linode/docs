@@ -200,7 +200,9 @@ var lnSectionsController = {};
 				debug('receiveData', data);
 
 				let ns = data.namedSearches.get(searchName);
-				if (!ns.results[0]) {
+				let result = ns.results[0];
+				if (!result || result.hits.length === 0) {
+					pageNotFound();
 					return;
 				}
 

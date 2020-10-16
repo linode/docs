@@ -37,7 +37,7 @@
   </header>
   
   {{/* Top navbar */}}
-  <nav id="navbar" class="bg-white w-screen box-border sticky top-0 z-10 border-b-gray">
+  <nav id="navbar" class="bg-white w-full box-border sticky top-0 z-10 border-b-gray">
     <div id="navbar__icons--left" class="h-full flex justify-start"  @nav:toggle.document="receiveToggle($event.detail)" x-data="lnNavController.New()"
     @scroll.window="onScroll()" @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" @turbolinks:render.document="onTurbolinksRender($event.data);"
     @hashchange.window="onHashchange();" x-init="() => { init() }" data-turbolinks-permanent>
@@ -55,15 +55,15 @@
         </div>
       </div>
     </div>
-    <div id="navbar__breadcrumbs" class="h-full w-full pl-6">
-      <div class="h-full w-auto max-w-md xl:max-w-6xl flex items-center overflow-scroll">
+    <div id="navbar__breadcrumbs" class="h-full w-full pl-6 overflow-scroll">
+      <div class="h-full w-auto flex items-center">
         {{ partial "sections/navigation/breadcrumbs.html" (dict "page" . "wrap" false) }}
       </div>
     </div>
     <div id="navbar__search-input" class="pl-4 flex items-center h-full min-w-full bg-white">
       {{ partialCached "sections/search/input.html" . }}
     </div>
-    <div id="navbar__toc" class="hide-if-is-not-toc hide-if-search-panel-open h-full">
+    <div id="navbar__toc" class="hide-if-is-not-toc hide-if-search-panel-open h-full ">
       {{ partial "sections/navigation/toc.html" . }}
     </div>
   </nav>
