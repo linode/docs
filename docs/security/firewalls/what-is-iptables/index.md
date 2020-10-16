@@ -12,6 +12,7 @@ published: 2020-10-07
 title: What is iptables
 h1_title: Understanding iptables
 tags: ['networking','security']
+image: "Understanding_iptables.png"
 ---
 
 Implemented as Netfilter modules, iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall. The filters are organized into tables containing chains of rules which govern how to treat network traffic packets.
