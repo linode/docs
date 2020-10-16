@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Secure Logstash input using SSL certificates.'
 og_description: 'Secure Logstash input using SSL certificates.'
-keywords: ['secure logstash with ssl']
+keywords: ['secure logstash with ssl', 'logstash ssl setup', 'logstash ssl certificate']
 tags: ['security','ssl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-10-15
@@ -36,7 +36,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Introduction
 
-**Logstash** is a server-side data processing pipeline that consumes data from a variety of sources, transforms it, and then passes it to storage. This guide focuses on hardening Logstash inputs. Why might you want to harden the pipeline input? [Logstash](https://www.elastic.co/logstash) is often run as internal network service, that is to say it's not available outside of the local network to the broader internet. In those cases, access to the inputs is open and has no restrictions. However, there may be occasions in which you need to communicate with a logstash instance outside your local network. In that situation it's desirable to protect the input traffic using SSL certificates.
+**Logstash** is a server-side data processing pipeline that consumes data from a variety of sources, transforms it, and then passes it to storage. This guide focuses on hardening Logstash inputs. Why might you want to harden the pipeline input? [Logstash](https://www.elastic.co/logstash) is often run as internal network service, that is to say it's not available outside of the local network to the broader internet. In those cases, access to the inputs is open and has no restrictions. However, there may be occasions where you need to communicate with a Logstash instance outside your local network. In that situation it's desirable to protect the input traffic using SSL certificates.
 
 This guide explores how an organization certificate authority can be generated to sign server and client certificates used in connection authentication.
 
@@ -44,12 +44,14 @@ This guide explores how an organization certificate authority can be generated t
 The commands in this guide are for CentOS systems but can easily be modified for other Linux distributions.
 {{< /note >}}
 
-## Install Logstash <a name="install-logstash"></a>
+## Install Logstash
 
-1.  Install dependencies and import the Elastic GPG key. If you already have Logstash installed, skip ahead to the [Generate Certificates](#generate-certificates) section.
+If you already have Logstash installed, skip ahead to the [Generate Certificates](#generate-certificates) section.
 
-        yum install -y java-1.8.0-openjdk-headless epel-release
-        rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+1.  Install dependencies and import the Elastic GPG key.
+
+        sudo yum install -y java-1.8.0-openjdk-headless epel-release
+        sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 1.  Add a configuration file for the Elastic repository at `/etc/yum.repos.d/elastic.repo` using the text editor of your choice:
 
@@ -66,26 +68,37 @@ type=rpm-md
 
 1.  Update and install Logstash:
 
-        yum update
-        yum install logstash
-        systemctl enable logstash
+        sudo yum update
+        sudo yum install logstash
+        sudo systemctl enable logstash
 
 1.  Add the logstash HTTP plugin. This guide is using the HTTP input plugin as an example, but any plugin that support SSL can be used.
 
-        /usr/share/logstash/bin/logstash-plugin install logstash-input-http
+        sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-http
 
 ## Generate Certificates
 
 1.  Generate an organization certificate using the following command:
 
-        openssl genrsa -out /etc/pki/tls/private/org_ca.key 2048
-        openssl req -x509 -new -nodes -key /etc/pki/tls/private/org_ca.key -sha256 -days 3650 -out /etc/pki/tls/private/org_ca.crt
+        sudo openssl genrsa -out /etc/pki/tls/private/org_ca.key 2048
+        sudo openssl req -x509 -new -nodes -key /etc/pki/tls/private/org_ca.key -sha256 -days 3650 -out /etc/pki/tls/private/org_ca.crt
+
+    This command asks you a few questions.
+
+    {{< output >}}
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+{{</ output >}}
 
 1.  Create a directory for the configuration file for Logstash:
 
-        mkdir -p /etc/pki/tls/conf
+        sudo mkdir -p /etc/pki/tls/conf
 
-1.  In this configuration you need to change the `commonName` configuration line to the server's FQDN or IP address. If this Logstash service is available on multiple host names or if you intend to use this certificate on multiple hosts, those should be added to the `[alt_names]` section. Otherwise that section can be removed along with the `subjectAltName` line.
+1.  In this configuration you need to change the `commonName` configuration line to the server's FQDN or IP address. Create the configuration file, `logstash.conf` in the new directory you created, `/etc/pki/tls/conf`, as shown below, replacing the `X` values with your own.
 
     {{< file "/etc/pki/tls/conf/logstash.conf" conf >}}
 [req]
@@ -115,23 +128,35 @@ DNS.3 = DOMAIN_3
 DNS.4 = DOMAIN_4
 {{< /file >}}
 
+    {{< note >}}
+If this Logstash service is available on multiple host names, or if you intend to use this certificate on multiple hosts, those should be added to the `[alt_names]` section. Otherwise, that section can be removed along with the `subjectAltName` line.
+{{</ note >}}
+
 1.  Create a signing key and CSR.
 
-        openssl genrsa -out /etc/pki/tls/private/logstash.key 2048
-        openssl req -sha512 -new -key /etc/pki/tls/private/logstash.key -out logstash.csr -config /etc/pki/tls/conf/logstash.conf
+        sudo openssl genrsa -out /etc/pki/tls/private/logstash.key 2048
+        sudo openssl req -sha512 -new -key /etc/pki/tls/private/logstash.key -out logstash.csr -config /etc/pki/tls/conf/logstash.conf
+
+1.  Change permissions on the folders to allow writing the `org_ca.serial` and `logstash_combined.crt` files.
+
+        sudo chmod g+w /etc/pki/tls/private/
+        sudo chmod o+w /etc/pki/tls/certs/
 
 1.  Get the certificate authority serial number.
 
-        openssl x509 -in /etc/pki/tls/private/org_ca.crt -text -noout -serial | tail -1 | cut -d'=' -f2 > /etc/pki/tls/private/org_ca.serial
+        sudo openssl x509 -in /etc/pki/tls/private/org_ca.crt -text -noout -serial | tail -1 | cut -d'=' -f2 > /etc/pki/tls/private/org_ca.serial
 
-1.  Create the Logstash certificate. This is the certificate that Logstash presents to identify itself.
+1.  Create the organizational Logstash certificate.
 
-        openssl x509 -days 3650 -req -sha512 -in logstash.csr -CAserial /etc/pki/tls/private/org_ca.serial -CA /etc/pki/tls/private/org_ca.crt -CAkey /etc/pki/tls/private/org_ca.key -out /etc/pki/tls/certs/org_logstash.crt -extensions v3_req -extfile /etc/pki/tls/conf/logstash.conf
-        cat /etc/pki/tls/certs/logstash.crt /etc/pki/tls/private/org_ca.crt > /etc/pki/tls/certs/logstash_combined.crt
+        sudo openssl x509 -days 3650 -req -sha512 -in logstash.csr -CAserial /etc/pki/tls/private/org_ca.serial -CA /etc/pki/tls/private/org_ca.crt -CAkey /etc/pki/tls/private/org_ca.key -out /etc/pki/tls/certs/org_logstash.crt -extensions v3_req -extfile /etc/pki/tls/conf/logstash.conf
+
+1.  Create the final combined certificate that uses the data in both the `org_logstash.crt` and `org_ca.crt` files. This is the certificate that Logstash presents to identify itself.
+
+        sudo cat /etc/pki/tls/certs/org_logstash.crt /etc/pki/tls/private/org_ca.crt > /etc/pki/tls/certs/logstash_combined.crt
 
 1.  Format the private key for use in Logstash.
 
-        mv /etc/pki/tls/private/logstash.key /etc/pki/tls/private/logstash.key.pem && \
+        sudo mv /etc/pki/tls/private/logstash.key /etc/pki/tls/private/logstash.key.pem && \
             openssl pkcs8 -in /etc/pki/tls/private/logstash.key.pem -topk8 -nocrypt -out /etc/pki/tls/private/logstash.key
 
 ## Configure Logstash
