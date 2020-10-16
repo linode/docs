@@ -15,6 +15,7 @@
 </head>
 <body class="type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
      h-auto
+     overflow-x-hidden
      is-not-topbar-pinned
      is-not-explorer-open
      is-not-toc-open
@@ -55,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div id="navbar__breadcrumbs" class="h-full w-full pl-6 overflow-scroll">
+    <div id="navbar__breadcrumbs" class="h-full w-full pl-6 overflow-x-scroll">
       <div class="h-full w-auto flex items-center">
         {{ partial "sections/navigation/breadcrumbs.html" (dict "page" . "wrap" false) }}
       </div>
@@ -69,7 +70,7 @@
   </nav>
   
   {{/* Left side explorer menu. */}}
-  <nav id="explorer" class="bg-white sticky overflow-scroll z-0 top--navbar-row border-r-gray">
+  <nav id="explorer" class="bg-white sticky overflow-y-scroll z-0 top--navbar-row border-r-gray">
     {{ partialCached "sections/navigation/explorer.html" . }}
   </nav>
   
