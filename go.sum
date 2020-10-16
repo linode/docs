@@ -130,9 +130,12 @@ github.com/bep/linodedocs v0.0.0-20201016111349-b5dbb2b1dc38 h1:1WQgFRRgj7pdRynV
 github.com/bep/linodedocs v0.0.0-20201016111349-b5dbb2b1dc38/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
 github.com/bep/linodedocs v0.0.0-20201016140526-70c5c5744933 h1:qSPQ3fyf7eUF99sT3iwnXF88L9HsvWEu2QDr6NnIPx0=
 github.com/bep/linodedocs v0.0.0-20201016140526-70c5c5744933/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
+github.com/bep/linodedocs v0.0.0-20201016143629-4f0391fd43cf h1:on0+0HauQdteN8eNTudc82T6VS+7rj1568zgAl6WLcw=
+github.com/bep/linodedocs v0.0.0-20201016143629-4f0391fd43cf/go.mod h1:hjrQVt6vP+n2xhetwJ8WOiYORr2r5VylsAN467Wu/UA=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=
+github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.1/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=
 github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1/go.mod h1:N4EUbbL7Cw4Yq+GHeK3MUSiOJQbzfuUFRyvBKvnVBR8=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.5.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.6.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
@@ -147,4 +150,5 @@ github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21/go.
 github.com/linode/linode-website-partials v0.0.0-20200921210751-887bbecdd5dd/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c h1:j2j0WYHnoSEsGg7790A+gNQqKYIXGTi/i1FHTwt9zBM=
 github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
+github.com/linode/linode-website-partials v0.0.0-20201008204609-a59453d99ac9/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible/go.mod h1:Cl0Br9tUXkQvxumVNGTvyaa7dqpFC2kPMrsS0Ttc94U=
