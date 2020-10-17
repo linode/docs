@@ -120,7 +120,7 @@ index = "linode-community"
 title = "Q&A"
 filters = "objectType:question"
 section_facet = "objectType"
-explorer_icon = "#icon--todo"
+explorer_icon = "#icon-explorer--qa"
 explorer_regular_pages_start_level = 4 # Not relevant, set it high to avoid triggering any search.
 hits_per_page = 4
 #filtering_facets = [{ name = "category", title = "Doc Category" }]
@@ -135,3 +135,4 @@ anchor = "smart"
 
 [permalinks]
   guides = "/guides/:slug/"
+  
