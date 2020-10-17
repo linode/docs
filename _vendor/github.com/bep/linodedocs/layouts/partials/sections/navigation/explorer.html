@@ -33,8 +33,7 @@
     <li class="explorer__node" x-bind:class="{
       'explorer__node--after-first': node.level > 1,
       'pl-10': node.level === 2
-    }" x-show.transition.200ms="!node.hidden" @search:facetfilters.document="applyFacetFilters($event.detail)" @search:toggle-node.document="receiveToggledOpen($event.detail);"
-      @search:toggle-node="receiveToggledOpenDescendant($event.detail);" :data-testid="`li-${ node.level }`">
+    }" x-show.transition.200ms="!node.hidden" :data-testid="`li-${ node.level }`">
       <div class="explorer__node__inner" x-bind:class="{
         'border-l-2 ml-2': node.level > 1,
         'border-gray-500': node.showBorder2(),
@@ -65,7 +64,7 @@
                 'text-sm': (node.level === 2),
                 'text-xs': (node.level > 2),
                 'text-gray-300': node.disabled
-                }" class="block relative w-36 cursor-pointer pr-3 no-underline capitalize z-10" @click="node.toggleOpen()">
+                }" class="block relative w-36 cursor-pointer pr-3 no-underline capitalize z-10" @click="node.toggleOpen()" data-testid="node-link">
               <span :class="{ 
                 'after-second': node.level > 2
               }" class="bg-container h-full"></span>
@@ -80,7 +79,9 @@
               <div class="w-3"></div>
             </template>
             <div class="z-10" x-show="!data.disabled && !node.isLeaf()">
-              <button type="button" name="open" class="btn-icon h-full flex items-center justify-center" x-bind:class="{ 'text-gray-200': node.disabled, 'text-textcolor': !node.disabled }"
+              <button type="button" name="open" class="btn-icon h-full flex items-center justify-center" 
+                x-bind:disabled="node.disabled"
+                x-bind:class="{ 'text-gray-200': node.disabled, 'text-textcolor': !node.disabled }"
                 @click.stop="node.toggleOpen()" @mouseover.once.stop="node.loadPages()" :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`">
                 <svg class="w-4 h-3 titlecolor" x-show="!node.open">
                   <use href="#icon--arrow-down"></use>

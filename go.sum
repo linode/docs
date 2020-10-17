@@ -132,6 +132,10 @@ github.com/bep/linodedocs v0.0.0-20201016140526-70c5c5744933 h1:qSPQ3fyf7eUF99sT
 github.com/bep/linodedocs v0.0.0-20201016140526-70c5c5744933/go.mod h1:j/Hy4U4rBcnbeKse4usdz4IscMkcOEiRvyXjAGS5gU8=
 github.com/bep/linodedocs v0.0.0-20201016143629-4f0391fd43cf h1:on0+0HauQdteN8eNTudc82T6VS+7rj1568zgAl6WLcw=
 github.com/bep/linodedocs v0.0.0-20201016143629-4f0391fd43cf/go.mod h1:hjrQVt6vP+n2xhetwJ8WOiYORr2r5VylsAN467Wu/UA=
+github.com/bep/linodedocs v0.0.0-20201017110758-7effe2258de2 h1:jmmPkbzOX6AdH7oMofeJHiqxS1dXbasZmnRCHeGIqL4=
+github.com/bep/linodedocs v0.0.0-20201017110758-7effe2258de2/go.mod h1:hjrQVt6vP+n2xhetwJ8WOiYORr2r5VylsAN467Wu/UA=
+github.com/bep/linodedocs v0.0.0-20201017111742-7bf89bf4e6ef h1:yQF8T9T0F/TTr2rG+/qNmoWusXCkJM3AhcFSzwXoMWM=
+github.com/bep/linodedocs v0.0.0-20201017111742-7bf89bf4e6ef/go.mod h1:hjrQVt6vP+n2xhetwJ8WOiYORr2r5VylsAN467Wu/UA=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=

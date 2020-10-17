@@ -541,9 +541,18 @@ var lnSearchExplorer = {};
 
 				for (let k in this.data.nodes) {
 					let n = this.data.nodes[k];
+					if (n.level === 1) {
+						n.disabled = !n.section.isEnabled();
+						if (n.disabled) {
+							n.open = false;
+							n.count = 0;
+						}
+					}
+
 					if (!seen.has(n.key)) {
 						if (n.level === 1) {
 							n.count = 0;
+							n.open = false;
 						} else {
 							// Hide it in the DOM.
 							n.hidden = true;
