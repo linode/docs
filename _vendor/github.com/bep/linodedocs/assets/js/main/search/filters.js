@@ -9,10 +9,6 @@ var lnSearchFilters = {};
 	ctx.New = function() {
 		var dispatcher = lnSearchEventDispatcher.New();
 
-		const applySearchFiltersFromLocation = function(self) {
-			return applySearchFiltersFromSearchParams(self, window.location.hash.slice(1));
-		};
-
 		const applySearchFiltersFromSearchParams = function(self, searchParams) {
 			let params = new URLSearchParams(searchParams);
 			let hasSearchParam = false;
@@ -87,6 +83,7 @@ var lnSearchFilters = {};
 			open: false,
 
 			receiveSearchFilters: function(data) {
+				debug('receiveSearchFilters', data);
 				applySearchFiltersFromSearchParams(this, data);
 			},
 
@@ -165,13 +162,11 @@ var lnSearchFilters = {};
 				debug('receiveData', this.data);
 			},
 
-			applyFilter: function(triggerSearch = false) {
+			applyFilter: function(triggerSearch = true) {
 				debug('applyFilter', this.data.filters);
 
 				let m = new Map();
 				m.triggerSearch = triggerSearch;
-
-				var self = this;
 
 				this.data.filters.forEach((filter, facetName) => {
 					let filters = new Set();
@@ -226,11 +221,6 @@ var lnSearchFilters = {};
 				};
 
 				dispatcher.applyFacetFilters(m);
-			},
-
-			onHashchange: function() {
-				debug('onHashchange');
-				applySearchFiltersFromLocation(this);
 			},
 
 			toggleOpen: function() {

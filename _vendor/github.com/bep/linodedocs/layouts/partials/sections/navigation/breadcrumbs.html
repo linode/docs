@@ -25,7 +25,7 @@
     </li>
     <template x-for="(b, i) in data.breadcrumbs" :key="b">
       <li class="flex items-center mt-2">
-        <a class="max-w-xxs sm:max-w-sm truncate" x-text="b.linkTitle" :href="b.href"></a>
+        <a x-text="b.linkTitle" :href="b.href"></a>
         <template x-if="i < (data.breadcrumbs.length -1 )">
           {{ template "breadcrumbs-arrow" . }}
         </template>

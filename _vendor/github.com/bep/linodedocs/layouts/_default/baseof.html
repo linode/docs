@@ -82,7 +82,7 @@
       </section>
       <section class="main__content container mb-20">
         <div class="w-full h-full mt-6 md:mt-12">
-          <div class="mb-4 md:mb-6 text-basicgray main__breadcrumbs h-6">
+          <div class="mb-4 md:mb-6 text-basicgray main__breadcrumbs">
             {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
           </div>
           {{ block "main" . }}{{ end }}
