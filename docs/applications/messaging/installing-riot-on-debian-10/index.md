@@ -27,7 +27,8 @@ contributor:
 
         sudo apt-get update && sudo apt-get upgrade
 
-<!-- Include one of the following notes if appropriate. --->
+4.  To connect to the Synapse / Matrix services with a client other than Riot (installed as part of this guide) you'll need a [Matrix client](https://matrix.org/clients/). 
+
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
