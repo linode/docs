@@ -295,8 +295,10 @@ module.exports = {
 				'36': '9rem',
 				'62': '15.5rem',
 				// For images
+				'14/9': '62.99%',
 				'16/9': '56.25%',
-				'30/9': '30.13%' // Cards' images on mobile.
+				'20/9': '45.20%',
+				'30/9': '30.13%'
 			},
 			maxWidth: {
 				xxs: '8rem;'

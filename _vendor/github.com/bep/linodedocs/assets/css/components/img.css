@@ -4,6 +4,6 @@ img {
     transition: opacity 0.3s;
 }
 
-img.transparent {
+img.img-transparent {
     opacity: 0;
 }

@@ -140,17 +140,19 @@
       </div>
     </template>
     <template x-if="uiState.showGuidesTiles()">
-      <div>
+      <div class="space-y-8">
         <template x-for="(item, i) in data.result.hits">
-          <div :class="{ 'bg-white': i === 0, 'bg-gray-100': i > 0 }" class="w-full break-normal overflow-hidden  md:flex mb-4 border rounded-lg shadow-sm h-40">
-            <div class="bg-gray-200 flex-none bg-cover w-64" :style="'background-image: url(' + item.thumbnailUrl + ')'" title=""></div>
-            <div class="pl-10 pr-2 py-4 flex flex-col items-start content-center leading-normal ">
-              <div>
-                <a class="tracking-tight cursor-pointer" :href="item.href">
-                  <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
-                </a>
-                <p class="text-darkgray text-base" x-html="item.excerptTruncated(200)"></p>
+          <div class="shadow-sm rounded md:flex md:items-center" :class="{ 'bg-white': i === 0, 'bg-gray-100': i > 0 }">
+            <div>
+              <div class="relative pb-20/9 md:pb-14/9 md:w-64 bg-gray-200 overflow-hidden object-cover rounded-lg rounded-t rounded-b-none md:rounded md:rounded-l md:rounded-r-none">
+                <img class="absolute top-0 h-full w-full img-transparent" alt="Article thumbnail" :src="item.thumbnailUrl" @load="$event.target.classList.remove('img-transparent')" loading="lazy">
               </div>
+            </div>
+            <div class="px-6 md:pl-10 py-4">
+              <a class="tracking-tight cursor-pointer mb-4" :href="item.href">
+                <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
+              </a>
+              <p class="text-darkgray leading-6 text-sm md:text-base" x-html="item.excerptTruncated(200)"></p>
             </div>
           </div>
         </template>
