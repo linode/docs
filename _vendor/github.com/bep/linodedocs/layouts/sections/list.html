@@ -142,9 +142,9 @@
     <template x-if="uiState.showGuidesTiles()">
       <div class="space-y-8">
         <template x-for="(item, i) in data.result.hits">
-          <div class="shadow-sm rounded md:flex md:items-center" :class="{ 'bg-white': i === 0, 'bg-gray-100': i > 0 }">
-            <div>
-              <div class="relative pb-20/9 md:pb-14/9 md:w-64 bg-gray-200 overflow-hidden object-cover rounded-lg rounded-t rounded-b-none md:rounded md:rounded-l md:rounded-r-none">
+          <div class="bg-white rounded-md md:flex md:items-center" :class="{ 'shadow-sm': i === 0 }">
+            <div class="h-full bg-gray-200">
+              <div class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden object-cover rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
                 <img class="absolute top-0 h-full w-full img-transparent" alt="Article thumbnail" :src="item.thumbnailUrl" @load="$event.target.classList.remove('img-transparent')" loading="lazy">
               </div>
             </div>
@@ -152,7 +152,7 @@
               <a class="tracking-tight cursor-pointer mb-4" :href="item.href">
                 <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
               </a>
-              <p class="text-darkgray leading-6 text-sm md:text-base" x-html="item.excerptTruncated(200)"></p>
+              <p class="text-darkgray leading-6 text-sm md:text-base" x-html="item.excerptTruncated(160)"></p>
             </div>
           </div>
         </template>
