@@ -188,18 +188,22 @@ class Searcher {
 					throw `section ${section} not found`;
 				}
 
-				var filters = new Set();
+				var filterGroups = [];
 				sectionConfig.facetFilterNames().forEach((filterName) => {
+					let filters = [];
 					let filterCsv = params.get(filterName);
 					if (filterCsv) {
 						let values = filterCsv.split(',');
 						values.forEach((v) => {
-							filters.add(`${filterName}:${v}`);
+							filters.push(`${filterName}:${v}`);
 						});
+					}
+					if (filters.length > 0) {
+						filterGroups.push(filters);
 					}
 				});
 
-				self.filters.facets.set(sectionConfig.name, filters);
+				self.filters.facets.set(sectionConfig.name, filterGroups);
 			});
 
 			return true;
@@ -207,28 +211,26 @@ class Searcher {
 
 		// Prepares the data structure to store the search results in.
 		const newSearchResults = function(self, blank) {
-			var sectionFiltersToQueryParams = function(filters) {
-				if (!filters) {
+			var sectionFiltersToQueryParams = function(filterGroups) {
+				if (!filterGroups) {
 					return '';
-				}
-
-				if (!(filters instanceof Set)) {
-					return sectionFilterToQueryParam(filters);
 				}
 
 				var queryString = '';
 
 				var csvMap = new Map();
-				filters.forEach((filter) => {
-					let keyVal = filter.split(':');
-					let key = keyVal[0];
-					let val = keyVal[1];
-					let csv = csvMap.get(key);
-					if (!csv) {
-						csvMap.set(key, val);
-					} else {
-						csvMap.set(key, csv + ',' + val);
-					}
+				filterGroups.forEach((filters) => {
+					filters.forEach((filter) => {
+						let keyVal = filter.split(':');
+						let key = keyVal[0];
+						let val = keyVal[1];
+						let csv = csvMap.get(key);
+						if (!csv) {
+							csvMap.set(key, val);
+						} else {
+							csvMap.set(key, csv + ',' + val);
+						}
+					});
 				});
 
 				csvMap.forEach((val, key) => {
@@ -787,8 +789,7 @@ class Searcher {
 				var applySectionFilters = function(opts) {
 					let sectionConfig = opts.sectionConfig;
 					let requests = opts.requests;
-					let indexFilters = self.filters.facets.get(sectionConfig.name) || new Set();
-					let facetFilters = Array.from(indexFilters);
+					let facetFilters = self.filters.facets.get(sectionConfig.name) || [];
 
 					requests.forEach((req) => {
 						req.facetFilters = [ facetFilters ];
@@ -817,13 +818,11 @@ class Searcher {
 							: sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
 					}
 					let filters = sectionConfig.filters || '';
-					let indexFilters = self.filters.facets.get(sectionConfig.name) || new Set();
-					let facetFilters = Array.from(indexFilters);
-
+					let facetFilters = self.filters.facets.get(sectionConfig.name) || [];
 					return {
 						indexName: sectionConfig.indexName(),
 						filters: filters,
-						facetFilters: [ facetFilters ],
+						facetFilters: facetFilters,
 						facets: facets,
 						attributesToHighlight: [ 'title', ...filteringFacetNames ],
 						params: `query=${encodeURIComponent(self.filters.query)}&hitsPerPage=${hitsPerPage}`

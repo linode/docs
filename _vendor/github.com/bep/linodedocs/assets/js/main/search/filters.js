@@ -169,7 +169,7 @@ var lnSearchFilters = {};
 				m.triggerSearch = triggerSearch;
 
 				this.data.filters.forEach((filter, facetName) => {
-					let filters = new Set();
+					let filters = filter.isSectionToggle ? new Set() : [];
 
 					// If all checked is pressed
 					if (filter.allChecked) {
@@ -191,7 +191,7 @@ var lnSearchFilters = {};
 							if (filter.isSectionToggle) {
 								filters.add(cb.value);
 							} else {
-								filters.add(`${facetName}:${cb.value}`);
+								filters.push(`${facetName}:${cb.value}`);
 							}
 						}
 					}
@@ -199,15 +199,13 @@ var lnSearchFilters = {};
 					filter.allChecked = filter.allChecked || !someChecked;
 					filter.wasAllChecked = filter.allChecked;
 
-					if (!filter.isSectionToggle && filters.size > 0) {
+					if (!filter.isSectionToggle && filters.length > 0) {
 						filter.sections.forEach((section) => {
 							let f = m.get(section);
 							if (f) {
-								filters.forEach((filter) => {
-									f.add(filter);
-								});
+								f.push(filters);
 							} else {
-								m.set(section, filters);
+								m.set(section, [ filters ]);
 							}
 						});
 					} else if (filter.isSectionToggle) {
