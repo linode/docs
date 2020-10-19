@@ -117,6 +117,7 @@ filtering_facets = [{ name = "category", title = "Doc Category" }]
 [[params.search_config.sections]]
 name = "qa"
 index = "linode-community"
+index_by_pubdate = "linode-community-sorted"
 title = "Q&A"
 filters = "objectType:question"
 section_facet = "objectType"
