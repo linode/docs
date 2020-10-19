@@ -311,6 +311,7 @@ module.exports = {
 				textcolor: colorBodyText, // Body text.
 				divider: colorDivider, // Borders.
 				selected: '#F2F2F7', // Selected item.
+				icongray: '#737373',
 
 				gray: {
 					...theme.colors.gray,
