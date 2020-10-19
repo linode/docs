@@ -9,5 +9,5 @@ egrep -R '<!DOCTYPE html><html><head><title>(https:\/\/.*\/)<\/title><link rel="
     redirect_from_path="$(echo $line | cut -d ':' -f 1 | cut -c 10-)"
 
     echo "Redirecting /docs$redirect_from_path to $redirect_target_path"
-    s3cmd put --add-header=x-amz-website-redirect-location:$redirect_target_path ../public$redirect_from_path s3://linodedocs-latestrelease/docs$redirect_from_path -P --no-preserve
+    s3cmd put --no-mime-magic --acl-public --no-preserve --add-header=x-amz-website-redirect-location:$redirect_target_path ../public$redirect_from_path s3://linodedocs-latestrelease/docs$redirect_from_path
 done
