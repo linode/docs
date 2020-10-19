@@ -27,7 +27,7 @@ contributor:
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  To connect to the Synapse / Matrix services with a client other than Riot (installed as part of this guide) you'll need a [Matrix client](https://matrix.org/clients/). 
+4.  To connect to the Synapse / Matrix services with a client other than Riot (installed as part of this guide) you'll need a [Matrix client](https://matrix.org/clients/).
 
 
 {{< note >}}
