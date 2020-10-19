@@ -1,3 +1,5 @@
+#!/bin/bash
+
 egrep -R '<!DOCTYPE html><html><head><title>(https:\/\/.*\/)<\/title><link rel="canonical" href="(https:\/\/.*\/)"\/><meta name="robots" content="noindex"><meta charset="utf-8" \/><meta http-equiv="refresh" content="0; url=(https:\/\/.*\/)" \/><\/head><\/html>' ../public | while read -r line ; do
     # Gets just the relative path that the redirect should point to
     # Example: /docs/databases/mariadb/how-to-install-mariadb-on-centos-7/
