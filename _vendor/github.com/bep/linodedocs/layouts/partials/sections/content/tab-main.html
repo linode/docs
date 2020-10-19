@@ -1,8 +1,7 @@
 <div class="flex justify-start">
   {{ $iconDir := "media/images/product-tabs-icons" }}
-  {{ $iconNames := slice "big-data" "rocket-launch" "gear-spin" "deploy"}}
   {{ $root := false }}
-  
+
   {{ if .Params.tab_group_main.is_root }}
     {{ $root = . }}
   {{ else if .CurrentSection.Params.tab_group_main.is_root }}
@@ -10,7 +9,7 @@
   {{ else if .CurrentSection.Parent.Params.tab_group_main.is_root }}
     {{ $root = .CurrentSection.Parent }}
   {{ end }}
-  
+
   {{ if $root }}
     {{ $pages := where ($root.Pages) ".Params.tab_group_main" "!=" nil | append $root  }}
     {{ $pages = $pages.ByParam "tab_group_main.weight" }}
@@ -24,7 +23,7 @@
         {{ $selectedPage = . }}
       {{ end }}
     {{ end }}
-    
+
     {{ $selectedItem := false }}
     {{ range $pages }}
       {{ $tabData := .Params.tab_group_main }}
@@ -37,7 +36,7 @@
         {{ $selectedItem = $item }}
       {{ end }}
     {{ end }}
-    
+
     <div class="md:hidden pb-4">
       {{ if $selectedItem }}
         {{ partial "components/select.html" (dict "values" $items "selected" $selectedItem ) }}
@@ -53,7 +52,7 @@
                 {{ if .selected }}aria-current="page" {{ end }}>
             <div class="flex flex-col items-center">
               <div class="pb-2">
-                {{ $iconName := index $iconNames $i }}
+                {{ $iconName := $e.title | urlize }}
                 {{ $iconPath := printf "%s/%s.svg" $iconDir $iconName }}
                 {{ if .selected }}
                   {{ $iconPath = printf "%s/%s-active.svg" $iconDir $iconName }}
