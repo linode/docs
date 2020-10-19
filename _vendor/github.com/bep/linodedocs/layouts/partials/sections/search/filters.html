@@ -1,6 +1,6 @@
 <div class="h-full" x-data="lnSearchFilters.New()" id="search-filters" 
 @search:results-blank.once.document="initData($event.detail)" @search:results.document="receiveData($event.detail)"  @search:search-filters.document="receiveSearchFilters($event.detail)"
-    @hashchange.window="onHashchange();" data-turbolinks-permanent>
+    data-turbolinks-permanent>
 <div class="hidden lg:flex container items-center justify-between mb-4">
   <h2>
     Filters

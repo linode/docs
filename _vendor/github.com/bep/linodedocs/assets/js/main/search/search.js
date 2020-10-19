@@ -432,18 +432,20 @@ class Searcher {
 			DISABLED: 3 // May be loaded, but the data is stale.
 		};
 
-		const newSearchItem = function(name, results, query, concurrent, subscribers = []) {
-			let item = {
-				name: name,
+		const newSearchItem = function(opts) {
+			var item = Object.assign({}, opts);
 
-				publish: false,
-				concurrent: concurrent,
-				loadingState: searchItemLoadingStates.INITIAL,
+			item.publish = false;
+			item.loadingState = searchItemLoadingStates.INITIAL;
+			item.subscribers = item.subscribers || [];
+			item.query = item.query || {};
+			item.results = item.results || {};
 
-				subscribers: subscribers,
-				query: query,
-				results: results
-			};
+			item.shouldCancel =
+				item.shouldCancel ||
+				function() {
+					return false;
+				};
 
 			item.shouldLoad = function() {
 				return this.loadingState === searchItemLoadingStates.INITIAL;
@@ -503,27 +505,28 @@ class Searcher {
 
 		const newSearchState = function(self) {
 			let s = {
-				mainSearch: newSearchItem('main', newSearchResults(self, false), {}, true, [
-					dispatcher.events.EVENT_SEARCHRESULT
-					// eslint-disable-next-line array-bracket-newline
-				]),
-				blankSearch: newSearchItem('blank', newSearchResults(self, true), {}, false, [
-					dispatcher.events.EVENT_SEARCHRESULT_BLANK
-					// eslint-disable-next-line array-bracket-newline
-				]),
-				metaSearch: newSearchItem(
-					'meta',
-					{},
-					{
+				mainSearch: newSearchItem({
+					name: 'main',
+					results: newSearchResults(self, false),
+					concurrent: true,
+					subscribers: [ dispatcher.events.EVENT_SEARCHRESULT ]
+				}),
+				blankSearch: newSearchItem({
+					name: 'blank',
+					results: newSearchResults(self, true),
+					subscribers: [ dispatcher.events.EVENT_SEARCHRESULT_BLANK ]
+				}),
+				metaSearch: newSearchItem({
+					name: 'meta',
+					query: {
 						requests: [
 							{
 								indexName: searchConfig.meta_index,
 								params: 'query=&hitsPerPage=600'
 							}
 						]
-					},
-					false
-				),
+					}
+				}),
 
 				namedSearches: new Map(),
 				expandedNodes: new Map(),
@@ -551,7 +554,10 @@ class Searcher {
 
 			s.subscribe = function(name, query, e) {
 				let events = Array.isArray(e) ? e : [ e ];
-				this.namedSearches.set(name, newSearchItem(name, {}, query, false, events));
+				this.namedSearches.set(
+					name,
+					newSearchItem({ name: name, query: query, subscribers: events, shouldCancel: query.shouldCancel })
+				);
 			};
 
 			s.publish = function() {
@@ -837,6 +843,11 @@ class Searcher {
 				});
 
 				this.searchState.namedSearches.forEach((v, k) => {
+					if (v.shouldCancel()) {
+						// Remove it. We will get a new subscription if this is needed in the future.
+						self.searchState.namedSearches.delete(k);
+						return;
+					}
 					v.publish = true;
 
 					if (v.query.sectionConfig) {

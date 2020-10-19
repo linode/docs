@@ -79,7 +79,7 @@ var lnArticleController = {};
 		};
 
 		return {
-			status: { ok: true },
+			status: { code: 200 },
 			data: { article: {} },
 
 			init: function() {
@@ -102,12 +102,12 @@ var lnArticleController = {};
 				};
 
 				fetchArticle(url, onSuccess, (err) => {
-					self.status.ok = false;
+					self.status.code = 500;
 					self.status.message = `Failed to get resource.`;
 					console.warn(err);
 				});
 
-				self.status.ok = true;
+				self.status.code = 200;
 			}
 		};
 	};

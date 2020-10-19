@@ -81,7 +81,7 @@ var lnSectionsController = {};
 				}
 			},
 			loaded: false, // if data is loaded from Algolia
-			status: { ok: true }, // error state
+			status: { code: 200 }, // error state
 			data: {
 				result: {
 					hits: []
@@ -94,7 +94,6 @@ var lnSectionsController = {};
 				key: '',
 				sections: [],
 				hitsBySection: {},
-				sectionMeta: {},
 				lvl: 0
 			},
 
@@ -188,10 +187,18 @@ var lnSectionsController = {};
 			},
 
 			dispatchQuery: function() {
+				var currPath = window.location.pathname;
 				let opts = {
 					// This is used to apply the correct filters.
 					sectionConfig: this.data.sectionConfig,
-					requests: [ this.request ]
+					requests: [ this.request ],
+
+					// Returns whether to cancel this subscription.
+					// We get refreshed search results on filter changes,
+					// but we don't need these when we're no longer on this page.
+					shouldCancel: function() {
+						return window.location.pathname !== currPath;
+					}
 				};
 				dispatcher.subscribe(searchName, opts, searchName);
 			},
@@ -200,28 +207,29 @@ var lnSectionsController = {};
 				debug('receiveData', data);
 
 				let ns = data.namedSearches.get(searchName);
-				let result = ns.results[0];
-				if (!result || result.hits.length === 0) {
-					pageNotFound();
+				if (!ns) {
 					return;
 				}
 
+				this.data.result = ns.results[0];
 				this.data.sectionMetaMap = data.metaSearch.results;
-				this.data.sectionMeta = this.data.sectionMetaMap.get(this.key);
-				if (this.data.sectionMeta) {
-					this.data.meta = this.data.sectionMeta;
+				let sectionMeta = this.data.sectionMetaMap.get(this.key);
+				if (sectionMeta) {
+					this.data.meta = sectionMeta;
+				} else {
+					if (!(this.data.results && this.data.results.nbHits)) {
+						this.status.code = 404;
+						this.status.message = 'Page Not Found';
+						return;
+					}
 				}
+
+				this.status.code = 200;
 
 				// Update <head>
 				setDocumentMeta({
 					title: this.data.meta.title
 				});
-
-				this.data.result = ns.results[0];
-
-				if (!this.data.result) {
-					return;
-				}
 
 				let facets = this.data.result.facets;
 
@@ -288,16 +296,6 @@ var lnSectionsController = {};
 				}
 
 				this.loaded = true;
-			},
-
-			/**
-			 * Function triggered when the main search gets updated.
-			 *
-			 * @param  {} results
-			 */
-			searchUpdated: function(results) {
-				debug('searchUpdated', results);
-				this.dispatchQuery();
 			},
 
 			toggleShowGuides: function() {

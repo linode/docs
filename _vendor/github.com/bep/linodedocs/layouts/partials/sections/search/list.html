@@ -37,8 +37,8 @@
                 <div class="text-sm text-textcolor pt-2">
                   <template x-for="(value, label) in item.facets" :key="label">
                     <div class="inline-block">
-                      <span class="font-semibold" x-text="label + ':'"></span>
-                      <span class="mr-2" x-html="value.string"></span>
+                      <span class="font-semibold mr-1" x-text="label + ':'"></span>
+                      <span class="mr-2 capitalize" x-html="value.string"></span>
                     </div>
                   </template>
                 </div>
