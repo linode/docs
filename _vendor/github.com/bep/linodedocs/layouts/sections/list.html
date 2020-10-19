@@ -38,10 +38,10 @@
         <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
           <template x-for="(item, i) in data.sections" :key="item.key">
             <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
-              <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-titlecolor hover:text-brand" :href="item.href">
+              <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand" :href="item.href">
                 <div class="flex flex-col justify-center w-full">
                   <div class="w-full flex justify-center mb-8">
-                    <div class="w-24 h-24 text-icongray" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], (item.thumbnailInline || item.thumbnail))"></div>
+                    <div class="w-24 h-24" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], (item.thumbnailInline || item.thumbnail))"></div>
                   </div>
                   <h3 x-html="item.linkTitle" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
                   <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
