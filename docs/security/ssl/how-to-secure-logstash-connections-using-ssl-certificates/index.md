@@ -154,14 +154,25 @@ If this Logstash service is available on multiple host names, or if you intend t
 
         sudo cat /etc/pki/tls/certs/org_logstash.crt /etc/pki/tls/private/org_ca.crt > /etc/pki/tls/certs/logstash_combined.crt
 
-1.  Format the private key for use in Logstash.
+1.  Rename the key to have the `.pem` extension. This is a temporary file used for reformatting.
 
-        sudo mv /etc/pki/tls/private/logstash.key /etc/pki/tls/private/logstash.key.pem && \
-            openssl pkcs8 -in /etc/pki/tls/private/logstash.key.pem -topk8 -nocrypt -out /etc/pki/tls/private/logstash.key
+        sudo mv /etc/pki/tls/private/logstash.key /etc/pki/tls/private/logstash.key.pem
+
+1.  Grant permissions to read the key.
+
+        sudo chmod g+r /etc/pki/tls/private/logstash.key.pem
+
+1.  Format the private key for use in Logstash, writing it back out to `logstash.key` without the .pem extension.
+
+        sudo openssl pkcs8 -in /etc/pki/tls/private/logstash.key.pem -topk8 -nocrypt -out /etc/pki/tls/private/logstash.key
 
 ## Configure Logstash
 
-1.  Create a Logstash configuration file using the text editor of your choice.
+1.  The user `logstash` should already exist. You can reset the password with the passwd command and set it to whatever you desire:
+
+        sudo passwd logstash
+
+1.  Create a Logstash configuration file using the text editor of your choice. Replace the password with the password you set above.
 
     {{< file "/etc/logstash/conf.d/logstash.conf" conf >}}
 input {
@@ -182,8 +193,8 @@ output {
 
 1.  Open Logstash HTTP ports on the firewall.
 
-        firewall-cmd --permanent --zone public --add-port 8080/tcp
-        firewall-cmd --reload
+        sudo firewall-cmd --permanent --zone public --add-port 8080/tcp
+        sudo firewall-cmd --reload
 
 ## Testing
 
@@ -191,13 +202,11 @@ At this point you should be able to run Logstash, push a message, and see the ou
 
 1.  On the Logstash host:
 
-        su logstash
-        /usr/share/logstash/bin/logstash --path.settings /etc/logstash
+        sudo /usr/share/logstash/bin/logstash --path.settings /etc/logstash
 
-1.  And on a remote host:
+1.  And on a remote host, replacing the `SuperSeCreT` with the logstash user's password, and `/path/to/org_ca.crt` with the path where your copy of the certificate is located:
 
         curl --user "logstash:SuperSeCreT" https://<domain_or_ip>:8080 -H "Content-Type: application/json" -d '{"test":"A Log"}' --cacert /path/to/org_ca.crt
-
 
 ## Securing the Connection With Peer Verification
 
