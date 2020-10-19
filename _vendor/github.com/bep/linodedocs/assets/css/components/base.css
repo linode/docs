@@ -23,7 +23,7 @@ a:focus {
 }
 
 a:hover {
-  @apply opacity-75;
+  @apply text-gray-600;
 }
 
 a.active {

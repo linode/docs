@@ -61,7 +61,7 @@
         <div class="md:absolute right-0 w-full md:w-64 rounded border bg-white border-basicgray">
           <div class="flex items-center justify-between px-4 h-8 border-b-gray">
             <div class="font-semibold text-xs text-gray-700" x-text="'Sort ' + data.meta.title + ' Guides'"></div>
-            <button @click="uiState.sorting.open = !uiState.sorting.open" type="button" class="btn-icon text-basicgray" data-testid="openSort">
+            <button @click="uiState.sorting.open = !uiState.sorting.open" type="button" class="btn-icon text-basicgray hover:text-gray-400" data-testid="openSort">
               <template x-if="uiState.sorting.open">
                 <svg class="text-titlecolor fill-current h-3 w-3">
                   <use href="#icon--times"></use>
@@ -124,7 +124,7 @@
           <ul class="mb-5">
             <template x-for="(item, j) in data.hitsBySection[k]" :key="item.href">
               <li class="pb-2" data-testid="sorted-item">
-                <a class="text-titlecolor" :href="item.href" x-html="item.linkTitle"></a>
+                <a class="text-titlecolor hover:text-gray-400" :href="item.href" x-html="item.linkTitle"></a>
               </li>
             </template>
           </ul>
@@ -134,7 +134,7 @@
     </div>
     <template x-if="uiState.showSortedGuideList()" x-for="(item, i) in data.result.hits" :key="item.href">
       <div class="w-2/3 flex flex-col" data-testid="sorted-item">
-        <a class="mb-1  text-titlecolor" x-text="item.linkTitle" :href="item.href"></a>
+        <a class="mb-1  text-titlecolor hover:text-gray-400" x-text="item.linkTitle" :href="item.href"></a>
         <div class="text-textcolor text-sm mb-4">
           <span x-text="item.firstPublishedDateString"></span>
           <span x-text="item.sectionTitle"></span>
@@ -151,7 +151,7 @@
               </div>
             </div>
             <div class="px-6 md:pl-10 py-4">
-              <a class="tracking-tight cursor-pointer mb-4  text-titlecolor" :href="item.href">
+              <a class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400" :href="item.href">
                 <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
               </a>
               <p class="text-darkgray leading-6 text-sm md:text-base" x-html="item.excerptTruncated(160)"></p>
