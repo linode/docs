@@ -38,7 +38,7 @@
         <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
           <template x-for="(item, i) in data.sections" :key="item.key">
             <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
-              <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-gray-700 hover:text-brand" :href="item.href">
+              <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-titlecolor hover:text-brand" :href="item.href">
                 <div class="flex flex-col justify-center w-full">
                   <div class="w-full flex justify-center mb-8">
                     <div class="w-24 h-24" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], (item.thumbnailInline || item.thumbnail))"></div>
@@ -107,12 +107,12 @@
       <template x-if="uiState.showGuidesPerSection()" x-for="(k, i) in Object.keys(data.hitsBySection)" :key="k">
         <div class="">
           <h4 class="text-2xl mb-5 text-titlecolor tracking-tight font-semibold">
-            <ul class="inline-flex">
+            <ul class="inline-flex flex-wrap">
               <template x-for="(s,j) in data.sectionsFromKey(k)">
                 <li class="flex items-center">
-                  <span x-text="s.linkTitle"></span>
+                  <span x-text="s.linkTitle" class="max-w-sm truncate"></span>
                   <template x-if="j < data.sectionsFromKey(k).length -1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-6 w-5 text-gray-500" fill="currentColor" viewBox="0 0 192 512">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-6 w-5 text-basicgray" fill="currentColor" viewBox="0 0 192 512">
                       <path
                                             d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
                     </svg>
@@ -124,7 +124,7 @@
           <ul class="mb-5">
             <template x-for="(item, j) in data.hitsBySection[k]" :key="item.href">
               <li class="pb-2" data-testid="sorted-item">
-                <a :href="item.href" x-html="item.linkTitle"></a>
+                <a class="text-titlecolor" :href="item.href" x-html="item.linkTitle"></a>
               </li>
             </template>
           </ul>
@@ -134,8 +134,8 @@
     </div>
     <template x-if="uiState.showSortedGuideList()" x-for="(item, i) in data.result.hits" :key="item.href">
       <div class="w-2/3 flex flex-col" data-testid="sorted-item">
-        <a class="mb-1" x-text="item.linkTitle" :href="item.href"></a>
-        <div class="text-titlecolor text-sm mb-4">
+        <a class="mb-1  text-titlecolor" x-text="item.linkTitle" :href="item.href"></a>
+        <div class="text-textcolor text-sm mb-4">
           <span x-text="item.firstPublishedDateString"></span>
           <span x-text="item.sectionTitle"></span>
         </div>
@@ -151,7 +151,7 @@
               </div>
             </div>
             <div class="px-6 md:pl-10 py-4">
-              <a class="tracking-tight cursor-pointer mb-4" :href="item.href">
+              <a class="tracking-tight cursor-pointer mb-4  text-titlecolor" :href="item.href">
                 <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
               </a>
               <p class="text-darkgray leading-6 text-sm md:text-base" x-html="item.excerptTruncated(160)"></p>
