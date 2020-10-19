@@ -798,7 +798,7 @@ class Searcher {
 					let facetFilters = self.filters.facets.get(sectionConfig.name) || [];
 
 					requests.forEach((req) => {
-						req.facetFilters = [ facetFilters ];
+						req.facetFilters = facetFilters;
 						if (!req.params) {
 							req.params = `query=${encodeURIComponent(self.filters.query)}&hitsPerPage=100`;
 						} else if (req.params.includes('query=&')) {
@@ -906,7 +906,7 @@ class Searcher {
 						let request = {
 							indexName: node.section.config.indexName(),
 							filters: filters,
-							facetFilters: [ facetFilters.concat(facetFilters, sectionFilter) ],
+							facetFilters: facetFilters.concat(facetFilters, sectionFilter),
 							params: `query=${encodeURIComponent(this.filters.query)}&hitsPerPage=${maxLeafNodes}`
 						};
 
