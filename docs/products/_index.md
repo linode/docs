@@ -15,6 +15,6 @@ render = "link"
 +++
 
 
-Get started deploying and using any Linode service with our Product Documentation.
+Get started using the Cloud Manager, CLI, and API to deploy Linode services and manage your account.
 
  <!--more-->

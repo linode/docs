@@ -11,4 +11,4 @@ kind = "section"
 render = "link"
 +++
 
-Explore our extensive library of Linux and Cloud Computing guides and tutorials with new content published every month.
+Explore our extensive library of Linux and Cloud Computing guides and tutorials with new content published regularly.
