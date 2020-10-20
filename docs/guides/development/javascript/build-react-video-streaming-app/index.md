@@ -107,7 +107,7 @@ const app = express();
     {{< file "server/app.js" js >}}
 // add after 'const app = express();'
 
-app.get('/video', function(req, res) {
+app.get('/video', (req, res) => {
     res.sendFile('assets/sample.mp4', { root: __dirname });
 });
 {{< /file >}}
@@ -119,7 +119,7 @@ app.get('/video', function(req, res) {
     {{< file "server/app.js" js >}}
 // add to end of file
 
-app.listen(4000, function () {
+app.listen(4000, () => {
     console.log('Listening on port 4000!')
 });
 {{< /file >}}
@@ -425,9 +425,7 @@ const cors = require('cors');
 // add after existing app.get('/video', ...) route
 
 app.use(cors());
-app.get('/videos', function(req, res) {
-    res.json(videos);
-});
+app.get('/videos', (req, res) => res.json(videos));
 {{< /file >}}
 
     First, we enable `cors` on the server since we’ll be making the requests from a different origin (domain). `cors` was installed in the [Application Setup](#application-setup) section. Then the `/videos` route is declared, which returns the array we just created in `json` format.
@@ -443,7 +441,7 @@ Our React application fetches the video by `id`, so we can use the `id` to get t
 {{< file "server/app.js" js >}}
 // add after app.get('/videos', ...) route
 
-app.get('/video/:id/data', function(req, res) {
+app.get('/video/:id/data', (req, res) => {
     const id = parseInt(req.params.id, 10);
     res.json(videos[id]);
 });
@@ -472,34 +470,34 @@ We now need to implement two new features that are not supported by that endpoin
     {{< file "server/app.js" js >}}
 // add after app.get('/video/:id/data', ...) route
 
-app.get('/video/:id', function(req, res) {
+app.get('/video/:id', (req, res) => {
     const path = `assets/${req.params.id}.mp4`;
     const stat = fs.statSync(path);
     const fileSize = stat.size;
     const range = req.headers.range;
     if (range) {
-        const parts = range.replace(/bytes=/, "").split("-")
-        const start = parseInt(parts[0], 10)
+        const parts = range.replace(/bytes=/, "").split("-");
+        const start = parseInt(parts[0], 10);
         const end = parts[1]
             ? parseInt(parts[1], 10)
-            : fileSize-1
-        const chunksize = (end-start)+1
-        const file = fs.createReadStream(path, {start, end})
+            : fileSize-1;
+        const chunksize = (end-start) + 1;
+        const file = fs.createReadStream(path, {start, end});
         const head = {
             'Content-Range': `bytes ${start}-${end}/${fileSize}`,
             'Accept-Ranges': 'bytes',
             'Content-Length': chunksize,
             'Content-Type': 'video/mp4',
-        }
+        };
         res.writeHead(206, head);
         file.pipe(res);
     } else {
         const head = {
             'Content-Length': fileSize,
             'Content-Type': 'video/mp4',
-        }
-        res.writeHead(200, head)
-        fs.createReadStream(path).pipe(res)
+        };
+        res.writeHead(200, head);
+        fs.createReadStream(path).pipe(res);
     }
 });
 {{< /file >}}
@@ -528,9 +526,9 @@ else {
     const head = {
         'Content-Length': fileSize,
         'Content-Type': 'video/mp4',
-    }
-    res.writeHead(200, head)
-    fs.createReadStream(path).pipe(res)
+    };
+    res.writeHead(200, head);
+    fs.createReadStream(path).pipe(res);
 }
 {{< / highlight >}}
 
@@ -538,19 +536,19 @@ Subsequent requests will include a range, which we handle in the `if` block:
 
 {{< highlight js >}}
 if (range) {
-    const parts = range.replace(/bytes=/, "").split("-")
-    const start = parseInt(parts[0], 10)
+    const parts = range.replace(/bytes=/, "").split("-");
+    const start = parseInt(parts[0], 10);
     const end = parts[1]
         ? parseInt(parts[1], 10)
-        : fileSize-1
-    const chunksize = (end-start)+1
-    const file = fs.createReadStream(path, {start, end})
+        : fileSize-1;
+    const chunksize = (end-start) + 1;
+    const file = fs.createReadStream(path, {start, end});
     const head = {
         'Content-Range': `bytes ${start}-${end}/${fileSize}`,
         'Accept-Ranges': 'bytes',
         'Content-Length': chunksize,
         'Content-Type': 'video/mp4',
-    }
+    };
     res.writeHead(206, head);
     file.pipe(res);
 }
@@ -587,9 +585,9 @@ const thumbsupply = require('thumbsupply');
     {{< file "server/app.js" js >}}
 // add after app.get('/video/:id', ...) route
 
-app.get('/video/:id/poster', function(req, res) {
+app.get('/video/:id/poster', (req, res) => {
     thumbsupply.generateThumbnail(`assets/${req.params.id}.mp4`)
-    .then(thumb => res.sendFile(thumb))
+    .then(thumb => res.sendFile(thumb));
 });
 {{< / highlight >}}
 
@@ -667,9 +665,7 @@ With the `track` element set up, we can now create the endpoint that will handle
     {{< file "server/app.js" js >}}
 // add after the app.get('/video/:id/poster', ...) route
 
-app.get('/video/:id/caption', function(req, res) {
-    res.sendFile('assets/captions/sample.vtt', { root: __dirname });
-});
+app.get('/video/:id/caption', (req, res) => res.sendFile('assets/captions/sample.vtt', { root: __dirname }));
 {{< /file >}}
 
     This route will serve the same caption file, regardless of which `id` is passed as a parameter. In a more complete application, you could serve different caption files for different `id`s.

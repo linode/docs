@@ -96,6 +96,7 @@ backticks
 backupninja
 bampton
 balarin
+bantime
 barebones
 base64
 basearch
@@ -181,6 +182,7 @@ chrooting
 chrooted
 citad
 cjones
+clamav
 clearsign
 clearspace
 cli
@@ -437,6 +439,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+findtime
 finnix
 firewalld
 firewalling
@@ -614,6 +617,7 @@ ifnames
 iframe
 iframes
 ifup
+ignoreip
 ikiwiki
 im
 imagize
@@ -789,6 +793,7 @@ logdir
 logfile
 logfiles
 loglevel
+logpath
 logrotate
 logstash
 logwatch
@@ -838,6 +843,7 @@ matplotlib
 mawk
 maxconn
 maxdepth
+maxretry
 mbit
 mbits
 mbox

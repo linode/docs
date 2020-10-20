@@ -220,7 +220,7 @@ example.com.        86400     IN      NS      ns4.linode.com.
 ;; ADDITIONAL SECTION:
 ns1.linode.com.         86400   IN      A       69.93.127.10
 ns2.linode.com.         86400   IN      A       65.19.178.10
-ns3.linode.com.         86400   IN      A       75.127.96.10
+ns3.linode.com.         86400   IN      A       74.207.225.10
 ns4.linode.com.         86400   IN      A       207.192.70.10
 ns5.linode.com.         86400   IN      A       109.74.194.10
 

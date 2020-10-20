@@ -177,7 +177,7 @@ You can enable logging with the command:
 
 Log levels can be set by running `sudo ufw logging low|medium|high`, selecting either `low`, `medium`, or `high` from the list. The default setting is `low`.
 
-A normal log entry will resemble the following, and will be located at `/var/logs/ufw`:
+A normal log entry will resemble the following, and will be located at `/var/log/ufw.log`:
 
     Sep 16 15:08:14 <hostname> kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:00:00:00:00:00:00:00:00:00:00:00:00:00 SRC=123.45.67.89 DST=987.65.43.21 LEN=40 TOS=0x00 PREC=0x00 TTL=249 ID=8475 PROTO=TCP SPT=48247 DPT=22 WINDOW=1024 RES=0x00 SYN URGP=0
 
