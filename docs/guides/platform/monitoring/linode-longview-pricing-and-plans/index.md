@@ -1,5 +1,5 @@
 ---
-slug: pricing
+slug: linode-longview-pricing-and-plans
 author:
   name: Linode
   email: docs@linode.com
@@ -10,7 +10,8 @@ published: 2020-01-22
 modified_by:
   name: Linode
 image: LongviewPricingandPlans.png
-title: "Longview Pricing and Plans"
+title: "Linode Longview Pricing and Plans"
+h1_title: "Longview Pricing and Plans"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
