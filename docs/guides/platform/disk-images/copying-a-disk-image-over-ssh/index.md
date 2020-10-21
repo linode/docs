@@ -26,11 +26,13 @@ If the amount of data on your disk is much less than the size of the disk, then 
 
 ## Download a Disk over SSH
 
-### Boot into Rescue Mode
+This guide was written to support Downloading a disk over SSH from a  **Linode**, which will be used to Create and Send an image to a separate receiving system that you personally own. This means that the guide will have you switching between the execution of commands on both the **Origin Linode** as the origin of your disk image, and the **Receiving System** which will receive a copy of this image. You will see the terms Origin Linode and Receiving System used to describe these two separate environments.
 
-1.  Prepare the receiving computer by verifying that SSH is installed. Most Linux/Unix-like systems include OpenSSH in their package base by default. If the receiving system is Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/networking/ssh/using-ssh-on-windows).
+While this guide has been written to accommodate computers running Linux as their operating system, if the receiving system is Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/networking/ssh/using-ssh-on-windows) which can alternatively be used to complete this process.
 
-1.  Reboot Your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) and connect to it using [Lish](/docs/platform/manager/remote-access/#console-access).
+### Boot Linode into Rescue Mode
+
+1.  Reboot Your Origin Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) and connect to it using [Lish](/docs/platform/manager/remote-access/#console-access).
 
 1.  Set a root password for the rescue system and start the SSH server:
 
@@ -39,26 +41,24 @@ If the amount of data on your disk is much less than the size of the disk, then 
 
 ### Copy and Download the Disk
 
-1.  Copy the disk over SSH from the Linode to the receiving machine. Replace `192.0.2.9` with the Linode's IP address and `/home/archive/linode.img` with the path where you want to store the disk.
+1.  Prepare the Receiving System that will be downloading the disk image by verifying that SSH is installed. Most Linux/Unix-like systems include OpenSSH in their package base by default.
+
+1.  Copy the disk over SSH from the Origin Linode to the Receiving System. Run the following command on the Receiving System, replacing `192.0.2.9` with the Origin Linode's IP address and `/home/archive/linode.img` with the path where you want to store the disk.
 
         ssh root@192.0.2.9 "dd if=/dev/sda " | dd of=/home/archive/linode.img
 
-    {{< note >}}
-The device `/dev/sda` is used for Linodes running on KVM. If your Linode is still using XEN, then use `/dev/xvda` throughout this guide instead.
-{{< /note >}}
-
-1.  The receiving machine will connect to the Linode. Verify the SSH key fingerprints. If valid, type `yes` and press **Enter** to continue:
+1.  The receiving system will connect to the Linode and prompt you to verify that the SSH key fingerprints are valid. If valid, type `yes` and press **Enter** to continue:
 
         The authenticity of host '192.0.2.9 (192.0.2.9)' can't be established.
         RSA key fingerprint is 39:6b:eb:05:f1:28:95:f0:da:63:17:9e:6b:6b:11:4a.
         Are you sure you want to continue connecting (yes/no)? yes
 
-1.  Enter the root password you created above for the rescue system:
+1.  The receiving system will then be prompted to enter the root password you [created for the Origin Linode in rescue mode](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#boot-into-rescue-mode). Enter this password now:
 
         Warning: Permanently added '192.0.2.9' (RSA) to the list of known hosts.
         root@192.0.2.9's password:
 
-    When the transfer completes, you'll see a summary output similar to below:
+    When the transfer completes, you'll see a summary output similar to the output below:
 
     {{< output >}}
         4096000+0 records in
@@ -70,17 +70,17 @@ The device `/dev/sda` is used for Linodes running on KVM. If your Linode is stil
 
 ### Verify the Disk
 
-Once the copy has completed, verify it by mounting the image on the receiving machine.
+Once the copy has completed, verify it by mounting the image on the receiving system with the following commands.
 
-1.  Switch users to `root` on receiving machine:
+1.  Switch to the `root` user:
 
         su
 
-1.  Make a directory to mount the disk as:
+1.  Make a directory to mount the disk:
 
         mkdir linode
 
-1.  Mount the disk. Replace `linode.img` with the name of the of your Linode's disk.
+1.  Mount the disk in the directory created in the previous step. Replace `linode.img` with the name of your Linode's disk.
 
         mount -o loop linode.img linode
 
@@ -95,21 +95,24 @@ Once the copy has completed, verify it by mounting the image on the receiving ma
 
 ## Upload a Disk over SSH
 
-You may want to upload your disk image to a new server. For example, if you previously downloaded your Linode disk and deleted the Linode to halt billing on it, you can create a new Linode at a later date and upload the disk to resume your services.
+You may want to upload your disk image to a new server. For example, if you previously downloaded your Linode disk and deleted the Linode to halt billing on it, you can create a new Linode at a later date and upload the disk to resume your services. This section of the guide assumes that you will be creating a New Linode with the default Primary and Swap Disk as outlined in the Creating a Linode section of our [Getting Started](https://www.linode.com/docs/getting-started/#create-a-linode) guide.
 
-1.  Prepare the new Linode by first creating a new swap disk. Doing this first means that you can simply use the Linode's remaining space for the system disk without doing any subtraction. A swap disk is typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
+1.  Once you've finished [Creating a New Linode](https://www.linode.com/docs/getting-started/#create-a-linode) with enough disk space available to accomodate your disk image, prepare the new Linode to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 
-1.  Access your Linode through the Linode Cloud Manager. Click the **Disks/Configs** tab, then select **Add a Disk**.
+1.  Access your Linode through the Linode Cloud Manager. Click the **Disks/Configs** tab to navigate to the Disks/Cofigs section.
 
-1.  The **Add Disk** panel will appear. Select `swap` from the **Filesystem** drop down menu.
+1. On the following page in the **Disks** menu, select the ellipsis next to any primary disks you'll be replacing and select **Delete**.
 
-    [![Create a new disk](copydisk-create-disk.png)](copydisk-create-disk.png "Create a new disk")
+1. Next, select **Add a Disk**.
 
-1.  Now use the remaining disk space to create the system drive you'll copy your disk image to. Enter a descriptive name in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. Click **Save Changes**.
+1.  The **Add Disk** panel will appear. Select the **Create Empty Disk**, enter a **Label** that you can use as a personal identifier, select the filesystem that matches the format of the disk that was downloaded over SSH, and enter a Size thhat is larger enough to hold the contents of the disk you are uploading. Click **Save Changes**.
 
-1. Reboot Your Linode into [Rescue Mode](#boot-into-rescue-mode) and start the SSH server as described above.
+1. Reboot Your Linode into [Rescue Mode](#boot-into-rescue-mode) and start the secure SSH server using the following commands:
 
-1. Upload the disk over SSH to the Linode. Replace `192.0.2.9` with the Linode's IP address and `/home/archive/linode.img` with the disk images's path.
+        passwd
+        service ssh start
+
+1. Upload the disk image you have saved remotely over SSH to the new Linode. Replace `192.0.2.9` with the Linode's IP address and `/home/archive/linode.img` with the disk images's path.
 
         dd if=/home/archive/linode.img | ssh root@192.0.2.9 "dd of=/dev/sda"
 
