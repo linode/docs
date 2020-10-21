@@ -1,4 +1,5 @@
 ---
+slug: nodebalancer-proxypass-configuration
 author:
   name: Linode
   email: docs@linode.com

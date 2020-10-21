@@ -1,4 +1,5 @@
 ---
+slug: enable-ssl-for-object-storage
 author:
   name: Linode
   email: docs@linode.com
