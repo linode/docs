@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for the Linode Backup Service."
 tab_group_main:
     weight: 30
 ---

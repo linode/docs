@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get Started with Linode Object Storage. Learn how to enable Object Storage, create an object storage key pair, create a bucket, upload an object to a bucket, and cancel object storage."
 tab_group_main:
     weight: 20
 ---

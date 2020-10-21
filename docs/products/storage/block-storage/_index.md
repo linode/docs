@@ -1,5 +1,6 @@
 ---
 title: Block Storage
+description: "Linode Block Storage is scalable, high-speed, resilient and fault tolerant."
 tab_group_main:
     is_root: true
     title: Overview
