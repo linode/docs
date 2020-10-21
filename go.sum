@@ -179,6 +179,8 @@ github.com/linode/linode-api-docs v4.73.0+incompatible h1:KT1fyjk4X9hqw4A1hv6wVH
 github.com/linode/linode-api-docs v4.73.0+incompatible/go.mod h1:mTkxejkk3Y6N4IfEQRGb1xC0EOPl12bWNWt3PzAUD7g=
 github.com/linode/linode-api-docs/v4 v4.77.0 h1:Rb3OsHJvZO58ZVkJBK/v/KB38/bjCvw5bsq7x2ZjIU4=
 github.com/linode/linode-api-docs/v4 v4.77.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
+github.com/linode/linode-api-docs/v4 v4.78.3 h1:eqEqvjMDOSTgs2S8Vbht29CsRnacbvBDNrUElfIUxd4=
+github.com/linode/linode-api-docs/v4 v4.78.3/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20200921210751-887bbecdd5dd/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c h1:j2j0WYHnoSEsGg7790A+gNQqKYIXGTi/i1FHTwt9zBM=
