@@ -45,6 +45,7 @@ appletalk
 approvers
 appserver
 apxs
+architecting
 aren
 argv
 arping
@@ -1020,6 +1021,7 @@ ntpd
 nullval
 num
 numpy
+nvidia
 nvim
 nvm
 octopress
@@ -1313,6 +1315,7 @@ sed
 selinux
 sendable
 sendmail
+sentdex
 seo
 serv
 server1
