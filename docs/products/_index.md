@@ -15,6 +15,6 @@ render = "link"
 +++
 
 
-Cras justo odio, dapibus ac **facilisis in**, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+Get started using the Cloud Manager, CLI, and API to deploy Linode services and manage your account.
 
  <!--more-->
