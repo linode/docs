@@ -9,7 +9,12 @@
 #
 # Afterwards, it updates the indices on the production Algolia account.
 
-cd scripts
-./deploy_to_object_storage.sh
+set -euo pipefail
+
+[[ -z "${ALGOLIA_ADMIN_API_KEY}" ]] && { echo "Please specify DEPLOY_SUFFIX env variable"; exit 1; }
+[[ -z "${OBJ_ACCESS_KEY}" ]] && { echo "Please specify OBJ_ACCESS_KEY env variable"; exit 1; }
+[[ -z "${OBJ_SECRET_KEY}" ]] && { echo "Please specify OBJ_SECRET_KEY env variable"; exit 1; }
+
+DEPLOY_SUFFIX=-latestrelease ./deploy_to_object_storage.sh
 cd update_linode_docs_search_indices
 ALGOLIA_ADMIN_API_KEY=$ALGOLIA_ADMIN_API_KEY go run ./main.go --sourcedir ../../public
