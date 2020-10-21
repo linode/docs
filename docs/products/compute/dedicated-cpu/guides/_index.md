@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for Dedicated CPU Linode instances."
 tab_group_main:
     weight: 30
 ---

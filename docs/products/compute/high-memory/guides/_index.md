@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for High Memory Linode instances."
 tab_group_main:
     weight: 30
 ---

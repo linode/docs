@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for Linode Kubernetes Engine (LKE)."
 tab_group_main:
     weight: 30
 ---

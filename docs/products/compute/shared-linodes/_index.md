@@ -1,5 +1,6 @@
 ---
 title: Shared Linodes
+description: "Shared Linodes offer an international content delivery network (CDN) and the ability to use container clusters at the best price and performance."
 tab_group_main:
     is_root: true
     title: Overview

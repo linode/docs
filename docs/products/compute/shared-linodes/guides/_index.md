@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for Shared Linode instances."
 tab_group_main:
     weight: 30
 ---
