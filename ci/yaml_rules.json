@@ -1,4 +1,11 @@
 {
+
+  "_build": {
+    "elements": ["list"],
+    "required": false,
+    "type": "dict",
+    "description": "Does what the hiddenguide frontmatter does, but for the new UI."
+  },
   "aliases": {
     "elements": false,
     "required": false,
@@ -202,11 +209,16 @@
     "type": "bool",
     "description": "If true, this guide will be hidden from all layouts and search index."
   },
+  "slug": {
+    "required": true,
+    "type": "text",
+    "description": "Guides will render to the URL /docs/guides/:slug/. Supply the slug for the URL with this frontmatter attribute."
+  },
   "hiddenguide": {
     "elements": false,
     "required": false,
     "type": "bool",
-    "description": "If true, this guide will be hidden from all layouts and search index."
+    "description": "DEPRECATED: use _build: list: false in the new UI instead. If true, this guide will be hidden from all layouts and search index."
   },
   "show_on_frontpage": {
     "elements": false,
@@ -225,12 +237,6 @@
     "required": false,
     "type": "bool",
     "description": "If false, any social media image set with the image frontmatter field will not be displayed in the guide."
-  },
-  "slug": {
-    "elements": false,
-    "required": false,
-    "type": "text",
-    "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
   },
   "tags": {
     "elements": "list",

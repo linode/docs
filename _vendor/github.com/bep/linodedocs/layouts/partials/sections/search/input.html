@@ -1,0 +1,9 @@
+<div class="relative text-textcolor" x-data="lnSearchInput.New()" id="search-input" @search:results.document.debounce.100ms="receiveData($event.detail);" data-turbolinks-permanent>
+  <div autocomplete="off" spellcheck="false" contenteditable="true" x-ref="searchInput" @focus="setFocus(true);" @focusout="setFocus(false);" @input="dispatch()" name="search"
+        placeholder="Search Linode" class="search-input bg-white w-full h-12 px-5 py-3 pl-9 focus:outline-none" data-testid="search-input"></div>
+  <span class="absolute left-0 top-0 mt-4">
+    <svg class="w-4 h-4" :class="{ 'text-brand': focus, 'text-textcolor': !focus }">
+      <use href="#icon--search"></use>
+    </svg>
+  </span>
+</div>

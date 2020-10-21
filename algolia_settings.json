@@ -1,0 +1,204 @@
+{
+ "linode-documentation": {
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "category",
+   "languages",
+   "section",
+   "section.lvl0",
+   "section.lvl1",
+   "section.lvl2",
+   "section.lvl3",
+   "skillLevel",
+   "tags"
+  ],
+  "attributesToHighlight": [
+   "title"
+  ],
+  "attributesToRetrieve": [
+   "excerpt",
+   "firstPublishedTime",
+   "href",
+   "languages",
+   "lastUpdatedTime",
+   "section",
+   "skillLevel",
+   "thumbnailUrl",
+   "title"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "maxValuesPerFacet": 200,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "queryType": "prefixLast",
+  "ranking": [
+   "asc(deprecated)",
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeWordsIfNoResults": "none",
+  "replicas": [
+   "linode-documentation-sorted"
+  ],
+  "searchableAttributes": [
+   "title",
+   "keywords",
+   "toc",
+   "h1",
+   "unordered(excerpt)"
+  ],
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ },
+ "linode-documentation-api": {
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "section",
+   "section.lvl0",
+   "section.lvl1"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "maxValuesPerFacet": 100,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "queryType": "prefixLast",
+  "ranking": [
+   "asc(ordinal)",
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeWordsIfNoResults": "none",
+  "searchableAttributes": [
+   "unordered(exerpt)",
+   "unordered(section)",
+   "unordered(section.lvl0)"
+  ],
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ },
+ "linode-documentation-sections": {
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "section"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "maxValuesPerFacet": 100,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "queryType": "prefixLast",
+  "ranking": [
+   "desc(firstPublishedTime)",
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeWordsIfNoResults": "none",
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ },
+ "linode-documentation-sorted": {
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "category",
+   "languages",
+   "section",
+   "section.lvl0",
+   "section.lvl1",
+   "section.lvl2",
+   "section.lvl3",
+   "skillLevel",
+   "tags"
+  ],
+  "attributesToHighlight": [
+   "title"
+  ],
+  "attributesToRetrieve": [
+   "excerpt",
+   "firstPublishedTime",
+   "href",
+   "languages",
+   "lastUpdatedTime",
+   "section",
+   "skillLevel",
+   "thumbnailUrl",
+   "title"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "maxValuesPerFacet": 200,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "primary": "linode-documentation",
+  "queryType": "prefixLast",
+  "ranking": [
+   "desc(firstPublishedTime)",
+   "asc(deprecated)",
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeWordsIfNoResults": "none",
+  "searchableAttributes": [
+   "title",
+   "keywords",
+   "toc",
+   "h1",
+   "unordered(excerpt)"
+  ],
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ }
+}

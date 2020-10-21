@@ -1,0 +1,17 @@
+<h1 class="leading-tight tracking-tight text-5xl text-titlecolor w-full lg:w-3/4">
+  {{ .Title }}
+</h1>
+<p class="pt-2 md:pt-6 text-basicgray">
+  Posted on
+  <time datetime="{{ .PublishDate }}">
+    {{ .PublishDate.Format site.Params.time_format_default }}
+  </time>
+  , Updated on
+  <time datetime="{{ .Lastmod }}">
+    {{ .Lastmod.Format site.Params.time_format_default }}
+  </time>
+  {{ with .Params.author }}
+    , by {{ .name }}
+  {{ end }}
+  .
+</p>

@@ -1,0 +1,59 @@
+<div x-data="lnSearch.New(lnSearchConfig)" id="search-main" x-init="init()" x-show="show" @search:subscribe.document="subscribe($event.detail);"
+    @search:facetfilters.document="applyFacetFilters($event.detail);" @search:trigger.document="search($event.detail)" @search:nodes.document="searchNodes($event.detail);"
+    @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="pb-64"
+    data-turbolinks-permanent>
+  <div class="flex flex-col space-y-2 md:space-y-4">
+    <template x-for="(section, i) in searchState.mainSearch.results.sections" :key="section.config.name">
+      <div x-show="section && section.isEnabled() && section.searchData.result.nbHits !== undefined" :data-testid="'section-' + section.config.name">
+        <div x-show="section.searchData.result.nbHits > 0" class="flex content-start items-center justify-between mb-5 md:mb-10">
+          <h2 class="text-titlecolor" x-text="'Top Results in ' + section.config.title"></h2>
+          <template x-if="section.searchData.result.nbHits < 500">
+            <div class="text-left underline">
+              <a x-bind:href="section.searchData.href" x-text="(section.searchData.result.nbHits || 0) + ' Results in ' + section.config.title" class="text-gray-700 text-xs"></a>
+            </div>
+          </template>
+        </div>
+        <div x-show="section.searchData.result.nbHits == 0" class="flex content-start items-center text-titlecolor mb-5 md:mb-10" :data-testid="'no-search-results-in-' + section.config.name">
+          <svg class="h-5 w-5">
+            <use href="#icon--times"></use>
+          </svg>
+          <h2 class="ml-2" x-text="'No Results in ' + section.config.title"></h2>
+        </div>
+        <template x-if="section && section.searchData && section.searchData.result && section.searchData.result.hits">
+          <div class="pb-2 md:pb-6">
+            <template x-for="(item, j) in section.searchData.result.hits" :key="item.objectID">
+              <div class="py-3 mb-1 tablet:mb-4" x-bind:class="{ 'bg-selected rounded -ml-4 pl-4': (j === 0) }">
+                {{/* This duplication looks odd, but is currently needed to make sure we navigate via Turbolinks for local links. */}}
+                <template x-if="item.href && item.isExternalLink">
+                  <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" x-bind:href="item.href" target="_blank" data-testid="link-hit"></a>
+                </template>
+                <template x-if="item.href && !item.isExternalLink">
+                  <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" @click="if (item.isLinkToSelf()) { show = false }" x-bind:href="item.href" data-testid="link-hit"></a>
+                </template>
+                <template x-if="!item.href">
+                  <p x-html="item.description"></p>
+                </template>
+                <div class="text-sm text-textcolor pt-2">
+                  <template x-for="(value, label) in item.facets" :key="label">
+                    <div class="inline-block">
+                      <span class="font-semibold mr-1" x-text="label + ':'"></span>
+                      <span class="mr-2 capitalize" x-html="value.string"></span>
+                    </div>
+                  </template>
+                </div>
+                <div class="pt-2 space-x-1">
+                  <template x-for="(v, i) in item.tags" :key="v">
+                    <span x-html="v" style="background-color: #E9EAEC;"
+                                        class="border rounded border-transparent text-basicgray tracking-normal font-semibold text-xs uppercase px-2"></span>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+        <hr class="mb-2 md:mb-6" />
+      </div>
+    </template>
+  </div>
+</div>

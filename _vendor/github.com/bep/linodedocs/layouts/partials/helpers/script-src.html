@@ -1,0 +1,5 @@
+{{ $js := . }}
+{{- if  hugo.IsProduction  }}
+  {{ $js = $js | babel |  minify | fingerprint }}
+{{ end -}}
+<script src="{{ $js.RelPermalink }}" {{ if  hugo.IsProduction  }} integrity="{{ $js.Data.Integrity }}" {{ end }} crossorigin="anonymous" defer></script>
