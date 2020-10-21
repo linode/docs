@@ -21,8 +21,9 @@ external_resources:
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 deprecated: true
-hiddenguide: true
 tags: ["debian","mariadb","database"]
+_build:
+  list: false
 ---
 
 ![How to Set Up MariaDB on Debian 9](how-to-set-up-mariadb-on-debian-smg.jpg)
