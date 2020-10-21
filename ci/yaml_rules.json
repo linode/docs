@@ -1,4 +1,11 @@
 {
+
+  "_build": {
+    "elements": ["list"],
+    "required": false,
+    "type": "dict",
+    "description": "Does what the hiddenguide frontmatter does, but for the new UI."
+  },
   "aliases": {
     "elements": false,
     "required": false,
@@ -211,7 +218,7 @@
     "elements": false,
     "required": false,
     "type": "bool",
-    "description": "If true, this guide will be hidden from all layouts and search index."
+    "description": "DEPRECATED: use _build: list: false in the new UI instead. If true, this guide will be hidden from all layouts and search index."
   },
   "show_on_frontpage": {
     "elements": false,
