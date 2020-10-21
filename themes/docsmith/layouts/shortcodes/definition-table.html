@@ -1,5 +1,0 @@
-{{ $htmlTable := .Inner | markdownify }}
-{{ $old := "<table>" }}
-{{ $new := printf "<table class='table definition-table'>" }}
-{{ $htmlTable := replace $htmlTable $old $new }}
-{{ $htmlTable | safeHTML }}

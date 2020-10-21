@@ -21,6 +21,7 @@ aker
 alef
 alertmanager
 alexey
+alfano
 alives
 allmasquerade
 allowlist
@@ -44,6 +45,7 @@ appletalk
 approvers
 appserver
 apxs
+architecting
 aren
 argv
 arping
@@ -94,6 +96,7 @@ backtick
 backticks
 backupninja
 bampton
+balarin
 bantime
 barebones
 base64
@@ -102,6 +105,7 @@ bashdoor
 bashrc
 bc
 berkshelf
+bernd
 binlog
 biomes
 bitbucket
@@ -172,6 +176,7 @@ chefspec
 chgrp
 chmod
 chown
+christianwan
 chromecast
 chroot
 chrooting
@@ -206,6 +211,7 @@ comodo
 completekey
 conda
 config
+configr
 configs
 configtest
 configurability
@@ -246,6 +252,7 @@ ctools
 ctrl
 ctx
 cuda
+cutover
 cyberduck
 cyg
 cygwin
@@ -442,6 +449,7 @@ firstsite
 flamegraph
 flamegraphs
 flatpress
+flowlens
 flyspray
 foodcritic
 fortran
@@ -555,6 +563,7 @@ hexo
 hiera
 highstate
 hilights
+hilmar
 hl2
 hl2
 hmac
@@ -676,6 +685,7 @@ jitsi
 jk
 jks
 jobd
+johansson
 joomla
 journalctl
 journald
@@ -765,6 +775,7 @@ ligttpd
 linewise
 linkerd
 linode
+linodego
 linodes
 lish
 listdir
@@ -855,6 +866,7 @@ metabase
 metacity
 metapackage
 metaparameters
+metorik
 metricbeat
 microblogs
 microservice
@@ -1010,6 +1022,7 @@ ntpd
 nullval
 num
 numpy
+nvidia
 nvim
 nvm
 octopress
@@ -1079,6 +1092,7 @@ permalink
 permalinks
 pflogsumm
 pgpass
+pharmer
 pharo
 phonebook
 php
@@ -1223,6 +1237,7 @@ resolvconf
 respawn
 resque
 restapi
+retargetly
 retpoline
 retrans
 reusability
@@ -1275,10 +1290,12 @@ saslauth
 saslauthd
 sasldb
 savas
+savvii
 sbackup
 sbin
 sbopkg
 scgi
+schaeffer
 scm
 scp
 scrapy
@@ -1299,6 +1316,7 @@ sed
 selinux
 sendable
 sendmail
+sentdex
 seo
 serv
 server1
@@ -1506,6 +1524,7 @@ turtl
 tw
 txt
 txz
+tzurbaev
 ucd
 udp
 ufw

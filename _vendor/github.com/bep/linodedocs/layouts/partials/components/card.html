@@ -1,0 +1,16 @@
+{{ $height := .height | default "400px" }}
+<div class="card bg-white h-full rounded-lg overflow-hidden shadow-sm w-full">
+  <a href="{{ .page.RelPermalink }}" class="no-underline text-gray-700 text-base block">
+    <div class="relative overflow-hidden pb-30/9 sm:pb-16/9">
+      {{ partial "helpers/bundle-image.html" (dict "page" .page "class" "absolute h-full w-full object-cover" "command" "Fit" "options" "471x265") }}
+    </div>
+    <div class="px-5 md:px-10 py-4">
+      <div class="font-bold text-xl mb-2">
+        {{ .page.Title }}
+      </div>
+      <p>
+        {{ .page.Summary }}
+      </p>
+    </div>
+  </a>
+</div>

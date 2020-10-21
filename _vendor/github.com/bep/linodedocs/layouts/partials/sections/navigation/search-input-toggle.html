@@ -1,0 +1,25 @@
+<div class="h-full" id="search-toggle-component">
+  <div class="flex items-center content-center h-full w-full" @click="toggles.searchInput = !toggles.searchInput">
+    <div class="hide-if-topbar-is-pinned md:hidden" data-testid="search-input-toggle">
+      <button type="button" class="btn-icon"  :aria-label="toggles.searchInput ? 'close' : 'open'">
+        <svg class="text-titlecolor" style="width: 0.85rem;height:0.85rem;">
+          <use :href="toggles.searchInput ? '#icon--times' : '#icon--search'"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="hide-if-topbar-is-not-pinned md:hidden">
+      <button type="button" class="btn-icon"  :aria-label="toggles.searchInput ? 'close' : 'open'" data-testid="search-input-toggle">
+        <svg style="width: 0.85rem;height:0.85rem;" :class="{ 'text-titlecolor' : !toggles.searchInput, 'text-brand': toggles.searchInput }">
+          <use href="#icon--search"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="hide-if-topbar-is-not-pinned hidden md:block">
+      <button type="button" class="btn-icon" :aria-label="toggles.searchInput ? 'close' : 'open'" data-testid="search-input-toggle">
+        <svg style="width: 0.85rem;height:0.85rem;" :class="{ 'text-titlecolor' : !toggles.searchInput, 'text-brand': toggles.searchInput }">
+          <use href="#icon--search"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
