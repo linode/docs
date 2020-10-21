@@ -5,6 +5,9 @@ command = "hugo version && hugo --gc --minify -d public/docs;"
 [context.production.environment]
 HUGO_VERSION = "0.76.5"
 
+[context.deploy-preview.environment]
+HUGO_VERSION = "0.76.5"
+
 [[plugins]]
 package = "netlify-plugin-hugo-cache-resources"
 
