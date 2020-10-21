@@ -17,18 +17,28 @@
 # A future iteration of this will use Terraform to create the bucket if it doesn't
 # exist already. Until then, you will need to create the bucket ahead of time.
 
+set -euo pipefail
+
+[[ -z "${OBJ_ACCESS_KEY}" ]] && { echo "Please specify OBJ_ACCESS_KEY env variable"; exit 1; }
+[[ -z "${OBJ_SECRET_KEY}" ]] && { echo "Please specify OBJ_SECRET_KEY env variable"; exit 1; }
+[[ -z "${DEPLOY_SUFFIX}" ]] && { echo "Please specify DEPLOY_SUFFIX env variable"; exit 1; }
+
 cd ..
+rm -rf public/
 hugo
+
 # Configure the bucket as a website, just in case it isn't already
-s3cmd ws-create --ws-index=index.html --ws-error=404.html s3://linodedocs$DEPLOY_SUFFIX
+s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY ws-create --ws-index=index.html --ws-error=404.html s3://linodedocs$DEPLOY_SUFFIX
 
 # Sync these first, but don't delete the previous files, because there will be pages that rely on them
-s3cmd --config=.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/css/ s3://linodedocs$DEPLOY_SUFFIX/docs/css/
-s3cmd --config=.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/js/ s3://linodedocs$DEPLOY_SUFFIX/docs/js/
-s3cmd --config=.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/jslibs/ s3://linodedocs$DEPLOY_SUFFIX/docs/jslibs/
-s3cmd --config=.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/images/ s3://linodedocs$DEPLOY_SUFFIX/docs/images/
+s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/css/ s3://linodedocs$DEPLOY_SUFFIX/docs/css/
+s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/js/ s3://linodedocs$DEPLOY_SUFFIX/docs/js/
+s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/jslibs/ s3://linodedocs$DEPLOY_SUFFIX/docs/jslibs/
+s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/images/ s3://linodedocs$DEPLOY_SUFFIX/docs/images/
 
 # Sync the other pages
-s3cmd --config=.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public --exclude 'public/css/*' --exclude 'public/js/*' --exclude 'public/jslibs/*' --exclude 'public/images/*' --delete-removed --delete-after sync public/ s3://linodedocs$DEPLOY_SUFFIX/docs/
+s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public --exclude 'public/css/*' --exclude 'public/js/*' --exclude 'public/jslibs/*' --exclude 'public/images/*' --delete-removed --delete-after sync public/ s3://linodedocs$DEPLOY_SUFFIX/docs/
+
+# Generate the 301 permanent redirectscd scripts
 cd scripts
 ./generate_permanent_redirects.sh
