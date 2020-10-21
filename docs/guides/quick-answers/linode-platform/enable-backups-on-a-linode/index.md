@@ -12,7 +12,8 @@ modified_by:
 published: 2017-05-08
 title: Enable Backups on a Linode
 cloud_manager_link: platform/disk-images/linode-backup-service/#enable-the-backup-service
-hiddenguide: true
+_build:
+  list: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/enable-backups-on-a-linode/']
 ---
