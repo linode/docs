@@ -15,7 +15,7 @@
         <a href="https://login.linode.com/signup?promo={{ $.Site.Params.promo_code }}" class="font-semibold text-white">
           Try this guide
         </a>
-        to receive $20 at signup on a new account.
+        to receive ${{ $.Site.Params.promo_code_amount | default 20 }} at signup on a new account.
       {{ end }}
     </span>
   </div>

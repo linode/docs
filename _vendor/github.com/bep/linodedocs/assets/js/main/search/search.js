@@ -134,8 +134,12 @@ class Searcher {
 				if (opts.isSectionMeta) {
 					href = router.hrefSection(hit.objectID);
 				} else if (hit.url) {
-					// A blog entry.
-					href = router.hrefEntry(hit);
+					if (hit.section === 'resources > webinars') {
+						href = hit.url;
+					} else {
+						// A blog entry.
+						href = router.hrefEntry(hit);
+					}
 				} else if (hit.objectType === 'question') {
 					// A question.
 					href = `https://www.linode.com/community/questions/${hit.linodeId}`;
