@@ -1,4 +1,4 @@
-baseURL = "https://linode.com/docs/"
+baseURL = "https://www.linode.com/docs/"
 languageCode = "en-us"
 title = "Linode Guides & Tutorials"
 
