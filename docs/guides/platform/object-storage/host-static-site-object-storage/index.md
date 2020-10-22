@@ -320,8 +320,4 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
 
 To learn about managing DNS records on Linode, see the [DNS Manager](/docs/platform/manager/dns-manager/) and [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guides.
 
-{{< note >}}
-SSL functionality does not work when using a custom domain, since the certificate is only valid for the website endpoint, not your custom domain. You will see a certificate warning thrown if you proceed to access your custom domain via `https`.
-{{< /note >}}
-
 As noted before, it's possible to trigger automatic deployments to the Object Storage service when you push new content updates to GitHub or GitLab. This is done by leveraging a CI/CD (continuous integration/continuous delivery) tool like [Travis CI](https://travis-ci.org). Essentially, you would build your Hugo site within the Travis environment and then run the `s3cmd sync` command from it to your bucket.
