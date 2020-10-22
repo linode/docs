@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for the Linode DNS Manager."
 tab_group_main:
     weight: 30
 ---

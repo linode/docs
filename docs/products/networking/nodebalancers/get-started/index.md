@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get started with Linode NodeBalancers. Learn how to configure a NodeBalancer."
 tab_group_main:
     weight: 20
 ---
