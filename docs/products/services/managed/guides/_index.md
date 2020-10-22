@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for the Linode Managed service."
 tab_group_main:
     weight: 30
 ---

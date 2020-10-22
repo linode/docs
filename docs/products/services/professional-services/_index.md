@@ -1,5 +1,6 @@
 ---
 title: Professional Services
+description: "Linode Professional Services offers site migrations, tuning, and deployments."
 tab_group_main:
     is_root: true
     title: Overview
