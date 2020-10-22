@@ -1,5 +1,6 @@
 ---
 title: DDoS Protection
+description: "Linode DDoS Protection is always on real-time intelligent protection that monitors, detects, analyzes, and blocks threats to the network in real-time."
 tab_group_main:
     is_root: true
     title: Overview
