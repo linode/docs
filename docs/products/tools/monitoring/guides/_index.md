@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for Linode Monitoring."
 tab_group_main:
     weight: 30
 ---

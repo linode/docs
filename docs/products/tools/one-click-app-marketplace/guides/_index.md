@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for the Linode One-Click App Marketplace."
 tab_group_main:
     weight: 30
 ---

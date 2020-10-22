@@ -1,5 +1,6 @@
 ---
 title: Images
+description: "Linode Images allow you to have a consistent environment across all your Linodes and long-term image storage."
 tab_group_main:
     is_root: true
     title: Overview

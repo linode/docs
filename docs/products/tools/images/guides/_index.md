@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Product guides for Linode Images."
 tab_group_main:
     weight: 30
 ---
