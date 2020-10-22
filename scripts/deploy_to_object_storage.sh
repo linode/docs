@@ -37,7 +37,7 @@ s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$
 s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public sync public/images/ s3://linodedocs$DEPLOY_SUFFIX/docs/images/
 
 # Sync the other pages
-s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public --exclude 'public/css/*' --exclude 'public/js/*' --exclude 'public/jslibs/*' --exclude 'public/images/*' --delete-removed --delete-after sync public/ s3://linodedocs$DEPLOY_SUFFIX/docs/
+s3cmd --config=$(pwd)/scripts/.s3cfg --access_key=$OBJ_ACCESS_KEY --secret_key=$OBJ_SECRET_KEY --no-mime-magic --acl-public --exclude 'public/css/*' --exclude 'public/js/*' --exclude 'public/jslibs/*' --exclude 'public/images/*' sync public/ s3://linodedocs$DEPLOY_SUFFIX/docs/
 
 # Generate the 301 permanent redirectscd scripts
 cd scripts
