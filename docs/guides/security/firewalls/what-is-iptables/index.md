@@ -1,4 +1,5 @@
 ---
+slug: what-is-iptables
 author:
   name: Hackersploit
 description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'

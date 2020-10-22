@@ -1,9 +1,9 @@
 [[queries.featured]]
 key = "Title"
 operator = "eq"
-match = "How to Configure Nextcloud to use Linode Object Storage as an External Storage Mount"
+match = "Deploy WireGuard with One-Click Apps"
 
 [[queries.getting_started]]
-key = "Type"
+key = "Title"
 operator = "in"
-match = ["guides"]
+match = ["Use Advanced OpenSSH Features to Harden Access to Your Linode", "A Beginner's Guide to Kubernetes, Part 1: Introduction"]

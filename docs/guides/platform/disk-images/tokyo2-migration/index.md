@@ -10,7 +10,6 @@ modified_by:
   name: Linode
 published: 2018-12-31
 title: Migrating from Tokyo 1 to Tokyo 2
-hiddenguide: true
 promo_default: false
 tags: ["linode platform"]
 aliases: ['/platform/tokyo2-migration/']

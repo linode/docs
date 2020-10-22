@@ -38,7 +38,7 @@ Browse our [Linode Community Questions & Answers page](https://www.linode.com/co
 
 - [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf)
 
-- [One of a Kind in the Cloud: Linode Lifts Customers with Quandro RTX Performance](https://blogs.nvidia.com/blog/2020/04/01/linode-quadro-rtx/)
+- [One of a Kind in the Cloud: Linode Lifts Customers with Quadro RTX Performance](https://blogs.nvidia.com/blog/2020/04/01/linode-quadro-rtx/)
 
 - [CUDA Toolkit Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 

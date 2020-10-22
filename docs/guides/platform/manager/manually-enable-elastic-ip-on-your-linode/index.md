@@ -12,7 +12,8 @@ modified_by:
   name: Linode
 title: "How to Manually Enable Elastic IP on your Linode"
 h1_title: "Manually Enable Elastic IP on your Linode"
-hiddenguide: true
+_build:
+  list: false
 contributor:
   name: Linode
 external_resources:
