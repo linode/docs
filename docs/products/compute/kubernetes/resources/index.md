@@ -45,7 +45,7 @@ tab_group_main:
 
 - [LKE LoadBalancer or Ingress for an internal network only?](https://www.linode.com/community/questions/20160/lke-loadbalancer-or-ingress-for-an-internal-network-only)
 
-- [DNS resolution inside LKE kubernetes not working](https://www.linode.com/community/questions/19981/dns-resolution-inside-lke-kubernetes-not-working)
+- [DNS resolution inside LKE Kubernetes not working](https://www.linode.com/community/questions/19981/dns-resolution-inside-lke-kubernetes-not-working)
 
 - [Details on LKE](https://www.linode.com/community/questions/19628/details-on-lke)
 
