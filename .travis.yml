@@ -22,7 +22,10 @@ before_install:
   - sleep 7
 
 before_script:
-  - git remote set-branches --add origin $TRAVIS_BRANCH
+  - if [ $TRAVIS_BRANCH != $TRAVIS_TAG ]; then
+      git remote set-branches --add origin main;
+      git fetch --unshallow;
+    fi
   - git fetch --unshallow
   - sleep 7
 
