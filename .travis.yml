@@ -25,6 +25,8 @@ before_script:
   - if [ $TRAVIS_BRANCH != $TRAVIS_TAG ]; then
       git remote set-branches --add origin main;
       git fetch --unshallow;
+      echo "$TRAVIS_TAG"
+      echo "$TRAVIS_BRANCH"
     fi
   - git fetch --unshallow
   - sleep 7
