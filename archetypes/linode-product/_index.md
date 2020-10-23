@@ -1,5 +1,6 @@
 ---
 title: Product Name
+linkTitle: Product Name to use in Explorer (i.e. Kubernetes or VLAN, etc.)
 description: "SEO description of this product."
 tab_group_main:
     is_root: true
