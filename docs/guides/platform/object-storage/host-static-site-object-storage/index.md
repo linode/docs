@@ -62,7 +62,7 @@ This guide will use [Hugo](https://gohugo.io/) to demonstrate how to create a st
     - Created your Object Storage access and secret keys.
     - Installed and configure the [s3cmd tool](https://s3tools.org/download).
 
-1. [Install and configure Git](https://linode.com/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
+1. [Install and configure Git](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
 
 ## Install the Hugo Static Site Generator
 

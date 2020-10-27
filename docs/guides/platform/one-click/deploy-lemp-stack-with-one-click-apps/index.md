@@ -64,7 +64,7 @@ After your LEMP stack has finished deploying, you can:
 
 - Consult the following guides to learn more about working with the various components of the LEMP stack:
 
-    - [Secure HTTP Traffic with Certbot](https://linode.com/docs/quick-answers/websites/secure-http-traffic-certbot/)
+    - [Secure HTTP Traffic with Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/)
     - [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx/)
     - [How to Optimize MySQL Performance Using MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/)
 

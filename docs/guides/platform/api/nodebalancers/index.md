@@ -14,7 +14,7 @@ modified_by:
 published: 2018-04-05
 title: Configure NodeBalancers with the Linode API
 external_resources:
-  - '[Getting Started with NodeBalancers](https://linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/)'
+  - '[Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/)'
 tags: ["linode platform"]
 ---
 

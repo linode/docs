@@ -20,7 +20,7 @@ aliases: ['/development/ci/what-is-immutable-infrastructure/']
 
 ## What is Immutable Infrastructure?
 
-Within a [Continuous Delivery](https://linode.com/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) model it is crucial to automate a repeatable and reliable process for software deployment. The more you scale, the more complicated this task can become. You need granular control over all components of your stack across many servers and the ability to test how components will interact within their deployed environment.
+Within a [Continuous Delivery](/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) model it is crucial to automate a repeatable and reliable process for software deployment. The more you scale, the more complicated this task can become. You need granular control over all components of your stack across many servers and the ability to test how components will interact within their deployed environment.
 
 An immutable server infrastructure provides a level of control and testability to maintain a healthy and stable environment for all components that never deviate from a source definition. The key guideline behind an immutable infrastructure is that you never modify a running server. If a change is required, you instead completely replace the server with a new instance that contains the update or change. The new server instance is created with an origin image that is built upon, or a restored image from a previously defined server state. You can version control and tag your images for easy rollback and distribution. The image contains all the application code, runtime dependencies and configuration--in essence, the state needed for the software to run as expected.
 

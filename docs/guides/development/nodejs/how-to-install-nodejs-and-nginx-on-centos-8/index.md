@@ -167,7 +167,7 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 <html>
 <body>
 
-<p><strong>If you have not finished the <a href="https://linode.com//docs/development/nodejs/how-to-install-nodejs-and-nginx-on-centos-8/">guide</a>, the button below will not work.</strong></p>
+<p><strong>If you have not finished the <a href="https://www.linode.com/docs/development/nodejs/how-to-install-nodejs-and-nginx-on-centos-8/">guide</a>, the button below will not work.</strong></p>
 
 <p>The button links to test.js. The test.js request is passed through NGINX and then handled by the Node.js server.</p>
 

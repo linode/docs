@@ -118,7 +118,7 @@ NGINX is now configured. However, the `example.com` server block points to direc
 <center>
 <p>
 <b>
-If you have not finished the <a href="https://linode.com/docs/websites/nodejs/nodejs-nginx-debian">guide</a>, the button below will not work.
+If you have not finished the <a href="https://www.linode.com/docs/websites/nodejs/nodejs-nginx-debian">guide</a>, the button below will not work.
 </b>
 </p>
 </center>

@@ -51,7 +51,7 @@ However, unless you have a specific reason for doing so, you should *not* change
 
 ## Disable Network Helper
 
-Our [Network Helper](/docs/platform/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Network Helper Settings](https://linode.com/docs/platform/network-helper/#network-helper-settings) section of our network helper guide.
+Our [Network Helper](/docs/platform/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Network Helper Settings](/docs/platform/network-helper/#network-helper-settings) section of our network helper guide.
 
 ## Configure Static Addressing
 

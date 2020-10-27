@@ -76,7 +76,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
 2.  Download a copy of our `apache2-roundcube.sample.conf` virtual host configuration file. Replace instances of `webmail.example.com` with the desired domain or subdomain of your installation.
 
-        sudo wget https://linode.com/docs/assets/roundcube/apache2-roundcube.sample.conf
+        sudo wget https://www.linode.com/docs/assets/roundcube/apache2-roundcube.sample.conf
 
 3.  Transfer the file's ownership to **root**:
 

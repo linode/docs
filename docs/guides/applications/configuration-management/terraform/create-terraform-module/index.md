@@ -26,7 +26,7 @@ In this guide you will create a *Linode StackScripts* module. This module will d
 
 ## Before You Begin
 
-1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](https://linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
+1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
 
     {{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.

@@ -25,7 +25,7 @@ Throughout this guide we will offer several suggested values for specific config
 
 ## Before you Begin
 
-- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/security/securing-your-server)
 
 - Install a commercial or self-signed [SSL certificate](/docs/security/ssl) using the appropriate guide for your distribution.
 

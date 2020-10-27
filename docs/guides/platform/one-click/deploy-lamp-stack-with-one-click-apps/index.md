@@ -59,7 +59,7 @@ After your LAMP stack has finished deploying, you can:
 
 - Consult the following guides to learn more about working with the various components of the LAMP stack:
 
-    - [Secure HTTP Traffic with Certbot](https://linode.com/docs/quick-answers/websites/secure-http-traffic-certbot/)
+    - [Secure HTTP Traffic with Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/)
     - [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/)
     - [How to Optimize MySQL Performance Using MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/)
 

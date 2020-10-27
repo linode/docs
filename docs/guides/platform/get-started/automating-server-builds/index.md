@@ -66,7 +66,7 @@ Golden disks are capable of handling automated server builds for most individual
 Knife Linode is based on Linode's deprecated APIv3.
     {{</ note >}}
 
-    - [A Beginner's Guide to Chef](https://linode.com/docs/applications/configuration-management/beginners-guide-chef/)
+    - [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/)
     - [Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/)
     - [Install a Chef Server Workstation on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/)
 

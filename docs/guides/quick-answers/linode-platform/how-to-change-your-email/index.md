@@ -59,7 +59,7 @@ You can also use the [Linode API](https://developers.linode.com/api/v4) to view 
       "credit_remaining": "50.00",
       "description": "Receive up to $10 off your services every month for 6 months! Unused credits will expire once this promotion period ends.",
       "expire_dt": "2018-01-31T23:59:59",
-      "image_url": "https://linode.com/10_a_month_promotion.svg",
+      "image_url": "https://www.linode.com/10_a_month_promotion.svg",
       "summary": "$10 off your Linode a month!",
       "this_month_credit_remaining": "10.00"
     }
@@ -108,7 +108,7 @@ You can also use the [Linode API](https://developers.linode.com/api/v4) to view 
       "credit_remaining": "50.00",
       "description": "Receive up to $10 off your services every month for 6 months! Unused credits will expire once this promotion period ends.",
       "expire_dt": "2018-01-31T23:59:59",
-      "image_url": "https://linode.com/10_a_month_promotion.svg",
+      "image_url": "https://www.linode.com/10_a_month_promotion.svg",
       "summary": "$10 off your Linode a month!",
       "this_month_credit_remaining": "10.00"
     }
