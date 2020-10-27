@@ -37,7 +37,7 @@ Use a [StackScripts](http://www.linode.com/stackscripts) to quickly deploy softw
     - numbers
     - punctuation characters
 
-1.  In the right pane of the page, click the **Create** button. The *Linodes* page appears that reports the status of the Linode as it boots up. You can now use the Cloud Manager to:
+1.  In the right panel of the page, click the **Create** button. The *Linodes* page appears that reports the status of the Linode as it boots up. You can now use the Cloud Manager to:
 
     * Boot and shut down the Linode
     * Access monitoring statistics
