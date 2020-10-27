@@ -10,6 +10,7 @@ published: 2020-10-23
 title: Create a Linode
 keywords: []
 headless: true
+slug:how-to-create-a-linode
 show_on_rss_feed: false
 ---
 ## Create a Linode
