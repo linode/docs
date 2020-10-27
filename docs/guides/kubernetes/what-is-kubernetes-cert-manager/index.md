@@ -23,10 +23,10 @@ external_resources:
 
 ## What is cert manager?
 
-Cert-manager is a Kubernetes add-on designed to assist with the creation and management of TLS certificates. Similar to [Certbot](https://www.linode.com/docs/quick-answers/websites/secure-http-traffic-certbot/), cert-manager can automate the process of creating and renewing self-signed and signed certificates for a large number of use cases, with a specific focus on container orchestration tools like Kubernetes.
+Cert-manager is a Kubernetes add-on designed to assist with the creation and management of TLS certificates. Similar to [Certbot](/docs/guides/secure-http-traffic-certbot/), cert-manager can automate the process of creating and renewing self-signed and signed certificates for a large number of use cases, with a specific focus on container orchestration tools like Kubernetes.
 
 {{< note >}}
-This guide assumes a working knowledge of Kubernetes key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series.
+This guide assumes a working knowledge of Kubernetes key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series.
 {{</ note >}}
 
 ## Understanding Cert Manager Concepts
@@ -36,7 +36,7 @@ Cert-Manager is divided into a number of components and microservices that are e
 
 ### Issuers and ClusterIssuers
 
-Certificate creation begins with `Issuers` and `ClusterIssuers`, resources that represent certificate authorities and are able to generate signed certificates using a specific issuer `type`. An issuer `type` represents the method used to create your certificate, such as `SelfSigned` for a [Self-Signed Certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/) and `ACME` for requests for certificates from ACME servers, typically used by tools like [Let's Encrypt](https://letsencrypt.org/). All supported issuer types are listed in [Cert-Manager's Documentation](https://cert-manager.io/docs/configuration/).
+Certificate creation begins with `Issuers` and `ClusterIssuers`, resources that represent certificate authorities and are able to generate signed certificates using a specific issuer `type`. An issuer `type` represents the method used to create your certificate, such as `SelfSigned` for a [Self-Signed Certificate](/docs/guides/create-a-self-signed-tls-certificate/) and `ACME` for requests for certificates from ACME servers, typically used by tools like [Let's Encrypt](https://letsencrypt.org/). All supported issuer types are listed in [Cert-Manager's Documentation](https://cert-manager.io/docs/configuration/).
 
 While `Issuers` resources are only able to create certificates in the namespace they were created in, `ClusterIssuers` can create certificates for all namespaces. This guide provides an example that demonstrates how `ClusterIssuers` creates certificates for all namespaces in the cluster.
 
@@ -88,4 +88,4 @@ cert-manager-webhook-68d464c8b-86tqw       1/1     Running   0          19m
 
 ## Next Steps
 
-To learn how to apply some of the concepts learned in this guide, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/) guide.
+To learn how to apply some of the concepts learned in this guide, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/) guide.

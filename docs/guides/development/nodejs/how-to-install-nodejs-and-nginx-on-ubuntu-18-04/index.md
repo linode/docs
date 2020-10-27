@@ -36,12 +36,12 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 
 ## Before You Begin
 
-1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/platform/manager/dns-manager/) to [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) and [create a domain record](/docs/platform/manager/dns-manager/#add-dns-records) for it.
+1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/guides/dns-manager/) to [add the domain](/docs/guides/dns-manager/#add-a-domain) and [create a domain record](/docs/guides/dns-manager/#add-dns-records) for it.
 
-1.  Set up your Linode using the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
+1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
 
     {{< note >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/getting-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
     {{</ note >}}
 
 
@@ -122,7 +122,7 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 <html>
 <body>
 
-<p><strong>If you have not finished the <a href="https://www.linode.com/docs/development/nodejs/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/">guide</a>, the button below will not work.</strong></p>
+<p><strong>If you have not finished the <a href="https://www.linode.com/docs/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/">guide</a>, the button below will not work.</strong></p>
 
 <p>The button links to test.js. The test.js request is passed through NGINX and then handled by the Node.js server.</p>
 

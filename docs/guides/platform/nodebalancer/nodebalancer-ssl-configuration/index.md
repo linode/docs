@@ -25,19 +25,19 @@ Throughout this guide we will offer several suggested values for specific config
 
 ## Before you Begin
 
-- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/security/securing-your-server)
+- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/guides/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/guides/securing-your-server)
 
-- Install a commercial or self-signed [SSL certificate](/docs/security/ssl) using the appropriate guide for your distribution.
+- Install a commercial or self-signed [SSL certificate](/docs/guides/ssl) using the appropriate guide for your distribution.
 
 - This guide assumes that you have already deployed two or more back-end Linodes and configured them with either a LAMP stack or a LEMP stack. If you have not, please review the following documentation for assistance with configuring your respective stack:
 
-    - [LAMP Stack](/docs/websites/lamp/)
-    - [LEMP Stack](/docs/websites/lemp/)
+    - [LAMP Stack](/docs/guides/lamp/)
+    - [LEMP Stack](/docs/guides/lemp/)
 
 - In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:
 
-    - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
-    - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
+    - [Getting Started with NodeBalancers](/docs/guides/nodebalancer/getting-started-with-nodebalancers)
+    - [NodeBalancer Reference Guide](/docs/guides/nodebalancer/nodebalancer-reference-guide)
 
 {{< note >}}
 This guide has been written with the assumption that you are logged in as the root user. If you are using a limited user account, you will need to prefix some commands with `sudo`.
