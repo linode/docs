@@ -44,28 +44,8 @@ Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`.
 
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
-## Create a Linode
-![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](getting-started.gif)
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
-
-1.  At the top of the page, click **Create** and select **Linode**.
-
-1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/one-click/how-to-use-one-click-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
-
-    {{< note >}}
-Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide.](/docs/platform/stackscripts/)
-{{< /note >}}
-
-1.  Choose the region where you would like your Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
-
-1. Select a Linode plan.
-
-1.  Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
-
-1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
-
-1.  Click **Create**. You will be directed back to the *Linodes* page which will report the status of your Linode as it boots up. You can now use the Cloud Manager to:
+{{< content "how-to-create-a-linode" >}}
 
 
 ## Network Helper
