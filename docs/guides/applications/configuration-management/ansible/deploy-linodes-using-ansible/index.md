@@ -21,7 +21,7 @@ tags: ["automation"]
 
 ![How to use the Linode Ansible Module to Deploy Linodes](how-to-use-the-linode-ansible-module-to-deploy-linodes.png "How to use the Linode Ansible Module to Deploy Linodes")
 
-Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
+Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
 In this guide you will learn how to:
 
@@ -40,7 +40,7 @@ If you remove the resource afterward, you will only be billed for the hour(s) th
 The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0).
 {{</ note >}}
 
-- Install Ansible on your computer. Use the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
+- Install Ansible on your computer. Use the steps in the [Install Ansible](/docs/guides/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide.
 
 - Ensure you have Python version 2.7 or higher installed on your computer. Issue the following command to check your system's Python version:
 
@@ -50,9 +50,9 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
 
         pip install linode_api4
 
-- Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
+- Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide if you do not already have one.
 
-- [Create an authentication Key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
+- [Create an authentication Key-pair](/docs/guides/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
 
 ## Configure Ansible
 
@@ -66,7 +66,7 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 In this section, you will create an Ansible configuration file and add options to disable host key checking, and to whitelist the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
 
 {{< caution >}}
-When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide for more information on permissions.
+When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on permissions.
 {{</ caution >}}
 
 1. In your home directory, create a directory to hold all of your Ansible related files and move into the directory:
@@ -93,7 +93,7 @@ You can now begin creating Linode instances using Ansible. In this section, you 
 
 ### Create your Linode Playbook
 
-1. Ensure you are in the `development` directory that you created in the [Configure Ansible](/docs/applications/configuration-management/deploy-linodes-using-ansible/#create-a-linode-instance) section:
+1. Ensure you are in the `development` directory that you created in the [Configure Ansible](/docs/guides/deploy-linodes-using-ansible/#create-a-linode-instance) section:
 
         cd ~/development
 
@@ -265,7 +265,7 @@ You are now ready to run the Create Linode Playbook. When you run the Playbook, 
 | `root_pass` | string | The password for the root user. If not specified, will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
 | `state` | string, *required* | The desired instance state. The accepted values are `absent` and `present`. |
 | `tags` | list | The user-defined labels attached to Linodes. Tags are used for grouping Linodes in a way that is relevant to the user. |
-| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
+| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/guides/how-to-choose-a-linode-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 
 ## The Linode Dynamic Inventory Plugin
 

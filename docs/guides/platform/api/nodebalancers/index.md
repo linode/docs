@@ -14,7 +14,7 @@ modified_by:
 published: 2018-04-05
 title: Configure NodeBalancers with the Linode API
 external_resources:
-  - '[Getting Started with NodeBalancers](https://linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/)'
+  - '[Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/)'
 tags: ["linode platform"]
 ---
 
@@ -22,7 +22,7 @@ tags: ["linode platform"]
 
 [NodeBalancers](https://www.linode.com/nodebalancers) can be used to provide high availability load balancing for almost any type of website or service hosted on a Linode. This guide will demonstrate how to use the Linode API to create a NodeBalancer with two back end nodes.
 
-You will need a Personal Access Token for the Linode API to complete the steps in this guide. The easiest way to get an access token is by visiting the beta [Linode Manager](https://cloud.linode.com/profile/tokens); for more information, as well as a basic introduction to using the Linode API, see our guide on [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/).
+You will need a Personal Access Token for the Linode API to complete the steps in this guide. The easiest way to get an access token is by visiting the beta [Linode Manager](https://cloud.linode.com/profile/tokens); for more information, as well as a basic introduction to using the Linode API, see our guide on [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/).
 
 ## Create a NodeBalancer
 
@@ -71,7 +71,7 @@ NodeBalancers are created without any configuration profiles attached. Each prof
         -X POST -d @nodebalancer-config.json
 
 {{< note >}}
-For more information about configuration options, see our [NodeBalancer Reference Guide](https://www.linode.com/docs/platform/nodebalancer/nodebalancer-reference-guide/).
+For more information about configuration options, see our [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide/).
 {{< /note >}}
 
 ## Add Nodes
