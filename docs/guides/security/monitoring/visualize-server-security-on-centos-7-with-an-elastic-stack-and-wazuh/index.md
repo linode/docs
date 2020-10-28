@@ -47,28 +47,28 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 ## Before You Begin
 
-1.  Many of the steps in this guide require root privileges. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
+1.  Many of the steps in this guide require root privileges. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
 2. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-3. Add a domain zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
+3. Add a domain zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/guides/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
 
-4. [Create an SSL Certificate](https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/), if you will be using SSL encryption for your domain.
+4. [Create an SSL Certificate](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/), if you will be using SSL encryption for your domain.
 
 5. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
-      - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/)
-      - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7/)
+      - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/guides/lemp-stack-on-centos-7-with-fastcgi/)
+      - [LAMP on CentOS 7](/docs/guides/lamp-on-centos-7/)
 
 6. Configure your webserver for virtual domain hosting:
 
       **NGINX**
 
-      - [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx/)
+      - [How to Configure NGINX](/docs/guides/how-to-configure-nginx/)
 
       **Apache**
 
-      - [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/)
+      - [Apache Configuration Basics](/docs/guides/apache-configuration-basics/)
 
 ## Update System and Install Prerequisites
 

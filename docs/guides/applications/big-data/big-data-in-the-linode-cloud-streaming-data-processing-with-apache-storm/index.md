@@ -475,7 +475,7 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
         `plan:count plan:count ... `
 
-        A `plan` is one of `2GB | 4GB | ... | 120GB` (see [Linode plans](https://linode.com/pricing) for all plans) and `count` is the number of nodes with that plan.
+        A `plan` is one of `2GB | 4GB | ... | 120GB` (see [Linode plans](https://www.linode.com/pricing) for all plans) and `count` is the number of nodes with that plan.
 
         Examples:
 
@@ -789,7 +789,7 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
         This specifies the Linode plan to use for the Nimbus node, which is responsible for distributing and coordinating a Storm topology to supervisor nodes.
 
-        It should be one of `2GB | 4GB | ... | 120GB` (see [Linode plans](https://linode.com/pricing) for all plans). The default size is 2GB, but a larger plan is strongly recommended for the Nimbus node.
+        It should be one of `2GB | 4GB | ... | 120GB` (see [Linode plans](https://www.linode.com/pricing) for all plans). The default size is 2GB, but a larger plan is strongly recommended for the Nimbus node.
 
         <br>
 
@@ -801,7 +801,7 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
         `plan:count plan:count ... `
 
-        A `plan` is one of `2GB | 4GB| ....| 120GB` (see [Linode plans](https://linode.com/pricing) for all plans) and `count` is the number of supervisor nodes with that plan. Although a cluster can have supervisor nodes of different sizes, it's recommended to use the same plan for all nodes.
+        A `plan` is one of `2GB | 4GB| ....| 120GB` (see [Linode plans](https://www.linode.com/pricing) for all plans) and `count` is the number of supervisor nodes with that plan. Although a cluster can have supervisor nodes of different sizes, it's recommended to use the same plan for all nodes.
 
         The number of supervisor nodes can be increased later using the `add-nodes` command (see [Expand Cluster](#expand-a-storm-cluster)).
 
@@ -819,7 +819,7 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
     -  `CLIENT_NODE`
 
-        The client node of a cluster is used to submit topologies to it and monitor it. This should be one of `2GB | 4GB | ... | 120GB` (see [Linode plans](https://linode.com/pricing) for all plans). The default value of 2GB is sufficient for most use cases.
+        The client node of a cluster is used to submit topologies to it and monitor it. This should be one of `2GB | 4GB | ... | 120GB` (see [Linode plans](https://www.linode.com/pricing) for all plans). The default value of 2GB is sufficient for most use cases.
 
         <br>
 
