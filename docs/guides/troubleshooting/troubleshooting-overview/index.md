@@ -1,5 +1,5 @@
 ---
-slug: troubleshooting
+slug: troubleshooting-overview
 author:
   name: Linode
   email: docs@linode.com
