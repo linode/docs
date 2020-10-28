@@ -24,29 +24,82 @@ For more information about using Git, refer to the [official Git documentation](
 
         cd linode-docs
 
-## Install Hugo
+## Install Go
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you will need to install Hugo on your local computer. The library is compatible with **Hugo 0.52**, so you will need to install that version.
+The Linode documentation environment uses the [GO programming language](https://golang.org/), and  is a requirement for creating the local development environment that allows contributors to review their work. This guide was created using GO 1.15.3, and the install steps included will be for this specific version:
 
-### OSX
+### OSX and Windows
 
-On OSX, the easiest way to install the correct version of Hugo is with [Homebrew](https://brew.sh/). Specifically, this command will install version 0.52:
+The GO package can be found on the [GO installation page](https://golang.org/doc/install) for Mac OSX and Windows respectfully. Once the package is opened, the installer will prompt you to make changes. Once the installation is complete, you may enter the following command from the command line  or command prompt to see the version of GO that you're currently running:
 
-    brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/d2c35e3938f6b71d97a54f6b6573345b0f6b0b9f/Formula/hugo.rb
+        go version
 
 ### Linux
 
-Go to the [0.52 Hugo release page on GitHub](https://github.com/gohugoio/hugo/releases/v0.52) and download the most up to date binary for your platform. These commands will download the 64 bit binary for Linux and place it in `/usr/local/bin`:
+Download the Linux binary for GO and extract it into the `/usr/local` folder:
 
-    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.tar.gz
-    tar -xvzf hugo_0.52_Linux-64bit.tar.gz
+        wget https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
+        tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
+
+Add `/usr/local/go/bin` to the PATH variable:
+
+        export PATH=$PATH:/usr/local/go/bin
+
+You can ensure that go has been installed by checking the version currently in use:
+
+        go version
+
+## Install Node and NPM
+
+To support the JavaScript runtime environment used by the Linode documentation site, Node v13.14.0 must be installed on your system.
+
+## OSX and Linux
+
+In order to install Node on Linux and OSX, we recommend using NVM to enable you to switch between other versions of Node you may be using now or may use in the future.
+
+NVM can be installed by entering the following command, which will download and run an install script:
+
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+
+You may need to exit and create a new command line session before NVM will work:
+
+        exit
+
+Next, use NVM to both install NVM and set it as the version of Node that you're actively using:
+
+        nvm install 13.14.0
+
+        nvm use 13.14.0
+
+## Windows
+
+To Install Node 13.14.0 on Windows, navigate to the [Downloads Page for This Release](https://nodejs.org/download/release/v13.14.0/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
+
+        node -v
+        npm -v
+## Install Hugo
+
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you will need to install Hugo on your local computer. The library is compatible with **Hugo 0.76.5**, so you will need to install that version.
+
+### OSX
+
+On OSX, the easiest way to install the correct version of Hugo is with [Homebrew](https://brew.sh/). Specifically, this command will install version 0.76.5:
+
+    brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/9682f6fc4ee61ebf9141113770d5a54c0a1fec66/Formula/hugo.rb
+
+### Linux
+
+Go to the [0.76.5 Hugo release page on GitHub](https://github.com/gohugoio/hugo/releases/v0.76.5) and download the most up to date binary for your platform. These commands will download the 64 bit binary for Linux and place it in `/usr/local/bin`:
+
+    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.76.5/hugo_0.76.5_Linux-64bit.tar.gz
+    tar -xvzf hugo_0.76.5_Linux-64bit.tar.gz
     sudo mv hugo /usr/local/bin
 
 ### Windows
 
-Use [Chocolatey](https://chocolatey.org/) to install Hugo 0.52 on Windows:
+Use [Chocolatey](https://chocolatey.org/) to install Hugo 0.76.5 on Windows:
 
-    choco install hugo --version 0.52
+    choco install hugo --version 0.76.5
 
 ## Create a New Guide
 
@@ -78,13 +131,17 @@ This section takes you through the process of creating a new guide using the top
 
     Any images should be added inside this directory as well. Note that the guide is created under a `docs/` subdirectory that's within the Docs repository; all guides will be under this subdirectory. The root of the Docs repository itself contains related information: Hugo's configuration file, theme information, unit testing information, etc.
 
-5.  Start the Hugo server:
+5. Use NPM to build to build a working local version of the site:
+
+        npm build
+
+6.  Start the Hugo server:
 
         hugo server
 
     This starts a local server you can use to view the Linode library in your browser on `http://localhost:1313/docs/`.
 
-6.  In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/web-servers/nginx/how-to-install-nginx-on-debian`.
+7.  In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/web-servers/nginx/how-to-install-nginx-on-debian`.
 
 ## Run Tests
 
