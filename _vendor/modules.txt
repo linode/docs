@@ -1,5 +1,5 @@
-# github.com/bep/linodedocs v0.0.0-20201022183302-e57b2abd7aa4
-# github.com/linode/linode-website-partials v0.0.0-20201008204609-a59453d99ac9
+# github.com/bep/linodedocs v0.0.0-20201028161506-8b7393cce949
+# github.com/linode/linode-website-partials v0.0.0-20201027160459-020df188fe47
 # github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.1
 # github.com/alpinejs/alpine v2.7.0+incompatible
 # github.com/SimoTod/alpine-turbolinks-adapter v0.3.0
