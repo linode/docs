@@ -82,7 +82,7 @@ Unattended-Upgrade::Allowed-Origins {
 {{</ file >}}
 
     {{< note >}}
-Carefully check the beginning of this file for a partial duplicate of the Allowed-Orgins section. If this is present, delete it. If left in place, it causes an error.
+Carefully check the beginning of this file for a partial duplicate of the Allowed-Origins section. If this is present, delete it. If left in place, it causes an error.
 {{</ note >}}
 
 ### Blacklisting Packages
@@ -168,4 +168,4 @@ Unable to parse Unattended-Upgrade::Allowed-Origins.
 An error occurred: not enough values to unpack (expected 2, got 0)
 {{</ output >}}
 
-Check the `/etc/apt/apt.conf.d/50unattended-upgrades` for the partial duplicate of the Allowed-Orgins section mentioned in the note in the [Install Unattended Upgrades](#install-unattended-upgrades) section and remove it.
+Check the `/etc/apt/apt.conf.d/50unattended-upgrades` for the partial duplicate of the Allowed-Origins section mentioned in the note in the [Install Unattended Upgrades](#install-unattended-upgrades) section and remove it.
