@@ -19,6 +19,7 @@ relations:
         key: automated-security-upgrades
         keywords:
             - distribution: Ubuntu
+image: Configuring_automated_security_updates_ubuntu.png
 ---
 
 Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Most users forget to do it, leaving them vulnerable to countless threats. Automate security (and other package) updates with the utility [Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades) on Ubuntu.

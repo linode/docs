@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Oops, you&#39;ve found a dead link. - JIRA</title><script type="text/javascript">contextPath = "";</script><link type='text/css' rel='stylesheet' href='/static-assets/metal-all.css' media='all'><script src='/static-assets/jquery-min.js'></script><script src='/static-assets/metal-all.js'></script><meta name="decorator" content="none" /></head><body class=" error-page error404"><script type="text/javascript">document.body.className += " js-enabled";</script><div id="page"><header id="header" role="banner"></header><!-- #header --><section id="content" role="main"><div class="aui-page-panel"><div class="aui-page-panel-inner"><section class="aui-page-panel-content lowerContent"><div id="error-state"><span class="error-type"></span><h1>Oops, you&#39;ve found a dead link.</h1><ul><li>Go back to the <a href="javascript:window.history.back()">previous page</a></li><li>Go to the <a href="/secure/MyJiraHome.jspa">Home Page</a></li></ul></div></section><!-- .aui-page-panel-content --></div><!-- .aui-page-panel-inner --></div><!-- .aui-page-panel --></section><!-- #content --><footer id="footer" role="contentinfo"><section class="footer-body"><ul class="atlassian-footer">
+    <li>
+        Atlassian Jira <a class="seo-link" rel="nofollow" href="https://www.atlassian.com/software/jira">Project Management Software</a>
+                                            <span id="footer-build-information">(v8.6.0#806000-<span title='737bcc05e3687605702e76b312ace69277496331' data-commit-id='737bcc05e3687605702e76b312ace69277496331}'>sha1:737bcc0</span>)</span>
+    </li>
+    <li>
+        <a id="about-link" rel="nofollow" href="/secure/AboutPage.jspa/secure/AboutPage.jspa">About Jira</a>
+    </li>
+    <li>
+        <a id="footer-report-problem-link" rel="nofollow" href="/secure/CreateIssue!default.jspa">Report a problem</a>
+    </li>
+</ul>
+    <p class="atlassian-footer">
+        <span class="licensemessage">
+            
+        </span>
+    </p>
+<div id="footer-logo"><a href="http://www.atlassian.com/" rel="nofollow">Atlassian</a></div></section></footer><!-- #footer --></div><!-- #page --></body></html>
