@@ -111,6 +111,7 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitwarden
 blkid
 blocklists
 blockwise
@@ -1678,6 +1679,7 @@ wlp6s0
 wmem
 wordcloud
 wordcount
+wordfence
 wordpress
 worker1
 worker2
