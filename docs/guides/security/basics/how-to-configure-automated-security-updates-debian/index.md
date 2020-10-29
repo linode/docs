@@ -1,27 +1,27 @@
 ---
-slug: how-to-configure-automated-security-updates-debian-or-ubuntu
+slug: how-to-configure-automated-security-updates-debian
 author:
   name: Hackersploit
-description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (and other package) updates with the utility Unattended Upgrades on Debian or Ubuntu.'
-og_description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (and other package) updates with the utility Unattended Upgrades on Debian or Ubuntu.'
-keywords: ["ubuntu unattended-upgrades", "debian unattended-upgrades", "configuring unattended-upgrades"]
-tags: ["debian", "ubuntu", "security"]
+description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (and other package) updates with the utility Unattended Upgrades on Debian.'
+og_description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (and other package) updates with the utility Unattended Upgrades on Debian.'
+keywords: ["debian unattended-upgrades", "configuring unattended-upgrades"]
+tags: ["debian", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-10-22
 modified_by:
   name: Linode
 published: 2020-10-22
-title: How to Configure Automated Security Updates on Debian or Ubuntu
-h1_title: Configuring Automated Security Updates on Debian or Ubuntu
-aliases: ['/security/basics/how-to-configure-automated-security-updates-debian-or-ubuntu/']
+title: How to Configure Automated Security Updates on Debian
+h1_title: Configuring Automated Security Updates on Debian
+aliases: ['/security/basics/how-to-configure-automated-security-updates-debian/']
 relations:
     platform:
         key: automated-security-upgrades
         keywords:
-            - distribution: Debian or Ubuntu
+            - distribution: Debian
 ---
 
-Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Most users forget to do it, leaving them vulnerable to countless threats. Automate security (and other package) updates with the utility [Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades) on Debian or Ubuntu.
+Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Most users forget to do it, leaving them vulnerable to countless threats. Automate security (and other package) updates with the utility [Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades) on Debian.
 
 ## Before You Begin
 
@@ -59,31 +59,34 @@ You can set up automated security updates on Debian or Ubuntu by installing a he
 The unattended-upgrades package ignores lines that start with `//`, as that line is considered to be a comment. Therefore, if you want a repository to update automatically, you need to remove `//` from that line.
 {{</ note >}}
 
-1.  In our example, remove `//` from the “security” line if it's there, `${distro_id}:${distro_codename}-security";`. This section should look like the following:
+1.  In our example, remove `//` from the “security” line if it's there, `"origin=Debian,codename=${distro_codename},label=Debian-Security";`. This section should look like the following:
 
     {{< file "/etc/apt/apt.conf.d/50unattended-upgrades" >}}
 ...
 
-Unattended-Upgrade::Allowed-Origins {
-        "${distro_id}:${distro_codename}";
-        "${distro_id}:${distro_codename}-security";
-        // Extended Security Maintenance; doesn't necessarily exist for
-        // every release and this system may not have it installed, but if
-        // available, the policy for updates is such that unattended-upgrades
-        // should also install from here by default.
-        "${distro_id}ESMApps:${distro_codename}-apps-security";
-        "${distro_id}ESM:${distro_codename}-infra-security";
-//      "${distro_id}:${distro_codename}-updates";
-//      "${distro_id}:${distro_codename}-proposed";
-//      "${distro_id}:${distro_codename}-backports";
+Unattended-Upgrade::Origins-Pattern {
+        // Codename based matching:
+        // This will follow the migration of a release through different
+        // archives (e.g. from testing to stable and later oldstable).
+        // Software will be the latest available for the named release,
+        // but the Debian release itself will not be automatically upgraded.
+//      "origin=Debian,codename=${distro_codename}-updates";
+//      "origin=Debian,codename=${distro_codename}-proposed-updates";
+        "origin=Debian,codename=${distro_codename},label=Debian";
+        "origin=Debian,codename=${distro_codename},label=Debian-Security";
+
+        // Archive or Suite based matching:
+        // Note that this will silently match a different release after
+        // migration to the specified archive (e.g. testing becomes the
+        // new stable).
+//      "o=Debian,a=stable";
+//      "o=Debian,a=stable-updates";
+//      "o=Debian,a=proposed-updates";
+//      "o=Debian Backports,a=${distro_codename}-backports,l=Debian Backports";
 };
 
 ...
 {{</ file >}}
-
-    {{< note >}}
-Carefully check the beginning of this file for a partial duplicate of the Allowed-Origins section. If this is present, delete it. If left in place, it causes an error.
-{{</ note >}}
 
 ### Blacklisting Packages
 
@@ -93,6 +96,7 @@ To block upgrades for specific packages, add the desired package name to the lis
 
 {{< file "/etc/apt/apt.conf.d/50unattended-upgrades" >}}
 ...
+
 Unattended-Upgrade::Package-Blacklist {
     // The following matches all packages starting with linux-
 //  "linux-";
@@ -114,6 +118,7 @@ Unattended-Upgrade::Package-Blacklist {
     // For more information about Python regular expressions, see
     // https://docs.python.org/3/howto/regex.html
 };
+
 ...
 {{</ file >}}
 
@@ -123,6 +128,7 @@ You can explicitly set up the unattended-upgrades service to remove unused depen
 
 {{< file "/etc/apt/apt.conf.d/50unattended-upgrades" >}}
 ...
+
 // Remove unused automatically installed kernel-related packages
 // (kernel images, kernel headers and kernel version locked tools).
 Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
@@ -133,12 +139,13 @@ Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
 // Do automatic removal of unused packages after the upgrade
 // (equivalent to apt-get autoremove)
 Unattended-Upgrade::Remove-Unused-Dependencies "true";
+
 ...
 {{</ file >}}
 
 ## Enabling Automatic Upgrades
 
-The last step is to enable automatic updates is to edit the auto-upgrades file located here: `/etc/apt/apt.conf.d/20auto-upgrades`. Open it with the text editor of your choice.
+The last step is to enable automatic updates is to create the auto-upgrades file: `/etc/apt/apt.conf.d/20auto-upgrades` using text editor of your choice.
 
 This file allows you to define how often the auto updates take place.
 
@@ -160,12 +167,3 @@ You can perform a dry run to test the configuration. The dry run command runs a 
 You can run the dry run test by using the command:
 
     sudo unattended-upgrades --dry-run --debug
-
-If you get an error similar to:
-
-{{< output >}}
-Unable to parse Unattended-Upgrade::Allowed-Origins.
-An error occurred: not enough values to unpack (expected 2, got 0)
-{{</ output >}}
-
-Check the `/etc/apt/apt.conf.d/50unattended-upgrades` for the partial duplicate of the Allowed-Origins section mentioned in the note in the [Install Unattended Upgrades](#install-unattended-upgrades) section and remove it.
