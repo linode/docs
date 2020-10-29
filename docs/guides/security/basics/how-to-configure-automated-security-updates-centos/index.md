@@ -99,7 +99,7 @@ Cockpit is a web console with an easy-to-use web-based interface that enables yo
 
 1.  Cockpit uses system credentials, so you can login with any user account credentials that are present on the system.
 
-1.  In the sidebar menu, click on **Software Updates**.
+1.  In the left navigation pane, click **Software Updates**.
 
 1.  You can then choose to apply all or only security automatic updates, and specify the days and times you wish the updates to be installed.
 
