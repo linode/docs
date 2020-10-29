@@ -21,6 +21,7 @@ const (
 
 type config struct {
 	SourceDir string `arg:"required" help:"filesystem path to read files relative from (e.g. /public)"`
+	IndexSuffix string `default:"" help:"suffix to append to index names in Algolia"`
 	AppKey    string `arg:"env:ALGOLIA_ADMIN_API_KEY"`
 	AppID     string `arg:"env:ALGOLIA_APP_ID"`
 }
@@ -60,12 +61,12 @@ func main() {
 
 	indices := []algoliaIndex{
 		algoliaIndex{
-			name:    "linode-documentation",
+			name:    "linode-documentation" + cfg.IndexSuffix,
 			source:  "index.json",
 			replace: true,
 		},
 		algoliaIndex{
-			name: "linode-documentation-sections",
+			name: "linode-documentation-sections" + cfg.IndexSuffix,
 
 			source: "data/sections/index.json",
 			// This index is shared between Hugo and WordPress,
@@ -77,7 +78,7 @@ func main() {
 			replace: false,
 		},
 		algoliaIndex{
-			name:    "linode-documentation-api",
+			name:    "linode-documentation-api" + cfg.IndexSuffix,
 			source:  "api/index.json",
 			replace: true,
 		},
