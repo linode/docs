@@ -52,6 +52,10 @@ The process for launching a getty may differ depending on your distribution.
 5. Select the **Glish** tab.
 
     ![An example of the Gish Web Console](glish-console.png)
+    
+1.  Update and upgrade the Linux distribution’s packages. For this Debian example Linode, the command is:
+
+        sudo apt-get update && sudo apt-get upgrade
 
 6.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
 
