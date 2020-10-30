@@ -139,7 +139,7 @@ Unattended-Upgrade::Remove-Unused-Dependencies "true";
 
 ## Enabling Automatic Upgrades
 
-The last step is to enable automatic updates is to create the auto-upgrades file: `/etc/apt/apt.conf.d/20auto-upgrades` using text editor of your choice.
+To enable automatic updates create a new auto-upgrades file: `/etc/apt/apt.conf.d/20auto-upgrades` using text editor of your choice.
 
 This file allows you to define how often the auto updates take place.
 
