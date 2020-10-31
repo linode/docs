@@ -88,11 +88,11 @@ Before configuring and loading log data, install each piece of the stack, indivi
 
          sudo apt-get install elasticsearch
 
-2.  Set the JVM heap size to approximately half of your server's available memory. For example, on a Linode instance with 2GB of memory, ensure that the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file are set to the following, and leave the other values in this file unchanged. The default `jvm.options` may already be set to these values.
+2.  Set the JVM heap size to approximately one-quarter of your server's available memory. For example, on a Linode instance with 2GB of memory, ensure that the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file are set to the following, and leave the other values in this file unchanged.
 
     {{< file "/etc/elasticsearch/jvm.options" aconf >}}
--Xms1g
--Xmx1g
+-Xms512m
+-Xmx512m
 
 {{< /file >}}
 
