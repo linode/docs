@@ -255,13 +255,13 @@ The first time that Kibana starts, the daemon will perform several optimization 
 
     Kibana will now be able to display logs stored in indices that match the `logstash*` wildcard pattern.
 
-    {{< note >}}
-Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
-{{< /note >}}
-
 ## View Logs
 
 After the previously executed `curl` commands created entries in the Apache access logs, Logstash will have indexed them in Elasticsearch. These are now visible in Kibana.
+
+{{< note >}}
+Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
+{{< /note >}}
 
 From the left menu, select the hamburger icon to expand the available menu options.
 
