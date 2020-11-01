@@ -188,6 +188,7 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 input {
   file {
     path => '/var/www/*/logs/access.log'
+    start_position => 'beginning'
   }
 }
 
