@@ -459,6 +459,7 @@ fragging
 frakti
 framesets
 freedns
+freshclam
 friendster
 frontend
 frontmatter
@@ -1245,6 +1246,7 @@ reutilize
 richlanguage
 rimap
 ritchie
+rkhunter
 rkt
 rmem
 ro
