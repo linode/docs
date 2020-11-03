@@ -17,6 +17,7 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
+- '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
 aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
 image: How_to_Secure_WordPress.png
 ---
@@ -74,7 +75,7 @@ An additional layer of security that can be added to the default WordPress usern
 
 To set up 2FA, you need to install a 2FA plugin for WordPress. There are plenty of options that exist; this example uses the plugin [2FAS Light - Google Authenticator](https://wordpress.org/plugins/2fas-light/).
 
-1.  Download and install the plugin into your WordPress installation.
+1.  Download and install the plugin into your WordPress installation. For detailed instructions, see [installing plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins).
 
 1.  After installing the plugin, all you need to do is scan the QR code with an authenticator app on your mobile device, a popular option is Google Authenticator.
 
@@ -96,7 +97,7 @@ A great plugin that offers this snapshot functionality is called [Duplicator](ht
 
 ![Wordpress Duplicator Backup Plugin](secure-wordpress-duplicator.png "Wordpress Duplicator Backup Plugin")
 
-1.  Download and install the Duplicator backup plugin.
+1.  Download and install the Duplicator backup plugin. For detailed instructions, see [installing plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins).
 
 1.  After installing the plugin you can create a new backup by clicking on packages and new package.
 
@@ -122,11 +123,11 @@ Wordfence automatically prevents attacks, provides you with the ability to scan 
 
 ## Disable PHP File Execution
 
-File execution in web applications is a potentially dangerous vulnerability that can give attackers direct access to your server and content. Attackers typically try uploading executable PHP files in the default WordPress upload directory found in `wp-content/uploads/`.
+File execution in web applications is a potentially dangerous vulnerability that can give attackers direct access to your server and content. Attackers typically try uploading executable PHP files in the default WordPress upload directory that is typically located in in `/var/www/wordpress/wp-content/uploads/`.
 
-You can disable file execution by typing in the following code and saving it in an `.htaccess` file in the `wp-content/uploads/` directory:
+You can disable file execution by typing in the following code and saving it in an `.htaccess` file in the `/var/www/wordpress/wp-content/uploads/` directory:
 
-{{< file "/wp-content/uploads/.htaccess" >}}
+{{< file "/var/www/wordpress/wp-content/uploads/.htaccess" >}}
 <Files *.php>
 deny from all
 </Files>
