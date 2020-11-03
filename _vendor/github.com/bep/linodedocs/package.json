@@ -13,6 +13,8 @@
 		"core-js": "^3.6.5",
 		"cypress": "^5.2.0",
 		"cypress-axe": "^0.8.1",
+		"netlify-plugin-cache": "^1.0.3",
+		"netlify-plugin-debug-cache": "^1.0.3",
 		"postcss-cli": "^7.1.1",
 		"tailwindcss": "~1.7.3"
 	}

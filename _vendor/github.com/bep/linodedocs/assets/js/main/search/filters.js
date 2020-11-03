@@ -12,6 +12,7 @@ var lnSearchFilters = {};
 		const applySearchFiltersFromSearchParams = function(self, searchParams) {
 			let params = new URLSearchParams(searchParams);
 			let hasSearchParam = false;
+
 			params.forEach((paramVal, paramKey) => {
 				let filter = self.data.filters.get(paramKey);
 				if (!filter) {
@@ -81,10 +82,18 @@ var lnSearchFilters = {};
 		return {
 			data: data,
 			open: false,
+			loaded: false,
 
 			receiveSearchFilters: function(data) {
 				debug('receiveSearchFilters', data);
-				applySearchFiltersFromSearchParams(this, data);
+				if (!this.data.loaded) {
+					dispatcher.searchBlank();
+					this.$nextTick(() => {
+						applySearchFiltersFromSearchParams(this, data);
+					});
+				} else {
+					applySearchFiltersFromSearchParams(this, data);
+				}
 			},
 
 			receiveData: function(data) {
@@ -159,6 +168,7 @@ var lnSearchFilters = {};
 					});
 				});
 
+				this.data.loaded = true;
 				debug('receiveData', this.data);
 			},
 
