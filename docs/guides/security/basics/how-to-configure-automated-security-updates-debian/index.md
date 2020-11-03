@@ -40,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Unattended Upgrades
 
-You can set up automated security updates on Debian or Ubuntu by installing a helpful utility called `unattended-upgrades`.
+You can set up automated security updates on Debian by installing a helpful utility called `unattended-upgrades`.
 
 1.  Install it running the following command:
 
