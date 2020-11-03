@@ -27,7 +27,7 @@ The Write For Linode freelance contributor program offers payment for new guides
 
 This guide assumes that you've signed up for a [GitHub account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows/) guide.
 
-This guide will also use [Hugo](https://gohugo.io) to create a new guide within the Linode library's repository, and Node.js and NPM to build a local development version of Linode's documentation website.  Please visit [CONTRIBUTING.md](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-hugo) for installation instructions for Hugo and additional steps for setting up a development environment.
+This guide will also use [Hugo](https://gohugo.io) to create a new guide within the Linode library's repository, and Node.js and NPM to build a local development version of Linode's documentation website. Please visit the [Install Hugo](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-hugo) and [Install Node and NPM](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-node-and-npm) sections of our [CONTRIBUTING.md](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md) for installation instructions of those dependencies.
 
 {{< note >}}
 If you are following these instructions on a Windows system, all commands will need to be run via the [Git Bash console](http://git-scm.com/downloads).
@@ -83,24 +83,29 @@ In order to edit or create documents for our library, you will need to fork your
         cd docs
         git remote add upstream https://github.com/linode/docs
 
-### Creating Your Branch
-
-Once you've cloned a local copy of your repository, you will need to make a branch to store your new guide.  Branches allow you to work on multiple guide changes without creating issues within your pull requests.
-
-1.  After you first clone the repository, you will be on the master branch by default:
+1.  After you first clone the repository, you should be on the `develop` branch by default:
 
         git status
 
     {{< output >}}
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch develop
+Your branch is up-to-date with 'origin/develop'.
 
 nothing to commit, working directory clean
 {{< /output >}}
 
-1.  However, Linode's technical writing team starts all new work from our develop branch. To switch to this branch for the first time, run:
+1.  The docs website has some Node dependencies. Install these with npm:
 
-        git checkout --track origin/develop
+        npm install
+
+### Creating Your Branch
+
+Once you've cloned a local copy of your repository, you will need to make a branch to store your new guide.  Branches allow you to work on multiple guide changes without creating issues within your pull requests.
+
+1.  First, make sure that you're starting from the `develop` branch, and that you have the latest content from this branch:
+
+        git checkout develop
+        git pull upstream develop
 
 1.  Check out a new branch with a descriptive title matching the guide that you are editing or creating:
 
@@ -117,10 +122,10 @@ nothing to commit, working directory clean
 
 Using your preferred text editor, you should now be able to edit and create documents within your new branch. When writing your guide, you can refer to the [Linode Writer's Formatting Guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for help with the format of your guide and the styling of your text. Also note that our site uses the [Hugo](https://gohugo.io/) static site generator to render the website, and Hugo offers several features to enhance your Markdown files. These features are covered in our formatting guide.
 
-1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [https://www.linode.com/docs/kubernetes/](https://www.linode.com/docs/kubernetes/) section, you would create your guide within the `docs/kubernetes` subfolder inside your repository.
+1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [https://www.linode.com/docs/guides/kubernetes/](https://www.linode.com/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
 
     {{< note >}}
-To reiterate, the docs repository contains a folder that is also called `docs`, and this folder then contains all of the guides in the library:
+To reiterate, the docs repository contains a folder that is also called `docs/`, and this folder then contains all of the content in the library:
 
 - Run `ls` while inside the root of the docs repository to see the other folders that it contains, if you'd like.
 
@@ -129,19 +134,43 @@ To reiterate, the docs repository contains a folder that is also called `docs`, 
 
 1.  Next, take a moment to review the specific folder-and-file structure used for each guide, referred to by Hugo as a [*leaf bundle*](https://gohugo.io/content-management/page-bundles/#leaf-bundles):
 
-    - When you create your guide, you will create a directory whose name corresponds to the title of your guide, but in lowercase and with hyphens substituted for each space. For example, if your guide is titled "My Kubernetes Guide", the directory you create should be `my-kubernetes-guide`. When the guide is eventually published, the full path to the guide in this example will be `https://www.linode.com/docs/kubernetes/my-kubernetes-guide/`.
+    - When you create your guide, you will create a directory whose name corresponds to the title of your guide, but in lowercase and with hyphens substituted for each space. For example, if your guide is titled "My Kubernetes Guide", the directory you create should be `my-kubernetes-guide`. The path for your guide within the repository would be `docs/guides/kubernetes/my-kubernetes-guide/`
 
     - This directory should contain a Markdown text file named `index.md`. This file will contain the contents of your guide. The directory can also contain any images or other assets that you'd like to include in your guide.
 
-1.  While you can manually create your guide's directory and Markdown file, we recommend that you use Hugo's [*archetypes*](https://gohugo.io/content-management/archetypes/) feature to do so. Our repository has a [content archetype](https://github.com/linode/docs/blob/develop/archetypes/content.md) that you can use which contains some sample text. To create a new guide from this archetype, run:
-
-        hugo new -k content kubernetes/my-kubernetes-guide/index.md
-
     {{< note >}}
-You should replace `kubernetes/` with the section that your guide belongs to, and replace `my-kubernetes-guide/` with the appropriate directory name for your guide. This command will automatically create the `my-kubernetes-guide` directory if it does not already exist.
+While this example guide is located at `docs/guides/kubernetes/my-kubernetes-guide/`, the guide itself will later be published under the `docs/guides/my-kubernetes-guide/` URL path. Note that the URL for the guide will *not* include the `kubernetes/` section information. This is intentional, as our docs website is configured to publish guides under a flattened URL structure.
 {{< /note >}}
 
+1.  While you can manually create your guide's directory and Markdown file, we recommend that you use Hugo's [*archetypes*](https://gohugo.io/content-management/archetypes/) feature to do so. Our repository has a [content archetype](https://github.com/linode/docs/blob/develop/archetypes/content.md) that you can use which contains some sample text. To create a new guide from this archetype, run:
+
+        hugo new -k content guides/kubernetes/my-kubernetes-guide/index.md
+
+    {{< note >}}
+- You should *not* include the `docs/` directory at the front of the path that you pass to the `hugo new` command. Hugo will automatically know that it sould place your guide under this directory.
+
+- You should replace `kubernetes/` with the section that your guide belongs to, and replace `my-kubernetes-guide/` with the appropriate directory name for your guide. This command will automatically create the `my-kubernetes-guide` directory if it does not already exist.
+{{< /note >}}
+
+1.  The command will output the location of your new guide on your filesystem. For example:
+
+    {{< output >}}
+/Users/your-computer-user/linode-docs/docs/guides/kubernetes/my-kubernetes-guide/index.md created
+{{< /output >}}
+
 1.  At this point, you're ready to start editing this file in your favorite editor. Feel free to change or clear the content that was included by default by the `content` archetype. Also note that the top of this file is populated with the guide's [*front matter*](https://gohugo.io/content-management/front-matter/), which is Hugo's collection of metadata about your guide. You can set your guide's `title`, `description`, and `keywords` in the front matter, and you can add your name and social media link (or website link) under the `contributor` front matter keyword.
+
+1.  To preview your guide while you're writing it, start the local Hugo web server:
+
+        hugo server
+
+    This starts a local server you can use to view the Linode library in your browser on `http://localhost:1313/docs/`.
+
+1.  In a web browser, navigate to the location of your new guide. The example Kubernetes guide will be located at `http://localhost:1313/docs/guides/my-kubernetes-guide/`.
+
+    {{< note >}}
+Note that you will not be able to navigate to the new guide within the local website's Explore Docs menu, or through the search feature. This is because these features rely on a central search index, and this index is not updated until the production docs website is published.
+{{< /note >}}
 
 1.  Once you have completed composing or making edits to a guide, you can use the `git status` command to view the status of your changes.  You should receive output resembling the following:
 
@@ -149,14 +178,14 @@ You should replace `kubernetes/` with the section that your guide belongs to, an
 Untracked files:
     (use "git add <file>..." to include in what will be committed)
 
-        docs/kubernetes/my-kubernetes-guide/
+        docs/guides/kubernetes/my-kubernetes-guide/
 
 nothing added to commit but untracked files present (use "git add" to track)
 {{< /output >}}
 
 1.  Add your guide to the list of files to be committed with the 'git add' command:
 
-        git add docs/kubernetes/my-kubernetes-guide/
+        git add docs/guides/kubernetes/my-kubernetes-guide/
 
 1.  Commit your file to officially make it part of your changes.  Utilize the `-m` flag with the `git commit` command to add a commit message.  Commit messages will need to be encased in quotation marks, as shown below:
 
@@ -167,7 +196,7 @@ nothing added to commit but untracked files present (use "git add" to track)
     {{< output >}}
 [guide-title 40b1932] First draft of guide
     1 file changed, 1 insertion(+)
-    Create mode 100644 docs/kubernetes/my-kubernetes-guide/index.md
+    Create mode 100644 docs/guides/kubernetes/my-kubernetes-guide/index.md
 {{< /output >}}
 
 1.  Push your guide to GitHub.  You will need to replace `guide-title` below with the name of your branch:
@@ -204,7 +233,7 @@ If you need to edit your PR, you can make changes to your locally saved branch, 
 
 If you are working on multiple guide submissions or changes, you will need to utilize multiple branches to keep your changes separate from each other.
 
-1.  To avoid merge conflicts, switch to your develop branch and pull in the latest changes from the Linode Docs upstream repository:
+1.  Before starting on another guide draft, switch to your develop branch and pull in the latest changes from the Linode Docs upstream repository:
 
         git checkout develop
         git pull upstream develop
@@ -230,14 +259,9 @@ nothing to commit, working directory clean
 
         git branch
 
-1.  Once you have completed working with a branch, you can remove your local copy of that branch by switching to a different branch, such as develop, and using the `-d` flag to remove the unused branch:
+1.  Use the `checkout` command to switch to any other branch:
 
-        git checkout develop
-        git branch -d guide-title-2
-
-    {{< note >}}
-Git will warn you if you attempt to delete a branch with unmerged changes.  If you wish to remove a branch with unmerged changes, you can force removal by substituting the `-D` flag.
-{{< /note >}}
+        git checkout another-branch-name
 
 ## Reporting Issues with Existing Guides
 
