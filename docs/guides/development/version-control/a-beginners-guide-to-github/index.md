@@ -147,7 +147,7 @@ While this example guide is located at `docs/guides/kubernetes/my-kubernetes-gui
         hugo new -k content guides/kubernetes/my-kubernetes-guide/index.md
 
     {{< note >}}
-- You should *not* include the `docs/` directory at the front of the path that you pass to the `hugo new` command. Hugo will automatically know that it sould place your guide under this directory.
+- You should *not* include the `docs/` directory at the front of the path that you pass to the `hugo new` command. Hugo will automatically know that it should place your guide under this directory.
 
 - You should replace `kubernetes/` with the section that your guide belongs to, and replace `my-kubernetes-guide/` with the appropriate directory name for your guide. This command will automatically create the `my-kubernetes-guide` directory if it does not already exist.
 {{< /note >}}
