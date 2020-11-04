@@ -1,8 +1,9 @@
 ---
+slug: security-auditing-with-lynis
 author:
   name: Hackersploit
-description: 'Learn to perform a security audit on your system using Lynis.'
-og_description: 'Learn to perform a security audit on your system using Lynis.'
+description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
+og_description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -109,7 +110,7 @@ Lynis will also generate output on how these vulnerabilities and misconfiguratio
 
 The output also contains a hardening index score that is rated out of 100, this is used to give you a trackable tangible score of your system’s current security posture.
 
-Also found in the report, Linus will display any potential warnings that will indicate a severe security vulnerability or misconfiguration that needs to be fixed or patched. In this case, we should add rules to ou firewall:
+Also found in the report, Linus will display any potential warnings that will indicate a severe security vulnerability or misconfiguration that needs to be fixed or patched. In this case, we should add rules to the firewall:
 
 {{< output >}}
       -[ Lynis 3.0.1 Results ]-
