@@ -1,8 +1,7 @@
 ---
-slug: logging-and-system-monitoring
 author:
   name: Hackersploit
-description: 'Learn to perrform a security audit on your system using Lynis.'
+description: 'Learn to perform a security audit on your system using Lynis.'
 og_description: 'Learn to perform a security audit on your system using Lynis.'
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
@@ -11,10 +10,8 @@ published: 2020-10-29
 modified: 2020-10-29
 modified_by:
   name: Linode
-title: 'Security Auditing with Lynis'
-h1_title: 'Logging and System Monitoring'
-aliases: ['/security/monitoring/logging-and-system-monitoring/']
-image: Logging_and_system_monitoring.png
+title: 'Automated Security Auditing with Lynis'
+h1_title: 'Security Auditing with Lynis'
 ---
 ## Before you Begin
 
@@ -41,7 +38,7 @@ You may need to manually install gnupg2 on some systems in order for GPG to succ
     sudo apt-get install gnupg2
 {{< /note >}}
 
-Next, update and upgrade to ensure that your system is prepared to use all packages available in the CISOfy repository:
+Update and upgrade to ensure that your system is prepared to use all packages available in the CISOfy repository:
 
     sudo apt-get update && sudo apt-get upgrade
 
