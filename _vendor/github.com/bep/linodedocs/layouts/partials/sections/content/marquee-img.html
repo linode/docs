@@ -4,6 +4,11 @@
   {{ if $img.img }}
     {{ $src := $img.img }}
     {{ if $img.isResource }}
+      {{/* Mark the image as used to prevent double rendering later in the markdown. See the _default/markup/render-image.html.
+           Also, and this is important, make sure that it is the original image's RelPermalink that is stored here and not
+           a resized version.
+      */}}
+      {{ .Scratch.Set (printf "%s-is-used" $img.img.RelPermalink) true }}
       {{ $src = $img.img.RelPermalink }}
     {{ end }}
     <div class="marquee-img-container">
