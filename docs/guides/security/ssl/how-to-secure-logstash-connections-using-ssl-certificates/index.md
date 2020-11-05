@@ -7,8 +7,8 @@ og_description: 'Secure Logstash connections using SSL certificates.'
 keywords: ['secure logstash with ssl', 'logstash ssl setup', 'logstash ssl certificate']
 tags: ['security','ssl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-10-15
-modified: 2020-10-15
+published: 2020-11-05
+modified: 2020-11-05
 modified_by:
   name: Linode
 title: "How to Secure Logstash Connections Using SSL Certificates"
@@ -24,9 +24,9 @@ slug: how-to-secure-logstash-connections-using-ssl-certificates
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 <!-- Include one of the following notes if appropriate. --->
 
@@ -220,7 +220,7 @@ At this point you should be able to run Logstash, push a message, and see the ou
            "request_path" => "/",
            "content_type" => "application/json",
            "http_version" => "HTTP/1.1",
-        "http_user_agent" => "curl/7.64.1",
+        "http_user_agent" => "curl/7.61.1",
             "http_accept" => "*/*"
     },
           "test" => "A Log",
@@ -234,17 +234,17 @@ At this point you should be able to run Logstash, push a message, and see the ou
 You can stop here and use the setup as is, or proceed to setup peer verification. When using peer verification Logstash requires that incoming connections present their own certificate for verification rather than a username and password. You may find this method easier to script when automatically deploying hosts or applications that push messages to Logstash.
 
 {{< note >}}
-The remote client host needs copies of the organization certificate, organization certificate key, and organization certificate serial number to generate its certificate. Make sure to copy those files before proceeding. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
+The remote client host needs copies of the organization certificate (`org_ca.crt`), organization certificate key (`org_ca.key`), and organization certificate serial number (`org_ca.serial`) to generate its certificate. These are all located in the `/etc/pki/tls/private` directory. Make sure to copy those files before proceeding. You may have to update the host permissions with o+r on to be able to `scp` them. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
 {{< /note >}}
 
-1.  Begin by changing the Logstash configuration file to remove the `username` and `password` fields and add `ssl_verify_mode` and `ssl_certificate_authorities`.
+1.  On the host, begin by changing the Logstash configuration file to remove the `username` and `password` fields and add `ssl_verify_mode` and `ssl_certificate_authorities`.
 
     {{< file "/etc/logstash/conf.d/logstash.conf" >}}
 input {
     http {
         ssl => true
         ssl_certificate => "/etc/pki/tls/certs/logstash_combined.crt"
-        ssl_certificate_authorities = ["/etc/pki/tls/private/org_ca.crt"]
+        ssl_certificate_authorities => ["/etc/pki/tls/private/org_ca.crt"]
         ssl_key => "/etc/pki/tls/private/logstash.key"
         ssl_verify_mode => "force_peer"
     }
@@ -256,7 +256,7 @@ output {
 }
 {{< /file >}}
 
-1.  Create a client certificate configuration file using the text editor of your choice. Again, replace the `XX` fields with your own values.
+1.  On the client, create a client certificate configuration file using the text editor of your choice. Again, replace the `XX` fields with your own values.
 
     {{< file "/etc/pki/tls/conf/client_crt.conf" >}}
 [req]
@@ -289,44 +289,68 @@ keyUsage = keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth, clientAuth
 {{< /file >}}
 
-1.  Update the permissions to allow the
+1.  Change permissions to allow writing the `client.key` and `client.crt` files.
 
-        sudo chmod o+w /etc/pki/tls/conf/
+        sudo chmod o+w /etc/pki/tls/private/
+        sudo chmod o+w /etc/pki/tls/certs/
 
-1.  Generate the client certificate.
+1.  On the client, generate the client certificate.
 
         sudo openssl genrsa -out /etc/pki/tls/private/client.key 2048
-        sudo openssl req -sha512 -new -key /etc/pki/tls/private/client.key -out client.csr -config client_crt.conf
-        sudo openssl x509 -days 3650 -req -sha512 -in client.csr -CAserial /etc/pki/tls/private/org_ca.serial -CA /etc/pki/tls/private/org_ca.crt -CAkey /etc/pki/tls/private/org_ca.key -out /etc/private/tls/certs/client.crt -extensions v3_req -extensions usr_cert -extfile client_crt.conf
+        sudo openssl req -sha512 -new -key /etc/pki/tls/private/client.key -out client.csr -config /etc/pki/tls/conf/client_crt.conf
+        sudo openssl x509 -days 3650 -req -sha512 -in client.csr -CAserial /etc/pki/tls/private/org_ca.serial -CA /etc/pki/tls/private/org_ca.crt -CAkey /etc/pki/tls/private/org_ca.key -out /etc/pki/tls/certs/client.crt -extensions v3_req -extensions usr_cert -extfile /etc/pki/tls/conf/client_crt.conf
         sudo cat /etc/pki/tls/certs/client.crt /etc/pki/tls/private/org_ca.crt > /etc/pki/tls/certs/client_combined.crt
 
-1.  To test, make sure that Logstash is running with the new configuration and on the client host run the following curl command:
+1.  Set permissions on the `client.key` so `curl` can read it:
+
+        sudo chmod o+r /etc/pki/tls/private/client.key
+
+1.  To test, make sure that Logstash is running on the host with the new configuration, then on the client, run the following curl command:
 
         curl https://<domain_or_ip>:8080 -H "Content-Type: application/json" -d '{"test":"A Log"}' --cacert /etc/pki/tls/private/org_ca.crt --cert /etc/pki/tls/certs/client_combined.crt --key /etc/pki/tls/private/client.key
 
 1.  As before, you should see the submitted message written to `stdout` on the Logstash host.
+
+    {{< output >}}
+{
+          "test" => "A Log",
+      "@version" => "1",
+    "@timestamp" => 2020-11-05T14:01:28.179Z,
+       "headers" => {
+         "request_method" => "POST",
+           "http_version" => "HTTP/1.1",
+            "http_accept" => "*/*",
+        "http_user_agent" => "curl/7.61.1",
+           "content_type" => "application/json",
+           "request_path" => "/",
+              "http_host" => "198.51.100.0:8080",
+         "content_length" => "16"
+    },
+          "host" => "203.0.113.0"
+}
+{{</ output >}}
 
     {{< caution >}}
 Please see the [section on cleaning up](#cleaning-up) to ensure that testing artifacts are
 tidied up correctly.
 {{< /caution >}}
 
-## Additional Examples
-
-### Filebeat
+## Filebeat
 
 **Filebeat** is popular log shipper for collecting log events and shipping them to Elasticsearch or Logstash. [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) is part of the Elastic software collection. This section of the guide assumes that you're installing Filebeat on a different host than Logstash.
 
-1.  If you have not already installed Filebeat, follow the first steps of the [Install Logstash](#install-logstash) section, including creating the elastic repository configuration file, then install Filebeat.
+1.  If you have not already installed Filebeat, follow the first steps of the [Install Logstash](#install-logstash) section, including creating the elastic repository configuration file, then install Filebeat and enable it to load on boot.
 
-       sudo yum install filebeat
-       sudo systemctl enable filebeat # To enable filebeat on boot
+        sudo yum install filebeat
+        sudo systemctl enable filebeat
 
-1.  Follow the steps to [create a client certificate](#gen-client-crt) on the Filebeat host.
+1.  Follow the steps to [secure the connection with peer verification](#securing-the-connection-with-peer-verification) on the Filebeat host.
 
-#### Configure Filebeat
+### Configure Filebeat
 
-{{< file "/etc/filebeat/filebeat.yml" conf >}}
+1.  Using the text editor of your choice, update the `/etc/filebeat/filebeat.yml` file with these values.
+
+{{< file "/etc/filebeat/filebeat.yml" >}}
 filebeat.inputs:
 - type: log
   enabled: true
@@ -334,21 +358,20 @@ filebeat.inputs:
     - /path/to/a.log
 output.logstash:
   hosts: ["<domain_or_ip>:5044"]
-  ssl:
-    certificate_authorities: ["/etc/pki/tls/private/org_ca.crt"]
-    certificate: "/etc/pki/tls/certs/client_combined.crt"
-    key: "/etc/pki/tls/private/client.key
+  ssl.certificate_authorities: ["/etc/pki/tls/private/org_ca.crt"]
+  ssl.certificate: "/etc/pki/tls/certs/client_combined.crt"
+  ssl.key: "/etc/pki/tls/private/client.key"
 {{< /file >}}
 
 1.  On the Logstash host, add a `beats` input to the logstash configuration file using the text editor of your choice.
 
-    {{< file "/etc/logstash/conf.d/logstash.conf" conf >}}
+    {{< file "/etc/logstash/conf.d/logstash.conf" >}}
 input {
     beats {
         port => 5044
         ssl => true
         ssl_certificate => "/etc/pki/tls/certs/logstash_combined.crt"
-        ssl_certificate_authorities = ["/etc/pki/tls/private/org_ca.crt"]
+        ssl_certificate_authorities => ["/etc/pki/tls/private/org_ca.crt"]
         ssl_key => "/etc/pki/tls/private/logstash.key"
         ssl_verify_mode => "force_peer"
     }
