@@ -13,7 +13,9 @@ modified_by:
   name: Linode
 title: 'Automated Security Auditing with Lynis'
 h1_title: 'Security Auditing with Lynis'
+image: Security_auditing_with_Lynis.png
 ---
+
 ## Before you Begin
 
 This guide was written specifically for Debian and Ubuntu operating systems, however can be adapted to apply to all other operating systems that [Lynis currently supports](https://cisofy.com/documentation/lynis/get-started/).
