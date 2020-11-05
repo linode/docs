@@ -815,6 +815,7 @@ lugano
 luminus
 lxd
 lxml
+lynis
 lzma
 lzopio
 macos
@@ -1085,6 +1086,7 @@ passwordless
 patroni
 pbr
 pem
+pentest
 pepi
 percona
 performant
