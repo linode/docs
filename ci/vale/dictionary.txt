@@ -1746,4 +1746,5 @@ zonefiles
 zope
 zpool
 zsh
+zshrc
 zxvf
