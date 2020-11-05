@@ -130,6 +130,7 @@ bram
 brd
 browserify
 bs4
+btmp
 bufio
 bugtracker
 buildbot
@@ -1670,6 +1671,7 @@ whitelisting
 whitespace
 whitespaces
 whois
+whowatch
 wi
 widgits
 wildfly
@@ -1693,6 +1695,7 @@ writecaps
 ws
 wsgi
 wsrep
+wtmp
 www
 wx
 xabbix
