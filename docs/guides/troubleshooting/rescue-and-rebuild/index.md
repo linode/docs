@@ -195,6 +195,9 @@ The software packages you install will be available as long as your Linode is ru
 
 ### Mounting Disks
 
+{{< note >}}
+Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see [Update your fstab] (/docs/guides/install-a-custom-distribution-on-a-linode/#update-your-fstab).{{< /note >}}
+
 By default, your disks are not mounted when your Linode boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks. Run the `mount` command, replacing `/dev/sda` with the location of the disk you want to mount:
 
     mount -o barrier=0 /dev/sda
