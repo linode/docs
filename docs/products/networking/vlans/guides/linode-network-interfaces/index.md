@@ -7,7 +7,7 @@ title: Linode Network Interfaces
 
 ## Network Interfaces
 
-Linodes are connected to Private and Public Networks via their Network Interfaces. A Private Network is secure and can only be accessed by Linodes attached to the same Virutal LAN via their Private Network Interface. A Public Network, like the Internet, is not secure and is accessed via a Linode's Public Network Interface. A Linode can be connected to:
+Linodes are connected to Private and Public Networks via their Network Interfaces. A Private Network is secure and can only be accessed by Linodes attached to the same Virtual LAN via their Private Network Interface. A Public Network, like the Internet, is not secure and is accessed via a Linode's Public Network Interface. A Linode can be connected to:
 
  - both a Private and a Public Network via a Private and a Public Network Interface. In this case, the Linode has public IPv4 and IPv6 addresses and a private IPv4 and/or IPv6 address address that it can use to communicate over the Virtual LAN.
 
@@ -26,5 +26,5 @@ When you attach a Linode to a Virtual LAN and it is rebooted, by default, the fo
 - Entries are created in the first free `eth[0-9]` device slots that are available in the Linode's Network Interface configuration file.
 
     {{< note >}}
-By default, the device slot corresponding to the Private Network Interface is down and you must bring it up in order to communicate over the Virutal LAN.
+By default, the device slot corresponding to the Private Network Interface is down and you must bring it up in order to communicate over the Virtual LAN.
 {{</ note >}}

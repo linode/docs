@@ -23,7 +23,7 @@ tab_group_main:
 
 - [Test Your Private Network](/docs/products/networking/vlans/guides/test-your-private-network/): Your Virtual LAN's private network is up and running. Connect to a Linode within the private network and perform a simple test to verify that it can communicate with other Linodes within the network.
 
-- [Access Your Virutal LAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details/): Quickly find your Virtual LAN's networking details.
+- [Access Your Virtual LAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details/): Quickly find your Virtual LAN's networking details.
 
 - [Detach a Linode from Your Virtual LAN](/docs/products/networking/vlans/guides/detach-a-linode-from-your-vlan/): Remove a Linode from your Virtual LAN's private network.
 
