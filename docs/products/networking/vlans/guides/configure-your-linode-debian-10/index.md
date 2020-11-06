@@ -2,20 +2,24 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Configure Your Linode CentOS 8
+title: Configure Your Debian 10 Linode
 ---
 
-Configure Your Linode to Communicate Over a Public and Private Network
-When you attache a Linode to a Virtual LAN and reboot it Linode Network helper automatically configures your
-[Linode Network Helper](/docs/guides/network-helper/#what-is-network-helper) automatically configures your public [Network Interface](/docs/products/networking/vlans/guides/linode-network-interfaces), however, you need to manually configure your Private Network Interface(s) so they can communicate across a Virtual LAN. Follow the steps outlined in this guide for each Linode that you want to communicate over a Virtual LAN.
+When you attach a Linode to a Virtual LAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/#what-is-network-helper) generates network configurations for a Public Network Interface and a Private Network Interface. However, Network Helper **does not enable** the Private Network Interface. You must connect to your Linode and manually enable the Private Network Interface(s) before your Linode can communicate over a Virtual LAN's private network. See the [Configure a Linode to Communicate Over a Public and Private Network](#configure-a-linode-to-communicate-over-a-public-and-private-network) section of this guide for these steps.
+
+If you want your Linode to **only have access to your Virtual LAN's Private Network**, you must connect to your Linode and manually configure it to disable the Public Network Interface that is automatically configure by Network Helper. See the [Configure a Linode to Communicate Over a Private Network](#configure-a-linode-to-communicate-over-a-private-network) for these steps.
 
 {{< note >}}
-Ensure you have rebooted your Linode prior to beginning the steps in this guide.
+For more details on the differences betwen Public and Private Network Interfaces, see [Linode Network Interfaces](/docs/products/networking/vlans/guides/linode-network-interfaces).
 {{</ note >}}
 
 ## Configure a Linode to Communicate Over a Public and Private Network
 
-### CentOS
+{{< note >}}
+- This section assumes that your Linode has Network Helper enabled. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) to learn how to verify your Linode's settings.
+
+- Ensure you have rebooted your Linode after attaching it to a Virtual LAN and beginning the steps in this section.
+{{</ note >}}
 
 1. [Connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
 
@@ -44,23 +48,16 @@ Ensure you have rebooted your Linode prior to beginning the steps in this guide.
     link/ether ba:c2:6d:9c:e3:f9 brd ff:ff:ff:ff:ff:ff
   {{</ output >}}
 
-1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth1`) with a configuration entry for the Linode's `eth1` Private Network Interface along with the Interface's Private IP address and subnet mask (for example, `10.0.0.1/24`). You can find this value by following the steps in the [Access Your VLAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details) guide.
+1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth1`) with a configuration entry for the Linode's `eth1` Private Network Interface. Include the Interface's Private IP address and subnet mask (for example, `10.0.0.1/24`). You can find this value by following the steps in the [Access Your VLAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details) guide.
 
     {{< note >}}
 The Private IP address must be unique within the Virtual LAN.
 {{</ note >}}
 
-    {{< note >}}
-The location of the Network Interface configuration file varies based on the Linux distribution deployed to your Linode. The example below was created using a Debian 10 Linode. See our [Network Helper](/docs/platform/network-helper/#what-files-are-modified) guide for information on where different distributions store Network Interface configuration files.
-    {{</ note >}}
-
-      {{< file "/etc/sysconfig/network-scripts/ifcfg-eth1">}}
-DEVICE="eth1"
-NAME="eth1"
-ONBOOT="yes"
-BOOTPROTO="none"
-IPADDR0=10.0.0.1
-PREFIX0=24
+      {{< file "/etc/network/interfaces.d/eth1">}}
+auto eth1
+iface eth1 inet static
+    address 10.0.0.1/24
       {{</ file >}}
 
 1. Apply the new Network Interface configuration file.
@@ -84,61 +81,17 @@ PREFIX0=24
 
 1. Repeat steps 1 - 5 for any other Linode that is part of your Private Network and has both a Public and a Private Network Interface.
 
-Now that your Private Virtual LAN is configured, move on to the [Test Your Private Network](/docs/products/networking/vlans/guides/test-your-private-network) section to verify that communication is successful between Linodes over the LAN.
+Now that your Private Virtual LAN is configured, move on to the [Test Your Private Network](/docs/products/networking/vlans/guides/test-your-private-network) guide to verify that communication is successful between Linodes over the Virtual LAN.
 
 ## Configure a Linode to Communicate Over a Private Network
 
-The steps in this section are for a Linode that has a Private Network Interface that is attached to a LAN and does **not** have a Public Network Interface. Linodes under this circumstance are not reachable via SSH and their Public IPv4 address, so you must use the [Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) to manually configure its Private Network Interface. Lish provides console access to your Linodes, which allows you to connect to a Linode even when you are unable to connect to it directly via SSH
+{{< note >}}
+The steps in this section remove your Linode’s Public Network Interface, which make it inaccessible via SSH. You can use the [Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) to connect to your Linode once your Public Network Interface has been disabled.
+{{</ note >}}
 
-1. Disable Network Helper for your Linode. This requires you to send a request to the [Update Configuration Profile](https://developers.linode.com/api/v4/linode-instances-linode-id-configs-config-id/#put) endpoint to change the `network` field's value from `true` to `false`. Ensure you replace `{linodeId}` and `{configId}` with your own ID numbers.
+1. [Connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
 
-    {{< disclosure-note "Retrieve your {linodeId} and {configId}" >}}
-Retrieve your `{linodeId}` by sending a request to the [List Linodes](https://developers.linode.com/api/v4/linode-instances) endpoint.
-
-    curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4/linode/instances
-
-Find your `{configId}` by sending a request to the [List Configuration Profiles](https://developers.linode.com/api/v4/linode-instances-linode-id-configs) endpoint. Replace `{linodeId}` with your own Linode's ID.
-
-    curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4/linode/instances/{linodeId}/configs
-
-    {{</ disclosure-note >}}
-
-        curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
-            -X PUT -d '{
-              "helpers": {
-                "network": false
-              }
-            }' \
-            https://api.linode.com/v4/linode/instances/{linodeId}/configs/{configId}
-
-    The API returns a similar response (part of the response is truncated for brevity):
-
-    {{< output >}}
-    {
-      "id": 4567,
-    ...
-    "helpers": {
-        ...
-        "network": false,
-        ...
-      },
-      ...
-    }
-    {{</ output >}}
-
-1. Reboot your Linode so that your Configuration Profile updates can take effect.
-
-        curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
-            -X POST \
-            https://api.linode.com/v4/linode/instances/{linodeId}/reboot
-
-1. Log into your Linode via Lish following the steps in the [Using the Linode Shell](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application) guide. Ensure you consult the [Use a Web Browser](/docs/platform/manager/using-the-linode-shell-lish/#use-a-web-browser) and [Add Your Public Key](/docs/platform/manager/using-the-linode-shell-lish/#add-your-public-key) sections for additional methods to connect to Lish.
-
-1. Once you have accessed your Linode via Lish, view your Linode's current Network Interfaces by issuing the following command:
+1. View your Linode's current Network Interfaces by issuing the following command:
 
         ip a
 
@@ -163,27 +116,17 @@ Find your `{configId}` by sending a request to the [List Configuration Profiles]
     link/ether ba:c2:6d:9c:e3:f9 brd ff:ff:ff:ff:ff:ff
   {{</ output >}}
 
-1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth0`) with a configuration entry for the Linode's `eth0` Private Network Interface along with the Interface's Private IP address and subnet mask. The Private IP address must be unique within the LAN. The subnet mask that you use is the same as your LAN's `cidr_block`.
-
-    {{< note >}}
-The location of the Network Interface configuration file varies based on the Linux distribution deployed to your Linode. The example below was created using a Debian 10 Linode. See our [Network Helper](/docs/platform/network-helper/#what-files-are-modified) guide for information on where different distributions store Network Interface configuration files.
-    {{</ note >}}
+1. Using a text editor, create a new Network Interface configuration file (`/etc/network/interfaces.d/eth0`) with a configuration entry for the Linode's `eth0` Private Network Interface. Include the Interface's Private IP address and subnet mask (for example, `10.0.0.1/24`). You can find this value by following the steps in the [Access Your VLAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details) guide.
 
       {{< file "/etc/network/interfaces.d/eth0">}}
+auto eth0
 iface eth0 inet static
     address 10.0.0.1/24
       {{</ file >}}
 
-    {{< note >}}
-Send a request to the List Interfaces endpoint to view your Linode's `eth0` Private IP address. Replace `eth0` with your Linode's ID.
-
-    curl -H "Authorization: Bearer $TOKEN" \
-      https://api.linode.com/v4beta/linode/instances/{linodeId}/interfaces
-{{</ note >}}
-
 1. Update your Linode's `/etc/network/interfaces` file to **remove** the `eth0` entry created by Network Helper when the Linode was first deployed. Referring to the example, remove or comment out lines 16 - 18.
 
-      {{< file "/etc/network/interfaces">}}
+     {{< file "/etc/network/interfaces">}}
 # Generated by Linode Network Helper
 ...
 # /etc/network/interfaces
@@ -204,15 +147,17 @@ iface eth inet static
     gateway 192.0.2.0.1
       {{</ file >}}
 
-1. Disable the `eth0` Network Interface. This is required in order to remove the `eth0` entry that was created by Network Helper when the Linode was first deployed.
+1. Enable your Network Interface configuration file's new settings.
 
-        ifdown eth0
-
-1. Enable the `eth0` Network Interface to apply the Private LAN settings you configured in step 5.
+    {{< note >}}
+Running this command breaks your SSH connection since your Public Network Interface has been disabled by your new configurations.
+{{</ note >}}
 
         ifup eth0
 
-1. View the `eth1` Network Interface you just configured.
+1. Log into your Linode via Lish following the steps in the [Using the Linode Shell](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application) guide. Ensure you consult the [Use a Web Browser](/docs/platform/manager/using-the-linode-shell-lish/#use-a-web-browser) and [Add Your Public Key](/docs/platform/manager/using-the-linode-shell-lish/#add-your-public-key) sections for additional methods to connect to Lish.
+
+1. View the `eth0` Private Network Interface you just configured.
 
         ip a show eth0
 
@@ -225,6 +170,12 @@ iface eth inet static
        valid_lft forever preferred_lft forever
     inet6 fe80::b8c2:6dff:fe8d:86e0/64 scope link
        valid_lft forever preferred_lft forever
-      {{</ output >}}
+{{</ output >}}
 
-Now that your Private LAN is configured, move on to the [Test Your Private Network](#test-your-private-network) section to verify that communication is successful between Linodes over the LAN.
+1. Repeat steps 1 - 7 for any other Linode that is part of your Private Network and that you want to be configured with only a Private Network Interface.
+
+{{< note >}}
+To configure your same Linode to communicate over another Virtual LAN, create a new Network Interface configuration file using the next Network Interface alias that is available. (`eth1` and/or `eth2`).
+{{</ note >}}
+
+Now that your Private Virtual LAN is configured, move on to the [Test Your Private Network](/docs/products/networking/vlans/guides/test-your-private-network) guide to verify that communication is successful between Linodes over the Virtual LAN.

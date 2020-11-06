@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Configure Your CentOS 8 Linode
+title: Configure Your Ubuntu 20.04 Linode
 ---
 
 When you attach a Linode to a Virtual LAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/#what-is-network-helper) generates network configurations for a Public Network Interface and a Private Network Interface. However, Network Helper **does not enable** the Private Network Interface. You must connect to your Linode and manually enable the Private Network Interface(s) before your Linode can communicate over a Virtual LAN's private network. See the [Configure a Linode to Communicate Over a Public and Private Network](#configure-a-linode-to-communicate-over-a-public-and-private-network) section of this guide for these steps.
@@ -48,24 +48,24 @@ For more details on the differences betwen Public and Private Network Interfaces
     link/ether ba:c2:6d:9c:e3:f9 brd ff:ff:ff:ff:ff:ff
   {{</ output >}}
 
-1. Using a text editor, create a new Network Interface configuration file (`/etc/sysconfig/network-scripts/ifcfg-eth1`) with a configuration entry for the Linode's `eth1` Private Network Interface. Include the Interface's Private IP address and subnet mask (for example, `10.0.0.1/24`). You can find this value by following the steps in the [Access Your VLAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details) guide.
+1. Using a text editor, create a new Network Interface configuration file (`/etc/systemd/network/06-eth1.network`) with a configuration entry for the Linode's `eth1` Private Network Interface. Include the Interface's Private IP address and subnet mask (for example, `10.0.0.1/24`). You can find this value by following the steps in the [Access Your VLAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details) guide.
 
     {{< note >}}
 The Private IP address must be unique within the Virtual LAN.
 {{</ note >}}
 
-      {{< file "/etc/sysconfig/network-scripts/ifcfg-eth1">}}
-DEVICE="eth1"
-NAME="eth1"
-ONBOOT="yes"
-BOOTPROTO="none"
-IPADDR0=10.0.0.1
-PREFIX0=24
+      {{< file "/etc/systemd/network/06-eth1.network">}}
+[Match]
+Name=eth1
+
+[Network]
+DHCP=no
+Address=10.0.0.1/24
       {{</ file >}}
 
 1. Apply the new Network Interface configuration file.
 
-        ifup eth1
+        systemctl restart systemd-networkd
 
 1. View the `eth1` Network Interface you just configured.
 
@@ -121,17 +121,17 @@ The steps in this section remove your Linode’s Public Network Interface, which
 
 1. Create a backup of your Network Interface's configuration file.
 
-        mv /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0.bak
+        mv /etc/systemd/network/05-eth0.network /etc/systemd/network/05-eth0.network.bak
 
-1. Using a text editor, create a new Network Interface configuration file (`/etc/sysconfig/network-scripts/ifcfg-eth0`) with a configuration entry for the Linode's `eth0` Private Network Interface. Include the Interface's Private IP address and subnet mask (for example, `10.0.0.1/24`). You can find this value by following the steps in the [Access Your VLAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details) guide.
+1. Using a text editor, create a new Network Interface configuration file (`/etc/systemd/network/05-eth0.network`) with a configuration entry for the Linode's `eth0` Private Network Interface. Include the Interface's Private IP address and subnet mask (for example, `10.0.0.1/24`). You can find this value by following the steps in the [Access Your VLAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details) guide.
 
-      {{< file "/etc/sysconfig/network-scripts/ifcfg-eth0">}}
-DEVICE="eth0"
-NAME="eth0"
-ONBOOT="yes"
-BOOTPROTO="none"
-IPADDR0=10.0.0.1
-PREFIX0=24
+      {{< file "/etc/systemd/network/05-eth0.network">}}
+[Match]
+Name=eth0
+
+[Network]
+DHCP=no
+Address=10.0.0.1/24
       {{</ file >}}
 
 1. Enable your Network Interface configuration file's new settings.
@@ -140,7 +140,7 @@ PREFIX0=24
 Running this command breaks your SSH connection since your Public Network Interface has been disabled by your new configurations.
 {{</ note >}}
 
-        ifup eth0
+        systemctl restart systemd-networkd
 
 1. Log into your Linode via Lish following the steps in the [Using the Linode Shell](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application) guide. Ensure you consult the [Use a Web Browser](/docs/platform/manager/using-the-linode-shell-lish/#use-a-web-browser) and [Add Your Public Key](/docs/platform/manager/using-the-linode-shell-lish/#add-your-public-key) sections for additional methods to connect to Lish.
 
