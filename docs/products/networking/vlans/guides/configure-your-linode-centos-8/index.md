@@ -10,7 +10,7 @@ When you attach a Linode to a Virtual LAN and reboot the Linode, [Network Helper
 If you want your Linode to **only have access to your Virtual LAN's Private Network**, you must connect to your Linode and manually configure it to disable the Public Network Interface that is automatically configure by Network Helper. See the [Configure a Linode to Communicate Over a Private Network](#configure-a-linode-to-communicate-over-a-private-network) for these steps.
 
 {{< note >}}
-For more details on the differences betwen Public and Private Network Interfaces, see [Linode Network Interfaces](/docs/products/networking/vlans/guides/linode-network-interfaces).
+For more details on the differences between Public and Private Network Interfaces, see [Linode Network Interfaces](/docs/products/networking/vlans/guides/linode-network-interfaces).
 {{</ note >}}
 
 ## Configure a Linode to Communicate Over a Public and Private Network

@@ -34,7 +34,7 @@ Private network transfer is free. Any communication between Linodes over the pri
 
 * A Linode can only be attached to a Virtual LAN that resides within the same data center region as the Linode.
 
-    If you attempt to migrate a Linode to a data center region that does not support Virtual LANs and the Linode is attached to a Virtual LAN, the Linode is automatically detached from the Virutal LAN and it no longer has access to the private network.
+    If you attempt to migrate a Linode to a data center region that does not support Virtual LANs and the Linode is attached to a Virtual LAN, the Linode is automatically detached from the Virtual LAN and it no longer has access to the private network.
 
 ## Pricing
 
