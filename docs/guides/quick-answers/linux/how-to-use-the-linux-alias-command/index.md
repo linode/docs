@@ -3,15 +3,15 @@ slug: how-to-use-the-linux-alias-command
 author:
   name: Linode
   email: docs@linode.com
-description: '.'
-og_description: '.'
+description: 'Using the command line terminal in Linux is a convenient and fast way to interface with the operating system. To make your life easier, the alias command helps save you time. alias is like a shortcut that you can customize.'
+og_description: 'Using the command line terminal in Linux is a convenient and fast way to interface with the operating system. To make your life easier, the alias command helps save you time. alias is like a shortcut that you can customize.'
 keywords: ["linux alias command"]
 aliases: ['/quick-answers/linux/how-to-use-the-linux-alias-command/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-11-05
+modified: 2020-11-06
 modified_by:
   name: Heather Zoppetti
-published: 2020-11-05
+published: 2020-11-06
 title: How to Use the Linux Alias Command
 h1_title: Using the Linux Alias Command
 tags: ["linux"]
@@ -38,9 +38,15 @@ alias ll='ls -alF'
 alias ls='ls --color=auto'
 {{</ output >}}
 
-## How to Create Aliases
+## How to Create an Alias
 
 There are two ways to create aliases for your use, temporary and permanent. Temporary aliases are only available to use until you close your current terminal session. Permanent aliases are saved to the shell configuration file and are available for every session you create.
+
+### Overwriting Command Names
+
+It's typical when creating aliases to give them unique names that don't conflict with other utilities or existing commands. However, you can also purposefully overwrite command names with an alias to force a command to always take an option or replace it with a different command. For example, you can tell the `top` command to run `htop` instead. Or you can have `ls` always run `ls -lah`. If you want to run the original command without the alias, simply run it with a prepended `\`. For example:
+
+    \top
 
 ### Create a Temporary Alias
 
@@ -50,13 +56,13 @@ For example:
 
     alias shortcut="your custom command"
 
-For a more concrete example, say you want to create an alias to update and upgrade your system without having to type the entire command `sudo apt update && sudo apt upgrade`. You can make an alias for this called `upandup`:
+For a more concrete example, say you want to create an alias to update and upgrade your system without having to type the entire command `sudo apt update && sudo apt upgrade`. You can make an alias for this called `update`:
 
-    alias upandup="sudo apt update && sudo apt upgrade"
+    alias update="sudo apt update && sudo apt upgrade"
 
-{{< note >}}
-When creating aliases, remember to give them unique names that don't conflict with other utilities or existing commands.
-{{</ note >}}
+To have the `top` command run `htop` instead:
+
+    alias top="htop"
 
 ### Create a Permanent Alias
 
@@ -74,7 +80,8 @@ With your preferred text editor, open the configuration file, in this example, `
 ...
 
 #aliases
-alias upandup="sudo apt update && sudo apt upgrade"
+alias update="sudo apt update && sudo apt upgrade"
+alias top="htop"
 
 ...
 {{</ file >}}
@@ -93,9 +100,9 @@ To remove an alias, use the `unalias` command:
 
     unalias alias-name
 
-For example, for our `upandup` alias above, to remove this:
+For example, for our `update` alias above, to remove this:
 
-    unalias upandup
+    unalias update
 
 To remove all aliases:
 
@@ -104,3 +111,28 @@ To remove all aliases:
 {{< note >}}
 Removing all aliases also removes the system default aliases.
 {{</ note >}}
+
+## Helpful Examples
+
+Here are some helpful alias examples that you may wish to save.
+
+To go change quickly into a specific directory that you visit often, you can set an alias:
+
+    alias docs="cd /Users/exampleuser/mydirectory/docs"
+
+If you work in Python, you can use these two aliases to create a virtual environment quickly:
+
+    alias ve='python3 -m venv ./venv'
+    alias va='source ./venv/bin/activate'
+
+Use this alias to find your external IP quickly:
+
+    alias ipe="curl ipinfo.io/ip"
+
+If you use `git` and wish to see an output of differences between the current branch you are on and the development branch, change `development` to whatever branch name you want to compare:
+
+    alias gdd="git diff --name-only $(git merge-base $(git rev-parse HEAD) development)"
+
+Again, for `git`, if you want to view a list of your most recent branches:
+
+    alias glh="git for-each-ref --sort=-committerdate refs/head | head"
