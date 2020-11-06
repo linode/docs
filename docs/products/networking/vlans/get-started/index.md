@@ -30,8 +30,8 @@ A Linode can only be attached to a Virtual LAN that resides within the same data
 
     * **Reboot**: Select this option to reboot your Linode(s) after creating the VLAN. When attaching a VLAN to existing Linodes, you **must reboot the Linode** in order to apply the new network interfaces to a Linode's Network Interface configuration file and to the Linode's boot configuration profile.
 
-    Proceed to the [Configure your Linode to Use Your Private Network] section to update your Linode's Network Interface configuration file with the new private interface.
+    Once your Linode is attached to a Virtual LAN, you must configure it so that it can communicate across the Virtual LAN's Private Network. Based on your Linode's distribution use one of the following guides to complete your Linode's configuration:
 
-    {{< note >}}
-Your Linode cannot communicate over the VLAN's private network until a private network interface is applied to it.
-{{</ note >}}
+    - [Configure Your CentOS 8 Linode](/docs/products/networking/vlans/guides/configure-your-linode-centos-8/)
+    - [Configure Your Ubuntu 20.04 Linode](/docs/products/networking/vlans/guides/configure-your-linode-ubuntu-20-04/)
+    - [Configure Your Debian 10 Linode](/docs/products/networking/vlans/guides/configure-your-linode-debian-10/)

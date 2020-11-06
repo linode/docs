@@ -11,7 +11,9 @@ tab_group_main:
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
--  [Linode VLANs Endpoint Collection](/docs/api/networking/#vlans)
+-  [Linode VLANs Endpoint Collection](/docs/api/networking/#vlans): Use [VLANs](/docs/api/networking/#vlans) and [Linode Instances](/docs/api/linode-instances/) endpoints to gain finer-grained control of your [Linode's networking interfaces](/docs/api/linode-instances/#interfaces-list), [configuration profiles](/docs/api/linode-instances/#configuration-profiles-list), and [VLAN networking](/docs/api/networking/#vlans) details.
+
+-  [Creating a Private Local Area Network (LAN) Using the Linode APIv4](): This guide shows you how to create a VLAN and attach Linodes to it using the Linode APIv4.
 
 ## Linode CLI
 
