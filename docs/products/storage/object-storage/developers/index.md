@@ -8,7 +8,7 @@ tab_group_main:
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [Cloud Firewall Endpoint Collection](/docs/api/cloud-firewall)
+- [Object Storage Endpoint Collection](/docs/api/object-storage)
 
 ## Linode CLI
 

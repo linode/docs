@@ -1,5 +1,5 @@
 ---
-slug: add-cloud-firewall-rules-shortguide
+slug: add-new-cloud-firewall-rules-shortguide
 author:
   name: Linode
   email: docs@linode.com
@@ -17,14 +17,13 @@ tags: ["linode platform"]
 aliases: ['/platform/cloud-firewall/add-new-cloud-firewall-rules-shortguide/']
 ---
 
-### Add New Cloud Firewall Rules
-
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
 1. From the **Firewalls** listing page, click on the Firewall that you would like to add new rules to. This takes you to the Firewall's **Rules** page.
 
 1. Click on the **Add an Inbound/Outbound Rule** link (click on the appropriate link for the type of Rule you would like to add).
-    ![Click on the Add an Inbound/Outbound Rule link.](add-a-new-firewall-rule.png)
+
+    ![Click on the Add an Inbound/Outbound Rule link.](add-a-new-firewall-rule.png "Click on the Add an Inbound/Outbound Rule link.")
 
     The **Add an Inbound/Outboud Rule** drawer appears.
 
@@ -39,15 +38,15 @@ aliases: ['/platform/cloud-firewall/add-new-cloud-firewall-rules-shortguide/']
 
 1. Click on **Add Rule** to add the new rule to this Firewall. If you would like to add any additional rules, repeat the process outlined in this section.
 
-    ![Click on Add Rule to add the new rule to this Firewall.](add-your-new-rule.png)
+    ![Click on Add Rule to add the new rule to this Firewall.](add-your-new-rule.png "Click on Add Rule to add the new rule to this Firewall.")
 
 1. When you are done adding new Firewall rules, click on the **Apply Changes** button on the **Rules** page.
 
     {{< note >}}
 Any newly added rules do not take effect until you **Apply Changes** to the Firewall.
-    {{</ note >}}
+{{</ note >}}
 
-    ![Apply your changes to the Firewall.](apply-your-changes-to-the-firewall.png)
+    ![Apply your changes to the Firewall.](apply-your-changes-to-the-firewall.png "Apply your changes to the Firewall.")
 
 ### Edit Cloud Firewall Rules
 
@@ -59,18 +58,18 @@ Follow the steps in this section to edit predefined and custom Firewall Rules.
 
 1. Click on the ***more options ellipsis*** corresponding to the rule you'd like to edit and select **Edit** from the dropdown menu.
 
-    ![Select edit from the dropdown menu.](edit-this-firewall-rule.png)
+    ![Select edit from the dropdown menu.](edit-this-firewall-rule.png "Select edit from the dropdown menu.")
 
 1. From the **Edit Rule** drawer, update the rule's configurations as needed.
 
 1. Click on the **Edit Rule** button to save your changes and apply them to the rule. If you would like to edit any additional rules, repeat the process outlined in this section.
 
-    ![Save your Firewall rule edits.](edit-firewall-rule.png)
+    ![Save your Firewall rule edits.](edit-firewall-rule.png "Save your Firewall rule edits.")
 
 1. When you are done editing your Firewall rules, click on the **Apply Changes** button on the **Rules** page.
 
     {{< note >}}
 Any edits made to rules do not take effect until you **Apply Changes** to the Firewall.
-    {{</ note >}}
+{{</ note >}}
 
-    ![Apply your edit rule changes to the Firewall.](apply-edit-rule-changes.png)
+    ![Apply your edit rule changes to the Firewall.](apply-edit-rule-changes.png "Apply your edit rule changes to the Firewall.")
