@@ -27,13 +27,9 @@ Delete individual rules that are no longer needed using the Cloud Manager.
 
 - [Update Firewall Status](/docs/products/tools/cloud-firewall/guides/update-status/): Disable or Enable a Cloud Firewall by setting the status in the Cloud Manager.
 
-## Themes
-
-These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
-
 ### Cloud Firewall Basics
 
 - [Adding and Configuring Cloud Firewall](/docs/guides/getting-started-with-cloud-firewall/)
 
-- [Toubleshooting Firewalls](/docs/guides/troubleshooting-firewalls/)
+- [Troubleshooting Firewalls](/docs/guides/troubleshooting-firewalls/)
 
