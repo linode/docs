@@ -30,7 +30,7 @@ aliases: ['/platform/cloud-firewall/add-new-cloud-firewall-rules-shortguide/']
 1. Provide the following Rule configurations:
 
     | **Configuration** | **Description** |
-    | :---------------: | :---------------: |
+    | --------------- | --------------- |
     | **Type** | &bull; Select from a list of predefined Firewall rules or select **Custom** to define your own Rule.<br><br>  &bull;Selecting a predefined rule fills in the remaining Rule configuration values, however, they can all be edited.<br><br> &bull;Selecting **Custom**, leaves all configuration values empty for you to define. *Required*|
     | **Protocol** | Select the Transport Layer protocol to use for this Firewall rule. *Required*|
     | **Port Range**| &bull; Provide a port number or a range of ports on which to allow network traffic. <br><br> &bull; This configuration is required for TCP and UDP Firewall rules. `ICMP` does not have a port abstraction, so does not require this configuration.<br><br> &bull; To configure a **Port Range** provide the starting and ending port numbers. For example, `2000-3000`.  *Required*|

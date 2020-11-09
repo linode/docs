@@ -28,7 +28,7 @@ aliases: ['/platform/cloud-firewall/add-a-cloud-firewall-shortguide/']
 1. The **Add a Firewall** drawer appears with the Firewall configurations needed to add a Firewall. Configure your Firewall with at minimum the required fields:
 
     | **Configuration** | **Description** |
-    | :---------------: | :---------------: |
+    | --------------- | --------------- |
     | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
     | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
