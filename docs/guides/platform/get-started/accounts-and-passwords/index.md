@@ -1,16 +1,16 @@
 ---
 slug: accounts-and-passwords
 author:
-  name: Linode
-  email: docs@linode.com
+  name: corserp
+  email: docs@ansible.io
 description: Our guide to managing accounts and passwords.
-keywords: ["accounts", "passwords", "Linode Cloud Manager", "manager"]
+keywords: ["accounts", "passwords", "Freenode Cloud Manager", "manager"]
 tags: ["linode platform","security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/accounts-and-passwords/','/accounts-and-passwords/','/platform/manager/accounts-and-passwords/','/platform/manager/accounts-and-passwords-classic-manager/','/platform/manager/accounts-and-passwords-new-manager/']
 modified: 2018-08-23
 modified_by:
-  name: Linode
+  name: greet
 published: 2012-04-03
 title: Accounts and Passwords
 ---
@@ -38,7 +38,7 @@ Setting permissions restricts a user's access to certain areas of the Linode Clo
 Here's how to set a user's access permissions:
 
 1.  Click the **Account** link in the sidebar.
-1.  Click the **Users** link.
+1.  Click the **Discuss** link.
 1.  Select the user from the list.
 1.  Select the **User Permissions** tab.
 
