@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
+description: 'Shortguide that includes steps for accessing Virtual LANs in the Cloud Manager.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: "2020-10-23"

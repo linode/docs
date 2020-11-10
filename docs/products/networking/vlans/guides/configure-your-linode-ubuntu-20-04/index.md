@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: Configure Your Ubuntu 20.04 Linode
+description: "Once an Ubuntu 20.04 Linode is attached to a Virtual LAN, you must connect to your Linode in order to enable its new private network interface. This guide includes the networking configuration steps to perform on your Linode."
 ---
 
 When you attach a Linode to a Virtual LAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/#what-is-network-helper) generates network configurations for a Public Network Interface and a Private Network Interface. However, Network Helper **does not enable** the Private Network Interface. You must connect to your Linode and manually enable the Private Network Interface(s) before your Linode can communicate over a Virtual LAN's private network. See the [Configure a Linode to Communicate Over a Public and Private Network](#configure-a-linode-to-communicate-over-a-public-and-private-network) section of this guide for these steps.

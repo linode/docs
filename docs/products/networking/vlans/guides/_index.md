@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "SEO description of this product's Guides page."
+description: "Follow our Virtual LAN guides to learn how to perform basic tasks using the Linode Cloud Manager, like creating a VLAN, attaching Linodes to your VLAN, viewing your VLAN's networking details, and more."
 tab_group_main:
     weight: 30
 ---
@@ -33,5 +33,5 @@ These additional guides explore targeted topics related to Virtual LANs.
 
 ### Virtual LAN Basics
 
-- [Virtual LAN Use Cases]()
+- [Virtual LAN Use Cases](/docs/guides/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/)
 

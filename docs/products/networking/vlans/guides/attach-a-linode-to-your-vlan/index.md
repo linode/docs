@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: Attach a Linode to Your VLAN
+description: "Use the Linode Cloud Manager to attach Linodes to a Virtual LAN. An existing Linode can be attached to a Virtual LAN. You can also attach a Linode to a Virutal LAN as you are creating a new Linode."
 ---
 
 {{< content "vlans-beta-note-shortguide" >}}
