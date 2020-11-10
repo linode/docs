@@ -7,8 +7,6 @@ HUGO_VERSION = "0.76.5"
 
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.76.5"
-
-[context.deploy-preview.environment]
 NODE_VERSION = "13.4.0"
 
 [[plugins]]
