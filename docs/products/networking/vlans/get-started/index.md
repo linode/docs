@@ -1,6 +1,6 @@
 ---
 title: Get Started
-description: "SEO description for this product's Get Started page."
+description: "Use the Linode Cloud Manager to create a Virtual LAN and attach a Linode to it. When a Linode is attached to a Virtual LAN and configured, it has access to the Virtual LAN's secure and private network."
 tab_group_main:
     weight: 20
 ---

@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: Test Your Private Network
+description: "Use the steps in this guide to ensure that a Linode can successfully communicate over a Virtual LAN''s private network."
 ---
 Once you have configured more than one Linode to communicate over your Virtual LAN's private network, verify that you can communicate from one Linode to another within the private network.
 

@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: Linode Network Interfaces
+description: "This guide describes public and private networks and how they correspond to the network interfaces configured on a Linode that is attached to a Virutal LAN."
 ---
 
 ## Network Interfaces

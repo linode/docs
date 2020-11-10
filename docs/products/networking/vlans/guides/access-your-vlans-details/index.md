@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: Access Your VLAN's Details
+description: "Use the Linode Cloud Manager to view networking details for your Virtual LAN."
 ---
 
 {{< content "vlans-beta-note-shortguide" >}}

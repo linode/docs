@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: Detach a Linode From Your VLAN
+description: "If you no longer want a Linode to have access to a Virutal LAN''s private network,use this guide to learn how to detach a Linode from a Virtual LAN."
 ---
 
 {{< content "vlans-beta-note-shortguide" >}}
