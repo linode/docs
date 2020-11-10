@@ -7,7 +7,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Secure your network with Linode Cloud Firewall. Filter traffic by allowing it on selected ports and protocols."
+    product_description: "Secure your network with Linode Cloud Firewall. Create Firewall rules that only allow network traffic on selected ports and protocols."
 ---
 
 {{< note >}}
@@ -22,7 +22,7 @@ Mumbai, India; Sydney, Australia;
 
 ### Simple Interface
 
-Control inbound and outbound traffic using the [Linode API](/docs/api/networking) or [Cloud Manager](https://www.linode.com/products/cloud-manager/).
+Control inbound and outbound traffic using the [Linode API](/docs/api/networking), [Linode CLI](/docs/guides/linode-cli/) or [Cloud Manager](https://www.linode.com/products/cloud-manager/).
 
 ### Scalable Security in Seconds
 
