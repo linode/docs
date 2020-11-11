@@ -1,5 +1,4 @@
 ---
-slug: common-linode-vlan-use-cases
 author:
   name: Linode
   email: docs@linode.com

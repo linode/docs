@@ -93,6 +93,8 @@ Now that your Private Virtual LAN is configured, move on to the [Test Your Priva
 The steps in this section remove your Linode’s Public Network Interface, which make it inaccessible via SSH. You can use the [Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) to connect to your Linode once your Public Network Interface has been disabled.
 {{</ note >}}
 
+1. Disable [Network Helper](/docs/guides/network-helper/). Disabling Network Helper prevents it from overriding any network configurations you apply to your Linode when following the steps in this section.
+
 1. [Connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
 
 1. View your Linode's current Network Interfaces by issuing the following command:
