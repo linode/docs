@@ -174,6 +174,8 @@ github.com/bep/linodedocs v0.0.0-20201029131522-c656d102af90 h1:4M/jEnVKdnSgk7JZ
 github.com/bep/linodedocs v0.0.0-20201029131522-c656d102af90/go.mod h1:Jaf9UDYxVmfTOesVMNvyBGU+0Q78L9Or7hDEN1I7gAc=
 github.com/bep/linodedocs v0.0.0-20201102172434-98f06c13f3f1 h1:VU+omU5athrlCiZ68GYF4nCs9MjAYjmNFTRZvE4b2P0=
 github.com/bep/linodedocs v0.0.0-20201102172434-98f06c13f3f1/go.mod h1:Jaf9UDYxVmfTOesVMNvyBGU+0Q78L9Or7hDEN1I7gAc=
+github.com/bep/linodedocs v0.0.0-20201111153041-b12904ff176a h1:fVHJpf21OIm1JUJ0sPixnJ3HxxBS8oWaKMwuvV8Z4oc=
+github.com/bep/linodedocs v0.0.0-20201111153041-b12904ff176a/go.mod h1:Atubll9MuX2IrA54MDZOge85Vj1VI3uLHAp0mPQEaT8=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=
@@ -198,4 +200,5 @@ github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c h1:
 github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201008204609-a59453d99ac9/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201027160459-020df188fe47/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
+github.com/linode/linode-website-partials v0.0.0-20201106150449-790c71d060a5/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible/go.mod h1:Cl0Br9tUXkQvxumVNGTvyaa7dqpFC2kPMrsS0Ttc94U=

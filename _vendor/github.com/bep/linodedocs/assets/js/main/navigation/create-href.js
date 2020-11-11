@@ -26,7 +26,7 @@ var lnCreateHref = {};
 			},
 			hrefEntry: function(hit) {
 				let urlParts = hit.url.split('/');
-				let contentType = hit.objectID.split("#").shift().replace("content", "resource");
+				let contentType = hit.objectID.split('#').shift().replace('content', 'resource');
 				let slug = urlParts.pop() || urlParts.pop();
 				return `${WP_CONTENT_BASEPATH}${contentType}/${slug}/`;
 			}
