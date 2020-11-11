@@ -6,9 +6,11 @@
 # Or, optionally:
 #    BASE_URL=<base URL of site> ./generate_permanent_redirects_for_nginx.sh
 #
-# BASE_URL is set to '$scheme://$http_host/docs' if it is not found as
-# an environment variable. This is what you should use in most cases
-# so you probably don't usually need to set it yourself.
+# BASE_URL is set to '{{ base_url }}' by default in the script, but you can
+# override this value by setting it as an environment variable. The value of
+# '{{ base_url }}' is used so that it can be updated by Salt pillar on the
+# web boxes. If you are running this script to create a new redirects.conf
+# on the web boxes, then use this default value.
 #
 # This script iterates through the public/ folder and searches for any pages
 # created from Hugo's `aliases` frontmatter. It generates an NGINX permanent
@@ -21,7 +23,7 @@
 
 set -eo pipefail
 
-[[ -z "$BASE_URL" ]] && { BASE_URL='$scheme://$http_host/docs'; }
+[[ -z "$BASE_URL" ]] && { BASE_URL='{{ base_url }}'; }
 
 > ../redirects.conf
 
