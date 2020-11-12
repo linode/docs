@@ -35,9 +35,7 @@ var lnBreadcrumbs = {};
 			init: function(page) {
 				debug('init', page);
 				this.page = page;
-				this.$nextTick(() => {
-					dispatcher.searchBlank();
-				});
+				this.createBreadcrumbs();
 			},
 
 			createBreadcrumbs: function() {
@@ -47,7 +45,9 @@ var lnBreadcrumbs = {};
 					let sections = this.assembleSections(parts);
 					sections.push(this.page);
 					this.data.breadcrumbs = sections;
+
 					debug('route', parts, this.data.breadcrumbs);
+
 					return;
 				}
 
@@ -64,12 +64,19 @@ var lnBreadcrumbs = {};
 				let sectionKeys = [];
 				for (let section of parts) {
 					sectionKeys.push(section);
-					let key = sectionKeys.join(' > ');
-					let sm = this.data.sections.get(key);
-					if (sm) {
-						sections.push(sm);
+					if (this.data.sections) {
+						let key = sectionKeys.join(' > ');
+						let sm = this.data.sections.get(key);
+						if (sm) {
+							sections.push(sm);
+						}
+					} else {
+						// Static breadcrumbs.
+						//For the linkTitle we could do better for the content we have stored in Hugo.
+						sections.push({ linkTitle: capitalize(section), href: '/docs/' + sectionKeys.join('/') });
 					}
 				}
+
 				return sections;
 			}
 		};
