@@ -14,6 +14,7 @@ var lnArticleController = {};
 		}
 
 		const router = lnCreateHref.New(searchConfig);
+		const dispatcher = lnSearchEventDispatcher.New();
 
 		const fetchArticle = function(url, onSuccess, onError) {
 			debug('fetch', url);
@@ -61,16 +62,24 @@ var lnArticleController = {};
 
 					let dateGMT = new Date(article.date_gmt + 'Z');
 					let modifiedGMT = new Date(article.modified_gmt + 'Z');
+					let wpMetaString = article.yoast_head.substring(article.yoast_head.indexOf('<title>'));
 
 					onSuccess({
 						title: article.title.rendered,
+						linkTitle: article.title.rendered,
+						link: article.link,
+						href: window.location.pathname,
 						content: content,
 						author: author,
 						date: dateGMT,
 						dateStr: dateFormat(dateGMT),
 						modified: modifiedGMT,
 						modifiedStr: dateFormat(modifiedGMT),
-						image: embedded && embedded['wp:featuredmedia'] ? embedded['wp:featuredmedia'][0] : null
+						image: embedded && embedded['wp:featuredmedia'] ? embedded['wp:featuredmedia'][0] : null,
+						metaString: wpMetaString,
+						section: article.section,
+						kind: 'page',
+						type: 'wpArticle' // Discriminator that tells this apart from the Hugo articles. Do not change.
 					});
 				})
 				.catch((err) => {
@@ -86,6 +95,9 @@ var lnArticleController = {};
 				var self = this;
 				let pathname = decodeURIComponent(window.location.pathname);
 				let match = pathname.match(/docs\/content\/(.+)\/(.+)/);
+				if (!match) {
+					return;
+				}
 				match = match.slice(1, match.length);
 
 				if (match.length < 2) {
@@ -98,7 +110,26 @@ var lnArticleController = {};
 				var url = `https://www.linode.com/wp-json/wp/v2/${contentType}?slug=${slug}&_embed=1`;
 
 				var onSuccess = (article) => {
+					dispatcher.sendPageInfo(article);
+
 					self.data.article = article;
+
+					let div = document.createElement('div');
+					div.innerHTML = article.metaString;
+
+					// Set SEO metadata in <head>
+					for (let i in div.childNodes) {
+						let el = div.childNodes[i];
+						if (/(META|TITLE)/.test(el.nodeName)) {
+							document.head.appendChild(el);
+						}
+					}
+					if (article.link) {
+						let cannonical = document.createElement('link');
+						cannonical.setAttribute('rel', 'canonical');
+						cannonical.setAttribute('href', article.link);
+						document.head.appendChild(cannonical);
+					}
 				};
 
 				fetchArticle(url, onSuccess, (err) => {

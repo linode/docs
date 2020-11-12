@@ -7,6 +7,8 @@ var lnInitController = {};
 		(typeof LN_DEBUG !== 'undefined' && LN_DEBUG) || 0 ? console.log.bind(console, '[init]') : function() {};
 
 	ctx.New = function() {
+		const dispatcher = lnSearchEventDispatcher.New();
+
 		return {
 			// init will run after Alpine has made its initial updates to the DOM,
 			// and this is the init function for the last component on the page.
@@ -28,6 +30,9 @@ var lnInitController = {};
 							}
 						} catch (e) {}
 					}
+
+					// Send the static page info to components who need it.
+					dispatcher.sendPageInfo(lnPageInfo);
 				};
 			}
 		};
