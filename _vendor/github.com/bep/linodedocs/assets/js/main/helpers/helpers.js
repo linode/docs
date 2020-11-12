@@ -35,6 +35,11 @@ function toggleClass(openClass, el, open) {
 	}
 }
 
+const capitalize = (s) => {
+	if (typeof s !== 'string') return '';
+	return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
 function toDateString(date) {
 	var year = date.getFullYear().toString().substr(-2);
 	var month = date.getMonth() + 1;
