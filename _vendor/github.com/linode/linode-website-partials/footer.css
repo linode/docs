@@ -114,6 +114,10 @@
   padding-bottom: 56px;
 }
 
+.c-site-footer__primary .o-layout__colset {
+  max-width: none;
+}
+
 .c-site-footer__primary .c-identity {
   margin-top: 32px;
 }

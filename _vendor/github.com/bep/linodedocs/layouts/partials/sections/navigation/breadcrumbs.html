@@ -1,8 +1,9 @@
 {{ $p := .page }}
 {{ $wrap := .wrap }}
-<nav class="breadcrumbs text-sm w-full" aria-label="breadcrumbs" x-data="lnBreadcrumbs.New(lnSearchConfig)"
-    x-init="init(lnPageInfo)" @search:results-blank.document="receiveData($event.detail);">
-  <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}}w-full -mt-2" x-show.transition.opacity="loaded">
+<nav class="breadcrumbs text-sm w-full" aria-label="breadcrumbs" x-data="lnBreadcrumbs.New(lnSearchConfig)" id="breadcrumbs-{{ $wrap }}"
+    @search:results-blank.document="receiveData($event.detail);" @search:results-initial.document="receiveData($event.detail);"  
+    @ln:page-info.document="receivePageInfo($event.detail);" @turbolinks:before-render.document="onTurbolinksBeforeRender();" data-turbolinks-permanent>
+  <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}}w-full -mt-2">
     <li class="flex items-center mt-2">
       <a class="max-w-32 truncate" href="{{ site.Home.RelPermalink }}">
         <div class="flex content-center space-x-2">
@@ -19,18 +20,22 @@
           </div>
         </div>
       </a>
-      <template x-if="data.breadcrumbs.length > 0">
+      <template x-if="data.breadcrumbs.sections.length > 0">
         {{ template "breadcrumbs-arrow" . }}
       </template>
     </li>
-    <template x-for="(b, i) in data.breadcrumbs" :key="b">
+    <template x-for="(b, i) in data.breadcrumbs.sections" :key="b">
       <li class="flex items-center mt-2">
         <a x-text="b.linkTitle" :href="b.href"></a>
-        <template x-if="i < (data.breadcrumbs.length -1 )">
+        <template x-if="i < (data.breadcrumbs.sections.length - 1)">
           {{ template "breadcrumbs-arrow" . }}
         </template>
       </li>
     </template>
+    <li class="flex items-center mt-2" x-show="data.breadcrumbs.page.kind === 'page'">
+      {{ template "breadcrumbs-arrow" . }}
+      <a x-text="data.breadcrumbs.page.linkTitle" :href="data.breadcrumbs.page.href"></a>
+    </li>
   </ol>
 </nav>
 

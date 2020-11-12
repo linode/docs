@@ -72,7 +72,6 @@ class Searcher {
 		handleData,
 		handleError = (error) => {
 			this.onError(error);
-			throw error;
 		}
 	) {
 		fetch(this.urlQueries, {
@@ -119,11 +118,9 @@ class Searcher {
 					hit.section = hit.section.toLowerCase();
 				}
 
-				if (self.searchState.metaSearch.results.get) {
-					let m = self.searchState.metaSearch.results.get(hit.section);
-					if (m) {
-						hit.sectionTitle = m.linkTitle;
-					}
+				let m = self.searchState.metaSearch.getSectionMeta(hit.section);
+				if (m) {
+					hit.sectionTitle = m.linkTitle;
 				}
 
 				hit.titleHighlighted =
@@ -134,8 +131,12 @@ class Searcher {
 				if (opts.isSectionMeta) {
 					href = router.hrefSection(hit.objectID);
 				} else if (hit.url) {
-					// A blog entry.
-					href = router.hrefEntry(hit);
+					if (hit.section === 'resources > webinars') {
+						href = hit.url;
+					} else {
+						// A blog entry.
+						href = router.hrefEntry(hit);
+					}
 				} else if (hit.objectType === 'question') {
 					// A question.
 					href = `https://www.linode.com/community/questions/${hit.linodeId}`;
@@ -463,6 +464,9 @@ class Searcher {
 				if (b) {
 					this.loadingState = searchItemLoadingStates.INITIAL;
 					this.publish = false;
+					if (this.hugoData) {
+						this.hugoData.loadingState = searchItemLoadingStates.INITIAL;
+					}
 				}
 				return b;
 			};
@@ -518,11 +522,56 @@ class Searcher {
 				}),
 				metaSearch: newSearchItem({
 					name: 'meta',
+					getSectionMeta: function(key) {
+						// First look in the Hugo data
+						let m = this.hugoData.data.get(key);
+						if (m) {
+							return m;
+						}
+						// Then look in the Algolia data.
+						if (!this.results.get) {
+							return null;
+						}
+						return this.results.get(key);
+					},
+					hugoData: {
+						loadingState: searchItemLoadingStates.INITIAL,
+						data: new Map(),
+						loadIfNotLoaded: function() {
+							if (this.loadingState > searchItemLoadingStates.INITIAL) {
+								return;
+							}
+							this.loadingState = searchItemLoadingStates.LOADING;
+							var self = this;
+							fetch('/docs/data/sections/index.json', {})
+								.then((response) => response.json())
+								.then((data) => {
+									self.data = data.reduce(function(m, item) {
+										item.href = router.hrefSection(item.objectID);
+										m.set(item.objectID, item);
+										return m;
+									}, new Map());
+									self.loadingState = searchItemLoadingStates.LOADED;
+									dispatcher.broadCastSearchResult(s, dispatcher.events.EVENT_SEARCHRESULT_INITIAL);
+								})
+								.catch(function(error) {
+									console.warn(error);
+									self.loadingState = searchItemLoadingStates.INITIAL;
+								});
+						}
+					},
+
 					query: {
 						requests: [
 							{
 								indexName: searchConfig.meta_index,
-								params: 'query=&hitsPerPage=600'
+								params: 'query=&hitsPerPage=600',
+								// We load the Hugo data from the published JSON to save Algolia queries on
+								// load (for the breadcrumbs).
+								// This filter is just to save some bytes for when the Algolia data IS loaded,
+								// as the guides is the most populated section tree.
+								filters:
+									'NOT section:guides AND NOT section:api AND NOT section:products AND NOT section:content AND NOT section:development'
 							}
 						]
 					}
@@ -536,6 +585,9 @@ class Searcher {
 				staticSearchRequestsResults: [],
 				staticSearchCache: new Map()
 			};
+
+			// Load metadata from /docs/data/sections/index.json
+			s.metaSearch.hugoData.loadIfNotLoaded();
 
 			s.reset = function() {
 				this.mainSearch.reset();
@@ -699,6 +751,8 @@ class Searcher {
 				let opts = arg || {};
 				debug('search', opts);
 
+				this.searchState.metaSearch.hugoData.loadIfNotLoaded();
+
 				var event = opts.event;
 				if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK && this.searchState.blankSearch.isLoading()) {
 					// One is already in progress.
@@ -760,6 +814,8 @@ class Searcher {
 				var self = this;
 				var searcher = newSearcher(normalizeHit(self), function(err) {
 					self.searchState.reset();
+					// TODO(bep) error status in view
+					throw err;
 				});
 
 				if (this.searchState.staticSearchRequests.length > 0) {
