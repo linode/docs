@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.78.3
+  version: 4.79.0
 
   title: Linode API
   description: |
@@ -11133,6 +11133,7 @@ paths:
         For more fine-grained control of both systems, please use the S3 API directly.
 
 
+
         This endpoint is available for convenience. It is recommended that instead you
         use the more more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket-acl) directly.
       tags:
@@ -11160,6 +11161,8 @@ paths:
                   - private
                   - public-read
                   - authenticated-read
+                  - public-read-write
+                  - custom
                   description: >
                     The Access Control Level of the bucket, as a canned ACL string.
                     For more fine-grained control of ACLs, use the S3 API directly.
@@ -11183,6 +11186,230 @@ paths:
                 "acl": "private"
               }' \
             https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/access
+    put:
+      operationId: modifyObjectStorageBucketAccess
+      x-linode-cli-skip: true
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Object Storage Bucket Access Update
+      description: |
+        Allows changing basic Cross-origin Resource Sharing (CORS) and Access Control Level (ACL) settings.
+        Only allows enabling/disabling CORS for all origins, and/or setting canned ACLs.
+        For more fine-grained control of both systems, please use the S3 API directly.
+
+
+        This endpoint is available for convenience. It is recommended that instead you
+        use the more more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket-acl) directly.
+      tags:
+      - Object Storage
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - object_storage:read_write
+      requestBody:
+        description: The changes to make to the bucket's access controls.
+        content:
+          application/json:
+            schema:
+              properties:
+                cors_enabled:
+                  type: boolean
+                  description: >
+                    If true, the bucket will be created with CORS enabled for all
+                    origins. For more fine-grained controls of CORS, use the S3
+                    API directly.
+                  example: true
+                acl:
+                  type: string
+                  enum:
+                  - private
+                  - public-read
+                  - authenticated-read
+                  - public-read-write
+                  - custom
+                  description: >
+                    The Access Control Level of the bucket, as a canned ACL string.
+                    For more fine-grained control of ACLs, use the S3 API directly.
+                  example: private
+      responses:
+        '200':
+          description: Access controls updated.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+            -X PUT -d '{
+                "cors_enabled": true,
+                "acl": "private"
+              }' \
+            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/access
+  /object-storage/buckets/{clusterId}/{bucket}/object-acl:
+    parameters:
+    - name: clusterId
+      in: path
+      description: The ID of the cluster this bucket exists in.
+      required: true
+      schema:
+        type: string
+    - name: bucket
+      in: path
+      description: The bucket name.
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: viewObjectStorageBucketAccess
+      x-linode-cli-skip: true
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Object Storage Object ACL Config View
+      description: |
+        This Object Storage bucket's currently configured Access Control List (ACL).
+          ACLs define who can access your buckets and objects and specify the level of access
+          granted to those users.
+
+
+        This endpoint is available for convenience. It is recommended that instead you
+        use the more more [fully-featured S3 API](https://docs.aws.amazon.com/cli/latest/reference/s3api/get-object-acl.html) directly.
+      tags:
+      - Object Storage
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - object_storage:read_only
+      parameters:
+      - name: name
+        in: query
+        required: true
+        description: >
+          The `name` of the object for which to retrieve its Access Control List (ACL).
+          Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
+          endpoint to access all object names in a bucket.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The Object's canned ACL and policy.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  acl:
+                    type: string
+                    enum:
+                    - private
+                    - public-read
+                    - authenticated-read
+                    - public-read-write
+                    - custom
+                    description: >
+                      The Access Control Level of the bucket, as a canned ACL string.
+                      For more fine-grained control of ACLs, use the S3 API directly.
+                    example: public-read
+                  acl_xml:
+                    type: string
+                    description: >
+                      The full XML of the object's ACL policy.
+                    example: "<AccessControlPolicy>...</AccessControlPolicy>"
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl?name=example.txt
+    put:
+      operationId: viewObjectStorageBucketAccess
+      x-linode-cli-skip: true
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Object Storage Object ACL Config Update
+      description: |
+        Update an Object's configured Access Control List (ACL) in this Object Storage bucket.
+        ACLs define who can access your buckets and objects and specify the level of access
+        granted to those users.
+
+
+        This endpoint is available for convenience. It is recommended that instead you
+        use the more more [fully-featured S3 API](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object-acl.html) directly.
+      tags:
+      - Object Storage
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - object_storage:read_write
+      parameters:
+      - name: name
+        in: query
+        required: true
+        description: >
+          The `name` of the object for which to update its Access Control List (ACL).
+          Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
+          endpoint to access all object names in a bucket.
+        schema:
+          type: string
+      requestBody:
+        description: The changes to make to this Object's access controls.
+        content:
+          application/json:
+            schema:
+              properties:
+                acl:
+                  type: string
+                  enum:
+                  - private
+                  - public-read
+                  - authenticated-read
+                  - public-read-write
+                  - custom
+                  description: >
+                    The Access Control Level of the bucket, as a canned ACL string.
+                    For more fine-grained control of ACLs, use the S3 API directly.
+                  example: public-read
+      responses:
+        '200':
+          description: The Object's canned ACL and policy.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  acl:
+                    type: string
+                    enum:
+                    - private
+                    - public-read
+                    - authenticated-read
+                    - public-read-write
+                    - custom
+                    description: >
+                      The Access Control Level of the bucket, as a canned ACL string.
+                      For more fine-grained control of ACLs, use the S3 API directly.
+                    example: public-read
+                  acl_xml:
+                    type: string
+                    description: >
+                      The full XML of the object's ACL policy.
+                    example: "<AccessControlPolicy>...</AccessControlPolicy>"
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+            -X PUT -d '{
+              "acl": "public-read"
+            }' \
+            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl?name=example.txt
   /object-storage/buckets/{clusterId}/{bucket}/object-list:
     parameters:
     - name: clusterId
@@ -11850,6 +12077,47 @@ paths:
         source: >
           linode-cli object-storage ssl-delete \
             us-east-1 example-bucket
+  /object-storage/transfer:
+    get:
+      operationId: getObjectStorageTransfer
+      x-linode-cli-skip: true
+      servers:
+      - url: https://api.linode.com/v4
+      summary: Object Storage Transfer View
+      description: |
+        The amount of outbound data transfer used by your account's Object Storage buckets.
+        Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool.
+        See the [Object Storage Pricing and Limitations](/docs/guides/pricing-and-limitations/)
+        guide for details on Object Storage transfer quotas.
+
+      tags:
+      - Object Storage
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - object_storage:read_only
+      responses:
+        '200':
+          description: >
+           Returns the amount of outbound data transfer used by your account's Object Storage buckets.
+          content:
+            application/json:
+              schema:
+                properties:
+                  used:
+                    type: integer
+                    description: >
+                      The amount of outbound data transfer used by your account's Object Storage buckets,
+                      in GB, for the current month’s billing cycle.
+                    example: 12956600198
+                    readOnly: true
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/object-storage/transfer/
   /profile:
     x-linode-cli-command: profile
     get:
@@ -13243,7 +13511,7 @@ paths:
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
               -X POST \
-              -F 'file=/Users/LinodeGuy/pictures/screen_shot.jpg' \
+              -F 'file=@/Users/LinodeGuy/pictures/screen_shot.jpg' \
               https://api.linode.com/v4/support/tickets/11223344/attachments
   /support/tickets/{ticketId}/close:
     parameters:
@@ -18853,6 +19121,11 @@ components:
           type: integer
           description: The size of the bucket in bytes.
           example: 188318981
+        objects:
+          type: integer
+          description: >
+            The number of objects stored in this bucket.
+          example: 4
     ObjectStorageObject:
       type: object
       description: >

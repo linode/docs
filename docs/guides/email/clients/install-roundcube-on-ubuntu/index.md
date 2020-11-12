@@ -30,20 +30,20 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) tutorial, but you **can** use a different mail server.
+3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) tutorial, but you **can** use a different mail server.
 
-4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide if you need help creating this record.
+4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/) guide if you need help creating this record.
 
 5.  Update your server's software packages:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Linux, Apache, MySQL and PHP (LAMP) Stack
@@ -76,7 +76,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
 2.  Download a copy of our `apache2-roundcube.sample.conf` virtual host configuration file. Replace instances of `webmail.example.com` with the desired domain or subdomain of your installation.
 
-        sudo wget https://linode.com/docs/assets/roundcube/apache2-roundcube.sample.conf
+        sudo wget https://www.linode.com/docs/assets/roundcube/apache2-roundcube.sample.conf
 
 3.  Transfer the file's ownership to **root**:
 
@@ -86,7 +86,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
         sudo chmod 644 apache2-roundcube.sample.conf
 
-5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) must be used.
+5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/guides/create-a-self-signed-tls-certificate/) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) must be used.
 
 6.  Once you have your SSL certificate, edit the following options in `apache2-roundcube.sample.conf` to match your desired configuration:
 
@@ -190,7 +190,7 @@ install ok: channel://pear.php.net/Mail_mimeDecode-1.5.6
 
         echo '0 0 * * * root bash /var/www/roundcube/bin/cleandb.sh >> /dev/null' | sudo tee --append /etc/crontab
 
-    This utilizes a cron job to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide to learn about Cron.
+    This utilizes a cron job to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide to learn about Cron.
 
 ## Enable Roundcube's Apache Virtual Host
 
