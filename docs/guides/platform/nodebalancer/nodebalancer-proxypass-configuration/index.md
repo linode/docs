@@ -16,7 +16,7 @@ title: Using Proxy Protocol with NodeBalancers
 aliases: ['/platform/nodebalancer/nodebalancer-proxypass-configuration/']
 ---
 
-By default when using Linode's NodeBalancers to balance traffic, it is normal to observe traffic on the server's themselves coming directly from the NodeBalancer as opposed to the information related to the actual clients requesting data from your backend servers. While this is fine for some environments, in many cases it is necessary to handle client information on the backend servers. For this reason, NodeBalancers support **Proxy Protocol**.
+By default, Linode's NodeBalancers will send traffic tcontaining the NodeBalancer's information rather than the original clients that are requesting data from your backend Linodes. While this is fine for many environments, you may need to handle client information on your backend Linodes. For this reason, NodeBalancers support **Proxy Protocol** when connec.
 
 ## What is Proxy Protocol
 
@@ -42,10 +42,9 @@ PROXY, PROTOCOL, CLIENT_IP, NODEBALANCER_IP, CLIENT ORIGIN PORT, NODEBALANCER PO
 {{< /output >}}
 
 
-## Configuring Proxy Protocol
+## Configure NodeBalancer Proxy Protocol
 
 To enable Proxy protocol for your Linode's NodeBalancer:
-
 
 1.  Visit the NodeBalancers page in the Linode [Cloud Manager](http://cloud.linode.com).
 
@@ -59,3 +58,12 @@ To enable Proxy protocol for your Linode's NodeBalancer:
 
 1. Click the `Save` button on the bottom of the page to Save your changes.
 
+## Configure Backend Proxy Protocol
+
+Once Proxy Protocol is configured for your NodeBalancer, ensure that it is also enabled for the receiving software on your backend Linodes. This section contains Proxy Protocol setup instructions for common software. You can find a comprehensive list of compatible software in [HAProxy's documentation for Proxy Protocol ](https://www.haproxy.com/blog/haproxy/proxy-protocol/).
+
+### NGINX
+
+### Apache
+
+### MYSQL
