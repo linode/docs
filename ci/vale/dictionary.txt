@@ -45,6 +45,7 @@ appletalk
 approvers
 appserver
 apxs
+architecting
 aren
 argv
 arping
@@ -96,6 +97,7 @@ backticks
 backupninja
 bampton
 balarin
+bantime
 barebones
 base64
 basearch
@@ -109,6 +111,7 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitwarden
 blkid
 blocklists
 blockwise
@@ -127,6 +130,7 @@ bram
 brd
 browserify
 bs4
+btmp
 bufio
 bugtracker
 buildbot
@@ -250,6 +254,7 @@ ctools
 ctrl
 ctx
 cuda
+cutover
 cyberduck
 cyg
 cygwin
@@ -438,6 +443,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+findtime
 finnix
 firewalld
 firewalling
@@ -455,6 +461,7 @@ fragging
 frakti
 framesets
 freedns
+freshclam
 friendster
 frontend
 frontmatter
@@ -615,6 +622,7 @@ ifnames
 iframe
 iframes
 ifup
+ignoreip
 ikiwiki
 im
 imagize
@@ -790,6 +798,7 @@ logdir
 logfile
 logfiles
 loglevel
+logpath
 logrotate
 logstash
 logwatch
@@ -809,6 +818,7 @@ lugano
 luminus
 lxd
 lxml
+lynis
 lzma
 lzopio
 macos
@@ -839,6 +849,7 @@ matplotlib
 mawk
 maxconn
 maxdepth
+maxretry
 mbit
 mbits
 mbox
@@ -1015,6 +1026,7 @@ ntpd
 nullval
 num
 numpy
+nvidia
 nvim
 nvm
 octopress
@@ -1077,6 +1089,7 @@ passwordless
 patroni
 pbr
 pem
+pentest
 pepi
 percona
 performant
@@ -1237,6 +1250,7 @@ reutilize
 richlanguage
 rimap
 ritchie
+rkhunter
 rkt
 rmem
 ro
@@ -1308,6 +1322,7 @@ sed
 selinux
 sendable
 sendmail
+sentdex
 seo
 serv
 server1
@@ -1656,6 +1671,7 @@ whitelisting
 whitespace
 whitespaces
 whois
+whowatch
 wi
 widgits
 wildfly
@@ -1669,6 +1685,7 @@ wlp6s0
 wmem
 wordcloud
 wordcount
+wordfence
 wordpress
 worker1
 worker2
@@ -1678,6 +1695,7 @@ writecaps
 ws
 wsgi
 wsrep
+wtmp
 www
 wx
 xabbix

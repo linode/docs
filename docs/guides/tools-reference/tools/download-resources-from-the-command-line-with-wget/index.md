@@ -190,6 +190,6 @@ Output will be written to `wget-log` for you to review later:
 
 If you need to control how much bandwidth `wget` uses, you can specify a "rate limit" with the `--limit-rate=[RATE]` option. `[RATE]` is specified in bytes per second unless a `k` is appended to specify kilobytes.
 
-    wget --limit-rate=3k https://linode.com
+    wget --limit-rate=3k https://www.linode.com
 
 This command downloads the `1285786486.tar.gz` file with the operation limited to consume no more than 3 kilobytes a second. The method used to rate limit downloads is more effective for bigger files than for small downloads that complete rapidly.

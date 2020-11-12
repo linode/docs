@@ -39,7 +39,7 @@ You need a pair of keys to use Object Storage: an access key and a secret key. Y
 
   - You can also toggle the **Limited Access** switch on this panel. This allows you to limit certain permissions on a per bucket level for this access key.
 
-    {{< image src="object-storage-create-key-permissions.png" alt="The Create an Access Key menu with limited permissions" title="The Create an Access Key menu with limited permissions" >}}
+    ![The Create an Access Key menu with limited permissions](object-storage-create-key-permissions.png "The Create an Access Key menu with limited permissions")
 
     {{< note >}}
 Regardless of access, all keys can create new buckets and list all buckets. However, after creating a bucket, depending on what you select here, a limited access key may not be able to access those buckets, add items, remove items, and other actions.
@@ -55,12 +55,12 @@ Regardless of access, all keys can create new buckets and list all buckets. Howe
 
 1.  Check the permissions you gave this key by clicking on the **more options elipsis** link to the right of the key in the Access Keys list. Then, select **View Permissions** from the menu.
 
-    {{< image src="object-storage-view-key-permissions.png" alt="View access key permissions menu" title="View access key permissions menu" >}}
+    ![View access key permissions menu](object-storage-view-key-permissions.png "View access key permissions menu")
 
     An access key with limited permissions displays all the buckets and their selected permissions.
 
-    {{< image src="object-storage-display-key-permissions-limited.png" alt="Display limited access key permissions" title="Display limited access key permissions" >}}
+    ![Display limited access key permissions](object-storage-display-key-permissions-limited.png "Display limited access key permissions")
 
     An access key that has full permissions displays a statement about unlimited access.
 
-    {{< image src="object-storage-view-key-permissions-full.png" alt="Display full access key permissions" title="Display full access key permissions" >}}
+    ![Display full access key permissions](object-storage-view-key-permissions-full.png "Display full access key permissions")

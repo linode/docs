@@ -42,3 +42,5 @@ yarn.lock
 search_index/
 resources/_gen/assets
 hugo_stats.json
+redirects.conf
+
