@@ -12,8 +12,8 @@ modified: 2020-11-06
 modified_by:
   name: Heather Zoppetti
 published: 2020-11-06
-title: How to Use the Linux Alias Command
-h1_title: Using the Linux Alias Command
+title: How to Use the Linux alias Command
+h1_title: Using the Linux alias Command
 tags: ["linux"]
 ---
 
@@ -136,3 +136,7 @@ If you use `git` and wish to see an output of differences between the current br
 Again, for `git`, if you want to view a list of your most recent branches:
 
     alias glh="git for-each-ref --sort=-committerdate refs/head | head"
+
+## Next Steps
+
+To learn more about saving permanent aliases in Bash configuration files as well as using arguments in aliases utilizing Bash functions, see the guide [How to Add the Linux alias Command in the .bashrc File](/docs/guides/how-to-add-linux-alias-command-in-bashrc-file/).
