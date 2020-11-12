@@ -252,7 +252,7 @@ var lnSearchExplorer = {};
 				let title = opts.level === 1 ? opts.section.config.title : opts.name;
 				let ordinal = 1;
 				if (opts.level > 1) {
-					let m = this.data.searchState.metaSearch.results.get(opts.key.toLowerCase());
+					let m = this.data.searchState.metaSearch.getSectionMeta(opts.key.toLowerCase());
 					if (m) {
 						title = m.linkTitle;
 						if (m.ordinal) {

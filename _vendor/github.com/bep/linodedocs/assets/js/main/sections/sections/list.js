@@ -212,8 +212,8 @@ var lnSectionsController = {};
 				}
 
 				this.data.result = ns.results[0];
-				this.data.sectionMetaMap = data.metaSearch.results;
-				let sectionMeta = this.data.sectionMetaMap.get(this.key);
+				this.data.sectionMetaMap = data.metaSearch;
+				let sectionMeta = this.data.sectionMetaMap.getSectionMeta(this.key);
 				if (sectionMeta) {
 					this.data.meta = sectionMeta;
 				} else {
@@ -249,11 +249,14 @@ var lnSectionsController = {};
 				var self = this;
 				var assembleSections = function(parts) {
 					let sections = [];
+					if (!parts) {
+						return sections;
+					}
 					let sectionKeys = [];
 					for (let section of parts) {
 						sectionKeys.push(section);
 						let key = sectionKeys.join(' > ');
-						let sm = self.data.sectionMetaMap.get(key);
+						let sm = self.data.sectionMetaMap.getSectionMeta(key);
 						if (sm) {
 							sections.push(sm);
 						}
@@ -276,7 +279,7 @@ var lnSectionsController = {};
 				}
 
 				let newSection = function(key, value) {
-					let m = self.data.sectionMetaMap.get(key);
+					let m = self.data.sectionMetaMap.getSectionMeta(key);
 					let s = { key, title: '', linkTitle: '', thumbnail: '', count: value };
 					s.href = hrefFactory.hrefSection(key);
 
