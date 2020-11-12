@@ -1,3 +1,7 @@
+{{ define "head-meta-main" }}
+  {{/* The title and SEO meta is set (see blog-article.js) client side, but we need a non-whitespace string here to avoid getting the defaults. */}}
+  <!-- -->
+{{ end }}
 {{ define "main" }}
   <div class="blog-article" x-data="lnArticleController.New(lnSearchConfig)" x-init="() => {  init() }">
     {{ partial "components/error.html" . }}
@@ -28,4 +32,3 @@
     </div>
   </div>
 {{ end }}
- 

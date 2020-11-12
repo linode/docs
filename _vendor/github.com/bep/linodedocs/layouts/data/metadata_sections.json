@@ -1,4 +1,5 @@
 {{- $sections := where site.Pages "Kind" "section" -}}
+{{- $sections = where $sections "Section" "not in" (slice "content" "development") -}}
 {{- $list := slice -}}
 {{- range $i, $e := $sections -}}
 {{- $thumb := "" -}}

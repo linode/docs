@@ -26,8 +26,8 @@ KitchenSalt allows you to use Test Kitchen to test your Salt configurations loca
 
 ## Before You Begin
 
-- You will need root access to your computer, or a user account with `sudo` privilege. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-- [Install Git](https://linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) on your local computer, if it is not already installed.
+- You will need root access to your computer, or a user account with `sudo` privilege. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+- [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer, if it is not already installed.
 - Update your system packages.
 
 ## Install rbenv and Ruby

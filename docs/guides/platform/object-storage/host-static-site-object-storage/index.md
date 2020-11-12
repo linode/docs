@@ -29,7 +29,7 @@ aliases: ['/platform/object-storage/host-static-site-object-storage/']
 
 ## Why Host a Static Site on Object Storage?
 
-[Static site generators](/docs/websites/static-sites/how-to-choose-static-site-generator/) are a popular solution for creating simple, fast, flexible, and attractive websites that are easy to update. You can contribute new pages and content to a static site in two steps:
+[Static site generators](/docs/guides/how-to-choose-static-site-generator/) are a popular solution for creating simple, fast, flexible, and attractive websites that are easy to update. You can contribute new pages and content to a static site in two steps:
 
 1.  First, write the content for your site's new page using [Markdown](https://www.markdownguide.org), an easy-to-learn and light-weight markup language.
 
@@ -39,7 +39,7 @@ The second compilation step only needs to happen once for each time that you upd
 
 ### Benefits of Hosting on Object Storage
 
-Traditionally, these static HTML files would be served by a web server (like [NGINX](/docs/web-servers/nginx/) or [Apache](/docs/web-servers/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
+Traditionally, these static HTML files would be served by a web server (like [NGINX](/docs/guides/nginx/) or [Apache](/docs/guides/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
 
 Object Storage provides an HTTP REST gateway to objects, which means a unique URL over HTTP is available for every object. Once your static site is built, making it available publicly over the Internet is as easy uploading files to an Object Storage bucket.
 
@@ -53,16 +53,16 @@ At a high-level, the required steps to host a static site using Object Storage a
 
 1. [Upload](#upload-your-static-site-to-linode-s-object-storage) the static files to your Object Storage bucket to make the content publicly available over the Internet.
 
-This guide will use [Hugo](https://gohugo.io/) to demonstrate how to create a static site and host it on Linode Object Storage. However, there are [many other static site generators](https://www.staticgen.com) to choose from--[Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are popular choices, and the general steps outlined in this guide could be adapted to them. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/) guide.
+This guide will use [Hugo](https://gohugo.io/) to demonstrate how to create a static site and host it on Linode Object Storage. However, there are [many other static site generators](https://www.staticgen.com) to choose from--[Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are popular choices, and the general steps outlined in this guide could be adapted to them. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/docs/guides/how-to-choose-static-site-generator/) guide.
 
 ## Before You Begin
 
-1. Read the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
+1. Read the [How to Use Linode Object Storage](/docs/guides/how-to-use-object-storage/) guide to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
 
     - Created your Object Storage access and secret keys.
     - Installed and configure the [s3cmd tool](https://s3tools.org/download).
 
-1. [Install and configure Git](https://linode.com/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
+1. [Install and configure Git](/docs/guides/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
 
 ## Install the Hugo Static Site Generator
 
@@ -229,7 +229,7 @@ It's not necessary to version control your site files in order to host them on O
 
         git commit -m 'Add my first post.'
 
-Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your static site files on a remote Git repository opens up many possibilities for collaboration and automating your static site's deployment to Linode Object Storage. To learn more about Git, see the [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
+Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your static site files on a remote Git repository opens up many possibilities for collaboration and automating your static site's deployment to Linode Object Storage. To learn more about Git, see the [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
 {{</ disclosure-note >}}
 
 ## Upload your Static Site to Linode Object Storage
@@ -318,7 +318,7 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
 
         subdomain.mydomain.tld										CNAME	www.my-new-bucket.us-east-1.linodeobjects.com
 
-To learn about managing DNS records on Linode, see the [DNS Manager](/docs/platform/manager/dns-manager/) and [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guides.
+To learn about managing DNS records on Linode, see the [DNS Manager](/docs/guides/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guides.
 
 {{< note >}}
 SSL functionality does not work when using a custom domain, since the certificate is only valid for the website endpoint, not your custom domain. You will see a certificate warning thrown if you proceed to access your custom domain via `https`.

@@ -27,7 +27,7 @@ Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabyte
 {{< content "object-storage-cancellation-shortguide" >}}
 
 {{< note >}}
-For more information on enabling Object Storage, cancelling Object Storage, and more, see our [How To Guide](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage).
+For more information on enabling Object Storage, cancelling Object Storage, and more, see our [How To Guide](/docs/guides/how-to-use-object-storage/#enable-object-storage).
 {{< /note >}}
 
 ## Available Locations
@@ -53,17 +53,17 @@ Below is a table of data center locations where Object Storage is available, and
 
 Currently, Object Storage accounts are limited to 50 terabytes of storage per cluster, or 50 million objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 50 terabytes worth of objects in one cluster and 50 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 1000 buckets per cluster.
 
-Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
+Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/guides/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/guides/how-to-use-object-storage/#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 
 {{< note >}}
-If you need to increase the storage limit, the object limit, or the bucket limit, please [open up a Customer Support ticket](https://www.linode.com/docs/platform/billing-and-support/support/#contacting-linode-support).
+If you need to increase the storage limit, the object limit, or the bucket limit, please [open up a Customer Support ticket](/docs/guides/support/#contacting-linode-support).
 {{</ note >}}
 
 ## Transfer Quotas
 
 Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool. This 1 terabyte of transfer data is prorated. If you use Object Storage for half of a month, only 500 gigabytes of transfer data will be added to your monthly transfer pool. At this time, all outbound data, including data transfer from Object Storage to a Linode in the same data center, is billable.
 
-You are not charged for uploading objects (inbound traffic) to Object Storage, with a few exceptions. Uploading an object to Object Storage from a Linode is almost always billable, as that is considered outbound traffic from the origin Linode. However, uploading an object from a Linode to Object Storage over IPv6 will be free, provided both the Linode and the bucket are hosted in the same data center.  Any further outbound data past your transfer quota is charged at a rate of $0.01 a gigabyte. For more information on network transfer pools, review our [Network Transfer Quota](https://linode.com/docs/platform/billing-and-support/network-transfer-quota/) guide.
+You are not charged for uploading objects (inbound traffic) to Object Storage, with a few exceptions. Uploading an object to Object Storage from a Linode is almost always billable, as that is considered outbound traffic from the origin Linode. However, uploading an object from a Linode to Object Storage over IPv6 will be free, provided both the Linode and the bucket are hosted in the same data center.  Any further outbound data past your transfer quota is charged at a rate of $0.01 a gigabyte. For more information on network transfer pools, review our [Network Transfer Quota](/docs/guides/network-transfer-quota/) guide.
 
 ## Rate Limiting
 
