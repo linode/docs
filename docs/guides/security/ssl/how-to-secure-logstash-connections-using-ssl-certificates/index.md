@@ -64,7 +64,7 @@ gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=1
 autorefresh=1
 type=rpm-md
-{{< /file >}}
+{{</ file >}}
 
 1.  Update and install Logstash:
 
@@ -126,7 +126,7 @@ DNS.1 = DOMAIN_1
 DNS.2 = DOMAIN_2
 DNS.3 = DOMAIN_3
 DNS.4 = DOMAIN_4
-{{< /file >}}
+{{</ file >}}
 
     {{< note >}}
 If this Logstash service is available on multiple host names, or if you intend to use this certificate on multiple hosts, those should be added to the `[alt_names]` section. Otherwise, that section can be removed along with the `subjectAltName` line.
@@ -189,7 +189,7 @@ output {
         codec => rubydebug
     }
 }
-{{< /file >}}
+{{</ file >}}
 
 1.  Open Logstash HTTP ports on the firewall.
 
@@ -254,7 +254,7 @@ output {
         codec => rubydebug
     }
 }
-{{< /file >}}
+{{</ file >}}
 
 1.  On the client, create a client certificate configuration file using the text editor of your choice. Again, replace the `XX` fields with your own values.
 
@@ -287,7 +287,7 @@ extendedKeyUsage = serverAuth, clientAuth
 [v3_req]
 keyUsage = keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth, clientAuth
-{{< /file >}}
+{{</ file >}}
 
 1.  Change permissions to allow writing the `client.key` and `client.crt` files.
 
@@ -361,7 +361,7 @@ output.logstash:
   ssl.certificate_authorities: ["/etc/pki/tls/private/org_ca.crt"]
   ssl.certificate: "/etc/pki/tls/certs/client_combined.crt"
   ssl.key: "/etc/pki/tls/private/client.key"
-{{< /file >}}
+{{</ file >}}
 
 1.  On the Logstash host, add a `beats` input to the logstash configuration file using the text editor of your choice.
 
@@ -381,7 +381,7 @@ output {
         codec => rubydebug
     }
 }
-{{< /file >}}
+{{</ file >}}
 
 1.  Make sure that port 5044 is open on the Logstash host's firewall.
 
