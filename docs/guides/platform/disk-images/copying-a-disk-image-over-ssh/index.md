@@ -97,15 +97,15 @@ Once the copy has completed, verify it by mounting the image on the receiving sy
 
 You may want to upload your disk image to a new server. For example, if you previously downloaded your Linode disk and deleted the Linode to halt billing on it, you can create a new Linode at a later date and upload the disk to resume your services. This section of the guide assumes that you will be creating a New Linode with the default Primary and Swap Disk as outlined in the Creating a Linode section of our [Getting Started](https://www.linode.com/docs/getting-started/#create-a-linode) guide.
 
-1.  Once you've finished [Creating a New Linode](https://www.linode.com/docs/getting-started/#create-a-linode) with enough disk space available to accomodate your disk image, prepare the new Linode to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
+1.  Once you've finished [Creating a New Linode](https://www.linode.com/docs/getting-started/#create-a-linode) with enough disk space available to accommodate your disk image, prepare the new Linode to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 
-1.  Access your Linode through the Linode Cloud Manager. Click the **Disks/Configs** tab to navigate to the Disks/Cofigs section.
+1.  Access your Linode through the Linode Cloud Manager. Click the **Disks/Configs** tab to navigate to the Disks/Configs section.
 
 1. On the following page in the **Disks** menu, select the ellipsis next to any primary disks you'll be replacing and select **Delete**.
 
 1. Next, select **Add a Disk**.
 
-1.  The **Add Disk** panel will appear. Select the **Create Empty Disk**, enter a **Label** that you can use as a personal identifier, select the filesystem that matches the format of the disk that was downloaded over SSH, and enter a Size thhat is larger enough to hold the contents of the disk you are uploading. Click **Save Changes**.
+1.  The **Add Disk** panel will appear. Select the **Create Empty Disk**, enter a **Label** that you can use as a personal identifier, select the filesystem that matches the format of the disk that was downloaded over SSH, and enter a Size that is larger enough to hold the contents of the disk you are uploading. Click **Save Changes**.
 
 1. Reboot Your Linode into [Rescue Mode](#boot-into-rescue-mode) and start the secure SSH server using the following commands:
 
