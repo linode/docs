@@ -54,7 +54,7 @@ Keep your credit card information up to date to prevent service interruptions. H
 1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
 1.  Select **Account** from the sidebar links.
 1.  Select **Account & Billing**.
-1.  Expand the **Update Credit Card** box and enter your credit card number and the card's expiration date.
+1.  Expand the **Update Credit Card** box and enter your credit card number and the card's expiration date. The address affiliated with the card must match the [Contact Information](/docs/guides/accounts-and-passwords/#updating-contact-information) active on your account.
 1.  Click **Save**. Your credit card information will be updated.
 
     [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)

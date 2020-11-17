@@ -4,7 +4,7 @@
   <div class="mt-2 sm:mt-4 mb-2 sm:mb-4">
     {{ partial "sections/content/navbar.html" (dict "page" .) }}
   </div>
-  
+
   {{/* Show a note in Spanish if that is the current language. Note that once we get more similar behavour, this should be moved to somewhere common. */}}
   <div x-data="{show: false }" x-init="() => { Weglot.on('languageChanged', function() { show =  Weglot.getCurrentLang() === 'es'} )}">
     <div class="mt-2 sm:mt-4 mb-2 sm:mb-4" x-show="show" data-testid="languageNote">
@@ -17,26 +17,36 @@
         </div>
       </blockquote>
     </div>
-    
+
     {{ if ne .Params.promo_default false }}
       <div class="mb-0 md:mb-8">
         {{ partial "sections/content/promo_code.html" . }}
       </div>
     {{ end }}
-    
+
     {{ partial "sections/content/marquee-img.html" . }}
     <div class="prose prose-sm md:prose-lg max-w-none mt-8">
       {{ .Content }}
     </div>
+
+    <div>
+      <p class="pt-2 md:pt-6 text-basicgray">
+        This page was originally published on
+        <time datetime="{{ .PublishDate }}">
+          {{ .PublishDate.Format site.Params.time_format_default }}.
+        </time>
+      </p>
+    </div>
+
     <div class="block sm:hidden">
       {{ partial "sections/content/tags.html" . }}
     </div>
     <hr class="my-14">
-    
+
     {{/* Add feedback links via Delighted. */}}
     {{ partial "components/delighted/form.html" . }}
     <hr class="mt-14">
-    
+
     {{ if not ("api,blog" | strings.Contains .Type) }}
       {{ partial "components/disqus.html" . }}
     {{ end }}
