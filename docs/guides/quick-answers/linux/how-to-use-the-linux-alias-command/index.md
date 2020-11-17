@@ -116,7 +116,7 @@ Removing all aliases also removes the system default aliases.
 
 ## Helpful Examples
 
-Here are some helpful `alias` examples that you may wish to save: 
+Here are some helpful `alias` examples that you may wish to save:
 
 1.  To change quickly into a specific directory that you visit often, you can set an alias:
 
