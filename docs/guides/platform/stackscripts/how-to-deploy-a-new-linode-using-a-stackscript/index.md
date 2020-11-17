@@ -124,7 +124,7 @@ Linode does not verify the accuracy of any Linode Community member submitted Sta
 
       ![Select Linode from the Create menu.](create-linode.png)
 
-1.  Click on the **One-Click** tab to access the *Create From* options.
+1.  Click on the **Marketplace** tab to access the *Create From* options.
 
 1.  Viewing the *Create From:* options, click on the **Community StackScripts** tab. On this page, you will see a list of all available Community StackScripts.
 

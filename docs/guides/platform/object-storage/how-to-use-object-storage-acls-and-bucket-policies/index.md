@@ -93,7 +93,7 @@ ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
             <MaxKeys>1000</MaxKeys>
             <IsTruncated>false</IsTruncated>
             <Contents>
-            <Key>cpanel_one-click.gif</Key>
+            <Key>cpanel_marketplace.gif</Key>
             <LastModified>2019-11-20T16:52:49.946Z</LastModified>
             <ETag>"9aeafcb192a8e540e7be5b51f7249e2e"</ETag>
             <Size>961023</Size>
