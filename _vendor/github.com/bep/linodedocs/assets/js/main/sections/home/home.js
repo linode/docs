@@ -38,6 +38,8 @@ var lnHome = {};
 				throw 'items must be provided';
 			}
 
+			debug('newPager', el, items);
+
 			let pager = {
 				index: 0, // current page, zero based.
 				numPages: 0, // The total number of pages.
@@ -176,7 +178,7 @@ var lnHome = {};
 					throw 'missing data';
 				}
 
-				let meta = results.metaSearch.results;
+				let meta = results.metaSearch;
 				let sectionsResults = results.blankSearch.results;
 
 				debug('receiveCommonData: meta', meta);
@@ -187,7 +189,7 @@ var lnHome = {};
 
 				for (var k in productsFacets) {
 					let count = productsFacets[k];
-					let m = meta.get(k);
+					let m = meta.getSectionMeta(k);
 					if (m) {
 						productsItems.push({
 							title: m.title,
@@ -201,9 +203,9 @@ var lnHome = {};
 
 				debug('receiveCommonData: productsItems', productsItems);
 
-				this.data.sectionMeta['products'] = meta.get('products');
+				this.data.sectionMeta['products'] = meta.getSectionMeta('products');
 				sectionNames.forEach((name) => {
-					this.data.sectionMeta[name] = meta.get(name);
+					this.data.sectionMeta[name] = meta.getSectionMeta(name);
 				});
 				let el = this.$refs[`carousel-products`];
 				this.data.productsTiles = newPager(productsStripPageSize, el, productsItems, 0.5);

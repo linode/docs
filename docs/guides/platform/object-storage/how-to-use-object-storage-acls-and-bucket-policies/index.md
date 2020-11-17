@@ -4,6 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
+og_description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
 keywords: ['object storage','acl','access control list','bucket policy','bucket policies']
 tags: ["linode platform","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -25,17 +26,20 @@ aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-po
 
 Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources.
 
-In this guide you will learn:
+In this guide you learn about:
 
 - [The differences between ACLs and bucket policies](#acls-vs-bucket-policies)
-- [How to use ACLs](#acls)
-- [How to use bucket policies](#bucket-policies)
+- [How to use ACLs in the Cloud Manager](#acls-in-cloud-manager)
+- [How to use ACLs with s3cmd](#acls-with-s3cmd)
+- [How to use bucket policies with s3cmd](#bucket-policies-with-s3cmd)
 
 ## Before You Begin
 
-- This guide will use the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
+- This guide describes two ways to use ACLs to control access to buckets and bucket objects.
+  - ACLs in the [Linode Cloud Manager](https://cloud.linode.com).
+  - ACLs using the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
 
-- You'll also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
+- For the s3cmd method, you also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
 
 {{< note >}}
 Currently, you can only create a new canonical ID by creating a completely new Linode account. A canonical ID is not assigned to a limited access user on an existing Linode account.
@@ -45,7 +49,7 @@ Currently, you can only create a new canonical ID by creating a completely new L
 
 Follow these steps to determine the canonical ID of the Object Storage users you want to share with:
 
-1. The following command will return the canonical ID of a user, given any of the user's buckets:
+1. The following command returns the canonical ID of a user, given any of the user's buckets:
 
         s3cmd info s3://other-users-bucket
 
@@ -57,9 +61,9 @@ The bucket referred to in this section is an arbitrary bucket on the target user
 
     - The users you're granting or restricting access to can run this command on one of their buckets and share their canonical ID with you, or:
 
-    - You can run this command yourself if you have use of their access tokens (you will need to configure s3cmd to use their access tokens instead of your own).
+    - You can run this command yourself if you have use of their access tokens (you need to configure s3cmd to use their access tokens instead of your own).
 
-1. Run the above command, replacing `other-users-bucket` with the name of the bucket. You'll see output similar to the following:
+1. Run the above command, replacing `other-users-bucket` with the name of the bucket. The output is similar to the following:
 
     {{< output >}}
 s3://other-users-bucket/ (bucket):
@@ -84,7 +88,7 @@ ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 
     {{< content "object-storage-cluster-shortguide" >}}
 
-1. This will result in the following output:
+1. This results in the following output:
 
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
             <Name>acl-bucket-example</Name>
@@ -121,26 +125,108 @@ ACLs offer permissions with less fine-grained control than the permissions avail
 Additionally, bucket policies are created by applying a written bucket policy file to the bucket. This file cannot exceed 20KB in size. If you have a policy with a lengthy list of policy rules, you may want to look into ACLs instead.
 
 {{< note >}}
-ACLs and bucket policies can be used at the same time. When this happens, any rule that limits access to an Object Storage resource will override a rule that grants access. For instance, if an ACL allows a user access to a bucket, but a bucket policy denies that user access, the user will not be able to access that bucket.
+ACLs and bucket policies can be used at the same time. When this happens, any rule that limits access to an Object Storage resource overrides a rule that grants access. For instance, if an ACL allows a user access to a bucket, but a bucket policy denies that user access, the user can not access that bucket.
 {{< /note >}}
 
 ## ACLs
 
-Access Control Lists (ACLs) are a legacy method of defining access to Object Storage resources. You can apply an ACL to a bucket or to a specific object. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few [other more granular settings](#other-acl-permissions) are also available.
+Access Control Lists (ACLs) are a legacy method of defining access to Object Storage resources. You can apply an ACL to a bucket or to a specific object. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available; the [Cloud Manager](#granular-permissions-for-cloud-manager) and [s3cmd](#granular-permissions-for-s3cmd) sections provide information on these respective settings.
+
+### ACLs in the Cloud Manager
+
+In Cloud Manager ACLs can be controlled at both the bucket and object level. ACLs in Cloud Manager go beyond s3cmd's ACLs and combine them with [bucket policies](#bucket-policies-with-s3cmd) for more granular control than just *public* or *private*.
+
+#### Granular Permissions for Cloud Manager
+
+| Level | Permission | Description |
+| ----- | ---------- | ----------- |
+| Bucket | Private | Only you can list, create, overwrite, and delete Objects in this Bucket. *Default* |
+| Bucket | Authenticated Read | All authenticated Object Storage users can list Objects in this Bucket, but only you can create, overwrite, and delete them. |
+| Bucket | Public Read | Everyone can list Objects in this Bucket, but only you can create, overwrite, and delete them. |
+| Bucket | Public Read/Write | Everyone can list, create, overwrite, and delete Objects in this Bucket. *This is not recommended.* |
+| Object | Private | Only you can download this Object. *Default* |
+| Object | Authenticated Read | All authenticated Object Storage users can download this Object. |
+| Object | Public Read | Everyone can download this Object. |
+
+#### Bucket Level ACLs in Cloud Manager
+
+{{< note >}}
+Existing buckets and any new bucket created in the Cloud Manager have a default ACL permission setting of Private.
+{{</ note >}}
+
+1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+
+1.  Click the **Object Storage** link in the sidebar, and then click on the bucket you wish to edit the ACLs for.
+
+    ![Select an Object Storage Bucket](acl-select-bucket.png "Select an Object Storage Bucket")
+
+1.  The Object Storage Bucket detail page appears. Click the **Access** tab.
+
+    ![Object Storage Bucket Detail Page](acl-bucket-detail-page.png "Object Storage Bucket Detail Page")
+
+1.  The Object Storage Bucket Access Page appears.
+
+    ![Object Storage Bucket Access Page](acl-bucket-access-page.png "Object Storage Bucket Access Page")
+
+1.  On this page you can select the ACL for this bucket as well as enable CORS.
+
+    {{< note >}}
+CORS is enabled by default on all existing buckets and on all new buckets.
+{{</ note >}}
+
+1.  Select the ACL for this bucket from the dropdown menu.
+
+    ![Object Storage Bucket Access Menu](acl-bucket-access-menu.png "Object Storage Bucket Access Menu")
+
+1.  Click the **Save** button to save these settings to the bucket.
+
+    ![Object Storage Bucket Access Page Save Settings](acl-bucket-access-save.png "Object Storage Bucket Access Page Save Settings")
+
+#### Object Level ACLs in Cloud Manager
+
+{{< note >}}
+Existing objects and any new objects created in the Cloud Manager have a default ACL permission setting of Private.
+{{</ note >}}
+
+1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
+
+1.  Click the **Object Storage** link in the sidebar, and then click on the bucket that holds the objects that you wish to edit the ACLs for.
+
+    ![Select an Object Storage Bucket](acl-select-bucket.png "Select an Object Storage Bucket")
+
+1.  The Object Storage Bucket detail page appears and displays all the objects in your bucket.
+
+1.  Next to the object you wish to edit the ACL settings for, click the ***more options ellipsis*** and select **Details** from the drop down menu that appears.
+
+    ![Object Storage Object Detail Menu](acl-object-detail-select-menu.png "Object Storage Object Detail Menu")
+
+1.  The Object ACL panel opens.
+
+    ![Object Storage Object ACL Panel](acl-object-panel.png "Object Storage Object ACL Panel")
+
+1.  Select the ACL you wish to set for this object from the dropdown menu.
+
+    ![Object Storage Object ACL Menu Options](acl-object-menu-options.png "Object Storage Object ACL Menu Options")
+
+1.  Click the **Save** button. The panel closes and the ACL is applied to the object.
+
+    ![Object Storage Object ACL Save Settings](acl-object-panel-save.png "Object Storage Object ACL Save Settings")
+
+### ACLs with s3cmd
 
 With s3cmd, you can set a bucket to be public with the `setacl` command and the `--acl-public` flag:
 
     s3cmd setacl s3://acl-example --acl-public
 
-This will cause the bucket and its contents to be downloadable over the general Internet.
+This causes the bucket and its contents to be downloadable over the public Internet.
 
 To set an object or bucket to private, you can use the `setacl` command and the `--acl-private` flag:
 
     s3cmd setacl s3://acl-example --acl-private
 
-This will prevent users from accessing the bucket' contents over the general Internet.
+This prevents users from accessing the bucket's contents over the public Internet.
 
-### Other ACL Permissions
+#### Granular Permissions for s3cmd
 
 The more granular permissions are:
 
@@ -152,25 +238,25 @@ The more granular permissions are:
 |**write_acp**| Users can change the ACL applied to the bucket.|
 |**full_control**| Users have read and write access over both objects and ACLs.|
 
-- **Setting a permission:** To apply these more granular permissions for a specific user with s3cmd, use the following `setacl` command with the `--acl-grant` flag:
+**Setting a permission:** To apply granular permissions for a specific user with s3cmd, use the following `setacl` command with the `--acl-grant` flag:
 
-        s3cmd setacl s3://acl-example --acl-grant=PERMISSION:CANONICAL_ID
+    s3cmd setacl s3://acl-example --acl-grant=PERMISSION:CANONICAL_ID
 
-    Substitute `acl-example` with the name of the bucket (and the object, if necessary), `PERMISSION` with a permission from the above table, and `CANONICAL_ID` with the canonical ID of the user to which you would like to grant permissions.
+Substitute `acl-example` with the name of the bucket (and the object, if necessary), `PERMISSION` with a permission from the above table, and `CANONICAL_ID` with the canonical ID of the user to which you would like to grant permissions.
 
-- **Revoking a permission:** To revoke a specific permission, you can use the `setacl` command with the `acl-revoke` flag:
+**Revoking a permission:** To revoke a specific permission, you can use the `setacl` command with the `acl-revoke` flag:
 
-        s3cmd setacl s3://acl-example --acl-revoke=PERMISSION:CANONICAL_ID
+    s3cmd setacl s3://acl-example --acl-revoke=PERMISSION:CANONICAL_ID
 
-    Substitute the bucket name (and optional object), `PERMISSION`, and `CANONICAL_ID` with your relevant values.
+Substitute the bucket name (and optional object), `PERMISSION`, and `CANONICAL_ID` with your relevant values.
 
-- **View current ACLs:** To view the current ACLs applied to a bucket or object, use the `info` command, replacing `acl-example` with the name of your bucket (and object, if necessary):
+**View current ACLs:** To view the current ACLs applied to a bucket or object, use the `info` command, replacing `acl-example` with the name of your bucket (and object, if necessary):
 
-        s3cmd info s3://acl-example
+    s3cmd info s3://acl-example
 
-    You should see output like the following:
+You should see output like the following:
 
-    {{< output >}}
+{{< output >}}
 s3://acl-bucket-example/ (bucket):
    Location:  default
    Payer:     BucketOwner
@@ -182,16 +268,22 @@ s3://acl-bucket-example/ (bucket):
    URL:       http://us-east-1.linodeobjects.com/acl-example/
 {{</ output >}}
 
-    {{< note >}}
-The owner of the bucket will always have the `full_control` permission.
+{{< note >}}
+The owner of the bucket always has the `full_control` permission.
 {{< /note >}}
 
-## Bucket Policies
+{{< note >}}
+If you set an ACL that does not map to an ACL in the Cloud Manager, the Cloud Manager displays this as `Custom`.
+
+![Custom ACL Setting Displayed in Cloud Manager](acl-s3cmd-custom-setting-cloud-manager.png "Custom ACL Setting Displayed in Cloud Manager")
+{{</ note >}}
+
+## Bucket Policies with s3cmd
 
 Bucket policies can offer finer control over the types of permissions you can grant to a user.
 
 {{< caution >}}
-In the below examples, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined, creation of a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
+In the examples below, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined. Creating a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
 {{< /caution >}}
 
 ### Basic Access Policy
@@ -219,7 +311,7 @@ Below is an example bucket policy written in JSON:
 }
 {{</ file >}}
 
-This policy allows the user with the canonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The "resource" that is listed (`bucket-policy-example`) is the only bucket the user will have access to.
+This policy allows the user with the canonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The "resource" that is listed (`bucket-policy-example`) is the only bucket the user has access to.
 
 {{< note >}}
 The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
@@ -235,7 +327,7 @@ The permissions are specified in the `Action` array. For the current example, th
 For a full list of of available actions, visit the [Ceph bucket policy documentation](https://docs.ceph.com/docs/master/radosgw/bucketpolicy/#limitations).
 {{< /note >}}
 
-The `Action` and `Principal.AWS` fields of the bucket policy are arrays, so you can easily add additional users and permissions to the bucket policy, separating them by a comma. To grant permissions to all users, you can supply a wildcard (`*`) to the `Principal.AWS` field.
+The `Action` and `Principal.AWS` fields of the bucket policy are arrays. Therefore, you can easily add additional users and permissions to the bucket policy, separating them by a comma. To grant permissions to all users, you can supply a wildcard (`*`) to the `Principal.AWS` field.
 
 ### Subdirectory Access Policy
 You can also define a finer level of control over the level of access to your bucket's directory structure using policy rules.
@@ -272,7 +364,7 @@ You can also define a finer level of control over the level of access to your bu
 }
 {{</ file >}}
 
-This example shows how you can grant read-only access to a user by allowing them to list buckets and get objects from the bucket only from the `test` directory. However, they will not be able to perform any other actions.
+This example shows how you can grant read-only access to a user by allowing them to list buckets and get objects from the bucket only from the `test` directory. However, they can not perform any other actions.
 
 ### Denying Access by IP Address
 If you wanted to deny all access to a resource and whitelist by IP address, you can change the `Effect` field from `Allow` to `Deny` and supply an IP address in a condition.
@@ -356,7 +448,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
 
 ### Enable a Bucket Policy
 
-To enable the bucket policy, use the `setpolicy` s3cmd command, supplying the file name of the bucket policy as the first argument, and the S3 bucket address as the second argument:
+To enable the bucket policy, use the `setpolicy` s3cmd command, supplying the filename of the bucket policy as the first argument, and the S3 bucket address as the second argument:
 
     s3cmd setpolicy bucket_policy_example.json s3://bucket-policy-example
 

@@ -1,3 +1,7 @@
+{{ define "head-meta-main" }}
+  {{/* The title and SEO meta is set (see blog-article.js) client side, but we need a non-whitespace string here to avoid getting the defaults. */}}
+  <!-- -->
+{{ end }}
 {{ define "main" }}
   <div class="blog-article" x-data="lnArticleController.New(lnSearchConfig)" x-init="() => {  init() }">
     {{ partial "components/error.html" . }}
@@ -5,13 +9,9 @@
       <div>
         <h1 class="leading-tight tracking-tighter text-5xl text-titlecolor lg:w-3/4" x-html="data.article.title"></h1>
         <p class="pt-6 text-textcolor">
-          Posted on
-          <time x-bind:datetime="data.article.date ? data.article.date.toISOString() : ''" x-text="data.article.dateStr"></time>
-          ,
-          Updated on
+          <span x-text="data.article.modified > data.article.date ? 'Updated' : 'Published'"></span>
           <time x-bind:datetime="data.article.modified ? data.article.modified.toISOString() : ''" x-text="data.article.modifiedStr"></time>
-          <template x-if="data.article.author">
-            , by
+          <template x-if="data.article.author">, by
             <span x-text="data.article.author.name"></span>
           </template>
         </p>
@@ -25,7 +25,12 @@
         </div>
       </div>
       <div x-html="data.article.content" class="content prose prose-sm md:prose-lg max-w-none"></div>
+      <div>
+        <p class="pt-2 md:pt-6 text-basicgray">
+          This page was originally published on
+          <time x-bind:datetime="data.article.date ? data.article.date.toISOString() : ''" x-text="data.article.dateStr"></time>.
+        </p>
+      </div>
     </div>
   </div>
 {{ end }}
- 
