@@ -3,35 +3,45 @@ slug: how-to-add-linux-alias-command-in-bashrc-file
 author:
   name: Linode
   email: docs@linode.com
-description: 'Permanent Linux alias commands are saved to the shell configuration file and are available for every session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
-og_description: 'Permanent Linux alias commands are saved to the shell configuration file and are available for every session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
+description: 'Permanent Linux alias commands are saved to the shell configuration file and available for every new session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
+og_description: 'Permanent Linux alias commands are saved to the shell configuration file and available for every new session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
 keywords: ["alias command bashrc"]
 aliases: ['/quick-answers/linux/how-to-add-linux-alias-command-in-bashrc-file/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-11-06
 modified_by:
   name: Heather Zoppetti
-published: 2020-11-06
+published: 2020-11-17
 title: How to Add the Linux alias Command in the .bashrc File
 h1_title: Adding the Linux alias Command in the .bashrc File
 tags: ["linux"]
 ---
 
-Using the command line terminal in Linux is a convenient and fast way to interface with the operating system. You issue commands in the terminal to make the system do what you want. Often, you end up sending the same commands again and again and some of these commands can be lengthy, hard to remember, or just repetitive. To make your life easier, the `alias` command helps save you time. `alias` is like a shortcut that you can customize.
+The command line terminal is a convenient and fast tool for interfacing with the Linux operating system. However, you may find yourself sending the same commands again and again while issuing instructions to your system. This may cost you a significant amount of time, especially if your commands are lengthy, hard to remember, or just repetitive. To help save time and reduce frustration, aliasing commands can be used to create customizable shortcuts.
 
-There are two ways to create aliases for your use, temporary and permanent. Temporary aliases are only available to use until you close your current terminal session. Permanent aliases are saved to the shell configuration file and are available for every session you create.
+This guide covers two ways to alias commands:
+
+*   [Creating a permanent alias](#permanent-alias) using the `alias` command.
+*   [Creating a function for aliases](#function-alias-with-arguments) that can accept arguments.
 
 ## Permanent Alias
 
-Again, temporary aliases are only good for the current terminal session. Once you close that session, they are no longer available. To make them permanent, you can save your aliases in the shell configuration file. You can read more about temporary aliases in the general guide on aliases, [How to Use the Linux alias Command](/docs/guides/how-to-use-the-linux-alias-command/).
+There are two ways to create aliases for your use, temporary and permanent. Temporary aliases are only available to use until you close your current terminal session. Permanent aliases are saved to the shell configuration file and are available for every new session you create.
 
-In the Bash shell you can save aliases directly in a configuration file. There are several files you can save aliases to: the main Bash configuration file `~/.bashrc`, a Bash profile file `~/.bash_profile`, the general shell profile file `~/.profile`, or you can create a separate aliases file `~/.bash_aliases`.
+Again, temporary aliases are only good for the current terminal session. Once you close that session, they are no longer available. To make them permanent, you can save your aliases in the shell configuration file. You can read more about temporary aliases in our general guide on aliases, [How to Use the Linux alias Command](/docs/guides/how-to-use-the-linux-alias-command/).
+
+In the Bash shell, you can save aliases directly in a configuration file. There are several files you can save aliases to:
+
+*   the main Bash configuration file `~/.bashrc`,
+*   a Bash profile file `~/.bash_profile`,
+*   the general shell profile file `~/.profile`,
+*   or you can create a separate aliases file `~/.bash_aliases`.
 
 ### ~/.bashrc
 
-The `~/.bashrc` file is the main configuration file for the bash shell. When Bash is used as an interactive non-login shell, it uses the `~/.bashrc` file commands. The commands in this file are run every time a new shell is launched.
+The `~/.bashrc` file is the main configuration file for the Bash shell. When Bash is used as an interactive non-login shell, it uses the `~/.bashrc` file commands. The commands in this file are run every time a new shell is launched.
 
-With your preferred text editor, open the configuration file. You can add your aliases anywhere in this file, one alias per line. It's probably best to keep your aliases grouped together.
+With your preferred text editor, open the configuration file. Enter one alias per line. While you can add your aliases anywhere in this file, grouping them together makes them easier to reference and adjust.
 
 {{< file "~/.bashrc" >}}
 ...
@@ -51,9 +61,9 @@ If you wish to use them right away in a current session, use the following comma
 
 ### ~/.bash_profile
 
-When Bash is used as an interactive login shell `~/.bash_profile` is used. The commands in this file are only run once. For example, if you have scripts that you want to see run when first logging into your machine or when you log into a terminal via SSH, but that you wouldn't want to see for every new terminal window you open, put them in this file. Typically, you would also place commands such as setting `$PATH` environment variables here; setting aliases in this file is common as well.
+When Bash is used as an interactive login shell, `~/.bash_profile` is used. The commands in this file are only run once. This is useful for scripts that you want to run when first logging into your machine directly or via SSH. For scripts that you want to run for every new terminal window you open, use `~/.bashrc` instead. Typically, you would also place commands such as setting `$PATH` environment variables in `~/.bash_profile`; setting aliases in this file is common as well.
 
-Setting aliases in this file is the same as setting them in the `~/.bashrc` file.
+Setting aliases in `~/.bash_profile` is the same as setting them in `~/.bashrc`.
 
 If you want all the commands in `~/.bashrc` to also be run at login, you can add the following lines to your `~/.bash_profile` file to ensure the `~/.bashrc` file is also run at startup.
 
@@ -87,7 +97,7 @@ fi
 ...
 {{</ file >}}
 
-This `if` statement checks for a `~/.bash_aliases` file and if it's present, runs it.
+This `if` statement checks for a `~/.bash_aliases` file and runs its contents if the file is present.
 
 If you already have a terminal session open, the aliases are not available until a new session is opened unless you run the following command:
 
@@ -97,7 +107,7 @@ If you already have a terminal session open, the aliases are not available until
 
 The macOS terminal app runs a login shell for each new terminal window. Therefore it runs the `~/.bash_profile` for each new terminal instance.
 
-## Alias with Arguments
+## Function Alias with Arguments
 
 If you need to create an alias that accepts arguments, a Bash function is the way to go. These can be placed in any of the above mentioned files. The syntax can be either of the following:
 
@@ -142,6 +152,6 @@ Then run the function with the following syntax:
 
     cdl /path/to/directory
 
-You are changed into that directory and get a directory listing.
+You are changed into that directory and get a directory listing with common options with a single command.
 
-This is an overly simplistic example. Bash functions are powerful and allow you to do much more complex operations. For more on Bash shell scripting, see the guide series starting with [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/).
+These are a simplistic examples meant to illustrate what you can achieve with aliasing. Bash functions are powerful and allow you to do much more complex operations. For more on Bash shell scripting, see the guide series starting with [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/).
