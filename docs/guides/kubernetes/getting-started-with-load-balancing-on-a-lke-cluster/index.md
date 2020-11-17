@@ -201,6 +201,10 @@ tls.key:  1704 bytes
 
 #### Configuring TLS within a Service
 
+{{< note >}}
+By default, Kubernetes exposes the endpoints without TLS inside the cluster. You need to configure the TLS termination on the NodeBalancers to use `https` when you access it from inside the cluster. 
+{{</ note >}}
+
 In order to use `https` you'll need to instruct the Service to use the correct port using the required annotations. You can add the following code snippet to a Service file to enable TLS termination on your NodeBalancers:
 
 {{< file "example-serivce.yaml" yaml >}}
