@@ -130,7 +130,7 @@ ACLs and bucket policies can be used at the same time. When this happens, any ru
 
 ## ACLs
 
-Access Control Lists (ACLs) are a legacy method of defining access to Object Storage resources. You can apply an ACL to a bucket or to a specific object. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available. The granular permissions for ACLs are listed within each section, [Cloud Manager](#granular-permissions-for-cloud-manager), and [s3cmd](#granular-permissions-for-s3cmd) as they differ.
+Access Control Lists (ACLs) are a legacy method of defining access to Object Storage resources. You can apply an ACL to a bucket or to a specific object. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available; the [Cloud Manager](#granular-permissions-for-cloud-manager) and [s3cmd](#granular-permissions-for-s3cmd) sections provide information on these respective settings.
 
 ### ACLs in the Cloud Manager
 
@@ -218,13 +218,13 @@ With s3cmd, you can set a bucket to be public with the `setacl` command and the 
 
     s3cmd setacl s3://acl-example --acl-public
 
-This causes the bucket and its contents to be downloadable over the general Internet.
+This causes the bucket and its contents to be downloadable over the public Internet.
 
 To set an object or bucket to private, you can use the `setacl` command and the `--acl-private` flag:
 
     s3cmd setacl s3://acl-example --acl-private
 
-This prevents users from accessing the bucket's contents over the general Internet.
+This prevents users from accessing the bucket's contents over the public Internet.
 
 #### Granular Permissions for s3cmd
 
@@ -283,7 +283,7 @@ If you set an ACL that does not map to an ACL in the Cloud Manager, the Cloud Ma
 Bucket policies can offer finer control over the types of permissions you can grant to a user.
 
 {{< caution >}}
-In the below examples, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined. Creation of a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
+In the examples below, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined. Creating a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
 {{< /caution >}}
 
 ### Basic Access Policy
