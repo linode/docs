@@ -1,12 +1,12 @@
 ---
-title: Marketplace One-Click Apps
+title: Marketplace Apps
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Choose one of the popular marketplace apps, select configuration options, and click deploy. It’s that simple. Whether you’re setting up a new development environment or a Minecraft server for the kids, you can have your code running with a click."
+    product_description: "Choose one of the popular marketplace one-click apps, select configuration options, and click deploy. It’s that simple. Whether you’re setting up a new development environment or a Minecraft server for the kids, you can have your code running with a click."
 ---
 
 ## Availability
