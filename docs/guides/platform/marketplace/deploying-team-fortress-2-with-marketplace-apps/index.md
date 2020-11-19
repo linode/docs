@@ -14,7 +14,7 @@ title: "Deploy a Team Fortress 2 Server with Marketplace Apps"
 contributor:
   name: Linode
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/', '/platform/one-click/deploying-team-fortress-2-with-one-click-apps/', 'deploying-team-fortress-2-with-one-click-apps' ]
+aliases: ['/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/', '/platform/one-click/deploying-team-fortress-2-with-one-click-apps/']
 ---
 
 ## Team Fortress 2 Marketplace App

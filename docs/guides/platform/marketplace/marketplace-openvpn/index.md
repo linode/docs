@@ -15,7 +15,7 @@ contributor:
   name: Linode
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'
-aliases: ['/platform/marketplace/marketplace-openvpn/']
+aliases: ['/platform/marketplace/marketplace-openvpn/', '/platform/one-click/one-click-openvpn/']
 ---
 
 ## OpenVPN Marketplace App

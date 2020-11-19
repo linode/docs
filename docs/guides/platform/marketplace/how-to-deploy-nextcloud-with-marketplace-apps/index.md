@@ -17,7 +17,7 @@ contributor:
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/', 'how-to-deploy-nextcloud-with-one-click-apps']
+aliases: ['/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/']
 ---
 
 ![Installing Nextcloud OCA](deploying_nextcloud_oca.png)

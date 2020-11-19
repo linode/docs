@@ -15,7 +15,7 @@ title: "How to Deploy Plex Media Server with Marketplace Apps"
 h1_title: "Deploying Plex Media Server with Marketplace Apps"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
-aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', 'deploy-plex-with-one-click-apps' ]
+aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/']
 ---
 
 ## Plex Marketplace App

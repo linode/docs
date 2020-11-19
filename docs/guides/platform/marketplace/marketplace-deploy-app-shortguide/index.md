@@ -14,7 +14,7 @@ keywords: ["marketplace", "marketplace"]
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/marketplace-deploy-app-shortguide/', '/platform/one-click/one-click-deploy-app-shortguide/', 'one-click-deploy-app-shortguide']
+aliases: ['/platform/marketplace/marketplace-deploy-app-shortguide/', '/platform/one-click/one-click-deploy-app-shortguide/']
 ---
 
 1.  Log into the Linode [Cloud Manager](https://cloud.linode.com).

@@ -16,7 +16,7 @@ contributor:
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/marketplace-update-note/', '/platform/one-click/one-click-update-note/', 'one-click-update-note']
+aliases: ['/platform/marketplace/marketplace-update-note/', '/platform/one-click/one-click-update-note/']
 ---
 
 {{< note >}}

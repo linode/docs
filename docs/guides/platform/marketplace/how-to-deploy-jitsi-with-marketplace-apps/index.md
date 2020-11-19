@@ -19,7 +19,7 @@ external_resources:
 - '[About Jitsi](https://jitsi.org/about/)'
 - '[Jitsi Documentation](https://jitsi.github.io/handbook/docs/intro)'
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
-aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/', 'how-to-deploy-jitsi-with-one-click-apps']
+aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/']
 ---
 
 ## Jitsi Marketplace App

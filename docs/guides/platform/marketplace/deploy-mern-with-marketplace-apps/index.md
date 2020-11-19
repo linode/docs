@@ -19,7 +19,7 @@ external_resources:
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
 - '[React Getting Started](https://reactjs.org/docs/getting-started.html)'
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
-aliases: ['/platform/marketplace/deploy-mern-with-marketplace-apps/', '/platform/one-click/deploy-mern-with-one-click-apps/', 'deploy-mern-with-one-click-apps']
+aliases: ['/platform/marketplace/deploy-mern-with-marketplace-apps/', '/platform/one-click/deploy-mern-with-one-click-apps/']
 ---
 
 ## MERN Marketplace App

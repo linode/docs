@@ -16,7 +16,7 @@ contributor:
   name: Linode
 external_resources:
 - '[GitLab Adminstrator Documentation](https://docs.gitlab.com/ee/administration/)'
-aliases: ['/platform/one-click/deploy-gitlab-with-one-click-apps/', 'deploy-gitlab-with-one-click-apps']
+aliases: ['/platform/one-click/deploy-gitlab-with-one-click-apps/']
 ---
 ## GitLab Marketplace App
 

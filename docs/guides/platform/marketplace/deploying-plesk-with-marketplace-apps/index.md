@@ -20,7 +20,7 @@ external_resources:
  - '[Plesk Support](https://support.plesk.com/hc/en-us)'
  - '[Plesk Documentation](https://docs.plesk.com/en-US/obsidian/)'
  - '[Plesk Help Center](https://support.plesk.com/hc/en-us/categories/201413825-Technical-Questions)'
-aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/', '/platform/marketplace/deploying-plesk-with-marketplace-apps/', 'deploying-plesk-with-marketplace-apps' ]
+aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/', '/platform/marketplace/deploying-plesk-with-marketplace-apps/']
 ---
 
 ## Plesk Marketplace App

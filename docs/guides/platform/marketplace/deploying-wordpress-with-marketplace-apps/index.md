@@ -17,7 +17,7 @@ contributor:
   name: Linode
 external_resources:
 - '[WordPress Codex (Documentation)](https://codex.wordpress.org/)'
-aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/', 'deploying-wordpress-with-one-click-apps/']
+aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/']
 ---
 
 ## WordPress Marketplace App

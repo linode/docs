@@ -16,7 +16,7 @@ contributor:
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploy-marketplace-apps/', '/platform/one-click/deploy-one-click-apps/', 'deploy-one-click-apps' ]
+aliases: ['/platform/marketplace/deploy-marketplace-apps/', '/platform/one-click/deploy-one-click-apps/' ]
 ---
 
 <!-- Use title convention: Deploy a X Marketplace App. -->

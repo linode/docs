@@ -21,7 +21,7 @@ external_resources:
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
 - '[Angular Getting Started](https://angular.io/start)'
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
-aliases: ['/platform/marketplace/deploy-mean-with-marketplace-apps/', '/platform/one-click/deploy-mean-with-one-click-apps/', 'deploy-mean-with-one-click-apps']
+aliases: ['/platform/marketplace/deploy-mean-with-marketplace-apps/', '/platform/one-click/deploy-mean-with-one-click-apps/']
 ---
 
 ## MEAN Marketplace App
