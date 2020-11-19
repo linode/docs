@@ -17,7 +17,7 @@ h1_title: "Deploying Percona Monitoring and Management (PMM) with Marketplace Ap
 contributor:
   name: Linode
 image: 'deploy-percona-marketplace.png'
-aliases: ['/platform/marketplace/how-to-deploy-percona-monitoring-management-with-marketplace-apps/', '/platform/one-click/how-to-deploy-percona-monitoring-management-with-one-click-apps/', 'how-to-deploy-percona-monitoring-management-with-one-click-apps']
+aliases: ['/platform/marketplace/how-to-deploy-percona-monitoring-management-with-marketplace-apps/', '/platform/one-click/how-to-deploy-percona-monitoring-management-with-one-click-apps/']
 ---
 
 ## Percona (PMM) Marketplace App

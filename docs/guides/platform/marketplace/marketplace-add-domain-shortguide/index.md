@@ -14,7 +14,7 @@ keywords: ["marketplace", "marketplace"]
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/marketplace-add-domain-shortguide/', '/platform/one-click/one-click-add-domain-shortguide/', 'one-click-add-domain-shortguide']
+aliases: ['/platform/marketplace/marketplace-add-domain-shortguide/', '/platform/one-click/one-click-add-domain-shortguide/']
 ---
 
 For websites like WordPress, WooCommerce, and Drupal, it may be desirable to have a domain name associated with your app. Otherwise, your app is only accessible through your Linode's IP address.

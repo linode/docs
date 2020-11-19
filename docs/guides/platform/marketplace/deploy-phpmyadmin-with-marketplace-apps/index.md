@@ -16,7 +16,7 @@ h1_title: "Deploying phpMyAdmin with Marketplace Apps"
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
-aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', 'deploy-phpmyadmin-with-one-click-apps']
+aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/']
 ---
 
 ## phpMyAdmin Marketplace App

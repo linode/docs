@@ -14,7 +14,7 @@ keywords: ["marketplace", "marketplace"]
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/marketplace-access-app-shortguide/', '/platform/one-click/one-click-access-app-shortguide/', 'one-click-access-app-shortguide']
+aliases: ['/platform/marketplace/marketplace-access-app-shortguide/', '/platform/one-click/one-click-access-app-shortguide/']
 ---
 
 Depending on the type of app you created, the app will be accessible in different ways. All the ways to access your app require the IP address of your Linode. Follow the instructions below to find your IP address.

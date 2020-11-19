@@ -19,7 +19,7 @@ external_resources:
 - '[Webmin Documentation](https://doxfer.webmin.com/Webmin/Main_Page)'
 - '[Webmin on GitHub](https://github.com/webmin/webmin/commits/master)'
 - '[Webmin Tutorials](https://doxfer.webmin.com/Webmin/Tutorials)'
-aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webmin-with-one-click-apps/', 'how-to-deploy-webmin-with-one-click-apps' ]
+aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webmin-with-one-click-apps/']
 ---
 
 [Webmin](http://www.webmin.com) is an open source interface for Unix system administration that offers an easy to use graphical interface for managing user accounts, DNS, file sharing, and more. Webmin alleviates the need to use the command line to edit Unix system configuration files and allows you to configure your system easily from a simple web interface.

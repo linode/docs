@@ -19,7 +19,7 @@ contributor:
   name: Linode
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
-aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', 'deploy-lemp-stack-with-one-click-apps', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/' ]
+aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/' ]
 ---
 
 ## LEMP Stack Marketplace App

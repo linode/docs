@@ -14,7 +14,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Drupal with Marketplace Apps"
 h1_title: "Deploying Drupal with Marketplace Apps"
-aliases: ['/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/', '/platform/one-click/how-to-deploy-drupal-with-one-click-apps/', 'how-to-deploy-drupal-with-one-click-apps']
+aliases: ['/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/', '/platform/one-click/how-to-deploy-drupal-with-one-click-apps/']
 contributor:
   name: Linode
 external_resources:

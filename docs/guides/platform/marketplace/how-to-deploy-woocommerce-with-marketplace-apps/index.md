@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy WooCommerce with Marketplace Apps"
 h1_title: "Deploying WooCommerce with Marketplace Apps"
-aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/', 'how-to-deploy-woocommerce-with-one-click-apps']
+aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/']
 contributor:
   name: Linode
 external_resources:

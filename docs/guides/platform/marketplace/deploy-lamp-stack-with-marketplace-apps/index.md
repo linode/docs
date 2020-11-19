@@ -16,7 +16,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'
-aliases: ['/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', 'deploy-lamp-stack-with-one-click-apps', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/']
+aliases: ['/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/']
 ---
 
 ## LAMP Stack Marketplace App

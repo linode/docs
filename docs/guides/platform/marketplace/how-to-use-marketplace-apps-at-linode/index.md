@@ -15,7 +15,7 @@ h1_title: "Using Linode's Marketplace Apps"
 contributor:
   name: Linode
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/how-to-use-marketplace-apps-at-linode/', '/platform/one-click/how-to-use-one-click-apps-at-linode/', 'how-to-use-one-click-apps-at-linode']
+aliases: ['/platform/marketplace/how-to-use-marketplace-apps-at-linode/', '/platform/one-click/how-to-use-one-click-apps-at-linode/']
 ---
 
 ![How to Use Linode's Marketplace Apps](how-to-use-linode-oneclick-apps.png "How to Use Linode's Marketplace Apps")
