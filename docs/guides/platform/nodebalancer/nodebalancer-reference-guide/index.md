@@ -51,7 +51,7 @@ The public port for this configuration. Ports 1 through 65534 are available for 
 
 You can choose either TCP, HTTP, or HTTPS. HTTP and HTTPS enable some additional options described below.
 
-**TCP**: Use TCP mode to balance non-HTTP services and/or enable ProxyProtocol.
+**TCP**: Use TCP mode to balance non-HTTP services and/or enable [Proxy Protocol](#proxy-protocol).
 
 **HTTP:** HTTP KeepAlives are forced off in HTTP mode.
 
@@ -59,22 +59,24 @@ You can choose either TCP, HTTP, or HTTPS. HTTP and HTTPS enable some additional
 
 If **HTTP** or **HTTPS** is selected, the NodeBalancer will add an X-Forwarded-Proto header, with a value of either `http` or `https`, to all requests sent to the backend. The header value is based on the type of request (HTTP or HTTPS) originally received by the NodeBalancer.
 
- {{< note >}}
-Note that HTTPS requests (and HTTP requests, for that matter) are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
+{{< note >}}
+HTTPS requests (as well as HTTP requests are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
 {{< /note >}}
 
 ### Proxy Protocol
 
-When using TCP as your selected protocol, **Proxy Protocol** can be used to add a header with information regarding client information to backend Linodes, instead of only showing information related to the connecting NodeBalancer. Proxy Protocol can be used via two different selectable versions:
+When selecting **TCP** as your NodeBalancer protocol, you can enable **Proxy Protocol** to add a header containing client information to backend Nodes.
 
-  - **v1**: Proxy Protocol v1 add a human readable string to all requests, similar to the following:
-    {{< output >}}
-PROXY TCP4 68.80.83.127 45.79.247.228 56147 80
-{{< /output >}}
-  - **v2**: Proxy Protocol v2 adds a header with more specialized binary data, which will appear similar to the following output:
-{{< output >}}
-\r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
-{{< /output >}}
+{{< note >}}
+Backend Nodes must also have Proxy Protocol enabled on supported applications to receive the client information header.
+{{< /note >}}
+
+Currently, there are two available versions of Proxy Protocol, **v1** and **v2**:
+
+  - **v1**: Proxy Protocol v1 adds a human readable string to all requests.
+  - **v2**: Proxy Protocol v2 adds a more efficient binary data header to all requests.
+
+For more information and instructions, see our guide on [Using Proxy Protocol with NodeBalancers](/docs/platform/nodebalancer/nodebalancer-proxypass-configuration/)
 
 ### Algorithm
 
