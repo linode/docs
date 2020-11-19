@@ -21,13 +21,13 @@ aliases: ['/platform/marketplace/deploy-marketplace-apps/', '/platform/one-click
 
 <!-- Use title convention: Deploy a X Marketplace App. -->
 
-Linode's Marketplace App Marketplace allow you to easily deploy software on a Linode using the Linode Cloud Manager. To access Linode's Marketplace App Marketplace:
+Linode's App Marketplace allows you to easily deploy software on a Linode using the Linode Cloud Manager. To access Linode's App Marketplace:
 
 1. Log in to your [Linode Cloud Manager](https://cloud.linode.com) account.
 
 1. From the Linode dashboard, click on the **Marketplace** button in the left-hand navigation menu.
 
-1. The Linode creation page will appear, with the **Marketplace** and **Marketplace** tabs pre-selected.
+1. The Linode creation page will appear, with the **Marketplace** tab pre-selected.
 
 1. Under the **Select App** section, select the app you would like to deploy:
 
