@@ -60,7 +60,7 @@ You can choose either TCP, HTTP, or HTTPS. HTTP and HTTPS enable some additional
 If **HTTP** or **HTTPS** is selected, the NodeBalancer will add an X-Forwarded-Proto header, with a value of either `http` or `https`, to all requests sent to the backend. The header value is based on the type of request (HTTP or HTTPS) originally received by the NodeBalancer.
 
 {{< note >}}
-HTTPS requests (as well as HTTP requests are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
+HTTPS requests (as well as HTTP requests) are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
 {{< /note >}}
 
 ### Proxy Protocol
