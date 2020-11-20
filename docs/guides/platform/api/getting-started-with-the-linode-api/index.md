@@ -41,7 +41,7 @@ Only authorized users can add Linodes and make changes to your account, and each
 The easiest way to get a token is through the [Cloud Manager](https://cloud.linode.com).
 
   {{< note >}}
-If you are building an application which will need to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](https://developers.linode.com/api/v4/) to generate tokens for each user.
+If you are building an application which will need to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](/docs/api/#oauth-workflow) to generate tokens for each user.
 {{< /note >}}
 
 ### Create an API Token
@@ -108,7 +108,7 @@ If you prefer a smaller number of items per page, you can override the default v
 
 ### Filter Results
 
-The API also supports filtering lists of results. Filters are passed using the `X-Filter` header and use JSON format. You can filter on almost any field that appears in a response object and the [API documentation](https://developers.linode.com/api/v4/) specifies which fields are filterable.
+The API also supports filtering lists of results. Filters are passed using the `X-Filter` header and use JSON format. You can filter on almost any field that appears in a response object and the [API documentation](/docs/api/) specifies which fields are filterable.
 
 The following query uses the `deprecated` and `vendor` fields to return all current Debian images:
 
@@ -152,4 +152,8 @@ More complex searches are possible through the use of logical operators. Use `or
 
     curl https://api.linode.com/v4/images/ -H 'X-Filter: {"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}' | json_pp
 
-See the [Linode API documentation](https://developers.linode.com/api/v4/) for a full list of supported operators.
+See the [Linode API documentation](/docs/api/) for a full list of supported operators.
+
+## Revoke an API Token
+
+{{< content "api-revoke-token-shortguide" >}}
