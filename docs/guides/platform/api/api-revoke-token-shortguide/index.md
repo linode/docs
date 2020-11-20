@@ -17,7 +17,9 @@ tags: ["linode platform"]
 aliases: ['/platform/api/api-revoke-token-shortguide/']
 ---
 
-1.  Log in to the Cloud Manager.
+If you forget your access token or think it may have been compromised, you can revoke an API access token in the Cloud Manager.
+
+1.  Log in to the [Cloud Manager](http://cloud.linode.com).
 
 1.  Click on your username at the top of the screen and select **My Profile**.
 

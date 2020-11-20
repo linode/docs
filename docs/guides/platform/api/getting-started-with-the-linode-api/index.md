@@ -32,7 +32,7 @@ For example, this command creates a new 2GB Linode, deploys a Debian 9 image, an
     -H "Authorization: Bearer $TOKEN" -H "Content-type: application/json" \
     -d '{"type": "g5-standard-2", "region": "us-east", "image": "linode/debian9", "root_pass": "root_password", "label": "prod-1"}'
 
-This guide will help you get set up to run this example. Note that if you run this command, you will create and be [charged for a 2GB Linode](/pricing).
+This guide helps you get set up to run this example. Note that if you run this command, you create and are [charged for a 2GB Linode](/pricing).
 
 ## Get an Access Token
 
@@ -64,7 +64,7 @@ If you are building an application which will need to authenticate multiple user
 
 ### Pagination
 
-If a results list contains more than 100 items, the response will be split into multiple pages. Each response will include the total number of pages and the current page. To view additional pages, add a `page` parameter to the end of the URL. For example, querying the available kernels produces more than 200 results:
+If a results list contains more than 100 items, the response is split into multiple pages. Each response includes the total number of pages and the current page. To view additional pages, add a `page` parameter to the end of the URL. For example, querying the available kernels produces more than 200 results:
 
     curl https://api.linode.com/v4/linode/kernels | json_pp
 
