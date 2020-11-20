@@ -8,6 +8,7 @@ og_description: 'This guide provides Linode users with steps to manually enable 
 keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
+noindex: true
 modified_by:
   name: Linode
 title: "How to Manually Enable Elastic IP on your Linode"

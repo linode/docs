@@ -7,6 +7,7 @@ public/
 .pynb_checkpoints
 .env
 .venv
+resources/_gen/
 
 .DS_Store
 .DS_Store?
@@ -43,4 +44,3 @@ search_index/
 resources/_gen/assets
 hugo_stats.json
 redirects.conf
-

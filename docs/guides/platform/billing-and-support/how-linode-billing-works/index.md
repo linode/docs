@@ -52,7 +52,7 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders. Please [contact Support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
+We accept Visa, MasterCard, Discover, and American Express and require that the address affiliated with a card matches the [Contact Information](/docs/guides/accounts-and-passwords/#updating-contact-information) active on this account. We also accept PayPal, as well as checks and money orders. Please [contact Support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
 PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card. PayPal cannot be used for automatic monthly payments. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
 
