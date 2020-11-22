@@ -1,0 +1,35 @@
+{{ define "main" }}
+  
+  {{/* See https://godoc.org/github.com/getkin/kin-openapi/openapi3#Swagger */}}
+  {{ $api := partial "openapi3/get" . }}
+  {{ $p := . }}
+  {{ $slug := .Slug }}
+  <div class="content prose prose-sm md:prose-lg max-w-none">
+    <h1>
+      {{ .Title }}
+      <small class="pl-3 text-sm text-gray-600 align-baseline">
+        v{{ $api.Info.Version }}
+      </small>
+    </h1>
+    {{ range $k, $v :=  $api.Paths }}
+      {{ $parts := split $k "/" }}
+      {{ $root := (index $parts 1) }}
+      {{ $ops := slice (dict "o" $v.Connect "m" "Connect") (dict "o" $v.Delete "m" "Delete")  (dict "o" $v.Get "m" "Get") }}
+      {{ $ops = $ops | append  (dict "o" $v.Patch "m" "Patch") (dict "o" $v.Post "m" "Post")  (dict "o" $v.Put "m" "Put") (dict "o" $v.Trace "m" "Trace")}}
+      {{ range $ops }}
+        {{ if .o }}
+          {{ $tag := partial "openapi3/get-tags-title-op" .o }}
+          {{ if eq ($tag|anchorize) $slug}}
+            {{ $ctx := newScratch }}
+            {{ $ctx.Set "dot" .}}
+            {{ $ctx.Set "page" $}}
+            {{ $ctx.Set "pathKey" $k}}
+            {{ $ctx.Set "path" $v}}
+            {{ $ctx.Set "api" $api}}
+            {{ template "openapi3/print-operation"  $ctx }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

@@ -1,0 +1,4 @@
+{{ $class := .Get 0 | default "dark" }}
+<pre class="file {{ $class }}">
+  <code>{{ trim .Inner " \n" }}</code>
+</pre>

@@ -1,0 +1,21 @@
+{
+	"scripts": {},
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/cli": "^7.10.5",
+		"@babel/core": "^7.11.1",
+		"@babel/preset-env": "^7.11.0",
+		"@fullhuman/postcss-purgecss": "^2.3.0",
+		"@tailwindcss/custom-forms": "^0.2.1",
+		"@tailwindcss/typography": "^0.1.4",
+		"@tailwindcss/ui": "^0.6.2",
+		"autoprefixer": "~9.7.6",
+		"core-js": "^3.6.5",
+		"cypress": "^5.2.0",
+		"cypress-axe": "^0.8.1",
+		"netlify-plugin-cache": "^1.0.3",
+		"netlify-plugin-debug-cache": "^1.0.3",
+		"postcss-cli": "^7.1.1",
+		"tailwindcss": "~1.7.3"
+	}
+}

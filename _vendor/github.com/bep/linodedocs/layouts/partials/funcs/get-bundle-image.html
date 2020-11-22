@@ -1,0 +1,29 @@
+{{ $img := "" }}
+{{ $imgExcludeRe := "linode-account-settings-small" }}
+{{ $images := .Resources.ByType "image" }}
+{{ if $images }}
+  {{ $tmp := index $images 0}}
+  {{/* TODO(bep) invalid checksum images */}}
+  {{ if not (findRE $imgExcludeRe $tmp.Name)}}
+    {{ $img = $tmp }}
+  {{ end }}
+{{ end }}
+{{ if not $img }}
+  {{ if .IsSection }}
+    {{ range .RegularPagesRecursive }}
+      {{ if not $img }}
+        {{ $images := .Resources.ByType "image" }}
+        {{ if $images }}
+          {{ $tmp := index $images 0}}
+          {{ if not (findRE $imgExcludeRe $tmp.Name)}}
+            {{ $img = $tmp }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not $img }}
+    {{ $img = resources.Get "images/placeholder.jpg" }}
+  {{ end }}
+{{ end }}
+{{ return $img }}
