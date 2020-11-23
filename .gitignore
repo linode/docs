@@ -7,7 +7,6 @@ public/
 .pynb_checkpoints
 .env
 .venv
-resources/_gen/
 
 .DS_Store
 .DS_Store?
