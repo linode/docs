@@ -22,21 +22,21 @@
      is-not-search-panel-open
      is-not-search-panel_filters-open
      is-not-search-input-open {{ block "body-class" . }}{{ end }}">
-
+  
   {{ partial "sections/after-body-start.html" . }}
-
+  
   {{/* Base grid */}}
   <div id="grid" class="grid--base bg-backgroundcolor">
-
+  
   {{ block "icons" . }}
     {{ partial "icons/navigation.html" .}}
     {{ partial "icons/social.html" .}}
   {{ end }}
-
+  
   <header id="linode-menus" class="z-20">
     {{ partial "linode-header.html" }}
   </header>
-
+  
   {{/* Top navbar */}}
   <nav id="navbar" class="bg-white w-full box-border sticky top-0 z-10 border-b-gray">
     <div id="navbar__icons--left" class="h-full flex justify-start"  @nav:toggle.document="receiveToggle($event.detail)" x-data="lnNavController.New()"
@@ -68,12 +68,12 @@
       {{ partial "sections/navigation/toc.html" . }}
     </div>
   </nav>
-
+  
   {{/* Left side explorer menu. */}}
   <nav id="explorer" class="bg-white sticky overflow-y-scroll z-0 top--navbar-row border-r-gray">
     {{ partialCached "sections/navigation/explorer.html" . }}
   </nav>
-
+  
   {{/* Main content area. */}}
   <main class="main bg-backgroundcolor h-full min-h-screen z-0 overflow-hidden">
     <div class="main__inner">
@@ -81,21 +81,23 @@
         {{ partial "sections/search/panel.html" . }}
       </section>
       <section class="main__content container mb-20">
-        <div class="w-full h-full mt-6 md:mt-12">
-          <div class="mb-4 md:mb-6 text-basicgray main__breadcrumbs">
-            {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
-          </div>
+        <div class="w-full h-full">
+          {{ if not .IsHome }}
+            <div class="mb-4 md:mb-6 mt-6 md:mt-12 main__breadcrumbs">
+              {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
+            </div>
+          {{ end }}
           {{ block "main" . }}{{ end }}
         </div>
       </section>
     </div>
   </main>
-
+  
   {{/* Common Linide footer */}}
   <div id="footer" class="border-t-gray z-50">
     {{ partial "linode-footer.html" }}
   </div>
-
+  
   {{/* Scripts etc. added before body end. */}}
   {{ partial "sections/before-body-end.html" . }}
 </body>
