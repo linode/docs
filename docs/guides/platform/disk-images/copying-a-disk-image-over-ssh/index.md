@@ -26,13 +26,13 @@ If the amount of data on your disk is much less than the size of the disk, then 
 
 ## Download a Disk over SSH
 
-This guide was written to support Downloading a disk over SSH from a  **Linode**, which will be used to Create and Send an image to a separate receiving system that you personally own. This means that the guide will have you switching between the execution of commands on both the **Origin Linode** as the origin of your disk image, and the **Receiving System** which will receive a copy of this image. You will see the terms Origin Linode and Receiving System used to describe these two separate environments.
+This guide shows you how to download a Linode's disk image over SSH to a separate receiving system, like a personal computer, by executing commands on both the **Origin Linode** as the origin of your disk image, and the **Receiving System** which will receive a copy of this image. The terms "origin Linode" and "receiving system" are used throughout this guide to describe these two separate environments.
 
-While this guide has been written to accommodate computers running Linux as their operating system, if the receiving system is Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/networking/ssh/using-ssh-on-windows) which can alternatively be used to complete this process.
+While this guide has been written to accommodate computers running Linux as their operating system, if the receiving system is instead running Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/networking/ssh/using-ssh-on-windows) which can alternatively be used to complete this process.
 
 ### Boot Linode into Rescue Mode
 
-1.  Reboot Your Origin Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) and connect to it using [Lish](/docs/platform/manager/remote-access/#console-access).
+1.  Reboot Your origin Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) and connect to it using [Lish](/docs/platform/manager/remote-access/#console-access).
 
 1.  Set a root password for the rescue system and start the SSH server:
 
@@ -41,19 +41,19 @@ While this guide has been written to accommodate computers running Linux as thei
 
 ### Copy and Download the Disk
 
-1.  Prepare the Receiving System that will be downloading the disk image by verifying that SSH is installed. Most Linux/Unix-like systems include OpenSSH in their package base by default.
+1.  Prepare the receiving system to download the disk image by verifying that SSH is installed. Most Linux/Unix-like systems include OpenSSH in their package base by default.
 
-1.  Copy the disk over SSH from the Origin Linode to the Receiving System. Run the following command on the Receiving System, replacing `192.0.2.9` with the Origin Linode's IP address and `/home/archive/linode.img` with the path where you want to store the disk.
+1.  Copy the disk over SSH from the origin Linode to the receiving system. Run the following command on the receiving system, replacing `192.0.2.9` with the origin Linode's IP address and `/home/archive/linode.img` with the path where you want to store the disk.
 
         ssh root@192.0.2.9 "dd if=/dev/sda " | dd of=/home/archive/linode.img
 
-1.  The receiving system will connect to the Linode and prompt you to verify that the SSH key fingerprints are valid. If valid, type `yes` and press **Enter** to continue:
+1.  The receiving system is now connected to the Linode, prompting you to verify that the SSH key fingerprints are valid. If valid, type `yes` and press **Enter** to continue:
 
         The authenticity of host '192.0.2.9 (192.0.2.9)' can't be established.
         RSA key fingerprint is 39:6b:eb:05:f1:28:95:f0:da:63:17:9e:6b:6b:11:4a.
         Are you sure you want to continue connecting (yes/no)? yes
 
-1.  The receiving system will then be prompted to enter the root password you [created for the Origin Linode in rescue mode](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#boot-into-rescue-mode). Enter this password now:
+1. The receiving system is prompted to enter the root password you [created for the origin Linode in rescue mode](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#boot-into-rescue-mode). Enter this password now:
 
         Warning: Permanently added '192.0.2.9' (RSA) to the list of known hosts.
         root@192.0.2.9's password:
