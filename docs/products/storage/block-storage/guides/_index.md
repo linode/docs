@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Product guides for Linode Block Storage."
+description: "Find guides on Block Storage basics, Volume management, and other related Block Storage topics."
 tab_group_main:
     weight: 30
 ---

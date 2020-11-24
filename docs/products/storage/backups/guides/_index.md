@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Product guides for the Linode Backup Service."
+description: "Learn how to get up and running with Linode's Backup Service using the building block guides included on this page."
 tab_group_main:
     weight: 30
 ---

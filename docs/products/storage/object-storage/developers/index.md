@@ -1,6 +1,6 @@
 ---
 title: Developers
-description: "Linode Object Storage is managed easily with developer tools like the Linode API or CLI."
+description: "Use the Linode API or CLI to manage Linode Object Storage."
 tab_group_main:
     weight: 50
 ---
