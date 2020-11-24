@@ -1,6 +1,6 @@
 ---
 title: Resources
-description: "Resources and other information related to the Linode DDoS Protection including blog posts, community posts, and press releases."
+description: "Resources and information related to Linode DDoS Protection including blog posts, community posts, and press releases."
 tab_group_main:
     weight: 40
 ---

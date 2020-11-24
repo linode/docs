@@ -1,13 +1,13 @@
 ---
 title: DDoS Protection
-description: "Linode DDoS Protection is always on real-time intelligent protection that monitors, detects, analyzes, and blocks threats to the network in real-time."
+description: "Linode DDoS Protection provides real-time intelligent protection that monitors, detects, analyzes, and blocks threats to the network."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Linode's global network is protected by advanced DDoS mitigation in all of our data centers, helping to fend off attacks on your infrastructure.  Free for all customers."
+    product_description: "Linode's global network is protected by advanced DDoS mitigation in all of our data centers, helping to fend off attacks on your infrastructure.  Linode DDoS protection is free for all customers."
 ---
 
 ## Availability
