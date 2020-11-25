@@ -1,5 +1,6 @@
 ---
 title: Resources
+description: "Resources and other information related to High Memory instances including blog posts and community posts."
 tab_group_main:
     weight: 40
 ---

@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Learn to deploy and manage a Linode Kubernetes Engine (LKE) cluster. Find other guides related to common Kubernetes workloads and their configuration."
 tab_group_main:
     weight: 30
 ---
