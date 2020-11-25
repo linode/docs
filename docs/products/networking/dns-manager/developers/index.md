@@ -1,5 +1,6 @@
 ---
 title: Developers
+description: "Use developer tools like the Linode API or CLI to manage your DNS records."
 tab_group_main:
     weight: 50
 ---

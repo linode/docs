@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Learn the basics of Linode NodeBalancers. You can also find guides on using Developer Tools to create and manage Linode NodeBalancers."
 tab_group_main:
     weight: 30
 ---
