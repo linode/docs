@@ -1,6 +1,6 @@
 ---
 title: Developers
-description: "The Linode Cloud Manager is managed easily with developer tools like the Linode API or CLI."
+description: "Use the Linode API and CLI to access the full range of Linode services and account and user management capabilities offered by the Linode Cloud Manager."
 tab_group_main:
     weight: 50
 ---

@@ -1,4 +1,4 @@
 ---
 title: Tools
-description: "Advanced programmatic management tools and resources to get the most out of your applications – and the docs to show you how."
+description: "Linode offers robust developer tools to make it easy to manage your infrastructure."
 ---

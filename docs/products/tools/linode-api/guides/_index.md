@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Product guides for the Linode API."
+description: "Learn the essential pieces to use the Linode API v4 and find guides on more advanced topics, like creating an OAuth app with the Linode Python API library."
 tab_group_main:
     weight: 30
 ---

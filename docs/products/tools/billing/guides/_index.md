@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Product guides for Linode Billing."
+description: "Learn more about Linode Billing and related topics."
 tab_group_main:
     weight: 30
 ---

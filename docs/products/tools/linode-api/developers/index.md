@@ -1,6 +1,6 @@
 ---
 title: Developers
-description: "Linode API a developer tool that is complemented with others such as the Linode CLI and community developed tools and libraries."
+description: "Linode provides a wide array of developer tools including Rancher and Terraform integrations and JavaScript and Python libraries."
 tab_group_main:
     weight: 50
 ---
