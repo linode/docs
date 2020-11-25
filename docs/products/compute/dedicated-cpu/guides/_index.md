@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Product guides for Dedicated CPU Linode instances."
+description: "Learn to deploy and secure Dedicated CPU Linode instances and other guides on related topics."
 tab_group_main:
     weight: 30
 ---

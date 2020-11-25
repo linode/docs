@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Product guides for High Memory Linode instances."
+description: "Learn to deploy and secure High Memory Linode instances and other guides on related topics."
 tab_group_main:
     weight: 30
 ---
