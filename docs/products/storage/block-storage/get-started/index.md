@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get started with Linode Block Storage. Learn to add a new Block Storage volume to a Linode, increase the size of an attached volume, and transfer a Block Storage volume to a new Linode."
 tab_group_main:
     weight: 20
 ---

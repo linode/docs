@@ -1,5 +1,6 @@
 ---
 title: Developers
+description: "Use the Linode API or CLI to manage Linode Object Storage."
 tab_group_main:
     weight: 50
 ---
