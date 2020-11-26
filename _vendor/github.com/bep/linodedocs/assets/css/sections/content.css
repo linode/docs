@@ -1,0 +1,164 @@
+/* 
+Styles used on content/article type of content sections.
+Note that this is usually used in combination with Tailwind's Typography plugin and its prose classes.
+*/
+.content blockquote.callout {
+    @apply border rounded-md text-textcolor font-normal p-4;
+}
+
+.content blockquote.callout a {
+    @apply text-brand hover:text-green-400;
+}
+
+.content .callout-title {
+    @apply text-titlecolor leading-tight text-base;
+}
+
+.content .callout-body {
+    @apply mt-2 mb-3;
+}
+
+.content a {
+    @apply text-brand hover:text-green-400;
+}
+
+.content pre,
+.content .code {
+    @apply bg-selected rounded-md overflow-x-auto;
+    letter-spacing: 1px;
+    line-height: 15px;
+}
+
+.content .is-scroll-x::-webkit-scrollbar {
+    height: 4px;
+}
+
+.content .is-scroll-x::-webkit-scrollbar-thumb {
+    background-color: #a9aab0;
+    border-radius: 3px;
+}
+
+.content .is-scroll-x::-webkit-scrollbar-track {
+    background-color: rgba(169, 170, 176, 0.2);
+}
+
+.content .is-scroll-x.dark::-webkit-scrollbar-thumb {
+    background-color: var(--color-brand);
+    opacity: 0.8;
+}
+
+.content .code {
+    @apply mobile:-mx-4 mobile:rounded-none;
+}
+
+.content pre.dark,
+.content .code.dark {
+    background-color: var(--color-title);
+    color: #ffffff;
+}
+
+.content pre.light,
+.content .code.light,
+.content pre {
+    background-color: #ededf4;
+    color: #5e6065;
+}
+
+.content .code pre {
+    @apply py-2 my-3;
+    background-color: transparent;
+}
+
+.content .file {
+    @apply my-12;
+}
+
+.content .file dd {
+    @apply mt-0;
+}
+
+.content code {
+    @apply font-mono inline rounded px-1;
+}
+
+.content pre {
+    @apply bg-gray-100 rounded;
+}
+
+.content pre code {
+    @apply block bg-transparent p-0 overflow-x-scroll rounded-none;
+}
+
+.content .highlight tbody td code {
+    background-color: transparent;
+}
+
+.content table {
+    @apply w-full border-collapse mobile:-mx-4;
+    border-style: hidden;
+}
+
+@screen mobile {
+    .content table {
+        width: calc(100% + 2rem);
+    }
+}
+
+.content tbody tr:first-child {
+    @apply border-t-2 border-gray-500;
+}
+
+.content table table {
+    @apply m-0 p-0;
+}
+
+.content table table td:first-child {
+    @apply pl-0;
+}
+
+.content table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.content table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.content tbody tr td {
+    @apply p-4 bg-selected border-b;
+}
+
+.content tbody td code {
+    @apply bg-gray-300;
+}
+
+.chroma tbody td:first-child {
+    padding-left: 0;
+}
+
+.content img.marquee-img {
+    @apply rounded-lg w-full;
+}
+
+.content .marquee-img-container {
+    @apply mobile:-mx-4;
+}
+.content .marquee-img-container img {
+    @apply mobile:rounded-none;
+}
+
+.content .pull-out {
+    @apply mobile:-mx-4 mobile:rounded-none;
+}
+
+.content img {
+    @apply rounded-lg w-3/4;
+}
+
+/* Adjust anchor links vs fixed header height. */
+.content :target::before {
+    content: "";
+    display: block;
+    height: 80px;
+    margin: -80px 0 0;
+}

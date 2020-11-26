@@ -1,0 +1,27 @@
+.border-t-gray {
+    @apply border-t border-divider border-solid;
+}
+
+.border-b-gray {
+    @apply border-b border-divider border-solid;
+}
+
+.border-r-gray {
+    @apply border-r border-divider border-solid;
+}
+
+.border-l-gray {
+    @apply border-l border-divider border-solid;
+}
+
+.border-l-gray--md {
+    @apply border-none md:border-l md:border-divider md:border-solid;
+}
+
+.border-r-gray--md {
+    @apply border-none md:border-r md:border-divider md:border-solid;
+}
+
+.border-l-transparent {
+    border-left-color: transparent;
+}
