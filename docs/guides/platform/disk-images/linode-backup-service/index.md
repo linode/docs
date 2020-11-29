@@ -82,6 +82,12 @@ This section shows how to restore a backup to a [new](/docs/platform/disk-images
 
 You can cancel the Backup Service at any time. From your Linode's details page, choose the **Backups** tab and click the **Cancel Backups** link at the bottom of the page. Cancelling the service will remove your saved backups from the Linode platform.
 
+{{< caution >}}
+Cancelling your Backup Service will irretrievably delete all of your Linode's Backups, including its manual Snapshot.
+
+To preserve this data, you will need to back up your data independently of our Backup Service before cancelling it. You may consult the suggestions in [Backing Up Your Data](/docs/guides/backing-up-your-data/) for more information on how to do this.
+{{</ caution >}}
+
 ## Limitations
 
 There are some limitations to what the Linode Backup Service can back up. Here are some things you should be aware of:
@@ -89,7 +95,7 @@ There are some limitations to what the Linode Backup Service can back up. Here a
 -   The Backup Service must be able to mount your disks. If you've created partitions, configured full disk encryption, or made other changes that prevent us from mounting the disk as a filesystem, you will likely not be able to use the Linode Backup Service. The backup system operates at the file level, not at the block level.
 -    Because the Backup Service is file-based, the number of files stored on disk will impact both the time it takes for backups and restores to complete, and your ability to successfully take and restore backups. Customers who need to permanently store a large number of files may want to archive bundles of smaller files into a single file, or consider other backup services.
 
-    {{< note >}}
+{{< note >}}
 The percentage of customers who may run into this limitation is low. If you are not sure if this limitation applies to you, please [contact Linode Support](/docs/platform/billing-and-support/support/#contacting-linode-support).
 {{< /note >}}
 

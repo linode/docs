@@ -86,6 +86,16 @@ Our services are provided without a contract, so you're free to remove services 
 1.  To remove a NodeBalancer from your account, select **NodeBalancers** from the sidebar links. Open the menu of the NodeBalancer you would like to remove, then select **Remove**.
 1.  To remove the Linode Backup Service, select **Linodes** from the sidebar links. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
 
+{{< caution >}}
+Removing a Linode from your account will make its data irretrievable. This include the backups of it that you have created through [our Backup Service](/docs/platform/disk-images/linode-backup-service/), including Manual Snapshots.
+
+If you would like to preserve your Linode's data before removing it from your account, you will need to create an external backup. You may use the suggestions in our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide for some examples of how to do this.
+
+When removing a Linode from your account that has been active for at least 24 hours, our systems will automatically create a [Linode Image](/docs/guides/linode-images/) out of the backup. You may use [this guide](https://www.linode.com/community/questions/17441/how-do-i-restore-a-deleted-linode) from [our Community Questions site](https://www.linode.com/community/questions/) to restore this backup.
+
+There is a very small chance that Linode Support can restore your data outside of these circumstances. The sooner you reach out to Linode Support, the more likely this can occur. Please open up [a Support ticket](https://cloud.linode.com/support/tickets) to explore this possibility.
+{{</ caution >}}
+
 ## Cancelling Your Account
 
 {{< content "cancel-your-account-shortguide" >}}
