@@ -32,8 +32,8 @@ promo_code_amount = 100
 page_title_suffix = "Linode"
 
 [params.search_config]
-app_id = "W6OT05DEI1"
-api_key = "9cb41b3e3827754ace92aed7acd0f05f"
+app_id = "KGUN8FAIPF"
+api_key = "d4847002cd30392fe0fbd00a1da933ed"
 meta_index = "linode-documentation-sections"
 explorer_max_leafnodes = 50
 hits_per_page = 4
