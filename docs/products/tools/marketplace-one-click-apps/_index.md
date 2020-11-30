@@ -6,7 +6,7 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Choose one of the popular marketplace one-click apps, select configuration options, and click deploy. It’s that simple. Whether you’re setting up a new development environment or a Minecraft server for the kids, you can have your code running with a click."
+    product_description: "Choose one of the popular marketplace one-click apps, select configuration options, and click deploy. It’s that simple. Whether you’re setting up a new development environment or a Minecraft server for the kids, you can have your app up and running with a few clicks."
 ---
 
 ## Availability

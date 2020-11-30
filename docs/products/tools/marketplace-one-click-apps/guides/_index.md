@@ -16,7 +16,7 @@ Review these introductory guides to Linode’s Marketplace Apps to get up and ru
 
 - [Add a Domain Name](/docs/products/tools/marketplace-one-click-apps/guides/marketplace-add-domain-name): Add a domain name for your application.
 
-For more on getting started with Linode’s Marketplace Marketplace see the guide [Using Linode’s Marketplace Apps](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/)
+See the guide [Using Linode’s Marketplace Apps](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/) for more on getting started.
 
 ## Themes
 
