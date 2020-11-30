@@ -1,7 +1,7 @@
 [[queries.featured]]
 key = "Title"
 operator = "eq"
-match = "Deploy WireGuard with One-Click Apps"
+match = "Deploy WireGuard with Marketplace Apps"
 
 [[queries.getting_started]]
 key = "Title"

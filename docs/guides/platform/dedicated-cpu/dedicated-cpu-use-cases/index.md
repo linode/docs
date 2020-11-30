@@ -43,11 +43,11 @@ In many cases, the CI/CD pipeline can become resource-intensive if many new code
 
 Depending on the intensity of demands they place on your Linode, [game servers](/docs/game-servers/) may benefit from a Dedicated CPU. Modern multiplayer games need to coordinate with a high number of clients, and require syncing entire game worlds for each player. If CPU resources are not available, then players will experience issues like stuttering and lag. Below is a short list of popular games that may benefit from a Dedicated CPU:
 
-- [ARK: Survival Evolved](/docs/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/)
-- [Rust](/docs/platform/one-click/deploying-rust-with-one-click-apps/)
-- [Minecraft](/docs/platform/one-click/deploying-minecraft-with-one-click-apps/)
-- [CS:GO](/docs/platform/one-click/deploying-cs-go-with-one-click-apps/)
-- [Team Fortress 2](/docs/platform/one-click/deploying-team-fortress-2-with-one-click-apps/)
+- [ARK: Survival Evolved](/docs/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/)
+- [Rust](/docs/platform/marketplace/deploying-rust-with-marketplace-apps/)
+- [Minecraft](/docs/platform/marketplace/deploying-minecraft-with-marketplace-apps/)
+- [CS:GO](/docs/platform/marketplace/deploying-cs-go-with-marketplace-apps/)
+- [Team Fortress 2](/docs/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/)
 
 ### Audio and Video Transcoding
 

@@ -26,8 +26,8 @@ Advanced search helps you quickly find your Linode resources. Search using simpl
 
 Manage your account, update payment information, review credits remaining, and print invoices.
 
-### Deploy One-Click Apps
-Whether you want to set up a game server, your own VPN, or self-host your software with GitLab, One-Click Apps make it quick and easy to get up and running on your Linodes.
+### Deploy Marketplace Apps
+Whether you want to set up a game server, your own VPN, or self-host your software with GitLab, Marketplace Apps make it quick and easy to get up and running on your Linodes.
 
 ### Performance Monitoring
 Real-time analytics tracking, per-process and in aggregate, monitors the performance of your CPU, memory, and network bandwidth.

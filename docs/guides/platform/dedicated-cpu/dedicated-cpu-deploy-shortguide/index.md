@@ -23,7 +23,7 @@ aliases: ['/platform/dedicated-cpu/dedicated-cpu-deploy-shortguide/']
 
 1. Click on the **Create** dropdown menu at the top left of the page, and select the **Linode** option.
 
-1. Select a [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One-Click App](/docs/platform/one-click/how-to-use-one-click-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) to deploy from.
+1. Select a [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) to deploy from.
 
     {{< note >}}
 Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide](/docs/platform/stackscripts/).
