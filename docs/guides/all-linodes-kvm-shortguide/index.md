@@ -18,6 +18,6 @@ aliases: ['/all-linodes-kvm-shortguide/']
 
 {{< note >}}
 
-This guide mentions XEN architecture. However, all Linode instances now use KVM architecture. This guide may be updated or replaced in the future; or it may be retained for historical purposes.
+This guide mentions Xen architecture. However, all Linode instances now use KVM architecture. This guide may be updated or replaced in the future; or it may be retained for historical purposes.
 
 {{< /note >}}
