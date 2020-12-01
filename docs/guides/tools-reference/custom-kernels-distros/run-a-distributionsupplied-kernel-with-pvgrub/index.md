@@ -15,7 +15,7 @@ title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 deprecated: true
 ---
 
-{{ content "all-linodes-kvm-shortguide" }}
+{{< content "all-linodes-kvm-shortguide" >}}
 
 {{< caution >}}
 This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel](/docs/guides/run-a-distribution-supplied-kernel/).

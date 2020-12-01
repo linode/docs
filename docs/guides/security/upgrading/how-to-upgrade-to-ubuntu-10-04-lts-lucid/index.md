@@ -21,7 +21,7 @@ relations:
             - distribution: Ubuntu 10.04
 ---
 
-{{ content "all-linodes-kvm-shortguide" }}
+{{< content "all-linodes-kvm-shortguide" >}}
 
 This guide explains how to upgrade your Linode to Ubuntu 10.04 LTS (Lucid). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures.
 
