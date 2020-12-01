@@ -7,7 +7,7 @@ description: 'Configure your CentOS 6 Linode to use the distribution-supplied ke
 keywords: ["centos 6", "custom kernel", "grub legacy"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-03-10
+modified: 2020-12-01
 modified_by:
   name: Nick Brewer
 published: 2017-03-10
@@ -23,6 +23,8 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 {{< note >}}
 This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
 {{< /note >}}
+
+{{ content "all-linodes-kvm-shortguide" }}
 
 ## Install the Kernel and Configure Grub
 

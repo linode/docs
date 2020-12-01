@@ -10,7 +10,7 @@ keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['/security/full-disk-encryption-xen/','/security/encryption/full-disk-encryption-xen/']
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2014-06-19
+modified: 2020-12-01
 modified_by:
   name: Linode
 published: 2013-07-05
@@ -23,6 +23,8 @@ Full disk encryption protects the information stored on your Linode's disks by c
 -   Install a base Debian 7 (Wheezy) system with `debootstrap`
 -   Configure services and networking
 -   Boot from the encrypted images
+
+{{ content "all-linodes-kvm-shortguide" }}
 
 ## Potential Drawbacks
 
