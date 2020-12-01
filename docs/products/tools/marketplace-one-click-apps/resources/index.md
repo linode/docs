@@ -1,6 +1,6 @@
 ---
 title: Resources
-description: "Resources and other information related to the Linode One-Click App Marketplace including blog posts, community posts, and customer stories."
+description: "Resources and other information related to Linode Marketplace Apps including blog posts, community posts, and customer stories."
 tab_group_main:
     weight: 40
 ---

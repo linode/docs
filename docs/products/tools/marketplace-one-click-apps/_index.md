@@ -1,12 +1,13 @@
 ---
 title: Marketplace Apps
+description: "Explore the Linode App Marketplace to find popular ready-to-run apps and services. Use the Linode Cloud Manager to deploy your Marketplace App in just a few clicks."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Choose one of the popular marketplace one-click apps, select configuration options, and click deploy. It’s that simple. Whether you’re setting up a new development environment or a Minecraft server for the kids, you can have your app up and running with a few clicks."
+    product_description: "Choose one of the popular Marketplace One-Click Apps, select configuration options, and click deploy. It’s that simple. Whether you’re setting up a new development environment or a Minecraft server for the kids, you can have your app up and running with a few clicks."
 ---
 
 ## Availability
