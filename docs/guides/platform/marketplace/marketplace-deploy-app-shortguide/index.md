@@ -3,13 +3,13 @@ slug: marketplace-deploy-app-shortguide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that describes how to deploy a Marketplace Marketplace App from the Cloud Manager.'
+description: 'Shortguide that describes how to deploy a Marketplace App from the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-20
 modified_by:
   name: Heather Zoppetti
 published: 2020-07-20
-title: Deploy a Marketplace Marketplace App from Cloud Manager
+title: Deploy a Marketplace App from Cloud Manager
 keywords: ["marketplace", "marketplace"]
 headless: true
 show_on_rss_feed: false

@@ -7,7 +7,7 @@ tab_group_main:
 
 ## Linode API
 
-Marketplace Marketplace applications are deployed in the API via the
+Marketplace applications are deployed in the API via the
 [StackScripts Endpoint Collection](/docs/api/stackscripts).
 
 ## Linode CLI
