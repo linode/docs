@@ -59,9 +59,9 @@ An [*Ingress*](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 
 In this section, you will install the NGINX Ingress Controller using Helm, which will create a [Linode NodeBalancer](https://www.linode.com/products/nodebalancers/) to handle your cluster's traffic.
 
-1. Add the Google stable Helm charts repository to your Helm repos:
+1. Add the stable Helm charts repository to your Helm repos:
 
-        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+        helm repo add stable https://charts.helm.sh/stable
 
 1. Update your Helm repositories:
 

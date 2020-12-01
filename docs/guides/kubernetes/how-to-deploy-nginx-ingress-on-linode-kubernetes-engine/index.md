@@ -164,7 +164,7 @@ Next, use Helm to install an Ingress Controller. While there are a few different
 
 First, add the `stable` Helm repository if you have not yet:
 
-    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    helm repo add stable https://charts.helm.sh/stable
 
 Next, install the NGINX Ingress Controller:
 
