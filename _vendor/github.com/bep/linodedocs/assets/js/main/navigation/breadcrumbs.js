@@ -12,68 +12,90 @@ var lnBreadcrumbs = {};
 		}
 
 		const hrefFactory = lnCreateHref.New(searchConfig);
-		const dispatcher = lnSearchEventDispatcher.New();
 
 		return {
 			data: {
-				sections: null,
-				breadcrumbs: []
+				sectionsMeta: null,
+				breadcrumbs: {
+					sections: [],
+					page: {}
+				}
 			},
-
-			loaded: false,
 
 			receiveData: function(data) {
-				debug('receiveData', this.loaded, this.data);
-				if (this.loaded) {
-					return;
-				}
-				this.loaded = true;
-				this.data.sections = data.metaSearch.results;
+				debug('receiveData', data);
+				this.data.sectionsMeta = data.metaSearch;
 				this.createBreadcrumbs();
 			},
 
-			init: function(page) {
-				debug('init', page);
-				this.page = page;
+			receivePageInfo: function(page) {
+				debug('receivePageInfo', page);
+				this.data.breadcrumbs.page = page;
 				this.createBreadcrumbs();
+			},
+
+			onTurbolinksBeforeRender: function() {
+				this.data.breadcrumbs.page = {};
+				this.data.breadcrumbs.sections.length = 0;
 			},
 
 			createBreadcrumbs: function() {
-				debug('createBreadcrumbs', this.page);
-				if (this.page.isStatic && this.page.sectionsEntries) {
-					let parts = this.page.sectionsEntries;
-					let sections = this.assembleSections(parts);
-					sections.push(this.page);
-					this.data.breadcrumbs = sections;
+				debug('createBreadcrumbs', this.data);
 
-					debug('route', parts, this.data.breadcrumbs);
+				if (
+					!this.data.sectionsMeta ||
+					!this.data.breadcrumbs.page ||
+					this.data.breadcrumbs.page.type === 'content'
+				) {
+					// Wait for the real data to arrive.
+					return;
+				}
+
+				let breadcrumbs = this.data.breadcrumbs;
+				let pageType = this.data.breadcrumbs.page.type;
+				let isStatic = pageType != 'content' && pageType != 'sections' && pageType != 'wpArticle';
+
+				// Pages powered by Hugo
+				if (isStatic) {
+					let parts = breadcrumbs.page.sectionsEntries;
+					breadcrumbs.sections = this.assembleSections(parts);
 
 					return;
 				}
 
+				// Articles hosted on WordPress
+				if (pageType == 'wpArticle') {
+					console.log(breadcrumbs.page.section);
+					let parts = breadcrumbs.page.section.split(' > ');
+					breadcrumbs.sections = this.assembleSections(parts);
+					return;
+				}
+
+				// Category listings.
 				let parts = hrefFactory.sectionsFromPath();
-				if (!parts) {
-					return;
-				}
-
-				this.data.breadcrumbs = this.assembleSections(parts);
+				let sections = this.assembleSections(parts);
+				breadcrumbs.sections = sections;
 			},
 
 			assembleSections: function(parts) {
+				if (!parts || !this.data.sectionsMeta) {
+					return [];
+				}
 				let sections = [];
 				let sectionKeys = [];
 				for (let section of parts) {
-					sectionKeys.push(section);
-					if (this.data.sections) {
-						let key = sectionKeys.join(' > ');
-						let sm = this.data.sections.get(key);
-						if (sm) {
-							sections.push(sm);
-						}
+					sectionKeys.push(section.toLowerCase());
+					let key = sectionKeys.join(' > ');
+					let sm = this.data.sectionsMeta.getSectionMeta(key);
+					if (sm) {
+						sections.push(sm);
 					} else {
-						// Static breadcrumbs.
-						//For the linkTitle we could do better for the content we have stored in Hugo.
-						sections.push({ linkTitle: capitalize(section), href: '/docs/' + sectionKeys.join('/') });
+						// This will be WordPress content when no Algolia data has been loaded.
+						// But these sections are already ready to be presented as a title.
+						sections.push({
+							href: hrefFactory.hrefSection(key),
+							linkTitle: section
+						});
 					}
 				}
 

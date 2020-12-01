@@ -6,12 +6,20 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
     @apply border rounded-md text-textcolor font-normal p-4;
 }
 
+.content blockquote.callout a {
+    @apply text-brand hover:text-green-400;
+}
+
 .content .callout-title {
     @apply text-titlecolor leading-tight text-base;
 }
 
 .content .callout-body {
     @apply mt-2 mb-3;
+}
+
+.content a {
+    @apply text-brand hover:text-green-400;
 }
 
 .content pre,
@@ -132,8 +140,11 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
     @apply rounded-lg w-full;
 }
 
-.content img.marquee-img-container {
-    @apply mobile:-mx-4 mobile:rounded-none;
+.content .marquee-img-container {
+    @apply mobile:-mx-4;
+}
+.content .marquee-img-container img {
+    @apply mobile:rounded-none;
 }
 
 .content .pull-out {

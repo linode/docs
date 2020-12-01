@@ -21,7 +21,7 @@ tags: ["kubernetes"]
 
 ## What is the Linode Kubernetes Engine (LKE)?
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/guides/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
 {{< disclosure-note "Additional LKE features">}}
 * **etcd Backups** : A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
@@ -30,13 +30,13 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 You can easily deploy an LKE cluster in several ways:
 
-- Via the [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+- Via the [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
 - With the Linode API (as presented in this guide)
 
     {{< note >}}
 The Linode API and the Kubernetes API are two separate interfaces, and both will be mentioned in this article. The Linode API allows you to manipulate your Linode infrastructure, while the Kubernetes API allows you to manage the software objects running in your cluster.
 {{< /note >}}
-- With the [Linode CLI](/docs/platform/api/linode-cli/)
+- With the [Linode CLI](/docs/guides/linode-cli/)
 
 These Linode-provided interfaces can be used to create, delete, and update the structural elements of your cluster, including:
 
@@ -45,7 +45,7 @@ These Linode-provided interfaces can be used to create, delete, and update the s
 - The hardware resources for each node in your node pools.
 - The Kubernetes version deployed to your cluster's Master node and worker nodes.
 
-The [Kubernetes API](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you will interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
+The [Kubernetes API](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you will interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
 
 ### In this Guide
 
@@ -61,11 +61,11 @@ This guide will cover how to use the Linode API to:
 
 1. [Familiarize yourself with the Linode Kubernetes Engine service](https://www.linode.com/products/kubernetes/). This information will help you understand the benefits and limitations of LKE.
 
-1. [Create an API Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token). You will need this to access the LKE service.
+1. [Create an API Token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token). You will need this to access the LKE service.
 
 1. [Install kubectl](#install-kubectl) on your computer. You will use kubectl to interact with your cluster once it's deployed.
 
-1. If you are new to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to learn about general Kubernetes concepts. This guide assumes a general understanding of core Kubernetes concepts.
+1. If you are new to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series to learn about general Kubernetes concepts. This guide assumes a general understanding of core Kubernetes concepts.
 
 ### Install kubectl
 
@@ -81,7 +81,7 @@ This guide will cover how to use the Linode API to:
 | `k8s_version` | The desired version of Kubernetes for this cluster. |
 
 {{< note >}}
-The available plan types for LKE worker nodes are [Shared](/docs/platform/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#3-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#2-high-memory) plans.
+The available plan types for LKE worker nodes are [Shared](/docs/guides/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/guides/how-to-choose-a-linode-plan/#3-dedicated-cpu), and [High Memory](/docs/guides/how-to-choose-a-linode-plan/#2-high-memory) plans.
 {{< /note >}}
 
 1. To create an LKE Cluster, send a `POST` request to the `/lke/clusters` endpoint. The example below displays all possible request body parameters. Note that `tags` is an optional parameter.
@@ -109,12 +109,12 @@ The available plan types for LKE worker nodes are [Shared](/docs/platform/how-to
 1. Make note of your cluster's ID, as you will need it to continue to interact with your cluster in the next sections. In the example above, the cluster's ID is `"id": 456`. You can also access your cluster's ID by [listing all LKE Clusters](#list-lke-clusters) on your account.
 
     {{< note >}}
-Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
 ### Connect to your LKE Cluster
 
-Now that your LKE cluster is created, you can access and manage your cluster using kubectl on your computer. This will give you the ability to interact with the Kubernetes API, and to create and manage [Kubernetes objects](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/) in your cluster.
+Now that your LKE cluster is created, you can access and manage your cluster using kubectl on your computer. This will give you the ability to interact with the Kubernetes API, and to create and manage [Kubernetes objects](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/) in your cluster.
 
 To communicate with your LKE cluster, kubectl requires a copy of your cluster's [*kubeconfig*](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/). In this section, you will access the contents of your kubeconfig using the Linode API and then set up kubectl to communicate with your LKE cluster.
 
@@ -169,7 +169,7 @@ The YAML file that you decode to (`cluster12345-config.yaml` here) can have any 
         kubectl config view
 
     {{< note >}}
-You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
+You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
 {{</ note >}}
 
 1. View all nodes in your LKE cluster using kubectl:
@@ -187,7 +187,7 @@ lke166-196-5d44703cd432   Ready    none   2d22h   v1.14.0
 lke166-197-5d44703cd211   Ready    none   2d22h   v1.14.0
 {{</ output >}}
 
-    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/docs/kubernetes/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/docs/kubernetes/troubleshooting-kubernetes/#kubectl-logs).
+    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/docs/guides/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/docs/guides/troubleshooting-kubernetes/#kubectl-logs).
 
 ### Persist the Kubeconfig Context
 
@@ -372,7 +372,7 @@ The response body will resemble the following:
 {{</ output >}}
 
 {{< note >}}
-Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
 ### Resize your LKE Node Pool
@@ -403,7 +403,7 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
         }' https://api.linode.com/v4/lke/clusters/12345/pools/196
 
 {{< note >}}
-Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
 ### Recycle your LKE Node Pool
@@ -428,7 +428,7 @@ To recycle your node pool, send a `POST` request to the `/lke/clusters/{clusterI
 
 ### Add New Tags to your LKE Cluster
 
-Like many Linode resources, you can [add tags](/docs/quick-answers/linode-platform/tags-and-groups/) to your LKE Cluster for organizational purposes. This section will show you how to add new tags to an existing LKE Cluster.
+Like many Linode resources, you can [add tags](/docs/guides/tags-and-groups/) to your LKE Cluster for organizational purposes. This section will show you how to add new tags to an existing LKE Cluster.
 
 {{< disclosure-note "View all of your account's tags">}}
 To view all of the tags existing on your account, issue the following request against the API:
@@ -541,6 +541,6 @@ This step is permanent and will result in the loss of data.
 
 Now that you have created an LKE cluster, you can start deploying workloads to it. Review these guides for further help:
 
-* [How to Install Apps on Kubernetes with Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/)
-* [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/kubernetes/deploy-container-image-to-kubernetes/)
-* [Troubleshooting Kubernetes](/docs/kubernetes/troubleshooting-kubernetes/)
+* [How to Install Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/)
+* [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/)
+* [Troubleshooting Kubernetes](/docs/guides/troubleshooting-kubernetes/)

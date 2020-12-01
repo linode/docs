@@ -31,6 +31,10 @@ var lnSearchEventDispatcher = {};
 			// Event with the initial blank search result.
 			EVENT_SEARCHRESULT_BLANK: 'search:results-blank',
 
+			// Event with the initial data structure. This will not contain any Algolia search results,
+			// but may contain other metadata.
+			EVENT_SEARCHRESULT_INITIAL: 'search:results-initial',
+
 			// Event that register a named search to be refreshed on any filter changes..
 			EVENT_SUBSCRIBE: 'search:subscribe',
 
@@ -89,6 +93,11 @@ var lnSearchEventDispatcher = {};
 			broadCastFilteredSearchResult: function(searchresult, toEvent) {
 				debug('broadCastFilteredSearchResult', searchresult, 'to', toEvent);
 				sendEvent(toEvent, searchresult);
+			},
+
+			sendPageInfo: function(pageInfo) {
+				debug('sendPageInfo', pageInfo);
+				sendEvent('ln:page-info', pageInfo);
 			},
 
 			events: events

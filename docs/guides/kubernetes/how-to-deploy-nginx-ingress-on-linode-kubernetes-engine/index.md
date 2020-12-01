@@ -168,7 +168,7 @@ First, add the `stable` Helm repository if you have not yet:
 
 Next, install the NGINX Ingress Controller:
 
-    helm install nginx-ingress stable/nginx-ingress --set controller.publishService.enabled=true
+    helm install my-release ingress-nginx/ingress-nginx
 
 Once installed, a LoadBalancer Service will be deployed, which creates a NodeBalancer, and an external IP address will be available. To find this external IP address, list your cluster's Services with following command and note the IP address for the `nginx-ingress-controller` in the output under `EXTERNAL-IP`. You will need this IP address for the next step.
 
@@ -179,8 +179,8 @@ NAMESPACE     NAME                            TYPE           CLUSTER-IP       EX
 default       hello-one                       ClusterIP      10.128.134.154   <none>         80/TCP                       18m    app=hello-ingress
 default       hello-two                       ClusterIP      10.128.164.145   <none>         80/TCP                       18m    app=hello-two
 default       kubernetes                      ClusterIP      10.128.0.1       <none>         443/TCP                      26h    <none>
-default       nginx-ingress-controller        LoadBalancer   10.128.15.94     45.79.61.112   80:31512/TCP,443:32562/TCP   4m3s   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
-default       nginx-ingress-default-backend   ClusterIP      10.128.211.178   <none>         80/TCP                       4m3s   app.kubernetes.io/component=default-backend,app=nginx-ingress,release=nginx-ingress
+default       my-release-nginx-server-nginx-controller        LoadBalancer   10.128.15.94     45.79.61.112   80:31512/TCP,443:32562/TCP   4m3s   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
+default       my-release-ingress-nginx-controller-admission   ClusterIP      10.128.211.178   <none>         443/TCP                       4m3s   app.kubernetes.io/component=default-backend,app=nginx-ingress,release=nginx-ingress
 kube-system   kube-dns                        ClusterIP      10.128.0.10      <none>         53/UDP,53/TCP,9153/TCP       26h    k8s-app=kube-dns
 {{</ output >}}
 

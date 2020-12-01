@@ -1,19 +1,18 @@
 <h1 class="leading-tight tracking-tight text-5xl text-titlecolor w-full lg:w-3/4">
-  {{ .CurrentSection.Parent.Params.title }} - {{ .Title }}
+  {{ .Parent.Params.title }} - {{ .Title }}
 </h1>
 <p class="pt-2 md:pt-6 text-basicgray">
-  Posted on
-  <time datetime="{{ .PublishDate }}">
-    {{ .PublishDate.Format site.Params.time_format_default }}
-  </time>
-  , Updated on
+  {{ if eq .PublishDate .Lastmod }}
+    Published
+  {{ else }}
+    Updated
+  {{ end }}
   <time datetime="{{ .Lastmod }}">
     {{ .Lastmod.Format site.Params.time_format_default }}
   </time>
   {{ with .Params.author }}
     , by {{ .name }}
   {{ end }}
-  .
 </p>
 {{ with .Params.product_description }}
   <p class="mt-8">

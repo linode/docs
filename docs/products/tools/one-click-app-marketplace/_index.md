@@ -1,5 +1,6 @@
 ---
 title: One-Click App Marketplace
+description: "The Linode One-Click App Marketplace is app creation, simplified. Create your own, customizable, applications, configurable during installation."
 tab_group_main:
     is_root: true
     title: Overview

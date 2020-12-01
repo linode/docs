@@ -1,5 +1,6 @@
 ---
 title: Resources
+description: "Resources and other information related to the Linode Billing including blog posts, community posts, and customer stories."
 tab_group_main:
     weight: 40
 ---

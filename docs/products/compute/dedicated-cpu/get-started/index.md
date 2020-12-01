@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get Started with Dedicated CPU Linodes. Deploy a Dedicated CPU instance using the Linode Cloud Manager."
 tab_group_main:
     weight: 20
 ---
