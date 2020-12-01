@@ -27,7 +27,7 @@ Linode's App Marketplace allows you to easily deploy software on a Linode using 
 
 1. From the Linode dashboard, click on the **Marketplace** button in the left-hand navigation menu.
 
-1. The Linode creation page will appear, with the **Marketplace** tab pre-selected.
+1. The Linode creation page appears, with the **Marketplace** tab pre-selected.
 
 1. Under the **Select App** section, select the app you would like to deploy:
 
