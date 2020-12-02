@@ -14,10 +14,9 @@ title: "How to Install Mediawiki on Centos 8"
 h1_title: "How to Install Mediawiki on Centos 8"
 contributor:
   name: Nathaniel Stickman
-  link: https://twitter.com/nathaniel_ps
+  link: https://github.com/nasanos
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
 ---
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software behind Wikipedia and many of the "wikis" deployed by communities and companies around the world. It provides a versatile, open, and free tool for making knowledge easily accessible and navigable. This guide explains how to install MediaWiki on CentOS 8.
@@ -43,7 +42,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo systemctl enable httpd.service
         sudo systemctl start httpd.service
 				
-2. See the guide for [How to Install Apache Web Server on CentOS 8](https://www.linode.com/docs/guides/how-to-install-apache-web-server-centos-8/) for more details and configuration options for the Apache web server.
+2. See the guide for [How to Install Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) for more details and configuration options for the Apache web server.
 
 ## Install PHP
 MediaWiki requires PHP 7.3.19–24, 7.4.3, or later. However, the CentOS package manager (Yum) only includes PHP 7.2 in its default repository. Thus, you will need to use the Remi repository to acquire one of the later PHP releases.
@@ -79,7 +78,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
         
     This script will give you the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
-3. See the guide for [How to Install MariaDB on CentOS 8](https://www.linode.com/docs/guides/how-to-install-mariadb-on-centos-8/) for more details and configuration options for the MariaDB instllation.
+3. See the guide for [How to Install MariaDB on CentOS 8](/docs/guides/how-to-install-mariadb-on-centos-8/) for more details and configuration options for the MariaDB instllation.
 
 ## Download and Extract the MediaWiki Files
 1. Download the `tar.gz` containing the latest release of the MediaWiki software from the [official MediaWiki download page](https://www.mediawiki.org/wiki/Download).
