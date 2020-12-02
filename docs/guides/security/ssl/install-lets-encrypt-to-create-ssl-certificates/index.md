@@ -15,7 +15,7 @@ contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
 deprecated: true
-deprecated_link: quick-answers/websites/secure-http-traffic-certbot/
+deprecated_link: /guides/how-to-install-certbot-on-ubuntu-18-04/
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]

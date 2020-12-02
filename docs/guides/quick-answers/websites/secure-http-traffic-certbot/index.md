@@ -14,7 +14,7 @@ modified_by:
 published: 2018-06-27
 title: Secure HTTP Traffic with Certbot
 deprecated: true
-deprecated_link: 'quick-answers/websites/'
+deprecated_link: /guides/how-to-install-certbot-on-ubuntu-18-04/
 aliases: ['/quick-answers/websites/secure-http-traffic-certbot/','/quick-answers/websites/certbot/secure-http-traffic-certbot/']
 external_resources:
   - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
