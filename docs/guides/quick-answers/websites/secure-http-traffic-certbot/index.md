@@ -8,7 +8,7 @@ tags: ["security", "web server"]
 description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
 og_description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-27
+modified: 2020-12-02
 modified_by:
   name: Linode
 published: 2018-06-27

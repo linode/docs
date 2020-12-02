@@ -7,7 +7,7 @@ description: "Let's Encrypt is an SSL certificate authority managed by the Inter
 keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2018-12-19
+modified: 2020-12-02
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
