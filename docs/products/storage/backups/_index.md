@@ -1,5 +1,6 @@
 ---
 title: Backups
+description: "Linode Backup Service is fully managed, easy, and configurable."
 tab_group_main:
     is_root: true
     title: Overview

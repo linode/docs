@@ -1,5 +1,6 @@
 ---
 title: StackScripts
+description: "Linode StackScripts allow for quick and easy customization. Create your own and join the growing library of StackScripts."
 tab_group_main:
     is_root: true
     title: Overview

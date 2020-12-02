@@ -61,7 +61,7 @@ In this section, you will install the NGINX Ingress Controller using Helm, which
 
 1. Add the Google stable Helm charts repository to your Helm repos:
 
-        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+        helm repo add stable https://charts.helm.sh/stable
 
 1. Update your Helm repositories:
 
@@ -81,7 +81,9 @@ STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 NOTES:
-The nginx-ingress controller has been installed.
+*******************************************************************************************************
+* DEPRECATED, please use https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx *
+*******************************************************************************************************The nginx-ingress controller has been installed.
 It may take a few minutes for the LoadBalancer IP to be available.
 You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-controller'
 ...
@@ -124,7 +126,7 @@ In this section you will install cert-manager using Helm and the required cert-m
 
 1. Install cert-manager's CRDs.
 
-        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.1/cert-manager.crds.yaml
+        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/latest/download/cert-manager.crds.yaml
 
 1. Create a cert-manager namespace.
 
@@ -143,7 +145,6 @@ In this section you will install cert-manager using Helm and the required cert-m
         helm install \
         cert-manager jetstack/cert-manager \
         --namespace cert-manager \
-        --version v0.15.1
 
 1. Verify that the corresponding cert-manager pods are now running.
 
@@ -169,7 +170,7 @@ Now that cert-manager is installed and running on your cluster, you will need to
 1. Using the text editor of your choice, create a file named `acme-issuer-prod.yaml` with the example configurations. Replace the value of `email` with your own email address.
 
     {{< file "~/registry/acme-issuer-prod.yaml" >}}
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
@@ -205,7 +206,7 @@ After you have a ClusterIssuer resource, you can create a Certificate resource. 
 1. Using the text editor of your choice, create a file named `certificate-prod.yaml` with the example configurations. Replace the value of `email` with your own email address. Replace the value of `spec.dnsNames` with your own domain that you will use to host your Docker registry.
 
     {{< file "~/registry/certificate-prod.yaml">}}
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: docker-registry-prod

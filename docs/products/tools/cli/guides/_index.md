@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Learn how to manage various Linode services using the Linode CLI."
 tab_group_main:
     weight: 30
 ---

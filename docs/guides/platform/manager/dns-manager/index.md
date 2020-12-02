@@ -147,7 +147,7 @@ Here's how to import a zone file:
 
 1.  From the **Domains** section, click on **Import a Zone**.
 
-    ![This page lets you import a domain zone.](domain-import-a-zone.png)
+    ![This page lets you import a domain zone.](import-zone-axfr.png "Import a domain zone with AXFR")
 
 1.  Enter the domain name in the **Domain** field, as shown in the example above.
 
