@@ -1,18 +1,18 @@
 ---
-slug: deploy-rabbitmq-with-marketplace-apps
+slug: deploy-rabbitmq-server-with-marketplace-apps
 author:
   name: Ryan Syracuse
   email: docs@linode.com
-description: 'Use the open source message broker RabbitMQ to manage sending and receiving data using Linode's Marketplace Apps.'
-og_description: 'Deploy the open source message broker RabbitMQ to manage sending and receiving data using Linode's Marketplace Apps.'
-keywords: ['rabbitmq','message broker','scheduling']
-tags: ["debian", "marketplace", "web applications","linode platform", "cloud manager"]
+description: 'Use the open source message broker RabbitMQ to manage sending and receiving data using Marketplace Apps.'
+og_description: 'Deploy the open source message broker RabbitMQ to manage sending and receiving data using Marketplace Apps.'
+keywords: ['rabbitmq', 'message broker', 'scheduling']
+tags: ["debian", "marketplace", "web applications", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified_by:
   name: Linode
 title: "How to Deploy RabbitMQ with Marketplace Apps"
-h1_title: "Deploying RabbitMQ Server with Marketplace Apps"
+h1_title: "Deploying RabbitMQ Server With Marketplace Apps"
 external_resources:
 - '[RabbitMQ](https://www.rabbitmq.com/)'
 aliases: ['/platform/marketplace/deploy-rabbitmq-with-marketplace-apps/', '/platform/marketplace/deploy-rabbitmq-with-one-click-apps/']
