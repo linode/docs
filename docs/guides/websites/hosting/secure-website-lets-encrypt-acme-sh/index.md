@@ -1,12 +1,14 @@
 ---
+slug: secure-website-lets-encrypt-acme-sh
 author:
   name: Andy Heathershaw
   email: andy@andysh.uk
-description: 'This guide shows you how to secure a website using acme.sh to obtain single and wildcard SSL certificates from Let''s Encrypt.'
-og_description: 'Learn how to obtain single and wildcard SSL certificates from Let''s Encrypt using acme.sh.'
+description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
+og_description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
 keywords: ['ssl','lets encrypt','https','website','websites','acme.sh','secure']
+tags: ['http', 'ssl', 'apache', 'nginx', 'security', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-30
+published: 2020-12-03
 modified_by:
   name: Andy Heathershaw
 title: "Secure a website or domain with Let\'s Encrypt and acme.sh"
@@ -22,9 +24,11 @@ external_resources:
 
 ## Introduction
 
-[acme.sh](https://acme.sh/) is a client application for ACME-compatible services, such as those used by [Let's Encrypt](https://letsencrypt.org/).
+[acme.sh](https://acme.sh/) is a client application for ACME-compatible services, such as those used by [Let's Encrypt](https://letsencrypt.org/). It is an alternative to the popular [Certbot](/docs/guides/quick-answers/websites/) application with two big benefits:
 
-It is an alternative to the popular Certbot application with two big benefits: it is written as pure shell scripting so it has no dependencies, and supports **a lot** more DNS providers.
+- It is written as pure shell scripting so it has no dependencies
+
+- It supports [**a lot** more DNS providers](https://github.com/acmesh-official/acme.sh/wiki/dnsapi).
 
 If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates, using Linode DNS as the domain ownership verification.
 
@@ -32,7 +36,7 @@ If you use Linode for your website's DNS, you can use acme.sh to obtain both sin
 
 1. Ensure that you have followed the [Getting Started](/docs/getting-started/) and the [Securing Your Server](/docs/security/securing-your-server/) guides.
 
-2. Decide which user account will issue and renew the certificates and switch to this user. Bear in mind if you are wanting to automatically restart a web server, or write certificates to a restricted folder, you will likely want to install acme.sh under root.
+2. Decide which user account will issue and renew the certificates and switch to this user. If you want to automatically restart a web server, or write certificates to a restricted folder, you will likely want to install acme.sh under root.
 
 ## Install acme.sh
 
@@ -42,7 +46,7 @@ Connect to your Linode and request the acme.sh installer:
 
 Or, if curl is not available on your system:
 
-    wget -O -  https://get.acme.sh | sh
+    wget -O - https://get.acme.sh | sh
 
 {{< output >}}
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -82,7 +86,7 @@ v2.8.7
 
 ## Create an API token
 
-acme.sh can use the Linode v4 API to create and remove some temporary DNS records on your domain. Follow the steps in the "Create an API Token" section in [Getting started with the Linode API](http://localhost:1313/docs/platform/api/getting-started-with-the-linode-api/) to create a token.
+acme.sh can use the Linode v4 API to create and remove some temporary DNS records on your domain. Follow the steps in the "Create an API Token" section in [Get An API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) product documentation to create a token.
 
 Ensure the token you create has "Read/Write" access to "Domains".
 
@@ -133,26 +137,52 @@ You can now use the certificate files listed above to secure your website. This 
 
 ### Apache
 
-    <VirtualHost *:443>
-        SSLEngine on
-        SSLCertificateFile /root/.acme.sh/example.com/fullchain.cer
-        SSLCertificateKeyFile /root/.acme.sh/example.com/example.com.key
-        ...
-    </VirtualHost>
+These lines (or lines similar to these) should be included in your site configuration files:
 
-### Nginx
+{{< file "" >}}
+<VirtualHost *:443>
+    SSLEngine on
+    SSLCertificateFile /root/.acme.sh/example.com/fullchain.cer
+    SSLCertificateKeyFile /root/.acme.sh/example.com/example.com.key
+    ...
+</VirtualHost>
+{{< /file >}}
 
-    server {
-        listen 443 ssl;
+You will also need to have SSL enabled for Apache. To enable it, run:
 
-        ssl_certificate /root/.acme.sh/example.com/fullchain.cer;
-        ssl_certificate_key /root/.acme.sh/example.com/example.com.key;
-        ...
-    }
+    a2enmod ssl
 
-## Renewing the certificate
+After updating your site configuration, reload Apache:
 
-Like the official Let's Encrypt client (Certbot) acme.sh will automatically renew your certificates. The installer will have created a cron job to run automatically at a random time each day:
+- On Debian-based distributions, run:
+
+        systemctl reload apache2
+
+- On CentOS and other Red Hat-based distributions, run:
+
+        systemctl reload httpd
+
+### NGINX
+
+These lines (or lines similar to these) should be included in your site configuration files:
+
+{{< file "" >}}
+server {
+    listen 443 ssl;
+
+    ssl_certificate /root/.acme.sh/example.com/fullchain.cer;
+    ssl_certificate_key /root/.acme.sh/example.com/example.com.key;
+    ...
+}
+{{< /file >}}
+
+After updating your site configuration, reload NGINX. On systemd-based distributions, run:
+
+    systemctl reload nginx
+
+## Renewing the Certificate
+
+Like the official Let's Encrypt client (Certbot), acme.sh will automatically renew your certificates. When you installed the software earlier, the installer also created a cron job. This cron job runs automatically at a random time each day:
 
     crontab -l
 
@@ -160,11 +190,7 @@ Like the official Let's Encrypt client (Certbot) acme.sh will automatically rene
 58 0 * * * "/root/.acme.sh"/acme.sh --cron --home "/root/.acme.sh" > /dev/null
 {{< /output >}}
 
-This job will check for certificates coming up for expiry and will renew them.
-
-You can instruct acme.sh to automatically install the certificates to a location readable by your web server, and to reload the web server after renewal, so it's completely automated.
-
-When you issue a certificate, append the following options:
+This job will check for certificates coming up for expiry and will renew them. You can instruct acme.sh to automatically install the certificates to a location readable by your web server, and to reload the web server after renewal, so it's completely automated. These options are available when you issue a certificate:
 
 | Option | Purpose |
 |:--------------|:------------|
@@ -185,6 +211,10 @@ For example, to put your certificates in `/etc/ssl/example.com` and restart Apac
 The target directory must exist first. To create it, run:
 
     mkdir -p /etc/ssl/example.com
+{{< /note >}}
+
+{{< note >}}
+This new example command uses certificate filesystem locations (under `/etc/ssl/`) that are different from the examples in the [Configure your Web Server](#configure-your-web-server) section (which used the `/root/.acme.sh/` folder). If you want to copy this exact example command, make sure that your web server configurations use the correct locations.
 {{< /note >}}
 
 You will now see a few more lines of output:
