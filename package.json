@@ -1,0 +1,32 @@
+{
+ "comments": {
+  "dependencies": {},
+  "devDependencies": {
+   "@babel/cli": "github.com/bep/linodedocs",
+   "@babel/core": "github.com/bep/linodedocs",
+   "@babel/preset-env": "github.com/bep/linodedocs",
+   "@fullhuman/postcss-purgecss": "github.com/bep/linodedocs",
+   "@tailwindcss/custom-forms": "github.com/bep/linodedocs",
+   "@tailwindcss/typography": "github.com/bep/linodedocs",
+   "autoprefixer": "github.com/bep/linodedocs",
+   "core-js": "github.com/bep/linodedocs",
+   "postcss-cli": "github.com/bep/linodedocs",
+   "tailwindcss": "github.com/bep/linodedocs"
+  }
+ },
+ "dependencies": {},
+ "devDependencies": {
+  "@babel/cli": "^7.10.5",
+  "@babel/core": "^7.11.1",
+  "@babel/preset-env": "^7.11.0",
+  "@fullhuman/postcss-purgecss": "^2.3.0",
+  "@tailwindcss/custom-forms": "^0.2.1",
+  "@tailwindcss/typography": "^0.1.4",
+  "autoprefixer": "~9.7.6",
+  "core-js": "^3.6.5",
+  "postcss-cli": "^7.1.1",
+  "tailwindcss": "~1.7.3"
+ },
+ "name": "linode-docs",
+ "version": "0.1.0"
+}

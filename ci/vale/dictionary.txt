@@ -21,8 +21,11 @@ aker
 alef
 alertmanager
 alexey
+alfano
 alives
 allmasquerade
+allowlist
+allowlisting
 alphanumerics
 amavis
 amavisd
@@ -42,6 +45,7 @@ appletalk
 approvers
 appserver
 apxs
+architecting
 aren
 argv
 arping
@@ -92,6 +96,8 @@ backtick
 backticks
 backupninja
 bampton
+balarin
+bantime
 barebones
 base64
 basearch
@@ -99,11 +105,13 @@ bashdoor
 bashrc
 bc
 berkshelf
+bernd
 binlog
 biomes
 bitbucket
 bitnami
 bitrate
+bitwarden
 blkid
 blocklists
 blockwise
@@ -119,8 +127,10 @@ boto
 bounceback
 brackley
 bram
+brd
 browserify
 bs4
+btmp
 bufio
 bugtracker
 buildbot
@@ -168,12 +178,14 @@ chefspec
 chgrp
 chmod
 chown
+christianwan
 chromecast
 chroot
 chrooting
 chrooted
 citad
 cjones
+clamav
 clearsign
 clearspace
 cli
@@ -201,6 +213,7 @@ comodo
 completekey
 conda
 config
+configr
 configs
 configtest
 configurability
@@ -241,6 +254,7 @@ ctools
 ctrl
 ctx
 cuda
+cutover
 cyberduck
 cyg
 cygwin
@@ -420,6 +434,7 @@ file1
 filebeat
 filecap
 filecaps
+fileglob
 filemode
 filepath
 filepaths
@@ -428,6 +443,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+findtime
 finnix
 firewalld
 firewalling
@@ -435,6 +451,7 @@ firstsite
 flamegraph
 flamegraphs
 flatpress
+flowlens
 flyspray
 foodcritic
 fortran
@@ -444,6 +461,7 @@ fragging
 frakti
 framesets
 freedns
+freshclam
 friendster
 frontend
 frontmatter
@@ -500,6 +518,7 @@ gnulinux
 gnutls
 gogs
 golang
+goldmark
 goroutine
 goroutines
 goto
@@ -548,6 +567,7 @@ hexo
 hiera
 highstate
 hilights
+hilmar
 hl2
 hl2
 hmac
@@ -603,6 +623,7 @@ ifnames
 iframe
 iframes
 ifup
+ignoreip
 ikiwiki
 im
 imagize
@@ -664,9 +685,11 @@ jenkinsfile
 jenkinsx
 jetpack
 jez
+jitsi
 jk
 jks
 jobd
+johansson
 joomla
 journalctl
 journald
@@ -746,6 +769,7 @@ libphp
 libpri
 libracy
 libsasl2
+libyang
 libuv
 lifecycle
 lighthttpd
@@ -755,6 +779,7 @@ ligttpd
 linewise
 linkerd
 linode
+linodego
 linodes
 lish
 listdir
@@ -774,6 +799,7 @@ logdir
 logfile
 logfiles
 loglevel
+logpath
 logrotate
 logstash
 logwatch
@@ -793,6 +819,7 @@ lugano
 luminus
 lxd
 lxml
+lynis
 lzma
 lzopio
 macos
@@ -823,6 +850,7 @@ matplotlib
 mawk
 maxconn
 maxdepth
+maxretry
 mbit
 mbits
 mbox
@@ -843,6 +871,7 @@ metabase
 metacity
 metapackage
 metaparameters
+metorik
 metricbeat
 microblogs
 microservice
@@ -867,6 +896,7 @@ misconfigured
 mitigations
 mkdir
 mnesia
+mngtmpaddr
 moby
 moddable
 modsecurity
@@ -985,6 +1015,7 @@ novaclient
 novell
 npm
 npmjs
+npx
 nrcpt
 ns1
 ns2
@@ -996,7 +1027,9 @@ ntpd
 nullval
 num
 numpy
+nvidia
 nvim
+nvm
 octopress
 odoo
 oftc
@@ -1057,6 +1090,7 @@ passwordless
 patroni
 pbr
 pem
+pentest
 pepi
 percona
 performant
@@ -1064,6 +1098,7 @@ permalink
 permalinks
 pflogsumm
 pgpass
+pharmer
 pharo
 phonebook
 php
@@ -1123,6 +1158,7 @@ procs
 productpage
 prosodyctl
 proto
+protobuf
 protocode
 proxied
 proxying
@@ -1182,9 +1218,12 @@ redir
 redis
 redmin
 redmine
+redstone
 reenable
 reenabling
+referer
 refspec
+regexes
 reimported
 reindexing
 reinstalls
@@ -1205,6 +1244,7 @@ resolvconf
 respawn
 resque
 restapi
+retargetly
 retpoline
 retrans
 reusability
@@ -1212,6 +1252,7 @@ reutilize
 richlanguage
 rimap
 ritchie
+rkhunter
 rkt
 rmem
 ro
@@ -1257,10 +1298,12 @@ saslauth
 saslauthd
 sasldb
 savas
+savvii
 sbackup
 sbin
 sbopkg
 scgi
+schaeffer
 scm
 scp
 scrapy
@@ -1281,6 +1324,7 @@ sed
 selinux
 sendable
 sendmail
+sentdex
 seo
 serv
 server1
@@ -1488,6 +1532,7 @@ turtl
 tw
 txt
 txz
+tzurbaev
 ucd
 udp
 ufw
@@ -1628,6 +1673,7 @@ whitelisting
 whitespace
 whitespaces
 whois
+whowatch
 wi
 widgits
 wildfly
@@ -1641,6 +1687,7 @@ wlp6s0
 wmem
 wordcloud
 wordcount
+wordfence
 wordpress
 worker1
 worker2
@@ -1650,6 +1697,7 @@ writecaps
 ws
 wsgi
 wsrep
+wtmp
 www
 wx
 xabbix
@@ -1709,4 +1757,5 @@ zonefiles
 zope
 zpool
 zsh
+zshrc
 zxvf

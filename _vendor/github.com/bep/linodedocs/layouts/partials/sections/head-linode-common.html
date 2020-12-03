@@ -1,0 +1,18 @@
+{{/* 
+Loads resources from https://github.com/linode/linode-website-partials    
+See /config/_default/module.toml 
+*/}}
+{{ $js := resources.Get "linode/header.js" }}
+{{ $styles := (resources.Match "linode/*.css")  | resources.Concat "linode/header-footer.css" }}
+{{ if or (not $js) (not $styles)}}
+  {{ errorf "linode-website-partials: asset(s) not found"}}
+{{ end }}
+{{ if  hugo.IsProduction  }}
+  {{ $styles = $styles | minify | fingerprint }}
+{{ end }}
+<link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
+{{ partial "helpers/script-src.html" $js }}
+{{/* TrustArc for cookie consents. Also see the partial sections/before-body-end.html */}}
+<script async crossorigin src="https://consent.trustarc.com/notice?domain=linode.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1"></script>
+{{/* Fonts */}}
+<link id="theme__google-fonts-css" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Oswald:wght@300;400&display=swap" rel="stylesheet">

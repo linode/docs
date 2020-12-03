@@ -1,0 +1,113 @@
+{{ partial "sections/navigation/explorer-icons.html" .}}
+<div id="explorer-component" class="explorer box-border" x-data="lnSearchExplorer.New(lnSearchConfig)" x-init="function() { init(); }"
+  @nav:toggle.document="receiveToggle($event.detail)" @search:results-blank.once.document="receiveDataInit($event.detail);" @search:results.document="receiveData($event.detail);"
+  @hashchange.window="onHashchange();" @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" @turbolinks:render.document="onTurbolinksRender($event.data);"
+  @click.away="closeIfMobile()" data-turbolinks-permanent>
+  <nav class="h-full block top-0 overflow-x-hidden">
+    <ul class="search-explorer-root bg-backgroundcolor" x-ref="explorer" x-show="isOpen()" x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700"
+      x-transition:enter-start="opacity-0 transform mobile:-translate-x-8 sm:-translate-y-8" x-transition:enter-end="opacity-100 transform mobile:translate-x-0 sm:translate-y-0"></ul>
+  </nav>
+  <template x-ref="templateLoopRoot">
+    <template x-if="open">
+      <template x-for="node in data.rootNode.sections" :key="node.key"></template>
+    </template>
+  </template>
+  <template x-ref="templateLoopNested">
+    <template x-if="node.open">
+      <template x-for="node in node.sections" :key="node.key"></template>
+    </template>
+  </template>
+  <template x-ref="templateNodeLoop">
+    <template x-for="node in node.sections"></template>
+  </template>
+  <template x-ref="templateNodeLoop">
+    <template x-for="node in node.sections"></template>
+  </template>
+  <template x-ref="templateTree2">
+    <li class="explorer__node">
+      <button class="btn bg-blue-200 p-2 m-2" :class="{ 'ml-4':  node.level > 1 }" x-text="node.title" @click="node.toggleOpen()"></button>
+      <ul class="node-tree h-full" x-show="node.open"></ul>
+    </li>
+  </template>
+  <template x-ref="templateTree">
+    <li class="explorer__node" x-bind:class="{
+      'explorer__node--after-first': node.level > 1,
+      'pl-10': node.level === 2
+    }" x-show.transition.200ms="!node.hidden" :data-testid="`li-${ node.level }`">
+      <div class="explorer__node__inner" x-bind:class="{
+        'border-l-2 ml-2': node.level > 1,
+        'border-gray-500': node.showBorder2(),
+        'border-brand': node.showBorder1(),
+        'border-l-transparent': (!node.showBorder1() && !node.showBorder2())
+      }" :data-testid="`node-${ node.key }`">
+        <div x-bind:class="{ 
+      'explorer__row--first pl-container bg-white border-b-gray text-gray-900' : (node.level===1), 
+      'bg-gray-300': node.showBorder1(),
+      'pl-3': node.level > 2 && !node.open,
+      'pl-2': node.level > 1 && node.open,
+      'explorer__row--after-first text-gray-700' : (node.level > 1),
+      }" class="flex items-center justify-between pr-6">
+          <div class="flex content-end">
+            <div x-show="node.level === 1">
+              <svg x-bind:class="{
+                  'text-gray-300': node.disabled,
+                  'text-brand': node.open }" class="fill-current block w-5" style="height: 16.87px;">
+                <use x-bind:href="node.icon"></use>
+              </svg>
+            </div>
+            <a x-bind:href="node.href" @click="node.onClick($event)" x-bind:class="{
+                'text-brand': node.level === 1 && node.open,
+                'text-titlecolor': !node.disabled && node.level === 1 && !node.open,
+                'pl-4': node.level === 1,
+                'text-textcolor': (node.level > 1),
+                'font-semibold': (node.level <= 2 || node.level > 2 && node.open),
+                'text-sm': (node.level === 2),
+                'text-xs': (node.level > 2),
+                'text-gray-300': node.disabled
+                }" class="block relative w-36 cursor-pointer pr-3 no-underline capitalize z-10" @click="node.toggleOpen()" data-testid="node-link">
+              <span :class="{ 
+                'after-second': node.level > 2
+              }" class="bg-container h-full"></span>
+              <span x-html="node.title"></span>
+            </a>
+          </div>
+          <div class="flex items-center h-full">
+            <span x-bind:class="{ 
+                'text-gray-100': node.disabled,
+                'text-basicgray': !node.disabled }" x-html="node.count" class="text-xs font-semibold pr-6" data-testid="node-count"></span>
+            <template x-if="node.disabled || node.isLeaf()">
+              <div class="w-3"></div>
+            </template>
+            <div class="z-10" x-show="!data.disabled && !node.isLeaf()">
+              <button type="button" name="open" class="btn-icon h-full flex items-center justify-center" 
+                x-bind:disabled="node.disabled"
+                x-bind:class="{ 'text-gray-200': node.disabled, 'text-textcolor': !node.disabled }"
+                @click.stop="node.toggleOpen()" @mouseover.once.stop="node.loadPages()" :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`">
+                <svg class="w-4 h-3 titlecolor" x-show="!node.open">
+                  <use href="#icon--arrow-down"></use>
+                </svg>
+                <svg class="w-4 h-3 titlecolor" x-show="node.open">
+                  <use href="#icon--arrow-up"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="node-tree h-full border-l-transparent pl-2" x-bind:class="{ 
+          'pl-2':  (node.level === 2 && !node.open)
+         }" x-show="node.open"></ul>
+        <ul class="explorer-node__pages" x-bind:class="{ 'pl-6': (node.level > 1) }" x-show.transition.in.opacity="node.open">
+          <template x-for="(p, index) in node.pages" :key="p.href">
+            <li class="w-56">
+              <a @click="data.dirty++" x-html="p.title" x-bind:href="p.href" :class="{
+                  'text-textcolor': !p.isActive(),
+                  'text-brand font-semibold': p.isActive(),
+                }" class="page-link mr-2 text-xs block capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none"></a>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </li>
+  </template>
+  <template x-ref="searchNodeTemplate"></template>
+</div>

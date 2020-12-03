@@ -1,0 +1,11 @@
+{{ $img := partial "funcs/get-bundle-image.html" .page }}
+{{ $command := .command | default "Fill" }}
+{{ $options := .options | default "640x400" }}
+{{ if eq $command "Fill" }}
+  {{ $img = $img.Fit $options }}
+{{ else if eq $command "Fit" }}
+  {{ $img = $img.Fill $options }}
+{{ else if eq $command "Resize" }}
+  {{ $img = $img.Resize $options }}
+{{ end }}
+<img src="{{ $img.RelPermalink }}" alt="{{ $img.Title }}" width="{{ $img.Width }}" height="{{ $img.Height }}" class="w-full {{ .class }}" loading="lazy">

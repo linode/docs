@@ -33,13 +33,13 @@ def parse_aliases(alias_line):
     aliases_as_clean_strings = map(
         lambda x: x.strip(" '[]"), aliases_as_messy_strings)
 
-    return set(map(lambda x: os.path.normpath(x).lower() + "/", aliases_as_clean_strings))
+    return set(map(lambda x: ("" if os.path.isabs(x) else "/") + os.path.normpath(x).lower() + "/", aliases_as_clean_strings))
 
 
 def alias_style_path_for_path(content_dir, path):
     directory = os.path.dirname(path) if os.path.isfile(path) else path
     directory_abs_path = os.path.abspath(directory)
-    return os.path.relpath(directory_abs_path, content_dir).lower() + "/"
+    return "/" + os.path.relpath(directory_abs_path, content_dir).lower() + "/"
 
 
 def insert_alias(content_dir, markdown_file):
