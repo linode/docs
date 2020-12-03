@@ -1,16 +1,18 @@
 ---
+slug: backup-mariadb-mysql-to-object-storage-with-restic
 author:
   name: Andy Heathershaw
   email: andy@andysh.uk
-description: 'This guide shows you how to use Restic to backup your MariaDB or MySQL databases onto Linode Object Storage.'
-og_description: 'Learn how to backup your MariaDB and MySQL databases off your Linode and onto Linode Object Storage with Restic.'
+description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
+og_description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
+tags: ['mariadb', 'mysql', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-24
+published: 2020-12-03
 modified_by:
   name: Andy Heathershaw
-title: "Backup MariaDB databases to Linode Object Storage with Restic"
-h1_title: "Backup MariaDB or MySQL databases to Linode Object Storage with Restic"
+title: "Backup MariaDB Databases to Linode Object Storage with Restic"
+h1_title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
 contributor:
   name: Andy Heathershaw
   link: https://andysh.uk
@@ -36,7 +38,7 @@ MariaDB is a generally-compatible fork of MySQL. Where you see a reference to "M
 {{< /note >}}
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
@@ -53,45 +55,59 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Install Restic
 
-{{< content "applications/backups/install-restic-shortguide" >}}
+{{< content "install-restic-shortguide" >}}
 
 ## Create the Restic Repository
 
-{{< content "applications/backups/create-restic-repository-shortguide" >}}
+{{< content "create-restic-repository-shortguide" >}}
 
-## Set Up Automated Database Backups
+## Backup All Databases
 
 {{< note >}}
-In each of the below commands, remember to replace "your-bucket-name" and "us-east-1.linodeobjects.com" with the name of your Object Storage bucket and cluster hostname.
+In each of the below commands, remember to replace `your-bucket-name` and `us-east-1.linodeobjects.com` with the name of your Object Storage bucket and cluster hostname.
 {{< /note >}}
-
-### Backup all databases
 
 The mysqldump utility is used to dump the contents of a database to a SQL file on-disk on your Linode. This simple shell script will loop through all
 databases on your server, and dump each one to its own SQL file.
 
-Create a file in /usr/local/bin:
+1. Create a file in `/usr/local/bin`:
 
-    sudo nano /usr/local/bin/backup_mariadb
+        sudo nano /usr/local/bin/backup_mariadb
 
-Copy the following contents into the file:
+1. Copy the following contents into the file:
 
-{{< file "/usr/local/bin/backup_mariadb" >}}#!/bin/bash
+    {{< file "/usr/local/bin/backup_mariadb" >}}
+#!/bin/bash
+PATH="/usr/local/bin:$PATH"
 source /root/restic_params
-mysql -N -e 'show databases' | while read dbname; do /usr/bin/mysqldump --complete-insert "$dbname" > "/var/backups/mariadb/$dbname".sql; done
+mysql --defaults-extra-file=/root/mysql_cnf -N -e 'show databases' | while read dbname; do /usr/bin/mysqldump --defaults-extra-file=/root/mysql_cnf --complete-insert "$dbname" > "/var/backups/mariadb/$dbname".sql; done
 restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw backup /var/backups/mariadb
 {{< /file >}}
 
-Make the script executable and create the folder to hold the backup files (if it doesn't already exist):
+1. Make the script executable and create the folder to hold the backup files (if it doesn't already exist):
 
-    chmod u+x /usr/local/bin/backup_mariadb
-    mkdir -p /var/backups/mariadb/
+        sudo chmod u+x /usr/local/bin/backup_mariadb
+        sudo mkdir -p /var/backups/mariadb/
 
-You can now run your first backup:
+1. Line 3 of the script refers to a MySQL configuration file named `msql_cnf`, which is used to authenticate with your database. Create this file under your `/root` directory and add the username and password for your database:
 
-    backup_mariadb
+        sudo nano /root/mysql_cnf
 
-{{< output >}}
+    {{< file "/root/mysql_cnf" >}}
+[client]
+user="your-database-username"
+password="your-database-password"
+{{< /file >}}
+
+1. Use the `chmod` command to restrict read access for the file to the root user:
+
+        sudo chmod 600 /root/mysql_cnf
+
+1. You can now run your first backup:
+
+        sudo backup_mariadb
+
+    {{< output >}}
 mysqldump: Got error: 1044: "Access denied for user 'root'@'localhost' to database 'information_schema'" when using LOCK TABLES
 mysqldump: Got error: 1142: "SELECT, LOCK TABLES command denied to user 'root'@'localhost' for table 'accounts'" when using LOCK TABLES
 repository 1689c602 opened successfully, password is correct
@@ -104,9 +120,9 @@ processed 4 files, 469.825 KiB in 0:01
 snapshot 81072f28 saved
 {{< /output >}}
 
-Check your backups have been created - you should get one file per database:
+1. Check your backups have been created - you should get one file per database:
 
-    ls -al /var/backups/mariadb
+        ls -al /var/backups/mariadb
 
 {{< output >}}
 total 492
@@ -118,9 +134,9 @@ drwxr-xr-x 3 root root   4096 Jul 21 19:46 ..
 -rw-r--r-- 1 root root   1292 Jul 21 19:47 wordpress.sql
 {{< /output >}}
 
-You should also have one snapshot in your Restic repository:
+You should also have one snapshot in your Restic repository; use Restic's `snapshot` command to view it:
 
-    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw snapshots
+    sudo /bin/bash -c "source /root/restic_params; restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw snapshots"
 
 {{< output >}}
 repository 1689c602 opened successfully, password is correct
@@ -131,7 +147,7 @@ ID        Time                 Host        Tags        Paths
 1 snapshots
 {{< /output >}}
 
-### Run the backup script automatically
+## Set Up Automated Database Backups
 
 Linux has several ways of running a job on a schedule basis. Pick one of the methods below to configure the backup script to run periodically.
 
@@ -139,21 +155,21 @@ Linux has several ways of running a job on a schedule basis. Pick one of the met
 Consider your databases' usage, how much data you could potentially lose, and the storage space required when choosing how often to run your script.
 {{< /note >}}
 
-### 1. Cron
+### Cron
 
 Edit your "crontab" file:
 
     sudo crontab -e
 
-Add a line for your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron/) article for additional scheduling options.
+Add a line for your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) article for additional scheduling options.
 
     0 * * * * /usr/local/bin/backup_mariadb > /tmp/mariadb-backup-log.txt 2>&1
 
-### 2. Systemd
+### Systemd
 
 Systemd can run commands (known as "units") on a periodic basis using "timers". You can use systemd commands to monitor when the timers and commands last ran, and the output from them.
 
-To schedule a command, you need 2 configuration files - the command to run (known as the service) and when to run it (the timer.)
+To schedule a command, you need 2 configuration files: the command to run (known as the service) and when to run it (the timer).
 
 Create the unit configuration file:
 
@@ -203,19 +219,24 @@ To explore the backups and files held within Restic repository, you must use the
 
 ![Restic Object Storage bucket in Cloud Manager](backup-restic-bucket-object-storage.png)
 
-### Create an alias
+### Create an Alias
 
 It can get tedious typing out the arguments to the Restic command. To make life easier for maintenance and daily management, create an alias for the command with the arguments you need.
 
-In your profile's aliases file, add the line:
+{{< note >}}
+Because the credentials that Restic uses were created under the root user's home folder, the example alias in this section will only work for the root user.
+{{< /note >}}
 
+In your root user's profile/aliases file, add these lines:
+
+    source /root/restic_params
     alias myrestic='restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw'
 
 After logging out and back in again, you can run restic using your aliased command:
 
     myrestic snapshots
 
-### Restore a backup
+### Restore a Backup
 
 Backups are no good if you cannot restore them. It's a good idea to test our your backups once in a while.
 
@@ -233,7 +254,7 @@ The "-t" (target) parameter tells Restic where to restore your backup. Restic re
 
 To restore a backup from a specific point-in-time, identify the snapshot ID in which it was backed up using the snapshots command (the first column is the Snapshot ID):
 
-    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw snapshots
+    sudo /bin/bash -c "source /root/restic_params; restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw snapshots"
 
 {{< output >}}
 repository 1689c602 opened successfully, password is correct
@@ -246,13 +267,13 @@ ID        Time                 Host        Tags        Paths
 
 Pass the selected ID to the restore command instead of "latest":
 
-    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -t /root
+    sudo /bin/bash -c "source /root/restic_params; restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -t /root"
 
 The above commands will restore all databases taken in the backup. If you only want a selected backup, pass the filename using the "-i" parameter - along with either "latest" or the snapshot ID, as above:
 
-    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -i wordpress.sql -t /root
+    sudo /bin/bash -c "source /root/restic_params; restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -i wordpress.sql -t /root"
 
-### Maintain your repository
+### Maintain your Repository
 
 Your backups can grow very quickly, especially if you backup a sizeable database every hour.
 
