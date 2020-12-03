@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.80.0
+  version: 4.81.0
 
   title: Linode API
   description: |
@@ -132,7 +132,7 @@ info:
     |-----------------------|--------|
     | **Authorization URL** | https://login.linode.com/oauth/authorize |
     | **Token URL** | https://login.linode.com/oauth/token |
-    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br />|
+    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows acces to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`maintenance:read_only` - Allows access to GET information about Maintenance on your account.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
 
     ## Requests
 
@@ -749,7 +749,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - events:read_only
+        - events:read_write
       responses:
         '200':
           description: Events seen.
@@ -6055,7 +6055,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-         - stackscripts:read_write
+        - stackscripts:read_write
       requestBody:
         description: The properties to set for the new StackScript.
         required: true
@@ -8073,9 +8073,9 @@ paths:
       operationId: getManagedIssues
       x-linode-cli-action: issues-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: >
@@ -8161,9 +8161,9 @@ paths:
       operationId: getManagedLinodeSettings
       x-linode-cli-action: linode-settings-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: >
@@ -9169,7 +9169,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - firewalls:read_only
+        - firewall:read_only
       responses:
         '200':
           description: Returns an array of Firewalls.
@@ -12223,9 +12223,9 @@ paths:
       operationId: getProfileApps
       x-linode-cli-action: apps-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: |
@@ -14464,6 +14464,8 @@ components:
             'domains:read_write': Allows access to all Domain endpoints.
             'events:read_only': Allows access to GET your Events.
             'events:read_write': Allows access to all endpoints related to your Events.
+            'firewall:read_only': Allows access to GET information about your Firewalls.
+            'firewall:read_write': Allows acces to all Firewall endpoints.
             'images:read_only': Allows access to GET your Images.
             'images:read_write': Allows access to all endpoints related to your Images.
             'ips:read_only': Allows access to GET your ips.
@@ -14474,8 +14476,11 @@ components:
             'lke:read_write': Allows access to all endpoints related to LKE Clusters on your Account.
             'longview:read_only': Allows access to GET your Longview Clients.
             'longview:read_write': Allows access to all endpoints related to your Longview Clients.
+            'maintenance:read_only': Allows access to GET information about Maintenance on your account.
             'nodebalancers:read_only': Allows access to GET NodeBalancers on your Account.
             'nodebalancers:read_write': Allows access to all NodeBalancer endpoints.
+            'object_storage:read_only': Allows access to GET information related to your Object Storage.
+            'object_storage:read_write': Allows access to all Object Storage endpoints.
             'stackscripts:read_only': Allows access to GET your StackScripts.
             'stackscripts:read_write': Allows access to all endpoints related to your StackScripts.
             'volumes:read_only': Allows access to GET your Volumes.
@@ -14856,6 +14861,8 @@ components:
           example: '2018-01-15T00:01:01'
           readOnly: true
           x-linode-cli-display: 6
+          x-linode-filterable: true
+          nullable: true
         website:
           type: string
           format: url
@@ -18330,6 +18337,12 @@ components:
           minLength: 3
           description: >
             The URL at which this Service is monitored.
+
+
+            URL parameters such as `?no-cache=1` are preserved.
+
+
+            URL fragments/anchors such as `#monitor` are **not** preserved.
           example: https://example.org
           x-linode-cli-display: 5
         timeout:
