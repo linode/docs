@@ -16,7 +16,7 @@ published: 2015-01-20
 title: Common DNS Configurations
 ---
 
-![Common DNS Configurations](common-dns-configurations.png "Common DNS Configurations")
+<iframe width="840" height="472.5" src="https://www.youtube.com/embed/Vb1JsfZlFLE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Set Up a Domain
 

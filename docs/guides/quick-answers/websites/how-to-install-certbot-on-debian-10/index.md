@@ -10,7 +10,6 @@ tags: ["debian", "security", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-22
 modified: 2020-03-22
-image: Installing_Certbot_for_TLS_on_Debian10_1200x631.png
 modified_by:
   name: Linode
 title: 'How to Install Certbot for TLS on Debian 10'
@@ -22,6 +21,9 @@ relations:
         keywords:
             - distribution: Debian 10
 ---
+
+<iframe width="840" height="472.5" src="https://www.youtube.com/embed/WPPBO-QpiJ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## What is Certbot?
 
 Certbot is a tool that automates the process of getting a signed certificate via [Let's Encrypt](https://letsencrypt.org/how-it-works/) to use with TLS.

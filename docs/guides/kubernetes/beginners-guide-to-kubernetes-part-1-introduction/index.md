@@ -20,7 +20,7 @@ external_resources:
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/','/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/']
 ---
 
-![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
+<iframe width="840" height="472.5" src="https://www.youtube.com/embed/87FJQPorviM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 {{< note >}}
 This is the first guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.

@@ -88,6 +88,8 @@ If Network Helper is unable to determine the operating system during boot, or if
 
 ## Connect to Your Linode via SSH
 
+<iframe width="840" height="472.5" src="https://www.youtube.com/embed/ZVMckBHd7WA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
 * **Linux:** You can use a terminal window, regardless of desktop environment or window manager.
