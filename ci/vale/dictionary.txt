@@ -377,6 +377,7 @@ elpaso
 email2email
 emojivoto
 ender
+enduser
 enix
 env
 envs
@@ -1383,6 +1384,7 @@ snapd
 snipcart
 snmp
 snmpd
+softaculous
 softlimit
 solaris
 solr
@@ -1668,6 +1670,7 @@ webservice
 websocket
 webtatic
 webupd8
+webuzo
 weechat
 Weinberger
 welcometext
