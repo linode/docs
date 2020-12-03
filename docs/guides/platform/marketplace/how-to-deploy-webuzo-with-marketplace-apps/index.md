@@ -59,7 +59,7 @@ Webuzo is now installed and ready to use.
 
 1.  The Webuzo setup wizard is served on port 2004, to access it, navigate to the IP address of your server followed by port 2004. For example, `http://203.0.113.0:2004`, replacing the IP address with values for your server.
 
-    ![Webuzo Setup Screen](webuzo-setup-screen.png "Webuzo Setu Screen")
+    ![Webuzo Setup Screen](webuzo-setup-screen.png "Webuzo Setup Screen")
 
 1.  At the setup screen, fill in the fields and click the **Install** button.
 
