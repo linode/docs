@@ -9,7 +9,7 @@ keywords: ['jitsi','marketplace', 'server']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2020-12-03
+modified: 2020-12-04
 modified_by:
   name: Linode
 title: "How to Deploy Jitsi with Marketplace Apps"
@@ -45,7 +45,7 @@ If Jitsi is not created with the SSL option enabled, it uses a self-signed certi
 |:--------------|:------------|
 | **The hostname for your server** | The [hostname](/docs/guides/getting-started/#set-the-hostname) for the server. The default value "meet" is filled in when you select Jitsi from the Marketplace Apps; feel free to change this. |
 | **Your domain** | The domain name where you wish to host your Jitsi server. For example, `example.com`. |
-| **Your Linode API Token.** | Your Linode API access token is needed to create your DNS records and to create the Let's Encrypt SSL certificate. If you don't have a token, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
+| **Your Linode API Token.** | Your Linode API access token is needed to create your DNS records and to create the Let's Encrypt SSL certificate. If you don't have a token, you must [create one](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. If `No` is selected, the Jitsi app triggers security warnings in most web browsers. |
 | **Admin Email for Let's Encrypt certificate** | The email you wish to use for the SSL certificate. This email address receives notifications when the certificate needs to be renewed. |
 
