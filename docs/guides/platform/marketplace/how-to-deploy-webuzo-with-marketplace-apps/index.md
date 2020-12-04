@@ -21,7 +21,7 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-webuzo-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webuzo-with-one-click-apps/']
 ---
 
-Softaculous [Webuzo](https://www.webuzo.com) is a LAMP stack control panel that allows you to deploy a growing number of applications and scripts on your server with a single click.
+Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control panel that allows you to deploy a growing number of applications and scripts on your server with a single click.
 
 ## Deploy Webuzo with Marketplace Apps
 
@@ -55,24 +55,24 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Getting Started after Deployment
 
-Webuzo is now installed and ready to use.
+The Webuzo application is now being served on your Linode, however it still requires a few additional steps to fully complete the installation process.
 
 1.  The Webuzo setup wizard is served on port 2004, to access it, navigate to the IP address of your server followed by port 2004. For example, `http://203.0.113.0:2004`, replacing the IP address with values for your server.
 
     ![Webuzo Setup Screen](webuzo-setup-screen.png "Webuzo Setup Screen")
 
-1.  At the setup screen, fill in the fields and click the **Install** button.
+1.  At the setup screen, fill in the fields and click the **Install** button. The installation may take a few minutes to fully complete.
 
-1.  Webuzo Congratulates you on completing the setup and displays an information screen.
+1.  Once installation is completed, Webuzo Congratulates you on completing the setup and displays a confirmation screen.
 
     ![Webuzo Post-Setup Wizard](webuzo-post-setup-wizard.png "Webuzo Post-Setup Wizard")
 
-    Here you find two links. One for the **Admin Panel** and one for the page where you can begin installing applications. The second is called the **Enduser Panel** and you can also access from the Admin Panel. Both require you to login using the user you just created on the setup screen.
+    Here you find two links. One for the **Admin Panel** and one for the page where you can begin installing applications. The second is called the **Enduser Panel**, which can also be accessed from the Admin Panel. Both require you to login using the username and password you just created on the setup screen.
 
     - Admin Panel: `http://your.ip.address:2004`
     - Enduser Panel: `http://your.ip.address:2002`
 
-1.  The Admin Panel allows you to change settings for what scripts and apps you are able to install as well as update those scripts and apps.
+1.  The Admin Panel allows you to change settings for what scripts and apps you are able to install and provides the option to update them as needed.
 
     ![Webuzo Admin Panel](webuzo-admin-panel.png "Webuzo Admin Panel")
 
