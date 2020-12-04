@@ -1,4 +1,5 @@
 ---
+slug: install-restic-shortguide
 author:
   name: Andy Heathershaw
   email: andy@andysh.uk
