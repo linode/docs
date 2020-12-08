@@ -28,7 +28,7 @@ aliases: ['/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/'
 
 ## Before You Begin
 
-Discourse requires that you have a domain name and SMTP email before installation.
+Discourse requires that you have a domain name and access to a personal SMTP email server before installation.  This requires either having access to a pre-existing SMTP server, or setting up an [SMTP Relay](https://www.linode.com/community/questions/387/does-linode-offer-an-smtp-relay-service) through a third party. The Discourse Marketplace App will **require** an SMTP username and password for a server under your control in order to successully complete the installation.
 
   - If you don't already have your domain hosted at Linode, the install creates A and AAAA domain records for you.
 
@@ -36,11 +36,12 @@ Discourse requires that you have a domain name and SMTP email before installatio
 
     - Ensure that your domain registrar is [using Linode's name servers](/docs/platform/manager/dns-manager/#use-linodes-name-servers-with-your-domain).
 
-  - Additionally, the SMTP user must be able to send email from `noreply@subdomain.your-domain.com` for administrator account verification.
+  - Additionally, the SMTP user must be able to send email from `noreply@your-domain.com` for administrator account verification.
 
     - For example, if you enter a subdomain of `discourse` and your domain name is `example.com`, then the SMTP user must be able to send email from `noreply@discourse.example.com`.
 
     - You are not required to use a subdomain. Therefore, if you only setup `example.com` with no subdomain, the email used for verification would be `noreply@example.com`.
+
 
 ## Deploy Discourse with Marketplace Apps
 
@@ -91,7 +92,7 @@ Discourse is now installed and ready to use.
     - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain), confirm that there are now an entries for your domain and possible subdomain.
     - [Configure rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
 
-1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/guides/dns-manager/#add-dns-records) required to send email as specified from your email provider.
+1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/guides/dns-manager/#add-dns-records) required to send email as specified by your email provider.
 
 1.  You can now navigate to the Discourse app in your browser with the fully qualified domain name you entered during configuration, `https://subdomain.your-domain.com` or `https://your-domain.com`.
 
@@ -103,7 +104,7 @@ Discourse is now installed and ready to use.
 
     ![Discourse Register Admin Account Page](discourse-register-admin-account.png "Discourse Register Admin Account Page")
 
-1.  Discourse sends a confirmation email for account verification. After you receive the email and confirm, you are redirected to the welcome screen where you are walked through a wizard to setup your Discourse.
+1.  Discourse sends a confirmation email for account verification from your SMTP server. After you receive the email and confirm, you are redirected to the welcome screen where you are walked through a wizard to setup your Discourse.
 
     ![Welcome to Discourse](discourse-welcome-screen.png "Welcome to Discourse")
 
@@ -126,7 +127,7 @@ The Discourse Marketplace App installs the following software on your Linode:
 
 ## Troubleshooting Email
 
-If you did not get a confirmation email during setup it could be because of several reasons.
+If you did not get a confirmation email during setup it could be caused by several issues.
 
 ### Check DNS Records
 Ensure that you have correctly setup the [email DNS records](/docs/guides/dns-manager/#add-dns-records) required to send email as specified from your email provider. The Installer does not do this for you as every email host has different required records and values.
