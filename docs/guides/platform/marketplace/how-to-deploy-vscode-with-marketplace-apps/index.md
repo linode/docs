@@ -34,6 +34,7 @@ The VS Code Marketplace app has the following required configuration fields.
 | **Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** | **Description** |
 |-----------|-----------------|
 | **The password to login to the VS Code Web UI** | This is the password you use to log into the VS Code web interface. The password must meet the complexity strength validation requirements for a strong password. **Required** |
+| **Your email address** | This email address is used for VS Code configuration and is added to the SOA record for the domain if you add one. This field is also used to create DNS records, and is required to create an SSL certificate. |
 
 ### VS Code Advanced Options
 
@@ -49,7 +50,6 @@ The VS Code Marketplace form includes advanced fields to setup your VS Code serv
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Domain** | The domain name where you wish to host your VS Code server. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **Your email address** | This email address is used for VS Code configuration and is added to the SOA record for the domain if you add one. This is a required field if you want the installer to create DNS records. It is also used if you choose to create an SSL certificate. |
 | **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. If `No` is selected, the VS Code app triggers security warnings in most web browsers. If you create a certificate and do not create a domain, the installer uses the Linode rDNS assigned name for the certificate. |
 
 ### Linode Options
