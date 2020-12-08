@@ -34,9 +34,25 @@ Each container is deployed with its own CPU, memory, block I/O, and network reso
 
 {{< content "deploy-marketplace-apps">}}
 
+### Docker Options
+
+| **Configuration** | **Description** |
+|:--------------|:------------|
+| **Resource to Download** | The url to a hosted [Dockerfile](https://docs.docker.com/engine/reference/builder/) or [docker-compose.yml](/docs/guides/how-to-use-docker-compose/#Basic-Usage) file to be used to assemble an image as part of the application creation process. |
+| **Command to run**| A [Docker Command](https://www.linode.com/docs/guides/docker-commands-quick-reference-cheat-sheet/) to be run as part of the application creation process.|
+| **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
+| **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on the server, similar to root, so make it long, complex, and unique. |
+| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/guides/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
+| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
+| **Your Linode API Token.** | Your Linode API access token is needed to create any DNS records. If you don't have a token, you must [create one](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to configure DNS. |
+| **Subdomain** | The subdomain you want the installer to create a DNS record for during setup. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
+| **Domain** | The domain name you would like to create as part of the application creation process. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
+| **Do you need an MX record for this domain?** | Select `Yes` to create a basic [MX record](/docs/networking/dns/dns-records-an-introduction/#mx) for the provided domain. Select `No` to create no MX records.|
+| **Do you need an SPF record for this domain?** | Select `Yes` to create a basic [SPF record](/docs/networking/dns/dns-records-an-introduction/#spf) for the provided domain. Select `No` to create no SPF records. |
+
 ### Linode Options
 
-Docker doesn't ask you to provide any app specific configurations. Provide configurations for your Linode server:
+After providing any app specific options, provide configurations for your Linode server::
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
