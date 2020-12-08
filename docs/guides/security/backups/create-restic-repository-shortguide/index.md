@@ -18,23 +18,23 @@ show_on_rss_feed: false
 [Create an Object Storage access key pair](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair) if you have not done so already.
 {{< /note >}}
 
-1. Run the below command, replacing `your-key` with your access key, `your-secret` with your key's secret, and `your-bucket-name` with the name of your bucket:
+1. Configure Restic to use your Object Storage access key pair and to use the bucket you created in the [Before You Begin](#before-you-begin) section of this guide. Replace `your-key`, `your-secret`, and `us-east-1.linodeobjects.com/your-bucket-name` with your own values.
 
         AWS_ACCESS_KEY_ID=your-key AWS_SECRET_ACCESS_KEY=your-secret restic -r s3:us-east-1.linodeobjects.com/your-bucket-name init
 
     {{< note >}}
-The above command references the `us-east-1` cluster, which is located in the Newark, NJ region. If your bucket is located in a different cluster, replace `us-east-1` with the appropriate cluster name.
+The above command references the `us-east-1` cluster, which is located in the Newark, NJ cluster region. If your bucket is located in a different cluster region, replace `us-east-1` with the appropriate cluster name.
 
-Example: for Frankfurt, DE, the command would be:
+For example, for the Frankfurt, DE cluster region the command is:
 
     AWS_ACCESS_KEY_ID=your-key AWS_SECRET_ACCESS_KEY=your-secret restic -r s3:eu-central-1.linodeobjects.com/your-bucket-name init
 {{< /note >}}
 
     {{< caution >}}
-Ensure the name of your bucket is correct. If the bucket does not exist, Restic will create it for you on the cluster you are connecting to.
+Ensure the name of your bucket is correct. If the bucket does not exist, Restic creates a new bucket for you in the cluster region you designate.
 {{< /caution >}}
 
-2. You will be prompted to set a password to encrypt your repository's data. Enter your desired password twice, and you should see similar output to the below, confirming your repository has been created:
+2. Following the prompte, set a password to encrypt your repository's data. Enter your desired password twice, and you see an output confirming that your repository has been created:
 
     {{< output >}}
 enter password for new repository:
@@ -47,16 +47,22 @@ irrecoverably lost.
 {{< /output >}}
 
     {{< caution >}}
-Store this password securely and somewhere away from your Linode. Your backups will be inaccessible without it!
+Store this password securely and somewhere other than your Linode. Your backups are inaccessible without the password.
 {{< /caution >}}
 
 ### Store the access key and secret
 
-Your access key, secret key and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
+Your access key, secret key, and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
 
-1. To keep it secure, create this script within the root user's home directory, and run all your Restic scripts as the root user.
+{{< note >}}
+The examples in this section use the Nano text editor. Refer to the [How to Use Nano Text Editor Commands in Linux](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
+{{</ note >}}
+
+1. To keep your credentials secure, using a text editor, create the example script in the root user's home directory, and run all your Restic scripts as the root user. The example uses the Nano text editor.
 
         sudo nano /root/restic_params
+
+    Copy and paste the example file's content and replace `your-key`, and `your-secret` with your own Object Storage account's access key credentials.
 
     {{< file "/root/restic_params" >}}
 export AWS_ACCESS_KEY_ID=your-key
@@ -64,7 +70,7 @@ export AWS_SECRET_ACCESS_KEY=your-secret
 {{< /file >}}
 
     {{< note >}}
-Whenever you want to use Restic, import this file or include it in your user's logon script:
+Whenever you want to use Restic, import this file using the command below or include it in your user's login script:
 
     source /root/restic_params
 {{< /note >}}
@@ -73,16 +79,18 @@ Whenever you want to use Restic, import this file or include it in your user's l
 
         sudo nano /root/restic_pw
 
+    Enter your Restic password and save the file.
+
     {{< file "/root/restic_pw" >}}
 YourPasswordGoesHere
 {{< /file >}}
 
     {{< note >}}
-You can pass your password filename to Restic using the "-p" flag:
+You can pass your password filename to Restic using the `-p` flag:
 
     restic -p /root/restic_pw ...
 {{< /note >}}
 
-1. Run the `chmod` command to restrict read access for the new files to the root user:
+1. Run the `chmod` command to restrict read access to the root user for the new files:
 
         sudo chmod 600 /root/restic_params /root/restic_pw

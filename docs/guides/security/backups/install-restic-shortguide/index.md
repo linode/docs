@@ -19,21 +19,23 @@ show_on_rss_feed: false
         wget https://github.com/restic/restic/releases/download/v0.11.0/restic_0.11.0_linux_amd64.bz2
 
     {{< note >}}
-Ensure you select the correct file for your system. The above command is correct for most Linuxes on Linode.
+Ensure you select the correct file for your system. The above command is correct for most Linux distributions on Linode.
 {{< /note >}}
 
 1. Extract the downloaded file:
 
         bzip2 -d restic_0.11.0_linux_amd64.bz2
 
-1. Move it to somewhere in your PATH and make it executable for all users:
+1. Move the extracted file to your system's `$PATH` and make it executable for all users:
 
         sudo mv restic_0.11.0_linux_amd64 /usr/local/bin/restic
         sudo chmod ugo+x /usr/local/bin/restic
 
-1. You can now run Restic using the command "restic":
+1. You can now run Restic using the command `restic`:
 
         restic version
+
+    You should see a similar output:
 
     {{< output >}}
 restic 0.11.0 compiled with go1.15.3 on linux/amd64

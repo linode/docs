@@ -25,16 +25,14 @@ external_resources:
 
 ## Introduction
 
-It is vital to have backups of your databases to allow you to restore in the event of a server fault, a user error or - worst-case - a hacking or defacing of your website or applications.
+It is vital to have backups of your databases to allow you to restore in the event of a server fault, a user error or —worst-case— a hacking or defacing of your website or applications.
 
-To be successful, backups should be automatic, reliable and secure. This guide explains how to configure [Restic](https://restic.net/) on your Linode to backup your MariaDB (or MySQL) databases onto Linode Object Storage, so they can be recovered even if your Linode is no longer accessible.
+To be successful, backups should be automatic, reliable, and secure. This guide explains how to configure [Restic](https://restic.net/) on your Linode to backup your MariaDB (or MySQL) databases onto [Linode Object Storage](https://www.linode.com/products/object-storage/), so they can be recovered even if your Linode is no longer accessible.
 
-Restic is a backup utility written in Go. It is cross-platform and works on most Linux distributions with a kernel newer than 2.6.23. Each backup is stored as a "snapshot" in a "repository." The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.)
-
-This guide will explain how to use Linode Object Storage to hold your backup repository.
+Restic is a backup utility written in Go. It is cross-platform and works on most Linux distributions with a kernel newer than 2.6.23. Each backup is stored as a *snapshot* in a *repository*. The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.) This guide explains how to use Linode Object Storage to hold your backup repository.
 
 {{< note >}}
-MariaDB is a generally-compatible fork of MySQL. Where you see a reference to "MariaDB" in this guide, it should apply to MySQL also.
+MariaDB is a fork of MySQL. Where you see a reference to *MariaDB* in this guide, it should apply to MySQL also.
 {{< /note >}}
 
 {{< note >}}
@@ -43,15 +41,25 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/), the [Securing Your Server](/docs/security/securing-your-server/) guides, and the ["How to Install MariaDB on..." guides](/docs/databases/mariadb/) for your Linode's operating system.
+1. Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
-1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) section of the How to Use Linode Object Storage guide if you do not already have one.
+1. Install MariaDB on your Linode by following the [How to Install MariaDB](/docs/databases/mariadb/) guide that is appropriate for your Linode's distribution.
+
+1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) section of the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide if you do not already have one.
 
     {{< content "object-storage-cancellation-shortguide" >}}
 
-1.  [Generate Object Storage access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair).
+1.  [Generate Object Storage access keys](/docs/guides/how-to-use-object-storage/#generate-a-key-pair).
 
-1.  Ensure your Linode has the `wget` and `bzip2` commands available. Run `yum install wget bzip2` (on CentOS/Fedora) or `apt install wget bzip2` on Ubuntu/Debian.
+1. Ensure your Linode has the `wget` and `bzip2` utilities installed. Install them with the following commands:
+
+   **CentOS / Fedora**
+
+       yum install wget bzip2
+
+   **Ubuntu / Debian**
+
+       apt install wget bzip
 
 ## Install Restic
 
