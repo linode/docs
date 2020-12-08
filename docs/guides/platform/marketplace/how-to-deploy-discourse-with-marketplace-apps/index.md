@@ -28,7 +28,7 @@ aliases: ['/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/'
 
 ## Before You Begin
 
-Discourse requires that you have a domain name and access to a personal SMTP email server before installation.  This requires either having access to a pre-existing SMTP server, or setting up an [SMTP Relay](https://www.linode.com/community/questions/387/does-linode-offer-an-smtp-relay-service) through a third party. The Discourse Marketplace App will **require** an SMTP username and password for a server under your control in order to successully complete the installation.
+Discourse requires that you have a domain name and access to a personal SMTP email server before installation.  This requires either having access to a pre-existing SMTP server, or setting up an [SMTP Relay](https://www.linode.com/community/questions/387/does-linode-offer-an-smtp-relay-service) through a third party. The Discourse Marketplace App will **require** an SMTP username and password for a server under your control in order to successfully complete the installation.
 
   - If you don't already have your domain hosted at Linode, the install creates A and AAAA domain records for you.
 
