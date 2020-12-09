@@ -99,10 +99,6 @@ user="your-database-username"
 password="your-database-password"
 {{< /file >}}
 
-1. Use the `chmod` command to restrict read access for the file to the root user:
-
-        sudo chmod 600 /root/mysql_cnf
-
 1. You can now run your first backup:
 
         sudo backup_mariadb

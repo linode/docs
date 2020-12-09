@@ -82,7 +82,3 @@ You can pass your password filename to Restic using the "-p" flag:
 
     restic -p /root/restic_pw ...
 {{< /note >}}
-
-1. Run the `chmod` command to restrict read access for the new files to the root user:
-
-        sudo chmod 600 /root/restic_params /root/restic_pw
