@@ -19,7 +19,7 @@ external_resources:
 aliases: ['/platform/object-storage/how-to-use-object-storage/']
 ---
 
-<iframe width="840" height="472.5" src="https://www.youtube.com/embed/q88OKsr5l6c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube q88OKsr5l6c >}}
 
 {{< content "object-storage-ga-shortguide" >}}
 

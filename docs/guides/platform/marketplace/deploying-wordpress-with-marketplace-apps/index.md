@@ -20,7 +20,7 @@ external_resources:
 aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/']
 ---
 
-<iframe width="840" height="472.5" src="https://www.youtube.com/embed/im69Y-jc1DY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube im69Y-jc1DY >}}
 
 ## WordPress Marketplace App
 

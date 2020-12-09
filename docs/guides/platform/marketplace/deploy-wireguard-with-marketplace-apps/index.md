@@ -19,7 +19,7 @@ external_resources:
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 aliases: ['/platform/marketplace/deploy-wireguard-with-marketplace-apps/', '/platform/one-click/deploy-wireguard-with-one-click-apps/']
 ---
-<iframe width="840" height="472.5" src="https://www.youtube.com/embed/Q1I6-clkQmQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube Q1I6-clkQmQ >}}
 
 ## WireGuard Marketplace App
 

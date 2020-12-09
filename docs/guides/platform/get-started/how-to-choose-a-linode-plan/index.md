@@ -39,7 +39,7 @@ Start by reviewing what each resource means for your application. If you're conf
 
 ## General Principles when Choosing a Plan
 
-<iframe width="840" height="472.5" src="https://www.youtube.com/embed/6E8h-T8fk9U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube 6E8h-T8fk9U >}}
 
 The different Linode instance types represent different balances of the above resources. Shared instances offer a general-purpose array of resources, High Memory instances favor higher memory allocations, Dedicated CPU instances reserve physical CPU cores for you, and GPU instances give you access to both dedicated CPU cores and are the only plan type that gives you access to a GPU.
 
