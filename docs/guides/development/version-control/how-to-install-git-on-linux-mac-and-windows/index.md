@@ -22,7 +22,7 @@ audiences: ["foundational"]
 tags: ["version control system"]
 ---
 
-## Introduction to Git
+## Introduction to Installing Git
 
 ![How to Install Git on Linux, Mac or Windows](how-to-install-git.jpg)
 
@@ -37,13 +37,43 @@ This guide will use `sudo` wherever possible. Complete the sections of our [Secu
 {{< /note >}}
 
 
-## Install Git
-
-{{< content "how-to-install-git-linux" linux >}}
+## How to Install Git on Mac OSX
 
 {{< content "how-to-install-git-mac" mac >}}
 
+## How to Install Git on Windows
+
 {{< content "how-to-install-git-windows" windows >}}
+
+## How to Install Git on Linux
+
+{{< content "how-to-install-git-linux" linux >}}
+
+## FAQs on Installing Git
+
+### Is Git pre-installed on Mac? 
+
+No, Git does not come pre-installed on Mac. You’ll have to install it.
+
+### How do I know if Git is installed? 
+
+To see if Git is installed on your system, open your terminal and type “git --version”. If terminal shows a Git version as an output that confirms you have Git installed on your system.
+
+### Are Git and Github the same?
+
+Git and Github are different. Github hosts Git repositories in a central location, whereas Git is a tool that manages multiple versions of source code on Github.
+
+### How do I download Git for Windows?
+
+To download Git for Windows, click [here](https://git-scm.com/download/win) and select the most recent version. Once you click on the version your download will start shortly.
+
+### How to check the Git version?
+
+To check your Git version type “git --version” and press enter in your terminal. This shows you your Git version as an output.
+
+### How to clone a repository in Git?
+
+Go to the repository’s page on Github and copy the URL of the repository by clicking on the green button. To clone this repository on your system run “git clone URL”
 
 ## Get Started with Git
 
