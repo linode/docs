@@ -34,7 +34,7 @@ For example, for the Frankfurt, DE cluster region the command is:
 Ensure the name of your bucket is correct. If the bucket does not exist, Restic creates a new bucket for you in the cluster region you designate.
 {{< /caution >}}
 
-2. Following the prompte, set a password to encrypt your repository's data. Enter your desired password twice, and you see an output confirming that your repository has been created:
+2. Following the prompt, set a password to encrypt your repository's data. Enter your desired password twice, and you see an output confirming that your repository has been created:
 
     {{< output >}}
 enter password for new repository:
