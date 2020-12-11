@@ -1242,6 +1242,7 @@ resolvconf
 respawn
 resque
 restapi
+restic
 retargetly
 retpoline
 retrans
