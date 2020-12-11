@@ -176,7 +176,7 @@ Once the LKE Cluster Driver has been installed and activated, a new Cluster can 
 
    ![Cluster Name Token](cluster-name-token.png "Cluster Name Token")
 
-1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you woul like to apply, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
+1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
 
     ![Tags Regions and Version](tags-region-version-lke.png "Tags Region and Version")
 
