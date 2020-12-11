@@ -27,7 +27,7 @@ external_resources:
 
 - acme.sh supports [more DNS providers](https://github.com/acmesh-official/acme.sh/wiki/dnsapi) than other similar clients.
 
-If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates and use [Linode DNS](https://www.linode.com/docs/guides/dns-manager/) as the domain ownership verification.
+If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](https://www.linode.com/docs/guides/dns-manager/) as the domain ownership verification.
 
 ## Before You Begin
 
@@ -191,7 +191,7 @@ server {
 
 ## Renewing the Certificate
 
-Like the official Let's Encrypt client (Certbot), acme.sh automatically renews your certificates. When you install the acme.sh software, the installer also creats a cron job. This cron job runs automatically at a random time each day.
+Like the official Let's Encrypt client (Certbot), acme.sh automatically renews your certificates. When you install the acme.sh software, the installer also creates a cron job. This cron job runs automatically at a random time each day.
 
 1. View the cron job created by the acme.sh installer:
 
@@ -231,7 +231,7 @@ The target directory must exist first. To create it run the following command:
 {{< /note >}}
 
 {{< note >}}
-The example command uses certificate filesystem locations (`/etc/ssl/`) that are different from the examples in the [Configure your Web Server](#configure-your-web-server) section (which used the `/root/.acme.sh/` folder). If you want to copy this exact example command, make sure that your web server configurations use the correct locations.
+The example command uses certificate file system locations (`/etc/ssl/`) that are different from the examples in the [Configure your Web Server](#configure-your-web-server) section (which used the `/root/.acme.sh/` folder). If you want to copy this exact example command, make sure that your web server configurations use the correct locations.
 {{< /note >}}
 
 After issuing the command, you should see a similar output:
