@@ -19,6 +19,8 @@ tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/']
 ---
 
+{{< youtube aSivuBZxUgw >}}
+
 ## Counter-Strike: Global Offensive Marketplace App
 
 Counter-Strike: Global Offensive (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team.
