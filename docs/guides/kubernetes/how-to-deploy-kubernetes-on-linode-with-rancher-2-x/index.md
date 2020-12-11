@@ -34,6 +34,8 @@ This guide will show how to:
 
 -   Install Rancher on a Linode
 
+-   Deploy an LKE cluster on Linode using Rancher
+
 -   Deploy a Kubernetes cluster on Linode using Rancher
 
 -   Deploy an app from the Rancher app library to your cluster
@@ -90,10 +92,10 @@ After you have your Linode up and running with Docker, you can then install and 
 
 1.  Run Rancher:
 
-        docker run -d -p 80:80 -p 443:443 \
-          --restart=unless-stopped \
-          -v /opt/rancher:/var/lib/rancher \
-          rancher/rancher:latest
+        docker run -d --privileged -p 80:80 -p 443:443 \
+        --restart=unless-stopped \
+        -v /opt/rancher:/var/lib/rancher \
+        rancher/rancher:stable
 
     -   The `--restart` option ensures that the application will be restarted if the Linode is ever rebooted.
     -   The `-v` option binds the `/opt/rancher` directory on the Linode to the container so that the application can persist its data.
@@ -120,13 +122,75 @@ If you are interested in setting up an SSL certificate with Rancher, you may con
 The main interface for navigating Rancher is via the blue navigation bar that spans the top of the page. The items in this navigation bar will change when you view different parts of the application.
 {{< /note >}}
 
-### The Linode Node Driver for Rancher
+## Using Node Drivers and Cluster Drivers
 
 Rancher includes two kinds of integrations with hosting providers:
 
--   A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well).
+-   A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well). The LKE cluster driver is required to create clusters on Rancher powered by [LKE](https://www.linode.com/docs/products/compute/kubernetes/).
 
 -   A [*node driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/node-drivers/) allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
+
+## Deploy an LKE Cluster on Rancher
+
+The (Linode Kubernetes Engine)[https://www.linode.com/docs/products/compute/kubernetes/] is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
+
+### The LKE Cluster Driver for Rancher
+
+In order to use LKE on Rancher, the LKE Cluster Driver must be manually installed.
+
+1. Click on **Tools** from the main navigation bar and select **Drivers** from the dropdown menu.
+
+    ![Rancher Drivers menu option highlighted](drivers-menu-option.png "Select the Drivers option from the Tools dropdown menu")
+
+1. Select the `Add Cluster Driver` button at the top right of the page to add a new cluster driver.
+
+1. The "Add Cluster Driver" menu will appear. Enter the following values in their respective fields:
+
+    - In the `Download Url` field, enter the url for the latest release for Linode's [machine driver binary](https://github.com/linode/kontainer-engine-driver-lke/releases) for 64-bit Linux.
+
+    - In the `Custom UI Url` field, enter the url to the `component.js` file for the latest release of the [LKE Cluster Driver UI](https://github.com/linode/ui-cluster-driver-lke/releases/).
+
+    - To ensure that access to these URLs are allowed by Rancher, click on the `Add Domain` button at the bottom of the page, and enter the URL.
+
+    ![Add Cluster Driver](add-cluster-driver.png "Add Cluster Driver")
+
+Once all fields have been filled out, click on the `Create` button. The LKE cluster will take a few moments to enter the `Active` state.
+
+### Creating an LKE Cluster
+
+Once the LKE Cluster Driver has been installed and activated, a new Cluster can be created at any time:
+
+1.  Return to the home page by hovering over the **Global** dropdown menu in the main navigation bar and then clicking the **Global** menu item:
+
+    ![Rancher return to the global view](navigate-back-to-global-view.gif "Navigate back to the home page by selecting the Global menu option in the main navigation bar")
+
+1.  Click on the **Add Cluster** button. The **Add Cluster** form will appear.
+
+1. Under the `Hosted Kubernetes Provider` option, find and click on the `LKE` button.
+
+    ![LKE Hosted Kubernetes](lke-hosted-kubernetes.png "LKE hosted Kubernetes")
+
+1. The `Add Cluster` menu will appear. Enter a name to be used as an identifier for the cluster in the `Cluster Name` field.
+
+1. In the `Access Token` field, enter your Linode APIv4 token and click on the `Proceed to Cluster Configuration` button.
+
+   ![Cluster Name Token](cluster-name-token.png "Cluster Name Token")
+
+1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you woul like to apply, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
+
+    ![Tags Regions and Version](tags-region-version-lke.png "Tags Region and Version")
+
+1.  A *node pool* is Rancher’s terminology for creating the nodes (Linodes) that form a cluster.  In this menu, a user can specify how many Linodes should be in a node pool,and a cost and resource description will appear for a single Node in the pool. In the `Select Type` dropdown menu, select the type of Linode you'd like to use for a single node pool, and in the `Count` field, enter the number of individual Linodes to be used in a single pool. In this example, a 3 Node Cluster is being created, using Linode's 4 GB plan. While a single node in the cluster costs only $20 per month, the combined sum of the resources being created will cost $60 per month.
+
+    ![LKE Cluster Node Pools](lke-cluster-node-pools.png "LKE Cluster Node Pools")
+
+1. When all the desired Nodes and Node Pools have been added, click on the `Create` button to accept the creation and configuration of the new LKE cluster.
+
+Once the LKE cluster has been successfully created, skip to the [Explore the New Cluster](#explore-the-new-cluster) step to proceed.
+
+## Deploying an Unmanaged Kubernetes Cluster
+
+### The Linode Node Driver for Rancher
 
 Rancher is shipped with a node driver for Linode that is activated by default. No further steps are required to use Linode's node driver. To access the Linode node driver within Rancher's UI:
 
@@ -149,8 +213,6 @@ The Linode node driver **does not** install the Linode CCM and CSI for your new 
     {{< disclosure-note "What are the Linode CCM and CSI?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface) are Kubernetes addons published by Linode. These addons provide additional integrations with the Linode cloud platform. Specifically, you can use them to create NodeBalancers, DNS records, and Block Storage Volumes.
 {{< /disclosure-note >}}
-
-## Deploy a Kubernetes Cluster
 
 ### Add a Node Template
 
@@ -294,7 +356,7 @@ Instead, compare your YAML file with the completed example to ensure you have in
 If your nodes do not not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
 {{< /note >}}
 
-### Explore the New Cluster
+## Explore the New Cluster
 
 1.  To inspect your new cluster, click on its name in the global list of clusters:
 
@@ -327,6 +389,19 @@ If your nodes do not not appear in the Linode Cloud Manager as expected, then yo
 1.  When your nodes have finished provisioning, click the **Cluster** item in the navigation bar to navigate back to the dashboard. A summary of the cluster's resource usage is displayed:
 
     ![Rancher cluster dashboard](cluster-dashboard.png "Rancher cluster dashboard")
+
+    {{< note >}}
+
+If using LKE, the cluster dashboard may display the following warnings:
+
+- Controller Manager
+- Scheduler
+- Alert: Component controller-manager is unhealthy.
+- Alert: Component scheduler is unhealthy.
+
+These warnings are a known false-positive and do not necessarily indicate an issue with your cluster. This issue is currently being investigated.
+
+{{< /note >}}
 
 ### Load the kubectl Command Line
 
