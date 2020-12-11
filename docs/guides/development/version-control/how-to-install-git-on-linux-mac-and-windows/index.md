@@ -3,7 +3,8 @@ slug: how-to-install-git-on-linux-mac-and-windows
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing git on GNU/Linux, MacOSX, and Windows'
+description: 'Git is the most popular distributed version control and source code management system. This guide shows you how to install Git on GNU/Linux, MacOSX, and Windows. You can also find some common questions and answers related to using Git.'
+og_description: 'Git is the most popular distributed version control and source code management system. This guide shows you how to install Git on GNU/Linux, MacOSX, and Windows. You can also find some common questions and answers related to using Git.'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/git-source-control-management/','/development/version-control/how-to-install-git-on-mac-and-windows/','/development/version-control/how-to-install-git-on-linux-mac-and-windows/','/linux-tools/version-control/git/','/applications/development/git-source-control-management/']
@@ -17,7 +18,7 @@ external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
  - '[Pro Git Book](https://git-scm.com/book/en/v2)'
- - '[Github Guides](https://guides.github.com/)'
+ - '[GitHub Guides](https://guides.github.com/)'
 audiences: ["foundational"]
 tags: ["version control system"]
 ---
@@ -51,30 +52,30 @@ This guide will use `sudo` wherever possible. Complete the sections of our [Secu
 
 ## FAQs on Installing Git
 
-### Is Git pre-installed on Mac? 
+### Is Git pre-installed on Mac?
 
-No, Git does not come pre-installed on Mac. You’ll have to install it.
+No, Git does not come pre-installed on Mac. You have to install it.
 
-### How do I know if Git is installed? 
+### How do I know if Git is installed?
 
-To see if Git is installed on your system, open your terminal and type “git --version”. If terminal shows a Git version as an output that confirms you have Git installed on your system.
+To see if Git is installed on your system, open your terminal and type `git --version`. If your terminal returns a Git version as an output, that confirms you have Git installed on your system.
 
-### Are Git and Github the same?
+### Are Git and GitHub the same?
 
-Git and Github are different. Github hosts Git repositories in a central location, whereas Git is a tool that manages multiple versions of source code on Github.
+Git and GitHub are different. GitHub hosts Git repositories in a central location, whereas Git is a tool that manages multiple versions of source code on GitHub.
 
 ### How do I download Git for Windows?
 
-To download Git for Windows, click [here](https://git-scm.com/download/win) and select the most recent version. Once you click on the version your download will start shortly.
+To download Git for Windows, visit the [Downloads page](https://git-scm.com/download/win) on the Git documentation site and select the most recent version. Once you click on the version your download starts shortly.
 
 ### How to check the Git version?
 
-To check your Git version type “git --version” and press enter in your terminal. This shows you your Git version as an output.
+To check your Git version type `git --version` and press enter in your terminal. This shows you your Git version as an output.
 
 ### How to clone a repository in Git?
 
-Go to the repository’s page on Github and copy the URL of the repository by clicking on the green button. To clone this repository on your system run “git clone URL”
+Go to the repository’s page on GitHub, click on the green **Code** button, and copy the URL of the repository. To clone the repository on your system, open your Terminal and run `git clone URL`. Replace `URL` with the repository's URL.
 
 ## Get Started with Git
 
-Visit our guide on [Git configuration](/docs/development/version-control/how-to-configure-git/) for helpful commands to get you started with Git and repositories.
+Visit our guide on [Git configuration](/docs/development/version-control/how-to-configure-git/) for helpful commands to get you started with Git and GitHub repositories.
