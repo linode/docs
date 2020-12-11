@@ -17,22 +17,22 @@ tags: ["version control system"]
 aliases: ['/development/version-control/how-to-install-git-windows/']
 ---
 
-1.  Go to the Git website: https://git-scm.com/download/win
+1.  Navigate to the Git website's [Download page](https://git-scm.com/download/win).
 
     ![Click to download version for Windows.](how-to-download-git-for-windows.png)
 
 2.  Double click on a recent version of Git to download it.
 
 
-3.  When you see a prompt to install, click on Yes:
+3.  When you see an installation prompt, click on **Yes**:
 
     ![Click Yes to install Git on Windows.](installing-git-on-windows.png)
 
-4.  Agree to GNU license terms:
-    
+4.  Agree to the GNU license terms:
+
     ![Click Next to accept GNU License.](installing-git-accept-gnu-license.png)
 
-5.  Select the directory you want to install Git in or use the default location:
+5.  Select the directory you want Git to be installed in or use the default location:
 
     ![Click Next for default or Browse to change.](win-05-select-folder.png)
 
@@ -44,11 +44,11 @@ aliases: ['/development/version-control/how-to-install-git-windows/']
 
     ![Select the default text editor for Git.](win-08-default-text-editor.png)
 
-8.  Select how you want to use Git from the command line from these options:
-    
+8.  Select how you want to use Git from the command line from the options that are presented:
+
     ![Adjust Git's PATH](win-09-adjust-your-path.png)
 
-9.  Select SSL/TLS library that you want Git to use for HTTPs connections
+9.  Select the SSL/TLS library that you want Git to use for HTTPs connections:
 
     ![Select the https transport backend.](git-https-transport-backend.png)
 
@@ -56,14 +56,10 @@ aliases: ['/development/version-control/how-to-install-git-windows/']
 
     ![Select line ending conversions.](win-11-configure-line-endings.png)
 
-11. Select your terminal emulator, default behavior of “git pull” and some extra configuring options.
-    
-    For the simplest installation - keep MinTTY for terminal emulator, use the default behavior (fast-forward or merge), and enable file system caching in configuring extra options. 
+11. Select your terminal emulator, default behavior of `git pull`, and some extra configuring options.
 
-    And finally, click install at the end.
+    For the simplest installation, keep MinTTY for the terminal emulator, use the default behavior (fast-forward or merge), and enable file system caching in configuring extra options. When you are done selecting your configuration options, click **Install** at the end.
 
     ![Windows final Git installation screen.](windows-git-installation-completed.png)
 
-12. Click on finish.
-
-    You should have a working Git installed on your Windows machine.
+12. Click on **Finish**. You should have a working Git installation on your Windows machine.

@@ -29,12 +29,12 @@ tags: ["version control system"]
 
 Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system.
 
-This guide explains how to install the latest, stable, prepackaged version `git` on GNU/Linux, Mac Osx, and Windows, using their respective package managers. Git can also be [compiled from source and installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#_installing_from_source) on any operating system.
+This guide explains how to install the latest, stable, and prepackaged version of Git on GNU/Linux, Mac OSX, and Windows, using their respective package managers. Git can also be [compiled from source and installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#_installing_from_source) on any operating system.
 
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
 
 {{< note >}}
-This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account.
+This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account.
 {{< /note >}}
 
 

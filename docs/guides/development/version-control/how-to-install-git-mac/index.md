@@ -17,7 +17,7 @@ tags: ["version control system"]
 aliases: ['/development/version-control/how-to-install-git-mac/']
 ---
 
-There are different ways to install Git on Mac OS. You can install Git using Homebrew, MacPorts, or by downloading the Git installer package.
+There are different ways to install Git on Mac OSX. You can install Git using Homebrew, MacPorts, or by downloading the Git installer package.
 
 ### Check if Git is already installed
 
@@ -25,18 +25,18 @@ There are different ways to install Git on Mac OS. You can install Git using Hom
 
         git --version
 
-    If Git isn’t installed on your computer, the terminal will prompt you the following message:
+    If Git isn’t installed on your computer, the terminal prompts you with the following message:
 
     ![The "git" command requires the command line developer tools.](check-if-git-installed-mac-osx.png)
 
-2.  Click on Install to install developer tools required
+2.  Click on **Install** to install the developer tools required
 
-    These developer tools surrounding Xcode and Xcode app development utilities are available from Apple. Once you follow the prompts and agree to them, at the end of the process you will have a working Git installation system.
+    These developer tools surrounding Xcode and Xcode app development utilities are available from Apple. Once you follow the prompts and agree to them, at the end of the process you have a working version of Git.
 
 
 ### Install Git using Homebrew on Mac OSX
 
-1.  First, execute this command on your Mac terminal:
+1.  Execute the following command on your Mac terminal:
 
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -46,10 +46,10 @@ There are different ways to install Git on Mac OS. You can install Git using Hom
 
     ![Enter your password.](1626-Homebrew-03-resized.png)
 
-3.  This Homebrew version you just installed may not be the most recent stable build. Therefore, a good practice to update it. To update Homebrew, enter the following in your terminal: 
-    
+3.  The Homebrew version you just installed may not be the most recent stable build. Therefore, it's a good practice to update it. To update Homebrew, enter the following command in your terminal:
+
         brew update
 
-4.  Finally to install Git run:
+4.  Finally, to install Git run:
 
         brew install git
