@@ -8,7 +8,7 @@ og_description: 'Use Terraform to provision Linode environments.'
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
-modified: 2018-10-19
+modified: 2020-12-03
 aliases: ['/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/','/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/','/platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
 modified_by:
   name: Linode
@@ -21,26 +21,26 @@ contributor:
 
 Infrastructure as code (IaC) is a development and operations methodology that allows server deployments and software configuration to be represented as code. This methodology reduces the chance for human error, makes complex systems more manageable, eases collaboration on systems engineering projects, and offers a number of other benefits.
 
-Terraform is an IaC tool that focuses on creating, modifying, and destroying servers, instead of managing the software on those servers. Terraform offers plugins to interface with different hosting providers, and an [official Linode plugin](https://www.terraform.io/docs/providers/linode/index.html) is available. This guide will show how to get started with Terraform and Linode.
+Terraform is an IaC tool that focuses on creating, modifying, and destroying servers, instead of managing the software on those servers. Terraform offers plugins to interface with different hosting providers, and an [official Linode plugin](https://www.terraform.io/docs/providers/linode/index.html) is available. This guide show you how to get started with Terraform and Linode.
 
 Linodes created with Terraform can be further configured with container systems like Docker, or with configuration management software like Salt, Puppet, Ansible, or Chef.
 
 {{< caution >}}
-The configurations and commands used in this guide will result in multiple Linodes being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
+The configurations and commands used in this guide results in multiple Linodes being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
 {{< /caution >}}
 
 ## Before You Begin
 
--   This guide will show how to install and use the Terraform client software from a Linux system. Terraform can be installed on other operating systems, and the instructions for those platforms will be analogous to the commands presented in this guide.
+-   This guide shows you how to install and use the Terraform client software from a Linux system. Terraform can be installed on other operating systems, and the instructions for those platforms are analogous to the commands presented in this guide.
 
     {{< note >}}
 When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
 {{</ note >}}
 
--   You will need a personal access token for Linode's [v4 API](https://developers.linode.com/api/v4) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to get a token.
+-   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
 
     {{< note >}}
-Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and will not work with Terraform's Linode provider.
+Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and do not work with Terraform's Linode provider.
 {{</ note >}}
 
 ## Install Terraform
@@ -48,7 +48,7 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
 
 {{< note >}}
-The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12). The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12). The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
 {{</ note >}}
 
 1.  Make a Terraform project directory in your home directory and then navigate to it:
@@ -100,7 +100,7 @@ If you receive errors that indicate the `dirmngr` software is missing or inacces
     {{< output >}}
 gpg: Signature made Wed 15 Aug 2018 10:07:05 PM UTC
 gpg:                using RSA key 51852D87348FFC4C
-gpg: Good signature from "HashiCorp Security &lt;security@hashicorp.com&gt;" [unknown]
+gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
 gpg: WARNING: This key is not certified with a trusted signature!
 gpg:          There is no indication that the signature belongs to the owner.
 Primary key fingerprint: 91A6 E7F8 5D05 C656 30BE  F189 5185 2D87 348F FC4C
@@ -140,11 +140,7 @@ If you receive an error that indicates `unzip` is missing from your system, inst
     {{< output >}}
 Usage: terraform [-version] [-help] <command> [args]
 
-The available commands for execution are listed below.
-The most common, useful commands are shown first, followed by
-less common or more advanced commands. If you're just getting
-started with Terraform, stick with the common commands. For the
-other commands, please read the help and docs before usage.
+The available commands for execution are listed below. The most common, useful commands are shown first, followed by less common or more advanced commands. If you're just getting started with Terraform, stick with the common commands. For the other commands, please read the help and docs before usage.
 
 Common commands:
     apply              Builds or changes infrastructure
@@ -207,7 +203,7 @@ See [Terraform's documentation](https://www.terraform.io/docs/configuration/synt
 
         terraform init
 
-    Terraform will confirm successful initialization:
+    Terraform confirms successful initialization:
 
     {{< output >}}
 Initializing provider plugins...
@@ -251,25 +247,25 @@ Resource actions are indicated with the following symbols:
 Terraform will perform the following actions:
 
   + linode_instance.terraform-web
-      id:                 &lt;computed&gt;
-      alerts.#:           &lt;computed&gt;
+      id:                 <computed>
+      alerts.#:           <computed>
       authorized_keys.#:  "1"
       authorized_keys.0:  "ssh-rsa ..."
-      backups.#:          &lt;computed&gt;
-      backups_enabled:    &lt;computed&gt;
-      boot_config_label:  &lt;computed&gt;
+      backups.#:          <computed>
+      backups_enabled:    <computed>
+      boot_config_label:  <computed>
       group:              "Terraform"
       image:              "linode/ubuntu18.04"
-      ip_address:         &lt;computed&gt;
-      ipv4.#:             &lt;computed&gt;
-      ipv6:               &lt;computed&gt;
+      ip_address:         <computed>
+      ipv4.#:             <computed>
+      ipv6:               <computed>
       label:              "web"
-      private_ip_address: &lt;computed&gt;
+      private_ip_address: <computed>
       region:             "us-east"
-      root_pass:          &lt;sensitive&gt;
-      specs.#:            &lt;computed&gt;
-      status:             &lt;computed&gt;
-      swap_size:          &lt;computed&gt;
+      root_pass:          <sensitive>
+      specs.#:            <computed>
+      status:             <computed>
+      swap_size:          <computed>
       type:               "g6-standard-1"
       watchdog_enabled:   "true"
 
@@ -295,7 +291,7 @@ Debug mode can be applied to the plan command if you need to perform troubleshoo
 
         terraform apply
 
-    You'll be asked to confirm the action. Enter `yes` and press **Enter**:
+    You are asked to confirm the action. Enter `yes` and press **Enter**:
 
     {{< output >}}
 Do you want to perform these actions?
@@ -305,26 +301,26 @@ Do you want to perform these actions?
   Enter a value: yes
 
 linode_instance.terraform-web: Creating...
-  alerts.#:           "" =&gt; "&lt;computed&gt;"
-  authorized_keys.#:  "" =&gt; "1"
-  authorized_keys.0:  "" =&gt; "ssh-rsa ..."
-  backups.#:          "" =&gt; "&lt;computed&gt;"
-  backups_enabled:    "" =&gt; "&lt;computed&gt;"
-  boot_config_label:  "" =&gt; "&lt;computed&gt;"
-  group:              "" =&gt; "Terraform"
-  image:              "" =&gt; "linode/ubuntu18.04"
-  ip_address:         "" =&gt; "&lt;computed&gt;"
-  ipv4.#:             "" =&gt; "&lt;computed&gt;"
-  ipv6:               "" =&gt; "&lt;computed&gt;"
-  label:              "" =&gt; "web"
-  private_ip_address: "" =&gt; "&lt;computed&gt;"
-  region:             "" =&gt; "us-east"
-  root_pass:          "&lt;sensitive&gt;" =&gt; "&lt;sensitive&gt;"
-  specs.#:            "" =&gt; "&lt;computed&gt;"
-  status:             "" =&gt; "&lt;computed&gt;"
-  swap_size:          "" =&gt; "&lt;computed&gt;"
-  type:               "" =&gt; "g6-standard-1"
-  watchdog_enabled:   "" =&gt; "true"
+  alerts.#:           "" => "<computed>"
+  authorized_keys.#:  "" => "1"
+  authorized_keys.0:  "" => "ssh-rsa ..."
+  backups.#:          "" => "<computed>"
+  backups_enabled:    "" => "<computed>"
+  boot_config_label:  "" => "<computed>"
+  group:              "" => "Terraform"
+  image:              "" => "linode/ubuntu18.04"
+  ip_address:         "" => "<computed>"
+  ipv4.#:             "" => "<computed>"
+  ipv6:               "" => "<computed>"
+  label:              "" => "web"
+  private_ip_address: "" => "<computed>"
+  region:             "" => "us-east"
+  root_pass:          "<sensitive>" => "<sensitive>"
+  specs.#:            "" => "<computed>"
+  status:             "" => "<computed>"
+  swap_size:          "" => "<computed>"
+  type:               "" => "g6-standard-1"
+  watchdog_enabled:   "" => "true"
 linode_instance.terraform-web: Still creating... (10s elapsed)
 linode_instance.terraform-web: Still creating... (20s elapsed)
 linode_instance.terraform-web: Still creating... (30s elapsed)
@@ -344,7 +340,7 @@ In the previous step, you used Terraform to provision a Linode that could act as
 {{< note >}}
 When deploying multiple Linodes with Terraform, remember that you need to assign a unique name for each Linode.
 
-In production environments, your SSH key and root password should be unique for each resource. Having said that, the example Linodes in this guide will share keys and root passwords.
+In production environments, your SSH key and root password should be unique for each resource. Having said that, the example Linodes in this guide shares keys and root passwords.
 {{< /note >}}
 
 1.  Create another file called `linode-terraform-db.tf`. Substitute in your SSH key and root password where indicated. **Do not delete** `linode-terraform-web.tf`.
@@ -507,7 +503,7 @@ resource "linode_instance" "terraform-db" {
 Terraform allows you to change a server's name, size, or other attributes without needing to destroy and rebuild it. Terraform handles this through changes to the configuration files.
 
 {{< caution >}}
-Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide for more information.
+Changing the size of your Linode forces your server to be powered off and migrated to a different host in the same data center. The associated disk migration takes approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more information.
 {{< /caution >}}
 
 1.  Modify `linode-terraform-template.tf` and update the `type` value to `g6-standard-4` for the `terraform-db` resource.
@@ -596,7 +592,7 @@ resource "linode_instance" "terraform-db" {
 }
 {{< /file >}}
 
-1.  The configuration above reproduces the previous examples using variables. The next file contains variable definitions. Assign a default value for each variable. That value will be used if you don't override it when you call the module.
+1.  The configuration above reproduces the previous examples using variables. The next file contains variable definitions. Assign a default value for each variable. That value is used if you don't override it when you call the module.
 
     Substitute in your SSH key and root password where indicated:
 
