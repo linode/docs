@@ -10,9 +10,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
   name: Linode
-title: 'How to Deploy Kubernetes on Linode with Rancher 2.3'
-h1_title: 'Deploying Kubernetes on Linode with Rancher 2.3'
-aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
+title: 'How to Deploy Kubernetes on Linode with Rancher 2.5'
+h1_title: 'Deploying Kubernetes on Linode with Rancher 2.5'
+aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/', '/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-5/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
@@ -150,7 +150,7 @@ In order to use LKE on Rancher, the LKE Cluster Driver must be manually installe
 
     - In the `Custom UI Url` field, enter the url to the `component.js` file for the latest release of the [LKE Cluster Driver UI](https://github.com/linode/ui-cluster-driver-lke/releases/).
 
-    - To ensure that access to these URLs are allowed by Rancher, click on the `Add Domain` button at the bottom of the page, and enter the URL.
+    - To ensure that access to these URLs are allowed by Rancher, click on the `Add Domain` button at the bottom of the page, and enter the URL `github.com`
 
     ![Add Cluster Driver](add-cluster-driver.png "Add Cluster Driver")
 
