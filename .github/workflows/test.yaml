@@ -1,6 +1,6 @@
 name: CI Tests
 
-on: [pull_request]
+on: [push]
 
 jobs:
   blueberry:
@@ -36,7 +36,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-
+    - run: echo '${{ steps.get_changed_files.outputs.all }}'
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
