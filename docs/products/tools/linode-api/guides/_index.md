@@ -17,6 +17,8 @@ These introductory guides to the Linode API help you get up and running with thi
 
 - [Build the Final Query](/docs/products/tools/linode-api/guides/build-final-query): Use the example below and replace the values with your own to build your query.
 
+- [Revoke an API Token](/docs/products/tools/linode-api/guides/revoke-access-token): If you forget your access token or think it may have been compromised, you can revoke an API access token in the Cloud Manager.
+
 For more on the basics on the Linode API see the full [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) guide.
 
 ## Themes
