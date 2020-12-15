@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.81.0
+  version: 4.82.0
 
   title: Linode API
   description: |
@@ -132,7 +132,7 @@ info:
     |-----------------------|--------|
     | **Authorization URL** | https://login.linode.com/oauth/authorize |
     | **Token URL** | https://login.linode.com/oauth/token |
-    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows acces to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`maintenance:read_only` - Allows access to GET information about Maintenance on your account.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
+    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`maintenance:read_only` - Allows access to GET information about Maintenance on your account.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
 
     ## Requests
 
@@ -698,7 +698,7 @@ paths:
         schema:
           type: integer
     post:
-      x-linode-grant: read_write
+      x-linode-grant: read_only
       tags:
       - Account
       summary: Event Mark as Read
@@ -708,7 +708,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - events:read_write
+        - events:read_only
       responses:
         '200':
           description: Event read.
@@ -749,7 +749,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - events:read_write
+        - events:read_only
       responses:
         '200':
           description: Events seen.
@@ -934,6 +934,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Login'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -9159,7 +9165,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9220,7 +9226,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9369,7 +9375,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9424,7 +9430,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9493,7 +9499,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9546,7 +9552,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9611,7 +9617,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9689,7 +9695,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9743,7 +9749,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9791,7 +9797,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9834,7 +9840,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -11346,21 +11352,14 @@ paths:
       - personalAccessToken: []
       - oauth:
         - object_storage:read_write
-      parameters:
-      - name: name
-        in: query
-        required: true
-        description: >
-          The `name` of the object for which to update its Access Control List (ACL).
-          Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
-          endpoint to access all object names in a bucket.
-        schema:
-          type: string
       requestBody:
         description: The changes to make to this Object's access controls.
         content:
           application/json:
             schema:
+              required:
+                - acl
+                - name
               properties:
                 acl:
                   type: string
@@ -11374,6 +11373,12 @@ paths:
                     The Access Control Level of the bucket, as a canned ACL string.
                     For more fine-grained control of ACLs, use the S3 API directly.
                   example: public-read
+                name:
+                  type: string
+                  description: >
+                    The `name` of the object for which to update its Access Control List (ACL).
+                    Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
+                    endpoint to access all object names in a bucket.
       responses:
         '200':
           description: The Object's canned ACL and policy.
@@ -11407,9 +11412,10 @@ paths:
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
             -X PUT -d '{
-              "acl": "public-read"
+              "acl": "public-read",
+              "name": "example.txt"
             }' \
-            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl?name=example.txt
+            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl
   /object-storage/buckets/{clusterId}/{bucket}/object-list:
     parameters:
     - name: clusterId
@@ -12771,6 +12777,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Login'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -15924,7 +15936,7 @@ components:
             of single ports and port ranges. A space is permitted following each comma.
             - A range of ports is inclusive of the start and end values for the range. The
             end value of the range must be greater than the start value.
-            - Ports must be within 1 and 65535.
+            - Ports must be within 1 and 65535, and may not contain any leading zeroes. For example, port "080" is not allowed.
             - Ports may not be specified if a rule's protocol is `ICMP`. At least one port
             must be specified if a rule's protocol is `TCP` or `UDP`.
             - The ports string can have up to 15 *pieces*, where a single port is treated
