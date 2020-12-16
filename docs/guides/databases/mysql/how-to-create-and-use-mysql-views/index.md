@@ -1,4 +1,5 @@
 ---
+slug: how-to-create-and-use-mysql-views
 author:
   name: Francis Ndungu
   email: francisndungu83@gmail.com
@@ -24,14 +25,14 @@ Since views are SQL definitions built on top of other tables, they are mainly us
 - Move some complex business logic to the database server: Instead of coding frequently used software logic in different clients, a developer can move the logic in the database level using a view(e.g. a view to display customer classifications depending on the total sales).
 - Reducing data distraction: A view can combine results from different tables and only display the relevant columns when invoked.
 
-So, if you are planning to simplify your complex queries and make your application logic consistent on top of having a tight layer of security, you should use MySQL views. 
+So, if you are planning to simplify your complex queries and make your application logic consistent on top of having a tight layer of security, you should use MySQL views.
 
 In this guide, we will take you through:
 
 - How the [syntax of a MySQL view](/docs/databases/mysql/how-to-create-and-use-mysql_views/#the-mysql-view-syntax) is structured
 - How to [create a MySQL view](/docs/databases/mysql/how-to-create-and-use-mysql_views/#creating-a-mysql-view).
 - How to [invoke a MySQL view](/docs/databases/mysql/how-to-create-and-use-mysql_views/#invoking-a-mysql-view).
-- How to [drop a view in MySQL](/docs/databases/mysql/how-to-create-and-use-mysql_views/#dropping-a-mysql-view). 
+- How to [drop a view in MySQL](/docs/databases/mysql/how-to-create-and-use-mysql_views/#dropping-a-mysql-view).
 
 ## Before You Begin
 
@@ -186,15 +187,15 @@ Query OK, 1 row affected (0.01 sec)
 1. In this section, you will create the first MySQL view. This view will be used to classify customers depending on the number of monthly sales. Ensure you are logged in to the MySQL server.
 
 1.  Then, run the command below to create a `customers_membership` view:
-   
-        CREATE 
-        VIEW customers_membership 
-        AS SELECT sales.customer_id, 
+
+        CREATE
+        VIEW customers_membership
+        AS SELECT sales.customer_id,
         customer_name,
         (IF(sales.monthly_sales >= 5000, 'PREMIUM', 'BASIC')) as membership
         FROM sales
         LEFT JOIN customers
-        ON sales.customer_id = customers.customer_id;  
+        ON sales.customer_id = customers.customer_id;
 
 1.  If the view is created successfully, you should get the output shown below:
 
@@ -202,13 +203,13 @@ Query OK, 1 row affected (0.01 sec)
 Query OK, 0 rows affected (0.01 sec)
 {{< /output >}}
 
-1.  In the above MySQL command, you have created a view named `customers_membership` that joins the `customers` and `sales` table with the `PRIMARY KEY` `customer_id`. Then, you've used the logical `IF(expression, value_if_true, value_if_false)` statement logic to determine the membership of the customer depending on their monthly sales. 
+1.  In the above MySQL command, you have created a view named `customers_membership` that joins the `customers` and `sales` table with the `PRIMARY KEY` `customer_id`. Then, you've used the logical `IF(expression, value_if_true, value_if_false)` statement logic to determine the membership of the customer depending on their monthly sales.
 
 1.  If a customer's sales are equal or above `5,000`, the view classifies the customer as a `PREMIUM` member, otherwise(if the sales are below `5,000`), the customer is ranked as a `BASIC` member. The `customers_membership` view is now saved to the database. Next, you will learn to call a MySQL view and display a recordset without querying the base tables directly.
 
 ## Invoking a MySQL View
 
-1.  In this step, you will invoke the MySQL view you created above and see if it will work as expected. Once a view is created, it is visible as a database object and it can be called using the `SELECT` statement. 
+1.  In this step, you will invoke the MySQL view you created above and see if it will work as expected. Once a view is created, it is visible as a database object and it can be called using the `SELECT` statement.
 
 1.  To invoke the `customers_membership` view, run the command below:
 
@@ -229,7 +230,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 1.  As you can see above, the `customers_membership` has classified the customers as you expected. Since JOHN DOE's sales were below 5000 (500.27), the view outputs the customer's membership as `BASIC`.
 
-1.  Next, `MARY ROE` AND `RICHARD ROE` sales were 7600.32 and 25879.63 respectively and this makes them `PREMIUM` members. 
+1.  Next, `MARY ROE` AND `RICHARD ROE` sales were 7600.32 and 25879.63 respectively and this makes them `PREMIUM` members.
 
 1.  Once a base table data is updated and you invoke a MySQL view again, you should view the latest information since views pull information from the tables and they don't store the information.
 
@@ -273,11 +274,11 @@ Query OK, 1 row affected (0.01 sec)
 
 1.  As you can see in the view recordset above, you now have a new customer named `BABY ROE` with a `BASIC` membership. After running a MySQL view, you'll now learn how to delete them.
 
-## Dropping a MySQL View  
+## Dropping a MySQL View
 
-1.  Just like other database objects, you can delete views if you no longer need them. Below is the basic syntax for dropping a MySQL view. 
+1.  Just like other database objects, you can delete views if you no longer need them. Below is the basic syntax for dropping a MySQL view.
 
-        DROP VIEW IF EXISTS view_name; 
+        DROP VIEW IF EXISTS view_name;
 
 1.  To drop a MySQL view, first identify its name by running the command below:
 
@@ -305,5 +306,5 @@ Query OK, 0 rows affected (0.01 sec)
 {{< /output >}}
 
     {{< note >}}
-Please note, if you attempt to delete a MySQL view that doesn't exist without using the `IF EXISTS` keyword, MySQL will throw an error. 
+Please note, if you attempt to delete a MySQL view that doesn't exist without using the `IF EXISTS` keyword, MySQL will throw an error.
 {{< /note >}}
