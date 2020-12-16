@@ -1,0 +1,36 @@
+
+# Mounts in this project.
+[[mounts]]
+source = "docs"
+target = "content"
+
+[[mounts]]
+source = "static"
+target = "static"
+
+[[mounts]]
+# To add it to the server watch list.
+# TODO(bep) this really needs to live in the theme, see
+# https://github.com/gohugoio/hugo/issues/7635
+source = "tailwind.config.js"
+target = "assets/css/tailwind.config.js"
+[hugoVersion]
+extended = false
+min = "0.75.0"
+
+
+# The main theme.
+# Note that the theme itself contains the mount configuration.
+[[imports]]
+path = "github.com/bep/linodedocs"
+
+
+# Linode's OpenAPI definition.
+[[imports]]
+path = "github.com/linode/linode-api-docs/v4"
+
+[[imports.mounts]]
+source = "openapi.yaml"
+target = "assets/api/openapi.yaml"
+
+

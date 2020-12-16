@@ -1,4 +1,11 @@
 {
+
+  "_build": {
+    "elements": ["list"],
+    "required": false,
+    "type": "dict",
+    "description": "Does what the hiddenguide frontmatter does, but for the new UI."
+  },
   "aliases": {
     "elements": false,
     "required": false,
@@ -166,6 +173,12 @@
     "type": "list",
     "description": "List of operating systems to generate buttons"
   },
+  "noindex": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Prevent search engines from indexing a guide."
+  },
   "promo_code_amount": {
       "elements": false,
 	  "required": false,
@@ -190,17 +203,28 @@
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
   },
+  "relations": {
+    "elements": ["platform"],
+    "required": false,
+    "type": "dict",
+    "description": "Specifies any dropdown menus that should appear at the top of a guide. These menus allow users to switch between different versions of a guide topic; for example, switching between distributions for a guide."
+  },
   "shortguide": {
     "elements": false,
     "required": false,
     "type": "bool",
     "description": "If true, this guide will be hidden from all layouts and search index."
   },
+  "slug": {
+    "required": true,
+    "type": "text",
+    "description": "Guides will render to the URL /docs/guides/:slug/. Supply the slug for the URL with this frontmatter attribute."
+  },
   "hiddenguide": {
     "elements": false,
     "required": false,
     "type": "bool",
-    "description": "If true, this guide will be hidden from all layouts and search index."
+    "description": "DEPRECATED: use _build: list: false in the new UI instead. If true, this guide will be hidden from all layouts and search index."
   },
   "show_on_frontpage": {
     "elements": false,
@@ -214,11 +238,17 @@
     "type": "bool",
     "description": "If false, publishing or updates to this guide will not be shown in the RSS feed."
   },
-  "slug": {
+  "show_social_image_in_article": {
     "elements": false,
     "required": false,
-    "type": "text",
-    "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
+    "type": "bool",
+    "description": "If false, any social media image set with the image frontmatter field will not be displayed in the guide."
+  },
+  "tags": {
+    "elements": "list",
+    "required": false,
+    "type": "list",
+    "description": "Comma-separated array of tags that are relevant to this guide. These tags will appear at the top of a guide, and they are available as search filters in the new docs UI."
   },
   "title": {
     "elements": false,
@@ -231,6 +261,14 @@
     "required": false,
     "type": "text",
     "description": "Short version of title to be displayed in a front page icon."
+  },
+  "twitter": {
+    "elements": [
+      "card"
+    ],
+    "required": false,
+    "type": "dict",
+    "description": "Determines which type of Twitter card summary to display when sharing a guide."
   },
   "type": {
     "elements": false,

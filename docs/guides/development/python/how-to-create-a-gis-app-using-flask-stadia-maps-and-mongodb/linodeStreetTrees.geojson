@@ -1,0 +1,149 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 36391,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14457809997165,
+          39.95216128175947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 36392,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14446882894926,
+          39.95213340459382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 36388,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14436203227342,
+          39.95213350981046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 36387,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14391916318196,
+          39.95207850652248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 36385,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14371036845057,
+          39.95207848246513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 34552,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14525481375121,
+          39.952402827669786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 34553,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14522060144313,
+          39.95249257200717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 34554,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14521115802674,
+          39.95254397352744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 34556,
+        "SPECIES": null,
+        "STATUS": null,
+        "DBH": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.14507538603768,
+          39.952630343085694
+        ]
+      }
+    }
+  ]
+}

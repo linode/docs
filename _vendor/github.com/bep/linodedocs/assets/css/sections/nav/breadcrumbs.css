@@ -1,0 +1,19 @@
+.main__breadcrumbs {
+    @apply bg-backgroundcolor max-w-screen-lg;
+}
+
+.main__breadcrumbs a {
+    @apply text-basicgray;
+}
+
+.breadcrumbs__icon--home {
+    width: 17px;
+    height: 14px;
+}
+
+@screen md {
+    .breadcrumbs__icon--home {
+        width: 18px;
+        height: 16px;
+    }
+}

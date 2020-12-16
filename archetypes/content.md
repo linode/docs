@@ -1,14 +1,17 @@
 ---
+slug: {{ path.Base .File.Dir }}
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'Two to three sentences describing your guide.'
+og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
+title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
+h1_title: "h1 title displayed in the guide."
 contributor:
   name: Your Name
   link: Github/Twitter Link
