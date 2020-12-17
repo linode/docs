@@ -6,7 +6,7 @@
   {{ block "head-meta-main" . }}
     {{/* The default static title and SEO meta markup. */}}
     <title>
-      {{ if .IsPage }}{{ .FirstSection.Title }} | {{ end }}{{ .Title }}
+      {{ .Title }} | {{ $.Site.Params.page_title_suffix | default "Linode" }}
     </title>
     {{/* SEO */}}
     {{ partial "sections/head-seo.html" . }}
@@ -19,7 +19,7 @@
      is-not-topbar-pinned
      is-not-explorer-open
      is-not-toc-open
-     is-not-search-panel-open 
+     is-not-search-panel-open
      is-not-search-panel_filters-open
      is-not-search-input-open {{ block "body-class" . }}{{ end }}">
   
@@ -81,10 +81,12 @@
         {{ partial "sections/search/panel.html" . }}
       </section>
       <section class="main__content container mb-20">
-        <div class="w-full h-full mt-6 md:mt-12">
-          <div class="mb-4 md:mb-6 text-basicgray main__breadcrumbs">
-            {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
-          </div>
+        <div class="w-full h-full">
+          {{ if not .IsHome }}
+            <div class="mb-4 md:mb-6 mt-6 md:mt-12 main__breadcrumbs">
+              {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
+            </div>
+          {{ end }}
           {{ block "main" . }}{{ end }}
         </div>
       </section>

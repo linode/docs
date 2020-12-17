@@ -111,6 +111,7 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitwarden
 blkid
 blocklists
 blockwise
@@ -129,6 +130,7 @@ bram
 brd
 browserify
 bs4
+btmp
 bufio
 bugtracker
 buildbot
@@ -459,6 +461,7 @@ fragging
 frakti
 framesets
 freedns
+freshclam
 friendster
 frontend
 frontmatter
@@ -815,6 +818,7 @@ lugano
 luminus
 lxd
 lxml
+lynis
 lzma
 lzopio
 macos
@@ -1085,6 +1089,7 @@ passwordless
 patroni
 pbr
 pem
+pentest
 pepi
 percona
 performant
@@ -1245,6 +1250,7 @@ reutilize
 richlanguage
 rimap
 ritchie
+rkhunter
 rkt
 rmem
 ro
@@ -1665,6 +1671,7 @@ whitelisting
 whitespace
 whitespaces
 whois
+whowatch
 wi
 widgits
 wildfly
@@ -1678,6 +1685,7 @@ wlp6s0
 wmem
 wordcloud
 wordcount
+wordfence
 wordpress
 worker1
 worker2
@@ -1687,6 +1695,7 @@ writecaps
 ws
 wsgi
 wsrep
+wtmp
 www
 wx
 xabbix
@@ -1746,4 +1755,5 @@ zonefiles
 zope
 zpool
 zsh
+zshrc
 zxvf

@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Learn to create and use StackScripts in the Cloud Manager and other related topics, like best practices when writing scripts."
 tab_group_main:
     weight: 30
 ---

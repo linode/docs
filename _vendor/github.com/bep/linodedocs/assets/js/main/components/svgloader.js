@@ -33,6 +33,9 @@ var lnSvgLoader = {};
 	};
 
 	ctx.Load = function(el, src) {
+		if (!src) {
+			return '';
+		}
 		if (src.includes('<svg')) {
 			// Already inlined.
 			replaceIn(el, src);

@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Learn how to access and deploy all the Linode One-Click Marketplace Apps."
 tab_group_main:
     weight: 30
 ---
@@ -8,7 +9,7 @@ tab_group_main:
 
 Review these introductory guides to Linode’s One-Click Apps to get up and running with the service.
 
-### One-Click Marketplace Basics
+### One-Click Marketplace App Basics
 
 - [Deploying an App](/docs/products/tools/one-click-app-marketplace/guides/one-click-deploy-app): Quickly deploy an app from the Cloud Manager.
 

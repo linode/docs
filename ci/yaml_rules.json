@@ -173,6 +173,12 @@
     "type": "list",
     "description": "List of operating systems to generate buttons"
   },
+  "noindex": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Prevent search engines from indexing a guide."
+  },
   "promo_code_amount": {
       "elements": false,
 	  "required": false,

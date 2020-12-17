@@ -1,5 +1,6 @@
 ---
 title: Managed
+description: "Linode Managed is a service that offers incident response as well as free migrations and discounted professional services."
 tab_group_main:
     is_root: true
     title: Overview
@@ -19,7 +20,7 @@ Tokyo, Japan; Mumbai, India; Singapore, Singapore; Sydney, Australia; Frankfurt,
 
 Linode actively tracks uptime and responsiveness for every registered system and service. If a check fails, our experts take immediate steps to get your systems back online as quickly as possible.
 
-### Metrics,  Monitoring, and Protection
+### Metrics, Monitoring, and Protection
 
 Add URLs, IP addresses, and TCP ports to the Managed Dashboard and we'll begin monitoring them through our multi-homed monitoring system.
 

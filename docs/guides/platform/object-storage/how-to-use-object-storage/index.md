@@ -124,6 +124,10 @@ Currently, Limited Access Key Pairs are only available using the [Linode API](ht
 Limited Access Keys are able to list all Buckets under the Linode user account. Limited access keys do not otherwise have access to buckets on a single user account.
 {{< /note >}}
 
+## Control Access with ACLs and Bucket Policies
+
+Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources. [Learn more about ACLs and bucket policies](/docs/guides/how-to-use-object-storage-acls-and-bucket-policies/).
+
 ## Bucket Names
 
 Bucket names, also referred to as labels, need to be unique within the same cluster, including buckets on other users' Linode accounts. This also means if you reserve a bucket name in one cluster, it is not automatically reserved in another. For example, if you have `my-bucket.us-east-1.linode.com` and want `my-bucket.eu-central-1.linode.com` you must manually reserve them both. They are separate clusters and not guaranteed. If the label you enter is already in use, then choose a different label. Additionally, bucket labels have the following rules:
@@ -221,7 +225,7 @@ Currently, the Linode CLI defaults to creating buckets in the Newark data center
   - `ap-south-1` for the Singapore data center.
 
 {{< note >}}
-You will need to use the `--cluster` option for every interaction with your bucket if it is not in `us-east-1`.
+You need to use the `--cluster` option for every interaction with your bucket if it is not in `us-east-1`.
 {{</ note >}}
 
 If the bucket has objects in it, you can not delete it from the Linode CLI immediately. Instead, remove the objects first, then delete the bucket. The [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) tool has commands for deleting all objects from a bucket, and it can also force-delete a bucket with objects in it.
@@ -541,7 +545,7 @@ To create a bucket in Cyberduck:
 
 ### Upload, Download, and Delete an Object with Cyberduck
 
-1.  To upload objects with Cyberduck, you can simply drag and drop the object, or directory of objects, to the bucket you'd like to upload them to, and Cyberduck will do the rest. Alternatively, you can click the **Action** button and select **Upload** from the menu:
+1.  To upload objects with Cyberduck, you can simply drag and drop the object, or directory of objects, to the bucket you'd like to upload them to, and Cyberduck does the rest. Alternatively, you can click the **Action** button and select **Upload** from the menu:
 
     ![Click the 'Action' button to use the file upload dialog.](object-storage-cyberduck-upload-menu.png)
 
@@ -577,7 +581,7 @@ To create a static site from the bucket:
 
 1.  You need to separately upload the `index.html` and `404.html` files (or however you have named the index and error pages) to the bucket. Follow the instructions from the [Upload, Download, and Delete an Object with Cyberduck](#upload-download-and-delete-an-object-with-cyberduck) section to upload these files.
 
-1.  The static site is accessed from a different URL than the generic URL for the Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center,  the `website-eu-central-1` subdomain for the Frankfurt data center, and the `website-ap-south-1` subdomain for the Singapore data center. Using `my-example-bucket` as an example, you would navigate to either:
+1.  The static site is accessed from a different URL than the generic URL for the Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, the `website-eu-central-1` subdomain for the Frankfurt data center, and the `website-ap-south-1` subdomain for the Singapore data center. Using `my-example-bucket` as an example, you would navigate to either:
 
     - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com` or

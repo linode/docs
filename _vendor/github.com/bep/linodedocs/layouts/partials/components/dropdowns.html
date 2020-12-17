@@ -5,7 +5,7 @@
 
 <div class="flex justify-start space-x-2" x-data="lnDropdowns.New({{ $dropdowns | jsonify }})" x-init="init()" @nav:toggle.document="receiveToggle($event.detail)" @click.away="closeAll()">
   {{ range $i, $e := .dropdowns }}
-    <div x-show.transition.opacity="!isHidden({{ $i }})">
+    <div x-show.transition.opacity="!isHidden({{ $i }})" x-cloak>
       <div class="relative inline-block text-left">
         <div>
           <span class="rounded-md">
@@ -29,7 +29,7 @@
             </button>
           </span>
         </div>
-        <div x-show.transition="isOpen({{ $i }})" class="origin-top-right absolute right-0 mt-2 w-64 rounded-md border border-basicgray">
+        <div x-show.transition="isOpen({{ $i }})" class="origin-top-right absolute right-0 mt-2 w-64 rounded-md border border-basicgray" x-cloak>
           <div class="rounded-md bg-white">
             {{ if .contentPartial }}
               {{ partial .contentPartial . }}

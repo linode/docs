@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get Started with High Memory Linodes. Deploy a High Memory instance using the Linode Cloud Manager."
 tab_group_main:
     weight: 20
 ---

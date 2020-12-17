@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get Started with Shared Linodes. Deploy a Shared Linode Instance using the Linode Cloud Manager."
 tab_group_main:
     weight: 20
 ---
