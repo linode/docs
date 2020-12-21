@@ -1,7 +1,6 @@
 {{ $img := partial "funcs/get-bundle-image.html" .page }}
 {{ $command := .command | default "Fill" }}
 {{ $options := .options | default "640x400" }}
-{{ $options = printf "%s jpg" $options }}
 {{ if eq $command "Fill" }}
   {{ $img = $img.Fit $options }}
 {{ else if eq $command "Fit" }}
