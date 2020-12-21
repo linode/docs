@@ -12,7 +12,7 @@ env:
 
 before_install:
   - if [ $TEST_SUITE == docs404 ]; then
-      wget https://github.com/gohugoio/hugo/releases/download/v0.76.3/hugo_0.76.3_Linux-64bit.deb;
+      wget https://github.com/gohugoio/hugo/releases/download/v0.79.0/hugo_0.79.0_Linux-64bit.deb;
       sudo dpkg -i hugo*.deb;
       nvm install 13;
       nvm use 13;
