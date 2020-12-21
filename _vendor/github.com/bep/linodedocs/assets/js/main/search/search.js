@@ -657,7 +657,7 @@ export function newSearchController(searchConfig) {
 						// In progress, it will eventually be sent.
 						return true;
 					}
-					publish = item.isLoading();
+					publish = item.isLoaded();
 					if (publish) {
 						break;
 					}

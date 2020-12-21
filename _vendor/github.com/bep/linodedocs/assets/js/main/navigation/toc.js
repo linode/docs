@@ -74,6 +74,10 @@ export function newToCController() {
 							top: heading.offsetTop - 80,
 							behavior: 'smooth'
 						});
+						// We want the smooth scroll AND the hash to be updated -- without triggering any hashchange event.
+						if (history.pushState) {
+							history.pushState(null, null, targetUrl.hash);
+						}
 					}
 				});
 				if (a.attributes.href.value === window.location.hash) {
