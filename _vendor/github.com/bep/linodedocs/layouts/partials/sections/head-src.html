@@ -11,8 +11,10 @@
 <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
 
 {{/* scripts */}}
-<script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js" data-cfasync="false" defer></script>
-{{- $js := resources.Get "js/main/index.js" -}}
-{{ partial "helpers/script-src.html" (dict "js" $js "params" (dict "search_config" site.Params.search_config "is_production" hugo.IsProduction ) ) }}
+{{- $js := resources.Match "js/main/**.js" | resources.Concat "js/bundle.js" -}}
+{{ partial "helpers/script-src.html" $js }}
+{{- $js := resources.Match "js/loader/**.js" | resources.Concat "js/loader.js" | resources.ExecuteAsTemplate "js/loader.js" site -}}
+{{ partial "helpers/script-src.html" $js }}
 {{ partialCached "jslibs/alpinejs/script-src.html" "-" }}
-{{ partialCached "jslibs/turbolinks/script-src.html" "-" }} 
+{{ partialCached "jslibs/turbolinks/script-src.html" "-" }}
+<script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js" data-cfasync="false"></script>

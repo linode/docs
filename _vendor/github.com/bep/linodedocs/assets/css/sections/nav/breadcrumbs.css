@@ -1,7 +1,3 @@
-.no-js .main__breadcrumbs {
-    visibility: hidden;
-}
-
 .main__breadcrumbs {
     @apply bg-backgroundcolor max-w-screen-lg;
 }
