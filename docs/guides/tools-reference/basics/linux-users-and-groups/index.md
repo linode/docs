@@ -3,7 +3,7 @@ slug: linux-users-and-groups
 author:
   name: Linode
   email: docs@linode.com
-description: 'An introduction to the principal concepts and use of the users and groups system in Linux systems.'
+description: 'Learn about Linux user and group permissions. Understand primary and secondary groups and directories when it comes to Linux/Unix.'
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,7 +22,7 @@ If you are new to Linux/Unix, then the concept of permissions may be confusing. 
 
 ![Linux Users and Groups](linux_users_and_groups.png "Linux Users and Groups")
 
-## What are User and Group Permissions?
+## What are Linux User and Group Permissions?
 
 Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux's major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user to have access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.
 
@@ -42,9 +42,65 @@ To view the permissions on a file or directory, issue the command `ls -l <direct
 
 The first ten characters show the access permissions. The first dash (-) indicates the type of file (d for directory, s for special file, and - for a regular file). The next three characters (**rw-**) define the owner's permission to the file. In this example, the file owner has read and write permissions only. The next three characters (**r--**) are the permissions for the members of the same group as the file owner (which in this example is read only). The last three characters (**r--**) show the permissions for all other users and in this example it is read only.
 
-## Working with Users, Groups, and Directories
+## Linux Primary Groups 
 
-The following sections will go over the commands needed to create, delete, and modify user accounts. Groups will be covered, as well as commands for creating and deleting directories. You will be provided with the commands and descriptions needed for working with users, groups, and directories.
+Primary groups are the ones that are usually recorded in `/etc/passwd` file. Every user on Linux belongs to a primary group. When a Linux user logs in, this is usually the default account associated with any logged in account. Primary group ID is easy to locate if you check the 4th field in your `/etc/passwd` file. 
+
+To find your Linux Primary group, run the following command:
+
+    id  username 
+
+You should be able to see an output like below on your console:
+
+    uid=1000(linode) gid=1000(linode) 
+    groups=1000(linode),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)
+
+As you can see, our primary group is “linode”. 
+
+But if you want a less verbose output that only shows your primary group name, run this command: 
+
+    id -gn <username>
+
+Your output in this case will be: 
+
+    linode
+
+## Linux Secondary Groups 
+
+Once a user has been created with their primary groups, they can be added to secondary groups. They can have a maximum of 15 Linux secondary groups. Secondary groups of a user are in the /etc/group file.
+
+To find which second groups a user belongs to, go to the terminal and run
+
+    groups $<your username>
+
+This command shows a list of all secondary groups that a Linux account belongs to. In our example, the output is:
+
+    linode adm cdrom sudo dip plugdev lpadmin sambashare
+
+To add a user to a Linux secondary group, run the following command to set the right permissions first: 
+
+    sudo groupadd new_linux_group
+
+Next, add a user to the newly created group. In this example, a user named `dtp_ttt` is added to the secondary group we created above:
+
+    usermod -a -G new_linux_group dtp_ttt
+
+You can also add a user to multiple groups. Let’s add This example adds the userour user `dtp_ttt` to groups `linux_group1`, `linux_group2` and `linux_group3` using a single command:
+
+    usermod -a -G linux_group1, linux_group2, linux_group3 dtp_ttt
+
+Once you run this command, `dtp_ttt` will be added to 3 secondary Linux groups: `linux_group1`, `linux_group2` and `linux_group3`.
+
+## What is the difference between Primary and Secondary groups in Linux? 
+
+Primary groups show up in `/etc/passwd/` file, whereas Secondary groups show up in `/etc/group` file. Primary group gets auto applied when users sign-in using GUI, TTY, SSH, etc. And, anything you do has an impact on your primary group (e.g. creating files).
+
+Secondary groups on the other hand don’t require you to use a password, and you can instead start processes using commands like `sg` or `newgrp`.
+
+
+## Working with Linux Users, Groups, and Directories
+
+The following sections will go over the commands needed to create, delete, and modify user accounts. Groups will be covered, as well as commands for creating and deleting directories. Provided are the commands and descriptions needed for working with users, groups, and directories.
 
 ### Creating and Deleting User Accounts
 
@@ -56,7 +112,7 @@ The useradd command utilizes a variety of variables, some of which are shown in 
 
 | Option          | Description                                                        | Example                                    |
 |:----------------|:-------------------------------------------------------------------|:-------------------------------------------|
-| `-d <home_dir>` | home\_dir will be used as the value for the user's login directory | `useradd <name> -d /home/<user's home>`    |
+| `-d <home_dir>` | home\_dir is used as the value for the user's login directory | `useradd <name> -d /home/<user's home>`    |
 | `-e <date>`     | the date when the account will expire                              | `useradd <name>** -e <YYYY-MM-DD>`        |
 | `-f <inactive>` | the number of days before the account expires                      | `useradd <name> -f <0 or -1>`              |
 | `-s <shell>`    | sets the default shell type                                        | `useradd <name> -s /bin/<shell>`           |
@@ -82,7 +138,7 @@ The adduser command automatically creates a home directory and sets the default 
 
     adduser <name>
 
-Once you enter the command you will receive a series of prompts; most of this information is optional. However, you should include at least the user's name (for this example the user name is cjones) and of course a password.
+Once you enter the command you receive a series of prompts; most of this information is optional. However, you should include at least the user's name (for this example the user name is cjones) and a password.
 
     root@localhost:~# adduser cjones
       Adding user `cjones' ...
@@ -114,7 +170,7 @@ To remove the user, their home folder, and their files, use this command:
 
     userdel -r <name>
 
-### Understanding Sudo
+### Understanding Linux Group Sudo
 
 Root is the super user and has the ability to do anything on a system. Therefore, in order to have an additional layer of security, a sudo user is generally used in place of root. While sudo is literally used to give another user limited access to another user's account for the purpose of performing tasks (in most cases the `root` user or the superuser) sudo may be best explained as a tool that allows users and groups to have access to commands they normally would not be able to use. Sudo enables a user to have administration privileges without logging in directly as root. A sample of the sudo command is as follows:
 
@@ -131,7 +187,7 @@ For CentOS, the command is as follows:
 In order to provide a user with the sudo ability, they will need to be added to a sudo enabled group, or their username will need to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
 
 {{< note >}}
-For instructions on adding a user to a default sudo enabled group, see our [How to Secure Your Server](#add-a-limited-user-account) guide
+For instructions on adding a user to a default sudo enabled group, see our [How to Secure Your Server](/docs/guides/securing-your-server/) guide
 {{< /note >}}
 
 The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as root and enter the command `visudo`.
@@ -328,7 +384,7 @@ To change the ownership of a directory and all the files contained inside, use t
 
     chown -R cjones:marketing /srv/smb/leadership/
 
-## Leveraging Users and Groups
+## Leveraging Linux Users and Groups
 
 In many cases, user permissions are used to provide your system with greater security without any direct interaction. Many operating systems create specific system user accounts for different packages during the installation process.
 
