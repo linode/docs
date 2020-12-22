@@ -47,6 +47,8 @@ If Jitsi is not created with the SSL option enabled, it will use a self-signed c
 | **Your Linode API Token.** | Your Linode API access token is needed to create your DNS records and to create the Let's Encrypt SSL certificate. If you don't have a token, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. If `No` is selected, the Jitsi app will trigger security warnings in most web browsers. |
 | **Admin Email for Let's Encrypt certificate** | The email you wish to use for the SSL certificate. This email address will receive notifications when the certificate needs to be renewed. |
+| **Jitsi Admin Username** | The username for the Jitsi Admin to create new meeting rooms. |
+| **Jitsi Admin Password** | The password for the Jitsi Admin user. |
 
 {{< note >}}
 The address to access Jitsi will be `hostname`.`domain name`. For example, if you kept the default hostname, `meet`, and your domain name is `example.com`, to access Jitsi, the address is: `https://meet.example.com`.
@@ -80,6 +82,8 @@ Jitsi is now installed and ready to use.
 1.  Jitsi prompts you to start a meeting.
 
 !["Jitsi Start a Meeting"](jitsi-start-a-meeting.png "Jitsi Start a Meeting")
+
+1. After starting a new meeting, Jitsi will prompt you for credentials. The username will be in the format of $JITSIUSER@$HOSTNAME.$DOMAIN where $JITSIUSER is the Jitsi Admin Username you defined when deploying the One-Click App.
 
 ### Software Included
 
