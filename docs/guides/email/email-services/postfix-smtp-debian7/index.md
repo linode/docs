@@ -3,7 +3,7 @@ slug: postfix-smtp-debian7
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to use Postfix to send mail through an external SMTP server.'
+description: 'Learn how to configure Postfix to send email using external SMTP servers like Mandrill, Sendgrid, and Amazon SES.'
 keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,142 +13,117 @@ modified: 2019-01-24
 modified_by:
   name: Linode
 published: 2014-05-30
-title: Configure Postfix to Send Mail Using an External SMTP Server
+title: How to Configure Postfix to send email using external SMTP Servers
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
 ---
 
-{{< note >}}
-This guide was originally written for Debian 7. It has since been tested to work with Debian 9.
-{{</ note >}}
-
 There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Mandrill, SendGrid, Amazon SES, or any other SMTP server. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
 
-![Configure Postfix to Send Mail Using an External SMTP Server](external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
+## What is Postfix configuration?
 
-In this tutorial, you will learn how to install and configure a Postfix server to send email through Mandrill, or SendGrid.
+Postfix is the default mail transfer agent in Ubuntu. And, Postfix configuration is the setup of main.cf and master.cf files in /etc/postfix/.
 
-{{< content "email-warning-shortguide" >}}
+## What is Postfix used for?  
 
-## Updated Guide for Gmail and Google Apps
+Postfix allows you to route and deliver emails. It uses Simple Mail Transfer Protocol (SMTP) to deliver or route emails. 
 
-We've got an updated version of this guide that works with Gmail's new security features!
+Below is an overview of the process to set up the right Postfix configuration.
+ 
+1. Gather prerequisites: a fully qualified domain name(FQDN), install updates, SMTP mail provider and libsasl2-module package 
+2. Install Postfix on your system 
+3. Configure SMTP usernames and Passwords 
+4. Secure your password and hash database files 
+5. Configure relay server
+6. Test Postfix configuration
+7. Setting up Postfix with Mandrill, SendGrid and Amazon SES
 
-If you're using Gmail or Google Apps, see our [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu) guide instead.
+First, we have to get prerequisites done.
 
-## Prerequisites
+## Step 1: Gathering Prerequisites
 
-Before starting this tutorial, you should have:
+Prerequisites to configure Postfix using an external SMTP server are:
 
--   Your fully qualified domain name (FQDN)
--   All updates installed :
+1. You have a fully qualified domain name (FQDN).
+2. Your system is up-to-date.
+3. You have a valid username and password for the SMTP mail provider (e.g. Mandrill, SendGrid, Amazon SES).
+4. libsasl2-modules are installed.
 
-        sudo apt-get update
+To ensure your system is up-to-date, run:
 
--   A valid username and password for the SMTP mail provider, such as Mandrill, or SendGrid
--   Make sure the libsasl2-modules package is installed and up to date:
+    sudo apt-get update
 
-        sudo apt-get install libsasl2-modules
+And if you don’t have libsasl2-modules installed, install them using:
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
+    sudo apt-get install libsasl2-modules
 
-## Installing Postfix
+Your system is now ready to install Postfix.
 
-In this section, you will install Postfix and set the domain and hostname.
+## Step 2: Installing Postfix 
 
-1.  Install Postfix with the following command:
+To install Postfix, run the following command:
 
-        sudo apt-get install postfix
+    sudo apt-get install postfix   
 
-2.  During the installation, a prompt will appear asking for your **General type of mail configuration**.
+You will get a prompt asking for your General type of mail configuration. Select “Internet Site” here. 
 
-    [![Postfix configuration, General type of mail configuration options](1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
+[![Postfix configuration, General type of mail configuration options](1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
 
-    Select **Internet Site**.
+Next, enter your full qualified domain name here when asked for system mail name, e.g. fqdn.example.com 
 
-3.  Enter the fully qualified name of your domain, **fqdn.example.com**.
+[![Postfix configuration, System mail name prompt](1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
 
-    [![Postfix configuration, System mail name prompt](1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
+Once installation is over, go to /etc/postfix/main.cf and edit it to add myhostname parameter in it
 
-4.  Once the installation is finished, open the `/etc/postfix/main.cf` file with your favorite text editor:
-
-        sudo nano /etc/postfix/main.cf
-
-5.  Make sure that the **myhostname** parameter is configured with your server's FQDN:
-
-    {{< file "/etc/postfix/main.cf" >}}
+{{< file "/etc/postfix/main.cf" >}}
 myhostname = fqdn.example.com
-
 {{< /file >}}
 
+Once myhostname is configured with your FQDN, save it.
 
-## Configuring SMTP Usernames and Passwords
+## Step 3: Configuring SMTP Usernames and Passwords
 
-Usernames and passwords are generally stored in a file called `sasl_passwd` in the `/etc/postfix/` directory. In this section, you'll add your external mail provider credentials to this file and to Postfix.
+To configure your usernames and passwords, go to your `sasl_passwd` file stored in `/etc/postfix/`. This is also where you will add your external SMTP provider’s credentials. 
 
-If you want to use [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) as your SMTP provider, you may want to reference the appropriate example while working on this section. For Google Apps and Gmail-specific settings, check out our [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu) guide.
+First, open or create the `/etc/postfix/sasl_passwd` file:
 
-1.  Open or create the `/etc/postfix/sasl_passwd` file, using your favorite text editor:
+    sudo nano /etc/postfix/sasl_passwd
 
-        sudo nano /etc/postfix/sasl_passwd
+Next, add your SMTP username and password as shown below:
 
-2.  Add your destination (SMTP Host), username, and password in the following format:
-
-    {{< file "/etc/postfix/sasl_passwd" >}}
-[mail.isp.example] username:password
-
-{{< /file >}}
+    [mail.isp.example] username:password
 
 
-    {{< note >}}
-If you want to specify a non-default TCP Port (such as 587), then use the following format:
+Lastly, create a Hash DB file named sasl_passwd.db for Postfix using postmap
 
-{{< file "/etc/postfix/sasl_passwd" >}}
-[mail.isp.example]:587 username:password
-{{< /note >}}
+    sudo postmap /etc/postfix/sasl_passwd
 
-{{< /file >}}
+## Step 4: Secure your Password and Hash DB files 
 
-3.  Create the hash db file for Postfix by running the `postmap` command:
+Credentials in `/etc/postfix/sasl_passwd` are stored in plain text, so we have to apply some form of security to ensure restricted access to this file. 
 
-        sudo postmap /etc/postfix/sasl_passwd
+You can do this by changing permissions to ensure only the root user can read or write the file. Run the following commands to change permissions:
 
-If all went well, you should have a new file named `sasl_passwd.db` in the `/etc/postfix/` directory.
+    sudo chown root:root /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db  
+    sudo chmod 0600 /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db  
 
-## Securing Your Password and Hash Database Files
+## Step 5: Configuring the Relay Server 
 
-The `/etc/postfix/sasl_passwd` and the `/etc/postfix/sasl_passwd.db` files created in the previous steps contain your SMTP credentials in plain text.
+Let’s configure main.cf located at /etc/postfix/main.cf by
+sudo nano /etc/postfix.main.cf
 
-For security reasons, you should change their permissions so that only the **root** user can read or write to the file. Run the following commands to change the ownership to root and update the permissions for the two files:
+In the editor, update relayhost to your external SMTP relay host. 
 
-    sudo chown root:root /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
-    sudo chmod 0600 /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
-
-## Configuring the Relay Server
-
-In this section, you will configure the `/etc/postfix/main.cf` file to use the external SMTP server.
-
-1.  Open the `/etc/postfix/main.cf` file with your favorite text editor:
-
-        sudo nano /etc/postfix/main.cf
-
-2.  Update the **relayhost** parameter to show your external SMTP relay host. **Important**: If you specified a non-default TCP port in the `sasl_passwd` file, then you must use the same port when configuring the **relayhost** parameter.
-
-    {{< file "/etc/postfix/main.cf" >}}
+{{< file "/etc/postfix/main.cf" >}}
 # specify SMTP relay host
 relayhost = [mail.isp.example]:587
 
 {{< /file >}}
 
+If you specified a non-default TCP port in the sasl_passwd file, then use the same port when configuring relayhost, 
 
-    {{< note >}}
-Check the appropriate [Google Apps](/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu), [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) section for the details to enter here.
-{{< /note >}}
+Add the following parameters to enable authentication, save main.cf and restart Postfix.
 
-3.  At the end of the file, add the following parameters to enable authentication:
-
-    {{< file "/etc/postfix/main.cf" >}}
+{{< file "/etc/postfix/main.cf" >}}
 # enable SASL authentication
 smtp_sasl_auth_enable = yes
 # disallow methods that allow anonymous authentication.
@@ -162,86 +137,81 @@ smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 
 {{< /file >}}
 
+Restart Postfix by 
 
-4.  Save your changes.
-5.  Restart Postfix:
+    sudo service postfix restart
 
-        sudo service postfix restart
+## Step 6: Testing Postfix Configuration with External SMTP Server
 
-## Testing Postfix
+Use the mail command to test your Postfix configuration by: 
 
-The fastest way to test your configuration is to send an email to any unrelated email address, using the `mail` command:
+    echo  “body of your email” | mail -s “This is a subject” - a “From: you@example.com” recipient@elsewhere.com  
 
-    echo "body of your email" | mail -s "This is a Subject" -a "From: you@example.com" recipient@elsewhere.com
+You may have to install mailutils to use the mail command. To install mailutils, run:
 
-You may have to install `mailutils` to use the `mail` command:
+    sudo apt-get install mailutils  
 
-    sudo apt-get install mailutils
-
-Alternatively, you can use Postfix's own sendmail implementation, by entering lines similar to those shown below:
+You can also use Postfix’s own sendmail implementation to test your Postfix configuration by entering these lines: 
 
     sendmail recipient@elsewhere.com
     From: you@example.com
     Subject: Test mail
     This is a test email
-    .
 
-## Examples of Postfix Configurations with Different Providers
+## Step 7: Postfix Configuration with Mandrill, Sendgrid and Amazon SES
 
-This section shows you settings for some popular mail services you can use as external SMTP servers. You may have to do some fine-tuning on your own to avoid Postfix logins being flagged as suspicious.
+Note:  You may have to fine-tune these configurations to avoid Postfix logins being flagged as suspicious.
 
-### Settings for Mandrill
+### Postfix Configuration for Mandrill
 
-Use these settings for Mandrill.
-
-1.  For `/etc/postfix/sasl_passwd`, use the following configuration with your own credentials:
-
-    {{< file "/etc/postfix/sasl_passwd" >}}
+1.  To setup Postfix with Mandrill, first go to /etc/postfix/sasl_passwd and add your credentials:
+{{< file "/etc/postfix/sasl_passwd" >}}
 [smtp.mandrillapp.com]:587 USERNAME:API_KEY
-
 {{< /file >}}
-
-
-2.  For `/etc/postfix/main.cf`, use the following **relayhost**:
-
-    {{< file "/etc/postfix/main.cf" >}}
+2.  Edit main.cf at /etc/postfix/ and add your relayhost:
+{{< file "/etc/postfix/main.cf" >}}
 relayhost = [smtp.mandrillapp.com]:587
-
 {{< /file >}}
+3.  Next, create a Hash DB file for Postfix using postmap:  
+`sudo postmap /etc/postfix/sasl_passwd`
+4.  Restart Postfix to enable new Configuration by: 
+`sudo service postfix restart` 
 
+### Postfix Configuration for Sendgrid 
 
-3.  Create the hash db file for Postfix by running the `postmap` command:
-
-        sudo postmap /etc/postfix/sasl_passwd
-
-4.  Restart Postfix:
-
-        sudo service postfix restart
-
-### Settings for SendGrid
-
-Use these settings for SendGrid.
-
-1.  For `/etc/postfix/sasl_passwd`, use the following configuration with your own credentials:
-
-    {{< file "/etc/postfix/sasl_passwd" >}}
+1. To setup Postfix for Sendgrid, edit your sasl_passwd file and add your credentials:se these settings for SendGrid.
+{{< file "/etc/postfix/sasl_passwd" >}}
 [smtp.sendgrid.net]:587 USERNAME:PASSWORD
-
 {{< /file >}}
-
-
-2.  For `/etc/postfix/main.cf`, use the following **relayhost**:
-
-    {{< file "/etc/postfix/main.cf" >}}
+2. Edit your main.cf file at /etc/postfix/ and add relayhost in it:
+{{< file "/etc/postfix/main.cf" >}}
 relayhost = [smtp.sendgrid.net]:587
-
 {{< /file >}}
+3. Create a Hash DB file for Postfix using `postmap` command:
+`sudo postmap /etc/postfix/sasl_passwd`
+4.  Restart Postfix:
+`sudo service postfix restart`
 
+### Postfix Configuration for Amazon SES 
 
-3.  Create the hash db file for Postfix by running the `postmap` command:
-
-        sudo postmap /etc/postfix/sasl_passwd
-
+1. To configure Postfix with Amazon SES, go to your sasl_passwd file and add your credentials:
+{{< file "/etc/postfix/sasl_passwd" >}}
+[email-smtp.us-west-2.amazonaws.com]:587 USERNAME:PASSWORD
+{{< /file >}}
+2. Edit your main.cf file at /etc/postfix/ and add relayhost in it:
+{{< file "/etc/postfix/main.cf" >}}
+relayhost = [email-smtp.us-west-2.amazonaws.com]:587
+{{< /file >}}
+3. Create a Hash DB file for Postfix using `postmap`:
+    `sudo postmap /etc/postfix/sasl_passwd`
 4.  Restart Postfix:
 
-        sudo service postfix restart
+`sudo service postfix restart`
+
+## How do I check my Postfix configuration? 
+
+To simply check your Postfix configuration, check your files located under `/etc/postfix/`. Run postfix check for potential errors. And to see configuration in details, run `postconf`.
+
+## How do I change my Postfix configuration?
+
+To change your Postfix configuration, make changes to files stored in `/etc/postfix/`

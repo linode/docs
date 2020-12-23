@@ -3,7 +3,7 @@ slug: install-plex-media-server-on-ubuntu-18-04
 author:
   name: Nick Brewer
   email: nbrewer@linode.com
-description: View and organize your media library with Plex on Ubuntu 18.04
+description: Learn how to view and organize your media library with Plex on Ubuntu 18.04 in this detailed user guide.
 keywords: ["plex media server", "install plex", "plex ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,7 +31,7 @@ relations:
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Before you Begin
+## Prerequisites to Install Plex Media Server on Ubuntu 18.08
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -41,37 +41,42 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  Plex requires that you create an [account](https://www.plex.tv/features/) to make use of the service, and provides additional features such as DVR capability and offline viewing if you pay for their premium [Plex Pass](https://www.plex.tv/features/plex-pass/) offering. To complete this guide, you will need a Plex account.
+4.  Create a [Plex account](https://www.plex.tv/), which is required to make use of the service, and provides additional features such as DVR capability and offline viewing if you pay for their premium [Plex Pass](https://www.plex.tv/features/plex-pass/) offering (optional).
 
-## Install Plex
+All four steps above are required for you to follow the next steps in this guide.
 
-1.  Head to the Plex [Downloads](https://www.plex.tv/downloads/) page and copy the installation link for Ubuntu. Use `wget` to download the installer via the copied link:
+## Install Plex Media Server on Ubuntu 18.04
+
+1.  Go to [Plex Server Downloads](https://www.plex.tv/media-server-downloads/) page and copy the installation link for Ubuntu. 
+
+    ![Plex server downloads page.](download-plex-server-for-ubuntu.jpg)
+
+    Use `wget` to download the installer via the copied link. Replace the link with your selected distribution as shown in the example below:
 
         wget https://downloads.plex.tv/plex-media-server/1.14.1.5488-cc260c476/plexmediaserver_1.14.1.5488-cc260c476_amd64.deb
 
     This example uses the current link for Ubuntu, at the time of writing. Be sure to use the up-to-date version supplied on the Plex website.
 
-2.  Use `dpkg` to install the Plex server:
+2.  Use `dpkg` to install the Plex .deb files (Plex distribution) you downloaded using `wget` with the following command:
 
         sudo dpkg -i plexmediaserver*.deb
 
-3.  Enable Plex Media Server to start on reboot, and then start the server:
+3.  To start Plex Media Server automatically upon booting your Ubuntu run the following commands:
 
         sudo systemctl enable plexmediaserver.service
         sudo systemctl start plexmediaserver.service
 
 
-## Configure Plex
+## Configuring Plex Media Server on Ubuntu 18.04
 
 This section will show you how to complete your server setup and start adding media libraries.
 
-### Initial Setup
 
-1.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.1` with the IP address of the Plex server. Perform this step on your workstation:
+1.  First, setup an SSH tunnel to your Linode. Run the following command by replacing the username with your username and `192.0.2.1` with your Linode’s IP address:
 
         ssh user@192.0.2.1 -L 8888:localhost:32400
 
-2.  Enter `http://localhost:8888/web` into your browser to view the Plex web interface, as shown below. Input your Plex account username and password to proceed with the setup process:
+2.  Next, open `http://localhost:8888/web` into your browser to view the Plex web interface, as shown below. Input your Plex account username and password to proceed with the setup process:
 
     [![Plex web interface.](plex-browser-view-small.png)](plex-browser-view.png)
 
@@ -84,7 +89,7 @@ This section will show you how to complete your server setup and start adding me
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television
 
-### Add and Organize Media
+## Organizing Plex Media Server on Ubuntu 18.04 
 
 1.  Now that you've signed into Plex, you should see the following page. Click the **Add Library** button to start setting up your media libraries:
 
@@ -106,20 +111,78 @@ This section will show you how to complete your server setup and start adding me
 
 ### Disable DLNA (Recommended)
 
-[DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is a protocol that incorporates [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) (or UPnP) standards for digital media sharing across devices. If you do not wish to make use of it, it's recommended that you disable this feature, as it is openly connectable on port `1900`. From the Plex web interface, click the wrench icon in the upper right corner, select **Server**, and navigate to the **DLNA** section. Uncheck **Enable the DLNA server**, and click **Save Changes**:
+In more recent versions of Plex Media Server, [DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is usually disabled. But, with certain older distributions, you will have to disable it manually. DLNA server uses [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) Protocol (UPnP) and is not specific to a user account. This means any app or device in a network can access files without restriction if DLNA is enabled. 
+
+To disable DLNA follow these steps:
+
+1.  Click on wrench icon at the top and select server
+
+2.  Navigate to DLNA and uncheck DLNA server 
+
+3.  Click save
 
 [![Plex media client](plex-dlna-disable-small.png)](plex-dlna-disable.png)
 
-## Connect to your Plex Server
+## Connecting to your Plex Server
 
-Now that your server is set up, you're ready to connect to it from your Plex client application. Plex is supported by a number of different platforms, and you can find a full list of client applications [here](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps).
+To connect to your Plex Server from a device (e.g. an Apple device), check the [list of all client applications](https://www.plex.tv/apps-devices/). Select the right client for your device and download it. 
 
-The examples provided here will use **Plex Media Player** for MacOS.
+Next, sign-in to your Plex client application and select your server from the dropdown menu. Now, you can browse media files available on your Plex server.
 
-1.  [Download](https://www.plex.tv/apps-devices/) the appropriate media player application, or install it via your device's application store.
+As a precautionary measure:
 
-2.  Sign in to the Plex client application using the same Plex account as your server.
+1.  Disable VPNs on computers and routers
 
-3.  Your Plex client will have a drop down menu where you can select your server. Once it's selected, you can navigate to the library with the content that you wish to view:
+2.  If an app doesn’t support secure connections, don’t ask for it 
 
-    [![Plex media client](plex-media-client-small.png)](plex-media-client.png)
+3.  Disable proxies on computers and routers
+
+[![Plex media client](plex-media-client-small.png)](plex-media-client.png)
+
+## Configuring Plex Media Server Firewall on Ubuntu 18.04
+
+To set up a firewall on Plex Media Server, we will use the Uncomplicated Firewall(UFW). Usually, it is pre-installed on Ubuntu. If UF isn’t installed, run the following command to install it on your Ubuntu:
+
+    sudo  apt-install ufw 
+
+To confirm if UFW is installed, run the following and see if you get a “Status: active” confirmation: 
+
+    sudo ufw status verbose 
+
+Using a text editor of your choice, create a UFW application profile in `/etc/ufw/applications.d/plexmediaserver` by adding the following:
+
+`[plexmediaserver]`  
+`title=Plex Media Server (Standard)`  
+`description=The Plex Media Server`  
+`ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp`  
+
+`[plexmediaserver-dlna]`  
+`title=Plex Media Server (DLNA)`  
+`description=The Plex Media Server (additional DLNA capability only)`  
+`ports=1900/udp|32469/tcp`  
+
+`[plexmediaserver-all]`  
+`title=Plex Media Server (Standard + DLNA)`  
+`description=The Plex Media Server (with additional DLNA capability)`  
+`ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp|1900/udp|32469/tcp`  
+
+Save and update UFW application profile with: 
+
+    sudo ufw app update plexmediaserver 
+
+Apply these UFW rules by running:
+
+    sudo ufw allow plexmediaserver-all
+
+    To                                    Action      From
+    --                                    ------      ----
+    22/tcp                                ALLOW IN    Anywhere
+    32400/tcp (plexmediaserver-all)       ALLOW IN    Anywhere
+    3005/tcp (plexmediaserver-all)        ALLOW IN    Anywhere
+    5353/udp (plexmediaserver-all)        ALLOW IN    Anywhere
+    8324/tcp (plexmediaserver-all)        ALLOW IN    Anywhere
+    32410:32414/udp (plexmediaserver-all) ALLOW IN    Anywhere
+    1900/udp (plexmediaserver-all)        ALLOW IN    Anywhere
+    32469/tcp (plexmediaserver-all)       ALLOW IN    Anywhere
+
+If you see output like above it confirms that your new firewall rules are in place.
