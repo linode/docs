@@ -51,9 +51,9 @@ Authy stores your authentication tokens (hashed for security) on their servers. 
 Enable two-factor authentication to start using it with your Linode account.
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
+1.  Select the **My Settings** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile'")
+   ![Select 'My Settings'](security-my-profile.png "Select 'My Settings'")
 
 1.  Select the **Password & Authentication** tab.
 1.  If not already selected, navigate to the **Linode Credentials** tab.
@@ -117,9 +117,9 @@ Generating a one-time use scratch code is also recommended. In the event that yo
 The Linode Cloud Manager allows you to generate a new secret key for your two-factor authentication token device. This is a good way to start using a new smartphone as your two-factor token device. Here's how to generate a new secret key:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
+1.  Select the **My Settings** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
+   ![Select 'My Settings'](security-my-profile.png "Select My Settings")
 
 1.  Select the **Password & Authentication** tab.
 1.  If not already selected, navigate to the **Linode Credentials** tab.
@@ -134,9 +134,9 @@ A new secret key and barcode will be generated for your account and displayed on
 You can disable two-factor authentication for your Linode account at any time. Here's how:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
+1.  Select the **Settings** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
+   ![Select 'Settings'](security-my-profile.png "Select My Settings")
 
 1.  Select the **Password & Authentication** tab.
 1.  If not already selected, navigate to the **Linode Credentials** tab.
@@ -165,9 +165,9 @@ If you prefer encrypted communication:
 Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means your device is not prompted for a username or password for the next 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address is notified whenever a new device is trusted. To view and manage your account's trusted devices:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
+1.  Select the **My Settings** link by clicking on your username at the top of the page:
 
-      ![Select 'My Profile'](security-my-profile.png "Select 'My Profile")
+      ![Select 'My Settings'](security-my-profile.png "Select 'Settings")
 
 1.  Select the **Password & Authentication** tab. Then, select the **Linode Credentials** tab, and navigate to the  **Trusted Devices** section.
 
