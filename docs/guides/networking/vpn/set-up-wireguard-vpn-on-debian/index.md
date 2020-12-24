@@ -25,7 +25,7 @@ aliases: ['/networking/vpn/set-up-wireguard-vpn-on-debian/']
 
 ## What is WireGuard?
 
-[WireGuard](https://www.wireguard.com) is a simple, fast, and secure VPN that utilizes state-of-the-art cryptography. With a small source code footprint, it aims to be faster and leaner than other VPN protocols such as [OpenVPN](https://en.wikipedia.org/wiki/OpenVPN) and [IPSec](https://en.wikipedia.org/wiki/IPsec). WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.
+[WireGuard](https://www.wireguard.com) &#174; is a simple, fast, and secure VPN that utilizes state-of-the-art cryptography. With a small source code footprint, it aims to be faster and leaner than other VPN protocols such as [OpenVPN](https://en.wikipedia.org/wiki/OpenVPN) and [IPSec](https://en.wikipedia.org/wiki/IPsec). WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.
 
 WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as [`ifconfig`](https://en.wikipedia.org/wiki/Ifconfig) and `ip`. Currently, WireGuard is only available on Linux.
 
@@ -291,3 +291,5 @@ peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
 ## Next steps
 
 The process used in this guide can be extended to configure network topologies. As mentioned previously, WireGuard is an evolving technology. If you use WireGuard, you should monitor the [official documentation](https://www.wireguard.com/) and [todo list](https://www.wireguard.com/todo/) for critical updates and new/upcoming features.
+
+"WireGuard" is a registered trademark of Jason A. Donenfeld.
