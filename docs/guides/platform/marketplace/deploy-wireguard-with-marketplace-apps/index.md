@@ -23,7 +23,7 @@ aliases: ['/platform/marketplace/deploy-wireguard-with-marketplace-apps/', '/pla
 
 ## WireGuard Marketplace App
 
-WireGuard &#174; is a simple, fast, and modern virtual private network (VPN) which utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and it has a much smaller source code footprint.
+WireGuard&#174; is a simple, fast, and modern virtual private network (VPN) which utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and it has a much smaller source code footprint.
 
 Configuring WireGuard is as simple as configuring SSH. A connection is established by an exchange of public keys between server and client, and only a client whose public key is present in the server's configuration file is considered authorized. WireGuard sets up standard network interfaces which behave similarly to other common network interfaces, like `eth0`. This makes it possible to configure and manage WireGuard interfaces using standard networking tools such as ifconfig and ip.
 
