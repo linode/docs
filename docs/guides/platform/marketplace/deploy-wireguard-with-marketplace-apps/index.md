@@ -13,6 +13,8 @@ modified_by:
 title: "Deploy WireGuard with Marketplace Apps"
 contributor:
   name: Linode
+headless: true
+noindex: true
 external_resources:
 - '[WireGuard Quick Start](https://www.wireguard.com/quickstart/)'
 - '[WireGuard Conceptual Overview](https://www.wireguard.com/#conceptual-overview)'
