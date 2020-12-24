@@ -19,11 +19,11 @@ external_resources:
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 aliases: ['/platform/marketplace/deploy-wireguard-with-marketplace-apps/', '/platform/one-click/deploy-wireguard-with-one-click-apps/']
 ---
-{{< youtube Q1I6-clkQmQ >}}
+<!-- {{< youtube Q1I6-clkQmQ >}} -->
 
 ## WireGuard Marketplace App
 
-WireGuard is a simple, fast, and modern virtual private network (VPN) which utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and it has a much smaller source code footprint.
+WireGuard&#174; is a simple, fast, and modern virtual private network (VPN) which utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and it has a much smaller source code footprint.
 
 Configuring WireGuard is as simple as configuring SSH. A connection is established by an exchange of public keys between server and client, and only a client whose public key is present in the server's configuration file is considered authorized. WireGuard sets up standard network interfaces which behave similarly to other common network interfaces, like `eth0`. This makes it possible to configure and manage WireGuard interfaces using standard networking tools such as ifconfig and ip.
 
@@ -167,3 +167,5 @@ transfer: 98.86 KiB received, 43.08 KiB sent
 | [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the [WireGuard Options](#wireguard-options) step of the deployment will allow outgoing and incoming traffic. |
 
 {{< content "marketplace-update-note">}}
+
+"WireGuard" is a registered trademark of Jason A. Donenfeld.

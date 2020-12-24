@@ -343,6 +343,7 @@ domain2
 domain3
 domainkey
 domainname
+donenfeld
 dotdeb
 dotfiles
 doveadm
