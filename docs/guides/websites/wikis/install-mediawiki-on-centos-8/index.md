@@ -7,7 +7,7 @@ description: 'MediaWiki is a versatile, open, and free software powering knowled
 og_description: 'MediaWiki is a versatile, open, and free software powering knowledge repositories like Wikipedia. This guide will show you how to install MediaWiki on CentOS 8.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-12-02
+published: 2020-12-29
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Mediawiki on Centos 8"
@@ -39,16 +39,16 @@ This guide is written for a non-root user. Commands that require elevated privil
 1. Install Apache 2.4:
 
         sudo yum install httpd
-        
+
 2. Enable and start the Apache service:
 
         sudo systemctl enable httpd.service
         sudo systemctl start httpd.service
-				
+
 3. See the guide for [How to Install Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) for more details and configuration options for the Apache web server.
 
 ## Install PHP
-MediaWiki requires PHP 7.3.19–24, 7.4.3, or later. However, the CentOS package manager (Yum) only includes PHP 7.2 in its default repository. Thus, you will need to use the Remi repository to acquire one of the later PHP releases.
+MediaWiki requires PHP 7.3.19–24, 7.4.3, or later. However, the CentOS package manager (Yum) only includes PHP 7.2 in its default repository. Thus, you need to use the Remi repository to acquire one of the later PHP releases.
 
 1. Add Extra Packages for Enterprise Linux (EPEL) and the Remi repository:
 
@@ -59,20 +59,20 @@ MediaWiki requires PHP 7.3.19–24, 7.4.3, or later. However, the CentOS package
 
         sudo dnf module reset php
         sudo dnf module install php:remi-8.0
-        
-    For this example, the latest version of PHP (8.0) was used. You can, alternatively, choose either 7.3 or 7.4; this will install the latest release for either version.
-    
+
+    For this example, the latest version of PHP (8.0) was used. You can, alternatively, choose either 7.3 or 7.4; doing so installs the latest release for either version.
+
 3. Install the `php-mysqlnd` module to support the use of the MariaDB (described below):
 
         sudo dnf install php-mysqlnd
-        
+
 ## Install and Configure MariaDB
 MediaWiki supports a variety of database options, including MariaDB, MySQL, and PostgreSQL. MariaDB is preferred in the MediaWiki documentation and has been selected for this guide.
 
 1. Install MariaDB:
 
         sudo yum install mariadb-server
-        
+
 2. Enable and start the MariaDB service:
 
         sudo systemctl enable mariadb
@@ -81,10 +81,10 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 3. Secure the MariaDB installation:
 
         sudo mysql_secure_installation
-        
-    This script will give you the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
-4. See the guide for [How to Install MariaDB on CentOS 8](/docs/guides/how-to-install-mariadb-on-centos-8/) for more details and configuration options for the MariaDB instllation.
+    This script gives you the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
+
+4. See the guide for [How to Install MariaDB on CentOS 8](/docs/guides/how-to-install-mariadb-on-centos-8/) for more details and configuration options for the MariaDB installation.
 
 ## Download and Extract the MediaWiki Files
 1. Download the `tar.gz` containing the latest release of the MediaWiki software from the [official MediaWiki download page](https://www.mediawiki.org/wiki/Download).
@@ -93,7 +93,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
         wget https://releases.wikimedia.org/mediawiki/1.35/mediawiki-1.35.0.tar.gz
 
-2. Move the `tar.gz` file to the Apache web server's document directory. You can find the document directory as the `DocumentRoot` variable in the Apache configuration file,  located at `/etc/httpd/conf/httpd.conf`; the typical document directory is `/var/www/html`, which is assumed in the following example:
+2. Move the `tar.gz` file to the Apache web server's document directory. You can find the document directory as the `DocumentRoot` variable in the Apache configuration file, located at `/etc/httpd/conf/httpd.conf`; the typical document directory is `/var/www/html`, which is assumed in the following example:
 
         sudo mv mediawiki-1.35.0.tar.gz /var/www/html
 
@@ -101,22 +101,22 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
         sudo tar xvzf /var/www/html/mediawiki-1.35.0.tar.gz
 
-    It is recommended that you rename the resulting folder, as the folder name will be part of the URL used for navigating to your MediaWiki. For the rest of this guide, the name `w` will be used for this folder:
-    
+    It is recommended that you rename the resulting folder, as the folder name becomes part of the URL used for navigating to your MediaWiki. For the rest of this guide, the name `w` is used for this folder:
+
         sudo mv /var/www/html/mediawiki-1.35.0 /var/www/html/w
 
     {{< note >}}
-Extracting the archive as root will make the root user the files' owner. If this is not your intention, you will need to use the `chown` command to change the files' ownership after extraction.
+ Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction.
     {{< /note >}}
 
 ## Install MediaWiki
 1. In a web browser, navigate to `index.php` in the base MediaWiki folder; you can use either the web server domain (replacing `domain` in the example below) or localhost, as in:
 
         http://domain/w/index.php
-        
+
         http://localhost/w/index.php
 
-    {{< note  >}}
+    {{< note >}}
 If you choose to set up the MediaWiki installation locally using localhost but later want to use a domain, you can do so by changing `localhost` to the appropriate domain in the `LocalSettings.php` file described below.
     {{< /note >}}
 
@@ -125,5 +125,5 @@ If you choose to set up the MediaWiki installation locally using localhost but l
 3. Download the `LocalSettings.php` file when prompted at the end of the setup process, and store the file in the base MediaWiki folder (replacing `path/to/download` in the following example with the path to the downloaded file):
 
         sudo mv path/to/download/LocalSettings.php /var/www/html/w
-        
+
 4. Visit `index.php` again in a web browser to confirm that MediaWiki has been installed successfully.
