@@ -1,0 +1,78 @@
+author:
+  name: Andy Patrizio 
+  email: andy@andypatrizio.com
+description: 'The term &quot;serverless computing&quot; is a misnomer, but the concept is very real and growing in popularity.'
+keywords: "serverless computing" 
+license:  guides/applications/cloud-storage/
+published: 
+modified_by:
+  name: Linode
+title: 'What is Serverless Computing?'
+contributor:
+  name: Andy Patrizio
+  link: 
+external_resources:
+  - '[Link Title 1](http://www.example.com)'
+  - '[Link Title 2](http://www.example.net)'
+---
+
+What is Serverless Computing?
+
+Deck: The term &quot;serverless computing&quot; is a misnomer, but the concept is very real and growing in popularity.
+
+Serverless computing is a type of application deployment architecture that allows developers to write a tiny application to execute it on-demand (without needing to set up a server to host the application), and to then shut it down when the function is no longer in use.This name can be misleading because it implies that no servers are involved. There most definitely _are_ servers; but the point is that the servers are not something developers need to worry about.
+
+Serverless applications are often called &quot;functions&quot; (or Functions-as-a-Service, FaaS). That is because they are very often simple applets that do one thing, a single function. They are not full of complex functions like server-side applications. One example is Amazon Polly, the audiobook player, which plays an audio file for the listener and shuts down when done.
+
+In many ways, serverless computing (often shortened to just _serverless_) is a natural evolution of Platform-as-a-Service (PaaS). Whereas Infrastructure-as-a-Service (IaaS) is the basic cloud service that offers an operating system and little else, PaaS is an operating system plus a development tool environment for building applications. All back-end operations are handled by the cloud provider so the developer has to just worry about their application. (See our related guide to [types of cloud computing](https://www.linode.com/what-is-cloud-computing/).)
+
+Serverless is the same. It offers a fully-managed platform that frees developers from the need to maintain the back-end and to deal with system resources. This means the application is no longer tied to a specific, physical machine; the software runs on whatever server is available.
+
+With serverless computing, rather than provisioning virtual machines and deploying code to them, the development team has only a few requirements. Developers upload the code and let the server determine how to best deploy and run those functions.
+
+This has a number of benefits:
+
+- There are no servers to provision or manage.
+- Scaling is done dynamically and in response to the applications&#39; resource needs.
+- The cloud provider takes care of availability issues, such as keeping the application running and restarting it in case of failure.
+- It can save money. You only pay for resources the application uses. You don&#39;t pay when the code isn&#39;t running.
+
+There are also disadvantages:
+
+- Testing and debugging is more difficult because developers lack visibility into backend processes.
+- Security concerns can come up due to a lack of control over the back end and how data is handled. Because of the simplicity of the functions, proper data security features may be missing that would be present in an enterprise application.
+- Because of its nature and design, serverless is not ideal for long-running processes. You don&#39;t run an ERP application as serverless. Serverless is designed for running a single task for a short period.
+
+### On-Prem or in the Cloud
+
+Serverless computing can be used in both an on-premises scenario or via a cloud provider. There are two categories of on-prem serverless computing platforms. You likely have heard of at least one of these: Kubernetes. Kubernetes is an open source containerized platform for deploying serverless functions in an on-premises environment. It&#39;s extremely popular.There are a number of non-Kubernetes platforms as well that don&#39;t depend on another framework. The best known is Apache OpenWhisk, developed by IBM, as well as [IronFunctions](https://github.com/iron-io/functions), [Fn Project](https://fnproject.io/), [OpenLambda](https://open-lambda.org/), and [OpenFaas](https://docs.openfaas.com/).
+
+Given that you can use serverless computing in the cloud or on-prem, which is better? It depends.
+
+#### Pluses and Minuses of the Cloud
+
+Cloud-based serverless computing has several advantages:
+
+- Cost: On-premise serverless infrastructure has high operating costs because you still are running your own hardware. These costs must be paid regardless of utilization.
+- Scaling: Cloud providers always have more capacity than you. In these scenarios, serverless scaling capabilities are essentially infinite and can be added or reduced immediately.
+- Low latency: Because the cloud providers have multiple data centers distributed around the globe, latency times remain low. Customers always enjoy rapid response regardless of location.
+
+And then there are the caveats:
+
+- Security and compliance: Regulatory concerns such as financial or medical laws may hinder the nature of what you can store in the cloud. And anything outside of your data center can be more vulnerable than on-premise servers – at least in the perception of decision-makers.
+- Debugging: Debugging is generally more difficult. Every time a serverless instance spins up, it creates a new version of itself. When it winds down, it erases its data, making it much harder to trace activity and gather telemetry.
+- Vendor lock-in: You don&#39;t think AWS is going to make it easy to take your business to Microsoft, do you? Every vendor has its own set of APIs. Expect a platform move to require a rewrite.
+
+#### Pluses and Minuses of On-Premises
+
+On-prem execution has several advantages over cloud-based serverless computing:
+
+- Avoid vendor lock-in: As described, cloud vendors use proprietary APIs that tie you to their service. Yes, you still use a vendor to provide on-premises software but the majority are open source with fewer lock-in hooks.
+- Enhanced infrastructure control: Since you control the hardware, you can make sure certain functions don&#39;t run at the same time or that too many run at once.
+- Potentially cheaper: Depending on your usage it may cost less to run on-prem. Since the cost is tied to usage, if you are running a large number of functions you might be better off on-prem.
+- Reduced security risks: Compliance and regulatory issues might force your hand.
+- Use heterogeneous hardware: Cloud environments are largely x86-based, although Arm and GPU is slowly taking hold. In your data center it would be much easier to run functions on a GPU, FPGA, custom AI chip, and others. GPUs and other custom processors are favored for AI projects, so on-prem you get to use the chip that best suits your needs.
+
+Serverless computing is the finer point of virtualization. In a virtual environment, you had the whole operating system in an instance. Then came containers, with smaller, trimmed-down operating environments to run simpler applications. Because of their smaller size, more containers could be run on the same physical hardware than on virtual machines. And containers were easier to manage than VMs.
+
+Serverless takes things down one more notch. There&#39;s no server deployment at all, a single function runs in a sparse amount of memory and shuts down when done. It is the simplest form of computing. For now.
