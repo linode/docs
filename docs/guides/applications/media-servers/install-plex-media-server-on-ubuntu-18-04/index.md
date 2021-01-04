@@ -121,7 +121,7 @@ In more recent versions of Plex Media Server, [DLNA](https://en.wikipedia.org/wi
 
 1.  While logged into your Plex Media Server account, click on the **wrench icon** at the top and select **Server**.
 
-1.  Navigate to the **DLNA** section, uncheck **Enable the DLNA server**, and clic **Save Changes**:
+1.  Navigate to the **DLNA** section, uncheck **Enable the DLNA server**, and click **Save Changes**:
 
 [![Plex media client](plex-dlna-disable-small.png)](plex-dlna-disable.png)
 
