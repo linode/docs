@@ -1,0 +1,90 @@
+name: CI Tests
+
+on: [pull_request]
+
+jobs:
+  blueberry:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6.x'
+        architecture: 'x64'
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        # Look to see if there is a cache hit for the corresponding requirements file
+        key: ${{ runner.os }}-pip-${{ hashFiles('./ci/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          ${{ runner.os }}-
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ./ci/requirements.txt
+    - name: blueberry
+      run: |
+        python ./ci/blueberry.py
+
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Get Changed Files
+      id: get_changed_files
+      uses: lots0logs/gh-action-get-changed-files@2.1.4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Vale
+      uses: errata-ai/vale-action@v1.3.0
+      with:
+        styles: |
+          ./ci/vale/styles
+        files: '${{ steps.get_changed_files.outputs.all }}'
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        
+  docs404:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.6.x'
+        architecture: 'x64'
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        # Look to see if there is a cache hit for the corresponding requirements file
+        key: ${{ runner.os }}-pip-${{ hashFiles('./ci/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          ${{ runner.os }}-
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ./ci/requirements.txt
+    - name: Use Node.js 
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Install dependencies (Node)
+      run: npm install
+    - name: Set up Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.79.0'
+    - name: Start Hugo server
+      run: hugo server&
+    - name: Wait for server
+      run: sleep 20
+    - name: Run tests
+      run: python ./ci/docs404.py
