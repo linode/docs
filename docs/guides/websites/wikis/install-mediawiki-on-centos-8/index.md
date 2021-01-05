@@ -29,7 +29,7 @@ external_resources:
 
 3.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo yum update
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
