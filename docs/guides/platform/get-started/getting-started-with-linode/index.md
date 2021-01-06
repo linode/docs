@@ -51,7 +51,7 @@ Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`.
 
 1.  At the top of the page, click **Create** and select **Linode**.
 
-1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/one-click/how-to-use-one-click-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
+1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
     {{< note >}}
 Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide.](/docs/platform/stackscripts/)
@@ -87,6 +87,8 @@ If Network Helper is unable to determine the operating system during boot, or if
 {{< /note >}}
 
 ## Connect to Your Linode via SSH
+
+{{< youtube ZVMckBHd7WA >}}
 
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 

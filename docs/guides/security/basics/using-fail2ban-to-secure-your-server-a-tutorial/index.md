@@ -18,9 +18,9 @@ h1_title: A Tutorial for Using Fail2ban to Secure Your Server
 
 ## What is Fail2Ban
 
-Fail2ban is a log-parsing application that monitors system logs for symptoms of an automated attack on your Linode. When an attempted compromise is located, using the defined parameters, Fail2ban will add a new rule to iptables to block the IP address of the attacker, either for a set amount of time or permanently. Fail2ban can also alert you through email that an attack is occurring.
+{{< youtube kgdoVeyoO2E >}}
 
-![Using Fail2ban to secure your server](fail2ban_tg.png "Using Fail2ban to secure your server")
+Fail2ban is a log-parsing application that monitors system logs for symptoms of an automated attack on your Linode. When an attempted compromise is located, using the defined parameters, Fail2ban will add a new rule to iptables to block the IP address of the attacker, either for a set amount of time or permanently. Fail2ban can also alert you through email that an attack is occurring.
 
 Fail2ban is primarily focused on SSH attacks, although it can be further configured to work for any service that uses log files and can be subject to a compromise.
 

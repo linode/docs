@@ -8,7 +8,7 @@ keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch e
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-30
-modified: 2019-02-01
+modified: 2020-12-03
 modified_by:
     name: Linode
 title: 'How to Install Asterisk on CentOS 7'
@@ -33,20 +33,20 @@ Asterisk is an open source *private branch exchange* (PBX) server that uses *Ses
 This guide covers the steps necessary to provision a new CentOS 7 Linode as a dedicated Asterisk server for your home or office.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Create a CentOS 7 Linode in your closest data center (barring Atlanta (us-southeast), which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
+1.  Create a CentOS 7 Linode in your closest data center. A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-1.  Ensure you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
+1.  Ensure you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
 
 1.  Update your system:
 
         sudo yum update
 
-1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, your Linode will be back up and running in a few minutes.
+1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/guides/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, your Linode is back up and running in a few minutes.
 
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
@@ -96,7 +96,7 @@ All the following firewalld rules contain the `--permanent` flag to ensure the r
 
             sudo firewall-cmd --zone=public --permanent --add-service={http,https}
 
-    - IAX - If you need IAX, add the following rule. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
+    - IAX - If you need IAX, add the following rule. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably don't need IAX or IAX2.
 
             sudo firewall-cmd --zone=public --permanent --add-port=4569/udp
 
