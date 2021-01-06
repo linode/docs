@@ -128,12 +128,12 @@ In the previous section you added plain text credentials to the `/etc/postfix/sa
 You are now ready to provide the configurations needed by Postfix to use the external SMTP server. This configuration tells Postfix to deliver mail indirectly via a relay host, which in this case, is an external SMTP server.
 
 {{< note >}}
-Refer to the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandril, and SendGrid.
+Refer to the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandrill, and SendGrid.
 {{</ note >}}
 
 1. Using a text editor, open the `/etc/postfix/main.cf` file.
 
-1. Update the `realyhost` configuration with your external SMTP relay host. Replace `mail.isp.example` with your provider's information. If you specified a non-default TCP port in the `sasl_passwd` file, then use the same port when configuring the relayhost. The example uses `587` as its port number.
+1. Update the `relayhost` configuration with your external SMTP relay host. Replace `mail.isp.example` with your provider's information. If you specified a non-default TCP port in the `sasl_passwd` file, then use the same port when configuring the relay host. The example uses `587` as its port number.
 
     {{< file "/etc/postfix/main.cf" >}}
 # specify SMTP relay host
