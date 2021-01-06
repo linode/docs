@@ -3,8 +3,8 @@ slug: postfix-smtp-debian7
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to configure Postfix to send email using external SMTP servers like Mandrill, Sendgrid, and Amazon SES.'
-og_description: 'Learn how to configure Postfix to send email using external SMTP servers like Mandrill, Sendgrid, and Amazon SES.'
+description: 'Learn how to configure Postfix to send email using external SMTP servers like Mandrill, and SendGrid.'
+og_description: 'Learn how to configure Postfix to send email using external SMTP servers like Mandrill, and SendGrid.'
 keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -44,7 +44,7 @@ At a high-level Postfix configuration involves the following steps:
 1. Secure your password and hash database files
 1. Configure the relay server
 1. Test your Postfix configuration
-1. Set up Postfix with Mandrill, SendGrid, and Amazon SES
+1. Set up Postfix with Mandrill, and SendGrid
 
 ## Postfix Configuration
 
@@ -94,7 +94,7 @@ myhostname = fqdn.example.com
 Usernames and passwords are stored in the `/etc/postfix/sasl_passwd` file. In this section, you add your external mail provider credentials to the `sasl_passwd` Postfix configuration file.
 
 {{< note >}}
-The examples in this section provide the general steps to configure Postfix to use an external SMTP provider. If you want to use Mandrill or Sendgrid as your SMTP provider, you can refer to the examples in the [Postfix Configuration with Mandrill, and Sendgrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide.
+The examples in this section provide the general steps to configure Postfix to use an external SMTP provider. If you want to use Mandrill or SendGrid as your SMTP provider, you can refer to the examples in the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide.
 {{</ note >}}
 
 First, open or create the `/etc/postfix/sasl_passwd` file:
@@ -128,7 +128,7 @@ In the previous section you added plain text credentials to the `/etc/postfix/sa
 You are now ready to provide the configurations needed by Postfix to use the external SMTP server. This configuration tells Postfix to deliver mail indirectly via a relay host, which in this case, is an external SMTP server.
 
 {{< note >}}
-Refer to the [Postfix Configuration with Mandrill, and Sendgrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandril, and Sendgrid.
+Refer to the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandril, and SendGrid.
 {{</ note >}}
 
 1. Using a text editor, open the `/etc/postfix/main.cf` file.
@@ -185,7 +185,7 @@ You can use Postfix’s own Sendmail implementation to test your Postfix configu
     This is a test email
 {{</ note >}}
 
-## Postfix Configuration with Mandrill, and Sendgrid
+## Postfix Configuration with Mandrill, and SendGrid
 
 This section shows you settings for some popular mail services you can use as external SMTP servers. You may have to do some fine-tuning on your own to avoid Postfix logins being flagged as suspicious.
 
@@ -211,15 +211,15 @@ relayhost = [smtp.mandrillapp.com]:587
 
         sudo service postfix restart
 
-### Postfix Configuration for Sendgrid
+### Postfix Configuration for SendGrid
 
-1. Open your `/etc/postfix/sasl_passwd` file and replace `USERNAME` and `PASSWORD` with your own Sendgrid credentials and save your changes.
+1. Open your `/etc/postfix/sasl_passwd` file and replace `USERNAME` and `PASSWORD` with your own SendGrid credentials and save your changes.
 
     {{< file "/etc/postfix/sasl_passwd" >}}
 [smtp.sendgrid.net]:587 USERNAME:PASSWORD
 {{< /file >}}
 
-1.   Open your /etc/postfix/main.cf file and add the Sendgrid relay host information included in the example file.
+1.   Open your /etc/postfix/main.cf file and add the SendGrid relay host information included in the example file.
 
         {{< file "/etc/postfix/main.cf" >}}
 relayhost = [smtp.sendgrid.net]:587
