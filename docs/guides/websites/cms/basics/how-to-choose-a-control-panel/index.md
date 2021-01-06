@@ -35,7 +35,7 @@ On Linux systems, a control panel is a graphical user interface (GUI) that displ
 
 ## Why Use a Control Panel?
 
-The GUI provided by a control panel helps beginner Linux users run a server without needing expertise with the command line interface. These GUIs hide much of the complexity inherent in Linux administration, and they often provide one-click interfaces for processes that would otherwise involve a number of steps.
+The GUI provided by a control panel helps beginner Linux users run a server without needing expertise with the command line interface. These GUIs hide much of the complexity inherent in Linux administration, and they often provide marketplace interfaces for processes that would otherwise involve a number of steps.
 
 Some control panels also offer a command-line interface (CLI) which perform equivalent functions to those exposed by the GUI. These tools provide a compromise between the convenience of the control panel's higher-level functionality and the automation capabilities of the command line.
 
@@ -147,7 +147,7 @@ Once you've decided on a control panel, deploy a Linode and follow the appropria
 
 -   [CPanel](https://documentation.cpanel.net/display/68Docs/Installation+Guide)
 
--   [Plesk](https://docs.plesk.com/en-US/onyx/deployment-guide/plesk-installation-and-upgrade-on-single-server/1click-plesk-installation/installing-plesk-for-linux-in-one-click.76444/)
+-   [Plesk](https://docs.plesk.com/en-US/onyx/deployment-guide/plesk-installation-and-upgrade-on-single-server/1click-plesk-installation/installing-plesk-for-linux-in-marketplace.76444/)
 
 -   [VestaCP](https://vestacp.com/install/)
 
