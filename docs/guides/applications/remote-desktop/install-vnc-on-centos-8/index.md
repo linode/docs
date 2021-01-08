@@ -1,13 +1,13 @@
 ---
-slug: how-install-vnc-on-centos-8
+slug: how-to-install-vnc-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'VNC lets you connect to a remote desktop GUI. This guides shows you how to install a desktop environment and use a VNC server on a remote machine.'
-og_description: 'VNC lets you connect to a remote desktop GUI. This guides shows you how to install a desktop environment and setup a VNC server.'
+description: 'VNC lets you connect to a remote desktop environment. This guide shows you how to install a desktop on CentOS 8 and use a VNC server to connect to it remotely.'
+og_description: 'VNC lets you connect to a remote desktop environment. This guide shows you how to install a desktop and setup a VNC server on CentOS 8.'
 keywords: ['vnc','virtual network computing','remote desktop','install vnc','deploy vnc on centos 8']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-07
+published: 2021-01-08
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install VNC on Centos 8"
@@ -18,11 +18,11 @@ contributor:
 
 ---
 
-*Virtual network computing* (VNC) allows you to connect to and control a remote desktop environment, giving you an option to control your server with a full desktop experience. This guide walks you through the steps to install, configure, and use VNC on CentOS 8.
+*Virtual network computing* (VNC) allows you to connect to and control a remote desktop environment, giving you an option to operate your server with a full desktop experience. This guide walks you through the steps to install, configure, and use VNC on CentOS 8.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
 2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install a Desktop GUI
 
-These steps walk you through installing a desktop environment if your installation of CentOS does not already have one. If you already have a desktop environment installed, skip to the next section.
+These steps walk you through installing a desktop environment. If you already have a desktop environment installed on your CentOS machine, skip to the next section.
 
 GNOME is CentOS 8's default desktop environment and the one used in this guide.
 
@@ -54,14 +54,6 @@ GNOME is CentOS 8's default desktop environment and the one used in this guide.
 
         sudo yum groupinfo "Server with GUI"
 
-2. If you are using the physical machine on which CentOS 8 is installed and want to see the desktop interface, run the following command:
-
-        startx
-
-    You can use the following command to automatically run the desktop environment at system start up, if desired:
-
-        sudo systemctl set-default graphical.target
-
 ## Install and Configure the VNC Server
 
 Several VNC options are available for CentOS. This guide uses the open source TigerVNC software, a popular option and one that can be found in CentOS's default repositories.
@@ -74,10 +66,10 @@ Several VNC options are available for CentOS. This guide uses the open source Ti
 
         :1=userA
 
-    This example user and display port are used throughout the rest of the guide.
+    This example user and display port are used throughout the remainder of the guide.
 
     {{< note >}}
-Display port numbers determine the port numbers on which VNC servers are made available. Typically, the VNC server port is 5900 plus the display port number — thus, 5901 for the example above. The resulting port numbers need to be available. However, the display port numbers are otherwise arbitrary and do not need to be consecutive for each user.
+Display port numbers determine the port numbers on which VNC servers are made available. VNC server ports are 5900 plus the display port number — thus, 5901 for the example above. The resulting port numbers need to be available. However, display port numbers are otherwise arbitrary and do not need to be consecutive.
     {{< /note >}}
 
 3. Set a VNC password for each user by logging in as that user, executing the following command, and creating a password:
@@ -86,7 +78,7 @@ Display port numbers determine the port numbers on which VNC servers are made av
 
     You are asked whether you would like to set a view-only password as well. Doing so is optional and not necessary for this guide.
 
-4. Create a VNC configuration file for each user. Log in as that user, create a `~/.vnc/config` file using `sudo`, and add parameters for the VNC server to that file. The following are some example parameters. For the purposes of this guide, the `session` and `localhost` parameters are assumed, but the rest are optional:
+4. Create a VNC configuration file for each user. Log in as that user, create a `~/.vnc/config` using root permissions (`sudo`), and add parameters for the VNC server to that file. The following are some example parameters. For the purposes of this guide, the `session` and `localhost` parameters are assumed, but the rest are optional:
 
         session=gnome
         geometry=1280x1024
@@ -96,7 +88,7 @@ Display port numbers determine the port numbers on which VNC servers are made av
     Alternatively, you can configure global default parameters in the `/etc/tigervnc/vncserver-config-defaults` file. Parameters in that file are applied for any user unless otherwise overridden by a user's `~/.vnc/config` file.
 
     {{< note >}}
-Refer to the `/etc/tigervnc/vncserver-config-defaults` file for additional example parameters and descriptions of their use.
+The [TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html) provides a comprehensive list and descriptions of possible configuration parameters for the VNC server.
     {{< /note >}}
 
 ## Start the VNC Server
@@ -117,19 +109,19 @@ Refer to the `/etc/tigervnc/vncserver-config-defaults` file for additional examp
 
         sudo netstat -tlnp
 
-    Typically, ports for VNC servers are 5900 plus the user's display port number. Since the examples above use "1" as the display port number, the remainder of the guide assumes the VNC server is on port 5901.
+    Since VNC servers operate on port 5900 plus the display port number and the examples above use "1" as the display port number, the remainder of this guide assumes the VNC server is on port 5901.
 
 ## Secure Your VNC Connection
 
-VNC connections are, by default, unencrypted. Therefore, you should use *SSH tunneling* to secure your connection. In this case, you tunnel traffic to a local port through an SSH connection.
+VNC connections are, by default, unencrypted. Therefore, you should use *SSH tunneling* to secure your connection. To do so, you need to tunnel traffic through an SSH connection to a local port. For convenience, this guide uses the same local port number as the VNC server (5901).
 
-Ports for VNC servers are 5900 plus the user's display port number. Since the examples above use "1" as the display port number, the remainder of the guide assumes the VNC server is on port 5901. For convenience, the same port number is used for the tunneling on the client machine.
+The steps for SSH tunneling vary based the operating system of the machine you are using to connect to the VNC server.
 
-The steps to do this vary based on operating system used on the machine with which you connect to the VNC server.
+See [Setting up an SSH Tunnel with Your Linode for Safe Browsing](docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more details and information on configuring and using SSH tunneling.
 
 ### Linux and Mac OS X
 
-1. Create an SSH tunnel for the VNC server port. In this example, the connection is made to the server through user configured above — `userA`:
+1. Create an SSH tunnel for the VNC server port. The SSH connection is made to the user on whom the VNC server was configured — `userA` in the examples above:
 
         ssh -f userA@203.0.113.0 -L 5901:localhost:5901 -N
 
@@ -139,23 +131,21 @@ The steps to do this vary based on operating system used on the machine with whi
 
 ### Windows
 
-1. See [Setting up an SSH Tunnel with Your Linode for Safe Browsing](docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for details on configuring and using SSH on Windows.
+1. Open PuTTY, and enter "userA@203.0.113.0" as the **Host name**, with "userA" being the user on whom the VNC server was configured.
 
-2. Open PuTTY, and enter "userA@203.0.113.0" as the **Host name**, with "userA" being the user configured above.
+2. Open the **Connections** menu, and select **Tunnels** from under the **SSH** section.
 
-3. Open the **Connections** menu, and select **Tunnels** from under the **SSH** section.
+3. Enter "5901" as the **Source port** and "userA@203.0.113.0" as the **Destination**. Beneath **Desination**, select **Local** and **Auto**.
 
-4. Enter "5901" as the **Source port** and "userA@203.0.113.0" as the **Destination**. Beneath **Desination**, select **Local** and **Auto**.
-
-5. Click **Add**, and the SSH tunneling is operational.
+4. Click **Add**, and the SSH tunnel begins running.
 
 ## Connect to the VNC Server
 
-With the VNC server running and secured, you can connect to it using a VNC client.
+With the VNC server running and secured, you can connect to it using a VNC client. The steps below again vary depending on the operating system of the machine you are using to connect to the VNC server.
 
 ### Mac OS X and Windows
 
-Of the VNC client options for OS X and Windows, [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) is perhaps the most popular.
+Of the VNC client options for OS X and Windows, [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) is perhaps the most popular and is free and easy to use.
 
 1. Open RealVNC Viewer, and enter "localhost:5901" in the top bar.
 
@@ -169,7 +159,7 @@ Of the VNC client options for OS X and Windows, [RealVNC Viewer](https://www.rea
 
 ### Linux
 
-Since this guides uses GNOME for the desktop environment, Vinagre is a strong VNC client option.
+Since this guides uses GNOME for the desktop environment, Vinagre, designed specifically for GNOME, is a strong VNC client option for Linux.
 
 1. Open Vinagre, and click the **Connect** button.
 
