@@ -87,8 +87,8 @@ All of your billing history is stored in the Cloud Manager. Here's how to access
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
 1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
-1.  To remove a Linode from your account, select **Linodes** from the sidebar links. Select the Linode you would like to remove, then select the **Settings** tab. Expand the **Delete Linode** panel and click **Delete**.
-1.  To remove a NodeBalancer from your account, select **NodeBalancers** from the sidebar links. Open the menu of the NodeBalancer you would like to remove, then select **Remove**.
+1.  To remove a Linode from your account, select **Linodes** from the sidebar links. Expand the **more options ellipsis** menu to the right of the Linode you would like to remove, then select **Delete**.
+1.  To remove a NodeBalancer from your account, select **NodeBalancers** from the sidebar links. Select **Delete** for the NodeBalancer you would like to remove.
 1.  To remove the Linode Backup Service, select **Linodes** from the sidebar links. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
 
 {{< caution >}}
