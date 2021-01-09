@@ -13,7 +13,7 @@ modified_by:
 title: "Build an ASP.NET Core Application on Debian 10 With Nginx"
 h1_title: "Build an ASP.NET Core Application on Debian 10 With Nginx"
 contributor:
-  name: Dan Nielsen 
+  name: Dan Nielsen
   link: https://dnielsen.dev
 external_resources:
 - '[Debian 10](https://www.debian.org)'
@@ -69,7 +69,7 @@ The .NET SDK includes a telemetry feature that collects and reports usage data t
 nginx is typically started automatically after install but its status can be verified with the following:
 {{< /note >}}
 
-        sudo systemctl status nginx 
+        sudo systemctl status nginx
         # Start if needed
         sudo systemctl start nginx
 
@@ -85,7 +85,7 @@ In this guide the web application will be stored in `/opt/appone` but could be s
         # will cause files created in /opt/appone to use the appone group.
         # This is sometimes referred to as setting the sticky bit.
         sudo chmod g+swx /opt/appone
-        
+    
         # Log out / log in to see the changes to your user group.
         # The verify the changes as follows.
         groups <your username>
@@ -159,7 +159,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 
 // ... Snipped for brevity ...
 
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env) 
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     // This should come before calls to other middleware
     app.UseForwardedHeaders(new ForwardHeadersOptions
