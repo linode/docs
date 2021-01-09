@@ -85,7 +85,7 @@ In this guide the web application will be stored in `/opt/appone` but could be s
         # will cause files created in /opt/appone to use the appone group.
         # This is sometimes referred to as setting the sticky bit.
         sudo chmod g+swx /opt/appone
-    
+
         # Log out / log in to see the changes to your user group.
         # The verify the changes as follows.
         groups <your username>
