@@ -23,7 +23,7 @@ relations:
            - distribution: Ubuntu 20
 ---
 
-This guide explains how to install and perform basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store that is easy to use. It can serve as a database cache and message broker, and works well with web applications. Redis is an example of a key-value store database, which stores a value inside a key. You must use the key to retrieve the data. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash. The latest stable version (as of early 2021) is Redis 6.0.9, but pre-release versions are also available on the Redis website. 
+This guide explains how to install and perform basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store that is easy to use. It can serve as a database cache and message broker, and works well with web applications. Redis is an example of a key-value store database, which stores a value inside a key. You must use the key to retrieve the data. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash. The latest stable version (as of early 2021) is Redis 6.0.9, but pre-release versions are also available on the Redis website.
 
 ## Before You Begin
 
@@ -68,15 +68,15 @@ Ensure your node is running an up-to-date version of Ubuntu 20.04. If necessary,
 2.  Enable ufw.
 
         ufw enable
-3.  Run the `ufw status` command to confirm the configuration. 
+3.  Run the `ufw status` command to confirm the configuration.
 
         ufw status
     The output now lists the OpenSSH protocols along with an action of `ALLOW`.
 
         To                         Action      From
         --                         ------      ----
-        OpenSSH                    ALLOW       Anywhere                  
-        OpenSSH (v6)               ALLOW       Anywhere (v6)           
+        OpenSSH                    ALLOW       Anywhere
+        OpenSSH (v6)               ALLOW       Anywhere (v6)
 
 
 ## Installing Redis
@@ -95,7 +95,7 @@ To install Redis using the apt utility, follow these steps:
 
         sudo apt install redis-server
 {{< note >}}
-If the Redislabs repository is added, apt automatically installs the latest stable version. We do not recommend installing Redis through the Ubuntu default packages, as that might install an older version. 
+If the Redislabs repository is added, apt automatically installs the latest stable version. We do not recommend installing Redis through the Ubuntu default packages, as that might install an older version.
 {{< /note >}}
 
 To install Redis from a downloaded .gz file, follow these steps:
