@@ -23,13 +23,13 @@ external_resources:
 
 ## Introduction
 
-This guide will cover setting up a simple [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) web application on [Debain 10](https://www.debian.org) using [Nginx](https://nginx.org) as a reverse proxy and `systemd` as a process manager for the .NET application.
+This guide covers setting up a simple [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) web application on [Debian 10](https://www.debian.org) using [Nginx](https://nginx.org) as a reverse proxy and `systemd` as a process manager for the .NET application.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -56,7 +56,7 @@ This guide is written for a non-root user. Commands that require elevated privil
           sudo apt-get install -y dotnet-sdk-5.0
 
 {{< note >}}
-The .NET SDK includes a telemetry feature that collects and reports usage data to Microsoft in the event of a .NET CLI crash. If you choose, you can opt-out of this feature by setting the `DOTNET_CLI_TELEMETRY_OPTOUT` environmnet variable to `1` or `true`. More information can be found [here](https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry).
+The .NET SDK includes a telemetry feature that collects and reports usage data to Microsoft in the event of a .NET CLI crash. If you choose, you can opt-out of this feature by setting the `DOTNET_CLI_TELEMETRY_OPTOUT` environment variable to `1` or `true`. More information can be found [here](https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry).
 {{< /note >}}
 
 ### Install nginx
@@ -75,14 +75,14 @@ nginx is typically started automatically after install but its status can be ver
 
 ## Configure the Application Environment
 
-In this guide the web application will be stored in `/opt/appone` but could be stored anywhere. A group called `appone` will be created for use with the web application, though this isn't strictly necessary. Users added to this group will be able to `read`, `write`, and `execute` in the application directory.
+In this guide the web application is stored in `/opt/appone` but could be stored anywhere. A group called `appone` is created for use with the web application, though this isn't strictly necessary. Users added to this group can `read`, `write`, and `execute` in the application directory.
 
         sudo /sbin/groupadd appone
         sudo /sbin/usermod -aG appone <username>
         sudo mkdir /opt/appone
         sudo chgrp appone /opt/appone
         # Using the s option when setting directory permisssions
-        # will cause files created in /opt/appone to use the appone group.
+        # causes files created in /opt/appone to use the appone group.
         # This is sometimes referred to as setting the sticky bit.
         sudo chmod g+swx /opt/appone
 
@@ -98,7 +98,7 @@ In this guide the web application will be stored in `/opt/appone` but could be s
 
 ## Add a New Web Application From a .NET Template
 
-The .NET SDK comes with a number of pre-installed templates to ease application bootstrapping. There are also a number of community created templates available in [NuGET](https://www.nuget.org) the .NET package manager but for this guide the default templates are adequate. This guide will use the default `mvc` (Model-View-Controller) template.
+The .NET SDK comes with a number of pre-installed templates to ease application bootstrapping. There are also a number of community created templates available in [NuGET](https://www.nuget.org) the .NET package manager but for this guide the default templates are adequate. This guide uses the default `mvc` (Model-View-Controller) template.
 
 {{< note >}}
 To see all the installed templates run `dotnet new -u`
@@ -111,12 +111,12 @@ If you prefer to develop locally, follow the instructions for creating the new a
         cd /opt/appone
         dotnet new mvc
 
-As this point we have a working ASP.NET MVC application and can now make some adjustments to support it's purpose as a proxy target. These changes will happen in the `Program.cs` and `Startup.cs` files that were generated in the last step.
+As this point we have a working ASP.NET MVC application and can now make some adjustments to support it's purpose as a proxy target. These changes happen in the `Program.cs` and `Startup.cs` files that were generated in the last step.
 
-To begin with `Program.cs` will be changed to explicitly use the `Kestrel` HTTP server and to listen on a single endpoint.
+To begin with `Program.cs` is changed to explicitly use the `Kestrel` HTTP server and to listen on a single endpoint.
 
 {{< note >}}
-By default, ASP.NET core applications are configured to listen on ports 5000 and 5001 for the HTTP and HTTPS protocols respectively. In a reverse proxy setup the HTTPS termination happens at the proxy (Nginx) which then forwards the request to a backend application. In this guide the reverse proxy and the application reside on the same host so encrypting communication between them is not required. If the reverse proxy runs on another host or is distributing connections to multiple remote hosts, consider configuring HTTPS comunnication between the reverse proxy and the backend applications.
+By default, ASP.NET core applications are configured to listen on ports 5000 and 5001 for the HTTP and HTTPS protocols respectively. In a reverse proxy setup the HTTPS termination happens at the proxy (Nginx) which then forwards the request to a backend application. In this guide the reverse proxy and the application reside on the same host so encrypting communication between them is not required. If the reverse proxy runs on another host or is distributing connections to multiple remote hosts, consider configuring HTTPS communication between the reverse proxy and the backend applications.
 {{< /note >}}
 
 {{< file "Program.cs" cs >}}
@@ -152,7 +152,7 @@ namespace appone
 }
 {{< /file >}}
 
-Since Nginx will be acting as a reverse proxy forwarding requests to the ASP.NET application in `Startup.cs` the `Forwarded Headers Middleware` will be added. This middleware updates `Request.Scheme` using the `X-Forwarded-Proto` header so that redirect URIs and other security policies are applied correctly. Though this guide does not cover those topics, it's good practice to be familiar with this middleware. The `Forwarded Headers Middleware` should run before all other middleware. Placing it first ensures that middleware which relies on forwarded header information can consume the header values for processing.
+Since Nginx is acting as a reverse proxy forwarding requests to the ASP.NET application in `Startup.cs` the `Forwarded Headers Middleware` are added. This middleware updates `Request.Scheme` using the `X-Forwarded-Proto` header so that redirect URIs and other security policies are applied correctly. Though this guide does not cover those topics, it's good practice to be familiar with this middleware. The `Forwarded Headers Middleware` should run before all other middleware. Placing it first ensures that middleware which relies on forwarded header information can consume the header values for processing.
 
 {{< file "Startup.cs" cs >}}
 using Microsoft.AspNetCore.HttpOverrides;
@@ -173,7 +173,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 
 {{< note >}}
-At this time you can use `dotnet run` to start the application however since the application only binds to the network loopback address it will only be available to requests from the local machine and is not seen by the broader internet. If you would like to view the running application change the call to `opts.Listen()` in `Program.cs` to reference the host's public IP address, e.g. `opts.Listen('aa.bb.cc.dd', 5000);` and open port 5000 on your firewall. Remember to close that port and change the call back to the loopback address after inspecting the application.
+At this time you can use `dotnet run` to start the application however since the application only binds to the network loopback address it is only available to requests from the local machine and is not seen by the broader internet. If you would like to view the running application change the call to `opts.Listen()` in `Program.cs` to reference the host's public IP address, e.g. `opts.Listen('aa.bb.cc.dd', 5000);` and open port 5000 on your firewall. Remember to close that port and change the call back to the loopback address after inspecting the application.
 {{< /note >}}
 
 ### Build the Application
@@ -183,7 +183,7 @@ At this time you can use `dotnet run` to start the application however since the
 
 ## Configure Nginx
 
-Nginx can now be onfigured as a reverse proxy to forward HTTP requests to the ASP.NET application.
+Nginx can now be configured as a reverse proxy to forward HTTP requests to the ASP.NET application.
 
 {{< file "/etc/nginx/sites-available/default" nginx >}}
 server {
@@ -231,14 +231,14 @@ server {
 }
 {{< /file >}}
 
-Once the Nginx config changes are complete verify the changes and reload Nginx.
+Once the Nginx configuration changes are complete verify the changes and reload Nginx.
 
         sudo nginx -t
         sudo nginx -s reload
 
 ## Create the Service File
 
-Managment of the ASP.NET app is delegated to `systemd` with a service file.
+Management of the ASP.NET app is delegated to `systemd` with a service file.
 
 {{< note >}}
 If you developed your application locally and copied the release DLL to `/opt/appone`, change the DLL path in the `ExecStart` parameter as needed.
