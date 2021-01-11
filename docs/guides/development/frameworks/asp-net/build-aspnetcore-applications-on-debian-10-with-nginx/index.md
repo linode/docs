@@ -23,7 +23,7 @@ external_resources:
 
 ## Introduction
 
-This guide covers setting up a simple [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) web application on [Debian 10](https://www.debian.org) using [Nginx](https://nginx.org) as a reverse proxy and `systemd` as a process manager for the .NET application.
+This guide covers setting up a simple [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) web application on [Debian 10](https://www.debian.org). [Nginx](https://nginx.org) is used as a reverse proxy and `systemd` as a process manager for the application.
 
 ## Before You Begin
 
@@ -105,18 +105,18 @@ To see all the installed templates run `dotnet new -u`
 {{< /note >}}
 
 {{< note >}}
-If you prefer to develop locally, follow the instructions for creating the new application replacing the file paths as appropriate or use your preferred development workflow. When finished with the application changes laid out below, build the application with the `Release` configuration using `dotnet build -c Release` and copy the resulting DLL file to the `/opt/appone` directory on your application host.
+If you prefer to develop locally, follow the instructions for creating the new application replacing the file paths as appropriate. Or just use your preferred development workflow. When finished with the application changes laid out below, build the application with the `Release` configuration using `dotnet build -c Release` and copy the resulting DLL file to the `/opt/appone` directory on your application host.
 {{< /note >}}
 
         cd /opt/appone
         dotnet new mvc
 
-As this point we have a working ASP.NET MVC application and can now make some adjustments to support it's purpose as a proxy target. These changes happen in the `Program.cs` and `Startup.cs` files that were generated in the last step.
+At this point we have a working ASP.NET MVC application. Some adjustments are needed to support it's purpose as a proxy target. These changes happen in the `Program.cs` and `Startup.cs` files that were generated in the last step.
 
 To begin with `Program.cs` is changed to explicitly use the `Kestrel` HTTP server and to listen on a single endpoint.
 
 {{< note >}}
-By default, ASP.NET core applications are configured to listen on ports 5000 and 5001 for the HTTP and HTTPS protocols respectively. In a reverse proxy setup the HTTPS termination happens at the proxy (Nginx) which then forwards the request to a backend application. In this guide the reverse proxy and the application reside on the same host so encrypting communication between them is not required. If the reverse proxy runs on another host or is distributing connections to multiple remote hosts, consider configuring HTTPS communication between the reverse proxy and the backend applications.
+By default, ASP.NET core applications are configured to listen on ports 5000 and 5001 for the HTTP and HTTPS protocols respectively. In a reverse proxy setup the HTTPS termination happens at the proxy (Nginx) which then forwards the request to a backend application. In this guide the reverse proxy and the application reside on the same host so encrypting communication between them is not required. If the reverse proxy runs on another host, consider configuring HTTPS communication between the reverse proxy and the backend applications.
 {{< /note >}}
 
 {{< file "Program.cs" cs >}}
@@ -173,7 +173,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 
 {{< note >}}
-At this time you can use `dotnet run` to start the application however since the application only binds to the network loopback address it is only available to requests from the local machine and is not seen by the broader internet. If you would like to view the running application change the call to `opts.Listen()` in `Program.cs` to reference the host's public IP address, e.g. `opts.Listen('aa.bb.cc.dd', 5000);` and open port 5000 on your firewall. Remember to close that port and change the call back to the loopback address after inspecting the application.
+At this time you can use `dotnet run` to start the application. Since the application binds to the network loopback address it is only available to local requests and is not seen by the broader internet. If you would like to view the running application change the call to `opts.Listen()` in `Program.cs` to reference the host's public IP address, e.g. `opts.Listen('aa.bb.cc.dd', 5000);` and open port 5000 on your firewall. Remember to close that port and change the call back to the loopback address after inspecting the application.
 {{< /note >}}
 
 ### Build the Application
@@ -280,4 +280,4 @@ Since the web application is managed using `systemd`, all events and log output 
 
 ## Conclusion
 
-That's it. You now have a working ASP.NET Core web application. Remember to close any firewall ports that were opened for development. If you changed the application IP binding to bind to the public IP address for testing, change it back to the loopback address, rebuild the application, and restart the application service.
+That's it. You now have a working ASP.NET Core web application. Remember to close any firewall ports that were opened for development. If you changed the application IP binding to bind to the public IP address for testing, change it back to the loopback address. Then rebuild the application, and restart the application service.
