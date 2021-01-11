@@ -45,14 +45,17 @@
   <div class="block sm:hidden">
     {{ partial "sections/content/tags.html" . }}
   </div>
-  <hr class="my-14">
 
-  {{/* Add feedback links via Delighted. */}}
-  {{ partial "components/delighted/form.html" . }}
-  <hr class="mt-14">
-
-  {{ if not ("api,blog" | strings.Contains .Type) }}
-    {{ partial "components/disqus.html" . }}
-  {{ end }}
+  <div class="hide-if-no-js">
+    <hr class="my-14">
+    
+    {{/* Add feedback links via Delighted. */}}
+    {{ partial "components/delighted/form.html" . }}
+    <hr class="mt-14">
+    
+    {{ if not ("api,blog" | strings.Contains .Type) }}
+      {{ partial "components/disqus.html" . }}
+    {{ end }}
+  </div>
 
 {{ end }}
