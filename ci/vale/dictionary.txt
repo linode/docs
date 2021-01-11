@@ -1534,6 +1534,7 @@ tun0
 tune2fs
 tunnelblick
 turtl
+tv
 tw
 txt
 txz
