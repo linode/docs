@@ -22,7 +22,7 @@ h1_title: A Tutorial for Using Fail2ban to Secure Your Server
 
 Fail2ban is a log-parsing application that monitors system logs for symptoms of an automated attack on your Linode. In this guide, you learn how to use Fail2ban to secure your server.
 
-When an attempted compromise is located, using the defined parameters, Fail2ban adds a new rule to iptables to block the IP address of the attacker, either for a set amount of time or permanently. Fail2ban can also alert you through email that an attack is occurring.
+When an attempted compromise is located, using the defined parameters, Fail2ban adds a new rule to iptables to block the IP address of the attacker, either for a set amount of time, or permanently. Fail2ban can also alert you through email that an attack is occurring.
 
 Fail2ban is primarily focused on SSH attacks, although it can be further configured to work for any service that uses log files and can be subject to a compromise.
 
@@ -75,14 +75,14 @@ If you encounter the error that there is `no directory /var/run/fail2ban to cont
 
         apt-get install fail2ban
 
-    The service will automatically start.
+    The service automatically starts.
 
 3.  (Optional) If you would like email support, install Sendmail:
 
         apt-get install sendmail-bin sendmail
 
     {{< note >}}
-The current version of Sendmail in Debian Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation will hang for a minute, but then complete.
+The current version of Sendmail in Debian Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation hangs for a minute, but then complete.
 
     Creating /etc/mail/sendmail.cf...
     ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('always_add_domain')
@@ -120,7 +120,7 @@ The current version of Sendmail in Debian Jessie has an [upstream bug](https://b
 
         apt-get install fail2ban
 
-    The service will automatically start.
+    The service automatically starts.
 
 3.  (Optional) If you would like email support, install Sendmail:
 
@@ -137,7 +137,7 @@ This section contains examples of common Fail2ban configurations using `fail2ban
 
 ### Configure fail2ban.local
 
-1.  `fail2ban.conf` contains the default configuration profile. The default settings will give you a reasonable working setup. If you want to make any changes, it's best to do it in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. Rename a copy `fail2ban.conf` to `fail2ban.local`.
+1.  `fail2ban.conf` contains the default configuration profile. The default settings give you a reasonable working setup. If you want to make any changes, it's best to do it in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. Rename a copy `fail2ban.conf` to `fail2ban.local`.
 
         cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 
@@ -154,7 +154,7 @@ This section contains examples of common Fail2ban configurations using `fail2ban
 
 ### Fail2ban Backend Configuration
 
-1.  The `jail.conf` file will enable Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, create a `jail.local` for editing:
+1.  The `jail.conf` file enables Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, create a `jail.local` for editing:
 
         cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
@@ -256,11 +256,11 @@ maxretry = 3
 
 -   `maxretry`: Fail2ban uses `findtime` and `maxretry` to decide when a ban is justified. If the number of attempts exceeds the limit set at `maxretry` and is within the `findtime` time limit, a ban is set by Fail2ban. The default is set to `3`.
 
--   `bantime`: The length of time in seconds for which an IP is banned. If set to a negative number, the ban will be permanent. The default value of 600 is set to ban an IP for a 10-minute duration.
+-   `bantime`: The length of time in seconds for which an IP is banned. If set to a negative number, the ban is permanent. The default value of 600 is set to ban an IP for a 10-minute duration.
 
 ### ignoreip Fail2ban Configurations
 
-To ignore specific IPs, add them to the `ignoreip` line. By default, this command will not ban the localhost. If you work from a single IP address often, it may be beneficial to add it to the ignore list:
+To ignore specific IPs, add them to the `ignoreip` line. By default, this command does not ban the localhost. If you work from a single IP address often, it may be beneficial to add it to the ignore list:
 
 {{< file "/etc/fail2ban/jail.local" aconf >}}
 [DEFAULT]
@@ -288,7 +288,7 @@ To receive email when fail2ban is triggered, adjust the email settings:
 
 -  `sendername`: The name under which the email shows up.
 
--  `sender`: The email address from which Fail2ban will send emails.
+-  `sender`: The email address from which Fail2ban sends emails.
 
 {{< note >}}
 If unsure of what to put under `sender`, run the command `sendmail -t user@email.com`, replacing `user@email.com` with your email address. Check your email (including spam folders, if needed) and review the sender email. This address can be used for the above configuration.
@@ -300,7 +300,7 @@ You also need to adjust the `action` setting, which defines what actions occur w
 
 Beyond the basic settings address above, jail.local also contains various jail configurations for a number of common services, including SSH, and iptables. By default, only SSH is enabled and the action is to ban the offending host/IP address by modifying the iptables firewall rules.
 
-An average jail configuration will resemble the following:
+An average jail configuration resembles the following:
 
 {{< file "/etc/fail2ban/jail.local" >}}
 # Default banning action (e.g. iptables, iptables-new,
@@ -330,7 +330,7 @@ maxretry = 6
 -   `action`: This can be added as an additional setting, if the default action is not suitable for the jail. Additional actions can be found in the `action.d` folder.
 
 {{< note >}}
-Jails can also be configured as individual `.conf` files placed in the `jail.d` directory. The format will remain the same.
+Jails can also be configured as individual `.conf` files placed in the `jail.d` directory. The format remains the same.
 {{< /note >}}
 
 ## Using Fail2ban Filters to Secure Your Server
@@ -411,7 +411,7 @@ The best way to understand how failregex works is to write one. Although we do n
 
 ### Write a Regex for Fail2ban
 
-1.  Navigate to your website's `access.log` (generally located at `/var/www/example.com/logs/access.log`) and find a failed login attempt. It will resemble:
+1.  Navigate to your website's `access.log` (generally located at `/var/www/example.com/logs/access.log`) and find a failed login attempt. It resembles:
 
     {{< file "/var/www/example.com/logs/access.log" resource >}}
 123.45.67.89 - - [01/Oct/2015:12:46:34 -0400] "POST /wp-login.php HTTP/1.1" 200 1906 "http://example.com/wp-login.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0"
@@ -419,7 +419,7 @@ The best way to understand how failregex works is to write one. Although we do n
 {{< /file >}}
 
 
-    Note that you will only need to track up to the `200`:
+    Note that you only need to track up to the `200`:
 
     {{< file "/var/www/example.com/logs/access.log" resource >}}
 123.45.67.89 - - [01/Oct/2015:12:46:34 -0400] "POST /wp-login.php HTTP/1.1" 200
@@ -427,7 +427,7 @@ The best way to understand how failregex works is to write one. Although we do n
 {{< /file >}}
 
 
-1.  The IP address from where the failed attempt originated will always be defined as `<HOST>`. The subsequent few characters are unchanging and can be input as literals:
+1.  The IP address from where the failed attempt originated is always be defined as `<HOST>`. The subsequent few characters are unchanging and can be input as literals:
 
         <HOST> - - \[
 
@@ -439,7 +439,7 @@ The best way to understand how failregex works is to write one. Although we do n
 
         <HOST> - - \[(\d{2})
 
-    The following forward slash will then be called with a literal forward slash, followed by `\w{3}` which looks for a series of `3` alpha-numeric characters (i.e., A-Z, 0-9, any case). The following forward slash should also be literal:
+    The following forward slash is then be called with a literal forward slash, followed by `\w{3}` which looks for a series of `3` alpha-numeric characters (i.e., A-Z, 0-9, any case). The following forward slash should also be literal:
 
         <HOST> - - \[(\d{2})/\w{3}/
 
@@ -447,7 +447,7 @@ The best way to understand how failregex works is to write one. Although we do n
 
         <HOST> - - \[(\d{2})/\w{3}/\d{4}:
 
-1.  The next sequence is a series of two-digit numbers that make up the time. Because we defined the day of the month as a two-digit number in a capture group (the parentheses), we can backreference it using `\1` (since it is the *first* capture group). Again, the colons will be literals:
+1.  The next sequence is a series of two-digit numbers that make up the time. Because we defined the day of the month as a two-digit number in a capture group (the parentheses), we can backreference it using `\1` (since it is the *first* capture group). Again, the colons are literals:
 
         <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1
 
@@ -510,7 +510,7 @@ Fail2ban provides a command `fail2ban-client` that can be used to run Fail2ban f
 
 -   `start`: Starts the Fail2ban server and jails.
 -   `reload`: Reloads Fail2ban's configuration files.
--   `reload JAIL`: Replaces `JAIL` with the name of a Fail2ban jail; this will reload the jail.
+-   `reload JAIL`: Replaces `JAIL` with the name of a Fail2ban jail; this reloads the jail.
 -   `stop`: Terminates the server.
 -   `status`: Will show the status of the server, and enable jails.
 -   `status JAIL`: Will show the status of the jail, including any currently-banned IPs.
@@ -559,7 +559,7 @@ If you find that you would like to stop using your fail2ban service at any time,
 
     fail2ban-client stop
 
-CentOS 7 and Fedora will additionally require two extra commands to be fully stopped and disabled:
+CentOS 7 and Fedora additionally require two extra commands to be fully stopped and disabled:
 
     systemctl stop fail2ban
     systemctl disable fail2ban

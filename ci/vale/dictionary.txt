@@ -97,6 +97,7 @@ backticks
 backupninja
 bampton
 balarin
+banaction
 bantime
 barebones
 base64
@@ -625,6 +626,7 @@ iframe
 iframes
 ifup
 ignoreip
+ignoreregex
 ikiwiki
 im
 imagize
