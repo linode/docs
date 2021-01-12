@@ -1307,6 +1307,7 @@ redeployable
 redhat
 redir
 redis
+redislabs
 redmin
 redmine
 redstone
