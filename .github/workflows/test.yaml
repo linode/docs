@@ -3,7 +3,7 @@ name: CI Tests
 on:
   pull_request:
     paths-ignore:
-      - 'resources/_gen/images/**'
+      - '../../resources/_gen/images/**'
 
 jobs:
   blueberry:
