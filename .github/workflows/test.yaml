@@ -1,6 +1,9 @@
 name: CI Tests
 
-on: [pull_request]
+on:
+  pull_request:
+    paths-ignore:
+      - 'resources/_gen/images/*'
 
 jobs:
   blueberry:
