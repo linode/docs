@@ -168,9 +168,9 @@ requirepass yourpassword
     Redis returns an authentication error since you have not logged in yet.
 
         (error) NOAUTH Authentication required.
-4.  Log in with the `auth` command, replacing "yourpassword" with the password you configured. Redis returns an `OK` response upon a successful log in.
+4.  Log in with the `auth` command, replacing "password" with the password you configured. Redis returns an `OK` response upon a successful log in.
 
-        AUTH "yourpassword"
+        AUTH "password"
 5.  Try the previous SET command again. Redis now returns an `OK` response.
 
         SET server:name "fido2"
@@ -260,7 +260,7 @@ Enter the command `sysctl vm.overcommit_memory=1` to apply this setting immediat
     {{< file "/etc/redis/redis.conf" >}}
 maxmemory 2147483648
 {{< /file >}}
-4.  Create some swap space in the system to prevent Redis from crashing if it consumes too much memory. The following commands set up a 2GB swapfile.
+4.  Create some swap space in the system to prevent Redis from crashing if it consumes too much memory. The following commands set up a 2GB swap file.
 
         sudo mkdir /swapdir/
         sudo dd if=/dev/zero of=/swapdir/swapfile bs=1MB count=2048
