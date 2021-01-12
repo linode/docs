@@ -6,9 +6,12 @@
   <meta name="turbolinks-cache-control" content="no-preview">
 {{ end }}
 
+{{- define "body-class" -}}
+  x-cloak
+{{- end -}}
+
 {{ define "main" }}
-  {{ partial "components/nojs.html" . }}
-  <div class="w-full" x-cloak x-data="lnc.NewSectionsController()" x-init="init() " @search:data-categories-filtered.document="receiveData($event.detail);">
+  <div class="w-full" x-data="lnSectionsController.New(lnSearchConfig)" x-init="init() " @search:data-categories-filtered.document="receiveData($event.detail);">
     {{ partial "components/error.html" . }}
     <div class="mb-8" x-show="loaded">
       <div class="flex flex-col lg:flex-row lg:items-center mb-8">
@@ -38,7 +41,7 @@
               <a class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand" :href="item.href">
                 <div class="flex flex-col justify-center w-full">
                   <div class="w-full flex justify-center mb-8">
-                    <div class="w-24 h-24" :x-ref="item.href" x-html="lnh.LoadSVG($refs[item.href], (item.thumbnailInline || item.thumbnail))"></div>
+                    <div class="w-24 h-24" :x-ref="item.href" x-html="lnSvgLoader.Load($refs[item.href], (item.thumbnailInline || item.thumbnail))"></div>
                   </div>
                   <h3 x-html="item.linkTitle" class="text-center text-lg mb-2" style="letter-spacing: -0.2px;"></h3>
                   <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>

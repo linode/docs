@@ -1,4 +1,7 @@
 <meta name="description" content="{{ .Param "description" }}">
+{{ with .Params.keywords }}
+  <meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">
+{{ end }}
 {{ if .Params.no_index }}
   <meta name="robots" content="noindex" />
 {{ end }}
