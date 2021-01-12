@@ -97,6 +97,7 @@ backticks
 backupninja
 bampton
 balarin
+banaction
 bantime
 barebones
 base64
@@ -196,6 +197,7 @@ client2
 clojure
 cloudflare
 cloudnet
+cloudron
 clozure
 cls
 cluebringer
@@ -625,6 +627,7 @@ iframe
 iframes
 ifup
 ignoreip
+ignoreregex
 ikiwiki
 im
 imagize
@@ -1532,6 +1535,7 @@ tun0
 tune2fs
 tunnelblick
 turtl
+tv
 tw
 txt
 txz

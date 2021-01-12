@@ -3,7 +3,7 @@ slug: host-static-site-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Host a Static Site using Linode\'s Object Storage."
+description: "Host a Static Site using Linode's Object Storage."
 keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09
