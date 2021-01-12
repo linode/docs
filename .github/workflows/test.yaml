@@ -41,6 +41,7 @@ jobs:
       uses: lots0logs/gh-action-get-changed-files@2.1.4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        path: docs
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
