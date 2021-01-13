@@ -32,7 +32,7 @@ jobs:
         python ./ci/blueberry.py
 
   vale:
-    runs-on: ubuntu-18.04
+    runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@master
