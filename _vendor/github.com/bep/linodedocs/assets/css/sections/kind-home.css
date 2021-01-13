@@ -45,7 +45,7 @@
 }
 
 /* Avoid doing this on mobile as the tiles would be too small. In that situation the main area is grayed out. */
-@screen md {
+@scren md {
     .kind-home.is-explorer-open .carousel {
         --carsousel-left-menu-width: var(--width-left-column);
     }
