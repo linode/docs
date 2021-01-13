@@ -32,19 +32,14 @@ jobs:
         python ./ci/blueberry.py
 
   vale:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Get Changed Files
-      id: get_changed_files
-      uses: lots0logs/gh-action-get-changed-files@2.1.4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
-        files: '${{ steps.get_changed_files.outputs.all }}'
+        files: docs
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
