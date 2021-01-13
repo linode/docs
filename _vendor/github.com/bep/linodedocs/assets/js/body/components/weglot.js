@@ -1,6 +1,6 @@
-(function() {
+export function initWeglot(apiKey) {
 	Weglot.initialize({
-		api_key: lnWeglotApiKey, // see loader/load.js
+		api_key: apiKey,
 		switchers: [
 			{
 				styleOpt: {
@@ -15,4 +15,4 @@
 			}
 		]
 	});
-})();
+}

@@ -151,8 +151,22 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
     @apply mobile:-mx-4 mobile:rounded-none;
 }
 
+.content figure {
+    @apply w-full;
+}
+
 .content img {
-    @apply rounded-lg w-3/4;
+    @apply rounded-none;
+}
+
+@screen md {
+    .content figure {
+        @apply w-3/4;
+    }
+
+    .content img {
+        @apply rounded-lg;
+    }
 }
 
 /* Adjust anchor links vs fixed header height. */
