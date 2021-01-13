@@ -2,6 +2,7 @@ github.com/SimoTod/alpine-turbolinks-adapter v0.3.0/go.mod h1:KebmHFXD933AzXtw24
 github.com/alpinejs/alpine v2.5.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/alpinejs/alpine v2.6.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/alpinejs/alpine v2.7.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
+github.com/alpinejs/alpine v2.8.0+incompatible/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
 github.com/bep/hugo-jslibs/alpinejs v0.5.14/go.mod h1:AKan86yhrI16Cp+ga/+UuRkBgaO25SpubHWFgMTzh3o=
 github.com/bep/hugo-jslibs/instantpage v0.0.0-20200822093604-7b6e0aaba587/go.mod h1:Ezl32tElGtVVOdR7j1MZQHJOTbKL/iXO2Qtj4NOGkBs=
 github.com/bep/hugo-jslibs/turbolinks v0.1.2/go.mod h1:CQHa51PjmF5gavvhS3JKSE9ywo8h7QgOj3D88ry6qu0=
@@ -184,10 +185,13 @@ github.com/bep/linodedocs v0.0.0-20201123204017-b6029ca36f88 h1:W167QlvjhdrOIGUR
 github.com/bep/linodedocs v0.0.0-20201123204017-b6029ca36f88/go.mod h1:fvA/E+XApS9zr5Z7ZOy6oDO+NKou6mdKeRp6s7K0je8=
 github.com/bep/linodedocs v0.0.0-20201123214701-cfb6ca717f80 h1:5Xrjioi/5MJTj4ZzNYhKvfh+xiRTHOaoBb/G0M17ZSY=
 github.com/bep/linodedocs v0.0.0-20201123214701-cfb6ca717f80/go.mod h1:fvA/E+XApS9zr5Z7ZOy6oDO+NKou6mdKeRp6s7K0je8=
+github.com/bep/linodedocs v0.0.0-20210113085930-7235eebb9931 h1:v2ouW43htteGLqszKVqNhfVywkcewoW7wppKzRiiwaI=
+github.com/bep/linodedocs v0.0.0-20210113085930-7235eebb9931/go.mod h1:QoX7vqNCUQtCGFydFUo3h36Kii5A/rrLoGOIFCGPmjs=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.1/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=
+github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.8.0/go.mod h1:6o8QVnKIlmS2+/INRDLhd9gz5moL3TXvHNtgxNGuF0M=
 github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1/go.mod h1:N4EUbbL7Cw4Yq+GHeK3MUSiOJQbzfuUFRyvBKvnVBR8=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.5.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.6.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=
@@ -218,4 +222,5 @@ github.com/linode/linode-website-partials v0.0.0-20201008204609-a59453d99ac9/go.
 github.com/linode/linode-website-partials v0.0.0-20201027160459-020df188fe47/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201106150449-790c71d060a5/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201111214704-4d3a91692b6e/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
+github.com/linode/linode-website-partials v0.0.0-20201218183201-137ce582c763/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible/go.mod h1:Cl0Br9tUXkQvxumVNGTvyaa7dqpFC2kPMrsS0Ttc94U=
