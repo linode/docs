@@ -22,7 +22,7 @@
     {{ . }}
   </div>
 {{ end }}
-<div :class="{ 'is-scroll-x' : isScrollX() }" class="code relative my-4 {{ $class }} flex items-start justify-between overflow-x-scroll" x-data="lnh.CopyToClipBoard()">
+<div :class="{ 'is-scroll-x' : isScrollX() }" class="code relative my-4 {{ $class }} flex items-start justify-between overflow-x-scroll" x-data="lnCopyToClipBoard.New()">
   <div class="" x-ref="code">
     {{- highlight (trim $.Inner "\n" ) $style "linenos=false"  -}}
   </div>

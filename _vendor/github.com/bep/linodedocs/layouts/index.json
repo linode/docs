@@ -2,17 +2,12 @@
 {{- $pages := where .Site.RegularPages "Type" "not in"  (slice "page" "json" "api" ) -}}
 {{- range $i, $e := $pages -}}
 {{- $img := partial "funcs/get-bundle-image.html" . -}}
-{{- $thumb := $img.Resize "640x jpg" -}}
+{{- $thumb := $img.Fill "640x400" -}}
 {{- $category := .Params.category -}}
 {{- $tags := .Params.tags -}}
 {{- $sections := slice -}}
 {{- $section :=  replace .SectionsPath "/" " > " }}
-{{- $ordinal := 0 }}
-{{- with .Params.tab_group_main -}}
-{{/* This is set in products pages. */}}
-{{- $ordinal = .weight }}
-{{- end -}}
-{{- $dict := (dict "objectID" .File.UniqueID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" (.Params.description | default .Summary) "title"  .Title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "keywords" .Params.keywords "deprecated" .Params.deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
+{{- $dict := (dict "objectID" .File.UniqueID "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" (.Params.description | default .Summary) "title"  .Title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "keywords" .Params.keywords "deprecated" .Params.deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}
 {{- $sections = $sections | append .SectionsEntries  -}}

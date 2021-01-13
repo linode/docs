@@ -42,7 +42,7 @@ func (config) Version() string {
 //
 // Usage:
 //
-//     ALGOLIA_ADMIN_API_KEY=<mysecret> go run ./main.go
+//     ALGOLIA_ADMIN_API_KEY=<mysecret> download_algolia_settings --sourcedir ../../public
 //
 func main() {
 	log.SetPrefix("algolia: ")
