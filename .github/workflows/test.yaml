@@ -38,13 +38,14 @@ jobs:
       uses: actions/checkout@master
     - name: Get Changed Files
       id: get_changed_files
-      uses: lots0logs/gh-action-get-changed-files@2.1.4
+      uses: jitterbit/get-changed-files@v1
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        format: 'json'
+        #token: ${{ secrets.GITHUB_TOKEN }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
-        files: '["${{ steps.get_changed_files.outputs.added }}", "${{ steps.get_changed_files.outputs.modified }}"]'
+        files: '${{ steps.get_changed_files.outputs.added_modified }}'
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
