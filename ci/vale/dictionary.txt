@@ -345,6 +345,7 @@ domain2
 domain3
 domainkey
 domainname
+donenfeld
 dotdeb
 dotfiles
 doveadm
@@ -1534,6 +1535,7 @@ tun0
 tune2fs
 tunnelblick
 turtl
+tv
 tw
 txt
 txz
