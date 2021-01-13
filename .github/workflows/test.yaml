@@ -40,7 +40,8 @@ jobs:
       id: get_changed_files
       uses: jitterbit/get-changed-files@v1
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        format: 'json'
+        #token: ${{ secrets.GITHUB_TOKEN }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
