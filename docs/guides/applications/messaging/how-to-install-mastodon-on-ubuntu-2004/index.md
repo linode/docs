@@ -109,9 +109,9 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Fill out the remainder of the `.env.production` file's fields.
 
     Enter your Mastodon server's domain name for `LOCAL_DOMAIN`.
-    
+
     Enter `mastodon_db_1` for `DB_HOST` and `mastodon_redis_1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder.
-    
+
     Fill out the `SMTP` fields with the information from your SMTP provider. If you set up your own SMTP server, use its domain name for `SMTP_SERVER` and add the following lines:
 
         SMTP_AUTH_METHOD=plain
@@ -131,9 +131,9 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Run Mastodon's Docker Compose setup script. You are prompted to enter information about the Docker Compose services and the Mastodon instance.
 
     Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
-    
+
     When prompted to create a Mastodon admin user, choose to do so (`Y`), and enter the username, password, and email address you would like to use.
-    
+
     For any other prompts, enter the default values by pressing **Enter**.
 
 ## Initiate the Docker Compose Services
