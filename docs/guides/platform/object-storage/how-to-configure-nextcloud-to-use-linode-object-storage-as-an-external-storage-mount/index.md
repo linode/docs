@@ -15,11 +15,12 @@ title: "How to Configure Nextcloud to use Linode Object Storage as an External S
 h1_title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
 contributor:
   name: Linode
-image: Configuring-Nextcloud-to-use-Linode-Object-Storage-as-an-External-Storage-Mount_1200x631.png
 external_resources:
 - '[Nextcloud Configuring External Storage Documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#)'
 aliases: ['/platform/object-storage/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/']
 ---
+{{< youtube QWaCg4q4a0A >}}
+
 [Nextcloud](https://nextcloud.com/) is an open source solution for file hosting and sharing. With Nextcloud, you can synchronize files from a local computer to the Linode server and share them with collaborators. Nextcloud’s customizable security features and intuitive user interface keeps the files safe and easy to manage.
 
 You can configure Nextcloud to enable external storage devices and services, like [Linode Object Storage](https://www.linode.com/products/object-storage/), to use as a secondary place to store files. Using Linode Object Storage to store files prevents you from running out of storage space limited by the Linode's plan size. When using Nextcloud's graphical user interface (GUI) to manage files, the external storage device shows up just like any other folder.

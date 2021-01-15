@@ -48,7 +48,7 @@ sudo systemctl restart apache2
 
 ## The Redirect Directive
 
-`Redirect` settings can be located in your main Apache configuration file, but we recommend you keep them in your virtual host files or directory blocks. You can also use `Redirect` statements in `.httaccess` files. Here's an example of how to use `Redirect`:
+`Redirect` settings can be located in your main Apache configuration file, but we recommend you keep them in your virtual host files or directory blocks. You can also use `Redirect` statements in `.htaccess` files. Here's an example of how to use `Redirect`:
 
 {{< file "Apache configuration option" apache >}}
 Redirect /username http://team.example.com/~username/

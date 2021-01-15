@@ -9,32 +9,32 @@ description: 'Jellyfin is a Free Software Media System that puts you in control 
 keywords: ["Jellyfin", "Media Server", "PLEX"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-01-16
+modified: 2020-12-04
 modified_by:
   name: Linode
 published: 2019-08-07
 title: How to Install Jellyfin on Linux
 aliases: ['/applications/media-servers/how-to-install-jellyfin/']
 ---
-Jellyfin is an open source media library management and streaming platform, similar to [Plex](https://www.plex.tv/). This document will guide you through the process of installing and configuring **Jellyfin** on your Linode running Ubuntu 18.04.
+Jellyfin is an open source media library management and streaming platform, similar to [Plex](https://www.plex.tv/). This document guides you through the process of installing and configuring **Jellyfin** on your Linode running Ubuntu 18.04.
 
-In this guide you will complete the following:
+In this guide you complete the following:
 
-- [Install and configure Jellyfin on a Linode](/docs/applications/media-servers/how-to-install-jellyfin/#install-jellyfin)
-- [Create a Reverse Proxy for Jellyfin](/docs/applications/media-servers/how-to-install-jellyfin/#create-a-reverse-proxy-for-jellyfin)
+- [Install and configure Jellyfin on a Linode](#install-jellyfin)
+- [Create a Reverse Proxy for Jellyfin](#create-a-reverse-proxy-for-jellyfin)
 
 ## Before you Begin
 
-1. If you have not set up your Linode yet, check out our [Getting Started](https://www.linode.com/docs/getting-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
+1. If you have not set up your Linode yet, check out our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
 
-2. Follow up with our [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/) guide to create a standard user account with `sudo` privileges.
+2. Follow up with our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account with `sudo` privileges.
 
 3. Run the following command to upgrade your packages:
 
         sudo apt-get update && sudo apt-get upgrade
 
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](https://www.linode.com/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 ## Install Jellyfin
@@ -55,12 +55,12 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo touch /etc/apt/sources.list.d/jellyfin.list
 
-5. Add the Jellyfin `apt` repo to your Linode.
+5. Add the Jellyfin `apt` repository to your Linode.
 
         echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/ubuntu $( lsb_release -c -s ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
 
     {{< note >}}
-Current supported releases are `Cxenial`, `bionic`, `cosmic`, and `disco`. Since we're using Ubuntu 18.04, `lsb_release` will become `bionic`.
+Current supported releases are `Cxenial`, `bionic`, `cosmic`, and `disco`. Since we're using Ubuntu 18.04, `lsb_release` becomes `bionic`.
 {{< /note >}}
 
     The output, and the content of the `/etc/apt/sources.list.d/jellyfin.list`, should look something like this:
@@ -95,7 +95,7 @@ Substitute `user` with the `sudo user` on your Linode, and `192.0.2.1` with your
 
     ![Account Creation](jellyfin-account-creation.png)
 
-1. Now you'll create the directories to store your media on your Linode. For example, if you want to have music and movies on your server, you would create a directory to store them by using the following command in your terminal:
+1. Now you create the directories to store your media on your Linode. For example, if you want to have music and movies on your server, you would create a directory to store them by using the following command in your terminal:
 
         cd ~/
         sudo mkdir -p jellyfin-media/music && sudo mkdir jellyfin-media/movies
@@ -105,7 +105,7 @@ Substitute `user` with the `sudo user` on your Linode, and `192.0.2.1` with your
     ![Library Setup](jellyfin-library-setup.png)
 
     {{< note >}}
-Each kind of content type provides a  different set of options for you to configure, such as where you would like your metadata retrieved from, etc.
+Each kind of content type provides a different set of options for you to configure, such as where you would like your metadata retrieved from, etc.
 {{< /note >}}
 
 1. Content in Jellyfin is organized into Libraries. Libraries can have multiple directories from which they aggregate their media. You can specify directories using the Folders plus **(+)** button. Click the **(+)** button to add the folder you created earlier.
@@ -125,13 +125,13 @@ Each kind of content type provides a  different set of options for you to config
 
     ![Library Dashboard](jellyfin-disable-port-mapping.png)
 
-1. Click the **Next** button. Your setup is now complete and you'll be required to sign in as the user with the password you setup earlier.
+1. Click the **Next** button. Your setup is now complete and you are required to sign in as the user with the password you setup earlier.
 
 ### Disable Unneeded Features (Recommended)
 
-[DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is a protocol that incorporates [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) (or UPnP) standards for digital media sharing across devices. As port `1900` will be openly available and any DLNA device or application can have full unrestricted access to your content, we recommend disabling DLNA if you won’t be using it.
+[DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is a protocol that incorporates [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) (or UPnP) standards for digital media sharing across devices. Port `1900` is openly available and any DLNA device or application can have full unrestricted access to your content. Therefore, we recommend disabling DLNA if you are not using it.
 
- Click the "hamburger" menu in the top left corner of Jellyfin, choose *Dashboard*, and on the left side of the screen choose *DLNA*, then disable and save your DLNA settings.
+Click the "hamburger" menu in the top left corner of Jellyfin and choose *Dashboard*. Then on the left side of the screen choose *DLNA*, then disable and save your DLNA settings.
 
 ![Disable DLNA](DLNAremoval.png)
 
@@ -141,14 +141,14 @@ Each kind of content type provides a  different set of options for you to config
 
     ![Library Dashboard](jellyfin-library-dashboard.png)
 
-- Media can be added to individual folders from inside your Linode using various [file transfer tools](https://www.linode.com/docs/tools-reference/file-transfer/) and [download methods](https://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget/).
+- Media can be added to individual folders from inside your Linode using various [file transfer tools](/docs/guides/tools-reference/file-transfer/) and [download methods](/docs/guides/download-resources-from-the-command-line-with-wget/).
 - Once files in a folder are added to your Jellyfin server, they can be accessed from your *Home Menu* by clicking on the Home icon at top left of the page after selecting the hamburger menu.
 
     ![Home Menu](homemenu.png)
 
 ## Create a Reverse Proxy for Jellyfin
 
-Jellyfin primarily works as a web frontend for your media. That means you'll generally want to proxy the default Jellyfin websocket to requests. Jellyfin supports a [large number of server software solutions](https://jellyfin.org/docs/general/administration/reverse-proxy.html#apache) for this purpose, though in this guide, the example will be [Apache](http://httpd.apache.org/).
+Jellyfin primarily works as a web frontend for your media. That means you generally want to proxy the default Jellyfin websocket to requests. Jellyfin supports a [large number of server software solutions](https://jellyfin.org/docs/general/networking/apache.html) for this purpose, though in this guide, the example is [Apache](http://httpd.apache.org/).
 
 1. Install Apache with the following command:
 
@@ -159,7 +159,7 @@ Jellyfin primarily works as a web frontend for your media. That means you'll gen
         sudo a2enmod proxy
         sudo a2enmod proxy_http
 
-1. Open a new virtual host file for your configuration. Replace "example.com" in this example with the domain name you'll be using:
+1. Open a new virtual host file for your configuration. Replace `example.com` in this example with the domain name you are using:
 
         sudo nano /etc/apache2/sites-available/jellyfin.example.com.conf
 
@@ -193,4 +193,4 @@ Although nano is used in this example, feel free to use the text editor of your 
 
         sudo systemctl restart apache2
 
-You may also want to [set up SSL encryption for this virtual host](https://www.linode.com/docs/quick-answers/websites/secure-http-traffic-certbot/). For more information regarding this configuration, see Jellyfin's [reverse proxy documentation](https://jellyfin.readthedocs.io/en/latest/administrator-docs/reverse-proxy/#apache)
+You may also want to [set up SSL encryption for this virtual host](/docs/guides/secure-http-traffic-certbot/). For more information regarding this configuration, see Jellyfin's [reverse proxy documentation](https://jellyfin.org/docs/general/networking/index.html#running-jellyfin-behind-a-reverse-proxy)
