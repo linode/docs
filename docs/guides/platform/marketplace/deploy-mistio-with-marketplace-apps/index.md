@@ -45,7 +45,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Setting up the Mist.io Server
 
-Once the Mist.io server is successfully created, a few additional steps must be completed to be able to begin using the application. Enter the public IP address of you
+Once the Mist.io server is successfully created, a few additional steps must be completed to be able to begin using the application. Enter the [public IP address](/docs/guides/find-your-linodes-ip-address/) of the Mist.io Linode into a web browser to access the application and proceed.
 
 ### Create a New Account
 
