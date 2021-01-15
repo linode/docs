@@ -149,7 +149,7 @@ Of the VNC client options for OS X and Windows, [RealVNC Viewer](https://www.rea
 
 1. Open RealVNC Viewer, and enter "localhost:5901" in the top bar.
 
-    ![![Entering a host address in RealVNC Viewer](realvnc-enter-host_small.png "Entering a host address in RealVNC Viewer.")](realvnc-enter-host.png)
+    [![Entering a host address in RealVNC Viewer](realvnc-enter-host_small.png "Entering a host address in RealVNC Viewer.")](realvnc-enter-host.png)
 
 2. You are notified that the connection is unencrypted. However, the steps in the [Secure Your VNC Connection](docs/guides/how-install-vnc-on-centos-8/#secure-your-vnc-connection) section above ensure that your connection is securely tunneled. Click **Continue**.
 
@@ -165,6 +165,6 @@ Since this guides uses GNOME for the desktop environment, Vinagre, designed spec
 
 2. Set **Protocol** to **VNC**, and enter "localhost:5901" as the **Host**. Click **Connect**.
 
-    ![![Entering connection information in Vinagre](vinagre-enter-host_small.png "Entering connection information in Vinagre.")](vinagre-enter-host.png)
+    [![Entering connection information in Vinagre](vinagre-enter-host_small.png "Entering connection information in Vinagre.")](vinagre-enter-host.png)
 
 3. When prompted, enter the password configured for the VNC server user, following which the CentOS desktop opens.
