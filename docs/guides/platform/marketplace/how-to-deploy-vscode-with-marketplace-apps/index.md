@@ -1,5 +1,5 @@
 ---
-slug: how-to-deploy-vscode-with-marketplace-apps
+slug: deploy-vscode-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
