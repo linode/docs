@@ -1,5 +1,5 @@
 ---
-slug: how-to-deploy-webuzo-with-marketplace-apps
+slug: deploy-webuzo-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
