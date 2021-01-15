@@ -1,5 +1,5 @@
 ---
-slug: how-to-deploy-discourse-with-marketplace-apps
+slug: deploy-discourse-with-marketplace-apps
 author:
   name: Linode
   email: docs@linode.com
