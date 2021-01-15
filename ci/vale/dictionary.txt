@@ -501,6 +501,7 @@ gfxmode
 gibibytes
 girocco
 gist
+gitea
 gitfs
 github
 gitignore
