@@ -25,17 +25,6 @@ aliases: ['/guides/deploy-gitea-with-one-click-apps/']
 
 Self-hosting your software development with the Gitea Marketplace App offers total control of your codebase. At the same time, its familiar interface eases collaboration for you and your team. Gitea is one of the most popular self-hosted Git repository platforms, allowing you to benefit from a robust set of integrated tools and an active community.
 
-### Software Included
-
-The Gitea Marketplace App installs the following software on your Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**Gitea**](https://gitea.io/) | Open source remote Git repository software. [v1.13.0](https://github.com/go-gitea/gitea/releases/tag/v1.13.0) |
-| [**MariaDB**](https://mariadb.org/) | Open source relational database fork of MySQL. |
-| [**NGINX**](https://www.nginx.com/) | Open source web server. Used as a reverse proxy by this app. See our guide on [Getting Started with NGINX](/docs/guides/nginx-installation-and-basic-setup/) for more information. |
-| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. See our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for instructions. |
-
 ### Deploy a Gitea Marketplace App
 
 {{< content "deploy-marketplace-apps">}}
@@ -101,5 +90,17 @@ After Gitea has finished installing, you can access your Gitea site using a web 
 1.  Complete any other desired configurations, then select **Install Gitea** to complete initial configuration.
 
 1.  You can now register a new administrative user and manage repositories with your Gitea App. For more configuration instructions and settings, refer to the official [Gitea Documentation](https://docs.gitea.io/).
+
+
+## Software Included
+
+The Gitea Marketplace App installs the following software on your Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**Gitea**](https://gitea.io/) | Open source remote Git repository software. [v1.13.0](https://github.com/go-gitea/gitea/releases/tag/v1.13.0) |
+| [**MariaDB**](https://mariadb.org/) | Open source relational database fork of MySQL. |
+| [**NGINX**](https://www.nginx.com/) | Open source web server. Used as a reverse proxy by this app. See our guide on [Getting Started with NGINX](/docs/guides/nginx-installation-and-basic-setup/) for more information. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 are enabled with installation of this app. Additional ports must be opened to send email from your Linode for use with this app. See our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for instructions. |
 
 {{< content "marketplace-update-note">}}
