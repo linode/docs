@@ -1,5 +1,5 @@
 ---
-slug: how-to-deploy-cloudron-with-marketplace-apps
+slug: deploy-cloudron-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
