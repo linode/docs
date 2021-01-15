@@ -1,5 +1,5 @@
 ---
-slug: how-to-deploy-kepler-with-marketplace-apps
+slug: deploy-kepler-with-marketplace-apps
 author:
   name: Linode
   email: docs@linode.com
@@ -18,7 +18,6 @@ contributor:
 external_resources:
 - '[About Kepler](https://kepler.app)'
 - '[Kepler Community](https://help.kepler.app)'
-aliases: ['/platform/marketplace/how-to-deploy-kepler-with-marketplace-apps/']
 ---
 
 ## Kepler Marketplace App
