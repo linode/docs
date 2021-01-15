@@ -162,9 +162,9 @@ In this section you will use Helm to install the NGINX Ingress Controller on you
 If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
 {{</ note >}}
 
-1. Add the stable Helm charts repository to your Helm repos.
+1. Add the Google stable Helm charts repository to your Helm repos.
 
-        helm repo add stable https://charts.helm.sh/stable
+        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 1. Update your Helm repositories.
 

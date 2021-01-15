@@ -4,12 +4,12 @@ deprecated: true
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'CoreOS is a container-centric Linux distribution designed for clustered systems running in the cloud. This guide details installing CoreOS on a Linode.'
-keywords: ["coreos", "custom", "finnix", "lish"]
+description: 'CoreOS is a container-centric Linux distribution designed for clustered systems running in the cloud. This guide details installing CoreOS on a KVM Linode.'
+keywords: ["coreos", "custom", "finnix", "lish", "kvm"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-01-07
-modified: 2020-12-01
+modified: 2016-01-08
 modified_by:
   name: Linode
 title: Install CoreOS on Your Linode
@@ -26,20 +26,21 @@ relations:
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
 ---
 
+
 {{< note >}}
 CoreOS Container Linux is now available for deployment from the Linode Manager.
 {{< /note >}}
 
-[CoreOS](https://coreos.com/) is a container-centric Linux distribution designed for clustered systems running in the cloud. With user applications running inside containers, the host system itself provides minimal functionality.
+[CoreOS](https://coreos.com/) is a container-centric Linux distribution designed for clustered systems running in the cloud. With user applications running inside containers, the host system itself provides minimal functionality. This guide details installing CoreOS on a **KVM** Linode. If you're running a Xen Linode, you can [upgrade](/docs/platform/kvm-reference/#how-to-enable-kvm), but it is currently not possible to install CoreOS on a Xen Linode.
 
 CoreOS is not officially supported by Linode so there are limitations to using it in comparison to the Linux images provided in the Linode Manager.
 
-*   The CoreOS installer creates a partition table on the disk image which interferes with the [Linode Backup](/docs/guides/linode-backup-service/) service because the disk image is not be directly mountable.
+*   The CoreOS installer will create a partition table on the disk image which will interfere with the [Linode Backup](/docs/platform/disk-images/linode-backup-service/) service because the disk image will not be directly mountable.
 
-*   Unlike the case with most partitioned images, you *can* resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS resizes its root partition to fill the disk on next boot.
+*   Unlike the case with most partitioned images, you *will* be able to resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS will resize its root partition to fill the disk on next boot.
 
 {{< caution >}}
-These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/guides/recovering-from-a-system-compromise/#using-a-second-linode) and transfer your data after installation.
+These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/security/recovering-from-a-system-compromise/#using-a-second-linode) and transfer your data after installation.
 {{< /caution >}}
 
 ## Before You Begin
@@ -49,23 +50,23 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
 ## Prepare the Linode
 
-1. From the [Linode Cloud Manager](https://cloud.linode.com/), create a new Linode.
+1. From the [Linode Manager](https://manager.linode.com/), create a new Linode.
 
 2. Under the **Disks** section of the Linode Dashboard, click on **Create a new Disk**:
 
     [![Create a new disk](custom-distro-new-disk_small.png)](custom-distro-new-disk.png)
 
-3. Label your new disk image and choose an appropriate size. You probably need to allocate at least **5 GB**. Set the **Type** to **unformatted / raw**.
+3. Label your new disk image and choose an appropriate size. You will probably need to allocate at least **5 GB**. Set the **Type** to **unformatted / raw**.
 
     [![Specify disk name and size](coreos-disk-image-small.png)](coreos-disk-image.png)
 
-   If you're not sure how big your disk image needs to be, you may wish to choose a small size so that you can grow the disk later. You can not shrink the disk image after it has been generated.
+   If you're not sure how big your disk image needs to be, you may wish to choose a small size so that you can grow the disk later. You will not be able to shrink the disk image after it has been generated.
 
-4. Return to the **Linode Dashboard** and select the **Rescue** tab. Check to make sure the CoreOS disk image you created is set as `/dev/sda` and all other selectable devices set to **--None--**, then click the **Reboot into Rescue Mode** button. Your Linode now boots into the Finnix recovery image.
+4. Return to the **Linode Dashboard** and select the **Rescue** tab. Check to make sure the CoreOS disk image you created is set as `/dev/sda` and all other selectable devices set to **--None--**, then click the **Reboot into Rescue Mode** button. Your Linode will now boot into the Finnix recovery image.
 
     [![Set /dev/sda to CoreOS disk image](coreos-device-identifier-small.png)](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/guides/using-the-linode-shell-lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 

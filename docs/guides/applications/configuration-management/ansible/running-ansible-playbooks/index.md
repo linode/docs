@@ -72,7 +72,7 @@ The example below displays the skeleton of a Playbook. At its most basic, a Play
     - name: [task 1]
       module:
     - name: [task 2]
-      module:
+      moduel:
 
 {{< /file >}}
 

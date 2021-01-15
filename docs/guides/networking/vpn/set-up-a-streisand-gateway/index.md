@@ -25,7 +25,7 @@ Setting up a personal Virtual Private Network (VPN) server is a great way to avo
 
 However, the configuration process is time-consuming, especially for those with little experience working with remote servers. For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server/) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/) [series](/docs/networking/vpn/configuring-openvpn-client-devices/).
 
-[Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script creates a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard &#174;, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
+[Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script creates a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
 
 ## Before You Begin
 
@@ -143,5 +143,3 @@ You now have a Linode with multiple VPNs and protocols fully configured for use;
 You are now connected to your gateway. From here, you can choose from any of the eight pre-configured connection options, then use the provided links to download an appropriate client. Each connection option has detailed instructions on how to connect your client devices.
 
 These instructions are personalized to your gateway, and so contain the exact IP addresses, passwords, and other information you will need. Where possible, links are provided to download pre-made configuration files to make the setup process even easier. This also makes it simple to share connection information, so that you can easily share your new VPN with family and friends.
-
-"WireGuard" is a registered trademark of Jason A. Donenfeld.

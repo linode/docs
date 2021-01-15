@@ -10,7 +10,6 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2019-06-05
 title: A Beginner's Guide to Linode GPU Instances
 h1_title: Getting Started with Linode GPU Instances
-modified: 2020-12-04
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -19,25 +18,25 @@ aliases: ['/platform/linode-gpu/getting-started-with-gpu/']
 
 ![Getting Started with Linode GPU Instances](getting-started-with-linode-gpu-instances.png "Getting Started with Linode GPU Instances")
 
-This guide helps you get your Linode GPU Instance up and running on a number of popular distributions. To prepare your Linode, you need to install NVIDIA's proprietary drivers using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
+This guide will help you get your Linode GPU Instance up and running on a number of popular distributions. To prepare your Linode, you will need to install NVIDIA's proprietary drivers using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
 
 When using distributions that are not fully supported by CUDA, like Debian 9, you can install the NVIDIA driver without the CUDA toolkit. To only install the NVIDIA driver, complete the [Before You Begin](#before-you-begin) section and then move on to the [Manual Install](#install-manually) section of this guide.
 
 For details on the CUDA Toolkit's full feature set, see the [official documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#introduction).
 
 {{< disclosure-note "Why do NVIDIA's drivers need to be installed?" >}}
-Linode has chosen not to bundle NVIDIA's proprietary closed-source drivers with its standard Linux distribution images. While some operating systems are packaged with the open source [Nouveau](https://nouveau.freedesktop.org/wiki/) driver, the NVIDIA proprietary driver provides optimal performance for your GPU-accelerated applications.
+Linode has chosen not to bundle NVIDIA's proprietary closed-source drivers with its standard Linux distribution images. While some operating systems are packaged with the open source [Nouveau](https://nouveau.freedesktop.org/wiki/) driver, the NVIDIA proprietary driver will provide optimal performance for your GPU-accelerated applications.
 {{< /disclosure-note >}}
 
 {{< caution >}}
-This guide’s example instructions creates several billable resources on your Linode account. If you do not want to keep using the GPU that you create, be sure to delete it when you have finished the guide.
+This guide’s example instructions will create several billable resources on your Linode account. If you do not want to keep using the GPU that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you are only be billed for the hour(s) that the resources were present on your account. Consult the [How Linode Billing Works](/docs/guides/how-linode-billing-works/) guide for detailed information about how hourly billing works, and visit our [pricing page](https://www.linode.com/pricing/#row--compute) for a table of hourly and monthly GPU costs.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide for detailed information about how hourly billing works, and visit our [pricing page](https://www.linode.com/pricing/#row--compute) for a table of hourly and monthly GPU costs.
 {{</ caution >}}
 
 ## Before You Begin
 
-1. Follow our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides for instructions on setting up your Linodes.
+1. Follow our [Getting Started](https://www.linode.com/docs/getting-started/) and [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/) guides for instructions on setting up your Linodes.
 
 1. Make sure that your GPU is currently available on your deployed Linode:
 

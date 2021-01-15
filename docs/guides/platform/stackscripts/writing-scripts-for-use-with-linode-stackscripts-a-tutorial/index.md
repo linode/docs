@@ -48,19 +48,19 @@ Writing a script for use in a StackScript is generally the same as writing a scr
 
     {{< note >}}
 Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/quick-answers/linux/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
-{{</ note >}}
+    {{</ note >}}
 
 - When writing a script, you must use a [*shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) as the first line of your script. This indicates to your Linux system which interpreter to use when running the script. For example, if you are writing a Bash script, the beginning of your script should include the following line:
 
     {{< file >}}
 #!/bin/bash
-{{</ file >}}
+    {{</ file >}}
 
     Or, if you are writing a Python script, the beginning of your script should include the following line:
 
-    {{< file >}}
+      {{< file >}}
 #!/usr/bin/env python
-{{</ file >}}
+      {{</ file >}}
 
 ### Import a StackScript
 
@@ -70,26 +70,26 @@ Your scripts can import any Account StackScript that you own or any Community St
 
     {{< file >}}
 <ssinclude StackScriptID="[NUMBER]">
-{{</ file >}}
+    {{</ file >}}
 
      In Bash, you can download and run the script in the following way:
 
     {{< file >}}
 source <ssinclude StackScriptID="[NUMBER]">
-{{</ file >}}
+    {{</ file >}}
 
     If you're scripting in another language, import the StackScript, then execute it on a second line:
 
     {{< file >}}
 <ssinclude StackScriptID="[NUMBER]">
 ./ssinclude-[NUMBER]
-{{</ file >}}
+    {{</ file >}}
 
 - Linode provides a [StackScript Bash Library](https://cloud.linode.com/stackscripts/1) that includes a set of functions that perform various common tasks users might wish to execute on their Linodes. This script creates the functions, but does not run them. A new StackScript can import the Bash Library and then execute functions from it.
 
     {{< note >}}
 Linode's [StackScript Bash Library's](https://cloud.linode.com/stackscripts/1) ID number is `1`.
-{{</ note >}}
+    {{</ note >}}
 
 ### Access a StackScript's ID Number
 
@@ -99,7 +99,7 @@ Follow the steps in this section to find the ID number of a StackScript.
 
 1. Click on the **StackScripts** link in the left-hand navigation menu. You are brought to the *StackScripts* page.
 
-    ![Click on the StackScripts link in the left-hand navigation menu.](stackscripts-sidebar-link.png)
+      ![Click on the StackScripts link in the left-hand navigation menu.](stackscripts-sidebar-link.png)
 
 1. Click on the **Account StackScripts** tab or the **Community StackScripts** tab, depending on the type of StackScript whose ID you'd like to find
 
@@ -119,11 +119,11 @@ The StackScript system provides a basic markup specification that interfaces wit
 
     {{< note >}}
 The UDF tags are commented out to prevent execution errors, as the StackScript system parses the tags without removing them.
-{{</ note >}}
+    {{</ note >}}
 
     {{< file >}}
 # <UDF name="example-var" label="An example informative label for the user." default="A default value" example="An example value." />
-{{</ file >}}
+    {{</ file >}}
 
 - A UDF tag accepts the following attributes:
 

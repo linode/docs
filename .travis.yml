@@ -1,0 +1,30 @@
+language: python
+python:
+  - "3.6"
+
+cache:
+    pip: true
+
+env:
+  - TEST_SUITE=vale
+  - TEST_SUITE=blueberry
+  - TEST_SUITE=docs404
+
+before_install:
+  - if [ $TEST_SUITE == docs404 ]; then
+      wget https://github.com/gohugoio/hugo/releases/download/v0.76.3/hugo_0.76.3_Linux-64bit.deb;
+      sudo dpkg -i hugo*.deb;
+      nvm install 13;
+      nvm use 13;
+      npm install;
+      (hugo server &);
+    fi
+  - sleep 7
+
+before_script:
+  - git remote set-branches --add origin $TRAVIS_BRANCH
+  - git fetch --unshallow
+  - sleep 7
+
+script:
+  - ./ci/scripts/$TEST_SUITE.sh

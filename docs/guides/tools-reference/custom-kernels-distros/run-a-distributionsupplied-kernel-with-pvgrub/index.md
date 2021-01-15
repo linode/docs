@@ -7,7 +7,7 @@ description: 'Instructions for configuring your Linode to run a native distribut
 keywords: ["pv-grub", "pvgrub", "custom linux kernel", "custom linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/custom-instances/pv-grub-howto/','/platform/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/','/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/']
-modified: 2020-12-01
+modified: 2014-08-20
 modified_by:
   name: James Stewart
 published: 2009-09-09
@@ -15,17 +15,15 @@ title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 deprecated: true
 ---
 
-{{< content "all-linodes-kvm-shortguide" >}}
-
 {{< caution >}}
-This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel](/docs/guides/run-a-distribution-supplied-kernel/).
+This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/).
 {{< /caution >}}
 
 PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
 
-If you'd like to run a custom distro on your Linode in combination with PV-GRUB, please follow our [Custom Distro](/docs/guides/install-a-custom-distribution-on-a-linode/) guide before taking these steps.
+If you'd like to run a custom distro on your Linode in combination with PV-GRUB, please follow our [Custom Distro](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) guide before taking these steps.
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/guides/getting-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
 ## Ubuntu 13.04 (Raring)
 
@@ -53,7 +51,7 @@ timeout 3
 {{< /file >}}
 
 
-4.  Change it to match the following excerpt. This gives you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
+4.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {{< file "/boot/grub/menu.lst" >}}
 timeout 10
@@ -158,7 +156,7 @@ timeout 3
 {{< /file >}}
 
 
-4.  Edit the file to match the following excerpt. This gives you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
+4.  Edit the file to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {{< file "/boot/grub/menu.lst" >}}
 timeout 10
@@ -265,7 +263,7 @@ timeout 3
 {{< /file >}}
 
 
-4.  Edit this line to match the following excerpt. This gives you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
+4.  Edit this line to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {{< file "/boot/grub/menu.lst" >}}
 timeout 10
@@ -381,7 +379,7 @@ timeout 5
 {{< /file >}}
 
 
-5.  Change it to match the following excerpt. This gives you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
+5.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {{< file "/boot/grub/menu.lst" >}}
 timeout 10
@@ -470,7 +468,7 @@ timeout 5
 {{< /file >}}
 
 
-5.  Change it to match the following excerpt. This gives you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future:
+5.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future:
 
     {{< file "/boot/grub/menu.lst" >}}
 timeout 10
@@ -537,7 +535,7 @@ timeout 10
 
         Linux li63-119 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 23:51:20 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
 
-4.  Make a note of the kernel you're currently using (`2.6.32-358.14.1.el6.x86_64` in our example). You are replacing it with the kernel shown in the configuration below.
+4.  Make a note of the kernel you're currently using (`2.6.32-358.14.1.el6.x86_64` in our example). You will be replacing it with the kernel shown in the configuration below.
 
 5.  Issue the following command to install the default kernel for CentOS6:
 
@@ -575,7 +573,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 
 ## CentOS 5
 
-[Warren Togami](http://togami.com/) was kind enough to provide a script to automate getting a native CentOS 5 kernel up and running, including with SELinux support. We use this script in the following instructions.
+[Warren Togami](http://togami.com/) was kind enough to provide a script to automate getting a native CentOS 5 kernel up and running, including with SELinux support. We will use this script in the following instructions.
 
 1.  Issue the following commands as `root` to retrieve and run the script:
 
@@ -637,4 +635,4 @@ title Fedora 17, kernel 3.9.10-100.fc17.x86\_64 root (hd0) kernel /boot/vmlinuz-
 
         Linux li63-119 3.9.10-100.fc17.x86_64 #1 SMP Sun Jul 14 01:31:27 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
 
-Note that if you later install an updated kernel, you need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list is booted.
+Note that if you later install an updated kernel, you'll need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list will be booted.

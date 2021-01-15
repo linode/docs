@@ -16,7 +16,7 @@ Cloud Firewall is now in beta, sign up through the [Linode Green Light program](
 
 ## Availability
 
-Mumbai, India; Sydney, Australia; Toronto, Canada;
+Mumbai, India; Sydney, Australia;
 
 ## Features
 

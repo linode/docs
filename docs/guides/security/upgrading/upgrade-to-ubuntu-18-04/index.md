@@ -18,10 +18,11 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-18-04/']
-image: upgrade-ubuntu-18-title.jpg
 ---
 
-Ubuntu 18.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2023. This guide shows how to upgrade your Linode from Ubuntu 16.04 (Xenial Xerus) or Ubuntu 17.10 (Artful Aardvark) to Ubuntu 18.04 (Bionic Beaver).
+![Upgrade to Ubuntu 18.04](upgrade-ubuntu-18-title.jpg)
+
+Ubuntu 18.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2023. This guide shows how to upgrade your Linode from Ubuntu 16.04 (Xenial Xerus) or Ubuntu 17.10 (Artful Aardvark) to Ubuntu 18.04 (Bionic Beaver).
 
 {{< caution >}}
 Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
@@ -31,7 +32,7 @@ Distribution upgrades sometimes yield unpredictable results. If possible, use th
  - Transfer your data
  - Swap IP addresses
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/using-the-linode-shell-lish) or [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 {{< /caution >}}
 
@@ -41,9 +42,9 @@ If you are upgrading from Ubuntu 17.04 you must first upgrade to Ubuntu 17.10.
 
 ## Prepare to Upgrade to Ubuntu 18.04
 
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-In order to prepare your Linode for upgrade, the following steps guide you to:
+In order to prepare your Linode for upgrade, the following steps will:
 
 1.  Install updates for Ubuntu 16.04.
 
@@ -63,11 +64,11 @@ Update package lists and install all updates:
 
 ### Back Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/docs/products/storage/backups/), we recommend that you [take a manual snapshot](/docs/guides/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/backups), we recommend that you [take a manual snapshot](/docs/platform/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/guides/monitoring-and-maintaining-your-server/#apply-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
 
 ### Stop Services
 
@@ -165,7 +166,7 @@ download has finished, the process cannot be canceled.
 
     *  **Remove obsolete packages?**: Enter `y`
 
-5.  The upgrade requires a reboot. Enter `y` to continue:
+5.  The upgrade will require a reboot. Enter `y` to continue:
 
     {{< output >}}
 System upgrade is complete.
@@ -196,4 +197,4 @@ Your Linode is now running Ubuntu 18.04 LTS.
 
 ## Upgrading from Previous Ubuntu Releases
 
-If your Linode is running a release of Ubuntu older than 16.04 LTS, use the upgrade guides in the [Upgrading section](/docs/guides/security/upgrading) to upgrade to Ubuntu 16.04 LTS first. You may then upgrade your Linode to Ubuntu 18.04 LTS.
+If your Linode is running a release of Ubuntu older than 16.04 LTS, use the upgrade guides in the [Upgrading section](/docs/security/upgrading) to upgrade to Ubuntu 16.04 LTS first. You may then upgrade your Linode to Ubuntu 18.04 LTS.

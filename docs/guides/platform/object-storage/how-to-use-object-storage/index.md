@@ -19,7 +19,7 @@ external_resources:
 aliases: ['/platform/object-storage/how-to-use-object-storage/']
 ---
 
-{{< youtube q88OKsr5l6c >}}
+![How to Use Linode Object Storage](how-to-use-linode-object-storage.png "How to Use Linode Object Storage")
 
 {{< content "object-storage-ga-shortguide" >}}
 

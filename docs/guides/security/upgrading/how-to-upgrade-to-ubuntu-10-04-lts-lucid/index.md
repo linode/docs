@@ -9,7 +9,7 @@ keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid/','/upgrading/upgrade-to-ubuntu-10-04-lucid/']
-modified: 2020-12-01
+modified: 2013-10-01
 modified_by:
   name: Linode
 published: 2010-04-29
@@ -21,7 +21,7 @@ relations:
             - distribution: Ubuntu 10.04
 ---
 
-{{< content "all-linodes-kvm-shortguide" >}}
+
 
 This guide explains how to upgrade your Linode to Ubuntu 10.04 LTS (Lucid). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures.
 

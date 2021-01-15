@@ -8,13 +8,13 @@ tags: ["security", "web server"]
 description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
 og_description: "This quick answer shows how to use Certbot to secure your site's traffic via TLS."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-12-02
+modified: 2018-06-27
 modified_by:
   name: Linode
 published: 2018-06-27
 title: Secure HTTP Traffic with Certbot
 deprecated: true
-deprecated_link: /guides/how-to-install-certbot-on-ubuntu-18-04/
+deprecated_link: 'quick-answers/websites/'
 aliases: ['/quick-answers/websites/secure-http-traffic-certbot/','/quick-answers/websites/certbot/secure-http-traffic-certbot/']
 external_resources:
   - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'

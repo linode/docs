@@ -31,13 +31,13 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
     This feature is available from the Linode Cloud Manager:
 
-    1.  Click **Help & Support** in the sidebar links.
+    1.  Click **Get Help** in the sidebar links.
 
     1.  Select **Linode Support Bot**.
 
     1.  After clicking this link, a chat panel will slide in from the right side of the page:
 
-    ![Accessing the Linode Support Bot from the Manager](linode-support-bot.png "Accessing the Linode Support Bot from the Manager")
+    ![Accessing the Linode Support Bot from the Manager](linode-support-bot.gif "Accessing the Linode Support Bot from the Manager")
 
 -   **Linode Guides & Tutorials:** The [Guides & Tutorials](/docs/) library hosts a catalogued and searchable list of guides on a large number of topics. Here are a few that focus on troubleshooting:
 
@@ -62,11 +62,11 @@ Linode also helps with products such as NodeBalancers and Block Storage. Additio
 If you are not able to solve an issue with the resources listed above, you can contact Linode Support. As a reminder, application configuration and other similar topics are outside the [scope of Linode Support](#scope-of-support). The primary method for contacting Linode Support is to open a support ticket from the Linode Cloud Manager:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select **Help & Support** from the sidebar links.
+1.  Select **Get Help** from the sidebar links.
 1.  Under **Other Ways to Get Help** select **Customer Support**.
 1.  Select the **Open New Ticket** link. The **Open a Support Ticket** menu will appear.
-1.  Enter the **Title** of the issue in this form.
 1.  From the **What is this regarding?** menu, select an product related to the issue you are reporting.
+1.  Enter a summary of your issue in the **Summary** field of this form.
 1.  Enter a description of the problem in the **Description** field. Please provide as many details as possible.
 1.  Optionally, you may attach a file to the ticket.
 1.  Click **Open Ticket**.

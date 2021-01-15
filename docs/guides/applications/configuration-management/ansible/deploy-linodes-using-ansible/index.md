@@ -133,8 +133,8 @@ You can now begin creating Linode instances using Ansible. In this section, you 
         {{< file >}}
 ...
 - name: Print info about my Linode instance
-  debug:
-  msg: "ID is {{ my_linode.instance.id }} IP is {{ my_linode.instance.ipv4 }}"
+    debug:
+      msg: "ID is {{ my_linode.instance.id }} IP is {{ my_linode.instance.ipv4 }}"
         {{</ file >}}
 
 ### Create the Variables File

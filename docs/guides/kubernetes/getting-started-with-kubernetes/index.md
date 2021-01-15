@@ -8,7 +8,6 @@ keywords: ['kubernetes','orchestration','docker','container']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-30
-modified: 2020-12-03
 modified_by:
   name: Linode
 title: "Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode"
@@ -22,19 +21,19 @@ external_resources:
 - '[Kubernetes: Securing a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)'
 ---
 
-You can use <abbr title="kubeadm is a cloud provider agnostic tool that automates many of the tasks required to get a cluster up and running.">kubeadm</abbr> to run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a <abbr title="A separate server in a Kubernetes cluster responsible for maintaining the desired state of the cluster.">master node</abbr> and <abbr title="Worker nodes in a Kubernetes cluster are servers that run your applications’ Pods.">worker nodes</abbr>. This guide walks you through installing kubeadm and using it to deploy a Kubernetes cluster on Linode. While the kubeadm approach requires more manual steps than other Kubernetes cluster creation pathways offered by Linode, this solution is covered as way to dive deeper into the various components that make up a Kubernetes cluster and the ways in which they interact with each other to provide a scalable and reliable container orchestration mechanism.
+You can use <abbr title="kubeadm is a cloud provider agnostic tool that automates many of the tasks required to get a cluster up and running.">kubeadm</abbr> to run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a <abbr title="A separate server in a Kubernetes cluster responsible for maintaining the desired state of the cluster.">master node</abbr> and <abbr title="Worker nodes in a Kubernetes cluster are servers that run your applications’ Pods.">worker nodes</abbr>. This guide will walk you through installing kubeadm and using it to deploy a Kubernetes cluster on Linode. While the kubeadm approach requires more manual steps than other Kubernetes cluster creation pathways offered by Linode, this solution will be covered as way to dive deeper into the various components that make up a Kubernetes cluster and the ways in which they interact with each other to provide a scalable and reliable container orchestration mechanism.
 
 {{< note >}}
-This guide's example instructions result in the creation of three billable Linodes. Information on how to tear down the Linodes are provided at the end of the guide. Interacting with the Linodes via the command line will provide the most opportunity for learning, however, this guide is written so that users can also benefit by reading along.
+This guide's example instructions will result in the creation of three billable Linodes. Information on how to tear down the Linodes are provided at the end of the guide. Interacting with the Linodes via the command line will provide the most opportunity for learning, however, this guide is written so that users can also benefit by reading along.
 {{< /note >}}
 
 ### Alternatives for Creating Clusters
 
 While kubeadm automates several cluster-provisioning tasks, there are other even faster methods for creating a cluster, all of which are great options for production ready deployments:
 
-- The [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), allows you to spin up a Kubernetes cluster from the [Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) or the [Linode API](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/), and Linode handles the management and maintenance of your control plane.
+- The [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), allows you to spin up a Kubernetes cluster from the [Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) or the [Linode API](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/), and Linode will handle the management and maintenance of your control plane.
 
-- If you prefer a full featured GUI, [Linode's Rancher integration](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) enables you to deploy and manage Kubernetes clusters with a simple web interface.
+- If you prefer a full featured GUI, [Linode's Rancher integration](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) enables you to deploy and manage Kubernetes clusters with a simple web interface.
 
 {{< content "k8s-alpha-deprecation-shortguide" >}}
 
@@ -45,10 +44,10 @@ While kubeadm automates several cluster-provisioning tasks, there are other even
     - One Linode to use as the master Node with 4GB RAM and 2 CPU cores.
     - Two Linodes to use as the worker Nodes each with 1GB RAM and 1 CPU core.
 
-1. Follow the [Getting Started](/docs/guides/getting-started) and the [Securing Your Server](/docs/guides/securing-your-server/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
+1. Follow the [Getting Started](/docs/getting-started) and the [Securing Your Server](/docs/security/securing-your-server/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
     {{< note >}}
-When following the [Getting Started](/docs/guides/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
+When following the [Getting Started](/docs/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline will leave you unable to join some or all nodes to the cluster in a later step.
 {{< /note >}}
 
 1. Disable swap memory on your Linodes. Kubernetes requires that you disable swap memory on any cluster nodes to prevent the <abbr title="The kube-scheduler is a function that looks for newly created Pods that have no nodes.">kube-scheduler</abbr> from assigning a Pod to a node that has run out of CPU/memory or reached its designated CPU/memory limit.
@@ -61,14 +60,14 @@ When following the [Getting Started](/docs/guides/getting-started) guide, make s
 
     To learn more about managing compute resources for containers, see the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
 
-1. Read the [Beginners Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) to familiarize yourself with the major components and concepts of Kubernetes. The current guide assumes a working knowledge of common Kubernetes concepts and terminology.
+1. Read the [Beginners Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) to familiarize yourself with the major components and concepts of Kubernetes. The current guide assumes a working knowledge of common Kubernetes concepts and terminology.
 
 ## Build a Kubernetes Cluster
 ### Kubernetes Cluster Architecture
 
 A Kubernetes cluster consists of a master node and worker nodes. The master node hosts the *control plane*, which is the combination of all the components that provide it the ability to maintain the desired cluster state. This cluster state is defined by manifest files and the <abbr title="kubectl is a command line tool used to interact with the Kubernetes cluster.">kubectl</abbr> tool. While the control plane components can be run on any cluster node, it is a best practice to isolate the control plane on its own node and to run any application containers on a separate worker node. A cluster can have a single worker node or up to 5000. Each worker node must be able to maintain running containers in a Pod and be able to communicate with the master node's control plane.
 
-The following table provides a list of the Kubernetes tooling you need to install on your master and worker nodes in order to meet the minimum requirements for a functioning Kubernetes cluster as described above.
+The following table provides a list of the Kubernetes tooling you will need to install on your master and worker nodes in order to meet the minimum requirements for a functioning Kubernetes cluster as described above.
 
 | Tool | Master Node | Worker Nodes |
 | --------- | :---------: | :----------: |
@@ -79,12 +78,12 @@ The following table provides a list of the Kubernetes tooling you need to instal
 | <abbr title="The control plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
 
  {{< note >}}
- The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane is created when you initialize kubeadm later in this guide.
+ The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane will be created when you initialize kubeadm later in this guide.
  {{< /note >}}
 
 ### Install the Container Runtime: Docker
 
-Docker is the software responsible for running the Pods on each node. You can use other container runtime software with Kubernetes, such as [Containerd](https://containerd.io/) and [CRI-O](https://cri-o.io/). You need to install Docker on all three Linodes.
+Docker is the software responsible for running the Pods on each node. You can use other container runtime software with Kubernetes, such as [Containerd](https://containerd.io/) and [CRI-O](https://cri-o.io/). You will need to install Docker on all three Linodes.
 
 These steps install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, see the official [installation page](https://docs.docker.com/install/).
 
@@ -127,14 +126,14 @@ sub   4096R/F273FCD8 2017-02-22
         sudo usermod -aG docker $USER
 
     {{< note >}}
-After entering the `usermod` command, you need to close your SSH session and open a new one for this change to take effect.
+After entering the `usermod` command, you will need to close your SSH session and open a new one for this change to take effect.
 {{< /note >}}
 
 1.  Check that the installation was successful by running the built-in "Hello World" program:
 
         sudo docker run hello-world
 
-1. Setup the Docker daemon to use <abbr title="systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups.">systemd </abbr> as the cgroup driver, instead of the default cgroupfs. This is a recommended step so that kubelet and Docker are both using the same cgroup manager. This makes it easier for Kubernetes to know which resources are available on your cluster's nodes.
+1. Setup the Docker daemon to use <abbr title="systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups.">systemd </abbr> as the cgroup driver, instead of the default cgroupfs. This is a recommended step so that kubelet and Docker are both using the same cgroup manager. This will make it easier for Kubernetes to know which resources are available on your cluster's nodes.
 
         sudo bash -c 'cat > /etc/docker/daemon.json <<EOF
         {
@@ -164,7 +163,7 @@ Complete the steps outlined in this section on all three Linodes.
 
         sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 
-1. Add the required GPG key to your apt-sources keyring to authenticate the Kubernetes related packages you install:
+1. Add the required GPG key to your apt-sources keyring to authenticate the Kubernetes related packages you will install:
 
         curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
@@ -190,19 +189,19 @@ Complete the steps outlined in this section on all three Linodes.
 
 After installing the Kubernetes related tooling on all your Linodes, you are ready to set up the Kubernetes control plane on the master node. The control plane is responsible for allocating resources to your cluster, maintaining the health of your cluster, and ensuring that it meets the minimum requirements you designate for the cluster.
 
-The primary components of the control plane are the <abbr title="The kube-apiserver is the front end for the Kubernetes API server. It validates and configures data for Kubernetes’ API objects including Pods, Services, Deployments, and more.">kube-apiserver</abbr>, <abbr title="The kube-controller-manager is a daemon that manages the Kubernetes control loop. It watches the shared state of the cluster through the Kubernetes API server.">kube-controller-manager</abbr>, kube-scheduler, and etcd. You can easily initialize the Kubernetes master node with all the necessary control plane components using kubeadm. For more information on each of control plane component see the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/).
+The primary components of the control plane are the <abbr title="The kube-apiserver is the front end for the Kubernetes API server. It validates and configures data for Kubernetes’ API objects including Pods, Services, Deployments, and more.">kube-apiserver</abbr>, <abbr title="The kube-controller-manager is a daemon that manages the Kubernetes control loop. It watches the shared state of the cluster through the Kubernetes API server.">kube-controller-manager</abbr>, kube-scheduler, and etcd. You can easily initialize the Kubernetes master node with all the necessary control plane components using kubeadm. For more information on each of control plane component see the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/).
 
-In addition to the baseline control plane components, there are several *addons*, that can be installed on the master node to access additional cluster features. You need to install a networking and network policy provider add on that implements the [Kubernetes' network model](https://kubernetes.io/docs/concepts/cluster-administration/networking/) on the cluster's Pod network.
+In addition to the baseline control plane components, there are several *addons*, that can be installed on the master node to access additional cluster features. You will need to install a networking and network policy provider add on that will implement [Kubernetes' network model](https://kubernetes.io/docs/concepts/cluster-administration/networking/) on the cluster's Pod network.
 
-This guide uses *Calico* as the Pod network add on. Calico is a secure and open source L3 networking and network policy provider for containers. There are several other network and network policy providers to choose from. To view a full list of providers, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy).
+This guide will use *Calico* as the Pod network add on. Calico is a secure and open source L3 networking and network policy provider for containers. There are several other network and network policy providers to choose from. To view a full list of providers, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy).
 
 {{< note >}}
 kubeadm only supports Container Network Interface (CNI) based networks. CNI consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers
 {{</ note >}}
 
-1. Initialize kubeadm on the master node. This command runs checks against the node to ensure it contains all required Kubernetes dependencies, if the checks pass, it then installs the control plane components.
+1. Initialize kubeadm on the master node. This command will run checks against the node to ensure it contains all required Kubernetes dependencies, if the checks pass, it will then install the control plane components.
 
-    When issuing this command, it is necessary to set the Pod network range that Calico uses to allow your Pods to communicate with each other. It is recommended to use the private IP address space, `10.2.0.0/16`.
+    When issuing this command, it is necessary to set the Pod network range that Calico will use to allow your Pods to communicate with each other. It is recommended to use the private IP address space, `10.2.0.0/16`.
 
     {{< note >}}
 The Pod network IP range should not overlap with the service IP network range. The default service IP address range is `10.96.0.0/12`. You can provide an alternative service ip address range using the `--service-cidr=10.97.0.0/12` option when initializing kubeadm. Replace `10.97.0.0/12` with the desired service IP range.
@@ -238,7 +237,7 @@ kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
       - A bootstrap token. The bootstrap token has a 24-hour TTL (time to live). A new bootstrap token can be generated if your current token expires.
       - A CA key hash. This is used to verify the authenticity of the data retrieved from the Kubernetes API server during the bootstrap process.
 
-1. Copy the `admin.conf` configuration file to your limited user account. This file allows you to communicate with your cluster via kubectl and provides superuser privileges over the cluster. It contains a description of the cluster, users, and contexts. Copying the `admin.conf` to your limited user account provides you with administrative privileges over your cluster.
+1. Copy the `admin.conf` configuration file to your limited user account. This file allows you to communicate with your cluster via kubectl and provides superuser privileges over the cluster. It contains a description of the cluster, users, and contexts. Copying the `admin.conf` to your limited user account will provide you with administrative privileges over your cluster.
 
         mkdir -p $HOME/.kube
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -251,7 +250,7 @@ kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
 
 ### Inspect the Master Node with Kubectl
 
-After completing the previous section, your Kubernetes master node is ready with all the necessary components to manage a cluster. To gain a better understanding of all the parts that make up the master's control plane, this section walks you through inspecting your master node. If you have not yet reviewed the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/), it is helpful to do so prior to continuing with this section as it relies on the understanding of basic Kubernetes concepts.
+After completing the previous section, your Kubernetes master node is ready with all the necessary components to manage a cluster. To gain a better understanding of all the parts that make up the master's control plane, this section will walk you through inspecting your master node. If you have not yet reviewed the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/), it will be helpful to do so prior to continuing with this section as it relies on the understanding of basic Kubernetes concepts.
 
 1. View the current state of all nodes in your cluster. At this stage, the only node you should expect to see is the master node, since worker nodes have yet to be bootstrapped. A `STATUS` of `Ready` indicates that the master node contains all necessary components, including the Pod network add-on, to start managing clusters.
 
@@ -260,11 +259,11 @@ After completing the previous section, your Kubernetes master node is ready with
     Your output should resemble the following:
 
     {{< output >}}
-NAME          STATUS     ROLES     AGE   VERSION
-kube-master   Ready      master    1h    v1.14.1
+NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATUS&nbsp;&nbsp;&nbsp;  ROLES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AGE&nbsp;&nbsp;&nbsp;VERSION
+kube-master   Ready&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;master&nbsp;&nbsp;&nbsp;   1h&nbsp;&nbsp;&nbsp;&nbsp;v1.14.1
     {{</ output >}}
 
-1. Inspect the available [namespaces](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/#namespaces) in your cluster.
+1. Inspect the available [namespaces](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#namespaces) in your cluster.
 
         kubectl get namespaces
 
@@ -285,7 +284,7 @@ kube-system       Active   23h
     - `kube-public`: This namespace is created automatically and is readable by all users. It contains information, like certificate authority data (CA), that helps kubeadm join and authenticate worker nodes.
     - `kube-node-lease`: The `kube-node-lease` namespace contains lease objects that are used by kubelet to determine node health. kubelet creates and periodically renews a Lease on a node. The node lifecycle controller treats this lease as a health signal. kube-node-lease was released to beta in Kubernetes 1.14.
 
-1. View all resources available in the `kube-system` namespace. The `kube-system` namespace contains the widest range of resources, since it houses all control plane resources. Replace `kube-system` with another namespace to view its corresponding resources.
+1. View all resources available in the `kube-system` namespace. The `kube-system` namespace contains the widest range of resources, since it houses all control plane resources. Replace `kube-system` with another namespace  to view its corresponding resources.
 
         kubectl get all -n kube-system
 
@@ -299,7 +298,7 @@ Now that your Kubernetes master node is set up, you can join worker nodes to you
 
 1. The worker node's kubelet is now able to connect to the Kubernetes API server using the node's established identity.
 
-Before continuing, you need to make sure that you know your Kubernetes API server's IP address, that you have a bootstrap token, and a CA key hash. This information was provided when kubeadm was initialized on the master node in the [Set up the Kubernetes Control Plane](#set-up-the-kubernetes-control-plane) section of this guide. If you no longer have this information, you can regenerate the necessary information from the master node.
+Before continuing, you will need to make sure that you know your Kubernetes API server's IP address, that you have a bootstrap token, and a CA key hash. This information was provided when kubeadm was initialized on the master node in the [Set up the Kubernetes Control Plane](#set-up-the-kubernetes-control-plane) section of this guide. If you no longer have this information, you can regenerate the necessary information from the master node.
 
 {{< disclosure-note "Regenerate a Bootstrap Token" >}}
 These commands should be issued from your master node.
@@ -312,11 +311,11 @@ These commands should be issued from your master node.
 
 Follow the steps below on each node you would like to bootstrap to the cluster as a worker node.
 
-1. SSH into the Linode that is used as a worker node in the Kubernetes cluster.
+1. SSH into the Linode that will be used as a worker node in the Kubernetes cluster.
 
         ssh username@192.0.2.1
 
-1. Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server's port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash. The bootstrap process takes a few moments.
+1. Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server's port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash. The bootstrap process will take a few moments.
 
         sudo kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
         --discovery-token-ca-cert-hash sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26
@@ -348,8 +347,8 @@ kube-node-2   Ready    <none>   1d22h   v1.14.1
 
 ## Next Steps
 
-Now that you have a Kubernetes cluster up and running, you can begin experimenting with the various ways to configure Pods, group resources, and deploy services that are exposed to the public internet. To help you get started with this, move on to follow along with the [Deploy a Static Site on Linode using Kubernetes](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/) guide.
+Now that you have a Kubernetes cluster up and running, you can begin experimenting with the various ways to configure Pods, group resources, and deploy services that are exposed to the public internet. To help you get started with this, move on to follow along with the [Deploy a Static Site on Linode using Kubernetes](/docs/kubernetes/deploy-container-image-to-kubernetes/) guide.
 
 ## Tear Down Your Cluster
 
-If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Removing Services](/docs/guides/billing-and-payments/#removing-services) section of the [Billing and Payments](/docs/guides/billing-and-payments/) guide.
+If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Removing Services](/docs/platform/billing-and-support/billing-and-payments/#removing-services) section of the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide.

@@ -35,4 +35,4 @@ Depending on the type of app you created, the app will be accessible in differen
 
     ![View your IP address from the Networking tab of the Linode detail page](marketplace-networking-tab.png "View your IP address from the Networking tab of the Linode detail page")
 
-1. Copy your IP address. For apps like WordPress, WooCommerce, and Drupal, you can navigate to the IP address in your browser to visit your installation. For game servers, connect to the IP address in-game to play on your new server. Other apps like MERN, LAMP, and WireGuard&#174; will require you to SSH into your Linode to access or provide more customized configurations.
+1. Copy your IP address. For apps like WordPress, WooCommerce, and Drupal, you can navigate to the IP address in your browser to visit your installation. For game servers, connect to the IP address in-game to play on your new server. Other apps like MERN, LAMP, and WireGuard will require you to SSH into your Linode to access or provide more customized configurations.

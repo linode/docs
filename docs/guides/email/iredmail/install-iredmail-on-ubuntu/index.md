@@ -11,7 +11,7 @@ aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/',
 contributor:
     name: Nick Reichley
     link: https://github.com/reichley
-modified: 2020-12-04
+modified: 2017-10-27
 modified_by:
   name: James Stewart
 published: 2014-10-06
@@ -32,16 +32,16 @@ Running your own mail server has many benefits. It allows you to manage the size
 Before beginning this guide you should have:
 
 - A domain name.
-- An understanding of the [Linux command line](/docs/guides/using-the-terminal).
+- An understanding of the [Linux command line](/docs/networking/ssh/using-the-terminal).
 - A Linode running Ubuntu 14.04.
 
-This guide assumes you've followed the Linode [Getting Started](/docs/guides/getting-started) documentation. If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
+This guide assumes you've followed the Linode [Getting Started](/docs/getting-started) documentation If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ### MX Record
 
-A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-records-an-introduction/) page.
+A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records] [a] page.
 
 ## Install iRedMail
 
@@ -56,7 +56,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
         hostname
         hostname -f
 
-    iRedMail requires that you have a properly formatted Fully Qualified Domain Name (FQDN). The format is `hostname.domain.com`. If your hostname is only your domain name, iRedMail does not install properly. Common hostnames for mail servers include `mail` and `mx`.
+    iRedMail requires that you have a properly formatted Fully Qualified Domain Name (FQDN). The format is `hostname.domain.com`. If your hostname is only your domain name, iRedMail will not install properly. Common hostnames for mail servers include `mail` and `mx`.
 
         user@hostname:~$ hostname
         mail
@@ -76,13 +76,13 @@ A DNS MX record tells the internet where to send email directed at you domain. B
         bash iRedMail.sh
 
 
-    The remainder of the installation refers to on-screen confirmation of default options and selections. With the exception of the backend and hostname selections, most users confirm the default options and continue the installation.
+    The remainder of the installation refers to on-screen confirmation of default options and selections. With the exception of the backend and hostname selections, most users will simply confirm the default options and continue the installation.
 
     {{< note >}}
 The next few steps were taken directly from the iRedMail [Ubuntu installation steps](https://docs.iredmail.org/install.iredmail.on.debian.ubuntu.html).
 {{< /note >}}
 
-5. Press "enter" to say "yes" to installing iRedMail. NOTE: Ctrl-C exits the installation process when pressed at any time prior to step #12.
+5. Press "enter" to say "yes" to installing iRedMail. NOTE: Ctrl-C will exit the installation process when pressed at any time prior to step #12.
 
     ![iredmail install confirm](iredmail-install-confirm.png)
 
@@ -114,21 +114,21 @@ The next few steps were taken directly from the iRedMail [Ubuntu installation st
 
     ![config complete](config-complete.png)
 
-13. The installer then downloads and installs the appropriate files. After it completes, you receive a prompt asking whether you would like to use iRedMail’s firewall rules at `/etc/default/iptables`, and identifies your SSHD port. Type "y" to accept, or "n" if you want to configure your firewall manually.
+13. The installer then downloads and installs the appropriate files. After it completes, you will receive a prompt asking whether you would like to use iRedMail’s firewall rules at `/etc/default/iptables`, and identifies your SSHD port. Type "y" to accept, or "n" if you want to configure your firewall manually.
 
     ![iredmail Firewall and SSH port](iredmail-fw-and-ssh-port.png)
 
-14. After typing "y", the install screen asks if you’d like to restart the firewall. Type "y".
+14. After typing "y", the install screen will ask if you’d like to restart the firewall. Type "y".
 
     ![restart firewall](restart-firewall.png)
 
-15. The installation is now complete! While the bottom half of the screen is filled with useful URL information and the location of the iRedMail tips file, a couple emails are waiting in postmaster@yourdomain.com’s inbox.
+15. The installation is now complete! While the bottom half of the screen is filled with useful URL information and the location of the iRedMail tips file, a couple emails will be waiting in postmaster@yourdomain.com’s inbox.
 
     ![install complete](install-complete.png)
 
 16.  Reboot the Linode and navigate to `https://mail.yourdomain.com/mail` and login as “postmaster@yourdomain.com” to retrieve the necessary info.
 
-17. As a security precaution, we remove the config file. This file is no longer needed after a successful iRedMail install, and contains sensitive information (usernames/passwords) about your mail server configuration.
+17. As a security precaution, we will remove the config file. This file is no longer needed after a successful iRedMail install, and contains sensitive information (usernames/passwords) about your mail server configuration.
 
         rm /root/iRedMail-0.8.7/config
 
@@ -144,23 +144,23 @@ iRedMail is packaged with a mail server account configuration called iRedAdmin. 
 
     ![iRedAdmin Add User](adduser2.png)
 
-3. Fill in the address, password, display name, and mailbox quota blocks. Clicking **Add** completes the process.
+3. Fill in the address, password, display name, and mailbox quota blocks then click **Add** will complete the process.
 
     ![iRedAdmin Add User Information](adduser3.png)
 
 ## Certificates, SPF, DKIM, and rDNS
 
-By default, iRedMail generates a key and self-signed certificate for the mail server, and web server. To avoid other email servers marking email from our server as spam, we install a trusted certificate.
+By default, iRedMail generates a key and self-signed certificate for the mail server, and web server. To avoid other email servers marking email from our server as spam, we're going to install a trusted certificate.
 
-The process of obtaining a trusted certificate is outside the scope of this guide. You can follow the [Obtaining a Commercial TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) guide to obtain a certificate.
+The process of obtaining a trusted certificate is outside the scope of this guide. You can follow the [Obtaining a Commercial SSL Certificate] [c] guide to obtain a certificate.
 
 The next section assumes you have the .key and .crt (or .pem) file in hand and are ready to go.
 
 {{< note >}}
-Be sure to apply for a certificate covering either your subdomain (mail.yourdomain.com) or a wildcard of your domain so all subdomains are covered.
+Be sure to apply for a certificate covering either your subdomain (mail.yourdomain.com) or a wildcard of your domain so all subdomains are covered).
 {{< /note >}}
 
-After first logging into the postmaster account, you should have two emails waiting for you. The first is titled "Helpful Links iRedMail" and the second is titled "Details of this iRedMail installation." In the second email, there are various file paths we need, since we are replacing the SSL certificate and need to know the DKIM public key for our DNS TXT entry. First up, certificate replacement.
+After first logging in to the postmaster account, you should have two emails waiting for you. The first is titled "Helpful Links iRedMail" and the second is titled "Details of this iRedMail installation." In the 2nd email, there are various file paths we'll need, since we'll be replacing the SSL certificate and need to know the DKIM public key for our DNS TXT entry. First up, certificate replacement.
 
 {{< note >}}
 For if your certificate issuer uses `.pem` files instead of `.crt`, be sure to replace the file extension in the instructions below.
@@ -180,6 +180,8 @@ SSLCertificateFile /etc/ssl/certs/mail.yourdomain.com.crt
 SSLCertificateKeyFile /etc/ssl/private/mail.yourdomain.com.key
 
 {{< /file >}}
+
+
 
 3. To replace the certificates used by Postfix, substitute the following paths in `main.cf` with the location of your certificate and key:
 
@@ -220,7 +222,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
         --------  | ----------------------------- | ----------- | ---
                @  | v=spf1 ip4:12.34.56.78 -all   | txt         | 1800
 
-2.  For more information, you can check out the [SPF website link](https://code.google.com/p/iredmail/wiki/DNS_SPF) recommended by iRedMail.
+2.  For more information, you can check out the [SPF website link][s] recommended by iRedMail.
 
 #### DKIM
 
@@ -240,19 +242,19 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
     You should receive `=> pass` as output.
 
-4. For more information on DKIM records, you can check out the [DKIM website link](https://code.google.com/p/iredmail/wiki/DNS_DKIM) recommended by iRedMail.
+4. For more information on DKIM records, you can check out the [DKIM website link][d] recommended by iRedMail.
 
 #### rDNS
 
-To set your rDNS, check out the [Setting Reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
+To set your rDNS, check out the [Setting Reverse DNS][r] section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
 ### Apache Authentication Fix for Cluebringer and AWStats Login
 
-Cluebringer (a.k.a. PolicyD v2) is a policy server utility for our mail transfer agent, Postfix. It provides a web-based interface ([example](http://wiki.policyd.org/_detail/policyd_web_gui.png?id=screenshots)) where you can fine tune policies applied to Postfix. For more info, see the Policy D [documentation](http://wiki.policyd.org/documentation).
+Cluebringer (a.k.a. PolicyD v2) is a policy server utility for our mail transfer agent, Postfix. It provides a web-based interface ([example] [p]) where you can fine tune policies applied to Postfix. For more info, see the Policy D [documentation] [d].
 
-AWStats quickly analyzes and displays log files/server activity via a few web-based (or command line) statistical graphs. Using the configuration outlined below, it displays the # of emails sent, the total size of the emails, sender and receiver, time (hourly/daily/monthly), and SMTP error codes. An example can be seen [here](http://www.awstats.org/awstats.mail.html). For more info, see the AWStats [documentation](http://www.awstats.org/docs/index.html).
+AWStats quickly analyzes and displays log files/server activity via a few web-based (or command line) statistical graphs. Using the configuration outlined below, it will display the # of emails sent, the total size of the emails, sender and receiver, time (hourly/daily/monthly), and SMTP error codes. An example can be seen [here] [w]. For more info, see the AWStats [documentation] [e].
 
-**Due to "mod-auth-mysql" not working with Apache 2.4, the default installation cannot use the module to log in to Cluebringer or AWStats. Below is the fix, which can also be found in [this](http://www.iredmail.org/forum/post30654.html#p30654) iRedMail forum post.**
+**Due to "mod-auth-mysql" not working with Apache 2.4, the default installation cannot use the module to log in to Cluebringer or AWStats. Below is the fix, which can also be found in [this] [f] iRedMail forum post.**
 
 1. Install libaprutil1-dbd-mysql:
 
@@ -368,7 +370,7 @@ DBDParams "host=127.0.0.1 dbname=vmail user=vmail pass=(SUBSTITUTE WITH YOUR PAS
 
 ### Greylist a Recommendation
 
-By default, Cluebringer starts with the greylisting feature enabled. While the implementation of greylisting does protect a mail server from receiving spam, there are unintended consequences to its operation. This was tested by sending a few emails from a well-known "free" email account to my new mail server. Most of the "free" email SMTP services are provided by SEVERAL SMTP servers that upon receiving the 4XX reply code from your server. Since the hostname and IP of the SMTP server isn't "known", does retransmit the email. However, usually, the retransmitted email is from either another host or from the same host but from another IP address. The greylisting feature of Cluebringer either severely delayed, or completely denied, a few of the test emails.
+By default, Cluebringer starts with the greylisting feature enabled. While the implementation of greylisting does protect a mail server from receiving spam, there are unintended consequences to its operation. This was tested by sending a few emails from a well-known "free" email account to my new mail server. Most of the "free" email SMTP services are provided by SEVERAL SMTP servers that upon receiving the 4XX reply code from your server, since the hostname and IP of the SMTP server isn't "known", does retransmit the email. However, usually, the retransmitted email is from either another host or from the same host but from another IP address. The greylisting feature of Cluebringer either severely delayed, or completely denied, a few of the test emails.
 
 For this reason, the author recommends turning this module off. Note, since being disabled, neither *delays* nor *denials* of email have been observed on the author's mail server. Additionally, the mail server has yet to receive any spam.
 
@@ -384,11 +386,26 @@ For this reason, the author recommends turning this module off. Note, since bein
 
 ## Final Test and Conclusion
 
-As a final test, you can utilize a service such as [Mail Tester](http://www.mail-tester.com) to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester provides you with a report indicating what portion of your configuration needs improvement.
+As a final test, you can utilize a service such as [Mail Tester][m] to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester will provide you with a report indicating what portion of your configuration needs improvement.
 
-{{< note >}}
+ {{< note >}}
 While some DNS records update almost instantaneously, updates can take up to 24 hours to propagate. You may receive a lower score on these tests if your records have not yet updated.
 {{< /note >}}
 
 ### Conclusion
 Familiarize yourself with the various files, configs, and settings listed in the iRedMail emails and website and start adding users to your mail server. Happy Mailing!
+
+[l]:https://www.linode.com
+[i]:http://www.iredmail.org
+[h]:https://www.linode.com/docs/getting-started
+[d]:https://code.google.com/p/iredmail/wiki/DNS_DKIM
+[s]:https://code.google.com/p/iredmail/wiki/DNS_SPF
+[m]:http://www.mail-tester.com
+[r]:/docs/networking/dns/configure-your-linode-for-reverse-dns/
+[c]:https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate/
+[a]:https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx
+[f]:http://www.iredmail.org/forum/post30654.html#p30654
+[p]:http://wiki.policyd.org/_detail/policyd_web_gui.png?id=screenshots
+[d]:http://wiki.policyd.org/documentation
+[w]:http://www.awstats.org/awstats.mail.html
+[e]:http://www.awstats.org/docs/index.html

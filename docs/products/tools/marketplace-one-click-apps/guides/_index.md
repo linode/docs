@@ -93,6 +93,8 @@ These additional guides help you to deploy each of Linode’s Marketplace one-cl
 
 - [Deploying Grafana with Marketplace Apps](/docs/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/)
 
+- [Deploy WireGuard with Marketplace Apps](/docs/platform/marketplace/deploy-wireguard-with-marketplace-apps/)
+
 - [Deploy OpenVPN Access Server with Marketplace Apps](/docs/platform/marketplace/marketplace-openvpn/)
 
 - [Deploying Nextcloud on Linode with Marketplace Apps](/docs/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/)

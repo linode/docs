@@ -20,7 +20,7 @@ external_resources:
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/','/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/']
 ---
 
-{{< youtube 87FJQPorviM >}}
+![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
 {{< note >}}
 This is the first guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
