@@ -437,6 +437,7 @@ file1
 filebeat
 filecap
 filecaps
+filecloud
 fileglob
 filemode
 filepath
