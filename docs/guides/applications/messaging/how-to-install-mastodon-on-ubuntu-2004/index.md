@@ -128,7 +128,9 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
         sudo chown -R 991:991 public
 
-1. Run Mastodon's Docker Compose setup script. You are prompted to enter information about the Docker Compose services and the Mastodon instance.
+1. Run Mastodon's Docker Compose setup script. You are prompted to enter information about the Docker Compose services and the Mastodon instance:
+
+        docker-compose run --rm web bundle exec rake mastodon:setup
 
     Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
