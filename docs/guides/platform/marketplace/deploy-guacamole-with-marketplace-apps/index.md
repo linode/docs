@@ -1,5 +1,5 @@
 ---
-slug: how-to-deploy-guacamole-with-marketplace-apps
+slug: deploy-guacamole-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
