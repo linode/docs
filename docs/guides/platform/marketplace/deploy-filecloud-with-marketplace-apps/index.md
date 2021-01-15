@@ -3,9 +3,9 @@ slug: deploy-filecloud-with-marketplace-apps
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy a Filecloud Server on Linode using Marketplace Apps.'
-og_description: 'Deploy a Filecloud Server on Linode using Marketplace Apps.'
-keywords: [ 'Filecloud','marketplace', 'server']
+description: 'Deploy a FileCloud Server on Linode using Marketplace Apps.'
+og_description: 'Deploy a FileCloud Server on Linode using Marketplace Apps.'
+keywords: [ 'filecloud','marketplace', 'server']
 tags: ["cloud-manager","linode platform", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
@@ -23,7 +23,7 @@ aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/pla
 
 ## FileCloud Marketplace App
 
-FileCloud is a cloud-based file-sharing application, similar to tools like Dropbox, that allow users to remotely access, upload, and sync hosted files.
+FileCloud is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.
 
 ## Deploy FileCloud with Marketplace Apps
 
@@ -50,7 +50,7 @@ After providing the app-specific options, provide configurations for your Linode
 | **Select an Image** | Debian 9 and Ubuntu 18.04 are currently the only images supported by the FileCloud Marketplace App, and it is pre-selected on the Linode creation page. *Required* |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You can use any size Linode for your FileCloud App. The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.  *Required* |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
+| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
@@ -63,7 +63,7 @@ Once the FileCloud server is up and running, a few additional steps must be comp
 
 ### Creating Secure Login Credentials
 
-A new admin password must be created to secure the server:
+A new administrator password must be created to secure the server:
 
 1. Log in to the FileCloud admin page with the default log-in information at the following URL, replacing `my-ip-or-domain` with the IP address of your Linode or domain you set up on initial installation:
 
@@ -78,37 +78,37 @@ A new admin password must be created to secure the server:
 
 ![Admin Login Page](filecloud-admin-login.png)
 
-1. A number of messages and warnings will appear. For now, dismiss them to clear your screen.
+1. A number of messages and warnings appear. For now, dismiss them to clear your screen.
 
 1. Navigate to the **Settings** sidebar option, followed by the **Admin** tab. Click on the **Reset Admin Password** to reset your Admin Password to something more secure.
 
 ![FileCloud Admin Page](filecloud-admin-pass.png)
 1. Follow the prompts and select the **Reset Password** button to complete the password reset.
 
-1. If the password reset was successful, you will now be logged out and redirected to the admin login page. Enter the admin username and your new password to proceed.
+1. If the password reset was successful, you are logged out and redirected to the administrator login page. Enter the administrator username and your new password to proceed.
 
 ### Obtain a new License Key
 
-Filecloud by default will not be fully accessible without either a trial or paid license key provided by Filecloud.
+FileCloud by default is inaccessible without either a trial or paid license key provided by FileCloud.
 
 1. To obtain a trial license key, sign on or create an account at FileCloud's customer portal at the following address:
 
     https://portal.getfilecloud.com/ui/user/index.html#
 
-Once you are able to log in to your account, click on the `Begin Trial` button and follow the prompts to obtain a new trial license key file.
+After logging in to your new account, click on the `Begin Trial` button and follow the prompts to obtain a new trial license key file.
 
 1. Alternatively, licenses can be purchased or renewed by following instructions at the Link below:
 
     https://www.getfilecloud.com/supportdocs/display/cloud/FileCloud+-+License+Purchase+And+Renewal
 
-1. Once you have a valid license key, log in to the FileCloud admin page at the Linode's IP address or the domain you specified during installation. After a new successful login, the `Action Items` popup will appear.
+1. Once you have a valid license key, log in to the FileCloud administrator page at the Linode's IP address or the domain you specified during installation. After a new successful login, you will see the `Action Items` popup.
 
 {{< note >}}
 New Licenses can also be added at any time by selecting the `Settings` sidebar option followed by and the `License` tab.
 {{< /note >}}
 
-1. Select the `Install License` button, followed by `Choose File` to upload your `license.xlm` file and tie your License Key to the filecloud installation.
+1. Select the `Install License` button, followed by `Choose File` to upload your `license.xlm` file and tie your License Key to the FileCloud installation.
 
-![Filecloud License](filecloud-license.png)
+![FileCloud License](filecloud-license.png)
 
 {{< content "marketplace-update-note">}}
