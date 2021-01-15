@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.80.0
+  version: 4.83.1
 
   title: Linode API
   description: |
@@ -132,7 +132,7 @@ info:
     |-----------------------|--------|
     | **Authorization URL** | https://login.linode.com/oauth/authorize |
     | **Token URL** | https://login.linode.com/oauth/token |
-    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br />|
+    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`maintenance:read_only` - Allows access to GET information about Maintenance on your account.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
 
     ## Requests
 
@@ -698,7 +698,7 @@ paths:
         schema:
           type: integer
     post:
-      x-linode-grant: read_write
+      x-linode-grant: read_only
       tags:
       - Account
       summary: Event Mark as Read
@@ -708,7 +708,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - events:read_write
+        - events:read_only
       responses:
         '200':
           description: Event read.
@@ -934,6 +934,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Login'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -6055,7 +6061,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-         - stackscripts:read_write
+        - stackscripts:read_write
       requestBody:
         description: The properties to set for the new StackScript.
         required: true
@@ -6511,6 +6517,20 @@ paths:
                     description: >
                       An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
                       To delete a tag, exclude it from your `tags` array.
+                k8s_version:
+                    type: string
+                    description: >
+                      The desired Kubernetes version for this Kubernetes cluster in the format of
+                      &lt;major&gt;.&lt;minor&gt;. New and recycled Nodes in this cluster will be installed with the
+                      latest available patch for the Cluster's Kubernetes version.
+
+
+                      When upgrading the Kubernetes version, only the next latest minor version following the current
+                      version can be deployed. For example, a cluster with Kubernetes version 1.16 can be upgraded to
+                      version 1.17, but not directly to 1.18.
+
+
+                      The Kubernetes version of a cluster can not be downgraded.
       responses:
         '200':
           description: Returns a single Kubernetes cluster.
@@ -6548,6 +6568,7 @@ paths:
                 -X PUT -d '{
                   "label": "lkecluster54321"
                   "tags" : ["ecomm", "blog", "prod", "monitoring"]
+                  "k8s_version": "1.17"
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345
       - lang: CLI
@@ -6720,6 +6741,50 @@ paths:
           linode-cli lke pool-create 12345 \
             --type g6-standard-4 \
             --count 6
+  /lke/clusters/{clusterId}/recycle:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster to be recycled.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: lke
+    post:
+      operationId: postLKEClusterRecycle
+      x-linode-cli-action: cluster-recycle
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Kubernetes Cluster Recycle
+      description: |
+        Recycles a designated Kubernetes Cluster. All Linodes within the Cluster will be deleted
+        and replaced with new Linodes on a rolling basis, which may take several minutes. Replacement Nodes are
+        installed with the latest available patch for the Cluster's Kubernetes Version.
+
+        **Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.**
+      responses:
+        '200':
+          description: Recycle request succeeded and is in progress.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+                -H "Authorization: Bearer $TOKEN" \
+                -X POST \
+                https://api.linode.com/v4/lke/clusters/12345/recycle
+      - lang: CLI
+        source: >
+          linode-cli lke cluster-recycle 12345
   /lke/clusters/{clusterId}/pools/{poolId}:
     parameters:
     - name: clusterId
@@ -6895,7 +6960,7 @@ paths:
         **Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.**
       responses:
         '200':
-          description: Node Pool has been recycled.
+          description: Recycle request succeeded and is in progress.
           content:
             application/json:
               schema:
@@ -6912,6 +6977,132 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke pool-recycle 12345 456
+  /lke/clusters/{clusterID}/nodes/{nodeId}:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster containing the Node.
+      required: true
+      schema:
+        type: integer
+    - name: nodeId
+      in: path
+      description: ID of the Node to look up.
+      required: true
+      schema:
+        type: string
+    x-linode-cli-command: lke
+    get:
+      operationId: getLKEClusterNode
+      x-linode-cli-action: node-view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Node View
+      description: >
+        Returns the values for a specified node object.
+      responses:
+        '200':
+          description: Returns the values of a node object in the form that it appears currently in the node pool array.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: >
+                      The selected node in the cluster.
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: >
+                          The Node's ID.
+                        example: "12345-6aa78910bc"
+                      instance_id:
+                        type: integer
+                        description: >
+                          The Linode's ID. If no Linode is currently provisioned for this Node, this is `null`.
+                        example: 123456
+                      status:
+                        type: string
+                        description: >
+                          The creation status of this Node. This status is distinct from this Node's readiness as a
+                          Kubernetes Node Object as determined by the command `kubectl get nodes`.
+
+
+                          `not_ready` indicates that the Linode is still being created.
+
+
+                          `ready` indicates that the Linode has successfully been created and is running Kubernetes software.
+                        enum:
+                        - ready
+                        - not_ready
+                        example: ready
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4/lke/clusters/12345/nodes/12345-6aa78910bc
+      - lang: CLI
+        source: >
+          linode-cli lke node-view 123456 12345-6aa78910bc
+  /lke/clusters/{clusterId}/nodes/{nodeId}/recycle:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster containing the Node.
+      required: true
+      schema:
+        type: integer
+    - name: nodeId
+      in: path
+      description: ID of the Node to be recycled.
+      required: true
+      schema:
+        type: string
+    x-linode-cli-command: lke
+    post:
+      operationId: postLKEClusterNodeRecycle
+      x-linode-cli-action: node-recycle
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Node Recycle
+      description: |
+        Recycles an individual Node in the designated Kubernetes Cluster. The Node will be deleted
+        and replaced with a new Linode, which may take a few minutes. Replacement Nodes are
+        installed with the latest available patch for the Cluster's Kubernetes Version.
+
+        **Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.**
+      responses:
+        '200':
+          description: Recycle request succeeded and is in progress.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+                -H "Authorization: Bearer $TOKEN" \
+                -X POST \
+                https://api.linode.com/v4/lke/clusters/12345/nodes/12345-6aa78910bc/recycle
+      - lang: CLI
+        source: >
+          linode-cli lke node-recycle 12345 12345-6aa78910bc
   /lke/clusters/{clusterId}/api-endpoints:
     parameters:
     - name: clusterId
@@ -6970,7 +7161,7 @@ paths:
                 https://api.linode.com/v4/lke/clusters/12345/api-endpoints
       - lang: CLI
         source: >
-          linode-cli lke api-endpoint-list 12345
+          linode-cli lke api-endpoints-list 12345
   /lke/clusters/{clusterId}/kubeconfig:
     parameters:
     - name: clusterId
@@ -8073,9 +8264,9 @@ paths:
       operationId: getManagedIssues
       x-linode-cli-action: issues-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: >
@@ -8161,9 +8352,9 @@ paths:
       operationId: getManagedLinodeSettings
       x-linode-cli-action: linode-settings-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: >
@@ -9159,7 +9350,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9169,7 +9360,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - firewalls:read_only
+        - firewall:read_only
       responses:
         '200':
           description: Returns an array of Firewalls.
@@ -9220,7 +9411,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9369,7 +9560,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9424,7 +9615,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9493,7 +9684,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9546,7 +9737,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9611,7 +9802,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9689,7 +9880,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9743,7 +9934,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9791,7 +9982,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9834,7 +10025,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -11346,21 +11537,14 @@ paths:
       - personalAccessToken: []
       - oauth:
         - object_storage:read_write
-      parameters:
-      - name: name
-        in: query
-        required: true
-        description: >
-          The `name` of the object for which to update its Access Control List (ACL).
-          Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
-          endpoint to access all object names in a bucket.
-        schema:
-          type: string
       requestBody:
         description: The changes to make to this Object's access controls.
         content:
           application/json:
             schema:
+              required:
+                - acl
+                - name
               properties:
                 acl:
                   type: string
@@ -11374,6 +11558,12 @@ paths:
                     The Access Control Level of the bucket, as a canned ACL string.
                     For more fine-grained control of ACLs, use the S3 API directly.
                   example: public-read
+                name:
+                  type: string
+                  description: >
+                    The `name` of the object for which to update its Access Control List (ACL).
+                    Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
+                    endpoint to access all object names in a bucket.
       responses:
         '200':
           description: The Object's canned ACL and policy.
@@ -11407,9 +11597,10 @@ paths:
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
             -X PUT -d '{
-              "acl": "public-read"
+              "acl": "public-read",
+              "name": "example.txt"
             }' \
-            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl?name=example.txt
+            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl
   /object-storage/buckets/{clusterId}/{bucket}/object-list:
     parameters:
     - name: clusterId
@@ -12223,9 +12414,9 @@ paths:
       operationId: getProfileApps
       x-linode-cli-action: apps-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: |
@@ -12771,6 +12962,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Login'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -14334,7 +14531,7 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
+              -X POST -d '{
                 "label": "my-volume"
               }' \
               https://api.linode.com/v4/volumes/12345/clone
@@ -14464,6 +14661,8 @@ components:
             'domains:read_write': Allows access to all Domain endpoints.
             'events:read_only': Allows access to GET your Events.
             'events:read_write': Allows access to all endpoints related to your Events.
+            'firewall:read_only': Allows access to GET information about your Firewalls.
+            'firewall:read_write': Allows acces to all Firewall endpoints.
             'images:read_only': Allows access to GET your Images.
             'images:read_write': Allows access to all endpoints related to your Images.
             'ips:read_only': Allows access to GET your ips.
@@ -14474,8 +14673,11 @@ components:
             'lke:read_write': Allows access to all endpoints related to LKE Clusters on your Account.
             'longview:read_only': Allows access to GET your Longview Clients.
             'longview:read_write': Allows access to all endpoints related to your Longview Clients.
+            'maintenance:read_only': Allows access to GET information about Maintenance on your account.
             'nodebalancers:read_only': Allows access to GET NodeBalancers on your Account.
             'nodebalancers:read_write': Allows access to all NodeBalancer endpoints.
+            'object_storage:read_only': Allows access to GET information related to your Object Storage.
+            'object_storage:read_write': Allows access to all Object Storage endpoints.
             'stackscripts:read_only': Allows access to GET your StackScripts.
             'stackscripts:read_write': Allows access to all endpoints related to your StackScripts.
             'volumes:read_only': Allows access to GET your Volumes.
@@ -14856,6 +15058,8 @@ components:
           example: '2018-01-15T00:01:01'
           readOnly: true
           x-linode-cli-display: 6
+          x-linode-filterable: true
+          nullable: true
         website:
           type: string
           format: url
@@ -15917,7 +16121,7 @@ components:
             of single ports and port ranges. A space is permitted following each comma.
             - A range of ports is inclusive of the start and end values for the range. The
             end value of the range must be greater than the start value.
-            - Ports must be within 1 and 65535.
+            - Ports must be within 1 and 65535, and may not contain any leading zeroes. For example, port "080" is not allowed.
             - Ports may not be specified if a rule's protocol is `ICMP`. At least one port
             must be specified if a rule's protocol is `TCP` or `UDP`.
             - The ports string can have up to 15 *pieces*, where a single port is treated
@@ -18330,6 +18534,12 @@ components:
           minLength: 3
           description: >
             The URL at which this Service is monitored.
+
+
+            URL parameters such as `?no-cache=1` are preserved.
+
+
+            URL fragments/anchors such as `#monitor` are **not** preserved.
           example: https://example.org
           x-linode-cli-display: 5
         timeout:

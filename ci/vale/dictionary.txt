@@ -97,6 +97,7 @@ backticks
 backupninja
 bampton
 balarin
+banaction
 bantime
 barebones
 base64
@@ -196,6 +197,7 @@ client2
 clojure
 cloudflare
 cloudnet
+cloudron
 clozure
 cls
 cluebringer
@@ -343,6 +345,7 @@ domain2
 domain3
 domainkey
 domainname
+donenfeld
 dotdeb
 dotfiles
 doveadm
@@ -470,6 +473,7 @@ frontmatter
 fs
 fsck
 fstab
+fullchain
 func
 galera
 gamemode
@@ -626,6 +630,7 @@ iframe
 iframes
 ifup
 ignoreip
+ignoreregex
 ikiwiki
 im
 imagize
@@ -836,6 +841,7 @@ mailserver
 mailuser
 mailutils
 maitis
+makefile
 managesieve
 mandriva
 manyof
@@ -1230,6 +1236,7 @@ reimported
 reindexing
 reinstalls
 releasever
+reloadcmd
 remi
 remmina
 remotehost
@@ -1245,6 +1252,7 @@ resolvconf
 respawn
 resque
 restapi
+restic
 retargetly
 retpoline
 retrans
@@ -1531,6 +1539,7 @@ tun0
 tune2fs
 tunnelblick
 turtl
+tv
 tw
 txt
 txz

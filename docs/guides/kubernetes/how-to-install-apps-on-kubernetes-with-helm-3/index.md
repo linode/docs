@@ -159,7 +159,7 @@ https://hub.helm.sh/charts/bitnami/ghost	9.0.3        	3.1.1      	A simple, pow
 
 1.  Add the `stable` repository:
 
-        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+        helm repo add stable https://charts.helm.sh/stable
 
 1.  Update the repo to ensure you get the latest chart version:
 
