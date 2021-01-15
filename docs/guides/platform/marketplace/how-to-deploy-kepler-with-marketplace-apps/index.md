@@ -22,7 +22,7 @@ external_resources:
 
 ## Kepler Marketplace App
 
-[Kepler](https://www.Kepler Builder.org/) is a powerful drag & drop WordPress website builder with all-new website style filters that instantly change the look and feel of your website.
+[Kepler](https://www.kepler.app) is a powerful drag & drop WordPress website builder with all-new website style filters that instantly change the look and feel of your website.
 
 ## Deploy Kepler with Marketplace Apps
 
