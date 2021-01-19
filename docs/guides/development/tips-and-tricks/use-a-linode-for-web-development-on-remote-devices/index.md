@@ -81,7 +81,7 @@ The easiest way to install Portainer is by deploying the official image.
         -v portainer_data:/data portainer/portainer-ce
 
 
-    The `-v /var/run/docker.sock:/var/run/docker.sock` directive allows the Docker container to communicate with the host Docker environment. `-v portainer_data:/data portainer/portainer-ce` mounts the previously created Portainer data volume. For more information, see [Portainer documentation] (https://documentation.portainer.io/).
+    The `-v /var/run/docker.sock:/var/run/docker.sock` directive allows the Docker container to communicate with the host Docker environment. `-v portainer_data:/data portainer/portainer-ce` mounts the previously created Portainer data volume. For more information, see [Portainer documentation](https://documentation.portainer.io/).
     
 3. Point your browser to http://192.0.0.0:9000, replacing `192.0.0.0` with the IP address or FQDN of your workstation Linode. You should see a screen similar to this:
 
