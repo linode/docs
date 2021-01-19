@@ -80,7 +80,7 @@ CORE_URI = "http://203.0.113.0"
 
 1. Restart the docker container for your changes to be applied:
 
-    sudo docker-compose restart
+        sudo docker-compose restart
 
 ### Log In to Mist.io
 
@@ -88,11 +88,11 @@ CORE_URI = "http://203.0.113.0"
 
 1. Click on the **Sign in** button at the top right of the page.
 
-![Mist.io get started](get-started-mist.png)
+    ![Mist.io get started](get-started-mist.png)
 
 1. Enter your `Email Address` and `Password` in their respective fields to complete the log-in process.
 
-![Mist.io Account Creation](account-creation-mist.png)
+    ![Mist.io Account Creation](account-creation-mist.png)
 
 ### Next Steps
 
