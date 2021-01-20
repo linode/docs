@@ -77,7 +77,7 @@ Network Helper is not supported on the CoreOS distribution
 
 ### Alpine
 
-Network Helper configures `/etc/network/interfaces`.
+Network Helper configures `/etc/network/interfaces`, and `/etc/resolv.conf`.
 
 ### Arch & Ubuntu (18.04 LTS and later)
 
