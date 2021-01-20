@@ -407,7 +407,7 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
-### Recyclye your LKE Cluster
+### Recycle your LKE Cluster
 
 You can recycle an entire LKE cluster to update its nodes to the most recent patch of the cluster's Kubernetes version and to otherwise Replace the physical Linodes that comprise the cluster. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section.
 
@@ -472,7 +472,7 @@ Recycling your node pool involves deleting each of the Linodes in the node pool 
 | `clusterId` | ID of the LKE cluster to lookup. |
 | `k8s_version` | The next minor version of Kubernetes |
 
-To update your LKE cluster's label, send a `PUT` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID, and `1.17` with whichever kubernetes version is the next currently available:
+To update your LKE cluster's version, send a `PUT` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID, and `1.17` with whichever kubernetes version is the next currently available:
 
     curl -H "Content-Type: application/json" \
             -H "Authorization: Bearer $TOKEN" \
@@ -480,11 +480,15 @@ To update your LKE cluster's label, send a `PUT` request to the `/lke/clusters/{
             "k8s_version": "1.17"
             }' https://api.linode.com/v4/lke/clusters/12345
 
-The response body displays the updated cluster version:
+The response body displays the cluster version that will be applied following a [recycle](#recycle-your-lke-cluster):
 
 {{< output >}}
 {"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "k8s_version": "1.17", "tags": ["ecomm", "blogs"], "label": "updated-cluster-name", "id": 456, "region": "us-central"}%
 {{</ output >}}
+
+{{< caution >}}
+Nodes within the LKE cluster *must* be [recycled](#recycle-your-lke-cluster) before the cluster version will be successfully updated.
+{{< /caution >}}
 
 ### Add New Tags to your LKE Cluster
 
