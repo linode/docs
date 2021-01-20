@@ -78,7 +78,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
         cd ~/
         git clone https://github.com/tootsuite/mastodon.git
         cd mastodon
-        
+
     Unless otherwise stated, the remainder of the commands related to Docker Compose should be run in this directory.
 
 ## Configure Docker Compose
