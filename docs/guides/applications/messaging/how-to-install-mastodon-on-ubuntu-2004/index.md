@@ -18,6 +18,11 @@ contributor:
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Certbot Instructions: NGINX on Ubuntu 20.04](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx)'
+relations:
+    platform:
+        key: install-mastodon
+        keywords:
+           - distribution: Ubuntu 20.04
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}
@@ -66,13 +71,17 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 {{< content "install-docker-compose" >}}
 
-## Download Mastodon and Configure Docker Compose
+## Download Mastodon
 
 1. Clone the Mastodon Git repository into the home directory, and change into the resulting Mastodon directory:
 
         cd ~/
         git clone https://github.com/tootsuite/mastodon.git
         cd mastodon
+        
+    Unless otherwise stated, the remainder of the commands related to Docker Compose should be run in this directory.
+
+## Configure Docker Compose
 
 1. Using your preferred text editor, open the `docker-compose.yml` file.
 
@@ -80,7 +89,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
     Although you can use `latest` as the release, it is recommended that you select a specific release number. The Mastodon GitHub page provides a chronological [list of Mastodon releases](https://github.com/tootsuite/mastodon/releases).
 
-1. In the `db` section, add the following beneath the `image` line; replace `password` with a password you would like to use for the PostgreSQL database:
+1. In the `db` section, add the following beneath the `image` line. Replace `password` with a password you would like to use for the PostgreSQL database that operates on the Mastodon backend:
 
         environment:
           POSTGRES_PASSWORD: password
@@ -93,7 +102,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
         cp .env.production.sample .env.production
 
-1. Use the following commands to generate secret keys for the `SECRET_KEY_BASE` and `OTP_SECRET` variables and add them to the `.env.production` file:
+1. Use the following commands to generate a `SECRET_KEY_BASE` and `OTP_SECRET` and add them to the `.env.production` file:
 
         SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
         sed -i -e "s/SECRET_KEY_BASE=/&${SECRET_KEY_BASE}/" .env.production
@@ -108,7 +117,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 1. Fill out the remainder of the `.env.production` file's fields.
 
-    Enter your Mastodon server's domain name for `LOCAL_DOMAIN`.
+    Enter your Mastodon server's domain name for `LOCAL_DOMAIN`. For `DB_PASS`, enter the password you set for the database in the `docker-compose.yml` file.
 
     Enter `mastodon_db_1` for `DB_HOST` and `mastodon_redis_1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder.
 
@@ -116,9 +125,12 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
         SMTP_AUTH_METHOD=plain
         SMTP_OPENSSL_VERIFY_MODE=none
-        SMTP_FROM_ADDRESS=Mastodon <notifications@example.com>
 
-1. The resulting `.env.production` file should resemble [this](.env.production).
+    Comment out the sections denoted as "optional" by adding a `#` before each line in the section.
+
+1. The resulting `.env.production` file should resemble [this](env.production).
+
+## Complete the Docker Compose Setup
 
 1. Build the Docker Compose environment:
 
@@ -134,17 +146,17 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
     Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
-    When prompted to create a Mastodon admin user, choose to do so (`Y`), and enter the username, password, and email address you would like to use.
+    When prompted to create a Mastodon admin user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
 
     For any other prompts, enter the default values by pressing **Enter**.
 
 ## Initiate the Docker Compose Services
 
-1. Start the Docker Compose services. The following command assumes that you are in the base Mastodon directory (`~/mastodon` in this guide):
+1. Start the Docker Compose services:
 
         docker-compose up -d
 
-1. Unless manually stopped, this Docker Compose configuration begins running automatically at system start up. To manually stop the Docker Compose services, run the following command in the Mastodon directory:
+1. Unless manually stopped, the Docker Compose services begin running automatically at system start up. Run the following command to manually stop the Docker Compose services:
 
         docker-compose down
 
@@ -197,6 +209,8 @@ Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide us
 
         sudo certbot renew --dry-run
 
+1. Open the `/etc/nginx/sites-available/example.com.conf` file again, and un-comment the `ssl_certificate` and `ssl_certificate_key` lines.
+
 1. Restart the NGINX server:
 
         sudo systemctl restart nginx
@@ -209,11 +223,11 @@ Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide us
 
 1. You can navigate to your instance's administration page by navigating to `example.com/admin/settings/edit`. The administration page allows you to alter the look, feel, and behavior of your instance.
 
-    [![Sidekiq dashboard](sidekiq-dashboard_small.png "Sidekiq dashboard")](sidekiq-dashboard.png)
+    [![Mastodon administration page](mastodon-admin-page_small.png "Mastodon administration page")](mastodon-admin-page.png)
 
 1. If your instance is running but having issues, you can troubleshoot them from the Sidekiq dashboard. Either select **Sidekiq** from the administration menu or navigate to `example.com/sidekiq` to see the dashboard.
 
-    [![Mastodon administration page](mastodon-admin-page_small.png "Mastodon administration page")](mastodon-admin-page.png)
+    [![Sidekiq dashboard](sidekiq-dashboard_small.png "Sidekiq dashboard")](sidekiq-dashboard.png)
 
 To learn more about Mastodon, check out the [official Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon's discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance.
 
