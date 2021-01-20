@@ -19,6 +19,11 @@ external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Install Docker on CentOS](https://docs.docker.com/engine/install/centos/)'
 - '[Certbot Instructions: NGINX on CentOS 8](https://certbot.eff.org/lets-encrypt/centosrhel8-nginx)'
+relations:
+    platform:
+        key: install-mastodon
+        keywords:
+           - distribution: CentOS Stream
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}
