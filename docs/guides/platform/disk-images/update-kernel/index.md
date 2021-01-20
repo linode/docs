@@ -53,11 +53,11 @@ If your output contains `generic` in the version tag, then you are probably runn
 
 ## Update Your Linode Kernel with Linode's Cloud Manager
 
-1.  Select the Linode from the *Dashboard* and click the **Disks/Configs** tab.
+1. From the Linode dashboard, click the **Linodes** option in the left-hand navigation menu.
 
-1. Find your current *Configuration*, click on the **More Options Ellipses** menu and select **Edit**.
+1. Click the Linode, listed under **Linodes**, and click the **Configurations** tab.
 
-1.  Scroll to the *Boot Settings* section.
+1. Click the **Edit** option, and scroll to the *Boot Settings* section.
 
 1.  Select **Latest 64 bit** from the *Select a Kernel* dropdown (if you need a 32-bit kernel, select **Latest 32 bit**) and click the **Submit** button to save the changes.
 
