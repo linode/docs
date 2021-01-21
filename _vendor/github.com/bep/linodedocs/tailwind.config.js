@@ -46,12 +46,9 @@ module.exports = {
 	},
 	purge: {
 		enabled: process.env.HUGO_ENVIRONMENT === 'production',
-		mode: 'all',
-		preserveHtmlElements: false,
 		content: [ './hugo_stats.json' ],
 		options: {
-			whitelist: [ 'pl-1', 'pl-3', 'x-cloak' ], // Re. x-cloak: hugo_stats.json does not contain attribute name/values (coming in upcoming Hugo).
-			whitelistPatterns: [ /^level-|^is-/ ], // is-explorer-open etc. Toggled on off in JS.
+			whitelist: [ 'pl-1', 'pl-3' ],
 			defaultExtractor: (content) => {
 				let els = JSON.parse(content).htmlElements;
 				els = els.tags.concat(els.classes, els.ids);

@@ -1,6 +1,6 @@
 {{ if not (eq .Params.show_social_image_in_article false) }}
   {{ $img := partial "funcs/get-social-image.html" . }}
-  
+
   {{ if $img.img }}
     {{ $src := $img.img }}
     <div class="marquee-img-container">
@@ -10,8 +10,10 @@
             a resized version.
         */}}
         {{ .Scratch.Set (printf "%s-is-used" $img.img.RelPermalink) true }}
-        {{ $title := printf "Marquee image for %s" $.Title }}
-        {{  partial "components/image-srcset.html" (dict "dot" $ "img" $img.img "width1x" 694 "width2x" 1388 "lazy" false "title" $title  "alt" $title "class" "marquee-img"  )}}
+        {{ $imgFormatOptions := "%dx jpg #FAFAFC q85" }}
+        {{ $resized1x := $img.img.Resize (printf $imgFormatOptions 952) }}
+        {{ $resized2x := $img.img.Resize (printf $imgFormatOptions 1904) }}
+        <img src="{{ $resized2x.RelPermalink }}" class="marquee-img" srcset="{{ $resized1x.RelPermalink }} 1x, {{ $resized2x.RelPermalink }} 2x" alt="Marquee image for {{ $.Title }}" title="Marquee image for {{ $.Title }}">
       {{ else }}
         <img src="{{ $img.img | safeURL}}" class="marquee-img" alt="Marquee image for {{ $.Title }}" title="Marquee image for {{ $.Title }}" />
       {{ end }}
