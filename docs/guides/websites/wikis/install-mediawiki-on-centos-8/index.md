@@ -17,6 +17,11 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
+relations:
+    platform:
+        key: install-mediawiki
+        keywords:
+           - distribution: CentOS 8
 ---
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software behind Wikipedia and many of the wikis deployed by communities and companies around the world. It provides a versatile, open, and free tool for making knowledge easily accessible and navigable. This guide explains how to install MediaWiki on CentOS 8.
