@@ -17,6 +17,11 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
+relations:
+    platform:
+        key: install-mediawiki
+        keywords:
+           - distribution: Ubuntu 20.04
 ---
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software behind Wikipedia and many of the wiki websites used by organizations and communities around the world. It provides a versatile, open, and free tool for publishing collaborative content. This guide explains how to deploy MediaWiki on Ubuntu 20.04.
