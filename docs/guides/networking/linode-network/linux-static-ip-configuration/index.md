@@ -82,7 +82,6 @@ Name=eth0
 [Network]
 DHCP=no
 Domains=members.linode.com
-IPv6PrivacyExtensions=false
 
 # DNS resolvers (safe to mix IPv4 and IPv6)
 DNS=203.0.113.1 2001:db8:0:123::1 203.0.113.2
@@ -96,6 +95,12 @@ Address=198.51.100.3/24
 
 # Add a private address:
 Address=192.168.133.234/17
+
+# Disable the IPv6 privacy extensions (random IPs) - should be off by default already
+IPv6PrivacyExtensions=no
+# Do not apply Router Advertisement information: No SLAAC is performed and the IPv6 addresses below are used exclusively
+# See https://www.freedesktop.org/software/systemd/man/systemd.network.html#IPv6AcceptRA=
+IPv6AcceptRA=false
 
 # IPv6 gateway and primary address.
 Gateway=fe80::1
