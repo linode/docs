@@ -174,9 +174,46 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 {{< content "kubernetes-add-node-pool-shortguide" >}}
 
-### Edit, Recycle, or Remove Existing Node Pools
+### Edit or Remove Existing Node Pools
 
 {{< content "kubernetes-edit-remove-node-pools-shortguide" >}}
+
+### Upgrade a Cluster
+
+1. To Upgrade a cluster access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page).
+
+1. If an upgrade is available, a banner will appear that will display the next available Kubernetes version. Select the **Upgrade Version** button at the end of the banner to ugrade to the next available Kubernetes version.
+
+   ![Kubernetes ugrade banner](cluster-upgrade-banner.png "Kubernetes upgrade banner page.")
+
+1. Upgrading a cluster is a two step process which involves first setting the Cluster to use the next version when Nodes are Recycled, and then Recycling all of the Nodes within the Cluster.
+
+1. For step 1, click on the **Upgrade Version** button to complete the upgrade process.
+
+   ![Kubernetes cluster step 1](cluster-upgrade-step1.png "Kubernetes upgrade step 1.")
+
+   {{< note >}}
+If step one of the upgrade proocess is completed without the completion of step two, the nodes in the cluster will need to be recycled using the [Recycle all Nodes](##Recycle-a-Cluster-or-Nodes) button.
+{{< /note >}}
+
+1. For step 2, click on the **Recycle All Nodes** button to set all nodes to complete the upgrade process. Nodes will be recycled on a rolling basis so that only one node will be down at a time throughout the recycling process.
+
+   ![Kubernetes cluster step 2](recycle-all-nodes-step2.png "Kubernetes upgrade step 2.")
+
+### Recycle Nodes
+
+Nodes can be recycled by selected the recycle option for an individual node, in a node pool or, or for all nodes in the cluster. All recycle options are found in the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page)
+
+- To recycle all Nodes on all Node Pools in a cluster, select the **Recycle All Nodes** option to the right of the **Node Pools** section.
+
+- To recycle a node pool from the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page), click the **Recycle Nodes** option at the top-right of each entry in the **Node Pools** section.
+
+- To recycle an individual Node, find the **Node Pools** section on the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page), find the individual node that will be recycled, and click on the **Recycle** button to the right of the respective entry.
+
+![Cluster Node Recycle](cluster-node-recycle.png "Cluster Node Recycle.")
+
+When selecting any recycle option a pop-up message will appear confirming that the node or nodes will be recycled. Select the `Recycle` option, and your Node or Node Pool will proceed to recycle its nodes. If the **Recycle all Nodes** or **Recycle Nodes** option are selected, then nodes will be upgraded on a rolling basis so that only one node will be down at a time throughout the recycling process.
+
 
 ## Delete a Cluster
 
