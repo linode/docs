@@ -27,11 +27,17 @@
     grid-column: 1 / -1;
 }
 
+.no-js .grid--base #navbar__toc,
 .is-topbar-pinned.is-search-input-open .grid--base #navbar__toc {
     display: none;
 }
 
+.no-js .grid--base #navbar__search-input,
 .is-topbar-pinned.is-not-search-input-open .grid--base #navbar__search-input {
+    display: none;
+}
+
+.no-js .grid--base .navbar__explorer-toggle {
     display: none;
 }
 
