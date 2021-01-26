@@ -3,7 +3,7 @@
   {{ $dropdowns =  $dropdowns | append (dict "open" (.open | default false ) "hideWhenPinned" (.hideWhenPinned | default false) )}}
 {{ end }}
 
-<div class="flex justify-start space-x-2" x-data="lnDropdowns.New({{ $dropdowns | jsonify }})" x-init="init()" @nav:toggle.document="receiveToggle($event.detail)" @click.away="closeAll()">
+<div class="flex justify-start space-x-2" x-data="lnc.NewDropdownsController({{ $dropdowns | jsonify }})" x-init="init()" @nav:toggle.document="receiveToggle($event.detail)" @click.away="closeAll()">
   {{ range $i, $e := .dropdowns }}
     <div x-show.transition.opacity="!isHidden({{ $i }})" x-cloak>
       <div class="relative inline-block text-left">
