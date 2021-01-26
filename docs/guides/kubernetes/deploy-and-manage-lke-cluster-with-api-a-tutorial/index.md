@@ -472,7 +472,7 @@ Recycling your node pool involves deleting each of the Linodes in the node pool 
 | `clusterId` | ID of the LKE cluster to lookup. |
 | `k8s_version` | The next minor version of Kubernetes |
 
-To upgrade your LKE cluster's version, send a `PUT` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID, and `1.17` with whichever kubernetes version is the next currently available:
+To upgrade your LKE cluster's version, send a `PUT` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID, and `1.17` with whichever Kubernetes version is the next currently available:
 
     curl -H "Content-Type: application/json" \
             -H "Authorization: Bearer $TOKEN" \
