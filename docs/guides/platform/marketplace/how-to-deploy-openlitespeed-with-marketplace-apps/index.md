@@ -64,6 +64,7 @@ When you've provided all required Linode Options, click on the **Create** button
 1. Add a domain name to the server. You can assign it (or a subdomain) to your WordPress site. Specifically, you need to set up an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that's associated with your Linode's IP address. To learn how to set up DNS records in the Cloud Manager, review the [DNS Manager](/docs/platform/manager/dns-manager/) guide. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
 
 1. From a terminal on your local computer, connect to the server as root:
+
         ssh root@ipaddress
 
     An output similar to the following appears:
@@ -133,11 +134,11 @@ Do you wish to force HTTPS rewrite rule for this domain? [y/N]
 
 1. Enter `y` and force HTTPS rules are applied.
 
-{{< output >}}
+    {{< output >}}
 Do you wish to update the system which include the web server? [Y/n]
 {{< /output >}}
 
-### Install WordPress.
+### Install WordPress
 
 1. After OpenLiteSpeed script has finished installing, you can install the WordPress site by typing your Linode's IPv4 address or the domain name that you added in a browser of your choice.
 
