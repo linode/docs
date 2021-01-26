@@ -407,9 +407,28 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
+### Recycle All Nodes Within a Cluster
+
+You can recycle all nodes within an LKE cluster to upgrade the nodes to the most recent patch of the cluster's Kubernetes version and to otherwise replace the physical Linodes that comprise the cluster. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID in order to recycle it's nodes. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section.
+
+{{< caution >}}
+Recycling your cluster involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
+{{< /caution >}}
+
+| **Required Parameters** | **Description** |
+|-------|-------|
+| `clusterId` | ID of the LKE cluster to lookup. |
+
+To recycle all nodes within a cluster, send a `POST` request to the `/lke/clusters/{clusterId}/pools/{poolId}/recycle` endpoint. In the URL of this example, replace `12345` with your cluster's ID:
+
+    curl -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $TOKEN" \
+        -X POST \
+        https://api.linode.com/v4/lke/clusters/12345/recycle
+
 ### Recycle your LKE Node Pool
 
-You can recycle an LKE cluster's node pool to update its nodes to the most recent patch of the cluster's Kubernetes version. Nodes are recycled on a rolling basis that only one node is down at a time throughout the recycling process. You need your cluster's ID and the node pool's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
+You can recycle an LKE cluster's node pool to upgrade its nodes to the most recent patch of the cluster's Kubernetes version. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID and the node pool's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
 {{< caution >}}
 Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
@@ -426,6 +445,50 @@ To recycle your node pool, send a `POST` request to the `/lke/clusters/{clusterI
         -H "Authorization: Bearer $TOKEN" \
         -X POST \
         https://api.linode.com/v4/lke/clusters/12345/pools/196/recycle
+
+### Recycle a Single Node within a Node Pool
+
+You can recycle an individual node within a LKE Cluster's Node Pool. You need your cluster's ID and the node ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
+
+{{< caution >}}
+Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
+{{< /caution >}}
+
+| **Required Parameters** | **Description** |
+|-------|-------|
+| `clusterId` | ID of the LKE cluster to lookup. |
+| `nodeId` | ID of the LKE node to lookup. |
+
+ To recycle your node, send a `POST` request to the `/lke/clusters/{clusterId}/nodes/{nodeId}/recycle` endpoint. In the URL of this example, replace `12345` with your cluster's ID and `12345-6aa78910bc` with your node ID:
+
+    curl -H "Authorization: Bearer $TOKEN" \
+        https://api.linode.com/v4/lke/clusters/12345/nodes/12345-6aa78910bc
+
+
+### Upgrade your LKE Cluster to the Next Minor Version
+
+| **Required Parameters** | **Description** |
+|-------|-------|
+| `clusterId` | ID of the LKE cluster to lookup. |
+| `k8s_version` | The next minor version of Kubernetes |
+
+To upgrade your LKE cluster's version, send a `PUT` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID, and `1.17` with whichever Kubernetes version is the next currently available:
+
+    curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X PUT -d '{
+            "k8s_version": "1.17"
+            }' https://api.linode.com/v4/lke/clusters/12345
+
+The response body displays the cluster version that will be applied following a [recycle](#recycle-your-lke-cluster):
+
+{{< output >}}
+{"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "k8s_version": "1.17", "tags": ["ecomm", "blogs"], "label": "updated-cluster-name", "id": 456, "region": "us-central"}%
+{{</ output >}}
+
+{{< caution >}}
+Nodes within the LKE cluster *must* be [recycled](#recycle-your-lke-cluster) before the cluster version will be successfully upgraded.
+{{< /caution >}}
 
 ### Add New Tags to your LKE Cluster
 
