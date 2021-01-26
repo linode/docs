@@ -24,6 +24,7 @@
    "href",
    "languages",
    "lastUpdatedTime",
+   "ordinal",
    "section",
    "skillLevel",
    "thumbnailUrl",
@@ -73,6 +74,9 @@
    "section",
    "section.lvl0",
    "section.lvl1"
+  ],
+  "customRanking": [
+   "desc(title)"
   ],
   "exactOnSingleWordQuery": "attribute",
   "highlightPostTag": "\u003c/em\u003e",
@@ -162,6 +166,7 @@
    "href",
    "languages",
    "lastUpdatedTime",
+   "ordinal",
    "section",
    "skillLevel",
    "thumbnailUrl",
