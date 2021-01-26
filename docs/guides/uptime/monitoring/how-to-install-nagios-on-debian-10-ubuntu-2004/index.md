@@ -103,7 +103,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1. Open the Nagios CGI configuration file, located at `/etc/nagios4/cgi.cfg`, and set `use_authentication` to `1`:
 
-    {{ < file "/etc/nagios4/cgi.cfg">}}
+    {{ < file "/etc/nagios4/cgi.cfg" >}}
 use_authentication=1
     {{< /file >}}
 
