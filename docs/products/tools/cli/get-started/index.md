@@ -11,6 +11,8 @@ This guide describes the basics of installing and working with the CLI. It also 
 
 {{< content "linode-cli-install-shortguide" >}}
 
+### Using the CLI for Support
+
 1.  List your Support Tickets:
 
         linode-cli tickets list
