@@ -101,7 +101,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     This configuration limits Nagios access to users coming from a pre-approved IP address and providing valid login credentials. The changes to the `File` section ensure that only a user with the appropriate permissions can send commands to your machine via the Nagios interface. By default, only the `nagiosadmin` user configured above has these permissions.
 
-1. Open the Nagios CGI configuration file, located at `/etc/nagios4/cgi.cfg`, and set `user_authentication` to `1`:
+1. Open the Nagios CGI configuration file, located at `/etc/nagios4/cgi.cfg`, and set `use_authentication` to `1`:
 
     {{ < file "/etc/nagios4/cgi.cfg">}}
 use_authentication=1
