@@ -3,8 +3,7 @@
   <!-- -->
 {{ end }}
 {{ define "main" }}
-  {{ partial "components/nojs.html" . }}
-  <div x-cloak class="blog-article" x-data="lnc.NewBlogArticleController()" x-init="() => {  init() }">
+  <div class="blog-article" x-data="lnArticleController.New(lnSearchConfig)" x-init="() => {  init() }">
     {{ partial "components/error.html" . }}
     <div x-show.transition.opacity.in.100ms="data.article.title">
       <div>
@@ -12,8 +11,7 @@
         <p class="pt-6 text-textcolor">
           <span x-text="data.article.modified > data.article.date ? 'Updated' : 'Published'"></span>
           <time x-bind:datetime="data.article.modified ? data.article.modified.toISOString() : ''" x-text="data.article.modifiedStr"></time>
-          <template x-if="data.article.author">
-            , by
+          <template x-if="data.article.author">, by
             <span x-text="data.article.author.name"></span>
           </template>
         </p>
@@ -30,8 +28,7 @@
       <div>
         <p class="pt-2 md:pt-6 text-basicgray">
           This page was originally published on
-          <time x-bind:datetime="data.article.date ? data.article.date.toISOString() : ''" x-text="data.article.dateStr"></time>
-          .
+          <time x-bind:datetime="data.article.date ? data.article.date.toISOString() : ''" x-text="data.article.dateStr"></time>.
         </p>
       </div>
     </div>
