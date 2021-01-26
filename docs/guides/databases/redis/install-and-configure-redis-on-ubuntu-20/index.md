@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-07
 modified_by:
   name: Linode
-title: "Install and Configure Redis on Ubuntu 20.04"
-h1_title: "Install and Configure Redis on Ubuntu 20.04."
+title: "Installing and Configuring Redis on Ubuntu 20.04"
+h1_title: "How to Install and Configure Redis on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -20,10 +20,10 @@ external_resources:
 relations:
     platform:
         keywords:
-           - distribution: Ubuntu 20
+           - distribution: Ubuntu 20.04
 ---
 
-This guide explains how to install and perform basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store that is easy to use. It can serve as a database cache and message broker, and works well with web applications. Redis is an example of a key-value store database, which stores a value inside a key. You must use the key to retrieve the data. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash. The latest stable version (as of January 2021) is Redis 6.0.9, but pre-release versions are also available on the Redis website.
+This guide explains how to install and perform basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store that is easy to use. It can serve as a database cache and message broker, and works well with web applications. Redis is an example of a key-value store database, which stores a value inside a key. You must use the key to retrieve the data. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash.
 
 ## Before You Begin
 
@@ -51,13 +51,12 @@ Redis requires a robust, stable hosting environment in order to function properl
 
 A complete Redis installation, including basic configuration tasks, consists of the following high-level steps. The following sections describe each step in more detail:
 
-1.  Verifying the System Parameters;
-2.  Installing Redis;
-3.  Enabling and Running Redis;
-4.  Configuring a Password for Redis;
-5.  Configuring an *Access Control List* (ACL) for Redis;
-6.  Configuring Redis Persistence;
-7.  Optimising Redis for Better Performance;
+1.  Verifying the System Parameters.
+2.  Installing Redis.
+3.  Enabling and Running Redis.
+4.  Securing Redis.
+5.  Configuring Redis Persistence.
+6.  Optimising Redis for Better Performance.
 
 ## Verifying the System Parameters
 
@@ -81,7 +80,9 @@ Ensure your node is running an up-to-date version of Ubuntu 20.04. If necessary,
 
 ## Installing Redis
 
-You can install Redis either through the Ubuntu apt utility or from a zip file.
+You can install Redis either through the Ubuntu apt utility or from a TAR file. The latest stable version (as of January 2021) is Redis 6.0.9, but pre-release versions are also available on the Redis website.
+
+### Installing Redis From a Package
 
 To install Redis using the apt utility, follow these steps:
 
@@ -97,6 +98,8 @@ To install Redis using the apt utility, follow these steps:
 {{< note >}}
 If the Redislabs repository is added, apt automatically installs the latest stable version. We do not recommend installing Redis through the Ubuntu default packages, as that might install an older version.
 {{< /note >}}
+
+### Installing Redis From a Downloaded File
 
 To install Redis from a downloaded .gz file, follow these steps:
 
@@ -115,10 +118,12 @@ To install Redis from a downloaded .gz file, follow these steps:
 
 Redis-cli is the main command line interface for Redis. Through this utility, you can interactively store and retrieve data, and perform administrative tasks. You can configure Redis by means of the `redis.conf` file, which contains a list of directives. Each directive consists of a variable name, plus a value, such as `supervised systemd`.
 
-1.  Add a directive to allow Redis to start via the system control utility. Edit the redis .conf file at `/etc/redis/redis.conf`, and change the value of the `supervised` directive to `systemd`. This setting is found in the "General" section of the file.
+1.  Add a directive to allow Redis to start via the system control utility. Edit the Redis .conf file at `/etc/redis/redis.conf`, and change the value of the `supervised` directive to `systemd`. This setting is found in the "General" section of the file.
 
     {{< file "/etc/redis/redis.conf" >}}
+...
 supervised systemd
+...
 {{< /file >}}
 2.  Use `systemctl` to start the Redis service.
 
@@ -130,8 +135,9 @@ supervised systemd
 
         PING
     If Redis is running, it returns a `PONG` as a reply.
-
-        PONG
+    {{< output >}}
+    PONG
+    {{< /output >}}
 5.  Use the `SET` command to create a key-value pairing. Redis returns an `OK` response upon a successful set operation.
 
         SET server:name "fido"
@@ -139,8 +145,9 @@ supervised systemd
 
         GET server:name
     Redis returns `fido` as the result.
-
-        fido
+    {{< output >}}
+    fido
+    {{< /output >}}
 
 {{< note >}}
 The redis.conf file contains extensive documentation and many examples. A sample `redis.conf` file can be found on the [*Redis Git Hub site*](https://raw.githubusercontent.com/redis/redis/6.0/redis.conf).
@@ -150,13 +157,17 @@ The redis.conf file contains extensive documentation and many examples. A sample
 You can also use `redis-cli` as a function to run any command. Pass in the command and any associated variables as arguments. For example, you can perform a ping with `redis-cli ping`.
 {{< /note >}}
 
-## Configuring a Password for Redis
+## Securing Redis
 
-Beginning with version 6, Redis maintains multi-user security through an ACL. Additionally, you can create a default user password. A default password might be sufficient for a single user. However, we highly recommend you use one or both of these methods.
+### Configuring a Password for Redis
+
+Beginning with version 6, Redis maintains multi-user security through an *access control list* (ACL). Additionally, you can create a default user password. A default password might be sufficient for a single user. However, we highly recommend you use one or both of these methods.
 
 1.  Change the `requirepass` variable in the `redis.conf` file to set the default password. Uncomment the existing `requirepass` directive, and change the default password to a more secure password.
     {{< file "/etc/redis/redis.conf" >}}
+...
 requirepass yourpassword
+...
 {{< /file >}}
 2.  Restart Redis to force the changes to take effect.
 
@@ -166,8 +177,9 @@ requirepass yourpassword
         redis-cli
         SET server:name "fido2"
     Redis returns an authentication error since you have not logged in yet.
-
-        (error) NOAUTH Authentication required.
+    {{< output >}}
+    (error) NOAUTH Authentication required.
+    {{< /output >}}
 4.  Log in with the `auth` command, replacing "password" with the password you configured. Redis returns an `OK` response upon a successful log in.
 
         AUTH "password"
@@ -175,7 +187,7 @@ requirepass yourpassword
 
         SET server:name "fido2"
 
-## Configuring an Access Control List (ACL) for Redis
+### Configuring an Access Control List (ACL) for Redis
 
 In a multi-user environment, we highly recommend you configure an ACL. An ACL restricts privileges and potentially dangerous commands to a subset of the users. You can create additional users in the `redis.conf` file. Each user directive must contain a username, the keyword `on` or `off` to enable or disable the entry, a set of command permissions and restrictions, a set of key permissions, and the password (with a preceding `>` symbol). To indicate all commands, use `@all`. Use `allkeys` to reference all key-value pairs. Redis parses each user directive from left to right, so the order of permissions and restrictions is important.
 
@@ -204,8 +216,9 @@ user user3 +@all -SET allkeys on >user3pass
         AUTH user3 user3pass
         SET server:name "fido3"
     This attempt fails and returns a permission error.
-
-        (error) NOPERM this user has no permissions to run the 'set' command or its subcommand
+    {{< output >}}
+    (error) NOPERM this user has no permissions to run the 'set' command or its subcommand
+    {{< /output >}}
 6.  Attempt to retrieve the value of this same key with a `GET` command. Redis now returns the value.
 
         GET server:name
@@ -218,10 +231,10 @@ In earlier versions of Redis, administrators could rename and therefore hide pow
 
 ## Configuring Redis Persistence
 
-Redis supports 2 persistence options:
+Redis stores all of its data in memory, so in the event of a crash or a system reboot everything is lost. If you want to permanently save your data, you must configure some form of data persistence. Redis supports two persistence options:
 
-*   RDB persistence takes snapshots of the database at intervals corresponding to the `save` directives in the `redis.conf` file. The `redis.conf` file contains three default intervals. RDB persistence generates a compact file for the purpose of data recovery. However, any writes since the last snapshot are lost.
-*   AOF persistence appends every write operation to a log. Redis replays these transactions at startup to restore the database state. You can configure AOF persistence in the `redis.conf` file with the `appendonly` and `appendfsync` directives. This method is more durable and results in less data loss. Redis frequently rewrites the file so it is more concise, but AOF persistence results in larger files, and it is typically slower than the RDB approach.
+*   *Redis Database File* (RDB) persistence takes snapshots of the database at intervals corresponding to the `save` directives in the `redis.conf` file. The `redis.conf` file contains three default intervals. RDB persistence generates a compact file for the purpose of data recovery. However, any writes since the last snapshot are lost.
+*   *Append Only File* (AOF) persistence appends every write operation to a log. Redis replays these transactions at startup to restore the database state. You can configure AOF persistence in the `redis.conf` file with the `appendonly` and `appendfsync` directives. This method is more durable and results in less data loss. Redis frequently rewrites the file so it is more concise, but AOF persistence results in larger files, and it is typically slower than the RDB approach.
 
 1.  To change the RDB snapshot intervals, edit the `save` directives in `redis.conf`. A directive consisting of `save 30 100` means Redis will continue to take a snapshot every 30 seconds provided at least 100 keys have changed. Multiple snapshot thresholds can be configured.
     {{< file "/etc/redis/redis.conf" >}}
