@@ -25,11 +25,11 @@ Follow these steps to create a new Block Storage Volume, attach it to your Linod
 
     ![Select a Linode from the Manager](bs-cloud-select-linode.png "Select a Linode from the Manager")
 
-1.  Click on the **Volumes** tab, then click **Add a Volume**:
+1.  Click on the **Storage** tab, then click **Add a Volume**:
 
     ![Click Add a Volume](bs-cloud-add-volume-to-linode.png "Click Add a Volume")
 
-1.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum Volume size is 10,000 GiB. When finished, click *Submit*:
+1.  Assign the Block Storage Volume a label and size, select a configuration profile to attach the volume to, and add any optional tags. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum Volume size is 10,000 GiB. When finished, click *Submit*:
 
     ![Create a Volume with a label](bs-cloud-create-volume.png "Create a Volume with a label")
 
@@ -37,7 +37,7 @@ Follow these steps to create a new Block Storage Volume, attach it to your Linod
 There is currently a soft limit of 100 TB of Block Storage Volume per account.
 {{< /note >}}
 
-1.  Once you add a Volume it will appear under Attached Volumes with the new Volume's label, size, and file system path.
+1.  Once you add a Volume it will appear under Attached Volumes with the new Volume's label, region, size, and file system path.
 
     ![A Volume has been created](bs-cloud-volume-created.png "A Volume has been created")
 

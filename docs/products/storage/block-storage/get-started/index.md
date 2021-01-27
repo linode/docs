@@ -11,9 +11,9 @@ You can attach a Block Storage Volume to an existing Linode. Storage Volumes can
 
 1. Click on the Linodes link in the sidebar.
 1. Select the Linode to which you want to attach a Block Storage Volume from the Linode Detail page.
-1. Click on the Volumes tab, then click on the Add a Volume button.
+1. Click on the Storage tab, then click on the Add a Volume button.
 1. Select “Create and Attach Volume” to create a new Volume and assign it a unique label and storage size. Then, click submit.
-1. Once you add a Volume it appears under your Linode’s Volumes tab. The new Volume’s label, size, and file system path are displayed.
+1. Once you add a Volume it appears under your Linode’s Storage tab. The new Volume’s label, region, size, and file system path are displayed.
 1. Create a file system in your new Volume and mount it to your Linode. This requires you to SSH into your booted Linode. These Volume configuration steps appear in the Cloud Manager’s Volume Configuration panel.
 
 
@@ -35,4 +35,4 @@ You can increase the storage capacity of any Block Storage Volume.
 1. Navigate to the “Volumes” section of the Cloud Manager and click on the more options ellipsis next to the Volume you would like to attach to a Linode.
 1. Select “Attach” from the dropdown menu and a panel appears.
 1. From the “Linode” dropdown menu, select the Linode you want the Volume to attach to, and click on “Save”.
-1. Mount the Volume to your Linode. This requires you to SSH into your booted Linode. These Volume configuration steps can be accessed by clicking on the more option ellipsis next to the Volume you are transferring and selecting “Show Configuration”.
+1. Mount the Volume to your Linode. This requires you to SSH into your booted Linode. These Volume configuration steps can be accessed by clicking on the “Show Configuration” button for each volume in the "Volumes" section oo the Cloud Manager.
