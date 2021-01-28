@@ -296,7 +296,7 @@ Below is an example bucket policy written in JSON:
     "Effect": "Allow",
     "Principal": {
       "AWS": [
-        "arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"
+        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       ]
     },
     "Action": [
@@ -396,7 +396,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
     "Effect": "Allow",
     "Principal": {
       "AWS": [
-        "arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"
+        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       ]
     },
     "Action": [
@@ -463,7 +463,7 @@ s3://bucket-policy-example/ (bucket):
    Location:  default
    Payer:     BucketOwner
    Expiration Rule: none
-   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
+   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
    CORS:      none
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 {{</ output >}}
