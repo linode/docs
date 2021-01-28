@@ -75,7 +75,7 @@ PID TTY      STAT   TIME COMMAND
 
 The `init` process is the first process started by the Linux kernel when a system boots. Every other process on your system is a child of the `init` process. You can view this hierarchy using the `ps` command's `e` and `H` options. The `e` option causes `ps` to list all processes in the system, regardless of the owner or controlling terminal. The `H` option formats the `CMD` column's data to display the parent-child relationship between processes.
 
-		ps -He
+        ps -He
 
 {{< output >}}
 PID TTY      TIME     CMD
@@ -98,7 +98,7 @@ PID TTY      TIME     CMD
 
 Alternatively, you can get a prettier output with a few more columns by using the `ps -axjf` command.
 
-		ps -axjf
+        ps -axjf
 
 {{< output >}}
 PPID   PID  PGID   SID TTY      TPGID STAT   UID   TIME COMMAND
@@ -135,7 +135,7 @@ The additional columns provide the following information:
 
 Now that you understand the basics of the `ps` command, this section covers the benefits to the `ps aux` command. The `ps aux` displays the most amount of information a user usually needs to understand the current state of their system's running processes. Take a look at the following example:
 
-		ps aux
+        ps aux
 
 {{< output >}}
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
@@ -162,7 +162,7 @@ The `ps aux` command displays more useful information than other similar options
 
 The `ps` command has many other available options. For example, `ps` allows you to customize output columns so you can view your system's data in a format you prefer. You can filter based on the user, process name, or terminal. You can tell `ps` to print its output more verbosely and to ignore your screen width. You can spend more time learning what else `ps` can accomplish by reading its [*man-page*](https://en.wikipedia.org/wiki/Man_page) on your Linux system.
 
-		man ps
+        man ps
 
 ### Use `top` as an Alternative to the `ps` Command
 
