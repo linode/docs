@@ -98,12 +98,12 @@ Address=192.168.133.234/17
 
 # Disable the IPv6 privacy extensions (random IPs) - should be off by default already
 IPv6PrivacyExtensions=no
-# Do not apply Router Advertisement information: No SLAAC is performed and the IPv6 addresses below are used exclusively
-# See https://www.freedesktop.org/software/systemd/man/systemd.network.html#IPv6AcceptRA=
-IPv6AcceptRA=false
+# Disable the self-constructed IPv6 based on SLAAC, which would be the preffered outgoing IPv6.
+# See https://www.freedesktop.org/software/systemd/man/systemd.network.html#UseAutonomousPrefix=
+[IPv6AcceptRA]
+UseAutonomousPrefix=no
 
-# IPv6 gateway and primary address.
-Gateway=fe80::1
+# IPv6 primary address.
 Address=2001:db8:2000:aff0::2/64
 
 # Add a second IPv6 address.
