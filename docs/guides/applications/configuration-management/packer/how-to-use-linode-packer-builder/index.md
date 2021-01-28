@@ -187,7 +187,7 @@ The Linode Packer Builder requires a Linode Image ID to deploy a disk from. This
 ### Create Your Template
 
 {{< note >}}
-The Packer builder does not manage images. Once it creates an image, it will be stored on your Linode account and can be accessed and used as needed from the Linode Cloud Manager, via Linode's API v4, or using third-party tools like Terraform. Linode Images are limited to 2GB per Image and 3 Images per account.
+The Packer builder does not manage images. Once it creates an image, it will be stored on your Linode account and can be accessed and used as needed from the Linode Cloud Manager, via Linode's API v4, or using third-party tools like Terraform. Linode Images are limited to 6GB per Image and 3 Images per account.
 {{</ note >}}
 
 Create a file named `example.json` with the following content:
