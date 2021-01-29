@@ -135,7 +135,7 @@ The additional columns provide the following information:
 
 Now that you understand the basics of the `ps` command, this section covers the benefits to the `ps aux` command. The `ps aux` displays the most amount of information a user usually needs to understand the current state of their system's running processes. Take a look at the following example:
 
-		ps aux
+        ps aux
 
 {{< output >}}
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
