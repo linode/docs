@@ -78,13 +78,13 @@ This guide also provides instructions for configuring local emails, which are no
 
     ![Entering primary user for Postfix](postfix-primary-user.png "Entering primary user for Postfix")
 
-    When prompted for destinations for which to accept mail, you can leave the field blank or enter the following if you have a domain configured and want to ensure that a wider range of domains are accepted: `localhost, example.com, fqdn.example.com, mail.example.com, localhost.example.com`.
+    When prompted for destinations for which to accept mail, you can leave the field blank to only accept emails directed to the system mail name. If you have a domain name configured and want to ensure that emails are accepted for a wider range of domains, you can enter the following: `localhost, example.com, fqdn.example.com, mail.example.com, localhost.example.com`.
 
     ![Postfix accepted destinations](postfix-accepted-destinations.png "Postfix accepted destinations")
 
-    Use the default values on the remaining steps: **No** to synchronous updates, `127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128` for local network, `0` for the mailbox limit, `+` for the local inbox extension character, and **all** for the Internet protocols.
+    Use the default values on the remaining steps. Choose **No** to synchronous updates. Enter `127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128` for local network, `0` for the mailbox limit, and `+` for the local inbox extension character. Select **all** for the Internet protocols.
 
-    You can, alternatively, follow the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via a Gmail account.
+    You can, alternatively, follow the [Configure Postfix to Send Email Using External SMTP Servers](/docs/guides/postfix-smtp-debian7/) or the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via an external SMTP provider or a Gmail account, respectively.
 
 1. Test the email configuration with the following command; replace `example-user` with the username of a local user that you can log in as:
 
@@ -145,7 +145,7 @@ You can use the following steps to verify that Nagios is delivering alerts by em
 
 This guide uses [NagIRCBot](https://www.vanheusden.com/nagircbot/), an application designed to routinely read Nagios's status information and post updates to an Internet Relay Chat (IRC) channel.
 
-### Build and Install Nagircbot
+### Build and Install NagIRCBot
 
 1. Install the requisites for building NagIRCBot:
 
@@ -165,7 +165,7 @@ This guide uses [NagIRCBot](https://www.vanheusden.com/nagircbot/), an applicati
         sudo make
         sudo make install
 
-### Run and Test Nagircbot
+### Run and Test NagIRCBot
 
 1. Use a version of the following command to start NagIRCBot:
 
