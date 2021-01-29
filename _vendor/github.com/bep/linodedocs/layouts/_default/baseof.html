@@ -20,13 +20,12 @@
     </style>
   </noscript>
 </head>
-{{ $explorerClass := cond (or .IsHome (eq .Type "api")) "is-explorer-open" "is-not-explorer-open" }}
 <body class="type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
      no-js
      h-auto
      overflow-x-hidden
      is-not-topbar-pinned
-     {{ $explorerClass }}
+     is-not-explorer-open
      is-not-toc-open
      is-not-search-panel-open
      is-not-search-panel_filters-open
