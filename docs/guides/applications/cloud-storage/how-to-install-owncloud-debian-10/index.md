@@ -1,20 +1,22 @@
-﻿---
+---
 slug: how-to-install-owncloud-debian-10
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
 description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Debian 10 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
 og_description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Debian 10 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
-keywords: ['owncloud on debian']
+keywords: ['ownCloud on Debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-29
+published: 2021-01-29
 modified_by:
   name: Linode
-title: "Install ownCloud on Debian 10"
-h1_title: "How to Install ownCloud on Debian 10"
+title: "Install Owncloud Debian 10"
+h1_title: "How to Install Owncloud Debian 10"
 contributor:
   name: Jack Wallen
+tags: ["debian"]
 ---
+
 ## What is ownCloud?
 With [ownCloud](https://owncloud.com/) you can host a private cloud for data synchronization, file storage, and file sharing. You can use ownCloud as an alternative to commercial services like DropBox or Box. This software is great for secure collaboration across your projects and teams.
 
