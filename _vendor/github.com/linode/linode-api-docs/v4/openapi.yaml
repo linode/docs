@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.83.1
+  version: 4.83.2
 
   title: Linode API
   description: |
@@ -1885,10 +1885,12 @@ paths:
       - Account
       summary: User Create
       description: >
-        Creates a User on your Account. Once created, the User will be
-        able to log in and access portions of your Account. Access is
-        determined by whether or not they are restricted, and what grants they
-        have been given.
+        Creates a User on your Account. Once created, a confirmation message containing
+        password creation and login instructions is sent to the User's email address.
+
+
+        The User's account access is determined by whether or not they are restricted,
+        and what grants they have been given.
       operationId: createUser
       x-linode-cli-action: create
       security:
@@ -6745,25 +6747,25 @@ paths:
     parameters:
     - name: clusterId
       in: path
-      description: ID of the Kubernetes cluster to be recycled.
+      description: ID of the Kubernetes cluster which contains nodes to be recycled.
       required: true
       schema:
         type: integer
     x-linode-cli-command: lke
     post:
       operationId: postLKEClusterRecycle
-      x-linode-cli-action: cluster-recycle
+      x-linode-cli-action: cluster-nodes-recycle
       security:
       - personalAccessToken: []
       - oauth:
         - lke:read_write
       tags:
       - Linode Kubernetes Engine (LKE)
-      summary: Kubernetes Cluster Recycle
+      summary: Cluster Nodes Recycle
       description: |
-        Recycles a designated Kubernetes Cluster. All Linodes within the Cluster will be deleted
+        Recycles all nodes in all pools of a designated Kubernetes Cluster. All Linodes within the Cluster will be deleted
         and replaced with new Linodes on a rolling basis, which may take several minutes. Replacement Nodes are
-        installed with the latest available patch for the Cluster's Kubernetes Version.
+        installed with the latest available [patch version](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/release/versioning.md#kubernetes-release-versioning) for the Cluster's current Kubernetes minor release.
 
         **Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.**
       responses:
@@ -6784,7 +6786,7 @@ paths:
                 https://api.linode.com/v4/lke/clusters/12345/recycle
       - lang: CLI
         source: >
-          linode-cli lke cluster-recycle 12345
+          linode-cli lke cluster-nodes-recycle 12345
   /lke/clusters/{clusterId}/pools/{poolId}:
     parameters:
     - name: clusterId
@@ -9402,7 +9404,7 @@ paths:
         Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode
         instances.
 
-        A Firewall can be assigned to multiple Linode services, and up to three active Firewalls
+        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls
         can be assigned to a single Linode service.
 
         A `firewall_create` Event is generated when this endpoint returns successfully.
@@ -9443,10 +9445,10 @@ paths:
                     A Firewall Device assigns a Firewall to a Linode service. Currently, Firewalls
                     can only be assigned to Linode instances.
 
-                    * A Firewall can be assigned to multiple Linode services, and up to three active Firewalls can
+                    * A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
                     be assigned to a single Linode service.
 
-                    * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if three other active Firewalls
+                    * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if five other active Firewalls
                     are already assigned to the same service.
 
 
@@ -9786,9 +9788,9 @@ paths:
       description: |
         Creates a Firewall Device, which assigns a Firewall to a Linode service (referred to
         as the Device's `entity`). Currently, only Devices with an entity of type `linode` are accepted.
-        A Firewall can be assigned to multiple Linode services, and up to three active Firewalls can
+        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
         be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if three other active Firewalls
+        assigned to a service, but they cannot be enabled if five other active Firewalls
         are already assigned to the same service.
 
         Creating a Firewall Device will apply the Rules from a Firewall to a Linode service.
@@ -11044,7 +11046,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/serviceops/) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/serviceops/#list-buckets) directly.
       tags:
       - Object Storage
       security:
@@ -11089,7 +11091,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#put-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -11189,7 +11191,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#get-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#get-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -11220,12 +11222,12 @@ paths:
         Removes a single bucket. While buckets containing objects _may_ be
         deleted by including the `force` option in the request, such operations
         will fail if the bucket contains too many objects. The recommended
-        way to empty large buckets is to use the [S3 API to configure lifecycle policies](https://docs.ceph.com/docs/master/radosgw/bucketpolicy/#) that
+        way to empty large buckets is to use the [S3 API to configure lifecycle policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/#) that
         remove all objects, then delete the bucket.
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully- featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#delete-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#delete-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -11266,7 +11268,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#get-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#get-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -11321,12 +11323,9 @@ paths:
       description: |
         Allows changing basic Cross-origin Resource Sharing (CORS) and Access Control Level (ACL) settings.
         Only allows enabling/disabling CORS for all origins, and/or setting canned ACLs.
-        For more fine-grained control of both systems, please use the S3 API directly.
 
 
-
-        This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket-acl) directly.
+        For more fine-grained control of both systems, please use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#put-bucket-acl) directly.
       tags:
       - Object Storage
       security:
@@ -11386,11 +11385,9 @@ paths:
       description: |
         Allows changing basic Cross-origin Resource Sharing (CORS) and Access Control Level (ACL) settings.
         Only allows enabling/disabling CORS for all origins, and/or setting canned ACLs.
-        For more fine-grained control of both systems, please use the S3 API directly.
 
 
-        This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket-acl) directly.
+        For more fine-grained control of both systems, please use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#put-bucket-acl) directly.
       tags:
       - Object Storage
       security:
@@ -11462,13 +11459,13 @@ paths:
       - url: https://api.linode.com/v4
       summary: Object Storage Object ACL Config View
       description: |
-        This Object Storage bucket's currently configured Access Control List (ACL).
-          ACLs define who can access your buckets and objects and specify the level of access
-          granted to those users.
+        View an Object’s configured Access Control List (ACL) in this Object Storage bucket.
+        ACLs define who can access your buckets and objects and specify the level of access
+        granted to those users.
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.aws.amazon.com/cli/latest/reference/s3api/get-object-acl.html) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/objectops/#get-object-acl) directly.
       tags:
       - Object Storage
       security:
@@ -11530,7 +11527,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object-acl.html) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/objectops/#set-object-acl) directly.
       tags:
       - Object Storage
       security:
@@ -11629,7 +11626,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/luminous/radosgw/s3/bucketops/#get-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/objectops/#get-object) directly.
       tags:
       - Object Storage
       security:
@@ -11714,7 +11711,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/)
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/)
         directly.
       tags:
       - Object Storage
@@ -15998,7 +15995,7 @@ components:
       type: object
       description: >
         A resource that controls incoming and outgoing network traffic to a Linode service. A Firewall can
-        be assigned to multiple Linode services, and up to three active Firewalls can be assigned to a single Linode service.
+        be assigned to multiple Linode services, and up to five active Firewalls can be assigned to a single Linode service.
         [Create a Firewall Device](/docs/api/networking/#firewall-create)
         to assign a Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode instances.
       properties:
@@ -16154,9 +16151,9 @@ components:
       type: object
       description: >
         Associates a Firewall with a Linode service. A Firewall can be assigned
-        to multiple Linode services, and up to three active Firewalls can
+        to multiple Linode services, and up to five active Firewalls can
         be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if three other active Firewalls
+        assigned to a service, but they cannot be enabled if five other active Firewalls
         are already assigned to the same service.
       properties:
         id:
@@ -19310,7 +19307,7 @@ components:
       type: object
       description: >
         An Object Storage Bucket. This should be accessed primarily through the
-        S3 API; [click here for more information](https://docs.ceph.com/docs/mimic/radosgw/s3/#api).
+        S3 API; [click here for more information](https://docs.ceph.com/en/latest/radosgw/s3/#api).
       properties:
         created:
           type: string
