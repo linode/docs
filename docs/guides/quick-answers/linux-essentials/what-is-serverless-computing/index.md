@@ -8,7 +8,7 @@ og_description:  'Serverless computing is an application deployment architecture
 keywords: ['serverless computing']
 tags: ["linux", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-29
+published: 2020-01-29
 modified_by:
   name: Linode
 title: 'What is Serverless Computing?'
@@ -66,7 +66,7 @@ And then there are the caveats:
 On-prem execution has several advantages over cloud-based serverless computing:
 
 - Avoid vendor lock-in: As described, cloud vendors use proprietary APIs that tie you to their service. Yes, you still use a vendor to provide on-premises software but the majority are open source with fewer lock-in hooks.
-- Enhanced infrastructure control: Since you control the hardware, you can make sure certain functions don&#39;t run at the same time or that too many run at once.
+- Enhanced infrastructure control: Since you control the hardware, you can make sure certain functions don't run at the same time or that too many run at once.
 - Potentially cheaper: Depending on your usage it may cost less to run on-prem. Since the cost is tied to usage, if you are running a large number of functions you might be better off using on-prem.
 - Reduced security risks: Compliance and regulatory issues might force your hand.
 
