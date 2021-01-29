@@ -461,6 +461,7 @@ flyspray
 foodcritic
 fortran
 fmt
+fn
 fpm
 fragging
 frakti
