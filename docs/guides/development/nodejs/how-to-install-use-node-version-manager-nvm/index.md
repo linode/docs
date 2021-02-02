@@ -21,33 +21,18 @@ external_resources:
 
 The [*Node Version Manager (NVM)*](https://github.com/nvm-sh/nvm) is an open source version manager for [*Node.js (Node)*](https://nodejs.org/en/). NVM is easy to install and understand, and works on any POSIX-compliant shell (for example, sh or bash). NVM allows you to easily install different versions of Node and switch between them on a per-shell basis. This guide describes how to install NVM, and how to use it to install and run different versions of Node.
 
-## Before You Begin
-
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
-
-3.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-<!-- Include one of the following notes if appropriate. --->
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 ## Advantages of NVM
 
-Node changes quickly, so testing applications with different versions is often difficult. Since NVM enables quick and effortless switching between Node versions, it is much easier to test version compatibility and upgrades with multiple libraries. NVM stores the Node versions and associated modules inside your user directory, so `sudo` does not have to be used. NVM also simplifies the installation and compilation process because Node versions no longer have to be obtained directly from the distribution channel. NVM does not have any significant disadvantages.
+Node changes quickly, so testing applications with different versions is often difficult. Since NVM enables quick and effortless switching between Node versions, it is much easier to test version compatibility and upgrades with multiple libraries. NVM stores the Node versions and associated modules inside your user directory, so `sudo` does not have to be used. NVM also simplifies the installation and compilation process because Node versions no longer have to be obtained directly from the distribution channel.
+
 ## A Summary of the NVM Installation and Configuration Process
 
 A complete NVM installation consists of the following high-level steps. Each step is described below.
 
-1.  Installing and Configuring NVM;
-2.  Using NVM to Install Node;
-3.  Using NVM to Run Node;
-4.  Creating NVM Aliases;
+1.  Installing and Configuring NVM.
+2.  Using NVM to Install Node.
+3.  Using NVM to Run Node.
+4.  Creating NVM Aliases.
 
 ## Installing and Configuring NVM
 
@@ -85,8 +70,9 @@ NVM uses the following environmental variables. We recommend leaving them at the
 
         command -v nvm
     If the installation was successful, NVM returns `nvm`. If you see the message `nvm: command not found`, confirm the original installation completed successfully and repeat step #2 of this section to source the `.bashrc` file.
-
+    {{< output >}}
         nvm
+    {{< /output >}}
 4.  You can confirm the version of NVM that is running with the following command:
 
         nvm --version
@@ -99,19 +85,23 @@ The `install` command downloads, compiles, and installs the specified version of
 
         nvm install node
     After a successful install, NVM displays information about the installation.
+    {{< output >}}
+Now using node v15.5.1 (npm v7.3.0)
+Creating default alias: default -> node (-> v15.5.1)
+    {{< /output >}}
 
-        Now using node v15.5.1 (npm v7.3.0)
-        Creating default alias: default -> node (-> v15.5.1)
     {{< note >}}
 When used in a NVM command, `node` is an alias for the latest version of Node. The first version of Node you installed automatically becomes the default version. A new shell instantiates with the current version of Node set to `default`. The alias `system` refers to the system-installed version of Node (if any).
     {{< /note >}}
+
 2.  To install a specific version of Node, specify the major or minor release number. You can preview a list of all available Node versions with the `ls-remote` command.
 
         nvm ls-remote
     NVM displays a long list of available versions in the following format:
-
-        v5.12.0
-        v6.0.0
+    {{< output >}}
+v5.12.0
+v6.0.0
+    {{< /output >}}
 3.  Install any additional versions of Node you want to use. You can specify either a major or minor release of Node to install. When you install a new version of Node, NVM immediately begins using it and designates it as the current version.
 
         nvm install 13.10.1 # Specific minor release
@@ -126,14 +116,16 @@ If you only specify the major release number for a Node version, NVM installs th
 
         nvm ls
     NVM returns a list of all Node versions and aliases, along with an arrow indicating the current version. Here is a sample output:
+    {{< output >}}
+v13.10.1
+v14.15.4
+->      v15.5.1
+default -> node (-> v15.5.1)
+iojs -> N/A (default)
+node -> stable (-> v15.5.1) (default)
+stable -> 15.5 (-> v15.5.1) (default)
+    {{< /output >}}
 
-        v13.10.1
-        v14.15.4
-        ->      v15.5.1
-        default -> node (-> v15.5.1)
-        iojs -> N/A (default)
-        node -> stable (-> v15.5.1) (default)
-        stable -> 15.5 (-> v15.5.1) (default)
 2.  To select a different version of Node, use the `nvm use` command. Specify either the version number of Node (major or minor release) or an alias such as `node`.
 
         nvm use node
@@ -141,27 +133,30 @@ If you only specify the major release number for a Node version, NVM installs th
 
         nvm use 14
     NVM confirms it is now using the new version.
-
-        Now using node v14.15.4
+    {{< output >}}
+    Now using node v14.15.4
+    {{< /output >}}
     You can also confirm the current version of Node with `nvm current`.
 
         nvm current
     NVM again returns the current version number.
-
-        v14.15.4
-
+    {{< output >}}
+    v14.15.4
+    {{< /output >}}
     {{< note >}}
 You can also confirm the version of Node currently in use with `node -v`. To go back to using the system's version of Node, run the command `nvm use system`.
     {{< /note >}}
+
 3.  To switch to a new version of Node and immediately open a Node console, use `nvm run`. The `run` command is very similar to `nvm use` in all other respects.
 
         nvm run node
     NVM confirms it is now running the selected version of Node and returns a Node prompt.
-
-        Running node v15.5.1 (npm v7.3.0)
-        Welcome to Node.js v15.5.1.
-        Type ".help" for more information.
-        >
+    {{< output >}}
+Running node v15.5.1 (npm v7.3.0)
+Welcome to Node.js v15.5.1.
+Type ".help" for more information.
+>
+    {{< /output >}}
 ## Creating NVM Aliases
 
 You might find it convenient to refer to a Node version by a different or easier to remember name. NVM already provides some pre-made defaults such as `default` and `node`, which refers to the latest version. But you can use the `alias` command to change the value of an existing alias or create a brand-new alias.
@@ -170,14 +165,18 @@ You might find it convenient to refer to a Node version by a different or easier
 
         nvm alias default 14
     NVM confirms the new value for the alias.
+    {{< output >}}
+default -> 14 (-> v14.15.4)
+    {{< /output >}}
 
-        default -> 14 (-> v14.15.4)
 2.  Use the `nvm alias` command to create a new alias. The following example defines a new `maintenance` alias as Node version 13.10.1.
 
         nvm alias maintenance 13.10.1
     NVM confirms the new alias.
+    {{< output >}}
+maintenance -> 13.10.1 (-> v13.10.1)
+    {{< /output >}}
 
-        maintenance -> 13.10.1 (-> v13.10.1)
 3.  You can display all of the new and old aliases with the `nvm ls` command.
 
         nvm ls
