@@ -30,11 +30,11 @@ Nano is included with many Linux distributions by default, but some users may ne
 
 **Debian/Ubuntu**:
 
-apt install nano
+	apt install nano
 
 **CentOS/Fedora**:
 
-yum install nano
+	yum install nano
 
 
 ### Command Keys
@@ -51,16 +51,11 @@ A command represented as M-R in nano would be performed by pressing the “Alt�
 
 Typing nano without any arguments will open a blank file for editing:
 
-nano
+	nano
 
 This will open up a blank new file in your terminal like below:
 
-
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image1.png "image_tooltip")
+![alt_text](image1.png "image_tooltip")
 
 
 You can make changes to this file. You may exit this file by pressing Ctrl + X. It prompts you to save your file and name it before you exit. 
@@ -70,60 +65,50 @@ You can make changes to this file. You may exit this file by pressing Ctrl + X. 
 Once prompted, select press “Y” and then write the name of your file. 
 
 
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
+![alt_text](image2.png "image_tooltip")
 
 
 After you enter a filename, press “enter” to save your file. We saved it as a tutorial.txt, and here’s what we have stored in it: 
 
-
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
-
+![alt_text](image3.png "image_tooltip")
 
 
 ### Open an Existing File Using Nano
 
 To open a file, pass the filename as an argument in the following command:
 
-nano &lt;filename>
+	nano <filename>
 
 This opens an existing file within your current working directory. 
 
 Let’s practice that using the file in our current working directory we created earlier tutorial.txt 
 
-nano  tutorial.txt
+	nano  tutorial.txt
 
 If you wish to open a file in a different directory, you can provide a path instead. To do that, we change our current working directory on Linux and go to our home(/). Our path to tutorial.txt is /nano-text-editor-tutorial/tutorial.txt 
 
 To edit tutorial.txt use this command: 
 
-nano /nano-text-editor-tutorial/tutorial.txt
+	nano /nano-text-editor-tutorial/tutorial.txt
 
 If tutorial.txt does not exist in /nano-text-editor-tutorial/, nano creates a file named tutorial.txt in there. 
 
 You can also open files at a specific line or column number:
 
-nano +2 /nano-text-editor-tutorial/tutorial.txt
+	nano +2 /nano-text-editor-tutorial/tutorial.txt
 
-nano +LINE,COLUMN /nano-text-editor-tutorial/tutorial.txt
+	nano +LINE,COLUMN /nano-text-editor-tutorial/tutorial.txt
 
 To open a file as read-only:
 
-nano -v myfile
+	nano -v myfile
 
 
 ### Open Configuration Files Using Nano
 
 When editing files used to configure applications or system utilities, start nano with the -w flag:
 
-nano -w /etc/mysql/my.cnf
+	nano -w /etc/mysql/my.cnf
 
 This flag will prevent nano from wrapping lines that are too long to fit on your screen, which can create problems if config directives are saved across multiple lines.
 
@@ -148,78 +133,70 @@ To cut a line of text, enter “^K.” To paste, move the cursor where you want 
 To open up a list of any sort in Nano, when in a file editor, e.g. the tutorial.txt file below, enter “Ctrl+G.”
 
 
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image4.png "image_tooltip")
+![alt_text](image4.png "image_tooltip")
 
 
 Once you do that, Nano help menu opens up and  shows you the following commands
 
 
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image5.png "image_tooltip")
+![alt_text](image5.png "image_tooltip")
 
 
-^G    (F1)      Display this help text
+	^G    (F1)      Display this help text
 
-^X    (F2)      Close the current file buffer / Exit from nano
+	^X    (F2)      Close the current file buffer / Exit from nano
 
-^O    (F3)      Write the current file to disk
+	^O    (F3)      Write the current file to disk
 
-^R    (F5)      Insert another file into the current one
+	^R    (F5)      Insert another file into the current one
 
-^W    (F6)      Search forward for a string or a regular expression
+	^W    (F6)      Search forward for a string or a regular expression
 
-^\    (M-R)     Replace a string or a regular expression
+	^\    (M-R)     Replace a string or a regular expression
 
-^K    (F9)      Cut the current line and store it in the cutbuffer
+	^K    (F9)      Cut the current line and store it in the cutbuffer
 
-^U    (F10)     Uncut from the cutbuffer into the current line
+	^U    (F10)     Uncut from the cutbuffer into the current line
 
-^J    (F4)      Justify the current paragraph
+	^J    (F4)      Justify the current paragraph
 
-^T    (F12)     Invoke the spell checker, if available
+	^T    (F12)     Invoke the spell checker, if available
 
-                Invoke the linter, if available
+		        Invoke the linter, if available
 
-                Invoke formatter, if available
+		        Invoke formatter, if available
 
-^C    (F11)     Display the position of the cursor
+	^C    (F11)     Display the position of the cursor
 
-^_    (M-G)     Go to line and column number
+	^_    (M-G)     Go to line and column number
 
-M-U             Undo the last operation
+	M-U             Undo the last operation
 
-M-E             Redo the last undone operation
+	M-E             Redo the last undone operation
 
-M-A   (^6)      Mark text starting from the cursor position
+	M-A   (^6)      Mark text starting from the cursor position
 
-M-6   (M-^)     Copy the current line and store it in the cutbuffer
+	M-6   (M-^)     Copy the current line and store it in the cutbuffer
 
-M-]             Go to the matching bracket
+	M-]             Go to the matching bracket
 
-M-W   (F16)     Repeat the last search
+	M-W   (F16)     Repeat the last search
 
-M-▲             Search next occurrence backward
+	M-▲             Search next occurrence backward
 
-M-▼             Search next occurrence forward
+	M-▼             Search next occurrence forward
 
-^B    (◀)       Go back one character
+	^B    (◀)       Go back one character
 
-^F    (▶)       Go forward one character
+	^F    (▶)       Go forward one character
 
-^◀    (M-Space) Go back one word
+	^◀    (M-Space) Go back one word
 
-^▶    (^Space)  Go forward one word
+	^▶    (^Space)  Go forward one word
 
-^A    (Home)    Go to beginning of current line
+	^A    (Home)    Go to beginning of current line
 
-^E    (End)     Go to end of current line
+	^E    (End)     Go to end of current line
 
 
 ### Search Text Using Nano
@@ -232,50 +209,38 @@ To search for text in a document, enter “^W.” This will open a search prompt
 
 To show this, let’s make some changes to our existing tutorial.txt file and save it with the following text in it: 
 
-test 1
+	test 1
 
-test 2
+	test 2
 
-test 3
+	test 3
 
-test 4
+	test 4
 
-Linode1
+	Linode1
 
-Linode2
+	Linode2
 
-Linode3
+	Linode3
 
-Linode4
+	Linode4
 
-Linode-end
-
-
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+	Linode-end
 
 
-![alt_text](images/image6.png "image_tooltip")
+
+![alt_text](image6.png "image_tooltip")
 
 
 Let’s search for any word that contains “end.” To do so, we enter “Ctrl+W” and it opens an option to search. We now see an option to search at the bottom of the Nano editor: 
 
 
-
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image7.png "image_tooltip")
+![alt_text](image7.png "image_tooltip")
 
 
 Write “end” in this and press enter and to see the text that contains “end” in it. In our case, doing this highlights Linode-end. If there were multiple words that had “end” in them, you could move to other search results by using “Alt+W” to see the next match. 
 
-
-
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image8.png "image_tooltip")
+![alt_text](image8.png "image_tooltip")
 
 
 **Go to Line Number**
@@ -288,35 +253,20 @@ At the search menu, enter “Alt+R.” Enter the text to be replaced and press �
 
 Let’s try that with “end” in the tutorial.txt file. Our goal is to find “end” in our tutorial.txt file and replace it with “launch”. To get started, press “Alt+R’ to see the following menu appear:
 
-
-
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image9.png "image_tooltip")
+![alt_text](image9.png "image_tooltip")
 
 
 Next, enter the text you want to replace. In our case, it is “end.” And, then press “enter.” 
 
 Nano prompts us to enter the replacement text for “end” now. We want to replace “end” with “launch,” so we enter it here. 
 
-
-
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image10.png "image_tooltip")
+![alt_text](image10.png "image_tooltip")
 
 
 Next, Nano asks you for confirmation. Press “Y” and replace “end” with “launch.” 
 
-
-
-<p id="gdcalert11" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image11.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert12">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
 ![alt_text](images/image11.png "image_tooltip")
- \
+
 
 
 Note: Nano’s editor highlights the text to be replaced as you can see in the image above.  
@@ -328,11 +278,11 @@ Nano has a built-in spell checking feature, but you will need to install the spe
 
 Debian/Ubuntu:
 
-apt install spell
+	apt install spell
 
 CentOS/Fedora:
 
-yum install spell
+	yum install spell
 
 Once you have installed spell, you can use the spell checking feature by pressing “^T” while editing a file.
 
@@ -348,7 +298,7 @@ Nano can create backups of files when you exit. These backups can be placed in a
 
 Using the -B option when starting nano will create backups of the file for you while using the -C option will allow you to specify the directory to place backup files in:
 
-nano -BC ~/backups index.php
+	nano -BC ~/backups index.php
 
 The command listed above will create a backup copy of index.php in the backups folder in the current user’s home directory.
 
