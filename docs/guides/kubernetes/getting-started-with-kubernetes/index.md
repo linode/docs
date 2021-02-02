@@ -118,7 +118,7 @@ sub   4096R/F273FCD8 2017-02-22
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
 1.  Update your package index and install Docker CE. For more information, see [Docker](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker)
-        
+
         sudo apt-get update && sudo apt-get install -y \
         containerd.io=1.2.13-2 \
         docker-ce=5:19.03.11~3-0~ubuntu-$(lsb_release -cs) \
