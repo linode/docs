@@ -6,10 +6,10 @@ author:
 description: 'In this guide, we will show you how to create, invoke and delete views in MySQL database.'
 keywords: ['mysql','database','views']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-08
+published: 2021-02-01
 modified_by:
   name: Linode
-title: "How to Use Views in MySQL Database"
+title: "How to Use Views in a MySQL Database"
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83
@@ -17,52 +17,62 @@ external_resources:
 - '[MySQL - Using Views](https://dev.mysql.com/doc/refman/8.0/en/views.html)'
 ---
 
-A *view* in MySQL is a named query that can be triggered to display data stored in other tables. In simple terms, views are user-defined virtual tables.
+A *view* in MySQL is a named query that can be triggered to display data stored in other tables. In other words, views are user-defined virtual tables. Views can be used to:
 
-Since views are SQL definitions built on top of other tables, they are mainly used to:
+- **Enhance database security.** If your database contains sensitive information that needs to be secured, using a view helps you to isolate the data. A view can be created with a predefined result set, and you can grant users access only to that view, instead of the table that contains sensitive information.
+- **Move complex business logic to the database server.** Instead of coding frequently used software logic in different clients, a developer can move the logic into the database level using a view. For example, a view can be created to display customer classifications depending on their total sales.
+- **Reduce data distraction.** A view can combine results from different tables and only display the relevant columns when invoked.
 
-- Enhance database security: If your database contains sensitive information that needs to be highly secure, using a view helps you to isolate the data by granting users access only to the view which has the predefined result set.
-- Move some complex business logic to the database server: Instead of coding frequently used software logic in different clients, a developer can move the logic in the database level using a view(e.g. a view to display customer classifications depending on the total sales).
-- Reducing data distraction: A view can combine results from different tables and only display the relevant columns when invoked.
+In this guide you will learn:
 
-So, if you are planning to simplify your complex queries and make your application logic consistent on top of having a tight layer of security, you should use MySQL views.
-
-In this guide, we will take you through:
-
-- How the [syntax of a MySQL view](/docs/databases/mysql/how-to-create-and-use-mysql_views/#the-mysql-view-syntax) is structured
-- How to [create a MySQL view](/docs/databases/mysql/how-to-create-and-use-mysql_views/#creating-a-mysql-view).
-- How to [invoke a MySQL view](/docs/databases/mysql/how-to-create-and-use-mysql_views/#invoking-a-mysql-view).
-- How to [drop a view in MySQL](/docs/databases/mysql/how-to-create-and-use-mysql_views/#dropping-a-mysql-view).
+- How the [syntax of a MySQL view](#the-mysql-view-syntax) is structured.
+- How to [create a MySQL view](#creating-a-mysql-view).
+- How to [invoke a MySQL view](#invoking-a-mysql-view).
+- How to [drop a view in MySQL](#dropping-a-mysql-view).
 
 ## Before You Begin
 
-Make sure you have set up the following:
+For this tutorial, you'll need:
 
-1.  A Linode server. You can follow the [Getting Started with Linode](/docs/getting-started/) guide to configure a Linode server.
+1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](/docs/guides/getting-started/) guide to provision a Linode.
 
-1.  A MySQL database server. Please refer to the [MySQL section](/docs/databases/mysql/) to set up a database depending with your distribution.
+1.  The MySQL server software (or MariaDB) installed on your Linode. Please refer to the [MySQL section](/docs/guides/databases/mysql/), which contains guides that describe how to install MySQL on several Linux distributions.
 
 ## Preparing the Database
 
-For the basis of this guide, we will create a sample database, define a few tables and populate them with some data.
+Before creating a view, you'll first create a sample database, define a few tables, and populate them with some data:
 
-1.  First, `SSH` to your Linode server and type the command below to log in to MySQL as a root user:
+1.  [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) to your Linode. Then, enter this command to log in to MySQL as the root user:
 
         mysql -u root -p
 
     When prompted, enter the root password of your MySQL server and hit **Enter** to continue.
 
-1.  You should get the MySQL prompt as shown below:
+    {{< note >}}
+If your password is not accepted, you may need to run the previous command with `sudo`:
+
+    sudo mysql -u root -p
+{{< /note >}}
+
+1.  If your password is accepted, you should see the MySQL prompt:
 
     {{< output >}}
 mysql >
 {{< /output >}}
 
-1.  Next, run the SQL commands below to create  a `sample_database`:
+    {{< note >}}
+If you are using MariaDB, you may see a prompt like the following instead:
+
+    {{< output >}}
+MariaDB [(none)]>
+{{< /output >}}
+{{< /note >}}
+
+1.  Next, run this SQL command to create a sample database that's named `sample_database`:
 
         CREATE DATABASE sample_database;
 
-1.  The output below should confirm that the database was created successfully.
+    You should see this output, which confirms that the database was created successfully:
 
     {{< output >}}
 Query OK, 1 row affected (0.02 sec)
@@ -72,13 +82,13 @@ Query OK, 1 row affected (0.02 sec)
 
         USE sample_database;
 
-1.  Ensure the database is switched by confirming the output below:
+    You should see this output:
 
-        {{< output >}}
+    {{< output >}}
 Database changed
 {{< /output >}}
 
-1. Next, run the command below to create a `customers` table:
+1. Run this command to create a `customers` table:
 
         CREATE TABLE customers
         (
@@ -86,43 +96,43 @@ Database changed
         customer_name VARCHAR(50)
         ) ENGINE = InnoDB;
 
-1. You should now see the output shown below:
+    You should see this output:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 0 rows affected (0.07 sec)
 {{< /output >}}
 
-1.  Next, populate the `customers` table with three records by running the below `INSERT` commands one by one:
+1.  Next, populate the `customers` table with three records. Run the below `INSERT` commands one by one:
 
-        INSERT INTO customers (customer_name) VALUES ('JOHN DOE');
-        INSERT INTO customers (customer_name) VALUES ('MARY ROE');
-        INSERT INTO customers (customer_name) VALUES ('RICHARD ROE');
+        INSERT INTO customers (customer_name) VALUES ('Leslie');
+        INSERT INTO customers (customer_name) VALUES ('Andy');
+        INSERT INTO customers (customer_name) VALUES ('Ben');
 
-1.  You will get the output shown below after each record is inserted:
+    The output below is shown after each record is inserted:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 1 row affected (0.08 sec)
 ...
 {{< /output >}}
 
-1.  Ensure the sample records were inserted into the database by running the `SELECT` command below:
+1.  Ensure the sample records were inserted into the database by running this `SELECT` command:
 
         SELECT * FROM customers;
 
-1.  The customers' list below confirms that the data was inserted successfully:
+    This output appears, which confirms that the data was inserted successfully in the previous step:
 
-        {{< output >}}
+    {{< output >}}
 +-------------+---------------+
 | customer_id | customer_name |
 +-------------+---------------+
-|           1 | JOHN DOE      |
-|           2 | MARY ROE      |
-|           3 | RICHARD ROE   |
+|           1 | Leslie        |
+|           2 | Andy          |
+|           3 | Ben           |
 +-------------+---------------+
 3 rows in set (0.01 sec)
 {{< /output >}}
 
-1. Next, create a `sales` table:
+1. Next, create a `sales` table. Run this command:
 
         CREATE TABLE sales
         (
@@ -130,19 +140,19 @@ Query OK, 1 row affected (0.08 sec)
         monthly_sales DECIMAL(17,2)
         ) ENGINE = InnoDB;
 
-1. Ensure you get the below output:
+    This output appears:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 0 rows affected (0.07 sec)
 {{< /output >}}
 
-1.  Then, run the following commands to add some data to the `sales` table :
+1.  Then, add some data to the `sales` table. Run these commands one by one:
 
         INSERT INTO sales (customer_id, monthly_sales) VALUES ('1','500.27');
         INSERT INTO sales (customer_id, monthly_sales) VALUES ('2','7600.32');
         INSERT INTO sales (customer_id, monthly_sales) VALUES ('3', '25879.63');
 
-1.  After inserting each sales record, you will get the following output:
+    After inserting each sales record, this output appears:
 
     {{< output >}}
 Query OK, 1 row affected (0.01 sec)
@@ -150,11 +160,11 @@ Query OK, 1 row affected (0.01 sec)
 {{< /output >}}
 
 
-1.  Next, run a `SELECT` query to verify if the sales data was inserted into the table:
+1.  Next, run a `SELECT` query to verify that the sales data was inserted into the table:
 
         SELECT * FROM sales;
 
-1.  The output below should confirm the sales data:
+    This output appears, which confirms that the sales data was inserted successfully in the previous step:
 
         {{< output >}}
 +-------------+---------------+
@@ -171,76 +181,73 @@ Query OK, 1 row affected (0.01 sec)
 
 ## The MySQL View Syntax
 
-1.  Below is a simplified version of the MySQL view syntax:
+This is a simplified version of the MySQL view syntax:
 
         CREATE
         VIEW view_name
         AS select_statement
 
-    - `view_name`: The name of the MySQL view must be defined here. It is advisable to use a descriptive name so that you can remember the function of the view later.
-    - `select_statement`: This is the SQL query that is coupled with the defined view. When the view is invoked, MySQL will run this query to return a recordset.
+- `view_name`: The name of the MySQL view must be defined here. It is advisable to use a descriptive name so that you can remember the function of the view later.
 
-1.  After looking at the general and simplified syntax of the MySQL view, the next step is creating the first view.
+- `select_statement`: This is the SQL query that is coupled with the defined view. When the view is invoked, MySQL runs this query to return a recordset.
 
 ## Creating a MySQL View
 
-1. In this section, you will create the first MySQL view. This view will be used to classify customers depending on the number of monthly sales. Ensure you are logged in to the MySQL server.
+In this section, you will create an example MySQL view. This view is used to classify customers from your sample database, depending on their number of monthly sales.
 
-1.  Then, run the command below to create a `customers_membership` view:
+Ensure you are logged into your MySQL server. Then, run the command below to create a `customers_membership` view:
 
-        CREATE
-        VIEW customers_membership
-        AS SELECT sales.customer_id,
-        customer_name,
-        (IF(sales.monthly_sales >= 5000, 'PREMIUM', 'BASIC')) as membership
-        FROM sales
-        LEFT JOIN customers
-        ON sales.customer_id = customers.customer_id;
+    CREATE
+    VIEW customers_membership
+    AS SELECT sales.customer_id,
+    customer_name,
+    (IF(sales.monthly_sales >= 5000, 'PREMIUM', 'BASIC')) as membership
+    FROM sales
+    LEFT JOIN customers
+    ON sales.customer_id = customers.customer_id;
 
-1.  If the view is created successfully, you should get the output shown below:
+If the view is created successfully, you should see the output shown below:
 
-        {{< output >}}
+{{< output >}}
 Query OK, 0 rows affected (0.01 sec)
 {{< /output >}}
 
-1.  In the above MySQL command, you have created a view named `customers_membership` that joins the `customers` and `sales` table with the `PRIMARY KEY` `customer_id`. Then, you've used the logical `IF(expression, value_if_true, value_if_false)` statement logic to determine the membership of the customer depending on their monthly sales.
+The above MySQL command creates a view named `customers_membership` that joins the `customers` and `sales` table with the `PRIMARY KEY` `customer_id`. The logical `IF(expression, value_if_true, value_if_false)` statement logic is used to determine the membership of the customer from their monthly sales:
 
-1.  If a customer's sales are equal or above `5,000`, the view classifies the customer as a `PREMIUM` member, otherwise(if the sales are below `5,000`), the customer is ranked as a `BASIC` member. The `customers_membership` view is now saved to the database. Next, you will learn to call a MySQL view and display a recordset without querying the base tables directly.
+- If a customer's sales are equal or above 5,000, the view classifies the customer as a `PREMIUM` member.
+
+- Otherwise (if the sales are below `5,000`), the customer is classified as a `BASIC` member.
+
+The `customers_membership` view is now saved to the database. Next, you will learn to call a MySQL view and display a recordset without querying the base tables directly.
 
 ## Invoking a MySQL View
 
-1.  In this step, you will invoke the MySQL view you created above and see if it will work as expected. Once a view is created, it is visible as a database object and it can be called using the `SELECT` statement.
+In this section, you will invoke the MySQL view you created above and confirm that it works as expected. Once a view is created, it is visible as a database object and it can be called using the `SELECT` statement.
 
-1.  To invoke the `customers_membership` view, run the command below:
+1.  To invoke the `customers_membership` view, run:
 
         SELECT * FROM customers_membership;
 
-1.  If the view is working as expected, you should now get a list of customers together with the generated `membership` column based on their sales as shown below:
+    If the view is working as expected, you should now see a list of customers with their generated `membership` values based on their sales. Since `Leslie`'s sales were below 5000 (500.27), the view outputs the customer's membership as `BASIC`. `Andy` and `Ben`'s sales were 7600.32 and 25879.63 respectively and this makes them `PREMIUM` members:
 
-        {{< output >}}
+    {{< output >}}
 +-------------+---------------+------------+
 | customer_id | customer_name | membership |
 +-------------+---------------+------------+
-|           1 | JOHN DOE      | BASIC      |
-|           2 | MARY ROE      | PREMIUM    |
-|           3 | RICHARD ROE   | PREMIUM    |
+|           1 | Leslie        | BASIC      |
+|           2 | Andy          | PREMIUM    |
+|           3 | Ben           | PREMIUM    |
 +-------------+---------------+------------+
 3 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  As you can see above, the `customers_membership` has classified the customers as you expected. Since JOHN DOE's sales were below 5000 (500.27), the view outputs the customer's membership as `BASIC`.
+1.  Once a base table data is updated and you invoke a MySQL view again, you should see the latest information. Views pull information from their base tables, and they don't store the data. To demonstrate how a view pulls updated information from the base tables, add another customer named `Rajie` to the `customers` table:
 
-1.  Next, `MARY ROE` AND `RICHARD ROE` sales were 7600.32 and 25879.63 respectively and this makes them `PREMIUM` members.
+        INSERT INTO customers (customer_name) VALUES ('Rajie');
 
-1.  Once a base table data is updated and you invoke a MySQL view again, you should view the latest information since views pull information from the tables and they don't store the information.
+    This output appears:
 
-1.  To demonstrate how a view pulls updated information from the base tables, add another customer named `BABY ROE` to the `customers` table:
-
-        INSERT INTO customers (customer_name) VALUES ('BABY ROE');
-
-1.  Ensure the row inserted by confirming the output below:
-
-        {{< output >}}
+    {{< output >}}
 Query OK, 1 row affected (0.01 sec)
 {{< /output >}}
 
@@ -248,9 +255,9 @@ Query OK, 1 row affected (0.01 sec)
 
         INSERT INTO sales (customer_id, monthly_sales) VALUES ('4', '147.41');
 
-1.  Ensure you get the below output:
+    This output appears:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 1 row affected (0.01 sec)
 {{< /output >}}
 
@@ -258,35 +265,35 @@ Query OK, 1 row affected (0.01 sec)
 
         SELECT * FROM customers_membership;
 
-1.  You will now get the output shown below which confirms that the view is able to pick-up changes and pull the new customers' information as expected:
+    The output below appears, which confirms that the view is able to pick-up changes and pull the new customers' information as expected:
 
-        {{< output >}}
+    {{< output >}}
 +-------------+---------------+------------+
 | customer_id | customer_name | membership |
 +-------------+---------------+------------+
-|           1 | JOHN DOE      | BASIC      |
-|           2 | MARY ROE      | PREMIUM    |
-|           3 | RICHARD ROE   | PREMIUM    |
-|           4 | BABY ROE      | BASIC      |
+|           1 | Leslie        | BASIC      |
+|           2 | Andy          | PREMIUM    |
+|           3 | Ben           | PREMIUM    |
+|           4 | Rajie         | BASIC      |
 +-------------+---------------+------------+
 4 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  As you can see in the view recordset above, you now have a new customer named `BABY ROE` with a `BASIC` membership. After running a MySQL view, you'll now learn how to delete them.
+    As you can see in the view recordset above, you now have a new customer named `Rajie` with a `BASIC` membership. After running a MySQL view, you'll now learn how to delete them.
 
 ## Dropping a MySQL View
 
-1.  Just like other database objects, you can delete views if you no longer need them. Below is the basic syntax for dropping a MySQL view.
+Just like other database objects, you can delete views if you no longer need them. This is the basic syntax for dropping a MySQL view:
 
         DROP VIEW IF EXISTS view_name;
 
-1.  To drop a MySQL view, first identify its name by running the command below:
+1.  Before dropping a MySQL view, first identify its name by running the command below:
 
-        SHOW FULL TABLES  WHERE TABLE_TYPE LIKE 'VIEW';
+        SHOW FULL TABLES WHERE TABLE_TYPE LIKE 'VIEW';
 
-1.  You'll see a list of all views in the currently selected database:
+    A list of all views in the currently selected database appears:
 
-        {{< output >}}
+    {{< output >}}
 +---------------------------+------------+
 | Tables_in_sample_database | Table_type |
 +---------------------------+------------+
@@ -295,16 +302,24 @@ Query OK, 1 row affected (0.01 sec)
 1 row in set (0.01 sec)
 {{< /output >}}
 
-1.  In this case, the name of the view that you want to drop is `customers_membership`. So, to delete it, run the command below:
+1.  In this case, the name of the view that you want to drop is `customers_membership`. So, to delete it, run:
 
         DROP VIEW IF EXISTS customers_membership;
 
-1.  Ensure the output below is displayed after the view is deleted from the database:
+    Ensure the output below is displayed after the view is deleted from the database:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 0 rows affected (0.01 sec)
 {{< /output >}}
 
     {{< note >}}
 Please note, if you attempt to delete a MySQL view that doesn't exist without using the `IF EXISTS` keyword, MySQL will throw an error.
 {{< /note >}}
+
+1.  When the command from step 1 is run again, there should now be no results:
+
+        SHOW FULL TABLES WHERE TABLE_TYPE LIKE 'VIEW';
+
+    {{< output >}}
+Empty set (0.000 sec)
+{{< /output >}}
