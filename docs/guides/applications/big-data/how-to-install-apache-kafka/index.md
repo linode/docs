@@ -181,7 +181,7 @@ Kafka's command line interface allows you to quickly test out the new topic. Use
 
         cd /home/kafka/kafka_2.13-2.7.0/
 
-2.  Configure a producer and specify a topic for its events. You are not creating any events yet, only a client with the ability to send events. Kafka returns a prompt `<` indicating the producer is ready.
+2.  Configure a producer and specify a topic for its events. You are not creating any events yet, only a client with the ability to send events. Kafka returns a prompt `>` indicating the producer is ready.
 
         bin/kafka-console-producer.sh --topic test-events --bootstrap-server localhost:9092
 3.  Send a few key-value pairs to Kafka. Separate the keys and values with a `:`. You can choose to write messages with different keys or with the same key. If you do not specify a key, and only specify a value, the event is assigned a NULL key.

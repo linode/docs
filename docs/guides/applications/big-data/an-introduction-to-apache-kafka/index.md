@@ -103,7 +103,7 @@ Kafka uses a central management task called Zookeeper to control each cluster. Z
 
 Kafka replicates the partitions between the servers so there are several backups on other servers. The "replication factor" determines the number of copies, but a setting of three or four is typical. One of the brokers is elected the leader on a per-partition basis. The leader receives events from the producers and sends updates to the consumers. The remaining brokers serve as followers. They query the leader for new events and store backup copies.
 
-You can configure a Kafka cluster for different levels of reliability. Kafka can send an acknowledgement upon first receipt of a message or when a certain number of backup servers have also made a copy. The first method is faster, but a small amount data might be lost if the master fails. Producers can elect not to receive any acknowledgements if best-effort handling is the goal. Kafka does not automatically balance any topics, partitions, or replications. The Kafka administrator must manage these tasks.
+You can configure a Kafka cluster for different levels of reliability. Kafka can send an acknowledgement upon first receipt of a message or when a certain number of backup servers have also made a copy. The first method is faster, but a small amount of data might be lost if the master fails. Producers can elect not to receive any acknowledgements if best-effort handling is the goal. Kafka does not automatically balance any topics, partitions, or replications. The Kafka administrator must manage these tasks.
 
 ### Producers and Consumers
 
@@ -121,7 +121,7 @@ When upgrading Kafka brokers, or individual clients, it is important to consider
 
 ## Kafka Connect
 
-Kafka Connect is a framework for importing data from or exporting data to other systems. This allows for easier integration between Kafka and traditional databases. Connect runs on its own server rather than on one of the regular Kafka brokers. The Connect API builds upon the Consumer and Producer APIs to implement connector functions for many legacy systems. Kafka Connect does not ship with any production-ready connectors, but there are many open source and commercial utilities available. For example, you might use a Kafka Connect connector to quickly transfer data out of a legacy relational database and into your Kafka cluster.
+Kafka Connect is a framework for importing data from, or exporting data to, other systems. This allows for easier integration between Kafka and traditional databases. Connect runs on its own server rather than on one of the regular Kafka brokers. The Connect API builds upon the Consumer and Producer APIs to implement connector functions for many legacy systems. Kafka Connect does not ship with any production-ready connectors, but there are many open source and commercial utilities available. For example, you might use a Kafka Connect connector to quickly transfer data out of a legacy relational database and into your Kafka cluster.
 
 ## Kafka Streams
 
