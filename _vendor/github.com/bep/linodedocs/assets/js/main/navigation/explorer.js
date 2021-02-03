@@ -299,9 +299,9 @@ export function newSearchExplorerController(searchConfig) {
 				};
 				self.target = self.$refs['explorer'];
 
-				// Open the explorer menu on load on the home page and any of the pages in the /api section.
+				// Open the explorer menu on load when not on mobile, only for the the home page and any of the pages in the /api section.
 				// Note that this applies only to the initial load.
-				let shouldOpen = designMode || page.kind === 'home' || page.type === 'api';
+				let shouldOpen = !isMobile() && (designMode || page.kind === 'home' || page.type === 'api');
 
 				if (page.type === 'api') {
 					activeNodeKey = page.href.substr(1).slice(0, -1).split('/').slice(1).join(' > ');
