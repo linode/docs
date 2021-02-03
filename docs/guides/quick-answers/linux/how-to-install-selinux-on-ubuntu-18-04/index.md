@@ -3,8 +3,7 @@ slug: how-to-install-selinux-on-ubuntu-18-04
 author:
   name: Angel
   email: docs@linode.com
-description: 'If you are switching to Ubuntu 18.04, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.'
-og_description: 'If you are switching to Ubuntu 18.04, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.'
+description: 'This guide will show you how to install SELinux on Ubuntu 18.04, enable SELinux policies, and disable SELinux.'
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-ubuntu-18-04/']
 tags: ["ubuntu","linux"]
@@ -12,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-17
 modified_by:
   name: Linode
-published: 2017-06-30
+published: 2021-02-02
 title: How to Install SELinux on Ubuntu 18.04
 h1_title: Installing SELinux on Ubuntu 18.04
 relations:
@@ -140,6 +139,144 @@ If you do not see the this entry, open the port with the following command:
 
     sudo semanage port -a -t ssh_port_t -p tcp 22
     {{</ note >}}
+
+## Enabling Policies SELinux Policies On Ubuntu 18.04 
+
+SELinux comes with a set of pre-built policies to handle requests that drive security. These policies determine if any request should be allowed to be processed. 
+
+For example, let’s say we want to enable a policy that allows MySQL requests through SELinux. If you have read MySQL’s documentation, they suggest that you disable SELinux to handle such requests, but there are other and better options. 
+
+
+### Enabling SELinux Policy for MySQL Requests
+
+**Using permissive mode**: 
+
+We set setenforce to 0, now SELinx will allow everything but will also log it. 
+
+	setenforce 0
+
+Now, when you either reboot or set setenforce to 1 again, SELinux permissions return to old policies. 
+
+But this isn’t helpful if you wish to work frequently as you have to adjust setenforce every time you want to allow mysqld process.
+
+**Building a local SELinux policy to Enable MySQL Process**
+
+To enable SELinux policy locally for mysqld process, you can execute the following command: 
+
+	grep httpd /var/log/audit/audit.log | audit2allow -M mysqlpol
+
+	semodule -i mysqlpol.pp
+
+We have now enabled a local SELinux policy by using a mysqlpol.pp.
+
+We can also make this permanent or global by using setsebool command. To make this globally permanent, run the following command:
+
+	setsebool -P httpd_can_network_connect_db 1
+
+**Enabling SELinux policy to write to a file or folder**
+
+In this example, let’s see how we can enable the SELinux policy to gain write access to /home/linode/file1
+
+Let’s also check the policy booleans on file1 before moving forward. To do so, run the following command:
+
+	sestatus -b
+
+You should see an output like below: 
+{{< output >}}
+
+	Policy booleans:
+
+	abrt_anon_write                             off
+
+	abrt_handle_event                           off
+
+	allow_console_login                         on
+
+	allow_cvs_read_shadow                       off
+
+	allow_daemons_dump_core                     on
+
+	allow_daemons_use_tcp_wrapper               off
+
+	allow_daemons_use_tty                       on
+
+	allow_domain_fd_use                         on
+
+	allow_execheap                              off
+
+	allow_execmem                               on
+
+	allow_execmod                               on
+
+	allow_execstack                             on
+
+	allow_ftpd_anon_write                       off
+
+	allow_ftpd_full_access                      off
+
+…
+{{</ output >}}
+
+The result is truncated as it is too long. But, after inspecting the booleans, we see that none of these booleans can help us allow httpd access to file1. The solution here is to provide a context of httpd_sys_rw_content_t to the directory structure. Or, you can also give public_content_rw_t context to the directory structure with allow_httpd_anon_write enabled. 
+
+**SELinux in enforcing mode and allowing daemons to access files at non-default locations**
+
+Let’s go through another SELinux policy example to understand various permissions at a deeper level. In this case, we want to enable SELinux to permit daemons to access files that are in a non-default location. When you run a daemon in a permissive mode, you can access these files but with policy enforced, you won’t be able to access the same files and see AVC denial messages instead. 
+
+Our goal here is to be able to configure SELinux policy in enforcing mode to still allow daemons to access files in those locations. 
+
+To do so, run the following command:
+
+	semanage fcontext -l /daemon_old_path/
+
+Now, check the default context of SELinux in the directory, and find the default context of the target daemon’s folder. This will allow you to configure SELinux contexts and move your context too. 
+
+Here is an example where our context is allow_daemons_use_tty
+
+	# semanage fcontext -l
+
+	...
+
+	/var/www(/.*)? all files system_u:object_r:allow_daemons_use_tty:s0
+
+Now apply these contexts using the following command: 
+
+	semanage fcontext -a -t allow_daemons_use_tty '/newcontextpath(/.*)?'
+
+Now that we have applied contexts to the new path above, we can enforce everything in this path to get that context by:
+
+	restorecon -RFvv /newcontextpath
+
+To check the status run the following command:
+
+	ls -Zd /newcontextpath
+
+After making these changes, we have to reindex man db by executing the following command:
+
+	mandb 
+
+To finish this, run man -k selinux to list all SELinux man pages. 
+
+Your daemon will now be able to access the files placed in a non-default location. 
+
+
+### How To Disable SELinux on Ubuntu
+
+Disabling SELinux on Ubuntu is very straightforward, and you can decide if you wish to temporarily turn off or permanently turn it off. When you disable SELinux temporarily, it temporarily turns off all SELinux policies, but once the system restarts SELinux policies are in place again. 
+
+**Disabling SELinux Policies on Ubuntu temporarily**
+
+To disable all SELinux policies on Ubuntu temporarily, run the following command:
+
+	setenforce 0 
+
+**Permanently Disable SELinux policies on Ubuntu**
+
+If you wish to permanently disable SELinux even when the system reboots, make changes to your /etc/selinux/config file and set SELINUX to disabled. Change your SELinux line as shown below:
+
+	SELINX=disbaled 
+
+And, now if you restart your system, SELinux and its policies won’t be in place anymore. 
 
 ## Next Steps
 After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux/) to learn the basics of SELinux security.
