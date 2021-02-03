@@ -104,7 +104,7 @@ Memcached doesn't provide internal authentication procedures. However, Simple Au
 Confirm that the Memcached instance is up and running:
 
         sudo memcstat --servers="127.0.0.1"
-       
+
 The output should look similar to:
 
 {{< output >}}
