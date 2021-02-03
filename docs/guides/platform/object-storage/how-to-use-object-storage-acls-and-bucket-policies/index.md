@@ -314,7 +314,7 @@ Below is an example bucket policy written in JSON:
 This policy allows the user with the canonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The "resource" that is listed (`bucket-policy-example`) is the only bucket the user has access to.
 
 {{< note >}}
-The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
+The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::user/`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
 {{< /note >}}
 
 The permissions are specified in the `Action` array. For the current example, these are:
@@ -339,7 +339,7 @@ You can also define a finer level of control over the level of access to your bu
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+        "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       },
       "Action": [
         "s3:ListBucket"
@@ -351,7 +351,7 @@ You can also define a finer level of control over the level of access to your bu
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+        "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       },
       "Action": [
         "s3:GetObject"
@@ -411,7 +411,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
   {
     "Effect": "Allow",
     "Principal": {
-      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
     },
     "Action": [
       "s3:ListBucket"
@@ -423,7 +423,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
   {
     "Effect": "Allow",
     "Principal": {
-      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
     },
     "Action": [
       "s3:GetObject"
