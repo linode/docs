@@ -7,10 +7,10 @@ description: 'Practical examples for using grep to find strings in text files an
 keywords: ["grep", "search", "files", "filtering", "regular expressions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/how-to-grep-for-text-in-files/','/tools-reference/search-and-filter-text-with-grep/','/tools-reference/tools/how-to-grep-for-text-in-files/','/linux-tools/common-commands/grep/']
-modified: 2018-02-01
+modified: 2021-02-02
 modified_by:
   name: Linode
-og_description: “Learn how to use Grep for practical applications including filtering log files and finding strings in text files and streams.”
+og_description: “An extensive guide on how to grep for text in files in Unix based systems. Understand search, match, and advanced regex to grep for text in files.”
 published: 2010-06-30
 title: How to Grep for Text in Files
 external_resources:
@@ -65,6 +65,79 @@ This filters the output of the `ls` command's help text and looks for appearance
   {{< output >}}
 -D, --dired                generate output designed for Emacs' dired mode
 {{< /output >}}
+
+When we run the following command  grep &lt;searchstring>, this only looks for text “searchstring”  and selects matches for “searchstring.” But if we wish to perform an invert search, we can do that by using a -v. argument to our grep command. 
+
+	grep -v <searchstring>
+
+Let’s try this with a grep -v example where we want grep to not print lines that contain the word “ignore” in them. To do that, run the following command:
+
+	grep -v ignore 
+
+We can also write grep commands with invert search to exclude multiple arguments from the output. A general syntax to exclude multiple arguments using grep -v would be:
+
+	grep - v -e <“excluded string 1”> -e <“excluded string 2”> <file name>
+
+Notice the usage of -e in the command above. 
+
+Let’s try a grep -v example where our command excludes the following arguments from output: “linode” and “cloud”:
+
+grep -v -e linode -e cloud 10110_220.log
+
+When we run the above command, it outputs all lines that do not contain “linode” or “cloud” in it. 
+
+**Note**: If you remove -v from the command, it will act as an or filter and grep will instead search for lines that contain “linode” or “cloud” in this text file.
+
+**Excluding grep from search**
+
+Excluding the `grep` command from output is sometimes extremely helpful. For example, let’s search for all log files in our system. To do so, we will use the following command: 
+
+	lindoe@Iinode:~$ ps x | grep log
+{{< output >}}
+ 3965 ?        Ssl    0:05 log
+
+ 3968 ?        S      0:01 /usr/lib/x86_64-linux-gnu/log/logfd/logtd
+
+32707 pts/1    S+     0:10 grep --color=auto log
+{{</ output >}}
+
+Notice the last line of our output here `grep --color=auto log` - this is not the output that’s relevant to what we wanted to achieve.  We can exclude this line by using a pipe operator `|` and add `grep -v grep` after it. Our command and its output is now:
+
+	lindoe@Iinode:~$ ps x | grep log | grep -v grep
+{{< output >}}
+ 3965 ?        Ssl    0:05 log
+
+ 3968 ?        S      0:01 /usr/lib/x86_64-linux-gnu/log/logfd/logtd
+{{</ output >}}
+
+There are other ways to remove `grep` from your output too. We can modify our grep log command and add a character class match to specifically match the first character `l` from log. 
+
+Run the command below to do a character class match for `l` as a character: 
+
+	lindoe@Iinode:~$ ps x | grep ‘[l]og’
+
+Now, if we check our output, we will see the following:
+{{< output >}}
+ 3965 ?        Ssl    0:05 log
+
+ 3968 ?        S      0:01 /usr/lib/x86_64-linux-gnu/log/logfd/logtd
+{{</ output >}}
+
+**Note**:
+
+Using `grep -v grep` not only excludes the `--color=auto log` line, but it also skips the lines in the text that includes `grep`  which doesn’t allow this filtering method to be ideal. For that reason, we use pgrep instead to filter the `grep` command from your output. 
+
+Let’s see how to use pgrep with our previous example:
+
+	lindoe@Iinode:~$ pgrep -af log   
+{{< output >}}
+Our output in this case will be: 
+
+ 3965 ?        Ssl    0:05 log
+
+ 3968 ?        S      0:01 /usr/lib/x86_64-linux-gnu/log/logfd/logtd
+{{</ output >}}
+
 
 ### Regular Expression Overview
 
