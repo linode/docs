@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'This guide provides an introduction to running PostgreSQL, an open source object-relational database management system (RDBMS), On CentOS 8.'
 og_description: 'This guide provides an introduction to running PostgreSQL, an open source object-relational database management system (RDBMS), On CentOS 8.'
+keywords: ['Redis','database','Ubuntu','installation','configuration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-02
 modified_by:
