@@ -81,9 +81,9 @@ See CouchDB's [cluster set up guide](https://docs.couchdb.org/en/latest/setup/cl
 
     [![Creating a CouchDB administrator user](couchdb-installation-admin-user_small.png "Creating a CouchDB administrator user")](couchdb-installation-admin-user.png)
 
-1. You can verify that CouchDB is installed and running with the following command:
+1. You can verify that CouchDB is installed and running with the following command. Replace `admin` and `password` with the username and password, respectively, for a valid CouchDB user. To use the administrator user you created during the installation process, enter the username, which is `admin` by default, and the password you set up:
 
-        curl 127.0.0.1:5984
+        curl admin:password@127.0.0.1:5984
 
 ## Getting Started with CouchDB
 
