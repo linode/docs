@@ -97,6 +97,7 @@ backticks
 backupninja
 bampton
 balarin
+banaction
 bantime
 barebones
 base64
@@ -196,6 +197,7 @@ client2
 clojure
 cloudflare
 cloudnet
+cloudron
 clozure
 cls
 cluebringer
@@ -343,6 +345,7 @@ domain2
 domain3
 domainkey
 domainname
+donenfeld
 dotdeb
 dotfiles
 doveadm
@@ -374,6 +377,7 @@ elpaso
 email2email
 emojivoto
 ender
+enduser
 enix
 env
 envs
@@ -434,6 +438,7 @@ file1
 filebeat
 filecap
 filecaps
+filecloud
 fileglob
 filemode
 filepath
@@ -456,6 +461,7 @@ flyspray
 foodcritic
 fortran
 fmt
+fn
 fpm
 fragging
 frakti
@@ -496,6 +502,7 @@ gfxmode
 gibibytes
 girocco
 gist
+gitea
 gitfs
 github
 gitignore
@@ -624,6 +631,7 @@ iframe
 iframes
 ifup
 ignoreip
+ignoreregex
 ikiwiki
 im
 imagize
@@ -1378,6 +1386,7 @@ snapd
 snipcart
 snmp
 snmpd
+softaculous
 softlimit
 solaris
 solr
@@ -1531,6 +1540,7 @@ tun0
 tune2fs
 tunnelblick
 turtl
+tv
 tw
 txt
 txz
@@ -1662,6 +1672,7 @@ webservice
 websocket
 webtatic
 webupd8
+webuzo
 weechat
 Weinberger
 welcometext
