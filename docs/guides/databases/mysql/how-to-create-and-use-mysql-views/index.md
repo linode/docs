@@ -33,7 +33,7 @@ In this guide you will learn:
 
 ## Before You Begin
 
-For this tutorial, you'll need:
+To follow along with this guide, make sure you have the following:
 
 1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](/docs/guides/getting-started/) guide to provision a Linode.
 
@@ -41,7 +41,7 @@ For this tutorial, you'll need:
 
 ## Preparing the Database
 
-Before creating a view, you'll first create a sample database, define a few tables, and populate them with some data:
+Before you create your MySQL views, create a sample database, define a few tables, and populate them with some data first:
 
 1.  [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) to your Linode. Then, enter this command to log in to MySQL as the root user:
 
@@ -178,7 +178,7 @@ Query OK, 1 row affected (0.01 sec)
 3 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  You have defined the database and the tables to work on. Next, you'll see the syntax of a MySQL view.
+You have defined the database and the tables to work on. The next section describes the syntax of a MySQL view.
 
 ## The MySQL View Syntax
 
@@ -194,7 +194,7 @@ This is a simplified version of the MySQL view syntax:
 
 ## Creating a MySQL View
 
-In this section, you will create an example MySQL view. This view is used to classify customers from your sample database, depending on their number of monthly sales.
+In this section presents an example MySQL view. This view is used to classify customers from your sample database, depending on their number of monthly sales.
 
 Ensure you are logged into your MySQL server. Then, run the command below to create a `customers_membership` view:
 
@@ -219,11 +219,11 @@ The above MySQL command creates a view named `customers_membership` that joins t
 
 - Otherwise (if the sales are below `5,000`), the customer is classified as a `BASIC` member.
 
-The `customers_membership` view is now saved to the database. Next, you will learn to call a MySQL view and display a recordset without querying the base tables directly.
+The `customers_membership` view is now saved to the database. The next section shows how to call a MySQL view and display a recordset without querying the base tables directly.
 
 ## Invoking a MySQL View
 
-In this section, you will invoke the MySQL view you created above and confirm that it works as expected. Once a view is created, it is visible as a database object and it can be called using the `SELECT` statement.
+This section shows how to invoke the MySQL view you created above and confirm that it works as expected. Once a view is created, it is visible as a database object and it can be called using the `SELECT` statement.
 
 1.  To invoke the `customers_membership` view, run:
 
@@ -280,7 +280,7 @@ Query OK, 1 row affected (0.01 sec)
 4 rows in set (0.00 sec)
 {{< /output >}}
 
-    As you can see in the view recordset above, you now have a new customer named `Rajie` with a `BASIC` membership. After running a MySQL view, you'll now learn how to delete them.
+    As you can see in the view recordset above, you now have a new customer named `Rajie` with a `BASIC` membership.
 
 ## Dropping a MySQL View
 
@@ -314,7 +314,7 @@ Query OK, 0 rows affected (0.01 sec)
 {{< /output >}}
 
     {{< note >}}
-Please note, if you attempt to delete a MySQL view that doesn't exist without using the `IF EXISTS` keyword, MySQL will throw an error.
+Please note, if you attempt to delete a MySQL view that doesn't exist without using the `IF EXISTS` keyword, MySQL throws an error.
 {{< /note >}}
 
 1.  When the command from step 1 is run again, there should now be no results:
