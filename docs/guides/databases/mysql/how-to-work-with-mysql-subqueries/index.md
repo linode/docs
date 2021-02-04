@@ -141,7 +141,7 @@ Query OK, 1 row affected (0.00 sec)
 6 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  Create a `sales` table. This table will use the column `customer_id` to reference the `customers` table:
+1.  Create a `sales` table. This table uses the column `customer_id` to reference the `customers` table:
 
         CREATE TABLE sales
         (
