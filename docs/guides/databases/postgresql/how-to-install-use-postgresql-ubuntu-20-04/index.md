@@ -83,15 +83,8 @@ postgresql.service - PostgreSQL RDBMS
 Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
 Active: active (exited) since Wed 2021-01-27 12:00:43 UTC; 50s ago
     {{< /output >}}
-6.  Confirm PostgreSQL is operating normally and you are running the version you expected. The following command returns the version of the PostgreSQL server.
 
-        sudo -u postgres psql -c "SELECT version();"
-    PostgreSQL returns the version that is running.
-    {{< output >}}
- PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
-    {{< /output >}}
-
-### Installing PostgreSQL from the PostgreSQL Apt Repository
+### Installing PostgreSQL From the PostgreSQL Apt Repository
 
 Installing PostgreSQL from the PostgreSQL repository allows you more control over what version to choose. The following process installs the latest stable version of PostgreSQL. As of early 2021, this is version 13.1. You can also choose to install an earlier release of PostgreSQL.
 
@@ -123,14 +116,6 @@ To install an earlier release of PostgreSQL, add the release number as a suffix,
 8.  Verify the status of PostgreSQL with `systemctl`. It should show a status of `active`.
 
         sudo systemctl status postgresql.service
-9.  Confirm PostgreSQL is still working properly with the following command.
-
-        sudo -u postgres psql -c "SELECT version();"
-    This command returns the version of the server component, which might not be as recent as the overall release number.
-    {{< output >}}
-PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
-        (1 row)
-    {{< /output >}}
 
 {{< note >}}
 For a specific minor release of PostgreSQL, or more manual control over the installation, source code can be obtained from the [*PostgreSQL Downloads Page*](https://www.postgresql.org/ftp/source/). Download the file you want, transfer it to your host, and extract the files with `tar`. Follow the [*installation procedure*](https://www.postgresql.org/docs/current/install-procedure.html) to build the application.
@@ -138,7 +123,7 @@ For a specific minor release of PostgreSQL, or more manual control over the inst
 
 ## Securing PostgreSQL and Accessing the PostgreSQL Shell
 
-We recommend you take steps to increase the security your new PostgreSQL installation before populating the database. PostgreSQL automatically creates a default user named `postgres` upon installation. The `postgres` user has full `superadmin` privileges, so it is particularly important to implement Linux and database passwords for the account. At this time, you can also create other users and install additional administrative packages.
+We recommend you take steps to increase the security your new PostgreSQL installation before populating the database. PostgreSQL automatically creates a default user named `postgres` upon installation. The `postgres` user has full `superadmin` privileges, so it is particularly important to implement Linux and database passwords for the account.
 
 1.  Change the password for the `postgres` Linux account. We recommend you choose a strong password and store it in a secure place.
 
@@ -155,7 +140,15 @@ We recommend you take steps to increase the security your new PostgreSQL install
     {{< note >}}
 This password only applies when the `postgres` user connects to PostgreSQL over a network, not when logging in locally. This guarantees administrative access to the database for maintenance or cron jobs. It effectively means you can always log in locally to PostgreSQL as `postgres` without any password.
     {{< /note >}}
-4.  Log in to PostgreSQL to confirm you can access the database.
+4.  Confirm PostgreSQL is working properly and you are running the version you expect with the following command. This command returns the version of the PostgreSQL server.
+
+        psql -c "SELECT version();"
+    This command returns the version of the server component, which might not be as recent as the overall release number.
+    {{< output >}}
+PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
+        (1 row)
+    {{< /output >}}
+5.  Log in to PostgreSQL to confirm you can access the database.
 
         psql postgres
     PostgreSQL displays some information about the version and provides a prompt. The output depends upon the details of your installation.
@@ -164,7 +157,7 @@ psql (13.1 (Ubuntu 13.1-1.pgdg20.04+1), server 12.5 (Ubuntu 12.5-0ubuntu0.20.04.
 Type "help" for help.
 postgres=#
     {{< /output >}}
-5.  By default, PostgreSQL grants access to local system users without requiring a password. This is known as `peer` authentication. PostgreSQL obtains the system name of the user and verifies it against the database privileges. To enforce password authentication from local users, you must edit the `pg_hba.conf` file. Run the following command within the `psql` shell to determine the location of this file.
+6.  By default, PostgreSQL grants access to local system users without requiring a password. This is known as `peer` authentication. PostgreSQL obtains the system name of the user and verifies it against the database privileges. To enforce password authentication from local users, you must edit the `pg_hba.conf` file. Run the following command within the `psql` shell to determine the location of this file.
 
         SHOW hba_file ;
     PostgreSQl returns a table showing you where the file is located.
@@ -174,13 +167,13 @@ postgres=#
  /etc/postgresql/12/main/pg_hba.conf
 (1 row)
     {{< /output >}}
-6.  Exit PostgreSQL with the `\q` meta-command, and return to the Linux shell.
+7.  Exit PostgreSQL with the `\q` meta-command, and return to the Linux shell.
 
         \q
     {{< note >}}
 PostgreSQL commands starting with a backslash are known as *meta-commands*. PostgreSQL pre-processes these commands, which are useful for administration and scripting. See the [*PostgreSQL PSQL Documentation page*](https://www.postgresql.org/docs/current/app-psql.html) for more details.
 {{< /note >}}
-7.  Edit the `pg_hba.conf` file to enforce authentication. Find the `local` line under "Unix domain socket connections only" and change the `METHOD` attribute from `peer` to `md5`.
+8.  Edit the `pg_hba.conf` file to enforce authentication. Find the `local` line under "Unix domain socket connections only" and change the `METHOD` attribute from `peer` to `md5`.
     {{< file "/etc/postgresql/12/main/pg_hba.conf" >}}
 ...
 # "local" is for Unix domain socket connections only
@@ -191,7 +184,7 @@ local   all             all                                     md5
 Ensure you do not edit the top line for the default `postgres` user. The `postgres` account requires non-interactive access to PostgreSQL for maintenance tasks. We recommend you make a back-up copy of `pg_hba.conf` before editing it.
     {{< /caution >}}
 
-8.  Restart PostgreSQL in order to apply the new access rule.
+9.  Restart PostgreSQL in order to apply the new access rule.
 
         sudo systemctl restart postgresql.service
 
@@ -229,13 +222,13 @@ PostgreSQL operations are based on SQL, which is the standard language for RDBMS
 
 Before creating any tables or adding any table rows, you must create a database to store the data. A database is a collection of one or more tables, and a database cluster refers to all the databases that a PostgreSQL server collectively manages. See the [*PostgreSQL documentation*](https://www.postgresql.org/docs/13/app-createdb.html) for more information about databases.
 
-1.  Log in to PostgreSQL as `postgres` and create a test database using the `createdb` command.
+1.  From the Linux shell, while logged in as `postgres`, create a test database using the `createdb` command.
 
         createdb testdatabase
     {{< note >}}
 You can assign ownership to a specific PostgreSQL user with the `-O` option, as in `createdb testdatabase -O testuser`.
     {{< /note >}}
-2.  Exit the PostgreSQL and connect to the new database directly.
+2.  Connect to the new database directly.
 
         psql testdatabase
     The PostgreSQL prompt now shows you are in the `testdatabase` database.
@@ -274,7 +267,7 @@ This command permanently deletes all of the tables and all data from the databas
 
 A database table is defined as a set of named columns, each with a specific data type. More information about tables can be found in the [*PostgreSQL documentation*](https://www.postgresql.org/docs/13/ddl-basics.html). To create a table inside of the `testdatabase` database, follow these steps.
 
-1.  Connect to the database
+1.  Connect to the database.
 
         psql testdatabase
 2.  Use the `CREATE TABLE` SQL command to add a new table called `customers`. Supply the command with a list of columns, and a data type for each column.
@@ -316,7 +309,7 @@ This operation deletes all of the data in the table and cannot be undone.
 
 Tables store the actual data as a series of rows. Each row represents an entry within the table, with values for each of the columns. A row can be thought of as an individual record within the table. Data is added to a PostgreSQL table on a row-by-row basis with the `INSERT` command, and is retrieved with the `SELECT` command. For more information on row insertion, see the [*PostgreSQL Documentation*](https://www.postgresql.org/docs/13/dml-insert.html).
 
-1.  Connect to the database
+1.  Connect to the database.
 
         psql testdatabase
 2.  Add rows to the `customers` table using the `INSERT INTO` command. Follow the command name with the name of the table, the keyword `VALUES` and a comma-separated list of the values to insert. The values must match the order of the columns in the table definition.
@@ -470,6 +463,6 @@ We do not recommend opening up PostgreSQL to listen for connections on public IP
 *   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
 *   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
 
-## Learning more about PostgreSQL
+## Learning More About PostgreSQL
 
 This guide has only covered the fundamentals, but PostgreSQL is a complex application with many options. We recommend spending some time learning more about PostgreSQL. The [*PostgreSQL documentation*](https://www.postgresql.org/docs/13/index.html) is very comprehensive, and includes a good [*introductory tutorial*](https://www.postgresql.org/docs/13/tutorial.html). An active community of users supports PostgreSQL. You can find links to some of these user groups on the [*PostgreSQL site*](https://www.postgresql.org/community/).
