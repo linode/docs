@@ -33,7 +33,7 @@ A Cloud Firewall analyzes traffic against a set of predefined rules at the netwo
 ### Limitations
 
 - Currently, a Cloud Firewall can only be applied to Linodes.
-- You can apply up to three Cloud Firewalls per Linode service.
+- You can apply up to five Cloud Firewalls per Linode service.
 
 ### Inbound and Outbound Rules
 
