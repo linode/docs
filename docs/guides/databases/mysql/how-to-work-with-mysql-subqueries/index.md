@@ -3,13 +3,14 @@ slug: how-to-work-with-mysql-subqueries
 author:
   name: Francis Ndungu
   email: francisndungu83@gmail.com
-description: 'In this tutorial, we will take you through the steps of creating and implementing different subqueries in MySQL database.'
+description: 'A **subquery** is an SQL query that is nested within another query. This guide shows how to use correlated subqueries, as well as subqueries as derived tables.'
 keywords: ['MySQL', 'database', 'subqueries']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-08
+published: 2021-02-04
 modified_by:
   name: Linode
 title: "How to Work with MySQL Subqueries"
+h1_title: Working with MySQL Subqueries"
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83
@@ -17,66 +18,80 @@ external_resources:
 - '[MySQL Subqueries](https://dev.mysql.com/doc/refman/8.0/en/subqueries.html)'
 ---
 
-A **subquery** is an SQL(Structured Query Language) statement that is nested within another SQL command referred to as the parent query. Subqueries are used to pre-process data that is used in the main outer query and can be applied in `SELECT`, `INSERT`, `UPDATE` and `DELETE` operations.
+A **subquery** is an SQL (Structured Query Language) query that is nested within another SQL query. The command that the subquery is nested in is referred to as the parent query. Subqueries are used to pre-process data that is used in the parent query. Subqueries can be applied in `SELECT`, `INSERT`, `UPDATE`, and `DELETE` operations.
 
-When nested queries are executed, the inner query is processed first before the outer query. When building MySQL applications, using subqueries offers several advantages:
+When subqueries are executed, the subquery is processed first before the parent query. When building MySQL applications, using subqueries offers several advantages:
 
-- They break the SQL statements into simple logical units for easy understanding and maintenance. In other words, isolating complex parts of queries.
-- They eliminate the need for using complex `UNION` and `JOIN` statements.
-- They are used to enforce referential integrity in a scenario where foreign keys are not implemented.
-- They offer greater flexibility by allowing developers to code some business logic into the MySQL queries.
+- They break the SQL statements into simple logical units, which can make them easier to understand and maintain. In other words, subqueries help isolate complex parts of queries.
+- They eliminate the need for using complex [`UNION` statements](https://dev.mysql.com/doc/refman/8.0/en/union.html) and [`JOIN` statements](https://dev.mysql.com/doc/refman/8.0/en/join.html).
+- They are used to enforce [referential integrity](https://en.wikipedia.org/wiki/Referential_integrity) in a scenario where foreign keys are not implemented.
+- They help developers code business logic into the MySQL queries.
 
-This guide focuses on:
+In this guide you will learn:
 
-- How to [use a correlated subquery](/docs/databases/mysql/how-to-create-and-use-mysql_views/#how-to-use-a-correlated-subquery)
-- How to [use a subquery in a comparison operator](/docs/databases/mysql/how-to-create-and-use-mysql_views/#how-to-use-a-subqueries-with-a-comparison-operator)
-- How to [use a subquery as a derived table](/docs/databases/mysql/how-to-create-and-use-mysql_views/#how-to-use-a-subquery-as-derived-table)
+- How to [use a correlated subquery](#how-to-use-a-correlated-subquery)
+- How to [use a correlated subquery in a comparison operator](#how-to-use-a-correlated-subquery-in-a-comparison-operator)
+- How to [use a subquery as a derived table](#how-to-use-a-subquery-as-a-derived-table)
 
 ## Before You Begin
 
 To follow along with this guide, make sure you have the following:
 
-1.  A fully provisioned Linode server. Please refer to the [Getting Started with Linode](/docs/getting-started/) guide to setup a Linode server.
+1.  A Linode, which you run the MySQL software on. Please refer to the [Getting Started with Linode](/docs/getting-started/) guide to setup a Linode server.
 
-1.  MySQL database server. You can follow the [MySQL section](/docs/databases/mysql/) to install and configure a MySQL server depending on your Linux distribution.
+1.  The MySQL server software (or MariaDB) installed on your Linode. Please refer to the [MySQL section](/docs/guides/databases/mysql/), which contains guides that describe how to install MySQL on several Linux distributions.
 
 ## Setting up the Database
 
-To understand how subqueries work, you will set up a sample database and use it to run different queries. To do this:
+To understand how subqueries work, create a sample database first. This sample database is used to run the different example queries in this guide:
 
 1. `SSH` to your server and log in to MySQL as root:
 
         mysql -u root -p
 
-    Enter your MySQL password(don't confuse this with the root password of your Linode server) when prompted and hit **Enter** to proceed.
+    When prompted, enter the root password of your MySQL server and hit **Enter** to continue. Note that your MySQL server's root password is not the same as the root password for your Linode.
 
-1.  Ensure the MySQL prompt shown below is displayed before you start typing the SQL commands:
+    {{< note >}}
+If your password is not accepted, you may need to run the previous command with `sudo`:
+
+    sudo mysql -u root -p
+{{< /note >}}
+
+1.  If your password is accepted, you should see the MySQL prompt:
 
     {{< output >}}
 mysql >
 {{< /output >}}
 
-1.  Then, to create a working database named `test_db`, run the command below:
+    {{< note >}}
+If you are using MariaDB, you may see a prompt like the following instead:
+
+    {{< output >}}
+MariaDB [(none)]>
+{{< /output >}}
+{{< /note >}}
+
+1.  To create a sample database named `test_db`, run:
 
         CREATE DATABASE test_db;
 
-    You should get the below output to confirm that the database was created successfully.
+    You should see this output, which confirms that the database was created successfully:
 
     {{< output >}}
 Query OK, 1 row affected (0.01 sec)
 {{< /output >}}
 
-1.  Next,  switch to the `test_db` database:
+1.  Switch to the `test_db` database:
 
         USE test_db;
 
-    Once the database is selected, MySQL server should display the output below:
+    You should see this output:
 
     {{< output >}}
 Database changed
 {{< /output >}}
 
-1. You have created the `test_db` and selected it. Next, create the first table named `customers`:
+1. You have created the `test_db` and selected it. Next, create a table named `customers`:
 
         CREATE TABLE customers
         (
@@ -84,13 +99,13 @@ Database changed
         customer_name VARCHAR(50)
         ) ENGINE = InnoDB;
 
-    Ensure the following output is displayed to confirm the table was created:
+    You should see this output:
 
     {{< output >}}
 Query OK, 0 rows affected (0.03 sec)
 {{< /output >}}
 
-1.  Next, add some records to the `customers` table by running the commands below:
+1.  Add some records to the `customers` table. Run the below `INSERT` commands one by one:
 
         INSERT INTO customers(customer_name) VALUES ('JOHN PAUL');
         INSERT INTO customers(customer_name) VALUES ('PETER DOE');
@@ -99,19 +114,18 @@ Query OK, 0 rows affected (0.03 sec)
         INSERT INTO customers(customer_name) VALUES ('MARK WELL');
         INSERT INTO customers(customer_name) VALUES ('FRANK BRIAN');
 
-1.  After each record is inserted, you will see the following output:
+    This output is shown after each record is inserted:
 
     {{< output >}}
 Query OK, 1 row affected (0.00 sec)
 ...
 {{< /output >}}
 
-
-1.  To verify if the customers' information was inserted into the database, execute the `SELECT` command below:
+1.  Verify that the customers' information was inserted into the database. Execute this `SELECT` command:
 
         SELECT * FROM customers;
 
-1.  You should see a list of customers as shown below:
+    You should see this list of customers:
 
     {{< output >}}
 +-------------+-----------------+
@@ -127,7 +141,7 @@ Query OK, 1 row affected (0.00 sec)
 6 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  The next step is creating a `sales` table. This table will use the column `customer_id` to reference to the `customers` table:
+1.  Create a `sales` table. This table will use the column `customer_id` to reference the `customers` table:
 
         CREATE TABLE sales
         (
@@ -136,13 +150,13 @@ Query OK, 1 row affected (0.00 sec)
         sales_amount DECIMAL(17,2)
         ) ENGINE = InnoDB;
 
-1.  Once the command above is executed, ensure you get the output below:
+    This output appears:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 0 rows affected (0.03 sec)
 {{< /output >}}
 
-1.  Next, populate the `sales` table with some records by running the SQL statements below :
+1.  Next, populate the `sales` table with some records. Run the below `INSERT` commands one by one:
 
         INSERT INTO sales (customer_id, sales_amount) VALUES ('1','25.75');
         INSERT INTO sales (customer_id, sales_amount) VALUES ('2','85.25');
@@ -153,20 +167,20 @@ Query OK, 0 rows affected (0.03 sec)
         INSERT INTO sales (customer_id, sales_amount) VALUES ('2','45.00');
         INSERT INTO sales (customer_id, sales_amount) VALUES ('4','15.80');
 
-1.  After the records are inserted to the `sales` table, you will see the below output:
+    This output is shown after each record is inserted:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 1 row affected (0.01 sec)
 ...
 {{< /output >}}
 
-1.  Verify the data in the `sales` table by running the command below:
+1.  Verify the data in the `sales` table. Execute this `SELECT` command:
 
         SELECT * FROM sales;
 
-1.  The list of sales data should now be listed as shown below:
+    This list of sales data should now be shown:
 
-        {{< output >}}
+    {{< output >}}
 +----------+-------------+--------------+
 | order_id | customer_id | sales_amount |
 +----------+-------------+--------------+
@@ -182,15 +196,15 @@ Query OK, 1 row affected (0.01 sec)
 8 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  After setting up the database and the related tables, you'll now implement the different subqueries in MySQL.
+After setting up the database and the related tables, you can now implement the different subqueries in MySQL.
 
-## How to use a Correlated Subquery
+## How to Use a Correlated Subquery
 
-1.  A correlated subquery is a type of nested query that uses the values from the outer query. These kinds of queries reference the parent query with a column. This means that the inner query is executed once for each row in the main query.
+A correlated subquery is a type of nested query that uses the values from a parent query. These kinds of queries reference the parent query with a column. The nested query is executed once for each row in the parent query.
 
-1.  In the example below, you will run an outer query that selects all customers. Inside the query, there is a correlated subquery that fetches the total sales amount for each customer from the `sales` table.
+The example below presents a query that selects all customers. Inside the query, there is a correlated subquery that fetches the total sales amount for each customer from the `sales` table.
 
-1.  To run the correlated subquery, type the command below:
+1.  Run the example query:
 
         SELECT
         customer_id,
@@ -200,7 +214,9 @@ Query OK, 1 row affected (0.01 sec)
         FROM
         customers;
 
-1.  You should get the output below that lists the total sales made by customers:
+    In this example, the subquery is `SELECT SUM(sales_amount) FROM sales WHERE customer_id = customers.customer_id`, which appears in parentheses.
+
+    A list of the total sales made by customers appears:
 
     {{< output >}}
 +-------------+-----------------+--------------------+
@@ -216,11 +232,9 @@ Query OK, 1 row affected (0.01 sec)
 6 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  The output above from the correlated subquery is able to give you a summarized list of the customers' orders. Please note, since customer_id `3` and `6` do not have any associated records in the sales table, their `total_sales_amount` is `NULL`.
+    The output above from the correlated subquery is able to give you a summarized list of the customers' orders. Please note, since `customer_id`s `3` and `6` do not have any associated records in the sales table, their `total_sales_amount` is `NULL`.
 
-1. A more elegant way re-write the code and return `0` instead of `NULL` values for the customers with zero sales is to enclose the output generated by the subquery with an `IFNULL(expression, 0)` statement as shown below.
-
-1. Run the code one more time by typing the command below:
+1. A more elegant way to present this list is to return `0` instead of `NULL` for the customers with zero sales. To do this, enclose the output generated by the subquery with an `IFNULL(expression, 0)` statement. Run this updated command:
 
         SELECT
         customer_id,
@@ -230,7 +244,7 @@ Query OK, 1 row affected (0.01 sec)
         FROM
         customers;
 
-1. As you can see below, MySQL returns 0.00 for all rows that would have otherwise returned `NULL` values. This approach ensures that the output doesn't harm your calculation if you are processing the records further:
+    The following output appears. MySQL returns 0.00 for all rows that would have otherwise returned `NULL` values.
 
     {{< output >}}
 +-------------+-----------------+--------------------+
@@ -246,14 +260,13 @@ Query OK, 1 row affected (0.01 sec)
 6 rows in set (0.00 sec)
 {{< /output >}}
 
-1. You have seen how a correlated subquery works. Next, you will learn how to implement subqueries with comparison operators.
-## How to Use a Subquery in a Comparison Operator
+    This approach helps ensure that the output doesn't harm any further calculations on the records.
 
-1. As mentioned earlier in this guide, subqueries are great when it comes to moving some business logic into the database query level. For instance, consider a scenario where you would like to get a list of all customers registered in the database that don't have associated sales.
+## How to Use a Correlated Subquery in a Comparison Operator
 
-1. In such a case, you can use a subquery together with the MySQL comparison operator `NOT IN` and retrieve these customers.
+Subqueries are useful for moving business logic into the database query level. The following business use-cases feature correlated subqueries placed inside the WHERE clause of a parent query:
 
-1. To do this, run the command below:
+- Consider a scenario where you would like to get a list of all customers registered in the database that don't have associated sales. You can use a subquery together with the MySQL comparison operator `NOT IN` and retrieve these customers:
 
         SELECT
         customer_id,
@@ -262,9 +275,9 @@ Query OK, 1 row affected (0.01 sec)
         customers
         WHERE customer_id NOT IN (SELECT customer_id FROM sales);
 
-1. The output below list two customers that are not found in the sales table:
+    In this example, the subquery is `SELECT customer_id FROM sales`, which appears in parentheses. The SQL command above outputs a list of two customers that are not found in the sales table:
 
-        {{< output >}}
+    {{< output >}}
 +-------------+---------------+
 | customer_id | customer_name |
 +-------------+---------------+
@@ -274,32 +287,30 @@ Query OK, 1 row affected (0.01 sec)
 2 rows in set (0.00 sec)
 {{< /output >}}
 
-1. In a production environment, you can use this kind of recordset to make solid business decisions. For instance, you can create a script using another language like PHP or Python to email these customers and enquire if they have a problem placing an order.
+    In a production environment, you can use this kind of recordset to make better business decisions. For instance, you can create a script using another language like PHP or Python to email these customers and enquire if they have a problem placing an order.
 
-1. Another use-case is in data clean-up. You can use such a subquery to delete customers that have never placed an order.
-
-1. You can try this example by running the command below:
+- Another use-case is in data clean-up. For example, you can use a subquery to delete customers that have never placed an order:
 
         DELETE
         FROM
         customers
         WHERE customer_id NOT IN (SELECT customer_id FROM sales);
 
-1. The SQL command above deletes the two customers and outputs the following:
+    The SQL command above deletes the two customers and outputs the following:
 
-        {{< output >}}
+    {{< output >}}
 Query OK, 2 rows affected (0.01 sec)
 {{< /output >}}
 
-1. If you execute a command to list all customers again, these customers should no longer appear in the table:
+    If you execute a command to list all customers again, these customers should no longer appear in the table:
 
         SELECT *
         FROM
         customers;
 
-1. The output below confirms that the customers without associated orders were deleted:
+    The output below confirms that the customers without associated orders were deleted:
 
-        {{< output >}}
+    {{< output >}}
 +-------------+-----------------+
 | customer_id | customer_name   |
 +-------------+-----------------+
@@ -311,32 +322,42 @@ Query OK, 2 rows affected (0.01 sec)
 4 rows in set (0.00 sec)
 {{< /output >}}
 
-1. This section has shown you how to use subqueries with MySQL comparison operators. Next, you'll  use subqueries as derived tables to make some business logic with the SQL commands.
-
 ## How to Use a Subquery as a Derived Table
 
-1.  When subqueries are used in the `FROM` clause, they are referred to as derived tables. They are very important when implementing complex queries that would otherwise require a MySQL `VIEW`, `JOIN` or a `UNION` clause. A derived table exists in the query that created it and is not permanently saved into the database.
+When subqueries are used in the `FROM` clause of a parent query, they are referred to as *derived tables*. They are very important when implementing complex queries that would otherwise require a MySQL `VIEW`, `JOIN`, or `UNION` clause. A derived table exists in the query that created it and is not permanently saved into the database.
 
-1.  When subqueries are used as derived tables, they isolate the different parts of the SQL statement. In other words, when a subquery is used as a derived table, it provides a simplified expression of a table that can be used within the scope of the main query.
+When subqueries are used as derived tables, they isolate the different parts of the SQL statement. In other words, the subquery provides a simplified expression of a table that can be used within the scope of the parent query.
 
-1.  Remember, every derived table must be aliased.
+{{< note >}}
+Remember, every derived table must be aliased.
+{{< /note >}}
 
-1.  Run the command below to create a derived table subquery aliased  as`order_summary`:
+Run the command below to create a derived table subquery that is aliased as `order_summary`:
 
-        SELECT customer_id
-        FROM
-            (
-            SELECT
-            customer_id,
-            count(order_id) as total_orders
-            FROM sales
-            group by customer_id
-            ) as order_summary
-        WHERE order_summary.total_orders > 1;
+    SELECT customer_id
+    FROM
+        (
+        SELECT
+        customer_id,
+        count(order_id) as total_orders
+        FROM sales
+        group by customer_id
+        ) as order_summary
+    WHERE order_summary.total_orders > 1;
 
-1.  The above command queries the sales table to determine customers with more than 1 order. Once you run the query, you will get the output below:
+{{< note >}}
+In this command, the subquery appears in parentheses as:
 
-        {{< output >}}
+    SELECT
+    customer_id,
+    count(order_id) as total_orders
+    FROM sales
+    group by customer_id
+{{< /note >}}
+
+The above command queries the sales table to determine customers with more than 1 order. When you run the query, this output appears:
+
+{{< output >}}
 +-------------+
 | customer_id |
 +-------------+
@@ -348,4 +369,4 @@ Query OK, 2 rows affected (0.01 sec)
 4 rows in set (0.00 sec)
 {{< /output >}}
 
-1.  The above list shows 4 `customer_id's` that have more than 1 order and it's working as expected. You can use such a query in a script that rewards customers with a bonus next time when they make a purchase.
+The above list shows four `customer_id`s that have more than one order. As an example business use-case, you can use such a query in a script that rewards customers with a bonus on their next purchase.
