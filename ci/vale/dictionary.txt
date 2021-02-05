@@ -723,6 +723,7 @@ Kernighan
 keychain
 keyfiles
 keygen
+keyid
 keymap
 keypair
 keypairs
