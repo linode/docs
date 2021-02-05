@@ -1440,6 +1440,8 @@ submenu
 subnet
 subnets
 subnetwork
+subqueries
+subquery
 subreddits
 substring
 substrings
