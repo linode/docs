@@ -21,6 +21,6 @@ You can find your Linode's disks in the **Storage** tab of the Linode's detail p
 
 1.  Click the **Linodes** link in the sidebar menu and select the Linode whose disks you'd like to see.
 
-1.  Then click the **Storage** tab. The disks are located in the **Disks** panel. Here you can [add a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#disks), or for each individual disk, you can click the **more options ellipses** to get a drop down menu which will allow you to choose options such as `Rename`, `Resize`, `Imagize`, `Clone`, and `Delete`.
+1.  Then click the **Storage** tab. The disks are located in the **Disks** panel. Here you can [add a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#disks), or for each individual disk, to rename, and resize the disk click **Rename**, and **Resize** options. You can click the **more options ellipses** to get a drop down menu for options such as `Imagize`, `Clone`, and `Delete`. 
 
     ![Location of Cloud Manager Disks](classic-to-cloud-cloud-manager-disks.png "Location of Cloud Manager Disks")
