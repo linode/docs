@@ -23,12 +23,12 @@ You can delete a public IP addresses within the Cloud Manager from the **Network
 
 1.  Choose the Linode you wish to modify to enter the Linode detail screen. Then, click on the **Network** tab. Your IPv4 and IPv6 addresses are listed here.
 
-1.  Next to the public IPv4 address you wish to delete, click on **Delete**.
+1.  In the **IP Addresses** section, next to the public IPv4 address you want to delete, click **Delete**.
 
     ![Cloud Manager Delete a Public IP Address](classic-to-cloud-delete-an-ip.png "Cloud Manager Delete a Public IP Address")
 
 1.  A confirmation popup appears where you can confirm or cancel the operation.
 
     {{< note >}}
-You must have at least one public IP on a Linode. If you attempt to delete the last public IP on a Linode you will receive an error message *after* you confirm the deletion.
+You must have at least one public IP on a Linode. If you attempt to delete the last public IP on a Linode you receive an error message *after* you confirm the deletion.
 {{< /note >}}
