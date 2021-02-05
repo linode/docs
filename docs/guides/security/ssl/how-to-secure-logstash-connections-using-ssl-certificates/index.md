@@ -1,4 +1,5 @@
 ---
+slug: secure-logstash-connections-using-ssl-certificates
 author:
   name: Linode Community
   email: docs@linode.com
@@ -19,7 +20,6 @@ contributor:
 external_resources:
  - '[Logstash Home Page](https://www.elastic.co/logstash)'
  - '[Filebeat Overview](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)'
-slug: how-to-secure-logstash-connections-using-ssl-certificates
 ---
 
 ## Before You Begin
@@ -36,12 +36,12 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Introduction
 
-**Logstash** is a server-side data processing pipeline that consumes data from a variety of sources, transforms it, and then passes it to storage. This guide focuses on hardening Logstash inputs. Why might you want to harden the pipeline input? [Logstash](https://www.elastic.co/logstash) is often run as internal network service, that is to say it's not available outside of the local network to the broader internet. In those cases, access to the inputs is open and has no restrictions. However, there may be occasions where you need to communicate with a Logstash instance outside your local network. In that situation it's desirable to protect the input traffic using SSL certificates.
+**Logstash** is a server-side data processing pipeline that consumes data from a variety of sources, transforms it, and then passes it to storage. This guide focuses on hardening Logstash inputs. Why might you want to harden the pipeline input? [Logstash](https://www.elastic.co/logstash) is often run as an internal network service, that is to say, it's not available outside of the local network to the broader internet. In those cases, access to the inputs is open and has no restrictions. However, there may be occasions where you need to communicate with a Logstash instance outside your local network. In that situation, you should protect the input traffic using SSL certificates.
 
-This guide explores how an organization certificate authority can be generated to sign server and client certificates used in connection authentication.
+This guide explores how you can generate an organization certificate authority. The certificate authority can sign server and client certificates that are used in connection authentication.
 
 {{< note >}}
-The commands in this guide are for CentOS systems but can easily be modified for other Linux distributions.
+The commands in this guide are for CentOS systems but they can easily be modified for other Linux distributions.
 {{< /note >}}
 
 ## Install Logstash
@@ -98,7 +98,7 @@ If you enter '.', the field will be left blank.
 
         sudo mkdir -p /etc/pki/tls/conf
 
-1.  In this configuration you need to change the `commonName` configuration line to the server's FQDN or IP address. Create the configuration file, `logstash.conf` in the new directory you created, `/etc/pki/tls/conf`, as shown below, replacing the `X` values with your own.
+1.  In this configuration you need to change the `commonName` configuration line to the server's FQDN or IP address. Create the configuration file, `logstash.conf`, in the new directory you created (`/etc/pki/tls/conf`). Use the example file shown below, and replace the `X` values with your own.
 
     {{< file "/etc/pki/tls/conf/logstash.conf" >}}
 [req]
@@ -162,13 +162,13 @@ If this Logstash service is available on multiple host names, or if you intend t
 
         sudo chmod g+r /etc/pki/tls/private/logstash.key.pem
 
-1.  Format the private key for use in Logstash, writing it back out to `logstash.key` without the .pem extension.
+1.  Format the private key for use in Logstash. This writes it back out to `logstash.key` without the .pem extension.
 
         sudo openssl pkcs8 -in /etc/pki/tls/private/logstash.key.pem -topk8 -nocrypt -out /etc/pki/tls/private/logstash.key
 
 ## Configure Logstash
 
-1.  The user `logstash` should already exist. You can reset the password with the passwd command and set it to whatever you desire:
+1.  The user `logstash` should already exist. You can reset the password with the `passwd` command and set it to whatever you desire:
 
         sudo passwd logstash
 
@@ -204,7 +204,7 @@ At this point you should be able to run Logstash, push a message, and see the ou
 
         sudo /usr/share/logstash/bin/logstash --path.settings /etc/logstash
 
-1.  And on a remote host, replacing the `SuperSeCreT` with the logstash user's password, and `/path/to/org_ca.crt` with the path where your copy of the certificate is located:
+1.  On a remote host, replace `SuperSeCreT` with the logstash user's password. Also, replace `/path/to/org_ca.crt` with the path where your copy of the certificate is located:
 
         curl --user "logstash:SuperSeCreT" https://<domain_or_ip>:8080 -H "Content-Type: application/json" -d '{"test":"A Log"}' --cacert /path/to/org_ca.crt
 
@@ -234,7 +234,7 @@ At this point you should be able to run Logstash, push a message, and see the ou
 You can stop here and use the setup as is, or proceed to setup peer verification. When using peer verification Logstash requires that incoming connections present their own certificate for verification rather than a username and password. You may find this method easier to script when automatically deploying hosts or applications that push messages to Logstash.
 
 {{< note >}}
-The remote client host needs copies of the organization certificate (`org_ca.crt`), organization certificate key (`org_ca.key`), and organization certificate serial number (`org_ca.serial`) to generate its certificate. These are all located in the `/etc/pki/tls/private` directory. Make sure to copy those files before proceeding. You may have to update the host permissions with o+r on to be able to `scp` them. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
+The remote client host needs copies of the organization certificate (`org_ca.crt`), organization certificate key (`org_ca.key`), and organization certificate serial number (`org_ca.serial`) to generate its certificate. These are all located in the `/etc/pki/tls/private` directory. Make sure to copy those files before proceeding. You may have to update the host permissions with `o+r` on to be able to use `scp` to copy them. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
 {{< /note >}}
 
 1.  On the host, begin by changing the Logstash configuration file to remove the `username` and `password` fields and add `ssl_verify_mode` and `ssl_certificate_authorities`.
@@ -337,9 +337,9 @@ tidied up correctly.
 
 ## Filebeat
 
-**Filebeat** is popular log shipper for collecting log events and shipping them to Elasticsearch or Logstash. [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) is part of the Elastic software collection. This section of the guide assumes that you're installing Filebeat on a different host than Logstash.
+**Filebeat** is popular log shipper for collecting log events and shipping them to Elasticsearch or Logstash. [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) is part of the Elastic software collection. This section of the guide assumes that you install Filebeat on a host different than the one hosting Logstash.
 
-1.  If you have not already installed Filebeat, follow the first steps of the [Install Logstash](#install-logstash) section, including creating the elastic repository configuration file, then install Filebeat and enable it to load on boot.
+1.  If you have not already installed Filebeat, follow the first steps of the [Install Logstash](#install-logstash) section. Ensure you create the elastic repository configuration file, then install Filebeat and enable it to load on boot.
 
         sudo yum install filebeat
         sudo systemctl enable filebeat
@@ -350,7 +350,7 @@ tidied up correctly.
 
 1.  Using the text editor of your choice, update the `/etc/filebeat/filebeat.yml` file with these values.
 
-{{< file "/etc/filebeat/filebeat.yml" >}}
+    {{< file "/etc/filebeat/filebeat.yml" >}}
 filebeat.inputs:
 - type: log
   enabled: true
@@ -395,7 +395,7 @@ output {
         # On the filebeat host
         sudo systemctl start filebeat
 
-Lines written to the files configured in the `filebeat.yml` file now appear in the Logstash pipeline.
+The lines written to the files and configured in the `filebeat.yml` file now appear in the Logstash pipeline.
 
 ## Cleaning Up
 
