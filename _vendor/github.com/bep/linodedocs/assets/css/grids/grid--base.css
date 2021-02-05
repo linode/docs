@@ -13,7 +13,7 @@
     --row-explorer: 2; /* The grid row for the left side explorer menu. */
     --row-main: 3; /* The grid row for the main content. */
     --col-navbar: 1; /* The grid column for the top navbar. */
-    --height-linode-menu-row: 58px;
+    --height-linode-menu-row: 52px;
     --height-navbar-row: 45px;
     --width-left-column: 240px;
     --width-right-column: 240px;
@@ -58,17 +58,6 @@
     .grid--base {
         --height-linode-menu-row: 107px;
     }
-}
-
-.is-topbar-pinned .grid--base {
-    --col-navbar: 1;
-    --row-explorer: 2;
-    --row-main: 2;
-    grid-template-rows: repeat(var(--num-rows), auto);
-}
-
-.is-topbar-pinned .grid--base #linode-menus {
-    display: none;
 }
 
 .grid--base #linode-menus {

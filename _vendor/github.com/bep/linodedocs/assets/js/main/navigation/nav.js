@@ -1,8 +1,13 @@
 'use strict';
 
-import { isMobile, sendEvent, toggleBooleanClass } from '../helpers/index';
+import { isMobile, isScreenLargerThan, sendEvent, toggleBooleanClass } from '../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[navbar]') : function() {};
+
+const getScrollPosNavbar = function() {
+	let h = window.getComputedStyle(document.getElementById('grid')).getPropertyValue('--height-linode-menu-row');
+	return parseInt(h, 10) - 1;
+};
 
 const isOrIsNotClass = function(baseClass, b) {
 	if (b) {
@@ -57,7 +62,7 @@ const toggleExplorer = function(self) {
 	}
 };
 
-const toggleToC = function(self, open) {
+const toggleToC = function(self, open, broadcast = false) {
 	self.toggles.toc = open;
 	toggleBooleanClass('toc-open', document.body, open);
 	if (open && self.toggles.searchInput) {
@@ -65,6 +70,11 @@ const toggleToC = function(self, open) {
 	}
 	if (open && isMobile() && self.toggles.explorer) {
 		closeExplorer();
+	}
+	if (broadcast) {
+		self.$nextTick(() => {
+			sendEvent('nav:toggle', { what: 'toc', open: open });
+		});
 	}
 };
 
@@ -82,35 +92,38 @@ export function newNavController() {
 		init: function() {
 			var self = this;
 
-			// Set up watcher to synchronize Alpine model changes with the classes we set on the
-			// body element to get proper CSS state.
-			this.$watch('pinned', () => {
-				if (self.pinned) {
-					addClassOnScroll();
-				} else {
-					removeClassOnScroll();
-				}
-			});
-			this.$watch('toggles.explorer', () => {
-				toggleExplorer(self);
-			});
-			this.$watch('toggles.searchInput', () => {
-				toggleBooleanClass('search-input-open', document.body, self.toggles.searchInput);
-				if (self.toggles.searchInput && self.toggles.explorer) {
-					self.toggles.explorer = false;
-				}
-			});
-			this.$watch('toggles.searchResults', () => {
-				let open = self.toggles.searchResults;
-				toggleSearchResults(self, open);
-				if (open) {
-					// Move the main scroll positon to top.
-					if (window.scrollY > 0) {
-						// Setting it <= 1 would toggle off the pinned navbar.
-						window.scrollTo(0, 2);
+			// Return a callback to make sure its run after Alpine has made its initial updates to the DOM.
+			return function() {
+				// Set up watcher to synchronize Alpine model changes with the classes we set on the
+				// body element to get proper CSS state.
+				this.$watch('pinned', () => {
+					if (self.pinned) {
+						addClassOnScroll();
+					} else {
+						removeClassOnScroll();
 					}
-				}
-			});
+				});
+				this.$watch('toggles.explorer', () => {
+					toggleExplorer(self);
+				});
+				this.$watch('toggles.searchInput', () => {
+					toggleBooleanClass('search-input-open', document.body, self.toggles.searchInput);
+					if (self.toggles.searchInput && self.toggles.explorer) {
+						self.toggles.explorer = false;
+					}
+				});
+				this.$watch('toggles.searchResults', () => {
+					let open = self.toggles.searchResults;
+					toggleSearchResults(self, open);
+					if (open) {
+						// Move the main scroll positon to top.
+						if (window.scrollY > 0) {
+							// Setting it <= 1 would toggle off the pinned navbar.
+							window.scrollTo(0, 2);
+						}
+					}
+				});
+			};
 		},
 		receiveToggle: function(detail) {
 			debug('receiveToggle', detail);
@@ -150,15 +163,14 @@ export function newNavController() {
 			this.explorerPreloaded = true;
 		},
 		onScroll: function() {
-			const thresholdOn = 150;
-
 			let scrollpos = window.scrollY;
 			let self = this;
-			if (scrollpos >= thresholdOn) {
+			let scrollPosNavbar = getScrollPosNavbar();
+			if (scrollpos >= scrollPosNavbar) {
 				if (!self.pinned) {
 					self.pinned = true;
 				}
-			} else if (!self.reloaded && self.pinned && scrollpos === 0) {
+			} else if (!self.reloaded && self.pinned && scrollpos < 10) {
 				self.pinned = false;
 			}
 			self.reloaded = false;
@@ -170,8 +182,11 @@ export function newNavController() {
 			}
 		},
 		onTurbolinksRender: function(data) {
+			debug('onTurbolinksRender', { pinned: this.pinned });
 			if (this.pinned) {
 				this.reloaded = true;
+				let scrollPosNavbar = getScrollPosNavbar();
+				window.scrollTo(0, scrollPosNavbar);
 				addClassOnScroll();
 			}
 		},

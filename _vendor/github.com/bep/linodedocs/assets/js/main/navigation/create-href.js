@@ -19,12 +19,6 @@ export function newCreateHref(searchConfig) {
 		hrefSection: function(key) {
 			let parts = key.split(' > ');
 			return `${SECTIONS_BASEPATH}${parts.join('/').toLowerCase()}/`;
-		},
-		hrefEntry: function(hit) {
-			let urlParts = hit.url.split('/');
-			let contentType = hit.objectID.split('#').shift().replace('content', 'resource');
-			let slug = urlParts.pop() || urlParts.pop();
-			return `${WP_CONTENT_BASEPATH}${contentType}/${slug}/`;
 		}
 	};
 }

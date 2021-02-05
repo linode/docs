@@ -129,12 +129,7 @@ export function newSearchController(searchConfig) {
 			if (opts.isSectionMeta) {
 				href = router.hrefSection(hit.objectID);
 			} else if (hit.url) {
-				if (hit.section === 'resources > webinars') {
-					href = hit.url;
-				} else {
-					// A blog entry.
-					href = router.hrefEntry(hit);
-				}
+				href = hit.url;
 			} else if (hit.objectType === 'question') {
 				// A question.
 				href = `https://www.linode.com/community/questions/${hit.linodeId}`;
