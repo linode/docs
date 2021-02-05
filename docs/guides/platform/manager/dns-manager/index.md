@@ -86,7 +86,7 @@ The term *domain zone* becomes synonymous with the term *domain*, both in terms 
 
 1.  If you have a zone that can be exported from a server or another hosting provider, click **Import a Zone** to import it.
 
-1.  Click **Add a Domain** to create a new domain zone.
+1.  Click **Create a Domain** to create a new domain zone.
 
 1. Click on the **Edit** button next to a domain zone to edit DNS records within a zone.
 
