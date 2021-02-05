@@ -1,7 +1,7 @@
 .search-input[contenteditable][placeholder]:empty:before {
     content: attr(placeholder);
     position: absolute;
-    color: #A9AAB0;
+    color: #a9aab0;
     background-color: transparent;
 }
 

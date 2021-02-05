@@ -3,9 +3,10 @@
 import { newDispatcher } from './dispatcher';
 import { newCreateHref } from '../navigation/create-href';
 import { sendEvent, toDateString, waitUntil } from '../helpers/index';
+import { newQuery, QueryHandler } from './query';
+import { isTopResultsPage } from './filters';
 
 const debug = 0 ? console.log.bind(console, '[search-main]') : function() {};
-
 class Searcher {
 	constructor(searchConfig, hitNormalizer, onError, debug = function() {}) {
 		const algoliaHost = `https://${searchConfig.app_id}-dsn.algolia.net`;
@@ -105,10 +106,7 @@ export function newSearchController(searchConfig) {
 
 	const dispatcher = newDispatcher();
 	const router = newCreateHref(searchConfig);
-
-	// Toggle this on to always show the search results.
-	// Useful for search related style changes, but remember to turn it off!
-	const designMode = false;
+	const queryHandler = new QueryHandler(searchConfig.sections);
 
 	// Normalization of a search hit across the search indices.
 	const normalizeHit = function(self) {
@@ -131,12 +129,7 @@ export function newSearchController(searchConfig) {
 			if (opts.isSectionMeta) {
 				href = router.hrefSection(hit.objectID);
 			} else if (hit.url) {
-				if (hit.section === 'resources > webinars') {
-					href = hit.url;
-				} else {
-					// A blog entry.
-					href = router.hrefEntry(hit);
-				}
+				href = hit.url;
 			} else if (hit.objectType === 'question') {
 				// A question.
 				href = `https://www.linode.com/community/questions/${hit.linodeId}`;
@@ -168,79 +161,8 @@ export function newSearchController(searchConfig) {
 		};
 	};
 
-	// Creates a search filters from the browser location,
-	// e.g. "?sections=docs&q=apache".
-	const createSearchFiltersFromLocation = function(self) {
-		if (!window.location.search) {
-			return false;
-		}
-		let params = new URLSearchParams(window.location.search.slice(1));
-		let sections = params.get('sections');
-		self.filters.query = params.get('q');
-		let mainSearch = self.searchState.mainSearch;
-		mainSearch.results.sections.forEach((section) => {
-			section.disabledPermanent = !sections.includes(section.config.name);
-		});
-
-		sections.split(',').forEach((section) => {
-			let sectionConfig = searchConfig.sections.find((s) => s.name === section);
-
-			if (!sectionConfig) {
-				throw `section ${section} not found`;
-			}
-
-			var filterGroups = [];
-			sectionConfig.facetFilterNames().forEach((filterName) => {
-				let filters = [];
-				let filterCsv = params.get(filterName);
-				if (filterCsv) {
-					let values = filterCsv.split(',');
-					values.forEach((v) => {
-						filters.push(`${filterName}:${v}`);
-					});
-				}
-				if (filters.length > 0) {
-					filterGroups.push(filters);
-				}
-			});
-
-			self.filters.facets.set(sectionConfig.name, filterGroups);
-		});
-
-		return true;
-	};
-
 	// Prepares the data structure to store the search results in.
 	const newSearchResults = function(self, blank) {
-		var sectionFiltersToQueryParams = function(filterGroups) {
-			if (!filterGroups) {
-				return '';
-			}
-
-			var queryString = '';
-
-			var csvMap = new Map();
-			filterGroups.forEach((filters) => {
-				filters.forEach((filter) => {
-					let keyVal = filter.split(':');
-					let key = keyVal[0];
-					let val = keyVal[1];
-					let csv = csvMap.get(key);
-					if (!csv) {
-						csvMap.set(key, val);
-					} else {
-						csvMap.set(key, csv + ',' + val);
-					}
-				});
-			});
-
-			csvMap.forEach((val, key) => {
-				queryString = queryString.concat('&', `${key}=${encodeURIComponent(val.toLowerCase())}`);
-			});
-
-			return queryString;
-		};
-
 		let sections = [];
 		for (let sectionCfg of searchConfig.sections) {
 			let searchData = {
@@ -259,13 +181,10 @@ export function newSearchController(searchConfig) {
 			};
 
 			searchData.setResult = function(result) {
-				let sectionFilters = self.filters.facets.get(sectionCfg.name);
-				this.href =
-					'/docs/search/?sections=' +
-					sectionCfg.name +
-					'&q=' +
-					encodeURIComponent(self.filters.query) +
-					sectionFiltersToQueryParams(sectionFilters);
+				let q = queryHandler.queryToQueryForSection(self.searchState.query, sectionCfg.name);
+				let queryString = queryHandler.queryToQueryString(q);
+				this.href = `/docs/search/?${queryString}`;
+
 				this.result = result;
 				this.result.hits.forEach((hit) => {
 					hit.sectionCfg = sectionCfg;
@@ -356,10 +275,7 @@ export function newSearchController(searchConfig) {
 				if (this.disabledPermanent) {
 					return false;
 				}
-				if (!self.filters.facets.isSectionEnabled) {
-					return true;
-				}
-				return self.filters.facets.isSectionEnabled(section.config.name);
+				return self.searchState.query.isSectionEnabled(section.config.name);
 			};
 
 			section.getFacet = function(name) {
@@ -506,6 +422,8 @@ export function newSearchController(searchConfig) {
 
 	const newSearchState = function(self) {
 		let s = {
+			query: newQuery(),
+			queryChanged: false,
 			mainSearch: newSearchItem({
 				name: 'main',
 				results: newSearchResults(self, false),
@@ -597,7 +515,8 @@ export function newSearchController(searchConfig) {
 		};
 
 		s.items = function() {
-			return [ this.mainSearch, this.blankSearch, this.metaSearch ].concat(
+			// The events will be sent in this order.
+			return [ this.blankSearch, this.metaSearch, this.mainSearch ].concat(
 				Array.from(this.namedSearches.values())
 			);
 		};
@@ -641,6 +560,7 @@ export function newSearchController(searchConfig) {
 			events = [ ...new Set(events) ];
 
 			if (events.length > 0) {
+				events.push(dispatcher.events.EVENT_SEARCHRESULT_ANY);
 				debug('broadcast', this, events);
 				dispatcher.broadCastSearchResult(this, events);
 			}
@@ -677,46 +597,22 @@ export function newSearchController(searchConfig) {
 	return {
 		show: false, // Toggles the main search listing on/off.
 		publish: true, // Whether to publish events on search updates.
-		showFullSearchResult: false, // Whether to respect hits_per_page section config setting.
-
-		filters: { query: '', facets: new Map() },
+		standaloneSearch: false, // Standalone vs top results search.
 
 		searchState: null,
 
-		init: function(filtersFromLocation = false) {
-			debug('init', filtersFromLocation);
+		init: function(standaloneSearch = false) {
+			debug('init');
 
 			this.searchState = newSearchState(this);
-			this.publish = !filtersFromLocation;
-			this.showFullSearchResult = filtersFromLocation;
-
-			this.filters.isZero = function() {
-				return this.query === '' && this.facets.size === 0;
-			};
-
-			if (filtersFromLocation) {
-				let hasQueryFilter = createSearchFiltersFromLocation(this);
-				if (hasQueryFilter) {
-					this.search({
-						regularSearch: true,
-						allowEmptyQuery: true,
-						query: this.filters.query
-					});
-				}
-				return;
-			}
+			this.publish = !standaloneSearch;
+			this.standaloneSearch = standaloneSearch;
 
 			if (this.publish) {
 				this.$watch('show', () => {
 					sendEvent('nav:toggle', { what: 'search-panel', open: this.show });
 				});
 			}
-
-			this.$nextTick(function() {
-				if (designMode) {
-					dispatcher.search({ query: 'apache centos' });
-				}
-			});
 
 			// Load metadata from /docs/data/sections/index.json
 			this.searchState.metaSearch.hugoData.loadIfNotLoaded('init');
@@ -732,17 +628,6 @@ export function newSearchController(searchConfig) {
 			this.search({ event: detail.event });
 		},
 
-		applyFacetFilters: function(filters) {
-			debug('applyFacetFilters', filters);
-			this.filters.facets = filters;
-			this.search({
-				regularSearch: true,
-				allowEmptyQuery: filters.triggerSearch,
-				query: this.filters.query,
-				event: dispatcher.events.EVENT_SEARCHRESULT
-			});
-		},
-
 		onTurbolinksBeforeRender: function(data) {
 			if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
 				// Turbolinks is displaying a preview
@@ -756,10 +641,29 @@ export function newSearchController(searchConfig) {
 			let opts = arg || {};
 			debug('search', opts);
 
+			var regularSearch = false;
+			var executeSearch = this.standaloneSearch || opts.executeSearch;
+			var event = opts.event;
+
+			if (opts.query) {
+				// A Query object, a regular user search.
+
+				regularSearch = true;
+				this.searchState.queryChanged = !this.searchState.query.eq(opts.query);
+				if (this.searchState.queryChanged) {
+					// Clone it so we can detect changes.
+					this.searchState.query = queryHandler.queryToQuery(opts.query);
+				}
+
+				if (!executeSearch) {
+					// Done.
+					return;
+				}
+			}
+
 			// Make sure that the Hugo hosted static data is loaded before we do any searches.
 			await this.searchState.metaSearch.hugoData.loadIfNotLoaded('search');
 
-			var event = opts.event;
 			if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK) {
 				if (this.searchState.blankSearch.isLoading()) {
 					// One is already in progress.
@@ -788,20 +692,8 @@ export function newSearchController(searchConfig) {
 			}
 
 			this.searchState.searchOpts = opts;
-
-			let regularSearch = opts.regularSearch !== undefined ? opts.regularSearch : false;
-			this.filters.query = regularSearch ? opts.query || '' : this.filters.query;
-			if (designMode || (regularSearch && (this.filters.query.length > 0 || opts.allowEmptyQuery))) {
-				this.show = true;
-			} else if (regularSearch && this.filters.query.length === 0) {
-				this.show = false;
-			}
-
-			var needsBlankResult = event === dispatcher.events.EVENT_SEARCHRESULT_BLANK;
-
-			if (!this.show) {
-				needsBlankResult = true;
-			}
+			this.show = isTopResultsPage();
+			var needsBlankResult = event === dispatcher.events.EVENT_SEARCHRESULT_BLANK || !this.standaloneSearch;
 
 			if (opts.requests) {
 				this.searchState.staticSearchRequests.push({
@@ -812,15 +704,7 @@ export function newSearchController(searchConfig) {
 			}
 
 			// Refresh the main search result on query or filter changes.
-			this.searchState.mainSearch.resetLoadingStateIf(regularSearch && !this.filters.isZero());
-
-			// Disable main search if all filters are cleared.
-			// This means that the explorer etc. will fall back to the blank search result.
-			if (this.searchState.mainSearch.disableIf(regularSearch && this.filters.isZero())) {
-				needsBlankResult = true;
-				// Make sure that also this gets published, even if the search data has not changed.
-				this.searchState.mainSearch.publish = true;
-			}
+			this.searchState.mainSearch.resetLoadingStateIf(regularSearch && this.searchState.queryChanged);
 
 			if (needsBlankResult) {
 				this.searchState.blankSearch.publish = true;
@@ -842,7 +726,6 @@ export function newSearchController(searchConfig) {
 			var self = this;
 			var searcher = newSearcher(normalizeHit(self), function(err) {
 				self.searchState.reset();
-				// TODO(bep) error status in view
 				throw err;
 			});
 
@@ -876,17 +759,21 @@ export function newSearchController(searchConfig) {
 				});
 			}
 
+			var filtersPerSection = queryHandler.filtersPerSection(this.searchState.query);
 			var applySectionFilters = function(opts) {
 				let sectionConfig = opts.sectionConfig;
 				let requests = opts.requests;
-				let facetFilters = self.filters.facets.get(sectionConfig.name) || [];
+				let facetFilters = filtersPerSection.get(sectionConfig.name) || [];
 
 				requests.forEach((req) => {
 					req.facetFilters = facetFilters;
 					if (!req.params) {
-						req.params = `query=${encodeURIComponent(self.filters.query)}&hitsPerPage=100`;
+						req.params = `query=${encodeURIComponent(self.searchState.query.q)}&hitsPerPage=100`;
 					} else if (req.params.includes('query=&')) {
-						req.params = req.params.replace('query=&', `query=${encodeURIComponent(self.filters.query)}&`);
+						req.params = req.params.replace(
+							'query=&',
+							`query=${encodeURIComponent(self.searchState.query.q)}&`
+						);
 					}
 				});
 			};
@@ -900,19 +787,21 @@ export function newSearchController(searchConfig) {
 				}
 				let hitsPerPage = 0;
 				if (!isBlank) {
-					hitsPerPage = self.showFullSearchResult
+					hitsPerPage = self.standaloneSearch
 						? 1000
 						: sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
 				}
+				let q = isBlank ? '' : encodeURIComponent(self.searchState.query.q);
 				let filters = sectionConfig.filters || '';
-				let facetFilters = self.filters.facets.get(sectionConfig.name) || [];
+				let facetFilters = isBlank ? [] : filtersPerSection.get(sectionConfig.name) || [];
+
 				return {
 					indexName: sectionConfig.indexName(),
 					filters: filters,
 					facetFilters: facetFilters,
 					facets: facets,
 					attributesToHighlight: [ 'title', ...filteringFacetNames ],
-					params: `query=${encodeURIComponent(self.filters.query)}&hitsPerPage=${hitsPerPage}`
+					params: `query=${q}&hitsPerPage=${hitsPerPage}`
 				};
 			};
 
@@ -940,7 +829,16 @@ export function newSearchController(searchConfig) {
 				});
 			});
 
-			if (regularSearch && this.searchState.mainSearch.shouldLoad()) {
+			let loadMainSearch = false;
+			if (this.searchState.mainSearch.shouldLoad()) {
+				// namedSearches contains the category listing searches. If
+				// we come in from a bookmarked URL we need to make sure that we
+				// also load the main search to get the correct highlighting in the
+				// input box.
+				loadMainSearch = regularSearch || this.searchState.namedSearches.size > 0;
+			}
+
+			if (loadMainSearch) {
 				let requests = [];
 
 				for (let section of sectionsIndices) {
@@ -980,13 +878,12 @@ export function newSearchController(searchConfig) {
 						node.section.config.explorer_max_leafnodes || searchConfig.explorer_max_leafnodes || 100;
 					let sectionFilter = `section:${node.key}`;
 					let filters = node.section.config.filters || '';
-					let indexFilters = self.filters.facets.get(node.section.config.name) || new Set();
-					let facetFilters = Array.from(indexFilters);
+					let facetFilters = filtersPerSection.get(node.section.config.name) || [];
 					let request = {
 						indexName: node.section.config.indexName(),
 						filters: filters,
 						facetFilters: facetFilters.concat(facetFilters, sectionFilter),
-						params: `query=${encodeURIComponent(this.filters.query)}&hitsPerPage=${maxLeafNodes}`
+						params: `query=${encodeURIComponent(this.searchState.query.q)}&hitsPerPage=${maxLeafNodes}`
 					};
 
 					searcher.add({ requests: [ request ] }, (results) => {
@@ -1000,6 +897,7 @@ export function newSearchController(searchConfig) {
 			searcher.execute(() => {
 				debug('publish', event, self.searchState);
 				self.searchState.publish();
+				self.show = self.show || self.standaloneSearch;
 			});
 		},
 

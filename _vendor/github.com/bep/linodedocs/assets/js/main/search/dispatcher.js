@@ -18,17 +18,26 @@ export function newDispatcher() {
 		EVENT_SEARCH_READY: 'search:ready',
 
 		// Event that triggers a new search query.
-		EVENT_SEARCH_TRIGGER: 'search:trigger',
+		EVENT_SEARCH_QUERY: 'search:query',
 
-		// Apply facet filters to the search query.
-		EVENT_FACETFILTERS: 'search:facetfilters',
+		// Event that triggers a new search query for the standalone search.
+		EVENT_SEARCH_QUERY_STANDALONE: 'search:query-standalone',
+
+		// Event that signals the opening/close of the search experience (e.g. the close of the input box).
+		EVENT_SEARCH_TOGGLE: 'search:toggle',
+
+		// Apply search filters to the search query.
+		EVENT_SEARCHFILTER: 'search:filter',
 
 		// Event with the current main search result.
-		// Receivers can asumme that a filter (e.g. the main query) has changed.
+		// Receivers can asume that a filter (e.g. the main query) has changed.
 		EVENT_SEARCHRESULT: 'search:results',
 
 		// Event with the initial blank search result.
 		EVENT_SEARCHRESULT_BLANK: 'search:results-blank',
+
+		// Event sent for any kind of search.
+		EVENT_SEARCHRESULT_ANY: 'search:results-any',
 
 		// Event with the initial data structure. This will not contain any Algolia search results,
 		// but may contain other metadata.
@@ -42,21 +51,32 @@ export function newDispatcher() {
 	};
 
 	return {
-		search: function(opts) {
-			debug('search', opts);
-			sendEvent(events.EVENT_SEARCH_TRIGGER, {
-				regularSearch: true,
-				query: opts.query,
-				event: events.EVENT_SEARCHRESULT
-			});
-		},
 		searchReady: function() {
 			debug('searchReady');
 			sendEvent(events.EVENT_SEARCH_READY, {});
 		},
+		searchToggle: function(show) {
+			debug('searchToggle');
+			sendEvent(events.EVENT_SEARCH_TOGGLE, show);
+		},
+		searchQuery: function(query, executeSearch = true) {
+			debug('searchQuery');
+			sendEvent(events.EVENT_SEARCH_QUERY, {
+				event: events.EVENT_SEARCHRESULT,
+				query: query,
+				executeSearch: executeSearch
+			});
+		},
+		searchQueryStandalone: function(query) {
+			debug('searchQueryStandalone');
+			sendEvent(events.EVENT_SEARCH_QUERY_STANDALONE, {
+				event: events.EVENT_SEARCHRESULT,
+				query: query
+			});
+		},
 		searchBlank: function() {
 			debug('searchBlank');
-			sendEvent(events.EVENT_SEARCH_TRIGGER, { event: events.EVENT_SEARCHRESULT_BLANK });
+			sendEvent(events.EVENT_SEARCH_QUERY, { event: events.EVENT_SEARCHRESULT_BLANK });
 		},
 		searchNodes: function(detail) {
 			debug('searchNodes', detail);
@@ -64,10 +84,9 @@ export function newDispatcher() {
 		},
 		// A standalone search is a search that has nothing to do with the global
 		// filtering. Therefore the result can be safely cached and reused.
-		// TODO(bep) names
 		searchStandalone: function(requests, toEvent) {
 			debug('searchStandalone', requests);
-			sendEvent(events.EVENT_SEARCH_TRIGGER, {
+			sendEvent(events.EVENT_SEARCH_QUERY, {
 				requests: requests,
 				event: toEvent
 			});
@@ -80,9 +99,11 @@ export function newDispatcher() {
 				event: toEvent
 			});
 		},
-		applyFacetFilters: function(filters) {
-			debug('applyFacetFilters', filters);
-			sendEvent(events.EVENT_FACETFILTERS, filters);
+
+		// filters can either be an object ({ filters: { q: "Apache" }}) or an encoded query string (q=Apache)).
+		applySearchFilters: function(filters) {
+			debug('applySearchFilters', filters);
+			sendEvent(events.EVENT_SEARCHFILTER, filters);
 		},
 
 		broadCastSearchResult: function(searchresult, to) {

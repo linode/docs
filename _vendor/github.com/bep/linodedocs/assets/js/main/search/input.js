@@ -1,6 +1,7 @@
 'use strict';
 
 import { newDispatcher } from './dispatcher';
+import { isTopResultsPage } from './filters';
 
 var debug = 0 ? console.log.bind(console, '[search-input]') : function() {};
 
@@ -8,13 +9,13 @@ export function newSearchInputController() {
 	var dispatcher = newDispatcher();
 
 	/**
-		 * The input form is a div with the contenteditable attribute.
-		 * 
-		 * This allows rich styling, but we also need this to save and restore
-		 * the cursor position.
-		 * 
-		 * @param  {} root the contenteditable element.
-		 */
+	 * The input form is a div with the contenteditable attribute.
+	 * 
+	 * This allows rich styling, but we also need this to save and restore
+	 * the cursor position.
+	 * 
+	 * @param  {} root the contenteditable element.
+	 */
 	const saveSelection = function(root) {
 		var selection = window.getSelection();
 		if (selection.rangeCount === 0) {
@@ -52,14 +53,38 @@ export function newSearchInputController() {
 	};
 
 	var self = {
+		query: null, // The query object received from filters.
+		queryString: '', // The query string from input.
 		matchedWords: new Set(),
-		focus: false
+		focus: false,
+		searchOpen: isTopResultsPage()
+	};
+
+	self.init = function() {
+		debug('init');
 	};
 
 	self.dispatch = function() {
 		let input = this.$refs.searchInput;
-		let query = input.innerText.trim();
-		dispatcher.search({ query: query });
+		let queryString = input.innerText.trim();
+		let updateWindowLocation = queryString.length > this.queryString.length;
+		if (!updateWindowLocation && queryString.length > 0) {
+			// Shorter, but a new term.
+			updateWindowLocation = !this.queryString.startsWith(queryString);
+		}
+		this.queryString = queryString;
+		this.searchOpen = this.searchOpen || updateWindowLocation;
+
+		dispatcher.applySearchFilters({ filters: { q: queryString }, updateWindowLocation: updateWindowLocation });
+	};
+
+	self.close = function() {
+		this.searchOpen = false;
+		dispatcher.searchToggle(false);
+	};
+
+	self.onTurbolinksBeforeRender = function(data) {
+		this.searchOpen = false;
 	};
 
 	self.setFocus = function(focus) {
@@ -72,9 +97,23 @@ export function newSearchInputController() {
 		self.dispatch();
 	};
 
+	self.hasQuery = function() {
+		return this.query !== null && this.query.q;
+	};
+
 	self.renderInput = function() {
 		let input = this.$refs.searchInput;
-		let text = input.textContent.replace(/\n/g, '');
+		let inputTextContent = input.textContent;
+		if (!inputTextContent && !this.hasQuery()) {
+			return;
+		}
+		let text = '';
+		if (this.focus) {
+			text = inputTextContent.replace(/\n/g, '');
+		} else if (self.query) {
+			text = self.query.q;
+		}
+
 		let inputWords = text.split(/(\s+)/);
 		var formattedWords = [];
 		var counter = 0;
@@ -103,8 +142,11 @@ export function newSearchInputController() {
 	};
 
 	self.receiveData = function(data) {
-		data.mainSearch.results.getMatchedWords().forEach(self.matchedWords.add, self.matchedWords);
-		self.renderInput();
+		debug('receiveData', data);
+		this.query = data.query;
+		let matchedWords = data.mainSearch.results.getMatchedWords();
+		matchedWords.forEach(this.matchedWords.add, this.matchedWords);
+		this.renderInput();
 	};
 
 	return self;

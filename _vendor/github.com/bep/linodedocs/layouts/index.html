@@ -158,7 +158,7 @@
         {{ .title }}
       </h2>
       {{/* Clicking this will spin up the search with the qa section filtered. */}}
-      <a class="text-xs md:text-sm text-basicgray ml-3 flex items-center" @click="$dispatch('search:search-filters', 'sections=qa')">
+      <a class="text-xs md:text-sm text-basicgray ml-3 flex items-center" @click="$dispatch('search:filter', 'sections=qa')">
         Browse All
         <svg class="w-2 h-3 ml-2 text-basicgray btn-icon">
           <use href="#icon--arrow-right"></use>
