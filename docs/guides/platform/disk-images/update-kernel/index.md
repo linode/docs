@@ -19,7 +19,7 @@ aliases: ['/platform/update-kernel/']
 ---
 ![How to Update your Linode's Existing Kernel](update-your-kernel.png "How to Update your Linode's Existing Kernel")
 
-This guide is about updating your Linode's current kernel to a newer version. For information on how to change which kind of kernel your Linode runs, check out the [How to Change your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) guide.
+This guide is about updating your Linode's current kernel to a newer version. For information on how to change which kind of kernel your Linode runs, check out the [How to Change your Linode's Kernel](/docs/guides/how-to-change-your-linodes-kernel/) guide.
 
 ## Which Kernel Am I Running?
 
@@ -35,11 +35,11 @@ A version history for Linode's kernel is available [here](https://www.linode.com
 
 -   A kernel that you compile from source.
 
-The steps needed to update your kernel vary depending on the type of kernel you are running. To find out which type you're using, [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) into your Linode and run the following command:
+The steps needed to update your kernel vary depending on the type of kernel you are running. To find out which type you're using, [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) into your Linode and run the following command:
 
     uname -r
 
-If your output contains `linode` in the version tag, then you are running the [Linode kernel](#update-your-linode-kernel):
+If your output contains `linode` in the version tag, then you are running the [Linode kernel](#update-your-linode-kernel-with-linodes-cloud-manager):
 
 {{< output >}}
 4.14.12-x86_64-linode92
@@ -53,9 +53,11 @@ If your output contains `generic` in the version tag, then you are probably runn
 
 ## Update Your Linode Kernel with Linode's Cloud Manager
 
-1. From the Linode dashboard, click the **Linodes** option in the left-hand navigation menu.
+1. From the Linode dashboard, click the **Linodes** option in the left-hand navigation menu to view a list of your Linodes.
 
-1. Click the Linode, listed under **Linodes**, and click the **Configurations** tab.
+1. Click on the desired Linode to view its dashboard.
+
+1. Click the **Configurations** tab below the Linode's Summary.
 
 1. Click the **Edit** option, and scroll to the *Boot Settings* section.
 
