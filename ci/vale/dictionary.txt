@@ -1284,6 +1284,7 @@ rsyslog
 rtf
 rtt
 rubocop
+rubydebug
 rubygems
 ruleset
 rulesets
