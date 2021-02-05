@@ -61,7 +61,6 @@ To reset reverse DNS to the Linode domain, which will be something like **li12-3
 2.  Click the **Linodes** link in the sidebar.
 3.  Select your Linode. The Linode's detail page appears.
 4.  Click the **Network** tab.
-5.  Select the **more options ellipsis** for the IP address to which you'd like to add a reverse pointer record.
 6.  Select the **Edit RDNS** menu option, as shown in the below image.
 
     ![Select 'Edit RDNS' option from the IP address menu.](remote_access_edit_rdns_more_options.png)
