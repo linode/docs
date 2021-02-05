@@ -90,11 +90,13 @@
         <section id="main__content" class="main__content container mb-20">
           <div class="w-full h-full">
             {{ if not .IsHome }}
-              <div class="mb-4 md:mb-6 mt-6 md:mt-12 main__breadcrumbs">
+              <div class="mt-6 md:mt-12 main__breadcrumbs">
                 {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
               </div>
             {{ end }}
-            {{ block "main" . }}{{ end }}
+            <div class="{{ if not .IsHome }}mt-8 md:mt-10{{ end }}">
+              {{ block "main" . }}{{ end }}
+            </div>
           </div>
         </section>
       </div>

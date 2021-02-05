@@ -22,7 +22,7 @@ window.lnc = {
 	// Search navigation.
 	NewSearchController: () => newSearchController(searchConfig),
 	NewSearchInputController: newSearchInputController,
-	NewSearchFiltersController: newSearchFiltersController,
+	NewSearchFiltersController: (opts = {}) => newSearchFiltersController(searchConfig, opts),
 	NewInitController: newInitController,
 
 	NewSearchExplorerController: () => newSearchExplorerController(searchConfig),
