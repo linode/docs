@@ -23,7 +23,7 @@ If you're new to Linode, or if you've just purchased a new domain name, the firs
 Creating a domain also creates its corresponding domain zone.
 {{</ note >}}
 
-1.  From the **Domains** section, click on **Add a Domain**. The **Create a Domain** panel will appear where you can fill out the form fields with your domain's information.
+1.  From the **Domains** section, click on **Create a Domain**. The **Create a Domain** panel will appear where you can fill out the form fields with your domain's information.
 
     ![This page lets you add a new domain](add-new-domain.png "This page lets you add a new domain")
 
