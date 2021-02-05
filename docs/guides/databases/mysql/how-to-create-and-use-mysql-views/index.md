@@ -194,7 +194,7 @@ This is a simplified version of the MySQL view syntax:
 
 ## Creating a MySQL View
 
-In this section presents an example MySQL view. This view is used to classify customers from your sample database, depending on their number of monthly sales.
+This section presents an example MySQL view. This view is used to classify customers from your sample database, depending on their number of monthly sales.
 
 Ensure you are logged into your MySQL server. Then, run the command below to create a `customers_membership` view:
 
