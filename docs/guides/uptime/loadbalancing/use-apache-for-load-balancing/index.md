@@ -76,7 +76,7 @@ Restart Apache to put the new modules in action.
 
 ## Create the Primary Balancing Configuration
 
-Once the modules are enabled, the main balancing configuration file can be added. Make sure to change all IP references as needed.
+Once the modules are enabled, the main balancing configuration file can be added. Make sure to change all IP references as needed. The IPs in the `BalancerMember` directives should be the back-end hosts that service requests. The `route` parameter is used to give members a friendly name for logging. The `timeout` parameter is measured in seconds and should be greater than the timeout value of the member. The `connection_timeout` parameter configures the time that Apache waits for a connection to the member. The `retry` parameter configures the seconds to wait before attempting a new connection after a connection error.
 
 {{< file "/etc/apache2/conf-available/main-balancer.conf" apache >}}
 <Proxy balancer://default>
@@ -147,7 +147,7 @@ VirtualHost *:80>
     <Else>
       RequestHeader set X-Forwarded-For "%{FORWARD_IP}e"
     </Else>
-   
+
     Header add Set-Cookie "BALANCEID=balancer.%{BALANCER_WORKER_ROUTE}e; path=/;" env=BALANCER_ROUTE_CHANGED
 
     # These headers are optional but can be useful when testing and debugging.
