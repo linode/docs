@@ -150,9 +150,7 @@ export function newSearchExplorerController(searchConfig) {
 		receiveDataInit: function(data) {
 			debug('receiveDataInit', data, this.open, this.initState);
 			this.data.searchState = data;
-			if (this.initState <= initStates.LOADING) {
-				this.initState = initStates.DATA_LOADED;
-			}
+			this.initState = initStates.DATA_LOADED;
 			this.load();
 		},
 
@@ -379,7 +377,7 @@ export function newSearchExplorerController(searchConfig) {
 
 				if (this.isGhostSection) {
 					e.preventDefault();
-					sendEvent('search:search-filters', `sections=${section.config.name}`);
+					sendEvent('search:filter', `sections=${section.config.name}`);
 					return;
 				}
 

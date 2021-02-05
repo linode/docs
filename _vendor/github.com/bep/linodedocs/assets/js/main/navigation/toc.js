@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile, sendEvent, toggleBooleanClass } from '../helpers/index';
+import { isMobile, isScreenLargerThan, sendEvent, toggleBooleanClass } from '../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[toc]') : function() {};
 
@@ -36,6 +36,14 @@ export function newToCController() {
 		init: function(initData) {
 			this.initData = initData;
 			this.createTOC();
+			if (isScreenLargerThan(1711)) {
+				this.open = true;
+			}
+
+			var self = this;
+			return function() {
+				self.createTOC();
+			};
 		},
 		createTOC: function() {
 			var self = this;

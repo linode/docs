@@ -91,6 +91,10 @@ export function isMobile() {
 	return document.documentElement.clientWidth < 768;
 }
 
+export function isScreenLargerThan(px) {
+	return document.documentElement.clientWidth > px;
+}
+
 export function isTouchDevice() {
 	try {
 		document.createEvent('TouchEvent');

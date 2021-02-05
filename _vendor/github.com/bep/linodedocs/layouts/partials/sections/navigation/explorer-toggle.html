@@ -19,14 +19,14 @@
       Explore docs
     </div>
     <template x-if="!toggles.explorer">
-      <button aria-label="open" type="button" class="btn-icon hidden md:block">
+      <button aria-label="open" type="button" class="btn-icon hidden md:block" data-testid="explorer-open">
         <svg class="text-titlecolor w-6 h-5">
           <use href="#icon--arrow-down"></use>
         </svg>
       </button>
     </template>
     <template x-if="toggles.explorer">
-      <button aria-label="close" type="button" class="btn-icon hidden md:block">
+      <button aria-label="close" type="button" class="btn-icon hidden md:block" data-testid="explorer-close">
         <svg class="text-titlecolor w-6 h-5">
           <use href="#icon--arrow-up"></use>
         </svg>

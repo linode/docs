@@ -11,7 +11,7 @@ import {
 } from './navigation';
 import { newHomeController } from './sections/home/home';
 import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
-import { newBlogArticleController, newSectionsController } from './sections/sections/index';
+import { newSectionsController } from './sections/sections/index';
 import { newOnIntersectionController } from './components/index';
 import { sendEvent } from './helpers/index';
 
@@ -22,7 +22,7 @@ window.lnc = {
 	// Search navigation.
 	NewSearchController: () => newSearchController(searchConfig),
 	NewSearchInputController: newSearchInputController,
-	NewSearchFiltersController: newSearchFiltersController,
+	NewSearchFiltersController: (opts = {}) => newSearchFiltersController(searchConfig, opts),
 	NewInitController: newInitController,
 
 	NewSearchExplorerController: () => newSearchExplorerController(searchConfig),
@@ -34,7 +34,6 @@ window.lnc = {
 	NewDisqusController: newDisqus,
 
 	// Page controllers.
-	NewBlogArticleController: () => newBlogArticleController(searchConfig),
 	NewHomeController: (developerItems) => newHomeController(searchConfig, developerItems),
 	NewSectionsController: () => newSectionsController(searchConfig)
 };

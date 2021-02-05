@@ -1,5 +1,5 @@
 /* Chrome, Safari, Opera, newest Edge {*/
-body ::-webkit-scrollbar {
+body::-webkit-scrollbar {
     width: 0 !important;
     height: 0 !important;
 }
