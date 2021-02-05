@@ -100,7 +100,7 @@ Grab the latest .tgz release from (https://github.com/vector-im/riot-web/release
         sudo apt install -y gnupg
         sudo wget https://github.com/vector-im/riot-web/releases/download/v1.5.15/riot-v1.5.15.tar.gz.asc
 
-1. Grab the signing key for the riot releases repository. Ideally this is done from a keyserver:
+1. Grab the signing key for the riot releases repository. Ideally this is done from a key server:
 
         sudo gpg --keyserver keyserver.ubuntu.com --search-keys releases@riot.im
 
