@@ -52,7 +52,7 @@ You can find your Linode's IPv6 address using the Linode Cloud Manager or the `i
     ![List of Linodes to view your IPv6 address.](ip-address-quick-view.png)
 
 
-1. For more detailed information related to the Linode's IPv6 address, click on the Network tab.
+1. For more detailed information related to the Linode's IPv6 address, click on the **Network** tab.
 
 1. Under the *IP Addresses* table, you can view the Linode's SLAAC and Link Local IPv6 addresses.
 
