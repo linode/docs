@@ -159,9 +159,9 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 Cloud Manager provides a Dark Mode that you can toggle on and off depending on your preference.
 
-Navigate to your profile by clicking on your username and select **My Settings**.
+1. Navigate to your profile by clicking on your username and select **My Settings**.
 
-You can toggle on **Dark Mode**, which changes your UI's color scheme. Dark Mode is disabled by default.
+1. Toggle on **Dark Mode**, to change the color scheme of the UI. Dark Mode is disabled by default.
 
 ![Dark Mode Enabled](classic-to-cloud-dark-mode.png "Cloud Manager Dark Mode Enabled")
 
