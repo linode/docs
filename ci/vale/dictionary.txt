@@ -723,6 +723,7 @@ Kernighan
 keychain
 keyfiles
 keygen
+keyid
 keymap
 keypair
 keypairs
@@ -1284,6 +1285,7 @@ rsyslog
 rtf
 rtt
 rubocop
+rubydebug
 rubygems
 ruleset
 rulesets
