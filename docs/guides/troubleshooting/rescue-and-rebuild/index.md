@@ -347,7 +347,7 @@ To use the Rebuild feature:
 
     [![Linode Cloud Manager Linodes page](cloud-manager-linodes-rebuild.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes.png)
 
-1.  Complete the Rebuild form. Select an image or Stackscript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
 1.  Click on **Rebuild** button after completing the form:
 
