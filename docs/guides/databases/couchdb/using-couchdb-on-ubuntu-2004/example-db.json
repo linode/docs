@@ -1,8 +1,7 @@
 {
     "docs": [
         {
-            "_id": "_design/b9dc7bf438f8c2aa5b946be4bec4db8b8875edf3",
-            "_rev": "1-d866fed660c90ac36087b0ef9c0a3a79",
+            "_id": "_design/index-0001",
             "language": "query",
             "views": {
                 "messaging-index": {
@@ -20,52 +19,46 @@
             }
         },
         {
-            "_id": "message-94b1cc6edb320dae92d6de1b7100837c",
-            "_rev": "2-a7e5033fdf815213d6888cbba2cd36b4",
+            "_id": "message-00000001",
             "type": "message",
-            "thread_id": "thread-94b1cc6edb320dae92d6de1b710059c8",
+            "thread_id": "thread-0001",
             "user_id": "user-000001","date_time": "2021-02-05 10:57:00",
             "message_body": "Example message text from user-000001, the first."
         },
         {
-            "_id": "message-94b1cc6edb320dae92d6de1b710093c8",
-            "_rev": "2-6738fc0363ec7673afcb04c53fd3d435",
+            "_id": "message-00000002",
             "type": "message",
-            "thread_id": "thread-94b1cc6edb320dae92d6de1b710059c8",
+            "thread_id": "thread-0001",
             "user_id": "user-000002",
             "date_time": "2021-02-05 11:50:00",
             "message_body":"Example message text from user-000002, the first."
         },
         {
-            "_id": "message-94b1cc6edb320dae92d6de1b7100cd27",
-            "_rev": "1-b1c09c55205832c1656d44080b9195f9",
+            "_id": "message-00000003",
             "type": "message",
-            "thread_id": "thread-94b1cc6edb320dae92d6de1b710059c8",
+            "thread_id": "thread-0001",
             "user_id": "user-000001",
             "date_time": "2021-02-05 12:00:00",
             "message_body": "Example message text from user-000001, the second."
         },
         {
-            "_id": "message-94b1cc6edb320dae92d6de1b7100de2f",
-            "_rev": "1-860965665d3c104ae9ac17448c49d210",
+            "_id": "message-00000004",
             "type": "message",
-            "thread_id": "thread-94b1cc6edb320dae92d6de1b710059c8",
+            "thread_id": "thread-0001",
             "user_id": "user-000002",
             "date_time": "2021-02-06 09:00:00",
             "message_body":"Example message text from user-000002, the second."
         },
         {
-            "_id": "message-94b1cc6edb320dae92d6de1b7100ff61",
-            "_rev": "1-b0b109d9217c3832880f3a38ac817c76",
+            "_id": "message-00000005",
             "type":"message",
-            "thread_id":"thread-94b1cc6edb320dae92d6de1b710059c8",
+            "thread_id":"thread-0001",
             "user_id":"user-000003",
             "date_time":"2021-02-06 10:00:00",
             "message_body":"Example message text from user-000003."
         },
         {
-            "_id": "thread-94b1cc6edb320dae92d6de1b710059c8",
-            "_rev": "2-8a43f82ca45483e3d5c7266c89f461f4",
+            "_id": "thread-0001",
             "type":"thread",
             "title":"Example Thread 1"
         }
