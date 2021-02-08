@@ -64,3 +64,7 @@ status = 200
 from = "/docs/*"
 to = "/docs/sections/"
 status = 200
+
+[[redirects]]
+from = "/*"
+to = "/docs/"
