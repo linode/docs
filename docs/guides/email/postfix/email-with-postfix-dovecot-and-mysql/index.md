@@ -163,7 +163,7 @@ The mail server's virtual users and passwords are stored in a MariaDB database. 
 
 ### Adding Data
 
-Now that the database and tables have been created, add some data to MySQL.
+Now that the database and tables have been created, add some data to MariaDB.
 
 1.  Add the domains to the `virtual_domains` table. Replace the values for `example.com` and `hostname` with your own settings:
 
@@ -198,7 +198,7 @@ Note which `id` corresponds to which domain, the `id` value is necessary for the
 
 In the previous section, data was added to the MySQL `mailserver` database. The steps below will test that the data has been stored and can be retrieved.
 
-1. Log in to MySQL:
+1. Log in to MariaDB:
 
         sudo mysql -u root
 
@@ -251,7 +251,7 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 1 row in set (0.00 sec)
 {{</ output >}}
 
-1.  If everything outputs as expected, exit MySQL:
+1.  If everything outputs as expected, exit MariaDB:
 
         exit
 
@@ -781,17 +781,17 @@ The Thunderbird email client will sometimes have trouble automatically detecting
 
 ## Adding New Domains, Email Addresses, and Aliases
 
-To add new domains, email addresses, and aliases to the mailserver you will need to update the corresponding MySQL tables created in the [MySQL](#mysql) section of this guide.
+To add new domains, email addresses, and aliases to the mailserver you will need to update the corresponding MySQL tables created in the [MariaDB](#mariadb) section of this guide.
 
 ### Domains
 
 1.  To add a new domain, [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
 
-1.  Log in to the MySQL server:
+1.  Log in to the MariaDB server:
 
         sudo mysql -u root
 
-1.  Enter the root MySQL password when prompted.
+1.  Enter the root MariaDB password when prompted.
 
 1.  View the contents of the table before adding new entries. If you did not use `virtual_domains` as the name of your domain table, replace the value:
 
@@ -821,13 +821,13 @@ To add new domains, email addresses, and aliases to the mailserver you will need
 
         SELECT * FROM mailserver.virtual_domains;
 
-1.  Exit MySQL:
+1.  Exit MariaDB:
 
         quit
 
 ### Email Addresses
 
-1.  Log in to the MySQL server:
+1.  Log in to the MariaDB server:
 
         sudo mysql -u root
 
@@ -864,17 +864,17 @@ The `domain_id` should correspond to the `id` value of the domain in the `virtua
 
         SELECT * FROM mailserver.virtual_users;
 
-1.  Exit MySQL:
+1.  Exit MariaDB:
 
         quit
 
 ### Aliases
 
-1. Log in to the MySQL server:
+1. Log in to the MariaDB server:
 
         sudo mysql -u root
 
-    When prompted enter the MySQL password.
+    When prompted enter the MariaDB password.
 
 1. Verify the contents of the user table. Replace `virtual_users` with your table name:
 
@@ -913,6 +913,6 @@ The `domain_id` should correspond to the `id` value of the domain in the `virtua
 
         SELECT * FROM mailserver.virtual_aliases;
 
-1.  Exit MySQL:
+1.  Exit MariaDB:
 
         quit
