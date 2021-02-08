@@ -3,15 +3,15 @@ slug: email-with-postfix-dovecot-and-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
-keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "debian", "ubuntu", "dovecot 2"]
-tags: ["debian","email","ubuntu","mysql","postfix"]
+description: 'Setting up a mail server with Postfix, Dovecot, and MySQL/MariaDB.'
+keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", "debian", "ubuntu", "dovecot 2"]
+tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-11
 modified_by:
   name: Linode
 published: 2013-05-13
-title: 'Email with Postfix, Dovecot, and MySQL'
+title: 'Email with Postfix, Dovecot, and MySQL/MariaDB'
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -25,7 +25,7 @@ relations:
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
 ---
 
-In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MySQL on Debian or Ubuntu. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
+In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MariaDB on Debian or Ubuntu. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
 
 ![Email with Postfix, Dovecot, and MySQL](email_with_postfix_dovecot_and_mysql.png "Setting up a mail server with Postfix, Dovecot, and MySQL")
 
@@ -77,7 +77,7 @@ Make a note of the certificate and key locations on the Linode. You will need th
 
 1.  Install the required packages:
 
-        sudo apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mysql-server
+        sudo apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mariadb-server
 
     You will not be prompted to enter a password for the root MySQL user for recent versions of MySQL. This is because on Debian and Ubuntu, MySQL now uses either the `unix_socket` or `auth_socket` authorization plugin by default. This authorization scheme allows you to log in to the database’s root user as long as you are connecting from the Linux root user on localhost.
 
@@ -93,11 +93,11 @@ This guide uses the following package versions:
 
 * Postfix 3.3.0
 * Dovecot 2.2.33.2
-* MySQL 14.14
+* MariaDB 10.3.27
 
-## MySQL
+## MariaDB
 
-The mail server's virtual users and passwords are stored in a MySQL database. Dovecot and Postfix require this data. Follow the steps below to create the database tables for virtual users, domains and aliases:
+The mail server's virtual users and passwords are stored in a MariaDB database. Dovecot and Postfix require this data. Follow the steps below to create the database tables for virtual users, domains and aliases:
 
 1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
