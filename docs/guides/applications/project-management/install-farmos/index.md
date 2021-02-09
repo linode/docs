@@ -106,11 +106,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
 ## Configure farmOS
 
-farmOS will configure Drupal and itself at the same time:
-
-1.  Access the farmOS dashboard by navigating to http://192.0.2.0/farmOS in a web browser, replacing `192.0.2.0` with your Linode's public [IPv4 address](docs/guides/find-your-linodes-ip-address/).
-
-Go to your Linode's domain or [IP address](docs/guides/find-your-linodes-ip-address/) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
+1.  Go to your Linode's domain or [IP address](docs/guides/find-your-linodes-ip-address/) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
 
 1.  The first screen you encounter asks you to choose a profile and a language:
 
@@ -124,7 +120,7 @@ Go to your Linode's domain or [IP address](docs/guides/find-your-linodes-ip-addr
 
     ![Configure](configure.png)
 
-1.  The next section is asks you what modules you want to install. You can install and uninstall modules at any time, but this is a chance to install personalized modules that work for your specific type of farm.
+1.  The next section asks you what modules you want to install. You can install and uninstall modules at any time, but this is a chance to install personalized modules that work for your specific type of farm.
 
     ![modules](modules.png)
 
