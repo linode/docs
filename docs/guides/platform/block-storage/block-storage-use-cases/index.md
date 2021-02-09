@@ -40,10 +40,6 @@ Below you will find some of the more popular use cases for Block Storage.
 
 ## Use Cases
 
-### Databases
-
-Databases require quick read/write operations, and Block Storage Volumes are mounted directly to a cloud instance's filesystem, so there is a minimal delay in writing and retrieving data. Growing businesses often have increasing data storage demands, so it's also important for a database to be scalable. A Volume that stores your database can be resized to meet your storage needs.
-
 ### Persistent Storage
 
 Block Storage Volumes can be detached from a cloud instance just as easily as they are attached, meaning that it's possible to create hot-swappable drives with Block Storage. This is useful if you need to perform the same kind of tasks across a fleet of instances with the same data.
