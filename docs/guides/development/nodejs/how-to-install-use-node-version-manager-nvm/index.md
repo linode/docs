@@ -23,16 +23,16 @@ The [*Node Version Manager (NVM)*](https://github.com/nvm-sh/nvm) is an open sou
 
 ## Advantages of NVM
 
-Node changes quickly, so testing applications with different versions is often difficult. Since NVM enables quick and effortless switching between Node versions, it is much easier to test version compatibility and upgrades with multiple libraries. NVM stores the Node versions and associated modules inside your user directory, so `sudo` does not have to be used. NVM also simplifies the installation and compilation process because Node versions no longer have to be obtained directly from the distribution channel.
+Node changes quickly, and testing applications with different versions is often difficult. Since NVM enables quick and effortless switching between Node versions, it is much easier to test version compatibility and upgrades with multiple libraries. NVM stores the Node versions and associated modules inside your user directory, so `sudo` does not have to be used. NVM also simplifies the installation and compilation process because Node versions no longer have to be obtained directly from the distribution channel.
 
 ## A Summary of the NVM Installation and Configuration Process
 
 A complete NVM installation consists of the following high-level steps. Each step is described below.
 
-1.  Installing and Configuring NVM.
-2.  Using NVM to Install Node.
-3.  Using NVM to Run Node.
-4.  Creating NVM Aliases.
+  1.  Installing and Configuring NVM.
+  1.  Using NVM to Install Node.
+  1.  Using NVM to Run Node.
+  1.  Creating NVM Aliases.
 
 ## Installing and Configuring NVM
 
