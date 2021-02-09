@@ -10,11 +10,12 @@ description: 'This guide introduces Dockerfiles and how to use them to build a D
 keywords: ["docker", "container", "dockerfile"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-02
+modified: 2020-02-09
 modified_by:
   name: Linode
 published: 2017-08-11
 title: 'How to Use Dockerfiles'
+h1_title: 'How to Use Dockerfiles'
 external_resources:
  - '[Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Docker Docs](http://docs.docker.com/)'
@@ -25,13 +26,15 @@ aliases: ['/applications/containers/how-to-use-dockerfiles/']
 
 ![How to Use Dockerfiles](how-to-use-dockerfiles.png "How to Use Dockerfiles")
 
-[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same across multiple virtual machines.
-
-You can use a Dockerfile to automate installation and configuration of an image and its dependencies.
+[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same image across multiple virtual machines. You can use a Dockerfile to automate installation and configuration of an image and its dependencies.
 
 ## Dockerfile Basics
 
-A `dockerfile` is a text file that contains the necessary commands to assemble an image. Once a Dockerfile is created, the administrator uses the `docker build` command to create an image based on the commands within the file. The commands and information within the `dockerfile` can be configured to use specific software versions and dependencies to ensure consistent and stable deployments.
+### How Do Dockerfiles Work?
+
+Dockerfiles are scripts that carry out different commands and actions to create a Docker build image. Dockerfiles automate the image creation process and simplifies your deployment pipeline. A Docker container is created from a Docker image. A [Docker registry](https://docs.docker.com/registry/) is where your public or private Docker images are stored.
+
+Once a Dockerfile is created, the administrator uses the `docker build` command to create an image based on the commands within the file. The commands and information within the `dockerfile` can be configured to use specific software versions and dependencies to ensure consistent and stable deployments.
 
 {{< note >}}
 Do not store the Dockerfile in your root directory.
@@ -55,63 +58,53 @@ A Dockerfile uses the following commands for building the images:
 
 Not every command must be used. You will create a working Dockerfile example in the following section.
 
-## How Do Dockerfiles Work? 
+### How Do You Write Dockerfiles?
 
-Dockerfiles are scripts that have different commands/instructions that carry out automated actions based on Docker images. Dockerfiles simplify the deployment process making the build process easy.
+To create a Dockerfile, create an empty Dockerfile in your desired directory using the `touch` command:
 
-Docker images hold your environment and your applications/commands. A Docker container on the other hand is created from these Docker images. Finally, Docker registry is where your public or private Docker images are stored. The way Dockerfiles work is by automating image construction to create these Docker containers.
+    touch Dockerfile
 
+You now have an empty Dockerfile in your directory. You can add commands to this fill to create your build image, however, it must include the following [Docker build steps](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/):
 
-## How Do You Write Dockerfiles?
-
-To create a Dockerfile in a directory, create an empty Dockerfile in your directory by running the following command: 
-
-	touch Dockerfile 
-
-This creates an empty Dockerfile in your directory, which we need to fill up following a certain format. 
-
-A sample Dockerfile format that shows all build instructions and commands is below: 
-
-	# Install a more up to date MongoDB if the current version isn’t the latest one on Ubuntu servers
-
-	FROM ubuntu
-
-	MAINTAINER Jeff Attwood
-
-	RUN apt-key adv --keyserver keyserver.ubuntu.com80 --recv 7F0CEB10
-
-	RUN apt-get update
-
-	RUN apt-get -y install apt-utils 
-
-	RUN apt-get -y install mongodb-10gen
-
-	#RUN 
-
-	CMD [“usr/bin/mongod”, “--config”, “etc/mongodb.conf”]
-
-The following are required when you create a Dockerfile:
-1. FROM 
-2. MAINTAINER 
+1. FROM
+2. MAINTAINER
 3. RUN
-4. CMD 
+4. CMD
 
-Once defined properly, these Dockerfiles will automate Docker image build based on your instructions. 
+Review the example Dockerfile included below to see the Docker build steps in action. The Dockerfile runs Ubuntu and installs MongoDB to a Docker container.
+
+{{< file "~/example-docker-build-directory/Dockerfile">}}
+# Install a more up to date MongoDB if the current version isn’t the latest one on Ubuntu servers
+
+FROM ubuntu
+
+MAINTAINER Jeff Attwood
+
+RUN apt-key adv --keyserver keyserver.ubuntu.com80 --recv 7F0CEB10
+
+RUN apt-get update
+
+RUN apt-get -y install apt-utils
+
+RUN apt-get -y install mongodb-10gen
+
+CMD [“usr/bin/mongod”, “--config”, “etc/mongodb.conf”]
+{{</ file >}}
 
 
-## Where Is Dockerfile Stored?
+### Where Should You Store Your Dockerfile?
 
-These Dockerfiles are located at the root. You can use the -f argument to specify docker build to look for the right Dockerfile anywhere on your system. 
+Dockerfiles should be stored at the root of your project. For example, if you use your Dockerfile to create a container for a Geolocation app, and you develop your app locally in your home directory, your Dockerfile's location may be stored in `~/geolocation-app/Dockerfile`. When building your Docker image, you can specify where Docker should look for your Dockerfile using the `-f` option, for example:
 
-	$ docker build -f /path/docker_file
+    docker build -f ~/geolocation-app/Dockerfile
 
-“Replace” /path/docker_file with the path to your Dockerfile and run the command.
+Replace `~/geolocation-app/Dockerfile` with the path to your own project's Dockerfile before running the command.
 
-## Create a Dockerfile
+## Get Started Creating a Dockerfile
 
-Dockerfiles require specific setup and format with no extra spaces.
+### Create Your Dockerfile
 
-Docker reuses cache from the previous step. This may result in commands not running properly or not running at all. To avoid this caching issue, combine `apt` commands into a single `RUN` statement. To avoid other caching issues, combine multiple `RUN` statements for commands like `apt-get update/upgrade/install`.
+Dockerfiles require a specific setup and format with no extra spaces. Docker reuses cache from the Dockerfile's previous step. This may result in commands not running properly or not running at all. To avoid this caching issue, combine `apt` commands into a single `RUN` statement. To avoid other caching issues, combine multiple `RUN` statements for commands like `apt-get update/upgrade/install`.
 
 Note that in the example below, multiple packages are installed on separate lines. This optional step is recommended by the [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments) in order to ease future updates and maintenance.
 
@@ -141,7 +134,7 @@ RUN apt-get update && apt-get install -y \
 
 3.  Save and close `Dockerfile`.
 
-## Build a Docker Image from the Dockerfile
+### Build a Docker Image from the Dockerfile
 
 Build the `Dockerfile` using the `docker build` command within the same directory. Substitute `NAME` in the following example with the name of the image to be created:
 
@@ -157,81 +150,81 @@ Each image created will be tagged `Dockerfile`. To change the tag during build, 
 
     docker build -t “debian-webdev3:dev” .
 
-## Run Docker Image As A Container
+## Running your Docker Images
+### Run Your Docker Image as a Container
 
-Continuing from the Docker images we created in the previous section, let’s see how to run a Docker image as a container using the `Webdev1` Docker image. 
+Continuing from the Docker images you created in the previous section, in this section you deploy a container using the `webdev1` Docker image.
 
-To run a Docker image, use the following syntax:
+The Docker `run` command is used to run a Docker image as a container. This command takes the following format:
 
-	$ docker run &lt;Docker image>
+        docker run [OPTIONS] my-image-name [COMMAND] [ARG…]
 
-To run our `Webdev1` Docker image as a container, we have to run this command: 
+The `run` command has [many available options](https://docs.docker.com/engine/reference/commandline/run/) to configure your container's runtime resources.
 
-	$ docker run Webdev1 
+For example, to run the `webdev1` Docker image in a container, execute the following command:
 
-But docker run can do much more, the full set of parameters in docker run are:
+    docker run webdev1
 
-	$ docker run [OPTIONS] &lt;Docker image> [COMMAND] [ARG…]
+{{< note >}}
+If the `docker run` command is executed and the Docker image is not available in your current working directory, it is pulled from the Docker registry instead.
+{{</ note >}}
 
-If the docker run command is run and the Docker image is not available on the local directory, it is pulled from the registry instead. 
+### Run Your Docker Image as a Container in Detached Mode
 
+When you execute the `docker run my-image-name` command, you launch a Docker container that is tied to your terminal session. This is also referred to as running a process in the *foreground*. When your root process is in the foreground and is tied to a terminal session, your container exits as soon as you close the terminal session. If you want your container to run even after your terminal session is closed, you can run your container in *detached* mode. This runs your container in the *background*.
 
-### Running Docker image As A Container In A Detached Mode
+To run a Docker image as a container in detached mode, use the `-d` argument. You can run the `webdev1` image as a container in the background by executing the following command:
 
-When you execute `docker run <Docker image>`, you launch a Docker container that is tied to your terminal session. This is also referred to as running a process in the foreground. When your root process is in the foreground, tied to a terminal session, your container exits as soon as you close the terminal session. This isn’t helpful if you wish to have Docker Image running as a container even after the terminal session is closed. 
+    docker container run -d webdev1
 
-To run a Docker image as a container in a detached mode, use the -d argument. We can run our `Webdev1` in the background by executing the following command:
+Once you run this command, the root process keeps running in the background even when the terminal session is closed. To view all containers running in the background execute the following command:
 
-	$ docker container run -d Webdev1
+    docker ps
 
-Once you run this command, the root process keeps running in the background even when the terminal session is closed. To view all such containers running in the background run the following command: 
+The output of this command displays the `webdev1` container running in the background:
 
-	$ docker ps
+{{< output >}}
+CONTAINER ID   IMAGE    COMMAND  CREATED        STATUS       PORTS          NAMES
 
-The output of docker ps in our case will be
-{{<output>}}
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-
-3a4sak1aday2        Webdev1         "bash"   6 minutes ago       Up 29 minutes        2222->3000/tcp   Webdev1
-
+3a4sak1aday2   webdev1  "bash"   6 minutes ago  Up 29 minutes 2222->3000/tcp webdev1
 {{</ output>}}
 
-To remove the container we just started, we can use the following command: 
+To remove the container you just started, use the following command:
 
-	$ docker rm Webdev1 
+    docker rm webdev1
 
-To confirm if our container has been removed, run the following command again:
+To confirm that your container has been removed, run the following command:
 
-	$ docker ps -all
+    docker ps -all
 
-You should see an output like this with no containers below: 
-{{<output>}}
+You should see an output similar to the example below, which does not display any running containers:
 
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+{{< output >}}
+CONTAINER ID   IMAGE    COMMAND  CREATED        STATUS       PORTS          NAMES
 {{</ output>}}
 
-## Deploying Docker Containers To Cloud 
+### Configure your Docker Container's Ports
 
-Using the syntax below we can deploy and run our Docker container on the cloud:
+You can use the `run` command's options to configure different aspects of your container. When your container runs on a remote host and serves its running application, you should configure its ports in order to expose the app to users.
 
-	docker run –name <container name> -p <network port> <container port> <container image name>
+For example, you can configure your `webdev1` container to use host port `20` and container port `22` as displayed in the example command. Notice the `-d` option used in the command to run the container as a detached process.
 
- To deploy our Webdev1 to cloud, we need to define the following parameters:
+    docker run --name webdev1 -p 20:22 -d webdev1
 
+The general syntax for this command is the following:
 
+    docker run -–name <container name> -p <network port> <container port> <container image name>
 
-*   `<container name>` - Name of the Docker container 
-*   `<network port>` - Network port that’s available 
-*   `<container port>` - The port where Docker container listens 
-*   `<container image name>` - Docker image name used for cloud deployment
+Each parameter is described in the following list:
 
-Let’s deploy our Docker image `Webdev1` at `20:22` ports by running the following command 
+- `<container name>`: Name of the Docker container
+- `<host port>`: Host port that is mapped to the container's open port
+- `<container port>`: Port where Docker container listens
+- `<container image name>`: Docker image name used for your deployment
 
-	$ docker run --name Webdev1 -p 20:22 -d Webdev1
+To stop and delete your container, run the following command:
 
-Notice `-d` in our command above, we added to run Webdev1 container as a detached process. 
-
-To stop and delete this container from the server, run the `docker rm <container_name>` command.
+    docker rm webdev1
 
 ## Just the basics
 
