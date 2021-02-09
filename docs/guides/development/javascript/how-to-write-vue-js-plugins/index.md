@@ -1,15 +1,16 @@
 ---
+slug: how-to-write-vue-js-plugins
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This article to walk you through how to create your own Vue.js plugin to let you add functionality to a Vue app with an easy to use package.'
-og_description: 'This article to walk you through how to create your own Vue.js plugin to let you add functionality to a Vue app with an easy to use package.'
-keywords: ['vue','vue.js','plugin','directive', 'filter' 'mixin']
+description: 'Learn how to create your own Vue.js plugin with an easy-to-use package and add functionality to your Vue apps.'
+og_description: 'Learn how to create your own Vue.js plugin with an easy-to-use package and add functionality to your Vue apps.'
+keywords: ['vue','vue.js','plugin','directive', 'filter', 'mixin']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-27
+published: 2021-02-09
 modified_by:
   name: Linode
-title: "Index"
+title: "How to Write Your Own Vue.js Plugin"
 h1_title: "How to Write Your Own Vue.js Plugin"
 contributor:
   name: John Au-Yeung
