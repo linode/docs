@@ -98,7 +98,7 @@ Address=192.168.133.234/17
 
 # Disable the IPv6 privacy extensions (random IPs) - should be off by default already
 IPv6PrivacyExtensions=no
-# Disable the self-constructed IPv6 based on SLAAC, which would be the preffered outgoing IPv6.
+# Disable the self-constructed IPv6 based on SLAAC, which would be the preferred outgoing IPv6.
 # See https://www.freedesktop.org/software/systemd/man/systemd.network.html#UseAutonomousPrefix=
 [IPv6AcceptRA]
 UseAutonomousPrefix=no
