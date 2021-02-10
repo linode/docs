@@ -385,10 +385,10 @@ When you configure Elastic IP you need to define the Linode's _ROLE_ within the 
 
 {{</ note >}}
 
-1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `[NEIGHBOR_IP]`, `[DC_ID]`, and `[ROLE]` with the values sent to you by Linode support and by referencing the table above. Additionally, for instances of `[UNPADDED_DC_ID]`, the leading `0` will need to be removed from the `DC_ID` to make the `DC_ID` a single digit. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
+1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `[NEIGHBOR_IP]`, `[DC_ID]`, and `[ROLE]` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
 
       {{< file "~/elastic.conf">}}
-hostname atl-bgp-1.kfubes.com
+hostname atl-bgp-1.example.com
 
 router bgp 65[DC_ID]5
 no bgp ebgp-requires-policy
@@ -403,14 +403,10 @@ address-family ipv4 unicast
   redistribute static
 exit-address-family
 route-map primary permit 10
-set large-community 65[DC_ID]5:[DC_ID]:1
+set large-community 1234:5:1
 route-map secondary permit 10
-set large-community 65[DC_ID]5:[UNPADDED_DC_ID]:2
+set large-community 1234:5:2
       {{</ file >}}
-
-    {{< note >}}
-The `UNPADDED_DC_ID` is the same as the `DC_ID` without the leading `0`. In other words a `DC_ID` with a value of `09` would be an `UNPADDED_DC_ID` with a value of `9`.
-{{< /note >}}
 
 1. Run the VTY shell:
 
