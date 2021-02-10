@@ -403,9 +403,9 @@ address-family ipv4 unicast
   redistribute static
 exit-address-family
 route-map primary permit 10
-set large-community 1234:5:1
+set large-community 63949:1:1
 route-map secondary permit 10
-set large-community 1234:5:2
+set large-community 63949:1:2
       {{</ file >}}
 
 1. Run the VTY shell:

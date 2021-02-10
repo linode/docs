@@ -21,7 +21,7 @@ external_resources:
 
 ## What is a Vue.js Plugin?
 
-A Vue.js plugin is a code package that is used to add features to a Vue.js app. The plugin is structured with Javascript and exported with an `install` method that takes the `Vue` object as the first parameter and `options` as the second parameter.
+A Vue.js plugin is a code package that is used to add features to a Vue.js app. The plugin is structured with JavaScript and exported with an `install` method that takes the `Vue` object as the first parameter and `options` as the second parameter.
 
 The `Vue` parameter is the Vue instance of the current Vue app. With it, you can add your own methods, mixins, and directives with the following standards:
 
