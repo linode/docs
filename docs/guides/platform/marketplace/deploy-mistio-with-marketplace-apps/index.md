@@ -50,37 +50,9 @@ After providing the app-specific options, provide configurations for your Linode
 
 When you've provided all required Linode Options, click on the **Create** button. **Your Mist.io app will complete installation anywhere between 5-15 minutes after your Linode has finished provisioning**.
 
-## Setting up the Mist.io Server
+## Getting Started After Deployment
 
 Once the Mist.io server is successfully created, a few additional steps must be completed to be able to begin using the application.
-
-### Set Mist's CORE_URI
-
-Before proceeding further, the CORE_URI URL must be set.
-
-1. Create an [SSH connection](https://www.linode.com/docs/guides/getting-started/#connect-to-your-linode-via-ssh) to your Linode using the [public IP address](/docs/guides/find-your-linodes-ip-address/) and the root password you had set up prior to the app creation.
-
-1.  Edit the settings file found in `~/mist/settings/settings.py` with a text editor of your choice:
-
-        sudo nano ~/mist/settings/settings.py
-
-1. Set The CORE_URI value to either your Linode's public IPv4 address or a DNS name linked to it. For more information, see the [Mist CE Documentation](https://github.com/mistio/mist-ce#configuring). The file should reflect the following once complete:
-
-    {{< output >}}
-"""User defined settings"""
-
-## Configure external url.
-CORE_URI = "http://203.0.113.0"
-
-## Verify SSL outgoing SSL connections.
-# SSL_VERIFY = True
-{{< /output >}}
-
-    For anything other than development purposes, it is strongly recommended that a [DNS name](/docs/guides/dns-manager/) with an [SSL/TLS certiicate](https://www.linode.com/docs/guides/how-to-install-certbot-on-debian-10/) is configured and installed.
-
-1. Restart the docker container for your changes to be applied:
-
-        sudo docker-compose restart
 
 ### Log In to Mist.io
 
