@@ -303,6 +303,7 @@ deserialize
 dest
 dereference
 dereferencing
+destructured
 dev
 devel
 devops
@@ -904,6 +905,8 @@ misconfiguration
 misconfigurations
 misconfigured
 mitigations
+mixin
+mixins
 mkdir
 mnesia
 mngtmpaddr
