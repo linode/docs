@@ -80,7 +80,7 @@ To summarize the FaaS advantages:
 - Security steps, such as multiple varying types of authentication, can be managed from multiple sources, concurrently, by using different FaaS for each family of authentication methodology.
 - High availability is achievable. Use multiple cloud providers for redundancy.
 - FaaS is part of the DevOps culture. Changing the function lends itself to the modular, [continuous delivery](/docs/guides/introduction-ci-cd/) philosophies.
-- Modular application framework construction supports better regionalization and language handling. Use one FaaS for an EU audience and another for North America, for instance.
+- Better support for different regions and language handling. Use one FaaS for an EU audience and another for North America, for instance.
 - You can choose any language, any framework, any cloud vendor.
 
 But nothing is perfect. Before you deploy FaaS, consider its disadvantages:
@@ -90,4 +90,4 @@ But nothing is perfect. Before you deploy FaaS, consider its disadvantages:
 - Asynchronous latencies can be an issue. Some functions inevitably encounter delays. This means you need a tracking method to ensure application transactional integrity as well as acceptable response latencies.
 - Testing orchestration and simulating outages is complicated by the diffuse nature of serverless composable objects. QA and troubleshooting can be highly complex.
 - It can be difficult to audit actual costs when you use many providers.
-- If you somehow forget to terminate FaaS, you'll pay for them inadvertently.
+- If you somehow forget to terminate FaaS, you must pay for the resources used.
