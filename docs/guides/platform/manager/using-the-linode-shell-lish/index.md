@@ -31,6 +31,10 @@ Lish used to be accessible via a direct SSH connection to your Linode's host mac
 
 You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal emulator.
 
+{{< note >}}
+If you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you will not be able to log in to your Linode through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
+{{</ note >}}
+
 1.  Select a Lish SSH gateway. There's one in every data center. You can use any gateway to access your Linodes, but we recommend using one close to your Linode's data center. The gateway boxes are available over IPv4 and IPv6.
 
     | **Lish SSH gateway** | **Data Center** |
@@ -113,10 +117,6 @@ You can also connect to Lish using a web browser. This is useful when you don't 
 
 1. From here, you can log in to your Linode with your root username and password, or any other username and password.
 
-{{< note >}}
-If you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you will not be able to log in to your Linode through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
-{{</ note >}}
-
 Now you can use the console, or exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
 
 ### Add Your Public Key
@@ -125,9 +125,7 @@ If you don't want to enter your password every time you connect to Lish, or if y
 
 1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
-1. Click on your profile icon in the top right hand corner of the Manager and select **My Profile**.
-
-1. Click on the **LISH** tab.
+1. Click on the profile icon in the top right hand corner of the Manager and select **LISH Console Settings**.
 
 1. Copy your public SSH key into the **SSH Public Key** field, as shown below.
 

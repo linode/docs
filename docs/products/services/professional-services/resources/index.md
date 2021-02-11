@@ -1,5 +1,6 @@
 ---
 title: Resources
+description: "Resources and other information related to the Linode Professional Services including videos, blog posts, community posts, customer stories, ebooks, and press releases."
 tab_group_main:
     weight: 40
 ---

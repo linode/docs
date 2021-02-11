@@ -7,5 +7,11 @@
     <div class="content prose prose-sm md:prose-lg max-w-none mt-8">
       {{ .Content }}
     </div>
+    <p class="pt-2 md:pt-6 text-basicgray">
+      This page was originally published on
+      <time datetime="{{ .PublishDate }}">
+        {{ .PublishDate.Format site.Params.time_format_default }}.
+      </time>
+    </p>
   </div>
 {{ end }}

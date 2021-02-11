@@ -1,6 +1,6 @@
-<div id="toc-component" class="bg-white z-10 w-full h-full border-l-gray--md" x-data="lnTocController.New()" x-init="() => { init({ headerCloseButton: $refs.headerCloseButton }) }" @nav:toggle.document="receiveToggle($event.detail)"
-    @scroll.window.debounce.10ms="onScroll()" @hashchange.window="onHashchange();" @turbolinks:render.document="onTurbolinksRender($event.data);">
-  <div x-show="enabled" class="h-full relative" @click.away="closeIfMobile()">
+<div id="toc-component" class="bg-white z-10 w-full h-full border-l-gray--md" x-data="lnc.NewTocController()" x-init="init({ headerCloseButton: $refs.headerCloseButton })" @nav:toggle.document="receiveToggle($event.detail)"
+    @scroll.window.debounce.10ms="onScroll()" @hashchange.window="onHashchange();" @turbolinks:render.document="onTurbolinksRender($event.data);" data-turbolinks-permanent>
+  <div x-show="enabled" class="h-full relative" @click.away="closeIfMobile()" data-testid="toc">
     <div class="flex flex-col">
       <ul @click="toggleOpen()">
         <li class="cursor-pointer navbar__row bg-white border-b-gray">
@@ -23,7 +23,7 @@
               <template x-if="showHeading && activeHeading.title !== ''">
                 <div class="font-semibold text-titlecolor text-xs tracking-wide md:tracking-widest md:text-sm truncate w-48" x-html="activeHeading.title"></div>
               </template>
-              <button :aria-label="open ? 'close' : 'open'" type="button" class="btn-icon">
+              <button :aria-label="open ? 'close' : 'open'" type="button" class="btn-icon" data-testid="toc-open">
                 <template x-if="!open">
                   <div class="pl-2 pr-7">
                     <svg class="text-titlecolor h-4 w-4">

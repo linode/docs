@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "These guides show you how to use the Linode Cloud Manager to access and deploy the full range of Linode services and how to complete account and user management tasks."
 tab_group_main:
     weight: 30
 ---
@@ -29,7 +30,7 @@ These introductory guides to the Linode Cloud Manager help you get up and runnin
 
 - [Longview](/docs/products/tools/cloud-manager/guides/cloud-longview): This section gives you access to Linode’s Longview service where you can track metrics for CPU, memory, network bandwidth, and more.
 
-- [Marketplace](/docs/products/tools/cloud-manager/guides/cloud-marketplace): This section gives you access to the One-Click Application Marketplace where you can easily deploy and configure software for your Linodes.
+- [Marketplace](/docs/products/tools/cloud-manager/guides/cloud-marketplace): This section gives you access to the Marketplace Application Marketplace where you can easily deploy and configure software for your Linodes.
 
 - [Kubernetes](/docs/products/tools/cloud-manager/guides/cloud-kubernetes): This section gives you access to Linode’s managed Kubernetes service, the Linode Kubernetes Engine (LKE).
 

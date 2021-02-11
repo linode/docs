@@ -1,5 +1,6 @@
 ---
 title: GPU
+description: "GPU Linodes offer on-demand computational power on market leading hardware."
 tab_group_main:
     is_root: true
     title: Overview

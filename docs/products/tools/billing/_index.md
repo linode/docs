@@ -1,5 +1,6 @@
 ---
 title: Billing
+description: "Linode Billing is simple and predictable."
 tab_group_main:
     is_root: true
     title: Overview

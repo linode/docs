@@ -16,7 +16,7 @@ published: 2015-01-20
 title: Common DNS Configurations
 ---
 
-![Common DNS Configurations](common-dns-configurations.png "Common DNS Configurations")
+{{< youtube Vb1JsfZlFLE >}}
 
 ## Set Up a Domain
 

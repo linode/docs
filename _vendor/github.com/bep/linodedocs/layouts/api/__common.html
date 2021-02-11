@@ -219,12 +219,13 @@ This template includes common API logic and functions.
   {{ with $s.Description }}
     {{ $m.Set "Description" . }}
   {{ end }}
+  {{ with $s.Default }}
+    {{ $m.Set "Default" . }}
+  {{ end }}
   {{ with $s.Enum }}
     {{ $m.Set "Enum" . }}
   {{ end }}
-  {{ with $s.Example }}
-    {{ $m.Set "Example" . }}
-  {{ end }}
+  {{ $m.Set "Example" $s.Example }}
   {{ with $s.Format }}
     {{ $m.Set "Format" . }}
   {{ end }}
@@ -268,6 +269,7 @@ This template includes common API logic and functions.
   {{ $props := $s.Properties }}
   {{ if eq $s.Type "array" }}
     {{ $props = $s.Items.Value.Properties }}
+    {{ $m.Set "ValueType" $s.Items.Value.Type }}
   {{ end }}
   {{ range $k, $v := $props }}
     {{ $.Set "dot" $v }}
@@ -297,7 +299,11 @@ This template includes common API logic and functions.
 {{ end }}
 
 {{ define "openapi3/print-type-info" }}
-  <code>{{ .Type }}{{ with .Format }} <{{ . }}>{{ end }}</code>
+  {{ $valueType := ""}}
+  {{ if reflect.IsMap . }}
+    {{ $valueType = .ValueType }}
+  {{ end }}
+  <code>{{ .Type }}{{ if eq .Type "array" }}{{ with $valueType }} of {{ . }}s {{ end }}{{ end }}{{ with .Format }} <{{ . }}>{{ end }}</code>
   {{ if .Min}}
     {{ if not .Max }}
       >= {{ .Min }}
@@ -315,14 +321,20 @@ This template includes common API logic and functions.
     characters
   {{ end }}
   
-  {{ with .Enum }}
-    <div class="leading-6">
+  <div class="leading-6">
+    {{ with .Enum }}
       Enum:
       {{ range . }}
         <code>{{ . }}</code>
       {{ end }}
-    </div>
-  {{ end }}
+      
+    {{ end }}
+    
+    {{ with .Default }}
+      Default:
+      <code>{{ . }}</code>
+    {{ end }}
+  </div>
 {{ end }}
 
 {{ define "openapi3/print-parameters" }}
@@ -470,7 +482,11 @@ This template includes common API logic and functions.
 {{ define "partials/openapi3/get-response-example-properties" }}
   {{ $m := newScratch }}
   {{ range $k, $v := . }}
-    {{ $m.Set $k (partial "openapi3/get-response-example-property" $v)  }}
+    {{ $res := (partial "openapi3/get-response-example-property" $v) }}
+    {{ if and (eq $v.Type "array") (not (reflect.IsSlice $res))}}
+      {{ $res = slice $res }}
+    {{ end }}
+    {{ $m.Set $k $res  }}
   {{ end }}
   {{ return $m.Values }}
 {{ end }}
@@ -487,7 +503,7 @@ This template includes common API logic and functions.
     {{ $.Set "dot" $content.Schema }}
     {{ $.Set "oneOfPickFirst" true }}
     {{ $schema := partial "openapi3/schema-to-map" $ }}
-    {{ $body := "" }}
+    {{ $body := "{}" }}
     {{ with $schema.Example }}
       {{ $body = . | jsonify (dict "indent" "  ") }}
     {{ else }}
@@ -555,7 +571,7 @@ This template includes common API logic and functions.
               <div class="font-semibold py-4">
                 {{ $e.title2 }}
               </div>
-              <div class="code my-4 dark flex items-start justify-between" x-data="lnCopyToClipBoard.New()">
+              <div class="code my-4 dark flex items-start justify-between" x-data="lnh.CopyToClipBoard()">
                 <div x-ref="code">
                   {{- highlight $e.body $lang "linenos=false" -}}
                 </div>
@@ -569,7 +585,7 @@ This template includes common API logic and functions.
           {{ if $e.dump }}
             <template x-if="active === {{ $i }}">
               <div>
-                <div class="code my-4 dark flex items-start justify-between " x-data="lnCopyToClipBoard.New()">
+                <div class="code my-4 dark flex items-start justify-between " x-data="lnh.CopyToClipBoard()">
                   <div x-ref="code">
                     {{- highlight $e.body $lang "linenos=false" -}}
                   </div>
