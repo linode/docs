@@ -503,7 +503,7 @@ This template includes common API logic and functions.
     {{ $.Set "dot" $content.Schema }}
     {{ $.Set "oneOfPickFirst" true }}
     {{ $schema := partial "openapi3/schema-to-map" $ }}
-    {{ $body := "" }}
+    {{ $body := "{}" }}
     {{ with $schema.Example }}
       {{ $body = . | jsonify (dict "indent" "  ") }}
     {{ else }}
@@ -571,7 +571,7 @@ This template includes common API logic and functions.
               <div class="font-semibold py-4">
                 {{ $e.title2 }}
               </div>
-              <div class="code my-4 dark flex items-start justify-between" x-data="lnCopyToClipBoard.New()">
+              <div class="code my-4 dark flex items-start justify-between" x-data="lnh.CopyToClipBoard()">
                 <div x-ref="code">
                   {{- highlight $e.body $lang "linenos=false" -}}
                 </div>
@@ -585,7 +585,7 @@ This template includes common API logic and functions.
           {{ if $e.dump }}
             <template x-if="active === {{ $i }}">
               <div>
-                <div class="code my-4 dark flex items-start justify-between " x-data="lnCopyToClipBoard.New()">
+                <div class="code my-4 dark flex items-start justify-between " x-data="lnh.CopyToClipBoard()">
                   <div x-ref="code">
                     {{- highlight $e.body $lang "linenos=false" -}}
                   </div>

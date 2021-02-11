@@ -303,6 +303,7 @@ deserialize
 dest
 dereference
 dereferencing
+destructured
 dev
 devel
 devops
@@ -461,6 +462,7 @@ flyspray
 foodcritic
 fortran
 fmt
+fn
 fpm
 fragging
 frakti
@@ -722,6 +724,7 @@ Kernighan
 keychain
 keyfiles
 keygen
+keyid
 keymap
 keypair
 keypairs
@@ -902,6 +905,8 @@ misconfiguration
 misconfigurations
 misconfigured
 mitigations
+mixin
+mixins
 mkdir
 mnesia
 mngtmpaddr
@@ -1216,6 +1221,7 @@ readonly
 readwrite
 realtime
 reconnections
+recordset
 recursing
 recv
 red5
@@ -1282,6 +1288,7 @@ rsyslog
 rtf
 rtt
 rubocop
+rubydebug
 rubygems
 ruleset
 rulesets
@@ -1438,6 +1445,8 @@ submenu
 subnet
 subnets
 subnetwork
+subqueries
+subquery
 subreddits
 substring
 substrings
