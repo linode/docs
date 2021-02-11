@@ -82,7 +82,7 @@ deb http://mirrors.linode.com/debian buster-backports main
 deb-src http://mirrors.linode.com/debian buster-backports main
 ```
 
-After you save the changes and close the text editor, you should be to install Monit. Using the following commands:
+After you save the changes and close the text editor, you should be able to install Monit. Using the following commands:
 
         sudo apt-get update && sudo apt-get upgrade
         sudo apt-get install monit
