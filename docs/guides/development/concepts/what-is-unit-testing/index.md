@@ -5,13 +5,13 @@ author:
   email: docs@linode.com
 description: 'Unit testing exercises each function point in a program to make sure it works.'
 og_description: 'Software testing primer: Unit testing exercises each function point in a program to make sure it works.'
-keywords: ['What is unit testing']
+keywords: ['what is unit testing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-08
+published: 2021-02-11
 modified_by:
   name: Linode
 title: "What Is Unit Testing"
-h1_title: "What is Unit Testing"
+h1_title: "What Is Unit Testing"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
