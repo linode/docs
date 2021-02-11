@@ -73,17 +73,19 @@ Debian and Ubuntu automatically start and enable Monit after installation.
     sudo apt-get install monit
 
 {{< note >}}
-Debian 10 does not include Monit in its standard repositories. In order to install Monit on this distribution, you will need to enable the `buster-backports` repository.
+Debian 10 does not include Monit in the standard repositories. In order to install Monit on Debian 10, you need to enable the `buster-backports` repository.
 
-To enable this repository, you will need to include the following lines in either the `/etc/apt/sources.list` file on your Linode or a new file in `/etc/apt/sources.list.d/` ending in `.list`:
+To enable the Monit repository, include the following lines in the `/etc/apt/sources.list` file or create a new file ending in `.list` inside the `/etc/apt/sources.list.d/` directory:
 
 ```
 deb http://mirrors.linode.com/debian buster-backports main
 deb-src http://mirrors.linode.com/debian buster-backports main
 ```
 
-After saving these changes and closing your text editor, you should be able to use the above commands to install Monit.
-
+After you save the changes and close the text editor, you should be to install Monit. Using the following commands:
+        
+        sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get install monit
 {{< /note >}}
 
 ### Fedora
