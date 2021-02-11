@@ -27,7 +27,7 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/getting-started/#set-the-hostname) and [timezone](/docs/guides/getting-started/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/guides/securing-your-server) guide to [create a standard user account](/docs/guides/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/guides/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/guides/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](/docs/guides/securing-your-server) guide to [create a standard user account](/docs/guides/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/guides/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/guides/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -130,18 +130,18 @@ Ensure that the version number matches the farmOS version you wish to download.
 
 1.  After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities from your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory:
 
-       sudo chmod 644 sites/default
-       sudo chmod 644 ./sites/default/settings.php
+        sudo chmod 644 sites/default
+        sudo chmod 644 ./sites/default/settings.php
 
 ## Add Users
 
 To add users to your farmOS distribution, you can do so from the **People** tab under **Manage**.
 
-    ![Add user](Adduser.png)
+  ![Add user](Adduser.png)
 
 After each user is created, use the **People** tab to verify success:
 
-    ![People screen](peoplescreen.png)
+  ![People screen](peoplescreen.png)
 
 ## Next Steps
 
