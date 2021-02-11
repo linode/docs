@@ -213,6 +213,7 @@ codec
 com2sec
 comodo
 completekey
+composable
 conda
 config
 configr
@@ -933,6 +934,7 @@ mtu
 multiarch
 multibyte
 multicast
+multicloud
 multicraft
 multilib
 multiport
