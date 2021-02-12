@@ -180,6 +180,18 @@ export function newSearchController(searchConfig) {
 				return this.filtering_facets ? this.filtering_facets.map((facet) => facet.name) : [];
 			};
 
+			sectionCfg.titlePlural = function() {
+				// TODO: Pull this out into the config.
+				if (this.name === 'marketplace') {
+					return 'Marketplace Articles';
+				}
+				let title = this.title;
+				if (!title.endsWith('s')) {
+					title += 's';
+				}
+				return title;
+			};
+
 			searchData.setResult = function(result) {
 				let q = queryHandler.queryToQueryForSection(self.searchState.query, sectionCfg.name);
 				let queryString = queryHandler.queryToQueryString(q);

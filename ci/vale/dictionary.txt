@@ -213,6 +213,7 @@ codec
 com2sec
 comodo
 completekey
+composable
 conda
 config
 configr
@@ -271,6 +272,7 @@ dahdi
 databags
 datacenter
 datadir
+dataflow
 datagram
 dataset
 datasets
@@ -711,6 +713,7 @@ json
 jsonpath
 julialang
 jumpbox
+junit
 jupyter
 jx
 kakfa
@@ -931,6 +934,7 @@ mtu
 multiarch
 multibyte
 multicast
+multicloud
 multicraft
 multilib
 multiport
@@ -1158,6 +1162,7 @@ premade
 prepend
 prepended
 prepending
+prepends
 preprocessing
 preprocessors
 prerotate
@@ -1193,8 +1198,10 @@ pwcheck
 px
 py
 pyamqp
+pyenv
 pyinotify
 pypa
+pypi
 pypiserver
 pyspark
 pytest
@@ -1274,6 +1281,7 @@ ro
 rochko
 rocommunity
 rollout
+rossum
 roundcube
 routable
 rpaf
@@ -1489,6 +1497,7 @@ tbz
 tcp
 tcpwrappers
 teamspeak
+teardown
 tensorflow
 terrahelp
 terraria
@@ -1630,6 +1639,7 @@ vcs
 vdev
 vdevs
 ve
+venv
 ver
 verisign
 vhost
@@ -1638,6 +1648,7 @@ vimrc
 virb
 virtio
 virtualenv
+virtualenvs
 virtualenvwrapper
 virtualhost
 virtualizations
