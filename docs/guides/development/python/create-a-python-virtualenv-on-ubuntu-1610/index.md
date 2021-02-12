@@ -13,7 +13,8 @@ modified: 2017-08-14
 modified_by:
   name: Linode
 published: 2017-08-13
-title: 'Create a Python Virtual Environment on Ubuntu 16.10'
+title: 'How to Create a Python Virtual Environment on Ubuntu 16.10'
+h1_title: 'Creating a Python Virtual Environment on Ubuntu 16.10'
 contributor:
   name: Christopher Piccini
   link: https://twitter.com/chrispiccini11

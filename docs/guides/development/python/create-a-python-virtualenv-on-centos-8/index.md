@@ -12,7 +12,7 @@ modified: 2020-04-07
 modified_by:
   name: Linode
 published: 2017-08-13
-title: 'How to create a Python Virtual Environment on CentOS 8'
+title: 'How to Create a Python Virtual Environment on CentOS 8'
 h1_title: 'Creating a Python Virtual Environment on CentOS 8'
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
