@@ -27,8 +27,6 @@ relations:
 aliases: ['/development/python/create-a-python-virtualenv-on-ubuntu-18-04/']
 ---
 
-Speling error, let's see if Vale picks it up
-
 ## What is a Python Virtual Environment?
 
 A Python virtual environment is an isolated project space on your system that contains its own Python executable, packages, and modules. Your Python applications and projects often have their own specific dependencies. With a virtual environment you can manage each of your project's distinct dependencies without having them interfere with each other. You can use the [*virtualenv*](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. This guide shows you how to use virtualenv to create and run a Python virtual environment on an Ubuntu 18.04 Linode.
