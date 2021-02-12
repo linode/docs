@@ -30,9 +30,9 @@ As of January 1, 2020, the official version of Python is Python 3. Python 2 is n
 
 ## Before You Begin
 
-1.  This guide assumes that you have access to a server or workstation running Debian 10. To provision a Linode running Debian 10, follow our [Getting Started](/docs/getting-started/) guide.
+1.  This guide assumes that you have access to a server or workstation running Debian 10. To provision a Linode running Debian 10, follow our [Getting Started](/docs/guides/getting-started/) guide.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system:
 
