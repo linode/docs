@@ -8,7 +8,7 @@ og_description: 'Python 3 is installed by default on Debian 10. This guide shows
 keywords: ['How to Install Python on Debian','Python','Python3','Python 2 end of life']
 tags: ['python', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-02-12
+published: 2021-02-12
 modified_by:
   name: Linode
 title: "How to Install Python 3 on Debian 10"
