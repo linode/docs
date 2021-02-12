@@ -1197,6 +1197,7 @@ pwcheck
 px
 py
 pyamqp
+pyenv
 pyinotify
 pypa
 pypiserver
@@ -1278,6 +1279,7 @@ ro
 rochko
 rocommunity
 rollout
+rossum
 roundcube
 routable
 rpaf
