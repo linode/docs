@@ -1,27 +1,26 @@
 ---
-slug: how-to-install-owncloud-debian-10
+slug: how-to-install-owncloud-ubuntu-20-04
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Debian 10 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
-og_description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Debian 10 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
-keywords: ['ownCloud on Debian']
+description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Ubuntu 20.04 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
+og_description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Ubuntu 20.04 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
+keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-29
+published: 2021-02-12
 modified_by:
   name: Linode
-title: "How to Install ownCloud on Debian 10"
-h1_title: "How to Install ownCloud on Debian 10"
+title: "How to Install ownCloud on Ubuntu 20.04"
+h1_title: "How to Install ownCloud on Ubuntu 20.04"
+tags: ["ubuntu"]
 contributor:
   name: Jack Wallen
-tags: ["debian"]
 relations:
     platform:
         key: how-to-install-owncloud
         keywords:
-            - distribution: Debian 10
+            - distribution: Ubuntu 20.04
 ---
-
 ## What is ownCloud?
 With [ownCloud](https://owncloud.com/) you can host a private cloud for data synchronization, file storage, and file sharing. You can use ownCloud as an alternative to commercial services like DropBox or Box. This software is great for secure collaboration across your projects and teams.
 
@@ -42,7 +41,7 @@ Why would you want to host your own cloud? Some common reasons are:
 - You own a small business and want to keep everything in-house.
 - You need an expandable storage solution.
 
-This tutorial walks you through the steps to install ownCloud on Debian 10, one of the most reliable operating systems on the market. There are only a few steps to install ownCloud on Debian. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
+This tutorial walks you through the steps to install ownCloud on Ubuntu 20.04, one of the most user-friendly server operating systems available. There are only a few steps to install ownCloud on Ubuntu 20.04. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
 ## Before You Begin
 
@@ -59,44 +58,38 @@ If you have a registered domain name that you want to point to your ownCloud ins
 {{</ note >}}
 
 ## Install ownCloud
-### Install Apache and PHP
+### Install the LAMP Stack
 
-In this section, you install the Apache web server and all of the necessary PHP components.
+ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section, you complete the steps to install a LAMP stack on your Linode. Although you don't have to use Apache as the web server, the ownCloud developers highly recommend it over web servers like NGINX and lightHTTP.
 
-1. [Connect to your Linode via SSH](/docs/guides/getting-started#log-in-using-ssh).
+1. Install the LAMP stack with a single command:
 
-1. Install Apache and all the required PHP packages:
+        sudo apt-get install lamp-server^ -y
 
-        sudo apt-get install apache2 mariadb-server libapache2-mod-php openssl php-imagick php-common php-curl php-gd php-imap php-intl php-json php-ldap php-mbstring php-mysql php-pgsql php-smbclient php-ssh2 php-sqlite3 php-xml php-zip php-apcu -y
-
-
-1. Once the packages are installed, start and enable Apache with the following commands:
+1. When the installation is complete, enable and start Apache:
 
         sudo systemctl start apache2
         sudo systemctl enable apache2
 
+1. Start and enable the MySQL database:
 
-### Install the database
+        sudo systemctl start mysql
+        sudo systemctl enable mysql
 
-ownCloud relies on a database for storing data. Instead of MySQL, this installation uses MariaDB. MariaDB is a fork of MySQL that places a higher importance on security.
-
-1. Install MariaDB:
-
-        sudo apt-get install mariadb-server -y
-
-
-1. Start and enable the database with the following commands:
-
-        sudo systemctl start mariadb
-        sudo systemctl enable mariadb
-
-
-1. Set a MariaDB admin password and secure the installation. This is accomplished using a tool borrowed from MySQL:
+1. Set a MySQL admin password and secure the installation:
 
         sudo mysql_secure_installation
 
+    During this process, the system asks if you want to enable the `VALIDATE PASSWORD COMPONENT`. This feature ensures that all created passwords are strong and unique. Answer `n` (as in "no"). When prompted, type and verify a new secure password for the MySQL admin user. You are then prompted to answer four questions, to all of which you should respond `y` (as in "yes").
 
-    When prompted, hit **Enter** on your keyboard (as there is no current MariaDB admin password). Answer **y** (as in "yes") to set the admin password, and type and verify a new secure password for the MariaDB admin user. Finally, the database setup prompts you to answer four questions. Answer **y** (as in "yes") to each of these questions.
+1. Install PHP and all the required PHP packages
+
+        sudo apt-get install php php-opcache php-gd php-curl php-mysqlnd php-intl php-json php-ldap php-mbstring php-mysqlnd php-xml php-zip -y
+
+1. Restart Apache to enable any changes:
+
+        sudo systemctl restart apache2
+
 
 ### Create the ownCloud Database
 
@@ -125,7 +118,6 @@ Now that you have installed the prerequisites, it’s time to create the ownClou
 1. Finally, exit the database console:
 
         exit
-
 
 ### Download ownCloud
 
@@ -202,7 +194,7 @@ The command line portion of the installation is complete.
 
 This section covers the web-based portion of the installation.
 
-1. Open a web browser and navigate to your site's domain, if it has been configured to use one `http://example.com/owncloud`. If you configured Apache to point to your server's IP address, navigate to `http://192.0.2.0/owncloud` and replace the example IP address with your own. You should see the ownCloud web-based installer.
+1. Open a web browser and navigate to your site's domain, if it has been configured to use a domain name like, `http://example.com/owncloud`. If you configured Apache to point to your server's IP address, navigate to `http://192.0.2.0/owncloud` and replace the example IP address with your own. You should see the ownCloud web-based installer.
 
 1. Type a username and password for the admin user; click the `Storage & Database` drop-down; and then click `MySQL/MariaDB`.
 
@@ -213,10 +205,10 @@ This section covers the web-based portion of the installation.
     - Database: `ownclouddb`
     - Localhost: leave as the default
 
-    ![The database details section for the ownCloud installation](ownCloud_Debian_003.jpeg  "The database details section for the ownCloud installation")
+    ![The database details section for the ownCloud installation](ownCloud_ubuntu_a.jpg  "The database details section for the ownCloud installation")
 
 1. Click **Finish setup**. When the install completes, the ownCloud login page appears. Login with the newly-created admin credentials. Once logged in, you are taken to the main ownCloud page.
 
-    ![ownCloud is installed and ready to use as your private cloud](ownCloud_Debian_004.jpeg "ownCloud is installed and ready to use as your private cloud")
+    ![ownCloud is installed and ready to use as your private cloud](ownCloud_ubuntu_b.jpg "ownCloud is installed and ready to use as your private cloud")
 
-You now have a working instance of ownCloud, running on Debian 10.
+You now have a working instance of ownCloud, running on Ubuntu 20.04.
