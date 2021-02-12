@@ -23,7 +23,7 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 ## Mist.io Marketplace App
 
-Mist.io is an open-source multi-cloud management platform that can help users to control their cloud infrastructure across a number of different sources.
+[Mist.io](https://mist.io/) is an open source, multi-cloud management platform. Mist supports all popular infrastructure technologies including public clouds, private clouds, hypervisors, containers, and bare metal servers. It provides a unified interface for performing common management tasks like provisioning, orchestration, monitoring, automation, and cost analysis. It also comes with a RESTful API so you can easily integrate it in your existing workflows.
 
 ## Deploy Mist.io with Marketplace Apps
 
@@ -44,56 +44,45 @@ After providing the app-specific options, provide configurations for your Linode
 |-------------------|-----------------|
 | **Select an Image** | Debian 9 and Debian 10 are currently the only images supported by the Mist.io Marketplace App, and are pre-selected on the Linode creation page. *Required* |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). An 8GB Linode is recommended for your Mist.io App. The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.  *Required* |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). **An 8GB Linode is recommended for your Mist.io App.** The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.  *Required* |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
 
 When you've provided all required Linode Options, click on the **Create** button. **Your Mist.io app will complete installation anywhere between 5-15 minutes after your Linode has finished provisioning**.
 
-## Setting up the Mist.io Server
+## Getting Started After Deployment
 
 Once the Mist.io server is successfully created, a few additional steps must be completed to be able to begin using the application.
 
-### Set Mist's CORE_URI
-
-Before proceeding further, the CORE_URI URL must be set.
-
-1. Create an [SSH connection](https://www.linode.com/docs/guides/getting-started/#connect-to-your-linode-via-ssh) to your Linode using the [public IP address](/docs/guides/find-your-linodes-ip-address/) and the root password you had set up prior to the app creation.
-
-1.  Edit the settings file found in `~/mist/settings/settings.py` with a text editor of your choice:
-
-        sudo nano ~/mist/settings/settings.py
-
-1. Set The CORE_URI value to either your Linode's public IPv4 address or a DNS name linked to it. For more information, see the [Mist CE Documentation](https://github.com/mistio/mist-ce#configuring). The file should reflect the following once complete:
-
-    {{< output >}}
-"""User defined settings"""
-
-## Configure external url.
-CORE_URI = "http://203.0.113.0"
-
-## Verify SSL outgoing SSL connections.
-# SSL_VERIFY = True
-{{< /output >}}
-
-    For anything other than development purposes, it is strongly recommended that a [DNS name](/docs/guides/dns-manager/) with an [SSL/TLS certiicate](https://www.linode.com/docs/guides/how-to-install-certbot-on-debian-10/) is configured and installed.
-
-1. Restart the docker container for your changes to be applied:
-
-        sudo docker-compose restart
-
 ### Log In to Mist.io
 
-1. Enter the URL or Domain name linked to the application.
+1. In a web browser, enter your Linode's [IP address](docs/guides/find-your-linodes-ip-address/) or the [Domain](docs/guides/dns-manager/) associated with it to access your Mist.io App's login screen.
 
 1. Click on the **Sign in** button at the top right of the page.
 
     ![Mist.io get started](get-started-mist.png)
 
-1. Enter your `Email Address` and `Password` in their respective fields to complete the log-in process.
+1. Enter your Mist admin `Email Address` and `Password` in their respective fields to complete the log-in process.
 
     ![Mist.io Account Creation](account-creation-mist.png)
 
 ### Next Steps
 
-After creating your account, create a name for your organization, [Add Clouds](https://docs.mist.io/category/75-adding-clouds-bare-metal-and-containers) you'll be managing, as well as any separate [virtual machines, containers,](https://docs.mist.io/category/158-machines) and more.
+After creating your account, create a name for your organization, [Add Clouds](https://docs.mist.io/category/75-adding-clouds-bare-metal-and-containers) to manage, as well as any separate [virtual machines, containers,](https://docs.mist.io/category/158-machines) and more.
+
+For more information and guidance for getting the most out of your Mist.io App, check out the following:
+
+* [Mist User Documentation](https://docs.mist.io) for quick start and other informative articles.
+* [Mist API Documentation](https://mist.io/swagger) for integration with your existing workflows.
+* [Mist Community Edition Github Repo](https://github.com/mistio/mist-ce/blob/master/README.md) for additional configuration and maintenance instructions.
+
+### Software Included
+
+The Mist.io Marketplace App installs the following software on your Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**Docker Compose**](https://docs.docker.com/compose/) | Tool for defining and running multi-container Docker applications.|
+| [**Mist Community Edition v4.3.8**](https://github.com/mistio/mist-ce) | An open source Mult-Cloud Management Platform.|
+
+{{< content "marketplace-update-note">}}
