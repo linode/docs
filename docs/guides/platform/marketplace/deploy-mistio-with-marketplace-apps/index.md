@@ -44,7 +44,7 @@ After providing the app-specific options, provide configurations for your Linode
 |-------------------|-----------------|
 | **Select an Image** | Debian 9 and Debian 10 are currently the only images supported by the Mist.io Marketplace App, and are pre-selected on the Linode creation page. *Required* |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). An 8GB Linode is recommended for your Mist.io App. The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.  *Required* |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). **An 8GB Linode is recommended for your Mist.io App.** The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.  *Required* |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
 
@@ -70,4 +70,19 @@ Once the Mist.io server is successfully created, a few additional steps must be 
 
 After creating your account, create a name for your organization, [Add Clouds](https://docs.mist.io/category/75-adding-clouds-bare-metal-and-containers) to manage, as well as any separate [virtual machines, containers,](https://docs.mist.io/category/158-machines) and more.
 
-For more available configuration options, check out the Mist [Github repo](https://github.com/mistio/mist-ce#configuring).
+For more information and guidance for getting the most out of your Mist.io App, check out the following:
+
+* [Mist User Documentation](https://docs.mist.io) for quick start and other informative articles.
+* [Mist API Documentation](https://mist.io/swagger) for integration with your existing workflows.
+* [Mist Community Edition Github Repo](https://github.com/mistio/mist-ce/blob/master/README.md) for additional configuration and maintenance instructions.
+
+### Software Included
+
+The Mist.io Marketplace App installs the following software on your Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**Docker Compose**](https://docs.docker.com/compose/) | Tool for defining and running multi-container Docker applications.|
+| [**Mist Community Edition v4.3.8**](https://github.com/mistio/mist-ce) | An open source Mult-Cloud Management Platform.|
+
+{{< content "marketplace-update-note">}}
