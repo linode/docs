@@ -1162,6 +1162,7 @@ premade
 prepend
 prepended
 prepending
+prepends
 preprocessing
 preprocessors
 prerotate
@@ -1200,6 +1201,7 @@ pyamqp
 pyenv
 pyinotify
 pypa
+pypi
 pypiserver
 pyspark
 pytest
@@ -1637,6 +1639,7 @@ vcs
 vdev
 vdevs
 ve
+venv
 ver
 verisign
 vhost
@@ -1645,6 +1648,7 @@ vimrc
 virb
 virtio
 virtualenv
+virtualenvs
 virtualenvwrapper
 virtualhost
 virtualizations
