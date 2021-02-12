@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get started with the Linode CLI. Learn to install the CLI and customize output fields."
 tab_group_main:
     weight: 20
 ---

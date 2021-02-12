@@ -7,7 +7,7 @@ description: "Let's Encrypt is an SSL certificate authority managed by the Inter
 keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2018-12-19
+modified: 2020-12-02
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
@@ -15,7 +15,7 @@ contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
 deprecated: true
-deprecated_link: quick-answers/websites/secure-http-traffic-certbot/
+deprecated_link: /guides/how-to-install-certbot-on-ubuntu-18-04/
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]

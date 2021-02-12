@@ -1,6 +1,7 @@
 ---
 title: Dedicated CPU Linodes
 linkTitle: Dedicated CPU
+description: "Dedicated CPU Linodes offer a complement to CPU intensive tasks and offer competition-free resources."
 tab_group_main:
     is_root: true
     title: Overview

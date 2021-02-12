@@ -19,15 +19,21 @@
    "title"
   ],
   "attributesToRetrieve": [
+   "deprecated",
    "excerpt",
    "firstPublishedTime",
+   "firstPublishedYear",
    "href",
    "languages",
    "lastUpdatedTime",
+   "ordinal",
    "section",
    "skillLevel",
    "thumbnailUrl",
    "title"
+  ],
+  "customRanking": [
+   "desc(firstPublishedYear)"
   ],
   "exactOnSingleWordQuery": "attribute",
   "highlightPostTag": "\u003c/em\u003e",
@@ -39,12 +45,12 @@
   "paginationLimitedTo": 1000,
   "queryType": "prefixLast",
   "ranking": [
-   "asc(deprecated)",
    "typo",
    "geo",
    "words",
    "filters",
    "proximity",
+   "asc(deprecated)",
    "attribute",
    "exact",
    "custom"
@@ -84,7 +90,6 @@
   "paginationLimitedTo": 1000,
   "queryType": "prefixLast",
   "ranking": [
-   "asc(ordinal)",
    "typo",
    "geo",
    "words",
@@ -95,7 +100,9 @@
    "custom"
   ],
   "removeWordsIfNoResults": "none",
+  "replicas": [],
   "searchableAttributes": [
+   "unordered(title)",
    "unordered(exerpt)",
    "unordered(section)",
    "unordered(section.lvl0)"
@@ -162,6 +169,7 @@
    "href",
    "languages",
    "lastUpdatedTime",
+   "ordinal",
    "section",
    "skillLevel",
    "thumbnailUrl",

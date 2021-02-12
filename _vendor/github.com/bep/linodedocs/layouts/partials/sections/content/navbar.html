@@ -11,7 +11,7 @@
   <div class="pt-1 mb-0 md:hidden block">
     {{ partial $mainNavPartial .page }}
   </div>
-  <div class="pt-3 mb-8 md:block hidden" style="padding-bottom: 1px; background-image: url({{ $borderBottomImage }}); background-position: left bottom; background-repeat: repeat-x;">
+  <div class="pt-3 mb-8 md:block hidden" style="min-height: 85px; padding-bottom: 1px; background-image: url({{ $borderBottomImage }}); background-position: left bottom; background-repeat: repeat-x;">
     <div class='flex content-center items-center justify-between {{ .class | default "pb-8" }}'>
       <div class="sm:w-1/2 w-full">
         {{ partial $mainNavPartial .page }}

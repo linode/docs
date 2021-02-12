@@ -1,4 +1,4 @@
-function sendEvent(name, data, el = document) {
+export function sendEvent(name, data, el = document) {
 	var event = new CustomEvent(name, {
 		bubbles: true,
 		detail: data
@@ -6,11 +6,11 @@ function sendEvent(name, data, el = document) {
 	el.dispatchEvent(event);
 }
 
-function setDocumentMeta(meta) {
+export function setDocumentMeta(meta) {
 	document.title = meta.title;
 }
 
-function toggleBooleanClass(baseClass, el, truthy) {
+export function toggleBooleanClass(baseClass, el, truthy) {
 	const is = `is-${baseClass}`;
 	const isNot = `is-not-${baseClass}`;
 
@@ -27,7 +27,7 @@ function toggleBooleanClass(baseClass, el, truthy) {
 	}
 }
 
-function toggleClass(openClass, el, open) {
+export function toggleClass(openClass, el, open) {
 	if (open) {
 		el.classList.add(openClass);
 	} else {
@@ -35,12 +35,12 @@ function toggleClass(openClass, el, open) {
 	}
 }
 
-const capitalize = (s) => {
+export const capitalize = (s) => {
 	if (typeof s !== 'string') return '';
 	return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
-function toDateString(date) {
+export function toDateString(date) {
 	var year = date.getFullYear().toString().substr(-2);
 	var month = date.getMonth() + 1;
 	var day = date.getDate();
@@ -56,7 +56,7 @@ function toDateString(date) {
 }
 
 // https://gist.github.com/rmariuzzo/8761698
-function sprintf(format) {
+export function sprintf(format) {
 	var args = Array.prototype.slice.call(arguments, 1);
 	var i = 0;
 	return format.replace(/%s/g, function() {
@@ -64,11 +64,38 @@ function sprintf(format) {
 	});
 }
 
-function isMobile() {
+export function waitUntil(condition) {
+	const checkResolved = function(resolve, condition, callCounter = 0) {
+		if (callCounter > 100) {
+			console.error('waitUntil timed out');
+			resolve();
+			return;
+		}
+		if (condition()) {
+			resolve();
+			return;
+		}
+
+		callCounter++;
+		setTimeout(function() {
+			checkResolved(resolve, condition, callCounter);
+		}, 200);
+	};
+
+	return new Promise((resolve) => {
+		checkResolved(resolve, condition);
+	});
+}
+
+export function isMobile() {
 	return document.documentElement.clientWidth < 768;
 }
 
-function isTouchDevice() {
+export function isScreenLargerThan(px) {
+	return document.documentElement.clientWidth > px;
+}
+
+export function isTouchDevice() {
 	try {
 		document.createEvent('TouchEvent');
 		return true;
@@ -77,6 +104,6 @@ function isTouchDevice() {
 	}
 }
 
-function isTopBarPinned() {
+export function isTopBarPinned() {
 	return document.body.classList.contains('is-topbar-pinned');
 }
