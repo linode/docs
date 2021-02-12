@@ -23,7 +23,7 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 ## Mist.io Marketplace App
 
-Mist.io is an open-source multi-cloud management platform that can help users to control their cloud infrastructure across a number of different sources.
+[Mist.io](https://mist.io/) is an open-source multi-cloud management platform that can help users to control their cloud infrastructure across a number of different sources.
 
 ## Deploy Mist.io with Marketplace Apps
 
@@ -56,16 +56,18 @@ Once the Mist.io server is successfully created, a few additional steps must be 
 
 ### Log In to Mist.io
 
-1. Enter the URL or Domain name linked to the application.
+1. In a web browser, enter your Linode's [IP address](docs/guides/find-your-linodes-ip-address/) or the [Domain](docs/guides/dns-manager/) associated with it to access your Mist.io App's login screen.
 
 1. Click on the **Sign in** button at the top right of the page.
 
     ![Mist.io get started](get-started-mist.png)
 
-1. Enter your `Email Address` and `Password` in their respective fields to complete the log-in process.
+1. Enter your Mist admin `Email Address` and `Password` in their respective fields to complete the log-in process.
 
     ![Mist.io Account Creation](account-creation-mist.png)
 
 ### Next Steps
 
-After creating your account, create a name for your organization, [Add Clouds](https://docs.mist.io/category/75-adding-clouds-bare-metal-and-containers) you'll be managing, as well as any separate [virtual machines, containers,](https://docs.mist.io/category/158-machines) and more.
+After creating your account, create a name for your organization, [Add Clouds](https://docs.mist.io/category/75-adding-clouds-bare-metal-and-containers) to manage, as well as any separate [virtual machines, containers,](https://docs.mist.io/category/158-machines) and more.
+
+For more available configuration options, check out the Mist [Github repo](https://github.com/mistio/mist-ce#configuring).
