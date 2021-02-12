@@ -23,7 +23,7 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 ## Mist.io Marketplace App
 
-[Mist.io](https://mist.io/) is an open-source multi-cloud management platform that can help users to control their cloud infrastructure across a number of different sources.
+[Mist.io](https://mist.io/) is an open source, multi-cloud management platform. Mist supports all popular infrastructure technologies including public clouds, private clouds, hypervisors, containers, and bare metal servers. It provides a unified interface for performing common management tasks like provisioning, orchestration, monitoring, automation, and cost analysis. It also comes with a RESTful API so you can easily integrate it in your existing workflows.
 
 ## Deploy Mist.io with Marketplace Apps
 
