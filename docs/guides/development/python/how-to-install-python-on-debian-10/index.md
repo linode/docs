@@ -143,6 +143,6 @@ Now your Debian 10 system has the latest version of Python 3 installed.
 
 ## Additional Information
 
-On Debian 10, the binary for Python 2 is located at `/usr/bin/python`, and the binary for Python3 is located at `/usr/bin/python3`.
+On Debian 10, the binary for Python 2 is located at `/usr/bin/python`, and the binary for Python 3 is located at `/usr/bin/python3`.
 
 In this guide, you updated from Python 3.7 to Python 3.9 using the Debian Testing repository. There is another method that involves compiling the binary from source. Both are acceptable methods, but compiling from source may introduce complexity if your previous version of Python had modules installed already. If you are compiling from source, it is important to understand that all public modules (modules you want to use across your system) must be installed in the Python 3 Modules directory: `/usr/lib/python3/dist-packages`.
