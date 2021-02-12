@@ -133,18 +133,18 @@ export function newHomeController(searchConfig, developersItems) {
 		pager.refreshPageSize();
 		pager.adjustIndex(0);
 
-		if (isTouchDevice()) {
-			lnSwipe.New(el, function(direction) {
-				switch (direction) {
-					case 'left':
-						pager.next();
-						break;
-					case 'right':
-						pager.prev();
-						break;
-				}
-			});
-		}
+		// if (isTouchDevice()) {
+		// 	lnSwipe.New(el, function(direction) {
+		// 		switch (direction) {
+		// 			case 'left':
+		// 				pager.next();
+		// 				break;
+		// 			case 'right':
+		// 				pager.prev();
+		// 				break;
+		// 		}
+		// 	});
+		// }
 
 		return pager;
 	};
