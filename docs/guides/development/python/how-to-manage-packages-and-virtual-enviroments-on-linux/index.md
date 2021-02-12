@@ -25,9 +25,9 @@ Python is a programming language with a large library of third party modules, or
 
 It's not uncommon for Python applications to depend on several dozen third party packages. Additionally, the versions of these packages often differ between different software projects. This can cause some issues among the various dependencies of the projects on your system, and their version numbers.
 
-As a response to this problem, Python developers utilize *virtual environments*. These virtual environments create isolated directories to install dependencies for specific projects. It's also possible to install isolated versions of the Python binary with virtual environtments.
+As a response to this problem, Python developers utilize *virtual environments*. These virtual environments create isolated directories to install dependencies for specific projects. It's also possible to install isolated versions of the Python binary with virtual environments.
 
-Several tools exist to manage virtual environments. This guide covers tools such as Pipenv, Virtualenv, and Conda and offers advice for managing dependencies and virtual environments in Python.
+Several tools exist to manage virtual environments. This guide covers tools such as Pipenv, Virtualenv, and Conda, and offers advice for managing dependencies and virtual environments in Python.
 
 ## Before You Begin
 
@@ -63,7 +63,7 @@ This table shows the most common Pip commands and their common arguments and opt
 |[Freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/)   |`pip3 freeze -r requirements.txt` | The Freeze command outputs all of the installed packages that a project has in order. Using the `-r` flag, you can save the dependencies to a requirements.txt file.
 |[List](https://pip.pypa.io/en/stable/reference/pip_list/)   |`pip3 list -o`, `pip3 list -l` | This command lists all of the installed packages. The `-o` flag lists the outdated packages. The `-l` flag lists only the packages in your current environment, omitting any globally installed packages.
 |[Show](https://pip.pypa.io/en/stable/reference/pip_show/)   |`pip3 show packagename` | This command outputs information about a specific package, that is version number, homepage, summary, and other options.
-|[Search](https://pip.pypa.io/en/stable/reference/pip_search/)   |`pip3`&nbsp;`check`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | This command checks your currently installed packages to verify that they have installed correctly. This command will report any packages that are missing dependencies.
+|[Search](https://pip.pypa.io/en/stable/reference/pip_search/)   |`pip3`&nbsp;`check`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | This command checks your currently installed packages to verify that they have installed correctly. This command reports any packages that are missing dependencies.
 
 Before installing packages with `pip`, first verify that `pip` is installed on your system with the following command:
 
@@ -161,11 +161,11 @@ Conda has a simple command to create virtual environments:
 
 This command creates a new virtual environment named `your_environment` that uses Python 3.8. This can be run anywhere on the system.
 
-Unlike Virtualenv, you are not limited to the directory, because Conda abstracts the managing of virtual environments from the user. Also, unlike pipenv, you do not need to manually install separate Python binaries for the different versions of Python you want to support on your system. Conda has a massive repository that it pulls from to manage the different versions of Python.
+Unlike Virtualenv, you are not limited to the directory, because Conda abstracts the managing of virtual environments from the user. Also, unlike pipenv, you do not need to manually install separate Python binaries for the different versions of Python you want to support. Conda has a massive repository that it pulls from to manage the different versions of Python.
 
 Conda has the ability to use Pip within a Conda-created virtual environment, so you can use `pip` with Conda. However, Conda has its own package repository that is maintained by the [Anaconda foundation](https://www.anaconda.com/open-source) which focuses mostly on compatibility.
 
-Conda is the recommended solution for data scientists, or people that want an all-inclusive solution. Conda abstracts everything away and leaves you with a few simple commands to install packages, manage environments, and distribute code. It comes at the price of a much larger binary, and solutions like this are hard to transition out of if you ever decide to use anything else.
+Conda is the recommended solution for data scientists, or people that want an all-inclusive solution. Conda abstracts everything away and leaves you with a few simple commands to install packages, manage environments, and distribute code. It comes at the price of a much larger binary. Also, solutions like this are hard to transition out of if you ever decide to use anything else.
 
 ## Recommendations
 

@@ -1162,6 +1162,7 @@ premade
 prepend
 prepended
 prepending
+prepends
 preprocessing
 preprocessors
 prerotate
@@ -1645,6 +1646,7 @@ vimrc
 virb
 virtio
 virtualenv
+virtualenvs
 virtualenvwrapper
 virtualhost
 virtualizations
