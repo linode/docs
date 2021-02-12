@@ -1,14 +1,14 @@
 ---
-slug: how-to-intsall-python-on-debian-10
+slug: how-to-install-python-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Python 3 is the supported version of Python. This guide will show you how to verify the Python 3 installation on Debian 10, how to upgrade Python from 3.7 to 3.8, and how to locate the individual binaries for each installation'
-og_description: 'This guide will walk you through Installing Python 3 on Debian 10'
+description: 'Python 3 is installed by default on Debian 10. This guide shows how to invoke Python 3 on Debian 10 and how to upgrade it from version 3.7 to 3.9.'
+og_description: 'Python 3 is installed by default on Debian 10. This guide shows how to invoke Python 3 on Debian 10 and how to upgrade it from version 3.7 to 3.9.'
 keywords: ['How to Install Python on Debian','Python','Python3','Python 2 end of life']
 tags: ['python', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-10-06
+published: 2020-02-12
 modified_by:
   name: Linode
 title: "How to Install Python 3 on Debian 10"
@@ -24,19 +24,19 @@ relations:
 aliases: ['/development/python/how-to-install-python-on-debian-10']
 ---
 
-Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
+Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction. This abstraction makes writing and reading the code easier than other languages.
 
-As of January 1, 2020, the official version of Python is Python 3. Python 2, is no longer a supported language. This guide walks you through installing the latest version of Python 3 on Debian 10. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html) on how to do so.
+As of January 1, 2020, the official version of Python is Python 3. Python 2 is no longer a supported language. This guide walks you through installing the latest version of Python 3 on Debian 10. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html) on how to do so.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  This guide assumes that you have access to a server or workstation running Debian 10. To provision a Linode running Debian 10, follow our [Getting Started](/docs/getting-started/) guide.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3.  Update your system:
+1.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 ## How to Install Python 3
 
@@ -49,6 +49,10 @@ For Python 2:
 {{< output >}}
 Python 2.7.16
 {{< /output>}}
+
+{{< note >}}
+Because of Debian's commitment to stability, Python 2 is still installed on the system. There are default packages that depend on Python 2. On Debian 10, Python 2 continues to be supported past the EOL date of Python 2. It is not recommended to remove the Python 2 binary from your system. Instead, interact with Python 3 using the `python3` command and Python 2 using the `python` command.
+{{< /note >}}
 
 For Python 3:
 
@@ -85,28 +89,21 @@ You can exit the interpreter by typing the exit command:
 
     exit()
 
-## How to Upgrade from Python 3.7 to 3.8
+## How to Upgrade from Python 3.7 to 3.9
 
-When writing this guide, the latest stable version of Python 3 was 3.8. On a fresh Debian 10 install, the installed version of Python 3 is 3.7. There were a lot of [major changes](https://docs.python.org/3/whatsnew/3.8.html) between Python 3.7 and 3.8 that could be useful to take advantage of when writing code. Python 3.8 may become a dependency for certain applications running on your system as well. To upgrade your version of Python 3.7 to 3.8, you need to add the ability to use Debian's testing repositories.
+At this guide's publication time, the latest stable version of Python 3 was 3.9.1. On a fresh Debian 10 install, the installed version of Python 3 is 3.7. There were a lot of [major changes](https://docs.python.org/3/whatsnew/3.9.html) between Python 3.7 and 3.9. These changes could be useful to take advantage of when writing code. Python 3.9 may become a dependency for certain applications running on your system as well. To upgrade your version of Python from 3.7 to 3.9, you need to add Debian's testing repositories.
 
 1. Open the `/etc/apt/sources.list` file with the following command:
 
         sudo nano /etc/apt/sources.list
 
-2. Add the official testing repository by adding the following line of text to the file:
+1. Add the official testing repository. Append the following line of text to the end of the file:
 
         deb http://http.us.debian.org/debian/ testing non-free contrib main
 
-
     Your file should match this:
 
-
     {{< file "/etc/apt/sources.list" yaml>}}
-
-# deb cdrom:[Debian GNU/Linux 10.3.0 _Buster_ - Official amd64 NETINST 20200208-12:07]/ buster main
-
-#deb cdrom:[Debian GNU/Linux 10.3.0 _Buster_ - Official amd64 NETINST 20200208-12:07]/ buster main
-
 deb http://mirrors.linode.com/debian buster main
 deb-src http://mirrors.linode.com/debian buster main
 
@@ -120,38 +117,32 @@ deb-src http://mirrors.linode.com/debian buster-updates main
 # Debian Testing Non-Free
 
 deb http://http.us.debian.org/debian/ testing non-free contrib main
-
-# This system was installed using small removable media
-# (e.g. netinst, live or single CD). The matching "deb cdrom"
-# entries were disabled at the end of the installation process.
-# For information about how to configure apt package sources,
-# see the sources.list(5) manual.
 {{< /file >}}
 
-3. After editing the file, download the information for all of the packages available with the following command:
+1. After editing the file, download the information for all of the packages available with the following command:
 
         sudo apt update
 
-4. Upgrade Python 3 with the following command:
+1. Upgrade Python 3 with the following command:
 
         sudo apt upgrade python3
 
     {{< note >}}
-   Because Python3 requires a lot of dependencies you are prompted to allow Debian to restart certain services. If you are not running any active processes, this is okay. Otherwise, you may decide to restart the services yourself.
-   {{< /note >}}
+Because Python3 requires a lot of dependencies, you are prompted to allow Debian to restart certain services. If you are not running any active processes, this is okay. Otherwise, you may decide to restart the services yourself.
+{{< /note >}}
 
-5. Verify that you've updated Python by checking the version:
+1. Verify that you've updated Python by checking the version:
 
         python3 --version
 
     {{< output >}}
-Python 3.8.6
+Python 3.9.1
 {{< /output >}}
 
-Now your Debian 10 system has the latest version of Python 3 installed. Because of Debian's commitment to stability, Python 2 is still installed on the system as there are default packages that depend on Python 2. On Debian 10, Python 2 continues to be supported past the EOL date of Python 2. It is not recommended to remove the Python 2 binary from your system. Instead, interact with Python 3 using the `python3` command and Python 2 using the `python` command.
+Now your Debian 10 system has the latest version of Python 3 installed.
 
 ## Additional Information
 
-On Debian 10, the binary for Python 2 is located at `/usr/bin/python`, and the binary for Python3 is located at `/usr/local/bin/python3`.
+On Debian 10, the binary for Python 2 is located at `/usr/bin/python`, and the binary for Python3 is located at `/usr/bin/python3`.
 
-In this guide, you updated from Python 3.7 to Python 3.8 using the Debian Testing repository. There is another method that involves compiling the binary from source. Both are acceptable methods, but compiling from source may introduce complexity if your previous version of Python had modules installed already. If you are compiling from source, it is important to understand that all public, meaning modules you want to use across your system, must be installed in the Python 3 Modules directory: `/usr/lib/python3/dist-packages`.
+In this guide, you updated from Python 3.7 to Python 3.9 using the Debian Testing repository. There is another method that involves compiling the binary from source. Both are acceptable methods, but compiling from source may introduce complexity if your previous version of Python had modules installed already. If you are compiling from source, it is important to understand that all public modules (modules you want to use across your system) must be installed in the Python 3 Modules directory: `/usr/lib/python3/dist-packages`.
