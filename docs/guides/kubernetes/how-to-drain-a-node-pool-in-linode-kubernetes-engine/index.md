@@ -1,4 +1,5 @@
 ---
+slug: how-to-drain-a-node-pool-in-linode-kubernetes-engine
 author:
   name: Linode
   email: docs@linode.com
@@ -20,7 +21,7 @@ external_resources:
 
 You can use `kubectl drain` to safely evict all of the pods from a node before you perform maintenance on the node such as kernel upgrade, hardware maintenance, and others. Safe evictions allow the containers of the pods to gracefully terminate and respect the PodDisruptionBudgets that you specified. For more information see, [Disruptions](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/).
 
-Kubernetes workloads move around the cluster, which enables use cases like highly available distributed systems. Linode  recommends you to move any data storage on the filesystem of the Linodes in an LKE cluster to Persistent Volumes with network attached storage. Avoid using local storage on LKE nodes whenever possible. If you are using Persistent Volume Claim for the application on an LKE cluster, skip the entire [Copy the application data to a Persistent Volume](#copy-the-application-data-to-a-persistent-volume) section and proceed directly to [Add a new node pool to the cluster and drain the nodes](#add-a-new-node-pool-to-the-cluster-and-drain-the-nodes).
+Kubernetes workloads move around the cluster, which enables use cases like highly available distributed systems. Linode recommends you to move any data storage on the filesystem of the Linodes in an LKE cluster to Persistent Volumes with network attached storage. Avoid using local storage on LKE nodes whenever possible. If you are using Persistent Volume Claim for the application on an LKE cluster, skip the entire [Copy the application data to a Persistent Volume](#copy-the-application-data-to-a-persistent-volume) section and proceed directly to [Add a new node pool to the cluster and drain the nodes](#add-a-new-node-pool-to-the-cluster-and-drain-the-nodes).
 
 This guide provides instructions to:
 
@@ -69,7 +70,7 @@ spec:
     {{< note >}}
   To retain the Block Storage Volume and its data, even after the associated PVC is deleted, use the `linode-block-storage-retain` StorageClass. If, instead, you prefer to have the Block Storage Volume and its data deleted along with its PVC, use the `linode-block-storage` StorageClass. For more information, see the [Delete a Persistent Volume Claim](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/#delete-a-persistent-volume-claim).
 {{</ note >}}
-      The PVC represents a Block Storage Volume. Because Block Storage Volumes have a minimum size of 10 gigabytes, the storage has been set to `10Gi`. If you choose a size smaller than 10 gigabytes, the PVC defaults to 10 gigabytes.Currently the only mode supported by the Linode Block Storage CSI driver is `ReadWriteOnce`, meaning that it can only be connected to one Kubernetes node at a time.
+      The PVC represents a Block Storage Volume. Because Block Storage Volumes have a minimum size of 10 gigabytes, the storage has been set to `10Gi`. If you choose a size smaller than 10 gigabytes, the PVC defaults to 10 gigabytes. Currently the only mode supported by the Linode Block Storage CSI driver is `ReadWriteOnce`, meaning that it can only be connected to one Kubernetes node at a time.
 
 1.  Create the PVC in Kubernetes, and pass in the `pvc.yaml` file:
 
