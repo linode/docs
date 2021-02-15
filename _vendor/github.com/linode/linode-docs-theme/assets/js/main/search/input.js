@@ -67,15 +67,15 @@ export function newSearchInputController() {
 	self.dispatch = function() {
 		let input = this.$refs.searchInput;
 		let queryString = input.innerText.trim();
-		let updateWindowLocation = queryString.length > this.queryString.length;
-		if (!updateWindowLocation && queryString.length > 0) {
+		let triggerSearch = queryString.length > this.queryString.length;
+		if (!triggerSearch && queryString.length > 0) {
 			// Shorter, but a new term.
-			updateWindowLocation = !this.queryString.startsWith(queryString);
+			triggerSearch = !this.queryString.startsWith(queryString);
 		}
 		this.queryString = queryString;
-		this.searchOpen = this.searchOpen || updateWindowLocation;
+		this.searchOpen = this.searchOpen || triggerSearch;
 
-		dispatcher.applySearchFilters({ filters: { q: queryString }, updateWindowLocation: updateWindowLocation });
+		dispatcher.applySearchFilters({ filters: { q: queryString }, triggerSearch: triggerSearch });
 	};
 
 	self.close = function() {

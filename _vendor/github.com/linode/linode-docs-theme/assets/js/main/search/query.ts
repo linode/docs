@@ -23,10 +23,10 @@ interface Query {
 	// hasFilter reports whether a filter (e.g. tags) is set.
 	hasFilter(): boolean;
 
-	// hasQ reports whether a non-blank text guery is set.
+	// hasQ reports whether a text guery is set.
 	hasQ(): boolean;
 
-	// isFiltered reports whether a filter or a non-blank text guery is set.
+	// isFiltered reports whether a filter or text guery is set (an empty text query is considered valid).
 	isFiltered(): boolean;
 
 	// isSectionEnabled reports whether the given section (e.g. `guides`) is enabled.
