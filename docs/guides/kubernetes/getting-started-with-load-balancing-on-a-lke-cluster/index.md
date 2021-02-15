@@ -228,10 +228,6 @@ metadata:
 ...
 {{</ file >}}
 
-{{< note >}}
-By default, Kubernetes will expose internal cluster endpoints over port 80 without TLS. Though this shouldn't be an issue for most use cases, editing your NodeBalancer configuration to expose another port of your choosing (e.g., port `4443`) on TCP mode - in conjunction with an [NGINX Ingress Controller](/docs/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/#install-the-nginx-ingress-controller) with TLS termination enabled - will allow you to access intra-cluster endpoints using HTTPS.
-{{</ note>}}
-
 ### Configuring Session Affinity for Cluster Pods
 
 `kube-proxy` will always attempt to proxy traffic to a random backend Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod. You can add the example lines to a Service configuration file to
