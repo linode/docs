@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.83.2
+  version: 4.84.0
 
   title: Linode API
   description: |
@@ -348,6 +348,11 @@ info:
 
     * [Open Support Ticket](/docs/api/support/#support-ticket-open)
 
+    Accepting Entity Transfers has a dedicated limit of 2 requests per minute per user.
+    That endpoint is:
+
+    * [Entity Transfer Accept](/docs/api/account/#entity-transfer-accept)
+
     ## CLI (Command Line Interface)
 
     The <a href="https://github.com/linode/linode-cli" target="_top">Linode CLI</a> allows you to easily
@@ -599,6 +604,311 @@ paths:
               --expiry_month 11 \
               --expiry_year 2025 \
               --cvv 111
+  /account/entity-transfers:
+    x-linode-cli-command: entity-transfers
+    get:
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Account
+      summary: Entity Transfers List
+      description: >
+        Returns a collection of all created and accepted Entity Transfers for this account, regardless of the user
+        that created or accepted the transfer.
+
+
+        This command can only be accessed by the unrestricted users of an account.
+      operationId: getEntityTransfers
+      x-linode-cli-action: list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns a paginated list of Entity Transfer objects containing the details of all transfers that have been
+            created and accepted by this account.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EntityTransfer'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/entity-transfers
+      - lang: CLI
+        source: >
+          linode-cli account entity-transfers \
+            list
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer Create
+      description: >
+        Creates a transfer request for the specified entities. A request can contain any of the specified entity types
+        and any number of each entity type. At this time, only Linodes can be transferred.
+
+
+        When created successfully, a confirmation email is sent to the account that created this transfer containing a
+        transfer token and instructions on completing the transfer.
+
+
+        When a transfer is [accepted](/docs/api/account/#entity-transfer-accept), the requested entities are moved to
+        the receiving account. A transfer can take up to three hours to complete once accepted. When a transfer is
+        completed, billing for transferred entities ends for the sending account and begins for the receiving account.
+
+
+        This command can only be accessed by the unrestricted users of an account.
+
+
+        There are several conditions that must be met in order to successfully create a transfer request:
+
+        1. The account creating the transfer must not have a past due balance or active Terms of Service violation.
+
+        1. The entity must be owned by the account that is creating the transfer.
+
+        1. The entity must not be assigned to another Entity Transfer that is pending or that has been accepted and is
+        incomplete.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+      operationId: createEntityTransfer
+      x-linode-cli-action: create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      requestBody:
+        description: The entities to include in this transfer request.
+        content:
+          application/json:
+            schema:
+              required:
+              - entities
+              type: object
+              properties:
+                entities:
+                  $ref: '#/components/schemas/EntityTransfer/properties/entities'
+      responses:
+        '200':
+          description: >
+            Returns an Entity Transfer object for the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST -d '{
+              "entities": {
+                "linodes": [
+                  111,
+                  222
+                ]
+              }
+            }' \
+            https://api.linode.com/v4/account/entity-transfers
+      - lang: CLI
+        source: >
+          linode-cli account entity-transfers \
+            create --linodes 111,222
+  /account/entity-transfers/{token}:
+    x-linode-cli-command: entity-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Entity Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer View
+      description: >
+        Returns the details of the Entity Transfer for the provided token.
+
+
+        This command can only be accessed by the unrestricted users of the accounts that created or accepted this
+        transfer.
+      operationId: getEntityTransfer
+      x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns an Entity Transfer object containing the details of the transfer for the specified token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli account entity-transfers \
+            view 123E4567-E89B-12D3-A456-426614174000
+    delete:
+      x-linode-grant: unrestricted only
+      tags:
+      - account
+      summary: Entity Transfer Cancel
+      description: >
+        Cancels the Entity Transfer for the provided token. Once cancelled, a transfer cannot be accepted or otherwise
+        acted on in any way. If cancelled in error, the transfer must be
+        [created](/docs/api/account/#entity-transfer-create) again.
+
+
+        When cancelled, an email notification for the cancellation is sent to the account that created
+        this transfer. Transfers can not be cancelled if they are expired or have been accepted.
+
+
+        This command can only be accessed by the unrestricted users of the account that created this transfer.
+      operationId: deleteEntityTransfer
+      x-linode-cli-action: delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Entity Transfer cancelled.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X DELETE \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli account entity-transfers \
+            delete 123E4567-E89B-12D3-A456-426614174000
+  /account/entity-transfers/{token}/accept:
+    x-linode-cli-command: entity-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Entity Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer Accept
+      description: >
+        Accept an Entity Transfer for the provided token to receive the entities included in the transfer to your
+        account. At this time, only Linodes can be transferred.
+
+
+        When accepted, email confirmations are sent to the accounts that created and accepted the transfer. A transfer
+        can take up to three hours to complete once accepted. Once a transfer is completed, billing for transferred
+        entities ends for the sending account and begins for the receiving account.
+
+
+        This command can only be accessed by the unrestricted users of the account that receives the transfer. Users
+        of the same account that created a transfer cannot accept the transfer.
+
+
+        There are several conditions that must be met in order to accept a transfer request:
+
+        1. Only transfers with a `pending` status can be accepted.
+
+        1. The account accepting the transfer must have a registered payment method and must not have a past due
+          balance or other account limitations for the entities to be transferred.
+
+        1. Both the account that created the transfer and the account that is accepting the transfer must not have any
+        active Terms of Service violations.
+
+        1. The entity must still be owned by the account that created the transfer.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+
+        Any and all of the above conditions must be cured and maintained by the relevant account prior to the
+        transfer's expiration to allow the transfer to be accepted by the receiving account.
+      operationId: acceptEntityTransfer
+      x-linode-cli-action: accept
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Entity Transfer accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X POST \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000/accept
+      - lang: CLI
+        source: >
+          linode-cli account entity-transfers \
+            accept 123E4567-E89B-12D3-A456-426614174000
   /account/events:
     x-linode-cli-command: events
     get:
@@ -4823,6 +5133,59 @@ paths:
         source: >
           linode-cli linodes disk-resize 123 25674 \
             --size 2048
+  /linode/instances/{linodeId}/firewalls:
+    parameters:
+    - name: linodeId
+      in: path
+      description: ID of the Linode to look up.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: linodes
+    get:
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Linode Instances
+      summary: Firewalls List
+      description: >
+        View Firewall information for Firewalls associated with this Linode.
+      operationId: getLinodeFirewalls
+      x-linode-cli-action: firewalls-list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Firewalls associated with this Linode.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Firewall'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/linode/instances/123/firewalls
+      - lang: CLI
+        source: >
+          linode-cli linodes firewalls-list 123
   /linode/instances/{linodeId}/ips:
     parameters:
     - name: linodeId
@@ -9431,6 +9794,7 @@ paths:
             schema:
               type: object
               required:
+                - label
                 - rules
               properties:
                 label:
@@ -14465,7 +14829,7 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
+              -X POST -d '{
                 "linode_id": 12346,
                 "config_id": 23456
               }' \
@@ -15560,43 +15924,70 @@ components:
           description: >
             The type of Record this is in the DNS system. For example, A
             records associate a domain name with an IPv4 address, and AAAA
-            records associate a domain name with an IPv6 address.
+            records associate a domain name with an IPv6 address. For more information, see our guide on
+            [DNS Records](/docs/guides/dns-records-an-introduction).
           example: A
           x-linode-cli-display: 2
         name:
           type: string
-          description: >
-            The name of this Record. This field's actual usage depends on the
-            type of record this represents. For A and AAAA records, this is
-            the subdomain being associated with an IP address.
+          description: |
+            The name of this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
+
+            `A` and `AAAA`: The hostname or FQDN of the Record.
+
+            `NS`: The subdomain, if any, to use with the Domain of the Record.
+
+            `MX`: The subdomain.
+
+            `CNAME`: The hostname. Must be unique. Required.
+
+            `TXT`: The hostname.
+
+            `SRV`: Unused. Use the `service` property to set the service name for this record.
+
+            `CAA`: The subdomain. Omit or enter an empty string ("") to apply to the entire Domain.
+
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
           minLength: 1
           maxLength: 100
           example: test
           x-linode-cli-display: 3
         target:
           type: string
-          description: >
-            The target for this Record. This field's actual usage depends on
-            the type of record this represents. For A and AAAA records, this
-            is the address the named Domain should resolve to.
+          description: |
+            The target for this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
 
+            `A` and `AAAA`: The IP address. Use `[remote_addr]` to submit the IPv4 address of the request. Required.
 
-            With the exception of A and AAAA records, this field accepts
-            a trailing period.
-          example: 12.34.56.78
+            `NS`: The name server. Must be a valid domain. Required.
+
+            `MX`: The mail server. Must be a valid domain. Required.
+
+            `CNAME`: The alias. Must be a valid domain. Required.
+
+            `TXT`: The value. Required.
+
+            `SRV`: The target domain or subdomain. If a subdomain is entered, it is automatically used with the Domain. To configure for a different domain, enter a valid FQDN. For example, the value `www` with a Domain for `example.com` results in a target set to `www.example.com`, whereas the value `sample.com` results in a target set to `sample.com`. Required.
+
+            `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef` tag, a contact or submission URL (http or mailto).
+
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
+
+            With the exception of A, AAAA, and CAA records, this field accepts a trailing period.
+          example: 192.0.2.0
           x-linode-cli-display: 4
         priority:
           type: integer
           minimum: 0
           maximum: 255
           description: >
-            The priority of the target host. Lower values are preferred.
+            The priority of the target host for this Record. Lower values are preferred. Only valid and required for SRV record requests.
           example: 50
           x-linode-cli-display: 6
         weight:
           type: integer
           description: >
-            The relative weight of this Record. Higher values are preferred.
+            The relative weight of this Record. Higher values are preferred. Only valid and required for SRV record requests.
           example: 50
           minimum: 0
           maximum: 65535
@@ -15604,7 +15995,7 @@ components:
         port:
           type: integer
           description: >
-            The port this Record points to.
+            The port this Record points to. Only valid and required for SRV record requests.
           example: 80
           minimum: 0
           maximum: 65535
@@ -15612,14 +16003,15 @@ components:
           type: string
           nullable: true
           description: >
-            The service this Record identified. Only valid for SRV records.
+            The name of the service. An underscore (_) is prepended and a period (.) is appended automatically to the submitted value for this property. Only valid and required for SRV record requests.
           example: null
         protocol:
           type: string
           nullable: true
           description: >
-            The protocol this Record's service communicates with. Only valid
-            for SRV records.
+            The protocol this Record's service communicates with. An underscore (_) is prepended
+            automatically to the submitted value for this property. Only valid
+            for SRV record requests.
           example: null
         ttl_sec:
           type: integer
@@ -15633,10 +16025,13 @@ components:
           x-linode-cli-display: 5
         tag:
           type: string
+          enum:
+          - issue
+          - issuewild
+          - iodef
           nullable: true
           description: >
-            The tag portion of a CAA record. It is invalid to set this on
-            other record types.
+            The tag portion of a CAA record. Only valid and required for CAA record requests.
           example: null
           x-linode-filterable: true
         created:
@@ -15651,6 +16046,87 @@ components:
           description: When this Domain Record was last updated.
           example: '2018-01-01T00:01:01'
           readOnly: true
+    EntityTransfer:
+      type: object
+      description: >
+        An object representing an Entity Transfer.
+      properties:
+        token:
+          x-linode-cli-display: 1
+          type: string
+          format: uuid
+          description: >
+            The token used to identify and accept or cancel this transfer.
+          example: "123E4567-E89B-12D3-A456-426614174000"
+        status:
+          x-linode-filterable: true
+          type: string
+          enum:
+          - accepted
+          - cancelled
+          - completed
+          - failed
+          - pending
+          - stale
+          description: >
+            The status of the transfer request.
+
+
+            `accepted`: The transfer has been accepted by another user and is currently in progress.
+            Transfers can take several hours to complete.
+
+
+            `cancelled`: The transfer has been cancelled by the sender.
+
+
+            `completed`: The transfer has completed successfully.
+
+
+            `failed`: The transfer has failed after initiation.
+
+
+            `pending`: The transfer is ready to be accepted.
+
+
+            `stale`: The transfer has exceeded its expiration date. It can no longer be accepted or
+            cancelled.
+          example: 'pending'
+        created:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was created.
+          example: '2021-02-11T16:37:03'
+        updated:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was last updated.
+          example: '2021-02-11T16:37:03'
+        is_sender:
+          x-linode-filterable: true
+          type: boolean
+          description: >
+            If the requesting account created this transfer.
+          example: true
+        expiry:
+          type: string
+          format: date-time
+          description: >
+            When this transfer expires. Transfers will automatically expire 24 hours after creation.
+          example: '2021-02-12T16:37:03'
+        entities:
+          type: object
+          description: >
+            A collection of the entities to include in this transfer request, separated by type.
+          properties:
+            linodes:
+              type: array
+              items:
+                type: integer
+              description: >
+                An array containing the IDs of each of the Linodes included in this transfer.
+              example: [111, 222]
     ErrorObject:
       type: object
       description: >
@@ -15711,6 +16187,11 @@ components:
           - dns_zone_delete
           - dns_zone_import
           - dns_zone_update
+          - entity_transfer_accept
+          - entity_transfer_cancel
+          - entity_transfer_create
+          - entity_transfer_fail
+          - entity_transfer_stale
           - firewall_create
           - firewall_delete
           - firewall_disable
@@ -15864,6 +16345,7 @@ components:
               - community
               - disks
               - domain
+              - entity_transfer
               - firewall
               - image
               - ipaddress
@@ -16011,8 +16493,7 @@ components:
           x-linode-filterable: true
           type: string
           description: >
-            The Firewall's label, for display purposes only. If no label is provided for a Firewall,
-            a default will be assigned.
+            The Firewall's label, for display purposes only.
 
             Firewall labels have the following constraints:
 
@@ -16020,6 +16501,7 @@ components:
               * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
               * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
               * Must be between 3 and 32 characters.
+              * Must be unique.
           example: firewall123
           minLength: 3
           maxLength: 32

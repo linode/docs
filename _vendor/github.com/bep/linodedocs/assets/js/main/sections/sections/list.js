@@ -115,7 +115,7 @@ export function newSectionsController(searchConfig) {
 
 			this.request = {
 				page: 0,
-				indexName: sectionConfig.index,
+				indexName: sectionConfig.index_by_pubdate || sectionConfig.index,
 				facets: [ 'section.*' ],
 				filters: `section.lvl${this.data.lvl}:'${this.key}'`
 			};

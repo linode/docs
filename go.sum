@@ -195,6 +195,12 @@ github.com/bep/linodedocs v0.0.0-20210205131221-654d55528af1 h1:r/zhPgNKXXnwLQ8u
 github.com/bep/linodedocs v0.0.0-20210205131221-654d55528af1/go.mod h1:CNZuSBsiOG2SJM9MEOYT4/KznrEu20HLrF5moSLVG7s=
 github.com/bep/linodedocs v0.0.0-20210205184919-b133cd49a974 h1:KsJymBGx4HaeCd57AL/qQuOYhTPLCGEKdWKaIGYpTLU=
 github.com/bep/linodedocs v0.0.0-20210205184919-b133cd49a974/go.mod h1:CNZuSBsiOG2SJM9MEOYT4/KznrEu20HLrF5moSLVG7s=
+github.com/bep/linodedocs v0.0.0-20210209080207-a6e4e53fe2a4 h1:Qr4uc+CG8HlKkRzKRhVHu5PVfdDPk0KTPYR3drrlJvc=
+github.com/bep/linodedocs v0.0.0-20210209080207-a6e4e53fe2a4/go.mod h1:CNZuSBsiOG2SJM9MEOYT4/KznrEu20HLrF5moSLVG7s=
+github.com/bep/linodedocs v0.0.0-20210212184807-5356fe2a30db h1:vPlvxxG3OPGFRFxvqpXICHr8c2Fd21IDjBX/SZmYqgs=
+github.com/bep/linodedocs v0.0.0-20210212184807-5356fe2a30db/go.mod h1:CNZuSBsiOG2SJM9MEOYT4/KznrEu20HLrF5moSLVG7s=
+github.com/bep/linodedocs v0.0.0-20210212231859-10aa00d2e096 h1:nVnupnBeBS4VGWWo3eNZhO0w81IMVm1CVEfHWi9YV1k=
+github.com/bep/linodedocs v0.0.0-20210212231859-10aa00d2e096/go.mod h1:CNZuSBsiOG2SJM9MEOYT4/KznrEu20HLrF5moSLVG7s=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.6.0/go.mod h1:QB5IEnFYPAWpMEBg4tF1OW0xzI1O68QNWnqfPuUkpnU=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.7.0/go.mod h1:e1pgFkSbGd2EzKUbAuXHSnVqMX2suwsSklPZfDXeQkg=
@@ -224,6 +230,8 @@ github.com/linode/linode-api-docs/v4 v4.83.1 h1:uUWW6pGrtyRFAP3Pex8oXJ8sJ2mq2QIi
 github.com/linode/linode-api-docs/v4 v4.83.1/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-api-docs/v4 v4.83.2 h1:PT4xCiPx4H1HcamUOHmQSMJZMl/Z+LDz1YYA1Lnw4wg=
 github.com/linode/linode-api-docs/v4 v4.83.2/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
+github.com/linode/linode-api-docs/v4 v4.84.0 h1:B9DUyhpvBwIZ9ZSNwwfI2cCX8o1HlYJG8gU4Ve3JATs=
+github.com/linode/linode-api-docs/v4 v4.84.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20200921210751-887bbecdd5dd/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c h1:j2j0WYHnoSEsGg7790A+gNQqKYIXGTi/i1FHTwt9zBM=
