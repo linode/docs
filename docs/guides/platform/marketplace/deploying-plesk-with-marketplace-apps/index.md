@@ -59,7 +59,12 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ### Access your Plesk Site
 
-After Plesk has finished installing, you will be able to access your Plesk site over `http://` with your Linode's IPv4 address, or the domain name entered when deploying your Marketplace App:
+After Plesk has finished installing, you will be able to access your Plesk site over `https://` with your Linode's IPv4 address, or the domain name entered when deploying your Marketplace App:
+
+{{< note >}}
+Plesk is installed with a self-signed certificate which may result in an error in some browsers. While this certificate will still provide TLS encryption and is therefore recommended over accessing  over port 80, it will not be trusted by external resources as it is not verified by an external Certiicate Authority.
+{{< /note >}}
+
 
 1.  Access your Plesk app:
 
