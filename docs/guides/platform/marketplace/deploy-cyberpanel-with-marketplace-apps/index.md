@@ -17,14 +17,13 @@ contributor:
   name: Linode
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
+aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/']
 ---
 
 ## CyberPanel Marketplace App
 
 <!-- Intro paragraph describing the app and what it accomplishes -->
-CyberPanel is a next-generation hosting control panel, which provides a friendly user interface.
-
-The CyberPanel image provides a One-Click installer to automatically install OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento and git. It also automates the initial setup for components like Mail service and DNS, to reduce the time it takes to get set up for hosting.
+CyberPanel is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel image provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like Mail service and DNS, to reduce the time it takes to get set up for hosting.
 
 ### Deploy a CyberPanel Marketplace App
 
@@ -53,7 +52,7 @@ After providing all required Linode options, click on the **Create** button. **Y
 <!-- the following headings and paragraphs outline the steps necessary
      to access and interact with the Marketplace app. -->
 ### Access your CyberPanel App
-1. When the installation completes, you should see the CyberPanel welcome messsage when logging into the Linode via SSH. This will include instructions for accessing CyberPanel, phpMyAdmin, and Rainloop in your web browser. _Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)._
+1. When the installation completes, you should see the CyberPanel welcome messsage when logging into the Linode via SSH. This will include instructions for accessing CyberPanel, phpMyAdmin, and Rainloop in your web browser. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).
 
      ```
      Welcome to LiteSpeed One-Click CyberPanel Server.
@@ -68,9 +67,9 @@ After providing all required Linode options, click on the **Create** button. **Y
 
      On the server:
      * You can get the CyberPanel admin password with the following command:
-     sudo cat /home/ubuntu/.litespeed_password
+     sudo cat /root/.litespeed_password
      * You can get the Mysql cyberpanel user password with the following command:
-     sudo cat /home/ubuntu/.db_password
+     sudo cat /root/.db_password
 
      System Status:
      Load : 0.06, 0.53, 0.43
