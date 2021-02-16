@@ -12,29 +12,24 @@ published: 2021-02-10
 modified_by:
   name: Linode
 title: "How to Deploy CyberPanel With Marketplace Apps"
-h1_title: "h1 title displayed in the guide."
+h1_title: "Deploying CyberPanael with Marketplace Apps"
 contributor:
   name: Linode
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
-aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/']
 ---
 
 ## CyberPanel Marketplace App
 
-<!-- Intro paragraph describing the app and what it accomplishes -->
-CyberPanel is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel image provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like Mail service and DNS, to reduce the time it takes to get set up for hosting.
+CyberPanel is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like Mail service and DNS, to reduce the time it takes to get set up for hosting.
 
 ### Deploy a CyberPanel Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
 {{< content "deploy-marketplace-apps">}}
 
 ### Linode Options
 
 Provide configurations for your Linode server:
-<!-- Be sure to edit the Select an Image and Linode Plan to match app's needs -->
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
@@ -44,63 +39,72 @@ Provide configurations for your Linode server:
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-<!-- the following disclaimer lets the user know how long it will take
-     to deploy the app -->
 After providing all required Linode options, click on the **Create** button. **Your CyberPanel App will complete installation anywhere between 10-20 minutes after your Linode has finished provisioning**.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Access your CyberPanel App
-1. When the installation completes, you should see the CyberPanel welcome messsage when logging into the Linode via SSH. This will include instructions for accessing CyberPanel, phpMyAdmin, and Rainloop in your web browser. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).
+1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
-     ```
-     Welcome to LiteSpeed One-Click CyberPanel Server.
-     To keep this server secure, the firewalld is enabled.
-     CyberPanel One-Click Quickstart guide:
-     * https://docs.litespeedtech.com/cloud/images/cyberpanel/
+         ssh root@192.0.2.0
 
-     In a web browser, you can view:
-     * CyberPanel: https://192.0.2.0:8090
-     * phpMyAdmin: https://192.0.2.0:8090/phpmyadmin
-     * Rainloop:   https://192.0.2.0:8090/rainloop
+1.  You should see the CyberPanel welcome messsage when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and Rainloop in your web browser. Replace `192.0.2.0` with your Linode's IP address.
 
-     On the server:
-     * You can get the CyberPanel admin password with the following command:
-     sudo cat /root/.litespeed_password
-     * You can get the Mysql cyberpanel user password with the following command:
-     sudo cat /root/.db_password
+    {{< output >}}
+Welcome to LiteSpeed One-Click CyberPanel Server.
+To keep this server secure, the firewalld is enabled.
+CyberPanel One-Click Quickstart guide:
+* https://docs.litespeedtech.com/cloud/images/cyberpanel/
 
-     System Status:
-     Load : 0.06, 0.53, 0.43
-     CPU  : 30.0763%
-     RAM  : 355/3936MB (9.02%)
-     Disk : 7/79GB (10%)
+In a web browser, you can view:
+* CyberPanel: https://192.0.2.0:8090
+* phpMyAdmin: https://192.0.2.0:8090/phpmyadmin
+* Rainloop:   https://192.0.2.0:8090/rainloop
 
-     Your CyberPanel is up to date
-     ********************************************************************************
+On the server:
+* You can get the CyberPanel admin password with the following command:
+sudo cat /root/.litespeed_password
+* You can get the Mysql cyberpanel user password with the following command:
+sudo cat /root/.db_password
 
-     Do you wish to update the system now? This will update the web server as well. [Y/n]?
-     ```
+System Status:
+Load : 0.06, 0.53, 0.43
+CPU  : 30.0763%
+RAM  : 355/3936MB (9.02%)
+Disk : 7/79GB (10%)
 
-1. Obtain your CyberPanel admin password from the command line and then login by visiting your Linode's IP in a web browser on port 8090.
-     
-     {{< note >}}CyberPanel uses a self-signed certificate issued by LiteSpeedCommunity. Because it is not signed by a common Certificate Authority, your browser may warn aout the security of the connection and require you to add a security exception.{{</ note >}}
+Your CyberPanel is up to date
+********************************************************************************
 
-    ```
-    cat .litespeed_password
-    ...
-    admin_pass=qN1Jo7XKCekN8ZAV
-    ```
+Do you wish to update the system now? This will update the web server as well. [Y/n]?
+{{</ output >}}
+
+1.  Obtain your CyberPanel administrator password from the command line.
+
+        cat .litespeed_password
+
+     You should see output similar to the following:
+
+    {{< output >}}
+admin_pass=qN1Jo7XKCekN8ZAV
+{{</ output >}}
+
+    In the above example, the password is `qN1Jo7XKCekN8ZAV`.
+
+1.  Visit the CyberPanel administration panel by visiting your Linode's IP in a web browser on port 8090. For example, if your IP address is `192.0.2.0`, you would visit `https://192.0.20:8090`.
+
+    {{< note >}}
+CyberPanel uses a self-signed certificate issued by LiteSpeedCommunity. Because it is not signed by a common Certificate Authority, your browser may warn about the security of the connection and require you to add a security exception.
+{{</ note >}}
+
+1.  Log in to the administration panel using the username `admin` and the password you obtained in step three.
 
     ![Log into your CyberPanel](log-into-cyberpanel.png)
+
+1.  You should now see the administration panel.
+
     ![CyberPanel Dashboard](cyberpanel-dashboard.png)
 
- Now that you've accessed your dashboard, checkout the [official CyberPanel documentation](https://docs.litespeedtech.com/cloud/images/cyberpanel/) to learn how to further configure your instance.
+     Now that you've accessed your dashboard, checkout the [official CyberPanel documentation](https://docs.litespeedtech.com/cloud/images/cyberpanel/) to learn how to further configure your instance.
 
-
-
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note">}}
