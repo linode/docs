@@ -9,7 +9,7 @@ keywords: [ 'nodejs', 'node', 'node.js', 'marketplace', 'server']
 tags: ["cloud-manager", "linode platform", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-23
-modified: 2020-20-23
+modified: 2020-02-23
 modified_by:
   name: Linode
 title: "How to Deploy Node.js with Marketplace Apps"
