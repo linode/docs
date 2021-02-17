@@ -1,13 +1,13 @@
 ---
-slug: linux-system-monitoring-overview
+slug: linux-system-monitoring
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: 'The only way to know that your Linux-server-based applications and services are running well is to measure what&#39;s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves.'
-og_description: 'The only way to know that your Linux-server-based applications and services are running well is to measure what&#39;s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves.'
+description: 'The only way to know that your Linux-server-based applications and services are running well is to measure what''s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves.'
+og_description: 'The only way to know that your Linux-server-based applications and services are running well is to measure what''s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves.'
 keywords: ['linux system monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-04
+published: 2021-02-17
 modified_by:
   name: Linode
 title: "Linux System Monitoring Fundamentals"
@@ -17,11 +17,9 @@ contributor:
   link: http://www.twitter.com/sjvn
 ---
 
-# Fundamentals of Linux System Monitoring
+The only way to know that your Linux-server-based applications and services are running well is to measure what's going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves. Once you've mastered these dedicated applications – most of which are built into the operating system – you'll be well on your way to Linux system administrator expertise.
 
-The only way to know that your Linux-server-based applications and services are running well is to measure what&#39;s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves. Once you&#39;ve mastered these dedicated applications – most of which are built into the operating system – you&#39;ll be well on your way to Linux system administrator expertise.
-
-All server monitoring programs have a few things in common. They set a goal of ensuring that a server is performing optimally, they provide information that lets Linux administrators understand what&#39;s going on, and sometimes automate their responses to those situations. The Linux system monitor tools accomplish this by gathering data on each server&#39;s key performance indicators (KPIs), network connectivity, and application availability.
+All server monitoring programs have a few things in common. They set a goal of ensuring that a server is performing optimally, they provide information that lets Linux administrators understand what's going on, and sometimes automate their responses to those situations. The Linux system monitor tools accomplish this by gathering data on each server's key performance indicators (KPIs), network connectivity, and application availability.
 
 Specifically, you use Linux system monitoring programs to ensure that:
 
@@ -34,7 +32,7 @@ Specifically, you use Linux system monitoring programs to ensure that:
 
 These programs do this by tracking:
 
-- The server&#39;s real-time status
+- The server's real-time status
 - Data collected over time to enable analysis of long-term trends.
 - Data collected to determine the best use of server resources for mission-critical applications. For example, does InnoDB or MyISAM work best for the database storage engine?
 
@@ -45,7 +43,7 @@ Specifically, Linux system monitors look at:
 - Storage usage, including disk space and Input/Output Operations per Second (IOPS)
 - Network usage
 
-A server&#39;s system load – a term you&#39;ll hear often in these discussions – usually encompasses the usage of memory, CPU, and storage.
+A server's system load – a term you'll hear often in these discussions – usually encompasses the usage of memory, CPU, and storage.
 
 ## Getting started with Linux system monitoring tools
 
