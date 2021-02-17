@@ -143,8 +143,8 @@
         <template x-for="(item, i) in data.result.hits">
           <div class="bg-white rounded-md md:flex md:items-center" :class="{ 'shadow-sm': i === 0 }">
             <div class="h-full bg-gray-200">
-              <div class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden object-cover rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
-                <img class="absolute top-0 h-full w-full img-transparent" alt="Article thumbnail" :src="item.thumbnailUrl" @load="$event.target.classList.remove('img-transparent')" loading="lazy">
+              <div class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
+                <img class="absolute top-0 h-full w-full img-transparent object-cover" alt="Article thumbnail" :src="item.thumbnailUrl" @load="$event.target.classList.remove('img-transparent')" loading="lazy">
               </div>
             </div>
             <div class="px-6 md:pl-10 py-4">
