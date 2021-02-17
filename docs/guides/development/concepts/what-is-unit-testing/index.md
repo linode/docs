@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-11
 modified_by:
   name: Linode
-title: "Understanding What Is Unit Testing"
+title: "What Is Unit Testing?"
 h1_title: "What Is Unit Testing?"
 contributor:
   name: Martin Heller
