@@ -74,33 +74,7 @@ Use the File Browser tab in App Details view of Administration Panel to upload n
 To add a domain to for Node.js app, consult [our DNS manager](docs/guides/common-dns-configurations/#set-up-a-domain) guide.
 
 ### Setting up SSL for Your Node.js App
-To obtain a free SSL certificate for your Node.js app:
-
-1.  Stop your Node.js application in Administration Panel.
-
-1.  Login to your Linode via SSH.
-
-1.  Execute Docker Certbot image:
-
-        docker run -it --rm --name certbot -p 80:80 -p 443:443 -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" certbot/certbot certonly
-
-1.  Start your Node.js application in Administration Panel.
-
-1.  Update your Node.js application to use the SSL certificate, being sure to add your domain name where necessary:
-
-{{< file "example.js" javascript >}}
-...
-const dir = "/etc/letsencrypt/live/" + <your domain name>
-const options = {
-  key: fs.readFileSync(`${dir}/privkey.pem`),
-  cert: fs.readFileSync(`${dir}/cert.pem`)
-};
-const httpsServer = options !== null ? https.createServer(options, requestListener) : undefined;
-httpsServer.listen(httpsPort, hostname, () => {
-  console.log(`Server running at https://${hostname}:${httpsPort}/. Access via https://localhost:${httpsPort}`);
-});
-...
-{{< / file >}}
+A free SSL certificate can be obtained for your Node.js App by using Certbot. For more info, [visit Abberit's instructions on how to obtain a free SSL certificate](https://abberit.io/docs/app-https/#obtain-free-ssl-certificate-using-certbot).
 
 ## Software Included
 
