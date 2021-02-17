@@ -83,6 +83,6 @@ The Node.js Stack Marketplace App installs the following software on your Linode
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**Docker**](https://docker.com) | Modern platform which can be used to manage your Node.js application and its components such as Redis, MySQL, PostgreSQL, or Nginx.|
-| [**Abberit App Services (Administration Panel)**](https://abberit.io) | Administration Panel which you can use to simplify day to day operations with your Node.js application and Docker platform. |
+| [**Abberit App Services (Administration Panel)**](https://abberit.io/docs/) | Administration Panel which you can use to simplify day to day operations with your Node.js application and Docker platform. |
 
 *The Node.js One-Click App was built for Linode by Abberit App Services. For support regarding app deployment, contact Linode Support. For support regarding the tool or software itself, contact the Abberit App Services Team.*
