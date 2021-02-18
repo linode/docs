@@ -29,7 +29,7 @@ class Docs404Spider(CrawlSpider):
 #    DOWNLOAD_DELAY=0.1
     name = 'docs404'
     allowed_domains = ['localhost' ]
-    start_urls = ['http://localhost:1313/docs','http://localhost:1313/docs/contribute/thankyou']
+    start_urls = ['http://localhost:1313/docs']
     handle_httpstatus_list = [404]
 
     rules = (
