@@ -1,7 +1,8 @@
 ---
+slug: how-to-self-host-the-bitwarden-rs-password-manager
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Tyler Langlois
+  email: https://tjll.net
 description: 'This guide explains how to set up and run a self-hosted instance of the bitwarden_rs password manager.'
 keywords: ['security', 'web application', 'password', 'bitwarden']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,37 +10,34 @@ modified: 2020-02-24
 published: 2020-02-24
 modified_by:
   name: Linode
-title: "Self-hosting the bitwarden_rs Password Manager"
-h1_title: "How to Self-host the bitwarden_rs Password Manager"
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
+title: "How to Self-Host the bitwarden_rs Password Manager"
+h1_title: "Self-Hosting the bitwarden_rs Password Manager"
 ---
 
 [Bitwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. The [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) project provides a lightweight, single-process, API-compatible service ideal for running personal instances. By running the bitwarden_rs service, you can use Bitwarden browser extensions and mobile applications backed by your server.
 
 {{< note >}}
-By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within bitwarden_rs. Before storing important information and credentials within the application, ensure that you are confident with the security of the server and have taken the necessary backup measures mentioned in this tutorial.
-{{</ note >}}
+By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within bitwarden_rs. Before storing important information and credentials within the application, ensure that you are confident with the security of the server. Also, take the necessary backup measures mentioned in this tutorial.
+{{< /note >}}
 
 ## In this Guide
 
-This guide uses the official bitwarden_rs [Docker image](https://github.com/dani-garcia/bitwarden_rs/wiki/Which-container-image-to-use). A reverse proxy ([Caddy](https://caddyserver.com/)) is configured in front of the Docker container and provide TLS termination for both the web-based vault interface and the websocket server.
+This guide uses the official bitwarden_rs [Docker image](https://github.com/dani-garcia/bitwarden_rs/wiki/Which-container-image-to-use). A reverse proxy ([Caddy](https://caddyserver.com/)) is configured in front of the Docker container. This provides TLS termination for both the web-based vault interface and the websocket server.
 
-This configuration of bitwarden_rs also uses the default SQL backend for the application (sqlite3). The SQL datastore backing bitwarden_rs contains the user data for the application and is therefore the primary concern for a backup scheme to ensure that sensitive data stored within bitwarden_rs is saved in the event of a data loss scenario.
+This configuration of bitwarden_rs also uses the default SQL backend for the application (sqlite3). The SQL datastore for bitwarden_rs contains the user data of the application and is therefore the primary concern for a backup scheme. Backing up this datastore ensures that sensitive data stored within bitwarden_rs is saved in the event of a data loss scenario.
 
-The version of bitwarden_rs that this guide references is 1.13.1, which is the latest version at the time of writing. As part of regular maintenance and to ensure that any relevant security updates are applied to the application, ensure that you follow the [upgrade instructions](https://github.com/dani-garcia/bitwarden_rs/wiki/Updating-the-bitwarden-image) provided by the project regularly to keep your deployment up to date with current upstream releases.
+This guide references the latest version of the bitwarden_rs Docker image that is available, which is 1.19 at the time of writing. As part of regular maintenance, follow the [upgrade instructions](https://github.com/dani-garcia/bitwarden_rs/wiki/Updating-the-bitwarden-image) provided by the project regularly. Following these instructions ensures your deployment is up to date with current upstream releases. This also ensures that any relevant security updates are applied to the application.
 
-Ubuntu 18.04 is the distribution used in this guide. Generally speaking, any Linux distribution that supports running Docker containers should be equally compatible with the steps explained in this guide.
+Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Linux distribution that supports running Docker containers should be equally compatible with the steps explained in this guide.
 
 ### Before you Begin
 
 1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone.
 
-1. Follow the "[How to Secure Your Server](/docs/security/securing-your-server/)" guide in order to harden the Linode against malicious users. This step is important to ensure bitwarden_rs is secured.
+1. Follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide in order to harden the Linode against malicious users. This step is important to ensure bitwarden_rs is secured.
 
    {{< note >}}
-If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server when you reach [configure the firewall](/docs/security/securing-your-server/section) of the guide.
+If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section of the guide outlines different firewall software options.
 {{</ note >}}
 
 1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](/docs/getting-started/#find-your-linode-s-ip-address) of the Linode. Consult the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
@@ -86,16 +84,16 @@ This section outlines how to download the bitwarden_rs Docker image, setup volum
 
 1. Pull the bitwarden_rs image.
 
-        sudo docker pull bitwardenrs/server:1.13.1
+        sudo docker pull bitwardenrs/server:latest
 
-1. Select the desired filesystem path to store application data. In this guide, the path `/srv/bitwarden` is be used. Create the directory if necessary, and enforce strict permissions for the root user only.
+1. Select the desired file system path to store application data. In this guide, the path `/srv/bitwarden` is be used. Create the directory if necessary, and enforce strict permissions for the root user only.
 
         sudo mkdir /srv/bitwarden
         sudo chmod go-rwx /srv/bitwarden
 
 1. Create the Docker container for bitwarden_rs.
 
-        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
+        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:latest
 
     This command uses the following flags to establish a persistent container to serve the bitwarden_rs application:
 
@@ -147,13 +145,13 @@ The site name you choose in this file must match the desired URL that bitwarden_
 
         sudo docker run -d --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/caddy --net host --restart on-failure caddy/caddy:alpine
 
-   Many of these flags passed to the `docker` command are similar to those used in the `bitwarden_rs` instructions, with one notable difference. The `--net host` flag runs Caddy bound to the host machine's networking interface rather than constrained to the container, in order to simplify access to other containers and necessary ports for Caddy to operate over HTTP and HTTPS.
+   Many of these flags passed to the `docker` command are similar to those used in the `bitwarden_rs` instructions, with one notable difference. The `--net host` flag runs Caddy bound to the host machine's networking interface rather than constrained to the container. This flag simplifies access to other containers and to the necessary ports for Caddy to operate over HTTP and HTTPS.
 
 1. View the logs of Caddy container in order to confirm that a Let's Encrypt certificate has been provisioned for the chosen domain.
 
         sudo docker logs caddy
 
-   There are likely to be many logs that are returned from this command, so take a moment to read through the logs to verify that lines similar to the following are included in your log output, indicating that certificate provisioning has been successful.
+   There are likely to be many logs that are returned from this command. Take a moment to read through the logs to verify that lines similar to the following are included in your log output. These lines indicate that certificate provisioning has been successful.
 
 
    {{< output >}}
@@ -199,7 +197,7 @@ Remember to navigate to the same name configured in your `Caddyfile` defined in 
    Fill each field with the appropriate information, choosing a strong and secure master password.
 
    {{< note >}}
-Although a user email is required at time of registration, by default, the deployment of bitwarden_rs cannot send email without additional configuration. If you would like to configure SMTP in order to enable bitwarden_rs to send emails such as invitation emails, follow [these instructions on the bitwarden_rs wiki](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration) using SMTP information from an SMTP provider.
+Although a user email is required at time of registration, by default, the deployment of bitwarden_rs cannot send email without additional configuration. If you would like to configure SMTP in order to enable bitwarden_rs to send email, follow [these instructions on the bitwarden_rs wiki](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration). Use SMTP information from an SMTP provider when following the instructions.
 {{< /note >}}
 
 1. After registering, the system redirects you to the login screen. Log in with the credentials, the web vault view appears.
@@ -225,13 +223,13 @@ As an additional security precaution, you may elect to disable user registration
 
    ![Bitwarden Registration Error](bitwarden_rs_signup_error.png "Bitwarden Registration Error")
 
-   This deployment of bitwarden_rs does not permit any additional user registrations. If you would like to invite users without needing to change the bitwarden_rs container environment variable flags, consider following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-admin-page) to provide user invitation functionality.
+   This deployment of bitwarden_rs does not permit any additional user registrations. You may still want to invite users without needing to change the bitwarden_rs container environment variable flags. This is possible by following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-admin-page). The admin panel provides user invitation functionality.
 
 ## Backup bitwarden_rs SQLite Database
 
-Before relying on this service for any important data, you should take additional steps to safeguard the data stored within bitwarden_rs. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should use the sqlite3 `.backup` command instead of simply copying the file in order to ensure that the database is in a consistent state when the backup is taken.
+Before relying on this service for any important data, you should take additional steps to safeguard the data stored within bitwarden_rs. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should *not* simply copy the file. Instead, use the sqlite3 `.backup` command. This command ensures that the database is in a consistent state when the backup is taken.
 
-1. Review the ["Backing Up Your Data"](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local filesystem path is used. In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
+1. Review the [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used. In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
 
 1. Install the `sqlite3` package, which provides the `sqlite3` command for the backup script.
 
@@ -289,7 +287,7 @@ WantedBy=multi-user.target
    This schedules the backup to occur at 4:00 in the time zone set for the Linode. You may alter this time to trigger at a desired time of day.
 
    {{< note >}}
-The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time, such as if the system was being rebooted.
+The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time. For example, this could happen if the system was being rebooted.
 {{</ note >}}
 
 1. Start and enable this timer unit.
@@ -319,7 +317,7 @@ Ensure that the backups are kept on a volume or host independent of the Linode i
 
 ## Using bitwarden_rs
 
-bitwarden_rs provides a compatible API for many [Bitwarden apps and browser extensions](https://bitwarden.com/). In order to configure these applications to use a hosted instance, you may need to configure the mobile application or browser extension to rely on a custom domain and API endpoint.
+bitwarden_rs provides a compatible API for many [Bitwarden apps and browser extensions](https://bitwarden.com/). In order to configure these applications to use a hosted instance, you may need to configure the mobile application or browser extension. Specifically, you may need to enter a custom domain and API endpoint:
 
 1. As an example, this is the initial login screen for the Firefox Bitwarden browser extension. In order to configure a custom server, click the gear in the upper left corner.
 
@@ -329,7 +327,7 @@ bitwarden_rs provides a compatible API for many [Bitwarden apps and browser exte
 
 ## Additional Reading
 
-With bitwarden_rs running securely over TLS and regularly backed up, you may choose to follow [additional documentation provided by the bitwarden_rs project](https://github.com/dani-garcia/bitwarden_rs/wiki) to add more functionality to your installation. Some of these features include:
+With bitwarden_rs running securely over TLS and regularly backed up, you may choose to follow [additional documentation provided by the bitwarden_rs project](https://github.com/dani-garcia/bitwarden_rs/wiki). This documentation helps add more functionality to your installation. Some of these features include:
 
 - [Support for U2F authentication](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-U2F-authentication)
 - [SMTP configuration to support sending emails](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration) for features like account creation invitation
