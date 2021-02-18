@@ -1,4 +1,5 @@
 ---
+slug: install-and-configure-supervisor-on-centos
 author:
   name: Linode Community
   email: docs@linode.com
