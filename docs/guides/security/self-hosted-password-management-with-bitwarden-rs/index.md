@@ -3,15 +3,16 @@ slug: how-to-self-host-the-bitwarden-rs-password-manager
 author:
   name: Tyler Langlois
   email: https://tjll.net
-description: 'This guide explains how to set up and run a self-hosted instance of the bitwarden_rs password manager.'
+description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
+og_description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
 keywords: ['security', 'web application', 'password', 'bitwarden']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-24
-published: 2020-02-24
+published: 2021-02-18
 modified_by:
   name: Linode
 title: "How to Self-Host the bitwarden_rs Password Manager"
 h1_title: "Self-Hosting the bitwarden_rs Password Manager"
+tags: ["ubuntu", "security", "web applications", "docker"]
 ---
 
 [Bitwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. The [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) project provides a lightweight, single-process, API-compatible service ideal for running personal instances. By running the bitwarden_rs service, you can use Bitwarden browser extensions and mobile applications backed by your server.
@@ -30,7 +31,7 @@ This guide references the latest version of the bitwarden_rs Docker image that i
 
 Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Linux distribution that supports running Docker containers should be equally compatible with the steps explained in this guide.
 
-### Before you Begin
+### Before You Begin
 
 1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone.
 
@@ -114,7 +115,7 @@ External clients communicate with Caddy, which automatically manages reverse pro
 
         sudo docker pull caddy/caddy:alpine
 
-1. Create the following Caddyfile. Be sure to replace `example.com` with the name of the domain that you set up in the "Before You Begin" section of this guide, and confirm that the domain points to the IP address of the Linode. This domain serves the web interface for bitwarden_rs hosted and secured by Caddy's automatic TLS.
+1. Create the following Caddyfile. Be sure to replace `example.com` with the name of the domain that you set up in the [Before You Begin](#before-you-begin) section of this guide, and confirm that the domain points to the IP address of the Linode. This domain serves the web interface for bitwarden_rs hosted and secured by Caddy's automatic TLS.
 
    {{< file "/etc/Caddyfile" caddy >}}
 example.com {
