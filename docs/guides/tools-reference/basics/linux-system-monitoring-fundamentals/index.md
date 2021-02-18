@@ -1,5 +1,5 @@
 ---
-slug: linux-system-monitoring
+slug: linux-system-monitoring-fundamentals
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
@@ -11,7 +11,7 @@ published: 2021-02-17
 modified_by:
   name: Linode
 title: "Linux System Monitoring Fundamentals"
-h1_title: "Fundamentals of Linux System Monitoring"
+h1_title: "Linux System Monitoring Fundamentals"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn
@@ -28,7 +28,7 @@ Specifically, you use Linux system monitoring programs to ensure that:
 - The server resources are sufficient for mission-critical applications and services to work at peak performance.
 - No resource bottlenecks are slowing things down.
 - System administrators are alerted when a KPI fails to meet its specified metric.
-- Data is presented in a visual manner – such as dashboards, graphs, and weather maps — to visualize trends that aren&#39;t obvious in raw data.
+- Data is presented in a visual manner – such as dashboards, graphs, and weather maps — to visualize trends that aren't obvious in raw data.
 
 These programs do this by tracking:
 
