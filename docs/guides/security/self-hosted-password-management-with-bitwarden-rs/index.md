@@ -89,7 +89,7 @@ This section outlines how to download the bitwarden_rs Docker image, setup volum
 
         sudo docker pull bitwardenrs/server:latest
 
-1. Select the desired file system path to store application data. In this guide, the path `/srv/bitwarden` is be used. Create the directory if necessary, and enforce strict permissions for the root user only.
+1. Select the desired file system path to store application data. In this guide, the path `/srv/bitwarden` is used. Create the directory if necessary, and enforce strict permissions for the root user only.
 
         sudo mkdir /srv/bitwarden
         sudo chmod go-rwx /srv/bitwarden
@@ -150,7 +150,7 @@ The site name you choose in this file must match the desired URL that bitwarden_
 
    Many of these flags passed to the `docker` command are similar to those used in the `bitwarden_rs` instructions, with one notable difference. The `--net host` flag runs Caddy bound to the host machine's networking interface rather than constrained to the container. This flag simplifies access to other containers and to the necessary ports for Caddy to operate over HTTP and HTTPS.
 
-1. View the logs of Caddy container in order to confirm that a Let's Encrypt certificate has been provisioned for the chosen domain.
+1. View the logs of the Caddy container in order to confirm that a Let's Encrypt certificate has been provisioned for the chosen domain.
 
         sudo docker logs caddy
 
@@ -187,7 +187,7 @@ The site name you choose in this file must match the desired URL that bitwarden_
 
    ![Bitwarden Login](bitwarden_rs_login.png "Bitwarden Login")
 
-   If you see the login page, congratulations! bitwarden_rs is running and operational. The first step in using the password manager is to create an account. Do so by clicking on the "Create Account" button on the login page.
+   If you see the login page, congratulations! bitwarden_rs is running and operational. The first step in using the password manager is to create an account. Do so by clicking on the **Create Account** button on the login page.
 
    {{< note >}}
 Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide. A mismatched hostname in your browser can cause TLS errors.
@@ -203,7 +203,7 @@ Remember to navigate to the same name configured in your `Caddyfile` defined in 
 Although a user email is required at time of registration, by default, the deployment of bitwarden_rs cannot send email without additional configuration. If you would like to configure SMTP in order to enable bitwarden_rs to send email, follow [these instructions on the bitwarden_rs wiki](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration). Use SMTP information from an SMTP provider when following the instructions.
 {{< /note >}}
 
-1. After registering, the system redirects you to the login screen. Log in with the credentials, the web vault view appears.
+1. After registering, the system redirects you to the login screen. Log in with the credentials. The web vault view appears.
 
    ![Bitwarden Web Vault](bitwarden_web_vault.png "Bitwarden Web Vault")
 
@@ -232,7 +232,11 @@ As an additional security precaution, you may elect to disable user registration
 
 Before relying on this service for any important data, you should take additional steps to safeguard the data stored within bitwarden_rs. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should *not* simply copy the file. Instead, use the sqlite3 `.backup` command. This command ensures that the database is in a consistent state when the backup is taken.
 
-1. Review the [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used. In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
+1. Review the [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used.
+
+    {{< note >}}
+In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
+{{< /note >}}
 
 1. Install the `sqlite3` package, which provides the `sqlite3` command for the backup script.
 
@@ -256,7 +260,7 @@ ExecStart=/usr/bin/env sh -c 'sqlite3 /srv/bitwarden/db.sqlite3 ".backup backup-
 ExecStart=/usr/bin/find . -type f -mtime +30 -name 'backup*' -delete
 {{< /file >}}
 
-   This service unit creates a timestamped file and cleanup any backups older than 30 days.
+   This service unit creates a timestamped file and cleans up any backups older than 30 days.
 
 1. To take an initial backup and verify the systemd service works, start the backup service.
 
@@ -326,11 +330,11 @@ bitwarden_rs provides a compatible API for many [Bitwarden apps and browser exte
 
    ![Bitwarden Extension Configuration](bitwarden_browser_extension_login.png "Bitwarden Extension Configuration")
 
-1. On the next page, type a custom domain under "Server URL", such as `https://example.com`. Similar steps can be taken on the iOS and Android mobile applications - edit the settings of the application before login to use a custom Server URL, and you can log in to a custom instance of bitwarden_rs.
+1. On the next page, type your custom domain under the **Server URL** field, such as `https://example.com`. Similar steps can be taken on the iOS and Android mobile applications. Edit the settings of the application before login to use a custom Server URL, and you can log in to a custom instance of bitwarden_rs.
 
 ## Additional Reading
 
 With bitwarden_rs running securely over TLS and regularly backed up, you may choose to follow [additional documentation provided by the bitwarden_rs project](https://github.com/dani-garcia/bitwarden_rs/wiki). This documentation helps add more functionality to your installation. Some of these features include:
 
 - [Support for U2F authentication](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-U2F-authentication)
-- [SMTP configuration to support sending emails](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration) for features like account creation invitation
+- [SMTP configuration to support sending emails](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration) for features like account creation invitation.
