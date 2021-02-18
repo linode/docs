@@ -27,7 +27,7 @@ Data is gathered in the `/proc` filesystem. By default, sar collects data once f
 
 ## First, install and configure sar
 
-The open-source sar program is frequently used, but it&#39;s not included in most Linux distributions. You must install it as part of the `sysstat` package.
+The open-source sar program is frequently used, but it's not included in most Linux distributions. You must install it as part of the `sysstat` package.
 
 To install sar on the Debian/Ubuntu Linux family, type the command:
 
@@ -37,7 +37,7 @@ $ sudo apt-get install sysstat
 
 ![installing sar](sar_01.png)
 
-However, sar doesn&#39;t collect data by default. You must update its configuration file before the utility does anything useful.
+However, sar doesn't collect data by default. You must update its configuration file before the utility does anything useful.
 
 To do this, edit the file `/etc/default/sysstat` to change the value for `ENABLED` to true. Run vi, or your favorite editor, to change the configuration value:
 
@@ -73,7 +73,7 @@ The most commonly modified variable is the frequency setting for how often sar r
 5-55/10 \* \* \* \* root command -v debian-sa1 \&gt; /dev/null &amp;&amp; debian-sa1 1 1
 ```
 
-By default, the `debian-sa1` script runs every 10 minutes and collects sar data for historical reference. This data is written to the `/var/log/sa/saXX` file, where `XX` is the day of the month. For example, if today is the 24th day of the month, `sa1` writes the sar data to `/var/log/sysstat/sa24`. Note that the `saXX` file is a binary file; a text editor can&#39;t display `saXX` files properly.
+By default, the `debian-sa1` script runs every 10 minutes and collects sar data for historical reference. This data is written to the `/var/log/sa/saXX` file, where `XX` is the day of the month. For example, if today is the 24th day of the month, `sa1` writes the sar data to `/var/log/sysstat/sa24`. Note that the `saXX` file is a binary file; a text editor can't display `saXX` files properly.
 
 To change the logging frequency to one minute, change 5-55/10 to 5-55/1. To make it 2 minutes, change it to 5/55/2, and so on.
 
@@ -95,7 +95,7 @@ You can run sar both as an interactive program and in shell programs.
 
 There are two ways to run sar:
 
-- `sar` followed by an option, without a saXX data file. This command displays to the standard output (`stdout`) the current day&#39;s saXX data.
+- `sar` followed by an option, without a saXX data file. This command displays to the standard output (`stdout`) the current day's saXX data.
 - `sar` followed by an option, and additionally specifying a saXX data file using the `-f` flag. This reports the performance data for that particular day.
 
 For example, issuing this command displays the cumulative real-time CPU usage of all CPU cores on the 24th day of the current month:
