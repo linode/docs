@@ -3,8 +3,8 @@ slug: how-to-install-use-postgresql-ubuntu-20-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide provides an introduction to PostgreSQL, an open source object-relational database management system (RDBMS).'
-og_description: 'This guide provides an introduction to PostgreSQL, an open source object-relational database management system (RDBMS).'
+description: 'This guide provides an introduction to PostgreSQL, an open source object-relational database management system (ORDBMS).'
+og_description: 'This guide provides an introduction to PostgreSQL, an open source object-relational database management system (ORDBMS).'
 keywords: ['PostgreSQL','RDBMS','database','guide and tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-26
@@ -173,18 +173,18 @@ postgres=#
     {{< note >}}
 PostgreSQL commands starting with a backslash are known as *meta-commands*. PostgreSQL pre-processes these commands, which are useful for administration and scripting. See the [*PostgreSQL PSQL Documentation page*](https://www.postgresql.org/docs/current/app-psql.html) for more details.
 {{< /note >}}
-    
+
 8.  Edit the `pg_hba.conf` file to enforce authentication. Find the `local` line under "Unix domain socket connections only" and change the `METHOD` attribute from `peer` to `md5`.
       {{< caution >}}
 Ensure that you do not edit the top line for the default `postgres` user. The `postgres` account requires non-interactive access to PostgreSQL for maintenance tasks. Linode recommends you to make a back-up copy of `pg_hba.conf` before editing it.
     {{< /caution >}}
-    
+
     {{< file "/etc/postgresql/12/main/pg_hba.conf" >}}
 ...
 # "local" is for Unix domain socket connections only
 local   all             all                                     md5
 ...
-    {{< /file >}}   
+    {{< /file >}}
 
 9.  Restart PostgreSQL to apply the new access rule.
 
@@ -258,10 +258,10 @@ You are connected to database "postgres" as user "postgres" through socket in "/
 5.  While you are logged into PostgreSQL, you can switch to a different database using the `\c` meta-command.
 
         \c testdatabase
-6.  If you are absolutely certain you do not need a database any longer, you can delete it with the `dropdb` command. 
+6.  If you are absolutely certain you do not need a database any longer, you can delete it with the `dropdb` command.
     {{< caution >}}
 This command permanently deletes all of the tables and all data from the database. This command cannot be undone.
-{{< /caution >}}    
+{{< /caution >}}
     Run the command from the Linux shell while logged in as `postgres`.
 
         dropdb testdatabase
