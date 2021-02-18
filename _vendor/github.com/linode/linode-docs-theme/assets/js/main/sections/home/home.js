@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile, isTouchDevice } from '../../helpers/index';
+import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
 import { newDispatcher } from '../../search/index';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function() {};
@@ -134,7 +134,7 @@ export function newHomeController(searchConfig, developersItems) {
 		pager.adjustIndex(0);
 
 		if (isTouchDevice()) {
-			lnSwipe.New(el, function(direction) {
+			newSwiper(el, function(direction) {
 				switch (direction) {
 					case 'left':
 						pager.next();

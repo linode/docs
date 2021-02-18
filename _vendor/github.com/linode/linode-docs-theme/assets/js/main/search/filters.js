@@ -30,9 +30,7 @@ export function newSearchFiltersController(searchConfig, opts) {
 		query.setNonEmptyFrom(newQuery);
 
 		self.populateFilters();
-		if (opts.updateWindowLocation) {
-			self.updateWindowLocation();
-		}
+		self.updateWindowLocation(opts.triggerSearch);
 		dispatcher.searchQuery(query);
 	};
 
@@ -110,7 +108,7 @@ export function newSearchFiltersController(searchConfig, opts) {
 			if (!opts.filters) {
 				opts = {
 					filters: data,
-					updateWindowLocation: true
+					triggerSearch: true
 				};
 			}
 			applySearchFiltersFromSearchParams(this, opts);
@@ -308,16 +306,24 @@ export function newSearchFiltersController(searchConfig, opts) {
 			}
 		},
 
-		updateWindowLocation: function() {
+		updateWindowLocation: function(triggerSearch = true) {
 			if (!history.pushState) {
 				return;
 			}
 			let newSearch = !isTopResultsPage();
-			if (newSearch) {
-				this.prevPathname = window.location.pathname;
-				history.pushState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
+			if (!triggerSearch && newSearch) {
+				let href = window.location.pathname;
+				if (query.isFiltered() && query.q !== '') {
+					href += '?' + queryHandler.queryToQueryString(query);
+				}
+				history.replaceState(null, null, href);
 			} else {
-				history.replaceState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
+				if (newSearch) {
+					this.prevPathname = window.location.pathname;
+					history.pushState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
+				} else {
+					history.replaceState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
+				}
 			}
 		}
 	};
