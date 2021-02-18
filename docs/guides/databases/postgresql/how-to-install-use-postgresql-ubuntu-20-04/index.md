@@ -159,7 +159,7 @@ postgres=#
     {{< /output >}}
 6.  By default, PostgreSQL grants access to local system users without requiring a password. This is known as `peer` authentication. PostgreSQL obtains the system name of the user and verifies it against the database privileges. To enforce password authentication from local users, you must edit the `pg_hba.conf` file. Run the following command within the `psql` shell to determine the location of this file.
 
-        SHOW hba_file ;
+        SHOW hba_file;
     PostgreSQl returns a table showing you where the file is located.
     {{< output >}}
               hba_file
@@ -168,8 +168,6 @@ postgres=#
 (1 row)
     {{< /output >}}
 7.  Exit PostgreSQL with the `\q` meta-command, and return to the Linux shell.
-
-        \q
     {{< note >}}
 PostgreSQL commands starting with a backslash are known as *meta-commands*. PostgreSQL pre-processes these commands, which are useful for administration and scripting. See the [*PostgreSQL PSQL Documentation page*](https://www.postgresql.org/docs/current/app-psql.html) for more details.
 {{< /note >}}
