@@ -1,23 +1,20 @@
 ---
 slug: how-to-use-nethogs
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+  name: Steven J. Vaughan-Nichols
+  email: sjvn@vna1.com
+description: 'Nethogs is a free, open-source program to track network usage. It extends the net top tool to track bandwidth by process. Here&#39;s how to install and use it.'
+og_description: 'Nethogs is a free, open-source program to track network usage. It extends the net top tool to track bandwidth by process. Here&#39;s how to install and use it.'
+keywords: ['how to use nethogs']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-18
 modified_by:
   name: Linode
 title: "How to Use Nethogs"
-h1_title: "h1 title displayed in the guide."
+h1_title: "How to Use Nethogs"
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+  name: Steven J. Vaughan-Nichols
+  link: http://www.twitter.com/sjvn
 ---
 
 # Using nethogs

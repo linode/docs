@@ -1,11 +1,11 @@
 ---
 slug: how-to-use-monitorix
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+  name: Steven J. Vaughan-Nichols
+  email: sjvn@vna1.com
+description: 'Monitorix is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This guide shows how to use it.'
+og_description: 'Monitorix is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This guide shows how to use it.'
+keywords: ['how to use monitorix']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-18
 modified_by:
@@ -13,11 +13,8 @@ modified_by:
 title: "How to Use Monitorix"
 h1_title: "h1 title displayed in the guide."
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+  name: Steven J. Vaughan-Nichols
+  link: http://www.twitter.com/sjvn
 ---
 
 # Using Monitorix

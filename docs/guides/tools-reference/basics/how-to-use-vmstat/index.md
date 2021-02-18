@@ -1,10 +1,10 @@
 ---
 slug: how-to-use-vmstat
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+  name: Steven J. Vaughan-Nichols
+  email: sjvn@vna1.com
+description: 'Among the built-in Linux system monitoring tool is vmstat. Its primary job is to measure virtual memory system usage Here&#39;s how to use it.'
+og_description: 'Among the built-in Linux system monitoring tool is vmstat. Its primary job is to measure virtual memory system usage Here&#39;s how to use it.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-18
@@ -13,11 +13,8 @@ modified_by:
 title: "How to Use Vmstat"
 h1_title: "h1 title displayed in the guide."
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+  name: Steven J. Vaughan-Nichols
+  link: http://www.twitter.com/sjvn
 ---
 
 # Using vmstat
