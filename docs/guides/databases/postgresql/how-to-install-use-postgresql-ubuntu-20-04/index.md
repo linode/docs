@@ -123,9 +123,9 @@ For a specific minor release of PostgreSQL, or more manual control over the inst
 
 ## Securing PostgreSQL and Accessing the PostgreSQL Shell
 
-Linode recommends you to increase the security of new PostgreSQL installation before populating the database. PostgreSQL automatically creates a default user named `postgres` upon installation. The `postgres` user has full `superadmin` privileges, so it is particularly important to implement Linux and database passwords for the account.
+Linode recommends increasing the security of new PostgreSQL installation before populating the database. PostgreSQL automatically creates a default user named `postgres` upon installation. The `postgres` user has full `superadmin` privileges, so it is particularly important to implement Linux and database passwords for the account.
 
-1.  Change the password for the `postgres` Linux account. Linode recommends you to choose a strong password and store it in a secure place.
+1.  Change the password for the `postgres` Linux account. Choose a strong password and store it in a secure place.
 
         sudo passwd postgres
 2.  Switch over to the `postgres` account.
@@ -138,7 +138,7 @@ Linode recommends you to increase the security of new PostgreSQL installation be
 
         psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword'";
     {{< note >}}
-This password only applies when the `postgres` user connects to PostgreSQL over a network, not when logging in locally. This guarantees administrative access to the database for maintenance or cron jobs. It effectively means you can always log in locally to PostgreSQL as `postgres` user without any password.
+This password only applies when the `postgres` user connects to PostgreSQL over a network, not when logging in locally. This guarantees administrative access to the database for maintenance or cron jobs. It effectively means you can always log in locally to PostgreSQL as the `postgres` user without any password.
     {{< /note >}}
 4.  Confirm PostgreSQL is working properly and you are running the version you expect with the following command. This command returns the version of the PostgreSQL server.
 
@@ -148,7 +148,7 @@ This password only applies when the `postgres` user connects to PostgreSQL over 
 PostgreSQL 12.5 (Ubuntu 12.5-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, 64-bit
         (1 row)
     {{< /output >}}
-5.  Log in to PostgreSQL to confirm that you can access the database.
+5.  Log in to PostgreSQL to confirm you can access the database.
 
         psql postgres
     PostgreSQL displays some information about the version and provides a prompt. The output depends upon the details of the installation.
@@ -251,7 +251,7 @@ testdatabase=#
         \conninfo
     The command returns basic information about the database.
 {{< output >}}
-You are connected to database "postgres" as user "postgres" through socket in "/var/run/postgresql" at port "5432".
+You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
 {{< /output >}}
 5.  While you are logged into PostgreSQL, you can switch to a different database using the `\c` meta-command.
 
@@ -467,4 +467,4 @@ Linode does not recommend opening up PostgreSQL to listen for connections on pub
 
 ## Learning More About PostgreSQL
 
-This guide only covers the fundamentals, but PostgreSQL is a complex application with many options. Linode recommends that you spend some time learning more about PostgreSQL. The [*PostgreSQL documentation*](https://www.postgresql.org/docs/13/index.html) is very comprehensive, and includes a good [*introductory tutorial*](https://www.postgresql.org/docs/13/tutorial.html). An active community of users supports PostgreSQL. You can find links to some of these user groups on the [*PostgreSQL site*](https://www.postgresql.org/community/).
+This guide only covers the fundamentals, but PostgreSQL is a complex application with many options. Linode recommends you spend some time learning more about PostgreSQL. The [*PostgreSQL documentation*](https://www.postgresql.org/docs/13/index.html) is very comprehensive, and includes a good [*introductory tutorial*](https://www.postgresql.org/docs/13/tutorial.html). An active community of users supports PostgreSQL. You can find links to some of these user groups on the [*PostgreSQL site*](https://www.postgresql.org/community/).
