@@ -204,13 +204,14 @@ The way `Fowarded` changes this is by embedding a secret token in the client for
 
 To do so add the following to your NGINX configuration file:
 
-	map $remote_addr $forwarded_proxy {
+  {{< file "/etc/nginx/conf.d/nodeapp.conf" conf >}}
+  map $remote_addr $forwarded_proxy {
 
-	    # To send IPv4 addresses
+      # To send IPv4 addresses
 
-	    ~^[0-9.]+$          "for=$remote_addr";
+      ~^[0-9.]+$          "for=$remote_addr";
 
-	    # Quote and bracket IPv6 addresses
+      # Quote and bracket IPv6 addresses
 
 	    ~^[0-9A-Fa-f:.]+$   "for=\"[$remote_addr]\"";
 
@@ -232,9 +233,11 @@ map $http_forwarded $proxy_add_forwarded {
 
 }
 
+{{< /file >}}
+
 Now, make changes to your proxy _pass directive to enable `Forwarded`. Add the following line:
 
-	proxy_set_header Forwarded $forwarded_proxy
+    proxy_set_header Forwarded $forwarded_proxy
 
 **Check for invalid headers**
 
