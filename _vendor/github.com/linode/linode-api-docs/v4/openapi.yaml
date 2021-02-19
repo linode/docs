@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.84.0
+  version: 4.84.1
 
   title: Linode API
   description: |
@@ -655,7 +655,7 @@ paths:
             https://api.linode.com/v4/account/entity-transfers
       - lang: CLI
         source: >
-          linode-cli account entity-transfers \
+          linode-cli entity-transfers \
             list
     post:
       x-linode-grant: unrestricted only
@@ -672,7 +672,18 @@ paths:
 
 
         When a transfer is [accepted](/docs/api/account/#entity-transfer-accept), the requested entities are moved to
-        the receiving account. A transfer can take up to three hours to complete once accepted. When a transfer is
+        the receiving account. Linode services will not experience interruptions due to the transfer process, but
+        please take note of the following:
+
+
+        - If any of the Linodes included in the request have Backups enabled, that data and associated costs will be
+        removed/cancelled.
+
+        - DNS records will not be transferred or updated. Please ensure that DNS records have been updated or
+        communicated to the recipient prior to the transfer.
+
+
+        A transfer can take up to three hours to complete once accepted. When a transfer is
         completed, billing for transferred entities ends for the sending account and begins for the receiving account.
 
 
@@ -740,8 +751,10 @@ paths:
             https://api.linode.com/v4/account/entity-transfers
       - lang: CLI
         source: >
-          linode-cli account entity-transfers \
-            create --linodes 111,222
+          linode-cli entity-transfers \
+            create \
+            --entities.linodes 111 \
+            --entities.linodes 222
   /account/entity-transfers/{token}:
     x-linode-cli-command: entity-transfers
     parameters:
@@ -786,7 +799,7 @@ paths:
             https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
       - lang: CLI
         source: >
-          linode-cli account entity-transfers \
+          linode-cli entity-transfers \
             view 123E4567-E89B-12D3-A456-426614174000
     delete:
       x-linode-grant: unrestricted only
@@ -805,7 +818,7 @@ paths:
 
         This command can only be accessed by the unrestricted users of the account that created this transfer.
       operationId: deleteEntityTransfer
-      x-linode-cli-action: delete
+      x-linode-cli-action: cancel
       security:
       - personalAccessToken: []
       - oauth:
@@ -828,8 +841,8 @@ paths:
             https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
       - lang: CLI
         source: >
-          linode-cli account entity-transfers \
-            delete 123E4567-E89B-12D3-A456-426614174000
+          linode-cli entity-transfers \
+            cancel 123E4567-E89B-12D3-A456-426614174000
   /account/entity-transfers/{token}/accept:
     x-linode-cli-command: entity-transfers
     parameters:
@@ -907,7 +920,7 @@ paths:
             https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000/accept
       - lang: CLI
         source: >
-          linode-cli account entity-transfers \
+          linode-cli entity-transfers \
             accept 123E4567-E89B-12D3-A456-426614174000
   /account/events:
     x-linode-cli-command: events
@@ -16059,7 +16072,15 @@ components:
             The token used to identify and accept or cancel this transfer.
           example: "123E4567-E89B-12D3-A456-426614174000"
         status:
+          x-linode-cli-display: 2
           x-linode-filterable: true
+          x-linode-cli-color:
+            accepted: yellow
+            cancelled: red
+            completed: green
+            failed: red
+            pending: yellow
+            stale: red
           type: string
           enum:
           - accepted
@@ -16073,7 +16094,7 @@ components:
 
 
             `accepted`: The transfer has been accepted by another user and is currently in progress.
-            Transfers can take several hours to complete.
+            Transfers can take up to 3 hours to complete.
 
 
             `cancelled`: The transfer has been cancelled by the sender.
@@ -16104,12 +16125,14 @@ components:
             When this transfer was last updated.
           example: '2021-02-11T16:37:03'
         is_sender:
+          x-linode-cli-display: 4
           x-linode-filterable: true
           type: boolean
           description: >
             If the requesting account created this transfer.
           example: true
         expiry:
+          x-linode-cli-display: 3
           type: string
           format: date-time
           description: >
@@ -16121,6 +16144,7 @@ components:
             A collection of the entities to include in this transfer request, separated by type.
           properties:
             linodes:
+              x-linode-cli-display: 5
               type: array
               items:
                 type: integer

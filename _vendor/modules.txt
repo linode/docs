@@ -7,4 +7,4 @@
 # github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible
 # github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1
 # github.com/instantpage/instant.page v5.1.0+incompatible
-# github.com/linode/linode-api-docs/v4 v4.84.0
+# github.com/linode/linode-api-docs/v4 v4.84.1
