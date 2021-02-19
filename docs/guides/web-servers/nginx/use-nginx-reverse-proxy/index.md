@@ -213,13 +213,13 @@ To do so add the following to your NGINX configuration file:
 
       # Quote and bracket IPv6 addresses
 
-	    ~^[0-9A-Fa-f:.]+$   "for=\"[$remote_addr]\"";
+      ~^[0-9A-Fa-f:.]+$   "for=\"[$remote_addr]\"";
 
-	    # RFC Syntax, find more information about it here https://tools.ietf.org/html/rfc7239
+      # RFC Syntax, find more information about it here https://tools.ietf.org/html/rfc7239
 
-	    default             "for=unknown";
+      default             "for=unknown";
 
-	}
+  }
 
 map $http_forwarded $proxy_add_forwarded {
 
