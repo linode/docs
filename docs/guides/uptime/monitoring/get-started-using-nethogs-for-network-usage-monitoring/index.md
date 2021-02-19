@@ -17,13 +17,13 @@ contributor:
   link: http://www.twitter.com/sjvn
 ---
 
-[Nethogs](https://github.com/raboof/nethogs) is a free, open-source program used to track network usage. It extends the net top tool to track bandwidth by process. For example, `net top` may show that outbound traffic increased on a Linux server by protocol or subnet. But nethogs makes it easier for Linux adminstrators to identify which process is generating the usage spikes.
+[Nethogs](https://github.com/raboof/nethogs) is a free, open-source program used to track network usage. It extends the net top tool to track bandwidth by process. For example, `net top` may show that outbound traffic increased on a Linux server by protocol or subnet. But nethogs makes it easier for Linux administrators to identify which process is generating the usage spikes.
 
 Nethogs gathers its data from the files within the `/proc/net` directories. It does not rely on a special kernel module or driver. It works on any Linux system, but it doesn't work well on other related server operating systems such as [FreeBSD](https://www.freebsd.org/).
 
 Using the collected data, nethogs displays both `process IDs` (`PID`) and the program's name. This makes it easy to identify which programs may be misbehaving, because you can see the programs that are using more than their fair share of available bandwidth.
 
-When the Linux networking monitoring tool is started, nethogs displays current networking data. It picks up this data by using both `proc` data and [libpcap](https://man7.org/linux/man-pages/man3/libcap.3.html) for user-level packet capture. Nethogs then displays the data as a text-based chart, using [ncurses](https://linux.die.net/man/3/ncurses). As long as you have the program running in the foreground, the nethogs display is constantly updated.
+When the Linux networking monitoring tool is started, nethogs displays current networking data. It picks up this data by using both `proc` data and [`libpcap`](https://man7.org/linux/man-pages/man3/libcap.3.html) for user-level packet capture. Nethogs then displays the data as a text-based chart, using [ncurses](https://linux.die.net/man/3/ncurses). As long as you have the program running in the foreground, the nethogs display is constantly updated.
 
 ## Before You Begin
 
