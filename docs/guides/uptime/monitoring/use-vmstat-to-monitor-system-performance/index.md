@@ -27,7 +27,7 @@ external_resources:
 
 System performance drops drastically when swapping happens. That's because the server's swap I/O speed is much slower than RAM even if the hardware – such as fast SSD – is used for virtual memory. In addition, when Linux uses virtual memory it spends more of its CPU cycles on managing virtual memory swapping.
 
-That means that Linux system administrators have to pay attention to a server's memory usage. Nobody wants a system to slow down. When it does, and admins need to troubleshoot, virtual memory is a likely culprit. Since virtual memory has an outsized impact on system performance, vmstat is essential for monitoring it. In addition to monitoring virtual memory paging, vmstat also measures processes, I/O, CPU, and disk scheduling.
+That means that Linux system administrators have to pay attention to a server's memory usage. Nobody wants a system to slow down. When it does, and admins need to troubleshoot, virtual memory is a likely culprit. Since virtual memory has a big impact on system performance, vmstat is essential for monitoring it. In addition to monitoring virtual memory paging, vmstat also measures processes, I/O, CPU, and disk scheduling.
 
 ## How to Use vmstat
 
@@ -45,7 +45,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  0  0      0 1171312  69752 2231152    0    0     0    13   10   23  0  0 100  0  0
 {{</ output >}}
 
-Notice how vmstat returns information about the system's processes, memory, swap, io, system interrupts and context switches, and CPU. To learn more about each column and value, view the manual pages for vmstat by issuing the `man vmstat` command and searching for each specific area. For example, once you are viewing the vmstat manual pages, to view more information about the `swap` column, issue the `/swap` command.
+Notice how vmstat returns information about the system's processes, memory, swap, input and output, system interrupts and context switches, and CPU. To learn more about each column and value, view the manual pages for vmstat by issuing the `man vmstat` command and searching for each specific area. For example, once you are viewing the vmstat manual pages, to view more information about the `swap` column, issue the `/swap` command.
 
 The vmstat command-line options provide more information about your system. The vmstat syntax is as follows:
 

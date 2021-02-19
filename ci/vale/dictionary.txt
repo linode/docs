@@ -985,6 +985,7 @@ netblocks
 netboot
 netcat
 netconfig
+netdata
 netdev
 netfilter
 netflow
@@ -1488,6 +1489,7 @@ sys
 sysconfig
 sysctl
 syslog
+sysstat
 systemctl
 systemd
 systemname

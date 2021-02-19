@@ -103,7 +103,7 @@ If you are running Monitorix on your computer, instead, navigate to `http://loca
 
     ![monitorix screen](Monitorix_05.png)
 
-    This is followed by a display of filesystem usage and I/O activity.
+    This is followed by a display of file system usage and I/O activity.
 
     ![monitorix screen](Monitorix_06.png)
 
