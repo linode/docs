@@ -7,11 +7,11 @@ description: 'Monitorix is a free, open-source system monitoring tool that keeps
 og_description: 'Monitorix is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This guide shows you how to install Monitorix, and use its default configuration to access system graphs and data.'
 keywords: ['how to use monitorix']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-18
+published: 2021-02-19
 modified_by:
   name: Linode
 title: "How to Use Monitorix for System Monitoring"
-h1_title: "How to Use Monitorix for System Monitoring"
+h1_title: "Using Monitorix for System Monitoring"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn

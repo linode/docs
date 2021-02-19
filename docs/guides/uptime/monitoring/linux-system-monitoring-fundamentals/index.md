@@ -7,7 +7,7 @@ description: 'The only way to know that your Linux-server-based applications and
 og_description: 'The only way to know that your Linux-server-based applications and services are running well is to measure what''s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves.'
 keywords: ['linux system monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-17
+published: 2021-02-19
 modified_by:
   name: Linode
 title: "Linux System Monitoring Fundamentals"

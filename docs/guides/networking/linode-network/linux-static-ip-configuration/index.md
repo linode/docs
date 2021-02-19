@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2014-07-20
 title: Linux Static IP Configuration
+h1_title: Linux Static IP Configuration
 tags: ["networking","linode platform"]
 ---
 

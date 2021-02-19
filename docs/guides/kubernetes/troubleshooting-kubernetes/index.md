@@ -11,6 +11,7 @@ published: 2019-07-29
 modified_by:
   name: Linode
 title: "Troubleshooting Kubernetes"
+h1_title: "Diagnose and Resolve Kubernetes Issues"
 image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:

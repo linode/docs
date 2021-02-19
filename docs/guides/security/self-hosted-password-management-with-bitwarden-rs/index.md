@@ -6,7 +6,7 @@ description: 'Bitwarden is an open source password management application that c
 og_description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
 keywords: ['security', 'web application', 'password', 'bitwarden']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-18
+published: 2021-02-19
 modified_by:
   name: Linode
 title: "How to Self-Host the bitwarden_rs Password Manager"
