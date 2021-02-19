@@ -1,4 +1,4 @@
 extends: spelling
 message: "Did you really mean '%s'?"
 level: error
-ignore: ci/vale/dictionary.txt
+ignore: ../dictionary.txt

@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-27
 modified_by:
   name: Linode
-title: "Use Cases for Block Storage"
+title: "Common Block Storage Use Cases"
+h1_title: "Common Use Cases for Block Storage"
 contributor:
   name: Linode
 tags: ["linode platform"]
@@ -39,10 +40,6 @@ Some aspects of Block Storage lead to natural limitations. In particular, a Volu
 Below you will find some of the more popular use cases for Block Storage.
 
 ## Use Cases
-
-### Databases
-
-Databases require quick read/write operations, and Block Storage Volumes are mounted directly to a cloud instance's filesystem, so there is a minimal delay in writing and retrieving data. Growing businesses often have increasing data storage demands, so it's also important for a database to be scalable. A Volume that stores your database can be resized to meet your storage needs.
 
 ### Persistent Storage
 

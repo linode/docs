@@ -784,6 +784,7 @@ libracy
 libsasl2
 libyang
 libuv
+libvirt
 lifecycle
 lighthttpd
 lighttpd
@@ -919,6 +920,7 @@ modsecurity
 mongodb
 mongoimport
 monit
+monitorix
 moolenaar
 motd
 mountpoint
@@ -983,10 +985,12 @@ netblocks
 netboot
 netcat
 netconfig
+netdata
 netdev
 netfilter
 netflow
 netfs
+nethogs
 netid
 netifrc
 netlify
@@ -1316,6 +1320,7 @@ s3cret
 saas
 sakila
 salesforce
+sar
 sasl
 sasl2
 saslauth
@@ -1484,6 +1489,7 @@ sys
 sysconfig
 sysctl
 syslog
+sysstat
 systemctl
 systemd
 systemname
