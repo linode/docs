@@ -29,11 +29,11 @@ Reverse proxy servers are able to support a number of use-cases. Some of the ben
 1. SSL Offloading or inspection 
 1. Server load balancing 
 1. Port forwarding
-1. Caching 
+1. Caching
 1. L7 filtering and routing 
 
 ## What Are The Benefits Of Using NGINX As Reverse Proxy?
-Some common uses of NGINX as a reverse proxy include load balancing to maximize server capacity and speed, cache commonly requested content, and acting as an additional layer of defense against cyber attacks. 
+Some common uses of NGINX as a reverse proxy include load balancing to maximize server capacity and speed, cache commonly requested content, and to act as an additional layer of security. 
 
 
 ## Install NGINX
@@ -149,7 +149,7 @@ This configuration uses the built-in `$remote_addr` variable to send the IP addr
 
 ## NGINX Reverse Proxy Configuration Options
 
-With NGINX, there are now standards for serving content over HTTPS. Here are a  few recommended NGINX proxy headers and parameters:
+With NGINX, there are now standards for serving content over HTTPS. Here are a few recommended NGINX proxy headers and parameters:
 
 | Proxy Header   | Parameter |
 | ----------- | ----------- |
@@ -169,13 +169,13 @@ The following is an explanation of what each proxy header does:
 
 
 
-*   `proxy_http_version`: It is set to HTTP version 1.0  by default, but you can change it to define your HTTP protocol version, e.g. HTTP 1.1 is for Websockets. 
+*   `proxy_http_version`: It is set to HTTP version 1.0 by default, but you can change it to define your HTTP protocol version, e.g. HTTP 1.1 is for WebSockets. 
 *   `proxy_cache_bypass  $http_upgrade`:   Defines when to bypass your cache when it receives a response. 
-*   `proxy_set_header`:  Upgrade and  Connection  - are required headers if you are using Websockets  
-*   `proxy_set_header Host $host`: Preferred over  proxy_set_header Host $prox_host as you don’t need to explicitly define proxy_host and it’s accounted for by default. $host contains the following: request line hostname or a Host header field hostname.
+*   `proxy_set_header`: Upgrade and Connection - are required headers if you are using WebSockets.  
+*   `proxy_set_header Host $host`: Preferred over proxy_set_header Host $prox_host as you don’t need to explicitly define proxy_host and it’s accounted for by default. $host contains the following: request line hostname or a Host header field hostname.
 *   `proxy_set_header X-Real-IP $remote_addr`:  Send the visitors IP address to our proxy server.
-*   `proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for`:  This is a list of  IP addresses of servers that every client was served a proxy from. 
-*   `proxy_set_header X-Forwarded-Proto $scheme`: Turns HTTP response  to an HTTPS response. 
+*   `proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for`: This is a list of IP addresses of servers that every client was served a proxy from. 
+*   `proxy_set_header X-Forwarded-Proto $scheme`: Turns HTTP response to an HTTPS response. 
 *   `proxy_set_header X-Forwarded-Host`: Client’s originally requested host. 
 *   `proxy_set_header X-Forwarded-Port  $server_port`: Client’s originally requested server port
 
@@ -200,9 +200,9 @@ A better option is to use Forwarded in NGINX.
 
 ### Forwarded in NGINX 
 
-The way `Fowarded` changes this is by embedding a secret token in the client for identity management. To use a list of hard-coded IP addresses, we would use the `$proxy_add_x_for`,  but to use `Forwarded`, we need to create a map object that can enable the usage of Forwarded.
+The way `Fowarded` changes this is by embedding a secret token in the client for identity management. To use a list of hard-coded IP addresses, we would use the `$proxy_add_x_for`, but to use `Forwarded`, we need to create a map object that can enable the usage of Forwarded.
 
-To do so add the following to your NGINX config file: 
+To do so add the following to your NGINX configuration file: 
 
 	map $remote_addr $forwarded_proxy {
 
@@ -243,13 +243,13 @@ Our new configuration uses a regex to check and validate all `Forwarded` headers
 
 ## NGINX Reverse Proxy Buffers
 
-When you use an NGINX reverse proxy, you risk degrading your application/server performance as you are adding another layer of complexity to the server between requests.  That’s why NGINX’s buffering capabilities are used to reduce the impact of the reverse proxy on performance. 
+When you use an NGINX reverse proxy, you risk degrading your application/server performance as you are adding another layer of complexity to the server between requests. That’s why NGINX’s buffering capabilities are used to reduce the impact of the reverse proxy on performance. 
 
 Proxy servers affect performance and impact client to proxy server connections. Based on how performance and user connections are impacted, we can adjust and optimize these connections. 
 
 There are buffering directives that can be used to adjust to various buffering behaviors and optimize performance. These buffers are usually set in either location contexts, server, or HTTP. These buffering directives are:
-*   `proxy_buffering`:  It is enabled by default, and ensures that a response reaches NGINX from the proxy server as soon as possible 
-*   `proxy_buffer_size`:  Determines the size of the buffer for the headers from a backend server.
+*   `proxy_buffering`: It is enabled by default, and ensures that a response reaches NGINX from the proxy server as soon as possible 
+*   `proxy_buffer_size`: Determines the size of the buffer for the headers from a backend server.
 *   `proxy_busy_buffers_size`: Set the maximum size of your buffers to be in a busy state.
 *   `proxy_buffers`: Manages the size and number of buffers. The more buffers you have, the more information you can buffer.
 *   `proxy_max_temp_file_size`: This is the maximum size of temporary files on disk allowed per request 
