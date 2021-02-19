@@ -24,13 +24,13 @@ A reverse proxy is a server that sits between internal applications and external
 This guide uses a simple Node.js app to demonstrate how to configure NGINX as a reverse proxy.
 
 ## What Are The Benefits Of A Reverse Proxy?
-Reverse proxy servers bring a number of benefits. Some of the benefits of using a reverse proxy include:
+Reverse proxy servers are able to support a number of use-cases. Some of the benefits of using a reverse proxy include:
+
 1. SSL Offloading or inspection 
-2. Server load balancing 
-3. DDoS Protection 
-4. Port forwarding
-5. Caching 
-6. L7 filtering and routing 
+1. Server load balancing 
+1. Port forwarding
+1. Caching 
+1. L7 filtering and routing 
 
 ## What Are The Benefits Of Using NGINX As Reverse Proxy?
 Some common uses of NGINX as a reverse proxy include load balancing to maximize server capacity and speed, cache commonly requested content, and acting as an additional layer of defense against cyber attacks. 
@@ -44,7 +44,9 @@ Some common uses of NGINX as a reverse proxy include load balancing to maximize 
 
 ### Install Node.js
 
-{{< content "install-nodejs-nodesource" >}}
+Though there are a number of options available to install Node.js, we recommend using NVM with the following steps:
+
+{{< content "how-to-install-nvm" >}}
 
 ### Configure the App
 
@@ -149,29 +151,21 @@ This configuration uses the built-in `$remote_addr` variable to send the IP addr
 
 With NGINX, there are now standards for serving content over HTTPS. Here are a  few recommended NGINX proxy headers and parameters:
 
-    proxy_pass http://127.0.0.1:3000;
+| Proxy Header   | Parameter |
+| ----------- | ----------- |
+| proxy_pass     | http://127.0.0.1:3000       |
+| proxy_http_version   | 1.1        |
+| proxy_cache_bypass   | $http_upgrade   |
+| proxy_set_header Upgrade    | $http_upgrade    |
+| proxy_set_header Connection   | "upgrade"   |
+| proxy_set_header Host   | $host   |
+| proxy_set_header X-Real-IP    | $remote_addr |
+| proxy_set_header X-Forwarded-For   | $proxy_add_x_forwarded_for   |
+| proxy_set_header X-Forwarded-Proto   | $scheme   |
+| proxy_set_header X-Forwarded-Host   | $host   |
+| proxy_set_header X-Forwarded-Port   | $server_port   |
 
-    proxy_http_version  1.1;
-
-    proxy_cache_bypass  $http_upgrade;
-
-    proxy_set_header Upgrade           $http_upgrade;
-
-    proxy_set_header Connection        "upgrade";
-
-    proxy_set_header Host              $host;
-
-    proxy_set_header X-Real-IP         $remote_addr;
-
-    proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
-
-    proxy_set_header X-Forwarded-Proto $scheme;
-
-    proxy_set_header X-Forwarded-Host  $host;
-
-    proxy_set_header X-Forwarded-Port  $server_port;
-
-Let’s understand what each of them does.
+The following is an explanation of what each proxy header does:
 
 
 
@@ -249,11 +243,11 @@ Our new configuration uses a regex to check and validate all `Forwarded` headers
 
 ## NGINX Reverse Proxy Buffers
 
-When you use NGINX reverse proxy, you risk degrading your application/server performance as you are adding another layer of server between requests.  That’s why we use NGINX’s buffering capabilities to reduce the impact of reverse proxy on performance. 
+When you use an NGINX reverse proxy, you risk degrading your application/server performance as you are adding another layer of complexity to the server between requests.  That’s why NGINX’s buffering capabilities are used to reduce the impact of the reverse proxy on performance. 
 
-Proxy servers impact your performance by impacting your proxy server to backend connect, and also by impacting client to proxy server connection. Based on which one is getting impacted, we can adjust and optimize these connections. 
+Proxy servers affect performance and impact client to proxy server connections. Based on how performance and user connections are impacted, we can adjust and optimize these connections. 
 
-There are buffering directives that we can use to adjust to various buffering behaviors and optimize performance. These buffers are usually set in either location contexts, server, or HTTP. These buffering directives are:
+There are buffering directives that can be used to adjust to various buffering behaviors and optimize performance. These buffers are usually set in either location contexts, server, or HTTP. These buffering directives are:
 *   `proxy_buffering`:  It is enabled by default, and ensures that a response reaches NGINX from the proxy server as soon as possible 
 *   `proxy_buffer_size`:  Determines the size of the buffer for the headers from a backend server.
 *   `proxy_busy_buffers_size`: Set the maximum size of your buffers to be in a busy state.
