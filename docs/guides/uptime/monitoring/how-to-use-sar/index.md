@@ -6,6 +6,7 @@ author:
 description: 'This guide shows you the basics of using sar, the Linux system activity reporter. You learn how to install and configure sar, and use basic sar commands to start collecting system usage statistics.'
 og_description: 'This guide shows you the basics of using sar, the Linux system activity reporter. You learn how to install and configure sar, and use basic sar commands to start collecting system usage statistics.'
 keywords: ['sar command in linux']
+tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
