@@ -17,102 +17,55 @@ contributor:
   link: http://www.twitter.com/sjvn
 ---
 
-# Using vmstat
+[Vmstat](https://linux.die.net/man/8/vmstat) is a built-in Linux system monitoring tool. Its primary job is measuring a system's usage of virtual memory. No matter how powerful it is, a Linux server has a finite amount of random access memory (RAM). A Linux system can run out of RAM for several reasons, such as demands on the operating system and its running applications. When this happens, the Linux kernel *swaps* or *pages* out programs to the computer's storage devices, called *swap space*. Typically, this is a reserved area of hard drive or solid-state drive storage. It's used as virtual memory when RAM is unavoidable. As RAM is freed up, the swapped-out data or code is swapped back into the main RAM-based memory.
 
-[Vmstat](https://linux.die.net/man/8/vmstat) is a built-in Linux system monitoring tool. Its primary job is measuring system usage of virtual memory.
+System performance drops drastically when swapping happens. That's because the server's swap I/O speed is much slower than RAM even if the hardware – such as fast SSD – is used for virtual memory. In addition, when Linux uses virtual memory it spends more of its CPU cycles on managing virtual memory swapping.
 
-No matter how powerful it is, a Linux server has a finite amount of random access memory (RAM). A Linux system can run out of RAM for several reasons, such as demands on the operating system and its running applications. When this happens, the Linux kernel &quot;swaps&quot; or &quot;pages&quot; out programs to the computer&#39;s storage devices, called &quot;swap space.&quot; Typically, this is a reserved area of hard drive or solid-state drive storage. It&#39;s used as virtual memory when RAM is unavoidable. As RAM is freed up, the swapped-out data or code is swapped back into the main RAM-based memory.
+That means that Linux system administrators have to pay attention to a server's memory usage. Nobody wants a system to slow down. When it does, and admins need to troubleshoot, virtual memory is a likely culprit. Since virtual memory has an outsized impact on system performance, vmstat is essential for monitoring it. In addition to monitoring virtual memory paging, vmstat also measures processes, I/O, CPU, and disk scheduling.
 
-System performance drops drastically when swapping happens. That&#39;s because the server&#39;s swap I/O speed is much slower than RAM even if the hardware – such as fast SSD – is used for virtual memory. In addition, when Linux uses virtual memory it spends more of its CPU cycles on managing virtual memory&#39;s swapping.
+## Getting Started with vmstat
 
-That means that Linux system administrators have to pay attention to servers&#39; memory usage. Nobody wants a system to slow down. When it does, and admins need to troubleshoot, virtual memory is a likely culprit. Since virtual memory has an outsized impact on system performance, vmstat is essential for monitoring it.
+You can run `vmstat` both as an interactive program and in shell programs. When you run vmstat without any parameters, it shows system values based on the averages for each element since the server was last rebooted. These results are not a snapshot of current values.
 
-But it does a bit more than that. In addition to monitoring virtual memory paging, vmstat also measures processes, I/O, CPU, and disk scheduling.
+Run vmstat using the following command:
 
-## Getting started with vmstat – at its simplest
+        vmstat
 
-You can run `vmstat` both as an interactive program and in shell programs.
+You see a similar output:
 
-When you run vmstat without any parameters, it shows system values based on the averages for each element since the server was last rebooted. These results are not a snapshot of current values.
+{{< output >}}
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 0  0      0 1171312  69752 2231152    0    0     0    13   10   23  0  0 100  0  0
+{{</ output >}}
 
-By default, vmstat display the following measurements:
+Notice how vmstat returns information about the system's processes, memory, swap, io, system interrupts and context switches, and CPU. To learn more about each column and value, view the manual pages for vmstat by issuing the `man vmstat` command and searching for each specific area. For example, once you are viewing the vmstat manual pages, to view more information about the `swap` column, issue the `/swap` command.
 
-![vmstat by default](vmstat_01.png)
+The vmstat command-line options provide more information about your system. The vmstat syntax is as follows:
 
-Here&#39;s a description of this display&#39;s meanings:
-
-### Procs
-
-`r`: The number of runnable processes (running or waiting for run time)
-
-`b`: The number of processes in uninterruptible sleep
-
-### Memory
-
-`swpd`: the amount of virtual memory used
-
-`free`: the amount of idle memory
-
-`buff`: the amount of memory used as buffers
-
-`cache`: the amount of memory used as cache
-
-`inact`: the amount of inactive memory (-a option)
-
-`active`: the amount of active memory (-a option)
-
-### Swap
-
-`si`: Amount of memory swapped in from disk (/s)
-
-`so`: Amount of memory swapped to disk (/s)
-
-### IO
-
-`bi`: Blocks received from a block device (blocks/s)
-
-`bo`: Blocks sent to a block device (blocks/s)
-
-### System
-
-`in`: The number of interrupts per second, including the clock
-
-`cs`: The number of context switches per second
-
-### CPU
-
-These are percentages of total CPU time:
-
-`us`: Time spent running non-kernel code (user time, including nice time)
-
-`sy`: Time spent running kernel code (system time)
-
-`id`: Time spent idle
-
-`wa`: Time spent waiting for IO
-
-`st`: Time stolen from a virtual machine
-
-Obviously, as is common for Linux utilities, the command-line options provide more information. The vmstat syntax is simple.
-
-```
-$ vmstat [options] [delay] [count]]
-```
+        vmstat [options] [delay] [count]]
 
 - **Options**: vmstat command settings
 - **Delay**: the time interval between updates. If no delay is specified, the report runs as an average since the last reboot.
 - **Count**: the number of updates printed after the given delay interval. If no count is set, the default is an infinite number of updates every `x` seconds (where x = delay).
 
-For example, consider
+For example, you can issue the following command to run vmstat every five second, five times on an idle system:
 
-```
-vmstat 5 5
-```
-![vmstat 5 5](vmstat_02.png)
+        vmstat 5 5
 
-Here, vmstat runs every five seconds for five times on an idle system.
+Your output should resemble the following:
 
-## Commonly-used vmstat options
+{{< output >}}
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 1  0      0 1166396  70768 2233228    0    0     0    13   10   24  0  0 100  0  0
+ 0  0      0 1165568  70776 2233352    0    0     0     8  121  224  0  0 99  0  0
+ 0  0      0 1166608  70784 2233352    0    0     0    53  108  209  0  0 100  0  0
+ 0  0      0 1166608  70784 2233352    0    0     0     0   75  176  0  0 100  0  0
+ 0  0      0 1166576  70788 2233352    0    0     0     4   76  177  0  0 100  0  0
+{{</ output >}}
+
+### Common vmstat Options
 
 By default, vmstat displays memory and swap numbers in kilobytes. This can be changed to a thousand bytes, a million bytes, or a megabyte, using the `-S` flag modified by one of the following options:
 
@@ -123,10 +76,19 @@ By default, vmstat displays memory and swap numbers in kilobytes. This can be ch
 
 To show the data updated five times every five seconds with the memory and swap statistics displayed in megabytes, use the command:
 
-```
-vmstat -S M 5 5
-```
-![vmstat -S M 5](vmstat_10.png)
+        vmstat -S M 5 5
+
+Your output should resemble the following:
+
+{{< output >}}
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 1  0      0   1139     69   2181    0    0     0    13   10   24  0  0 100  0  0
+ 0  0      0   1139     69   2181    0    0     0     1   81  180  0  0 100  0  0
+ 0  0      0   1139     69   2181    0    0     0     1   82  183  0  0 100  0  0
+ 0  0      0   1139     69   2181    0    0     0     0   85  183  0  0 100  0  0
+ 0  0      0   1139     69   2181    0    0     0     0   79  178  0  0 100  0  0
+ {{</ output >}}
 
 vmstat can be run continually without a count argument. To stop such a report, use the break character (`^C` or `Control+C`).
 
