@@ -4,10 +4,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
-tags: ["ubuntu","lamp","wordpress","cms","lemp"]
+keywords: ["WordPress", "wordpress on ubuntu", "WordPress on Linode", "how to configure WordPress"]
+tags: ["ubuntu","lamp","wordpress","cms","lemp","mysql","php", "permalink"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-04
+modified: 2021-02-19
 modified_by:
   name: Edward Angert
 published: 2018-06-04
@@ -26,7 +26,7 @@ aliases: ['/websites/cms/wordpress/install-wordpress-ubuntu-18-04/','/websites/c
 
 ## What is WordPress?
 
-WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools.
+WordPress is a popular PHP-based dynamic content management system (CMS) focused on blogging. You can easily install WordPress on Ubuntu 18.04 because it easily it is configured to work with Apache or NGINIX, MySql, PHP in a LAMP or LEMP stack. It also features an extensive plugin framework and theme system that allowing site owners to use its simple and powerful publishing tools.
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
 ![Install WordPress on Ubuntu](Install_WordPress_on_Ubuntu_smg.jpg)
@@ -34,7 +34,7 @@ WordPress is a popular dynamic content management system (CMS) focused on blogs.
 
 Replace each instance of `example.com` in this guide with your site's domain name or IP.
 
-## Before You Begin
+## Before You Begin Installing WordPress
 
 -   This guide assumes you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and that your Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
 
@@ -45,7 +45,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
     The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack.
+-   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack on your Ubuntu 18.04 installation.
 
 -   If you're running NGINX, edit the `location /` block of your configuration to set `index.php` as an index for the site:
 
@@ -65,11 +65,11 @@ location / {
         sudo a2enmod rewrite
         sudo systemctl restart apache2
 
-## Install WordPress
+## Install WordPress on Ubuntu 18.04
 
-### Prepare the WordPress Database
+### Prepare the WordPress Database in MySQL
 
-WordPress stores blog posts and other content in your MySQL database, and you need to prepare the database before you can start using WordPress:
+WordPress stores blog posts and other content in a MySQL database, and you need to prepare the database before you can start using WordPress:
 
 1.  Log in to the MySQL command line as the root user:
 
@@ -221,19 +221,19 @@ WordPress, and many of its plugins, use PHP extensions that you'll need to insta
 
 -   In order to modify photos or images in Wordpress, you'll need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit your page.
 
-    To install the GD extension:
+To install the GD extension:
 
         sudo apt install php-gd
 
 -   For full non-English language support and to fix certain character encoding-related bugs, install the multibyte string (MBSTRING) extension.
 
-    To install MBSTRING:
+To install MBSTRING:
 
         sudo apt install php-mbstring
 
 -   To use XML-RPC to access WordPress via the mobile app, or to use Jetpack, you'll need `php-xmlrpc`. For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
 
-    To install the XML-RPC extension:
+To install the XML-RPC extension:
 
         sudo apt install php-xmlrpc
 
