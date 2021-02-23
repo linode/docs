@@ -3,8 +3,8 @@ slug: use-nano-text-editor-commands
 author:
   name: Linode
   email: docs@linode.com
-description: This tutorial will teach you how to install the Nano text editor and use it to create and edit files in Linux.
-og_description: This tutorial will teach you how to install the Nano text editor and use it to create and edit files in Linux.
+description: This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux.
+og_description: This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux.
 keywords: ["nano", "text editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/using-nano/','/linux-tools/text-editors/nano/','/tools-reference/tools/use-nano-text-editor-commands/']
@@ -16,296 +16,329 @@ title: How to Use Nano Text Editor Commands in Linux
 tags: ["linux"]
 ---
 
-# How to Use Nano Text Editor Commands in Linux
+![Using Nano](using_nano_smg.png)
 
-GNU nano is a popular command-line text editor that is included in most Linux distributions. Its interface is comparable to GUI-based text editors, which makes it a popular choice for those who find vi or emacs commands non-intuitive. This guide shows you how to use Nano Text Editor Commands in Linux. 
+## What is Nano?
 
+[GNU nano](https://www.nano-editor.org/) is a popular command-line text editor that is included in most Linux distributions. Its interface is comparable to other common GUI-based text editors, which makes it a popular choice for those who find vi or emacs commands non-intuitive. This guide shows you how to use Nano Text Editor Commands in Linux.
+
+## Why Edit Files in Linux Using Nano?
+
+Editing files in Linux using nano is popular as compared to other editors like Vim because nano’s GUI makes it very easy to edit, save, and interact with your files. Other editors like Vim have relatively complicated usage requirements like switching to edit mode in order to input text.
 
 ## Nano Set Up and Basic Commands
 
-Nano is included with many Linux distributions by default, but some users may need to install it through their distribution’s [package management](https://www.linode.com/docs/using-linux/package-management/) tool:
+Nano is included with many Linux distributions by default, but you may need to install it through your distribution’s [package management](/docs/guides/linux-package-management) tool.
 
-
-### How to Install Nano Text Editor in Linux? 
+### How to Install Nano Text Editor in Linux
 
 **Debian/Ubuntu**:
 
-	apt install nano
+    apt install nano
 
 **CentOS/Fedora**:
 
-	yum install nano
+    yum install nano
 
+### Using Command Keys in Nano
 
-### Command Keys
+When using nano, control characters (**CTRL**) are represented by a carat (**^**). For example, to cut a line of text, press **CTRL**, then simultaneously press **K**. This sequence of commands is represented as **^K** in nano.
 
-When using nano, control characters (CTRL) are represented by a carat (^). For example, if you wish to cut a line of text, you would use the “CTRL” key followed by the “K” key. This sequence of commands is represented as ^K in nano. Some commands use the “Alt” key in order to function, which is represented by the letter “M.” 
+Some commands use the **ALT** key in order to function, which is represented by **M-**. A command represented as **M-R** in nano is performed by pressing **ALT**, then simultaneously pressing **R**.
 
-A command represented as M-R in nano would be performed by pressing the “Alt” key followed by the “R” key. Mac users may need to use the “Escape” (Esc) key instead of the “Alt” key to use these commands.
-
+{{< note >}}
+By default, Mac users use **ESC** as the **ALT** key in nano.
+{{< /note >}}
 
 ## Using Nano to Create And Open Files in Linux
 
-
 ### Create a New File using Nano
 
-Typing nano without any arguments will open a blank file for editing:
+Enter `nano` without any arguments to open a blank file for editing:
 
-	nano
+    nano
 
-This will open up a blank new file in your terminal like below:
+This opens up a blank new file in your terminal, where you can immediately make changes by entering text. Use the arrow keys to move the cursor.
 
-![alt_text](image1.png "image_tooltip")
+The top bar displays your nano version, the filename or "New Buffer" for a blank file, and the modified status of the file. A partial menu of available commands/shortcuts is displayed at the bottom of the screen.
 
+![Entering new text in a nano file changes its status to Modified.](nano-new-buffer.png "Entering new text in a nano file changes its status to Modified.")
 
-You can make changes to this file. You may exit this file by pressing Ctrl + X. It prompts you to save your file and name it before you exit. 
+For this tutorial, enter the following text into a blank nano file:
 
-**Note**: It only prompts you if actual changes were made to the file, else you simply exit the editor and you get no prompts.
+{{< file "tutorial.txt" nano >}}
+Linode nano 1
+Linode nano 2
+Linode nano 3
+Linode nano 4
+{{< /file >}}
 
-Once prompted, select press “Y” and then write the name of your file. 
+## Save Your Work Using Nano
 
+To save your work, use **CTRL+O** (**^O**) or "WriteOut". Nano prompts you to enter the name of the file if you are saving a new file. This saves the document and leaves nano open for you to continue working.
 
-![alt_text](image2.png "image_tooltip")
-
-
-After you enter a filename, press “enter” to save your file. We saved it as a tutorial.txt, and here’s what we have stored in it: 
-
-![alt_text](image3.png "image_tooltip")
-
-
-### Open an Existing File Using Nano
-
-To open a file, pass the filename as an argument in the following command:
-
-	nano <filename>
-
-This opens an existing file within your current working directory. 
-
-Let’s practice that using the file in our current working directory we created earlier tutorial.txt 
-
-	nano  tutorial.txt
-
-If you wish to open a file in a different directory, you can provide a path instead. To do that, we change our current working directory on Linux and go to our home(/). Our path to tutorial.txt is /nano-text-editor-tutorial/tutorial.txt 
-
-To edit tutorial.txt use this command: 
-
-	nano /nano-text-editor-tutorial/tutorial.txt
-
-If tutorial.txt does not exist in /nano-text-editor-tutorial/, nano creates a file named tutorial.txt in there. 
-
-You can also open files at a specific line or column number:
-
-	nano +2 /nano-text-editor-tutorial/tutorial.txt
-
-	nano +LINE,COLUMN /nano-text-editor-tutorial/tutorial.txt
-
-To open a file as read-only:
-
-	nano -v myfile
-
-
-### Open Configuration Files Using Nano
-
-When editing files used to configure applications or system utilities, start nano with the -w flag:
-
-	nano -w /etc/mysql/my.cnf
-
-This flag will prevent nano from wrapping lines that are too long to fit on your screen, which can create problems if config directives are saved across multiple lines.
-
-
-## Edit Files Using Nano Text Editor in Linux 
-
-Type nano to enter Nano Text Editor. Use the arrow keys to move the cursor. A partial menu of available commands is displayed at the bottom of the terminal window.
-
-
-### Why Edit Files in Linux Using Nano? 
-
-Editing files in Linux using Nano is popular as compared to other editors like Vim because Nano’s GUI makes it very easy to edit, save and interact with your files. On other editors like Vim, one has to change to edit mode to input text. 
-
-
-### Cut and Paste Lines of Text Using Nano
-
-To cut a line of text, enter “^K.” To paste, move the cursor where you want the text to be placed and use “^U.” To cut multiple lines, use a series of “^K” commands until all lines you wish to cut have been removed. When you go to paste them back with “^U,” the lines will all be pasted at once.
-
-
-### Valid Shortcuts in Nano Text Editor 
-
-To open up a list of any sort in Nano, when in a file editor, e.g. the tutorial.txt file below, enter “Ctrl+G.”
-
-
-![alt_text](image4.png "image_tooltip")
-
-
-Once you do that, Nano help menu opens up and  shows you the following commands
-
-
-![alt_text](image5.png "image_tooltip")
-
-
-	^G    (F1)      Display this help text
-
-	^X    (F2)      Close the current file buffer / Exit from nano
-
-	^O    (F3)      Write the current file to disk
-
-	^R    (F5)      Insert another file into the current one
-
-	^W    (F6)      Search forward for a string or a regular expression
-
-	^\    (M-R)     Replace a string or a regular expression
-
-	^K    (F9)      Cut the current line and store it in the cutbuffer
-
-	^U    (F10)     Uncut from the cutbuffer into the current line
-
-	^J    (F4)      Justify the current paragraph
-
-	^T    (F12)     Invoke the spell checker, if available
-
-		        Invoke the linter, if available
-
-		        Invoke formatter, if available
-
-	^C    (F11)     Display the position of the cursor
-
-	^_    (M-G)     Go to line and column number
-
-	M-U             Undo the last operation
-
-	M-E             Redo the last undone operation
-
-	M-A   (^6)      Mark text starting from the cursor position
-
-	M-6   (M-^)     Copy the current line and store it in the cutbuffer
-
-	M-]             Go to the matching bracket
-
-	M-W   (F16)     Repeat the last search
-
-	M-▲             Search next occurrence backward
-
-	M-▼             Search next occurrence forward
-
-	^B    (◀)       Go back one character
-
-	^F    (▶)       Go forward one character
-
-	^◀    (M-Space) Go back one word
-
-	^▶    (^Space)  Go forward one word
-
-	^A    (Home)    Go to beginning of current line
-
-	^E    (End)     Go to end of current line
-
-
-### Search Text Using Nano
-
-To search for text in a document, enter “^W.” This will open a search prompt and a submenu of search-specific commands.
-
-^G Get Help         ^Y First Line       ^T Go To Line       ^W Beg of Par       M-J FullJstify      M-B Backwards
-
-^C Cancel           ^V Last Line        ^R Replace          ^O End of Par       M-C Case Sens       M-R Regexp
-
-To show this, let’s make some changes to our existing tutorial.txt file and save it with the following text in it: 
-
-	test 1
-
-	test 2
-
-	test 3
-
-	test 4
-
-	Linode1
-
-	Linode2
-
-	Linode3
-
-	Linode4
-
-	Linode-end
-
-
-
-![alt_text](image6.png "image_tooltip")
-
-
-Let’s search for any word that contains “end.” To do so, we enter “Ctrl+W” and it opens an option to search. We now see an option to search at the bottom of the Nano editor: 
-
-
-![alt_text](image7.png "image_tooltip")
-
-
-Write “end” in this and press enter and to see the text that contains “end” in it. In our case, doing this highlights Linode-end. If there were multiple words that had “end” in them, you could move to other search results by using “Alt+W” to see the next match. 
-
-![alt_text](image8.png "image_tooltip")
-
-
-**Go to Line Number**
-
-To go to a line number, enter “^T” at the search prompt and enter the line number itself.
-
-**Find and Replace Text**
-
-At the search menu, enter “Alt+R.” Enter the text to be replaced and press “enter,’ then enter the replacement text. You will be prompted to confirm the replacement for each instance found, or to select “All” to confirm all instances.
-
-Let’s try that with “end” in the tutorial.txt file. Our goal is to find “end” in our tutorial.txt file and replace it with “launch”. To get started, press “Alt+R’ to see the following menu appear:
-
-![alt_text](image9.png "image_tooltip")
-
-
-Next, enter the text you want to replace. In our case, it is “end.” And, then press “enter.” 
-
-Nano prompts us to enter the replacement text for “end” now. We want to replace “end” with “launch,” so we enter it here. 
-
-![alt_text](image10.png "image_tooltip")
-
-
-Next, Nano asks you for confirmation. Press “Y” and replace “end” with “launch.” 
-
-![alt_text](images/image11.png "image_tooltip")
-
-
-
-Note: Nano’s editor highlights the text to be replaced as you can see in the image above.  
-
-
-### Spell Check Using Nano
-
-Nano has a built-in spell checking feature, but you will need to install the spell package:
-
-Debian/Ubuntu:
-
-	apt install spell
-
-CentOS/Fedora:
-
-	yum install spell
-
-Once you have installed spell, you can use the spell checking feature by pressing “^T” while editing a file.
-
-
-## Save Your Work  Using Nano
-
-To save your work, use ^O or “WriteOut”. This will save the document and leave nano open for you to continue working.
-
-
-### Save with Backups
-
-Nano can create backups of files when you exit. These backups can be placed in a directory of your choice; by default, they are placed in the same directory as the modified file.
-
-Using the -B option when starting nano will create backups of the file for you while using the -C option will allow you to specify the directory to place backup files in:
-
-	nano -BC ~/backups index.php
-
-The command listed above will create a backup copy of index.php in the backups folder in the current user’s home directory.
-
+In your open file, enter **CTRL+O** (**^O**) to save the text you entered above, type in `tutorial.txt` for the filename, then press **ENTER** or **RETURN** to save the file and continue.
 
 ## Exit Commands for Nano Text Editor
 
-Enter “^X” to exit nano. If you have not saved your work, you will be prompted to save the changes or cancel the exit routine.
+Enter **CTRL+X** (**^X**) to exit nano. If you have unsaved changes in your file, nano prompts you to save prior to exiting. Otherwise, nano exits without any prompts.
 
+In `tutorial.txt`, enter a fifth line to the file so that it contains the following:
 
+{{< file "tutorial.txt" nano >}}
+Linode nano 1
+Linode nano 2
+Linode nano 3
+Linode nano 4
+Linode nano 5
+{{< /file >}}
 
+Enter **CTRL+X** (**^X**) to exit `tutorial.txt`. Nano prompts you to save your changes:
+
+![Nano discards unsaved changes if you select No when prompted.](nano-exit-save.png "Nano discards unsaved changes if you select No when prompted.")
+
+Next, enter **Y** to save your changes to `tutorial.txt`, then press **ENTER** or **RETURN** to save the file and exit nano.
+
+From your terminal, check the contents of `tutorial.txt` to confirm that your new file has been created and saved as expected:
+
+    cat tutorial.txt
+
+    {{< output >}}
+Linode nano 1
+Linode nano 2
+Linode nano 3
+Linode nano 4
+Linode nano 5
+    {{< /output >}}
+
+### Save with Backups Using Nano
+
+Use the `-B` option when starting nano to create backups of the previously saved version a file when new changes are saved. Backups are placed in the same directory as the modified file by default, or you can use the `-C` option to specify a directory.
+
+For example, to open `tutorial.txt` and save backup files to the `~/backups` directory, exit nano and enter the following commands:
+
+    mkdir ~/backups
+    nano -BC ~/backups tutorial.txt
+
+Now, when you save changes, you are also prompted to enter a filename for the backup. Enter the original filename for the backup, in this case `tutorial.txt`, to write the backup to a unique filename in `~/backups`.
+
+{{< caution >}}
+When using the `-C` flag, changing the backup filename causes nano to save the backup file in the original file's directory instead of the specified backup directory.
+{{< /caution >}}
+
+### Open an Existing File Using Nano
+
+To open a file with nano within your current working directory, pass the filename as an argument:
+
+    nano <filename>
+
+{{< note >}}
+If the file does not exist, nano creates it when you save any changes.
+{{< /note >}}
+
+To practice, open your `tutorial.txt` file:
+
+    nano tutorial.txt
+
+To open a file in a different directory, you can provide a path instead. To practice, exit nano (**^X**) and create a new directory in your user home:
+
+    mkdir ~/linode-nano-tutorial
+
+Copy `tutorial.txt` to the practice directory:
+
+    cp tutorial.txt ~/linode-nano-tutorial
+
+Now open `tutorial.txt` from this new path:
+
+    nano ~/linode-nano-tutorial/tutorial.txt
+
+You can also open files with nano with the cursor at a specific line. The following command opens `tutorial.txt` at line 3:
+
+    nano +3 ~/linode-nano-tutorial/tutorial.txt
+
+Or you can open files at a specific line and column number. This command opens `tutorial.txt` at line 3 and column 8:
+
+    nano +3,8 ~/linode-nano-tutorial/tutorial.txt
+
+To open a file with nano as read-only:
+
+    nano -v <filename>
+
+### Open Configuration Files Using Nano
+
+When editing lengthy files used to configure applications or system utilities, start nano with the `-w` flag:
+
+    nano -w <filename>
+
+This flag prevents nano from wrapping lines that are too long to fit on your screen, which can create problems if configuration directives are saved across multiple lines.
+
+## Edit Files Using Nano Text Editor in Linux
+
+### Cut and Paste Lines of Text Using Nano
+
+To cut a line of text, enter **CTRL+K** (**^K**).
+
+To paste, move the cursor to where you want to place the text and enter **CTRL+U** (**^U**).
+
+To cut multiple lines, use a series of **CTRL+K** (**^K**) commands until you have removed all lines you wish to cut. When you paste them back with **CTRL+U** (**^U**), the lines are all pasted at once.
+
+### Valid Shortcuts in Nano Text Editor
+
+To open up a list of valid shortcuts in nano, enter **CTRL+G** (**^G**) to view the nano help text and use the arrow keys to navigate.
+
+Here is a full list of shortcuts (and their alternative keys):
+
+{{< note >}}
+The following are the shortcuts for GNU nano 3.2. These shortcuts may differ for you depending on which version of nano you are using.
+{{< /note >}}
+
+    ^G    (F1)      Display this help text
+    ^X    (F2)      Close the current buffer / Exit from nano
+    ^O    (F3)      Write the current buffer (or the marked region) to disk
+    ^R    (Ins)     Insert another file into current buffer (or into new buffer)
+
+    ^W    (F6)      Search forward for a string or a regular expression
+    ^\    (M-R)     Replace a string or a regular expression
+    ^K    (F9)      Cut current line (or marked region) and store it in cutbuffer
+    ^U    (F10)     Uncut from the cutbuffer into the current line
+
+    ^J    (F4)      Justify the current paragraph
+    ^T    (F12)     Invoke the spell checker, if available
+
+    ^C    (F11)     Display the position of the cursor
+    ^_    (M-G)     Go to line and column number
+
+    M-U             Undo the last operation
+    M-E             Redo the last undone operation
+
+    M-A   (^6)      Mark text starting from the cursor position
+    M-6   (M-^)     Copy current line (or marked region) and store it in cutbuffer
+
+    M-]             Go to the matching bracket
+
+    ^Q              Search backward for a string or a regular expression
+    M-Q   (M-▲)     Search next occurrence backward
+    M-W   (M-▼)     Search next occurrence forward
+
+    ^B    (◀)       Go back one character
+    ^F    (▶)       Go forward one character
+    ^◀    (M-Space) Go back one word
+    ^▶    (^Space)  Go forward one word
+    ^A    (Home)    Go to beginning of current line
+    ^E    (End)     Go to end of current line
+
+    ^P    (▲)       Go to previous line
+    ^N    (▼)       Go to next line
+    M--   (M-_)     Scroll up one line without moving the cursor textually
+    M-+   (M-=)     Scroll down one line without moving the cursor textually
+
+    ^▲    (M-7)     Go to previous block of text
+    ^▼    (M-8)     Go to next block of text
+    M-(   (M-9)     Go to beginning of paragraph; then of previous paragraph
+    M-)   (M-0)     Go just beyond end of paragraph; then of next paragraph
+
+    ^Y    (PgUp)    Go one screenful up
+    ^V    (PgDn)    Go one screenful down
+    M-\   (^Home)   Go to the first line of the file
+    M-/   (^End)    Go to the last line of the file
+
+    M-◀   (M-<)     Switch to the previous file buffer
+    M-▶   (M->)     Switch to the next file buffer
+
+    ^I    (Tab)     Insert a tab at the cursor position
+    ^M    (Enter)   Insert a newline at the cursor position
+
+    ^H    (Bsp)     Delete the character to the left of the cursor
+    ^D    (Del)     Delete the character under the cursor
+    Sh-^Del         Cut backward from cursor to word start
+    ^Del            Cut forward from cursor to next word start
+    M-T             Cut from the cursor position to the end of the file
+
+    M-J             Justify the entire file
+    M-D             Count the number of words, lines, and characters
+    M-V             Insert the next keystroke verbatim
+
+    ^L              Refresh (redraw) the current screen
+    ^Z              Suspend the editor (if suspension is enabled)
+
+    M-}   (Tab)     Indent the current line (or marked lines)
+    M-{   (Sh-Tab)  Unindent the current line (or marked lines)
+
+    M-3             Comment/uncomment the current line (or marked lines)
+    ^]              Try and complete the current word
+
+    M-:             Start/stop recording a macro
+    M-;             Run the last recorded macro
+
+    M-Del           Throw away the current line (or marked region)
+
+    M-B             Invoke the linter, if available
+
+    ^S              Save file without prompting
+    M-X             Help mode enable/disable
+    M-C             Constant cursor position display enable/disable
+    M-S             Smooth scrolling enable/disable
+    M-$             Soft wrapping of overlong lines enable/disable
+    M-#             Line numbering enable/disable
+    M-P             Whitespace display enable/disable
+    M-Y             Color syntax highlighting enable/disable
+
+    M-I             Auto indent enable/disable
+    M-K             Cut to end enable/disable
+    M-L             Hard wrapping of overlong lines enable/disable
+    M-O             Conversion of typed tabs to spaces enable/disable
+
+    M-M             Mouse support enable/disable
+    M-Z             Suspension enable/disable
+
+### Search Text Using Nano
+
+To search for text in a document, enter **CTRL+W** (**^W**). This opens a search prompt and a submenu of search-specific commands.
+
+To practice searching for text with nano, open the `tutorial.txt` file you created in the [Create a New File using Nano](#create-a-new-file-using-nano) section above:
+
+    nano tutorial.txt
+
+Next, open the search prompt by entering **CTRL+W** (**^W**), type in the word "nano", then press **ENTER** or **RETURN**. The cursor jumps to the first instance of "nano" in line 1.
+
+To find the next instance of "nano", enter **ALT+W** (**M-W**). The cursor moves to the next instance of "nano" in line 2.
+
+### Find and Replace Text using Nano
+
+To find and replace text, open the search menu with **CTRL+W** (**^W**), then enter **CTRL+R** (**^R**) to open the "Search (to replace)" prompt.
+
+In your `tutorial.txt` file, search to replace "nano" and enter the replacement text "rocks". Nano highlights the first instance of "nano" following your current cursor position, and provides several options on how to proceed with replacement:
+
+![When searching to replace, nano prompts you to replace a single or all instances of a searched term, to skip replacement of the term, or to cancel the search.](nano-find-replace.png "When searching to replace, nano prompts you to replace a single or all instances of a searched term, to skip replacement of the term, or to cancel the search and replace.")
+
+Enter **Y** to replace the single, highlighted instance of the searched term.
+
+Enter **A** to replace all instances of the searched term.
+
+Enter **N** to skip the highlighted instance of the searched term and find the next instance.
+
+Enter **CTRL+C** (**^C**) to cancel the search to replace function.
+
+### Go to a Line Number using Nano
+
+To go to a specific line number, enter **CTRL+\_** (**^\_**) and enter a line number with an optional, comma-separated column number. For example, enter `3,8` to place the cursor at column 8 of line 3.
+
+You can also find this prompt by opening the search submenu with **CTRL+W** (**^W**), then entering **CTRL+T** (**^T**).
+
+Alternatively, you can jump to a specific line and column when you first [open a file](#open-an-exiting-file-using-nano) with nano.
+
+### Spell Check Using Nano
+
+Nano has a built-in spell checking feature, though it requires installation of the `spell` package.
+
+Exit nano if it is open, then enter the following to install the `spell` package for your distribution:
+
+**Debian/Ubuntu**:
+
+    apt install spell
+
+**CentOS/Fedora**:
+
+    yum install spell
+
+Once you have installed `spell`, you can use the nano spell checking feature by pressing **CTRL+T** (**^T**) while editing a file. For newer versions of nano, this command opens an execute function submenu, from which you can enter **CTRL+S** (**^S**) to spell check.
