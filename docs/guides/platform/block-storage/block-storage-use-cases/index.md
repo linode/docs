@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-27
 modified_by:
   name: Linode
-title: "Use Cases for Block Storage"
+title: "Common Block Storage Use Cases"
+h1_title: "Common Use Cases for Block Storage"
 contributor:
   name: Linode
 tags: ["linode platform"]
