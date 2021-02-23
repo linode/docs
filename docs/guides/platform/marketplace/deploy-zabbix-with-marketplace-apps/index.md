@@ -6,7 +6,7 @@ author:
 description: 'Zabbix is an enterprise-class, open source, distributed monitoring solution. Learn how to deploy Zabbix on Linode using Marketplace Apps.'
 og_description: 'Zabbix is an enterprise-class, open source, distributed monitoring solution. Learn how to deploy Zabbix on Linode using Marketplace Apps.'
 keywords: ['monitoring','networking','incident response']
-tags: ["marketplace", "networking", "linode platform", "cloud manager"]
+tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
