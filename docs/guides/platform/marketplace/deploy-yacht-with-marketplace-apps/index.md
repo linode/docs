@@ -6,12 +6,12 @@ author:
 description: 'Deploy Yacht on Linode using Marketplace Apps.'
 og_description: 'Deploy Yacht on Linode using Marketplace Apps.'
 keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-14
+published: 2021-02-23
 modified_by:
   name: Linode
-title: "Deploy Yacht With Marketplace Apps"
+title: "How to Deploy Yacht With Marketplace Apps"
 h1_title: "Deploying Yacht with Marketplace Apps"
 contributor:
   name: Linode

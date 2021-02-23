@@ -6,7 +6,7 @@ author:
 description: 'Deploy Zabbix on Linode using Marketplace Apps.'
 og_description: 'Deploy Zabbix on Linode using Marketplace Apps.'
 keywords: ['monitoring','networking','incident response']
-tags: ["monitoring", "networking", "linode platform", "cloud-manager"]
+tags: ["marketplace", "networking", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
