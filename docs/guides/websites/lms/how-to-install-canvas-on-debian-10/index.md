@@ -3,11 +3,11 @@ slug: how-to-install-canvas-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Canvas on Debian 10.'
-og_description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Canvas on Debian 10.'
+description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide provides instructions for installing Canvas on Debian 10.'
+og_description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide provides instructions for installing Canvas on Debian 10.'
 keywords: ['canvas','education','training','learning management system','lms','deploy on debian 10']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-22
+published: 2021-02-23
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Canvas on Debian 10"
@@ -22,7 +22,7 @@ external_resources:
 
 [Canvas](https://www.instructure.com/canvas) is a popular learning management system (LMS) noteworthy for its modern design and ease of use. A Canvas website gives you a comprehensive portal for education and training courses. It can manage both in-person and online courses, as well as hybrid courses that mix the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your own server.
 
-This guide shows you how to get a Canvas website up and running on an Debian 10 server.
+This guide shows you how to get a Canvas website up and running on a Debian 10 server.
 
 ## Before You Begin
 
@@ -36,9 +36,9 @@ This guide shows you how to get a Canvas website up and running on an Debian 10 
 
     You can, alternatively, create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide. However, because of Canvas's resource demands, you may want to run the SMTP server on a separate machine than the one running Canvas.
 
-1. Canvas recommends a minimum of 8GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
+1. Canvas recommends a minimum of 8 GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
 
-    You can run some of the components of your Canvas installation on separate machines to free up memory. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more on what components can be installed independently. Each machine requires additional configuration to enable communications between each component.
+    You can run some of the components of your Canvas installation on separate machines to free up memory. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more on what components can be installed independently. This approach requires that each machine is configured to enable communications between the components, and it is considered an advanced set up.
 
 1.  Update your system:
 
