@@ -17,60 +17,47 @@ tags: ["networking","ssh","security"]
 
 ![Using SSH on Windows](using-ssh-on-windows.png "Using SSH on Windows")
 
-It is common for software developers to work on multiple projects that require them to access different systems. Using SSH on Windows allows developers to connect to multiple machines remotely right from their terminal. 
+It is common for software developers to work on multiple projects that require them to access different systems. Using SSH on Windows allows developers to connect to multiple machines remotely right from their terminal.
 
-In this tutorial, let’s show you how to use SSH on Windows 10 and older versions. 
+In this tutorial, you will learn how to use SSH on Windows 10 and older versions.
 
-## Using SSH On Windows 10
-To install SSH client on Windows 10, “Go to settings,” then “open Manage optional features” that you can find under “Apps & features.” 
+## Installing OpenSSH On Windows 10
+
+As of late 2018, [OpenSSH](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview) is included with some versions of Windows. If this has been pre-installed, you can skip to the section on [Using SSH on Windows 10](#using-ssh-on-windows-10-to-connect-to-a-server). If unavailable, you can install OpenSSH using the following steps:
+
+1. Enter the **Settings** menu. This can be found by typing "Settings" in the Windows search bar, and clicking on the settings application.
+
+1. Next, select **Apps** and **Optional Features** from the menu that appears.
 
 ![alt_text](image2.png "image_tooltip")
 
-
-Under the **Apps & features**, “click” on **Manage optional features**.
+1. Click on **Add a feature**. A dropdown menu will appear. Select the **OpenSSH client**,  followed by the **Install** button.
 
 ![alt_text](image3.png "image_tooltip")
 
-
-Next, “click” on **Add a feature**. A dropdown menu will open, “select” OpenSSH client and “install” it.  
-
-	PS C:\Users\linode> ssh
-
-	usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
-
-           [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
-
-           [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
-
-           [-i identity_file] [-J [user@]host[:port]] [-L address]
-
-           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
-
-           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
-
-           [-w local_tun[:remote_tun]] destination [command]
-
-Using SSH on Windows 10 is similar to using it on other operating systems like Linux or Mac OSX.
-
+Using SSH on Windows 10 is similar to using it on other operating systems like Linux or Mac OSX, and can be accessed  in the command prompt.
 
 ### Using SSH on Windows 10 To Connect To A Server
 
-To connect with a SSH server, use the following syntax ssh &lt;username>@&lt;ssh domain>.
+All SSH commands are entered in the windows command prompt. The command prompt application can be opened by searching for the term "command prompt" in the windows search bar.
 
-Let’s say we want to connect with an SSH server at ssh.linode.com with a username linode.  We can do that by running the following command: 
+To connect with an SSH server, use the following syntax
+
+    ssh <username>@<domainoripaddress>
+
+If you want to connect with an SSH server at the domain "ssh.linode.com" with a username of "linode" for example, enter the following command:
 
 	ssh linode@ssh.linode.com
 
-When we run this command, our SSH client will try to connect ssh.linode.com on the standard TCP port 22 by default. However, your SSH server may or may not be running on the same port. You can modify our previous command and define the TCP port you prefer to connect with. 
+When this command is entered, the SSH client will try to connect to ssh.linode.com on the standard TCP port 22 by default. If your SSH server is hosted on a different port, this port will need to be specified as part of the SSH coommand. You can modify the previous command and define the TCP port you need to connect to with the following syntax:
 
-To specify a specific port, use the following syntax instead: 
-	ssh &lt;username>@&lt;ssh domain> -p &lt;port number>
+	ssh <username>@<domainoripaddress> -p <port number>
 
-Let’s say, the TCP port we want to connect with is 2222, we can modify our previous command to:
+If the TCP port you want to connect with is "2222" for example, you can modify the previous command to:
 
 	ssh linode@ssh.linode.com -p 2222
 
-When you connect with a server for the first time, SSH client will prompt you to check and verify the host's keys. So, when you execute ssh command, you get a prompt like this 
+When you connect with a server for the first time, the SSH client will prompt you to check and verify the host's key fingerprint. When you execute the ssh command, you will see the following output:
 
 	PS C:\Users\linode> ssh linode@ssh.linode.com -p 2222
 
@@ -82,37 +69,35 @@ When you connect with a server for the first time, SSH client will prompt you to
 
 	Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
 
-When you get this prompt, accept it and your connection will be established. 
+Accept the prompt, and the ssh connection will be approved and established.
 
 
 ### Using SSH On  Windows 10 With Secure Shell App On Chrome
 
-Secure shell is a Chrome application that allows you to execute ssh commands on the Chrome browser. This HTML based SSH client runs on Javascript. To use it, “go” to the [Secure Shell Extension](https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo?hl=en) page on Google chrome store and “click” on Add to install. Google Chrome prompts you for permission, “select” adds the app, and the extension gets installed.
+Secure shell is a Chrome application that allows you to execute ssh commands on the Chrome browser. This HTML based SSH client runs on Javascript. To use it, go to the [Secure Shell Extension](https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo?hl=en) page on the Google chrome store and click **Add to Chrome** to install. Review and accept the required permission at the prompt, and select **Add App** to confirm the installation.
 
 ![alt_text](image4.png "image_tooltip")
 
 
-Once installed, you are automatically taken to your homepage on Google Chrome. If for some reason Google Chrome fails to redirect you, “enter” the following link in your chrome chrome://apps/ and “press” enter. 
+Once installed, you are automatically taken to your homepage on Google Chrome. If for some reason Google Chrome fails to redirect you, enter `chrome://apps/` as the url into the chrome browser.
 
-You should see **Secure Shell App** as shown in the image below
+You should see **Secure Shell App**:
 
 ![alt_text](image5.png "image_tooltip")
 
 
-“Click” on **Secure Shell App** and it launches a new terminal directly on your Chrome as shown in the image below
+Click on **Secure Shell App** and to launch a new terminal directly in your Chrome browser:
 
 ![alt_text](image6.png "image_tooltip")
 
-
-To improve security with Secure Shell App, we can add an SSH key to increase the level of security with this browser-based client. You can also remotely disable this key if needed. 
-
-To use Secure Shell App without having to use chrome://apps/, you can simply start typing ssh in your chrome tab’s URL section and it will dynamically start taking your command. You can then write your user and hostname to connect as well.
+To use Secure Shell App without having to use the `chrome://apps/` URL, you can simply start typing ssh in your chrome tab’s URL section for that APP to dynamically begin entering your command. You can then write your user and hostname to connect.
 
 ![alt_text](image7.png "image_tooltip")
 
 
-Once you enter your user and hostname(linode@ssh.linode.com, default port) with port, you can see the following output in your chrome terminal
+Once you enter your user and hostname, along with any desired port, you will see output similar to the following in your chrome terminal:
 
+{{< output >}}
 	Welcome to Secure Shell App version 0.37.
 
 	Answers to frequently asked questions: https://goo.gl/muppJj (Ctrl+Click on links to open)
@@ -150,13 +135,14 @@ Once you enter your user and hostname(linode@ssh.linode.com, default port) with 
 	Are you sure you want to continue connecting (yes/no)? yes
 
 	Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
+{{< /output >}}
 
-Similar to how we did it earlier with Windows 10 SSH Client, enter yes. Then enter your password to establish a connection. Once a connection is established you will see the following output in your Secure Shell App Terminal:
-
-<output>
-Warning: Permanently added ‘linode.com (29.217.172.207)’ (ECDSA) to the list of known hosts.
+Enter `yes` to accept the host fingerprint that appears. Next, enter your password to establish a connection. Once a connection is established output similar to the following will appear in the Secure Shell App Terminal:
 
 {{< output >}}
+Warning: Permanently added ‘linode.com (29.217.172.207)’ (ECDSA) to the list of known hosts.
+
+
 linode@29.217.172.207’s password: 
 
 Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-33-generic x86_64)
@@ -175,12 +161,6 @@ New releases ‘20.01 LTS’ available.
 
 Run ‘do-release-upgrade’ to upgrade it. 
 {{</ output >}}
-
-There are other Windows SSH Clients that you can use on Windows 10 too. But these are third party clients like PuTTy, ZOC, SecureCRT, Tera Term, Windows Terminal, xterm, etc. But since we have an SSH client available on Windows 10, we can get most of our work done without having to use these 3rd party clients. In the next section, we are going to look into how to use SSH on Windows for old OS versions where some of these SSH clients will be used as these operating systems don’t have a built-in SSH client from Microsoft. 
-
-
-## OpenSSH
-As of late 2018, [OpenSSH](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview) is included with some versions of Windows.
 
 ## Cygwin
 
