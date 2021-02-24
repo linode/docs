@@ -19,53 +19,51 @@ external_resources:
 - '[Inspecting Network Information with netstat](https://www.linode.com/docs/guides/inspecting-network-information-with-netstat/)'
 ---
 
-# Check which ports are in use on yYour Linux system
+One step in securing a Linux computer system is identifying which ports are active.  Was your system hacked? Is your database exposed to the internet? Is there malware hiding on your system stealing information? When you need to answer these questions, one step is to scan your Linux system’s ports to determine which are in use so you can identify both ends of active connections.
 
-One step in securing a Linux computer system is identifying which ports are active. This tutorial shows you how to check the ports in use.
+## What is a Port in Computer Networking?
 
-Was your system hacked? Is your database exposed to the internet? Is there malware hiding on your system stealing information? When you need to answer these questions, one step is to scan your Linux system’s ports to determine which are in use so you can identify both ends of active connections.
+Service names and port numbers are used to distinguish between different services that run over transport protocols. Common transport protocols are TCP, UDP, DCCP, and SCTP. These protocols enable communication between applications by establishing a connection and ensuring data is transmitted successfully.  Well-known port assignments, such as HTTP at port 80 over TCP and UDP, are listed at the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml). These port assignments help distinguish different types of network traffic across the same connection.
 
-**What are ports?** Service names and port numbers are used to distinguish between different services that run over transport protocols such as TCP, UDP, DCCP, and SCTP. Well-known port assignments, such as HTTP at port 80 over TCP and UDP, are listed at the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml).
+## Which Linux System Ports Are in Use?
 
-Three tools help you check ports in use on Linux systems: `netstat` (show network status), `ss` (socket statistics), and `lsof` (list open files). Here’s a short introduction to each, with links to more in-depth information.
+Three tools to help you check ports in use on a Linux system are:
+- *netstat*: This tool shows your server's network status.
+-  *ss*: You can view socket statistics with the ss tool. For example, ss allows you to monitor TCP, UDP, and UNIX sockets.
+- *lsof*: This Linux utility lists open files. Since everything on a Linux system can be considered a file, lsof provides a lot of information on your entire system.
 
-In general, it doesn't matter which one you use, especially if all three are already installed. The tools’ functionality is largely redundant. For example, `ss` was written to replace `netstat`, but not every distro includes it because it's not that much of an improvement. Yet plenty of scripts reference `netstat`, so you can't leave it out. Asking which to use is like asking, "emacs or vi?"
+Since all three tools are widely-available and similar, which tool you use depends on your preference and familiarity with each.
 
-## Using netstat
+### Using netstat
 
-Use [**netstat**](https://www.linode.com/docs/guides/inspecting-network-information-with-netstat/) to inspect:
+This tool is great for inspecting the following areas of your Linux system:
 
-* Unix sockets and network connections
-* Routing tables
-* Network interfaces
-* Network protocols, and
-* Multicast group membership
+- Unix sockets and network connections
+- Routing tables
+- Network interfaces
+- Network protocols
+- Multicast group membership
 
-Running `netstat` without any options displays all open sockets and network connections, which can generate a *lot* of output. You can control the output using command-line switches.
+Running `netstat` without any options displays all open sockets and network connections, which can generate a *lot* of output. You can control the output using netstat's command-line options. For example, to view the PID and program name for a system’s listening TCP connections, run netstat with the following command-line options:
 
-| **Option** | **Definition** |
-| :----- | :----- |
-| \-v | Shows verbose output. |
-| \-r | Displays the kernel routing tables. |
-| \-e | Displays extended information for network connections. |
-| \-i | Displays a table of all network interfaces. When used with `-a`, the output also includes interfaces that are not up. |
-| \-s | Displays summary statistics for each protocol. |
-| \-W | Avoids truncating IP addresses and provides as much screen space as needed to display them. |
-| \-n | Displays numerical (IP) addresses instead of resolving them to hostnames. |
-| \-A | Allows you to specify the protocol family. Valid values are `inet`, `inet6`, `unix`, `ipx`, `ax25`, `netrom`, `econet`, `ddp`, and `bluetooth`. |
-| \-t | Displays TCP data only. |
-| \-u | Displays UDP data only. |
-| \-4 | Displays IPv4 connections only. |
-| \-6 | Displays IPv6 connections only. |
-| \-c | Displays information continuously (every second). |
-| \-p | Displays the process ID and the name of the program that owns the socket. Using this option requires root privileges. |
-| \-o | Displays timer information. |
-| \-a | Shows both listening and non-listening network connections and Unix sockets. |
-| \-l | Displays listening network connections and Unix sockets, which are not shown by default. |
-| \-C | Displays routing information from the route cache. |
-| \-g | Displays multicast group membership information for IPv4 and IPv6. |
+        netstat -ltp
 
-## Using ss
+The output resembles the following:
+{{< output >}}
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:http-alt        0.0.0.0:*               LISTEN      381070/monitorix-ht
+tcp        0      0 localhost:domain        0.0.0.0:*               LISTEN      553/systemd-resolve
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN      2145/sshd: /usr/sbi
+tcp        0      0 localhost:33060         0.0.0.0:*               LISTEN      9638/mysqld
+tcp        0      0 localhost:mysql         0.0.0.0:*               LISTEN      9638/mysqld
+tcp6       0      0 [::]:http               [::]:*                  LISTEN      10997/apache2
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      2145/sshd: /usr/sbi
+{{</ output >}}
+
+ To learn how to install netstat, interpret its output, and view common command line options, see our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/) guide.
+
+### Using ss
 
 Use [**ss**](https://www.linode.com/docs/guides/ss/) to monitor TCP, UDP, and UNIX sockets. To view all system sockets, elevate the utility’s privileges with `sudo`, unless you are already running as the `root user.
 
@@ -96,7 +94,7 @@ Running `ss` with no options displays TCP, UDP, and UNIX sockets. To restrict th
 | \-p | The -p parameter tells ss to display the process that is using a socket. |
 | \-D FILE | The -D parameter tells ss to save the output to the FILE file. |
 
-## Using lsof
+### Using lsof
 
 [**lsof**](https://www.linode.com/docs/guides/lsof/) lists open files. However, *everything* is a file in Linux, which means `lsof` can report open network interfaces and network connections. To view all system sockets, elevate the utility’s privileges with `sudo`, unless you are already running as the root user.
 
