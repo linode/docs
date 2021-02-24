@@ -3,7 +3,7 @@ slug: create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This tutorial details how to install Shadowsocks-libev, a full-featured, resource-efficient port of the web proxy tool, Shadowsocks.'
+description: 'Learn how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS7.'
 keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " strong vpn"]
 tags: ["networking","vpn","ubuntu","security","proxy","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -23,9 +23,11 @@ external_resources:
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
 
-Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
+This guide shows you how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS. Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device.
 
-Since there is currently no Shadowsocks package available for Ubuntu or CentOS, this guide shows how to build Shadowsocks from source.
+Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
+
+Since there is currently no Shadowsocks package available for Ubuntu or CentOS, this guide shows how to build Shadowsocks from the source.
 
 ## Before You Begin
 
@@ -36,38 +38,86 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
     *  [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/)
     *  [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
 
+## What Is SOCKS5 Proxy Service?
+SOCKS5 is an internet protocol of SOCKS that helps to route packets through a proxy between a client and a server. To carry out a secure communication, SOCKS5 uses three different modes of authentication: Null authentication, GSS-API based authentication, and a username-password based authentication.
+
+When your SOCKS5 uses a NULL authentication, any request between client and server connects to the set proxy without requiring any authentication. With GSS API authentication, a client's or server's identity is verified at the OS level to authenticate them.
+
+A username and password-based authentication uses credentials to connect to the proxy.
+
+## What Is Shadowsocks?
+Shadowsocks is an open source, free encryption protocol client designed to securely transmit information between clients and servers. It uses asynchronous input-output and is event-driven to deliver speed. Shadowsocks isn’t a proxy, but it enables connecting to 3rd party SOCKS5 proxy connections. It also supports UDP traffic.
+
 ## Install the Shadowsocks Server
 
-### Download Source Code and Dependencies
+### How Do I Run ShadowSocks On Ubuntu?
 
-1.  Update system repositories, then download and install dependencies:
+To run and install Shadowsocks on Ubuntu Server follow these steps:
+1. Download and update your packages to the newest versions on your Ubuntu
 
-    **Ubuntu 16.04**
+                apt update && apt upgrade -yuf
 
-        apt update && apt upgrade -yuf
-        apt install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev \
-                                               asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev \
-                                               libsodium-dev git python-m2crypto libc-ares-dev
+2. Install dependencies on your Ubuntu server by running the following command:
 
-    **CentOS 7**
+                apt install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev \
 
-        yum update && yum upgrade -y
-        yum install epel-release -y
-        yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel \
-                       libev-devel libsodium-devel mbedtls-devel git m2crypto c-ares-devel
+                                       asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev \
 
-1.  Navigate to the `/opt` directory and download the Shadowsocks Git module:
+                                       libsodium-dev git python-m2crypto libc-ares-dev
 
-        cd /opt
-        git clone https://github.com/shadowsocks/shadowsocks-libev.git
-        cd shadowsocks-libev
-        git submodule update --init --recursive
 
-1.  Install Shadowsocks-libev:
+3. Navigate to the `/opt` directory on Ubuntu and download the Shadowsocks Git module:
 
-        ./autogen.sh
-        ./configure
-        make && make install
+                cd /opt
+
+                git clone https://github.com/shadowsocks/shadowsocks-libev.git
+
+                cd shadowsocks-libev
+
+                git submodule update --init --recursive \
+
+4. Install Shadowsocks-libev:
+
+                ./autogen.sh
+
+                ./configure
+
+                make && make install
+
+### How Do I Run ShadowSocks On CentOS 7?
+
+To run and install Shadowsocks on CentOS7 follow these steps:
+
+1. Download and update your packages to the newest versions
+
+                yum update && yum upgrade -y
+
+                yum install epel-release -y
+2. Install dependencies on CentOS7
+
+                yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel \
+
+               libev-devel libsodium-devel mbedtls-devel git m2crypto c-ares-devel \
+3. Navigate to the /opt directory on CentOS7 and download the Shadowsocks Git module:
+
+                cd /opt
+
+                git clone https://github.com/shadowsocks/shadowsocks-libev.git
+
+                cd shadowsocks-libev
+
+                git submodule update --init --recursive \
+4. Install Shadowsocks-libev:
+
+                ./autogen.sh
+
+                ./configure
+
+                make && make install
+
+### How Do You Use Shadowsocks Libev?
+
+Shadowsocks libev is a lightweight, purely C-based proxy implementation for embedded devices. To use Shadowsocks libev after its installation, simply add a system user to Shadowsocks, create a directory with its configuration file.
 
 ## Configure the Shadowsocks Server
 
@@ -257,6 +307,22 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
     To confirm that your Linode's IP address is selected, mouse over **Servers**.
 
 1.  Verify that your Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When your connection is working as expected, the website will list your Shadowsocks Linode's public IP.
+
+### How Do I Know If My SOCKS5 Proxy Is Working?
+
+To check if your SOCKS5 proxy is working, you can open your terminal and run the netstat command to see if there is an open port:
+
+                netstat -tlnp
+
+If your SOCKS5 proxy is working, you should see an output similar to below on your terminal: 
+
+                tcp        0      0 232.222.333.414:8888          0.0.0.0:*               LISTEN
+
+Another way to test whether SOCKS5 proxy is working is by using the curl command on the right port of the proxy. For a SOCKS5 proxy hosted at `232.222.333.414` listening at `port 8080`, run the following command on your terminal:
+
+                timeout 5 curl -x socks5://232.222.333.414:8080 https://linode.com/
+
+If our SOCKS5  proxy isn’t working properly on a proxy hosted at `232.222.333.414`, it returns a timeout on our terminal.
 
 ## Where to Go from Here
 
