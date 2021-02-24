@@ -3,7 +3,7 @@ slug: email-with-postfix-dovecot-and-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
+description: 'Learn how to set up an email server with Postfix, Dovecot and MySQL. Your step by step guide towards setting up a secure Postfix email server.'
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "debian", "ubuntu", "dovecot 2"]
 tags: ["debian","email","ubuntu","mysql","postfix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ modified: 2019-01-11
 modified_by:
   name: Linode
 published: 2013-05-13
-title: 'Email with Postfix, Dovecot, and MySQL'
+title: 'How to  Set Up an Email Server With Postfix, Dovecot and MySQL'
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -27,13 +27,33 @@ aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
 
 In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MySQL on Debian or Ubuntu. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
 
+This tutorial assumes that you are familiar with the following:
+
+1. You are familiar with GNU/Command line.
+2. You can work using the Nano text editor. Refer to this [Nano Command line](https://www.linode.com/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
+3. You understand the basics of MySQL data.
+4. You have a basic understanding of email configurations.
+
 ![Email with Postfix, Dovecot, and MySQL](email_with_postfix_dovecot_and_mysql.png "Setting up a mail server with Postfix, Dovecot, and MySQL")
 
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
 {{< content "email-warning-shortguide" >}}
 
-## Before You Begin
+## How to set up an email server with Postfix, Dovecot and MySQL
+
+Setting up an email server using Postfix, Dovecot and MySQL requires these steps:
+1. Set up your Linode with the right security in place.
+2. Configure DNS to send mail to the server.
+3. Set up MySQL, configure, and test it.
+4. Postfix setup - make changes to configuration files (e..g main.cf).
+5. Dovecot - Set up and configure mail delivery agent.
+6. Test email server setup with Mailutils.
+7. Update MySQL to add more domains and emails.
+
+Next, we will go through each step and set up our email server with Postfix, Dovecot and MySQL.
+
+## Prerequisites to setup up an email server with Postfix, Dovecot and MySQL
 
 1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
@@ -41,7 +61,7 @@ For a different Linux distribution or different mail server, review our [email t
 
 1. Review the concepts in the [Running a Mail Server](/docs/email/running-a-mail-server/) guide.
 
-## Configure DNS
+## Configure DNS For Your Email Server
 
 When you're ready to update the DNS and start sending mail to the server, edit the domain's MX record so that it points to the Linode's domain or IP address, similar to the example below:
 
@@ -53,7 +73,7 @@ mail.example.com MX 10 example.com
 
 Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/platform/manager/dns-manager/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
 
-## Update Hosts File
+## Update Hosts File On Your Email Server
 
 Verify that the `hosts` file contains a line for the Linode's public IP address and is associated with the **Fully Qualified Domain Name** (FQDN). In the example below, `192.0.2.0` is the public IP address, `hostname` is the local hostname, and `hostname.example.com` is the FQDN.
 
@@ -95,9 +115,12 @@ This guide uses the following package versions:
 * Dovecot 2.2.33.2
 * MySQL 14.14
 
-## MySQL
+## MySQL Set Up To Send Email With Postfix and Dovecot
 
-The mail server's virtual users and passwords are stored in a MySQL database. Dovecot and Postfix require this data. Follow the steps below to create the database tables for virtual users, domains and aliases:
+The mail server's virtual users and passwords are stored in a MySQL database. Dovecot and Postfix require this data. 
+
+### Create a MySQL Database For Your Postfix Email Server 
+Follow the steps below to create the database tables for virtual users, domains and aliases:
 
 1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
@@ -114,7 +137,7 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
 
         sudo mysqladmin -u root -p create mailserver
 
-1.  Log in to MySQL:
+1.  Log in to MySQL as a root user:
 
         sudo mysql -u root -p
 
@@ -122,7 +145,7 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
 
         GRANT SELECT ON mailserver.* TO 'mailuser'@'127.0.0.1' IDENTIFIED BY 'mailuserpass';
 
-1.  Flush the MySQL privileges to apply the change:
+1.  Run FLUSH to reload MySQL database and apply the change:
 
         FLUSH PRIVILEGES;
 
@@ -255,11 +278,15 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 
         exit
 
-## Postfix
+## How Do Postfix And DoveCot Work Together? 
+
+Postfix and Dovecot work together to help us set up email sending, delivery, and accessibility. While Postfix manages email delivery and receipt, DoveCot allows our email client software to connect to these emails when we want to read them.
+
+## Configuring Postfix MTA For Email Server
 
 Postfix is a *Mail Transfer Agent* (MTA) that relays mail between the Linode and the internet. It is highly configurable, allowing for great flexibility. This guide maintains many of Posfix's default configuration values.
 
-### Configuration File Settings
+### Configuration File Settings for Postfix Email Server
 
 The `main.cf` file is the primary configuration file used by Postfix.
 
@@ -501,7 +528,25 @@ smtps     inet  n       -       -       -       -       smtpd
 
 ## Dovecot
 
-Dovecot is the *Mail Delivery Agent* (MDA) which is passed messages from Postfix and delivers them to a virtual mailbox. In this section, configure Dovecot to force users to use SSL when they connect so that their passwords are never sent to the server in plain text.
+Dovecot is the *Mail Delivery Agent* (MDA) which is passed messages from Postfix and delivers them to a virtual mailbox. 
+
+### Installing Dovecot MDA For Postfix Email Server
+
+To install Dovecot on Ubuntu or Debian run the following command:
+
+sudo apt install dovecot-imapd dovecot-pop3d
+
+This installation comes with several Dovecot modules like:
+1. dovecot-antispam
+2. dovecot-solr
+3. dovecot-ldap
+4. dovecot-sieve
+
+They help Dovecot with a range of functions like spam filtering, user directory management, enabling a full text search, and mail filtering.
+
+### Configuring Postfix Email Server With Dovecot MDA
+
+In this section, configure Dovecot to force users to use SSL when they connect so that their passwords are never sent to the server in plain text.
 
 1.  Copy all of the configuration files so you can easily revert back to them if needed:
 
@@ -731,7 +776,7 @@ ssl_key = </etc/letsencrypt/live/example.com/privkey.pem
 
         sudo systemctl restart dovecot
 
-## Test Email with Mailutils
+## Test Postfix Email Server with Mailutils
 
 1. To send and receive test emails to your Linode mail server, install the Mailutils package:
 
@@ -916,3 +961,85 @@ The `domain_id` should correspond to the `id` value of the domain in the `virtua
 1.  Exit MySQL:
 
         quit
+## Managing Spam With SpamAssassin: Secure Email With Postfix, Dovecot, And MySQL
+
+[Apache SpamAssassin](https://spamassassin.apache.org/) is a free and open source platform that allows us to tackle spam emails. 
+
+To install SpamAssassin, first, update your system by running:
+
+        sudo apt-get update
+
+        sudo apt-get upgrade
+
+And then run:
+
+        apt-get install spamassassin spamc
+
+Once installation is over, open SpamAssassin’s configuration file by running:
+
+        nano /etc/default/spamassassin
+
+Here is a [detailed documentation](https://spamassassin.apache.org/full/3.1.x/doc/Mail_SpamAssassin_Conf.html) of SpamAssassin’s configuration file that you can refer to while working through these next steps. 
+
+Next, create a user for SpamAssassin daemon(spamd):
+        adduser spamd --disabled-login
+
+Let’s start making  the following changes to your /etc/default/spamassassin file :
+
+        Set ENABLED=1
+
+Configure for log file and home directory  by adding the following lines to your configuration file: 
+
+        SPAMD_HOME="/home/spamd/"
+
+        OPTIONS="--create-prefs --max-children 5 --username spamd --helper-home-dir ${SPAMD_HOME} -s ${SPAMD_HOME}spamd.log"
+
+Give a location for PID_File and update anti-spam rules every night by:
+
+        PIDFILE="${SPAMD_HOME}spamd.pid"
+
+        CRON=1
+
+We need to set up our Postfix email server to check each email with a score > 5.0 and mark it with *****SPAM***** and send it directly to the junk folder. Adjust the following inside /etc/spamassassin/local.cf to setup your anti-spam rules:
+
+        rewrite_header Subject ***** SPAM _SCORE_ *****
+
+        report_safe             0
+
+        required_score          5.0
+
+        use_bayes               1
+
+        use_bayes_rules         1
+
+        bayes_auto_learn        1
+
+        skip_rbl_checks         0
+
+        use_razor2              0
+
+        use_dcc                 0
+
+        use_pyzor               0
+
+Next, set up your Postfix email server to allow anti-spam configuration to check incoming emails. Edit your /etc/postfix/master.cf  and add a filter by:
+
+        smtp      inet  n       -       -       -       -       smtpd
+
+        -o content_filter=spamassassin
+
+Also add the following at the end of master.cf:
+
+        spamassassin unix -     n       n       -       -       pipe
+
+        user=spamd argv=/usr/bin/spamc -f -e  
+
+        /usr/sbin/sendmail -oi -f ${sender} ${recipient}
+
+Once you save and exit, start Spamassassin by:
+
+        service spamassassin start
+
+Finally, restart the Postfix email server to get your new anti-spam settings in place: 
+
+        service postfix restart
