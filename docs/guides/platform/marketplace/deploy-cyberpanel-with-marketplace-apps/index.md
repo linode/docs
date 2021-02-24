@@ -3,12 +3,12 @@ slug: deploy-cyberpanel-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy CyberPanel on Linode using Marketplace Apps.'
-og_description: 'Deploy CyberPanel on Linode using Marketplace Apps.'
+description: 'CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps.'
+og_description: 'CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps.'
 keywords: ['cyberpanel','marketplace','server']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-10
+published: 2021-02-23
 modified_by:
   name: Linode
 title: "How to Deploy CyberPanel With Marketplace Apps"
