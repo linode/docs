@@ -34,9 +34,9 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 
     You can, alternatively, create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide. However, because of Canvas's resource demands, you may want to run the SMTP server on a separate machine than the one running Canvas.
 
-1. Canvas recommends a minimum of 8GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine, as in this guide.
+1. Canvas recommends a minimum of 8 GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
 
-    Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more on what components can be installed on their own servers. In addition to the installation instructions in this guide, a multi-server setup requires more advanced configuration to enable communication between each server.
+    You can run some of the components of your Canvas installation on separate machines to improve performance if needed. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more on what components can be installed independently. Be aware that this approach requires some additional configuration to enable communications between the components.
 
 1.  Update your system:
 
@@ -50,7 +50,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Apache
 
-Canvas uses Apache and Phusion's Passenger to serve its web pages. This guide uses the Phusion repository to install both Passenger and Apache.
+Canvas uses Apache and Phusion's Passenger to serve its web pages. Phusion has its own package repository, which this guide uses to install both Passenger and the Passenger module for Apache.
 
 1. Add the key for the Phusion repository and HTTPS support for the package manager:
 
@@ -58,7 +58,7 @@ Canvas uses Apache and Phusion's Passenger to serve its web pages. This guide us
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
         sudo apt install apt-transport-https ca-certificates
 
-1. Add the Phusion repository and update the package manager:
+1. Add the Phusion repository and update the package manager. The `focal` in the first command corresponds to the code name for Ubuntu 20.04:
 
         sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger focal main > /etc/apt/sources.list.d/passenger.list'
         sudo apt update
@@ -131,13 +131,13 @@ Canvas specifically requires version **2.6** of Ruby, which the default package 
 
         sudo apt install git-core
 
-1. Use Git to download the Canvas repository, then change into the repository directory:
+1. Use Git to download the Canvas repository:
 
         git clone https://github.com/instructure/canvas-lms.git ~/canvas
+
+1. Change into the repository directory, and checkout the latest stable branch of the repository:
+
         cd ~/canvas
-
-1. Checkout the latest stable branch of the repository:
-
         git checkout stable
 
 1. Create a directory for Canvas, copy the repository there, and change its ownership to the current user:
@@ -163,7 +163,7 @@ Canvas specifically requires version **2.6** of Ruby, which the default package 
 
 ## Set Up the Canvas Configuration Files
 
-1. Pull down the default configuration values for Canvas:
+1. Copy the example configuration files. Generally, the default configurations do not need to be modified, and the steps that follow walk you through the minor changes that are needed:
 
         for config in amazon_s3 database delayed_jobs domain file_store outgoing_mail security external_migration; do cp config/$config.yml.example config/$config.yml; done
 
@@ -192,11 +192,11 @@ production:
 
     Enter the information for your SMTP service in the `address`, `port`, `user_name`, `password`, and `authentication` fields.
 
-    Enter your server's domain name in the `domain` field.
+    Enter your Canvas server's domain name in the `domain` field.
 
     For `outgoing_address`, create the email address from which Canvas is to deliver emails. Use your server's domain name as the base of the address.
 
-    In the `default_name` field, enter the default name to be used on emails sent from Canvas.
+    In the `default_name` field, enter a name to be used by default on emails sent from Canvas.
 
     {{< file "var/canvas/config/outgoing_mail.yml" >}}
 production:
@@ -212,7 +212,7 @@ production:
 
 1. Open the security configuration file, `/var/canvas/config/security.yml`. Enter a random string of 20 or more characters into the `encryption_key` field.
 
-    You can use a command like the following to generate a random string. This example outputs a random string of 24 alphanumeric characters:
+    You can use a command like the following to generate a random string, which you can then copy and paste into the configuration file. This example outputs a random string of 24 alphanumeric characters:
 
         cat /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 24; echo ''
 
@@ -233,12 +233,12 @@ production:
 
         yarn install
 
-1. Use Bundle to rehash the database encryption key and compile Canvas's assets:
+1. Use Bundle to rehash the encryption key and compile Canvas's assets:
 
         RAILS_ENV=production bundle exec rake db:reset_encryption_key_hash
         RAILS_ENV=production bundle exec rake canvas:compile_assets
 
-    Observe the commands' output for any errors that kill the installation process. If you encounter any, run the command again. It may be helpful to stop any major processes running in the background, like Apache, as in:
+    Observe the commands' output for any errors that stop the processes. If you encounter any, run the command again. The asset compilation can consume a lot of memory, so it may be helpful to stop any major processes running in the background. For instance, you can stop Apache before running these command:
 
         sudo systemctl stop apache2
 
@@ -326,10 +326,16 @@ production:
     {{< /file >}}
 
     {{< note >}}
-Canvas has a relatively long startup time, which can sometimes lead to timeout issues. You can add the following additional line to the Passenger configuration file to increase the time before Canvas times out at startup:
+Canvas has a relatively long startup time, which can sometimes lead to timeout issues. You can add a version of the following line to the Passenger configuration file to increase the time before Canvas times out at startup. This example increases the amount of time before Passenger times out, from the default 60 seconds up to 180 seconds:
 
     PassengerStartTimeout 180
     {{< /note >}}
+
+1. Allow HTTP and HTTPS connections on the system's firewall:
+
+        sudo ufw allow http
+        sudo ufw allow https
+        sudo ufw reload
 
 1. Enable the Apache site configuration:
 
@@ -391,7 +397,7 @@ Canvas has caching disabled by default, but you can, optionally, configure it to
 
         cp config/cache_store.yml.example config/cache_store.yml
 
-1. Using your preferred text editor, open the `cache_store.yml` file, and enter the following, setting `redis_store` as the `cache_store` for `development`, `test`, and `production`:
+1. Using your preferred text editor, open the `cache_store.yml` file, and set `redis_store` as the `cache_store` for `development`, `test`, and `production`. The configuration file should resemble the following:
 
     {{< file "/var/canvas/config/cache_store.yml" >}}
 development:
@@ -406,13 +412,12 @@ production:
 
         cp config/redis.yml.example config/redis.yml
 
-1. Open the `redis.yml` file. Add a `production` section like the following, entering the server location for Redis. If you are running Redis on the same machine as Canvas, this should be `redis://localhost`, as in this example:
+1. Open the `redis.yml` file. Add a `production` section like the following, entering the server location for Redis. If you are running Redis on the same machine as Canvas, this should be `redis://localhost`, as in the following example:
 
     {{< file "/var/canvas/config/redis.yml" >}}
 production:
   servers:
     - redis://localhost
-    db: 1
     {{< /file >}}
 
 1. Once again assign ownership of the configuration files to the current user and limit them to read access:
@@ -426,7 +431,7 @@ production:
 
 ## Next Steps
 
-You have successfully gotten your Canvas website up and running! Visit it by navigating to your server's domain name in a web browser. You are prompted to log in, which you can do using the administrator credentials you created earlier.
+You have successfully gotten your Canvas website up and running! Visit it by navigating to your server's domain name in a web browser. You are prompted to log in, which you can do using the Canvas administrator credentials you created earlier.
 
 [![Canvas login page](canvas-login_small.png "Canvas login page")](canvas-login.png)
 
@@ -435,3 +440,4 @@ Once you log in, you are taken to your Canvas dashboard, from which you can view
 [![Canvas dashboard](canvas-dashboard_small.png "Canvas dashboard")](canvas-dashboard.png)
 
 You can learn more about how to get started using your Canvas website and all the features it has to offer on the [Canvas Community](https://community.canvaslms.com/) website. Be sure to check out the [wealth of guides](https://community.canvaslms.com/t5/Canvas/ct-p/canvas) the Canvas Community has, covering everything from basic, day-to-day usage to advanced features.
+
