@@ -34,7 +34,7 @@ This guide shows you how to get a Canvas website up and running on a Debian 10 s
 
 1. Prepare an SMTP server that Canvas can use to send email notifications to users. You can use a third-party SMTP service for this purpose. This guide uses [Mailgun](https://www.mailgun.com/) as the third-party SMTP provider in its example configurations.
 
-    You can, alternatively, create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide. However, because of Canvas's resource demands, you may want to run the SMTP server on a separate machine than the one running Canvas.
+    You can run some of the components of your Canvas installation on separate machines to improve performance if needed. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more on what components can be installed independently. Be aware that this approach requires some additional configuration to enable communications between the components.
 
 1. Canvas recommends a minimum of 8 GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
 
@@ -60,7 +60,7 @@ Canvas uses Apache and Phusion's Passenger to serve its web pages. Phusion has i
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
         sudo apt install apt-transport-https ca-certificates
 
-1. Add the Phusion repository and update the package manager. The `buster` in the first of these commands is the code name for Debian 10:
+1. Add the Phusion repository and update the package manager. The `buster` in the first of these commands corresponds to the code name for Debian 10:
 
         sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger buster main > /etc/apt/sources.list.d/passenger.list'
         sudo apt update
@@ -427,7 +427,7 @@ production:
 
         cp config/redis.yml.example config/redis.yml
 
-1. Open the `redis.yml` file. Add a `production` section like the following, entering the server location for Redis. If you are running Redis on the same machine as Canvas, this should be `redis://localhost`, as in this example:
+1. Open the `redis.yml` file. Add a `production` section like the following, entering the server location for Redis. If you are running Redis on the same machine as Canvas, this should be `redis://localhost`, as in the following example:
 
     {{< file "/var/canvas/config/redis.yml" >}}
 production:
