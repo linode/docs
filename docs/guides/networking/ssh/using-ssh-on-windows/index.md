@@ -31,12 +31,12 @@ As of late 2018, [OpenSSH](https://docs.microsoft.com/en-us/windows-server/admin
 
 ![alt_text](image3.png "image_tooltip")
 
-1. Click on **Add a feature**. A dropdown menu will appear. Select the **OpenSSH client**,  followed by the **Install** button.
+1. Click on **Add a feature**. A dropdown menu will appear. Select the **OpenSSH client**, followed by the **Install** button.
 
 
 ![alt_text](image2.png "image_tooltip")
 
-Using SSH on Windows 10 is similar to using it on other operating systems like Linux or Mac OSX, and can be accessed  in the command prompt.
+Using SSH on Windows 10 is similar to using it on other operating systems like Linux or Mac OSX, and can be accessed in the command prompt.
 
 ### Using SSH on Windows 10 To Connect To A Server
 
@@ -48,32 +48,32 @@ To connect with an SSH server, use the following syntax
 
 If you want to connect with an SSH server at the domain "ssh.linode.com" with a username of "linode" for example, enter the following command:
 
-	ssh linode@ssh.linode.com
+  ssh linode@ssh.linode.com
 
-When this command is entered, the SSH client will try to connect to ssh.linode.com on the standard TCP port 22 by default. If your SSH server is hosted on a different port, this port will need to be specified as part of the SSH coommand. You can modify the previous command and define the TCP port you need to connect to with the following syntax:
+When this command is entered, the SSH client will try to connect to ssh.linode.com on the standard TCP port 22 by default. If your SSH server is hosted on a different port, this port will need to be specified as part of the SSH command. You can modify the previous command and define the TCP port you need to connect to with the following syntax:
 
-	ssh <username>@<domainoripaddress> -p <port number>
+  ssh <username>@<domainoripaddress> -p <port number>
 
 If the TCP port you want to connect with is "2222" for example, you can modify the previous command to:
 
-	ssh linode@ssh.linode.com -p 2222
+  ssh linode@ssh.linode.com -p 2222
 
 When you connect with a server for the first time, the SSH client will prompt you to check and verify the host's key fingerprint. When you execute the ssh command, you will see the following output:
 
-	PS C:\Users\linode> ssh linode@ssh.linode.com -p 2222
+  PS C:\Users\linode> ssh linode@ssh.linode.com -p 2222
 
-	The authenticity of host ‘linode.com (29.217.172.207)’ can't be established.
+  The authenticity of host ‘linode.com (29.217.172.207)’ can't be established.
 
-	ECDSA key fingerprint is    SHA256:T2RssD0dEslggzS/BROmiE/s70WqcYy6bk52fs+MLTIptM.
+  ECDSA key fingerprint is    SHA256:T2RssD0dEslggzS/BROmiE/s70WqcYy6bk52fs+MLTIptM.
 
-	Are you sure you want to continue connecting (yes/no)? yes
+  Are you sure you want to continue connecting (yes/no)? yes
 
-	Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
+  Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
 
 Accept the prompt, and the ssh connection will be approved and established.
 
 
-### Using SSH On  Windows 10 With Secure Shell App On Chrome
+### Using SSH On Windows 10 With Secure Shell App On Chrome
 
 Secure shell is a Chrome application that allows you to execute ssh commands on the Chrome browser. This HTML based SSH client runs on Javascript. To use it, go to the [Secure Shell Extension](https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo?hl=en) page on the Google chrome store and click **Add to Chrome** to install. Review and accept the required permission at the prompt, and select **Add App** to confirm the installation.
 
@@ -99,43 +99,43 @@ To use Secure Shell App without having to use the `chrome://apps/` URL, you can 
 Once you enter your user and hostname, along with any desired port, you will see output similar to the following in your chrome terminal:
 
 {{< output >}}
-	Welcome to Secure Shell App version 0.37.
+  Welcome to Secure Shell App version 0.37.
 
-	Answers to frequently asked questions: https://goo.gl/muppJj (Ctrl+Click on links to open)
+  Answers to frequently asked questions: https://goo.gl/muppJj (Ctrl+Click on links to open)
 
-	[Pro Tip] Use 'Open as window' or 'Fullscreen' to prevent Ctrl+W from closing your terminal!
+  [Pro Tip] Use 'Open as window' or 'Fullscreen' to prevent Ctrl+W from closing your terminal!
 
-	[Pro Tip] See https://goo.gl/muppJj for more information.
+  [Pro Tip] See https://goo.gl/muppJj for more information.
 
-	ChangeLog/release notes: /html/changelog.html
+  ChangeLog/release notes: /html/changelog.html
 
-	Major changes since 0.34:
+  Major changes since 0.34:
 
-	 ¤ Enable connection resume for Google corp-relay-v4 users.
+   ¤ Enable connection resume for Google corp-relay-v4 users.
 
-	 ¤ OpenSSH upgraded to 8.4p1.
+   ¤ OpenSSH upgraded to 8.4p1.
 
-	Random pro tip #3: Connect from the omnibox by typing 'ssh &lt;profile name>': https://goo.gl/V7o8ki
+  Random pro tip #3: Connect from the omnibox by typing 'ssh &lt;profile name>': https://goo.gl/V7o8ki
 
-	Notice: Please migrate to the new Secure Shell extension (link).
+  Notice: Please migrate to the new Secure Shell extension (link).
 
-	Chrome Apps are deprecated, so this version will stop receiving updates.
+  Chrome Apps are deprecated, so this version will stop receiving updates.
 
-	Please see the migration guide (link) for more details.
+  Please see the migration guide (link) for more details.
 
-	Loading NaCl plug-in… done.
+  Loading NaCl plug-in… done.
 
-	Connecting to linode@ssh.linode.com…
+  Connecting to linode@ssh.linode.com…
 
-	ssh: connect to host hostname port 22
+  ssh: connect to host hostname port 22
 
-	The authenticity of host ‘linode.com (29.217.172.207)’ can't be established.
+  The authenticity of host ‘linode.com (29.217.172.207)’ can't be established.
 
-	ECDSA key fingerprint is    SHA256:T2RssD0dEslggzS/BROmiE/s70WqcYy6bk52fs+MLTIptM.
+  ECDSA key fingerprint is    SHA256:T2RssD0dEslggzS/BROmiE/s70WqcYy6bk52fs+MLTIptM.
 
-	Are you sure you want to continue connecting (yes/no)? yes
+  Are you sure you want to continue connecting (yes/no)? yes
 
-	Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
+  Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
 {{< /output >}}
 
 Enter `yes` to accept the host fingerprint that appears. Next, enter your password to establish a connection. Once a connection is established output similar to the following will appear in the Secure Shell App Terminal:
@@ -144,7 +144,7 @@ Enter `yes` to accept the host fingerprint that appears. Next, enter your passwo
 Warning: Permanently added ‘linode.com (29.217.172.207)’ (ECDSA) to the list of known hosts.
 
 
-linode@29.217.172.207’s password: 
+linode@29.217.172.207’s password:
 
 Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-33-generic x86_64)
 
@@ -154,13 +154,13 @@ Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-33-generic x86_64)
 
  * Support:        https://ubuntu.com/advantage
 
-45 packages can be updated. 
+45 packages can be updated.
 
-0 updates are security updates. 
+0 updates are security updates.
 
-New releases ‘20.01 LTS’ available. 
+New releases ‘20.01 LTS’ available.
 
-Run ‘do-release-upgrade’ to upgrade it. 
+Run ‘do-release-upgrade’ to upgrade it.
 {{</ output >}}
 
 ## Cygwin
