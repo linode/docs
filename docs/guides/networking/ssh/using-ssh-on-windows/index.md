@@ -29,12 +29,11 @@ As of late 2018, [OpenSSH](https://docs.microsoft.com/en-us/windows-server/admin
 
 1. Next, select **Apps**. Click on **Optional Features** or **Manage optional features** from the menu that appears.
 
-![alt_text](image3.png "image_tooltip")
+    ![Manage optional features in Windows Settings](image3.png "Manage optional features in Windows Settings")
 
 1. Click on **Add a feature**. A dropdown menu will appear. Select the **OpenSSH client**, followed by the **Install** button.
 
-
-![alt_text](image2.png "image_tooltip")
+    ![The Optional Features menu, where you can add the OpenSSH client.](image2.png "The Optional Features menu, where you can add the OpenSSH client.")
 
 Using SSH on Windows 10 is similar to using it on other operating systems like Linux or Mac OSX, and can be accessed in the command prompt.
 
@@ -48,27 +47,29 @@ To connect with an SSH server, use the following syntax
 
 If you want to connect with an SSH server at the domain "ssh.linode.com" with a username of "linode" for example, enter the following command:
 
-  ssh linode@ssh.linode.com
+    ssh linode@ssh.linode.com
 
 When this command is entered, the SSH client will try to connect to ssh.linode.com on the standard TCP port 22 by default. If your SSH server is hosted on a different port, this port will need to be specified as part of the SSH command. You can modify the previous command and define the TCP port you need to connect to with the following syntax:
 
-  ssh <username>@<domainoripaddress> -p <port number>
+    ssh <username>@<domain_or_ip_address> -p <port number>
 
 If the TCP port you want to connect with is "2222" for example, you can modify the previous command to:
 
-  ssh linode@ssh.linode.com -p 2222
+    ssh linode@ssh.linode.com -p 2222
 
 When you connect with a server for the first time, the SSH client will prompt you to check and verify the host's key fingerprint. When you execute the ssh command, you will see the following output:
 
-  PS C:\Users\linode> ssh linode@ssh.linode.com -p 2222
+{{< output >}}
+PS C:\Users\linode> ssh linode@ssh.linode.com -p 2222
 
-  The authenticity of host ‘linode.com (29.217.172.207)’ can't be established.
+The authenticity of host ‘linode.com (29.217.172.207)’ can't be established.
 
-  ECDSA key fingerprint is    SHA256:T2RssD0dEslggzS/BROmiE/s70WqcYy6bk52fs+MLTIptM.
+ECDSA key fingerprint is    SHA256:T2RssD0dEslggzS/BROmiE/s70WqcYy6bk52fs+MLTIptM.
 
-  Are you sure you want to continue connecting (yes/no)? yes
+Are you sure you want to continue connecting (yes/no)? yes
 
-  Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'pc' (ECDSA) to the list of known hosts.
+{{</ output >}}
 
 Accept the prompt, and the ssh connection will be approved and established.
 
@@ -77,24 +78,22 @@ Accept the prompt, and the ssh connection will be approved and established.
 
 Secure shell is a Chrome application that allows you to execute ssh commands on the Chrome browser. This HTML based SSH client runs on Javascript. To use it, go to the [Secure Shell Extension](https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo?hl=en) page on the Google chrome store and click **Add to Chrome** to install. Review and accept the required permission at the prompt, and select **Add App** to confirm the installation.
 
-![alt_text](image4.png "image_tooltip")
+![An example of the Secure Shell extension running the browser.](image4.png "An example of the Secure Shell extension running the browser.")
 
 
 Once installed, you are automatically taken to your homepage on Google Chrome. If for some reason Google Chrome fails to redirect you, enter `chrome://apps/` as the url into the chrome browser.
 
 You should see **Secure Shell App**:
 
-![alt_text](image5.png "image_tooltip")
-
+![The Secure Shell App in the app listing in Chrome.](image5.png "The Secure Shell App in the app listing in Chrome.")
 
 Click on **Secure Shell App** and to launch a new terminal directly in your Chrome browser:
 
-![alt_text](image6.png "image_tooltip")
+![The Secure Shell App running in the browser.](image6.png "The Secure Shell App running in the browser.")
 
 To use Secure Shell App without having to use the `chrome://apps/` URL, you can simply start typing ssh in your chrome tab’s URL section for that APP to dynamically begin entering your command. You can then write your user and hostname to connect.
 
-![alt_text](image7.png "image_tooltip")
-
+![Running the Secure Shell App from the URL section of Chrome.](image7.png "Running the Secure Shell App from the URL section of Chrome.")
 
 Once you enter your user and hostname, along with any desired port, you will see output similar to the following in your chrome terminal:
 
