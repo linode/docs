@@ -4,41 +4,35 @@ author:
   name: Cameron Laird
   email: claird@phaseit.net
 description: 'This reference guide brings you up to speed on YAML data types and structure design, with plenty of examples.'
-og_description: 'Need to get started with #YAML? @phaseit's reference guide brings you up to speed on YAML data types and structure design, with plenty of examples.'
+og_description: 'Need to get started with #YAML? @phaseit''s reference guide brings you up to speed on YAML data types and structure design, with plenty of examples.'
 keywords: ['yaml reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09
 modified_by:
   name: Linode
-title: "Yaml Reference"
+title: "A YAML Syntax Reference"
 h1_title: "A YAML syntax reference."
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit
 ---
 
-# A YAML syntax reference
+YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom datatypes. Since YAML is very popular with automated builds and [continous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. is widely-used, a fact made evident by and can be found in many GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
 
-YAML is a data interchange format commonly used in configuration files. YAML often is conceived as a lightweight alternative to XML; [Ansible](https://www.linode.com/docs/guides/applications/configuration-management/ansible/?q=ansible) playbooks and [Docker](https://www.linode.com/docs/guides/what-is-docker/) Compose configurations, for instance, are both written in YAML. YAML 1.2 is a superset of JSON, and is extensible through definition of custom datatypes. At last count, GitHub included several scores of millions of YAML sources in its public repositories, a testimony to YAML&#39;s ubiquity.
+Consider a simple YAML file:
 
-This reference guide serves as an introduction to YAML, and uses examples to clarify the language&#39;s characteristics.
-
-As an introduction, consider a simple YAML file:
-
-```
+{{< file "myconfig.yaml">}}
 # myconfig.yaml: configuration source for myapp.
 include_dirs: [library, object]
 maximum_size: 8
 show_password: False
-```
+{{</ file >}
 
-This code communicates to `myapp` that the application includes two directories, `library` and `object`, in whatever myapp does; that 8 is as big as something gets; and that passwords should be hidden. Many applications depend on configurations of this sort to control how the software operates, and YAML is a good vehicle for setting configuration. [Bandit](https://pypi.org/project/bandit/), for instance, is a popular tool for security scans of Python applications, and Bandit&#39;s configuration is expressed in YAML.
+This code communicates the desired settings for the example application, `myapp`. Some of the example settings are that the app includes two directories, `library` and `object`, that `8` is as big as something gets; and that passwords should be hidden. Many applications depend on configurations of this sort to control how the software operates, and YAML is a good vehicle for setting configuration. [Bandit](https://pypi.org/project/bandit/), for instance, is a popular tool for security scans of Python applications. Bandit's configuration is expressed in YAML.
 
 ## How YAML is used
 
-YAML works across operating systems, virtual environments, and data platforms.
-
-It is used most often to control how systems operate. For instance, [Kubernetes](https://www.linode.com/docs/guides/kubernetes) configures much of its action through YAML files, as do dozens of other common IT tools.
+YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, [Kubernetes](https://www.linode.com/docs/guides/kubernetes) configures much of its action through YAML files, as do dozens of other common IT tools.
 
 But YAML also can fill other roles, such as data interchange. You might use YAML as a data format for transmission of an invoice, for recording the instantaneous state of a long-lasting game, or for communication between subsystems in complex physical machinery.
 
