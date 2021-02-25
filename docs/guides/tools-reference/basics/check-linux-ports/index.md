@@ -19,7 +19,7 @@ external_resources:
 - '[Inspecting Network Information with netstat](https://www.linode.com/docs/guides/inspecting-network-information-with-netstat/)'
 ---
 
-One step in securing a Linux computer system is identifying which ports are active.  Was your system hacked? Is your database exposed to the internet? Is there malware hiding on your system stealing information? When you need to answer these questions, one step is to scan your Linux system’s ports to determine which are in use so you can identify both ends of active connections.
+One step in securing a Linux computer system is identifying which ports are active. Your system's active ports give you information about which outside applications may be connected to your system. You can also discover if you are unintentionally exposing an application or service to the internet, like a MySQL database. There are several Linux tools that help you discover which ports are in use and identify both ends of active communications. This guide introduces three common tools you can use find the active ports on your Linux server or computer with links to guides that dive deeper into each tool.
 
 ## What is a Port in Computer Networking?
 
@@ -31,8 +31,6 @@ Three tools to help you check ports in use on a Linux system are:
 - *netstat*: This tool shows your server's network status.
 -  *ss*: You can view socket statistics with the ss tool. For example, ss allows you to monitor TCP, UDP, and UNIX sockets.
 - *lsof*: This Linux utility lists open files. Since everything on a Linux system can be considered a file, lsof provides a lot of information on your entire system.
-
-Since all three tools are widely-available and similar, which tool you use depends on your preference and familiarity with each.
 
 ### Using netstat
 
@@ -49,6 +47,7 @@ Running `netstat` without any options displays all open sockets and network conn
         netstat -ltp
 
 The output resembles the following:
+
 {{< output >}}
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
@@ -61,68 +60,53 @@ tcp6       0      0 [::]:http               [::]:*                  LISTEN      
 tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      2145/sshd: /usr/sbi
 {{</ output >}}
 
- To learn how to install netstat, interpret its output, and view common command line options, see our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/) guide.
+To learn how to install netstat, interpret its output, and view common command line options, see our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/) guide.
 
 ### Using ss
 
-Use [**ss**](https://www.linode.com/docs/guides/ss/) to monitor TCP, UDP, and UNIX sockets. To view all system sockets, elevate the utility’s privileges with `sudo`, unless you are already running as the `root user.
+The [**ss**](https://www.linode.com/docs/guides/ss/) tool was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
 
-Running `ss` with no options displays TCP, UDP, and UNIX sockets. To restrict the output, use one or more options.
+Running the `ss` with no options displays TCP, UDP, and UNIX sockets. Similar to netstat, restrict the ss command's output by using command-line options. For example, to view all listening and non-listening TCP sockets issue the following command:
 
-| **Option** | **Definition** |
-| :----- | :----- |
-| \-h | The -h option shows a summary of all options. |
-| \-V | The -V option displays the ss version. |
-| \-H | The -H option tells ss to suppress the header line. This is useful when you process the generated output using a scripting language. |
-| \-t | The -t parameter tells ss to show TCP connections only. |
-| \-u | The -u parameter tells ss to show UDP connections only. |
-| \-d | The -d parameter tells ss to show DCCP sockets only. |
-| \-S | The -S parameter tells ss to show SCTP sockets only. |
-| \-a | The -a option tells ss to display both listening and non-listening sockets of every kind. |
-| \-l | The -l parameter tells ss to display listening sockets (they are omitted by default). |
-| \-e | The -e option tells ss to display detailed socket information. |
-| \-x | The -x parameter tells ss to display UNIX domain sockets only. |
-| \-A | The -A option allows you to select the socket types that ss should show. The `-A` option accepts the following set of identifiers that can be combined and separated by commas: `all`, `inet`, `tcp`, `udp`, `raw`, `unix`, `packet`, `netlink`, `unix\_dgram`, `unix\_stream`, `unix\_seqpacket`, `packet\_raw`, and `packet\_dgram`. |
-| \-4 | The -4 command line option tells ss to display IPv4 connections only. |
-| \-6 | The -6 command line option tells ss to display IPv6 connections only. |
-| \-f FAMILY | The -f tells ss to display sockets of type FAMILY. The supported values are `unix`, `inet`, `inet6`, and `netlink`. |
-| \-s | The -s option displays useful statistics about current connections. |
-| \-o | The -o option displays timer information. There are five types of timers: `on` (a TCP retrans timer, a TCP early retrans timer, or a tail loss probe timer); `keepalive` (the TCP keep alive timer); `timewait` (the timewait stage timer); persist (the zero window probe timer); and `unknown` (a timer that doesn’t fit into the other categories). |
-| \-n | The -n option tells ss to disable the resolving of service names. |
-| \-r | The -r option tells ss to enable DNS resolving in the output, which is turned off by default. |
-| \-m | The -m parameter tells ss to display socket memory usage information. |
-| \-p | The -p parameter tells ss to display the process that is using a socket. |
-| \-D FILE | The -D parameter tells ss to save the output to the FILE file. |
+        ss -t -a
+
+The output resembles the following:
+
+{{< output >}}
+State         Recv-Q     Send-Q         Local Address:Port               Peer Address:Port     Process
+LISTEN        0          4096                 0.0.0.0:http-alt                0.0.0.0:*
+LISTEN        0          4096           127.0.0.53%lo:domain                  0.0.0.0:*
+LISTEN        0          128                  0.0.0.0:ssh                     0.0.0.0:*
+LISTEN        0          70                 127.0.0.1:33060                   0.0.0.0:*
+LISTEN        0          151                127.0.0.1:mysql                   0.0.0.0:*
+ESTAB         0          0              192.0.2.0:ssh               192.0.2.1:51617
+TIME-WAIT     0          0              192.0.2.0:ssh              192.0.2.2:60630
+TIME-WAIT     0          0              192.0.2.0:ssh               192.0.2.3:51312
+TIME-WAIT     0          0                  127.0.0.1:http-alt              127.0.0.1:52456
+TIME-WAIT     0          0              192.0.2.0:ssh               192.0.2.4:44364
+ESTAB         0          0              192.0.2.0:ssh              192.0.2.5:51718
+LISTEN        0          511                        *:http                          *:*
+LISTEN        0          128                     [::]:ssh                        [::]:*
+{{</ output >}}
+
+To take a deeper dive into the ss tool, read our [Learning to Use the ss Tool to its Full Potential](/docs/guides/ss/) guide. This guide provides commands specific to each protocol, commands to view general statistics about a system's current connections, and ways to filter your output.
 
 ### Using lsof
 
-[**lsof**](https://www.linode.com/docs/guides/lsof/) lists open files. However, *everything* is a file in Linux, which means `lsof` can report open network interfaces and network connections. To view all system sockets, elevate the utility’s privileges with `sudo`, unless you are already running as the root user.
+Since everything on a Linux system can be considered a file, the **lsof** tool can report on many aspects of a system, including open network interfaces and network connections. The lsof tool is preinstalled on many Linux distributions, so you may consider using it before a tool you need to install. One unique feature of the lsof tool is *repeat mode**. This mode allows you to run the `lsof` command continuously on a timed interval. When inspecting your system to find information about which ports are in use, lsof can return information about which user and processes are using a specific port. For example, when working with a local development environment you may want to find which localhost ports are currently in use. Use the following command to retrieve this information:
 
-To restrict the output to your area of interest, use the appropriate options.
+        lsof -i@localhost
 
-| **Option** | **Description** |
-| :----- | :----- |
-| \-h and -? | Both options present a help screen. Note that you need to properly escape the `?` character for `-?` to work. |
-| \-a | This option tells lsof to logically ADD all provided options. |
-| \-b | This option tells lsof to avoid kernel functions that might block the returning of results. This is a very specialized option. |
-| \-l | If converting a user ID to a login name is working improperly or slowly, you can disable it using the -l parameter. |
-| --P | The -P option prevents the conversion of port numbers to port names for network files. |
-| \-u list | You can define a list of login names or user ID numbers whose files are returned using the -u option. The -u option supports the `^` character for excluding the matches from the output. |
-| \-c list | Use the -c option to limit the display of files for processes executing the commands that begin with the characters in the list. This supports regular expressions, and also supports the `^` character for excluding the matches from the output. |
-| \-p list | The -p option selects the files for processes whose process IDs are in the list. The -p option supports the `^` character for excluding the matches from the output. |
-| \-g list | Use the -g option to select the files for the processes whose optional process group IDs are in the list. The -g option supports the `^` character for excluding the matches from the output. |
-| \-s | The -s option allows you to select the network protocols and states that interest you. The -s option supports the `^` character for excluding the matches from the output. The correct form is `PROTOCOL:STATE`. Possible protocols are `UDP` and `TCP`. Among the possible TCP states are: `CLOSED`, `SYN-SENT`, `SYN-RECEIVED`, `ESTABLISHED`, `CLOSE-WAIT`, `LAST-ACK`, `FIN-WAIT-1`, `FIN-WAIT-2`, `CLOSING`, and `TIME-WAIT`. Possible UDP states are `Unbound` and `Idle`. |
-| \+d s | The +d option instructs lsof to search for all open instances of directory `s` and the files and directories it contains at its top level. |
-| \+D directory | The +D option tells lsof to search for all open instances of directory `directory` and all the files and directories it contains to its complete depth. |
-| \-d list | The -d option specifies the list of file descriptors to include or exclude from the output. `-d 1,\^2` means include file descriptor 1 and exclude file descriptor 2. |
-| \-i4 | Use this option to display IPv4 data only. |
-| \-i6 | Use this option to display IPv6 data only. |
-| \-i | The -i option without any values tells lsof to display network connections only. |
-| \-i address | The -i option with a value limits the displayed information to match that value. Some example values are `TCP:25` for displaying TCP data that listens to port number 25, `@google.com` for displaying information related to google.com, `:25` for displaying information related to port number 25, `:POP3` for displaying information related to the port number that is associated to POP3 in the `/etc/services` file, etc. You can also combine hostnames and IP addresses with port numbers and protocols. |
-| \-t | The -t option tells lsof to display process identifiers without a header line. This is particularly useful for feeding the output of lsof to the `kill(1)` command or to a script. Notice that `-t` automatically selects the `-w` option. |
-| \-w | The -w option disables the suppression of warning messages. |
-| \+w | The +w option enables the suppression of warning messages. |
-| \-r TIME | The -r option causes the lsof command to repeat every `TIME` seconds until the command is manually terminated with an interrupt. |
-| \+r TIME | The +r command, with the `+` prefix, acts the same as the -r command, but exits its loop when it fails to find any open files. |
-| \-n | The -n option prevents network numbers from being converted to host names. |
-| \-F CHARACTER | The -F command instructs lsof to produce output that is suitable as input for other programs. For a complete explanation, consult the lsof manual entry. |
+The output returns a similar response:
+
+{{< output >}}
+COMMAND     PID     USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Adobe\x20   932     jdoe   14u  IPv4 0x3dab8c45775e6b5b      0t0  TCP localhost:15292 (LISTEN)
+Code\x20H 38254     jdoe   81u  IPv4 0x3dab8c45922118fb      0t0  TCP localhost:49336 (LISTEN)
+VBoxHeadl 49798     jdoe   15u  IPv4 0x3dab8c45a01fcf1b      0t0  TCP localhost:rockwell-csp2 (LISTEN)
+Google    55001     jdoe   37u  IPv4 0x3dab8c457579acbb      0t0  TCP localhost:51706->localhost:bmc_patroldb (ESTABLISHED)
+hugo      57981     jdoe 8041u  IPv4 0x3dab8c45a423853b      0t0  TCP localhost:bmc_patroldb (LISTEN)
+hugo      57981     jdoe 8042u  IPv4 0x3dab8c45a3a8e2db      0t0  TCP localhost:bmc_patroldb->localhost:51706 (ESTABLISHED)
+{{</ output >}}
+
+To learn more about the `lsof` command read our [How to List Open Files with lsof](/docs/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.
