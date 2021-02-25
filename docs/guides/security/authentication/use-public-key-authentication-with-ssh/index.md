@@ -67,7 +67,7 @@ In order for your Linode to recognize and accept your key pair, you must upload 
 
 To set up SSH key authentication for one of your server's users, add your public key to a new line inside the user's `authorized_keys` file. This file is stored inside a directory named `.ssh/` under the user's home folder. A user's `authorized_keys` file can store more than one public key, and each public key is listed on its own line. If your file contains more than one public key, then the owner of each key listed can log in as that user.
 
-### Granting Someone Else Access to your Server
+### Granting Someone Else Access to Your Server
 
 To give someone else access to your server's user, simply add their public key on a new line in your `authorized_keys` file, just as you would add your own. To revoke access for that person, remove that same line and save the changes.
 
@@ -137,7 +137,7 @@ The key fingerprint is:
 f6:61:a8:27:35:cf:4c:6d:13:22:70:cf:4c:c8:a0:23 your_username@linode
 {{< /output >}}
 
-### Upload your Public Key
+### Upload Your Public Key
 
 There are a few different ways to upload your public key to your Linode from Linux and macOS client systems:
 
@@ -165,7 +165,7 @@ your_username@192.0.2.0's password:
 Secure Copy (`scp`) is a tool that copies files from a local computer to a remote server over SSH:
 
 {{< caution >}}
-These instructions will overwrite any existing contents of the `authorized_keys` file on your server. If you have already set up other public keys on your server, use the [`ssh-copy-id` command](#using-ssh-copy-id) or [enter your key manually](#manually-copy-an-ssh-key).
+These instructions will overwrite any existing contents of the `authorized_keys` file on your server. If you have already set up other public keys on your server, use the [`ssh-copy-id` command](#using-ssh-copy-id) or [enter your key manually](#manually-copy-your-public-key).
 {{< /caution >}}
 
 1.  Connect to your server at its IP address via SSH with the user you would like to add your key to:
@@ -186,7 +186,7 @@ These instructions will overwrite any existing contents of the `authorized_keys`
 
 1.  [Verify that you can log in](#connect-to-the-remote-server) to the server with your key.
 
-#### Manually Copy your Public Key
+#### Manually Copy Your Public Key
 
 You can also manually add an SSH key to a server:
 
@@ -246,7 +246,7 @@ Do not allow the local machine to remember the passphrase in its keychain unless
 Enter passphrase for key '/root/.ssh/id_rsa':
 {{< /output >}}
 
-1.  Enter your password. You should see the connection established in the local terminal.
+1.  Enter your passphrase. You should see the connection established in the local terminal.
 
 ## Public Key Authentication on Windows
 
@@ -329,7 +329,7 @@ These instructions will overwrite any existing contents of the `authorized_keys`
 
 Start PuTTY and **Load** your saved session. You are be prompted to enter your server user's login name as before. However, this time you are prompted for your private SSH key's *passphrase* rather than the *password* for your server's user. Enter the passphrase and press **Enter**.
 
-## Upload your SSH Key to Linode Cloud Manager
+## Upload Your SSH Key to Linode Cloud Manager
 
 It is possible to provision each new Linode you create with an SSH public key automatically through the [Cloud Manager](https://cloud.linode.com).
 
