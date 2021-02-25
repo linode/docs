@@ -30,13 +30,13 @@ show_password: False
 
 This code communicates the desired settings for the example application, `myapp`. Some of the example settings are that the app includes two directories, `library` and `object`, that `8` is as big as something gets; and that passwords should be hidden. Many applications depend on configurations of this sort to control how the software operates, and YAML is a good vehicle for setting configuration. [Bandit](https://pypi.org/project/bandit/), for instance, is a popular tool for security scans of Python applications. Bandit's configuration is expressed in YAML.
 
-## How YAML is used
+## How YAML is Used
 
 YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, [Kubernetes](https://www.linode.com/docs/guides/kubernetes) configures much of its action through YAML files, as do dozens of other common IT tools.
 
-But YAML also can fill other roles, such as data interchange. You might use YAML as a data format for transmission of an invoice, for recording the instantaneous state of a long-lasting game, or for communication between subsystems in complex physical machinery.
+YAML is also used for data interchange. You might use YAML as a data format for transmission of an invoice, for recording the instantaneous state of a long-lasting game, or for communication between subsystems in complex physical machinery.
 
-### Three basic rules
+### Three Basic Rules
 
 While YAML is powerful, you can get started with only a few basics, which suffice for most common uses. It&#39;s perfectly fine to focus on a handful of rules that address the situations _you_ need, and leave the other 200-plus grammatical rules to specialists.
 
