@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 keywords: ["minecraft", "ubuntu", "debian"]
 tags: ["ubuntu", "debian"]
-description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian'
+description: 'Learn how to set up a Minecraft server on Ubuntu or Debian. This guide will also show you how to configure a Minecraft firewall to increase security.'
 aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
@@ -96,6 +96,51 @@ The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minec
 
         chmod +x /home/minecraft/run.sh
 
+## How To Update Minecraft Server To The Latest Version
+
+To upgrade your Minecraft to the latest version, change your current working directory to /minecraft by running the following command:
+
+                cd /minecraft
+
+Now, create a backup of the word file. This is an important step as in case of any issue it is easy to restore your settings using this backup file.
+
+                sudo  cp - r world world_backup
+
+Once you run the command above, the world file is copied and a backup is created with the name of `world_backup`.
+
+Next, create a backup of our minecraft_server.jar file as well. We create a backup and name it as mincraft_server.jar_backup by running the following command:
+
+                sudo cp minecraft_server.jar minecraft_server.jar_backup
+
+Visit the [Minecraft Server download page](https://www.minecraft.net/en-us/download/server/) and copy the URL to the `.jar` file. Run the following command to download this `.jar` file:
+
+                sudo wget  https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar
+
+We have downloaded version 1.16.5 (minecraft_server.1.16.5.jar).
+
+Let’s upgrade our Minecraft server now. If you have an already running Minecraft server, stop it first. To do that, run the following command:
+
+                screen  -r 
+
+We have now attached to the screen session. Once attached, we can press `Ctrl + C` to stop the server. 
+
+To upgrade our Minecraft server, let’s copy the new file and replace our existing version with it by running the following command:
+
+                sudo mv minecraft_server.1.16.5.jar minecraft_server.1.13.jar
+
+Running this command updates our Minecraft server versions from 1.13 to 1.16.5.
+
+To start using this new version, we need to restart the Minecraft server. You can do that by:
+
+*   Starting  a new screen by using the following command:
+
+                screen -r
+*   Launching the updated Minecraft server by:
+
+                java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.5.jar nogui
+
+And you have an updated Minecraft server running on your Ubuntu or Debian.
+
 ## Run Minecraft
 
 1.  The first time you run the Minecraft server it will create an EULA file and then exit:
@@ -168,3 +213,43 @@ To disconnect from the screen session without stopping the game server, press **
     [![Minecraft Players.](minecraft-gameplay_small.png)](minecraft-gameplay.png)
 
 Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
+
+## Configure Your Minecraft Server Firewall
+
+To understand the firewall a bit more, we need to look into how Minecraft servers are typically set up. Any external network is separated from your Minecraft’s internal network by a firewall. In absence of a firewall rule, your router will act as your firewall - preventing anyone on the internet from being able to access your Minecraft server.
+
+Earlier in this guide under the prerequisites section, we have a note around allowing a firewall rule:
+
+                -A INPUT -p tcp –dport 25565 -j ACCEPT
+
+
+Here are some of the most common port numbers and network services that use them:
+*   `HTTPS`: Port 443
+*   `HTTP`: Port 80
+*   `SMTP email`: Port 25
+*   `Minecraft Server`: 25565
+*   `FTP or File Transfer Protocol`: 21 
+
+When we install our Minecraft servers, our default settings currently only allow SSH traffic to be able to access this server and block every other request. Minecraft uses the port 25565 to allow connections to a server which means we need to enable traffic to pass through this port.
+
+We can also add a firewall rule using the uncomplicated firewall (ufw) by running the following command:
+
+                sudo ufw allow 25565
+
+When we do this, here is what we are trying to accomplish with this configuration:
+
+
+
+1. We configure our Linode to have a port-forwarding enabled to allow traffic on the port `25565` and forward it to the Minecraft server’s IP
+2. Your Minecraft client then adds a server to the address e.g. `80.47.110.28:25565` to connect with our Lincraft server created in the previous section.
+Note: You don’t always need to add the port number to the IP address, but we have added it as a safety measure here.
+
+Checking Minecraft logs to understand how your Minecraft server’s firewall is performing or understanding issues is important. To check what ports are currently listening run the following command:
+
+                ss -tulpn
+
+In the command above, we can break down the arguments to further understand what they mean:
+
+                -t implies TCP
+
+                -u implies UDP
