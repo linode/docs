@@ -3,7 +3,7 @@ slug: install-steamcmd-for-a-steam-game-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
+description: 'Learn how to install SteamCMD for a Steam Game server and minimize your efforts to update the server files.'
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -28,7 +28,7 @@ This guide is intended to get you quickly up and running with SteamCMD on your L
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Before You Begin
+## Prerequisites To Install SteamCMD For A Game Server
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -44,7 +44,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  [Install the `screen` utility](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/#installing-gnu-screen), which will be used later when running SteamCMD. For more information about how screen works, review the rest of our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 
-## Secure Your Game Server
+## Secure Your SteamCMD Game Server
 
 Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/security/securing-your-server/) guide to:
 
@@ -58,7 +58,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 1.  If instead you are using [**firewalld**](/docs/security/firewalls/introduction-to-firewalld-on-centos/) (as in Linode's CentOS 7 and Fedora images), follow the [Configure your Firewall Using FirewallD](#configure-your-firewall-using-firewalld) section.
 
-### Configure your Firewall Using IPTables
+### Configure your Your Game Server Firewall Using IPTables
 
 1.  Create two files named `v4` and `v6` in your home directory to record your IPv4 and IPv6 firewall rules:
 
@@ -163,7 +163,7 @@ Steam currently supports multiplayer play over IPv4 only, so a Steam server only
 
         sudo dpkg-reconfigure iptables-persistent
 
-### Configure your Firewall Using FirewallD
+### Configure Your Game Server Firewall Using FirewallD
 
 1.  Set up your ruleset:
 
@@ -180,12 +180,13 @@ Steam currently supports multiplayer play over IPv4 only, so a Steam server only
 
 ## Install SteamCMD
 
-SteamCMD can be installed via your distribution's [package manager](#from-package-repositories-recommended), or through a [manual method](#install-manually).
+SteamCMD allows you to install server apps and update game servers. SteamCMD can be installed via your distribution's [package manager](#from-package-repositories-recommended), or through a [manual method](#install-manually).
 
 ### From Package Repositories (Recommended)
 
 Installing via the package manager allows you to more easily download updates and security patches, so we strongly recommend using this method if your distribution includes the SteamCMD package. The package is available for Ubuntu and Debian deployments.
 
+### How Do I Install SteamCMD On Linux?
 -   **Ubuntu**
 
     1.  Install the package:
@@ -324,6 +325,58 @@ For more information on managing your screen sessions, review our [Using GNU Scr
 ### Stop SteamCMD
 
 To stop the Steam process and remove your screen session, enter `quit` at the `Steam>` command prompt, or enter **Control+C** on your keyboard.
+
+## Understanding SteamCMD Error Codes For A Steam Game Server
+
+While it is relatively easy to set up SteamCMD for a Steam game server, it is hard to uncover what isn’t working when you get certain errors. Here are a few of these error codes and their root causes with SteamCMD.
+
+`Error! App '232130' state is 0x202 after update job` - This error code means that disk space is low. `0x202` is our code disk running out of space. Commonly, users have enough space on their disk, but the way they create partitions isn’t right which leads to small disk volume for the game server. Once you pull logs you see the following:
+
+                Filesystem:      /lin/sev2
+
+                Total:           6.1G
+
+                Used:            3.1G
+
+                Available:       2.8G
+
+                LinuxGSM Total:  68M
+
+                Serverfiles:     40K
+
+If you are trying to install and run a game like CS GO, you are most likely to get an error as the required space is 17 GB.
+*   `ERROR! Failed to install (No subscription)` - This error code means that no authorized accounts on your SteamCMD owns the game. You see this error code even if you are playing a game for the first time. To fix this, install the game using the Steam client and run it. The error should be resolved now.
+*   `Error! State is 0x402 after update job`  - Error code `402` could mean that either the update servers are down or you have an internet connectivity issue. You can try to validate your server install to see if that is the underlying issue.
+*   `Error! State is 0x602 after update job` - This code `0x602` implies a network error. When this error shows up, you most probably need to update your system and your network is preventing your SteamCMD from updating.
+*   `Error! App '237410' state is 0x10502 after update job` -  The coded `State 0x10502` points to your application’s AppState, stored in the appmanifest of your installed steam app. Looking at the status codes under Appstate, we notice `StateReconfiguring`, `StateUpdateStarted`, `StateUpdateRunningStarted` and `StateUpdateRequired`. These status codes point towards a file download in process or a downloaded file is in the process of being installed. Based on what the issue is you can take the next step to resolve it.
+
+## How Do I Update My SteamCMD Server?
+To update your SteamCMD server, follow these steps:
+1. Run SteamCMD
+2. Use login anonymous 
+3. app_update 2323001
+
+And your SteamCMD server gets updated. In the last step `app_update 2323001`, replace `2323001` with your app number.
+
+## How Do I Install SteamCMD On Chromebook?
+
+Installing SteamCMD on Chromebook is pretty straightforward. You can run the following command to install it:
+
+                sudo apt-get install steamcmd
+
+Once you see a success message, SteamCMD is installed on your system. Make sure to follow the steps we have listed previously in this guide to ensure you have all prerequisites installed on your Chromebook.
+
+## How Do I Open SteamCMD?
+**Unix based systems**
+
+On most Unix based systems, you can run SteamCMD using this command:
+
+                screen ~/.steam/steamcmd
+**On Windows**
+
+To run SteamCMD on Windows follow these steps:
+1. Browse SteamCMD folder
+2. Click on `steamcmd.exe` to launch
 
 ## Next Steps
 
