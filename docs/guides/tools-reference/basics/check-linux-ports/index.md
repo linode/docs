@@ -1,22 +1,21 @@
 ---
-slug: check-linux-ports
+slug: check-linux-ports-are-in-use
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
-description: 'It’s valuable to know which Linux ports are active, primarily for security purposes. This tutorial shows you how to find the information.'
-og_description: 'Need to know ports are active on a Linux system? This tutorial shows you three ways to find the information.'
+description: 'Tools like netstat, ss, and lsof can help you find which ports are in use on your Linux system. This information helps you monitor your system's active connections and ensure your system is secure. Use this guide for an introduction to these common Linux networking tools and find links to guides that dive a little bit deeper into each one.'
+og_description: 'Tools like netstat, ss, and lsof can help you find which ports are in use on your Linux system. This information helps you monitor your system's active connections and ensure your system is secure. Use this guide for an introduction to these common Linux networking tools and find links to guides that dive a little bit deeper into each one.'
 keywords: ['linux ports in use']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09
+tags: ['networking', 'linux']
 modified_by:
   name: Linode
-title: "Check which ports are in use on your Linux system"
-h1_title: "Check which ports are in use on your Linux system"
+title: "How to Check Which Ports Are in Use on Your Linux System"
+h1_title: "How to Check Which Ports Are in Use on Your Linux System"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
-external_resources:
-- '[Inspecting Network Information with netstat](https://www.linode.com/docs/guides/inspecting-network-information-with-netstat/)'
 ---
 
 One step in securing a Linux computer system is identifying which ports are active. Your system's active ports give you information about which outside applications may be connected to your system. You can also discover if you are unintentionally exposing an application or service to the internet, like a MySQL database. There are several Linux tools that help you discover which ports are in use and identify both ends of active communications. This guide introduces three common tools you can use find the active ports on your Linux server or computer with links to guides that dive deeper into each tool.
