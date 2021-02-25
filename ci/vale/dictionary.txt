@@ -377,6 +377,7 @@ elasticsearch
 elisp
 elgg
 elpaso
+emacs
 email2email
 emojivoto
 ender
