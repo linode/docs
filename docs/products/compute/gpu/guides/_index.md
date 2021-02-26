@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: "Learn to deploy and secure GPU Linode instances and other guides on related topics."
 tab_group_main:
     weight: 30
 ---

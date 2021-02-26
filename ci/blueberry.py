@@ -239,9 +239,10 @@ def readfile(filename, section=None):
                 # WARNING: Implicitly converts dates to datetime
                 return post.metadata
 
-    except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError):
+    except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError) as err:
         # Return Error; require utf-8
         # Should this sys.exit(1) here?
+        print(err)
         print(f"{filename} caused the Blueberry script to crash.")
         sys.exit(1)
 

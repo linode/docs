@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.79.0
+  version: 4.84.1
 
   title: Linode API
   description: |
@@ -132,7 +132,7 @@ info:
     |-----------------------|--------|
     | **Authorization URL** | https://login.linode.com/oauth/authorize |
     | **Token URL** | https://login.linode.com/oauth/token |
-    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br />|
+    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`maintenance:read_only` - Allows access to GET information about Maintenance on your account.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
 
     ## Requests
 
@@ -347,6 +347,11 @@ info:
     That endpoint is:
 
     * [Open Support Ticket](/docs/api/support/#support-ticket-open)
+
+    Accepting Entity Transfers has a dedicated limit of 2 requests per minute per user.
+    That endpoint is:
+
+    * [Entity Transfer Accept](/docs/api/account/#entity-transfer-accept)
 
     ## CLI (Command Line Interface)
 
@@ -599,6 +604,324 @@ paths:
               --expiry_month 11 \
               --expiry_year 2025 \
               --cvv 111
+  /account/entity-transfers:
+    x-linode-cli-command: entity-transfers
+    get:
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Account
+      summary: Entity Transfers List
+      description: >
+        Returns a collection of all created and accepted Entity Transfers for this account, regardless of the user
+        that created or accepted the transfer.
+
+
+        This command can only be accessed by the unrestricted users of an account.
+      operationId: getEntityTransfers
+      x-linode-cli-action: list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns a paginated list of Entity Transfer objects containing the details of all transfers that have been
+            created and accepted by this account.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EntityTransfer'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/entity-transfers
+      - lang: CLI
+        source: >
+          linode-cli entity-transfers \
+            list
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer Create
+      description: >
+        Creates a transfer request for the specified entities. A request can contain any of the specified entity types
+        and any number of each entity type. At this time, only Linodes can be transferred.
+
+
+        When created successfully, a confirmation email is sent to the account that created this transfer containing a
+        transfer token and instructions on completing the transfer.
+
+
+        When a transfer is [accepted](/docs/api/account/#entity-transfer-accept), the requested entities are moved to
+        the receiving account. Linode services will not experience interruptions due to the transfer process, but
+        please take note of the following:
+
+
+        - If any of the Linodes included in the request have Backups enabled, that data and associated costs will be
+        removed/cancelled.
+
+        - DNS records will not be transferred or updated. Please ensure that DNS records have been updated or
+        communicated to the recipient prior to the transfer.
+
+
+        A transfer can take up to three hours to complete once accepted. When a transfer is
+        completed, billing for transferred entities ends for the sending account and begins for the receiving account.
+
+
+        This command can only be accessed by the unrestricted users of an account.
+
+
+        There are several conditions that must be met in order to successfully create a transfer request:
+
+        1. The account creating the transfer must not have a past due balance or active Terms of Service violation.
+
+        1. The entity must be owned by the account that is creating the transfer.
+
+        1. The entity must not be assigned to another Entity Transfer that is pending or that has been accepted and is
+        incomplete.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+      operationId: createEntityTransfer
+      x-linode-cli-action: create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      requestBody:
+        description: The entities to include in this transfer request.
+        content:
+          application/json:
+            schema:
+              required:
+              - entities
+              type: object
+              properties:
+                entities:
+                  $ref: '#/components/schemas/EntityTransfer/properties/entities'
+      responses:
+        '200':
+          description: >
+            Returns an Entity Transfer object for the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST -d '{
+              "entities": {
+                "linodes": [
+                  111,
+                  222
+                ]
+              }
+            }' \
+            https://api.linode.com/v4/account/entity-transfers
+      - lang: CLI
+        source: >
+          linode-cli entity-transfers \
+            create \
+            --entities.linodes 111 \
+            --entities.linodes 222
+  /account/entity-transfers/{token}:
+    x-linode-cli-command: entity-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Entity Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer View
+      description: >
+        Returns the details of the Entity Transfer for the provided token.
+
+
+        This command can only be accessed by the unrestricted users of the accounts that created or accepted this
+        transfer.
+      operationId: getEntityTransfer
+      x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns an Entity Transfer object containing the details of the transfer for the specified token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli entity-transfers \
+            view 123E4567-E89B-12D3-A456-426614174000
+    delete:
+      x-linode-grant: unrestricted only
+      tags:
+      - account
+      summary: Entity Transfer Cancel
+      description: >
+        Cancels the Entity Transfer for the provided token. Once cancelled, a transfer cannot be accepted or otherwise
+        acted on in any way. If cancelled in error, the transfer must be
+        [created](/docs/api/account/#entity-transfer-create) again.
+
+
+        When cancelled, an email notification for the cancellation is sent to the account that created
+        this transfer. Transfers can not be cancelled if they are expired or have been accepted.
+
+
+        This command can only be accessed by the unrestricted users of the account that created this transfer.
+      operationId: deleteEntityTransfer
+      x-linode-cli-action: cancel
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Entity Transfer cancelled.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X DELETE \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli entity-transfers \
+            cancel 123E4567-E89B-12D3-A456-426614174000
+  /account/entity-transfers/{token}/accept:
+    x-linode-cli-command: entity-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Entity Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer Accept
+      description: >
+        Accept an Entity Transfer for the provided token to receive the entities included in the transfer to your
+        account. At this time, only Linodes can be transferred.
+
+
+        When accepted, email confirmations are sent to the accounts that created and accepted the transfer. A transfer
+        can take up to three hours to complete once accepted. Once a transfer is completed, billing for transferred
+        entities ends for the sending account and begins for the receiving account.
+
+
+        This command can only be accessed by the unrestricted users of the account that receives the transfer. Users
+        of the same account that created a transfer cannot accept the transfer.
+
+
+        There are several conditions that must be met in order to accept a transfer request:
+
+        1. Only transfers with a `pending` status can be accepted.
+
+        1. The account accepting the transfer must have a registered payment method and must not have a past due
+          balance or other account limitations for the entities to be transferred.
+
+        1. Both the account that created the transfer and the account that is accepting the transfer must not have any
+        active Terms of Service violations.
+
+        1. The entity must still be owned by the account that created the transfer.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+
+        Any and all of the above conditions must be cured and maintained by the relevant account prior to the
+        transfer's expiration to allow the transfer to be accepted by the receiving account.
+      operationId: acceptEntityTransfer
+      x-linode-cli-action: accept
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Entity Transfer accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X POST \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000/accept
+      - lang: CLI
+        source: >
+          linode-cli entity-transfers \
+            accept 123E4567-E89B-12D3-A456-426614174000
   /account/events:
     x-linode-cli-command: events
     get:
@@ -698,7 +1021,7 @@ paths:
         schema:
           type: integer
     post:
-      x-linode-grant: read_write
+      x-linode-grant: read_only
       tags:
       - Account
       summary: Event Mark as Read
@@ -708,7 +1031,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - events:read_write
+        - events:read_only
       responses:
         '200':
           description: Event read.
@@ -934,6 +1257,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Login'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -1879,10 +2208,12 @@ paths:
       - Account
       summary: User Create
       description: >
-        Creates a User on your Account. Once created, the User will be
-        able to log in and access portions of your Account. Access is
-        determined by whether or not they are restricted, and what grants they
-        have been given.
+        Creates a User on your Account. Once created, a confirmation message containing
+        password creation and login instructions is sent to the User's email address.
+
+
+        The User's account access is determined by whether or not they are restricted,
+        and what grants they have been given.
       operationId: createUser
       x-linode-cli-action: create
       security:
@@ -4815,6 +5146,59 @@ paths:
         source: >
           linode-cli linodes disk-resize 123 25674 \
             --size 2048
+  /linode/instances/{linodeId}/firewalls:
+    parameters:
+    - name: linodeId
+      in: path
+      description: ID of the Linode to look up.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: linodes
+    get:
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Linode Instances
+      summary: Firewalls List
+      description: >
+        View Firewall information for Firewalls associated with this Linode.
+      operationId: getLinodeFirewalls
+      x-linode-cli-action: firewalls-list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Firewalls associated with this Linode.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Firewall'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/linode/instances/123/firewalls
+      - lang: CLI
+        source: >
+          linode-cli linodes firewalls-list 123
   /linode/instances/{linodeId}/ips:
     parameters:
     - name: linodeId
@@ -6055,7 +6439,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-         - stackscripts:read_write
+        - stackscripts:read_write
       requestBody:
         description: The properties to set for the new StackScript.
         required: true
@@ -6511,6 +6895,20 @@ paths:
                     description: >
                       An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
                       To delete a tag, exclude it from your `tags` array.
+                k8s_version:
+                    type: string
+                    description: >
+                      The desired Kubernetes version for this Kubernetes cluster in the format of
+                      &lt;major&gt;.&lt;minor&gt;. New and recycled Nodes in this cluster will be installed with the
+                      latest available patch for the Cluster's Kubernetes version.
+
+
+                      When upgrading the Kubernetes version, only the next latest minor version following the current
+                      version can be deployed. For example, a cluster with Kubernetes version 1.16 can be upgraded to
+                      version 1.17, but not directly to 1.18.
+
+
+                      The Kubernetes version of a cluster can not be downgraded.
       responses:
         '200':
           description: Returns a single Kubernetes cluster.
@@ -6548,6 +6946,7 @@ paths:
                 -X PUT -d '{
                   "label": "lkecluster54321"
                   "tags" : ["ecomm", "blog", "prod", "monitoring"]
+                  "k8s_version": "1.17"
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345
       - lang: CLI
@@ -6720,6 +7119,50 @@ paths:
           linode-cli lke pool-create 12345 \
             --type g6-standard-4 \
             --count 6
+  /lke/clusters/{clusterId}/recycle:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster which contains nodes to be recycled.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: lke
+    post:
+      operationId: postLKEClusterRecycle
+      x-linode-cli-action: cluster-nodes-recycle
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Cluster Nodes Recycle
+      description: |
+        Recycles all nodes in all pools of a designated Kubernetes Cluster. All Linodes within the Cluster will be deleted
+        and replaced with new Linodes on a rolling basis, which may take several minutes. Replacement Nodes are
+        installed with the latest available [patch version](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/release/versioning.md#kubernetes-release-versioning) for the Cluster's current Kubernetes minor release.
+
+        **Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.**
+      responses:
+        '200':
+          description: Recycle request succeeded and is in progress.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+                -H "Authorization: Bearer $TOKEN" \
+                -X POST \
+                https://api.linode.com/v4/lke/clusters/12345/recycle
+      - lang: CLI
+        source: >
+          linode-cli lke cluster-nodes-recycle 12345
   /lke/clusters/{clusterId}/pools/{poolId}:
     parameters:
     - name: clusterId
@@ -6895,7 +7338,7 @@ paths:
         **Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.**
       responses:
         '200':
-          description: Node Pool has been recycled.
+          description: Recycle request succeeded and is in progress.
           content:
             application/json:
               schema:
@@ -6912,6 +7355,132 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke pool-recycle 12345 456
+  /lke/clusters/{clusterID}/nodes/{nodeId}:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster containing the Node.
+      required: true
+      schema:
+        type: integer
+    - name: nodeId
+      in: path
+      description: ID of the Node to look up.
+      required: true
+      schema:
+        type: string
+    x-linode-cli-command: lke
+    get:
+      operationId: getLKEClusterNode
+      x-linode-cli-action: node-view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Node View
+      description: >
+        Returns the values for a specified node object.
+      responses:
+        '200':
+          description: Returns the values of a node object in the form that it appears currently in the node pool array.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: >
+                      The selected node in the cluster.
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: >
+                          The Node's ID.
+                        example: "12345-6aa78910bc"
+                      instance_id:
+                        type: integer
+                        description: >
+                          The Linode's ID. If no Linode is currently provisioned for this Node, this is `null`.
+                        example: 123456
+                      status:
+                        type: string
+                        description: >
+                          The creation status of this Node. This status is distinct from this Node's readiness as a
+                          Kubernetes Node Object as determined by the command `kubectl get nodes`.
+
+
+                          `not_ready` indicates that the Linode is still being created.
+
+
+                          `ready` indicates that the Linode has successfully been created and is running Kubernetes software.
+                        enum:
+                        - ready
+                        - not_ready
+                        example: ready
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4/lke/clusters/12345/nodes/12345-6aa78910bc
+      - lang: CLI
+        source: >
+          linode-cli lke node-view 123456 12345-6aa78910bc
+  /lke/clusters/{clusterId}/nodes/{nodeId}/recycle:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster containing the Node.
+      required: true
+      schema:
+        type: integer
+    - name: nodeId
+      in: path
+      description: ID of the Node to be recycled.
+      required: true
+      schema:
+        type: string
+    x-linode-cli-command: lke
+    post:
+      operationId: postLKEClusterNodeRecycle
+      x-linode-cli-action: node-recycle
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Node Recycle
+      description: |
+        Recycles an individual Node in the designated Kubernetes Cluster. The Node will be deleted
+        and replaced with a new Linode, which may take a few minutes. Replacement Nodes are
+        installed with the latest available patch for the Cluster's Kubernetes Version.
+
+        **Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.**
+      responses:
+        '200':
+          description: Recycle request succeeded and is in progress.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+                -H "Authorization: Bearer $TOKEN" \
+                -X POST \
+                https://api.linode.com/v4/lke/clusters/12345/nodes/12345-6aa78910bc/recycle
+      - lang: CLI
+        source: >
+          linode-cli lke node-recycle 12345 12345-6aa78910bc
   /lke/clusters/{clusterId}/api-endpoints:
     parameters:
     - name: clusterId
@@ -6970,7 +7539,7 @@ paths:
                 https://api.linode.com/v4/lke/clusters/12345/api-endpoints
       - lang: CLI
         source: >
-          linode-cli lke api-endpoint-list 12345
+          linode-cli lke api-endpoints-list 12345
   /lke/clusters/{clusterId}/kubeconfig:
     parameters:
     - name: clusterId
@@ -8073,9 +8642,9 @@ paths:
       operationId: getManagedIssues
       x-linode-cli-action: issues-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: >
@@ -8161,9 +8730,9 @@ paths:
       operationId: getManagedLinodeSettings
       x-linode-cli-action: linode-settings-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: >
@@ -9159,7 +9728,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9169,7 +9738,7 @@ paths:
       security:
       - personalAccessToken: []
       - oauth:
-        - firewalls:read_only
+        - firewall:read_only
       responses:
         '200':
           description: Returns an array of Firewalls.
@@ -9211,7 +9780,7 @@ paths:
         Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode
         instances.
 
-        A Firewall can be assigned to multiple Linode services, and up to three active Firewalls
+        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls
         can be assigned to a single Linode service.
 
         A `firewall_create` Event is generated when this endpoint returns successfully.
@@ -9220,7 +9789,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9238,6 +9807,7 @@ paths:
             schema:
               type: object
               required:
+                - label
                 - rules
               properties:
                 label:
@@ -9252,10 +9822,10 @@ paths:
                     A Firewall Device assigns a Firewall to a Linode service. Currently, Firewalls
                     can only be assigned to Linode instances.
 
-                    * A Firewall can be assigned to multiple Linode services, and up to three active Firewalls can
+                    * A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
                     be assigned to a single Linode service.
 
-                    * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if three other active Firewalls
+                    * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if five other active Firewalls
                     are already assigned to the same service.
 
 
@@ -9369,7 +9939,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9424,7 +9994,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9493,7 +10063,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9546,7 +10116,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9595,9 +10165,9 @@ paths:
       description: |
         Creates a Firewall Device, which assigns a Firewall to a Linode service (referred to
         as the Device's `entity`). Currently, only Devices with an entity of type `linode` are accepted.
-        A Firewall can be assigned to multiple Linode services, and up to three active Firewalls can
+        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
         be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if three other active Firewalls
+        assigned to a service, but they cannot be enabled if five other active Firewalls
         are already assigned to the same service.
 
         Creating a Firewall Device will apply the Rules from a Firewall to a Linode service.
@@ -9611,7 +10181,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9689,7 +10259,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9743,7 +10313,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9791,7 +10361,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -9834,7 +10404,7 @@ paths:
 
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is only available in the [Sydney data center region](/docs/api/regions).
+        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
         * Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
         updates in the future.  This notice will be removed when this endpoint is out of
@@ -10853,7 +11423,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/serviceops/) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/serviceops/#list-buckets) directly.
       tags:
       - Object Storage
       security:
@@ -10898,7 +11468,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#put-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -10998,7 +11568,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#get-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#get-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -11029,12 +11599,12 @@ paths:
         Removes a single bucket. While buckets containing objects _may_ be
         deleted by including the `force` option in the request, such operations
         will fail if the bucket contains too many objects. The recommended
-        way to empty large buckets is to use the [S3 API to configure lifecycle policies](https://docs.ceph.com/docs/master/radosgw/bucketpolicy/#) that
+        way to empty large buckets is to use the [S3 API to configure lifecycle policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/#) that
         remove all objects, then delete the bucket.
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully- featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#delete-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#delete-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -11075,7 +11645,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#get-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#get-bucket) directly.
       tags:
       - Object Storage
       security:
@@ -11130,12 +11700,9 @@ paths:
       description: |
         Allows changing basic Cross-origin Resource Sharing (CORS) and Access Control Level (ACL) settings.
         Only allows enabling/disabling CORS for all origins, and/or setting canned ACLs.
-        For more fine-grained control of both systems, please use the S3 API directly.
 
 
-
-        This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket-acl) directly.
+        For more fine-grained control of both systems, please use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#put-bucket-acl) directly.
       tags:
       - Object Storage
       security:
@@ -11195,11 +11762,9 @@ paths:
       description: |
         Allows changing basic Cross-origin Resource Sharing (CORS) and Access Control Level (ACL) settings.
         Only allows enabling/disabling CORS for all origins, and/or setting canned ACLs.
-        For more fine-grained control of both systems, please use the S3 API directly.
 
 
-        This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/bucketops/#put-bucket-acl) directly.
+        For more fine-grained control of both systems, please use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#put-bucket-acl) directly.
       tags:
       - Object Storage
       security:
@@ -11271,13 +11836,13 @@ paths:
       - url: https://api.linode.com/v4
       summary: Object Storage Object ACL Config View
       description: |
-        This Object Storage bucket's currently configured Access Control List (ACL).
-          ACLs define who can access your buckets and objects and specify the level of access
-          granted to those users.
+        View an Object’s configured Access Control List (ACL) in this Object Storage bucket.
+        ACLs define who can access your buckets and objects and specify the level of access
+        granted to those users.
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.aws.amazon.com/cli/latest/reference/s3api/get-object-acl.html) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/objectops/#get-object-acl) directly.
       tags:
       - Object Storage
       security:
@@ -11339,28 +11904,21 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more more [fully-featured S3 API](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object-acl.html) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/objectops/#set-object-acl) directly.
       tags:
       - Object Storage
       security:
       - personalAccessToken: []
       - oauth:
         - object_storage:read_write
-      parameters:
-      - name: name
-        in: query
-        required: true
-        description: >
-          The `name` of the object for which to update its Access Control List (ACL).
-          Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
-          endpoint to access all object names in a bucket.
-        schema:
-          type: string
       requestBody:
         description: The changes to make to this Object's access controls.
         content:
           application/json:
             schema:
+              required:
+                - acl
+                - name
               properties:
                 acl:
                   type: string
@@ -11374,6 +11932,12 @@ paths:
                     The Access Control Level of the bucket, as a canned ACL string.
                     For more fine-grained control of ACLs, use the S3 API directly.
                   example: public-read
+                name:
+                  type: string
+                  description: >
+                    The `name` of the object for which to update its Access Control List (ACL).
+                    Use the [Object Storage Bucket Contents List](/docs/api/object-storage/#object-storage-bucket-contents-list)
+                    endpoint to access all object names in a bucket.
       responses:
         '200':
           description: The Object's canned ACL and policy.
@@ -11407,9 +11971,10 @@ paths:
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
             -X PUT -d '{
-              "acl": "public-read"
+              "acl": "public-read",
+              "name": "example.txt"
             }' \
-            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl?name=example.txt
+            https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl
   /object-storage/buckets/{clusterId}/{bucket}/object-list:
     parameters:
     - name: clusterId
@@ -11438,7 +12003,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/luminous/radosgw/s3/bucketops/#get-bucket) directly.
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/objectops/#get-object) directly.
       tags:
       - Object Storage
       security:
@@ -11523,7 +12088,7 @@ paths:
 
 
         This endpoint is available for convenience. It is recommended that instead you
-        use the more [fully-featured S3 API](https://docs.ceph.com/docs/mimic/radosgw/s3/)
+        use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/)
         directly.
       tags:
       - Object Storage
@@ -12223,9 +12788,9 @@ paths:
       operationId: getProfileApps
       x-linode-cli-action: apps-list
       security:
-        - personalAccessToken: []
-        - oauth:
-            - account:read_only
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
       responses:
         '200':
           description: |
@@ -12771,6 +13336,12 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Login'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -14271,7 +14842,7 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
+              -X POST -d '{
                 "linode_id": 12346,
                 "config_id": 23456
               }' \
@@ -14334,7 +14905,7 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
+              -X POST -d '{
                 "label": "my-volume"
               }' \
               https://api.linode.com/v4/volumes/12345/clone
@@ -14464,6 +15035,8 @@ components:
             'domains:read_write': Allows access to all Domain endpoints.
             'events:read_only': Allows access to GET your Events.
             'events:read_write': Allows access to all endpoints related to your Events.
+            'firewall:read_only': Allows access to GET information about your Firewalls.
+            'firewall:read_write': Allows acces to all Firewall endpoints.
             'images:read_only': Allows access to GET your Images.
             'images:read_write': Allows access to all endpoints related to your Images.
             'ips:read_only': Allows access to GET your ips.
@@ -14474,8 +15047,11 @@ components:
             'lke:read_write': Allows access to all endpoints related to LKE Clusters on your Account.
             'longview:read_only': Allows access to GET your Longview Clients.
             'longview:read_write': Allows access to all endpoints related to your Longview Clients.
+            'maintenance:read_only': Allows access to GET information about Maintenance on your account.
             'nodebalancers:read_only': Allows access to GET NodeBalancers on your Account.
             'nodebalancers:read_write': Allows access to all NodeBalancer endpoints.
+            'object_storage:read_only': Allows access to GET information related to your Object Storage.
+            'object_storage:read_write': Allows access to all Object Storage endpoints.
             'stackscripts:read_only': Allows access to GET your StackScripts.
             'stackscripts:read_write': Allows access to all endpoints related to your StackScripts.
             'volumes:read_only': Allows access to GET your Volumes.
@@ -14856,6 +15432,8 @@ components:
           example: '2018-01-15T00:01:01'
           readOnly: true
           x-linode-cli-display: 6
+          x-linode-filterable: true
+          nullable: true
         website:
           type: string
           format: url
@@ -15359,39 +15937,70 @@ components:
           description: >
             The type of Record this is in the DNS system. For example, A
             records associate a domain name with an IPv4 address, and AAAA
-            records associate a domain name with an IPv6 address.
+            records associate a domain name with an IPv6 address. For more information, see our guide on
+            [DNS Records](/docs/guides/dns-records-an-introduction).
           example: A
           x-linode-cli-display: 2
         name:
           type: string
-          description: >
-            The name of this Record. This field's actual usage depends on the
-            type of record this represents. For A and AAAA records, this is
-            the subdomain being associated with an IP address.
+          description: |
+            The name of this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
+
+            `A` and `AAAA`: The hostname or FQDN of the Record.
+
+            `NS`: The subdomain, if any, to use with the Domain of the Record.
+
+            `MX`: The subdomain.
+
+            `CNAME`: The hostname. Must be unique. Required.
+
+            `TXT`: The hostname.
+
+            `SRV`: Unused. Use the `service` property to set the service name for this record.
+
+            `CAA`: The subdomain. Omit or enter an empty string ("") to apply to the entire Domain.
+
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
           minLength: 1
           maxLength: 100
           example: test
           x-linode-cli-display: 3
         target:
           type: string
-          description: >
-            The target for this Record. This field's actual usage depends on
-            the type of record this represents. For A and AAAA records, this
-            is the address the named Domain should resolve to.
-          example: 12.34.56.78
+          description: |
+            The target for this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
+
+            `A` and `AAAA`: The IP address. Use `[remote_addr]` to submit the IPv4 address of the request. Required.
+
+            `NS`: The name server. Must be a valid domain. Required.
+
+            `MX`: The mail server. Must be a valid domain. Required.
+
+            `CNAME`: The alias. Must be a valid domain. Required.
+
+            `TXT`: The value. Required.
+
+            `SRV`: The target domain or subdomain. If a subdomain is entered, it is automatically used with the Domain. To configure for a different domain, enter a valid FQDN. For example, the value `www` with a Domain for `example.com` results in a target set to `www.example.com`, whereas the value `sample.com` results in a target set to `sample.com`. Required.
+
+            `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef` tag, a contact or submission URL (http or mailto).
+
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
+
+            With the exception of A, AAAA, and CAA records, this field accepts a trailing period.
+          example: 192.0.2.0
           x-linode-cli-display: 4
         priority:
           type: integer
           minimum: 0
           maximum: 255
           description: >
-            The priority of the target host. Lower values are preferred.
+            The priority of the target host for this Record. Lower values are preferred. Only valid and required for SRV record requests.
           example: 50
           x-linode-cli-display: 6
         weight:
           type: integer
           description: >
-            The relative weight of this Record. Higher values are preferred.
+            The relative weight of this Record. Higher values are preferred. Only valid and required for SRV record requests.
           example: 50
           minimum: 0
           maximum: 65535
@@ -15399,7 +16008,7 @@ components:
         port:
           type: integer
           description: >
-            The port this Record points to.
+            The port this Record points to. Only valid and required for SRV record requests.
           example: 80
           minimum: 0
           maximum: 65535
@@ -15407,14 +16016,15 @@ components:
           type: string
           nullable: true
           description: >
-            The service this Record identified. Only valid for SRV records.
+            The name of the service. An underscore (_) is prepended and a period (.) is appended automatically to the submitted value for this property. Only valid and required for SRV record requests.
           example: null
         protocol:
           type: string
           nullable: true
           description: >
-            The protocol this Record's service communicates with. Only valid
-            for SRV records.
+            The protocol this Record's service communicates with. An underscore (_) is prepended
+            automatically to the submitted value for this property. Only valid
+            for SRV record requests.
           example: null
         ttl_sec:
           type: integer
@@ -15428,10 +16038,13 @@ components:
           x-linode-cli-display: 5
         tag:
           type: string
+          enum:
+          - issue
+          - issuewild
+          - iodef
           nullable: true
           description: >
-            The tag portion of a CAA record. It is invalid to set this on
-            other record types.
+            The tag portion of a CAA record. Only valid and required for CAA record requests.
           example: null
           x-linode-filterable: true
         created:
@@ -15446,6 +16059,98 @@ components:
           description: When this Domain Record was last updated.
           example: '2018-01-01T00:01:01'
           readOnly: true
+    EntityTransfer:
+      type: object
+      description: >
+        An object representing an Entity Transfer.
+      properties:
+        token:
+          x-linode-cli-display: 1
+          type: string
+          format: uuid
+          description: >
+            The token used to identify and accept or cancel this transfer.
+          example: "123E4567-E89B-12D3-A456-426614174000"
+        status:
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+          x-linode-cli-color:
+            accepted: yellow
+            cancelled: red
+            completed: green
+            failed: red
+            pending: yellow
+            stale: red
+          type: string
+          enum:
+          - accepted
+          - cancelled
+          - completed
+          - failed
+          - pending
+          - stale
+          description: >
+            The status of the transfer request.
+
+
+            `accepted`: The transfer has been accepted by another user and is currently in progress.
+            Transfers can take up to 3 hours to complete.
+
+
+            `cancelled`: The transfer has been cancelled by the sender.
+
+
+            `completed`: The transfer has completed successfully.
+
+
+            `failed`: The transfer has failed after initiation.
+
+
+            `pending`: The transfer is ready to be accepted.
+
+
+            `stale`: The transfer has exceeded its expiration date. It can no longer be accepted or
+            cancelled.
+          example: 'pending'
+        created:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was created.
+          example: '2021-02-11T16:37:03'
+        updated:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was last updated.
+          example: '2021-02-11T16:37:03'
+        is_sender:
+          x-linode-cli-display: 4
+          x-linode-filterable: true
+          type: boolean
+          description: >
+            If the requesting account created this transfer.
+          example: true
+        expiry:
+          x-linode-cli-display: 3
+          type: string
+          format: date-time
+          description: >
+            When this transfer expires. Transfers will automatically expire 24 hours after creation.
+          example: '2021-02-12T16:37:03'
+        entities:
+          type: object
+          description: >
+            A collection of the entities to include in this transfer request, separated by type.
+          properties:
+            linodes:
+              x-linode-cli-display: 5
+              type: array
+              items:
+                type: integer
+              description: >
+                An array containing the IDs of each of the Linodes included in this transfer.
+              example: [111, 222]
     ErrorObject:
       type: object
       description: >
@@ -15506,6 +16211,11 @@ components:
           - dns_zone_delete
           - dns_zone_import
           - dns_zone_update
+          - entity_transfer_accept
+          - entity_transfer_cancel
+          - entity_transfer_create
+          - entity_transfer_fail
+          - entity_transfer_stale
           - firewall_create
           - firewall_delete
           - firewall_disable
@@ -15659,6 +16369,7 @@ components:
               - community
               - disks
               - domain
+              - entity_transfer
               - firewall
               - image
               - ipaddress
@@ -15790,7 +16501,7 @@ components:
       type: object
       description: >
         A resource that controls incoming and outgoing network traffic to a Linode service. A Firewall can
-        be assigned to multiple Linode services, and up to three active Firewalls can be assigned to a single Linode service.
+        be assigned to multiple Linode services, and up to five active Firewalls can be assigned to a single Linode service.
         [Create a Firewall Device](/docs/api/networking/#firewall-create)
         to assign a Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode instances.
       properties:
@@ -15806,8 +16517,7 @@ components:
           x-linode-filterable: true
           type: string
           description: >
-            The Firewall's label, for display purposes only. If no label is provided for a Firewall,
-            a default will be assigned.
+            The Firewall's label, for display purposes only.
 
             Firewall labels have the following constraints:
 
@@ -15815,6 +16525,7 @@ components:
               * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
               * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
               * Must be between 3 and 32 characters.
+              * Must be unique.
           example: firewall123
           minLength: 3
           maxLength: 32
@@ -15913,7 +16624,7 @@ components:
             of single ports and port ranges. A space is permitted following each comma.
             - A range of ports is inclusive of the start and end values for the range. The
             end value of the range must be greater than the start value.
-            - Ports must be within 1 and 65535.
+            - Ports must be within 1 and 65535, and may not contain any leading zeroes. For example, port "080" is not allowed.
             - Ports may not be specified if a rule's protocol is `ICMP`. At least one port
             must be specified if a rule's protocol is `TCP` or `UDP`.
             - The ports string can have up to 15 *pieces*, where a single port is treated
@@ -15946,9 +16657,9 @@ components:
       type: object
       description: >
         Associates a Firewall with a Linode service. A Firewall can be assigned
-        to multiple Linode services, and up to three active Firewalls can
+        to multiple Linode services, and up to five active Firewalls can
         be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if three other active Firewalls
+        assigned to a service, but they cannot be enabled if five other active Firewalls
         are already assigned to the same service.
       properties:
         id:
@@ -18326,6 +19037,12 @@ components:
           minLength: 3
           description: >
             The URL at which this Service is monitored.
+
+
+            URL parameters such as `?no-cache=1` are preserved.
+
+
+            URL fragments/anchors such as `#monitor` are **not** preserved.
           example: https://example.org
           x-linode-cli-display: 5
         timeout:
@@ -19096,7 +19813,7 @@ components:
       type: object
       description: >
         An Object Storage Bucket. This should be accessed primarily through the
-        S3 API; [click here for more information](https://docs.ceph.com/docs/mimic/radosgw/s3/#api).
+        S3 API; [click here for more information](https://docs.ceph.com/en/latest/radosgw/s3/#api).
       properties:
         created:
           type: string
