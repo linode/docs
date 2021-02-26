@@ -77,7 +77,7 @@ By default, CentOS 7 is set to block web traffic. Run the following commands to 
 
 2.  Update the `httpd.conf` file with the document root directory in order to point Apache to the files of the website and also add the `<IfModule prefork.c>` section to adjust the resource use settings (these are a good starting point for a **Linode 2GB**)
 
-{{< file "/etc/httpd/conf/httpd.conf" aconf >}}
+    {{< file "/etc/httpd/conf/httpd.conf" aconf >}}
 DocumentRoot "/var/www/html/example.com/public_html"
 
 ...
@@ -99,13 +99,13 @@ These settings may also be added to a separate file. The file must be located in
 
 #### A single domain
 
-There are multiple ways to set up a virtual host, but in this section explains and recommends one of the easier methods.
+There are multiple ways to set up a virtual host, but this section explains and recommends one of the easier methods.
 
 1.  Within the `conf.d` directory, create the file `vhost.conf` to store the virtual host configurations.
 
 2.  Edit `vhost.conf` using the following example. Remember to substitute the domain name for `example.com`.
 
-{{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
+    {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
 NameVirtualHost *:80
 
 <VirtualHost *:80>
@@ -123,7 +123,7 @@ NameVirtualHost *:80
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-{{< note >}}
+    {{< note >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined as in the previous step, create the `logs` directories before you restart Apache.
 {{< /note >}}
 
@@ -137,7 +137,7 @@ The `ErrorLog` and `CustomLog` entries are suggested for more specific logging, 
     ![Apache on CentOS 7 Welcome Screen](centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
 
 
-#### Mulitple domains
+#### Multiple Domains
 
 Additional domains may be used with the `vhost.conf` file as necessary. When new requests come in from the internet, Apache checks which VirtualHost block matches the requested URL and serves the appropriate content:
 
