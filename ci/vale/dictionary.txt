@@ -1472,6 +1472,7 @@ suhosin
 suid
 sukharev
 supervisord
+supervisorctl
 surbma
 suse
 swappable
