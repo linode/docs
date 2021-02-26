@@ -7,10 +7,5 @@
   {{ else }}
     Updated
   {{ end }}
-  <time datetime="{{ .Lastmod }}">
-    {{ .Lastmod.Format site.Params.time_format_default }}
-  </time>
-  {{ with .Params.author }}
-    , by {{ .name }}
-  {{ end }}
+  <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format site.Params.time_format_default }}</time>{{ with .Params.author }}, by {{ partial "funcs/get-author-link.html" . }}{{ end }}
 </p>
