@@ -49,8 +49,8 @@
    "geo",
    "words",
    "filters",
-   "proximity",
    "asc(deprecated)",
+   "proximity",
    "attribute",
    "exact",
    "custom"
@@ -60,7 +60,7 @@
    "linode-documentation-sorted"
   ],
   "searchableAttributes": [
-   "title",
+   "unordered(title)",
    "keywords",
    "toc",
    "h1",
