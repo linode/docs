@@ -48,7 +48,7 @@ Replace each instance of `example.com` in this guide with the domain name of the
 3.  Use `yum` to update the system and make sure everything is up to date:
 
         sudo yum update
-        
+
 
 ## Configure firewalld to allow web traffic
 
@@ -122,7 +122,7 @@ NameVirtualHost *:80
 3.  Create the directories referenced in the previous step:
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
-        
+
 {{< note >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined as in the previous step, create the `logs` directories before you restart Apache.
 {{< /note >}}
