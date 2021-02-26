@@ -3,7 +3,7 @@ slug: yaml-reference
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML datatypes; and supporting tools when working with YAML files.
+description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML datatypes; and supporting tools when working with YAML files.'
 og_description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML datatypes; and supporting tools when working with YAML files.'
 keywords: ['yaml reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,7 +20,7 @@ external_resources:
 - '[A brief YAML reference](https://camel.readthedocs.io/en/latest/yamlref.html)'
 ---
 
-YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom datatypes. Since YAML is very popular with automated builds and [continous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. is widely-used, a fact made evident by and can be found in many GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
+YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom datatypes. Since YAML is very popular with automated builds and [continous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
 
 Consider the example snippet from a Kubernetes YAML file:
 
@@ -35,9 +35,9 @@ metadata:
 
 This YAML file defines the version of the API in use, the kind of Kubernetes resource you'd like to define, and metadata about the resource. You don't have to be familiar with Kubernetes to read through the file's configurations and still have a general understanding about the purpose of each setting. YAML's human-readability is considered one of its advantages as compared to formats like XML or JSON.
 
-## How YAML is Used
+## Getting Started with YAML
 
-YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, you can configure [GitHub Actions](https://www.linode.com/docs/guides/kubernetes) using YAML. The metadata you define controls the inputs and outputs to complete tasks in your GitHub repository.
+YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, you can configure [GitHub Actions](https://www.linode.com/docs/guides/kubernetes) using YAML. The metadata you define in a GitHub Actions YAML file identifies the inputs and outputs needed to complete tasks in your GitHub repository.
 
 You can also use YAML for data interchange. You might use YAML as a data format for transmission of an invoice, for recording the instantaneous state of a long-lasting game, or for communication between subsystems in complex physical machinery.
 
@@ -51,7 +51,7 @@ You can get started using YAML with a few basic rules. To begin, focus on the fo
 
 #### Indentation
 
-YAML expresses data in hierarchical relationships through indentation, using a fixed number of blank characters. Take a look at the following example GitHub Actions YAML file:
+YAML expresses data in hierarchical relationships through indentation. A fixed number of blank characters are used for an indentation. Take a look at the following example GitHub Actions YAML file:
 
 {{< file "test.yaml">}}
 ...
@@ -64,11 +64,11 @@ jobs:
 ...
 {{</ file >}}
 
-The indention used in the example file, shows that the `runs-on`, and `steps` are part of the same *block*. This is a syntactic signal that both are a part of the same *scope*. By convention, two spaces are commonly used when indentation is required. Tabs should not be used for indentation.
+The indention used in the example file shows that `runs-on`, and `steps` are part of the same *block*. This is a syntactic signal that both are a part of the same *scope*. By convention, two spaces are commonly used when indentation is required. Tabs should not be used for indentation.
 
 #### Colons
 
-Colons separate keys and their values. At a formal level, YAML specifies that an arbitrary number of spaces can follow a colon. It's conventional to use a single space after a colon. For example:
+Colons separate keys and their values. At a formal level, YAML specifies that an arbitrary number of spaces can follow a colon. However, by convention, a single space should be used after a colon. For example:
 
 
 {{< file "test.yaml">}}
@@ -102,11 +102,11 @@ YAML has three basic datatypes:
 
 - scalars
 - lists or sequences
-- associative arrays or dictionary or mappings
+- associative arrays or dictionaries
 
 ### Scalars
 
-A scalar can be a numeric value, a string of text, or a boolean value like true or false. You can also express a `null` value, which is interpreted as `absent` or `unknown`.
+A scalar can be a numeric value, a string of text, or a boolean value like `true` or `false`. You can also express a `null` value, which is interpreted as `absent` or `unknown`.
 
 {{< file "openapi.yaml" >}}
 ...
@@ -119,7 +119,7 @@ properties:
 ...
 {{</ file >}}
 
-The example YAML uses several scalar values for the `address` property. Notice that the `description` property using quotes around the string, while `format` property does not. Using single `'` or double `"` quotes allow you to use special reserved YAML characters within your strings without encountering parsing errors.
+The example YAML uses several scalar values for the `address` property. Notice that the `description` property uses quotes around the string, while the `format` property does not. Using single `' '` or double `" "` quotes allow you to include special reserved YAML characters within your strings without encountering parsing errors.
 
 ### Lists
 
@@ -169,13 +169,13 @@ To understand YAML clearly, it's helpful to compare it to other formats you migh
 
 ### YAML vs JSON
 
-The JavaScript object notation (JSON) is an open standard file format. It is commonly used with browser configuration or communication, for instance as web browser bookmarks.
+The JavaScript object notation (JSON) is an open standard file format. It is commonly used with browser configuration or communication.
 
 JSON content *is* YAML content. YAML is a superset of JSON. However, YAML's syntax is more relaxed.
 
-- It encompasses unquoted string keys, which JSON doesn't allow. YAML permits single quotes, rather than the double quotes JSON requires for strings.
-- YAML has comments, which JSON lacks.
-- YAML has a special syntax for definition of custom datatypes, so you can extend YAML beyond its base definition.
+- You can use unquoted string keys with YAML, which JSON does not allow. YAML permits single quotes, rather than the double quotes JSON requires for strings.
+- You can include comments in your YAML files. JSON does not support comments.
+- YAML has a special syntax for definition of custom datatypes. This means you can extend YAML beyond its base definition.
 - YAML also goes beyond JSON in its support for anchors, aliases, directives, and merge keys.
 
 ### YAML vs XML
@@ -215,11 +215,11 @@ catalogue:
 
 ### Double and Single Quotes
 
-Colons, quotes, commas, and other punctuation are all part of YAML's syntax. When using them in string values, special attention is required. You can use both single quotes (`''`) and double quotes (`""`) in YAML.
+Colons, quotes, commas, and other punctuation are all part of YAML's syntax. When using them in string values, special attention is required.
 
 - When using a string value, you don't need to use quotes, but you can use quotes to force a numerical value to be interpreted as a string.
 - Use quotes to ensure special characters are not parsed.
-- Use double quotes when you want to parse escape codes, like `\n`. Single quotes will not parse escape codes.
+- Use double quotes when you want to parse escape codes, like `\n`. If single quotes are used, escape codes are note parsed.
 
 ## Diving Deeper
 
@@ -232,6 +232,6 @@ The full YAML 1.2 specification is rather involved. It has 211 grammatical rules
 Plenty of tools help YAML newcomers. Among them are several automatic YAML validators, including [YAML Lint](https://yamlvalidator.com/). Other tools likely to interest a newcomer to YAML are:
 
 - Converters between other formats and YAML. For example, VSCode provides a [YAML to JSON extension](https://marketplace.visualstudio.com/items?itemName=ahebrank.yaml2json).
-- YAML prettifiers. The [VSCode Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) is one popular options.
+- YAML prettifiers. The [VSCode Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) is one popular option.
 
 You can find more tools to help you work with YAML using the [Online YAML tools](https://onlineyamltools.com/) reference.
