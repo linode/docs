@@ -28,9 +28,9 @@ relations:
 This guide explains how to install and configure the Apache web server on CentOS 7. Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html) that can be configured to serve a single or multiple websites using the same Linode.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Replace each instance of `example.com` in this guide with your site's domain name.
+Replace each instance of `example.com` in this guide with the domain name of the website.
 {{< /note >}}
 
 
@@ -38,14 +38,14 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 1.  Ensure you have followed both the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
 
-2.  Check that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname). To check your hostname run:
+2.  Check that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname). To check the hostname run:
 
         hostname
         hostname -f
 
-    The first command should show your short hostname, and the second should show your Fully Qualified Domain Name (FQDN).
+    The first command displays a short hostname, and the second displays the Fully Qualified Domain Name (FQDN).
 
-3.  Use `yum` to update your system and make sure everything is current:
+3.  Use `yum` to update the system and make sure everything is up to date:
 
         sudo yum update
         
@@ -66,16 +66,16 @@ By default, CentOS 7 is set to block web traffic. Run the following commands to 
 
         sudo yum install httpd
 
-2.  Once you confirm the installation, let `yum` install Apache and its dependencies.
+2.  After you confirm the installation, let `yum` install Apache and its dependencies.
 
 
 ### Configuring httpd.conf
 
-1.  Before changing any configuration files, we recommend that you make a backup. To make a backup of the `httpd.conf` file, use:
+1.  Before changing any configuration files, Linode recommends that you make a backup. To make a backup of the `httpd.conf` file, use:
 
     `cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup`
 
-2.  Modify `httpd.conf` with your document root directory in order to point Apache to your site's files. Add the `<IfModule prefork.c>` section below to adjust the resource use settings (these are a good starting point for a **Linode 2GB**)
+2.  Update the `httpd.conf` file with the document root directory in order to point Apache to the files of the website and also add the `<IfModule prefork.c>` section to adjust the resource use settings (these are a good starting point for a **Linode 2GB**)
 
 {{< file "/etc/httpd/conf/httpd.conf" aconf >}}
 DocumentRoot "/var/www/html/example.com/public_html"
@@ -99,11 +99,11 @@ These settings may also be added to a separate file. The file must be located in
 
 #### A single domain
 
-There are multiple ways to set up a virtual host, but in this section we explain (and recommend) one of the easier methods.
+There are multiple ways to set up a virtual host, but in this section explains and recommends one of the easier methods.
 
-1.  Within the `conf.d` directory, create the file `vhost.conf` to store your virtual host configurations.
+1.  Within the `conf.d` directory, create the file `vhost.conf` to store the virtual host configurations.
 
-2.  Edit `vhost.conf` using the example below. Remember to substitute your domain name for `example.com`.
+2.  Edit `vhost.conf` using the following example. Remember to substitute the domain name for `example.com`.
 
 {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
 NameVirtualHost *:80
@@ -119,12 +119,12 @@ NameVirtualHost *:80
 
 {{< /file >}}
 
-3.  Create the directories referenced above:
+3.  Create the directories referenced in the previous step:
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
         
 {{< note >}}
-The `ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined (as shown in the example above), the `logs` directories must be created before you restart Apache.
+The `ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined as in the previous step, create the `logs` directories before you restart Apache.
 {{< /note >}}
 
 4.  Enable Apache to start at boot, and restart the service for the above changes to take effect:
@@ -143,22 +143,22 @@ Additional domains may be used with the `vhost.conf` file as necessary. When new
 
 ![Apache VirtualHost Traffic Flow](apache-vhost-flow.png "Apache VirtualHost Traffic Flow")
 
-To add additional domains, copy the example above and add it to the end of the existing file, modify its values for the new domain, create the directories, restart Apache, and test the newly added domain. Repeat as necessary.
+To add additional domains, copy the example in the previous section and add it to the end of the existing file, modify the values for the new domain, create the directories, restart Apache, and test the newly added domain. Repeat as necessary.
 
 
-Congratulations! You've set up Apache and you're now ready to host websites. If you're wondering what additional configuration changes are available to get the most out of your server, some optional steps can be found below.
+Congratulations! You've set up Apache and you're now ready to host websites. If you're wondering what additional configuration changes are available to get the most out of the server, here are some optional steps.
 
 
 ## Next Steps: Additional security and high availability
 
-### Secure your server with SELinux
+### Secure the server with SELinux
 
-SELinux is a *mandatory access control* (MAC) system that confines privileged processes and automates security policy creation. To enable it on your Linode, see our [Beginner's Guide  to SELinux on CentOS 7](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/).
+SELinux is a *mandatory access control* (MAC) system that confines privileged processes and automates security policy creation. To enable it on your Linode, see the [Beginner's Guide  to SELinux on CentOS 7](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/).
 
-### Secure your site with SSL
+### Secure the site with SSL
 
-To add additional security to your site, consider [enabling a *secure sockets layer* (SSL) certificate](/docs/security/ssl/ssl-apache2-centos).
+To add additional security to the site, consider [enabling a *secure sockets layer* (SSL) certificate](/docs/security/ssl/ssl-apache2-centos).
 
 ### Install and Configure GlusterFS, Galera, and XtraDB for High Availability
 
-Consult our [Host a Website with High Availability](/docs/websites/host-a-website-with-high-availability) guide to mitigate downtime through redundancy, monitoring, and failover.
+Consult the [Host a Website with High Availability](/docs/websites/host-a-website-with-high-availability) guide to mitigate downtime through redundancy, monitoring, and failover.
