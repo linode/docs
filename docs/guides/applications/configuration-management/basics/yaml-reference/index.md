@@ -3,8 +3,8 @@ slug: yaml-reference
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML datatypes; and supporting tools when working with YAML files.'
-og_description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML datatypes; and supporting tools when working with YAML files.'
+description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML data types; and supporting tools when working with YAML files.'
+og_description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML data types; and supporting tools when working with YAML files.'
 keywords: ['yaml reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09
@@ -20,7 +20,7 @@ external_resources:
 - '[A brief YAML reference](https://camel.readthedocs.io/en/latest/yamlref.html)'
 ---
 
-YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom datatypes. Since YAML is very popular with automated builds and [continous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
+YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom data types. Since YAML is very popular with automated builds and [continuous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
 
 Consider the example snippet from a Kubernetes YAML file:
 
@@ -96,9 +96,9 @@ content:
 
 The `required` list specifies an object's required properties. In the example, these required properties are `label` and `redirect_uri`. The next sections include more examples of indentation, colons, and dashes.
 
-## YAML Basic Datatypes
+## YAML Basic Data Types
 
-YAML has three basic datatypes:
+YAML has three basic data types:
 
 - scalars
 - lists or sequences
@@ -161,7 +161,7 @@ properties:
 ...
 {{</ file >}}
 
-Dictionaries gain much of their power in combination with other datatypes. For example, a value might itself be a list, and a list's values might be another dictionary.
+Dictionaries gain much of their power in combination with other data types. For example, a value might itself be a list, and a list's values might be another dictionary.
 
 ## Comparing YAML with other data formats
 
@@ -175,7 +175,7 @@ JSON content *is* YAML content. YAML is a superset of JSON. However, YAML's synt
 
 - You can use unquoted string keys with YAML, which JSON does not allow. YAML permits single quotes, rather than the double quotes JSON requires for strings.
 - You can include comments in your YAML files. JSON does not support comments.
-- YAML has a special syntax for definition of custom datatypes. This means you can extend YAML beyond its base definition.
+- YAML has a special syntax for definition of custom data types. This means you can extend YAML beyond its base definition.
 - YAML also goes beyond JSON in its support for anchors, aliases, directives, and merge keys.
 
 ### YAML vs XML
@@ -229,7 +229,7 @@ The full YAML 1.2 specification is rather involved. It has 211 grammatical rules
 
 ### YAML Tools
 
-Plenty of tools help YAML newcomers. Among them are several automatic YAML validators, including [YAML Lint](https://yamlvalidator.com/). Other tools likely to interest a newcomer to YAML are:
+Plenty of tools help YAML newcomers. Among them are several automatic YAML linters, including [YAML Lint](https://yamlvalidator.com/). Other tools likely to interest a newcomer to YAML are:
 
 - Converters between other formats and YAML. For example, VSCode provides a [YAML to JSON extension](https://marketplace.visualstudio.com/items?itemName=ahebrank.yaml2json).
 - YAML prettifiers. The [VSCode Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) is one popular option.
