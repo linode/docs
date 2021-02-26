@@ -3,7 +3,7 @@ slug: linux-system-administration-basics
 author:
   name: Linode
   email: docs@linode.com
-description: 'Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.'
+description: 'This end to end Linux system administration basics tutorial will walk you through basic Linux configuration,  basic commands, and answers all your Linux administration questions.'
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
@@ -18,6 +18,20 @@ tags: ["linux"]
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
 
 ![Linux System Administration Basics](linux-system-administration-basics.png)
+
+## What is Linux Administration?
+Linux administration is about setting up disaster recovery, managing new system builds, creating a backup to restore data, Linux hardware management, managing storage,  handling file systems, and managing the security of Linux systems. A big part of Linux administration is to ensure that Linux powered systems are stable and secure.
+
+## What Should a Linux Administrator Should Know?
+Typically Linux system administrators are expected to handle Linux file systems, manage root, know bash commands, and manage users.
+
+## What Are The Duties Of System Administrators In Linux?
+Commonly, the Linux administration role typically involves:
+1. Maintenance of Linux environment
+2. Troubleshoot and provide support when there’s an issue with the Linux servers
+3. Analysis of log files(mainly error logs) and support LAN and web applications
+4. Create operational and project-specific solutions for the organization
+5. Proactively figure out ways to stabilize, lift security, and scalability of your Linux environment
 
 ## Basic Configuration
 
@@ -732,3 +746,57 @@ port 587
 The `.msmptrc` file needs to be set to mode 600 and owned by the user account that will be sending mail. For example, if the configuration file is located at `/srv/smtp/msmtprc`, you can call msmtp with the following command:
 
     /usr/bin/msmtp --file=/srv/smtp/msmtprc
+
+## How Do I Manage Files in Linux?
+To manage files and directories in Linux you can use wildcard patterns for file manipulation, using commands like gzip/xz/bzip2 to compress or decompress a file, copy/move/remove files, etc.
+
+You can view your current directory by running `echo $PWD`. To view all items within your current working directory, type `ls` and press enter.
+
+Typing ls will simply output all file names, but if you wish to see more details run the following command:
+
+                ls -al
+
+Output:
+
+                total 6
+
+                drwxr-xr-x  6   linode  linode  4096    Nov 30      00:35   .
+
+                drwxr-xr-x  45  linode  linode  4096    Dec 30      00:35   ..
+
+                drwxr-xr-x  5   linode  linode  4096    Nov 30      00:35   20122
+
+                drwxr-xr-x  7   linode  linode  4096    Nov 30      00:35   20122_db
+
+                drwxr-xr-x  3   linode  linode  4096    Nov 30      00:35   linode_1
+
+                -rw-rw-r--  1   linode  linode  93810   Nov 30      00:35   linode.png
+
+In the output, drwxr-xr represents a directory and `-rw-rw-r--` represents a file.
+
+You can use cp to copy files, mv to move them and rm to delete files. Similarly, you can use mkdir to create directories,  and  rmdir to remove directories.
+
+For efficient Linux administration, you have to be able to handle multiple files recursively. You can use `-R` option for recursive listing, copying or even deletion.
+
+**Using Wildcards And Globbing For Better Linux Administration**
+
+Most other operations we saw in the section above were on a single filesystem, on the entire tree. But as complexities increase and you have a large file system, it becomes difficult to use these options. This is where Wildcards and Globbing are extremely helpful.
+
+Globbing helps us point to target files using wildcard patterns. Here is how the matching works:
+*   `*` matches any string pattern
+*   `?` matches any single character
+*   `[` matches any single character within `[` brackets
+
+Let’s test a Wildcard example to see how we can only filter files that have a character 3 or 5 or between 3-5 here.  In our current directory we have the following files:
+
+                ls
+
+                linode_1     linode_2   linode_3    linode_4    linode_5
+
+Now, if we run the following command:
+
+                ls linode[3-5]
+
+We will get the following output:
+
+                linode_3    linode_4    linode_5
