@@ -118,6 +118,7 @@ blocklists
 blockwise
 bluehost
 bookinfo
+boolean
 boolstyle
 boonex
 bootable
@@ -377,6 +378,7 @@ elasticsearch
 elisp
 elgg
 elpaso
+emacs
 email2email
 emojivoto
 ender
@@ -795,6 +797,7 @@ linkerd
 linode
 linodego
 linodes
+linter
 lish
 listdir
 listserv
@@ -1051,6 +1054,7 @@ numpy
 nvidia
 nvim
 nvm
+oauth
 octopress
 odoo
 oftc
@@ -1172,6 +1176,8 @@ preprocessors
 prerotate
 prerouting
 prestashop
+prettifier
+prettifiers
 Printf
 pritunl
 procfile
@@ -1470,7 +1476,9 @@ sudoers
 suhosin
 suid
 sukharev
+superset
 supervisord
+supervisorctl
 surbma
 suse
 swappable
