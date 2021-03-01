@@ -3,10 +3,10 @@ slug: introduction-to-hcl
 author:
     name: Linode
     email: docs@linode.com
-description: 'This guides provides an introduction to HCL syntax and commonly used HCL terminology.'
-keywords: ["terraform", "hcl", "hashicorp", "orchestration"]
+description: 'This guide provides an introduction to HCL syntax and commonly used HCL terminology.'
+keywords: ["terraform", "hcl", "hashicorp", "orchestration", "HashiCorp Configuration Language"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-12
+modified: 2021-02-22
 modified_by:
     name: Linode
 published: 2018-12-12
@@ -17,19 +17,17 @@ external_resources:
 aliases: ['/applications/configuration-management/introduction-to-hcl/','/applications/configuration-management/basics/introduction-to-hcl/']
 ---
 
-HCL is a configuration language authored by [HashiCorp](https://www.hashicorp.com/). HCL is used with HashiCorp's cloud infrastructure automation tools, like [Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/). The language was created with the goal of being both human and machine friendly. It is JSON compatible, which means it is interoperable with other systems outside of the Terraform product line.
+The HashiCorp Configuration Language (HCL) is a configuration language authored by [HashiCorp](https://www.hashicorp.com/). HCL is used with HashiCorp's cloud infrastructure automation tools, like [Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/). The language was created with the goal of being both human and machine friendly. It is JSON compatible, which means it is interoperable with other systems outside of the Terraform product line.
 
-This guide provides an introduction to HCL syntax and some commonly used HCL terminology.
+This guide provides an introduction to HCL syntax, some commonly used HCL terminology, and how it works with Terraform.
 
 {{< note >}}
-[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
-
-The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes. The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
 {{</ note >}}
 
 ## HCL Syntax Overview
 
-HashiCorp's configuration syntax is easy to read and write. It was created to have a more clearly visible and defined structure when compared with other well known configuration languages, like YAML.
+HCL's configuration syntax is easy to read and write. It was created to have a more clearly visible and defined structure when compared with other well-known configuration languages, like YAML.
 
 {{< file "~/terraform/main.tf">}}
 # Linode provider block. Installs Linode plugin.
@@ -51,7 +49,7 @@ resource "linode_instance" "example_linode" {
     authorized_keys = [ "my-key" ]
     root_pass = "example-password"
 }
-    {{</ file >}}
+{{</ file >}}
 
 {{< note >}}
 You should not include sensitive data in your resource declarations. For more information on secrets management, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/).
@@ -79,7 +77,7 @@ You should not include sensitive data in your resource declarations. For more in
 
 See Terraform's [Configuration Syntax](https://www.terraform.io/docs/configuration/syntax.html) documentation for more details.
 
-## Providers
+## Terraform Providers and HCL Syntax
 
 In Terraform, a *provider* is used to interact with an Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) API, like the [Linode APIv4](https://developers.linode.com/api/v4). The provider determines which [resources](#resources) are exposed and available to create, read, update, and delete. A credentials set or token is usually required to interface with your service account. For example, the [Linode Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) requires your [Linode API access token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token). A list of [all official Terraform providers](https://www.terraform.io/docs/providers/) is available from HashiCorp.
 
@@ -97,7 +95,7 @@ Once your provider is declared, you can begin configuring resources available fr
 Providers are packaged as plugins for Terraform. Whenever declaring a new provider in your Terraform configuration files, the `terraform init` command should be run. This command will complete several initialization steps that are necessary before you can apply your Terraform configuration, including downloading the plugins for any providers you've specified.
 {{</ note >}}
 
-## Resources
+## Terraform Resources and HCL Syntax
 
 A Terraform *resource* is any component of your infrastructure that can be managed by your provider. Resources available with the Linode provider range from a Linode instance, to a block storage volume, to a DNS record. Terraform's [Linode Provider](https://www.terraform.io/docs/providers/linode/index.html) documentation contains a full listing of all supported resources.
 
@@ -116,7 +114,7 @@ resource "linode_instance" "WordPress" {
 
 HCL-specific [meta-parameters](https://www.terraform.io/docs/configuration/resources.html#meta-parameters) are available to all resources and are independent of the provider you use. Meta-parameters allow you to do things like customize the lifecycle behavior of the resource, define the number of resources to create, or protect certain resources from being destroyed. See Terraform's [Resource Configuration](https://www.terraform.io/docs/configuration/resources.html) documentation for more information on meta-parameters.
 
-## Modules
+## Terraform Modules and HCL Syntax
 
 A *module* is an encapsulated set of Terraform configurations used to organize the creation of resources in reusable configurations.
 
@@ -126,9 +124,9 @@ The [Terraform Module Registry](https://registry.terraform.io/) is a repository 
 
 A module block instructs Terraform to create an instance of a module. This block instantiates any resources defined within that module.
 
-The only universally required configuration for all module blocks is the `source` parameter which indicates the location of the module's source code. All other required configurations will vary from module to module. If you are using a local module you can use a relative path as the `source` value. The source path for a Terraform Module Registry module will be available on the module's registry page.
+The only universally required configuration for all module blocks is the `source` parameter which indicates the location of the module's source code. All other required configurations will vary from module to module. If you are using a local module you can use a relative path as the “source” value. The source path for a Terraform Module Registry module will be available on the module's registry page.
 
-This example creates an instance of a module named `linode-module-example` and provides a relative path as the location of the module's source code:
+This example creates an instance of a module named “linode-module-example” and provides a relative path as the location of the module's source code:
 
 {{< file "~/terraform/main.tf" >}}
 module "linode-module-example" {
@@ -142,11 +140,11 @@ Authoring modules involves defining resource requirements and parameterizing con
 
 You can define *input variables* to serve as Terraform configuration parameters. By convention, input variables are normally defined within a file named `variables.tf`. Terraform will load all files ending in `.tf`, so you can also define variables in files with other names.
 
--   Terraform accepts variables of type string, number, boolean, map, and list. If a variable type is not explicitly defined, Terraform will default to `type = "string"`.
+-   Terraform accepts variables of type string, number, boolean, map, and list. If a variable type is not explicitly defined, Terraform will default to “type = "string".”
 
--   It is good practice to provide a meaningful `description` for all your input variables.
+-   It is good practice to provide a meaningful “description” for all your input variables.
 
--   If a variable does not contain a `default` value, or if you would like to override a variable's default value, you must provide a value as an environment variable or within a variable values file.
+-   If a variable does not contain a “default” value, or if you would like to override a variable's default value, you must provide a value as an environment variable or within a variable values file.
 
 ### Variable Declaration Example
 
@@ -161,24 +159,24 @@ variable "region" {
 }
 {{</ file >}}
 
-Two input variables named `token` and `region` are defined, respectively. The `region` variable defines a `default` value. Both variables will default to `type = "string"`, since a type is not explicitly declared.
+Two input variables named “token” and “region” are defined, respectively. The `region` variable defines a “default” value. Both variables will default to”type = "string"” since a type is not explicitly declared.
 
 ### Supplying Variable Values
 
-Variable values can be specified in `.tfvars` files. These files use the same syntax as Terraform configuration files:
+Variable values can be specified in “.tfvars” files. These files use the same syntax as Terraform configuration files:
 
 {{< file "~/terraform/terraform.tfvars" >}}
 token = "my-token"
 region = "us-west"
 {{</ file >}}
 
-Terraform will automatically load values from filenames which match `terraform.tfvars` or `*.auto.tfvars`. If you store values in a file with another name, you need to specify that file with the `-var-file` option when running `terraform apply`. The `-var-file` option can be invoked multiple times:
+Terraform will automatically load values from filenames which match “terraform.tfvars” or “*.auto.tfvars.” If you store values in a file with another name, you need to specify that file with the “-var-file” option when running “terraform apply.” The “-var-file” option can be invoked multiple times:
 
     terraform apply \
     -var-file="variable-values-1.tfvars" \
     -var-file="variable-values-2.tfvars"
 
-Values can also be specified in environment variables when running `terraform apply`. The name of the variable should be prefixed with `TF_VAR_`:
+Values can also be specified in environment variables when running “terraform apply.” The name of the variable should be prefixed with `TF_VAR_`:
 
     TF_VAR_token=my-token-value TF_VAR_region=us-west terraform apply
 
@@ -188,7 +186,7 @@ Environment variables can only assign values to variables of `type = "string"`
 
 ### Referencing Variables
 
-You can call existing input variables within your configuration file using Terraform's interpolation syntax. Observe the value of the `region` parameter:
+You can call existing input variables within your configuration file using Terraform's interpolation syntax. Observe the value of the “region” parameter:
 
 {{< file "~/terraform/main.tf" >}}
 resource "linode_instance" "WordPress" {
@@ -202,7 +200,7 @@ resource "linode_instance" "WordPress" {
 {{</ file >}}
 
 {{< note >}}
-If a variable value is not provided in any of the ways discussed above, and the variable is called in a resource configuration, Terraform will prompt you for the value when you run `terraform apply`.
+If a variable value is not provided in any of the ways discussed above, and the variable is called in a resource configuration, Terraform will prompt you for the value when you run “terraform apply.”
 {{</ note >}}
 
 For more information on variables, see Terraform's [Input Variables](https://www.terraform.io/intro/getting-started/variables.html) documentation.
@@ -219,7 +217,7 @@ provider "linode" {
 
 Interpolation syntax is powerful and includes the ability to reference attributes of other resources, call built-in functions, and use conditionals and templates.
 
-This resource's configuration uses a conditional to provide a value for the `tags` parameter:
+This resource's configuration uses a conditional to provide a value for the “tags” parameter:
 
 {{< file "~/terraform/terraform.tf" >}}
 resource "linode_instance" "web" {
@@ -227,7 +225,7 @@ resource "linode_instance" "web" {
 }
 {{< /file >}}
 
-If the `env` variable has the value `production`, then the `prod_subnet` variable is used. If not, then the variable `dev_subent` is used.
+If the “env” variable has the value “production,” then the “prod_subnet” variable is used. If not, then the variable `dev_subent` is used.
 
 ### Functions
 
@@ -243,7 +241,7 @@ resource "linode_sshkey" "main_key" {
 In this example, `ssh_key = "${chomp(file("~/.ssh/id_rsa.pub"))}"` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The `chomp()` function removes trailing new lines from the SSH key. Observe that the nested functions are wrapped in opening `${` and closing `}` to indicate that the value should be interpolated.
 
 {{< note >}}
-Running `terraform console` creates an environment where you can test interpolation functions. For example:
+Running “terraform console” creates an environment where you can test interpolation functions. For example:
 
     terraform console
 
@@ -266,7 +264,7 @@ Templates can be used to store large strings of data. The template provider expo
 
 The data source can use Terraform's standard interpolation syntax for variables. The template is then rendered with variable values that you supply in the data block.
 
-This example template resource substitutes in the value from `${linode_instance.web.ip_address}` anywhere `${web_ip}` appears inside the template file `ips.json`:
+This example template resource substitutes in the value from “${linode_instance.web.ip_address}” anywhere “${web_ip}” appears inside the template file `ips.json`:
 
 {{< file >}}
 data "template_file" "web" {
@@ -278,7 +276,7 @@ data "template_file" "web" {
 }
 {{< /file >}}
 
-You could then define an [*output variable*](https://learn.hashicorp.com/terraform/getting-started/outputs.html) to view the rendered template when you later run `terraform apply`:
+You could then define an [*output variable*](https://learn.hashicorp.com/terraform/getting-started/outputs.html) to view the rendered template when you later run “terraform apply”:
 
 {{< file >}}
 output "ip" {
@@ -288,6 +286,6 @@ output "ip" {
 
 Terraform's official documentation has a list of [all available components](https://www.terraform.io/docs/configuration/interpolation.html) of interpolation syntax.
 
-## Next Steps
+## Next Steps in Terraform
 
 Now that you are familiar with HCL, you can begin creating your own Linode instance with Terraform by following the [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
