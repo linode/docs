@@ -7,7 +7,7 @@ og_description: 'Deploy Valheim on Linode using Marketplace Apps.'
 keywords: ['gaming','game server','incident response']
 tags: ["gaming", "game server", "linode platform", "cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-23
+published: 2021-03-09
 modified_by:
   name: Linode
 title: "How to Deploy Valheim With Marketplace Apps"
