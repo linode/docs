@@ -70,7 +70,7 @@ After providing all required Linode Options, click on the **Create** button. **Y
 
 ### Access your Valheim Game Server
 
-After Valheim has finished installing, you will be able to access your server by copying your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com) and then connecting to it within the game.
+After Valheim has finished installing, you will be able to access your server by copying your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com) and then connecting to it within the game using your Linode's IPv4 address and port `2456`(for example `192.0.2.0:2456`).
 
         ![valheim-login.png](valheim-login.png)
 
