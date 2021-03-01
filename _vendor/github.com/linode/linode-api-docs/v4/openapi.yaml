@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.84.1
+  version: 4.85.0
 
   title: Linode API
   description: |
@@ -2625,7 +2625,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Domain'
+              required:
+              - domain
+              - type
+              allOf:
+              - $ref: '#/components/schemas/Domain'
       responses:
         '200':
           description: |
@@ -2653,7 +2657,8 @@ paths:
                     "status": "active",
                     "master_ips": ["127.0.0.1","255.255.255.1","123.123.123.7"],
                     "axfr_ips": ["44.55.66.77"],
-                    "display_group": "Example Display Group"
+                    "group": "Example Display Group",
+                    "tags": ["tag1","tag2"]
                 }' \
                 https://api.linode.com/v4/domains
         - lang: CLI
@@ -2750,7 +2755,8 @@ paths:
                   "status": "active",
                   "master_ips": ["127.0.0.1","255.255.255.1","123.123.123.7"],
                   "axfr_ips": ["44.55.66.77"],
-                  "display_group": "Example Display Group"
+                  "group": "Example Display Group",
+                  "tags": ["tag1","tag2"]
               }' \
               https://api.linode.com/v4/domains/123
       - lang: CLI
@@ -7355,7 +7361,7 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke pool-recycle 12345 456
-  /lke/clusters/{clusterID}/nodes/{nodeId}:
+  /lke/clusters/{clusterId}/nodes/{nodeId}:
     parameters:
     - name: clusterId
       in: path
@@ -11754,7 +11760,7 @@ paths:
               }' \
             https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/access
     put:
-      operationId: modifyObjectStorageBucketAccess
+      operationId: updateObjectStorageBucketAccess
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
@@ -11830,7 +11836,7 @@ paths:
       schema:
         type: string
     get:
-      operationId: viewObjectStorageBucketAccess
+      operationId: viewObjectStorageBucketACL
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
@@ -11892,7 +11898,7 @@ paths:
           curl -H "Authorization: Bearer $TOKEN" \
             https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl?name=example.txt
     put:
-      operationId: viewObjectStorageBucketAccess
+      operationId: updateObjectStorageBucketACL
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
@@ -12610,7 +12616,7 @@ paths:
             --certificate "-----BEGIN CERTIFICATE-----\nMIIDbDCCAlQCCQCl\n-----END CERTIFICATE-----" \
             --private_key "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADIAQCQI\n-----END PRIVATE KEY-----"
     delete:
-      operationId: getObjectStorageSSL
+      operationId: deleteObjectStorageSSL
       x-linode-cli-action: ssl-delete
       servers:
       - url: https://api.linode.com/v4
@@ -15226,7 +15232,7 @@ components:
           readOnly: true
           description: >
             This Account's current estimated invoice in US dollars. This is not
-            your final invoice balance. Bandwidth charges are not included in
+            your final invoice balance. Transfer charges are not included in
             the estimate.
           example: 145
           x-linode-cli-display: 4
@@ -15771,10 +15777,6 @@ components:
         A domain zonefile in our DNS system.  You must own the domain name and
         tell your registrar to use Linode's nameservers in order for a domain
         in our system to be treated as authoritative.
-      required:
-      - id
-      - domain
-      - type
       properties:
         id:
           type: integer
@@ -15795,6 +15797,8 @@ components:
         domain:
           type: string
           pattern: ([a-zA-Z0-9-_]{1,63}\.)+([a-zA-Z]{2,3}\.)?([a-zA-Z]{2,16}|xn--[a-zA-Z0-9]+\.?)
+          minLength: 1
+          maxLength: 255
           description: >
             The domain this Domain represents. Domain labels cannot be longer than
             63 characters and must conform to [RFC1035](https://tools.ietf.org/html/rfc1035).
@@ -15818,6 +15822,7 @@ components:
           enum:
           - disabled
           - active
+          default: active
           description: >
             Used to control whether this Domain is currently being rendered.
           example: active
@@ -15844,11 +15849,16 @@ components:
           x-linode-cli-display: 5
         retry_sec:
           type: integer
-          description: >
+          default: 0
+          description: |
             The interval, in seconds, at which a failed refresh should be retried.
-            Valid values are 300, 3600, 7200, 14400, 28800, 57600,
-            86400, 172800, 345600, 604800, 1209600, and 2419200 - any other
-            value will be rounded to the nearest valid value.
+
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+
+            * Any other value is rounded up to the nearest valid value.
+
+            * A value of 0 is equivalent to the default value of 14400.
           example: 300
         master_ips:
           type: array
@@ -15871,34 +15881,44 @@ components:
           example: []
         expire_sec:
           type: integer
-          description: >
+          default: 0
+          description: |
             The amount of time in seconds that may pass before this Domain is no longer
-            authoritative. Valid values are
-            300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600,
-            604800, 1209600, and 2419200 - any other value will be rounded to
-            the nearest valid value.
+            authoritative.
+
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+
+            * Any other value is rounded up to the nearest valid value.
+
+            * A value of 0 is equivalent to the default value of 1209600.
           example: 300
         refresh_sec:
           type: integer
-          description: >
+          default: 0
+          description: |
             The amount of time in seconds before this Domain should be refreshed.
-            Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600,
-            604800, 1209600, and 2419200 - any other value will be rounded to
-            the nearest valid value.
+
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+
+            * Any other value is rounded up to the nearest valid value.
+
+            * A value of 0 is equivalent to the default value of 14400.
           example: 300
         ttl_sec:
           type: integer
+          default: 0
           description: >
             "Time to Live" - the amount of time in seconds that this Domain's
             records may be cached by resolvers or other domain servers.
 
-            * Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800,
-            345600, 604800, 1209600, and 2419200 - any other value will be
-            rounded to the nearest valid value.
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
-            * ttl_sec will default to 0 if no value is provided.
+            * Any other value is rounded up to the nearest valid value.
 
-            * A value of 0 is equivalent to a value of 86400.
+            * A value of 0 is equivalent to the default value of 86400.
           example: 300
         tags:
           x-linode-filterable: true
