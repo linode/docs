@@ -1,4 +1,5 @@
 ---
+slug: how-to-use-echo
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
