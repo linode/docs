@@ -13,6 +13,9 @@ modified_by:
 title: "A YAML Syntax Reference"
 h1_title: "A YAML Syntax reference."
 tags: ["automation"]
+gtags:
+  - key: content_group2
+    value: est-ext
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit
