@@ -1,24 +1,23 @@
 ---
-slug: how-to-use-apt-on-debian-ubuntu
+slug: how-to-use-apt
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'APT, the package manager on Debian and Ubuntu, '
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'APT simplifies package management on Debian and Ubuntu systems. This guide familiarizes you with APT's capabilities and gets you started with its most commonly used features.'
+og_description: 'APT simplifies package management on Debian and Ubuntu systems. This guide familiarizes you with APT's capabilities and gets you started with its most commonly used features.'
 keywords: ['advanced package tool','apt','installing','updating','upgrading','uninstalling','removing','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-01
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use APT on Debian and Ubuntu"
-h1_title: "How to Use APT on Debian and Ubuntu"
+title: "How to Use APT"
+h1_title: "How to Use APT"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Debian Wiki: Apt](https://wiki.debian.org/Apt)'
 - '[Debian Man Pages: apt](https://manpages.debian.org/buster/apt/apt.8.en.html)'
-- '[Ubuntu Man Pages: apt](https://manpages.ubuntu.com/manpages/focal/man8/apt.8.html)'
 ---
 
 The Advanced Package Tool — or APT — is a tool for managing packages on Debian Linux distributions, including Ubuntu. APT uses core utilities to simplify the process of upgrading, installing, and removing software packages.
@@ -26,7 +25,7 @@ The Advanced Package Tool — or APT — is a tool for managing packages on Debi
 This guide aims to help you get familiar with the most frequently used APT commands for managing your server's packages. By the end, you should be ready for the majority of APT's uses you are likely to encounter.
 
 {{< note >}}
-You may have seen the `apt-get` command used for installing and managing packages and the `apt-cache` command for exploring packages on Debian and Ubuntu. However, years back, Debian introduced the `apt` command to consolidate the most commonly used `apt-get` and `apt-cache` commands and make their use more straightforward and user-friendly. Both Debian and Ubuntu now recommend using the `apt` command rather than `apt-get` or `apt-cache` where possible.
+You may have seen the `apt-get` command used for installing and managing packages and the `apt-cache` command for exploring packages on Debian and Ubuntu. However, Debian has introduced the `apt` command to consolidate the most commonly used `apt-get` and `apt-cache` commands and make their use more straightforward and user-friendly. Both Debian and Ubuntu now recommend using the `apt` command rather than `apt-get` or `apt-cache` where possible.
 
 All of the APT commands in this guide are available using `apt`, so this guide exclusively uses the `apt` command.
 {{< /note >}}
