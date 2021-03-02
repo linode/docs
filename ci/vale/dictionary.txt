@@ -1646,6 +1646,7 @@ v2
 v4
 v6
 vagrantfile
+valheim
 validator
 variadic
 varnishlog
