@@ -46,15 +46,15 @@
         --height-navbar-row: 45px;
         --width-left-column: 255px;
         --width-right-column: 255px;
-        --height-linode-menu-row: 70px;
+        --height-linode-menu-row: 62px;
+    }
+
+    .is-explorer-open .grid--base {
+        --col-navbar: 1;
     }
 }
 
 @screen lg {
-    .is-explorer-open .grid--base {
-        --col-navbar: 1;
-    }
-
     .grid--base {
         --height-navbar-row: 65px;
         --width-left-column: 334px;
