@@ -3,8 +3,8 @@ slug: how-to-use-apt
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'APT simplifies package management on Debian and Ubuntu systems. This guide familiarizes you with APT's capabilities and gets you started with its most commonly used features.'
-og_description: 'APT simplifies package management on Debian and Ubuntu systems. This guide familiarizes you with APT's capabilities and gets you started with its most commonly used features.'
+description: "APT is a user-friendly tool for package management on Debian and Ubuntu. This guide familiarizes you with APT's capabilities and gets you started with its most commonly used features."
+og_description: "APT is a user-friendly tool for package management on Debian and Ubuntu systems. This guide familiarizes you with APT's capabilities and gets you started with its most commonly used features."
 keywords: ['advanced package tool','apt','installing','updating','upgrading','uninstalling','removing','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-01
