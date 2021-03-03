@@ -1,32 +1,29 @@
+---
 slug: deploy-valheim-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Valheim on Linode using Marketplace Apps.'
-og_description: 'Deploy Valheim on Linode using Marketplace Apps.'
-keywords: ['gaming','game server','incident response']
+description: 'Deploy Valheim, an open-world Viking themed survivial game, on Linode using Marketplace Apps.'
+og_description: 'Deploy Valheim, an open-world Viking themed survival game, on Linode using Marketplace Apps.'
+keywords: ['gaming','game server','valheim']
 tags: ["gaming", "game server", "linode platform", "cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-09
+published: 2021-03-01
 modified_by:
   name: Linode
 title: "How to Deploy Valheim With Marketplace Apps"
 h1_title: "Deploying Valheim With Marketplace Apps"
 external_resources:
-- '[Learn from documentation](https://linuxgsm.com/lgsm/vhserver/)'
+- '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'
 - '[Valheim official website](https://www.valheimgame.com/)'
-aliases: ['/platform/marketplace/deploy-valheim-with-marketplace-apps/', '/platform/one-click/deploy-valheim-with-marketplace-apps/']
 ---
 
 ## Valheim Marketplace App
 
 <!-- Intro paragraph describing the app and what it accomplishes. -->
-Valheim is an open-world Viking survival game and sandbox game developed by [Iron Gate Studio](https://irongatestudio.se/). 
-Valheim support both single-player and multiplayer (player vs environment). It also has a punishing combat system, boss battles and a neat building system 
-that even lets you craft imposing Viking warships. Explore, Build, Conquer, and Survive in the relatively peaceful place called Valheim. The further you travel
-the more challenging adventures you will face.
+Valheim is an open-world Viking-themed survival and sandbox game developed by [Iron Gate Studio](https://irongatestudio.se/). Play solo in single player mode, or invite your friends for player vs. environment multiplayer mode. With challenging combat, numerous boss battles, and a creative building system that lets you craft things like halls, forts, and even imposing Viking warships, there's always something to do. Explore, build, conquer, and survive. The further you travel the more challenging adventures await.
 
-Spin up your personal game server on Linode with the Valheim Game Server Marketplace App to maximize your gaming experience.
+Install Valheim on Linode with the Valheim Game Server Marketplace App to maximize your gaming experience.
 
 ### Deploy a Valheim Marketplace App
 
@@ -70,13 +67,13 @@ After providing all required Linode Options, click on the **Create** button. **Y
 
 ### Access your Valheim Game Server
 
-After Valheim has finished installing, you will be able to access your server by copying your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com) and then connecting to it within the game using your Linode's IPv4 address and port `2456`(for example `192.0.2.0:2456`).
+After Valheim has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server within the game using your Linode's IPv4 address and port `2456`(for example `192.0.2.0:2456`).
 
         ![valheim-login.png](valheim-login.png)
 
 For more on Valheim, check out the following resources:
 
-- [Learn from documentation](https://linuxgsm.com/lgsm/vhserver/)
+- [LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)
 - [Valheim official website](https://www.valheimgame.com/)
 
 <!-- the following shortcode informs the user that Linode does not provide automatic updates
