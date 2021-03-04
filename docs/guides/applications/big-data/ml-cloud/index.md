@@ -3,15 +3,15 @@ slug: ml-cloud
 author:
   name: Andy Patrizio
   email: ndy@andypatrizio.com
-description: 'Machine Learning is a two-step process to train and then utilize learning models.'
-og_description: 'Making Machine Learning a thing is a two-step dance. The first one is a doozy.'
+description: 'Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises.'
+og_description: 'Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises.'
 keywords: ['cloud machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
   name: Linode
-title: "Machine Learning in the Cloud: Training and Inference"
-h1_title: "Machine Learning in the Cloud: Training and Inference"
+title: "An Introduction to Machine Learning: Training and Inference"
+h1_title: "An Introduction to Machine Learning: Training and Inference"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio
@@ -29,7 +29,7 @@ Sample data, known as *training data*, is used by machine learning algorithms to
 ## An Introduction to Training and Inference
 
 ### Training
-Training refers to the process of creating machine learning algorithms, in which the ML application studies vast amounts of data to learn about a specific scenario. Training uses a deep-learning framework, such as [Google TensorFlow](https://www.tensorflow.org/learn), [PyTorch](https://pytorch.org/), or [Apache Spark](https://spark.apache.org/docs/latest/).
+Training encompasses the process of creating machine learning algorithms, in which the ML application studies vast amounts of data to learn about a specific scenario. Training uses a deep-learning framework, such as [Google TensorFlow](https://www.tensorflow.org/learn), [PyTorch](https://pytorch.org/), or [Apache Spark](https://spark.apache.org/docs/latest/).
 
 Training is a binary, yes/no endeavor. When you train a model to learn to recognize an image of a car, the question to answer is: *Does the image contain a car or not*? The training teaches the system to look for the hallmarks of a car: tires, headlights, doors, windows, and so on.
 
@@ -45,9 +45,9 @@ There are four types of learning models; *supervised*, *unsupervised*, *semi-sup
 
 ### Inference
 
-Once a machine learning model is trained, you can move on to the second , which is machine learning inference. During machine learning inferenced the trained models are used to draw conclusions from new data. To continue the car example from the training section, during the inference process a developer might give the trained ML models some photos of cars that it has never seen before to discover what it can infer from what it has already learned.
+Once a machine learning model is trained, you can move on to the second phase, which is machine learning inference. During machine learning inference the trained models are used to draw conclusions from new data. To continue the car example from the training section, during the inference process a developer might give the trained ML models some photos of cars that it has never seen before to discover what it can infer from what it has already learned.
 
-## Cloud vs. on-prem vs. end point
+## Machine Learning: Cloud vs. On Premise
 
 Training and inference are distinct in their processing requirements. Training requires very powerful processors, with [high-end server CPUs and GPUs](/docs/guides/getting-started-with-gpu/); whereas inference can often be accomplished on-device, even a mobile phone. Instagram filters that change a person's appearance are an example. The phone recognizes your facial features and suggests changes.
 
