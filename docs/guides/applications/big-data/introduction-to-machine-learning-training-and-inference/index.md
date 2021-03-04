@@ -1,5 +1,5 @@
 ---
-slug: ml-cloud
+slug: introduction-to-machine-learning-training-and-inference
 author:
   name: Andy Patrizio
   email: ndy@andypatrizio.com
