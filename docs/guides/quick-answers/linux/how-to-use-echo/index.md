@@ -3,8 +3,8 @@ slug: how-to-use-echo
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
-description: 'This Quick Answer guide explains how to use the echo command to view the values, how to write to a file, and how to use with other commands.'
-og_description: 'This Quick Answer guide explains how to use the echo command to view the values, how to write to a file, and how to use with other commands.'
+description: 'This Quick Answer guide explains how to use the echo command to view values, how to write to a file using the command, and how to use echo with other commands.'
+og_description: 'This Quick Answer guide explains how to use the echo command to view values, how to write to a file using the command, and how to use echo with other commands.'
 keywords: ["linux", "how to", "echo"]
 aliases: ['quick-answers/how-to-use-echo/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,9 +15,12 @@ published: 2020-06-08
 title: How to Use Echo
 h1_title: Using the echo Command
 ---
-The Export command is used to display the text or string that is passed as an argument.
 
-When you assign a value to the variable and would like to know the value that you assigned to the variable you can use the echo command. As the name suggests, the command echoes the text or string that you want it to display. You can also use the echo comamnd to display the files or directories, write to a file, or use it with other commands.
+## What Is the Echo Command?
+
+The `echo` command is you can use in the terminal to display the text or string that is passed to it as an argument.
+
+When you assign a value to the variable and would like to know the value that you assigned to the variable, you can use the echo command. As the name suggests, the command echoes the text or string that you want it to display. You can also use the echo command to display the files or directories, write to a file, or use it with other commands.
 
 ## Use Echo command to pass arguments
 
@@ -29,7 +32,7 @@ The following sections provide examples for using the most frequently used optio
 
 ### Display the text or strings
 
-To view display the text or string you can use the echo command with the following options:
+To display text or a string you can use the echo command with the following options:
 
   - \a: Sound alert. This generates the default alert sound.
 
@@ -54,6 +57,7 @@ To view display the text or string you can use the echo command with the followi
     The output is similar to:
 
          This is a Linode [user@linode /]$
+
   - \e: Writes an escape character.
 
         echo -e "This is a dollar $\eSign"
@@ -80,7 +84,7 @@ To view display the text or string you can use the echo command with the followi
         This is a
         Linode Server
 
-  - \r: Writes a carriage return. In other words to overwrites the value that is printed.
+  - \r: Writes a carriage return. In other words, it overwrites the value that is printed.
 
         echo -e "Server \r Linode"
 
@@ -132,7 +136,7 @@ To view all the files and folders you can use the echo command as follows:
 
       bin boot dev etc home lib lib64 lost+found media mnt opt proc root run sbin srv swapdir sys tmp usr var
 
-You can also use echo command to list the files and directories that begin with *b* by using ``` echo b*```, to list the files of a particular format by using ``` echo *.txt``` .
+You can also use the echo command to list the files and directories that begin with *b* by using ``` echo b*```. To list the files of a particular format, use ``` echo *.txt``` .
 
 ### Writing to files
 
