@@ -134,9 +134,21 @@ Rancher includes two kinds of integrations with hosting providers:
 
 The (Linode Kubernetes Engine)[https://www.linode.com/docs/products/compute/kubernetes/] is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
 
+### The LKE Cluster Driver for Rancher
+
+In order to use LKE on Rancher, the LKE Cluster Driver must be manually activated.
+
+1. Click on **Tools** from the main navigation bar and select **Drivers** from the dropdown menu.
+
+    ![Rancher Drivers menu option highlighted](drivers-menu-option.png "Select the Drivers option from the Tools dropdown menu")
+
+1. Find the **Linode LKE** cluster driver, check the box next to it to select it, and click on the **Activate** button.
+
+    ![cluster-driver-activate](cluster-driver-activate.png "Activate the Linode Cluster Driver")
+
 ### Creating an LKE Cluster
 
-Once Rancher been installed and activated, a new LKE Cluster can be created at any time:
+Once Rancher been installed and the cluster driver has been activated, a new LKE Cluster can be created at any time:
 
 1.  Return to the home page by hovering over the **Global** dropdown menu in the main navigation bar and then clicking the **Global** menu item:
 
