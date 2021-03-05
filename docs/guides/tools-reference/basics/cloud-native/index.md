@@ -17,11 +17,9 @@ contributor:
   link: http://www.twitter.com/sjvn
 ---
 
-# What is cloud-native computing?
+Cloud-native computing is an application development and delivery paradigm. It includes several technologies and architectural patterns, including open-source Linux containers, Kubernetes, and microservices. Its aim is to make the cloud --whether it be public, private, or hybrid-- the fundamental computing platform.
 
-Cloud-native computing includes several components, including open-source Linux containers, Kubernetes, and microservices. Its aim is to make the cloud the fundamental computing platform. Not hardware, not even the operating system – the cloud itself.
-
-The benefits are flexibility, speed-of-delivery, and ease of development. Cloud-native computing makes [continuous integration (CI) and continuous delivery (CD)](https://www.linode.com/docs/guides/introduction-ci-cd/) possible. Cloud-native computing promises to help IT professionals create applications that are easy to deploy quickly when needed and for only as long as it&#39;s necessary. Because they can elastically scale up and down on the fly, cloud-native programs are cheaper and faster to deploy.
+The benefits to this approach are flexibility, speed-of-delivery, and ease of development. Cloud-native computing makes [continuous integration (CI) and continuous delivery (CD)](/docs/guides/introduction-ci-cd/) possible. Cloud-native computing promises to help IT professionals create applications that are easy to deploy quickly when needed, and for only as long as it's necessary. This is possible because developers can elastically scale their applications up and down on the fly.
 
 More technically: According to the [Cloud Native Computing Foundation](https://www.cncf.io/) (CNCF) definition, [cloud-native computing uses open-source, vendor-neutral programs](https://github.com/cncf/toc/blob/master/DEFINITION.md) to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds. To do this, it uses containers, service meshes, microservices, immutable infrastructure, and declarative APIs. These programs work together on loosely coupled systems, which are resilient, manageable, and observable.
 
