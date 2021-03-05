@@ -51,7 +51,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Advantages/Drawbacks of Magento
 
-Magento is a popular choice for e-commerce platforms due to its large number of features. It includes drag and drop functionality for page development and user experience. Magento scales well, is flexible and customisable, and is useful for both B2B and B2C contexts. Developers can add or develop plug-in modules to extend Magento's core functionality. Magento also has a large user-base and helpful community.
+Magento is a popular choice for e-commerce platforms due to its large number of features. It includes drag and drop functionality for page development and user experience. Magento scales well, is flexible and customizable, and is useful for both B2B and B2C contexts. Developers can add or develop plug-in modules to extend Magento's core functionality. Magento also has a large user-base and helpful community.
 
 On the other hand, some users find Magento difficult to set up and configure. Non-technical users may have trouble customising their storefront.
 
@@ -143,7 +143,7 @@ Follow the instructions in the [How to Install a LAMP Stack on CentOS 8](/docs/g
         httpd -v
 2.  Magento requires the `mod_deflate.c`, `mod_expires.c`, `mod_headers.c`, `mod_rewrite.c`, `mod_security.c`, `mod_ssl.c`, and the `mod_version.c` Apache modules. You can generate a list of the installed modules via the command `sudo httpd -M`. Look for the presence of a component named `deflate_module` to verify `mod_deflate.c` is installed.
 
-3.  Install any missing modules with the following command, replacing "modname" with the name of the actual module:
+3.  Install any missing modules with the following command, replacing `modname` with the name of the actual module:
 
         sudo dnf install mod_modname
     Check if the ssl module is installed using ```sudo httpd -t -D DUMP_MODULES | grep ssl```command. If `mod_ssl.c` is not already installed, you should create a *Secure Sockets Layer* (SSL) certificate when you install it. Use the following command to create your own self-signed key and certificate:
@@ -470,7 +470,7 @@ Troubleshoot SELinux issues by changing `SELINUX=enforcing` to `SELINUX=permissi
     -   **admin-email** - This is the email of the Magento administrator.
     -   **admin-user** - This is the user name of the Magento administrator (for logging into the Magento Admin page).
     -   **admin-password** - This is the user password for the Magento administrator (enclosed in single quotes).  Magento requires you to use a password with at least one letter and one number.
-    -   **base-url** - This is the URL to access the storefront. For example: `http[s]://<website>/<Magento-install-dir>/` or `http[s]://<ip>/<Magento-install-dir>/`. The trailing slash is mandatory. The `Magento-install-dir` is the path of the Magento directory root (the website directory in the virtual hosts file) relative to the web server docroot. If these two values are the same, leave `Magento-install-dir` blank. To access this on a localhost, use `http://127.0.0.1/<Magento-install-dir>/`. For a containerised environment, use `‘’`.
+    -   **base-url** - This is the URL to access the storefront. For example: `http[s]://<website>/<Magento-install-dir>/` or `http[s]://<ip>/<Magento-install-dir>/`. The trailing slash is mandatory. The `Magento-install-dir` is the path of the Magento directory root (the website directory in the virtual hosts file) relative to the web server document root. If these two values are the same, leave `Magento-install-dir` blank. To access this on a localhost, use `http://127.0.0.1/<Magento-install-dir>/`. For a containerised environment, use `‘’`.
     -   **db-host** - This is the address of the database. If the database server resides on the same host as Magento, use localhost. If not, specify the address or name of the server where the database is hosted.
     -   **db-name** - This is the name of the database instance where the Magento database tables are installed. We used `magento` earlier.
     -   **db-user** - This is the user name of the owner of the Magento database instance. The default is root.
@@ -529,7 +529,7 @@ The following optional configuration items can be used to customise your Elastic
 
 ### RabbitMQ and Locking Options
 
-Optional configuration parameters are available if you intend to use the RabbitMQ software or customisable locking. See the [Magento command line options page](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-install.html) for more information on these and all the other options.
+Optional configuration parameters are available if you intend to use the RabbitMQ software or customizable locking. See the [Magento command line options page](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-install.html) for more information on these and all the other options.
 
 {{< note >}}
 The RabbitMQ options can only be used if you have installed the optional RabbitMQ software.
