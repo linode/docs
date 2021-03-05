@@ -1,7 +1,7 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-9
 author:
-  name: Linode
+  name: Tyler Langlois
   email: docs@linode.com
 contributor:
   name: Tyler Langlois
