@@ -12,8 +12,8 @@ external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache debian 9", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-15
-modified: 2021-03-15
+published: 2021-03-05
+modified: 2021-03-05
 modified_by:
   name: Linode
 title: 'How to Visualize Apache Web Server Logs Using the Elastic Stack on Debian 9'
