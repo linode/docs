@@ -7,7 +7,7 @@ description: 'Training and inference are interconnected pieces of machine learni
 og_description: 'Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises.'
 keywords: ['cloud machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-23
+published: 2021-03-05
 modified_by:
   name: Linode
 title: "An Introduction to Machine Learning: Training and Inference"

@@ -19,7 +19,7 @@ modified_by:
 title: 'How to Visualize Apache Web Server Logs Using the Elastic Stack on Debian 9'
 h1_title: 'Visualizing Apache Web Server Logs Using the Elastic Stack on Debian 9'
 dedicated_cpu_link: true
-tags: ["debian","analytics","database","monitoring"]
+tags: ["debian","analytics","database","monitoring","apache"]
 relations:
     platform:
         key: visualize-apache-logs-using-elastic-stack

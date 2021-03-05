@@ -8,7 +8,7 @@ og_description: 'This guide describes how to install Magento 2.4 on CentOS8, inc
 keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "magento"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-11-20
+published: 2021-03-05
 modified_by:
   name: Linode
 title: "Install Magento 2.4 on Centos 8"
