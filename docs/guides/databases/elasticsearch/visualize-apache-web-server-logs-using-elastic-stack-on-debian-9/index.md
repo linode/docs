@@ -20,6 +20,11 @@ title: 'How to Visualize Apache Web Server Logs Using the Elastic Stack on Debia
 h1_title: 'Visualizing Apache Web Server Logs Using the Elastic Stack on Debian 9'
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
+relations:
+    platform:
+        key: visualize-apache-logs-using-elastic-stack
+        keywords:
+            - distribution: Debian 9
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.
