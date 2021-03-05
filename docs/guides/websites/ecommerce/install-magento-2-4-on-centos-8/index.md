@@ -35,12 +35,14 @@ Although this guide covers installation of Magento 2.4, version 2.3 is still ava
 
 ## Before You Begin
 
-1.  Familiarise yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's host name and timezone.
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
-3.  Update your system:
+1. Magento requires a robust, stable hosting environment in order to function properly, such as a **Linode 4GB** solution. Familiarise yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's host name and timezone.
 
-        sudo apt-get update && sudo apt-get upgrade
-4. This guide uses the sample domain name of `example.com` and a Magento root directory of `/var/www/html/example.com/public_html`, along with default username and password variables such as `magentouser` and `magentopassword`. Substitute your own values when you encounter these variables throughout the guide.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  Update your system:
+
+        sudo dnf update && sudo dnf upgrade
+1. This guide uses the sample domain name of `example.com` and a Magento root directory of `/var/www/html/example.com/public_html`, along with default username and password variables such as `magentouser` and `magentopassword`. Substitute your own values when you encounter these variables throughout the guide.
+
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -52,8 +54,6 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 Magento is a popular choice for e-commerce platforms due to its large number of features. It includes drag and drop functionality for page development and user experience. Magento scales well, is flexible and customisable, and is useful for both B2B and B2C contexts. Developers can add or develop plug-in modules to extend Magento's core functionality. Magento also has a large user-base and helpful community.
 
 On the other hand, some users find Magento difficult to set up and configure. Non-technical users may have trouble customising their storefront.
-
-Magento requires a robust, stable hosting environment in order to function properly, such as a **Linode 4GB** solution.
 
 ## A Summary of the Magento Installation Process
 
@@ -121,36 +121,38 @@ We recommend you make a check point backup before installing and configuring the
 
 ## Install and Configure Prerequisite Components
 
-Several other software components must be present and properly configured before Magento can be installed. These components are:
+Several other software components must be present and properly configured before Magento can be installed. The components are:
 1.  The web server, preferably Apache
 2.  SQL database
-3.  PHP
+3.  PHP 7.4
 4.  Elasticsearch
+
+Follow the instructions in the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide to install Apache, SQL, and PHP.
+
+{{< disclosure-note "Install PHP 7.4">}}
+        1. Enable the repositories by using: ```sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y```
+        2. List the available PHP version using: ``` sudo dnf module list php```
+        3. Enable the latest version of PHP using: ```sudo dnf module enable php:remi-7.4```
+{{< /disclosure-note >}}
+
 
 ### Web Server
 
 1.  Magento requires Apache version 2.4. You can verify what version of Apache you have with the following command:
 
-        apache2 -v
-2.  Magento requires the following Apache modules. You can generate a list of the installed modules via the command `sudo httpd -M`. Look for the presence of a component named `deflate_module` to verify `mod_deflate.c` is installed.
+        httpd -v
+2.  Magento requires the `mod_deflate.c`, `mod_expires.c`, `mod_headers.c`, `mod_rewrite.c`, `mod_security.c`, `mod_ssl.c`, and the `mod_version.c` Apache modules. You can generate a list of the installed modules via the command `sudo httpd -M`. Look for the presence of a component named `deflate_module` to verify `mod_deflate.c` is installed.
 
-        mod_deflate.c
-        mod_expires.c
-        mod_headers.c
-        mod_rewrite.c
-        mod_security.c
-        mod_ssl.c
-        mod_version.c
 3.  Install any missing modules with the following command, replacing "modname" with the name of the actual module:
 
         sudo dnf install mod_modname
-    If `mod_ssl.c` is not already installed, you should create a *Secure Sockets Layer* (SSL) certificate when you install it. Use the following command to create your own self-signed key and certificate:
+    Check if the ssl module is installed using ```sudo httpd -t -D DUMP_MODULES | grep ssl```command. If `mod_ssl.c` is not already installed, you should create a *Secure Sockets Layer* (SSL) certificate when you install it. Use the following command to create your own self-signed key and certificate:
 
         openssl req -newkey rsa:2048 -nodes -keyout /etc/pki/tls/private/httpd.key -x509 -days 365 -out /etc/pki/tls/certs/httpd.crt
     After creating the key, edit the `/etc/httpd/conf.d/ssl.conf` file. Set the values of `SSLCertificateFile` and `SSLCertificateKeyFile` to reference the key you created:
 
 
-    {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
+    {{< file "/etc/httpd/conf.d/ssl.conf" aconf >}}
     SSLCertificateFile /etc/pki/tls/certs/httpd.crt
     SSLCertificateKeyFile /etc/pki/tls/private/httpd.key
 {{< /file >}}
@@ -296,9 +298,9 @@ error_log = /var/log/php/error.log
 
 Enable the PHP Opcache for better performance. This setting can be found and modified in `opcache.ini`.
 
-1.  Open the `opcache.ini` file. This file is usually found at `/etc/php.d/opcache.ini`, but you can find its exact location with the following command:
+1.  Open the `opcache.ini` file. This file is usually found at `/etc/php.d/opcache.ini`, but you can find its exact location using the ```php --ini``` command.
+{{< note >}}If you do not find the ```opcache.ini``` file, install it using ```sudo dnf install php-opcache```{{< /note >}}
 
-        php --ini
 2.  Set the `opcache.save_comments` variable to 1, uncommenting it if necessary:
 
         opcache.save_comments = 1
@@ -318,10 +320,10 @@ Elasticsearch provides advanced search capabilities for Magento. Magento require
 1.  Download an Elasticsearch archive for CentOS on [The Elasticsearch download page](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html) and follow all instructions.
 2.  Enter the directory where Elasticsearch is installed (for example, `elasticsearch-7.10.0`) and start Elasticsearch:
 
-        ./bin/elasticsearch 
+        ./bin/elasticsearch
 3.  Run a curl command to confirm Elasticsearch works. A "green" status indicates a successful reply. Use the following command to take an Elasticsearch health check:
 
-        curl -XGET '<host>:9200/_cat/health?v&pretty'
+        curl -XGET 'localhost:9200/_cat/health?v&pretty'
     {{< note >}}
 Elasticsearch could potentially be in the "yellow" state if back up capabilities or other features are not available. You can still proceed with the installation in this case, but we recommend you correct this before deployment.
 {{< /note >}}
@@ -351,7 +353,7 @@ IncludeOptional sites-available/*.conf
 {{< /file >}}
 8.  Restart Apache:
 
-        sudo systemctl restart httpd.service 
+        sudo systemctl restart httpd.service
 9.  Use the following command to validate the communication channel between Apache and Elasticsearch. An `HTTP 200 OK` response indicates the components are working together.
 
         curl -i http://localhost:8080/_cluster/health
@@ -402,7 +404,7 @@ You must create an account before you can download Magento. There is no cost for
 {{< /note >}}
 3.  If you have downloaded the software onto a different computer than the host, transfer the Magento files to the host via `scp`, `ftp`, or another file transfer method. Replace the `user` and `yourhost` values with your user name and host IP address:
 
-        scp /localpath/Magento-CE-2.*.tar.gz user@yourhost:~/
+        scp /localpath/magento-ce-2.*.tar.gz user@LinodeIPaddress:~/
 4.  On your host, navigate to the Magento root directory. (This is the directory specified within the virtual host entry for your domain.) Copy the Magento archive to this subdirectory.
 5.  Extract the files using the appropriate command from the list below (the one corresponding to your archive format). Substitute the name of your actual archive in place of `archive`. After the extraction process is complete, either delete the archive or store it in a secure place elsewhere on your system.
 
@@ -557,7 +559,7 @@ You can always rerun the Magento installation program later on to set new option
 
 ## Complete the Magento Post-installation Tasks
 
-There are a few post-installation tasks remaining to ensure your application is stable and more secure. 
+There are a few post-installation tasks remaining to ensure your application is stable and more secure.
 
 ### Install the Magento Cron Jobs
 
@@ -589,7 +591,7 @@ Magento relies on several regularly-scheduled tasks in order to run correctly. Y
 Magento enables two-factor authentication for the Magento Admin page by default. When you first try to access the Magento Admin page, the application sends an email to your `admin-email` address telling you how to set this up. In the interest of efficiency, you can turn this off during development. To disable two-factor authentication, run the following commands from the Magento root directory:
 
     sudo bin/magento module:disable Magento_TwoFactorAuth
-    sudo bin/magento cache:flush 
+    sudo bin/magento cache:flush
 {{< /note >}}
 
 3.  We recommend you take another backup checkpoint at this time before proceeding to further Magento configuration.
@@ -646,4 +648,4 @@ You are now ready and able to begin setting up your store and adding product dat
 
 You can optimise your Magento installation through the addition of other third-party components, including Varnish, Redis, and RabbitMQ. Information about [these extensions can be found on the Magento development site](https://devdocs.magento.com/guides/v2.4/config-guide/bk-config-guide.html).
 
-In order to keep your site up-to-date and more secure, consult the Magento site on a regular basis to look for updates and patches. 
+In order to keep your site up-to-date and more secure, consult the Magento site on a regular basis to look for updates and patches.
