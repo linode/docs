@@ -37,7 +37,7 @@ Although this guide covers installation of Magento 2.4, version 2.3 is still ava
 
 1. Magento requires a robust, stable hosting environment in order to function properly, such as a **Linode 4GB** solution. Familiarise yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's host name and timezone.
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an Magento server.
 1.  Update your system:
 
         sudo dnf update && sudo dnf upgrade
@@ -208,7 +208,7 @@ If you require more information on setting up Apache or configuring virtual host
 {{< /note >}}
 
 {{< note >}}
-nginx 1.x can also be used as the Magento web server.
+NGINX 1.x can also be used as the Magento web server.
 {{< /note >}}
 
 ### SQL Database
@@ -229,7 +229,7 @@ MySQL 8.0 is recommended, although MariaDB version 10.4+ can also be used. All M
 4.  Log in to mysql as root:
 
         mysql -u root -p
-5.  Create a database and user account for Magento. Replace `dbpassword `with your own strong password (the exclamation point "!" must not be used in an MySQL password). You can also change the user name to something more specific (in this case, ensure you make the same substitution in the GRANT command).
+5.  Create a database and user account for Magento. Replace `dbpassword` with your own strong password (the exclamation point "!" must not be used in an MySQL password). You can also change the user name to something more specific (in this case, ensure you make the same substitution in the GRANT command).
 
         CREATE database magento;
         CREATE user 'magento' IDENTIFIED BY 'dbpassword';
@@ -240,7 +240,7 @@ MySQL 8.0 is recommended, although MariaDB version 10.4+ can also be used. All M
 
         mysql -u magento -p
 7.  Record the name of the database and password you created and store this information in a safe place for later.
-8.  If mysql is not already configured to become active at start-up time, add this entry to `systemctl`:
+8.  If MySQL is not already configured to become active at start-up time, add this entry to `systemctl`:
 
         systemctl enable mysqld
 
