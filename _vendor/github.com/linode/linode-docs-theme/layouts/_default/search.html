@@ -1,8 +1,8 @@
 {{ define "main" }}
-  <div x-data="lnc.NewSearchController()" id="search-main" x-init="init(true)" x-show="show" @search:query-standalone.document="search($event.detail)" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+  <div x-data="lnc.NewSearchController()" id="search-main" x-init="init(true)" x-show="show" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
     x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="space-y-8">
     <template x-for="(section, i) in searchState.mainSearch.results.sections" :key="section.config.name">
-      <div x-show="section && !section.disabledPermanent">
+      <div x-show="section && section.isEnabled()">
         <div class="flex content-start items-center justify-between mb-1">
           <h2 class="text-titlecolor" x-text="'Search results in ' + section.config.title"></h2>
         </div>
@@ -15,8 +15,5 @@
         </div>
       </div>
     </template>
-  </div>
-  <div class="hidden">
-    {{ partial "sections/search/filters.html" . }}
   </div>
 {{ end }}
