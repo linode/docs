@@ -68,7 +68,8 @@ body {
 }
 
 .is-explorer-open .full-width {
-  margin-left: -2rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 
 @screen md {
