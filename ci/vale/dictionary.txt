@@ -33,6 +33,7 @@ amd64
 ananke
 anonymize
 anonymizing
+ansi
 ansible
 antispam
 ap
@@ -1064,6 +1065,7 @@ oldstable
 oldfashioned
 oneof
 ons
+opcache
 opencart
 opendkim
 openfire
@@ -1678,6 +1680,7 @@ vset
 vswap
 vue
 vuejs
+vvv
 vz
 vznetaddbr
 walkthrough
