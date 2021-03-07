@@ -221,7 +221,7 @@ As an additional security precaution, you may elect to disable user registration
 
 1. Start a new bitwarden container, but with the `SIGNUPS_ALLOWED` environment variable set to `false`.
 
-        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -e SIGNUPS_ALLOWED=false -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
+        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -e SIGNUPS_ALLOWED=false -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:latest
 
 1. If you attempt to create a new account after these changes, the following error appears on the account creation page.
 
