@@ -412,7 +412,7 @@ Status for the jail: sshd
 
 You can install ClamAV with the `apt` package manager on Debian or the `yum` package manager on CentOS.
 
-1.  Install the `clamav` pakckage by running the following command:
+1.  Install the `clamav` package by running the following command:
 
         sudo apt install clamav
 
@@ -484,7 +484,7 @@ ModSecurity is a firewall and therefore requires rules to function. This section
 
         sudo cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 
-1.  With a text editor such as vim, open `/etc/modsecurity/modsecurity.conf` and change theq value for `SecRuleEngine` to `On`:
+1.  With a text editor such as vim, open `/etc/modsecurity/modsecurity.conf` and change the value for `SecRuleEngine` to `On`:
 
     {{< file "/etc/modsecurity/modsecurity.conf" aconf >}}
 # -- Rule engine initialization ----------------------------------------------
