@@ -26,7 +26,7 @@ tags: ["automation"]
 
 Chef works with three core components:
 
-- **A Chef server:** As the center of operations, the Chef server stores, manages, and provides configuration data to all other Chef components.
+- **A Chef server:** As the center of operations, the Chef server stores, manages and provides configuration data to all other Chef components.
 - **Chef Workstations:** Workstations are personal computers or virtual servers where Chef's configuration code is created, tested, and changed. There can be as many workstations as needed, whether this is one per person or otherwise.
 - **Chef Nodes:** Nodes are the servers Chef pushes changes to, generally a fleet of multiple machines that require the benefits of automation. Chef can manage nodes that are virtual servers, containers, network devices, and storage devices. A Chef client is installed on every node that is under management by Chef.
 
@@ -38,7 +38,9 @@ After reading this guide, if you wish to further explore implementing Chef, see 
 
 ## The Chef Server
 
-The Chef server provides a communication pathway between the workstations the infrastructure coding takes place, and the nodes configurations deploy on by the Chef client. All configuration files, cookbooks, metadata, and other information are created on workstations and stored on the Chef server. The Chef server also keeps a record of the state of all nodes at the time of the last [chef-client](#chef-client) run. A workstation communicates with the Chef server using [*Knife*](/docs/applications/configuration-management/beginners-guide-chef/#knife) and Chef command-line tools, while nodes communicate with the Chef server using the [Chef client](/docs/applications/configuration-management/beginners-guide-chef/#chef-client).
+The Chef server provides a communication pathway between the workstations the infrastructure coding takes place, and the nodes configurations deploy on by the Chef client. All configuration files, cookbooks, metadata, and other information are created on workstations and stored on the Chef server. The Chef server also keeps a record of the state of all nodes at the time of the last [chef-client](#chef-client) run. 
+
+A workstation communicates with the Chef server using [*Knife*](/docs/applications/configuration-management/beginners-guide-chef/#knife) and Chef command-line tools, while nodes communicate with the Chef server using the [Chef client](/docs/applications/configuration-management/beginners-guide-chef/#chef-client).
 
 Any changes made to your infrastructure code must pass through the Chef server to be applied to nodes. Prior to accepting or pushing changes, the Chef server authenticates all communication via its REST API using public key encryption.
 
@@ -130,7 +132,7 @@ Run lists define which [recipes](/docs/applications/configuration-management/beg
 
 ### Ohai
 
-[Ohai](https://docs.chef.io/ohai/) collects system configutation data to be used in cookbooks and is required to be present on every Chef node. It is installed as part of the bootstrap process.
+[Ohai](https://docs.chef.io/ohai/) collects system configuration data to be used in cookbooks and is required to be present on every Chef node. It is installed as part of the bootstrap process.
 
 It gathers data about network and memory usage, CPU data, kernel data, hostnames, FQDNs, and other automatic attributes. This data helps the Chef client determine the state of the node prior to applying that node's run list.
 
@@ -208,7 +210,7 @@ Attributes define specific values about a node and its configuration, are often 
 
 ### Files
 
-These are static files uploaded to nodes. Files can be configuration and set-up files, scripts, website files. For example, you may have a recipe that uses an `index.php` file. You can use a `cookbook_file` resource block within a recipe to create the file on a node. All static files should be stored in a cookbook's `files` directory.
+These are static files uploaded to nodes. Files can be configuration and set-up files, scripts, website files. For example, you may have a recipe that uses an `index.php` file. You can use a `cookbook_file` resource block within a recipe to create the file on a node. All static files should be stored in a cookbook’s “files” directory.
 
 ### Libraries
 
