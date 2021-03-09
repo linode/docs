@@ -8,12 +8,12 @@ og_description: 'This Quick Answer guide explains how to use the echo command to
 keywords: ["linux", "how to", "echo"]
 aliases: ['quick-answers/how-to-use-echo/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-06-08
 modified_by:
   name: Linode
-published: 2020-06-08
+published: 2021-03-05
 title: How to Use Echo
 h1_title: Using the echo Command
+tags: ["linux"]
 ---
 
 ## What Is the Echo Command?

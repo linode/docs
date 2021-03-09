@@ -20,9 +20,6 @@ export function newDispatcher() {
 		// Event that triggers a new search query.
 		EVENT_SEARCH_QUERY: 'search:query',
 
-		// Event that triggers a new search query for the standalone search.
-		EVENT_SEARCH_QUERY_STANDALONE: 'search:query-standalone',
-
 		// Event that signals the opening/close of the search experience (e.g. the close of the input box).
 		EVENT_SEARCH_TOGGLE: 'search:toggle',
 
@@ -65,13 +62,6 @@ export function newDispatcher() {
 				event: events.EVENT_SEARCHRESULT,
 				query: query,
 				executeSearch: executeSearch
-			});
-		},
-		searchQueryStandalone: function(query) {
-			debug('searchQueryStandalone');
-			sendEvent(events.EVENT_SEARCH_QUERY_STANDALONE, {
-				event: events.EVENT_SEARCHRESULT,
-				query: query
 			});
 		},
 		searchBlank: function() {

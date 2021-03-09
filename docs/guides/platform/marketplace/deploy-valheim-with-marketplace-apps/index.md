@@ -6,9 +6,9 @@ author:
 description: 'Deploy Valheim, an open-world Viking themed survivial game, on Linode using Marketplace Apps.'
 og_description: 'Deploy Valheim, an open-world Viking themed survival game, on Linode using Marketplace Apps.'
 keywords: ['gaming','game server','valheim']
-tags: ["gaming", "game server", "linode platform", "cloud-manager"]
+tags: ["linode platform", "cloud manager", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-01
+published: 2021-03-09
 modified_by:
   name: Linode
 title: "How to Deploy Valheim With Marketplace Apps"
@@ -69,7 +69,7 @@ After providing all required Linode Options, click on the **Create** button. **Y
 
 After Valheim has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server within the game using your Linode's IPv4 address and port `2456`(for example `192.0.2.0:2456`).
 
-        ![valheim-login.png](valheim-login.png)
+![Valheim Select Server screen](valheim-login.png "Valheim Select Server screen")
 
 For more on Valheim, check out the following resources:
 
