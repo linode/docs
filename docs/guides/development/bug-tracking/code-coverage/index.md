@@ -17,13 +17,9 @@ contributor:
   link: https://twitter.com/meheller
 ---
 
-# What is Code Coverage Analysis?
+Code coverage is typically part of the [unit testing](/docs/guides/what-is-unit-testing/) phase of the software development lifecycle, although it is often used in other testing phases as well. A code coverage tool watches as the suite of unit tests run; then it reports on which functions, branches, loops, and lines of code have and have not been tested. At the highest level, the reports show the percentage coverage for each category; drilling down often shows untested code.
 
-When you know a bug exists in the code, you can do something about it. But if the purpose of QA testing is to discover defects, it’s a wise idea to find the defects.
-
-Code coverage is typically part of the [unit testing](https://www.linode.com/docs/guides/what-is-unit-testing/) phase of the software development lifecycle, although it is often used in other testing phases as well. Essentially, a code coverage tool watches as the suite of unit tests run; then it reports on which functions, branches, loops, and lines of code have and have not been tested. At the highest level, the reports show the percentage coverage for each category; drilling down often shows untested code.
-
-Code coverage analysis tools usually work by instrumenting the code being monitored. Depending on the source language and the tool, that can be via source code injection or executable binary instrumentation.
+Code coverage analysis tools usually work by [*instrumenting*](https://en.wikipedia.org/wiki/Instrumentation_(computer_programming)) the code being monitored. Instrumentation adds statements to your code to monitor the code execution. Depending on the source language and the tool, the instrumentation can be via source code injection or executable binary instrumentation.
 
 Test coverage analysis is a supplement to code coverage analysis; it reports whether the test cases cover all of the functional requirements. Because test coverage is qualitative, it is usually a manual process. Test coverage analysis often accompanies test-driven development (TDD).
 
