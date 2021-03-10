@@ -64,6 +64,10 @@ Only Linode plans are available for transfer at this time.
 1. If the request is successful, a summary window appears that contains a Service Transfer token and a sample message to send to the receiving account. A confirmation email is also sent to the sending account with details of the transfer, including the Service Transfer token.
 
     {{< note >}}
+Linode does not send the Service Transfer token on your behalf. You must send the token to the receiving account by email or other method.
+{{< /note >}}
+
+    {{< note >}}
 Service Transfers automatically expire 24 hours after creation. You can view the expiry dates of your pending transfers from the [Service Transfers](https://cloud.linode.com/account/service-transfers) page. Dates and times are displayed for your configured timezone, which you can adjust from your [Cloud Manager User Profile](https://cloud.linode.com/profile/display).
 {{< /note >}}
 
@@ -71,7 +75,7 @@ Service Transfers automatically expire 24 hours after creation. You can view the
 Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they have been accepted by a receiving account. Take care when sharing your Service Transfer token, and only transmit it in a secure manner.
 {{< /caution >}}
 
-1. If the request is unsuccessful, a list of conditions that are blocking the transfer appears at the top of the page. These conditions must be corrected before the transfer can be created, and must be maintained for the transfer to be accepted. Here is a full list of conditions that must be met for a successful transfer request:
+1. If the request is unsuccessful, a list of conditions that are blocking the transfer displays on the Service Transfer page. These conditions must be corrected before the transfer can be created, and must be maintained for the transfer to be accepted. Here is a full list of conditions that must be met for a successful transfer request:
 
     - The sending account must not have a past due balance or active Terms of Service violation.
 
@@ -106,7 +110,7 @@ Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they
 Service Transfers can take up to 3 hours to complete once accepted. Another confirmation email is sent to both the sending and receiving accounts once the transfer has been completed. If the transfer fails after being accepted, the sending account must initiate a new Service Transfer to restart it.
 {{< /note >}}
 
-1. If there are any conditions in place that are blocking the transfer, they appear at the top of the page. These conditions must be corrected by the sending or receiving account as is applicable before the transfer can be accepted. Here is a full list of conditions that must be met for a successful transfer request:
+1. If there are any conditions in place that are blocking the transfer, they are displayed on the Service Transfer page. These conditions must be corrected by the sending or receiving account as is applicable before the transfer can be accepted. Here is a full list of conditions that must be met for a successful transfer request:
 
     - Only pending transfers can be accepted. A transfer cannot be accepted if it has expired or been cancelled.
 
@@ -132,6 +136,10 @@ Service Transfers can take up to 3 hours to complete once accepted. Another conf
 Only the sending account can cancel a Service Transfer. Once accepted, a transfer cannot be cancelled.
 {{< /note >}}
 
+{{< caution >}}
+Cancellations are irreversible. Once cancelled, you must start a new Service Transfer if you still wish to send those services.
+{{< /caution >}}
+
 1. Click the [Account](https://cloud.linode.com/account) link in the sidebar.
 
 1. Click the **Service Transfers** tab on the Account page.
@@ -139,5 +147,3 @@ Only the sending account can cancel a Service Transfer. Once accepted, a transfe
 1. Under **Pending Service Transfers**, locate the transfer you wish to cancel, click the corresponding **Cancel** button, and confirm the cancellation. A confirmation email is sent to the sending account.
 
     ![Your cancelled Service Transfers are listed on the Service Transfers page.](cancel-transfer.png "Your cancelled Service Transfers are listed on the Service Transfers page.")
-
-Once cancelled, you must start a new Service Transfer if you still wish to send those services.
