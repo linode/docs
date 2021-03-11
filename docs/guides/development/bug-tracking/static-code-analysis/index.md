@@ -1,10 +1,10 @@
 ---
-slug: static-code-analysis
+slug: what-is-static-code-analysis
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
-description: 'You can find potential bugs by letting a tool examine your source code. It's also useful for CI/CD build processes.'
-og_description: 'You can find potential bugs by letting a tool examine your source code. Running static code analysis in the centralized build process guarantees that checked-in code has been checked for common coding errors.'
+description: 'Static code analysis generates warnings about bugs in your source code. This code testing method help prevent bugs in your code during your local development process. You can also use various tools, like ESLint and GitHub Actions, to help automate static code analysis during your CI/CD build process.'
+og_description: 'Static code analysis generates warnings about bugs in your source code. This code testing method help prevent bugs in your code during your local development process. You can also use various tools, like ESLint and GitHub Actions, to help automate static code analysis during your CI/CD build process.'
 keywords: ['what is static code analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-24
@@ -12,59 +12,59 @@ modified_by:
   name: Linode
 title: "What is Static Code Analysis?"
 h1_title: "What is Static Code Analysis?"
+tags: ["automation"]
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
 ---
 
-# What is Static Code Analysis?
+Static code analysis, also called *static program analysis*, looks at an application’s source code and issues warnings about potential bugs. This is different from -- and complementary to -- [dynamic analysis](https://en.wikipedia.org/wiki/Dynamic_program_analysis), which examines the behavior of a program while it is running. Static code analysis can sometimes find bugs that are overlooked in human code reviews and aren’t caught by a compiler’s grammar and error checking.
 
-By letting a tool examine your source code, you can find potential bugs in your programs.
+This type of code analysis is generally performed by a tool, which may be either a standalone utility or one integrated with another program. It can be a part of your integrated development environment or a compiler. Some static code analysis tools look at code units in isolation and apply rules; others take a more holistic view of the code.
 
-Static code analysis, also called static program analysis, looks at an application’s source code and issues warnings about potential bugs. This is different from -- and complementary to -- [dynamic analysis](https://en.wikipedia.org/wiki/Dynamic_program_analysis), which examines the behavior of a program while it is running. Static code analysis can sometimes find bugs that are overlooked in human code reviews and aren’t caught by a compiler’s grammar and error checking.
+Historically, developers ran static code analysis in an exploratory way as part of their local software development workflow. This assisted them in debugging and testing, before they checked their code into source code control.
 
-Static code analysis is generally performed by a tool, which may be either a standalone utility or one integrated with another program, such as a development environment or compiler. Some static code analysis tools look at code units in isolation and apply rules; others take a more holistic view of the code.
+## How Does Static Code Analysis Fit into DevOps and CI/CD?
 
-Historically, developers ran static code analysis in an exploratory way as part of their local software development workflow to assist in debugging and testing, before they check their code into source code control.
+If you want static code analysis to help you with DevOps and [CI/CD](/docs/guides/introduction-ci-cd/), you need to run it in your centralized build process. To do so, define the code analysis rules you care about as *severity 1*, also known as errors or bugs. Then configure the build server to halt any builds with severity 1 errors. Running static code analysis in the centralized build process guarantees that any checked-in code that is promoted to test, staging, or production environments is tested for common coding errors. However, developers should also run the code analysis themselves in their local environment prior to pushing their code through their CI/CD pipeline.
 
-## How does static code analysis fit into DevOps and CI/CD?
+## Static Code Analysis Tools
 
-If you want static code analysis to help you with DevOps and [CI/CD](https://www.linode.com/docs/guides/introduction-ci-cd/), you need to run it in your centralized build process. To do so, define the code analysis rules you care about as Severity 1, also known as errors or bugs. Then configure the build server to halt any builds with Severity 1 errors.
+The original static code analysis tool was [*lint*](https://en.wikipedia.org/wiki/Lint_(software)). This tool,introduced in 1978 by Stephen C. Johnson of Bell Labs, found any programming or stylistic errors or bugs within C programs. Johnson wrote lint to help him debug [*Yacc*](https://en.wikipedia.org/wiki/Yacc) grammar and deal with portability issues when he ported Unix from a 16-bit machine to a 32-bit machine.
 
-That doesn’t mean that developers shouldn’t run static code analysis themselves. They should. However, running static code analysis in the centralized build process guarantees that any checked-in code that is promoted to test, staging, or production environments is checked for common coding errors.
+Currently, there are [dozens of static code analysis tools](https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis). Some are single-programming-language code checkers; others support multiple programming languages. Some of these tools couple code checkers with other functionality, such as calculating [cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity) and other software metrics, or performing dependency analysis. One popular JavaScript linter is [ESLint](https://eslint.org/). You can also take a look at the [GitHub Actions Marketplace](https://github.com/marketplace/category/code-quality) to find apps and actions that help you integrate static code analysis into your CI/CD pipeline.
 
-## Static code analysis tools
+## Example of Static Code Analysis with ESLint
 
-The original static code analysis tool was `lint`, which “picks the fluff” from C programs and was introduced in 1978 by Stephen C. Johnson of Bell Labs. Johnson wrote `lint` to help him debug a `yacc` grammar and deal with portability issues when he ported Unix from a 16-bit machine to a 32-bit machine. The first rule for using `lint` is “Don’t shoot the messenger,” which refers to the program’s typically voluminous output.
+Once you have [installed ESLint](https://eslint.org/docs/user-guide/getting-started#installation-and-usage) and initialized it in your JavaScript projects root directory, your `.eslintrc.{js,yml,json}` contains the example line, which enables an [extensive list of common syntax or logic errors](https://eslint.org/docs/rules/) found in JavaScript code:
 
-Currently, there are [dozens of static code analysis tools](https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis). Some are single-programming-language code checkers; others support multiple programming languages. Some of these tools couple code checkers with other functionality, such as calculating cyclomatic complexity and other software metrics, or performing dependency analysis.
+{{< file ".eslintrc.json">}}
+{
+    "extends": "eslint:recommended"
+}
+{{</ file >}}
 
-## Example of static code analysis
+One of the rules that is automatically enabled by the above configuration is the `for-direction` rule. This logic rule ensures the counter controlling a `for` loop is incrementing in the "right direction". For example, a `for` loop with a stop condition that can never be reached, runs infinitely. While there are occasions when an infinite loop is intended, the convention is to construct such loops as a `while` loop. More typically, an infinite `for` loop is a considered a bug.
 
-Need a for-instance? Here is an example of a [JavaScript coding rule](https://eslint.org/docs/rules/) from [ESLint](https://eslint.org/). It helps to detect potential infinite `for` loops.
+The following code snippet shows two simple examples of infinite `for` loops:
 
-### Enforce "for" loop update clause moving the counter in the right direction. (for-direction)
+{{< file >}}
+//eslint for-direction: "error"
 
-The `"extends": "eslint:recommended"` property in a configuration file enables this rule.
-
-### Rule Details
-
-A `for` loop with a stop condition that can never be reached, such as one with a counter that moves in the wrong direction, runs infinitely. While there are occasions when an infinite loop is intended, the convention is to construct such loops as `while` loops. More typically, an infinite for loop is a bug.
-
-#### Examples of incorrect code for this rule:
-
-```
-/*eslint for-direction: "error"*/
 for (var i = 0; i < 10; i--) {
+...
 }
 
 for (var i = 10; i >= 0; i++) {
+...
 }
-```
-#### Examples of correct code for this rule:
+{{</ file >}}
 
-```
-/*eslint for-direction: "error"*/
+On the other hand, a correct `for` loop, resembles the following:
+
+{{< file >}}
+
 for (var i = 0; i < 10; i++) {
+...
 }
-```
+{{</ file >}}
