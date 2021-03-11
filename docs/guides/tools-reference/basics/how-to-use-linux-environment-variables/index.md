@@ -4,8 +4,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Environment variables store configuration and other information about your Linux shell environment. They can even store information for use in scripts and applications. This guide helps you understand how these variables work and how you can make use of them.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['shell','bash','environment variables']
+og_description: 'Environment variables store configuration and other information about your Linux shell environment. They can even store information for use in scripts and applications. This guide helps you understand how these variables work and how you can make use of them.'
+keywords: ['shell','bash','environment variables','command line','terminal','shell scripting']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
 modified_by:
@@ -15,9 +15,6 @@ h1_title: "How to Set Up and Use Linux Environment Variables"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 Your Linux shell maintains an environment where configuration and other information is stored in environment variables. Accessing these variables can be useful when working with shell commands. More than that, you can add your own environment variables, which can be used by your scripts and applications.
