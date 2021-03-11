@@ -28,12 +28,12 @@ Linode Cloud Firewall is a free service used to create, configure, and add state
 
 ### Features
 
-A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determines if the traffic is permitted to communicate with the Linode Service it secures. Cloud Firewalls work as an allowlist with an implicit deny rule-- it blocks all traffic by default and only pass through network traffic that meets the parameters of the configured rules. If there are no outbound rules set, all outbound traffic is permitted.
+A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determines if the traffic is permitted to communicate to or from the Linode Service it secures. Cloud Firewalls can be configured with an implicit deny or allow rule-- they can block or allow all traffic by default and only pass through or deny network traffic that meets the parameters of the configured rules.
 
 ### Limitations
 
 - Currently, a Cloud Firewall can only be applied to Linodes.
-- You can apply up to five Cloud Firewalls per Linode service.
+- You can apply one Cloud Firewall per Linode service.
 
 ### Inbound and Outbound Rules
 
@@ -41,7 +41,7 @@ A Cloud Firewall can be configured with *Inbound* and *Outbound* rules. Inbound 
 
 ### Predefined Rules
 
-The Linode Cloud Manager provides a list of *predefined rules* that you can add to your Cloud Firewall. The predefined rules support common networking use cases and provide an easy foundation to get started with Cloud Firewalls. Since you can edit any rule applied to a Cloud Firewall you can use the predefined rules as a foundation and further [edit their configurations](/docs/products/networking/cloud-firewall/guides/edit-rules/) and also [add new custom rules](/docs/products/networking/cloud-firewall/guides/add-rules/) to your Firewall.
+The Linode Cloud Manager provides a list of *predefined rules* that you can add to your Cloud Firewall. The predefined rules support common networking use cases and provide an easy foundation to get started with Cloud Firewalls. Since you can edit any rule applied to a Cloud Firewall you can use the predefined rules as a foundation and further [edit their configurations](/docs/products/networking/cloud-firewall/guides/edit-rules/)and also [add new custom rules](/docs/products/networking/cloud-firewall/guides/add-rules/) to your Firewall.
 
 ## Add a Cloud Firewall
 

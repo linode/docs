@@ -67,18 +67,12 @@ export function newSearchInputController() {
 	self.dispatch = function() {
 		let input = this.$refs.searchInput;
 		let queryString = input.innerText.trim();
-		let triggerSearch = queryString.length > this.queryString.length;
-		if (!triggerSearch && queryString.length > 0) {
-			// Shorter, but a new term.
-			triggerSearch = !this.queryString.startsWith(queryString);
-		}
-		this.queryString = queryString;
-		this.searchOpen = this.searchOpen || triggerSearch;
-
-		dispatcher.applySearchFilters({ filters: { q: queryString }, triggerSearch: triggerSearch });
+		this.searchOpen = true;
+		dispatcher.applySearchFilters({ filters: { q: queryString }, triggerSearch: true });
 	};
 
 	self.close = function() {
+		this.$refs.searchInput.innerHTML = '';
 		this.searchOpen = false;
 		dispatcher.searchToggle(false);
 	};
@@ -88,6 +82,10 @@ export function newSearchInputController() {
 	};
 
 	self.setFocus = function(focus) {
+		if (!this.searchOpen) {
+			this.searchOpen = true;
+			this.dispatch();
+		}
 		this.focus = focus;
 	};
 

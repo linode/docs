@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.85.0
+  version: 4.86.1
 
   title: Linode API
   description: |
@@ -348,10 +348,10 @@ info:
 
     * [Open Support Ticket](/docs/api/support/#support-ticket-open)
 
-    Accepting Entity Transfers has a dedicated limit of 2 requests per minute per user.
+    Accepting Service Transfers has a dedicated limit of 2 requests per minute per user.
     That endpoint is:
 
-    * [Entity Transfer Accept](/docs/api/account/#entity-transfer-accept)
+    * [Service Transfer Accept](/docs/api/account/#service-transfer-accept)
 
     ## CLI (Command Line Interface)
 
@@ -366,7 +366,8 @@ info:
 
   contact:
     name: Linode
-    url: /
+    url: https://linode.com
+    email: support@linode.com
 servers:
 - url: https://api.linode.com/v4
 - url: https://api.linode.com/v4beta
@@ -605,8 +606,8 @@ paths:
               --expiry_year 2025 \
               --cvv 111
   /account/entity-transfers:
-    x-linode-cli-command: entity-transfers
     get:
+      deprecated: true
       x-linode-grant: unrestricted only
       parameters:
       - $ref: '#/components/parameters/pageOffset'
@@ -615,13 +616,8 @@ paths:
       - Account
       summary: Entity Transfers List
       description: >
-        Returns a collection of all created and accepted Entity Transfers for this account, regardless of the user
-        that created or accepted the transfer.
-
-
-        This command can only be accessed by the unrestricted users of an account.
+        **DEPRECATED**. Please use [Service Transfers List](/docs/api/account/#service-transfers-list).
       operationId: getEntityTransfers
-      x-linode-cli-action: list
       security:
       - personalAccessToken: []
       - oauth:
@@ -653,63 +649,15 @@ paths:
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
             https://api.linode.com/v4/account/entity-transfers
-      - lang: CLI
-        source: >
-          linode-cli entity-transfers \
-            list
     post:
+      deprecated: true
       x-linode-grant: unrestricted only
       tags:
       - Account
       summary: Entity Transfer Create
       description: >
-        Creates a transfer request for the specified entities. A request can contain any of the specified entity types
-        and any number of each entity type. At this time, only Linodes can be transferred.
-
-
-        When created successfully, a confirmation email is sent to the account that created this transfer containing a
-        transfer token and instructions on completing the transfer.
-
-
-        When a transfer is [accepted](/docs/api/account/#entity-transfer-accept), the requested entities are moved to
-        the receiving account. Linode services will not experience interruptions due to the transfer process, but
-        please take note of the following:
-
-
-        - If any of the Linodes included in the request have Backups enabled, that data and associated costs will be
-        removed/cancelled.
-
-        - DNS records will not be transferred or updated. Please ensure that DNS records have been updated or
-        communicated to the recipient prior to the transfer.
-
-
-        A transfer can take up to three hours to complete once accepted. When a transfer is
-        completed, billing for transferred entities ends for the sending account and begins for the receiving account.
-
-
-        This command can only be accessed by the unrestricted users of an account.
-
-
-        There are several conditions that must be met in order to successfully create a transfer request:
-
-        1. The account creating the transfer must not have a past due balance or active Terms of Service violation.
-
-        1. The entity must be owned by the account that is creating the transfer.
-
-        1. The entity must not be assigned to another Entity Transfer that is pending or that has been accepted and is
-        incomplete.
-
-        1. Linodes must not:
-
-            * be assigned to a NodeBalancer, Firewall, or Managed Service.
-
-            * have any attached Block Storage Volumes.
-
-            * have any shared IP addresses.
-
-            * have any assigned /56, /64, or /116 IPv6 ranges.
+        **DEPRECATED**. Please use [Service Transfer Create](/docs/api/account/#service-transfer-create).
       operationId: createEntityTransfer
-      x-linode-cli-action: create
       security:
       - personalAccessToken: []
       - oauth:
@@ -749,14 +697,7 @@ paths:
               }
             }' \
             https://api.linode.com/v4/account/entity-transfers
-      - lang: CLI
-        source: >
-          linode-cli entity-transfers \
-            create \
-            --entities.linodes 111 \
-            --entities.linodes 222
   /account/entity-transfers/{token}:
-    x-linode-cli-command: entity-transfers
     parameters:
       - name: token
         in: path
@@ -766,18 +707,14 @@ paths:
           type: string
           format: uuid
     get:
+      deprecated: true
       x-linode-grant: unrestricted only
       tags:
       - Account
       summary: Entity Transfer View
       description: >
-        Returns the details of the Entity Transfer for the provided token.
-
-
-        This command can only be accessed by the unrestricted users of the accounts that created or accepted this
-        transfer.
+        **DEPRECATED**. Please use [Service Transfer View](/docs/api/account/#service-transfer-view).
       operationId: getEntityTransfer
-      x-linode-cli-action: view
       security:
       - personalAccessToken: []
       - oauth:
@@ -797,28 +734,15 @@ paths:
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
             https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
-      - lang: CLI
-        source: >
-          linode-cli entity-transfers \
-            view 123E4567-E89B-12D3-A456-426614174000
     delete:
+      deprecated: true
       x-linode-grant: unrestricted only
       tags:
-      - account
+      - Account
       summary: Entity Transfer Cancel
       description: >
-        Cancels the Entity Transfer for the provided token. Once cancelled, a transfer cannot be accepted or otherwise
-        acted on in any way. If cancelled in error, the transfer must be
-        [created](/docs/api/account/#entity-transfer-create) again.
-
-
-        When cancelled, an email notification for the cancellation is sent to the account that created
-        this transfer. Transfers can not be cancelled if they are expired or have been accepted.
-
-
-        This command can only be accessed by the unrestricted users of the account that created this transfer.
+        **DEPRECATED**. Please use [Service Transfer Cancel](/docs/api/account/#service-transfer-cancel).
       operationId: deleteEntityTransfer
-      x-linode-cli-action: cancel
       security:
       - personalAccessToken: []
       - oauth:
@@ -839,12 +763,7 @@ paths:
           curl -H "Authorization: Bearer $TOKEN" \
             -X DELETE \
             https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
-      - lang: CLI
-        source: >
-          linode-cli entity-transfers \
-            cancel 123E4567-E89B-12D3-A456-426614174000
   /account/entity-transfers/{token}/accept:
-    x-linode-cli-command: entity-transfers
     parameters:
       - name: token
         in: path
@@ -854,50 +773,14 @@ paths:
           type: string
           format: uuid
     post:
+      deprecated: true
       x-linode-grant: unrestricted only
       tags:
       - Account
       summary: Entity Transfer Accept
       description: >
-        Accept an Entity Transfer for the provided token to receive the entities included in the transfer to your
-        account. At this time, only Linodes can be transferred.
-
-
-        When accepted, email confirmations are sent to the accounts that created and accepted the transfer. A transfer
-        can take up to three hours to complete once accepted. Once a transfer is completed, billing for transferred
-        entities ends for the sending account and begins for the receiving account.
-
-
-        This command can only be accessed by the unrestricted users of the account that receives the transfer. Users
-        of the same account that created a transfer cannot accept the transfer.
-
-
-        There are several conditions that must be met in order to accept a transfer request:
-
-        1. Only transfers with a `pending` status can be accepted.
-
-        1. The account accepting the transfer must have a registered payment method and must not have a past due
-          balance or other account limitations for the entities to be transferred.
-
-        1. Both the account that created the transfer and the account that is accepting the transfer must not have any
-        active Terms of Service violations.
-
-        1. The entity must still be owned by the account that created the transfer.
-
-        1. Linodes must not:
-
-            * be assigned to a NodeBalancer, Firewall, or Managed Service.
-
-            * have any attached Block Storage Volumes.
-
-            * have any shared IP addresses.
-
-            * have any assigned /56, /64, or /116 IPv6 ranges.
-
-        Any and all of the above conditions must be cured and maintained by the relevant account prior to the
-        transfer's expiration to allow the transfer to be accepted by the receiving account.
+        **DEPRECATED**. Please use [Service Transfer Accept](/docs/api/account/#service-transfer-accept).
       operationId: acceptEntityTransfer
-      x-linode-cli-action: accept
       security:
       - personalAccessToken: []
       - oauth:
@@ -918,10 +801,6 @@ paths:
           curl -H "Authorization: Bearer $TOKEN" \
             -X POST \
             https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000/accept
-      - lang: CLI
-        source: >
-          linode-cli entity-transfers \
-            accept 123E4567-E89B-12D3-A456-426614174000
   /account/events:
     x-linode-cli-command: events
     get:
@@ -2004,6 +1883,314 @@ paths:
         - lang: CLI
           source: >
             linode-cli account paypal-execute
+  /account/service-transfers:
+    x-linode-cli-command: service-transfers
+    get:
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Account
+      summary: Service Transfers List
+      description: >
+        Returns a collection of all created and accepted Service Transfers for this account, regardless of the user
+        that created or accepted the transfer.
+
+
+        This command can only be accessed by the unrestricted users of an account.
+      operationId: getServiceTransfers
+      x-linode-cli-action: list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns a paginated list of Service Transfer objects containing the details of all transfers that have been
+            created and accepted by this account.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceTransfer'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/service-transfers
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            list
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Service Transfer Create
+      description: |
+        Creates a transfer request for the specified services. A request can contain any of the specified service types
+        and any number of each service type. At this time, only Linodes can be transferred.
+
+        When created successfully, a confirmation email is sent to the account that created this transfer containing a
+        transfer token and instructions on completing the transfer.
+
+        When a transfer is [accepted](/docs/api/account/#service-transfer-accept), the requested services are moved to
+        the receiving account. Linode services will not experience interruptions due to the transfer process, but
+        please take note of the following:
+
+        - If any of the Linodes included in the request have Backups enabled, that data and associated costs will be
+        removed/cancelled.
+
+        - DNS records will not be transferred or updated. Please ensure that DNS records have been updated or
+        communicated to the recipient prior to the transfer.
+
+        A transfer can take up to three hours to complete once accepted. When a transfer is
+        completed, billing for transferred services ends for the sending account and begins for the receiving account.
+
+        This command can only be accessed by the unrestricted users of an account.
+
+        There are several conditions that must be met in order to successfully create a transfer request:
+
+        1. The account creating the transfer must not have a past due balance or active Terms of Service violation.
+
+        1. The service must be owned by the account that is creating the transfer.
+
+        1. The service must not be assigned to another Service Transfer that is pending or that has been accepted and is
+        incomplete.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+      operationId: createServiceTransfer
+      x-linode-cli-action: create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      requestBody:
+        description: The services to include in this transfer request.
+        content:
+          application/json:
+            schema:
+              required:
+              - entities
+              type: object
+              properties:
+                entities:
+                  $ref: '#/components/schemas/ServiceTransfer/properties/entities'
+      responses:
+        '200':
+          description: >
+            Returns a Service Transfer object for the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST -d '{
+              "entities": {
+                "linodes": [
+                  111,
+                  222
+                ]
+              }
+            }' \
+            https://api.linode.com/v4/account/service-transfers
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            create \
+            --entities.linodes 111 \
+            --entities.linodes 222
+  /account/service-transfers/{token}:
+    x-linode-cli-command: service-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Service Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Service Transfer View
+      description: |
+        Returns the details of the Service Transfer for the provided token.
+
+        While a transfer is pending, any unrestricted user *of any account* can access this command. After a
+        transfer has been accepted, it can only be viewed by unrestricted users of the accounts that created and
+        accepted the transfer. If cancelled or expired, only unrestricted users of the account that created the
+        transfer can view it.
+      operationId: getServiceTransfer
+      x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns a Service Transfer object containing the details of the transfer for the specified token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/service-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            view 123E4567-E89B-12D3-A456-426614174000
+    delete:
+      x-linode-grant: unrestricted only
+      tags:
+      - account
+      summary: Service Transfer Cancel
+      description: |
+        Cancels the Service Transfer for the provided token. Once cancelled, a transfer cannot be accepted or otherwise
+        acted on in any way. If cancelled in error, the transfer must be
+        [created](/docs/api/account/#service-transfer-create) again.
+
+        When cancelled, an email notification for the cancellation is sent to the account that created
+        this transfer. Transfers can not be cancelled if they are expired or have been accepted.
+
+        This command can only be accessed by the unrestricted users of the account that created this transfer.
+      operationId: deleteServiceTransfer
+      x-linode-cli-action: cancel
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Service Transfer cancelled.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X DELETE \
+            https://api.linode.com/v4/account/service-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            cancel 123E4567-E89B-12D3-A456-426614174000
+  /account/service-transfers/{token}/accept:
+    x-linode-cli-command: service-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Service Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Service Transfer Accept
+      description: |
+        Accept a Service Transfer for the provided token to receive the services included in the transfer to your
+        account. At this time, only Linodes can be transferred.
+
+        When accepted, email confirmations are sent to the accounts that created and accepted the transfer. A transfer
+        can take up to three hours to complete once accepted. Once a transfer is completed, billing for transferred
+        services ends for the sending account and begins for the receiving account.
+
+        This command can only be accessed by the unrestricted users of the account that receives the transfer. Users
+        of the same account that created a transfer cannot accept the transfer.
+
+        There are several conditions that must be met in order to accept a transfer request:
+
+        1. Only transfers with a `pending` status can be accepted.
+
+        1. The account accepting the transfer must have a registered payment method and must not have a past due
+          balance or other account limitations for the services to be transferred.
+
+        1. Both the account that created the transfer and the account that is accepting the transfer must not have any
+        active Terms of Service violations.
+
+        1. The service must still be owned by the account that created the transfer.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+
+        Any and all of the above conditions must be cured and maintained by the relevant account prior to the
+        transfer's expiration to allow the transfer to be accepted by the receiving account.
+      operationId: acceptServiceTransfer
+      x-linode-cli-action: accept
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Service Transfer accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X POST \
+            https://api.linode.com/v4/account/service-transfers/123E4567-E89B-12D3-A456-426614174000/accept
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            accept 123E4567-E89B-12D3-A456-426614174000
   /account/settings:
     x-linode-cli-command: account
     get:
@@ -9786,13 +9973,11 @@ paths:
         Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode
         instances.
 
-        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls
-        can be assigned to a single Linode service.
+        A Firewall can be assigned to a single Linode service at a time.
 
         A `firewall_create` Event is generated when this endpoint returns successfully.
 
         This endpoint is in **beta**.
-
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
         * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
@@ -9811,25 +9996,22 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              allOf:
+              - $ref: '#/components/schemas/Firewall'
               required:
-                - label
-                - rules
+              - label
+              - rules
+              - inbound_policy
+              - outbound_policy
+              - action
               properties:
-                label:
-                  $ref: '#/components/schemas/Firewall/properties/label'
-                rules:
-                  $ref: '#/components/schemas/Firewall/properties/rules'
-                tags:
-                  $ref: '#/components/schemas/Firewall/properties/tags'
                 devices:
                   type: object
                   description: >
                     A Firewall Device assigns a Firewall to a Linode service. Currently, Firewalls
                     can only be assigned to Linode instances.
 
-                    * A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
-                    be assigned to a single Linode service.
+                    * A Firewall can be assigned to a single Linode service at a time.
 
                     * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if five other active Firewalls
                     are already assigned to the same service.
@@ -9865,41 +10047,46 @@ paths:
               -X POST -d '{
                 "label": "firewall123",
                 "rules": {
+                  "inbound_policy": "DROP",
                   "inbound": [
                     {
                       "protocol": "TCP",
                       "ports": "22, 80, 443",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                    "action": "ACCEPT",
+                    "label": "inbound-rule123",
+                    "description": "An example inbound rule description."
                     }
                   ],
+                  "outbound_policy": "DROP"
                   "outbound": [
                     {
                       "protocol": "TCP",
                       "ports": "49152-65535",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                      "action": "ACCEPT",
+                      "label": "outbound-rule123",
+                      "description": "An example outbound rule description."
                     }
                   ]
                 },
                 "devices": {
                   "linodes": [
-                    123,
-                    456
+                    123
                     ]
                 },
                 "tags": [
@@ -10171,10 +10358,9 @@ paths:
       description: |
         Creates a Firewall Device, which assigns a Firewall to a Linode service (referred to
         as the Device's `entity`). Currently, only Devices with an entity of type `linode` are accepted.
-        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
-        be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if five other active Firewalls
-        are already assigned to the same service.
+        A Firewall can be assigned a single Linode service at a time. Additional disabled Firewalls can be
+        assigned to a service, but they cannot be enabled if another active Firewall
+        is already assigned to the same service.
 
         Creating a Firewall Device will apply the Rules from a Firewall to a Linode service.
         A `firewall_device_add` Event is generated when the Firewall Device is added successfully.
@@ -10442,34 +10628,40 @@ paths:
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
               -X PUT -d '{
+                  "inbound_policy": "DROP",
                   "inbound": [
                     {
                       "protocol": "TCP",
                       "ports": "22, 80, 443",
-                        "addresses": {
+                      "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                    "action": "ACCEPT",
+                    "label": "inbound-rule123",
+                    "description": "An example inbound rule description."
                     }
                   ],
+                  "outbound_policy": "DROP"
                   "outbound": [
                     {
                       "protocol": "TCP",
                       "ports": "49152-65535",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                      "action": "ACCEPT",
+                      "label": "outbound-rule123",
+                      "description": "An example outbound rule description."
                     }
                   ]
               }' \
@@ -11030,7 +11222,7 @@ paths:
         Rebuilds a NodeBalancer Config and its Nodes that you have
         permission to modify.
       operationId: rebuildNodeBalancerConfig
-      x-linode-cli-action: rebuild
+      x-linode-cli-action: config-rebuild
       security:
       - personalAccessToken: []
       - oauth:
@@ -11042,33 +11234,22 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                configs:
-                  type: array
-                  description: >
-                    Each config must have a unique port and at least one Node. Additionally:
-                      * Current Nodes excluded from the request body will be deleted.
-                      * Current Nodes (identified by their ID) will be updated.
-                      * New Nodes (included without an ID) will be created.
-                  items:
-                    allOf:
-                    - $ref: '#/components/schemas/NodeBalancerConfig'
-                    - type: object
-                      properties:
-                        nodes:
-                          type: array
-                          description: >
-                            The NodeBalancer Node(s) that serve this port.
-                            At least one Node is required per configured port.
+              allOf:
+              - $ref: "#/components/schemas/NodeBalancerConfig"
+              - type: object
+                properties:
+                  nodes:
+                    type: array
+                    description: |
+                      The NodeBalancer Node(s) that serve this port.
+                      At least one Node is required per configured port.
 
-                            Some considerations for Nodes when rebuilding a config:
-                              * Current Nodes excluded from the request body will be deleted.
-                              * Current Nodes (identified by their ID) will be updated.
-                              * New Nodes (included without an ID) will be created.
-                          items:
-                            type: object
-                            allOf:
-                            - $ref: '#/components/schemas/NodeBalancerNode'
+                      Some considerations for Nodes when rebuilding a config:
+                        * Current Nodes excluded from the request body will be deleted.
+                        * Current Nodes (identified by their ID) will be updated.
+                        * New Nodes (included without an ID) will be created.
+                    items:
+                      $ref: '#/components/schemas/NodeBalancerNode'
       responses:
         '200':
           description: NodeBalancer created successfully.
@@ -11099,15 +11280,14 @@ paths:
                 "cipher_suite": "recommended",
                 "nodes": [
                   {
-                    "id": 543231,
                     "address": "192.168.210.120:80",
-                    "label": "node54321",
+                    "label": "node1",
                     "weight": 50,
                     "mode": "accept"
                   },
                   {
                     "address": "192.168.210.122:81",
-                    "label": "thenewnode",
+                    "label": "node2",
                     "weight": 50,
                     "mode": "accept"
                   },
@@ -11130,7 +11310,9 @@ paths:
             --check_body "it works" \
             --check_passive true \
             --proxy_protocol "v1" \
-            --cipher_suite recommended
+            --cipher_suite recommended \
+            --nodes '{"address":"192.168.210.120:80","label":"node1","weight":50,"mode":"accept"}' \
+            --nodes '{"address":"192.168.210.122:80","label":"node2","weight":50,"mode":"accept"}'
   /nodebalancers/{nodeBalancerId}/configs/{configId}/nodes:
     parameters:
     - name: nodeBalancerId
@@ -14814,7 +14996,8 @@ paths:
               - linode_id
               properties:
                 linode_id:
-                  $ref: '#/components/schemas/Volume/properties/linode_id'
+                  type: integer
+                  description: The ID of the Linode to attach the volume to.
                 config_id:
                   type: integer
                   description: >
@@ -16520,8 +16703,7 @@ components:
     Firewall:
       type: object
       description: >
-        A resource that controls incoming and outgoing network traffic to a Linode service. A Firewall can
-        be assigned to multiple Linode services, and up to five active Firewalls can be assigned to a single Linode service.
+        A resource that controls incoming and outgoing network traffic to a Linode service. Only one Firewall can be attached to a Linode at any given time.
         [Create a Firewall Device](/docs/api/networking/#firewall-create)
         to assign a Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode instances.
       properties:
@@ -16536,7 +16718,7 @@ components:
         label:
           x-linode-filterable: true
           type: string
-          description: >
+          description: |
             The Firewall's label, for display purposes only.
 
             Firewall labels have the following constraints:
@@ -16575,7 +16757,7 @@ components:
            The status of this Firewall.
 
              * When a Firewall is first created its status is `enabled`.
-             * Use the [Update Firewall](/docs/api/networking/#firewall-update) endpoint to set a Firewall's status to `enbaled` or `disabled`.
+             * Use the [Update Firewall](/docs/api/networking/#firewall-update) endpoint to set a Firewall's status to `enabled` or `disabled`.
              * Use the [Delete Firewall](/docs/api/networking/#firewall-delete) endpoint to delete a Firewall.
           enum:
           - enabled
@@ -16588,13 +16770,6 @@ components:
           description: |
             The inbound and outbound access rules to apply to the Firewall.
 
-              * A minimum of one open inbound rule is required. Any inbound
-                traffic that is not permitted by your rules will be blocked.
-              * Outbound rules are optional. When no outbound rules are specified,
-                all outbound traffic is allowed. If one or more outbound rules are
-                specified, all outbound traffic that is not permitted by your rules
-                will be blocked.
-
             A Firewall may have up to 25 rules across its inbound and outbound rulesets.
           properties:
             inbound:
@@ -16605,8 +16780,22 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/FirewallRuleConfig'
-          required:
-            - inbound
+            inbound_policy:
+              type: string
+              enum:
+              - ACCEPT
+              - DROP
+              description: |
+                The default behavior for inbound traffic. This setting can be overridden by [updating](/docs/api/networking/#firewall-rules-update) the `inbound.action` property of the Firewall Rule.
+              example: DROP
+            outbound_policy:
+              type: string
+              enum:
+              - ACCEPT
+              - DROP
+              description: |
+                The default behavior for outbound traffic. This setting can be overridden by [updating](/docs/api/networking/#firewall-rules-update) the `action` property for an individual Firewall Rule.
+              example: DROP
         tags:
           x-linode-filterable: true
           description: >
@@ -16659,28 +16848,48 @@ components:
             are treated as equivalent when accounting for this limit.
           properties:
             ipv4:
-              description: A list of IPv4 addresses or networks.
+              description: A list of IPv4 addresses or networks. Must be in IP/mask format.
               type: array
               items:
                 type: string
               example:
-              - 192.0.2.1
               - 192.0.2.0/24
             ipv6:
-              description: A list of IPv6 addresses or networks.
+              description: A list of IPv6 addresses or networks. Must be in IP/mask format.
               type: array
               items:
                 type: string
               example:
               - 2001:DB8::/32
+        action:
+          type: string
+          enum:
+          - ACCEPT
+          - DROP
+          description: |
+            Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's `inbound_policy` if this is an inbound rule, or the `outbound_policy` if this is an outbound rule.
+          example: ACCEPT
+        label:
+          type: string
+          description: |
+            Used to identify this rule. For display purposes only.
+          example: firewallrule123
+          minLength: 3
+          maxLength: 32
+        description:
+          type: string
+          description: |
+            Used to describe this rule. For display purposes only.
+          example: 'An example firewall rule description.'
+          minLength: 1
+          maxLength: 100
     FirewallDevices:
       type: object
       description: >
         Associates a Firewall with a Linode service. A Firewall can be assigned
-        to multiple Linode services, and up to five active Firewalls can
-        be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if five other active Firewalls
-        are already assigned to the same service.
+        to a single Linode service at a time. Additional disabled Firewalls can be
+        assigned to a service, but they cannot be enabled if another active Firewall
+        is already assigned to the same service.
       properties:
         id:
           x-linode-filterable: true
@@ -21077,6 +21286,92 @@ components:
             The last IP Address to successfully authenticate with this TrustedDevice.
           example: 12.34.56.78
           readOnly: true
+    ServiceTransfer:
+      type: object
+      description: >
+        An object representing a Service Transfer.
+      properties:
+        token:
+          x-linode-cli-display: 1
+          type: string
+          format: uuid
+          description: >
+            The token used to identify and accept or cancel this transfer.
+          example: "123E4567-E89B-12D3-A456-426614174000"
+        status:
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+          x-linode-cli-color:
+            accepted: yellow
+            cancelled: red
+            completed: green
+            failed: red
+            pending: yellow
+            stale: red
+          type: string
+          enum:
+          - accepted
+          - cancelled
+          - completed
+          - failed
+          - pending
+          - stale
+          description: |
+            The status of the transfer request.
+
+            `accepted`: The transfer has been accepted by another user and is currently in progress.
+            Transfers can take up to 3 hours to complete.
+
+            `cancelled`: The transfer has been cancelled by the sender.
+
+            `completed`: The transfer has completed successfully.
+
+            `failed`: The transfer has failed after initiation.
+
+            `pending`: The transfer is ready to be accepted.
+
+            `stale`: The transfer has exceeded its expiration date. It can no longer be accepted or
+            cancelled.
+          example: 'pending'
+        created:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was created.
+          example: '2021-02-11T16:37:03'
+        updated:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was last updated.
+          example: '2021-02-11T16:37:03'
+        is_sender:
+          x-linode-cli-display: 4
+          x-linode-filterable: true
+          type: boolean
+          description: >
+            If the requesting account created this transfer.
+          example: true
+        expiry:
+          x-linode-cli-display: 3
+          type: string
+          format: date-time
+          description: >
+            When this transfer expires. Transfers will automatically expire 24 hours after creation.
+          example: '2021-02-12T16:37:03'
+        entities:
+          type: object
+          description: >
+            A collection of the services to include in this transfer request, separated by type.
+          properties:
+            linodes:
+              x-linode-cli-display: 5
+              type: array
+              items:
+                type: integer
+              description: >
+                An array containing the IDs of each of the Linodes included in this transfer.
+              example: [111, 222]
     SSHKey:
       type: object
       description: >

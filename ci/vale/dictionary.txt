@@ -33,6 +33,7 @@ amd64
 ananke
 anonymize
 anonymizing
+ansi
 ansible
 antispam
 ap
@@ -1064,6 +1065,7 @@ oldstable
 oldfashioned
 oneof
 ons
+opcache
 opencart
 opendkim
 openfire
@@ -1646,6 +1648,7 @@ v2
 v4
 v6
 vagrantfile
+valheim
 validator
 variadic
 varnishlog
@@ -1678,6 +1681,7 @@ vset
 vswap
 vue
 vuejs
+vvv
 vz
 vznetaddbr
 walkthrough

@@ -29,8 +29,12 @@ export function newSearchFiltersController(searchConfig, opts) {
 		// Preserve e.g. section filtering from UI.
 		query.setNonEmptyFrom(newQuery);
 
+		handleQueryUpdate(self, opts.triggerSearch);
+	};
+
+	const handleQueryUpdate = function(self, triggerSearch) {
 		self.populateFilters();
-		self.updateWindowLocation(opts.triggerSearch);
+		self.updateWindowLocation(triggerSearch);
 		dispatcher.searchQuery(query);
 	};
 
@@ -85,19 +89,23 @@ export function newSearchFiltersController(searchConfig, opts) {
 		init: function() {
 			debug('init', this.loaded);
 			return function() {
-				query = queryHandler.queryFromLocation();
+				let queryFromLocation = queryHandler.queryFromLocation();
+
+				if (queryFromLocation._view !== '') {
+					// _view is set on the /search query params to distinguish
+					// that standalone search from any filtering applied via the
+					// search input filters.
+					// Nothing more to do here.
+					return;
+				}
+
+				query = queryFromLocation;
+
 				if (opts.search_on_load) {
-					if (opts.standalone_search) {
-						dispatcher.searchQueryStandalone(query);
-					} else {
-						dispatcher.searchQuery(query);
-					}
-					if (!data.tags.open) {
-						data.tags.open = query.filters.has('tags');
-					}
-				} else if (query.isFiltered()) {
+					dispatcher.searchQuery(queryFromLocation);
+				} else if (query.isAnyFilterSet()) {
 					// Broadcast the search filters, but do not execute.
-					dispatcher.searchQuery(query, false);
+					dispatcher.searchQuery(queryFromLocation, false);
 				}
 			};
 		},
@@ -265,7 +273,7 @@ export function newSearchFiltersController(searchConfig, opts) {
 		},
 
 		onTurbolinksRender: function(data) {
-			if (!history.replaceState || opts.standaloneSearch || window.location.search || !query.isFiltered()) {
+			if (!history.replaceState || opts.standaloneSearch || window.location.search || !query.isAnyFilterSet()) {
 				return;
 			}
 
@@ -283,8 +291,11 @@ export function newSearchFiltersController(searchConfig, opts) {
 
 		searchToggle: function(show) {
 			if (!show) {
+				// Clear the filters
+				query = newQuery();
+				handleQueryUpdate(this, false);
 				if (this.prevPathname) {
-					Turbolinks.visit(this.prevPathname + window.location.search, { action: 'replace' });
+					Turbolinks.visit(this.prevPathname, { action: 'replace' });
 				} else {
 					// Go home.
 					Turbolinks.visit('/docs/');
@@ -293,15 +304,17 @@ export function newSearchFiltersController(searchConfig, opts) {
 		},
 
 		onPopState: function(e) {
-			if (opts.standaloneSearch) {
+			let queryFromLocation = queryHandler.queryFromLocation();
+
+			if (queryFromLocation._view !== '') {
 				return;
 			}
 
-			query = queryHandler.queryFromLocation();
-			if (query.isFiltered()) {
-				dispatcher.searchQuery(query);
+			query = queryFromLocation;
+			if (query.isAnyFilterSet()) {
+				dispatcher.searchQuery(queryFromLocation);
 			}
-			if (query.hasFilter()) {
+			if (queryFromLocation.hasFilter()) {
 				this.populateFilters();
 			}
 		},
@@ -311,18 +324,20 @@ export function newSearchFiltersController(searchConfig, opts) {
 				return;
 			}
 			let newSearch = !isTopResultsPage();
+			// TODO check triggerSearch usage (suspect it's always true)
 			if (!triggerSearch && newSearch) {
 				let href = window.location.pathname;
-				if (query.isFiltered() && query.q !== '') {
+				if (query.isAnyFilterSet() && query.q !== '') {
 					href += '?' + queryHandler.queryToQueryString(query);
 				}
 				history.replaceState(null, null, href);
 			} else {
+				let queryString = queryHandler.queryToQueryString(query);
 				if (newSearch) {
 					this.prevPathname = window.location.pathname;
-					history.pushState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
+					history.pushState(null, null, '/docs/topresults/?' + queryString);
 				} else {
-					history.replaceState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
+					history.replaceState(null, null, '/docs/topresults/?' + queryString);
 				}
 			}
 		}

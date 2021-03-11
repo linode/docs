@@ -35,6 +35,13 @@ export function toggleClass(openClass, el, open) {
 	}
 }
 
+// See https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html#RULE_.237_-_Fixing_DOM_Cross-site_Scripting_Vulnerabilities
+export function sanitizeHTML(text) {
+	var element = document.createElement('div');
+	element.innerText = text;
+	return element.innerHTML;
+}
+
 export const capitalize = (s) => {
 	if (typeof s !== 'string') return '';
 	return s.charAt(0).toUpperCase() + s.slice(1);

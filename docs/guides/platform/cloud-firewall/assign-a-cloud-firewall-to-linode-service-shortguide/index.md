@@ -31,10 +31,6 @@ aliases: ['/platform/cloud-firewall/assign-a-cloud-firewall-to-linode-service-sh
 
 1. From the **Add Linode to Firewall** drawer, click on the dropdown menu and select the Linode service to which you'd like to apply this Firewall. You can also start typing the Linode service's label to narrow down your search.
 
-    {{< note >}}
-You can assign the Firewall to more than one Linode service at a time. Continue the previous step to assign the Firewall to another Linode service.
-{{</ note >}}
-
 1. Click on the **Add** button to assign the Firewall to your Linode(s).
 
     ![Click on the Add button to assign the Firewall to your Linode service.](complete-add-firewall-to-service.png "Click on the Add button to assign the Firewall to your Linode service.")
