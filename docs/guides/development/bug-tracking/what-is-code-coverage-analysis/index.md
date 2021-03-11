@@ -1,5 +1,5 @@
 ---
-slug: code-coverage
+slug: what-is-code-coverage-analysis
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
