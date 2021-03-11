@@ -54,7 +54,7 @@ DNS records will not be transferred or updated. Please ensure that DNS records h
 1. Select the services to include in the transfer by checking the empty boxes next to them. Checking the box in the heading for a service type selects all of the services for that type. You can also use the search bar to filter services by label. As you select services, they are added to the **Service Transfer Summary**.
 
     {{< note >}}
-Only Linode plans are available for transfer at this time.
+Only Linodes are available for transfer at this time.
 {{< /note >}}
 
 1. Once you have selected all of the services to include in the transfer, click the **Generate Token** button to submit a transfer request.
@@ -104,10 +104,10 @@ Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they
 
     ![Review the summary of Linode services to be transferred prior to accepting.](receive-transfer.png "Review the summary of Linode services to be transferred prior to accepting.")
 
-1. If the services are eligible for transfer, accept to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts. Billing for these services begins after the transfer has been completed.
+1. If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
 
     {{< note >}}
-Service Transfers can take up to 3 hours to complete once accepted. Another confirmation email is sent to both the sending and receiving accounts once the transfer has been completed. If the transfer fails after being accepted, the sending account must initiate a new Service Transfer to restart it.
+Service Transfers can take up to 3 hours to complete once accepted. Another confirmation email is sent to both the sending and receiving accounts once the transfer has been completed. If the transfer fails after being accepted, the sending account must initiate a new Service Transfer.
 {{< /note >}}
 
 1. If there are any conditions in place that are blocking the transfer, they are displayed on the Service Transfer page. These conditions must be corrected by the sending or receiving account as is applicable before the transfer can be accepted. Here is a full list of conditions that must be met for a successful transfer request:
