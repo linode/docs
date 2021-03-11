@@ -263,6 +263,7 @@ cutover
 cyberduck
 cyg
 cygwin
+cyclomatic
 cz
 daemonization
 daemonize
