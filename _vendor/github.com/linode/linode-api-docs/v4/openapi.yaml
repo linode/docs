@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.86.0
+  version: 4.86.1
 
   title: Linode API
   description: |
@@ -11222,7 +11222,7 @@ paths:
         Rebuilds a NodeBalancer Config and its Nodes that you have
         permission to modify.
       operationId: rebuildNodeBalancerConfig
-      x-linode-cli-action: rebuild
+      x-linode-cli-action: config-rebuild
       security:
       - personalAccessToken: []
       - oauth:
@@ -11234,33 +11234,22 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                configs:
-                  type: array
-                  description: >
-                    Each config must have a unique port and at least one Node. Additionally:
-                      * Current Nodes excluded from the request body will be deleted.
-                      * Current Nodes (identified by their ID) will be updated.
-                      * New Nodes (included without an ID) will be created.
-                  items:
-                    allOf:
-                    - $ref: '#/components/schemas/NodeBalancerConfig'
-                    - type: object
-                      properties:
-                        nodes:
-                          type: array
-                          description: >
-                            The NodeBalancer Node(s) that serve this port.
-                            At least one Node is required per configured port.
+              allOf:
+              - $ref: "#/components/schemas/NodeBalancerConfig"
+              - type: object
+                properties:
+                  nodes:
+                    type: array
+                    description: |
+                      The NodeBalancer Node(s) that serve this port.
+                      At least one Node is required per configured port.
 
-                            Some considerations for Nodes when rebuilding a config:
-                              * Current Nodes excluded from the request body will be deleted.
-                              * Current Nodes (identified by their ID) will be updated.
-                              * New Nodes (included without an ID) will be created.
-                          items:
-                            type: object
-                            allOf:
-                            - $ref: '#/components/schemas/NodeBalancerNode'
+                      Some considerations for Nodes when rebuilding a config:
+                        * Current Nodes excluded from the request body will be deleted.
+                        * Current Nodes (identified by their ID) will be updated.
+                        * New Nodes (included without an ID) will be created.
+                    items:
+                      $ref: '#/components/schemas/NodeBalancerNode'
       responses:
         '200':
           description: NodeBalancer created successfully.
@@ -11291,15 +11280,14 @@ paths:
                 "cipher_suite": "recommended",
                 "nodes": [
                   {
-                    "id": 543231,
                     "address": "192.168.210.120:80",
-                    "label": "node54321",
+                    "label": "node1",
                     "weight": 50,
                     "mode": "accept"
                   },
                   {
                     "address": "192.168.210.122:81",
-                    "label": "thenewnode",
+                    "label": "node2",
                     "weight": 50,
                     "mode": "accept"
                   },
@@ -11322,7 +11310,9 @@ paths:
             --check_body "it works" \
             --check_passive true \
             --proxy_protocol "v1" \
-            --cipher_suite recommended
+            --cipher_suite recommended \
+            --nodes '{"address":"192.168.210.120:80","label":"node1","weight":50,"mode":"accept"}' \
+            --nodes '{"address":"192.168.210.122:80","label":"node2","weight":50,"mode":"accept"}'
   /nodebalancers/{nodeBalancerId}/configs/{configId}/nodes:
     parameters:
     - name: nodeBalancerId
