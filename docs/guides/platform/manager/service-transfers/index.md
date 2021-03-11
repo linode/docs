@@ -33,14 +33,6 @@ The Service Transfer feature in [Cloud Manager](https://cloud.linode.com) can be
 Only users with full account access can use Service Transfers. To adjust user permissions, see our [Accounts and Passwords](/docs/guides/accounts-and-passwords/#setting-user-permissions) guide. Users with full account access can view and interact with all of the transfers associated with the account, regardless of which user created or accepted the transfer.
 {{< /note >}}
 
-{{< caution >}}
-If any of the Linodes included in the request have Backups enabled, that data and associated costs will be removed/cancelled.
-{{< /caution >}}
-
-{{< caution >}}
-DNS records will not be transferred or updated. Please ensure that DNS records have been updated or communicated to the recipient prior to the transfer.
-{{< /caution >}}
-
 ## Sending Linode Services
 
 1. Click the [Account](https://cloud.linode.com/account) link in the sidebar.
@@ -70,6 +62,14 @@ Linode does not send the Service Transfer token on your behalf. You must send th
     {{< note >}}
 Service Transfers automatically expire 24 hours after creation. You can view the expiry dates of your pending transfers from the [Service Transfers](https://cloud.linode.com/account/service-transfers) page. Dates and times are displayed for your configured timezone, which you can adjust from your [Cloud Manager User Profile](https://cloud.linode.com/profile/display).
 {{< /note >}}
+
+    {{< note >}}
+Backups for Linodes are transferred as well.
+{{< /note >}}
+
+    {{< caution >}}
+DNS records that are associated with requested services will not be transferred or updated. Please ensure that associated DNS records have been updated or communicated to the recipient prior to the transfer.
+{{< /caution >}}
 
     {{< caution >}}
 Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they have been accepted by a receiving account. Take care when sharing your Service Transfer token, and only transmit it in a secure manner.
