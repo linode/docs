@@ -33,7 +33,7 @@ Provide configurations for your Linode server:
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the CyberPanel Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
+| **Select an Image** | The image or Distro you would like the Marketplace App to be built on. The Cyberpanel Marketplace App is currently supported by CentOS 8, CentOS 7, Ubuntu 18.04, and Ubuntu 20.04. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). CyberPanel can be supported on any size Linode, but we suggest you deploy your CyberPanel App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |

@@ -263,6 +263,7 @@ cutover
 cyberduck
 cyg
 cygwin
+cyclomatic
 cz
 daemonization
 daemonize
@@ -650,6 +651,7 @@ impor
 incentivized
 inet
 inet6
+infographic
 ingressgateway
 ini
 initializer
@@ -1101,6 +1103,7 @@ parameterizing
 paramiko
 parallelization
 params
+parasoft
 paravirt
 paravirtualization
 paravirtualized
