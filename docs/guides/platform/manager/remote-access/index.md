@@ -34,9 +34,8 @@ Before setting reverse DNS, verify that you have created a matching forward DNS 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
 3.  Select your Linode. The Linode's detail page appears.
-4.  Click the **Networking** tab.
-5.  Select the **more options ellipsis** for the IP address to which you'd like to add a reverse pointer record.
-6.  Select the **Edit RDNS** menu option, as shown in the below image.
+4.  Click the **Network** tab.
+6.  Select the **Edit RDNS** menu option for the IP address to which you'd like to add a reverse pointer record, as shown in the below image.
 
     ![Select 'Edit RDNS' option from the IP address menu.](remote_access_edit_rdns_more_options.png)
 
@@ -61,8 +60,7 @@ To reset reverse DNS to the Linode domain, which will be something like **li12-3
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
 3.  Select your Linode. The Linode's detail page appears.
-4.  Click the **Networking** tab.
-5.  Select the **more options ellipsis** for the IP address to which you'd like to add a reverse pointer record.
+4.  Click the **Network** tab.
 6.  Select the **Edit RDNS** menu option, as shown in the below image.
 
     ![Select 'Edit RDNS' option from the IP address menu.](remote_access_edit_rdns_more_options.png)
@@ -82,13 +80,12 @@ This feature is not yet supported in the Toronto, Sydney, or Mumbai data centers
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar. A list of your available Linodes will appear.
 3.  Select the Linode on which you wish to configure IP sharing. The Linode's detail page appears.
-4.  Click the **Networking** tab.
-5.  Expand the **IP Sharing** panel.
-6.  Click on **Add IP Address**.
+4.  Click the **Network** tab.
+5.  Select the **IP Sharing** button.
 
     ![Configuring IP sharing](remote_access_ip_sharing.png)
 
-7.  A dropdown menu with available Linodes within the same data center appears. Select the Linode you would like to share an IP address with.
+7.  A pop up menu will appear. Select the Linode you would like to share an IP address with.
 
     ![Select a Linode to share an IP address with.](remote_access_ip_sharing_add_an_ip.png)
 
@@ -121,12 +118,14 @@ Here's how to transfer IP addresses:
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click the **Networking** tab.
-5.  Expand the **IP Transfer** panel. The form below appears:
+4.  Click the **Network** tab.
+5.  Select the **IP Transfer** button in the IP Addresses table.
 
-    ![The IP Transfer menu in the Cloud Manger](remote_access_ip_transfer.png)
+    ![IP Transfer button](ip-transfer-button.png)
 
 6.  Select an action from the dropdown menu. You can choose **move to** and **swap with**. "Swap with" switches the IP addresses of two Linodes. "Move to" moves an IP address from one Linode to another. To choose the "move to" option the Linode you are moving an IP address from needs to have more than one public IP address.
+
+    ![The IP Transfer menu in the Cloud Manger](remote_access_ip_transfer.png)
 
     {{< note >}}
 The menu only displays Linodes hosted in the same data center as the current Linode.
@@ -156,12 +155,13 @@ The Cloud Manager allows you to add private IP addresses for fast and secure con
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click the **Networking** tab.
-5.  Select the **Add Private IPv4** link, as shown below.
+4.  Click the **Network** tab.
+5.  Select the **Add an IP Address** button, as shown below.
 
     ![Adding Private IP addresses](remote_access_add_private_ip.png)
 
-6.  The Linode Manager assigns a private IP address to your Linode.
+6.  The menu for adding an IP address will appear. Select `IPv4-Private` from the dropdown menu, and click on the **Allocate** button.
+
 7.  Make sure [Network Helper](/docs/platform/network-helper/) is enabled on your configuration profile, and reboot your Linode. Otherwise, configure static networking. See the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration/) guide for instructions.
 
 If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/platform/billing-and-support/support/).
@@ -185,12 +185,11 @@ If you need to quickly access Lish, use the Lish Console to open it directly fro
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click the **Networking** tab.
-5.  Select the **Launch Console** link as shown below.
+1.  Select the **Launch Console** link as shown below.
 
     ![Launch the Lish console by clicking the 'Launch Console' link.](remote_access_launch_lish_console.png)
 
-6.  Enter a username and password to log in.
+1.  Enter a username and password to log in.
 
 You are now logged in to the Lish console.
 
@@ -200,19 +199,17 @@ You can also access Lish with an SSH client application installed on your comput
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-2.  Accessing Lish via SSH requires additional authentication over and above your Linode's username and password. To change your authentication requirements or to add an SSH key, navigating to **My Profile**:
+2.  Accessing Lish via SSH requires additional authentication over and above your Linode's username and password. To change authentication requirements or to add an SSH key, navigate to **My Profile** and select the **Lish Console Settings** link:
 
-    ![Navigate to 'My Profile'](remote_access_my_profile.png)
+    ![Navigate to 'My Profile'](remote_access_profile.png)
 
-3.  Click on the **LISH** tab.
+4.  If using SSH key pair authentication, copy and paste your public key in to the **SSH Public Key** field, and then click **Save**. You can optionally add more than one SSH public key by clicking on the **Add SSH Public Key** button.
 
     ![The LISH menu in 'My Profile' settings](remote_access_lish_menu.png)
 
-4.  If you want to use SSH key pair authentication, copy and paste your public key in to the **SSH Public Key** field, and then click **Save**. You can optionally add more than one SSH public key by click **Add SSH Public Key**.
 5.  To log in to Lish over SSH, click the **Linodes** link in the sidebar.
 6.  Select a Linode. The Linode's detail page appears.
-7.  Click the **Networking** tab.
-8.  Copy the **Lish via SSH** text in the *Access* pane:
+8.  Copy the **Lish Console via SSH** text in the *Access* pane:
 
     ![Copy the 'Lish via SSH' text in the 'Access' pane](remote_access_lish_via_ssh.png)
 

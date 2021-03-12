@@ -33,6 +33,7 @@ amd64
 ananke
 anonymize
 anonymizing
+ansi
 ansible
 antispam
 ap
@@ -118,6 +119,7 @@ blocklists
 blockwise
 bluehost
 bookinfo
+boolean
 boolstyle
 boonex
 bootable
@@ -796,6 +798,7 @@ linkerd
 linode
 linodego
 linodes
+linter
 lish
 listdir
 listserv
@@ -1052,6 +1055,7 @@ numpy
 nvidia
 nvim
 nvm
+oauth
 octopress
 odoo
 oftc
@@ -1061,6 +1065,7 @@ oldstable
 oldfashioned
 oneof
 ons
+opcache
 opencart
 opendkim
 openfire
@@ -1173,6 +1178,8 @@ preprocessors
 prerotate
 prerouting
 prestashop
+prettifier
+prettifiers
 Printf
 pritunl
 procfile
@@ -1471,7 +1478,9 @@ sudoers
 suhosin
 suid
 sukharev
+superset
 supervisord
+supervisorctl
 surbma
 suse
 swappable
@@ -1639,6 +1648,7 @@ v2
 v4
 v6
 vagrantfile
+valheim
 validator
 variadic
 varnishlog
@@ -1671,6 +1681,7 @@ vset
 vswap
 vue
 vuejs
+vvv
 vz
 vznetaddbr
 walkthrough
