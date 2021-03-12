@@ -33,14 +33,6 @@ The Service Transfer feature in [Cloud Manager](https://cloud.linode.com) can be
 Only users with full account access can use Service Transfers. To adjust user permissions, see our [Accounts and Passwords](/docs/guides/accounts-and-passwords/#setting-user-permissions) guide. Users with full account access can view and interact with all of the transfers associated with the account, regardless of which user created or accepted the transfer.
 {{< /note >}}
 
-{{< caution >}}
-If any of the Linodes included in the request have Backups enabled, that data and associated costs will be removed/cancelled.
-{{< /caution >}}
-
-{{< caution >}}
-DNS records will not be transferred or updated. Please ensure that DNS records have been updated or communicated to the recipient prior to the transfer.
-{{< /caution >}}
-
 ## Sending Linode Services
 
 1. Click the [Account](https://cloud.linode.com/account) link in the sidebar.
@@ -54,7 +46,7 @@ DNS records will not be transferred or updated. Please ensure that DNS records h
 1. Select the services to include in the transfer by checking the empty boxes next to them. Checking the box in the heading for a service type selects all of the services for that type. You can also use the search bar to filter services by label. As you select services, they are added to the **Service Transfer Summary**.
 
     {{< note >}}
-Only Linode plans are available for transfer at this time.
+Only Linodes are available for transfer at this time.
 {{< /note >}}
 
 1. Once you have selected all of the services to include in the transfer, click the **Generate Token** button to submit a transfer request.
@@ -70,6 +62,14 @@ Linode does not send the Service Transfer token on your behalf. You must send th
     {{< note >}}
 Service Transfers automatically expire 24 hours after creation. You can view the expiry dates of your pending transfers from the [Service Transfers](https://cloud.linode.com/account/service-transfers) page. Dates and times are displayed for your configured timezone, which you can adjust from your [Cloud Manager User Profile](https://cloud.linode.com/profile/display).
 {{< /note >}}
+
+    {{< note >}}
+Backups for Linodes are transferred as well.
+{{< /note >}}
+
+    {{< caution >}}
+DNS records that are associated with requested services will not be transferred or updated. Please ensure that associated DNS records have been updated or communicated to the recipient prior to the transfer.
+{{< /caution >}}
 
     {{< caution >}}
 Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they have been accepted by a receiving account. Take care when sharing your Service Transfer token, and only transmit it in a secure manner.
@@ -104,10 +104,10 @@ Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they
 
     ![Review the summary of Linode services to be transferred prior to accepting.](receive-transfer.png "Review the summary of Linode services to be transferred prior to accepting.")
 
-1. If the services are eligible for transfer, accept to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts. Billing for these services begins after the transfer has been completed.
+1. If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
 
     {{< note >}}
-Service Transfers can take up to 3 hours to complete once accepted. Another confirmation email is sent to both the sending and receiving accounts once the transfer has been completed. If the transfer fails after being accepted, the sending account must initiate a new Service Transfer to restart it.
+Service Transfers can take up to 3 hours to complete once accepted. Another confirmation email is sent to both the sending and receiving accounts once the transfer has been completed. If the transfer fails after being accepted, the sending account must initiate a new Service Transfer.
 {{< /note >}}
 
 1. If there are any conditions in place that are blocking the transfer, they are displayed on the Service Transfer page. These conditions must be corrected by the sending or receiving account as is applicable before the transfer can be accepted. Here is a full list of conditions that must be met for a successful transfer request:
