@@ -77,7 +77,7 @@ Commands that require elevated privileges are prefixed with `sudo`. If you're no
 
         sudo apt-get install default-jre-headless
 
-## Install Elastic Stack
+## Install the Elastic Stack
 
 Before configuring and loading log data, install each piece of the stack, individually.
 
