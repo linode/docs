@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: "What is Cloud-Native Computing?"
 h1_title: "What is Cloud-Native Computing?"
+tags: ["container", "kubernetes"]
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn
