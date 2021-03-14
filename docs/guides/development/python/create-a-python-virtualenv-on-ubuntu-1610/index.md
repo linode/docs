@@ -13,7 +13,8 @@ modified: 2017-08-14
 modified_by:
   name: Linode
 published: 2017-08-13
-title: 'Create a Python Virtual Environment on Ubuntu 16.10'
+title: 'How to Create a Python Virtual Environment on Ubuntu 16.10'
+h1_title: 'Creating a Python Virtual Environment on Ubuntu 16.10'
 contributor:
   name: Christopher Piccini
   link: https://twitter.com/chrispiccini11
@@ -38,7 +39,7 @@ The purpose of this tutorial is to allow you to create and run Python virtual en
 
 ## Before You Begin
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 2.  Update your system:
 
@@ -76,7 +77,7 @@ The purpose of this tutorial is to allow you to create and run Python virtual en
 
 ## Activate Environment
 
-Activate the newly created virtual environment (the name of the working environment will appear in parentheses):
+Activate the newly created virtual environment (the name of the working environment appears in parentheses):
 
     source env/bin/activate
     (env) testuser@localhost:~/python-environments$

@@ -21,11 +21,7 @@ You can permanently remove a user account from the Linode Cloud Manager. Here's 
 
 1.  Click the **Account** link in the sidebar.
 1.  Click the **Users** tab.
-1.  Locate the user in the list and click on the **more options ellipsis** to the right of the user.
-1.  Select the **Delete** link from the menu. A warning appears asking you to confirm that you want to delete the user.
+1.  Click the **Delete** link for the desired user. A warning appears asking you to confirm that you want to delete the user.
+1.  Click **Delete** in the warning to confirm deletion.
 
-    ![Use the Linode Cloud Manager to delete a User](accounts-delete-a-user.png "Use the Linode Cloud Manager to delete a User")
-
-1.  Click **Delete**.
-
-The account will be removed, and the user will no longer be able to access the Linode Cloud Manager.
+The user is removed and is no longer able to access the Linode Cloud Manager.

@@ -3,11 +3,11 @@ slug: host-static-site-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Host a Static Site using Linode\'s Object Storage."
+description: "Host a Static Site using Linode's Object Storage."
 keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09
-modified: 2019-04-09
+modified: 2020-12-03
 modified_by:
   name: Linode
 title: "Host a Static Site using Linode Object Storage"
@@ -35,11 +35,11 @@ aliases: ['/platform/object-storage/host-static-site-object-storage/']
 
 1.  Then, tell your static site generator to compile your Markdown (along with other relevant assets, like CSS styling, images, and JavaScript) into static HTML files.
 
-The second compilation step only needs to happen once for each time that you update your content. This is in contrast with a dynamic website framework like WordPress or Drupal, which will reference a relational database and compile your HTML every time a visitor loads your site.
+The second compilation step only needs to happen once for each time that you update your content. This is in contrast with a dynamic website framework like WordPress or Drupal, which references a relational database and compiles your HTML every time a visitor loads your site.
 
 ### Benefits of Hosting on Object Storage
 
-Traditionally, these static HTML files would be served by a web server (like [NGINX](/docs/guides/nginx/) or [Apache](/docs/guides/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
+Traditionally, these static HTML files would be served by a web server (like [NGINX](docs/guides/web-servers/nginx/) or [Apache](/docs/guides/web-servers/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
 
 Object Storage provides an HTTP REST gateway to objects, which means a unique URL over HTTP is available for every object. Once your static site is built, making it available publicly over the Internet is as easy uploading files to an Object Storage bucket.
 
@@ -51,9 +51,9 @@ At a high-level, the required steps to host a static site using Object Storage a
 
 1. [Create](#create-a-hugo-site) the desired content and build the site (using your static site generator).
 
-1. [Upload](#upload-your-static-site-to-linode-s-object-storage) the static files to your Object Storage bucket to make the content publicly available over the Internet.
+1. [Upload](#upload-your-static-site-to-linode-object-storage) the static files to your Object Storage bucket to make the content publicly available over the Internet.
 
-This guide will use [Hugo](https://gohugo.io/) to demonstrate how to create a static site and host it on Linode Object Storage. However, there are [many other static site generators](https://www.staticgen.com) to choose from--[Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are popular choices, and the general steps outlined in this guide could be adapted to them. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/docs/guides/how-to-choose-static-site-generator/) guide.
+This guide uses [Hugo](https://gohugo.io/) to demonstrate how to create a static site and hosts it on Linode Object Storage. However, there are [many other static site generators](https://www.staticgen.com) to choose from--[Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are popular choices, and the general steps outlined in this guide could be adapted to them. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/docs/guides/how-to-choose-static-site-generator/) guide.
 
 ## Before You Begin
 
@@ -82,7 +82,7 @@ Hugo is written in [Go](https://golang.org/) and is known for being extremely fa
 
             uname -r
 
-        Your output will resemble the following:
+        Your output resembles the following:
 
         {{< output >}}
 4.9.0-8-amd64
@@ -102,9 +102,9 @@ Hugo is written in [Go](https://golang.org/) and is known for being extremely fa
 
 ## Create a Hugo Site
 
-In this section, you will use the [Hugo CLI](https://gohugo.io/commands/) (command line interface) to create your Hugo site, initialize a Hugo theme, and add content to your site. Hugo's CLI provides several useful commands for common tasks needed to build, configure, and interact with your Hugo site.
+In this section, you use the [Hugo CLI](https://gohugo.io/commands/) (command line interface) to create your Hugo site, initialize a Hugo theme, and add content to your site. Hugo's CLI provides several useful commands for common tasks needed to build, configure, and interact with your Hugo site.
 
-1. Create a new Hugo site on your local computer. This command will create a folder named `example-site` and scaffold [Hugo's directory structure](https://gohugo.io/getting-started/directory-structure/) inside it:
+1. Create a new Hugo site on your local computer. This command creates a folder named `example-site` and scaffold [Hugo's directory structure](https://gohugo.io/getting-started/directory-structure/) inside it:
 
         hugo new site example-site
 
@@ -116,11 +116,11 @@ In this section, you will use the [Hugo CLI](https://gohugo.io/commands/) (comma
 All commands in this section of the guide should be issued from your site's root directory.
 {{< /note >}}
 
-1. You will use Git to add a theme to your Hugo site's directory. Initialize your Hugo site's directory as a Git repository:
+1. You use Git to add a theme to your Hugo site's directory. Initialize your Hugo site's directory as a Git repository:
 
         git init
 
-1. Install the [Ananke theme](https://github.com/budparr/gohugo-theme-ananke) as a submodule of your Hugo site's Git repository. [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) allow one Git repository to be stored as a subdirectory of another Git repository, while still being able to maintain each repository's version control information separately. The Ananke theme's repository will be located in the `~/example-site/themes/ananke` directory of your Hugo site.
+1. Install the [Ananke theme](https://github.com/budparr/gohugo-theme-ananke) as a submodule of your Hugo site's Git repository. [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) allow one Git repository to be stored as a subdirectory of another Git repository, while still being able to maintain each repository's version control information separately. The Ananke theme's repository is located in the `~/example-site/themes/ananke` directory of your Hugo site.
 
         git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
 
@@ -132,7 +132,7 @@ Hugo has many [available themes](https://themes.gohugo.io/) that can be installe
 
         echo 'theme = "ananke"' >> config.toml
 
-1. Create a new content file for your site. This command will generate a Markdown file with an auto-populated date and title:
+1. Create a new content file for your site. This command generates a Markdown file with an auto-populated date and title:
 
         hugo new posts/my-first-post.md
 
@@ -166,26 +166,27 @@ There are many benefits to using a static site generator. Here is a list of a fe
     {{< disclosure-note "About front matter" >}}
 [*Front matter*](https://gohugo.io/content-management/front-matter/) is a collection of metadata about your content, and it is embedded at the top of your file within opening and closing `---` delimiters.
 
-Front matter is a powerful Hugo feature that provides a mechanism for passing data that is attached to a specific piece of content to Hugo's rendering engine. Hugo accepts front matter in TOML, YAML, and JSON formats. In the example snippet, there is YAML front matter for the title, date, and draft state of the Markdown file. These variables will be referenced and displayed by your Hugo theme.
+Front matter is a powerful Hugo feature that provides a mechanism for passing data that is attached to a specific piece of content to Hugo's rendering engine. Hugo accepts front matter in TOML, YAML, and JSON formats. In the example snippet, there is YAML front matter for the title, date, and draft state of the Markdown file. These variables are referenced and displayed by your Hugo theme.
 {{< /disclosure-note >}}
 
 1. Once you have added your content, you can preview your changes by building and serving the site using Hugo's built-in webserver:
 
         hugo server
 
-1.  You will see a similar output:
+1.  You see a similar output:
 
     {{< output >}}
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp| EN
+
+.                  | EN
 +------------------+----+
-  Pages&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp| 11
-  Paginator pages&nbsp&nbsp&nbsp&nbsp|  0
-  Non-page files&nbsp&nbsp&nbsp&nbsp&nbsp|  0
-  Static files&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|  3
-  Processed images&nbsp&nbsp&nbsp|  0
-  Aliases&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|  1
-  Sitemaps&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|  1
-  Cleaned&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|  0
+  Pages              | 11
+  Paginator pages    |  0
+  Non-page files     |  0
+  Static files       |  3
+  Processed images   |  0
+  Aliases            |  1
+  Sitemaps           |  1
+  Cleaned            |  0
 
 Total in 7 ms
 Watching for changes in /home/username/example-site/{content,data,layouts,static,themes}
@@ -196,13 +197,13 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 {{</ output >}}
 
-1. The output will provide a URL to preview your site. Copy and paste the URL into a browser to access the site. In the above example Hugo's web server URL is `http://localhost:1313/`.
+1. The output provides a URL to preview your site. Copy and paste the URL into a browser to access the site. In the above example Hugo's web server URL is `http://localhost:1313/`.
 
 1. When you are happy with your site's content you can *build* your site:
 
         hugo -v
 
-    Hugo will generate your site's static HTML files and store them in a `public` directory that it will create inside your project. The static files that are generated by Hugo are the files that you will upload to your Object Storage bucket to make your site accessible via the Internet.
+    Hugo generates your site's static HTML files and store them in a `public` directory that it creates inside your project. The static files that are generated by Hugo are the files that you upload to your Object Storage bucket to make your site accessible via the Internet.
 
 1.  View the contents of your site's `public` directory:
 
@@ -241,7 +242,7 @@ Before proceeding with this section ensure that you have already created your Ob
         s3cmd mb s3://my-bucket
 
     {{< note >}}
-Buckets names must be unique within the Object Storage cluster. You might find the bucket name `my-bucket` is already in use by another Linode customer, in which case you will need to choose a new bucket name.
+Buckets names must be unique within the Object Storage cluster. You might find the bucket name `my-bucket` is already in use by another Linode customer, in which case you need to choose a new bucket name.
 {{</ note >}}
 
     {{< content "object-storage-cluster-shortguide" >}}
@@ -250,9 +251,9 @@ Buckets names must be unique within the Object Storage cluster. You might find t
 
         s3cmd ws-create --ws-index=index.html --ws-error=404.html s3://my-bucket
 
-    In our Hugo example, the site's index file is `index.html` and the error file is `404.html`. Whenever a user visits your static site's URL, the Object Storage service will serve the `index.html` page. If a site visitor tries to access an invalid path, they will be presented with the `404.html` page.
+    In our Hugo example, the site's index file is `index.html` and the error file is `404.html`. Whenever a user visits your static site's URL, the Object Storage service serves the `index.html` page. If a site visitor tries to access an invalid path, they are presented with the `404.html` page.
 
-1. The command will return the following message:
+1. The command returns the following message:
 
       {{< output >}}
 Bucket 's3://my-bucket/': website configuration created.
@@ -287,7 +288,7 @@ Linode Object Storage provides SSL enabled by default. This means you can access
 
 
 
-1. Use s3cmd's `sync` command to upload the contents of your static site's `public` directory to your Object Storage bucket. This step will make your site available publicly on the Internet. Ensure you are in your site's root directory on your computer (e.g. `/home/username/example-site`):
+1. Use s3cmd's `sync` command to upload the contents of your static site's `public` directory to your Object Storage bucket. This step makes your site available publicly on the Internet. Ensure you are in your site's root directory on your computer (e.g. `/home/username/example-site`):
 
         s3cmd --no-mime-magic --acl-public --delete-removed --delete-after sync public/ s3://my-bucket
 
@@ -310,7 +311,7 @@ It may take a minute or two after your s3cmd sync completes for the page to appe
 
 ## (Optional) Next Steps
 
-After uploading your static site to Linode Object Storage, you may want to use a custom primary domain for your site. To do this, you can add a CNAME entry to your domain's DNS records that aliases it to your Object Storage bucket's website URL. For example, if you have `www.mydomain.tld`, your CNAME entry will look like:
+After uploading your static site to Linode Object Storage, you may want to use a custom primary domain for your site. To do this, you can add a CNAME entry to your domain's DNS records that aliases it to your Object Storage bucket's website URL. For example, if you have `www.mydomain.tld`, your CNAME entry looks like:
 
         www.mydomain.tld										CNAME	www.mydomain.tld.website-us-east-1.linodeobjects.com
 
@@ -319,9 +320,5 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
         subdomain.mydomain.tld										CNAME	www.my-new-bucket.us-east-1.linodeobjects.com
 
 To learn about managing DNS records on Linode, see the [DNS Manager](/docs/guides/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guides.
-
-{{< note >}}
-SSL functionality does not work when using a custom domain, since the certificate is only valid for the website endpoint, not your custom domain. You will see a certificate warning thrown if you proceed to access your custom domain via `https`.
-{{< /note >}}
 
 As noted before, it's possible to trigger automatic deployments to the Object Storage service when you push new content updates to GitHub or GitLab. This is done by leveraging a CI/CD (continuous integration/continuous delivery) tool like [Travis CI](https://travis-ci.org). Essentially, you would build your Hugo site within the Travis environment and then run the `s3cmd sync` command from it to your bucket.

@@ -3,48 +3,112 @@ slug: linux-users-and-groups
 author:
   name: Linode
   email: docs@linode.com
-description: 'An introduction to the principal concepts and use of the users and groups system in Linux systems.'
+description: 'In this guide, you learn about Linux users and groups. This guide includes several examples using commands to execute the most common tasks related to user and group management. You also learn about primary and secondary Linux groups.'
+og_description: 'In this guide, you learn about Linux users and groups. This guide includes several examples using commands to execute the most common tasks related to user and group management. You also learn about primary and secondary Linux groups.'
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/']
-modified: 2017-03-23
+modified: 2021-01-07
 modified_by:
   name: Linode
 published: 2009-08-31
 title: Linux Users and Groups
+h1_title: Linux Users and Groups
 external_resources:
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
 ---
 
-If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.
+If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide provides you with an explanation of what permissions are, how they work, and how to manage them. A number of examples are provided to illustrate how to set and change permissions for both users and groups.
 
 ![Linux Users and Groups](linux_users_and_groups.png "Linux Users and Groups")
 
-## What are User and Group Permissions?
+## What are Linux User and Group Permissions?
 
 Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux's major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user to have access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.
 
-### Read, Write & Execute Permissions
+### Read, Write, & Execute Permissions
 
 Permissions are the "rights" to act on a file or directory. The basic rights are read, write, and execute.
 
--   Read - a readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.
--   Write - a write permission on a file allows you to modify the contents of that file. For a directory, the write permission allows you to edit the contents of a directory (e.g. add/delete files).
--   Execute - for a file, the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory. Users usually have a default group, but they may belong to several additional groups.
+-   **Read**: a readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.
+-   **Write**: a write permission on a file allows you to modify the contents of that file. For a directory, the write permission allows you to edit the contents of a directory (e.g. add/delete files).
+-   **Execute**: for a file, the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory. Users usually have a default group, but they may belong to several additional groups.
 
 ### Viewing File Permissions
 
-To view the permissions on a file or directory, issue the command `ls -l <directory/file>`. Remember to replace the information in the **\< \>** with the actual file or directory name. Below is sample output for the `ls` command:
+To view the permissions on a file or directory, issue the command `ls -l <directory/file>`. Remember to replace the information in the `<directory/file>` with the actual file or directory name. Below is sample output for the `ls` command:
 
-    -rw-r--r-- 1 root root 1031 Nov 18 09:22 /etc/passwd
+{{< output >}}
 
-The first ten characters show the access permissions. The first dash (-) indicates the type of file (d for directory, s for special file, and - for a regular file). The next three characters (**rw-**) define the owner's permission to the file. In this example, the file owner has read and write permissions only. The next three characters (**r--**) are the permissions for the members of the same group as the file owner (which in this example is read only). The last three characters (**r--**) show the permissions for all other users and in this example it is read only.
+-rw-r--r-- 1 root root 1031 Nov 18 09:22 /etc/passwd
+{{</ output >}}
 
-## Working with Users, Groups, and Directories
+The first ten characters show the access permissions. The first dash (`-`) indicates the type of file (`d` for directory, `s` for special file, and `-` for a regular file). The next three characters (`rw-`) define the owner's permission to the file. In this example, the file owner has read and write permissions only. The next three characters (`r--`) are the permissions for the members of the same group as the file owner (which in this example is read only). The last three characters (`r--`) show the permissions for all other users and in this example it is read only.
 
-The following sections will go over the commands needed to create, delete, and modify user accounts. Groups will be covered, as well as commands for creating and deleting directories. You will be provided with the commands and descriptions needed for working with users, groups, and directories.
+## Working with Linux Groups, Users, and Directories
+
+The following sections go over Linux groups and the commands needed to create, delete, and modify user accounts. The commands for creating and deleting directories are covered, as well.
+
+### Linux Primary Groups
+
+A primary group is the default group that a user account belongs to. Every user on Linux belongs to a primary group. A user's primary group is usually the group that is recorded in your Linux system's `/etc/passwd` file. When a Linux user logs into their system, the primary group is usually the default group associated with the logged in account.
+
+You can find a user's primary group ID by viewing the contents of the your system's `/etc/passwd` file.
+
+        cat /etc/passwd
+
+The fourth column contains each user's primary group ID. In the example output, the primary group ID for `example_user` is `1001`:
+
+{{< output >}}
+postfix:x:106:113::/var/spool/postfix:/usr/sbin/nologin
+example_user:x:1000:1001:,,,:/home/example_user:/bin/bash
+{{</ output >}}
+
+You can also find a user's primary group information by using the `id` command. Replace `example_user` with one of your own system's users.
+
+    id  example_user
+
+Your output resembles the example, which displays the primary group as `example_group`.
+
+{{< output >}}
+uid=1000(example_user) gid=1001(example_group) groups=1001(example_group),27(sudo)
+{{</ output >}}
+
+If you want a less verbose output that only shows your primary group name, run the following command:
+
+    id -gn example_user
+
+Your output in this case is the following:
+
+    example_group
+
+### Linux Secondary Groups
+
+Once a user has been created with their primary group, they can be added to secondary groups. Linux system users can have a maximum of 15 secondary groups. A Linux system's groups are stored in the `/etc/group` file.
+
+To find the group(s) a user belongs to, run the following command:
+
+    groups example_user
+
+The example output displays a user's primary and secondary group(s):
+
+    example_user : example_group sudo
+
+To add a user to a secondary group use the example command. Replace `second_example_group` with the group name and `example_user` with the name of the user to add to the group.
+
+    sudo usermod -a -G second_example_group example_user
+
+You can also add a user to multiple groups. The example command adds the user `example_user` to the groups `second_example_group`, `third_example_group`, and `fourth_example_group`. The `-a` and `-G` options ensure that the user is not removed from any group that the user already belongs to.
+
+    sudo usermod -a -G second_example_group,third_example_group,fourth_example_group example_user
+
+### What is the difference between Primary and Secondary groups in Linux?
+
+A primary group is the group a user belongs to by default. Every user must belong to a primary group and a user can only belong to one primary group. Any new directories or files created by a user are automatically associated with a user's primary group.
+
+A secondary group is a group that a user is added to after their user account is created. A user can belong to zero or more secondary groups.
 
 ### Creating and Deleting User Accounts
 
@@ -56,16 +120,16 @@ The useradd command utilizes a variety of variables, some of which are shown in 
 
 | Option          | Description                                                        | Example                                    |
 |:----------------|:-------------------------------------------------------------------|:-------------------------------------------|
-| `-d <home_dir>` | home\_dir will be used as the value for the user's login directory | `useradd <name> -d /home/<user's home>`    |
-| `-e <date>`     | the date when the account will expire                              | `useradd <name>** -e <YYYY-MM-DD>`        |
+| `-d <home_dir>` | home\_dir is used as the value for the user's login directory | `useradd <name> -d /home/<user's home>`    |
+| `-e <date>`     | the date when the account expires                              | `useradd <name>** -e <YYYY-MM-DD>`        |
 | `-f <inactive>` | the number of days before the account expires                      | `useradd <name> -f <0 or -1>`              |
 | `-s <shell>`    | sets the default shell type                                        | `useradd <name> -s /bin/<shell>`           |
 
-You will need to set a password for the new user by using the `passwd` command. Note, you will need root privileges to change a user password. The syntax is as follows:
+You need to set a password for the new user by using the `passwd` command. Note, you need root privileges to change a user password. The syntax is as follows:
 
     passwd <username>
 
-The user will be able to change their password at any time using the `passwd` command with the syntax. Below is an example:
+The user is be able to change their password at any time using the `passwd` command with the syntax. Below is an example:
 
     $ passwd
     Changing password for lmartin.
@@ -82,7 +146,7 @@ The adduser command automatically creates a home directory and sets the default 
 
     adduser <name>
 
-Once you enter the command you will receive a series of prompts; most of this information is optional. However, you should include at least the user's name (for this example the user name is cjones) and of course a password.
+Once you enter the command you receive a series of prompts; most of this information is optional. However, you should include at least the user's name (for this example the user name is cjones) and a password.
 
     root@localhost:~# adduser cjones
       Adding user `cjones' ...
@@ -108,19 +172,19 @@ To remove a user account, enter the following command:
 
     userdel <name>
 
-Issuing the command above will only delete the user's account. Their files and home directory will not be deleted.
+Issuing the command above only deletes the user's account. Their files and home directory are not be deleted.
 
 To remove the user, their home folder, and their files, use this command:
 
     userdel -r <name>
 
-### Understanding Sudo
+### Understanding the Sudo Linux Group and User
 
-Root is the super user and has the ability to do anything on a system. Therefore, in order to have an additional layer of security, a sudo user is generally used in place of root. While sudo is literally used to give another user limited access to another user's account for the purpose of performing tasks (in most cases the `root` user or the superuser) sudo may be best explained as a tool that allows users and groups to have access to commands they normally would not be able to use. Sudo enables a user to have administration privileges without logging in directly as root. A sample of the sudo command is as follows:
+`root` is the super user and has the ability to do anything on a system. Therefore, in order to have an additional layer of security, a `sudo` user is generally used in place of root. While `sudo` is used to give another user limited access to another user's account for the purpose of performing tasks (in most cases the `root` user or the superuser), `sudo` may be best explained as a tool that allows users and groups to have access to commands they normally would not be able to use. `sudo` enables a user to have administration privileges without logging in directly as root. A sample of the `sudo` command is as follows:
 
     sudo apt-get install <package>
 
-Before using sudo, it may need to be installed if it is not part of your distribution. The command for Debian is as follows:
+Before using `sudo`, it may need to be installed if it is not part of your distribution. The command for Debian is as follows:
 
     apt-get install sudo
 
@@ -128,18 +192,18 @@ For CentOS, the command is as follows:
 
     yum install sudo
 
-In order to provide a user with the sudo ability, they will need to be added to a sudo enabled group, or their username will need to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
+In order to provide a user with the `sudo` ability, they need to be added to a `sudo` enabled group, or their username needs to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
 
 {{< note >}}
-For instructions on adding a user to a default sudo enabled group, see our [How to Secure Your Server](#add-a-limited-user-account) guide
+For instructions on adding a user to a default `sudo` enabled group, see our [How to Secure Your Server](/docs/guides/securing-your-server/) guide
 {{< /note >}}
 
-The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as root and enter the command `visudo`.
+The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as `root` and enter the command `visudo`.
 
 The following `sudoers` excerpt allows the listed users to execute any command they'd like by prefixing it with `sudo`, which gives the user full control of a system.
 
 {{< caution >}}
-Users should never be added to the `sudoers` file or group with full permission if they are untrusted. You can optionally restrict what users can do with `sudo` as an additional layer of security; refer to the  [Whitelisting Commands With Sudo](#whitelisting-commands-with-sudo) for some examples on restricted usage syntax.
+Users should never be added to the `sudoers` file or group with full permission if they are not trusted. You can optionally restrict what users can do with `sudo` as an additional layer of security; refer to the  [Whitelisting Commands With Sudo](#whitelisting-commands-with-sudo) for some examples on restricted usage syntax.
 {{< /caution >}}
 
 {{< file >}}
@@ -150,13 +214,13 @@ kbrown  ALL=(ALL:ALL) ALL
 lmartin ALL=(ALL:ALL) ALL
 {{< /file >}}
 
-After you have given your user account sudo privileges, save the sudoers file and log out as root. Now log in as your user and test the privileges as your user with sudo access. When a new user needs sudo access, you will now be able to edit the sudoers file with your own login using the following command:
+After you have given your user account sudo privileges, save the sudoers file and log out as root. Now log in as your user and test the privileges as your user with sudo access. When a new user needs sudo access, you now are able to edit the sudoers file with your own login using the following command:
 
     sudo visudo
 
 ### Whitelisting Commands With Sudo
 
-In many cases, while you will want users to have elevated sudo permissions, you will also want to follow the principle of least privilege and grant sudo users access only to the commands that they need. In the following example, the sudoers file has been edited to limit sudo usage to a few clearly defined commands:
+In many cases, while you want users to have elevated sudo permissions, you also want to follow the principle of least privilege and grant sudo users access only to the commands that they need. In the following example, the sudoers file has been edited to limit sudo usage to a few clearly defined commands:
 
 {{< file >}}
     # User privilege specification
@@ -177,11 +241,11 @@ When whitelisting individual commands using the above syntax, it is important to
 
 ### Working with Groups
 
-Linux uses groups as a way to organize users. Groups organize collections of accounts, primarily as a security measure. Control of group membership is administered through the `/etc/group` file, which shows a list of groups and its members. Every user has a default or primary group. When a user logs in, the group membership is set for their primary group. This means that when a user launches a program or creates a file, both the file and the running program will be associated with the user's current group membership. A user may access other files in other groups, as long as they are also a member of that group and the access permissions are set. To run programs or create a file in a different group, the user must run the `newgrp` command to switch their current group. A sample of the newgrp command is as follows:
+Linux uses groups as a way to organize users. Groups organize collections of accounts, primarily as a security measure. Control of group membership is administered through the `/etc/group` file, which shows a list of groups and its members. Every user has a default or primary group. When a user logs in, the group membership is set for their primary group. This means that when a user launches a program or creates a file, both the file and the running program is associated with the user's current group membership. A user may access other files in other groups, as long as they are also a member of that group and the access permissions are set. To run programs or create a file in a different group, the user must run the `newgrp` command to switch their current group. A sample of the newgrp command is as follows:
 
     $ newgrp <marketing>
 
-If the user entering the above-referenced command is a member of the **marketing** group in the `/etc/group` file, then the current group membership will change. It is important to note that any files created will now be associated with the **marketing** group rather than the user's primary group.
+If the user entering the above-referenced command is a member of the **marketing** group in the `/etc/group` file, then the current group membership changes. It is important to note that any files created are now be associated with the **marketing** group rather than the user's primary group.
 
 ### Creating and Removing Directories
 
@@ -203,11 +267,11 @@ To remove a directory:
 
     rm -r <directory name>
 
-It is important to note that if you remove a directory all the files inside will be deleted as well.
+It is important to note that if you remove a directory all the files inside are deleted as well.
 
 ### Changing Directory and File Permissions
 
-To view file permissions and ownership on files and directories, use the `ls -al` command. The `a` option is to show hidden files or all files, and the `l` option is for the long listing. The output will be similar to the following:
+To view file permissions and ownership on files and directories, use the `ls -al` command. The `a` option is to show hidden files or all files, and the `l` option is for the long listing. The output is similar to the following:
 
     drwxr-xr-x 2 user user 4096 Jan  9 10:11 documents
     -rw-r--r-- 1 user user  675 Jan  7 12:05 .profile
@@ -224,7 +288,7 @@ The first column with the ten letters and dashes shows the permissions of the fi
     `documents` is the directory
 
 {{< note >}}
-Since a directory itself is a file, any directory will always show `4096` as it's size. This does not reflect the size of the contents of the directory.
+Since a directory itself is a file, any directory shows `4096` as it's size. This does not reflect the size of the contents of the directory.
 {{< /note >}}
 
 ### Chmod Command
@@ -268,7 +332,7 @@ In other words, the user was given read permission and the group was given execu
 
 ### Chmod Octal Format
 
-To use the octal format, you have to calculate the permissions for each portion of the file or directory. The first ten characters mentioned above will correspond to a four digit numbers in octal. The execute permission is equal to the number one (1), the write permission is equal to the number two (2), and the read permission is equal to the number four (4). Therefore, when you use the octal format, you will need to calculate a number between 0 and 7 for each portion of the permission. A table has been provided below for clarification.
+To use the octal format, you have to calculate the permissions for each portion of the file or directory. The first ten characters mentioned above correspond to a four digit numbers in octal. The execute permission is equal to the number one (1), the write permission is equal to the number two (2), and the read permission is equal to the number four (4). Therefore, when you use the octal format, you need to calculate a number between 0 and 7 for each portion of the permission. A table has been provided below for clarification.
 
 ![Octal format for permissions.](1502-octal-format-clarified.png)
 
@@ -304,7 +368,7 @@ To set the sticky bit on a directory named `/root/sticky`, issue the following c
 
     chmod +t /root/sticky
 
-To remove the sticky bit from a file or directory, use the `chmod -t` command. Note, to change the sticky bit, you need to be either root or the file/directory owner. The root user will be able to delete directories and files within them regardless of the status of the sticky bit.
+To remove the sticky bit from a file or directory, use the `chmod -t` command. Note, to change the sticky bit, you need to be either root or the file/directory owner. The root user is able to delete directories and files within them regardless of the status of the sticky bit.
 
 The *setuid* bit, or *+s*, when set on files allows users with permissions to execute a given file the ability to run that file with the permissions of file owner. For instance, if the file `work` was owned by the `root` user and the `marketing` group, members of the `marketing` group could run the `work` program as if they were the root user. This may pose potential security risks in some cases and executables should be properly evaluated before receiving the `+s` flag. To set the `+s` bit on a file named `/usr/bin/work`, issue the following command:
 
@@ -320,7 +384,7 @@ To set the *setuid* (user id) for a directory named `/var/doc-store`, issue the 
 
 ### Changing File Ownership
 
-By default, all files are "owned" by the user who creates them and by that user's default group. To change the ownership of a file, use the `chown` command in the `chown user:group /path/to/file` format. In the following example, the ownership of the "list.html" file will be changed to the "cjones" user in the "marketing" group:
+By default, all files are "owned" by the user who creates them and by that user's default group. To change the ownership of a file, use the `chown` command in the `chown user:group /path/to/file` format. In the following example, the ownership of the "list.html" file is changed to the "cjones" user in the "marketing" group:
 
     chown cjones:marketing list.html
 
@@ -328,7 +392,7 @@ To change the ownership of a directory and all the files contained inside, use t
 
     chown -R cjones:marketing /srv/smb/leadership/
 
-## Leveraging Users and Groups
+## Leveraging Linux Users and Groups
 
 In many cases, user permissions are used to provide your system with greater security without any direct interaction. Many operating systems create specific system user accounts for different packages during the installation process.
 

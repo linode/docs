@@ -36,8 +36,8 @@ Throughout this guide we will offer several suggested values for specific config
 
 - In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:
 
-    - [Getting Started with NodeBalancers](/docs/guides/nodebalancer/getting-started-with-nodebalancers)
-    - [NodeBalancer Reference Guide](/docs/guides/nodebalancer/nodebalancer-reference-guide)
+    - [Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers)
+    - [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide)
 
 {{< note >}}
 This guide has been written with the assumption that you are logged in as the root user. If you are using a limited user account, you will need to prefix some commands with `sudo`.

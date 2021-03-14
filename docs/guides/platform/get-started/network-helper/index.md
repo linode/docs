@@ -53,15 +53,13 @@ When Network Helper is enabled globally, all new Linodes created on your account
 
 1.  Click on **Linodes** link in the sidebar of the Linode Cloud Manager.
 
-1.  Click on the **More Options Ellipsis** corresponding to the Linode for which you want to enable Network Helper. Then, click **Settings**.
+1. Select the Linode you would like to enable Network Helper for.
+
+1.  Click on the **Configurations** tab. Then, click on the **Edit** option next to the configuration profile the Linode is currently using.
 
     ![Navigate to the Linode's Settings page](network-helper-linode-settings-link.png)
 
-1.  Navigate to the tab labeled **Disks/Configs**.  From the **Configuration** pane, click on your Disk Profile's **More Options Ellipsis** and select **Edit**.
-
-    [![Select the configuration profile Edit Menu](network-helper-linode-settings-page.png)](network-helper-linode-settings-page.png "Select the configuration profile Edit Menu")
-
-1.  A menu will appear with that configuration profile's settings. Under the **Filesystem/Boot Helpers** section, toggle the **Auto-configure networking** switch to the desired setting; blue is enabled, gray is disabled.
+1.  A side-panel menu will appear with the configuration profile's settings. Under the **Filesystem/Boot Helpers** section, toggle the **Auto-configure networking** switch to the desired setting; blue is enabled, gray is disabled.
 
     [![Toggle the 'auto-configure networking' box](network-helper-linode-config-profile-settings.png)](network-helper-linode-config-profile-settings.png "Toggle the auto-configure networking box")
 

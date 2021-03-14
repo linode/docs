@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get started with the Linode DNS Manager. Learn to add a domain and add DNS records."
 tab_group_main:
     weight: 20
 ---

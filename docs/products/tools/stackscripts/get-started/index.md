@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get started with Linode StackScripts. Learn to create a StackScript and create a new Linode using a StackScript."
 tab_group_main:
     weight: 20
 ---

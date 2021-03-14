@@ -1,5 +1,6 @@
 ---
 title: Resources
+description: "Resources and other information related to the Linode DNS manager including blog posts and community posts."
 tab_group_main:
     weight: 40
 ---
