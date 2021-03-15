@@ -135,7 +135,7 @@ export function newSearchExplorerController(searchConfig) {
 						let sectionName = activeNodeKey.split('>')[0].trim();
 						dispatcher.searchNodes({
 							data: [
-								{ key: activeNodeKey, section: { config: searchConfig.findSectionByName(sectionName) } }
+								{ key: activeNodeKey, section: { config: searchConfig.sections[sectionName] } }
 							]
 						});
 					} else {

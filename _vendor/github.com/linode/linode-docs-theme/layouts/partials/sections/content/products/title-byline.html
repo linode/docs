@@ -7,12 +7,8 @@
   {{ else }}
     Updated
   {{ end }}
-  <time datetime="{{ .Lastmod }}">
-    {{ .Lastmod.Format site.Params.time_format_default }}
-  </time>
-  {{ with .Params.author }}
-    , by {{ .name }}
-  {{ end }}
+  {{ $authorLink := partial "funcs/get-author-link.html" . }}
+  <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format site.Params.time_format_default }}</time>{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
 </p>
 {{ with .Params.product_description }}
   <p class="mt-8">
