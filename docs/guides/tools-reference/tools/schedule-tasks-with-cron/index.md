@@ -22,6 +22,8 @@ image: schedule-tasks-with-cron.png
 
 Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals. These tasks are referred to as **Cron tasks** or **Cron jobs**. Use Cron to schedule automated updates, report generation, or check for available disk space every day and send you an email if it falls below a certain amount.
 
+{{< youtube "v952m13p-b4" >}}
+
 ## How to Use Cron and crontab - The Basics
 
 System Cron jobs exist as entries in the `/etc/crontab` file. Each job is described on a single line by defining a time interval, a user to run the command as, and the command to run. Cron can run any kind of script, command, or executable.
