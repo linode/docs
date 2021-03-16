@@ -15,6 +15,8 @@ external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
 published: 2020-03-30
+modified_by:
+  name: Linode
 ---
 
 ## What is FreeIPA
@@ -56,7 +58,7 @@ First, the FreeIPA Server and Client Linodes must be prepared for the installati
 
 1. FreeIPA requires access to the following ports for the services listed below:
 
-| Ports    | Service | Protocol |
+| Ports | Service | Protocol |
 | ----------- | ----------- | ----------- |
 | 80, 443     | HTTP/HTTPS | TCP |
 | 389, 636   | LDAP/LDAPS | TCP |
@@ -121,7 +123,7 @@ The admin ticket created with `kinit admin` is set to expire in 24 hours followi
 
        ipa user-add --password
 
-New users can be created with the above command at any time. 
+New users can be created with the above command at any time.
 
 {{< note >}}
 Kerberos tickets associated with these users will expire similarly to admin users. Basic syntax for creating new kerberos tickets is `kinit username`.
