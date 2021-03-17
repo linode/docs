@@ -12,7 +12,7 @@ level: warning
 ignorecase: true
 swap:
   admin: administrator
-  blacklist(ed|ing)?: denylist
+  blacklist(?:ed|ing)?: denylist
   code base: codebase
   config: configuration
   distro: distribution
@@ -20,4 +20,4 @@ swap:
   filesystem: file system
   info: information
   repo: repository
-  whitelist(ed|ing)?: allowlist
+  whitelist(?:ed|ing)?: allowlist
