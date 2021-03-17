@@ -39,7 +39,7 @@ MySQL is an open-source relational database management system. The name is a com
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
     {{< /note >}}
 
-1. In order to secure and audit  MySQL, you need to have a Linux server with the `MySQL Server` services running. For information about installing MySQL please see [Install MySQL ] (/docs/guides/install-mysql-on-ubuntu-14-04/)
+1. In order to secure and audit  MySQL, you need to have a Linux server with the `MySQL Server` services running. For information about installing MySQL please see [Install MySQL ](/docs/guides/install-mysql-on-ubuntu-14-04)
 
     {{< note >}}The instructions in this guide are based the steps on Ubuntu 18.04, all the steps are distribution agnostic with the exception of package names and package managers.{{< /note >}}
 
@@ -59,7 +59,7 @@ Begin the security process by running this utility immediately after installing 
 
 1. Invoke the utility by running the following command:
 
-    sudo mysql_secure_installation
+      sudo mysql_secure_installation
 
 1. The setup process begins and the utility prompts you to specify whether you want to enable the validate password plugin that is used to test passwords and improve security, it is recommended to enable this feature.
 {{< output >}}
@@ -146,27 +146,27 @@ The first step in securing the “root” user is to change the username from `r
 
 1. Login to the mysql server with the following command:
 
-    sudo mysql -u root
+      sudo mysql -u root
 
 
 1. Change the “root” account username by running the following query:
 
-    rename user ‘root’@’localhost' to ‘<new-username’@’localhost’;
+      rename user ‘root’@’localhost' to ‘<new-username’@’localhost’;
 
 1. Change the `root` account password to something strong and hard to guess, it is recommended to use a password generator, if you enabled the verify password plugin during the secure installation process, you need to provide a password that meets the policy requirements in terms of strength.
 
-    ALTER USER ‘example_username’@’localhost’ IDENTIFIED BY ‘<new-password>’;
+      ALTER USER ‘example_username’@’localhost’ IDENTIFIED BY ‘<new-password>’;
 
 1. Reload the privilege table to ensure that all changes are saved and activated, by running the following command:
-    flush privileges;
+      flush privileges;
 
 1. To confirm whether the `root` username and password are changed, run the following query:
 
-    use mysql;
-    select user,host,authentication_string from mysql.user;
+      use mysql;
+      select user,host,authentication_string from mysql.user;
 
-This displays the user tables stored under the mysql database and should reflect the changes made.
-{{< output >}}
+  This displays the user tables stored under the mysql database and should reflect the changes made.
+  {{< output >}}
 +------------------+-----------+-------------------------------------------+
 | user             | host      | authentication_string                     |
 +------------------+-----------+-------------------------------------------+
@@ -176,7 +176,7 @@ This displays the user tables stored under the mysql database and should reflect
 | debian-sys-maint | localhost | *241DC5A20F017D55EE82E46E7996784ED4A5CD8A |
 +------------------+-----------+-------------------------------------------+
 4 rows in set (0.00 sec)
- {{< /output >}}
+  {{< /output >}}
 
 
 
@@ -188,25 +188,25 @@ This ensures that at any time, only one user has access to one database at a tim
 
 1. Create a `Test` database, by running the following query within MYSQL:
 
-    create database Test;
+      create database Test;
 1. Create the user responsible for managing this Test database:
 
-    CREATE USER '<username>'@'localhost' IDENTIFIED BY '<password>';
+      CREATE USER '<username>'@'localhost' IDENTIFIED BY '<password>';
 1. Assign the appropriate CRUD permissions to the user for the Test database:
 
-    GRANT SELECT,UPDATE,DELETE ON Test.* TO '<username>'@'localhost';
+      GRANT SELECT,UPDATE,DELETE ON Test.* TO '<username>'@'localhost';
 
 
 1. It is important to note that these privileges are applicable only to the Test database, if you are creating a user for an application such as `phpMyAdmin`, you need to provide the user with `root` permissions.
 
 1. If you decide to delete a particular user, run the following query:
 
-    drop user ’<username>’@'localhost';
+      drop user ’<username>’@'localhost';
 
 
 1. Reload the privilege table to ensure the changes made are applied and activated by running the following query:
 
-    flush privileges;
+      flush privileges;
 
 
 ## Custom MySQL Configuration
@@ -217,7 +217,7 @@ You can now setup a secure custom configuration for MySQL that provides addition
 
 1. The custom configuration needs to be specified for the mysqld (MySQL daemon), the options displayed in the image are custom security configurations.
 
-![Custom Security Configuration](custom_security_configuration.png)
+    ![Custom Security Configuration](custom_security_configuration.png)
 
 1. After adding the custom configurations, you need to restart the mysql service to ensure all changes are applied.
     systemctl restart mysql
@@ -228,17 +228,17 @@ You can now audit the security of the MySQL server by using a tool called MySAT.
 MySAT is a simple SQL script, it is easy to understand and easy to maintain. MySAT results are output in HTML format.
 
 1. Clone the MySAT Github repository, by running the following command:
-    git clone https://github.com/meob/MySAT.git
+      git clone https://github.com/meob/MySAT.git
 
 
 1. After cloning the directory, navigate into the MySAT directory, where the mysat.sql file is located and it is used in conjunction with the MySQL server to output the results into a `MySAT.htm` file.
 
 1. Audit the security by running the following command:
-    mysql --user=<root-user> -p<password> --skip-column-names -f < mysat.sql > MySAT.htm
+      mysql --user=<root-user> -p<password> --skip-column-names -f < mysat.sql > MySAT.htm
 
 1. As indicated, MySAT requires root access to MySQL to run the required tests, after running the command, the MySAT.htm file is generated, copy the MySAT.htm file and the `mysat.css` file to the apache server so that you can analyze the results of the audit.
 
-![MySAT.htm](mysat_htm.png)
+      ![MySAT.htm](mysat_htm.png)
 
 1. The results are formatted in a simple to read and understand format, where configurations are checked and results are color coded based on their current configuration and how it affects the security of the mysql server, for example a failed configuration check is color coded in orange and a passed check is color coded in green.
 
