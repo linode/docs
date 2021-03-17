@@ -32,7 +32,7 @@ In this guide you will create a *Linode StackScripts* module. This module will d
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
     {{</ note >}}
 
-2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
+2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](https://www.linode.com/docs/guides/getting-started-with-the-linode-api/) guide to obtain a token.
 
 3. Complete the steps in the **Configure Git** section of the [Getting Started with Git](/docs/guides/how-to-configure-git/#configure-git) guide.
 
