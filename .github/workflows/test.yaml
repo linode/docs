@@ -1,6 +1,11 @@
 name: CI Tests
 
-on: [pull_request]
+on:
+  pull_request:
+    paths-ignore:
+    - "**/*.png"
+    - "**/*.jpg"
+    - "**/*.jpeg"
 
 jobs:
   blueberry:
