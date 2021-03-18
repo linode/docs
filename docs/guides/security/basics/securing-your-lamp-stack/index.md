@@ -4,7 +4,7 @@ author:
   name: Hackersploit
 description: 'A comprehensive guide to securing and auditing a LAMP stack.'
 og_description: 'A comprehensive guide to securing and auditing a LAMP stack.'
-keywords: ["security", "lamp"]
+keywords: ["secure lamp stack", "how to make our lamp stack secure"]
 tags: ["lamp","security","web server","php","mysql","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-03-04
