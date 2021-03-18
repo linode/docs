@@ -1,5 +1,5 @@
 ---
-slug: linux-game-server
+slug: deploy-7-days-to-die-linux-game-server
 author:
   name: Sandro Villinger
   email: webmaster@windows-tweaks.info
