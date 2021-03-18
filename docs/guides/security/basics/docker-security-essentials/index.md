@@ -4,16 +4,16 @@ author:
   name: Hackersploit
 description: 'A concise guide to securing your Docker containers.'
 og_description: 'A concise guide to securing your Docker containers.'
-keywords: ["", ""]
-tags: ["docker security", "docker container security", "docker security best practices"]
+keywords: ["docker security", "docker container security", "docker security best practices"]
+tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-03-18
 modified_by:
   name: Linode
 published: 2021-03-18
 title: Docker Security Essentials
-h1_title: Securing Your LAMP Stack
-aliases: ['/security/basics/securing-your-lamp-stack/']
+h1_title: Docker Security Essentials
+aliases: ['/security/basics/docker-security-essentials/']
 ---
 
 ## What is Docker?
@@ -79,7 +79,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
         docker build .
 
-1.  Run `/bin/bash` on a temporary Docker container utilizing your image, replacing `<USER>` with the unpriviliged user and `<IMAGE-ID>` with the ID of the image you built in the previous step:
+1.  Run `/bin/bash` on a temporary Docker container utilizing your image, replacing `<USER>` with the unprivileged user and `<IMAGE-ID>` with the ID of the image you built in the previous step:
 
         docker run -u <USER> -it --rm <IMAGE-ID> /bin/bash
 
