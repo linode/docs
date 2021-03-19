@@ -1,6 +1,5 @@
 ---
 slug: lemp-server-on-debian-6-squeeze
-deprecated: true
 author:
   name: Linode
   email: docs@linode.com

@@ -1,6 +1,5 @@
 ---
 slug: monitoring-resource-utilization-with-cacti-on-fedora-12
-deprecated: true
 author:
   name: Stan Schwertly
   email: docs@linode.com

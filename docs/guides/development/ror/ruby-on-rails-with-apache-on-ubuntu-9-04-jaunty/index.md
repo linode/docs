@@ -1,6 +1,5 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty
-deprecated: true
 author:
   name: Linode
   email: docs@linode.com
