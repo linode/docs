@@ -474,6 +474,7 @@ fragging
 frakti
 framesets
 freedns
+freeipa
 freshclam
 friendster
 frontend
@@ -671,7 +672,9 @@ iotop
 ip
 ip4
 ip6
-ip6tables
+ip6table
+ipa
+ipaserver
 ipchains
 ipset
 ipsets
