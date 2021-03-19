@@ -3,8 +3,8 @@ slug: deploy-7-days-to-die-linux-game-server
 author:
   name: Sandro Villinger
   email: webmaster@windows-tweaks.info
-description: 'Want to host your own instance of the popular online game, 7 Days to Die? Here&#39;s the step-by-step guide.'
-og_description: 'Want to host your own instance of the popular online game, 7 Days to Die? Here&#39;s the step-by-step guide.'
+description: 'This guide shows you how to install the popular online game 7 Days to Die using LinuxGSM. LinuxGSM provides an easy installation. Once you have installed your game server, you and your friends can enjoy having full control over your gaming experience.'
+og_description: 'This guide shows you how to install the popular online game 7 Days to Die using LinuxGSM. LinuxGSM provides an easy installation. Once you have installed your game server, you and your friends can enjoy having full control over your gaming experience.'
 keywords: ['7 days to die Linux Server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-08
@@ -14,179 +14,113 @@ title: "How to Deploy a 7 Days to Die Linux Server"
 h1_title: "How to Deploy a 7 Days to Die Linux Server"
 contributor:
   name: Sandro Villinger
-  link:
 ---
 
-# How to set up a 7 Days to Die Server
-
-The Zombie Horde Survival game [7 Days to Die](https://7daystodie.com/) (7DTD) is still going strong. Even eight years after its release, its community is alive and the zombie fun hasn&#39;t stopped.
-
-The game is even better when you and your friends play on your own server, using your own rules. Plus, when you [host a game server yourself](https://www.linode.com/docs/guides/game-servers/linux-game-server/index.md), you don&#39;t have to worry about lag time – thanks to Linode.
-
-This guide shows you how to set up your own 7DTD server, both using LinuxGSM and manually.
+Even eight years after its release, the Zombie Horde Survival game [7 Days to Die](https://7daystodie.com/) (7DTD) is still going strong. Its community is active and the zombie fun hasn't stopped. The game is even better when you and your friends play on your own server, using your own rules. Plus, when you [host a game server yourself](/docs/guides/get-started-with-linux-game-server-hosting), you don't have to worry about lag time that can interrupt your gameplay. This guide shows you how to set up your own 7DTD server, using LinuxGSM.
 
 ![7DTD](Linux_game_7days.png)
 
-## Creating a game server with LinuxGSM
+## Before You Begin
 
-The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) helps you set up a server. With a few scripts, it also allows you to fine-tune "7 Days to Die."
+1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](https://www.linode.com/docs/guides/how-to-choose-a-linode-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
 
-To get started with LinuxGSM, install the following dependencies.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-```
-sudo dpkg --add-architecture i386
-sudo apt update
-sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
-```
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-This installs Steam among other things required for the server. You might need to click on `OK` to confirm the Steam EULA.
+1.  Update your system:
 
-Next, create a user and a login for your 7 Days to Die Server:
+        sudo apt update && sudo apt upgrade
 
-```
-adduser sdtdserver
-adduser sdtdserver sudo
-su – sdtdserver
-```
+{{< note >}}
+In order to play 7 Days to Die, you have to [purchase the game on Steam](https://store.steampowered.com/app/251570/7_Days_to_Die/).
+{{</ note >}}
 
-Type in a password of your choice and then download LinuxGSM:
+## Deploy a Game Server Using LinuxGSM
 
-```
-wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
-```
+The Linux Game Server manager ([LinuxGSM](https://linuxgsm.com/)) is a command-line tool that helps you deploy and configure your game server. With a few scripts, it helps you to fine-tune your 7 Days to Die instance. This section shows you how to install LinuxGSM and 7 Days to Die on your Ubuntu 20.04 server.
 
-![Installing 7dtd](Linux_game_server_7dtd.png)
+1. Install the LinuxGSM dependencies and Steam:
 
-Then run the game script installer using the following command:
+        sudo dpkg --add-architecture i386
+        sudo apt update
+        sudo apt install curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux netcat lib32gcc-s1 lib32stdc++6 steamcmd telnet expect
 
-```
-./sdtdserver install
-```
+    A prompt appears with the Steam EULA. To proceed, use your keyboard's **down arrow** key to read through the agreement. Then, use the **tab** key to select **<ok>**.
 
-![Running the gamescript installer](Linux_game_server3.png)
+1. Create a 7 Days to Die Server system user, and add the user to the `sudo` group, and switch.
 
- Click on `Y` when prompted.
+        sudo adduser sdtdserver
+        sudo adduser sdtdserver sudo
 
-At this point, you might be told about missing dependencies, which LinuxGSM then adds.
+1. Switch your terminal session to the new `sdtdserver` user. You can exit your current session by typing **exit**, then [SSH into your Linode](https://www.linode.com/docs/guides/getting-started/#log-in-using-ssh) using as the `sdtdserver` user. Ensure you replace the example command with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
-With LinuxGSM set up, it then downloads the game, &quot; **7 Days to Die**.&quot; Once that&#39;s done you can launch it by typing:
+        ssh sdtdserver@192.0.2.0
 
-```
+1. Download LinuxGSM:
+
+        sudo wget -O linuxgsm.sh https://linuxgsm.sh && sudo chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+
+    Your output resembles the following:
+
+    {{< output >}}
+[sudo] password for sdtdserver:
+--2021-03-19 15:57:54--  https://linuxgsm.sh/
+Resolving linuxgsm.sh (linuxgsm.sh)... 2606:4700:3032::ac43:8701, 2606:4700:3031::6815:69e, 172.67.135.1, ...
+Connecting to linuxgsm.sh (linuxgsm.sh)|2606:4700:3032::ac43:8701|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/linuxgsm.sh [following]
+--2021-03-19 15:57:54--  https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/linuxgsm.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.110.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 18675 (18K) [text/plain]
+Saving to: ‘linuxgsm.sh’
+
+linuxgsm.sh                    100%[===================================================>]  18.24K  --.-KB/s    in 0.001s
+
+2021-03-19 15:57:54 (15.4 MB/s) - ‘linuxgsm.sh’ saved [18675/18675]
+
+Installed 7 Days to Die server as sdtdserver
+{{</ output >}}
+
+1. Run the game script installer using the following command:
+
+        ./sdtdserver install
+
+    The prompt asks you to confirm the installation. Enter **Y** to continue. You may be prompted with a few other installation questions. LinuxGSM takes care of installing any missing dependencies and installs 7 Days to Die. You see the following output when the installtion completes:
+
+    {{< output >}}
+=================================
+Install Complete!
+
+To start server type:
 ./sdtdserver start
-```
+{{</ output >}}
 
-Done! To check if your server is online, type:
+1. Launch 7 Days to Die with the following command:
 
-```
-./sdtdserver details
-```
+        ./sdtdserver start
 
- Hopefully, you see the following information:
+    The output displays the following:
 
- ![7dtd is running](Linux_game_server_7dtd_running.png)
+    {{< output >}}
+[  OK  ] Starting sdtdserver: Applying steamclient.so sdk64 fix: 7 Days To Die
+[  OK  ] Starting sdtdserver: Applying steamclient.so sdk32 fix: 7 Days To Die
+[  OK  ] Starting sdtdserver: My Game Host
+{{</ output >}}
 
- Does it say **ONLINE** after Status? Then you and your friends are good to go!
+1. Verify that your server is online:
 
-Last but not least: Fire up the game and try to connect to the IP of your Linode server:
+        ./sdtdserver details
 
-![7dtd server status](Linux_game_server_7dtd_server.png)
+    Your output displays its status as **ONLINE**. This means you and your friends can start playing 7DTD.
 
-To get a list of all available commands, simply type in `./sdtdserver`! All that&#39;s left to say now is: Happy slashing!
+    {{< note >}}
+Execute the `./sdtdserver` command to get a list of all available 7 Days to Die server commands.
+    {{</ note >}}
 
-## Creating a game server manually
+1. On your computer, use Steam to fire up the game and connect to your [Linode server's IP address](/docs/guides/find-your-linodes-ip-address/).
 
-You can also set up &quot;7 Days to Die&quot; on a server without LinuxGSM. Here&#39;s how:
+    ![7dtd server status](Linux_game_server_7dtd_server.png)
 
-For this example, we use an Ubuntu Server created with Linode to host the 7 Days To Die server. As always, you need to create a Linode server and connect to it via Putty for Windows or using Terminal for Mac/Linux.
-
-First, run all the updates:
-
-```
-sudo get-apt update
-```
-
-But before you reboot the system, install a couple of libraries to get 7 Days to run.
-
-First, install the `lib32gcc-s1` library:
-
-```
-sudo apt-get install lib32gcc-s1
-```
-
-![install the lib32gcc-1 library](Linux_game_server_lib32gccl.png)
-
-Choose `Y` to confirm when the installation prompts you to do so.
-
-**Next, install Steam.** Before you do so, be sure to [read the intro guide for setting up a game server](https://www.linode.com/docs/guides/game-servers/linux-game-server/index.md) for background.
-
-Then use the following commands to install Steam and log into your account:
-
-```
-sudo mkdir steamcmd
-cd steamcmd
-sudo wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
-tar -xvzf steamcmd_linux.tar.gz
-sudo ./steamcmd.sh
-```
-
-Once that's complete:
-
-```
-login username password
-```
-
-Next, install **7 Days to Die**. If you haven&#39;t purchased it yet…now is the time!
-
-```
-force\_install\_dir ../7dtd
-app\_update 294420 validate
-```
-
-Expect it to take some time. Since 7DTD is roughly a 10 GB install, you might want to grab a coffee while your Linode server downloads and installs the game.
-
-![a long download](Linux_game_server_longdownload.png)
-
-Once done, type in `Quit` to exit SteamCMD.
-
-To run the server, create a 7 Days to Die startup script. To do that, switch into the 7DtD directory:
-
-```
-cd ../7dtd
-```
-
-Type in the following command to create a startup script:
-
-```
-sudo vim startup.sh
-```
-
-Add the following script to the `sh` file:
-
-```
-./7DaysToDieServer.x86_64 -configfile=serverconfig.xml -logfile 7DaysToDie_Data/output_log.txt $@
-```
-
- It should look like this.
-
-![7dtd config](Linux_game_server_config.png)
-
- When that&#39;s done, press ESC to enter the vim command mode; type in `:w` to write the startup script and `q` to quit the editor.
-
-Finally, change the permission for this script:
-
-```
-sudo chmod +x startup.sh
-```
-
-It&#39;s time to run the game! Finally, launch the game server:
-
-```
-screen -S 7dtd
-sudo ./startup.sh
-```
-
-Last but not least: Fire up the game and try to connect to the IP of your Linode server:
-
-![7dtd is running](Linux_game_server_7dtd_server.png)
-
-All that&#39;s left to say now is: Happy slashing!
