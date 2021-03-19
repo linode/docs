@@ -30,7 +30,7 @@ Creating a dedicated gaming server may seem like a daunting task, especially whe
 
 - **Improved network throughput**: Hosting your own server in a data center that is geographically closer to you and your players means decreased network latency. Capping the amount of players allowed to play at one time also helps decrease latency. High ping and latency can kill your gameplay – and your player characters. When you experience high latency, your character can be hit before you realize someone was shooting at you.
 
-**Dedicated server resources**: If you use a server with dedicated CPU resources, you guarantee the computing power needed to run your game. This means your gameserver can execute at top performance free from the effects of not having enough CPU cores or CPU steal. In most cases, you won't host hundreds of thousands of players, so you shouldn't expect any downtime or poor performance caused by overload.
+**Dedicated server resources**: If you use a server with dedicated CPU resources, you guarantee the computing power needed to run your game. This means your game server can execute at top performance free from the effects of not having enough CPU cores or CPU steal. In most cases, you won't host hundreds of thousands of players, so you shouldn't expect any downtime or poor performance caused by overload.
 
 ## System Requirements
 
