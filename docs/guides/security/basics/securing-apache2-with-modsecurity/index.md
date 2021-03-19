@@ -52,7 +52,7 @@ You should now have ModSecurity installed. The next steps involves enabling and 
 
 ## Configuring ModSecurity
 
-ModSecurity is a firewall and therefore requires rules to function. This section provides shows you how to implement the OWASP Core Rule Set. First, you must prepare the ModSecurity configuration file.
+ModSecurity is a firewall and therefore requires rules to function. This section shows you how to implement the OWASP Core Rule Set. First, you must prepare the ModSecurity configuration file.
 
 1. Remove the `.recommended` extension from the ModSecurity configuration file name with the following command:
 
