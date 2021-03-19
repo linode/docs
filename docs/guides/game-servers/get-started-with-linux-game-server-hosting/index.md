@@ -1,5 +1,5 @@
 ---
-slug: linux-game-server
+slug: get-started-with-linux-game-server-hosting
 author:
   name: Sandro Villinger
   email: webmaster@windows-tweaks.info
