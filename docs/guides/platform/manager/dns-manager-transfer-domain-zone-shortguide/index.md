@@ -29,7 +29,7 @@ Granting another server access to zone information is potentially dangerous. Do 
 
     ![Edit SOA records](edit-soa-record.png "Edit SOA records")
 
-1. In the **Edit SOA Record** pane, find the **Domain Transfers** form field and enter in a comma separated list of IP addresses corresponding to the DNS servers you'd like to give access to your Domain's zone file.
+1. In the **Edit SOA Record** pane, find the **Domain Transfers IPs** section and enter the IP addresses corresponding to the DNS servers you'd like to give access to your Domain's zone file. Each field should contain a single IP address and additional fields will appear when the "Add an IP" link is clicked.
 
 1. When you've completed your update, click on **Save**.
 
