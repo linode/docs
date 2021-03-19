@@ -25,7 +25,7 @@ FreeIPA is a free and open source identity management system,it is the upstream 
 
 FreeIPA is the Linux version or implementation of Active Directory, which features the following:
 
--   Integrated security information management solution combining Linux (Fedora), 389 Directory Server, MIT Kerberos, NTP, DNS, Dogtag certificate system, SSSD and others.
+-   Integrated security information management solution combining Linux (Fedora), 389 Directory Server, MIT Kerberos, NTP, DNS, SSSD and others.
 -   Built on top of well known Open Source components and standard protocols.
 -   Strong focus on ease of management and automation of installation and configuration tasks.
 -   Full multi master replication for higher redundancy and scalability.
