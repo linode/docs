@@ -88,7 +88,7 @@ Installed 7 Days to Die server as sdtdserver
 
         ./sdtdserver install
 
-    The prompt asks you to confirm the installation. Enter **Y** to continue. You may be prompted with a few other installation questions. LinuxGSM takes care of installing any missing dependencies and installs 7 Days to Die. You see the following output when the installtion completes:
+    The prompt asks you to confirm the installation. Enter **Y** to continue. You may be prompted with a few other installation questions. LinuxGSM takes care of installing any missing dependencies and installs 7 Days to Die. You see the following output when the installation completes:
 
     {{< output >}}
 =================================
