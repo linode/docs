@@ -7,7 +7,7 @@ description: 'This guide shows how to create a self-signed TLS certificate with 
 og_description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL.'
 keywords: ["centos tls certificate", "centos ssl certificate", "centos self certified"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/encryption/ssl/how-to-make-a-selfsigned-ssl-certificate-centos-8']
+aliases: ['security/encryption/ssl/how-to-make-a-selfsigned-ssl-certificate-centos-8/']
 modified: 2021-03-22
 modified_by:
   name: Linode
