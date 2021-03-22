@@ -82,11 +82,14 @@ export function newSearchInputController() {
 	};
 
 	self.setFocus = function(focus) {
+		this.focus = focus;
+	};
+
+	self.click = function() {
 		if (!this.searchOpen) {
 			this.searchOpen = true;
 			this.dispatch();
 		}
-		this.focus = focus;
 	};
 
 	self.closeWord = function(id) {
