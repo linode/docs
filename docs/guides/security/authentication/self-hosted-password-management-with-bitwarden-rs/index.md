@@ -4,7 +4,7 @@ author:
   name: Tyler Langlois
 description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
 og_description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
-keywords: ['security', 'web application', 'password', 'bitwarden']
+keywords: ["bitwarden", "bitwarden rs", "bitwarden self hosted"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
