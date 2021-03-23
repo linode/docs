@@ -198,7 +198,7 @@ ModSecurity is a firewall and therefore requires rules to function. This section
         sudo cp /opt/ModSecurity/unicode.mapping /etc/nginx/modsec
         sudo cp /opt/ModSecurity/modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf
 
-1. Remove the `.recommended` extension from the ModSecurity configuration file name with the following command:
+1. Remove the `.recommended` extension from the ModSecurity configuration filename with the following command:
 
         sudo cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 

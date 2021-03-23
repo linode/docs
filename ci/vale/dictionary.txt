@@ -766,6 +766,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+libmodsecurity
 livigno
 lbmethod
 lda
@@ -1605,6 +1606,7 @@ unencrypted
 unexported
 unformatted
 unicast
+unicode
 uninvoiced
 uniq
 unmanaged
