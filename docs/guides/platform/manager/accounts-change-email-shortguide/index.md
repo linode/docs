@@ -17,18 +17,25 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/accounts-change-email-shortguide/']
 ---
 
-Use the *My Profile* page to modify the email address associated with your user account. The email address saved on this webpage receives IP whitelist warnings, password reset messages, and support tickets for services that you have permission to access. You may also receive invoices and receipts, if the primary account holder grants you access to that information.
+Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
 
-Here's how to change your email address on the *My Profile* webpage:
+{{< note >}}
+Only full account access users can receive threshold notification emails.
+{{</ note >}}
 
-1.  Select the **My Profile** link by clicking on your username at the top of the page.
+Here's how to change a user's email from the **Users & Grants** page:
 
-    ![Select 'My Profile' in the Linode Cloud Manager](accounts-select-my-profile.png "Select 'My Profile' in the Linode Cloud Manager")
-
-1.  In the **Display** tab, enter your email address in the **Email** field.
+1.  Click the **Account** link in the sidebar.
+1.  Click the **Users & Grants** tab.
+1.  Click the **User Profile** link for the desired user.
+1.  Enter the updated email address in the **Email** field.
 
     ![Modify the email address associated with your user account](accounts-my-profile-change-email.png "Modify the email address associated with your user account")
 
 1.  Click **Save**.
 
-Your profile's email account will be updated.
+The user's email address is now updated.
+
+{{< note >}}
+If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of the Cloud Manager screen and selecting **Display**.
+{{</ note >}}

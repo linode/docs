@@ -42,36 +42,25 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 
 | **Field** | **Description** |
 |-----------|-----------------|
+| **The name of the admin user for NextCloud** | The administrator username for nextcloud. This will be used to log in to the application. *Required*. |
+| **The password for NextCloud's admin user** | The administrator password. This will be used to log in to the application. *Required*. |
 | **MySQL database root password** | The root user's password for the Nextcloud database. *Required*. |
 | **MySQL user password** | Your new MySQL user's password. *Required*. |
 
 #### Advanced Options
-##### LAMP Stack Options
 | **Field** | **Description** |
 |-----------|-----------------|
-| **MySQL database username** | The name of a new MySQL user to create. If no value is provided, the user is named `nextcloud`. *Required*. |
-| **MySQL database name** | The name to assign to the Nextcloud instance's MySQL database. If no value is provided, the database is named `nextcloud`. *Required*. |
-
-##### Linode Server Security Options
-
-| **Field** | **Description** |
-|-----------|-----------------|
-| **Linode limited sudo username** | The username for a new limited user account with sudo privileges. *Advanced Configuration*. |
-| **Linode limited user password** | The password for the new limited user account. *Advanced Configuration*. |
-| **SSH Public Key** | A public key belonging to the user that accesses the Linode. If you do not have an authentication key-pair see the [Securing Your Server](/docs/security/securing-your-server/#create-an-authentication-key-pair) guide for steps on creating one. *Advanced Configuration*. |
-| **Enable passwordless sudo** | Enable passwordless sudo access for the limited user account. *Advanced Configuration*. |
-| **Disable root access** | Disable root user access for the Linode server. *Advanced Configuration*. |
-
-##### Domain Options
-
-| **Field** | **Description** |
-|-----------|-----------------|
-| **Linode API v4 token** | The [Linode API v4](https://developers.linode.com/api/v4) token is required to create a domain name system (DNS) record for the Nextcloud instance. See the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to learn how to generate an API token. *Advanced Configuration*. |
-| **Linode hostname** | The hostname to assign to the Linode server. If no value is provided, the hostname is set as `nextcloud`. *Advanced Configuration*. |
-| **Domain name** | The domain name to use when creating a DNS record for the Linode. The Marketplace app creates a subdomain named `nextcloud`. You can access the Nextcloud instance using the `nextcloud` subdomain; for example, `www.nextcloud.example.com`. *Advanced Configuration*. |
-| **Admin email address** | The email address to use for the Nextcloud instance's admin user. *Advanced Configuration*. |
-| **Enable SSL** |  Enable a free [HTTPS CertBot SSL certificate](https://certbot.eff.org/) on the Nextcloud domain. If you do not provide a value, `no` is set by default.  *Advanced Configuration*. |
-| **Timezone** | The timezone to use for the Linode server. If you do not provide a value, the Linode data center's timezone is used. Refer to [TZ database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for possible timezone values. *Advanced Configuration*. |
+| **The name of the MySQL database** | The name to assign to the Nextcloud instance's MySQL database. If no value is provided, the database is named `nextcloud`. *Required*.|
+| **The name of the MySQL user to create** | The name of a new MySQL user to create. If no value is provided, the user is named `nextcloud`. *Required*.|
+| **The limited sudo user to be created for the Linode** | The username for a new limited user account with sudo privileges. |
+| **The password for the limited sudo user** | The password for the new limited user account. |
+| **The SSH Public Key that will be used to access the Linode** | A public key belonging to the user that accesses the Linode. If you do not have an authentication key-pair see the [Securing Your Server](/docs/security/securing-your-server/#create-an-authentication-key-pair) guide for steps on creating one. |
+| **Disable root access over SSH** | Disable root user access for the Linode server. |
+| **Your Linode API token** | The [Linode API v4](https://developers.linode.com/api/v4) token is required to create a domain name system (DNS) record for the Nextcloud instance. See the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to learn how to generate an API token. |
+| **The domain for the Linode's DNS record (Requires API token)** | The hostname to assign to the Linode server. If no value is provided, the hostname is set as `nextcloud`.|
+| **The subdomain for the Linode's DNS record (Requires API token)** | The domain name to use when creating a DNS record for the Linode. The Marketplace app creates a subdomain named `nextcloud`. You can access the Nextcloud instance using the `nextcloud` subdomain; for example, `www.nextcloud.example.com`. |
+| **Admin email for the NextCLoud server** | The email address to use for the Nextcloud instance's admin user. |
+| **Would you like to use a free Let's Encrypt SSL certificate? (Requires domain)** |  Enable a free [HTTPS CertBot SSL certificate](https://certbot.eff.org/) on the Nextcloud domain. If you do not provide a value, `no` is set by default. |
 
 ### Linode Options
 
@@ -95,17 +84,13 @@ Your Nextcloud app completes installation anywhere **between 5-7 minutes** after
 ## Getting Started after Deployment
 ### Log Into Your Nextcloud Instance
 
-1. Open a browser window and navigate to the Nextcloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, the domain is the public IP address of the Linode appended with a forward slash and "nextcloud. For example, `192.168.17.43/nextcloud/`.
+1. Open a browser window and navigate to the NextCloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, the domain is the public IP address of the Linode appended with a forward slash and "nextcloud. For example, `192.168.17.43/nextcloud/`.
 
-1. Create a Nextcloud admin account by providing values in the presented form.
+1. Enter the administrator username and password set during initial app creation in the presented form.
 
       ![Create a Nextcloud admin account.](nextcloud-admin.png)
 
-1. In the **Storage & database** section, provide the MySQL database values that you used in the [Nextcloud Options](#nextcloud-options) section.
-
-      ![Provide your MySQL database values](nextcloud-database.png)
-
-1. Click the **Finish setup** button to complete the configuration. The set up takes a couple of minutes to complete. The Nextcloud Hub page appears where you can upload files to the Nextcloud server.
+1. Once you have successfully logged in, the Nextcloud Hub page appears where you can upload files to the Nextcloud server.
 
       ![Nextcloud Hub](welcome-nextcloud.png)
 

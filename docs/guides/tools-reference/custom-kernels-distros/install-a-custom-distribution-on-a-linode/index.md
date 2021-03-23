@@ -47,9 +47,11 @@ In this section you install your custom distro onto a raw disk, with the *direct
 
 1.  After the Linode is finished provisioning, power it down.
 
-1.  Click the **Resize** tab and uncheck the **Auto Resize Disk** option at the bottom of the screen.
+1.  Click the **More Options Ellipsis**, and select the **Resize** option.
 
-1.  Next, click the **Disks/Configs** tab and resize the main disk so you have some room for new disks; you want to free 2100 MB for the Debian 9 disk we used in this example.
+1. In the Resize menu uncheck the **Auto Resize Disk** option at the bottom of the screen.
+
+1.  Next, exit the resize screen and click the **Storage** tab and **Resize** the main disk so you have some room for new disks; you want to free 2100 MB for the disk we used in this example.
 
     {{< note >}}
 Depending on the distribution you install first, you may need to resize your disk to a size slightly larger than 2100 MB. You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.

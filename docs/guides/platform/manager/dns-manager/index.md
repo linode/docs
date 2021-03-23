@@ -86,9 +86,11 @@ The term *domain zone* becomes synonymous with the term *domain*, both in terms 
 
 1.  If you have a zone that can be exported from a server or another hosting provider, click **Import a Zone** to import it.
 
-1.  Click **Add a Domain** to create a new domain zone.
+1.  Click **Create a Domain** to create a new domain zone.
 
-1.  Click on the **more options ellipsis** to corresponding to a domain zone to edit DNS records within a zone, clone an existing zone, or remove a zone.
+1. Click on the **Edit** button next to a domain zone to edit DNS records within a zone.
+
+1.  Click on the **more options ellipsis** to corresponding to clone an existing zone, or remove a zone.
 
 ### Add a Domain
 
@@ -178,7 +180,7 @@ Here's how to clone DNS records for an existing domain:
 
 1.  Click **Create**. The DNS records will then be copied from the existing domain to the domain.
 
-### Remove Domains
+### Delete Domains
 
 {{< content "dns-manager-remove-domains-shortguide" >}}
 
