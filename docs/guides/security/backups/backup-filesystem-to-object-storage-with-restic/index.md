@@ -243,7 +243,7 @@ Pass the selected ID to the restore command instead of `latest`. Replace `be80fb
 
     sudo /bin/bash -c "source /root/restic_params; restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore be80fb7c -t /root"
 
-The above commands restore all files taken in the backup. Usually, you'll only want a single file or directory. 
+The above commands restore all files taken in the backup. Usually, you'll only want a single file or directory.
 
 To restore a single file, pass the file path using the `-i` option, along with either `latest` or the snapshot ID:
 
