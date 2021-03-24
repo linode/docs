@@ -592,6 +592,8 @@ host2
 hostname
 hostnames
 hotlink
+hotlinked
+hotlinking
 hotspots
 howto
 howtoforge
