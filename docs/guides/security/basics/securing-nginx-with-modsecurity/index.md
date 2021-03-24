@@ -13,7 +13,7 @@ modified_by:
 published: 2021-03-04
 title: Securing Nginx With ModSecurity
 h1_title: Securing Nginx With ModSecurity
-aliases: ['/security/basics/securing-nginx-with-modsecurity/']
+aliases: ['security/basics/securing-nginx-with-modsecurity/']
 ---
 
 ## What is ModSecurity?
