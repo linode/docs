@@ -13,7 +13,7 @@ modified_by:
 published: 2021-03-04
 title: Securing Apache2 With ModSecurity
 h1_title: Securing Apache2 With ModSecurity
-aliases: ['/security/basics/securing-apache2-with-modsecurity/']
+aliases: ['security/basics/securing-apache2-with-modsecurity/']
 ---
 
 ## What is ModSecurity?
