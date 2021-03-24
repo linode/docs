@@ -13,7 +13,7 @@ modified_by:
 published: 2021-03-04
 title: How to Secure Your LAMP Stack
 h1_title: Securing Your LAMP Stack
-aliases: ['/security/basics/securing-your-lamp-stack/']
+aliases: ['security/basics/securing-your-lamp-stack/']
 ---
 
 ## What is a LAMP Stack?
