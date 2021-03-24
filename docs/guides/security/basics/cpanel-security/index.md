@@ -13,7 +13,7 @@ modified_by:
 published: 2021-03-23
 title: cPanel Security
 h1_title: cPanel Security
-aliases: ['/guides/security/basics/securing-cpanel/']
+aliases: ['security/basics/securing-cpanel/']
 ---
 
 ## What is cPanel?
