@@ -14,6 +14,7 @@ published: 2021-03-04
 title: Securing Nginx With ModSecurity
 h1_title: Securing Nginx With ModSecurity
 aliases: ['security/basics/securing-nginx-with-modsecurity/']
+image: Securing_Nginx_With_ModSecurity.png
 ---
 
 ## What is ModSecurity?
@@ -171,7 +172,7 @@ To set up the OWASP-CRS, follow the procedures outlined below.
 
         sudo rm -rf /usr/share/modsecurity-crs
 
-1.  Clone the OWASP-CRS github repository into the `/usr/share/modsecurity-crs` directory:
+1.  Clone the OWASP-CRS GitHub repository into the `/usr/share/modsecurity-crs` directory:
 
         sudo git clone https://github.com/coreruleset/coreruleset /usr/local/modsecurity-crs
 
@@ -193,7 +194,7 @@ ModSecurity is a firewall and therefore requires rules to function. This section
 
         sudo mkdir -p /etc/nginx/modsec
 
-1.  Copy over the unicode mapping file and the ModSecurity configuration file from your cloned ModSecurity Github repository:
+1.  Copy over the unicode mapping file and the ModSecurity configuration file from your cloned ModSecurity GitHub repository:
 
         sudo cp /opt/ModSecurity/unicode.mapping /etc/nginx/modsec
         sudo cp /opt/ModSecurity/modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf
