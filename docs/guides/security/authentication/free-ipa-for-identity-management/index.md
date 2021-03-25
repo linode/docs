@@ -3,7 +3,8 @@ slug: freeipa-for-identity-management
 author:
   name: Linode
   email: docs@linode.com
-description: 'Set up a centralized identity and authentication management server with FreeIPA'
+description: 'Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management.'
+og_description: 'Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management.'
 keywords: ["freeipa","identity management", "authentication","security"]
 aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
 tags: ["ssh","security"]
@@ -17,11 +18,12 @@ external_resources:
 published: 2020-03-30
 modified_by:
   name: Linode
+image: Setting_Up_FreeIPA.png
 ---
 
 ## What is FreeIPA
 
-FreeIPA is a free and open source identity management system,it is the upstream open-source project for Red Hat Identity Management.
+FreeIPA is a free and open source identity management system, it is the upstream open-source project for Red Hat Identity Management.
 
 FreeIPA is the Linux version or implementation of Active Directory, which features the following:
 
@@ -170,7 +172,7 @@ The kerberos admin server will be freely accessible via it's domain in a web bro
 
   ![freeipa server home.](freeipa-server-home.png "freeipa server home.")
 
-Once logged in, you will have access to many of the tools and utilities available to freeipa from the command line directly on a more user friendly web interface.
+Once logged in, you will have access to many of the tools and utilities available to FreeIPA from the command line directly on a more user friendly web interface.
 
 {{< note >}}
 The steps in this guide rely on a self-signed SSL certificate, and users may see an error message in their web browser claiming that the SSL certificate is not valid. While the self-signed certificate will not be recognized by any certificate authority, it will still provide TLS/SSL encryption. Due to this, the error message can be ignored.
