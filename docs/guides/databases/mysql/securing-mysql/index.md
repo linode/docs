@@ -1,24 +1,25 @@
 ---
 slug: how-to-secure-mysql-server
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Secure the MySQL server, and audit the MySQL security.'
+  name: Hackersploit
+description: 'Secure a MySQL server by using the secure installer, modifying the root user, and adding new users. Finally, this guide will show you how to audit MySQL security.'
+og_description: 'Secure a MySQL server by using the secure installer, modifying the root user, and adding new users. Finally, this guide will show you how to audit MySQL security.'
 keywords: ["mysql", "security", "audit", "root", "database", "privilege"]
 aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-and-audit-mysql-server/']
 tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'How to Secure MySQL Server'
-h1_title: 'How to Secure MySQL Server'
+h1_title: 'Securing MySQL Server'
 contributor:
   name: Hackersploit
 modified_by:
   name: linode
 published: 2021-03-12
+image: Securing_MySQL.png
 ---
 
 ## MySQL
-MySQL is an open-source relational database management system. The name is a combination of "My", the name of co-founder Michael Widenius's daughter, and "SQL", the abbreviation for Structured Query Language.
+MySQL is an open-source relational database management system. This guide will show you how to secure and audit a MySQL server. The name is a combination of "My", the name of co-founder Michael Widenius's daughter, and "SQL", the abbreviation for Structured Query Language.
 
 ## Before You Begin
 
@@ -41,7 +42,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1. In order to secure and audit  MySQL, you need to have a Linux server with the `MySQL Server` services running. For information about installing MySQL please see [Install MySQL ](/docs/guides/install-mysql-on-ubuntu-14-04)
 
-    {{< note >}}The instructions in this guide are based the steps on Ubuntu 18.04, all the steps are distribution agnostic with the exception of package names and package managers.{{< /note >}}
+    {{< note >}}The instructions in this guide are based on Ubuntu 18.04, though all the steps are distribution agnostic with the exception of package names and package managers.{{< /note >}}
 
 ## Using The Secure MySQL Installer
 
@@ -59,9 +60,9 @@ Begin the security process by running this utility immediately after installing 
 
 1. Invoke the utility by running the following command:
 
-      sudo mysql_secure_installation
+        sudo mysql_secure_installation
 
-1. The setup process begins and the utility prompts you to specify whether you want to enable the validate password plugin that is used to test passwords and improve security, it is recommended to enable this feature.
+1. The setup process begins and the utility prompts you to specify whether you want to enable the validate password plugin that is used to test passwords and improve security. It is recommended to enable this feature.
 {{< output >}}
 Securing the MySQL server deployment.
 
@@ -106,7 +107,7 @@ environment.
 Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
 {{< /output >}}
 
-1. Disable root login remotely, this is an extremely important security configuration as it prevents attackers from remotely authenticating to the mysql server as root or performing password brute-force attacks. Remote authentication can also be disabled completely, we will take a look at how to do that in the next section.
+1. Disable root login remotely, this is an extremely important security configuration as it prevents attackers from remotely authenticating to the MySQL server as root or performing password brute-force attacks. Remote authentication can also be disabled completely, we will take a look at how to do that in the next section.
 {{< output >}}
 Normally, root should only be allowed to connect from
 'localhost'. This ensures that someone cannot guess at
@@ -144,26 +145,27 @@ By default, MySQL server comes predefined with a `superuser/admin` account that 
 
 The first step in securing the “root” user is to change the username from `root` to something more unyielding, the objective is to make the root username as hard to guess or to brute-force for attackers. After which, it is also recommended to change the `root` account password regularly as a good practice.
 
-1. Login to the mysql server with the following command:
+1. Login to the MySQL server with the following command:
 
-      sudo mysql -u root
+        sudo mysql -u root
 
 
 1. Change the “root” account username by running the following query:
 
-      rename user ‘root’@’localhost' to ‘<new-username’@’localhost’;
+        rename user ‘root’@’localhost' to ‘<new-username’@’localhost’;
 
-1. Change the `root` account password to something strong and hard to guess, it is recommended to use a password generator, if you enabled the verify password plugin during the secure installation process, you need to provide a password that meets the policy requirements in terms of strength.
+1. Change the `root` account password to something strong and hard to guess, it is recommended to use a password generator. If you enabled the verify password plugin during the secure installation process, you need to provide a password that meets the policy requirements in terms of strength.
 
-      ALTER USER ‘example_username’@’localhost’ IDENTIFIED BY ‘<new-password>’;
+        ALTER USER ‘example_username’@’localhost’ IDENTIFIED BY ‘<new-password>’;
 
-1. Reload the privilege table to ensure that all changes are saved and activated, by running the following command:
-      flush privileges;
+1. Reload the privilege table to ensure that all changes are saved and activated by running the following command:
+
+        flush privileges;
 
 1. To confirm whether the `root` username and password are changed, run the following query:
 
-      use mysql;
-      select user,host,authentication_string from mysql.user;
+        use mysql;
+        select user,host,authentication_string from mysql.user;
 
   This displays the user tables stored under the mysql database and should reflect the changes made.
   {{< output >}}
@@ -182,31 +184,31 @@ The first step in securing the “root” user is to change the username from `r
 
 ## Creating A New User
 
-A good security practice is the concept of segregation by duties or role, this means that for every database or application that uses the database, create a new user that has CRUD permissions for that particular database.
-
-This ensures that at any time, only one user has access to one database at a time and users cannot access other databases.
+A good security practice is the concept of segregation by duties or role. This means that for every database or application that uses the database, create a new user that has CRUD permissions for that particular database. This ensures that at any time, only one user has access to one database at a time and users cannot access other databases.
 
 1. Create a `Test` database, by running the following query within MYSQL:
 
-      create database Test;
+        create database Test;
+
 1. Create the user responsible for managing this Test database:
 
-      CREATE USER '<username>'@'localhost' IDENTIFIED BY '<password>';
-1. Assign the appropriate CRUD permissions to the user for the Test database:
+        CREATE USER '<username>'@'localhost' IDENTIFIED BY '<password>';
 
-      GRANT SELECT,UPDATE,DELETE ON Test.* TO '<username>'@'localhost';
+1. Assign the appropriate CRUD permissions to the user for the `Test` database:
+
+        GRANT SELECT,UPDATE,DELETE ON Test.* TO '<username>'@'localhost';
 
 
-1. It is important to note that these privileges are applicable only to the Test database, if you are creating a user for an application such as `phpMyAdmin`, you need to provide the user with `root` permissions.
+1. It is important to note that these privileges are applicable only to the `Test` database, if you are creating a user for an application such as `phpMyAdmin`, you need to provide the user with `root` permissions.
 
 1. If you decide to delete a particular user, run the following query:
 
-      drop user ’<username>’@'localhost';
+        drop user ’<username>’@'localhost';
 
 
 1. Reload the privilege table to ensure the changes made are applied and activated by running the following query:
 
-      flush privileges;
+        flush privileges;
 
 
 ## Custom MySQL Configuration
@@ -219,8 +221,9 @@ You can now setup a secure custom configuration for MySQL that provides addition
 
     ![Custom Security Configuration](custom_security_configuration.png)
 
-1. After adding the custom configurations, you need to restart the mysql service to ensure all changes are applied.
-    systemctl restart mysql
+1. After adding the custom configurations, you need to restart the `mysql` service to ensure all changes are applied.
+
+        systemctl restart mysql
 
 ## Auditing MySQL Security
 
@@ -228,18 +231,20 @@ You can now audit the security of the MySQL server by using a tool called MySAT.
 MySAT is a simple SQL script, it is easy to understand and easy to maintain. MySAT results are output in HTML format.
 
 1. Clone the MySAT Github repository, by running the following command:
-      git clone https://github.com/meob/MySAT.git
+
+        git clone https://github.com/meob/MySAT.git
 
 
-1. After cloning the directory, navigate into the MySAT directory, where the mysat.sql file is located and it is used in conjunction with the MySQL server to output the results into a `MySAT.htm` file.
+1. After cloning the directory, navigate into the MySAT directory, where the `mysat.sql` file is located and it is used in conjunction with the MySQL server to output the results into a `MySAT.htm` file.
 
 1. Audit the security by running the following command:
-      mysql --user=<root-user> -p<password> --skip-column-names -f < mysat.sql > MySAT.htm
 
-1. As indicated, MySAT requires root access to MySQL to run the required tests, after running the command, the MySAT.htm file is generated, copy the MySAT.htm file and the `mysat.css` file to the apache server so that you can analyze the results of the audit.
+        mysql --user=<root-user> -p<password> --skip-column-names -f < mysat.sql > MySAT.htm
+
+1. As indicated, MySAT requires root access to MySQL to run the required tests, after running the command, the MySAT.htm file is generated, copy the MySAT.htm file and the `mysat.css` file to an Apache or NGINX server, or download them locally with `scp`, so that you can analyze the results of the audit.
 
       ![MySAT.htm](mysat_htm.png)
 
-1. The results are formatted in a simple to read and understand format, where configurations are checked and results are color coded based on their current configuration and how it affects the security of the mysql server, for example a failed configuration check is color coded in orange and a passed check is color coded in green.
+1. The results are formatted in a simple to read and understand format, where configurations are checked and results are color coded based on their current configuration and how it affects the security of the mysql server. For example, a failed configuration check is color coded in orange and a passed check is color coded in green.
 
 1. The audit report reveals what configurations need to be changed or modified and presents you with a top level picture of the overall security of the MySQL server.
