@@ -14,6 +14,7 @@ published: 2021-03-04
 title: How to Secure Your LAMP Stack
 h1_title: Securing Your LAMP Stack
 aliases: ['security/basics/securing-your-lamp-stack/']
+image: Securing_LAMP_Stack.png
 ---
 
 ## What is a LAMP Stack?
@@ -723,7 +724,7 @@ A good security practice is segregation by duties or role. This means that for e
 
 This ensures that at any time, only one user has access to one database at a time and users cannot access other databases.
 
-1.  First, log into the mysql server with your new `root` account username and password:
+1.  First, log into the MySQL server with your new `root` account username and password:
 
         sudo mysql -u <new-username> -p
 
@@ -802,7 +803,7 @@ MySAT is a simple SQL script, so it is easy to understand and maintain. MySAT re
 
 ## Security Auditing with Lynis
 
-## Installing Lynis
+### Installing Lynis
 
 Lynis is an extensible security audit tool for computer systems running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other Unix derivatives. It assists system administrators and security professionals with scanning a system and its defenses, with the final goal being system hardening.
 
@@ -852,7 +853,7 @@ Before scanning, ensure that Lynis is up to date. To check if the latest version
 
 {{< /output >}}
 
-## System Auditing With Lynis
+### System Auditing With Lynis
 
 To perform a system audit with Lynis, run the following command:
 
@@ -906,7 +907,7 @@ After following the suggestions and making the necessary changes, run the system
 
 Once all the changes are made, you can expect to see a significant improvement in the hardening index score that confirms the changes and configurations we've applied are effective.
 
-## Pentest With Lynis
+### Pentest With Lynis
 
 Lynis also has the ability to simulate a privileged/internal pentest on the system, this can be invoked by using the following command:
 
