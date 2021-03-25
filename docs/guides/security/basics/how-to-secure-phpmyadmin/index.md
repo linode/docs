@@ -2,7 +2,7 @@
 slug: how-to-secure-phpmyadmin
 author:
   name: Hackersploit
-description: 'A concise guide to securing phpMyAdmin.'
+description: 'A concise guide to securing phpMyAdmin. Learn how to change aliases, set up password based authentication, restrict access to specific IP addresses, and more.'
 og_description: 'A concise guide to securing phpMyAdmin.'
 keywords: ["apache security", "apache best practices security", "secure phpMyAdmin config", "phpMyAdmin security"]
 tags: ["security","web server","apache"]
@@ -13,12 +13,13 @@ modified_by:
 published: 2021-03-04
 title: How to Secure phpMyAdmin
 h1_title: How to Secure phpMyAdmin
-aliases: ['/security/basics/how-to-secure-phpmyadmin']
+aliases: ['/security/basics/how-to-secure-phpmyadmin/']
+image: Securing_phpMyAdmin.png
 ---
 
 ## What is phpMyAdmin?
 
-**phpMyAdmin** is a free, open source and cross platform PHP based web application that offers a simple, powerful and convenient browser based GUI for interacting and working with MySQL databases
+**phpMyAdmin** is a free, open source, and cross platform PHP-based web application that offers a simple, powerful and convenient browser based GUI for interacting and working with MySQL databases.
 It makes the process of creating, modifying and configuring MySQL databases simpler and much more efficient.
 
 ## Why Secure phpMyAdmin?
@@ -109,11 +110,11 @@ It is additionally recommended that root logins are disabled.
 
   ![phpMyAdmin password](phpMyAdmin-password.png)
 
-1. After installing phpMyAdmin you will need to enable the PHP mbstring module, this can be done by running the following command in the terminal:
+1. After installing phpMyAdmin you will need to enable the PHP `mbstring` module, this can be done by running the following command in the terminal:
 
         sudo phpenmod mbstring
 
-1.  After enabling the mbstring module, you will need to restart the apache2 service, to restart the service, run the following command in the terminal:
+1.  After enabling the `mbstring` module, you will need to restart the apache2 service. To restart the service, run the following command in the terminal:
 
         sudo systemctl restart apache2
 
@@ -187,7 +188,7 @@ The Alias will now be used as the directory used to access the phpMyAdmin home p
 
 As an added layer of security, you can also leverage the apache2 authentication functionality to integrate a username and password authentication form that will be configured to provide an additional layer of protection over the phpMyAdmin directory/URL.
 
-1. First, add the `AllowOverride` option under the directory configuration in the phpMyAdmin apache2 configuration file found in `/etc/phpmyadmin/apache.conf`. This will allow you to override any apache2 configurations that are specified in the .htaccess file. Your apache.conf file should reflect the following:
+1. First, add the `AllowOverride` option under the directory configuration in the phpMyAdmin apache2 configuration file found in `/etc/phpmyadmin/apache.conf`. This will allow you to override any apache2 configurations that are specified in the .htaccess file. Your `apache.conf` file should reflect the following:
 
     {{< file "/etc/phpmyadmin/apache.conf" aconf >}}
 
@@ -210,7 +211,7 @@ AuthUserFile /etc/phpmyadmin/.htpasswd
 Require valid-user
 {{< /file >}}
 
-1. After creating the configuration, you now need to create the user and password for the authentication form. As specified in the `/usr/share/phpmyadmin/.htaccess` file, the .htaccess file that contains the credentials will be stored under `/etc/phpmyadmin/.htpasswd`. To create the user and password, the htpasswd utility can be used as follows, replacing `<user>` with the username of your choice:
+1. After creating the configuration, you now need to create the user and password for the authentication form. As specified in the `/usr/share/phpmyadmin/.htaccess` file, the .htaccess file that contains the credentials will be stored under `/etc/phpmyadmin/.htpasswd`. To create the user and password, the `htpasswd` utility can be used as follows, replacing `<user>` with the username of your choice:
 
        sudo htpasswd -c /etc/phpmyadmin/.htpasswd <user>
 
@@ -277,7 +278,7 @@ You can also add specific PHP configurations to make phpMyAdmin much more secure
 
 1. To add our custom PHP options, you will need to modify the `/etc/phpmyadmin/config.inc.php` file. Within the file, you will need to create a section for a custom configuration which contains the below:
 
-    {{< file "/etc/phpmyadmin/config.inc.php" aconf >}}
+    {{< file "/etc/phpmyadmin/config.inc.php" php >}}
 /* Custom Security Configuration */
 
 $cfg['LoginCookieValidity'] = 14400;
@@ -292,28 +293,3 @@ $cfg['RestrictPaths'] = yes;
 1. After adding the configurations, restart apache2 to apply the changes:
 
         sudo systemctl reload apache2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
