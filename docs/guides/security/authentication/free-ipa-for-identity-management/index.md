@@ -1,8 +1,7 @@
 ---
 slug: freeipa-for-identity-management
 author:
-  name: Linode
-  email: docs@linode.com
+  name: Hackersploit
 description: 'Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management.'
 og_description: 'Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management.'
 keywords: ["freeipa","identity management", "authentication","security"]
@@ -10,8 +9,6 @@ aliases: ['/security/authentication/free-ipa-for-identity-management/','/securit
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'Setting up a FreeIPA Server and Client for Identity and Authentication Management'
-contributor:
-  name: Linode
 external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
