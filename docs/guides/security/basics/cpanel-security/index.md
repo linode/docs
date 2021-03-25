@@ -14,6 +14,7 @@ published: 2021-03-23
 title: cPanel Security
 h1_title: cPanel Security
 aliases: ['security/basics/securing-cpanel/']
+image: cPanel_Security.png
 ---
 
 ## What is cPanel?
