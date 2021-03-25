@@ -11,9 +11,10 @@ modified: 2021-03-04
 modified_by:
   name: Linode
 published: 2021-03-04
-title: Securing Apache2 With ModSecurity
+title: How to Secure Apache2 With ModSecurity
 h1_title: Securing Apache2 With ModSecurity
 aliases: ['security/basics/securing-apache2-with-modsecurity/']
+image: Securing_Apache2_With_ModSecurity.png
 ---
 
 ## What is ModSecurity?
@@ -91,7 +92,7 @@ To set up the OWASP-CRS, follow the procedures outlined below.
 
         sudo apt install git
 
-1.  Clone the OWASP-CRS github repository into the `/usr/share/modsecurity-crs` directory:
+1.  Clone the OWASP-CRS GitHub repository into the `/usr/share/modsecurity-crs` directory:
 
         sudo git clone https://github.com/coreruleset/coreruleset /usr/share/modsecurity-crs
 
