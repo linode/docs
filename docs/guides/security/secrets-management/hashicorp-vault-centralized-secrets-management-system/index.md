@@ -1,5 +1,7 @@
 ---
 slug: how-to-setup-and-use-a-vault-server
+author:
+  name: Hackersploit
 description: 'Vault is an open source, centralized secrets management system. It provides a secure, and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.'
 og_description: 'Vault is an open source, centralized secrets management system. It provides a secure, and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.'
 keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
@@ -7,20 +9,23 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
   name: Linode
-title: "How to set up and use a Vault Server"
-h1_title: "Setting up and using a Vault server"
+title: "How to Set Up and Use a Vault Server"
+h1_title: "Setting Up and Using a Vault Server"
 tags: ["ubuntu", "security", "vault", "secrets", "password", "API keys", "authetication", "tokens"]
-external_resources: https://www.vaultproject.io/docs
+image: Hashicorp_Vault_Fundamentals.png
+external_resources:
+  - '[Vault Documentation](https://www.vaultproject.io/docs)'
 ---
 
-[HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure, and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.
+[HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.
 
-The objective of Vault is to manage and protect secrets in a dynamic infrastructure. From a dynamic application standpoint, Vault provides dynamic secrets and implements access control lists where passwords are dynamic and are constantly changing in the event of a leak, but who has access to these passwords is set up and protected by the ACLs.
+The objective of Vault is to manage and protect secrets in a dynamic infrastructure. From a dynamic application standpoint, Vault provides dynamic secrets and implements access control lists (ACLs) where passwords are dynamic and are constantly changing in the event of a leak. Who has access to these passwords is set up and protected by the ACLs.
 
-This guide covers the fundamentals of using vault and the process of setting up a Vault server and client.
+This guide covers the fundamentals of using Vault and the process of setting up a Vault server and client.
 
 ## What is a secret?
-A secret is a credential or key that allows you to gain access to a particular resource or to a system, for example; a password, API key, access token, database passwords.
+
+A secret is a credential or key that allows you to gain access to a particular resource or to a system, for example: a password, API key, access token, or database passwords.
 
 ## Before You Begin
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. Ensure that the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
@@ -42,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Installing Vault
 
-1. Download the Vault binary for the Linux operating system on the Linode server. You can find the latest version of the binary at: https://www.vaultproject.io/downloads
+1. Download the Vault binary for the Linux operating system on the Linode server. You can find the latest version of the binary at the [Vault Project downloads page](https://www.vaultproject.io/downloads).
 
         sudo wget https://releases.hashicorp.com/vault/1.7.0-rc1/vault_1.7.0-rc1_linux_amd64.zip
 
@@ -54,7 +59,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo mv vault /usr/local/bin
 
-1. In the extracted directory there is a single vault binary that can be used without a setup or installation process. Executed the binary by running the following commands:
+1. In the extracted directory there is a single vault binary that can be used without a setup or installation process. Execute the binary by running the following commands:
 
         cd /usr/local/bin
         ./vault
@@ -63,15 +68,15 @@ You can now launch the Vault from any directory or user on the system.
 
 ## Starting the “dev” Server
 
-To learn the functionality and syntax for using Vault, you need to set up a server, you can use the inbuilt dev server that is not designed to be production ready but used for learning the essentials and testing various pieces of functionality.
+To learn the functionality and syntax for using Vault, you need to set up a server. You can use the inbuilt dev server that is not designed to be production ready but used for learning the essentials and testing various pieces of functionality.
 
-{{< note >}} The dev server runs in the foreground, as a result, you need to open a new terminal session to run the consequent commands.{{< /note >}}
+{{< note >}} The dev server runs in the foreground. As a result, you need to open a new terminal session to run the consequent commands.{{< /note >}}
 
 1. Start the Vault dev server by running the following command:
 
         vault server -dev
 
-    By default, the development server stores all backend storage in memory making it a temporary solution, therefore, any secrets that you create and store are lost once you stop the server.
+    By default, the development server stores all backend storage in memory making it a temporary solution. Therefore, any secrets that you create and store are lost once you stop the server.
     An output similar to the following appears:
 {{< output >}}
 ==> Vault server configuration:
@@ -112,7 +117,7 @@ Development mode should NOT be used in production installations!
 
     {{< note >}} The Unseal Key and Root Token values are displayed, these values are used to seal and unseal the vault and to authenticate with the vault. Ensure that you save these values for later use.{{< /note >}}
 
-1. Add the Vault address and the token as an environment variables in a new terminal, this ensures that vault can connect to the vault server automatically without having to specify the address each time.
+1. Add the Vault address and the token as an environment variables in a new terminal, this ensures that Vault can connect to the vault server automatically without having to specify the address each time.
 
         export VAULT_ADDR='http://127.0.0.1:8200'
         export VAULT_DEV_ROOT_TOKEN_ID=s.SHYYqfhBQm8vIcwjuXJcJ0yk
@@ -148,7 +153,7 @@ Now that the dev server is up and running, take a look at how to read and write 
 
         vault kv put secret/ssh alexis=password
 
-    The command writes the key/value pair alexis=password In the path secret/ssh. Use the secret path because it is the predefined path on the dev server.
+    The command writes the key/value pair `alexis=password` In the path secret/ssh. Use the secret path because it is the predefined path on the dev server.
 
 1. To retrieve secrets run the following command:
 
@@ -181,7 +186,7 @@ Success! Data deleted (if it existed) at: secret/ssh
 Now that you have a grasp of how to create, retrieve and delete secrets, you can take a look at secrets engines.
 
 ## Secrets Engines
-A secrets engine defines what type of secret can be stored in a path, for instance, Vault has more various secrets engines that can be used for storing various types of secrets such as key/value secrets, database credentials, and SSH keys.
+A secrets engine defines what type of secret can be stored in a path. For instance, Vault has more various secrets engines that can be used for storing various types of secrets such as key/value secrets, database credentials, and SSH keys.
 In the case of the dev server, the secret engine configured for the secret path was of key/value type, which means that path could only store secrets that were in key/value format.
 
 1. To enable your own secrets engine with your own path, each path is isolated from other parts:
@@ -210,19 +215,19 @@ sys/               system       system_357b7655       system endpoints used for 
 
         vault kv put database-creds/dev alexis=password!
 
-    This creates a path under database-creds/dev where the key/value secret alexis=password! Is stored.
+    This creates a path under database-creds/dev where the key/value secret `alexis=password!` is stored.
     {{< output >}}
 Success! Data written to: database-creds/dev
 {{< /output >}}
 
-Up to this point, you have been interacting with the dev server, which automatically unseals Vault and sets up in-memory storage.
-Now that you know the basics of Vault, you can take a look at how to deploy a Vault server into a real environment.
+Up to this point, you have been interacting with the dev server which automatically unseals Vault and sets up in-memory storage. Now that you know the basics of Vault, you can take a look at how to deploy a Vault server into a real environment.
 
-Before you start the deployment of a Vault server, ensure that you have terminated the dev server process, you can do this by using the keyboard combination CTRL+C. Also unset the `VAULT_TOKEN` environment variable using the command ```unset VAULT_TOKEN```.
+Before you start the deployment of a Vault server, ensure that you have terminated the dev server process. You can do this by using the keyboard combination CTRL+C. Also unset the `VAULT_TOKEN` environment variable using the command ```unset VAULT_TOKEN```.
 
 ## Deploying A Vault Server
 
 To set up your own Vault server, you need to begin by setting up a configuration file that specifies what storage backend the server uses and what the API address among other options.
+
 1. Create a new config file:
 
         sudo nano config.hcl
@@ -235,7 +240,7 @@ storage "raft" {
 }
 
 listener "tcp" {
-  address     = "172.104.207.115:8200"
+  address     = "<LinodeIPaddress>:8200"
   tls_disable = "true"
 }
 
@@ -246,13 +251,13 @@ cluster_addr = "https://127.0.0.1:8201"
 ui = true
 {{< /file >}}
   Where:
-    - `disable_mlock` - By default, Vault uses mlock() to lock its process memory pages, preventing them from being swapped to disk. You should always strive to have it enabled (it is enabled by default) as described in production hardening when operating Vault in production. However, this option is not supported on certain platforms like macOS or Windows, so for this to be a most portable and useful example, it disables mlock().
+    - `disable_mlock` - By default, Vault uses `mlock()` to lock its process memory pages, preventing them from being swapped to disk. You should always strive to have it enabled (it is enabled by default) as described in production hardening when operating Vault in production. However, this option is not supported on certain platforms like macOS or Windows, so for this to be a most portable and useful example, it disables `mlock()`.
 
     - `ui` - By default, the Vault web UI is not enabled; this example enables it.
 
     - `storage` - This is the physical backend that Vault uses for storage. Up to this point the dev server has used "inmem" (in memory), but the example above uses integrated storage (raft), a much more production-ready backend.
 
-    - `listener` - One or more listeners determine how Vault listens for API requests. The example above listens on localhost port 8200 without TLS. In your environment set VAULT_ADDR=http://127.0.0.1:8200 so the Vault client will connect without TLS.
+    - `listener` - One or more listeners determine how Vault listens for API requests. The example above listens on localhost port 8200 without TLS. In your environment set `VAULT_ADDR=http://127.0.0.1:8200` so the Vault client will connect without TLS.
 
     - `api_addr` - Specifies the address to advertise to route client requests.
 
@@ -277,7 +282,7 @@ ui = true
 
           vault operator unseal
 
-    You need to specify 3 of the 5 unseal keys generated during the initialization process to unseal the vault, after which, you can authenticate with the vault.
+    You need to specify 3 of the 5 unseal keys generated during the initialization process to unseal the vault, after which you can authenticate with the vault.
 
     After entering 3 of the 5 unseal keys, the sealed value should be set to false.
     {{< output >}}
@@ -323,13 +328,14 @@ You can also create a new path and specify the secrets engine to use.
 
 
 ## Configuring Vault Client
-A Vault client requires the vault binary and authentication credentials, in this case, you  have created custom credentials for your client, however, the account does not have the required permissions to access any secrets.
+A Vault client requires the vault binary and authentication credentials. In this case, you have created custom credentials for your client, however the account does not have the required permissions to access any secrets.
 
 
 Access in Vault is set up and managed by access policies that are configured to work like access control lists.
 
-1. Modify the default policy to allow any users assigned to this policy permissions to access a particular path. in the UI go to **Policies** and click *default*
-{{< file "default.hcl">}}
+1. Modify the default policy to allow any users assigned to this policy permissions to access a particular path. in the UI go to **Policies** and click *default*.
+
+    {{< file "default.hcl">}}
 path"alexis-passwords/*"{
     capabilities = ["create","update","read"]
 }
@@ -373,6 +379,6 @@ Cluster ID      97f970c7-f4ef-71e2-1c7c-db97223296b3
 HA Enabled      false
 {{< /output >}}
 
-After authentication, your credentials are saved on the home directory of the user you are logged in as, you can now access the paths and functionality that was assigned in the default policy.
+After authentication, your credentials are saved on the home directory of the user you are logged in as. You can now access the paths and functionality that was assigned in the default policy.
 
 
