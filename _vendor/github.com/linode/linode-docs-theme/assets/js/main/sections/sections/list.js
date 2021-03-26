@@ -107,7 +107,7 @@ export function newSectionsController(searchConfig) {
 			let last = parts[parts.length - 1];
 			let indexName = parts[0];
 			this.key = parts.join(' > ');
-			let sectionConfig = searchConfig.sections.find((s) => s.name === indexName);
+			let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === indexName);
 			if (!sectionConfig) {
 				throw `no search config found for section ${indexName}`;
 			}

@@ -8,7 +8,7 @@ var debug = 0 ? console.log.bind(console, '[filters]') : function() {};
 
 export function newSearchFiltersController(searchConfig, opts) {
 	var dispatcher = newDispatcher();
-	const queryHandler = new QueryHandler(searchConfig.sections);
+	const queryHandler = new QueryHandler(searchConfig.sectionsSorted);
 
 	// The query object received (e.g. from the query string) and
 	// passed to the search engine.

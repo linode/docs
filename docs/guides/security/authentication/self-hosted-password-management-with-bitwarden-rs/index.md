@@ -4,7 +4,7 @@ author:
   name: Tyler Langlois
 description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
 og_description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
-keywords: ['security', 'web application', 'password', 'bitwarden']
+keywords: ["bitwarden self hosted", "free self hosted password manager", "self hosted password manager open source"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
@@ -15,7 +15,7 @@ tags: ["ubuntu", "security", "web applications", "docker"]
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-tags: ["ubuntu", "security", "web applications", "docker"]
+aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/"]
 ---
 
 [Bitwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. The [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) project provides a lightweight, single-process, API-compatible service ideal for running personal instances. By running the bitwarden_rs service, you can use Bitwarden browser extensions and mobile applications backed by your server.
@@ -221,7 +221,7 @@ As an additional security precaution, you may elect to disable user registration
 
 1. Start a new bitwarden container, but with the `SIGNUPS_ALLOWED` environment variable set to `false`.
 
-        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -e SIGNUPS_ALLOWED=false -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
+        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -e SIGNUPS_ALLOWED=false -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:latest
 
 1. If you attempt to create a new account after these changes, the following error appears on the account creation page.
 

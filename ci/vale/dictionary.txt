@@ -263,6 +263,7 @@ cutover
 cyberduck
 cyg
 cygwin
+cyclomatic
 cz
 daemonization
 daemonize
@@ -473,6 +474,7 @@ fragging
 frakti
 framesets
 freedns
+freeipa
 freshclam
 friendster
 frontend
@@ -590,6 +592,9 @@ host1
 host2
 hostname
 hostnames
+hotlink
+hotlinked
+hotlinking
 hotspots
 howto
 howtoforge
@@ -650,6 +655,7 @@ impor
 incentivized
 inet
 inet6
+infographic
 ingressgateway
 ini
 initializer
@@ -669,7 +675,9 @@ iotop
 ip
 ip4
 ip6
-ip6tables
+ip6table
+ipa
+ipaserver
 ipchains
 ipset
 ipsets
@@ -764,6 +772,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+libmodsecurity
 livigno
 lbmethod
 lda
@@ -1101,6 +1110,7 @@ parameterizing
 paramiko
 parallelization
 params
+parasoft
 paravirt
 paravirtualization
 paravirtualized
@@ -1602,6 +1612,7 @@ unencrypted
 unexported
 unformatted
 unicast
+unicode
 uninvoiced
 uniq
 unmanaged

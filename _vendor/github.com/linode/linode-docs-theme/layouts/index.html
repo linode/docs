@@ -39,7 +39,7 @@
     
     {{/* The top level products carousel */}}
     <section class="mb-8">
-      {{ template "home/products/carousel" (dict "section" "products" "title" "Product Docs") }}
+      {{ template "home/products/carousel" (dict "section" "products" "title" "Product Guides") }}
     </section>
     
     {{/* Developer tiles. */}}
@@ -285,7 +285,7 @@ class="carousel__item--height bg-gradient-to-l from-backgroundcolor absolute rig
       </div>
       <h3 x-html="item.linkTitle" class="text-center text-md md:text-lg mb-2 pt-3" style="letter-spacing: -0.2px;"></h3>
       <template x-if="item.count">
-        <span x-html="item.count + ' Docs'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
+        <span x-html="item.count + ' Guides'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
       </template>
     </div>
   </a>

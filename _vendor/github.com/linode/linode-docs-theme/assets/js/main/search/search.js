@@ -106,7 +106,7 @@ export function newSearchController(searchConfig) {
 
 	const dispatcher = newDispatcher();
 	const router = newCreateHref(searchConfig);
-	const queryHandler = new QueryHandler(searchConfig.sections);
+	const queryHandler = new QueryHandler(searchConfig.sectionsSorted);
 
 	// Normalization of a search hit across the search indices.
 	const normalizeHit = function(self) {
@@ -164,7 +164,7 @@ export function newSearchController(searchConfig) {
 	// Prepares the data structure to store the search results in.
 	const newSearchResults = function(self, blank) {
 		let sections = [];
-		for (let sectionCfg of searchConfig.sections) {
+		for (let sectionCfg of searchConfig.sectionsSorted) {
 			let searchData = {
 				name: sectionCfg.name,
 				// The main result.
@@ -180,22 +180,13 @@ export function newSearchController(searchConfig) {
 				return this.filtering_facets ? this.filtering_facets.map((facet) => facet.name) : [];
 			};
 
-			sectionCfg.titlePlural = function(count = 1) {
-				// TODO: Pull this out into the config.
-				let title = "";
-				if (this.name === 'marketplace') {
-					title = 'Marketplace App';
-				}
-				if (this.name === 'products') {
-					title = 'Product Guide';
-				} else {
-					title = this.title;
-				}
+			sectionCfg.nounPlural = function(count = 2) {
+				let noun = this.noun || this.title;
 
-				if (count === 0 || count > 1 && !title.endsWith('s')) {
-					title += 's';
+				if (count === 0 || count > 1 && !noun.endsWith('s')) {
+					noun += 's';
 				}
-				return title;
+				return noun;
 			};
 
 			searchData.setResult = function(result) {
@@ -881,7 +872,7 @@ export function newSearchController(searchConfig) {
 
 			if (needsBlankResult && this.searchState.blankSearch.shouldLoad()) {
 				let requests = [];
-				for (let section of searchConfig.sections) {
+				for (let section of searchConfig.sectionsSorted) {
 					requests.push(createSectionRequest(section, true));
 				}
 
