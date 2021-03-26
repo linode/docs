@@ -106,7 +106,7 @@ export function newSearchController(searchConfig) {
 
 	const dispatcher = newDispatcher();
 	const router = newCreateHref(searchConfig);
-	const queryHandler = new QueryHandler(searchConfig.sections);
+	const queryHandler = new QueryHandler(searchConfig.sectionsSorted);
 
 	// Normalization of a search hit across the search indices.
 	const normalizeHit = function(self) {
@@ -164,7 +164,7 @@ export function newSearchController(searchConfig) {
 	// Prepares the data structure to store the search results in.
 	const newSearchResults = function(self, blank) {
 		let sections = [];
-		for (let sectionCfg of searchConfig.sections) {
+		for (let sectionCfg of searchConfig.sectionsSorted) {
 			let searchData = {
 				name: sectionCfg.name,
 				// The main result.
@@ -180,20 +180,18 @@ export function newSearchController(searchConfig) {
 				return this.filtering_facets ? this.filtering_facets.map((facet) => facet.name) : [];
 			};
 
-			sectionCfg.titlePlural = function() {
-				// TODO: Pull this out into the config.
-				if (this.name === 'marketplace') {
-					return 'Marketplace Articles';
+			sectionCfg.nounPlural = function(count = 2) {
+				let noun = this.noun || this.title;
+
+				if (count === 0 || count > 1 && !noun.endsWith('s')) {
+					noun += 's';
 				}
-				let title = this.title;
-				if (!title.endsWith('s')) {
-					title += 's';
-				}
-				return title;
+				return noun;
 			};
 
 			searchData.setResult = function(result) {
-				let q = queryHandler.queryToQueryForSection(self.searchState.query, sectionCfg.name);
+				let q = queryHandler.queryToQueryForSection(self.query(), sectionCfg.name);
+				q._view = 'search';
 				let queryString = queryHandler.queryToQueryString(q);
 				this.href = `/docs/search/?${queryString}`;
 
@@ -287,7 +285,7 @@ export function newSearchController(searchConfig) {
 				if (this.disabledPermanent) {
 					return false;
 				}
-				return self.searchState.query.isSectionEnabled(section.config.name);
+				return self.query().isSectionEnabled(section.config.name);
 			};
 
 			section.getFacet = function(name) {
@@ -618,16 +616,22 @@ export function newSearchController(searchConfig) {
 
 			this.searchState = newSearchState(this);
 			this.publish = !standaloneSearch;
-			this.standaloneSearch = standaloneSearch;
 
-			if (this.publish) {
-				this.$watch('show', () => {
-					sendEvent('nav:toggle', { what: 'search-panel', open: this.show });
-				});
+			if (standaloneSearch) {
+				let query = queryHandler.queryFromLocation();
+				debug('standalone', query);
+				this.standaloneSearch = { query: query };
+				return function() {
+					this.search();
+				};
 			}
 
 			// Load metadata from /docs/data/sections/index.json
 			this.searchState.metaSearch.hugoData.loadIfNotLoaded('init');
+
+			this.$watch('show', () => {
+				sendEvent('nav:toggle', { what: 'search-panel', open: this.show });
+			});
 
 			return function() {
 				dispatcher.searchReady();
@@ -641,12 +645,15 @@ export function newSearchController(searchConfig) {
 		},
 
 		onTurbolinksBeforeRender: function(data) {
-			if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
-				// Turbolinks is displaying a preview
-				return;
-			}
 			debug('onTurbolinksBeforeRender', data);
 			this.show = false;
+		},
+
+		query: function() {
+			if (this.standaloneSearch) {
+				return this.standaloneSearch.query;
+			}
+			return this.searchState.query;
 		},
 
 		search: async function(arg) {
@@ -656,8 +663,9 @@ export function newSearchController(searchConfig) {
 			var regularSearch = false;
 			var executeSearch = this.standaloneSearch || opts.executeSearch;
 			var event = opts.event;
+			this.show = isTopResultsPage();
 
-			if (opts.query) {
+			if (!this.standaloneSearch && opts.query) {
 				// A Query object, a regular user search.
 
 				regularSearch = true;
@@ -674,6 +682,7 @@ export function newSearchController(searchConfig) {
 			}
 
 			// Make sure that the Hugo hosted static data is loaded before we do any searches.
+			// TODO(bep) receive this in the constructor.
 			await this.searchState.metaSearch.hugoData.loadIfNotLoaded('search');
 
 			if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK) {
@@ -704,7 +713,6 @@ export function newSearchController(searchConfig) {
 			}
 
 			this.searchState.searchOpts = opts;
-			this.show = isTopResultsPage();
 			var needsBlankResult = event === dispatcher.events.EVENT_SEARCHRESULT_BLANK || !this.standaloneSearch;
 
 			if (opts.requests) {
@@ -771,7 +779,7 @@ export function newSearchController(searchConfig) {
 				});
 			}
 
-			var filtersPerSection = queryHandler.filtersPerSection(this.searchState.query);
+			var filtersPerSection = queryHandler.filtersPerSection(this.query());
 			var applySectionFilters = function(opts) {
 				let sectionConfig = opts.sectionConfig;
 				let requests = opts.requests;
@@ -780,12 +788,9 @@ export function newSearchController(searchConfig) {
 				requests.forEach((req) => {
 					req.facetFilters = facetFilters;
 					if (!req.params) {
-						req.params = `query=${encodeURIComponent(self.searchState.query.q)}&hitsPerPage=100`;
+						req.params = `query=${encodeURIComponent(self.query().q)}&hitsPerPage=100`;
 					} else if (req.params.includes('query=&')) {
-						req.params = req.params.replace(
-							'query=&',
-							`query=${encodeURIComponent(self.searchState.query.q)}&`
-						);
+						req.params = req.params.replace('query=&', `query=${encodeURIComponent(self.query().q)}&`);
 					}
 				});
 			};
@@ -803,7 +808,7 @@ export function newSearchController(searchConfig) {
 						? 1000
 						: sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
 				}
-				let q = isBlank ? '' : encodeURIComponent(self.searchState.query.q);
+				let q = isBlank ? '' : encodeURIComponent(self.query().q);
 				let filters = sectionConfig.filters || '';
 				let facetFilters = isBlank ? [] : filtersPerSection.get(sectionConfig.name) || [];
 
@@ -841,8 +846,8 @@ export function newSearchController(searchConfig) {
 				});
 			});
 
-			let loadMainSearch = false;
-			if (this.searchState.mainSearch.shouldLoad()) {
+			let loadMainSearch = this.standaloneSearch;
+			if (!loadMainSearch && this.searchState.mainSearch.shouldLoad()) {
 				// namedSearches contains the category listing searches. If
 				// we come in from a bookmarked URL we need to make sure that we
 				// also load the main search to get the correct highlighting in the
@@ -867,7 +872,7 @@ export function newSearchController(searchConfig) {
 
 			if (needsBlankResult && this.searchState.blankSearch.shouldLoad()) {
 				let requests = [];
-				for (let section of searchConfig.sections) {
+				for (let section of searchConfig.sectionsSorted) {
 					requests.push(createSectionRequest(section, true));
 				}
 
@@ -895,7 +900,7 @@ export function newSearchController(searchConfig) {
 						indexName: node.section.config.indexName(),
 						filters: filters,
 						facetFilters: facetFilters.concat(facetFilters, sectionFilter),
-						params: `query=${encodeURIComponent(this.searchState.query.q)}&hitsPerPage=${maxLeafNodes}`
+						params: `query=${encodeURIComponent(this.query().q)}&hitsPerPage=${maxLeafNodes}`
 					};
 
 					searcher.add({ requests: [ request ] }, (results) => {
@@ -907,8 +912,10 @@ export function newSearchController(searchConfig) {
 				}
 			}
 			searcher.execute(() => {
-				debug('publish', event, self.searchState);
-				self.searchState.publish();
+				if (self.publish) {
+					debug('publish', event, self.searchState);
+					self.searchState.publish();
+				}
 				self.show = self.show || self.standaloneSearch;
 			});
 		},

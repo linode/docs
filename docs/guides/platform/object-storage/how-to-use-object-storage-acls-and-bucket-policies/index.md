@@ -379,7 +379,7 @@ If you wanted to deny all access to a resource and whitelist by IP address, you 
     "Resource": "arn:aws:s3:::bucket-policy-example/*",
     "Condition": {
       "NotIpAddress": {
-        "aws:SourceIp": "172.104.2.4"
+        "aws:SourceIp": "192.0.2.0"
       }
     }
   }]
@@ -439,7 +439,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
     "Resource": "arn:aws:s3:::bucket-policy-example/*",
     "Condition": {
       "NotIpAddress": {
-        "aws:SourceIp": "172.104.2.4"
+        "aws:SourceIp": "192.0.2.0"
       }
     }
   }]
