@@ -13,15 +13,14 @@ Cloud Firewall is now in beta, sign up through the [Linode Green Light program](
 
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
-1. From the **Firewalls** listing page, click on the **Add a Firewall** link.
+1. From the **Firewalls** listing page, click on the **Create a Firewall** button.
 
 1. The **Add a Firewall** drawer appears with the Firewall configurations needed to add a Firewall. Configure your Firewall with at minimum the required fields:
 
     | **Configuration** | **Description** |
     | :---------------: | :---------------: |
     | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
-    | **Rules** | The Firewall rule(s) to add to this Firewall. Choose from a list of predefined Inbound and Outbound Firewall rules that support common networking use cases. You can select more than one Firewall rule. You can [edit your selected rules](/docs/products/networking/cloud-firewall/guides/edit-rules/) after adding the Firewall, if needed. *Required*|
-    | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account is visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
+    | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all eligible Linodes on your account is visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
 1. Click on the **Create** button. This creates the Cloud Firewall and it appears on the **Firewalls** listing page.
 
@@ -41,7 +40,7 @@ Cloud Firewall is now in beta, sign up through the [Linode Green Light program](
 You can assign the Firewall to more than one Linode service at a time. Continue the previous step to assign the Firewall to another Linode service.
     {{</ note >}}
 
-1. Click on the **Add** button to assign the Firewall to your Linode(s).
+1. Click on the **Create** button to assign the Firewall to your Linode(s).
 
 {{< note >}}
 If you have a Cloud Firewall attached to a Linode and you attempt to [migrate the Linode to a data center](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/) that does not support Cloud Firewalls, the migration fails.

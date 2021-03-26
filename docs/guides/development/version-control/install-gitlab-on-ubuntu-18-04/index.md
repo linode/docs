@@ -28,15 +28,15 @@ aliases: ['/development/version-control/install-gitlab-on-ubuntu-18-04/']
 
 GitLab is a complete solution for all aspects of your software development life-cycle. At its core, GitLab serves as your centralized Git repository. It also features built-in tools that represent every task in your development workflow, from planning to testing to releasing. You can host your own GitLab instance on a Linode, instead of using third-party hosting. Self-hosting your software development with GitLab offers total control of your codebase while providing an easy to use interface for team members. GitLab is the most popular self-hosted Git repository, so you'll benefit from a robust set of integrated tools and an active community.
 
-This guide will walk you through the steps to install GitLab on an 8GB Linode running Ubuntu 18.04. This installation can support up to 100 users.
+This guide will walk you through the steps to install GitLab on an 8GB Linode running Ubuntu 18.04. This installation can support up to 500 users for general use.
 
 ## System Requirements
 
 Before installing GitLab you should consider how many users will collaborate on your self-hosted instance, the size of the repositories you will store, and the recommended minimum system requirements. This criteria will will effect the needed storage, CPU, and memory. This guide will use an **8GB Linode plan** to fulfill GitLab's minimum system requirements. The suggested hardware is as follows:
 
 - **Storage** The required storage depends on the size of the repositories you will store in GitLab. You should plan to have *at least* as much free space as all the repositories combined require.
-- **CPU:** 2 cores is the recommended number and supports up to 500 users. While you can use 1 CPU core to support 100 users, the application may run slower because all workers and background jobs will run on the same core.
-- **Memory:** 8 GB to support up to 100 users.
+- **CPU:** 4 cores is the recommended number and supports up to 500 users. While you can use 1 CPU core to support 100 users, the application may run slower because all workers and background jobs will run on the same core.
+- **Memory:** 8 GB to support up to 500 users.
 
 ## Before You Begin
 

@@ -21,7 +21,7 @@ aliases: ['/platform/cloud-firewall/add-a-cloud-firewall-shortguide/']
 
     ![Access the Firewalls listing page.](access-firewalls-listing.png "Access the Firewalls listing page.")
 
-1. From the **Firewalls** listing page, click on the **Add a Firewall** link.
+1. From the **Firewalls** listing page, click on the **Create a Firewall** link.
 
     ![Click on the Add a Firewall link.](add-a-firewall.png "Click on the Add a Firewall link.")
 
