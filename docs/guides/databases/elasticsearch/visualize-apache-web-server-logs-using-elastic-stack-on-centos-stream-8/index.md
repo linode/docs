@@ -101,7 +101,7 @@ type=rpm-md
 {{< /file >}}
 
     {{< note >}}
-This repository configuration file does not enable the repository by default when using `yum` commands in order to avoid potential package conflicts with default packages. Subsequent commands in this guide will use the `yum` flag `--enablerepo=elastic-7.x` whenever a package from this repository must be installed.
+This repository configuration file does not enable the repository by default when using `yum` commands in order to avoid potential package conflicts with default packages. Subsequent commands in this guide use the `yum` flag `--enablerepo=elastic-7.x` whenever a package from this repository must be installed.
 {{< /note >}}
 
 ### Install Elasticsearch
