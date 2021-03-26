@@ -474,6 +474,7 @@ fragging
 frakti
 framesets
 freedns
+freeipa
 freshclam
 friendster
 frontend
@@ -591,6 +592,9 @@ host1
 host2
 hostname
 hostnames
+hotlink
+hotlinked
+hotlinking
 hotspots
 howto
 howtoforge
@@ -671,7 +675,9 @@ iotop
 ip
 ip4
 ip6
-ip6tables
+ip6table
+ipa
+ipaserver
 ipchains
 ipset
 ipsets
@@ -766,6 +772,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+libmodsecurity
 livigno
 lbmethod
 lda
@@ -1605,6 +1612,7 @@ unencrypted
 unexported
 unformatted
 unicast
+unicode
 uninvoiced
 uniq
 unmanaged

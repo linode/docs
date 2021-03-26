@@ -10,7 +10,9 @@ published: 2019-04-01
 modified: 2019-04-01
 modified_by:
   name: Linode
-title: "Deploy a Minecraft Server with Marketplace Apps"
+title: "How to Deploy a Minecraft Server with Marketplace Apps"
+h1_title: "Deploying a Minecraft Server with Marketplace Apps"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -77,7 +79,7 @@ After providing the app specific options, provide configurations for your Linode
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by Minecraft Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
+| **Select an Image** | Debian 10 is currently the only image supported by Minecraft Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your MineCraft App should be sized based on the amount of traffic you expect to see on your server. We recommend 2GB of RAM for every 15 players maximum on your server. For example, If you are expecting a small group of players (between 1-15), you should be okay with a 2GB Linode. Up to 30 players, a 4GB Linode, and so on. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
