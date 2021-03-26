@@ -3,8 +3,8 @@ slug: create-a-self-signed-tls-certificate-centos-8
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL.'
-og_description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL.'
+description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL on CentOS 8.'
+og_description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL on CentOS 8.'
 keywords: ["centos tls certificate", "centos ssl certificate", "centos self certified"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-centos-8/']
