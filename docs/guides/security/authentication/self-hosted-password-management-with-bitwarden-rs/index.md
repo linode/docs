@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "How to Self-Host the bitwarden_rs Password Manager"
 h1_title: "Self-Hosting the bitwarden_rs Password Manager"
+enable_h1: true
 tags: ["ubuntu", "security", "web applications", "docker"]
 contributor:
   name: Tyler Langlois
