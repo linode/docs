@@ -1,7 +1,7 @@
 ---
-slug: visualize-apache-web-server-logs-using-elastic-stack-on-ubuntu-18.04
+slug: visualize-apache-web-server-logs-using-elastic-stack-on-ubuntu-18-04
 author:
-  name: Linode
+  name: Tyler Langlois
   email: docs@linode.com
 contributor:
   name: Tyler Langlois
@@ -10,55 +10,76 @@ description: 'This guide will demonstrate how to use Elasticsearch, Logstash, an
 og_description: 'The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
-keywords: ["apache", "ubuntu 18.04", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
+keywords: ["apache ubuntu 18.04", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-10-10
-modified: 2020-10-10
+published: 2021-03-05
+modified: 2021-03-05
 modified_by:
   name: Linode
-title: 'Visualize Apache Web Server Logs Using the Elastic Stack on Ubuntu 18.04'
+title: 'How to Visualize Apache Web Server Logs Using the Elastic Stack on Ubuntu 18.04'
+h1_title: 'Visualizing Apache Web Server Logs Using the Elastic Stack on Ubuntu 18.04'
 dedicated_cpu_link: true
-tags: ["ubuntu","analytics","database","monitoring"]
+tags: ["ubuntu","analytics","database","monitoring","apache"]
+relations:
+    platform:
+        key: visualize-apache-logs-using-elastic-stack
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
-
-## What is the Elastic Stack?
-
-The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time.
-
-This guide will explain how to install all three components and use them to explore Apache web server logs in Kibana, the browser-based component that visualizes data.
-
-This guide will walk through the installation and set up of version 7 of the Elastic stack, which is the latest at time of this writing.
+The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Version 7.11 of the Elastic stack is used in this guide, which is the latest at the time of this writing.
 {{< /note >}}
 
-{{< note >}}
-Due to the resources required to run the multiple services on a single Linode in this guide, we recommend using at least a 2G (or `g6-standard-1`) sized Linode instance.
-{{< /note >}}
+## In this Guide
+
+This guide shows how to:
+
+- [Install Elasticsearch, Logstash, and Kibana](#install-the-elastic-stack).
+
+- [Configure Elasticsearch](#configure-elasticsearch) to run with one shard and no replicas, which is appropriate for testing on a single Linode.
+
+- [Configure Logstash](#configure-logstash) to process logs from the Apache web server.
+
+- [Connect Kibana](#configure-kibana) to the Logstash index.
+
+- [View the logs](#view-logs-in-kibana) from your connected Logstash index in Kibana.
+
+- [Search the logs](#search-logs-in-kibana) in Kibana.
+
+- [Visualize the logs](#visualize-logs-in-kibana) in a pie chart, categorized by HTTP response code, in Kibana.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+    {{< note >}}
+Multiple services are run on a single Linode in this guide. We recommend using at least a 2G (or `g6-standard-1`) sized Linode instance to support these services.
+{{< /note >}}
 
-3.  Follow the steps in our [Apache Web Server on Ubuntu 18.04](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) guide to set up and configure Apache on your server.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
-4.  Update your system:
+    {{< note >}}
+Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
+
+1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Install Java
+1.  Follow the steps in our [Apache Web Server on Ubuntu 18.04](/docs/web-servers/apache/apache-web-server-ubuntu-18-04/) guide to set up and configure Apache on your server.
 
-The Elasticsearch package is bundled with its own version of a Java runtime, but Logstash requires Java to be present on the system.
-
-1.  Install the default version of Java available on Ubuntu 18.04:
+1.  The Elasticsearch package is bundled with its own version of a Java runtime, but Logstash requires Java to be present on the system. Install the default version of Java available on Ubuntu 18.04:
 
         sudo apt-get install default-jre-headless
 
-## Install Elastic APT Repository
+## Install the Elastic Stack
+
+Before configuring and loading log data, install each piece of the stack, individually.
+
+### Install the Elastic APT Repository
 
 The Elastic package repositories contain all of the necessary packages for this tutorial, so install it first before proceeding with the individual services.
 
@@ -66,81 +87,87 @@ The Elastic package repositories contain all of the necessary packages for this 
 
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 
-2.  Add the APT repository information to your server's list of sources:
+1.  Add the APT repository information to your server's list of sources:
 
         echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 
-3.  Refresh the list of available packages:
+1.  Refresh the list of available packages:
 
         sudo apt-get update
 
-## Install Elastic Stack
-
-Before configuring and loading log data, install each piece of the stack, individually.
-
-### Elasticsearch
+### Install Elasticsearch
 
 1.  Install the `elasticsearch` package:
 
-         sudo apt-get install elasticsearch
+        sudo apt-get install elasticsearch
 
-2.  Set the JVM heap size to approximately one-quarter of your server's available memory. For example, on a Linode instance with 2GB of memory, ensure that the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file are set to the following, and leave the other values in this file unchanged.
+1.  Set the JVM heap size to approximately one-quarter of your server's available memory. For example, on a Linode instance with 2GB of memory, ensure that the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file are set to the following, and leave the other values in this file unchanged.
 
     {{< file "/etc/elasticsearch/jvm.options" aconf >}}
 -Xms512m
 -Xmx512m
-
 {{< /file >}}
 
+    {{< note >}}
+By default, these options are commented out and have the following values. So, you need to uncomment the lines as well (by removing the two `#` symbols at the beginning of the line):
 
-3.  Start and enable the `elasticsearch` service:
+```
+## -Xms4g
+## -Xmx4g
+```
+{{< /note >}}
+
+
+1.  Start and enable the `elasticsearch` service:
 
          sudo systemctl enable elasticsearch
          sudo systemctl start elasticsearch
 
-3.  Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:
+1.  Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:
 
          curl localhost:9200
 
     Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the `systemctl status elasticsearch` command to see the most recent logs. The Elasticsearch REST API should return a JSON response similar to the following:
 
-         {
-           "name" : "tutorial",
-           "cluster_name" : "elasticsearch",
-           "cluster_uuid" : "A3Cs-l1_QdqekfHW1fiboQ",
-           "version" : {
-             "number" : "7.9.2",
-             "build_flavor" : "default",
-             "build_type" : "deb",
-             "build_hash" : "d34da0ea4a966c4e49417f2da2f244e3e97b4e6e",
-             "build_date" : "2020-09-23T00:45:33.626720Z",
-             "build_snapshot" : false,
-             "lucene_version" : "8.6.2",
-             "minimum_wire_compatibility_version" : "6.8.0",
-             "minimum_index_compatibility_version" : "6.0.0-beta1"
-           },
-           "tagline" : "You Know, for Search"
-         }
+    {{< output >}}
+{
+  "name" : "localhost",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "tTuwONK4QMW918XkF9VecQ",
+  "version" : {
+    "number" : "7.11.1",
+    "build_flavor" : "default",
+    "build_type" : "deb",
+    "build_hash" : "ff17057114c2199c9c1bbecc727003a907c0db7a",
+    "build_date" : "2021-02-15T13:44:09.394032Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.7.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+{{< /output >}}
 
-### Logstash
+### Install Logstash
 
 Install the `logstash` package:
 
      sudo apt-get install logstash
 
-### Kibana
+### Install Kibana
 
 Install the `kibana` package:
 
      sudo apt-get install kibana
 
-## Configure Elastic Stack
+## Configure the Elastic Stack
 
-### Elasticsearch
+### Configure Elasticsearch
 
-By default, Elasticsearch will create five shards and one replica for every index that's created. When deploying to production, these are reasonable settings to use. In this tutorial, only one server is used in the Elasticsearch setup, so multiple shards and replicas are unnecessary. Changing these defaults can avoid unnecessary overhead.
+By default, Elasticsearch creates five shards and one replica for every index that's created. When deploying to production, these are reasonable settings to use. In this tutorial, only one server is used in the Elasticsearch setup. Multiple shards and replicas are unnecessary. Changing these defaults can avoid unnecessary overhead.
 
-1.  Create a temporary JSON file with an *index template* that instructs Elasticsearch to set the number of shards to one and number of replicas to zero for all matching index names (in this case, a wildcard `*`):
+1.  Create a temporary JSON file in your user's home folder with an *index template*. This template instructs Elasticsearch to set the number of shards to one and the number of replicas to zero for all matching index names (in this case, a wildcard `*`):
 
     {{< file "template.json" json >}}
 {
@@ -158,27 +185,37 @@ By default, Elasticsearch will create five shards and one replica for every inde
 {{< /file >}}
 
 
-2.  Use `curl` to create an index template with these settings that'll be applied to all indices created hereafter:
+1.  Use `curl` to create an index template with these settings that is applied to all indices created hereafter:
 
         curl -XPUT -H'Content-type: application/json' http://localhost:9200/_index_template/defaults -d @template.json
 
-3.  Elasticsearch should return:
+    Elasticsearch should return:
 
-        {"acknowledged":true}
+    {{< output >}}
+{"acknowledged":true}
+{{< /output >}}
 
-### Logstash
+### Configure Logstash
 
-In order to collect Apache access logs, Logstash must be configured to watch any necessary files and then process them, eventually sending them to Elasticsearch. This configuration file assumes that a site has been set up according to the previously mentioned [Apache Web Server on Ubuntu 18.04](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) guide to find the correct log path.
+In order to collect Apache access logs, Logstash must be configured to watch any necessary files and then process them, eventually sending them to Elasticsearch.
 
 1.  Set the JVM heap size to approximately one quarter of your server's available memory. For example, if your server has 2GB of RAM, change the `Xms` and `Xmx` values in the `/etc/logstash/jvm.options` file to the following, and leave the other values in this file unchanged:
 
     {{< file "/etc/logstash/jvm.options" aconf >}}
 -Xms512m
 -Xmx512m
-
 {{< /file >}}
 
-2.  Create the following Logstash configuration:
+    {{< note >}}
+These options have the following values by default:
+
+```
+## -Xms1g
+## -Xmx1g
+```
+{{< /note >}}
+
+1.  Create the following Logstash configuration:
 
     {{< file "/etc/logstash/conf.d/apache.conf" aconf >}}
 input {
@@ -197,150 +234,156 @@ filter {
 output {
   elasticsearch { }
 }
-
 {{< /file >}}
 
+    {{< note >}}
+This example configuration assumes that your website logs are stored in the `/var/www/*/logs/access.log` file path.
 
-3.  Start and enable `logstash`:
+If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/web-servers/apache/apache-web-server-ubuntu-18-04/#configure-apache-for-virtual-hosting) section of the [Apache Web Server on Ubuntu 18.04](/docs/web-servers/apache/apache-web-server-ubuntu-18-04/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
+{{< /note >}}
+
+1.  Start and enable `logstash`:
 
         sudo systemctl enable logstash
         sudo systemctl start logstash
 
-### Kibana
-
+### Configure Kibana
 
 1.  Enable and start the Kibana service:
 
         sudo systemctl enable kibana
         sudo systemctl start kibana
 
-2.  In order for Kibana to find log entries to configure an *index pattern*, logs must first be sent to Elasticsearch. With the three daemons started, log files should be collected with Logstash and stored in Elasticsearch. To generate logs, issue several requests to Apache:
+1.  In order for Kibana to find log entries, logs must first be sent to Elasticsearch. With the three daemons started, log files should be collected with Logstash and stored in Elasticsearch. To generate logs, issue several requests to Apache:
 
         for i in `seq 1 5` ; do curl localhost ; sleep 0.2 ; done
 
-3.  By default Kibana will bind to the a local address `127.0.0.1` which only permits connections that originate from localhost. This is recommended in order to avoid exposing the dashboard to the public internet, but in order to access Kibana's web interface in a browser, the `ssh` command can forward the port. Run the following command in a local terminal (on your local computer, not your Linode) and leave the command running for the duration of the tutorial. Press `Ctrl-C` to end the port forward at the conclusion of this tutorial.
+1.  By default, Kibana binds to the local address `127.0.0.1`. This only permits connections that originate from localhost. This is recommended in order to avoid exposing the dashboard to the public internet. However, in order to access Kibana's web interface in a browser, the `ssh` command can forward the port to your workstation.
+
+    Run the following command in a local terminal (on your local computer, not your Linode). Leave the command running for the duration of the tutorial. Press `Ctrl-C` to end the port forward at the conclusion of this tutorial.
 
         ssh -N -L 5601:localhost:5601 <your Linode's IP address>
 
-4.  Next, open Kibana in your browser at [http://localhost:5601](http://localhost:5601). The landing page should look similar to the following. Click on "Explore on my own" to begin configuring Kibana.
+1.  Next, open Kibana in your browser at [http://localhost:5601](http://localhost:5601). The landing page should look similar to the following. Click on **Explore on my own** to begin configuring Kibana.
 
-    ![Kibana 7 Initial](elastic-stack-ubuntu-18.04-kibana-initial.png "Kibana 7 Initial")
+    ![Kibana 7 Initial](kibana-welcome-dialog.png "Kibana 7 Initial")
 
     {{< note >}}
-The first time that Kibana starts, the daemon will perform several optimization steps that may delay startup time. If the web page is not available immediately, wait a few minutes or check the logs with the command `sudo journalctl -u kibana`.
+The first time that Kibana starts, the daemon performs several optimization steps that may delay startup time. If the web page is not available immediately, wait a few minutes or check the logs with the command `sudo journalctl -u kibana`.
 {{< /note >}}
 
-5.  From the next page, click on "Connect to your Elasticsearch index" under "Use Elasticsearch data" to configure an index pattern in Kibana.
+1.  The following dashboard interface appears. Click on the hamburger button in the left side of the top navigation to open the sidebar interface.
 
-    ![Kibana 7 Index Pattern Link](elastic-stack-ubuntu-18.04-kibana-index-pattern-link.png "Kibana 7 Index Pattern Link")
+    ![Kibana 7 Dashboard With Hamburger Navigation Button Highlighted](kibana-dashboard-first-look-hamburger-nav-highlighted.png "Kibana 7 Dashboard With Hamburger Navigation Button Highlighted")
 
-6.  Close the information sidebar on the Index Pattern configuration page.
+1.  Click on the **Discover** menu item in the sidebar.
 
-    ![Kibana 7 Index Pattern About](elastic-stack-ubuntu-18.04-kibana-about-close.png "Kibana 7 Index Pattern About")
+    ![Kibana 7 Dashboard With Hamburger Navigation Button Highlighted](kibana-dashboard-side-navigation-discover-menu-item-highlighted.png "Kibana 7 Dashboard With Hamburger Navigation Button Highlighted")
 
-7.  At the upper right of the interface, select the "Create index pattern" button.
+1.  Kibana prompts you to create an *index pattern*, which identifies the logs that should be retrieved. Click on the **Create index pattern** button.
 
-    ![Kibana 7 Create Index Pattern](elastic-stack-ubuntu-18.04-kibana-create-index-pattern.png "Kibana 7 Create Index Pattern")
+    ![Kibana 7 Create an Index Pattern Prompt](kibana-create-an-index-pattern-prompt.png "Kibana 7 Create an Index Pattern Prompt")
 
-8.  On the "Create index pattern" page, enter the text `logstash*` into the "Index pattern name" field. Click "Next step" to continue.
+1.  The **Create index pattern** form appears. Enter the text `logstash-*` into the **Index pattern name** field. Then click the **Next step** button to continue.
 
-    ![Kibana 7 Create Logstash Index](elastic-stack-ubuntu-18.04-kibana-logstash-index.png "Kibana 7 Create Logstash Index")
+    ![Kibana 7 Create Logstash Index](kibana-create-index-pattern-form-define-index-pattern.png "Kibana 7 Create Logstash Index")
 
-9.  From the "Time field" drop down menu, select `@timestamp` as the time field. This corresponds with the parsed time from web server logs. Click the "Create index pattern" button to continue.
+1.  From the **Time field** drop down menu, select `@timestamp` as the time field. This corresponds with the parsed time from web server logs. Click the **Create index pattern** button to continue.
 
-    ![Kibana 7 Select Time Field](elastic-stack-ubuntu-18.04-kibana-select-time-field.png "Kibana 7 Select Time Field")
+    ![Kibana 7 Select Time Field](kibana-create-index-pattern-form-configure-settings.png "Kibana 7 Select Time Field")
 
-    Kibana will now be able to display logs stored in indices that match the `logstash*` wildcard pattern.
+Kibana is now able to display logs stored in indices that match the `logstash-*` wildcard pattern.
 
-## View Logs
+## View Logs in Kibana
 
-After the previously executed `curl` commands created entries in the Apache access logs, Logstash will have indexed them in Elasticsearch. These are now visible in Kibana.
+When the previous `curl` commands generated entries in the Apache access logs, Logstash indexed them in Elasticsearch. These are now visible in Kibana.
 
 {{< note >}}
-Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
+Logs are retrieved based upon a time window that is shown in the upper right corner of the Kibana interface. By default, this panel displays "Last 15 minutes". At certain points, you may find that log entries are not shown in the Kibana interface. If this happens, click the timespan panel and choose a wider range, such as "Last hour" or "Last 4 hours." After choosing a broad enough range of time, your logs should appear.
 {{< /note >}}
 
-From the left menu, select the hamburger icon to expand the available menu options.
+1. From the left menu, select the hamburger icon to expand the available menu options.
 
-![Kibana 7 Open Sidebar](elastic-stack-ubuntu-18.04-kibana-sidebar.png "Kibana 7 Open Sidebar")
+    ![Kibana 7 Open Sidebar](kibana-logstash-index-pattern-page-hamburger-nav-highlighted.png "Kibana 7 Open Sidebar")
 
-Select the "Discover" menu item.
+1. Select the **Discover** menu item that appears.
 
-![Kibana 7 Discover Tab](elastic-stack-ubuntu-18.04-kibana-discover.png "Kibana 7 Discover Tab")
+    ![Kibana 7 Discover Tab](kibana-logstash-index-pattern-page-sidebar-nav-discover-menu-item-highlighted.png "Kibana 7 Discover Tab")
 
-The Discover interface should show a timeline of log events:
+1. The Discover interface should show a timeline of log events:
 
-![Kibana 7 Discover View](elastic-stack-ubuntu-18.04-kibana-discover-view.png "Kibana 7 Discover View")
+    ![Kibana 7 Discover View](kibana-discover-page-with-timeline-of-events.png "Kibana 7 Discover View")
 
-Over time, and as other requests are made to the web server via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discover tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
+    Over time, and as other requests are made to the web server via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discover tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
 
-In order to view the details of a log entry, click the drop-down arrow to see individual document fields:
+1. In order to view the details of a log entry, click the drop-down arrow to see individual document fields:
 
-![Kibana 7 Document Fields](elastic-stack-ubuntu-18.04-kibana-field-dropdown.png "Kibana 7 Document Fields")
+    ![Kibana 7 Document Fields](kibana-log-entry-expanded-details.png "Kibana 7 Document Fields")
 
-Fields represent the values parsed from the Apache logs, such as `agent`, which represents the `User-Agent` header, and `bytes`, which indicates the size of the web server response.
+    Fields represent the values parsed from the Apache logs, such as `agent`, which represents the `User-Agent` header, and `bytes`, which indicates the size of the web server response.
 
-### Analyze Logs
+## Search Logs in Kibana
 
-Before continuing, generate a couple of dummy 404 log events in your web server logs to demonstrate how to search and analyze logs within Kibana:
+1. Generate a couple of dummy 404 log events in your web server logs to demonstrate how to search and analyze logs within Kibana:
 
-    for i in `seq 1 2` ; do curl localhost/notfound-$i ; sleep 0.2 ; done
+        for i in `seq 1 2` ; do curl localhost/notfound-$i ; sleep 0.2 ; done
 
-#### Search Data
+1. The top search bar within the Kibana interface allows you to search for queries following the [Kibana Query Language](https://www.elastic.co/guide/en/kibana/current/kuery-query.html) to find results. For example, to find the 404 error requests you generated from among 200 OK requests, enter the following in the search box:
 
-The top search bar within the Kibana interface allows you to search for queries following the [Kibana Query Language](https://www.elastic.co/guide/en/kibana/current/kuery-query.html) to find results.
+        response:404
 
-For example, to find the 404 error requests you generated from among 200 OK requests, enter the following in the search box:
+    ![Kibana 7 Search Bar](kibana-search-response-404.png "Kibana 7 Search Bar")
 
-    response:404
+1. Then, click the **Update** button. The user interface now only returns logs that contain the "404" code in their response field.
 
-Then, click the "Update" button.
-
-![Kibana 7 Search Bar](elastic-stack-ubuntu-18.04-kibana-discover-search.png "Kibana 7 Search Bar")
-
-The user interface will now only return logs that contain the "404" code in their response field.
-
-#### Analyze Data
+## Visualize Logs in Kibana
 
 Kibana supports many types of Elasticsearch queries to gain insight into indexed data. For example, consider the traffic that resulted in a "404 - not found" response code. Using [aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html), useful summaries of data can be extracted and displayed natively in Kibana.
 
-To create one of these visualizations, begin by selecting the "Visualize" tab from the sidebar (you may need to expand the menu using the hamburger icon in the upper left-hand corner of the interface):
+1. To create a visualization, begin by selecting the **Visualize** menu item from the sidebar. You may first need to expand the menu using the hamburger icon in the upper left-hand corner of the interface:
 
-![Kibana 7 Visualize Tab](elastic-stack-ubuntu-18.04-kibana-visualize-tab.png "Kibana 7 Visualize Tab")
+    ![Kibana 7 Search Results Page Sidebar Navigation with Visualize Item Highlighted](kibana-search-results-page-sidebar-nav-visualize-menu-item-highlighted.png "Kibana 7 Search Results Page Sidebar Navigation with Visualize Item Highlighted")
 
-Then, select the "Create new visualization" button:
+1. Then, select the **Create new visualization** button on the page that appears:
 
-![Kibana 7 Create Visualization](elastic-stack-ubuntu-18.04-kibana-create-visualization.png "Kibana 7 Create Visualization")
+    ![Kibana 7 Create Visualization](kibana-create-visualization-prompt.png "Kibana 7 Create Visualization")
 
-Select "Pie" to create a new pie chart. Note that you may need to scroll down to find the "Pie" visualization:
+1. Select the **Aggregation based** option from the choices that appear:
 
-![Kibana 7 Select Pie Chart Visualization](elastic-stack-ubuntu-18.04-kibana-pie-chart.png "Kibana 7 Select Pie Chart Visualization")
+    ![Kibana 7 New Visualization Prompt with Select Aggregation Based Button Highlighted](kibana-new-visualization-prompt-aggregation-based-button-highlighted.png "Kibana 7 New Visualization Prompt with Select Aggregation Based Button Highlighted")
 
-Then select the `logstash-*` index pattern to determine from where the data for the pie chart will come:
+1. Select **Pie** from the choices that appear to create a new pie chart. Note that you may need to scroll down to find the **Pie** visualization:
 
-![Kibana 7 Select Pie Chart Index](elastic-stack-ubuntu-18.04-kibana-vis-index.png "Kibana 7 Select Pie Chart Index")
+    ![Kibana 7 Select Pie Chart Visualization](kibana-new-visualization-prompt-pie-chart-highlighted.png "Kibana 7 Select Pie Chart Visualization")
 
-At this point, a pie chart should appear in the interface ready to be configured. Follow these steps to configure the visualization in the user interface pane that appears to the left of the pie chart:
+1. Then select the `logstash-*` index pattern to determine where the data for the pie chart is retrieved from:
 
-- Select "+ Add" under the "Buckets" card in the sidebar.
-- Select "Split Slices" to create more than one slice in the visualization.
-- From the "Aggregation" drop-down menu, select "Terms" to indicate that unique terms of a field will be the basis for each slice of the pie chart.
-- From the "Field" drop-down menu, select `response.keyword`. This indicates that the `response` field will determine the size of the pie chart slices.
-- Finally, click the "Update" button to update the pie chart and complete the visualization.
+    ![Kibana 7 Select Pie Chart Index](kibana-new-visualization-prompt-choose-a-source.png "Kibana 7 Select Pie Chart Index")
 
-![Kibana 7 Select Pie Chart Configuration](elastic-stack-ubuntu-18.04-kibana-finished-pie.png "Kibana 7 Select Pie Chart Configuration")
+1. At this point, a pie chart should appear in the interface ready to be configured. Follow these steps to configure the visualization in the user interface pane that appears to the left of the pie chart:
 
-{{< note >}}
-You may need to view a longer time span in order to see results that include HTTP logs for both 200 and 404 responses and different portions of the pie chart. This may be done by clicking the calendar icon next to the search bar and selecting a longer time period such as "Last 1 hour".
+    - Select **+ Add** under the **Buckets** card in the right-hand sidebar.
+    - Select **Split Slices** to create more than one slice in the visualization.
+    - From the **Aggregation** drop-down menu, select **Terms** to indicate that unique terms of a field are the basis for each slice of the pie chart.
+    - From the **Field** drop-down menu, select `response.keyword`. This indicates that the `response` field determines the size of the pie chart slices.
+    - Finally, click the **Update** button to update the pie chart and complete the visualization.
+
+    ![Kibana 7 Select Pie Chart Configuration](kibana-finished-pie-chart-visualization.png "Kibana 7 Select Pie Chart Configuration")
+
+    {{< note >}}
+You may need to view a longer time span for the pie chart to show both 200 and 404 HTTP responses. This may be done by clicking the calendar icon next to the search bar and selecting a longer time period, such as "Last 1 Hour".
 {{< /note >}}
 
-Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred earlier than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields, such as the http verb (GET, POST, etc.), or can even create summaries of numerical data, such as the total amount of bytes transferred over a given time period.
+1. Observe that only a portion of requests have returned a 404 response code (remember to change the time span if your curl requests occurred earlier than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields, such as the http verb (GET, POST, etc.). Or, you can even create summaries of numerical data, such as the total amount of bytes transferred over a given time period.
 
-If you wish to save this visualization for use later use, click the "Save" button near the top of the browser window to name the visualization and save it permanently to Elasticsearch.
+1. If you wish to save this visualization for use later use, click the **Save** button near the top of the browser window to name the visualization and save it permanently to Elasticsearch.
 
 ## Further Reading
 
-Although this tutorial has provided an overview of each piece of the Elastic stack, more reading is available to learn additional ways to process and view data, such as additional Logstash filters to enrich log data, or other Kibana visualizations to present data in new and useful ways.
+This tutorial has provided an overview of each piece of the Elastic stack. More reading is available to learn additional ways to process and view data. For example:
+
+- Additional Logstash filters can enrich log data.
+- Other Kibana visualizations can present data in new and useful ways.
 
 Comprehensive documentation for each piece of the stack is available from the Elastic web site:
 
