@@ -8,13 +8,14 @@ og_description: 'Use Terraform to provision Linode environments.'
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
-modified: 2020-12-03
+modified: 2021-02-29
 aliases: ['/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/','/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/','/platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
 modified_by:
-  name: Linode
+  name: Nico Braun
 title: 'Use Terraform to Provision Linode Environments'
 contributor:
   name: Damaso Sanoja
+  name: Nico Braun
 ---
 
 ![Use Terraform to Provision Linode Environments](use-terraform-to-provision-linode-environments.png "Use Terraform to Provision Linode Environments")
@@ -56,19 +57,19 @@ The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://w
         mkdir ~/terraform
         cd ~/terraform
 
-2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html). Example `wget` commands are listed using the latest version available at time of publishing (0.12.5). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html). Example `wget` commands are listed using the latest version available at time of publishing (0.14.9). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
 
     -   The 64-bit Linux `.zip` archive
 
-            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_linux_amd64.zip
+            wget https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_linux_amd64.zip
 
     -   The SHA256 checksums file
 
-            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_SHA256SUMS
+            wget https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_SHA256SUMS
 
     -   The checksum signature file
 
-            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_SHA256SUMS.sig
+            wget https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_SHA256SUMS.sig
 
 
 ### Verify the Download
@@ -115,7 +116,7 @@ Primary key fingerprint: 91A6 E7F8 5D05 C656 30BE  F189 5185 2D87 348F FC4C
     The output should show the file's name as given in the `terraform*SHA256SUMS` file:
 
     {{< output >}}
-terraform_0.12.5_linux_amd64.zip: OK
+terraform_0.14.9_linux_amd64.zip: OK
 {{< /output >}}
 
 ### Configure the Terraform Environment
@@ -175,9 +176,21 @@ All other commands:
 
 Terraform uses a declarative approach in which configuration files specify the desired end-state of the infrastructure, so the examples in this guide will simply list the Linodes that we want to create. Terraform can understand two types of configuration files: JSON, and [HashiCorp Configuration Language](https://github.com/hashicorp/hcl) (HCL). This guide uses the HCL format, and HCL files end in the `.tf` extension.
 
+    {{< note >}}
+With Terraform 0.13+, you must specify all [required providers](https://www.terraform.io/docs/language/providers/requirements.html) and their respective source in your Terraform configuration. A provider source string is comprised of [hostname]/[namespace]/[name].
+{{< /note >}}
+
 1.  Create the file `linode-terraform-web.tf` in your `~/terraform` directory with the snippet below. Fill in your Linode API token, public SSH key, and desired root password where indicated.
 
     {{< file "~/terraform/linode-terraform-web.tf" aconf >}}
+terraform {
+  required_providers {
+    linode = {
+      # as of 13.0+ required
+      source  = "linode/linode" 
+    }
+  }
+}
 provider "linode" {
   token = "YOUR_LINODE_API_TOKEN"
 }
@@ -206,20 +219,31 @@ See [Terraform's documentation](https://www.terraform.io/docs/configuration/synt
     Terraform confirms successful initialization:
 
     {{< output >}}
+Initializing the backend...
+
 Initializing provider plugins...
-- Checking for available provider plugins on https://releases.hashicorp.com...
-- Downloading plugin for provider "linode" (1.0.0)...
+- Finding latest version of linode/linode...
+- Installing linode/linode v1.16.0...
+- Installed linode/linode v1.16.0 (signed by a HashiCorp partner, key ID F4E6BBD0EA4FE463)
 
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
+Partner and community providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://www.terraform.io/docs/cli/plugins/signing.html
 
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = "..." constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
 
-* provider.linode: version = "~> 1.0"
 Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
 {{</ output >}}
 
     {{< note >}}
@@ -240,37 +264,50 @@ persisted to local or remote state storage.
 
 ------------------------------------------------------------------------
 
+
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
 
-  + linode_instance.terraform-web
-      id:                 <computed>
-      alerts.#:           <computed>
-      authorized_keys.#:  "1"
-      authorized_keys.0:  "ssh-rsa ..."
-      backups.#:          <computed>
-      backups_enabled:    <computed>
-      boot_config_label:  <computed>
-      group:              "Terraform"
-      image:              "linode/ubuntu18.04"
-      ip_address:         <computed>
-      ipv4.#:             <computed>
-      ipv6:               <computed>
-      label:              "web"
-      private_ip_address: <computed>
-      region:             "us-east"
-      root_pass:          <sensitive>
-      specs.#:            <computed>
-      status:             <computed>
-      swap_size:          <computed>
-      type:               "g6-standard-1"
-      watchdog_enabled:   "true"
+  # linode_instance.terraform-web will be created
+  + resource "linode_instance" "terraform-web" {
+      + backups            = (known after apply)
+      + backups_enabled    = (known after apply)
+      + boot_config_label  = (known after apply)
+      + group              = "Terraform"
+      + id                 = (known after apply)
+      + image              = "linode/ubuntu18.04"
+      + ip_address         = (known after apply)
+      + ipv4               = (known after apply)
+      + ipv6               = (known after apply)
+      + label              = "Terraform-Web-Example"
+      + private_ip_address = (known after apply)
+      + region             = "us-east"
+      + root_pass          = (sensitive value)
+      + specs              = (known after apply)
+      + status             = (known after apply)
+      + swap_size          = (known after apply)
+      + type               = "g6-standard-1"
+      + watchdog_enabled   = true
 
+      + alerts {
+          + cpu            = (known after apply)
+          + io             = (known after apply)
+          + network_in     = (known after apply)
+          + network_out    = (known after apply)
+          + transfer_quota = (known after apply)
+        }
+    }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
 
 ------------------------------------------------------------------------
 
