@@ -135,6 +135,14 @@ hits_per_page = 4
 
 [minify]
 disableSVG = false
+[minify.tdewolff.html]
+keepComments = false
+keepConditionalComments = true
+keepDefaultAttrVals = true
+keepDocumentTags = true
+keepEndTags = true
+keepQuotes = true
+keepWhitespace = false
 
 [imaging]
 resampleFilter = "CatmullRom"
