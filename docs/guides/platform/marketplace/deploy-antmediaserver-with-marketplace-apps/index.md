@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Ant Media Server is a streaming engine software that provides low latency streaming in the cloud using WebRTC technology.'
 og_description: 'Ant Media Server is a streaming engine software that provides low latency streaming in the cloud using WebRTC technology.'
-keywords: ['streaming', "Mmarketplace", "live video streaming"]
+keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-30
