@@ -3,21 +3,36 @@ slug: linux-system-administration-basics
 author:
   name: Linode
   email: docs@linode.com
-description: 'Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.'
+description: 'This end to end Linux system administration basics tutorial will walk you through basic Linux configuration,  basic commands, and answers all your Linux administration questions.'
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
+tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
-modified: 2016-10-05
+modified: 2021-03-30
 modified_by:
   name: Linode
 published: 2009-12-13
 title: Linux System Administration Basics
-tags: ["linux"]
+
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
 
 ![Linux System Administration Basics](linux-system-administration-basics.png)
+
+## What is Linux Administration?
+Linux administration is about setting up disaster recovery, managing new system builds, creating a backup to restore data, Linux hardware management, managing storage,  handling file systems, and managing the security of Linux systems. A big part of Linux administration is to ensure that Linux powered systems are stable and secure.
+
+## What Should a Linux Administrator Should Know?
+Typically Linux system administrators are expected to handle Linux file systems, manage root, know bash commands, and manage users.
+
+## What Are The Duties Of System Administrators In Linux?
+Commonly, the Linux administration role typically involves:
+1. Maintenance of Linux environment
+2. Troubleshoot and provide support when there’s an issue with the Linux servers
+3. Analysis of log files(mainly error logs) and support LAN and web applications
+4. Create operational and project-specific solutions for the organization
+5. Proactively figure out ways to stabilize, lift security, and scalability of your Linux environment
 
 ## Basic Configuration
 
@@ -88,7 +103,7 @@ Some applications require that the machine properly identify itself in the `/etc
 {{< /file >}}
 
 
-You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In the above example, replace `103.0.113.12` with your machine's IP address. Consider a few additional `/etc/hosts` entries:
+Every line must begin with one and only one IP address, however you can specify a number of hostnames per line. In the above example, replace `103.0.113.12` with your machine's IP address. Consider a few additional `/etc/hosts` entries:
 
 {{< file "/etc/hosts" py >}}
 198.51.100.30   example.com
@@ -175,7 +190,7 @@ Here is an example of output from an `mtr` command:
         8.  209.85.255.190                  0.0%    10      27.0    27.3    23.9    37.9    4.2
         9.  gw-in-f100.1e100.net            0.0%    10      24.1    24.4    24.0    26.5    0.7
 
-Like the `ping` command, `mtr` tracks the speed of the connection in real time until you exit the program with **CONTROL+C**. To have `mtr` stop automatically and generate a report after ten packets, use the `--report` flag:
+Like the `ping` command, `mtr` tracks the speed of the connection in real-time until you exit the program with **CONTROL+C**. To have `mtr` stop automatically and generate a report after ten packets, use the `--report` flag:
 
     mtr --report
 
@@ -183,7 +198,7 @@ Be aware that `mtr` will pause for a few moments while generating output. For mo
 
 ## System Diagnostics
 
-If you're having an issue with your Linode that is neither related to [networking](#network-diagnostics) nor another application issue, it may help to rule out "hardware" and operating system level issues. Use the following tools to better diagnose and resolve these.
+If you're having an issue with your Linode that is neither related to [networking](#network-diagnostics) nor another application issue, it may help to rule out hardware and operating system-level issues. Use the following tools to better diagnose and resolve these.
 
 If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/). Use the following tools and approaches to determine the specific cause of your troubles.
 
@@ -258,7 +273,7 @@ To start the program:
 
 You can quit at any time by pressing the `F10` or `Q` keys. There are a couple of `htop` behaviors that may not be initially intuitive. Take note of the following:
 
--   The memory utilization graph displays used memory, buffered memory, and cached memory. The numbers displayed at the end of this graph reflect the total amount of memory available and the total amount memory on the system as reported by the kernel.
+-   The memory utilization graph displays used memory, buffered memory, and cached memory. The numbers displayed at the end of this graph reflect the total amount of memory available and the total amount of memory on the system as reported by the kernel.
 -   The default configuration of `htop` presents all application threads as independent processes, which may not be clear if you're not aware of it. You can disable this by selecting the "setup" option with `F2`, then "Display Options," and then toggling the "Hide userland threads" option.
 -   You can toggle a "Tree" view with the `F5` key that displays the processes in a hierarchy and shows which processes were spawned by other processes in an organized format. This is helpful in diagnosing a problem when you're having trouble distinguishing among processes.
 
@@ -349,7 +364,9 @@ For more information about file system navigation and manipulation, please consi
 
 Most Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/docs/using-linux/package-management) guide.
 
-While these tools provide a number of powerful features, it is easy to look past the benefits of package management. If you install software manually without package management tools, it becomes difficult to keep your system up to date and to manage dependencies. For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a couple of basic package management tasks.
+While these tools provide a number of powerful features, it is easy to look past the benefits of package management. If you install software manually without package management tools, it becomes difficult to keep your system up to date and to manage dependencies.
+
+For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a few basic package management tasks.
 
 ### Find Packages Installed on Your System
 
@@ -515,7 +532,7 @@ Since there are often a large number of results for package searches, these comm
 
     apt-cache search python | grep "xml"
 
-This will return the subset of the list of packages which matched for the search term "python" and that mention xml in their name or short description. Similarly:
+This will return the subset of the list of packages that matched for the search term "python" and that mention xml in their name or short description. Similarly:
 
     apt-cache search python | less
 
@@ -525,7 +542,7 @@ You can append `| grep "[string]"` to any of these commands to filter package se
 
 ## Text Manipulation
 
-Among Linux and UNIX-like systems, nearly all system configuration information is stored and manipulated in plain text form. These following sections show a list of basic Linux commands and tools to manipulate text files.
+Among Linux and UNIX-like systems, nearly all system configuration information is stored and manipulated in plain text form. The following sections show a list of basic Linux commands and tools to manipulate text files.
 
 ### Search for a String in Files with grep
 
@@ -549,7 +566,9 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/username/data | grep "1257"
 
-In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
+In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX timestamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents.
+
+For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
 
 ### Search and Replace Across a Group of Files
 
@@ -581,7 +600,7 @@ For more information about `sed` refer to our full documentation of [text manipu
 
 ### Edit Text
 
-In many Linode documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight and powerful text editors that allow you manipulate the text of a file from the terminal environment.
+In many Linode documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight and powerful text editors that allow you to manipulate the text of a file from the terminal environment.
 
 There are other options for text editors, notably Emacs and "zile." Feel free to install these programs using your operating system's package manager. Make sure you [search your package database](#find-package-names-and-information) so you can install a version compiled without GUI components (i.e. X11).
 
@@ -594,9 +613,9 @@ To open a file, issue a command beginning with the name of the editor you wish t
 
 When you've edited a file, you can save and exit the editor to return to the prompt. This procedure varies between different editors. In Emacs and zile, the key sequence is the same: press control and type x and s to save. This operation is typically notated "C-x C-s" and then "C-x C-c" to close the editor. In nano, press Control-O (notated \^O) and confirm the file name to write the file, and use Control-X to exit from the program.
 
-Since vi and vim are *modal* editors, their operation is a bit more complex. After opening a file in vi, you can enter "insert" mode by pressing the "i" key; this will let you edit text in the conventional way. To save the file, you must exit into "normal" mode by pressing the escape key (`Control-[` also sends escape), and then type `:wq` to write the file and quit the program.
+Since vi and vim are *modal* editors, their operation is a bit more complex. After opening a file in vi, you can enter "insert" mode by pressing the "i" key; this will let you edit text traditionally. To save the file, you must exit into "normal" mode by pressing the escape key (`Control-[` also sends escape), and then type `:wq` to write the file and quit the program.
 
-This provides only the most basic outline of how to use these text editors, and there are numerous external resources which will provide instructions for more advanced use of this software.
+This provides only the most basic outline of how to use these text editors, and there are numerous external resources that provide instructions for more advanced use of this software.
 
 ## Web Servers and HTTP Issues
 
@@ -606,11 +625,13 @@ This section covers a number of basic web serving tasks and functions, as well a
 
 ### Serve Websites
 
-Web servers work by listening on a TCP port, typically port 80 for HTTP and port 443 for HTTPS. When a visitor makes a request for content, the servers respond by delivering the resource requested. Typically, resources are specified with a URL that contains the protocol, `http` or `https`; a colon and two slashes, `://`; hostname or domain, `www.example.com` or `username.example.com`; and the path to a file, `/images/avatar.jpg,` or `index.html`. A full URL would resemble `http://www.example.com/images/avatar.jpg`.
+Web servers work by listening on a TCP port, typically port 80 for HTTP and port 443 for HTTPS. When a visitor makes a request for content, the servers respond by delivering the resource requested.
+
+Typically, resources are specified with a URL that contains the protocol, `http` or `https`; a colon and two slashes, `://`; hostname or domain, `www.example.com` or `username.example.com`; and the path to a file, `/images/avatar.jpg,` or `index.html`. A full URL would resemble `http://www.example.com/images/avatar.jpg`.
 
 In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/web-servers/apache/) server, [Lighttpd](/docs/web-servers/lighttpd/) ("Lighty"), and [nginx](/docs/web-servers/nginx/) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
 
-Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.
+Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server-side scripts in languages such as Python, PHP, Ruby, and Perl.
 
 If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/web-servers/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/development/frameworks/).
 
@@ -689,11 +710,11 @@ There may also be other components in the email server tool chain. These compone
 
 The most prevalent SMTP servers or MTAs in the UNIX-like world are [Postfix](http://www.postfix.org/), [Exim](https://www.exim.org/), and [Sendmail](http://www.sendmail.org/). Sendmail has the longest history and many system administrators have extensive experience with it. Postfix is robust and modern, and is compatible with many different configurations. Exim is the default MTA in Debian systems, and many consider it to be easier to use for basic tasks. For remote mailbox access, servers like [Courier](http://www.courier-mta.org/) and [Dovecot](https://www.dovecot.org/) are popular options.
 
-If you need an easy-to-install email solution, consider the [Citadel groupware server](/docs/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/docs/email/zimbra/).
+If you need an easy-to-install email solution, consider the [Citadel groupware server](/docs/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real-time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/docs/email/zimbra/).
 
 If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/docs/email/postfix/).
 
-Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email/) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
+Finally, it's possible to outsource email service to a third-party provider, such as [Google Workspace](/docs/email/using-google-apps-for-email/) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
 
 ### Send Email From Your Server
 
@@ -732,3 +753,57 @@ port 587
 The `.msmptrc` file needs to be set to mode 600 and owned by the user account that will be sending mail. For example, if the configuration file is located at `/srv/smtp/msmtprc`, you can call msmtp with the following command:
 
     /usr/bin/msmtp --file=/srv/smtp/msmtprc
+
+## How Do I Manage Files in Linux?
+To manage files and directories in Linux you can use wildcard patterns for file manipulation, using commands like gzip/xz/bzip2 to compress or decompress a file, copy/move/remove files, etc.
+
+You can view your current directory by running `echo $PWD`. To view all items within your current working directory, type `ls` and press enter.
+
+Typing ls will simply output all file names, but if you wish to see more details run the following command:
+
+                ls -al
+
+Output:
+
+                total 6
+
+                drwxr-xr-x  6   linode  linode  4096    Nov 30      00:35   .
+
+                drwxr-xr-x  45  linode  linode  4096    Dec 30      00:35   ..
+
+                drwxr-xr-x  5   linode  linode  4096    Nov 30      00:35   20122
+
+                drwxr-xr-x  7   linode  linode  4096    Nov 30      00:35   20122_db
+
+                drwxr-xr-x  3   linode  linode  4096    Nov 30      00:35   linode_1
+
+                -rw-rw-r--  1   linode  linode  93810   Nov 30      00:35   linode.png
+
+In the output, drwxr-xr represents a directory and `-rw-rw-r--` represents a file.
+
+You can use cp to copy files, mv to move them and rm to delete files. Similarly, you can use mkdir to create directories,  and  rmdir to remove directories.
+
+For efficient Linux administration, you have to be able to handle multiple files recursively. You can use `-R` option for recursive listing, copying or even deletion.
+
+### Using Wildcards And Globbing For Better Linux Administration
+
+Most other operations we saw in the section above were on a single filesystem, on the entire tree. But as complexities increase and you have a large file system, it becomes difficult to use these options. This is where Wildcards and Globbing are extremely helpful.
+
+Globbing helps us point to target files using wildcard patterns. Here is how the matching works:
+-   `*` matches any string pattern
+-   `?` matches any single character
+-   `[` matches any single character within `[` brackets
+
+Let’s test a Wildcard example to see how we can only filter files that have a character 3 or 5 or between 3-5 here.  In our current directory we have the following files:
+
+                ls
+
+                linode_1     linode_2   linode_3    linode_4    linode_5
+
+Now, if we run the following command:
+
+                ls linode[3-5]
+
+We will get the following output:
+
+                linode_3    linode_4    linode_5
