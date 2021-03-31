@@ -104,17 +104,16 @@ window.lnh = {
 
 function getSearchConfig(params) {
 	let cfg = params.search_config;
-
-	cfg.sectionsSorted = Object.values(cfg.sections);
-	cfg.sectionsSorted.sort((a, b) => {
-		return a.weight < b.weight ? -1 : 1;
-	});
-
+	cfg.findSectionByName = function(name) {
+		return this.sections.find((s) => {
+			return s.name === name;
+		});
+	};
 	cfg.findSectionsBySearchResults = function(results) {
 		var self = this;
 		var sections = [];
 		results.forEach((result) => {
-			let sectionConfig = self.sectionsSorted.find((s) => {
+			let sectionConfig = self.sections.find((s) => {
 				if (s.index !== result.index && s.index_by_pubdate != result.index) {
 					return false;
 				}
@@ -134,6 +133,5 @@ function getSearchConfig(params) {
 
 		return sections;
 	};
-
 	return cfg;
 }

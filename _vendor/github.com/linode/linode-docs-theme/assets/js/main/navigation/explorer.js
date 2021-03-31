@@ -135,7 +135,7 @@ export function newSearchExplorerController(searchConfig) {
 						let sectionName = activeNodeKey.split('>')[0].trim();
 						dispatcher.searchNodes({
 							data: [
-								{ key: activeNodeKey, section: { config: searchConfig.sections[sectionName] } }
+								{ key: activeNodeKey, section: { config: searchConfig.findSectionByName(sectionName) } }
 							]
 						});
 					} else {
@@ -377,7 +377,7 @@ export function newSearchExplorerController(searchConfig) {
 
 				if (this.isGhostSection) {
 					e.preventDefault();
-					sendEvent('search:filter', `sections=${opts.section.config.name}`);
+					sendEvent('search:filter', `sections=${section.config.name}`);
 					return;
 				}
 
@@ -585,17 +585,6 @@ export function newSearchExplorerController(searchConfig) {
 			}
 
 			return this.data.searchState.mainSearch.results;
-		},
-
-		isSearchFiltered: function() {
-			if (
-				this.initState == initStates.LOADING ||
-				!this.data.searchState ||
-				!this.data.searchState.mainSearch.isLoaded()
-			) {
-				return false;
-			}
-			return this.data.searchState.query.isFiltered();
 		},
 
 		// Update hidden state and facet counts based on a updated search result.

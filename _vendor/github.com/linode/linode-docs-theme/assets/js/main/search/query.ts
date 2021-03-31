@@ -1,10 +1,4 @@
-import { sanitizeHTML } from '../helpers/index';
-
 interface Query {
-	// May be set to identify the target _view.
-	// Is not a part of any search filter.
-	_view: string;
-
 	// qv holds the free text query usually fetched from the search input box.
 	qv: string;
 
@@ -32,10 +26,7 @@ interface Query {
 	// hasQ reports whether a text guery is set.
 	hasQ(): boolean;
 
-	// isAnyFilterSet reports whether a filter or text guery is set (an empty text query is considered valid).
-	isAnyFilterSet(): boolean;
-
-	// isFiltered reports whether a filter or a non-empty text guery is set.
+	// isFiltered reports whether a filter or text guery is set (an empty text query is considered valid).
 	isFiltered(): boolean;
 
 	// isSectionEnabled reports whether the given section (e.g. `guides`) is enabled.
@@ -54,7 +45,6 @@ const setQueryValues = function(q: Query, key: string, values: string[]) {
 
 export const newQuery = function(): Query {
 	return {
-		_view: '',
 		qv: null, // So we can distinguish it from a blank search.
 		get q() {
 			return this.qv === null ? '' : this.qv;
@@ -79,9 +69,6 @@ export const newQuery = function(): Query {
 		eq(other: Query): boolean {
 			if (this === other) {
 				return true;
-			}
-			if (this._view !== other._view) {
-				return false;
 			}
 			if (this.qv !== other.qv) {
 				return false;
@@ -134,12 +121,8 @@ export const newQuery = function(): Query {
 			return this.qv !== null;
 		},
 
-		isAnyFilterSet() {
-			return this.hasQ() || this.hasFilter();
-		},
-
 		isFiltered() {
-			return (this.hasQ() && this.q !== '') || this.hasFilter();
+			return this.hasQ() || this.hasFilter();
 		},
 
 		isSectionEnabled(section: string) {
@@ -176,11 +159,8 @@ export class QueryHandler {
 		let q = newQuery();
 		new URLSearchParams(s).forEach((v, k) => {
 			switch (k) {
-				case '_view':
-					q._view = v;
-					break;
 				case 'q':
-					q.qv = sanitizeHTML(v);
+					q.qv = v;
 					break;
 				default:
 					setQueryValues(q, k, v.split(','));
@@ -194,14 +174,9 @@ export class QueryHandler {
 		for (let k in r) {
 			let v = r[k];
 			switch (k) {
-				case '_view':
-					if (typeof v === 'string') {
-						q._view = v;
-					}
-					break;
 				case 'q':
 					if (typeof v === 'string') {
-						q.qv = v.replace(/\n/g, '');
+						q.qv = v;
 					} else {
 						throw `unkown filter key ${k}`;
 					}
@@ -215,13 +190,9 @@ export class QueryHandler {
 	}
 
 	queryToQueryString(q: Query): string {
-		var queryString = `q=${encodeURIComponent(q.q)}`;
-		if (q._view !== '') {
-			queryString += `&_view=${encodeURIComponent(q._view)}`;
-		}
-
+		var queryString = `q=${q.q}`;
 		if (q.sections.length > 0) {
-			queryString = queryString.concat(`&sections=${encodeURIComponent(q.sections.join(','))}`);
+			queryString = queryString.concat(`&sections=${q.sections.join(',')}`);
 		}
 
 		q.filters.forEach((values, key) => {

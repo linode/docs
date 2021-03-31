@@ -11,8 +11,6 @@ export function newBreadcrumbsController(searchConfig) {
 
 	const hrefFactory = newCreateHref(searchConfig);
 
-	var breadCrumbsCreated = false;
-
 	return {
 		data: {
 			sectionsMeta: null,
@@ -21,7 +19,7 @@ export function newBreadcrumbsController(searchConfig) {
 				page: {}
 			}
 		},
-		breadCrumbsCreated: false,
+
 		receiveData: function(data) {
 			debug('receiveData', data);
 			this.data.sectionsMeta = data.metaSearch;
@@ -35,16 +33,11 @@ export function newBreadcrumbsController(searchConfig) {
 		},
 
 		onTurbolinksBeforeRender: function() {
-			this.breadCrumbsCreated = false;
 			this.data.breadcrumbs.page = {};
 			this.data.breadcrumbs.sections.length = 0;
 		},
 
 		createBreadcrumbs: function() {
-			if (this.breadCrumbsCreated) {
-				return
-			}
-
 			debug('createBreadcrumbs', this.data);
 
 			if (
@@ -55,8 +48,6 @@ export function newBreadcrumbsController(searchConfig) {
 				// Wait for the real data to arrive.
 				return;
 			}
-
-			this.breadCrumbsCreated = true;
 
 			let breadcrumbs = this.data.breadcrumbs;
 			let pageType = this.data.breadcrumbs.page.type;

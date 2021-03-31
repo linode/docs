@@ -9,7 +9,7 @@
 }
 
 .grid--base {
-    --num-rows: 3; /* Number of grid rows including the Linode menu header. */
+    --num-rows: 3; /* Number of grid rows excluding the Linode menu header. */
     --row-explorer: 2; /* The grid row for the left side explorer menu. */
     --row-main: 3; /* The grid row for the main content. */
     --col-navbar: 1; /* The grid column for the top navbar. */
@@ -27,34 +27,26 @@
     --col-navbar: 2;
 }
 
-.is-explorer-open.is-topbar-pinned .grid--base {
-    --col-navbar: 1;
-    --row-explorer: 3;
-}
-
-/* Smaller mobiles, e.g. iPhone 5 */
-@media screen and (max-width: 321px) {
-    .grid--base {
-        --width-right-column: 190px;
-    }
-}
-
 @screen md {
+    .is-explorer-open .grid--base {
+        --col-navbar: 1;
+    }
+
     .grid--base {
         --row-explorer: 3;
         --col-navbar: 1;
         --height-navbar-row: 45px;
         --width-left-column: 255px;
         --width-right-column: 255px;
-        --height-linode-menu-row: 62px;
-    }
-
-    .is-explorer-open .grid--base {
-        --col-navbar: 1;
+        --height-linode-menu-row: 70px;
     }
 }
 
 @screen lg {
+    .is-explorer-open .grid--base {
+        --col-navbar: 1;
+    }
+
     .grid--base {
         --height-navbar-row: 65px;
         --width-left-column: 334px;

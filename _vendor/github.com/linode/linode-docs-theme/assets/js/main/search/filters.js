@@ -8,7 +8,7 @@ var debug = 0 ? console.log.bind(console, '[filters]') : function() {};
 
 export function newSearchFiltersController(searchConfig, opts) {
 	var dispatcher = newDispatcher();
-	const queryHandler = new QueryHandler(searchConfig.sectionsSorted);
+	const queryHandler = new QueryHandler(searchConfig.sections);
 
 	// The query object received (e.g. from the query string) and
 	// passed to the search engine.
@@ -29,12 +29,8 @@ export function newSearchFiltersController(searchConfig, opts) {
 		// Preserve e.g. section filtering from UI.
 		query.setNonEmptyFrom(newQuery);
 
-		handleQueryUpdate(self, opts.triggerSearch);
-	};
-
-	const handleQueryUpdate = function(self, triggerSearch) {
 		self.populateFilters();
-		self.updateWindowLocation(triggerSearch);
+		self.updateWindowLocation(opts.triggerSearch);
 		dispatcher.searchQuery(query);
 	};
 
@@ -89,23 +85,19 @@ export function newSearchFiltersController(searchConfig, opts) {
 		init: function() {
 			debug('init', this.loaded);
 			return function() {
-				let queryFromLocation = queryHandler.queryFromLocation();
-
-				if (queryFromLocation._view !== '') {
-					// _view is set on the /search query params to distinguish
-					// that standalone search from any filtering applied via the
-					// search input filters.
-					// Nothing more to do here.
-					return;
-				}
-
-				query = queryFromLocation;
-
+				query = queryHandler.queryFromLocation();
 				if (opts.search_on_load) {
-					dispatcher.searchQuery(queryFromLocation);
-				} else if (query.isAnyFilterSet()) {
+					if (opts.standalone_search) {
+						dispatcher.searchQueryStandalone(query);
+					} else {
+						dispatcher.searchQuery(query);
+					}
+					if (!data.tags.open) {
+						data.tags.open = query.filters.has('tags');
+					}
+				} else if (query.isFiltered()) {
 					// Broadcast the search filters, but do not execute.
-					dispatcher.searchQuery(queryFromLocation, false);
+					dispatcher.searchQuery(query, false);
 				}
 			};
 		},
@@ -273,7 +265,7 @@ export function newSearchFiltersController(searchConfig, opts) {
 		},
 
 		onTurbolinksRender: function(data) {
-			if (!history.replaceState || opts.standaloneSearch || window.location.search || !query.isAnyFilterSet()) {
+			if (!history.replaceState || opts.standaloneSearch || window.location.search || !query.isFiltered()) {
 				return;
 			}
 
@@ -291,11 +283,8 @@ export function newSearchFiltersController(searchConfig, opts) {
 
 		searchToggle: function(show) {
 			if (!show) {
-				// Clear the filters
-				query = newQuery();
-				handleQueryUpdate(this, false);
 				if (this.prevPathname) {
-					Turbolinks.visit(this.prevPathname, { action: 'replace' });
+					Turbolinks.visit(this.prevPathname + window.location.search, { action: 'replace' });
 				} else {
 					// Go home.
 					Turbolinks.visit('/docs/');
@@ -304,17 +293,15 @@ export function newSearchFiltersController(searchConfig, opts) {
 		},
 
 		onPopState: function(e) {
-			let queryFromLocation = queryHandler.queryFromLocation();
-
-			if (queryFromLocation._view !== '') {
+			if (opts.standaloneSearch) {
 				return;
 			}
 
-			query = queryFromLocation;
-			if (query.isAnyFilterSet()) {
-				dispatcher.searchQuery(queryFromLocation);
+			query = queryHandler.queryFromLocation();
+			if (query.isFiltered()) {
+				dispatcher.searchQuery(query);
 			}
-			if (queryFromLocation.hasFilter()) {
+			if (query.hasFilter()) {
 				this.populateFilters();
 			}
 		},
@@ -324,20 +311,18 @@ export function newSearchFiltersController(searchConfig, opts) {
 				return;
 			}
 			let newSearch = !isTopResultsPage();
-			// TODO check triggerSearch usage (suspect it's always true)
 			if (!triggerSearch && newSearch) {
 				let href = window.location.pathname;
-				if (query.isAnyFilterSet() && query.q !== '') {
+				if (query.isFiltered() && query.q !== '') {
 					href += '?' + queryHandler.queryToQueryString(query);
 				}
 				history.replaceState(null, null, href);
 			} else {
-				let queryString = queryHandler.queryToQueryString(query);
 				if (newSearch) {
 					this.prevPathname = window.location.pathname;
-					history.pushState(null, null, '/docs/topresults/?' + queryString);
+					history.pushState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
 				} else {
-					history.replaceState(null, null, '/docs/topresults/?' + queryString);
+					history.replaceState(null, null, '/docs/topresults/?' + queryHandler.queryToQueryString(query));
 				}
 			}
 		}

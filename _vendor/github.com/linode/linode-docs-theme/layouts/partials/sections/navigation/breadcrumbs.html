@@ -20,7 +20,7 @@
       </li>
       <template x-for="(b, i) in data.breadcrumbs.sections" :key="b">
         <li class="flex items-center mt-2">
-          <a x-text="b.linkTitle" :href="b.href" class="truncate"></a>
+          <a x-text="b.linkTitle" :href="b.href"></a>
           <template x-if="i < (data.breadcrumbs.sections.length - 1)">
             {{ template "breadcrumbs-arrow" . }}
           </template>
@@ -28,7 +28,7 @@
       </template>
       <li class="flex items-center mt-2" x-show="data.breadcrumbs.page.kind === 'page'">
         {{ template "breadcrumbs-arrow" . }}
-        <a x-text="data.breadcrumbs.page.linkTitle" :href="data.breadcrumbs.page.href" class="truncate"></a>
+        <a x-text="data.breadcrumbs.page.linkTitle" :href="data.breadcrumbs.page.href"></a>
       </li>
     </ol>
   </nav>
@@ -59,7 +59,7 @@
     {{ if .p1.IsHome }}
       {{ template "breadcrumbs-home" . }}
     {{ else }}
-      <a  href="{{ .p1.Permalink }}" class="truncate">
+      <a  href="{{ .p1.Permalink }}">
         {{ .p1.LinkTitle }}
       </a>
     {{ end }}

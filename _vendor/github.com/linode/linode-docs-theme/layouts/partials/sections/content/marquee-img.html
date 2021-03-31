@@ -3,7 +3,7 @@
   
   {{ if $img.img }}
     {{ $src := $img.img }}
-    <div class="marquee-img-container hidden md:block">
+    <div class="marquee-img-container">
       {{ if $img.isResource }}
         {{/* Mark the image as used to prevent double rendering later in the markdown. See the _default/markup/render-image.html.
             Also, and this is important, make sure that it is the original image's RelPermalink that is stored here and not

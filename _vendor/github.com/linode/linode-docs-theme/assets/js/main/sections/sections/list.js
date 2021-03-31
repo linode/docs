@@ -107,7 +107,7 @@ export function newSectionsController(searchConfig) {
 			let last = parts[parts.length - 1];
 			let indexName = parts[0];
 			this.key = parts.join(' > ');
-			let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === indexName);
+			let sectionConfig = searchConfig.sections.find((s) => s.name === indexName);
 			if (!sectionConfig) {
 				throw `no search config found for section ${indexName}`;
 			}
@@ -232,16 +232,12 @@ export function newSectionsController(searchConfig) {
 
 			let facets = this.data.result.facets;
 
+			// Sort the hits by section by default
+			this.data.result.hits.sort((a, b) => (a.section < b.section ? -1 : 1));
+
 			// The section listing we're interested in is at the next level.
 			let nextLevel = this.data.lvl + 1;
 			let sectionFacet = facets[`section.lvl${nextLevel}`];
-
-			if (sectionFacet) {
-				// We're not at the bottom level. This will show sort options.
-				// Sort the hits by section by default
-				this.data.result.hits.sort((a, b) => (a.section < b.section ? -1 : 1));
-			}
-
 			let hitsBySection = this.data.result.hits.reduce(function(h, hit) {
 				h[hit.section] = (h[hit.section] || []).concat(hit);
 				return h;
