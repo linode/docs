@@ -24,7 +24,7 @@ When you attach a Linode to a Virtual LAN and it is rebooted, by default, the fo
 
 - All Configuration Profiles belonging to the Linode are updated with any new Network Interfaces.
 
-- Entries are created in the first free `eth[0-9]` device slots that are available in the Linode's Network Interface configuration file.
+- Entries are created in the configured device slots`eth[0-2]` that are available in the Linode's Network Interface configuration file.
 
     {{< note >}}
 By default, the device slot corresponding to the Private Network Interface is down and you must bring it up in order to communicate over the Virtual LAN.

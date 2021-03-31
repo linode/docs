@@ -9,9 +9,9 @@ tab_group_main:
 
 Vlans are created and implemented via three different methods when using the Linode Cloud Manager. These methods are as follows:
 
-- As part of the configuration when [Creating a New Linode]().
-- By creating a new [Configuration Profile]().
-- By editing a pre-existing configuration profile.
+- As part of the configuration when [Creating a New Linode](#creating-or-applying-a-vlan-when-creating-a-linode).
+- By creating a new [Configuration Profile](#creating-or-applying-a-vlan-when-creating-a-linode).
+- By editing a [Pre-Existing Configuration Profile](#adding-a-vlan-when-editing-a-configuration-profile).
 
 ## Creating or Applying a VLAN When Creating a Linode
 
