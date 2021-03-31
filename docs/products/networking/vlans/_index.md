@@ -14,7 +14,7 @@ cascade:
 
 ## Availability
 
-Toronto, Canada; Mumbai, India; Sydney, Australia
+Toronto, Canada; Mumbai, India; Sydney, Australia; Atlanata, GA, USA;
 
 ## Features
 
