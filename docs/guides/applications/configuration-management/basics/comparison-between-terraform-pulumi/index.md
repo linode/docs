@@ -1,5 +1,5 @@
 ---
-slug: comparison-between-terraform-pulumi
+slug: terraform-vs-pulumi
 author:
   name: Linode Community
   email: docs@linode.com
@@ -10,8 +10,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-22
 modified_by:
   name: Linode
-title: "Comparing Terraform and Pulumi"
-h1_title: "A Comparison Between Terraform and Pulumi."
+title: "Comparing Pulumi and Terraform"
+h1_title: "Pulumi vs Terraform"
+enable_h1: true
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -20,7 +21,7 @@ external_resources:
 - '[Pulumi](https://www.pulumi.com/)'
 ---
 
-*Infrastructure as Code* (IaC) is a modern methodology that provisions and deploys networks using automation rather than through manual or ad-hoc configuration. Most IaC tools automate infrastructure configuration and management through the use of scripts or configuration files. Numerous solutions have been developed to implement Infrastructure as Code, each with their own strengths and weaknesses. Two IaC tools often used for service orchestration are [*Terraform*](https://www.terraform.io/) from HashiCorp and [*Pulumi*](https://www.pulumi.com/) from a venture-backed start up. This guide analyzes Terraform and Pulumi, explains how both products work, and describes scenarios where each tool might be useful.
+*Infrastructure as Code* (IaC) is a modern methodology that provisions and deploys Cloud resources using automation rather than through manual or ad-hoc configuration. Most IaC tools automate infrastructure configuration and management through the use of scripts or configuration files. Numerous solutions have been developed to implement Infrastructure as Code, each with their own strengths and weaknesses. Two IaC tools often used for service orchestration are [*Terraform*](https://www.terraform.io/) from HashiCorp and [*Pulumi*](https://www.pulumi.com/) from a venture-backed start up. This guide analyzes Terraform and Pulumi, explains how both products work, and describes scenarios where each tool might be useful.
 
 ## The Basics of Infrastructure as Code
 
@@ -172,7 +173,7 @@ Both Terraform and Pulumi use push distribution. They deliver the configuration 
 
 This is an area where Terraform has an advantage. Terraform has been around for a longer time, it has a larger community, and it is more comprehensively documented. Pulumi also has a community of users, but it is much smaller. Pulumi is a much newer tool, however, so it could catch up in the near future.
 
-## Making a Decision Between Terraform and Pulumi
+## Choosing Between Terraform and Pulumi
 
 Although Terraform and Pulumi have their relative strengths and weaknesses, they both accomplish very similar IaC objectives. Therefore, a final decision between the two tools might depend on how your DevOps team is structured. If you are developing a network environment from scratch and do not mind learning a new declarative language, Terraform is a solid choice. But if you want to leverage existing scripts, test tools, and programming skills, you might be better off using Pulumi. If you have to incorporate control structures such as loops and conditionals into the code, then Pulumi is the best choice. If either approach is acceptable, you could consider the relative maturity level and community depth of the tools, which favors Terraform. However, Pulumi is growing fast and is self-consciously competing with Terraform, so it is likely to rapidly improve. IaC technology is always evolving, and the competitive landscape could be different in a year or two.
 
