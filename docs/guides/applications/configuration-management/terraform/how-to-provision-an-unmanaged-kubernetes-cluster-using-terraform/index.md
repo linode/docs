@@ -125,6 +125,14 @@ To use your environment variable, add the `-var` flag. For example, when you run
 1. Using the text editor of your choice, create your cluster's main configuration file named `main.tf`. Add the following contents to the file.
 
       {{< file "~/terraform/k8s-cluster/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
 module "k8s" {
   source             = "linode/k8s/linode"
   version            = "0.1.2"

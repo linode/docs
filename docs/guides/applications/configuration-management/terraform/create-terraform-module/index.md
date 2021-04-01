@@ -315,6 +315,14 @@ The root module will call the `linode` and `stackscripts` modules, satisfy their
 1. Ensure you are in the `linode_stackscripts` directory and create the `main.tf` file:
 
     {{< file "~/linode_stackscripts/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
 provider "linode" {
     token = var.token
 }
