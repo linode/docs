@@ -3,16 +3,16 @@ slug: deploy-peppermint-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Peppermint is a ticket management system that allows teams and solo users the ability create & track tickets whilst also tracking todo's and more. '
+og_description: 'Peppermint is a ticket management system that allows teams and solo users the ability create & track tickets whilst also tracking todo's and more. '
+keywords: ['ticket management','marketplace']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-31
 modified_by:
   name: Linode
 title: "Deploy Peppermint With Marketplace Apps"
-h1_title: "h1 title displayed in the guide."
+h1_title: "How to Deploy Peppermint With Marketplace Apps"
 
 external_resources:
 - [Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)
