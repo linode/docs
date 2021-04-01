@@ -1,5 +1,5 @@
 ---
-slug: comparison-between-terraform-ansible
+slug: terraform-vs-ansible
 author:
   name: Linode Community
   email: docs@linode.com
@@ -11,7 +11,8 @@ published: 2021-03-11
 modified_by:
   name: Linode
 title: "Comparing Terraform and Ansible"
-h1_title: "A Comparison Between Terraform and Ansible."
+h1_title: "Terraform vs Ansible"
+enable_h1: true
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -24,7 +25,7 @@ To eliminate the problems associated with manual configuration, many tech firms 
 
 ## The Basics of Infrastructure as Code
 
-Infrastructure as Code is a method of managing infrastructure through automation. IaC speeds up network deployments and reduces operational costs. It helps avoid potentially costly errors and enforces consistency and standardization across the network. Infrastructure as Code is central to the concept of DevOps, which is an alliance of the development and operations teams. These groups work together to plan the structure, layout, and configuration of the network. Linode's [Introduction to Infrastructure as Code](/docs/guides/introduction-to-infrastructure-as-code) offers a more comprehensive overview of this subject.
+Infrastructure as Code is a method of managing infrastructure through automation. IaC speeds up Cloud deployments and reduces operational costs. It helps avoid potentially costly errors and enforces consistency and standardization across the Cloud. Infrastructure as Code is central to the concept of DevOps, which is an alliance of the development and operations teams. These groups work together to plan the structure, layout, and configuration of the network. Linode's [Introduction to Infrastructure as Code](/docs/guides/introduction-to-infrastructure-as-code) offers a more comprehensive overview of this subject.
 
 An important step in this planning process is deciding which IaC tool to use. Although the various products have considerable overlap, they each have different strengths. Some are easier to use than others. Some are geared towards different programming approaches. Some are optimized for configuration management while others are better for service orchestration.
 
@@ -32,7 +33,7 @@ Both Ansible and Terraform are tools for implementing Infrastructure as Code, al
 
 ## An Introduction to Terraform
 
-Terraform is an open source IaC tool that is very straightforward to use. Its main purpose is to build and scale network services and to manage the state of the network. Terraform does not specialize in software configuration, and does not install and manage software on existing devices. Instead, it is geared towards creating, modifying, and destroying servers. This means it is most commonly found in data centers and in *software-defined networking* (SDN) environments. It works effectively with both lower-level elements, including storage and networking devices, and higher-level *Software as a Service* (SaSS) entries. In terms of state management, it maps the actual resources back to the configuration, stores metadata, and improves network performance.
+Terraform is an open source IaC tool that is very straightforward to use. Its main purpose is to build and scale Cloud services and to manage the state of the network. Terraform does not specialize in software configuration, and does not install and manage software on existing devices. Instead, it is geared towards creating, modifying, and destroying servers and other Cloud resources. This means it is most commonly found in data centers and in *software-defined networking* (SDN) environments. It works effectively with both lower-level elements, including storage and networking devices, and higher-level *Software as a Service* (SaSS) entries. In terms of state management, it maps the actual resources back to the configuration, stores metadata, and improves network performance.
 
 ### The Main Uses for Terraform
 
