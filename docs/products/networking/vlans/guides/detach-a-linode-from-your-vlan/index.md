@@ -18,7 +18,7 @@ description: "If you no longer want a Linode to have access to a Virutal LAN''s 
 
 1. Click on the **Configurations** tab.
 
-1. Select the `Edit` button next to the configuration profile you'd like to detatch a VLAN from.
+1. Select the `Edit` button next to the configuration profile you'd like to detach a VLAN from.
 
 1. Find the `Network Interfaces` section.
 

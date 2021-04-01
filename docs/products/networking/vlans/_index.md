@@ -14,7 +14,7 @@ cascade:
 
 ## Availability
 
-Toronto, Canada; Mumbai, India; Sydney, Australia; Atlanata, GA, USA;
+Toronto, Canada; Mumbai, India; Sydney, Australia; Atlanta, GA, USA;
 
 ## Features
 
@@ -36,7 +36,7 @@ Private network transfer is free. Any communication between Linodes over the pri
 
 * If a Linode is attached to a Virtual LAN and you wish to migrate the Linode to a different data center region, ensure that the new data center region offers the Virtual LAN service. See the [Availability](#availability) section for details.
 
-    Once the Linode's data center migration is initiated, the Linode is automatically detached from its Virutal LAN. When the migration is complete, you must attach the migrated Linode to a Virtual LAN that resides within the Linode's new data center region.
+    Once the Linode's data center migration is initiated, the Linode is automatically detached from its Virtual LAN. When the migration is complete, you must attach the migrated Linode to a Virtual LAN that resides within the Linode's new data center region.
 
 ## Pricing
 
