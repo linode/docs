@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2014-07-20
 title: Linux Static IP Configuration
+h1_title: Linux Static IP Configuration
 tags: ["networking","linode platform"]
 ---
 
@@ -209,7 +210,7 @@ IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64"
 
 ### Debian
 
-Debian 7 through 9 all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolve.conf` because nothing will overwrite your changes if you reboot or restart networking services.
+Debian 7 and above all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolv.conf` because nothing will overwrite your changes if you reboot or restart networking services.
 
 Though systemd-networkd and systemd-resolved are both present in Debian 8 and 9, they're not enabled. If you decide to enable these systemd services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch and Container Linux](/docs/guides/linux-static-ip-configuration/#arch-coreos-container-linux). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 

@@ -1,5 +1,6 @@
 ---
 title: NodeBalancers
+description: "Linode multi-port NodeBalancers feature SSL termination, sticky sessions, passive health checks, and throttling to prevent potential abuse."
 tab_group_main:
     is_root: true
     title: Overview

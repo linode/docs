@@ -61,9 +61,9 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
         mkdir ~/lke-monitor && cd ~/lke-monitor
 
-1.  Add the Google stable Helm charts repository to your Helm repos:
+1.  Add the stable Helm charts repository to your Helm repos:
 
-        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+        helm repo add stable https://charts.helm.sh/stable
 
 1.  Update your Helm repositories:
 
