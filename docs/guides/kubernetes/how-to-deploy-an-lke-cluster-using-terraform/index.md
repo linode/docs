@@ -73,6 +73,14 @@ In this section, you will create Terraform configuration files that define the r
 1. Using the text editor of your choice, create your cluster’s main configuration file named `main.tf` which will store your resource definitions. Add the following contents to the file.
 
     {{< file "~/terraform/lke-cluster/main.tf" >}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
 //Use the Linode Provider
 provider "linode" {
   token = var.token
