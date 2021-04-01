@@ -1,12 +1,13 @@
 ---
 title: Cloud Manager
+description: "The Linode Cloud Manager gives you access to simple account management, user control and security, and performance monitoring; supports self-service data center migration; allows you to deploy one-click apps; and more."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Cloud Manager is a user and mobile-friendly interface to deploy and manage virtual machines, configure networking, and control user accounts."
+    product_description: "Cloud Manager is a user and mobile-friendly interface to deploy and manage virtual machines, configure networking, control user accounts, and access and configure the full range of Linode services."
 ---
 
 ## Availability
@@ -25,8 +26,8 @@ Advanced search helps you quickly find your Linode resources. Search using simpl
 
 Manage your account, update payment information, review credits remaining, and print invoices.
 
-### Deploy One-Click Apps
-Whether you want to set up a game server, your own VPN, or self-host your software with GitLab, One-Click Apps make it quick and easy to get up and running on your Linodes.
+### Deploy Marketplace Apps
+Whether you want to set up a game server, your own VPN, or self-host your software with GitLab, Marketplace Apps make it quick and easy to get up and running on your Linodes.
 
 ### Performance Monitoring
 Real-time analytics tracking, per-process and in aggregate, monitors the performance of your CPU, memory, and network bandwidth.

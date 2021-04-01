@@ -1,69 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-<style type="text/css">
-	.st0-bccdabbd6e9c7718ec46be071d2a8ed8{fill:#010101;}
-	.st1-bccdabbd6e9c7718ec46be071d2a8ed8{clip-path:url(#SVGID_2_);}
-	.st2-bccdabbd6e9c7718ec46be071d2a8ed8{fill:currentColor;}
-	.st3-bccdabbd6e9c7718ec46be071d2a8ed8{fill:none;stroke:#010101;stroke-width:1.2641;stroke-linecap:round;stroke-miterlimit:10;}
-</style>
-<title>highRAM</title>
-<g>
-	<g id="Layer_1-2">
-		<path class="st0-bccdabbd6e9c7718ec46be071d2a8ed8" d="M71.1,19.8H28.9c-5,0-9.1,4-9.1,9c0,0,0,0,0,0.1v42.1c0,5,4.1,9.1,9.1,9.1c0,0,0,0,0,0h42.1
-			c5,0,9.1-4.1,9.1-9.1l0,0V28.9C80.1,23.9,76.1,19.8,71.1,19.8C71.1,19.8,71.1,19.8,71.1,19.8z M77.1,70.7c0,3.5-2.8,6.3-6.3,6.3
-			H29.2c-3.5,0-6.3-2.8-6.3-6.3V29.2c0-3.5,2.8-6.3,6.3-6.3h41.6c3.5,0,6.3,2.8,6.3,6.3L77.1,70.7z"/>
-		<g>
-			<defs>
-				<path id="SVGID_1_" d="M30.1,27.4h39.9c1.5,0,2.7,1.2,2.7,2.7v39.9c0,1.5-1.2,2.7-2.7,2.7H30.1c-1.5,0-2.7-1.2-2.7-2.7V30.1
-					C27.4,28.6,28.6,27.4,30.1,27.4z"/>
-			</defs>
-			<clipPath id="SVGID_2_">
-				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-			</clipPath>
-			<g class="st1-bccdabbd6e9c7718ec46be071d2a8ed8">
-				<path class="st2-bccdabbd6e9c7718ec46be071d2a8ed8" d="M18.6,19.8v58.5h65.7V19.8H18.6z M40.1,66.4h-6.5V60h6.5V66.4z M40.1,53.2h-6.5v-6.5h6.5V53.2z M40.3,40
-					h-6.5v-6.5h6.5L40.3,40z M53,66.5h-6.5V60H53V66.5z M53,53.3h-6.5v-6.5H53V53.3z M53.2,40h-6.5v-6.5h6.5L53.2,40z M66.2,66.5
-					h-6.5V60h6.5V66.5z M66.2,53.3h-6.5v-6.5h6.5V53.3z M66.4,40h-6.5v-6.5h6.5V40z"/>
-			</g>
-		</g>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="29.5" x2="16.3" y2="29.5"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="34.7" x2="16.3" y2="34.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="39.8" x2="16.3" y2="39.8"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="44.9" x2="16.3" y2="44.9"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="50" x2="16.3" y2="50"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="55.1" x2="16.3" y2="55.1"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="60.2" x2="16.3" y2="60.2"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="65.3" x2="16.3" y2="65.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="10" y1="70.4" x2="16.3" y2="70.4"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="29.5" x2="83.7" y2="29.5"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="34.7" x2="83.7" y2="34.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="39.8" x2="83.7" y2="39.8"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="44.9" x2="83.7" y2="44.9"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="50" x2="83.7" y2="50"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="55.1" x2="83.7" y2="55.1"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="60.2" x2="83.7" y2="60.2"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="65.3" x2="83.7" y2="65.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="90" y1="70.4" x2="83.7" y2="70.4"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="70.4" y1="10" x2="70.4" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="65.3" y1="10" x2="65.3" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="60.2" y1="10" x2="60.2" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="55.1" y1="10" x2="55.1" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="50" y1="10" x2="50" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="44.9" y1="10" x2="44.9" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="39.8" y1="10" x2="39.8" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="34.7" y1="10" x2="34.7" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="29.5" y1="10" x2="29.5" y2="16.3"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="70.4" y1="90" x2="70.4" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="65.3" y1="90" x2="65.3" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="60.2" y1="90" x2="60.2" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="55.1" y1="90" x2="55.1" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="50" y1="90" x2="50" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="44.9" y1="90" x2="44.9" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="39.8" y1="90" x2="39.8" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="34.7" y1="90" x2="34.7" y2="83.7"/>
-		<line class="st3-bccdabbd6e9c7718ec46be071d2a8ed8" x1="29.5" y1="90" x2="29.5" y2="83.7"/>
-	</g>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" version="1.1" viewBox="0 0 100 100" xml:space="preserve">
+	<title>High Memory</title>
+  <g>
+    <path fill="#010101" d="M71.1 19.8H28.9c-5 0-9.1 4-9.1 9V71c0 5 4.1 9.1 9.1 9.1H71c5 0 9.1-4.1 9.1-9.1V28.9c0-5-4-9.1-9-9.1zm6 50.9c0 3.5-2.8 6.3-6.3 6.3H29.2c-3.5 0-6.3-2.8-6.3-6.3V29.2c0-3.5 2.8-6.3 6.3-6.3h41.6c3.5 0 6.3 2.8 6.3 6.3v41.5z"/>
+    <defs>
+      <path id="SVGID_1_bccdabbd6e9c7718ec46be071d2a8ed8" d="M30.1 27.4H70c1.5 0 2.7 1.2 2.7 2.7V70c0 1.5-1.2 2.7-2.7 2.7H30.1c-1.5 0-2.7-1.2-2.7-2.7V30.1c0-1.5 1.2-2.7 2.7-2.7z"/>
+    </defs>
+    <clipPath id="SVGID_2_bccdabbd6e9c7718ec46be071d2a8ed8">
+      <use overflow="visible" xlink:href="#SVGID_1_bccdabbd6e9c7718ec46be071d2a8ed8"/>
+    </clipPath>
+    <g clip-path="url(#SVGID_2_bccdabbd6e9c7718ec46be071d2a8ed8)">
+      <path fill="currentColor" d="M18.6 19.8v58.5h65.7V19.8H18.6zm21.5 46.6h-6.5V60h6.5v6.4zm0-13.2h-6.5v-6.5h6.5v6.5zm.2-13.2h-6.5v-6.5h6.5V40zM53 66.5h-6.5V60H53v6.5zm0-13.2h-6.5v-6.5H53v6.5zm.2-13.3h-6.5v-6.5h6.5V40zm13 26.5h-6.5V60h6.5v6.5zm0-13.2h-6.5v-6.5h6.5v6.5zm.2-13.3h-6.5v-6.5h6.5V40z"/>
+    </g>
+    <path d="M10 29.5h6.3M10 34.7h6.3M10 39.8h6.3M10 44.9h6.3M10 50h6.3M10 55.1h6.3M10 60.2h6.3M10 65.3h6.3M10 70.4h6.3M90 29.5h-6.3M90 34.7h-6.3M90 39.8h-6.3M90 44.9h-6.3M90 50h-6.3M90 55.1h-6.3M90 60.2h-6.3M90 65.3h-6.3M90 70.4h-6.3M70.4 10v6.3M65.3 10v6.3M60.2 10v6.3M55.1 10v6.3M50 10v6.3M44.9 10v6.3M39.8 10v6.3M34.7 10v6.3M29.5 10v6.3M70.4 90v-6.3M65.3 90v-6.3M60.2 90v-6.3M55.1 90v-6.3M50 90v-6.3M44.9 90v-6.3M39.8 90v-6.3M34.7 90v-6.3M29.5 90v-6.3" fill="none" stroke="#010101" stroke-width="1.2641" stroke-linecap="round" stroke-miterlimit="10"/>
+  </g>
 </svg>

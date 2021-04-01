@@ -19,13 +19,13 @@ external_resources:
 aliases: ['/platform/object-storage/how-to-use-object-storage/']
 ---
 
-![How to Use Linode Object Storage](how-to-use-linode-object-storage.png "How to Use Linode Object Storage")
+{{< youtube q88OKsr5l6c >}}
 
 {{< content "object-storage-ga-shortguide" >}}
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
-Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage (as in a Linode's disk) and [Block Storage Volumes](https://www.linode.com/docs/platform/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
+Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage (as in a Linode's disk) and [Block Storage Volumes](/docs/guides/platform/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
 
 Additionally, **Object Storage does not require the use of a Linode.** Instead, Object Storage gives each object a unique URL with which you can access the data. An object can be publicly accessible, or you can set it to be private and only visible to you. This makes Object Storage great for sharing and storing unstructured data like images, documents, archives, streaming media assets, and file backups, and the amount of data you store can range from small collections of files up to massive libraries of information. Lastly, Linode Object Storage has the built-in ability to [host a static site](/docs/platform/object-storage/host-static-site-object-storage/).
 
@@ -118,11 +118,15 @@ Limited Access Key Pairs can be used to assign limited access to a single bucket
 - `s3:PutReplicationConfiguration`
 - `s3:RestoreObject`
 
-Currently, Limited Access Key Pairs are only available using the [Linode API](https://developers.linode.com/api/v4/object-storage-keys/#post).
+Currently, Limited Access Key Pairs are only available using the [Linode API](/docs/api/object-storage/#object-storage-key-create).
 
 {{< note >}}
 Limited Access Keys are able to list all Buckets under the Linode user account. Limited access keys do not otherwise have access to buckets on a single user account.
 {{< /note >}}
+
+## Control Access with ACLs and Bucket Policies
+
+Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources. [Learn more about ACLs and bucket policies](/docs/guides/how-to-use-object-storage-acls-and-bucket-policies/).
 
 ## Bucket Names
 
@@ -138,13 +142,13 @@ Bucket names, also referred to as labels, need to be unique within the same clus
 
 ## Object Storage TLS/SSL Certificates
 
-Object storage supports the importing of custom [TLS/SSL Certificates](https://www.linode.com/docs/security/ssl/) in order to encrypt connections with your bucket in transit. Currently, you can Upload, View, or Delete TLS/SSL certificates using the following API Endpoints:
+Object storage supports the importing of custom [TLS/SSL Certificates](/docs/security/ssl/) in order to encrypt connections with your bucket in transit. Currently, you can Upload, View, or Delete TLS/SSL certificates using the following API Endpoints:
 
-- [Upload Object Storage TLS/SSL Cert](https://developers.linode.com/api/v4/object-storage-buckets-cluster-id-bucket-ssl/#post)
-- [View Object Storage TLS/SSL Cert](https://developers.linode.com/api/v4/object-storage-buckets-cluster-id-bucket-ssl/#get)
-- [Delete Object Storage TLS/SSL Cert](https://developers.linode.com/api/v4/object-storage-buckets-cluster-id-bucket-ssl/#delete)
+- [Upload Object Storage TLS/SSL Cert](/docs/api/object-storage/#object-storage-tlsssl-cert-upload)
+- [View Object Storage TLS/SSL Cert](/docs/api/object-storage/#object-storage-tlsssl-cert-view)
+- [Delete Object Storage TLS/SSL Cert](/docs/api/object-storage/#object-storage-tlsssl-cert-delete)
 
-Like all API endpoints, TLS/SSL certificates can additionally be added using the [Linode CLI](https://www.linode.com/docs/platform/api/linode-cli/).
+Like all API endpoints, TLS/SSL certificates can additionally be added using the [Linode CLI](/docs/platform/api/linode-cli/).
 
 For more information on Object Storage Certificates, including configuration options in the Linode Manager, see our [Guide for Custom Object Storage Certificates](/docs/platform/object-storage/enable-ssl-for-object-storage/)
 
@@ -221,7 +225,7 @@ Currently, the Linode CLI defaults to creating buckets in the Newark data center
   - `ap-south-1` for the Singapore data center.
 
 {{< note >}}
-You will need to use the `--cluster` option for every interaction with your bucket if it is not in `us-east-1`.
+You need to use the `--cluster` option for every interaction with your bucket if it is not in `us-east-1`.
 {{</ note >}}
 
 If the bucket has objects in it, you can not delete it from the Linode CLI immediately. Instead, remove the objects first, then delete the bucket. The [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) tool has commands for deleting all objects from a bucket, and it can also force-delete a bucket with objects in it.
@@ -541,7 +545,7 @@ To create a bucket in Cyberduck:
 
 ### Upload, Download, and Delete an Object with Cyberduck
 
-1.  To upload objects with Cyberduck, you can simply drag and drop the object, or directory of objects, to the bucket you'd like to upload them to, and Cyberduck will do the rest. Alternatively, you can click the **Action** button and select **Upload** from the menu:
+1.  To upload objects with Cyberduck, you can simply drag and drop the object, or directory of objects, to the bucket you'd like to upload them to, and Cyberduck does the rest. Alternatively, you can click the **Action** button and select **Upload** from the menu:
 
     ![Click the 'Action' button to use the file upload dialog.](object-storage-cyberduck-upload-menu.png)
 
@@ -577,7 +581,7 @@ To create a static site from the bucket:
 
 1.  You need to separately upload the `index.html` and `404.html` files (or however you have named the index and error pages) to the bucket. Follow the instructions from the [Upload, Download, and Delete an Object with Cyberduck](#upload-download-and-delete-an-object-with-cyberduck) section to upload these files.
 
-1.  The static site is accessed from a different URL than the generic URL for the Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center,  the `website-eu-central-1` subdomain for the Frankfurt data center, and the `website-ap-south-1` subdomain for the Singapore data center. Using `my-example-bucket` as an example, you would navigate to either:
+1.  The static site is accessed from a different URL than the generic URL for the Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, the `website-eu-central-1` subdomain for the Frankfurt data center, and the `website-ap-south-1` subdomain for the Singapore data center. Using `my-example-bucket` as an example, you would navigate to either:
 
     - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com` or

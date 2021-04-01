@@ -24,45 +24,45 @@ Maintaining your user Linode Cloud Manager accounts, passwords, and contact info
 You can grant other people access to your Linode Cloud Manager account by creating *users* and assigning *permissions* to restrict access to certain areas of the control panel. Adding users and configuring permissions is useful for groups that need to grant all team members access to the Linode Cloud Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information.
 
  {{< note >}}
-A single user was automatically created for your account when you signed up for Linode. If you will be the only person accessing the Linode Cloud Manager, you won't need to create any other users on your account.
+A single user was automatically created for your account when you signed up for Linode. If you are the only person accessing the Linode Cloud Manager, you do not need to create any other users on your account.
 {{< /note >}}
 
 ### Adding a User
 
 {{< content "accounts-add-users-shortguide" >}}
 
-### Permissions Explained
+### Setting User Permissions
 
-Setting permissions restricts a user's access to certain areas of the Linode Cloud Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don't worry--these settings aren't permanent. You can add or remove access for a user at any time in the future. User Permissions are divided into three categories. **Global Permissions**, **Billing Access Permissions**, and **Specific Permissions**.
+Setting permissions restricts a user's access to certain areas of the Linode Cloud Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don't worry--these settings aren't permanent. You can add or remove access for a user at any time in the future. User Permissions are divided into three categories. **Global Permissions**, **Billing Access**, and **Specific Permissions**.
 
 Here's how to set a user's access permissions:
 
 1.  Click the **Account** link in the sidebar.
-1.  Click the **Users** link.
-1.  Select the user from the list.
-1.  Select the **User Permissions** tab.
+1.  Click the **Users & Grants** tab.
+1.  Click the **User Permissions** link for the desired user.
+1.  Toggle the **Full Account Access** button off to limit the user's account access and show permission categories.
 
-    [![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions-small.png "Configure User permissions in the Linode Cloud Manager")](accounts-user-permissions.png)
+    ![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions.png "Configure User permissions in the Linode Cloud Manager")
 
 1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/), frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
 
     {{< note >}}
-Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
+Granting access to settings denoted with a dollar sign ($) allows the user to perform actions that incur billing costs, such as adding or resizing a Linode.
 {{< /note >}}
 
-1. Select an option for Billing Access permissions. These options are as follows:
+1. Select an option for **Billing Access** permissions. These options are as follows:
 
-  - **None**: The user will be unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous step.
-  - **Read Only**: The user can [View Billing Info](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), and will receive copies of all invoices. Will also receive emails related to payments.
-  - **Read-Write**: The user has full access to [Billing Information](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), can make payments, edit billing information, view billing information, will receive copies of all invoices, and will receive email related to payments.
+    - **None**: The user is unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous step.
+    - **Read Only**: The user can [View Billing Info](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), receive copies of all invoices, and receive emails related to payments.
+    - **Read-Write**: The user has full access to [Billing Information](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), can make payments, edit billing information, view billing information, receive copies of all invoices, and receive email related to payments.
 
-1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Permissions** section to allow the user to access individual Linodes, StackSripts, Block Storage Volumes, Images, NodeBalancers and Domains. Unlike Global Permissions, Specific Permissions can apply to individual resources and not the service as a whole. Specific Permission options are as follows:
+1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Permissions** section to allow the user to access individual Linodes, StackSripts, Block Storage Volumes, Images, NodeBalancers, and Domains. Unlike Global Permissions, Specific Permissions can apply to individual resources and not the service as a whole. Specific Permission options are as follows:
 
-    - **None**: The user will not be able to view or otherwise interact with the selected resource.
-    - **Read Only**: The user can view the resource and all of it's associated information typically visible within the Linode Manager, however they will not be able to otherwise interact with it any way.
+    - **None**: The user can not view or otherwise interact with the selected resource.
+    - **Read Only**: The user can view the resource and all of its associated information typically visible within the Linode Manager, however they can not otherwise interact with it through Cloud Manager.
     - **Read-Write**: The user has full access to the selected resource, and can make any changes that only an administrator is otherwise able to. This includes resource deletion, cloning, and all other applicable edits.
 
-1.  When you have finished configuring the user's permissions, click **Save**. The user's permissions will be saved and effective immediately.
+1.  When you have finished configuring the user's permissions, click **Save**. The user's permissions are saved and effective immediately.
 
 ### Recovering a Lost Username
 
@@ -80,17 +80,13 @@ Granting access to settings denoted with a dollar sign ($) will allow the user t
 
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.
 
-Both the *Account & Billing* and *My Profile* pages have an email address field. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both webpages. If there are multiple users, verify that the primary account holder's email address is current on the *Account* webpage.
+The **Billing Info** and **User & Grants** pages have email address fields. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both pages. If there are multiple users, verify that the primary account holder's email address is current on the **Billing Info** page.
 
-{{< note >}}
-Only unrestricted users can receive threshold notification emails.
-{{</ note >}}
-
-### Updating Contact Information
+### Updating Billing Contact Information
 
 {{< content "accounts-update-contact-info-shortguide" >}}
 
-### Changing Your Email Address
+### Changing Your User Email Address
 
 {{< content "accounts-change-email-shortguide" >}}
 

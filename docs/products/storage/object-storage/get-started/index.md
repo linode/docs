@@ -1,5 +1,6 @@
 ---
 title: Get Started
+description: "Get Started with Linode Object Storage. Learn how to enable Object Storage, create an Object Storage key pair, create a bucket, upload an object to a bucket, and cancel Object Storage."
 tab_group_main:
     weight: 20
 ---
@@ -73,6 +74,9 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
       {{< note >}}
 Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](#s3cmd) and [cyberduck](#cyberduck) do this for you automatically if a file exceeds this limit as part of the uploading process.
 {{< /note >}}
+
+      {{< note >}}
+You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).{< /note >}}
 
 ## Cancel Object Storage
 
