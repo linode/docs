@@ -7,7 +7,7 @@ tab_group_main:
 
 {{< content "vlans-beta-note-shortguide" >}}
 
-Vlans are created and implemented via three different methods when using the Linode Cloud Manager. These methods are as follows:
+VLANs are created and implemented via three different methods when using the Linode Cloud Manager. These methods are as follows:
 
 - As part of the configuration when [Creating a New Linode](#creating-or-applying-a-vlan-when-creating-a-linode).
 - By creating a new [Configuration Profile](#creating-or-applying-a-vlan-when-creating-a-linode).
@@ -30,7 +30,7 @@ For more information on the configuration options that appear when creating a Li
 1. Complete the Linode Creation form with any additional add-ons and settings you'd like to add, and select the `Create Linode` button to complete the Linode creation process.
 
 {{< note >}}
-When creating or applying a pre-existing vlan to a new Linode, the eth0 interface will always be accessible both to and from the public internet by default. This can be changed at any time by editing the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile)
+When creating or applying a pre-existing VLAN to a new Linode, the eth0 interface will always be accessible both to and from the public internet by default. This can be changed at any time by editing the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile)
 {{< /note >}}
 
 ## Adding a VLAN When Creating a New Configuration Profile
