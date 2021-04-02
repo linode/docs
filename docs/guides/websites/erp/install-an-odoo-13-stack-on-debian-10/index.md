@@ -1,4 +1,5 @@
 ---
+slug: install-an-odoo-13-stack-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
@@ -63,7 +64,7 @@ If you want to configure a firewall for your Linodes, open the following ports:
 | Odoo 13 application | `22, 6010, 5432, 8069` |
 | PostgreSQL database | `22, 6010, 5432` |
 
-Ports `22`, `80`, and `5432` are the defaults for SSH, HTTP, and PostgreSQL communications, respectively. Port `6010` is used for Odoo communications and port `8069` is used by Odoo's webserver. 
+Ports `22`, `80`, and `5432` are the defaults for SSH, HTTP, and PostgreSQL communications, respectively. Port `6010` is used for Odoo communications and port `8069` is used by Odoo's webserver.
 
 A convenient way to open these ports is by using `ufw`, however, this utility is not installed by default. If you want, you can install `ufw` with the following command:
 
