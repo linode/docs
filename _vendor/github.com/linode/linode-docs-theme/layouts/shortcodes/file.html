@@ -1,0 +1,14 @@
+<dl class="file font-mono pull-out">
+  {{ if .Params }}
+    {{ if gt (len .Params ) 0 }}
+      <dt class="bg-titlecolor px-8 py-4 text-white font-normal">
+        File: {{ .Get 0 }}
+        {{ if gt (len .Params ) 1 }}{{ end }}
+      </dt>
+    {{ end }}
+  {{ end }}
+  <dd class="font-mono">
+    {{ $style := .Get 1 | default "bash" }}
+    		{{- highlight (trim $.Inner "\n" )  $style "linenos=table" -}}
+  </dd>
+</dl>

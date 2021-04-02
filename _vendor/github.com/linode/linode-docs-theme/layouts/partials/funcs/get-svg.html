@@ -1,0 +1,3 @@
+{{ $outpath := .outpath | default .path }}
+{{ $r := resources.Get .path  | resources.ExecuteAsTemplate $outpath  .class }}
+{{ return $r }}

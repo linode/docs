@@ -1,0 +1,35 @@
+<div class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4">
+  <div class="text-white text-sm md:text-lg font-regular tracking-normal w-3/4">
+    <span>
+      {{ if and ($.Params.promo_code) ($.Params.promo_code_amount) }}
+        Use promo code
+        <strong>
+          {{ $.Params.promo_code }}
+        </strong>
+        for ${{ $.Params.promo_code_amount }} credit on
+        <a href="https://login.linode.com/signup?promo={{ $.Params.promo_code }}">
+          a new account
+        </a>
+        .
+      {{ else }}
+        <a href="https://login.linode.com/signup?promo={{ $.Site.Params.promo_code }}" class="font-semibold text-white">
+          Try this guide
+        </a>
+        to receive ${{ $.Site.Params.promo_code_amount | default 20 }} at signup on a new account.
+      {{ end }}
+    </span>
+  </div>
+  <div>
+    <form action="https://login.linode.com/signup">
+      {{ if and ($.Params.promo_code) ($.Params.promo_code_amount) }}
+        <input type="hidden" name="promo" value="{{ $.Params.promo_code }}" />
+      {{ else }}
+        <input type="hidden" name="promo" value="{{ $.Site.Params.promo_code }}" />
+      {{ end }}
+      <button type="submit" target="_blank" class="bg-transparent hover:bg-green-500 text-white text-sm font-semibold py-2 px-4 border border-white hover:border-transparent rounded">
+        Sign
+        Up
+      </button>
+    </form>
+  </div>
+</div>
