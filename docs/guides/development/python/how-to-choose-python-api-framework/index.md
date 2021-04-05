@@ -128,7 +128,7 @@ From bottle import run, route
 
 @route(‘/’)
 def index():
-	return ('<h1>Hello, world!</h1>')
+    return ('<h1>Hello, world!</h1>')
 {{</ file >}}
 
 When using Bottle, anything beyond route definition requires either a from-scratch implementation or the inclusion of another dependency. This is the case for templates, database integrations, and asynchronous operations.
