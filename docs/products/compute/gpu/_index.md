@@ -12,7 +12,7 @@ cascade:
 
 ## Availability
 
-Newark, NJ, United States; Mumbai, India
+Newark, NJ, United States; Mumbai, India; Frankfurt, Germany;
 
 ## Features
 
