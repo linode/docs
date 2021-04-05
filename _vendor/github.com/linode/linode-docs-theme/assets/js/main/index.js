@@ -12,7 +12,7 @@ import {
 import { newHomeController } from './sections/home/home';
 import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
 import { newSectionsController } from './sections/sections/index';
-import { newOnIntersectionController } from './components/index';
+import { newOnIntersectionController, initConsentManager } from './components/index';
 import { sendEvent } from './helpers/index';
 
 // Set up the AlpineJS controllers
@@ -58,9 +58,12 @@ window.lnh = {
 		//  Alpine.listenForNewUninitializedComponentsAtRunTime()
 	};
 
-	// Hide JS-powered blocks on browsers with JavaScript disabled.
 	document.addEventListener('turbolinks:load', function(event) {
+		// Hide JS-powered blocks on browsers with JavaScript disabled.
 		document.body.classList.remove('no-js');
+
+		// Init the TrustArc
+		initConsentManager();
 	});
 
 	// Prevent turbolinks from handling anchor links.

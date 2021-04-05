@@ -1,4 +1,4 @@
-import { sanitizeHTML } from '../helpers/index';
+import { normalizeSpace } from '../helpers/index';
 
 interface Query {
 	// May be set to identify the target _view.
@@ -180,7 +180,7 @@ export class QueryHandler {
 					q._view = v;
 					break;
 				case 'q':
-					q.qv = sanitizeHTML(v);
+					q.qv = normalizeSpace(v);
 					break;
 				default:
 					setQueryValues(q, k, v.split(','));
@@ -201,7 +201,7 @@ export class QueryHandler {
 					break;
 				case 'q':
 					if (typeof v === 'string') {
-						q.qv = v.replace(/\n/g, '');
+						q.qv = normalizeSpace(v);
 					} else {
 						throw `unkown filter key ${k}`;
 					}

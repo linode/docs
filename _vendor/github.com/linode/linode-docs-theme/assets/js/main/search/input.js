@@ -65,15 +65,18 @@ export function newSearchInputController() {
 	};
 
 	self.dispatch = function() {
+		if (!this.searchOpen) {
+			return;
+		}
 		let input = this.$refs.searchInput;
 		let queryString = input.innerText.trim();
-		this.searchOpen = true;
 		dispatcher.applySearchFilters({ filters: { q: queryString }, triggerSearch: true });
 	};
 
 	self.close = function() {
 		this.$refs.searchInput.innerHTML = '';
 		this.searchOpen = false;
+		this.setFocus(false);
 		dispatcher.searchToggle(false);
 	};
 
@@ -89,6 +92,9 @@ export function newSearchInputController() {
 		if (!this.searchOpen) {
 			this.searchOpen = true;
 			this.dispatch();
+			let input = this.$refs.searchInput;
+			input.focus();
+			this.setFocus(true);
 		}
 	};
 
@@ -116,29 +122,44 @@ export function newSearchInputController() {
 		}
 
 		let inputWords = text.split(/(\s+)/);
-		var formattedWords = [];
 		var counter = 0;
 
 		// eslint-disable-next-line quotes
 		const timesIcon = `<svg class="fill-current text-white ml-1 h-4 w-4"><use href="#icon--times"></use></svg>`;
+
+		// Preserve cursor state.
+		var restore = saveSelection(input);
+		input.innerHTML = '';
+
+		const createEl = function(str) {
+			let root = document.createElement('root');
+			root.innerHTML = str;
+			return root.firstChild;
+		};
 
 		inputWords.forEach((word) => {
 			if (word.length >= 2 && self.matchedWords.has(word.toLowerCase())) {
 				counter++;
 				let id = `w${counter}`;
 				let classes = 'bg-brand text-white font-semibold pl-3 pr-2 py-2 capitalize rounded';
-				let button = `<button class="pl-1" @click.once="closeWord('${id}')">${timesIcon}</button>`;
-
-				formattedWords.push(
-					`<span x-ref="${id}" class="${classes}"><span class="inline-flex items-center"><span>${word}</span>${button}</span></span>`
-				);
+				let button = createEl(`<button class="pl-1" @click.once="closeWord('${id}')">${timesIcon}</button>`);
+				let span1 = createEl(`<span x-ref="${id}" class="${classes}"></span>`);
+				let span2 = createEl(`<span class="inline-flex items-center"></span>`);
+				let span3 = document.createElement('span');
+				// Setting innerText on a span is safe.
+				span3.innerText = word;
+				span3.appendChild(button);
+				span2.appendChild(span3);
+				span1.appendChild(span2);
+				input.appendChild(span1);
 			} else {
-				formattedWords.push(`<span class="py-2">${word}</span>`);
+				let span = createEl(`<span class="py-2"></span>`);
+				// Setting innerText on a span is safe.
+				span.innerText = word;
+				input.appendChild(span);
 			}
 		});
 
-		var restore = saveSelection(input);
-		input.innerHTML = formattedWords.join('');
 		restore();
 	};
 
