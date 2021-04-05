@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.87.0
+  version: 4.89.0
 
   title: Linode API
   description: |
@@ -550,12 +550,16 @@ paths:
       tags:
       - Account
       summary: Credit Card Add/Edit
-      description: >
+      description: |
         Adds/edit credit card information to your Account.
 
         Only one credit card can be associated with your Account, so using this
         endpoint will overwrite your currently active card information with the
         new credit card.
+
+        To use this endpoint, you must have a valid `zip` entered for your Account.
+        Use the Account Update ([PUT /account](/docs/api/account/#account-update))
+        endpoint to enter a new zip code.
       operationId: createCreditCard
       x-linode-cli-action: update-card
       security:
@@ -1971,7 +1975,7 @@ paths:
 
         1. Linodes must not:
 
-            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+            * be assigned to a NodeBalancer, Firewall, VLAN, or Managed Service.
 
             * have any attached Block Storage Volumes.
 
@@ -2152,7 +2156,7 @@ paths:
 
         1. Linodes must not:
 
-            * be assigned to a NodeBalancer, Firewall, or Managed Service.
+            * be assigned to a NodeBalancer, Firewall, VLAN, or Managed Service.
 
             * have any attached Block Storage Volumes.
 
@@ -3699,111 +3703,68 @@ paths:
           application/json:
             schema:
               required:
-              - type
-              - region
+                - type
+                - region
+                - purpose
               type: object
+              allOf:
+                - $ref: '#/components/schemas/LinodeRequest'
               properties:
-                  backup_id:
-                    type: integer
-                    example: 1234
-                    description: |
-                      A Backup ID from another Linode's available backups. Your User must have
-                      `read_write` access to that Linode, the Backup must have a `status` of
-                      `successful`, and the Linode must be deployed to the same `region` as the Backup.
-                      See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
-                      for a Linode's available backups.
+                backup_id:
+                  type: integer
+                  example: 1234
+                  description: |
+                    A Backup ID from another Linode's available backups. Your User must have
+                    `read_write` access to that Linode, the Backup must have a `status` of
+                    `successful`, and the Linode must be deployed to the same `region` as the Backup.
+                    See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
+                    for a Linode's available backups.
 
-                      This field and the `image` field are mutually exclusive.
-                  backups_enabled:
-                    type: boolean
-                    description: |
-                      If this field is set to `true`, the created Linode will automatically be
-                      enrolled in the Linode Backup service. This will incur an additional charge.
-                      The cost for the Backup service is dependent on the Type of Linode deployed.
+                    This field and the `image` field are mutually exclusive.
+                backups_enabled:
+                  type: boolean
+                  description: |
+                    If this field is set to `true`, the created Linode will automatically be
+                    enrolled in the Linode Backup service. This will incur an additional charge.
+                    The cost for the Backup service is dependent on the Type of Linode deployed.
 
-                      This option is always treated as `true` if the account-wide `backups_enabled`
-                      setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
-                      for more information.
+                    This option is always treated as `true` if the account-wide `backups_enabled`
+                    setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
+                    for more information.
 
-                      Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
-                  swap_size:
-                    type: integer
-                    example: 512
-                    description: >
-                      When deploying from an Image, this field is optional, otherwise it is ignored.
-                      This is used to set the swap disk size for the newly-created Linode.
-                    default: 512
-                  type:
-                    type: string
-                    description: >
-                      The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
-                      you are creating.
-                    example: g6-standard-2
-                  region:
-                    type: string
-                    description: >
-                      The [Region](/docs/api/regions/#regions-list) where the Linode
-                      will be located.
-                    example: us-east
-                  image:
-                    type: string
-                    description: >
-                      An Image ID to deploy the Disk from. Official Linode
-                      Images start with `linode/ `, while your Images start
-                      with `private/`.
-
-                      See [/images](/docs/api/images/) for more information
-                      on the Images available for you to use.
-                    example: linode/debian9
-                  root_pass:
-                    $ref: '#/components/schemas/DiskRequest/properties/root_pass'
-                  authorized_keys:
-                    type: array
-                    description: >
-                      A list of SSH public keys to deploy for the root user on
-                      the newly-created Linode.  Only accepted if `image` is
-                      provided.
-                    items:
-                      type: string
-                  stackscript_id:
-                    type: integer
-                    description: >
-                      The StackScript to deploy to the newly-created Linode.  If
-                      provided, "image" must also be provided, and must be an
-                      Image that is compatible with this StackScript.
-                    example: 10079
-                  stackscript_data:
-                    type: object
-                    description: >
-                      An object containing responses to any User Defined Fields
-                      present in the StackScript being deployed to this Linode.
-                      Only accepted if `stackscript_id` is given.  The required
-                      values depend on the StackScript being deployed.
-                  booted:
-                    type: boolean
-                    description: >
-                      Whether to boot this Linode after the deploy is complete.
-                      Defaults to true if `image` is provided. Not accepted
-                      if not deploying from an Image.
-                  label:
-                    $ref: '#/components/schemas/Linode/properties/label'
-                  tags:
-                    $ref: '#/components/schemas/Linode/properties/tags'
-                  group:
-                    $ref: '#/components/schemas/Linode/properties/group'
-                  private_ip:
-                    type: boolean
-                    description: >
-                      If true, the created Linode will have private networking enabled.
-                    example: true
-                  authorized_users:
-                    type: array
-                    description: >
-                      A list of usernames. If the usernames have associated
-                      SSH keys, the keys will be appended to the root users
-                      `~/.ssh/authorized_keys` file automatically.
-                    items:
-                      type: string
+                    Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
+                swap_size:
+                  type: integer
+                  example: 512
+                  description: >
+                    When deploying from an Image, this field is optional, otherwise it is ignored.
+                    This is used to set the swap disk size for the newly-created Linode.
+                  default: 512
+                type:
+                  type: string
+                  description: >
+                    The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
+                    you are creating.
+                  example: g6-standard-2
+                region:
+                  type: string
+                  description: >
+                    The [Region](/docs/api/regions/#regions-list) where the Linode
+                    will be located.
+                  example: us-east
+                label:
+                  $ref: '#/components/schemas/Linode/properties/label'
+                tags:
+                  $ref: '#/components/schemas/Linode/properties/tags'
+                group:
+                  $ref: '#/components/schemas/Linode/properties/group'
+                private_ip:
+                  type: boolean
+                  description: >
+                    If true, the created Linode will have private networking enabled and assigned a private IPv4 address.
+                  example: true
+                interfaces:
+                  $ref: '#/components/schemas/LinodeConfigInterfaces'
       responses:
         '200':
           description: >
@@ -3829,6 +3790,18 @@ paths:
                 "stackscript_data": {
                   "gh_username": "linode"
                 },
+                "interfaces": [
+                  {
+                    "purpose": "public",
+                    "label": "",
+                    "ipam_address": ""
+                  },
+                  {
+                    "purpose": "vlan",
+                    "label": "vlan-1",
+                    "ipam_address": "10.0.0.1/24"
+                  }
+                ],
                 "authorized_keys": [
                   "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer"
                 ],
@@ -4678,6 +4651,18 @@ paths:
                 "memory_limit": 2048,
                 "run_level": "default",
                 "virt_mode": "paravirt",
+                "interfaces": [
+                  {
+                    "purpose": "public",
+                    "label": "",
+                    "ipam_address": ""
+                  },
+                  {
+                    "purpose": "vlan",
+                    "label": "vlan-1",
+                    "ipam_address": "10.0.0.1/24"
+                  }
+                ],
                 "helpers": {
                   "updatedb_disabled": true,
                   "distro": true,
@@ -4829,6 +4814,8 @@ paths:
 
                     * If the device specified at the root device location is not mounted,
                     the Linode will not boot until a device is mounted.
+                interfaces:
+                  $ref: '#/components/schemas/LinodeConfig/properties/interfaces'
       x-code-samples:
       - lang: Shell
         source: >
@@ -4840,6 +4827,18 @@ paths:
                 "memory_limit": 2048,
                 "run_level": "default",
                 "virt_mode": "paravirt",
+                "interfaces": [
+                  {
+                    "purpose": "public",
+                    "label": "",
+                    "ipam_address": ""
+                  },
+                  {
+                    "purpose": "vlan",
+                    "label": "vlan-1",
+                    "ipam_address": "10.0.0.1/24"
+                  }
+                ],
                 "helpers": {
                   "updatedb_disabled": true,
                   "distro": true,
@@ -10668,6 +10667,73 @@ paths:
           linode-cli firewalls rules-update 123 \
             --inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
             --outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
+  /networking/vlans:
+    x-linode-cli-command: networking
+    get:
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Networking
+      summary: VLANs List
+      description: |
+        Returns a list of all Virtual Local Area Networks (VLANs) on your Account. VLANs provide
+        a mechanism for secure communication between two or more Linodes that are assigned to the
+        same VLAN and are both within the same Layer 2 broadcast domain.
+
+        VLANs are created and attached to Linodes by using the `interfaces` property for the following endpoints:
+
+        - Linode Create ([POST /linode/instances](/docs/api/linode-instances/#linode-create))
+        - Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create))
+        - Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update))
+
+        To detach a Linode from a VLAN, [update](/docs/api/linode-instances/#configuration-profile-update) the Configuration Profile to remove the associated interface or [delete](/docs/api/linode-instances/#configuration-profile-delete) the Configuration Profile, then reboot the Linode. Alternatively, you can [delete](/docs/api/linode-instances/#linode-delete) the Linode.
+
+        **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
+        If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
+        the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
+        you will be prompted to select a different data center or contact support.
+
+        **Beta**: This endpoint is in beta. Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future. This notice will be removed when this endpoint is out of
+        beta.
+      operationId: getVLANs
+      x-linode-cli-action: vlans-list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: The VLANs available on this Account.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vlans'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/networking/vlans/
+      - lang: CLI
+        source: >
+          linode-cli networking vlans-list
   /nodebalancers:
     x-linode-cli-command: nodebalancers
     get:
@@ -15528,9 +15594,12 @@ components:
           example: E1AF5EEC-526F-487D-B317EBEB34C87D71
         zip:
           type: string
-          description: The zip code of this Account's billing address.
-          maxLength: 16
-          example: 19102
+          description: |
+            The zip code of this Account's billing address. The following restrictions apply:
+
+            - May only consist of letters, numbers, spaces, and hyphens.
+            - Must not contain more than 9 letter or number characters.
+          example: 19102-1234
     AccountSettings:
       type: object
       description: Account Settings object
@@ -15741,7 +15810,7 @@ components:
             A list of the disks that are part of the Backup.
     CreditCard:
       type: object
-      description: >
+      description: |
         An object representing the credit card information you have on file with
         Linode to make Payments against your Account.
       required:
@@ -15858,7 +15927,6 @@ components:
         size:
           x-linode-filterable: true
           type: integer
-          readOnly: true
           description: The size of the Disk in MB.
           example: 48640
           x-linode-cli-display: 4
@@ -15900,9 +15968,7 @@ components:
       - label
       properties:
         size:
-          x-linode-filterable: true
-          type: integer
-          example: 48640
+          $ref: '#/components/schemas/Disk/properties/size'
         label:
           $ref: '#/components/schemas/Disk/properties/label'
         filesystem:
@@ -15916,7 +15982,7 @@ components:
           type: string
           description: >
             An Image ID to deploy the Disk from. Official Linode Images start with
-            `linode/ `, while your Images start with `private/`.
+            `linode/`, while your Images start with `private/`.
 
             See [/images](/docs/api/images/#images-list) for more information on the Images available for you to use.
           example: linode/debian9
@@ -15927,9 +15993,11 @@ components:
           writeOnly: true
           example:
           - ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer
-          description: >
+          description: |
             A list of public SSH keys that will be automatically appended
             to the root user's `~/.ssh/authorized_keys` file.
+
+            Only accepted if `image` is provided.
         authorized_users:
           type: array
           items:
@@ -15939,9 +16007,9 @@ components:
           - myUser
           - secondaryUser
           description: >
-            A list of usernames that will have their SSH keys,
-            if any, automatically appended to the root user's
-            `~/.ssh/authorized_keys` file.
+            A list of usernames. If the usernames have associated
+            SSH keys, the keys will be appended to the root users
+            `~/.ssh/authorized_keys` file automatically.
         root_pass:
           type: string
           format: password
@@ -15968,7 +16036,7 @@ components:
           description: |
             This field is required only if the StackScript being deployed requires input
             data from the User for successful completion. See
-            <a target="_top" href="/docs/platform/stackscripts/#variables-and-udfs">Variables and UDFs</a>
+            [User Defined Fields (UDFs)](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs)
             for more details. This field is required to be valid JSON.
     Domain:
       type: object
@@ -17305,6 +17373,84 @@ components:
           x-linode-cli-color:
             None: black
             default_: white
+    LinodeConfigInterface:
+      type: object
+      description: >
+        The Network Interface to apply to this Linode's configuration profile.
+      properties:
+        label:
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: '/[a-z0-9-]+/'
+          x-linode-filterable: true
+          nullable: true
+          description: |
+            The name of this interface.
+
+            Required for `vlan` purpose interfaces. Must be an empty string or `null` for `public` purpose interfaces.
+
+            If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
+
+            May only consist of ASCII letters, numbers, and dashes (`-`).
+
+            Must be unique among the Linode's interfaces.
+          example: example-interface
+        ipam_address:
+          type: string
+          format: ip/netmask
+          nullable: true
+          description: |
+            This Network Interface's private IP address in Classless Inter-Domain Routing (CIDR) notation.
+
+            Only used for `vlan` purpose interfaces. Must be an empty string or `null` for `public` purpose interfaces.
+
+            The Linode is configured to use this address for the associated interface upon reboot if Network Helper is enabled. If Network Helper is disabled, the address can be enabled with [manual static IP configuration](/docs/guides/linux-static-ip-configuration/).
+
+            Must be unique among the Linode's interfaces.
+          example: '10.0.0.1/24'
+        purpose:
+          type: string
+          enum:
+            - public
+            - vlan
+          description: |
+            The type of interface.
+
+            * `public`
+              * Only one `public` interface per Linode can be defined.
+              * The Linode's default public IPv4 address is assigned to the `public` interface.
+              * A Linode must have a `public` interface in the first/eth0 position to be reachable via the public internet upon boot without additional required configuration.
+              * If no `public` interface is defined, the Linode is not reachable via the public internet; access can only be established via LISH or other Linodes connected to the same VLAN.
+
+            * `vlan`
+              * Configuring a `vlan` purpose interface attaches this Linode to the VLAN with the specified `label`.
+              * The Linode is configured to use the specified `ipam_address`, if any.
+          example: vlan
+    LinodeConfigInterfaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/LinodeConfigInterface'
+      description: |
+        An array of Network Interfaces to add to this Linode's Configuration Profile.
+
+        Up to three interface objects can be entered in this array. The position in the array determines the interface to which the settings apply:
+
+        - First/0:  eth0
+        - Second/1: eth1
+        - Third/2:  eth2
+
+        When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
+
+        **Note:** Changes to Linode interface configurations can be enabled by rebooting the Linode.
+
+        **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
+        If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
+        the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
+        you will be prompted to select a different data center or contact support.
+
+        **Beta**: The VLAN feature is in beta. Please make be aware that this feature may receive breaking updates in
+        the future. This notice will be removed when this feature is out of beta.
     Invoice:
       type: object
       description: Account Invoice object
@@ -17814,36 +17960,43 @@ components:
           readOnly: true
     Linode:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/LinodeBase'
       properties:
         label:
           x-linode-filterable: true
           x-linode-cli-display: 2
-          description: >
+          type: string
+          description: |
             The Linode's label is for display purposes only. If no label is provided for a Linode,
             a default will be assigned.
 
             Linode labels have the following constraints:
 
-              * Must start with an alpha character.
+              * Must begin and end with an alphanumeric character.
               * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
               * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
+          example: linode123
+          minLength: 3
+          maxLength: 32
+          pattern: '^[a-zA-Z]((?!--|__|..)[a-zA-Z0-9-_.])+$'
         region:
+          type: string
           x-linode-filterable: true
           readOnly: true
           description: >
-            This is the location where the Linode was deployed. A Linode's region can only be changed by
+            This is the [Region](/docs/api/regions/#regions-list) where the Linode was deployed. A Linode's region can only be changed by
             initiating a [cross data center migration](/docs/api/linode-instances/#dc-migrationpending-host-migration-initiate).
-          x-linode-cli-display: 4
+          x-linode-cli-display: 3
+          example: us-east
         image:
           x-linode-filterable: true
           readOnly: true
           nullable: true
           allOf:
           - $ref: '#/components/schemas/DiskRequest/properties/image'
-          x-linode-cli-display: 6
+          x-linode-cli-display: 5
+          example: linode/debian10
         type:
+          type: string
           readOnly: true
           description: >
             This is the [Linode Type](/docs/api/linode-types/#types-list) that this
@@ -17851,7 +18004,8 @@ components:
 
             To change a Linode's Type, use
             [POST /linode/instances/{linodeId}/resize](/docs/api/linode-instances/#linode-resize).
-          x-linode-cli-display: 5
+          x-linode-cli-display: 4
+          example: g6-standard-1
         group:
           deprecated: true
           type: string
@@ -17899,7 +18053,7 @@ components:
           - cloning
           - restoring
           - stopped
-          x-linode-cli-display: 7
+          x-linode-cli-display: 6
           x-linode-cli-color:
               running: green
               offline: red
@@ -17930,7 +18084,8 @@ components:
           items:
             type: string
           example:
-            - 123.45.67.890
+            - 203.0.113.1
+            - 192.0.2.1
           readOnly: true
           description: |
             This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address
@@ -17940,7 +18095,7 @@ components:
 
             IPv4 addresses may be reassigned between your Linodes, or shared with other Linodes.
             See the [/networking](/docs/api/networking/) endpoints for details.
-          x-linode-cli-display: 10
+          x-linode-cli-display: 7
         ipv6:
           type: string
           format: ipv6/128
@@ -18127,41 +18282,12 @@ components:
             To prevent a loop, Lassie will give up if there have been more than 5 boot
             jobs issued within 15 minutes.
           example: true
-    LinodeBase:
-      type: object
-      description: Common properties for Linode Request and Response objects.
-      properties:
-        label:
-          type: string
-          description: >
-            The Linode's label is for display purposes only. If no label is provided for a Linode,
-            a default will be assigned.
-
-            Linode labels have the following constraints:
-
-              * Must begin and end with an alphanumeric character.
-              * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
-              * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
-          example: linode123
-          minLength: 3
-          maxLength: 32
-          pattern: '^[a-zA-Z]((?!--|__|..)[a-zA-Z0-9-_.])+$'
-        group:
-          deprecated: true
-          type: string
-          x-linode-filterable: true
-          description: >
-            A deprecated property denoting a group label for this Linode.
-          example: "Linode-Group"
-        type:
-          $ref: '#/components/schemas/LinodeType/properties/id'
-        region:
-          $ref: '#/components/schemas/Region/properties/id'
     LinodeConfig:
       type: object
       required:
       - label
       - devices
+      - purpose
       properties:
         id:
           type: integer
@@ -18207,6 +18333,8 @@ components:
           - paravirt
           - fullvirt
           example: paravirt
+        interfaces:
+          $ref: '#/components/schemas/LinodeConfigInterfaces'
         helpers:
           type: object
           description: Helpers enabled when booting to this Linode Config.
@@ -18777,16 +18905,20 @@ components:
           x-linode-cli-display: 2
         api_key:
           type: string
-          description: >
+          description: |
             The API key for this Client, used when configuring the Longview
             Client application on your Linode.
+
+            Returns as `[REDACTED]` if you do not have read-write access to this client.
           example: BD1B4B54-D752-A76D-5A9BD8A17F39DB61
           readOnly: true
         install_code:
           type: string
-          description: >
+          description: |
             The install code for this Client, used when configuring the Longview
             Client application on your Linode.
+
+            Returns as `[REDACTED]` if you do not have read-write access to this client.
           example: BD1B5605-BF5E-D385-BA07AD518BE7F321
           readOnly: true
           x-linode-cli-display: 4
@@ -21442,6 +21574,47 @@ components:
           description: >
             The public SSH Key, which is used to authenticate to the root user
             of the Linodes you deploy.
+    Vlans:
+      type: object
+      description: >
+       A virtual local area network (VLAN) associated with your Account.
+      properties:
+        label:
+          type: string
+          description: The name of this VLAN.
+          example: vlan-example
+          readOnly: true
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+        region:
+          type: string
+          description: |
+            This VLAN's data center region.
+
+            **Note:** Currently, a VLAN can only be assigned to a Linode
+            within the same data center region.
+          example:  ap-west
+          readOnly: true
+          x-linode-cli-display: 1
+          x-linode-filterable: true
+        linodes:
+          type: array
+          description: >
+            An array of Linode IDs attached to this VLAN.
+          items:
+            type: integer
+          x-linode-cli-display: 3
+          readOnly: true
+          example:
+            - 111
+            - 222
+        created:
+          type: string
+          format: date-time
+          description: >
+            The date this VLAN was created.
+          example: "2020-01-01T00:01:01"
+          readOnly: true
     Volume:
       type: object
       required:
