@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "How to Deploy a Shadowsocks Server with Marketplace Apps"
 h1_title: "Deploying a Shadowsocks Server with Marketplace Apps"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:

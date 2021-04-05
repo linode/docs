@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.86.1
+  version: 4.87.0
 
   title: Linode API
   description: |
@@ -1949,14 +1949,11 @@ paths:
         transfer token and instructions on completing the transfer.
 
         When a transfer is [accepted](/docs/api/account/#service-transfer-accept), the requested services are moved to
-        the receiving account. Linode services will not experience interruptions due to the transfer process, but
-        please take note of the following:
+        the receiving account. Linode services will not experience interruptions due to the transfer process. Backups
+        for Linodes are transferred as well.
 
-        - If any of the Linodes included in the request have Backups enabled, that data and associated costs will be
-        removed/cancelled.
-
-        - DNS records will not be transferred or updated. Please ensure that DNS records have been updated or
-        communicated to the recipient prior to the transfer.
+        DNS records that are associated with requested services will not be transferred or updated. Please ensure that
+        associated DNS records have been updated or communicated to the recipient prior to the transfer.
 
         A transfer can take up to three hours to complete once accepted. When a transfer is
         completed, billing for transferred services ends for the sending account and begins for the receiving account.
@@ -15388,6 +15385,25 @@ components:
                 description: >
                   The amount of credit left for this month for this promotion.
                 example:  "10.00"
+              service_type:
+                type: string
+                enum:
+                  - all
+                  - backup
+                  - blockstorage
+                  - db_mysql
+                  - ip_v4
+                  - linode
+                  - linode_disk
+                  - linode_memory
+                  - longview
+                  - managed
+                  - nodebalancer
+                  - objectstorage
+                  - transfer_tx
+                description: >
+                  The service to which this promotion applies.
+                example: "all"
         active_since:
           type: string
           format: date-time
@@ -17910,6 +17926,7 @@ components:
           readOnly: true
         ipv4:
           type: array
+          format: ipv4
           items:
             type: string
           example:
@@ -17926,11 +17943,13 @@ components:
           x-linode-cli-display: 10
         ipv6:
           type: string
+          format: ipv6/128
+          nullable: true
           description: >
-            This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not
+            This Linode's IPv6 SLAAC address. This address is specific to a Linode, and may not
             be shared. If the Linode has not been assigned an IPv6 address, the return value will
             be `null`.
-          example: 'c001:d00d::1234'
+          example: 'c001:d00d::1337/128'
           readOnly: true
         specs:
           type: object

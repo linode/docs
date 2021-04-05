@@ -10,7 +10,9 @@ published: 2019-04-01
 modified: 2019-04-01
 modified_by:
   name: Linode
-title: "Deploy a Minecraft Server with Marketplace Apps"
+title: "How to Deploy a Minecraft Server with Marketplace Apps"
+h1_title: "Deploying a Minecraft Server with Marketplace Apps"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
