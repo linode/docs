@@ -16,7 +16,7 @@
       <div>
         {{ partial $mainNavPartial .page }}
       </div>
-      <div>
+      <div class="ml-auto">
         <div class="flex justify-end flex-initial">
           {{ $dropdowns := slice }}
           {{ $dropdowns = $dropdowns | append (dict "page" .page "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html")}}
