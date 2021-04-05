@@ -2,23 +2,25 @@
 slug: how-to-secure-mysql-server
 author:
   name: Hackersploit
-description: 'Secure a MySQL server by using the secure installer, modifying the root user, and adding new users. Finally, this guide will show you how to audit MySQL security.'
-og_description: 'Secure a MySQL server by using the secure installer, modifying the root user, and adding new users. Finally, this guide will show you how to audit MySQL security.'
+description: 'This guide shows how to audit MySQL security, including: using the secure installer, modifying the root user, and adding new users.'
+og_description: 'This guide shows how to audit MySQL security, including: using the secure installer, modifying the root user, and adding new users.'
 keywords: ["mysql", "security", "audit", "root", "database", "privilege"]
 aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-and-audit-mysql-server/']
 tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'How to Secure MySQL Server'
 h1_title: 'Securing MySQL Server'
+enable_h1: true
 contributor:
   name: Hackersploit
 modified_by:
   name: linode
-published: 2021-03-12
+published: 2021-03-26
 image: Securing_MySQL.png
 ---
 
 ## MySQL
+
 MySQL is an open-source relational database management system. This guide will show you how to secure and audit a MySQL server. The name is a combination of "My", the name of co-founder Michael Widenius's daughter, and "SQL", the abbreviation for Structured Query Language.
 
 ## Before You Begin
