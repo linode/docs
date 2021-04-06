@@ -29,6 +29,9 @@
                   <template x-if="!item.href">
                     <p x-html="item.description"></p>
                   </template>
+                  <template x-if="item.excerpt">
+                    <div class="text-sm text-textcolor pt-2 leading-relaxed three-lines-ellipsis" x-html="item.excerptHighlighted" data-testid="excerpt"></div>
+                  </template>
                   <div class="text-sm text-textcolor pt-2">
                     <template x-for="(value, label) in item.facets" :key="label">
                       <div class="inline-block">

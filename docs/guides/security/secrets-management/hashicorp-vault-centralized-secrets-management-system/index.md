@@ -6,12 +6,13 @@ description: 'Vault is an open source, centralized secrets management system. It
 og_description: 'Vault is an open source, centralized secrets management system. It provides a secure, and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.'
 keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
+published: 2021-03-26
 modified_by:
   name: Linode
 title: "How to Set Up and Use a Vault Server"
 h1_title: "Setting Up and Using a Vault Server"
-tags: ["ubuntu", "security", "vault", "secrets", "password", "API keys", "authetication", "tokens"]
+enable_h1: true
+tags: ["ubuntu", "security"]
 image: Hashicorp_Vault_Fundamentals.png
 external_resources:
   - '[Vault Documentation](https://www.vaultproject.io/docs)'
