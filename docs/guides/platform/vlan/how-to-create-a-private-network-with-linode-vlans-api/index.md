@@ -1,355 +1,271 @@
 ---
-slug: how-to-create-a-private-network-with-linode-vlans-api
+slug: vlan-api
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
-description: 'Linode''s Private Local Area Network (LAN) allows you to create networks in the cloud where multiple Linodes can communicate privately and securely. This guide demonstrates how to use the Linode APIv4 to create a LAN and attach new and existing Linodes to it.'
-og_description: 'Linode''s Private Local Area Network (LAN) allows you to create networks in the cloud where multiple Linodes can communicate privately and securely. This guide demonstrates how to use the Linode APIv4 to create a LAN and attach new and existing Linodes to it.'
-keywords: ['networking','lan','private network','secure communication']
+description: 'Create private networks in the cloud with Linode VLAN, where multiple Linodes can communicate privately and securely. This guide demonstrates how to use the Linode API to attach new and existing Linodes to VLANs.'
+og_description: 'Create private networks in the cloud with Linode VLAN, where multiple Linodes can communicate privately and securely. This guide demonstrates how to use the Linode API to attach new and existing Linodes to VLANs.'
+keywords: ['linode vlan','linode vlan api']
 tags: ["security", "networking", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-08-17
+published: 2021-04-06
 modified_by:
   name: Linode
-title: "Creating a Private Network Using Linode APIv4 and Linode VLAN"
-h1_title: "How to Create a Private Network Using Linode APIv4 and Linode VLAN"
+title: "Creating a Private Network Using Linode API and Linode VLAN"
+h1_title: "How to Create a Private Network Using Linode API and Linode VLAN"
 contributor:
   name: Linode
+aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/']
 ---
 
-## What is a Private Local Area Network?
+## What is a VLAN?
 
-Linode’s Virtual Local Area Network (Virtual LAN or VLAN) service allows you to create private L2 networks in the cloud where Linodes can communicate privately and securely. Two or more Linodes connected via the VLAN can see each other as if they were directly connected to the same physical Ethernet network. This network supports all the logical Ethernet features like L2 broadcast and L2 multicast. Devices outside the network cannot see any traffic within the private network.
+Linode VLANs (Virtual Local Area Networks) are a completely free solution for enabling truly private networking in the cloud. Here are a few key features of VLANs:
 
-### Network Interfaces
+- **Privacy and security.** Linodes on the same account and in the same region can be added to a VLAN, allowing for private and secure communications between those Linodes. The public internet can also be disabled on a Linode to provide even more security.
 
-Linodes are connected to private and public networks via their network interfaces. A single Linode can be connected to:
+    {{< note >}}
+VLANs are separate from [Private IP Addresses](https://www.linode.com/docs/guides/remote-access/#adding-private-ip-addresses). Private IPs are accessible to all Linodes in that same data center and can only be further restricted by firewall rules or additional internal configuration.
+{{< /note >}}
 
- - both a private and a public network via a private and a public interface. In this case, the Linode has public IPv4 and IPv6 addresses that it can use to communicate over a public network and a private IPv4 and/or IPv6 address that it can use to communicate over a VLAN's private network.
+- **Performance.** A VLAN is configured as a Layer 2 networking device on a Linode and provides low latency for latency-sensitive applications.
 
- - a VLAN's private network via a private interface. In this case, the Linode has a private IPv4 and/or IPv6 address address that it can use to communicate over the LAN.
+- **No additional charges.** VLANs are available at no cost and network transfer over a VLAN does not count towards monthly transfer quotas.
 
- - a public network via a Public Interface. In this case, the Linode is assigned public IPv4 and IPv6 addresses. This describes a Linode's default network interface configuration when it is first deployed.
-
-{{< note >}}
-When you attach a Linode to a Virtual LAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/#what-is-network-helper) generates network configurations for a public network interface and a private network interface.
-{{</ note >}}
-
-Refer to the [Common Use Cases for Linode LAN](/docs/guides/platform/vlan/common-linode-vlan-use-cases) guide to view diagrams demonstrating example scenarios using the network interface configurations described above.
-
-### Limitations
-
-- Linode VLAN is currently in Beta. In order to use this feature, you must sign up through our [Green Light Beta Program](https://www.linode.com/green-light/).
-
-- Linode VLAN is available in Next Generation Network (NGN) [data centers](https://www.linode.com/global-infrastructure/). This includes Toronto (`ca-central`), Mumbai (`ap-west`), and Sydney (`ap-southeast`).
-
-- You can create up to 10 VLANs within each data center region.
-
-- You can assign up to 3 network interfaces per Linode.
-
-  - Only 1 public network interface is allowed per Linode.
+Refer to the [Common Use Cases for Linode LAN](/docs/guides/common-linode-vlan-use-cases) guide to view diagrams demonstrating example scenarios using the network interface configurations described above.
 
 ## In this Guide
-This guide shows you how to use [Linode's API v4](https://developers.linode.com/api/v4) to create a VLAN, attach a Linode to the VLAN, and configure a Linode to communicate over the VLAN's private network.
 
-You can attach a Linode to a VLAN in three different ways using the Linode API v4:
+This guide shows you how to use [Linode's API](/docs/api) to create and attach a VLAN to a Linode.
 
-- Send a request to the [VLAN Create]((/docs/api/networking/#vlan-create)) endpoint with an array of Linodes to attach to the VLAN you are creating. See the [Create a VLAN with an Attached Linode](#create-a-vlan-with-an-attached-linode) section for details.
+You can attach a Linode to a VLAN in three different ways using the Linode API:
 
-- Send a request to the [Linode Create](/docs/api/linode-instances/#linode-create) endpoint. The request must include the `interfaces` parameter to assign a private network interface that is attached to an existing VLAN. See the [Attach an Existing Linode to a VLAN](#create-a-linode-attached-to-a-vlan) section for details.
+- As part of the configuration of a new Linode using the Linode Create ([POST /linodes/instances](/docs/api/linode-instances/#linode-create)) endpoint.
+- By creating a new Configuration Profile for a Linode using the Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create)) endpoint.
+- By editing an existing Configuration Profile of a Linode using the Configuration Profile Update ([/linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update)) endpoint.
 
-- Send a request to the [VLAN Attach](/docs/api/networking/#vlan-attach) endpoint with an array of Linodes to attach to an existing VLAN. See the [Attach an Existing Linode to an Existing VLAN](#attach-an-existing-linode-to-an-existing-vlan) section for details.
-
-The steps in this guide can be adopted to create your own private network for your specific use case.
-
-## Create a Private Network
-### Create a VLAN with an Attached Linode
-
-In this section, you create a VLAN using the APIv4's Networking endpoints. In the example, when creating the VLAN, you also attach an existing Linode to the VLAN using the `linodes` parameter. See the [VLAN Create](/docs/api/networking/#vlan-create) endpoint's documentation for more details on each available parameter.
+The steps in this guide can be adopted to create and use VLANs for your specific use case.
 
 {{< note >}}
-A Linode can only be attached to a VLAN that resides within the same data center region as the Linode.
-{{</ note >}}
+When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/#what-is-network-helper) generates network configurations for the specified network interfaces if it is enabled. You can enable Network Helper by default using the Account Settings Update ([PUT /account/settings](/docs/api/account/#account-settings-update)) endpoint. The Linode must be rebooted for any changes within its network interfaces to take effect.
+{{< /note >}}
 
-1. To create a VLAN, send a POST request to the `/networking/vlans` endpoint. Replace the values for `description`, `cidr_block`, `region`, and `linodes` with your own.
+## Configuring VLANs with the Interfaces Array
 
-    {{< note >}}
-The `cidr_block` parameter allows for simple IP Address Management (IPAM) for this VLAN. If specified, new Interfaces associated with this LAN are assigned a private IPv4 address from within the `cidr_block` range.
-    {{</ note >}}
+VLANs are managed by the `interfaces` array of a Linode's Configuration Profile. The `interfaces` array consists of up to three network interface objects which correspond to the *eth0*, *eth1*, and *eth2* interfaces according to their position in the array as follows:
 
-        curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
-            -X POST -d '{
-              "description": "My example LAN",
-              "region": "ca-central",
-              "cidr_block": "10.0.0.0/24",
-              "linodes": [
-                  789,
-                  456
-              ]
-            }' \
-            https://api.linode.com/v4beta/networking/vlans
+| Array Order | Array Index | Interface | Example Interface Object |
+| ----------- | ----------- | --------- | --------- |
+| First       | 0           | eth0      | `{"purpose":"public"}` |
+| Second      | 1           | eth1      | `{"purpose":"vlan", "label":"vlan-1", "ipam_address":"10.0.0.1/24"}` |
+| Third       | 2           | eth2      | `{"purpose":"vlan", "label":"vlan-2", "ipam_address":"10.0.0.2/24"}` |
 
-    {{< note >}}
-You can create a VLAN without attaching a Linode to it by omitting the `linodes` array from your request. Use the [VLAN Attach](/docs/api/networking/#vlan-attach) endpoint to attach a Linode to an existing VLAN.
-{{</ note >}}
+{{< note >}}
+If no `interfaces` array is submitted with a request, the Linode is automatically configured with its assigned public and private IPv4 addresses only.
+{{< /note >}}
 
-    The API returns the following response:
+### Configuring the Purpose of an Interface
 
-    {{< output >}}
-{
-  "id": 1234,
-  "description": "My example VLAN",
-  "region": "ca-central",
-  "cidr_block": "10.0.0.0/24",
-  "linodes": [
+The `purpose` of a network interface is required and used to determine whether an interface provides access to either the public internet or a VLAN:
+
+- `public`: Configures a network interface for the public internet and enables the public (and private) IP address(es) for that Linode. If no network interface is configured as `public`, the Linode will not be able to access the internet or other Linodes within the data center's main private network.
+
+- `vlan`: Configures a network interface for the labeled VLAN and enables the Linode to communicate over the `ipam_address` if one is specified.
+
+### Configuring the Label of an Interface
+
+When configuring a `vlan` purpose network interface, a VLAN can be selected by specifying its `label`. Linodes that are attached to the same VLAN can privately communicate with each other over their respective `vlan` purpose interfaces.
+
+If the `label` doesn't correspond with an existing VLAN, a new VLAN is created. VLANs that already exist on an account can be viewed, along with their region and attached Linodes, using the VLANs List ([GET /network/vlans](/docs/api/networking/#vlans-list)) endpoint.
+
+{{< note >}}
+No `label` is specified for `public` purpose interfaces. You can simply omit the property, or enter an empty string or `null`.
+{{< /note >}}
+
+### Configuring the IPAM Address of an Interface
+
+IPAM (IP Address Management) is the system that allows users to assign and manage IP addresses for each VLAN configured on a Linode. When attaching a `vlan` purpose interface to a Linode, the `ipam_address` can be specified in address/netmask format. This should be a unique IP address that doesn't already exist within the VLAN or on the public internet. It is common to use an address within the 10.0.0.0/8 range (10.0.0.0 – 10.255.255.255). For example, here are typical IPAM addresses for two Linodes connected to the same VLAN:
+
+- Linode 1: `10.0.0.1/24`
+- Linode 2: `10.0.0.2/24`
+
+Just like public and private IP addresses, IPAM addresses for a VLAN are automatically configured on a Linode through [Network Helper](https://www.linode.com/docs/guides/network-helper/). If Network Helper is disabled or if no `ipam_address` is provided, the Linode will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an `ipam_address`. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings.
+
+{{< note >}}
+No `ipam_address` is specified for `public` purpose interfaces. You can simply omit the property, or enter an empty string or `null`.
+{{< /note >}}
+
+{{< note >}}
+IPAM addresses for a Linode must be unique among its interfaces.
+{{< /note >}}
+
+### Example Interfaces Array
+
+To illustrate each of the above configurations, the following `interfaces` array configures a Linode's assigned public (and private) IP address(es) configured on eth0, the IPAM address `10.0.0.1/24` for the VLAN labeled `vlan-1` configured on eth1, and the IPAM address `10.0.0.2/24` for the VLAN labeled `vlan-2` configured on eth2:
+
+    "interfaces": [
       {
-        "id": 789,
-        "ipv4_address": "10.0.0.1/24",
-        "mac_address": "ba:c2:6e:8d:14:3e"
+        "purpose": "public"
       },
       {
-        "id": 456,
-        "ipv4_address": "10.0.0.2/24",
-        "mac_address": "ba:c2:6e:8d:14:71"
+        "purpose": "vlan",
+        "label": "vlan-1",
+        "ipam_address": "10.0.0.1/24"
+      },
+      {
+        "purpose": "vlan",
+        "label": "vlan-2",
+        "ipam_address": "10.0.0.2/24"
       }
-  ],
-}
-  {{</ output >}}
+    ]
 
-    Your VLAN is created and any Linode's ID that is included in the `linodes` parameter is attached to the VLAN.
+## Attaching a VLAN to a New Linode
 
-1. **Reboot the Linode(s)** in order to apply the new network interfaces to a Linode's [Configuration Profile(s)](/docs/api/linode-instances/#configuration-profiles-list) and have access to their public and private network interfaces.  Replace `{linodeId}` with your own Linode’s ID number. Repeat this step for all the Linodes attached to your VLAN.
+To attach a VLAN to a new Linode, send a request to the Linode Create ([POST /linodes/instances](/docs/api/linode-instances/#linode-create)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
 
-        curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
-            -X POST \
-            https://api.linode.com/v4/linode/instances/{linodeId}/reboot
+The following request creates a 1GB Linode utilizing the example `interfaces` array from [above](#example-interfaces-array):
 
-    {{< note >}}
-When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/#what-is-network-helper) generates network configurations for a public network interface and a private network interface.
-
-If your Linode does not have Network Helper enabled, you can add the public and/or private network interfaces using the [Interface Create](/docs/api/linode-instances/#interface-create) endpoint. You can also use the Interface Create endpoint for finer-grained control over your Linode's network interfaces.
-    {{</ note >}}
-
-Once your Linode is attached to a VLAN and rebooted, you must configure it so that it can communicate across the VLAN's private network. Based on your Linode's distribution use one of the following guides to complete your Linode's configuration:
-
-- [Configure Your CentOS 8 Linode](/docs/products/networking/vlans/guides/configure-your-linode-centos-8/)
-- [Configure Your Ubuntu 20.04 Linode](/docs/products/networking/vlans/guides/configure-your-linode-ubuntu-20-04/)
-- [Configure Your Debian 10 Linode](/docs/products/networking/vlans/guides/configure-your-linode-debian-10/)
-
-### Create a Linode Attached to a VLAN
-
-In this section, you use the [Create Linode](https://api.linode.com/v4/linode/instances) endpoint to create a new Linode that is attached to an existing VLAN.
+    curl -k -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $TOKEN" \
+      -X POST -d '{
+        "type": "g6-nanode-1",
+        "region": "us-southeast",
+        "image": "linode/debian10",
+        "root_pass": "pl34s3us34s3cur3p4ssw0rd",
+        "interfaces": [
+          {
+            "purpose": "public"
+          },
+          {
+            "purpose": "vlan",
+            "label": "vlan-1",
+            "ipam_address": "10.0.0.1/24"
+          },
+          {
+            "purpose": "vlan",
+            "label": "vlan-2",
+            "ipam_address": "10.0.0.2/24"
+          }
+        ]
+      }' \
+      https://api.linode.com/v4/linode/instances
 
 {{< note >}}
-A Linode can only be attached to a VLAN that resides within the same data center region as the Linode.
-{{</ note >}}
+An `image` must be specified to set interfaces when creating a new Linode.
+{{< /note >}}
 
-1. Create a new Linode attached to a VLAN. Replace the values for `image`, `root_pass`, `label`, `type`, and `region` with your own preferred values. `vlan_id` is the ID of an [existing VLAN](/docs/api/networking/#vlan-attach) on your account.
+## Attaching a VLAN to an Existing Linode
 
-    **Linode with Public and Private Network Interfaces**:
+You can attach a VLAN to an existing Linode by either creating a new configuration profile or updating an existing configuration profile for the Linode. In either case, the Linode must be rebooted to allow Network Helper to automatically adjust the necessary network configuration files on the Linode.
+
+The Linode's ID is required to utilize these methods. Use the Linodes List ([GET /linode/instances](/docs/api/linode-instances/#linodes-list)) endpoint to retrieve the IDs of each of your Linodes. To view the Disk IDs of a Linode, use the Disks List ([GET /linode/instances/{linodeId}/disks](/docs/api/linode-instances/#disks-list)) endpoint.
+
+### Creating a Configuration Profile
+
+1.  To attach a VLAN to an existing Linode using a new configuration profile, send a request to the Configuration Profile Create ([POST /instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
+
+    The following request creates a configuration profile utilizing the example `interfaces` array from [above](#example-interfaces-array):
 
         curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
-            -X POST -d '{
-              "image": "linode/debian10",
-              "root_pass": "aComplexP@ssword",
-              "interfaces": {
-                "eth0": {
-                  "type": "default"
-                },
-                "eth1": {
-                  "type": "additional",
-                  "vlan_id": 1234
-                }
+          -H "Authorization: Bearer $TOKEN" \
+          -X POST -d '{
+            "label": "Example VLAN Config",
+            "devices": {
+              "sda": {
+                "disk_id": 111,
+                "volume_id": null
               },
-              "label": "linode123",
-              "type": "g6-standard-2",
-              "region": "ca-central"
-            }' \
-            https://api.linode.com/v4/linode/instances
-     This example creates a Linode with **two Network Interfaces**.
-
-      - The `eth0` Interface (`type: default`) is a public interface. This Interface gives you access to external Networks (like the Internet).
-      - The `eth1` Interface (`type: additional`) is a **private** interface and can securely communicate with any other Linode connected to the same VLAN.
-
-     **Linode with a Private Network Interface (no Public Interface)**:
-
-        curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
-            -X POST -d '{
-              "image": "linode/debian10",
-              "root_pass": "aComplexP@ssword",
-              "interfaces": {
-                "eth0": {
-                  "type": "additional",
-                  "vlan_id": 1234
-                }
+              "sdb": {
+                "disk_id": 222,
+                "volume_id": null
+              }
+            },
+            "interfaces": [
+              {
+                "purpose": "public"
               },
-              "label": "linode123",
-              "type": "g6-standard-2",
-              "region": "ca-central"
-            }' \
-            https://api.linode.com/v4/linode/instances
-
-     This example creates a Linode with **a private network interface (no public interface)**.
-
-      - The `eth0` Interface is a **private** interface and can securely communicate with any other Linode connected to the same VLAN. A network interface of `type: additional` creates a private network interface.
-
-    The API returns the example response.
-
-    {{< output >}}
-{
-  "id": 4567,
-  "label": "my-example-linode",
-  "group": "",
-  "status": "running",
-  "created": "2020-08-07T16:24:52",
-  "updated": "2020-08-07T16:24:52",
-  "type": "g6-standard-2",
-  "ipv4": [
-    "192.0.2.0"
-  ],
-  "ipv6": "c001:d00d::1234",
-  "image": "linode/debian10",
-  "region": "ca-central",
-  "specs": {
-    "disk": 81920,
-    "memory": 4096,
-    "vcpus": 2,
-    "gpus": 0,
-    "transfer": 4000
-  },
-  "alerts": {
-    "cpu": 180,
-    "network_in": 10,
-    "network_out": 10,
-    "transfer_quota": 80,
-    "io": 10000
-  },
-  "backups": {
-    "enabled": false,
-    "schedule": {
-      "day": null,
-      "window": null
-    },
-    "last_successful": null
-  },
-  "hypervisor": "kvm",
-  "watchdog_enabled": true,
-  "tags": []
-}
-  {{</ output >}}
-
-    The response does not return the `interfaces` object in your POST request. You can send a request to the [Interfaces List](/docs/api/linode-instances/#interfaces-list) endpoint to view the Interfaces assigned to your new Linode.
-
-    {{< note >}}
-When you create a Linode with only a private interface, the API creates Public IPv4 and IPv6 addresses, but they are not reachable. For example, if you try to SSH into the Linode using the Public IPv4 address, you are denied access. However, you can access a Linode using the [Linode Shell (LISH)](/docs/platform/manager/using-the-linode-shell-lish/).
-    {{</ note >}}
-
-    {{< note >}}
-When you create a new Linode with network interfaces assigned, the Network Interfaces are added to your Linode's Configuration Profile(s). Send a request to the [List Configuration Profiles](https://developers.linode.com/api/v4/linode-instances-linode-id-configs) to see all Configuration Profiles available for your Linode .
-    {{</ note >}}
-
-Once your Linode is attached to a VLAN, you must configure it so that it can communicate across the VLAN's private network. Based on your Linode's distribution use one of the following guides to complete your Linode's configuration:
-
-- [Configure Your CentOS 8 Linode](/docs/products/networking/vlans/guides/configure-your-linode-centos-8/)
-- [Configure Your Ubuntu 20.04 Linode](/docs/products/networking/vlans/guides/configure-your-linode-ubuntu-20-04/)
-- [Configure Your Debian 10 Linode](/docs/products/networking/vlans/guides/configure-your-linode-debian-10/)
-
-### Attach an Existing Linode to an Existing VLAN
-
-This section shows you how to attach existing Linodes to an existing VLAN using the [VLAN Attach](/docs/api/networking/#vlan-attach) endpoint.
-
-1. Retrieve your VLAN's ID, by sending a request to the [VLANs List](docs/api/networking/#vlans-list) endpoint.
-
-        curl -H "Authorization: Bearer $TOKEN" \
-            https://api.linode.com/v4beta/networking/vlans/
-
-    The API returns the example response. In the example, `789` is the VLAN's ID. Do not confuse the VLAN ID with the Linode IDs returned in the `linodes` array.
-
-    {{< output >}}
-{
-  "data": {
-    "cidr_block": "10.0.0.0/24",
-    "created": "2020-01-01T00:01:01",
-    "description": "My example VLAN",
-    "id": 789,
-    "linodes": {
-      "id": 123,
-      "ipv4_address": "10.0.0.1/24",
-      "mac_address": "f2:3c:92:8d:bc:00"
-    },
-    "region": "us-east"
-  },
-  "page": 1,
-  "pages": 1,
-  "results": 1
-}
-    {{</ output >}}
-
-1. Retrieve your Linode's ID, by sending a request to the [VLANs List](docs/api/networking/#vlans-list) endpoint.
-
-        curl -H "Authorization: Bearer $TOKEN" \
-            https://api.linode.com/v4/linode/instances
-
-    The API returns the example response:
-
-    {{< output >}}
-{
-  "data": {
-      ...
-      "id": 345,
-      ...
-  },
-  "page": 1,
-  "pages": 1,
-  "results": 1
-}
-{{</ output >}}
-
-1. Use the VLAN Attach endpoint, along with the Linode ID and VLAN ID you retrieved in the previous steps, to attach your Linode to the VLAN. Replace `345` and `789` with your own Linode ID and VLAN ID, respectively.
-
-        curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
-            -X POST -d '{
-            "linodes": [
-                345
+              {
+                "purpose": "vlan",
+                "label": "vlan-1",
+                "ipam_address": "10.0.0.1/24"
+              },
+              {
+                "purpose": "vlan",
+                "label": "vlan-2",
+                "ipam_address": "10.0.0.2/24"
+              }
             ]
-            }' \
-            https://api.linode.com/v4beta/networking/vlans/789/attach
+          }' \
+          https://api.linode.com/v4/linode/instances/123/configs
+
+    Note the new Configuration Profile's ID from the response.
+
+1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/#linode-reboot)) endpoint.
+
+        curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X POST -d '{
+            "config_id": 23456
+          }' \
+          https://api.linode.com/v4/linode/instances/123/reboot
+
+### Updating a Configuration Profile
+
+1.  To attach a VLAN to an existing Linode using an existing configuration profile, first retrieve the Configuration Profile's ID using the Configuration Profiles List ([GET /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profiles-list)) endpoint.
+
+        curl -H "Authorization: Bearer $TOKEN" \
+          https://api.linode.com/v4/linode/instances/123/configs
+
+1.  Using the Linode's current Configuration Profile ID, send a request to the Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update)) endpoint containing an `interfaces` array that includes a `vlan` purpose interface with the VLAN's `label` and the desired `ipam_address`.
+
+    The following request updates a configuration profile utilizing the example `interfaces` array from [above](#example-interfaces-array):
+
+        curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X PUT -d '{
+            "interfaces": [
+              {
+                "purpose": "public"
+              },
+              {
+                "purpose": "vlan",
+                "label": "vlan-1",
+                "ipam_address": "10.0.0.1/24"
+              },
+              {
+                "purpose": "vlan",
+                "label": "vlan-2",
+                "ipam_address": "10.0.0.2/24"
+              }
+            ]
+          }' \
+          https://api.linode.com/v4/linode/instances/123/configs/23456
 
     {{< note >}}
-You can attach more than one Linode at a time when sending a request to the VLAN Attach endpoint.
-{{</ note >}}
+When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
+{{< /note >}}
 
-    The API returns the example response:
+1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/#linode-reboot)) endpoint.
 
-    {{< output >}}
-{
-  "cidr_block": "10.0.0.0/24",
-  "created": "2020-01-01T00:01:01",
-  "description": "My example VLAN",
-  "id": 789,
-  "linodes": [
-      {
-        "id": 123,
-        "ipv4_address": "10.0.0.1/24",
-        "mac_address": "f2:3c:92:8d:bc:00"
-      },
-      {
-        "id": 345,
-        "ipv4_address": "10.0.0.2/24",
-        "mac_address": "f2:3c:92:8d:bc:3e"
-      },
-  ],
-  "region": "us-east"
-}
-    {{</ output >}}
+        curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X POST -d '{
+            "config_id": 23456
+          }' \
+          https://api.linode.com/v4/linode/instances/123/reboot
 
-Your Linode is now attached to your VLAN. Once your Linode is attached to a VLAN, you must configure it so that it can communicate across the VLAN's private network. Based on your Linode's distribution use one of the following guides to complete your Linode's configuration:
+## Limitations
 
-- [Configure Your CentOS 8 Linode](/docs/products/networking/vlans/guides/configure-your-linode-centos-8/)
-- [Configure Your Ubuntu 20.04 Linode](/docs/products/networking/vlans/guides/configure-your-linode-ubuntu-20-04/)
-- [Configure Your Debian 10 Linode](/docs/products/networking/vlans/guides/configure-your-linode-debian-10/)
+- **VLANs are region-specific.**  Once created, a VLAN can only be attached to other Linodes within the same data center.
+
+- **VLANs are only available in Next Generation Network (NGN) data centers.** Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
+
+- **An account can have up to 10 VLANs per region.**
+
+- **A Linode can belong to a maximum of 3 VLANs.** Since there are 3 configurable network interfaces on each Linode, up to 3 VLANs can be attached. If one of those network interfaces is configured for the public internet, there are 2 remaining network interfaces for use with VLANs.
+
+- **VLANs cannot be manually renamed by the user.** If a VLAN's label must be changed, a new VLAN can be created and all required Linodes can be attached to that new VLAN.
+
+- **VLANs cannot be manually deleted by the user.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, simply detach it from all Linodes. After this, it will automatically be deleted within a short timeframe.
+
+- **Network Helper is required for connecting to the VLAN automatically.** If [Network Helper](https://www.linode.com/docs/guides/network-helper/) has been disabled, the Linode will not *automatically* be able to communicate over the VLAN's private network. In this case, advanced users can manually adjust their Linode's internal network configuration files with the appropriate settings for their VLAN.
