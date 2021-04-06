@@ -33,7 +33,7 @@ VLANs are relatively simple to manage and do not require much configuration beyo
 
 VLANs are managed within the network interfaces on a Linode. Each Linode has 3 configurable network interfaces, which are referred to as *eth0*, *eth1*, and *eth2*. The purpose of a network interface is to provide access to either the public internet or a VLAN:
 
-- **Public Internet:** Configuring a network interface for the **Public Internet** enables the public (and private) IP address(es) for that Linode. If no network interface is configured as **Public Internet**, the Linode will not be able to access the internet or other Linode's within the data center's main private network.
+- **Public Internet:** Configuring a network interface for the **Public Internet** enables the public (and private) IP address(es) for that Linode. If no network interface is configured as **Public Internet**, the Linode will not be able to access the internet or other Linodes within the data center's main private network.
 
 - **VLAN:** Configuring a network interface for a VLAN enables the Linode to communicate over a specified VLAN.
 
@@ -45,7 +45,7 @@ When configuring a network interface, a VLAN can be selected by entering its **L
 
 ### Assigning an IPAM Address
 
-IPAM (IP Address Management) is the system that allows users to assign and manage IP addresses for each VLAN configured on a Linode. When attaching a VLAN to a Linode, an **IPAM Address** can be manually entered. This should be a unique IP address that doesn't already exist within the VLAN or the on public internet. It is common to use an address within the 10.0.0.0/8 range (10.0.0.0 – 10.255.255.255). For example, here are typical IPAM addresses for two Linodes connected to the same VLAN:
+IPAM (IP Address Management) is the system that allows users to assign and manage IP addresses for each VLAN configured on a Linode. When attaching a VLAN to a Linode, an **IPAM Address** can be manually entered. This should be a unique IP address that doesn't already exist within the VLAN or on the public internet. It is common to use an address within the 10.0.0.0/8 range (10.0.0.0 – 10.255.255.255). For example, here are typical IPAM addresses for two Linodes connected to the same VLAN:
 
 - Linode 1: `10.0.0.1/24`
 - Linode 2: `10.0.0.2/24`
