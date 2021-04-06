@@ -3,35 +3,29 @@ author:
   name: Linode
   email: docs@linode.com
 title: Detach a Linode From Your VLAN
-description: "If you no longer want a Linode to have access to a Virutal LAN''s private network,use this guide to learn how to detach a Linode from a Virtual LAN."
+description: "If the Linode no longer requires access a VLAN's private network, the VLAN can be detached by editing the Linode's Configuration Profile."
 ---
 
 {{< content "vlans-beta-note-shortguide" >}}
 
-## From the Configuration Details Page
+If the Linode no longer requires access a VLAN's private network, the VLAN can be detached by editing the Linode's [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile)
 
 1. Log in to the [Linode Cloud Manager](https://www.cloud.linode.com).
 
-1. Click the `Linodes` link in the sidebar.
+1. Click the `Linodes` link in the sidebar and select a Linode.
 
-1. Select a Linode. The Linode's detail page appears.
+1. Within the Linode's detail page, navigate to the **Configurations** tab.
 
-1. Click on the **Configurations** tab.
+1. Select the `Edit` button next to the configuration profile you'd like to edit.
 
-1. Select the `Edit` button next to the configuration profile you'd like to detach a VLAN from.
+1. Scroll down to the `Network Interfaces` section.
 
-1. Find the `Network Interfaces` section.
-
-1. From the dropdown menu under the interface you'd like to remove the VLAN configuration from, select 'None' or 'Public Internet'.
-
-   {{< note >}}
-Only the eth0 interface can be used to access the public internet.
-{{< /note >}}
+1. Locate the network interface corresponding to the VLAN you wish to remove. From that interface's drop down menu, select `None` to detach the VLAN from this Linode. If no other network interface is set to `Public Interface`, that option may also be selected to provide public internet access to this Linode.
 
 1. Click on the `Edit Configuration` button to confirm the changes to the configuration profile.
 
 1. [Reboot the Linode](/docs/products/tools/cloud-manager/guides/cloud-reboot) to save your changes and completely remove the VLAN configuration. Linodes that have had their configuration profiles updated but have not been rebooted will still be configured to use the VLAN. A reboot is required for any change to take place.
 
    {{< note >}}
-If a VLAN is not applied to any Linode Service, it will automatically be deleted.
+If a VLAN is not applied to any Linode service, it will automatically be deleted.
 {{< /note >}}

@@ -9,21 +9,24 @@ tab_group_main:
 
 ## Building Blocks
 
-- [Create or Attach a Virtual LAN to Your Linode](/docs/products/networking/vlans/get-started/): Create a Virtual LAN to get started creating a private network.
+- [Attaching a VLAN to a Linode](/docs/products/networking/vlans/get-started/): Add a Linode to your VLAN's private network.
 
-- [Linode Network Interfaces](/docs/products/networking/vlans/guides/linode-network-interfaces/): Consult this guide for an overview on private and public networks and the corresponding network interfaces that are created on a Linode.
+- [Detaching a Linode from a VLAN](/docs/products/networking/vlans/guides/detach-a-linode-from-your-vlan/): Remove a Linode from your VLAN's private network.
 
 - [Test Your Private Network](/docs/products/networking/vlans/guides/test-your-private-network/): Your Virtual LAN's private network is up and running. Connect to a Linode within the private network and perform a simple test to verify that it can communicate with other Linodes within the network.
 
 - [Access Your Virtual LAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details/): Quickly find your Virtual LAN's networking details.
 
-- [Detach a Linode from Your Virtual LAN](/docs/products/networking/vlans/guides/detach-a-linode-from-your-vlan/): Remove a Linode from your Virtual LAN's private network.
-
 ## Themes
 
 These additional guides explore targeted topics related to Virtual LANs.
 
-### Virtual LAN Basics
+### VLAN Basics
 
-- [Virtual LAN Use Cases](/docs/guides/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/)
+- [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/): An introduction to VLANs, including how to create and administer them within the Cloud Manager.
 
+- [VLAN Use Cases](/docs/guides/common-linode-vlan-use-cases/): Learn how VLANs can be utilized by exploring some common scenarios.
+
+### Developer Tools
+
+- [Creating a Private Network Using Linode API and VLANs](/docs/guides/how-to-create-a-private-network-with-linode-vlans-api)
