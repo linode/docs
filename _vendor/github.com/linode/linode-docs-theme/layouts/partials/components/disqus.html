@@ -1,5 +1,5 @@
 <div class="pt-10" x-data="lnh.OnIntersection()" x-init="() => init();">
-  <template x-if="visible || (window.location.hash.startsWith('#comment-'))">
+  <template x-if="window.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
     <div>
       <div x-data="lnc.NewDisqusController('{{ .Site.DisqusShortname }}', lnPageInfo)" x-init="() => init()">
         <div id="disqus_thread"></div>

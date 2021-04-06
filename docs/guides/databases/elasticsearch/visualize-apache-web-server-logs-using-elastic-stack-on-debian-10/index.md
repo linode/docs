@@ -12,12 +12,13 @@ external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache debian 10", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-12
-modified: 2021-03-12
+published: 2021-03-26
+modified: 2021-03-26
 modified_by:
   name: Linode
 title: 'How to Visualize Apache Web Server Logs Using the Elastic Stack on Debian 10'
 h1_title: 'Visualizing Apache Web Server Logs Using the Elastic Stack on Debian 10'
+enable_h1: true
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
 relations:
