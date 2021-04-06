@@ -5,7 +5,10 @@ author:
   email: docs@linode.com
 keywords: ['networking','vlan','private network']
 tags: ["security", "networking", "linode platform"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-05
+modified_by:
+  name: Linode
 title: Getting Started with VLANs
 description: ""
 ---
@@ -88,7 +91,7 @@ By default, the public IP address (and, if added, the private IP address) of the
 
 1. Click the `Edit` button next to the configuration profile you'd like to modify.
 
-    [!['Edit' button for a configuration profile](edit-button-for-onfiguration-profile.png "'Edit' button for a configuration profile")](edit-button-for-configuration-profile.png)
+    [![Edit configuration profile](edit-button-for-configuration-profile.png "Edit configuration profile")](edit-button-for-configuration-profile.png)
 
 1. An **Edit Configuration** screen will appear. Scroll down to the `Network Interfaces` section.
 
