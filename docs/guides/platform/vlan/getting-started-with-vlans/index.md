@@ -13,9 +13,9 @@ title: Getting Started with VLANs
 description: ""
 ---
 
-Linode VLANs (Virtual Local Area Network) are a completely free solution for enabling truly private networking in the cloud. Here are a few key features of VLANs:
+Linode VLANs (Virtual Local Area Network) are a completely free solution available to Linode Services used for enabling private networking in the cloud. Here are a few key features of VLANs:
 
-- **Privacy and security.** Linodes on the same account and in the same region can be added to a VLAN, allowing for private and secure communications between those Linodes. The public internet can also be disabled on a Linode to provide even more security.
+- **Privacy and Security.** Linodes on the same account and in the same region can be added to a VLAN, allowing for private and secure communications between those Linodes. The public internet can also be disabled on a Linode to provide even more security.
 
     {{< note >}}
 VLANs are separate from [Private IP Addresses](https://www.linode.com/docs/guides/remote-access/#adding-private-ip-addresses). Private IPs are accessible to all Linodes in that same data center and can only be further restricted by firewall rules or additional internal configuration.
@@ -103,13 +103,13 @@ By default, the public IP address (and, if added, the private IP address) of the
 
 1. Enter the `Label` of the VLAN or select an existing VLAN from the drop down menu. If a custom label is entered and the VLAN does not yet exist, it is automatically created when saving the configuration profile.
 
-1. Enter an `IPAM Address`. If this field left blank, the Linode will not be able to communicate with other Linodes on that VLAN until an IP address is manually assigned to the network interface within the Linode's internal configuration files.
+1. Enter an `IPAM Address`. If this field is left blank, the Linode will not be able to communicate with other Linodes on that VLAN until an IP address is manually assigned to the network interface within the Linode's internal configuration files.
 
     See the [Assigning an IPAM Address](#assigning-an-ipam-address) section on this page for more information about IPAM and examples of valid IPAM addresses.
 
-1. Click on the `Edit Configuration` button towards the bottom of this form save the changes.
+1. Click on the `Edit Configuration` button towards the bottom of this form to save the changes.
 
-1. Once the configuration profile has been updated, select the **Boot** button next to the edited configuration profile on the following page. This will reboot using the edited configuration profile and apply the new VLAN configuration to the Linode.
+1. Once the configuration profile has been updated, select the **Boot** or **Reboot** button next to the edited configuration profile on the following page. This will reboot using the edited configuration profile and apply the new VLAN configuration to the Linode.
 
     [![Reboot the Linode](reboot-linode.png "Reboot the Linode")](reboot-linode.png)
 
@@ -125,4 +125,4 @@ By default, the public IP address (and, if added, the private IP address) of the
 
 - **VLANs cannot be manually deleted by the user.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, simply detach it from all Linodes. After this, it will automatically be deleted within a short timeframe.
 
-- **Network Helper is required for automatic configuration.** If [Network Helper](https://www.linode.com/docs/guides/network-helper/) has been disabled for any reason, the Linode will not be
+- **Network Helper is required for automatic configuration.** If [Network Helper](https://www.linode.com/docs/guides/network-helper/) has been disabled for any reason, the Linode will not be able to automatically communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an IPAM address. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings.
