@@ -13,10 +13,6 @@ tab_group_main:
 
 - [Detaching a Linode from a VLAN](/docs/products/networking/vlans/guides/detach-a-linode-from-your-vlan/): Remove a Linode from your VLAN's private network.
 
-- [Test Your Private Network](/docs/products/networking/vlans/guides/test-your-private-network/): Your Virtual LAN's private network is up and running. Connect to a Linode within the private network and perform a simple test to verify that it can communicate with other Linodes within the network.
-
-- [Access Your Virtual LAN's Details](/docs/products/networking/vlans/guides/access-your-vlans-details/): Quickly find your Virtual LAN's networking details.
-
 ## Themes
 
 These additional guides explore targeted topics related to Virtual LANs.
@@ -29,4 +25,4 @@ These additional guides explore targeted topics related to Virtual LANs.
 
 ### Developer Tools
 
-- [Creating a Private Network Using Linode API and VLANs](/docs/guides/how-to-create-a-private-network-with-linode-vlans-api)
+- [Creating a Private Network Using Linode API and Linode VLAN](/docs/guides/vlan-api/): This guide shows you how to create a VLAN and attach Linodes to it using the Linode APIv4.
