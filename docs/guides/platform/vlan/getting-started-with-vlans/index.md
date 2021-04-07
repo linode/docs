@@ -113,10 +113,6 @@ By default, the public IP address (and, if added, the private IP address) of the
 
     [![Reboot the Linode](reboot-linode.png "Reboot the Linode")](reboot-linode.png)
 
-## Viewing VLANs attached to a Linode
-
-
-
 ## Testing connectivity
 
 Once a VLAN has been attached to more than one Linode, verify that you can communicate between those Linodes over the VLAN's private network.
