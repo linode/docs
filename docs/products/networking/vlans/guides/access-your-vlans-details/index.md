@@ -8,12 +8,18 @@ description: "Use the Linode Cloud Manager to view networking details for your V
 
 {{< content "vlans-beta-note-shortguide" >}}
 
-1. Log into your [Linode Beta Cloud Manager](https://cloud.beta.linode.com/dashboard) account.
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) account.
 
-1. From the **Navigation Menu**, click on **Network** and select **Virtual LANs**.
+1. Click the `Linodes` link in the sidebar.
 
-1. Viewing the Virtual LANs listing page, click on the **Details** link to view more information about your Virtual LAN.
+1. Select a Linode. The Linode's detail page appears.
 
-1. On your Virtual LAN's details page, you can access a VLAN's **label**, **region**, **IP range/ netmask**, **ID number**, and the **date** and **time** it was created.
+1. Click on the **Configurations** tab.
 
-    If any Linodes are attached to your Virtual LAN, you can see them listed along with their **Private Network IP address** and **subnet mask** (under the **VLAN IP**) heading.
+1. From the configuration tab, the Network Interfaces column on the Configurations table will contain details on the VLAN configuration.
+
+1. To see more details, select the `Edit` button next to the configuration profile the VLAN is attached to.
+
+1. Find the `Network Interfaces` section.
+
+1. On your Virtual LAN's details page, you can access and edit all VLAN configuration options.

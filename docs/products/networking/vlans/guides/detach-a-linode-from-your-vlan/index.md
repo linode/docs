@@ -3,37 +3,29 @@ author:
   name: Linode
   email: docs@linode.com
 title: Detach a Linode From Your VLAN
-description: "If you no longer want a Linode to have access to a Virutal LAN''s private network,use this guide to learn how to detach a Linode from a Virtual LAN."
+description: "If the Linode no longer requires access a VLAN's private network, the VLAN can be detached by editing the Linode's Configuration Profile."
 ---
 
 {{< content "vlans-beta-note-shortguide" >}}
 
-## From the Virtual LAN Details Page
+If the Linode no longer requires access a VLAN's private network, the VLAN can be detached by editing the Linode's [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile)
 
-1. Log into your [Linode Beta Cloud Manager](https://cloud.beta.linode.com/dashboard) account.
+1. Log in to the [Linode Cloud Manager](https://www.cloud.linode.com).
 
-1. From the **Navigation Menu**, click on **Network** and select **Virtual LANs**.
+1. Click the `Linodes` link in the sidebar and select a Linode.
 
-1. Viewing the Virtual LANs listing page, click on the **Details** link to view more information about your Virtual LAN.
+1. Within the Linode's detail page, navigate to the **Configurations** tab.
 
-1. If any Linodes are attached to your Virtual LAN, you can see them listed along. Click on the **detach** link corresponding to the Linode to detach from your Virtual LAN.
+1. Select the `Edit` button next to the configuration profile you'd like to edit.
 
-1. A confirmation window appears. Click on the **Detach** button to complete the operation.
+1. Scroll down to the `Network Interfaces` section.
 
-    Your Linode is now detached from the Virtual LAN.
+1. Locate the network interface corresponding to the VLAN you wish to remove. From that interface's drop down menu, select `None` to detach the VLAN from this Linode. If no other network interface is set to `Public Interface`, that option may also be selected to provide public internet access to this Linode.
 
-## From the Linode Details Page
+1. Click on the `Edit Configuration` button to confirm the changes to the configuration profile.
 
-1. Log in to the [Linode Beta Cloud Manager](https://cloud.beta.linode.com/dashboard).
+1. [Reboot the Linode](/docs/products/tools/cloud-manager/guides/cloud-reboot) to save your changes and completely remove the VLAN configuration. Linodes that have had their configuration profiles updated but have not been rebooted will still be configured to use the VLAN. A reboot is required for any change to take place.
 
-1. From the **Navigation Menu**, click on **Compute** and select **Linodes**.
-
-1. From the Linodes listing page click on the **Details** link corresponding to the Linode you wish to detach from your Virtual LAN.
-
-1. Viewing the Linode's details page, click on the **Network** tab.
-
-1. From the **Virtual LANs** panel, find the Virtual LAN you wish to detach your Linode from and click on the **Remove** link.
-
-1. A confirmation window appears. Click on the **Remove** button to complete the operation.
-
-    Your Linode is now detached from the Virtual LAN.
+   {{< note >}}
+If a VLAN is not applied to any Linode service, it will automatically be deleted.
+{{< /note >}}
