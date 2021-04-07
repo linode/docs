@@ -8,7 +8,7 @@ og_description: 'Create private networks in the cloud with Linode VLAN, where mu
 keywords: ['linode vlan','linode vlan api']
 tags: ["security", "networking", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-06
+published: 2021-04-07
 modified_by:
   name: Linode
 title: "Creating a Private Network Using Linode API and Linode VLAN"
@@ -20,7 +20,7 @@ aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/
 
 ## What is a VLAN?
 
-Linode VLANs (Virtual Local Area Networks) are a completely free solution for enabling truly private networking in the cloud. Here are a few key features of VLANs:
+Linode VLANs (Virtual Local Area Networks) are a completely free solution available to Linode Services used for enabling private networking in the cloud. Here are a few key features of VLANs:
 
 - **Privacy and security.** Linodes on the same account and in the same region can be added to a VLAN, allowing for private and secure communications between those Linodes. The public internet can also be disabled on a Linode to provide even more security.
 
@@ -41,8 +41,8 @@ This guide shows you how to use [Linode's API](/docs/api) to create and attach a
 You can attach a Linode to a VLAN in three different ways using the Linode API:
 
 - As part of the configuration of a new Linode using the Linode Create ([POST /linodes/instances](/docs/api/linode-instances/#linode-create)) endpoint.
-- By creating a new Configuration Profile for a Linode using the Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create)) endpoint.
-- By editing an existing Configuration Profile of a Linode using the Configuration Profile Update ([/linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update)) endpoint.
+- By creating a new configuration profile for a Linode using the Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create)) endpoint.
+- By editing an existing configuration profile of a Linode using the Configuration Profile Update ([/linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update)) endpoint.
 
 The steps in this guide can be adopted to create and use VLANs for your specific use case.
 
@@ -52,7 +52,7 @@ When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs
 
 ## Configuring VLANs with the Interfaces Array
 
-VLANs are managed by the `interfaces` array of a Linode's Configuration Profile. The `interfaces` array consists of up to three network interface objects which correspond to the *eth0*, *eth1*, and *eth2* interfaces according to their position in the array as follows:
+VLANs are managed by the `interfaces` array of a Linode's configuration profile. The `interfaces` array consists of up to three network interface objects which correspond to the *eth0*, *eth1*, and *eth2* interfaces according to their position in the array as follows:
 
 | Array Order | Array Index | Interface | Example Interface Object |
 | ----------- | ----------- | --------- | --------- |
@@ -92,7 +92,7 @@ IPAM (IP Address Management) is the system that allows users to assign and manag
 Just like public and private IP addresses, IPAM addresses for a VLAN are automatically configured on a Linode through [Network Helper](https://www.linode.com/docs/guides/network-helper/). If Network Helper is disabled or if no `ipam_address` is provided, the Linode will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an `ipam_address`. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings.
 
 {{< note >}}
-No `ipam_address` is specified for `public` purpose interfaces. You can simply omit the property, or enter an empty string or `null`.
+No `ipam_address` is specified for `public` purpose interfaces. You can simply omit the property, enter an empty string, or enter `null`.
 {{< /note >}}
 
 {{< note >}}
