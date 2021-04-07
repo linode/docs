@@ -24,7 +24,7 @@ Create a private L2 network and attach your Linodes to it for secure and private
 
 ### Simple Configuration
 
-Use the Beta Cloud Manager to create a VLAN and attach Linode's to it in just a few clicks. Create up to 10 VLANs per data center, and apply up to 3 VLANs to a single Linode. For more fine-grained control, use the Linode APIv4 or Linode CLI.
+Use the Cloud Manager to create a VLAN and attach Linode's to it in just a few clicks. Create up to 10 VLANs per data center, and apply up to 3 VLANs to a single Linode. For more fine-grained control, use the Linode APIv4 or Linode CLI.
 
 ### Reduce Network Transfer Costs
 

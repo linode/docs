@@ -15,5 +15,5 @@ show_on_rss_feed: false
 ---
 
 {{< note >}}
-Linode VLANs solution is now in beta and available through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form). Green Light members can test this feature before it’s generally available. For more information visit the [VLAN product page](https://www.linode.com/products/vlan/).
+Linode VLANs is now in beta and available through the [Linode Cloud Manager](https://cloud.linode.com/) and the [Linode API](/docs/products/networking/vlans/developers/). Users can test this feature before it’s generally available. For more information visit the [VLAN product page](https://www.linode.com/products/vlan/).
 {{</ note >}}
