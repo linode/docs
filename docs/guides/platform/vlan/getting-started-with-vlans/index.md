@@ -25,7 +25,7 @@ VLANs are separate from [Private IP Addresses](https://www.linode.com/docs/guide
 
 - **No additional charges.** VLANs are available at no cost and network transfer over a VLAN does not count towards monthly transfer quotas.
 
-## Configuration Options
+## Configuring VLANs
 
 VLANs are relatively simple to manage and do not require much configuration beyond attaching (or detaching) a VLAN to a Linode. VLANs can be configured when creating new Linodes or by modifying the network interfaces on the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile) of an existing Linode.
 
@@ -45,7 +45,7 @@ When configuring a network interface, a VLAN can be selected by entering its **L
 
 ### Assigning an IPAM Address
 
-IPAM (IP Address Management) is the system that allows users to assign and manage IP addresses for each VLAN configured on a Linode. When attaching a VLAN to a Linode, an **IPAM Address** can be manually entered. This should be a unique IP address that doesn't already exist within the VLAN or on the public internet. It is common to use an address within the 10.0.0.0/8 range (10.0.0.0 – 10.255.255.255). For example, here are typical IPAM addresses for two Linodes connected to the same VLAN:
+IPAM (IP Address Management) is the system that allows users to assign and manage IP addresses for each VLAN configured on a Linode. When attaching a VLAN to a Linode, an **IPAM Address** can be specified in address/netmask format. This should be a unique IP address that doesn't already exist within the VLAN or on the public internet. It is common to use an address within the 10.0.0.0/8 range (10.0.0.0 – 10.255.255.255). For example, here are typical IPAM addresses for two Linodes connected to the same VLAN:
 
 - Linode 1: `10.0.0.1/24`
 - Linode 2: `10.0.0.2/24`
@@ -113,16 +113,35 @@ By default, the public IP address (and, if added, the private IP address) of the
 
     [![Reboot the Linode](reboot-linode.png "Reboot the Linode")](reboot-linode.png)
 
-## Limitations
+## Viewing VLANs attached to a Linode
 
-- **VLANs are region-specific.**  Once created, a VLAN can only be attached to other Linodes within the same data center.
 
-- **An account can have up to 10 VLANs per region.**
 
-- **A Linode can belong to a maximum of 3 VLANs.** Since there are 3 configurable network interfaces on each Linode, up to 3 VLANs can be attached. If one of those network interfaces is configured for the public internet, there are 2 remaining network interfaces for use with VLANs.
+## Testing connectivity
 
-- **VLANs cannot be manually renamed by the user.** If a VLAN's label must be changed, a new VLAN can be created and all required Linodes can be attached to that new VLAN.
+Once a VLAN has been attached to more than one Linode, verify that you can communicate between those Linodes over the VLAN's private network.
 
-- **VLANs cannot be manually deleted by the user.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, simply detach it from all Linodes. After this, it will automatically be deleted within a short timeframe.
+1. If the Linode has a public network configured, connect to your Linode via SSH
 
-- **Network Helper is required for automatic configuration.** If [Network Helper](https://www.linode.com/docs/guides/network-helper/) has been disabled for any reason, the Linode will not be able to automatically communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an IPAM address. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings.
+        ssh username@192.0.2.0
+
+    If the Linode does not have a public network configured, connect to your Linode via Lish following the steps in the [Using the Linode Shell](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application) guide.
+
+1. Ping another Linode within the VLAN's private network using the IPAM address assigned to it.
+
+        ping 10.0.0.1
+
+    The output should display ICMP packets successfully transmitted and received from this Linode to the secondary Linode in the Private Network.
+
+    {{< output >}}
+PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.733 ms
+64 bytes from 10.0.0.1: icmp_seq=2 ttl=64 time=0.294 ms
+^C
+--- 10.0.0.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 18ms
+rtt min/avg/max/mdev = 0.294/0.513/0.733/0.220 ms
+    {{</ output >}}
+
+
+{{< content "vlans-limitations-shortguide" >}}

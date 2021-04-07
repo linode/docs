@@ -254,18 +254,5 @@ When updating a Configuration Profile's `interfaces` array, the previous interfa
           }' \
           https://api.linode.com/v4/linode/instances/123/reboot
 
-## Limitations
 
-- **VLANs are region-specific.**  Once created, a VLAN can only be attached to other Linodes within the same data center.
-
-- **VLANs are only available in Next Generation Network (NGN) data centers.** Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
-
-- **An account can have up to 10 VLANs per region.**
-
-- **A Linode can belong to a maximum of 3 VLANs.** Since there are 3 configurable network interfaces on each Linode, up to 3 VLANs can be attached. If one of those network interfaces is configured for the public internet, there are 2 remaining network interfaces for use with VLANs.
-
-- **VLANs cannot be manually renamed by the user.** If a VLAN's label must be changed, a new VLAN can be created and all required Linodes can be attached to that new VLAN.
-
-- **VLANs cannot be manually deleted by the user.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, simply detach it from all Linodes. After this, it will automatically be deleted within a short timeframe.
-
-- **Network Helper is required for connecting to the VLAN automatically.** If [Network Helper](https://www.linode.com/docs/guides/network-helper/) has been disabled, the Linode will not *automatically* be able to communicate over the VLAN's private network. In this case, advanced users can manually adjust their Linode's internal network configuration files with the appropriate settings for their VLAN.
+{{< content "vlans-limitations-shortguide" >}}

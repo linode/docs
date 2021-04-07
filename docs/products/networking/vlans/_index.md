@@ -30,14 +30,9 @@ Use the Cloud Manager to create a VLAN and attach Linode's to it in just a few c
 
 Private network transfer is free. Any communication between Linodes over the private VLAN does not count against your monthly [network transfer quota](/docs/guides/network-transfer-quota/).
 
-## Limitations
-
-* A Linode can only be attached to a VLAN that resides within the same data center region as the Linode.
-
-* If a Linode is attached to a VLAN and you wish to migrate the Linode to a different data center region, ensure that the new data center region offers the VLAN service. See the [Availability](#availability) section for details.
-
-    Once the Linode's data center migration is initiated, the Linode is automatically detached from its VLAN. When the migration is complete, you must attach the migrated Linode to a VLAN that resides within the Linode's new data center region.
-
 ## Pricing
 
 VLANs are free to use. Communication across your private network does not count against your monthly [network transfer quota](/docs/guides/network-transfer-quota/).
+
+
+{{< content "vlans-limitations-shortguide" >}}
