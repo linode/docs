@@ -3,7 +3,7 @@ slug: how-to-install-selinux-on-ubuntu-18-04
 author:
   name: Angel
   email: docs@linode.com
-description: 'This guide will show you how to install SELinux on Ubuntu 18.04, enable SELinux policies, and disable SELinux.'
+description: 'This guide shows you how to install SELinux on Ubuntu 18.04, enable SELinux policies, and disable SELinux.'
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-ubuntu-18-04/']
 tags: ["ubuntu","linux"]
@@ -29,15 +29,15 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
     {{< /note >}}
 
-1.  Update your system:
+1.  Update the system:
 
         sudo apt update
 
     {{< note >}}
-The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
     {{</ note >}}
 
 ### Remove AppArmor
@@ -49,52 +49,52 @@ The Linode kernel does not support SELinux by default. If your system is running
 1.  Purge AppArmor from the system:
 
     {{< caution >}}
-Do not purge AppArmor if you believe you may reuse it in the future.  If you would like to preserve your AppArmor configuration files, use the `remove` command, instead:
+Do not purge AppArmor if you believe you may reuse it in the future.  If you would like to preserve the AppArmor configuration files, use the `remove` command, instead:
 
       sudo apt remove apparmor
     {{< /caution >}}
 
         sudo apt purge apparmor
 
-1.  Update your system:
+1.  Update the system:
 
         sudo apt update && sudo apt upgrade -yuf
 
-1. Reboot your Linode:
+1. Reboot the Linode:
 
         sudo reboot
 
 ### Install SELinux
 
-1.  Install the SELinux package along with supporting packages to help you manage your installation.
+1.  Install the SELinux package along with supporting packages to manage the installation.
 
         sudo apt install selinux selinux-utils selinux-basics auditd audispd-plugins
 
     {{< note >}}
-During the installation, a prompt will remind you to reboot your system for the changes to take effect. Select **Yes** in order to continue.
+During the installation, the system prompts you to reboot the system for the changes to take effect. Select **Yes** to continue.
 {{< /note >}}
 
-1. Verify your SELinux installation's status. The status of your SELinux installation should be `disabled`.
+1. Verify the status of SELinux installation. The status of SELinux installation should be `disabled`.
 
         sudo sestatus
 
-1. Reboot your Linode for the installation to complete:
+1. Reboot the Linode for the installation to complete:
 
         sudo reboot
 
     {{< note >}}
-After rebooting your system, SELinux should be enabled, but in *permissive mode*. Permissive mode means any actions that would have been disallowed are allowed, but logged in your system's audit log located in the `/var/log/audit/audit.log` file.
+After rebooting the system, SELinux should be enabled, but in *permissive mode*. Permissive mode means any actions that would have been disallowed are allowed, but logged in the audit log file located in the `/var/log/audit/audit.log`.
    {{</ note >}}
 
-1. Log back into your Linode via SSH. Replace `192.0.2.0` with your own Linode's IP address.
+1. Log back into the Linode via SSH. Replace `192.0.2.0` with the IP address of the Linode.
 
         ssh username@192.0.2.0
 
-1. Verify the status of your SELinux installation:
+1. Verify the status of the SELinux installation:
 
         sudo sestatus
 
-    You should see a similar output:
+    An output similar to the following appears:
 
     {{< output >}}
 SELinux status:                 enabled
@@ -109,11 +109,11 @@ Memory protection checking:     requested (insecure)
 Max kernel policy version:      31
     {{</ output >}}
 
-1. To put SELinux into *enforcing mode*, use the `setenforce` command. When in enforcing mode, any actions not permitted by your system are blocked and the corresponding event is logged in the audit log.
+1. To put SELinux into *enforcing mode*, use the `setenforce` command. When in enforcing mode, any actions not permitted by the system are blocked and the corresponding event is logged in the audit log file.
 
         sudo setenforce 1
 
-1.  To maintain `enforcing` mode after reboot, edit the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`.
+1.  To maintain `enforcing` mode after reboot, edit the SELinux configuration file located in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`.
 
     {{< file "/etc/selinx/config" >}}
 # This file controls the state of SELinux on the system.
@@ -125,11 +125,11 @@ SELINUX=enforcing
     {{< /file >}}
 
     {{< note >}}
-If you have set SELinux to enforcing mode, ensure that your SSH port has access before logging out of your session.
+If you have set SELinux to enforcing mode, ensure that the SSH port has access before logging out of the current session.
 
     sudo semanage port -l | grep 'ssh'
 
-You should see a similar output if TCP is allowed on port 22.
+An output similar to the following appears, if TCP is allowed on port 22:
 
 {{< output >}}
 ssh_port_t                     tcp      22
@@ -144,14 +144,14 @@ If you do not see the this entry, open the port with the following command:
 
 SELinux comes with a set of pre-built policies to handle requests that drive security. These policies determine if any request should be allowed to be processed. 
 
-For example, let’s say we want to enable a policy that allows MySQL requests through SELinux. If you have read MySQL’s documentation, they suggest that you disable SELinux to handle such requests, but there are other and better options. 
+For example, to enable a policy that allows MySQL requests through SELinux. MySQL’s documentation recommends that you disable SELinux to handle such requests, but there are other and better options. 
 
 
 ### Enabling SELinux Policy for MySQL Requests
 
 **Using permissive mode**: 
 
-We set setenforce to 0, now SELinx will allow everything but will also log it. 
+Set setenforce to 0, now SELinx allows everything but also logs it. 
 
 	setenforce 0
 
@@ -167,21 +167,21 @@ To enable SELinux policy locally for mysqld process, you can execute the followi
 
 	semodule -i mysqlpol.pp
 
-We have now enabled a local SELinux policy by using a mysqlpol.pp.
+You have now enabled a local SELinux policy by using a mysqlpol.pp.
 
-We can also make this permanent or global by using setsebool command. To make this globally permanent, run the following command:
+You can also make this permanent or global by using setsebool command. To make this globally permanent, run the following command:
 
 	setsebool -P httpd_can_network_connect_db 1
 
 **Enabling SELinux policy to write to a file or folder**
 
-In this example, let’s see how we can enable the SELinux policy to gain write access to /home/linode/file1
+In this example, you can enable the SELinux policy to gain write access to `/home/linode/file1`.
 
-Let’s also check the policy booleans on file1 before moving forward. To do so, run the following command:
+Also check the policy booleans on `file1` before moving forward. To do so, run the following command:
 
 	sestatus -b
 
-You should see an output like below: 
+An output similar to the following appears: 
 {{< output >}}
 
 	Policy booleans:
@@ -217,21 +217,21 @@ You should see an output like below:
 …
 {{</ output >}}
 
-The result is truncated as it is too long. But, after inspecting the booleans, we see that none of these booleans can help us allow httpd access to file1. The solution here is to provide a context of httpd_sys_rw_content_t to the directory structure. Or, you can also give public_content_rw_t context to the directory structure with allow_httpd_anon_write enabled. 
+The result is truncated as it is too long. But, after inspecting the booleans, none of these booleans can allow httpd access to `file1`. The solution here is to provide a context of `httpd_sys_rw_content_t` to the directory structure. Or, you can also give `public_content_rw_t` context to the directory structure with `allow_httpd_anon_write` enabled. 
 
 **SELinux in enforcing mode and allowing daemons to access files at non-default locations**
 
-Let’s go through another SELinux policy example to understand various permissions at a deeper level. In this case, we want to enable SELinux to permit daemons to access files that are in a non-default location. When you run a daemon in a permissive mode, you can access these files but with policy enforced, you won’t be able to access the same files and see AVC denial messages instead. 
+Here's another SELinux policy example to understand various permissions at a deeper level. In this case, you want to enable SELinux to permit daemons to access files that are in a non-default location. When you run a daemon in a permissive mode, you can access these files but with policy enforced, you won’t be able to access the same files and see AVC denial messages instead. 
 
-Our goal here is to be able to configure SELinux policy in enforcing mode to still allow daemons to access files in those locations. 
+The goal here is to be able to configure SELinux policy in enforcing mode to still allow daemons to access files in those locations. 
 
 To do so, run the following command:
 
 	semanage fcontext -l /daemon_old_path/
 
-Now, check the default context of SELinux in the directory, and find the default context of the target daemon’s folder. This will allow you to configure SELinux contexts and move your context too. 
+Now, check the default context of SELinux in the directory, and find the default context of the target daemon’s folder. This allows you to configure SELinux contexts and move your context too. 
 
-Here is an example where our context is allow_daemons_use_tty
+Here is an example where the context is allow_daemons_use_tty
 
 	# semanage fcontext -l
 
@@ -243,7 +243,7 @@ Now apply these contexts using the following command:
 
 	semanage fcontext -a -t allow_daemons_use_tty '/newcontextpath(/.*)?'
 
-Now that we have applied contexts to the new path above, we can enforce everything in this path to get that context by:
+Now that you have applied contexts to the new path above, you can enforce everything in this path to get that context by:
 
 	restorecon -RFvv /newcontextpath
 
@@ -251,13 +251,13 @@ To check the status run the following command:
 
 	ls -Zd /newcontextpath
 
-After making these changes, we have to reindex man db by executing the following command:
+After making these changes, you have to reindex man db by executing the following command:
 
 	mandb 
 
 To finish this, run man -k selinux to list all SELinux man pages. 
 
-Your daemon will now be able to access the files placed in a non-default location. 
+The daemon can now access the files placed in a non-default location. 
 
 
 ### How To Disable SELinux on Ubuntu
@@ -272,11 +272,11 @@ To disable all SELinux policies on Ubuntu temporarily, run the following command
 
 **Permanently Disable SELinux policies on Ubuntu**
 
-If you wish to permanently disable SELinux even when the system reboots, make changes to your /etc/selinux/config file and set SELINUX to disabled. Change your SELinux line as shown below:
+If you wish to permanently disable SELinux even when the system reboots, make changes to the `/etc/selinux/config` file and set SELINUX to disabled. Change the SELinux line as shown below:
 
 	SELINX=disbaled 
 
-And, now if you restart your system, SELinux and its policies won’t be in place anymore. 
+And, now if you restart the system, SELinux and its policies won’t be in place anymore. 
 
 ## Next Steps
-After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux/) to learn the basics of SELinux security.
+After installing SELinux on the system, use the [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux/) to learn the basics of SELinux security.
