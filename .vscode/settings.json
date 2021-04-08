@@ -1,0 +1,37 @@
+{
+    "grammarly.overrides": [
+        {
+            "files": [
+                "**/docs/guides/applications/configuration-management/chef/beginners-guide-chef/index.md"
+            ],
+            "config": {
+                "audience": "knowledgeable",
+                "dialect": "american",
+                "domain": "technical",
+                "emotions": [
+                    "confident"
+                ],
+                "goals": [
+                    "inform"
+                ]
+            }
+        },
+        {
+            "files": [
+                "**/docs/guides/uptime/monitoring/install-graphite-and-grafana/index.md"
+            ],
+            "config": {
+                "audience": "knowledgeable",
+                "dialect": "american",
+                "domain": "technical",
+                "emotions": [
+                    "confident"
+                ],
+                "goals": [
+                    "inform",
+                    "describe"
+                ]
+            }
+        }
+    ]
+}
