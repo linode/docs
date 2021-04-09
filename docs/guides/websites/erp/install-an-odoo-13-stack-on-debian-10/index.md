@@ -3,12 +3,13 @@ slug: install-an-odoo-13-stack-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Odoo is an open-source suite of over 10,000 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
-og_description: 'Odoo is an open-source suite of over 10,000 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
-keywords: ["Odoo 13 install Debian 10", "install open source cms erp ubuntu"]
+description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Debian 10.'
+og_description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Debian 10.'
+keywords: ["Odoo 13 install Debian 10", "install open source cms erp debian"]
+tags: ["debian", "postgresql", "database", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-09-17
-modified: 2020-09-17
+published: 2020-04-09
+modified: 2020-04-09
 modified_by:
   name: Linode
 title: 'How to Install an Odoo 13 Stack on Debian 10'
@@ -21,37 +22,49 @@ aliases: ['/websites/cms/install-an-odoo-13-stack-on-debian-10/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/13.0)'
-  - '[PostgreSQL 10 Documentation](https://www.postgresql.org/docs/10/static/index.html)'
-  - '[Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](https://www.linode.com/docs/websites/erp/install-an-odoo-11-stack-on-ubuntu-16-04)'
+  - '[PostgreSQL 11 Documentation](https://www.postgresql.org/docs/11/static/index.html)'
   - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/)'
-  - '[Using Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+relations:
+    platform:
+        key: install-an-odoo-13-stack
+        keywords:
+            - distribution: Debian 10
 ---
 
 ## What is Odoo?
 
-[Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company's processes.
+[Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs. A few popular applications for Odoo include CRMs, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface. Using Odoo's web interface can make it easier to automate and manage your company's processes.
 
-For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu 16.04](/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide for an example of this). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
+For simple installations, Odoo and its dependencies can be installed on a single Linode. Our [Install Odoo 10 on Ubuntu 16.04](/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide has an example of this. However, this single-server setup is not suited for production deployments. This guide covers how to configure an Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
 
 ## System Requirements
 
 The setup in this guide requires the following *minimal* Linode specifications:
 
-* A Shared **2GB** Linode to install the PostgreSQL 10 database
+* A Shared **2GB** Linode to install the PostgreSQL 11 database
+
 * A Shared **1GB** Linode (Nanode) to install the Odoo 13 web application
 
-Keep in mind that your implementation may need more nodes or higher-memory plans depending on the number of end-users you want to serve and the number of modules you plan to incorporate.
+Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](/docs/guides/resizing-a-linode/) to a higher plan later on.
+
+{{< note >}}
+If you set up both servers inside the same data center, then you can configure the database server and the application server can talk to each other over that data center's private network. Communication over the data center's network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [network transfer quota](/docs/guides/network-transfer-quota/).
+{{< /note >}}
 
 All examples in this guide are for Debian 10. If you plan to use a different operating system, adapt the commands as necessary.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide. Create the Linodes described in the previous [System Requirements](#system-requirements) section of the current guide. Complete the steps for setting your Linodes' hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3.  Update your systems:
+    {{< note >}}
+Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
+
+1.  Update your systems:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -61,52 +74,98 @@ If you want to configure a firewall for your Linodes, open the following ports:
 
 | Node | Open TCP Ports |
 | ------------ |:--------:|
-| Odoo 13 application | `22, 6010, 5432, 8069` |
 | PostgreSQL database | `22, 6010, 5432` |
+| Odoo 13 application | `22, 6010, 5432, 8069` |
 
-Ports `22`, `80`, and `5432` are the defaults for SSH, HTTP, and PostgreSQL communications, respectively. Port `6010` is used for Odoo communications and port `8069` is used by Odoo's webserver.
+- Port `22` is the default port for SSH.
 
-A convenient way to open these ports is by using `ufw`, however, this utility is not installed by default. If you want, you can install `ufw` with the following command:
+- Port `5432` is the default port for PostgreSQL communications.
 
-    sudo apt-get install ufw
+- Port `6010` is used for Odoo communications.
 
-Once installed, you can open a particular port with a command similar to the following:
+- Port `8069` is used by Odoo's webserver.
 
-    sudo ufw allow 22/tcp
+A convenient way to open these ports is by using the [UFW firewall utility](/docs/guides/configure-firewall-with-ufw/). However, this utility is not installed by default. Follow these instructions to install and configure UFW:
 
+{{< note >}}
+If you prefer to use a different firewall utility, like [iptables](/docs/guides/control-network-traffic-with-iptables/), be sure to use the same ports as described in the table above.
+{{< /note >}}
+
+1. Install `ufw` with the following command:
+
+        sudo apt-get install ufw
+
+1. Allow traffic on the appropriate ports for each server. These lines allow traffic to those ports from all other hosts:
+
+    - **PostgreSQL database server:**
+
+            sudo ufw allow 22,6010,5432/tcp
+
+    - **Odoo 13 application server:**
+
+            sudo ufw allow 22,6010,5432,8069/tcp
+
+    {{< note >}}
+You may want to only accept connections from certain hosts/IP addresses. The [Advanced Rules](/docs/guides/configure-firewall-with-ufw/#advanced-rules) section of our UFW guide shows how to specify hosts/IP addresses in your rules.
+{{< /note >}}
+
+1. After configuring your ports, enable the firewall:
+
+        sudo ufw enable
+
+1. To check on the status of your firewall rules, run:
+
+        sudo ufw status
+
+{{< note >}}
 For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+{{< /note >}}
+
 
 ## Hostname Assignment
 
-In order to simplify communication between Linodes, set hostnames for each server. You can use private IPs if the Linodes are all in the same data center, or Fully Qualified Domain Names (FQDNs) if available. This guide uses the following FQDN and hostname conventions:
+In order to simplify communication between Linodes, set hostnames for each server. This guide uses the following FQDN and hostname conventions:
 
 | Node | Hostname | FQDN |
 | ------------ |:--------:| :-----------:|
 | Odoo 13  | odoo | odoo.yourdomain.com |
 | PostgreSQL | postgresql | postgresql.yourdomain.com |
 
+You can use private IPs if the Linodes are all in the same data center, or Fully Qualified Domain Names (FQDNs) if available.
+
+On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) guide to locate your addresses.
+
+{{< note >}}
+A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, Follow our [Remote Access](/docs/guides/remote-access/#adding-private-ip-addresses) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
+
+Linode can configure your new private address for you through the [Network Helper](/docs/platform/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with following the rest of this guide.
+{{< /note >}}
+
 - PostgreSQL server:
 
     {{< file "/etc/hosts" conf >}}
-127.0.0.1       localhost
 127.0.1.1       postgresql.yourdomain.com   postgresql
-
-10.1.3.10       odoo.yourdomain.com       odoo
-
+192.0.2.2       odoo.yourdomain.com       odoo
 {{< /file >}}
+
+    {{< note >}}
+Use the public or private IP address of your **Odoo application server** on the second line of the above file snippet.
+{{< /note >}}
 
 - Odoo 13 server:
 
     {{< file "/etc/hosts" conf >}}
-127.0.0.1       localhost
 127.0.1.1       odoo.yourdomain.com       odoo
-
-10.1.1.10       postgresql.yourdomain.com   postgresql
+192.0.2.3       postgresql.yourdomain.com   postgresql
 {{< /file >}}
+
+    {{< note >}}
+Use the public or private IP address of your **PostgreSQL database server** on the second line of the above file snippet.
+{{< /note >}}
 
 FQDNs are used throughout this guide whenever possible to avoid confusion.
 
-## Set up PostgreSQL Database
+## Set Up the PostgreSQL Database
 
 Configure Odoo's `postgresql` database backend Linode. The Debian 10 official repository includes PostgreSQL version 11 which offers significant performance improvements as well as database replication compatibility.
 
@@ -114,7 +173,7 @@ Install the PostgreSQL database and developer libraries with the following comma
 
     sudo apt install postgresql-11 postgresql-server-dev-11 -y
 
-### Create PostgreSQL User
+### Create a PostgreSQL User
 
 Odoo requires a separate PostgreSQL user for communications between the web application Linode and the database Linode. Create the database user `odoo`. This user is in charge of all operations. Use a strong password and save it in a secure location to use later:
 
@@ -133,7 +192,7 @@ The options used are described below:
 
         sudo systemctl stop postgresql
 
-2. Edit the `pg_hba.conf` file to allow PostgreSQL Linode to communicate with the Odoo Linode server. Add the following line to the file:
+1. Edit the `pg_hba.conf` file to allow PostgreSQL Linode to communicate with the Odoo Linode server. Add the following line to the file:
 
     {{< file "/etc/postgresql/11/main/pg_hba.conf" conf >}}
 host    all             odoo             odoo.yourdomain.com            md5
@@ -146,10 +205,10 @@ The settings in the `pg_hba.conf` file are:
 * `host`: Enables connections using Unix-domain sockets.
 * `all`: Match all databases on the server. You can provide a comma separated list of specific Odoo database names if you know them beforehand.
 * `odoo`: The Odoo user responsible for application/database communications.
-* `odoo.yourdomain.com`: The address of your Odoo server. You should replace this with your FQDN or Ip address.
+* `odoo.yourdomain.com`: The address of your Odoo server. You should replace this with your FQDN or IP address.
 * `md5`: Make use of client-supplied MD5-encrypted passwords for authentication.
 
-### Configure PostgreSQL listening address
+### Configure the PostgreSQL Listening Address
 
 Edit `postgresql.conf` to allow the database server listening to remote connections:
 
@@ -173,7 +232,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 Configure your Odoo 13 web application to work with the PostgreSQL database backend.
 
 {{< note >}}
-Odoo 13 uses Python 3.6+ instead of Python 3.5. If your server is running an older Debian release, for instance Debian 9 (Stretch), you will need to compile a newer Python version to meet this requirement.
+Odoo 13 uses Python 3.6+ instead of Python 3.5. [Debian 10 servers run Python 3.7.3 by default](/docs/guides/how-to-install-python-on-debian-10/), so you should not have compatibility problems.
 {{< /note >}}
 
 ### Prepare Linode for Odoo 13 Installation
@@ -182,7 +241,7 @@ Odoo 13 uses Python 3.6+ instead of Python 3.5. If your server is running an old
 
         sudo adduser --system --home=/opt/odoo --group odoo
 
-2. Install system dependencies that are needed during Odoo 13 set up:
+1. Install system dependencies that are needed during Odoo 13 set up:
 
         sudo apt install python3 python3-pip python3-suds python3-all-dev python3-venv \
         python3-dev python3-setuptools python3-tk libncurses5-dev libgdbm-dev libnss3-dev \
@@ -191,52 +250,52 @@ Odoo 13 uses Python 3.6+ instead of Python 3.5. If your server is running an old
         zlib1g-dev libfreetype6-dev liblcms2-dev liblcms2-utils libwebp-dev tcl8.6-dev \
         tk8.6-dev libyaml-dev fontconfig xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils -y
 
-3. Use Git to clone the Odoo files onto your server:
+1. Use Git to clone the Odoo files onto your server:
 
         sudo git clone https://www.github.com/odoo/odoo.git --depth 1 \
         --branch 13.0 --single-branch /opt/odoo
 
-4. Enforce the use of POSIX locale to prevent possible errors during installation (this has nothing to do with the Odoo language):
+1. Enforce the use of POSIX locale to prevent possible errors during installation (this has nothing to do with the Odoo language):
 
         export LC_ALL=C
 
-5. Install Less CSS via Node.js and npm:
+1. Install Less CSS via Node.js and npm:
 
         sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - \
         && sudo apt install -y nodejs \
         && sudo npm install -g less less-plugin-clean-css
 
-6. Download `wkhtmltopdf` version `0.12.5` which is the recommended version for Odoo 13. For more information regarding `wkhtmltopdf` recommended versions, visit [Odoo wiki](https://github.com/odoo/odoo/wiki/Wkhtmltopdf)
+1. Download `wkhtmltopdf` version `0.12.5` which is the recommended version for Odoo 13. For more information regarding `wkhtmltopdf` recommended versions, visit [Odoo wiki](https://github.com/odoo/odoo/wiki/Wkhtmltopdf)
 
         cd /tmp
         wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb
 
-7. Install the package:
+1. Install the package:
 
         sudo dpkg -i wkhtmltox_0.12.5-1.buster_amd64.deb
 
-8. To ensure that `wkhtmltopdf` functions properly, copy the binaries to a location in your executable path and give them the necessary permission for execution:
+1. To ensure that `wkhtmltopdf` functions properly, copy the binaries to a location in your executable path and give them the necessary permission for execution:
 
         sudo cp /usr/local/bin/wkhtmlto* /usr/bin/ \
         && sudo chmod a+x /usr/bin/wk*
 
 ### Set Up Virtualenv
 
-It's considered a best practice to isolate Odoo's Python modules from the modules included as part of the operating system to prevent unforeseen conflicts in the long run, especially after periodic OS updates. For that reason using `virtualenv` is highly recommended.
+It's considered a best practice to isolate Odoo's Python modules from the modules included as part of the operating system. This prevents unforeseen conflicts in the long run, especially after periodic OS updates. For that reason using `virtualenv` is highly recommended.
 
 1. Create a new `virtualenv` environment for Odoo 13 application:
 
         python3 -m venv /home/<user>/odoo-env
 
-2. Activate the `odoo-env` virtual environment you created in the previous step:
+1. Activate the `odoo-env` virtual environment you created in the previous step:
 
         source /home/<user>/odoo-env/bin/activate
 
-3. Update `pip3` using the following command:
+1. Update `pip3` using the following command:
 
         pip3 install --upgrade pip
 
-4. Install Python's wheel in the virtual environment:
+1. Install Python's wheel in the virtual environment:
 
         pip3 install wheel
 
@@ -252,11 +311,11 @@ Let's review the the virtual environment creation:
         pip3 install -r /opt/odoo/doc/requirements.txt
         pip3 install -r /opt/odoo/requirements.txt
 
-2. Check that all requirements are properly installed in your virtual environment:
+1. Check that all requirements are properly installed in your virtual environment:
 
         pip3 list
 
-3. Exit from the Python virtual environment by issuing the command:
+1. Exit from the Python virtual environment by issuing the command:
 
         deactivate
 
@@ -266,7 +325,7 @@ Let's review the the virtual environment creation:
 
         sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server.conf
 
-2. Modify the configuration file. The complete file should look similar to the following, depending on your deployment needs:
+1. Modify the configuration file. The complete file should look similar to the following, depending on your deployment needs:
 
     {{< file "/etc/odoo-server.conf" conf >}}
 [options]
@@ -316,11 +375,11 @@ WantedBy=multi-user.target
         sudo chmod 755 /lib/systemd/system/odoo-server.service \
         && sudo chown root: /lib/systemd/system/odoo-server.service
 
-2.  Since the `odoo` user runs the application, change its ownership accordingly. Replace `/home/<user>` with the directory where you setup your virtual Python environment:
+1.  Since the `odoo` user runs the application, change its ownership accordingly. Replace `/home/<user>` with the directory where you setup your virtual Python environment:
 
         sudo chown -R odoo: /opt/odoo/ && sudo chown -R odoo: /home/<user>/odoo-env
 
-3.  Protect the server configuration file. Change its ownership and permissions so no other non-root user can access it:
+1.  Protect the server configuration file. Change its ownership and permissions so no other non-root user can access it:
 
         sudo chown odoo: /etc/odoo-server.conf \
         && sudo chmod 640 /etc/odoo-server.conf
@@ -333,19 +392,19 @@ Confirm that everything is working as expected.
 
         sudo systemctl start odoo-server
 
-2.  Confirm that `odoo-server` is running:
+1.  Confirm that `odoo-server` is running:
 
         sudo systemctl status odoo-server
 
-3.  In a browser, navigate to `odoo.yourdomain.com:8069` or `http://<your_Linode_IP_address>:8069`. If your proxy and your DNS configuration are working properly you are presented with Odoo's database creation screen:
+1.  In a browser, navigate to `odoo.yourdomain.com:8069` or `http://<your_Linode_IP_address>:8069`. If your proxy and your DNS configuration are working properly you are presented with Odoo's database creation screen:
 
     ![Odoo 13 Database Screen](odoo-13-first-screen.png "Odoo 13 Initial Screen")
 
-4.  Fill in all the fields, check the **Demo data** box to populate your database with sample data, and then click on **Create database** button.
+1.  Fill in all the fields, check the **Demo data** box to populate your database with sample data, and then click on **Create database** button.
 
     ![Odoo 13 Create Database](odoo-13-create-db.png "Odoo 13 Create Database")
 
-5. In the browser, you should see a list of available apps, indicating that database creation was successful:
+1. In the browser, you should see a list of available apps, indicating that database creation was successful:
 
     ![Odoo 13 Welcome Screen](odoo-13-welcome.png "Odoo 13 Welcome Screen")
 
@@ -357,47 +416,85 @@ Confirm that everything is working as expected.
 
         sudo systemctl enable odoo-server
 
-2.  Reboot your Linode from the Linode Manager.
+1.  Reboot your Linode from the Linode Manager.
 
-3.  Check the Odoo logs to verify that the Odoo server is running without errors:
+1.  Check the Odoo logs to verify that the Odoo server is running without errors:
 
         sudo journalctl -u odoo-server
 
 ## Back Up Odoo Databases
 
-If all components of the Odoo stack are running on a single server, it is simple to back up your databases using the Odoo web interface. However, this does not work with the configuration in this guide, since PostgreSQL was not installed on the **Odoo** Linode server.
+If all components of the Odoo stack were running on a single server, you could immediately back up your databases using the Odoo database backup web interface. This interface is located at http://odoo.yourdomain.com:8069/web/database/manager. However, this does not work with the configuration in this guide. This is because the interface needs the PostgreSQL software to be installed on the server. In this guide's earlier instructions, PostgreSQL was not installed on the Linode running your Odoo application server.
 
 You have two options to backup your production database:
 
-1. You can install PostgreSQL 10 on the **Odoo** server using the procedure described on this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo GUI as before. Since Odoo configuration is explicit about database connection you do not have to worry about anything else. This method restores the database to the **PostgreSQL** server rather than **Odoo**.
+1. Install PostgreSQL 11 on the Linode running your Odoo application server using the procedure described in this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo database backup web interface at http://odoo.yourdomain.com:8069/web/database/manager.
 
-2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](https://www.linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** server.
+    You can later use this interface to restore your database from a specific database backup file. Odoo correctly restores to the database on the **PostgreSQL** server, and not the database service that was installed on the Odoo application server. This happens because your Odoo configuration is explicit about the database connection.
 
-### Update Odoo Modules
+1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** Linode.
 
-Once you have backed up your production database you can update Odoo modules.
+## Update Odoo Modules
 
-From your **Odoo** server restart the Odoo service using the following flags to instruct the system to search for updates and apply any changes to modules:
+These instructions show how to update your Odoo modules from the command line. However, from Odoo version 12 forward it is suggested that you update modules using Odoo's web interface whatever possible.
+
+{{< caution >}}
+Be sure to create a backup of your production database before updating your modules.
+{{< /caution >}}
+
+From your **Odoo application server**, restart the Odoo service. Use the following flags to instruct the system to search for updates and apply any changes to modules:
 
     sudo service odoo-server restart -u all -d <production_database_name>
 
-{{< note >}}
-From Odoo version 12 forward it is suggested that you update modules using Odoo's web interface whatever possible.
-{{< /note >}}
+## Update the Odoo Application Server
 
-### Update your System
-
-If all your tests pass, you can safely update your installation.
+These instructions show how to update your current version of Odoo. Specifically, they show how to update your Odoo application within the same version (e.g. Odoo 13), rather than **upgrading** to a newer Odoo version (e.g. from Odoo 12 to Odoo 13). Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database. These are dependent on the version of Odoo you are upgrading from.
 
 1.  From your Linode, download the new code from source:
 
         cd /opt/odoo \
         && sudo git fetch origin 13.0
 
-2.  Apply the changes to your repository:
+1.  Apply the changes to your repository:
 
         sudo git reset --hard origin/13.0
 
-{{< note >}}
-Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
-{{< /note >}}
+## Next Steps
+
+You now have Odoo 13 and PostgreSQL installed and configured. There are several enhancements that could be made to your installation to increase its usability and security:
+
+### Set Up a Web Server Reverse Proxy
+
+You can install a web server as a reverse proxy in front of the Odoo application server. By doing so, your Odoo installation would be accessible on port 80 (HTTP) or port 443 (HTTPS), instead of port 8069.
+
+Our [Use NGINX as a Reverse Proxy](/docs/guides/use-nginx-reverse-proxy/) guide lists further benefits of setting up a reverse proxy. It also shows how to use NGINX as a reverse proxy for an example Node.js application. The instructions in this guide could be adapted for your Odoo installation. In particular, you could alter the instructions in that guide's [Configure NGINX](/docs/guides/use-nginx-reverse-proxy/#configure-nginx) section to use port 8069, instead of port 3000.
+
+If you proceed with setting up the reverse proxy, you should also add these lines to your `/etc/odoo-server.conf` Odoo server configuration file:
+
+{{< file "/etc/odoo-server.conf" >}}
+; Append below the other lines in the file:
+
+proxy_mode = True
+xmlrpc_interface = 127.0.0.1
+netrpc_interface = 127.0.0.1
+{{< /file >}}
+
+These lines ensure the Odoo server that's running on port 8069 only responds on localhost. As well, the `proxy_mode` directive makes the Odoo server compatible with your web server reverse proxy.
+
+Then, restart the Odoo server:
+
+    sudo systemctl restart odoo-server
+
+Finally, allow port 80 in your firewall. If you're using UFW, these lines allow the port:
+
+    sudo ufw allow 80/tcp
+    sudo ufw reload
+
+### Set Up SSL
+
+If you have set up a reverse proxy, you can then serve your Odoo site over HTTPS. In particular, the reverse proxy server can be configured with an SSL certificate. The directions in our [How to Install Certbot for TLS on Debian 10](/docs/guides/how-to-install-certbot-on-debian-10/) guide show how to do this with NGINX on Debian 10.
+
+After setting up an SSL certificate, be sure to allow port 443 in your firewall. If you're using UFW, these lines allow the port:
+
+    sudo ufw allow 443/tcp
+    sudo ufw reload
