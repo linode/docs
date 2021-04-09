@@ -34,7 +34,7 @@ Defend your apps and services from malicious attackers by creating rules to only
 
 ### Create Custom Firewall Rules
 
-Tailor rulesets for each Linode. Add up to 25 rules per ruleset, and use up to three active firewalls on a single Linode.
+Tailor rulesets for each Linode. Add up to 25 rules per ruleset, and use a customized firewall on a single Linode.
 
 ### Making Security More Accessible
 
