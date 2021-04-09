@@ -129,7 +129,7 @@ The files to configure the world options are located at `/home/mcserver/server`.
 
 ### Software Included
 
-The Minecraft One-Click App installs the following required software on your Linode:
+The Minecraft Marketplace App will install the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
