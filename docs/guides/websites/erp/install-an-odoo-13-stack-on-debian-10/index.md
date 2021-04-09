@@ -49,7 +49,7 @@ The setup in this guide requires the following *minimal* Linode specifications:
 Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](/docs/guides/resizing-a-linode/) to a higher plan later on.
 
 {{< note >}}
-If you set up both servers inside the same data center, then you can configure the database server and the application server can talk to each other over that data center's private network. Communication over the data center's network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [network transfer quota](/docs/guides/network-transfer-quota/).
+If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [network transfer quota](/docs/guides/network-transfer-quota/).
 {{< /note >}}
 
 All examples in this guide are for Debian 10. If you plan to use a different operating system, adapt the commands as necessary.
@@ -88,7 +88,7 @@ If you want to configure a firewall for your Linodes, open the following ports:
 A convenient way to open these ports is by using the [UFW firewall utility](/docs/guides/configure-firewall-with-ufw/). However, this utility is not installed by default. Follow these instructions to install and configure UFW:
 
 {{< note >}}
-If you prefer to use a different firewall utility, like [iptables](/docs/guides/control-network-traffic-with-iptables/), be sure to use the same ports as described in the table above.
+If you prefer to use a different firewall utility, like [iptables](/docs/guides/control-network-traffic-with-iptables/), be sure to use the same ports as described in the table above when configuring your software.
 {{< /note >}}
 
 1. Install `ufw` with the following command:
@@ -118,7 +118,7 @@ You may want to only accept connections from certain hosts/IP addresses. The [Ad
         sudo ufw status
 
 {{< note >}}
-For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+For more detailed information about firewall setup please read our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide.
 {{< /note >}}
 
 
@@ -131,17 +131,15 @@ In order to simplify communication between Linodes, set hostnames for each serve
 | Odoo 13  | odoo | odoo.yourdomain.com |
 | PostgreSQL | postgresql | postgresql.yourdomain.com |
 
-You can use private IPs if the Linodes are all in the same data center, or Fully Qualified Domain Names (FQDNs) if available.
-
 On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) guide to locate your addresses.
 
 {{< note >}}
-A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, Follow our [Remote Access](/docs/guides/remote-access/#adding-private-ip-addresses) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
+A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Remote Access](/docs/guides/remote-access/#adding-private-ip-addresses) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
 
-Linode can configure your new private address for you through the [Network Helper](/docs/platform/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with following the rest of this guide.
+Linode can configure your new private address for you through the [Network Helper](/docs/platform/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with the rest of this guide.
 {{< /note >}}
 
-- PostgreSQL server:
+- **PostgreSQL database server**:
 
     {{< file "/etc/hosts" conf >}}
 127.0.1.1       postgresql.yourdomain.com   postgresql
@@ -152,7 +150,7 @@ Linode can configure your new private address for you through the [Network Helpe
 Use the public or private IP address of your **Odoo application server** on the second line of the above file snippet.
 {{< /note >}}
 
-- Odoo 13 server:
+- **Odoo 13 application server**:
 
     {{< file "/etc/hosts" conf >}}
 127.0.1.1       odoo.yourdomain.com       odoo
@@ -210,16 +208,14 @@ The settings in the `pg_hba.conf` file are:
 
 ### Configure the PostgreSQL Listening Address
 
-Edit `postgresql.conf` to allow the database server listening to remote connections:
+Edit `postgresql.conf` to allow the database server to listen to remote connections:
 
 {{< file "/etc/postgresql/11/main/postgresql.conf" conf >}}
 #From CONNECTIONS AND AUTHENTICATION Section
 listen_addresses = '*'
 {{< /file >}}
 
-These settings are:
-
-* `listen_addresses`: What IP addresses to listen on. The `'*'` means that the server listens to all IP addresses. You can limit this to only include the IP addresses that you consider safe.
+The `listen_addresses` setting lists the IP addresses to listen on. The `'*'` wildcard means that the server listens to all IP addresses. You can limit this to only include the IP addresses that you consider safe.
 
 ### Enable PostgreSQL on Startup
 
@@ -229,7 +225,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 
 ## Odoo 13 Setup
 
-Configure your Odoo 13 web application to work with the PostgreSQL database backend.
+This section shows how to configure your Odoo 13 web application to work with the PostgreSQL database backend. Run the commands in this section on the Linode that you created for your Odoo application server.
 
 {{< note >}}
 Odoo 13 uses Python 3.6+ instead of Python 3.5. [Debian 10 servers run Python 3.7.3 by default](/docs/guides/how-to-install-python-on-debian-10/), so you should not have compatibility problems.
@@ -386,7 +382,7 @@ WantedBy=multi-user.target
 
 ### Test your Odoo Stack
 
-Confirm that everything is working as expected.
+Confirm that everything is working as expected:
 
 1.  Start the Odoo server:
 
@@ -424,13 +420,15 @@ Confirm that everything is working as expected.
 
 ## Back Up Odoo Databases
 
-If all components of the Odoo stack were running on a single server, you could immediately back up your databases using the Odoo database backup web interface. This interface is located at http://odoo.yourdomain.com:8069/web/database/manager. However, this does not work with the configuration in this guide. This is because the interface needs the PostgreSQL software to be installed on the server. In this guide's earlier instructions, PostgreSQL was not installed on the Linode running your Odoo application server.
+If all components of your Odoo stack were running on a single server, you could immediately back up your databases using the Odoo database backup web interface. This interface is located at `http://odoo.yourdomain.com:8069/web/database/manager`.
+
+However, this interface does not work by default with the configuration in this guide. This is because the interface needs the PostgreSQL software to be installed on the server. In this guide's earlier instructions, PostgreSQL was not installed on the Linode running your Odoo application server.
 
 You have two options to backup your production database:
 
-1. Install PostgreSQL 11 on the Linode running your Odoo application server using the procedure described in this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo database backup web interface at http://odoo.yourdomain.com:8069/web/database/manager.
+1. Install PostgreSQL 11 on the Linode running your Odoo application server using the procedure described in this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo database backup web interface at `http://odoo.yourdomain.com:8069/web/database/manager`.
 
-    You can later use this interface to restore your database from a specific database backup file. Odoo correctly restores to the database on the **PostgreSQL** server, and not the database service that was installed on the Odoo application server. This happens because your Odoo configuration is explicit about the database connection.
+    You can later use this interface to restore your database from a specific database backup file. Odoo correctly restores to the database on the **PostgreSQL server**, and not to the database service that was installed on the Odoo application server. This happens because your Odoo configuration is explicit about the database connection.
 
 1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** Linode.
 
@@ -472,8 +470,7 @@ Our [Use NGINX as a Reverse Proxy](/docs/guides/use-nginx-reverse-proxy/) guide 
 If you proceed with setting up the reverse proxy, you should also add these lines to your `/etc/odoo-server.conf` Odoo server configuration file:
 
 {{< file "/etc/odoo-server.conf" >}}
-; Append below the other lines in the file:
-
+; Append directly below the other lines in the file:
 proxy_mode = True
 xmlrpc_interface = 127.0.0.1
 netrpc_interface = 127.0.0.1
@@ -492,7 +489,7 @@ Finally, allow port 80 in your firewall. If you're using UFW, these lines allow 
 
 ### Set Up SSL
 
-If you have set up a reverse proxy, you can then serve your Odoo site over HTTPS. In particular, the reverse proxy server can be configured with an SSL certificate. The directions in our [How to Install Certbot for TLS on Debian 10](/docs/guides/how-to-install-certbot-on-debian-10/) guide show how to do this with NGINX on Debian 10.
+If you have set up a reverse proxy, you can also choose to serve your Odoo site over HTTPS. To do so, configure the reverse proxy server with an SSL certificate. The directions in our [How to Install Certbot for TLS on Debian 10](/docs/guides/how-to-install-certbot-on-debian-10/) guide show how to do this with NGINX on Debian 10.
 
 After setting up an SSL certificate, be sure to allow port 443 in your firewall. If you're using UFW, these lines allow the port:
 
