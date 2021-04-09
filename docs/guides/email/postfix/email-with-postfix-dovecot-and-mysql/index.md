@@ -3,15 +3,15 @@ slug: email-with-postfix-dovecot-and-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
-keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "debian", "ubuntu", "dovecot 2"]
-tags: ["debian","email","ubuntu","mysql","postfix"]
+description: 'Setting up a mail server with Postfix, Dovecot, and MySQL/MariaDB.'
+keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", "debian", "ubuntu", "dovecot 2"]
+tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-11
 modified_by:
   name: Linode
 published: 2013-05-13
-title: 'Email with Postfix, Dovecot, and MySQL'
+title: 'Email with Postfix, Dovecot, and MySQL/MariaDB'
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -25,7 +25,7 @@ relations:
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
 ---
 
-In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MySQL on Debian or Ubuntu. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
+In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MariaDB on Debian or Ubuntu. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
 
 ![Email with Postfix, Dovecot, and MySQL](email_with_postfix_dovecot_and_mysql.png "Setting up a mail server with Postfix, Dovecot, and MySQL")
 
@@ -77,7 +77,7 @@ Make a note of the certificate and key locations on the Linode. You will need th
 
 1.  Install the required packages:
 
-        sudo apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mysql-server
+        sudo apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mariadb-server
 
     You will not be prompted to enter a password for the root MySQL user for recent versions of MySQL. This is because on Debian and Ubuntu, MySQL now uses either the `unix_socket` or `auth_socket` authorization plugin by default. This authorization scheme allows you to log in to the database’s root user as long as you are connecting from the Linux root user on localhost.
 
@@ -93,11 +93,11 @@ This guide uses the following package versions:
 
 * Postfix 3.3.0
 * Dovecot 2.2.33.2
-* MySQL 14.14
+* MariaDB 10.3.27
 
-## MySQL
+## MariaDB
 
-The mail server's virtual users and passwords are stored in a MySQL database. Dovecot and Postfix require this data. Follow the steps below to create the database tables for virtual users, domains and aliases:
+The mail server's virtual users and passwords are stored in a MariaDB database. Dovecot and Postfix require this data. Follow the steps below to create the database tables for virtual users, domains and aliases:
 
 1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
@@ -163,7 +163,7 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
 
 ### Adding Data
 
-Now that the database and tables have been created, add some data to MySQL.
+Now that the database and tables have been created, add some data to MariaDB.
 
 1.  Add the domains to the `virtual_domains` table. Replace the values for `example.com` and `hostname` with your own settings:
 
@@ -198,7 +198,7 @@ Note which `id` corresponds to which domain, the `id` value is necessary for the
 
 In the previous section, data was added to the MySQL `mailserver` database. The steps below will test that the data has been stored and can be retrieved.
 
-1. Log in to MySQL:
+1. Log in to MariaDB:
 
         sudo mysql -u root
 
@@ -251,7 +251,7 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 1 row in set (0.00 sec)
 {{</ output >}}
 
-1.  If everything outputs as expected, exit MySQL:
+1.  If everything outputs as expected, exit MariaDB:
 
         exit
 
@@ -781,17 +781,17 @@ The Thunderbird email client will sometimes have trouble automatically detecting
 
 ## Adding New Domains, Email Addresses, and Aliases
 
-To add new domains, email addresses, and aliases to the mailserver you will need to update the corresponding MySQL tables created in the [MySQL](#mysql) section of this guide.
+To add new domains, email addresses, and aliases to the mailserver you will need to update the corresponding MySQL tables created in the [MariaDB](#mariadb) section of this guide.
 
 ### Domains
 
 1.  To add a new domain, [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
 
-1.  Log in to the MySQL server:
+1.  Log in to the MariaDB server:
 
         sudo mysql -u root
 
-1.  Enter the root MySQL password when prompted.
+1.  Enter the root MariaDB password when prompted.
 
 1.  View the contents of the table before adding new entries. If you did not use `virtual_domains` as the name of your domain table, replace the value:
 
@@ -821,13 +821,13 @@ To add new domains, email addresses, and aliases to the mailserver you will need
 
         SELECT * FROM mailserver.virtual_domains;
 
-1.  Exit MySQL:
+1.  Exit MariaDB:
 
         quit
 
 ### Email Addresses
 
-1.  Log in to the MySQL server:
+1.  Log in to the MariaDB server:
 
         sudo mysql -u root
 
@@ -864,17 +864,17 @@ The `domain_id` should correspond to the `id` value of the domain in the `virtua
 
         SELECT * FROM mailserver.virtual_users;
 
-1.  Exit MySQL:
+1.  Exit MariaDB:
 
         quit
 
 ### Aliases
 
-1. Log in to the MySQL server:
+1. Log in to the MariaDB server:
 
         sudo mysql -u root
 
-    When prompted enter the MySQL password.
+    When prompted enter the MariaDB password.
 
 1. Verify the contents of the user table. Replace `virtual_users` with your table name:
 
@@ -913,6 +913,6 @@ The `domain_id` should correspond to the `id` value of the domain in the `virtua
 
         SELECT * FROM mailserver.virtual_aliases;
 
-1.  Exit MySQL:
+1.  Exit MariaDB:
 
         quit

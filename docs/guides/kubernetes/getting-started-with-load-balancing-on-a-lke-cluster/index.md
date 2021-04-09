@@ -203,7 +203,7 @@ tls.key:  1704 bytes
 
 By default, Kubernetes does not expose Services with TLS termination over HTTPS. In order to use `https` you'll need to instruct the Service to use the correct port using the required annotations. You can add the following code snippet to a Service file to enable TLS termination on your NodeBalancers:
 
-{{< file "example-serivce.yaml" yaml >}}
+{{< file "example-service.yaml" yaml >}}
 ...
 metadata:
   annotations:
@@ -218,7 +218,7 @@ metadata:
 
 If you have multiple Secrets and ports for different environments (testing, staging, etc.), you can define more than one secret and port pair:
 
-{{< file "example-serivce.yaml" yaml >}}
+{{< file "example-service.yaml" yaml >}}
 ...
 metadata:
   annotations:
@@ -230,7 +230,7 @@ metadata:
 
 ### Configuring Session Affinity for Cluster Pods
 
-`kube-proxy` will always attempt to proxy traffic to a random backend Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod.  You can add the example lines to a Service configuration file to
+`kube-proxy` will always attempt to proxy traffic to a random backend Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod. You can add the example lines to a Service configuration file to
 
 {{< file >}}
 spec:
