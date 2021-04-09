@@ -94,6 +94,16 @@ body {
   text-overflow: ellipsis;
 }
 
+/* Helper class to limit a text block to three lines. */
+.three-lines-ellipsis {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* 
 These matches the padding elements of the container class (but without the width attributes)
 for the smaller screens.

@@ -88,26 +88,31 @@ export function newSearchFiltersController(searchConfig, opts) {
 
 		init: function() {
 			debug('init', this.loaded);
+			var self = this;
 			return function() {
-				let queryFromLocation = queryHandler.queryFromLocation();
-
-				if (queryFromLocation._view !== '') {
-					// _view is set on the /search query params to distinguish
-					// that standalone search from any filtering applied via the
-					// search input filters.
-					// Nothing more to do here.
-					return;
-				}
-
-				query = queryFromLocation;
-
-				if (opts.search_on_load) {
-					dispatcher.searchQuery(queryFromLocation);
-				} else if (query.isAnyFilterSet()) {
-					// Broadcast the search filters, but do not execute.
-					dispatcher.searchQuery(queryFromLocation, false);
-				}
+				self.doInit();
 			};
+		},
+
+		doInit: function() {
+			let queryFromLocation = queryHandler.queryFromLocation();
+
+			if (queryFromLocation._view !== '') {
+				// _view is set on the /search query params to distinguish
+				// that standalone search from any filtering applied via the
+				// search input filters.
+				// Nothing more to do here.
+				return;
+			}
+
+			query = queryFromLocation;
+
+			if (opts.search_on_load) {
+				dispatcher.searchQuery(queryFromLocation);
+			} else if (query.isAnyFilterSet()) {
+				// Broadcast the search filters, but do not execute.
+				dispatcher.searchQuery(queryFromLocation, false);
+			}
 		},
 
 		receiveSearchFilters: function(data) {
@@ -273,19 +278,25 @@ export function newSearchFiltersController(searchConfig, opts) {
 		},
 
 		onTurbolinksRender: function(data) {
-			if (!history.replaceState || opts.standaloneSearch || window.location.search || !query.isAnyFilterSet()) {
-				return;
+			let noQueryStringNeeded =
+				!history.replaceState || opts.standaloneSearch || window.location.search || !query.isAnyFilterSet();
+			let isTop = isTopResultsPage();
+
+			if (!noQueryStringNeeded) {
+				let isSections = window.lnPageInfo && window.lnPageInfo.type === 'sections';
+				if (isSections || isTop) {
+					// Add the search query filters to the location search so filters gets restored.
+					history.replaceState(
+						null,
+						null,
+						window.location.pathname + '?' + queryHandler.queryToQueryString(query)
+					);
+				}
 			}
 
-			let isSections = window.lnPageInfo && window.lnPageInfo.type === 'sections';
-
-			if (isSections) {
-				// Add the search query filters to the location search so filters gets restored.
-				history.replaceState(
-					null,
-					null,
-					window.location.pathname + '?' + queryHandler.queryToQueryString(query)
-				);
+			if (isTop) {
+				// Make sure we show the
+				this.doInit();
 			}
 		},
 

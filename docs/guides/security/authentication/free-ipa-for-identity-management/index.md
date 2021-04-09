@@ -8,11 +8,13 @@ keywords: ["freeipa","identity management", "authentication","security"]
 aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'Setting up a FreeIPA Server and Client for Identity and Authentication Management'
+title: 'How to Set Up a FreeIPA Server and Client for Identity and Authentication Management'
+h1_title: 'Setting up a FreeIPA Server and Client for Identity and Authentication Management'
+enable_h1: true
 external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
-published: 2020-03-30
+published: 2021-03-26
 modified_by:
   name: Linode
 image: Setting_Up_FreeIPA.png

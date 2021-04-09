@@ -35,11 +35,10 @@ export function toggleClass(openClass, el, open) {
 	}
 }
 
-// See https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html#RULE_.237_-_Fixing_DOM_Cross-site_Scripting_Vulnerabilities
-export function sanitizeHTML(text) {
-	var element = document.createElement('div');
-	element.innerText = text;
-	return element.innerHTML;
+// normalizeSpace replaces any whitespace character (spaces, tabs, newlines and Unicode space) with a space.
+// Multiple spaces are collapsed into one.
+export function normalizeSpace(text) {
+	return text.replace(/\s\s+/g, ' ');
 }
 
 export const capitalize = (s) => {

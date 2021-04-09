@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Enact Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
 h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:

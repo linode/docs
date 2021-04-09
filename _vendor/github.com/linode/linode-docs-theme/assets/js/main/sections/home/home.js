@@ -257,6 +257,9 @@ export function newHomeController(searchConfig, developersItems) {
 					});
 				}
 			}
+			productsItems.sort((a, b) => {
+				return a.title < b.title ? -1 : 1;
+			});
 
 			debug('receiveCommonData: productsItems', productsItems);
 

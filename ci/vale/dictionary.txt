@@ -53,6 +53,7 @@ arping
 askbot
 aske
 async
+asynchrony
 authdaemonrc
 authlib
 authmodulelist
@@ -614,6 +615,7 @@ https
 hulu
 hvc0
 hybla
+hypercorn
 hyperefficient
 hyperparameter
 hypervisor
@@ -1566,6 +1568,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolset
 traceroute
 trackbar
 traefik
