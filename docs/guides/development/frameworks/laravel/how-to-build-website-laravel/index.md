@@ -228,7 +228,7 @@ While the Artisan server works well for development, it is recommended that you 
 
 These steps assume your application has the same location and name as given in the previous sections.
 
-1. Install NGINX:
+1. Install NGINX.
 
     - On Debian and Ubuntu, use:
 
@@ -296,7 +296,7 @@ server {
         sudo systemctl enable nginx
         sudo systemctl start nginx
 
-1. Similarly, enable and start the PHP-FPM service, which NGINX uses to run your application:
+1. Similarly, enable and start the PHP-FPM service, which NGINX uses to run your application.
 
     - On Debian and Ubuntu, use:
 
