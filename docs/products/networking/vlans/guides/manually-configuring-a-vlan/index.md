@@ -6,7 +6,7 @@ tab_group_main:
 
 {{< content "vlans-beta-note-shortguide" >}}
 
-For compatible distributions, [Network Helper](/docs/guides/network-helper/) automatically adjusts the internal network configuration files on a Linode to accomodate the network interfaces defined within the selected [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#configuration-profiles). If a VLAN is assigned to a network interface and given an IPAM address, the Linode should automatically be able to communicate over that private network.
+For compatible distributions, [Network Helper](/docs/guides/network-helper/) automatically adjusts the internal network configuration files on a Linode to accommodate the network interfaces defined within the selected [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#configuration-profiles). If a VLAN is assigned to a network interface and given an IPAM address, the Linode should automatically be able to communicate over that private network.
 
 For users that have disabled Network Helper on their Linode or prefer not to assign an IPAM address within a Linode's Configuration Profile, the Linode's internal network configuration files must be manually adjusted. This guide will discuss the changes that need to be made to enable a VLAN on common Linux distributions.
 
@@ -20,11 +20,11 @@ Ubuntu Server 18.04 and later versions use Netplan to configure networking, with
 
 ### Manually configuring a VLAN in Ubuntu 18.04
 
-1. Verify that Network Helper is disabled to avoid it overwritting any changes on the next reboot. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) for information on adjusting Network Helper settings.
+1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) for information on adjusting Network Helper settings.
 
 1. Log in to the Linode via [Lish](/docs/guides/using-the-linode-shell-lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
-1. Uisng your preferred editor, edit the configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Adjust `Name` to match the correct network interface and `Address` to match your desired IPAM address:
+1. Using your preferred editor, edit the configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Adjust `Name` to match the correct network interface and `Address` to match your desired IPAM address:
 
         [Match]
         Name=eth1
@@ -33,7 +33,7 @@ Ubuntu Server 18.04 and later versions use Netplan to configure networking, with
         DHCP=no
         Address=10.0.0.1/24
 
-1. Restart the Linode or run `sudo netplan apply` for the updated network configuration to take effect. 
+1. Restart the Linode or run `sudo netplan apply` for the updated network configuration to take effect.
 
 2. Test the VLAN's connectivity by following the Testing Connectivity section of the [Getting Started with VLANs](http://localhost:1313/docs/guides/getting-started-with-vlans/#testing-connectivity) guide.
 
@@ -53,14 +53,14 @@ Debian 7 and above, as well as Ubuntu 16.04, all use ifup and ifdown to manage n
 
 1. Log in to the Linode via [Lish](/docs/guides/using-the-linode-shell-lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
-1. Edit (or create) the specific configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Replace `eth1` with the correct network interface and adjust `address` to match your desired IPAM adress:
+1. Edit (or create) the specific configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Replace `eth1` with the correct network interface and adjust `address` to match your desired IPAM address:
 
         auto eth1
 
         iface eth1 inet static
             address 10.0.0.1/24
 
-    If Network Helper is disabled, the above changes can be made directly to the main configuraiton within `/etc/network/interfaces` if preferred.
+    If Network Helper is disabled, the above changes can be made directly to the main configuration within `/etc/network/interfaces` if preferred.
 
 1. Restart the Linode or run the following series of commands for the updated network configuration to take affect. Replace `eth1` with the correct network interface and any references to the IP address:
 
@@ -70,9 +70,9 @@ Debian 7 and above, as well as Ubuntu 16.04, all use ifup and ifdown to manage n
 
 2. Test the VLAN's connectivity by following the Testing Connectivity section of the [Getting Started with VLANs](http://localhost:1313/docs/guides/getting-started-with-vlans/#testing-connectivity) guide.
 
-## Centos and Fedora
+## CentOS and Fedora
 
-Centos 7 and above, as well as Fedora, all use systemd-networkd and NetworkManager. Network configuration files for each interface are located in `/etc/sysconfig/network-scripts/`:
+CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManager. Network configuration files for each interface are located in `/etc/sysconfig/network-scripts/`:
 
 - **eth0**: `/etc/sysconfig/network-scripts/ifcfg-eth0`
 - **eth1**: `/etc/sysconfig/network-scripts/ifcfg-eth1`
@@ -80,7 +80,7 @@ Centos 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
 
 ### Manually configuring a VLAN in Centos and Fedora
 
-1. Verify that Network Helper is disabled to avoid it overwritting any changes on the next reboot. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) for information on adjusting Network Helper settings.
+1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) for information on adjusting Network Helper settings.
 
 1. Log in to the Linode via [Lish](/docs/guides/using-the-linode-shell-lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
@@ -95,6 +95,6 @@ Centos 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
         IPADDR0=10.0.0.1
         PREFIX0=24
 
-1. Restart the Linode or run `sudo ifup eth1` for the updated network configuration to take effect. 
+1. Restart the Linode or run `sudo ifup eth1` for the updated network configuration to take effect.
 
 2. Test the VLAN's connectivity by following the Testing Connectivity section of the [Getting Started with VLANs](http://localhost:1313/docs/guides/getting-started-with-vlans/#testing-connectivity) guide.
