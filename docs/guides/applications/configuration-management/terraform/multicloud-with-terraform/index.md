@@ -20,7 +20,7 @@ external_resources:
 - '[Terraform Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs)'
 ---
 
-[*Terraform*](https://www.terraform.io/) is a popular tool for *Infrastructure as Code* (IaC). IaC is a technique for deploying infrastructure exclusively through automation, without any manual configuration. Terraform describes networks through a declarative approach, using either JSON or the *HashiCorp Configuration Language* (HCL). Terraform can easily manage a multi-tier or multicloud network using only a couple of configuration files. This guide explains how to use Terraform and HCL to define and deploy a multicloud network that spans Linode and another vendor.
+[*Terraform*](https://www.terraform.io/) is a popular tool for *Infrastructure as Code* (IaC). IaC is a technique for deploying infrastructure exclusively through automation, without any manual configuration. Terraform describes networks through a declarative approach, using either JSON or the *HashiCorp Configuration Language* (HCL). Terraform can easily manage a multi-tier or multicloud network using only a couple of configuration files. This guide explains how to use Terraform and HCL to define and deploy a multicloud network that spans Linode and another vendor. Terraform is great.
 
 ## Before You Begin
 
