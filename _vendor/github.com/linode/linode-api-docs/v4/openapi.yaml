@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.89.0
+  version: 4.89.1
 
   title: Linode API
   description: |
@@ -4754,8 +4754,7 @@ paths:
           application/json:
             schema:
               required:
-              - label
-              - devices
+              - purpose
               properties:
                 id:
                   $ref: '#/components/schemas/LinodeConfig/properties/id'
@@ -10689,7 +10688,15 @@ paths:
         - Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create))
         - Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update))
 
-        To detach a Linode from a VLAN, [update](/docs/api/linode-instances/#configuration-profile-update) the Configuration Profile to remove the associated interface or [delete](/docs/api/linode-instances/#configuration-profile-delete) the Configuration Profile, then reboot the Linode. Alternatively, you can [delete](/docs/api/linode-instances/#linode-delete) the Linode.
+        There are several ways to detach a VLAN from a Linode:
+
+        - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
+        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/apilinode-instances/#linode-reboot) the Linode into the new Configuration Profile.
+        - [Delete](/docs/api/linode-instances/#linode-delete) the Linode.
+
+        **VLANs cannot be manually renamed.** If a VLAN's label must be changed, create a new VLAN and attach all required Linodes to it.
+
+        **VLANs cannot be manually deleted.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, detach it from all Linodes. A VLANs that are not attached to any Linodes are automatically deleted within a short timeframe.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
@@ -17420,7 +17427,6 @@ components:
             * `public`
               * Only one `public` interface per Linode can be defined.
               * The Linode's default public IPv4 address is assigned to the `public` interface.
-              * A Linode must have a `public` interface in the first/eth0 position to be reachable via the public internet upon boot without additional required configuration.
               * If no `public` interface is defined, the Linode is not reachable via the public internet; access can only be established via LISH or other Linodes connected to the same VLAN.
 
             * `vlan`
