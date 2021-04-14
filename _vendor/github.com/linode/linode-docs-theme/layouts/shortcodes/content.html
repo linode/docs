@@ -1,0 +1,19 @@
+{{$file := .Get 0}}
+{{ if .Page.Params.os }}
+  {{ $class := .Get 1}}
+  {{ $p := .Site.GetPage $file }}
+  {{ if $p }}
+    <div class="{{ $class }}install">
+      {{ $p.Content }}
+    </div>
+  {{ else }}
+    {{/* warnf "Content shortcode is empty: %s" .Position */}}
+  {{ end }}
+{{else}}
+  {{ $p := .Site.GetPage $file }}
+  {{ if $p }}
+    {{ $p.Content }}
+  {{ else }}
+    {{/* warnf "Content shortcode is empty: %s" .Position */}}
+  {{ end }}
+{{ end }}

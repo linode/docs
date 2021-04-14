@@ -1,0 +1,11 @@
+<div class="search-panel bg-backgroundcolor w-full h-full">
+  <div class="search-panel__results container">
+    <div class="search-panel__breadcrumbs mt-2 mb-10">
+      {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
+    </div>
+    {{ partial "sections/search/list.html" }}
+  </div>
+  <div class="search-panel__filters bg-white">
+    {{ partial "sections/search/filters.html" . }}
+  </div>
+</div>

@@ -1,0 +1,25 @@
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "no-referrer"
+Content-Security-Policy = "script-src 'self' *.googletagmanager.com *.trustarc.com *.weglot.com *.disqus.com 'unsafe-eval' 'unsafe-inline'"
+
+[[headers]]
+for = "/**.{css,jpg,js}"
+
+[headers.values]
+Cache-Control = "public, max-age=2"
+
+[[redirects]]
+from = "/docs/content/**"
+to = "/docs/content/"
+status = 200
+
+[[redirects]]
+from = "/docs/**"
+to = "/docs/sections/"
+status = 200
