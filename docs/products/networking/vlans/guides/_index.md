@@ -13,6 +13,9 @@ tab_group_main:
 
 - [Detaching a Linode from a VLAN](/docs/products/networking/vlans/guides/detach-a-linode-from-your-vlan/): Remove a Linode from your VLAN's private network.
 
+- [Manually Configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/): Manually configure an attached VLAN by adjusting a Linode's internal network configuration files.
+
+
 ## Themes
 
 These additional guides explore targeted topics related to Virtual LANs.

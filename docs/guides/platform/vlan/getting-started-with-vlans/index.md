@@ -50,7 +50,7 @@ IPAM (IP Address Management) is the system that allows users to assign and manag
 - Linode 1: `10.0.0.1/24`
 - Linode 2: `10.0.0.2/24`
 
-Just like public and private IP addresses, IPAM addresses for a VLAN are automatically configured on a Linode through [Network Helper](https://www.linode.com/docs/guides/network-helper/). If Network Helper is disabled or if no IPAM address is provided, the Linode will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an IPAM address. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings.
+Just like public and private IP addresses, IPAM addresses for a VLAN are automatically configured on a Linode through [Network Helper](https://www.linode.com/docs/guides/network-helper/). If Network Helper is disabled or if no IPAM address is provided, the Linode will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an IPAM address. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings. See [Manually configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/) for instructions.
 
 {{< note >}}
 The Linode must be rebooted for any changes within its network interfaces to take effect. This reboot allows Network Helper to run so it can automatically adjust the necessary network configuration files on the Linode.

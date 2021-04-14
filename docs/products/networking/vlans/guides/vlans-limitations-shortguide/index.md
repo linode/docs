@@ -27,4 +27,4 @@ show_on_rss_feed: false
 
 - **VLANs cannot be manually deleted by the user.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, simply detach it from all Linodes. After this, it will automatically be deleted within a short timeframe.
 
-- **Network Helper is required for automatic configuration.** If [Network Helper](https://www.linode.com/docs/guides/network-helper/) has been disabled, the Linode will not *automatically* be able to communicate over the VLAN’s private network. In this case, advanced users can manually adjust their Linode’s internal network configuration files with the appropriate settings for their VLAN.
+- **Network Helper is required for automatic configuration.** If [Network Helper](/docs/guides/network-helper/) has been disabled, the Linode will not *automatically* be able to communicate over the VLAN’s private network. In this case, advanced users can manually adjust their Linode’s internal network configuration files with the appropriate settings for their VLAN. See [Manually configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/) for instructions.
