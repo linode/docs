@@ -3,9 +3,9 @@ slug: deploy-peppermint-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Peppermint is a ticket management system that allows teams and solo users the ability create & track tickets whilst also tracking todo's and more. '
-og_description: 'Peppermint is a ticket management system that allows teams and solo users the ability create & track tickets whilst also tracking todo's and more. '
-keywords: ['ticket management','marketplace']
+description: "Peppermint is a ticket management system that allows teams and solo users the ability create and track tickets, todo items, and more. Learn how to deploy Peppermint with Linode's Marketplace."
+og_description: "Peppermint is a ticket management system that allows teams and solo users the ability create and track tickets, todo items, and more. Learn how to deploy Peppermint with Linode's Marketplace."
+keywords: ["ticket management", "marketplace"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-31
@@ -13,18 +13,19 @@ modified_by:
   name: Linode
 title: "Deploy Peppermint With Marketplace Apps"
 h1_title: "How to Deploy Peppermint With Marketplace Apps"
-
 external_resources:
-- [Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)
-- [Peppermint Documentation](https://docs.pmint.dev/)
+- "[Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)"
+- "[Peppermint Documentation](https://docs.pmint.dev/)"
 ---
 
 ## Peppermint Marketplace App
 
 <!-- Intro paragraph describing the app and what it accomplishes. -->
-Peppermint is a ticket management system that allows teams and solo users the ability create & track tickets whilst also tracking todo's and more. The goal is to allow for people to have access to a ticket management system which is free and nice to use.
+Peppermint Ticket Management is a ticket management system that allows teams and solo users the ability create & track tickets, todo items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
 
-{{< caution >}}Peppermint is still in alpha and is not recommended for production use yet.{{< caution >}}
+{{< caution >}}
+Peppermint is still in Alpha and is not recommended for production use yet.
+{{</ caution >}}
 
 ### Deploy a Peppermint Marketplace App
 
@@ -53,9 +54,9 @@ After providing all required Linode Options, click on the **Create** button. **Y
 <!-- the following headings and paragraphs outline the steps necessary
      to access and interact with the Marketplace app. -->
 ### Access your Peppermint App
-After Peppermint has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server within the game using your Linode's IPv4 address and port `5000`(for example `192.0.2.0:5000`).
+After Peppermint has finished installing, you can access your Peppermint server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server in your browser using your Linode's IPv4 address and port `5000`(for example `192.0.2.0:5000`).
 
-![peppermint.png](peppermint.png)
+![peppermint.png  "Peppermint login screen."](peppermint.png)
 
 The default credentials to login to your Peppermint Peppermint Ticket Management Panel are:
 
@@ -63,11 +64,12 @@ The default credentials to login to your Peppermint Peppermint Ticket Management
 email: admin@admin.com
 password: 1234
 ```
-Once you login to the Peppermint Ticket Management Panel, you will want to update the email and password, you can do so by clicking the settings gear logo in the top right corner. 
+
+Once you login to the Peppermint Ticket Management Panel, you need to update the email and password you used to log in. You can do so by clicking the settings gear logo in the top right corner.
 
 ![peppermint_settings.png](peppermint_settings.png)
 
-For more on Peppermint, check out the following resources:
+For more on Peppermint, consult the following resources:
 
 - [Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)
 - [Peppermint Documentation](https://docs.pmint.dev/)
