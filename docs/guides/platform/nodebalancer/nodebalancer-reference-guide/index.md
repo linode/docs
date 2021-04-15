@@ -15,8 +15,6 @@ title: NodeBalancer Reference Guide
 tags: ["linode platform","networking"]
 ---
 
-![NodeBalancer Reference Guide](nodebalancer-reference-guide.png "NodeBalancer Reference Guide")
-
 This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/docs/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
 
 ## Adding a NodeBalancer
