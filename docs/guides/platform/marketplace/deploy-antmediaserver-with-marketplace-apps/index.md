@@ -3,8 +3,8 @@ slug: deploy-antmediaserver-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Ant Media Server is a streaming engine software that provides low latency streaming in the cloud using WebRTC technology.'
-og_description: 'Ant Media Server is a streaming engine software that provides low latency streaming in the cloud using WebRTC technology.'
+description: 'Ant Media Server is a streaming engine software that provides low latency streaming in the cloud using WebRTC technology. Learn how to deploy Ant Media Server with Linode Marketplace Apps.'
+og_description: 'Ant Media Server is a streaming engine software that provides low latency streaming in the cloud using WebRTC technology. Learn how to deploy Ant Media Server with Linode Marketplace Apps.'
 keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,9 +22,9 @@ external_resources:
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
-Ant Media Server is Highly Scalable Live Video Streaming Platform with Ultra Low Latency. It supports WebRTC Live Streaming, in addition to CMAF and HLS streaming. It can be ingested through RTMP or WebRTC or HLS. Any IP Camera can be connected through RTSP or ONVIF. It also enables Live Restreaming to Social Media Platforms. All codes H.264, H.265, VP8 are enabled and also GPU based encoding is also available.
+Ant Media Server is Highly Scalable Live Video Streaming Platform with ultra low latency. It supports WebRTC live streaming, in addition to CMAF and HLS streaming. It can be ingested through RTMP, WebRTC, or HLS. Any IP Camera can be connected through RTSP or ONVIF. It also enables live restreaming to social media platforms. All codes (H.264, H.265, and VP8) are enabled, and GPU based encoding is also available.
 
-Ant Media Server Community Edition is limited version of Ant Media Server Enterprise edition and supports the following features.
+Ant Media Server Community Edition is a limited version of Ant Media Server Enterprise edition and supports the following features.
 
 * Publish live streams with WebRTC, RTMP - Play Live and VoD streams with RTMP and HLS
 * RTMP, RTSP, MP4 and HLS Support
@@ -37,7 +37,7 @@ Ant Media Server Community Edition is limited version of Ant Media Server Enterp
 * Simulcasting to Periscope
 * Your Live or VoD streams can play anywhere including mobile(Android, iOS) browsers.
 
-If you need adaptive streaming, cluster, load balancer and hardware encoding, please use Enterprise Edition http://antmedia.io
+If you need adaptive streaming, cluster, load balancer, and hardware encoding, please use Enterprise Edition http://antmedia.io
 
 ### Deploy a Ant Media Server Marketplace App
 
@@ -66,9 +66,9 @@ After providing all required Linode Options, click on the **Create** button. **Y
      to access and interact with the Marketplace app. -->
 
 ### Access your Ant Media Server App
-After Ant Media Server has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server within the game using your Linode's IPv4 address and port `5080`(for example `192.0.2.0:5080`).
+After Ant Media Server has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server from your browser using your Linode's IPv4 address and port `5080`(for example `192.0.2.0:5080`).
 
-![antmediaserver.png](antmediaserver.png)
+![antmediaserver.png 'Ant Media Server account creation page.'](antmediaserver.png)
 
 For more on Ant Media Server, check out the following resources:
 
