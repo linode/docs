@@ -7,9 +7,9 @@ description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
 tags: ["linode platform","security","networking","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-04-06
+modified: 2021-04-15
 modified_by:
-  name: Nick Brewer
+  name: Linode
 published: 2015-09-01
 title: NodeBalancer SSL Configuration
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/']
@@ -27,7 +27,11 @@ Throughout this guide we will offer several suggested values for specific config
 
 - When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/guides/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/guides/securing-your-server)
 
-- Install a commercial or self-signed [SSL certificate](/docs/guides/ssl) using the appropriate guide for your distribution.
+- Generate an [SSL certificate](/docs/guides/ssl) for your domain name. This can be done through any Certificate Authority, including Let's Encrypt using the [Certbot](https://certbot.eff.org/) tool. Since Certbot cannot run directly on the NodeBalancer, run the following command on any Linode to generate the certificate (after following [Certbot's installation instructions](https://certbot.eff.org/instructions)). This allows you to manually verify ownership by updating a DNS record on your domain:
+
+        sudo certbot certonly --manual --preferred-challenges dns
+
+    Most Certificate Authorities will generate an SSL certificate using the RSA digital signature algorithm, which is fully supported by NodeBalancers. Certificates using the ECDSA algorithm are not supported.
 
 - This guide assumes that you have already deployed two or more back-end Linodes and configured them with either a LAMP stack or a LEMP stack. If you have not, please review the following documentation for assistance with configuring your respective stack:
 
@@ -54,7 +58,7 @@ This guide has been written with the assumption that you are logged in as the ro
     | **Port** | 443 |
     | **Protocol** | HTTPS |
     | **Session Stickiness** | None |
-    | **SSL Certificate** | Paste the contents of your SSL certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. |
+    | **SSL Certificate** | Paste the contents of your SSL certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases. ECDSA certificates are not supported.|
     | **Private Key** | Paste the contents of your private key. Your private key must not have a passphrase. |
     | **Algorithm** | Round Robin |
     | **Health Check Type** | HTTP Status |
