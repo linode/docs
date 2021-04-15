@@ -3,8 +3,8 @@ slug: deploy-owncast-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Owncast is a self-hosted live video and web chat server for use with existing popular broadcasting software.'
-og_description: 'Owncast is a self-hosted live video and web chat server for use with existing popular broadcasting software.'
+description: "Owncast is a self-hosted live video and web chat server for use with existing popular broadcasting software. Learn how to deploy Owncast with Linode's Marketplace Apps."
+og_description: "Owncast is a self-hosted live video and web chat server for use with existing popular broadcasting software. Learn how to deploy Owncast with Linode's Marketplace Apps."
 keywords: ['live streaming','marketplace','web chat']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,10 +21,10 @@ external_resources:
 ## Owncast Marketplace App
 
 <!-- Intro paragraph describing the app and what it accomplishes. -->
-Owncast is a self hosted "Twitch in a box" live streaming and chat server for use with popular broadcasting software. You can use Owncast to live stream anything from gaming with your friends to live events for you and your clients. 
+Owncast is a self-hosted, "Twitch in a box" live streaming and chat server for use with popular broadcasting software such as OBS. You can use Owncast to live stream anything from gaming with your friends to live events for you and your clients. Like other popular streaming platforms, you can use Owncast's APIs to build things such as chat bots and and stream overlays to drive further audience engagement.
 
 
-### Deploy a Owncast Marketplace App
+### Deploy an Owncast Marketplace App
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
@@ -61,12 +61,12 @@ After providing all required Linode Options, click on the **Create** button. **Y
 <!-- the following headings and paragraphs outline the steps necessary
      to access and interact with the Marketplace app. -->
 ### Access your Owncast App
-After Owncast has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server within the game using your Linode's IPv4 address and port `8080`(for example `192.0.2.0:8080`).
+After Owncast has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server from your browser using your Linode's IPv4 address and port `8080`(for example `192.0.2.0:8080`).
 
-![owncast.png](owncast.png)
+![owncast.png 'The Owncast stream view'](owncast.png)
 
-With Owncast running you can begin to configure your new server by visiting the Admin located at `/admin`.  Visit the [Configuration Instructions](https://owncast.online/docs/configuration/?source=linodemarketplace) to learn how you can change your video settings, web page content, and more.
+With Owncast running, you can begin to configure your new server. Visit the Admin settings, located at `/admin`. Visit the [Configuration Instructions](https://owncast.online/docs/configuration/?source=linodemarketplace) to learn how you can change your video settings, web page content, and more.
 
-Owncast is installed in `/opt/owncast`.  You'll find all your data files there.  This is also where you can upgrade your Owncast server in the future.
+On the server, Owncast is installed in the  `/opt/owncast` directory. You'll find all your data files there. This is also where you can upgrade your Owncast server in the future.
 
 {{< content "marketplace-update-note">}}
