@@ -1,5 +1,5 @@
 ---
-slug: how-to-set-up-wordpress-in-an-lxd-container
+slug: how-to-set-up-multiple-wordpress-sites-with-lxd-containers
 author:
   name: Simos Xenitellis
   email: docs@linode.com
@@ -11,8 +11,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-16
 modified_by:
   name: Linode
-title: "How to Set Up WordPress with LXD Containers"
-h1_title: "Setting Up WordPress with LXD Containers"
+title: "How to Set Up Multiple WordPress Sites with LXD Containers"
+h1_title: "Setting Up Multiple WordPress Sites with LXD Containers"
+enable_h1: true
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/
