@@ -814,7 +814,7 @@ The Thunderbird email client will sometimes have trouble automatically detecting
 
         sudo adduser spamd --disabled-login
 
-1. Edit the `/etc/default/spamassassin` configuration file. Set the home directory, update the `OPTIONS` parameter with the user that was just created (as well as the home directory), and update the `CRON` paramter to `1`.
+1. Edit the `/etc/default/spamassassin` configuration file. Set the home directory, update the `OPTIONS` parameter with the user that was just created (as well as the home directory), and update the `CRON` parameter to `1`.
 
     {{< file "/etc/default/spamassassin" >}}
 ...
