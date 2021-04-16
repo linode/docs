@@ -71,18 +71,18 @@ Here's the example output of a DNS zone file with those two records:
 
 {{< output >}}
 @           MX  10  mail.example.com.
-mail        A   12.34.56.78
+mail        A   192.0.2.0
 {{< /output >}}
 
 Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server.
 
 ## Update the Hosts File on Your Email Server
 
-Verify that the `hosts` file contains a line for the Linode's public IP address and is associated with the **Fully Qualified Domain Name** (FQDN). In the example below, `12.34.56.78` is the public IP address, `mail` is the local hostname, and `mail.example.com` is the FQDN.
+Verify that the `hosts` file contains a line for the Linode's public IP address and is associated with the **Fully Qualified Domain Name** (FQDN). In the example below, `192.0.2.0` is the public IP address, `mail` is the local hostname, and `mail.example.com` is the FQDN.
 
 {{< file "/etc/hosts" h >}}
 127.0.0.1 localhost.localdomain localhost
-12.34.56.78 mail.example.com mail
+192.0.2.0 mail.example.com mail
 
 {{< /file >}}
 
@@ -98,9 +98,9 @@ You can also reference the [Install an SSL Certificate with Certbot](/docs/quick
 
 ## Install Packages
 
-1.  Log in to your Linode via SSH. Replace `12.34.56.78` with your IP address:
+1.  Log in to your Linode via SSH. Replace `192.0.2.0` with your IP address:
 
-        ssh username@12.34.56.78
+        ssh username@192.0.2.0
 
 1.  Update your system and then install the packages needed in this guide:
 
