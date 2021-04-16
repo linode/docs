@@ -17,4 +17,4 @@ tab_group_main:
 
 - [Remove Services](/docs/products/services/managed/guides/remove-services/): Remove services that you no longer wish to have monitored.
 
-See the full guide on [Linode Managed](/docs/platform/linode-managed/) for configuration, adding users, and security.
+See the full guide on [Linode Managed](/docs/platform/linode-managed/) for configuration, adding users, security, and other services that are available.

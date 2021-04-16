@@ -69,6 +69,10 @@ You can also download the kubeconfig from the Kubernetes cluster's details page.
 
 {{</ disclosure-note >}}
 
+1. To improve security, change the `kubeconfig.yaml` file permissions to be only accessible by the current user:
+
+        chmod go-r /Downloads/kubeconfig.yaml
+
 1. Open a terminal shell and save your kubeconfig file's path to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the `Downloads` folder, but you should alter this line with this folder's location on your computer:
 
         export KUBECONFIG=~/Downloads/kubeconfig.yaml
