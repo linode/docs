@@ -3,7 +3,7 @@ slug: modify-file-permissions-with-chmod
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to modify file and directory permissions using CHMOD for owner, group, and others in Unix systems.'
+description: 'This guide will show you how to modify file and directory permissions using chmod for owner, group, and others in Unix systems.'
 keywords: ["chmod", "commands", "reference", "file permissions"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,24 +20,16 @@ external_resources:
 
 ![Modify File Permissions with chmod](modify_file_permissions_with_chmod_smg.png "Modify File Permissions with chmod")
 
-## Modify File Permissions with CHMOD
-CHMOD allows users to change read and write permissions in Unix systems. In this guide, we will show you how to modify file and directory permissions with CHMOD.
+## Modify File Permissions with chmod
+The chmod command allows users to change read and write permissions in Unix systems. In this guide, we will show you how to modify file and directory permissions with chmod.
 
 Unix-like systems, including the Linux systems that run on the Linode platform, have an incredibly robust access control system that allows systems administrators to effectively permit multiple users access to a single system without giving every user access to every file on the file system. The `chmod` command is the best and easiest way to modify these file permissions.
 
 This guide provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/tools-reference/linux-system-administration-basics/) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/) next.
 
-## How to Use CHMOD
+### Basics of Linux File Permissions
 
-In this guide, `chmod` refers to recent versions of `chmod` such as those provided by the GNU project. By default, `chmod` is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
-
-### What Are CHMOD Permissions?
-
-CHMOD permissions are a set of commands that can be used to modify file and directory permissions for any kind of Unix user.  These permissions are applied to three types of users in Unix: Owner, Group, and Other Users/Public. CHMOD Permissions define who out of these three types of users can read, write, or execute files/directories in a Unix system.
-
-### Linux File Permission Basics With CHMOD
-
-All file system objects on Unix-like systems have three main types of permissions: read, write, and execute access. Permissions are bestowed upon three possible classes: the user, the usergroup, and all system users.
+All file system objects on Unix-like systems have three main types of permissions: read, write, and execute access. Permissions are bestowed upon three possible classes: the *owner*, the *group*, and all *other* system users.
 
 To view the file permissions of a set of files, use:
 
@@ -45,9 +37,9 @@ To view the file permissions of a set of files, use:
 
 In the first column of the output, there are 10 characters that represent the permission bits. To understand why they are called permission bits, see the section on [octal notation](#octal-notation) below.
 
-    drwxr-xr-x 2 user group       4.0K 2009-08-13 10:16 docs
-    -rw-r--r-- 1 user group       8.1K 2009-07-09 16:23 roster.py
-    lrwxrwxrwx 2 user group       4.0K 2009-08-13 10:16 team.docs
+    drwxr-xr-x 2 owner group       4.0K 2009-08-13 10:16 docs
+    -rw-r--r-- 1 owner group       8.1K 2009-07-09 16:23 roster.py
+    lrwxrwxrwx 2 owner group       4.0K 2009-08-13 10:16 team.docs
 
 A way to understand the meaning of this column is to divide the bits into groups.
 
@@ -65,23 +57,28 @@ The first character represents the type of file. The remaining nine bits in grou
 
 Note that access to files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups/#additional-file-permissions) that control other aspects of access to files.
 
-### How Do I Change File Permissions In CHMOD?
+## How to Use chmod
 
-To change the file permissions using CHMOD, use chmod `<permission> <directory or filename>`. The owner can change file permissions for any user, group or others by adding - to remove or + to add certain permissions. These permissions are categorized into read, write, or executable. 
+In this guide, chmod refers to recent versions of chmod such as those provided by the GNU project. By default, chmod is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
 
-In the next few sections, we are going to dive deep into CHMOD syntax.
 
-### Using chmod Command Syntax And Options For Files
+### Changing File Permissions with chmod
 
-The format of a `chmod` command is:
+To change the file permissions using chmod, run `chmod <permission> <directory or filename>`, swapping in the desired file permissions and the directory or file. The owner can change file permissions for any user, group or others by adding `-` to remove or `+` to add certain permissions. These permissions are categorized into read, write, or executable.
+
+In the next few sections, we are going to dive deep into chmod syntax.
+
+### Using Symbolic Notation Syntax with chmod
+
+The format of a chmod command is:
 
     chmod [who][+,-,=][permissions] filename
 
-Consider the following `chmod` command:
+Consider the following chmod command:
 
-    chmod g+w ~/group-project.txt
+    chmod g+w ~/example.txt
 
-This grants all members of the usergroup that owns the file `~/group-project.txt` write permissions. Other possible options to change permissions of targeted users are:
+This grants all members of the usergroup that owns the file `~/example.txt` write permissions. Other possible options to change permissions of targeted users are:
 
 Who (Letter) | Meaning
 -------------|---------
@@ -92,33 +89,29 @@ Who (Letter) | Meaning
 
 The `+` operator grants permissions whereas the `-` operator takes away permissions. Copying permissions is also possible:
 
-    chmod g=u ~/group-project.txt
+    chmod g=u ~/example.txt
 
 The parameter `g=u` means grant group permissions to be same as the user's.
 
 Multiple permissions can be specified by separating them with a comma, as in the following example:
 
-    chmod g+w,o-rw,a+x ~/group-project-files/
+    chmod g+w,o-rw,a+x ~/example-files/
 
 This adds write permissions to the usergroup members, and removes read and write permissions from the "other" users of the system. Finally the `a+x` adds the execute permissions to all categories. This value may also be specified as `+x`. If no category is specified, the permission is added or subtracted to all permission categories.
 
 In this notation the owner of the file is referred to as the `user` (e.g. `u+x`).
 
-    chmod -R +w,g=rw,o-rw, ~/group-project-files/
+    chmod -R +w,g=rw,o-rw, ~/example-files/
 
 The `-R` option applies the modification to the permissions recursively to the directory specified and to all of its contents.
 
-### What Is rw-rw-r--?
-
-`rw-rw-r--` enables the following permissions: read and write for the owner; read and write for the group; read for others. In terms of numerical code, `rw-rw-r--` translates to `664`. You will learn how to use that later in this guide.
-
-### How to Use CHMOD Octal Notation For File Permissions
+### Using Octal Notation Syntax with chmod
 
 Another method for setting permissions is through octal notation.
 
 Here is example of a file permission that is equivalent to `chmod u=rwx,g=rx,o=`.
 
-    chmod 750 ~/group-project.txt
+    chmod 750 ~/example.txt
 
 The permissions for this file are `- rwx r-x ---`.
 
@@ -145,60 +138,71 @@ Each digit is independent of the other two. Therefore, `750` means the current u
 
 Either notation is equivalent, and you may choose to use whichever form more clearly expresses your permissions needs.
 
-### What Does CHMOD 777 do?
+## Examples of Common Permissions with chmod
 
-chmod 777 is used to grant permissions to everyone to read, write, and execute a file. For example, the group-project.txt from the previous section was set at chmod 750, we can enable everyone in Unix system to be able to read, write and execute this file by running the following command:
+### chmod 600 (rw-------)
 
-        chmod 777 group-project.txt
+600 permissions means that only the owner of the file has full read and write access to it. Once a file permission is set to 600, no one else can access the file. Example chmod commands (in octal and symoloc notions) setting permissions to 600:
 
+    chmod 600 example.txt
+    chmod u=rw,g=,o= example.txt
+    chmod a+rwx,u-x,g-rwx,o-rwx example.txt
 
-### What Does CHMOD 600 Mean?
+### chmod 664 (rw-rw-r--)
 
-A CHMOD 600 means that only the owner of the file has full read and write access to it. Once a file permission is set at CHMOD 600, no one else can access the file.
+664 (`rw-rw-r--`) enables the following permissions: read and write for the owner; read and write for the group; read for others. If you trust other users within the same group and everyone needs write access to the files, this is a common setting to use. Otherwise `644` permissions can be used to restrict write access to the group. Example chmod commands (in octal and symoloc notions) setting permissions to 664:
 
-`chmod 600` translates to the following:
+    chmod 664 example.txt
+    chmod u=rw,g=rw,o=r example.txt
+    chmod a+rwx,u-x,g-x,o-wx example.txt
 
-        chmod 600 a+rawx, u-x, g-rwx, o-rwx
+### chmod 777 (rwxrwxrwx)
+
+chmod 777 is used to grant permissions to everyone to read, write, and execute a file. While using these permissions is a quick way to overcome a permissions-based error, it's not a best practice for securing most files and applications. Example chmod commands (in octal and symoloc notions) setting permissions to 777:
+
+    chmod 777 example.txt
+    chmod u=rwx,g=rwx,o=rwx example.txt
+    chmod a=rwx example.txt
 
 ## Making a File Executable
 
-The following examples changes the file permissions so that any user can execute the file "~/group-project.py":
+The following examples changes the file permissions so that any user can execute the file "~/example.py":
 
-    chmod +x ~/group-project.py
+    chmod +x ~/example.py
 
 ## Restore Default File Permissions
 
 The default permissions for files on a Unix system are often `600` or `644`. Permissions of `600` mean that the owner has full read and write access to the file, while no other user can access the file. Permissions of `644` mean that the owner of the file has read and write access, while the group members and other users on the system only have read access.
 
-Issue one of the following examples to achieve these "default" permissions:
+Issue one of the following chmod commands to reset the permissions on a file back to one of the likely defaults:
 
-    chmod 600 ~/roster.txt
-    chmod 644 ~/gigs.txt
+    chmod 600 ~/example.txt
+    chmod 644 ~/example.txt
 
 For executable files, the equivalent settings would be `700` and `755` which correspond to `600` and `644` except with execution permission.
 
 Use one of the following examples to achieve these executable "default" permissions:
 
-    chmod 700 ~/generate-notes.py
-    chmod 755 ~/regenerate-notes.py
+    chmod 700 ~/example.py
+    chmod 755 ~/example.py
 
-### How Do I Remove CHMOD Read Write Permissions?
+## Removing File Permissions with chmod
 
-In order to remove a chmod read write permission given to a file, you can use the following syntax:
+In order to remove read write permissions given to a file, use the following syntax:
 
-        chmod o-r <file_name>
+    chmod o-rw example.txt
 
-For our file roster.txt, we can remove read write permissions using chmod for group by running the following command:
+For our file example.txt, we can remove read write permissions using chmod for group by running the following command:
 
-        chmod  g-rx roster.txt
+    chmod  g-rx example.txt
 
 To remove chmod read write permissions from the group while adding read write permission to public/others, we can use the following command:
 
-        chmod g-rx, o+rx roster.txt
+    chmod g-rx, o+rx example.txt
 
 But, if you wish to remove all permissions for group and others, you can do so using the go= instead:
 
-        chmod go=roster.txt
+    chmod go= example.txt
 
 ## Restrict File Access: Remove all Group and World Permissions
 
@@ -209,66 +213,35 @@ You can remove all access to these files with commands in one of the following f
     chmod 600 .msmtprc
     chmod g-rwx,o-rwx .fetchmail
 
-### Understanding Linux Directory Permissions
+## Understanding Linux Directory Permissions
 
-We looked at file permissions in the earlier section, let’s now see how the same permissions apply to directories too.
+While directory permissions within Linux are similar to file permissions, there are a few key differences regarding how these permissions affect user operations:
 
-To see all directories with a read permission, run the ls command in your current working directory.  In our case, the example working directory we used was .../Linode/ and there were one folder(86201) and a file(executable_file) inside this directory. Our output from ls in this case is
+- **Read** (`r`): User can list the items in a directory (such as when using the `ls` command).
+- **Write** (`w`): User can add, delete, or rename files in a directory - provided the user also has execute permissions.
+- **Execute** (`x`): User can navigate to the directory (such as when using the `cd` command).
 
-        86201  executable_file
+To view permiessions of all files and directories within the workind directory, run `ls -la`. The output will be similar to snippet below. Directories are differentiated from files by the first bit within the permissions. As was covered previously, `d` stands for directory and `-` denotes the item is a file.
 
-Let’s check directory permissions for 86201. We can check directory permissions by running the following command:
+{{< output >}}
+total 12
+drwxr-xr-x 3 user group 4096 Apr 16 12:34 .
+drwxr-xr-x 4 user group 4096 Apr 16 12:33 ..
+drwxr-xr-x 2 user group 4096 Apr 16 12:34 example-directory
+-rw-r--r-- 1 user group    0 Apr 16 12:34 file1.txt
+{{</ output >}}
 
-        ls -dl 86201
+Permissions on an individual directory can also be viewed by running `ls -dl example-directory`.
 
-The output looks something like this:
+### How To Change Directory Permissions using chmod
 
-        drwxr-xr-x 2 linode linode 4096 Jan  3 17:38 86201
+Directory permissions can be adjusted using the same chmod commands as were previously outlined for modifying file permissions. The following example changes permissions on a directory to 755 (owner has read, write and execute permissions, while users with the group or any other user have read and execute permissions):
 
-To see all permissions of 86201, we can use -al in our previous command instead:
+    chmod 755 /example-directory/
 
-        ls -al 86201
+In many cases, the permissions should also be changed recusively on all files and subdirectories. This can be done through chmod by using the `-R` option. To change all permissions for files within a directory to read and write for the owner, read for the group, and read for other users, run the following command:
 
-        total 8
-
-        drwxr-xr-x 2 linode linode 4096 Jan  3 17:38 .
-
-        drwxr-xr-x 3 linode linode 4096 Jan  3 17:38 ..
-
-If you specify no directories, you’ll get permissions for all files in the current directory if you run:
-
-        ls -al
-
-Which returns the following output
-
-        total 16
-
-        drwxr-xr-x 3 networkx networkx 4096 Jan  3 17:38 .
-
-        drwxr-xr-x 7 networkx networkx 4096 Jan  3 17:38 ..
-
-        drwxr-xr-x 2 networkx networkx 4096 Jan  3 17:38 86201
-
-        -rw-r--r-- 1 networkx networkx   18 Jan  2 13:43 executable_file
-
-
-## How To Change Directory Permissions In Linux
-
-Similar to how we change file permissions in Linux, we can use similar commands in the case of directories too.
-
-You can add permissions to a directory (e.g. linode) by the following command:
-
-        chmod +rwx linode
-
-To remove permissions added to linode run the following command:
-
-        chmod -rwx linode
-
-To add executable permissions use the following command
-
-        chmod +x linode
-
-And, running the following command removes executable and write permissions on your directory.
+    sudo chmod -R 644 /var/www/html/
 
 {{< community >}}
 * [How to set permissions for the webserver directory](https://www.linode.com/community/questions/8808/setting-ownership-and-permissions-for-webserver-directories)
