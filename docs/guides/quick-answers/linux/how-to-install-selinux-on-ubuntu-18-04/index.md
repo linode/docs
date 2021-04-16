@@ -52,7 +52,7 @@ The Linode kernel does not support SELinux by default. If the system is running 
     {{< caution >}}
 Do not purge AppArmor if you believe you may reuse it in the future.  If you would like to preserve the AppArmor configuration files, use the `remove` command, instead:
 
-      sudo apt remove apparmor
+    sudo apt remove apparmor
     {{< /caution >}}
 
         sudo apt purge apparmor
@@ -154,7 +154,7 @@ For example, to enable a policy that allows MySQL requests through SELinux. MySQ
 
 Set `setenforce` to 0, now SELinx allows everything but also logs it.
 
-	setenforce 0
+    setenforce 0
 
 Now, when you either reboot or set `setenforce` to 1 again, SELinux permissions return to old policies.
 
@@ -164,15 +164,15 @@ But this isn’t helpful if you wish to work frequently as you have to adjust `s
 
 To enable SELinux policy locally for mysqld process, you can execute the following command:
 
-	grep httpd /var/log/audit/audit.log | audit2allow -M mysqlpol
+    grep httpd /var/log/audit/audit.log | audit2allow -M mysqlpol
 
-	semodule -i mysqlpol.pp
+    semodule -i mysqlpol.pp
 
 You have now enabled a local SELinux policy by using a mysqlpol.pp.
 
 You can also make this permanent or global by using setsebool command. To make this globally permanent, run the following command:
 
-	setsebool -P httpd_can_network_connect_db 1
+    setsebool -P httpd_can_network_connect_db 1
 
 **Enabling SELinux policy to write to a file or folder**
 
@@ -180,40 +180,40 @@ In this example, you can enable the SELinux policy to gain write access to `/hom
 
 Also check the policy booleans on `file1` before moving forward. To do so, run the following command:
 
-	sestatus -b
+    sestatus -b
 
 An output similar to the following appears:
 {{< output >}}
 
-	Policy booleans:
+    Policy booleans:
 
-	abrt_anon_write                             off
+    abrt_anon_write                             off
 
-	abrt_handle_event                           off
+    abrt_handle_event                           off
 
-	allow_console_login                         on
+    allow_console_login                         on
 
-	allow_cvs_read_shadow                       off
+    allow_cvs_read_shadow                       off
 
-	allow_daemons_dump_core                     on
+    allow_daemons_dump_core                     on
 
-	allow_daemons_use_tcp_wrapper               off
+    allow_daemons_use_tcp_wrapper               off
 
-	allow_daemons_use_tty                       on
+    allow_daemons_use_tty                       on
 
-	allow_domain_fd_use                         on
+    allow_domain_fd_use                         on
 
-	allow_execheap                              off
+    allow_execheap                              off
 
-	allow_execmem                               on
+    allow_execmem                               on
 
-	allow_execmod                               on
+    allow_execmod                               on
 
-	allow_execstack                             on
+    allow_execstack                             on
 
-	allow_ftpd_anon_write                       off
+    allow_ftpd_anon_write                       off
 
-	allow_ftpd_full_access                      off
+    allow_ftpd_full_access                      off
 
 …
 {{</ output >}}
@@ -228,33 +228,33 @@ The goal here is to be able to configure SELinux policy in enforcing mode to sti
 
 To do so, run the following command:
 
-	semanage fcontext -l /daemon_old_path/
+    semanage fcontext -l /daemon_old_path/
 
 Now, check the default context of SELinux in the directory, and find the default context of the target daemon’s folder. This allows you to configure SELinux contexts and move your context too.
 
 Here is an example where the context is `allow_daemons_use_tty`
 
-	# semanage fcontext -l
+    # semanage fcontext -l
 
-	...
+    ...
 
-	/var/www(/.*)? all files system_u:object_r:allow_daemons_use_tty:s0
+    /var/www(/.*)? all files system_u:object_r:allow_daemons_use_tty:s0
 
 Now apply these contexts using the following command:
 
-	semanage fcontext -a -t allow_daemons_use_tty '/newcontextpath(/.*)?'
+    semanage fcontext -a -t allow_daemons_use_tty '/newcontextpath(/.*)?'
 
 Now that you have applied contexts to the new path above, you can enforce everything in this path to get that context by:
 
-	restorecon -RFvv /newcontextpath
+    restorecon -RFvv /newcontextpath
 
 To check the status run the following command:
 
-	ls -Zd /newcontextpath
+    ls -Zd /newcontextpath
 
 After making these changes, you have to re-index man db by executing the following command:
 
-	mandb
+    mandb
 
 To finish this, run man -k selinux to list all SELinux man pages.
 
@@ -269,13 +269,13 @@ Disabling SELinux on Ubuntu is very straightforward, and you can decide if you w
 
 To disable all SELinux policies on Ubuntu temporarily, run the following command:
 
-	setenforce 0
+    setenforce 0
 
 **Permanently Disable SELinux policies on Ubuntu**
 
 If you wish to permanently disable SELinux even when the system reboots, make changes to the `/etc/selinux/config` file and set SELINUX to disabled. Change the SELinux line as shown below:
 
-	SELINX=disbaled
+    SELINX=disbaled
 
 And, now if you restart the system, SELinux and its policies won’t be in place anymore.
 
