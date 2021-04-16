@@ -95,8 +95,8 @@ Subsequent communications within the session is monitored by both hosts for out-
 
 ### Limitations
 
-There may be other limitations, such as session activity timeouts. These may or may not be part of the TLS protocol. Whatever the reason, these timeouts end the session for the requestor. Sessions may need to be renegotiated or re-authenticated, depending upon TLS protocols or (more often) policy limitations at the responding host.
+There may be other limitations, such as session activity timeouts. These may or may not be part of the TLS protocol. Whatever the reason, these timeouts end the session for the requester. Sessions may need to be renegotiated or re-authenticated, depending upon TLS protocols or (more often) policy limitations at the responding host.
 
-A session may also terminate for other reasons unrelated to TLS. For example, the requesting host's IP address might have changed; an MTU changed; or the requestor is now using a different cipher or packet type. Any alarm condition that doesn't have an administratively-managed remedy terminates a TLS session.
+A session may also terminate for other reasons unrelated to TLS. For example, the requesting host's IP address might have changed; an MTU changed; or the requester is now using a different cipher or packet type. Any alarm condition that doesn't have an administratively-managed remedy terminates a TLS session.
 
 Ultimately, TLS is a multi-vendor, agnostic method of encrypting communications. It ensures trust in conversations between hosts, whether at the application level (as in web conversations) or as part of communications plumbing (email exchanges and more). Although older versions have proven to be vulnerable, more modern versions coupled with oversight by the IETF make TLS the widest choice in privacy and trust on the Internet.
