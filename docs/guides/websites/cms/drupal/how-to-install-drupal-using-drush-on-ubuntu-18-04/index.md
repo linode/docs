@@ -19,7 +19,7 @@ relations:
         key: how-to-install-drupal-drush
         keywords:
            - distribution: Ubuntu 18.04
-image: feature.png
+image: InstallDrupalUsingDrushUbuntu1804.png
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/','/websites/cms/drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/']
 ---
 
