@@ -8,9 +8,9 @@ keywords: ["chmod", "commands", "reference", "file permissions"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/common-commands/chmod/','/tools-reference/modify-file-permissions-with-chmod/','/tools-reference/tools/modify-file-permissions-with-chmod/']
-modified: 2018-01-24
+modified: 2021-04-16
 modified_by:
-  name: Sam Foo
+  name: Linode
 published: 2010-07-01
 title: Modify File Permissions with chmod
 external_resources:
@@ -140,25 +140,25 @@ Either notation is equivalent, and you may choose to use whichever form more cle
 
 ## Examples of Common Permissions with chmod
 
-### chmod 600 (rw-------)
+### chmod 600 (`rw-------`)
 
-600 permissions means that only the owner of the file has full read and write access to it. Once a file permission is set to 600, no one else can access the file. Example chmod commands (in octal and symoloc notions) setting permissions to 600:
+600 permissions means that only the owner of the file has full read and write access to it. Once a file permission is set to 600, no one else can access the file. Example chmod commands (in octal and symbolic notions) setting permissions to 600:
 
     chmod 600 example.txt
     chmod u=rw,g=,o= example.txt
     chmod a+rwx,u-x,g-rwx,o-rwx example.txt
 
-### chmod 664 (rw-rw-r--)
+### chmod 664 (`rw-rw-r--`)
 
-664 (`rw-rw-r--`) enables the following permissions: read and write for the owner; read and write for the group; read for others. If you trust other users within the same group and everyone needs write access to the files, this is a common setting to use. Otherwise `644` permissions can be used to restrict write access to the group. Example chmod commands (in octal and symoloc notions) setting permissions to 664:
+664 (`rw-rw-r--`) enables the following permissions: read and write for the owner; read and write for the group; read for others. If you trust other users within the same group and everyone needs write access to the files, this is a common setting to use. Otherwise `644` permissions can be used to restrict write access to the group. Example chmod commands (in octal and symbolic notions) setting permissions to 664:
 
     chmod 664 example.txt
     chmod u=rw,g=rw,o=r example.txt
     chmod a+rwx,u-x,g-x,o-wx example.txt
 
-### chmod 777 (rwxrwxrwx)
+### chmod 777 (`rwxrwxrwx`)
 
-chmod 777 is used to grant permissions to everyone to read, write, and execute a file. While using these permissions is a quick way to overcome a permissions-based error, it's not a best practice for securing most files and applications. Example chmod commands (in octal and symoloc notions) setting permissions to 777:
+chmod 777 is used to grant permissions to everyone to read, write, and execute a file. While using these permissions is a quick way to overcome a permissions-based error, it's not a best practice for securing most files and applications. Example chmod commands (in octal and symbolic notions) setting permissions to 777:
 
     chmod 777 example.txt
     chmod u=rwx,g=rwx,o=rwx example.txt
@@ -221,7 +221,7 @@ While directory permissions within Linux are similar to file permissions, there 
 - **Write** (`w`): User can add, delete, or rename files in a directory - provided the user also has execute permissions.
 - **Execute** (`x`): User can navigate to the directory (such as when using the `cd` command).
 
-To view permiessions of all files and directories within the workind directory, run `ls -la`. The output will be similar to snippet below. Directories are differentiated from files by the first bit within the permissions. As was covered previously, `d` stands for directory and `-` denotes the item is a file.
+To view permissions of all files and directories within the working directory, run `ls -la`. The output will be similar to snippet below. Directories are differentiated from files by the first bit within the permissions. As was covered previously, `d` stands for directory and `-` denotes the item is a file.
 
 {{< output >}}
 total 12
@@ -239,7 +239,7 @@ Directory permissions can be adjusted using the same chmod commands as were prev
 
     chmod 755 /example-directory/
 
-In many cases, the permissions should also be changed recusively on all files and subdirectories. This can be done through chmod by using the `-R` option. To change all permissions for files within a directory to read and write for the owner, read for the group, and read for other users, run the following command:
+In many cases, the permissions should also be changed recursively on all files and subdirectories. This can be done through chmod by using the `-R` option. To change all permissions for files within a directory to read and write for the owner, read for the group, and read for other users, run the following command:
 
     sudo chmod -R 644 /var/www/html/
 
