@@ -7,12 +7,13 @@ description: 'TLS is a core security protocol that underlies many types of Inter
 og_description: 'TLS is a core security protocol that underlies many types of Internet connectivity. This guide explains in-depth how TLS work, how it is used, and the key role that a TLS certificate plays in securing web server communication.'
 keywords: ['what is tls certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-23
+published: 2021-04-16
 modified_by:
   name: Linode
 title: "What is a TLS Certificate?"
 h1_title: "Understanding TLS Certificates and Connections"
-tags: ['web server', 'ssl']
+enable_h1: true
+tags: ['web server', 'ssl', 'security']
 contributor:
   name: Tom Henderson
   link: http://www.twitter.com/extremelabs
