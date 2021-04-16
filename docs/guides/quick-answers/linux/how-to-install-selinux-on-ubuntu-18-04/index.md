@@ -8,10 +8,10 @@ keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-ubuntu-18-04/']
 tags: ["ubuntu","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-17
+modified: 2021-04-15
 modified_by:
   name: Linode
-published: 2021-02-02
+published: 2017-06-30
 title: How to Install SELinux on Ubuntu 18.04
 h1_title: Installing SELinux on Ubuntu 18.04
 relations:
