@@ -29,10 +29,16 @@ Granting another server access to zone information is potentially dangerous. Do 
 
     ![Edit SOA records](edit-soa-record.png "Edit SOA records")
 
-1. In the **Edit SOA Record** pane, find the **Domain Transfers** form field and enter in a comma separated list of IP addresses corresponding to the DNS servers you'd like to give access to your Domain's zone file.
+1. In the **Edit SOA Record** pane, find the **Domain Transfer IPs** section and enter the IP addresses corresponding to the DNS servers you'd like to give access to your Domain's zone file. Each field should contain a single IP address and additional fields will appear when the **Add an IP** link is clicked.
 
 1. When you've completed your update, click on **Save**.
 
     {{< note >}}
 When the DNS servers no longer need access to your Domain's zone file, remove the IP address from the **Domain Transfers** field.
     {{</ note >}}
+
+When performing the AXFR DNS query, point your secondary name server to `axfr1.linode.com` (or up to `axfr5.linode.com`) instead of `ns1.linode.com`. To test the AXFR query locally, follow the above instructions to allow your computer's IP address as one of the ****Domain Transfer IPs**** in the SOA Record for your domain. This may take a few minutes before going into effect. Then run the following `dig` command, replacing **example.com** with your domain:
+
+    dig axfr example.com @axfr1.linode.com
+
+The query should output all DNS records on the domain. If a `Transfer failed` message is received instead, it may be because your computer's IP address wasn't added properly within the DNS Manager. Review the settings, wait a few minutes, and then try again.

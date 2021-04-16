@@ -33,6 +33,14 @@ HashiCorp's configuration syntax is easy to read and write. It was created to ha
 
 {{< file "~/terraform/main.tf">}}
 # Linode provider block. Installs Linode plugin.
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
 provider "linode" {
     token = "${var.token}"
 }

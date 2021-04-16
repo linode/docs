@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Enact Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
 h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -296,7 +297,7 @@ Below is an example bucket policy written in JSON:
     "Effect": "Allow",
     "Principal": {
       "AWS": [
-        "arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"
+        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       ]
     },
     "Action": [
@@ -314,7 +315,7 @@ Below is an example bucket policy written in JSON:
 This policy allows the user with the canonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The "resource" that is listed (`bucket-policy-example`) is the only bucket the user has access to.
 
 {{< note >}}
-The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
+The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::user/`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
 {{< /note >}}
 
 The permissions are specified in the `Action` array. For the current example, these are:
@@ -339,7 +340,7 @@ You can also define a finer level of control over the level of access to your bu
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+        "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       },
       "Action": [
         "s3:ListBucket"
@@ -351,7 +352,7 @@ You can also define a finer level of control over the level of access to your bu
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+        "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       },
       "Action": [
         "s3:GetObject"
@@ -379,7 +380,7 @@ If you wanted to deny all access to a resource and whitelist by IP address, you 
     "Resource": "arn:aws:s3:::bucket-policy-example/*",
     "Condition": {
       "NotIpAddress": {
-        "aws:SourceIp": "172.104.2.4"
+        "aws:SourceIp": "192.0.2.0"
       }
     }
   }]
@@ -396,7 +397,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
     "Effect": "Allow",
     "Principal": {
       "AWS": [
-        "arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"
+        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       ]
     },
     "Action": [
@@ -411,7 +412,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
   {
     "Effect": "Allow",
     "Principal": {
-      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
     },
     "Action": [
       "s3:ListBucket"
@@ -423,7 +424,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
   {
     "Effect": "Allow",
     "Principal": {
-      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
     },
     "Action": [
       "s3:GetObject"
@@ -439,7 +440,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
     "Resource": "arn:aws:s3:::bucket-policy-example/*",
     "Condition": {
       "NotIpAddress": {
-        "aws:SourceIp": "172.104.2.4"
+        "aws:SourceIp": "192.0.2.0"
       }
     }
   }]
@@ -463,7 +464,7 @@ s3://bucket-policy-example/ (bucket):
    Location:  default
    Payer:     BucketOwner
    Expiration Rule: none
-   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
+   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
    CORS:      none
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 {{</ output >}}

@@ -23,13 +23,13 @@ If you're new to Linode, or if you've just purchased a new domain name, the firs
 Creating a domain also creates its corresponding domain zone.
 {{</ note >}}
 
-1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel will appear where you can fill out the form fields with your domain's information.
+1.  From the **Domains** section, click on **Add a Domain**. The **Create a Domain** panel will appear where you can fill out the form fields with your domain's information.
 
     ![This page lets you add a new domain](add-new-domain.png "This page lets you add a new domain")
 
-1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button. If not, you may skip to the next step.
+1. If you want to add a *Secondary zone* instead of a primary zone, click the **Secondary** radio button. If not, you may skip to the next step.
 
-In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
+In order for Linode's DNS servers to function as secondary zones, your DNS primary server must notify and allow AXFR requests from the following IP addresses:
 
     104.237.137.10
     65.19.178.10
@@ -48,13 +48,13 @@ On **December 15th, 2020** the IP address `74.207.225.10` was added to replace t
 
 1.  Enter your domain name in the **Domain** field. An example is shown above.
 1.  Enter an administrator's email address in the **SOA Email Address** field.
-1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select from the drop-down menu the Linode with which you want this domain zone associated.
+1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Insert default records from one of my Linodes**, or **Insert default records from one of my NodeBalancers** using the *Insert Default Records* drop-down menu. Then, select a NodeBalancer or Linode from the drop-down menu that appears for the DNS records to be associated with.
 
     ![Create default DNS records when adding a new domain](create-default-records.png "Create default DNS records when adding a new domain")
 
-     Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
+     Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **Do not insert default records for me**.
 
-1.  Click **Create**. If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible on the Domains detail page. The created records should include SOA, NS, MX, and A/AAA.
+1.  Click **Create Domain**. If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible on the Domains detail page. The created records should include SOA, NS, MX, and A/AAA.
 
     If you elected to keep the zone empty, you can start adding DNS records now. The Domain detail page will contain an SOA and NS record for the domain. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview/##add-dns-records) section for instructions.
 

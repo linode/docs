@@ -17,16 +17,20 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/accounts-update-contact-info-shortguide/']
 ---
 
-Use the *Account & Billing* webpage to update the contact information for the Linode account. The email address saved on this webpage receives invoices, receipts, and credit card expiration warnings. Support tickets are *not* sent to this email address.
+Use the **Billing Info** page to update the contact information for the Linode account. The email address saved on this webpage receives invoices, receipts, and credit card expiration warnings.
 
-Here's how to update the contact information and the email address on the *Account* webpage:
+{{< note >}}
+Linode Support tickets are *not* sent to your Billing Contact email address, but to the email address for the relevant user.
+{{< /note >}}
+
+Here's how to update the contact information and the email address on the *Account* page:
 
 1.  Click the **Account** link in the sidebar.
-1.  Click the **Account & Billing** tab.
-1.  Expand the **Update Contact Information** panel and update the contact information and the email address for the account.
+1.  Under the **Billing Contact** section, click **Edit** to show the **Edit Billing Contact Info** menu.
 
     ![Update your Contact Information in the Linode Cloud Manager](accounts-update-billing-info.png "Update your Contact Information in the Linode Cloud Manager")
 
+1.  Update the contact information and the email address for the account.
 1.  Click **Save**.
 
-The account's contact information will be updated.
+The account's billing contact information is now updated.
