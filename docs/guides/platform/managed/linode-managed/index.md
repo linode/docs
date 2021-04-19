@@ -15,10 +15,10 @@ title: Linode Managed
 ---
 
 [Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service.
-These services include incident response, longview, backup service, cpanel installation, dashboard metrics, and free site migrations. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, Linode will monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
+These services include incident response, longview, backup service, cPanel installation, dashboard metrics, and free site migrations. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, Linode will monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
 {{< note >}}
-Linode Managed applies to all Linodes on an account and are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cpanel, add a license, or transfer a license, and other services such as backup, and migration.
+Linode Managed applies to all Linodes on an account and are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
 {{< /note >}}
 
 ## Getting Started
