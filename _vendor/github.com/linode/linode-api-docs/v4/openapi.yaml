@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.89.1
+  version: 4.90.0
 
   title: Linode API
   description: |
@@ -21253,6 +21253,20 @@ components:
           type: integer
           description: >
             The ID of the Volume this ticket is regarding, if relevant.
+          example: null
+        vlan:
+          type: string
+          description: |
+            The label of the VLAN this ticket is regarding, if relevant. To view your VLANs, use the VLANs List ([GET /networking/vlans](/docs/api/networking/#vlans-list)) endpoint.
+
+            Requires a specified `region` to identify the VLAN.
+          example: null
+        region:
+          type: string
+          description: |
+            The [Region](/docs/api/regions/) ID for the associated VLAN this ticket is regarding.
+
+            Only allowed when submitting a VLAN ticket.
           example: null
     Transfer:
       type: object
