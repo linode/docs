@@ -19,7 +19,7 @@ tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/']
 ---
 
-{{< youtube aSivuBZxUgw >}}
+{{< youtube "aSivuBZxUgw" >}}
 
 ## Counter-Strike: Global Offensive Marketplace App
 
