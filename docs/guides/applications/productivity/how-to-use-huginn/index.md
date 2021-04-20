@@ -53,20 +53,20 @@ Once you have Docker installed, you can quickly run an instance of Huginn to try
 
 1. Run the Huginn Docker container:
 
-		docker run -it -p 3000:3000 huginn/huginn
+        docker run -it -p 3000:3000 huginn/huginn
 
 1. Navigate to `localhost:3000` in a web browser. You can use an SSH tunnel to visit the Huginn instance remotely:
 
-	- On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address:
 
             ssh -L3000:localhost:3000 example-user@198.51.100.0
 
 1. Use the default credentials to log into your Huginn instance — username `admin` and password `password`.
 
-	![Huginn welcome page](huginn-welcome-page.png)
+    ![Huginn welcome page](huginn-welcome-page.png)
 
-	![Huginn login page](huginn-login.png)
+    ![Huginn login page](huginn-login.png)
 
 ## Deploying Huginn
 
@@ -87,10 +87,10 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
         EMAIL_FROM_ADDRESS=huginn@example-smtp-domain.com
 
-	You can create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
-    
+    You can create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
+
     Alternatively, you can use a third-party SMTP service, like [Mailgun](https://www.mailgun.com/). The following is an example of the above configuration for a Mailgun SMTP account:
-    
+
         RAILS_ENV=production
 
         SMTP_DOMAIN=example-domain.mailgun.org
@@ -103,25 +103,25 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
         EMAIL_FROM_ADDRESS=huginn@example-domain.mailgun.org
 
-	{{< content "email-warning-shortguide" >}}
+    {{< content "email-warning-shortguide" >}}
 
 1. Create a Docker volume for Huginn's database:
 
-		docker volume huginn-data
+        docker volume huginn-data
 
 1. Run the Huginn Docker container with the database volume. Here, the Docker port **3000** gets mapped to the server's port **80**, the standard port for HTTP connections:
 
-		docker run -d -p 80:3000 --restart=always --env-file .env.huginn -v huginn-data:/var/lib/mysql huginn/huginn
+        docker run -d -p 80:3000 --restart=always --env-file .env.huginn -v huginn-data:/var/lib/mysql huginn/huginn
 
-	The `--restart=always` option tells Docker to restart the application whenever the server comes on. This works so long as you do not directly stop the Docker container, as in: `docker stop example-container-id`. For reference, you can get the container ID through the `docker ps` command.
+    The `--restart=always` option tells Docker to restart the application whenever the server comes on. This works so long as you do not directly stop the Docker container, as in: `docker stop example-container-id`. For reference, you can get the container ID through the `docker ps` command.
 
 1. Navigate to the URL for your server. This can be either your server's domain name — such as `example.com` — or your server's IP address — such as `198.51.100.0`.
 
 1. Log in with the default credentials — `admin` as the username and `password` as the password.
 
-	You can then change the account credentials via the **Account** option from the menu on the upper right. Be sure to enter an email address for your account as well if you want Huginn to send you notifications or account recovery via email.
+    You can then change the account credentials via the **Account** option from the menu on the upper right. Be sure to enter an email address for your account as well if you want Huginn to send you notifications or account recovery via email.
 
-	![Huginn main page](huginn-main-page.png)
+    ![Huginn main page](huginn-main-page.png)
 
 ## Managing Huginn Agents
 
@@ -141,23 +141,23 @@ The sections that follow walk you through putting your own agents into action. T
 
 ### Source Agent
 
-1. Select the **New Agent** option from either the **Agent** menu item drop down or from the bottom of the page listing your agents.	
+1. Select the **New Agent** option from either the **Agent** menu item drop down or from the bottom of the page listing your agents.
 
-	![Selecting a Huginn agent type](huginn-new-agent-type-selection.png)
+    ![Selecting a Huginn agent type](huginn-new-agent-type-selection.png)
 
 1. Select **Website Agent** as the type. Once you do so, more options appear.
 
     This agent can scrape a website and create events out of the results. In the steps that follow, the agent gets configured to identify headlines on the [BBC](https://www.bbc.com) news website and create a series of events out of them every morning.
 
-	Once you select an agent type, you can see that Huginn provides reference information in a pane on the right. This can be useful in learning about new agent types and in deciding what options to choose for your use case.
+    Once you select an agent type, you can see that Huginn provides reference information in a pane on the right. This can be useful in learning about new agent types and in deciding what options to choose for your use case.
 
 1. Enter the name of the agent — "BBC Source" in this example — and schedule a time for the agent to run — here, "5am" is used. Under **Scenarios**, select the "default-scenario" option.
 
-	![Website Agent configuration](huginn-new-agent-website.png)
+    ![Website Agent configuration](huginn-new-agent-website.png)
 
 1. For **Options**, select **Toggle View** to allow you to enter JSON manually. Then, enter the following in the text box.
 
-		{
+        {
           "expected_update_period_in_days": "1",
           "url": "https://www.bbc.com/",
           "type": "html",
@@ -182,11 +182,11 @@ The sections that follow walk you through putting your own agents into action. T
 
 1. Select **New Agent** again, and select **Event Formatting Agent** as the type this time. Enter a name for the agent — "News Headline Formatter" in this example.
 
-	This type of agent can reshape incoming events. The events scraped by the **Website Agent** are not in an ideal format, so this agent allows you to restructure the events as needed.
+    This type of agent can reshape incoming events. The events scraped by the **Website Agent** are not in an ideal format, so this agent allows you to restructure the events as needed.
 
 1. For **Source**, select the **Website Agent** you created above ("BBC Source"), and select "default-scenario" under **Scenarios**.
 
-	![Event Formatting Agent configuration](huginn-new-agent-event-formatting.png)
+    ![Event Formatting Agent configuration](huginn-new-agent-event-formatting.png)
 
 1. Use **Toggle View** under **Options** to edit the JSON, and enter the following in the text box:
 
@@ -198,7 +198,7 @@ The sections that follow walk you through putting your own agents into action. T
           "matchers": [],
           "mode": "clean"
         }
-        
+
     Here and in the JSON examples that follow, you can see that Huginn enables some templating, allowing you to work with variable data and functions. Huginn uses the Liquid template engine for this, and maintains some [documentation](https://github.com/huginn/huginn/wiki/Formatting-Events-using-Liquid) on formatting and default variables.
 
 1. You can again use the **Dry Run** option to test the agent.
@@ -209,11 +209,11 @@ The sections that follow walk you through putting your own agents into action. T
 
 1. Select **New Agent** again, and select **Digest Agent** as its type. Enter a name for the agent — "Morning News Digest" is used here.
 
-	A **Digest Agent** collects a series of events and makes a single event out of them. This is useful here, since it allows Huginn to send out a single email with all of the headlines rather than an email for each headline.
+    A **Digest Agent** collects a series of events and makes a single event out of them. This is useful here, since it allows Huginn to send out a single email with all of the headlines rather than an email for each headline.
 
 1. Select a time for the agent to run — "6am" works for this scenario. Under **Sources**, select the **Event Formatting Agent** you created above ("News Headline Formatter"). Select "default-scenario" under **Scenarios**.
 
-	![Digest Agent configuration](huginn-new-agent-digest.png)
+    ![Digest Agent configuration](huginn-new-agent-digest.png)
 
 1. Fill the **Message** text box with the following:
 
@@ -226,11 +226,11 @@ The sections that follow walk you through putting your own agents into action. T
 
 1. Select **New Agent** once again. Select **Email Agent** as the type, and enter a name for the agent — here, "News Email Agent".
 
-	This agent does just what you would guess — delivers events as emails. In this case, it receives an event from the **Digest Agent** and then sends it immediately.
+    This agent does just what you would guess — delivers events as emails. In this case, it receives an event from the **Digest Agent** and then sends it immediately.
 
 1. Under **Sources**, select the **Digest Agent** you created above ("Morning News Digest"), and choose "default-scenario" for **Scenarios**.
 
-	![Email Agent configuration](huginn-new-agent-email.png)
+    ![Email Agent configuration](huginn-new-agent-email.png)
 
 1. Fill the **Options** text box with the following:
 
