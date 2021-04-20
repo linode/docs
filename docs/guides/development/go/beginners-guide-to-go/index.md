@@ -12,6 +12,7 @@ modified_by:
 image: GettingStartedwithGo.png
 title: "A Beginner's Guide to Go"
 h1_title: "Getting Started with Go"
+image: L_BeginToGo.png
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/

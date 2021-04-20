@@ -13,7 +13,7 @@ modified_by:
 published: 2015-06-29
 title: 'Install a LAMP Stack on Debian 10 (Buster)'
 h1_title: How to Install a LAMP Stack on Debian 10
-image: how-to-install-lamp-stack-on-debian-10.png
+image: L_InstallLAMPStackonDebian10.png
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

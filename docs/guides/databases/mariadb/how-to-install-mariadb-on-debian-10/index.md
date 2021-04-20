@@ -17,6 +17,7 @@ published: 2020-01-31
 image: Installing_MariaDB_on_Debian10.png
 title: How to Install MariaDB on Debian 10
 h1_title: Installing MariaDB on Debian 10
+image: L_InstallMariaDBDebian10.png
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'

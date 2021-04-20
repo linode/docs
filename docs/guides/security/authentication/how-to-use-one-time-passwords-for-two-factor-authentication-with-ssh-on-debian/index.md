@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on Debian 9"
 h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on Debian 9"
-image: how-to-use-one-time-passwords-for-two-factor-debian-9.png
+image: L_OneTimePass2FactorAuthDebian9.png
 contributor:
   name: Linode
 external_resources:

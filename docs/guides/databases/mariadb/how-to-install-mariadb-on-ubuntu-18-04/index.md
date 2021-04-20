@@ -14,7 +14,7 @@ contributor:
 modified_by:
   name: Linode
 published: 2020-01-31
-image: Installing_MariaDB_on_Ubuntu1804.png
+image: L_InstallMariaDBonUbuntu1804.png
 title: 'How to Install MariaDB on Ubuntu 18.04 LTS'
 h1_title: 'Installing MariaDB on Ubuntu 18.04 LTS'
 external_resources:

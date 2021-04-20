@@ -18,6 +18,7 @@ external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
+image: L_InstallMariaDBonCentOS-8.png
 relations:
     platform:
         key: how-to-install-mariadb
