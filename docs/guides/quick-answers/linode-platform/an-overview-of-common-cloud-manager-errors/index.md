@@ -11,7 +11,7 @@ published: 2019-02-22
 modified_by:
   name: Linode
 aliases: ['/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/','/quick-answers/linode-platform/understanding-cloud-manager-errors/']
-image: UnderstandingCommonCloudManagerErrors.png
+image: L_UnderstandCommonCIManErrors.png
 title: "An Overview of Common Cloud Manager Errors"
 h1_title: "Understanding Common Cloud Manager Errors"
 contributor:

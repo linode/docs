@@ -12,7 +12,7 @@ modified: 2020-01-20
 modified_by:
   name: Linode
 published: 2020-01-20
-image: ChangingYourEmailAddress.png
+image: L_ChangeYourEmail.png
 title: How to Change Your Email Address
 h1_title: Changing Your Email Address
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/']

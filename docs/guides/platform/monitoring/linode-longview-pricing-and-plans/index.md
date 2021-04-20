@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-22
 modified_by:
   name: Linode
-image: LongviewPricingandPlans.png
+image: L_LongviewPricingandPlans.png
 title: "Linode Longview Pricing and Plans"
 h1_title: "Longview Pricing and Plans"
 contributor:
