@@ -14,7 +14,7 @@ image: CreateaNodeBalancerwitTerraform.png
 title: "Create a NodeBalancer with Terraform"
 contributor:
   name: Linode
-external_resources:
+external_resources: 
 - '[Terraform Linode Provider Reference](https://www.terraform.io/docs/providers/linode/index.html)'
 - '[linode_nodebalancer Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer.html)'
 - '[linode_nodebalancer_config Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer_config.html)'
