@@ -178,6 +178,15 @@ Terraform uses a declarative approach in which configuration files specify the d
 1.  Create the file `linode-terraform-web.tf` in your `~/terraform` directory with the snippet below. Fill in your Linode API token, public SSH key, and desired root password where indicated.
 
     {{< file "~/terraform/linode-terraform-web.tf" aconf >}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
   token = "YOUR_LINODE_API_TOKEN"
 }

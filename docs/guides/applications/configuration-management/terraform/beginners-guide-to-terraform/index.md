@@ -60,6 +60,15 @@ The next sections will illustrate core Terraform concepts with examples written 
 Here's a simple example of a complete Terraform configuration in HCL:
 
 {{< file "example.tf" >}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
     token = "your-linode-api-token"
 }
@@ -89,6 +98,21 @@ The `example_instance` string that follows the `linode_instance` resource type d
 
 The `label` argument specifies the label for the Linode instance in the Linode Manager. This name is independent of Terraform's name for the resource (though you can assign the same value to both). The Terraform name is only recorded in Terraform's [state](#state) and is not communicated to the Linode API. Labels for Linode instances in the same Linode account must be unique.
 {{< /note >}}
+
+### Data Sources
+
+In Terraform, data sources represent read-only values that can be retrieved and then used elsewhere in a terraform configuration. Using the Linode Provider gives users access to a number of [Linode Specific Data Sources](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/account) that can be used for this purpose.
+
+Data sources are accessed by declaring a `data` block which contains any required information. Once the data block has been declared, the data source provides access to a number of attributes which can be called on as part of the terraform configuration. In the example below, the `linode_account` data source is called on in the `data` block, and is used later in the `output` block to output the `email` attribute:
+
+{{< file "example.tf" >}}
+...
+data "linode_account" "account" {}
+
+output "linode_account_email" {
+        value = "${data.linode_account.account.email}"
+}
+{{< /file >}}
 
 ### Dependencies
 
