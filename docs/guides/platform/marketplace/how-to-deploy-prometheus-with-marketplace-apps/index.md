@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Prometheus with Marketplace Apps"
 h1_title: "Deploying Prometheus with Marketplace Apps"
+image: Prometheus_oneclickapps.png
 contributor:
   name: Linode
 external_resources:

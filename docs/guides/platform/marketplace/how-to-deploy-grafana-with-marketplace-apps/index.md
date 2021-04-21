@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Grafana with Marketplace Apps"
 h1_title: "Deploying Grafana with Marketplace Apps"
-image: feature.png
+image: Grafana_oneclickapps.png
 contributor:
   name: Linode
 external_resources:
