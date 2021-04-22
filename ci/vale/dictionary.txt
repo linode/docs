@@ -1291,6 +1291,7 @@ respawn
 resque
 restapi
 restic
+restreaming
 retargetly
 retpoline
 retrans
