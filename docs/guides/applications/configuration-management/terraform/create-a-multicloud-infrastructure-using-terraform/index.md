@@ -1,18 +1,18 @@
 ---
-slug: deploy-multiple-environments-using-multicloud-terraform
+slug: create-a-multicloud-infrastructure-using-terraform
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The Terraform provides a consistent workflow that can easily manage multi-tier and multi-cloud networks using only a couple of configuration files. This guide explains how to deploy multiple environments using HCL and Multicloud Terraform that spans across Linode and another cloud vendor.'
-og_description: 'The Terraform provides a consistent workflow that can easily manage multi-tier and multi-cloud networks using only a couple of configuration files. This guide explains how to deploy multiple environments using HCL and Multicloud Terraform that spans across Linode and another cloud vendor.'
+description: 'Multicloud Terraform provides a consistent workflow for you to manage infrastructure resources using only a couple of configuration files. This guide explains how to deploy cloud services that span across Linode and another Cloud vendor using Terraform and HCL configuration files.'
+og_description: 'Multicloud Terraform provides a consistent workflow for you to manage infrastructure resources using only a couple of configuration files. This guide explains how to deploy cloud services that span across Linode and another Cloud vendor using Terraform and HCL configuration files.'
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-25
 modified_by:
   name: Linode
-title: "Deploy Multiple Environments Using Multicloud Terraform"
-h1_title: "How to Deploy Multiple Environments using Multicloud Terraform."
+title: "Create a Multicloud Infrastructure Using Terraform"
+h1_title: "How to Create a Multicloud Infrastructure Using Terraform"
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -25,165 +25,160 @@ external_resources:
 - '[data sources](https://www.terraform.io/docs/language/data-sources/index.html)'
 - '[HashiCorp Configuration Language](https://github.com/hashicorp/hcl)'
 - '[Resources](https://www.terraform.io/docs/language/resources/syntax.html)'
-- '[Java](https://www.oracle.com/java/technologies/javase-downloads.html)'
 - '[DynamoDB service](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.DynamoWebService.html)'
 - '[AWS Provider in the Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)'
 - '[Build, update, or destroy AWS infrastructure with Terraform](https://learn.hashicorp.com/collections/terraform/aws-get-started)'
 
 ---
 
-[*Terraform*](https://www.terraform.io/) is an open-source tool that is built by [*Hashicorp*](https://www.hashicorp.com) (which relies on the *HashiCorp Configuration Language* (HCL)) to automate the infrastructure deployment and provisioning of its resources.
+[*Terraform*](https://www.terraform.io/) is an open-source tool that is built by [*HashiCorp*](https://www.hashicorp.com). Using the *HashiCorp Configuration Language* (HCL), you can automate deploying your infrastructure, and provisioning its resources.
 
-With Terraform you can build, manage, update, and delete infrastructures with a couple of configuration files. You can achieve this using the *Infrastructure as Code* (IaC) technique.
+With only a few configuration files, you can build, manage, update, and delete your infrastructure using Terraform. This technique, enabled by Terraform, is known as *Infrastructure as Code* (IaC).
+
+This guide explains how to use Terraform and HCL to define and deploy a multicloud environment that spans Linode and another vendor.
 
 ## What is Infrastructure as Code (IaC)?
 
-IaC means writing the code to provision, manage, and deploy IT infrastructure by automating manual tasks. In simple terms it means, you can code what you want to build with the necessary credentials and start the provisioning process.
+Code that declares the final state of your desired infrastructure is referred to *Infrastructure as Code*.
 
-**Advantages of IaC:**
+**The Advantages of IaC:**
 
-1. **Reliability:** The resources are configured exactly as it is declared.
-2. **Agility:** IaC ensures fewer dependencies on manual work by eliminating configuration errors and avoids network inconsistency.
-3. **Increased speed & efficiency:** IaC can spin up an entire network infrastructure architecture, and launch cloud services and storage systems in minutes.
-4. **Reusability:** DevOps teams can reuse existing IaC scripts in various environments.
-5. **Collaboration:** Thanks to the version control which allows many people to collaborate in the same environment.
-6. **Reduced risk:** Adapting IaC is low-cost disaster recovery. You can recover large systems (even at a different location) using IaC.
+- **Reliability:** Your resources are configured exactly as they are declared.
 
-## Benefits of using Terraform cloud platform
+- **Agility:** IaC reduces manual work and eliminates configuration errors and inconsistencies.
 
-1. **Multi-cloud infrastructure deployment:** With Multicloud Terraform you can deploy similar infrastructures on cloud providers or local data centers. Developers can use the same tools and configuration files to manage the resources of the cloud providers simultaneously. To increase fault tolerance and handle migrations, Terraform can manage multiple clouds. A single Terraform command can oversee deployments to multiple providers and even handle cross-cloud dependencies.
+- **Increased speed & efficiency:** IaC allows you to spin up your entire infrastructure architecture with a few configuration files —you can launch cloud services, and storage systems in minutes.
 
-2. **Immutable infrastructure:** Majority of the infrastructure-as-a-code services are *mutable infrastructures* where a change in infrastructure does not result in a change in the current configuration. Terraform addresses this issue by using an Immutable Infrastructure approach, wherein for every new update, a new snapshot is created. This makes updating the deployment environment experience smooth.
+- **Reusability:** DevOps teams can reuse existing IaC configuration files in various environments.
 
-3. **Reduced time to provision:** Traditional deployment methods used by organizations can take days or weeks in addition to being error-prone. By using Terraform, full deployment can happen in minutes, and you can also provision multiple cloud services at a time.
+- **Collaboration:** You can version control your configuration files allowing you to collaborate with team members to maintain your infrastructure.
 
-4. **Infrastructure as code:** With Multicloud Terraform, you can use scripts to manage resources. It allows you to store the infrastructure status so that you can track the changes in different components of the system (infrastructure as code) and share these configurations with others.
+- **Reduced risk:** Adapting IaC provides low-cost disaster recovery. You can recover large systems (even at a different locations) using IaC.
 
-This guide explains how to deploy multiple environments using HCL and Multicloud Terraform that spans Linode and another cloud vendor.
+## The Benefits of a Multicloud Terraform Environment
+
+- **Cost-efficient infrastructure:** Build your infrastructure using a mix of the most cost-efficient services provided by different cloud providers.
+
+- **Consistency and fault tolerance:** You can deploy similar infrastructures on different cloud providers or local data centers. Developers can use the same tools and configuration files to manage each cloud provider's resources, simultaneously. A single Terraform command can oversee deployments to multiple providers and even handle cross-cloud dependencies.
 
 ## Before You Begin
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2. This guide uses `sudo` wherever possible. Complete all the sections in [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-3. Do **not** follow the "Configure a Firewall" section as this guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete all the sections in [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the [Configure a Firewall](/docs/guides/securing-your-server/#configure-a-firewall) section. This guide includes firewall rules specifically for an OpenVPN server.
 
-4. Update your system using the following commands:
+1. Update your system using the following commands:
 
        sudo apt-get update
        sudo apt-get upgrade
+
+1. You need a personal access token for [Linode’s API v4](https://www.linode.com/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Download Terraform on the Linode Server
+## Downloading Terraform on your Linode Server
 
-Terraform is a declarative language which means you don't have to define every step on how the automation and management are done.
-The architecture of Terraform is simple. You just need to download the Terraform library and install it on your central Linode server.
-This guide shows you how to install Terraform on Ubuntu 20.10, but is generally applicable to most Linux distributions.
+In this section, you install Terraform on an Ubuntu 20.04 Linode. These steps are generally applicable to most Debian-based distributions. You can use the Linode server as the hub for your Terraform-managed infrastructure, however, you can also install Terraform on your computer.
 
-To download Terraform on a Linode server, follow the below steps:
+To download Terraform on a Linode server, follow the steps below:
 
-1. Login to the Linode server via SSH. This is the Linode server where you want to install Terraform.
-       ssh root@linode_ip_address
+1. [Login to the Linode server via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
-2. Get the latest list of packages and update all installed packages to their latest ones.
+       ssh username@192.0.2.0
+
+1. Get the latest list of packages and update all installed packages.
 
         sudo apt-get update
-
         sudo apt-get upgrade
 
-3. Create a new directory for Terraform, and change to this directory.
+1. Create a new directory for Terraform, and change to this directory.
 
         mkdir terraform
-
         cd terraform
 
-4. Download Terraform using the following `wget` command or from the [*Terraform's download page*](https://www.terraform.io/downloads.html).
-   This guide is written for the latest Terraform version 0.15.0 (at the time of writing this guide).
+1. Download Terraform using the `wget` command or from [Terraform's download page](https://www.terraform.io/downloads.html). This guide is written for the latest Terraform version 0.15.0 (at the time of writing this guide).
 
         wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
 
-  {{< note >}}
-  Previous versions of Terraform can be found on the [*Terraform releases page*](https://releases.hashicorp.com/terraform/).
+    {{< note >}}
+  Previous versions of Terraform can be found on the [Terraform releases page](https://releases.hashicorp.com/terraform/).
   {{< /note >}}
-5. Download the `SHA256` file, and checksum `sig` file for the most recent version of Terraform (0.15.0 in this case).
 
-* The SHA256 checksums file
+1. Download the `SHA256SUMS` file, and checksum `sig` file for the most recent version of Terraform (0.15.0 in this case).
 
-        wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_SHA256SUMS
+    - The SHA256 checksum file:
 
-* The checksum signature file
+            wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_SHA256SUMS
 
-        wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_SHA256SUMS.sig
+    - The checksum signature file:
 
-### Verify the downloaded Terraform
+            wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_SHA256SUMS.sig
 
-1. Secure the communications by fetching the *HashiCorp's GPG key* by importing the key ID - `51852D87348FFC4C`.
-Terraform’s public GPG key can be found on their [Security page](https://www.hashicorp.com/security) under the “Secure Communications” section.
+### Verify the Terraform Download
+
+1. Locate HashiCorp's public GPG key on their [Security page](https://www.hashicorp.com/security) under the “Secure Communications” section. The key ID is `51852D87348FFC4C`.
 
         gpg --recv-keys 51852D87348FFC4C
 
-  The following output confirms that the `gpg` key has been successfully imported.
+    The following output confirms that the `gpg` key has been successfully imported.
 
-  {{< output >}}
-  gpg: directory '/root/.gnupg' created
-  gpg: keybox '/root/.gnupg/pubring.kbx' created
-  gpg: /root/.gnupg/trustdb.gpg: trustdb created
-  gpg: key 51852D87348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
-  gpg: Total number processed: 1
-  gpg: imported: 1
+    {{< output >}}
+gpg: directory '/root/.gnupg' created
+gpg: keybox '/root/.gnupg/pubring.kbx' created
+gpg: /root/.gnupg/trustdb.gpg: trustdb created
+gpg: key 51852D87348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
+gpg: Total number processed: 1
+gpg: imported: 1
 {{< /output >}}
-2. Use `gpg` to validate the signature file. Use the exact names of the `sig` and `SHA256` files.
+
+1. Use `gpg` to validate the signature file. Use the exact names of the `sig` and `SHA256` files.
 
           gpg --verify terraform_0.15.0_SHA256SUMS.sig terraform_0.15.0_SHA256SUMS
 
-  The following output confirms that the `sig` file is a good signature from HashiCorp Security.
+    The following output confirms that the `sig` file is a good signature from HashiCorp Security.
 
-  {{< output >}}
-
+    {{< output >}}
 gpg: Signature made Wed Apr 14 15:41:39 2021 UTC
 gpg: using RSA key 91A6E7F85D05C65630BEF18951852D87348FFC4C
 gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
-
   {{< /output >}}
-3. Ensure the RSA key displayed in the output of the last step matches the fingerprint shown on the [*Terraform Security page*](https://www.hashicorp.com/security). The fingerprint is located in the same place as the GPG key in the "Secure Communications" section.
-4. Verify the checksum of the `zip` archive. For the following command, use the exact name of the `SHA256` file.
+
+1. Ensure the RSA key displayed in the output of the last step matches the fingerprint shown on the [Terraform Security page](https://www.hashicorp.com/security). The fingerprint is located in the same place as the GPG key in the "Secure Communications" section.
+
+1. Verify the checksum of the `zip` archive. For the following command, use the exact name of the `SHA256SUMS` file.
 
         sha256sum -c terraform_0.15.0_SHA256SUMS 2>&1 | grep OK
 
-The `sha256sum` program displays the name of the `zip` file along with the status. If the status is **Not** `OK`, then the `zip` file is corrupt and must be downloaded again.
+    The `sha256sum` program displays the name of the `zip` file along with the status. If the status is **NOT** `OK`, then the `zip` file is corrupt and must be downloaded again.
 
-  {{< output >}}
+    {{< output >}}
 
 terraform_0.15.0_linux_amd64.zip: OK
 
   {{< /output >}}
 
-### Configure the Terraform on the Linode Server
-
-Configure the Terraform for all the necessary environment variables by following the below steps:
+### Installing and Configuring Terraform on the Linode Server
 
 1. Unzip the `terraform_*_linux_amd64.zip` to your `terraform` directory.
 
         unzip terraform_0.15.0_linux_amd64.zip
 
     {{< note >}}
-  If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package using the following command `apt install unzip` and try again.
+  If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package using the following command `sudo apt install unzip` and try again.
     {{< /note >}}
 
-2. Edit your `~./profile` to include the `~/terraform` directory in your PATH. Then, reload the profile.
+1. Edit your `~./profile` to include the `~/terraform` directory in your PATH. Then, reload the profile.
 
         echo 'export PATH="$PATH:$HOME/terraform" ' >> ~/.profile
         source ~/.profile
 
-3. Verify Terraform installation by running the `terraform` command without any arguments. The Terraform usage information is displayed followed by the list of common commands.
+1. Verify Terraform installation by running the `terraform` command without any arguments. The Terraform usage information is displayed followed by the list of common commands.
 
         terraform
 
-  {{< output >}}
-
+    {{< output >}}
 Usage: terraform [global options] <subcommand> [args]
 The available commands for execution are listed below.
 The primary workflow commands are given first, followed by
@@ -201,47 +196,46 @@ All other commands:
 
   {{< /output >}}
 
-## Build Terraform with Linode Provider
+## Define your Multicloud Infrastructure Using Terraform
 
-Terraform depends on plugins called *Providers*. Each provider adds a set of [*resource types*](https://www.terraform.io/docs/language/resources/index.html) or [*data sources*](https://www.terraform.io/docs/language/data-sources/index.html) that is managed by the Terraform.
+Terraform depends on plugins called *Providers*. Each provider adds a set of [*resource types*](https://www.terraform.io/docs/language/resources/index.html) or [*data sources*](https://www.terraform.io/docs/language/data-sources/index.html) that are managed by Terraform.
 
 Terraform configurations must declare which providers they require so that Terraform can use them. Terraform can understand two types of configuration files: JSON, and [HashiCorp Configuration Language](https://github.com/hashicorp/hcl) (HCL).
 
-This guide uses the HCL format, and HCL files end with the `.tf` extension.
+This guide uses the HCL format. HCL files end with the `.tf` extension.
 
 ### Defining the Linode Infrastructure
 
-The following steps explain how you can construct a multi-cloud configuration consisting of one Linode, and one service on the Amazon Web Services (AWS) cloud.
+The following steps explain how you can construct a multicloud configuration consisting of one Linode, and one service form the Amazon Web Services (AWS) cloud. This section makes use of the [Terraform Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs) and the [Amazon Web Services (AWS) Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
 
 1. Create a file `linode-terraform.tf` in your `terraform` directory.
 
         cd terraform
-
         vi linode-terraform.tf
 
-2. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](http://localhost:1313/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to learn how to create an API token.
+1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](http://localhost:1313/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to learn how to create an API token, if you have not done so already.
 
-  {{< file "~/terraform/linode-terraform.tf" >}}
+    {{< file "~/terraform/linode-terraform.tf" >}}
 
-  terraform {
-    required_providers {
+terraform {
+  required_providers {
       linode = {
-      source = "linode/linode"
-      version = "1.16.0"
+        source = "linode/linode"
+        version = "1.16.0"
       }
-    }
   }
+}
 
-  # Linode Provider definition
+# Linode Provider definition
 
-  provider  "linode" {
-  token = "YOUR_LINODE_API_TOKEN"
-  }
+provider  "linode" {
+  token = var.token
+}
   {{< /file >}}
-3. Define the Linode [*Resources*](https://www.terraform.io/docs/language/resources/syntax.html). Resources are the important element in the Terraform which describes objects like `group`, `region`, `authorized_keys`, etc.
-Fill in your public SSH key, and desired root password where ever indicated.
 
-{{< file "~/terraform/linode-terraform.tf" >}}
+1. Define the Linode [*Resources*](https://www.terraform.io/docs/language/resources/syntax.html). In this case, you define a new Linode instance as the resource to deploy. Then, you assign values for all the required resource configurations.
+
+    {{< file "~/terraform/linode-terraform.tf" >}}
 
 resource  "linode_instance"  "terraform" {
   image = "linode/ubuntu20.04"
@@ -249,15 +243,16 @@ resource  "linode_instance"  "terraform" {
   group = "Terraform"
   region = "us-east"
   type = "g6-standard-1"
-  authorized_keys = [ "YOUR_PUBLIC_SSH_KEY" ]
-  root_pass = "YOUR_ROOT_PASSWORD"
+  authorized_keys = [ var.authorized_keys ]
+  root_pass = var.root_pass
 }
 {{< /file >}}
-4. The full `linode-terraform.tf` file, including both the `provider` and `resource` sections, is shown below.
 
-This snippet creates a Linode 2GB labeled `Terraform-Example` in a `Terraform` Linodes group.
+1. The full `linode-terraform.tf` file, including both the `provider` and `resource` sections, is shown below.
 
-{{< file "~/terraform/linode-terraform.tf" >}}
+    These configurations create a Linode 2GB labeled `terraform-example` and place it in the `terraform` Linodes group. You can replace the values with your own desired values. Lists of the allowable values for each of the fields, such as the `region`, are found in the [*Linode API*](https://www.linode.com/docs/api/linode-instances/).
+
+    {{< file "~/terraform/linode-terraform.tf" >}}
 
 terraform {
   required_providers {
@@ -276,30 +271,31 @@ provider  "linode" {
 
 resource  "linode_instance"  "terraform" {
   image = "linode/ubuntu20.04"
-  label = "Terraform-Example"
-  group = "Terraform"
+  label = "terraform-example"
+  group = "terraform"
   region = "us-east"
   type = "g6-standard-1"
-  authorized_keys = [ "YOUR_PUBLIC_SSH_KEY" ]
-  root_pass = "YOUR_ROOT_PASSWORD"
+  authorized_keys = [ var.authorized_keys ]
+  root_pass = var.root_pass
 }
 
 {{< /file >}}
-5. Within the same `terraform` directory, create a second file named `variables.tf`, and declare all the variables from `linode-terraform.tf`, as shown below.
+
+1. Within the same `terraform` directory, create a second file named `variables.tf`, and declare all the variables from `linode-terraform.tf`, as shown below.
 
         vi variables.tf
 
-  {{< file "~/terraform/variables.tf">}}
-
+    {{< file "~/terraform/variables.tf">}}
 variable "token" {}
 variable "authorized_keys" {}
 variable "root_pass" {}
-  {{< /file >}}
-6. Create a third file in the `terraform` directory named `terraform.tfvars`. This file is to define the actual values for each variable. For the variables - `token`,  `authorized_keys`, and  `root_pass`, substitute your Linode API token, your SSH key, and a secure password for the device respectively.
+{{< /file >}}
+
+1. Create a third file in the `terraform` directory named `terraform.tfvars`. This file is to define the actual values for each variable. For the variables - `token`,  `authorized_keys`, and  `root_pass`, substitute your Linode API token, your SSH key, and a secure password for the device, respectively.
 
         vi terraform.tfvars
 
-{{< file "~/terraform/terraform.tfvars">}}
+    {{< file "~/terraform/terraform.tfvars">}}
 
 token = "YOUR_LINODE_API_TOKEN"
 authorized_keys = "YOUR_PUBLIC_SSH_KEY"
@@ -307,29 +303,26 @@ root_pass ="YOUR_ROOT_PASSWORD"
 
 {{< /file >}}
 
-{{< note >}}
-
+    {{< note >}}
 It might also make sense to declare variables for fields where each resource has the same value. If each Linode uses the same image, define an `image` variable and assign `var.image` to the image parameter of each resource. This makes it easier to update the image information for all of the devices.
-
 {{< /note >}}
 
 ### Defining the AWS Infrastructure
 
-**Prerequisites to provision an AWS device using Terraform**
+**Prerequisites to provision AWS resources using Terraform**
 
-* Ensure you have [Java](https://www.oracle.com/java/technologies/javase-downloads.html) installed and running on your machine.
-* An AWS account
-* An AWS secret key
+- An AWS account
+- An AWS secret key
 
-The following example demonstrates how you can configure a database table in the [*DynamoDB service*](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.DynamoWebService.html). For more information on how to define AWS resources in Terraform, consult the [*AWS Provider in the Terraform Registry*](https://registry.terraform.io/providers/hashicorp/aws/latest/docs). Follow the below steps to specify the AWS network.
+The following example demonstrates how you can configure a database table in the [DynamoDB service](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.DynamoWebService.html). For more information on how to define AWS resources in Terraform, consult the [AWS Provider in the Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs). Follow the steps below to specify the AWS resources.
 
 1. Create a new file named `aws-terraform.tf` inside the `terraform` directory.
 
         vi aws-terraform.tf
-2. Declare the AWS provider by specifying an AWS region for the resource, along with variable references for the `aws_access_key`, and `aws_secret_key`.
 
-  {{< file "~/terraform/aws-terraform.tf" >}}
+1. Declare the AWS provider by specifying an AWS region for the resource, along with variable references for the `aws_access_key`, and `aws_secret_key`.
 
+    {{< file "~/terraform/aws-terraform.tf" >}}
 # Initialize the AWS Provider
 
 provider "aws" {
@@ -338,7 +331,9 @@ provider "aws" {
   region = "eu-west-2"
 }
   {{< /file >}}
-3. Add a declaration for the AWS resource. The entire file, including the provider information, is shown below.
+
+1. Add a declaration for the AWS resource. The entire file, including the provider information, is shown below. This `aws_dynamodb_tabe` resource configures a database table in the DynamoDB service.
+
     {{< file "~/terraform/aws-terraform.tf" >}}
 
 # Initialize the AWS Provider
@@ -367,23 +362,25 @@ resource "aws_dynamodb_table" "inventory-dynamodb-table" {
   }
 }
     {{< /file >}}
-4.  Edit the `variables.tf` file, and add the new variables used in `aws-terraform.tf` to the bottom of the file, as shown below.
 
-  {{< note >}}
-  If a large number of variables are used throughout the configuration files, each cloud vendor should have its own variables file.
+1.  Edit the `variables.tf` file, and add the new variables used in `aws-terraform.tf` to the bottom of the file, as shown below.
+
+    {{< note >}}
+If a large number of variables are used throughout the configuration files, each cloud vendor should have its own variables file.
   {{< /note >}}
 
-  {{< file "~/terraform/variables.tf" >}}
-  ...
-  variable "aws_access_key" {}
-  variable "aws_secret_key" {}
+    {{< file "~/terraform/variables.tf" >}}
+...
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
   {{< /file >}}
-5.  Edit the `terraform.tfvars`, and add the actual values of your AWS keys.
 
-  {{< file "~/terraform/terraform.tfvars" aconf >}}
-  ...
-  aws_access_key = "YOUR_AWS_ACCESS_TOKEN"
-  aws_secret_key = "YOUR_AWS_SSH_KEY"
+1.  Edit the `terraform.tfvars`, and add the actual values of your AWS keys.
+
+    {{< file "~/terraform/terraform.tfvars" aconf >}}
+...
+aws_access_key = "YOUR_AWS_ACCESS_TOKEN"
+aws_secret_key = "YOUR_AWS_SSH_KEY"
   {{< /file >}}
 
 ## Initialize, Review Plan, and Execute Terraform
@@ -400,9 +397,9 @@ This guide describes all three steps in detail.
 
         terraform init
 
-  The following output confirms Terraform's successful initialization:
+    The following output confirms Terraform's successful initialization:
 
-  {{< output >}}
+    {{< output >}}
 
 * Finding linode/linode versions matching "1.16.0"...
 * Finding latest version of hashicorp/aws...
@@ -419,14 +416,15 @@ should now work.
 ...
   {{< /output >}}
 
-  {{< note >}}
-  If Terraform displays an error, run the `init` command again with debug mode turned on using `TF_LOG=debug terraform init`.
+    {{< note >}}
+If Terraform displays an error, run the `init` command again with debug mode turned on using `TF_LOG=debug terraform init`.
   {{< /note >}}
-2. Run the `terraform plan` command. This lists the resources that Terraform expects to create, change, or delete.
+
+1. Run the `terraform plan` command. This lists the resources that Terraform expects to create, change, or delete.
 
         terraform plan
 
-  {{< output >}}
+    {{< output >}}
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
 
@@ -502,19 +500,22 @@ Terraform will perform the following actions:
 Plan: 2 to add, 0 to change, 0 to destroy.
   {{< /output >}}
 
-  `terraform plan` won’t take any action or make any changes on your Linode account.
-    {{< note >}}
-  If the command generates an error or some other unexpected result, re-run the `terraform plan` in debug mode.
+        `terraform plan` won’t take any action or make any changes on your Linode account.
 
-      TF_LOG=debug terraform plan
+    {{< note >}}
+If the command generates an error or some other unexpected result, re-run the `terraform plan` in debug mode.
+
+    TF_LOG=debug terraform plan
   {{< /note >}}
-3. If there are no errors, start deploying new resources using the `apply` command.
+
+1. If there are no errors, start deploying new resources using the `apply` command.
 
         terraform apply
 
-  Terraform displays the plan of action again and asks you for a confirmation. Enter `yes` to continue with the deployment.
+    Terraform displays the plan of action again and asks you for a confirmation. Enter `yes` to continue with the deployment.
 
-  Terraform then provisions the network in accordance with its plan. When Terraform has configured the network, it summarizes the results.
+    Terraform then provisions the resources in accordance with its plan. When Terraform has configured your multicloud infrastructure, it summarizes the results.
+
     {{< output >}}
 Plan: 2 to add, 0 to change, 0 to destroy.
 
@@ -554,15 +555,16 @@ linode_instance.terraform-web: Creation complete after 52s (ID: 10975739)
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
     {{< /output >}}
-4. Visit the [Linode Cloud Manager](https://cloud.linode.com/linodes). You should see that the `Terraform-Example` Linode has been added to your account. Review the AWS Dashboard to verify the contents of the new database.
 
-  {{< note >}}
-  Terraform stores details about the state of the network in the `terraform.tfstate` file within the same directory.
+1. Visit the [Linode Cloud Manager](https://cloud.linode.com/linodes). You should see that the `terraform-example` Linode has been added to your account. Review the AWS Dashboard to verify the contents of the new database.
+
+    {{< note >}}
+Terraform stores details about the state of your resources in the `terraform.tfstate` file within the same directory.
   {{< /note >}}
 
 ## Update the Terraform Configuration
 
-Terraform can modify a service without affecting the other services.
+Terraform can modify a resource without affecting the other elements of your infrastructure. Terraform gracefully handles configuration changes by comparing the current state of your infrastructure against the updated configuration files.
 
 The following example illustrates how to simultaneously add a new Linode and change the AWS database table.
 
@@ -571,16 +573,18 @@ The following example illustrates how to simultaneously add a new Linode and cha
     {{< file "~/terraform/linode-terraform.tf" aconf >}}
 ...
 resource "linode_instance" "terraform2-example" {
-        image = "linode/ubuntu20.04"
-        label = "Terraform-Web-Example-2"
-        group = "Terraform"
-        region = "eu-west"
-        type = "g6-nanode-1"
-        authorized_keys = [var.authorized_keys]
-        root_pass = var.root_pass
+  image = "linode/ubuntu20.04"
+  label = "terraform-web-example-2"
+  group = "terraform"
+  region = "eu-west"
+  type = "g6-nanode-1"
+  authorized_keys = [var.authorized_keys]
+  root_pass = var.root_pass
 }
     {{< /file >}}
-2. Edit the `aws-terraform.tf`, and alter one of the fields. In this case, change `AlbumTitle` to `RecordTitle`. Change the name of the `range_key` field to correspond to the new name.
+
+1. Edit the `aws-terraform.tf`, and alter one of the fields. In this case, change `AlbumTitle` to `RecordTitle`. Change the name of the `range_key` field to correspond to the new name.
+
     {{< file "~/terraform/aws-terraform.tf" aconf >}}
 ...
   range_key      = "RecordTitle"
@@ -591,10 +595,13 @@ resource "linode_instance" "terraform2-example" {
   }
 ...
     {{< /file >}}
+
 3. Execute the `terraform plan` command again.
 
         terraform plan
-    Terraform displays the new plan, which calls for two additions and one deletion of the network resource.
+
+    Terraform displays the new plan, which calls for two additions and one deletion of the your resources.
+
     {{< output >}}
 linode_instance.terraform-example: Refreshing state... [id=25603885]
 aws_dynamodb_table.inventory-dynamodb-table: Refreshing state... [id=RecordInventory]
@@ -678,10 +685,12 @@ Terraform will perform the following actions:
 
 Plan: 2 to add, 0 to change, 1 to destroy.
     {{< /output >}}
-4.  When the plan is finalized, run the `apply` command to deploy the changes. Enter `yes` when prompted to proceed with the changes.
+
+1.  When the plan is finalized, run the `apply` command to deploy the changes. Enter `yes` when prompted to proceed with the changes.
 
         terraform apply
-   {{< output >}}
+
+    {{< output >}}
 linode_instance.terraform2-example: Creating...
 aws_dynamodb_table.inventory-dynamodb-table: Destroying... [id=RecordInventory]
 aws_dynamodb_table.inventory-dynamodb-table: Destruction complete after 2s
@@ -695,11 +704,12 @@ linode_instance.terraform2-example: Creation complete after 48s [id=25624349]
 
 Apply complete! Resources: 2 added, 0 changed, 1 destroyed.
     {{< /output >}}
-5.  Visit the [Linode Cloud Manager](https://cloud.linode.com/linodes), and the AWS dashboard to verify the updates were implemented correctly.
+
+1.  Visit the [Linode Cloud Manager](https://cloud.linode.com/linodes), and the AWS dashboard to verify the updates were implemented correctly.
 
 ## Destroy the Terraform Configuration
 
-Terraform includes a `destroy` command to completely delete a network when it is no longer required.
+Terraform includes a `destroy` command to completely delete your infrastructure's resources when they are no longer required.
 
 1. Run the `plan` command with the `-destroy` flag to verify the list of resources that are scheduled for deletion.
 
@@ -725,13 +735,16 @@ Terraform will perform the following actions:
 ...
 Plan: 0 to add, 0 to change, 3 to destroy.
     {{< /output >}}
-2.  Run the `terraform destroy` command to destroy (delete) the network. Enter `yes` when Terraform asks you to confirm the changes.
+
+1.  Run the `terraform destroy` command to destroy (delete) your resources. Enter `yes` when Terraform asks you to confirm the changes.
 
         terraform destroy
+
     {{< caution >}}
-This command permanently deletes the network. This operation cannot be undone or reversed.
+This command permanently deletes your resources. This operation cannot be undone or reversed.
     {{< /caution >}}
-  {{< output >}}
+
+    {{< output >}}
   Plan: 0 to add, 0 to change, 3 to destroy.
 
   Do you really want to destroy all resources?
@@ -750,17 +763,19 @@ This command permanently deletes the network. This operation cannot be undone or
   Destroy complete! Resources: 3 destroyed.
 
   {{< /output >}}
-3. Visit the [Linode Cloud Manager](https://cloud.linode.com/linodes), and verify the devices and services have been removed.
+
+1. Visit the [Linode Cloud Manager](https://cloud.linode.com/linodes), and verify the devices and services have been removed.
 
 ## Learn More About Terraform
 
-Terraform is revolutionizing the DevOps ecosystem by transforming the way infrastructure is managed.
-It offers many advanced techniques to help streamline common IaC tasks. For instance, Terraform modules can package frequently-used configuration tasks together.
+Terraform is revolutionizing the DevOps ecosystem by transforming the way infrastructure is managed. It offers many advanced techniques to help streamline common IaC tasks. For instance, Terraform modules can package frequently-used configuration tasks together.
 
 See Linode's [Guide to Creating a Terraform Module](/docs/applications/configuration-management/terraform/create-terraform-module) for instructions on how to create a module.
 
 **Useful References:**
 
-* Read the [Terraform documentation](https://www.terraform.io/docs/index.html) on how to use HCL and Terraform.
-* [Build, update, or destroy AWS infrastructure with Terraform](https://learn.hashicorp.com/collections/terraform/aws-get-started).
-* Check out more details about the individual providers and their APIs that contains resources dedicated to the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs).
+- Read the [Terraform documentation](https://www.terraform.io/docs/index.html) on how to use HCL and Terraform.
+
+- [Build, update, or destroy AWS infrastructure with Terraform](https://learn.hashicorp.com/collections/terraform/aws-get-started).
+
+- Check out the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs) which offers more details about the Linode resources you can deploy using Terraform.
