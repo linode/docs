@@ -7,7 +7,7 @@ description: 'MediaWiki is a versatile, open, and free software behind collabora
 og_description: 'MediaWiki is a versatile, open, and free software behind collaboratively edited websites like Wikipedia. This guide will show you how to install MediaWiki on Ubuntu 20.04.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on ubuntu 20.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-03
+published: 2021-04-22
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install MediaWiki on Ubuntu 20.04"
@@ -94,9 +94,13 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
 5. Create a database and a database user for MediaWiki by opening MariaDB as the root user (`sudo mariadb -u root -p`) and entering the commands given in the following example. Replace `wikidb` with the desired database name, `wikiuser` with the desired database username, and `password` with a password for that user, which should not match the database's root password:
 
-        CREATE DATABASE wikidb;
+        CREATE DATABASE my_wiki;
         CREATE USER 'wikiuser'@'localhost' IDENTIFIED BY 'password';
-        GRANT ALL PRIVILEGES ON wikidb.* TO 'wikiuser'@'localhost' WITH GRANT OPTION;
+        GRANT ALL PRIVILEGES ON my_wiki.* TO 'wikiuser'@'localhost' WITH GRANT OPTION;
+
+6. Then exit MariaDB:
+
+        exit;
 
 ## Download and Extract the MediaWiki Files
 
@@ -112,6 +116,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
 3. Remove any other files and/or folders from the web server's document directory. Apache typically includes an `index.html` file in this folder by default, which you can remove with:
 
+        cd /var/www/html
         sudo rm index.html
 
 4. Navigate to the document directory, and extract the archived files:
@@ -123,28 +128,31 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
         sudo mv /var/www/html/mediawiki-1.35.0 /var/www/html/w
 
     {{< note >}}
- Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction.
+ Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction. For more information, see our guide on [Linux Users and Groups](/docs/guides/linux-users-and-groups/#changing-file-ownership).
     {{< /note >}}
 
 ## Install MediaWiki
-1. In a web browser, navigate to `index.php` in the base MediaWiki folder. You can use either the web server domain (replacing `domain` in the example below) or localhost, as in:
+
+1. In a web browser, navigate to `index.php` in the base MediaWiki folder; you can use either the web server domain (replacing `domain` in the example below) or your Linode's public IP address (replacing `192.0.2.1` below), as in:
 
         http://domain/w/index.php
 
-        http://localhost/w/index.php
+        http://192.0.2.1/w/index.php
 
     {{< note >}}
-If you choose to set up the MediaWiki installation using localhost but later want to use a domain, you can do so by changing `localhost` to the appropriate domain in the `LocalSettings.php` file described below.
+If you choose to set up the MediaWiki installation using your Linode's IP but later want to use a domain, you can do so by changing the IP address to the appropriate domain in the `LocalSettings.php` file described below.
     {{< /note >}}
 
 2. Select the setup link, and proceed through the setup steps. Choose the MariaDB option when prompted for a database server, and enter the database name, username, and user password you created for MediaWiki.
 
-3. Download the `LocalSettings.php` file when prompted at the end of the setup process, and store the file in the base MediaWiki folder (replacing `path/to/download` in the following example with the path to the downloaded file):
-
-        sudo mv path/to/download/LocalSettings.php /var/www/html/w
+3. Download the `LocalSettings.php` file when prompted at the end of the setup process, then move it or copy its contents to `/var/www/html/w/LocalSettings.php` on your Linode.
 
 4. Adjust the file's permissions:
 
         sudo chmod 664 /var/www/html/w/LocalSettings.php
+
+    {{< note >}}
+Depending on how you created the `LocalSettings.php` file on your Linode, you may need to adjust its ownership using `chown` as well.
+    {{< /note >}}
 
 5. Visit `index.php` again in a web browser to confirm that MediaWiki has been installed successfully.
