@@ -571,6 +571,7 @@ hardcoded
 hardcopy
 hardlimit
 hashmark
+hashicorp
 hasn
 hba
 hd0
