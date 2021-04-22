@@ -41,6 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 {{< /note >}}
 
 ## Install Apache
+
 1. Install Apache 2.4:
 
         sudo yum install httpd
@@ -53,6 +54,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 3. See the guide for [How to Install Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) for more details and configuration options for the Apache web server.
 
 ## Install PHP
+
 MediaWiki requires PHP 7.3.19–24, 7.4.3, or later. However, the CentOS package manager (Yum) only includes PHP 7.2 in its default repository. Thus, you need to use the Remi repository to acquire one of the later PHP releases.
 
 1. Add Extra Packages for Enterprise Linux (EPEL) and the Remi repository:
@@ -72,6 +74,7 @@ MediaWiki requires PHP 7.3.19–24, 7.4.3, or later. However, the CentOS package
         sudo dnf install php-mysqlnd
 
 ## Install and Configure MariaDB
+
 MediaWiki supports a variety of database options, including MariaDB, MySQL, and PostgreSQL. MariaDB is preferred in the MediaWiki documentation and has been selected for this guide.
 
 1. Install MariaDB:
@@ -92,6 +95,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 4. See the guide for [How to Install MariaDB on CentOS 8](/docs/guides/how-to-install-mariadb-on-centos-8/) for more details and configuration options for the MariaDB installation.
 
 ## Download and Extract the MediaWiki Files
+
 1. Download the `tar.gz` containing the latest release of the MediaWiki software from the [official MediaWiki download page](https://www.mediawiki.org/wiki/Download).
 
     Alternatively, you can download MediaWiki from the command line:
@@ -115,6 +119,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
     {{< /note >}}
 
 ## Install MediaWiki
+
 1. In a web browser, navigate to `index.php` in the base MediaWiki folder; you can use either the web server domain (replacing `domain` in the example below) or localhost, as in:
 
         http://domain/w/index.php
