@@ -7,7 +7,7 @@ description: 'MediaWiki is a versatile, open, and free software powering knowled
 og_description: 'MediaWiki is a versatile, open, and free software powering knowledge repositories like Wikipedia. This guide will show you how to install MediaWiki on CentOS 8.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-12-29
+published: 2021-04-22
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Mediawiki on Centos 8"
@@ -73,6 +73,10 @@ MediaWiki requires PHP 7.3.19–24, 7.4.3, or later. However, the CentOS package
 
         sudo dnf install php-mysqlnd
 
+4. Restart the Apache service:
+
+        sudo systemctl restart httpd
+
 ## Install and Configure MariaDB
 
 MediaWiki supports a variety of database options, including MariaDB, MySQL, and PostgreSQL. MariaDB is preferred in the MediaWiki documentation and has been selected for this guide.
@@ -94,12 +98,23 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
 4. See the guide for [How to Install MariaDB on CentOS 8](/docs/guides/how-to-install-mariadb-on-centos-8/) for more details and configuration options for the MariaDB installation.
 
+5. Create a database and a database user for MediaWiki by opening MariaDB as the root user (`sudo mysql -u root -p`) and entering the commands given in the following example. Replace `my_wiki` with the desired database name, `wikiuser` with the desired database username, and `password` with a password for that user, which should not match the database's root password:
+
+        CREATE DATABASE my_wiki;
+        CREATE USER 'wikiuser'@'localhost' IDENTIFIED BY 'password';
+        GRANT ALL PRIVILEGES ON my_wiki.* TO 'wikiuser'@'localhost' WITH GRANT OPTION;
+
+6. Then exit MariaDB:
+
+        exit;
+
 ## Download and Extract the MediaWiki Files
 
 1. Download the `tar.gz` containing the latest release of the MediaWiki software from the [official MediaWiki download page](https://www.mediawiki.org/wiki/Download).
 
     Alternatively, you can download MediaWiki from the command line:
 
+        sudo yum install wget
         wget https://releases.wikimedia.org/mediawiki/1.35/mediawiki-1.35.0.tar.gz
 
 2. Move the `tar.gz` file to the Apache web server's document directory. You can find the document directory as the `DocumentRoot` variable in the Apache configuration file, located at `/etc/httpd/conf/httpd.conf`; the typical document directory is `/var/www/html`, which is assumed in the following example:
@@ -108,6 +123,8 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
 3. Navigate to the document directory, and extract the archived files:
 
+        cd /var/www/html/
+        sudo yum install tar
         sudo tar xvzf /var/www/html/mediawiki-1.35.0.tar.gz
 
     It is recommended that you rename the resulting folder, as the folder name becomes part of the URL used for navigating to your MediaWiki. For the rest of this guide, the name `w` is used for this folder:
@@ -115,25 +132,31 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
         sudo mv /var/www/html/mediawiki-1.35.0 /var/www/html/w
 
     {{< note >}}
- Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction.
+ Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction. For more information, see our guide on [Linux Users and Groups](/docs/guides/linux-users-and-groups/#changing-file-ownership).
     {{< /note >}}
 
 ## Install MediaWiki
 
-1. In a web browser, navigate to `index.php` in the base MediaWiki folder; you can use either the web server domain (replacing `domain` in the example below) or localhost, as in:
+1. In a web browser, navigate to `index.php` in the base MediaWiki folder; you can use either the web server domain (replacing `domain` in the example below) or your Linode's public IP address (replacing `192.0.2.1` below), as in:
 
         http://domain/w/index.php
 
-        http://localhost/w/index.php
+        http://192.0.2.1/w/index.php
 
     {{< note >}}
-If you choose to set up the MediaWiki installation locally using localhost but later want to use a domain, you can do so by changing `localhost` to the appropriate domain in the `LocalSettings.php` file described below.
+If you choose to set up the MediaWiki installation using your Linode's IP but later want to use a domain, you can do so by changing the IP address to the appropriate domain in the `LocalSettings.php` file described below.
     {{< /note >}}
 
-2. Proceed through the setup steps, selecting MariaDB when prompted for a database server and entering `root` as the username and the password you created during the MariaDB configuration.
+2. Select the setup link, and proceed through the setup steps. Choose the MariaDB option when prompted for a database server, and enter the database name, username, and user password you created for MediaWiki.
 
-3. Download the `LocalSettings.php` file when prompted at the end of the setup process, and store the file in the base MediaWiki folder (replacing `path/to/download` in the following example with the path to the downloaded file):
+3. Download the `LocalSettings.php` file when prompted at the end of the setup process, then move it or copy its contents to `/var/www/html/w/LocalSettings.php` on your Linode.
 
-        sudo mv path/to/download/LocalSettings.php /var/www/html/w
+4. Adjust the file's permissions:
 
-4. Visit `index.php` again in a web browser to confirm that MediaWiki has been installed successfully.
+        sudo chmod 664 /var/www/html/w/LocalSettings.php
+
+    {{< note >}}
+Depending on how you created the `LocalSettings.php` file on your Linode, you may need to adjust its ownership using `chown` as well.
+    {{< /note >}}
+
+5. Visit `index.php` again in a web browser to confirm that MediaWiki has been installed successfully.
