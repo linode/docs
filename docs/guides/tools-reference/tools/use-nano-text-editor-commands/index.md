@@ -30,11 +30,11 @@ Nano is included with many Linux distributions by default, but some users may ne
 
 **Debian/Ubuntu**:
 
-	apt install nano
+    apt install nano
 
 **CentOS/Fedora**:
 
-	yum install nano
+    yum install nano
 
 
 ### Command Keys
@@ -51,7 +51,7 @@ A command represented as M-R in nano is performed by pressing the *Alt* key foll
 
 Typing nano without any arguments opens a blank file for editing:
 
-	nano
+    nano
 
 A blank new file in the terminal similar to the following appears:
 
@@ -77,39 +77,39 @@ After you enter a filename, press the *Enter* key to save the file. In this guid
 
 To open a file, provide the filename as an argument in the following command:
 
-	nano <filename>
+    nano <filename>
 
 The editor opens an existing file in the current working directory.
 
 To practice use the file in the current working directory that was created earlier `tutorial.txt`.
 
-	nano  tutorial.txt
+    nano  tutorial.txt
 
 If you wish to open a file in a different directory, you can provide a path instead. To do that, change the current working directory on Linux and go to home(/). The path to `tutorial.txt` is `/nano-text-editor-tutorial/tutorial.txt`.
 
 To edit `tutorial.txt` use the following command:
 
-	nano /nano-text-editor-tutorial/tutorial.txt
+    nano /nano-text-editor-tutorial/tutorial.txt
 
 If `tutorial.txt` does not exist in `/nano-text-editor-tutorial/`, nano creates a file named `tutorial.txt` in the directory.
 
 You can also open files at a specific line or column number:
 
-	nano +LINE,COLUMN /nano-text-editor-tutorial/tutorial.txt
+    nano +LINE,COLUMN /nano-text-editor-tutorial/tutorial.txt
 
 For example, to open the `tutorial.txt` file at LIne `2`:
     nano +2 /nano-text-editor-tutorial/tutorial.txt
 
 To open a file as read-only:
 
-	nano -v myfile
+    nano -v myfile
 
 
 ### Open Configuration Files Using Nano
 
 When editing files used to configure applications or system utilities, start nano with the `-w` flag:
 
-	nano -w /etc/mysql/my.cnf
+    nano -w /etc/mysql/my.cnf
 
 This flag prevents nano from wrapping lines that are too long to fit on the screen, which can create problems if config directives are saved across multiple lines.
 
@@ -140,61 +140,61 @@ Nano help menu appears and displays the following commands:
 ![nano help menu options](nano-help-menu.png "image_tooltip")
 
 
-	^G    (F1)      Display this help text
+    ^G    (F1)      Display this help text
 
-	^X    (F2)      Close the current file buffer / Exit from nano
+    ^X    (F2)      Close the current file buffer / Exit from nano
 
-	^O    (F3)      Write the current file to disk
+    ^O    (F3)      Write the current file to disk
 
-	^R    (F5)      Insert another file into the current one
+    ^R    (F5)      Insert another file into the current one
 
-	^W    (F6)      Search forward for a string or a regular expression
+    ^W    (F6)      Search forward for a string or a regular expression
 
-	^\    (M-R)     Replace a string or a regular expression
+    ^\    (M-R)     Replace a string or a regular expression
 
-	^K    (F9)      Cut the current line and store it in the cutbuffer
+    ^K    (F9)      Cut the current line and store it in the cutbuffer
 
-	^U    (F10)     Uncut from the cutbuffer into the current line
+    ^U    (F10)     Uncut from the cutbuffer into the current line
 
-	^J    (F4)      Justify the current paragraph
+    ^J    (F4)      Justify the current paragraph
 
-	^T    (F12)     Invoke the spell checker, if available
+    ^T    (F12)     Invoke the spell checker, if available
 
-		        Invoke the linter, if available
+                    Invoke the linter, if available
 
-		        Invoke formatter, if available
+                    Invoke formatter, if available
 
-	^C    (F11)     Display the position of the cursor
+    ^C    (F11)     Display the position of the cursor
 
-	^_    (M-G)     Go to line and column number
+    ^_    (M-G)     Go to line and column number
 
-	M-U             Undo the last operation
+    M-U             Undo the last operation
 
-	M-E             Redo the last undone operation
+    M-E             Redo the last undone operation
 
-	M-A   (^6)      Mark text starting from the cursor position
+    M-A   (^6)      Mark text starting from the cursor position
 
-	M-6   (M-^)     Copy the current line and store it in the cutbuffer
+    M-6   (M-^)     Copy the current line and store it in the cutbuffer
 
-	M-]             Go to the matching bracket
+    M-]             Go to the matching bracket
 
-	M-W   (F16)     Repeat the last search
+    M-W   (F16)     Repeat the last search
 
-	M-▲             Search next occurrence backward
+    M-▲             Search next occurrence backward
 
-	M-▼             Search next occurrence forward
+    M-▼             Search next occurrence forward
 
-	^B    (◀)       Go back one character
+    ^B    (◀)       Go back one character
 
-	^F    (▶)       Go forward one character
+    ^F    (▶)       Go forward one character
 
-	^◀    (M-Space) Go back one word
+    ^◀    (M-Space) Go back one word
 
-	^▶    (^Space)  Go forward one word
+    ^▶    (^Space)  Go forward one word
 
-	^A    (Home)    Go to beginning of current line
+    ^A    (Home)    Go to beginning of current line
 
-	^E    (End)     Go to end of current line
+    ^E    (End)     Go to end of current line
 
 
 ### Search Text Using Nano
@@ -207,23 +207,23 @@ To search for a specific ext in the document, use `^W` The editor opens a search
 
 For example, make some changes to the existing `tutorial.txt file` and save it with the following text in it:
 
-	test 1
+    test 1
 
-	test 2
+    test 2
 
-	test 3
+    test 3
 
-	test 4
+    test 4
 
-	Linode1
+    Linode1
 
-	Linode2
+    Linode2
 
-	Linode3
+    Linode3
 
-	Linode4
+    Linode4
 
-	Linode-end
+    Linode-end
 
 
 
@@ -268,11 +268,11 @@ Nano has a built-in spell checking feature, but you need to install the spell pa
 
 Debian/Ubuntu:
 
-	apt install spell
+    apt install spell
 
 CentOS/Fedora:
 
-	yum install spell
+    yum install spell
 
 After you have installed spell, you can use the spell checking feature by using `^T` while editing a file.
 
@@ -288,7 +288,7 @@ Nano can create backups of files when you exit. These backups can be placed in a
 
 Using the `-B` option when starting nano creates backups of the file for you while using the `-C` option allows you to specify the directory to place backup files in.
 
-	nano -BC ~/backups index.php
+    nano -BC ~/backups index.php
 
 The command listed above creates a backup copy of *index.php* in the backups folder in the current user’s home directory.
 
