@@ -3,35 +3,64 @@ slug: linode-images
 author:
   name: Linode
   email: docs@linode.com
-description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
-og_description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
+description: Linode's Images product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This can be useful for bootstrapping a golden image for large scale or rapid deployments, among other use cases.
+og_description: Linode's Images product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This can be useful for bootstrapping a golden image for large scale or rapid deployments, among other use cases.
 keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
-modified: 2018-08-22
+modified: 2021-04-23
 modified_by:
   name: Linode
 published: 2014-09-25
-title: Linode Images
+title: Images Tutorial
 ---
 
-{{< youtube UNlJUzQrBBI >}}
+{{< content "images-beta-note-shortguide" >}}
 
-*Linode Images* allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a private template that you may need in the future. There is no additional charge to store Images for Linode users. Images are limited to 6GB per Image and 3 Images per account. Additionally, images can only be created on disks with ext3 or ext4 filesystems with a single partition.
+Linode's **Images** product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This is useful for storing *Golden Images*, preconfigured with the exact software and settings you require. Images can also be used to store a copy of an existing disk on a Linode, allowing you to restore from that moment in time even if your Linode is deleted.
 
-{{< note >}}
-When saving a Linode image, it is the aspects of the Linode that are on the **disk** that are saved, not any additional aspects such as IP addresses, fully qualified domain names, and MAC addresses.
-{{< /note >}}
+## Types of Images
 
-## Capturing Your Image
+There are two types of Images that can be stored on an account, both of which are visible from the **Images** page of the Cloud Manager:
 
-{{< content "images-capture-image-shortguide" >}}
+- **Manual Images:** Custom Images that are manually created by a user on the account. These Images were either captured from an existing Linode's disk or uploaded through an image file. Custom Images do not expire and will remain on the account until they are manually deleted.
 
-## Managing Your Images
+- **Automatic Images:** Temporary Recovery Images that are automatically created when a Linode is deleted. Recovery Images have a defined expiration data and, once expired, will automatically be deleted. The expiration date is based on how long the Linode was active, as well as a few other factors.
 
-{{< content "images-manage-images-shortguide" >}}
+## Pricing and Availability
 
-## Deploy From A Saved Image
+Images are available within all data centers. User created Custom Images cost $0.05/GiB per month. Temporary Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
 
-{{< content "images-deploy-from-image-shortguide" >}}
+## Creating a New Image
+
+Two different methods can be used to manually create a Custom Image, each of which is discussed within this guide:
+
+- **[Capturing an Image](#capturing-an-image)**
+- **[Uploading an Image](#uploading-an-image)**
+
+## Capturing an Image
+
+{{< content "capture-image-shortguide" >}}
+
+## Uploading an Image
+
+{{< content "upload-image-shortguide" >}}
+
+
+## Managing Images
+
+To take action on an Image, locate the Image within the **Images** page of the Cloud Manager and click the corresponding **ellipsis** options menu. From here, there are a few actions that can be initiated:
+
+- **Edit:** Change the *Label* and *Description* for the Image.
+- **[Deploy to a New Linode](#deploying-an-image-to-a-new-linode):** Create a new Linode using the Image.
+- **[Deploy to an Existing Linode](#rebuilding-and-deploying-an-image-to-an-existing-linode):** Rebuild the Linode using the Image.
+- **Delete** Delete the Image (cannot be undone).
+
+## Deploying an Image to a New Linode
+
+{{< content "deploy-image-to-new-linode-shortguide" >}}
+
+## Rebuilding and Deploying an Image to an Existing Linode
+
+{{< content "deploy-image-to-new-linode-shortguide" >}}

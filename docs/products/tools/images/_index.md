@@ -1,25 +1,31 @@
 ---
 title: Images
-description: "Linode Images allow you to have a consistent environment across all your Linodes and long-term image storage."
+description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Linodes. They can be easily created by capturing a disk on an existing Linode or uploading an image file."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Use Linode Images to take snapshots of your disk images, and deploy an identical copy to any Linode under your account. Linode Images are retained whether or not you have an active Linode on your account. Because of this, they are useful for long term storage of a private image template."
+    product_description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Linodes. They can be easily created by capturing a disk on an existing Linode or uploading an image file."
 ---
+
+{{< content "images-beta-note-shortguide" >}}
 
 ## Availability
 
-Tokyo, Japan; Mumbai, India; Singapore, Singapore; Sydney, Australia; Frankfurt, Germany; London, United Kingdom; Toronto, Canada; Newark, NJ, USA; Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA
+All regions fully support Images.
+
+## Pricing
+
+User created Custom Images cost $0.05/GiB per month. Temporary Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
 
 ## Features
 
-### A Consistent Environment Across All Your Linodes
+### Rapid Deployment of Golden Images
 
-You can capture an exact copy of a Linode's disk to create a golden image. Then, deploy new Linode instances from your golden image to ensure a consistent environment across all your workloads.
+Store disk images preconfigured with the software you need. These Custom Images can be used when deploying new Linodes and rebuilding existing Linodes, saving time by avoiding manual software installation and configuration.
 
-### Long-term Image Storage
+### Retain Disks of Existing Linodes
 
-Linode Images are stored even if your account has no active Linodes. Store up to 3 images per account with no additional charge.
+Store a disk image of an existing Linode, enabling you to restore that image if needed and delete the existing Linode while still saving your data.
