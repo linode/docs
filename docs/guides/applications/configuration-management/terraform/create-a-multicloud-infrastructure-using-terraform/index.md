@@ -143,7 +143,7 @@ gpg: imported: 1
 gpg: Signature made Wed Apr 14 15:41:39 2021 UTC
 gpg: using RSA key 91A6E7F85D05C65630BEF18951852D87348FFC4C
 gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
-  {{< /output >}}
+{{< /output >}}
 
 1. Ensure the RSA key displayed in the output of the last step matches the fingerprint shown on the [Terraform Security page](https://www.hashicorp.com/security). The fingerprint is located in the same place as the GPG key in the "Secure Communications" section.
 
@@ -266,7 +266,7 @@ terraform {
 # Linode Provider definition
 
 provider  "linode" {
-  token = "YOUR_LINODE_API_TOKEN"
+  token = var.token
 }
 
 resource  "linode_instance"  "terraform" {
