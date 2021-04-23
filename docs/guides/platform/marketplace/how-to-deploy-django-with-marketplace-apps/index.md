@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Django with Marketplace Apps"
 h1_title: "Deploying Django with Marketplace Apps"
+image: Django_oneclickapps.png
 aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/']
 contributor:
   name: Linode

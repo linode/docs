@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Docker with Marketplace Apps"
 h1_title: "Deploying Docker with Marketplace Apps"
+image: Docker_oneclickapps.png
 contributor:
   name: Linode
 external_resources:

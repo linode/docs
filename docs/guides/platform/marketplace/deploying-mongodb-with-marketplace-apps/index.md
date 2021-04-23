@@ -14,7 +14,7 @@ modified_by:
   name: Linode
 title: "How to Deploy MongoDB with Marketplace Apps"
 h1_title: "Deploying MongoDB with Marketplace Apps"
-image: feature.png
+image: MangoDB_oneclickapps.png
 contributor:
   name: Linode
 external_resources:

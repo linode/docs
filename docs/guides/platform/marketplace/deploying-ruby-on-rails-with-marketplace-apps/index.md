@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Ruby on Rails with Marketplace Apps"
 h1_title: "Deploying Ruby on Rails with Marketplace Apps"
+image: RubyonRails_oneclickapps.png
 contributor:
   name: Linode
 external_resources:
