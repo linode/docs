@@ -41,6 +41,10 @@ jobs:
       uses: jitterbit/get-changed-files@v1
       with:
         format: 'json'
+    - name: install more-utils
+        run: sudo apt-get install moreutils
+    - name: echo the thing
+        run: echo ${{ steps.get_changed_files.outputs.added_modified }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
