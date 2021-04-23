@@ -29,12 +29,19 @@ var copyToClipboard = function(text) {
 export function newClipboardController() {
 	return {
 		copy: function(el) {
-			let text = el.innerText;
+			let lntds = el.querySelectorAll('.lntable .lntd');
+			let text;
+			if (lntds && lntds.length === 2) {
+				// A table with line numbers, the code is in the second column.
+				text = lntds[1].innerText;
+			} else {
+				text = el.innerText;
+			}
+
 			debug('copy', text);
 			copyToClipboard(text);
 		},
-		isScrollX: function() {
-			let elem = this.$el;
+		isScrollX: function(elem = this.$el) {
 			return elem.clientWidth < elem.scrollWidth;
 		}
 	};
