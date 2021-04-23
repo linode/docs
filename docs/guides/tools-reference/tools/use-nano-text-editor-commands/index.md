@@ -11,7 +11,7 @@ aliases: ['/tools-reference/tools/using-nano/','/linux-tools/text-editors/nano/'
 modified: 2021-04-23
 modified_by:
   name: Linode
-published: 2021-04-23
+published: 2011-11-08
 title: How to Use Nano Text Editor Commands in Linux
 h1_title: Using Nano Text Editor Commands in Linux
 enable_h1: true
