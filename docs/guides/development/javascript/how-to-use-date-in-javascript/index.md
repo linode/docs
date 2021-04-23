@@ -17,7 +17,7 @@ external_resources:
 - '[MDN Web Docs | JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)'
 - '[MDN Web Docs | About JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/About_JavaScript)'
 ---
-JavaScript (JS) is used to handle the behavior of a webpage, and the `Date` object in JS is used to represent a moment in time utilizing a platform-independent format. It does this by the `Number` it contains, which represents milliseconds since the UNIX Epoch began (1 January 1970 UTC). There are numerous ways to use `Date`, many of which are covered in extensive tutorials on the web. This article is going to cover the basics of getting the current date, year, month, date, and/or time.
+When creating a website or application, JavaScript handles any dynamic, interactive, or event-driven behavior on your site. The `Date` object in JS uses a platform-agnostic format to represents a moment in time. It does this by the `Number` it contains, which represents milliseconds since the UNIX Epoch began (1 January 1970 UTC). There are numerous ways to use `Date`, many of which are covered in extensive tutorials on the web. This article is going to cover the basics of getting the current date, year, month, date, and/or time.
 
 ## Before You Begin
 
