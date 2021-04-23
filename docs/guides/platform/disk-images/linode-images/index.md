@@ -41,12 +41,23 @@ Two different methods can be used to manually create a Custom Image, each of whi
 
 ## Capturing an Image
 
+### Requirements and Considerations
+
+{{< content "capture-image-requirements-shortguide" >}}
+
+### Capturing an Image through the Cloud Manager
+
 {{< content "capture-image-shortguide" >}}
 
 ## Uploading an Image
 
-{{< content "upload-image-shortguide" >}}
+### Requirements
 
+{{< content "upload-image-requirements-shortguide" >}}
+
+### Uploading an Image through the Cloud Manager
+
+{{< content "upload-image-shortguide" >}}
 
 ## Managing Images
 
