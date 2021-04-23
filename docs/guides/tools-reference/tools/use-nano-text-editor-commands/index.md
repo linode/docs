@@ -8,11 +8,13 @@ og_description: This tutorial teaches you how to install the Nano text editor an
 keywords: ["nano", "text editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/using-nano/','/linux-tools/text-editors/nano/','/tools-reference/tools/use-nano-text-editor-commands/']
-modified: 2021-02-01
+modified: 2021-04-23
 modified_by:
   name: Linode
-published: 2011-11-08
+published: 2021-04-23
 title: How to Use Nano Text Editor Commands in Linux
+h1_title: Using Nano Text Editor Commands in Linux
+enable_h1: true
 tags: ["linux"]
 ---
 
