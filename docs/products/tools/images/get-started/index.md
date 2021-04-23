@@ -5,6 +5,8 @@ tab_group_main:
     weight: 20
 ---
 
+{{< content "images-beta-note-shortguide" >}}
+
 All Images stored on your Account are visible from the main **Images** page within the Cloud Manager. Images are divided between two tables: *Manual Images* and *Automatic Images*.
 
 - **Manual Images:** Custom Images that are manually created by a user on the account. These Images were either captured from an existing Linode's disk or uploaded through an image file. Custom Images do not expire and will remain on the account until they are manually deleted.
