@@ -8,12 +8,13 @@ og_description: 'This guide shows you how to enable Third Party Authentication (
 keywords: ['tpa','third party authentication','github','account','password']
 tags: ["linode platform","security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-04-22
+published: 2021-04-23
 image: enable-tpa-hero.png
 modified_by:
   name: Linode
 title: "How to Enable Third Party Authentication on Your Linode Account"
 h1_title: "Enabling Third Party Authentication on Your Linode Account"
+enable_h1: true
 aliases: ['/platform/manager/third-party-authentication/']
 ---
 <br>
@@ -29,11 +30,11 @@ Additionally, enabling TPA disables password authentication in the Lish console.
 
 1.  To get started with TPA, log in to the [Linode Cloud Manager](https://cloud.linode.com) using your existing username and password.
 
-1.  Navigate to your profile by clicking on your username in the top right of the screen.
+1.  Navigate to the Password & Authentication section of your profile by clicking on your **username** in the top right of the screen. Select **Password and Authentication** from the dropdown menu:
 
     ![Navigate to your profile by clicking on your username in the top right of the screen](view-profile.png)
 
-1.  Click on the **Password & Authentication** tab, then click on the **Third Party Authentication** sub-tab.
+1. Click on the **Third Party Authentication** sub-tab.
 
     ![Navigate to the Password & Authentication tab, then the Third Party Authentication tab](navigate-to-tpa.png)
 
@@ -53,7 +54,7 @@ Enabling Third Party Authentication disables your current Linode password and Tw
 
 1.  Log in to [Linode Cloud Manager](https://cloud.linode.com) using Third Party Authentication.
 
-1.  Navigate to your profile by clicking your username in the top right of the screen.
+1.  Navigate to the Password & Authentication section of your profile by clicking on your **username** in the top right of the screen. Select **Password and Authentication** from the dropdown menu:
 
     ![Navigate to your profile by clicking on your username in the top right of the screen](view-profile.png)
 
