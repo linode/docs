@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 h1_title: "h1 title displayed in the guide."
+enable_h1: true
 contributor:
   name: Your Name
   link: Github/Twitter Link
