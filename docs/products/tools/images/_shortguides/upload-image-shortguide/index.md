@@ -20,7 +20,7 @@ tags: ["linode platform"]
 
 1. Type in the *Label* of the new Image along with an optional *Description*. Select the *Region* you would like the Image to be created within. Since Images can be deployed to any data center (regardless of where they are located), it's recommended that you select the one closest to you geographically for the fastest upload speed.
 
-1. Click the **Generate URL** button to create the Image and generate a custom URL. The URL, which is displayed both seperately and within an example `curl` command, is used to upload your image file. To copy the `curl` command, click **Copy curl Request**. Alternatively, copy the URL by clicking *Copy URL*, which allows you to write a custom `curl` command or use a different upload tool altogether.
+1. Click the **Generate URL** button to create the Image and generate a custom URL. The URL, which is displayed both separately and within an example `curl` command, is used to upload your image file. To copy the `curl` command, click **Copy curl Request**. Alternatively, copy the URL by clicking *Copy URL*, which allows you to write a custom `curl` command or use a different upload tool altogether.
 
 1. Open your preferred terminal application on the system where your image is currently located, likely your local computer. By default, `curl` is already preinstalled on most Linux, Mac, and updated Windows 10 systems using the latest PowerShell terminal. If curl is not installed, install it now by following the recommended instructions for your operating system or package manager.
 
