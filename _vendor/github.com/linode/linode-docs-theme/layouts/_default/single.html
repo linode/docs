@@ -33,7 +33,9 @@
 
   <div class="prose prose-sm md:prose-lg max-w-none mt-8">
     {{ .Content }}
+    {{ partial "sections/content/more.html" . }}
   </div>
+
   <div>
     <p class="pt-2 md:pt-6 text-basicgray">
       This page was originally published on
@@ -42,6 +44,7 @@
       </time>
     </p>
   </div>
+
   <div class="block sm:hidden">
     {{ partial "sections/content/tags.html" . }}
   </div>

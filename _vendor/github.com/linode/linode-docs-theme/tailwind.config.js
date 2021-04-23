@@ -165,6 +165,12 @@ module.exports = {
 						borderLeftColor: theme.colors.gray[300],
 						quotes: '"\\201C""\\201D""\\2018""\\2019"'
 					},
+					'blockquote p:first-of-type::before': {
+						content: ''
+					},
+					'blockquote p:last-of-type::after': {
+						content: ''
+					},
 					code: {
 						color: colorBodyText,
 						backgroundColor: theme.colors.gray[200],
