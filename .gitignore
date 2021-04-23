@@ -45,3 +45,4 @@ hugo_stats.json
 
 redirects.conf
 
+_vendor/github.com/linode/linode-docs-theme/content/typografy-test.md
