@@ -29,7 +29,7 @@ This guide will cover an alternative method of changing an Image: deploying an I
 
     If there is not sufficient unallocated storage, [resize an existing disk](/docs/guides/resize-a-linode-disk/) or [resize the Linode](/docs/guides/resizing-a-linode/) to a larger plan.
 
-1. Click the **Add a Disk** button to show the **Add Disk** form. 
+1. Click the **Add a Disk** button to show the **Add Disk** form.
 
 1. Select the **Create from Image** option, then complete the remaining fields in the form:
 
