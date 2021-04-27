@@ -18,7 +18,7 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-Your Linux shell maintains an environment where configuration and other information are stored in environment variables. Accessing these variables can be useful when working with shell commands. More than that, you can set your environment variables, which can be used by your scripts and applications.
+Your Linux shell maintains an environment where configuration and other information are stored in environment variables. Accessing these variables can be useful when working with shell commands. More than that, you can set your environment variables, which can be used by your scripts, and applications.
 
 This guide walks you through the fundamentals of accessing, creating, and using environment variables. By the end, you should know to make your variables and use them on your server.
 
@@ -34,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Are Environment Variables
 
-Environment Variables or ENVs are variables that contain dynamic named values stored within the system that are used by applications or programs launched in shells or subshells.
+Environment Variables are variables that contain dynamic named values stored within the system that are used by applications launched in shells or sub-shells.
 
 ### Scope of the Environment Variables
 
@@ -75,7 +75,7 @@ Below are some of the Environment Variables that are commonly used.
 * `USER`: Provides the name of the currently logged-in user.
 * `HOME`: Gives the Home directory location of the current user. When you are working in the shell, you can use the `~` shorthand. However, the `HOME` variable can be useful in shell scripting, where you are more likely to encounter cases that do not support the shorthand.
 * `SHELL`: Displays the pathname of the current user's shell.
-* `PATH`: A list of directories that the shell will search when executing commands.
+* `PATH`: A list of directories that the shell searches when executing commands.
 * `PWD`: Provides the path to your current working directory. (PWD stands for "Print Working Directory")
 * `UID`: User's unique identifier.
 
@@ -212,7 +212,7 @@ The `unset` command removes a designated environment or shell variable from the 
 
 ## Persisting Environment Variables
 
-If you want your variable to persist even after you close the shell session — maybe even between users, then you can set that environment variable permanently.
+You can set the environment variable permanently even after you close the shell session — maybe even between users.
 
 To do so, you need to add the appropriate `export` command to one of the shell configuration files.
 
@@ -251,7 +251,7 @@ In application development, environment variables come in handy while distinguis
 The following steps illustrate a simple use case. Here, the environment variables distinguish between test and production application environments and store the database credentials for each.
 
 {{< note >}}
-The example application code below uses pseudocode loosely based on Python. It needs to be adjusted according to the language you are using for your application.
+The example application code below uses pseudo code loosely based on Python. It needs to be adjusted according to the language you are using for your application.
 {{< /note >}}
 
 1. Configure the application for testing. Here, the configuration is set up in the `/etc/profile.d/example-application.sh` file.
