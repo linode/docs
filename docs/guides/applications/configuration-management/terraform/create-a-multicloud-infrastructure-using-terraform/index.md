@@ -8,14 +8,14 @@ og_description: 'Multicloud Terraform provides a consistent workflow for you to 
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-25
+published: 2021-04-23
 modified_by:
   name: Linode
-title: "Create a Multicloud Infrastructure Using Terraform"
-h1_title: "How to Create a Multicloud Infrastructure Using Terraform"
+title: "How to Create a Multicloud Infrastructure Using Terraform"
+h1_title: "Creating a Multicloud Infrastructure Using Terraform"
+enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Terraform Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs)'
@@ -28,7 +28,6 @@ external_resources:
 - '[DynamoDB service](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SettingUp.DynamoWebService.html)'
 - '[AWS Provider in the Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)'
 - '[Build, update, or destroy AWS infrastructure with Terraform](https://learn.hashicorp.com/collections/terraform/aws-get-started)'
-
 ---
 
 [*Terraform*](https://www.terraform.io/) is an open-source tool that is built by [*HashiCorp*](https://www.hashicorp.com). Using the *HashiCorp Configuration Language* (HCL), you can automate deploying your infrastructure, and provisioning its resources.

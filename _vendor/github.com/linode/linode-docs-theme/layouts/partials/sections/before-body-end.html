@@ -3,11 +3,12 @@
 {{- $js := resources.GetMatch "js/body/index.js" -}}
 {{ partial "helpers/script-src.html" (dict "js" $js "params" (dict "weglot_api_key" site.Params.weglot_api_key ) ) }}
 <div x-data="lnc.NewInitController()" x-init="init()"></div>
+{{/* Add the GTag info to a temporary array which is handled in the backing script. */}}
 {{ with $.Params.gtags }}
   <script>
-    window.dataLayer = window.dataLayer || [];
+    window._dataLayer = [];
     {{ range . -}}
-    window.dataLayer.push({'{{ .key }}': '{{ .value }}'});
+    window._dataLayer.push({'{{ .key }}': '{{ .value }}'});
     {{ end -}}
   </script>
 {{ end }}
