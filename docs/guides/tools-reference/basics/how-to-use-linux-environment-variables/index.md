@@ -50,7 +50,7 @@ Standard UNIX variables are classified into two categories — Environment varia
 
 **Environment variables:**
 
-1. An environment variable is available and valid system-wide, in a program, and its child programs
+1. An environment variable is available and valid system-wide, in a program, and its child programs.
 
 1. Environment variables can be readily used by scripts and applications.
 
