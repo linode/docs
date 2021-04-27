@@ -1,5 +1,5 @@
 ---
-slug: how-to-set-environment-variables-in-linux
+slug: linux-how-to-set-environment-variables
 author:
   name: Linode Community
   email: docs@linode.com
@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
 modified_by:
   name: Nathaniel Stickman
-title: "How to Set Environment Variables in Linux"
+title: "Linux: How to Set Environment Variables"
 h1_title: "How to Set and Use Environment Variables in Linux"
 contributor:
   name: Nathaniel Stickman
