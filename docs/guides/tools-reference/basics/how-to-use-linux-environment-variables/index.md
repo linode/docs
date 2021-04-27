@@ -1,167 +1,261 @@
 ---
-slug: how-to-use-linux-environment-variables
+slug: how-to-set-environment-variables-in-linux
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Environment variables store configuration and other information about your Linux shell environment. They can even store information for use in scripts and applications. This guide helps you understand how these variables work and how you can make use of them.'
-og_description: 'Environment variables store configuration and other information about your Linux shell environment. They can even store information for use in scripts and applications. This guide helps you understand how these variables work and how you can make use of them.'
+description: 'You can interact with your server through a Linux shell to access its resources. The Linux shell keeps track of and maintains this information in an area called an environment. This guide helps you interact with the Linux shell environment and understand how you can set environment variables.'
+og_description: 'You can interact with your server through a Linux shell to access its resources. The Linux shell keeps track of and maintains this information in an area called the environment. This guide helps you interact with the Linux shell environment and understand how you can set environment variables.'
 keywords: ['shell','bash','environment variables','command line','terminal','shell scripting']
+tags: ['linux','linode platform', 'database', 'ssh']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
 modified_by:
   name: Nathaniel Stickman
-title: "How to Set Up and Use Linux Environment Variables"
-h1_title: "How to Set Up and Use Linux Environment Variables"
+title: "How to Set Environment Variables in Linux"
+h1_title: "How to Set and Use Environment Variables in Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 ---
 
-Your Linux shell maintains an environment where configuration and other information is stored in environment variables. Accessing these variables can be useful when working with shell commands. More than that, you can add your own environment variables, which can be used by your scripts and applications.
+Your Linux shell maintains an environment where configuration and other information are stored in environment variables. Accessing these variables can be useful when working with shell commands. More than that, you can set your environment variables, which can be used by your scripts and applications.
 
-This guide walks you through the fundamentals of accessing, creating, and using environment variables. By the end, you should have the knowledge to make your own variables and use them on your server.
+This guide walks you through the fundamentals of accessing, creating, and using environment variables. By the end, you should know to make your variables and use them on your server.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
+## What Are Environment Variables
+
+Environment Variables or ENVs are variables that contain dynamic named values stored within the system that are used by applications or programs launched in shells or subshells.
+
+### Scope of the Environment Variables
+
+Scope of any variable is the region from where it can be accessed over which it is defined. An environment variable in Linux can have **global** or **local** scope.
+
+*Globally scoped environment variables* are accessible from anywhere in that particular environment bound by that terminal.
+
+*Locally scoped environment variable* defined in a terminal cannot be accessed by any program running in the terminal.
+
 ## Difference Between Environment and Shell Variables
 
-This guide is focused on environment variables, but throughout there are references to shell variables. It helps to get a quick overview of each kind of variable.
+Standard UNIX variables are classified into two categories — Environment variables and Shell variables.
 
-**Environment variables** apply to a shell session and all of its children. That means you can reference an environment variable from any shell or process spawned from the shell session. Environment variables can be readily used by scripts and applications.
+**Environment variables:**
 
-**Shell variables**, meanwhile, apply only to the current shell. Spawned shells and processes do not have access to their parents' shell variables. These variables are useful when you only need to store values temporarily. An example is when you want an easy way to reference a path while running a series of shell commands.
+1. An environment variable is available and valid system-wide, in a program, and its child programs
 
-## Viewing Environment Variables
+1. Environment variables can be readily used by scripts and applications.
 
-1. Use the following command to view a list of environment variables applicable to the current user:
+1. These variables are inherited by all spawned child processes and shells.
+
+1. By convention, Environment Variables are given UPPER CASE names.
+
+**Shell variables:**
+
+1. Shell variables are available only in the current shell instance.
+
+1. These variables are useful when you only need to store values temporarily.
+
+1. Each shell such as `zsh` and `bash`, has its own set of internal shell variables.
+
+This guide is focused on environment variables with references to shell variables.
+
+## Commonly Used (Global) Environment Variables
+
+Below are some of the Environment Variables that are commonly used.
+
+* `USER`: Provides the name of the currently logged-in user.
+* `HOME`: Gives the Home directory location of the current user. When you are working in the shell, you can use the `~` shorthand. However, the `HOME` variable can be useful in shell scripting, where you are more likely to encounter cases that do not support the shorthand.
+* `SHELL`: Displays the pathname of the current user's shell.
+* `PATH`: A list of directories that the shell will search when executing commands.
+* `PWD`: Provides the path to your current working directory. (PWD stands for "Print Working Directory")
+* `UID`: User's unique identifier.
+
+You can test the usage of some of these environment variables by following the below steps.
+
+1. Create a file with `.sh` extension using the following command.
+
+        vi variables.sh
+
+1. Write the following script in the file.
+
+    {{< file "~/variables.sh" >}}
+
+#! /bin/sh
+
+echo 'The current logged-in User is:' $USER
+
+echo 'Home directory of the current user is:' $HOME
+
+echo 'Pathname of the current user's shell is:' $SHELL
+
+echo 'The Present Working Directory is:' $PWD
+
+echo 'Users unique identifier is:' $UID
+
+{{< /file >}}
+
+1. Save the `variables.sh` file, and make the script executable using the following command.
+
+        chmod +x variables.sh
+
+1. Run the script using the following command:
+
+        ./variables.sh
+
+1. The script displays the following output:
+
+    {{< output >}}
+The current logged-in User is: new-user-1
+
+Home directory of the current user is: /home/new-user-1
+
+Pathname of the current user's shell is: /bin/bash
+
+The Present Working Directory is: /home/new-user-1
+
+Users unique identifier is: 1001
+{{< /output >}}
+
+## How to Check Environment Variables
+
+### View All Environment Variables
+
+1. To view the list of all (global) environment variables applicable to the current user, use the following command :
 
         printenv
 
-1. You can use the command below to get a more comprehensive list. This list includes not only environment variables but also shell variables and functions:
+    Since `printenv` displays all the environment variables, you can use the `less` command to control the view.
+
+        printenv | less
+
+1. To get a more comprehensive list of (global and local) environment variables, use the following command. This list not only includes environment variables but also shell variables and functions.
 
         set
 
-1. The `printenv` command can also be used to see the value of a specific environment variable. Just pass the variable — `HOME` in this example — as an argument to the command:
+### Search a Single Environment Variable
+
+1. To see the value of a single environment variable, use the following command.
+
+        printenv VARIABLE NAME
+
+    For example, you can pass the `HOME` variable as an argument to the command.
 
         printenv HOME
-
-1. You can also use the `echo` command to output a variable's value. This works for both environment variables and shell variables:
+1. Alternatively, you can also use the `echo` command, and prepend the variable’s name with the `$` symbol to output the value of the variable. This works for both environment variables and shell variables.
 
         echo $HOME
 
-    Most shell commands require that you preface variables with the `$` symbol. The exceptions are environment-related commands like `printenv` and `set`, seen above, and `export` and `unset`, shown further on below.
+## How to Set (Assign) Value to an Environment Variable
 
-## Assigning Variables
-
-1. Assign an environment variable using the `export` command. This example creates a variable called `EXAMPLE_VARIABLE` and assigns it the value `Example value`:
-
-        export EXAMPLE_VARIABLE='Example value'
-
-    Alternatively, you can create a shell variable first and then export it as an environment variable. Shell variables are created in the same manner as environment variables but without the `export` command. This example results in the same environment variable as the example above:
+1. You can set the value to the environment variable by typing the name of the variable followed by a value.
 
         EXAMPLE_VARIABLE='Example value'
-        export EXAMPLE_VARIABLE
 
-1. Environment variables can be assigned list values, with each item separated by a colon:
+1. The `set` command confirms that the variable has been created. You can check the variable created using the following command.
+
+    {{< output >}}
+linode@test-main:~$ set | grep EXAMPLE
+
+EXAMPLE_VARIABLE='Example value'
+
+{{< /output >}}
+
+    {{< note >}}
+The variable created this way is a Shell variable. Hence, if you use the `printenv` command, it does not return any output.
+    {{< /note >}}
+
+**Other ways to assign values to Environment Variables:**
+
+1. Environment variables can be assigned list values, with each item separated by a colon.
 
         export EXAMPLE_VARIABLE=/path/to/first/location:/path/to/second/location
 
-1. You can also append new items to lists. The following example does so with the `PATH` variable, adding the `example-directory` from the user's home directory:
+1. You can also append new items to lists.
+
+The following example appends new items to lists using the `PATH` variable, adding the `example-directory` from the user's home directory.
 
         export PATH=$PATH:$HOME/example-directory
 
-    `PATH` is a default environment variable defining directories where your shell looks for executables. It is the variable that lets you run an executable without having to specify its path.
+`PATH` is a default environment variable defining directories where your shell looks for executables. It is the variable that lets you run an executable without having to specify its path.
 
-1. The `unset` command removes a designated environment or shell variable from the session. This example removes the `EXAMPLE_VARIABLE`:
+### How to Export an Environment Variable
+
+1. You can turn a Shell variable into an environment variable using the `export` command. The below example creates a variable called `EXAMPLE_VARIABLE` and assigns it the value `New Example value`.
+
+        export EXAMPLE_VARIABLE='New Example value'
+
+1. Use the `printenv` to confirm the export.
+
+    {{< output >}}
+linode@test-main:~$ export EXAMPLE_VARIABLE='New Example value'
+
+linode@test-main:~$ printenv EXAMPLE_VARIABLE
+
+New Example value
+
+{{< /output >}}
+
+### How to Unset an Environment Variable
+
+The `unset` command removes a designated environment or shell variable from the session. This example removes the `EXAMPLE_VARIABLE`.
 
         unset EXAMPLE_VARIABLE
 
 ## Persisting Environment Variables
 
-The above create environment variables temporarily — the variables dissolve with the shell session. But often you want to make these variables persistent between sessions — maybe even between users. To do so, you need to add the appropriate `export` command to one of the shell configuration files.
+If you want your variable to persist even after you close the shell session — maybe even between users, then you can set that environment variable permanently.
 
-The locations of these configuration files vary based on the kind of shell you are using. Because Bash is the default shell on most popular Linux distributions, the examples that follow assume you are using it. But there are other shells out there, and you may need to modify these steps accordingly. You can usually check what shell you are using via the `SHELL` environment variable:
+To do so, you need to add the appropriate `export` command to one of the shell configuration files.
 
-    echo $SHELL
+The following example uses (default) Bash shell. If you are using any other shell, you need to modify the steps accordingly.
 
-1. Most often, the environment variables only need to exist for the current user. In this case, add the `export` command for the variable to the `~/.bashrc` file. The example that follows appends the user's `example-directory` to the `PATH` variable:
+You can usually check what shell you are using via the `SHELL` environment variable.
+    {{< output >}}
+linode@test-main:~$ echo $SHELL
 
-    {{< file "~/.bashrc" >}}
+/bin/bash
+{{< /output >}}
+
+**To set the permanent environment variable for a single user:**
+
+Edit the `.bashrc` file, and at the end of the file, write a line that appends the user's `example-directory` to the `PATH` variable.
+
+{{< file "~/.bashrc" >}}
 export PATH=$PATH:$HOME/example-directory
-    {{< /file >}}
+{{< /file >}}
 
-1. If the environment variable needs to be available for all users, create a custom shell script (`.sh`) file in the `/etc/profile.d` directory. In this example, the `EXAMPLE_VARIABLE` is added to the `custom.sh` file:
+**To set the permanent environment variable for all users:**
 
+Create a custom shell script (`.sh`) file in the `/etc/profile.d` directory, and add the `EXAMPLE_VARIABLE`.
     {{< file "/etc/profile.d/custom.sh">}}
 export EXAMPLE_VARIABLE='Example value'
-    {{< /file >}}
+{{< /file >}}
 
-    {{< note >}}
+{{< note >}}
 You can, instead, add environment variables to the `/etc/profile` or the `/etc/bashrc` file. However, doing so is not recommended because your variables could be affected, possibly wiped, by upgrades to the shell package.
-    {{< /note >}}
-
-## Useful Default Environment Variables
-
-Several environment variables are automatically set at login. A few of these can be especially helpful. The selection here aims to give some usage examples for the most commonly used of these environment variables.
-
-1. The `USER` variable provides the name of the current user. You can use this to easily insert the current username in shell commands.
-
-    As an example, the commands below create a PostgreSQL super user with the same username as the current Linux user:
-
-        sudo -u postgres createuser $USER
-        sudo -u postgres psql -c "alter user $USER with superuser" postgres
-
-    {{< note >}}
-The `USER` variable provides the current username even while using `sudo`. For instance, if logged in as `example-user`, the above commands result in a PostgreSQL user named `example-user`, not `root`.
-    {{< /note >}}
-
-1. The `PWD` variable provides your current working directory. (PWD stands for "Print Working Directory.") This variable provides a convenient shorthand when working with files and directories.
-
-    The example below copies an `example-directory` from the current directory by first assigning the `PWD` value to a shell variable then changing to the destination directory:
-
-        TEMP_PWD=$PWD
-        cd path/to/destination
-        cp -r $TEMP_PWD/example-directory $PWD
-
-1. The `HOME` variable gives the location of the current user's home directory. Generally, you can use the `~` shorthand instead when you are working in the shell. However, the `HOME` variable can be useful in shell scripting, where you are more likely to encounter cases that do not support the shorthand.
-
-    This example shell script adds a log entry to a file. If the directory for the file does not already exist, the script creates it. The `echo` line automatically creates the file if necessary, but only if the directory already exists:
-
-    {{< file example-script.sh >}}
-#!/bin/bash
-
-DIRECTORY=$HOME/example-directory
-FILE=$DIRECTORY/example-file.log
-DATETIME=`date`
-
-if [ ! -f "$DIRECTORY" ]; then
-    mkdir $DIRECTORY
-fi
-
-echo "Log entry: $DATETIME" >> $FILE
-    {{< /file >}}
+{{< /note >}}
 
 ## Using Environment Variables in Application Development
 
-In application development, environment variables come in handy for distinguishing between application environments and storing authentication credentials. Keeping this application information in environment variables not only makes it easier to manage but is also often more secure than using application files.
+In application development, environment variables come in handy while distinguishing between application environments and storing authentication credentials.
 
 The following steps illustrate a simple use case. Here, the environment variables distinguish between test and production application environments and store the database credentials for each.
 
 {{< note >}}
-The example application code below uses a pseudocode loosely based on Python. It needs to be adjusted according to the language you are using for your application.
+The example application code below uses pseudocode loosely based on Python. It needs to be adjusted according to the language you are using for your application.
 {{< /note >}}
 
-1. Initially, the application needs to be configured for testing. Here, the configuration is set up in the `/etc/profile.d/example-application.sh` file.
-
-    The best approach is to ensure that changing environments changes as few variables as possible and does not require changes in the application. For that reason, the example here sets up credentials for both test and production and provides an `APP_ENV` variable that can act as a switch:
+1. Configure the application for testing. Here, the configuration is set up in the `/etc/profile.d/example-application.sh` file.
+Set up credentials for both test and production, and provide an `APP_ENV` variable that can act as a switch.
 
     {{< file "/etc/profile.d/example-application.sh" >}}
 export APP_ENV="TEST"
@@ -175,7 +269,7 @@ export APP_PROD_DB_USERNAME="example-prod-db-username"
 export APP_PROD_DB_PASSWORD="example-prod-db-password"
     {{< /file >}}
 
-1. The application reads the `APP_ENV` variable and fetches the credentials from the appropriate variables. This method makes the application environment agnostic — whatever the environment is set to, the application responds appropriately:
+1. The application reads the `APP_ENV` variable and fetches the credentials from the appropriate variables. This method makes the application environment agnostic — whatever the environment is set to, the application responds appropriately.
 
     {{< file main.code >}}
 import os
@@ -187,7 +281,7 @@ app_db_username = os.environment[app_environment + "_DB_username"]
 app_db_password = os.environment[app_environment + "_DB_password"]
     {{< /file >}}
 
-1. When it comes time to change to a production environment, just change the `APP_ENV` variable to "PROD":
+1. When you need to change to the production environment, just change the `APP_ENV` variable to "PROD".
 
     {{< file "/etc/profile.d/example-application.sh" >}}
 export APP_ENV="PROD"
@@ -195,4 +289,4 @@ export APP_ENV="PROD"
 
 ## Conclusion
 
-With the information above, you should be off to a good start for using environment variables on your Linux server. Used well, they can be strong tools for scripting, developing applications, and having a better time working in the shell overall.
+With the information above, you should be off to a good start for using environment variables on your Linux server. They can be strong tools for scripting, developing applications, and having a better time working in the shell overall.
