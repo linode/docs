@@ -12,7 +12,7 @@ description: "How to upload an image with Linode Images."
 
 {{< content "upload-image-requirements-shortguide" >}}
 
-Additional overall limits of the Images service are outlined on the [Images Overview](http://localhost:1313/docs/products/tools/images/#limits) page.
+Additional overall limits of the Images service are outlined on the [Images Overview](/docs/products/tools/images/#limits) page.
 
 ## Uploading an Image through the Cloud Manager
 
