@@ -20,6 +20,8 @@ tags: ["linode platform"]
 
 1. Select your *Linode* and *Disk* from their respective dropdown lists and type in an optional *Label* and *Description* for the Image. If no *Label* is entered, the label for the disk will be used. When selecting a Linode and Disk, keep in mind any limitations that may prevent the Image from creating successfully.
 
-1. Click the **Create** button to start creating the Image. It will take some time to fully complete. You can check the status of this process by navigating to the main **Images** page, finding the new image in the *Manual Images** table, and looking at the *Status* column. Once finished,  size of the Image is based on the disk's usage, not the size of the disk itself.
+    [![Select the Linode and disk](images-capture.png)](images-capture.png "Select the Linode and disk")
 
-1. Once the Image has been created, you will be able to deploy the image to a new Linode or add a disk based on that Image to an existing Linode. Keep in mind that the size of the completed Image is based on the disk's usage, not the size of the disk itself.
+1. Click the **Create** button to start creating the Image. It will take some time to fully complete. You can check the status of this process by navigating to the main **Images** page, finding the new image in the **Manual Images** table, and looking at the *Status* column. If the Image has been captured and processed, the status should be set to *Ready*. The *Size* of the Image is based on the disk's usage, not the size of the disk itself.
+
+    [![Image status](images-capture-status.png)](images-capture-status.png "Image status")

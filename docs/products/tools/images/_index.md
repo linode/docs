@@ -14,11 +14,15 @@ cascade:
 
 ## Availability
 
-All regions fully support Images.
+Images can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Pricing
 
-User created Custom Images cost $0.05/GiB per month. Temporary Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
+Images are currently available at no charge to Linode customers.
+
+{{< note >}}
+**Pricing change:** On September 1st, 2021, Images will transition to a paid service with a cost of $0.10/GB per month for each Custom Image stored on an account. Temporary Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
+{{</ note >}}
 
 ## Features
 
@@ -29,3 +33,9 @@ Store disk images preconfigured with the software you need. These Custom Images 
 ### Retain Disks of Existing Linodes
 
 Store a disk image of an existing Linode, enabling you to restore that image if needed and delete the existing Linode while still saving your data.
+
+## Limits
+
+{{< content "images-limits-shortguide" >}}
+
+Additional requirements and considerations apply when [capturing an Image](/docs/products/tools/images/guides/capture-an-image/) from a Linode and [uploading an Image](/docs/products/tools/images/guides/upload-an-image/) from a file.

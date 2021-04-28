@@ -22,4 +22,6 @@ tags: ["linode platform"]
 
 - **Maximum file size is 5GB:** The maximum size for an image file is 5GB (compressed).
 
+- **Pricing considerations:** Once pricing goes into effect, you will be charged for the *uncompressed* size of the Image.
+
 - **For compatibility, use unpartitioned disks formatted with ext3 or ext4 file systems:** [Network Helper](/docs/guides/network-helper/) and other Linode Helpers are compatible with non-partitioned image files formatted using the ext3 or ext4 file systems. Partitioned disks and other file systems may be used, but some manual configuration may be required.

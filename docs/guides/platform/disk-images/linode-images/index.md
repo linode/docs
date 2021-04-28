@@ -18,19 +18,19 @@ title: Images Tutorial
 
 {{< content "images-beta-note-shortguide" >}}
 
-Linode's **Images** product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This is useful for storing *Golden Images*, preconfigured with the exact software and settings you require. Images can also be used to store a copy of an existing disk on a Linode, allowing you to restore from that moment in time even if your Linode is deleted.
-
-## Types of Images
-
-There are two types of Images that can be stored on an account, both of which are visible from the **Images** page of the Cloud Manager:
-
-- **Manual Images:** Custom Images that are manually created by a user on the account. These Images were either captured from an existing Linode's disk or uploaded through an image file. Custom Images do not expire and will remain on the account until they are manually deleted.
-
-- **Automatic Images:** Temporary Recovery Images that are automatically created when a Linode is deleted. Recovery Images have a defined expiration data and, once expired, will automatically be deleted. The expiration date is based on how long the Linode was active, as well as a few other factors.
+Linode's **Images** service allows users to store custom disk images in the Cloud that have already been preconfigured with the exact software and settings required for certain applications and workloads. These Images can be quickly deployed to new or existing Linode, saving users time from manually setting up their entire system after each deployment.
 
 ## Pricing and Availability
 
-Images are available within all data centers. User created Custom Images cost $0.05/GiB per month. Temporary Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
+Images are currently available at no charge to Linode customers and can be deployed across [all regions](https://www.linode.com/global-infrastructure/).
+
+{{< note >}}
+**Pricing change:** On September 1st, 2021, Images will transition to a paid service with a cost of $0.10/GB per month for each Custom Image stored on an account. Temporary Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
+{{</ note >}}
+
+## Types of Images
+
+{{< content "types-of-images-shortguide" >}}
 
 ## Creating a New Image
 
@@ -44,6 +44,8 @@ Two different methods can be used to manually create a Custom Image, each of whi
 ### Requirements and Considerations
 
 {{< content "capture-image-requirements-shortguide" >}}
+
+Additional overall limits of the Images service are outlined within the [Limits](#limits) section below.
 
 ### Capturing an Image through the Cloud Manager
 
@@ -66,7 +68,7 @@ To take action on an Image, locate the Image within the **Images** page of the C
 - **Edit:** Change the *Label* and *Description* for the Image.
 - **[Deploy to a New Linode](#deploying-an-image-to-a-new-linode):** Create a new Linode using the Image.
 - **[Deploy to an Existing Linode](#rebuilding-and-deploying-an-image-to-an-existing-linode):** Rebuild the Linode using the Image.
-- **Delete** Delete the Image (cannot be undone).
+- **Delete:** Delete the Image (cannot be undone).
 
 ## Deploying an Image to a New Linode
 
@@ -74,4 +76,10 @@ To take action on an Image, locate the Image within the **Images** page of the C
 
 ## Rebuilding and Deploying an Image to an Existing Linode
 
-{{< content "deploy-image-to-new-linode-shortguide" >}}
+{{< content "deploy-image-to-existing-linode-shortguide" >}}
+
+## Limits
+
+{{< content "images-limits-shortguide" >}}
+
+Additional requirements and considerations apply when [capturing an Image](#capturing-an-image) from a Linode and [uploading an Image](#uploading-an-image) from a file.

@@ -1,15 +1,15 @@
 ---
-slug: manage-images-shortguide
+slug: types-of-images-shortguide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that shows you how to manage Images.'
+description: 'Shortguide that outlines the types of Images.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-04-23
 modified_by:
   name: Linode
 published: 2021-04-23
-title: How to Manage Images
+title: Types of Images
 keywords: ["images"]
 headless: true
 show_on_rss_feed: false
@@ -20,6 +20,4 @@ All Images stored on your Account are visible from the main **Images** page with
 
 - **Manual Images:** Custom Images that are manually created by a user on the account. These Images were either captured from an existing Linode's disk or uploaded through an image file. Custom Images do not expire and will remain on the account until they are manually deleted.
 
-- **Automatic Images:** Temporary Recovery Images that are automatically created when a Linode is deleted. Recovery Images will expire and automatically be deleted. The expiration date is based on how long the Linode was active, as well as a few other factors.
-
-To take action on an Image, locate it on the page and click the corresponding **ellipsis** options menu. From here, an image can be edited (to change the label or description), deployed to a new Linode, deployed to an existing Linode (by rebuilding that Linode), or deleted and removed from the account.
+- **Automatic Images:** Temporary Recovery Images that are automatically created when a Linode is deleted. Recovery Images have a defined expiration data and, once expired, will automatically be deleted. The expiration date is based on how long the Linode was active, as well as a few other factors.

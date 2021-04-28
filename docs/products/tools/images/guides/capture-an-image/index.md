@@ -12,6 +12,8 @@ description: "How to capture an Image from a Linode."
 
 {{< content "capture-image-requirements-shortguide" >}}
 
+Additional overall limits of the Images service are outlined on the [Images Overview](http://localhost:1313/docs/products/tools/images/#limits) page.
+
 ## Capturing an Image through the Cloud Manager
 
 {{< content "capture-image-shortguide" >}}
