@@ -18,7 +18,6 @@ contributor:
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
 hiddenguide: true
-headless: true
 noindex: true
 
 ---
