@@ -5,9 +5,9 @@ author:
   email: docs@linode.com
 description: 'Shortguide that shows you how capture an image with Linode Images.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
+modified: 2021-04-28
 modified_by:
-  name: Heather Zoppetti
+  name: Linode
 published: 2020-07-20
 title: How to Capture an Image from a Linode
 keywords: ["images"]

@@ -5,10 +5,10 @@ author:
 description: ''
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: "2021-04-23"
-published: "2021-04-23"
+modified: 2021-04-28
 modified_by:
   name: Linode
+published: 2021-04-28
 title: "Images Beta Note"
 headless: true
 show_on_rss_feed: false

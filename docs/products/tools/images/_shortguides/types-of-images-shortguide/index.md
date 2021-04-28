@@ -5,10 +5,10 @@ author:
   email: docs@linode.com
 description: 'Shortguide that outlines the types of Images.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-23
+modified: 2021-04-28
 modified_by:
   name: Linode
-published: 2021-04-23
+published: 2021-04-28
 title: Types of Images
 keywords: ["images"]
 headless: true

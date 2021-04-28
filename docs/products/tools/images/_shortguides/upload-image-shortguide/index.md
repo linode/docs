@@ -5,10 +5,10 @@ author:
   email: docs@linode.com
 description: 'Shortguide that shows you how upload an image with Linode Images.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-22
+modified: 2021-04-28
 modified_by:
   name: Linode
-published: 2021-04-22
+published: 2021-04-28
 title: How to Upload a Custom Image
 keywords: ["images"]
 headless: true

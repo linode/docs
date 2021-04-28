@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-04-28
 modified_by:
   name: Linode
-published: 2020-07-20
+published: 2021-04-28
 title: Images Limits
 keywords: ["images"]
 headless: true

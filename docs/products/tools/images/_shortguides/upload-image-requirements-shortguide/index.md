@@ -5,10 +5,10 @@ author:
   email: docs@linode.com
 description: 'Shortguide that lists all requirements for uploading an image file.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-23
+modified: 2021-04-28
 modified_by:
   name: Linode
-published: 2021-04-23
+published: 2021-04-28
 title: Requirements for Uploading an Image
 keywords: ["images"]
 headless: true

@@ -6,7 +6,7 @@ author:
 description: 'Add an Image to a new disk on an existing Linode.'
 keywords: ["linux", "linode manager", "image", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-27
+modified: 2021-04-28
 modified_by:
   name: Linode
 published: 2019-10-11
