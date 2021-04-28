@@ -26,7 +26,7 @@ tags: ["linode platform"]
 
 1. Upload the image file by pasting the curl command into the terminal window, updating the `--upload-file` option to reference the file name and path of your image. Alternatively, copy the `curl` command below, replacing *example.img* with the file name and path of your image and replacing *url* with the URL that was generated from the previous step.
 
-        curl -X PUT -H "Content-Type: application/octet-stream" --upload-file "example.img.gz" "url" --progress-bar --output /dev/null
+        curl -X PUT -H "Content-Type: application/octet-stream" --upload-file example.img.gz "url" --progress-bar --output /dev/null
 
     This command may take a while to complete, depending on the size of the image file and the transfer speed. During this time, a progress bar will be displayed. By default, curl is already preinstalled on most Linux, Mac, and updated Windows 10 systems using the latest PowerShell terminal. If curl is not installed, install it now by following the recommended instructions for your operating system or package manager.
 
