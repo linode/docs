@@ -15,5 +15,5 @@ show_on_rss_feed: false
 ---
 
 {{< note >}}
-The Images service has been updated with enhanced features, including expanded size limits and the ability to [Upload an Image](/docs/products/tools/images/guides/upload-an-image/) (a new feature that's currently in beta). Images will continue to be available at no charge until September 1st, 2021, at which point it will transition to a paid service. Additional details and pricing information are available on the [Images Overview](/docs/products/tools/images/) page.
+The Images service has been updated to include expanded size limits and the ability to [Upload an Image](/docs/products/tools/images/guides/upload-an-image/) (this feature is currently in beta). Images will remain free of charge during the beta and transition to a paid service at a future date.  Additional details and pricing information are available on the [Images](https://www.linode.com/products/images/) product page.
 {{</ note >}}

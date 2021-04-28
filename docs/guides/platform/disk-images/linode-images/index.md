@@ -18,14 +18,14 @@ title: Images Tutorial
 
 {{< content "images-beta-note-shortguide" >}}
 
-Linode's **Images** service allows users to store custom disk images in the Cloud that have already been preconfigured with the exact software and settings required for certain applications and workloads. These Images can be quickly deployed to new or existing Linode, saving users time from manually setting up their entire system after each deployment.
+Linode's **Images** service allows users to store custom disk images in the Cloud preconfigured with the exact software and settings required for certain applications and workloads. These Images can be quickly deployed to new or existing Linode, saving users time from manually setting up their entire system after each deployment.
 
 ## Pricing and Availability
 
 Images are currently available at no charge to Linode customers and can be deployed across [all regions](https://www.linode.com/global-infrastructure/).
 
 {{< note >}}
-**Pricing change:** On September 1st, 2021, Images will transition to a paid service with a cost of $0.10/GB per month for each Custom Image stored on an account. Temporary Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
+**Pricing change:** Images will transition to a paid service with a cost of $0.10/GB per month for each Custom Image stored on an account. This change will be communicated to customers in advance. Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
 {{</ note >}}
 
 ## Types of Images
