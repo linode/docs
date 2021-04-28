@@ -2,18 +2,18 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Capture an Image
-description: "How to capture an Image from a Linode."
+title: Upload an Image
+description: "How to upload an image with Linode Images."
 ---
 
 {{< content "images-beta-note-shortguide" >}}
 
 ## Requirements and Considerations
 
-{{< content "capture-image-requirements-shortguide" >}}
+{{< content "upload-image-requirements-shortguide" >}}
 
 Additional overall limits of the Images service are outlined on the [Images Overview](http://localhost:1313/docs/products/tools/images/#limits) page.
 
-## Capturing an Image through the Cloud Manager
+## Uploading an Image through the Cloud Manager
 
-{{< content "capture-image-shortguide" >}}
+{{< content "upload-image-shortguide" >}}
