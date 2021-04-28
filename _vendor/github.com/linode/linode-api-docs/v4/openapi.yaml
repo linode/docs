@@ -3549,12 +3549,12 @@ paths:
                 "label": "example-machine-image-label",
                 "region": "us-east"
               }' \
-              https://api.linode.com/v4/images
+              https://api.linode.com/v4/images/upload
       - lang: CLI
         source: >
           linode-cli images upload \
             --label example-machine-image-label \
-            --description "This is an example Machine Image."
+            --description "This is an example Machine Image." \
             --region us-east
   /images/{imageId}:
     x-linode-cli-command: images
@@ -3794,62 +3794,62 @@ paths:
               type: object
               allOf:
                 - $ref: '#/components/schemas/LinodeRequest'
-              properties:
-                backup_id:
-                  type: integer
-                  example: 1234
-                  description: |
-                    A Backup ID from another Linode's available backups. Your User must have
-                    `read_write` access to that Linode, the Backup must have a `status` of
-                    `successful`, and the Linode must be deployed to the same `region` as the Backup.
-                    See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
-                    for a Linode's available backups.
+                - properties:
+                    backup_id:
+                      type: integer
+                      example: 1234
+                      description: |
+                        A Backup ID from another Linode's available backups. Your User must have
+                        `read_write` access to that Linode, the Backup must have a `status` of
+                        `successful`, and the Linode must be deployed to the same `region` as the Backup.
+                        See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
+                        for a Linode's available backups.
 
-                    This field and the `image` field are mutually exclusive.
-                backups_enabled:
-                  type: boolean
-                  description: |
-                    If this field is set to `true`, the created Linode will automatically be
-                    enrolled in the Linode Backup service. This will incur an additional charge.
-                    The cost for the Backup service is dependent on the Type of Linode deployed.
+                        This field and the `image` field are mutually exclusive.
+                    backups_enabled:
+                      type: boolean
+                      description: |
+                        If this field is set to `true`, the created Linode will automatically be
+                        enrolled in the Linode Backup service. This will incur an additional charge.
+                        The cost for the Backup service is dependent on the Type of Linode deployed.
 
-                    This option is always treated as `true` if the account-wide `backups_enabled`
-                    setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
-                    for more information.
+                        This option is always treated as `true` if the account-wide `backups_enabled`
+                        setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
+                        for more information.
 
-                    Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
-                swap_size:
-                  type: integer
-                  example: 512
-                  description: >
-                    When deploying from an Image, this field is optional, otherwise it is ignored.
-                    This is used to set the swap disk size for the newly-created Linode.
-                  default: 512
-                type:
-                  type: string
-                  description: >
-                    The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
-                    you are creating.
-                  example: g6-standard-2
-                region:
-                  type: string
-                  description: >
-                    The [Region](/docs/api/regions/#regions-list) where the Linode
-                    will be located.
-                  example: us-east
-                label:
-                  $ref: '#/components/schemas/Linode/properties/label'
-                tags:
-                  $ref: '#/components/schemas/Linode/properties/tags'
-                group:
-                  $ref: '#/components/schemas/Linode/properties/group'
-                private_ip:
-                  type: boolean
-                  description: >
-                    If true, the created Linode will have private networking enabled and assigned a private IPv4 address.
-                  example: true
-                interfaces:
-                  $ref: '#/components/schemas/LinodeConfigInterfaces'
+                        Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
+                    swap_size:
+                      type: integer
+                      example: 512
+                      description: >
+                        When deploying from an Image, this field is optional, otherwise it is ignored.
+                        This is used to set the swap disk size for the newly-created Linode.
+                      default: 512
+                    type:
+                      type: string
+                      description: >
+                        The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
+                        you are creating.
+                      example: g6-standard-2
+                    region:
+                      type: string
+                      description: >
+                        The [Region](/docs/api/regions/#regions-list) where the Linode
+                        will be located.
+                      example: us-east
+                    label:
+                      $ref: '#/components/schemas/Linode/properties/label'
+                    tags:
+                      $ref: '#/components/schemas/Linode/properties/tags'
+                    group:
+                      $ref: '#/components/schemas/Linode/properties/group'
+                    private_ip:
+                      type: boolean
+                      description: >
+                        If true, the created Linode will have private networking enabled and assigned a private IPv4 address.
+                      example: true
+                    interfaces:
+                      $ref: '#/components/schemas/LinodeConfigInterfaces'
       responses:
         '200':
           description: >
