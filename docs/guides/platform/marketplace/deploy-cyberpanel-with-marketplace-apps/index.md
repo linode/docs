@@ -17,7 +17,8 @@ contributor:
   name: Linode
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
-hiddenguide: true
+_build:
+  list: false
 noindex: true
 
 ---
