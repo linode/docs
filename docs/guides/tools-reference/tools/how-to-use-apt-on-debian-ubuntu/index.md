@@ -45,7 +45,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Update the package database
 
-Use the following command to update APT's package indices. You should run this command before installing or *upgrading* packages. If you don't update the database, the system won't know if there are new packages available or not.
+Use the following command to update APT's package indices. You should run this command before installing or *upgrading* packages. If you don't update the database, the system cannot find if there are new packages available or not.
 
         sudo apt update
 
@@ -60,7 +60,7 @@ Get:4 http://mirrors.linode.com/ubuntu bionic-updates/main amd64 Packages [2,039
 ...
 Fetched 11.6 MB in 3s (4,478 kB/s)
 Reading package lists... Done
-Building dependency tree
+Building dependency tree.
 Reading state information... Done
 32 packages can be upgraded. Run 'apt list --upgradable' to see them.
 {{< /output >}}
@@ -242,4 +242,5 @@ Below are some guides that you can refer to see how you can add apt repositories
 
 ## Conclusion
 
-Having studied this guide, you should be armed for the vast majority of cases where you are likely to use APT on your Debian or Ubuntu server. However, if you need more advanced knowledge of APT, check out the Debian [main page for APT](https://manpages.debian.org/buster/apt/apt.8.en.html) for detailed and thorough documentation on APT commands.
+Having studied this guide, you should be armed for the majority of cases where you are likely to use APT on your Debian or Ubuntu server.
+However, if you need more advanced knowledge of APT, check out the Debian [main page for APT](https://manpages.debian.org/buster/apt/apt.8.en.html) for detailed, and thorough documentation on APT commands.
