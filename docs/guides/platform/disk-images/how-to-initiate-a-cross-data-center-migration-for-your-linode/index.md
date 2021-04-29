@@ -52,7 +52,7 @@ Migrating your Linode to a new data center will result in a number of changes th
 
 1. Locate the Linode within the **Linodes** table, click the corresponding **More Options** ellipsis menu, and select *Migrate* to open the **Migrate Linode** form.
 
-    ![How to initiate a cross data center migration.](linode-list-migrate-action.png)
+    ![How to initiate a cross data center migration.](linode-list-migrate-action.png "How to initiate a cross data center migration.")
 
     This same menu also appears within each individual Linode's dashboard page.
 
