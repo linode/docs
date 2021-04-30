@@ -30,7 +30,7 @@ external_resources:
 
 [*TensorFlow*](https://www.tensorflow.org/) is an open-source software library used for machine learning and to train *[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)*. Google developed TensorFlow for both research and production use, but it is now released under the Apache license. It is available for many operating systems, including the most common Linux distributions.
 
-For learning purpose, it is best to install TensorFlow in a Python vitual environment. TensorFlow is considered a good choice for those who are new to machine learning.
+For learning purpose, it is best to install TensorFlow in a Python virtual environment. TensorFlow is considered a good choice for those who are new to machine learning.
 
 This guide describes how to install TensorFlow on Ubuntu 20.04, which is fully supported by TensorFlow. However, most Linux distributions follow a similar process.
 
@@ -38,7 +38,7 @@ This guide describes how to install TensorFlow on Ubuntu 20.04, which is fully s
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2. This guide will use `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+2. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
 
 3. Update your system:
 
@@ -118,7 +118,7 @@ Setting up a virtual Python environment creates an isolated environment for your
 
         python3 -m venv --system-site-packages ./venv
 
-    The above command creates a directory named `venv` which contains the Python supporting files. You can choose anyname for the virtual environment in place of `./venv`.
+    The above command creates a directory named `venv` which contains the Python supporting files. You can choose any name for the virtual environment in place of `./venv`.
 
 1. Activate your virtual environment by running the `activate` script.
 
