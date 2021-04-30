@@ -6,69 +6,94 @@ author:
 description: 'This guide discusses how to install TensorFlow, an open source software library used for machine learning.'
 og_description: 'This guide discusses how to install TensorFlow, an open source software library used for machine learning.'
 keywords: ['TensorFlow','installation','machine learning','and key phrases']
+tags: ['python', 'ubuntu', 'apache', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-08
 modified_by:
   name: Linode
-title: "Installing TensorFlow"
-h1_title: "How to Install TensorFlow"
+title: "How to Install TensorFlow"
+h1_title: "How to Install TensorFlow in Ubuntu"
 contributor:
   name: Your Name
   link: Github/Twitter Link
 external_resources:
 - '[TensorFlow site](https://www.tensorflow.org/)'
+- '[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)'
+- '[TensorFlow tutorials for beginners and experts](https://www.tensorflow.org/tutorials)'
+- '[Essential TensorFlow documentation](https://www.tensorflow.org/guide)'
+- '[TensorFlow modules & functions](https://www.tensorflow.org/api_docs/python/tf)'
+- '[machine learning](https://www.tensorflow.org/resources/learn-ml)'
+- '[Tools](https://www.tensorflow.org/resources/tools)'
+- '[TensorFlow community](https://www.tensorflow.org/community)'
+
 ---
 
-This guide discusses how to install [*TensorFlow*](https://www.tensorflow.org/), an open source software library used for machine learning and the training of deep neural networks. Google developed TensorFlow for both research and production use, but it is now released under the Apache license. It is available for many operating systems, including most common Linux distributions. TensorFlow works best with Python, but it can be used with many other languages.
+[*TensorFlow*](https://www.tensorflow.org/) is an open-source software library used for machine learning and to train *[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)*. Google developed TensorFlow for both research and production use, but it is now released under the Apache license. It is available for many operating systems, including the most common Linux distributions.
+
+For learning purpose, it is best to install TensorFlow in a Python vitual environment. TensorFlow is considered a good choice for those who are new to machine learning.
+
+This guide describes how to install TensorFlow on Ubuntu 20.04, which is fully supported by TensorFlow. However, most Linux distributions follow a similar process.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+2. This guide will use `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
 
-3.  Update your system:
+3. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Advantages of TensorFlow
 
-TensorFlow offers different levels of abstraction and complexity for different types of tasks, along with APIs which make it easier to get started. It is well suited for production as well as research and experimentation. TensorFlow offers high-end graphing visualisation capabilities along with library management and debugging tools. It is stable, scalable, and offers top-notch performance. TensorFlow is considered a good choice for those who are new to machine learning.
+1. TensorFlow offers different levels of abstraction and complexity for different types of tasks, along with APIs which make it easier to get started.
+
+1. It is well suited for production as well as research and experimentation.
+
+1. TensorFlow offers high-end computational graph visualization capabilities along with library management and debugging tools.
+
+1. It is stable, scalable, and offers top-notch performance with excellent community support.
 
 ## System Requirements
 
-TensorFlow runs best on a robust, stable hosting environment with at least 4GB of memory, such as a [*Linode 4GB*](https://www.linode.com/products/dedicated-cpu/) solution. If you are using Ubuntu, TensorFlow requires version 16.04 or later.
+* A robust and stable hosting environment with at least 4GB of memory, such as a [*Linode 4GB*](https://www.linode.com/products/dedicated-cpu/) solution.
 
-## A Summary of the TensorFlow Installation and Configuration Process
+* If you are using Ubuntu, TensorFlow requires version 16.04 or later.
 
-These installation instructions are geared for Ubuntu 20.04, which is fully supported by TensorFlow. However, most Linux distributions follow a similar process. This procedure installs the latest version of TensorFlow (currently version 2.4.1). The following sections describe each step in more detail:
+## Prerequisites
 
-1.  Installing Python and the Required Libraries.
-2.  Creating a Python Virtual Environment.
-3.  Installing TensorFlow.
-4.  Testing Your TensorFlow Installation.
+Before you install TensorFlow, you need to install the following:
 
-{{< note >}}
-Current versions of TensorFlow feature integrated *Graphics Processing Unit* (GPU) support. In order to use TensorFlow's GPU capabilities, you must have a NVIDIA-capable host, NVIDIA drivers, and several other supporting components. This guide only covers the steps required to install and use the *Central Processing Unit* (CPU) component of TensorFlow.
-{{< /note >}}
+1. Python 3.8 or higher, and its required libraries
+1. Python Virtual Environment - to run TensorFlow inside a virtual environment
+1. Latest version of `pip` (version 19 or higher)
 
-## Installing Python and the Required Libraries
+The following section explains how to install Python (if you have not already installed), Python virtual environment, and the latest version of `pip`.
 
-You must install Python, along with the `pip` package-management module, before you can install TensorFlow. In addition, we strongly recommend installing and using the `virtualenv` Python module, which allows you to run TensorFlow inside a virtual environment. This enables a more seamless TensorFlow environment and eliminates the possibility of unwanted side effects.
+### Check Python and its Required Libraries
 
-1.  Check if you have Python and `pip` installed and what versions you are running. Python 3.8 or higher is required. TensorFlow also requires Version 19 or higher of `pip`, but the latest version is recommended.
+Check your current versions of Python and `pip`.
+    {{< output >}}
+username@localhost:~$ python3 --version
+Python 3.8.5
 
-        python3 --version
-        pip3 --version
-2.  Upgrade `apt` and install the required components. If you already have an installation of Python which meets the minimum requirements, you only have to install the other components.
+username@localhost:~$ pip3 --version
+Command 'pip3' not found, but can be installed with:
+sudo apt install python3-pip
+{{< /output >}}
+
+### Install Python Virtual Environment
+
+1. If you already have Python installed, upgrade `apt`, and install the Python virtual environment and its required components.
 
         sudo apt update
         sudo apt install python3-dev python3-pip python3-venv
-3.  Confirm the version of both Python and `pip`.
+
+1. Confirm the version of both Python and `pip`.
 
         python3 --version
         pip3 --version
@@ -76,34 +101,45 @@ You must install Python, along with the `pip` package-management module, before 
     {{< output >}}
 Python 3.8.5
 pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
-    {{< /output >}}
+{{< /output >}}
 
-## Creating a Python Virtual Environment
+### Create Python Virtual Environment
 
-Setting up a virtual Python environment for TensorFlow isolates the package from the system. This guarantees your TensorFlow projects cannot adversely affect your other Python development work.
+**Why we want a Virtual Environment?**
 
-1.  Decide where you want to install TensorFlow. We recommend creating a new directory for your TensorFlow development. Choose a suitable directory name for your project.
+Setting up a virtual Python environment creates an isolated environment for your TensorFlow projects. Within this virtual environment, you can have independent set of packages. This guarantees your TensorFlow projects cannot adversely affect your other Python development works.
+
+1. Create a new directory for your TensorFlow development.
 
         mkdir ~/tensorflow-dev
         cd ~/tensorflow-dev
-2.  Use the `virtualenv` module to create a new virtual environment. Specify a `venv` directory to contain the environment. You can choose a different name in place of `./venv`.
+
+1. Create the virtual environment using the following command:
 
         python3 -m venv --system-site-packages ./venv
-3.  Source your virtual environment in order to activate it.
+
+    The above command creates a directory named `venv` which contains the Python supporting files. You can choose anyname for the virtual environment in place of `./venv`.
+
+1. Activate your virtual environment by running the `activate` script.
 
         source ./venv/bin/activate
-    While inside the virtual environment, your command prompt is prefaced with `(venv)`, or whatever name you selected for the environment directory.
-    {{< output >}}
+
+    {{< note >}}
+This `source` command works for the `sh`, `bash`, and `zsh` shells. If you are using a `csh` or `tcsh` shell, activate the virtual environment with `source ./venv/bin/activate.csh`.
+You can determine the name of the shell you are running with the command `echo $0`.
+{{< /note >}}
+
+1. After activating your virtual environment, your shell prompt is prefaced with `(venv)` (or whatever name you selected for the virtual environment directory).
+{{< output >}}
 (venv) username@localhost:~/tensorflow-dev$
     {{< /output >}}
-    {{< note >}}
-This `source` command works for the `sh`, `bash`, and `zsh` shells. If you are using a `csh` or `tcsh` shell, activate the virtual environment with `source ./venv/bin/activate.csh`. You can determine the name of the shell you are running with the command `echo $0`.
-    {{< /note >}}
 
-4.  Remain inside the virtual environment and upgrade the `pip` package used by the environment. This change does not affect the rest of the system.
+1. TensorFlow installation requires `pip` version 19 or higher.
+So within the virtual environment, upgrade the `pip` package using the following command:
 
-        pip install --upgrade pip
-    The application confirms the `pip` upgrade.
+        (venv) username@localhost: pip install --upgrade pip
+
+The application confirms the `pip` upgrade.
     {{< output >}}
 Successfully installed pip-21.0.1
     {{< /output >}}
@@ -112,76 +148,82 @@ Successfully installed pip-21.0.1
 You can exit the virtual environment at any time with the `deactivate` command. You can use the `source` command to reactivate it again later. We recommend remaining inside the virtual environment while you are using TensorFlow.
 {{< /note >}}
 
-## Installing TensorFlow
+## Install TensorFlow
 
-While still inside the virtual environment, install TensorFlow using `pip`.
-
-1.  Use the virtual version of `pip` to install TensorFlow. This fetches the latest stable version along with all package dependencies.
+1. Within the virtual environment, install TensorFlow using `pip`. The following command fetches the latest stable version along with all package dependencies.
 
         pip install --upgrade tensorflow
-2.  List all of your Python packages with the `pip list` command and confirm `tensorflow` is present.
+2. List the Python packages with the following command and confirm `tensorflow` is present.
 
-        pip list
+        pip list | grep tensorflow
     The `tensorflow` module should be listed.
     {{< output >}}
 tensorflow             2.4.1
     {{< /output >}}
 
     {{< note >}}
-Although not recommended, it is possible to install TensorFlow without the use of a virtual environment. Upgrade the Python-specific `pip` module with `python -m pip install --upgrade pip`, and then install TensorFlow using `pip3 install --user --upgrade tensorflow`. Be very careful not to upgrade the system pip because this is likely to cause unwanted side effects.
+You can follow the below steps to install TensorFlow without using virtual environment, but it is **NOT** recommended.
+
+* Upgrade the Python-specific `pip` module with `python -m pip install --upgrade pip`
+
+* Install TensorFlow using `pip3 install --user --upgrade tensorflow`.
+
+Be very careful not to upgrade the system pip because this is likely to cause unwanted side effects.
 {{< /note >}}
 
-## Testing Your TensorFlow Installation
+## Test Your TensorFlow Installation
 
-It is fairly easy to confirm TensorFlow is working with a few extra steps.
+1. If you have followed all the above steps and installed TensorFlow, it is fairly easy to verify the TensorFlow installation.
 
-1.  Launch Python.
-
-        python
-    The following information and Python prompt should appear.
+   You can use the following command to print the TensorFlow version:
     {{< output >}}
-Python 3.8.5 (default, Jul 28 2020, 12:59:40)
-[GCC 9.3.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-    {{< /output >}}
-2.  At the prompt, import the `tensorflow` module. This allows you to access TensorFlow methods and variables via the `tf` alias. If the module loads without any errors, you have installed TensorFlow correctly.
+(venv) username@localhost:~/tensorflow-dev$ python -c 'import tensorflow as tf; print(tf.__version__)'
+2021-04-30 10:34:32.450931: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2021-04-30 10:34:32.450973: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2.4.1
+{{< /output >}}
 
-        import tensorflow as tf
     {{< note >}}
 If you do not have a GPU, you might receive a warning that `libcudart` or a similar GPU library could not be loaded. If you see a subsequent `info` message advising you to ignore the message in a non-GPU environment, then you do not have a problem. TensorFlow is installed correctly.
     {{< /note >}}
-3.  To preview and validate some basic TensorFlow functionality, enter the following command, which prints the sum of a set of random values.
 
-        print(tf.reduce_sum(tf.random.normal([1000, 1000])))
-    TensorFlow returns a Tensor containing the result. A Tensor is an immutable multi-dimensional array. You can find more information about Tensors on the [*TensorFlow site*](https://www.tensorflow.org/guide/tensor). Your Tensor should look somewhat like this sample output.
-     {{< output >}}
-tf.Tensor(1624.9167, shape=(), dtype=float32)
-    {{< /output >}}
+1. To disable the warnings or error messages, you can use the `os.environ` variable.
+
+   The below code prints the TensorFlow version without any warnings.
+
+    {{< output >}}
+(venv) username@localhost:~/tensorflow-dev$ python -c 'import os; os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"; import tensorflow as tf; print(tf.__version__)'
+2.4.1
+{{< /output >}}
 
     {{< note >}}
-In a CPU-only environment, you might see more GPU or graphics-related warnings, along with some messages discussing possible optimizations. If TensorFlow returns a Tensor class in response, the application is operating normally. A message beginning with `I` is an informational message, while one that starts with `W` is a warning.
+   You can use different log levels in place of '3' as shown below:
+
+   0 = all messages are logged (default behavior)
+
+   1 = INFO messages are not printed
+
+   2 = INFO and WARNING messages are not printed
+
+   3 = INFO, WARNING, and ERROR messages are not printed
     {{< /note >}}
 
-4.  Exit the Python application when you have finished with TensorFlow.
-
-        exit()
-5.  When you are done with the virtual environment, deactivate it until the next time you need it. This places you back in the original non-virtual shell.
+1. You can deactivate the virtual environment and switch back to the original non-virtual shell.
 
         deactivate
     {{< note >}}
-You can always run `source ./venv/bin/activate` to re-enter the virtual environment again.
+You can always run `source ./venv/bin/activate` to enter into the virtual environment again.
     {{< /note >}}
 
 ## For Further Reference
 
-Machine learning is a complicated discipline, and TensorFlow is a large and complex application. To help you get started, TensorFlow provides a number of additional resources:
+Machine learning is a complicated discipline, and TensorFlow is a large and complex application. To help you get started, TensorFlow provides several additional resources:
 
-*   Introductory [*tutorials*](https://www.tensorflow.org/tutorials), including a blog and videos.
-*   Extensive [*documentation*](https://www.tensorflow.org/guide).
-*   Information about the [*APIs and modules*](https://www.tensorflow.org/api_docs/python/tf).
-*   An introduction to [*machine learning*](https://www.tensorflow.org/resources/learn-ml).
-*   A list of [*tools*](https://www.tensorflow.org/resources/tools) to support TensorFlow workflows.
-*   Suggestions for how you can participate in the [*TensorFlow community*](https://www.tensorflow.org/community).
+* [TensorFlow tutorials for beginners and experts](https://www.tensorflow.org/tutorials)
+* [Essential TensorFlow documentation](https://www.tensorflow.org/guide)
+* List of [TensorFlow modules & functions](https://www.tensorflow.org/api_docs/python/tf)
+* An Introduction to [machine learning](https://www.tensorflow.org/resources/learn-ml)
+* [Tools](https://www.tensorflow.org/resources/tools) to support your TensorFlow workflows
+* [TensorFlow community](https://www.tensorflow.org/community) which suggests you on how you can participate and contribute.
 
-The [*TensorFlow site*](https://www.tensorflow.org/) is very extensive with many additional resources and tools. We recommend beginning with the tutorials, and then spending more time reviewing the site as you work through your projects.
+We recommend you to go through the extensive [TensorFlow site](https://www.tensorflow.org/) as you work through your projects.
