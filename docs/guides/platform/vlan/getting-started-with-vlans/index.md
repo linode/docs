@@ -27,7 +27,7 @@ VLANs are separate from [Private IP Addresses](https://www.linode.com/docs/guide
 
 ## Configuring VLANs
 
-VLANs are relatively simple to manage and do not require much configuration beyond attaching (or detaching) a VLAN to a Linode. VLANs can be configured when creating new Linodes or by modifying the network interfaces on the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile) of an existing Linode.
+VLANs are relatively simple to manage and do not require much configuration beyond attaching (or detaching) a VLAN to a Linode. VLANs can be configured when creating new Linodes or by modifying the network interfaces on the [Configuration Profile](/docs/guides/linode-configuration-profiles/) of an existing Linode.
 
 ### Configuring the Network Interface
 
@@ -74,14 +74,14 @@ VLANs are still in beta and may not be available for all accounts or in all regi
 
 1. Enter an `IPAM Address`. If this field left blank, the Linode will not be able to communicate with other Linodes on that VLAN until one of the following is true:
 
-    - An IPAM address is added to the `eth1` interface within the Linode's [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile)
+    - An IPAM address is added to the `eth1` interface within the Linode's [Configuration Profile](/docs/guides/linode-configuration-profiles/)
     - An IP address is manually assigned to the network interface within the Linode's internal configuration files.
 
     See the [Assigning an IPAM Address](#assigning-an-ipam-address) section on this page for more information about IPAM and examples of valid IPAM addresses.
 
 1. Adjust any remaining configuration options as needed and select the `Create Linode` button to create the Linode.
 
-By default, the public IP address (and, if added, the private IP address) of the Linode is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile).
+By default, the public IP address (and, if added, the private IP address) of the Linode is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile).
 
 ## Attaching a VLAN to an Existing Linode
 

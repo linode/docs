@@ -53,7 +53,7 @@ Your new Linux distribution or image will often require a swap disk in order to 
 
 ## Create a Configuration Profile
 
-To boot the Linode with the new disk, the disk needs to be properly assigned within a new or existing [configuration profile](/docs/guides/disk-images-and-configuration-profiles/#configuration-profiles) and selected as the *Root Device*.
+To boot the Linode with the new disk, the disk needs to be properly assigned within a new or existing [configuration profile](/docs/guides/linode-configuration-profiles) and selected as the *Root Device*.
 
 1. Navigate to the Linode's **Configuration** tab and click the **Add Configuration** button. It's also possible to adjust an existing configuration profile by clicking the *Edit* link next to that configuration.
 

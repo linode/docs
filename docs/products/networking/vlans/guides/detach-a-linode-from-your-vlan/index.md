@@ -8,7 +8,7 @@ description: "If the Linode no longer requires access a VLAN's private network, 
 
 {{< content "vlans-beta-note-shortguide" >}}
 
-If the Linode no longer requires access a VLAN's private network, the VLAN can be detached by editing the Linode's [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile)
+If the Linode no longer requires access a VLAN's private network, the VLAN can be detached by editing the Linode's [Configuration Profile](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile)
 
 1. Log in to the [Linode Cloud Manager](https://www.cloud.linode.com).
 
