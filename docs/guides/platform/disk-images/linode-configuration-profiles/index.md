@@ -29,7 +29,7 @@ The configuration profiles for a Linode can be viewed and managed from the [Clou
 From here, a [configuration profile can be created](#creating-a-configuration-profile) using the **Add Configuration** button. To take action on an certain configuration, locate it within the **Configurations** table and select from the list of actions, some or all of which may appear within the **ellipsis** menu:
 
 - **Boot:** Boots the Linode using the settings defined within the selected configuration profile. See [Booting from a Configuration Profile](#booting-from-a-configuration-profile).
-- **Edit:** Modify the settings within a configuration profile. See [Editing a Configuration profile](#editing-a-configuration-profile).
+- **Edit:** Modify the settings within a configuration profile. See [Editing a Configuration Profile](#editing-a-configuration-profile).
 - **Clone:** Clones the configuration profile and the attached disks to any Linode on the same account. See [Cloning a Configuration Profile and the Attached Disks](#cloning-a-configuration-profile-and-the-attached-disks).
 - **Delete:** Deletes the configuration profile. See [Deleting a Configuration Profile](#deleting-a-configuration-profile).
 
