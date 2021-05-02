@@ -209,6 +209,13 @@ The following example uploads a setup script to a newly created Linode instance 
 resource "linode_instance" "example_instance" {
   # ...
 
+  connection {
+      type     = "ssh"
+      user     = "root"
+      password = var.root_pass
+      host     = self.ip_address
+  }
+
   provisioner "file" {
       source      = "setup_script.sh"
       destination = "/tmp/setup_script.sh"
