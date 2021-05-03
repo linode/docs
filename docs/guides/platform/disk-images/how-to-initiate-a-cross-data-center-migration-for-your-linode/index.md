@@ -8,7 +8,7 @@ og_description:  "You can migrate your Linode across data centers using the Lino
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-modified: 2019-06-20
+modified: 2021-04-29
 modified_by:
   name: Linode
 published: 2019-02-04
@@ -42,35 +42,22 @@ Migrating your Linode to a new data center will result in a number of changes th
 
 - Block Storage volumes cannot be migrated to other regions. If you have a Block Storage volume attached to your Linode, it will be detached when the migration begins. See our [How to Use Block Storage with Your Linode](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-transfer-block-storage-data-between-data-centers) guide, to learn how to transfer a Block Storage volume's data between data centers.
 
+- If the Linode is using IPv6 pools, VLANs, or other features that have not yet been deployed to all data centers, the destination data center must also support these features.
+
 - Migrations will include a period of downtime while your data is transferred. This estimate varies depending on your total disk size and the speeds expected between each data center. A calculated estimate will be displayed within the "Caution" message displayed before moving forward with your migration.
 
 ## Migrating to a New Data Center
-### From a Linode's Disks and Configurations Page
-
-![How to initiate a cross data center migration.](dc-migrations.gif)
 
 1. Log in to the [Cloud Manager](https://www.cloud.linode.com) and click on the **Linodes** link in the sidebar.
 
-1. Select the Linode you'd like to migrate.
+1. Locate the Linode within the **Linodes** table, click the corresponding **More Options** ellipsis menu, and select *Migrate* to open the **Migrate Linode** form.
 
-1. Viewing the Linode's *Summary* page, click on the **Disks/Configs** tab at the top of the page.
+    ![How to initiate a cross data center migration.](linode-list-migrate-action.png "How to initiate a cross data center migration.")
 
-1. On the **Disks/Configs** page, scroll down to the **Configure a Migration** section and click on the **Click here to get started** link.
+    This same menu also appears within each individual Linode's dashboard page.
 
-1. On the **Migrate** detail page, make sure you read and understand the "Caution" message before clicking on the **Accept** checkbox. Select the data center region you'd like the Linode to be migrated to.
+1. In **Migrate Linode** form, review the details of the migration and check the **Accept** box to agree to these conditions and expectations.
 
-1. Click on the **Enter Migration Queue** button. You will be automatically redirected to your Linode's summary page where you can monitor the progress of your migration. Your Linode will return to its previous state (powered on or off) once the migration has completed.
+1. Under **Configure Migration**, select the destination region. This will be the data center that the Linode is migrated to.
 
-### From the Linodes Landing Page
-
-1.  Log in to the [Cloud Manager](https://www.cloud.linode.com) and click on the **Linodes** link in the sidebar.
-
-1.  Click on the **more options ellipsis** corresponding to the Linode that you'd like to migrate. Select **Migrate** from the dropdown menu.
-
-    ![Select Migrate from the dropdown menu.](select-migrate-from-dropdown.png)
-
-1. On the **Migrate** detail page, make sure you read and understand the "Caution" message before clicking on the **Accept** checkbox. Select the data center region you'd like the Linode to be migrated to.
-
-    ![Read the caution message before clicking on the accept checkbox. Then, select a data center region.](accept-migration.png)
-
-1. Click on the **Enter Migration Queue** button. You will be automatically redirected to your Linode's summary page where you can monitor the progress of your migration. Your Linode will return to its previous state (powered on or off) once the migration has completed.
+1. Click on the **Enter Migration Queue** button, which closes the form and enters the Linode into the migration queue. You can monitor the progress of your migration from both within the list of Linodes and the Linode's dashboard. Your Linode will return to its previous state (powered on or off) once the migration has completed.
