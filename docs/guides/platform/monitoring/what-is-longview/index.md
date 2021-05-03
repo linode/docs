@@ -134,20 +134,20 @@ Although previously available, Longview is currently not officially supported an
 
 1.  Add a configuration file to store the repository information for the Longview agent:
 
-   **CentOS**:
+  **CentOS**:
 
    Using the text editor of your choice, like [nano](https://www.linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), create a `.repo` file and copy the contents of the example file below. Replace `REV` in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
-    {{< file "/etc/yum.repos.d/longview.repo" config >}}
-  [longview]
-  name=Longview Repo
-  baseurl=https://yum-longview.linode.com/centos/REV/noarch/
-  enabled=1
-  gpgcheck=1
+   {{< file "/etc/yum.repos.d/longview.repo" config >}}
+    [longview]
+    name=Longview Repo
+    baseurl=https://yum-longview.linode.com/centos/REV/noarch/
+    enabled=1
+    gpgcheck=1
    {{< /file >}}
 
    **Debian or Ubuntu**:
 
-    Find the codename of the distribution running on your Linode.
+  Find the codename of the distribution running on your Linode.
 
      root@localhost:~# lsb_release -sc
      stretch
