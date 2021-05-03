@@ -388,9 +388,10 @@ When you configure Elastic IP you need to define the Linode's _ROLE_ within the 
 1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `[NEIGHBOR_IP]`, `[DC_ID]`, and `[ROLE]` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
 
       {{< file "~/elastic.conf">}}
-hostname atl-bgp-1.kfubes.com
+hostname atl-bgp-1.example.com
 
 router bgp 65[DC_ID]5
+no bgp ebgp-requires-policy
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
 neighbor HOST peer-group
@@ -402,9 +403,9 @@ address-family ipv4 unicast
   redistribute static
 exit-address-family
 route-map primary permit 10
-set large-community 65[DC_ID]:[DC_ID]:1
+set large-community 63949:1:1
 route-map secondary permit 10
-set large-community 65[DC_ID]5:[DC_ID]:2
+set large-community 63949:1:2
       {{</ file >}}
 
 1. Run the VTY shell:
@@ -439,16 +440,16 @@ set large-community 65[DC_ID]5:[DC_ID]:2
     >
     > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
     > {{< file >}}
-up   ip addr add [ELASTIC_IP]/24 dev eth0 label eth0:1
-down ip addr del [ELASTIC_IP]/24 dev eth0 label eth0:1
+up   ip addr add [ELASTIC_IP]/32 dev eth0 label eth0
+down ip addr del [ELASTIC_IP]/32 dev eth0 label eth0
         {{</ file >}}
     >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
     >{{< file >}}
-up   ip addr add [ELASTIC_IP]/24 dev eth0 label eth0:1
-down ip addr del [ELASTIC_IP]/24 dev eth0 label eth0:1
-up   ip addr add [ELASTIC_IP]_2/24 dev eth0 label eth0:2
-down ip addr del [ELASTIC_IP]_2/24 dev eth0 label eth0:2
+up   ip addr add [ELASTIC_IP]/32 dev eth0 label eth0
+down ip addr del [ELASTIC_IP]/32 dev eth0 label eth0
+up   ip addr add [ELASTIC_IP]_2/32 dev eth0 label eth0
+down ip addr del [ELASTIC_IP]_2/32 dev eth0 label eth0
         {{</ file >}}
     > **Ubuntu 20.04**
     >
@@ -457,29 +458,29 @@ down ip addr del [ELASTIC_IP]_2/24 dev eth0 label eth0:2
 [Match]
 Name=eth0
 ...
-Address=[ELASTIC_IP]/24
+Address=[ELASTIC_IP]/32
         {{</ file >}}
     >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
     >{{< file >}}
-Address=[ELASTIC_IP]/24
-Address=[ELASTIC_IP]_2/24
+Address=[ELASTIC_IP]/32
+Address=[ELASTIC_IP]_2/32
     {{</ file >}}
     > **CentOS 8**
     >
     > Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
     > {{< file >}}
 IPADDR1=[ELASTIC_IP]
-PREFIX1="24"
+PREFIX1="32"
         {{</ file >}}
     >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
     >{{< file >}}
 IPADDR1=[ELASTIC_IP]
-PREFIX1="24"
+PREFIX1="32"
 
 IPADDR2=[ELASTIC_IP]_2
-PREFIX2="24"
+PREFIX2="32"
     {{</ file >}}
 
 1. Apply the `eth0` network interface configuration:
@@ -501,7 +502,7 @@ PREFIX2="24"
 inet 127.0.0.1/8 scope host lo
 inet6 ::1/128 scope host
 inet 192.0.2.0/24 brd 192.0.2.255 scope global dynamic eth0
-inet 203.0.113.0/24 scope global eth0:1
+inet 203.0.113.0/32 scope global eth0
 inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
 inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
     {{</ output >}}

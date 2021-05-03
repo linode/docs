@@ -125,9 +125,7 @@ If you don't want to enter your password every time you connect to Lish, or if y
 
 1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
-1. Click on your profile icon in the top right hand corner of the Manager and select **My Profile**.
-
-1. Click on the **LISH** tab.
+1. Click on the profile icon in the top right hand corner of the Manager and select **LISH Console Settings**.
 
 1. Copy your public SSH key into the **SSH Public Key** field, as shown below.
 

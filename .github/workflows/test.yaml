@@ -38,18 +38,16 @@ jobs:
       uses: actions/checkout@master
     - name: Get Changed Files
       id: get_changed_files
-      uses: lots0logs/gh-action-get-changed-files@2.1.4
+      uses: jitterbit/get-changed-files@v1
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        format: 'json'
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
-        styles: |
-          ./ci/vale/styles
-        files: '${{ steps.get_changed_files.outputs.all }}'
+        files: '${{ steps.get_changed_files.outputs.added_modified }}'
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        
+
   docs404:
     runs-on: ubuntu-latest
     steps:
@@ -72,7 +70,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r ./ci/requirements.txt
-    - name: Use Node.js 
+    - name: Use Node.js
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'

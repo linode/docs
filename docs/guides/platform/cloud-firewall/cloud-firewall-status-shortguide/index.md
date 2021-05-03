@@ -21,9 +21,7 @@ When you [add a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/
 
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu. This takes you to the **Firewalls** listing page.
 
-1. Click on the **more options ellipsis** corresponding to the Firewall whose status you'd like to update.
-
-1. From the dropdown menu, click on **Enable/Disable** to update the Firewall's status.
+1. Click on the **Enable/Disable** button corresponding to the firewall whose status you would like to update:
 
     ![Update your Firewall's status.](update-the-firewall-status.png "Update your Firewall's status.")
 
