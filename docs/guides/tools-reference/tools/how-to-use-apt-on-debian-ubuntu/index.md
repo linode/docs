@@ -3,16 +3,17 @@ slug: using-apt-package-manager
 author:
   name: Linode Community
   email: docs@linode.com
-description: "APT is a user-friendly tool for package management on Debian and Ubuntu. By reading this guide you can be familiarized with APT package manager capabilities, and gets you started with its most commonly used features."
-og_description: "APT is a user-friendly tool for package management on Debian and Ubuntu. By reading this guide you can be familiarized with APT package manager capabilities, and gets you started with its most commonly used features."
+description: "APT is a user-friendly tool for package management on Debian and Ubuntu. This guide covers the capabilities of the APT package manager, and gets you started with its most commonly used features."
+og_description: "APT is a user-friendly tool for package management on Debian and Ubuntu. This guide covers the capabilities of the APT package manager, and gets you started with its most commonly used features."
 keywords: ['advanced package tool','apt','installing','updating','upgrading','uninstalling','removing','debian','ubuntu']
-tags: ['ubuntu','apache','ssh', 'debian']
+tags: ['ubuntu','apache', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-01
 modified_by:
   name: Nathaniel Stickman
-title: "Using APT Package Manager"
-h1_title: "How to Use APT package manager"
+title: "Using the APT Package Manager"
+h1_title: "How to Use the APT Package Manager"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -21,37 +22,21 @@ external_resources:
 - '[Debian Man Pages: apt](https://manpages.debian.org/buster/apt/apt.8.en.html)'
 ---
 
-The Advanced Package Tool (APT) is a tool for managing packages on Debian Linux distributions, including Ubuntu. APT uses core utilities to simplify the process of upgrading, installing, and removing software packages.
-
-This guide aims to help you get familiar with the most frequently used APT commands for managing your server's packages. By the end of reading this guide, you should be ready for the majority of APT's uses you are likely to encounter.
+The Advanced Package Tool (APT) is a system for managing packages on Debian or Debian-derived Linux distributions, like Ubuntu. APT uses core utilities to simplify the process of upgrading, installing, and removing software packages. This guide helps you become familiar with the most frequently used APT commands for managing your server's packages.
 
 {{< note >}}
-You may have seen the `apt-get` command used for installing and managing packages, and the `apt-cache` command for exploring packages on Debian and Ubuntu.
-
-However, Debian has introduced the `apt` command to consolidate the most commonly used `apt-get` and `apt-cache` commands and make their use more straightforward and user-friendly. Both Debian and Ubuntu now recommend using the `apt` command rather than `apt-get` or `apt-cache` where possible.
-
-This guide exclusively uses the `apt` command.
+You may have used the `apt-get` command to install and manage packages, and the `apt-cache` command to explore packages on Debian and Ubuntu. However, Debian has introduced the `apt` command to consolidate the most commonly used `apt-get` and `apt-cache` commands and make their use more straightforward and user-friendly. Both Debian and Ubuntu now recommend using the `apt` command rather than `apt-get` or `apt-cache` where possible. This guide exclusively uses the `apt` command.
 {{< /note >}}
 
-## Before You Begin
+## Update the Package Database
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+Use APT's `update` command to update its package indices. You should run this command before installing or *upgrading* packages. Updating your system's APT database ensures that you can install and update your system packages to their most recent versions.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+    sudo apt update
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+When you run the `update` command, your output displays information retrieved from the image servers.
 
-## Update the package database
-
-Use the following command to update APT's package indices. You should run this command before installing or *upgrading* packages. If you don't update the database, the system cannot find if there are new packages available or not.
-
-        sudo apt update
-
-When you run the above command, you can see the information retrieved from various servers.
-    {{< output >}}
-linode@test-main:~$ sudo apt update
+{{< output >}}
 Hit:1 http://mirrors.linode.com/ubuntu bionic InRelease
 Get:2 http://mirrors.linode.com/ubuntu bionic-updates InRelease [88.7 kB]
 Get:3 http://mirrors.linode.com/ubuntu bionic-backports InRelease [74.6 kB]
@@ -63,109 +48,115 @@ Reading package lists... Done
 Building dependency tree.
 Reading state information... Done
 32 packages can be upgraded. Run 'apt list --upgradable' to see them.
-{{< /output >}}
+{{</ output >}}
 
 ## Upgrade Installed Packages
 
-After installing the package database, you can use the following command to upgrade installed packages to the latest available version in APT's indices.
+After updating your system's APT package database, use the following command to upgrade installed packages to the latest available version.
 
-        sudo apt upgrade
+    sudo apt upgrade
 
-### Upgrade a specific package
+### Upgrade a Specific Package
 
-To upgrade a specific package, use the following command.
+To upgrade a specific package, use the following command:
 
-        sudo apt upgrade <package_name>
+    sudo apt upgrade <package_name>
 
-The below example upgrades the Apache package.
+For example, to upgrade your system's Apache package you use the following command:
 
-        sudo apt upgrade apache2
+    sudo apt upgrade apache2
 
-### Full upgrade
+### Upgrade All Packages
 
-1. If you need to remove old packages or dependencies if needed to make all package installations up to date, then use the following command:
-    {{< caution >}}
-Be careful when using this command. Since this command can remove dependency packages, you should review the prompts it gives you thoroughly before confirming to upgrade the whole system.
+APT's *full upgrade* option upgrades the packages on your system and also handles package dependencies. This command handles removing old packages and dependencies if required by a package upgrade.
+
+{{< caution >}}
+Since this command can remove dependency packages, you should review the prompts it gives you thoroughly before confirming to upgrade the whole system.
 {{< /caution >}}
 
-        sudo apt full-upgrade
+    sudo apt full-upgrade
 
-1. The fastest and the most convenient way to update Ubuntu or Debian system is to use the following command. Running this command before you start a new installation process ensures that APT's package indices are current and that your installed packages are up to date.
+The fastest and the most convenient way to update packages on Debian and Ubuntu systems is to use the following two commands.
 
-        sudo apt update && sudo apt upgrade
+    sudo apt update && sudo apt upgrade
 
-## Installing Packages
+You should run these commands before you start a new installation process. This ensures that APT's package indices are current and that your installed packages are up to date.
+
+## Install Packages
 
 Use the following command to install a package.
 
-        sudo apt install <package_name>
+    sudo apt install <package_name>
 
 The following example installs the PHP package using `apt install`.
 
-        sudo apt install php7.3
+    sudo apt install php7.3
 
-### Install multiple packages
+### Install Multiple Packages
 
 You can install multiple packages with a single command by specifying them as a space-separated list.
 
-        sudo apt install <package1> <package2>
+    sudo apt install <package1> <package2>
 
-For instance, the following example installs Apache, MariaDB, and PHP in a single command.
+For instance, the following example installs Apache, MariaDB, and PHP using a single command.
 
-        sudo apt install apache2 mariadb-server php7.3
+    sudo apt install apache2 mariadb-server php7.3
 
-### Reinstall a package
+### Reinstall a Package
 
 APT has a dedicated command for reinstalling a package.
 
-        sudo apt reinstall php7.3
+    sudo apt reinstall php7.3
 
 ## Uninstall Packages
 
 Use the following command to remove a package.
 
-        sudo apt remove <package_name>
+    sudo apt remove <package_name>
 
 The following example uninstalls the MariaDB package.
 
-        sudo apt remove mariadb-server
+    sudo apt remove mariadb-server
 
-### The `purge` command
+{{< note >}}
+The `remove` command removes the package binaries and retains the package configuration and data files.
+{{</ note >}}
+
+### The `apt purge` Command
 
 Another way of uninstalling a package is to use the `purge` command. This command removes the package and all of its configuration and data files.
-But, the `remove` command just removes the package binaries and retains the package configuration and data files.
 
-        sudo apt purge mariadb-server
+    sudo apt purge mariadb-server
 
-### Remove unused packages using the `autoremove` command
+### Remove Unused Packages Using the `autoremove` Command
 
-1. When a package is removed from the system, its dependencies stay in the system. This leftover package that is no longer needed can be removed using the following command:
+When a package is removed from the system, its dependencies stay in the system. The leftover packages that are no longer needed can be removed using the following command:
 
-        sudo apt autoremove
+    sudo apt autoremove
 
-1. You can also auto remove a specific package and all of its dependencies by specifying the package name.
+You can also auto remove a specific package and all of its dependencies by specifying the package name.
 
-        sudo apt autoremove mariadb-server
+    sudo apt autoremove mariadb-server
 
 ## Useful Options
 
-APT provides numerous options in common between its `upgrade`, `install`, `remove`, and related commands. The examples below show the most commonly used of these options and how to use them.
+APT provides numerous options in common between its `upgrade`, `install`, `remove`, and related commands. The examples below include the most commonly used of these options and how to use them.
 
-1. To use a specific version of a package, follow the package name with `=` and the desired package number. In this example, the APT installs version **1.19.2-1** of the Yarn package.
+To use a specific version of a package, follow the package name with `=` and the desired package number. In this example, APT installs version **1.19.2-1** of the Yarn package.
 
-        sudo apt install yarn=1.19.2-1
+    sudo apt install yarn=1.19.2-1
 
-1. Use the `-y`, or `--yes` flag if you want the APT to assume **Yes** to all prompts. In the following example, the APT installs Yarn without prompting the user to confirm any of the steps during the installation process.
+Use the `-y`, or `--yes` flag if you want APT to assume **Yes** to all prompts. In the following example, APT installs Yarn without prompting the user to confirm any of the steps during the installation process.
 
-        sudo apt install -y yarn
+    sudo apt install -y yarn
 
-1. The `-s`, or `--simulate` flag simulates the installation process without actually installing the package. This option is useful if you want to see what a command does to avoid making any changes to the system.
+The `-s`, or `--simulate` flag simulates the installation process without actually installing the package. This option is useful if you want to see what a command does before making any changes to the system.
 
-    In the following example, the APT simulates upgrading the Yarn package.
+In the following example, APT simulates upgrading the Yarn package.
 
-        sudo apt upgrade -s yarn
-    {{< output >}}
-linode@test-main:~$ sudo apt upgrade -s yarn
+    sudo apt upgrade -s yarn
+
+{{< output >}}
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -197,42 +188,42 @@ Conf python-pygments (2.2.0+dfsg-1ubuntu0.2 Ubuntu:18.04/bionic-updates, Ubuntu:
 
 ## Search, List, and Retrieve Packages
 
-### Search for a specific package
+### Search for a Specific Package
 
-1. You can search APT's repositories for specific packages or libraries containing a given string.
+You can search APT's repositories for specific packages or libraries containing a given string.
 
-        sudo apt search <search-term>
+    sudo apt search <search-term>
 
-    The following example searches for all packages containing `git`.
+The following example searches for all packages containing `git`.
 
-        sudo apt search git
+    sudo apt search git
 
-1. APT's search function not only searches the package name but also queries descriptive information about packages.
+APT's search function not only searches the package name but also queries descriptive information about packages.
 
-    The following command also finds the Git package:
+The following command also finds the Git package:
 
-        sudo apt search version control
+    sudo apt search version control
 
-### List packages
+### List Packages
 
 You can use the `list` command to list the available, installed, and upgradeable packages.
 
-        sudo apt list
+    sudo apt list
 
-### Retrieve package information
+### Retrieve Package Information
 
-To fetch the full information related to a specific package, use the following command:
+To fetch all information related to a specific package, use the following command:
 
-        sudo apt show git
+    sudo apt show git
 
-### Retrieve package version & its repository
+### Retrieve Package Version and the Package Repository
 
 To check the installed package version and the repository that it belongs to, use the following command:
 
-        sudo apt policy git
+    sudo apt policy git
 
 {{< note >}}
-The apt software repositories are listed in `/etc/apt/sources.list` file and/or under `/etc/apt/sources.list.d` directory.
+APT software repositories are listed in `/etc/apt/sources.list` file and/or under the `/etc/apt/sources.list.d` directory.
 
 Below are some guides that you can refer to see how you can add apt repositories.
 
@@ -242,5 +233,4 @@ Below are some guides that you can refer to see how you can add apt repositories
 
 ## Conclusion
 
-Having studied this guide, you should be armed for the majority of cases where you are likely to use APT on your Debian or Ubuntu server.
-However, if you need more advanced knowledge of APT, check out the Debian [main page for APT](https://manpages.debian.org/buster/apt/apt.8.en.html) for detailed, and thorough documentation on APT commands.
+This guide walked you through the most frequently used APT commands to manage packages on your Debian or Ubuntu server. If you need more in-depth information, check out the Debian [man pages for APT](https://manpages.debian.org/buster/apt/apt.8.en.html) for detailed, and thorough documentation on APT commands.
