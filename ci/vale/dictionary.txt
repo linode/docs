@@ -263,6 +263,7 @@ ctx
 cuda
 cutover
 cyberduck
+cyberpanel
 cyg
 cygwin
 cyclomatic
