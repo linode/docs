@@ -18,7 +18,7 @@ contributor:
 external_resources:
 - '[Mozilla Developer Network: Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)'
 - '[Google Developers: Introduction to Service Workers](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker)'
-- '[Mozilla's Service Worker Cookbook](https://serviceworke.rs/)'
+- "[Mozilla's Service Worker Cookbook](https://serviceworke.rs/)"
 ---
 
 Service workers are JavaScript workers that can sit between a website or web page and the network. They can give you immense control in developing offline experiences for your web applications, as well as features like push notifications and background sync.
