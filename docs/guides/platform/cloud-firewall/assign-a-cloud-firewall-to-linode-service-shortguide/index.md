@@ -17,9 +17,7 @@ tags: ["linode platform"]
 aliases: ['/platform/cloud-firewall/assign-a-cloud-firewall-to-linode-service-shortguide/']
 ---
 
-1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
-
-    ![Access the Firewalls listing page.](access-firewalls-listing.png "Access the Firewalls listing page.")
+1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
 1. From the **Firewalls** listing page, click on the Firewall that you would like to attach to a Linode. This takes you to the Firewall's **Rules** page.
 

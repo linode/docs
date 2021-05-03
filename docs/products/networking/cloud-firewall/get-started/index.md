@@ -5,10 +5,6 @@ tab_group_main:
     weight: 20
 ---
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
-
 ## Add a Cloud Firewall
 
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.

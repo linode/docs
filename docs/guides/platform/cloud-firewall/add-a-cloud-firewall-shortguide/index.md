@@ -17,13 +17,9 @@ tags: ["linode platform"]
 aliases: ['/platform/cloud-firewall/add-a-cloud-firewall-shortguide/']
 ---
 
-1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
-
-    ![Access the Firewalls listing page.](access-firewalls-listing.png "Access the Firewalls listing page.")
+1. Log in to the [ Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
 1. From the **Firewalls** listing page, click on the **Create a Firewall** link.
-
-    ![Click on the Add a Firewall link.](add-a-firewall.png "Click on the Add a Firewall link.")
 
 1. The **Add a Firewall** drawer appears with the Firewall configurations needed to add a Firewall. Configure your Firewall with at minimum the required fields:
 
