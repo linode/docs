@@ -77,10 +77,12 @@ Once a disk has been created, you will need to modify the existing configuration
 
 ## Resizing a Disk
 
-The size of each disk can be increased or decreased as needed, though it's important to keep the following size restrictions in mind:
+The size of each disk can be increased or decreased as needed, though it's important to keep the following restrictions in mind:
 
 - The **maximum size** of a disk is equal to the current size of the disk and the remaining unallocated storage space on the Linode. The maximum size is displayed underneath the **Size** field when resizing the disk.
 - The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Linode's command Line (through [SSH](docs/guides/getting-started/#connect-to-your-linode-via-ssh) or [Lish](https://www.linode.com/docs/guides/using-the-linode-shell-lish/)).
+- **Raw disks** can only be resized to a larger disk.
+- Disks with **custom partitions** cannot be resized.
 
 {{< note >}}
 To resize a disk, the Linode needs to be powered off.
