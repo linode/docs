@@ -13,6 +13,7 @@ modified: 2018-07-10
 modified_by:
   name: Linode
 title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
+h1_title: Creating a SOCKSS Proxy Server with Shadowsocks on Ubuntu and CentOS 7
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940
@@ -23,17 +24,17 @@ external_resources:
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
 
-This guide shows you how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS. Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device.
+This guide shows you how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS. Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and block certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device.
 
-Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
+Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
 
-Since there is currently no Shadowsocks package available for Ubuntu or CentOS, this guide shows how to build Shadowsocks from the source.
+Because currently, there is no Shadowsocks package available for Ubuntu or CentOS, this guide shows how to build Shadowsocks from the source.
 
 ## Before You Begin
 
 1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of our Securing your Server guide.
 
-1.  A working firewall is a necessary security measure. Firewall instructions [will be presented](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on your Linode, visit one of our guides:
+1.  A working firewall is a necessary security measure. Firewall instructions [are provided](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on a Linode, visit one of the following guides:
 
     *  [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/)
     *  [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
@@ -41,7 +42,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 ## What Is SOCKS5 Proxy Service?
 SOCKS5 is an internet protocol of SOCKS that helps to route packets through a proxy between a client and a server. To carry out a secure communication, SOCKS5 uses three different modes of authentication: Null authentication, GSS-API based authentication, and a username-password based authentication.
 
-When your SOCKS5 uses a NULL authentication, any request between client and server connects to the set proxy without requiring any authentication. With GSS API authentication, a client's or server's identity is verified at the OS level to authenticate them.
+When SOCKS5 uses a NULL authentication, any request between client and server connects to the set proxy without requiring any authentication. With GSS API authentication, a client's or server's identity is verified at the OS level to authenticate.
 
 A username and password-based authentication uses credentials to connect to the proxy.
 
@@ -50,14 +51,14 @@ Shadowsocks is an open source, free encryption protocol client designed to secur
 
 ## Install the Shadowsocks Server
 
-### How Do I Run ShadowSocks On Ubuntu?
+### How Do You Run ShadowSocks On Ubuntu?
 
 To run and install Shadowsocks on Ubuntu Server follow these steps:
-1. Download and update your packages to the newest versions on your Ubuntu
+1. Download and update the packages to the newest versions on Ubuntu
 
                 apt update && apt upgrade -yuf
 
-2. Install dependencies on your Ubuntu server by running the following command:
+2. Install dependencies on the Ubuntu server by running the following command:
 
                 apt install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev \
 
@@ -84,11 +85,11 @@ To run and install Shadowsocks on Ubuntu Server follow these steps:
 
                 make && make install
 
-### How Do I Run ShadowSocks On CentOS 7?
+### How Do You Run ShadowSocks On CentOS 7?
 
 To run and install Shadowsocks on CentOS7 follow these steps:
 
-1. Download and update your packages to the newest versions
+1. Download and update the packages to the newest versions
 
                 yum update && yum upgrade -y
 
@@ -135,7 +136,7 @@ Shadowsocks libev is a lightweight, purely C-based proxy implementation for embe
 
         mkdir -m 755 /etc/shadowsocks
 
-1. Create the Shadowsocks config file at `/etc/shadowsocks/shadowsocks.json`. Paste the contents listed below into the file, noting the instructions in the [shadowsocks.json Breakdown](#shadowsocks-json-breakdown) table for each property. Follow these instructions to determine the value you should set for each property.
+1. Create the Shadowsocks config file located at `/etc/shadowsocks/shadowsocks.json`. Paste the contents listed below into the file, noting the instructions in the [shadowsocks.json Breakdown](#shadowsocks-json-breakdown) table for each property. Follow these instructions to determine the value you should set for each property.
 
     {{< file "/etc/shadowsocks/shadowsocks.json" json >}}
 {
@@ -150,24 +151,24 @@ Shadowsocks libev is a lightweight, purely C-based proxy implementation for embe
 
 ### shadowsocks.json Breakdown
 
-|  **Property**  | **Explanation** | **Possible Values** |
+|  **Property**  | **Description** | **Possible Values** |
 |:--------------:|:---------------:|:-------------------:|
-| server | Enter your server's public IP address. | User determined |
-| server_port | Shadowsocks will listen on this port. Use the default value of `8388`. | User determined |
+| server | Enter the server's public IP address. | User determined |
+| server_port | Shadowsocks listens on this port. Use the default value of `8388`. | User determined |
 | password | Connection password. Set a strong password. | User determined |
 | timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
 | method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
-| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `uname -r`. | true, false |
+| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check the kernel version with `uname -r`. | true, false |
 | nameserver | Name servers for internal DNS resolver. | User determined |
 
 ## Optimize Shadowsocks
 
-Apply the following optimizations to your system kernel to provide for a smooth running Shadowsocks installation.
+Apply the following optimizations to the system kernel to provide for a smooth running Shadowsocks installation.
 
-1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into your file:
+1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into the file:
 
     {{< caution >}}
-These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured your system kernel settings for any reason, make sure no conflicts exist.
+These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured the system kernel settings for any reason, make sure no conflicts exist.
 {{< /caution >}}
 
     {{< file "/etc/sysctl.d/local.conf" >}}
@@ -280,11 +281,11 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
 
     [![Shadowsocks download page](shadowsocks_download.png "Shadowsocks download page")](https://shadowsocks.org/en/download/clients.html)
 
-1.  Launch the application on your Mac. The app preferences will be available from a new status menu bar icon. Select the *Server Preferences* menu item:
+1.  Launch the application on your Mac. The app preferences is available from a new status menu bar icon. Select the *Server Preferences* menu item:
 
     ![macOS Shadowsocks menu bar - Server Preferences menu item](shadowsocks-macos-menu-server-preferences.png "macOS Shadowsocks menu bar - Server Preferences menu item")
 
-1.  In the *Server Preferences* window, click on the **+** (plus-sign) button in the lower left. Enter the details for your Shadowsocks Linode. Be sure to select the same port and encryption scheme that you listed in your Linode's `shadowsocks.json` file. Afterwards, close the window:
+1.  In the *Server Preferences* window, click the **+** (plus-sign) button in the lower left. Enter the details for your Shadowsocks Linode. Be sure to select the same port and encryption scheme that you listed in your Linode's `shadowsocks.json` file. Afterwards, close the window:
 
     ![macOS Shadowsocks menu bar - Server Preferences window](shadowsocks-macos-menu-server-new-server-preferences.png "macOS Shadowsocks menu bar - Server Preferences window")
 
@@ -292,38 +293,38 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
 
     ![macOS Shadowsocks menu bar - Global Mode menu item](shadowsocks-macos-menu-server-global-mode.png "macOS Shadowsocks menu bar - Global Mode menu item")
 
-1.  Verify that your Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When your connection is working as expected, the website will list your Shadowsocks Linode's public IP.
+1.  Verify that the Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When the connection is working as expected, the website lists the Shadowsocks Linode's public IP.
 
 ### Windows Shadowsocks Client
 
 1.  Navigate to the [Windows Shadowsocks](https://github.com/shadowsocks/shadowsocks-windows/releases) page. Click on **Shadowsocks-4.0.4.zip** under **Downloads**.
 
-1.  Extract the contents of the .zip file into any folder and run `Shadowsocks.exe`. Shadowsocks will run as a background process. Locate the Shadowsocks icon in the taskbar (it may be in the *Hidden Icons* taskbar menu), right-click on the Shadowsocks icon, then click on **Edit Servers**. Enter the information that you saved in the `shadowsocks.json` file:
+1.  Extract the contents of the .zip file into any folder and run `Shadowsocks.exe`. Shadowsocks runs as a background process. Locate the Shadowsocks icon in the taskbar (it may be in the *Hidden Icons* taskbar menu), right-click on the Shadowsocks icon, then click on **Edit Servers**. Enter the information that you saved in the `shadowsocks.json` file:
 
     ![New server configuration dialog](shadowsocks-windows-edit-servers.png "Windows New Server configuration dialog")
 
 1.  Right-click on the Shadowsocks icon again. Mouse over **PAC** and select both **Local PAC** and **Secure Local PAC**.
 
-    To confirm that your Linode's IP address is selected, mouse over **Servers**.
+    To confirm that the Linode's IP address is selected, mouse over **Servers**.
 
-1.  Verify that your Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When your connection is working as expected, the website will list your Shadowsocks Linode's public IP.
+1.  Verify that the Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When the connection is working as expected, the website lists  the Shadowsocks Linode's public IP.
 
-### How Do I Know If My SOCKS5 Proxy Is Working?
+### How Do You Know If SOCKS5 Proxy Is Working?
 
-To check if your SOCKS5 proxy is working, you can open your terminal and run the netstat command to see if there is an open port:
+To check if the SOCKS5 proxy is working, open the terminal and run the netstat command to see if there is an open port:
 
                 netstat -tlnp
 
-If your SOCKS5 proxy is working, you should see an output similar to below on your terminal: 
+If the SOCKS5 proxy is working, you should see an output similar to below in the terminal: 
 
                 tcp        0      0 232.222.333.414:8888          0.0.0.0:*               LISTEN
 
-Another way to test whether SOCKS5 proxy is working is by using the curl command on the right port of the proxy. For a SOCKS5 proxy hosted at `232.222.333.414` listening at `port 8080`, run the following command on your terminal:
+Another way to test whether SOCKS5 proxy is working is by using the curl command on the right port of the proxy. For a SOCKS5 proxy hosted at `232.222.333.414` listening at `port 8080`, run the following command in the terminal:
 
                 timeout 5 curl -x socks5://232.222.333.414:8080 https://linode.com/
 
-If our SOCKS5  proxy isn’t working properly on a proxy hosted at `232.222.333.414`, it returns a timeout on our terminal.
+If the SOCKS5  proxy isn’t working properly on a proxy hosted at `232.222.333.414`, it returns a timeout on our terminal.
 
 ## Where to Go from Here
 
-Once your Shadowsocks server is online, configure a client on your mobile phone, tablet, or any other devices you use. The [Shadowsocks client download](https://shadowsocks.org/en/download/clients.html) page supports all mainstream platforms.
+After the Shadowsocks server is online, configure a client on your mobile phone, tablet, or any other devices you use. The [Shadowsocks client download](https://shadowsocks.org/en/download/clients.html) page supports all mainstream platforms.
