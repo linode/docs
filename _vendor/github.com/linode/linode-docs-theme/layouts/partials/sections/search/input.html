@@ -4,8 +4,10 @@
       <use href="#icon--search"></use>
     </svg>
   </span>
-  <div autocomplete="off" spellcheck="false" contenteditable="true" x-ref="searchInput" @focusin="setFocus(true);" @focusout="setFocus(false);" @input="dispatch()" name="search"
-        placeholder="Search Linode" class="search-input w-full h-12 py-3 pl-3 focus:outline-none" data-testid="search-input"></div>
+  <input type="text" autocomplete="off" spellcheck="false" aria-label="search" x-model="queryString" x-ref="searchInput"
+    placeholder="Search Linode" class="search-input w-full h-12 py-3 pl-3 focus:outline-none" data-testid="search-input"
+    @focusin="setFocus(true);" @focusout="setFocus(false);" 
+  >
   <button aria-label="Close search" class="mr-4 hover:text-brand" :class="{ 'hidden': !searchOpen }" @click.stop="close()" data-testid="input-close">
     <svg class="h-5 w-5">
       <use href="#icon--times"></use>

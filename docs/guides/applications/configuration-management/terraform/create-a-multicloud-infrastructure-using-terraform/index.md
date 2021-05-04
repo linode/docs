@@ -212,7 +212,7 @@ The following steps explain how you can construct a multicloud configuration con
         cd terraform
         vi linode-terraform.tf
 
-1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](http://localhost:1313/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to learn how to create an API token, if you have not done so already.
+1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to learn how to create an API token, if you have not done so already.
 
     {{< file "~/terraform/linode-terraform.tf" >}}
 
