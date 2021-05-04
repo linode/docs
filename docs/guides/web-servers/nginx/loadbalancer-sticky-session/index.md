@@ -1,51 +1,93 @@
 ---
-slug: loadbalancer-sticky-session
+slug: configuring-load-balancer-sticky-session
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
-description: ‘Web farms need a load balancer so that all the load doesn't go to one server. And load balancers need server affinity for the duration of a session, a.k.a. sticky sessions, when the web application needs to maintain state from one request to the next.’
-og_description: ‘Web farms need a load balancer so that all the load doesn't go to one server. And load balancers need server affinity for the duration of a session, a.k.a. sticky sessions, when the web application needs to maintain state from one request to the next.’
+description: 'Web farms require configuring load balancer sticky session so that all the load does not go to one server. And load balancers need server affinity for the duration of a session, a.k.a. sticky sessions when the web application needs to maintain state from one request to another.'
+og_description: 'Web farms require configuring load balancer sticky session so that all the load does not go to one server. And load balancers need server affinity for the duration of a session, a.k.a. sticky sessions when the web application needs to maintain state from one request to another.'
 keywords: [‘loadbalancer sticky session']
+tags: ['database','wordpress']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
   name: Linode
-title: "The Pros and Cons of Configuring a Load Balancer for Sticky Sessions”
-h1_title: "The Pros and Cons of Configuring a Load Balancer for Sticky Sessions "
+title: "Configuring Load Balancer Sticky Session"
+h1_title: "The Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
 contributor:
   name: Martin Heller
   link: http://www.twitter.com/meheller
-external_resources:
-- '[NodeBalancer reference guide\](https://www.linode.com/docs/guides/nodebalancer-reference-guide/)'
-- '[NodeBalancer section\](<https://www.linode.com/docs/guides/platform/nodebalancer/>)'
+
 ---
 
-# The Pros and Cons of Configuring a Load Balancer for Sticky Sessions
+## What is Load Balancing and Why is it Necessary?
 
-You need a load balancer to distribute requests among your servers, once you scale out from one web server or application server to two or more. Then you need to deal with the issue of maintaining continuity from one HTTP request to the next if your site needs to maintain session state.
+*Load balancing* is an efficient method of distributing incoming network traffic across multiple servers in a *web farm*. Each Load Balancer lies between client devices and servers, which receives and distributes incoming requests to the available and capable server.
 
-What happens if a stateful web farm doesn't have sticky sessions? For one thing, users might never get past the login screen. Or if they do get into the application, they still might randomly find themselves facing surprising error messages or winding up back at the login screen; the underlying reason would be that they suddenly wound up reaching a different instance of the web server.
+The load balancing is necessary because it provides the following benefits:
 
-## Websites, sessions, and session state
+- **Efficiency:** Load balancers distribute the client requests across multiple servers preventing server overload.
+- **Scalability:** New servers can be added to the *web farm* when there is an increase in the network traffic.
+- **Flexibility:** Servers can be added or removed from the web farm on-demand basis.
+- **Highly Responsive:** Ensures that the user's requests are spread evenly across multiple servers.
 
-A static HTML website without logins is stateless. That means that users would never notice if they were randomly directed to a different server instance when following links. The same logic applies to public websites built on applications such as WordPress, as long as they don’t require users to log in. Once a site needs to maintain continuity from request to request, it is stateful.
+### Load Balancing Methods
 
-Most websites maintain continuity of state using a session. A session object can be stored in server RAM or a file on the server, passed back to the client in an HTTP cookie, stored in a database, or stored on the client. If you store the session object in the RAM or file system of a single server, then the only way for the client to continue a session in the next request would be for the browser to return to the same server instance.
+You can perform load balancing in two ways—*stateless* and *stateful*.
 
-That’s trivial when there’s only one server instance. If multiple web servers are behind a load balancer, i.e. a web farm, it may not be trivial to lock the client to a single server.
+If the load balancer does not keep track of any session information, it is *stateless load balancing*. You can consider the example of a static HTML website without a login page, where the users would never notice if they were randomly redirected to a different server instance when following links.
 
-## NodeBalancers and other load balancing tools
+Consider a public website that is built on an application such as WordPress where users need not log in. Here, the load balancer keeps track of all the user's state information from one request to another, and this is called *stateful load balancing*.
 
-[NodeBalancers](https://www.linode.com/docs/guides/platform/nodebalancer/) are Linode’s load balancers as a service. Linode also supports using open source tools for load balancing, such as [NGINX]( https://www.linode.com/docs/guides/web-servers/nginx/). (NGINX can also be configured as a web server.)
+## What are Sticky Sessions?
 
-You can [configure NodeBalancers](https://www.linode.com/docs/guides/nodebalancer-reference-guide/) for three kinds of *session stickiness* (or persistence): none, table (the `NodeBalancer` itself remembers which backend a given client IP was initially load balanced to), and `HTTP cookie` (the `NodeBalancer` sets a cookie named `NB\_SRVID` identifying the backend a client was initially load balanced to). If this is the first request in a session or the `NodeBalancer` is set to no stickiness, then the `NodeBalancer` uses one of three *algorithms* to assign the backend node: `round robin`, `least connections`, or `source IP`.
+Most websites maintain continuity of state using a session. When a client makes the first request to the server, a session object is created in the server memory for that user. All the subsequent requests use the same session object.
 
-If the algorithm is `source IP`, the session is sticky as long as the set of backend nodes doesn’t change. If the stickiness is set to `table` or `cookie`, the session will be sticky. If the client doesn’t respect cookies, then HTTP cookie stickiness won’t work.
+But in the Load Balancer, more than one server is serving the request. So what happens if the Load Balancer routes the second request to another server that does not have that session object in memory?
+Some of the user information can be lost and this scenario can cause data loss.
 
-## Sticky sessions pros and cons
+In that case, we need to inform the Load Balancer to send all the requests from a particular user session to process in one server.
+This technique is called *Sticky Sessions* a.k.a., session persistence.
 
-Using sticky sessions can reduce the throughput and increase the latency of a load balancer. On the other hand, disabling sticky sessions and instead using an external database for server session storage can reduce the throughput and increase a web server’s latency.
+## NodeBalancers: Load Balancers as a Service (LBaaS)
 
-You can avoid both options if your site is stateless, or if you pass the whole state as cookies, or if you store session objects on the client. If the state object is large, however, passing it back and forth with each HTTP request and response can reduce the throughput and increase the latency of the browser-load balancer-web server connection.
+Linode offers Load Balancers as a Service (LBaaS) called [*NodeBalancers*](https://www.linode.com/docs/guides/platform/nodebalancer/). Linode also supports using open source tools for load balancing, such as [*NGINX*]( https://www.linode.com/docs/guides/web-servers/nginx/), which can also be configured as a web server.
 
-Usually, the best choice for stateful sites *is* to use sticky sessions on the load balancer, since the load balancer isn’t doing as much work as the web servers. If you’re a belt-and-suspenders kind of administrator, configure the NodeBalancer algorithm to source IP *and* set the stickiness to table. You *can* alternatively set the stickiness to `HTTP cookie`, but that requires the client to respect cookies, which is something you can’t guarantee.
+**Configure NodeBalancers:**
+
+You can configure NodeBalancers for the following three kinds of session stickiness (or persistence):
+
+- **None**
+- **Table:** The NodeBalancer itself remembers which backend a given client IP was initially load balanced to.
+- **HTTP Cookie:** The NodeBalancer sets a cookie named `NB\_SRVID` identifying the backend a client was initially load balanced to.
+
+If the NodeBalance is set to **Table** or **HTTP Cookie**, then the session is sticky. If the client does not accept cookies, then **HTTP Cookie** stickiness do not work.
+
+### LodeBalancing Algorithms
+
+If the NodeBalancer is set to **None**, or if a session object has a first request, then the NodeBalancer uses one of the following three algorithms to assign the backend node:
+
+- Round Robin
+- Least Connections
+- Source IP
+
+If the algorithm is **Source IP**, the session is sticky as long as the set of backend nodes doesn't change.
+
+Read more about *Session Stickiness* and *LoadBalancing Algorithm* from our [NodeBalancer Reference Guide](https://www.linode.com/docs/guides/nodebalancer-reference-guide#algorithm).
+
+## Pros and Cons of Sticky Sessions
+
+**Pros:**
+
+1. Using sticky sessions can reduce the *throughput* and increase the *latency* of a load balancer.
+
+   On the other hand, disabling sticky sessions and instead of using an external database for server session storage can reduce the throughput and increase a web server's latency.
+
+1. For a stateful site, it is best to use sticky sessions on the load balancer, since the load balancer does not perform much work as the web servers.
+
+1. Implementing sticky sessions is easy without any changes to your application.
+
+**Cons:**
+
+1. Limits your application scalability as the Load Balancer cannot distribute the load evenly each time it receives the request from the client.
+
+1. If the server goes down, then the session is lost. If the session has important user information, it can be lost.
