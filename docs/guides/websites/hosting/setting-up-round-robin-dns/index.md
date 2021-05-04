@@ -90,7 +90,7 @@ The output should list the IP address of every Linode currently configured to re
 
 While the above configuration is a functional round-robin DNS configuration, it does not provide a complex level of redundancy and fault tolerance that can be achieved through other means. This has to do with the way DNS functions. While using round-robin DNS will distribute the load between servers, it does not necessarily do this based on whether or not the server is active. In other words, if one Linode goes down, some users will still be directed to an out of service Linode, as DNS is typically not aware of the state of running servers. This effect can be worsened if the DNS response is cached, which could continue to force users to connect to a failed or failing server repeatedly instead of redirecting them to one that works. While using a low TTL in your DNS configuration can reduce the impact of caching issues, it can not guarantee high availability.
 
-Due to these reasons, some users may have better performance combining Round-Robin DNS with High Availability Solutions like NodeBalancers, distributed between different datacenters.
+Due to these reasons, some users may have better performance combining Round-Robin DNS with High Availability Solutions like NodeBalancers, distributed between different data centers.
 
 ### Creating NodeBalancers
 
@@ -99,7 +99,7 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
 1. Follow the [Cloning Your Web Server](##cloning-your-web-server)steps until you have 4 Linodes fully configured. You should have two Linodes available for each data center you will be creating a NodeBalancer in.
 
 {{< note >}}
-If using NodeBalancers, DNS records should not be configured for the individiual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
+If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
 {{< /note >}}
 
 1. [Add a Private IP Address](/docs/guides/remote-access/#adding-private-ip-addresses) for each Linode that has been pre-configured for round-robin DNS.
@@ -126,7 +126,7 @@ If using NodeBalancers, DNS records should not be configured for the individiual
 
     If the backend status reports **0 up / 1 down**, check to make sure that your web application is configured to respond on the Linode's private IP address. You do this by adding the private IP address to your `/etc/hosts` file on your Linode and then reboot your Linode. There might be a virtual host mismatch as well -- check the notes in the next section.
 
-1. Repeat the steps to create a NodeBalancer until you have two NodeBalancers fully configured accross two different data centers.
+1. Repeat the steps to create a NodeBalancer until you have two NodeBalancers fully configured across two different data centers.
 
 1.  Now that the NodeBalancers are up, go directly to your NodeBalancer's IP addresses in a browser. You should see your web application freely available as the NodeBalancer proxies the traffic through.
 
