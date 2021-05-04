@@ -8,11 +8,11 @@ og_description: "APT is a user-friendly tool for package management on Debian an
 keywords: ['advanced package tool','apt','installing','updating','upgrading','uninstalling','removing','debian','ubuntu']
 tags: ['ubuntu','apache', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-01
+published: 2021-05-04
 modified_by:
   name: Nathaniel Stickman
-title: "Using the APT Package Manager"
-h1_title: "How to Use the APT Package Manager"
+title: "How to Use the APT Package Manager"
+h1_title: "Using the APT Package Manager"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman

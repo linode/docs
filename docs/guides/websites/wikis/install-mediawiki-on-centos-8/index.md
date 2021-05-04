@@ -6,12 +6,14 @@ author:
 description: 'MediaWiki is a versatile, open, and free software powering knowledge repositories like Wikipedia. This guide will show you how to install MediaWiki on CentOS 8.'
 og_description: 'MediaWiki is a versatile, open, and free software powering knowledge repositories like Wikipedia. This guide will show you how to install MediaWiki on CentOS 8.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
+tags: ["centos", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-22
+published: 2021-05-04
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Mediawiki on Centos 8"
-h1_title: "How to Install Mediawiki on Centos 8"
+title: "How to Install Mediawiki on CentOS 8"
+h1_title: "Installing Mediawiki on CentOS 8"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

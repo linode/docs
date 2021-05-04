@@ -6,13 +6,14 @@ author:
 description: 'Environment variables define your shell''s properties. You can set your own environment variables and use them in your applications to store configuration values. This guide introduces you to Linux environment variables and explains the differences between shell variables and environment variables. It also covers environment variable scope.'
 og_description: 'Environment variables define your shell''s properties. You can set your own environment variables and use them in your applications to store configuration values. This guide introduces you to Linux environment variables and explains the differences between shell variables and environment variables. It also covers environment variable scope.'
 keywords: ['shell','bash','environment variables','command line','terminal','shell scripting']
-tags: ['linux','linode platform', 'ssh']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-10
+published: 2021-05-04
 modified_by:
   name: Nathaniel Stickman
 title: "How to Set and Use Linux Environment Variables"
 h1_title: "Setting and Using Linux Environment Variables"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
