@@ -102,6 +102,8 @@ Resizing a disk requires you to power your Linode off, if it is currently in use
 When shrinking a disk that is using more space than you wish to allocate, you must first delete or compress files until it is within the reduced allocation size. Use the command `df -h` to determine how much space your disk is using.
 
 Shrinking a disk takes longer than increasing its size.
+
+If a disk is created using custom partitions, resizing is not possible. If using a raw disk, the disk can only be resized to a larger disk.
 {{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
