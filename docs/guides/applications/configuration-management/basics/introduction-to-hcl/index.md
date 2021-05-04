@@ -168,7 +168,7 @@ variable "region" {
 }
 {{</ file >}}
 
-Two input variables named *token* and *region* are defined, respectively. The `region` variable defines a *default* value. Both variables default to *type = "string"*, becausea a type is not explicitly declared.
+Two input variables named *token* and *region* are defined, respectively. The `region` variable defines a *default* value. Both variables default to *type = "string"*, because a type is not explicitly declared.
 
 ### Supplying Variable Values
 
