@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.90.3
+  version: 4.91.0
 
   title: Linode API
   description: |
@@ -1198,7 +1198,7 @@ paths:
         source: >
           linode-cli account login-view 1234
   /account/maintenance:
-    x-linode-cli-command: maintenance
+    x-linode-cli-command: account
     get:
       x-linode-grant: read_only
       servers:
@@ -3363,21 +3363,20 @@ paths:
       tags:
       - Images
       summary: Images List
-      description: >
+      description: |
         Returns a paginated list of Images.
 
+        * **Public** Images have IDs that begin with "linode/". These distribution images are generally available to
+        all users. To view only public Images, call this endpoint without authentication.
 
-        * Calling this endpoint without authentication returns all public Images.
-
-        * Authentication is required to return a combined paginated list of all public and
-          your private Images.
+        * **Private** Images have IDs that begin with "private/". These images are account-specific and only
+        accessible to users with `images:read_only` authorization. To view private Images you have access to in
+        addition to public images, call this endpoint with authentication.
       x-linode-redoc-load-ids: true
       operationId: getImages
       x-linode-cli-action: list
       security:
       - personalAccessToken: []
-      - oauth:
-        - images:read_only
       responses:
         '200':
           description: A paginated list of Images.
@@ -3400,8 +3399,13 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
-        source: >
+        source: |
+          # Returns public Images only
           curl https://api.linode.com/v4/images
+
+          # Returns private and public Images
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/images
       - lang: CLI
         source: >
           linode-cli images list
@@ -3410,17 +3414,22 @@ paths:
       tags:
       - Images
       summary: Image Create
-      description: >
-        Creates a private gold-master Image from a Linode Disk. There is no
-        additional charge to store Images for Linode users.
+      description: |
+        Captures a private gold-master Image from a Linode Disk.
 
-        Images are limited to three per Account.
+        **Pricing change:** Images will transition to a paid service with a
+        cost of $0.10/GB per month for each manual Custom Image stored on an
+        account. This change will be communicated to customers in advance.
+        Recovery Images, which are generated automatically after a Linode is
+        deleted and available for a finite period of time, are provided at no
+        cost.
       operationId: createImage
       x-linode-cli-action: create
       security:
       - personalAccessToken: []
       - oauth:
         - images:read_write
+        - linodes:read_only
       requestBody:
         description: Information about the Image to create.
         content:
@@ -3478,20 +3487,28 @@ paths:
       - url: https://api.linode.com/v4beta
       tags:
       - Images
-      summary: Machine Image Upload
+      summary: Image Upload
       description: |
-        Initiates a Machine Image upload.
+        Initiates an Image upload.
 
-        This endpoint creates a new private Image object and returns it, along
-        with the URL the image data should be uploaded to.
+        This endpoint creates a new private Image object and returns it along
+        with the URL to which image data can be uploaded.
 
-        - Machine Images must be uploaded within 24 hours of creation or the upload will be cancelled.
+        - Image data must be uploaded within 24 hours of creation or the
+        upload will be cancelled and the image deleted.
 
-        - Machine Image uploads should be made as an HTTP PUT request to the returned URL, with a
-        `Content-type: application/octet-stream` header included in the request.
+        - Image uploads should be made as an HTTP PUT request to the returned `upload_url`, with a
+        `Content-type: application/octet-stream` header included in the request. For example:
 
-        - Uploaded image data should be in gzip format. A maximum file size of
-        5GB is supported for upload at this time.
+              curl -v \
+                -H "Content-Type: application/octet-stream" \
+                --upload-file example.img.gz \
+                $UPLOAD_URL \
+                --progress-bar \
+                --output /dev/null
+
+        - Uploaded image data should be compressed in gzip (`.gz`) format. The uncompressed disk should be in raw
+        disk image (`.img`) format. A maximum compressed file size of 5GB is supported for upload at this time.
 
         This endpoint is currently in **beta**. Please make sure to prepend all requests with
         `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
@@ -3503,7 +3520,7 @@ paths:
       - oauth:
         - images:read_write
       requestBody:
-        description: The Machine Image details.
+        description: The uploaded Image details.
         content:
           application/json:
             schema:
@@ -3514,19 +3531,20 @@ paths:
               properties:
                 region:
                   type: string
-                  description: The region to upload to.
+                  description: >
+                    The region to upload to. Once uploaded, the Image can be used in any region.
                   example: eu-central
                 label:
                   type: string
-                  description: Label for the new Machine Image.
+                  description: Label for the uploaded Image.
                   example: my-image-label
                 description:
                   type: string
-                  description: Description for the Machine Image.
+                  description: Description for the uploaded Image.
                   example: This is an example image in the docs.
       responses:
         '200':
-          description: The new Machine Image upload URL.
+          description: The new Image upload URL.
           content:
             application/json:
               schema:
@@ -3534,7 +3552,7 @@ paths:
                 properties:
                   upload_url:
                     type: string
-                    description: The URL to upload the Machine Image to.
+                    description: The URL to upload the Image to.
                   image:
                     $ref: '#/components/schemas/ImagePrivate'
         default:
@@ -5366,16 +5384,16 @@ paths:
       tags:
       - Linode Instances
       summary: Disk Resize
-      description: >
+      description: |
         Resizes a Disk you have permission to `read_write`.
 
-        The Linode this Disk is attached to must be shut down for resizing to
-        take effect.
+        The Disk must not be in use. If the Disk is in use, the request will
+        succeed but the resize will ultimately fail. For a request to succeed,
+        the Linode must be shut down prior to resizing the Disk, or the Disk
+        must not be assigned to the Linode's active Configuration Profile.
 
         If you are resizing the Disk to a smaller size, it cannot be made smaller
         than what is required by the total size of the files current on the Disk.
-        The Disk must not be in use. If the Disk is in use, the request will
-        succeed but the resize will ultimately fail.
       operationId: resizeDisk
       x-linode-cli-action: disk-resize
       security:
@@ -10757,8 +10775,6 @@ paths:
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
-      servers:
-      - url: https://api.linode.com/v4beta
       tags:
       - Networking
       summary: VLANs List
@@ -10787,11 +10803,6 @@ paths:
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
         the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
-
-        **Beta**: This endpoint is in beta. Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future. This notice will be removed when this endpoint is out of
-        beta.
       operationId: getVLANs
       x-linode-cli-action: vlans-list
       security:
@@ -17562,9 +17573,6 @@ components:
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
         the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
-
-        **Beta**: The VLAN feature is in beta. Please make be aware that this feature may receive breaking updates in
-        the future. This notice will be removed when this feature is out of beta.
     Invoice:
       type: object
       description: Account Invoice object
