@@ -6,16 +6,32 @@ author:
 description: 'This series of guides will waklk you through setting up a continous deployment pipeline on LKE.'
 keywords: ['kubernets', 'k8s', 'lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-03
+published: 2021-05-05
 modified_by:
   name: Linode
-title: "Building a Continous Deployment Pipepline Using LKE Part 3: Deploy the LKE Cluster"
+title: "Building a Continuous Deployment Pipeline Using LKE, Part 3: Deploying the LKE Cluster"
 contributor:
   name: Linode
 tags: ["kubernetes"]
 ---
 
+![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploying our LKE Cluster](cd-presentation-header-03-deploying-lke-cluster.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploy the Cluster")
+
+**Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploying our LKE Cluster (Slide #51)](https://2021-03-lke.container.training/#51)
+
+## Deploying the LKE Cluster
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt neque ex, at euismod nunc ornare nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam scelerisque tristique sapien, in pharetra lectus rhoncus ut. Quisque pellentesque tempus scelerisque.
+
+## Navigate the Series
+
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
+- **Previous section:** [Part 2: Sample Application](/docs/guides/lke-continuous-deployment-part-2)
+- **Next section:** [Part 4: Kubernetes Review](/docs/guides/lke-continuous-deployment-part-4)
+
 ## Presentation Text
+
+*Here's a copy of the text contained within this section of the presentation. A link to the source file can be found within each slide of the presentation. Some formatting may have been changed.*
 
 ### Deploying our LKE cluster
 

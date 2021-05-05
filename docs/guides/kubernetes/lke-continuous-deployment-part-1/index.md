@@ -3,19 +3,34 @@ slug: lke-continuous-deployment-part-1
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This series of guides will waklk you through setting up a continous deployment pipeline on LKE.'
+description: 'This series of guides will walk you through setting up a continous deployment pipeline on LKE.'
 keywords: ['kubernets', 'k8s', 'lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-03
+published: 2021-05-05
 modified_by:
   name: Linode
-title: "Building a Continous Deployment Pipepline Using LKE Part 1: Introduction"
+title: "Building a Continuous Deployment Pipeline Using LKE, Part 1: Get Ready"
 contributor:
   name: Linode
 tags: ["kubernetes"]
 ---
 
+![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Get Ready](cd-presentation-header-01-get-ready.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Get Ready")
+
+**Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Get Ready (Slide #10)](https://2021-03-lke.container.training/#10)
+
+## Get Ready
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt neque ex, at euismod nunc ornare nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam scelerisque tristique sapien, in pharetra lectus rhoncus ut. Quisque pellentesque tempus scelerisque.
+
+## Navigate the Series
+
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
+- **Next section:** [Part 2: Sample Application](/docs/guides/lke-continuous-deployment-part-2)
+
 ## Presentation Text
+
+*Here's a copy of the text contained within this section of the presentation. A link to the source file can be found within each slide of the presentation. Some formatting may have been changed.*
 
 ### Get ready!
 

@@ -6,16 +6,32 @@ author:
 description: 'This series of guides will waklk you through setting up a continous deployment pipeline on LKE.'
 keywords: ['kubernets', 'k8s', 'lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-03
+published: 2021-05-05
 modified_by:
   name: Linode
-title: "Building a Continous Deployment Pipepline Using LKE Part 9: Installing Traefik"
+title: "Building a Continuous Deployment Pipeline Using LKE, Part 9: Installing Traefik"
 contributor:
   name: Linode
 tags: ["kubernetes"]
 ---
 
+![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik](cd-presentation-header-09-installing-traefik.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik")
+
+**Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing Traefik (Slide #143)](https://2021-03-lke.container.training/#143)
+
+## Installing Traefik
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt neque ex, at euismod nunc ornare nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam scelerisque tristique sapien, in pharetra lectus rhoncus ut. Quisque pellentesque tempus scelerisque.
+
+## Navigate the Series
+
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
+- **Previous section:** [Part 8: ExternalDNS](/docs/guides/lke-continuous-deployment-part-8)
+- **Next section:** [Part 10: Installing metrics-server](/docs/guides/lke-continuous-deployment-part-10)
+
 ## Presentation Text
+
+*Here's a copy of the text contained within this section of the presentation. A link to the source file can be found within each slide of the presentation. Some formatting may have been changed.*
 
 ### Installing Traefik
 
