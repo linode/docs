@@ -16,7 +16,6 @@ external_resources:
  - '[Chef](http://www.chef.io)'
  - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/)'
  - '[Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/)'
-
 tags: ["automation"]
 ---
 
