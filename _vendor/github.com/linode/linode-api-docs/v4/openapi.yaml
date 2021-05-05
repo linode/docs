@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.83.2
+  version: 4.91.0
 
   title: Linode API
   description: |
@@ -348,6 +348,11 @@ info:
 
     * [Open Support Ticket](/docs/api/support/#support-ticket-open)
 
+    Accepting Service Transfers has a dedicated limit of 2 requests per minute per user.
+    That endpoint is:
+
+    * [Service Transfer Accept](/docs/api/account/#service-transfer-accept)
+
     ## CLI (Command Line Interface)
 
     The <a href="https://github.com/linode/linode-cli" target="_top">Linode CLI</a> allows you to easily
@@ -361,7 +366,8 @@ info:
 
   contact:
     name: Linode
-    url: /
+    url: https://linode.com
+    email: support@linode.com
 servers:
 - url: https://api.linode.com/v4
 - url: https://api.linode.com/v4beta
@@ -544,12 +550,16 @@ paths:
       tags:
       - Account
       summary: Credit Card Add/Edit
-      description: >
+      description: |
         Adds/edit credit card information to your Account.
 
         Only one credit card can be associated with your Account, so using this
         endpoint will overwrite your currently active card information with the
         new credit card.
+
+        To use this endpoint, you must have a valid `zip` entered for your Account.
+        Use the Account Update ([PUT /account](/docs/api/account/#account-update))
+        endpoint to enter a new zip code.
       operationId: createCreditCard
       x-linode-cli-action: update-card
       security:
@@ -599,6 +609,202 @@ paths:
               --expiry_month 11 \
               --expiry_year 2025 \
               --cvv 111
+  /account/entity-transfers:
+    get:
+      deprecated: true
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Account
+      summary: Entity Transfers List
+      description: >
+        **DEPRECATED**. Please use [Service Transfers List](/docs/api/account/#service-transfers-list).
+      operationId: getEntityTransfers
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns a paginated list of Entity Transfer objects containing the details of all transfers that have been
+            created and accepted by this account.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EntityTransfer'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/entity-transfers
+    post:
+      deprecated: true
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer Create
+      description: >
+        **DEPRECATED**. Please use [Service Transfer Create](/docs/api/account/#service-transfer-create).
+      operationId: createEntityTransfer
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      requestBody:
+        description: The entities to include in this transfer request.
+        content:
+          application/json:
+            schema:
+              required:
+              - entities
+              type: object
+              properties:
+                entities:
+                  $ref: '#/components/schemas/EntityTransfer/properties/entities'
+      responses:
+        '200':
+          description: >
+            Returns an Entity Transfer object for the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST -d '{
+              "entities": {
+                "linodes": [
+                  111,
+                  222
+                ]
+              }
+            }' \
+            https://api.linode.com/v4/account/entity-transfers
+  /account/entity-transfers/{token}:
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Entity Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      deprecated: true
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer View
+      description: >
+        **DEPRECATED**. Please use [Service Transfer View](/docs/api/account/#service-transfer-view).
+      operationId: getEntityTransfer
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns an Entity Transfer object containing the details of the transfer for the specified token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
+    delete:
+      deprecated: true
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer Cancel
+      description: >
+        **DEPRECATED**. Please use [Service Transfer Cancel](/docs/api/account/#service-transfer-cancel).
+      operationId: deleteEntityTransfer
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Entity Transfer cancelled.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X DELETE \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000
+  /account/entity-transfers/{token}/accept:
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Entity Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      deprecated: true
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Entity Transfer Accept
+      description: >
+        **DEPRECATED**. Please use [Service Transfer Accept](/docs/api/account/#service-transfer-accept).
+      operationId: acceptEntityTransfer
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Entity Transfer accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X POST \
+            https://api.linode.com/v4/account/entity-transfers/123E4567-E89B-12D3-A456-426614174000/accept
   /account/events:
     x-linode-cli-command: events
     get:
@@ -992,7 +1198,7 @@ paths:
         source: >
           linode-cli account login-view 1234
   /account/maintenance:
-    x-linode-cli-command: maintenance
+    x-linode-cli-command: account
     get:
       x-linode-grant: read_only
       servers:
@@ -1681,6 +1887,311 @@ paths:
         - lang: CLI
           source: >
             linode-cli account paypal-execute
+  /account/service-transfers:
+    x-linode-cli-command: service-transfers
+    get:
+      x-linode-grant: unrestricted only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Account
+      summary: Service Transfers List
+      description: >
+        Returns a collection of all created and accepted Service Transfers for this account, regardless of the user
+        that created or accepted the transfer.
+
+
+        This command can only be accessed by the unrestricted users of an account.
+      operationId: getServiceTransfers
+      x-linode-cli-action: list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns a paginated list of Service Transfer objects containing the details of all transfers that have been
+            created and accepted by this account.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceTransfer'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/service-transfers
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            list
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Service Transfer Create
+      description: |
+        Creates a transfer request for the specified services. A request can contain any of the specified service types
+        and any number of each service type. At this time, only Linodes can be transferred.
+
+        When created successfully, a confirmation email is sent to the account that created this transfer containing a
+        transfer token and instructions on completing the transfer.
+
+        When a transfer is [accepted](/docs/api/account/#service-transfer-accept), the requested services are moved to
+        the receiving account. Linode services will not experience interruptions due to the transfer process. Backups
+        for Linodes are transferred as well.
+
+        DNS records that are associated with requested services will not be transferred or updated. Please ensure that
+        associated DNS records have been updated or communicated to the recipient prior to the transfer.
+
+        A transfer can take up to three hours to complete once accepted. When a transfer is
+        completed, billing for transferred services ends for the sending account and begins for the receiving account.
+
+        This command can only be accessed by the unrestricted users of an account.
+
+        There are several conditions that must be met in order to successfully create a transfer request:
+
+        1. The account creating the transfer must not have a past due balance or active Terms of Service violation.
+
+        1. The service must be owned by the account that is creating the transfer.
+
+        1. The service must not be assigned to another Service Transfer that is pending or that has been accepted and is
+        incomplete.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, VLAN, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+      operationId: createServiceTransfer
+      x-linode-cli-action: create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      requestBody:
+        description: The services to include in this transfer request.
+        content:
+          application/json:
+            schema:
+              required:
+              - entities
+              type: object
+              properties:
+                entities:
+                  $ref: '#/components/schemas/ServiceTransfer/properties/entities'
+      responses:
+        '200':
+          description: >
+            Returns a Service Transfer object for the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST -d '{
+              "entities": {
+                "linodes": [
+                  111,
+                  222
+                ]
+              }
+            }' \
+            https://api.linode.com/v4/account/service-transfers
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            create \
+            --entities.linodes 111 \
+            --entities.linodes 222
+  /account/service-transfers/{token}:
+    x-linode-cli-command: service-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Service Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Service Transfer View
+      description: |
+        Returns the details of the Service Transfer for the provided token.
+
+        While a transfer is pending, any unrestricted user *of any account* can access this command. After a
+        transfer has been accepted, it can only be viewed by unrestricted users of the accounts that created and
+        accepted the transfer. If cancelled or expired, only unrestricted users of the account that created the
+        transfer can view it.
+      operationId: getServiceTransfer
+      x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_only
+      responses:
+        '200':
+          description: >
+            Returns a Service Transfer object containing the details of the transfer for the specified token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceTransfer'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/account/service-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            view 123E4567-E89B-12D3-A456-426614174000
+    delete:
+      x-linode-grant: unrestricted only
+      tags:
+      - account
+      summary: Service Transfer Cancel
+      description: |
+        Cancels the Service Transfer for the provided token. Once cancelled, a transfer cannot be accepted or otherwise
+        acted on in any way. If cancelled in error, the transfer must be
+        [created](/docs/api/account/#service-transfer-create) again.
+
+        When cancelled, an email notification for the cancellation is sent to the account that created
+        this transfer. Transfers can not be cancelled if they are expired or have been accepted.
+
+        This command can only be accessed by the unrestricted users of the account that created this transfer.
+      operationId: deleteServiceTransfer
+      x-linode-cli-action: cancel
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Service Transfer cancelled.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X DELETE \
+            https://api.linode.com/v4/account/service-transfers/123E4567-E89B-12D3-A456-426614174000
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            cancel 123E4567-E89B-12D3-A456-426614174000
+  /account/service-transfers/{token}/accept:
+    x-linode-cli-command: service-transfers
+    parameters:
+      - name: token
+        in: path
+        description: The UUID of the Service Transfer.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+      - Account
+      summary: Service Transfer Accept
+      description: |
+        Accept a Service Transfer for the provided token to receive the services included in the transfer to your
+        account. At this time, only Linodes can be transferred.
+
+        When accepted, email confirmations are sent to the accounts that created and accepted the transfer. A transfer
+        can take up to three hours to complete once accepted. Once a transfer is completed, billing for transferred
+        services ends for the sending account and begins for the receiving account.
+
+        This command can only be accessed by the unrestricted users of the account that receives the transfer. Users
+        of the same account that created a transfer cannot accept the transfer.
+
+        There are several conditions that must be met in order to accept a transfer request:
+
+        1. Only transfers with a `pending` status can be accepted.
+
+        1. The account accepting the transfer must have a registered payment method and must not have a past due
+          balance or other account limitations for the services to be transferred.
+
+        1. Both the account that created the transfer and the account that is accepting the transfer must not have any
+        active Terms of Service violations.
+
+        1. The service must still be owned by the account that created the transfer.
+
+        1. Linodes must not:
+
+            * be assigned to a NodeBalancer, Firewall, VLAN, or Managed Service.
+
+            * have any attached Block Storage Volumes.
+
+            * have any shared IP addresses.
+
+            * have any assigned /56, /64, or /116 IPv6 ranges.
+
+        Any and all of the above conditions must be cured and maintained by the relevant account prior to the
+        transfer's expiration to allow the transfer to be accepted by the receiving account.
+      operationId: acceptServiceTransfer
+      x-linode-cli-action: accept
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - account:read_write
+      responses:
+        '200':
+          description: >
+            Service Transfer accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            -X POST \
+            https://api.linode.com/v4/account/service-transfers/123E4567-E89B-12D3-A456-426614174000/accept
+      - lang: CLI
+        source: >
+          linode-cli service-transfers \
+            accept 123E4567-E89B-12D3-A456-426614174000
   /account/settings:
     x-linode-cli-command: account
     get:
@@ -2302,7 +2813,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Domain'
+              required:
+              - domain
+              - type
+              allOf:
+              - $ref: '#/components/schemas/Domain'
       responses:
         '200':
           description: |
@@ -2330,7 +2845,8 @@ paths:
                     "status": "active",
                     "master_ips": ["127.0.0.1","255.255.255.1","123.123.123.7"],
                     "axfr_ips": ["44.55.66.77"],
-                    "display_group": "Example Display Group"
+                    "group": "Example Display Group",
+                    "tags": ["tag1","tag2"]
                 }' \
                 https://api.linode.com/v4/domains
         - lang: CLI
@@ -2427,7 +2943,8 @@ paths:
                   "status": "active",
                   "master_ips": ["127.0.0.1","255.255.255.1","123.123.123.7"],
                   "axfr_ips": ["44.55.66.77"],
-                  "display_group": "Example Display Group"
+                  "group": "Example Display Group",
+                  "tags": ["tag1","tag2"]
               }' \
               https://api.linode.com/v4/domains/123
       - lang: CLI
@@ -2846,21 +3363,20 @@ paths:
       tags:
       - Images
       summary: Images List
-      description: >
+      description: |
         Returns a paginated list of Images.
 
+        * **Public** Images have IDs that begin with "linode/". These distribution images are generally available to
+        all users. To view only public Images, call this endpoint without authentication.
 
-        * Calling this endpoint without authentication returns all public Images.
-
-        * Authentication is required to return a combined paginated list of all public and
-          your private Images.
+        * **Private** Images have IDs that begin with "private/". These images are account-specific and only
+        accessible to users with `images:read_only` authorization. To view private Images you have access to in
+        addition to public images, call this endpoint with authentication.
       x-linode-redoc-load-ids: true
       operationId: getImages
       x-linode-cli-action: list
       security:
       - personalAccessToken: []
-      - oauth:
-        - images:read_only
       responses:
         '200':
           description: A paginated list of Images.
@@ -2883,8 +3399,13 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
-        source: >
+        source: |
+          # Returns public Images only
           curl https://api.linode.com/v4/images
+
+          # Returns private and public Images
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/images
       - lang: CLI
         source: >
           linode-cli images list
@@ -2893,17 +3414,22 @@ paths:
       tags:
       - Images
       summary: Image Create
-      description: >
-        Creates a private gold-master Image from a Linode Disk. There is no
-        additional charge to store Images for Linode users.
+      description: |
+        Captures a private gold-master Image from a Linode Disk.
 
-        Images are limited to three per Account.
+        **Pricing change:** Images will transition to a paid service with a
+        cost of $0.10/GB per month for each manual Custom Image stored on an
+        account. This change will be communicated to customers in advance.
+        Recovery Images, which are generated automatically after a Linode is
+        deleted and available for a finite period of time, are provided at no
+        cost.
       operationId: createImage
       x-linode-cli-action: create
       security:
       - personalAccessToken: []
       - oauth:
         - images:read_write
+        - linodes:read_only
       requestBody:
         description: Information about the Image to create.
         content:
@@ -2954,6 +3480,100 @@ paths:
             --description "A longer description \
               of the image" \
             --disk_id 123
+  /images/upload:
+    x-linode-cli-command: images
+    post:
+      servers:
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Images
+      summary: Image Upload
+      description: |
+        Initiates an Image upload.
+
+        This endpoint creates a new private Image object and returns it along
+        with the URL to which image data can be uploaded.
+
+        - Image data must be uploaded within 24 hours of creation or the
+        upload will be cancelled and the image deleted.
+
+        - Image uploads should be made as an HTTP PUT request to the returned `upload_url`, with a
+        `Content-type: application/octet-stream` header included in the request. For example:
+
+              curl -v \
+                -H "Content-Type: application/octet-stream" \
+                --upload-file example.img.gz \
+                $UPLOAD_URL \
+                --progress-bar \
+                --output /dev/null
+
+        - Uploaded image data should be compressed in gzip (`.gz`) format. The uncompressed disk should be in raw
+        disk image (`.img`) format. A maximum compressed file size of 5GB is supported for upload at this time.
+
+        This endpoint is currently in **beta**. Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future. This notice will be removed when this endpoint is out of
+        beta.
+      x-linode-cli-action: upload
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - images:read_write
+      requestBody:
+        description: The uploaded Image details.
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - label
+                - region
+              properties:
+                region:
+                  type: string
+                  description: >
+                    The region to upload to. Once uploaded, the Image can be used in any region.
+                  example: eu-central
+                label:
+                  type: string
+                  description: Label for the uploaded Image.
+                  example: my-image-label
+                description:
+                  type: string
+                  description: Description for the uploaded Image.
+                  example: This is an example image in the docs.
+      responses:
+        '200':
+          description: The new Image upload URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  upload_url:
+                    type: string
+                    description: The URL to upload the Image to.
+                  image:
+                    $ref: '#/components/schemas/ImagePrivate'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "description": "This is an example Machine Image.",
+                "label": "example-machine-image-label",
+                "region": "us-east"
+              }' \
+              https://api.linode.com/v4/images/upload
+      - lang: CLI
+        source: >
+          linode-cli images upload \
+            --label example-machine-image-label \
+            --description "This is an example Machine Image." \
+            --region us-east
   /images/{imageId}:
     x-linode-cli-command: images
     parameters:
@@ -3186,111 +3806,68 @@ paths:
           application/json:
             schema:
               required:
-              - type
-              - region
+                - type
+                - region
+                - purpose
               type: object
-              properties:
-                  backup_id:
-                    type: integer
-                    example: 1234
-                    description: |
-                      A Backup ID from another Linode's available backups. Your User must have
-                      `read_write` access to that Linode, the Backup must have a `status` of
-                      `successful`, and the Linode must be deployed to the same `region` as the Backup.
-                      See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
-                      for a Linode's available backups.
+              allOf:
+                - $ref: '#/components/schemas/LinodeRequest'
+                - properties:
+                    backup_id:
+                      type: integer
+                      example: 1234
+                      description: |
+                        A Backup ID from another Linode's available backups. Your User must have
+                        `read_write` access to that Linode, the Backup must have a `status` of
+                        `successful`, and the Linode must be deployed to the same `region` as the Backup.
+                        See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
+                        for a Linode's available backups.
 
-                      This field and the `image` field are mutually exclusive.
-                  backups_enabled:
-                    type: boolean
-                    description: |
-                      If this field is set to `true`, the created Linode will automatically be
-                      enrolled in the Linode Backup service. This will incur an additional charge.
-                      The cost for the Backup service is dependent on the Type of Linode deployed.
+                        This field and the `image` field are mutually exclusive.
+                    backups_enabled:
+                      type: boolean
+                      description: |
+                        If this field is set to `true`, the created Linode will automatically be
+                        enrolled in the Linode Backup service. This will incur an additional charge.
+                        The cost for the Backup service is dependent on the Type of Linode deployed.
 
-                      This option is always treated as `true` if the account-wide `backups_enabled`
-                      setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
-                      for more information.
+                        This option is always treated as `true` if the account-wide `backups_enabled`
+                        setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
+                        for more information.
 
-                      Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
-                  swap_size:
-                    type: integer
-                    example: 512
-                    description: >
-                      When deploying from an Image, this field is optional, otherwise it is ignored.
-                      This is used to set the swap disk size for the newly-created Linode.
-                    default: 512
-                  type:
-                    type: string
-                    description: >
-                      The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
-                      you are creating.
-                    example: g6-standard-2
-                  region:
-                    type: string
-                    description: >
-                      The [Region](/docs/api/regions/#regions-list) where the Linode
-                      will be located.
-                    example: us-east
-                  image:
-                    type: string
-                    description: >
-                      An Image ID to deploy the Disk from. Official Linode
-                      Images start with `linode/ `, while your Images start
-                      with `private/`.
-
-                      See [/images](/docs/api/images/) for more information
-                      on the Images available for you to use.
-                    example: linode/debian9
-                  root_pass:
-                    $ref: '#/components/schemas/DiskRequest/properties/root_pass'
-                  authorized_keys:
-                    type: array
-                    description: >
-                      A list of SSH public keys to deploy for the root user on
-                      the newly-created Linode.  Only accepted if `image` is
-                      provided.
-                    items:
+                        Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
+                    swap_size:
+                      type: integer
+                      example: 512
+                      description: >
+                        When deploying from an Image, this field is optional, otherwise it is ignored.
+                        This is used to set the swap disk size for the newly-created Linode.
+                      default: 512
+                    type:
                       type: string
-                  stackscript_id:
-                    type: integer
-                    description: >
-                      The StackScript to deploy to the newly-created Linode.  If
-                      provided, "image" must also be provided, and must be an
-                      Image that is compatible with this StackScript.
-                    example: 10079
-                  stackscript_data:
-                    type: object
-                    description: >
-                      An object containing responses to any User Defined Fields
-                      present in the StackScript being deployed to this Linode.
-                      Only accepted if `stackscript_id` is given.  The required
-                      values depend on the StackScript being deployed.
-                  booted:
-                    type: boolean
-                    description: >
-                      Whether to boot this Linode after the deploy is complete.
-                      Defaults to true if `image` is provided. Not accepted
-                      if not deploying from an Image.
-                  label:
-                    $ref: '#/components/schemas/Linode/properties/label'
-                  tags:
-                    $ref: '#/components/schemas/Linode/properties/tags'
-                  group:
-                    $ref: '#/components/schemas/Linode/properties/group'
-                  private_ip:
-                    type: boolean
-                    description: >
-                      If true, the created Linode will have private networking enabled.
-                    example: true
-                  authorized_users:
-                    type: array
-                    description: >
-                      A list of usernames. If the usernames have associated
-                      SSH keys, the keys will be appended to the root users
-                      `~/.ssh/authorized_keys` file automatically.
-                    items:
+                      description: >
+                        The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
+                        you are creating.
+                      example: g6-standard-2
+                    region:
                       type: string
+                      description: >
+                        The [Region](/docs/api/regions/#regions-list) where the Linode
+                        will be located.
+                      example: us-east
+                    label:
+                      $ref: '#/components/schemas/Linode/properties/label'
+                    tags:
+                      $ref: '#/components/schemas/Linode/properties/tags'
+                    group:
+                      $ref: '#/components/schemas/Linode/properties/group'
+                    private_ip:
+                      type: boolean
+                      description: >
+                        If true, the created Linode will have private networking enabled and assigned a private IPv4 address.
+                      example: true
+                    interfaces:
+                      $ref: '#/components/schemas/LinodeConfigInterfaces'
       responses:
         '200':
           description: >
@@ -3316,6 +3893,18 @@ paths:
                 "stackscript_data": {
                   "gh_username": "linode"
                 },
+                "interfaces": [
+                  {
+                    "purpose": "public",
+                    "label": "",
+                    "ipam_address": ""
+                  },
+                  {
+                    "purpose": "vlan",
+                    "label": "vlan-1",
+                    "ipam_address": "10.0.0.1/24"
+                  }
+                ],
                 "authorized_keys": [
                   "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer"
                 ],
@@ -4165,6 +4754,18 @@ paths:
                 "memory_limit": 2048,
                 "run_level": "default",
                 "virt_mode": "paravirt",
+                "interfaces": [
+                  {
+                    "purpose": "public",
+                    "label": "",
+                    "ipam_address": ""
+                  },
+                  {
+                    "purpose": "vlan",
+                    "label": "vlan-1",
+                    "ipam_address": "10.0.0.1/24"
+                  }
+                ],
                 "helpers": {
                   "updatedb_disabled": true,
                   "distro": true,
@@ -4256,8 +4857,7 @@ paths:
           application/json:
             schema:
               required:
-              - label
-              - devices
+              - purpose
               properties:
                 id:
                   $ref: '#/components/schemas/LinodeConfig/properties/id'
@@ -4316,6 +4916,8 @@ paths:
 
                     * If the device specified at the root device location is not mounted,
                     the Linode will not boot until a device is mounted.
+                interfaces:
+                  $ref: '#/components/schemas/LinodeConfig/properties/interfaces'
       x-code-samples:
       - lang: Shell
         source: >
@@ -4327,6 +4929,18 @@ paths:
                 "memory_limit": 2048,
                 "run_level": "default",
                 "virt_mode": "paravirt",
+                "interfaces": [
+                  {
+                    "purpose": "public",
+                    "label": "",
+                    "ipam_address": ""
+                  },
+                  {
+                    "purpose": "vlan",
+                    "label": "vlan-1",
+                    "ipam_address": "10.0.0.1/24"
+                  }
+                ],
                 "helpers": {
                   "updatedb_disabled": true,
                   "distro": true,
@@ -4770,16 +5384,16 @@ paths:
       tags:
       - Linode Instances
       summary: Disk Resize
-      description: >
+      description: |
         Resizes a Disk you have permission to `read_write`.
 
-        The Linode this Disk is attached to must be shut down for resizing to
-        take effect.
+        The Disk must not be in use. If the Disk is in use, the request will
+        succeed but the resize will ultimately fail. For a request to succeed,
+        the Linode must be shut down prior to resizing the Disk, or the Disk
+        must not be assigned to the Linode's active Configuration Profile.
 
         If you are resizing the Disk to a smaller size, it cannot be made smaller
         than what is required by the total size of the files current on the Disk.
-        The Disk must not be in use. If the Disk is in use, the request will
-        succeed but the resize will ultimately fail.
       operationId: resizeDisk
       x-linode-cli-action: disk-resize
       security:
@@ -4823,6 +5437,59 @@ paths:
         source: >
           linode-cli linodes disk-resize 123 25674 \
             --size 2048
+  /linode/instances/{linodeId}/firewalls:
+    parameters:
+    - name: linodeId
+      in: path
+      description: ID of the Linode to look up.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: linodes
+    get:
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Linode Instances
+      summary: Firewalls List
+      description: >
+        View Firewall information for Firewalls associated with this Linode.
+      operationId: getLinodeFirewalls
+      x-linode-cli-action: firewalls-list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Firewalls associated with this Linode.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Firewall'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/linode/instances/123/firewalls
+      - lang: CLI
+        source: >
+          linode-cli linodes firewalls-list 123
   /linode/instances/{linodeId}/ips:
     parameters:
     - name: linodeId
@@ -6979,7 +7646,7 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke pool-recycle 12345 456
-  /lke/clusters/{clusterID}/nodes/{nodeId}:
+  /lke/clusters/{clusterId}/nodes/{nodeId}:
     parameters:
     - name: clusterId
       in: path
@@ -9404,13 +10071,11 @@ paths:
         Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode
         instances.
 
-        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls
-        can be assigned to a single Linode service.
+        A Firewall can be assigned to a single Linode service at a time.
 
         A `firewall_create` Event is generated when this endpoint returns successfully.
 
         This endpoint is in **beta**.
-
 
         * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
         * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
@@ -9429,24 +10094,22 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              allOf:
+              - $ref: '#/components/schemas/Firewall'
               required:
-                - rules
+              - label
+              - rules
+              - inbound_policy
+              - outbound_policy
+              - action
               properties:
-                label:
-                  $ref: '#/components/schemas/Firewall/properties/label'
-                rules:
-                  $ref: '#/components/schemas/Firewall/properties/rules'
-                tags:
-                  $ref: '#/components/schemas/Firewall/properties/tags'
                 devices:
                   type: object
                   description: >
                     A Firewall Device assigns a Firewall to a Linode service. Currently, Firewalls
                     can only be assigned to Linode instances.
 
-                    * A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
-                    be assigned to a single Linode service.
+                    * A Firewall can be assigned to a single Linode service at a time.
 
                     * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if five other active Firewalls
                     are already assigned to the same service.
@@ -9482,41 +10145,46 @@ paths:
               -X POST -d '{
                 "label": "firewall123",
                 "rules": {
+                  "inbound_policy": "DROP",
                   "inbound": [
                     {
                       "protocol": "TCP",
                       "ports": "22, 80, 443",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                    "action": "ACCEPT",
+                    "label": "inbound-rule123",
+                    "description": "An example inbound rule description."
                     }
                   ],
+                  "outbound_policy": "DROP"
                   "outbound": [
                     {
                       "protocol": "TCP",
                       "ports": "49152-65535",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                      "action": "ACCEPT",
+                      "label": "outbound-rule123",
+                      "description": "An example outbound rule description."
                     }
                   ]
                 },
                 "devices": {
                   "linodes": [
-                    123,
-                    456
+                    123
                     ]
                 },
                 "tags": [
@@ -9788,10 +10456,9 @@ paths:
       description: |
         Creates a Firewall Device, which assigns a Firewall to a Linode service (referred to
         as the Device's `entity`). Currently, only Devices with an entity of type `linode` are accepted.
-        A Firewall can be assigned to multiple Linode services, and up to five active Firewalls can
-        be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if five other active Firewalls
-        are already assigned to the same service.
+        A Firewall can be assigned a single Linode service at a time. Additional disabled Firewalls can be
+        assigned to a service, but they cannot be enabled if another active Firewall
+        is already assigned to the same service.
 
         Creating a Firewall Device will apply the Rules from a Firewall to a Linode service.
         A `firewall_device_add` Event is generated when the Firewall Device is added successfully.
@@ -10059,34 +10726,40 @@ paths:
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
               -X PUT -d '{
+                  "inbound_policy": "DROP",
                   "inbound": [
                     {
                       "protocol": "TCP",
                       "ports": "22, 80, 443",
-                        "addresses": {
+                      "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                    "action": "ACCEPT",
+                    "label": "inbound-rule123",
+                    "description": "An example inbound rule description."
                     }
                   ],
+                  "outbound_policy": "DROP"
                   "outbound": [
                     {
                       "protocol": "TCP",
                       "ports": "49152-65535",
                       "addresses": {
                         "ipv4": [
-                          "192.0.2.1",
                           "192.0.2.0/24"
                         ],
                         "ipv6": [
                           "2001:DB8::/32"
                         ]
-                      }
+                      },
+                      "action": "ACCEPT",
+                      "label": "outbound-rule123",
+                      "description": "An example outbound rule description."
                     }
                   ]
               }' \
@@ -10096,6 +10769,74 @@ paths:
           linode-cli firewalls rules-update 123 \
             --inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
             --outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
+  /networking/vlans:
+    x-linode-cli-command: networking
+    get:
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      tags:
+      - Networking
+      summary: VLANs List
+      description: |
+        Returns a list of all Virtual Local Area Networks (VLANs) on your Account. VLANs provide
+        a mechanism for secure communication between two or more Linodes that are assigned to the
+        same VLAN and are both within the same Layer 2 broadcast domain.
+
+        VLANs are created and attached to Linodes by using the `interfaces` property for the following endpoints:
+
+        - Linode Create ([POST /linode/instances](/docs/api/linode-instances/#linode-create))
+        - Configuration Profile Create ([POST /linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profile-create))
+        - Configuration Profile Update ([PUT /linode/instances/{linodeId}/configs/{configId}](/docs/api/linode-instances/#configuration-profile-update))
+
+        There are several ways to detach a VLAN from a Linode:
+
+        - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
+        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/apilinode-instances/#linode-reboot) the Linode into the new Configuration Profile.
+        - [Delete](/docs/api/linode-instances/#linode-delete) the Linode.
+
+        **VLANs cannot be manually renamed.** If a VLAN's label must be changed, create a new VLAN and attach all required Linodes to it.
+
+        **VLANs cannot be manually deleted.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, detach it from all Linodes. A VLANs that are not attached to any Linodes are automatically deleted within a short timeframe.
+
+        **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
+        If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
+        the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
+        you will be prompted to select a different data center or contact support.
+      operationId: getVLANs
+      x-linode-cli-action: vlans-list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: The VLANs available on this Account.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vlans'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/networking/vlans/
+      - lang: CLI
+        source: >
+          linode-cli networking vlans-list
   /nodebalancers:
     x-linode-cli-command: nodebalancers
     get:
@@ -10647,7 +11388,7 @@ paths:
         Rebuilds a NodeBalancer Config and its Nodes that you have
         permission to modify.
       operationId: rebuildNodeBalancerConfig
-      x-linode-cli-action: rebuild
+      x-linode-cli-action: config-rebuild
       security:
       - personalAccessToken: []
       - oauth:
@@ -10659,33 +11400,22 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                configs:
-                  type: array
-                  description: >
-                    Each config must have a unique port and at least one Node. Additionally:
-                      * Current Nodes excluded from the request body will be deleted.
-                      * Current Nodes (identified by their ID) will be updated.
-                      * New Nodes (included without an ID) will be created.
-                  items:
-                    allOf:
-                    - $ref: '#/components/schemas/NodeBalancerConfig'
-                    - type: object
-                      properties:
-                        nodes:
-                          type: array
-                          description: >
-                            The NodeBalancer Node(s) that serve this port.
-                            At least one Node is required per configured port.
+              allOf:
+              - $ref: "#/components/schemas/NodeBalancerConfig"
+              - type: object
+                properties:
+                  nodes:
+                    type: array
+                    description: |
+                      The NodeBalancer Node(s) that serve this port.
+                      At least one Node is required per configured port.
 
-                            Some considerations for Nodes when rebuilding a config:
-                              * Current Nodes excluded from the request body will be deleted.
-                              * Current Nodes (identified by their ID) will be updated.
-                              * New Nodes (included without an ID) will be created.
-                          items:
-                            type: object
-                            allOf:
-                            - $ref: '#/components/schemas/NodeBalancerNode'
+                      Some considerations for Nodes when rebuilding a config:
+                        * Current Nodes excluded from the request body will be deleted.
+                        * Current Nodes (identified by their ID) will be updated.
+                        * New Nodes (included without an ID) will be created.
+                    items:
+                      $ref: '#/components/schemas/NodeBalancerNode'
       responses:
         '200':
           description: NodeBalancer created successfully.
@@ -10716,15 +11446,14 @@ paths:
                 "cipher_suite": "recommended",
                 "nodes": [
                   {
-                    "id": 543231,
                     "address": "192.168.210.120:80",
-                    "label": "node54321",
+                    "label": "node1",
                     "weight": 50,
                     "mode": "accept"
                   },
                   {
                     "address": "192.168.210.122:81",
-                    "label": "thenewnode",
+                    "label": "node2",
                     "weight": 50,
                     "mode": "accept"
                   },
@@ -10747,7 +11476,9 @@ paths:
             --check_body "it works" \
             --check_passive true \
             --proxy_protocol "v1" \
-            --cipher_suite recommended
+            --cipher_suite recommended \
+            --nodes '{"address":"192.168.210.120:80","label":"node1","weight":50,"mode":"accept"}' \
+            --nodes '{"address":"192.168.210.122:80","label":"node2","weight":50,"mode":"accept"}'
   /nodebalancers/{nodeBalancerId}/configs/{configId}/nodes:
     parameters:
     - name: nodeBalancerId
@@ -11377,7 +12108,7 @@ paths:
               }' \
             https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/access
     put:
-      operationId: modifyObjectStorageBucketAccess
+      operationId: updateObjectStorageBucketAccess
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
@@ -11453,7 +12184,7 @@ paths:
       schema:
         type: string
     get:
-      operationId: viewObjectStorageBucketAccess
+      operationId: viewObjectStorageBucketACL
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
@@ -11515,7 +12246,7 @@ paths:
           curl -H "Authorization: Bearer $TOKEN" \
             https://api.linode.com/v4/object-storage/buckets/us-east-1/example-bucket/object-acl?name=example.txt
     put:
-      operationId: viewObjectStorageBucketAccess
+      operationId: updateObjectStorageBucketACL
       x-linode-cli-skip: true
       servers:
       - url: https://api.linode.com/v4
@@ -12233,7 +12964,7 @@ paths:
             --certificate "-----BEGIN CERTIFICATE-----\nMIIDbDCCAlQCCQCl\n-----END CERTIFICATE-----" \
             --private_key "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADIAQCQI\n-----END PRIVATE KEY-----"
     delete:
-      operationId: getObjectStorageSSL
+      operationId: deleteObjectStorageSSL
       x-linode-cli-action: ssl-delete
       servers:
       - url: https://api.linode.com/v4
@@ -14431,7 +15162,8 @@ paths:
               - linode_id
               properties:
                 linode_id:
-                  $ref: '#/components/schemas/Volume/properties/linode_id'
+                  type: integer
+                  description: The ID of the Linode to attach the volume to.
                 config_id:
                   type: integer
                   description: >
@@ -14465,7 +15197,7 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
+              -X POST -d '{
                 "linode_id": 12346,
                 "config_id": 23456
               }' \
@@ -14822,6 +15554,25 @@ components:
                 description: >
                   The amount of credit left for this month for this promotion.
                 example:  "10.00"
+              service_type:
+                type: string
+                enum:
+                  - all
+                  - backup
+                  - blockstorage
+                  - db_mysql
+                  - ip_v4
+                  - linode
+                  - linode_disk
+                  - linode_memory
+                  - longview
+                  - managed
+                  - nodebalancer
+                  - objectstorage
+                  - transfer_tx
+                description: >
+                  The service to which this promotion applies.
+                example: "all"
         active_since:
           type: string
           format: date-time
@@ -14849,7 +15600,7 @@ components:
           readOnly: true
           description: >
             This Account's current estimated invoice in US dollars. This is not
-            your final invoice balance. Bandwidth charges are not included in
+            your final invoice balance. Transfer charges are not included in
             the estimate.
           example: 145
           x-linode-cli-display: 4
@@ -14946,9 +15697,12 @@ components:
           example: E1AF5EEC-526F-487D-B317EBEB34C87D71
         zip:
           type: string
-          description: The zip code of this Account's billing address.
-          maxLength: 16
-          example: 19102
+          description: |
+            The zip code of this Account's billing address. The following restrictions apply:
+
+            - May only consist of letters, numbers, spaces, and hyphens.
+            - Must not contain more than 9 letter or number characters.
+          example: 19102-1234
     AccountSettings:
       type: object
       description: Account Settings object
@@ -15159,7 +15913,7 @@ components:
             A list of the disks that are part of the Backup.
     CreditCard:
       type: object
-      description: >
+      description: |
         An object representing the credit card information you have on file with
         Linode to make Payments against your Account.
       required:
@@ -15276,7 +16030,6 @@ components:
         size:
           x-linode-filterable: true
           type: integer
-          readOnly: true
           description: The size of the Disk in MB.
           example: 48640
           x-linode-cli-display: 4
@@ -15318,9 +16071,7 @@ components:
       - label
       properties:
         size:
-          x-linode-filterable: true
-          type: integer
-          example: 48640
+          $ref: '#/components/schemas/Disk/properties/size'
         label:
           $ref: '#/components/schemas/Disk/properties/label'
         filesystem:
@@ -15334,7 +16085,7 @@ components:
           type: string
           description: >
             An Image ID to deploy the Disk from. Official Linode Images start with
-            `linode/ `, while your Images start with `private/`.
+            `linode/`, while your Images start with `private/`.
 
             See [/images](/docs/api/images/#images-list) for more information on the Images available for you to use.
           example: linode/debian9
@@ -15345,9 +16096,11 @@ components:
           writeOnly: true
           example:
           - ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer
-          description: >
+          description: |
             A list of public SSH keys that will be automatically appended
             to the root user's `~/.ssh/authorized_keys` file.
+
+            Only accepted if `image` is provided.
         authorized_users:
           type: array
           items:
@@ -15357,9 +16110,9 @@ components:
           - myUser
           - secondaryUser
           description: >
-            A list of usernames that will have their SSH keys,
-            if any, automatically appended to the root user's
-            `~/.ssh/authorized_keys` file.
+            A list of usernames. If the usernames have associated
+            SSH keys, the keys will be appended to the root users
+            `~/.ssh/authorized_keys` file automatically.
         root_pass:
           type: string
           format: password
@@ -15386,7 +16139,7 @@ components:
           description: |
             This field is required only if the StackScript being deployed requires input
             data from the User for successful completion. See
-            <a target="_top" href="/docs/platform/stackscripts/#variables-and-udfs">Variables and UDFs</a>
+            [User Defined Fields (UDFs)](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs)
             for more details. This field is required to be valid JSON.
     Domain:
       type: object
@@ -15394,10 +16147,6 @@ components:
         A domain zonefile in our DNS system.  You must own the domain name and
         tell your registrar to use Linode's nameservers in order for a domain
         in our system to be treated as authoritative.
-      required:
-      - id
-      - domain
-      - type
       properties:
         id:
           type: integer
@@ -15418,6 +16167,8 @@ components:
         domain:
           type: string
           pattern: ([a-zA-Z0-9-_]{1,63}\.)+([a-zA-Z]{2,3}\.)?([a-zA-Z]{2,16}|xn--[a-zA-Z0-9]+\.?)
+          minLength: 1
+          maxLength: 255
           description: >
             The domain this Domain represents. Domain labels cannot be longer than
             63 characters and must conform to [RFC1035](https://tools.ietf.org/html/rfc1035).
@@ -15441,6 +16192,7 @@ components:
           enum:
           - disabled
           - active
+          default: active
           description: >
             Used to control whether this Domain is currently being rendered.
           example: active
@@ -15467,11 +16219,16 @@ components:
           x-linode-cli-display: 5
         retry_sec:
           type: integer
-          description: >
+          default: 0
+          description: |
             The interval, in seconds, at which a failed refresh should be retried.
-            Valid values are 300, 3600, 7200, 14400, 28800, 57600,
-            86400, 172800, 345600, 604800, 1209600, and 2419200 - any other
-            value will be rounded to the nearest valid value.
+
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+
+            * Any other value is rounded up to the nearest valid value.
+
+            * A value of 0 is equivalent to the default value of 14400.
           example: 300
         master_ips:
           type: array
@@ -15494,34 +16251,44 @@ components:
           example: []
         expire_sec:
           type: integer
-          description: >
+          default: 0
+          description: |
             The amount of time in seconds that may pass before this Domain is no longer
-            authoritative. Valid values are
-            300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600,
-            604800, 1209600, and 2419200 - any other value will be rounded to
-            the nearest valid value.
+            authoritative.
+
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+
+            * Any other value is rounded up to the nearest valid value.
+
+            * A value of 0 is equivalent to the default value of 1209600.
           example: 300
         refresh_sec:
           type: integer
-          description: >
+          default: 0
+          description: |
             The amount of time in seconds before this Domain should be refreshed.
-            Valid values are 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600,
-            604800, 1209600, and 2419200 - any other value will be rounded to
-            the nearest valid value.
+
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
+
+            * Any other value is rounded up to the nearest valid value.
+
+            * A value of 0 is equivalent to the default value of 14400.
           example: 300
         ttl_sec:
           type: integer
+          default: 0
           description: >
             "Time to Live" - the amount of time in seconds that this Domain's
             records may be cached by resolvers or other domain servers.
 
-            * Valid values are 0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800,
-            345600, 604800, 1209600, and 2419200 - any other value will be
-            rounded to the nearest valid value.
+            * Valid values are
+            0, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200.
 
-            * ttl_sec will default to 0 if no value is provided.
+            * Any other value is rounded up to the nearest valid value.
 
-            * A value of 0 is equivalent to a value of 86400.
+            * A value of 0 is equivalent to the default value of 86400.
           example: 300
         tags:
           x-linode-filterable: true
@@ -15560,43 +16327,70 @@ components:
           description: >
             The type of Record this is in the DNS system. For example, A
             records associate a domain name with an IPv4 address, and AAAA
-            records associate a domain name with an IPv6 address.
+            records associate a domain name with an IPv6 address. For more information, see our guide on
+            [DNS Records](/docs/guides/dns-records-an-introduction).
           example: A
           x-linode-cli-display: 2
         name:
           type: string
-          description: >
-            The name of this Record. This field's actual usage depends on the
-            type of record this represents. For A and AAAA records, this is
-            the subdomain being associated with an IP address.
+          description: |
+            The name of this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
+
+            `A` and `AAAA`: The hostname or FQDN of the Record.
+
+            `NS`: The subdomain, if any, to use with the Domain of the Record.
+
+            `MX`: The subdomain.
+
+            `CNAME`: The hostname. Must be unique. Required.
+
+            `TXT`: The hostname.
+
+            `SRV`: Unused. Use the `service` property to set the service name for this record.
+
+            `CAA`: The subdomain. Omit or enter an empty string ("") to apply to the entire Domain.
+
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
           minLength: 1
           maxLength: 100
           example: test
           x-linode-cli-display: 3
         target:
           type: string
-          description: >
-            The target for this Record. This field's actual usage depends on
-            the type of record this represents. For A and AAAA records, this
-            is the address the named Domain should resolve to.
+          description: |
+            The target for this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
 
+            `A` and `AAAA`: The IP address. Use `[remote_addr]` to submit the IPv4 address of the request. Required.
 
-            With the exception of A and AAAA records, this field accepts
-            a trailing period.
-          example: 12.34.56.78
+            `NS`: The name server. Must be a valid domain. Required.
+
+            `MX`: The mail server. Must be a valid domain. Required.
+
+            `CNAME`: The alias. Must be a valid domain. Required.
+
+            `TXT`: The value. Required.
+
+            `SRV`: The target domain or subdomain. If a subdomain is entered, it is automatically used with the Domain. To configure for a different domain, enter a valid FQDN. For example, the value `www` with a Domain for `example.com` results in a target set to `www.example.com`, whereas the value `sample.com` results in a target set to `sample.com`. Required.
+
+            `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef` tag, a contact or submission URL (http or mailto).
+
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
+
+            With the exception of A, AAAA, and CAA records, this field accepts a trailing period.
+          example: 192.0.2.0
           x-linode-cli-display: 4
         priority:
           type: integer
           minimum: 0
           maximum: 255
           description: >
-            The priority of the target host. Lower values are preferred.
+            The priority of the target host for this Record. Lower values are preferred. Only valid and required for SRV record requests.
           example: 50
           x-linode-cli-display: 6
         weight:
           type: integer
           description: >
-            The relative weight of this Record. Higher values are preferred.
+            The relative weight of this Record. Higher values are preferred. Only valid and required for SRV record requests.
           example: 50
           minimum: 0
           maximum: 65535
@@ -15604,7 +16398,7 @@ components:
         port:
           type: integer
           description: >
-            The port this Record points to.
+            The port this Record points to. Only valid and required for SRV record requests.
           example: 80
           minimum: 0
           maximum: 65535
@@ -15612,14 +16406,15 @@ components:
           type: string
           nullable: true
           description: >
-            The service this Record identified. Only valid for SRV records.
+            The name of the service. An underscore (_) is prepended and a period (.) is appended automatically to the submitted value for this property. Only valid and required for SRV record requests.
           example: null
         protocol:
           type: string
           nullable: true
           description: >
-            The protocol this Record's service communicates with. Only valid
-            for SRV records.
+            The protocol this Record's service communicates with. An underscore (_) is prepended
+            automatically to the submitted value for this property. Only valid
+            for SRV record requests.
           example: null
         ttl_sec:
           type: integer
@@ -15633,10 +16428,13 @@ components:
           x-linode-cli-display: 5
         tag:
           type: string
+          enum:
+          - issue
+          - issuewild
+          - iodef
           nullable: true
           description: >
-            The tag portion of a CAA record. It is invalid to set this on
-            other record types.
+            The tag portion of a CAA record. Only valid and required for CAA record requests.
           example: null
           x-linode-filterable: true
         created:
@@ -15651,6 +16449,98 @@ components:
           description: When this Domain Record was last updated.
           example: '2018-01-01T00:01:01'
           readOnly: true
+    EntityTransfer:
+      type: object
+      description: >
+        An object representing an Entity Transfer.
+      properties:
+        token:
+          x-linode-cli-display: 1
+          type: string
+          format: uuid
+          description: >
+            The token used to identify and accept or cancel this transfer.
+          example: "123E4567-E89B-12D3-A456-426614174000"
+        status:
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+          x-linode-cli-color:
+            accepted: yellow
+            cancelled: red
+            completed: green
+            failed: red
+            pending: yellow
+            stale: red
+          type: string
+          enum:
+          - accepted
+          - cancelled
+          - completed
+          - failed
+          - pending
+          - stale
+          description: >
+            The status of the transfer request.
+
+
+            `accepted`: The transfer has been accepted by another user and is currently in progress.
+            Transfers can take up to 3 hours to complete.
+
+
+            `cancelled`: The transfer has been cancelled by the sender.
+
+
+            `completed`: The transfer has completed successfully.
+
+
+            `failed`: The transfer has failed after initiation.
+
+
+            `pending`: The transfer is ready to be accepted.
+
+
+            `stale`: The transfer has exceeded its expiration date. It can no longer be accepted or
+            cancelled.
+          example: 'pending'
+        created:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was created.
+          example: '2021-02-11T16:37:03'
+        updated:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was last updated.
+          example: '2021-02-11T16:37:03'
+        is_sender:
+          x-linode-cli-display: 4
+          x-linode-filterable: true
+          type: boolean
+          description: >
+            If the requesting account created this transfer.
+          example: true
+        expiry:
+          x-linode-cli-display: 3
+          type: string
+          format: date-time
+          description: >
+            When this transfer expires. Transfers will automatically expire 24 hours after creation.
+          example: '2021-02-12T16:37:03'
+        entities:
+          type: object
+          description: >
+            A collection of the entities to include in this transfer request, separated by type.
+          properties:
+            linodes:
+              x-linode-cli-display: 5
+              type: array
+              items:
+                type: integer
+              description: >
+                An array containing the IDs of each of the Linodes included in this transfer.
+              example: [111, 222]
     ErrorObject:
       type: object
       description: >
@@ -15711,6 +16601,11 @@ components:
           - dns_zone_delete
           - dns_zone_import
           - dns_zone_update
+          - entity_transfer_accept
+          - entity_transfer_cancel
+          - entity_transfer_create
+          - entity_transfer_fail
+          - entity_transfer_stale
           - firewall_create
           - firewall_delete
           - firewall_disable
@@ -15721,6 +16616,7 @@ components:
           - host_reboot
           - image_delete
           - image_update
+          - image_upload
           - ipaddress_update
           - lassie_reboot
           - lish_boot
@@ -15819,14 +16715,13 @@ components:
           description: >
             The total duration in seconds that it takes for the Event to complete.
           example: 300.56
-          x-linode-cli-display: 10
+          x-linode-cli-display: 7
         entity:
           type: object
           readOnly: true
           description: >
             Detailed information about the Event's entity, including ID, type,
             label, and URL used to access it.
-          x-linode-cli-display: 4
           properties:
             id:
               type: integer
@@ -15856,6 +16751,7 @@ components:
                 The current label of this object. The label may reflect changes
                 that occur with this Event.
               example: Problem booting my Linode
+              x-linode-cli-display: 5
             type:
               type: string
               enum:
@@ -15864,6 +16760,7 @@ components:
               - community
               - disks
               - domain
+              - entity_transfer
               - firewall
               - image
               - ipaddress
@@ -15898,7 +16795,6 @@ components:
           description: |
             Detailed information about the Event's secondary entity, which provides additional information
             for events such as, but not limited to, `linode_boot`, `linode_reboot`, `linode_create`, and `linode_clone` Event actions.
-          x-linode-cli-display: 5
           properties:
             id:
               type: string
@@ -15943,13 +16839,11 @@ components:
           readOnly: true
           description: If this Event has been read.
           example: true
-          x-linode-cli-display: 9
         seen:
           type: boolean
           readOnly: true
           description: If this Event has been seen.
           example: true
-          x-linode-cli-display: 8
         status:
           type: string
           readOnly: true
@@ -15960,7 +16854,7 @@ components:
           - notification
           - scheduled
           - started
-          x-linode-cli-display: 7
+          x-linode-cli-display: 8
           x-linode-cli-color:
             failed: red
             finished: green
@@ -15991,11 +16885,11 @@ components:
             information may include, but is not limited to, a more detailed
             representation of events which can help diagnose non-obvious failures.
           example: None
+          x-linode-cli-display: 9
     Firewall:
       type: object
       description: >
-        A resource that controls incoming and outgoing network traffic to a Linode service. A Firewall can
-        be assigned to multiple Linode services, and up to five active Firewalls can be assigned to a single Linode service.
+        A resource that controls incoming and outgoing network traffic to a Linode service. Only one Firewall can be attached to a Linode at any given time.
         [Create a Firewall Device](/docs/api/networking/#firewall-create)
         to assign a Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode instances.
       properties:
@@ -16010,9 +16904,8 @@ components:
         label:
           x-linode-filterable: true
           type: string
-          description: >
-            The Firewall's label, for display purposes only. If no label is provided for a Firewall,
-            a default will be assigned.
+          description: |
+            The Firewall's label, for display purposes only.
 
             Firewall labels have the following constraints:
 
@@ -16020,6 +16913,7 @@ components:
               * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
               * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
               * Must be between 3 and 32 characters.
+              * Must be unique.
           example: firewall123
           minLength: 3
           maxLength: 32
@@ -16049,7 +16943,7 @@ components:
            The status of this Firewall.
 
              * When a Firewall is first created its status is `enabled`.
-             * Use the [Update Firewall](/docs/api/networking/#firewall-update) endpoint to set a Firewall's status to `enbaled` or `disabled`.
+             * Use the [Update Firewall](/docs/api/networking/#firewall-update) endpoint to set a Firewall's status to `enabled` or `disabled`.
              * Use the [Delete Firewall](/docs/api/networking/#firewall-delete) endpoint to delete a Firewall.
           enum:
           - enabled
@@ -16062,13 +16956,6 @@ components:
           description: |
             The inbound and outbound access rules to apply to the Firewall.
 
-              * A minimum of one open inbound rule is required. Any inbound
-                traffic that is not permitted by your rules will be blocked.
-              * Outbound rules are optional. When no outbound rules are specified,
-                all outbound traffic is allowed. If one or more outbound rules are
-                specified, all outbound traffic that is not permitted by your rules
-                will be blocked.
-
             A Firewall may have up to 25 rules across its inbound and outbound rulesets.
           properties:
             inbound:
@@ -16079,8 +16966,22 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/FirewallRuleConfig'
-          required:
-            - inbound
+            inbound_policy:
+              type: string
+              enum:
+              - ACCEPT
+              - DROP
+              description: |
+                The default behavior for inbound traffic. This setting can be overridden by [updating](/docs/api/networking/#firewall-rules-update) the `inbound.action` property of the Firewall Rule.
+              example: DROP
+            outbound_policy:
+              type: string
+              enum:
+              - ACCEPT
+              - DROP
+              description: |
+                The default behavior for outbound traffic. This setting can be overridden by [updating](/docs/api/networking/#firewall-rules-update) the `action` property for an individual Firewall Rule.
+              example: DROP
         tags:
           x-linode-filterable: true
           description: >
@@ -16133,28 +17034,48 @@ components:
             are treated as equivalent when accounting for this limit.
           properties:
             ipv4:
-              description: A list of IPv4 addresses or networks.
+              description: A list of IPv4 addresses or networks. Must be in IP/mask format.
               type: array
               items:
                 type: string
               example:
-              - 192.0.2.1
               - 192.0.2.0/24
             ipv6:
-              description: A list of IPv6 addresses or networks.
+              description: A list of IPv6 addresses or networks. Must be in IP/mask format.
               type: array
               items:
                 type: string
               example:
               - 2001:DB8::/32
+        action:
+          type: string
+          enum:
+          - ACCEPT
+          - DROP
+          description: |
+            Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's `inbound_policy` if this is an inbound rule, or the `outbound_policy` if this is an outbound rule.
+          example: ACCEPT
+        label:
+          type: string
+          description: |
+            Used to identify this rule. For display purposes only.
+          example: firewallrule123
+          minLength: 3
+          maxLength: 32
+        description:
+          type: string
+          description: |
+            Used to describe this rule. For display purposes only.
+          example: 'An example firewall rule description.'
+          minLength: 1
+          maxLength: 100
     FirewallDevices:
       type: object
       description: >
         Associates a Firewall with a Linode service. A Firewall can be assigned
-        to multiple Linode services, and up to five active Firewalls can
-        be assigned to a single Linode service. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if five other active Firewalls
-        are already assigned to the same service.
+        to a single Linode service at a time. Additional disabled Firewalls can be
+        assigned to a service, but they cannot be enabled if another active Firewall
+        is already assigned to the same service.
       properties:
         id:
           x-linode-filterable: true
@@ -16451,6 +17372,20 @@ components:
           x-linode-cli-color:
             None: black
             default_: white
+        status:
+          x-linode-cli-display: 7
+          type: string
+          enum:
+          - creating
+          - pending_upload
+          - available
+          description: |
+            The current status of this Image.  Only images in an "available" status
+            can be deployed.  Images in a "creating" status are being created from
+            a Linode Disk, and will become "available" shortly.  Images in a
+            "pending_upload" status are waiting for data to be uploaded for the
+            image, and will become "available" after the upload is complete and
+            processing occurs.
     ImagePublic:
       type: object
       description: Public Image object
@@ -16554,6 +17489,90 @@ components:
           x-linode-cli-color:
             None: black
             default_: white
+        status:
+          x-linode-cli-display: 7
+          type: string
+          enum:
+          - creating
+          - pending_upload
+          - available
+          description: |
+            The current status of this Image.  Only images in an "available" status
+            can be deployed.
+    LinodeConfigInterface:
+      type: object
+      description: >
+        The Network Interface to apply to this Linode's configuration profile.
+      properties:
+        label:
+          type: string
+          minLength: 1
+          maxLength: 64
+          pattern: '/[a-z0-9-]+/'
+          x-linode-filterable: true
+          nullable: true
+          description: |
+            The name of this interface.
+
+            Required for `vlan` purpose interfaces. Must be an empty string or `null` for `public` purpose interfaces.
+
+            If the VLAN label is new, a VLAN is created. Up to 10 VLANs can be created in each data center region. To view your active VLANs, use the [VLANs List](/docs/api/networking/#vlans-list) endpoint.
+
+            May only consist of ASCII letters, numbers, and dashes (`-`).
+
+            Must be unique among the Linode's interfaces.
+          example: example-interface
+        ipam_address:
+          type: string
+          format: ip/netmask
+          nullable: true
+          description: |
+            This Network Interface's private IP address in Classless Inter-Domain Routing (CIDR) notation.
+
+            Only used for `vlan` purpose interfaces. Must be an empty string or `null` for `public` purpose interfaces.
+
+            The Linode is configured to use this address for the associated interface upon reboot if Network Helper is enabled. If Network Helper is disabled, the address can be enabled with [manual static IP configuration](/docs/guides/linux-static-ip-configuration/).
+
+            Must be unique among the Linode's interfaces.
+          example: '10.0.0.1/24'
+        purpose:
+          type: string
+          enum:
+            - public
+            - vlan
+          description: |
+            The type of interface.
+
+            * `public`
+              * Only one `public` interface per Linode can be defined.
+              * The Linode's default public IPv4 address is assigned to the `public` interface.
+              * If no `public` interface is defined, the Linode is not reachable via the public internet; access can only be established via LISH or other Linodes connected to the same VLAN.
+
+            * `vlan`
+              * Configuring a `vlan` purpose interface attaches this Linode to the VLAN with the specified `label`.
+              * The Linode is configured to use the specified `ipam_address`, if any.
+          example: vlan
+    LinodeConfigInterfaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/LinodeConfigInterface'
+      description: |
+        An array of Network Interfaces to add to this Linode's Configuration Profile.
+
+        Up to three interface objects can be entered in this array. The position in the array determines the interface to which the settings apply:
+
+        - First/0:  eth0
+        - Second/1: eth1
+        - Third/2:  eth2
+
+        When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
+
+        **Note:** Changes to Linode interface configurations can be enabled by rebooting the Linode.
+
+        **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
+        If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
+        the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
+        you will be prompted to select a different data center or contact support.
     Invoice:
       type: object
       description: Account Invoice object
@@ -17063,36 +18082,43 @@ components:
           readOnly: true
     Linode:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/LinodeBase'
       properties:
         label:
           x-linode-filterable: true
           x-linode-cli-display: 2
-          description: >
+          type: string
+          description: |
             The Linode's label is for display purposes only. If no label is provided for a Linode,
             a default will be assigned.
 
             Linode labels have the following constraints:
 
-              * Must start with an alpha character.
+              * Must begin and end with an alphanumeric character.
               * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
               * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
+          example: linode123
+          minLength: 3
+          maxLength: 32
+          pattern: '^[a-zA-Z]((?!--|__|..)[a-zA-Z0-9-_.])+$'
         region:
+          type: string
           x-linode-filterable: true
           readOnly: true
           description: >
-            This is the location where the Linode was deployed. A Linode's region can only be changed by
+            This is the [Region](/docs/api/regions/#regions-list) where the Linode was deployed. A Linode's region can only be changed by
             initiating a [cross data center migration](/docs/api/linode-instances/#dc-migrationpending-host-migration-initiate).
-          x-linode-cli-display: 4
+          x-linode-cli-display: 3
+          example: us-east
         image:
           x-linode-filterable: true
           readOnly: true
           nullable: true
           allOf:
           - $ref: '#/components/schemas/DiskRequest/properties/image'
-          x-linode-cli-display: 6
+          x-linode-cli-display: 5
+          example: linode/debian10
         type:
+          type: string
           readOnly: true
           description: >
             This is the [Linode Type](/docs/api/linode-types/#types-list) that this
@@ -17100,7 +18126,8 @@ components:
 
             To change a Linode's Type, use
             [POST /linode/instances/{linodeId}/resize](/docs/api/linode-instances/#linode-resize).
-          x-linode-cli-display: 5
+          x-linode-cli-display: 4
+          example: g6-standard-1
         group:
           deprecated: true
           type: string
@@ -17148,7 +18175,7 @@ components:
           - cloning
           - restoring
           - stopped
-          x-linode-cli-display: 7
+          x-linode-cli-display: 6
           x-linode-cli-color:
               running: green
               offline: red
@@ -17175,10 +18202,12 @@ components:
           readOnly: true
         ipv4:
           type: array
+          format: ipv4
           items:
             type: string
           example:
-            - 123.45.67.890
+            - 203.0.113.1
+            - 192.0.2.1
           readOnly: true
           description: |
             This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address
@@ -17188,14 +18217,16 @@ components:
 
             IPv4 addresses may be reassigned between your Linodes, or shared with other Linodes.
             See the [/networking](/docs/api/networking/) endpoints for details.
-          x-linode-cli-display: 10
+          x-linode-cli-display: 7
         ipv6:
           type: string
+          format: ipv6/128
+          nullable: true
           description: >
-            This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not
+            This Linode's IPv6 SLAAC address. This address is specific to a Linode, and may not
             be shared. If the Linode has not been assigned an IPv6 address, the return value will
             be `null`.
-          example: 'c001:d00d::1234'
+          example: 'c001:d00d::1337/128'
           readOnly: true
         specs:
           type: object
@@ -17373,41 +18404,12 @@ components:
             To prevent a loop, Lassie will give up if there have been more than 5 boot
             jobs issued within 15 minutes.
           example: true
-    LinodeBase:
-      type: object
-      description: Common properties for Linode Request and Response objects.
-      properties:
-        label:
-          type: string
-          description: >
-            The Linode's label is for display purposes only. If no label is provided for a Linode,
-            a default will be assigned.
-
-            Linode labels have the following constraints:
-
-              * Must begin and end with an alphanumeric character.
-              * May only consist of alphanumeric characters, dashes (`-`), underscores (`_`) or periods (`.`).
-              * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
-          example: linode123
-          minLength: 3
-          maxLength: 32
-          pattern: '^[a-zA-Z]((?!--|__|..)[a-zA-Z0-9-_.])+$'
-        group:
-          deprecated: true
-          type: string
-          x-linode-filterable: true
-          description: >
-            A deprecated property denoting a group label for this Linode.
-          example: "Linode-Group"
-        type:
-          $ref: '#/components/schemas/LinodeType/properties/id'
-        region:
-          $ref: '#/components/schemas/Region/properties/id'
     LinodeConfig:
       type: object
       required:
       - label
       - devices
+      - purpose
       properties:
         id:
           type: integer
@@ -17453,6 +18455,8 @@ components:
           - paravirt
           - fullvirt
           example: paravirt
+        interfaces:
+          $ref: '#/components/schemas/LinodeConfigInterfaces'
         helpers:
           type: object
           description: Helpers enabled when booting to this Linode Config.
@@ -18023,16 +19027,20 @@ components:
           x-linode-cli-display: 2
         api_key:
           type: string
-          description: >
+          description: |
             The API key for this Client, used when configuring the Longview
             Client application on your Linode.
+
+            Returns as `[REDACTED]` if you do not have read-write access to this client.
           example: BD1B4B54-D752-A76D-5A9BD8A17F39DB61
           readOnly: true
         install_code:
           type: string
-          description: >
+          description: |
             The install code for this Client, used when configuring the Longview
             Client application on your Linode.
+
+            Returns as `[REDACTED]` if you do not have read-write access to this client.
           example: BD1B5605-BF5E-D385-BA07AD518BE7F321
           readOnly: true
           x-linode-cli-display: 4
@@ -20362,6 +21370,20 @@ components:
           description: >
             The ID of the Volume this ticket is regarding, if relevant.
           example: null
+        vlan:
+          type: string
+          description: |
+            The label of the VLAN this ticket is regarding, if relevant. To view your VLANs, use the VLANs List ([GET /networking/vlans](/docs/api/networking/#vlans-list)) endpoint.
+
+            Requires a specified `region` to identify the VLAN.
+          example: null
+        region:
+          type: string
+          description: |
+            The [Region](/docs/api/regions/) ID for the associated VLAN this ticket is regarding.
+
+            Only allowed when submitting a VLAN ticket.
+          example: null
     Transfer:
       type: object
       description: >
@@ -20551,6 +21573,92 @@ components:
             The last IP Address to successfully authenticate with this TrustedDevice.
           example: 12.34.56.78
           readOnly: true
+    ServiceTransfer:
+      type: object
+      description: >
+        An object representing a Service Transfer.
+      properties:
+        token:
+          x-linode-cli-display: 1
+          type: string
+          format: uuid
+          description: >
+            The token used to identify and accept or cancel this transfer.
+          example: "123E4567-E89B-12D3-A456-426614174000"
+        status:
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+          x-linode-cli-color:
+            accepted: yellow
+            cancelled: red
+            completed: green
+            failed: red
+            pending: yellow
+            stale: red
+          type: string
+          enum:
+          - accepted
+          - cancelled
+          - completed
+          - failed
+          - pending
+          - stale
+          description: |
+            The status of the transfer request.
+
+            `accepted`: The transfer has been accepted by another user and is currently in progress.
+            Transfers can take up to 3 hours to complete.
+
+            `cancelled`: The transfer has been cancelled by the sender.
+
+            `completed`: The transfer has completed successfully.
+
+            `failed`: The transfer has failed after initiation.
+
+            `pending`: The transfer is ready to be accepted.
+
+            `stale`: The transfer has exceeded its expiration date. It can no longer be accepted or
+            cancelled.
+          example: 'pending'
+        created:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was created.
+          example: '2021-02-11T16:37:03'
+        updated:
+          type: string
+          format: date-time
+          description: >
+            When this transfer was last updated.
+          example: '2021-02-11T16:37:03'
+        is_sender:
+          x-linode-cli-display: 4
+          x-linode-filterable: true
+          type: boolean
+          description: >
+            If the requesting account created this transfer.
+          example: true
+        expiry:
+          x-linode-cli-display: 3
+          type: string
+          format: date-time
+          description: >
+            When this transfer expires. Transfers will automatically expire 24 hours after creation.
+          example: '2021-02-12T16:37:03'
+        entities:
+          type: object
+          description: >
+            A collection of the services to include in this transfer request, separated by type.
+          properties:
+            linodes:
+              x-linode-cli-display: 5
+              type: array
+              items:
+                type: integer
+              description: >
+                An array containing the IDs of each of the Linodes included in this transfer.
+              example: [111, 222]
     SSHKey:
       type: object
       description: >
@@ -20602,6 +21710,47 @@ components:
           description: >
             The public SSH Key, which is used to authenticate to the root user
             of the Linodes you deploy.
+    Vlans:
+      type: object
+      description: >
+       A virtual local area network (VLAN) associated with your Account.
+      properties:
+        label:
+          type: string
+          description: The name of this VLAN.
+          example: vlan-example
+          readOnly: true
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+        region:
+          type: string
+          description: |
+            This VLAN's data center region.
+
+            **Note:** Currently, a VLAN can only be assigned to a Linode
+            within the same data center region.
+          example:  ap-west
+          readOnly: true
+          x-linode-cli-display: 1
+          x-linode-filterable: true
+        linodes:
+          type: array
+          description: >
+            An array of Linode IDs attached to this VLAN.
+          items:
+            type: integer
+          x-linode-cli-display: 3
+          readOnly: true
+          example:
+            - 111
+            - 222
+        created:
+          type: string
+          format: date-time
+          description: >
+            The date this VLAN was created.
+          example: "2020-01-01T00:01:01"
+          readOnly: true
     Volume:
       type: object
       required:

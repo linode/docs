@@ -1,0 +1,29 @@
+<div class="flex flex-col">
+  <div class="hidden sm:block">
+    {{ partial "sections/content/tags.html" .page }}
+  </div>
+  {{ $borderBottomImage := "media/images/ui/border-b-gray.png" | relURL }}
+  {{ $mainNavPartial := "sections/content/other-versions.html" }}
+  {{ if .mainNavPartial }}
+    {{ $mainNavPartial = .mainNavPartial}}
+  {{ end }}
+  
+  <div class="pt-1 mb-0 md:hidden block">
+    {{ partial $mainNavPartial .page }}
+  </div>
+  <div class="pt-3 mb-8 md:block hidden" style="min-height: 85px; padding-bottom: 1px; background-image: url({{ $borderBottomImage }}); background-position: left bottom; background-repeat: repeat-x;">
+    <div class='flex flex-wrap-reverse space-y-4 space-y-reverse content-center items-start justify-between {{ .class | default "pb-8" }}'>
+      <div>
+        {{ partial $mainNavPartial .page }}
+      </div>
+      <div class="ml-auto">
+        <div class="flex justify-end flex-initial">
+          {{ $dropdowns := slice }}
+          {{ $dropdowns = $dropdowns | append (dict "page" .page "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html")}}
+          {{ $dropdowns = $dropdowns | append (dict "page" .page "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html")}}
+          {{ partial "components/dropdowns.html" (dict "page" .page "dropdowns" $dropdowns) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

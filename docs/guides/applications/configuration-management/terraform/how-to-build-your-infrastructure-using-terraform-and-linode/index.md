@@ -641,6 +641,14 @@ Create a deployment for an imaginary client:
 
     {{< file "~/terraform/client1/main.tf" aconf >}}
 # Client 1 Infrastructure
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
 provider "linode" {
   token = "YOUR_LINODE_API_TOKEN"
 }

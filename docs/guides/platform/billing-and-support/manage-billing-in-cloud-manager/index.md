@@ -24,11 +24,18 @@ To view your current balance, follow the steps below. This shows you the sum of 
 1.  Select **Account** from the sidebar links.
 1.  The Billing Info page shows you a billing summary at the top of the screen.
 
-    [![This customer has a $31.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $31.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
+    [![This customer has a $9.00 uninvoiced balance and $24.00 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $31.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
 
-    **Amount Due** is the current invoiced balance and **Uninvoiced Balance** is the accrued balance that has not yet been invoiced for the month.
+    Here, you can keep track of your outstanding balance.
 
-    Here, you can keep track of your outstanding balance. In the example above, the customer has accrued a $31.52 balance for Linode services this month so far, but it has not been invoiced yet. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
+    -  **Account Balance** is the current invoiced balance. This is how much you currently owe. If you have credit on your account, you instead see that credit. In the example above, the customer owes $24.00.
+    -  **Accrued Charges** is the accrued balance that has not yet been invoiced for the month. In the example above, the customer has accrued a $9.00 balance for Linode services this month so far, but has not been invoiced yet for those services. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
+
+### Promotional Credit
+
+If you have a promotional credit active on your account, the credit appears on the Billing Info page. In the below example, the user has a $100 credit applied to their account. If the promo code has an expiration date, the expiration date is also displayed.
+
+![This customer has a $100 promotional credit applied to their account.](promo-code-applied-to-new-account.png)
 
 ## Making a Payment
 

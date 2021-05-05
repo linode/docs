@@ -19,7 +19,7 @@ relations:
         key: how-to-install-drupal-drush
         keywords:
            - distribution: Debian 10
-image: feature.png
+image: InstallDrupalUsingDrushDeb10.png
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/','/websites/cms/drupal/how-to-install-drupal-using-drush-on-debian-10/']
 ---
 [Drupal](https://www.drupal.org/docs/8) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive “community” websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.

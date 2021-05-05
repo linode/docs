@@ -33,7 +33,7 @@ While Linode NodeBalancers do support ProxyProtocol, the Linode CCM does not. Fo
 
 ## Before you Begin
 
-1. This guide assumes that your Kubernetes cluster has the Linode Cloud Controller Manager (CCM) installed on your Kubernetes cluster. The Linode CCM is installed by default on clusters deployed with the [Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) and the [Linode Terraform K8s module](http://localhost:1313/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
+1. This guide assumes that your Kubernetes cluster has the Linode Cloud Controller Manager (CCM) installed on your Kubernetes cluster. The Linode CCM is installed by default on clusters deployed with the [Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) and the [Linode Terraform K8s module](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
 
     {{< note >}}
 The recommended way to deploy a Kubernetes cluster on Linode is using the Linode Kubernetes Engine (managed) or the Linode Terraform K8s module (unmanaged). However, to learn how to install the Linode CCM on a cluster that was not installed in the two ways mentioned above, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
@@ -162,9 +162,9 @@ In this section you will use Helm to install the NGINX Ingress Controller on you
 If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
 {{</ note >}}
 
-1. Add the stable Helm charts repository to your Helm repos.
+1. Add the stable Helm ingress-nginx repository to your Helm repos.
 
-        helm repo add stable https://charts.helm.sh/stable
+        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 1. Update your Helm repositories.
 
@@ -172,21 +172,21 @@ If you would like a slightly deeper dive into the NGINX Ingress Controller, see 
 
 1. Install the NGINX Ingress Controller. This installation will result in a Linode NodeBalancer being created.
 
-        helm install nginx-ingress stable/nginx-ingress
+        helm install ingress-nginx ingress-nginx/ingress-nginx
 
     You will see a similar output:
 
     {{< output >}}
-NAME: nginx-ingress
-LAST DEPLOYED: Mon Jul 20 10:27:03 2020
+NAME: ingress-nginx
+LAST DEPLOYED: Fri Apr  9 21:29:47 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 NOTES:
-The nginx-ingress controller has been installed.
+The ingress-nginx controller has been installed.
 It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status by running 'kubectl --namespace default get services -o wide -w nginx-ingress-controller'
+You can watch the status by running 'kubectl --namespace default get services -o wide -w ingress-nginx-controller'
 ...
    {{</ output >}}
 
@@ -196,13 +196,13 @@ Now that Linode NodeBalancers have been created by the NGINX Ingress Controller,
 
 1. Access your NodeBalancer's assigned external IP address.
 
-        kubectl --namespace default get services -o wide -w nginx-ingress-controller
+        kubectl --namespace default get services -o wide -w ingress-nginx-controller
 
     The command will return a similar output:
 
     {{< output >}}
 NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                      AGE     SELECTOR
-my-nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=my-nginx-ingress
+my-ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/instance=cingress-nginx,app.kubernetes.io/name=ingress-nginx
     {{</ output >}}
 
 1. Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/platform/manager/dns-manager/#add-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.

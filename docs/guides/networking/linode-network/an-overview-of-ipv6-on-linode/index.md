@@ -40,17 +40,21 @@ Please be sure to allow ICMPv6 in your [firewall](/docs/security/securing-your-s
 ## How to Find Your IPv6 Address
 
 You can find your Linode's IPv6 address using the Linode Cloud Manager or the `ip` tool with the Linux Terminal.
+
 ### Linode Cloud Manager
 
 1. Log in to your [Linode Cloud Manager](https://cloud.linode.com/) account and select the Linodes link in the sidebar to view a list of all your Linodes.
 
-1. On the Linodes page, under the *IP Addresses* column, you can quickly view each Linode's IP addresses.
+1. To see a more detailed view, select the Linode which uses the IPv6 address you would like to find.
+
+1. In the following page, you can find the Linode's IPv6 address in the **IP Address** column.
 
     ![List of Linodes to view your IPv6 address.](ip-address-quick-view.png)
 
-1. To see a more detailed view, select the Linode whose IPv6 address you would like to find and click on its **Networking** tab.
 
-1. Under the *IPv6* section, you can view the Linode's SLAAC and Link Local IPv6 addresses.
+1. For more detailed information related to the Linode's IPv6 address, click on the **Network** tab.
+
+1. Under the *IP Addresses* table, you can view the Linode's SLAAC and Link Local IPv6 addresses.
 
     ![A Linode Networking Tab detail view.](ip-address-detail-view.png)
 
@@ -87,7 +91,7 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 ## IPv6 Prefixes and Pools
 
 {{< note >}}
-The IPv6 `/116` prefix is not available in the Toronto, Atlanta, or Mumbai data centers.
+The IPv6 `/116` prefix is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers.
 {{</ note >}}
 
 IPv6 addresses are allocated in blocks. These are indicated with a slash `/` followed by a number in base 10, the length of the network **prefix** in bits. This translates to the number of available addresses in the **pool**. For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.

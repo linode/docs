@@ -50,7 +50,13 @@
     "required": false,
     "type": "text",
     "description": "This sets the H1, but leaves the title in the metadata"
-    },
+  },
+  "enable_h1": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "Defaults to false if not present, which means that a guide's title is shown instead of its h1_title at the top of the page. If set to true, the h1_title is displayed."
+  },
   "comments": {
     "elements": false,
     "required": false,
