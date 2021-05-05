@@ -235,4 +235,4 @@ In addition to automating deployments, Chef allows for continuous delivery utili
 
 ### Where can I learn about Chef in-depth?
 
-In-depth (and free) Chef training can be found at [learn.chef.io](https://learn.chef.io/).
+In-depth (and free) Chef training can be found on Chef's education page at [learn.chef.io](https://learn.chef.io).
