@@ -278,6 +278,7 @@ dahdi
 databags
 datacenter
 datadir
+Datadog
 dataflow
 datagram
 dataset
@@ -658,6 +659,7 @@ img
 immutant
 impor
 incentivized
+inclusivity
 inet
 inet6
 infographic
@@ -766,6 +768,7 @@ kube
 kubeadm
 kubeconfig
 kubectl
+kubectx
 kubeflow
 kubelet
 kubelets
