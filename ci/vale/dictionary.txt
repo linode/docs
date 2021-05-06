@@ -906,6 +906,7 @@ memcrashed
 menuentry
 mesos
 metabase
+metacharacter
 metacity
 metapackage
 metaparameters
