@@ -4,12 +4,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'The cert-manager tool can be used to manage SSL/TLS certificates for applications within a Kubernetes cluster. This part goes over installing and configuring cert-manager, as well as obtaining your first SSL certificate.'
+og_description: 'The cert-manager tool can be used to manage SSL/TLS certificates for applications within a Kubernetes cluster. This part goes over installing and configuring cert-manager, as well as obtaining your first SSL certificate.'
+title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 12: cert-manager"
+h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 12: cert-manager"
+enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
 modified_by:
   name: Linode
-title: "Building a Continuous Deployment Pipeline Using LKE, Part 12: cert-manager"
 contributor:
   name: Linode
 tags: ["kubernetes", "lke"]

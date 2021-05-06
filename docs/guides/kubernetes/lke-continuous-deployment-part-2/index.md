@@ -4,12 +4,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'The sample application that we will be running on Kubernetes is called DockerCoins (a demo app just for this presentation). This part of the guide will take a look at DockerCoins and examine how it works and how the app can be run locally.'
+og_description: 'The sample application that we will be running on Kubernetes is called DockerCoins (a demo app just for this presentation). This part of the guide will take a look at DockerCoins and examine how it works and how the app can be run locally.'
+title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 2: Sample Application"
+h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 2: Sample Application"
+enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
 modified_by:
   name: Linode
-title: "Building a Continuous Deployment Pipeline Using LKE, Part 2: Sample Application"
 contributor:
   name: Linode
 tags: ["kubernetes", "lke"]
