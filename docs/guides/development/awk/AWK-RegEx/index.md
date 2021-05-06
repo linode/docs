@@ -175,12 +175,12 @@ Quantifiers specify how many of something it should match. The following table l
 
 | Quantifier| Description                   |
 | --------- |----------------------------   |
-| +         | Match one or more occurance   |
-| *         | Match zero or more occurances |
-| ?         | Match zero or one occurance   |
-| {n}       | Match exactly n occurances    |
-| {n,}      | Match at least n occurances   |
-| {n,m}     | Match from n to m occurances  |
+| +         | Match one or more occurrence   |
+| *         | Match zero or more occurrences |
+| ?         | Match zero or one occurrence   |
+| {n}       | Match exactly n occurrences    |
+| {n,}      | Match at least n occurrences   |
+| {n,m}     | Match from n to m occurrences  |
 
 Here are some examples of quantifiers:
 
@@ -346,9 +346,9 @@ dogs and cats
          doghouse
              dog food
 
-## Searching for Special Metacharacters
+## Searching for Special Metacharacter
 
-Searching for patterns where you want to find literal metacharacters require special care, and you must "escape" the metacharacters with a `\` backslash character. Otherwise, you get unwanted results.
+Searching for patterns where you want to find literal metacharacter require special care, and you must "escape" the metacharacter with a `\` backslash character. Otherwise, you get unwanted results.
 
 If you are looking for the string **/Mr. Jones/**, the `.` still means "any single character", even though it is obvious that you meant "a period at the end of **Mr.**".  Because of this, the pattern `/Mr. Smith/` matches:
 
