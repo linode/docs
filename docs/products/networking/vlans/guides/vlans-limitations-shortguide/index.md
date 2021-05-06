@@ -5,10 +5,10 @@ author:
   email: docs@linode.com
 description: 'Shortguide that lists the limitations of VLANs on various guides.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
+modified: 2021-04-07
 modified_by:
   name: Linode
-published: 2018-08-03
+published: 2021-04-07
 title: "VLANs Limitations"
 keywords: []
 headless: true

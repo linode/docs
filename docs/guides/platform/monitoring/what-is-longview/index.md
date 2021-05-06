@@ -126,72 +126,76 @@ Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Started SYSV: Longview s
 
 It’s also possible to manually install Longview for CentOS, Debian, and Ubuntu. You should only need to manually install it if the instructions in the previous section failed.
 
+{{< note >}}
+Although previously available, Longview is currently not officially supported and maintained for Fedora installations.
+{{< /note >}}
+
 1. Before completing the steps below, ensure you have [added a Longview Client instance](#add-the-longview-client) using the Cloud Manager.
 
 1.  Add a configuration file to store the repository information for the Longview agent:
 
-    > **CentOS**:
-    >
->    Using the text editor of your choice, like [nano](https://www.linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), create a `.repo` file and copy the contents of the example file below. Replace `REV` in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
->    {{< file "/etc/yum.repos.d/longview.repo" config >}}
-[longview]
-name=Longview Repo
-baseurl=https://yum-longview.linode.com/centos/REV/noarch/
-enabled=1
-gpgcheck=1
-{{< /file >}}
+  **CentOS**:
 
-    > **Debian or Ubuntu**:
-    >
-    > Find the codename of the distribution running on your Linode.
-    >
-    >     root@localhost:~# lsb_release -sc
-    >     stretch
-    > Using the text editor of your choice, like [nano](https://www.linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), create a custom sources file that includes Longview's Debian repository and the Debian distribution codename. In the command below, replace *stretch* with the output of the previous step.
-    > {{< file "/etc/apt/sources.list.d/longview.list" config >}}
-deb http://apt-longview.linode.com/ stretch main
-{{< /file >}}
+   Using the text editor of your choice, like [nano](https://www.linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), create a `.repo` file and copy the contents of the example file below. Replace `REV` in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
+   {{< file "/etc/yum.repos.d/longview.repo" config >}}
+    [longview]
+    name=Longview Repo
+    baseurl=https://yum-longview.linode.com/centos/REV/noarch/
+    enabled=1
+    gpgcheck=1
+   {{< /file >}}
 
-1.  Download the repository's GPG key and import or move it to the correct location:
+   **Debian or Ubuntu**:
 
-    > **Centos**:
-    >
-    >     sudo curl -O https://yum-longview.linode.com/linode.key
-    >     sudo rpm --import linode.key
+  Find the codename of the distribution running on your Linode.
 
-    > **Debian or Ubuntu**:
-    >
-    >     sudo curl -O https://apt-longview.linode.com/linode.gpg
-    >     sudo mv linode.gpg /etc/apt/trusted.gpg.d/linode.gpg
+     root@localhost:~# lsb_release -sc
+     stretch
 
-1.  Create a directory for the API key:
+   Using the text editor of your choice, like [nano](https://www.linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), create a custom sources file that includes Longview's Debian repository and the Debian distribution codename. In the command below, replace *stretch* with the output of the previous step.
+     {{< file "/etc/apt/sources.list.d/longview.list" config >}}
+   deb http://apt-longview.linode.com/ stretch main
+      {{< /file >}}
+
+3\.  Download the repository's GPG key and import or move it to the correct location:
+
+  **Centos**:
+
+      sudo curl -O https://yum-longview.linode.com/linode.key
+      sudo rpm --import linode.key
+
+  **Debian or Ubuntu**:
+
+      sudo curl -O https://apt-longview.linode.com/linode.gpg
+      sudo mv linode.gpg /etc/apt/trusted.gpg.d/linode.gpg
+
+4\.  Create a directory for the API key:
 
         sudo mkdir /etc/linode/
 
-1.  Copy the API key from the **Installation** tab of your Longview client's [detailed view](#access-your-longview-client-s-detailed-view) in the Linode Cloud Manager. Put the key into a file, replacing the key in the command below with your own.
+5\.  Copy the API key from the **Installation** tab of your Longview client's [detailed view](#access-your-longview-client-s-detailed-view) in the Linode Cloud Manager. Put the key into a file, replacing the key in the command below with your own.
 
         echo '266096EE-CDBA-0EBB-23D067749E27B9ED' | sudo tee /etc/linode/longview.key
 
-1.  Install Longview:
+6\.  Install Longview:
 
-    > **CentOS**:
-    >
-    >     sudo yum install linode-longview
+  **CentOS**:
 
-    > **Debian or Ubuntu**:
-    >
-    >     sudo apt-get update
-    >     sudo apt-get install linode-longview
+    sudo yum install linode-longview
 
-1. Once the installation is complete, verify that the Longview agent is running:
+  **Debian or Ubuntu**:
+
+    sudo apt-get update
+    sudo apt-get install linode-longview
+
+7\. Once the installation is complete, verify that the Longview agent is running:
 
         sudo systemctl status longview
 
-    You should see a similar output:
+  You should see a similar output:
 
-    > **CentOS**:
-    >
-    > {{< output >}}
+  **CentOS**:
+    {{< output >}}
 ● longview.service - SYSV: Longview statistics gathering
    Loaded: loaded (/etc/rc.d/init.d/longview; bad; vendor preset: disabled)
    Active: active (running) since Tue 2019-12-10 22:35:11 UTC; 40s ago
@@ -204,9 +208,8 @@ Dec 10 22:35:11 li322-60.members.linode.com longview[12198]: Starting longview: 
 Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Started SYSV: Longview statistics gathering.
     {{</ output >}}
 
-    > **Debian or Ubuntu**:
-    >
-    >  {{< output >}}
+  **Debian or Ubuntu**:
+    {{< output >}}
 ● longview.service - LSB: Longview Monitoring Agent
    Loaded: loaded (/etc/init.d/longview; generated; vendor preset: enabled)
    Active: active (running) since Mon 2019-12-09 21:55:39 UTC; 2s ago
@@ -217,19 +220,19 @@ Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Started SYSV: Longview s
            └─3001 linode-longview
       {{</ output >}}
 
-    If the Longview client is not running, start it with the following command:
+  If the Longview client is not running, start it with the following command:
 
-        sudo systemctl start longview
+      sudo systemctl start longview
 
-    Your output should resemble the example output above.
+  Your output should resemble the example output above.
 
-1. Switch back to the Linode Cloud Manager's Longview Clients page in your browser and observe your Longview client's quick view metrics and graph.
+8\. Switch back to the Linode Cloud Manager's Longview Clients page in your browser and observe your Longview client's quick view metrics and graph.
 
-    {{< note >}}
+  {{< note >}}
   It can take several minutes for data to load and display in the Cloud Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
     {{</ note >}}
 
-    ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics")
+  ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics")
 
 ## Longview's Data Explained
 

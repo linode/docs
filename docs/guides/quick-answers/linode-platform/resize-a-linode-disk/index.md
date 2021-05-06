@@ -43,4 +43,6 @@ This Quick Answer will show you how to resize a disk on your Linode. See our [Di
 
 {{< note >}}
 The Linode Cloud Manager will not allow you to resize your disk to an amount smaller than the space taken up by files on your filesystem. To confirm how much space you're using, issue [the `df -h` command](https://linux.die.net/man/1/df) on your Linode.
+
+Additionally, if a disk is created using custom partitions, resizing is not possible. If using a raw disk, the disk can only be resized to a larger disk.
 {{< /note >}}
