@@ -350,7 +350,7 @@ dogs and cats
 
 Searching for patterns where you want to find literal metacharacter require special care, and you must "escape" the metacharacter with a `\` backslash character. Otherwise, you get unwanted results.
 
-If you are looking for the string **/Mr. Jones/**, the `.` still means "any single character", even though it is obvious that you meant "a period at the end of **Mr.**".  Because of this, the pattern `/Mr. Smith/` matches:
+If you are looking for the string **/Mr. Jones/**, the `.` still means "any single character", even though it is obvious that you meant "a period at the end of **Mr.**". Because of this, the pattern `/Mr. Smith/` matches:
 
       Mr. Smith
       Mrs Smith
@@ -362,7 +362,7 @@ Instead, you must escape the `.` with a backslash so the pattern would be `/Mr\.
 Any time AWK gives you an error message about a pattern's syntax, the first thing to check is for a metacharacter that should be escaped which you might have missed.
     {{< /note >}}
 
-Here are more examples of patterns that won't work as expected, and their corrected forms:
+Here are more examples of patterns that does not work as expected, and their corrected forms:
 
       /(312) 588-2300/            /\(312\) 588-2300/
       /M*A*S*H/                   /M\*A\*S\*H/
