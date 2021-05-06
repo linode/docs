@@ -3,16 +3,16 @@ slug: lke-continuous-deployment-part-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This series of guides will waklk you through setting up a continous deployment pipeline on LKE.'
-keywords: ['kubernets', 'k8s', 'lke']
+description: 'ExternalDNS is a tool that automatically manages external DNS records from within the Kubernetes cluster. It can integrate with Linode DNS (among other providers). This portion of the series has us installing ExternalDNS using Helm and testing its functionality.'
+keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-05
+published: 2021-05-06
 modified_by:
   name: Linode
 title: "Building a Continuous Deployment Pipeline Using LKE, Part 8: ExternalDNS"
 contributor:
   name: Linode
-tags: ["kubernetes"]
+tags: ["kubernetes", "lke"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: ExternalDNS](cd-presentation-header-08-externaldns.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: ExternalDNS")
@@ -21,7 +21,7 @@ tags: ["kubernetes"]
 
 ## ExternalDNS
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt neque ex, at euismod nunc ornare nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam scelerisque tristique sapien, in pharetra lectus rhoncus ut. Quisque pellentesque tempus scelerisque.
+ExternalDNS is a tool that automatically manages external DNS records from within the Kubernetes cluster. It can integrate with Linode DNS (among other providers). This portion of the series has us installing ExternalDNS using Helm and testing its functionality.
 
 ## Navigate the Series
 

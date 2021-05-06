@@ -3,16 +3,16 @@ slug: lke-continuous-deployment-part-6
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This series of guides will waklk you through setting up a continous deployment pipeline on LKE.'
-keywords: ['kubernets', 'k8s', 'lke']
+description: 'The next steps are to access our sample application over a domain (DNS), setup an Ingress Controller as a load balancer / reverse proxy, and collect metrics on our application. This guide provides an overview of these components, though each of them will be discussed in greater detail within Module 2.'
+keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-05
+published: 2021-05-06
 modified_by:
   name: Linode
 title: "Building a Continuous Deployment Pipeline Using LKE, Part 6: DNS, Ingress, and Metrics"
 contributor:
   name: Linode
-tags: ["kubernetes"]
+tags: ["kubernetes", "lke"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: DNS, Ingress, and Metrics](cd-presentation-header-06-dns-ingress-metrics.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: DNS, Ingress, and Metrics")
@@ -21,7 +21,7 @@ tags: ["kubernetes"]
 
 ## DNS, Ingress, and Metrics
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt neque ex, at euismod nunc ornare nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam scelerisque tristique sapien, in pharetra lectus rhoncus ut. Quisque pellentesque tempus scelerisque.
+The next steps are to access our sample application over a domain (DNS), setup an Ingress Controller as a load balancer / reverse proxy, and collect metrics on our application. This guide provides an overview of these components, though each of them will be discussed in greater detail within Module 2.
 
 ## Navigate the Series
 

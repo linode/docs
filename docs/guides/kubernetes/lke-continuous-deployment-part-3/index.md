@@ -3,16 +3,16 @@ slug: lke-continuous-deployment-part-3
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This series of guides will waklk you through setting up a continous deployment pipeline on LKE.'
-keywords: ['kubernets', 'k8s', 'lke']
+description: 'Managed Kubernetes clusters are much easier to setup and maintain than self-managed Kubernetes clusters. This portion goes over setting up a cluster using the Linode Kubernetes Engine (LKE) through the Cloud Manager and the Linode CLI.'
+keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-05
+published: 2021-05-06
 modified_by:
   name: Linode
 title: "Building a Continuous Deployment Pipeline Using LKE, Part 3: Deploying the LKE Cluster"
 contributor:
   name: Linode
-tags: ["kubernetes"]
+tags: ["kubernetes", "lke"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploying our LKE Cluster](cd-presentation-header-03-deploying-lke-cluster.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Deploy the Cluster")
@@ -21,7 +21,7 @@ tags: ["kubernetes"]
 
 ## Deploying the LKE Cluster
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt neque ex, at euismod nunc ornare nec. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam scelerisque tristique sapien, in pharetra lectus rhoncus ut. Quisque pellentesque tempus scelerisque.
+Managed Kubernetes clusters are much easier to setup and maintain than self-managed Kubernetes clusters. This portion goes over setting up a cluster using the Linode Kubernetes Engine (LKE) through the Cloud Manager and the Linode CLI.
 
 ## Navigate the Series
 
@@ -46,10 +46,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt neque e
 
 ### The best way to deploy Kubernetes
 
-*The best way to deploy Kubernetes is to get someone else to
-do it for us.*
+> *"The best way to deploy Kubernetes is to get someone else to
+do it for us."*
 
-(Me, ever since I've been working with Kubernetes)
+\- **Me**, ever since I've been working with Kubernetes
 
 ### Managed Kubernetes
 
