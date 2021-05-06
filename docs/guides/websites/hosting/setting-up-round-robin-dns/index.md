@@ -88,9 +88,7 @@ The output should list the IP address of every Linode currently configured to re
 
 ## Putting NodeBalancers in Charge
 
-While the above configuration is a functional round-robin DNS configuration, it does not provide a complex level of redundancy and fault tolerance that can be achieved through other means. This has to do with the way DNS functions. While using round-robin DNS will distribute the load between servers, it does not necessarily do this based on whether or not the server is active. In other words, if one Linode goes down, some users will still be directed to an out of service Linode, as DNS is typically not aware of the state of running servers. This effect can be worsened if the DNS response is cached, which could continue to force users to connect to a failed or failing server repeatedly instead of redirecting them to one that works. While using a low TTL in your DNS configuration can reduce the impact of caching issues, it can not guarantee high availability.
-
-Due to these reasons, some users may have better performance combining Round-Robin DNS with High Availability Solutions like NodeBalancers, distributed between different data centers.
+While the above configuration is a functional round-robin DNS configuration, it does not provide a complex level of redundancy and fault tolerance that can be achieved through other means. Due to this, some users may have better performance combining Round-Robin DNS with High Availability Solutions like NodeBalancers, distributed between different data centers.
 
 ### Creating NodeBalancers
 
