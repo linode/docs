@@ -60,6 +60,15 @@ The next sections will illustrate core Terraform concepts with examples written 
 Here's a simple example of a complete Terraform configuration in HCL:
 
 {{< file "example.tf" >}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
     token = "your-linode-api-token"
 }
@@ -97,6 +106,10 @@ Terraform resources can depend on each other. When one resource depends on anoth
 The following snippet expands on the previous example. It declares a new domain with an A record that targets the Linode instance's IP address:
 
 {{< file "example.tf" >}}
+terraform {
+...
+}
+
 provider "linode" {
     # ...
 }
@@ -132,6 +145,15 @@ The previous example hard-coded sensitive data in your configuration, including 
 Input variables can also be used for non-sensitive data. The following example files will employ variables for the sensitive `token` and `root_pass` arguments and the non-sensitive `authorized_keys` and `region` arguments:
 
 {{< file "example.tf" >}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
     token = var.token
 }
