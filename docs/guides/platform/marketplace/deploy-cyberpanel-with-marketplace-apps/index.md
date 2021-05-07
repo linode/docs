@@ -17,15 +17,8 @@ contributor:
   name: Linode
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
-_build:
-  list: false
-noindex: true
 
 ---
-
-{{< caution >}}
-The Cyberpanel Marketplace App is currently unavailable.
-{{< /caution >}}
 
 ## CyberPanel Marketplace App
 
