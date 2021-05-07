@@ -7,7 +7,7 @@ description: 'This guide explains how to install Rust on Ubuntu 20.04, a popular
 og_description: 'This guide explains how to install Rust on Ubuntu 20.04, a popular programming language designed to maximize performance and safety. During this guide, you create a simple Rust project to learn the basics of Rust''s syntax. You also learn about Cargo, Rust''s build tool and package manager.'
 keywords: ['Rust','programming language','installation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
+published: 2021-05-07
 modified_by:
   name: Linode
 tags: ["rust", "development", "ubuntu"]
