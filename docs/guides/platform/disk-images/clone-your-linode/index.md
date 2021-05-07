@@ -26,7 +26,7 @@ This guide will show you how to clone one of your Linode’s existing [disks and
 
 1. Click **Create** at the top of the Cloud Manager and select **Linode**.
 
-1. In the **Create New Linode** form, click on the **My Images** tab and then the **Clone Linode** tab:
+1. In the **Create New Linode** form, click on the **Clone Linode** tab:
 
     ![Select the 'Clone Linode' tab to clone an existing Linode.](clone-linode-menu.png)
 
@@ -34,9 +34,9 @@ This guide will show you how to clone one of your Linode’s existing [disks and
 
 1. Select the region and plan for the clone.
 
-  {{< note >}}
+   {{< note >}}
 You will not be able to choose a plan for your clone that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Linode (Nanode).
-{{</ note >}}
+  {{</ note >}}
 
 1. Provide a label for your new Linode.
 

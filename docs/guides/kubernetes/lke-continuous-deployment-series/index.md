@@ -21,7 +21,7 @@ tags: ["kubernetes", "lke"]
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine](cd-presentation-header.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine")
 
-This series covers creating a continuous deployment pipeline within the cloud using [LKE (Linode Kubernetes Engine)](https://www.linode.com/products/kubernetes/), [GitLab](https://about.gitlab.com/), and [Helm](https://helm.sh/). Together, these products enable applications to run on a managed Kubernetes cluster (LKE) and allow for the continuous deployment of updates directly to a staging environment or a product environment.
+This series covers creating a continuous deployment pipeline within the cloud using [LKE (Linode Kubernetes Engine)](https://www.linode.com/products/kubernetes/), [GitLab](https://about.gitlab.com/), and [Helm](https://helm.sh/). Together, these products enable applications to run on a managed Kubernetes cluster (LKE) and allow for the continuous deployment of updates directly to a staging environment or a production environment.
 
 ## Presentation
 
