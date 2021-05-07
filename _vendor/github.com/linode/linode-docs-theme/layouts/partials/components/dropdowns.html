@@ -8,29 +8,29 @@
     <div x-show.transition.opacity="!isHidden({{ $i }})" x-cloak>
       <div class="relative inline-block text-left">
         <div>
-          <span class="rounded-md">
-            <button type="button" aria-label="open" @click="toggleOpen({{ $i }})" style="width: 80px; height: 40px;" :class="{ 'bg-white border-basicgray': isOpen({{ $i }})}"
-                        class="btn-icon inline-flex w-full rounded-md border border-gray-300 px-4 py-2 text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-titlecolor transition ease-in-out duration-150">
+          <span class="rounded-sm">
+            <button type="button" aria-label="open" @click="toggleOpen({{ $i }})" :class="{ 'bg-white border-basicgray': isOpen({{ $i }})}"
+                        class="btn-icon inline-flex w-full rounded-sm border border-gray-300 px-4 py-2 md:px-2 md:py-1 text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-titlecolor transition ease-in-out duration-150">
               {{ with .icon }}
-                <svg class="fill-current text-textcolor w-5 h-5">
+                <svg class="fill-current text-textcolor w-4 h-4">
                   <use href="{{ . | safeHTMLAttr }}"></use>
                 </svg>
               {{ end }}
               <div x-show="isOpen({{ $i }})">
-                <svg class="fill-current text-textcolor -mr-1 ml-2 h-5 w-5">
+                <svg class="fill-current text-textcolor -mr-1 ml-2 h-4 w-4">
                   <use href="#icon--arrow-up"></use>
                 </svg>
               </div>
               <div x-show="!isOpen({{ $i }})">
-                <svg class="fill-current text-textcolor -mr-1 ml-2 h-5 w-5">
+                <svg class="fill-current text-textcolor -mr-1 ml-2 h-4 w-4">
                   <use href="#icon--arrow-down"></use>
                 </svg>
               </div>
             </button>
           </span>
         </div>
-        <div x-show.transition="isOpen({{ $i }})" class="origin-top-right absolute right-0 mt-2 w-64 rounded-md border border-basicgray" x-cloak>
-          <div class="rounded-md bg-white">
+        <div x-show.transition="isOpen({{ $i }})" class="origin-top-right absolute left-0 md:right-0 mt-2 w-64 z-10 rounded-sm border border-basicgray" x-cloak>
+          <div class="rounded-sm bg-white">
             {{ if .contentPartial }}
               {{ partial .contentPartial . }}
             {{ end }}
