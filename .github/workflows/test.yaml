@@ -43,7 +43,7 @@ jobs:
       with:
         format: 'json'
     - name: install more-utils
-        run: sudo apt-get install moreutils
+      run: sudo apt-get install moreutils
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
