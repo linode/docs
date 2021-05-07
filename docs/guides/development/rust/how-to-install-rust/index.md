@@ -3,15 +3,17 @@ slug: how-to-install-rust
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to install Rust, a popular programming language designed to maximize performance and safety.'
-og_description: 'This guide explains how to install Rust, a popular programming language designed to maximize performance and safety.'
+description: 'This guide explains how to install Rust on Ubuntu 20.04, a popular programming language designed to maximize performance and safety. During this guide, you create a simple Rust project to learn the basics of Rust''s syntax. You also learn about Cargo, Rust''s build tool and package manager.'
+og_description: 'This guide explains how to install Rust on Ubuntu 20.04, a popular programming language designed to maximize performance and safety. During this guide, you create a simple Rust project to learn the basics of Rust''s syntax. You also learn about Cargo, Rust''s build tool and package manager.'
 keywords: ['Rust','programming language','installation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
   name: Linode
+tags: ["rust", "development", "ubuntu"]
 title: "Installing and Using Rust"
-h1_title: "How to Install and Use Rust."
+h1_title: "How to Install and Use Rust"
+enable_h1: true
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -50,30 +52,38 @@ To experiment with Rust before downloading it, try the [*Rust Playground*](https
 1.  Download `rustup`, which manages the Rust download process.
 
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
     {{< note >}}
-For those who do not want to use `curl`, it is also possible to download `rustup-init` directly. A list of all the versions of `rustup-init` can be found on Rust's [*installation methods page*](https://rust-lang.github.io/rustup/installation/other.html). For Ubuntu systems, select the`x86_64-unknown-linux-gnu` file.
+For those who do not want to use `curl`, it is also possible to download `rustup-init` directly. A list of all the versions of `rustup-init` can be found on Rust's [installation methods page](https://rust-lang.github.io/rustup/installation/other.html). For Ubuntu systems, select the`x86_64-unknown-linux-gnu` file.
 {{< /note >}}
-2.  Rust displays some background details about the installation, including the default directories and environmental settings for the various components. It then provides three choices.
+
+1.  Rust displays some background details about the installation, including the location of default directories and environmental settings for its various components. It then provides the following three choices:
+
     {{< output >}}
 1) Proceed with installation (default)
 2) Customize installation
 3) Cancel installation
     {{< /output >}}
-3.  In most cases, customization is not required. To accept the defaults and proceed with the installation, enter `1`. To customize the Rust installation, first carefully review the information about the various settings and note any necessary changes. Then enter `2` to begin the customization process.
 
-        1
+1.  In most cases, customization is not required. To accept the defaults and proceed with the installation, enter `1`. To customize the Rust installation, first carefully review the information about the various settings and note any necessary changes. Then enter `2` to begin the customization process.
+
     When the process is complete, Rust confirms the installation is successful.
     {{< output >}}
 Rust is installed now. Great!
     {{< /output >}}
-4.  To apply the environment changes, either source the Rust `env` file or log in to a new console session. Then verify the correct version of Rust has been installed by using the `version` flag.
+
+1.  To apply the environment changes, either source the Rust `env` file or log in to a new console session. Then verify the correct version of Rust has been installed by using the `version` flag.
 
         source $HOME/.cargo/env
         rustc --version
+
+    You should see a similar output:
+
     {{< output >}}
 rustc 1.50.0 (cb75ad5db 2021-02-10)
     {{< /output >}}
-5.  If the `version` command still does not work, manually add the `~/.cargo/bin` directory to the `PATH` variable in `~/.bashrc`. Source `.bashrc` and try the command again.
+
+1.  If the `version` command still does not work, manually add the `~/.cargo/bin` directory to the `PATH` variable in `~/.bashrc`. Source the `.bashrc` file and try the command again.
 
     {{< file "~/.bashrc" >}}
 ...
@@ -82,7 +92,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
     {{< /file >}}
 
 {{< note >}}
-It is also possible to use Git to install Rust. Clone the Rust [*GitHub repository*](https://github.com/rust-lang/rustup) and run `cargo run --release`. See the  `rustup` [*installation page*](https://rust-lang.github.io/rustup/installation/other.html) for more information.
+It is also possible to use Git to install Rust. Clone the [Rust GitHub repository](https://github.com/rust-lang/rustup) and run `cargo run --release`. See the `rustup` [installation page](https://rust-lang.github.io/rustup/installation/other.html) for more information.
 {{< /note >}}
 
 ## Updating or Uninstalling Rust
@@ -96,39 +106,41 @@ It is also possible to use Git to install Rust. Clone the Rust [*GitHub reposito
 
 ## Using Rust
 
-Rust support is available for many editors, including [*Vi/Vim*](https://github.com/rust-lang/rust.vim), [*VS Code*](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust), and [*Emacs*](https://github.com/rust-lang/rust-mode).
+Rust support is available for many editors, including [Vi/Vim](https://github.com/rust-lang/rust.vim), [VS Code](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust), and [Emacs](https://github.com/rust-lang/rust-mode).
 
 ### Building a Small Project in Rust
 
-As with most programming languages, it is easiest to learn the basics with a short "Hello, World" program. This short tutorial explains how to create, write, compile, and run a program in Rust. Compiling and running a program are separate steps, and a program must be compiled before it can run.
+As with most programming languages, it is easiest to learn the basics with a simple "Hello, World" program. This short tutorial explains how to create, write, compile, and run a program in Rust. Compiling and running a program are separate steps. A program must be compiled before it can run.
 
-1.  Create a directory named `projects` to store all of your Rust projects and then create a sub-directory for the "Hello World" project.
+1.  Create a directory named `projects` to store all of your Rust projects. Then, create a sub-directory for the "Hello World" project and move into the new directory.
 
         mkdir ~/projects
         cd ~/projects
         mkdir hello
         cd hello
-2.  Create a new source file named `hello.rs` inside the `hello` directory. All Rust files must end with the `.rs` extension.
+1.  Create a new source file named `hello.rs` inside the `hello` directory. All Rust files must end with the `.rs` extension.
 
         touch hello.rs
-3.  Open the `hello.rs` file in a text editor, and add the code required to display "Hello, World!" to the `main` function. The `main` function is the first code to execute in any Rust project. Here are a few things to note about this program:
-    *   Parentheses `()` are used to enclose any parameters to the function. There are no parameters in this case.
-    *   The body of the function is enclosed inside the curly braces `{}`.
+1.  Open the `hello.rs` file in a text editor, and add the code required to display "Hello, World!" to the `main` function. The `main` function is the first code to execute in any Rust project. Here are a few things to note about this program:
+    *   Parentheses `()` are used to enclose any function parameters. There are no parameters in this case.
+    *   The body of the function is enclosed inside curly braces `{}`.
     *   Inside the function, `println!` is a macro that sends text to the standard output device. The `!` symbol at the end of the macro name means `println` is a macro and not an actual function.
-    *   The arguments to `println` are inside the trailing parentheses. Here there is only one parameter, which contains the text to be printed.
+    *   The arguments passed to `println` are contained inside the trailing parentheses. Here there is only one parameter, which contains the text to be printed.
     *   Each expression ends with a `;` symbol.
 
-    Consult the [*Rust documentation*](https://doc.rust-lang.org/rust-by-example/index.html) for further discussion of Rust's style conventions.
+    Consult [Rust's documentation](https://doc.rust-lang.org/rust-by-example/index.html) for further discussion of Rust's style conventions.
+
     {{< file "~/projects/hello/hello.rs" rust >}}
 fn main() {
     println!("Hello, world!");
 }
     {{< /file >}}
-4.  Save and close the `hello.rs` file.
-5.  Compile the program using the `rustc` compiler. Provide the name of the file as an argument to `rustc`. This creates an executable named `hello`. The name of the executable is the name of the source file containing the `main` routine, minus the `.rs` extension.
+1.  Save and close the `hello.rs` file.
+
+1.  Compile the program using the `rustc` compiler. Provide the name of the file as an argument to `rustc`. This creates an executable named `hello`. The name of the executable is the name of the source file containing the `main` routine, minus the `.rs` extension.
 
         rustc hello.rs
-6.  Run the program from the `hello` directory by specifying the name of the executable.
+1.  Run the program from the `hello` directory by specifying the name of the executable.
 
         ./hello
     Provided there are no errors, the program displays "Hello, world!" in the console window. If the program does not work as expected, verify the syntax of the `hello.rs` file is correct.
@@ -146,25 +158,26 @@ The lightweight process in the previous section works well with small applicatio
     {{< output >}}
 cargo 1.50.0 (f04e7fab7 2021-02-04)
     {{< /output >}}
-2.  Create a new project using the `new` command. The following example indicates how to create a project named `cargo_project`.
+1.  Create a new project using the `new` command. The following example indicates how to create a project named `cargo_project`.
 
         cargo new cargo_project
-3.  Compile and build a project, linking in any dependencies, using the `build` command.
+1.  Compile and build a project, linking in any dependencies, using the `build` command.
 
         cargo build
-4.  Compile, build, and run any Rust project using the `run` command. If the source code has not changed since the last build, the compile and build steps are skipped.
+1.  Compile, build, and run any Rust project using the `run` command. If the source code has not changed since the last build, the compile and build steps are skipped.
 
         cargo run
-5.  To use Cargo to test a Rust project, run the following command.
+1.  To use Cargo to test a Rust project, run the following command.
 
         cargo test
-6.  Use Cargo to build documentation for a project using the `doc` command.
+1.  Use Cargo to build documentation for a project using the `doc` command.
 
         cargo doc
-7.  Publish a package to the [*Crates repository*](https://crates.io/) using the `publish` command.
+
+1.  Publish a package to the [Crates repository](https://crates.io/) using the `publish` command.
 
         cargo publish
 
 ## For Further Reference
 
-The Rust website provides extensive [*documentation*](https://www.rust-lang.org/learn), including tutorials, examples, and a link to the "Rust Programming Language" text. In particular, the [*Rustlings Course*](https://github.com/rust-lang/rustlings/) serves as a good quick introduction to the language. The short tutorial at the bottom of the [*Getting Started*](https://www.rust-lang.org/learn/get-started) page is also useful. The Rust documentation also contains guides to the Cargo package manager and the `rustc` compiler.
+The Rust website provides extensive [*documentation*](https://www.rust-lang.org/learn), including tutorials, examples, and a link to the *Rust Programming Language* text. In particular, the [Rustlings Course](https://github.com/rust-lang/rustlings/) serves as a good quick introduction to the language. The short tutorial at the bottom of the [Getting Started](https://www.rust-lang.org/learn/get-started) page is also useful. The Rust documentation also contains guides to the Cargo package manager and the `rustc` compiler.
