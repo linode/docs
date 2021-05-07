@@ -3,16 +3,17 @@ slug: configuring-load-balancer-sticky-session
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
-description: 'Web farms require configuring load balancer sticky session so that all the load does not go to one server. And load balancers need server affinity for the duration of a session, a.k.a. sticky sessions when the web application needs to maintain state from one request to another.'
-og_description: 'Web farms require configuring load balancer sticky session so that all the load does not go to one server. And load balancers need server affinity for the duration of a session, a.k.a. sticky sessions when the web application needs to maintain state from one request to another.'
+description: 'When a web application needs to maintain state from one request to another, you should consider configuring your load balancer to use sticky sessions. A sticky session enables your load balancer to persist data by creating a session object and storing it on the client or server. This overview provides a definition for sticky sessions along with the pros and cons of using this common load balancer configuration.'
+og_description: 'When a web application needs to maintain state from one request to another, you should consider configuring your load balancer to use sticky sessions. A sticky session enables your load balancer to persist data by creating a session object and storing it on the client or server. This overview provides a definition for sticky sessions along with the pros and cons of using this common load balancer configuration.'
 keywords: [‘loadbalancer sticky session']
-tags: ['database','wordpress']
+tags: ['nginx','networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
   name: Linode
-title: "Configuring Load Balancer Sticky Session"
+title: "Configuring a Load Balancer for Sticky Sessions: Pros and Cons"
 h1_title: "The Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
+enable_h1: true
 contributor:
   name: Martin Heller
   link: http://www.twitter.com/meheller
@@ -21,73 +22,43 @@ contributor:
 
 ## What is Load Balancing and Why is it Necessary?
 
-*Load balancing* is an efficient method of distributing incoming network traffic across multiple servers in a *web farm*. Each Load Balancer lies between client devices and servers, which receives and distributes incoming requests to the available and capable server.
+*Load balancing* is an efficient method of distributing incoming network traffic across multiple servers. Each load balancer lies between client devices and servers. The load balancer receives and distributes incoming requests to the available and healthy server.
 
-The load balancing is necessary because it provides the following benefits:
+Load balancers provide the following benefits:
 
-- **Efficiency:** Load balancers distribute the client requests across multiple servers preventing server overload.
-- **Scalability:** New servers can be added to the *web farm* when there is an increase in the network traffic.
-- **Flexibility:** Servers can be added or removed from the web farm on-demand basis.
-- **Highly Responsive:** Ensures that the user's requests are spread evenly across multiple servers.
+- **Efficiency:** Load balancers distribute client requests across multiple servers preventing server overload.
+- **Scalability:** You can add new servers to handle an increase in network traffic to your application.
+- **Flexibility:** Servers can be added or removed based on your application's needs.
+- **Highly Available:** Ensures that the user's requests are spread evenly across multiple servers.
 
-### Load Balancing Methods
+### Load Balancing Methods: Stateless and Stateful
 
-You can perform load balancing in two ways—*stateless* and *stateful*.
-
-If the load balancer does not keep track of any session information, it is *stateless load balancing*. You can consider the example of a static HTML website without a login page, where the users would never notice if they were randomly redirected to a different server instance when following links.
-
-Consider a public website that is built on an application such as WordPress where users need not log in. Here, the load balancer keeps track of all the user's state information from one request to another, and this is called *stateful load balancing*.
+You can perform load balancing in two ways—*stateless* and *stateful*. If the load balancer does not keep track of any session information, it is *stateless load balancing*. Consider the example of a static HTML website without a login page. A user would never notice if they were randomly redirected to a different server instance when navigating across the site. The same can be said for a site built on WordPress, as long as the site does not require a user to log in. However, if a site or application needs to maintain continuity for a user from request to request, this requires *stateful load balancing*.
 
 ## What are Sticky Sessions?
 
-Most websites maintain continuity of state using a session. When a client makes the first request to the server, a session object is created in the server memory for that user. All the subsequent requests use the same session object.
+Most websites maintain continuity of state using a session. When a client makes the first request to the server, a session object is created. This object may be stored in server RAM, a file on the server, passed back to the client in an HTTP cookie, stored in a database, or stored in the client. All subsequent requests use the same session object. When you store the session object in a single server's RAM or file system, then the only way for the client to continue a session in the next request is for the browser to return to the same server instance.
 
-But in the Load Balancer, more than one server is serving the request. So what happens if the Load Balancer routes the second request to another server that does not have that session object in memory?
-Some of the user information can be lost and this scenario can cause data loss.
-
-In that case, we need to inform the Load Balancer to send all the requests from a particular user session to process in one server.
-This technique is called *Sticky Sessions* a.k.a., session persistence.
-
-## NodeBalancers: Load Balancers as a Service (LBaaS)
-
-Linode offers Load Balancers as a Service (LBaaS) called [*NodeBalancers*](https://www.linode.com/docs/guides/platform/nodebalancer/). Linode also supports using open source tools for load balancing, such as [*NGINX*]( https://www.linode.com/docs/guides/web-servers/nginx/), which can also be configured as a web server.
-
-**Configure NodeBalancers:**
-
-You can configure NodeBalancers for the following three kinds of session stickiness (or persistence):
-
-- **None**
-- **Table:** The NodeBalancer itself remembers which backend a given client IP was initially load balanced to.
-- **HTTP Cookie:** The NodeBalancer sets a cookie named `NB\_SRVID` identifying the backend a client was initially load balanced to.
-
-If the NodeBalance is set to **Table** or **HTTP Cookie**, then the session is sticky. If the client does not accept cookies, then **HTTP Cookie** stickiness do not work.
-
-### LodeBalancing Algorithms
-
-If the NodeBalancer is set to **None**, or if a session object has a first request, then the NodeBalancer uses one of the following three algorithms to assign the backend node:
-
-- Round Robin
-- Least Connections
-- Source IP
-
-If the algorithm is **Source IP**, the session is sticky as long as the set of backend nodes doesn't change.
-
-Read more about *Session Stickiness* and *LoadBalancing Algorithm* from our [NodeBalancer Reference Guide](https://www.linode.com/docs/guides/nodebalancer-reference-guide#algorithm).
+When using a load balancer, more than one server is responding to requests. So, what happens if the load balancer routes the second request to another server that does not have that session object in memory? Some of the user information might not persist, and can cause data loss. In this scenario, the load balancer should send all requests from a particular user session to be processed on the same server. Doing so is referred to as *session stickiness*, or session persistence.
 
 ## Pros and Cons of Sticky Sessions
 
 **Pros:**
 
-1. Using sticky sessions can reduce the *throughput* and increase the *latency* of a load balancer.
+1. More efficient use of data and memory. Since you are persisting data to one server, you are not required to share the persisted data across your application's servers. Similarly, data stored in a RAM cache can be looked up once and reused.
 
-   On the other hand, disabling sticky sessions and instead of using an external database for server session storage can reduce the throughput and increase a web server's latency.
-
-1. For a stateful site, it is best to use sticky sessions on the load balancer, since the load balancer does not perform much work as the web servers.
-
-1. Implementing sticky sessions is easy without any changes to your application.
+1. Implementing sticky sessions on a load balancer does not require any changes to your application. Your sticky session configurations are limited to the tool that you choose to use to balance your site's web traffic.
 
 **Cons:**
 
-1. Limits your application scalability as the Load Balancer cannot distribute the load evenly each time it receives the request from the client.
+1. Limits your application scalability as the load balancer cannot distribute the load evenly each time it receives a request from a client.
 
 1. If the server goes down, then the session is lost. If the session has important user information, it can be lost.
+
+## Tools Used for Load Balancing
+
+The popular open-source web server, [*NGINX*](/docs/guides/web-servers/nginx/), can be used as a load balancer to support your web services. NGINX provides [extensive documentation](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/) to get you started installing and configuring it to load balance traffic to backend servers.
+
+Linode offers a load balancing service called [*NodeBalancers*](https://www.linode.com/docs/guides/platform/nodebalancer/). Using load balancers as a service (LBaaS) to route your server's web traffic reduces the amount of configuration you need to worry about. This allows you to focus on developing your application, and take advantage of built-in point-and-click functionality.
+
+If you are using [Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) to run your containerized applications, load balancers help you expose your cluster's resources to the public internet and route traffic to your cluster's nodes. If you are using Linode's managed Kubernetes service, [LKE](https://www.linode.com/products/kubernetes/), you can configure NodeBalancers using [annotations](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations). You can also use [NGINX to configure load balancing via ingress on Kubernetes](https://www.nginx.com/blog/nginx-plus-ingress-controller-kubernetes-load-balancing/).
