@@ -52,7 +52,7 @@ jobs:
         docs_dir_files=$(echo '${{ steps.get_changed_files.outputs.added_modified }} ' |  jq -c '[.[] | select(.|test("^docs"))]')
         echo "::set-output name=added_modified::$docs_dir_files"
     - name: echo the docs dir files
-      run: echo ${{ steps.select_docs_dir_files.outputs.added_modified }}
+      run: echo '${{ steps.select_docs_dir_files.outputs.added_modified }}'
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
