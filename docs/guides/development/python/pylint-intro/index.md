@@ -272,7 +272,7 @@ Some of the skills that you can learn:
 - How to integrate Pylint in CI and Continuous Testing
 - How to configure Pylint to co-operate with other Python tools such as [*Black*](https://pypi.org/project/black/), [*Flake8*](https://flake8.pycqa.org/en/latest/), [*isort*](https://pypi.org/project/isort/), [mypy](http://mypy-lang.org/), and so on.
 - What should be in `pylintrc` to tune Pylint for large projects.
-- How to configure Pylint to check comments and docstrings for spelling errors.
+- How to configure Pylint to check for spelling errors.
 - How to accommodate actual errors in Pylint.
 
 For now, concentrate on getting to and staying at a quality score of 10, and enjoy the increasingly problem-free source code that Pylint helps you create.

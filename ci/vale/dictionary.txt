@@ -699,6 +699,7 @@ iredmail
 irssi
 isn
 iso
+isort
 isoformat
 isp
 issuewild
@@ -976,6 +977,7 @@ myhostname
 mynewdomain
 mypassword
 myproject
+mypy
 myserver
 mysql
 mysqli
