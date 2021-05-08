@@ -46,6 +46,10 @@ jobs:
       run: sudo apt-get install moreutils
     - name: echo the thing
       run: echo ${{ steps.get_changed_files.outputs.added_modified }}
+    - name: set_fruit_output
+      run: echo "::set-output name=action_fruit::strawberry"
+    - name: get_fruit_output
+      run: echo ${{ steps.set_fruit_output.outputs.action_fruit }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
