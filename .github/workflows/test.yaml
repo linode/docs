@@ -44,8 +44,6 @@ jobs:
         format: 'json'
     - name: install more-utils
       run: sudo apt-get install moreutils
-    - name: echo the thing 1
-      run: echo $steps.get_changed_files.outputs.added_modified
     - name: echo the thing 2
       run: echo '${{ steps.get_changed_files.outputs.added_modified }}'
     - name: Select files in docs dir
@@ -53,13 +51,8 @@ jobs:
       run: |
         docs_dir_files=$(echo '${{ steps.get_changed_files.outputs.added_modified }} ' |  jq -c '[.[] | select(.|test("^docs"))]')
         echo "::set-output name=added_modified::$docs_dir_files"
-    - name: echo the thing
-      run: echo ${{ steps.get_changed_files.outputs.added_modified }}
-    - name: set fruit output
-      id: set_fruit_output
-      run: echo "::set-output name=action_fruit::strawberry"
-    - name: get_fruit_output
-      run: echo ${{ steps.set_fruit_output.outputs.action_fruit }}
+    - name: echo the docs dir files
+      run: echo ${{ steps.select_docs_dir_files.outputs.added_modified }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
