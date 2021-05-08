@@ -47,7 +47,7 @@ jobs:
     - name: echo the thing 1
       run: echo $steps.get_changed_files.outputs.added_modified
     - name: echo the thing 2
-      run: echo ${steps.get_changed_files.outputs.added_modified}
+      run: echo '\''${{ steps.get_changed_files.outputs.added_modified }}'\''
     - name: Select files in docs dir
       id: select_docs_dir_files
       run: |
