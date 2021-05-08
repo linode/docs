@@ -1234,6 +1234,7 @@ py
 pyamqp
 pyenv
 pyinotify
+pylint
 pypa
 pypi
 pypiserver

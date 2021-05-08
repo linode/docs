@@ -1,259 +1,278 @@
 ---
-slug: pylint-intro
+slug: install-pylint-for-python-3
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'Pylint helps raise the code quality of Python programs..'
-og_description: 'Pylint helps raise the code quality of Python programs.'
-keywords: ['install pylint for python 3']
+description: 'Pylint for python 3 helps raise the code quality of Python programs.'
+og_description: 'Pylint for python 3 helps raise the code quality of Python programs.'
+keywords: ['install' 'pylint' 'python 3']
+tags: ['pylint','python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
 modified_by:
   name: Linode
-title: "How to install and use Pylint for Python3"
-h1_title: "How to install and use Pylint for Python3"
+title: "Install Pylint For Python 3"
+h1_title: "How To Install and Use Pylint for Python 3"
 contributor:
  name: Cameron Laird
  link: https://twitter.py/Phaseit
+external_resources:
+- '[PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/)'
+- '[Pylint](https://www.pylint.org/)'
+- '[Pylint Site](https://www.pylint.org/#install)'
+- '[*Black*](https://pypi.org/project/black/)'
+- '[*Flake8*](https://flake8.pycqa.org/en/latest/)'
+- '[*isort*](https://pypi.org/project/isort/)'
+- '[mypy](http://mypy-lang.org/)'
+
 ---
 
-# How to install and use Pylint for Python3
+## What is Pylint?
 
-[Pylint](https://www.pylint.org/) analyzes Python source code. Specifically, Pylint examines Python programs and identifies ways to improve their code quality.
+[Pylint](https://www.pylint.org/) is a code analyzes tool to identify errors in the Python source code. Specifically, Pylint helps programmers improve their code quality and style. The coding style that Pylint uses is *PEP8*.
 
-&quot;Quality&quot; might mean any number of things. It could include sensible programming logic; correct spelling in comments; more idiomatic Python constructs; variable names that match a particular style guide. Pylint can serve many needs.
+**Code Quality** could include sensible programming logic, correct spelling in comments, more idiomatic Python constructs, variable names that match a particular style guide, etc. Also, developers use Pylint to beautify even a small piece of Python code.
 
-Many large projects rely on Pylint to help maintain the consistency and correctness of hundreds of thousands of lines of source. At the same time, plenty of individual developers use Pylint to &quot;beautify&quot; even the small, one-off Python programs they write.
+Whatever your situation, it is a must-have tool for a beginner as well as advanced developers as it rates your programs with a score as per the rules outlined in [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/).
 
-Whatever your situation, you&#39;re just a few minutes away from experiencing Pylint for yourself.
+## Prerequisites
 
-## Installation
+- You need to have `pip` installed. If you have not installed `pip`, install using the below command:
 
-The fundamental installation instruction for Pylint is:
+      sudo apt install python-pip
 
-```
-pip install pylint
-```
+- Verify the `pip` installation using the `version` flag.
 
-or, in even more modern contexts:
+    {{< output >}}
+pip --version
+pip 9.0.1 from /usr/lib/python2.7/dist-packages (python 2.7)
+{{< /output >}}
 
-```
-python -m pip install pylint
-```
+## Install Pylint
 
-The pylint executable becomes available at the native command line once you execute either of these commands successfully, under Windows, MacOS, Linux, or another Unix. With this approach to installation, the only prerequisite is to have pip (or python itself) installed.
+You can install Pylint on systems like Windows, MacOS, Linux, or another Unix. On executing the below command, the pylint executable becomes available at the native command line.
 
-The [Pylint project site](https://www.pylint.org/#install) provides several more variations under the title &quot;Installation,&quot; and even these aren&#39;t exhaustive. Intermediate users might have occasion to install Pylint from source, install it as a Linux package, configure an interactive development environment (IDE) for its application, and so on. To start, though, all you need is:
+    pip install pylint
 
-```
-pip install pylint
-```
+Alternatively, you can also execute the below command:
 
-Is that a surprise? You might be familiar with pip&#39;s role in installation of libraries; Pylint is an example of how pip also installs executable programs.
+    python -m pip install pylint
 
-With Pylint installed, you should be able to run this at the command line:
+The [Pylint Site](https://www.pylint.org/#install) provides several *Installation* variations for different Operating Systems.
 
-```
+Verify Pylint installation using the `version` flag.
+    {{< output >}}
 pylint --version
-```
+pylint 2.7.0
+{{< /output >}}
 
-Expect to see something like:
+## Getting Started with Pylint
 
-```
-pylint 2.7.0 …
-```
+1. To learn what Pylint can do, create an example Python script, and name it `my_sum.py`.
 
-Once you&#39;ve made it this far, you&#39;re ready to begin to receive Pylint&#39;s benefits.
+    {{< file "my_sum.py" python >}}
+    sum1 = 3 + 4;
+    print("Sum is %d."; % sum1)
+    Sum is 7.
+    {{< /file >}}
 
-## Getting started with Pylint
-
-To learn what Pylint can do, create a little Python example script, and name it `my_sum.py`:
-
-```python
-sum1 = 3 + 4;
-print(&quot;Sum is %d.&quot; % sum1)
-```
-
-Execute this, with the result:
-
-```
-Sum is 7.
-```
-
-Good! You&#39;re a successful Python programmer.
-
-Pylint can help you be a better, more stylish one, though. From the command line, run:
-
-```
+    Pylint can help you be a better, more stylish one, though. From the command line, run:
+    {{< output >}}
 pylint my_sum.py
-```
-Now you see:
+my_sum.py:1:0: W0301: Unnecessary semicolon
+{{< /output >}}
 
-```
-my_sum.py:1:0: W0301: Unnecessary semicolon …
-[as well as other diagnostics we ignore for the moment]
-```
+    You can also see other diagnostics which we ignore for the moment.
 
-[as well as other diagnostics we ignore for the moment]
+    In this case, Pylint helps you conform to the best practices for Python coding as per the PEP8 Style Guide.
 
-In this case, Pylint helps you conform to &quot;best practices&quot; for Python coding, many of which [the PEP8 reference](https://www.python.org/dev/peps/pep-0008/) documents.
+1. Update `my_sum.py`, and re-run Pylint with the unnecessary semicolon removed. Pylint raises its score for the program.
 
-Update `my_sum.py`:
+    {{< file "my_sum.py" python >}}
+    sum1 = 3 + 4
+    print("Sum is %d." % sum1)
+    Sum is 7.
+{{< /file >}}
 
-```python
-sum1 = 3 + 4
-print(“Sum is %d.” % sum1)
-```
+With Pylint's help, you have a script with both the correct result and a standard style. Pylint is akin to a spell checker.
+    {{< note >}}
+Pylint does not produce correct programs; that's still the developer's responsibility. Pylint helps you to beautify the programs, which helps you effectively concentrate on functionality and program correctness.
+    {{< /note >}}
 
-Re-run Pylint. With the unnecessary semicolon removed, Pylint raises its score for the program.
+## Pylint Demonstration
 
-The result: With Pylint&#39;s help, you have a script with both a correct result and a more standard style.
+Pylint knows more than mere style. It embeds intelligence about several common coding errors. As a next example, consider the fragment:
 
-At this level, Pylint is akin to a spell checker. Pylint doesn&#39;t produce correct programs; that&#39;s still the developer&#39;s responsibility. Pylint helps smooth and style and &quot;beautify&quot; programs.
-
-Think what this means for code review. If you&#39;re a member of a team working on a Python project, and all your source scores &quot;10&quot; with Pylint, all reviews can more effectively concentrate on functionality and correctness and higher-order concepts. The code review doesn&#39;t need to concern itself with such distractions as fretting over punctuation, matching indentation, and variable name style conventions. Pylint takes care of those for the team. That&#39;s real progress!
-
-Just as with word processing spell-checkers, expert reading still has a place. While the former don&#39;t distinguish the intent between, &quot;dog is humans&#39; best friend&quot; from &quot;god is humans&#39; best friend,&quot; Pylint accepts both `sum = first + second` and `sum = first - second` equally. As you use Pylint, though, you&#39;ll find that you want the advantages it brings.
-
-## More than just a pretty face
-
-Pylint knows more than mere style. It embeds intelligence about a number of common coding errors. As a next example, consider the fragment:
-
-```python
+{{< file "my_sum.py" python >}}
 def my_function():
-    “”” An example for a Pylint demonstration. “””
+    """ An example for a Pylint demonstration."""
     my_sum1 = 3 + 4
-    print(“The sum is %d.” % my_sum1)
+    print "The sum is %d." % my_sum1
     return my_sum
+{{< /file >}}
 
-```
+Run the above code in the terminal using Pylint:
+    {{< output >}}
+username@localhost:~$ pylint my_sum.py
+No config file found, using default configuration
+************* Module my_sum
+...
+...
+E:  5,11: Undefined variable 'my_sum' (undefined-variable)
 
-Run this through Pylint:
+--------------------------------------------------------------------
+Your code has been rated at -5.00/10 (previous run: -5.00/10, +0.00)
+{{< /output >}}
 
-```
-… E0602: Undefined variable ‘my_sum’ …
-```
+`my_sum` is indeed unbound, or unassigned. Maybe the developer intended `my_sum1`. In any case, Pylint helped to identify a functional error **before the Python code was executed**.
 
-`my_sum` is indeed unbound, or unassigned. Maybe the developer intended `my_sum1`. In any case, Pylint helped to identify a functional error _before the Python code was executed_.
+### Pylint Unreachable Code Demonstration
 
-Pylint tackles more subtle errors, too. Consider:
+Update `my_sum.py` with the below code:
 
-```python
-raise Exception(“This shouldn’t happen.”)
-return True
-```
+{{< file "my_sum.py" python >}}
+def my_function():
+    """ An example for a Pylint demonstration."""
+    my_sum1 = 3 + 4
+    print "The sum is %d." % my_sum1
+    raise Exception("This shouldn’t happen.")
+    return True
+{{< /file >}}
 
-This might well be part of a program which meets its specifications. When passed to Pylint, though, the latter complains:
+Pylint again complains as follows:
+    {{< output >}}
+username@localhost:~$ pylint my_sum.py
+No config file found, using default configuration
+************* Module my_sum
+...
+...
+W:  6, 4: Unreachable code (unreachable)
 
-```
-... W0101: Unreachable code ...
-```
+--------------------------------------------------------------------
+Your code has been rated at 4.00/10 (previous run: -5.00/10, +9.00)
+{{< /output >}}
 
-Pylint&#39;s right. Once the exception is raised, control flow passes up and out to an exception-handler, and the return result has no effect. Pylint identifies that the code fragment is syntactically valid, yet it probably represents at least a confusion.
+Pylint's right. Once the exception is raised, the control flow passes up and out to an exception handler, and the return result does not affect it. Pylint identifies that the code fragment is syntactically valid, yet it probably represents at least a confusion.
+    {{< note >}}
+On Pylint's 0-to-10 quality scale, it is common for the first run against a new project to show a negative score. Do NOT let this discourage you. Keep the long-term goal in mind. Your purpose with Pylint is to ensure that the Python source code scores a 10.
+    {{< /note >}}
 
-## Expect verbose results at first
+## Work Through Pylint Errors
 
-When you first apply Pylint to a real-world program—whether that&#39;s a 12-line script to prepare a monthly financial report, or the 30,000 lines of a commercial web application you maintain—Pylint is likely to have a lot to say. On Pylint&#39;s 0-to-10 quality scale, it&#39;s common for the first run against a new project to show a negative score. Even a perfectly usable tiny program can report more errors and warnings than it has lines, when the code is initially analyzed. _Do not let this discourage you_. If this is your experience—if Pylint generates a mountain of complaints at first—it means there&#39;s work to do, but almost certainly less than initially appears.
+If you are facing thousands of Pylint complaints, for instance, a project's code has an inconsistent indentation or mixes tabs and spaces for indentation. These kinds of lexical errors are easily corrected, and Pylint's score soars as soon as they are corrected.
 
-Keep the long-term goal in mind. Your purpose with Pylint is to ensure that the Python source code scores a 10, so that any errors or even questionable uses in new code you write turn up immediately, when they&#39;re easiest to fix. The initial messages may generate a low score at first; a few tips get you to 10 faster than you expect.
+Consider the below example for *Variable Checker* messages.
+{{< file "variables_demo.py" python >}}
+var = 1
 
-## Making it work for you
+def foo():
+    global v
+    print(v)
+    v = 10
+    print(v)
 
-If you&#39;re facing thousands of Pylint complaints, it&#39;s almost certain that most of them result from one or two simple and easily-resolved causes. Pylint&#39;s quality score plummets if, for instance, a project&#39;s code has inconsistent indentation, or mixes tabs and spaces for indentation. These kinds of lexical errors are easily corrected, and Pylint&#39;s score soars as soon as they are corrected.
+foo()
+print(var)
+{{< /file >}}
 
-Also common are complaints about variable names. Consider:
-
-```python
-def my_func():
-    “”” An experiment with variable names. “””
-    for i in range(20):
-        print(i)
-```
-
-It&#39;s perfectly clear what this does, right? And it does so correctly, doesn&#39;t it? By default, Pylint doesn&#39;t think so.
+Though the code is clear on what it does, Pylint doesn't think so.
 
 Pylint expects variable names to be at least three characters long. For a situation like this, at least five remedies are available:
 
-- Comply with its expectations: Change the variable name from `i` to, say, `counter`
-- Direct Pylint to ignore this particular name -- `i` -- in its judgment
+- Comply with its expectations: Change the variable name from `v` to, say, `var`
+- Direct Pylint to ignore this particular name `v` in its judgment
 - Direct Pylint to accept all names in this particular source
 - Direct Pylint to accept all names in all sources of the project; or
-- Declare `i` to be a special-purpose name that Pylint accepts for this project.
+- Declare `v` to be a special-purpose name that Pylint accepts for this project.
 
-To follow Pylint&#39;s advice directly, rewrite the sequence above to:
+To follow Pylint's advice directly, rewrite the above code as follows:
+    {{< file "variables_demo.py" python >}}
+var = 1
 
-```python
+def foo():
+    global var
+    print(var)
+    var = 10
+    print(var)
+
+foo()
+print(var)
+{{< /file >}}
+
+In that case, you can see that Pylint's score is improved.
+
+## Messages Control
+
+Pylint has an advanced message control feature where you can enable or disable a message either from the command line or from the configuration file.
+
+Alternatively, you can tell Pylint about your own coding conventions. You can write:
+
+{{< file "example.py" python >}}
 def my_func():
-    “”” An experiment with variable names. “””
-    for counter in range(20):
-        print(counter)
-```
-
-In that case, Pylint passes it with `... Your code has been rated at 10.00/10`.
-
-Alternatively, tell Pylint about your own coding conventions. You can write:
-
-```python
-def my_func():
-    “”” An experiment with variable names. “””
+    """ An experiment with variable names. """
     for i in range(20): # pylint: disable=invalid-name
         print(i)
-```
+{{< /file >}}
 
-This has the effect of disabling Pylint&#39;s name-checking for the single variable `i`.
+This has the effect of disabling Pylint's name-checking for the single variable `i`.
 
-Insertion of a similar directive, `# pylint: disable=invalid-name`, without indentation near the top of a source file, disables Pylint&#39;s name-checking throughout that specific file.
+**To disable Pylint's name-checking throughout that specific file:**
 
-To configure Pylint throughout an entire project, create a file named `pylintrc` in the directory where you run Pylint—presumably the root or base of the project. Pylint knows not to complain about your program if your `pylintrc` contains either:
+Insert a similar directive, `# pylint: disable=invalid-name`, without indentation at the top of the source file.
 
-```
-# It’s OK to name a loop variable “i”.
+**To configure Pylint throughout an entire project:**
+
+Pylint complains about several things. You can create a file that allows you to tell Pylint to ignore certain checks. This file is called `.pylintrc`.
+
+- Create `pylintrc` file in the directory where you run Pylint—presumably the root or base of the project.
+
+      pylint --generate-rcfile.
+
+- Configure Pylint so that Pylint knows not to complain about your program if your `pylintrc` contains the following:
+{{< file "pylintrc" python >}}
+
+# It’s OK to name a loop variable "i"
+
 [BASIC]
-	good-names=i
-```
+ good-names=i
+  ...
+  ...
 
-or
-
-```
 [MESSAGES CONTROL]
-	disable=
-    	    invalid-name
-```
+  disable=
+      invalid-name
+{{< /file >}}
 
-Perhaps you start with a thousand Pylint complaints. Take the time to correct indentation and other punctuation errors, and adjust names. These few, rather mechanical, steps solve nearly all complaints. If 20 of the original thousand problems remain, those 20 error messages probably represent situations that deserve expert attention.
+    {{< note >}}
+One final tip for your initial encounter with Pylint: if you don't understand a Pylint report, or don't agree with it, it's perfectly fine at least temporarily to direct Pylint to ignore that line with an appropriate `# pylint: disable=... directive`.
+    {{< /note >}}
 
-One final tip for your initial encounter with Pylint: if you don&#39;t understand a Pylint report, or don&#39;t agree with it, it&#39;s perfectly fine _at least on a temporary basis_ to direct Pylint to ignore that line with an appropriate # pylint: disable=... directive.
+## Is Pylint Worth It?
 
-Do what it takes to achieve that Pylint score of 10 quickly. It&#39;s enormously valuable to establish a clean baseline that helps give immediate feedback about new source code. Once you&#39;ve practiced scoring a Pylint 10 for a while, you can return to your source code in a more leisurely manner to inspect and address particular lines that trouble Pylint.
+1. This introduction emphasizes Pylint's benefits. Pylint beautifies code, it finds likely errors, and with few exceptions, most practitioners who try Pylint adopt it long-term.
 
-## Is Pylint worth it?
+   Pylint has tradeoffs, but they are generally small and manageable as:
 
-This introduction emphasizes Pylint&#39;s benefits. Pylint beautifies, it finds errors, and it finds likely errors. Do those exceed Pylint&#39;s costs, though?
+   - It is easy to run Pylint in IDEs and Continuous Integration (CI) pipelines.
+   - Pylint's diagnostics are lucid.
+   - While Pylint takes many minutes on large programs, the time it takes is almost always small in comparison with the errors it spotlights.
 
-With few exceptions, most practitioners who try Pylint adopt it long-term. Pylint definitely has tradeoffs, but they&#39;re generally small and manageable.
+1. If your code in a particular style that Pylint doesn't like, it might be that your style isn't widely understood, and this is unfamiliar to other team members.
 
-- It&#39;s easy to run Pylint in IDEs and continuous integration (CI) pipelines.
-- Pylint&#39;s diagnostics are lucid.
-- While Pylint takes many minutes on large programs, the time it takes is almost always small in comparison with the errors it spotlights.
+1. If Pylint is wrong, and your style deserves acceptance, you can probably write a `pylintrc` directive to work out a compromise.
 
-It&#39;s worth considering Pylint even when it &quot;cramps&quot; a perfectly-reasonable programming style. Pylint is in wide and successful use. If you code in a particular style that Pylint doesn&#39;t like, it might be that your style isn&#39;t widely-understood, and thus is unfamiliar to other team members.
+In any case, consider Pylint as a package deal, and in general, Yes, Pylint is worth it.
 
-If Pylint is in the wrong, and your style deserves acceptance, you can probably write a `pylintrc` directive to work out a compromise.
+## Beyond Pylint Basics
 
-In any case, consider Pylint as a &quot;package deal.&quot; Even when you disagree with it about specifics, the mass of consistency and correctness benefits almost certainly outweighs those particular squabbles.
+Initially, most of your Pylint attention is on the cleanup of source code. Once you are a fluent Pylint user, you are likely to turn your focus to intermediate-level Pylint topics that are beyond the scope of this introduction.
 
-In general, yes: Pylint is worth it.
+Some of the skills that you can learn:
 
-## Beyond Pylint basics
-
-Initially, most of your Pylint attention is on cleanup of source code. Before long, you&#39;ll raise your Pylint score, and hit 10 scores regularly.
-
-Once you&#39;re a fluent Pylint user, you&#39;ll likely turn your focus to intermediate-level Pylint topics that are beyond the scope of this introduction. Among the skills to learn:
-
-- How to integrate Pylint in CI and continuous testing
-- How to configure Pylint to cooperate with such other Python tools such as [black](https://pypi.org/project/black/), [flake8](https://flake8.pycqa.org/en/latest/), [isort](https://pypi.org/project/isort/), [mypy](http://mypy-lang.org/), and so on
-- What should be in `pylintrc` to &quot;tune&quot; Pylint for a large project
-- How to configure Pylint to check comments and docstrings for spelling errors; and
+- How to integrate Pylint in CI and Continuous Testing
+- How to configure Pylint to co-operate with other Python tools such as [*Black*](https://pypi.org/project/black/), [*Flake8*](https://flake8.pycqa.org/en/latest/), [*isort*](https://pypi.org/project/isort/), [mypy](http://mypy-lang.org/), and so on.
+- What should be in `pylintrc` to tune Pylint for large projects.
+- How to configure Pylint to check comments and docstrings for spelling errors.
 - How to accommodate actual errors in Pylint.
 
-For now, though, concentrate on getting to and staying at 10, and enjoy the increasingly problem-free source code that Pylint helps you create.
+For now, concentrate on getting to and staying at a quality score of 10, and enjoy the increasingly problem-free source code that Pylint helps you create.
