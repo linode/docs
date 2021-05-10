@@ -5,7 +5,7 @@ author:
   email: claird@phaseit.net
 description: 'Pylint for python 3 helps raise the code quality of Python programs.'
 og_description: 'Pylint for python 3 helps raise the code quality of Python programs.'
-keywords: ['install' 'pylint' 'python 3']
+keywords: ['install','pylint','python 3']
 tags: ['pylint','python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
@@ -231,7 +231,7 @@ Pylint complains about several things. You can create a file that allows you to 
 - Configure Pylint so that Pylint knows not to complain about your program if your `pylintrc` contains the following:
 {{< file "pylintrc" python >}}
 
-# It’s OK to name a loop variable "i"
+## It’s OK to name a loop variable "i"
 
 [BASIC]
  good-names=i
