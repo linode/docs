@@ -21,7 +21,7 @@ external_resources:
 - '[Pylint](https://www.pylint.org/)'
 - '[Pylint Site](https://www.pylint.org/#install)'
 - '[Black](https://pypi.org/project/black/)'
-- '[Flake*](https://flake8.pycqa.org/en/latest/)'
+- '[Flake](https://flake8.pycqa.org/en/latest/)'
 - '[isort](https://pypi.org/project/isort/)'
 - '[mypy](http://mypy-lang.org/)'
 
