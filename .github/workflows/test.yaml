@@ -47,8 +47,11 @@ jobs:
     - name: Select Files in Docs Dir
       id: select_docs_dir_files
       run: |
-        docs_dir_files=$(echo '${{ steps.get_changed_files.outputs.added_modified }} ' |  jq -c '[.[] | select(.|test("^docs/"))]')
+        docs_dir_files=$(echo $added_modified |  jq -c '[.[] | select(.|test("^docs/"))]')
         echo "::set-output name=added_modified::$docs_dir_files"
+        echo "Added or modified files located within docs/ directory: $docs_dir_files"
+      env:
+        added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
       with:
