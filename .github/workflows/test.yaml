@@ -55,6 +55,8 @@ jobs:
         added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
+      if:
+        ${{ "[]" != steps.select_docs_dir_files.outputs.added_modified }}
       with:
         files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
       env:
