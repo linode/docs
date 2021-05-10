@@ -49,7 +49,8 @@ jobs:
       run: |
         docs_dir_files=$(echo $added_modified |  jq -c '[.[] | select(.|test("^docs/"))]')
         echo "::set-output name=added_modified::$docs_dir_files"
-        echo "Added or modified files located within docs/ directory: $docs_dir_files"
+        echo "Added or modified files located within docs/ directory:"
+        echo $docs_dir_files | jq '.'
       env:
         added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
     - name: Vale
