@@ -28,6 +28,6 @@ aliases: ['/platform/cloud-firewall/add-a-cloud-firewall-shortguide/']
     | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
     | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
-1. Click on the **Create** button. This creates the Cloud Firewall and it appears on the **Firewalls** listing page. By default, the Firewall has two Inbound rules applied to it; one for DNS queries (port `53`) and a second for SSH connections (port `22`). You can [edit](/docs/products/networking/cloud-firewall/guides/edit-rules/) or [delete](/docs/products/networking/cloud-firewall/delete-rules/) the rules after adding the Firewall, if needed.
+1. Click on the ****Create**** button to finish creating the Cloud Firewall. By default, a new Cloud Firewall will accept all inbound and outbound connections. Custom rules can be added as needed. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/add-rules/).
 
-    ![Click on the Create button to create your Firewall.](create-your-firewall.png "Click on the Create button to create your Firewall.")
+![Click on the Create button to create your Firewall.](create-firewall.png "Click on the Create button to create your Firewall.")
