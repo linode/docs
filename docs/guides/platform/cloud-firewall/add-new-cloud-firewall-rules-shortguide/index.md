@@ -17,17 +17,17 @@ tags: ["linode platform"]
 aliases: ['/platform/cloud-firewall/add-new-cloud-firewall-rules-shortguide/']
 ---
 
-1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
 1. From the **Firewalls** listing page, click on the Firewall that you would like to add new rules to. This takes you to the Firewall's **Rules** page.
 
 1. On the **Rules** page, select the default behavior for both inbound and outbound traffic using the **Inbound Policy** and **Outbound Policy** dropdown menus. **Accept** will allow all traffic except for those defined in the listed rules, and **Drop** will drop or deny all traffic except for those defined in the rules.
 
-    ![Default policy selection.](default-policy-dropdown.png "Click on the Add an Inbound/Outbound Rule link.")
+    ![Default policy selection.](edit-default-policies.png "Click on the Add an Inbound/Outbound Rule link.")
 
 1. Click on the **Add an Inbound/Outbound Rule** link (click on the appropriate link for the type of Rule you would like to add).
 
-    ![Click on the Add an Inbound/Outbound Rule link.](add-a-new-firewall-rule.png "Click on the Add an Inbound/Outbound Rule link.")
+    ![Click on the Add an Inbound/Outbound Rule link.](add-a-new-rule.png "Click on the Add an Inbound/Outbound Rule link.")
 
     The **Add an Inbound/Outbound Rule** drawer appears.
 
@@ -46,7 +46,7 @@ aliases: ['/platform/cloud-firewall/add-new-cloud-firewall-rules-shortguide/']
 
 1. Click on **Add Rule** to add the new rule to this Firewall. If you would like to add any additional rules, repeat the process outlined in this section.
 
-    ![Click on Add Rule to add the new rule to this Firewall.](add-your-new-rule.png "Click on Add Rule to add the new rule to this Firewall.")
+    ![Click on Add Rule to add the new rule to this Firewall.](add-an-inbound-rule-firewall.png "Click on Add Rule to add the new rule to this Firewall.")
 
 1. When you are done adding new Firewall rules, review them on the **Rules** page you are redirected to by default. Firewall rules are applied in order from top to bottom as they appear on this page. If you would like to re-order these rules, drag and drop any row into their desired position.
 
@@ -56,4 +56,4 @@ aliases: ['/platform/cloud-firewall/add-new-cloud-firewall-rules-shortguide/']
 Any newly added rules do not take effect until you **Save Changes** to the Firewall.
 {{</ note >}}
 
-    ![Apply your changes to the Firewall.](apply-your-changes-to-the-firewall.png "Apply your changes to the Firewall.")
+    ![Apply your changes to the Firewall.](save-changes-firewall.png "Apply your changes to the Firewall.")
