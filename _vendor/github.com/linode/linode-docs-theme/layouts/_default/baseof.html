@@ -20,7 +20,7 @@
     </style>
   </noscript>
 </head>
-<body class="type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
+<body class="{{ block `body-class` . }}na {{ end }}type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
      no-js
      h-auto
      overflow-x-hidden
@@ -58,7 +58,7 @@
           {{ partial "sections/navigation/explorer-toggle.html" . }}
         </div>
       </div>
-      <div id="navbar__search-input" class="pl-4 md:pl-6 flex items-center h-full w-full">
+      <div id="navbar__search-input" class="pl-4 flex items-stretch h-full w-full">
         {{ partialCached "sections/search/input.html" . }}
       </div>
       <div id="navbar__breadcrumbs" class="h-full w-full pl-4 border-l-gray overflow-x-scroll">
@@ -85,11 +85,11 @@
         <section id="main__content" class="main__content container mb-20">
           <div class="w-full h-full">
             {{ if not .IsHome }}
-              <div class="mt-6 md:mt-12 main__breadcrumbs">
+              <div class="mt-4 md:mt-6 main__breadcrumbs">
                 {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
               </div>
             {{ end }}
-            <div class="{{ if not .IsHome }}mt-8 md:mt-10{{ end }}">
+            <div class="{{ if not .IsHome }}mt-6{{ end }}">
               {{ block "main" . }}{{ end }}
             </div>
           </div>

@@ -278,6 +278,7 @@ dahdi
 databags
 datacenter
 datadir
+Datadog
 dataflow
 datagram
 dataset
@@ -658,6 +659,7 @@ img
 immutant
 impor
 incentivized
+inclusivity
 inet
 inet6
 infographic
@@ -675,6 +677,7 @@ interdomain
 interruptible
 introducer
 introducers
+io
 iodef
 iotop
 ip
@@ -723,6 +726,7 @@ journald
 journaled
 journaling
 jpg
+jpetazzo
 jre
 js
 json
@@ -766,6 +770,7 @@ kube
 kubeadm
 kubeconfig
 kubectl
+kubectx
 kubeflow
 kubelet
 kubelets
@@ -1139,6 +1144,7 @@ percona
 performant
 permalink
 permalinks
+Petazzoni
 pflogsumm
 pgpass
 pharmer

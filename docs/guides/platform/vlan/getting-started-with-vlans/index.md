@@ -6,7 +6,7 @@ author:
 keywords: ['networking','vlan','private network']
 tags: ["security", "networking", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-05
+published: 2021-04-28
 modified_by:
   name: Linode
 title: Getting Started with VLANs
@@ -27,7 +27,7 @@ VLANs are separate from [Private IP Addresses](https://www.linode.com/docs/guide
 
 ## Configuring VLANs
 
-VLANs are relatively simple to manage and do not require much configuration beyond attaching (or detaching) a VLAN to a Linode. VLANs can be configured when creating new Linodes or by modifying the network interfaces on the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile) of an existing Linode.
+VLANs are relatively simple to manage and do not require much configuration beyond attaching (or detaching) a VLAN to a Linode. VLANs can be configured when creating new Linodes or by modifying the network interfaces on the [Configuration Profile](/docs/guides/linode-configuration-profiles/) of an existing Linode.
 
 ### Configuring the Network Interface
 
@@ -58,56 +58,56 @@ The Linode must be rebooted for any changes within its network interfaces to tak
 
 ## Attaching a VLAN When Creating a Linode
 
-1. On the top left of the Linode [Cloud Manager](https://cloud.linode.com/dashboard), click `Create` and select `Linode`.
+1. On the top left of the Linode [Cloud Manager](https://cloud.linode.com/dashboard), click **Create** and select **Linode**.
 
     [![Create a new Linode](create-new-linode.png "Create a new Linode")](create-new-linode.png)
 
-1. Fill out all desired configuration options in the form that appears, until reaching the `Attach a VLAN` section. See the [Getting Started with Linode](/docs/guides/getting-started/) guide for more information.
+1. Fill out all desired configuration options in the form that appears, until reaching the **Attach a VLAN** section. See the [Getting Started with Linode](/docs/guides/getting-started/) guide for more information.
 
     {{< note >}}
-VLANs are still in beta and may not be available for all accounts or in all regions. If the Attach a VLAN section isn't visible, see the Availability section on the [VLANs Overview](/docs/products/networking/vlans/) page.
+VLANs are not available in all regions. If the Attach a VLAN section isn't visible, see the Availability section on the [VLANs Overview](/docs/products/networking/vlans/) page.
 {{< /note >}}
 
-1. Within the `Attach a VLAN` section, enter the `Label` of the VLAN or select from a list of the VLANs that currently exist on the account. If the VLAN does not yet exist, it is automatically created when creating the Linode.
+1. Within the **Attach a VLAN** section, enter the *Label* of the VLAN or select from a list of the VLANs that currently exist on the account. If the VLAN does not yet exist, it is automatically created when creating the Linode.
 
     [![Attach a VLAN form](vlan-new-linode.png "Attach a VLAN form")](vlan-new-linode.png)
 
-1. Enter an `IPAM Address`. If this field left blank, the Linode will not be able to communicate with other Linodes on that VLAN until one of the following is true:
+1. Enter an *IPAM Address*. If this field left blank, the Linode will not be able to communicate with other Linodes on that VLAN until one of the following is true:
 
-    - An IPAM address is added to the `eth1` interface within the Linode's [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile)
+    - An IPAM address is added to the `eth1` interface within the Linode's [Configuration Profile](/docs/guides/linode-configuration-profiles/)
     - An IP address is manually assigned to the network interface within the Linode's internal configuration files.
 
     See the [Assigning an IPAM Address](#assigning-an-ipam-address) section on this page for more information about IPAM and examples of valid IPAM addresses.
 
-1. Adjust any remaining configuration options as needed and select the `Create Linode` button to create the Linode.
+1. Adjust any remaining configuration options as needed and select the **Create Linode** button to create the Linode.
 
-By default, the public IP address (and, if added, the private IP address) of the Linode is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile).
+By default, the public IP address (and, if added, the private IP address) of the Linode is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile).
 
 ## Attaching a VLAN to an Existing Linode
 
-1. Within the Linode [Cloud Manager](https://www.cloud.linode.com), click the `Linodes` link in the sidebar and select a Linode.
+1. Within the Linode [Cloud Manager](https://www.cloud.linode.com), click the **Linodes** link in the sidebar and select a Linode.
 
 1. Navigate to the **Configurations** tab on the Linode's details page.
 
-1. Click the `Edit` button next to the configuration profile you'd like to modify.
+1. Click the **Edit** button next to the configuration profile you'd like to modify.
 
     [![Edit configuration profile](edit-button-for-configuration-profile.png "Edit configuration profile")](edit-button-for-configuration-profile.png)
 
-1. An **Edit Configuration** screen will appear. Scroll down to the `Network Interfaces` section.
+1. An **Edit Configuration** screen will appear. Scroll down to the **Network Interfaces** section.
 
-1. Click the dropdown menu under the desired network interface and select `VLAN`. Typically `eth1` or `eth2` would be used when adding the first or second VLAN to a Linode, respectively - if the Linode's `eth0` network interface provides access to the public internet.
+1. Click the dropdown menu under the desired network interface and select **VLAN**. Typically `eth1` or `eth2` would be used when adding the first or second VLAN to a Linode, respectively - if the Linode's `eth0` network interface provides access to the public internet.
 
     [![Selecting the network interface](network-interface-purpose.png "Selecting the network interface")](network-interface-purpose.png)
 
     A secondary menu will appear next to the selected interface for entering the VLAN's label and the IPAM address for the Linode.
 
-1. Enter the `Label` of the VLAN or select an existing VLAN from the drop down menu. If a custom label is entered and the VLAN does not yet exist, it is automatically created when saving the configuration profile.
+1. Enter the *Label* of the VLAN or select an existing VLAN from the drop down menu. If a custom label is entered and the VLAN does not yet exist, it is automatically created when saving the configuration profile.
 
-1. Enter an `IPAM Address`. If this field is left blank, the Linode will not be able to communicate with other Linodes on that VLAN until an IP address is manually assigned to the network interface within the Linode's internal configuration files.
+1. Enter an *IPAM Address*. If this field is left blank, the Linode will not be able to communicate with other Linodes on that VLAN until an IP address is manually assigned to the network interface within the Linode's internal configuration files.
 
     See the [Assigning an IPAM Address](#assigning-an-ipam-address) section on this page for more information about IPAM and examples of valid IPAM addresses.
 
-1. Click on the `Edit Configuration` button towards the bottom of this form to save the changes.
+1. Click on the **Edit Configuration** button towards the bottom of this form to save the changes.
 
 1. Once the configuration profile has been updated, select the **Boot** or **Reboot** button next to the edited configuration profile on the following page. This will reboot using the edited configuration profile and apply the new VLAN configuration to the Linode.
 

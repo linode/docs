@@ -250,6 +250,8 @@ github.com/linode/linode-api-docs/v4 v4.90.0 h1:gK9FEi4BRXQHIw0mELLjItEU7dcRZe+9
 github.com/linode/linode-api-docs/v4 v4.90.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-api-docs/v4 v4.90.3 h1:Q93V4pJxVuQ6Pg81VH9KKB5O9zmyj2VvpdnH97r79UE=
 github.com/linode/linode-api-docs/v4 v4.90.3/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
+github.com/linode/linode-api-docs/v4 v4.91.0 h1:FcrNTM8x9k1kgWOLYd4YYgOzYEzKs5wF0ocgcy1xumQ=
+github.com/linode/linode-api-docs/v4 v4.91.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-docs-theme v0.0.0-20210215111207-9617106a3e7d h1:feu3jWgITW5YvplVgqsKG3oXq9AUREWzKQC5jB43C/Y=
 github.com/linode/linode-docs-theme v0.0.0-20210215111207-9617106a3e7d/go.mod h1:2x/UxSy9ZlNdGFzD0USCZu2AWzjIZv/iYK06Du+bFqI=
 github.com/linode/linode-docs-theme v0.0.0-20210225102921-7c8a91c6347c h1:vCPkHOsB6KkX6733p3qsqtKYYc46SGglIhgEy9pJgSY=
@@ -268,6 +270,10 @@ github.com/linode/linode-docs-theme v0.0.0-20210405181650-f5fc0280eaa5 h1:3kcCmL
 github.com/linode/linode-docs-theme v0.0.0-20210405181650-f5fc0280eaa5/go.mod h1:Pc8TnkFP4uSsRw+maC5BO+v3z7B/3IWApuJJIdPZj74=
 github.com/linode/linode-docs-theme v0.0.0-20210423183537-d38204a73611 h1:INP+35RDCxbekaaG94xATmW7zQrO5SFojenYveDbFls=
 github.com/linode/linode-docs-theme v0.0.0-20210423183537-d38204a73611/go.mod h1:Pc8TnkFP4uSsRw+maC5BO+v3z7B/3IWApuJJIdPZj74=
+github.com/linode/linode-docs-theme v0.0.0-20210428110624-59641ac5ad83 h1:EFMmEo9ptNfO1+rcewpWnlUuiGZSJ+M5/NJ9Ry41NFU=
+github.com/linode/linode-docs-theme v0.0.0-20210428110624-59641ac5ad83/go.mod h1:Pc8TnkFP4uSsRw+maC5BO+v3z7B/3IWApuJJIdPZj74=
+github.com/linode/linode-docs-theme v0.0.0-20210507134606-dcb1392a5e03 h1:1TduPFAJjtoHZXU2dNYbWaktEXMCZGwOU9ND7zJAzVM=
+github.com/linode/linode-docs-theme v0.0.0-20210507134606-dcb1392a5e03/go.mod h1:Pc8TnkFP4uSsRw+maC5BO+v3z7B/3IWApuJJIdPZj74=
 github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20200921210751-887bbecdd5dd/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c h1:j2j0WYHnoSEsGg7790A+gNQqKYIXGTi/i1FHTwt9zBM=

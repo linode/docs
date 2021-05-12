@@ -4,9 +4,7 @@ tab_group_main:
     weight: 20
 ---
 
-{{< content "vlans-beta-note-shortguide" >}}
-
-When a VLAN is assigned to a network interface and given an IPAM address, the Linode should automatically be able to communicate over that private network. This is due to [Network Helper](/docs/guides/network-helper/), which is enabled by default on most Linodes. For compatible distributions, Network Helper adjusts the internal network configuration files on a Linode. Any network interfaces defined in the Linode's selected [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#configuration-profiles) (including those with VLANs attached) will automatically be configured.
+When a VLAN is assigned to a network interface and given an IPAM address, the Linode should automatically be able to communicate over that private network. This is due to [Network Helper](/docs/guides/network-helper/), which is enabled by default on most Linodes. For compatible distributions, Network Helper adjusts the internal network configuration files on a Linode. Any network interfaces defined in the Linode's selected [Configuration Profile](/docs/guides/linode-configuration-profiles/) (including those with VLANs attached) will automatically be configured.
 
 This guide is for users that have disabled Network Helper on their Linode or prefer not to assign an IPAM address within a Linode's Configuration Profile. In these cases, the Linode's internal network configuration files must be manually adjusted. The following sections will cover the changes needed to manually configure a VLAN on common Linux distributions.
 
