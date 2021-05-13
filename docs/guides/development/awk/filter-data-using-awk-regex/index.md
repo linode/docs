@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "Filter Data using AWK RegEx"
 h1_title: "How To Filter Data using AWK RegEx"
+enable_h1: true
 contributor:
   name: Andy Lester
   link: https://twitter.com/petdance
