@@ -12,7 +12,7 @@ published: 2017-12-06
 modified: 2021-05-13
 modified_by:
   name: Linode
-title: 'How to Use tmux the Terminal Multiplexer'
+title: 'How to Use tmux (a Terminal Multiplexer)'
 contributor:
   name: Alexandru Andrei
 external_resources:
