@@ -12,6 +12,7 @@ modified: 2021-03-04
 modified_by:
   name: Linode
 title: Monitor Your System with Graphite and a Grafana Dashboard
+h1_title: Monitoring Your System with Graphite and a Grafana Dashboard
 external_resources:
  - '[Grafana Official Documentation](http://docs.grafana.org/)'
  - '[Graphite Official Documentation](https://graphite.readthedocs.io/en/latest/)'
@@ -26,7 +27,7 @@ This guide uses Docker Compose to run the official Grafana and Graphite containe
 
 ### Why use Grafana over Graphite's visualization?
 
-Graphite has a built-in Composer allowing for the user to [view metrics visually](https://graphiteapp.org/quick-start-guides/graphing-metrics.html) and also offers a rich [render API](https://graphite.readthedocs.io/en/latest/render_api.html). That being said, Graphite's built-in visualization is rudimentary, and the developers suggest Grafana for a "more modern UI," that is "another great way to interact with your Graphite data and it offers many more visualization types than the native Composer" (see the bottom of the page at <https://graphiteapp.org/quick-start-guides/graphing-metrics.html>).
+Graphite has a built-in Composer for the user to [view metrics visually](https://graphiteapp.org/quick-start-guides/graphing-metrics.html) and also offers a rich [render API](https://graphite.readthedocs.io/en/latest/render_api.html). That being said, Graphite's built-in visualization is rudimentary, and the developers suggest Grafana for a "more modern UI," that is "another great way to interact with Graphite data and it offers many more visualization types than the native Composer" (see the bottom of the page at <https://graphiteapp.org/quick-start-guides/graphing-metrics.html>).
 
 ## Installating Graphite and Grafana
 
@@ -99,7 +100,7 @@ CONTAINER ID        IMAGE                         COMMAND             CREATED   
 
 ## Add a Data Source for Graphite and Create a Grafana Dashboard
 
-1.  In a browser, navigate to port `3000` on the Linode's FQDN or public IP address (e.g. `192.0.2.0:3000`). The Grafana login page should load:
+1.  In a browser, navigate to port `3000` on the Linode's FQDN or public IP address (`192.0.2.0:3000`). The Grafana login page loads:
 
     ![Grafana Login](grafana-login.png "Screenshot of the Grafana login page")
 
