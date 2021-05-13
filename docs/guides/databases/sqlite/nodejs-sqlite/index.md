@@ -1,73 +1,89 @@
 ---
-slug: nodejs-sqlite
+slug: getting-started-with-nodejs-sqlite
 author:
   name: James Turner
   email: docs@linode.com
-description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide shows what&#39;s involved.'
-og_description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide shows what&#39;s involved.'
+description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
+og_description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
 keywords: ['nodejs sqlite']
+tags: ['nodejs', 'sqlite', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-12
 modified_by:
   name: Linode
-title: "Getting started with NodeJS and SQLite"
-h1_title: "Getting started with NodeJS and SQLite"
+title: "Getting Started with NodeJS SQLite"
+h1_title: "How to Get Started with NodeJS and SQLite"
 contributor:
   name: James Turner
   link:
+external_resources:
+- '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
+- '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
+
 ---
 
-# Getting started with NodeJS and SQLite
+## Getting Started with NodeJS and SQLite
 
-SQLite makes a nice stand-alone database for applications that don&#39;t require a full client-server environment. Using it with NodeJS is easy, and can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
+SQLite makes a nice stand-alone database for applications that do not require a full client-server environment. Using SQLite with NodeJS is easy, and can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
 
-You can read [the full documentation of the sqlite3 API](https://github.com/mapbox/node-sqlite3/wiki/API) but this example demonstrates the general process.
+For demonstration of the general process, you can read the documentation of the [SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API).
 
-## Installing SQLite support in NodeJS
+**Prerequisite:**
+You must have installed NodeJS and Node Package Manager (`npm`) on your machine. If you have not, install using the below commands:
 
-This guide assumes a working copy of NodeJS and `npm` installed on the development environment.
+        sudo apt install npm
+        sudo apt install nodejs
 
-The first thing to do is to install SQLite on the local NodeJS environment. Obviously, in a production environment, the same thing needs to be done anywhere it needed to be run.
+## Install SQLite
 
-To install SQLite, use the Node Package Manager (`npm`). The relevant command is:
+Install SQLite support into NodeJS using `npm` on your local development environment.
 
-```
-npm install sqlite3
-```
+        sudo npm install sqlite3
 
-Doing this downloads and installs SQLite support into NodeJS.
+## Create a Database
 
-## Opening or creating a database
+This example uses a simple database application to track superheros from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
 
-SQLite can either operate on an existing database, or create one the first time the application runs. This example uses a simple database application to track superheros from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
+1. First, create a file called `sample.js` and import the `sqlite3` module into NodeJS:
 
-The first step is to open/create the database.
+        var sqlite3 = require('sqlite3');
 
-```
+1. The following line creates a database `mcu.db` in the current working directory. The `sqlite3.Database()` call can take one, two, or three arguments. The second argument is SQLite database flags., from the set of `sqlite3.OPEN_READONLY`, `sqlite3.OPEN_READWRITE`, and `sqlite3.OPEN_CREATE`.
+
+        new sqlite3.Database('./mcu.db', sqlite3.OPEN_READWRITE, (err) ...);
+
+    {{< note >}}
+Following are the different SQLite flag combinations:
+
+   - `OPEN_READONLY`: The database is opened in read-only mode. If the database does not already exist, an error is returned.
+
+   - `OPEN_READWRITE`: The database is opened for reading and writing where the database must already exist, otherwise an error is returned.
+
+   - `OPEN_CREATE`: The database is opened for reading and writing, and if the database does not exist, it is created.
+
+   The default SQLite database flag is `sqlite3.OPEN_READWRITE` and `sqlite3.OPEN_CREATE`.
+{{< /note >}}
+
+1. The third argument in the `sqlite3.Database()` is a callback function that is called when the database is opened successfully or when an error occurred. This callback function has the error object, `err` as the first parameter. If an error occurred, the error object is not null, otherwise, it is null.
+        {{< file "sample.js" >}}
+
 var sqlite3 = require('sqlite3');
 var db;
-new sqlite3.Database('mcu.db', sqlite3.OPEN_READWRITE, (err) => {
+new sqlite3.Database('./mcu.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err && err.code == "SQLITE_CANTOPEN") {
         createDatabase();
         return;
         } else if (err) {
-          console.log("Getting error " + err);
-          exit(1);
-        }
-        runQueries(db);
+            console.log("Getting error " + err);
+            exit(1);
+    }
+    runQueries(db);
 });
-```
-The first line is fairly straightforward, and merely loads the SQLite support into NodeJS.
+{{< /file >}}
 
-The second line attempts to open or create a database at the given path (in this case, a file called `mcu.db` in the current directory). The database call can take one, two, or three arguments. If a second argument is given and is a list of flags, SQLite uses these as database flags, from the set of `sqlite3.OPEN_READONLY`, `sqlite3.OPEN_READWRITE`, and `sqlite3.OPEN_CREATE`. The default is `read/write` and `open/create`. If you specify flags explicitly, you can leave out `OPEN_CREATE` to fail if the database doesn’t already exist.
+1. If the database exists, the `runQueries()` is executed. Now you need to create the `createDatabase()` function as shown below:
+        {{< file "sample.js" >}}
 
-The third argument (or second argument if flags aren&#39;t supplied) is a callback to execute once the database is opened (or fails). This is a more modern way of writing functional code, so it is used in this example.
-
-If the database exists, the code goes right on to run the queries. If it doesn&#39;t, however, the database must be created and populated.
-
-The first step is to create it:
-
-```
 function createDatabase() {
     var newdb = new sqlite3.Database('mcu.db', (err) => {
         if (err) {
@@ -77,15 +93,14 @@ function createDatabase() {
         createTables(newdb);
     });
 }
-```
+{{< /file >}}
 
-This is essentially the same code that was run before to open the database. However, this time the flags are missing; that means that the database is created if it doesn&#39;t exist yet. If we get an error again, something more serious is going on, so the code exits. If it succeeds, however, the code goes on to create the tables.
+The above code is similar to that of creating the database. However, this time the flags are missing; that means that the database is created if it does not exist yet. If it succeeds, the `createTables()` is executed to create the tables. If we get an error again, something more serious is going on, so the code exits.
 
-## Creating tables and inserting data
+## Create Tables and Insert Data
 
-To create the tables and populate them, the code takes advantage of the `sqlite3` exec method, which lets an arbitrary number of SQL commands be run with one string.
-
-```
+The following code illustrates the sqlite's `exec()` method to create the tables and populate them. The `exec()` method runs all the queries in the specified string. Once the tables are created and insertions are made, the `runQueries()` method is executed.
+        {{< file "sample.js" >}}
 function createTables(newdb) {
     newdb.exec(`
     create table hero (
@@ -115,15 +130,12 @@ function createTables(newdb) {
             runQueries(newdb);
     });
 }
-```
+{{< /file >}}
 
-Just like all the other commands used, the `exec` method uses a callback to handle signaling completion. So once the creates and inserts are done, the code can move on to running the queries, just as if the database already existed.
+## Query the Database
 
-## Querying the database
-
-You can use one of several methods to fetch rows from the database. The data can be fetched row by row, looped over, or returned in a single array. In this case, the later method is used.
-
-```
+You can use one of several methods to fetch rows from the database. The data can be fetched row by row, looped over, or returned in a single array. In this case, the latter method is used.
+    {{< file "sample.js" >}}
 function runQueries(db) {
     db.all(`
     select hero_name, is_xman, was_snapped from hero h
@@ -136,18 +148,82 @@ function runQueries(db) {
         });
     });
 }
-```
+{{< /file >}}
 
-The `sqlite3.all` method returns an array of rows on success, or an error on failure. It is good practice to parameterize the query to avoid SQL injection hacks. All the `sqlite3` query methods allow this to be done by providing a list of substation values as in this case with an array of values, or an object with properties that can be substituted using `$properyname` syntax.
+The `all()` method of the sqlite3 returns an array of rows on success, or an error on failure.
 
-When this code is run, the following results are generated:
+{{< note >}}
+It is good practice to parameterize the query by providing a list of substation values or an object with properties that can be substituted using `$properyname` syntax. This avoid SQL injection hacks.
+{{< /note >}}
 
-```
-C:\Program Files\nodejs\node.exe .\sample.js
+Below is the complete `sample.js` file:
+    {{< file "sample.js" >}}
+var sqlite3 = require('sqlite3');
+let db= new sqlite3.Database('./mcu.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
+    if (err && err.code == "SQLITE_CANTOPEN") {
+        createDatabase();
+        return;
+        } else if (err) {
+            console.log("Getting error " + err);
+            exit(1);
+    }
+    runQueries(db);
+});
+
+function createDatabase() {
+    var newdb = new sqlite3.Database('mcu.db', (err) => {
+        if (err) {
+            console.log("Getting error " + err);
+            exit(1);
+        }
+        createTables(newdb);
+    });
+}
+
+function createTables(newdb) {
+    newdb.exec(`
+    create table hero (
+        hero_id int primary key not null,
+        hero_name text not null,
+        is_xman text not null,
+        was_snapped text not null
+    );
+    insert into hero (hero_id, hero_name, is_xman, was_snapped)
+        values (1, 'Spiderman', 'N', 'Y'),
+               (2, 'Tony Stark', 'N', 'N'),
+               (3, 'Jean Grey', 'Y', 'N');
+
+    create table hero_power (
+        hero_id int not null,
+        hero_power text not null
+    );
+
+    insert into hero_power (hero_id, hero_power)
+        values (1, 'Web Slinging'),
+               (1, 'Super Strength'),
+               (1, 'Total Nerd'),
+               (2, 'Total Nerd'),
+               (3, 'Telepathic Manipulation'),
+               (3, 'Astral Projection');
+        `, ()  => {
+            runQueries(newdb);
+    });
+}
+
+function runQueries(db) {
+    db.all(`select hero_name, is_xman, was_snapped from hero h
+   inner join hero_power hp on h.hero_id = hp.hero_id
+   where hero_power = ?`, "Total Nerd", (err, rows) => {
+        rows.forEach(row => {
+            console.log(row.hero_name + "\t" +row.is_xman + "\t" +row.was_snapped);
+        });
+    });
+}
+{{< /file >}}
+
+When you execute `sample.js` file, the following result is generated:
+    {{< output >}}
+username@localhost:~$ node sample.js
 Spiderman	N	Y
 Tony Stark	N	N
-```
-
-## One final caution
-
-The functional nature of the NodeJS sqlite3 support requires developers to think asynchronously. Make sure that code doesn&#39;t plow ahead before callbacks are complete.
+{{< /output >}}
