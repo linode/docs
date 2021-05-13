@@ -1,18 +1,19 @@
 ---
-slug: install-the-element-app
+slug: how-to-install-the-element-chat-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to download and install the Element App and the Matrix-Synapse communication layer. It also illustrates how to set up encryption and use these applications with a web server.'
-og_description: 'This guide explains how to download and install the Element App and the Matrix-Synapse communication layer. It also illustrates how to set up encryption and use these applications with a web server.'
+description: 'This guide explains how to download and install the Element App and the Matrix-Synapse communication layer. It also illustrates how to set up encryption and use these applications with a NGINX web server.'
+og_description: 'This guide explains how to download and install the Element App and the Matrix-Synapse communication layer. It also illustrates how to set up encryption and use these applications with a NGINX web server.'
 keywords: ['Element','Matrix-Synapse','installation','chat','messaging']
-tags: ['element', 'matrix', 'dns', 'synapse', 'nginx']
+tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-07
 modified_by:
   name: Linode
-title: "Install The Element App"
-h1_title: "How to Install The Element Application."
+title: "Install the Element Chat App"
+h1_title: "How to Install the Element Chat Application"
+enable_h1: true
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -63,21 +64,21 @@ Element is based on React and uses *Electron* for bundling. See the [*Element Gi
 
 ## A Summary of the Element Installation and Configuration Process
 
-A complete Element installation consists of the following high-level steps. Because Element is a web client for [*Matrix-Synapse*](https://matrix.org/docs/projects/server/synapse), you must first download and install the Matrix-Synapse software package. Element also requires a web server, such as *NGINX*. Although these instructions are geared towards Ubuntu installations, they are broadly applicable to most Linux distributions.
+A complete Element installation consists of the high-level steps outlined in this section. Because Element is a web client for [*Matrix-Synapse*](https://matrix.org/docs/projects/server/synapse), you must first download and install the Matrix-Synapse software package. Element also requires a web server, such as [*NGINX*](/docs/guides/web-servers/nginx/?q=nginx). Although these instructions are geared towards Ubuntu installations, they are broadly applicable to most Linux distributions.
+
+1. Set Up DNS Records
+1. Download and install the Matrix-Synapse communication layer
+1. Download, install, and configure the Element client
+1. Install and configure the NGINX web server
+1. Install Certbot and generate *Let's Encrypt* certificates
+1. Configure security settings for Element
+1. Enable and test the Element client
 
 The following sections describe each step in more detail.
 
-1. Set Up DNS Records
-1. Download and Install the Matrix or Synapse Communication Layer
-1. Download, Install and Configure the Element Client
-1. Install and Configure the NGINX Web Server
-1. Install Certbot and Generate *Let's Encrypt* Certificates
-1. Configure Security Settings for Element
-1. Enable and Test the Element Client
-
 ## Set Up DNS Records
 
-- Before connecting to Element, register a base domain for your service and set the corresponding DNS records to reference your Linode.
+- Before connecting to Element, register a base domain for your service and [set the corresponding DNS records](/docs/networking/dns/dns-records-an-introduction/) to reference your Linode.
 
 - Create two further subdomains for the *matrix* and *element* services, each with its DNS records.
 
@@ -92,11 +93,9 @@ The following sections describe each step in more detail.
 Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/platform/manager/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
-## Download and Install the Matrix or Synapse Communication Layer
+## Download and Install the Matrix-Synapse Communication Layer
 
-**Prerequisite:**
-
-Install the *Matrix-Synapse* service as Element depends on Matrix functionality to work properly.
+Install the *Matrix-Synapse* service. Element depends on Matrix functionality to work properly.
 
 {{< note >}}
 Synapse is the "home server" implementation of Matrix, but the two names are often used interchangeably. This guide refers to the software package as *Matrix* and the actual component as *Matrix-Synapse* to avoid confusion.
@@ -105,23 +104,26 @@ Synapse is the "home server" implementation of Matrix, but the two names are oft
 1. Ensure the necessary software dependencies are installed.
 
         sudo apt install -y lsb-release wget apt-transport-https
+
 1. Download the Matrix Organization's GPG key.
 
         sudo wget -O /usr/share/keyrings/matrix-org-archive-keyring.gpg https://packages.matrix.org/debian/matrix-org-archive-keyring.gpg
+
 1. Add the Matrix repository.
 
         echo "deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] https://packages.matrix.org/debian/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/matrix-org.list
+
 1. Use `apt` to install Matrix.
 
         sudo apt-get update -y
         sudo apt-get install matrix-synapse-py3 -y
+
 1. During the installation process, Matrix asks for the name of your domain. Enter the name of the `matrix` subdomain.
 
     For the `Anonymous Data Statistic`, choose **No**.
 
     ![Matrix domain name prompt](Matrix-Domain-Prompt_small.png)
 
-        matrix.example.com
 1. Edit the Matrix-Synapse configuration file at `/etc/matrix-synapse/homeserver.yaml` and set `enable_registration` to true.
 
         vi /etc/matrix-synapse/homeserver.yaml
@@ -137,7 +139,8 @@ enable_registration: true
 registration_shared_secret: "your_password"
 ...
     {{</ file >}}
-1. **(Optional)** To enable additional features based on email lookups and bridging with other applications, configure an *identity server* for Element to use. You can use your own Linode, the default server at `https://matrix.org`, or a third-party service. Uncomment the `default_identity_server` entry inside `/etc/matrix-synapse/homeserver.yaml` and enter the address of the server. Even without an identity server, Element still functions normally and its core features are still available.
+1. **(Optional)** To enable additional features based on email lookups and bridging with other applications, configure an *identity server* for Element to use. You can use your own Linode, the default server at `https://matrix.org`, or a third-party service. Uncomment the `default_identity_server` entry inside the `/etc/matrix-synapse/homeserver.yaml` file and enter the address of the server. Even without an identity server, Element still functions normally and its core features are still available.
+
 1. Restart Matrix-Synapse to apply the changes, and then verify its status.
 
         sudo systemctl restart matrix-synapse
@@ -161,7 +164,7 @@ For more advanced installation instructions, see the [*Matrix-Synapse GitHub ins
 Earlier versions of Matrix, as well as development/beta releases, are available on the [*Matrix releases page*](https://github.com/matrix-org/synapse/releases).
 {{< /note >}}
 
-## Download, Install and Configure the Element Client
+## Download, Install, and Configure the Element Client
 
 Software packages for installing Element are found on the [*Element releases page*](https://github.com/vector-im/element-web/releases). Download the `tar` file to your Linode using `wget`. The current version of Element is 1.7.24. When downloading the files, substitute the actual version you are downloading in place of `1.7.24`.
 
@@ -169,26 +172,33 @@ Software packages for installing Element are found on the [*Element releases pag
 
         sudo mkdir -p /var/www/html/element.example.com
         cd /var/www/html/element.example.com
+
 1. Download the Element software using `wget`.
 
         sudo wget https://github.com/vector-im/element-web/releases/download/v1.7.24/element-v1.7.24.tar.gz
+
 1. Install `gnupg` and download the signature.
 
         sudo apt install -y gnupg
         sudo wget https://github.com/vector-im/element-web/releases/download/v1.7.24/element-v1.7.24.tar.gz.asc
+
 1. Import the signing key for Element.
 
         sudo gpg --keyserver keyserver.ubuntu.com --search-keys releases@riot.im
     The `gpg` utility confirms the key is imported.
+
     {{< output >}}
 gpg: key 74692659BDA3D940: public key "Riot Releases <releases@riot.im>" imported
 gpg: Total number processed: 1
 gpg: imported: 1
     {{< /output >}}
+
 1. Use this key to validate the `asc` signature.
 
         sudo gpg --verify element-v1.7.24.tar.gz.asc
-    `Gpg` confirms the signature is good.
+
+    `gpg` confirms the signature is good.
+
     {{< output >}}
 gpg: assuming signed data in 'element-v1.7.24.tar.gz'
 gpg: Signature made Mon Mar 29 12:44:56 2021 UTC
@@ -196,18 +206,23 @@ gpg: using RSA key 5EA7E0F70461A3BCBEBE4D5EF6151806032026F9
 gpg: issuer "releases@riot.im"
 gpg: Good signature from "Riot Releases <releases@riot.im>" [unknown]
     {{< /output >}}
+
 1. Extract the Element software using the `tar` utility.
 
         sudo tar -xzvf element-v1.7.24.tar.gz
+
 1. Create an alias for the application to make it easier to remember and set the ownership.
 
         sudo ln -s element-v1.7.24 element
         sudo chown www-data:www-data -R element
+
 1. Change to the `element` directory, and create a copy of the `config.sample.json` file named `config.json`.
 
         cd element
         sudo cp config.sample.json config.json
+
 1. Edit the `base_url` and `server_name` attributes in `config.json` so they reference your domain. The `base_url` value must reference the `matrix` subdomain, while `server_name` must indicate the base domain.
+
     {{< file "/var/www/html/element.example.com/element/config.json" >}}
 {
     "default_server_config": {
@@ -224,85 +239,93 @@ gpg: Good signature from "Riot Releases <releases@riot.im>" [unknown]
 
 ## Install and Configure the NGINX Web Server
 
-You must install [*NGINX*](https://www.nginx.com/) before using Certbot. For more information about NGINX, see the Linode's [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx) guide.
+You must install [*NGINX*](https://www.nginx.com/) before using Certbot. For more information about NGINX, see Linode's [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx) guide.
 
 1. Install NGINX.
 
         sudo apt -y install nginx
+
 1. Create files for each virtual host, corresponding to each domain, and link the directories using the `ln` command. Substitute the name of your domain for `example.com` throughout the rest of this section.
 
         sudo touch /etc/nginx/sites-available/{example.com,matrix.example.com,element.example.com}
         sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
         sudo ln -s /etc/nginx/sites-available/matrix.example.com /etc/nginx/sites-enabled/matrix.example.com
         sudo ln -s /etc/nginx/sites-available/element.example.com /etc/nginx/sites-enabled/element.example.com
+
 1. Change to the `/etc/nginx/sites-available` directory and add the following information to the file associated with the base domain, in this case, `example.com`. Use your domain for the `server_name` and `root` variables.
 
         cd /etc/nginx/sites-available
         vi example.com
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
-    server {
-        listen 80;
-        listen [::]:80;
+server {
+    listen 80;
+    listen [::]:80;
 
-        server_name example.com;
-        root /var/www/html/example.com;
-        index index.html;
+    server_name example.com;
+    root /var/www/html/example.com;
+    index index.html;
 
-        location / {
-            try_files $uri $uri/ =404;
-        }
+    location / {
+        try_files $uri $uri/ =404;
     }
+}
     {{< /file >}}
+
 1. Edit the file associated with the `element` subdomain, such as `element.example.com`, and add the following information. Use the `element` subdomain name throughout, and append the `element` directory to the end of the `root` field.
 
         vi element.example.com
     {{< file "/etc/nginx/sites-available/element.example.com" nginx >}}
-    server {
-        listen 80;
-        listen [::]:80;
+server {
+    listen 80;
+    listen [::]:80;
 
-        server_name element.example.com;
-        root /var/www/html/element.example.com/element;
-        index index.html;
+    server_name element.example.com;
+    root /var/www/html/element.example.com/element;
+    index index.html;
 
-        location / {
-            try_files $uri $uri/ =404;
-        }
+    location / {
+        try_files $uri $uri/ =404;
     }
+}
     {{< /file >}}
+
 1. Edit the file corresponding to the `matrix` subdomain, and add the following information. Use the `matrix` subdomain name in the `server_name` and `root` variables.
 
         vi matrix.example.com
     {{< file "/etc/nginx/sites-available/matrix.example.com" nginx >}}
-    server {
-        listen 80;
-        listen [::]:80;
+server {
+    listen 80;
+    listen [::]:80;
 
-        server_name matrix.example.com;
-        root /var/www/html/matrix.example.com;
-        index index.html;
+    server_name matrix.example.com;
+    root /var/www/html/matrix.example.com;
+    index index.html;
 
-        location / {
-            proxy_pass http://localhost:8008;
-        }
+    location / {
+        proxy_pass http://localhost:8008;
     }
+}
     {{< /file >}}
+
 1. Use the NGINX syntax checker to validate the new files.
 
         sudo nginx -t
+
     The output indicates that the syntax is valid.
+
     {{< output >}}
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
     {{< /output >}}
+
 1. Restart NGINX to apply all the configuration changes.
 
         sudo systemctl restart nginx
 
 ## Install Certbot and Generate *Let's Encrypt* Certificates
 
-To use Element, you must enable encryption. The easiest way to do so is by using *Hypertext Transfer Protocol* (HTTP). HTTP allows users to authenticate the websites they visit and ensures their data is private. A website must possess a public key certificate signed by a trusted certificate authority before it can accept HTTPS requests. This ensures the owner of the certificate operates the website in question.
+To use Element, you must enable encryption. The easiest way to do so is by using the *Hypertext Transfer Protocol* (HTTP). HTTP allows users to authenticate the websites they visit and ensures their data is private. A website must possess a public key certificate signed by a trusted certificate authority before it can accept HTTPS requests. This ensures the owner of the certificate operates the website in question.
 
 You can use [*Let's Encrypt*](https://letsencrypt.org/) to generate certificates. This service grants basic SSL/TLS certificates to websites in an automated manner. [*Certbot*](https://certbot.eff.org/), a tool from the *Electronic Frontier Foundation* (EFF), automates the entire certificate-granting operation. It identifies all of the relevant domains and manages the challenge requests and the granting process. It also makes all necessary changes to the NGINX configuration.
 
@@ -315,6 +338,7 @@ You can install Certbot using the `snap` utility, which is already pre-installed
         snap version
 
    The `snap version` should output the following:
+
     {{< output >}}
 username@localhost:~$ /etc/nginx/sites-available$ snap version
 snap    2.49.2
@@ -335,13 +359,17 @@ If Snap is not already installed, run the command `sudo apt install snapd` first
 1. Install Certbot.
 
         sudo snap install --classic certbot
+
     The Snap module confirms Certbot is installed.
+
     {{< output >}}
 certbot 1.15.0 from Certbot Project (certbot-eff) installed
     {{< /output >}}
+
 1. Configure a symbolic link to the Certbot directory using the `ln` command.
 
         sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
 1. Use Certbot to generate certificates for your domains. Generate all three certificates with one command by using the `-d` option in front of each domain. Substitute your domain names in the following command:
 
         sudo certbot --nginx -d example.com -d element.example.com -d matrix.example.com
@@ -351,6 +379,7 @@ certbot 1.15.0 from Certbot Project (certbot-eff) installed
         sudo certbot --nginx -d example.com -d element.example.com -d matrix.example.com --register-unsafely-without-email
 
     Certbot displays updates about the requests and challenges and then confirms the domains are successfully enabled. You might be required to supply some additional information if you have never used Certbot before.
+
     {{< output >}}
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator nginx, Installer nginx
@@ -382,15 +411,19 @@ To improve the security of your Element installation and deny unauthorized traff
 
         sudo ufw allow OpenSSH
         sudo ufw allow 'Nginx Full'
+
 1. Unblock port 8448 in the firewall.
 
         sudo ufw allow 8448
+
 1. Enable the firewall.
 
         sudo ufw enable
+
 1. Verify the firewall is active and properly configured using the `status` command.
 
         sudo ufw status
+
     {{< output >}}
 Status: active
 To                         Action      From
