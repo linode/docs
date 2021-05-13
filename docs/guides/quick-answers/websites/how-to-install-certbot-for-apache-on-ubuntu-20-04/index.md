@@ -1,18 +1,19 @@
 ---
-slug: use-certbot-nginx-to-install-ssl-certificates-for-apache-on-ubuntu-20-04
+slug: how-to-install-certbot-for-apache-on-ubuntu-20-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to install Certbot on Ubuntu 20.04. It also describes how to use Certbot to install and renew SSL certificates on Apache.'
-og_description: 'This guide explains how to install Certbot on Ubuntu 20.04. It also describes how to use Certbot to install and renew SSL certificates on Apache.'
+description: 'This guide explains how to install Certbot on Ubuntu 20.04. It also describes how to use Certbot to install and renew SSL/TLS certificates on Apache.'
+og_description: 'This guide explains how to install Certbot on Ubuntu 20.04. It also describes how to use Certbot to install and renew SSL/TLS certificates on Apache.'
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
-tags: ['certbot','ssl','apache', 'snap']
+tags: ['ssl','apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-02
 modified_by:
   name: Linode
-title: "Use Certbot Nginx to Install SSL Certificates for Apache on Ubuntu 20.04"
-h1_title: "How to Use Certbot Nginx to Install SSL Certificates for Apache on Ubuntu 20.04."
+title: "Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04"
+h1_title: "How to Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -26,8 +27,9 @@ external_resources:
 - '[Lets Encrypt community](https://community.letsencrypt.org/)'
 relations:
     platform:
+        key: how-to-install-certbot
         keywords:
-           - distribution: Ubuntu 20.04
+            - distribution: Ubuntu 20.04 (Apache)
 ---
 
 *Certbot* is a free, open-source tool that automates the process of requesting [*Let's Encrypt*](https://letsencrypt.org/) certificates for a website. These signed certificates allow for *Hypertext Transfer Protocol Secure* (HTTPS) to be enabled throughout a domain to provide more secure encrypted communications.
@@ -69,7 +71,7 @@ For Certbot to operate correctly, the following prerequisites must be met:
 * An HTTP-enabled website that can receive connections through *Transmission Control Protocol* (TCP) Port 80 is already online.
 * SSH access to the Linode server.
 
-Although Certbot uses Python to request and configure the certificate, the Certbot installation includes the necessary Python components.
+Certbot uses Python to request and configure the certificate. The Certbot installation includes the necessary Python components.
 
 ## A Summary of the Certbot Installation and Certificate Request Process
 
@@ -89,13 +91,17 @@ To determine whether Apache is installed, run the `apache2 -v` command. If the c
 
         sudo apt-get update
         sudo apt-get upgrade
+
 1. Install the basic `apache2` package.
 
         sudo apt install apache2
+
 1. Verify the status of Apache using `systemctl`.
 
         systemctl status apache2
+
     Apache should display a status of `active`.
+
     {{< output >}}
 apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
@@ -103,13 +109,17 @@ apache2.service - The Apache HTTP Server
        Docs: <https://httpd.apache.org/docs/2.4/>
    Main PID: 2595 (apache2)
     {{< /output >}}
+
 1. (**Optional**) Apache is configured to launch automatically whenever the server reboots. To change this behavior, disable the entry in `systemctl`. To re-enable the default behavior, use the `systemctl enable` command.
 
         systemctl disable apache2
+
 1. For increased security, configure the `ufw` firewall to deny unauthorized access attempts. Use the `app list` command to display the available entries.
 
         sudo ufw app list
+
     `Ufw` displays a list of all of the eligible applications.
+
     {{< output >}}
 Available applications:
 Apache
@@ -117,22 +127,26 @@ Apache Full
 Apache Secure
 OpenSSH
 {{< /output >}}
+
 1. Allow `ufw` to accept `OpenSSH` connections, and enable `Apache Full`. This allows both HTTP and HTTPS requests through the firewall.
 
         sudo ufw allow ssh
         sudo ufw allow 'Apache Full'
+
 1. Enable `ufw`.
 
         sudo ufw enable
-1. Confirm you can still access the webserver. Type the address of the Linode server into the address bar of the browser.
 
-        http://The_Linode_IpAddress
+1. Confirm you can still access the webserver. Type the [address of your Linode server](/docs/guides/find-your-linodes-ip-address/) into the address bar of the browser.
+
+        http://192.0.2.0
+
     If the webserver is working, the browser displays the default Apache landing page.
 
 {{< note >}}
 Certbot works best with Apache if a virtual host entry is configured for the domain. This approach is mandatory if you are hosting more than one domain on the server.
 
-To set up a virtual host, consult Linode's [Host a Website on Ubuntu 18.04](/docs/web-servers/lamp/hosting-a-website-ubuntu-18-04) guide and follow the instructions in the "Configure Name-based Virtual Hosts" section.
+To set up a virtual host, consult Linode's [Host a Website on Ubuntu 18.04](/docs/web-servers/lamp/hosting-a-website-ubuntu-18-04) guide and follow the instructions in the [Configure Name-based Virtual Hosts](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts) section.
 {{< /note >}}
 
 ## Install Certbot
@@ -144,9 +158,11 @@ The *Snap* utility provides an easy way to install Certbot. Snap ensures that yo
         sudo snap install core
         sudo snap refresh
         snap version
+
     {{< note >}}
 In the unlikely event, Snap is not already installed, run the command `sudo apt install snapd` and then execute the above commands.
     {{< /note >}}
+
     {{< output >}}
 snap    2.48.3+20.04
 snapd   2.48.3+20.04
@@ -154,16 +170,21 @@ series  16
 ubuntu  20.04
 kernel  5.4.0-65-generic
     {{< /output >}}
+
 1. To avoid conflicts, remove any duplicate Ubuntu packages before proceeding.
 
         sudo apt-get remove certbot
+
 1. Install Certbot using Snap.
 
         sudo snap install --classic certbot
+
     The Snap module confirms Certbot is installed.
+
     {{< output >}}
 certbot 1.15.0 from Certbot Project (certbot-eff) installed
     {{< /output >}}
+
 1. Use the `ln` command to configure a symbolic link.
 
         sudo ln -s /snap/bin/certbot /usr/bin/certbot
@@ -181,28 +202,36 @@ The following example assumes that a virtual host file has been created for the 
 1. Launch Certbot to start the certification process. Certbot automatically makes any necessary configuration changes to the Apache configuration files.
 
         sudo certbot --apache
+
     {{< note >}}
 Certbot logs a record of the installation at `/var/log/letsencrypt/letsencrypt.log`. Review this file if there are any problems.
     {{< /note >}}
+
 1. Certbot displays some basic information about the operation. It then asks for an email address where it can send urgent notices about the domain or registration. This should be the email address of the webserver administrator.
+
     {{< output >}}
 Enter email address (used for urgent renewal and security notices)
  (Enter 'c' to cancel)
     {{< /output >}}
-1. At the prompt, enter the email address.
 
-        youremail@example.com
+1. At the prompt, enter your email address.
+
+        user@example.com
+
 1. Certbot then asks you to agree to the *Let's Encrypt* terms of service.
+
     {{< output >}}
 Please read the Terms of Service at
 <https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf>. You must
 agree to register with the ACME server. Do you agree?
     {{< /output >}}
+
 1. Download and review the PDF file. Enter `Y` to agree to the terms.
 
 1. Certbot asks whether you want to optionally subscribe to the EFF mailing list or not. Select either `Y` or `N` according to your preference.
 
 1. Certbot now requests a domain name for the certificate. Certificates for multiple domains can be requested at the same time. If there is a virtual host for the domain, Certbot displays the following choices:
+
     {{< output >}}
    Which names would you like to activate HTTPS for?
 
@@ -219,11 +248,13 @@ blank to select all options shown (Enter 'c' to cancel):
         1 2
 
 1. Certbot proceeds to request and install the certificates, performing any necessary challenges. If the operation is successful, Certbot confirms the certificate has been deployed. It also indicates where the certificates and key chains are stored, along with the date the certificate expires. By default, certificates expire in 90 days.
+
     {{< note >}}
 If one of the certificates cannot be created, run the `certbot` command again. Specify the outstanding certificate with the `-d` flag followed by the domain.
 
 For example, `sudo certbot --apache -d www.example.com`. This could also happen if the domain does not have a corresponding virtual hosts file.
     {{< /note >}}
+
     {{< output >}}
 Requesting a certificate for example.com and www.example.com
 ...
@@ -268,7 +299,7 @@ Congratulations, all simulated renewals succeeded:
 
         sudo certbot renew
     {{< note >}}
-Certbot does not renew the certificates unless they are scheduled to expire soon. Adding the `--force-renewal` flag forces the command to renew all certificates regardless of status. This is not recommended, and there is no real reason to do this. Do not use this option too frequently as this could exceed the *Let's Encrypt* [*rate limit*](https://letsencrypt.org/docs/rate-limits/) for a domain.
+Certbot does not renew the certificates unless they are scheduled to expire soon. Adding the `--force-renewal` flag forces the command to renew all certificates regardless of status. This is not recommended, and there is no real reason to do this. Do not use this option too frequently as this could exceed the *Let's Encrypt* [rate limit](https://letsencrypt.org/docs/rate-limits/) for a domain.
     {{< /note >}}
 1. Use the `certonly` command to change the information on a certificate and obtain a new version. This operation repeats the steps from the original certification event and updates any new information. It should only be used to change something about the certificate, such as the contact name or domain name.
 
