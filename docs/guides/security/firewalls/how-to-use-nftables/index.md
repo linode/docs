@@ -224,14 +224,14 @@ Below, you can follow along to create a ruleset. This example ruleset uses an `i
 
     {{< output >}}
 table ip inet-table {
-	chain output-filter-chain {
-		type filter hook output priority 0; policy accept;
-		ip daddr 8.8.8.8 counter packets 0 bytes 0
-	}
+    chain output-filter-chain {
+        type filter hook output priority 0; policy accept;
+        ip daddr 8.8.8.8 counter packets 0 bytes 0
+    }
     chain input-filter-chain {
-		type filter hook input priority 0; policy accept;
-		tcp dport 3030 counter packets 0 bytes 0
-	}
+        type filter hook input priority 0; policy accept;
+        tcp dport 3030 counter packets 0 bytes 0
+    }
 }
     {{< /output >}}
 
@@ -250,12 +250,12 @@ table ip inet-table {
         {{< output >}}
 table ip inet-table {
     chain output-filter-chain {
-	    type filter hook output priority 0; policy accept;
+        type filter hook output priority 0; policy accept;
         ip daddr 8.8.8.8 counter packets 1 bytes 84
     }
     chain input-filter-chain {
-		type filter hook input priority 0; policy accept;
-		tcp dport 3030 counter packets 1 bytes 64
-	}
+        type filter hook input priority 0; policy accept;
+        tcp dport 3030 counter packets 1 bytes 64
+    }
 }
         {{< /output >}}
