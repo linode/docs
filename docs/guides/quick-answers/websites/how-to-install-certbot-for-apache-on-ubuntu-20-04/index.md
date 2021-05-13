@@ -6,7 +6,7 @@ author:
 description: 'This guide explains how to install Certbot on Ubuntu 20.04. It also describes how to use Certbot to install and renew SSL/TLS certificates on Apache.'
 og_description: 'This guide explains how to install Certbot on Ubuntu 20.04. It also describes how to use Certbot to install and renew SSL/TLS certificates on Apache.'
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
-tags: ['ssl','apache']
+tags: ['ssl','apache','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-02
 modified_by:
