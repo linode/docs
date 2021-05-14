@@ -777,7 +777,7 @@ Output:
 
 In the output, the `d` in `drwxr-xr` represents a directory and `-rw-rw-r--` represents a file since it is not prefaced with `d`.
 
-You can use cp to copy files, mv to move them and rm to delete files. Similarly, you can use mkdir to create directories,  and  rmdir to remove directories.
+You can use `cp` to copy files, mv to move them and `rm` to delete files. Similarly, you can use `mkdir` to create directories,  and  `rmdir` to remove directories.
 
 For efficient Linux administration, you have to be able to handle multiple files recursively. You can use `-R` option for recursive listing, copying or even deletion.
 
