@@ -11,8 +11,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-02
 modified_by:
   name: Linode
-title: "Centos: Install PostgreSQL"
+title: "CentOS 8: Install and Use PostgreSQL"
 h1_title: "How to Install and Use PostgreSQL on CentOS 8"
+enable_h1: true
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
@@ -36,7 +37,7 @@ relations:
            - distribution: CentOS 8
 ---
 
-This guide demonstrates how to install and use [*PostgreSQL*](https://www.postgresql.org/), a popular open-source *object-relational database management system* (RDBMS). PostgreSQL enhances the original *Structured Query Language* (SQL) specification with many new features but still emphasizes compliance. PostgreSQL transactions are atomic, consistent, isolated, and durable which means the application is *ACID-compliant*. PostgreSQL ranks as one the most widely-used database systems and is available for CentOS 8 and most other operating systems.
+This guide demonstrates how to install and use [*PostgreSQL*](https://www.postgresql.org/), a popular open-source *object-relational database management system* (RDBMS). PostgreSQL enhances the original *Structured Query Language* (SQL) specification with many new features but still emphasizes compliance. PostgreSQL transactions are atomic, consistent, isolated, and durable which means the application is *ACID-compliant*. PostgreSQL ranks as one of the most widely-used database systems and is available for CentOS 8 and most other operating systems.
 
 ## Before You Begin
 
