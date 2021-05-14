@@ -54,13 +54,14 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
     {{</ note >}}
 
-
 ## Adding Linode NodeBalancers to your Kubernetes Cluster
 
 To add an external load balancer to your Kubernetes cluster you can add the example lines to a new configuration file, or more commonly, to a Service file. When the configuration is applied to your cluster, Linode NodeBalancers will be created, and added to your Kubernetes cluster. Your cluster will be accessible via a public IP address and the NodeBalancers will route external traffic to a Service running on healthy nodes in your cluster.
 
 {{< note >}}
 Billing for Linode NodeBalancers begin as soon as the example configuration is successfully applied to your Kubernetes cluster.
+
+In any NodeBalancer configuration, users should keep in mind that Nodebalancers have a maximum connection limit of 10,000 concurrent connections.
 {{</ note >}}
 
 {{< file >}}
