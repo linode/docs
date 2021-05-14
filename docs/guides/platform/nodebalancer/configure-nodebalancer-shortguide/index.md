@@ -17,9 +17,7 @@ tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/configure-nodebalancer-shortguide/']
 ---
 
-1.  Visit the NodeBalancers page in the Linode [Cloud Manager](http://cloud.linode.com) and select **Add a NodeBalancer**.
-
-    ![The NodeBalancers Page](nodebalancers-tab.png "The NodeBalancers Page")
+1.  Visit the NodeBalancers page in the Linode [Cloud Manager](https://cloud.linode.com) and select **Add a NodeBalancer**.
 
 1.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in.
 
