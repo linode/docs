@@ -3,7 +3,7 @@ slug: install-steamcmd-for-a-steam-game-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
+description: 'Learn how to install SteamCMD for a Steam Game server and minimize your efforts to update the server files.'
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -20,7 +20,7 @@ dedicated_cpu_link: true
 
 ![SteamCMD](Install_SteamCMD_for_a_Steam_Game_Server_smg.jpg)
 
-SteamCMD is a command-line version of the Steam client which works with games that use [SteamPipe](https://developer.valvesoftware.com/wiki/SteamPipe). If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.
+SteamCMD is a command-line version of the Steam client which works with games that use [SteamPipe](https://developer.valvesoftware.com/wiki/SteamPipe). This enables you to install and update compatible games through the command line. If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.
 
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
@@ -311,19 +311,45 @@ The game server will still operate despite this error, and it should be somethin
 Some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
 {{< /caution >}}
 
+## How Do I Update My SteamCMD Game Server?
+
+To update your SteamCMD server, follow these steps:
+
+1. Run SteamCMD: `steamcmd` or `screen ~/.steam/steamcmd`
+2. Login anonymously or with your Steam account (depending on the game server): `login anonymous` or `login $username`, replacing *$username* with your Steam username.
+3. Update the app: `app_update $app-id`, replacing *$app-id* with the app number/id of the game you wish to update.
+
 ## Exit SteamCMD
 
 ### Detach from the Screen Session
 
-To exit the screen session which contains the Steam process *without* disrupting the Steam process, enter **Control+A** followed by **Control+D** on your keyboard. You can later return to the screen session by entering:
-
-    screen -r
+To exit the screen session which contains the Steam process *without* disrupting the Steam process, enter **Control+A** followed by **Control+D** on your keyboard. You can later return to the screen session by entering: `screen -r`
 
 For more information on managing your screen sessions, review our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 
 ### Stop SteamCMD
 
 To stop the Steam process and remove your screen session, enter `quit` at the `Steam>` command prompt, or enter **Control+C** on your keyboard.
+
+## Understanding SteamCMD Error Codes For A Steam Game Server
+
+You may encounter an error when installing or using SteamCMD. Some of these errors may be difficult to understand and overcome. The following list details a few of these error codes and how to resolve them. Additional errors can be found under the [Known Issues](https://developer.valvesoftware.com/wiki/SteamCMD#Known_issues) section of the SteamCMD wiki page.
+
+- `Error! App '232130' state is 0x202 after update job` - This error code means that disk space is low. `0x202` is the code that corresponds to the disk running out of space. The associated SteamCMD error output/logs might be similar to the following:
+
+        Filesystem:      /lin/sev2
+        Total:           6.1G
+        Used:            3.1G
+        Available:       2.8G
+        LinuxGSM Total:  68M
+        Serverfiles:     40K
+
+    If you are trying to install a game that's larger than the `Available` disk space, you are going to see this error. Review your disk usage by running `df -h` and examine your [Linode's disk and storage](/docs/guides/linode-disks/) through the Cloud Manager. To overcome this error, you'll need to either remove files on your disk, [resize your disk](/docs/guides/resize-a-linode-disk/), or [resize your Linode](/docs/guides/resizing-a-linode/) to a larger plan.
+- `ERROR! Failed to install app X (No subscription)` - This error code means that no authorized accounts on your SteamCMD owns the game. Verify the account on which you purchased the game and make sure that you are logged in using that account.
+- `Error! State is 0x402 after update job`  - Error code `0x402` could mean that either the update servers are down or you have an internet connectivity issue. Verify that your Linode has network connectivity by following the [Troubleshooting Basic Connection Issues
+](/docs/guides/troubleshooting-basic-connection-issues/) guide.
+- `Error! State is 0x602 after update job` - This code `0x602` implies a network error. When this error shows up, you most probably need to update your system and your network is preventing your SteamCMD from updating.
+- `Error! App '237410' state is 0x10502 after update job` - The code `0x10502` points to your application’s AppState, stored in the app manifest of your installed steam app. Under this code, take a look at the `StateReconfiguring`, `StateUpdateStarted`, `StateUpdateRunningStarted` and `StateUpdateRequired` codes. These status codes point towards a file download in process or a downloaded file is in the process of being installed. Based on what the issue is you can take the next step to resolve it.
 
 ## Next Steps
 
