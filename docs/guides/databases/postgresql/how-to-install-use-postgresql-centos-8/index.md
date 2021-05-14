@@ -1,12 +1,12 @@
 ---
-slug: centos-install-postgresql
+slug: centos-install-and-use-postgresql
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides an introduction to installing PostgreSQL, an open source object-Relational Database Management System (RDBMS) on CentOS 8.'
 og_description: 'This guide provides an introduction to installing PostgreSQL, an open source object-Relational Database Management System (RDBMS) on CentOS 8.'
-keywords: ['Redis','database','Ubuntu','postgresql','centos', 'yum']
-tags: ['centos', 'postgresql', 'yum']
+keywords: ['database','postgresql','centos', 'yum']
+tags: ["database","postgresql","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-02
 modified_by:
@@ -22,19 +22,20 @@ external_resources:
 - '[PostgreSQL Downloads Page](https://www.postgresql.org/ftp/source/)'
 - '[Installation Procedure](https://www.postgresql.org/docs/current/install-procedure.html)'
 - '[PostgreSQL PSQL Documentation](https://www.postgresql.org/docs/current/app-psql.html)'
-- '[PostgreSQL documentation](https://www.postgresql.org/docs/13/adminpack.html)'
+- '[PostgreSQL documentation: Adminpack](https://www.postgresql.org/docs/13/adminpack.html)'
 - '[starter tutorial](https://www.postgresql.org/docs/13/tutorial-sql.html)'
-- '[PostgreSQL documentation](https://www.postgresql.org/docs/13/app-createdb.html)'
-- '[PostgreSQL documentation](https://www.postgresql.org/docs/13/ddl-basics.html)'
-- '[PostgreSQL Documentation](https://www.postgresql.org/docs/13/dml-insert.html)'
+- '[PostgreSQL documentation: Create a Database](https://www.postgresql.org/docs/13/app-createdb.html)'
+- '[PostgreSQL documentation: DDL Basics](https://www.postgresql.org/docs/13/ddl-basics.html)'
+- '[PostgreSQL Documentation: DML Insert](https://www.postgresql.org/docs/13/dml-insert.html)'
 - '[Joins](https://www.postgresql.org/docs/13/tutorial-join.html)'
 - '[PostgreSQL](https://www.postgresql.org/docs/13/index.html)'
-- '[introductory tutorial](https://www.postgresql.org/docs/13/tutorial.html)'
-- '[PostgreSQL](https://www.postgresql.org/community/)'
+- '[Introductory tutorial](https://www.postgresql.org/docs/13/tutorial.html)'
+- '[PostgreSQL Community Site](https://www.postgresql.org/community/)'
 relations:
     platform:
+        key: use-postrgesql-database
         keywords:
-           - distribution: CentOS 8
+            - distribution: CentOS 8
 ---
 
 This guide demonstrates how to install and use [*PostgreSQL*](https://www.postgresql.org/), a popular open-source *object-relational database management system* (RDBMS). PostgreSQL enhances the original *Structured Query Language* (SQL) specification with many new features but still emphasizes compliance. PostgreSQL transactions are atomic, consistent, isolated, and durable which means the application is *ACID-compliant*. PostgreSQL ranks as one of the most widely-used database systems and is available for CentOS 8 and most other operating systems.
@@ -215,7 +216,7 @@ postgres=#
     {{< note >}}
 PostgreSQL commands starting with a backslash are called *meta-commands*. These pre-processed commands are helpful for administration and scripting purposes. See the [*PostgreSQL PSQL Documentation*](https://www.postgresql.org/docs/current/app-psql.html) page for more information.
 {{< /note >}}
-1. Edit the `pg_hba.conf` file to require passwords from local users. Locate the line `local` under "Unix domain socket connections only" and change the `METHOD` attribute from `peer` to `md5`.
+1. Edit the `pg_hba.conf` file to require passwords from local users. Locate the line `local` under `Unix domain socket connections only` and change the `METHOD` attribute from `peer` to `md5`.
 
     However, we recommend you add a rule to exempt the default `postgres` user from the local password requirement. This allows for easier non-interactive access to PostgreSQL for maintenance tasks and scripting. Add a new line for the `postgres` user right above the rule for general local access. The entire section should now look like this.
 
