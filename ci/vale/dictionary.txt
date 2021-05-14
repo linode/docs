@@ -475,6 +475,7 @@ fmt
 fn
 fpm
 fragging
+framebuffer
 frakti
 framesets
 freedns
