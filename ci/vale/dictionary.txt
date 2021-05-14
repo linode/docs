@@ -475,6 +475,7 @@ fmt
 fn
 fpm
 fragging
+framebuffer
 frakti
 framesets
 freedns
@@ -906,6 +907,8 @@ memcrashed
 menuentry
 mesos
 metabase
+metacharacter
+metacharacters
 metacity
 metapackage
 metaparameters

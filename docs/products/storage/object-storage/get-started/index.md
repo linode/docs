@@ -65,7 +65,7 @@ If you have not created an access key or a bucket before, you are prompted to en
 
       {{< note >}}
 You can drag and drop multiple files to the **Upload Files Pane** at one time.
-   {{</ note >}}
+{{</ note >}}
 
    You can also click on the **Browse Files** button to bring up your computer's file browser and select a file to upload to your bucket.
 
@@ -76,7 +76,8 @@ Individual object uploads are limited to a size of 5GB each, though larger objec
 {{< /note >}}
 
       {{< note >}}
-You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).{< /note >}}
+You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
+{{< /note >}}
 
 ## Cancel Object Storage
 
@@ -86,6 +87,6 @@ You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets 
 If you have removed all of your buckets, but you have not also cancelled the Object Storage service, your account is still billed at a flat rate of $5 per month (prorated) for the service. Make sure that you complete each step of this section to fully cancel the Object Storage service and to stop billing for it. For more information, see our [Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{< /caution >}}
 
-1.  Once you've deleted all of your buckets, navigate to the **Account** page in the left-hand navigation. Click on the *Settings* tab. In the menu, you should see a setting for Object Storage:
+1.  Once you've deleted all of your buckets, navigate to the **Account** page in the left-hand navigation. Click on the **Settings** tab and scroll down to the **Object Storage** section.
 
 1.  Click **Cancel Object Storage**. A prompt appears asking you to confirm the cancellation. If you still have active buckets, you are prompted to delete them.
