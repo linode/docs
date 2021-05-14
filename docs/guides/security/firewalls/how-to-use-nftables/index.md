@@ -3,8 +3,8 @@ slug: how-to-use-nftables
 author:
   name: Linode Community
   email: docs@linode.com
-description: "nftables is replacing iptables, redesigned from the ground up. With it come remarkable improvements but also changes in how you set up your packet rules. Learn about what nftables is and how it differs from iptables, and get a hands-on look at it in this guide."
-og_description: "nftables is replacing iptables, redesigned from the ground up. With it come remarkable improvements but also changes in how you set up your packet rules. Learn about what nftables is and how it differs from iptables, and get a hands-on look at it in this guide."
+description: "nftables is replacing iptables, redesigned from the ground up. With it come remarkable improvements but also changes in how you set up your packet rules. Learn about what nftables is and how it differs from iptables, and get a hands-on look at how to use it in this guide."
+og_description: "nftables is replacing iptables, redesigned from the ground up. With it come remarkable improvements but also changes in how you set up your packet rules. Learn about what nftables is and how it differs from iptables, and get a hands-on look at how to use it in this guide."
 keywords: ['nftables','iptables','netfilter','nftables examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-13
@@ -72,16 +72,7 @@ You do not need to install nftables if you are using one of the following distri
 - CentOS 8
 - Fedora 32
 
-Otherwise, you can manually install nftables using the following steps. These are specifically intended for Debian/Ubuntu distributions and CentOS distributions. However, with minor modifications, the steps should be adaptable for other distributions as well:
-
-{{< note >}}
-You need to be running one of the following releases or later to install nftables via the distributions' package managers:
-
-- Debian 9
-- Ubuntu 18.04
-- CentOS 7
-
-{{< /note >}}
+Otherwise, you can manually install nftables using the following steps. These steps work for for Debian 9, Ubuntu 18.04, and CentOS 7, and later releases of these distributions.
 
 1. Install nftables.
 
@@ -111,7 +102,9 @@ You need to be running one of the following releases or later to install nftable
 
 ## How to Use nftables
 
-This section breaks down each of the major components in nftables, providing their most useful commands. At the end, you can find a demonstration of how to set up a working rule, review nftables' output, and test the rule in action.
+This section breaks down each of the major components in nftables, providing their most useful commands.
+
+At the end of this guide, you can find a demonstration of how to set up a working ruleset and see it in action.
 
 ### Tables
 
@@ -119,21 +112,23 @@ Tables are the highest level of the nftables hierarchy. A given table correspond
 
 - To create a table, use a command like the following. Replace `example_table`, here and in subsequent examples, with a descriptive name for the table:
 
-        nft add table inet example_table
+        sudo nft add table inet example_table
 
     Here, `inet` identifies the address family for the table. Refer to the nftables documentation [on address families](https://wiki.nftables.org/wiki-nftables/index.php/Nftables_families) for a complete list of supported address family identifiers. The `inet` option used here is also used in subsequent examples where an address family is called for.
 
+    As you can see in subsequent commands, any time you refer to a table, you should include the table's address family before the table name.
+
 - You can list existing tables with the following command. Remember that nftables does not come with predefined tables, so the list only has the tables you have added:
 
-        nft list tables
+        sudo nft list tables
 
 - To delete a table, use a command like:
 
-        nft delete table inet example_table
+        sudo nft delete table inet example_table
 
 - You can also "flush" a table. This deletes every rule in every chain attached to the table. For older Linux kernels (before **3.18**), you have to run this command before you are allowed to delete the table:
 
-        nft flush table inet example_table
+        sudo nft flush table inet example_table
 
 ### Chains
 
@@ -143,27 +138,27 @@ Chains can be of two kinds. **Base** chains act as entry points for packets comi
 
 - To create a base chain, use a command like the following. Replace `example_chain`, here and later, with a descriptive chain name:
 
-        nft add chain inet example_table example_chain '{type filter hook input priority 0; }'
+        sudo nft add chain inet example_table example_chain '{type filter hook input priority 0; }'
 
-    Refer to the nftables documentation [on configuring chains](https://wiki.nftables.org/wiki-nftables/index.php/Configuring_chains) for a list of support types and hooks. Supported types and hooks vary according to the address family the chain operates on.
+    Refer to the nftables documentation [on configuring chains](https://wiki.nftables.org/wiki-nftables/index.php/Configuring_chains) for a list of support types and hooks. Supported types and hooks vary according to the address family of the table the chain operates on.
 
     In the example above, the `input` hook matches incoming packets addressed to the local system, while the `filter` type has the chain filter all matching packets. The priority (`0` above) determines the order in which chains are processed on a given hook; chains with lower priority values get processed first.
 
-- To create a regular chain, the command is similar to the one used for a base chain above. However, the regular chain command lacks the portion of the command with the hook:
+- To create a regular chain, the command is similar to the one used for a base chain above. However, the command for creating a regular chain lacks the portion with the type, hook, and priority:
 
-        nft add chain inet example_table example_chain
+        sudo nft add chain inet example_table example_chain
 
     Because regular chains lack hooks, they do not receive packets automatically. Instead, they rely on rules using the jump or goto action to relay packets to them. When this occurs, the regular chain processes packets just as a base chain does.
 
-    Generally, the point in doing this is organizational. You can create a "tree" of base and regular chains, allowing you to control the arrangement and flow of your nftables.
+    Generally, the point in doing this is organizational. You can create a "tree" of base and regular chains, allowing you to control the arrangement and flow of your nftables ruleset.
 
 - To delete a chain, use a command like:
 
-        nft delete chain inet example_table example_chain
+        sudo nft delete chain inet example_table example_chain
 
 - To flush a chain, use a command like the following. As with tables, it may be necessary to flush a chain before you can delete it on older Linux kernels:
 
-        nft flush chain example_table example_chain
+        sudo nft flush chain inet example_table example_chain
 
 ### Rules
 
@@ -173,11 +168,11 @@ Each rule consists of two parts, which follow the table and chain in the command
 
  - To create a rule, use a command like the following. This rule takes packets from the `example_chain` and allows those representing TCP traffic on port **22**:
 
-        nft add rule example_table example_chain tcp dport 22 counter accept
+        sudo nft add rule inet example_table example_chain tcp dport 22 counter accept
 
-    Here, the `tcp dport 22` contains the rule's two expressions, matching TCP packets and then matching when those packets is directed to port **22**. The `counter accept` contains the rule's two statements, first adding to the rule's counter and then allowing the matching packets.
+    Here, the `tcp dport 22` portion contains the rule's two expressions. It matches TCP packets and then matches when those packets are directed to port **22**.
 
-    The counter can be useful for logging and debugging, keeping a running count of how many times the rule has matched packets.
+    The `counter accept` portion contains the rule's two statements. First, matched packets add to the rule's counter, keeping a running count of packets matched by the rule. Second, matched packets are then accepted.
 
     Be aware that verdict commands, such as `accept` and `drop`, end processing of the rule, so they should be placed at the rule's end.
 
@@ -185,15 +180,23 @@ Each rule consists of two parts, which follow the table and chain in the command
 
     You can also specify the position for a rule within a chain. The following adds the rule after an existing rule in position **3**. To add the new rule before position **3**, replace `add` with `insert`:
 
-        nft add rule example_table example_chain position 3 inet tcp dport 22 counter accept
+        sudo nft add rule inet example_table example_chain position 3 tcp dport 22 counter accept
 
 - You can use a command like to following to list all chains and rules living in the `example_table`:
 
-        nft list table example_table
+        sudo nft list table inet example_table
 
     Similarly, you can use a command like the following to list all of the rules within `example_chain` in the `example_table`:
 
-        nft list chain example_table example_chain
+        sudo nft list chain inet example_table example_chain
+
+- To delete a rule, use a command like the following:
+
+        sudo nft delete rule inet example_table example_chain handle 2
+
+    Here, the handle is an identifier for the rule you are deleting. You can get a rule's handle by using the `-a` option when running the command for listing rules, as in:
+
+        sudo nft list table inet example_table -a
 
 ## Example nftables Usage
 
@@ -205,20 +208,20 @@ Below, you can follow along to create a ruleset. This example ruleset uses an `i
 
 1. Create a chain for filtering outgoing packets, `output-filter-chain`:
 
-        sudo nft add chain inet-table output-filter-chain '{ type filter hook output priority 0; }'
+        sudo nft add chain inet inet-table output-filter-chain '{ type filter hook output priority 0; }'
 
 1. Add a rule to the chain for counting packets destined for `8.8.8.8`:
 
-        sudo nft add rule inet-table output-filter-chain ip daddr 8.8.8.8 counter
+        sudo nft add rule inet inet-table output-filter-chain ip daddr 8.8.8.8 counter
 
 1. Create another chain, this one for filtering incoming packets, and add a rule to it to count TCP packets targeting port **3030**:
 
-        sudo nft add chain inet-table input-filter-chain '{ type filter hook input priority 0; }'
-        sudo nft add rule inet-table input-filter-chain tcp dport 3030 counter
+        sudo nft add chain inet inet-table input-filter-chain '{ type filter hook input priority 0; }'
+        sudo nft add rule inet inet-table input-filter-chain tcp dport 3030 counter
 
 1. Verify the setup by listing the chains and rules within the table:
 
-        sudo nft list table inet-table
+        sudo nft list table inet inet-table
 
     You should get output similar to:
 
@@ -243,7 +246,7 @@ table ip inet-table {
 
     - From a remote machine, attempt to connect to the nftables machine via the port specified in the second rule. In this example, replace `198.51.100.0` with the IP address for machine running nftables:
 
-            curl 198.51.100.0
+            curl 198.51.100.0:3030
 
     - Run the list command again, and this time your output should resemble:
 
@@ -259,3 +262,5 @@ table ip inet-table {
     }
 }
         {{< /output >}}
+
+        You should see that each rule has now logged a packet in its counter, confirming that the chains and rules have successfully caught and handled the traffic.
