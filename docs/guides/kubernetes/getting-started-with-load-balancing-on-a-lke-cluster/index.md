@@ -61,7 +61,7 @@ To add an external load balancer to your Kubernetes cluster you can add the exam
 {{< note >}}
 Billing for Linode NodeBalancers begin as soon as the example configuration is successfully applied to your Kubernetes cluster.
 
-In any NodeBalancer configuration, users should keep in mind that Nodebalancers have a maximum connection limit of 10,000 concurrent connections.
+In any NodeBalancer configuration, users should keep in mind that NodeBalancers have a maximum connection limit of 10,000 concurrent connections.
 {{</ note >}}
 
 {{< file >}}
