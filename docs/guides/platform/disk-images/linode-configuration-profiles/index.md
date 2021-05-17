@@ -3,15 +3,18 @@ slug: linode-configuration-profiles
 author:
   name: Linode
   email: docs@linode.com
-description: A guide to Linode configuration profiles.
+description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
+og_description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-30
+modified: 2021-05-17
 modified_by:
   name: Linode
 published: 2021-04-30
-title: Linode Configuration Profiles
+title: "How to Manage Linode Configuration Profiles"
+h1_title: "Linode Configuration Profiles"
+enable_h1: true
 ---
 
 A **configuration profile** functions as a boot loader for a Linode. It controls general boot settings, including the disk the Linode will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the Linode. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Linodes (see [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/)) or to create custom software testing environments.
