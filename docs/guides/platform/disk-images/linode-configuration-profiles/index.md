@@ -105,6 +105,18 @@ You can create and store many different configuration profiles in the Linode Man
 
 You have successfully selected and booted your Linode from a configuration profile.
 
+## Determining Which Configuration Profile Was Used
+
+When a Lindoe is powered on or rebooted, it will use the settings stored within a configuration profile. You can determine which configuration profile was used by looking at the event history. Events are visible within the **Activity Feed** tab for a particular Linode or within the main [Events](https://cloud.linode.com/events) page for the account.
+
+1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Linode from the list.
+
+1. Navigate to the **Activity Feed** tab to view all events for the Linode.
+
+1. Locate the particular boot or reboot event and review the text. The configuration profile used during that boot will be mentioned here.
+
+![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png "Viewing the boot history within the Activity Feed")
+
 ## Cloning a Configuration Profile and the Attached Disks
 
 A configuration profile, along with any attached disks, can be duplicated to any *other* Linode on the account. To clone an entire Linode, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/).
