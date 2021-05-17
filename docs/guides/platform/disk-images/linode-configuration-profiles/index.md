@@ -107,7 +107,7 @@ You have successfully selected and booted your Linode from a configuration profi
 
 ## Determining Which Configuration Profile Was Used
 
-When a Lindoe is powered on or rebooted, it will use the settings stored within a configuration profile. You can determine which configuration profile was used by looking at the event history. Events are visible within the **Activity Feed** tab for a particular Linode or within the main [Events](https://cloud.linode.com/events) page for the account.
+When a Linode is powered on or rebooted, it will use the settings stored within a configuration profile. You can determine which configuration profile was used by looking at the event history. Events are visible within the **Activity Feed** tab for a particular Linode or within the main [Events](https://cloud.linode.com/events) page for the account.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Linode from the list.
 
