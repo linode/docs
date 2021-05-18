@@ -1220,6 +1220,7 @@ quickconnect
 quicklisp
 quickstart
 ramdisk
+rasberry
 rbenv
 rc
 rce

@@ -27,7 +27,7 @@ external_resources:
 - '[BLAKE2](https://blake2.net/)'
 - '[SipHash24](https://131002.net/siphash/)'
 - '[HKD](https://eprint.iacr.org/2010/264)'
-- '[Linux's built-in cryptographic subsystem](https://lwn.net/Articles/761939/)'
+- '[Linuxs built-in cryptographic subsystem](https://lwn.net/Articles/761939/)'
 - '[the fastest VPN protocol](https://restoreprivacy.com/vpn/fastest/)'
 - '[NordVPN](https://nordvpn.com/)'
 - '[SurfShark](https://surfshark.com/)'
@@ -113,7 +113,7 @@ Here's what this means.
 
 - **PrivateKey:** The server's private key.
 - **Address:** Defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value. Typical values are `10.0.0.1/24`, `192.168.1.1/24`, or `192.168.2.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance.
-- **ListenPort:** Specifies which port WireGuard will use for incoming connections. The default is `51820`.
+- **ListenPort:** Specifies which port WireGuard uses for incoming connections. The default is `51820`.
     {{< note >}}
 The value you set in `ListenPort` is referenced in your firewall settings later.
 {{< /note >}}
