@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Shortguide that shows you how capture an image with Linode Images.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-28
+modified: 2021-05-18
 modified_by:
   name: Linode
 published: 2020-07-20
@@ -22,6 +22,6 @@ tags: ["linode platform"]
 
     [![Select the Linode and disk](images-capture.png)](images-capture.png "Select the Linode and disk")
 
-1. Click the **Create** button to start creating the Image. It will take some time to fully complete. You can check the status of this process by navigating to the main **Images** page, finding the new image in the **Manual Images** table, and looking at the *Status* column. If the Image has been captured and processed, the status should be set to *Ready*. The *Size* of the Image is based on the disk's usage, not the size of the disk itself.
+1. Click the **Create** button to start creating the Image. It will take some time to fully complete. You can check the status of this process by navigating to the main **Images** page, finding the new image in the **Custom Images** table, and looking at the *Status* column. If the Image has been captured and processed, the status should be set to *Ready*. The *Size* of the Image is based on the disk's usage, not the size of the disk itself.
 
-    [![Image status](images-capture-status.png)](images-capture-status.png "Image status")
+    ![Image status](images-capture-status.png "Image status")

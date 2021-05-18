@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Shortguide that shows you how upload an image with Linode Images.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-28
+modified: 2021-05-18
 modified_by:
   name: Linode
 published: 2021-04-28
@@ -30,8 +30,8 @@ tags: ["linode platform"]
 
     This command may take a while to complete, depending on the size of the image file and the transfer speed. During this time, a progress bar will be displayed. By default, curl is already preinstalled on most Linux, Mac, and updated Windows 10 systems using the latest PowerShell terminal. If curl is not installed, install it now by following the recommended instructions for your operating system or package manager.
 
-1. Confirm the image file has been uploaded and is available by navigating to the main **Images** page, finding the new Image in the **Manual Images** table, and looking at the *Status* column. If the Image has been uploaded and processed, the status should be set to *Ready*. If the status is still *Pending Upload* but the curl command completed successfully, wait a few more minutes for the Image to be processed.
+1. Confirm the image file has been uploaded and is available by navigating to the main **Images** page, finding the new Image in the **Custom Images** table, and looking at the *Status* column. If the Image has been uploaded and processed, the status should be set to *Ready*. If the status is still *Pending Upload* but the curl command completed successfully, wait a few more minutes for the Image to be processed.
 
-    [![Image status](images-upload-status.png)](images-upload-status.png "Image status")
+    ![Image status](images-upload-status.png "Image status")
 
     If there is an error when processing the uploaded image file, the newly created Image may be deleted and an error message will be written to the [Events](https://cloud.linode.com/events) log. See [What Are the Cloud Manager Events and Activity Feeds](/docs/guides/what-are-the-cloud-manager-events-and-activity-feeds/) for more details on viewing Cloud Manager Events.
