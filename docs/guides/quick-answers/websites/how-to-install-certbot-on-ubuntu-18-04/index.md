@@ -39,7 +39,7 @@ If you're using Apache, change each instance of `nginx` to `apache` in the follo
 1. Install the Certbot and web server-specific packages, then run Certbot:
 
         sudo apt-get update
-        sudo add-apt-repository ppa:certbot/certbot
+        sudo apt-get install certbot
         sudo apt-get install python-certbot-nginx
         sudo certbot --nginx
 
