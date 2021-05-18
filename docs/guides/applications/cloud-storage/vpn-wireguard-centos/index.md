@@ -17,8 +17,25 @@ contributor:
   name: Steven J Vaughan-Nichols
   link: http://www.twitter.com/sjvn
 external_resources:
-- '[Set Up WireGuard VPN on Ubuntu](https://www.linode.com/docs/guides/set-up-wireguard-vpn-on-ubuntu/)'
-- '[Set Up WireGuard VPN on Debian](https://www.linode.com/docs/guides/set-up-wireguard-vpn-on-debian/)'
+- '[WireGuard](https://www.wireguard.com/)'
+- '[WireGuard was merged into the Linux kernel 5.6](https://www.zdnet.com/article/linuxs-wireguard-vpn-is-here-and-ready-to-protect-you/)'
+- '[OpenVPN](https://openvpn.net/)'
+- '[Noise protocol](http://www.noiseprotocol.org/)'
+- '[Curve25519](http://cr.yp.to/ecdh.html)'
+- '[ChaCha20](http://cr.yp.to/chacha.html)'
+- '[Poly1305](http://cr.yp.to/mac.html)'
+- '[BLAKE2](https://blake2.net/)'
+- '[SipHash24](https://131002.net/siphash/)'
+- '[HKD](https://eprint.iacr.org/2010/264)'
+- '[Linux's built-in cryptographic subsystem](https://lwn.net/Articles/761939/)'
+- '[the fastest VPN protocol](https://restoreprivacy.com/vpn/fastest/)'
+- '[NordVPN](https://nordvpn.com/)'
+- '[SurfShark](https://surfshark.com/)'
+- '[Private Internet Access](https://www.privateinternetaccess.com/)'
+- '[wg(8)](https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8)'
+- '[Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)'
+- '[CentOS](https://www.centos.org/)'
+- '[wg-quick](https://manpages.debian.org/unstable/wireguard-tools/wg-quick.8.en.html)'
 
 ---
 
