@@ -4,7 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['python3', 'python', 'commenting', 'code', 'programming language']
 tags: ["Python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-25
@@ -17,16 +17,18 @@ external_resources:
 - '[Python Programming at Wikibooks](https://en.wikibooks.org/wiki/Python_Programming)'
 ---
 
-Python was developed in the late 1980s, released in 1991, and is an interpreted, high-level and general-purpose programming language that emphasizes code readability. Python 3, released in 2008, is the current version. Marking up any code is important, as it helps others understand what the developer intended to do (or even reminds the developer themselves) and documents the code’s functionality.
+Python was developed in the late 1980s, released in 1991, and is an interpreted, high-level and general-purpose programming language that emphasizes code readability. Python 3, released in 2008, is the current version.
+
+Leaving informative comments on any code is important, as it helps others understand what the developer intended to do (or even reminds the developer themselves) and documents the code’s functionality. This guide will highlight how comments are left in python3 code.
 
 
 ## Before You Begin
 
-1.  This guide assumes you have a Linode set up. If not, then familiarize yourself with our [Getting Started](/docs/getting-started/) guide to get your Linode set up.
+1.  This guide assumes you have a Linode set up. If not, then familiarize yourself with our [Getting Started](/docs/getting-started/) guide to create and complete the basic installation steps for your Linode.
 
 2.  This guide assumes your Linode is running Python 3 or has a Python Virtual Environment installed. If not, then see our [Python guides](https://www.linode.com/docs/guides/development/python/) to find instructions for installing on your preferred Linux distribution.
 
-2.  Finally, this guide assumes you have a basic knowledge of Python and are comfortable editing using a text editor. If you are new to Python, then see the Python Software Foundation's ["Python for Beginners"](https://www.python.org/about/gettingstarted/) for more information on what Python is, what it can do, and how to learn to use it.
+2.  Finally, this guide assumes you have a basic knowledge of Python and are comfortable editing using a text editor. If you are new to Python, then see the Python Software Foundation's ["Python for Beginners"](https://www.python.org/about/gettingstarted/) guide for more information on what Python is, what it can do, and how to learn to use it.
 
 ## Making Comments in Python
 
@@ -49,14 +51,14 @@ It is also convenient to use the hash character to "comment out" any code that m
 
 ### Inline Comments
 
-Inline comments can be made but should be done cautiously. The comment will need to go after the code on the line:
+Inline comments can be made but should be done cautiously. Inline comments will need to go after the code on a single line:
     {{< file "inlinecomment.py" python >}}
     print('Eggs with a side of Spam.') # I like my eggs with a side of Spam
     {{< /file >}}
 
 ### Multiline or Block Comments
 
-For multiline comments, it’s basically a series of one-line comments stacked together, each line of the comment starting with the hash character:
+The process for creating multiline comments is the same as a series of one-line comments stacked together, with each line of the comment starting with the hash character:
     {{< file "multilinecomment.py" python >}}
     # I like my eggs with a side of Spam
     # I should also be courteous when asking for something
@@ -66,7 +68,7 @@ For multiline comments, it’s basically a series of one-line comments stacked t
 
 #### Another Way to Make Multiline Comments
 
-There is a different but not recommended method for multiline comments using a delimiter that defines a text string constant:
+While not recommended, multiline comments can also be created using a delimiter that defines a text string constant:
       {{< file "alternatemultilinecomment.py" python >}}
       """
       I like my eggs with a side of Spam.
@@ -75,4 +77,5 @@ There is a different but not recommended method for multiline comments using a d
 
       print('I would like eggs with a side of Spam, please.')
       {{< /file >}}
-This isn't the official or recommended way of handling multiline comments because, as it's a string constant, it could cause issues with your code. We mention it here because it's possible to come across code from others that use it. We recommend using only the official method.
+
+This is not the official or recommended way of handling multiline comments because, as it's a string constant, it could cause issues with your code. It is mentioned in this guide only because it is possible to find code from others that have used it. It is recommended that you only use the official method.
