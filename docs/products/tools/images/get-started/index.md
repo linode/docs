@@ -22,6 +22,6 @@ To take action on an Image, locate the Image within the **Images** page of the C
 
 - **Edit:** Change the *Label* and *Description* for the Image.
 - **Deploy to a New Linode:** Create a new Linode using the Image. See [Deploy an Image to a New Linode](/docs/products/tools/images/guides/deploy-image-to-new-linode/).
-- **Deploy to an Existing Linode:** Rebuild the Linode using the Image. See [Rebuild and Deploy an Image to an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/).
+- **Rebuild an Existing Linode:** Rebuild the Linode using the Image. See [Rebuild and Deploy an Image to an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/).
 - **Delete:** Delete the Image (cannot be undone).
 
