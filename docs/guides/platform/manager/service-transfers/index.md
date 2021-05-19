@@ -130,6 +130,12 @@ Service Transfers can take up to 3 hours to complete once accepted. Another conf
 
         - have any assigned /56, /64, or /116 IPv6 ranges.
 
+{{< caution >}}
+When receiving Linode transfers, it is important to make sure that **Any Longview Key** is fully revoked and removed from the received Linode by removing the Longview agent. If Client keys are not revoked and removed, this can give the transferring user access to all data visible to any longview client by using the pre-existing API key, even after the transfer has been completed.
+
+For more information on revoking and removing a longview key and uninstalling the longview agent, see our [Documentation on Uninstalling Longview](/docs/guides/what-is-longview/#uninstall-the-longview-client).
+{{< /caution >}}
+
 ## Cancelling Service Transfers
 
 {{< note >}}
