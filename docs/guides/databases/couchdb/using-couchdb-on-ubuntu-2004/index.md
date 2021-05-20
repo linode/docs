@@ -23,7 +23,7 @@ external_resources:
 
 ---
 
-*CouchDB8, a non-relational or "NoSQL" database, uses HTTP APIs and JSON documents, making its concepts more intuitive to those familiar with web technologies. These also make CouchDB simple to integrate with web and mobile applications.
+*CouchDB8*, a non-relational or "NoSQL" database, uses HTTP APIs and JSON documents, making its concepts more intuitive to those familiar with web technologies. These also make CouchDB simple to integrate with web and mobile applications.
 
 This guide shows you how to get started with CouchDB using its web interface—**Fauxton**—before diving into the basics of using the HTTP API and integrating it into a basic application.
 
@@ -61,7 +61,7 @@ However, if you are accessing the machine remotely, the simplest and most secure
 
 - Once you have logged into Fauxton, you are presented with a list of your CouchDB databases. Initially, this should only contain a `_users` and a `_replicator` database. These are the two default system databases used by CouchDB.
 
-[![Initial page in Fauxton](fauxton-database-list_small.png "Initial page in Fauxton")](fauxton-database-list.png)
+    [![Initial page in Fauxton](fauxton-database-list_small.png "Initial page in Fauxton")](fauxton-database-list.png)
 
 - You can use the menu on the left to navigate the variety of configuration and monitoring options Fauxton offers. This menu also provides a **Documentation** option, where you can find numerous links to CouchDB and Fauxton documentation libraries.
 
@@ -147,9 +147,9 @@ The following are examples of basic queries aiming to provide an idea of how the
 
     The operator options include:
     - `$eq` (for "is equal to")
-    - `$lt` (for "is less than") in addition to `$gt`.
+    - `$lt` (for "is less than") in addition to `$gt` (for "is greater than").
 
-    Some of CouchDB's combination operators allow you to conduct boolean and other more advanced searches. Here is another example, which retrieves documents where `key_1` is between five and 10.
+    Some of CouchDB's combination operators allow you to conduct boolean and other more advanced searches. Here is another example, which retrieves documents where `key_1` is between five and ten.
 
         curl -H 'Content-Type: application/json' \
              -X POST http://admin:password@127.0.0.1:5984/example-db/_find \

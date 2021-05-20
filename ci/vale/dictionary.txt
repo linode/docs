@@ -118,6 +118,7 @@ blocklists
 blockwise
 bluehost
 bookinfo
+boolean
 boolstyle
 boonex
 bootable

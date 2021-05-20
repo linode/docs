@@ -76,15 +76,15 @@ See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.
 
     - Choose **standalone** when prompted for a configuration type.
 
-    [![CouchDB configuration type selection](couchdb-installation-config-type_small.png "CouchDB configuration type selection")](couchdb-installation-config-type.png)
+        [![CouchDB configuration type selection](couchdb-installation-config-type_small.png "CouchDB configuration type selection")](couchdb-installation-config-type.png)
 
     - Enter the default value — `127.0.0.1` — for the interface bind address.
 
-    [![Inputting the CouchDB network interface](couchdb-installation-network_small.png "Inputting the CouchDB network interface")](couchdb-installation-network.png)
+        [![Inputting the CouchDB network interface](couchdb-installation-network_small.png "Inputting the CouchDB network interface")](couchdb-installation-network.png)
 
     - Since *CouchDB 3.0.0*, CouchDB does not run without an administrator user being configured. When prompted, create an administrator user by entering a password. Re-enter the password on the subsequent screen.
 
-    [![Creating a CouchDB administrator user](couchdb-installation-admin-user_small.png "Creating a CouchDB administrator user")](couchdb-installation-admin-user.png)
+        [![Creating a CouchDB administrator user](couchdb-installation-admin-user_small.png "Creating a CouchDB administrator user")](couchdb-installation-admin-user.png)
 
 1. You can verify that CouchDB is installed by running the following command.
    - Replace `admin` and `password` with the username and password, respectively, for a valid CouchDB user.
@@ -94,4 +94,4 @@ See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.
 
 ## Get Started with CouchDB
 
-You have now successfully installed CouchDB! To get started, head over to the guide for [Using CouchDB on Ubuntu 20.04](/docs/guides/using-couchdb-on-ubuntu-2004/).
+You have now successfully installed CouchDB! To get started, head over to the guide for [Using CouchDB on Ubuntu 20.04](/docs/guides/use-couchdb-20-on-ubuntu/).
