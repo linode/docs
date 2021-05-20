@@ -31,14 +31,14 @@ For a demonstration of the general process, you can read the documentation of th
 **Prerequisite:**
 You must have installed Node.js and Node Package Manager (`npm`) on your machine. If you have not, install using the below commands:
 
-        sudo apt install npm
-        sudo apt install nodejs
+    sudo apt install npm
+    sudo apt install nodejs
 
 ## Install SQLite
 
 Install SQLite support into Node.js using `npm` on your local development environment.
 
-        sudo npm install sqlite3
+    sudo npm install sqlite3
 
 ## Create a Database
 
@@ -46,14 +46,19 @@ This example uses a simple database application to track superheroes from the [M
 
 1. First, create a file called `sample.js` and import the `sqlite3` module into Node.js:
 
-        var sqlite3 = require('sqlite3');
+    {{< file "sample.js" js >}}
+var sqlite3 = require('sqlite3');
+{{</ file >}}
 
-1. The following line creates a database `mcu.db` in the current working directory. The `sqlite3.Database()` call can take one, two, or three arguments. The second argument is SQLite database flags., from the set of `sqlite3.OPEN_READONLY`, `sqlite3.OPEN_READWRITE`, and `sqlite3.OPEN_CREATE`.
+1. The following line creates a database, `mcu.db`, in the current working directory. The `sqlite3.Database()` call can take one, two, or three arguments. The second argument is SQLite database flags, from the set of `sqlite3.OPEN_READONLY`, `sqlite3.OPEN_READWRITE`, and `sqlite3.OPEN_CREATE`.
 
-        new sqlite3.Database('./mcu.db', sqlite3.OPEN_READWRITE, (err) ...);
+    {{< file "sample.js" js >}}
+...
 
+new sqlite3.Database('./mcu.db', sqlite3.OPEN_READWRITE, (err) ...);
+{{</ file >}}
     {{< note >}}
-Following are the different SQLite flag combinations:
+The following are the different SQLite flag combinations:
 
    - `OPEN_READONLY`: The database is opened in read-only mode. If the database does not already exist, an error is returned.
 
@@ -65,7 +70,7 @@ Following are the different SQLite flag combinations:
 {{< /note >}}
 
 1. The third argument in the `sqlite3.Database()` is a callback function that is called when the database is opened successfully or when an error occurred. This callback function has the error object, `err` as the first parameter. If an error occurred, the error object is not null, otherwise, it is null.
-        {{< file "sample.js" >}}
+        {{< file "sample.js" js >}}
 
 var sqlite3 = require('sqlite3');
 var db;
@@ -99,7 +104,7 @@ The above code is similar to that of creating the database. However, this time t
 
 ## Create Tables and Insert Data
 
-The following code illustrates SQLite's `exec()` method to create the tables and populate them. The `exec()` method runs all the queries in the specified string. Once the tables are created and insertions are made, the `runQueries()` method is executed.
+The following code illustrates SQLite's `exec()` method to create the tables and populate them. The `exec()` method runs all the queries in the specified string. Once the tables are created and insertions are made, the `runQueries()` method is executed. The following code creates a table for popular Marvel superheroes and whether they are X-Men, or if they were snapped by Thanos, as well as creates a table for their superpowers.
         {{< file "sample.js" >}}
 function createTables(newdb) {
     newdb.exec(`
@@ -134,7 +139,7 @@ function createTables(newdb) {
 
 ## Query the Database
 
-You can use one of several methods to fetch rows from the database. The data can be fetched row by row, looped over, or returned in a single array. In this case, the latter method is used.
+You can use one of several methods to fetch rows from the database. The data can be fetched row by row, looped over, or returned in a single array. In this case, the latter method is used. The following code returns characters whose superpowers are being "Total Nerds," and whether they are X-Men or were snapped by Thanos.
     {{< file "sample.js" >}}
 function runQueries(db) {
     db.all(`

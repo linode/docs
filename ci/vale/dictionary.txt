@@ -1549,6 +1549,7 @@ tetris
 tf
 tfa
 tgz
+thanos
 thawte
 theano
 theming
