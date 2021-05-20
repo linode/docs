@@ -161,7 +161,7 @@ upgrade_type=default
 
 #
 
-donwload_update=yes
+download_update=yes
 # ...
 
 apply_updates=yes
