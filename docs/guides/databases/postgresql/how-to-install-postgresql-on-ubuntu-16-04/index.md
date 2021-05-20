@@ -27,7 +27,7 @@ relations:
 
 The [PostgreSQL](https://www.postgresql.org/) (also known as "Postgres") relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode.
 
-## **Before You Begin**
+## Before You Begin
 
 1. Familiarize yourself with the [Getting Started guide](https://www.linode.com/docs/getting-started/) and complete the steps for setting the Linode’s hostname and timezone.
 1. Complete the sections of [Securing Your Server guide](https://www.linode.com/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
@@ -118,7 +118,7 @@ It's also possible to merge two database tables. Merge the “employees” table
 
   {{< /output >}}
 
-1. Update a the table "employees" with a new row and view contents of "employees": `SELECT * FROM employees;`
+1. Update the table "employees" with a new row and view contents of "employees": `SELECT * FROM employees;`
        {{< output >}}
      employee_id | first_name | last_name
 -------------+------------+-----------
