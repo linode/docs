@@ -1,17 +1,17 @@
 /* Chrome, Safari, Opera, newest Edge {*/
 body::-webkit-scrollbar {
-    width: 0 !important;
-    height: 0 !important;
+    /* width: 0 !important;
+    height: 0 !important; */
 }
 
 /* Firefox */
 body {
-    overflow: -moz-scrollbars-none;
+    /* overflow: -moz-scrollbars-none; */
 }
 
 /* Internet Explorer, Edge */
 body {
-    -ms-overflow-style: none;
+    /* -ms-overflow-style: none; */
 }
 
 /* A thin vertical scrollbar that should always be shown, even if not hovered. */

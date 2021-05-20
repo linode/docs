@@ -17,13 +17,13 @@ tags: ["linode platform","cloud manager"]
 
 When a Linode is deployed, it is based on one of the main Distribution Images or a user-generated Custom Image. At some point, you might wish to change the Image on the Linode, perhaps to upgrade to a new major distribution release (or switch distributions altogether). This is commonly accomplished by rebuilding the Linode or creating a new Linode. However, both of these methods have important considerations: rebuilding a Linode will delete the existing data and creating a new Linode adds additional costs. Depending on your use case, these considerations may or may not be acceptable.
 
-This guide will cover an alternative method of changing an Image: deploying an Image onto a new disk. Through this method, the Image is available on a new disk alongside the existing Image. This might be preferred by those looking to keep costs down and retain their existing data. It can also be useful for those wanting multiple bootable Images on the same Linode.
+This guide will cover an alternative method of changing an Image: deploying an Image onto a new disk. Through this method, the Image is available on a new disk alongside the existing disks. This might be preferred by those looking to keep costs down and retain their existing data. It can also be useful for those wanting multiple bootable Images on the same Linode.
 
-## Deploy an Image
+## Create a Disk
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and navigate to the **[Linodes](https://cloud.linode.com/linodes)** page.
+1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 
-1. Click the *Label* of the Linode you wish to modify to be taken to the Linode's dashboard page. Then, navigate to the Linode's **Storage** tab.
+1. On the Linode's dashboard page, navigate to the **Storage** tab.
 
 1. Confirm there is enough unallocated storage space to accommodate the new disk for the desired Image. If you aren't sure of the size of the Image, open the **[Images](https://cloud.linode.com/images)** page, find the Image within the list, and view the *Size* column.
 
@@ -43,7 +43,7 @@ This guide will cover an alternative method of changing an Image: deploying an I
 
 1. Once the form is complete, click the **Add** button to create the disk.
 
-### Optional: Deploy a Swap Disk
+### Optional: Create a Swap Disk
 
 Your new Linux distribution or image will often require a swap disk in order to boot. If you already have a swap disk on your Linode from a previous image deployment (visible under the **Disks** panel), you can reuse that same disk with your new image. Otherwise, you can create a new swap disk:
 
@@ -53,7 +53,7 @@ Your new Linux distribution or image will often require a swap disk in order to 
 
 ## Create a Configuration Profile
 
-To boot the Linode with the new disk, the disk needs to be properly assigned within a new or existing [configuration profile](/docs/guides/disk-images-and-configuration-profiles/#configuration-profiles) and selected as the *Root Device*.
+To boot the Linode with the new disk, the disk needs to be properly assigned within a new or existing [configuration profile](/docs/guides/linode-configuration-profiles) and selected as the *Root Device*.
 
 1. Navigate to the Linode's **Configuration** tab and click the **Add Configuration** button. It's also possible to adjust an existing configuration profile by clicking the *Edit* link next to that configuration.
 

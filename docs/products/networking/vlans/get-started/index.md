@@ -30,7 +30,7 @@ For more information on the configuration options that appear when creating a Li
 
 1. Complete the Linode Creation form with any additional add-ons and settings you'd like to add. Then click the **Create Linode** button.
 
-By default, the public IP address (and, if added, the private IP address) of the Linode is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/guides/disk-images-and-configuration-profiles/#editing-a-configuration-profile).
+By default, the public IP address (and, if added, the private IP address) of the Linode is configured on the *eth0* network interface. The VLAN, if one was attached, is configured on the *eth1* network interface. These network interfaces can be removed or modified by editing the [Configuration Profile](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile).
 
 ## Attaching a VLAN to an Existing Linode
 
