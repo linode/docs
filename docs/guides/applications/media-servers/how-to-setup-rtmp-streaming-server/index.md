@@ -3,8 +3,8 @@ slug: set-up-a-streaming-rtmp-server
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide discusses how to configure a streaming RTMP server, and how to use open-source software to broadcast, and connect to a stream.'
-og_description: 'This guide discusses how to configure a streaming RTMP server, and how to use open-source software to broadcast, and connect to a stream.'
+description: 'This guide discusses how to configure a streaming RTMP server, how to use open-source software to broadcast, and connect to a stream, and how to stream to Twitch and Youtube at the same time.'
+og_description: 'This guide discusses how to configure a streaming RTMP server, how to use open-source software to broadcast, and connect to a stream, and how to stream to Twitch and Youtube at the same time.'
 keywords: ['RTMP','streaming','multi-streaming','NGINX']
 tags: ['rtmp', 'stream', 'ngnix', 'vlc']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,7 +15,6 @@ title: "Set Up a Streaming RTMP Server"
 h1_title: "How to Set Up an RTMP Streaming Server"
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
 external_resources:
 - '[RTMP Specification](https://www.adobe.com/devnet/rtmp.html)'
 - '[OBS](https://obsproject.com/)'
@@ -65,11 +64,11 @@ If you want to learn more about the technical details behind RTMP, you can find 
 
 - RTMP is a robust protocol offering *low-latency*, persistent connections, and reliable transmission. Streams are split into fragments, with the size negotiated between the client and the streaming server. Different streams can be multiplexed over the same connection. It is fairly easy to set up and use RTMP, but you must use RTMP-compatible software to transmit your stream to the server.
 
-- Using an RTMP server also allows you to implement *multi-streaming*, which reduces the amount of bandwidth used on your local connection. You only transmit one copy of your stream to the server, even if you want to stream to multiple platforms. RTMP takes care of forwarding copies of your stream to as many sites as you want. This makes it easy and convenient to simultaneously live stream to YouTube, Facebook, and Switch at the same time. However, for some sites, you must transcode the stream into a particular format by altering or recompressing your stream.
+- Using an RTMP server also allows you to implement *multi-streaming*, which reduces the amount of bandwidth used on your local connection. You only transmit one copy of your stream to the server, even if you want to stream to multiple platforms. RTMP takes care of forwarding copies of your stream to as many sites as you want. This makes it easy and convenient to simultaneously live stream to YouTube, Facebook, and Twitch at the same time. However, for some sites, you must transcode the stream into a particular format by altering or recompressing your stream.
 
 ## System Requirements
 
-An RTMP streaming server does not necessarily require much processing power or memory. For a single stream, a [*Linode 1G*](https://www.linode.com/products/dedicated-cpu/) solution should suffice. If you are retransmitting to several sites or have to convert a stream into a different format, you might require a more powerful solution. In this case, we recommend a host with at least **4GB of memory**, such as a [*Linode 4GB*](https://www.linode.com/products/dedicated-cpu/) solution.
+An RTMP streaming server does not necessarily require much processing power or memory. For a single stream, a [*Linode 1GB*](https://www.linode.com/products/dedicated-cpu/) solution should suffice. If you are retransmitting to several sites or have to convert a stream into a different format, you might require a more powerful solution. In this case, we recommend a host with at least **4GB of memory**, such as a [*Linode 4GB*](https://www.linode.com/products/dedicated-cpu/) solution.
 
 ## A Summary of the RTMP Streaming Server Configuration Process
 
