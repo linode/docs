@@ -3,8 +3,8 @@ slug: install-pylint-for-python-3
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'Pylint for python 3 helps raise the code quality of Python programs.'
-og_description: 'Pylint for python 3 helps raise the code quality of Python programs.'
+description: 'Pylint for Python 3 helps raise the code quality of Python programs. Learn how to use Pylint with some real-world examples.'
+og_description: 'Pylint for Python 3 helps raise the code quality of Python programs. Learn how to use Pylint with some real-world examples.'
 keywords: ['install','pylint','python 3']
 tags: ['pylint','python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -29,7 +29,7 @@ external_resources:
 
 ## What is Pylint?
 
-[Pylint](https://www.pylint.org/) is a code analyzes tool to identify errors in the Python source code. Specifically, Pylint helps programmers improve their code quality and style. The coding style that Pylint uses is *PEP8*.
+[Pylint](https://www.pylint.org/) is a code analysis tool to identify errors in Python source code. Specifically, Pylint helps programmers improve their code quality and style. The coding style that Pylint uses is *PEP8*.
 
 **Code Quality** could include sensible programming logic, correct spelling in comments, more idiomatic Python constructs, variable names that match a particular style guide, etc. Also, developers use Pylint to beautify even a small piece of Python code.
 
@@ -50,7 +50,7 @@ pip 9.0.1 from /usr/lib/python2.7/dist-packages (python 2.7)
 
 ## Install Pylint
 
-You can install Pylint on systems like Windows, MacOS, Linux, or another Unix. On executing the below command, the pylint executable becomes available at the native command line.
+You can install Pylint on systems like Windows, MacOS, Linux, or another Unix. On executing the below command, the `pylint` executable becomes available at the native command line.
 
     pip install pylint
 
