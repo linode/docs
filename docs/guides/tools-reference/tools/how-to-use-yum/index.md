@@ -45,27 +45,27 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo yum list updates
 
-1. To update a specific package, use a command like the following. This example updates the Apache package:
+1. To update a specific package, use the `update` command. This example updates the Apache package:
 
         sudo yum update httpd
 
 ## Installing Packages
 
-1. Use a command like the one below to install a package. This example installs the PHP package:
+1. Use the `install` command like the one below to install a package. This example installs the PHP package:
 
         sudo yum install php
 
-1. You can reinstall a package using a command like the following:
+1. You can reinstall a package using the `reinstall` command, like the following:
 
         sudo yum reinstall php
 
 ## Uninstalling Packages
 
-1. Use a command like the following to uninstall a package — the MariaDB package in this example:
+1. Use the `remove` command, like the following, to uninstall a package — the MariaDB package in this example:
 
         sudo yum remove mariadb-server
 
-1. To remove a package and all of the dependency packages that were installed alongside it, use a command like this one:
+1. To remove a package and all of the dependency packages that were installed alongside it, use the `autoremove` command:
 
         sudo yum autoremove mariadb-server
 
