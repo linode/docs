@@ -1,52 +1,55 @@
 ---
-slug: using-couchdb-on-ubuntu-2004
+slug: use-couchdb-20-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and usage of CouchDB.'
-og_description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and usage of CouchDB.'
+description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and explains how to use CouchDB 2.0 on Ubuntu.'
+og_description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and explains how to use CouchDB 2.0 on Ubuntu.'
 keywords: ['couchdb','nosql','fauxton','database','ubuntu 20.04']
+tags: ['couchdb','fauxton', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-08
 modified_by:
   name: Nathaniel Stickman
-title: "Using CouchDB on Ubuntu 20.04"
-h1_title: "Using CouchDB on Ubuntu 20.04"
+title: "Use CouchDB 2.0 on Ubuntu"
+h1_title: "How to Use CouchDB 2.0 on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[CouchDB: API Reference](https://docs.couchdb.org/en/latest/api/index.html)'
-- '[CouchDB: JSON Structure Reference](https://docs.couchdb.org/en/latest/json-structure.html)'
+- '[API guide](https://docs.couchdb.org/en/latest/api/index.html)'
+- '[documentation for the _find API](https://docs.couchdb.org/en/latest/api/database/find.html)'
+- '[Apache CouchDB Documentation](https://docs.couchdb.org/en/stable/)'
+
 ---
 
-CouchDB, a non-relational or "NoSQL" database, uses HTTP APIs and JSON documents, making its concepts more intuitive to those familiar with web technologies. These also make CouchDB simple to integrate with web and mobile applications.
+*CouchDB8, a non-relational or "NoSQL" database, uses HTTP APIs and JSON documents, making its concepts more intuitive to those familiar with web technologies. These also make CouchDB simple to integrate with web and mobile applications.
 
-This guide shows you how to get started with CouchDB using its web interface — Fauxton — before diving into the basics of using the HTTP API and integrating it into a basic application.
+This guide shows you how to get started with CouchDB using its web interface—**Fauxton**—before diving into the basics of using the HTTP API and integrating it into a basic application.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Install CouchDB. Follow the instructions in the guide on [How to Install CouchDB on Ubuntu 20.04](/docs/guides/how-to-install-couchdb-on-ubuntu-2004).
 
-1.  Update your system:
+1. Update your system:
 
         sudo apt update && sudo apt upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Access the Fauxton Web Interface
 
-The easiest way to configure and maintain your CouchDB installation is through its web interface, Fauxton. From a web browser on the machine where CouchDB is installed, you can access Fauxton by navigating to `127.0.0.1:5984/_utils`.
+The easiest way to configure and maintain your CouchDB installation is through its web interface, *Fauxton*. From a web browser on the machine where CouchDB is installed, you can access Fauxton by navigating to `127.0.0.1:5984/_utils`.
 
 However, if you are accessing the machine remotely, the simplest and most secure way to access Fauxton is by using SSH tunneling. The following steps show you how to create and use an SSH tunnel for this purpose.
 
-1. Follow the [Access Futon Over SSH to Administer CouchDB](/docs/guides/access-futon-over-ssh-using-putty-on-windows/) guide to create an SSH tunnel between your CouchDB server and the machine you are wanting to access it from.
+1. Follow the [Access Futon Over SSH to Administer CouchDB](/docs/guides/access-futon-over-ssh-using-putty-on-windows/) guide to creating an SSH tunnel between your CouchDB server and the machine you are wanting to access it from.
 
 1. In a web browser, navigate to `127.0.0.1:5984/_utils`.
 
@@ -54,15 +57,19 @@ However, if you are accessing the machine remotely, the simplest and most secure
 
     [![Fauxton login screen](fauxton-login_small.png "Fauxton login screen")](fauxton-login.png)
 
-## Navigating Fauxton
+## Navigate Fauxton
 
-Once you have logged into Fauxton, you are presented with a list of your CouchDB databases. Initially, this should only contain a `_users` and a `_replicator` database. These are the two default system databases used by CouchDB.
+- Once you have logged into Fauxton, you are presented with a list of your CouchDB databases. Initially, this should only contain a `_users` and a `_replicator` database. These are the two default system databases used by CouchDB.
 
 [![Initial page in Fauxton](fauxton-database-list_small.png "Initial page in Fauxton")](fauxton-database-list.png)
 
-You can use the menu on the left to navigate the variety of configuration and monitoring options Fauxton offers. This menu also provides a **Documentation** option, where you can find numerous links to CouchDB and Fauxton documentation libraries.
+- You can use the menu on the left to navigate the variety of configuration and monitoring options Fauxton offers. This menu also provides a **Documentation** option, where you can find numerous links to CouchDB and Fauxton documentation libraries.
 
-There are two important actions not presented in the menu on the left: creating a database and adding documents to a database. The following steps show you how to take these actions using Fauxton.
+- There are two important actions not presented in the menu on the left:
+  - Creating a database
+  - Adding documents to a database.
+
+The following steps show you how to take these actions using Fauxton.
 
 ### Create a Database
 
@@ -88,7 +95,7 @@ There are two important actions not presented in the menu on the left: creating 
 
     [![Fauxton document editor](fauxton-document-design_small.png "Fauxton document editor")](fauxton-document-design.png)
 
-## Using the HTTP API
+## Use the HTTP API
 
 CouchDB's HTTP API is the primary means for applications to interact with your databases. From the command line, you can use cURL to explore the API and even to quickly view and make changes to data within CouchDB.
 
@@ -98,19 +105,19 @@ Refer to CouchDB's [API guide](https://docs.couchdb.org/en/latest/api/index.html
 
 ### HTTP Queries
 
-1. To view a list of all databases, use:
+1. View the list of all databases.
 
         curl -X GET http://admin:password@127.0.0.1:5984/_all_dbs
 
-1. Use the following to create a new database; replace `new-example-db` with the name for the new database:
+1. Create a new database using the following command; replace `new-example-db` with the name for the new database.
 
         curl -X PUT http://admin:password@127.0.0.1:5984/new-example-db
 
-1. To view a list of all documents in the `example-db` database, use:
+1. View the list of all documents in the `example-db` database by using the following command:
 
         curl -X GET http://admin:password@127.0.0.1:5984/example-db/_all_docs
 
-1. Use the following to add a document to the `example-db` database; replace the JSON after the `-d` option with the desired JSON content for the document:
+1. Add a document to the `example-db` database; replace the JSON after the `-d` option with the desired JSON content for the document.
 
         curl -H 'Content-Type: application/json' \
              -X POST http://admin:password@127.0.0.1:5984/example-db \
@@ -120,7 +127,7 @@ Refer to CouchDB's [API guide](https://docs.couchdb.org/en/latest/api/index.html
 CouchDB automatically assigns an ID to the document if you do not explicitly provide one. However, CouchDB recommends that production applications create document IDs explicitly. Doing so prevents duplication of documents if your application has to retry its connection to the CouchDB database.
     {{< /note >}}
 
-1. The above returns an ID corresponding to the new document. Likewise, the `_all_docs` command gives the ID for each document it lists. These IDs can be used to access the identified document as follows; replace `id-string` with the ID for the desired document:
+1. The above command returns an ID corresponding to the new document. Likewise, the `_all_docs` command gives the ID for each document it lists. These IDs can be used to access the identified document by replacing `id-string` with the ID for the desired document.
 
         curl -X GET http://admin:password@127.0.0.1:5984/example-db/id-string
 
@@ -132,25 +139,29 @@ The URL for the query server follows the same format as the URLs above. To query
 
 The following are examples of basic queries aiming to provide an idea of how the JSON search criteria work. Refer to CouchDB's reference [documentation for the `_find` API](https://docs.couchdb.org/en/latest/api/database/find.html) for a full list of criteria parameters and more details on their usage.
 
-1. To retrieve all documents from `example-db` where `key_1` is greater than five:
+1. To retrieve all documents from `example-db` where `key_1` is greater than five.
 
         curl -H 'Content-Type: application/json' \
              -X POST http://admin:password@127.0.0.1:5984/example-db/_find \
              -d '{"selector": {"key_1": {"$gt": 5}}}'
 
-    The operator options include include `$eq` (for "is equal to") and `$lt` (for "is less than") in addition to `$gt`. CouchDB also has combination operators that allow you to conduct boolean and other more advanced searches. Here is another example, which retrieves documents where `key_1` is between five and 10:
+    The operator options include:
+    - `$eq` (for "is equal to")
+    - `$lt` (for "is less than") in addition to `$gt`.
+
+    Some of CouchDB's combination operators allow you to conduct boolean and other more advanced searches. Here is another example, which retrieves documents where `key_1` is between five and 10.
 
         curl -H 'Content-Type: application/json' \
              -X POST http://admin:password@127.0.0.1:5984/example-db/_find \
              -d '{"selector": {"$and": [{"key_1": {"$gt": 5}}, {"key_1": {"$lt": 10}}]}}'
 
-    Here is one that retrieves documents where `key_1` is greater than five or where `key_2` equals "Example String":
+    Here is one that retrieves documents where `key_1` is greater than five or where `key_2` equals "Example String".
 
         curl -H 'Content-Type: application/json' \
              -X POST http://admin:password@127.0.0.1:5984/example-db/_find \
              -d '{"selector": {"$or": [{"key_1": {"$gt": 5}}, {"key_2": {"$eq": "Example String"}}]}}'
 
-1. Use the following to define the specific fields to be returned from the matching documents and to sort the results by a specific field. In this case, the query server only returns the `key_2` field from the matching documents and sorts the results by the `key_3` field's values:
+1. Use the following to define the specific fields to be returned from the matching documents and to sort the results by a specific field. In this case, the query server only returns the `key_2` field from the matching documents and sorts the results by the `key_3` field's values.
 
         curl -H 'Content-Type: application/json' \
              -X POST http://admin:password@127.0.0.1:5984/example-db/_find \
@@ -167,15 +178,15 @@ To sort results, you must first define an index for the field and the sort order
 
 ## Usage Examples
 
-CouchDB shines in its straightforward integration with web applications. The following examples aim to demonstrate this by using CouchDB for a simple messaging application. The examples are written in pseudo code, and they should be readily adaptable to most popular programming languages for web applications.
+CouchDB shines in its straightforward integration with web applications. The following examples aim to demonstrate this by using CouchDB for a simple messaging application. The examples are written in pseudo-code, and they should be readily adaptable to the most popular programming languages for web applications.
 
-You can find the small dataset used in these examples [here](example-db.json). If you would like to follow along, you can import the dataset using the following cURL command. Make sure you are in the same directory as the`example-db.json` file, and make sure you have already created the `messaging-db` database used in these examples:
+You can find the small dataset used in these examples [here](example-db.json). If you would like to follow along, you can import the dataset using the following cURL command. Make sure you are in the same directory as the `example-db.json` file and make sure you have already created the `messaging-db` database used in the following examples:
 
         curl -H 'Content-Type: application/json' \
              -X POST http://admin:password@127.0.0.1:5984/messaging-db/_bulk_docs \
              -d @example-db.json
 
-1. The dataset already includes a custom index for sorting by a `date_time` field. However, for reference in creating your own indices, here is the the JSON used to generate this index. You can execute it using a cURL command like the one in the note above:
+1. The dataset already includes a custom index for sorting by a `date_time` field. However, for reference in creating your indices, here is the JSON used to generate this index. You can execute it using a cURL command like the one in the note above:
 
         {
             "index": {
@@ -187,14 +198,14 @@ You can find the small dataset used in these examples [here](example-db.json). I
             "type": "json"
         }
 
-1. The application initially sets up a couple of variables that are to be referenced in each query:
+1. The application initially sets up a couple of variables that are to be referenced in each query.
 
     {{< file "Example Messaging Application" python>}}
 db_query_headers = {"Content-Type": "application/json"}
 db_query_url = "http://admin:password@127.0.0.1:5984/messaging-db/_find"
     {{< /file >}}
 
-1. When a user accesses a message thread, the application fetches the two most recent messages:
+1. When a user accesses a message thread, the application fetches the two most recent messages.
 
     {{< file "Example Messaging Application" python>}}
 db_request = {
@@ -226,7 +237,7 @@ db_request = {
 db_response = http_post_request(db_query_url, db_request, db_query_headers)
     {{< /file >}}
 
-1. When a user sends a new message, the application inserts it as a new document:
+1. When a user sends a new message, the application inserts it as a new document.
 
     {{< file "Example Messaging Application" python>}}
 db_request = {
@@ -243,6 +254,6 @@ db_response = http_post_request(db_query_url, db_request, db_query_headers)
 
 ## Next Steps
 
-With that, you are ready to get started using CouchDB in your own applications!
+With that, you are ready to get started using CouchDB in your applications.
 
-CouchDB has many more features than those demonstrated here, making it capable of handling a wide array of applications. You can easily begin to extend on the examples in this guide by referencing CouchDB's exceptional repository of [reference documentation](https://docs.couchdb.org/en/stable/). Be sure to also explore the links provided in this guide and the documentation listing in your Fauxton interface.
+CouchDB has many more features than those demonstrated here, making it capable of handling a wide array of applications. You can easily begin to extend on the examples in this guide by referencing CouchDB's exceptional repository of [Apache CouchDB Documentation](https://docs.couchdb.org/en/stable/). Be sure to also explore the links provided in this guide and the documentation listing in your Fauxton interface.

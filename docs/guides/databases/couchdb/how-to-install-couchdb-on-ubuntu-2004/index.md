@@ -20,11 +20,11 @@ external_resources:
 - '[Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.html)'
 ---
 
-*CouchDB* is a non-relational, or "NoSQL" database designed with scalability and a more trouble-free experience in mind. CouchDB is programmed in Erlang, which boasts a highly-scalable concurrency model and fault tolerance. CouchDB capitalizes on both of these features to ensure production databases run with fewer interruptions, regardless of changes in request volumes and inevitable performance potholes.
+*CouchDB* is a non-relational, or "NoSQL" database designed with scalability and a more trouble-free experience in mind. CouchDB is programmed in Erlang, which boasts a highly scalable concurrency model and fault tolerance. CouchDB capitalizes on both of these features to ensure production databases run with fewer interruptions, regardless of changes in request volumes and inevitable performance potholes.
 
 CouchDB uses HTTP APIs and JSON documents which are intended to be more intuitive and to integrate more simply into web and mobile applications. Its use of JSON documents makes it highly flexible and able to accommodate a wide variety of needs.
 
-This guides shows you how to install CouchDB on Ubuntu 20.04. At the end of this guide, there is a link to a subsequent guide for getting started using CouchDB and understanding its concepts.
+This guide shows you how to install CouchDB on Ubuntu 20.04. At the end of this guide, there is a link to a subsequent guide for getting started using CouchDB and understanding its concepts.
 
 ## Before You Begin
 
@@ -42,13 +42,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Set Up the Apache CouchDB Repository
 
-1. Install the prerequisites for using the Apache CouchDB repository.
+1. Install the prerequisites for using the Apache CouchDB repository using the following commands:
 
-        sudo apt-get install -y gnupg ca-certificates
+        sudo apt update && sudo apt install -y curl apt-transport-https gnupg
+
+        curl https://couchdb.apache.org/repo/keys.asc | gpg --dearmor | sudo tee /usr/share/keyrings/couchdb-archive-keyring.gpg >/dev/null 2>&1
+
+        source /etc/os-release
 
 1. Add the CouchDB repository to the `apt` repository list.
 
-        echo "deb https://apache.bintray.com/couchdb-deb focal main" | sudo tee /etc/apt/sources.list.d/couchdb.list
+        echo "deb [signed-by=/usr/share/keyrings/couchdb-archive-keyring.gpg] https://apache.jfrog.io/artifactory/couchdb-deb/ ${VERSION_CODENAME} main" | sudo tee /etc/apt/sources.list.d/couchdb.list >/dev/null
 
 1. Install the CouchDB repository key.
 
@@ -57,7 +61,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Install CouchDB
 
 {{< note >}}
-The steps below are for installing a standalone CouchDB server. If you intend to use CouchDB in a cluster, choose **clustered** instead of **standalone** and enter `0.0.0.0` as the interface bind address in the steps that follow.
+The steps below are for installing a standalone CouchDB server. If you intend to use CouchDB in a cluster, choose **clustered** instead of **standalone** and enter `0.0.0.0` as the interface bind-address in the steps that follow.
 
 See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.html) guide for the additional steps needed to set up a CouchDB cluster once you have completed the installation.
 {{< /note >}}
@@ -68,17 +72,17 @@ See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.
 
 1. Install CouchDB.
 
-        sudo apt install couchdb
+        sudo apt install -y couchdb
 
-    Choose **standalone** when prompted for a configuration type.
+    - Choose **standalone** when prompted for a configuration type.
 
     [![CouchDB configuration type selection](couchdb-installation-config-type_small.png "CouchDB configuration type selection")](couchdb-installation-config-type.png)
 
-    Enter the default value — `127.0.0.1` — for the interface bind address.
+    - Enter the default value — `127.0.0.1` — for the interface bind address.
 
     [![Inputting the CouchDB network interface](couchdb-installation-network_small.png "Inputting the CouchDB network interface")](couchdb-installation-network.png)
 
-    Since *CouchDB 3.0.0*, CouchDB does not run without an administrator user being configured. When prompted, create an administrator user by entering a password. Re-enter the password on the subsequent screen.
+    - Since *CouchDB 3.0.0*, CouchDB does not run without an administrator user being configured. When prompted, create an administrator user by entering a password. Re-enter the password on the subsequent screen.
 
     [![Creating a CouchDB administrator user](couchdb-installation-admin-user_small.png "Creating a CouchDB administrator user")](couchdb-installation-admin-user.png)
 
@@ -88,6 +92,6 @@ See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.
 
          curl admin:password@127.0.0.1:5984
 
-## Getting Started with CouchDB
+## Get Started with CouchDB
 
 You have now successfully installed CouchDB! To get started, head over to the guide for [Using CouchDB on Ubuntu 20.04](/docs/guides/using-couchdb-on-ubuntu-2004/).
