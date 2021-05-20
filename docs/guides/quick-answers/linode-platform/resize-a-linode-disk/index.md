@@ -25,10 +25,11 @@ This Quick Answer will show you how to resize a disk on your Linode. See our [Di
 1. Power off the Linode. Watch the Linode's **Summary** section for confirmation that the Linode has powered off.
 
     ![Power off Linode](power-off.png "Power off your Linode")
-1. Navigate to the **Disks/Configs** tab.
+1. Navigate to the **Storage** tab.
 
     ![Linode advanced configurations](advanced-configurations.png "Linode disks and configurations")
-1. Under the **Disks** section, find the disk you would like to resize and choose the **Resize** option from the menu.
+
+1. Find the disk you would like to resize and choose the **Resize** option from the menu.
 
     ![Resize the Linode disk](resize-linode.png "Resize the Linode Disk")
 
@@ -42,4 +43,6 @@ This Quick Answer will show you how to resize a disk on your Linode. See our [Di
 
 {{< note >}}
 The Linode Cloud Manager will not allow you to resize your disk to an amount smaller than the space taken up by files on your filesystem. To confirm how much space you're using, issue [the `df -h` command](https://linux.die.net/man/1/df) on your Linode.
+
+Additionally, if a disk is created using custom partitions, resizing is not possible. If using a raw disk, the disk can only be resized to a larger disk.
 {{< /note >}}

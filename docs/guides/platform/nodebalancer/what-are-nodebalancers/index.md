@@ -13,7 +13,6 @@ modified_by:
 published: 2020-07-16
 title: What Are NodeBalancers
 h1_title: Understanding NodeBalancers
-image: getting-started-with-nodebalancers.png
 tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/what-are-nodebalancers/']
 ---

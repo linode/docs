@@ -15,30 +15,15 @@ title: Reset the Root Password on your Linode
 aliases: ['/quick-answers/linode-platform/reset-the-root-password-on-your-linode-classic-manager/','/quick-answers/linode-platform/reset-the-root-password-on-your-linode/','/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/']
 ---
 
-This Quick Answer will show you how to reset the root password for the Linux distribution running on your Linode. See our [Accounts and Passwords](/docs/platform/manager/accounts-and-passwords-new-manager/#resetting-the-root-password) guide for additional information.
+This Quick Answer will show you how to reset the root password for the Linux distribution running on your Linode.
 
 1.  Click the **Linodes** link in the sidebar.
-
-1.  Select a Linode to navigate to its detail page.
-
-1.  If the Linode's **Status** menu displays **Offline**, proceed to step 6.
-
-1.  If the Linode's **Status** menu displays **Running**, click on the Status menu.
-
-1.  Then, select the **Power Off** option from the exposed dropdown menu. A progress bar will appear that you can use to monitor the status of this operation.
-
-    ![Power off a Linode](reset-password-power-down-linode.png "Shut down your Linode to reset the root password")
-
-1.  When the Linode is offline, navigate to the Linode's **Settings** tab.
-
-1.  Under Settings, click on **Reset Root Password** to expand that panel.
-
-1.  Select your primary disk from the **Disk** dropdown menu.
-
+1.  Select a Linode by clicking its label. The Linode's details page appears.
+1.  Click **Power Off** at the top of the details page to turn off your Linode if it is powered on. Ensure the Linode displays its status as "OFFLINE" before proceeding.
+1.  Click the **Settings** tab underneath the detail page Summary.
+1.  Under the **Reset Root Password** panel, select your primary disk from the **Disk** menu.
 1.  Enter a new password for the `root` user in the **Password** field.
+1.  Click **Save**. The Linode's dashboard appears.
+1.  Click **Power On** to turn on your Linode.
 
-1.  Click **Save**
-
-1.  Return to the Linode's **Summary** tab.
-
-1.  Click on the **Status** menu, then select the **Power On** option from the exposed dropdown menu to power on your Linode.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/guides/using-the-linode-shell-lish/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.

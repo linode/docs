@@ -19,8 +19,10 @@
    "title"
   ],
   "attributesToRetrieve": [
+   "deprecated",
    "excerpt",
    "firstPublishedTime",
+   "firstPublishedYear",
    "href",
    "languages",
    "lastUpdatedTime",
@@ -29,6 +31,9 @@
    "skillLevel",
    "thumbnailUrl",
    "title"
+  ],
+  "customRanking": [
+   "desc(firstPublishedYear)"
   ],
   "exactOnSingleWordQuery": "attribute",
   "highlightPostTag": "\u003c/em\u003e",
@@ -40,11 +45,11 @@
   "paginationLimitedTo": 1000,
   "queryType": "prefixLast",
   "ranking": [
-   "asc(deprecated)",
    "typo",
    "geo",
    "words",
    "filters",
+   "asc(deprecated)",
    "proximity",
    "attribute",
    "exact",
@@ -55,7 +60,7 @@
    "linode-documentation-sorted"
   ],
   "searchableAttributes": [
-   "title",
+   "unordered(title)",
    "keywords",
    "toc",
    "h1",
@@ -75,9 +80,6 @@
    "section.lvl0",
    "section.lvl1"
   ],
-  "customRanking": [
-   "desc(title)"
-  ],
   "exactOnSingleWordQuery": "attribute",
   "highlightPostTag": "\u003c/em\u003e",
   "highlightPreTag": "\u003cem\u003e",
@@ -88,7 +90,6 @@
   "paginationLimitedTo": 1000,
   "queryType": "prefixLast",
   "ranking": [
-   "asc(ordinal)",
    "typo",
    "geo",
    "words",
@@ -99,7 +100,9 @@
    "custom"
   ],
   "removeWordsIfNoResults": "none",
+  "replicas": [],
   "searchableAttributes": [
+   "unordered(title)",
    "unordered(exerpt)",
    "unordered(section)",
    "unordered(section.lvl0)"

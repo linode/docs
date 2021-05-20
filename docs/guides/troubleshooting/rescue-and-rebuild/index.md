@@ -61,13 +61,9 @@ To boot a Linode into Rescue Mode:
 
     [![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png "Linode Cloud Manager Dashboard with the Linodes link the sidebar highlighted")](cloud-manager-dashboard.png)
 
-1.  Select a Linode:
+1.  Click on the **more options ellipsis** next to the Linode that will be booted into rescue mode, and click on the **Rescue** option to open the Rescue form:
 
     [![Linode Cloud Manager Linodes page](cloud-manager-linodes-page.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes-page.png)
-
-1.  The Linode's detail page appears. Click the **Rescue** tab:
-
-    [![Linode Cloud Manager Linode detail page - Rescue tab highlighted](cloud-manager-linode-detail-page-rescue-tab-highlighted.png "Linode Cloud Manager Linode detail page with Rescue tab highlighted")](cloud-manager-linode-detail-page-rescue-tab-highlighted.png)
 
 1.  In the **Rescue** form, select the disks you want to mount:
 
@@ -91,7 +87,7 @@ Matching these names will be especially important if you need to [change root](#
 A mismatch in the names of your disks between your Linode's configuration profile and your Rescue Mode environment may cause the chroot to mount these disks in the wrong location or with the wrong mount options. As a result, it is important to ensure that these names match.
 {{< /note >}}
 
-1.  Click the **Submit** button. The Linode reboots into Rescue Mode, and a progress bar appears. When this progress bar completes, proceed to [Connecting to a Linode Running in Rescue Mode](#connecting-to-a-linode-running-in-rescue-mode).
+1.  Click the **Reboot into Rescue Mode** button. The Linode reboots into Rescue Mode, and the progress percentage appears. When the Linode appears as **Running** again, proceed to [Connecting to a Linode Running in Rescue Mode](#connecting-to-a-linode-running-in-rescue-mode).
 
     [![Linode Cloud Manager Rescue form - reboot progress bar highlighted](cloud-manager-rescue-form-reboot-progress-bar-highlighted.png "Linode Cloud Manager Rescue form with the reboot progress bar highlighted")](cloud-manager-rescue-form-reboot-progress-bar-highlighted.png)
 
@@ -209,7 +205,7 @@ The software packages you install is available as long as the Linode is running 
 ### Mounting Disks
 
 {{< note >}}
- Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab] (/docs/guides/install-a-custom-distribution-on-a-linode/#update-your-fstab) guide.
+ Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/guides/install-a-custom-distribution-on-a-linode/#update-your-fstab) guide.
  {{< /note >}}
 
 By default, your disks are not mounted when your Linode boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -347,24 +343,16 @@ To use the Rebuild feature:
 
     [![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png "Linode Cloud Manager Dashboard with the Linodes link the sidebar highlighted")](cloud-manager-dashboard.png)
 
-1.  Select a Linode:
+1.  Click on the **more options ellipsis** next to the Linode that will be rebuilt, and click on the Rebuild option to open the Rebuild form:
 
-    [![Linode Cloud Manager Linodes page](cloud-manager-linodes-page.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes-page.png)
+    [![Linode Cloud Manager Linodes page](cloud-manager-linodes-rebuild.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes.png)
 
-1.  The Linode's detail page appears. Click the **Rebuild** tab:
-
-    [![Linode Cloud Manager Linode detail page - Rebuild tab highlighted](cloud-manager-linode-detail-page-rebuild-tab-highlighted.png "Linode Cloud Manager Linode detail page with Rebuild tab highlighted")](cloud-manager-linode-detail-page-rebuild-tab-highlighted.png)
-
-1.  Complete the Rebuild form. Select an image to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
 1.  Click on **Rebuild** button after completing the form:
 
     [![Linode Cloud Manager Rebuild form - Rebuild button highlighted](cloud-manager-rebuild-form-rebuild-button-highlighted.png "Linode Cloud Manager Rebuild form with Rebuild button highlighted")](cloud-manager-rebuild-form-rebuild-button-highlighted.png)
 
-1.  A confirmation dialog appears. Click **Rebuild** button in the dialog to start the rebuild process:
+1.  The Linode may take several minutes to complete the rebuild process. Select the Linode that is being rebuilt and select the `Activity Feed` tab to monitor rebuild progress and confirm that the rebuild has been completed:
 
-    [![Linode Cloud Manager Rebuild form confirmation dialog](cloud-manager-rebuild-form-confirmation-dialog.png "Linode Cloud Manager Rebuild form confirmation dialog")](cloud-manager-rebuild-form-confirmation-dialog.png)
-
-1.  The **Summary** tab for the Linode appears and a **Rebuilding** progress bar appears. When the operation completes, the Linode is booted under the new Linux image:
-
-    [![Linode Cloud Manager Linode detail page - Rebuild progress bar highlighted](cloud-manager-linode-detail-page-rebuild-progress-bar-highlighted.png "Linode Cloud Manager Linode detail page with the Rebuild progress bar highlighted")](cloud-manager-linode-detail-page-rebuild-progress-bar-highlighted.png)
+    [![Linode Cloud Manager Activity - Activity](cloud-manager-rescue-activity.png "Linode Cloud Manager Rescue Activity")](cloud-manager-rescue-activity.png)

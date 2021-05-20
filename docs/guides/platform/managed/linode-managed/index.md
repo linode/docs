@@ -14,10 +14,11 @@ published: 2019-09-04
 title: Linode Managed
 ---
 
-[Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, Linode will monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
+[Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service.
+These services include incident response, longview, backup service, cPanel installation, dashboard metrics, and free site migrations. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, Linode will monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
 {{< note >}}
-Linode Managed applies to all Linodes on an account and will be billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer.
+Linode Managed applies to all Linodes on an account and are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
 {{< /note >}}
 
 ## Getting Started
@@ -170,9 +171,9 @@ To access these settings:
 
     [![Linode Managed SSH Settings](managed-ssh-settings.png "Linode Managed SSH Settings")](managed-ssh-settings.png)
 
-1.  To enable or disable Managed SSH access for a Linode, click on the **more options ellipsis** that corresponds to the Linode and then select the **Enable** or **Disable** option from the menu that appears.
+1.  To enable or disable Managed SSH access for a Linode, click on the **Enable** or **Disable** option that corresponds to the Linode you'd like to interact with.
 
-1.  To change other Managed SSH settings for a Linode, click on the **more options ellipsis** that corresponds to the Linode and then select the **Edit** option. A form will appear with fields for each setting.
+1.  To change other Managed SSH settings for a Linode, click on the the **Edit** option. A form appears with fields for each setting.
 
 ### Adding Service Credentials
 

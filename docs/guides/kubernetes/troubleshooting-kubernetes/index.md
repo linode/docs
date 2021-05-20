@@ -11,6 +11,7 @@ published: 2019-07-29
 modified_by:
   name: Linode
 title: "Troubleshooting Kubernetes"
+h1_title: "Diagnose and Resolve Kubernetes Issues"
 image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:
@@ -239,8 +240,8 @@ If one of your Pods requests more memory or CPU than is available on your worker
 
         Message: You are recommended to have at least 150 MB of memory available for smooth operation. It looks like you have ~58 MB available.
 
-If your cluster has insufficient resources for a new Pod, you will need to:
+If your cluster has insufficient resources for a new Pod, you will need to do one or more of the following:
 
--   Reduce the number of other pods/deployments/applications running on your cluster,
--   [Resize the Linode instances](/docs/platform/disk-images/resizing-a-linode/) that represent your worker nodes to a higher-tier plan, or
--   Add a new worker node to your cluster.
+-   Reduce the number of other pods/deployments/applications running on your cluster.
+-   [Add a new worker node or nodes](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools) to your cluster.
+-   [Add a new Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#adding-a-node-pool) with access to more resources and migrate the workload to the new pool.

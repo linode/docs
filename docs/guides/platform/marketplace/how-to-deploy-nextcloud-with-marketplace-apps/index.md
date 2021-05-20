@@ -42,10 +42,10 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 
 | **Field** | **Description** |
 |-----------|-----------------|
-| **The name of the admin user for NextCloud** | Set the name of the admin user for Nextcloud server. *Required*. |
-| **The password for NextCloud's admin user** | The password for the admin user for NextCLoud server. *Required*. |
-| **The root password for the MySQL database** | The root user's password for the Nextcloud database. *Required*. |
-| **The password for the created MySQL database user** | The password for the new MySQL user named `nextcloud`. *Required* |
+| **The name of the admin user for NextCloud** | The administrator username for nextcloud. This will be used to log in to the application. *Required*. |
+| **The password for NextCloud's admin user** | The administrator password. This will be used to log in to the application. *Required*. |
+| **MySQL database root password** | The root user's password for the Nextcloud database. *Required*. |
+| **MySQL user password** | Your new MySQL user's password. *Required*. |
 
 #### Advanced Options
 | **Field** | **Description** |
@@ -84,17 +84,13 @@ Your Nextcloud app completes installation anywhere **between 5-7 minutes** after
 ## Getting Started after Deployment
 ### Log Into Your Nextcloud Instance
 
-1. Open a browser window and navigate to the Nextcloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, the domain is the public IP address of the Linode appended with a forward slash and "nextcloud. For example, `192.168.17.43/nextcloud/`.
+1. Open a browser window and navigate to the NextCloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, the domain is the public IP address of the Linode appended with a forward slash and "nextcloud. For example, `192.168.17.43/nextcloud/`.
 
-1. Create a Nextcloud admin account by providing values in the presented form.
+1. Enter the administrator username and password set during initial app creation in the presented form.
 
       ![Create a Nextcloud admin account.](nextcloud-admin.png)
 
-1. In the **Storage & database** section, provide the MySQL database values that you used in the [Nextcloud Options](#nextcloud-options) section.
-
-      ![Provide your MySQL database values](nextcloud-database.png)
-
-1. Click the **Finish setup** button to complete the configuration. The set up takes a couple of minutes to complete. The Nextcloud Hub page appears where you can upload files to the Nextcloud server.
+1. Once you have successfully logged in, the Nextcloud Hub page appears where you can upload files to the Nextcloud server.
 
       ![Nextcloud Hub](welcome-nextcloud.png)
 

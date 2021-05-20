@@ -10,13 +10,9 @@ cascade:
     product_description: "Secure your network with Linode Cloud Firewall. Create Firewall rules that only allow network traffic on selected ports and protocols."
 ---
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
-
 ## Availability
 
-Mumbai, India; Sydney, Australia; Toronto, Canada;
+Mumbai, India; Sydney, Australia; Toronto, Canada; London, United Kingdom; Atlanta, GA, USA; Fremont, CA, USA
 
 ## Features
 
@@ -34,7 +30,7 @@ Defend your apps and services from malicious attackers by creating rules to only
 
 ### Create Custom Firewall Rules
 
-Tailor rulesets for each Linode. Add up to 25 rules per ruleset, and use up to three active firewalls on a single Linode.
+Tailor rulesets for each Linode. Add up to 25 rules per ruleset, and use a customized firewall on a single Linode.
 
 ### Making Security More Accessible
 

@@ -45,11 +45,12 @@ Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`.
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
 ## Create a Linode
-![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](getting-started.gif)
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 
 1.  At the top of the page, click **Create** and select **Linode**.
+
+    ![Getting Started Add Linode](getting-started-add-linode.png "Getting Started with Linode")
 
 1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
@@ -61,9 +62,13 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
 1. Select a Linode plan.
 
+    ![Getting Started Create Linode](getting-started-create1.png "Getting Started Create Linode")
+
 1.  Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
 1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
+
+    ![Getting Started Create Linode 2](getting-started-create2.png "Getting Started Create Linode 2")
 
 1.  Click **Create**. You will be directed back to the *Linodes* page which will report the status of your Linode as it boots up. You can now use the Cloud Manager to:
 
@@ -88,8 +93,6 @@ If Network Helper is unable to determine the operating system during boot, or if
 
 ## Connect to Your Linode via SSH
 
-{{< youtube ZVMckBHd7WA >}}
-
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
 * **Linux:** You can use a terminal window, regardless of desktop environment or window manager.
@@ -106,7 +109,7 @@ Your Linode has a unique IP address that identifies it to other devices and user
 
 1.  Your IPv4 and IPv6 addresses appear under the *IPv4* and *IPv6* sections.
 
-    [![The Networking settings tab for your Linode](getting-started-networking-small.png)](getting-started-networking.png)
+    [![The Networking settings tab for your Linode](getting-started-networking.png)](getting-started-networking.png)
 
     You can also quickly reference your Linode's IP addresses from the **Linodes** page:
 
@@ -115,8 +118,6 @@ Your Linode has a unique IP address that identifies it to other devices and user
 ### Log in Using SSH
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and macOS. If you're using PuTTY on Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
-
-![Copy SSH Command with IP and Log in](getting-started-ssh.gif "Go to the Networking tab and copy the SSH command, then paste it into a terminal.")
 
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 

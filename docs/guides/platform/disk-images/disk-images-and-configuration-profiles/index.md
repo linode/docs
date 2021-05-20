@@ -13,9 +13,14 @@ modified_by:
   name: Linode
 published: 2012-04-24
 title: Disks and Configuration Profiles
+deprecated: true
 external_resources:
   - '[Types of File Systems](https://en.wikipedia.org/wiki/File_system#Types_of_file_systems)'
 ---
+
+{{< note >}}
+This guide has been split into two new guides:[Linode Disks and Storage](/docs/guides/linode-disks/) and [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/).
+{{</ note >}}
 
 The Linode Cloud Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
@@ -102,6 +107,8 @@ Resizing a disk requires you to power your Linode off, if it is currently in use
 When shrinking a disk that is using more space than you wish to allocate, you must first delete or compress files until it is within the reduced allocation size. Use the command `df -h` to determine how much space your disk is using.
 
 Shrinking a disk takes longer than increasing its size.
+
+If a disk is created using custom partitions, resizing is not possible. If using a raw disk, the disk can only be resized to a larger disk.
 {{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).

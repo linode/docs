@@ -7,22 +7,29 @@ tab_group_main:
 
 ## Building Blocks
 
-- [Capture an Image](/docs/products/tools/images/guides/capture-an-image/): Create an exact copy of a Linode's disk image.
+- [Capture an Image](/docs/products/tools/images/guides/capture-an-image/): Create an Image from an existing Linode's disk.
 
-- [Manage Your Images](/docs/products/tools/images/guides/manage-your-images/): Captured images are stored for future use and can be modified or removed at any time.
+- [Upload an Image](/docs/products/tools/images/guides/upload-an-image/): Create an Image from an image file.
 
-- [Deploy From a Saved Image](/docs/products/tools/images/guides/deploy-from-a-saved-image/): Quickly deploy a new Linode from a saved image.
+- [Deploy an Image to a New Linode](/docs/products/tools/images/guides/deploy-image-to-new-linode/): Create a new Linode using an Image.
 
-- [Deploy an Additional Image to an Existing Linode](/docs/products/tools/images/guides/deploy-additional-image-to-existing-linode/): Deploy an additional image to an existing Linode by adding an additional disk.
+- [Rebuild and Deploy an Image to an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/): Rebuild an existing Linode using an Image.
 
-## Themes
+## Related Guides
 
-These guides help you with topics like deploying custom distributions, migrating to Linode, and using the Linode Packer Builder.
+The following guides can assist with topics like deploying custom distributions, migrating to Linode, and using the Linode Packer Builder.
+
+### Images
+
+- [Images Tutorial](/docs/guides/linode-images/)
+
+- [Deploying an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/)
 
 ### Cloning and Disks
 
 - [Clone Your Linode](https://www.linode.com/docs/platform/disk-images/clone-your-linode/)
-[Disks and Configuration Profiles](https://www.linode.com/docs/platform/disk-images/disk-images-and-configuration-profiles/)
+
+- [Disks and Configuration Profiles](https://www.linode.com/docs/platform/disk-images/disk-images-and-configuration-profiles/)
 
 ### Custom Distributions
 

@@ -43,4 +43,8 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 
     {{< note >}}
 Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [Cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) do this for you automatically if a file exceeds this limit as part of the uploading process.
+
+Object file names additionally cannot contain the following special characters when using Cloud Manager or the Linode CLI:
+
+  `" ' < > & + =`
 {{< /note >}}
