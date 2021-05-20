@@ -416,7 +416,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
-f:auxton
+fauxton
 favicon
 fb4c
 fcgi
