@@ -3,15 +3,15 @@ slug: centos-wireguard-installation-and-configuration
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn01@gmail.com
-description: 'How to set up the WireGuard Virtual Private Network on CentOS Linux 8.'
-og_description: 'How to set up the WireGuard Virtual Private Network on CentOS Linux 8.'
+description: 'How to set up the WireGuard Virtual Private Network on CentOS 8.'
+og_description: 'How to set up the WireGuard Virtual Private Network on CentOS 8.'
 keywords: ['centos', 'wireguard', 'vpn']
 tags: ['wireguard', 'centos', 'vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
   name: Linode
-title: "CentOS: WireGuard Installation and Configuration"
+title: "WireGuard Installation and Configuration on CentOS 8"
 h1_title: "How to Install and Configure WireGuard on CentOS 8"
 contributor:
   name: Steven J Vaughan-Nichols
@@ -41,7 +41,7 @@ external_resources:
 
 ## What is WireGuard?
 
-[*WireGuard*](https://www.wireguard.com/) is a next-generation security-focused *Virtual Private Network (VPN)* which can easily be deployed on low-end devices like Rasberry Pi to high-end servers.
+[*WireGuard*](https://www.wireguard.com/)&#174; is a next-generation security-focused *Virtual Private Network (VPN)* which can easily be deployed on low-end devices, like Rasberry Pi, to high-end servers.
 
 WireGuard was written by top Linux developer Jason A. Donenfeld as a new approach to VPNs. Beloved by Linux founder Linus Torvalds, [WireGuard was merged into the Linux kernel 5.6](https://www.zdnet.com/article/linuxs-wireguard-vpn-is-here-and-ready-to-protect-you/) in March 2020.
 
@@ -63,7 +63,7 @@ WireGuard was written by top Linux developer Jason A. Donenfeld as a new approac
 
 1. **Cross-platform use:** Many VPN services, such as [*NordVPN*](https://nordvpn.com/), [*SurfShark*](https://surfshark.com/), and [*Private Internet Access*](https://www.privateinternetaccess.com/) now support WireGuard. Native WireGuard VPN clients are also available on numerous operating systems including Android, iOS, FreeBSD, macOS, OpenBSD, and Windows.
 
-**How Wireguard Works?**
+**How Does Wireguard Work?**
 
 WireGuard works by securely encapsulating IP packets over UDP. WireGuard adds a network interface, `lime eth0` or `wlan0` under the name `wg0` and so on. You configure these with your private key and your peers' public keys. This network interface can then be configured with the usual Linux networking utilities such as `ifconfig(8)`; `ip-address(8)`; `route(8)` and `ip-route(8)`. WireGuard specific aspects are configured using the [wg(8)](https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8) tool. All key distribution and pushed configuration issues are out of WireGuard's scope.
 
@@ -93,9 +93,9 @@ Install a signed WireGuard Linux kernel module and the WireGuard tools.
 1. Navigate to the `/etc/wireguard` directory and generate a private and public key pair for the WireGuard server.
 
        sudo umask 077
-       sudo wg genkey | tee privatekey | wg pubkey \&gt; publickey
+       sudo wg genkey | tee privatekey | wg pubkey > publickey
 
-    This saves both the private and public keys that can be viewed with `cat privatekey` and `cat publickey` respectively.
+    This saves both the private and public keys, and they can be viewed with `cat privatekey` and `cat publickey`, respectively.
 
 1. Create the file `/etc/wireguard/wg0.conf` with the following content. You need `PrivateKey` for the PrivateKey field and its private IP addresses in the `Address` field.
 
@@ -109,7 +109,7 @@ Install a signed WireGuard Linux kernel module and the WireGuard tools.
   SaveConfig = true
     {{< /file >}}
 
-Here's what this means.
+Here's an explanation of the above configuration file:
 
 - **PrivateKey:** The server's private key.
 - **Address:** Defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value. Typical values are `10.0.0.1/24`, `192.168.1.1/24`, or `192.168.2.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance.
@@ -156,3 +156,5 @@ listening port: 51820
 {{< /output >}}
 
 1. Now, try to connect to your new WireGuard server with the WireGuard client of your choice. If it goes well, you now have a quick, secure private connection to your server.
+
+“WireGuard” is a registered trademark of Jason A. Donenfeld.
