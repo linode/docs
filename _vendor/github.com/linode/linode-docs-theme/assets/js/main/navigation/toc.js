@@ -94,11 +94,7 @@ export function newToCController() {
 				}
 				a.innerHTML = el.innerText;
 
-				let wrapper = document.createElement('span');
-				wrapper.appendChild(a);
-				let span = document.createElement('span');
-				a.appendChild(span);
-				li.appendChild(wrapper);
+				li.appendChild(a);
 
 				if (level == 2) {
 					let ol2 = document.createElement('ol');
@@ -129,14 +125,13 @@ export function newToCController() {
 				ol.querySelectorAll('.level-2').forEach((li) => {
 					if (li.querySelector('li') !== null) {
 						li.setAttribute('x-data', '{ open: false }');
-						let wrapper = li.querySelector('span');
 						let ol = li.querySelector('ol');
 						ol.setAttribute('x-show.transition', 'open');
 						let closeEl = document.importNode(
 							this.initData.headerCloseButton.content.querySelector('button'),
 							true
 						);
-						wrapper.appendChild(closeEl);
+						li.appendChild(closeEl);
 					}
 				});
 			}

@@ -55,6 +55,10 @@ Currently, Object Storage accounts are limited to 50 terabytes of storage per cl
 
 Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/guides/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/guides/how-to-use-object-storage/#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 
+Objects uploaded to object storage additionally cannot contain the following special characters when using Cloud Manager or the Linode CLI:
+
+  `" ' < > & + =`
+
 {{< note >}}
 If you need to increase the storage limit, the object limit, or the bucket limit, please [open up a Customer Support ticket](/docs/guides/support/#contacting-linode-support).
 {{</ note >}}

@@ -5,7 +5,18 @@
     {{/* The elements from Markdown are: ![.Text](.Destination ".Title") */}}
     {{ $width2x := 1388}}
     {{ $width1x := 694}}
-    {{ $imgTag := partial "components/image-srcset.html" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x "lazy" true "alt" $.Title "class" "w-full" )}}
+    {{ $title := $.Title }}
+    {{ $alt := $.PlainText }}
+    {{ if not $title }}
+      {{ $title = $alt }}
+    {{ end }}
+    {{ if not $title }}
+      {{ $title = "Image" }}
+    {{ end }}
+    {{ if not $alt }}
+      {{ $alt = $title }}
+    {{ end }}
+    {{ $imgTag := partial "components/image-srcset.html" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x "lazy" true "alt" $alt "title" $title "class" "w-full" )}}
     {{ if gt $img.Width $width1x }}
       {{ partial "components/image-modal.html" (dict "imgTag" $imgTag "img" $img ) }}
     {{ else }}

@@ -8,6 +8,8 @@
 {{ if  hugo.IsProduction  }}
   {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
 {{ end }}
+<link rel="preload" href="{{ `webfonts/source-sans-pro-v14-latin-600.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ `webfonts/source-sans-pro-v14-latin-regular.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
 <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
 
 {{/* scripts */}}

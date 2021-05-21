@@ -44,6 +44,8 @@ resources/_gen/assets
 hugo_stats.json
 
 redirects.conf
+
 .vscode/settings.json
-package-lock.json
-package.json
+
+_vendor/github.com/linode/linode-docs-theme/content/typografy-test.md
+

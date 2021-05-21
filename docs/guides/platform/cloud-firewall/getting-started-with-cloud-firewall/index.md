@@ -20,10 +20,6 @@ aliases: ['/platform/cloud-firewall/getting-started-with-cloud-firewall/']
 
 ## What is Linode Cloud Firewall?
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
-
 Linode Cloud Firewall is a free service used to create, configure, and add stateful network-based firewalls to Linode services using the Linode Cloud Manager and the [Linode APIv4](/docs/api/). A Cloud Firewall is independent of the service it is attached to, so you can apply a single Firewall to multiple Linode services.
 
 ### Features
