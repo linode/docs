@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-21
 modified_by:
   name: Linode
-image: HowtoCreateaGISApplicationusingFlaskStadiaMapsandMongoDB.png
+image: L_CreateGISapp.png
 title: "How to Create a GIS Application using Flask, Stadia Maps, and MongoDB"
 h1_title: "Create a GIS Application using Flask, Stadia Maps, and MongoDB"
 contributor:

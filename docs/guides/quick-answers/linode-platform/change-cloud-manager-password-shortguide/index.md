@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/change-cloud-manager-password-shortguide/']
+image: L_ChangeYourPassword.png
 ---
 
 If you want to change your password, or you forgot your password and need a new one, you can accomplish these tasks through the *Forgot Password* webpage. Here's how:
