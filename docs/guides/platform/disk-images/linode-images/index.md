@@ -57,6 +57,10 @@ Additional overall limits of the Images service are outlined within the [Limits]
 
 {{< content "upload-image-requirements-shortguide" >}}
 
+### Creating or Obtaining an Image File
+
+{{< content "create-an-image-file-shortguide" >}}
+
 ### Uploading an Image through the Cloud Manager
 
 {{< content "upload-image-shortguide" >}}

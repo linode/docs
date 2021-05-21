@@ -14,6 +14,10 @@ description: "How to upload an image with Linode Images."
 
 Additional overall limits of the Images service are outlined on the [Images Overview](/docs/products/tools/images/#limits) page.
 
-## Uploading an Image through the Cloud Manager
+## Creating or Obtaining an Image File
+
+{{< content "create-an-image-file-shortguide" >}}
+
+## Uploading an Image File through the Cloud Manager
 
 {{< content "upload-image-shortguide" >}}

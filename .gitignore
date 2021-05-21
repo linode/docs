@@ -45,4 +45,6 @@ hugo_stats.json
 
 redirects.conf
 
+.vscode/settings.json
+
 _vendor/github.com/linode/linode-docs-theme/content/typografy-test.md

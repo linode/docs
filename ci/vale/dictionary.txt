@@ -427,6 +427,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
+fauxton
 favicon
 fb4c
 fcgi
@@ -700,6 +701,7 @@ iredmail
 irssi
 isn
 iso
+isort
 isoformat
 isp
 issuewild
@@ -965,6 +967,7 @@ multicast
 multicloud
 multicraft
 multilib
+multiline
 multiport
 multisite
 multiuser
@@ -979,6 +982,7 @@ myhostname
 mynewdomain
 mypassword
 myproject
+mypy
 myserver
 mysql
 mysqli
@@ -1237,6 +1241,7 @@ py
 pyamqp
 pyenv
 pyinotify
+pylint
 pypa
 pypi
 pypiserver
@@ -1552,6 +1557,7 @@ tetris
 tf
 tfa
 tgz
+thanos
 thawte
 theano
 theming
