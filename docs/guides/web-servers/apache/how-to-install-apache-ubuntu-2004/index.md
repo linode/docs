@@ -32,7 +32,7 @@ The Apache HTTP Web Server — usually just called Apache — is one of the most
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system.
+1. Update your system:
 
         sudo apt update && sudo apt upgrade
 
@@ -206,7 +206,13 @@ This section walks you through setting up your own website using Apache. In doin
 
         sudo systemctl restart apache2
 
-### Using the Website
+1. Open port **80** on your system's firewall. UFW is the front end typically used to manage firewall rules on Ubuntu. You can use the following command to open port **80** with UFW:
+
+        sudo ufw allow http
+
+    Refer to our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide for more on how to use UFW for managing your firewall.
+
+### Launching the Website
 
 1. Give the website some content. Create a page for your website. The file should be named `index.html` and stored in your website's `DocumentRoot` directory:
 
