@@ -246,6 +246,13 @@ The following example uploads a setup script to a newly created Linode instance 
 resource "linode_instance" "example_instance" {
   # ...
 
+  connection {
+      type     = "ssh"
+      user     = "root"
+      password = var.root_pass
+      host     = self.ip_address
+  }
+
   provisioner "file" {
       source      = "setup_script.sh"
       destination = "/tmp/setup_script.sh"
@@ -259,6 +266,8 @@ resource "linode_instance" "example_instance" {
   }
 }
 {{< /file >}}
+
+When a provisioner is assigned, it should also include the addition of a [connection block](https://www.terraform.io/docs/language/resources/provisioners/connection.html) nested within the resource block to describe how terraform will connect to the remote resource.
 
 Most provisioners are declared inside of a resource declaration. When multiple provisioners are declared inside a resource, they are executed in the order they are listed. For a full list of [provisioners](https://www.terraform.io/docs/provisioners/index.html), review the official Terraform documentation.
 
