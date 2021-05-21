@@ -54,7 +54,7 @@ The postgres user should not be used for other purposes (e.g. connecting to othe
 
 1. Change the postgres user’s Linux password: `sudo passwd postgres`
 
-1. Issue the following commands to set a password for the postgres database user. Be sure to replace "newpassword" with a strong password and keep it in a secure place.
+1. Issue the following commands to set a password for the postgres database user. Be sure to replace `newpassword` with a strong password and keep it in a secure place.
 
          su - postgres
          psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword';"
@@ -81,7 +81,7 @@ mytestdb=#
 
 ### Create Tables
 
-This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the ables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](https://www.linode.com/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-database) section.
+This section contains examples that create a test database with an employee’s first and last name, assigning each a unique key. When creating the tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](https://www.linode.com/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#create-a-database) section.
 
 1.  Create a table called “employees” in the test database:
 
