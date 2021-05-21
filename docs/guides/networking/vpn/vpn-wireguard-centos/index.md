@@ -41,7 +41,7 @@ external_resources:
 
 ## What is WireGuard?
 
-[*WireGuard*](https://www.wireguard.com/)&#174; is a next-generation security-focused *Virtual Private Network (VPN)* which can easily be deployed on low-end devices, like Rasberry Pi, to high-end servers.
+[*WireGuard*](https://www.wireguard.com/)&#174; is a next-generation security-focused *Virtual Private Network (VPN)* which can easily be deployed on low-end devices, like Raspberry Pi, to high-end servers.
 
 WireGuard was written by top Linux developer Jason A. Donenfeld as a new approach to VPNs. Beloved by Linux founder Linus Torvalds, [WireGuard was merged into the Linux kernel 5.6](https://www.zdnet.com/article/linuxs-wireguard-vpn-is-here-and-ready-to-protect-you/) in March 2020.
 
