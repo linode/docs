@@ -938,6 +938,7 @@ mitigations
 mixin
 mixins
 mkdir
+mkpasswd
 mnesia
 mngtmpaddr
 moby

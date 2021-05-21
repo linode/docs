@@ -23,23 +23,23 @@ aliases: ['/applications/configuration-management/how-to-use-linode-packer-build
 
 [Packer](https://www.packer.io/) is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed. Packer can be used in conjunction with common configuration management tools like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
 
-Packer *templates* store the configuration parameters used for building an image. This standardizes the imaging building process and ensures that everyone using that template file will always create an idential image. For instance, this can help your team maintain an [immutable infrastructure](/docs/development/ci/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) pipeline.
+Packer *templates* store the configuration parameters used for building an image. This standardizes the imaging building process and ensures that everyone using that template file will always create an identical image. For instance, this can help your team maintain an [immutable infrastructure](/docs/development/ci/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) pipeline.
 
 ## The Linode Packer Builder
 
 In Packer's ecosystem, [builders](https://www.packer.io/docs/builders) are responsible for building a system and generating an image from that system. Packer has multiple different types of builders, with each one being used to create images for a specific platform.
 
-The [Linode builder](https://www.packer.io/docs/builders/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convient way to automatically create [Linode Images](/docs/products/tools/images/) on your acount that can be used for rapidly deploying new Linodes.
+The [Linode builder](https://www.packer.io/docs/builders/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
 
 ## Before You Begin
 
-This guide will walk you through the process of installing Packer, creating a  template file, building the image, and then deploying that image onto a new Linode. Going futher, it will also cover how to use the Ansible tool with Packer. Before you begin, review the following:
+This guide will walk you through the process of installing Packer, creating a  template file, building the image, and then deploying that image onto a new Linode. Going further, it will also cover how to use the Ansible tool with Packer. Before you begin, review the following:
 
 1. Ensure you have access to [cURL](https://en.wikipedia.org/wiki/CURL) on your computer.
 
 1. Generate a Linode API v4 access token with read/write permission for both *Linodes* and *Images*. You can follow the [Get an Access Token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
 
-1. *Optional:* Set a variable named `TOKEN` in your shell enviroment by running the following command. Replace *x* with your own API token.
+1. *Optional:* Set a variable named `TOKEN` in your shell environment by running the following command. Replace *x* with your own API token.
 
        export TOKEN=x
 
@@ -70,7 +70,7 @@ To install Packer on Mac, [Homebrew](https://brew.sh/) will be used. Run the fol
     sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
     sudo yum -y install packer
 
-### Verifing the Installation
+### Verifying the Installation
 
 Verify that Packer was successfully installed by running the command `packer --version`. This should output the version number for this installation of Packer. For reference, this guide was last tested using version 1.7.2.
 
@@ -122,7 +122,7 @@ A `variable` block contains a single user-defined variable along with any additi
 
 This example only contains one variable: `linode_api_token`. The value of this variable is intentionally left blank (`default = ""`). Instead of setting the variable within the template, it will be set through the command-line when running the `packer build` command: `packer build -var linode_api_token=x example.pkr.hcl`, where *x* is your API token.
 
-Learn more about Packer tempate variables on the [Variables](https://www.packer.io/docs/templates/hcl_templates/variables) page of Packer's documentation.
+Learn more about Packer template variables on the [Variables](https://www.packer.io/docs/templates/hcl_templates/variables) page of Packer's documentation.
 
 ### Source Block (the Linode Builder)
 
@@ -160,7 +160,7 @@ After the template file has been saved with your desired parameters, you're now 
 
 1. First, validate the template by running the `packer validate` command below. If you did not set TOKEN as a variable in your shell environment, replace *$TOKEN* with your own Linode API token. If successful, no errors will be given.
 
-        packer validate -var linode_api_token=$TOKEN example.pkr.hcl
+       packer validate -var linode_api_token=$TOKEN example.pkr.hcl
 
       {{< note >}}
   To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
@@ -168,7 +168,7 @@ After the template file has been saved with your desired parameters, you're now 
 
 1. Build the image by running the `packer build` command below. Just like in the last step, if you did not set TOKEN as a variable in your shell environment, replace *$TOKEN* with your own Linode API token. This process may take a few minutes to complete.
 
-        packer build -var linode_api_token=$TOKEN example.pkr.hcl
+       packer build -var linode_api_token=$TOKEN example.pkr.hcl
 
       The output of this command will outline each process that Packer goes through. Once finished, the last line will provide you with the ID for the new custom image.
 
@@ -182,9 +182,9 @@ Once the Packer build process completes, a new [Custom Image](/docs/products/too
 
       linode-cli linodes create --root_pass mypassword --region us-east --image linode/debian10
 
-- **Linode APIv4:** Use the Linode API to programatically create a new Linode by reviewing the documenation outlined under [API > Linode Istances > Linode Create](/docs/api/linode-instances/#linode-create). The following example curl command will deploy a 1GB Linode (Nanode) to the Newark data center. Ensure you replace any necessary parameters, including replacing `linode/debain10` with your Custom Image's ID and assigning your own `root_pass` and `label`.
+- **Linode APIv4:** Use the Linode API to programmatically create a new Linode by reviewing the documentation outlined under [API > Linode Instances > Linode Create](/docs/api/linode-instances/#linode-create). The following example curl command will deploy a 1GB Linode (Nanode) to the Newark data center. Ensure you replace any necessary parameters, including replacing `linode/debain10` with your Custom Image's ID and assigning your own `root_pass` and `label`.
 
-        curl -H "Content-Type: application/json" \
+      curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
           -X POST -d '{
             "image": "private/7550080",
