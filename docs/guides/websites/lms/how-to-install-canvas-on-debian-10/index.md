@@ -6,7 +6,7 @@ author:
 description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide provides instructions on how you can install Canvas on Debian 10.'
 og_description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide provides instructions on how you can install Canvas on Debian 10.'
 keywords: ['canvas','education','training','learning management system','lms','deploy on debian 10']
-tag: ['canvas', 'debian','apache','ssl','redis']
+tags: ['canvas', 'debian','apache','ssl','redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
