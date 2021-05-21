@@ -1,0 +1,74 @@
+<div class="flex justify-start">
+  {{ $iconDir := "media/images/product-tabs-icons" }}
+  {{ $root := false }}
+
+  {{ if .Params.tab_group_main.is_root }}
+    {{ $root = . }}
+  {{ else if .CurrentSection.Params.tab_group_main.is_root }}
+    {{ $root = .CurrentSection }}
+  {{ else if .CurrentSection.Parent.Params.tab_group_main.is_root }}
+    {{ $root = .CurrentSection.Parent }}
+  {{ end }}
+
+  {{ if $root }}
+    {{ $pages := where ($root.Pages) ".Params.tab_group_main" "!=" nil | append $root  }}
+    {{ $pages = $pages.ByParam "tab_group_main.weight" }}
+    {{ $items := slice }}
+    {{ $selectedPage := false }}
+    {{ range $pages }}
+      {{ if eq . $}}
+        {{ $selectedPage = . }}
+      {{ end }}
+      {{ if and (not $selectedPage) (eq . $.Parent) }}
+        {{ $selectedPage = . }}
+      {{ end }}
+    {{ end }}
+
+    {{ $selectedItem := false }}
+    {{ range $pages }}
+      {{ $tabData := .Params.tab_group_main }}
+      {{ $title := $tabData.title | default .Title }}
+      {{ $selected := eq . $selectedPage }}
+      {{ $href := .RelPermalink }}
+      {{ $item := dict  "title" $title "href" $href "selected" $selected }}
+      {{ $items = $items | append $item }}
+      {{ if $selected }}
+        {{ $selectedItem = $item }}
+      {{ end }}
+    {{ end }}
+
+    <div class="md:hidden pb-4">
+      {{ if $selectedItem }}
+        {{ partial "components/select.html" (dict "values" $items "selected" $selectedItem ) }}
+      {{ end }}
+    </div>
+    <div class="hidden md:block">
+      <nav class="flex">
+        {{ range $i, $e := $items }}
+          {{ $activeClasses := "border-brand border-b-2" }}
+          {{ $inactiveClasses := "border-transparent border-b-2" }}
+          <a href="{{ .href }}"
+                class="{{ if .selected }}{{ $activeClasses }}{{ else }}{{ $inactiveClasses }}{{ end }} pb-2 truncate text-center leading-5 text-lg text-titlecolor letter-tight font-semibold focus:outline-none"
+                {{ if .selected }}aria-current="page" {{ end }}>
+            <div class="flex flex-col items-center">
+              <div class="pb-2">
+                {{ $iconName := $e.title | urlize }}
+                {{ $iconPath := printf "%s/%s.svg" $iconDir $iconName }}
+                {{ if .selected }}
+                  {{ $iconPath = printf "%s/%s-active.svg" $iconDir $iconName }}
+                {{ end }}
+                <img src="{{ $iconPath | relURL }}" alt="Icon" style="width: 36px; height: 36px;">
+              </div>
+              <div class="leading-6">
+                {{ .title }}
+              </div>
+            </div>
+          </a>
+          {{ if lt (add $i 1) (len $items) }}
+            <span class="pl-6"></span>
+          {{ end }}
+        {{ end }}
+      </nav>
+    </div>
+  {{ end }}
+</div>

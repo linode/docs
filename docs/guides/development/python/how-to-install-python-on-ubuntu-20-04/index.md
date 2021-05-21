@@ -1,7 +1,7 @@
 ---
 slug: how-to-install-python-on-ubuntu-20-04
 author:
-  name: Linode Community
+  name: Angel Guarisma
   email: docs@linode.com
 description: 'Python 3 is installed by default on Ubuntu 20.04. This guide shows how to invoke Python 3 on Ubuntu 20.04 and how to install the python-is-python3 package.'
 og_description: 'Python 3 is installed by default on Ubuntu 20.04. This guide shows how to invoke Python 3 on Ubuntu 20.04 and how to install the python-is-python3 package.'
@@ -21,6 +21,7 @@ relations:
         key: how-to-install-python
         keywords:
             - distribution: Ubuntu 20.04
+tags: ["python", "ubuntu"]
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction. This abstraction makes writing and reading the code easier than other languages.

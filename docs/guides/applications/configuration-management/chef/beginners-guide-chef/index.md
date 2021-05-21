@@ -17,11 +17,11 @@ external_resources:
  - '[Chef](http://www.chef.io)'
  - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/)'
  - '[Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/)'
-
 tags: ["automation"]
 ---
 
-*Chef* is a declarative configuration management and automation platform used to translate infrastructure into code. This enables a process with better testing, efficient and predictable deployments, centralized versioning, and reproducible environments across all servers.
+
+*Chef* is a declarative configuration management and automation platform used to translate infrastructure into code. This enables a development and deployment process with better testing, efficient and predictable deployments, centralized versioning, and reproducible environments across all servers.
 
 ![Chef for beginners](a_beginners_guide_to_chef_smg.jpg)
 
@@ -39,32 +39,32 @@ After reading this guide, if you wish to further explore implementing Chef, see 
 
 ## The Chef Server
 
-The Chef server provides a communication pathway between the workstations where the infrastructure coding takes place, and the nodes configurations deployed by the Chef client. All configuration files, cookbooks, metadata, and other information are created on workstations and stored on the Chef server. The Chef server also keeps a record of the state of all nodes at the time of the last [chef-client](#chef-client) run. 
+The Chef server provides a communication pathway between the workstations where the infrastructure coding takes place, and the nodes that are configured by those workstations. All configuration files, cookbooks, metadata, and other information are created on workstations and stored on the Chef server. The Chef server also keeps a record of the state of all nodes at the time of the last [chef-client](#chef-client) run.
 
 A workstation communicates with the Chef server using [*Knife*](/docs/applications/configuration-management/beginners-guide-chef/#knife) and Chef command-line tools, while nodes communicate with the Chef server using the [Chef client](/docs/applications/configuration-management/beginners-guide-chef/#chef-client).
 
-Any changes made to the infrastructure code must pass through the Chef server to be applied to nodes. Prior to accepting or pushing changes, the Chef server authenticates all communication through the REST API using public key encryption.
+Any changes made to your infrastructure code must pass through the Chef server to be applied to nodes. Prior to accepting or pushing changes, the Chef server authenticates all communication via its REST API using public key encryption.
 
 ### Components of a Chef Server
-Chef server is made up of several components to help efficiently communicate with workstations and nodes. Each Chef server has an NGINX front-end load balancer to route all requests to the API, a PostgreSQL database, an Apache Solr instance (wrapped by chef-solr) for indexing and search, and a web interface (known as Chef manage) for common Chef server management tasks. All these components contribute to the ability of Chef Server to handle requests for several thousands of nodes and can make Chef server a resource-heavy application, so the minimum system requirements for a Chef server are a Linode with 8 GB of RAM and four CPU cores. For more specifications, see the [Chef System Requirements](https://docs.chef.io/chef_system_requirements.html) documentation page.
+Chef Server is made up of several components to help efficiently communicate with workstations and nodes. Each Chef server has an NGINX front-end load balancer to route all requests to the API, a PostgreSQL database, an Apache Solr instance (wrapped by chef-solr) for indexing and search, and an enterprise web interface (known as Chef automate) for common Chef server management tasks and aggregated data analytics. All these components contribute to the Chef server's ability to handle requests for several thousands of nodes and can make Chef server a resource-heavy application, so a Chef server's minimum system requirements are a Linode with 8 GB of RAM and four CPU cores. For more specifications, see the [Chef System Requirements](https://docs.chef.io/chef_system_requirements.html) documentation page.
 
 ### Bookshelf
 
-Chef server uses a *Bookshelf* to store its cookbooks (and related files and templates). The Bookshelf is a versioned repository (generally located at `/var/opt/opscode/bookshelf`; full root access is necessary to access this location). When a cookbook is uploaded to the Chef server, the new version is compared to the one already stored. If there are changes, the new version is stored. The Chef server only stores one copy of a file or template, meaning if resources are shared between cookbooks and cookbook versions, they are not stored multiple times.
+Chef Server uses a *Bookshelf* to store its cookbooks (and related files and templates). The Bookshelf is a versioned repository (generally located at `/var/opt/opscode/bookshelf`; full root access is necessary for access). When a cookbook is uploaded to the Chef server, the new version is compared to the one already stored. If there are changes, the new version is stored. The Chef server only stores one copy of a file or template, meaning if resources are shared between cookbooks and cookbook versions, they will not be stored multiple times.
 
 ## The Chef Workstation
 
-A Chef workstation is where a user creates, tests, and maintains cookbooks and pushes policies to the Chef server and later pulled by the Chef nodes. The workstation functionality is available by downloading the [Chef Workstation package](https://downloads.chef.io/chef-workstation/), which provides the chef and knife command-line tools, the testing tools (Test Kitchen, ChefSpec, Cookstyle, and Foodcritic), and [InSpec](https://www.chef.io/inspec/) a tool for writing automated tests for compliance, security, and policy requirements. Additionally, *Berkshelf*, the dependency manager for Chef cookbooks, is installed.
+A Chef workstation is where a user creates, tests, and maintains cookbooks and policies pushed to the Chef server and pulled by the Chef nodes. The workstation functionality is available by downloading the [Chef Workstation package](https://downloads.chef.io/chef-workstation/), which provides the chef and knife command-line tools, the testing tools (Test Kitchen, ChefSpec, Cookstyle, and Foodcritic), and [InSpec](https://www.chef.io/inspec/). Inspec is a tool for writing automated tests for compliance, security, and policy requirements. Additionally, *Berkshelf*, the dependency manager for Chef cookbooks, is installed.
 
-The Chef workstation can be installed on virtual servers or personal computers. A Chef workstation interacts with a single Chef server, and most work is done in the `chef-repo` directory located on the workstation.
+The Chef workstation can be installed on virtual servers or personal computers. A Chef workstation will interact with a single Chef server, and most work is done in the `chef-repo` directory located on the workstation.
 
 Cookbooks created on a Chef workstation can be used privately by one organization or uploaded to the [Chef Supermarket](https://supermarket.chef.io/) for others to use. Similarly, a Chef workstations can download cookbooks found in the Supermarket.
 
-See the [official documentation](https://docs.chef.io/workstation) for more in-depth information on Chef Workstation and its tools.
+See Chef's [official documentation](https://docs.chef.io/workstation) for more in-depth information on Chef Workstation and its tools.
 
 ### chef-repo
 
-A Chef workstation's `chef-repo` directory is where cookbooks are authored and maintained. Any supporting resources (such as roles, data bags, and environments) are also stored there. The `chef-repo` should be version-controlled with a remote version control system such as Git. Chef can communicate with the server from the `chef-repo` and push any changes using `knife` commands.
+A Chef workstation's `chef-repo` directory is where cookbooks are authored and maintained. Any supporting resources (such as roles, data bags, and environments) are also stored there. The `chef-repo` should be version-controlled with a remote version control system (such as Git). Chef can communicate with the server from the `chef-repo` and push any changes via the use of `knife` commands.
 
 You can generate a Chef repository using the following command: `chef generate repo repo-name`.
 
@@ -97,14 +97,14 @@ cookbook_path [ '~/chef-repo/cookbooks' ]
 
 The default `knife.rb` file is defined with the following properties:
 
--	**log_level:** The amount of logging to be stored in the log file. The default value, `:info`, notes that any informational messages are logged. Other values include `:debug`, `:warn`, `:error`, and `:fatal`.
--	**log_location:** The location of the log file. The default value, `STOUT` is for *standard output logging*. If set to another value then standard output logging is performed.
+-	**log_level:** The amount of logging to be stored in the log file. The default value, `:info`, notes that any informational messages will be logged. Other values include `:debug`, `:warn`, `:error`, and `:fatal`.
+-	**log_location:** The location of the log file. The default value, `STOUT` is for *standard output logging*. If set to another value then standard output logging will still be performed.
 -	**node_name:**	The username of the person using the workstation. This user requires a valid authorization key located on the workstation.
 -	**client_key:** The location of the user's authorization key.
 -	**validation_client_name:** The name for the server validation key determining whether a node is registered with the Chef server. These values must match during a chef-client run.
 -	**validation_key:** The path to your organization's validation key.
 -	**chef_server_url:** The URL of the Chef server, with `shortname` being the defined shortname of your organization (this can also be an IP address). `/organizations/shortname` must be included in the URL.
--	**syntax_check_cache_path:** The location `knife` stores information about files checked for appropriate Ruby syntax.
+-	**syntax_check_cache_path:** The location in which `knife` stores information about files checked for appropriate Ruby syntax.
 -	**cookbook_path:** The path to the cookbook directory.
 
 Knife allows for a variety of other useful operations on the Chef server and nodes. View Chef's [Knife](https://docs.chef.io/knife.html) documentation for a full list of all available commands.
@@ -123,7 +123,7 @@ Nodes are kept up-to-date through chef-client, which runs a convergence between 
 
 ### chef-client
 
- On a node, chef-client checks the current configuration of the node against the recipes and policies stored on the Chef server and brings the node up to date. The process begins with the chef-client checking the node's [run list](#run-lists), loading the required cookbooks, then checking and syncing the cookbooks with the current configuration of the node.
+On a node, chef-client checks the node's current configuration against the recipes and policies stored on the Chef server and brings the node up to date. The process begins with the chef-client checking the node's [run list](#run-lists), loading the required cookbooks, then checking and syncing the cookbooks with the current configuration of the node.
 
 The chef-client must be run with elevated privileges to configure the node correctly. It should run periodically to ensure that the server is always up to date (usually with a cron job or by setting up the chef-client to run as a service).
 
@@ -135,11 +135,11 @@ Run lists define which [recipes](/docs/applications/configuration-management/beg
 
 [Ohai](https://docs.chef.io/ohai/) collects system configuration data to be used in cookbooks and is required to be present on every Chef node. It is installed as part of the bootstrap process.
 
-It gathers data about network and memory usage, CPU data, kernel data, hostnames, FQDNs, and other automatic attributes. This data helps the Chef client determine the state of the node prior to applying that node's run list.
+Ohai gathers data about network and memory usage, CPU data, kernel data, hostnames, FQDNs, and other automatic attributes. This data helps the Chef client determine the state of the node prior to applying that node's run list.
 
 ## Environments
 
-Chef environments mimic real-life workflow, allowing nodes to be organized into different groups that define the role the node plays in the fleet. This allows for users to combine environments and versioned cookbooks to have different attributes for different nodes. For example, if testing a shopping cart, you may not want to test any changes on the live website, but with a development set of nodes.
+Chef environments mimic a real-life workflow, allowing nodes to be organized into different groups that define the role the node plays in the fleet. This allows for users to combine environments and versioned cookbooks to have different attributes for different nodes. For example, if testing a shopping cart, you may not want to test any changes on the live website, but with a development set of nodes.
 
 Environments are defined in `chef-repo/environments` and saved as Ruby or JSON files.
 
@@ -174,19 +174,19 @@ As a JSON:
 {{< /file >}}
 
 
-All nodes are set to the "default" environment upon bootstrap. To change what environment a node is in, edit the `/etc/chef/client.rb` file on the nodes.
+All nodes are set to the "default" environment upon bootstrap. To change what environment a node is in, edit `/etc/chef/client.rb` on the nodes.
 
 ## Cookbooks
 
 Cookbooks are the basis for managing the configurations on any node. Cookbooks contain values and information about the *desired state* of a node. Using the cookbook, the Chef server and Chef client ensure the defined state is achieved.
 
-Cookbooks are comprised of recipes, metadata,  attributes, resources, templates, libraries, and anything else used to create a functioning system (attributes and recipes being the two core parts). Components of a cookbook should be modular, with small and related recipes.
+Cookbooks are comprised of recipes, metadata,  attributes, resources, templates, libraries, and anything else used to create a functioning system (attributes and recipes being the two core parts). Components of a cookbook should be modular, with recipes that are small and related.
 
 Cookbooks should be version controlled. Versions can help when using different Chef environments, allowing distribution and collaboration with other team members.
 
 ### Recipes
 
-Recipes are written in Ruby and contain information about everything that needs to be run, changed, or created on a node. Recipes work as a collection of *resources* determining the configuration or policy of a node (with resources being a configuration element of the recipe). For a node to run a recipe, it must be on that node's run list.
+Recipes are written in Ruby and contain information about everything needing to be run, changed, or created on a node. Recipes work as a collection of *resources* determining the configuration or policy of a node (with resources being a configuration element of the recipe). For a node to run a recipe, it must be on that node's run list.
 
 The example recipe below is part of Chef's [Vim cookbook](https://github.com/chef-cookbooks/vim). It dictates the required Vim package based on a node's Linux distribution:
 
@@ -207,15 +207,15 @@ package node['vim']['extra_packages'] unless node['vim']['extra_packages'].empty
 
 ### Attributes
 
-Attributes define specific values about a node and its configuration, are often used in conjunction with templates and recipes to define settings, and are applied using the Chef client's attribute list. The Chef client can receive attributes from nodes, attribute files, recipes, environments, and roles. To learn more about attributes, refer to [Chef's documentation](https://docs.chef.io/attributes.html).
+Attributes define specific values about a node and its configuration. Attributes are often used in conjunction with templates and recipes to define settings, and are applied via the Chef client's attribute list. The Chef client can receive attributes from nodes, attribute files, recipes, environments, and roles. To learn more about attributes, refer to [Chef's documentation](https://docs.chef.io/attributes.html).
 
 ### Files
 
-These are static files uploaded to nodes. Files can be configuration and set-up, scripts, website, and others. For example, you may have a recipe that uses an `index.php` file. You can use a `cookbook_file` resource block within a recipe to create the file on a node. All static files should be stored in a cookbook’s “files” directory.
+In chef, `files` refer to the static files that are uploaded to nodes. Files can be configuration and set-up files, scripts, website files, and more. For example, you may have a recipe that uses an `index.php` file. You can use a `cookbook_file` resource block within a recipe to create the file on a node. All static files should be stored in a cookbook’s “files” directory.
 
 ### Libraries
 
-Although Chef comes with libraries built-in, additional libraries can be defined. Libraries allow you to write Ruby code to include in a cookbook. Libraries are a convenient way to include helper code for the existing recipes. Libraries provide a powerful way to extend the resources created by the recipes.
+Although Chef comes with libraries built-in, additional libraries can be defined. Libraries allow you to write Ruby code to include in a cookbook. Libraries are a convenient way to include helper code for your existing recipes. Libraries provide a powerful way to extend the resources created by your recipes.
 
 ### Resources
 
@@ -223,7 +223,7 @@ Resources are written in Ruby and defined in recipe files. Resources must contai
 
 ### Templates
 
-Templates are embedded Ruby files (`.erb`) used to dynamically create static text files. To use a template within a Chef cookbook, a template resource must be declared in a recipe and include a corresponding `.erb` file in a `template` subdirectory. The template resource can contain variables used by the template to dynamically provide those values based on a particular context in a node.
+Templates are embedded Ruby files (`.erb`) used to dynamically create static text files. To use a template within a Chef cookbook, a template resource must be declared in a recipe and include a corresponding `.erb` file in a `template` subdirectory. Your template resource can contain variables used by the template to dynamically provide those values based on a node's particular context.
 
 ## Chef Beginners' Q&A
 
@@ -233,8 +233,8 @@ In addition to automating deployments, Chef allows for continuous delivery utili
 
 ### What are the disadvantages to Chef?
 
-Historically, Chef's documentation has been lacking (but that has changed). Chef users who aren't familiar with coding (specifically Ruby) may encounter a steep learning curve.
+Chef users who aren't familiar with coding (specifically Ruby) may encounter a steep learning curve.
 
 ### Where can I learn about Chef in-depth?
 
-In-depth (and free) Chef training can be found at [learn.chef.io](https://learn.chef.io/).
+In-depth (and free) Chef training can be found on Chef's education page at [learn.chef.io](https://learn.chef.io).

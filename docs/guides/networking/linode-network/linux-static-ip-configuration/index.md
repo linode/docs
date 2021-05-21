@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2014-07-20
 title: Linux Static IP Configuration
+h1_title: Linux Static IP Configuration
 tags: ["networking","linode platform"]
 ---
 
@@ -102,7 +103,7 @@ Gateway=fe80::1
 Address=2001:db8:2000:aff0::2/64
 
 # Add a second IPv6 address.
-Address=2001:db8:2000:aff0::3/32
+Address=2001:db8:2000:aff0::3/64
 {{< /file >}}
 
 {{< note >}}
@@ -209,7 +210,7 @@ IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64"
 
 ### Debian
 
-Debian 7 through 9 all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolve.conf` because nothing will overwrite your changes if you reboot or restart networking services.
+Debian 7 and above all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolv.conf` because nothing will overwrite your changes if you reboot or restart networking services.
 
 Though systemd-networkd and systemd-resolved are both present in Debian 8 and 9, they're not enabled. If you decide to enable these systemd services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch and Container Linux](/docs/guides/linux-static-ip-configuration/#arch-coreos-container-linux). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 
@@ -236,7 +237,7 @@ iface eth0 inet6 static
 
 # Add a second IPv6 address.
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32
+  address 2001:db8:2000:aff0::2/64
 {{< /file >}}
 
 1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
@@ -265,8 +266,8 @@ config_eth0="198.51.100.5/24
 
 # IPv6 Addresses
 config_eth0="2001:db8:2000:aff0::1/64
-2001:db8:2000:aff0::2/32
-2001:db8:2000:aff0::3/32"
+2001:db8:2000:aff0::2/64
+2001:db8:2000:aff0::3/64"
 
 # DNS resolvers. Can mix IPv4 and IPv6.
 dns_servers_eth0="203.0.113.1
@@ -397,7 +398,7 @@ iface eth0 inet6 static
 
 # Add a second IPv6 address.
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32
+  address 2001:db8:2000:aff0::2/64
 {{< /file >}}
 
 

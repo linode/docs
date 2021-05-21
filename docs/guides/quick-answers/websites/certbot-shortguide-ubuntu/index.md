@@ -17,11 +17,8 @@ title: 'Install Certbot for TLS on Ubuntu'
 
 1. Install the Certbot and web server-specific packages, then run Certbot:
 
-        sudo apt-get update
-        sudo apt-get install software-properties-common
-        sudo add-apt-repository ppa:certbot/certbot
-        sudo apt-get update
-        sudo apt-get install python-certbot-nginx
+        sudo apt update
+        sudo apt install certbot python3-certbot-nginx
         sudo certbot --nginx
 
 1. Certbot will ask for information about the site. The responses will be saved as part of the certificate:

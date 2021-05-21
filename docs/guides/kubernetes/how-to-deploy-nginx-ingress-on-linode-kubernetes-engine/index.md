@@ -9,6 +9,7 @@ keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 
 tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
+modified: 2021-05-13
 modified_by:
   name: Linode
 title: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
@@ -172,7 +173,7 @@ Next, install the NGINX Ingress Controller:
 
 Once installed, a LoadBalancer Service will be deployed, which creates a NodeBalancer, and an external IP address will be available. To find this external IP address, list your cluster's Services with following command and note the IP address for the `nginx-ingress-controller` in the output under `EXTERNAL-IP`. You will need this IP address for the next step.
 
-       kubectl get svc -A -owide
+    kubectl get svc -A -owide
 
 {{< output >}}
 NAMESPACE     NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)                      AGE    SELECTOR
@@ -193,7 +194,7 @@ kube-system   kube-dns                        ClusterIP      10.128.0.10      <n
 Once your Ingress Controller is installed and DNS records have been created pointing to your NodeBalancer, you need to create a manifest file to create a new Ingress resource. This resource will define how traffic coming from the LoadBalancer service we deployed earlier is handled. In this case, NGINX will accept these connections over port 80, diverting traffic to both of our services via their `hostname`, or domain names:
 
   {{< file "my-new-ingress.yaml" yaml >}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: my-new-ingress
@@ -204,15 +205,23 @@ spec:
   - host: blog.example.com
     http:
       paths:
-      - backend:
-          serviceName: hello-one
-          servicePort: 80
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hello-one
+            port:
+              number: 80
   - host: shop.example.com
     http:
       paths:
-      - backend:
-          serviceName: hello-two
-          servicePort: 80
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hello-two
+            port:
+              number: 80
 {{< /file >}}
 
 Next, create your Ingress using the following command:
@@ -233,11 +242,11 @@ If you would rather not continue using the cluster you just created, review the 
 
 - To remove the NodeBalancer you created, all you need to do is delete the underlying Service. From your workstation:
 
-        kubectl delete service nginx-ingress-controller
+      kubectl delete service nginx-ingress-controller
 
     Alternatively, you can use the manifest file you created to delete the Service. From your workstation:
 
-        kubectl delete -f my-new-ingress.yaml
+      kubectl delete -f my-new-ingress.yaml
 
 -   To remove the LKE Cluster and the associated nodes from your account, navigate to the [Linode Cloud Manager](https://cloud.linode.com):
 

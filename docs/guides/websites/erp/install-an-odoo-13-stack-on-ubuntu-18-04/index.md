@@ -3,9 +3,10 @@ slug: install-an-odoo-13-stack-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Odoo is an open-source suite of over 10,000 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
-og_description: 'Odoo is an open-source suite of over 10,000 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
+description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
+og_description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
 keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
+tags: ["debian", "postgresql", "database", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-17
 modified: 2020-09-17
@@ -26,6 +27,11 @@ external_resources:
   - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/)'
   - '[Using Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+relations:
+    platform:
+        key: install-an-odoo-13-stack
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ## What is Odoo?

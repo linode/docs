@@ -27,6 +27,8 @@ tab_group_main:
 
 - [Linode Managed and CloudFlare](https://www.linode.com/community/questions/19998/linode-managed-and-cloudflare)
 
+- [How do I access cPanel](https://www.linode.com/community/questions/19072/how-do-i-access-cpanel-one-click-app)
+
 Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=managed).
 
 ## Customer Stories

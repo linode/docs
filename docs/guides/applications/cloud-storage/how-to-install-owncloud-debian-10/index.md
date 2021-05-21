@@ -10,11 +10,16 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-29
 modified_by:
   name: Linode
-title: "Install Owncloud Debian 10"
-h1_title: "How to Install Owncloud Debian 10"
+title: "How to Install ownCloud on Debian 10"
+h1_title: "How to Install ownCloud on Debian 10"
 contributor:
   name: Jack Wallen
 tags: ["debian"]
+relations:
+    platform:
+        key: how-to-install-owncloud
+        keywords:
+            - distribution: Debian 10
 ---
 
 ## What is ownCloud?
@@ -88,7 +93,7 @@ ownCloud relies on a database for storing data. Instead of MySQL, this installat
 
 1. Set a MariaDB admin password and secure the installation. This is accomplished using a tool borrowed from MySQL:
 
-        sudo mysql_secure_database
+        sudo mysql_secure_installation
 
 
     When prompted, hit **Enter** on your keyboard (as there is no current MariaDB admin password). Answer **y** (as in "yes") to set the admin password, and type and verify a new secure password for the MariaDB admin user. Finally, the database setup prompts you to answer four questions. Answer **y** (as in "yes") to each of these questions.
@@ -199,11 +204,7 @@ This section covers the web-based portion of the installation.
 
 1. Open a web browser and navigate to your site's domain, if it has been configured to use one `http://example.com/owncloud`. If you configured Apache to point to your server's IP address, navigate to `http://192.0.2.0/owncloud` and replace the example IP address with your own. You should see the ownCloud web-based installer.
 
-    ![The ownCloud web-based installer](ownCloud_Debian_001.jpeg "The ownCloud web-based installer")
-
 1. Type a username and password for the admin user; click the `Storage & Database` drop-down; and then click `MySQL/MariaDB`.
-
-    ![Selecting the correct database to use for the ownCloud installation](ownCloud_Debian_002.jpeg "Selecting the correct database to use for the ownCloud installation.")
 
 1. The database information section is now available. Enter the following information:
 

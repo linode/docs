@@ -33,6 +33,7 @@ amd64
 ananke
 anonymize
 anonymizing
+ansi
 ansible
 antispam
 ap
@@ -52,6 +53,7 @@ arping
 askbot
 aske
 async
+asynchrony
 authdaemonrc
 authlib
 authmodulelist
@@ -118,6 +120,8 @@ blocklists
 blockwise
 bluehost
 bookinfo
+boolean
+booleans
 boolstyle
 boonex
 bootable
@@ -259,8 +263,10 @@ ctx
 cuda
 cutover
 cyberduck
+cyberpanel
 cyg
 cygwin
+cyclomatic
 cz
 daemonization
 daemonize
@@ -272,6 +278,7 @@ dahdi
 databags
 datacenter
 datadir
+Datadog
 dataflow
 datagram
 dataset
@@ -377,6 +384,7 @@ elasticsearch
 elisp
 elgg
 elpaso
+emacs
 email2email
 emojivoto
 ender
@@ -419,6 +427,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
+fauxton
 favicon
 fb4c
 fcgi
@@ -467,9 +476,11 @@ fmt
 fn
 fpm
 fragging
+framebuffer
 frakti
 framesets
 freedns
+freeipa
 freshclam
 friendster
 frontend
@@ -566,6 +577,7 @@ hardcoded
 hardcopy
 hardlimit
 hashmark
+hashicorp
 hasn
 hba
 hd0
@@ -587,6 +599,9 @@ host1
 host2
 hostname
 hostnames
+hotlink
+hotlinked
+hotlinking
 hotspots
 howto
 howtoforge
@@ -606,6 +621,7 @@ https
 hulu
 hvc0
 hybla
+hypercorn
 hyperefficient
 hyperparameter
 hypervisor
@@ -645,8 +661,10 @@ img
 immutant
 impor
 incentivized
+inclusivity
 inet
 inet6
+infographic
 ingressgateway
 ini
 initializer
@@ -661,12 +679,15 @@ interdomain
 interruptible
 introducer
 introducers
+io
 iodef
 iotop
 ip
 ip4
 ip6
-ip6tables
+ip6table
+ipa
+ipaserver
 ipchains
 ipset
 ipsets
@@ -680,6 +701,7 @@ iredmail
 irssi
 isn
 iso
+isort
 isoformat
 isp
 issuewild
@@ -707,6 +729,7 @@ journald
 journaled
 journaling
 jpg
+jpetazzo
 jre
 js
 json
@@ -750,6 +773,7 @@ kube
 kubeadm
 kubeconfig
 kubectl
+kubectx
 kubeflow
 kubelet
 kubelets
@@ -761,6 +785,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+libmodsecurity
 livigno
 lbmethod
 lda
@@ -784,6 +809,7 @@ libracy
 libsasl2
 libyang
 libuv
+libvirt
 lifecycle
 lighthttpd
 lighttpd
@@ -794,6 +820,7 @@ linkerd
 linode
 linodego
 linodes
+linter
 lish
 listdir
 listserv
@@ -882,6 +909,8 @@ memcrashed
 menuentry
 mesos
 metabase
+metacharacter
+metacharacters
 metacity
 metapackage
 metaparameters
@@ -919,6 +948,7 @@ modsecurity
 mongodb
 mongoimport
 monit
+monitorix
 moolenaar
 motd
 mountpoint
@@ -951,6 +981,7 @@ myhostname
 mynewdomain
 mypassword
 myproject
+mypy
 myserver
 mysql
 mysqli
@@ -983,10 +1014,12 @@ netblocks
 netboot
 netcat
 netconfig
+netdata
 netdev
 netfilter
 netflow
 netfs
+nethogs
 netid
 netifrc
 netlify
@@ -1047,6 +1080,7 @@ numpy
 nvidia
 nvim
 nvm
+oauth
 octopress
 odoo
 oftc
@@ -1056,6 +1090,7 @@ oldstable
 oldfashioned
 oneof
 ons
+opcache
 opencart
 opendkim
 openfire
@@ -1080,6 +1115,7 @@ overengineer
 overwatch
 ovpn
 owadb
+owncast
 owncloud
 pacman
 paas
@@ -1091,6 +1127,7 @@ parameterizing
 paramiko
 parallelization
 params
+parasoft
 paravirt
 paravirtualization
 paravirtualized
@@ -1113,6 +1150,7 @@ percona
 performant
 permalink
 permalinks
+Petazzoni
 pflogsumm
 pgpass
 pharmer
@@ -1168,6 +1206,8 @@ preprocessors
 prerotate
 prerouting
 prestashop
+prettifier
+prettifiers
 Printf
 pritunl
 procfile
@@ -1200,6 +1240,7 @@ py
 pyamqp
 pyenv
 pyinotify
+pylint
 pypa
 pypi
 pypiserver
@@ -1266,6 +1307,7 @@ respawn
 resque
 restapi
 restic
+restreaming
 retargetly
 retpoline
 retrans
@@ -1316,6 +1358,7 @@ s3cret
 saas
 sakila
 salesforce
+sar
 sasl
 sasl2
 saslauth
@@ -1465,7 +1508,9 @@ sudoers
 suhosin
 suid
 sukharev
+superset
 supervisord
+supervisorctl
 surbma
 suse
 swappable
@@ -1484,6 +1529,7 @@ sys
 sysconfig
 sysctl
 syslog
+sysstat
 systemctl
 systemd
 systemname
@@ -1510,6 +1556,7 @@ tetris
 tf
 tfa
 tgz
+thanos
 thawte
 theano
 theming
@@ -1540,6 +1587,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolset
 traceroute
 trackbar
 traefik
@@ -1586,6 +1634,7 @@ unencrypted
 unexported
 unformatted
 unicast
+unicode
 uninvoiced
 uniq
 unmanaged
@@ -1632,6 +1681,7 @@ v2
 v4
 v6
 vagrantfile
+valheim
 validator
 variadic
 varnishlog
@@ -1654,6 +1704,8 @@ virtualhost
 virtualizations
 virtualized
 virtualmin
+vlan
+vlans
 vlogger
 vmail
 vmem
@@ -1664,6 +1716,7 @@ vset
 vswap
 vue
 vuejs
+vvv
 vz
 vznetaddbr
 walkthrough
