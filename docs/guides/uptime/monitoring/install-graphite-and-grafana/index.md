@@ -29,7 +29,7 @@ This guide uses Docker Compose to run the official Grafana and Graphite containe
 
 Graphite has a built-in Composer for the user to [view metrics visually](https://graphiteapp.org/quick-start-guides/graphing-metrics.html) and also offers a rich [render API](https://graphite.readthedocs.io/en/latest/render_api.html). That being said, Graphite's built-in visualization is rudimentary, and the developers suggest Grafana for a "more modern UI," that is "another great way to interact with Graphite data and it offers many more visualization types than the native Composer" (see the bottom of the page at <https://graphiteapp.org/quick-start-guides/graphing-metrics.html>).
 
-## Installating Graphite and Grafana
+## Installing Graphite and Grafana
 
 Both Docker and Docker Compose are necessary to complete this guide.
 
