@@ -15,7 +15,6 @@ title: "Getting Started with NodeJS SQLite"
 h1_title: "How to Get Started with NodeJS and SQLite"
 contributor:
   name: James Turner
-  link:
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
