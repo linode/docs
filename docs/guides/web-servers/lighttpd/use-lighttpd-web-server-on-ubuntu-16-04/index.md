@@ -3,7 +3,7 @@ slug: use-lighttpd-web-server-on-ubuntu-16-04
 author:
   name: Dave Messina
   email: docs@linode.com
-description: 'Use lighttpd to Host Multiple Websites on Ubuntu 16.04 (Xenial Xerus)'
+description: 'Learn how to install and use Lighttpd web server on Ubuntu 16.04 (Xenial Xerus)'
 keywords: ["lighttpd", "web server", "web hosting"]
 aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
 tags: ["web server","ubuntu"]
@@ -47,7 +47,7 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups guide](/docs/tools-reference/linux-users-and-groups/).
 {{< /note >}}
 
-## Install Lighttpd
+## How To Install Lighttpd Web Server On Ubuntu 16.04
 
 Install the server from the Ubuntu package repository:
 
@@ -59,7 +59,7 @@ Once the server is installed, make sure that it's running and is enabled. Visit 
 -   By default, the "DocumentRoot" (where all HTML files are stored) is located in the `/var/www` directory. You'll be able to configure this later.
 -   Ubuntu provides helper scripts to enable and disable server modules without directly editing the config file: `lighty-enable-mod` and `lighty-disable-mod`.
 
-## Configure Lighttpd
+## Configure Lighttpd Web Server
 
 The main lighttpd configuration file is located at `/etc/lighttpd/lighttpd.conf`. This file provides a list of server modules to be loaded and allows you to change global settings for the web server.
 
@@ -268,8 +268,95 @@ To map more than one file extension to a single FastCGI handler, add the followi
 {{< file "/etc/lighttpd/conf-enabled/15-fastcgi-php.conf" lighty >}}
 fastcgi.map-extensions = ( ".[ALT-EXTENSION]" => ".[EXTENSION]" )
 
-{{< /file >}}
+{{< /file >}}/guides/use-lighttpd-web-server-on-ubuntu-16-04/
 
+## How To Encrypt Lighttpd Configuration On Ubuntu 16.04?
+
+Let's add an additional layer of security to our lighttpd config by encrypting it on Ubuntu 16.04. We can use `Certbot` to encrypt SSL certificates. To start with encrypting your lighttpd config, we first have to install `Certbot`, we can install it by running the following command:
+
+        sudo apt-get update
+        sudo apt-get install certbot
+
+In our example earlier, we have used "example.com" as our domain. To get a certificate for "example.com" we have to use the command `certbot certonly --webroot <add your arguments here>`.
+
+certbot certonly --webroot -w /var/www/html -d example.com -d www.example.com
+
+When we run `certbot certonly`, it obtains SSL certificate for example.com
+
+### Configuring lighttpd with SSL certificate
+
+Your SSL certificate files are located at /etc/letsencrypt/live/example.com. We can use `chown` command to allow lighttpd access to this directory by running the following commands:
+
+chown :www-data /etc/letsencrypt
+chown :www-data /etc/letsencrypt/live
+chmod g+x /etc/letsencrypt
+chmod g+x /etc/letsencrypt/live
+
+Once access permissions are in place, you can run the following commands to merge `cert.pem` and `privkey.pem` files into `lighttpd_merged.pem`:
+
+cat /etc/letsencrypt/live/example.com/privkey.pem /etc/letsencrypt/live/example.com/cert.pem > /etc/letsencrypt/live/example.com/lighttpd_merged.pem
+
+Now, we need to add the following lines to our lighttpd config file (lighttpd.conf):
+
+$SERVER["socket"] == ":443" {
+	ssl.engine = "enable"
+	ssl.pemfile = "/etc/letsencrypt/live/example.com/chain.pem"
+	ssl.ca-file = "/etc/letsencrypt/live/example.com/lighttpd_merged.pem"
+}
+
+We also need to force Lighttpd server to use SSL. And finally, we have to add the following code to our lighttpd.conf file to enable SSL usage:
+
+$HTTP["scheme"] == "http" {
+    $HTTP["host"] =~ ".*" {
+        url.redirect = (".*" => "https://%0$0")
+    }
+}
+
+Now, your lighttpd.conf file should look something like this:
+
+{{<file>}}
+fastcgi.server = ( ".php" => ((
+                     	"bin-path" => "/usr/bin/php5-cgi",
+                     	"socket" => "/tmp/php.socket"
+                 )))
+
+$SERVER["socket"] == ":443" {
+	ssl.engine = "enable"
+	ssl.pemfile = "/etc/letsencrypt/live/example.com/chain.pem"
+	ssl.ca-file = "/etc/letsencrypt/live/example.com/lighttpd_merged.pem"
+}
+$HTTP["scheme"] == "http" {
+    $HTTP["host"] =~ ".*" {
+        url.redirect = (".*" => "https://%0$0")
+    }
+}
+
+server.max-keep-alive-requests = 0
+{{</file>}}
+
+Once you save this new Lighttpd configuration, we need to restart our Lighttpd server in order for this new configuration to apply. 
+
+## How Do You Restart A Lighttpd Server?
+
+We can restart Lighttpd server using the `systemctl restart` command:
+
+        systemctl restart lighttpd
+
+## How Do I Stop Lighttpd On Ubuntu? 
+
+In order to stop a Lighttpd server running on Ubuntu 16.04, you can use the following  sys v style script:
+
+        /etc/init.d/lighttpd stop
+
+You can also use the following command to kill all Lighttpd processes:
+
+        killall lighttpd
+
+To specifically kill a user specific process, you can use the `-u` and add a username as shown in the command below:
+
+        pkill -KILL -u linode_httpd_user_1 lighttpd
+
+When we run this command, it will kill all Lighttpd processes specific to `linode_httpd_user_1`.
 
 ## Things to Keep in Mind
 
