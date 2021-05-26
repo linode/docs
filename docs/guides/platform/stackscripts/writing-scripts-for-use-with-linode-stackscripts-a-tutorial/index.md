@@ -62,7 +62,7 @@ Linode images are created using "vanilla" versions of its given distribution. Co
 #!/usr/bin/env python
 {{</ file >}}
 
-More specifically, python3 can be specified with the following:
+    Alternatively, python3 can be specified with the following:
 
     {{< file >}}
 #!/usr/bin/python3
