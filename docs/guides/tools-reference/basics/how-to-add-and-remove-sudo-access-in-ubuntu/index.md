@@ -4,6 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'A how-to guide explaining how to add admin users, or give users sudo privledges, in Ubuntu using Unbuntu 20.10 Groovy Gorilla as an example.'
+og_description: 'A how-to guide explaining how to add admin users, or give users sudo privledges, in Ubuntu using Unbuntu 20.10 Groovy Gorilla as an example.'
 keywords: ['ubuntu','linux','sudo','sudoers','admin','admins','adding users to sudo','adding user to sudoers']
 tags: ["Ubuntu","Linux","sudo","users"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -35,11 +36,11 @@ external_resources:
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Adding User Rights Through the `sudoers` File
+## Adding User Rights Through the sudoers File
 
 More advanced users may want to restrict what can be done with `sudo`. This is done in the file at `/etc/sudoers` and should only be done by those who are familiar with what they're doing. As a general rule, editing `/etc/sudoers` should be to adjust permissions for the sudo group, not to give permissions to individual users. We suggest the methods below for granting access to users. If you want to explore options for `/etc/sudoers` further, we recommend the [sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html).
 
-## Granting `sudo` Rights Through the Desktop Environment
+## Granting sudo Rights Through the Desktop Environment
 
 If you aren't comfortable using the CLI and have access to a graphical desktop environment, this is the easiest option.
 
@@ -54,7 +55,7 @@ If you aren't comfortable using the CLI and have access to a graphical desktop e
         ![Clicking the add user button in Ubuntu](click-add-user-ubuntu.png)
         3.  Fill out the details on the new user, making sure to click **Administrator** and then click **Add**.
         ![The new user details window](add-user-dialogue-ubuntu.png)
-      
+
     -   If you are modifying a user:
         1.  Click on the user you want to modify and then click **Unlock**.
         ![Click user and unlock to edit in Ubuntu](unlock-to-modify-existing-user.png)
@@ -65,7 +66,7 @@ If you aren't comfortable using the CLI and have access to a graphical desktop e
 
 The user now has administrative and `sudo` rights.
 
-## Granting `sudo` Rights Through the CLI
+## Granting sudo Rights Through the CLI
 
 There are numerous ways to do this through the command line, the last being the most in-depth, but also the one giving a system administrator more granular control over what permissions a user has.
 
@@ -83,7 +84,7 @@ passwd: password updated successfully
 
 Once the user is created, use one of the methods below to give them access to `sudo` or put them in the sudoers file.
 
-### Using `usermod`
+### Using usermod
 
 To grant `sudo` rights to the user *mumbly* using `usermod`:
 
@@ -97,7 +98,7 @@ mumbly : mumbly sudo
     {{< /output >}}
     This means the user "mumbly" is part of the group "mumbly" and the group "sudo," which confirms you modified the user correctly.
 
-### Using `gpasswd`
+### Using gpasswd
 
 To grant `sudo` rights to the user *mumbly* using `gpasswd`:
 

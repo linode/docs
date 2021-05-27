@@ -537,6 +537,7 @@ goldmark
 goroutine
 goroutines
 goto
+gpasswd
 gpc
 gpg
 gradle
@@ -592,6 +593,7 @@ host1
 host2
 hostname
 hostnames
+hotfix
 hotlink
 hotlinked
 hotlinking
@@ -1647,6 +1649,7 @@ usercolumn
 userdb
 usergroup
 userland
+usermod
 usersor
 usr
 ust
