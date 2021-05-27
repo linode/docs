@@ -62,7 +62,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Apache
 
-Canvas uses *Apache* and [*Phusion's Passenger*](https://www.phusionpassenger.com/) to serve its web pages. Phusion has its package repository which this guide uses to install both Passenger and the Passenger module for Apache.
+Canvas uses *Apache* and [*Phusion's Passenger*](https://www.phusionpassenger.com/) to serve its web pages. Phusion has its own package repository which this guide uses to install both Passenger and the Passenger module for Apache.
 
 1. **Add the key** for the Phusion repository and HTTPS support for the package manager.
 
