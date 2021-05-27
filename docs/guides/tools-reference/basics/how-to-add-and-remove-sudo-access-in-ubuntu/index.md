@@ -41,27 +41,27 @@ More advanced users may want to restrict what can be done with `sudo`. This is d
 
 ## Granting `sudo` Rights Through the Desktop Environment
 
-If you aren't comfortable using the CLI and have access to a graphical desktop environment, this will be the easiest option for you.
+If you aren't comfortable using the CLI and have access to a graphical desktop environment, this is the easiest option.
 
-1.  Open the Settings by clicking on the downwards arrow in the upper-right and choosing "Settings."
+1.  Open the Settings by clicking on the downwards arrow in the upper-right and choosing **Settings**.
     ![Opening the Settings on Ubuntu](open-settings-ubuntu.png)
 
-2.  Select "Users" from the left side.
+2.  Select **Users** from the left side.
     -   If you are creating a new user:
-        1.  Click "Unlock."
+        1.  Click **Unlock**.
         ![Clicking the unlock button before adding a user in Ubuntu](click-unlock-adding-user-ubuntu.png)
-        2.  Click "Add User."
+        2.  Click **Add User**.
         ![Clicking the add user button in Ubuntu](click-add-user-ubuntu.png)
-        3.  Fill out the details on the new user, making sure to click "Administrator" and then click "Add."
+        3.  Fill out the details on the new user, making sure to click **Administrator** and then click **Add**.
         ![The new user details window](add-user-dialogue-ubuntu.png)
-        4.  Go to Step 3 below.
+      
     -   If you are modifying a user:
-        1.  Click on the user you want to modify and then click "Unlock."
+        1.  Click on the user you want to modify and then click **Unlock**.
         ![Click user and unlock to edit in Ubuntu](unlock-to-modify-existing-user.png)
-        2.  Click on the toggle next to "Administrator."
+        2.  Click on the toggle next to **Administrator**.
         ![Toggle the administrator option on](toggling-administrator-on.png)
 
-3.  Close Settings.
+3.  Close **Settings**.
 
 The user now has administrative and `sudo` rights.
 
@@ -69,7 +69,7 @@ The user now has administrative and `sudo` rights.
 
 There are numerous ways to do this through the command line, the last being the most in-depth, but also the one giving a system administrator more granular control over what permissions a user has.
 
-In all these cases, the user will need to exist already. Using the example of the user "mumbly":
+In all these cases, the user needs to exist already. Using the example of the user *mumbly*:
 
 1.  Enter `sudo useradd -m mumbly` (the `-m` switch creates a home directory). There will be no confirmation.
 2.  Enter `sudo passwd mumbly` and provide your password (if prompted) and a new password for the user:
@@ -85,7 +85,7 @@ Once the user is created, use one of the methods below to give them access to `s
 
 ### Using `usermod`
 
-To grant `sudo` rights to the user "mumbly" using `usermod`:
+To grant `sudo` rights to the user *mumbly* using `usermod`:
 
 1.  Enter the command `sudo usermod -aG sudo "mumbly"`
 
@@ -99,11 +99,11 @@ mumbly : mumbly sudo
 
 ### Using `gpasswd`
 
-To grant `sudo` rights to the user "mumbly" using `gpasswd`:
+To grant `sudo` rights to the user *mumbly* using `gpasswd`:
 
 1.  Enter the command `sudo gpasswd -a mumbly sudo`.
 
-2.  Enter your password (if prompted), and confirmation will follow:
+2.  Enter your password (if prompted), and a confirmation follows:
     {{< output >}}
 [sudo] password for dreadbaron:
 Adding user mumbly to group sudo
@@ -115,17 +115,17 @@ mumbly : mumbly sudo
     {{< /output >}}
     This means the user "mumbly" is part of the group "mumbly" and the group "sudo," which confirms you modified the user correctly.
 
-You can also remove `sudo` rights with `gpasswd`. If "mumbly" has abused their access, take it away:
+You can also remove `sudo` rights with `gpasswd`. If *mumbly* has abused their access, take it away:
 
 1.  Enter the command `sudo gpasswd -d mumbly sudo`.
 
-2.  Enter your password (if prompted), and confirmation will follow:
+2.  Enter your password (if prompted), and a confirmation follows:
     {{< output >}}
 [sudo] password for dreadbaron:
 Removing user mumbly from group sudo
     {{< /output >}}
 
-3.  Confirm "mumbly" no longer has access with `groups mumbly` and you should get this response:
+3.  Confirm *mumbly* no longer has access with `groups mumbly` and you should get this response:
     {{< output >}}
 mumbly : mumbly
     {{< /output >}}
