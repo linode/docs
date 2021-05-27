@@ -26,13 +26,13 @@ WordPress is a popular content management and website creation software system u
 
 ## Securing Your Website Through HTTPS
 
-The first step in securing your WordPress installation is to ensure that you have a [TLS/SSL certificate](/docs/guides/what-is-a-tls-certificate/) configured using the TLS v1.2 (or later) protocol. This allows your website to be accessed securely on all major browsers, including Chrome, Firefox, Safari, and Edge (all of which require TLS v1.2 or later as of 2020). You can quickly analyze your site's current connection by navigating to your domain in a web browser. Look for the lock icon to the left of the URL in the address bar. Clicking on this lock should show a message similar to "Connection secure" if your site meets the browser's TLS requirements. You can also check a domain's certificate by using the [SSL Server Test](https://www.ssllabs.com/ssltest/) by Qualsys SSL Labs.
+The first step in securing your WordPress installation is to ensure that you have a [TLS/SSL certificate](/docs/guides/what-is-a-tls-certificate/) configured using the TLS v1.2 (or later) protocol. This allows your website to be accessed securely on all major browsers, including Chrome, Firefox, Safari, and Edge (all of which require TLS v1.2 or later as of 2020). You can quickly analyze your site's current connection by navigating to your domain in a web browser. Look for the lock icon to the left of the URL in the address bar. Clicking on this lock should show a message similar to "Connection secure" if your site meets the browser's TLS requirements. You can also check a domain's certificate by using the [SSL Server Test](https://www.ssllabs.com/ssltest/) by Qualys SSL Labs.
 
 ### Installing a TLS Certificate using Certbot
 
 If your site does not yet have a certificate, you can easily generate one directly on your Linux server by using the [certbot](https://certbot.eff.org/) utility. Certbot is a free and highly regarded command-line tool for generating and renewing [Let's Encrypt](https://letsencrypt.org/) certificates.
 
-Install certbot and configure your TLS certifcate by using one of the following guides:
+Install certbot and configure your TLS certificate by using one of the following guides:
 
 - [How to Use Certbot to Install SSL/TLS Certificates for NGINX on Ubuntu 20.04](/docs/guides/how-to-install-certbot-for-nginx-on-ubuntu-20-04/)
 - [How to Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04](/docs/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/)
@@ -43,7 +43,7 @@ If you prefer to use a Certificate Authority other then Let's Encrypt, see the [
 
 ### Configuring the Web Server
 
-Next, you'll want to verify that your web server is properly configured to handle HTTPS connections using your TLS certificate. If you just created your certificate through certbot, certbot likely autoconfigured your web server. Otherwise, you'll need to configure your web server manually. Since these instructions are highly dependent on the software you are using, select from one of the following guides that corresponds with your web server:
+Next, you'll want to verify that your web server is properly configured to handle HTTPS connections using your TLS certificate. If you just created your certificate through certbot, certbot likely automatically configured your web server. Otherwise, you'll need to configure your web server manually. Since these instructions are highly dependent on the software you are using, select from one of the following guides that corresponds with your web server:
 
 - **Nginx**
   - **Nginx documentation:** [Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
