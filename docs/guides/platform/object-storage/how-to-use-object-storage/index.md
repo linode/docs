@@ -63,7 +63,7 @@ Each Object Storage key pair on the Linode account has complete access to all of
 
 ### Limiting Access through Access Keys
 
-By default, an Access Key is unrestricted and has fully access to all Buckets on an account. When creating an Access Key, you can enable **Limited Access** and set more granular permissions for each Bucket. These permissions include **None**, **Read**, and **Read/Write**:
+By default, an Access Key is unrestricted and has full access to all Buckets on an account. When creating an Access Key, you can enable **Limited Access** and set more granular permissions for each Bucket. These permissions include **None**, **Read**, and **Read/Write**:
 
 - **None**: Restricts all access to the specified Bucket. This Access Key will still be able to view the Bucket in the list of all Buckets, but will otherwise be unable to access any objects stored within it.
 
