@@ -24,11 +24,11 @@ image: How_to_Secure_WordPress.png
 
 WordPress is a popular content management and website creation software system used by millions of users today. It's easy to use and offers thousands of plugins making it simple for non-developers to create beautiful websites without having to write a single line of code. This guide helps you keep your WordPress site secure with suggestions like installing SSL certificates, installing a firewall, enabling two-factor authentication, and more.
 
-## Installing and Configuring a TLS/SSL Certificate
+## Securing Your Website Through HTTPS
 
-The first step in securing your WordPress installation is to ensure that you have a [TLS/SSL certificate](/docs/guides/what-is-a-tls-certificate/) configured using the TLS v1.2 (or later) protocol. You can quickly analyze your site's current connection by navigating to your domain in a web browser. Look for the lock icon to the left of the URL in the address bar. Since Chrome, Firefox, Safari, and Edge all require TLS v1.2 or newer (as of 2020), clicking on this lock will show a message similar to "Connection secure" if your site meets the recommended TLS reqiurements. You can also check a domain's certificate by using the [SSL Server Test](https://www.ssllabs.com/ssltest/) by Qualsys SSL Labs.
+The first step in securing your WordPress installation is to ensure that you have a [TLS/SSL certificate](/docs/guides/what-is-a-tls-certificate/) configured using the TLS v1.2 (or later) protocol. This allows your website to be accessed securely on all major browsers, including Chrome, Firefox, Safari, and Edge (all of which require TLS v1.2 or later as of 2020). You can quickly analyze your site's current connection by navigating to your domain in a web browser. Look for the lock icon to the left of the URL in the address bar. Clicking on this lock should show a message similar to "Connection secure" if your site meets the browser's TLS requirements. You can also check a domain's certificate by using the [SSL Server Test](https://www.ssllabs.com/ssltest/) by Qualsys SSL Labs.
 
-### Install a Certificate using Certbot
+### Installing a TLS Certificate using Certbot
 
 If your site does not yet have a certificate, you can easily generate one directly on your Linux server by using the [certbot](https://certbot.eff.org/) utility. Certbot is a free and highly regarded command-line tool for generating and renewing [Let's Encrypt](https://letsencrypt.org/) certificates.
 
@@ -41,9 +41,9 @@ You can also follow the [installation instructions](https://certbot.eff.org/inst
 
 If you prefer to use a Certificate Authority other then Let's Encrypt, see the [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) guide for further instructions.
 
-### Configure Strong TLS settings within the Web Server
+### Configuring the Web Server
 
-If your site has a certificate but is using an older version of the TLS (or SSL) protocol, you'll likely want to reconfigure your web server software. Since these instructions are highly dependent on the software you are using, see the following guides for popular web servers:
+Next, you'll want to verify that your web server is properly configured to handle HTTPS connections using your TLS certificate. If you just created your certificate through certbot, certbot likely autoconfigured your web server. Otherwise, you'll need to configure your web server manually. Since these instructions are highly dependent on the software you are using, select from one of the following guides that corresponds with your web server:
 
 - **Nginx**
   - **Nginx documentation:** [Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
