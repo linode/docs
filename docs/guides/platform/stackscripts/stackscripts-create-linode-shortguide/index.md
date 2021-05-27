@@ -93,7 +93,7 @@ chmod +x /opt/deployment-script.php
 
     {{< /file >}}
 
-- When using scripts other than bash, the underlying software supporting the scripting language may need to be installed to the operating system as part of the StackScript. This issue can be resolved by creating a simple StackScript in bash to install the required software, and then import and execute the second StackScript which is using the desired language. For CentOS for example, this StackScript could be used to install python3, and apply a script that was previously created for it:
+- When using scripts other than bash, the underlying software supporting the scripting language may need to be installed to the operating system as part of the StackScript. This issue can be resolved by creating a simple StackScript in bash to install the required software, and then importing and executing the second StackScript which is using the desired language. For CentOS for example, this StackScript could be used to install python3, and apply a script that was previously created for it:
 
    {{< file >}}
 #!/bin/bash
