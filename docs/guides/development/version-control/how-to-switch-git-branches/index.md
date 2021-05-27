@@ -11,13 +11,13 @@ published: 2021-04-02
 modified_by:
   name: Linode
 title: "How to Switch Git Branches"
-h1_title: "How to Switch Git Branches."
+h1_title: "Switching Git Branches."
 external_resources:
 - '[Git](https://git-scm.com/)'
 - '[Git Branching - Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)'
 ---
 
-Git is a distributed version control system. It supports non-linear, distributed development, allowing multiple contributors to work on a project simultaneously within what are called "branches." This guide will walk you through the basics of what a branch is and how to switch between branches.
+Git is a distributed version control system. It supports non-linear, distributed development, allowing multiple contributors to work on a project simultaneously within what are called *branches*. This guide walks you through the basics of what a branch is and how to switch between branches.
 
 ## Before You Begin
 
@@ -37,11 +37,11 @@ If you're doing work on a website, application, or other Git project, you aren't
 
 ## Why Would I Need to Switch Branches in Git?
 
-Different branches will have different purposes, so sometimes you need to switch from one to another (you may be working in two branches yourself, you may be pair programming and need to move back and forth, or some other reason). Git was designed to anticipate that need with `git checkout` (`git switch` was introduced to be more intuitive and decrease the number of functions in `git checkout`, but it is currently considered [experimental](https://git-scm.com/docs/git-switch#_description) and not covered in this article).
+Different branches have different purposes, so sometimes you need to switch from one to another. For example, you may be working in two branches yourself, you may be pair programming and need to move back and forth, or some other reason. Git was designed to anticipate that need with `git checkout` (`git switch` was introduced to be more intuitive and decrease the number of functions in `git checkout`, but it is currently considered [experimental](https://git-scm.com/docs/git-switch#_description) and not covered in this article).
 
 ## Switching to an Existing Git Branch
 
-You may have multiple tasks you're working on in separate branches (let's say one is a hotfix and one is a feature request). You realize you have something to add on the hotfix, so you need to switch to that branch in Git:
+You may have multiple tasks you're working on in separate branches, let's say one is a hotfix and one is a feature request). You realize you have something to add on the hotfix, so you need to switch to that branch in Git:
 
 1.  Enter `git checkout quick-hotfix` at the command prompt.
 
@@ -67,7 +67,7 @@ You can then commit work to that branch.
 
 ## Switching to a Remote Git Branch
 
-Using remote branches will be one of the best ways to work with your colleagues. Let's say you're pair programming for the day and your coworker has a branch called "edit-button-feature-request" ready for the two of you. To switch to a remote branch in Git:
+Using remote branches is one of the best ways to work with your colleagues. Let's say you're pair programming for the day and your coworker has a branch called "edit-button-feature-request" ready for the two of you. To switch to a remote branch in Git:
 
 1.  Enter `git checkout --track origin/edit-button-feature-request` at the command prompt.
 
@@ -77,7 +77,7 @@ Branch edit-button-feature-request set up to track remote branch newsletter from
 Switched to a new branch 'edit-button-feature-request'
 {{< /output >}}
 
-At that point, a new local branch will be created, allowing you to start on that feature request and push to that branch as necessary.
+At that point, a new local branch is created, allowing you to start on that feature request and push to that branch as necessary.
 
 ## Further Reading on Git Branches
 
