@@ -3,15 +3,18 @@ slug: linode-configuration-profiles
 author:
   name: Linode
   email: docs@linode.com
-description: A guide to Linode configuration profiles.
+description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
+og_description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-30
+modified: 2021-05-17
 modified_by:
   name: Linode
 published: 2021-04-30
-title: Linode Configuration Profiles
+title: "How to Manage Linode Configuration Profiles"
+h1_title: "Linode Configuration Profiles"
+enable_h1: true
 ---
 
 A **configuration profile** functions as a boot loader for a Linode. It controls general boot settings, including the disk the Linode will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the Linode. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Linodes (see [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/)) or to create custom software testing environments.
@@ -104,6 +107,18 @@ You can create and store many different configuration profiles in the Linode Man
 1. The Linode will boot (or reboot) using the selected configuration profile. The progress of the boot can be viewed from the Linode's status.
 
 You have successfully selected and booted your Linode from a configuration profile.
+
+## Determining Which Configuration Profile Was Used
+
+When a Linode is powered on or rebooted, it will use the settings stored within a configuration profile. You can determine which configuration profile was used by looking at the event history. Events are visible within the **Activity Feed** tab for a particular Linode or within the main [Events](https://cloud.linode.com/events) page for the account.
+
+1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Linode from the list.
+
+1. Navigate to the **Activity Feed** tab to view all events for the Linode.
+
+1. Locate the particular boot or reboot event and review the text. The configuration profile used during that boot will be mentioned here.
+
+![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png "Viewing the boot history within the Activity Feed")
 
 ## Cloning a Configuration Profile and the Attached Disks
 
