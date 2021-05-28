@@ -8,11 +8,12 @@ og_description: 'Canvas is a learning management system that you can use to crea
 keywords: ['canvas','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-19
+published: 2021-05-28
 modified_by:
   name: Nathaniel Stickman
-title: "Install Canvas LMS on Ubuntu 20.04"
-h1_title: "How to Install Canvas on Ubuntu 20.04"
+title: "How to Install Canvas LMS on Ubuntu 20.04"
+h1_title: "Installing Canvas on Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -26,7 +27,11 @@ external_resources:
 - '[Snap](https://snapcraft.io/docs/getting-started)'
 - '[Canvas Community](https://community.canvaslms.com/)'
 - '[wealth of guides](https://community.canvaslms.com/t5/Canvas/ct-p/canvas)'
-
+relations:
+    platform:
+        key: how-to-install-canvas
+        keywords:
+            - distribution: Ubuntu 20.04
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a popular learning management system (LMS) noteworthy for its modern design and ease of use. Canvas provides a comprehensive website for education and training courses, whether those courses are in-person, online, or a mix of the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your server, giving you a higher degree of control than with a hosted LMS.

@@ -8,11 +8,12 @@ og_description: 'Canvas is a learning management system that you can use to crea
 keywords: ['canvas','education','training','learning management system','lms','deploy on debian 10']
 tags: ['canvas', 'debian','apache','ssl','redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-23
+published: 2021-05-28
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Canvas on Debian 10"
-h1_title: "How to Install Canvas on Debian 10"
+h1_title: "Installing Canvas on Debian 10"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -27,7 +28,11 @@ external_resources:
 - '[Snap](https://snapcraft.io/docs/getting-started)'
 - '[Canvas Community](https://community.canvaslms.com/)'
 - '[Canvas guides](https://community.canvaslms.com/t5/Canvas/ct-p/canvas)'
-
+relations:
+    platform:
+        key: how-to-install-canvas
+        keywords:
+            - distribution: Debian 10
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a popular Learning Management System (LMS) noteworthy for its modern design and ease of use. A Canvas website gives you a comprehensive portal for education and training courses. It can manage both in-person and online courses, as well as hybrid courses that mix the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your server.

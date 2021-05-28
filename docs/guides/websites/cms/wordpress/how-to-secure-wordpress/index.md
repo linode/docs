@@ -13,6 +13,7 @@ modified_by:
 published: 2020-10-28
 title: How to Secure Wordpress
 h1_title: Securing Wordpress
+enable_h1: true
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'

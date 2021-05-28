@@ -6,7 +6,7 @@ description: "Learn how to use the s4cmd command-line tool with Linode's Object 
 og_description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage solution."
 keywords: ['object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-26
+published: 2021-05-28
 modified_by:
   name: Linode
 title: "How To Use Object Storage with s4cmd"
@@ -110,4 +110,4 @@ There is currently no defined command for deleting a bucket through s4cmd.
 
 ## Additional Commands
 
-Additional commands and options for s4cmd can be found on the [s4cmd Readme](https://github.com/bloomreach/s4cmd) page or by running `s4cmd --help`. 
+Additional commands and options for s4cmd can be found on the [s4cmd Readme](https://github.com/bloomreach/s4cmd) page or by running `s4cmd --help`.
