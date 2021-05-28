@@ -2,19 +2,25 @@
 slug: securing-apache2-with-modsecurity
 author:
   name: Hackersploit
-description: 'A concise guide to setting up ModSecurity with Apache2.'
-og_description: 'A concise guide to setting up ModSecurity with Apache2.'
+description: 'ModSecurity is a free web application firewall that can prevent attacks like XSS and SQL Injection. This guide shows how to install ModSecurity with Apache 2.'
+og_description: 'ModSecurity is a free web application firewall that can prevent attacks like XSS and SQL Injection. This guide shows how to install ModSecurity with Apache 2.'
 keywords: ["apache2 configure modsecurity", "apache2 modsecurity", "apache modsecurity"]
 tags: ["security","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-04
+modified: 2021-03-26
 modified_by:
   name: Linode
-published: 2021-03-04
-title: How to Secure Apache2 With ModSecurity
-h1_title: Securing Apache2 With ModSecurity
+published: 2021-03-26
+title: How to Secure Apache 2 With ModSecurity
+h1_title: Securing Apache 2 With ModSecurity
+enable_h1: true
 aliases: ['security/basics/securing-apache2-with-modsecurity/']
 image: Securing_Apache2_With_ModSecurity.png
+relations:
+    platform:
+        key: securing-web-servers-with-modsecurity
+        keywords:
+            - web server: Apache 2
 ---
 
 ## What is ModSecurity?
@@ -25,7 +31,7 @@ ModSecurity is a free and open source web application that started out as an Apa
 
 In order to install and configure ModSecurity, you need to have a Linux server with the following services running:
 
-- Apache2
+- Apache 2
 
 For instructions, see our guide on [How to Install Apache Web Server on Ubuntu 18.04 LTS](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
@@ -41,7 +47,7 @@ This demonstration has been performed on Ubuntu 18.04. However, all techniques d
 
 1.  Alternatively, you can also build ModSecurity manually by cloning the official [ModSecurity Github repository](https://github.com/SpiderLabs/ModSecurity).
 
-1.  After installing ModSecurity, enable the Apache2 `headers` module by running the following command:
+1.  After installing ModSecurity, enable the Apache 2 `headers` module by running the following command:
 
         sudo a2enmod headers
 
@@ -106,7 +112,7 @@ To set up the OWASP-CRS, follow the procedures outlined below.
 
 You should now have the OWASP-CRS setup and ready to be used in your Apache configuration.
 
-## Enabling ModSecurity in Apache2
+## Enabling ModSecurity in Apache 2
 
 To begin using ModSecurity, enable it in the Apache configuration file by following the steps outlined below:
 

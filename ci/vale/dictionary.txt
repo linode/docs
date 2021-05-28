@@ -53,6 +53,7 @@ arping
 askbot
 aske
 async
+asynchrony
 authdaemonrc
 authlib
 authmodulelist
@@ -120,6 +121,7 @@ blockwise
 bluehost
 bookinfo
 boolean
+booleans
 boolstyle
 boonex
 bootable
@@ -261,6 +263,7 @@ ctx
 cuda
 cutover
 cyberduck
+cyberpanel
 cyg
 cygwin
 cyclomatic
@@ -275,6 +278,7 @@ dahdi
 databags
 datacenter
 datadir
+Datadog
 dataflow
 datagram
 dataset
@@ -423,6 +427,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
+fauxton
 favicon
 fb4c
 fcgi
@@ -471,6 +476,7 @@ fmt
 fn
 fpm
 fragging
+framebuffer
 frakti
 framesets
 freedns
@@ -571,6 +577,7 @@ hardcoded
 hardcopy
 hardlimit
 hashmark
+hashicorp
 hasn
 hba
 hd0
@@ -614,6 +621,7 @@ https
 hulu
 hvc0
 hybla
+hypercorn
 hyperefficient
 hyperparameter
 hypervisor
@@ -653,6 +661,7 @@ img
 immutant
 impor
 incentivized
+inclusivity
 inet
 inet6
 infographic
@@ -670,6 +679,7 @@ interdomain
 interruptible
 introducer
 introducers
+io
 iodef
 iotop
 ip
@@ -691,6 +701,7 @@ iredmail
 irssi
 isn
 iso
+isort
 isoformat
 isp
 issuewild
@@ -718,6 +729,7 @@ journald
 journaled
 journaling
 jpg
+jpetazzo
 jre
 js
 json
@@ -761,6 +773,7 @@ kube
 kubeadm
 kubeconfig
 kubectl
+kubectx
 kubeflow
 kubelet
 kubelets
@@ -896,6 +909,8 @@ memcrashed
 menuentry
 mesos
 metabase
+metacharacter
+metacharacters
 metacity
 metapackage
 metaparameters
@@ -966,6 +981,7 @@ myhostname
 mynewdomain
 mypassword
 myproject
+mypy
 myserver
 mysql
 mysqli
@@ -1099,6 +1115,7 @@ overengineer
 overwatch
 ovpn
 owadb
+owncast
 owncloud
 pacman
 paas
@@ -1133,6 +1150,7 @@ percona
 performant
 permalink
 permalinks
+Petazzoni
 pflogsumm
 pgpass
 pharmer
@@ -1222,6 +1240,7 @@ py
 pyamqp
 pyenv
 pyinotify
+pylint
 pypa
 pypi
 pypiserver
@@ -1288,6 +1307,7 @@ respawn
 resque
 restapi
 restic
+restreaming
 retargetly
 retpoline
 retrans
@@ -1536,6 +1556,7 @@ tetris
 tf
 tfa
 tgz
+thanos
 thawte
 theano
 theming
@@ -1566,6 +1587,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolset
 traceroute
 trackbar
 traefik
@@ -1682,6 +1704,8 @@ virtualhost
 virtualizations
 virtualized
 virtualmin
+vlan
+vlans
 vlogger
 vmail
 vmem

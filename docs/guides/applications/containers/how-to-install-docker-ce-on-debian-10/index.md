@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Install Docker CE on Debian 10"
 h1_title: Install Docker CE on Debian 10
+image: DockerCEonDebian10.png
 published: 2020-03-05
 
 aliases: ['/applications/containers/how-to-install-docker-ce-on-debian-10/']

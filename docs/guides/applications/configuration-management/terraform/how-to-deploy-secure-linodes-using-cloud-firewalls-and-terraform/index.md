@@ -110,12 +110,11 @@ When applied to a Terraform configuration, the `inbound_ssh` module will create 
 terraform {
   required_providers {
     linode = {
-      source = "terraform-providers/linode"
+      source = "linode/linode"
+      version = "1.16.0"
     }
   }
-  required_version = ">= 0.13"
 }
-
 resource "linode_firewall" "ssh_inbound" {
   label = var.firewall_label
   tags  = var.tags
@@ -168,10 +167,10 @@ The `mysql` child module creates a Cloud Firewall with an inbound rule commonly 
 terraform {
   required_providers {
     linode = {
-      source = "terraform-providers/linode"
+      source = "linode/linode"
+      version = "1.16.0"
     }
   }
-  required_version = ">= 0.13"
 }
 
 resource "linode_firewall" "mysql" {
@@ -231,10 +230,10 @@ The `web_server` child module, when applied, creates a Cloud Firewall with inbou
 terraform {
   required_providers {
     linode = {
-      source = "terraform-providers/linode"
+      source = "linode/linode"
+      version = "1.16.0"
     }
   }
-  required_version = ">= 0.13"
 }
 
 resource "linode_firewall" "web_server" {
@@ -307,10 +306,10 @@ Now that all the Cloud Firewalls child modules have been created, you can create
 terraform {
   required_providers {
     linode = {
-      source = "terraform-providers/linode"
+      source = "linode/linode"
+      version = "1.16.0"
     }
   }
-  required_version = ">= 0.13"
 }
 
 provider "linode" {

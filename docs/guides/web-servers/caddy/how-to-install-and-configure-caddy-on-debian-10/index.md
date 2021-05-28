@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Install and Configure the Caddy Web Server on Debian 10"
 h1_title: "Install and Configure the Caddy Web Server on Debian 10"
+image: CaddyWebServ_Deb10.png
 contributor:
   name: Linode
 relations:

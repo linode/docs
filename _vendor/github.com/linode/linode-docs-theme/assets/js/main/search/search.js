@@ -123,6 +123,10 @@ export function newSearchController(searchConfig) {
 
 			hit.titleHighlighted =
 				hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : hit.title;
+
+			hit.excerptHighlighted =
+				hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
+
 			hit.linkTitle = hit.linkTitle || hit.title;
 
 			let href;
@@ -183,7 +187,7 @@ export function newSearchController(searchConfig) {
 			sectionCfg.nounPlural = function(count = 2) {
 				let noun = this.noun || this.title;
 
-				if (count === 0 || count > 1 && !noun.endsWith('s')) {
+				if (count === 0 || (count > 1 && !noun.endsWith('s'))) {
 					noun += 's';
 				}
 				return noun;
@@ -317,7 +321,7 @@ export function newSearchController(searchConfig) {
 		result.getMatchedWords = function() {
 			var words = new Set();
 			this.sections.forEach((section) => {
-				let attributesToHighlight = [ 'title', ...section.config.facetFilterNames() ];
+				let attributesToHighlight = [ 'title', 'excerpt', ...section.config.facetFilterNames() ];
 				let hits = section.searchData.result.hits;
 
 				hits.forEach((hit) => {
@@ -817,7 +821,7 @@ export function newSearchController(searchConfig) {
 					filters: filters,
 					facetFilters: facetFilters,
 					facets: facets,
-					attributesToHighlight: [ 'title', ...filteringFacetNames ],
+					attributesToHighlight: [ 'title', 'excerpt', ...filteringFacetNames ],
 					params: `query=${q}&hitsPerPage=${hitsPerPage}`
 				};
 			};

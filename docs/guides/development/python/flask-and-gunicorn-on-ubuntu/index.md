@@ -25,7 +25,7 @@ aliases: ['/development/python/flask-and-gunicorn-on-ubuntu/']
 ---
 Flask is a light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. After you have developed a Flask application in a local environment, you need to prepare the application's production environment in order to run the application and serve it to the users of the application through the internet.
 
-This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode. The production environment uses [NGINX](http://localhost:1313/docs/web-servers/nginx/nginx-installation-and-basic-setup/) as the web server and reverse proxy, [Gunicorn](https://gunicorn.org/) as the web server gateway interface (WSGI) application server, and [Supervisor](http://supervisord.org/) for monitoring and auto-reloading Gunicorn should it go down. This guide does not cover creating a Flask application or related Python concepts.
+This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode. The production environment uses [NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) as the web server and reverse proxy, [Gunicorn](https://gunicorn.org/) as the web server gateway interface (WSGI) application server, and [Supervisor](http://supervisord.org/) for monitoring and auto-reloading Gunicorn should it go down. This guide does not cover creating a Flask application or related Python concepts.
 
 In this guide you complete the following:
 

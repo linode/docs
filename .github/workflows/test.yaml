@@ -39,12 +39,35 @@ jobs:
     - name: Get Changed Files
       id: get_changed_files
       uses: jitterbit/get-changed-files@v1
+      # The continue-on-error parameter is set to true as a
+      # workaround for the `head commit is not ahead of base
+      # commit` error that can appear when the PR branch is
+      # out of date.
+      continue-on-error: true
       with:
         format: 'json'
+    - name: Install more-utils
+      run: sudo apt-get install moreutils
+    - name: Select Files in Docs Dir
+      # This action filters the list of added and modified
+      # files to only the files that are in the docs/ directory
+      id: select_docs_dir_files
+      run: |
+        docs_dir_files=$(echo $added_modified |  jq -c '[.[] | select(.|test("^docs/"))]')
+        echo "::set-output name=added_modified::$docs_dir_files"
+        echo "Added or modified files located within docs/ directory:"
+        echo $docs_dir_files | jq '.'
+      env:
+        added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
     - name: Vale
       uses: errata-ai/vale-action@v1.3.0
+      # Only run the Vale step if the list of added and modified
+      # files inside the docs directory is not empty. If we don't
+      # add this conditional, the Vale step hangs and never
+      # completes when it is passed the empty array.
+      if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
       with:
-        files: '${{ steps.get_changed_files.outputs.added_modified }}'
+        files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
