@@ -3,7 +3,8 @@ slug: connect-to-server-using-ssh
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A guide on how to connect to a Server via SSH on Linux.'
+description: 'A guide on using Linux, Mac, or Windows to connect to a remote server over SSH.'
+og_description: 'A guide on using Linux, Mac, or Windows to connect to a remote server over SSH.'
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 tags: ["SSH", "Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -27,16 +28,6 @@ A *secure shell* (SSH) is used for secure communication between devices. When mo
 
 On your local computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run programs through the command line.
 
-### Linux
-
-If you're using Linux through the command line, you can skip this step. If you are using Linux through a desktop environment (a graphical interface), you'll need to locate and open the terminal application that comes with your Linux distribution and desktop environment. In most cases, pressing `Ctrl` + `Alt` + `T` on your keyboard opens the default terminal.
-
-- **Gnome**: The default terminal emulator is *Gnome Terminal*. Gnome is the default desktop environment for Ubuntu.
-- **KDE**: The default terminal emulator is *Konsole*. KDE is the default desktop environment for Manjaro.
-
-
-If this key combination does not work for you, other instructions for opening a terminal vary depending on the Linux distribution and desktop environment you are running. In many cases, you'll want to open the application search tool and search for "terminal".
-
 ### Mac
 
 The default terminal emulator for macOS is called *Terminal*. To open this program, access Spotlight by pressing `Cmd` + `Space` on the keyboard and type "Terminal" in the search box. In the search results, click on *Terminal.app*. Refer to Apple's [Open or Quit Terminal on Mac](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac) guide for additional methods of opening Terminal.
@@ -47,6 +38,15 @@ Most newer installations of Windows 10 come preinstalled with an SSH client that
 
 Additional instructions (for both Windows 10 and earlier versions of Windows) can be found in the [Using SSH on Windows
 ](/docs/guides/using-ssh-on-windows/) guide.
+
+### Linux
+
+If you're using Linux through the command line, you can skip this step. If you are using Linux through a desktop environment (a graphical interface), you'll need to locate and open the terminal application that comes with your Linux distribution and desktop environment. In most cases, pressing `Ctrl` + `Alt` + `T` on your keyboard opens the default terminal.
+
+- **Gnome**: The default terminal emulator is *Gnome Terminal*. Gnome is the default desktop environment for Ubuntu.
+- **KDE**: The default terminal emulator is *Konsole*. KDE is the default desktop environment for Manjaro.
+
+If this key combination does not work for you, other instructions for opening a terminal vary depending on the Linux distribution and desktop environment you are running. In many cases, you'll want to open the application search tool and search for "terminal".
 
 ## Connect to the Remote Server Over SSH
 
@@ -76,7 +76,7 @@ Are you sure you want to continue connecting (yes/no)?
 Warning: Permanently added 'example' (ECDSA) to the list of known hosts.
 {{</ output >}}
 
-Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server.
+Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. Many of the basic Linux commands, such as `ls`, `cd`, `rm`, and covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
 
 ## Ending the SSH Session
 
@@ -88,6 +88,30 @@ Connection to 93.184.216.34 closed.
 {{< /output >}}
 
 At this point, the shell prompt returns to the one for the local workstation and the terminal application can be closed if it's no longer needed.
+
+## Sending Commands Over SSH
+
+Instead of using SSH to open your remote server's console, you can run commands on your server without leaving your local shell environment. This can enable you to quickly run commands both locally and remotely in the same terminal window.
+
+### Sending a Single Command
+
+To run a single command on your remote server, use the following command. Replace *[username]* with the username of the remote user,  *[ip-address]* with the IP address or domain name of the remote server, and *[command]* with the command you wish to run.
+
+    ssh [username]@[ip-address] [command]
+
+As an example, running `ssh me@192.0.2.0 ls` will list all the files in the home directory of the user called `me`. This can be useful to find the uptime of the server (`ssh me@192.0.2.0 uptime`) or maybe determine its Linux distribution and version (`ssh me@192.0.2.0 lsb_release -a`).
+
+### Sending Multiple Commands
+
+To run multiple commands on your remote server (one after the other), use the following command. Replace *[command-1]*, *[command-2]*, and *[command-3]* with the commands you wish to run.
+
+    ssh [username]@[ip-address] "[command-1]; [command-2]; [command-3]"
+
+The commands should be separated by a semi-colon (`;`) and all of the commands together should be surrounded by double quotation marks (`"`). For example, if you wanted to create a file named *bar.txt* in a directory called *foo* within the user **me**'s home directory, run: `ssh me@192.0.2.0 "mkdir foo; cd foo; touch bar.txt`.
+
+### Using sudo
+
+It's recommended to disable root access over SSH and only log in to your remote server through a limited user account. However, some commands require elevated privileges, which can usually be accomplished by prepending the command with `sudo`. If you attempt to do this while running commands directly through the SSH command, you may receive an error such as "no tty present" or there isn't a "stable CLI interface". To run the `sudo` command in these instances, use the `-t` option, which forces a psuedo-terminal allocation. For example, to update your packages on a Debian-based system, run `ssh linode@example.com -t "sudo apt update"`.
 
 ## Going Further
 

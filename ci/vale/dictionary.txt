@@ -1603,6 +1603,7 @@ tt
 ttl
 ttpd
 ttrss
+tty
 tun0
 tune2fs
 tunnelblick
