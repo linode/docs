@@ -1,19 +1,8 @@
 ---
-slug: stackscripts-delete-account-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to delete a StackScript.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-09-16
-modified_by:
-  name: Heather Zoppetti
-published: 2020-09-16
-title: Delete a StackScript
-keywords: ["stackscripts"]
+# Shortguide: describes how to delete a StackScript.
+
 headless: true
 show_on_rss_feed: false
-aliases: ['/platform/stackscripts/stackscripts-delete-account-shortguide/']
 ---
 
 {{< note >}}

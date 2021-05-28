@@ -1,19 +1,8 @@
 ---
-slug: stackscripts-new-account-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how make a StackScript account public.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-09-16
-modified_by:
-  name: Heather Zoppetti
-published: 2020-09-16
-title: Make a StackScript Account Public
-keywords: ["stackscripts"]
+# Shortguide: describes how make a StackScript account public.
+
 headless: true
 show_on_rss_feed: false
-aliases: ['/platform/stackscripts/stackscripts-new-account-shortguide/']
 ---
 
 You can make any of your Account StackScripts public. When an account StackScript is public it becomes available to the rest of the Linode Community in the Cloud Manager as a Community StackScript.

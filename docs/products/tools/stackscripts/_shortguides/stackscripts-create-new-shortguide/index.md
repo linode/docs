@@ -1,19 +1,8 @@
 ---
-slug: stackscripts-create-new-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to create a new StackScript.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-09-16
-modified_by:
-  name: Heather Zoppetti
-published: 2020-09-16
-title: Create a new StackScript
-keywords: ["stackscripts"]
+# Shortguide: describes how to create a new StackScript.
+
 headless: true
 show_on_rss_feed: false
-aliases: ['/platform/stackscripts/stackscripts-create-new-shortguide/']
 ---
 
 1. Log into the [Linode Cloud Manager](https://cloud.linode.com/).

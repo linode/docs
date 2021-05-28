@@ -1,20 +1,8 @@
 ---
-slug: managed-signup-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to sign up for Linode Managed.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Sign Up for Linode Managed
-keywords: ["linode managed"]
+#Shortguide: describes how to sign up for Linode Managed.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/managed-signup-shortguide/']
 ---
 
 To sign up for Linode Managed:

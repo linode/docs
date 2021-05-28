@@ -1,20 +1,8 @@
 ---
-slug: accounts-recover-username-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to recover a username your account.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
-title: Recover a Username on Your Account
-keywords: ["users", "permissions", "accounts", "passwords"]
+# Shortguide: shows you how to recover a username your account.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/accounts-recover-username-shortguide/']
 ---
 
 Did you forget your Cloud Manager username? Recover it with the *Forgot Username* webpage. Here's how:

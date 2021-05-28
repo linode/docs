@@ -1,20 +1,8 @@
 ---
-slug: api-create-api-token-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide shows you how to create an API token in the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: How to Create an API Token in the Cloud Manager
-keywords: ["api"]
+# Shortguide: shows you how to create an API token in the Cloud Manager.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/api/api-create-api-token-shortguide/']
 ---
 
 1.  Log in to the Cloud Manager.

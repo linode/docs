@@ -1,19 +1,8 @@
 ---
-slug: upload-image-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how upload an image with Linode Images.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-18
-modified_by:
-  name: Linode
-published: 2021-04-28
-title: How to Upload a Custom Image
-keywords: ["images"]
+# Shortguide: shows you how upload an image with Linode Images.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 Once you have obtained a compatible image file that meets all the requirements, upload it through the **Upload Image** Cloud Manager form. After it's uploaded, you can then deploy Linodes using that Custom Image.

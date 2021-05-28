@@ -1,19 +1,8 @@
 ---
-slug: stackscripts-edit-account-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to edit a StackScript.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-09-16
-modified_by:
-  name: Heather Zoppetti
-published: 2020-09-16
-title: Edit a StackScript
-keywords: ["stackscripts"]
+# Shortguide: describes how to edit a StackScript.
+
 headless: true
 show_on_rss_feed: false
-aliases: ['/platform/stackscripts/stackscripts-edit-account-shortguide/']
 ---
 
 After you've created an Account StackScript, you can go back and edit it as required. These instructions show you how to access a StackScript for editing.

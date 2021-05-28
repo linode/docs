@@ -1,19 +1,8 @@
 ---
-slug: upload-image-requirements-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that lists all requirements for uploading an image file.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-28
-modified_by:
-  name: Linode
-published: 2021-04-28
-title: Requirements for Uploading an Image
-keywords: ["images"]
+# Shortguide: lists all requirements for uploading an image file.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 - **Raw disk image:** The image file must be a [raw disk image](https://en.wikipedia.org/wiki/IMG_(file_format)) (`.img`). Other file formats will not work.

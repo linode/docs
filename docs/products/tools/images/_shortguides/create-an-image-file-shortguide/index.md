@@ -1,19 +1,8 @@
 ---
-slug: create-an-image-file-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that covers creating or obtaining a custom image file for use with the Image Upload feature of Linode.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-20
-modified_by:
-  name: Linode
-published: 2021-05-20
-title: How to Create or Obtain an Image File
-keywords: ["images"]
+# Shortguide: covers creating or obtaining a custom image file for use with the Image Upload feature of Linode.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 Creating a custom image file is typically a complex process intended for advanced system administrators. In most cases, users will be better suited creating a custom image directly from an existing Linode (see [Capture an Image](/docs/products/tools/images/guides/capture-an-image/)) or through the Linode Packer Builder (see [How to Use the Linode Packer Builder](/docs/guides/how-to-use-linode-packer-builder/)). These two methods ensure maximum compatibility with Linode and are easier to follow for a novice user.

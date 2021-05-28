@@ -1,20 +1,8 @@
 ---
-slug: accounts-add-users-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to add users to your account.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
-title: Add Users to Your Account
-keywords: ["users", "permissions", "accounts", "passwords"]
+# Shortguide: shows you how to add users to your account.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/accounts-add-users-shortguide/']
 ---
 
 When you add a user, you give that individual permission to log in to the Linode Cloud Manager and, depending on the access level they are assigned, receive email notifications. Users can have either limited or full access to account features.

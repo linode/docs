@@ -1,20 +1,8 @@
 ---
-slug: cloud-invoices-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to print an invoice in the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
-title: How to Print an Invoice in the Cloud Manager
-keywords: ["cloud manager"]
+# Shortguide: shows you how to print an invoice in the Cloud Manager.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/cloud-invoices-shortguide/']
 ---
 
 You can download a printable PDF of your billing invoice from your list of invoices or from within an individual invoice.

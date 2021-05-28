@@ -1,20 +1,8 @@
 ---
-slug: managed-remove-service-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to remove a service from Linode Managed.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Remove a Service from Monitoring in Linode Managed
-keywords: ["linode managed"]
+# Shortguide: describes how to remove a service from Linode Managed.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/managed-remove-service-shortguide/']
 ---
 
 If you decide to remove or stop using a monitored service on your Linode, you should also remove the service from Linode Managed. For example, you should remove the Apache service from Linode Managed if you decide to start using Linode as a dedicated database server. To remove a monitored service:

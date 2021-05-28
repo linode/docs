@@ -1,20 +1,8 @@
 ---
-slug: managed-reenable-service-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to reenable a disabled service from Linode Managed.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Reenable a Disabled Service in Linode Managed
-keywords: ["linode managed"]
+# Shortguide: describes how to reenable a disabled service from Linode Managed.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/managed-reenable-service-shortguide/']
 ---
 
 To reenable monitoring for a service:

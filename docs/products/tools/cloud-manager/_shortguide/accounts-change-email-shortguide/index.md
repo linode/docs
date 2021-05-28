@@ -1,20 +1,8 @@
 ---
-slug: accounts-change-email-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to change the email address on your account.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
-title: Change Your Email Address on Your Account
-keywords: ["users", "permissions", "accounts", "passwords"]
+# Shortguide: shows you how to change the email address on your account.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/accounts-change-email-shortguide/']
 ---
 
 Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.

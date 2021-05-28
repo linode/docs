@@ -1,20 +1,8 @@
 ---
-slug: managed-disable-service-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to temporarily disable service monitoring in Linode Managed.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Disable Service Monitoring in Linode Managed
-keywords: ["linode managed"]
+# Shortguide: describes how to temporarily disable service monitoring in Linode Managed.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/managed-disable-service-shortguide/']
 ---
 
 Service monitoring can be temporarily disabled:

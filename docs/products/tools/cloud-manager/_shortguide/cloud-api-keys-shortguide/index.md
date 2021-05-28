@@ -1,20 +1,8 @@
 ---
-slug: cloud-api-keys-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to create and manage API keys in the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
-title: How to Create and Manage API Keys in the Cloud Manager
-keywords: ["cloud manager"]
+Shortguide: shows you how to create and manage API keys in the Cloud Manager.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/cloud-api-keys-shortguide/']
 ---
 
 API Tokens (personal access tokens) are used in token-based authentication to provide users or programming scripts with different levels of access to your Linode account's resources and services via the [Linode API v4](/docs/api). You can create and manage your API tokens using the Cloud Manager.

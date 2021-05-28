@@ -1,20 +1,8 @@
 ---
-slug: accounts-update-contact-info-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to update the contact information on your account.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
-title: Update the Contact Information on Your Account
-keywords: ["users", "permissions", "accounts", "passwords"]
+# Shortguide: shows you how to update the contact information on your account.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/accounts-update-contact-info-shortguide/']
 ---
 
 Use the **Billing Info** page to update the contact information for the Linode account. The email address saved on this webpage receives invoices, receipts, and credit card expiration warnings.

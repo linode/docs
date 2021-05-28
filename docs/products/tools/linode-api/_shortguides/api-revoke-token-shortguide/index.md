@@ -1,20 +1,8 @@
 ---
-slug: api-revoke-token-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide shows you how to revoke an API token in the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: How to Revoke an API Token in the Cloud Manager
-keywords: ["api"]
+# Shortguide: shows you how to revoke an API token in the Cloud Manager.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/api/api-revoke-token-shortguide/']
 ---
 
 If you forget your access token or think it may have been compromised, you can revoke an API access token in the Cloud Manager.

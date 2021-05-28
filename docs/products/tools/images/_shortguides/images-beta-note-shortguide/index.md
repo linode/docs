@@ -1,15 +1,6 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-description: ''
-keywords: []
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-28
-modified_by:
-  name: Linode
-published: 2021-04-28
-title: "Images Beta Note"
+# Shortguide: Images Beta Note
+
 headless: true
 show_on_rss_feed: false
 ---
