@@ -1,20 +1,8 @@
 ---
-slug: dns-manager-edit-dns-records-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to edit DNS records.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
-title: Edit DNS Records in Cloud Manager
-keywords: ["dns"]
+# Shortguide: shows you how to edit DNS records.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/dns-manager-edit-dns-records-shortguide/']
 ---
 
 To modify a Domain's existing DNS records:

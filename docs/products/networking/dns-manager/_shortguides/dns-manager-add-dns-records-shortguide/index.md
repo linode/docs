@@ -1,20 +1,8 @@
 ---
-slug: dns-manager-add-dns-records-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to add DNS records.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
-title: Add a DNS Records in Cloud Manager
-keywords: ["dns"]
+# Shortguide: shows you how to add DNS records.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/dns-manager-add-dns-records-shortguide/']
 ---
 
 When you first create a domain, you'll need to add some DNS records. <!-- The DNS Manager can create some basic records to get you started when you create your domain zone, --> This section explains how to add your own records.

@@ -1,20 +1,8 @@
 ---
-slug: configure-nodebalancer-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that outlines an example for configuring a NodeBalancer'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Configure a NodeBalancer
-keywords: ["nodebalancer"]
+# Shortguide: outlines an example for configuring a NodeBalancer
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","networking"]
-aliases: ['/platform/nodebalancer/configure-nodebalancer-shortguide/']
 ---
 
 1.  Visit the NodeBalancers page in the Linode [Cloud Manager](https://cloud.linode.com) and select **Add a NodeBalancer**.

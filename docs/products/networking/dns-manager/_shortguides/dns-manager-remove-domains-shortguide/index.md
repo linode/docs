@@ -1,20 +1,8 @@
 ---
-slug: dns-manager-remove-domains-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to delete domains.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-21
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-21
-title: Delete Domains in Cloud Manager
-keywords: ["dns"]
+# Shortguide: shows you how to delete domains.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","cloud manager"]
-aliases: ['/platform/manager/dns-manager-remove-domains-shortguide/']
 ---
 
 If one of your domain names has expired or if you want to start hosting it on another DNS provider, you should permanently delete the domain and all of its associated DNS records.
