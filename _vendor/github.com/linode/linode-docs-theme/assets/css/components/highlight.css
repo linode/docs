@@ -3,7 +3,7 @@
 }
 
 .highlight .chroma pre {
-  overflow: auto;
+  overflow: scroll;
 }
 
 .highlight .chroma .lntd code {

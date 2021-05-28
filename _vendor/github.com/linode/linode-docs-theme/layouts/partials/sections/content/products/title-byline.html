@@ -1,5 +1,5 @@
 <h1 class="leading-tight tracking-tight text-4xl text-titlecolor w-full">
-  {{ partial "funcs/get-page-title.html" . }}
+  {{ .Parent.Params.title }} - {{ .Title }}
 </h1>
 <p class="pt-2 text-basicgray">
   {{ if eq .PublishDate .Lastmod }}

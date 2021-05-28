@@ -6,7 +6,7 @@
     </div>
     <div class="py-4 md:py-8 px-4">
       <h4 class="text-2xl mb-5 text-titlecolor tracking-tight font-semibold three-lines-ellipsis">
-        {{ partial "funcs/get-page-link-title.html" .page }}
+        {{ .page.LinkTitle }}
       </h4>
       {{ if .showSummary }}
         <p class="mt-2">

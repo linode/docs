@@ -13,7 +13,7 @@ See https://github.com/yuin/goldmark/issues/125 for more context.
    {{ $copyIcon }}
   </div>
  </dt>
- <dd class="overflow-x-auto" :class="{ 'is-scroll-x' : isScrollX($refs.container) }" x-ref="container">
+ <dd class="overflow-x-scroll" :class="{ 'is-scroll-x' : isScrollX($refs.container) }" x-ref="container">
   {{ $style := .Get 1 | default "bash" }}
   <div x-ref="code">
    {{- highlight (trim $.Inner "\n" )  $style "linenos=table" -}}
