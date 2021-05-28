@@ -6,12 +6,14 @@ author:
 description: "YUM is the default package manager on CentOS and provides an easy-to-use tool for managing your packages. This guide familiarizes you with YUM's capabilities and gets you started with its most commonly used features."
 og_description: "YUM is the default package manager on CentOS and provides an easy-to-use tool for managing your packages. This guide familiarizes you with YUM's capabilities and gets you started with its most commonly used features."
 keywords: ['yum','installing','updating','upgrading','uninstalling','removing','package repositories','centos']
+tags: ['centos','linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-07
+published: 2021-05-21
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use YUM"
-h1_title: "How to Use YUM"
+h1_title: "Using YUM"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

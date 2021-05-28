@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.93.0
+  version: 4.93.1
 
   title: Linode API
   description: |
@@ -3602,7 +3602,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  upload_url:
+                  upload_to:
                     type: string
                     description: The URL to upload the Image to.
                   image:
