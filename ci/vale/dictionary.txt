@@ -768,6 +768,7 @@ klei
 kloth
 kloxo
 knowledgebase
+konsole
 konversation
 kube
 kubeadm
@@ -877,6 +878,7 @@ maitis
 makefile
 managesieve
 mandriva
+manjaro
 manyof
 mapbox
 mapreduce
