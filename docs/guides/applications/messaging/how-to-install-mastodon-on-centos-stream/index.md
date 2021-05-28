@@ -213,7 +213,7 @@ Mastodon participates in the [*Fediverse*](https://en.wikipedia.org/wiki/Fediver
 
     - Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
-    - When prompted to create a Mastodon admin user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
+    - When prompted to create a Mastodon administrator user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
 
     - For any other prompts, enter the default values by pressing **Enter**.
 
@@ -311,7 +311,7 @@ Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide us
 
 ## Using Mastodon
 
-1. In a web browser, navigate to your Mastodon site's domain. You should see the Mastodon login page, where you can login as the admin user you created earlier or create a new user.
+1. In a web browser, navigate to your Mastodon site's domain. You should see the Mastodon login page, where you can login as the administrator user you created earlier or create a new user.
 
     [![Mastodon login/sign-up page](mastodon-login-signup_small.png "Mastodon login/sign-up page")](mastodon-login-signup.png)
 
