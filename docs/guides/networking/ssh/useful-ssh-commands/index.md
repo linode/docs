@@ -3,7 +3,7 @@ slug: useful-ssh-commands
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A guide on how to connect to a Linode server via SSH from Linux using the OpenSSH server on Ubuntu 20.10 Groovy Gorilla for the example.'
+description: 'A guide on how to connect to a Linode server via SSH from Linux using the OpenSSH server on Ubuntu 20.10 Groovy Gorilla.'
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 tags: ["SSH", "Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,7 +18,7 @@ external_resources:
 A *secure shell* (SSH) is used for securing network connections between devices. When most people refer to SSH, it is within the context of a remote connection from a client computer to a server, and there are some useful commands to know when using SSH to do this. This article covers what you can do when connected to your Linode over SSH on the *command-line interface* (CLI).
 
 {{< note >}}
-When you connect over SSH to your Linode, you are opening a remote console session on that machine and the commands you type are as if you were at a keyboard connected directly to it. Those commands are not specific to SSH but Linux, and many of the basic Linux CLI commands are covered in our guide on [Using the Terminal](/docs/guides/using-the-terminal/) and can be used on your Linode. If you are unfamiliar with Linux commands, that is a good place to start.
+When you connect over SSH to your Linode, you are opening a remote console session on that machine and the commands you type are as if you were at a keyboard connected directly to it. Those commands are not specific to SSH but Linux, and many of the basic Linux CLI commands are covered in the [Using the Terminal](/docs/guides/using-the-terminal/) and can be used on your Linode. If you are unfamiliar with Linux commands, that is a good place to start.
 {{< /note >}}
 
 {{< note >}}
@@ -36,21 +36,21 @@ The domain name and IP address below are reserved by the Internet Assigned Numbe
 
 ## Commands to use with SSH
 
-As mentioned above, many of the basic Linux CLI commands, such as `ls`, `cd`, `rm`, and more are covered in [Using the Terminal](/docs/guides/using-the-terminal/). Getting to know those will help you use the Linode.
+As mentioned before, many of the basic Linux CLI commands, such as `ls`, `cd`, `rm`, and more are covered in [Using the Terminal](/docs/guides/using-the-terminal/). Getting to know those will help you use the Linode.
 
 SSH itself can be used for a few more things than just connecting, however.
 
 ### Sending a Single Remote Command
 
-If you simply need to do one thing, then you can send a command along with the SSH login after the hostname (if you haven’t set up [public key authentication](docs/guides/security/authentication/use-public-key-authentication-with-ssh/), you will be prompted for the account's password).
+If you simply need to do one thing, then you can send a command along with the SSH login after the hostname and if you haven’t set up [public key authentication](docs/guides/security/authentication/use-public-key-authentication-with-ssh/), you are prompted for the account's password.
 
-For example, if you just wanted to check what's in your user directory, you would send `ssh linode@example.com ls`, get prompted for your password (if public key authentication isn't set up), and then be dropped directly back to your local machine's command prompt. This can be useful to find the date on the machine (`ssh linode@example.com date`) or maybe its Linux distribution and version (`ssh linode@example.com lsb_release -a`), amongst many other things.
+For example, if you just wanted to check what's in your user directory, you would send `ssh linode@example.com ls`, get prompted for your password if public key authentication isn't set up, and then be dropped directly back to your local machine's command prompt. This can be useful to find the date on the machine (`ssh linode@example.com date`) or maybe its Linux distribution and version (`ssh linode@example.com lsb_release -a`), amongst many other things.
 
 #### Using sudo
 
 If a command needs `sudo`, the remote computer wants a session to be present. If you try to send a `sudo` command, the server will respond that there's "no tty present" or there isn't a "stable CLI interface" as `sudo` is expecting a terminal. to force this, use the `-t` switch, which forces a psuedo-terminal allocation.
 
-For example, if you wanted to quickly see if an Ubuntu server using the *Advanced Package Tool* (APT) had packages needing updates, you would run `sudo apt update`. To do this in a single line on the example server, you would send `ssh linode@example.com -t "sudo apt update"` and that would result in something like this:
+For example, if you wanted to quickly see if an Ubuntu server using the *Advanced Package Tool* (APT) had packages that needs updates, you can use `sudo apt update`. To do this in a single line on the example server, you would send `ssh linode@example.com -t "sudo apt update"` and that would result in something like this:
 
 {{< output >}}
 Hit:1 http://mirrors.linode.com/ubuntu focal InRelease
@@ -68,13 +68,13 @@ Connection to 93.184.216.34 closed.
 
 #### Stringing Commands on the CLI
 
-Multiple commands can be strung together, though care has to be taken to get them correct. For example, if you wanted to create a file named "bar.txt" in a directory called "foo" in the example user's directory, you would string the commands together in one line, delimited within parentheses (`"`) and each separated by a semi-colon and a space (`; `), making the line entered: `ssh linode@example.com "mkdir foo; cd foo; touch bar.txt`
+Multiple commands can be strung together, though care has to be taken to get them correct. For example, if you wanted to create a file named *bar.txt* in a directory called *foo* in the example user's directory, you would string the commands together in one line, delimited within parentheses (`"`) and each separated by a semi-colon and a space (`; `). The command would be: `ssh linode@example.com "mkdir foo; cd foo; touch bar.txt`
 
 #### Using a File
 
 It is also possible to run multiple commands using text files and scripts. If you wanted to create the same file as above, but save the commands as a text file:
 
-1.  Start by creating a file called "multiple-commands.txt" on your local system: `cat >multiple-commands.txt`
+1.  Start by creating a file called *multiple-commands.txt* on your local system: `cat >multiple-commands.txt`
     - This assumes you are using the CLI in Linux or macOS to do this. Feel free to create the file as you want.
 2.  Enter the commands you want to execute:
     {{< file "multiple-commands.txt" plaintext >}}
@@ -83,7 +83,7 @@ cd foo
 touch bar.txt
     {{< /file >}}
 3.  Use Control-D to close and save the file.
-4.  At the CLI, make sure you are in the folder or directory "multiple-commands.txt" is in, and then enter the SSH command: `ssh linode@example.com < multiple-commands.txt`
+4.  At the CLI, make sure you are in the folder or directory *multiple-commands.txt* is in, and then enter the SSH command: `ssh linode@example.com < multiple-commands.txt`
 
 ## Further Reading on SSH
 
