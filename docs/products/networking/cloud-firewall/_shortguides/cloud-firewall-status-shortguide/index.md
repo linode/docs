@@ -1,20 +1,8 @@
 ---
-slug: cloud-firewall-status-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to update the Cloud Firewall status'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-11-09
-modified_by:
-  name: Ryan Syracuse
-published: 2020-11-09
-title: Update the Cloud Firewall Status
-keywords: ["cloud firewall"]
+# Shortguide: describes how to update the Cloud Firewall status.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/cloud-firewall/cloud-firewall-status-shortguide/']
 ---
 
 When you [add a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/add-firewall/), the Firewall is enabled by default. Enabled means that the Firewall is active. If it is applied to a Linode service it filters your Linode service's network traffic according to the Firewall's rules. Disabling a Firewall deactivates the Firewall and it no longer filters any traffic for the Linode services it has been applied to.

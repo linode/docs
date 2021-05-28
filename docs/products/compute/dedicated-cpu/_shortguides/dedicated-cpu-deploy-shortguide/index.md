@@ -1,20 +1,8 @@
 ---
-slug: dedicated-cpu-deploy-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to delpoy a Dedicated CPU in the Linode Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
-title: How to Deploy a Dedicated CPU in the Linode Cloud Manager
-keywords: ["dedicated CPU"]
+# Shortguide: Shows you how to delpoy a Dedicated CPU in the Linode Cloud Manager.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/dedicated-cpu/dedicated-cpu-deploy-shortguide/']
 ---
 
 ![Create a Dedicated CPU Linode in the Cloud Manager](dedi-cpu-with-new-manager.gif "Create a Dedicated CPU Linode in the Cloud Manager")

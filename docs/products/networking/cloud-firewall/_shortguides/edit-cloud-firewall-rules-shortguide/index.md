@@ -1,20 +1,8 @@
 ---
-slug: edit-cloud-firewall-rules-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to edit Cloud Firewall rules'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-11-09
-modified_by:
-  name: Ryan Syracuse
-published: 2020-11-09
-title: Edit Cloud Firewall Rules
-keywords: ["cloud firewall"]
+# Shortguide: describes how to edit Cloud Firewall rules.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/cloud-firewall/edit-cloud-firewall-rules-shortguide/']
 ---
 
 Follow the steps in this section to edit predefined and custom Firewall Rules.

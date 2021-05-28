@@ -1,20 +1,8 @@
 ---
-slug: delete-cloud-firewall-rules-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to delete Cloud Firewall rules'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-11-09
-modified_by:
-  name: Ryan Syracuse
-published: 2020-11-09
-title: Delete Cloud Firewall Rules
-keywords: ["cloud firewall"]
+# Shortguide: describes how to delete Cloud Firewall rules.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/cloud-firewall/delete-cloud-firewall-rules-shortguide/']
 ---
 
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.

@@ -1,20 +1,8 @@
 ---
-slug: gpu-install-driver-with-cuda-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to install the NVIDIA with CUDA for Linode GPU Instances.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
-title: How to Install the NVIDIA driver with CUDA for Linode GPU Instances
-keywords: ["gpu"]
+# Shortguide: shows you how to install the NVIDIA with CUDA for Linode GPU Instances.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/linode-gpu/gpu-install-driver-with-cuda-shortguide/']
 ---
 
 {{< note >}}
