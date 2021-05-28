@@ -48,7 +48,7 @@ If you're using Linux through the command line, you can skip this step. If you a
 
 If this key combination does not work for you, other instructions for opening a terminal vary depending on the Linux distribution and desktop environment you are running. In many cases, you'll want to open the application search tool and search for "terminal".
 
-## Connect to the Remote Server Over SSH
+## Connecting to the Remote Server Over SSH
 
 1. Within the terminal, enter the following command, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server.
 
@@ -124,7 +124,3 @@ If SSH isn't connecting you to your Linode, it is possible that it needs to be l
 - Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. See the guide [Use SSH Public Key Authentication on Linux, macOS, and Windows](/docs/guides/use-public-key-authentication-with-ssh/) for details.
 
 - See the "Harden SSH Access" section of [Securing Your Server](/docs/security/securing-your-server/) to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
-
-### Additional SSH Commands
-
-If you want more details on what can be done with SSH, read the manual page by entering `man ssh` in the Terminal. There are some of the more interesting SSH-related commands in [Useful SSH Commands](/docs/guides/useful-ssh-commands).
