@@ -181,7 +181,7 @@ VAPID_PUBLIC_KEY=BAy1_TgcWYBei7pXcX0MX-z0x-Cc85Fl9p-FhpDE4_BWT=
 
     - Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
-    - When prompted to create a Mastodon admin user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
+    - When prompted to create a Mastodon administrator user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
 
     - For any other prompts, enter the default values by pressing **Enter**.
 
