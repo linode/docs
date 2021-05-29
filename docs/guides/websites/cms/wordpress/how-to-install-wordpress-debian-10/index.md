@@ -1,17 +1,17 @@
 ---
-slug: how-to-install-wordpress-ubuntu-2004
+slug: how-to-install-wordpress-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: "WordPress is an immensely popular and open-source content management system (CMS). It comes with access to an array of themes and plugins to make it your own. This guide helps you get a WordPress up and running on your Ubuntu 20.04 server."
-og_description: "WordPress is an immensely popular and open-source content management system (CMS). It comes with access to an array of themes and plugins to make it your own. This guide helps you get a WordPress up and running on your Ubuntu 20.04 server."
-keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms']
+description: "WordPress is a popular open-source content management system (CMS) that is highly extensible through its library of plugins and themes. This guide provides a walkthrough for installing WordPress on your Debian 10 server."
+og_description: "WordPress is a popular open-source content management system (CMS) that is highly extensible through its library of plugins and themes. This guide provides a walkthrough for installing WordPress on your Debian 10 server."
+keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms','install wordpress on debian 10']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-27
+published: 2021-05-29
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install WordPress on Ubuntu 20.04"
-h1_title: "How to Install WordPress on Ubuntu 20.04"
+title: "How to Install WordPress on Debian 10"
+h1_title: "How to Install WordPress on Debian 10"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -19,12 +19,12 @@ relations:
     platform:
         key: how-to-install-wordpress
         keywords:
-           - distribution: Ubuntu 20.04
+           - distribution: Debian 10
 ---
 
-WordPress is an open-source content management system (CMS), one of the most popular around. You can frequently find WordPress powering blogs and other websites where effective content management is central. WordPress also comes with access to a wide array of themes, plugins, and widgets to meet your website's needs and make it your own.
+WordPress is an open-source content management system (CMS), one of the most popular around. WordPress was originally designed for blogging, and it is still one of the most commonly used platforms for that. But its effectiveness as a CMS has also made useful for an array of websites where strong content management is crucial. WordPress also boasts an extensive library of themes, plugins, and widgets to meet your website's needs and make it your own.
 
-In this guide, learn how to install WordPress on your Ubuntu 20.04 server.
+In this guide, learn how to install WordPress on your Debian 10 server.
 
 ## Before You Begin
 
@@ -50,41 +50,53 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 
 ### Install a LAMP or LEMP Stack
 
-1. Install and configure a LAMP or LEMP stack. For either stack, make sure that you are installing at least PHP version **7.4**. This is the default on Ubuntu 20.04. Additionally, make sure to replace all version numbers in the above guides with the number of the version you are installing.
+1. Install PHP. The default version of PHP on Debian 10 is **7.3**, but WordPress requires version **7.4**. So, these steps use the Sury package repository to get the required version:
 
-    - To create a LAMP stack, follow the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
+    - Add the packages needed to add the Sury repository:
 
-    - To create a LEMP stack, follow the [How to Install the LEMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) guide for instructions. 
+            sudo apt install apt-transport-https lsb-release ca-certificates curl
 
-1. If you are using a LAMP stack, make sure the `rewrite` module is enabled.
+    - Add the repository's GPG key, then add the repository to the package manager:
 
-    - See what modules are enabled with:
+            sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+            sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 
-            sudo a2enmod status
+    - Update the package manager, and install PHP 7.4, its extension for MySQL, and the associated Apache module:
 
-    - Enable the `rewrite` module if it is not already enabled, then restart Apache:
+            sudo apt update
+            sudo apt install php7.4 php7.4-mysql libapache2-mod-php7.4
 
-            sudo a2enmod rewrite
-            sudo systemctl restart apache2
+1. Complete the installation of a LAMP or LEMP stack by following one of the guide linked below. Ignore the sections on installing PHP, and otherwise replace any mention of the PHP version number with **7.4**.
 
-1. If you are using a LEMP stack:
+    - To create a LAMP stack, follow the [Install a LAMP Stack on Debian 10 ](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide for instructions. Additionally, you need to ensure that the `rewrite` Apache module is enabled, which you can do with the following steps:
 
-    - Add `index.php` to the `location /` block of your site's configuration file:
+        - See what modules are enabled with:
 
-        {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+                sudo a2enmod status
+
+        - Enable the `rewrite` module if it is not already enabled, then restart Apache:
+
+                sudo a2enmod rewrite
+                sudo systemctl restart apache2
+
+    - To create a LEMP stack, follow the [How to Install the LEMP Stack on Debian 10](/docs/guides/how-to-install-the-lemp-stack-on-debian-10/) guide for instructions. Additionally, take the following steps to prepare your NGINX configuration for WordPress:
+
+        - Add `index.php` to the `location /` block of your site's configuration file:
+
+            {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / {
     index index.php index.html index.htm;
     try_files $uri $uri/ =404;
 }
-        {{< /file >}}
+            {{< /file >}}
 
-    - Unlink the default configuration file:
+        - Unlink the default configuration file:
 
-            sudo unlink /etc/nginx/sites-enabled/default
+                sudo unlink /etc/nginx/sites-enabled/default
 
-    - Use the following command to reload NGINX's configuration:
+        - Use the following command to reload NGINX's configuration:
 
-            sudo systemctl restart nginx
+                sudo systemctl restart nginx
 
 ### Create a WordPress Database
 
