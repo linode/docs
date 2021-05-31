@@ -1,22 +1,25 @@
 ---
-slug: how-to-install-nagios-on-debian-10-ubuntu-2004
+slug: install-nagios-on-debian-10-and-ubuntu-2004
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04.'
-og_description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04.'
+description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
+og_description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
+tags: ['nagios', 'ubuntu', 'apache', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-25
 modified_by:
   name: Linode
-title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
+title: "Install Nagios on Debian 10 and Ubuntu 20.04"
 h1_title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Installing Nagios4 from Debian Packages](https://wiki.debian.org/Nagios4)'
+- '[Nagios](https://www.nagios.com/products/nagios-core/)'
+- '[installation guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu)'
+- '[Nagios 4 documentation](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/index.html)'
 relations:
     platform:
         key: install-nagios-monitoring
@@ -32,13 +35,13 @@ Nagios's official installation guide shows how to compile Nagios from source cod
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [Install a LAMP Stack on Debian 10 ](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) or the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
+1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) or the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
 
-1.  Update your system:
+1. Update your system:
 
         sudo apt update && sudo apt upgrade
 
@@ -59,7 +62,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Nagios
 
-1. Install Nagios, answering any prompts you receive during the installation process:
+1. Install Nagios, answering any prompts you to receive during the installation process:
 
         sudo apt install nagios4
 
@@ -73,33 +76,35 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo htdigest -c /etc/nagios4/htdigest.users "Nagios4" nagiosadmin
 
-1. Open the the Nagios configuration file for Apache in your preferred text editor, and make the following changes. The file should be located at `/etc/nagios4/apache2.conf`.
+1. Open the Nagios configuration file for Apache in your preferred text editor, and make the following changes. The file should be located at `/etc/nagios4/apache2.conf`.
 
-    Comment out the `Require ip` line by adding a `#` to the beginning of the line. Beneath that line, add the lines shown below. Under the `File` tag, comment out the `Require all granted` line, and un-comment the `Require valid-user` line.
+    - Comment out the `Require ip` line by adding a `#` to the beginning of the line. Beneath that line, add the lines shown below.
+    - Under the `Files` tag, comment out the `Require all granted` line, and un-comment the `Require valid-user` line.
 
     {{< file "/etc/nagios4/apache2.conf" >}}
-<DirectoryMatch (/usr/share/nagios4/htdocs|/usr/lib/cgi-bin/nagios4|/etc/nagios4/stylesheets)>
-    # [...]
+ <DirectoryMatch (/usr/share/nagios4/htdocs|/usr/lib/cgi-bin/nagios4|/etc/nagios4/stylesheets)>
+
+# [...]
+
     #Require ip ::1/128 fc00::/7 fe80::/10 10.0.0.0/8 127.0.0.0/8 169.254.0.0/16 172.16.0.0/12 192.168.0.0/16
-    AuthDigestDomain            "Nagios4"
-    AuthDigestProvider          file
-    AuthUserFile                "/etc/nagios4/htdigest.users"
-    AuthGroupFile               "/etc/group"
-    AuthName                    "Nagios4"
-    AuthType                    Digest
-    Require                     valid-user
-    Allow from                  127.0.0.1 198.51.100.0
     <Files "cmd.cgi">
-        # [...]
-        #Require all    granted
-        Require valid-user
+        AuthDigestDomain            "Nagios4"
+        AuthDigestProvider          file
+        AuthUserFile                "/etc/nagios4/htdigest.users"
+        AuthGroupFile               "/etc/group"
+        AuthName                    "Nagios4"
+        AuthType                    Digest
+        Require                     valid-user
+        Allow from                  127.0.0.1 198.51.100.0
+        #Require all                granted
+        Require                     valid-user
     </Files>
-</DirectoryMatch>
-    {{< /file >}}
+  </DirectoryMatch>
+{{< /file >}}
 
-    Replace `198.51.100.0` with one or more IP addresses from which you would like to access the Nagios interface, each separated by spaces. You can find the IP address you are making an SSH connection from by running the `who` command.
+    - Replace `198.51.100.0` with one or more IP addresses from which you would like to access the Nagios interface, each separated by **spaces**. You can find the IP address you are making an SSH connection from by running the `who` command.
 
-    This configuration limits Nagios access to users coming from a pre-approved IP address and providing valid login credentials. The changes to the `File` section ensure that only a user with the appropriate permissions can send commands to your machine via the Nagios interface. By default, only the `nagiosadmin` user configured above has these permissions.
+    - This configuration limits Nagios access to users coming from a pre-approved IP address and providing valid login credentials. The changes to the `Files` section ensure that only a user with the appropriate permissions can send commands to your machine via the Nagios interface. By default, only the `nagiosadmin` user that is configured above has these permissions.
 
 1. Open the Nagios CGI configuration file, located at `/etc/nagios4/cgi.cfg`, and set `use_authentication` to `1`.
 
@@ -118,15 +123,15 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Use a web browser to navigate to your machine's domain name or public IP address followed by `/nagios4`. If you are accessing Nagios from the machine on which it is installed, navigate to: `localhost/nagios4`. When prompted, log in using the credentials you set up for the administrator user above (`nagiosadmin`).
 
-You should be greeted by the Nagios landing page.
+- You should be greeted by the Nagios landing page.
 
 [![Landing page for Nagios](nagios-landing-page_small.png "Landing page for Nagios")](nagios-landing-page.png)
 
-You can view monitoring status information by selecting **Hosts** from the menu on the left.
+- You can view monitoring status information by selecting **Hosts** from the menu on the left.
 
 [![Nagios page displaying monitoring status](nagios-hosts-page_small.png "Nagios page displaying monitoring status")](nagios-hosts-page.png)
 
-You can get details on the services running and their statuses by selecting **Services** from the menu on the left.
+- You can get details on the services running and their statuses by selecting **Services** from the menu on the left.
 
 [![Nagios page detailing the services running](nagios-services-page_small.png "Nagios page detailing the services running")](nagios-services-page.png)
 
