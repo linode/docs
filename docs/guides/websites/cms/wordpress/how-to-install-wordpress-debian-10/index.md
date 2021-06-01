@@ -3,8 +3,8 @@ slug: how-to-install-wordpress-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: "WordPress is a popular open-source content management system (CMS) that is highly extensible through its library of plugins and themes. This guide provides a walkthrough for installing WordPress on your Debian 10 server."
-og_description: "WordPress is a popular open-source content management system (CMS) that is highly extensible through its library of plugins and themes. This guide provides a walkthrough for installing WordPress on your Debian 10 server."
+description: "WordPress is a popular open-source content management system (CMS) that is highly extensible through its library of plug-ins and themes. This guide provides a walkthrough for installing WordPress on your Debian 10 server."
+og_description: "WordPress is a popular open-source content management system (CMS) that is highly extensible through its library of plug-ins and themes. This guide provides a walkthrough for installing WordPress on your Debian 10 server."
 keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms','install wordpress on debian 10']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-29
@@ -22,7 +22,7 @@ relations:
            - distribution: Debian 10
 ---
 
-WordPress is an open-source content management system (CMS), one of the most popular around. WordPress was originally designed for blogging, and it is still one of the most commonly used platforms for that. But its effectiveness as a CMS has also made useful for an array of websites where strong content management is crucial. WordPress also boasts an extensive library of themes, plugins, and widgets to meet your website's needs and make it your own.
+WordPress is an open-source content management system (CMS), one of the most popular around. WordPress was originally designed for blogging, and it is still one of the most commonly used platforms for that. But its effectiveness as a CMS has also made useful for an array of websites where strong content management is crucial. WordPress also boasts an extensive library of themes, plug-ins, and widgets to meet your website's needs and make it your own.
 
 In this guide, learn how to install WordPress on your Debian 10 server.
 
@@ -50,7 +50,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 
 ### Install a LAMP or LEMP Stack
 
-1. Install PHP. The default version of PHP on Debian 10 is **7.3**, but WordPress requires version **7.4**. So, these steps use the Sury package repository to get the required version:
+1. Install PHP. The default version of PHP on Debian 10 is **7.3**, but WordPress requires version **7.4**. So, these steps use the Sury package repository to get the required version.
 
     - Add the packages needed to add the Sury repository:
 
@@ -61,14 +61,23 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
             sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
             sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 
-    - Update the package manager, and install PHP 7.4, its extension for MySQL, and the associated Apache module:
+    - Update the package manager:
 
             sudo apt update
-            sudo apt install php7.4 php7.4-mysql libapache2-mod-php7.4
 
-1. Complete the installation of a LAMP or LEMP stack by following one of the guide linked below. Ignore the sections on installing PHP, and otherwise replace any mention of the PHP version number with **7.4**.
+    - Install PHP 7.4 and its extension for MySQL.
 
-    - To create a LAMP stack, follow the [Install a LAMP Stack on Debian 10 ](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide for instructions. Additionally, you need to ensure that the `rewrite` Apache module is enabled, which you can do with the following steps:
+        - For a LAMP stack, you also need to install the associated Apache module:
+
+                    sudo apt install php7.4 php7.4-mysql libapache2-mod-php7.4
+
+        - For a LEMP stack, install `php-fpm` instead of `php`:
+
+                    sudp apt install php7.4-fpm php7.4-mysql
+
+1. Complete the installation of a LAMP or LEMP stack by following the appropriate guide linked below. Ignore the sections on installing PHP, and otherwise replace any mention of the PHP version number with **7.4**.
+
+    - To create a LAMP stack, follow the [Install a LAMP Stack on Debian 10 ](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. Additionally, you need to ensure that the `rewrite` Apache module is enabled, which you can do with the following steps:
 
         - See what modules are enabled with:
 
@@ -79,7 +88,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
                 sudo a2enmod rewrite
                 sudo systemctl restart apache2
 
-    - To create a LEMP stack, follow the [How to Install the LEMP Stack on Debian 10](/docs/guides/how-to-install-the-lemp-stack-on-debian-10/) guide for instructions. Additionally, take the following steps to prepare your NGINX configuration for WordPress:
+    - To create a LEMP stack, follow the [How to Install the LEMP Stack on Debian 10](/docs/guides/how-to-install-the-lemp-stack-on-debian-10/) guide. Additionally, take the following steps to prepare your NGINX configuration for WordPress:
 
         - Add `index.php` to the `location /` block of your site's configuration file:
 
@@ -122,19 +131,17 @@ FLUSH PRIVILEGES;
 
 ## Installing WordPress
 
-1. Create a `src` directory in your website's directory, then change into that new directory. Here and following, the website directory created in the LAMP and LEMP guides is used, `/var/www/example.com`:
+1. Create a `src` directory in your website's directory, then change into that new directory. Here and following, the website directory created in the LAMP and LEMP guides linked above is used, which is `/var/www/example.com`:
 
         sudo mkdir -p /var/www/html/example.com/src
         cd /var/www/html/example.com/src
-
-    This directory gets used to store the WordPress source files. It also gives you a place to keep past versions of WordPress in case you ever need to roll back.
 
 1. Download and extract the latest version of the WordPress package:
 
         sudo wget http://wordpress.org/latest.tar.gz
         sudo tar -xvf latest.tar.gz
 
-1. Rename the `tar.gz` package in a way that makes it easy to distinguish, such as including the date in then name. Here is an example:
+1. Rename the `tar.gz` package in a way that makes it easy to distinguish, such as including the date in the filename. Here is an example:
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
@@ -173,3 +180,4 @@ Congratulations! Your WordPress site is up and running. You can reach the site's
 
 To start learning more about getting the most out of your WordPress site, check out WordPress's [First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/). It helps you figure out how to start using and making your WordPress site your own.
 
+To go beyond the basic configuration on your WordPress site, take a look at our [Configuring WordPress](/docs/guides/configuring-wordpress/) guide. It walks you through more advanced configuration options that open up new features for your WordPress installation.
