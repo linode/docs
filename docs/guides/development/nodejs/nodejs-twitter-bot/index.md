@@ -1,21 +1,22 @@
-```YAML
+---
+slug: nodejs-twitter-bot
 author:
-     name: Pj Metz
-     email: metz.pj@gmail.com
+    name: Pj Metz
+    email: metz.pj@gmail.com
 description: 'Building a new Twitter bot and hosting it on Linode. Guide is for beginners new to coding and cloud services.'
 keywords: ["node.js", "beginner", "javascript", "twitter bot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-27
+published: 2021-06-01
 modified_by:
-	name: Linode
-title: 'Node.js Twitter Bot Beginner’s Guide: Replying to Users and Scheduling Tweets'
+    name: Linode
+title: "Node.js Twitter Bot Beginner's Guide: Replying to Users and Scheduling Tweets"
 contributor:
-	name: Pj Metz
-	link: [Metzinaround.com](https://www.metzinaround.com)
+    name: Pj Metz
+    link: https://www.metzinaround.com
 external_resources:
-	- "[Creating a new User in Ubuntu 		 (https://youtu.be/fDHHKR0nVQg)"
-	- "[FileZilla](https://www.linode.com/docs/guides/filezilla/)
-```
+    - "[Creating a new User in Ubuntu](https://youtu.be/fDHHKR0nVQg)"
+    - "[FileZilla](https://www.linode.com/docs/guides/filezilla/)"
+---
 
 #  Node.js Twitter Bot Beginner’s Guide: Replying to Users and Scheduling Tweets
 
