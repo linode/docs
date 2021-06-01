@@ -6,13 +6,14 @@ author:
 description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
 og_description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
 keywords: ['python3', 'python', 'commenting', 'code', 'programming language']
-tags: ["Python"]
+tags: ["python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-25
+published: 2021-05-21
 modified_by:
   name: Linode
-title: "Creating Comments in Python"
-h1_title: "How to Comment in Python"
+title: "How to Comment in Python"
+h1_title: "Creating Comments in Python"
+enable_h1: true
 external_resources:
 - '[Python Software Foundation](https://www.python.org/)'
 - '[Python Programming at Wikibooks](https://en.wikibooks.org/wiki/Python_Programming)'

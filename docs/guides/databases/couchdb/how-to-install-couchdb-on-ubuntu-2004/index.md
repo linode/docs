@@ -8,11 +8,12 @@ og_description: 'This guide shows you how to install CouchDB 2.0 on Ubuntu 20.04
 keywords: ['couchdb','nosql','database','deploy on ubuntu 20.04']
 tags: ['couchdb','ubuntu','nosql','apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-04
+published: 2021-05-21
 modified_by:
   name: Nathaniel Stickman
-title: "Install CouchDB 2.0 on Ubuntu"
-h1_title: "How to Install CouchDB 2.0 on Ubuntu 20.04"
+title: "How to Install CouchDB 2.0 on Ubuntu 20.04"
+h1_title: "Installing CouchDB 2.0 on Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -133,6 +133,7 @@ bounceback
 brackley
 bram
 brd
+brightbox
 browserify
 bs4
 btmp
@@ -543,6 +544,7 @@ goldmark
 goroutine
 goroutines
 goto
+gpasswd
 gpc
 gpg
 gradle
@@ -599,6 +601,7 @@ host1
 host2
 hostname
 hostnames
+hotfix
 hotlink
 hotlinked
 hotlinking
@@ -940,6 +943,7 @@ mitigations
 mixin
 mixins
 mkdir
+mkpasswd
 mnesia
 mngtmpaddr
 moby
@@ -967,6 +971,7 @@ multicast
 multicloud
 multicraft
 multilib
+multiline
 multiport
 multisite
 multiuser
@@ -1669,6 +1674,7 @@ usercolumn
 userdb
 usergroup
 userland
+usermod
 usersor
 usr
 ust

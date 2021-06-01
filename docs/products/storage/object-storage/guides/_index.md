@@ -25,6 +25,15 @@ These introductory guides to Linode Object Storage help get you up and running w
 
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/): To cancel the Object Storage service you must first delete all your buckets. Then you can cancel the service from the Cloud Manager.
 
+## Clients and Tools
+
+Guides for using Object Storage with various clients and command-line tools:
+
+- [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli): An easy to use command-line tool for use with Linode's own services.
+- [s3cmd](/docs/products/storage/object-storage/guides/s3cmd): One of the most common command-line tools for interacting with S3-compatible object storage solutions, including Linode Object Storage.
+- [s4cmd](/docs/products/storage/object-storage/guides/s4cmd): A faster alternative to the s3cmd command-line tool.
+- [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck): A cross-platform graphical interface for interacting with various cloud storage services.
+
 ## Themes
 
 These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:

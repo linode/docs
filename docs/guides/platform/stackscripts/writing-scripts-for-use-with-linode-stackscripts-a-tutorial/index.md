@@ -62,6 +62,12 @@ Linode images are created using "vanilla" versions of its given distribution. Co
 #!/usr/bin/env python
 {{</ file >}}
 
+    Alternatively, python3 can be specified with the following:
+
+    {{< file >}}
+#!/usr/bin/python3
+{{< /file >}}
+
 ### Import a StackScript
 
 Your scripts can import any Account StackScript that you own or any Community StackScript. This allows you to reuse code minimizing what you need to write in your own scripts.
@@ -137,6 +143,10 @@ If you would like to create a masked password input field, use the word `passwor
     |*example*  | An example input value to present to a user in the Linode Cloud Manager.| String. |
     |*oneof*      | A comma separated list of acceptable single values for the field. When this attribute is provided, a dropdown menu is presented to a user with a list of values to choose from within the Linode Cloud Manager. Only one value can be selected by the user. If your StackScript uses the *oneof* attribute, you cannot use the *manyof* attribute.| Comma separated list of strings. |
     |*manyof*     | A comma separated list of acceptable values for the field in any quantity, combination, or order. When this attribute is used, a dropdown menu is presented to a user. The menu lists the acceptable values they can choose from with the Linode Cloud Manager. Multiple values can be selected by the user. If your StackScript uses the *manyof* attribute, you cannot use the *oneof* attribute. | Comma separated list of strings. |
+
+{{< note >}}
+UDF fields are only usable by scripts written in bash.
+{{< /note >}}
 
 ### Default Environment Variables
 
