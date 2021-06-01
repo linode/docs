@@ -6,13 +6,14 @@ author:
 description: 'A how-to guide explaining how to add admin users, or give users sudo privledges, in Ubuntu using Unbuntu 20.10 Groovy Gorilla as an example.'
 og_description: 'A how-to guide explaining how to add admin users, or give users sudo privledges, in Ubuntu using Unbuntu 20.10 Groovy Gorilla as an example.'
 keywords: ['ubuntu','linux','sudo','sudoers','admin','admins','adding users to sudo','adding user to sudoers']
-tags: ["Ubuntu","Linux","sudo","users"]
+tags: ["ubuntu","Linux","sudo","users"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-01
+published: 2021-05-28
 modified_by:
   name: Linode
 title: "How to Add and Remove sudo Access in Ubuntu"
-h1_title: "How to Add and Remove sudo Access in Ubuntu."
+h1_title: "Adding and Removing sudo Access in Ubuntu"
+enable_h1: true
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'
 - '[sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html)'
