@@ -53,6 +53,7 @@ arping
 askbot
 aske
 async
+asynchrony
 authdaemonrc
 authlib
 authmodulelist
@@ -120,6 +121,7 @@ blockwise
 bluehost
 bookinfo
 boolean
+booleans
 boolstyle
 boonex
 bootable
@@ -131,6 +133,7 @@ bounceback
 brackley
 bram
 brd
+brightbox
 browserify
 bs4
 btmp
@@ -261,6 +264,7 @@ ctx
 cuda
 cutover
 cyberduck
+cyberpanel
 cyg
 cygwin
 cyclomatic
@@ -275,6 +279,7 @@ dahdi
 databags
 datacenter
 datadir
+Datadog
 dataflow
 datagram
 dataset
@@ -423,6 +428,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
+fauxton
 favicon
 fb4c
 fcgi
@@ -471,9 +477,11 @@ fmt
 fn
 fpm
 fragging
+framebuffer
 frakti
 framesets
 freedns
+freeipa
 freshclam
 friendster
 frontend
@@ -536,6 +544,7 @@ goldmark
 goroutine
 goroutines
 goto
+gpasswd
 gpc
 gpg
 gradle
@@ -570,6 +579,7 @@ hardcoded
 hardcopy
 hardlimit
 hashmark
+hashicorp
 hasn
 hba
 hd0
@@ -591,6 +601,10 @@ host1
 host2
 hostname
 hostnames
+hotfix
+hotlink
+hotlinked
+hotlinking
 hotspots
 howto
 howtoforge
@@ -610,6 +624,7 @@ https
 hulu
 hvc0
 hybla
+hypercorn
 hyperefficient
 hyperparameter
 hypervisor
@@ -649,6 +664,7 @@ img
 immutant
 impor
 incentivized
+inclusivity
 inet
 inet6
 infographic
@@ -666,12 +682,15 @@ interdomain
 interruptible
 introducer
 introducers
+io
 iodef
 iotop
 ip
 ip4
 ip6
-ip6tables
+ip6table
+ipa
+ipaserver
 ipchains
 ipset
 ipsets
@@ -685,6 +704,7 @@ iredmail
 irssi
 isn
 iso
+isort
 isoformat
 isp
 issuewild
@@ -712,6 +732,7 @@ journald
 journaled
 journaling
 jpg
+jpetazzo
 jre
 js
 json
@@ -755,6 +776,7 @@ kube
 kubeadm
 kubeconfig
 kubectl
+kubectx
 kubeflow
 kubelet
 kubelets
@@ -766,6 +788,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+libmodsecurity
 livigno
 lbmethod
 lda
@@ -889,6 +912,8 @@ memcrashed
 menuentry
 mesos
 metabase
+metacharacter
+metacharacters
 metacity
 metapackage
 metaparameters
@@ -918,6 +943,7 @@ mitigations
 mixin
 mixins
 mkdir
+mkpasswd
 mnesia
 mngtmpaddr
 moby
@@ -945,6 +971,7 @@ multicast
 multicloud
 multicraft
 multilib
+multiline
 multiport
 multisite
 multiuser
@@ -959,6 +986,7 @@ myhostname
 mynewdomain
 mypassword
 myproject
+mypy
 myserver
 mysql
 mysqli
@@ -1092,6 +1120,7 @@ overengineer
 overwatch
 ovpn
 owadb
+owncast
 owncloud
 pacman
 paas
@@ -1126,6 +1155,7 @@ percona
 performant
 permalink
 permalinks
+Petazzoni
 pflogsumm
 pgpass
 pharmer
@@ -1215,6 +1245,7 @@ py
 pyamqp
 pyenv
 pyinotify
+pylint
 pypa
 pypi
 pypiserver
@@ -1281,6 +1312,7 @@ respawn
 resque
 restapi
 restic
+restreaming
 retargetly
 retpoline
 retrans
@@ -1529,6 +1561,7 @@ tetris
 tf
 tfa
 tgz
+thanos
 thawte
 theano
 theming
@@ -1559,6 +1592,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolset
 traceroute
 trackbar
 traefik
@@ -1605,6 +1639,7 @@ unencrypted
 unexported
 unformatted
 unicast
+unicode
 uninvoiced
 uniq
 unmanaged
@@ -1639,6 +1674,7 @@ usercolumn
 userdb
 usergroup
 userland
+usermod
 usersor
 usr
 ust
@@ -1674,6 +1710,8 @@ virtualhost
 virtualizations
 virtualized
 virtualmin
+vlan
+vlans
 vlogger
 vmail
 vmem

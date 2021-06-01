@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']
+deprecated: true
 ---
 
 Use [Terraform](https://www.terraform.io/), the popular orchestration tool by [HaschiCorp](https://www.hashicorp.com/), to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes cluster running on the [CoreOS ContainerLinux operating system](https://coreos.com/os/docs/latest/). After creating a Master and worker nodes, the module connects through SSH to these instances and installs [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/), [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to `/opt/bin`. It also handles initializing kubeadm, joining worker nodes to the master, and configuring kubectl. For the cluster's container networking interface, Calico is installed. Finally, a kubectl admin config file is installed to the local environment, which you can use to connect to your cluster's API server.
@@ -125,6 +126,14 @@ To use your environment variable, add the `-var` flag. For example, when you run
 1. Using the text editor of your choice, create your cluster's main configuration file named `main.tf`. Add the following contents to the file.
 
       {{< file "~/terraform/k8s-cluster/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
 module "k8s" {
   source             = "linode/k8s/linode"
   version            = "0.1.2"

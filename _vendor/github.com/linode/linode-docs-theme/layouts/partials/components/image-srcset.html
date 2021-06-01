@@ -1,3 +1,9 @@
+{{ if not .alt }}
+  {{ errorf "image-srcset called with no value for .alt" }}
+{{ end }}
+{{ if not .title }}
+  {{ errorf "image-srcset called with no value for .title" }}
+{{ end }}
 {{ $srcSet := "" }}
 {{ $src := $.img.RelPermalink }}
 {{ $imgFormatOptions := "%dx jpg #FAFAFC q71" }}
@@ -8,5 +14,5 @@
 <picture>
   {{/* Note: The Google Page Speed viewport is 360x640, but make it simple for now. */}}
   <source srcset="{{ $resized2x.RelPermalink }}" media="(min-width: 640px)" />
-  <img  width="{{ $resized1x.Width }}" height="{{ $resized1x.Height }}" alt="{{ $.Text }}" src="{{ $resized1x.RelPermalink }}" {{ if $.lazy }} loading="lazy" {{ end }}{{ with $.alt }}alt="{{ . }}" {{ end }}{{ with $.title }}title="{{ . }}" {{ end }}{{ with $.class }}class="{{ . }}" {{ end }}/>
+  <img  width="{{ $resized1x.Width }}" height="{{ $resized1x.Height }}" src="{{ $resized1x.RelPermalink }}" {{ if $.lazy }} loading="lazy" {{ end }} alt="{{ $.alt }}" title="{{ $.title }}" {{ with $.class }}class="{{ . }}" {{ end }}/>
 </picture>

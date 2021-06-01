@@ -29,4 +29,4 @@ Linode’s [API v4](/docs/api) provides the ability to programmatically manage t
 
 ## Linode CLI
 
-The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [manage your account](http://localhost:1313/docs/platform/api/linode-cli/#account)
+The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [manage your account](/docs/platform/api/linode-cli/#account)
