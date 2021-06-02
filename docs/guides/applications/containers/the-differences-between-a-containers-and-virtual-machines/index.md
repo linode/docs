@@ -23,9 +23,7 @@ external_resources:
 
 At the surface, containers and virtual machines (VM) look the same. Both enable companies to run multiple instances of the same operating system and programs on bare metal hardware. However, under the surface, they're not alike.
 
-The key difference is  VM hypervisors, such as [Linux's KVM](https://www.linux-kvm.org/page/Main_Page) and [Xen](https://xenproject.org/), all emulate hardware on a server's processor and memory. So, for example, on Linode you can run [CentOS](https://www.centos.org/), and the [KVM hypervisor](/docs/guides/kvm-reference/). Then, using KVM you can run an instance of [Ubuntu Linux](https://ubuntu.com/) on top of CentOS. That instance shares the resources of the real machine and emulates the server's hardware in almost all respects.
-
-That works well for many jobs. But, because hypervisors emulate the hardware they're quite fat in terms of system requirements.
+The key difference is  VM hypervisors, such as [Linux's KVM](https://www.linux-kvm.org/page/Main_Page) and [Xen](https://xenproject.org/), all emulate hardware on a server's processor and memory. So, for example, on Linode you can run [CentOS](https://www.centos.org/), and the [KVM hypervisor](/docs/guides/kvm-reference/). Then, using KVM you can run an instance of [Ubuntu Linux](https://ubuntu.com/) on top of CentOS. That instance shares the resources of the real machine and emulates the server's hardware in almost all respects. That works well for many jobs. But, because hypervisors emulate the hardware they're quite fat in terms of system requirements.
 
 Containers, on the other hand, are based on shared operating systems. This makes containers such as [Docker](https://www.docker.com/), [LXC](https://linuxcontainers.org/), [runC](https://github.com/opencontainers/runc), and [containerd](https://containerd.io/) skinnier and more efficient than hypervisors. Instead of virtualizing hardware, containers rest on top of a single Linux instance. With these you leave behind the excess VM emulation hardware, there's a much smaller system footprint. Containers only include those operating system components required for an application.
 
