@@ -1,33 +1,39 @@
 ---
-slug: how-to-build-website-using-rust-rocket
+slug: build-a-website-using-rust-and-the-rocket-web-framework
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Rocket is a flexible and efficient web framework for the Rust programming language. It aims to capitalize and the speed and type safety of Rust while providing a clean and straightforward approach to web application development. This guide shows you how to install Rocket and get started using it.'
-og_description: 'Rocket is a flexible and efficient web framework for the Rust programming language. It aims to capitalize and the speed and type safety of Rust while providing a clean and straightforward approach to web application development. This guide shows you how to install Rocket and get started using it.'
+description: 'Rocket is a flexible and efficient web framework for the Rust programming language. It aims to capitalize on the speed and type of safety of Rust while providing a clean and straightforward approach to web application development. This guide shows you how to install Rocket web framework and get started using it.'
+og_description: 'Rocket is a flexible and efficient web framework for the Rust programming language. It aims to capitalize on the speed and type of safety of Rust while providing a clean and straightforward approach to web application development. This guide shows you how to install Rocket web framework and get started using it.'
 keywords: ['rocket','rust','functional programming','web application','app framework','handlebars templates']
+tags: ['rocket', 'rust', 'handlebars', 'cargo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-29
 modified_by:
   name: Nathaniel Stickman
-title: "How to Build a Website Using Rust and the Rocket Framework"
-h1_title: "How to Build a Website Using Rust and the Rocket Framework"
+title: "Build a Website Using Rust and the Rocket Web Framework"
+h1_title: "How to Build a Website Using Rust and the Rocket Web Framework"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Rocket](https://rocket.rs/)'
+- '[Rockets releases page](https://github.com/SergioBenitez/Rocket/releases)'
+- '[Handlebars](https://handlebarsjs.com/)'
+- '[Rockets full guide](https://rocket.rs/v0.4/guide/)'
+- '[Handlebars language guide](https://handlebarsjs.com/guide/)'
+- '[Rusts learning page](https://www.rust-lang.org/learn)'
+
 ---
 
-Rust is a functional programming language noted for its high performance and capabilities in systems programming. However, with the Rocket framework, you can also use Rust for building full-functioning — and efficient — web applications.
+Rust is a functional programming language noted for its high performance and capabilities in systems programming. However, with the *Rocket framework*, you can also use Rust for building full-functioning — and efficient — web applications.
 
 This guide explains what Rocket is, shows you how to install it, and gets you started using it to create your own website.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
@@ -36,7 +42,7 @@ This guide explains what Rocket is, shows you how to install it, and gets you st
 1. Throughout, this guide uses `example-app` as the name of the Rocket application. Replace it with your preferred application name.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is Rocket
@@ -45,15 +51,15 @@ Rocket is a framework for building web applications with the Rust programming la
 
 Beyond that, Rocket emphasizes an easy and minimalistic path to putting together the web application you need. It uses simple and intuitive APIs, and Rocket does its job without all of the boilerplate code. Moreover, it is an extensible framework designed for flexibility.
 
-## Installing Rust
+## Install Rust
 
-Rocket makes use of some of Rust's more cutting-edge features. As such, you need to install the nightly build of Rust to make sure Rocket works properly.
+Rocket makes use of some of Rust's more cutting-edge features. As such, you need to install the *nightly* build of Rust to make sure Rocket works correctly.
 
-1. Install rustup, an installer for Rust. Follow the prompts the installation script presents:
+1. Install **rustup**, an installer for Rust. Follow the prompts the installation script presents.
 
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-    If you do not already have Curl isntalled, use this command to install it first:
+    If you do not already have Curl installed, use this command to install it first:
 
         sudo apt install curl
 
@@ -71,11 +77,14 @@ Rocket makes use of some of Rust's more cutting-edge features. As such, you need
 
 ## Getting Started with Rocket
 
-In this section, the guide shows you, first, how to download and start exploring Rocket's example applications and, second, how to create your own Rocket application.
+In this section, the guide shows you the following:
+
+   1. How to download, and start exploring Rocket's example applications
+   1. How to create your own Rocket application
 
 ### Example Applications
 
-1. Use Git to clone the Rocket repository. For this example, the repository is cloned into the current user's home directory:
+1. Use Git to clone the Rocket repository. For this example, the repository is cloned into the current user's home directory.
 
         cd ~
         git clone https://github.com/SergioBenitez/Rocket
@@ -84,12 +93,12 @@ In this section, the guide shows you, first, how to download and start exploring
 
         sudo apt install git
 
-1. Change into the resulting `Rocket` directory, and checkout the latest version. You can refer to Rocket's [releases page](https://github.com/SergioBenitez/Rocket/releases) to see the latest version:
+1. Change into the resulting `Rocket` directory, and check out the latest version. You can refer to [Rocket's releases page](https://github.com/SergioBenitez/Rocket/releases) to see the latest version.
 
         cd Rocket
         git checkout v0.4.7
 
-1. Look through the `examples` directory for an example you would like to explore. When you have found one, change into its directory. Here, the `hello_world` example is chosen:
+1. Look through the `examples` directory for an example you would like to explore. When you have found one, change it into its directory. Here, the `hello_world` example is chosen.
 
         cd examples/hello_world
 
@@ -106,20 +115,20 @@ In this section, the guide shows you, first, how to download and start exploring
 
 1. Now you can visit the application in your browser by navigating to `localhost:8000`.
 
-### Creating an Application
+### Create an Application
 
-1. Change to the location where you would like for the project directory to be created. In this case, this is the current user's home directory:
+1. Change to the location where you would like the project directory to be created. In this case, this is the current user's home directory.
 
         cd ~
 
-1. Create a new binary-based Rust project, then change into the new directory created for it:
+1. Create a new binary-based Rust project, then change it into the new directory created for it.
 
         cargo new example-app --bin
         cd example-app
 
-    Unless noted otherwise, all subsequent commands in this guide assume you are still in the application directory directory.
+    Unless noted otherwise, all subsequent commands in this guide assume you are still in the application directory.
 
-1. Open the `Cargo.toml` file, and add Rocket as a dependency for the project. Use the version number for the latest version of Rocket. Refer to the [Example Applications](/docs/guides/getting-stated-rocket/#example-applications) section above for how to identify the latest Rocket release:
+1. Open the `Cargo.toml` file, and add Rocket as a dependency for the project. Use the version number for the latest version of Rocket. Refer to the [Example Applications](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#example-applications) section above for how to identify the latest Rocket release.
 
     {{< file "Cargo.toml" >}}
 # [...]
@@ -145,15 +154,15 @@ fn main() {
 }
     {{< /file >}}
 
-1. With this, you have created a basic "Hello, World!" application, which you can test by using the `cargo run` command as shown in the [Example Applications](/docs/guides/getting-stated-rocket/#example-applications) section above.
+1. With this, you have created a basic "Hello, World!" application, which you can test by using the `cargo run` command as shown in the [Example Applications](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#example-applications) section above.
 
-## Building a Website with Rocket
+## Build a Website with Rocket
 
-Rocket can easily be setup to provide web service APIs based on the above example and the official Rocket documentation. (You can find a link to that documentation in this guide's [Conclusion](/docs/guides/how-to-build-website-using-rust-rocket/#conclusion) section.)
+Rocket can easily be set up to provide web service APIs based on the above example and the official Rocket documentation. (You can find a link to that documentation in this guide's [Conclusion](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#conclusion) section).
 
 But pairing Rocket with a template engine like [Handlebars](https://handlebarsjs.com/) makes it ready to run to a full website. The steps below show you how to do just that and set you up with the foundations for going off and building your own.
 
-1. Follow the steps in the [Creating an Application](/docs/guides/getting-started-rocket/#creating-an-application) section above to create a base Rocket application to work off of.
+1. Follow the steps in the [Create an Application](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#create-an-application) section above to create a base Rocket application to work off.
 
 1. Open the project's `Cargo.toml`, and modify it to have the additional lines in the example below:
 
@@ -223,19 +232,19 @@ fn about() -> Template {
 }
     {{< /file >}}
 
-    This creates a `Message` struct, defining the basic shape for messages. The `BoardContext` and `AboutContext` structs determine "context" information to be handed off to the templates. Each context struct has a `parent` attribute. The application uses these attributes in the `board` and `about` functions to apply the appropriate page layout for each page.
+    - This creates a `Message` struct, defining the basic shape for messages. The `BoardContext` and `AboutContext` structs determine "context" information to be handed off to the templates. Each context struct has a `parent` attribute. The application uses these attributes in the `board` and `about` functions to apply the appropriate page layout for each page.
 
-    These two functions are where the application loads the message board and the about pages, respectively. They populare the context information and render the templates with it.
+    - These two functions are where the application loads the Message board and the About pages, respectively. They populate the context information and render the templates with it.
 
-    The application also uses a redirect to navigate users from the base URL (`/`) to the message board URL.
+    - The application also uses a redirect to navigate users from the base URL (`/`) to the message board URL.
 
-1. Create a template directory:
+1. Create a template directory.
 
         mkdir templates
 
 1. Create the five template files shown below.
 
-    The `layout.hbs` file defines the page layout used on each page. Using the `parent` attribute defined in the `main.rs` file's context structs, you could also have different layouts for different sections of your site:
+    - The `layout.hbs` file defines the page layout used on each page. Using the `parent` attribute defined in the `main.rs` file's context structs, you could also have different layouts for different sections of your site.
 
     {{< file "templates/layout.hbs" >}}
 <!doctype html>
@@ -251,7 +260,7 @@ fn about() -> Template {
 </html>
     {{< /file >}}
 
-    The `header.hbs` and `footer.hbs` files provide contents for those sections. These are directly referenced in the page layout file, so they appear on each page of your site that uses that page layout:
+    - The `header.hbs` and `footer.hbs` files provide contents for those sections. These are directly referenced in the page layout file, so they appear on each page of your site that uses that page layout.
 
     {{< file "templates/header.hbs" >}}
 <nav>
@@ -265,7 +274,7 @@ fn about() -> Template {
 </footer>
     {{< /file >}}
 
-    The `index.hbs` file defines the way your main page — in this case, the message board — gets laid out:
+    - The `index.hbs` file defines the way your main page — in this case, the Message board — gets laid out.
 
     {{< file "templates/index.hbs" >}}
 {{#*inline "page"}}
@@ -286,7 +295,7 @@ fn about() -> Template {
 {{~> (parent)~}}
     {{< /file >}}
 
-    The `about.hbs` provides the contents for the about page:
+    The `about.hbs` provides the contents for the about page.
 
     {{< file "templates/about.hbs" >}}
 {{#*inline "page"}}
@@ -300,14 +309,14 @@ fn about() -> Template {
 {{~> (parent)~}}
     {{< /file >}}
 
-1. Now you can run the application using the `cargo run` command as shown in the [Example Applications](/docs/guides/getting-stated-rocket/#example-applications) section above.
+1. Now you can run the application using the `cargo run` command as shown in the [Example Applications](/docs/guides/build-a-website-using-rust-and-the-rocket-web-framework/#example-applications) section above.
 
     ![Example Rocket website using Handlebars templates](rocket-template-example.png)
 
 ## Conclusion
 
-With that, you should have a solid understanding of how to getting started using Rocket to make web applications. Rust and Rocket are highly capable and have a lot to offer with their functional approach, high performance, and efficient design.
+With that, you should have a solid understanding of how to get started using Rocket to make web applications. Rust and Rocket are highly capable and have a lot to offer with their functional approach, high performance, and efficient design.
 
-Check out the Rocket's [full guide](https://rocket.rs/v0.4/guide/) to learn more about the features it offers. And take a look at the Handlebars [language guide](https://handlebarsjs.com/guide/), too, if you are interested in doing more with its templates in Rocket.
+Check out the [Rocket's full guide](https://rocket.rs/v0.4/guide/) to learn more about the features it offers. And take a look at the [Handlebars language guide](https://handlebarsjs.com/guide/), too, if you are interested in doing more with its templates in Rocket.
 
-To continue learning more about the Rust programming language, check out the resources linked on Rust's [learning page](https://www.rust-lang.org/learn), which includes both *The Rust Book* and a Rust course.
+To continue learning more about the Rust programming language, check out the resources linked on [Rust's learning page](https://www.rust-lang.org/learn), which includes both *The Rust Book* and a Rust course.
