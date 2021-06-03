@@ -3,42 +3,42 @@ slug: how-to-create-website-using-laravel
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Laravel is a PHP web framework that scales to your needs, from just starting to advanced design. This guide helps you create website using Laravel framework on your server and walks you through using it to deploy a website.'
-og_description: 'Laravel is a PHP web framework that scales to your needs, from just starting to advanced design. This guide helps you create website using Laravel framework on your server and walks you through using it to deploy a website.'
+description: 'Laravel is a PHP web framework that scales to your needs, from simple to advanced design. This guide shows you how to create a website using the Laravel framework, host it on your server, and use NGINX as the web server.'
+og_description: 'Laravel is a PHP web framework that scales to your needs, from simple to advanced design. This guide shows you how to create a website using the Laravel framework, host it on your server, and use NGINX as the web server.'
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-10
 modified_by:
   name: Nathaniel Stickman
-title: "How to Create Website using Laravel"
-h1_title: "Build a Website using Laravel framework"
+title: "How to Create a Website Using Laravel"
+h1_title: "Build a Website Using the Laravel Framework"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Laravel](https://laravel.com/)'
 - '[Laravels documentation](https://laravel.com/docs/8.x]'
-
 ---
 
-Laravel is a PHP web application framework boasting an elegant and expressive syntax. With Laravel, you can easily spin up a new website while also having the features and scalability to handle advanced and large-scale applications.
+[Laravel](https://laravel.com/) is a PHP web application framework boasting an elegant and expressive syntax. With Laravel, you can easily spin up a new website while also having the features and scalability to handle advanced and large-scale applications.
 
-This guide walks you through the setup process for Laravel, then shows you how to create and deploy your own Laravel website. Distribution-specific installation steps are given for Debian and Ubuntu and CentOS.
+This guide walks you through the setup process for Laravel, then shows you how to create and deploy your own Laravel website. Distribution-specific installation steps are given for Debian, Ubuntu, and CentOS.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - **Debian and Ubuntu**
 
             sudo apt update && sudo apt upgrade
 
-    - On CentOS, use:
+    - **CentOS**
 
             sudo yum update
 
@@ -52,7 +52,7 @@ This guide is written for non-root user. Commands that require elevated privileg
 
 ## Getting Started with Laravel
 
-### Install the Requisites
+### Install the Prerequisites
 
 1. Install PHP and Laravel's recommended PHP extensions.
 
@@ -60,14 +60,14 @@ This guide is written for non-root user. Commands that require elevated privileg
 
             sudo apt install php7.4 php7.4-bcmath php7.4-common php7.4-curl php7.4-json php7.4-mbstring php7.4-mysql php7.4-xml php7.4-zip openssl
 
-    - On CentOS, you need to take the additional step of adding the Remi repository, since the package manager's default repositories only include PHP version 7.2.
+    - On CentOS, you need to take the additional step of adding the [Remi repository](https://rpms.remirepo.net/), since the package manager's default repositories only include PHP version 7.2.
 
         - First, add the Remi repository:
 
               sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
               sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
-        - Then, enable PHP 7.4 from the Remi repository, then update the package manager.
+        - Then, enable PHP 7.4 from the Remi repository and update the package manager.
 
               sudo dnf module enable php:remi-7.4
               sudo dnf update
@@ -76,17 +76,17 @@ This guide is written for non-root user. Commands that require elevated privileg
 
               sudo dnf install php php-bcmath php-common php-json php-mbstring php-mysql php-xml php-zip curl openssl
 
-1. Change into the directory where you intend to keep your Laravel project's directory. This is the current user's home directory in this example.
+1. Change into the directory where you intend to keep your Laravel project's directory. In this example, you use the current user's home directory.
 
         cd ~
 
-1. Download Composer and ensure that Composer can be used globally and make it executable.
+1. Download [Composer](https://getcomposer.org/), ensure that Composer can be used globally, and make it executable.
 
         curl -sS https://getcomposer.org/installer | php
         sudo mv composer.phar /usr/local/bin/composer
         sudo chmod +x /usr/local/bin/composer
 
-1. Run the Composer installer. The following commands download the installer, verifies its SHA-384 key, and run the installation script if the key is valid.
+1. Run the Composer installer. The following commands download the installer, verify its SHA-384 key, and run the installation script if the key is valid.
 
         php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
         php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -103,18 +103,20 @@ This guide is written for non-root user. Commands that require elevated privileg
 
         cd example-app
 
-    Unless noted otherwise, all subsequent commands in this guide assume you are still in this project directory.
+    {{< note >}}
+Unless noted otherwise, all subsequent commands in this guide assume you are still in `example-app` project directory.
+{{< /note >}}
 
-1. Run the PHP development server — Artisan — to verify that the Laravel setup is complete.
+1. Run the PHP development server, Artisan, to verify that the Laravel setup is complete.
 
         php artisan serve
 
     Artisan serves the application on `localhost:8000`. To visit the application remotely, you can use an SSH tunnel:
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **8000**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
+    - On OS X or Linux, use the example command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
-            ssh -L8000:localhost:8000 example-user@198.51.100.0
+            ssh -L8000:localhost:8000 example-user@192.0.2.0
 
 1. Now, you can visit the application in your browser by navigating to `localhost:8000`.
 
@@ -126,9 +128,9 @@ This section shows you how to start working with Laravel's *controllers* and *vi
 
 1. Follow the steps in the [Create a Laravel Project](/docs/guides/how-to-build-website-laravel/#create-a-laravel-project) section above to get started with a base project.
 
-1. This example builds a website with a **Home page** and an **About page**. Create the routes for each by opening the routes file — `routes/web.php` — and giving it the following contents:
+1. This example builds a website with a **Home** page and an **About** page. Create the routes for each by opening the routes file — `~/example-app/routes/web.php` — and add the following contents:
 
-    {{< file "routes/web.php" >}}
+    {{< file "~/example-app/routes/web.php" >}}
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -145,9 +147,9 @@ Route::get('/about', [AboutController::class, 'index']);
 
     First, this imports the controllers—`HomeController` and `AboutController` that get created in the next two steps. Then, it routes requests to the `/home` and `/about` URLs to their respective controllers. It also includes a route to redirect traffic from the base URL (`/`) to the `/home` URL.
 
-1. Create the Home controller by creating an `app/Http/Controllers/HomeController.php` file and giving it the contents shown below:
+1. Create the Home controller by creating an `~/example-app/app/Http/Controllers/HomeController.php` file and giving it the contents shown below:
 
-    {{< file "app/Http/Controllers/HomeController.php" >}}
+    {{< file "~/example-app/app/Http/Controllers/HomeController.php" >}}
 <?php
 
 namespace App\Http\Controllers;
@@ -165,9 +167,9 @@ class HomeController extends Controller
 
     This controller simply renders the Home page view and feeds a `title` parameter into it.
 
-1. Do the same for the About controller, with the file being `app/Http/Controllers/AboutController.php` in this case. This controller serves the same function as the Home controller, just rendering the about page view instead.
+1. Do the same for the About controller. In this case, the new file is `~/example-app/app/Http/Controllers/AboutController.php`. This controller serves the same function as the Home controller, however, it renders the about page view instead.
 
-    {{< file "app/Http/Controllers/AboutController.php" >}}
+    {{< file "~/example-app/app/Http/Controllers/AboutController.php" >}}
 <?php
 
 namespace App\Http\Controllers;
@@ -183,9 +185,15 @@ class AboutController extends Controller
 }
     {{< /file >}}
 
-1. This example's views share a navigation menu, so the website can use a layout template to reduce duplicate code. Create the layout template as `resources/views/layouts/master.blade.php`, and give it the contents shown here. Note that you first need to create the `layouts` subdirectory:
+1. This example's views share a navigation menu, so the website can use a layout template to reduce duplicate code. Create the layout template as `~/example-app/resources/views/layouts/master.blade.php`, and give it the contents shown in the example below.
 
-    {{< file "resources/views/layouts/master.blade.php" >}}
+    {{< note >}}
+Before creating your layout template, you need to create the `layouts` subdirectory.
+
+    mkdir ~/example-app/resources/views/layouts
+{{< /note >}}
+
+    {{< file "~/example-app/resources/views/layouts/master.blade.php" >}}
 <html>
     <head>
         @if ($title)
@@ -204,9 +212,9 @@ class AboutController extends Controller
 </html>
     {{< /file >}}
 
-1. Now, to create the views themselves. Create a `resources/views/home.blade.php` file and a `resources/views/about.blade.php` file. Give each file the contents shown for it below:
+1. Now, to create the views themselves. Create a `~/example-app/resources/views/home.blade.php` file and a `~/example-app/resources/views/about.blade.php` file. Add the contents of the example files below:
 
-    {{< file "resources/views/home.blade.php" >}}
+    {{< file "~/example-app/resources/views/home.blade.php" >}}
 @extends('layouts.master')
 
 @section('content')
@@ -214,7 +222,8 @@ class AboutController extends Controller
         <p>This is the home page for an example Laravel web application.</p>
 @endsection
     {{< /file >}}
-    {{< file "resources/views/about.blade.php" >}}
+
+    {{< file "~/example-app/resources/views/about.blade.php" >}}
 @extends('layouts.master')
 
 @section('content')
@@ -255,7 +264,7 @@ These steps assume your application has the same location and name as given in t
 
         sudo chown -R www-data.www-data /var/www/example-app/storage
 
-1. Create an NGINX configuration file for the website, and give it the contents shown below. Replace `example.com` with your server's domain name.
+1. Create an NGINX configuration file for the website, and add the contents shown below. Replace `example.com` with your server's domain name.
 
     {{< file "/etc/nginx/sites-available/example-app" >}}
 server {
@@ -317,8 +326,8 @@ server {
             sudo systemctl enable php-fpm
             sudo systemctl start php-fpm
 
-1. Your application should now be running — visit it by navigating to your server's domain name in your browser. Make sure you prefix your domain name with `http` rather than `https`, as the server has not been set up for SSL certification.
+1. Your application should now be running — visit it by navigating to your server's domain name in your browser. Make sure you prefix your domain name with `http` rather than `https`, as the server has not been set up with an [SSL certificate](/docs/guides/security/ssl/).
 
 ## Conclusion
 
-You have now got your own Laravel website up and running! To build on what you got started following this guide, be sure to take a look through [Laravel's documentation](https://laravel.com/docs/8.x). There, you can find plenty of information to dive deeper into the components of a Laravel application.
+You now have your own Laravel website up and running! To build on what you created by following this guide, be sure to take a look through [Laravel's documentation](https://laravel.com/docs/8.x). There, you can find plenty of information to dive deeper into the components of a Laravel application.
