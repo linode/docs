@@ -18,7 +18,7 @@ external_resources:
 - '[Website for Docker](https://www.docker.com/)'
 - '[Documentation for Docker](https://docs.docker.com/)'
 - '[Website for containerd](https://containerd.io/)'
-aliases: ['/applications/containers/install-docker-ce-ubuntu-1804/', '/guides/install-docker-ce-ubuntu-1804', '/applications/containers/install-docker-ce/', '/guides/install-docker-ce/', '/guides/how-to-install-docker-ce-on-debian-10', '/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/', '/guides/how-to-install-docker-and-pull-images-for-container-deployment']
+aliases: ['/applications/containers/install-docker-ce-ubuntu-1804/', '/guides/install-docker-ce-ubuntu-1804/', '/applications/containers/install-docker-ce/', '/guides/install-docker-ce/', '/guides/how-to-install-docker-ce-on-debian-10/', '/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/', '/guides/how-to-install-docker-and-pull-images-for-container-deployment/']
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.
