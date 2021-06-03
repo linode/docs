@@ -1,18 +1,9 @@
 ---
-slug: cyberduck
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage'
-og_description: 'Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage'
-keywords: ['object storage', 'cyeberduck']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
-modified_by:
-  name: Linode
-title: "How To Use Object Storage with Cyberduck"
-h1_title: "Using Object Storage with Cyberduck"
-enable_h1: true
+title: "Using Cyberduck with Object Storage"
+description: "Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage."
 ---
 
 Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP, and a number of other protocols, including S3.

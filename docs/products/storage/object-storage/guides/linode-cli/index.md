@@ -1,18 +1,9 @@
 ---
-slug: linode-cli
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to use the Linode CLI to manage Linodes own Object Storage solution.'
-og_description: 'Learn how to use the Linode CLI to manage Linodes own Object Storage solution.'
-keywords: ['Object Storage', 'Linode CLI']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
-modified_by:
-  name: Linode
-title: "How To Use Object Storage with the Linode CLI"
-h1_title: "Using Object Storage with the Linode CLI"
-enable_h1: true
+title: "Using the Linode CLI with Object Storage"
+description: "Learn how to use the Linode CLI to manage Linodes own Object Storage solution."
 ---
 
 The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. With the Object Storage plugin, you can also create and remove buckets, upload objects, and more.
