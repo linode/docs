@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage solution."
-og_description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage solution."
+description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage."
+og_description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage."
 keywords: ['object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28

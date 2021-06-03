@@ -2,9 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Learn how to use the s3cmd command-line tool with Linode's Object Storage.'
+og_description: 'Learn how to use the s3cmd command-line tool with Linode's Object Storage.'
+keywords: ['object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
 modified_by:

@@ -3,9 +3,9 @@ slug: cyberduck
 author:
   name: Linode
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage'
+og_description: 'Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage'
+keywords: ['object storage', 'cyeberduck']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
 modified_by:
