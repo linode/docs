@@ -10,7 +10,7 @@ s3cmd is a command line utility that you can use for any S3-compatible Object St
 
 ## Installing s3cmd
 
-The following commands will install s3cmd on various common operating systems. Additional methods of installing s3cmd can be found within the s3cmd GitHub respostiory under the [Installation of s3cmd package](https://github.com/s3tools/s3cmd/blob/master/INSTALL.md) file.
+The following commands will install s3cmd on various common operating systems. Additional methods of installing s3cmd can be found within the s3cmd GitHub repository under the [Installation of s3cmd package](https://github.com/s3tools/s3cmd/blob/master/INSTALL.md) file.
 
 ### Mac
 
@@ -63,7 +63,7 @@ s3cmd offers a number of additional configuration options that are not presented
 
 - **website_endpoint:** `http://%(bucket)s.website-[cluster-id].linodeobjects.com/`, replacing [cluster-id] with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
 
-## Bucket Operations
+## Interacting with Buckets
 
 ### List Buckets
 
@@ -71,7 +71,7 @@ List all buckets within the data center specified during the configuration proce
 
 **Command:** `s3cmd ls`
 
-To list the buckets within a different data center, use the `--host` paramater as shown below. Replace `us-east-1` with the cluster ID of the data center you wish to use.
+To list the buckets within a different data center, use the `--host` parameter as shown below. Replace `us-east-1` with the cluster ID of the data center you wish to use.
 
 **Example**: List all buckets on the account within the Newark data center when s3cmd has been configured for a different data center:
 
@@ -101,7 +101,7 @@ To delete a bucket that has files in it, include the `--recursive` (or `-r`) opt
 
     s3cmd rb -r -f s3://example-bucket/
 
-## Object Operations
+## Interacting with Objects
 
 ### List Objects
 

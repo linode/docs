@@ -44,7 +44,7 @@ Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other
 
     s4cmd ls --endpoint-url https://us-east-1.linodeobjects.com
 
-## Bucket Operations
+## Interacting with Buckets
 
 ### List Buckets
 
@@ -66,7 +66,7 @@ Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other
 
 There is currently no defined command for deleting a bucket through s4cmd.
 
-## Object Operations
+## Interacting with Objects
 
 ### List Objects
 
