@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.93.1
+  version: 4.94.0
 
   title: Linode API
   description: |
@@ -1644,6 +1644,102 @@ paths:
               -X PUT \
               --data-binary "/path/to/image"
               https://api.linode.com/v4/account/oauth-clients/edc6790ea9db4d224c5c/thumbnail
+  /account/payment-methods:
+    x-linode-cli-command: account
+    get:
+      servers:
+        - url: https://api.linode.com/v4beta
+      parameters:
+        - $ref: '#/components/parameters/pageOffset'
+        - $ref: '#/components/parameters/pageSize'
+      x-linode-grant: read_only
+      tags:
+        - Account
+      summary: Payment Methods List
+      description: |
+        Returns a paginated list of Payment Methods for this Account.
+
+        This endpoint is currently in **beta**. Please make sure to prepend all requests with
+        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
+        updates in the future. This notice will be removed when this endpoint is out of
+        beta.
+      operationId: getPaymentMethods
+      x-linode-cli-action: payment-methods-list
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Payment Method objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      description: Payment Method object response.
+                      properties:
+                        method:
+                          type: string
+                          description: The type of Payment Method.
+                          example: 'credit_card'
+                          x-linode-cli-display: 1
+                        is_default:
+                          type: integer
+                          description: |
+                            Whether this Payment Method is the default method for automatically processing service charges.
+
+                            `0`: False
+
+                            `1`: True
+                          example: 1
+                          x-linode-cli-display: 2
+                        created:
+                          type: string
+                          readOnly: true
+                          format: date-time
+                          description: When the Payment Method was added to the Account.
+                          example: '2018-01-15T00:01:01'
+                        data:
+                          type: object
+                          description: Credit card information.
+                          properties:
+                            card_type:
+                              type: string
+                              description: The type of credit card.
+                              example: ""
+                              x-linode-cli-display: 8
+                            last_four:
+                              type: string
+                              description: The last four digits of the credit card number.
+                              example: "1234"
+                              x-linode-cli-display: 9
+                            expiry:
+                              type: string
+                              format: MM/YYYY
+                              description: The expiration month and year of the credit card.
+                              example: 06/2022
+                              x-linode-cli-display: 10
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4beta/account/payment-methods
+        - lang: CLI
+          source: >
+            linode-cli account payment-methods-list
   /account/payments:
     x-linode-cli-command: account
     get:
@@ -3549,8 +3645,9 @@ paths:
         - Image data must be uploaded within 24 hours of creation or the
         upload will be cancelled and the image deleted.
 
-        - Image uploads should be made as an HTTP PUT request to the returned `upload_url`, with a
-        `Content-type: application/octet-stream` header included in the request. For example:
+        - Image uploads should be made as an HTTP PUT request to the URL returned in the `upload_to`
+        response parameter, with a `Content-type: application/octet-stream` header included in the
+        request. For example:
 
               curl -v \
                 -H "Content-Type: application/octet-stream" \
@@ -5127,11 +5224,14 @@ paths:
       tags:
       - Linode Instances
       summary: Disk Create
-      description: >
+      description: |
         Adds a new Disk to a Linode. You can optionally create a Disk
         from an Image (see [/images](/docs/api/images/#images-list) for a list of available public images,
         or use one of your own), and optionally provide a StackScript to deploy
         with this Disk.
+
+        The default filesystem for new Disks is `ext4`. If creating a Disk from an Image, the filesystem
+        of the Image is used unless otherwise specified.
       operationId: addLinodeDisk
       x-linode-cli-action: disk-create
       security:
@@ -10748,6 +10848,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
+      - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       parameters:
       - $ref: '#/components/parameters/pageOffset'
@@ -10810,7 +10911,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/vlans/
+              https://api.linode.com/v4/networking/vlans/
       - lang: CLI
         source: >
           linode-cli networking vlans-list
@@ -17540,6 +17641,8 @@ components:
         - Third/2:  eth2
 
         When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
+
+        If no public interface is configured, public IP addresses are still assigned to the Linode but will not be usable without manual configuration.
 
         **Note:** Changes to Linode interface configurations can be enabled by rebooting the Linode.
 
