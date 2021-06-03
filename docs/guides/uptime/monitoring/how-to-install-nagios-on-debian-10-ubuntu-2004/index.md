@@ -6,13 +6,14 @@ author:
 description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
 og_description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
-tags: ['nagios', 'ubuntu', 'apache', 'debian']
+tags: ['ubuntu', 'debian', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-25
 modified_by:
   name: Linode
 title: "Install Nagios on Debian 10 and Ubuntu 20.04"
 h1_title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -35,7 +36,7 @@ Nagios's official installation guide shows how to compile Nagios from source cod
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
@@ -62,7 +63,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Nagios
 
-1. Install Nagios, answering any prompts you to receive during the installation process:
+1. Install Nagios, answering any prompts you receive during the installation process:
 
         sudo apt install nagios4
 
@@ -76,7 +77,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo htdigest -c /etc/nagios4/htdigest.users "Nagios4" nagiosadmin
 
-1. Open the Nagios configuration file for Apache in your preferred text editor, and make the following changes. The file should be located at `/etc/nagios4/apache2.conf`.
+1. Open the Nagios configuration file for Apache in your preferred text editor, and make the changes listed below. The file should be located at `/etc/nagios4/apache2.conf`.
 
     - Comment out the `Require ip` line by adding a `#` to the beginning of the line. Beneath that line, add the lines shown below.
     - Under the `Files` tag, comment out the `Require all granted` line, and un-comment the `Require valid-user` line.
