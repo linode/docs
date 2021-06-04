@@ -6,13 +6,14 @@ author:
 description: 'This guide shows you how to install Mastodon on Ubuntu 20.04. Mastodon is an open-source and decentralized alternative to Twitter and is part of the Fediverse.'
 og_description: 'This guide shows you how to install Mastodon on Ubuntu 20.04. Mastodon is an open-source and decentralized alternative to Twitter and is part of the Fediverse.'
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','ubuntu 20.04']
-tags: ['mastodon', 'mastadon social','mastodon install', 'fediverse', 'docker']
+tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-14
 modified_by:
   name: Nathaniel Stickman
 title: "Install Mastodon on Ubuntu 20.04"
 h1_title: "How to Install Mastodon on Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -112,7 +113,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
           POSTGRES_DB: mastodon_production
           POSTGRES_USER: mastodon
 
-1. The resulting `docker-compose.yml` file should look something like [this](docker-compose.yml).
+1. The resulting `docker-compose.yml` file should resemble [the example docker file](docker-compose.yml).
 
 1. Copy the `.env.production.sample` file (which is in the current `mastodon` directory) to create a new environment configuration file.
 
@@ -162,7 +163,7 @@ VAPID_PUBLIC_KEY=BAy1_TgcWYBei7pXcX0MX-z0x-Cc85Fl9p-FhpDE4_BWT=
 
     Comment out the sections denoted as "optional" by adding a `#` before each line in the section.
 
-1. The resulting `.env.production` file should resemble [this](env.production).
+1. The resulting `.env.production` file should resemble the [example environment file](env.production).
 
 ## Complete the Docker Compose Setup
 
