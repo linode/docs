@@ -1352,6 +1352,7 @@ runfile
 runlevels
 runtime
 runtimes
+rustup
 rvm
 rw
 rwx
