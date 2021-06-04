@@ -201,6 +201,7 @@ client1
 client2
 clojure
 cloudflare
+cloudnative
 cloudnet
 cloudron
 clozure
@@ -346,6 +347,7 @@ dns
 dnsleaktest
 dnsmasq
 dockercompose
+dockercoins
 dockerfile
 dockerfiles
 dockerize
@@ -517,6 +519,7 @@ gfxmode
 gibibytes
 girocco
 gist
+gitaly
 gitea
 gitfs
 github
@@ -579,6 +582,7 @@ hardcoded
 hardcopy
 hardlimit
 hashmark
+hasher
 hashicorp
 hasn
 hba
@@ -743,6 +747,7 @@ junit
 jupyter
 jx
 kakfa
+kas
 kbits
 keepalive
 keepalived
@@ -872,6 +877,7 @@ maildirs
 maildrop
 mailgun
 mailname
+mailroom
 mailq
 mailserver
 mailuser
@@ -1324,6 +1330,7 @@ ritchie
 rkhunter
 rkt
 rmem
+rng
 ro
 rochko
 rocommunity
@@ -1492,6 +1499,7 @@ storages
 su
 subcommand
 subcommands
+subcharts
 subfile
 subfiles
 subfolder
