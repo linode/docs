@@ -22,15 +22,11 @@ external_resources:
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
 - '[ActivityPub](https://en.wikipedia.org/wiki/ActivityPub)'
 - '[Mastodon.social](https://mastodon.social/about)'
-- '[Code of Conduct](https://mastodon.social/about/more)'
+- '[Code of conduct](https://mastodon.social/about/more)'
 - '[Mailgun](https://www.mailgun.com/)'
-- '[Docker Compose](https://docs.docker.com/compose/)'
-- '[list of Mastodon releases](https://github.com/tootsuite/mastodon/releases)'
-- '[Certbot](https://certbot.eff.org)'
-- '[Lets Encrypt](https://letsencrypt.org)'
-- '[Snap](https://snapcraft.io/docs/getting-started)'
+- '[List of Mastodon releases](https://github.com/tootsuite/mastodon/releases)'
 - '[Mastodon blog](https://blog.joinmastodon.org/)'
-- '[Mastodons discussion forum](https://discourse.joinmastodon.org/)'
+- '[Mastodon discussion forum](https://discourse.joinmastodon.org/)'
 - '[Instances.social](https://instances.social/admin)'
 relations:
     platform:
@@ -113,7 +109,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
           POSTGRES_DB: mastodon_production
           POSTGRES_USER: mastodon
 
-1. The resulting `docker-compose.yml` file should resemble [the example docker file](docker-compose.yml).
+1. The resulting `docker-compose.yml` file should resemble [the example Docker file](docker-compose.yml).
 
 1. Copy the `.env.production.sample` file (which is in the current `mastodon` directory) to create a new environment configuration file.
 
