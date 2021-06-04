@@ -1,4 +1,4 @@
-<div id="search-input" class="flex justify-between items-stretch text-textcolor w-full" x-data="lnc.NewSearchInputController()" x-init="init()" @click="click();" @search:results-any.document.debounce.350ms="receiveData($event.detail);"  @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" data-turbolinks-permanent>
+<div id="search-input" class="flex justify-between items-stretch text-textcolor w-full" x-data="lnc.NewSearchInputController()" x-init="init()" @click="click();" @search:results-any.document.debounce.100ms="receiveData($event.detail);"  @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" data-turbolinks-permanent>
   <span class="self-center">
     <svg class="w-4 h-4 hover:text-brand" :class="{ 'text-brand': focus, 'text-textcolor': !focus }">
       <use href="#icon--search"></use>

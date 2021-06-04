@@ -11,7 +11,7 @@ api_key = "d4847002cd30392fe0fbd00a1da933ed"
 meta_index = "linode-documentation-sections"
 
 explorer_max_leafnodes = 50
-hits_per_page = 4
+hits_per_page = 10
 
 # Note there is a search_config also in the docs project, which would win over this.
 # This is a refactored version to better separate the UI with the more technical configuration,
@@ -33,7 +33,7 @@ filtering_facets = [
      { name = "tags", title = "Tags", isTags = true }
 ]
 explorer_regular_pages_start_level = 2
-hits_per_page = 4
+hits_per_page = 10
 download_settings = true
 
 [params.search_config2.sections.guides]
@@ -53,7 +53,7 @@ filtering_facets = [
     { name = "tags", title = "Tags", isTags = true }
 ]
 explorer_regular_pages_start_level = 2
-hits_per_page = 4
+hits_per_page = 10
 
 [params.search_config2.sections.api]
 # Algolia config.
@@ -65,7 +65,7 @@ weight = 30
 title = "API"
 explorer_icon = "#icon-explorer--api"
 explorer_regular_pages_start_level = 2
-hits_per_page = 4
+hits_per_page = 10
 download_settings = true
 
 [params.search_config2.sections.marketplace]
@@ -80,7 +80,7 @@ noun = "App"
 filters = "section.lvl0:Marketplace"
 explorer_icon = "#icon-explorer--marketplace"
 explorer_regular_pages_start_level = 2
-hits_per_page = 4
+hits_per_page = 10
 
 [params.search_config2.sections.blog]
 # Algolia config.
@@ -94,7 +94,7 @@ noun = "Post"
 filters = "section.lvl0:Blog"
 explorer_icon = "#icon-explorer--blog"
 explorer_regular_pages_start_level = 2
-hits_per_page = 4
+hits_per_page = 10
 
 [params.search_config2.sections.resources]
 # Algolia config.
@@ -108,7 +108,7 @@ title = "Resources"
 noun = "Resource"
 explorer_icon = "#icon-explorer--resources"
 explorer_regular_pages_start_level = 2
-hits_per_page = 4
+hits_per_page = 10
 
 [params.search_config2.sections.qa]
 # Algolia config.
@@ -122,7 +122,7 @@ title = "Q&A"
 section_facet = "objectType"
 explorer_icon = "#icon-explorer--qa"
 explorer_regular_pages_start_level = 4 # Not relevant, set it high to avoid triggering any search.
-hits_per_page = 4
+hits_per_page = 10
 
 [module]
 [[module.mounts]]

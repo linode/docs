@@ -2,16 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage solution."
-og_description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage solution."
-keywords: ['object storage']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
-modified_by:
-  name: Linode
-title: "How To Use Object Storage with s4cmd"
-h1_title: "Using Object Storage with s4cmd"
-enable_h1: true
+title: "Using s4cmd with Object Storage"
+description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage."
 ---
 
 The [s4cmd](https://github.com/bloomreach/s4cmd) software is a command-line tool that can access S3-compatible storage services, such as Linode's Object Storage. It uses the [S3 client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html) in Amazon's boto3 library. Compared to the popular s3cmd tool, s4cmd is typically much faster but it has less options and is less configurable. For many use cases, the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) is recommended.
@@ -52,7 +44,7 @@ Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other
 
     s4cmd ls --endpoint-url https://us-east-1.linodeobjects.com
 
-## Bucket Operations
+## Interacting with Buckets
 
 ### List Buckets
 
@@ -64,21 +56,21 @@ Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other
 
 ### Create a Bucket
 
-**Command:** `s4cmd mb s3://$bucket-label`, where *$bucket-label* is the label you'd like to use for the new bucket.
+**Command:** `s4cmd mb s3://[bucket-label]`, replacing *[bucket-label]* with the label you'd like to use for the new bucket.
 
 **Example:** Create a bucket with the label of "example-bucket" in the Newark data center:
 
-    s4cmd mb s3://bucket-label --endpoint-url https://us-east-1.linodeobjects.com
+    s4cmd mb s3://example-bucket --endpoint-url https://us-east-1.linodeobjects.com
 
 ### Delete a Bucket
 
 There is currently no defined command for deleting a bucket through s4cmd.
 
-## Object Operations
+## Interacting with Objects
 
 ### List Objects
 
-**Command:** `s4cmd ls $path`, where *$path* is the path of the directory you'd like to view within a bucket.
+**Command:** `s4cmd ls [path]`, where *[path]* is the path of the directory you'd like to view within a bucket.
 
 **Example:** List all objects within the bucket called "example-bucket", located in the Newark data center:
 
@@ -86,7 +78,7 @@ There is currently no defined command for deleting a bucket through s4cmd.
 
 ### Upload an Object
 
-**Command:** `s4cmd put $file s3://$bucket-label/$path`, where *$file* is the name and path of the file you wish to upload, *$bucket-label* is the label for your bucket, and *$path* is the optional directory within the bucket.
+**Command:** `s4cmd put [file] s3://[bucket-label]/[path]`, replacing *[file]* with the name and path of the file you wish to upload, *[bucket-label]* with the label for your bucket and *[path]* with the optional directory within the bucket.
 
 **Example:** Upload the file "file.txt" to the bucket called "example-bucket", located in the Newark data center:
 
@@ -94,7 +86,7 @@ There is currently no defined command for deleting a bucket through s4cmd.
 
 ### Download an Object or Directory
 
-**Command:** `s4cmd get s3://$bucket-label/$path`, where *$bucket-label* is the label for your bucket and *$path* is the full path and optional filename of the file or directory you wish to download.
+**Command:** `s4cmd get s3://[bucket-label]/[path]`, replacing *[bucket-label]* with the label for your bucket and *[path]* with the full path and optional filename of the file or directory you wish to download.
 
 **Example:** Download the file "file.txt" from the bucket called "example-bucket", located in the Newark data center:
 
@@ -102,7 +94,7 @@ There is currently no defined command for deleting a bucket through s4cmd.
 
 ### Delete an Object or Directory
 
-**Command:** `s4cmd del s3://$bucket-label/$path`, where *$bucket-label* is the label for your bucket and *$path* is the full path and optional filename of the file or directory you wish to delete.
+**Command:** `s4cmd del s3://[bucket-label]/[path]`, replacing *[bucket-label]* with the label for your bucket and *[path]* with the full path and optional filename of the file or directory you wish to delete.
 
 **Example:** Delete all the files within the "files" directory on the bucket called "example-bucket", located in the Newark data center:
 

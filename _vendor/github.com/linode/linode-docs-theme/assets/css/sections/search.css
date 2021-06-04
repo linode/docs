@@ -10,5 +10,6 @@
 }
 
 .search-panel em {
-    @apply bg-textcolor text-white not-italic;
+    background-color: var(--color-brand--light);
+    @apply not-italic;
 }
