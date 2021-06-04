@@ -17,8 +17,9 @@ contributor:
   name: 
   link: None
 external_resources:
-- [Anaconda Documentation](https://docs.anaconda.com/anaconda/)
+- '[Anaconda Documentation](https://docs.anaconda.com/anaconda/)'
 ---
+
 
 ## Install Anaconda on Ubuntu
 
