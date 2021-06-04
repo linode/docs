@@ -1,10 +1,31 @@
+---
+slug: how-to-install-anaconda
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'Anaconda is a distribution of the Python and R programming languages for scientific computing, that aims to simplify package management and deployment. This guide explains how to install Anaconda on Ubuntu.'
+og_description: 'Anaconda is a distribution of the Python and R programming languages for scientific computing, that aims to simplify package management and deployment. This guide explains how to install Anaconda on Ubuntu.'
+keywords: ['Data Science','Anaconda','Package Management','Python','Ruby','Ubuntu']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-06-04
+modified_by:
+  name: Linode
+title: "Installing Anaconda on Ubuntu"
+h1_title: "How to install Anaconda on Ubuntu."
+enable_h1: true
+contributor:
+  name: 
+  link: None
+external_resources:
+- [Anaconda Documentation](https://docs.anaconda.com/anaconda/)
+
 ## Install Anaconda on Ubuntu
 
-Installing Anaconda on your Linode (or other Linux system) via the CLI may look daunting, but don't let it scare you. It is possible to get it fully installed without using a graphical environment.
+Installing Anaconda on Linode or other Linux system) using the CLI may look daunting, but don't let it scare you. It is possible to get it fully installed without using a graphical environment.
 
-After following all of the steps in ["Before You Begin"](#before-you-begin), you will want to download the most recent version of the Anaconda installer (as of the writing of this guide, that was 2020.11).
+After following all of the steps in ["Before You Begin"](#before-you-begin), download the most recent version of the Anaconda installer at the time of the writing of this guide, the latest version was 2020.11.
 
-1.  Connect to your Linode by SSH (or Lish) and log in with your username and password.
+1.  Connect to your Linode using SSH (or Lish) and log in with your username and password.
 
 2.  Ensure you are in the *Bash* shell by entering `bash`.
 
@@ -15,17 +36,17 @@ After following all of the steps in ["Before You Begin"](#before-you-begin), you
 5.  In your browser, go to [Anaconda Individual Edition downloads](https://www.anaconda.com/products/individual#Downloads) and copy the link of the "64-Bit (x86) Installer" (don't download it).
 ![Selecting the option to copy a link on the Anaconda downloads page](anaconda-download-link.png "Selecting the option to copy a link on the Anaconda downloads page")
 
-6.  At the command prompt of your terminal, type `wget` and a space, then paste the download link from the browser. It should look like `wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh` (the "Anaconda3-2020.11" portion will change as new versions are released).
+6.  At the command prompt of the terminal, type `wget` and a space, then paste the download link from the browser. It should look like `wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh` (the "Anaconda3-2020.11" portion will change as new versions are released).
 
-4.  Press Enter (or Return) and let it run (the file is somewhat large and takes a little while to download fully).
+4.  Press Enter (or Return), the file is large and takes a little while to download completely.
 
-5.  Once the download is complete and you're back at the command prompt, enter `bash ~/Downloads/Anaconda3-2020.11-Linux-x86_64.sh` (remember, the "Anaconda3-2020.11" portion will change as new versions are released).
+5.  After the download is complete and you're back at the command prompt, enter `bash ~/Downloads/Anaconda3-2020.11-Linux-x86_64.sh` (remember, the "Anaconda3-2020.11" portion will change as new versions are released).
 
 6.  Scroll through the license agreement and agree to it by entering `Yes`.
 
-7.  The installer will prompt you to press Enter (or Return) to accept the default install location (which will be a directory named "anaconda3" in your home directory). We recommend accepting the default install location. The installer will run for a few minutes.
+7.  The installer prompts you to press Enter (or Return) to accept the default install location which is a directory named *anaconda3* in the home directory. We recommend accepting the default install location. The installer runs for a few minutes.
 
-8.  After running for a few minutes, the installer will prompt you "to initialize Anaconda3 by running `conda init`." We recommend entering `yes` (if you enter `no`, conda will not modify your shell scripts).
+8.  After running for a few minutes, the installer prompts you "to initialize Anaconda3 by running `conda init`." We recommend entering `yes` (if you enter `no`, conda will not modify your shell scripts).
 
 9.  The installer is done when you see this output:
     {{< output >}}
@@ -66,14 +87,14 @@ Thank you for installing Anaconda!
            offline mode : False
 {{< /output >}}
 
-12. Lastly, remove the installer file by typing `rm`, a space, `Anaconda`, and then pressing Tab. You should then see a command that looks like `rm Anaconda3-2020.11-Linux-x86_64.sh`
+12. Lastly, remove the installer file by typing `rm`, a space, `Anaconda`, and then press Tab. You should then see a command that looks like `rm Anaconda3-2020.11-Linux-x86_64.sh`
     {{< caution >}}
 If it reads `rm anaconda3/`, erase that command immediately  (it will delete everything you just installed!) and ensure you are in your Downloads directory before going further.
 {{< /caution >}}
 
 ## Update Anaconda on Ubuntu
 
-Much like updating Ubuntu, there are two steps in updating Anaconda. After logging into your Linode via SSH or opening the terminal application on another system:
+Much like updating Ubuntu, there are two steps in updating Anaconda. After logging into your Linode using SSH or opening the terminal application on another system:
 
 1.  Update the conda utility by entering `conda update conda`.
 
