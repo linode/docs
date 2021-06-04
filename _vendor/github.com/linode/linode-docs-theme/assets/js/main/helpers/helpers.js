@@ -70,6 +70,21 @@ export function sprintf(format) {
 	});
 }
 
+// Borrowed from AlpineJS: https://github.com/alpinejs/alpine/blob/master/src/utils.js
+export function debounce(func, wait) {
+	var timeout;
+	return function() {
+		var context = this,
+			args = arguments;
+		var later = function() {
+			timeout = null;
+			func.apply(context, args);
+		};
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+	};
+}
+
 export function waitUntil(condition) {
 	const checkResolved = function(resolve, condition, callCounter = 0) {
 		if (callCounter > 100) {
