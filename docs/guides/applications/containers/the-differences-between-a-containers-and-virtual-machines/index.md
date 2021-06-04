@@ -16,9 +16,6 @@ h1_title: "The Differences Between Containers vs. Virtual Machines"
 enable_h1: true
 contributor:
   name: Steven J. Vaughan-Nichols
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 At the surface, containers and virtual machines (VM) look the same. Both enable companies to run multiple instances of the same operating system and programs on bare metal hardware. However, under the surface, they're not alike.
