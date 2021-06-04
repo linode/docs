@@ -919,6 +919,7 @@ metapackage
 metaparameters
 metorik
 metricbeat
+microblogging
 microblogs
 microservice
 microservices
@@ -1352,6 +1353,7 @@ runfile
 runlevels
 runtime
 runtimes
+rustup
 rvm
 rw
 rwx

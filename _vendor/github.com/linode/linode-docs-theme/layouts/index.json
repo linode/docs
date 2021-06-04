@@ -19,10 +19,7 @@
 {{- $ordinal = .weight }}
 {{- end -}}
 {{- $deprecated := cond (ne .Params.deprecated nil) .Params.deprecated false -}}
-{{- $title := .Title }}
-{{- if eq .Type "products" -}}
-{{- $title = printf "%s - %s" .CurrentSection.Title .Title }}
-{{- end -}}
+{{- $title := partial "funcs/get-page-title.html" . }}
 {{- $dict := (dict "objectID" .File.UniqueID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}
