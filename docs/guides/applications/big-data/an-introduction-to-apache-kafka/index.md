@@ -127,7 +127,7 @@ In Kafka terminology, an event, a record, and a message all refer to the same th
 Each event is stored inside a Kafka **topic**, and each topic contains many events. A topic can be thought of as a file folder. Each "folder" contains many individual files representing the events. Kafka allows an unlimited number of producers to publishing events on the same topic.
 
 The events within a topic have the following capabilities :
-  
+
 - They are immutable and persist after being read, so they can be accessed multiple times.
 
 - They can be stored indefinitely subject to storage limits. By default, events are kept for seven days. Each event within a topic is stored within a designated partition.
