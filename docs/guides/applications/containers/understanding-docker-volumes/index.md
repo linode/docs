@@ -17,7 +17,7 @@ external_resources:
 - '[Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)'
 - '[Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)'
 ---
-Docker uses Docker Volumes to create data persistence when working in Docker containers. Think of them as an external hard drive to the basic computer system a Docker container will provide. The Docker volume will not increase Docker image size, as it's separate from the image itself. And, as the Docker volume is stored on the host and independent of a container or image, it can be mounted in different containers as necessary.
+Docker uses Docker Volumes to create data persistence when working in Docker Containers. Think of them as an external hard drive to the basic computer system a Docker Container will provide. The Docker Volume will not increase Docker Image size, as it's separate from the image itself. And, as the Docker Volume is stored on the host and independent of a container or image, it can be mounted in different containers as necessary.
 
 ## Before You Begin
 
@@ -90,7 +90,7 @@ root@b64eb2eafcdf:/#
 
 ## How to Copy and Share Files Between Containers
 
-Docker volumes also allow sharing between containers.
+Docker Volumes also allow sharing between containers.
 
 To share a file between containers:
 
@@ -110,7 +110,7 @@ To share a file between containers:
 
 ## How to Mount a Directory from the Host System in a Container
 
-Say you want to mount a directory from your host system as a volume within the container. If you go to the directory you want (for this example we'll use the user's home directory), you just need to enter `docker run -v "$(pwd)":` with the name of the volume and the name of the Docker image following. So, to mount the user's home directory with the name "external" in an example Ubuntu container:
+Say you want to mount a directory from your host system as a volume within the container. If you go to the directory you want (for this example we'll use the user's home directory), you just need to enter `docker run -v "$(pwd)":` with the name of the volume and the name of the Docker Image following. So, to mount the user's home directory with the name "external" in an example Ubuntu container:
 
 1.  Go to your home directory in the terminal.
 
