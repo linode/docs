@@ -67,4 +67,4 @@ The Linode Activity Feed is similar to your Account's [Events Page](#Events-Page
 
     ![cloud manager events](cloud-manager-events.png)
 
-1. The list of events will contain the entire history of the life of your Linode and will continue to populate with past entries as you scroll down the page. When there are no entries left, you'll see the text "No more events to show" at the bottom of the page.
+1. The list of events will contain the history for the past 90 days of the life of your Linode. When there are no entries left, you'll see the text "No more events to show" at the bottom of the page.
