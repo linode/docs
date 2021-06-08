@@ -1,11 +1,11 @@
 ---
-slug: an-overview-of-python-packages-for-data-science
+slug: python-packages-for-data-science-overview
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+  name: John Mueller
+description: 'Python''s Package Index provides many packages to help data scientists create data visualization and analyze large data sets. This guide reviews some of the top Python packages for data science, including Pandas, NumPy, and Matplotlib.'
+og_description: 'Python''s Package Index provides many packages to help data scientists create data visualization and analyze large data sets. This guide reviews some of the top Python packages for data science, including Pandas, NumPy, and Matplotlib.'
+keywords: ['python libraries for data science']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-08
 modified_by:
@@ -15,9 +15,6 @@ h1_title: "An Overview of Python Packages for Data Science"
 enable_h1: true
 contributor:
   name: John Mueller
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 Python is one of the most popular programming languages in the world because it provides a vast array of packages, it’s easy to learn, and it’s incredibly flexible. The data science community has adopted Python as one of its go-to programming languages, because of the many packages that help analyze and visualize large datasets. This guide discusses the strengths and use cases for the top five Python data science packages.
@@ -66,7 +63,7 @@ The main issue with having a single coordinator for everything is that it become
 
 ## Pandas
 
-[Pandas](https://pandas.pydata.org/) is the package you want if you’re working with data of any kind because it excels at interacting with files of all sorts, and helps you clean and transform the data you retrieve. When you look at the [documentation](https://pandas.pydata.org/docs/reference/index.html), the first thing you see is an impressive list of file types that Pandas supports. Followed by that is a list of top-level methods for dealing with issues such as data missingness and data transformations. You can use data transformations so that your data appears in the form needed to make it work with your other data and to perform analysis.
+[Pandas](https://pandas.pydata.org/) is the package you want if you’re working with data of any kind because it excels at interacting with files of all sorts, and helps you clean and transform the data you retrieve. When you look at the [documentation](https://pandas.pydata.org/docs/reference/index.html), the first thing you see is an impressive list of file types that Pandas supports. Followed by that is a list of top-level methods for dealing with issues such as data *missingness* and data transformations. You can use data transformations so that your data appears in the form needed to make it work with your other data and to perform analysis.
 
 There are currently 35 data-offset functions, such functions that deal with things like calculating quarters of a year, along with the usual date and time functions. Something that is missing from most packages is the ability to [calculate the business month](https://pandas.pydata.org/docs/reference/offset_frequency.html#businessmonthbegin) and if you have a [custom business month](https://pandas.pydata.org/docs/reference/offset_frequency.html#custombusinessmonthbegin), Pandas has you covered in this regard.
 
@@ -93,7 +90,7 @@ As with Pandas, Scikit-learn is one of those specialized tools that you put in y
 
 [Matplotlib](https://matplotlib.org/) is a general-purpose package for creating plots of all sorts. You find all of the standard plots here: bar, line, pie, and so on. You can browse the large number of available plot types in [Matplotlib’s official documentation](https://matplotlib.org/stable/gallery/index.html). Most people won’t even recognize all of the plot names because there are so many and some of them are specialized. You can display your data in an amazing assortment of ways, including both plots and subplots. If you want to display a 9 x 9 matrix of plots for various dataset features,Matplotlib is the package you need. You have access to every aspect of the plot and can even do things like making [temperature colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html).
 
-Sometimes you’ll use other packages in place of, or in combination with, Matplotlib because Matplotlib doesn’t quite provide the required support. For instance, if you want to calculate a [Cook’s Distance](https://www.statisticshowto.com/cooks-distance/) for anomaly detection in a dataset, then what you need is [Yellowbrick](https://www.scikit-yb.org/en/latest/api/regressor/influence.html), which is part of Scikit-learn. As another example, you might want to calculate [Z-Scores](https://www.statisticshowto.com/probability-and-statistics/z-score/) for your data and then display them graphically. In this case, [Seaborn](https://seaborn.pydata.org/) is actually a better way to perform the task because it provides the [displot() method](https://seaborn.pydata.org/generated/seaborn.displot.html#seaborn.displot) and shows both a histogram and a [Kernel Density Estimate (KDE)](https://jakevdp.github.io/PythonDataScienceHandbook/05.13-kernel-density-estimation.html) plot with a single call. In this second case, it’s not uncommon to see Seaborn used to display the data and Matplotlib used to manage the plots, so it’s a team effort. These sorts of instances are the exception, rather than the rule, because Matplotlib, for the most part, is a complete package.
+Sometimes you’ll use other packages in place of, or in combination with, Matplotlib because Matplotlib doesn't quite provide the required support. For instance, if you want to calculate a [Cook’s Distance](https://www.statisticshowto.com/cooks-distance/) for anomaly detection in a dataset, then what you need is [Yellowbrick](https://www.scikit-yb.org/en/latest/api/regressor/influence.html), which is part of Scikit-learn. As another example, you might want to calculate [Z-Scores](https://www.statisticshowto.com/probability-and-statistics/z-score/) for your data and then display them graphically. In this case, [Seaborn](https://seaborn.pydata.org/) is actually a better way to perform the task because it provides the [`displot()` method](https://seaborn.pydata.org/generated/seaborn.displot.html#seaborn.displot) and shows both a histogram and a [Kernel Density Estimate (KDE)](https://jakevdp.github.io/PythonDataScienceHandbook/05.13-kernel-density-estimation.html) plot with a single call. In this second case, it’s not uncommon to see Seaborn used to display the data and Matplotlib used to manage the plots, so it’s a team effort. These sorts of instances are the exception, rather than the rule, because Matplotlib, for the most part, is a complete package.
 
 You can’t use Matplotlib alone. You need to combine Matplotlib with other packages to do things like extract the data, clean it, and then condition it as needed. Your work with Matplotlib represents a last step in a longer process.
 
