@@ -1,12 +1,11 @@
 ---
 slug: install-and-use-nginx-on-almalinux-8
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: "NGINX is an open-source web server with an event-based architecture designed for efficiency and concurrency. In this guide, learn how to install and start using NGINX on your AlmaLinux 8 server."
 og_description: "NGINX is an open-source web server with an event-based architecture designed for efficiency and concurrency. In this guide, learn how to install and start using NGINX on your AlmaLinux 8 server."
 keywords: ['nginx','web server','reverse proxy','load balancing','install nginx on almalinux 8','alma linux']
-tags: ['nginx', 'web server', 'proxy', 'linux']
+tags: ['nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-08
 modified_by:
@@ -27,9 +26,7 @@ relations:
             - distribution: AlmaLinux 8
 ---
 
-[NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was created to be a high-performing and scalable alternative to other popular web servers, like Apache. Its event-driven architecture continues to set it apart as one of the fastest and lightest web servers available.
-
-This guide aims to show you how to install NGINX on your AlmaLinux 8 server and how to get started using it.
+[NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was created to be a high-performing and scalable alternative to other popular web servers, like Apache. Its event-driven architecture continues to set it apart as one of the fastest and lightest web servers available. This guide shows you how to install NGINX on your AlmaLinux 8 server and how to get started using it.
 
 ## Before You Begin
 
@@ -66,7 +63,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 1. Visit the default NGINX page to see your installation in action. You can find it by navigating to your server's domain name or its IP address.
 
-    For example, if your domain name is `example.com`, navigate to `http://example.com`; if your IP address is `198.51.100.0`, you can instead navigate to  `http://198.51.100.0`.
+    For example, if your domain name is `example.com`, navigate to `http://example.com`; if your IP address is `192.0.2.0`, you can instead navigate to  `http://192.0.2.0`.
 
     [![Default NGINX page.](nginx-default-page_small.png)](nginx-default-page.png)
 
@@ -74,19 +71,19 @@ This guide is written for non-root users. Commands that require elevated privile
 
 The NGINX service runs on `systemd`, which means you can manage it using `systemctl` commands.
 
-1. View the current status of the NGINX service using the following command:
+- View the current status of the NGINX service using the following command:
 
         sudo systemctl status nginx
 
-1. Stop the NGINX service using the following command:
+- Stop the NGINX service using the following command:
 
         sudo systemctl stop nginx
 
-    You can then start the NGINX service back using the following command:
+    You can then restart the NGINX service using the following command:
 
         sudo systemctl start nginx
 
-1. To disable the NGINX service, preventing it from beginning automatically at system startup, use:
+- To disable the NGINX service, preventing it from beginning automatically at system startup, use:
 
         sudo systemctl disable nginx
 
@@ -94,17 +91,17 @@ The NGINX service runs on `systemd`, which means you can manage it using `system
 
         sudo systemctl enable nginx
 
-1. Restart the NGINX service using the following command:
+- Restart the NGINX service using the following command:
 
         sudo systemctl restart nginx
 
-1. To reload NGINX's configuration files, use the following command:
+- To reload NGINX's configuration files, use the following command:
 
         sudo systemctl reload nginx
 
 ## Using NGINX
 
-This section walks you through setting up your own website using NGINX. In doing so, it also illustrates how to set up an NGINX proxy to serve static content.
+This section walks you through setting up your own website using NGINX. It also illustrates how to set up an NGINX proxy to serve static content.
 
 ### NGINX Configuration
 
@@ -124,7 +121,7 @@ server {
 
 1. Create an NGINX configuration file for your site.
 
-    - In this example, replace `example.com` with your site's domain, in both the filename and the file's contents. Do the same whenever you see `example.com` throughout this guide.
+    - In this example, replace `example.com` with your site's domain, in both the filename and the file's contents. Do the same wherever you see `example.com` throughout this guide.
 
        {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
