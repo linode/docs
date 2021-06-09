@@ -1,8 +1,7 @@
 ---
 slug: what-is-apache-kafka
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeffery Novotny
 description: 'This guide provides an introduction to Apache Kafka. Kafka is an open-source platform for stream management and processing.'
 og_description: 'This guide provides an introduction to Apache Kafka. Kafka is an open-source platform for stream management and processing.'
 keywords: ['Apache','Kafka','streaming','processing','events']
@@ -11,12 +10,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-21
 modified_by:
   name: Linode
-title: "What is Apache Kafka"
+title: "What is Apache Kafka?"
 h1_title: "An Introduction to Apache Kafka"
 enable_h1: true
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Jeffery Novotny
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[events](https://kafka.apache.org/intro#intro_concepts_and_terms)'
@@ -31,27 +30,11 @@ external_resources:
 
 ---
 
-[*Apache Kafka*](https://kafka.apache.org/), often known simply as Kafka, is a popular open-source platform for stream management and processing. Kafka is structured around the concept of an event, which is an incident of interest. External agents independently and asynchronously send and receive event notifications to and from Kafka. Kafka accepts a continuous stream of events from multiple clients, stores them, and potentially forwards them to a second set of clients for further processing. It is flexible, robust, reliable, self-contained, and offers low latency along with high throughput. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.
-
-## Before You Begin
-
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide will use `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-<!-- Include one of the following notes if appropriate. --->
-
-{{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+[*Apache Kafka*](https://kafka.apache.org/), often known simply as Kafka, is a popular open-source platform for stream management and processing. Kafka is structured around the concept of an event. External agents, independently and asynchronously, send and receive event notifications to and from Kafka. Kafka accepts a continuous stream of events from multiple clients, stores them, and potentially forwards them to a second set of clients for further processing. It is flexible, robust, reliable, self-contained, and offers low latency along with high throughput. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.
 
 ## An Overview of Apache Kafka
 
-Kafka can be thought of as a re-implementation, or an evolution of a traditional database for a streaming world. Whereas the databases you are probably familiar with store data in tables with well-defined attributes, keys, and schemas, whereas Kafka is much more freeform. Kafka's purpose is to receive, store, and transmit a record of real-time [*events*](https://kafka.apache.org/intro#intro_concepts_and_terms).
+Kafka can be thought of as a re-implementation, or an evolution of a traditional database for a streaming world. Whereas the databases you are probably familiar with store data in tables with well-defined attributes, keys, and schemas, Kafka is much more freeform. Kafka's purpose is to receive, store, and transmit a record of real-time [*events*](https://kafka.apache.org/intro#intro_concepts_and_terms).
 
 In a typical workflow, one or more producer applications send key-value messages about a pre-defined topic to a Kafka cluster. A cluster consists of one or more servers, which are also called *brokers*, and each cluster typically hosts messages for many topics. One of the brokers in the cluster receives these messages and writes them to a log file corresponding to the topic. These log files are called *partitions*, and topics usually contain several partitions. Messages might also get replicated to some of the other nodes within the cluster. Other processes known as consumers can then read and process the events in each partition. You can write these consumer and producer applications yourself or use third-party offerings.
 
@@ -65,15 +48,15 @@ At the time of writing this guide, the version of Apache Kafka is release 2.7.
 
 1. **Highly Reliable:** Kafka can handle high volume data flow from multiple producers (who write to Kafka) and to multiple consumers (who poll Kafka for data to read).
 
-1. **Durability:** Kafka stores events in a simple log format and hence the data is durable and retention policies are easy to implement. You can deploy Kafka on virtual machines, bare metal, and in the cloud.
+1. **Durability:** Kafka stores events in a simple log format and hence, the data is durable and retention policies are easy to implement. You can deploy Kafka on virtual machines, bare metal, and in the cloud.
 
-1. **Scalability:** Without any system downtime, you can easily add or upgrade nodes. For extra reliability.
+1. **Scalability:** Without any system downtime, you can easily add or upgrade nodes for extra reliability.
 
 1. **Message Broker Capabilities:** You can organize several Kafka message brokers into a fault-tolerant cluster and replicate data between them.
 
 1. **Consumer Friendly:** Kafka can integrate well with many programming languages including Java (the native language of Kafka), Go, C++, Python, and REST APIs which are useful for testing and prototyping.
 
-Kafka provides applications such as *Kafka Connect* (for integrating external components) and *Kafka Stream* (for stream processing), as well as security and access policies. Many vendors have jumped in with third-party extensions for legacy systems, and Kafka provides many APIs for both producers and consumers to use. However, solid programming skills are required to develop a complex Kafka application.
+Kafka provides applications such as [*Kafka Connect*](https://kafka.apache.org/documentation/#connect) (for integrating external components) and [*Kafka Streams*](https://kafka.apache.org/28/documentation/streams/) (for stream processing), as well as security and access policies. Many vendors have jumped in with third-party extensions for legacy systems, and Kafka provides many APIs for both producers and consumers to use. However, solid programming skills are required to develop a complex Kafka application.
 
 ## Use Cases for Apache Kafka
 
@@ -97,13 +80,13 @@ The [*Kafka website*](https://kafka.apache.org/uses) mentions several high-level
 
 ## Architecture of Apache Kafka
 
-Kafka's architecture contains the following components and extensions. See the following sections for a more in-depth discussion.
+Kafka's architecture contains the components and extensions listed below. The following sections a more in-depth discussion for each component and extension.
 
-- Kafka Event Message Format
-- Topics and Partitions
-- Clusters and Replication (including Zookeeper)
-- Producers and Consumers
-- Security, Troubleshooting, and Compatibility
+- [Kafka Event Message Format](#kafka-event-message-format)
+- [Topics and Partitions](#kafka-topics-and-partitions)
+- [Clusters and Replication (including Zookeeper)](#kafka-clusters-and-replication)
+- [Producers and Consumers](#producers-and-consumers)
+- [Security, Troubleshooting, and Compatibility](#security-troubleshooting-and-compatibility)
 
 ### Kafka Event Message Format
 
@@ -113,8 +96,8 @@ In Kafka terminology, an event, a record, and a message all refer to the same th
 
 - **Key:** Each application defines its own keys. Keys are opaque and are of variable length. In a typical application, the key refers to a particular user, customer, store, device, or location. It answers questions like:
 
-  - Who/What generated this event?
-  - Who/What does this event concern?
+  - Who or what generated this event?
+  - Who or what does this event concern?
 
   Kafka ensures all messages with the same key are stored sequentially inside the same partition.
 
@@ -124,7 +107,7 @@ In Kafka terminology, an event, a record, and a message all refer to the same th
 
 ### Kafka Topics and Partitions
 
-Each event is stored inside a Kafka **topic**, and each topic contains many events. A topic can be thought of as a file folder. Each "folder" contains many individual files representing the events. Kafka allows an unlimited number of producers to publishing events on the same topic.
+Each event is stored inside a Kafka *topic*, and each topic contains many events. A topic can be thought of as a file folder. Each "folder" contains many individual files representing the events. Kafka allows an unlimited number of producers to publishing events on the same topic.
 
 The events within a topic have the following capabilities :
 
@@ -132,9 +115,9 @@ The events within a topic have the following capabilities :
 
 - They can be stored indefinitely subject to storage limits. By default, events are kept for seven days. Each event within a topic is stored within a designated partition.
 
-Kafka topics can be managed via the [*Kafka Administration API*](https://kafka.apache.org/27/javadoc/index.html). Kafka’s topics are divided into several **partitions**. Following are some of Kafka's partition facts:
+Kafka topics can be managed via the [Kafka Administration API](https://kafka.apache.org/27/javadoc/index.html). Kafka’s topics are divided into several *partitions*. Some of Kafka's partition facts are as follow:
 
-- Kafka groups message together when accessing a partition, resulting in efficient linear writes. Each message obtains a sequentially increasing number and is stored at an offset within its partition. This is used to maintain strict ordering.
+- Kafka groups messages together when accessing a partition, resulting in efficient linear writes. Each message obtains a sequentially increasing number and is stored at an offset within its partition. This is used to maintain strict ordering.
 
 - Events in a partition are always read in the same order they were written, but you can choose to compact a Kafka topic.
 
@@ -150,13 +133,13 @@ Although you can certainly run Kafka on a stand-alone server, it works best when
 
 - Zookeeper optionally maintains the *Access Control List* (ACL). You must launch Zookeeper before starting Kafka, but you do not otherwise have to actively manage it. Your cluster configuration determines how Zookeeper behaves. You can use the [*Kafka Administration API*](https://kafka.apache.org/27/javadoc/index.html) to manage cluster and replication settings.
 
-Kafka replicates the partitions between the servers so there are several backups on other servers. Typically, a set of three or four servers are typical. One of the brokers is elected the leader on a per-partition basis. The leader receives events from the producers and sends updates to the consumers. The remaining brokers serve as followers. They query the leader for new events and store backup copies.
+Kafka replicates the partitions between the servers so there are several backups on other servers. A set of three or four servers are typical. One of the brokers is elected the leader on a per-partition basis. The leader receives events from the producers and sends updates to the consumers. The remaining brokers serve as followers. They query the leader for new events and store backup copies.
 
 You can configure a Kafka cluster for different levels of reliability. Kafka can send an acknowledgment upon the first receipt of a message or when a certain number of backup servers have also made a copy. The first method is faster, but a small amount of data might be lost if the master fails. Producers can elect not to receive any acknowledgments if best-effort handling is the goal. Kafka does not automatically balance any topics, partitions, or replications. The Kafka administrator must manage these tasks.
 
 ### Producers and Consumers
 
-Producers and consumers can both use [*Kafka Administration API*](https://kafka.apache.org/27/javadoc/index.html) to communicate with Kafka.
+Producers and consumers can both use the [Kafka Administration API](https://kafka.apache.org/27/javadoc/index.html) to communicate with Kafka.
 
 - Applications use these APIs to specify a topic and send their key-value messages to the cluster.
 
@@ -164,7 +147,7 @@ Producers and consumers can both use [*Kafka Administration API*](https://kafka.
 
 The Kafka cluster keeps track of each consumer's location within a given partition so it knows which updates it still has to send. *Kafka Connect* and *Kafka Streams* help manage the flows of information to or from Kafka.
 
-Our guide to [Installing Kafka](/docs/guides/how-to-install-apache-kafka-in-ubuntu) includes an example of how to use the producer and consumer APIs.
+Our guide for [installing Kafka](/docs/guides/how-to-install-apache-kafka-in-ubuntu) includes an example of how to use the producer and consumer APIs.
 
 ### Security, Troubleshooting, and Compatibility
 
@@ -180,9 +163,9 @@ When upgrading Kafka brokers, or individual clients, it is important to consider
 
 ## Kafka Connect
 
-*Kafka Connect* is a framework for importing data from, or exporting data to other systems. This allows easier integration between Kafka and traditional databases.
+*Kafka Connect* is a framework for importing data from other systems, or exporting data to them. This allows easier integration between Kafka and traditional databases.
 
-Some of the benefits of Kafka Connect includes:
+Some of the benefits of Kafka Connect include:
 
 - Kafka Connect runs on its own server rather than on one of the regular Kafka brokers.
 
@@ -206,16 +189,16 @@ Some of the benefits of Kafka Streams are:
 
 You must install Java first before installing Apache Kafka. Kafka itself is straightforward to install, initialize, and run.
 
-1. [The Kafka site](https://kafka.apache.org/) contains a basic tutorial.
+- [The Kafka site](https://kafka.apache.org/) contains a basic tutorial.
 
-1. We also have a guide on how to [Install Apache Kafka](/docs/guides/how-to-install-apache-kafka) which demonstrates how to construct a simple producer and consumer and process data with Kafka Streams.
+- We also have a guide on how to [Install Apache Kafka](/docs/guides/how-to-install-apache-kafka) which demonstrates how to construct a simple producer and consumer and process data with Kafka Streams.
 
 ## Further Reference
 
 Apache provides extensive documentation and supporting materials for Kafka.
 
-1. The [*Kafka documentation web page*](https://kafka.apache.org/documentation/) discusses the design, implementation, and operation of Kafka, with a deep-dive into common tasks.
+- The [*Kafka documentation web page*](https://kafka.apache.org/documentation/) discusses the design, implementation, and operation of Kafka, with a deep-dive into common tasks.
 
-1. In-depth API information is found on the [*Kafka JavaDocs page*](https://kafka.apache.org/27/javadoc/index.html). You can reference a high-level overview of each class along with an explanation of the various methods.
+- In-depth API information is found on the [*Kafka JavaDocs page*](https://kafka.apache.org/27/javadoc/index.html). You can reference a high-level overview of each class along with an explanation of the various methods.
 
-1. You can also refer to the [*Kafka Streams documentation*](https://kafka.apache.org/documentation/streams/) which features a demo and a fairly extensive tutorial.
+- You can also refer to the [*Kafka Streams documentation*](https://kafka.apache.org/documentation/streams/) which features a demo and a fairly extensive tutorial.
