@@ -1,33 +1,37 @@
 ---
-slug: getting-started-angular
+slug: angular-tutorial-for-beginners
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'Angular provides a platform and framework for creating dynamic and sophisticated single-page web applications. This guide shows you how to get your first Angular application running and covers the fundamental concepts behind Angular applications.'
 og_description: 'Angular provides a platform and framework for creating dynamic and sophisticated single-page web applications. This guide shows you how to get your first Angular application running and covers the fundamental concepts behind Angular applications.'
 keywords: ['angular','node.js','typescript','web applications','app framework','open source']
+tags: ['angular', 'nodejs', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-24
 modified_by:
   name: Nathaniel Stickman
-title: "How to Build a Website with Angular"
+title: "Angular Tutorial for Beginners"
 h1_title: "How to Build a Website with Angular"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Angular](https://angular.io/)'
+- '[TypeScript](https://www.typescriptlang.org/)'
+- '[Angular docs](https://angular.io/docs)'
 ---
 
-Angular is a powerful open-source platform and framework for creating dynamic single-page applications. Angular was built for modular web application clients, which, along with its use of the TypeScript language, can make application design clearer and cleaner.
+Angular is a powerful open-source platform and framework for creating dynamic single-page applications. Angular was built for modular web application clients, which, along with its use of the TypeScript language, can make application design clearer, and cleaner.
 
 In this guide, you can find instructions for installing Angular, setting up your first Angular application, and learning about its core concepts.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
@@ -36,14 +40,14 @@ In this guide, you can find instructions for installing Angular, setting up your
 1. Throughout, this guide uses `example-app` as the name of the Angular application and `example.com` as the server domain name. Replace these with your preferred application name and your server's domain name, respectively.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is Angular?
 
 Angular is both a development platform and a framework for web application design. As a platform, Angular offers tools to make the development process run smoothly and easily. It also comes with a host of libraries that include features for streamlining your web application design. As a framework, Angular uses a component-based approach for making sophisticated and scalable web application clients. It is built around modular application design, making it easier to give your applications a clean and clear architecture.
 
-Angular uses [TypeScript](https://www.typescriptlang.org/), a programming language that extends JavaScript with strong typing. That can make your applications more transparent and legible and helps you catch errors at compile time rather than run time. It may look unfamiliar at first, but many find that TypeScript makes their JavaScript programming more clear and less error prone.
+Angular uses [TypeScript](https://www.typescriptlang.org/), a programming language that extends JavaScript with strong typing. This can make your applications more transparent, legible, and helps you catch errors at compile time rather than run time. It may look unfamiliar at first, but many find that TypeScript makes their JavaScript programming more clear and less error-prone.
 
 {{< note >}}
 Angular should not be confused with [AngularJS](https://angularjs.org/), a front-end framework that aims to extend static HTML with dynamic features. Angular came about as the evolution of AngularJS — Angular is also known as Angular 2 for this reason.
@@ -53,7 +57,10 @@ Angular should not be confused with [AngularJS](https://angularjs.org/), a front
 
 ### Install Angular
 
-1. First, you need to install Node.js. You can do so by following either the guide for [How to Install Node.js and NGINX](/docs/guides/how-to-install-nodejs-and-nginx-on-debian-10/) (just select the appropriate Linux distribution from the drop down) or the guide for [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/).
+1. First, you need to install Node.js. Refer to any of the below guides:
+
+   - [How to Install Node.js and NGINX](/docs/guides/how-to-install-nodejs-and-nginx-on-debian-10/) (just select the appropriate Linux distribution from the drop down).
+   - [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/).
 
 1. Install the Angular command-line interface (CLI) as a global Node.js package:
 
@@ -61,16 +68,16 @@ Angular should not be confused with [AngularJS](https://angularjs.org/), a front
 
 ### Create an Angular Application
 
-Once you have the Angular CLI, you can use it to create Angular projects. The steps that follow show you how to create a base Angular application.
+Once you have the Angular CLI, you can use it to create Angular projects. The following steps shows you how to create a base Angular application.
 
-1. Change into the directory where you want to store your application. Here, that is the current user's home directory. Then, create the base Angular application workspace using the `ng new` command:
+1. Change into the directory where you want to store your application. In this example, it is the current user's home directory. Then, create the base Angular application workspace using the `ng new` command.
 
         cd ~
         ng new example-app
 
     The Angular CLI prompts you for information about your application. You can accept the default for each prompt by pressing **Enter**.
 
-1. The Angular CLI creates a subdirectory for your application and installs the required Node.js packages and application dependencies. Once it has finished, change into the application's directory:
+1. The Angular CLI creates a subdirectory for your application and installs the required Node.js packages and application dependencies. Once it has finished, change it into the application's directory.
 
         cd example-app
 
@@ -80,14 +87,14 @@ Once you have the Angular CLI, you can use it to create Angular projects. The st
 
         ng serve
 
-    Angular serves the application on **localhost** port **4200**. To visit the application remotely, you can use an SSH tunnel:
+    Angular serves the application on **localhost** port **4200**. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **4200**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address:
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#using-ssh-on-windows-10-to-connect-to-a-server) guide, replacing the example port number there with **4200**.
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
 
-        ssh -L4200:127.0.0.1:4200 example-user@198.51.100.0
+          ssh -L4200:127.0.0.1:4200 example-user@198.51.100.0
 
-1. Now you can visit the Angular application in your browser by navigating to:
+1. Visit the Angular application in your browser by navigating to:
 
         localhost:4200
 
@@ -101,15 +108,15 @@ Each component consists of a component decorator (`@Component`) followed immedia
 
 Decorators define the following three things for their components:
 
-- The selector used to insert the component into templates. For instance, a component with `example-selector` can be inserted into a template with the `<example-selector></example-selector>` tag.
-- The template that determines how the component is rendered. Together with the component, the template defines a view.
+- The **selector** — used to insert the component into templates. For instance, a component with `example-selector` can be inserted into a template with the `<example-selector></example-selector>` tag.
+- The **template** — determines how the component is rendered. Together with the component, the template defines a view.
 - Optionally, the CSS style to be used for rendering the component.
 
-Component classes are where components gather data, implement logic, and assign values. This is where components can call and make use of services, which you can find more on below.
+Component classes are where components gather data, implement logic, and assign values. This is where components can call and make use of [Angular Services](/docs/guides/angular-tutorial-for-beginners/#angular-services).
 
-Finally, components are grouped into modules — NgModules in Angular parlance. Every Angular application has at least one NgModule, the root module, often called `AppModule`. This groups your application's core functionality, and, for many straightforward applications, no other modules need to be created.
+Finally, components are grouped into modules — called as `NgModules` in Angular. Every Angular application has at least one `NgModule`, the root module, often called `AppModule`. This groups your application's core functionality, and, for many straightforward applications, no other modules need to be created.
 
-Here is an example of a component, pulled from the base Angular application set up above:
+Here is an example of a component, pulled from the base Angular application set up above.
 
 {{< file "src/app/app.component.ts" >}}
 // [...]
@@ -124,7 +131,7 @@ export class AppComponent {
 }
 {{< /file >}}
 
-In the template file identified in the decorator above, you can see how the `title` variable defined in the component class gets used in the view:
+In the template file identified in the decorator above, you can see how the `title` variable defined in the component class gets used in the view.
 
 {{< file "src/app/app.component.html" >}}
 <!-- [...] -->
@@ -134,7 +141,7 @@ In the template file identified in the decorator above, you can see how the `tit
 <!-- [...] -->
 {{< /file >}}
 
-When you are ready to expand your application with an additional component, you can use this Angular CLI command to generate one. This example creates a new component called `example-component`:
+When you are ready to expand your application with an additional component, you can use the Angular CLI command to generate one. This example creates a new component called `example-component`.
 
         ng generate component example-component
 
@@ -144,7 +151,7 @@ Components use services for functionality not directly related to the applicatio
 
 The following example extends on the base application set up above. It adds a very simple service for getting a list of users. It presumes that you have a JSON file or a web service which your Angular application can call to get the list of users.
 
-1. Add the `HttpClientModule` to your `AppModule`:
+1. Add the `HttpClientModule` to your `AppModule`.
 
     {{< file "src/app/app.module.ts" >}}
 import { NgModule } from '@angular/core';
@@ -169,13 +176,13 @@ import { AppComponent } from './app.component';
 export class AppModule { }
     {{< /file >}}
 
-1. Create the service, to be named `UserService` in this example:
+1. Create the service, to be named `UserService` in this example.
 
         ng generate service user
 
     This creates a `src/app/user.service.ts` file with the skeleton of an Angular service. As you can see in the next example, services are designated with the injectable decorator (`@Injectable`). This allows them to be dependency injected into components.
 
-1. Add the `HttpClient` and associated modules to the service, and implement the functionality to fetch the list of users. In this example, `src/assets/users.json` contains the list of users. You can also use the URL for a web service API here instead:
+1. Add the `HttpClient` and associated modules to the service, and implement the functionality to fetch the list of users. In this example, `src/assets/users.json` contains the list of users. You can also use the URL for a web service API here instead.
 
     {{< file "src/app/user.service.ts" >}}
 import { Injectable } from '@angular/core';
@@ -197,13 +204,13 @@ export class UserService {
 }
    {{< /file >}}
 
-    For the purpose of this example, you can use a JSON file such as the following for the list of users:
+    For this example, you can use the following JSON file for the list of users.
 
     {{< file "src/assets/users.json" >}}
 ["userA","userB","userC"]
     {{< /file >}}
 
-1. Alter the component to use the service. The component needs to import the service, create a variable for the list of users, and make a call to the service to get the list. The component also now makes use of the `OnInit` module to call the service when the component loads:
+1. Modify the component to use the service. The component needs to import the service, create a variable for the list of users, and make a call to the service to get the list. The component also now makes use of the `OnInit` module to call the service when the component loads.
 
     {{< file "src/app/app.component.ts" >}}
 // Add the OnInit module to this import statement
@@ -232,7 +239,7 @@ export class AppComponent implements OnInit {
 }
     {{< /file >}}
 
-1. Add lines for the template to iterate through the list of users:
+1. Add lines for the template to iterate through the list of users.
 
     {{< file "src/app/app.component.html" >}}
 <!-- [...] -->
@@ -253,4 +260,3 @@ export class AppComponent implements OnInit {
 ## Conclusion
 
 With that, you should have foundational understanding to start off on building your own application with Angular. To help you dive deeper, take a look at Angular's thorough [documentation repository](https://angular.io/docs). Angular also provides the exceptional [Tour of Heroes tutorial](https://angular.io/tutorial), which walks you through each step in the development of a dynamic Angular application, working from the ground up.
-
