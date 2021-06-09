@@ -2,8 +2,8 @@
 slug: what-is-apache-kafka
 author:
   name: Jeffery Novotny
-description: 'This guide provides an introduction to Apache Kafka. Kafka is an open-source platform for stream management and processing.'
-og_description: 'This guide provides an introduction to Apache Kafka. Kafka is an open-source platform for stream management and processing.'
+description: 'Kafka is an open-source platform for stream management and processing. It is great at supporting environments with a real-time data stream. An introduction to Apache Kafka, along with common use cases, and advantages are discussed in this guide.'
+og_description:  'Kafka is an open-source platform for stream management and processing. It is great at supporting environments with a real-time data stream. An introduction to Apache Kafka, along with common use cases, and advantages are discussed in this guide.'
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,15 +18,9 @@ contributor:
   link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
-- '[events](https://kafka.apache.org/intro#intro_concepts_and_terms)'
-- '[Kafka website](https://kafka.apache.org/uses)'
+- '[Events](https://kafka.apache.org/intro#intro_concepts_and_terms)'
 - '[Kafka Administration API](https://kafka.apache.org/27/javadoc/index.html)'
-- '[Kafka Administration API](https://kafka.apache.org/27/javadoc/index.html)'
-- '[Kafka Administration API](https://kafka.apache.org/27/javadoc/index.html)'
-- '[The Kafka site](https://kafka.apache.org/)'
-- '[Kafka documentation web page](https://kafka.apache.org/documentation/)'
-- '[Kafka JavaDocs page](https://kafka.apache.org/27/javadoc/index.html)'
-- '[Kafka Streams documentation](https://kafka.apache.org/documentation/streams/)'
+- '[Kafka Documentation](https://kafka.apache.org/documentation/)'
 
 ---
 
