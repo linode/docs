@@ -1,22 +1,25 @@
 ---
-slug: how-to-install-nginx-almalinux-8
+slug: install-and-use-nginx-on-almalinux-8
 author:
   name: Linode Community
   email: docs@linode.com
 description: "NGINX is an open-source web server with an event-based architecture designed for efficiency and concurrency. In this guide, learn how to install and start using NGINX on your AlmaLinux 8 server."
 og_description: "NGINX is an open-source web server with an event-based architecture designed for efficiency and concurrency. In this guide, learn how to install and start using NGINX on your AlmaLinux 8 server."
 keywords: ['nginx','web server','reverse proxy','load balancing','install nginx on almalinux 8','alma linux']
+tags: ['nginx', 'web server', 'proxy', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-08
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use NGINX on AlmaLinux 8"
+title: "Install and Use NGINX on AlmaLinux 8"
 h1_title: "How to Install and Use NGINX on AlmaLinux 8"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[NGINX Documentation](https://nginx.org/en/docs/)'
+- '[NGINX](https://nginx.org/)'
 relations:
     platform:
         key: how-to-install-nginx
@@ -30,30 +33,30 @@ This guide aims to show you how to install NGINX on your AlmaLinux 8 server and 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system:
+1. Update your system.
 
         sudo yum update
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Installing NGINX
+## Install NGINX
 
-1. Install NGINX from the package manager:
+1. Install NGINX from the package manager.
 
         sudo yum install nginx
 
-1. Enable and start the NGINX service:
+1. Enable and start the NGINX service.
 
         sudo systemctl enable nginx
         sudo systemctl start nginx
 
-1. Open port **80** — the HTTP port — on your system's firewall. FirewallD is the front end typically used to manage firewall rules on AlmaLinux. You can use the following commands to open port **80** and reload the rules so they take effect:
+1. Open port **80** — the HTTP port — on your system's firewall. *FirewallD* is the front end typically used to manage firewall rules on AlmaLinux. You can use the following commands to open port **80** and reload the rules so they take effect.
 
         sudo firewall-cmd --zone=public --add-service=http
         sudo firewall-cmd --zone=public --add-service=http --permanent
@@ -67,19 +70,19 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     [![Default NGINX page.](nginx-default-page_small.png)](nginx-default-page.png)
 
-## Managing NGINX
+## Manage NGINX
 
 The NGINX service runs on `systemd`, which means you can manage it using `systemctl` commands.
 
-1. View the current status of the NGINX service with:
+1. View the current status of the NGINX service using the following command:
 
         sudo systemctl status nginx
 
-1. To stop the NGINX service, use:
+1. Stop the NGINX service using the following command:
 
         sudo systemctl stop nginx
 
-    You can then start the NGINX service back up with:
+    You can then start the NGINX service back using the following command:
 
         sudo systemctl start nginx
 
@@ -91,11 +94,11 @@ The NGINX service runs on `systemd`, which means you can manage it using `system
 
         sudo systemctl enable nginx
 
-1. Restart the NGINX service with:
+1. Restart the NGINX service using the following command:
 
         sudo systemctl restart nginx
 
-1. To reload NGINX's configuration files, use:
+1. To reload NGINX's configuration files, use the following command:
 
         sudo systemctl reload nginx
 
@@ -105,7 +108,7 @@ This section walks you through setting up your own website using NGINX. In doing
 
 ### NGINX Configuration
 
-1. Open the main NGINX configuration file — `/etc/nginx/nginx.conf` — and disable the default website by commenting out the `root` line:
+1. Open the main NGINX configuration file — `/etc/nginx/nginx.conf` — and disable the default website by commenting out the `root` line.
 
     {{< file "/etc/nginx/nginx.conf" nginx >}}
 # [...]
@@ -121,9 +124,9 @@ server {
 
 1. Create an NGINX configuration file for your site.
 
-    In this example, replace `example.com` with your site's domain, in both the filename and in the file's contents. Do the same whenever you see `example.com` from here on:
+    - In this example, replace `example.com` with your site's domain, in both the filename and the file's contents. Do the same whenever you see `example.com` throughout this guide.
 
-    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+       {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
     listen 80;
     listen [::]:80;
@@ -138,25 +141,25 @@ server {
 }
     {{< /file >}}
 
-    This configuration creates a new NGINX server. That server listens for requests on port **80** for the domain name `example.com`. It then defines the server's root directory and index file name. The root directory is where NGINX maps requests to files, and the index file name is the name of the file NGINX serves for a request to the root directory.
+    - This configuration creates a new NGINX server. That server listens for requests on port **80** for the domain name `example.com`. It then defines the server's root directory and index file name. The root directory is where NGINX maps requests to files, and the index file name is the name of the file NGINX serves for a request to the root directory.
 
-    So, for a request to `example.com/`, NGINX attempts to locate an `index.html` file in the `/var/www/example.com` directory, and serves the file if it finds it there.
+    - So, for a request to `example.com/`, NGINX attempts to locate an `index.html` file in the `/var/www/example.com` directory, and serves the file if it finds it there.
 
-1. Run NGINX's configuration test to verify your configuration files:
+1. Run NGINX's configuration test to verify your configuration files.
 
         sudo nginx -t
 
-1. Restart NGINX for the changes to take effect:
+1. Restart NGINX for the changes to take effect.
 
         sudo systemctl restart nginx
 
-### Launching the Site
+### Launch the Site
 
-1. Create a directory for your NGINX site's content:
+1. Create a directory for your NGINX site's content.
 
         sudo mkdir -p /var/www/example.com
 
-1. Create an `index.html` page in the new NGINX site directory:
+1. Create an `index.html` page in the new NGINX site directory.
 
     {{< file "/var/www/example.com/index.html" html >}}
 <!doctype html>
@@ -168,12 +171,12 @@ server {
 </html>
     {{< /file >}}
 
-1. Give the NGINX user ownership of the directory for you website, then add executable permissions to its parent directory:
+1. Give the NGINX user ownership of the directory for your website, and then add executable permissions to its parent directory.
 
         sudo chown -R nginx:nginx /var/www/example.com
         sudo chmod -R +x /var/www
 
-1. Use the `chcon` command to change the SELinux security context for the website directory to allow web content:
+1. Use the `chcon` command to change the SELinux security context for the website directory to allow web content.
 
         sudo chcon -t httpd_sys_content_t /var/www/example.com -R
         sudo chcon -t httpd_sys_rw_content_t /var/www/example.com -R
@@ -186,12 +189,11 @@ server {
 
 ## Conclusion
 
-To learn more about NGINX's features and capabilities, check out our guide [A Comparison of the NGINX and Apache Web Servers](/docs/guides/comparing-nginx-and-apache-web-servers/).
+To learn more about NGINX's features and capabilities, check out our [A Comparison of the NGINX and Apache Web Servers](/docs/guides/comparing-nginx-and-apache-web-servers/) guide.
 
-For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part series on NGINX:
+For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part Getting Started series on NGINX.
 
 - [Part 1: Installation and Basic Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
 - [Part 2: (Slightly More) Advanced Configurations](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/)
 - [Part 3: Enable TLS for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/)
 - [Part 4: TLS Deployment Best Practices](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/)
-
