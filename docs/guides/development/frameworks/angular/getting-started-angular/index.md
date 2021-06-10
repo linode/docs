@@ -1,17 +1,16 @@
 ---
 slug: angular-tutorial-for-beginners
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: 'Angular provides a platform and framework for creating dynamic and sophisticated single-page web applications. This guide shows you how to get your first Angular application running and covers the fundamental concepts behind Angular applications.'
 og_description: 'Angular provides a platform and framework for creating dynamic and sophisticated single-page web applications. This guide shows you how to get your first Angular application running and covers the fundamental concepts behind Angular applications.'
 keywords: ['angular','node.js','typescript','web applications','app framework','open source']
-tags: ['angular', 'nodejs', 'web applications']
+tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-24
+published: 2021-06-10
 modified_by:
   name: Nathaniel Stickman
-title: "Angular Tutorial for Beginners"
+title: "An Angular Tutorial for Beginners"
 h1_title: "How to Build a Website with Angular"
 enable_h1: true
 contributor:
@@ -23,25 +22,7 @@ external_resources:
 - '[Angular docs](https://angular.io/docs)'
 ---
 
-Angular is a powerful open-source platform and framework for creating dynamic single-page applications. Angular was built for modular web application clients, which, along with its use of the TypeScript language, can make application design clearer, and cleaner.
-
-In this guide, you can find instructions for installing Angular, setting up your first Angular application, and learning about its core concepts.
-
-## Before You Begin
-
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system:
-
-        sudo apt update && sudo apt upgrade
-
-1. Throughout, this guide uses `example-app` as the name of the Angular application and `example.com` as the server domain name. Replace these with your preferred application name and your server's domain name, respectively.
-
-{{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+Angular is a powerful open-source platform and framework for creating dynamic single-page applications. Written in TypeScript, Angular was built for modular web application clients, and helps to make application design clearer, and cleaner. In this guide, you can find instructions for installing Angular, setting up your first Angular application, and learning about its core concepts.
 
 ## What is Angular?
 
@@ -57,7 +38,7 @@ Angular should not be confused with [AngularJS](https://angularjs.org/), a front
 
 ### Install Angular
 
-1. First, you need to install Node.js. Refer to any of the below guides:
+1. Install Node.js using the steps found in one of the following guides:
 
    - [How to Install Node.js and NGINX](/docs/guides/how-to-install-nodejs-and-nginx-on-debian-10/) (just select the appropriate Linux distribution from the drop down).
    - [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/).
@@ -81,18 +62,19 @@ Once you have the Angular CLI, you can use it to create Angular projects. The fo
 
         cd example-app
 
-    Unless noted otherwise, all subsequent commands in this guide assume you are still in this directory.
-
+    {{< note >}}
+Unless noted otherwise, all subsequent commands in this guide assume you are still in this directory.
+{{< /note >}}
 1. You can test the application with the following command:
 
         ng serve
 
-    Angular serves the application on **localhost** port **4200**. To visit the application remotely, you can use an SSH tunnel.
+    Angular serves the application on `localhost` port `4200`. To visit the application remotely, you can use an SSH tunnel.
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#using-ssh-on-windows-10-to-connect-to-a-server) guide, replacing the example port number there with **4200**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
-          ssh -L4200:127.0.0.1:4200 example-user@198.51.100.0
+          ssh -L4200:127.0.0.1:4200 example-user@192.0.2.0
 
 1. Visit the Angular application in your browser by navigating to:
 
@@ -114,11 +96,11 @@ Decorators define the following three things for their components:
 
 Component classes are where components gather data, implement logic, and assign values. This is where components can call and make use of [Angular Services](/docs/guides/angular-tutorial-for-beginners/#angular-services).
 
-Finally, components are grouped into modules — called as `NgModules` in Angular. Every Angular application has at least one `NgModule`, the root module, often called `AppModule`. This groups your application's core functionality, and, for many straightforward applications, no other modules need to be created.
+Finally, components are grouped into modules — called `NgModules` in Angular. Every Angular application has at least one `NgModule`, the root module, often called `AppModule`. This groups your application's core functionality and, for many straightforward applications, no other modules need to be created.
 
 Here is an example of a component, pulled from the base Angular application set up above.
 
-{{< file "src/app/app.component.ts" >}}
+{{< file "~/example-app/src/app/app.component.ts" >}}
 // [...]
 
 @Component({
@@ -133,7 +115,7 @@ export class AppComponent {
 
 In the template file identified in the decorator above, you can see how the `title` variable defined in the component class gets used in the view.
 
-{{< file "src/app/app.component.html" >}}
+{{< file "~/example-app/src/app/app.component.html" >}}
 <!-- [...] -->
 
 <span>{{ title }} app is running!</span>
@@ -149,7 +131,7 @@ When you are ready to expand your application with an additional component, you 
 
 Components use services for functionality not directly related to the application's views. Keeping this functionality in services keeps your application modular and makes it easier to reuse functionality in other parts of your application.
 
-The following example extends on the base application set up above. It adds a very simple service for getting a list of users. It presumes that you have a JSON file or a web service which your Angular application can call to get the list of users.
+The following example extends the base application set up above. It adds a very simple service for getting a list of users. It presumes that you have a JSON file or a web service which your Angular application can call to get the list of users.
 
 1. Add the `HttpClientModule` to your `AppModule`.
 
@@ -180,11 +162,11 @@ export class AppModule { }
 
         ng generate service user
 
-    This creates a `src/app/user.service.ts` file with the skeleton of an Angular service. As you can see in the next example, services are designated with the injectable decorator (`@Injectable`). This allows them to be dependency injected into components.
+    This creates a `~/example-app/src/app/user.service.ts` file with the skeleton of an Angular service. As you can see in the next example, services are designated with the injectable decorator (`@Injectable`). This allows them to be dependency injected into components.
 
 1. Add the `HttpClient` and associated modules to the service, and implement the functionality to fetch the list of users. In this example, `src/assets/users.json` contains the list of users. You can also use the URL for a web service API here instead.
 
-    {{< file "src/app/user.service.ts" >}}
+    {{< file "~/example-app/src/app/user.service.ts" >}}
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -212,7 +194,7 @@ export class UserService {
 
 1. Modify the component to use the service. The component needs to import the service, create a variable for the list of users, and make a call to the service to get the list. The component also now makes use of the `OnInit` module to call the service when the component loads.
 
-    {{< file "src/app/app.component.ts" >}}
+    {{< file "~/example-app/src/app/app.component.ts" >}}
 // Add the OnInit module to this import statement
 import { Component, OnInit } from '@angular/core';
 // Import the service
@@ -241,7 +223,7 @@ export class AppComponent implements OnInit {
 
 1. Add lines for the template to iterate through the list of users.
 
-    {{< file "src/app/app.component.html" >}}
+    {{< file "~/example-app/src/app/app.component.html" >}}
 <!-- [...] -->
 
   <div>
@@ -259,4 +241,4 @@ export class AppComponent implements OnInit {
 
 ## Conclusion
 
-With that, you should have foundational understanding to start off on building your own application with Angular. To help you dive deeper, take a look at Angular's thorough [documentation repository](https://angular.io/docs). Angular also provides the exceptional [Tour of Heroes tutorial](https://angular.io/tutorial), which walks you through each step in the development of a dynamic Angular application, working from the ground up.
+You should now have a foundation to start building your own application with Angular. To help you dive deeper, take a look at Angular's thorough [documentation repository](https://angular.io/docs). Angular also provides the exceptional [Tour of Heroes tutorial](https://angular.io/tutorial), which walks you through developing a dynamic Angular application from the ground up.
