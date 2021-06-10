@@ -3,8 +3,8 @@ slug: how-to-install-apache-kafka-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to install Apache Kafka on Ubuntu. Kafka is an open-source platform for stream management and processing.'
-og_description: 'This guide explains how to install Apache Kafka on Ubuntu. Kafka is an open-source platform for stream management and processing.'
+description: 'This guide explains how to install Apache Kafka on Ubuntu. Kafka is an open-source platform for stream management and processing. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.'
+og_description:'This guide explains how to install Apache Kafka on Ubuntu. Kafka is an open-source platform for stream management and processing. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.'
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['ubuntu', 'kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,7 @@ published: 2021-01-22
 modified_by:
   name: Linode
 title: "How to Install Apache Kafka on Ubuntu"
-h1_title: "How to Install and Configure Apache Kafka"
+h1_title: "Install and Configure Apache Kafka"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -24,7 +24,7 @@ external_resources:
 
 ---
 
-[*Apache Kafka*](https://kafka.apache.org/), often known simply as Kafka, is a popular open-source platform for stream management and processing. Kafka is structured around the concept of an event, which is an incident of interest. External agents independently and asynchronously send events to and receive event notifications from Kafka. Kafka accepts a continuous stream of events from multiple clients, stores them, and potentially forwards them to a second set of clients for further processing. It is flexible, robust, reliable, and self-contained, and offers low latency along with high throughput. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.
+[*Apache Kafka*](https://kafka.apache.org/), often known simply as Kafka, is a popular open-source platform for stream management and processing. Kafka is structured around the concept of an event. External agents, independently and asynchronously, send and receive event notifications to and from Kafka. Kafka accepts a continuous stream of events from multiple clients, stores them, and potentially forwards them to a second set of clients for further processing. It is flexible, robust, reliable, self-contained, and offers low latency along with high throughput. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.
 
 ## Before You Begin
 
@@ -44,8 +44,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 ## A Summary of the Apache Kafka Installation Process
 
-A complete Kafka installation consists of the following high-level steps. Each step is described in a separate section.
-These instructions are designed for Ubuntu 20.04 but are generally valid for any Linux distribution.
+A complete Kafka installation consists of the high-level steps listed below. Each step is described in a separate section. These instructions are designed for Ubuntu 20.04 but are generally valid for any Debian-based Linux distribution.
 
 1. Install Java
 1. Download and Install Apache Kafka
@@ -62,14 +61,17 @@ You must install Java before you can use Apache Kafka. This guide explains how t
 1. Update your Ubuntu packages.
 
         sudo apt update
+
 1. Install OpenJDK with `apt`.
 
         sudo apt install openjdk-11-jdk
+
 1. Confirm you installed the expected version of Java.
 
         java -version
 
-   Java returns some basic information about the installation. (The information varies based on the release).
+   Java returns some basic information about the installation. The information can vary based on the version you have installed.
+
     {{< output >}}
 openjdk version "11.0.9.1" 2020-11-04
 OpenJDK Runtime Environment (build 11.0.9.1+1-Ubuntu-0ubuntu1.20.04)
@@ -78,18 +80,18 @@ OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-0ubuntu1.20.04, mixed mode, sh
 
 ## Download and Install Apache Kafka
 
-TAR archives for Apache Kafka can be downloaded directly from the Apache Site and installed with the following process. The name of the Kafka download varies based on the release version. Substitute the name of your own file wherever you see `kafka_2.13-2.7.0.tgz`.
+Tar archives for Apache Kafka can be downloaded directly from the Apache Site and installed with the process outlined in this section. The name of the Kafka download varies based on the release version. Substitute the name of your own file wherever you see `kafka_2.13-2.7.0.tgz`.
 
-1. Navigate to the [*Apache Kafka Downloads page*](https://kafka.apache.org/downloads) and choose the Kafka release you want. We recommend choosing the latest version, which is currently Apache Kafka 2.7. This link takes you to a landing page where you can use either HTTP or FTP to download the TAR file.
+1. Navigate to the [Apache Kafka Downloads page](https://kafka.apache.org/downloads) and choose the Kafka release you want. We recommend choosing the latest version, which is currently Apache Kafka 2.7. This link takes you to a landing page where you can use either HTTP or FTP to download the tar file.
 
 1. If you downloaded the software onto a different computer than the host, transfer the Apache Kafka files to the host via `scp`, `ftp`, or another file transfer method. Replace the `user` and `yourhost` values with your user name and host IP address:
 
-        scp /localpath/kafka_2.13-2.7.0.tgz user@yourhost:~/
+        scp /localpath/kafka_2.13-2.7.0.tgz user@192.0.2.0:~/
     {{< note >}}
 If the transfer is blocked, verify your firewall is not blocking the connection. Execute `sudo ufw allow 22/tcp` to allow `ufw` to allow `scp` transfers.
 {{< /note >}}
-1. (Optional) You can confirm you downloaded the file correctly with a SHA512 checksum. You can find the checksum file on the [*Apache Kafka Downloads page*](https://kafka.apache.org/downloads). Each release includes a link to a corresponding `sha512` file. Download this file and transfer it to your Kafka host using `scp`. Place the checksum file in the same directory as your TAR file.
-    Execute the following command to generate a checksum for the TAR file:
+1. (Optional) You can confirm you downloaded the file correctly with a SHA512 checksum. You can find the checksum file on the [Apache Kafka Downloads page](https://kafka.apache.org/downloads). Each release includes a link to a corresponding `sha512` file. Download this file and transfer it to your Kafka host using `scp`. Place the checksum file in the same directory as your tar file.
+    Execute the following command to generate a checksum for the tar file:
 
         gpg --print-md SHA512 kafka_2.13-2.7.0.tgz
 
@@ -99,7 +101,7 @@ kafka_2.13-2.7.0.tgz: F3DD1FD8 8766D915 0D3D395B 285BFA75 F5B89A83 58223814
                       90C8428E 6E568889 054DDB5F ADA1EB63 613A6441 989151BC
                       7C7D6CDE 16A871C6 674B909C 4EDD4E28
 {{< /output >}}
-1. For extra security, confirm the file is signed. Download the `.asc` file and the signing keys associated with the release. You can find these files on the [*Apache Kafka Downloads page*](https://kafka.apache.org/downloads). The link to the `KEYS` file is located at the top of the page. Each release includes a link to its `asc` file. Download these files and transfer them to your Kafka host using `scp`. Place these files in the same directory as your TAR file.
+1. For extra security, confirm the file is signed. Download the `.asc` file and the signing keys associated with the release. You can find these files on the [Apache Kafka Downloads page](https://kafka.apache.org/downloads). The link to the `KEYS` file is located at the top of the page. Each release includes a link to its `asc` file. Download these files and transfer them to your Kafka host using `scp`. Place these files in the same directory as your tar file.
 
     - Import the keys from the `KEYS` file. This installs the entire key set.
 
@@ -117,7 +119,7 @@ gpg:                issuer "bbejeck@apache.org"
 gpg: Good signature from "Bill Bejeck (CODE SIGNING KEY) <bbejeck@apache.org>" [unknown]
     {{< /output >}}
     {{< note >}}
-`Gpg` might warn you the "key is not certified with a trusted signature". Unfortunately, there is no easy way to confirm the authenticity of the signer, and for most deployments, this is not necessary. For unqualified authentication for high-security deployments, follow the steps for "Validating Authenticity of a Key" on the [*Apache Kafka Authentication page*](https://www.apache.org/info/verification.html).
+`Gpg` might warn you the "key is not certified with a trusted signature". Unfortunately, there is no easy way to confirm the authenticity of the signer, and for most deployments, this is not necessary. For unqualified authentication for high-security deployments, follow the steps for *Validating Authenticity of a Key* on the [Apache Kafka Authentication page](https://www.apache.org/info/verification.html).
 {{< /note >}}
 
 1. Extract the files with the `tar` utility. After the extraction process is complete, either delete the archive or store it in a secure place elsewhere on your system.
@@ -180,7 +182,7 @@ Topic: test-events Partition: 0 Leader: 0 Replicas: 0 Isr: 0
 
 ## Writing and Reading Kafka Events
 
-Kafka's command-line interface allows you to quickly test out the new topic. Use the API to create a Producer and write some events into the topic. Then create a consumer and read the events you wrote.
+Kafka's command-line interface allows you to quickly test out the new topic. Use the API to create a Producer and write some events into the topic. Then, create a consumer and read the events you wrote.
 
 1. Open a new console session for the producer and change the directory to the Kafka root directory.
 
