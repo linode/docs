@@ -1,7 +1,7 @@
 ---
 slug: using-rbac-to-secure-an-LKE-cluster
 author:
-  name: Linode
+  name: Ryan Syracuse
   email: docs@linode.com
 description: 'This guide describes how to create roles and set contexts for specific users to create an environment with limited kubernetes permissions.'
 og_description: 'Kubernetes can  be used to create roles and set contexts for specific users to create an environment with limited kubernetes permissions'
@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-28
 modified_by:
   name: Linode
-title: 'Securing an LKE Cluster Through Permissions and RBAC'
+title: 'Securing an LKE Cluster Through User Permissions and RBAC'
 aliases: ['/kubernetes/securing-an-LKE-cluster/']
 concentrations: ["Kubernetes"]
 external_resources:
@@ -73,11 +73,11 @@ The following steps will provide a secure method for limited users to access a c
 
   A base64 string will be outputted. Copy the output to be used in the next step.
 
-1. Using a text editor of your choice, create a new CSR yaml file:
+1. Using a text editor of your choice, create a new CSR YAML file:
 
        sudo nano exampleusercsr.yaml
 
-  The CSR yaml should reflect the following, replacing the string in the `request` field with the base64 string that was generated for your own csr file:
+  The CSR YAML should reflect the following, replacing the string in the `request` field with the base64 string that was generated for your own csr file:
 
    {{< file >}}
 apiVersion: certificates.k8s.io/v1
@@ -205,7 +205,7 @@ Error from server (Forbidden): nodes is forbidden: User "XXX" cannot list resour
 
 The failure is expected, since the user currently does not have any roles or permissions defined.
 
-## Setting Permisions with RBAC
+## Setting Permissions with RBAC
 
 Permissions can be applied to a new user by creating a `role.yaml` and `rolebinding.yaml` file. In Kubernetes, a **Role** defines the permissions that are given to a specific group of users, and the **Rolebinding** applies the roles to specific users. For example, if you wanted to a give the `exampleuser` user created previously the ability to interact with pods in the `examplenamespace` namespace, a good configuration would be as follows:
 
