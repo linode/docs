@@ -24,7 +24,7 @@ In Linux administration, the application of [Users, Groups, and Permissions](/do
 
 ## In This Guide
 
-While the Linode Kubernetes Engine(LKE) is a managed Platform as a Service solution providing a base level of security, it does not by default handle the creation of roles and service accounts for any applications that are configured on LKE. This guide will serve as a tutorial for creating a Role for an example user in their own namespace, and then configuring a Service Account for a replicated NGINX server that can be used to ensure that the server is working within it's intended application.
+While the Linode Kubernetes Engine(LKE) is a managed Platform as a Service solution providing a base level of security, it does not by default handle the creation of roles and service accounts for any applications that are configured on LKE. This guide will serve as a tutorial for creating a Role and Rolebinding for an example user in their own namespace, so that users can export a custom Kubeconfig file so users can authenticate with limited permissions.
 
 ### Before You Begin
 
@@ -125,6 +125,8 @@ Additionally, although CSR's will be automatically deleted after enough time has
 
 ### Create a Limited Kubeconfig File
 
+In order for a new limited user to interact with Kubernetes, they will need their own `Kubeconfig` file that does not include administrative permissions. The following steps will describe how to create this file.
+
 1. To ensure that the original kubeconfig file is not overwritten without a backup, create a backup now:
 
        cp kubeconfig.yaml kubeconfigbackup.yaml
@@ -200,10 +202,10 @@ users:
 If the configuration worked, the new user's kubeconfig should make the request fail with the following error:
 
 {{ output }}
-Error from server (Forbidden): nodes is forbidden: User "XXX" cannot list resource "nodes" in API group "" at the cluster scope
+Error from server (Forbidden): nodes is forbidden: User "exampleuser" cannot list resource "nodes" in API group "" at the cluster scope
 {{ </output>}}
 
-The failure is expected, since the user currently does not have any roles or permissions defined.
+The failure is expected, since the user currently does not have any roles or permissions defined. By default, new kubernetes users will be unable to access any resources.
 
 ## Setting Permissions with RBAC
 
@@ -263,6 +265,13 @@ roleRef:
   Error from server (Forbidden): nodes is forbidden: User "exampleuser" cannot list resource "nodes" in API group "" at the cluster scope
   {{< /output >}}
 
+
+## Next Steps
+
+Now that the user has been successfully installed, the users `kubeconfig` file may be exported for other users to use from their own `kubectl` clients, and the user can access the cluster with the limited permissions set by the administrator in their own namespace. Additionally security controls may still be applied, however will vary depending on your use case. **Admission Controllers** for example, are a great way to implement additional controls on authenticated and authorized requests. Apllications on an LKE cluster can additionally be put behind a NodeBalancer and ingress with TLS enabled.  For more information, the following resources may be helpful:
+
+- [Configuring Load Balancing with TLS Encryption](/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/)
+- [Admission Controllers](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/)
 
 
 
