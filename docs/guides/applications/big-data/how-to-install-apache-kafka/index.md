@@ -4,7 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to install Apache Kafka on Ubuntu. Kafka is an open-source platform for stream management and processing. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.'
-og_description:'This guide explains how to install Apache Kafka on Ubuntu. Kafka is an open-source platform for stream management and processing. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.'
+og_description: 'This guide explains how to install Apache Kafka on Ubuntu. Kafka is an open-source platform for stream management and processing. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.'
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['ubuntu', 'kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
