@@ -7,7 +7,7 @@ og_description: 'Python''s Package Index provides many packages to help data sci
 keywords: ['python libraries for data science']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-08
+published: 2021-06-11
 modified_by:
   name: Linode
 title: "Python Packages for Data Science"

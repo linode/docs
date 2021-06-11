@@ -8,7 +8,7 @@ og_description: 'This guide explains how to install, configure, and use Apache o
 keywords: ['AlmaLinux','Apache','installation','configuration']
 tags: ['apache', 'linux', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-03
+published: 2021-06-11
 modified_by:
   name: Linode
 title: "Install and Use Apache on AlmaLinux"
