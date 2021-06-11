@@ -1622,6 +1622,7 @@ tw
 txt
 txz
 tzurbaev
+ubuntu
 ucd
 udp
 ufw
