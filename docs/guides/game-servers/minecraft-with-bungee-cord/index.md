@@ -3,7 +3,7 @@ slug: minecraft-with-bungee-cord
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'How to link your Minecraft servers together using BungeeCord on your Linode with Ubuntu/Debian'
+description: 'Learn how to set up BungeeCord to Link Spigot servers and setup IP routing with some basic troubleshooting'
 keywords: ["minecraft", "spigot", "bungeecord", "link", "bukkit", "25565", "minecraft servers", "linking minecraft servers", "how to set up bungeecord"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ external_resources:
  - '[Official BungeeCord Site](https://www.spigotmc.org/wiki/bungeecord/)'
  - '[BungeeCord and Spigot Forums](https://www.spigotmc.org/)'
 published: 2015-09-09
-modified: 2019-02-01
+modified: 2021-06-11
 modified_by:
     name: linode
 title: 'How to Set Up BungeeCord to Link Spigot Servers'
@@ -201,6 +201,34 @@ To see who is online on any of the BungeeCord servers that you've linked, you ca
 
     /glist
 
+## How To Setup IP Forwarding In BungeeCord?
+
+To connect with other players and for the servers to securely identify a player’s identity, you need to enable IP forwarding. With default configuration, servers connected to BungeeCord won’t display the IP of the player, instead, it displays the IP of the BungeeCord server.
+By enabling IP forwarding, we can identify a player’s IP address.
+
+The first step towards enabling IP forwarding is locating your config.yml that we saw in the earlier section, and ensure that you followed all steps and that your ip_forward is set to true
+  {{< file "config.yml" yaml >}}
+servers:
+  lobby:
+    address: localhost:25565
+    restricted: false
+    motd: 'Just another BungeeCord - Forced Host'
+    games:
+    address: localhost:25565
+    restricted: false
+        motd: 'Just another BungeeCord - Forced Host'
+    ip_forward : true
+
+{{< /file >}}
+
+Next, ensure that in your spigot.yml file you have set bungeecord to true
+{{< file "config.yml" yaml >}}
+    bungeecord : true
+    player-shuffle : 0
+
+{{< /file >}}
+
+Once, you have set the right values for bungeecord and ip_forward, restart your Spigot servers to enable IP forwarding.
 
 ## Troubleshooting
 
@@ -244,3 +272,19 @@ Assuming that the issue is not solved, the issue is likely to be the firewall. Y
     iptables -F
 
 You should try again to reconnect. If you can connect now, then you'll need to reconfigure the firewall as detailed above.
+
+## Reducing Lag In Game By Optimizing spigot.yml
+
+Spigot provides us with a few options to optimize our servers to reduce the lag and get optimal performance. Since in this guide we are illustrating using Minecraft, we are to show some Minecraft specific optimizations below:
+
+1. **save-user-cache-on-stop-only:** The default for this argument is false. This means that it is continuously saving user data, which could potentially lead to heavy performance reduction. You can avoid saving data continuously by setting save-user-cache-on-stop-only to true, which is its optimized state.
+
+2. **entity-activation-range:** This argument controls how to activate AI of entities based on how close mobs and entities are to each other. The recommended value for optimization here is to keep animals at 16, monsters at 24, raiders at 48, and misc at 8. When we assign these numbers, we define a distance based on blocks for the AI to activate. AI of these entities reactivates when the player is in close proximity again.
+
+3. **merge-radius:** When the number of items on the ground ticking is too high, they reduce and significantly induce lag. Optimizing maximum tick time by setting item to 4.0 and exp to 6.0 not only reduces lag but also helps solve issues like items teleporting and showing up in the wrong places.
+
+4. **mob-spawn-range:**  Another lag-inducing source is if the mobs are spawning at very large distances. When that happens, you have very large active areas. The default value for mob-spawn-range in spigot.yml is 8, which is large. We can optimize the distance from the player at which a mob spawns by setting this value to 6.
+
+5. **item-despawn-rate:** We can optimize how fast items dropped to the items despawn. This has a lot of benefits, but the biggest one is on the lag. Once you adjust and decrease the default item-despawn-rate from 6,000 to something like 4,000 you get much better performance with significantly reduced lag.
+
+There are other options to optimize spigot.yml that you should check out tick-inactive-villagers, arrow-despawn-rate, and nerf-spawner-mobs.
