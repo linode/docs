@@ -405,6 +405,7 @@ evhost
 example1
 example2
 examplegroup
+examplenamespace
 examplepassword
 examplerole
 examplesitename
@@ -1262,6 +1263,7 @@ quickconnect
 quicklisp
 quickstart
 ramdisk
+rbac
 rbenv
 rc
 rce

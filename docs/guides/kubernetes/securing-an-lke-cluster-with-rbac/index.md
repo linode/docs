@@ -24,7 +24,7 @@ In Linux administration, the application of [Users, Groups, and Permissions](/do
 
 ## In This Guide
 
-While the Linode Kubernetes Engine(LKE) is a managed Platform as a Service solution providing a base level of security, it does not by default handle the creation of roles and service accounts for any users that are configured on LKE. This guide will serve as a tutorial for creating a Role and Rolebinding for an example user in the example user's own namespace, so that users can export a custom Kubeconfig file for users to authenticate with for limited permissions. This way, all users in a specific cluster will not be required to have full administrator permissions.
+While the Linode Kubernetes Engine(LKE) is a managed Platform as a Service solution providing a base level of security, it does not by default handle the creation of roles and service accounts for any users that are configured on LKE. This guide will serve as a tutorial for creating a role and role binding for an example user in the example user's own namespace, so that users can export a custom Kubeconfig file for users to authenticate with for limited permissions. This way, all users in a specific cluster will not be required to have full administrator permissions.
 
 ### Before You Begin
 
@@ -270,7 +270,7 @@ roleRef:
 
 ## Next Steps
 
-Now that the user has been successfully installed, the user's `kubeconfig` file may be exported for other users to use from their own `kubectl` clients, and the user can access the cluster with the limited permissions set by the administrator in their own namespace. Additionally security controls may still be applied, however will vary depending on your use case. **Admission Controllers** for example, are a great way to implement additional controls on authenticated and authorized requests. Apllications on an LKE cluster can additionally be put behind a NodeBalancer and ingress with TLS enabled.  For more information, the following resources may be helpful:
+Now that the user has been successfully installed, the user's `kubeconfig` file may be exported for other users to use from their own `kubectl` clients, and the user can access the cluster with the limited permissions set by the administrator in their own namespace. Additionally security controls may still be applied, however will vary depending on your use case. **Admission Controllers** for example, are a great way to implement additional controls on authenticated and authorized requests. Applications on an LKE cluster can additionally be put behind a NodeBalancer and ingress with TLS enabled.  For more information, the following resources may be helpful:
 
 - [Configuring Load Balancing with TLS Encryption](/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/)
 - [Admission Controllers](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/)
