@@ -1,22 +1,31 @@
 ---
-slug: how-to-build-website-play-framework
+slug: build-a-website-with-the-play-framework
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'With the Play framework, you can make Java and Scala web applications concisely and efficiently. This guide shows your how to get started installing play and working through some example applications.'
 og_description: 'With the Play framework, you can make Java and Scala web applications concisely and efficiently. This guide shows your how to get started installing play and working through some example applications.'
 keywords: ['play','scala','java','web application','mvc','framework']
+tags: ['play', 'java', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-07
 modified_by:
   name: Nathaniel Stickman
-title: "How to Build a Website with the Play Framework"
+title: "Build a Website with the Play Framework"
 h1_title: "How to Build a Website with the Play Framework"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Play 2.8.x Documentation](https://www.playframework.com/documentation/2.8.x/Home)'
+- '[Play](https://www.playframework.com/)'
+- '[Scala sbt](https://www.scala-sbt.org/index.html)'
+- '[Sdkman](https://sdkman.io/)'
+- '[Play example projects](https://developer.lightbend.com/start/?group=play)'
+- '[Playframework example projects](https://github.com/playframework/play-samples)'
+- '[Playframework Hello World Tutorial](https://www.playframework.com/documentation/2.8.x/HelloWorldTutorial)'
+
 ---
 
 [Play](https://www.playframework.com/) is a lightweight framework for Java and Scala web applications. Play's conciseness makes it easy to develop modern and efficient web applications.
@@ -25,37 +34,37 @@ This guide helps you learn more about Play and how to get started using it. It w
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system. On Debian and Ubuntu, you can do this with:
+1. Update your system. On Debian and Ubuntu, use the following command:
 
         sudo apt update && sudo apt upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is Play?
 
-Play is a web-application framework for the Java and Scala programming languages. It focuses on being a concise and lightweight framework that takes advantage of functional programming concepts. Play's approach to the model–view–controller (MVC) architecture makes the process of designing modern and efficient web applications clearer and easier.
+Play is a web application framework for the Java and Scala programming languages. It focuses on being a concise and lightweight framework that takes advantage of functional programming concepts. Play's approach to the Model–View–Controller (MVC) architecture makes the process of designing modern and efficient web applications clearer and easier.
 
-Play is built on Scala, but it operates equally well with Java and Scala projects. Which language you choose is up to you. Scala provides a concise language oriented around functional programming concepts, and much of the Play community documentation uses Scala. Java, on the other hand, being the older of the two languages, has more general documentation and support.
+Play is built on Scala, but it operates equally well with Java and Scala projects. Which language you choose is up to you. Scala provides a concise language oriented around functional programming concepts, and much of the Play community documentation uses Scala. Java, on the other hand, being the older of the two languages, has more general documentation, and support.
 
 One of the great aspects of Play's design, however, is that you do not have to decide on one language over the other. Play lets you work with them both easily within the same project. For instance, you can start your project with Scala and use it for the components of your application directly concerned with Play. Then, you can start adding Java components to handle other features of your application.
 
-This guide's examples primarily use Scala, in part because of its great community support when it comes to Play. However, in the [Build a Website with Play](/docs/guides/how-to-build-website-play-framework/#building-a-website-with-play) section, you can find an example of how Play lets you seamlessly use Java and Scala side by side.
+This guide's examples primarily use Scala in part because of its great community support when it comes to Play. However, in the [Build a Website with Play](/docs/guides/build-a-website-with-the-play-framework/#build-a-website-with-play) section, you can find an example of how Play lets you seamlessly use Java and Scala side by side.
 
-## Getting Started with Play
+## Get Started with Play
 
 This section shows you how to set up what you need to run Play projects and helps you grab some example projects to start exploring. Lastly, it shows you how to set up a base project of your own.
 
-### Installing the Requisites
+### Install the Requisites
 
-Play relies on the [sbt](https://www.scala-sbt.org/index.html) build tool, which is also generally considered the de facto standard for managing Scala projects. Following sbt's recommended installation method, this guide uses [SDKMAN](https://sdkman.io/) to install OpenJDK and sbt.
+Play relies on the [*sbt*](https://www.scala-sbt.org/index.html) build tool, which is also generally considered the de facto standard for managing Scala projects. Following sbt's recommended installation method, this guide uses [SDKMAN](https://sdkman.io/) to install OpenJDK and sbt.
 
-1. Install SDKMAN, following the installation prompts:
+1. Install SDKMAN, following the installation prompts.
 
         curl -s "https://get.sdkman.io" | bash
 
@@ -63,25 +72,25 @@ Play relies on the [sbt](https://www.scala-sbt.org/index.html) build tool, which
 
         source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-    You can now verify the installation with:
+    You can now verify the installation using the following command:
 
         sdk version
 
-1. Install OpenJDK:
+1. Install OpenJDK.
 
         sdk install java $(sdk list java | grep -o "8\.[0-9]*\.[0-9]*\.hs-adpt" | head -1)
 
-1. Install sbt:
+1. Install sbt.
 
         sdk install sbt
 
-### Checking Out Example Applications
+### Check Out the Example Applications
 
-The Lightbend Tech Hub maintains a host of example Play projects for your to get started with. You can find the list of them on Lightbend's [showcase of example Play projects](https://developer.lightbend.com/start/?group=play). Alternatively, you can visit the GitHub [repository with all of the example projects](https://github.com/playframework/play-samples).
+The Lightbend Tech Hub maintains a host of example Play projects for your to get started with. You can find the list of them on Lightbend's [showcase of example Play projects](https://developer.lightbend.com/start/?group=play). Alternatively, you can visit the GitHub repository with all of the [playframework's example projects](https://github.com/playframework/play-samples).
 
 In these steps, you can see how to download and run one of these examples — the "Hello, World!" example. Then, you can use the steps to try out other examples on your own.
 
-1. Install Git. This command works for Debian and Ubuntu distributions. You should be able to use a similar command for your distribution's package manager:
+1. Install Git. This command works for Debian and Ubuntu distributions. You should be able to use a similar command for your distribution's package manager.
 
         sudo apt install git
 
@@ -90,18 +99,18 @@ In these steps, you can see how to download and run one of these examples — th
         cd ~
         git clone https://github.com/playframework/play-samples.git
 
-1. Change into the directory of the example you want to explore. Here, that is the "Hello, World!" example for Scala:
+1. Change the directory into the example that you want to explore. Here, that is the "Hello, World!" example for Scala.
 
         cd play-samples/play-scala-hello-world-tutorial
 
-1. Run the project:
+1. Run the project.
 
         sbt run
 
-    Play serves the application on `localhost:9000`. To visit the application remotely, you can use an SSH tunnel:
+    Play serves the application on `localhost:9000`. To visit the application remotely, you can use an SSH tunnel.
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **9000**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address:
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
 
             ssh -L9000:localhost:9000 example-user@198.51.100.0
 
@@ -109,36 +118,36 @@ In these steps, you can see how to download and run one of these examples — th
 
     ![Play "Hello, World!" example application](play-hello-world-example.png)
 
-### Creating an Application
+### Create an Application
 
-1. Create a directory for your Play project, then change into that directory:
+1. Create a directory for your Play project and then change to that directory.
 
         mkdir ~/example-play-app
         cd ~/example-play-app
 
     {{< note >}}
-The `example-play-app` directory in the example above can have the same name as your application. Here, however, its name has been varied to make this directory and the one discussed below easier to distinguish.
+The `example-play-app` directory in the example above can have the same name as your application. Here, however, its name has been varied to make this directory, and the one discussed below easier to distinguish.
     {{< /note >}}
 
-1. Generate a Play project, following the setup prompts:
+1. Generate a base Play project for Scala by following the setup prompts.
 
         sbt new playframework/play-scala-seed.g8
 
-    The above command creates a base Play project for Scala. If you want to create a base project for Java, use:
+    If you want to create a base Play project for Java, use the following command:
 
         sbt new playframework/play-java-seed.g8
 
-1. Change into the subdirectory where the project's main files live. The subdirectory matches the name your gave your project during the setup prompts:
+1. Change into the subdirectory where the project's main files live. The subdirectory matches the name you gave your project during the setup prompts.
 
         cd example-app
 
     Unless noted otherwise, all subsequent commands in this guide assume you are still in this project directory.
 
-1. Run your project. Follow the same steps as in the [Checking Out Example Applications](/docs/guides/how-to-build-website-play-framework/#checking-out-example-applications) section to get it running and to see the application on `localhost:9000`.
+1. Run your project. Follow the same steps as in the [Check Out Example Applications](/docs/guides/build-a-website-with-the-play-framework/#check-out-the-example-applications) section to get it running and to see the application on `localhost:9000`.
 
-## Building a Website with Play
+## Build a Website with Play
 
-1. Follow the steps in the [Creating an Application](/docs/guides/how-to-build-website-play-framework/#creating-an-application) section above to get base project started. This example assumes that you are using the Scala base project.
+1. Follow the steps in the [Create an Application](/docs/guides/build-a-website-with-the-play-framework/#create-an-application) section above to get the base project started. This example assumes that you are using the Scala base project.
 
 1. Open the configuration file for your application's routes (`conf/routes`), and add the following lines beneath the `GET /` line:
 
@@ -193,7 +202,7 @@ public class AboutController extends Controller {
 
     This controller renders the `about` template for any request to the `/about` URL.
 
-1. Customize your page templates. Open the `app/views/index.scala.html` template, and give it the contents below. Then, create the `app/views/about.scala.html` template, and give it the contents shown for it a little further below:
+1. Customize your page templates. Open the `app/views/index.scala.html` template, and give it the contents below. Then, create the `app/views/about.scala.html` template, and give it the contents shown for it a little further below.
 
     {{< file "app/views/index.scala.html" >}}
 @()
@@ -238,7 +247,7 @@ public class AboutController extends Controller {
 </html>
     {{< /file >}}
 
-1. Run the application using the steps given in the [Checking Out Example Applications](/docs/guides/how-to-build-website-play-framework/#checking-out-example-applications) section.
+1. Run the application using the steps given in the [Check Out the Example Applications](/docs/guides/build-a-website-with-the-play-framework/#check-out-the-example-applications) section.
 
     You can visit the application on `localhost:9000`.
 
