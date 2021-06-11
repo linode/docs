@@ -674,6 +674,7 @@ initializer
 initramfs
 initrd
 inittab
+injectable
 inode
 inotify
 insmod
