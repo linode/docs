@@ -215,6 +215,7 @@ cmusieve
 cnf
 codebase
 codec
+colormaps
 com2sec
 comodo
 completekey
@@ -941,6 +942,7 @@ minitest
 misconfiguration
 misconfigurations
 misconfigured
+missingness
 mitigations
 mixin
 mixins
@@ -1389,6 +1391,7 @@ sda
 sda1
 sdb
 sdc
+seaborn
 seafile
 seahub
 searchbots
@@ -1432,6 +1435,7 @@ shortguide
 shortguides
 shortname
 shoutcast
+scikit
 sidekiq
 sievers
 signup
@@ -1825,6 +1829,7 @@ xy
 xzio
 xzip
 yaml
+yellowbrick
 yellowdog
 yesod
 yml
