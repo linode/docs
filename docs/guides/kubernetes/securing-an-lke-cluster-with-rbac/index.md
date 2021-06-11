@@ -207,7 +207,7 @@ users:
 Error from server (Forbidden): nodes is forbidden: User "exampleuser" cannot list resource "nodes" in API group "" at the cluster scope
 {{< /output >}}
 
-  The failure is expected, since the user currently does not have any roles or permissions defined. By default, new kubernetes users will be unable to access any resources.
+  The failure is expected, since the user currently does not have any roles or permissions defined. By default, new Kubernetes users will be unable to access any resources.
 
 ## Setting Permissions with RBAC
 
