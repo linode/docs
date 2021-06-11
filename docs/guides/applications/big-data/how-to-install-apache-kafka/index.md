@@ -8,7 +8,7 @@ og_description: 'This guide explains how to install Apache Kafka on Ubuntu. Kafk
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['ubuntu', 'kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-22
+published: 2021-06-11
 modified_by:
   name: Linode
 title: "How to Install Apache Kafka on Ubuntu"

@@ -1,5 +1,6 @@
 'use strict';
 
+//import { debounce } from '../helpers/index';
 import { newDispatcher } from './dispatcher';
 import { isTopResultsPage } from './filters';
 
@@ -20,6 +21,10 @@ export function newSearchInputController() {
 
 		this.$watch('queryString', () => {
 			this.dispatch();
+			/*var self = this;
+			debounce(function() {
+				self.dispatch();
+			}, 100)();*/
 		});
 	};
 

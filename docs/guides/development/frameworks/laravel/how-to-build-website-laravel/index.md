@@ -8,7 +8,7 @@ og_description: 'Laravel is a PHP web framework that scales to your needs, from 
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-10
+published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
 title: "How to Create a Website Using Laravel"

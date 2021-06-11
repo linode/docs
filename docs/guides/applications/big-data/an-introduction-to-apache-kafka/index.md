@@ -7,7 +7,7 @@ og_description:  'Kafka is an open-source platform for stream management and pro
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-21
+published: 2021-06-11
 modified_by:
   name: Linode
 title: "What is Apache Kafka?"

@@ -7,7 +7,7 @@ og_description: "NGINX is an open-source web server with an event-based architec
 keywords: ['nginx','web server','reverse proxy','load balancing','install nginx on almalinux 8','alma linux']
 tags: ['nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-08
+published: 2021-06-11
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Use NGINX on AlmaLinux 8"
