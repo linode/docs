@@ -215,6 +215,7 @@ cmusieve
 cnf
 codebase
 codec
+colormaps
 com2sec
 comodo
 completekey
@@ -405,6 +406,7 @@ evhost
 example1
 example2
 examplegroup
+examplenamespace
 examplepassword
 examplerole
 examplesitename
@@ -674,6 +676,7 @@ initializer
 initramfs
 initrd
 inittab
+injectable
 inode
 inotify
 insmod
@@ -940,6 +943,7 @@ minitest
 misconfiguration
 misconfigurations
 misconfigured
+missingness
 mitigations
 mixin
 mixins
@@ -1262,6 +1266,7 @@ quickconnect
 quicklisp
 quickstart
 ramdisk
+rbac
 rbenv
 rc
 rce
@@ -1388,6 +1393,7 @@ sda
 sda1
 sdb
 sdc
+seaborn
 seafile
 seahub
 searchbots
@@ -1431,6 +1437,7 @@ shortguide
 shortguides
 shortname
 shoutcast
+scikit
 sidekiq
 sievers
 signup
@@ -1617,6 +1624,7 @@ tw
 txt
 txz
 tzurbaev
+ubuntu
 ucd
 udp
 ufw
@@ -1824,6 +1832,7 @@ xy
 xzio
 xzip
 yaml
+yellowbrick
 yellowdog
 yesod
 yml

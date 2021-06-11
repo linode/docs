@@ -89,7 +89,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Getting Started after Deployment
 
-Ensure that you have [installed Minecraft](https://my.minecraft.net/store/minecraft/) on your personal computer and created a Minecraft user account before getting started with this section.
+Ensure that you have [installed Minecraft](https://www.minecraft.net/en-us/get-minecraft) on your personal computer and created a Minecraft user account before getting started with this section.
 
 After Minecraft has finished installing on your Linode, you are able to access your Minecraft server by copying your Linode's IPv4 address and entering it in the Multiplayer menu on your personal computer's Minecraft installation. To find your Linode's IPv4 address:
 
