@@ -3,8 +3,7 @@ slug: how-to-use-dockerfiles
 author:
   name: Linode Community
   email: docs@linode.com
-contributor:
-description: 'A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker Image on your Linode using CentOS 7.'
+description: 'A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker image on your Linode.'
 keywords: ["docker", "container", "dockerfile","dockerfiles","docker image","docker images"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,59 +21,83 @@ aliases: ['/applications/containers/how-to-use-dockerfiles/']
 ---
 ![How to Use a Dockerfile](how-to-use-dockerfile.png "How to Use a Dockerfile")
 
-A Dockerfile is a text file of the commands (in order) used to automate installation and configuration of a [Docker image](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) and makes it easy to deploy multiple Docker containers without having to maintain the same image across multiple virtual machines. This article covers the basics, with an example, of how a Dockerfile works.
+A Dockerfile is a text file of instructions which are used to automate installation and configuration of a [Docker image](/docs/guides/introduction-to-docker/#docker-images). Dockerfiles make it easy to deploy multiple Docker containers without having to maintain the same image across multiple virtual machines. Instructions are executed in the order they appear in the Dockerfile, which makes using and updating them clear and intuitive. This article covers the basics, with an example, of how a Dockerfile works.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and have a Linode (or other Linux system) running Docker.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-2.  This guide assumes you are comfortable with the *command-line interface* (CLI) and working with programs through it.
+2.  Ensure your Linode is secure by following our guide on [How to Secure Your Server](/docs/guides/securing-your-server/).
 
-3.  Update your system with the package manager it uses.
+3.  This guide assumes you are comfortable with using the Docker command-line interface (CLI). To learn more about the Docker CLI, check out their [documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 
 ## How Does a Dockerfile Work?
 
-A Dockerfile is a script that carries out different commands and actions to create a Docker image. The Dockerfile automates the image creation process and simplifies your deployment pipeline, and a Docker container is made from a Docker image. A [Docker registry](https://docs.docker.com/registry/) is where your public (or private) Docker images can be stored.
+A Dockerfile is a script that carries out different commands and actions to build a Docker image, which can then be used to deploy a Docker container. The commands and information within the Dockerfile can be configured to use specific software versions and dependencies for stable deployments. You can also use a [Docker registry](https://docs.docker.com/registry/) to store and access your public (or private) Docker images.
 
-Once a Dockerfile is created, the `docker build` command is used to create a Docker image using the file’s commands (configured to use specific software versions and dependencies for stable deployments).
+Once a Dockerfile is written, you can use the `docker build` command to generate a Docker image based on the Dockerfile's instructions. Then, you can deploy a container based on the image with commands like `docker run` or `docker create`.
 
-A Dockerfile can use the following commands for building images:
+Here are common instructions that you can use in your Dockerfiles to build images:
 
--  **ADD**: Copy files from a source on the host to the container's filesystem at the set destination.
--  **CMD**: Execute a specific command within the container.
--  **ENTRYPOINT**: Set a default application to be used every time a container is created with the image.
--  **ENV**: Set environment variables.
--  **EXPOSE**: Expose a specific port to enable networking between the container and the outside world.
--  **FROM**: Define the base image used to start the build process.
--  **MAINTAINER**: Define the full name and email address of the image creator.
--  **RUN**: Central executing directive for a Dockerfile.
--  **USER**: Set the UID (the username) that will run the container.
--  **VOLUME**: Enable access from the container to a directory on the host machine.
--  **WORKDIR**: Set the path where the command, defined with CMD, is executed.
+**Basic Definitions**
 
-Each command doesn't need to be used. Next, we will see an example of how to use some of these.
+- **FROM**: Define the base image, such as `ubuntu` or `debian`, used to start the build process. Required for each Dockerfile.
+- **MAINTAINER**: Define the full name and email address of the image creator.
+
+**Variables**
+
+- **ENV**: Set environment variables that persist when the container is deployed.
+- **ARG**: Set a passable build-time variable. Can be used as an alternative to `ENV` to create a variable that does not persist when the container is deployed from the image.
+
+**Command Execution**
+
+- **RUN**: Execute commands, such as package installation commands, on a new image layer.
+- **CMD**: Execute a specific command within the container that is deployed with the image, or set default parameters for an `ENTRYPOINT` instruction. Only one is used per Dockerfile.
+- **ENTRYPOINT**: Set a default application to be used every time a container is deployed with the image. Only one is used per Dockerfile.
+- **USER**: Set the UID (the username) to run commands in the container.
+- **WORKDIR**: Set the container path where subsequent Dockerfile commands are executed.
+
+{{< note >}}
+`RUN`, `CMD`, and `ENTRYPOINT` can each be run in *shell* form, which takes normal arguments, or *exec* form, which takes arguments as a JSON array. Because *exec* form does not invoke a command shell, it is generally preferred and utilized in this guide.
+{{< /note >}}
+
+**Data Management**
+
+- **ADD**: Copy files from a source to the image's filesystem at the set destination with automatic tarball and remote URL handling.
+- **COPY**: Similar to `ADD` but without automatic tarball and remote URL handling.
+- **VOLUME**: Enable access from a specified mount point in the container to a directory on the host machine.
+
+**Networking**
+
+- **EXPOSE**: Expose a specific port to enable networking between the container and the outside world.
+
+Next, we will create an example Dockerfile that utilizes some of these commands.
 
 ## Creating a Dockerfile
 
 To create the Dockerfile:
 
-1.  At the command prompt (either via SSH or Lish in the Linode Manager), create and change to a new directory by entering `mkdir ~/mydockerbuild && cd ~/mydockerbuild`.
+1.  At the command prompt (either via SSH or Lish in the Linode Manager), create and change to a new directory:
+
+        mkdir ~/mydockerbuild && cd ~/mydockerbuild
+
     {{< note >}}
-This places the Docker build directory in your home directory. Do not store the Dockerfile in your home directory itself or the server's root directory, but instead create a separate directory and place all necessary files within it (alongside the Dockerfile).
+This places the Docker build directory in your home directory. As a matter of good practice, do not store the Dockerfile in your home directory itself or the server's root directory. Instead, create a separate directory and place all necessary files within it (alongside the Dockerfile) as shown in this guide.
 {{< /note >}}
 
-2.  Create the file by entering `touch example_dockerfile`.
+2.  Create an example Dockerfile:
 
-3.  Open the Dockerfile using the text editor of your choice (for this example, we will use nano) by entering `nano example_dockerfile`.
+        touch example_dockerfile
 
-4.  Copy the following example into nano. This will create a Dockerfile that generates an Ubuntu image and simply tells you "Hello, Sunshine!" when run:
+3.  Open the Dockerfile using the text editor of your choice (for this example, we will use nano):
+
+        nano example_dockerfile
+
+4.  Copy the following example into your Dockerfile. This creates a Dockerfile that generates a Debian image, sets the maintainer information, and simply returns "Hello, Sunshine!" when run:
+
     {{< file "example_dockerfile" docker >}}
-FROM ubuntu
-
-MAINTAINER linode
-
-RUN apt-get update
-
+FROM debian
+MAINTAINER Jane Doe jdoe@example.com
 CMD ["echo", "Hello, Sunshine!"]
 {{< /file >}}
 
@@ -84,60 +107,41 @@ CMD ["echo", "Hello, Sunshine!"]
 
 ## Building a Docker Image from a Dockerfile
 
-Build the image from the Dockerfile using the `docker build` command within the same directory by entering `docker build -t example_image .`.
+Build the image from the Dockerfile using the `docker build` command:
+
+    docker build ~/mydockerbuild -f example_dockerfile -t example_image
+
+Labelling your image with `example_image` makes it easier to deploy a container in the next step.
 
 The output should look something like this:
+
     {{< output >}}
-Sending build context to Docker daemon  2.048kB
-Step 1/4 : FROM ubuntu
-latest: Pulling from library/ubuntu
-345e3491a907: Pull complete
-57671312ef6f: Pull complete
-5e9250ddb7d0: Pull complete
-Digest: sha256:cf31af331f38d1d7158470e095b132acd126a7180a54f263d386da88eb681d93
-Status: Downloaded newer image for ubuntu:latest
- ---> 7e0aa2d69a15
-Step 2/4 : MAINTAINER linode
- ---> Running in 1a67c8ac2958
-Removing intermediate container 1a67c8ac2958
- ---> 49ce40cbee95
-Step 3/4 : RUN apt-get update
- ---> Running in 91b5f90f9e15
-Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [109 kB]
-Get:2 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [21.7 kB]
-Get:3 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
-Get:4 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [687 kB]
-Get:5 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [778 kB]
-Get:6 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [243 kB]
-Get:7 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
-Get:8 http://archive.ubuntu.com/ubuntu focal-backports InRelease [101 kB]
-Get:9 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
-Get:10 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]
-Get:11 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages [11.3 MB]
-Get:12 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]
-Get:13 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1194 kB]
-Get:14 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [274 kB]
-Get:15 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [29.7 kB]
-Get:16 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [955 kB]
-Get:17 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [4305 B]
-Fetched 17.6 MB in 3s (6241 kB/s)
-Reading package lists...
-Removing intermediate container 91b5f90f9e15
- ---> 40d2978e2295
-Step 4/4 : CMD ["echo", "Hello, Sunshine!"]
- ---> Running in 5a07e8b4eccc
-Removing intermediate container 5a07e8b4eccc
- ---> ba6d90c3982b
-Successfully built ba6d90c3982b
+Sending build context to Docker daemon  4.096kB
+Step 1/3 : FROM debian
+ ---> 4a7a1f401734
+Step 2/3 : MAINTAINER Jane Doe jdoe@example.com
+ ---> Running in fdd81bd8b5c6
+Removing intermediate container fdd81bd8b5c6
+ ---> 1253842068a3
+Step 3/3 : CMD ["echo", "Hello, Sunshine!"]
+ ---> Running in d33e1bacf1af
+Removing intermediate container d33e1bacf1af
+ ---> a5d95e138b97
+Successfully built a5d95e138b97
 Successfully tagged example_image:latest
 {{< /output >}}
 
-Your image has now been built from the Dockerfile.
+As you can see, the instructions from `example_dockerfile` are executed in order. The image labelled `example_image` is now ready for running to deploy a container.
 
-## Running Your Docker Image
+## Running Your Docker Image to Deploy a Container
 
-Running the image you just created is as easy as entering `docker run example_image`. The output will look like this:
-{{< output >}}
+Running the image you just built to deploy a Docker container is now as easy as entering the following:
+
+    docker run example_image
+
+A new container based on `example_image` is deployed, and the command specified in the `CMD` instruction is then executed from the container with the following output:
+
+    {{< output >}}
 Hello, Sunshine!
 {{< /output >}}
 
@@ -151,6 +155,6 @@ Congratulations! You've built your first Dockerfile and run your first Docker im
 
 For more examples and information on using Dockerfiles with Docker images and containers, see:
 
--   our [Further Introduction to Docker Images and Containers](/docs/guides/applications/containers/a-further-introduction-to-docker-images-and-containers);
+-   our guide on [How to Use Docker Images, Containers, and Dockerfiles in Depth](/docs/guides/docker-images-containers-and-dockerfiles-in-depth);
 
 -   Docker's [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
