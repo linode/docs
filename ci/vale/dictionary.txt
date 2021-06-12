@@ -1803,6 +1803,7 @@ www
 wx
 xabbix
 xap
+xargs
 xcalc
 xcode
 xen
