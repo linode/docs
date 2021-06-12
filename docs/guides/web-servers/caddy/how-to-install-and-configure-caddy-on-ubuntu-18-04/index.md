@@ -40,19 +40,19 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-ubuntu-18-04
 
 ## Install Caddy
 
-1. Install Caddy. This will install Caddy version 1.0.4. along with the `hook.service` [plugin](https://github.com/hacdias/caddy-service), which gives you access to a systemd unit file that you can use to manage Caddy as a systemd service. See their [downloads page](https://caddyserver.com/v1/download) for more information on available Caddy versions.
+1. Install the latest version of Caddy. See the [downloads page](https://caddyserver.com/download) for more information on available Caddy versions.
 
-        curl https://getcaddy.com | bash -s personal hook.service
+        sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo apt-key add -
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+        sudo apt update
+        sudo apt install caddy
 
-    Caddy will be installed to your `/usr/local/bin/caddy` directory.
+    Caddy is installed in `/usr/bin/caddy` directory.
 
     {{< note >}}
 To learn about Caddy licensing, please read their [blog post on the topic](https://caddyserver.com/v1/blog/announcing-caddy-1_0-caddy-2-caddy-enterprise). In 2017, commercial use of Caddy and their binaries required a license, however, they have recently updated their licensing and commercial licenses are no longer required for their use.
     {{</ note >}}
-
-1. Install Caddy as a systemd service:
-
-        sudo caddy -service install
 
 1. Start the Caddy service:
 
