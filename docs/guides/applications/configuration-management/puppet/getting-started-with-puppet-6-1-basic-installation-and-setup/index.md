@@ -13,12 +13,12 @@ modified_by:
 published: 2019-01-15
 title: Getting Started with Puppet - Basic Installation and Setup
 external_resources:
-    - '[Puppet Labs](https://puppetlabs.com/)'
-    - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
+    - '[Puppet Labs](https://puppet.com/)'
+    - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
 ---
 
-[Puppet](https://puppetlabs.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.
+[Puppet](https://puppet.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.
 
 <!--
 Tnis graphic doesn't have the same title as the new title for this doc.
@@ -113,7 +113,7 @@ The `puppetserver` service has the Puppet agent service as a dependency (which i
 
 1.  Download the Puppet repository, update your system packages, and install `puppetserver`:
 
-        wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+        wget https://apt.puppet.com/puppet-release-bionic.deb
         dpkg -i puppet-release-bionic.deb
         apt update
         apt install puppetserver
@@ -176,7 +176,7 @@ This snippet incorporates the FQDN declaration described in the [Create your Lin
 
 1.  On your managed node running **Ubuntu 18.04**, install the `puppet-agent` package:
 
-        wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+        wget https://apt.puppet.com/puppet-release-bionic.deb
         dpkg -i puppet-release-bionic.deb
         apt update
         apt install puppet-agent

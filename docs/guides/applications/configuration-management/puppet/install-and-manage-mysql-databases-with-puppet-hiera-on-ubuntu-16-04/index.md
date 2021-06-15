@@ -16,11 +16,11 @@ contributor:
   name: Tyler Langlois
   link: https://tjll.net
 external_resources:
-  - '[Puppet Labs](https://puppetlabs.com/)'
-  - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
+  - '[Puppet Labs](https://puppet.com/)'
+  - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
   - '[The Puppet Forge](https://forge.puppet.com/)'
   - '[Hiera documentation](https://docs.puppet.com/hiera/)'
-  - '[Facter](https://docs.puppet.com/facter/)'
+  - '[Facter](https://puppet.com/docs/puppet/7/facter.html)'
 deprecated: true
 deprecated_link: 'applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/'
 relations:
@@ -34,7 +34,7 @@ aliases: ['/applications/configuration-management/install-and-manage-mysql-datab
 
 ![Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](manage-mysql-with-puppet-hiera.jpg "Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04")
 
-[Puppet](https://puppetlabs.com/) is a configuration management system that helps simplify the use and deployment of different types of software, making system administration more reliable and replicable. In this guide, we use Puppet to manage an installation of [MySQL](https://www.mysql.com/), a popular relational database used for applications such as WordPress, Ruby on Rails, and others. [Hiera](https://docs.puppet.com/hiera/) is a method of defining configuration values that Puppet will use to simplify MySQL configuration.
+[Puppet](https://puppet.com/) is a configuration management system that helps simplify the use and deployment of different types of software, making system administration more reliable and replicable. In this guide, we use Puppet to manage an installation of [MySQL](https://www.mysql.com/), a popular relational database used for applications such as WordPress, Ruby on Rails, and others. [Hiera](https://docs.puppet.com/hiera/) is a method of defining configuration values that Puppet will use to simplify MySQL configuration.
 
 In this guide, you'll use Puppet to deploy [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the end, you will have MySQL installed, configured, and ready to use for a variety of applications that require a database backend.
 
@@ -62,7 +62,7 @@ Follow these steps to set up Puppet for single-host, local-only deployment. If y
 
 1.  Install the `puppetlabs-release` repository to add the Puppet packages:
 
-        wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+        wget https://apt.puppet.com/puppetlabs-release-pc1-xenial.deb
         sudo dpkg -i puppetlabs-release-pc1-xenial.deb
 
 2.  Update the apt package index to make the Puppet Labs repository packages available, then install Puppet. This will install the `puppet-agent` package, which provides the `puppet` executable within in a compatible Ruby environment:

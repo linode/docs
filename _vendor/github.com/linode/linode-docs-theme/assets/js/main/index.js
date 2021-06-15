@@ -1,14 +1,14 @@
 // Configuration (search API key etc.)
 import * as params from '@params';
 // AlpineJS controllers and helpers.
-import { newSearchController, newSearchInputController, newSearchFiltersController } from './search';
+import { newSearchController, newSearchInputController, newSearchFiltersController } from './search/index';
 import {
 	newToCController,
 	newInitController,
 	newBreadcrumbsController,
 	newSearchExplorerController,
 	newNavController
-} from './navigation';
+} from './navigation/index';
 import { newHomeController } from './sections/home/home';
 import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
 import { newSectionsController } from './sections/sections/index';

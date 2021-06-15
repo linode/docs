@@ -7,7 +7,7 @@ description: 'How to create an Access Key for use with Linode Object Storage.'
 og_description: 'How to create an Access Key for use with Linode Object Storage.'
 keywords: ['object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-26
+published: 2021-05-28
 modified_by:
   name: Linode
 title: "Generate an Object Storage Access Key"

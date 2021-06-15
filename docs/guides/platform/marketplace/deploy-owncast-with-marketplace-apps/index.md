@@ -65,7 +65,7 @@ After Owncast has finished installing, you can access your server with your Lino
 
 ![owncast.png 'The Owncast stream view'](owncast.png)
 
-With Owncast running, you can begin to configure your new server. Visit the Admin settings, located at `/admin`. Visit the [Configuration Instructions](https://owncast.online/docs/configuration/?source=linodemarketplace) to learn how you can change your video settings, web page content, and more.
+With Owncast running, you can begin to configure your new server. Visit the Admin settings, located at `/admin` (for example `192.0.2.0:8080/admin`). Visit the [Configuration Instructions](https://owncast.online/docs/configuration/?source=linodemarketplace) to learn how you can change your video settings, web page content, and more.
 
 On the server, Owncast is installed in the  `/opt/owncast` directory. You'll find all your data files there. This is also where you can upgrade your Owncast server in the future.
 

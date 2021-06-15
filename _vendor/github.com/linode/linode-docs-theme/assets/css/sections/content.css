@@ -107,7 +107,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content pre code {
-    @apply block bg-transparent p-0 overflow-x-scroll rounded-none;
+    @apply block bg-transparent p-0 overflow-x-auto rounded-none;
 }
 
 .content .highlight tbody td code {
