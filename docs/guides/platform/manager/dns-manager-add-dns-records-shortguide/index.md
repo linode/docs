@@ -37,4 +37,4 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
 
-1.  Click **Save**. It will only take a few minutes for new DNS records to become active.
+1.  Click **Save**. Your record will be updated in Cloud Manager in a few minutes and will propagate throughout the internet within the next 24 hours.
