@@ -80,8 +80,6 @@ If you are having difficulty logging in to the Linode Cloud Manager and opening 
 
 - **+1 (855) 454-6633** (North America toll-free)
 
-- **+91 000-800-919-0534** (India toll-free)
-
 If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
 
 ## Reporting Abuse
