@@ -45,7 +45,7 @@ Set up a Puppet Master (Ubuntu 18.04) and two Puppet agents (Ubuntu 18.04 and Ce
 
         cd manifests
 
-    From here, the module will be separated into classes, based on the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to manage any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppetlabs.com/hiera/latest/) data to store variables for each node.
+    From here, the module will be separated into classes, based on the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to manage any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppet.com/hiera/latest/) data to store variables for each node.
 
 ### Create the Initial Apache Class and Parameters
 
@@ -89,7 +89,7 @@ class apache::params {
 
     Outside of the original `init.pp` class, each class name needs to branch off of `apache`. As such, this class is called `apache::params`. The name after the double colon should share a name with the file.
 
-    An `if` statement is used to define the parameters, pulling from information provided by [Facter](https://puppetlabs.com/facter), which is already installed on the Puppet master. In this case, Facter will be used to pull down the operating system family (`osfamily`), to discern if it is Red Hat or Debian-based.
+    An `if` statement is used to define the parameters, pulling from information provided by [Facter](https://puppet.com/docs/puppet/7/facter.html), which is already installed on the Puppet master. In this case, Facter will be used to pull down the operating system family (`osfamily`), to discern if it is Red Hat or Debian-based.
 
     {{< note >}}
 For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/docs/assets/params.pp).
@@ -415,9 +415,9 @@ node 'centospuppet.members.linode.com' {
 
 ## Using the MySQL Module
 
-Many modules needed to run a server already exist within Puppet Labs' [Puppet Forge](https://forge.puppetlabs.com). These can be configured just as extensively as a module that you created and can save time since the module need not be created from scratch.
+Many modules needed to run a server already exist within Puppet Labs' [Puppet Forge](https://forge.puppet.com). These can be configured just as extensively as a module that you created and can save time since the module need not be created from scratch.
 
-Ensure you are in the `/etc/puppetlabs/code/environments/production/modules` directory and install the [Puppet Forge's MySQL module](https://forge.puppetlabs.com/puppetlabs/mysql) by PuppetLabs. This will also install any prerequisite modules.
+Ensure you are in the `/etc/puppetlabs/code/environments/production/modules` directory and install the [Puppet Forge's MySQL module](https://forge.puppet.com/puppetlabs/mysql) by PuppetLabs. This will also install any prerequisite modules.
 
     cd /etc/puppetlabs/code/environments/production/modules
     sudo /opt/puppetlabs/bin/puppet module install puppetlabs-mysql

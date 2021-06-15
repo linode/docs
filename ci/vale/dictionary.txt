@@ -133,6 +133,7 @@ bounceback
 brackley
 bram
 brd
+brightbox
 browserify
 bs4
 btmp
@@ -214,6 +215,7 @@ cmusieve
 cnf
 codebase
 codec
+colormaps
 com2sec
 comodo
 completekey
@@ -404,6 +406,7 @@ evhost
 example1
 example2
 examplegroup
+examplenamespace
 examplepassword
 examplerole
 examplesitename
@@ -543,6 +546,7 @@ goldmark
 goroutine
 goroutines
 goto
+gpasswd
 gpc
 gpg
 gradle
@@ -599,6 +603,7 @@ host1
 host2
 hostname
 hostnames
+hotfix
 hotlink
 hotlinked
 hotlinking
@@ -671,6 +676,7 @@ initializer
 initramfs
 initrd
 inittab
+injectable
 inode
 inotify
 insmod
@@ -918,6 +924,7 @@ metapackage
 metaparameters
 metorik
 metricbeat
+microblogging
 microblogs
 microservice
 microservices
@@ -938,10 +945,12 @@ minitest
 misconfiguration
 misconfigurations
 misconfigured
+missingness
 mitigations
 mixin
 mixins
 mkdir
+mkpasswd
 mnesia
 mngtmpaddr
 moby
@@ -969,6 +978,7 @@ multicast
 multicloud
 multicraft
 multilib
+multiline
 multiport
 multisite
 multiuser
@@ -1258,6 +1268,7 @@ quickconnect
 quicklisp
 quickstart
 ramdisk
+rbac
 rbenv
 rc
 rce
@@ -1349,6 +1360,7 @@ runfile
 runlevels
 runtime
 runtimes
+rustup
 rvm
 rw
 rwx
@@ -1383,6 +1395,7 @@ sda
 sda1
 sdb
 sdc
+seaborn
 seafile
 seahub
 searchbots
@@ -1426,6 +1439,7 @@ shortguide
 shortguides
 shortname
 shoutcast
+scikit
 sidekiq
 sievers
 signup
@@ -1613,6 +1627,7 @@ tw
 txt
 txz
 tzurbaev
+ubuntu
 ucd
 udp
 ufw
@@ -1672,6 +1687,7 @@ usercolumn
 userdb
 usergroup
 userland
+usermod
 usersor
 usr
 ust
@@ -1819,6 +1835,7 @@ xy
 xzio
 xzip
 yaml
+yellowbrick
 yellowdog
 yesod
 yml

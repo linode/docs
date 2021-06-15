@@ -26,7 +26,7 @@ relations:
 
 Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changes that the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks and improve the module's readability for any future users.
 
-In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppetlabs.com/). These steps will create a full LAMP stack on your server and provide an overview of the various ways modules can be utilized.
+In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppet.com/). These steps will create a full LAMP stack on your server and provide an overview of the various ways modules can be utilized.
 
 {{< note >}}
 This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent/) guide. If using a different setup, please adapt the guide accordingly.
@@ -48,7 +48,7 @@ This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master a
 
         cd manifests
 
-    From here, the module will be separated into classes, based upon the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to managed any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppetlabs.com/hiera/latest/) data to store variables for each node.
+    From here, the module will be separated into classes, based upon the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to managed any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppet.com/hiera/latest/) data to store variables for each node.
 
 ### Create the Initial Apache Class and Parameters
 
@@ -93,7 +93,7 @@ class apache::params {
 
     Outside of the original `init.pp` class, each class name needs to branch off of `apache`. As such, this class is called `apache::params`. The name after the double colon should share a name with the file.
 
-3.  The parameters should now be defined. To do this, an `if` statement will be used, pulling from information provided by [Facter](https://puppetlabs.com/facter), which is already installed on the Puppet master. In this case, Facter will be used to pull down the operating system family (`osfamily`), to discern if it is Red Hat or Debian-based.
+3.  The parameters should now be defined. To do this, an `if` statement will be used, pulling from information provided by [Facter](https://puppet.com/docs/puppet/7/facter.html), which is already installed on the Puppet master. In this case, Facter will be used to pull down the operating system family (`osfamily`), to discern if it is Red Hat or Debian-based.
 
     The skeleton of the `if` statement should resemble the following:
 
@@ -439,9 +439,9 @@ node 'centoshost.example.com' {
 
 ## Using the MySQL Module
 
-Many modules needed to run a server already exist within Puppet Lab's [Puppet Forge](https://forge.puppetlabs.com). These can be configured just as extensively as a module that you created and can save time since the module need not be created from scratch.
+Many modules needed to run a server already exist within Puppet Lab's [Puppet Forge](https://forge.puppet.com). These can be configured just as extensively as a module that you created and can save time since the module need not be created from scratch.
 
-Install the [Puppet Forge's MySQL module](https://forge.puppetlabs.com/puppetlabs/mysql) by PuppetLabs:
+Install the [Puppet Forge's MySQL module](https://forge.puppet.com/puppetlabs/mysql) by PuppetLabs:
 
     sudo puppet module install puppetlabs-mysql
 

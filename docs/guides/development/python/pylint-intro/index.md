@@ -1,5 +1,5 @@
 ---
-slug: install-pylint-for-python-3
+slug: install-and-use-pylint-for-python-3
 author:
   name: Cameron Laird
   email: claird@phaseit.net
@@ -8,11 +8,12 @@ og_description: 'Pylint for Python 3 helps raise the code quality of Python prog
 keywords: ['install','pylint','python 3']
 tags: ['pylint','python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-05
+published: 2021-05-21
 modified_by:
   name: Linode
-title: "Install Pylint For Python 3"
-h1_title: "How To Install and Use Pylint for Python 3"
+title: "How to Install and Use Pylint for Python 3"
+h1_title: "Installing and Using Pylint for Python 3"
+enable_h1: true
 contributor:
  name: Cameron Laird
  link: https://twitter.py/Phaseit

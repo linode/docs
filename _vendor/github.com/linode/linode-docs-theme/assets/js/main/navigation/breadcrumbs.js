@@ -8,10 +8,7 @@ export function newBreadcrumbsController(searchConfig) {
 	if (!searchConfig) {
 		throw 'newBreadcrumbsController: must provide searchConfig';
 	}
-
 	const hrefFactory = newCreateHref(searchConfig);
-
-	var breadCrumbsCreated = false;
 
 	return {
 		data: {
@@ -35,6 +32,7 @@ export function newBreadcrumbsController(searchConfig) {
 		},
 
 		onTurbolinksBeforeRender: function() {
+			debug('onTurbolinksBeforeRender');
 			this.breadCrumbsCreated = false;
 			this.data.breadcrumbs.page = {};
 			this.data.breadcrumbs.sections.length = 0;
@@ -42,7 +40,7 @@ export function newBreadcrumbsController(searchConfig) {
 
 		createBreadcrumbs: function() {
 			if (this.breadCrumbsCreated) {
-				return
+				return;
 			}
 
 			debug('createBreadcrumbs', this.data);
