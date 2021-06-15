@@ -27,13 +27,13 @@ This guide covers installing the Docker Engine on various Linux distributions (i
 
 ## Before You Begin
 
-1. Ensure you have command line access to a Linux server running a supported Linux distribution. If not, follow the [Getting Started](/docs/guides/getting-started/) and [Securing your Server](/docs/guides/securing-your-server/) guides to create a new Linode.
+1.  Ensure you have command line access to a Linux server running a supported Linux distribution. If not, follow the [Getting Started](/docs/guides/getting-started/) and [Securing your Server](/docs/guides/securing-your-server/) guides to create a new Linode.
 
     {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1. Review the following Docker guides to gain a better understanding of Docker, its benefits, and when to use it.
+1.  Review the following Docker guides to gain a better understanding of Docker, its benefits, and when to use it.
 
     - [An Introduction to Docker](/docs/guides/introduction-to-docker/)
     - [When and Why to Use Docker](/docs/guides/when-and-why-to-use-docker/)
@@ -56,22 +56,22 @@ The following instructions will install Docker on CentOS and Fedora using the **
 While the **YUM** package manager has been replaced with **DNF** on CentOS 8 and Fedora, the `yum` command is still present as a symlink to DNF. As such, these instructions still work as intended.
 {{< /note >}}
 
-1. Ensure Docker is not currently installed. Output indicating that any of the packages aren't found can be safely ignored.
+1.  Ensure Docker is not currently installed. Output indicating that any of the packages aren't found can be safely ignored.
 
         sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
 
-1. Install the **yum-utils** package, which includes `yum-config-manager`. This will automatically install `dnf-plugins-core` when using DNF.
+1.  Install the **yum-utils** package, which includes `yum-config-manager`. This will automatically install `dnf-plugins-core` when using DNF.
 
         sudo yum install yum-utils
 
-1. Add the docker repository, using `yum-config-manager`. This automatically maps to the `dnf config-manager` command when using DNF. In the following command, replace `[url]` with the url of the repository for your distribution:
+1.  Add the docker repository, using `yum-config-manager`. This automatically maps to the `dnf config-manager` command when using DNF. In the following command, replace `[url]` with the url of the repository for your distribution:
 
-        sudo dnf config-manager --add-repo [url]
+        sudo yum-config-manager --add-repo [url]
 
     - **RHEL/CentOS and derivatives:** `https://download.docker.com/linux/centos/docker-ce.repo`
     - **Fedora 32 and later:** `https://download.docker.com/linux/fedora/docker-ce.repo`
 
-1. Install Docker Engine and other required packages:
+1.  Install Docker Engine and other required packages:
 
         sudo yum install docker-ce docker-ce-cli containerd.io
 
@@ -88,27 +88,27 @@ The following instructions will install Docker on one of these supported Ubuntu 
 
 **Supported distributions:** Ubuntu 20.04, Ubuntu 18.04, Ubuntu 16.04, Debian 10, Debian 9. Recent non-LTS releases like Ubuntu 21.04 and 20.10 should also be supported.
 
-1. Ensure Docker is not currently installed. Output indicating that any of the packages aren't found can be safely ignored.
+1.  Ensure Docker is not currently installed. Output indicating that any of the packages aren't found can be safely ignored.
 
         sudo apt remove docker docker-engine docker.io
 
-1. Install the packages that are required to configure Docker's repository:
+1.  Install the packages that are required to configure Docker's repository:
 
         sudo apt update
         sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
 
-1. Add Docker's GPG key. In the following command, replace `[url]` with the url that corresponds with the distribution your system is running.
+1.  Add Docker's GPG key. In the following command, replace `[url]` with the url that corresponds with the distribution your system is running.
 
         curl -fsSL [url]/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
     - **Ubuntu:** `https://download.docker.com/linux/ubuntu`
     - **Debian:** `https://download.docker.com/linux/debian`
 
-1. Add the *stable* Docker repository, again replacing `[url]` with the url that corresponds with the distribution your system is running.
+1.  Add the *stable* Docker repository, again replacing `[url]` with the url that corresponds with the distribution your system is running.
 
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] [url] $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-1. Install Docker Engine and other required packages:
+1.  Install Docker Engine and other required packages:
 
         sudo apt update
         sudo apt install docker-ce docker-ce-cli containerd.io
@@ -122,16 +122,16 @@ Additional installation instructions for these distributions can be found within
 
 After Docker Engine is installed, start Docker and verify everything is working by running a test image.
 
-1. Ensure that the Docker server is running.
+1.  Ensure that the Docker server is running.
 
         sudo systemctl start docker
 
-1. Optionally configure Docker to start when the server boots up. This is recommended if you intend on running a production application within this Docker installation.
+1.  Optionally configure Docker to start when the server boots up. This is recommended if you intend on running a production application within this Docker installation.
 
         sudo systemctl enable docker
         sudo systemctl enable containerd
 
-1. Verify Docker is correctly installed by running the "hello-world" image.
+1.  Verify Docker is correctly installed by running the "hello-world" image.
 
         sudo docker run hello-world
 
@@ -148,7 +148,7 @@ By default, `sudo` is required to run Docker commands, but a new group, called *
 
 Before continuing, make sure you have a limited user account that *does not* belong to the sudo group. If you haven't created a limited user account yet, see the guides [Securing Your Server](/docs/guides/securing-your-server/) or [Linux Users and Groups](/docs/guides/linux-users-and-groups/) for instructions.
 
-1. Enter the command below to add a user to the *docker* group, replacing *[user]* with the name of your limited user account.
+1.  Enter the command below to add a user to the *docker* group, replacing *[user]* with the name of your limited user account.
 
         sudo usermod -aG docker [user]
 
@@ -176,9 +176,9 @@ The issue is the .docker directory in their home directory (~/.docker) was creat
 
 There are two possible fixes:
 
-1. Remove the `.docker` directory from their home directory. Docker will automatically recreate it, but any custom settings will be lost.
+1.  Remove the `.docker` directory from their home directory. Docker will automatically recreate it, but any custom settings will be lost.
 
-1. Change the permissions on the `.docker` directory using the commands:
+1.  Change the permissions on the `.docker` directory using the commands:
 
         sudo chown example_user:example_user /home/example_user/.docker -R
         sudo chmod g+rwx "/home/example_user/.docker" -R
