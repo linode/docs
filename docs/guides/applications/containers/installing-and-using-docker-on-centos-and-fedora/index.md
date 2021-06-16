@@ -1,29 +1,33 @@
 ---
-slug: installing-and-using-docker
+slug: installing-and-using-docker-on-centos-and-fedora
 author:
   name: Linode
   email: docs@linode.com
-description: 'A guide on installing Docker Engine on most popular Linux distributions, including CentOS, Fedora, Ubuntu, and Debian.'
-og_description: 'A guide on installing Docker Engine on most popular Linux distributions, including CentOS, Fedora, Ubuntu, and Debian.'
+description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
+og_description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-03
+published: 2021-06-16
 modified_by:
   name: Linode
-title: "How to Install and Use Docker"
-h1_title: "Installing and Using Docker"
+title: "How to Install and Use Docker on CentOS and Fedora"
+h1_title: "Installing and Using Docker on CentOS and Fedora"
 enable_h1: true
 external_resources:
 - '[Website for Docker](https://www.docker.com/)'
 - '[Documentation for Docker](https://docs.docker.com/)'
 - '[Website for containerd](https://containerd.io/)'
-aliases: ['/applications/containers/install-docker-ce-ubuntu-1804/', '/guides/install-docker-ce-ubuntu-1804/', '/applications/containers/install-docker-ce/', '/guides/install-docker-ce/', '/guides/how-to-install-docker-ce-on-debian-10/', '/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/', '/guides/how-to-install-docker-and-pull-images-for-container-deployment/']
+relations:
+    platform:
+        key: installing-and-using-docker
+        keywords:
+            - distributions: CentOS and Fedora
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.
 
-This guide covers installing the Docker Engine on various Linux distributions (including CentOS, Fedora, Ubuntu, and Debian) as well as obtaining and running Docker images.
+This guide covers installing the Docker Engine on various Linux distributions using the **YUM** or **DNF** package manager, including CentOS and Fedora, as well as obtaining and running Docker images.
 
 ## Before You Begin
 
@@ -41,14 +45,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Installing Docker Engine
 
-[Docker Engine](https://docs.docker.com/engine/) is the underlying containerization software used when deploying Docker containers. To install Docker Engine, follow the instructions for your distribution:
-
-- [CentOS and Fedora](#centos-and-fedora)
-- [Ubuntu and Debian](#ubuntu-and-debian)
-
-### CentOS and Fedora
-
-The following instructions will install Docker on CentOS and Fedora using the **YUM** package manager.
+[Docker Engine](https://docs.docker.com/engine/) is the underlying containerization software used when deploying Docker containers. The following instructions will install Docker on CentOS and Fedora using the **YUM** package manager.
 
 **Supported distributions:** CentOS 7, CentOS 8 (including other derivatives of RHEL 8 such as AlmaLinux and RockyLinux), and Fedora 32 (and later)
 
@@ -81,42 +78,6 @@ Additional installation instructions for these distributions can be found within
 
 - [Install Docker Engine on CentOS](https://docs.docker.com/engine/install/centos/)
 - [Install Docker Engine on Fedora](https://docs.docker.com/engine/install/fedora/)
-
-### Ubuntu and Debian
-
-The following instructions will install Docker on one of these supported Ubuntu and Debian releases:
-
-**Supported distributions:** Ubuntu 20.04, Ubuntu 18.04, Ubuntu 16.04, Debian 10, Debian 9. Recent non-LTS releases like Ubuntu 21.04 and 20.10 should also be supported.
-
-1.  Ensure Docker is not currently installed. Output indicating that any of the packages aren't found can be safely ignored.
-
-        sudo apt remove docker docker-engine docker.io
-
-1.  Install the packages that are required to configure Docker's repository:
-
-        sudo apt update
-        sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
-
-1.  Add Docker's GPG key. In the following command, replace `[url]` with the url that corresponds with the distribution your system is running.
-
-        curl -fsSL [url]/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-    - **Ubuntu:** `https://download.docker.com/linux/ubuntu`
-    - **Debian:** `https://download.docker.com/linux/debian`
-
-1.  Add the *stable* Docker repository, again replacing `[url]` with the url that corresponds with the distribution your system is running.
-
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] [url] $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-1.  Install Docker Engine and other required packages:
-
-        sudo apt update
-        sudo apt install docker-ce docker-ce-cli containerd.io
-
-Additional installation instructions for these distributions can be found within Docker's documentation:
-
-- [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-- [Install Docker Engine on Debian](https://docs.docker.com/engine/install/debian/)
 
 ## Starting and Testing Docker
 
@@ -215,3 +176,38 @@ Next, create a container based on the image by using the `docker run` command. A
     docker run [image]
 
 If the image hasn't been downloaded yet and is available in Docker's registry, the image will automatically be pulled down to your server.
+
+## Managing Docker Containers
+
+### Listing Containers
+
+To list all active (and inactive) Docker containers running on your system, run the following command:
+
+    docker ps -a
+
+The output should resemble the following. This sample output shows the `hello-world` container.
+
+{{< output >}}
+CONTAINER ID   IMAGE         COMMAND    CREATED       STATUS                   PORTS     NAMES
+5039168328a5   hello-world   "/hello"   2 hours ago   Exited (0) 2 hours ago             magical_varahamihira
+{{< /output >}}
+
+### Starting a Container
+
+Start a Docker container with the following command, replacing `[ID]` with the container ID corresponding with the container you wish to start:
+
+    docker start [ID]
+
+### Stopping a Container
+
+Stop a Docker container with the following command, replacing `[ID]` with the container ID corresponding with the container you wish to stop:
+
+    docker stop [ID]
+
+Some images (such as the `hello-world` image) automatically stop after they are run. However, many other containers continue running until explicitly commanded to stop, and you may want to run these containers in the background. For those cases, this command can come in handy.
+
+### Removing a Container
+
+Remove a Docker container with the following command, replacing `[ID]` with the container ID corresponding with the container you wish to remove:
+
+    docker rm [ID]
