@@ -1,11 +1,10 @@
 ---
 slug: ssh-key-authentication-how-to-troubleshoot-permission-issues
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide explains how to debug and troubleshoot SSH public key permission issues that prevent remote node access.'
-og_description: 'This guide explains how to debug and troubleshoot SSH public key permission issues that prevent remote node access.'
-keywords: ['SSH','Troubleshooting','Permissions','Public Key']
+  name: Jeff Novotny
+description: 'SSH key authentication helps you access a server without a password and increases the security of any remote network service. This guide helps you understand the secure shell protocol, public and private keys, and helps you troubleshoot common SSH permission issues. A common issueThis guide explains how to debug and troubleshoot SSH public key permission issues that prevent remote node access.'
+og_description: 'SSH key authentication helps you access a server without a password and increases the security of any remote network service. This guide helps you understand the secure shell protocol, public and private keys, and helps you troubleshoot common SSH permission issues. A common issueThis guide explains how to debug and troubleshoot SSH public key permission issues that prevent remote node access.'
+keywords: ['ssh key authentication', 'what is ssh', 'ssh keys']
 tags: ['ssh', 'web server', 'cloud manager', 'linode platform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-14
@@ -23,25 +22,13 @@ external_resources:
 
 ---
 
+## What is SSH (Secure Shell Protocol)?
+
 The *Secure Shell Protocol* (SSH) increases the security of remote network services through the use of public-key cryptography. All SSH communications are encrypted using a "shared key", which is used to both encrypt and decrypt messages on both ends. This is referred to as *symmetrical encryption*. It permits users to log in to a server more securely with a password.
 
 SSH also permits authentication and access without a password. It accomplishes this by using a manually generated public-private key pair, which enables asymmetrical encryption. Although asymmetrical encryption is more secure, errors can occur if there is a problem with the key at either end of the connection. In these cases, users might receive a `Permission denied (publickey)` error and be unable to connect. This can be especially troublesome if password authentication is turned off. This guide explains how to debug and resolve SSH public key permission errors that prevent access to your Linode.
 
-## Before You Begin
-
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-2. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-3. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
-## Understand SSH
+## SSH Keys: An Overview
 
 When SSH asymmetrical encryption is working properly, two keys are in operation. The client requesting access shares its public key with the target system, while secretly holding on to the private key. The private key can decrypt messages that were encrypted by the public key. However, the public key cannot decrypt messages from the private key, nor can it be used to reconstruct the private key.
 
@@ -49,7 +36,7 @@ To initiate the connection, the client sends the ID of the key pair to the targe
 
 All these messages are further encrypted using the shared session key that was generated when the connection was opened. The private-public key pair is not used to encrypt data after the connection is established. Only the shared session key is used for this. More detailed information about SSH can be found on the [SSH Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell_Protocol) page.
 
-## The Main Causes of SSH Public Key Permission Errors
+## SSH Key Permission Errors: The Main Causes
 
 If any part of the SSH negotiation fails, the connection is not established. In these cases, the error message `Permission denied (publickey)` is displayed. Most permission errors of this type can be traced back to one of the following three reasons:
 
@@ -93,7 +80,7 @@ PasswordAuthentication Yes
 
         systemctl restart sshd
 
-### Resolve the Case Where the Client is Using the Incorrect Key
+### SSH Client: Incorrect Key is in Use
 
 If there are several keys on the client, it is possible that SSH is choosing an old or incorrect key. You can select a specific key using the `-i` option.
 
@@ -101,7 +88,7 @@ Specify the exact key pair using the following command:
 
     ssh -i /path/to/key/id_rsa <accountname>@<ip_address>
 
-### Resolve the Case Where the Client Does Not Possess the Correct Private Key
+### The SSH Client Does Not Possess the Correct Private Key
 
 This section covers the situation where the client does not have the correct private key and password authentication is not enabled on the server. In this case, use the [Linode Shell](/docs/platform/manager/using-the-linode-shell-lish), also known as the LISH Console, to access the Linode.
 
@@ -121,7 +108,7 @@ PasswordAuthentication Yes
         systemctl restart sshd
 4. Use SSH to access the Linode using only a password.
 
-### Resolve the Case Where the Target Server Does Not Have a Copy of the Public Key
+### The Target Server Does Not Have a Copy of the Public Key
 
 This situation arises because the target server does not have your public key. Without that information, it cannot locate the key when it receives the SSH request. To correct this, copy the public key into the `authorized_keys` file in your directory on the Linode. For more information on how to generate a public key, see our [Use SSH Public Key Authentication on Linux, macOS, and Windows](/docs/security/authentication/use-public-key-authentication-with-ssh) guide.
 
