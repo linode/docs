@@ -11,7 +11,7 @@ Once you have obtained a compatible image file that meets all the requirements, 
 
 1.  Type in the *Label* of the new Image along with an optional *Description*. Select the *Region* you would like the Image to be created within. Since Images can be deployed to any data center (regardless of where they are located), it's recommended that you select the one closest to you geographically for the fastest upload speed.
 
-1.  Specifiy the image file you'd like to use by either dragging the file into the designated area or by clicking the **Browse Files** button and selecting the file. The filename will appear along with a progress bar indicating the percentage completed for the file upload.
+1.  Specify the image file you'd like to use by either dragging the file into the designated area or by clicking the **Browse Files** button and selecting the file. The filename will appear along with a progress bar indicating the percentage completed for the file upload.
 
 1.  Once the image file has been successfully uploaded, the Custom Image is created and the Cloud Manager will redirect you to the main Images page. Here, you should see the new Custom Image listed along with a status of *Pending Upload*. Once the Custom Image is ready to be deployed, the status will change to *Ready*.
 
