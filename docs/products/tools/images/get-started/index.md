@@ -5,7 +5,7 @@ tab_group_main:
     weight: 20
 ---
 
-{{< content "images-beta-note-shortguide" >}}
+{{< content "images-ga-pricing-update-shortguide" >}}
 
 {{< content "types-of-images-shortguide" >}}
 
