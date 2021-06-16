@@ -1,18 +1,17 @@
 ---
 slug: how-to-enable-disable-website
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide provides instructions on how to quickly disable and re-enable a website, based on the Apache or Nginx webserver installed on Debian and Ubuntu distributions.'
-og_description: 'This guide provides instructions on how to quickly disable and re-enable a website, based on the Apache or Nginx webserver installed on Debian and Ubuntu distributions.'
+  name: Jeff Novotny
+description: 'This guide shows you how to quickly disable and re-enable a website running on NGINX or Apache. To temporarily disable an NGINX hosted site, you remove the symbolic link for your site in the sites-enabled directory. When using Apache, you can disable your site using the  a2dissite utility.'
+og_description:  'This guide shows you how to quickly disable and re-enable a website running on NGINX or Apache. To temporarily disable an NGINX hosted site, you remove the symbolic link for your site in the sites-enabled directory. When using Apache, you can disable your site using the  a2dissite utility.'
 keywords: ['enable website','disable website','apache','nginx']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-12
 modified_by:
   name: Linode
-title: "Enable and Disable a Website in Apache or NGINX"
-h1_title: "How to Enable or Disable a Website in Apache or NGINX."
+title: "Enable and Disable a Website Running on Apache or NGINX"
+h1_title: "How to Enable and Disable a Website Running on Apache or NGINX"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -25,20 +24,6 @@ external_resources:
 
 There may be times when you have to temporarily disable a website. For example, you might have to satisfy a legal requirement or make an emergency content change. Fortunately, you do not have to completely delete or radically reconfigure a website to disable it. This guide provides instructions on how to quickly disable and re-enable a website, based on the webserver and Linux distribution.
 
-## Before You Begin
-
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Linode. See the section that corresponds to either NGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
 
 {{< note >}}
@@ -47,7 +32,7 @@ Taking a site offline, even temporarily, can affect its *Search Engine Optimizat
 
 ## Disable and Enable a Website on the NGINX Web Server
 
-By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems use the `sites-available` and `sites-enabled` directories to control website access. This approach is often used even on other Linux systems. If the Linode is already using these two directories, follow the instructions in the "Use the Sites-Enabled Directory" subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
+By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems use the `sites-available` and `sites-enabled` directories to control website access. This approach is often used even on other Linux systems. If the Linode is already using these two directories, follow the instructions in the [Use the Sites-Enabled Directory](#use-the-sites-enabled-directory) subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
 
 ### Use the Sites-Enabled Directory
 
@@ -107,7 +92,7 @@ There could be cases where a website does not have a separate virtual host file.
 
 On Ubuntu and other distributions of Linux, [*Apache*](https://httpd.apache.org/) makes it very easy to enable or disable a site. It includes utilities that handle all the necessary configuration changes.
 
-### Use the Apache Utilities
+### Use the Apache Utilities: a2dissite and a2ensite
 
 The `a2dissite` and `a2ensite` tools greatly simplify the process of disabling and enabling a website. The following commands are geared towards Ubuntu but are similar to other versions of Linux.
 
