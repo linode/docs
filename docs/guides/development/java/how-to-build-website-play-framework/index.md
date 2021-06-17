@@ -17,7 +17,7 @@ contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Play 2.8.x Documentation](https://www.playframework.com/documentation/2.8.x/Home)'
+- '[Play 2.8.x documentation](https://www.playframework.com/documentation/2.8.x/Home)'
 - '[Play official site](https://www.playframework.com/)'
 - '[Play framework example projects](https://developer.lightbend.com/start/?group=play)'
 
