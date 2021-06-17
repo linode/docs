@@ -35,7 +35,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 ## Referral Codes
 
-As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for another person, you can send them your [referral code (or referral URL)](/docs/platform/billing-and-support/billing-and-payments-new-manager/#referral-credits) to receive $20 per sign up.
+As mentioned above, Linode in some cases can offer discounts on re-sold Linode services. Additionally Linode offers a referral program. If you feel like Linode is a good choice for another person, you can send them your [referral code (or referral URL)](/docs/platform/billing-and-support/billing-and-payments-new-manager/#referral-credits) to receive $20 per sign up.
 
 The credit for your referral will be applied to your account if the referral stays active as a Linode customer for 90 days. Specifically, the referred account will need to have at least one active, billed Linode service on their account throughout the 90 day period.
 

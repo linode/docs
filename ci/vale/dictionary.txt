@@ -818,6 +818,7 @@ libyang
 libuv
 libvirt
 lifecycle
+lightbend
 lighthttpd
 lighttpd
 lighty
@@ -1383,6 +1384,7 @@ savvii
 sbackup
 sbin
 sbopkg
+sbt
 scgi
 schaeffer
 scm
@@ -1806,6 +1808,7 @@ www
 wx
 xabbix
 xap
+xargs
 xcalc
 xcode
 xen
