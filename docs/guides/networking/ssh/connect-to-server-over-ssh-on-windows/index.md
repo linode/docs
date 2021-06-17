@@ -32,10 +32,33 @@ A *secure shell* (SSH) is used for secure communication between devices. When mo
 
 On your local computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run programs through the command line.
 
-Most newer installations of Windows 10 come preinstalled with an SSH client that can be used by terminal applications such as Windows Terminal, PowerShell, and [Hyper](https://hyper.is/). Microsoft recommends Windows Terminal, which can be installed through the [Microsoft Store](https://aka.ms/terminal) or through the instructions located in its [GitHub repo](https://github.com/microsoft/terminal).
+### Windows 10 (PowerShell)
 
-Additional instructions (for both Windows 10 and earlier versions of Windows) can be found in the [Using SSH on Windows
-](/docs/guides/using-ssh-on-windows/) guide.
+The default terminal for Windows 10 is PowerShell. To connect to a server using SSH within PowerShell, the OpenSSH client needs to be installed. OpenSSH is available on newer versions of Windows 10 (April 2018 update and later), though it may need to be manually enabled.
+
+#### Verify OpenSSH is Installed
+
+1.  Open the **Start Menu** on the taskbar, type *Settings* into the search area, and select the "Settings" application from the results.
+
+1.  Within the Settings, select **Apps**. Click on **Optional Features** or **Manage optional features** from the menu that appears.
+
+1.  Click on **Add a feature**. A dropdown menu will appear. Select the **OpenSSH client**, followed by the **Install** button.
+
+#### Open PowerShell
+
+To use PowerShell, open the **Start Menu** on the taskbar, type *PowerShell* into the search area, and select the "Windows PowerShell" application from the results.
+
+### Windows 10 (WSL)
+
+Instead of using the PowerShell environment (which is significantly different than both the macOS and Linux command-line environments), you can run Linux directly within Windows through WSL (Windows Subsystem for Linux). This may be preferred if you are more comfortable working within a Linux shell environment.
+
+1.  Install WSL by following the instructions within Microsoft's [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10). If you already have WSL1 installed, it's recommended to update to WSL2.
+
+1.  Install your preferred Linux distribution directly from the Microsoft Store, such as [Ubuntu 20.04](https://www.microsoft.com/store/apps/9n6svws3rx71).
+
+Once everything has been configured, you can use the WSL Linux environment by opening the **Start Menu** on the taskbar, typing the name of the Linux distribution you installed into the search area, and selecting the corresponding application from the search results.
+
+When using WSL, it's also recommended to use a more customizable terminal application, such as [Windows Terminal](https://aka.ms/terminal) or [Hyper](https://hyper.is/).
 
 ## Connecting to the Remote Server Over SSH
 
