@@ -9,7 +9,7 @@ keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configu
 tags: ["linode platform","networking","cloud manager","dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-manager/','/platform/manager/dns-manager/','/networking/dns/dns-manager/','/platform/manager/dns-manager-new-manager/','/networking/dns/dns-manager-overview/','/platform/manager/dns-manager-classic-manager/']
-modified: 2018-08-24
+modified: 2021-06-15
 modified_by:
   name: Linode
 published: 2009-07-16
@@ -114,7 +114,7 @@ Add a subdomain by adding an entry under the *A/AAAA Record* heading, with just 
 
 1. Adjust the TTL if necessary.
 
-1. Click **Save**. It will only take a few minutes for the record to be updated.
+1. Click **Save**.
 
 
 ### Wildcards
@@ -129,7 +129,7 @@ To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_rec
 
 1. When the **Create A/AAAA Record** panel appears, enter an asterisk (`*`) in the **Hostname** field and provide a valid IP address in the **IP Address** field.
 
-1. Click **Save**. It will only take a few minutes for the record to be updated.
+1. Click **Save**.
 
 {{< note >}}
 A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain, you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.
