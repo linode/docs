@@ -105,11 +105,11 @@ Your Linode has a unique IP address that identifies it to other devices and user
 
 1.  Click the **Linodes** menu item in the [Cloud Manager's](https://cloud.linode.com/) left hand navigation.
 
-1.  Find your Linode, click on it's name and navigate to *Networking*.
+1.  Find your Linode, click on it's name and navigate to *Network*.
 
 1.  Your IPv4 and IPv6 addresses appear under the *IPv4* and *IPv6* sections.
 
-    [![The Networking settings tab for your Linode](getting-started-networking.png)](getting-started-networking.png)
+    [![The Network settings tab for your Linode](getting-started-networking.png)](getting-started-networking.png)
 
     You can also quickly reference your Linode's IP addresses from the **Linodes** page:
 
