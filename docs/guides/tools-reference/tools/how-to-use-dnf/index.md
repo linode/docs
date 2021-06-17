@@ -1,35 +1,45 @@
 ---
-slug: how-to-use-yum-dnf
+slug: how-to-use-dnf
 author:
   name: Linode Community
   email: docs@linode.com
-description: "DNF is the default package manager on Fedora and gives users an efficient tool for managing packages. This guide familiarizes you with YUM DNF and its capabilities that get you started with its most commonly used features."
-og_description: "DNF is the default package manager on Fedora and gives users an efficient tool for managing packages. This guide familiarizes you with YUM DNF and its capabilities that get you started with its most commonly used features."
+description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). DNF gives users an efficient tool for managing packages. This guide familiarizes you with DNF to get you started with its most commonly used features."
+og_description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). DNF gives users an efficient tool for managing packages. This guide familiarizes you with DNF to get you started with its most commonly used features."
 keywords: ['dnf','installing','updating','upgrading','uninstalling','removing','package repositories','fedora']
 tags: ['yum','dnf','fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
+modified: 2021-06-01
 modified_by:
-  name: Nathaniel Stickman
-title: "How to Use YUM DNF"
-h1_title: "Using YUM DNF"
+  name: Linode
+title: "How to Use the DNF Package Manager"
+h1_title: "Using the DNF Package Manager"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
+aliases: ['/guides/how-to-use-yum-dnf/']
 external_resources:
 - '[Fedora Wiki: DNF](https://fedoraproject.org/wiki/DNF)'
 - '[DNF Automatic](https://dnf.readthedocs.io/en/latest/automatic.html)'
 - '[DNF Command Reference](https://dnf.readthedocs.io/en/latest/command_ref.html)'
 ---
 
-*Dandified YUM*, or simply DNF, is Fedora's default package manager and an upgrade to the popular *Yellowdog Updater, Modified (YUM)*. Like YUM, DNF gives a user-friendly interface to the RPM Package Manager (RPM) that comes with Fedora, CentOS, and many other Linux distributions. YUM has remained a popular package manager—and the default on CentOS. But with DNF, Fedora set out to improve on YUM's performance and create its contender.
+*Dandified YUM*, or simply **DNF**, is the successor to the popular *Yellowdog Updater, Modified* package manager, more commonly known as **YUM**. Both DNF and YUM provide a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API.
 
-This guide aims to familiarize you with the DNF commands you are most likely to encounter while working with your Fedora server. By the end, you should feel comfortable navigating all but the more advanced features DNF offers. You can also find a few helpful resources at the end of this guide.
+DNF has replaced YUM as the default package manager on most newer RPM-based distributions, including:
+
+- RHEL (Red Hat Enterprise Linux) 8
+- CentOS 8 and other RHEL derivatives (such as AlmaLinux 8 and Rocky Linux 8)
+- Fedora 22 (and later)
+
+While the YUM package manager is no longer used on these distributions, the `yum` command still works in many cases. Most distributions link the `yum` command to the DNF software and, since DNF maintains compatibility with much of YUM's CLI, most commands still function as intended. This is why some documentation for these distributions still reference the `yum` command to install or update software.
+
+This guide aims to familiarize you with the DNF commands you are most likely to encounter while working with your CentOS 8 or Fedora server. By the end, you should feel comfortable navigating all but the more advanced features DNF offers. You can also find a few helpful resources at the end of this guide.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
