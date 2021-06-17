@@ -7,7 +7,7 @@ og_description:  'This guide shows you how to quickly disable and re-enable a we
 keywords: ['enable website','disable website','apache','nginx']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-12
+published: 2021-06-17
 modified_by:
   name: Linode
 title: "Enable and Disable a Website Running on Apache or NGINX"
