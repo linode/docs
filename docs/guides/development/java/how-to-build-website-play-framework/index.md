@@ -1,5 +1,5 @@
 ---
-slug: build-a-website-with-the-play-framework
+slug: play-framework-build-a-website
 author:
   name: Nathaniel Stickman
 description: 'The Play framework helps you create Java and Scala web applications concisely and efficiently. This guide shows your how to get started installing the Play framework and working through some example applications.'
