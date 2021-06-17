@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.94.0
+  version: 4.95.0
 
   title: Linode API
   description: |
@@ -16156,11 +16156,14 @@ components:
           $ref: '#/components/schemas/Disk/properties/filesystem'
         image:
           type: string
-          description: >
-            An Image ID to deploy the Disk from. Official Linode Images start with
-            `linode/`, while your Images start with `private/`.
+          description: |
+            An Image ID to deploy the Disk from.
 
-            See [/images](/docs/api/images/#images-list) for more information on the Images available for you to use.
+            Access the Images List ([GET /images](/docs/api/images/#images-list)) endpoint with authentication to view
+            all available Images. Official Linode Images start with `linode/`, while your Account's Images start with `private/`. Creating
+            a disk from an Account Image requires `read_only` or `read_write` permissions for that Image. Access the User's
+            Grant Update ([PUT /account/users/{username}/grants](/docs/api/account/#users-grants-update)) endpoint to
+            adjust permissions for an Account Image.
           example: linode/debian9
         authorized_keys:
           type: array
