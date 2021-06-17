@@ -7,7 +7,7 @@ og_description: 'SSH key authentication helps you access a server without a pass
 keywords: ['ssh key authentication', 'what is ssh', 'ssh keys']
 tags: ['ssh', 'web server', 'cloud manager', 'linode platform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-14
+published: 2021-06-17
 modified_by:
   name: Linode
 title: "SSH Key Authentication: How to Troubleshoot Permission Issues"
