@@ -22,15 +22,13 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/']
 ---
 
-## Flask Marketplace App
-
 [Flask](https://flask.palletsprojects.com/en/1.1.x/) is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. It is designed to make getting started quick and easy, with the ability to scale up to support more complex applications.
 
-### Deploy a Flask Marketplace App
+## Deploy a Flask Marketplace App
 
 {{< content "deploy-marketplace-apps">}}
 
-### Linode Options
+## Linode Options
 
 After providing the app specific options, provide configurations for your Linode server:
 
@@ -46,6 +44,7 @@ After providing the app specific options, provide configurations for your Linode
 When you've provided all required Linode Options, click on the **Create** button. **Your Flask app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
 
 ## Getting Started after Deployment
+
 ### Installed Software
 
 In addition to installing Flask, this Marketplace app installs and configures software to support running Flask in a production environment. Below is a list of the installed software:
