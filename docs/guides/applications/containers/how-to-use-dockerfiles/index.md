@@ -89,7 +89,7 @@ This places the Docker build directory in your home directory. As a matter of go
 
         touch example_dockerfile
 
-3.  Open the Dockerfile using the text editor of your choice (for this example, we will use nano):
+3.  Open the Dockerfile using the text editor of your choice (for this example, we use nano):
 
         nano example_dockerfile
 
@@ -115,7 +115,7 @@ Labelling your image with `example_image` makes it easier to deploy a container 
 
 The output should look something like this:
 
-    {{< output >}}
+{{< output >}}
 Sending build context to Docker daemon  4.096kB
 Step 1/3 : FROM debian
  ---> 4a7a1f401734
@@ -141,7 +141,7 @@ Running the image you just built to deploy a Docker container is now as easy as 
 
 A new container based on `example_image` is deployed, and the command specified in the `CMD` instruction is then executed from the container with the following output:
 
-    {{< output >}}
+{{< output >}}
 Hello, Sunshine!
 {{< /output >}}
 

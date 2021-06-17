@@ -16,7 +16,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
 ---
 
-[Docker images](/docs/guides/introduction-to-docker/#docker-images) make it easy to deploy multiple containers without having to maintain the same image across several virtual machines. You can use a Dockerfile to automate the installation and configuration of an image and its dependencies. A [Dockerfile](/docs/guides/how-to-use-dockerfiles) is a text file of the commands (which are executed in order) used to automate installation and configuration of a Docker image. This article covers in-depth utilization of Docker images, containers, and Dockerfiles to create and manage a Docker web server application.
+[Docker images](/docs/guides/introduction-to-docker/#docker-images) make it easy to deploy multiple containers without having to maintain the same image across several virtual machines. You can use a Dockerfile to automate the installation and configuration of an image and its dependencies. A [Dockerfile](/docs/guides/how-to-use-dockerfiles) is a text file of the commands (which are executed in order) used to automate installation and configuration of a Docker image. This article expands on our guide on [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles) by covering in-depth utilization of Docker images, containers, and Dockerfiles.
 
 ## Before You Begin
 
@@ -26,7 +26,7 @@ external_resources:
 
 3.  This guide assumes you are comfortable with using the Docker command-line interface (CLI). To learn more about the Docker CLI, check out their [documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 
-4.  Review our guide on [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles) to become familiar with the basics of Dockerfiles.
+4.  Review our guide on  to become familiar with the basics of Dockerfiles.
 
 ## Create Your Dockerfile for the Docker Image
 
@@ -40,7 +40,7 @@ Docker requires a working Dockerfile for its builds. Here, we will create a Dock
 
         touch apache_dockerfile
 
-3.  Open the Dockerfile using the text editor of your choice (for this example, we will use nano):
+3.  Open the Dockerfile using the text editor of your choice (for this example, we use nano):
 
         nano apache_dockerfile
 
@@ -115,11 +115,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS   
 You can enter the container ID in place of `apache` in the above command.
 {{< /note >}}
 
-4.  Enter `docker ps` again to make sure all your containers are no longer running. The output should look like this:
-
-    {{< output >}}
-CONTAINER ID   IMAGE    COMMAND  CREATED        STATUS       PORTS          NAMES
-{{</ output>}}
+4.  Enter `docker ps` again to make sure all your `apache` container is no longer running.
 
 5.  Now that the container has been stopped, you can remove it:
 
