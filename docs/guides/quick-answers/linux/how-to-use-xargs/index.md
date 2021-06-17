@@ -92,11 +92,11 @@ Calling `xargs` with different command-line options can dramatically change the 
 
 - `-t` prints each command that is executed to standard output.
 
-## How To Use `xargs`
+## How To Use xargs
 
 The following examples demonstrate several common use cases for the `xargs` command. In most cases, the `-t` option has been added solely to illustrate the resulting commands.
 
-### Using `xargs` Without Any Options
+### Using xargs Without Any Options
 
 The simplest way to use `xargs` is without any options. The following example displays the word count of every file in the current directory. `xargs` converts the `ls` results into a string of arguments for `wc`.
 
@@ -109,7 +109,7 @@ wc test1.txt test2.txt
 2 20 84 total
 {{< /output >}}
 
-### Using `xargs` and Command Substitution
+### Using xargs and Command Substitution
 
 In the following example, `xargs` calls `cp` once for each `.txt` file in the `/path` directory. When the `%` symbol is encountered in the target command, it is replaced with the name of the file. This allows for the insertion of the filename someplace other than at the end of the entire target command.
 
@@ -196,7 +196,7 @@ cp -v ./test1.txt ./test2.txt /home/user/xargstest/backup/
 './test2.txt' -> '/home/user/xargstest/backup/test2.txt'
 {{< /output >}}
 
-### Use `xargs` Debug Options
+### Use xargs Debug Options
 
 The  `-p` and `-t` options are used to debug `xargs` commands. The `-t` option prints the full command line to the standard error output before running it. The `-p` option prints each command, and prompts the user to enter `y` or`Y` before executing it. The following command prompts you to approve each potential delete operation before `rm` does anything.
 
