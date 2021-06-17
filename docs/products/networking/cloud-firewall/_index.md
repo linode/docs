@@ -12,7 +12,7 @@ cascade:
 
 ## Availability
 
-Mumbai, India; Sydney, Australia; Toronto, Canada; London, United Kingdom; Atlanta, GA, USA; Fremont, CA, USA
+Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA; London, United Kingdom; Mumbai, India; Sydney, Australia; Toronto, Canada;
 
 ## Features
 
