@@ -927,6 +927,11 @@ export function newSearchController(searchConfig) {
 						node.section.config.explorer_max_leafnodes || searchConfig.explorer_max_leafnodes || 100;
 					let sectionFilter = `section:${node.key}`;
 					let filters = node.section.config.filters || '';
+					if (node.section.config.explorer_leaf_filter) {
+						filters = filters
+							? filters + ' AND ' + node.section.config.explorer_leaf_filter
+							: node.section.config.explorer_leaf_filter;
+					}
 					let facetFilters = filtersPerSection.get(node.section.config.name) || [];
 					let request = {
 						indexName: node.section.config.indexName(),
