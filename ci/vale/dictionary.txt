@@ -714,6 +714,7 @@ issuewild
 istioctl
 iterable
 itk
+jamstack
 java6
 javac
 javascript
