@@ -1734,6 +1734,7 @@ verisign
 vhost
 vhosts
 vimrc
+vinagre
 virb
 virtio
 virtualenv
@@ -1851,6 +1852,7 @@ xtables
 xvda
 xvdb
 xvdc
+xvnc
 xxen
 xy
 xzio
