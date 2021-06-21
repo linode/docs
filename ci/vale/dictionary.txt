@@ -709,6 +709,7 @@ ipv4
 ipv6
 ipwl
 irc
+irchelp
 ircname
 iredmail
 irssi
