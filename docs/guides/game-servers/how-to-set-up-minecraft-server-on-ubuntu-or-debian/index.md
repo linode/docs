@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 published: 2015-01-28
 title: 'How to Set Up a Minecraft Server on Ubuntu or Debian'
-h1-title: `Setting up Minecraft Server on Ubuntu or Debian`
+h1_title: 'Setting up Minecraft Server on Ubuntu or Debian'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
@@ -146,7 +146,7 @@ And you have an updated Minecraft server running on your Ubuntu or Debian.
 
 ## Run Minecraft
 
-1.  The first time you run the Minecraft server it will create an EULA file and then exit:
+1.  The first time you run the Minecraft server creates an EULA file and then exit:
 
         $ ./run.sh
         [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.13.2
@@ -172,7 +172,7 @@ eula=true
 
         screen /home/minecraft/run.sh
 
-    This time the Minecraft server console will generate a lot of output as it creates required configuration files and generates the Minecraft world:
+    This time the Minecraft server console generates a lot of output as it creates required configuration files and generates the Minecraft world:
 
         [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.13.2
         [22:00:06] [Server thread/INFO]: Loading properties
