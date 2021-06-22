@@ -244,7 +244,7 @@ When you do this, here is what you are trying to accomplish with this configurat
 
 
 1. You configure our Linode to have a port-forwarding enabled to allow traffic on the port `25565` and forward it to the Minecraft server’s IP.
-2. Your Minecraft client then adds a server to the address e.g. `192.0.2.0:25565` to connect with the Lincraft server created in the previous section.
+2. Your Minecraft client then adds a server to the address e.g. `192.0.2.0:25565` to connect with the `Lincraft` server created in the previous section.
 
 Note: You don’t always need to add the port number to the IP address, but it is added as a safety measure here.
 
