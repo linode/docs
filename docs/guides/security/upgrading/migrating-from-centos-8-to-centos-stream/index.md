@@ -1,31 +1,34 @@
 ---
-slug: migrating-from-centos-8-to-centos-stream
+slug: migrate-from-centos-8-to-centos-stream
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
 og_description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
 keywords: ['CentOS','CentOS Stream','Migration','Advantages and Drawbacks']
+tags: ['centos', 'fedora', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-20
 modified_by:
   name: Linode
-title: "Migrating From CentOS 8 to CentOS Stream"
+title: "Migrate From CentOS 8 to CentOS Stream"
 h1_title: "How to Migrate From CentOS 8 to CentOS Stream"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: None
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[CentOS Stream Main Page](https://www.centos.org/centos-stream/)'
+- '[AlmaLinux](https://almalinux.org/)'
+- '[RockyLinux](https://rockylinux.org/)'
 - '[The CentOS Downloads Page](https://www.centos.org/download/)'
 - '[The CentOS Documentation Page](https://docs.centos.org/en-US/docs/)'
 - '[The CentOS Documentation Wiki](https://wiki.centos.org/)'
 - '[The CentOS Forum](https://forums.centos.org/)'
-- '[How and Where to Contribute to CentOS](https://wiki.centos.org/Contribute)'
+- '[CentOS Project Contribution Page](https://wiki.centos.org/Contribute)'
 ---
 
-[*CentOS Stream*](https://www.centos.org/centos-stream/) is a free, open source Linux distribution that replaces CentOS version 8. CentOS Stream serves a different purpose than previous CentOS releases because it is now a development build for *Red Hat Enterprise Linux* (RHEL). It allows developers early access to new features and gives them a chance to influence the CentOS software development process. This guide describes CentOS Stream and its benefits and drawbacks, and explains how to convert from CentOS 8 to CentOS Stream.
+[*CentOS Stream*](https://www.centos.org/centos-stream/) is a free, open-source Linux distribution that replaces CentOS version 8. CentOS Stream serves a different purpose than previous CentOS releases because it is now a development build for *Red Hat Enterprise Linux* (RHEL). It allows developers early access to new features and gives them a chance to influence the CentOS software development process. This guide describes CentOS Stream, its benefits and drawbacks, and explains how to migrate from CentOS 8 to CentOS Stream.
 
 ## What is CentOS Stream?
 
@@ -33,7 +36,7 @@ CentOS Stream 8 marks a dramatic shift in philosophy for the CentOS Project team
 
 This decision repositions CentOS Stream as a community-based development platform where users can create new technologies and tools. Developers have more input into the direction of CentOS and RHEL, and all contributors have the opportunity to prioritize the features they need. CentOS Stream continuously delivers new features, improvements, and bug fixes, and provides a "first look" at upcoming RHEL versions.
 
-The current version of CentOS Stream is version 8. However, CentOS Stream 9 is currently expected to be ready in the middle of 2021. The maintenance life cycle for legacy CentOS releases is changing as well. CentOS 8 updates are scheduled to end at the end of 2021, which is much earlier than previously planned. CentOS Linux 9 is cancelled. However, updates for CentOS 7 continue as planned until mid-2024.
+The current version of CentOS Stream is version 8. However, CentOS Stream 9 is currently expected to be ready in mid-2021. The maintenance life cycle for legacy CentOS releases is changing as well. CentOS 8 updates continue until December 31, 2021, which is much earlier than previously planned. CentOS Linux 9 is canceled. However, updates for CentOS 7 continue as planned until mid-2024.
 
 {{< note >}}
 In software engineering terms, the upstream direction is closer to the original source code, while downstream components are typically forks, rebuilds, or customizations. Previously, CentOS was built from RHEL and was downstream of it. However, CentOS is now upstream of RHEL. New versions of RHEL are based on CentOS Stream.
@@ -41,65 +44,73 @@ In software engineering terms, the upstream direction is closer to the original 
 
 ## Advantages and Disadvantages of CentOS Stream
 
-CentOS Stream has different benefits and risks than legacy CentOS. It might be more or less suitable depending on your circumstances. Stream could be very advantageous for some developers, while others might not notice much difference. However, CentOS Stream might not be as suitable for those who require a high degree of production certainty.
+CentOS Stream has different benefits and risks than legacy CentOS. It might be more or less suitable depending on your circumstances. The stream could be very advantageous for some developers, while others might not notice much difference. However, CentOS Stream might not be as suitable for those who require a high degree of production certainty.
 
 ### Advantages of CentOS Stream Compared to CentOS
 
 Software developers and engineers should appreciate the flexibility of CentOS Stream. Those who are using CentOS for storage, gaming, data analysis, and localized web hosting might not notice any differences.
 
-*   CentOS Stream does not change CentOS behavior. There is no learning curve and no integration work required. Utilities, applications, and scripts should work the same way they did in CentOS.
-*   CentOS allows early access to cutting-edge technology, bug fixes, and new features. It allows users to obtain an early preview of future versions of RHEL, allowing for pre-qualification and faster, smoother deployments.
-*   The software-development life cycle is more agile and new features can be delivered more quickly.
-*   It allows highly-motivated and proactive users to influence both CentOS Stream and RHEL. Developers can bend development plans in the direction of their own requirements.
-*   The new strategy increases transparency and collaboration in the development process.
-*   At its best, CentOS Stream combines reliability and innovation. Strict quality requirements are still applied, and rigorous testing is performed. The CentOS Project has no intention of sacrificing stability and performance simply to accelerate feature development.
+- CentOS Stream does not change CentOS behavior. There is no learning curve and no integration work required. Utilities, applications, and scripts should work the same way they did in CentOS.
+
+- CentOS allows early access to cutting-edge technology, bug fixes, and new features. It allows users to obtain an early preview of future versions of RHEL, allowing for pre-qualification and faster, smoother deployments.
+
+- The Software Development Life Cycle is more agile and new features can be delivered more quickly.
+
+- It allows highly motivated and proactive users to influence both CentOS Stream and RHEL. Developers can bend development plans in the direction of their own requirements.
+
+- The new strategy increases transparency and collaboration in the development process.
+
+- At its best, CentOS Stream combines reliability and innovation. Strict quality requirements are still applied, and rigorous testing is performed. The CentOS Project has no intention of sacrificing stability and performance simply to accelerate feature development.
 
 ### Drawbacks of CentOS Stream Compared to CentOS
 
 The disadvantages of CentOS Stream are more likely to concern organizations with large-scale deployments or stringent stability requirements.
 
-*   CentOS has gained a large user base due to its reputation as a dependable enterprise-class product. However, CentOS Stream is more of a build and development stream. It might not be quite as stable, or as suitable for production systems requiring a very high degree of dependability.
-*   The continuous-delivery strategy of CentOS Stream could cause difficulties for organizations with strict planning and validation/acceptance requirements. Changes could happen at any time and a larger amount of churn is inevitable. Any bugs that are introduced due to this churn must be found, fixed, and cycled into a later build.
-*   The predictability of new features and software changes is reduced. Users should closely scrutinize the release notes and community feedback to determine if and when to upgrade their software.
-*   CentOS Stream has not been around for very long. It is difficult to predict its long-term performance and any side effects.
+- CentOS has gained a large user base due to its reputation as a dependable enterprise-class product. However, CentOS Stream is more of a build and development stream. It might not be quite as stable, or as suitable for production systems requiring a very high degree of dependability.
 
-In response to these changes, AlmaLinux and RockyLinux are branding themselves as CentOS replacements. Users who have concerns about CentOS Stream could potentially move to one of these new options, or to the commercial RHEL product. It is also possible to move to another Linux distribution. However, this is more complicated because there are considerable differences between the operating systems.
+- The continuous-delivery strategy of CentOS Stream could cause difficulties for organizations with strict planning and validation/acceptance requirements. Changes could happen at any time and a larger amount of churn is inevitable. Any bugs that are introduced due to this churn must be found, fixed, and cycled into a later build.
+
+- The predictability of new features and software changes is reduced. Users should closely scrutinize the release notes and community feedback to determine if and when to upgrade their software.
+
+- CentOS Stream has not been around for very long. It is difficult to predict its long-term performance and any side effects.
+
+In response to these changes, [AlmaLinux](https://almalinux.org/) and [RockyLinux](https://rockylinux.org/) are branding themselves as CentOS replacements. Users who have concerns about CentOS Stream could potentially move to one of these new options, or the commercial RHEL product. It is also possible to move to another Linux distribution. However, this is more complicated because there are considerable differences between the operating systems.
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
 
-3.  Update your system:
+1. Update your system:
 
         sudo dnf update
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Migrating from CentOS 8 to CentOS Stream
+## Migrate from CentOS 8 to CentOS Stream
 
 The `dnf` utility provides a simple, convenient, and trouble-free way to migrate from CentOS 8 to CentOS Stream. You can use `dnf` to download the new packages, swap and sync the streams, and remove any outdated components.
 
 {{< note >}}
-Alternatively, ISO images or RPM packages can be downloaded from [*The CentOS Downloads Page*](https://www.centos.org/download/). This page also describes alternative download sources, cloud and container images, export regulations, and explains how to download the raw source code.
+Alternatively, ISO images or RPM packages can be downloaded from [The CentOS Downloads Page](https://www.centos.org/download/). This page also describes alternative download sources, cloud and container images, export regulations, and explains how to download the raw source code.
 {{< /note >}}
 
-1.  Update and reboot the Linode.
+1. Update and reboot the Linode.
 
         sudo dnf update -y
         sudo reboot
 
-2.  Ensure the Linode is running a recent version of CentOS 8. If it is still running CentOS 7, upgrade to version 8 first.
+1. Ensure the Linode is running a recent version of CentOS 8. If it is still running CentOS 7, upgrade to version 8 first.
 
         cat /etc/centos-release
     {{< output >}}
 CentOS Linux release 8.3.2011
     {{< /output >}}
 
-3.  Install the CentOS Stream packages.
+1. Install the CentOS Stream packages.
 
         sudo dnf install centos-release-stream -y
 
@@ -114,6 +125,7 @@ Installing:
 
 Transaction Summary
 ================================================================================
+
 Install  1 Package
 
 Total download size: 11 k
@@ -121,6 +133,7 @@ Installed size: 6.6 k
 Downloading Packages:
 centos-release-stream-8.1-1.1911.0.7.el8.x86_64 308 kB/s |  11 kB     00:00
 --------------------------------------------------------------------------------
+
 Total                                           296 kB/s |  11 kB     00:00
 Running transaction check
 Transaction check succeeded.
@@ -137,7 +150,7 @@ Installed:
 Complete!
     {{< /output >}}
 
-4.  Swap the repository files and remove the CentOS 8 repository files from the system.
+1. Swap the repository files and remove the CentOS 8 repository files from the system.
 
         sudo dnf swap centos-{linux,stream}-repos -y
     {{< output >}}
@@ -158,6 +171,7 @@ Removing:
 
 Transaction Summary
 ================================================================================
+
 Install  2 Packages
 Remove   1 Package
 
@@ -166,6 +180,7 @@ Downloading Packages:
 (1/2): centos-stream-repos-8-2.el8.noarch.rpm   481 kB/s |  19 kB     00:00
 (2/2): centos-stream-release-8.5-3.el8.noarch.r 181 kB/s |  22 kB     00:00
 --------------------------------------------------------------------------------
+
 Total                                           236 kB/s |  40 kB     00:00
 Running transaction check
 Transaction check succeeded.
@@ -198,7 +213,7 @@ Removed:
 Complete!
     {{< /output >}}
 
-5.  Sync all components to the new version. This performs all necessary upgrades and downgrades. This procedure might take a substantial amount of time to complete, depending on the speed of your connection. Remove any mounted packages from `/mnt` before running this command. Otherwise, the upgrade might fail.
+1. Sync all components to the new version. This performs all necessary upgrades and downgrades. This procedure might take a substantial amount of time to complete, depending on the speed of your connection. Remove any mounted packages from `/mnt` before running this command. Otherwise, the upgrade might fail.
 
         sudo dnf distro-sync -y
     {{< output >}}
@@ -222,6 +237,7 @@ Installing dependencies:
 
 Transaction Summary
 ================================================================================
+
 Install    9 Packages
 Upgrade  194 Packages
 
@@ -232,6 +248,7 @@ Downloading Packages:
 ...
 (203/203): linux-firmware-20201218-102.git05789 5.7 MB/s | 123 MB     00:21
 --------------------------------------------------------------------------------
+
 Total                                           8.7 MB/s | 329 MB     00:37
 Running transaction check
 Transaction check succeeded.
@@ -257,7 +274,7 @@ Installed:
 Complete!
     {{< /output >}}
 
-6.  Reboot the Linode and verify the CentOS Stream version. It should now be running `CentOS Stream release 8`.
+1. Reboot the Linode and verify the CentOS Stream version. It should now be running `CentOS Stream release 8`.
 
         sudo reboot
         cat /etc/centos-release
@@ -265,6 +282,6 @@ Complete!
 CentOS Stream release 8
     {{< /output >}}
 
-## Learning More About CentOS Stream
+## Learn More About CentOS Stream
 
-CentOS has a large and vibrant community. The [*CentOS Forum*](https://forums.centos.org/) is a good place to ask questions and get support. There is also an explanation on [*how and where to contribute*](https://wiki.centos.org/Contribute) to the CentOS project, along with [*extensive documentation*](https://docs.centos.org/en-US/docs/).
+CentOS has a large and vibrant community. The [CentOS Forum](https://forums.centos.org/) is a good place to ask questions and get support. There is also an explanation on [how and where to contribute](https://wiki.centos.org/Contribute) to the CentOS project, along with [extensive documentation](https://docs.centos.org/en-US/docs/).
