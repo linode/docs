@@ -6,7 +6,7 @@ description: 'The xargs command converts input data into a string of arguments. 
 og_description: 'The xargs command converts input data into a string of arguments. This guide includes xarg examples like, using xargs for command substitution, spawning multiple processes, and invoking xargs to a shell script. The xargs command in Linux is a powerful utility that can help you workaround the limitation of other Linux utilities.'
 keywords: ['xarg examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-11
+published: 2021-06-17
 modified_by:
   name: Linode
 title: "Using the Linux xargs Command"
@@ -14,7 +14,7 @@ h1_title: "How to Use the Linux xargs Command"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[The IEEE and Open Group Base Specification](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/xargs.html)'
 - '[The GNU organization reference page for `xargs`](https://www.gnu.org/software/findutils/manual/html_node/find_html/Invoking-xargs.html)'

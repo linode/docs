@@ -6,7 +6,7 @@ author:
 description: 'A guide on installing Docker Engine on Ubuntu and Debian Linux distributions'
 og_description: 'A guide on installing Docker Engine on Ubuntu and Debian Linux distributions'
 keywords: ['docker','docker engine','containers']
-tags: ["docker","containers"]
+tags: ["docker","containers","debian","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-16
 modified_by:
