@@ -178,6 +178,7 @@ changeset
 characterwise
 chatrooms
 cheatsheet
+checkmarx
 checksummed
 checksums
 chefspec
@@ -499,6 +500,7 @@ gamepad
 gamepedia
 gameplay
 gandi
+gartner
 gatsby
 gbps
 gcc
@@ -664,6 +666,7 @@ imapd
 imaps
 img
 immutant
+imperva
 impor
 incentivized
 inclusivity
@@ -771,6 +774,7 @@ killall
 kinser
 kitchensalt
 klei
+klockwork
 kloth
 kloxo
 knowledgebase
@@ -910,6 +914,7 @@ md5
 md5sum
 mdev
 mediawiki
+megatrend
 melilla
 memcached
 memcrashed
@@ -960,6 +965,7 @@ mongoimport
 monit
 monitorix
 moolenaar
+morphisec
 motd
 mountpoint
 mouseover
@@ -1623,6 +1629,7 @@ tunnelblick
 turtl
 tv
 tw
+twilio
 txt
 txz
 tzurbaev
@@ -1709,6 +1716,7 @@ vdevs
 ve
 venv
 ver
+veracode
 verisign
 vhost
 vhosts
