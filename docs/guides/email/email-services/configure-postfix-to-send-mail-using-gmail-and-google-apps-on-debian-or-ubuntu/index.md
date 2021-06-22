@@ -1,28 +1,28 @@
 ---
-slug: configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu
+slug: configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to configure Postfix to send mail using Gmail and Google apps on Debian or Ubuntu in this detailed guide.'
-og_description: 'Learn how to configure Postfix to send mail using Gmail and Google apps on Debian or Ubuntu in this detailed guide.'
+description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
+og_description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
 keywords: ["Postfix", "Ubuntu", "Debian", "SMTP", "Gmail"]
 tags: ["debian","ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-25
+modified: 2021-06-22
 modified_by:
   name: Linode
 published: 2016-12-13
-title: How to Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
-h1_title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
+title: How to Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu
+h1_title: Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu
 enable_h1: true
-aliases: ['/email/email-services/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/','/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
+aliases: ['/email/email-services/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/','/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/', '/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
 ---
 
-![Configure Postfix to Send Mail Using Gmail and Google Apps](Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
+![Configure Postfix to Send Mail Using Gmail and Google Workspace](Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
 
-Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a block list.
+Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using Google Workspace (previously called G Suite and Google Apps) and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a block list.
 
-In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Apps. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7/) guide.
+In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Workspace. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7/) guide.
 
 {{< content "email-warning-shortguide" >}}
 
