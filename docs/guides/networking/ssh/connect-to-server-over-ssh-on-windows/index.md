@@ -13,7 +13,7 @@ modified_by:
 title: "How to Connect to a Remote Server Over SSH on Windows"
 h1_title: "Connecting to a Remote Server Over SSH on Windows"
 enable_h1: true
-aliases: ['/networking/ssh/using-ssh-on-windows/','/docs/guides/using-ssh-on-windows']
+aliases: ['/networking/ssh/using-ssh-on-windows/','/docs/guides/using-ssh-on-windows/']
 relations:
     platform:
         key: connecting-to-server-over-ssh
