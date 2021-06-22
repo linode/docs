@@ -7,7 +7,7 @@ description: 'A tutorial outlining how to connect to a remote server over SSH on
 og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command.'
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-16
+published: 2021-06-22
 modified_by:
   name: Linode
 title: "How to Connect to a Remote Server Over SSH on Linux"
@@ -17,16 +17,18 @@ relations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
-            - OS: Linux
+            - Environment: Linux
 ---
 
-A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting. This article covers the basics of connecting to a remote server (such as a Linode) over SSH.
+A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
+
+This article covers the basics of connecting to a remote server (such as a Linode) over SSH on a Linux system.
 
 ## Before You Begin
 
 1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
 
-1. Your local computer will need an SSH client that can be used through a terminal application. Most modern operating systems (including Windows 10, MacOS, and popular Linux distributions) have both of these applications preinstalled and ready to use.
+1. Your local computer will need an SSH client that can be used through a terminal application. Most modern Linux distributions have SSH installed and ready to use.x
 
 ## Open the Terminal
 
@@ -60,6 +62,8 @@ The authenticity of host ‘example.com (93.184.216.34)’ can't be established.
 ECDSA key fingerprint is SHA256:d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a84.
 Are you sure you want to continue connecting (yes/no)?
     {{</ output >}}
+
+    You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
 
 1. Accept the prompt by entering `y` or `yes`, which results in a one-time warning that is similar to:
 
@@ -103,6 +107,26 @@ The commands should be separated by a semi-colon (`;`) and all of the commands t
 ### Using sudo
 
 It's recommended to disable root access over SSH and only log in to your remote server through a limited user account. However, some commands require elevated privileges, which can usually be accomplished by prepending the command with `sudo`. If you attempt to do this while running commands directly through the SSH command, you may receive an error such as "no tty present" or there isn't a "stable CLI interface". To run the `sudo` command in these instances, use the `-t` option, which forces a psuedo-terminal allocation. For example, to update your packages on a Debian-based system, run `ssh linode@example.com -t "sudo apt update"`.
+
+## Verifying the Host Key's Fingerprint
+
+1.  Log in to your remote server through a trusted method. For a Linode, use [Lish](/docs/networking/using-the-linode-shell-lish/).
+
+1.  Run the command below to output your server's SSH key fingerprint
+
+        ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
+
+    The output will look similar to:
+
+    {{< output >}}
+256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
+{{< /output >}}
+
+    {{< note >}}
+For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub`.
+{{< /note >}}
+
+1.  Compare this output to what appears when opening an SSH connection on your local computer. The two fingerprints should match. **If the fingerprints do not match, do not connect to the server.** You won't receive further warnings unless the fingerprint changes for some reason. Typically, this should only happen if you reinstall the remote server's operating system. If you receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 
 ## Going Further
 
