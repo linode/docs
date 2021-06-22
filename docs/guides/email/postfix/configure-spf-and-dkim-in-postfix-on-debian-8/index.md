@@ -3,15 +3,15 @@ slug: configure-spf-and-dkim-in-postfix-on-debian-8
 author:
     name: Linode Community
     email: contribute@linode.com
-description: 'Configure SPF and DKIM in Postfix on Debian 8.'
+description: 'Learn how to configure your SPF and DKIM with Postfix on Debian 8 to lift your email deliverability and reduce the number of emails that go to spam folders.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 8", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-14
+modified: 2021-06-22
 modified_by:
     name: Linode
 published: 2016-02-03
-title: 'Configure SPF and DKIM With Postfix on Debian 8'
+title: 'Configure  With Postfix on Debian 8'
 contributor:
     name: Todd Knarr
     link: https://github.com/tknarr
@@ -34,13 +34,19 @@ aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/']
 We have created a [new version of this guide](/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9) to run on Debian 9.
 {{< /note >}}
 
-![SPF and DKIM with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
+![ with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
 {{< content "email-warning-shortguide" >}}
 
+## What is SPF (Sender Policy Framework)?
+
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
+## What is DKIM (DomainKeys Identified Mail)?
+
 [DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail has been tampered with in transit.
+
+## What is DMARC (Domain MEssage Authentication, Reporting and Conformance)?
 
 [DMARC (Domain Message Authentication, Reporting & Conformance)](http://dmarc.org/) allows you to advertise to mail servers what your domain's policies are regarding mail that fails SPF and/or DKIM validations. It additionally allows you to request reports on failed messages from receiving mail servers.
 
@@ -56,7 +62,7 @@ You must already have Postfix installed, configured and working. Refer to the [L
 Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe; however, publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your email being discarded by the recipient's email server.
 {{< /caution >}}
 
-## Install DKIM, SPF and Postfix
+## Install OpenDKIM, SPF and Postfix
 
 1.  Install the four required packages:
 
@@ -158,11 +164,11 @@ The SPF policy agent also logs to `/var/log/mail.log`. In the `mail.log` file yo
 
 The first message is a check of the HELO command, in this case indicating that there wasn't any SPF information matching the HELO (which is perfectly OK). The second message is the check against the envelope From address, and indicates the address passed the check and is coming from one of the outgoing mail servers the sender's domain has said should be sending mail for that domain. There may be other statuses in the first field after the colon indicating failure, temporary or permanent errors and so on.
 
-## Set up DKIM
+## Set up DKIM Using OpenDKIM
 
 DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and adding DNS records.
 
-### Configure OpenDKIM
+### How To Configure OpenDKIM
 
 1.  The main OpenDKIM configuration file `/etc/opendkim.conf` needs to look like this:
 
@@ -335,6 +341,98 @@ Test the keys for correct signing and verification using the `opendkim-testkey` 
 
 If everything is OK you shouldn't get any output. If you want to see more information, add `-vvv` to the end of the command. That produces verbose debugging output. The last message should be "key OK". Just before that you may see a "key not secure" message. That's normal and doesn't signal an error, it just means your domain isn't set up for DNSSEC yet.
 
+### Testing Postfix, DKIM on Debian 8 With A Gmail Test
+
+A big part of configuring and testing new SPF and DKIM settings with Postfix is to ensure that you are sending emails with right deliverability metrics and are doing everything to ensure that you achieve those deliverability targets. That is why, consider testing your configuration with Gmail. With Gmail you get one of the best, state of art spam tests that you can reliably use to ensure the right configuration.
+
+The way this test works is, we send Gmail a mail where it checks DMARC, SPF and DKIM, and we assess the authentication results.  Once you send an email from your domain to a Gmail account, you can click on the original message to see what Gmail thinks about your mailing configuration.
+
+Here is what the output looks like:
+{{< output >}}
+Delivered-To: linode_test@gmail.com
+Received: by 2022:a15:6452:26ca:0:0:0:0 with SMTP id x101233381265edd;
+    Sun, 7 Feb 2021 02:40:04 -0800 (PST)
+X-Received: by 2002:aa7:c78e:: with SMTP id nnhdgajksdh019555eds.31.1612694404713;
+    Sun, 07 Feb 2021 02:40:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612694404; cv=none;
+    d=google.com; s=arc-20160816;
+    b=e1zT7lkjaty295s252s8E1PsVhmHMIAMk4xEcod7ykGgp+Sjji3kwLWtgoOuVT7
+    7+ZrTJhBwc+jhrJZixFiZ3iDYe7MZ/ZqpoUdx6pBEob5iT2GL53VNPMojfVeTmHCHwb5
+    Gs7Q4xMotUg70lPnygZLXN/3Ew5G2jU0UMaJApVEkdmg1wwRCzOrGZ42+0j5x+c3WTKY
+    XinRVGBTk8z2QhB5FM8gIbphpBAbBdiXi9V31X05roGDvj2pSHQUEr0G8Zi+H0xi4fai
+    LRX2MwQnQYC/BFQHY670/4VjJ491uIe3bvqI4ikCvvFg4Nf5cVu5hOfKGMgCM4dGtvAsoMkw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+    h=to:subject:message-id:date:from:mime-version:dkim-signature;
+    bh=CQa88kls02k2a2--020ws00ElJC8DpnJ/Vcf0Tivzmw=;
+    b=Vz5mtq7eUMI/AZE4ndK8CewT+Js7jeYBwaG4FrpJtpf30aHvBugO5BhQD3mzeYd/sZ
+    Os7bXOkkqkoaN/o/MeTudHctx1ZemC1/bBOsa6emufGJ7ZlPrvGJkUJXDzrgKv43vKGl
+    MoQDj6H/cG2ab2ohEaxB0tdjg/tqMLsBRh1ReWGYwtFCWHQ7XVPMTwfDUpm5mR4P0b5
+    xEBWg2aRcriq1W2IM/CdVy5V/Id8+Kk+pU8dft7tgRGhk8dMDC+DTqEV8U9a/bSB5Pha
+    b2zlxr6CjNQ7X5/gZ2c2hlQfDHm/wLuZe42BxnBtr1bXbkzDwvPQKGHtozCqTUv7Js8U
+    eH2w==
+ARC-Authentication-Results: i=1; mx.google.com;
+    dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2;
+    spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;
+    dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=domain.com
+Return-Path: <email@domain.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+    by mx.google.com with SMTPS id c61ssor1asdasd41edd.11.2021.02.06.02.40.04
+    for <linode_test@gmail.com>
+    (Google Transport Security);
+    Sun, 07 Feb 2021 02:40:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+    dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2;
+    spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;
+    dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=domain.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+    d=domain.com; s=google;
+    h=mime-version:from:date:message-id:subject:to;
+    bh=CQaEpaad4454keGFDbp3px5FqXsElJC8DpnJ/Vcf0Tivzmw=;
+    b=TDC76zp2zXQQlNI/0U62oi93/NPMwJ5MnTssTHyd/r9b8qujJ1+kko10Af41Bujmya
+    6IyNRs4nennghXq4C6Vrzd0cCYdmZuxFPMizdJcit1iwRYM8RKP5k4L5cQliQFkYOyZz
+    +6g16OO2oWR3VSFHtQu1jwTyBLpcMzF2JIMC+LyyB9Sw5fpfNXnM2G6fbjVvc7SavBC0
+    XgjWAMUXqSzcLrGPckHMxIA2wRi+f55VYJvpvlyRE/QLSgmQaMyIeY6gFaVNFa+xVHQs
+    Memtk4l2B49dDRxyusd6uMDHb9qHSt2lXQF1w0jGoP1O0CfQqhsAHqALnf1gj0/kgZ3S
+    0vcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+    d=1e100.net; s=20161025;
+    h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+    bh=CQaEpNvHkeGFDbp3px5FqXsElJC8DpnJ/Vcf0Tivzmw=;
+    b=mtXJkLSo+mbSetCIBmxguaJKR1udlwN4vseQZIjKCHlkJ/aVVmAXb9d53EULe/3IVz
+    qtKE2dQ25THWDNS1729ErDLPc9MtHJAUsQpQagO9d3ZoL5SQE00Ao+iro6hW+KRc2A9c
+    ee76SFoX9vrKIItinh+CRvoRDS9JrNWY6jsV5AMS+ZvS3qoWk6r6XHUzlg0oFV82hXTQ
+    CfxRMFha67v55SIh9w5t6tA0R6C9oCR0xaw9VezIl+lWWBLK8e3vXb9HA+bmDr+uWL9r
+    rb9FjtfHzKUpHSzxf55JmMadG0R7DtuLqiub1d6QYzM9JRv4hdAMq0qXDuHD2sdqySJylt2g==
+X-Gm-Message-State: AOWEWE530tXA9OwV6u6/9Eon7ybiRjtgENSOiLx3UoSV12u6XzInJWCBRW +95Trq/FGnzasda574KoJTvq6o0OcCUetYD5TV8FkdiNcPf3A93a5l
+X-Google-Smtp-Source: ABdhPJwBbL4kAXW94sbHwYuWknGLSW74jiM63gpffwPeja9jYsk20532NfooJZ4r6YfDkxxWgYgP05g9rEuyJ+uYAM=
+X-Received: by 2012:a50:d6c1:: with SMTP id l1jil200q196007edj.336.16126454504190; Sun, 07 Feb 2021 02:40:04 -0800 (PST)
+MIME-Version: 1.0
+From: John Doe <email@domain.com>
+Date: Sun, 7 Feb 2021 16:09:52 +0530
+Message-ID: <CA+b8akjw2wiiwiOHG=zc4Yyu7afxX7bb_rhBFakfiiTFX=UBZBR_Q@mail.gmail.com>
+Subject: Domain sending reputation test
+To: John Doe <linode_test@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000017ui2203babcadb4"
+
+--00000000000017e7c9903922cadb4
+Content-Type: text/plain; charset="UTF-8"
+
+Domain sending reputation test
+
+--00000000000017e7c905babcadb4
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr">Domain sending reputation test<br></div>
+
+--00000000000017e7c905babcadb4--
+{{< /output >}}
+From the above email it is clear that:
+- SPF is properly configured:    dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2
+- DKIM has a pass:  spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;
+- DMARC is properly set too: dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=domain.com
+
+
 ### Hook OpenDKIM into Postfix
 
 1.  Create the OpenDKIM socket directory in Postfix's work area and make sure it has the correct ownership:
@@ -365,6 +463,12 @@ SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
 3.  Edit `/etc/postfix/main.cf` and add a section to activate processing of e-mail through the OpenDKIM daemon:
 
     {{< file "/etc/postfix/main.cf" aconf >}}
+
+4. Restart the OpenDKIM daemon so it sets up the correct socket for Postfix:
+        systemctl restart opendkim
+
+5. Restart Postfix so it starts using OpenDKIM when processing mail:
+        systemctl restart postfix
 # Milter configuration
 # OpenDKIM
 milter_default_action = accept
@@ -400,7 +504,7 @@ You don't need to set this up, but doing so makes it harder for anyone to forge 
 
 ## **Optional:** Set up Domain Message Authentication, Reporting & Conformance (DMARC)
 
-The DMARC DNS record can be added to advise mail servers what you think they should do with emails claiming to be from your domain that fail validation with SPF and/or DKIM. DMARC also allows you to request reports about mail that fails to pass one or more validation check.  DMARC should only be set up if you have SPF and DKIM set up and operating successfully. If you add the DMARC DNS record without having both SPF and DKIM in place, messages from your domain will fail validation which may cause them to be discarded or relegated to a spam folder.
+The DMARC DNS record can be added to advise mail servers what you think they should do with emails claiming to be from your domain that fail validation with SPF and/or DKIM. DMARC also allows you to request reports about mail that fails to pass one or more validation check.  DMARC should only be set up if you have  set up and operating successfully. If you add the DMARC DNS record without having both  in place, messages from your domain will fail validation which may cause them to be discarded or relegated to a spam folder.
 
 The DMARC record is a TXT record for host `_dmarc` in your domain containing the following recommended values:
 
@@ -472,3 +576,12 @@ The reason the YYYYMM format is used for the selector is that best practice call
     Make sure they both start without any errors.
 
 7.  After a couple of weeks, all email in transit should either have been delivered or bounced and the old DKIM key information in DNS won't be needed anymore. Delete the old `YYYYMM._domainkey` TXT records in each of your domains, leaving just the newest ones (most recent year and month). Don't worry if you forget and leave the old keys around longer than planned. There's no security issue. Removing the obsolete records is more a matter of keeping things neat and tidy than anything else.
+
+## Handling Spam With SPF and DKIM Configuration With Postfix On Debian 8
+We have briefly talked about this in the sections above, but you can use SpamAssassin to battle incoming spam on your system.
+
+You can install it by running
+        apt-get install spamassassin spamc
+
+And, in the master.cf file, add the content_filter argument to the following services submission, smtp and smtps:
+        content_filter=spamassassion
