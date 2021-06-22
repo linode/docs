@@ -3,11 +3,11 @@ slug: linux-package-management
 author:
   name: Linode
   email: docs@linode.com
-description: Guides for installing and managing software on major Linux operating systems on a Linode.
-keywords: ["Linux package management", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
+description: Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers.
+keywords: ["", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-package-management/','/tools-reference/linux-package-management/','/using-linux/package-management/']
-modified: 2017-02-23
+modified: 2021-06-22
 modified_by:
   name: Linode
 published: 2009-07-16
@@ -17,11 +17,13 @@ tags: ["linux"]
 
 Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.
 
-![Linux Package Management](linux-package-management.png "Linux Package Management")
+![](linux-package-management.png "")
 
 ## Package Management Concepts
 
 Contemporary distributions of Linux-based operating systems install software in pre-compiled *packages*, which are archives that contain binaries of software, configuration files, and information about dependencies. Furthermore, package management tools keep track of updates and upgrades so that the user doesn't have to hunt down information about bug and security fixes.
+
+### What Is The Purpose of A Package Manager?
 
 Without package management, users must ensure that all of the required dependencies for a piece of software are installed and up-to-date, compile the software from the source code (which takes time and introduces compiler-based variations from system to system), and manage configuration for each piece of software. Without package management, application files are located in the standard locations for the system to which the developers are accustomed, regardless of which system they're using.
 
@@ -38,13 +40,15 @@ In general, we recommend that you install the versions of software available in 
 
 The remainder of this guide will cover how to use specific package management systems and how to compile and package software yourself.
 
-## Debian and Ubuntu Package Management
+## How Does Linux Package Management Work?
+
+### Debian and Ubuntu Package Management
 
 The Debian package management system, based on a tool called `dpkg` with the very popular `apt` system, is a powerful, popular, and useful method of package management. In addition to Debian, a number of other prominent distributions of GNU/Linux are derived from the Debian system, most notably the Ubuntu family of distributions.
 
 As a result, these instructions apply to Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, `.debs` packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow).
 
-### Advanced Packaging Tool (APT)
+#### Advanced Packaging Tool (APT)
 
 You may already be familiar with `apt-get`, a command which uses the advanced packaging tool to interact with the operating system's package system. The most relevant and useful commands are (to be run with root privileges):
 
@@ -69,7 +73,7 @@ Combining most of these commands with `apt-cache show` can provide you with a lo
 -   [The Debian Package Directory](http://packages.debian.org)
 -   [The Ubuntu Package Directory](http://packages.ubuntu.com)
 
-### Aptitude
+#### Aptitude
 
 Aptitude is another front-end interface for APT. In addition to a graphical interface, Aptitude provides a combined command-line interface for most APT functionality. Some notable commands are:
 
@@ -79,7 +83,7 @@ Aptitude is another front-end interface for APT. In addition to a graphical inte
 
 Aptitude also includes *safe upgrading*, meaning it doesn't remove existing packages, as well as *holding*, which prevents the system from upgrading specific packages.
 
-### /etc/apt/sources.list
+#### /etc/apt/sources.list
 
 The file `/etc/apt/sources.list` controls repositories from which APT constructs its database. This file contains lines in the following format:
 
@@ -103,7 +107,7 @@ The layout of `sources.list` is a bit different in Ubuntu systems. The lines are
 -   Ubuntu versions have a different naming scheme. Version 14.04 is named "trusty" in `sources.list`, 15.10 is "wily," and 16.04 is "xenial." These names follow an alphabetical pattern.
 -   Ubuntu components are: "main" and "restricted" for supported free and non-free packages; "universe" and "multiverse" for unsupported free and non-free software.
 
-### Using dpkg
+#### Using dpkg
 
 `Apt-get` and `apt-cache` are merely frontend programs that provide a more usable interface and connections to repositories for the underlying package management tools called `dpkg` and `debconf`. These tools are quite powerful, and fully explaining their functionality is beyond the scope of this document. However, a basic understanding of how to use these tools is useful. Some important commands are:
 
@@ -119,6 +123,10 @@ For information about building your own packages, refer to the [Debian New Maint
 Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux (RHEL). Their main differences stem from how packages are chosen for inclusion in their repositories.
 
 CentOS uses `yum`, *Yellowdog Updater, Modified*, as a front end to interact with system repositories and install dependencies, and also includes a lower-level tool called `rpm`, which allows you to interact with individual packages.
+
+### What Is a Linux Yum Package?
+
+YUM is a Linux package management tool to install, update, remove or manage third-party repositories and packages.
 
 Starting with version 22, Fedora uses the `dnf` package manager instead of YUM to interact with `rpm`. DNF supports many of the same commands as YUM, with some slight changes.
 
@@ -140,6 +148,23 @@ You can use the following commands to interact with YUM:
 -   `yum localinstall local-rpm-file` - Checks the dependencies of a local .rpm file and then installs it.
 -   `yum update optional-package-name(s)` - Downloads and installs all updates including bug fixes, security releases, and upgrades, as provided by the distributors of your operating system. Note that you can specify package names with the update command.
 -   `yum upgrade` - Upgrades all packages installed in your system to the latest release.
+
+#### What Is sudo yum?
+
+sudo is a tool for unix based systems to execute programs, which is short for “super user do”  or “substitute user do”. sudo allows you to execute programs as a root user. YUM on the other hand is a package manager. When both combined, sudo yum forms a part of the command that initiates YUM with admin permissions in place.
+
+From the YUM examples listed above, you can see how using sudo will change these commands. Here are two sudo yum commands to illustrate:
+-   `sudo yum upgrade` - instead of just upgrading with user-specific permissions, this upgrades all packages installed in your Unix system to the latest release with the administrator permissions
+-   `sudo yum erase` - this command can now remove any package on the unix system and is no longer limited to the user’s permission level
+
+### What Is The Difference Between APT and YUM?
+
+The biggest difference between APT and YUM package managers is that they both serve different Unix-based systems. On Unix-based systems like Ubuntu, we use APT package manager, whereas, for Unix-based systems like Fedora, we use YUM.
+
+Another commonly observed difference between APT and YUM package managers is the need to upgrade all packages. To upgrade all packages in APT, we need to run the command:
+apt-get upgrade
+
+Whereas, these packages get automatically updated when we use the YUM package manager.
 
 ### /etc/yum.conf
 
@@ -423,3 +448,30 @@ The `equery` command depends on the `gentoolkit` package. This will provide info
     emerge package-name
 
 This will install the specified package with the appropriate options enabled.
+
+## How Do I Open A Package Manager In Linux?
+
+Package managers in Linux are not standalone applications. To access a package manager in Linux you can open Terminal by “Clicking on” Show Applications and “locating” your Linux terminal. You can also use the shortcut key by “holding” Ctrl + Alt + T to open the Linux terminal. Once in the terminal you can use your package manager. For example, to use APT package manager in the terminal, simply type apt + <your command> to access APT package manager’s feature.
+
+## How Do I Copy A Package In Linux?
+
+It is easier to copy packages between similar versions where the distribution is the same too. But when you have different distributions, we can’t use any automatic process to copy packages.
+
+To copy a package between similar versions with the same Linux distribution, we can clone the package and copy it to a new machine. We shall use apt-clone to achieve it. apt-clone is a utility that makes package copying extremely easy on Debian or Ubuntu-based systems.
+
+If you don’t already have apt-clone on your Linux distribution, you can install it by running the following command:
+
+sudo apt-get install apt-clone
+
+Once the installation is over, we shall clone our packages and name the clone as ubuntu_18_backup by running the following command
+
+apt-clone  clone ubuntu_18_backup
+Running this command creates a new file named ubuntu_18_backup.apt-clone.tar.gz in your original distribution. In the next step, copy this file to our new distribution.
+
+To clone ubuntu_18_backup on the new distribution, you need to follow these two steps:
+1. Install apt-clone on the new distribution by running sudo apt-get install apt-clone
+2. Copy the ubuntu_18_backup.apt-clone.tar.gz file on this new distribution
+3. Run apt-clone command: sudo apt-get restore ubuntu_18_backup.apt-clone.tar.gz
+
+And you have successfully copied your packages from the old Linux distribution to the new distribution system.
+
