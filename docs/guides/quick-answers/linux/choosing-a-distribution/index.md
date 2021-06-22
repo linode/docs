@@ -8,7 +8,7 @@ og_description: 'A list of all the Linux distributions provided on the Linode Pl
 keywords: ["distro", "distribution", "operating system", "Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-15
-modified: 2021-06-2
+modified: 2021-06-22
 modified_by:
   name: Linode
 title: "How to Choose a Linux Distribution"
