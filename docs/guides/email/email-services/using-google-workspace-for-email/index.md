@@ -19,9 +19,9 @@ tags: ["email"]
 
 There are many options for running your own email server, and with applications like [Citadel](/docs/guides/email/citadel/), hosting your own email stack can be quite straightforward. Nevertheless, managing independent email servers can be daunting, given email's importance and potential for complexity. This is particularly true when you have multiple users and/or complex filtering schemes. Many people prefer to delegate their email to a third-party email service like Google so they can better concentrate on the administration of other, more mission critical services.
 
-The process for forwarding your email to Google's servers is a matter of redirecting the MX [DNS records](/docs/dns-guides/introduction-to-dns) which govern email routing to Google's email servers. Note that there are a number of third-party email service providers, and Linode does not specifically endorse any of them.
+The process for forwarding your email to Google's servers is a matter of redirecting the MX [DNS records](/docs/guides/dns-records-an-introduction/) which govern email routing to Google's email servers. Note that there are a number of third-party email service providers and Linode does not specifically endorse any of them.
 
-For more information about the [Standard Edition of Google Apps](http://www.google.com/apps/), visit their site. This is a subscription-based service that costs \$50 per year, per user. This document assumes that you are using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager) to manage the DNS records for your domain name, and that you've already signed up for a Google Apps account.
+View the [Google Workspace](https://workspace.google.com/) website to learn more about the service, plans, and pricing. This document assumes that you are using Linode's [DNS Manager](/docs/guides/dns-manager/) to manage the DNS records for your domain name, and that you've already signed up for a Google Workspace account.
 
 ## Creating MX Records
 
