@@ -30,7 +30,7 @@ Linode Managed applies to all Linodes on an account and are billed at a rate of 
 
 - **Included Services and Software:** The following services and software applications are included at no additional charge to Linode Managed customers
     - [cPanel](https://cpanel.net/): A cPanel license is included for each Linode on your account. cPanel is typically licensed by the number of accounts within the cPanel installation, each account typically corresponding to a single website or group of similar websites. This license will automatically scale based on the number of cPanel accounts you've configured.
-    - [Backups](https://www.linode.com/products/backups/): Each Linode on your account will also be subscribed to our Backup service for no extra charge. This service automatically backs up each Linode every day and allows you to restore from the last daily backup, last week's backup, or the previous week's backup. 
+    - [Backups](https://www.linode.com/products/backups/): Each Linode on your account will also be subscribed to our Backup service for no extra charge. This service automatically backs up each Linode every day and allows you to restore from the last daily backup, last week's backup, or the previous week's backup.
     - [Longview Pro](/docs/guides/linode-longview-pricing-and-plans/): Longview is our own metric service designed to help you keep track of Linode's performance. Whereas the free version of Longview provides 12 hours worth of data refreshed every 5 minutes, Longview Pro dramatically expands this functionality. It provides all historical data at increased data resolution, including data points for every minute over the last 24 hours.
 
 - **Professional Services:**
