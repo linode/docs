@@ -384,6 +384,7 @@ elpaso
 emacs
 email2email
 emojivoto
+emscripten
 ender
 enduser
 enix
@@ -1329,6 +1330,7 @@ runfile
 runlevels
 runtime
 runtimes
+rustup
 rvm
 rw
 rwx
@@ -1700,6 +1702,7 @@ vz
 vznetaddbr
 walkthrough
 wasn
+wasm
 wav
 wazuh
 webadmin
