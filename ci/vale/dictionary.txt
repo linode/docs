@@ -774,6 +774,7 @@ klei
 kloth
 kloxo
 knowledgebase
+konsole
 konversation
 kube
 kubeadm
@@ -884,6 +885,7 @@ maitis
 makefile
 managesieve
 mandriva
+manjaro
 manyof
 mapbox
 mapreduce
@@ -1617,6 +1619,7 @@ tt
 ttl
 ttpd
 ttrss
+tty
 tun0
 tune2fs
 tunnelblick
