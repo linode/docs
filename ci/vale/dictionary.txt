@@ -954,6 +954,7 @@ mnesia
 mngtmpaddr
 moby
 moddable
+moodle
 modsecurity
 mongodb
 mongoimport
