@@ -44,6 +44,7 @@ apparmor
 appimage
 appletalk
 approvers
+appsec
 appserver
 apxs
 architecting
@@ -87,6 +88,7 @@ avz
 awk
 awstats
 azc
+backdoors
 backend
 backends
 backported
@@ -237,6 +239,7 @@ copyfrom
 copyto
 coreutils
 corporateclean
+courseware
 cpanminus
 cpu
 cqlsh
@@ -717,6 +720,7 @@ issuewild
 istioctl
 iterable
 itk
+Janca
 java6
 javac
 javascript
@@ -749,6 +753,7 @@ junit
 jupyter
 jx
 kakfa
+kamkar
 kbits
 keepalive
 keepalived
@@ -774,7 +779,7 @@ killall
 kinser
 kitchensalt
 klei
-klockwork
+klocwork
 kloth
 kloxo
 knowledgebase
@@ -914,7 +919,7 @@ md5
 md5sum
 mdev
 mediawiki
-megatrend
+megatrends
 melilla
 memcached
 memcrashed
@@ -1377,6 +1382,7 @@ s3cret
 saas
 sakila
 salesforce
+samy
 sar
 sasl
 sasl2
