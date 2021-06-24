@@ -3,21 +3,24 @@ slug: python-3-9-what-is-new
 author:
   name: John Mueller
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
+og_description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
 modified_by:
   name: Linode
-title: "Python 3 9 What Is New"
-h1_title: "h1 title displayed in the guide."
+title: "Python 3.9: An Overview of New Features"
+h1_title: "Python 3.9: Merge Dictionaries, Time Zone Support, and Type Annotations"
 enable_h1: true
 contributor:
   name: John Mueller
+external_resources:
+- '[Python release 3.9.5 Changelog](https://www.python.org/)'
+- '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'
 ---
 
-## Python 3.9.5: New Features
+## Python 3.9: New Features
 
 Python 3.9.5 is the latest major release and contains several new features. Most of these new features focus on making existing features of the language easier to implement. The following sections describe some of the more stellar features, but you can be sure that there are plenty of others.
 
