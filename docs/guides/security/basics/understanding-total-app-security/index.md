@@ -53,12 +53,8 @@ SQL injections are just one of many types of code injection and scripting proble
 
 ## Recommended Resources
 
-Before you go out and purchase or download any protective tool to help with your application security, take a look at the courseware and accompanying book by Tanya Janca. The book is called [Alice and Bob Learn Application Security](https://www.amazon.com/dp/1119687357/) and it is both a crash course for newbies, as well as a refresher for those that have been doing the job for a few years. Her rough organizing framework for the book has to do with the classic system development lifecycle in use for decades.
+Take a look at the book [Alice and Bob Learn Application Security](https://www.amazon.com/dp/1119687357/) by Tanya Janca. The book is both a crash course for newbies, as well as a refresher for those that have been doing the job for a few years. Her rough organizing framework for the book has to do with the classic system development lifecycle in use for decades.
 
-For more directed learning than an online class can provide, Janca offers a sequence of three classes called [Application Security Foundations](https://store.wehackpurple.com/courses). There’s an option to interact directly with Janca for 30 minutes and it is certainly worth it.
+Some sources for online instruction are app sec classes at [Coursera](https://www.coursera.org/courses?query=application%2520security), [OWASP](https://training.owasp.org/), and [SANS](https://www.sans.org/cyber-security-courses/?msc=main-nav).
 
-The first course is for beginning developers. If you have more experience, focus on the third class. The second class goes into more detail about how to create a culture at your organization where appsec is part of everyone’s job. If you don’t manage a development team, return to this class later on.
-
-Janca’s sequence is laser focused on application security for developers and should be a serious choice for expanding your knowledge.
-
-There are other sources for online instruction, including app sec classes at [Coursera](https://www.coursera.org/courses?query=application%2520security), [OWASP](https://training.owasp.org/) and [SANS](https://www.sans.org/cyber-security-courses/?msc=main-nav).
+The next guide in this series,[An Overview of App Security Testing Tool](/docs/guides/app-security-testing-tools), discusses different types of security testing tools with links to various application testing and shielding products.
