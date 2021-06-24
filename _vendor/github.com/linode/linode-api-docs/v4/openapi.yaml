@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.94.0
+  version: 4.96.0
 
   title: Linode API
   description: |
@@ -1648,6 +1648,7 @@ paths:
     x-linode-cli-command: account
     get:
       servers:
+        - url: https://api.linode.com/v4
         - url: https://api.linode.com/v4beta
       parameters:
         - $ref: '#/components/parameters/pageOffset'
@@ -1658,11 +1659,6 @@ paths:
       summary: Payment Methods List
       description: |
         Returns a paginated list of Payment Methods for this Account.
-
-        This endpoint is currently in **beta**. Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future. This notice will be removed when this endpoint is out of
-        beta.
       operationId: getPaymentMethods
       x-linode-cli-action: payment-methods-list
       security:
@@ -1683,20 +1679,16 @@ paths:
                       type: object
                       description: Payment Method object response.
                       properties:
-                        method:
+                        type:
                           type: string
                           description: The type of Payment Method.
                           example: 'credit_card'
                           x-linode-cli-display: 1
                         is_default:
-                          type: integer
+                          type: boolean
                           description: |
                             Whether this Payment Method is the default method for automatically processing service charges.
-
-                            `0`: False
-
-                            `1`: True
-                          example: 1
+                          example: true
                           x-linode-cli-display: 2
                         created:
                           type: string
@@ -1736,7 +1728,7 @@ paths:
         - lang: Shell
           source: >
             curl -H "Authorization: Bearer $TOKEN" \
-                https://api.linode.com/v4beta/account/payment-methods
+                https://api.linode.com/v4/account/payment-methods
         - lang: CLI
           source: >
             linode-cli account payment-methods-list
@@ -3632,6 +3624,7 @@ paths:
     x-linode-cli-command: images
     post:
       servers:
+      - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       tags:
       - Images
@@ -3658,11 +3651,6 @@ paths:
 
         - Uploaded image data should be compressed in gzip (`.gz`) format. The uncompressed disk should be in raw
         disk image (`.img`) format. A maximum compressed file size of 5GB is supported for upload at this time.
-
-        This endpoint is currently in **beta**. Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future. This notice will be removed when this endpoint is out of
-        beta.
       x-linode-cli-action: upload
       security:
       - personalAccessToken: []
@@ -16156,11 +16144,14 @@ components:
           $ref: '#/components/schemas/Disk/properties/filesystem'
         image:
           type: string
-          description: >
-            An Image ID to deploy the Disk from. Official Linode Images start with
-            `linode/`, while your Images start with `private/`.
+          description: |
+            An Image ID to deploy the Disk from.
 
-            See [/images](/docs/api/images/#images-list) for more information on the Images available for you to use.
+            Access the Images List ([GET /images](/docs/api/images/#images-list)) endpoint with authentication to view
+            all available Images. Official Linode Images start with `linode/`, while your Account's Images start with `private/`. Creating
+            a disk from an Account Image requires `read_only` or `read_write` permissions for that Image. Access the User's
+            Grant Update ([PUT /account/users/{username}/grants](/docs/api/account/#users-grants-update)) endpoint to
+            adjust permissions for an Account Image.
           example: linode/debian9
         authorized_keys:
           type: array

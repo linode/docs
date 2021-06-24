@@ -13,7 +13,7 @@ cascade:
 
 ## Availability
 
-Toronto, Canada; Mumbai, India; Sydney, Australia; Atlanta, GA, USA;
+Atlanta, GA, USA; Mumbai, India; Sydney, Australia; Toronto, Canada;
 
 ## Features
 
