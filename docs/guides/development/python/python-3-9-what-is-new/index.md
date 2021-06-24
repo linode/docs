@@ -1,8 +1,7 @@
 ---
-slug: python-3-9-what-is-new
+slug: python-3-9-new-features
 author:
   name: John Mueller
-  email: docs@linode.com
 description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
 og_description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
 keywords: ['list','of','keywords','and key phrases']
