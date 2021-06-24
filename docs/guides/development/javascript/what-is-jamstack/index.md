@@ -3,16 +3,16 @@ slug: what-is-jamstack
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Jamstack is an architecture to make your web applications faster, more secure, and easier to maintain. This guide walks you through its key concepts and how to start applying the architecture to your projects."
-og_description: "Jamstack is an architecture to make your web applications faster, more secure, and easier to maintain. This guide walks you through its key concepts and how to start applying the architecture to your projects."
+description: "The Jamstack is an architecture to make your web applications faster, more secure, and easier to maintain. This guide walks you through its key concepts and how to start applying the architecture to your projects."
+og_description: "The Jamstack is an architecture to make your web applications faster, more secure, and easier to maintain. This guide walks you through its key concepts and how to start applying the architecture to your projects."
 keywords: ['jamstack','application architecture','web applications','static site generators','hugo','gatsby','jekyll','microservices']
-tags: ['web applications', 'jamstack', 'microservices']
+tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-25
 modified_by:
   name: Nathaniel Stickman
-title: "What Is the Jamstack?"
-h1_title: "What Is the Jamstack?"
+title: "An Introduction to the Jamstack"
+h1_title: "Getting Started with the Jamstack"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
@@ -21,11 +21,6 @@ external_resources:
 - '[Jamstack](https://jamstack.org/)'
 - '[Jamstack static site generators](https://jamstack.org/generators/)'
 - '[Hugo](https://gohugo.io/)'
-- '[Gatsby](https://www.gatsbyjs.com/)'
-- '[Travis CI](https://travis-ci.com/)'
-- '[FastAPI](https://fastapi.tiangolo.com/)'
-- '[Jamstack best practices](https://jamstack.org/best-practices/)'
-- '[Jamstack community page](https://jamstack.org/community/)'
 ---
 
 ## What Is the Jamstack?
@@ -44,12 +39,9 @@ In this guide, you can find learn about the components of the Jamstack and some 
 
 There are two key features that Jamstack applications employ to improve speed and efficiency. They are:
 
-1. Pre-rendering
-1. Decoupling
+- **Pre-rendering**: Generating your site's static files upfront instead of at runtime. Tools like static site generators allow you to process and render your application's front end before deployment. This provides faster load times for your user and significantly lowers your application's required hosting resources.
 
-- Pre-rendering: Generating your site's static files upfront instead of at runtime. Tools like static site generators allow you to process and render your application's front end before deployment. This provides faster load times for your user and significantly lowers your application's required hosting resources.
-
-- Decoupling: Keeping your application's frontend distinct and housing any server-side logic your application needs in reusable APIs. Decoupling capitalizes on the advantages of pre-rendering — your front end stays fast and independent and keeps its hosting overhead low. It also makes your application more maintainable overall. Changes to the backend can occur without directly affecting the frontend — and vice versa. Additionally, it tends to be much easier to understand where and how the frontend and backend interact.
+- **Decoupling**: Keeping your application's frontend distinct and housing any server-side logic your application needs in reusable APIs. Decoupling capitalizes on the advantages of pre-rendering — your front end stays fast and independent and keeps its hosting overhead low. It also makes your application more maintainable overall. Changes to the backend can occur without directly affecting the frontend — and vice versa. Additionally, it tends to be much easier to understand where and how the frontend and backend interact.
 
 Overall, these features result in a faster experience for your application's users and easier application maintenance. And, depending on your application's backend needs, pre-rendering and decoupling can keep your content hosting overhead low.
 
@@ -65,7 +57,7 @@ Plenty of web applications already fit the Jamstack architecture. However, not a
 
 - If you need something from the server-side, make use of [microservices](/docs/guides/what-is-jamstack/#microservices). These keep your server-side logic in self-contained, maintainable units. Each microservice exposes its own RESTful API that your frontend can use.
 
-## Build a Jamstack Application
+## Building a Jamstack Application
 
 This section provides a starting point for you to set up your own Jamstack application. It walks you through the main parts, discusses the relevant concepts, and links you to guides to implement them.
 
