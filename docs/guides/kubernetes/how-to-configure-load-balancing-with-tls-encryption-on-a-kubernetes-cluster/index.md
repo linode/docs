@@ -9,7 +9,7 @@ keywords: ['load balancers','kubernetes','pods','cloud controller manager']
 tags: ["kubernetes","container","nginx","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-17
-modified: 2021-06-24
+modified: 2021-06-25
 modified_by:
   name: Linode
 title: "How to Configure Load Balancing with TLS Encryption on a Kubernetes Cluster"
@@ -33,7 +33,7 @@ While Linode NodeBalancers do support ProxyProtocol, the Linode CCM does not. Fo
 {{</ note >}}
 
 
-## Before you Begin
+## Before You Begin
 
 1.  Review the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 

@@ -9,7 +9,7 @@ keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 
 tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
-modified: 2021-06-24
+modified: 2021-06-25
 modified_by:
   name: Linode
 title: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
@@ -28,11 +28,11 @@ An Ingress is one of the most powerful ways to control external access to your r
 
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.
 
-{{< caution >}}
+{{< note >}}
 Following the instructions in this guide will create billable resources on your account in the form of Linodes and NodeBalancers. You will be billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
-{{</ caution >}}
+{{</ note >}}
 
-## In this Guide
+## In This Guide
 
 This guide will show you how to:
 
@@ -40,7 +40,7 @@ This guide will show you how to:
 - Create two instances of sample application Deployments to create two separate mock websites on a single Kubernetes cluster served over port 80.
 - Create an Ingress and a NodeBalancer to route traffic from the internet to Kubernetes Services.
 
-## Before you Begin
+## Before You Begin
 
 1.  Review the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 
