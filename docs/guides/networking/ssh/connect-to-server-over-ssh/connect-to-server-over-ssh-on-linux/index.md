@@ -6,6 +6,7 @@ author:
 description: 'A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command.'
 og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command.'
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
+tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
@@ -28,7 +29,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
 
-1. Your local computer will need an SSH client that can be used through a terminal application. Most modern Linux distributions have SSH installed and ready to use.x
+1. Your local computer needs an SSH client that can be used through a terminal application. Most modern Linux distributions have SSH installed and ready to use.x
 
 ## Open the Terminal
 
@@ -47,7 +48,7 @@ If this key combination does not work for you, other instructions for opening a 
 
        ssh [username]@[ip-address]
 
-    The SSH client will attempt to connect to the remote server over port 22 (the default SSH port).
+    The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
     {{< note >}}
 If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
@@ -71,11 +72,11 @@ Are you sure you want to continue connecting (yes/no)?
 Warning: Permanently added 'example' (ECDSA) to the list of known hosts.
 {{</ output >}}
 
-Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. Many of the basic Linux commands, such as `ls`, `cd`, `rm`, and covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
+Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
 
 ## Ending the SSH Session
 
-After you are done, log out of the session by typing `exit`. The terminal then show something similar to:
+After you are done, log out of the session by typing `exit`. The terminal then shows something similar to:
 
 {{< output >}}
 logout
@@ -94,7 +95,7 @@ To run a single command on your remote server, use the following command. Replac
 
     ssh [username]@[ip-address] [command]
 
-As an example, running `ssh me@192.0.2.0 ls` will list all the files in the home directory of the user called `me`. This can be useful to find the uptime of the server (`ssh me@192.0.2.0 uptime`) or maybe determine its Linux distribution and version (`ssh me@192.0.2.0 lsb_release -a`).
+As an example, running `ssh me@192.0.2.0 ls` lists all the files in the home directory of the user called `me`. This can be useful to find the uptime of the server (`ssh me@192.0.2.0 uptime`) or maybe determine its Linux distribution and version (`ssh me@192.0.2.0 lsb_release -a`).
 
 ### Sending Multiple Commands
 
@@ -116,7 +117,7 @@ It's recommended to disable root access over SSH and only log in to your remote 
 
         ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
 
-    The output will look similar to:
+    The output looks similar to:
 
     {{< output >}}
 256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
@@ -132,7 +133,7 @@ For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen 
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
 
 ### Increasing Security
 

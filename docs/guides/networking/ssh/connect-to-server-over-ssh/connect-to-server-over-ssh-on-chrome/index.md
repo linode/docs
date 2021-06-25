@@ -6,6 +6,7 @@ author:
 description: 'A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension.'
 og_description: 'A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension.'
 keywords: ['ssh','secure shell', 'chromeos', 'chrome', 'connect to server over ssh','connect to linode over ssh']
+tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
@@ -20,7 +21,7 @@ relations:
             - Environment: Chrome
 ---
 
-SSH (*secure shell*) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server. This is a common task when administering a website, hosting environment, or even a Raspberry Pi or Arduino system.
+SSH (*secure shell*) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server. This is a common task when administering a website, hosting environment, or even a Raspberry Pi or Arduino system.
 
 This article covers the basics of connecting to a remote server (such as a Linode) over SSH using the **Secure Shell** extension available on ChromeOS or any Chrome web browser running on Windows, Mac, and Linux.
 
@@ -42,7 +43,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
         ssh [username]@[ip-address]
 
-    Press enter. The Secure Shell extension will attempt to connect to the remote server over port 22 (the default SSH port).
+    Press enter. The Secure Shell extension attempts to connect to the remote server over port 22 (the default SSH port).
 
     ![Typing in the ssh command within the Chrome address bar](chrome-secure-shell-address-bar.png "Chrome address bar")
 
@@ -69,13 +70,13 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 Warning: Permanently added 'example' (ECDSA) to the list of known hosts.
 {{</ output >}}
 
-1.  You will then by prompted for your password. Type in the correct password for the remote user and press enter.
+1.  You are then prompted for your password. Type in the correct password for the remote user and press enter.
 
-Once you have successfully connected, the Secure Shell extension will display a terminal that's using the remote shell environment for the server. The command prompt should show the username and hostname configured for the server. You can now run any commands that you have available on that server. Many of the basic Linux commands, such as `ls`, `cd`, `rm`, and covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
+Once you have successfully connected, the Secure Shell extension displays a terminal that's using the remote shell environment for the server. The command prompt should show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
 
 ## Ending the SSH Session
 
-After you are done, log out of the session by typing `exit`. The terminal then show something similar to:
+After you are done, log out of the session by typing `exit`. The terminal then shows something similar to:
 
 {{< output >}}
 logout
@@ -94,7 +95,7 @@ Type `x` to close the tab, `r` to reconnect to the same server, or `c` to be pre
 
         ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
 
-    The output will look similar to:
+    The output looks similar to:
 
     {{< output >}}
 256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)

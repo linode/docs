@@ -6,6 +6,7 @@ author:
 description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
 og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
 keywords: ['ssh','linux','windows','connect to server over ssh','connect to linode over ssh']
+tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
@@ -37,7 +38,7 @@ On your local Windows computer, open the terminal application you wish to use. T
 
 - [PowerShell - Windows 10](#powershell---windows-10): This is the easiest method for most people using a Windows 10 computer.
 - [Windows Subsystem for Linux - Windows 10](#windows-subsystem-for-linux-wsl---windows-10): This requires quite a few more installation and configuration steps, but may be a better option for those who prefer working within a Linux command-line.
-- [PuTTY - Windows 8, 7, Vista, and XP](#putty---windows-8-7-vista-and-xp): For earlier versions of Windows, you'll need to use PuTTY or any other third-party terminal emulator.
+- [PuTTY - Windows 8, 7, Vista, and XP](#putty---windows-8-7-vista-and-xp): For earlier versions of Windows, you  need to use PuTTY or any other third-party terminal emulator.
 
 ### PowerShell - Windows 10
 
@@ -51,11 +52,11 @@ The default terminal for Windows 10 is PowerShell. To connect to a server using 
 
     ![Manage Optional Features Search](manage-optional-features-search.png)
 
-1.  The **Optional features** page of the Settings application will launch. Under the **Installed features** list, look for the *OpenSSH Client* feature.
+1.  The **Optional features** page of the Settings application launches. Under the **Installed features** list, look for the *OpenSSH Client* feature.
 
     ![OpenSSH](openssh-installed-feature.png)
 
-1.  If the *OpenSSH Client* feature is not installed, click the **Add a feature** button at the top of the page. A dropdown menu will appear. Select **OpenSSH Client** and press the **Install** button.
+1.  If the *OpenSSH Client* feature is not installed, click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button.
 
 #### Open PowerShell
 
@@ -86,7 +87,7 @@ There is no native SSH client in Windows 8 and earlier. Instead, you'll need to 
 
        ssh [username]@[ip-address]
 
-    The SSH client will attempt to connect to the remote server over port 22 (the default SSH port).
+    The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
     {{< note >}}
 If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
@@ -110,11 +111,11 @@ Are you sure you want to continue connecting (yes/no)?
 Warning: Permanently added 'example' (ECDSA) to the list of known hosts.
 {{</ output >}}
 
-Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. Many of the basic Linux commands, such as `ls`, `cd`, `rm`, and covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
+Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
 
 ## Ending the SSH Session
 
-After you are done, log out of the session by typing `exit`. The terminal then show something similar to:
+After you are done, log out of the session by typing `exit`. The terminal then shows something similar to:
 
 {{< output >}}
 logout
@@ -133,7 +134,7 @@ To run a single command on your remote server, use the following command. Replac
 
     ssh [username]@[ip-address] [command]
 
-As an example, running `ssh me@192.0.2.0 ls` will list all the files in the home directory of the user called `me`. This can be useful to find the uptime of the server (`ssh me@192.0.2.0 uptime`) or maybe determine its Linux distribution and version (`ssh me@192.0.2.0 lsb_release -a`).
+As an example, running `ssh me@192.0.2.0 ls` lists all the files in the home directory of the user called `me`. This can be useful to find the uptime of the server (`ssh me@192.0.2.0 uptime`) or maybe determine its Linux distribution and version (`ssh me@192.0.2.0 lsb_release -a`).
 
 ### Sending Multiple Commands
 
@@ -155,7 +156,7 @@ It's recommended to disable root access over SSH and only log in to your remote 
 
         ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
 
-    The output will look similar to:
+    The output looks similar to:
 
     {{< output >}}
 256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
@@ -171,7 +172,7 @@ For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen 
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
 
 ### Increasing Security
 

@@ -6,6 +6,7 @@ author:
 description: 'A tutorial outlining how to connect to a remote server over SSH using PuTTY on Windows (or Linux)'
 og_description: 'A tutorial outlining how to connect to a remote server over SSH using PuTTY on Windows (or Linux)'
 keywords: ['ssh','putty','windows','connect to server over ssh','connect to linode over ssh']
+tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
@@ -47,21 +48,21 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 
     ![Screenshot of the destination server details form on PuTTY](putty-destination.png "Destination details")
 
-1.  Optionally save your session to quickly reconnect in the future. Type in a unique name for the connection under **Saved Sessions** and press the **Save** button.
+1.  Optionally, save your session to quickly reconnect in the future. Type in a unique name for the connection under **Saved Sessions** and press the **Save** button.
 
     !["Screenshot of the Save Session form on PuTTY"](putty-save-session.png)
 
 1.  Click the **Open** button at the bottom of the PuTTY window to open the connection.
 
-1.  When you connect to a server for the first time, PuTTY will prompt you to verify that the host key's fingerprint matches what you expect.
+1.  When you connect to a server for the first time, PuTTY prompts you to verify that the host key's fingerprint matches what you expect.
 
     ![Screenshot of dialog box asking to confirm host key's fingerprint](putty-security-alert.png "Confirm the host key's fingerprint")
 
     If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
 
-1.  PuTTY will now prompt you to enter the remote user and the password for that user.
+1.  PuTTY now prompts you to enter the remote user and the password for that user.
 
-Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. Many of the basic Linux commands, such as `ls`, `cd`, `rm`, and covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
+Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
 
 ## Verifying the Host Key's Fingerprint
 
@@ -71,7 +72,7 @@ Once you have successfully connected, your terminal should be using the remote s
 
         ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
 
-    The output will look similar to:
+    The output looks similar to:
 
     {{< output >}}
 256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
@@ -87,7 +88,7 @@ For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen 
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
 
 ### Increasing Security
 
