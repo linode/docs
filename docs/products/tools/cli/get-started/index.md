@@ -9,7 +9,7 @@ This guide describes the basics of installing and working with the CLI. It also 
 
 ## Install the CLI
 
-1.  List your Support Tickets:
+1.  List all of your Support Tickets:
 
         linode-cli tickets list
 
