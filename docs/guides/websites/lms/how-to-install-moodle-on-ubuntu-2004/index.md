@@ -7,7 +7,7 @@ og_description: 'Moodle is a popular open-source learning management system that
 keywords: ['moodle','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-13
+published: 2021-06-25
 modified_by:
   name: Nathaniel Stickman
 title: "Installing Moodle on Ubuntu Server 20.04"
