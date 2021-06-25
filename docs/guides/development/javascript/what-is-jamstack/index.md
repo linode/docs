@@ -8,7 +8,7 @@ og_description: "The Jamstack is an architecture to make your web applications f
 keywords: ['jamstack','application architecture','web applications','static site generators','hugo','gatsby','jekyll','microservices']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-25
+published: 2021-06-25
 modified_by:
   name: Nathaniel Stickman
 title: "An Introduction to the Jamstack"
