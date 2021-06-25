@@ -4,9 +4,10 @@ author:
   name: John Mueller
 description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
 og_description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['python']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-17
+published: 2021-06-25
 modified_by:
   name: Linode
 title: "Python 3.9: An Overview of New Features"
