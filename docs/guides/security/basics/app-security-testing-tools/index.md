@@ -5,6 +5,7 @@ author:
 description: 'This guide provides an overview of different types of security testing tools with links to various application testing and shielding products. The testing tools discussed in this guide are use for static code security, dynamic code security, and mobile testing.'
 og_description:  'This guide provides an overview of different types of security testing tools with links to various application testing and shielding products. The testing tools discussed in this guide are use for static code security, dynamic code security, and mobile testing.'
 keywords: ['application security test tools']
+tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 modified_by:
