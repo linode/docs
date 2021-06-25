@@ -710,7 +710,7 @@ If you need an easy-to-install email solution, consider the [Citadel groupware s
 
 If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/docs/email/postfix/).
 
-Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email/) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
+Finally, it's possible to outsource email service to a third-party provider, such as [Google Workspace](/docs/guides/using-google-workspace-for-email/) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
 
 ### Send Email From Your Server
 
