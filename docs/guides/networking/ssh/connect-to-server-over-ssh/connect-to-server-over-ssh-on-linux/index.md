@@ -7,7 +7,7 @@ description: 'A tutorial outlining how to connect to a remote server over SSH on
 og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command.'
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-22
+published: 2021-06-25
 modified_by:
   name: Linode
 title: "How to Connect to a Remote Server Over SSH on Linux"

@@ -1,42 +1,84 @@
 ---
-slug: connect-to-server-over-ssh-on-mac
+slug: connect-to-server-over-ssh-on-windows
 author:
   name: Linode
   email: docs@linode.com
-description: 'A tutorial outlining how to connect to a remote server over SSH on a Mac computer, including opening the terminal and structuring the ssh command.'
-og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Mac computer, including opening the terminal and structuring the ssh command.'
-keywords: ['ssh','linux','mac','connect to server over ssh','connect to linode over ssh']
+description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
+og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
+keywords: ['ssh','linux','windows','connect to server over ssh','connect to linode over ssh']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-22
+published: 2021-06-25
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on a Mac"
-h1_title: "Connecting to a Remote Server Over SSH on a Mac"
+title: "How to Connect to a Remote Server Over SSH on Windows"
+h1_title: "Connecting to a Remote Server Over SSH on Windows"
 enable_h1: true
+aliases: ['/networking/ssh/using-ssh-on-windows/','/guides/using-ssh-on-windows/']
 relations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
-            - Environment: Mac
+            - Environment: Windows
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
 
-This article covers the basics of connecting to a remote server (such as a Linode) over SSH on macOS.
+This article covers the basics of connecting to a remote server (such as a Linode) over SSH on a local Windows system.
 
 ## Before You Begin
 
-Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
+1.  Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
+
+1.  If using Windows 10, install any pending updates to ensure you are running the latest version of Windows.
 
 ## Open the Terminal
 
-On your local computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run programs through the command line.
+On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run programs through the command line.
 
-The default terminal emulator for macOS is called *Terminal*. To open this program, access Spotlight by pressing `Cmd` + `Space` on the keyboard and type "Terminal" in the search box. In the search results, click on *Terminal.app*. Refer to Apple's [Open or Quit Terminal on Mac](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac) guide for additional methods of opening Terminal.
+- [PowerShell - Windows 10](#powershell---windows-10): This is the easiest method for most people using a Windows 10 computer.
+- [Windows Subsystem for Linux - Windows 10](#windows-subsystem-for-linux-wsl---windows-10): This requires quite a few more installation and configuration steps, but may be a better option for those who prefer working within a Linux command-line.
+- [PuTTY - Windows 8, 7, Vista, and XP](#putty---windows-8-7-vista-and-xp): For earlier versions of Windows, you'll need to use PuTTY or any other third-party terminal emulator.
 
-![Using Spotlight to open the Terminal app](terminal-in-spotlight.png)
+### PowerShell - Windows 10
 
-As alternatives to the Terminal app, other popular and highly customizable macOS compatible terminal applications include [iTerm2](https://iterm2.com/) and [Hyper](https://hyper.is/).
+The default terminal for Windows 10 is PowerShell. To connect to a server using SSH within PowerShell, the OpenSSH client needs to be installed. OpenSSH is available on newer versions of Windows 10 (April 2018 update and later), though it may need to be manually enabled.
+
+#### Install the OpenSSH Client
+
+1.  Open up **Windows Search** by selecting the search area (or search button) on the taskbar or by pressing **Windows** + **S** on the keyboard.
+
+1.  Start typing "Manage optional features" and select *Manage optional features* (System settings) from the search results.
+
+    ![Manage Optional Features Search](manage-optional-features-search.png)
+
+1.  The **Optional features** page of the Settings application will launch. Under the **Installed features** list, look for the *OpenSSH Client* feature.
+
+    ![OpenSSH](openssh-installed-feature.png)
+
+1.  If the *OpenSSH Client* feature is not installed, click the **Add a feature** button at the top of the page. A dropdown menu will appear. Select **OpenSSH Client** and press the **Install** button.
+
+#### Open PowerShell
+
+To use PowerShell, open **Windows Search** through the **Windows** + **S** hotkey, type "PowerShell" into the search area, and select the *Windows PowerShell* application from the results. [PowerShell 7](https://github.com/PowerShell/PowerShell) or later, the newer cross-platform PowerShell application, can also be used if installed.
+
+![The Windows PowerShell application within Windows Search](powershell-search.png "The Windows PowerShell application within Windows Search")
+
+### Windows Subsystem for Linux (WSL) - Windows 10
+
+Instead of using the PowerShell environment (which is significantly different than both the macOS and Linux command-line environments), you can run Linux directly within Windows through WSL (Windows Subsystem for Linux). This may be preferred if you are more comfortable working within a Linux shell environment.
+
+1.  Install WSL by following the instructions within Microsoft's [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10). If you already have WSL1 installed, it's recommended to update to WSL2.
+
+1.  Install your preferred Linux distribution, such as [Ubuntu](https://www.microsoft.com/store/apps/9nblggh4msv6), directly from the Microsoft Store. A full list of available distributions can be found under [Step 6 - Install your Linux distribution of choice](https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice) of the previously mentioned guide.
+
+Once everything has been configured, you can use the WSL environment by opening your installed Linux distribution through the Start Menu or Windows Search. By default, WSL uses a fairly basic terminal emulator. You can also use a more customizable terminal, such as [Windows Terminal](https://aka.ms/terminal) or [Hyper](https://hyper.is/).
+
+### PuTTY - Windows 8, 7, Vista, and XP
+
+There is no native SSH client in Windows 8 and earlier. Instead, you'll need to use a third party application, such as [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), [Cygwin](https://www.cygwin.com/), the [Secure Shell extension for Google Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), or any other SSH-enabled terminal emulator:
+
+- [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)
+- [Connecting to a Remote Server Over SSH on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/)
 
 ## Connecting to the Remote Server Over SSH
 
