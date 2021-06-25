@@ -1,17 +1,16 @@
 ---
 slug: how-to-install-moodle-on-ubuntu-server-2004
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: 'Moodle is a popular open-source learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Moodle on Ubuntu server 20.04.'
 og_description: 'Moodle is a popular open-source learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Moodle on Ubuntu server 20.04.'
 keywords: ['moodle','education','training','learning management system','lms','install on ubuntu 20.04']
-tags: ['ubuntu', 'mysql', 'php']
+tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-13
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Moodle on Ubuntu Server 20.04"
+title: "Installing Moodle on Ubuntu Server 20.04"
 h1_title: "How to Install Moodle on Ubuntu 20.04"
 enable_h1: true
 contributor:
@@ -19,19 +18,9 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Moodle](https://moodle.org/)'
-- '[Moddle official releases](https://docs.moodle.org/dev/Releases)'
-- '[Lets Encrypt](https://letsencrypt.org)'
-- '[Certbot](https://certbot.eff.org)'
-- '[Snap](https://snapcraft.io/docs/getting-started)'
-- '[Moddle Admin Quick guide](https://docs.moodle.org/310/en/Admin_quick_guide)'
-- '[Moddle Teacher Quick guide](https://docs.moodle.org/310/en/Teacher_quick_guide)'
-- '[Moddle documentation library](https://docs.moodle.org/310/en/Main_page)'
-
 ---
 
-[Moodle](https://moodle.org/) is a popular, free, and open-source Learning Management System (LMS). With Moodle, you can create a fully-featured website for education and training courses, suitable for fully online, hybrid, and in-person classroom experiences. The Moodle platform is highly customizable and takes a modular approach to features, so it is extensible and adaptable to your needs.
-
-This guide shows you how to get a Moodle website up and running on an Ubuntu 20.04 server.
+[Moodle](https://moodle.org/) is a popular, free, and open-source Learning Management System (LMS). With Moodle, you can create a fully-featured website for education and training courses, suitable for fully online, hybrid, and in-person classroom experiences. The Moodle platform is highly customizable and takes a modular approach to features, so it is extensible and adaptable to your needs. This guide shows you how to get a Moodle website up and running on an Ubuntu 20.04 server.
 
 ## Before You Begin
 
@@ -53,7 +42,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 ## Install the Prerequisites
 
-1. Install the prerequisites for Moodle. This includes software and PHP modules supporting Moodle's features and Git for installing Moodle and keeping it up to date.
+1. Install the prerequisites for Moodle. This includes software and PHP modules that support Moodle's features and Git for installing Moodle and keeping it up to date.
 
         sudo apt install graphviz aspell ghostscript clamav php7.4-pspell php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-ldap php7.4-zip php7.4-soap php7.4-mbstring git
 
@@ -86,7 +75,7 @@ This guide is written for non-root users. Commands that require elevated privile
         sudo chmod -R 0777 /var/www/html/moodle
 
     {{< note >}}
-Write access to this directory is only meant to be granted temporarily. Once the Moodle installation is completed in the steps below, the permissions are modified to restrict write access to the directory owner (the root user).
+Write access to this directory is only meant to be granted temporarily. Once the Moodle installation is completed in the steps below, the permissions are modified to restrict write access to the directory owner (the `root` user).
     {{< /note >}}
 
 1. Create a `/var/moodledata` directory, make `www-data` its owner, and modify its permissions to grant all users read, execute, and write access.
@@ -116,7 +105,7 @@ Write access to this directory is only meant to be granted temporarily. Once the
 
 1. In a web browser, navigate to the Moodle URL, which is your server's domain name followed by `/moodle`. So, if your server's domain name is `example.com`, then the Moodle URL would be `example.com/moodle`.
 
-1. Follow the prompts to complete the Moodle setup. Enter the default options or your preferences for all except the following prompts.
+1. Follow the prompts to complete the Moodle setup. Enter the default options or your preferences for all settings except the following:
 
     - Enter `/var/moodledata` for **Data directory** when prompted to confirm paths.
 
@@ -132,7 +121,7 @@ Write access to this directory is only meant to be granted temporarily. Once the
 
 1. Review the release information, ensure that no issues are indicated, and continue. Allow the next page to load fully — it may take some time — and ensure that all of the components listed indicate "Success". Then, continue.
 
-1. Complete the form for creating a Moodle site administrator, and, on the next page, similarly complete the form for information about your Moodle site.
+1. Complete the form for creating a Moodle site administrator and, on the next page, complete the form with information about your Moodle site.
 
 1. Return to your server's command line, and modify the Moodle directory's permissions to prevent writing except by the directory owner (the root user):
 
@@ -148,11 +137,11 @@ Configuring the system paths for Moodle, while optional, enhances your Moodle si
 
 1. On the form presented, complete the fields as follows:
 
-    For **Path to du**, enter `/usr/bin/du`.
+    - **Path to du**, enter `/usr/bin/du`.
 
-    For **Path to aspell**, enter `/usr/bin/aspell`.
+    - **Path to aspell**, enter `/usr/bin/aspell`.
 
-    For **Path to dot**, enter `/usr/bin/dot`.
+    - **Path to dot**, enter `/usr/bin/dot`.
 
     [![Input system paths for Moodle](moodle-admin-system-paths_small.png "Input system paths for Moodle")](moodle-admin-system-paths.png)
 
@@ -160,9 +149,9 @@ Configuring the system paths for Moodle, while optional, enhances your Moodle si
 
 ## Set Up an SSL Certificate
 
-Although not required, it is recommended that you secure your Moodle site using an SSL certificate. This guide uses [Certbot](https://certbot.eff.org) to request and downloads a free certificate from [Let's Encrypt](https://letsencrypt.org).
+Although not required, it is recommended that you secure your Moodle site using an SSL certificate. This guide uses [Certbot](https://certbot.eff.org) to create a free certificate from [Let's Encrypt](https://letsencrypt.org).
 
-1. Update the [Snap](https://snapcraft.io/docs/getting-started) app store. Snap provides application bundles that work across major Linux distributions and comes by default with all Ubuntu releases since 16.04.
+1. Update the [Snap](https://snapcraft.io/docs/getting-started) app store. Snap provides application bundles that work across major Linux distributions and is installed by default with all Ubuntu releases since 16.04.
 
         sudo snap install core && sudo snap refresh core
 
@@ -194,8 +183,4 @@ Although not required, it is recommended that you secure your Moodle site using 
 
 ## Next Steps
 
-You are now ready to start using Moodle!
-
-Here are some selections from Moodle's documentation library to help you get started. Take a look at the [Admin quick guide](https://docs.moodle.org/310/en/Admin_quick_guide), which shows you how to start customizing the look of your site and how to add users and courses. Then, review the [Teacher quick guide](https://docs.moodle.org/310/en/Teacher_quick_guide) for a walkthrough of how you can manage a course.
-
-From there, check out the rest of Moodle's [documentation library](https://docs.moodle.org/310/en/Main_page) for guides on the many ways you can customize your site and for instructions on getting the most out of it.
+You are now ready to start using Moodle. To get started, take a look at [Moodle's Admin quick guide](https://docs.moodle.org/310/en/Admin_quick_guide), which shows you how to start customizing the look of your site and how to add users and courses. Then, review the [Teacher quick guide](https://docs.moodle.org/310/en/Teacher_quick_guide) for a walkthrough on how you can manage a course. From there, check out the rest of Moodle's [documentation library](https://docs.moodle.org/310/en/Main_page) for guides on the many ways you can customize your site and for instructions on getting the most out of it.
