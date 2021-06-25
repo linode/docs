@@ -11,8 +11,10 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-06-23
 modified_by:
   name: Linode
-published: 2021-06-23
-title: 'How to Install a LAMP Stack on Ubuntu 20.04'
+published: 2021-06-25
+title: 'Installing a LAMP Stack on Ubuntu 20.04'
+h1_title: 'How to Install a LAMP Stack on Ubuntu 20.04'
+enable_h1: true
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -162,7 +164,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 {{< /file >}}
 
     {{< note >}}
-    The file example above has all comment sections removed for brevity. Keep or remove the commented areas as you see fit.
+The file example above has all comment sections removed for brevity. Keep or remove the commented areas as you see fit.
 
 The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
 {{< /note >}}
