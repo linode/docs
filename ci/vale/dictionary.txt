@@ -44,6 +44,7 @@ apparmor
 appimage
 appletalk
 approvers
+appsec
 appserver
 apxs
 architecting
@@ -87,6 +88,7 @@ avz
 awk
 awstats
 azc
+backdoors
 backend
 backends
 backported
@@ -178,6 +180,7 @@ changeset
 characterwise
 chatrooms
 cheatsheet
+checkmarx
 checksummed
 checksums
 chefspec
@@ -237,6 +240,7 @@ copyfrom
 copyto
 coreutils
 corporateclean
+courseware
 cpanminus
 cpu
 cqlsh
@@ -500,6 +504,7 @@ gamepad
 gamepedia
 gameplay
 gandi
+gartner
 gatsby
 gbps
 gcc
@@ -665,6 +670,7 @@ imapd
 imaps
 img
 immutant
+imperva
 impor
 incentivized
 inclusivity
@@ -715,6 +721,7 @@ issuewild
 istioctl
 iterable
 itk
+Janca
 jamstack
 java6
 javac
@@ -749,6 +756,7 @@ jupyter
 jx
 kaggle
 kakfa
+kamkar
 kbits
 keepalive
 keepalived
@@ -774,6 +782,7 @@ killall
 kinser
 kitchensalt
 klei
+klocwork
 kloth
 kloxo
 knowledgebase
@@ -913,6 +922,7 @@ md5
 md5sum
 mdev
 mediawiki
+megatrends
 melilla
 memcached
 memcrashed
@@ -964,6 +974,7 @@ mongoimport
 monit
 monitorix
 moolenaar
+morphisec
 motd
 mountpoint
 mouseover
@@ -1375,6 +1386,7 @@ s3cret
 saas
 sakila
 salesforce
+samy
 sar
 sasl
 sasl2
@@ -1627,6 +1639,7 @@ tunnelblick
 turtl
 tv
 tw
+twilio
 txt
 txz
 tzurbaev
@@ -1713,6 +1726,7 @@ vdevs
 ve
 venv
 ver
+veracode
 verisign
 vhost
 vhosts
