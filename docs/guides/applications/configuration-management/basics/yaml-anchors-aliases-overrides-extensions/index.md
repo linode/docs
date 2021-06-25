@@ -16,9 +16,13 @@ h1_title: "YAML Anchors, Aliases, and Overrides"
 enable_h1: true
 contributor:
   name: Cameron Laird
+external_resources:
+- '[Docker Compose](https://docs.docker.com/compose/)'
+- '[Quickstart-Compose and WordPress](https://docs.docker.com/compose/wordpress/)'
+
 ---
 
-YAML anchors, aliases, overrides, and extensions help reduce repetition of data in your YAML files. These features of YAML are discussed in this guide to take you beyond the basics covered in the [A YAML Syntax Reference](/docs/guides/yaml-reference/) guide.
+YAML anchors, aliases, overrides, and extensions help reduce the repetition of data in your YAML files. These features of YAML are discussed in this guide to take you beyond the basics covered in the [A YAML Syntax Reference](/docs/guides/yaml-reference/) guide.
 
 ## YAML Anchors and Aliases
 
@@ -36,9 +40,9 @@ services:
 ...
 {{< /file >}}
 
-Docker’s documentation goes on to illustrate how to use such a `docker-compose.yml` to create a basic blog backed by a data store with a volume mounted on `/var/lib/mysql`.
+Docker’s documentation illustrates how to use a `docker-compose.yml` to create a basic blog backed by a data store with a volume mounted on `/var/lib/mysql`.
 
-In a professional context, though, you don't only need a backing data store for the WordPress instance, but multiple WordPress instances. It’s common, for instance, to define a production instance which supports end users in their real-life WordPress activities, along with a test instance to verify the correctness of functionality before exposing end-users to it. One way to implement multiple definitions is simply to write them naively:
+In a professional context, though, you don't only need a backing data store for the WordPress instance, but multiple WordPress instances. It is common to define a production instance that supports end-users in their real-life WordPress activities, along with a test instance to verify the correctness of functionality before exposing end-users to it. One way to implement multiple definitions is simply to write them naively.
 
 {{< file >}}
 version: "3.9"
@@ -67,7 +71,7 @@ services:
   MYSQL_PASSWORD: wordpress
 {{< /file >}}
 
-An *anchor* and *alias* abbreviate these definitions down to:
+An *anchor* (`&`) and *alias* (`*`) abbreviate these definitions down to:
 
 {{< file >}}
 version: "3.9"
@@ -87,15 +91,15 @@ services:
   test-db: *database-definition
 {{< /file >}}
 
-In this example, the `&database-definition` is an *anchor* to which the `database-definition` *alias* refers.
+In this example, the `&database-definition` is an *anchor* to which the `*database-definition` *alias* refers.
 
-The alias abbreviates YAML content, compacting it down so it takes up fewer bytes in a file system. More importantly, *human* readers have less to take in, and thus focus more effectively on the essentials of the definition. Moreover, these anchor-alias combinations can ease maintenance chores. Suppose `MYSQL_USER` needs to be updated from `wordpress` to special_wordpress_account: while naive YAML requires editing the `MYSQL_USER` in each of its uses--presumably the same as the number of databases in all environments--the rewritten YAML only needs an update to its one anchor. Each alias then properly receives the updated `special_wordpress_account` *automatically*. Fewer distinct values to copy-and-paste inevitably means fewer opportunities for inadvertent error.
+The alias abbreviates YAML content, compacting it down so it takes up fewer bytes in a file system. More importantly, *human* readers have less to take in and thus focus more effectively on the essentials of the definition. Moreover, these anchor-alias combinations can ease maintenance chores. Suppose `MYSQL_USER` needs to be updated from `wordpress` to `special_wordpress_account`: while naive YAML requires editing the `MYSQL_USER` in each of its uses--presumably the same as the number of databases in all environments--the rewritten YAML only needs an update to its one anchor. Each alias then properly receives the updated `special_wordpress_account` *automatically*. Fewer distinct values to copy-and-paste inevitably mean fewer opportunities for inadvertent error.
 
 Aliases often shrink complex YAML specifications down to half or even a smaller fraction of their original sizes.
 
 ## YAML Overrides
 
-Sometimes segments of a YAML file share only part of their contents. The WordPress example might configure databases which are identical except that each instance has a distinct password. YAML’s *overrides* allow for this situation:
+Sometimes segments of a YAML file share only part of their contents. The WordPress example might configure databases that are identical except that each instance has a distinct password. YAML’s *overrides* allow for this situation.
 
 {{< file >}}
 version: "3.9"
@@ -120,7 +124,7 @@ services:
 ...
 {{</ file >}}
 
-The `<<` is a special *override* syntax which effectively allows for an alias whose individual values can be updated.
+The `<<` is a special *override* syntax that effectively allows for an alias whose individual values can be updated.
 
 ## Economy of Expression
 
