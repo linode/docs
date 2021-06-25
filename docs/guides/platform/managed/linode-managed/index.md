@@ -8,7 +8,7 @@ keywords: ["linode managed", "service monitoring"]
 tags: ["linode platform","cloud manager","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-managed/','/uptime/linode-managed/','/platform/linode-managed-classic-manager/','/platform/linode-managed/']
-modified: 2021-06-23
+modified: 2021-06-25
 modified_by:
   name: Linode
 published: 2019-09-04
@@ -278,6 +278,6 @@ Linode Managed monitors the *services* running on your Linodes. Setting up servi
 
 Each Linode Compute Instance on a Managed account is eligible to receive a [cPanel](https://cpanel.net/) license at no additional charge.
 
-1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](/docs/guides/how-to-deploy-cpanel-with-marketplace-apps/). If this Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) within cPanel's documentation. It's recommended to only install cPanel on the following Linux distributions: CentOS 7, AlmaLinux 8, Rocky Linux 8, or Cloud Linux. CentOS 8 is not recommended due to the limited support timeline.
+1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](https://www.linode.com/marketplace/apps/cpanel/cpanel/). Review the [How to Deploy cPanel with Marketplace Apps](/docs/guides/how-to-deploy-cpanel-with-marketplace-apps/) guide for additional instructions. If the cPanel Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) on cPanel's documentation site. At this time, cPanel fully supports the following Linux distributions: CentOS 7, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Cloud Linux. CentOS 8 is not recommended as it is due to reach end of life on December 31st 2021 (see the [CentOS 8 End-of-Life](https://www.linode.com/blog/linux/centos-8-end-of-life-linode-distributions/) blog post).
 
 1. **Obtaining a License:** Contact the Support team to obtain a cPanel license for your Linode. If you do not subscribe to Linode Managed, you will need to obtain your license directly from cPanel. cPanel is typically licensed by the number of accounts within the cPanel installation, each account typically corresponding to a single website or group of similar websites. The license we provide will automatically scale based on the number of cPanel accounts you've configured.
