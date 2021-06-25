@@ -721,6 +721,7 @@ istioctl
 iterable
 itk
 Janca
+jamstack
 java6
 javac
 javascript
@@ -964,6 +965,7 @@ mnesia
 mngtmpaddr
 moby
 moddable
+moodle
 modsecurity
 mongodb
 mongoimport
