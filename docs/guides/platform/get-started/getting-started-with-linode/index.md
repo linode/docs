@@ -344,7 +344,7 @@ Thu Feb 16 12:17:52 EST 2018
 {{< /output >}}
 
 ## Next Steps
-
+         
 Now that you've learned the basics of using the Cloud Manager and working with your Linode, secure it and your Linode account from unauthorized access. See the following guides to begin:
 
 * [Securing Your Server](/docs/security/securing-your-server/)
