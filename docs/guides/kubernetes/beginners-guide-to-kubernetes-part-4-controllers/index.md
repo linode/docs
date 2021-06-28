@@ -219,7 +219,7 @@ You should see an output like the following:
 
 You can use the name of the Pod to inspect its output by consulting the log file for the Pod:
 
-    kubectl get logs hello-world-4jzdm
+    kubectl logs hello-world-4jzdm
 
 To delete the Job, and its Pod, issue the `delete` command:
 

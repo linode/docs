@@ -29,7 +29,7 @@ html {
 
 /* Hide pre-initialized DOM elements. */
 [x-cloak] {
-  display: none;
+  display: none !important;
 }
 
 body,

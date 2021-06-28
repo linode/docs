@@ -16,11 +16,11 @@ modified_by:
 published: 2015-09-17
 title: Install and Configure Puppet
 external_resources:
-    - '[Puppet Labs](https://puppetlabs.com/)'
-    - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
+    - '[Puppet Labs](https://puppet.com/)'
+    - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
 ---
 
-[Puppet](https://puppetlabs.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.
+[Puppet](https://puppet.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.
 
 ![Install and Configure Puppet](install-puppet-title.png "Install and Configure Puppet")
 
@@ -50,7 +50,7 @@ To check your hostname, run `hostname` and to check your FQDN, run `hostname -f`
 
 1.  Install the `puppetlabs-release` repository into Ubuntu 16.04 and update your system. This process downloads a `.deb` file that will configure the repositories for you:
 
-        wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+        wget https://apt.puppet.com/puppetlabs-release-pc1-xenial.deb
         dpkg -i puppetlabs-release-pc1-xenial.deb
         apt update
 
@@ -59,13 +59,13 @@ If you wish to run another Linux distribution as your master server, the initial
 
 **Red Hat-based systems:**
 
-`wget https://yum.puppetlabs.com/puppetlabs-release-pc1-OS-VERSION.noarch.rpm`
+`wget https://yum.puppet.com/puppetlabs-release-pc1-OS-VERSION.noarch.rpm`
 
 **Debian-based systems:**
 
-`wget https://apt.puppetlabs.com/puppetlabs-release-pc1-VERSION.deb`
+`wget https://apt.puppet.com/puppetlabs-release-pc1-VERSION.deb`
 
-Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](/docs/tools-reference/linux-package-management/).
+Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppet.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](/docs/tools-reference/linux-package-management/).
 {{< /note >}}
 
 2.  Install the `puppetmaster-passenger` package:
@@ -110,7 +110,7 @@ On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps
 
 1.  For **CentOS 7** only, add the Puppet Labs repository:
 
-        rpm -ivh https://yum.puppetlabs.com/el/7/products/x86_64/puppetlabs-release-22.0-2.noarch.rpm
+        rpm -ivh https://yum.puppet.com/el/7/products/x86_64/puppetlabs-release-22.0-2.noarch.rpm
 
     {{< note >}}
 If you're on a Red Hat system other than CentOS 7, skip this step.
@@ -558,7 +558,7 @@ class firewall::pre {
 {{< /file >}}
 
 
-    Each rule is explained via commented text. More information can also be found on the [Puppet Forge Firewall](https://forge.puppetlabs.com/puppetlabs/firewall) page.
+    Each rule is explained via commented text. More information can also be found on the [Puppet Forge Firewall](https://forge.puppet.com/puppetlabs/firewall) page.
 
 4.  In the same directory create `post.pp`, which will run any firewall rules that need to be input last:
 

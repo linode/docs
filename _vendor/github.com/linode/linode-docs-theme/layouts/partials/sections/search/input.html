@@ -1,11 +1,13 @@
-<div id="search-input" class="flex justify-between items-center text-textcolor w-full" x-data="lnc.NewSearchInputController()" x-init="init()" @click="click();" @search:results-any.document.debounce.350ms="receiveData($event.detail);"  @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" data-turbolinks-permanent>
-  <span>
+<div id="search-input" class="flex justify-between items-stretch text-textcolor w-full" x-data="lnc.NewSearchInputController()" x-init="init()" @click="click();" @search:results-any.document.debounce.100ms="receiveData($event.detail);"  @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" data-turbolinks-permanent>
+  <span class="self-center">
     <svg class="w-4 h-4 hover:text-brand" :class="{ 'text-brand': focus, 'text-textcolor': !focus }">
       <use href="#icon--search"></use>
     </svg>
   </span>
-  <div autocomplete="off" spellcheck="false" contenteditable="true" x-ref="searchInput" @focusin="setFocus(true);" @focusout="setFocus(false);" @input="dispatch()" name="search"
-        placeholder="Search Linode" class="search-input w-full h-12 py-3 pl-3 focus:outline-none" data-testid="search-input"></div>
+  <input type="text" autocomplete="off" spellcheck="false" aria-label="search" x-model="queryString" x-ref="searchInput"
+    placeholder="Search Linode" class="search-input w-full pl-3 focus:outline-none" data-testid="search-input"
+    @focusin="setFocus(true);" @focusout="setFocus(false);" 
+  >
   <button aria-label="Close search" class="mr-4 hover:text-brand" :class="{ 'hidden': !searchOpen }" @click.stop="close()" data-testid="input-close">
     <svg class="h-5 w-5">
       <use href="#icon--times"></use>

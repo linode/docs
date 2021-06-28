@@ -35,7 +35,7 @@ Since you have full root access to your Linode, you're free to choose between a 
 
 {{< content "email-warning-shortguide" >}}
 
-If you'd prefer to leave the management of your email to a third party, you may follow our [Google Apps guide](/docs/email/google-mail/). Those desiring to operate their own mail server will find these guides helpful:
+If you'd prefer to leave the management of your email to a third party, you may follow our [Google Workspace](/docs/guides/using-google-workspace-for-email/) guide. Those desiring to operate their own mail server will find these guides helpful:
 
 -   [Postfix Guides](/docs/email/postfix/) - Information on using the highly popular Postfix MTA (mail transfer agent).
 -   [Zimbra Guides](/docs/email/zimbra/) - Instructions for deploying Zimbra, a unified messaging system that includes email and calendar.

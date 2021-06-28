@@ -162,6 +162,10 @@ export function newSearchController(searchConfig) {
 				}
 				return `${excerpt.substring(0, maxLen)} …`;
 			};
+
+			if (!hit.thumbnailUrl) {
+				hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
+			}
 		};
 	};
 
@@ -283,6 +287,14 @@ export function newSearchController(searchConfig) {
 				return sections;
 			};
 
+			searchData.textHelpers = {
+				resultsIn: function() {
+					let nbHits = searchData.result.nbHits || 0;
+					let resultNoun = nbHits === 1 ? 'Result' : 'Results';
+					return `${nbHits} ${resultNoun} in ${section.config.title}`;
+				}
+			};
+
 			let section = { config: sectionCfg, searchData: searchData };
 
 			section.isEnabled = function() {
@@ -290,6 +302,12 @@ export function newSearchController(searchConfig) {
 					return false;
 				}
 				return self.query().isSectionEnabled(section.config.name);
+			};
+
+			section.hasHit = function() {
+				let nbHits =
+					this.searchData.result && this.searchData.result.nbHits ? this.searchData.result.nbHits : 0;
+				return nbHits > 0;
 			};
 
 			section.getFacet = function(name) {
@@ -312,6 +330,15 @@ export function newSearchController(searchConfig) {
 				stats.totalNbPages += data.nbPages;
 			});
 			return stats;
+		};
+
+		result.isSectionDisabled = function() {
+			for (let section of sections) {
+				if (!section.isEnabled()) {
+					return true
+				}
+			}
+			return false;
 		};
 
 		result.findSectionByName = function(name) {
@@ -612,6 +639,7 @@ export function newSearchController(searchConfig) {
 		show: false, // Toggles the main search listing on/off.
 		publish: true, // Whether to publish events on search updates.
 		standaloneSearch: false, // Standalone vs top results search.
+		view: 1, // The active search view (1: list view, 2: section view, 3: tiles view)
 
 		searchState: null,
 
@@ -809,7 +837,7 @@ export function newSearchController(searchConfig) {
 				let hitsPerPage = 0;
 				if (!isBlank) {
 					hitsPerPage = self.standaloneSearch
-						? 1000
+						? 100
 						: sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
 				}
 				let q = isBlank ? '' : encodeURIComponent(self.query().q);

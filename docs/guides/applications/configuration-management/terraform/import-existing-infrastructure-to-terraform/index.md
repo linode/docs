@@ -258,7 +258,7 @@ If your Linode uses more than two disks (for instance, if you have attached a [B
     {{</ note >}}
 
     {{< note >}}
-If you have more than one [configuration profile](/docs/guides/disk-images-and-configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` key. For example:
+If you have more than one [configuration profile](/docs/guides/linode-configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` key. For example:
 
     resource "linode_instance" "example_label" {
         boot_config_label = "My Debian 9 Disk Profile"

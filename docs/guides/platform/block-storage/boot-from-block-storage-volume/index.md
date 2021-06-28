@@ -46,7 +46,7 @@ Create a Block Storage Volume and attach it to the target Linode. Verify that th
 
 1.  Power off the Linode.
 
-2.  Edit the Linode's **Configuration Profile**. Under the **Block Device Assignments** section, assign the `/dev/sda` device to your Block Storage Volume (shown below). Confirm that the root device is set to `/dev/sda` (this is the default setting). If your Volume was previously assigned to any other device, such as `/dev/sdc`, set the device to `None`. Save these changes. Review the [Disks and Configuration Profiles guide](/docs/guides/disk-images-and-configuration-profiles/) for more information on editing a Linode's configuration.
+2.  Edit the Linode's **Configuration Profile**. Under the **Block Device Assignments** section, assign the `/dev/sda` device to your Block Storage Volume (shown below). Confirm that the root device is set to `/dev/sda` (this is the default setting). If your Volume was previously assigned to any other device, such as `/dev/sdc`, set the device to `None`. Save these changes. Review the [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/) guide for more information on editing a Linode's configuration.
 
     ![/dev/sda set to Block Storage Volume](edit-configuration.png "Configuration Management Block Device Assignment shows /dev/sda set to the Block Storage Volume")
 

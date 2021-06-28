@@ -10,11 +10,10 @@ cascade:
     date: 2020-10-22
     product_description: "Linode’s VLANs (Virtual Local Area Networks) feature allows you to create private L2 networks in the cloud where Linodes can communicate privately and securely. Two or more Linodes connected via the VLAN can see each other as if they were directly connected to the same physical Ethernet network."
 ---
-{{< content "vlans-beta-note-shortguide" >}}
 
 ## Availability
 
-Toronto, Canada; Mumbai, India; Sydney, Australia; Atlanta, GA, USA;
+Atlanta, GA, USA; Mumbai, India; Sydney, Australia; Toronto, Canada;
 
 ## Features
 

@@ -8,7 +8,7 @@ tags: ["drupal", "lamp", "cms"]
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, farmOS.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-09
-modified: 2017-09-20
+modified: 2021-06-22
 modified_by:
     name: Linode
 title: 'How to Install farmOS - a Farm Recordkeeping Application'
@@ -21,7 +21,7 @@ aliases: ['/applications/project-management/install-farmos/']
 
 [farmOS](http://farmos.org/) is a one-of-a-kind web application that enables farmers to manage and track all aspects of their farm. Built atop Drupal and licensed under [GPL V.3](https://www.gnu.org/licenses/gpl-3.0.en.html), farmOS is a great free-software solution for farms to explore.
 
-This guide explains how to install, setup and host your own farmOS web app on a Linode using Debian 10.
+This guide explains how to install, setup and host your own farmOS web app on a Linode using Ubuntu 20.04.
 
 ## Before You Begin
 
@@ -31,9 +31,9 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Install and configure a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/). Follow this guide's instructions on [MariaDB Setup](#mariadb-setup) instead.
+1.  Install and configure a [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/). Skip the configuration steps for setting up MySQL and use the steps outlined in this guide instead.
 
-## MariaDB Setup
+## MySQL Setup
 
 1.  Configure your database for PHP. When prompted, choose the `apache2` web server for automatic configuration, `Yes` to automatically configure a database, then enter and confirm your database root password:
 
@@ -46,8 +46,10 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 1.  Create a database and a database user with necessary privileges, replacing `secure_password` with a password of your choice:
 
         CREATE DATABASE farmdb;
-        GRANT ALL ON farmdb.* TO 'farm_user'@'localhost' IDENTIFIED BY 'secure_password';
+        CREATE USER 'farm_user'@'localhost' IDENTIFIED BY 'secure_password';
+        GRANT ALL PRIVILEGES ON farmdb.* TO 'farm_user'@'localhost';
         FLUSH PRIVILEGES;
+
 
 1.  Exit MariaDB:
 
@@ -55,7 +57,7 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 ## Download and Install farmOS
 
-1.  Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1.  Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -81,7 +83,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
         sudo a2enmod rewrite
 
-1.  Specify the rewrite conditions for your farmOS site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+1.  Specify the rewrite conditions for your farmOS site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -128,7 +130,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
     ![welcome](welcome.png)
 
-1.  After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities from your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory:
+1.  After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities from your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory:
 
         sudo chmod 644 sites/default
         sudo chmod 644 ./sites/default/settings.php

@@ -17,6 +17,7 @@ contributor:
   name: Linode
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
+
 ---
 
 ## CyberPanel Marketplace App

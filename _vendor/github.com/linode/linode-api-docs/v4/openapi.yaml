@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.89.1
+  version: 4.96.0
 
   title: Linode API
   description: |
@@ -1198,7 +1198,7 @@ paths:
         source: >
           linode-cli account login-view 1234
   /account/maintenance:
-    x-linode-cli-command: maintenance
+    x-linode-cli-command: account
     get:
       x-linode-grant: read_only
       servers:
@@ -1644,6 +1644,94 @@ paths:
               -X PUT \
               --data-binary "/path/to/image"
               https://api.linode.com/v4/account/oauth-clients/edc6790ea9db4d224c5c/thumbnail
+  /account/payment-methods:
+    x-linode-cli-command: account
+    get:
+      servers:
+        - url: https://api.linode.com/v4
+        - url: https://api.linode.com/v4beta
+      parameters:
+        - $ref: '#/components/parameters/pageOffset'
+        - $ref: '#/components/parameters/pageSize'
+      x-linode-grant: read_only
+      tags:
+        - Account
+      summary: Payment Methods List
+      description: |
+        Returns a paginated list of Payment Methods for this Account.
+      operationId: getPaymentMethods
+      x-linode-cli-action: payment-methods-list
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Payment Method objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      description: Payment Method object response.
+                      properties:
+                        type:
+                          type: string
+                          description: The type of Payment Method.
+                          example: 'credit_card'
+                          x-linode-cli-display: 1
+                        is_default:
+                          type: boolean
+                          description: |
+                            Whether this Payment Method is the default method for automatically processing service charges.
+                          example: true
+                          x-linode-cli-display: 2
+                        created:
+                          type: string
+                          readOnly: true
+                          format: date-time
+                          description: When the Payment Method was added to the Account.
+                          example: '2018-01-15T00:01:01'
+                        data:
+                          type: object
+                          description: Credit card information.
+                          properties:
+                            card_type:
+                              type: string
+                              description: The type of credit card.
+                              example: ""
+                              x-linode-cli-display: 8
+                            last_four:
+                              type: string
+                              description: The last four digits of the credit card number.
+                              example: "1234"
+                              x-linode-cli-display: 9
+                            expiry:
+                              type: string
+                              format: MM/YYYY
+                              description: The expiration month and year of the credit card.
+                              example: 06/2022
+                              x-linode-cli-display: 10
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4/account/payment-methods
+        - lang: CLI
+          source: >
+            linode-cli account payment-methods-list
   /account/payments:
     x-linode-cli-command: account
     get:
@@ -2985,6 +3073,61 @@ paths:
         - lang: CLI
           source: >
             linode-cli domains delete 1234
+  /domains/{domainId}/zone-file:
+    x-linode-cli-command: domains
+    parameters:
+    - name: domainId
+      in: path
+      description: ID of the Domain.
+      required: true
+      schema:
+        type: string
+    get:
+      x-linode-grant: read_only
+      tags:
+      - Domains
+      summary: Domain Zone File View
+      description: >
+        Returns the zone file for the last rendered zone for the specified domain.
+      operationId: getDomainZone
+      x-linode-cli-action: zone-file
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - domains:read_only
+      responses:
+        '200':
+          description: |
+            An array containing the lines of the domain zone file.
+          content:
+            application/json:
+              schema:
+                properties:
+                  zone_file:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      - "; example.com [123]"
+                      - "$TTL 864000"
+                      - "@  IN  SOA  ns1.linode.com. user.example.com. 2021000066 14400 14400 1209600 86400"
+                      - "@    NS  ns1.linode.com."
+                      - "@    NS  ns2.linode.com."
+                      - "@    NS  ns3.linode.com."
+                      - "@    NS  ns4.linode.com."
+                      - "@    NS  ns5.linode.com."
+                    description: |
+                      The lines of the zone file for the last rendered zone for this domain.
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/domains/123/zone-file
+      - lang: CLI
+        source: >
+          linode-cli domains zone-file 123
   /domains/import:
     post:
       x-linode-grant: read_write
@@ -3356,28 +3499,24 @@ paths:
   /images:
     x-linode-cli-command: images
     get:
-      x-linode-grant: read_only
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Images
       summary: Images List
-      description: >
+      description: |
         Returns a paginated list of Images.
 
+        * **Public** Images have IDs that begin with "linode/". These distribution images are generally available to
+        all users. To view only public Images, call this endpoint without authentication.
 
-        * Calling this endpoint without authentication returns all public Images.
-
-        * Authentication is required to return a combined paginated list of all public and
-          your private Images.
+        * **Private** Images have IDs that begin with "private/". These images are account-specific and only
+        accessible to users with `images:read_only` authorization. To view private Images you have access to in
+        addition to public images, call this endpoint with authentication.
       x-linode-redoc-load-ids: true
       operationId: getImages
       x-linode-cli-action: list
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - images:read_only
       responses:
         '200':
           description: A paginated list of Images.
@@ -3400,8 +3539,13 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
-        source: >
+        source: |
+          # Returns public Images only
           curl https://api.linode.com/v4/images
+
+          # Returns private and public Images
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/images
       - lang: CLI
         source: >
           linode-cli images list
@@ -3410,17 +3554,22 @@ paths:
       tags:
       - Images
       summary: Image Create
-      description: >
-        Creates a private gold-master Image from a Linode Disk. There is no
-        additional charge to store Images for Linode users.
+      description: |
+        Captures a private gold-master Image from a Linode Disk.
 
-        Images are limited to three per Account.
+        **Pricing change:** Images will transition to a paid service with a
+        cost of $0.10/GB per month for each manual Custom Image stored on an
+        account. This change will be communicated to customers in advance.
+        Recovery Images, which are generated automatically after a Linode is
+        deleted and available for a finite period of time, are provided at no
+        cost.
       operationId: createImage
       x-linode-cli-action: create
       security:
       - personalAccessToken: []
       - oauth:
         - images:read_write
+        - linodes:read_only
       requestBody:
         description: Information about the Image to create.
         content:
@@ -3471,6 +3620,97 @@ paths:
             --description "A longer description \
               of the image" \
             --disk_id 123
+  /images/upload:
+    x-linode-cli-command: images
+    post:
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      tags:
+      - Images
+      summary: Image Upload
+      description: |
+        Initiates an Image upload.
+
+        This endpoint creates a new private Image object and returns it along
+        with the URL to which image data can be uploaded.
+
+        - Image data must be uploaded within 24 hours of creation or the
+        upload will be cancelled and the image deleted.
+
+        - Image uploads should be made as an HTTP PUT request to the URL returned in the `upload_to`
+        response parameter, with a `Content-type: application/octet-stream` header included in the
+        request. For example:
+
+              curl -v \
+                -H "Content-Type: application/octet-stream" \
+                --upload-file example.img.gz \
+                $UPLOAD_URL \
+                --progress-bar \
+                --output /dev/null
+
+        - Uploaded image data should be compressed in gzip (`.gz`) format. The uncompressed disk should be in raw
+        disk image (`.img`) format. A maximum compressed file size of 5GB is supported for upload at this time.
+      x-linode-cli-action: upload
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - images:read_write
+      requestBody:
+        description: The uploaded Image details.
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - label
+                - region
+              properties:
+                region:
+                  type: string
+                  description: >
+                    The region to upload to. Once uploaded, the Image can be used in any region.
+                  example: eu-central
+                label:
+                  type: string
+                  description: Label for the uploaded Image.
+                  example: my-image-label
+                description:
+                  type: string
+                  description: Description for the uploaded Image.
+                  example: This is an example image in the docs.
+      responses:
+        '200':
+          description: The new Image upload URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  upload_to:
+                    type: string
+                    description: The URL to upload the Image to.
+                  image:
+                    $ref: '#/components/schemas/ImagePrivate'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "description": "This is an example Machine Image.",
+                "label": "example-machine-image-label",
+                "region": "us-east"
+              }' \
+              https://api.linode.com/v4/images/upload
+      - lang: CLI
+        source: >
+          linode-cli images upload \
+            --label example-machine-image-label \
+            --description "This is an example Machine Image." \
+            --region us-east
   /images/{imageId}:
     x-linode-cli-command: images
     parameters:
@@ -3709,62 +3949,62 @@ paths:
               type: object
               allOf:
                 - $ref: '#/components/schemas/LinodeRequest'
-              properties:
-                backup_id:
-                  type: integer
-                  example: 1234
-                  description: |
-                    A Backup ID from another Linode's available backups. Your User must have
-                    `read_write` access to that Linode, the Backup must have a `status` of
-                    `successful`, and the Linode must be deployed to the same `region` as the Backup.
-                    See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
-                    for a Linode's available backups.
+                - properties:
+                    backup_id:
+                      type: integer
+                      example: 1234
+                      description: |
+                        A Backup ID from another Linode's available backups. Your User must have
+                        `read_write` access to that Linode, the Backup must have a `status` of
+                        `successful`, and the Linode must be deployed to the same `region` as the Backup.
+                        See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
+                        for a Linode's available backups.
 
-                    This field and the `image` field are mutually exclusive.
-                backups_enabled:
-                  type: boolean
-                  description: |
-                    If this field is set to `true`, the created Linode will automatically be
-                    enrolled in the Linode Backup service. This will incur an additional charge.
-                    The cost for the Backup service is dependent on the Type of Linode deployed.
+                        This field and the `image` field are mutually exclusive.
+                    backups_enabled:
+                      type: boolean
+                      description: |
+                        If this field is set to `true`, the created Linode will automatically be
+                        enrolled in the Linode Backup service. This will incur an additional charge.
+                        The cost for the Backup service is dependent on the Type of Linode deployed.
 
-                    This option is always treated as `true` if the account-wide `backups_enabled`
-                    setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
-                    for more information.
+                        This option is always treated as `true` if the account-wide `backups_enabled`
+                        setting is `true`.  See [account settings](/docs/api/account/#account-settings-view)
+                        for more information.
 
-                    Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
-                swap_size:
-                  type: integer
-                  example: 512
-                  description: >
-                    When deploying from an Image, this field is optional, otherwise it is ignored.
-                    This is used to set the swap disk size for the newly-created Linode.
-                  default: 512
-                type:
-                  type: string
-                  description: >
-                    The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
-                    you are creating.
-                  example: g6-standard-2
-                region:
-                  type: string
-                  description: >
-                    The [Region](/docs/api/regions/#regions-list) where the Linode
-                    will be located.
-                  example: us-east
-                label:
-                  $ref: '#/components/schemas/Linode/properties/label'
-                tags:
-                  $ref: '#/components/schemas/Linode/properties/tags'
-                group:
-                  $ref: '#/components/schemas/Linode/properties/group'
-                private_ip:
-                  type: boolean
-                  description: >
-                    If true, the created Linode will have private networking enabled and assigned a private IPv4 address.
-                  example: true
-                interfaces:
-                  $ref: '#/components/schemas/LinodeConfigInterfaces'
+                        Backup pricing is included in the response from [/linodes/types](/docs/api/linode-types/#types-list)
+                    swap_size:
+                      type: integer
+                      example: 512
+                      description: >
+                        When deploying from an Image, this field is optional, otherwise it is ignored.
+                        This is used to set the swap disk size for the newly-created Linode.
+                      default: 512
+                    type:
+                      type: string
+                      description: >
+                        The [Linode Type](/docs/api/linode-types/#types-list) of the Linode
+                        you are creating.
+                      example: g6-standard-2
+                    region:
+                      type: string
+                      description: >
+                        The [Region](/docs/api/regions/#regions-list) where the Linode
+                        will be located.
+                      example: us-east
+                    label:
+                      $ref: '#/components/schemas/Linode/properties/label'
+                    tags:
+                      $ref: '#/components/schemas/Linode/properties/tags'
+                    group:
+                      $ref: '#/components/schemas/Linode/properties/group'
+                    private_ip:
+                      type: boolean
+                      description: >
+                        If true, the created Linode will have private networking enabled and assigned a private IPv4 address.
+                      example: true
+                    interfaces:
+                      $ref: '#/components/schemas/LinodeConfigInterfaces'
       responses:
         '200':
           description: >
@@ -4972,11 +5212,14 @@ paths:
       tags:
       - Linode Instances
       summary: Disk Create
-      description: >
+      description: |
         Adds a new Disk to a Linode. You can optionally create a Disk
         from an Image (see [/images](/docs/api/images/#images-list) for a list of available public images,
         or use one of your own), and optionally provide a StackScript to deploy
         with this Disk.
+
+        The default filesystem for new Disks is `ext4`. If creating a Disk from an Image, the filesystem
+        of the Image is used unless otherwise specified.
       operationId: addLinodeDisk
       x-linode-cli-action: disk-create
       security:
@@ -5281,16 +5524,16 @@ paths:
       tags:
       - Linode Instances
       summary: Disk Resize
-      description: >
+      description: |
         Resizes a Disk you have permission to `read_write`.
 
-        The Linode this Disk is attached to must be shut down for resizing to
-        take effect.
+        The Disk must not be in use. If the Disk is in use, the request will
+        succeed but the resize will ultimately fail. For a request to succeed,
+        the Linode must be shut down prior to resizing the Disk, or the Disk
+        must not be assigned to the Linode's active Configuration Profile.
 
         If you are resizing the Disk to a smaller size, it cannot be made smaller
         than what is required by the total size of the files current on the Disk.
-        The Disk must not be in use. If the Disk is in use, the request will
-        succeed but the resize will ultimately fail.
       operationId: resizeDisk
       x-linode-cli-action: disk-resize
       security:
@@ -9905,22 +10148,14 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewalls List
       description: |
         Returns a paginated list of your Firewalls.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewalls
       x-linode-cli-action: list
       security:
@@ -9951,14 +10186,14 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls
+              https://api.linode.com/v4/networking/firewalls
       - lang: CLI
         source: >
           linode-cli firewalls list
     post:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Create
@@ -9972,13 +10207,7 @@ paths:
 
         A `firewall_create` Event is generated when this endpoint returns successfully.
 
-        This endpoint is in **beta**.
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).notice will be removed when this endpoint is out of
         beta.
       operationId: createFirewalls
       x-linode-cli-action: create
@@ -10089,7 +10318,7 @@ paths:
                   "another example"
                 ]
               }' \
-              https://api.linode.com/v4beta/networking/firewalls
+              https://api.linode.com/v4/networking/firewalls
       - lang: CLI
         source: >
           linode-cli firewalls create \
@@ -10107,7 +10336,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall View
@@ -10123,15 +10352,7 @@ paths:
         [List Firewall Devices](/docs/api/networking/#firewall-devices-list)
         endpoint to review them.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Returns information about this Firewall.
@@ -10146,14 +10367,14 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123
+              https://api.linode.com/v4/networking/firewalls/123
       - lang: CLI
         source: >
           linode-cli firewalls view 123
     put:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Update
@@ -10178,15 +10399,7 @@ paths:
         If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
         `firewall_disable` Event will be generated.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: updateFirewall
       x-linode-cli-action: update
       security:
@@ -10223,7 +10436,7 @@ paths:
               -X PUT -d '{
                 "status": "disabled"
               }' \
-              https://api.linode.com/v4beta/networking/firewalls/123
+              https://api.linode.com/v4/networking/firewalls/123
       - lang: CLI
         source: >
           linode-cli firewalls update 123 \
@@ -10231,7 +10444,7 @@ paths:
     delete:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Delete
@@ -10247,15 +10460,7 @@ paths:
 
         A `firewall_delete` Event is generated when this endpoint returns successfully.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Delete Successful.
@@ -10271,7 +10476,7 @@ paths:
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
               -X DELETE \
-              https://api.linode.com/v4beta/networking/firewalls/123
+              https://api.linode.com/v4/networking/firewalls/123
       - lang: CLI
         source: >
           linode-cli firewalls delete 123
@@ -10288,7 +10493,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       parameters:
@@ -10300,15 +10505,7 @@ paths:
         Firewall to a Linode service (referred to as the Device's `entity`). Currently,
         only Devices with an entity of type `linode` are accepted.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewallDevices
       x-linode-cli-action: devices-list
       security:
@@ -10339,14 +10536,14 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices
+              https://api.linode.com/v4/networking/firewalls/123/devices
       - lang: CLI
         source: >
           linode-cli firewalls devices-list 123
     post:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Device Create
@@ -10364,15 +10561,7 @@ paths:
         to [migrate the Linode to a data center](/docs/api/linode-instances/#dc-migrationpending-host-migration-initiate) that does not support Cloud Firewalls, the migration will fail.
         Use the [List Regions](/docs/api/regions/#regions-list) endpoint to view a list of a data center's capabilities.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: createFirewallDevice
       x-linode-cli-action: device-create
       security:
@@ -10407,7 +10596,7 @@ paths:
                 "type": "linode",
                 "id": 123
               }' \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices
+              https://api.linode.com/v4/networking/firewalls/123/devices
       - lang: CLI
         source: >
           linode-cli firewalls device-create 123 \
@@ -10433,7 +10622,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Device View
@@ -10442,15 +10631,7 @@ paths:
         to a Linode service (referred to as the Device's `entity`). Currently,
         only Devices with an entity of type `linode` are accepted.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewallDevice
       x-linode-cli-action: device-view
       security:
@@ -10470,7 +10651,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices/456
+              https://api.linode.com/v4/networking/firewalls/123/devices/456
       - lang: CLI
         source: >
           linode-cli firewalls device-view \
@@ -10478,7 +10659,7 @@ paths:
     delete:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Device Delete
@@ -10496,15 +10677,7 @@ paths:
 
         A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Delete Successful.
@@ -10520,7 +10693,7 @@ paths:
           curl -H "Content-Type: application/json" \
                -H "Authorization: Bearer $TOKEN" \
               -X DELETE \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices/456
+              https://api.linode.com/v4/networking/firewalls/123/devices/456
       - lang: CLI
         source: >
           linode-cli firewalls device-delete 123 456
@@ -10537,7 +10710,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Rules List
@@ -10572,14 +10745,14 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123/rules
+              https://api.linode.com/v4/networking/firewalls/123/rules
       - lang: CLI
         source: >
           linode-cli firewalls rules-list 123
     put:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Rules Update
@@ -10587,15 +10760,7 @@ paths:
         Updates the inbound and outbound Rules for a Firewall. Using this endpoint will
         replace all of a Firewall's ruleset with the Rules specified in your request.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: updateFirewallRules
       x-linode-cli-action: rules-update
       security:
@@ -10660,20 +10825,22 @@ paths:
                     }
                   ]
               }' \
-              https://api.linode.com/v4beta/networking/firewalls/123/rules
+              https://api.linode.com/v4/networking/firewalls/123/rules
       - lang: CLI
         source: >
           linode-cli firewalls rules-update 123 \
             --inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
             --outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
   /networking/vlans:
-    x-linode-cli-command: networking
+    x-linode-cli-command: vlans
     get:
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
-      servers:
-      - url: https://api.linode.com/v4beta
       tags:
       - Networking
       summary: VLANs List
@@ -10702,13 +10869,8 @@ paths:
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
         the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
-
-        **Beta**: This endpoint is in beta. Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future. This notice will be removed when this endpoint is out of
-        beta.
       operationId: getVLANs
-      x-linode-cli-action: vlans-list
+      x-linode-cli-action: list
       security:
       - personalAccessToken: []
       - oauth:
@@ -10737,7 +10899,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/vlans/
+              https://api.linode.com/v4/networking/vlans/
       - lang: CLI
         source: >
           linode-cli networking vlans-list
@@ -15980,18 +16142,16 @@ components:
           $ref: '#/components/schemas/Disk/properties/label'
         filesystem:
           $ref: '#/components/schemas/Disk/properties/filesystem'
-        read_only:
-          type: boolean
-          description: >
-            If true, this Disk is read-only.
-          example: false
         image:
           type: string
-          description: >
-            An Image ID to deploy the Disk from. Official Linode Images start with
-            `linode/`, while your Images start with `private/`.
+          description: |
+            An Image ID to deploy the Disk from.
 
-            See [/images](/docs/api/images/#images-list) for more information on the Images available for you to use.
+            Access the Images List ([GET /images](/docs/api/images/#images-list)) endpoint with authentication to view
+            all available Images. Official Linode Images start with `linode/`, while your Account's Images start with `private/`. Creating
+            a disk from an Account Image requires `read_only` or `read_write` permissions for that Image. Access the User's
+            Grant Update ([PUT /account/users/{username}/grants](/docs/api/account/#users-grants-update)) endpoint to
+            adjust permissions for an Account Image.
           example: linode/debian9
         authorized_keys:
           type: array
@@ -16520,6 +16680,7 @@ components:
           - host_reboot
           - image_delete
           - image_update
+          - image_upload
           - ipaddress_update
           - lassie_reboot
           - lish_boot
@@ -16618,14 +16779,13 @@ components:
           description: >
             The total duration in seconds that it takes for the Event to complete.
           example: 300.56
-          x-linode-cli-display: 10
+          x-linode-cli-display: 7
         entity:
           type: object
           readOnly: true
           description: >
             Detailed information about the Event's entity, including ID, type,
             label, and URL used to access it.
-          x-linode-cli-display: 4
           properties:
             id:
               type: integer
@@ -16655,6 +16815,7 @@ components:
                 The current label of this object. The label may reflect changes
                 that occur with this Event.
               example: Problem booting my Linode
+              x-linode-cli-display: 5
             type:
               type: string
               enum:
@@ -16698,7 +16859,6 @@ components:
           description: |
             Detailed information about the Event's secondary entity, which provides additional information
             for events such as, but not limited to, `linode_boot`, `linode_reboot`, `linode_create`, and `linode_clone` Event actions.
-          x-linode-cli-display: 5
           properties:
             id:
               type: string
@@ -16743,13 +16903,11 @@ components:
           readOnly: true
           description: If this Event has been read.
           example: true
-          x-linode-cli-display: 9
         seen:
           type: boolean
           readOnly: true
           description: If this Event has been seen.
           example: true
-          x-linode-cli-display: 8
         status:
           type: string
           readOnly: true
@@ -16760,7 +16918,7 @@ components:
           - notification
           - scheduled
           - started
-          x-linode-cli-display: 7
+          x-linode-cli-display: 8
           x-linode-cli-color:
             failed: red
             finished: green
@@ -16791,6 +16949,7 @@ components:
             information may include, but is not limited to, a more detailed
             representation of events which can help diagnose non-obvious failures.
           example: None
+          x-linode-cli-display: 9
     Firewall:
       type: object
       description: >
@@ -17242,6 +17401,7 @@ components:
           x-linode-cli-display: 6
         type:
           type: string
+          x-linode-filterable: true
           description: >
             How the Image was created. "Manual" Images can be created at any time.
             "Automatic" images are created automatically from a deleted Linode.
@@ -17277,6 +17437,20 @@ components:
           x-linode-cli-color:
             None: black
             default_: white
+        status:
+          x-linode-cli-display: 7
+          type: string
+          enum:
+          - creating
+          - pending_upload
+          - available
+          description: |
+            The current status of this Image.  Only images in an "available" status
+            can be deployed.  Images in a "creating" status are being created from
+            a Linode Disk, and will become "available" shortly.  Images in a
+            "pending_upload" status are waiting for data to be uploaded for the
+            image, and will become "available" after the upload is complete and
+            processing occurs.
     ImagePublic:
       type: object
       description: Public Image object
@@ -17346,8 +17520,9 @@ components:
           x-linode-cli-display: 6
         type:
           type: string
+          x-linode-filterable: true
           description: >
-            How the Image was created. Manual Images can be created at any time.
+            How the Image was created. "Manual" Images can be created at any time.
             "Automatic" Images are created automatically from a deleted Linode.
           enum:
           - manual
@@ -17380,6 +17555,16 @@ components:
           x-linode-cli-color:
             None: black
             default_: white
+        status:
+          x-linode-cli-display: 7
+          type: string
+          enum:
+          - creating
+          - pending_upload
+          - available
+          description: |
+            The current status of this Image.  Only images in an "available" status
+            can be deployed.
     LinodeConfigInterface:
       type: object
       description: >
@@ -17448,15 +17633,14 @@ components:
 
         When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
 
+        If no public interface is configured, public IP addresses are still assigned to the Linode but will not be usable without manual configuration.
+
         **Note:** Changes to Linode interface configurations can be enabled by rebooting the Linode.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
         the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
-
-        **Beta**: The VLAN feature is in beta. Please make be aware that this feature may receive breaking updates in
-        the future. This notice will be removed when this feature is out of beta.
     Invoice:
       type: object
       description: Account Invoice object
@@ -18085,6 +18269,7 @@ components:
           example: '2018-01-01T00:01:01'
           readOnly: true
         ipv4:
+          x-linode-filterable: true
           type: array
           format: ipv4
           items:
@@ -19533,6 +19718,7 @@ components:
           readOnly: true
           x-linode-cli-display: 4
         ipv4:
+          x-linode-filterable: true
           type: string
           format: ip
           description: >
@@ -20940,6 +21126,14 @@ components:
             label: Enter the DB password
             name: DB_PASSWORD
             example: hunter2
+        mine:
+          type: boolean
+          x-linode-filterable: true
+          description: |
+            Returns `true` if this StackScript is owned by the account of the user making the request, and the user
+            making the request is unrestricted or has access to this StackScript.
+          readOnly: true
+          example: true
     StatsDataAvailable:
       type: object
       description: >
@@ -21253,6 +21447,20 @@ components:
           type: integer
           description: >
             The ID of the Volume this ticket is regarding, if relevant.
+          example: null
+        vlan:
+          type: string
+          description: |
+            The label of the VLAN this ticket is regarding, if relevant. To view your VLANs, use the VLANs List ([GET /networking/vlans](/docs/api/networking/#vlans-list)) endpoint.
+
+            Requires a specified `region` to identify the VLAN.
+          example: null
+        region:
+          type: string
+          description: |
+            The [Region](/docs/api/regions/) ID for the associated VLAN this ticket is regarding.
+
+            Only allowed when submitting a VLAN ticket.
           example: null
     Transfer:
       type: object

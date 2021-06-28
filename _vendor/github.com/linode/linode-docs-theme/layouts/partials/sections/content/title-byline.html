@@ -1,11 +1,11 @@
-<h1 class="leading-tight tracking-tight text-5xl text-titlecolor w-full lg:w-3/4">
+<h1 class="leading-tight tracking-tight text-4xl text-titlecolor w-full">
   {{ if and .Params.enable_h1 .Params.h1_title }}
     {{ .Params.h1_title }}
   {{ else }}
     {{ .Title }}
   {{ end }}
 </h1>
-<p class="pt-2 md:pt-6 text-basicgray">
+<p class="pt-2 text-basicgray text-sm">
   {{ if eq .PublishDate .Lastmod }}
     Published
   {{ else }}

@@ -70,30 +70,16 @@ module.exports = {
 					width: '100%',
 					paddingLeft: '1rem',
 					paddingRight: '1rem',
-					'@screen sm': {
-						paddingLeft: '1rem',
-						paddingRight: '1rem',
-						maxWidth: px(maxWidthSm)
-					},
-					'@screen md': {
-						paddingLeft: '1.5rem',
-						paddingRight: '1.5rem',
-						maxWidth: px(maxWidthMd)
-					},
+					maxWidth: '860px',
+
 					'@screen tablet': {
 						paddingLeft: '1.5rem',
-						paddingRight: '1.5rem',
-						maxWidth: px(maxWidthLg + 6)
+						paddingRight: '1.5rem'
 					},
+
 					'@screen lg': {
-						paddingLeft: '4.5rem',
-						paddingRight: '4.5rem',
-						// Given the padding above, this will give a
-						// 956px wide main content area.
-						maxWidth: px(maxWidthLg + 104)
-					},
-					'@screen xl': {
-						maxWidth: px(maxWidthLg + 104)
+						paddingLeft: '2rem',
+						paddingRight: '2rem'
 					}
 				}
 			});
@@ -102,7 +88,10 @@ module.exports = {
 		typography
 	],
 	variants: {
-		backgroundColor: [ 'first', 'odd', 'responsive', 'hover', 'focus' ]
+		backgroundColor: [ 'first', 'odd', 'responsive', 'hover', 'focus' ],
+		textColor: [ 'responsive', 'hover', 'focus', 'group-hover' ],
+		visibility: [ 'hover', 'group-hover' ],
+		opacity: [ 'group-hover' ]
 	},
 	important: '#ln-docs',
 	theme: {
@@ -134,6 +123,7 @@ module.exports = {
 				css: {
 					color: colorBodyText,
 					fontWeight: '400',
+					lineHeight: '1.5',
 					strong: {
 						fontWeight: '600'
 					},
@@ -143,19 +133,26 @@ module.exports = {
 					},
 					h1: {
 						color: colorTitle,
-						fontWeight: '400'
+						fontWeight: '400',
+						marginBottom: '1rem'
 					},
 					h2: {
 						color: colorTitle,
-						fontWeight: '600'
+						fontWeight: '600',
+						marginTop: '1.5em',
+						marginBottom: '1rem'
 					},
 					h3: {
 						color: colorTitle,
-						fontWeight: '600'
+						fontWeight: '600',
+						marginTop: '1.5em',
+						marginBottom: '1rem'
 					},
 					h4: {
 						color: colorTitle,
-						fontWeight: '600'
+						fontWeight: '600',
+						marginTop: '1.5em',
+						marginBottom: '1rem'
 					},
 					blockquote: {
 						fontWeight: '400',
@@ -163,7 +160,15 @@ module.exports = {
 						color: colorBodyText,
 						borderLeftWidth: '0.25rem',
 						borderLeftColor: theme.colors.gray[300],
-						quotes: '"\\201C""\\201D""\\2018""\\2019"'
+						quotes: '"\\201C""\\201D""\\2018""\\2019"',
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					'blockquote p:first-of-type::before': {
+						content: ''
+					},
+					'blockquote p:last-of-type::after': {
+						content: ''
 					},
 					code: {
 						color: colorBodyText,
@@ -183,24 +188,78 @@ module.exports = {
 					pre: {
 						fontSize: em(14, 16),
 						lineHeight: round(24 / 14),
-						marginTop: em(24, 14),
-						marginBottom: em(24, 14),
+						marginTop: '1em',
+						marginBottom: '1em',
 						borderRadius: rem(6),
-						paddingTop: em(4, 14),
-						paddingRight: em(16, 14),
-						paddingBottom: em(4, 14),
-						paddingLeft: em(16, 14)
+						paddingTop: '1em',
+						paddingRight: '1em',
+						paddingBottom: '1em',
+						paddingLeft: '1em'
+					},
+
+					// new margins
+					p: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					ol: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					ul: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					li: {
+						marginTop: '.5em',
+						marginBottom: '.5em'
+					},
+					'> ul > li p': {
+						marginTop: '.5em',
+						marginBottom: '.5em'
+					},
+					'> ul > li > *:first-child': {
+						marginTop: '0px'
+					},
+					'> ul > li > *:last-child': {
+						marginBottom: '0px'
+					},
+					'> ol > li > *:first-child': {
+						marginTop: '0px'
+					},
+					'> ol > li > *:last-child': {
+						marginBottom: '0px'
+					},
+					'ul ul, ul ol, ol ul, ol ol': {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					hr: {
+						marginTop: '2em',
+						marginBottom: '2em'
 					}
 				}
 			},
 			sm: {
 				css: {
 					fontSize: rem(14),
+					lineHeight: '1.5',
+					h1: {
+						marginBottom: '1rem'
+					},
 					h2: {
 						fontSize: em(24, 12),
 						letterSpacing: '-0.38px',
-						marginTop: em(8, 12),
-						marginBottom: em(6, 12)
+						marginTop: '1.5em',
+						marginBottom: '1rem'
+					},
+					h3: {
+						marginTop: '1.5em',
+						marginBottom: '1rem'
+					},
+					h4: {
+						marginTop: '1.5em',
+						marginBottom: '1rem'
 					},
 					'tbody td:first-child': {
 						paddingLeft: rem(21)
@@ -220,18 +279,90 @@ module.exports = {
 					table: {
 						fontSize: rem(14),
 						lineHeight: round(24 / 16)
+					},
+
+					// new margins
+					p: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					blockquote: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					pre: {
+						marginTop: '1em',
+						marginBottom: '1em',
+						paddingTop: '1em',
+						paddingRight: '1em',
+						paddingBottom: '1em',
+						paddingLeft: '1em'
+					},
+					ol: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					ul: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					li: {
+						marginTop: '.5em',
+						marginBottom: '.5em'
+					},
+					'> ul > li p': {
+						marginTop: '.5em',
+						marginBottom: '.5em'
+					},
+					'> ul > li > *:first-child': {
+						marginTop: '0px'
+					},
+					'> ul > li > *:last-child': {
+						marginBottom: '0px'
+					},
+					'> ol > li > *:first-child': {
+						marginTop: '0px'
+					},
+					'> ol > li > *:last-child': {
+						marginBottom: '0px'
+					},
+					'ul ul, ul ol, ol ul, ol ol': {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					hr: {
+						marginTop: '2em',
+						marginBottom: '2em'
 					}
 				}
 			},
 			lg: {
 				css: {
 					fontSize: rem(16),
+					lineHeight: '1.5',
+					h1: {
+						fontSize: '2em',
+						lineHeight: '1.25',
+						marginBottom: '1rem'
+					},
 					h2: {
-						fontSize: em(32, 16),
-						lineHeight: round(40 / 32),
+						fontSize: '1.5em',
+						lineHeight: '1.25',
 						letterSpacing: '-0.5px',
-						marginTop: em(32, 16),
-						marginBottom: em(20, 16)
+						marginTop: '1.5em',
+						marginBottom: '1rem'
+					},
+					h3: {
+						fontSize: '1.25em',
+						lineHeight: '1.25',
+						marginTop: '1.5em',
+						marginBottom: '1rem'
+					},
+					h4: {
+						fontSize: '1em',
+						lineHeight: '1.25',
+						marginTop: '1.5em',
+						marginBottom: '1rem'
 					},
 					table: {
 						fontSize: rem(14),
@@ -245,6 +376,60 @@ module.exports = {
 					},
 					'thead th': {
 						fontSize: rem(18)
+					},
+
+					// new margins
+					p: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					blockquote: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					pre: {
+						marginTop: '1em',
+						marginBottom: '1em',
+						paddingTop: '1em',
+						paddingRight: '1em',
+						paddingBottom: '1em',
+						paddingLeft: '1em'
+					},
+					ol: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					ul: {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					li: {
+						marginTop: '.5em',
+						marginBottom: '.5em'
+					},
+					'> ul > li p': {
+						marginTop: '.5em',
+						marginBottom: '.5em'
+					},
+					'> ul > li > *:first-child': {
+						marginTop: '0px'
+					},
+					'> ul > li > *:last-child': {
+						marginBottom: '0px'
+					},
+					'> ol > li > *:first-child': {
+						marginTop: '0px'
+					},
+					'> ol > li > *:last-child': {
+						marginBottom: '0px'
+					},
+					'ul ul, ul ol, ol ul, ol ol': {
+						marginTop: '1em',
+						marginBottom: '1em'
+					},
+					hr: {
+						marginTop: '2em',
+						marginBottom: '2em'
 					}
 				}
 			}
@@ -290,6 +475,7 @@ module.exports = {
 		},
 		extend: {
 			spacing: {
+				'1-5': '0.375rem',
 				'2-5': '0.625rem',
 				'7': '1.75rem',
 				'9': '2.25rem',

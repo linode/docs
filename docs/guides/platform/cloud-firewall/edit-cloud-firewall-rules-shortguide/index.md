@@ -25,7 +25,7 @@ Follow the steps in this section to edit predefined and custom Firewall Rules.
 
 1. Click on the **Edit** button corresponding to the rule you'd like to edit.
 
-    ![Select edit from the dropdown menu.](edit-this-firewall-rule.png "Select edit from the dropdown menu.")
+    ![Select edit from the dropdown menu.](select-firewall-to-edit.png "Select edit from the dropdown menu.")
 
 1. From the **Edit Rule** drawer, update the rule's configurations as needed.
 
@@ -33,10 +33,6 @@ Follow the steps in this section to edit predefined and custom Firewall Rules.
 
     ![Save your Firewall rule edits.](edit-firewall-rule.png "Save your Firewall rule edits.")
 
-1. When you are done editing your Firewall rules, click on the **Save Changes** button on the **Rules** page.
+1. When you are done editing your Firewall rules, click on the **Save Changes** button on the **Rules** page for those changes to take effect.
 
-    {{< note >}}
-Any edits made to rules do not take effect until you **Apply Changes** to the Firewall.
-{{</ note >}}
-
-    ![Apply your edit rule changes to the Firewall.](apply-your-changes-to-the-firewall.png "Apply your edit rule changes to the Firewall.")
+    ![Apply your edit rule changes to the Firewall.](save-changes-to-firewall.png "Apply your edit rule changes to the Firewall.")

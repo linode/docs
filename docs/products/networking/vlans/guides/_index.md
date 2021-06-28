@@ -5,8 +5,6 @@ tab_group_main:
     weight: 30
 ---
 
-{{< content "vlans-beta-note-shortguide" >}}
-
 ## Building Blocks
 
 - [Attaching a VLAN to a Linode](/docs/products/networking/vlans/get-started/): Add a Linode to your VLAN's private network.

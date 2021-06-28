@@ -39,7 +39,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note >}}
 The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
     {{</ note >}}
-1. Install [MySQL/MariaDB on Ubuntu] (/docs/guides/install-mysql-on-ubuntu-14-04)
+1. Install [MySQL/MariaDB on Ubuntu](/docs/guides/install-mysql-on-ubuntu-14-04)
 
 ### Remove AppArmor
 

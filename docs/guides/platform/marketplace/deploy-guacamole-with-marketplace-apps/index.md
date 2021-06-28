@@ -58,7 +58,7 @@ After providing the App-specific options, provide configurations for your Linode
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-After providing all required Linode Options, click on the **Create** button. **Your Guacamole App will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+After providing all required Linode Options, click on the **Create** button. **Your Guacamole App will complete installation anywhere between 5-20 minutes after your Linode has finished provisioning**.
 
 ## Getting Started after Deployment
 
@@ -73,6 +73,10 @@ After Guacamole has finished installing, access the dashboard over `http://` or 
 1. Enter your Linode's absolute domain or IPv4 address into a browser window (for example, `http://192.0.2.0`) to access the Guacamole login page. Enter your [Guacamole username and password](#guacamole-options).
 
     ![View the Guacamole login page.](guacamole-login-page.png)
+
+{{< note >}}
+The Guacamole login page may take several minutes to become available while the Application completes the creation process.
+{{< /note >}}
 
 1. Once you've completed the login process, you have full access to your Linode from your Guacamole remote desktop using VNC and the XFCE desktop environment.
 

@@ -17,11 +17,23 @@
     margin: 0;
     border: 0;
 }
+
+.chroma .lntd:first-of-type {
+    border-right: 1px #dedee3 solid;
+    text-align: center;
+    margin: 0;
+    padding: 0 0.075rem 0 0.075rem !important;
+}
+
+.chroma .lntd:nth-of-type(2n) {
+    @apply px-2;
+}
+
 /* LineTable */
 .chroma .lntable {
     border-spacing: 0;
     padding: 0;
-    margin: 0;
+    margin: 0 !important;
     border: 0;
     width: auto;
     overflow: auto;
@@ -35,14 +47,10 @@
 }
 /* LineNumbersTable */
 .chroma .lnt {
-    margin-right: 0.4em;
-    padding: 0 0.4em 0 0.4em;
     color: #7f7f7f;
 }
 /* LineNumbers */
 .chroma .ln {
-    margin-right: 0.4em;
-    padding: 0 0.4em 0 0.4em;
     color: #7f7f7f;
 }
 /* Keyword */

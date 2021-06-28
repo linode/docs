@@ -1,26 +1,28 @@
 ---
-slug: configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu
+slug: configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install and configure Postfix on Debian and Ubuntu to send email through Gmail and Google Apps.'
+description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
+og_description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
 keywords: ["Postfix", "Ubuntu", "Debian", "SMTP", "Gmail"]
 tags: ["debian","ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-09-27
+modified: 2021-06-22
 modified_by:
   name: Linode
 published: 2016-12-13
-title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
-aliases: ['/email/email-services/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/','/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
+title: How to Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu
+h1_title: Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu
+enable_h1: true
+aliases: ['/email/email-services/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/','/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/', '/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
 ---
 
-![Configure Postfix to Send Mail Using Gmail and Google Apps](Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
+![Configure Postfix to Send Mail Using Gmail and Google Workspace](Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
 
+Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using Google Workspace (previously called G Suite and Google Apps) and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a block list.
 
-Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a blacklist.
-
-In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Apps. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7/) guide.
+In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Workspace. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7/) guide.
 
 {{< content "email-warning-shortguide" >}}
 
@@ -42,39 +44,38 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 In this section, you will install Postfix as well as *libsasl2*, a package which helps manage the Simple Authentication and Security Layer (SASL).
 
-1.  Install Postfix and the `libsasl2-modules` package:
+1. Install Postfix and the `libsasl2-modules` package:
 
         sudo apt-get install libsasl2-modules postfix
 
-2.  During the Postfix installation, a prompt will appear asking for your **General type of mail configuration**. Select **Internet Site**:
+2. When prompted, select **Internet Site** as the type of mail server the Postfix installer should configure. In the next screen, the *System Mail Name* should be set to the domain you'd like to send and receive email through.
 
-    [![General type of mail configuration options](1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
 
-3.  Enter the fully qualified name of your domain. In this example, **fqdn.example.com**:
+    ![Choose "Internet Site" for Postfix.](postfix-configuration-internet-site.png "Choose Internet Site for Postfix.")
 
-    [![System mail name prompt](1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
+    ![Set the system mail name for Postfix.](postfix-configuration-mail-name.png "Set the system mail name for Postfix.")
 
 4.  Once the installation is complete, confirm that the `myhostname` parameter is configured with your server's FQDN:
 
     {{< file "/etc/postfix/main.cf" >}}
 myhostname = fqdn.example.com
-
 {{< /file >}}
-
 
 ## Generate an App Password for Postfix
 
 When Two-Factor Authentication (2FA) is enabled, Gmail is preconfigured to refuse connections from applications like Postfix that don't provide the second step of authentication. While this is an important security measure that is designed to restrict unauthorized users from accessing your account, it hinders sending mail through some SMTP clients as you're doing here. Follow these steps to configure Gmail to create a Postfix-specific password:
 
-1. Log in to your email, then click the following link: [Manage your account access and security settings](https://myaccount.google.com/security). Scroll down to "Password & sign-in method" and click **2-Step Verification**. You may be asked for your password and a verification code before continuing. Ensure that 2-Step Verification is enabled.
+1. Log in to your Google Account and navigate to the [Manage your account access and security settings](https://myaccount.google.com/security) page.
 
-2.  Click the following link to [Generate an App password](https://security.google.com/settings/security/apppasswords) for Postfix:
+1. Scroll down to **Signing in to Google** section and enable **2-Step Verification**. You may be asked for your password and a verification code before continuing.
+
+1. In that same section, click on [App passwords](https://security.google.com/settings/security/apppasswords) to generate a unique password that can be used with Postfix.
 
     ![Generate an App password](postfix-gmail-app-password.png "Generate an App password")
 
-3.  Click **Select app** and choose **Other (custom name)** from the dropdown. Enter "Postfix" and click **Generate**.
+1. Click the **Select app** dropdown and choose *Other (custom name)*. Enter "Postfix" and click **Generate**.
 
-4.  The newly generated password will appear. Write it down or save it somewhere secure that you'll be able to find easily in the next steps, then click **Done**:
+1. The newly generated password will appear. Write it down or save it somewhere secure that you'll be able to find easily in the next steps, then click **Done**:
 
     ![Generated app password](postfix-gmail-generated-app-password.png "Generated app password")
 
@@ -90,7 +91,7 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 {{< /file >}}
 
     {{< note >}}
-The SMTP server address configuration `smtp.gmail.com` supports message submission over port 587 ([StartTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) and port 465 ([SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)). Whichever protocol you choose, be sure the port number is the same in `/etc/postfix/sasl/sasl\\_passwd` and `/etc/postfix/main.cf` files. See Google's [G Suite Administrator Help](https://support.google.com/a/answer/176600?hl=en) for more information.
+The SMTP server address configuration `smtp.gmail.com` supports message submission over port 587 ([StartTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) and port 465 ([SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)). Whichever protocol you choose, be sure the port number is the same in `/etc/postfix/sasl/sasl\\_passwd` and `/etc/postfix/main.cf` files. See Google Workspace's [Send email from a printer, scanner, or app](https://support.google.com/a/answer/176600?hl=en) help article for more information.
 {{< /note >}}
 
 2.  Create the hash db file for Postfix by running the `postmap` command:
@@ -151,11 +152,11 @@ In some cases, Gmail might still block connections from what it calls "Less secu
 
     Select **Turn on**. A yellow "Updated" notice will appear at the top of the browser window and Gmail will automatically send a confirmation email.
 
-    ![Enable "Less Secure Apps"](postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
+    ![Enable "Less Secure Apps"](postfix-gmail-less-secure-apps.png "Enable Less Secure Apps")
 
 2.  Test Postfix as shown in the following section. If your test emails don't appear after a few minutes, [disable captcha from new application login attempts](https://accounts.google.com/DisplayUnlockCaptcha) and click **Continue**.
 
-## Test Postfix
+## Test Postfix Email Sending With Gmail
 
 Use Postfix's sendmail implementation to send a test email. Enter lines similar to those shown below, and note that there is no prompt between lines until the `.` ends the process:
 
