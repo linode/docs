@@ -613,6 +613,7 @@ http
 httpchk
 httpd
 https
+huginn
 hulu
 hvc0
 hybla
@@ -1583,12 +1584,14 @@ tt
 ttl
 ttpd
 ttrss
+tumblr
 tun0
 tune2fs
 tunnelblick
 turtl
 tv
 tw
+twilio
 txt
 txz
 tzurbaev

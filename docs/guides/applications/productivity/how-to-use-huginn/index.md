@@ -1,33 +1,42 @@
 ---
-slug: how-to-use-huginn
+slug: monitor-your-website-changes-with-huginn-agents
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Huginn is a self-hosted and open-source option for automating online tasks. In this guide, you can see how to install you own Huginn instance and how to start using its agents for your own tasks."
-og_description: "Huginn is a self-hosted and open-source option for automating online tasks. In this guide, you can see how to install you own Huginn instance and how to start using its agents for your own tasks."
+description: "Huginn is a self-hosted and open-source option for automating online tasks. In this guide, you can see how to install your own Huginn instance and how to start using its agents for your own tasks."
+og_description: "Huginn is a self-hosted and open-source option for automating online tasks. In this guide, you can see how to install your own Huginn instance and how to start using its agents for your own tasks."
 keywords: ['huginn','automate tasks','online automation','task agents','ifttt alternative','zapier alternative','open source']
+tags: ['ubuntu', 'automation', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-20
 modified_by:
   name: Nathaniel Stickman
-title: "How to Automate Your Online Tasks with Huginn"
-h1_title: "How to Automate Your Online Tasks with Huginn"
+title: "Monitor Your Website Changes with Huginn Agents"
+h1_title: "How to Monitor Your Website Changes with Huginn Agents"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Huginn GitHub](https://github.com/huginn/huginn)'
+- '[Docker](https://www.docker.com/)'
+- '[Official Docker setup](https://github.com/huginn/huginn/blob/master/doc/docker/install.md)'
+- '[Huginn manual installation instructions](https://github.com/huginn/huginn/tree/master/doc/manual)'
+- '[Mailgun](https://www.mailgun.com/)'
+- '[BBC](https://www.bbc.com)'
+- '[Liquid templating documentation](https://github.com/huginn/huginn/wiki/Formatting-Events-using-Liquid)'
+- '[Huginn wiki](https://github.com/huginn/huginn/wiki)'
 ---
 
-Huginn provides an open-source and self-hosted system for automating online tasks. It is similar to tools like IFTTT and Zapier, but is more customizable/hackable. Huginn also gives you greater control by virtue of being hosted on your own server.
+Huginn provides an open-source and self-hosted system for automating online tasks. It is similar to tools like IFTTT and Zapier, but is more customizable/hackable. Huginn also gives you greater control by being hosted on your own server.
 
 This guide shows you how to set up your own Huginn instance before doing a deep dive into how to configure some agents to send you notifications.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Huginn supports Debian and Ubuntu Linux distributions, and this guide's instructions are intended for these distributions as well.
 
@@ -36,10 +45,10 @@ This guide shows you how to set up your own Huginn instance before doing a deep 
         sudo apt update && sudo apt upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Installing Docker and Docker Compose
+## Install Docker and Docker Compose
 
 This guide uses [Docker](https://www.docker.com/) to run Huginn. Huginn maintains an [official Docker setup](https://github.com/huginn/huginn/blob/master/doc/docker/install.md), making it easy to get your instance up and running. If you are new to using Docker, it is recommended that you review the [Introduction to Docker](/docs/applications/containers/introduction-to-docker/) guide.
 
@@ -47,33 +56,32 @@ It is possible to manually install Huginn. However, the Docker method is used he
 
 {{< content "install-docker-ce" >}}
 
-## Trying Out Huginn
+## Try Out Huginn
 
 Once you have Docker installed, you can quickly run an instance of Huginn to try it out. Running Huginn in this way does not create any persistent data storage, so any changes you make are not saved after you stop the instance.
 
-1. Run the Huginn Docker container:
+1. Run the Huginn Docker container.
 
         docker run -it -p 3000:3000 huginn/huginn
 
-1. Navigate to `localhost:3000` in a web browser. You can use an SSH tunnel to visit the Huginn instance remotely:
+1. Navigate to `localhost:3000` in a web browser. You can use an SSH tunnel to visit the Huginn instance remotely.
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address:
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@198.51.100.0
 
-1. Use the default credentials to log into your Huginn instance — username `admin` and password `password`.
+1. Use the default credentials to log into your Huginn instance — username: `admin` and password: `password`.
 
     ![Huginn welcome page](huginn-welcome-page.png)
 
     ![Huginn login page](huginn-login.png)
 
-## Deploying Huginn
+## Deploy Huginn
 
 Docker can also be used to set up a full-fledged and persistent instance of Huginn as well. This guide uses Huginn's default database configuration — a MySQL database — which provides the most straightforward path to using Huginn.
 
-
-1. Create an `.env.huginn` file with the following contents. This dictates the SMTP credentials for Huginn to use, allow it to send emails. In this example, replace `example-smpt-domain.com`, `example-smtp-username`, `example-smtp-password`, and `example-smtp-host` with the appropriate credentials for your SMTP:
+1. Create a `.env.huginn` file with the following contents. This dictates the SMTP credentials for Huginn to use, allows it to send emails. In this example, replace `example-smpt-domain.com`, `example-smtp-username`, `example-smtp-password`, and `example-smtp-host` with the appropriate credentials for your SMTP.
 
         RAILS_ENV=production
 
@@ -87,9 +95,9 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
         EMAIL_FROM_ADDRESS=huginn@example-smtp-domain.com
 
-    You can create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
+    You can create your own SMTP server by following the [Email with Postfix, Dovecot, and MySQL/MariaDB](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
 
-    Alternatively, you can use a third-party SMTP service, like [Mailgun](https://www.mailgun.com/). The following is an example of the above configuration for a Mailgun SMTP account:
+    Alternatively, you can use a third-party SMTP service, like [Mailgun](https://www.mailgun.com/). The following is an example of the above configuration for a Mailgun SMTP account.
 
         RAILS_ENV=production
 
@@ -105,11 +113,11 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
     {{< content "email-warning-shortguide" >}}
 
-1. Create a Docker volume for Huginn's database:
+1. Create a Docker volume for Huginn's database.
 
         docker volume huginn-data
 
-1. Run the Huginn Docker container with the database volume. Here, the Docker port **3000** gets mapped to the server's port **80**, the standard port for HTTP connections:
+1. Run the Huginn Docker container with the database volume. Here, the Docker port **3000** gets mapped to the server's port **80**, the standard port for HTTP connections.
 
         docker run -d -p 80:3000 --restart=always --env-file .env.huginn -v huginn-data:/var/lib/mysql huginn/huginn
 
@@ -117,15 +125,15 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
 1. Navigate to the URL for your server. This can be either your server's domain name — such as `example.com` — or your server's IP address — such as `198.51.100.0`.
 
-1. Log in with the default credentials — `admin` as the username and `password` as the password.
+1. Login with the default credentials — `admin` as the username and `password` as the password.
 
     You can then change the account credentials via the **Account** option from the menu on the upper right. Be sure to enter an email address for your account as well if you want Huginn to send you notifications or account recovery via email.
 
     ![Huginn main page](huginn-main-page.png)
 
-## Managing Huginn Agents
+## Manage Huginn Agents
 
-Huginn comes with a set of example agents to get you started. It is a good idea to look over each of these to get an idea for how Huginn agents are set up.
+Huginn comes with a set of example agents to get you started. It is a good idea to look over each of these to get an idea of how Huginn agents are set up.
 
 [![Huginn agent listing](huginn-agent-listing_small.png)](huginn-agent-listing.png)
 
@@ -147,11 +155,11 @@ The sections that follow walk you through putting your own agents into action. T
 
 1. Select **Website Agent** as the type. Once you do so, more options appear.
 
-    This agent can scrape a website and create events out of the results. In the steps that follow, the agent gets configured to identify headlines on the [BBC](https://www.bbc.com) news website and create a series of events out of them every morning.
+    - This agent can scrape a website and create events out of the results. In the steps that follow, the agent gets configured to identify headlines on the [BBC](https://www.bbc.com) news website and create a series of events out of them every morning.
 
-    Once you select an agent type, you can see that Huginn provides reference information in a pane on the right. This can be useful in learning about new agent types and in deciding what options to choose for your use case.
+    - Once you select an agent type, you can see that Huginn provides reference information in a pane on the right. This can be useful in learning about new agent types and in deciding what options to choose for your use case.
 
-1. Enter the name of the agent — "BBC Source" in this example — and schedule a time for the agent to run — here, "5am" is used. Under **Scenarios**, select the "default-scenario" option.
+1. Enter the name of the agent — "BBC Source" in this example — and schedule a time for the agent to run — here, "5 am" is used. Under **Scenarios**, select the "default-scenario" option.
 
     ![Website Agent configuration](huginn-new-agent-website.png)
 
@@ -178,7 +186,7 @@ The sections that follow walk you through putting your own agents into action. T
 
 1. Select **Save**, and Huginn directs you back to the list of your agents. There, you should see your new agent listed.
 
-### Formatting Agent
+### Format Agent
 
 1. Select **New Agent** again, and select **Event Formatting Agent** as the type this time. Enter a name for the agent — "News Headline Formatter" in this example.
 
@@ -188,7 +196,7 @@ The sections that follow walk you through putting your own agents into action. T
 
     ![Event Formatting Agent configuration](huginn-new-agent-event-formatting.png)
 
-1. Use **Toggle View** under **Options** to edit the JSON, and enter the following in the text box:
+1. Use **Toggle View** under **Options** to edit the JSON, and enter the following in the text box.
 
         {
           "instructions": {
@@ -199,7 +207,7 @@ The sections that follow walk you through putting your own agents into action. T
           "mode": "clean"
         }
 
-    Here and in the JSON examples that follow, you can see that Huginn enables some templating, allowing you to work with variable data and functions. Huginn uses the Liquid template engine for this, and maintains some [documentation](https://github.com/huginn/huginn/wiki/Formatting-Events-using-Liquid) on formatting and default variables.
+    Here and in the JSON examples that follow, you can see that Huginn enables some templating, allowing you to work with variable data, and functions. Huginn uses the Liquid template engine for this and maintains some [documentation](https://github.com/huginn/huginn/wiki/Formatting-Events-using-Liquid) on formatting and default variables.
 
 1. You can again use the **Dry Run** option to test the agent.
 
@@ -209,9 +217,9 @@ The sections that follow walk you through putting your own agents into action. T
 
 1. Select **New Agent** again, and select **Digest Agent** as its type. Enter a name for the agent — "Morning News Digest" is used here.
 
-    A **Digest Agent** collects a series of events and makes a single event out of them. This is useful here, since it allows Huginn to send out a single email with all of the headlines rather than an email for each headline.
+    A **Digest Agent** collects a series of events and makes a single event out of them. This is useful here since it allows Huginn to send out a single email with all of the headlines rather than an email for each headline.
 
-1. Select a time for the agent to run — "6am" works for this scenario. Under **Sources**, select the **Event Formatting Agent** you created above ("News Headline Formatter"). Select "default-scenario" under **Scenarios**.
+1. Select a time for the agent to run — "6 am" works for this scenario. Under **Sources**, select the **Event Formatting Agent** you created above ("News Headline Formatter"). Select "default-scenario" under **Scenarios**.
 
     ![Digest Agent configuration](huginn-new-agent-digest.png)
 
@@ -241,16 +249,16 @@ The sections that follow walk you through putting your own agents into action. T
 
 1. Choose **Save** to complete the agent setup.
 
-### Completing the Agent Setup
+### Complete the Agent Setup
 
 1. Make sure that the necessary users have valid emails entered.
 
 1. On the page listing your agents, use the **Actions** menu for the **Website Agent** ("BBC Source") to select **Run**. Do the same for the **Digest Agent** ("Morning News Digest") and **Email Agent** ("News Email Agent").
 
-1. Reap the benefits of receiving news headlines in your email inbox every morning!
+1. Reap the benefits of receiving news headlines in your email inbox every morning.
 
 ## Conclusion
 
-You now have some Huginn agents on your side! Huginn is capable of many more kinds of notifications. A wide array of sources are possible, and you have delivery options ranging from email and text (via Twilio) to Twitter and Tumblr.
+You now have some Huginn agents on your side. Huginn is capable of many more kinds of notifications. A wide array of sources are possible, and you have delivery options ranging from email and text (via Twilio) to Twitter and Tumblr.
 
 There are two great resources for learning more about how to get the most out of Huginn. First, Huginn itself has a lot of information baked in, which you can tap into by exploring the different types of agents. Second, the Huginn [wiki](https://github.com/huginn/huginn/wiki) links to numerous helpful articles and examples to give you ideas for how you might use your Huginn instance.
