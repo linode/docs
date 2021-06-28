@@ -153,6 +153,7 @@ c2s
 cabd
 cacert
 cacheable
+cachable
 caddy
 caddyfile
 cakey

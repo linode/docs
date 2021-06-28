@@ -3,22 +3,26 @@ slug: what-are-service-workers
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what service workers are capable of and how to build your own."
-og_description: "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what service workers are capable of and how to build your own."
-keywords: ['service worker example','service worker api','javascript service worker']
+description: "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what javascript service workers are capable of and how to build an example service worker."
+og_description: "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what javascript service workers are capable of and how to build an example service worker."
+keywords: ['service worker example', 'service worker api', 'javascript service worker']
+tags: ['']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-30
 modified_by:
   name: Nathaniel Stickman
-title: "What Are Service Workers?"
-h1_title: "What Are Service Workers?"
+title: "What Are Javascript Service Workers?"
+h1_title: "Javascript Service Workers"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Mozilla Developer Network: Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)'
-- '[Google Developers: Introduction to Service Workers](https://developers.google.com/web/ilt/pwa/introduction-to-service-worker)'
-- "[Mozilla's Service Worker Cookbook](https://serviceworke.rs/)"
+- '[Caching Strategies](https://serviceworke.rs/caching-strategies.html)'
+- '[Web Push](https://serviceworke.rs/web-push.html)'
+- '[Specifications and Examples](https://github.com/WICG/background-sync)'
+- '[Cache and Update](https://serviceworke.rs/strategy-cache-and-update.html)'
+
 ---
 
 Service workers are JavaScript workers that can sit between a website or web page and the network. They can give you immense control in developing offline experiences for your web applications, as well as features like push notifications and background sync.
@@ -33,23 +37,23 @@ This guide aims to introduce you to the key concepts behind service workers and 
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On Debian and Ubuntu, use these commands:
 
             sudo apt update && sudo apt upgrade
 
-    - On CentOS, use:
+    - On CentOS, use these commands:
 
             sudo yum update
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Are Service Workers?
 
-Service workers are event-driven JavaScript workers capable of intercepting navigation and resource requests and caching resources. In contrast to comparable tools, service workers provide far more granular control, making them adaptable and promising for a wide range of uses. And, since service workers run on a separate thread, they do not block your main JavaScript application code.
+Service workers are event-driven JavaScript workers capable of intercepting navigation and resource requests and caching resources. In contrast to comparable tools, service workers provide far more granular control, making them adaptable, and promising for a wide range of uses. And, since service workers run on a separate thread, they do not block your main JavaScript application code.
 
-Today, service workers are generally leveraged in three main areas. The following subsections each deal with these areas in turn, giving you an idea of what Service Workers have to offer.
+Today, service workers are generally leveraged in three main areas. Each of the following subsections deals with these areas, in turn, giving you an idea of what service workers have to offer.
 
 But keep in mind that since service workers offer a high degree of control and adaptability, many more possible uses are being found for them. The prospects look good for them to be able to dramatically alter how we think of web applications' offline experiences.
 
@@ -61,21 +65,21 @@ A typical scenario has service workers intercepting fetch requests when the brow
 
 Theoretically, an API for caching web content already exists in AppCache. So why would you want to use Service Workers instead? While AppCache's API can make the caching process easy, it makes an array of assumptions about how the cache would be used. Its ease of use made it difficult for developers to deviate from the assumed path without possibly breaking their applications.
 
-By contrast, the granular control service workers give allow the developer to decide precisely how to manage requests and caching. The additional features that service workers come — the biggest two covered in the sections below — make them much more promising for enhancing web experiences.
+By contrast, the granular control service workers allow the developer to decide precisely how to manage requests and caching. The additional features that service workers come — the biggest two covered in the sections below — make them much more promising for enhancing web experiences.
 
-To get started using service workers for crafting offline experiences, take a look at the section below for [creating an example service worker](/docs/guides/what-are-service-workers/#example-service-worker). You may also want to explore the [Caching Strategies](https://serviceworke.rs/caching-strategies.html) section of Mozilla's Service Worker Cookbook.
+To get started using service workers for crafting offline experiences, take a look at the section below for [creating an example service worker](/docs/guides/what-are-service-workers/#example-service-worker). You may also want to explore the [Caching strategies](https://serviceworke.rs/caching-strategies.html) section of Mozilla's Service Worker Cookbook.
 
 ### Push Notifications
 
 Services workers also come with push notification functionality. You can, of course, achieve push notifications without service workers. However, service workers have the special ability to provide notifications even while the user is not on the associated web page/website.
 
-While service worker push notifications can be helpful for providing information related to cached content, they can also be useful generally. The fact that users can get notification even when they navigate away from the website makes service worker push notifications especially useful.
+While service worker push notifications can help provide information related to cached content, they can also be useful generally. The fact that users can get a notification even when they navigate away from the website makes service workers push notifications especially useful.
 
 To learn more about service workers' push notification capabilities, check out the [Web Push](https://serviceworke.rs/web-push.html) section of Mozilla's Service Worker Cookbook.
 
 ### Background Sync
 
-Because service workers aim at an improved offline experiences, they also come with a background sync API. These allow web content to be synchronized without interrupting the user's experience. For instance, form data can be held for background syncing if the user submits a form while on an unstable connection. The service worker can then sync the form data with the server in the background, and only do so once the connection has stabilized.
+Because service workers aim at improved offline experiences, they also come with a background sync API. These allow web content to be synchronized without interrupting the user's experience. For instance, form data can be held for background syncing if the user submits a form while on an unstable connection. The service worker can then sync the form data with the server in the background and only do so once the connection has stabilized.
 
 Like with push notifications, service workers' background sync capability can operate even when the user is no longer on the web page/website.
 
@@ -83,7 +87,7 @@ You can explore the ideas behind service worker background sync through the [spe
 
 ## Example Service Worker
 
-In this section, you can follow along to implement your own service worker. The implementation is based on the [Cache and Update](https://serviceworke.rs/strategy-cache-and-update.html) example provided in Mozilla's Service Worker Cookbook.
+In this section, you can follow along to implement your own service worker. The implementation is based on the [Cache and update](https://serviceworke.rs/strategy-cache-and-update.html) example provided in Mozilla's Service Worker Cookbook.
 
 This service worker caches content from a web server and intercepts requests to get content from the cache by default. The page's content loads quickly as a result, even when the network connection is slow or unstable.
 
@@ -96,12 +100,12 @@ This service worker caches content from a web server and intercepts requests to 
         curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
         sudo apt install nodejs
 
-    On CentOS, use:
+    On CentOS, use these commands:
 
         curl -fsSL https://rpm.nodesource.com/setup_15.x | sudo -E bash -
         sudo yum install nodejs
 
-1. Set NPM to use the latest version of Node.js:
+1. Set NPM to use the latest version of Node.js.
 
         sudo npm install npm@latest -g
 
@@ -109,13 +113,13 @@ This service worker caches content from a web server and intercepts requests to 
 
 The server in this example dynamically serves some cachable content — in this case, a series of images — to demonstrate the service worker's capabilities.
 
-1. Download a collection images. For this guide, 10 images are selected from the Library of Congress's [collection of free-to-use cat images](https://www.loc.gov/free-to-use/cats/). You can download one of these images with a command like this, replacing the URL here with the URL for one of the images you select:
+1. Download a collection of images. For this guide, ten images are selected from the Library of Congress's [collection of free-to-use cat images](https://www.loc.gov/free-to-use/cats/). You can download one of these images with a command like this, replacing the URL below with the URL for one of the images you select.
 
         wget https://tile.loc.gov/storage-services/service/pnp/jpd/02700/02798v.jpg -O imgs/cat-1.jpg
 
-    Be sure to increment the `1` with each image you download. The remaining sections assume you have downloaded 10 images using the above naming convention — i.e., `cat-1.jpg`, `cat-2.jpg`, etc.
+    Be sure to increment the `1` with each image you download. The remaining sections assume you have downloaded ten images using the above naming convention — i.e., `cat-1.jpg`, `cat-2.jpg`, etc.
 
-    To do this quickly, you can use [this shell script](download_cat_images.sh) to download 10 images we have selected. Place the shell script in your project directory, open it to change `example-user` to your username on the server, and then execute the following commands:
+    To do this quickly, you can use [this shell script](download_cat_images.sh) to download the ten images we have selected. Place the shell script in your project directory, open it to change `example-user` to your username on the server, and then execute the following commands:
 
         mkdir imgs
         chmod +x download_cat_images.sh
@@ -123,15 +127,15 @@ The server in this example dynamically serves some cachable content — in this 
 
 ### Create the Server
 
-1. Make a directory for the project. In this example, `service-worker-example` is used as the project and directory name. The example project here lives in the current user's home directory:
+1. Make a directory for the project. In this example, `service-worker-example` is used as the project and directory name. The example project here lives in the current user's home directory.
 
         mkdir ~/service-worker-example
 
-1. Change into the project directory. For the remaining steps in this example, the guide assumes you are in this directory:
+1. Change into the project directory. For the remaining steps in this example, the guide assumes you are in `service-worker-example` directory.
 
         cd ~/service-worker-example
 
-1. Create the following JavaScript file. This creates an Express JS server which serves both the cat images and the application's static files:
+1. Create the following JavaScript file. This creates an Express JS server that serves both the cat images and the application's static files.
 
     {{< file "server.js" >}}
 // Import and initialize Express JS, setting it to use port **3000**.
@@ -171,26 +175,27 @@ app.listen(port, () => {
 })
     {{< /file >}}
 
-1. Initialize the Node.js project:
+1. Initialize the Node.js project.
 
         npm init
 
     You are prompted to enter information related to your project. You can simply press **Enter** for each prompt to use the default values.
 
-1. Install Express JS for your project:
+1. Install Express JS for your project.
 
         npm install express --save
 
 ### Create the Web Page
 
-1. Make a new `public` directory. The server is configured to serve everything in this directory as static content, so it can be used for the web page's HTML and client-side JavaScript files:
+1. Make a new `public` directory. The server is configured to serve everything in this directory as static content, so it can be used for the web page's HTML and client-side JavaScript files.
 
         mkdir public
 
-1. Create an `index.html` file with the following contents. Store the file in the `public` directory:
+1. Create an `index.html` file with the following contents. Store the file in the `public` directory.
 
     {{< file "public/index.html" >}}
 <!doctype html>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -205,7 +210,7 @@ app.listen(port, () => {
 </html>
     {{< /file >}}
 
-1. Create a `main.js` file in the `public` directory. Give it the contents shown below, which have this file register and initialize the service worker:
+1. Create a `main.js` file in the `public` directory. Give it the contents shown below, which have this file register and initialize the service worker.
 
     {{< file "public/main.js" >}}
 navigator.serviceWorker.register('service-worker.js', {scope: "./"});
@@ -214,7 +219,7 @@ navigator.serviceWorker.ready.then(console.log('Service Worker is running.'));
 
 ### Create the Service Worker
 
-1. Create a `service-worker.js` file, also in the `public` directory, and give it the following contents. You can look through the comments in the code to get an idea of what each part is doing:
+1. Create a `service-worker.js` file, also in the `public` directory, and give it the following contents. You can look through the comments in the code to get an idea of what each part is doing.
 
     {{< file "public/service-worker.js" >}}
 const CACHE = 'cat-image-cache'
@@ -258,31 +263,31 @@ function updateCache(request) {
 }
     {{< /file >}}
 
-### Running the Application
+### Run the Application
 
-You are all set to run your website with a service worker!
+You are all set to run your website with a service worker.
 
-1. Start up the Express JS server:
+1. Start up the Express JS server.
 
         node server.js
 
-    Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel:
+    Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address:
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@198.51.100.0
 
 1. Now you can visit the application in your browser by navigating to `localhost:3000`.
 
-1. Refresh the page, and use the browser developer tools to see that the requests are being satisfied by the service worker:
+1. Refresh the page, and use the browser developer tools to see that the requests are being satisfied by the service worker.
 
 - To bring up the developer tools in Chrome, press the **Ctrl**, **Shift**, and **C** keys simultaneously. If you are using Mac OS, press the **Command**, **Option**, and **C** keys simultaneously instead.
 - To bring up the developer tools in Firefox, press the **F12** key.
 
     You should see under the **Network** tab that requests are being handled by the service worker. Both Chrome and Firefox also provide a dedicated section in the **Application** tab where you can view the service worker's status.
 
-    Here is an example of the **Network** developer tools display in Firefox:
+    Here is an example of the **Network** developer tools display in Firefox.
 
     [![Network information in Firefox for the example service worker application](service-worker-example-network_small.png)](service-worker-example-network.png)
 
@@ -290,4 +295,4 @@ You are all set to run your website with a service worker!
 
 As noted above, service workers have a great potential for changing how we approach designing offline experiences for web applications. It is a good time to start learning about them and trying out unique and compelling ways to use them.
 
-After reading this guide, if you want to continue dive deeper into the world of service workers, take a look at the resources linked below. They can take your further on the concepts behind service workers and what those mean for their possible uses. And Mozilla's Service Worker Cookbook is especially helpful in getting you started with a variety of example projects.
+After reading this guide, if you want to continue dive deeper into the world of service workers, take a look at the resources linked below. They can take you further on the concepts behind service workers and what those mean for their possible uses. And Mozilla's Service Worker Cookbook is especially helpful in getting you started with a variety of example projects.
