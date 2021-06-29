@@ -6,19 +6,20 @@ author:
 description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
 og_description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
-tags: ['nagios', 'ubuntu', 'apache', 'debian']
+tags: ['ubuntu', 'debian', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-25
 modified_by:
   name: Linode
 title: "Install Nagios on Debian 10 and Ubuntu 20.04"
 h1_title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Nagios](https://www.nagios.com/products/nagios-core/)'
-- '[installation guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu)'
+- '[Installing Nagios Core From Source](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu)'
 - '[Nagios 4 documentation](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/index.html)'
 relations:
     platform:
@@ -35,7 +36,7 @@ Nagios's official installation guide shows how to compile Nagios from source cod
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
@@ -46,37 +47,51 @@ Nagios's official installation guide shows how to compile Nagios from source cod
         sudo apt update && sudo apt upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Create a Nagios User and User Group
 
-1. Create a Nagios user and a `nagcmd` user group:
+1. Create a Nagios user and a `nagcmd` user group.
 
         sudo useradd nagios
         sudo groupadd nagcmd
 
-1. Add both the Nagios user and the Apache2 user to the `nagcmd` user group:
+1. Add both the Nagios user and the Apache2 user to the `nagcmd` user group.
 
         sudo usermod -aG nagcmd nagios && sudo usermod -aG nagcmd www-data
 
-## Install Nagios
+## Install Nagios Using Packages
 
-1. Install Nagios, answering any prompts you to receive during the installation process:
+1. Install Nagios, answering any prompts you receive during the installation process.
 
         sudo apt install nagios4
 
-1. You can run the following command to install additional plugins for Nagios:
+1. You can run the following command to install additional plugins for Nagios.
 
         sudo apt install nagios-plugins-contrib
 
+### Install Nagios Using Source Code
+
+Alternatively, you can install Nagios from the source by following the instructions in Nagios’s guide on [Installing Nagios Core From Source](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu). Just select your distribution, and follow the instructions you are directed to. However, you additionally need to take the following steps to ensure Nagios runs properly.
+
+1. Create the following directory:
+
+        sudo mkdir /usr/local/nagios/var/rw
+
+1. Modify the `rw` directory’s ownership to be owned by the nagios user (`nagios`) and group (`nagcmd`) as follows:
+
+        chown nagios.nagcmd /usr/local/nagios/var/rw
+        chmod g+rwx /usr/local/nagios/var/rw
+        chmod g+s /usr/local/nagios/var/rw
+
 ## Configure Apache and Nagios
 
-1. Create the Nagios administrator user:
+1. Create the Nagios administrator user.
 
         sudo htdigest -c /etc/nagios4/htdigest.users "Nagios4" nagiosadmin
 
-1. Open the Nagios configuration file for Apache in your preferred text editor, and make the following changes. The file should be located at `/etc/nagios4/apache2.conf`.
+1. Open the Nagios configuration file for Apache in your preferred text editor, and make the changes listed below. The file should be located at `/etc/nagios4/apache2.conf`.
 
     - Comment out the `Require ip` line by adding a `#` to the beginning of the line. Beneath that line, add the lines shown below.
     - Under the `Files` tag, comment out the `Require all granted` line, and un-comment the `Require valid-user` line.
@@ -87,7 +102,6 @@ This guide is written for a non-root user. Commands that require elevated privil
 # [...]
 
     #Require ip ::1/128 fc00::/7 fe80::/10 10.0.0.0/8 127.0.0.0/8 169.254.0.0/16 172.16.0.0/12 192.168.0.0/16
-    <Files "cmd.cgi">
         AuthDigestDomain            "Nagios4"
         AuthDigestProvider          file
         AuthUserFile                "/etc/nagios4/htdigest.users"
@@ -98,7 +112,6 @@ This guide is written for a non-root user. Commands that require elevated privil
         Allow from                  127.0.0.1 198.51.100.0
         #Require all                granted
         Require                     valid-user
-    </Files>
   </DirectoryMatch>
 {{< /file >}}
 
@@ -108,16 +121,16 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1. Open the Nagios CGI configuration file, located at `/etc/nagios4/cgi.cfg`, and set `use_authentication` to `1`.
 
-1. Enable the `mod_rewrite`, `mod_cgi`, `mod_auth_digest`, and `mod_authz_groupfile` Apache modules:
+1. Enable the `mod_rewrite`, `mod_cgi`, `mod_auth_digest`, and `mod_authz_groupfile` Apache modules.
 
         sudo a2enmod rewrite
         sudo a2enmod cgi
         sudo a2enmod auth_digest
         sudo a2enmod authz_groupfile
 
-1. Restart the Apache service:
+1. Restart the Apache service.
 
-        sudo systemctl restart apache2
+        sudo systemctl restart apache2.service
 
 ## Access Nagios
 
