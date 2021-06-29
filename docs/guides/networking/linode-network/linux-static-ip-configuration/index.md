@@ -71,6 +71,10 @@ You'll see the following information for your Linode. Use this information to co
 
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
+{{< note >}}
+ All IPv6 pools are routed through the original IPv6 SLAAC address for a Linode. For this reason, the original IPv6 SLAAC address **must always** be the first IPv6 address included in a network configuration.
+{{< /note >}}
+
 
 ### Arch, CoreOS Container Linux
 
