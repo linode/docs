@@ -711,6 +711,7 @@ ipwl
 irc
 ircname
 iredmail
+irqbalance
 irssi
 isn
 iso
