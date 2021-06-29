@@ -14,6 +14,7 @@ modified_by:
 title: "How to Connect to a Remote Server Over SSH"
 h1_title: "Connecting to a Remote Server Over SSH"
 enable_h1: true
+aliases: ['/guides/networking/ssh/connect-to-server-over-ssh/']
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
