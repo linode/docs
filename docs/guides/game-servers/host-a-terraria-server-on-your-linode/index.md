@@ -8,7 +8,7 @@ og_description: 'Run a Terraria server for yourself and your friends to play on.
 keywords: ["terraria", "steam", "minecraft", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-21
-modified: 2019-02-01
+modified: 2021-06-29
 modified_by:
   name: Linode
 title: 'How to Setup a Terraria Linux Server'
@@ -25,7 +25,11 @@ dedicated_cpu_link: true
 
 ![Hosta a Terraria Server on Your Linode](terraria-server.png "Hosta a Terraria Server on Your Linode")
 
-[Terraria](https://terraria.org/) is a two-dimensional sandbox game, similar to [Minecraft](https://minecraft.net/), which allows players to explore, build, and battle in an open world. In 2015, the Terraria developers announced [support for Linux](http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too), which means that players can host their own standalone Terraria servers.
+[Terraria](https://terraria.org/) is a two-dimensional sandbox game, similar to [Minecraft](https://minecraft.net/), which allows players to explore, build, and battle in an open world.
+
+## Does Terraria support Linux?
+
+In 2015, the Terraria developers announced [support for Linux](http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too), which means that players can host their own standalone Terraria servers.
 
 This guide outlines the steps required to run a Terraria server for yourself and others to play on. These steps are compatible with any Linux distribution that uses [systemd](https://www.freedesktop.org/wiki/Software/systemd/). This includes recent versions of CentOS, Debian and Ubuntu, Arch Linux and Fedora.
 
@@ -115,7 +119,7 @@ To manually configure iptables without using a controller, see our [iptables gui
         sudo iptables -vL
 
 
-## Install and Configure Terraria
+## Install and Configure Terraria on Linux
 
 1.  Change your working directory to `/opt` and download the Terraria tarball. You'll need to check [Terraria's website](http://terraria.gamepedia.com/Server#How_to_.28Linux.29) for the current release version. Right-click and copy the link to use with `curl` or `wget`. We'll use 1.3.4.4 as an example in this guide:
 
@@ -209,6 +213,41 @@ WantedBy=multi-user.target
 This script is intended to save your world in the event that you reboot the operating system within the Linode. It is **not** intended to save your progress if you reboot your Linode from the Linode Manager. If you must reboot your Linode, first stop the Terraria service using `sudo systemctl stop terraria`. This will save your world, and then you can reboot from the Linode Manager.
 {{< /caution >}}
 
+### Managing Terraria server with multiple instances
+
+To allow multiple instances, change the name of the file  `/etc/systemd/system/terraria.service`  to   `/etc/systemd/system/terraria@.service`.
+
+Once done, make the following edits to your file:
+
+{{< file >}}
+[Unit]
+Description="Terraria Server: %i"
+PartOf=terraria.target
+
+[Service]
+Type=forking
+User=terraria
+KillMode=none
+ExecStart=/usr/bin/screen -dmS terraria_%i -L /opt/terraria/log_%i.txt /bin/bash -c "/opt/terraria/TerrariaServer -config /opt/terraria/serverconfig_%i.txt"
+ExecStop=/usr/local/bin/terrariad %i inject exit
+
+[Install]
+WantedBy=multi-user.target
+
+Next create a file terraria.target with the path /etc/systemd/system/terraria.target.
+Edit your terraria.target file and add the following in it:
+
+[unit]
+Description="Terraria Server Instances"
+Wants=terraria@expert.service terraria2@expert.service terraria@master.service
+
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
+In the above configuration, we have two servers: expert and master.  And in the next section, we will create a single instance and multiple instance `terrariad` file to see how we can enable single/multiple instances.
+
 ### Create a Script for Basic Terraria Administration
 
 The Terraria administration script needs two primary functions:
@@ -250,7 +289,48 @@ This script permits you to both:
 Throughout the rest of this guide, you may encounter "command not found" errors when running the `terrariad` command. This may result from the directory `/usr/local/bin/` not being found in the `$PATH` when running sudo commands, which can occur with some Linux distributions. You can work around this problem by calling the script with the full path. For example, instead of running `sudo terrariad attach`, use `sudo /usr/local/bin/terrariad attach`.
 {{< /note >}}
 
-## Running Terraria
+### Multiple-instance Terraria administration
+
+To set up Terraria administration to handle multiple instances, make the following changes to your `terrariad` script:
+
+        #!/usr/bin/env bash
+        instance="$1"
+        send="${*:3}"$(echo -ne '\015')
+        attach="script /dev/null -qc 'screen -r terraria_$instance'"
+        inject="screen -S terraria_$instance -X stuff $send"
+        list="script /dev/null -qc 'screen -ls |grep .terraria_'"
+
+        # if [ "$2" = "attach" ] ; then cmd="$attach" ; else cmd="$inject" ; fi
+        case "$1" in
+            list)
+                cmd="$list"
+                ;;
+            ls)
+                cmd="$list"
+                ;;
+            *)
+                case "$2" in
+                    attach)
+                        cmd="$attach"
+                        ;;
+                    inject)
+                        cmd="$inject"
+                        ;;
+                     *)
+                        cmd="echo Invalid parameter $2"
+                        ;;
+            esac
+            ;;
+        esac
+
+        if [ "`stat -c '%u' /var/run/screen/S-terraria/`" = "$UID" ]
+        then
+            "$cmd"
+        else
+            sudo su - terraria -c "$cmd"
+        fi
+
+## Running Terraria Linux Server
 
 ### Start and Enable the Terraria Server
 
@@ -302,3 +382,11 @@ In the course of running your server, you may need to attach to the console to d
     sudo terrariad attach
 
 Type `help` to get a list of commands. Once you're done, use the keyboard shortcut **CTRL+A** then **D** to detach from the screen session and leave it running in the background. More keyboard shortcuts for Screen can be found in the [Screen default key bindings documentation](http://www.gnu.org/software/screen/manual/html_node/Default-Key-Bindings.html#Default-Key-Bindings).
+
+## How do I host a Terraria Server for free?
+
+To host a Terraria server for free, choose a free plan first and then choose the country where you are planning to host this Terraria server.
+
+## How do I find my server port for Terraria?
+
+Default server port for Terraria is 7777. But if you have port forwarding enabled, your server port is your IP address + Colin + the port number.
