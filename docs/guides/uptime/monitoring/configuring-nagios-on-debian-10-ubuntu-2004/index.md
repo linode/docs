@@ -6,7 +6,7 @@ author:
 description: 'In this guide, you will learn how to monitor and configure email alerts and IRC status updates for Nagios. Nagios is a popular server monitoring tool, and these instructions help you get more out of it on both Debian 10 and Ubuntu 20.04.'
 og_description: 'In this guide, you will learn how to monitor and configure email alerts and IRC status updates for Nagios. Nagios is a popular server monitoring tool, and these instructions help you get more out of it on both Debian 10 and Ubuntu 20.04.'
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
-tags: ['nagios', 'ubuntu', 'debian']
+tags: ['monitoring', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-28
 modified_by:
@@ -51,7 +51,7 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 1. Replace `example.com` throughout this guide with your machine's domain name, and replace `fqdn.example.com` with your machine's fully qualified domain name (FQDN).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up Nagios Email Alerts
@@ -103,7 +103,7 @@ This guide also provides instructions for configuring local emails, which are no
 
     - Log in as `example-user`, and run the `mail` command. Verify that the user received the test email.
 
-    - You can use a similar command as the one above to test outbound emails. Replace `example-user@localhost` with an external email address to which you have access.
+    - You can use a similar command to the one above to test outbound emails. Replace `example-user@localhost` with an external email address to which you have access.
 
 ### Configure Nagios
 
@@ -166,15 +166,17 @@ This guide uses [NagIRCBot](https://manpages.ubuntu.com/manpages/trusty/man1/nag
 
         sudo apt-get install -y autoconf gcc libc6 libmcrypt-dev make libssl-dev wget bc gawk dc build-essential snmp libnet-snmp-perl gettext
 
-1. Navigate to the [NagIRCBot Exchange directory](https://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details). Replace `3.2.3` in the following examples with the version you find.
+1. Navigate to the [NagIRCBot Exchange directory](https://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details). Replace the version number in the following examples with the version you find.
 
 1. In the `/opt` directory, download the package containing the files needed to build the bot; extract the files, and change them into the resulting directory.
 
         cd /opt
-        sudo wget -c http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.3.tar.gz
-        sudo tar -zxvf /opt/nagios-3.2.3
-        cd nagios-3.2.3
-        ./configure
+        sudo wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/nagircbot/0.0.33-2/nagircbot_0.0.33.orig.tar.gz
+        sudo tar -zxvf nagircbot_0.0.33.orig.tar.gz
+        cd nagircbot-0.0.33
+        sudo make
+        sudo make install
+        sudo cp nagircbot /usr/local/bin
 
 1. Build the NagIRCBot application.
 
