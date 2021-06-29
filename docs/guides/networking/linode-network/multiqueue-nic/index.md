@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-29
 modified_by:
   name: Linode
-title: "How To Configure Multiqueue NICs"
-h1_title: "Configuring Multiqueue NICs"
+title: "How To Configure Multi-Queue NICs"
+h1_title: "Configuring Multi-Queue NICs"
 enable_h1: true
 ---
 
