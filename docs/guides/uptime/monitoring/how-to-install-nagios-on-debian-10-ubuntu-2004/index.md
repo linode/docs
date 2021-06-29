@@ -63,11 +63,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 ## Install Nagios Using Packages
 
-<<<<<<< HEAD
 1. Install Nagios, answering any prompts you receive during the installation process:
-=======
-1. Install Nagios, answering any prompts you receive during the installation process.
->>>>>>> ee74209cd (updated Installation steps)
 
         sudo apt install nagios4
 
