@@ -8,7 +8,7 @@ og_description: 'YAML anchors, aliases, and overrides are features of the YAML l
 keywords: ['YAML anchors']
 tags: ['docker', 'kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-15
+published: 2021-07-02
 modified_by:
   name: Linode
 title: "YAML Examples for Anchors, Aliases, and Overrides"
