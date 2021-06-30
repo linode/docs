@@ -135,6 +135,7 @@ boolstyle
 boonex
 bootable
 bootloader
+bottlerocket
 bootup
 bootups
 boto

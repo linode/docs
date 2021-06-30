@@ -99,7 +99,7 @@ data:
 
 Clearly, this isn't an ideal path for any security behavior.
 
-To improve the situation, there are several routes from which to choose, such as encrypting data that is stored or communicated with other systems. For example, use a section like in the example below in an encryption configuration file (which is not a pod/container manifest).
+To improve the situation, there are several routes from which to choose, such as encrypting data that is stored, or communicated with other systems. For example, use a section like in the example below in an encryption configuration file (which is not a pod/container manifest).
 
 {{< file "role.yaml" yaml >}}
 apiVersion: apiserver.config.k8s.io/v1
@@ -184,9 +184,9 @@ In the above manifest, each of the following items requires definitions:
 
 - `app` (in "spec" section): the target app for which the policy is applied.
 - `name` (in "ingress" section): the namespace allowed to communicate with the app.
-- `app` (in "ingress" section): the pod permitted to communicate to the app.
+- `app` (in "ingress" section): the Pod permitted to communicate to the app.
 - `name` (in "egress" section): the namespace with which the app may communicate.
-- `app` (in "egress" section): the pod with which the app may communicate.
+- `app` (in "egress" section): the Pod with which the app may communicate.
 
 By doing so, there is now an app for the policy and rules applied for incoming and outgoing traffic.
 
