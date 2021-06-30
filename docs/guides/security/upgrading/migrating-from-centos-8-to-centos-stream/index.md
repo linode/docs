@@ -1,14 +1,13 @@
 ---
 slug: migrate-from-centos-8-to-centos-stream
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
 og_description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
 keywords: ['CentOS','CentOS Stream','Migration','Advantages and Drawbacks']
-tags: ['centos', 'fedora', 'linux']
+tags: ['centos', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-20
+published: 2021-07-02
 modified_by:
   name: Linode
 title: "Migrate From CentOS 8 to CentOS Stream"
@@ -19,12 +18,7 @@ contributor:
   link: https://github.com/JeffreyNovotny
 external_resources:
 - '[CentOS Stream Main Page](https://www.centos.org/centos-stream/)'
-- '[AlmaLinux](https://almalinux.org/)'
-- '[RockyLinux](https://rockylinux.org/)'
-- '[The CentOS Downloads Page](https://www.centos.org/download/)'
 - '[The CentOS Documentation Page](https://docs.centos.org/en-US/docs/)'
-- '[The CentOS Documentation Wiki](https://wiki.centos.org/)'
-- '[The CentOS Forum](https://forums.centos.org/)'
 - '[CentOS Project Contribution Page](https://wiki.centos.org/Contribute)'
 ---
 
@@ -39,12 +33,12 @@ This decision repositions CentOS Stream as a community-based development platfor
 The current version of CentOS Stream is version 8. However, CentOS Stream 9 is currently expected to be ready in mid-2021. The maintenance life cycle for legacy CentOS releases is changing as well. CentOS 8 updates continue until December 31, 2021, which is much earlier than previously planned. CentOS Linux 9 is canceled. However, updates for CentOS 7 continue as planned until mid-2024.
 
 {{< note >}}
-In software engineering terms, the upstream direction is closer to the original source code, while downstream components are typically forks, rebuilds, or customizations. Previously, CentOS was built from RHEL and was downstream of it. However, CentOS is now upstream of RHEL. New versions of RHEL are based on CentOS Stream.
+In software engineering terms, the *upstream* direction is closer to the original source code, while *downstream* components are typically forks, rebuilds, or customizations. Previously, CentOS was built from RHEL and was downstream of it. However, CentOS is now upstream of RHEL. New versions of RHEL are based on CentOS Stream.
 {{< /note >}}
 
 ## Advantages and Disadvantages of CentOS Stream
 
-CentOS Stream has different benefits and risks than legacy CentOS. It might be more or less suitable depending on your circumstances. The stream could be very advantageous for some developers, while others might not notice much difference. However, CentOS Stream might not be as suitable for those who require a high degree of production certainty.
+CentOS Stream has different benefits and risks compared to legacy CentOS. Depending on your use case, CentOS Stream may be suitable for you. However, if you require a high degree of production stability, CentOS Stream might not be the appropriate choice.
 
 ### Advantages of CentOS Stream Compared to CentOS
 
@@ -54,7 +48,7 @@ Software developers and engineers should appreciate the flexibility of CentOS St
 
 - CentOS allows early access to cutting-edge technology, bug fixes, and new features. It allows users to obtain an early preview of future versions of RHEL, allowing for pre-qualification and faster, smoother deployments.
 
-- The Software Development Life Cycle is more agile and new features can be delivered more quickly.
+- The software development life cycle (SDLC) is more agile and new features can be delivered more quickly.
 
 - It allows highly motivated and proactive users to influence both CentOS Stream and RHEL. Developers can bend development plans in the direction of their own requirements.
 
@@ -76,20 +70,6 @@ The disadvantages of CentOS Stream are more likely to concern organizations with
 
 In response to these changes, [AlmaLinux](https://almalinux.org/) and [RockyLinux](https://rockylinux.org/) are branding themselves as CentOS replacements. Users who have concerns about CentOS Stream could potentially move to one of these new options, or the commercial RHEL product. It is also possible to move to another Linux distribution. However, this is more complicated because there are considerable differences between the operating systems.
 
-## Before You Begin
-
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo dnf update
-
-{{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 ## Migrate from CentOS 8 to CentOS Stream
 
 The `dnf` utility provides a simple, convenient, and trouble-free way to migrate from CentOS 8 to CentOS Stream. You can use `dnf` to download the new packages, swap and sync the streams, and remove any outdated components.
@@ -103,7 +83,7 @@ Alternatively, ISO images or RPM packages can be downloaded from [The CentOS Dow
         sudo dnf update -y
         sudo reboot
 
-1. Ensure the Linode is running a recent version of CentOS 8. If it is still running CentOS 7, upgrade to version 8 first.
+1. Ensure the Linode is running a recent version of CentOS 8. If it is still running CentOS 7, [upgrade to version 8](/docs/guides/how-to-upgrade-from-centos-7-to-centos-8/) first.
 
         cat /etc/centos-release
     {{< output >}}
