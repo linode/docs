@@ -28,7 +28,7 @@ Kubernetes is a magnificent beast, one that [can take a business to incredible h
 
 When that happens, security becomes a serious issue – and as with any other aspect of computing, security is not optional. This is compounded exponentially if the development team or system administrators don't start with a solid foundation. A team's container deployments could be left wide open for hackers to gain access to pods, services, networks, or even company data.
 
-It always is wise to learn from others' mistakes so that you don't repeat their errors – also known as "best practices." Apply these security lessons from the very beginning of any Kubernetes journey -- because learning them the hard way is far more painful.
+It always is wise to learn from others' mistakes so that you don't repeat their errors – also known as "Best Practices." Apply these security lessons from the very beginning of any Kubernetes journey -- because learning them the hard way is far more painful.
 
 {{< note >}}
 Kubernetes is an ever-moving and evolving target. The manifests used today might not work tomorrow.
