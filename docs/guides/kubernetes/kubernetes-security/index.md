@@ -1,43 +1,50 @@
 ---
-slug: kubernetes-security
+slug: kubernetes-security-best-practices
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'Kubernetes is powerful. Make sure that you do all the right things to secure it.'
-og_description: 'Kubernetes is powerful. Make sure that you do all the right things to secure it.'
+description: 'Kubernetes is a container orchestration system to help scale containerized applications in the cloud. This guide covers some of the Kubernetes security best practices.'
+og_description: 'Kubernetes is a container orchestration system to help scale containerized applications in the cloud. This guide covers some of the Kubernetes security best practices.'
 keywords: ['Kubernetes security best practices']
+tags: ['kubernetes', 'security','container', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-15
 modified_by:
   name: Linode
 title: "Kubernetes Security Best Practices"
 h1_title: "Kubernetes Security Best Practices"
+enable_h1: true
 contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
+external_resources:
+- '[Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)'
+- '[Fedora CoreOS](https://getfedora.org/coreos?stream=stable)'
+- '[AWS Bottlerocket](https://aws.amazon.com/bottlerocket/)'
+- "[Google's Container-Optimized OS](https://cloud.google.com/container-optimized-os/docs)"
 ---
 
-# Kubernetes Security Best Practices
+Kubernetes is a magnificent beast, one that [can take a business to incredible heights of scale and service](https://www.linode.com/docs/guides/kubernetes-use-cases/). Of course, anyone who has worked with Kubernetes knows a lot of moving parts are involved with the container orchestration platform. This is especially true when [Continuous Integration/Continuous Delivery](https://www.linode.com/docs/guides/development/ci/) (CI/CD) is added into the pipeline. When a development team employs automation with CI/CD, things can move fast with your deployments. So fast, that things can get out of hand.
 
-Kubernetes is a magnificent beast, one that [can take a business to incredible heights of scale and service](https://www.linode.com/docs/guides/kubernetes-use-cases/). Of course, anyone who has worked with Kubernetes knows a lot of moving parts are involved with the container orchestration platform. This is especially true when [Continuous Integration/Continuous Delivery](https://www.linode.com/docs/guides/development/ci/) (CI/CD) is added into the pipeline. When a development team employs automation with CI/CD, things can move really fast with your deployments. So fast, in fact, that things can get out of hand.
+When that happens, security becomes a serious issue – and as with any other aspect of computing, security is not optional. This is compounded exponentially if the development team or system administrators don't start with a solid foundation. A team's container deployments could be left wide open for hackers to gain access to pods, services, networks, or even company data.
 
-When that happens, security becomes a serious issue – and as with any other aspect of computing, security is not optional. This is compounded exponentially if the development team or system administrators don&#39;t start off with a solid foundation. A team&#39;s container deployments could be left wide open for hackers to gain access to pods, services, networks, or even company data.
+It always is wise to learn from others' mistakes so that you don't repeat their errors – also known as "best practices." Apply these security lessons from the very beginning of any Kubernetes journey -- because learning them the hard way is far more painful.
 
-It always is wise to learn from others&#39; mistakes so that you don&#39;t repeat their errors – also known as &quot;best practices.&quot; Apply these security lessons from the very beginning of any Kubernetes journey -- because learning them the hard way is far more painful.
+{{< note >}}
+Kubernetes is an ever-moving and evolving target. The manifests used today might not work tomorrow.
+{{< /note >}}
 
-Do note, however, that Kubernetes is an ever-moving and evolving target. The manifests used today might not work tomorrow.
+## Use Security Policies and Role-Based Access Control
 
-## Use security policies and role-based access control
+Because Kubernetes has a lot of moving parts, interconnected services and users can have access to an entire stack. If the wrong user or service has the wrong access, they could use it to their advantage.
 
-Because Kubernetes has a lot of moving parts, it is possible for interconnected services and users to have access to an entire stack. If the wrong user or service has the wrong access, they could use it to their advantage.
+That's where Role-Based Access Control (RBAC) comes into play. This Kubernetes feature ensures that no user has any more permission than they need to function properly. Administrators should use Kubernetes Roles to attach rules to a group and add users to the group. Each role allows users to do certain things. First, create a security policy and then, using RBAC, assign the role.
 
-That&#39;s where Role-Based Access Control (RBAC) comes into play. This Kubernetes feature ensures that no user has any more permission than they need to function properly. Administrators should use Kubernetes Roles to attach rules to a group and add users to the group. Each role allows users to do certain things. First create a security policy and then, using RBAC, assign the role.
-
-This example defines a security policy that specifies the operations a user can execute and on which namespace.
+The example below defines a security policy that specifies the operations a user can execute and on which namespace.
 
 Create a YAML file, named `role.yaml`, with the following contents:
 
-```
+{{< file "role.yaml" yaml >}}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -47,13 +54,13 @@ rules:
 - apiGroups: ["", "extensions", "apps"]
   resources: ["deployments", "replicasets", "pods"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
-```
+{{< /file >}}
 
-The above role allows users to execute operations on Deployments, Pods, and ReplicaSets, but only within the core, apps, and extensions API groups, and within the `office` namespace. That limits what a user can do, if they&#39;ve been assigned to this role.
+The above role allows users to execute operations on `deployments`, `replicasets`, and `pods`, but only within the `core`, `apps`, and `extensions` API groups, and within the `office` namespace. That limits what a user can do if they have been assigned to this role.
 
-A separate manifest binds that role to a specific user. To continue the example, and bind that role to a user named `admin1`, the manifest would look something like:
+A separate manifest binds that role to a specific user. To continue the example, and bind that role to a user named `admin1`, the manifest would look in shown in the below example:
 
-```
+{{< file "role.yaml" yaml >}}
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -67,19 +74,19 @@ roleRef:
   kind: Role
   name: deployment-manager-binding
   apiGroup: ""
-```
+{{< /file >}}
 
-That binds the `admin1` user, within the `office` namespace, such that they can execute operations on Deployments, Pods, and ReplicaSets, within the core, apps, and extensions API Groups.
+That binds the `admin1` user, within the `office` namespace, such that they can execute operations on `deployments`, `replicasets`, and `pods`, within the `core`, `apps`, and `extensions` API Groups.
 
-It is crucial to understand how to employ RBAC in your Kubernetes manifests. To find out more about how RBAC functions within Kubernetes, read the [official documentation on this subject](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+It is crucial to understand how to employ RBAC in your Kubernetes manifests. To find out more about how RBAC functions within Kubernetes, read the Kubernetes official documentation on [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
-## Keep your secrets to yourself
+## Keep Your Secrets to Yourself
 
-This security practice is not only important; it&#39;s often overlooked.
+This security practice is not only important; it's often overlooked.
 
-First of all, what is a `secret`? A `secret` is an object that contains a key-value pair and metadata. Here&#39;s a basic example of a secret in a Kubernetes YAML file
+First of all, what is a `secret`? A `secret` is an object that contains a key-value pair and metadata. Here's a basic example of a secret in a Kubernetes YAML file.
 
-```
+{{< file "role.yaml" yaml >}}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -88,28 +95,27 @@ type: Opaque
 data:
   username: admin1
   password: BU2Byyz2112
-```
+{{< /file >}}
 
-Clearly, this isn&#39;t an ideal path for any security behavior.
+Clearly, this isn't an ideal path for any security behavior.
 
-To improve the situation, there are a number of routes from which to choose, such as encrypting data that&#39;s stored or communicated with other systems. For example, use a section like this in an encryption configuration file (which is not a pod/container manifest):
+To improve the situation, there are several routes from which to choose, such as encrypting data that is stored or communicated with other systems. For example, use a section like in the example below in an encryption configuration file (which is not a pod/container manifest).
 
-```
-
+{{< file "role.yaml" yaml >}}
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources:
-  - resources:
-    - secrets
+- resources:
+  - secrets
     providers:
-    - aescbc:
+  - aescbc:
         keys:
-        - name: secretkey1
+    - name: secretkey1
           secret: <ENCODED SECRET>
-    - identity: {}
-```
+  - identity: {}
+{{< /file >}}
 
-You would then have to generate a random key and use base64 to encode it:
+You would then have to generate a random key and use `base64` to encode it.
 
 `head -c 32 /dev/urandom | base64`
 
@@ -117,23 +123,23 @@ This outputs a string that is copied as the value for secret, as in:
 
 `secret: piE9qJYzcavzUz5q+gH70uRjnPWsvMMsoTndPi7KzqA=`
 
-Then set `--encryption-provider-config` in the `kube-apiserver` such that it points to the encryption configuration file. Doing this avoids leaving secrets in your Kubernetes manifests.
+Then, set `--encryption-provider-config` in the `kube-apiserver` such that it points to the encryption configuration file. Doing this avoids leaving secrets in your Kubernetes manifests.
 
-## Restrict traffic between pods with a Kubernetes network policy
+## Restrict Traffic Between Pods With a Kubernetes Network Policy
 
-Be default, Pods running on a Kubernetes cluster accept traffic from any source. That&#39;s a bad idea in security terms.
+By default, Pods running on a Kubernetes cluster accept traffic from any source. That's a bad idea in security terms.
 
-To limit the communication between Pods, use the Kubernetes Network Policy API. This is important, because you might have certain Pods that should only be able to communicate to specific Pods. Accepting all traffic from all Pods could lead to trouble.
+To limit the communication between Pods, use the Kubernetes Network Policy API. This is important because you might have certain Pods that should only be able to communicate to specific Pods. Accepting all traffic from all Pods could lead to trouble.
 
 A network policy spec consists of three main sections:
 
-- podSelector: Defines to which pods the rule(s) apply.
-- policyTypes: Defines whether the rules apply to incoming or outgoing traffic.
-- ingress/egress: Defines whether the traffic is incoming (ingress) or outgoing (egress).
+- `podSelector`: Defines to which pods the rule(s) apply.
+- `policyTypes`: Defines whether the rules apply to incoming or outgoing traffic.
+- `Ingress/Egress`: Defines whether the traffic is incoming (ingress) or outgoing (egress).
 
-An example of a network policy might look like:
+An example of a Kubernetes network policy might look like:
 
-```
+{{< file "role.yaml" yaml >}}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -144,58 +150,58 @@ spec:
     matchLabels:
       app: target-app
   policyTypes:
-  - Ingress
-  - Egress
+- Ingress
+- Egress
   ingress:
   - from:
-    - ipBlock:
+  - ipBlock:
         cidr: 172.17.0.0/16
-    - namespaceSelector:
+  - namespaceSelector:
         matchLabels:
           name: namespace
-    - podSelector:
+  - podSelector:
         matchLabels:
           app: pod
     ports:
-    - protocol: TCP
+  - protocol: TCP
       port: 6379
   egress:
-  - to:
-    - ipBlock:
+- to:
+  - ipBlock:
         cidr: 10.0.0.0/24
-    - namespaceSelector:
+  - namespaceSelector:
         matchLabels:
           name: namespace
-    - podSelector:
+  - podSelector:
         matchLabels:
           app: pod
     ports:
-    - protocol: TCP
+  - protocol: TCP
       port: 5978
-```
+{{< /file >}}
 
 In the above manifest, each of the following items requires definitions:
 
-- **`app`** (in spec section): the target app for which the policy is applied.
-- **`name`** (in ingress section): the namespace allowed to communicate with the app.
-- **`app`** (in ingress section): the pod permitted to communicate to the app.
-- **`name`** (in egress section): the namespace with which the app may communicate.
-- **`app`** (in egress section): the pod with which the app may communicate.
+- `app` (in "spec" section): the target app for which the policy is applied.
+- `name` (in "ingress" section): the namespace allowed to communicate with the app.
+- `app` (in "ingress" section): the pod permitted to communicate to the app.
+- `name` (in "egress" section): the namespace with which the app may communicate.
+- `app` (in "egress" section): the pod with which the app may communicate.
 
 By doing so, there is now an app for the policy and rules applied for incoming and outgoing traffic.
 
-## Use a container-optimized operating system
+## Use a Container-Optimized Operating System
 
-A Kubernetes cluster can be deployed on just about any platform. It&#39;s possible to use Ubuntu desktop computers for a controller and nodes – but don&#39;t! Why? Because Ubuntu Desktop has not been optimized for Kubernetes (or for containers, for that matter).
+A Kubernetes cluster can be deployed on just about any platform. It's possible to use Ubuntu desktop computers for a controller and nodes – but it is not recommended. Why? Because, Ubuntu Desktop has not been optimized for Kubernetes (or for containers, for that matter).
 
-Beyond the lack of optimization for containers, standard Linux distributions include systems and services that are unnecessary for successful container operation. So not only are those distributions using extra (valuable) overhead, those added bits of stack could lead to insecurities.
+Beyond the lack of optimization for containers, standard Linux distributions include systems and services that are unnecessary for successful container operation. So not only are those distributions using extra (valuable) overhead, those added bits of the stack could lead to insecurities.
 
-In addition, with a &quot;general purpose&quot; Linux operating system, the system administrators have to take time to administer the Kubernetes cluster and also take care of the operating system. A single patch deployment could possibly break a container or cluster. The admin would also need to disable unused daemons, manage user accounts, secure incoming and outgoing traffic...the list goes on and on.
+In addition, with a "general purpose" Linux operating system, the system administrators have to take time to administer the Kubernetes cluster and also take care of the operating system. A single patch deployment could break a container or cluster. The admin would also need to disable unused daemons, manage user accounts, secure incoming and outgoing traffic, etc.
 
 A container-specific operating system provides a minimalist OS that is designed specifically to _only_ run containers. That removes a considerable amount of admin overhead. More importantly, it drastically reduces the attack plane, thanks to the likes of read-only filesystems, kernel hardening, and general network security.
 
-So instead of opting for the likes of Ubuntu Server, AlmaLinux, SUSE Linux Enterprise, or Red Hat Enterprise Linux, choose [Fedora CoreOS](https://getfedora.org/coreos?stream=stable), [AWS Bottlerocket](https://aws.amazon.com/bottlerocket/), or [Google&#39;s Container-Optimized OS](https://cloud.google.com/container-optimized-os/docs).
+So instead of opting for the likes of Ubuntu Server, AlmaLinux, SUSE Linux Enterprise, or Red Hat Enterprise Linux, choose [Fedora CoreOS](https://getfedora.org/coreos?stream=stable), [AWS Bottlerocket](https://aws.amazon.com/bottlerocket/), or [Google's Container-Optimized OS](https://cloud.google.com/container-optimized-os/docs).
 
-## Security first!
+## Security First
 
-Kubernetes is not easy—by any stretch of the imagination. And even applying best practices takes some time, because every container use-case is different. Every deployment of unique containers in a unique cluster environment requires time spent up-front to investigate which security practices might apply. A bit of extra effort up front goes a long way to keeping your container deployments secure.
+Kubernetes is not easy—by any stretch of the imagination. And even applying best practices takes some time, because every container use-case is different. Every deployment of unique containers in a unique cluster environment requires time spent up-front to investigate which security practices might apply. A bit of extra effort upfront goes a long way to keeping your container deployments secure.
