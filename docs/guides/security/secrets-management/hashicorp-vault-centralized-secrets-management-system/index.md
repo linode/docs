@@ -12,6 +12,7 @@ modified_by:
 title: "How to Set Up and Use a Vault Server"
 h1_title: "Setting Up and Using a Vault Server"
 enable_h1: true
+aliases: ['/security/secrets-management/how-to-set-up-and-use-a-vault-server/']
 tags: ["ubuntu", "security"]
 image: Hashicorp_Vault_Fundamentals.png
 external_resources:

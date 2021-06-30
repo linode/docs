@@ -8,11 +8,12 @@ og_description: "DNF is the default package manager on Fedora and gives users an
 keywords: ['dnf','installing','updating','upgrading','uninstalling','removing','package repositories','fedora']
 tags: ['yum','dnf','fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-07
+published: 2021-05-21
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use YUM DNF"
 h1_title: "Using YUM DNF"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
