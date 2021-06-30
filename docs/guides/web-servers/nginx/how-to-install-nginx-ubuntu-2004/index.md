@@ -1,11 +1,12 @@
 ---
-slug: how-to-install-nginx-ubuntu-2004
+slug: how-to-install-and-use-nginx-on-ubuntu-2004
 author:
   name: Linode Community
   email: docs@linode.com
 description: "NGINX is an open-source web server focused on performance and concurrency, where its event-driven architecture has set it apart. In this guide, learn how to install and start using NGINX on your Ubuntu 20.04 server."
 og_description: "NGINX is an open-source web server focused on performance and concurrency, where its event-driven architecture has set it apart. In this guide, learn how to install and start using NGINX on your Ubuntu 20.04 server."
 keywords: ['nginx','web server','reverse proxy','load balancing','install nginx on ubuntu','ubuntu 20.04']
+tags: ['ubuntu', 'nginx', 'web server', 'proxy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-23
 modified_by:
@@ -24,7 +25,7 @@ relations:
             - distribution: Ubuntu 20.04
 ---
 
-[NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was developed with efficiency and concurrency in mind, seeking to address the scalability and performance issues in other popular web servers. Its event-driven architecture continues to set it apart as one of the highest performing web servers available.
+[NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was developed with efficiency and concurrency in mind, seeking to address the scalability and performance issues in other popular web servers. Its event-driven architecture continues to set it apart as one of the highest-performing web servers available.
 
 This guide aims to show you how to install NGINX on your Ubuntu 20.04 server and how to get started using it.
 
@@ -39,22 +40,22 @@ This guide aims to show you how to install NGINX on your Ubuntu 20.04 server and
         sudo apt update && sudo apt upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Installing NGINX
+## Install NGINX
 
-1. Install NGINX from the package manager:
+1. Install NGINX from the package manager.
 
         sudo apt install nginx
 
-1. The NGINX service starts running immediately, which you can verify with:
+1. The NGINX service starts running immediately, which you can verify with.
 
         sudo systemctl status nginx
 
-    The NGINX service is also enabled by default, meaning that it begins running automatically at system start up.
+    The NGINX service is also enabled by default, meaning that it begins running automatically at system startup.
 
-1. Open port **80** on your system's firewall. UFW is the front end typically used to manage firewall rules on Ubuntu. You can use the following commands to open port **80** with UFW and reload the rules so they take effect:
+1. Open port **80** on your system's firewall. UFW is the front end typically used to manage firewall rules on Ubuntu. You can use the following commands to open port **80** with `ufw` and reload the rules so they take effect.
 
         sudo ufw allow http
         sudo ufw reload
@@ -67,23 +68,23 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     ![Default NGINX page.](nginx-default-page.png)
 
-## Managing NGINX
+## Manage NGINX
 
 The NGINX service runs on `systemd`, which means you can manage it using `systemctl` commands.
 
-1. View the current status of the NGINX service with:
+1. View the current status of the NGINX service using the below command:
 
         sudo systemctl status nginx
 
-1. To stop the NGINX service, use:
+1. To stop the NGINX service, use the below command:
 
         sudo systemctl stop nginx
 
-    You can then start the NGINX service back up with:
+    You can then start the NGINX service back up using the below command:
 
         sudo systemctl start nginx
 
-1. To disable the NGINX service, preventing it from beginning automatically at system startup, use:
+1. To disable the NGINX service, preventing it from beginning automatically at system startup, use the below command:
 
         sudo systemctl disable nginx
 
@@ -91,27 +92,27 @@ The NGINX service runs on `systemd`, which means you can manage it using `system
 
         sudo systemctl enable nginx
 
-1. Restart the NGINX service with:
+1. Restart the NGINX service using the below command:
 
         sudo systemctl restart nginx
 
-1. To reload NGINX's configuration files, use:
+1. To reload NGINX's configuration files, using the below command:
 
         sudo systemctl reload nginx
 
-## Using NGINX
+## Use NGINX
 
 This section walks you through setting up your own website using NGINX. In doing so, it also illustrates how to set up an NGINX proxy to serve static content.
 
 ### NGINX Configuration
 
-1. Disable the default NGINX configuration file:
+1. Disable the default NGINX configuration file.
 
         sudo unlink /etc/nginx/sites-enabled/default
 
 1. Create an NGINX configuration file for your site.
 
-    In this example, replace `example.com` with your site's domain, in both the filename and in the file's contents. Do the same whenever you see `example.com` from here on:
+    In this example, replace `example.com` with your site's domain, in both the filename, and in the file's contents. Do the same whenever you see `example.com` from here on.
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
@@ -130,27 +131,27 @@ server {
 
     This configuration creates a new NGINX server. That server listens for requests on port **80** for the domain name `example.com`. It then defines the server's root directory and index file name. The root directory is where NGINX maps requests to files, and the index file name is the name of the file NGINX serves for a request to the root directory.
 
-    So, for a request to `example.com/`, NGINX attempts to locate an `index.html` file in the `/var/www/example.com` directory, and serves the file if it finds it there.
+    So, for a request to `example.com/`, NGINX attempts to locate an `index.html` file in the `/var/www/example.com` directory and serves the file if it finds it there.
 
-1. Enable your NGINX site:
+1. Enable your NGINX site.
 
         sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 
-1. Run NGINX's configuration test to verify your configuration file:
+1. Run NGINX's configuration test to verify your configuration file.
 
         sudo nginx -t
 
-1. Restart NGINX for the changes to take effect:
+1. Restart NGINX for the changes to take effect.
 
         sudo systemctl restart nginx
 
-### Launching the Site
+### Launch the Site
 
-1. Create a directory for your NGINX site's content:
+1. Create a directory for your NGINX site's content.
 
         sudo mkdir /var/www/example.com
 
-1. Create an `index.html` page in the new NGINX site directory:
+1. Create an `index.html` page in the new NGINX site directory.
 
     {{< file "/var/www/example.com/index.html" html >}}
 <!doctype html>
@@ -170,9 +171,9 @@ server {
 
 ## Conclusion
 
-To learn more about NGINX's features and capabilities, check out our guide [A Comparison of the NGINX and Apache Web Servers](/docs/guides/comparing-nginx-and-apache-web-servers/).
+To learn more about NGINX's features and capabilities, check out our [A Comparison of the NGINX and Apache Web Servers](/docs/guides/comparing-nginx-and-apache-web-servers/) guide.
 
-For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part series on NGINX:
+For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part series on NGINX.
 
 - [Part 1: Installation and Basic Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
 - [Part 2: (Slightly More) Advanced Configurations](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/)
