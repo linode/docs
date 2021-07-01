@@ -1,14 +1,13 @@
 ---
-slug: install-and-configure-redis-on-ubuntu-2004
+slug: install-and-configure-redis-on-ubuntu-20-04
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide explains how to install and perform basic configuration of Redis on Ubuntu version 20.04.'
-og_description: 'This guide explains how to install and perform basic configuration of Redis on Ubuntu version 20.04.'
-keywords: ['Redis','database','Ubuntu','installation','configuration']
-tags: ['redis', 'ubuntu', 'database']
+  name: Jeff Novotny
+description: 'Redis is typically used as a database, cache, and message broker. It''s open-source and serves as an in-memory data structure store. This guide discusses the advantages and disadvantages of Redis and installation and configuration steps on an Ubuntu 20.04 server.'
+og_description: 'Redis is typically used as a database, cache, and message broker. It''s open-source and serves as an in-memory data structure store. This guide discusses the advantages and disadvantages of Redis and installation and configuration steps on an Ubuntu 20.04 server.'
+keywords: ['install redis ubuntu']
+tags: ['ubuntu', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-07
+published: 2021-07-02
 modified_by:
   name: Linode
 title: "Install and Configure Redis on Ubuntu 20.04"
@@ -20,25 +19,15 @@ contributor:
 external_resources:
 - '[Redis](https://redis.io/)'
 - '[Redis commands](https://redis.io/commands)'
-- '[Redis downloads page](https://redis.io/download)'
-- '[Redis cli](https://redis.io/topics/rediscli)'
-- '[Redis Git Hub site](https://raw.githubusercontent.com/redis/redis/6.0/redis.conf)'
-- '[Redis ACL page](https://redis.io/topics/acl)'
-- '[Redis Persistence Documentation](https://redis.io/topics/persistence)'
-- '[Redis Administration Information](https://redis.io/topics/admin)'
-relations:
-    platform:
-        keywords:
-           - distribution: Ubuntu 20.04
 ---
 
-This guide explains how to install and perform the basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store that is easy to use. It can serve as a database cache and message broker and works well with web applications. Redis is an example of a key-value store database, which stores a value inside a key. You must use the key to retrieve the data. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash.
+This guide explains how to install and perform the basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store. It can serve as a database cache and message broker and works well with web applications. Redis is an example of a key-value store database. A key is used to retrieve a stored value. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash.
 
 ## Before You Begin
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide will use `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
+1. This guide will use `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
 
 1. Update your system:
 
@@ -50,7 +39,7 @@ This guide explains how to install and perform the basic configuration of [*Redi
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Advantages and Drawbacks of Redis
+## Redis Advantages and Disadvantages
 
 Redis supports concurrency since all single-command operations in Redis are atomic. Redis contains a large [library of commands](https://redis.io/commands), but it does not have a query language or relational capabilities. Since Redis is an in-memory database, it runs quickly with low latency. However, you can only store as much data as memory allows. Redis provides persistence methods to either write the current database state to disk or record all transactions in a log.
 
@@ -58,18 +47,18 @@ Redis requires a robust, stable hosting environment to function properly. To sto
 
 ## A Summary of the Redis Installation and Configuration Process
 
-A complete Redis installation, including basic configuration tasks, consists of the following high-level steps. The following sections describe each step in more detail:
+A complete Redis installation, including basic configuration tasks, consists of the high-level steps outlined below. Each step is covered in detail in its own section.
 
-1. Verify the System Parameters
+1. Verify your System Parameters
 1. Install Redis
 1. Enable and Run Redis
 1. Secure Redis
 1. Configure Redis Persistence
 1. Optimize Redis for Better Performance
 
-## Verify the System Parameters
+## Verify your System Parameters
 
-Ensure your node is running an up-to-date version of Ubuntu 20.04. If necessary, enable and configure the ufw firewall. Run the following commands to enable `ufw` and allow it to accept incoming SSH connections.
+Ensure your Linode is running an up-to-date version of Ubuntu 20.04. If necessary, enable and configure the ufw firewall. Run the following commands to enable `ufw` and allow it to accept incoming SSH connections.
 
 1. Configure `ufw` to allow SSH connections.
 
@@ -89,11 +78,11 @@ Ensure your node is running an up-to-date version of Ubuntu 20.04. If necessary,
 
 ## Install Redis
 
-You can install Redis either through the Ubuntu `apt` utility or from a TAR file. The latest stable version (as of January 2021) is Redis 6.0.9, but pre-release versions are also available on the [Redis downloads page](https://redis.io/download).
+You can install Redis either through the Ubuntu APT utility or from a TAR file. The latest stable version (as of January 2021) is Redis 6.0.9, but pre-release versions are also available on the [Redis downloads page](https://redis.io/download).
 
 ### Install Redis From a Package
 
-To install Redis using the `apt` utility, follow the below steps:
+To install Redis using the APT utility, follow the steps below:
 
 1. Add the Redis repository to the Ubuntu source repositories.
 
@@ -106,12 +95,12 @@ To install Redis using the `apt` utility, follow the below steps:
         sudo apt install redis-server
 
 {{< note >}}
-If the Redislabs repository is added, apt automatically installs the latest stable version. We do not recommend installing Redis through the Ubuntu default packages, as that might install an older version.
+If the Redislabs repository is added, APT automatically installs the latest stable version. We do not recommend installing Redis through the Ubuntu default packages, as that might install an older version.
 {{< /note >}}
 
 ### Install Redis From a Downloaded File
 
-To install Redis from a downloaded `.gz` file, follow the below steps:
+To install Redis from a downloaded `.gz` file, follow the steps below:
 
 1. Download the latest stable version from the [Redis downloads page](https://redis.io/download) to your computer. Transfer the Redis file to your host via `scp`, `ftp`, or any other file transfer method. The following example shows a Redis 6.0.9 executable. Replace the file name with the actual name of the file you are transferring, and substitute your user name and host IP address.
 
@@ -126,7 +115,7 @@ To install Redis from a downloaded `.gz` file, follow the below steps:
 
 ## Enable and Run Redis
 
-[Redis-cli](https://redis.io/topics/rediscli) is the main command-line interface for Redis. Through this utility, you can interactively store and retrieve data, and perform administrative tasks. You can configure Redis through the `redis.conf` file, which contains a list of directives. Each directive consists of a variable name, plus a value, such as `supervised systemd`.
+[Redis-cli](https://redis.io/topics/rediscli) is the main command-line interface for Redis. Through this utility you can interactively store and retrieve data, and perform administrative tasks. You can configure Redis through the `redis.conf` file, which contains a list of directives. Each directive consists of a variable name, plus a value, such as `supervised systemd`.
 
 1. Add a directive to allow Redis to start via the system control utility. Edit the `redis.conf` file at `/etc/redis/redis.conf`, and change the value of the `supervised` directive to `systemd`. This setting is found in the "General" section of the file.
 
