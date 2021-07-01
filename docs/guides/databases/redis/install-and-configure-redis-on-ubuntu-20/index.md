@@ -27,7 +27,7 @@ This guide explains how to install and perform the basic configuration of [*Redi
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide will use `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
 
 1. Update your system:
 
@@ -102,7 +102,7 @@ If the Redislabs repository is added, APT automatically installs the latest stab
 
 To install Redis from a downloaded `.gz` file, follow the steps below:
 
-1. Download the latest stable version from the [Redis downloads page](https://redis.io/download) to your computer. Transfer the Redis file to your host via `scp`, `ftp`, or any other file transfer method. The following example shows a Redis 6.0.9 executable. Replace the file name with the actual name of the file you are transferring, and substitute your user name and host IP address.
+1. Download the latest stable version from the [Redis downloads page](https://redis.io/download) to your computer. Transfer the Redis file to your host via `scp`, `ftp`, or any other file transfer method. The following example shows a Redis 6.0.9 executable. Replace the filename with the actual name of the file you are transferring, and substitute your user name and host IP address.
 
         scp /localpath/redis-6.0.9.tar.gz user@yourhost:~/
 1. Unzip the file using the tar utility.
@@ -236,7 +236,8 @@ Redis stores all of its data in memory, so in the event of a crash or a system r
 
 - *Append Only File* (AOF) persistence appends every write operation to a log. Redis replays these transactions at startup to restore the database state. You can configure AOF persistence in the `redis.conf` file with the `appendonly` and `appendfsync` directives. This method is more durable and results in less data loss. Redis frequently rewrites the file so it is more concise, but AOF persistence results in larger files, and it is typically slower than the RDB approach.
 
-1. To change the RDB snapshot intervals, edit the `save` directives in `redis.conf`. A directive consisting of `save 30 100` means Redis will continue to take a snapshot every 30 seconds provided at least 100 keys have changed. Multiple snapshot thresholds can be configured.
+1. To change the RDB snapshot intervals, edit the `save` directives in `redis.conf`. A directive consisting of `save 30 100` means Redis continues to take a snapshot every 30 seconds provided at least 100 keys have changed. Multiple snapshot thresholds can be configured.
+
     {{< file "/etc/redis/redis.conf" >}}
 save 900 1
 save 300 10
