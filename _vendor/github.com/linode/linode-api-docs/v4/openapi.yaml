@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.97.0
+  version: 4.97.2
 
   title: Linode API
   description: |
@@ -566,7 +566,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreditCard'
+              allOf:
+              - $ref: '#/components/schemas/CreditCard'
       responses:
         '200':
           description: Credit Card updated.
@@ -19336,9 +19337,7 @@ components:
           type: string
           enum:
           - pending
-          - ready
           - started
-          - completed
           description: >
             The maintenance status.
           example: started
