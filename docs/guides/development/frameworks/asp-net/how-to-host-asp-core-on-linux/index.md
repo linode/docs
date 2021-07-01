@@ -1,31 +1,24 @@
 ---
 slug: tutorial-host-asp-net-core-on-linux
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Microsoft's ASP.NET Core provides a robust cross-platform and open-source framework for developing applications. In this guide, you learn how to install and get started using .NET Core for building a web application. Then, you can see how to host your application on Linux using NGINX."
-og_description: "Microsoft's ASP.NET Core provides a robust cross-platform and open-source framework for developing applications. In this guide, you learn how to install and get started using .NET Core for building a web application. Then, you can see how to host your application on Linux using NGINX."
-keywords: ['asp.net core','dotnet','microsoft','open source','web application','deploy with nginx']
+  name: Nathaniel Stickman
+description: "Microsoft's ASP.NET Core provides a robust cross-platform and open-source framework for developing applications. In this guide, you learn how to install and get started using .NET Core for building a web application. Then, you host your application on Linux and use NGINX as a web server and reverse proxy."
+og_description: "Microsoft's ASP.NET Core provides a robust cross-platform and open-source framework for developing applications. In this guide, you learn how to install and get started using .NET Core for building a web application. Then, you host your application on Linux and use NGINX as a web server and reverse proxy."
+keywords: ['asp net core tutorial']
 tags: ['web applications', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-04
+published: 2021-07-02
 modified_by:
   name: Nathaniel Stickman
-title: "Tutorial: Host ASP.NET Core on Linux"
-h1_title: "How to Host ASP.NET Core on Linux"
+title: "An ASP.NET Core on Linux Tutorial"
+h1_title: "Tutorial: Hosting ASP.NET Core on Linux"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Tutorial: Get Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)'
-- '[Install .NET on Linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux)'
-- '[Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-5.0&tabs=visual-studio)'
-- '[Get started with ASP.NET Core MVC](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-5.0&tabs=visual-studio)'
-- '[Snap Store](https://snapcraft.io/docs/getting-started)'
-- '[Certbot](https://certbot.eff.org)'
-- '[Lets Encrypt](https://letsencrypt.org)'
-- '[Microsofts Recommended learning path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
+- '[Microsofts ASP.NET Core Recommended Learning Path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
 ---
 
 [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0) is Microsoft's cross-platform and open-source redesign of its original ASP.NET framework. With ASP.NET Core, you can build and run .NET applications not only on Windows but also macOS and Linux.
@@ -42,10 +35,10 @@ This guide shows you how to install ASP.NET Core on your Linux server and how to
 
         sudo apt update && sudo apt upgrade
 
-1. Throughout, this guide uses `example-app` as the name of the ASP.NET Core application and `example.com` as your server's domain name. Replace these with your preferred application name and actual server name, respectively.
+1. This guide uses `example-app` as the name of the ASP.NET Core application and `example.com` as your server's domain name. Replace these with your preferred application name and actual server name, respectively.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install ASP.NET Core
@@ -68,7 +61,7 @@ These installation steps work for Debian 10 and Ubuntu 20.04. If you are using a
 
         sudo apt update
 
-1. Install the APT package allowing you to use repositories over HTTPS, and update APT's indices again.
+1. Install the APT package allowing you to use repositories over HTTPS and update APT's indices again.
 
         sudo apt install apt-transport-https
         sudo apt update
@@ -105,12 +98,12 @@ These installation steps work for Debian 10 and Ubuntu 20.04. If you are using a
 
         dotnet watch run
 
-    .NET Core serves the application on **localhost** port **5001**. To visit the application remotely, you can use an SSH tunnel:
+    .NET Core serves the application on `localhost` port `5001`. To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **5001**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `5001`.
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
-            ssh -L5001:localhost:5001 example-user@198.51.100.0
+            ssh -L5001:localhost:5001 example-user@192.0.2.0
 
 1. Now you can visit the application in your browser by navigating to `https://localhost:5001`.
 
@@ -118,15 +111,13 @@ These installation steps work for Debian 10 and Ubuntu 20.04. If you are using a
 .NET Core serves your application over HTTPS. When visiting the application, you browser may warn you that the SSL certificate is self-signed. Choose to proceed anyway.
     {{< /note >}}
 
-.NET Core uses Razor as its template engine for web application interfaces. You can learn more about using Razor in your web application from the Microsoft's [Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-5.0&tabs=visual-studio) guide.
-
-.NET Core also has extensive support for developing applications using the Model–View–Controller (MVC) architecture. If you want to learn more about MVC, checkout the Microsoft's [Get started with ASP.NET Core MVC](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-5.0&tabs=visual-studio) guide.
+.NET Core uses Razor as its template engine for web application interfaces. You can learn more about using Razor in your web application from Microsoft's [Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-5.0&tabs=visual-studio) guide. .NET Core also has extensive support for developing applications using the Model–View–Controller (MVC) architecture. If you want to learn more about MVC, checkout the Microsoft's [Get started with ASP.NET Core MVC](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-5.0&tabs=visual-studio) guide.
 
 ## Deploy Your Application with NGINX
 
 .NET Core's default server, Kestrel, works well for serving dynamic web applications. However, Microsoft recommends pairing it with a reverse proxy server when deploying your application to production. Doing so allows you to offload tasks like request handling and serving static content.
 
-The steps that follow show you how to set up NGINX as the reverse proxy server for your .NET Core application.
+The steps in this section show you how to set up NGINX as the reverse proxy server for your .NET Core application.
 
 ### Install and Configure NGINX
 
@@ -134,7 +125,7 @@ The steps that follow show you how to set up NGINX as the reverse proxy server f
 
         sudo apt install nginx
 
-1. Create a `/etc/nginx/proxy.conf` file, and fill it with the following:
+1. Create a `/etc/nginx/proxy.conf` file, and add the contents of the example file:
 
     {{< file "/etc/nginx/proxy.conf" >}}
 proxy_redirect          off;
@@ -192,7 +183,7 @@ http {
 }
     {{< /file >}}
 
-1. Open access to the HTTPS port (**443**) on your server's firewall.
+1. Open access to the HTTPS port (`443`) on your server's firewall.
 
         sudo ufw allow https
         sudo ufw reload
@@ -263,7 +254,7 @@ The steps below ensure that your .NET Core application works properly with the N
 
 1. Open the `Startup.cs` file, and add the *Forwarded Headers* middleware. Ensure that the `app.UseForwarededHeaders` method is invoked before any other middleware.
 
-    {{< file "Startup.cs" >}}
+    {{< file "~/example-app/Startup.cs" >}}
 // [...]
 
 using Microsoft.AspNetCore.HttpOverrides;
@@ -289,9 +280,9 @@ using Microsoft.AspNetCore.HttpOverrides;
 
         dotnet publish --configuration Release
 
-    The output should indicate the location of an `example-app.dll` file. Take note of that location, as it is used in the `example-app.service` file created below. It should be similar to `bin/Release/net5.0/example-app.dll`.
+    The output should indicate the location of an `example-app.dll` file. Take note of that location, as it is used in the `example-app.service` file created below. It should be similar to `/bin/Release/net5.0/example-app.dll`.
 
-1. Copy your project to the `var/www` directory. This is a conventional place to store your production application, but it also allows you to separate your production and working versions of the application.
+1. Copy your project to the `/var/www` directory. This is a conventional place to store your production application, but it also allows you to separate your production and working versions of the application.
 
         sudo cp -r ~/example-dotnet-app /var/www/example-dotnet-app
 
@@ -323,8 +314,8 @@ WantedBy=multi-user.target
         sudo systemctl enable example-app
         sudo systemctl start example-app
 
-1. Verify that the application is running by visiting its URL, `example.com`.
+1. Verify that the application is running by visiting its URL, `http://example.com`.
 
 ## Conclusion
 
-Congratulations! You have now successfully created and deployed a .NET Core application. You can continue your journey and learn more about using .NET for web-application development by following Microsoft's [Recommended learning path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path).
+You have now successfully created and deployed a .NET Core application. You can continue your journey and learn more about using .NET for web-application development by following Microsoft's [Recommended learning path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path).
