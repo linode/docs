@@ -5,25 +5,27 @@ author:
   email: docs@linode.com
 description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
 og_description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['networking','multi-queue']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-29
+published: 2021-07-01
 modified_by:
   name: Linode
 title: "How To Configure Multi-Queue NICs"
 h1_title: "Configuring Multi-Queue NICs"
 enable_h1: true
+external_resources:
+ - '[KVM Multi-Queue documentation and performance](https://www.linux-kvm.org/page/Multiqueue)'
+ - '[HOWTO for multiqueue network device support](https://www.kernel.org/doc/html/latest/networking/multiqueue.html)'
+tags: ["networking","linode platform"]
 ---
 
-Multi-queue NICs (network interface cards) are supported on Linode Compute Instances within all data centers. This feature allows network interrupts to be balanced across multiple vCPUs, not just processed on a single vCPU. Depending on the server's workload and network traffic, multi-queue can dramatically enhance network performance.
+Multi-queue NICs (network interface cards) are supported on Linode Compute Instances within all data centers. This feature provides multiple receive (RX) and transmit (TX) queues, assigns them to different network interrupts, and balances them over multiple vCPUs. Historically, this traffic was all handled by a single vCPU core. Depending on the server's workload and network traffic, multi-queue can dramatically enhance network performance.
 
-## Multi-Queue Compatibility
-
-Multi-queue is automatically enabled on all Linode Compute Instances deployed on or after June 2nd, 2021. A restart may be required to utilize multi-queues for Compute Instances deployed prior to that date. That said, multi-queue needs to be supported by the kernel in use on your Compute Instance. Older kernels, like the one provided by default on Debian 8, does not support multi-queue NICs.
+**For most Compute Instances deployed after June 2nd, 2021, no action is needed to enable multi-queue NICs**. If your Compute Instance was deployed prior to that date, a reboot may be required. On older Linux distributions, such as Debian 8 and 9, multi-queue NICs needs to be manually enabled by following the instructions within this guide.
 
 ## Determining if Multi-Queue is Enabled
 
-To check if multi-queue is already enabled on your network devices, perform the following set of instructions.
+Check if multi-queue is already enabled on your network devices by using the [ethtool](https://en.wikipedia.org/wiki/Ethtool) command-line tool.
 
 1.  Log in to your Linode Compute Instance through [Lish](/docs/guides/using-the-linode-shell-lish/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
 
@@ -64,13 +66,9 @@ Combined:       2
 
 ## Enabling Multi-Queue on Network Devices
 
-For most Linux distributions on Compute Instances deployed after June 2nd, 2021, **no action is required to enable multi-queue NICs**. For Compute Instances deployed prior to that date, a reboot may be required. For distributions that do not natively support multi-queue NICs, you'll need to manually enable this feature through the following instructions.
+If multi-queue is not enabled and a reboot did not automatically enable it, you can manually enable this feature through the following instructions.
 
 1.  Review the number of vCPU cores available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the Cloud Manager, selecting your Linode Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
-
-1.  Follow the instructions within the [Determining if Multi-Queue is Enabled](#determining-if-multi-queue-is-enabled) section above. Proceed only if multi-queue is not yet enabled on your system.
-
-1.  Log in to your Linode Compute Instance through [Lish](/docs/guides/using-the-linode-shell-lish/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
 
 1.  Run the following command to enable multiple queues, replacing *[cpu-count]* with the number of vCPUs on your Compute Instance.
 
@@ -82,9 +80,7 @@ For most Linux distributions on Compute Instances deployed after June 2nd, 2021,
 
 If you start to see performance issues, such as CPU spikes related to network traffic that impact other software on your server, you can disable multi-queue NICs if desired.
 
-1.  Log in to your Linode Compute Instance through [Lish](/docs/guides/using-the-linode-shell-lish/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
-
-1.  Run the following command to disable multiple queues:
+1.  Run the following command on your Linode Compute Instance to disable multiple queues:
 
         ethtool -L eth0 combined 1
 
@@ -94,15 +90,13 @@ If you start to see performance issues, such as CPU spikes related to network tr
 
 While network interrupts will be balanced across all vCPUs once multi-queue NICs are enabled, you may want to also install the [irqbalance](https://github.com/Irqbalance/irqbalance) utility if you have familiarity using it or wish to have additional configuration options. This additional utility is **not required** and, in our workloads, we did not notice a difference in performance.
 
-1.  Log in to your Linode Compute Instance through [Lish](/docs/guides/using-the-linode-shell-lish/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
+To install irqbalance, run the following commands on your Linode Compute Instance:
 
-1.  Install irqbalance by running the following commands:
+**Ubuntu and Debian:**
 
-    **Ubuntu and Debian:**
+    sudo apt-get update
+    sudo apt-get install irqbalance
 
-        sudo apt-get update
-        sudo apt-get install irqbalance
+**Fedora, CentOS, and other RHEL-derivatives, such as AlmaLinux and Rocky Linux:**
 
-    **Fedora, CentOS, and other RHEL-derivatives, such as AlmaLinux and Rocky Linux:**
-
-        sudo yum install irqbalance
+    sudo yum install irqbalance
