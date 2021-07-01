@@ -8,6 +8,7 @@ og_description: Linode uses an hourly billing system. Use this guide to learn ab
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: 2021-07-01
 modified_by:
   name: Linode
 published: 2019-10-25
@@ -17,32 +18,37 @@ tags: ["linode platform"]
 
 We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works. To learn how to manage your billing in the Cloud Manager see the [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
 
-## How Hourly Billing Works
+## Understanding Hourly Billing
 
-All services are invoiced automatically on the first day of the month for usage from the previous month.
+Linode uses a hybrid hourly billing system that is simple and flexible. It enables you to continuously add, modify, and remove services throughout the month. After the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. Here are some important billing considerations:
 
-  - If you use a service for the entirety of the previous month, you're sure to hit the **monthly cap** and your bill will only be for the monthly cap for that service. See [Example: Monthly Cap Met](#example-monthly-cap-met).
-  - If you use a service for only part of the past month, you're billed at the **hourly** rate for that service. See [Example: Hourly Billing](#example-hourly-billing)
-  - If your usage during any given month hits the monthly cap for the service, regardless of when you start or stop the service, hourly billing stops and you are charged the monthly cap. See [Example: Monthly Cap Met](#example-monthly-cap-met)
-  - You'll never be billed more than the monthly cap for any service, excluding network [transfer overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
+- Every paid service offered by Linode has a predicable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
 
-### Example: Monthly Cap Met
+- When a service is active, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges\** are displayed on the **Billing Info** tab within the Account page of the Cloud Manager. Service fees are always rounded up to the nearest hour.
 
-- You start a Linode 1 GB server before the 1st of the month. It's hourly rate is $.0075/hour. After 30 days, at the end of the month, it would normally be billed at 30 full 24 hour days, or 720 hours &times; $.0075 = $5.40. However, because of the monthly cap, you will only be billed $5.00.
+- Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
-- You start a High Memory Linode 48 GB server on the 2nd of the month. It's hourly rate is $.18/hour. After running it for 672 hours (28 full 24 hour days), you delete it. At the hourly rate you would be billed at 672 &times; $.18 = $120.96. However, because of the monthly cap, you will only be billed $120.00.
-
-### Example: Hourly Billing
-
-You start a Linode 1GB server on the 20th of the month. It's hourly rate is $.0075. After 10 days, at the end of the month, it is billed at 10 days &times; 24 hours &times; $.0075 = $1.80.
-
-### Example: Cancelled or Removed Services
-
-Billing happens at the end of the month following service, even if you cancel or remove services. For example, if you start a Linode 1GB server on the 5th of the month, then remove it on the 10th. At the end of the month, you will be billed for the 5 days the Linode was running.
+If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is active on the account.
 
 {{< note >}}
-Review the [Viewing Current Balance](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#viewing-current-balance) section of the Manage Billing in Cloud Manager guide to monitor your balance throughout the month.
+\* Review the [Viewing Current Balance](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#viewing-current-balance) section of the Manage Billing in Cloud Manager guide to monitor your balance throughout the month.
 {{< /note >}}
+
+## Example Billing Scenarios
+
+Here are a few examples of common billing scenarios you might encounter. For these examples, we will assume the month is 30 days (720 hours). We will also be using a 4GB Linode Compute Instance, which has an hourly rate of $0.03/hour and a monthly rate/cap of $20.
+
+### A Service is Active for the *Entire* Month
+
+You create a 4GB Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $21.60. Since you've reached the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+
+### A Service is Active for *Almost* the Entire Month
+
+You create a 4GB Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was active for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $20.52. Since you've reached the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+
+### A Service is Active for *Just Some* of the Month
+
+You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was active for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
 
 ## Mid-Month Billing
 
