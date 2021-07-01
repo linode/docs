@@ -1,15 +1,22 @@
 ---
+# Shortguide: Understanding HTTPS, TLS, Let's Encrypt, and Certbot
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: understanding-https-tls-certbot-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-01
 author:
   name: Linode
   email: docs@linode.com
-description: "Shortguide that provides information on understanding HTTP, TLS, Let's Encrypt, and Certbot"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-01
-published: 2021-07-01
-title: Understanding HTTPS, TLS, Let's Encrypt, and Certbot Shortguide
-headless: true
-show_on_rss_feed: false
+modified_by:
+  name: Linode
 ---
 
 ## Understanding HTTPS, TLS, Let's Encrypt, and Certbot
@@ -24,4 +31,4 @@ A web server must possess a signed public-key certificate from a trusted Certifi
 
 ### Certbot
 
-Certbot was developed by the *Electronic Frontier Foundation* (EFF) with the end goal of improving web security by enabling HTTPS. It is compatible with most operating systems as well as the most popular web server software, such as Apache and NGINX. Certbot is responsible for communicating with Let's Encrypt to request the certificate, perform any requierd ACME challenges, install the certificate, and configure the web server. It can also automatically handle the certificate renewal process. See the [About Certbot](https://certbot.eff.org/about/) page on Certbot's website for additional information
+Certbot was developed by the *Electronic Frontier Foundation* (EFF) with the end goal of improving web security by enabling HTTPS. It is compatible with most operating systems as well as the most popular web server software, such as Apache and NGINX. Certbot is responsible for communicating with Let's Encrypt to request the certificate, perform any required ACME challenges, install the certificate, and configure the web server. It can also automatically handle the certificate renewal process. See the [About Certbot](https://certbot.eff.org/about/) page on Certbot's website for additional information

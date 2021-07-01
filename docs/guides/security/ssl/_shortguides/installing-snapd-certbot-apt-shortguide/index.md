@@ -1,15 +1,22 @@
 ---
+# Shortguide: Installing Snapd and Certbot through apt
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: installing-snapd-certbot-apt-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-01
 author:
   name: Linode
   email: docs@linode.com
-description: "Shortguide that outlines how to install snapd and certbot on systems using the apt package manager"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-01
-published: 2021-07-01
-title: Installing Snapd and Certbot through apt Shortguide
-headless: true
-show_on_rss_feed: false
+modified_by:
+  name: Linode
 ---
 
 ## Installing Snapd

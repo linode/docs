@@ -1,16 +1,24 @@
 ---
+# Shortguide: Deleting a Certificate through Certbot
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: deleting-certificate-certbot-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-01
 author:
   name: Linode
   email: docs@linode.com
-description: "Shortguide that outlines how to delete a certificate through Certbot"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-01
-published: 2021-07-01
-title: Deleting a Certificate through Certbot Shortguide
-headless: true
-show_on_rss_feed: false
+modified_by:
+  name: Linode
 ---
+
 
 ## Deleting a TLS/SSL Certificate Using Certbot
 

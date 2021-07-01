@@ -1,15 +1,22 @@
 ---
+# Shortguide: Verifying NGINX is Configured
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: verifying-nginx-certbot-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-01
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that outlines how to verify that NGINX is installed and configured'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-01
-published: 2021-07-01
-title: Verifying NGINX is Configured Shortguide
-headless: true
-show_on_rss_feed: false
+modified_by:
+  name: Linode
 ---
 
 ## Verifying the NGINX Installation

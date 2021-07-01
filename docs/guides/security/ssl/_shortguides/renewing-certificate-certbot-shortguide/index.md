@@ -1,15 +1,22 @@
 ---
+# Shortguide: Renewing a Certificate Using Certbot
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: renewing-certificate-certbot-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-01
 author:
   name: Linode
   email: docs@linode.com
-description: "Shortguide that outlines how to renew a certificate using Certbot"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-01
-published: 2021-07-01
-title: Renewing a Certificate Using Certbot Shortguide
-headless: true
-show_on_rss_feed: false
+modified_by:
+  name: Linode
 ---
 
 ## Renewing a TLS/SSL Certificate Using Certbot

@@ -1,15 +1,22 @@
 ---
+# Shortguide: Configuring UFW for Web Traffic
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: configuring-ufw-for-web-traffic-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-01
 author:
   name: Linode
   email: docs@linode.com
-description: "Shortguide that outlines how to install UFW on Ubuntu and Debian and allow ports needed for website traffic."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-01
-published: 2021-07-01
-title: Configuring UFW for Web Traffic Shortguide
-headless: true
-show_on_rss_feed: false
+modified_by:
+  name: Linode
 ---
 
 ## Configuring Firewall Rules with UFW
