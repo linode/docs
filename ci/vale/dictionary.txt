@@ -565,6 +565,7 @@ greylisting
 griefing
 griesemer
 groot
+groupinfo
 grsecurity
 gsa
 gsad
