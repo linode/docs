@@ -20,7 +20,6 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: Debian
-            - webserver: NGINX
 ---
 
 
@@ -36,7 +35,7 @@ Before continuing with this guide, you need a website accessible over HTTP using
 
 2.  **A registered domain name with DNS records pointing to the IPv4 (and optionally IPv6) address of your server.** A domain can be obtained through any registrar and can utilize any DNS service, such as Linode's [DNS Manager](/docs/platform/manager/dns-manager/). Review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide for more information on configuring DNS.
 
-3.  **The NGINX web server software installed on your server and configured for your domain.** You can review the [How to Install NGINX on Ubuntu 18.04 LTS](/docs/guides/how-to-install-nginx-ubuntu-18-04/) guide for information on installing and configuring NGINX.
+3.  **The NGINX web server software installed on your server and configured for your domain.** You can review the [How to Install NGINX on Debian 10](/docs/guides/how-to-install-nginx-debian-10/) guide for information on installing and configuring NGINX.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
