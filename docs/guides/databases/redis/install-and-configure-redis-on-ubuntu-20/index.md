@@ -4,7 +4,7 @@ author:
   name: Jeff Novotny
 description: 'Redis is typically used as a database, cache, and message broker. It''s open-source and serves as an in-memory data structure store. This guide discusses the advantages and disadvantages of Redis and installation and configuration steps on an Ubuntu 20.04 server.'
 og_description: 'Redis is typically used as a database, cache, and message broker. It''s open-source and serves as an in-memory data structure store. This guide discusses the advantages and disadvantages of Redis and installation and configuration steps on an Ubuntu 20.04 server.'
-keywords: ['install redis ubuntu']
+keywords: ['Redis','database','Ubuntu','installation','configuration']
 tags: ['ubuntu', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
