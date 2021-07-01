@@ -21,7 +21,7 @@ modified_by:
 
 ## Installing Snapd
 
-[Snap](https://snapcraft.io/about) is a package manager developed by Canonical (creators of Ubuntu). Software is packaged as a *snap* (self-contained application and dependencies) and the *snapd* tool is used to manage these packages. Since certbot is packaged as a snap, we'll need to install snapd before installing certbot. While it's installed by default on Ubuntu 16.04 and later, its also available for most other Linux distributions.
+[Snap](https://snapcraft.io/about) is a package manager developed by Canonical (creators of Ubuntu). Software is packaged as a *snap* (self-contained application and dependencies) and the *snapd* tool is used to manage these packages. Since certbot is packaged as a snap, we'll need to install snapd before installing certbot. While it's installed by default on Ubuntu 16.04 and later, its also available for most other Linux distributionsl, including CentOS/RHEL 8.
 
 1.  Add the EPEL repository
 

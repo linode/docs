@@ -24,7 +24,7 @@ relations:
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the NGINX web server on CentOS 8, AlmaLinux 8, and Rocky Linux 8. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on NGINX (or other web servers).
 
-**Supported distributions:** RHEL (Red Hat Enterprise Linux) 8 and its derivatives (such a CentOS 8, AlmaLinux 8 and Rocky Linux 8).
+**Supported distributions:** RHEL (Red Hat Enterprise Linux) 8 and its derivatives (such a CentOS 8, AlmaLinux 8, and Rocky Linux 8).
 
 ## Before You Begin
 
@@ -44,7 +44,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 {{< content "configuring-firewalld-for-web-traffic-shortguide" >}}
 
-{{< content "installing-snapd-certbot-dnf-shortguide" >}}
+{{< content "installing-snapd-certbot-dnf-rhel-shortguide" >}}
 
 {{< content "requesting-certificate-nginx-certbot-shortguide" >}}
 
