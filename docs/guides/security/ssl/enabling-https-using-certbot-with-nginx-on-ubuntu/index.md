@@ -17,7 +17,6 @@ h1_title: "Securing Web Traffic Using Certbot with NGINX on Ubuntu 20.04 and 18.
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
 aliases: ['/guides/how-to-install-certbot-for-nginx-on-ubuntu-20-04/','/quick-answers/websites/certbot/how-to-install-certbot-on-ubuntu-18-04/','/quick-answers/websites/how-to-install-certbot-on-ubuntu-18-04/','/guides/how-to-install-certbot-on-ubuntu-18-04/']
 relations:
     platform:
