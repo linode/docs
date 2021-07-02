@@ -82,19 +82,29 @@ At any time, you can make a manual payment to add funds to your account. This is
 
 ### Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/guides/manage-billing-in-cloud-manager/#cancelling-your-account) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional or referral credit. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
-
-## Referral Credits
-
-You can receive service credit by referring new users to Linode. When you refer someone who maintains at least one active Linode for 90 days, your account will be issued a $20 service credit. Here's how to find your account referral code and URL:
-
-1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page.
-1.  Select the **Referrals** tab.
-1.  The referral code and URL are listed under the **Referrals** section. You can provide the code to friends and use the URL on your website to generate referrals.
-
-Referral service credits must be used to purchase Linode services, and cannot be refunded as cash.
+If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/guides/manage-billing-in-cloud-manager/#cancelling-your-account) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
 
 ## Tax Information
 
 Review our [Tax Information](/docs/guides/tax-information/) guide for information about which taxes Linode may charge.
+
+## Referral Program
+
+When you refer a new user to Linode through our referral program, both you and the new user can receive a promotional credit. Here are the program details:
+
+-  **A new user receives a $100 60-day credit** when they sign up through a referral link. Before the credit is applied, they must add a valid payment method to their account.
+
+-  **The referrer receives a $25 non-expiring credit** once the new user has been active for 90-days and spends $25 or more on services (after their promotional credit has been used or has expired).
+
+To learn more about this program, visit the [Referral Program](https://www.linode.com/referral-program/) page on our website.
+
+### Find Your Referral Link
+
+To activate the referral program and obtain a referral link, you must spend at least $25 with Linode, not including any promotional credits added to your account. Once activated, your referral link (including your unique referral code) can be viewed within the Cloud Manager.
+
+1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+1.  Select the **My Profile** link by clicking on your username at the top of the page.
+1.  Select the **Referrals** tab.
+1.  The referral code and URL are listed within this section.
+
+You can provide the referral link to friends and colleagues as well as post it to your website and social media.
