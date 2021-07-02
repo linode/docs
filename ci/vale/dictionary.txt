@@ -407,6 +407,7 @@ esc
 etcd
 etcd0
 eth0
+ethtool
 eugen
 evhost
 example1
@@ -714,6 +715,7 @@ irc
 irchelp
 ircname
 iredmail
+irqbalance
 irssi
 isn
 iso
