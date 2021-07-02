@@ -316,6 +316,7 @@ deprovisioning
 descolada
 descr
 deserialize
+despawn
 dest
 dereference
 dereferencing
@@ -406,6 +407,7 @@ esc
 etcd
 etcd0
 eth0
+ethtool
 eugen
 evhost
 example1
@@ -565,6 +567,7 @@ greylisting
 griefing
 griesemer
 groot
+groupinfo
 grsecurity
 gsa
 gsad
@@ -709,8 +712,10 @@ ipv4
 ipv6
 ipwl
 irc
+irchelp
 ircname
 iredmail
+irqbalance
 irssi
 isn
 iso
@@ -852,6 +857,7 @@ loadavg
 loadout
 localdomain
 localhost
+localuser
 lockdown
 lodash
 logallrefupdates
@@ -1307,6 +1313,7 @@ redeployable
 redhat
 redir
 redis
+redislabs
 redmin
 redmine
 redstone
@@ -1578,6 +1585,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+teleporting
 tensorflow
 terrahelp
 terraria
@@ -1734,6 +1742,7 @@ verisign
 vhost
 vhosts
 vimrc
+vinagre
 virb
 virtio
 virtualenv
@@ -1851,6 +1860,7 @@ xtables
 xvda
 xvdb
 xvdc
+xvnc
 xxen
 xy
 xzio
