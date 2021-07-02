@@ -310,6 +310,7 @@ deprovisioning
 descolada
 descr
 deserialize
+despawn
 dest
 dereference
 dereferencing
@@ -1551,6 +1552,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+teleporting
 tensorflow
 terrahelp
 terraria

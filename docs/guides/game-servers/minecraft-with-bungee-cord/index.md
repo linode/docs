@@ -60,7 +60,7 @@ On the Linode that you plan to host BungeeCord:
 
 ### Configuring the Firewall on the BungeeCord Node
 
-If you're using iptables or ufw to act as a firewall, you'll need to make a rule on the Linode running BungeeCord, to permit TCP on port 25565 run:
+If you're using iptables or ufw to act as a firewall, you'll need to make a rule on the Linode running BungeeCord. To permit TCP on port 25565 run:
 
     sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 
@@ -276,7 +276,7 @@ You should try again to reconnect. If you can connect now, then you'll need to r
 
 ## Reducing Lag In Game By Optimizing spigot.yml
 
-Spigot provides us with a few options to optimize the servers to reduce the lag and get optimal performance. In this guide it is illustrated using Minecraft, here are some Minecraft specific optimizations:
+Spigot provides us with a few options to optimize the servers to reduce the lag and optimize performance. In this guide it is illustrated using Minecraft. Here are some Minecraft specific optimizations:
 
 1. **save-user-cache-on-stop-only:** The default for this argument is false. This means that it is continuously saving user data, which could potentially lead to heavy performance reduction. You can avoid saving data continuously by setting `save-user-cache-on-stop-only` to `true`, which is its optimized state.
 
