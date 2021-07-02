@@ -566,6 +566,7 @@ greylisting
 griefing
 griesemer
 groot
+groupinfo
 grsecurity
 gsa
 gsad
@@ -1737,6 +1738,7 @@ verisign
 vhost
 vhosts
 vimrc
+vinagre
 virb
 virtio
 virtualenv
@@ -1854,6 +1856,7 @@ xtables
 xvda
 xvdb
 xvdc
+xvnc
 xxen
 xy
 xzio
