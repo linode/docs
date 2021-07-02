@@ -15,7 +15,7 @@ published: 2010-07-27
 title: 'Redis on Debian 5 (Lenny)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","nosql"]
