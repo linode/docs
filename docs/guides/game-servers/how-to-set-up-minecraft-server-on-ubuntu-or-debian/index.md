@@ -8,7 +8,7 @@ tags: ["ubuntu", "debian"]
 description: 'Learn how to set up a Minecraft server on Ubuntu or Debian. This guide also shows you how to configure a Minecraft firewall to increase security.'
 aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-01
+modified: 2021-07-02
 modified_by:
   name: Linode
 published: 2015-01-28
@@ -52,11 +52,11 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
 
     - In Ubuntu 20.04:
 
-            sudo apt install default-jre
+        sudo apt install default-jre
 
     - In Debian 10:
 
-            sudo apt install default-jre
+        sudo apt install default-jre
 
 4.  Create a new user for Minecraft to run as:
 
@@ -103,33 +103,33 @@ The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minec
 
 1. To upgrade your Minecraft to the latest version, change your current working directory to /minecraft by running the following command:
 
-                cd /minecraft
+        cd /minecraft
 
 1. Create a backup of the world file. This is an important step as in case of any issue it is easy to restore your settings using this backup file.
 
-                sudo  cp - r world world_backup
+        sudo  cp - r world world_backup
 
 After you run the command above, the world file is copied and a backup is created with the name of `world_backup`.
 
 1. Create a backup of the `minecraft_server.jar` file as well. Create a backup and name it as `mincraft_server.jar_backup` by running the following command:
 
-                sudo cp minecraft_server.jar minecraft_server.jar_backup
+        sudo cp minecraft_server.jar minecraft_server.jar_backup
 
 1. Visit the [Minecraft Server download page](https://www.minecraft.net/en-us/download/server/) and copy the URL to the `.jar` file. Run the following command to download this `.jar` file:
 
-                sudo wget  https://launcher.mojang.com/v1/objects/0a269b5f2c5b93b1712d0f5dc43b6182b9ab254e/server.jar
+        sudo wget  https://launcher.mojang.com/v1/objects/0a269b5f2c5b93b1712d0f5dc43b6182b9ab254e/server.jar
 
 Version 1.17 (minecraft_server.1.17.jar) is downloaded.
 
 1. Upgrade the Minecraft server now. If you have an already running Minecraft server, stop it first. To do that, run the following command:
 
-                screen  -r
+        screen  -r
 
 You have now attached to the screen session. After it is attached, press `Ctrl + C` to stop the server.
 
 1. To upgrade the Minecraft server, copy the new file and replace the existing version with it by running the following command:
 
-                sudo mv minecraft_server.1.17.jar minecraft_server.1.13.jar
+        sudo mv minecraft_server.1.17.jar minecraft_server.1.13.jar
 
 Running this command updates the Minecraft server versions from 1.13 to 1.17.
 
@@ -138,7 +138,7 @@ Running this command updates the Minecraft server versions from 1.13 to 1.17.
     1.    Start a new screen by using the following command:
 
                 screen -r
-    1.    Launch the updated Minecraft server by:
+    1.    Launch the updated Minecraft server with the following command:
 
                 java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.5.jar nogui
 
@@ -146,7 +146,7 @@ And you have an updated Minecraft server running on your Ubuntu or Debian.
 
 ## Run Minecraft
 
-1.  The first time you run the Minecraft server creates an EULA file and then exit:
+1.  The first time you run the Minecraft server it creates an EULA (End User Licensing Agreement) file and then exit:
 
         $ ./run.sh
         [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.13.2
@@ -223,7 +223,7 @@ To understand the firewall a bit more, you need to look into how Minecraft serve
 
 Earlier in this guide under the prerequisites section, there is a note around allowing a firewall rule:
 
-                -A INPUT -p tcp –dport 25565 -j ACCEPT
+    -A INPUT -p tcp –dport 25565 -j ACCEPT
 
 
 Here are some of the most common port numbers and network services that use them:
@@ -237,7 +237,7 @@ When you install the Minecraft servers, the default settings currently only allo
 
 You can also add a firewall rule using the ufw by running the following command:
 
-                sudo ufw allow 25565
+    sudo ufw allow 25565
 
 When you do this, here is what you are trying to accomplish with this configuration:
 
@@ -250,10 +250,10 @@ Note: You don’t always need to add the port number to the IP address, but it i
 
 Checking Minecraft logs to understand how your Minecraft server’s firewall is performing or understanding issues is important. To check what ports are currently listening run the following command:
 
-                ss -tulpn
+    ss -tulpn
 
 In the command above, you can break down the arguments to further understand what they mean:
 
-                -t implies TCP
+- -t implies TCP
 
-                -u implies UDP
+- -u implies UDP
