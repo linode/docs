@@ -853,6 +853,7 @@ loadavg
 loadout
 localdomain
 localhost
+localuser
 lockdown
 lodash
 logallrefupdates
