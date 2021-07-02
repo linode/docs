@@ -19,7 +19,7 @@ external_resources:
 tags: ["networking","linode platform"]
 ---
 
-Multi-queue NICs (network interface cards) are supported on Linode Compute Instances within all data centers. This feature provides multiple receive (RX) and transmit (TX) queues, assigns them to different network interrupts, and balances them over multiple vCPUs. Historically, this traffic was all handled by a single vCPU core. Depending on the server's workload and network traffic, multi-queue can dramatically enhance network performance.
+Multi-queue NICs (network interface cards) are supported on all Linode Compute Instances that have 2 or more CPU cores (vCPUs). This feature provides multiple receive (RX) and transmit (TX) queues, assigns them to different network interrupts, and balances them over multiple vCPUs. Historically, this traffic was all handled by a single vCPU core. Depending on the server's workload and network traffic, multi-queue can dramatically enhance network performance.
 
 **For most Compute Instances deployed after June 2nd, 2021, no action is needed to enable multi-queue NICs**. If your Compute Instance was deployed prior to that date, a reboot may be required. On older Linux distributions, such as Debian 8 and 9, multi-queue NICs needs to be manually enabled by following the instructions within this guide.
 
@@ -27,7 +27,9 @@ Multi-queue NICs (network interface cards) are supported on Linode Compute Insta
 
 Check if multi-queue is already enabled on your network devices by using the [ethtool](https://en.wikipedia.org/wiki/Ethtool) command-line tool.
 
-1.  Log in to your Linode Compute Instance through [Lish](/docs/guides/using-the-linode-shell-lish/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
+1.  Review the number of CPU cores (vCPUs) available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the [Cloud Manager](https://cloud.linode.com/), selecting your Linode Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
+
+1.  Log in to your Compute Instance through [Lish](/docs/guides/using-the-linode-shell-lish/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
 
 1.  Install the `ethtool` utility if not already installed.
 
@@ -60,15 +62,23 @@ Other:          0
 Combined:       2
 {{</ output >}}
 
-    The value under **Pre-set maximums > Combined** (8 in the example above) is the maximum number of vCPUs supported by the multi-queue feature on our platform, even if the vCPU count is higher on your Compute Instance.
+    - **Maximum combined queues/vCPUs:** The value under **Pre-set maximums > Combined** is the maximum number of queues (and therefore vCPUs) supported by the multi-queue feature on our platform. This value should always be 8.
 
-    The value under **Current hardware settings > Combined** (2 in the example above) indicates the number of queues that are in effect. This value should match the number of vCPUs corresponding with your Linode Compute Instance plan, up to the maximum value stated above. If this value is less than the number of vCPUs, multi-queue needs to be manually enabled.
+    - **Current combined queues/vCPUs:** The value under **Current hardware settings > Combined** indicates the number of queues that are in effect. This is the number we'll use in the next step
+
+1.  Compare the current combined queues to the total number of vCPUs on your Linode.
+
+    - **Multi-queue is not enabled** if the number of current combined queues is 1.
+
+    - **Multi-queue is partially enabled** if the number of current combined queues is between 2 and 7 but is less than number of vCPUs on your Compute Instance.
+
+    - **Multi-queue is fully enabled** if the current combined queues matches the number of vCPUs on your Compute Instance, up to a maximum of 8.
 
 ## Enabling Multi-Queue on Network Devices
 
 If multi-queue is not enabled and a reboot did not automatically enable it, you can manually enable this feature through the following instructions.
 
-1.  Review the number of vCPU cores available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the Cloud Manager, selecting your Linode Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
+1.  Review the number of vCPU cores available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the [Cloud Manager](https://cloud.linode.com/), selecting your Linode Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
 
 1.  Run the following command to enable multiple queues, replacing *[cpu-count]* with the number of vCPUs on your Compute Instance.
 
