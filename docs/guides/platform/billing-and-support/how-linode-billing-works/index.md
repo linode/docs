@@ -8,7 +8,7 @@ og_description: Linode uses an hourly billing system. Use this guide to learn ab
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-01
+modified: 2021-07-02
 modified_by:
   name: Linode
 published: 2019-10-25
