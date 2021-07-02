@@ -1,14 +1,13 @@
 ---
 slug: install-and-configure-inspircd-on-debian-10-ubuntu-2004
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
 og_description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
-keywords: ['irc','inspircd','deploy','install','debian 10','ubuntu 20.04']
-tags: ['debian', 'ubuntu', 'inspircd']
+keywords: ['irc server', 'inspircd']
+tags: ['debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-10
+published: 2021-07-02
 modified_by:
   name: Linode
 title: "Install and Configure InspIRCd on Debian 10 or Ubuntu 20.04"
@@ -19,16 +18,13 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[InspIRCd configuration options](https://docs.inspircd.org/3/configuration/)'
-- '[Certbot](https://certbot.eff.org)'
-- '[Lets Encrypt](https://letsencrypt.org)'
-- '[Snap](https://snapcraft.io/docs/getting-started)'
-- '[IRCHelp website](https://www.irchelp.org/)'
-- '[IRC Networks and Server Lists](https://www.irchelp.org/networks/)'
+- '[IRC help website](https://www.irchelp.org/)'
+- '[IRC networks and server lists](https://www.irchelp.org/networks/)'
 ---
 
 Internet Relay Chat (IRC) is a real-time, text-based communication protocol with a long history of use for group chats and discussion forums. IRC networks — which can be made up of several independent servers — may each have numerous channels, with each channel functioning as a space for group chat.
 
-InspIRCd is a free and open-source IRC server application. It was created from scratch and has been designed to be a stable, high-performance, and modular IRC server option. Following this guide, you can quickly get your own InspIRCd server up and running.
+InspIRCd is a free and open-source IRC server application. It has been designed to be a stable, high-performance, and modular IRC server option. This guide shows you how to get your own InspIRCd server up and running on Ubuntu and Debian.
 
 ## Before You Begin
 
@@ -50,7 +46,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
         sudo apt install inspircd
 
-1. Open ports **22** and **6667** in your machine's firewall. The following assumes you are using UFW for firewall management.
+1. Open ports `22` and `6667` in your machine's firewall. The following assumes you are using UFW for firewall management.
 
         sudo ufw allow 22/tcp
         sudo ufw allow 6667/tcp
@@ -58,7 +54,11 @@ This guide is written for non-root users. Commands that require elevated privile
 
 ## Configure InspIRCd
 
-Open the InspIRCd configuration file, located at `/etc/inspircd/inspircd.conf`, and make the following changes. Refer to InspIRCd's documentation on [configuration options](https://docs.inspircd.org/3/configuration/) for explanations of each of the configuration tags and values addressed here.
+Open the InspIRCd configuration file, located at `/etc/inspircd/inspircd.conf`, and update it with changes displayed in this section.
+
+{{< note >}}
+Refer to InspIRCd's documentation on [configuration options](https://docs.inspircd.org/3/configuration/) for explanations of each of the configuration tags and values updated in this section's steps.
+{{< /note >}}
 
 1. Locate the `server` tag. Change the `name` value to reflect your IRC server's hostname; leave the `id` value as is. Modify the other values in the `server` tag to reflect the description and naming you would like for your IRC server.
 
@@ -100,9 +100,9 @@ Open the InspIRCd configuration file, located at `/etc/inspircd/inspircd.conf`, 
 
     - The `host` value defines the `username@hostname` masks from which a user may log in as the operator. Setting this to `*@*`, as in the example above, allows a user to log in as the operator from any address mask.
 
-    - To make your IRC server more secure, a `host` value like the following would only allow a user from the IRC network's localhost, IP address, or domain to log in as the operator. Replace `203.0.113.0` with the IP address for the IRC server, and likewise replace `irc.example.com` with the machine's domain name:
+    - To make your IRC server more secure, a `host` value like the example below only allows a user from the IRC network's localhost, IP address, or domain to log in as the operator. Replace `192.0.2.0` with the IP address for the IRC server, and likewise replace `irc.example.com` with the machine's domain name:
 
-          *@localhost *@203.0.113.0 *@irc.example.com
+          *@localhost *@192.0.2.0 *@irc.example.com
 
     - You can restrict access even further by replacing the asterisks (`*`) with the username of a specific user on the machine. You can enter as many address masks as desired, separating each with space.
 
@@ -140,9 +140,9 @@ If you want more information on WeeChat and its usage, refer to the [Using WeeCh
 
     To quit the WeeChat interface, use the `/quit` command.
 
-    WeeChat stores the information for connecting to the IRC server under the alias you provide. You can then connect to the server anytime, even after quitting and restarting WeeChat, by using that alias, as in the command in the next step.
+    WeeChat stores the information for connecting to the IRC server under the alias you provide. You can then connect to the server anytime, even after quitting and restarting WeeChat, by using that alias.
 
-1. Connect to the IRC server using the following command:
+1. Connect to the IRC server using the the alias you created:
 
         /connect example-irc-alias
 
@@ -178,7 +178,7 @@ While not necessary, using SSL certification on your IRC server significantly in
 
 ### Download a Certificate
 
-1. Open port **80** in your machine's firewall. Certbot verifies your domain information by connecting through this port.
+1. Open port `80` in your machine's firewall. Certbot verifies your domain information by connecting through this port.
 
         sudo ufw allow 80/tcp
         sudo ufw reload
@@ -219,7 +219,7 @@ While not necessary, using SSL certification on your IRC server significantly in
 
 ### Connect to the IRC Server Using SSL
 
-To connect to the IRC server now, you need to use port **6697**. In WeeChat, you can do this in one of two ways:
+To connect to the IRC server now, you need to use port `6697`. In WeeChat, you can do this in one of two ways:
 
 {{< note >}}
 In both of the examples that follow, replace `example-irc-alias` with your server's WeeChat alias and `irc.example.com` with your server's domain name.
@@ -234,9 +234,9 @@ In both of the examples that follow, replace `example-irc-alias` with your serve
        /server del example-irc-alias
        /server add example-irc-alias irc.example.com/6697 -ssl
 
-You can then connect to the IRC server. WeeChat's notifications indicate that SSL is being used for the connection.
+    You can then connect to the IRC server. WeeChat's notifications indicate that SSL is being used for the connection.
 
-    /connect example-irc-alias
+        /connect example-irc-alias
 
 ### Set Up Automatic Renewals
 
@@ -274,6 +274,4 @@ chown -R irc:irc /etc/inspircd
 
 ## Next Steps
 
-Congratulations. Your IRC server is up and running and ready for a community.
-
-Check out the [#irchelp](https://www.irchelp.org/) website for more information about using and running an IRC server, about IRC networks, and to get ideas for more you can do with your new server. You can also use the [IRC Networks and Server Lists](https://www.irchelp.org/networks/) to find existing IRC communities and see how other popular IRC servers operate.
+Your IRC server is now up and running and ready for a community. Check out the [#irchelp](https://www.irchelp.org/) website for more information about using and running an IRC server. You can also refer that channel to get ideas for more you can do with your new server. You can also use the [IRC Networks and Server Lists](https://www.irchelp.org/networks/) to find existing IRC communities and see how other popular IRC servers operate.
