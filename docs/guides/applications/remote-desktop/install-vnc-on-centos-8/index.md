@@ -7,7 +7,7 @@ og_description: 'This guide shows you how to install, configure, and use a VNC s
 keywords: ['centos vnc server']
 tags: ['networking', 'linux', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-08
+published: 2021-07-02
 modified_by:
   name: Nathaniel Stickman
 title: "CentOS: Install and Configure VNC Server"
