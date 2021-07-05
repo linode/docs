@@ -56,7 +56,7 @@
 
 @screen lg {
     .grid--base {
-        --height-navbar-row: 65px;
+        --height-navbar-row: 55px;
         --width-left-column: 334px;
         --width-right-column: 334px;
     }

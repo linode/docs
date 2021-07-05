@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.91.0
+  version: 4.97.0
 
   title: Linode API
   description: |
@@ -551,15 +551,9 @@ paths:
       - Account
       summary: Credit Card Add/Edit
       description: |
-        Adds/edit credit card information to your Account.
+        **DEPRECATED**. Please use Payment Method Add ([POST /account/payment-methods](/docs/api/account/#payment-method-add)).
 
-        Only one credit card can be associated with your Account, so using this
-        endpoint will overwrite your currently active card information with the
-        new credit card.
-
-        To use this endpoint, you must have a valid `zip` entered for your Account.
-        Use the Account Update ([PUT /account](/docs/api/account/#account-update))
-        endpoint to enter a new zip code.
+        Adds a credit card Payment Method to your account and sets it as the default method.
       operationId: createCreditCard
       x-linode-cli-action: update-card
       security:
@@ -572,15 +566,7 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-              - $ref: '#/components/schemas/CreditCard'
-              - type: object
-                properties:
-                  cvv:
-                    type: string
-                    description: >
-                      The Card Verification Value on the back of the card.
-                    example: '123'
+              $ref: '#/components/schemas/CreditCard'
       responses:
         '200':
           description: Credit Card updated.
@@ -1644,6 +1630,131 @@ paths:
               -X PUT \
               --data-binary "/path/to/image"
               https://api.linode.com/v4/account/oauth-clients/edc6790ea9db4d224c5c/thumbnail
+  /account/payment-methods:
+    x-linode-cli-command: account
+    get:
+      servers:
+        - url: https://api.linode.com/v4
+        - url: https://api.linode.com/v4beta
+      parameters:
+        - $ref: '#/components/parameters/pageOffset'
+        - $ref: '#/components/parameters/pageSize'
+      x-linode-grant: read_only
+      tags:
+        - Account
+      summary: Payment Methods List
+      description: |
+        Returns a paginated list of Payment Methods for this Account.
+      operationId: getPaymentMethods
+      x-linode-cli-action: payment-methods-list
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of Payment Method objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PaymentMethod'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4/account/payment-methods
+        - lang: CLI
+          source: >
+            linode-cli account payment-methods-list
+    post:
+      servers:
+        - url: https://api.linode.com/v4
+      x-linode-grant: read_write
+      tags:
+        - Account
+      summary: Payment Method Add
+      description: |
+        Adds a Payment Method to your Account with the option to set it as the default method.
+
+        Prior to adding a Payment Method, ensure that your billing address information is up-to-date
+        with a valid `zip` by using the Account Update ([PUT /account](/docs/api/account/#account-update)) endpoint.
+      operationId: createPaymentMethod
+      x-linode-cli-action: payment-method-add
+      x-linode-cli-skip: true
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_write
+      requestBody:
+        description: The details of the Payment Method to add.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Payment Method Request Object.
+              required:
+                - type
+                - data
+                - is_default
+                - card_number
+                - expiry_month
+                - expiry_year
+                - cvv
+              properties:
+                type:
+                  $ref: '#/components/schemas/PaymentMethod/properties/type'
+                is_default:
+                  $ref: '#/components/schemas/PaymentMethod/properties/is_default'
+                data:
+                  type: object
+                  properties:
+                    card_number:
+                      $ref: '#/components/schemas/CreditCard/properties/card_number'
+                    expiry_month:
+                      $ref: '#/components/schemas/CreditCard/properties/expiry_month'
+                    expiry_year:
+                      $ref: '#/components/schemas/CreditCard/properties/expiry_year'
+                    cvv:
+                      $ref: '#/components/schemas/CreditCard/properties/cvv'
+      responses:
+        '200':
+          description: Payment Method added.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: Bearer $TOKEN" \
+                -X POST -d '{
+                  "type": "credit_card",
+                  "is_default": true,
+                  "data": {
+                    "card_number": "4111111111111111",
+                    "expiry_month": 11,
+                    "expiry_year": 2020,
+                    "cvv": "111"
+                  }
+                }' \
+                https://api.linode.com/v4/account/payment-method
   /account/payments:
     x-linode-cli-command: account
     get:
@@ -1887,6 +1998,68 @@ paths:
         - lang: CLI
           source: >
             linode-cli account paypal-execute
+  /account/promo-codes:
+    x-linode-cli-command: account
+    post:
+      x-linode-grant: unrestricted only
+      tags:
+        - Account
+      summary: Promo Credit Add
+      description: |
+        Adds an expiring Promo Credit to your account.
+
+        The following restrictions apply:
+
+        * Your account must be less than 90 days old.
+        * There must not be an existing Promo Credit already on your account.
+        * The requesting User must be unrestricted. Use the User Update
+          ([PUT /account/users/{username}](/docs/api/account/#user-update)) to change a User's restricted status.
+        * The `promo_code` must be valid and unexpired.
+      operationId: createPromoCredit
+      x-linode-cli-action: promo-add
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_only
+      requestBody:
+        description: Enter a Promo Code to add its associated credit to your Account.
+        content:
+          application/json:
+            schema:
+              required:
+              - promo_code
+              type: object
+              properties:
+                promo_code:
+                  type: string
+                  minLength: 1
+                  maxLength: 32
+                  description: |
+                    The Promo Code.
+      responses:
+        '200':
+          description: >
+            Promo Credit successfully added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promotion'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X POST -d '{
+              "promo_code": "abcdefABCDEF1234567890"
+            }' \
+            https://api.linode.com/v4/account/promo-codes
+      - lang: CLI
+        source: >
+          linode-cli account \
+            promo-add \
+            --promo-code abcdefABCDEF1234567890
   /account/service-transfers:
     x-linode-cli-command: service-transfers
     get:
@@ -2985,6 +3158,61 @@ paths:
         - lang: CLI
           source: >
             linode-cli domains delete 1234
+  /domains/{domainId}/zone-file:
+    x-linode-cli-command: domains
+    parameters:
+    - name: domainId
+      in: path
+      description: ID of the Domain.
+      required: true
+      schema:
+        type: string
+    get:
+      x-linode-grant: read_only
+      tags:
+      - Domains
+      summary: Domain Zone File View
+      description: >
+        Returns the zone file for the last rendered zone for the specified domain.
+      operationId: getDomainZone
+      x-linode-cli-action: zone-file
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - domains:read_only
+      responses:
+        '200':
+          description: |
+            An array containing the lines of the domain zone file.
+          content:
+            application/json:
+              schema:
+                properties:
+                  zone_file:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      - "; example.com [123]"
+                      - "$TTL 864000"
+                      - "@  IN  SOA  ns1.linode.com. user.example.com. 2021000066 14400 14400 1209600 86400"
+                      - "@    NS  ns1.linode.com."
+                      - "@    NS  ns2.linode.com."
+                      - "@    NS  ns3.linode.com."
+                      - "@    NS  ns4.linode.com."
+                      - "@    NS  ns5.linode.com."
+                    description: |
+                      The lines of the zone file for the last rendered zone for this domain.
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/domains/123/zone-file
+      - lang: CLI
+        source: >
+          linode-cli domains zone-file 123
   /domains/import:
     post:
       x-linode-grant: read_write
@@ -3356,7 +3584,6 @@ paths:
   /images:
     x-linode-cli-command: images
     get:
-      x-linode-grant: read_only
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
@@ -3375,8 +3602,6 @@ paths:
       x-linode-redoc-load-ids: true
       operationId: getImages
       x-linode-cli-action: list
-      security:
-      - personalAccessToken: []
       responses:
         '200':
           description: A paginated list of Images.
@@ -3484,6 +3709,7 @@ paths:
     x-linode-cli-command: images
     post:
       servers:
+      - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       tags:
       - Images
@@ -3497,8 +3723,9 @@ paths:
         - Image data must be uploaded within 24 hours of creation or the
         upload will be cancelled and the image deleted.
 
-        - Image uploads should be made as an HTTP PUT request to the returned `upload_url`, with a
-        `Content-type: application/octet-stream` header included in the request. For example:
+        - Image uploads should be made as an HTTP PUT request to the URL returned in the `upload_to`
+        response parameter, with a `Content-type: application/octet-stream` header included in the
+        request. For example:
 
               curl -v \
                 -H "Content-Type: application/octet-stream" \
@@ -3509,11 +3736,6 @@ paths:
 
         - Uploaded image data should be compressed in gzip (`.gz`) format. The uncompressed disk should be in raw
         disk image (`.img`) format. A maximum compressed file size of 5GB is supported for upload at this time.
-
-        This endpoint is currently in **beta**. Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future. This notice will be removed when this endpoint is out of
-        beta.
       x-linode-cli-action: upload
       security:
       - personalAccessToken: []
@@ -3550,7 +3772,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  upload_url:
+                  upload_to:
                     type: string
                     description: The URL to upload the Image to.
                   image:
@@ -5075,11 +5297,14 @@ paths:
       tags:
       - Linode Instances
       summary: Disk Create
-      description: >
+      description: |
         Adds a new Disk to a Linode. You can optionally create a Disk
         from an Image (see [/images](/docs/api/images/#images-list) for a list of available public images,
         or use one of your own), and optionally provide a StackScript to deploy
         with this Disk.
+
+        The default filesystem for new Disks is `ext4`. If creating a Disk from an Image, the filesystem
+        of the Image is used unless otherwise specified.
       operationId: addLinodeDisk
       x-linode-cli-action: disk-create
       security:
@@ -7381,18 +7606,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  type:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/type'
-                  count:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/count'
-                  disks:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/disks'
-                  id:
-                    $ref: '#/components/schemas/LKENodePool/properties/id'
-                  nodes:
-                    $ref: '#/components/schemas/LKENodePool/properties/nodes'
+                $ref: '#/components/schemas/LKENodePool'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -7402,14 +7616,16 @@ paths:
                 -H "Authorization: Bearer $TOKEN" \
                 -X POST -d '{
                   "type": "g6-standard-4",
-                  "count": 6
+                  "count": 6,
+                  "tags": ["example-tag"]
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345/pools
       - lang: CLI
         source: >
           linode-cli lke pool-create 12345 \
             --type g6-standard-4 \
-            --count 6
+            --count 6 \
+            --tags example-tag
   /lke/clusters/{clusterId}/recycle:
     parameters:
     - name: clusterId
@@ -7487,18 +7703,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  type:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/type'
-                  count:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/count'
-                  disks:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/disks'
-                  id:
-                    $ref: '#/components/schemas/LKENodePool/properties/id'
-                  nodes:
-                    $ref: '#/components/schemas/LKENodePool/properties/nodes'
+                $ref: '#/components/schemas/LKENodePool'
       x-code-samples:
       - lang: Shell
         source: >
@@ -7537,18 +7742,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  type:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/type'
-                  count:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/count'
-                  disks:
-                    $ref: '#/components/schemas/LKENodePoolRequestBody/properties/disks'
-                  id:
-                    $ref: '#/components/schemas/LKENodePool/properties/id'
-                  nodes:
-                    $ref: '#/components/schemas/LKENodePool/properties/nodes'
+                $ref: '#/components/schemas/LKENodePool'
       x-code-samples:
       - lang: Shell
         source: >
@@ -7722,6 +7916,40 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke node-view 123456 12345-6aa78910bc
+    delete:
+      operationId: deleteLKEClusterNode
+      x-linode-cli-action: node-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Node Delete
+      description: |
+        Deletes a specific Node from a Node Pool.
+
+        **Deleting a Node is a destructive action and cannot be undone.**
+
+        Deleting a Node will reduce the size of the Node Pool it belongs to.
+      responses:
+        '200':
+          description: Delete successful
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+                -X DELETE \
+                https://api.linode.com/v4/lke/clusters/12345/nodes/12345-6aa78910bc
+      - lang: CLI
+        source: >
+          linode-cli lke node-delete 12345 12345-6aa78910bc
   /lke/clusters/{clusterId}/nodes/{nodeId}/recycle:
     parameters:
     - name: clusterId
@@ -10008,22 +10236,14 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewalls List
       description: |
         Returns a paginated list of your Firewalls.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewalls
       x-linode-cli-action: list
       security:
@@ -10054,35 +10274,34 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls
+              https://api.linode.com/v4/networking/firewalls
       - lang: CLI
         source: >
           linode-cli firewalls list
     post:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Create
       description: |
         Creates a Firewall to filter network traffic. Use the `rules` property to
         create inbound and outbound access rules. Use the `devices` property to assign the
-        Firewall to a Linode service. Currently, Firewalls can only be assigned to Linode
+        Firewall to a service. Currently, Firewalls can only be assigned to Linode
         instances.
 
-        A Firewall can be assigned to a single Linode service at a time.
+        A Firewall can be assigned to multiple Linode instances at a time.
+
+        A Linode instance can have one active, assigned Firewall at a time.
+        Additional disabled Firewalls can still be added to a Linode instance.
 
         A `firewall_create` Event is generated when this endpoint returns successfully.
 
-        This endpoint is in **beta**.
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not fully available in every data center region. For the current list
+        of locations with full availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list))
+        endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
+        Certain Regions have partial Firewall availability
       operationId: createFirewalls
       x-linode-cli-action: create
       security:
@@ -10105,23 +10324,14 @@ paths:
               properties:
                 devices:
                   type: object
-                  description: >
-                    A Firewall Device assigns a Firewall to a Linode service. Currently, Firewalls
-                    can only be assigned to Linode instances.
-
-                    * A Firewall can be assigned to a single Linode service at a time.
-
-                    * Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if five other active Firewalls
-                    are already assigned to the same service.
-
-
-                    **Note:** When a Firewall is assigned to a Linode and you attempt
-                    to [migrate the Linode to a data center](/docs/api/linode-instances/#dc-migrationpending-host-migration-initiate) that does not support Cloud Firewalls, the migration will fail.
-                    Use the [List Regions](/docs/api/regions/#regions-list) endpoint to view a list of a data center's capabilities.
+                  description: |
+                    Devices to create for this Firewall.
+                    When a Device is created, the Firewall is assigned to its associated service.
+                    Currently, Devices can only be created for Linode instances.
                   properties:
                     linodes:
                       description: >
-                        An array of Linode IDs. A Firewall Device will be created for each ID.
+                        An array of Linode IDs. A Firewall Device is created for each ID.
                       type: array
                       items:
                         type: integer
@@ -10192,7 +10402,7 @@ paths:
                   "another example"
                 ]
               }' \
-              https://api.linode.com/v4beta/networking/firewalls
+              https://api.linode.com/v4/networking/firewalls
       - lang: CLI
         source: >
           linode-cli firewalls create \
@@ -10210,7 +10420,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall View
@@ -10226,15 +10436,7 @@ paths:
         [List Firewall Devices](/docs/api/networking/#firewall-devices-list)
         endpoint to review them.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Returns information about this Firewall.
@@ -10249,14 +10451,14 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123
+              https://api.linode.com/v4/networking/firewalls/123
       - lang: CLI
         source: >
           linode-cli firewalls view 123
     put:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Update
@@ -10281,15 +10483,7 @@ paths:
         If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
         `firewall_disable` Event will be generated.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: updateFirewall
       x-linode-cli-action: update
       security:
@@ -10326,7 +10520,7 @@ paths:
               -X PUT -d '{
                 "status": "disabled"
               }' \
-              https://api.linode.com/v4beta/networking/firewalls/123
+              https://api.linode.com/v4/networking/firewalls/123
       - lang: CLI
         source: >
           linode-cli firewalls update 123 \
@@ -10334,7 +10528,7 @@ paths:
     delete:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Delete
@@ -10350,15 +10544,7 @@ paths:
 
         A `firewall_delete` Event is generated when this endpoint returns successfully.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Delete Successful.
@@ -10374,7 +10560,7 @@ paths:
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
               -X DELETE \
-              https://api.linode.com/v4beta/networking/firewalls/123
+              https://api.linode.com/v4/networking/firewalls/123
       - lang: CLI
         source: >
           linode-cli firewalls delete 123
@@ -10391,7 +10577,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       parameters:
@@ -10403,15 +10589,7 @@ paths:
         Firewall to a Linode service (referred to as the Device's `entity`). Currently,
         only Devices with an entity of type `linode` are accepted.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewallDevices
       x-linode-cli-action: devices-list
       security:
@@ -10442,14 +10620,14 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices
+              https://api.linode.com/v4/networking/firewalls/123/devices
       - lang: CLI
         source: >
           linode-cli firewalls devices-list 123
     post:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Device Create
@@ -10467,15 +10645,7 @@ paths:
         to [migrate the Linode to a data center](/docs/api/linode-instances/#dc-migrationpending-host-migration-initiate) that does not support Cloud Firewalls, the migration will fail.
         Use the [List Regions](/docs/api/regions/#regions-list) endpoint to view a list of a data center's capabilities.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: createFirewallDevice
       x-linode-cli-action: device-create
       security:
@@ -10510,7 +10680,7 @@ paths:
                 "type": "linode",
                 "id": 123
               }' \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices
+              https://api.linode.com/v4/networking/firewalls/123/devices
       - lang: CLI
         source: >
           linode-cli firewalls device-create 123 \
@@ -10536,7 +10706,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Device View
@@ -10545,15 +10715,7 @@ paths:
         to a Linode service (referred to as the Device's `entity`). Currently,
         only Devices with an entity of type `linode` are accepted.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewallDevice
       x-linode-cli-action: device-view
       security:
@@ -10573,7 +10735,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices/456
+              https://api.linode.com/v4/networking/firewalls/123/devices/456
       - lang: CLI
         source: >
           linode-cli firewalls device-view \
@@ -10581,7 +10743,7 @@ paths:
     delete:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Device Delete
@@ -10599,15 +10761,7 @@ paths:
 
         A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Delete Successful.
@@ -10623,7 +10777,7 @@ paths:
           curl -H "Content-Type: application/json" \
                -H "Authorization: Bearer $TOKEN" \
               -X DELETE \
-              https://api.linode.com/v4beta/networking/firewalls/123/devices/456
+              https://api.linode.com/v4/networking/firewalls/123/devices/456
       - lang: CLI
         source: >
           linode-cli firewalls device-delete 123 456
@@ -10640,7 +10794,7 @@ paths:
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Rules List
@@ -10675,14 +10829,14 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/firewalls/123/rules
+              https://api.linode.com/v4/networking/firewalls/123/rules
       - lang: CLI
         source: >
           linode-cli firewalls rules-list 123
     put:
       x-linode-grant: read_write
       servers:
-      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
       tags:
       - Networking
       summary: Firewall Rules Update
@@ -10690,15 +10844,7 @@ paths:
         Updates the inbound and outbound Rules for a Firewall. Using this endpoint will
         replace all of a Firewall's ruleset with the Rules specified in your request.
 
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
+        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: updateFirewallRules
       x-linode-cli-action: rules-update
       security:
@@ -10763,15 +10909,19 @@ paths:
                     }
                   ]
               }' \
-              https://api.linode.com/v4beta/networking/firewalls/123/rules
+              https://api.linode.com/v4/networking/firewalls/123/rules
       - lang: CLI
         source: >
           linode-cli firewalls rules-update 123 \
             --inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
             --outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
   /networking/vlans:
-    x-linode-cli-command: networking
+    x-linode-cli-command: vlans
     get:
+      x-linode-grant: read_only
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
@@ -10804,7 +10954,7 @@ paths:
         the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
       operationId: getVLANs
-      x-linode-cli-action: vlans-list
+      x-linode-cli-action: list
       security:
       - personalAccessToken: []
       - oauth:
@@ -10833,7 +10983,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4beta/networking/vlans/
+              https://api.linode.com/v4/networking/vlans/
       - lang: CLI
         source: >
           linode-cli networking vlans-list
@@ -15507,72 +15657,7 @@ components:
         active_promotions:
           type: array
           items:
-            type: object
-            readOnly: true
-            description: |
-              A list of active promotions on your account. Promotions generally
-              offer a set amount of credit that can be used toward your Linode
-              services, and the promotion expires after a specified date. As well,
-              a monthly cap on the promotional offer is set.
-
-              Simply put, a promotion offers a certain amount of credit every
-              month, until either the expiration date is passed, or until the total
-              promotional credit is used, whichever comes first.
-            properties:
-              credit_monthly_cap:
-                type: string
-                description: >
-                  The amount available to spend per month.
-                example: "10.00"
-              credit_remaining:
-                type: string
-                description: >
-                  The total amount of credit left for this promotion.
-                example: "50.00"
-              description:
-                type: string
-                description: >
-                  A detailed description of this promotion.
-                example: "Receive up to $10 off your services every month for 6 months! Unused credits will expire once this promotion period ends."
-              expire_dt:
-                type: string
-                description: >
-                  When this promotion's credits expire.
-                example: '2018-01-31T23:59:59'
-              image_url:
-                type: string
-                description: >
-                  The location of an image for this promotion.
-                example: "https://linode.com/10_a_month_promotion.svg"
-              summary:
-                type: string
-                description: >
-                  Short details of this promotion.
-                example: "$10 off your Linode a month!"
-              this_month_credit_remaining:
-                type: string
-                description: >
-                  The amount of credit left for this month for this promotion.
-                example:  "10.00"
-              service_type:
-                type: string
-                enum:
-                  - all
-                  - backup
-                  - blockstorage
-                  - db_mysql
-                  - ip_v4
-                  - linode
-                  - linode_disk
-                  - linode_memory
-                  - longview
-                  - managed
-                  - nodebalancer
-                  - objectstorage
-                  - transfer_tx
-                description: >
-                  The service to which this promotion applies.
-                example: "all"
+            $ref: '#/components/schemas/Promotion'
         active_since:
           type: string
           format: date-time
@@ -15925,11 +16010,14 @@ components:
         card_number:
           type: string
           description: Your credit card number. No spaces or dashes allowed.
-          minLength: 13
-          maxLength: 23
+          minLength: 14
+          maxLength: 24
+          format: digits
           example: 4111111111111111
         expiry_month:
           type: integer
+          minimum: 1
+          maximum: 12
           description: >
             A value from 1-12 representing the expiration month of your credit card.
 
@@ -15940,7 +16028,9 @@ components:
           example: 12
         expiry_year:
           type: integer
-          description: >
+          minLength: 4
+          maxLength: 4
+          description: |
             A four-digit integer representing the expiration year of
             your credit card.
 
@@ -15948,6 +16038,14 @@ components:
             must result in a month/year combination of the current month or in
             the future. An expiration date set in the past is invalid.
           example: 2020
+        cvv:
+          type: string
+          minLength: 3
+          maxLength: 4
+          format: digits
+          description: >
+            CVV (Card Verification Value) of the credit card, typically found on the back of the card.
+          example: '123'
     Device:
       type: object
       description: >
@@ -16076,18 +16174,16 @@ components:
           $ref: '#/components/schemas/Disk/properties/label'
         filesystem:
           $ref: '#/components/schemas/Disk/properties/filesystem'
-        read_only:
-          type: boolean
-          description: >
-            If true, this Disk is read-only.
-          example: false
         image:
           type: string
-          description: >
-            An Image ID to deploy the Disk from. Official Linode Images start with
-            `linode/`, while your Images start with `private/`.
+          description: |
+            An Image ID to deploy the Disk from.
 
-            See [/images](/docs/api/images/#images-list) for more information on the Images available for you to use.
+            Access the Images List ([GET /images](/docs/api/images/#images-list)) endpoint with authentication to view
+            all available Images. Official Linode Images start with `linode/`, while your Account's Images start with `private/`. Creating
+            a disk from an Account Image requires `read_only` or `read_write` permissions for that Image. Access the User's
+            Grant Update ([PUT /account/users/{username}/grants](/docs/api/account/#users-grants-update)) endpoint to
+            adjust permissions for an Account Image.
           example: linode/debian9
         authorized_keys:
           type: array
@@ -16939,6 +17035,7 @@ components:
           x-linode-cli-display: 5
         status:
           type: string
+          readOnly: true
           description: >
            The status of this Firewall.
 
@@ -17337,6 +17434,7 @@ components:
           x-linode-cli-display: 6
         type:
           type: string
+          x-linode-filterable: true
           description: >
             How the Image was created. "Manual" Images can be created at any time.
             "Automatic" images are created automatically from a deleted Linode.
@@ -17455,8 +17553,9 @@ components:
           x-linode-cli-display: 6
         type:
           type: string
+          x-linode-filterable: true
           description: >
-            How the Image was created. Manual Images can be created at any time.
+            How the Image was created. "Manual" Images can be created at any time.
             "Automatic" Images are created automatically from a deleted Linode.
           enum:
           - manual
@@ -17566,6 +17665,8 @@ components:
         - Third/2:  eth2
 
         When updating a Linode's interfaces, *each interface must be redefined*. An empty interfaces array results in a default public interface configuration only.
+
+        If no public interface is configured, public IP addresses are still assigned to the Linode but will not be usable without manual configuration.
 
         **Note:** Changes to Linode interface configurations can be enabled by rebooting the Linode.
 
@@ -18201,6 +18302,7 @@ components:
           example: '2018-01-01T00:01:01'
           readOnly: true
         ipv4:
+          x-linode-filterable: true
           type: array
           format: ipv4
           items:
@@ -18892,8 +18994,38 @@ components:
         cluster.
       properties:
         type:
+          $ref: '#/components/schemas/LKENodePool/properties/type'
+        count:
+          $ref: '#/components/schemas/LKENodePool/properties/count'
+        disks:
+          type: array
+          x-linode-cli-format: json
+          description: |
+            **Note**: This field should be omitted except for special use cases. The disks specified here are
+            partitions in *addition* to the primary partition and reduce the size of the primary partition,
+            which can lead to stability problems for the Node.
+
+            This Node Pool's custom disk layout. Each item in this array will create a new disk
+            partition for each node in this Node Pool.
+
+              * The custom disk layout is applied to each node in this Node Pool.
+              * The maximum number of custom disk partitions that can be configured is 7.
+              * Once the requested disk paritions are allocated, the remaining disk space is allocated to the node's boot disk.
+              * A Node Pool's custom disk layout is immutable over the lifetime of the Node Pool.
+          items:
+            $ref: '#/components/schemas/LKENodePool/properties/disks/items'
+        tags:
+            $ref: '#/components/schemas/LKENodePool/properties/tags'
+    LKENodePool:
+      type: object
+      description: >
+        The set of Node Pools which are members of the Kubernetes cluster.
+        Node Pools consist of a Linode type, the number of Linodes to
+        deploy of that type, and additional status information.
+      properties:
+        type:
           type: string
-          description: A Linode Type for all of the nodes in the Node Pool.
+          description: The Linode Type for all of the nodes in the Node Pool.
           example: g6-standard-4
         count:
           type: integer
@@ -18904,19 +19036,8 @@ components:
         disks:
           type: array
           x-linode-cli-format: json
-          description: >
-            **Note**: This field should be omitted except for special use cases. The disks specified here are
-            partitions in *addition* to the primary partition and reduce the size of the primary partition,
-            which can lead to stability problems for the Node.
-
-
-            This Node Pool's custom disk layout. Each item in this array will create a new disk
-            partition for each node in this Node Pool.
-
-              * The custom disk layout is applied to each node in this Node Pool.
-              * The maximum number of custom disk partitions that can be configured is 7.
-              * Once the requested disk paritions are allocated, the remaining disk space is allocated to the node's boot disk.
-              * A Node Pool's custom disk layout is immutable over the lifetime of the Node Pool.
+          description: |
+            This Node Pool's custom disk layout.
           items:
             type: object
             description: >
@@ -18937,18 +19058,6 @@ components:
                 - raw
                 - ext4
                 example: ext-4
-    LKENodePool:
-      # Note that LKENodePool inherits all properties of
-      # LKENodePoolRequestBody and then overrides some of the sub-properties
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/LKENodePoolRequestBody'
-      - type: object
-      description: >
-        The set of Node Pools which are members of the Kubernetes cluster.
-        Node Pools consist of a Linode type, the number of Linodes to
-        deploy of that type, and additional status information.
-      properties:
         id:
           type: integer
           description: >
@@ -18963,6 +19072,17 @@ components:
             the instance_id will be returned as null.
           items:
             $ref: '#/components/schemas/LKENodeStatus'
+        tags:
+          x-linode-filterable: true
+          description: >
+            An array of tags applied to this object. Tags are for organizational
+            purposes only.
+          type: array
+          items:
+            type: string
+          example:
+          - example tag
+          - another example
     LKENodeStatus:
       type: object
       description: >
@@ -19228,9 +19348,18 @@ components:
             The reason maintenance is being performed.
           example: This maintenance will allow us to update the BIOS on the host’s motherboard.
         when:
+          x-linode-filterable: true
           type: string
-          description: >
+          description: |
             When the maintenance will begin.
+
+            [Filterable](/docs/api/#filtering-and-sorting) with the following parameters:
+
+            * A single value in date-time string format ("%Y-%m-%dT%H:%M:%S"), which returns only matches to that value.
+
+            * A dictionary containing pairs of inequality operator string keys ("+or", "+gt", "+gte", "+lt", "+lte",
+            or "+neq") and single date-time string format values ("%Y-%m-%dT%H:%M:%S"). "+or" accepts an array of values that
+            may consist of single date-time strings or dictionaries of inequality operator pairs.
           format: date-time
           example: 2020-07-09T00:01:01
         entity:
@@ -19649,6 +19778,7 @@ components:
           readOnly: true
           x-linode-cli-display: 4
         ipv4:
+          x-linode-filterable: true
           type: string
           format: ip
           description: >
@@ -20571,6 +20701,52 @@ components:
           description: The amount, in US dollars, of the Payment.
           example: '120.50'
           x-linode-cli-display: 3
+    PaymentMethod:
+      type: object
+      description: Payment Method Response Object.
+      properties:
+        type:
+          type: string
+          enum:
+            - credit_card
+          description: The type of Payment Method.
+          example: 'credit_card'
+          x-linode-cli-display: 1
+        is_default:
+          type: boolean
+          description: |
+            Whether this Payment Method is the default method for automatically processing service charges.
+          example: true
+          x-linode-cli-display: 2
+        created:
+          type: string
+          readOnly: true
+          format: date-time
+          description: When the Payment Method was added to the Account.
+          example: '2018-01-15T00:01:01'
+        data:
+          type: object
+          description: Credit card information.
+          properties:
+            card_type:
+              type: string
+              readOnly: true
+              description: The type of credit card.
+              example: ""
+              x-linode-cli-display: 8
+            last_four:
+              type: string
+              readOnly: true
+              description: The last four digits of the credit card number.
+              example: "1234"
+              x-linode-cli-display: 9
+            expiry:
+              type: string
+              readOnly: true
+              format: MM/YYYY
+              description: The expiration month and year of the credit card.
+              example: 06/2022
+              x-linode-cli-display: 10
     PaymentRequest:
       type: object
       required:
@@ -20581,7 +20757,7 @@ components:
           type: string
           description: >
             CVV (Card Verification Value) of the credit card to be used for
-            the Payment.
+            the Payment. Required if paying by credit card.
           example: '123'
         usd:
           type: string
@@ -20745,8 +20921,10 @@ components:
           example: true
         referrals:
           type: object
-          description: >
+          description: |
             Information about your status in our referral program.
+
+            This information becomes accessible after this Profile's Account has established at least $25.00 USD of total payments.
           readOnly: true
           properties:
             code:
@@ -20865,6 +21043,79 @@ components:
             See the [Cloud Manager Changelog](/changelog/cloud-manager/) for the latest updates.
           example: password
           readOnly: true
+    Promotion:
+      type: object
+      readOnly: true
+      description: |
+        Promotions generally
+        offer a set amount of credit that can be used toward your Linode
+        services, and the promotion expires after a specified date. As well,
+        a monthly cap on the promotional offer is set.
+
+        Simply put, a promotion offers a certain amount of credit every
+        month, until either the expiration date is passed, or until the total
+        promotional credit is used, whichever comes first.
+      properties:
+        credit_monthly_cap:
+          x-linode-cli-display: 5
+          type: string
+          description: >
+            The amount available to spend per month.
+          example: "10.00"
+        credit_remaining:
+          x-linode-cli-display: 3
+          type: string
+          description: >
+            The total amount of credit left for this promotion.
+          example: "50.00"
+        description:
+          type: string
+          description: >
+            A detailed description of this promotion.
+          example: "Receive up to $10 off your services every month for 6 months! Unused credits will expire once this promotion period ends."
+        expire_dt:
+          x-linode-cli-display: 2
+          type: string
+          description: >
+            When this promotion's credits expire.
+          example: '2018-01-31T23:59:59'
+        image_url:
+          type: string
+          description: >
+            The location of an image for this promotion.
+          example: "https://linode.com/10_a_month_promotion.svg"
+        summary:
+          x-linode-cli-display: 10
+          type: string
+          description: >
+            Short details of this promotion.
+          example: "$10 off your Linode a month!"
+        this_month_credit_remaining:
+          x-linode-cli-display: 4
+          type: string
+          description: >
+            The amount of credit left for this month for this promotion.
+          example:  "10.00"
+        service_type:
+          x-linode-cli-display: 1
+          type: string
+          enum:
+            - all
+            - backup
+            - blockstorage
+            - db_mysql
+            - ip_v4
+            - linode
+            - linode_disk
+            - linode_memory
+            - longview
+            - managed
+            - nodebalancer
+            - objectstorage
+            - transfer_tx
+          description: >
+            The service to which this promotion applies.
+          example: "all"
     Region:
       type: object
       description: An area where Linode services are available.
@@ -21056,6 +21307,14 @@ components:
             label: Enter the DB password
             name: DB_PASSWORD
             example: hunter2
+        mine:
+          type: boolean
+          x-linode-filterable: true
+          description: |
+            Returns `true` if this StackScript is owned by the account of the user making the request, and the user
+            making the request is unrestricted or has access to this StackScript.
+          readOnly: true
+          example: true
     StatsDataAvailable:
       type: object
       description: >

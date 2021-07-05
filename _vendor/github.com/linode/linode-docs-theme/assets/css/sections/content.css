@@ -1,9 +1,9 @@
-/* 
+/*
 Styles used on content/article type of content sections.
 Note that this is usually used in combination with Tailwind's Typography plugin and its prose classes.
 */
 .content blockquote.callout {
-    @apply border rounded-md text-textcolor font-normal pt-4 px-4;
+    @apply border rounded-md text-textcolor font-normal px-4 py-3;
 }
 
 @screen mobile {
@@ -17,11 +17,16 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content .callout-title {
-    @apply text-titlecolor leading-tight text-base;
+    display: block;
+    @apply text-titlecolor leading-tight text-base mb-2;
 }
 
-.content .callout-body {
-    @apply my-6;
+.content .callout-body > :first-child {
+    margin-top: 0;
+}
+
+.content .callout-body > :last-child {
+    margin-bottom: 0;
 }
 
 .content a {
@@ -77,7 +82,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content .file {
-    @apply my-8;
+    @apply my-4;
 }
 
 .content .file .chroma {
@@ -97,11 +102,12 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content pre {
-    @apply bg-gray-100 rounded;
+    @apply rounded;
+    background-color: #ededf4;
 }
 
 .content pre code {
-    @apply block bg-transparent p-0 overflow-x-scroll rounded-none;
+    @apply block bg-transparent p-0 overflow-x-auto rounded-none;
 }
 
 .content .highlight tbody td code {

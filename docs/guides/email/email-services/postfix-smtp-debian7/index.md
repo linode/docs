@@ -49,7 +49,7 @@ At a high-level Postfix configuration involves the following steps:
 ## Postfix Configuration
 
 {{< note >}}
-If you’re using Gmail or Google Apps, see our [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/) guide instead.
+If you’re using Gmail or Google Workspace, see our [Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide instead.
 {{</ note >}}
 
 ### Gathering Prerequisites

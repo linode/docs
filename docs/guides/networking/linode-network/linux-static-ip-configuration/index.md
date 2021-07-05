@@ -71,6 +71,10 @@ You'll see the following information for your Linode. Use this information to co
 
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
+{{< note >}}
+ All IPv6 pools are routed through the original IPv6 SLAAC address for a Linode. For this reason, the original IPv6 SLAAC address **must always** be the first IPv6 address included in a network configuration.
+{{< /note >}}
+
 
 ### Arch, CoreOS Container Linux
 
@@ -103,7 +107,7 @@ Gateway=fe80::1
 Address=2001:db8:2000:aff0::2/64
 
 # Add a second IPv6 address.
-Address=2001:db8:2000:aff0::3/32
+Address=2001:db8:2000:aff0::3/64
 {{< /file >}}
 
 {{< note >}}
@@ -237,7 +241,7 @@ iface eth0 inet6 static
 
 # Add a second IPv6 address.
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32
+  address 2001:db8:2000:aff0::2/64
 {{< /file >}}
 
 1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
@@ -266,8 +270,8 @@ config_eth0="198.51.100.5/24
 
 # IPv6 Addresses
 config_eth0="2001:db8:2000:aff0::1/64
-2001:db8:2000:aff0::2/32
-2001:db8:2000:aff0::3/32"
+2001:db8:2000:aff0::2/64
+2001:db8:2000:aff0::3/64"
 
 # DNS resolvers. Can mix IPv4 and IPv6.
 dns_servers_eth0="203.0.113.1
@@ -398,7 +402,7 @@ iface eth0 inet6 static
 
 # Add a second IPv6 address.
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32
+  address 2001:db8:2000:aff0::2/64
 {{< /file >}}
 
 

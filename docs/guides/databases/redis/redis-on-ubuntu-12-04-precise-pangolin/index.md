@@ -20,7 +20,7 @@ external_resources:
  - '[Redis Command Reference](http://redis.io/commands)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]

@@ -10,8 +10,6 @@ cascade:
     product_description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Linodes. They can be easily created by capturing a disk on an existing Linode or uploading an image file."
 ---
 
-{{< content "images-beta-note-shortguide" >}}
-
 ## Availability
 
 Images can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/).
@@ -20,9 +18,7 @@ Images can be created and deployed across [all regions](https://www.linode.com/g
 
 Images are currently available at no charge to Linode customers.
 
-{{< note >}}
-**Pricing change:** Images will transition to a paid service with a cost of $0.10/GB per month for each Custom Image stored on an account. This change will be communicated to customers in advance. Recovery Images, generated automatically after a Linode is deleted, are provided at no cost for a finite period of time.
-{{</ note >}}
+{{< content "images-ga-pricing-update-shortguide" >}}
 
 ## Features
 

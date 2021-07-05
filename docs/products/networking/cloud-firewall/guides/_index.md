@@ -5,10 +5,6 @@ tab_group_main:
     weight: 30
 ---
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
-
 ## Building Blocks
 
 These introductory guides to Linode Cloud Firewall will help get you up and running with the service:

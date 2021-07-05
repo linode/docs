@@ -14,13 +14,7 @@ When you hire Linode Professional Services to orchestrate and execute any system
 
 Our Professional Services team are experts in architecting the most complex implementations. We can design and deploy a high availability environment using technologies such as HAProxy, GlusterFS, and Galera for database synchronization. If you want to scale seamlessly, we can utilize distributed deployment systems such as SaltStack, Chef, or Puppet.
 
-## Availability
-
-Tokyo, Japan; Mumbai, India; Singapore, Singapore; Sydney, Australia; Frankfurt, Germany; London, United Kingdom; Toronto, Canada; Newark, NJ, USA; Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA
-
-## Features
-
-### Site Migrations, Tuning, and Deployments
+## Site Migrations, Tuning, and Deployments
 
 Let us migrate your site to Linode with minimal stress and downtime. We'll handle everything from content transfer and DNS records to the cutover of your traffic. We can help you transition to a highly available architecture for your services.
 
