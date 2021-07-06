@@ -8,6 +8,9 @@ description: 'A guide that further introduces using a Dockerfile to build Docker
 keywords: ["docker", "container", "docker image", "docker images", "docker container", "docker containers"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: 2021-04-28
+modified_by:
+  name: Linode
 published: 2021-04-29
 title: 'A Further Introduction to Docker Images and Containers'
 h1_title: 'A Further Introduction to Docker Images and Containers.'
