@@ -31,7 +31,7 @@ Make starts by reading a file called *makefile* that tells it what to do. The ma
 
 {{< file "makefile" >}}
 target... : prerequisite...
-	recipe...
+    recipe...
 {{< /file >}}
 
 The recipe is run whenever the target does not exist, or if any of its prerequisites has been modified since the last time it was built. The following list outlines some syntax elements and how GNU Make interprets them:
@@ -52,7 +52,7 @@ As an oversimplified example, this is a makefile for an extremely simple website
 {{< file "makefile" >}}
 # everything between a hash-mark and the end of the line is ignored
 site/index.html: index.md
-	pandoc -s -o site/index.html index.md
+    pandoc -s -o site/index.html index.md
 {{< /file >}}
 
 This makefile has one rule; Make uses the first rule it encounters in the file as the default. Now, every time `index.md` is modified, Make determines that `site/index.html` is older, and re-makes it.
@@ -61,10 +61,10 @@ There are two problems with this. The first is that the first time you run Make 
 
 {{< file "makefile" >}}
 site/index.html: index.md | site
-	pandoc -s -o site/index.html index.md
+    pandoc -s -o site/index.html index.md
 
 site:
-	mkdir -p site
+    mkdir -p site
 {{< /file >}}
 
 {{< note >}}
@@ -78,16 +78,16 @@ The second problem is that, if we want to add an "about" page, the rule to make 
 build:: site/index.html site/about.html
 
 site/index.html: index.md | site
-	pandoc -s -o site/index.html index.md
+    pandoc -s -o site/index.html index.md
 
 site/about.html: about.md | site
-	pandoc -s -o site/about.html about.md
+    pandoc -s -o site/about.html about.md
 
 site:
-	mkdir -p site
+    mkdir -p site
 
 build::
-	echo build complete
+    echo build complete
 {{< /file >}}
 
 The `.PHONY` target tells Make that `build` isn't a real file, just the name of a recipe.  Even if a file called `build` gets added to the directory, Make still runs the recipe when you give `build` as a goal on the make command line or as a prerequisite of some other target.
@@ -96,7 +96,7 @@ Use a *double-colon* rule for build and notice there are two rules with `build` 
 
 {{< output >}}
 built-on.md::
-	date > $@
+    date > $@
 {{< /output >}}
 
 This uses an *automatic variable*, `$@`, which evaluates to the name of the target.
@@ -109,7 +109,7 @@ A pattern rule has a target that contains a single `%` character, which matches 
 
 {{< output >}}
 site/%.html: %.md | site/
-	pandoc -s -o $@ $<
+    pandoc -s -o $@ $<
 {{< /output >}}
 
 In addition to `$@`, which evaluates to the target, this rule uses the automatic variables `$<`, which evaluates to the first prerequisite of the rule in which it appears. You'll find the complete list of automatic variables in the [Automatic Variables](https://www.gnu.org/software/make/manual/make.html#Automatic-Variables) of the manual.
@@ -126,7 +126,7 @@ Another way to simplify and generalize a `makefile` is with variables. One obvio
 pages = site/index.html site/about.html
 build: $(pages)
 site/%.html: %.md | site
-		pandoc -s -o $@ $<
+        pandoc -s -o $@ $<
 {{< /file >}}
 
 {{< note >}}
@@ -140,7 +140,7 @@ MARKDOWN = /usr/bin/pandoc -s
 pages = site/index.html site/about.html
 build: $(pages)
 site/%.html: %.md | site
-		$(MARKDOWN) -o $@ $<
+        $(MARKDOWN) -o $@ $<
 {{< /file >}}
 
 The variable `MAKE` is treated specially. Make uses it to identify recursive statements in recipes that it needs to execute even if the `-n` (`--just-print`) option is set on the command line, telling Make to "just print" recipes without executing them.  You can find more about using Make recursively in [Section 5.7](https://www.gnu.org/software/make/manual/make.html#Recursion) of the manual.
@@ -185,14 +185,14 @@ If Git finds an executable file called `/hooks/post-update` in its repository, i
 # siblings, i.e. both are subdirectories of the same parent.
 unset GIT_DIR; export GIT_DIR
 for ref in $*; do
-	# The refs being updated are passed on the command line.
-	# We are only interested in main.
+    # The refs being updated are passed on the command line.
+    # We are only interested in main.
     if [ "$ref" = refs/heads/main ]; then
-		# --ff-only ensures that un-pushed changes won't be overwritten
-		git -C ../website pull --ff-only
-		# If the website has a makefile, make build
-		[[ -f ../website/makefile ]] && make -C ../website build
-	fi
+        # --ff-only ensures that un-pushed changes won't be overwritten
+        git -C ../website pull --ff-only
+        # If the website has a makefile, make build
+        [[ -f ../website/makefile ]] && make -C ../website build
+    fi
 done
 {{< /file >}}
 
@@ -207,22 +207,22 @@ remotes are called `github` and `staging`.
 
 {{< file "website.git/hooks/post-update" bash >}}
 serve:                       # run a local server for initial testing
-	jekyll serve
+    jekyll serve
 
 staging:
-	git status
-	git push staging main
+    git status
+    git push staging main
 
 # this target is invoked by the post-update hook on the staging server
 build:
-	jekyll JEKYLL_ENV=production build
+    jekyll JEKYLL_ENV=production build
 
 prod:
-	git checkout production
-	git merge --ff-only --no-edit main
-	git tag -a -m "pushed to production $$(date)"
-	git push github production
-	git checkout main
+    git checkout production
+    git merge --ff-only --no-edit main
+    git tag -a -m "pushed to production $$(date)"
+    git push github production
+    git checkout main
 {{< /file >}}}
 
 The recipe for `prod` automates all of the git housekeeping around making a release.  GitHub builds Jekyll pages and serves them automatically. The `staging` recipe uses the hook in the previous section to build a copy of the site on your Linode for further testing.
