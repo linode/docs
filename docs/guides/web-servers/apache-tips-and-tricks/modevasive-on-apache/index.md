@@ -3,12 +3,12 @@ slug: modevasive-on-apache
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: 'mod_evasive is an Apache module that implements evasive action to mitigate the effects of a DoS attack.'
+description: 'Learn what is mod_evasive on Apache web server, understand how to configure and test it.'
 og_description: "Configure your Apache web server to evade DoS attacks with mod_evasive."
 keywords: ["mod_evasive", "modevasive", "evasive", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/modevasive-on-apache/','/websites/apache-tips-and-tricks/modevasive-on-apache/','/web-servers/apache/mod-evasive/']
-modified: 2018-03-01
+modified: 2021-07-07
 modified_by:
   name: Linode
 published: 2011-11-14
@@ -26,6 +26,16 @@ mod_evasive is a module for Apache that provides evasive action in the event of 
 ![mod_evasive on Apache](mod_evasive.png "mod_evasive on Apache")
 
 This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found in our [LAMP guides](/docs/lamp-guides) section.
+
+## How mod_evasive works?
+
+mod_evasive works on top of a dynamic IP table and URIs to issue or deny permissions to incoming requests. These two are what enables executive evasive actions during sophisticated attacks on your systems and reports certain actions to your web servers.
+
+To understand how exactly mod_evasive handles both DDoS and brute force attacks we have to understand the common denominator between these two attacks - which is the surge in the number of requests your servers receive. When you are under these two attacks, you either experience a high volume of requests (which is DDoS) or a very high number of log-in attempts using different user-name and password combinations.
+
+For each listener in your web servers, mod_evasive uses your web server's (Apache) own capacity to scale as request volumes scale. mod_evasive evaluates each incoming request it gets and the IP is looked up against a hash table.
+
+This hash table has URIs and IPs that are dynamically updated. And each request's IP address is matched against a backlist of temporary IPs that have potentially tried sending too many requests. If the request's IP address is found in the temporary blacklist a 403 status code is returned as a result of the request.
 
 ## Prerequisites
 
@@ -149,6 +159,81 @@ DOSWhitelist 127.0.0.*
 {{< /file >}}
 
 Wildcards can be used on up to the last 3 octets if necessary. Multiple DOSWhitelist commands may be used in the configuration.
+
+## How To Restrict mod_evasive For Only One Virtual Host On Apache?
+
+When you define a mod_evasive configuration on Apache, you by default set it to work at a global level. To enable it for specific hosts, you can apply two different methods:
+1. Put your default mod_evasive configuration to work with a large range of numbers. You can define these numbers in a way that a ban is never triggered.
+2. Leave mod_evasive set at the global level, but put `DOSBlockingPeriod` to `0` for certain vhosts
+
+If we try adding numbers to never trigger a ban from mod_evasive it is highly likely to create a performance issue in your Apache web server. These performance issues are also the reason why it is not a recommended practice.
+
+To exclude certain vhosts from mod_evasive bans or triggers without compromising on the system level performance, we can use the `DOSBlockingPeriod`. We can add the following to exclude vhosts:
+
+{{< file "default.conf" >}}
+<IfModule mod_evasive24.c>
+    DOSBlockingPeriod 0
+</IfModule>
+{{< /file >}}
+
+## How To Check If mod_evasive Is Working?
+
+To test if our mod_evasive configuration is working as intended, we can use `test.pl` by mod_evasive's developers. If you don't already have it in your system, you can use the following test.pl file:
+
+{{< file "test.pl" >}}
+#!/usr/bin/perl
+
+# test.pl: a small perl script that test's mod_dosevasive's effectiveness
+
+use IO::Socket;
+use strict;
+
+for(0..100) {
+  my($response);
+  my($SOCKET) = new IO::Socket::INET( Proto   => "tcp",
+                                      PeerAddr=> "127.0.0.1:80");
+  if (! defined $SOCKET) { die $!; }
+  print $SOCKET "GET /?$_ HTTP/1.0\n\n";
+  $response = <$SOCKET>;
+  print $response;
+  close($SOCKET);
+}
+{{< /file >}}
+
+If you don't have Pearl installed on your system, you can install it by running the following command on your terminal:
+
+        sudo yum install -y perl
+
+Let's run a test of our mod_evasive configuration to see if our mod_evasive is working well with the Apache web server. Our test is to send 100 requests to trigger mod_evasive. 
+
+We can run `test.pl` using the following command:
+
+        sudo perl /usr/share/doc/mod_evasive/test.pl
+
+You should see the output of these requests as shown below:
+
+{{< output >}}
+HTTP/1.1 403 Forbidden
+HTTP/1.1 403 Forbidden
+HTTP/1.1 403 Forbidden
+HTTP/1.1 403 Forbidden
+HTTP/1.1 403 Forbidden
+HTTP/1.1 403 Forbidden
+HTTP/1.1 403 Forbidden
+…
+{{< /output >}}
+
+Apart from the terminal's output, we also have logs of all mod_evasive activities that we can check to understand actions associated with IPs.
+
+We can run the following command on our logs to check the last five lines to see possible mod_evasive actions:
+
+        Oct 25 03:11:08 Ubuntu[18290]: Blacklisting address 127.0.0.1: possible DoS attack.
+        Oct 25 03:11:35 Ubuntu[18290]: Blacklisting address 127.0.0.1: possible DoS attack.
+        Oct 25 03:12:28 Ubuntu[18290]: Blacklisting address 127.0.0.1: possible DoS attack.
+        Oct 25 15:36:42 CentOS-7 mod_evasive[2732]: Blacklisting address 192.168.1.42: possible DoS attack.
+        Oct 27 15:36:42 CentOS-7 mod_evasive[2732]: Blacklisting address 192.168.1.42: possible DoS attack.
+
+In the output above, the part that says `Blacklisting address 192.165.1.42: possible DoS attack` highlights a mod_evasive action. Here the IP address 192.168.1.42 is blocked by mod_evasive.
 
 ## Test mod_evasive
 
