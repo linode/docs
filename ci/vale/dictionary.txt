@@ -225,6 +225,7 @@ comodo
 completekey
 composable
 conda
+confidental
 config
 configr
 configs
@@ -357,6 +358,7 @@ dockerfile
 dockerfiles
 dockerize
 dockerized
+dogtag
 dokku
 domain1
 domain2
