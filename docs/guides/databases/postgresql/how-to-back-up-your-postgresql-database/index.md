@@ -3,12 +3,12 @@ slug: how-to-back-up-your-postgresql-database
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide shows how to use pg_dump and pg_dumpall to make backups of your PostgreSQL databases.'
+description: 'Learn how to back up your PostgreSQL database with this guide for single, multiple databases and automate backups.'
 og_description: 'This guide shows how to create backups of your PostgreSQL databases using pg_dump and use them to restore a lost or broken database.'
 keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-18
-modified: 2017-12-18
+modified: 2021-07-07
 modified_by:
   name: Jared Kobos
 title: "How to Back Up Your PostgreSQL Database"
@@ -103,6 +103,28 @@ You may want to set up a cron job so that your database will be backed up automa
 {{< /file >}}
 
 5.  Save and exit from the editor. Your database will be backed up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.
+
+## How Do I Check My PostgreSQL Backup Status?
+
+To check the PostgreSQL backup status, you can check the log file to view the status of the backup. If you aren’t creating a log file for your PostgreSQL, you can create one by adding the following at the end of your cron job.
+
+        su postgres "pg_dump database_1 2>> $LOG_FILE | gzip > /linode/data/db1/postgredatabase1_backup.bak.gz"
+
+You can receive an email with these log files in it as well. To do so, add the following line to the end of your cron job as well.
+
+        cat $LOG_FILE | mailx $MAINTAINERS -s "Postgresql backup"
+
+But getting log files into an email isn’t always user-friendly. You can instead trigger emails when something goes wrong with your PostgreSQL by modifying the code above like this:
+
+        LOG_FILE=linode/trv/pgdump.err
+
+        if ! pg_dump -U backupuser "database_1" 2> $LOG_FILE
+
+        then
+            cat $LOG_FILE | mailx 'hello@linode.com' -s "Postgresql backup failure!"
+        fi
+
+Now, if there are any issues with the backup, you should receive an email with the log file.
 
 ## Next Steps
 
