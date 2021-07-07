@@ -1125,6 +1125,7 @@ oldfashioned
 oneof
 ons
 opcache
+openapi
 opencart
 opendkim
 openfire
