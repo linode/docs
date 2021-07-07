@@ -3,12 +3,12 @@ slug: secrets-management-with-terraform
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to Manage Secrets with Terraform'
+description: 'Learn everything you need to know about secrets management with Terraform.'
 keywords: ['terraform','secrets','secrets management','backend','hcl']
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2019-08-09
+modified: 2021-07-07
 modified_by:
   name: Linode
 image: SecretsManagementwithTerraform.png
@@ -94,6 +94,39 @@ Supplying multiple `.tfvars` files is another way to further separate secret var
 
 {{< /note >}}
 
+#### Marking variables as sensitive
+
+We have so far defined variables in the following way:
+
+{{< file >}}
+variable "database_username" {
+    description = "Username of database administrator"
+    type = string
+}
+{{< /file >}}
+
+Defining a variable in this way also brings an issue where certain variables that we would like to keep out of our logs would still get logged.
+
+But with the option to mark variables as sensitive, any variable that you mark as sensitive would automatically be excluded from your logs. Adding `sensitive = true` helps us mark variables as sensitive. Now, let’s mark `database_username` as a sensitive variable by editing our variable definition to the following:
+
+{{< file >}}
+variable "database_username" {
+    description = "Username of database administrator"
+    type = string
+    sensitive = true
+}
+{{< /file >}}
+
+Let's define another variable here named "data_password" that we intend to use later in this guide.
+
+{{< file >}}
+variable "database_password" {
+    description = "Password of database administrator"
+    type = string
+    sensitive = true
+}
+{{< /file >}}
+
 ### Assigning Values in Environment Variables
 
 Terraform allows you to keep input variable values in environment variables. These variables have the prefix `TF_VAR_` and are supplied at the command line. Using the above example of an API access token, you could export the variable and use it like so:
@@ -172,3 +205,119 @@ Any attempt to change the password in a `.tf` file will result in the creation o
 ### Privatize Version Control
 
 If you are unwilling or unable to use the above options to help manage your state file, and if you are using a platform like GitHub or GitLab to share your state files, then at minimum the repository should be private.
+
+## Using `pass` For Secret Management With Terraform
+
+Once you have defined your secrets properly in a variable, you can pass these variables to your Terraform resources.
+
+{{< file >}}
+# Configure the Linode provider
+provider "linode" {
+  token = "$LINODE_TOKEN"
+}
+
+resource "linode_instance_1" "linode" {
+    type = "simple"
+    domain = "linode.example"
+    soa_email = "linode@linode.example"
+    tags = ["tag1", "tag2"]
+
+    #Here we set secrets from the variables
+    username = var.database_username
+    password = var.database_password
+}
+
+resource "linode_instance_2" "linode_2" {
+    domain_id = "${linode_domain.linode_2.id}"
+    name = "www"
+    record_type = "CNAME"
+    target = "linode_2.example"
+}
+{{< /file >}}
+
+You can also set secrets directly in your environment variables. And we can define environmental variables that would automatically get picked up everytime we run Terraform.
+
+To do so, first we need to set these secrets as environment variables. You can do that by:
+
+        export TF_VAR_database_username=("Username of database administrator")
+        export TF_VAR_database_password=("Password of database administrator")
+
+{{< note >}}
+Once variables are properly defined, the next time your run Terraform, it shall automatically pickup secrets
+terraform apply
+{{< /note >}}
+
+### Install `pass`
+
+If you don't already have pass installed on your machine, you can run the following command to install it on your system:
+sudo apt install pass
+
+Once `pass` is installed, you can store your secrets by running `pass insert` for all of your secrets. Let’s illustrate this by running `pass insert` on our secrets `database_username` and `database_password`.
+
+        pass insert database_username
+
+Enter password for database_username: admin
+
+        pass insert database_password
+
+Enter password for database_password: password
+
+Now run the following command : `pass <your secret>`
+
+While this makes it significantly easier to manage secrets in Terraform, it at the same time reduces the maintainability of your codebase as secret management is defined outside of Terraform's code.
+
+## Secret Management Using Vaults
+
+We can also use a secret store for our Terraform secret management. Using a secret management store like HashiCorp Vault which is open source and cross-platform helps us store sensitive data and limit who can access it.
+
+The way HashiCorp vaults works is by leveraging a token to authenticate access, a policy that defines what actions can be taken, and paths that allow a secret engine that serves secrets to HashiCorp Vault users.
+
+Terraform's `valut_generic_secret` allows us to read secrets with HashiCorp Vault.
+
+{{< file >}}
+data "vault_generic_secret" "linode_auth" {
+  path = "secret/linode_auth"
+}
+{{< /file >}}
+
+{{< note >}}
+For this example, in Vault there is a key named "auth_token" and the value is the token we need to keep secret.
+
+In general usage, replace "auth_token" with the key you wish to extract from Vault.
+
+{{< file >}}
+provider "linode" {
+  url        = "http://auth1-ssw.linode.com/"
+  auth_token = "${data.vault_generic_secret.linode_auth.data["auth_token"]}"
+}
+{{< /file >}}
+
+{{< /note >}}
+
+We now can manage secretgs with our Terraform code.
+
+{{< file >}}
+resource "linode_instance" "linode" {
+    type = "simple"
+    domain = "linode.example"
+    soa_email = "linode@linode.example"
+    tags = ["tag1", "tag2"]
+
+    #Here we set secrets from the variables
+    username = var.database_username
+    password = var.database_password
+}
+{{< /file >}}
+
+Managing Terraform secrets with HashiCorp, you can reap the following benefits:
+1. No plain text secrets within your code, with highly controlled access to secrets
+2. You gain a high degree of maintainability as you don't have to write or update wrappers
+3. You can also leverage APIs for secret management, which makes it easy to re-use these secrets with other services or applications
+4. You can view logs and run audits to see what data someone accessed and who requested that data.
+5. Secret rotation with HashiCorp Vault is another key security advantage for Terraform secret management
+
+### HashiCorp Key Rotation For Better Terraform Secret Management
+
+With fixed keys, it gets hard to develop a robust and reliable security layer that keeps your system safe. Secure secret management can also rely on rotating or periodically changing your HashiCorp Vault's encryption keys.
+
+NIST has provided directions on how you can implement vault key rotation to safeguard your secrets. After every 2^32 encryptions, we should rotate our vault encryption keys.  Parameters like `vault.barrier.put`, `vault.token.creation` and `merkle.flushDirty.num_pages`, WAL index help calculate the number of encryptions.
