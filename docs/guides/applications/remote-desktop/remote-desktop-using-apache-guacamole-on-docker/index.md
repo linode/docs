@@ -3,12 +3,12 @@ slug: remote-desktop-using-apache-guacamole-on-docker
 author:
   name: Sam Foo
   email: sfoo@linode.com
-description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
+description: 'Learn how to create a virtual cloud desktop using Apache Guacamole. This guide will teach you everything from installation to configuration.'
 og_description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
 tags: ["docker", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-08
+modified: 2021-07-07
 modified_by:
   name: Linode
 published: 2017-11-17
@@ -37,6 +37,41 @@ Apache Guacamole is an HTML5 application useful for accessing a remote desktop t
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
+## How Do I Make Virtual Cloud Desktop With Apache Guacamole?
+
+There are several steps involved in enabling Virtual Cloud Desktop with Apache Guacamole. These steps are:
+1. Set up a secure cloud server and update your system
+2. Install Docker to use for pulling Docker images for Guacamole server, Guacamole client, MySQL and authenticating our connection
+3. Install Xfce and VNC server
+4. Run `guacd` in Docker and link containers with SSH tunneling in place
+5. Connect to your VNC server
+6. Create a new connection on Guacamole and add your parameters
+
+## How Do You Set Up Guacamole?
+
+To set up Apache Guacamole in this guide, we shall pull relevant Docker images for the Guacamole server and for MySQL.
+
+For direct installation on operating systems like Debian and Ubuntu, you can also run these commands:
+
+### Installing Guacamole on Ubuntu
+
+        sudo add-apt-repository repository ppa:guacamole/stable
+
+The command above installs the most recent and the most stable Guacamole build.
+
+### Installing Guacamole on Debian
+
+        sudo apt-get install guacamole-tomcat
+
+The command above automatically puts Symlinks in place for Guacamole deployment too.
+
+### Installing Guacamole on Fedora
+
+We can use the `ynm` package manager to install Apache Guacamole on Fedora by running the following command:
+
+        yum install guacamole guacd
+
+In Fedora, you have to check what other packages you need in order to support the protocol you are planning to use. You can install other packages by using `yum install <add your package name here>` command.
 
 ## Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
@@ -248,5 +283,38 @@ If you have multiple displays running on the same Linode, increment the port num
 5.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
 
     ![Guacamole Recent Connections](guac_recent.png)
+
+## How Do I Start A Guacamole Server?
+
+Let's say your Linode's IP address is 173.255.255.65. When you paste this IP address on your web browser a login screen for Apache Guacamole shows up. Once you are logged in, you can see a first-time start panel prompting you to select between the default configuration or using an empty panel.
+
+Once you select a configuration for your Apache guacamole, you get full access to your cloud-based Linode instance. This is similar to using a Linux distribution on a computer where you can install applications and pretty much do anything you would like with it. You have to use the password that you used for `sudo` user to install any application on the system.
+
+## Is Apache Guacamole Secure?
+
+There are certain well-known security vulnerabilities associated with Apache Guacamole. Most notable is the one identified commonly by security researchers around Reverse RDP vulnerabilities. Any Guacamole version released before January 2020 is vulnerable to reverse RDP and multiple other vulnerabilities in FreeRDP.
+
+So, if you are using an old version of Apache Guacamole released before Jan. 2020, consider upgrading your Apache Guacamole to a newer, stable, and secure version.
+
+With the newer versions, the following vulnerabilities have recently surfaced and patched by FreeRDP and Apache Foundation:
+
+1. **Reverse attack to take control of gateway:** With this, any compromised system or machine inside of the network can exploit an incoming connection and compromise the gameway. This enables the compromised system or machine to take over the gateway.
+2. **An internal attack to compromise the gateway:** When an attacker is an internal member of the organization(commonly an employee or a contractor with access to the network), they can use these exploits to gain full access to the gateway.
+
+## How To Verify The Apache Guacamole Install?
+
+Once you have Apache Guacamole installed on your server or machine, you can access it using the IP or the custom domain you used in the Guacamole set up earlier. Our IP is `173.255.255.65`, so we can access it by going to the `173.255.255.65` and we should see a login screen.
+
+In case you can't see a login screen here, you should check logs to understand the root cause. To check your Docker logs, you can run the command `docker logs <add your arguments here>`. For example, let's say we see an error "An Internal Error has occurred" and are unable to access the login screen. We can look into the following to understand our underlying issue:
+1. Check if our containers are running properly
+2. Check Docker logs that are specific to Apache Guacamole
+
+To check your Docker containers, you can run the following command:
+
+        docker container ps
+
+If everything looks fine with your Docker containers, the next step should be to check your Docker logs for Apache Guacamole. You can check your Guacamole specific Docker logs by running the following command:
+
+        docker logs --tail all -f guacamole-guacamole
 
 This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are many features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
