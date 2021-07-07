@@ -40,11 +40,11 @@ Upon the completion of this tutorial, you will have fine-tuned your Vim editor t
 
 2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
 
-# Customize Your Vim Instance
+## Customize Your Vim Instance
 
 It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible - and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
 
-## Customize the Global *vimrc* File
+### Customize the Global *vimrc* File
 
 The configurations in this section will apply system-wide across all user accounts.
 
@@ -68,8 +68,7 @@ set mouse=a› › " Enable mouse usage (all modes)
 
 {{< /file >}}
 
-
-## Customize the Local *.vimrc* File
+### Customize the Local *.vimrc* File
 
 The configurations in this section will apply only to the active user account.
 
@@ -163,7 +162,6 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
 
 {{< /file >}}
-
 
 ## Integrate Plug-Ins
 
