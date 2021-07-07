@@ -48,7 +48,7 @@ It is possible to customize Vim on a per-user basis or set configurations to app
 
 The configurations in this section will apply system-wide across all user accounts.
 
-1.  A default Vim installation will feature a file containing Vim's core global settings called *vimrc*. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your linux distribution.
+1.  A default Vim installation will feature a file containing Vim's core global settings called *vimrc*. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your Linux distribution.
 
     {{< note >}}
 Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
