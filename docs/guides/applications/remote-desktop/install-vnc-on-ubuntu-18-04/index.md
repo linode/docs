@@ -3,14 +3,14 @@ slug: install-vnc-on-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to install and connect to a desktop environment on your Linode'
+description: 'Learn how to install VNC server on Ubuntu 18.04 and how to enable Gnome display with our VNC server.'
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "18.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
-published: 2016-06-21
+published: 2021-06-22
 title: 'Install VNC on Ubuntu 18.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
@@ -25,7 +25,7 @@ aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-18-04/']
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
 
-![Install VNC on Ubuntu 18.04](install-vnc-on-ubuntu-18-04.png)
+![ on Ubuntu 18.04](install-vnc-on-ubuntu-18-04.png)
 
 This guide explains how to install a graphic desktop environment on your Linode running Ubuntu 18.04 and how to connect to it from your local computer using VNC.
 
@@ -72,7 +72,7 @@ This will install the full Ubuntu desktop environment, including office and web 
 
 2.  Install the VNC server:
 
-        sudo apt-get install vnc4server
+        sudo apt-get 4server
 
 ## Secure your VNC connection
 
@@ -184,6 +184,14 @@ nautilus &
 
     [![A VNC connection with a full Ubuntu desktop.](1643-vnc-ubuntu-3_small.png)](1642-vnc-ubuntu-3.png)
 
+## How To Install VNC Server On Ubuntu 18.04 With Unity
+
+To make VNC work with full Ubuntu Unity Desktop, you can run the following command:
+
+        sudo apt-get install lightdm synaptic
+
+Synaptic is a package manager from APT and pretty much has the same functionalities as apt-get.
+
 ## Starting VNC Server on Boot
 
 This section is optional. Follow these steps to configure the VNC server to start automatically after reboot.
@@ -234,3 +242,103 @@ This section is optional. Follow these steps to configure the VNC server to star
 
 
 3.  Save and exit the file. You can test by rebooting your Linode and connecting to the VNC server.
+
+## How To Install VNC Server With Gnome Display On Ubuntu 18.04?
+
+To install a VNC server with Gnome display on Ubuntu 18.04 we first need to install Gnome.
+
+### Installing Gnome on Ubuntu 18.04
+
+To install Gnome desktop to work with our VNC server, we need to run the following command:
+
+        sudo apt install ubuntu-gnome-desktop
+
+Once the installation is complete and you see a confirmation message, check that your Gnome desktop is properly running. To do so, we can run `start gdm` and then `enable gdm` commands as shown below:
+
+        sudo systemctl start gdm
+        sudo systemctl enable gdm
+
+If everything works as intended, we can create a configuration to work as our startup script whenever our VNC server is instantiated. To do so go to your xstartup configuration file by running the following command:
+
+        sudo nano ~/.vnc/xstartup
+
+And add the following lines to your configuration file for gnome desktop
+{{< file >}}
+#!/bin/sh
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+vncconfig -iconic &
+dbus-launch --exit-with-session gnome-session &
+{{< /file >}}
+
+We can now launch our VNC server using the command:
+
+        vncserver -1 no -geometry 800x600
+
+This launches a session of 800x600 resolution. But to simplify the process that starts VNC server, we can write a `.service` file under our `/etc/systemd/system` directory as well. Let's create a `.service` file called `vnc_server_handling.service`. To create this .service file, run the following command:
+
+        sudo nano /etc/systemd/system/vnc_server_handling@.service
+
+Now, edit your vnc_server_handling@.service file and add the following parameters in it:
+{{< file >}}
+[Unit]
+Description=VNC Server Handling .service file
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=away
+
+# Remove files that exist in the /tmp/ directory
+ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1 || :
+ExecStart=/usr/bin/vncserver -geometry 800x600 -1
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target
+{{< /file >}}
+
+To apply our new settings, we need to do two things:
+1. Stop all VNC related sessions on your system
+2. Restart your VNC server to load new settings
+
+To kill all VNC sessions active on your system run the following command:
+
+        vncserver -kill :*
+
+To enable our new settings, run the following command:
+
+        sudo systemctl enable vnc_server_handling@1
+
+Now, start VNC server with new configuration:
+
+        sudo systemctl start vnc_server_handling@1
+
+In the last two commands, notice the `1`. This `1` followed by `@` helps in mapping which display number this service should appear with.
+
+Whereas, the `@` symbol at the end of our `vnc_server_handling` allows us to pass an argument to use with our service configuration.
+
+### Checking status of VNC services
+
+To ensure that our VNC setup is working as intended after running `sudo systemctl start vnc_server_handling@1` we can run the following command:
+
+        sudo systemctl status vnc_server_handling@1
+
+If our new service worked perfectly, you should see the following output on your terminal:
+{{< file >}}
+● vnc_server_handling@1 - Start VNC server at startup
+    Loaded: loaded (/etc/systemd/system/vnc_server_handling@.service; indirect; vendor preset: enabled)
+    Active: active (running) since Mon 2018-07-09 18:13:53 UTC; 2min 14s ago
+  Process: 22322 ExecStart=/usr/bin/vncserver -depth 24 -geometry 800x640 :1 (code=exited, status=0/SUCCESS)
+  Process: 22316 ExecStartPre=/usr/bin/vncserver -kill :1 > /dev/null 2>&1 (code=exited, status=0/SUCCESS)
+ Main PID: 22330 (Xtightvnc)
+{{< /file >}}
+
+Our VNC server with Gnome display is now enabled on Ubuntu 18.04.
+
+## How To Solve The VNC Ubuntu 18.04 Grey Screen?
+This is one of the most commonly noticed errors we see with VNC servers on Ubuntu 18.04. To solve this issue, the first thing you should check on is system dependencies. If your dependencies are not running properly that can trigger a grey screen with your VNC setup.
+
+If dependencies are running properly the next space for us to diagnose is your system itself. It’s common for your `xstartup` files to get modified and configured in the wrong way. Go to your ~/.vnc/xstartup and make sure that everything is set properly with the right parameters. You can also use our xstartup configuration from the sections above as a reference.
+
+If you are still finding it hard to figure out the underlying issue, consider opening up a thread on [our community](/community/).
