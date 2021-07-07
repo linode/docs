@@ -3,19 +3,19 @@ slug: hosting-a-website-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to hosting a website on your Linode.'
+description: 'Learn how to host a website on Ubuntu 18.04. This guide will walk you through the installation of the Apache web server, configuration, and testing of a website hosted on Ubuntu.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/hosting-a-website/','/hosting-website/','/websites/hosting-a-website-ubuntu-18-04/','/web-servers/lamp/hosting-a-website-ubuntu-18-04/']
-modified: 2018-08-03
+aliases: ['/websites/hosting-a-website/','/hosting-website/','/websites//','/web-servers/lamp//']
+modified: 2021-07-07
 modified_by:
   name: Linode
 published: 2012-03-13
 title: Host a Website on Ubuntu 18.04
 ---
 
-Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
+In this guide, you’ll learn how to host a website on Ubuntu 18.04 using the LAMP stack (Linux, Apache, MySQL and PHP). First, you will install the LAMP stack. Then, you’ll create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
 This guide is intended for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 
@@ -23,7 +23,7 @@ This guide is intended for small and medium-size websites running on WordPress, 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Web Server
+## Hosting an Apache web server on Ubuntu 18.04
 
 Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [guides on web servers](/docs/web-servers/).
 
@@ -31,7 +31,7 @@ If you are using Ubuntu 18.04, instead of installing each component separately, 
 
     sudo tasksel install lamp-server
 
-### Install Apache
+### Installing Apache Web Server on Ubuntu 18.04
 
 Check for and install all system updates, and install Apache on your Linode:
 
@@ -40,7 +40,7 @@ Check for and install all system updates, and install Apache on your Linode:
 
 Your Linode will download, install, and start the Apache web server.
 
-### Optimize Apache for a Linode 2GB
+### Optimize Apache Web Server for a Linode 2GB
 
 Installing Apache is easy, but if you leave it running with the default settings, your server could run out of memory. That's why it's important to optimize Apache *before* you start hosting a website on your Linode.
 
@@ -80,7 +80,51 @@ KeepAlive Off
 
 You've successfully optimized Apache for your Linode, increasing performance and implementing safeguards to prevent excessive resource consumption. You're almost ready to host websites with Apache.
 
-### Configure Name-based Virtual Hosts
+## Modifying Apache Firewall Settings
+
+Before beginning Apache web server configuration, you should make changes to the firewall to enable access to ports. This is an optional step for those who want to restrict access to their Apache server. You can skip this step and start with the next step, but it is highly recommended for those hosting a website for production usage.
+
+Apache comes with a few firewall profiles by default. To check which ones are installed on your Ubuntu 18.04 server, run the following command:
+
+        sudo ufw app list
+
+In your terminal you should see output  similar to  the following:
+
+{{< output >}}
+Available applications:
+Apache
+Apache Full
+Apache Secure
+OpenSSH
+{{< /output >}}
+
+From this list of available applications
+- Apache opens only port 80
+- Apache Full can open both port 443 and port 80
+- and Apache Secure only opens port 443
+
+To allow incoming  traffic for a certain profile, use the `command sudo ufw allow <Apache ufw profile>`. For example, if you wish to enable the Apache profile, you can do that by running the following command:
+
+        sudo ufw allow Apache
+
+Next, check if the Apache profile was enabled by running the following command:
+
+        sudo ufw status
+
+You should see an output like this on your terminal
+
+{{< output >}}
+Status: active
+
+To                         	Action      	From
+--                           ------            -----
+OpenSSH                    	ALLOW       	Anywhere
+Apache                    	ALLOW       	Anywhere
+OpenSSH (v6)             	ALLOW       	Anywhere (v6)
+Apache (v6)                	ALLOW       	Anywhere (v6)
+{{< /output >}}
+
+### Configure Name-based Virtual Hosts in Apache Web Server
 
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you'll use *name-based virtual hosts* to host websites in your home directory.
 
@@ -142,7 +186,7 @@ You should *not* be logged in as `root` while executing these commands. To learn
 
 You've configured Apache to host one or more websites on your Linode. After you [upload files](#upload-files) and [add DNS records](#add-dns-records) later in this guide, your websites will be accessible to the outside world.
 
-## Database
+## Hosting a website on Ubuntu - Installing MySQL
 
 Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference guides](/docs/databases/).
 
@@ -314,7 +358,53 @@ You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a 
 
 If you're using a content management system like WordPress or Drupal, you may need to configure the appropriate settings file to point the content management system at the MySQL database.
 
-## Test your Website
+## Hosting multiple websites on Ubuntu 18.04
+
+In this guide so far, we have used example.com.conf to host our website example.com. But, what if you want to host multiple websites on Ubuntu 18.04?
+
+To add another virtual host for our second website, copy the  existing example.com virtual host file. You can use this as the basis for your second website:
+
+        sudo cp/etc/apache2/sites-available/example.com.conf
+        /etc/apache2/sites-available/example2.com.conf
+
+Once a new Apache web server configuration file has been created, open the new virtual host for example2.com and edit it using the command below:
+
+        sudo nano /etc/apache2/sites-available/example2.com.conf
+
+Then, make changes to the settings for example2.com as show below:
+
+{{< file >}}
+File: /etc/apache2/sites-available/example.com.conf
+# domain: example.com2
+# public: /var/www/html/example.com2/public_html/
+
+<VirtualHost *:80>
+  # Admin email, Server Name (domain name), and any aliases
+  ServerAdmin webmaster@example2.com
+  ServerName  example2.com
+  ServerAlias www.example2.com
+
+  # Index file and Document Root (where the public files are located)
+  DirectoryIndex index.html index.php
+  DocumentRoot /var/www/html/example2.com/public_html
+  # Log file locations
+  LogLevel warn
+  ErrorLog  /var/www/html/example2.com/log/error.log
+  CustomLog /var/www/html/example2.com/log/access.log combined
+</VirtualHost>
+{{< /file >}}
+
+We have placed our example2.com in `/var/www/html/example.com2/public_html/`.
+
+Finally, enable your new virtual host by using the command:
+
+        sudo a2ensite  example2.com
+
+Once the second virtual host is enabled, restart your Apache web server:
+
+        sudo systemctl reload apache2
+
+## Test your Website hosted on Ubuntu 18.04
 
 It's a good idea to test your website(s) before you add the DNS records. This is your last chance to check everything and make sure that it looks good before it goes live.
 
