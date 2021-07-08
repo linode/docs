@@ -36,7 +36,7 @@ A Dockerfile is a text file of a list of commands in an order that is used to au
 
 A Dockerfile is a script that carries out different commands and actions to create a Docker image. The Dockerfile automates the image creation process and simplifies the deployment pipeline, and a Docker container is made from a Docker image. A [Docker registry](https://docs.docker.com/registry/) is where the public (or private) Docker images can be stored.
 
-After a Dockerfile is created, the `docker build` command is used to create a Docker image using the file’s commands (configured to use specific software versions and dependencies for stable deployments).
+After a Dockerfile is created, the `docker build` command is used to create a Docker image using the commands in the file. The commands are configured to use specific software versions and dependencies for stable deployments.
 
 A Dockerfile can use the following commands for building images:
 
@@ -60,7 +60,7 @@ To create the Dockerfile:
 
 1.  At the command prompt either via SSH or Lish in the Linode Manager, create and change to a new directory by typing `mkdir ~/mydockerbuild && cd ~/mydockerbuild`.
     {{< note >}}
-This places the Docker build directory in the home directory. Do not store the Dockerfile in the home directory itself or the server's root directory, but instead create a separate directory and place all necessary files within it along with the Dockerfile.
+This places the Docker build directory in the home directory. Do not store the Dockerfile in the home directory itself or the server's root directory. Instead create a separate directory and place all necessary files within it along with the Dockerfile.
 {{< /note >}}
 
 2.  Create the file by entering `touch Dockerfile`.
@@ -142,7 +142,7 @@ Hello, Sunshine!
 {{< /output >}}
 
 {{< note >}}
-If the `sudo docker run` command is executed and the Docker image is not available in the current working directory, it is pulled from the Docker registry instead.
+If the `sudo docker run` command is executed and the Docker image is not available in the current working directory, it is pulled from the Docker registry.
 {{</ note >}}
 
 ## Further Reading
