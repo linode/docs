@@ -1309,6 +1309,7 @@ rdbadmin
 rdiff
 readcaps
 reauthenticate
+reauthenticating
 readme
 readonly
 readwrite
