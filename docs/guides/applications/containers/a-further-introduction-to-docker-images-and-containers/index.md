@@ -34,7 +34,7 @@ external_resources:
 
 ## Create Your Dockerfile for the Docker Image
 
-Docker requires a working Dockerfile for its builds. So, you need to create a Dockerfile.The Dockerfile needs to set up an Ubuntu image with Apache as a web server using the HTTP port 80.
+Docker requires a working Dockerfile for its builds. So, you need to create a Dockerfile.The Dockerfile needs to set up an Ubuntu image with Apache web server on HTTP port 80.
 
 1.  Create and change to a new directory by entering `mkdir ~/mydockerbuild && cd ~/mydockerbuild`.
 
@@ -61,7 +61,7 @@ CMD ["apache2ctl","-D","FOREGROUND"]
 
 1.  Build the image using the `docker build` command within the same directory by entering `sudo docker build -t webdev1 .`.
 
-2.  After the build is over and you're returned to the command prompt, enter `docker images.` The *ubuntu* repository is downloaded because in the *FROM ubuntu* line of the Dockerfile ubuntu is mentioned. The output looks similar to the following:
+2.  After the build is over and you're returned to the command prompt, enter `docker images.` The *Ubuntu* repository is downloaded because in the *FROM Ubuntu* line of the Dockerfile Ubuntu is mentioned. The output looks similar to the following:
   {{< output >}}
 REPOSITORY        TAG          IMAGE ID       CREATED          SIZE
 webdev1           latest       f63a5cbcc133   12 seconds ago   332MB
@@ -74,7 +74,7 @@ Each image created is tagged *latest*. If you want to change the tag to for exam
 
 ## Running your Docker Images as Containers
 
-When you execute the `sudo docker run my-image-name` command, you launch a Docker container tied to the terminal session. This is also referred to as running a process in the *foreground*. When the root process is in the foreground and is tied to a terminal session, the container exits as soon as you close the terminal session. If you want the container to run even after you close the terminal, run the container in *detached* mode. This runs the container in the *background*.
+When you execute the `sudo docker run my-image-name` command, you launch a Docker container tied to the terminal session. This is also referred to as running a process in the *foreground*. When the root process is in the foreground tied to a terminal session, the container exits when you close the terminal session. If you want the container to run even after you close the terminal, run the container in *detached* mode. This runs the container in the *background*.
 
 To run the Docker image as a container in detached mode:
 
@@ -82,7 +82,7 @@ To run the Docker image as a container in detached mode:
 
 2.  After you are back at the command prompt, enter `sudo docker ps`. The output of this command displays the webdev1 container, with the name *apache*, running in the background:
   {{< output >}}
-CONTAINER ID  IMAGE COMMAND CREATED STATUS PORTS NAMES
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 de0c62fb3935 webdev1 "apache2ctl -D FOREG…" 4 seconds ago Up 4 seconds 80/tcp apache
 {{</ output>}}
 
@@ -114,8 +114,8 @@ Each parameter is described in the following list:
 
 ## Further Reading
 
-This guide and our [How to Use a Dockerfile to Build a Docker Image](/docs/guides/applications/containers/how-to-use-dockerfiles) covered the basics of using Dockerfiles to build images, but they barely scratch the surface. For more information:
+This guide and the [How to Use a Dockerfile to Build a Docker Image](/docs/guides/applications/containers/how-to-use-dockerfiles) covers the basics of using Dockerfiles to build images. For more information:
 
 -   visit the official [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) documentation for more on Dockerfiles;
 
--   despite its name, Docker's [Get Started](https://docs.docker.com/get-started/) is an in-depth tutorial, which leads into even more in-depth guides (such as deploying applications into the cloud and setting up *CI/CD* (continuous integration and deployment)).
+-   despite its name, Docker's [Get Started](https://docs.docker.com/get-started/) is an in-depth tutorial. It covers topics such as deploying applications into the cloud and setting up *CI/CD* (continuous integration and deployment).
