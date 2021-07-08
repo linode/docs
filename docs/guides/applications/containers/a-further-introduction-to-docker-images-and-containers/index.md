@@ -20,7 +20,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
 ---
 
-[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same image across multiple virtual machines. You can use a Dockerfile to automate the installation and configuration of an image and its dependencies. A [Dockerfile](/docs/guides/applications/containers/how-to-use-dockerfiles) is a text file of a list of commands in an order that is used to automate installation and configuration of a Docker image.
+[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy containers across multiple virtual machines without maintaining the image. You can use a Dockerfile to automate the installation and configuration of an image and its dependencies. A [Dockerfile](/docs/guides/applications/containers/how-to-use-dockerfiles) is a text file of a list of commands in an order. It is used to automate installation and configuration of a Docker image.
 
 ## Before You Begin
 
@@ -34,7 +34,7 @@ external_resources:
 
 ## Create Your Dockerfile for the Docker Image
 
-Docker requires a working Dockerfile for its builds. So, you need to create a Dockerfile that sets up an Ubuntu image with Apache acting as a web server and using the standard HTTP port 80.
+Docker requires a working Dockerfile for its builds. So, you need to create a Dockerfile.The Dockerfile needs to set up an Ubuntu image with Apache as a web server using the HTTP port 80.
 
 1.  Create and change to a new directory by entering `mkdir ~/mydockerbuild && cd ~/mydockerbuild`.
 
@@ -61,7 +61,7 @@ CMD ["apache2ctl","-D","FOREGROUND"]
 
 1.  Build the image using the `docker build` command within the same directory by entering `sudo docker build -t webdev1 .`.
 
-2.  After the build is over and you're returned to the command prompt, enter `docker images.` The output looks similar to this, the *ubuntu* repository is downloaded because in the *FROM ubuntu* line of the Dockerfile ubuntu is mentioned:
+2.  After the build is over and you're returned to the command prompt, enter `docker images.` The *ubuntu* repository is downloaded because in the *FROM ubuntu* line of the Dockerfile ubuntu is mentioned. The output looks similar to the following:
   {{< output >}}
 REPOSITORY        TAG          IMAGE ID       CREATED          SIZE
 webdev1           latest       f63a5cbcc133   12 seconds ago   332MB
@@ -74,7 +74,7 @@ Each image created is tagged *latest*. If you want to change the tag to for exam
 
 ## Running your Docker Images as Containers
 
-When you execute the `sudo docker run my-image-name` command, you launch a Docker container tied to the terminal session. This is also referred to as running a process in the *foreground*. When the root process is in the foreground and is tied to a terminal session, the container exits as soon as you close the terminal session. If you want the container to run even after the terminal session is closed, you can run the container in *detached* mode. This runs the container in the *background*.
+When you execute the `sudo docker run my-image-name` command, you launch a Docker container tied to the terminal session. This is also referred to as running a process in the *foreground*. When the root process is in the foreground and is tied to a terminal session, the container exits as soon as you close the terminal session. If you want the container to run even after you close the terminal, run the container in *detached* mode. This runs the container in the *background*.
 
 To run the Docker image as a container in detached mode:
 
@@ -82,15 +82,15 @@ To run the Docker image as a container in detached mode:
 
 2.  After you are back at the command prompt, enter `sudo docker ps`. The output of this command displays the webdev1 container, with the name *apache*, running in the background:
   {{< output >}}
-CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
-de0c62fb3935   webdev1   "apache2ctl -D FOREG…"   4 seconds ago   Up 4 seconds   80/tcp    apache
+CONTAINER ID  IMAGE COMMAND CREATED STATUS PORTS NAMES
+de0c62fb3935 webdev1 "apache2ctl -D FOREG…" 4 seconds ago Up 4 seconds 80/tcp apache
 {{</ output>}}
 
 3.  Now you can do the development work with the Apache server and still have access to the command line. When done, stop the container by entering `docker stop apache` for the name or `docker stop de0c62fb3935` for the container ID, but you need to replace that with your own.
 
 4.  Enter `docker ps` again to make sure all the containers are no longer running. The output should look like this:
   {{< output >}}
-CONTAINER ID   IMAGE    COMMAND  CREATED        STATUS       PORTS          NAMES
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 {{</ output>}}
 
 ### Configure your Docker Container's Ports
