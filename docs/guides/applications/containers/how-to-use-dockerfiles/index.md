@@ -22,7 +22,7 @@ aliases: ['/applications/containers/how-to-use-dockerfiles/']
 ---
 ![How to Use a Dockerfile](how-to-use-dockerfile.png "How to Use a Dockerfile")
 
-A Dockerfile is a text file of a list of commands in an order that is used to automate installation and configuration of a [Docker image](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) and makes it easy to deploy multiple Docker containers without having to maintain the same image across multiple virtual machines. This guide covers the basics, with an example, of how a Dockerfile works.
+A Dockerfile is a text file of a list of commands in an order that is used to automate installation and configuration of a [Docker image](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images). Dockerfile makes it easy to deploy multiple Docker containers without having to maintain the same image across multiple virtual machines. This guide covers the basics, with an example, of how a Dockerfile works.
 
 ## Before You Begin
 
@@ -40,7 +40,7 @@ After a Dockerfile is created, the `docker build` command is used to create a Do
 
 A Dockerfile can use the following commands for building images:
 
--  **ADD**: Copy files from a source on the host to the container's filesystem at the set destination.
+-  **ADD**: Copy files from a source on the host to the container's file system at the set destination.
 -  **CMD**: Execute a specific command within the container.
 -  **ENTRYPOINT**: Set a default application to be used every time a container is created with the image.
 -  **ENV**: Set environment variables.
