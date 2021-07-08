@@ -1,5 +1,5 @@
 ---
-slug: what-is-webassembly
+slug: rust-webassembly-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
@@ -11,8 +11,8 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2021-04-15
 modified_by:
   name: Nathaniel Stickman
-title: What Is WebAssembly?
-h1_title: What Is WebAssembly?
+title: A Rust and WebAssembly Tutorial
+h1_title: Getting Started with WebAssembly Tutorial
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
@@ -26,7 +26,7 @@ external_resources:
 
 ---
 
-[WebAssembly](https://webassembly.org/) — sometimes shortened to Wasm — is a safe, low-level, portable code format. It results in compact binaries that can be run in web browsers with near-native efficiency. Significantly, it allows languages like C/C++ and Rust to be compiled to run on the web and to do so alongside JavaScript.
+[WebAssembly](https://webassembly.org/) — sometimes shortened to Wasm — is a safe, low-level, portable code format. It results in compact binaries that can be run in web browsers with near-native efficiency. It allows languages like C/C++ and Rust to be compiled to run on the web and to do so alongside JavaScript.
 
 This guide introduces some key concepts behind WebAssembly and gets you started with an idea of how it can be used. Specifically, the guide gives you an example of how you can use Rust with WebAssembly.
 
@@ -48,9 +48,9 @@ This guide is written for non-root users. Commands that require elevated privile
 
 ## What is WebAssembly?
 
-WebAssembly is, primarily, a binary code format that runs on a kind of virtual machine. Its assembly-like code runs at near-native efficiency, and its virtual-machine model makes it portable across a wide array of environments. The WebAssembly machine can run not only on a wide of operating systems but also within web browsers.
+WebAssembly is a binary code format that runs on a technology similar to a virtual machine. Its assembly-like code runs at near-native efficiency, and its virtual-machine model makes it portable across a wide array of environments. The WebAssembly machine can run not only on a wide variety of operating systems but also within web browsers.
 
-The potential WebAssembly offers are still being explored, and the ecosystems to support it are still being built out. But already, WebAssembly promises to be a strong option for developing client web applications.
+The potential WebAssembly offers is still being explored and the ecosystems to support it are still being built out. WebAssembly already promises to be a strong option for developing client web applications.
 
 ### WebAssembly Features for Web Programming
 
@@ -66,11 +66,11 @@ Because various languages can use WebAssembly as a compilation target, the door 
 
 ## Get Started with WebAssembly
 
-To get started using WebAssembly and to see it in action, this guide uses [Rust](https://www.rust-lang.org/). Based on recommended practices, the guide also uses Node.js to bundle and serve the project.
+This guide uses [Rust](https://www.rust-lang.org/) to get started with WebAssembly and to see it in action. Based on recommended practices, the guide also uses Node.js to bundle and serve the project.
 
-### Install Rust and Tools
+### Installation Steps for Rust and WebAssembly
 
-1. Install the `build-essential` package, which includes some requisites for Rust and its tools.
+1. Install the `build-essential` package, which includes some prerequisites for Rust and its tools.
 
         sudo apt install build-essential
 
@@ -78,7 +78,7 @@ To get started using WebAssembly and to see it in action, this guide uses [Rust]
 
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-    If you do not already have Curl installed, use this command to install it first.
+    If you do not already have Curl installed, install it before proceeding.
 
         sudo apt install curl
 
@@ -90,11 +90,11 @@ To get started using WebAssembly and to see it in action, this guide uses [Rust]
 
          curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
-1. Install `cargo-generate`. This tool allows you to create new Rust projects from existing Git repositories, making it quick and easy to start projects from project templates.
+1. Install `cargo-generate`. This tool allows you to create new Rust projects from existing Git repositories, and use them as project templates.
 
         cargo install cargo-generate --features vendored-openssl
 
-## Install Node.js
+### Install Node.js
 
 1. Install Node.js. The Node.js installation comes bundled with the Node Package Manager (NPM).
 
@@ -105,7 +105,7 @@ To get started using WebAssembly and to see it in action, this guide uses [Rust]
 
         sudo npm install npm@latest -g
 
-### Create and Compile a WebAssembly Web Project
+### Create and Compile a Rust and WebAssembly Web Project
 
 1. Use `cargo-generate` to create a base Rust WebAssembly project. Be sure to first navigate to the directory where you would like to store your project's directory. In this case, that is the current user's home directory.
 
@@ -130,7 +130,7 @@ To get started using WebAssembly and to see it in action, this guide uses [Rust]
 
     This creates several files in a `pkg` subdirectory. There is a `.wasm` file, which is your application's WebAssembly binary. The directory has several JavaScript (`.js`) files, which connect your WebAssembly binary and your web application's JavaScript and DOM components.
 
-    You can also find several TypeScript (`.ts`) files here. If you are using TypeScript for your application, these define types for the JavaScript parts, which allows calls into WebAssembly to be type-checked. If you are not using TypeScript, you can ignore these.
+    You can also find several TypeScript (`.ts`) files here. If you are using TypeScript for your application, these files define types for the JavaScript parts, which allows calls into WebAssembly to be type-checked. If you are not using TypeScript, you can ignore these files.
 
 ### Run the WebAssembly Web Application
 
@@ -180,9 +180,9 @@ wasm.greet();
     Node.js serves the application on `localhost:8080`. To visit the application remotely, you can use an SSH tunnel:
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **8080**.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
-            ssh -L8080:localhost:8080 example-user@198.51.100.0
+            ssh -L8080:localhost:8080 example-user@192.0.2.0
 
 1. Now you can visit the application in your browser by navigating to `localhost:8080`.
 
@@ -190,10 +190,10 @@ wasm.greet();
 
 ## Conclusion
 
-Congratulations, you have now got a WebAssembly application up and running, and you are ready to continue exploring the capabilities that WebAssembly has to offer.
+You now have a WebAssembly application up and running, and you are ready to continue exploring the capabilities that WebAssembly has to offer.
 
 If you are interested in continuing to work with Rust and WebAssembly, check out the [Rust and WebAssembly Book](https://rustwasm.github.io/docs/book). It provides a further overview of WebAssembly and a deep dive into working with Rust and WebAssembly to build applications.
 
-If you are wanting to see how WebAssembly works with another language, take a look at [Emscripten compiler](https://emscripten.org/). Emscripten allows you to compile C/C++ code into WebAssembly. Mozilla even has a [guide](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm) to get you started with a basic "Hello, World!" implementation.
+If you want to see how WebAssembly works with another language, take a look at [Emscripten compiler](https://emscripten.org/). Emscripten allows you to compile C/C++ code into WebAssembly. Mozilla even has a [guide](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm) to get you started with a basic "Hello, World!" implementation.
 
-There are [even more languages](https://webassembly.org/getting-started/developers-guide/) listed on the official WebAssembly website, for those looking to go further afield.
+There are [even more languages](https://webassembly.org/getting-started/developers-guide/) listed on the official WebAssembly website, for those looking to go deeper.
