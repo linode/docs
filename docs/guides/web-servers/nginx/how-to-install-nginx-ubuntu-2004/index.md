@@ -1,18 +1,18 @@
 ---
-slug: how-to-install-and-use-nginx-on-ubuntu-2004
+slug: how-to-install-and-use-nginx-on-ubuntu-20-04
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "NGINX is an open-source web server focused on performance and concurrency, where its event-driven architecture has set it apart. In this guide, learn how to install and start using NGINX on your Ubuntu 20.04 server."
-og_description: "NGINX is an open-source web server focused on performance and concurrency, where its event-driven architecture has set it apart. In this guide, learn how to install and start using NGINX on your Ubuntu 20.04 server."
-keywords: ['nginx','web server','reverse proxy','load balancing','install nginx on ubuntu','ubuntu 20.04']
-tags: ['ubuntu', 'nginx', 'web server', 'proxy']
+  name: Nathaniel Stickman
+description: "NGINX is an open-source web server focused on performance and concurrency. Its event-driven architecture sets it apart from other web servers. In this guide, you learn how to install NGINX on your Ubuntu 20.04 server. You also learn common commands to manage your NGINX web server and how to set it up to serve a simple website."
+og_description: "NGINX is an open-source web server focused on performance and concurrency. Its event-driven architecture sets it apart from other web servers. In this guide, you learn how to install NGINX on your Ubuntu 20.04 server. You also learn common commands to manage your NGINX web server and how to set it up to serve a simple website."
+keywords: ['nginx','web server']
+tags: ['ubuntu', 'nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-23
+published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use NGINX on Ubuntu 20.04"
+title: "Installing and Using NGINX on Ubuntu 20.04"
 h1_title: "How to Install and Use NGINX on Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -25,9 +25,7 @@ relations:
             - distribution: Ubuntu 20.04
 ---
 
-[NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was developed with efficiency and concurrency in mind, seeking to address the scalability and performance issues in other popular web servers. Its event-driven architecture continues to set it apart as one of the highest-performing web servers available.
-
-This guide aims to show you how to install NGINX on your Ubuntu 20.04 server and how to get started using it.
+[NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was developed with efficiency and concurrency in mind, seeking to address the scalability and performance issues in other popular web servers. Its event-driven architecture continues to set it apart as one of the highest-performing web servers available. This guide aims to show you how to install NGINX on your Ubuntu 20.04 server and how to get started using it.
 
 ## Before You Begin
 
@@ -49,13 +47,13 @@ This guide is written for non-root users. Commands that require elevated privile
 
         sudo apt install nginx
 
-1. The NGINX service starts running immediately, which you can verify with.
+1. The NGINX service starts running immediately. You can verify its status with the following command:
 
         sudo systemctl status nginx
 
     The NGINX service is also enabled by default, meaning that it begins running automatically at system startup.
 
-1. Open port **80** on your system's firewall. UFW is the front end typically used to manage firewall rules on Ubuntu. You can use the following commands to open port **80** with `ufw` and reload the rules so they take effect.
+1. Open port **80** on your system's firewall. UFW is the frontend typically used to manage firewall rules on Ubuntu. You can use the example commands to open port 80 with `ufw` and reload the rules so they take effect.
 
         sudo ufw allow http
         sudo ufw reload
@@ -64,7 +62,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 1. Visit the default NGINX page to see your installation in action. You can find it by navigating to your server's domain name or its IP address.
 
-    For example, if your domain name is `example.com`, navigate to `http://example.com`; if your IP address is `198.51.100.0`, you can instead navigate to  `http://198.51.100.0`.
+    For example, if your domain name is `example.com`, navigate to `http://example.com`; if your IP address is `192.0.2.0`, you can instead navigate to  `http://192.0.2.0`.
 
     ![Default NGINX page.](nginx-default-page.png)
 
@@ -72,19 +70,19 @@ This guide is written for non-root users. Commands that require elevated privile
 
 The NGINX service runs on `systemd`, which means you can manage it using `systemctl` commands.
 
-1. View the current status of the NGINX service using the below command:
+1. View the current status of the NGINX service using the command below:
 
         sudo systemctl status nginx
 
-1. To stop the NGINX service, use the below command:
+1. Stop the NGINX service with the following command:
 
         sudo systemctl stop nginx
 
-    You can then start the NGINX service back up using the below command:
+    You can then start the NGINX service back up using the following command:
 
         sudo systemctl start nginx
 
-1. To disable the NGINX service, preventing it from beginning automatically at system startup, use the below command:
+1. To disable the NGINX service, preventing it from beginning automatically at system startup, execute the following:
 
         sudo systemctl disable nginx
 
@@ -92,11 +90,11 @@ The NGINX service runs on `systemd`, which means you can manage it using `system
 
         sudo systemctl enable nginx
 
-1. Restart the NGINX service using the below command:
+1. Restart the NGINX service using the command below:
 
         sudo systemctl restart nginx
 
-1. To reload NGINX's configuration files, using the below command:
+1. To reload NGINX's configuration files, you an use the following command:
 
         sudo systemctl reload nginx
 
@@ -163,7 +161,7 @@ server {
 </html>
     {{< /file >}}
 
-1. In a browser, visit the domain you set up for your website — `example.com` above.
+1. In a browser, visit the domain you set up for your website.
 
     You should see your website's "Hello, World!" page.
 
