@@ -3,12 +3,12 @@ slug: rust-webassembly-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: "WebAssembly, sometimes also called wasm, lets you develop web applications that run at near-native speeds. WebAssembly even allows you to compile web applications from languages like C/C++ and Rust. This guide explores what WebAssembly is, how it works, and how you can get started with it."
-og_description: "WebAssembly, sometimes also called wasm, lets you develop web applications that run at near-native speeds. WebAssembly even allows you to compile web applications from languages like C/C++ and Rust. This guide explores what WebAssembly is, how it works, and how you can get started with it."
+description: "WebAssembly, sometimes also called Wasm, lets you develop web applications that run at near-native speeds. WebAssembly even allows you to compile web applications from languages like C/C++ and Rust. This guide explores what WebAssembly is, how it works, and how you can get started using it with Rust."
+og_description: "WebAssembly, sometimes also called Wasm, lets you develop web applications that run at near-native speeds. WebAssembly even allows you to compile web applications from languages like C/C++ and Rust. This guide explores what WebAssembly is, how it works, and how you can get started with it."
 keywords: ["webassembly","wasm","rust","web development","demo","tutorial"]
 tags: ['ubuntu', 'debian', 'rust']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-published: 2021-04-15
+published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
 title: A Rust and WebAssembly Tutorial
@@ -20,10 +20,6 @@ contributor:
 external_resources:
 - '[WebAssembly](https://webassembly.org/)'
 - '[Rust and WebAssembly](https://rustwasm.github.io/docs/book)'
-- '[Emscripten compiler](https://emscripten.org/)'
-- '[Guide: Compile a New C/C++ Module to WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm)'
-- '[Webassembly Developers Guide](https://webassembly.org/getting-started/developers-guide/)'
-
 ---
 
 [WebAssembly](https://webassembly.org/) — sometimes shortened to Wasm — is a safe, low-level, portable code format. It results in compact binaries that can be run in web browsers with near-native efficiency. It allows languages like C/C++ and Rust to be compiled to run on the web and to do so alongside JavaScript.
