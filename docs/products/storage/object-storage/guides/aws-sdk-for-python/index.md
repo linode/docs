@@ -169,7 +169,7 @@ Download the object "file.txt", stored within the bucket called "example-bucket"
 
 ## Delete an Object or Directory
 
-See []() for for additional details, syntax, and examples.
+Deletes an object from a bucket. See [delete_object()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.delete_object) for for additional details, syntax, and examples.
 
 ### Syntax
 
