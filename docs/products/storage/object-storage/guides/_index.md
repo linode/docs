@@ -34,6 +34,12 @@ Guides for using Object Storage with various clients and command-line tools:
 - [s4cmd](/docs/products/storage/object-storage/guides/s4cmd): A faster alternative to the s3cmd command-line tool.
 - [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck): A cross-platform graphical interface for interacting with various cloud storage services.
 
+## AWS SDKs
+
+Guides for using Object Storage with various AWS SDKs:
+
+- [AWS SDK for Python (boto3)](/docs/products/storage/object-storage/guides/aws-sdk-for-python/)
+
 ## Themes
 
 These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
