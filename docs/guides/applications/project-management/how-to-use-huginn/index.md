@@ -45,8 +45,6 @@ This guide uses [Docker](https://www.docker.com/) to run Huginn. Huginn maintain
 
 It is possible to manually install Huginn. However, the Docker method is used in this guide since Huginn does not support the manual installation method for the latest Debian and Ubuntu releases. However, Huginn maintains [manual installation instructions](https://github.com/huginn/huginn/tree/master/doc/manual) if you prefer that installation path.
 
-{{< content "install-docker-ce" >}}
-
 ## Try Out Huginn
 
 Once you have Docker installed, you can quickly run an instance of Huginn to try it out. Running Huginn in this way does not create any persistent data storage, so any changes you make are not saved after you stop the instance.
