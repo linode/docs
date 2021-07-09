@@ -51,6 +51,7 @@ architecting
 aren
 argv
 arping
+arptables
 askbot
 aske
 async
@@ -382,6 +383,7 @@ e2fsck
 ea04
 ead
 ecommerce
+ebtables
 ecute
 edu
 efi
