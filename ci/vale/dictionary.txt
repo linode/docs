@@ -636,6 +636,7 @@ http
 httpchk
 httpd
 https
+huginn
 hulu
 hvc0
 hybla
@@ -1649,6 +1650,7 @@ ttl
 ttpd
 ttrss
 tty
+tumblr
 tun0
 tune2fs
 tunnelblick
