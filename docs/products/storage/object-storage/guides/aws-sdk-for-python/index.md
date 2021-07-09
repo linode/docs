@@ -157,9 +157,9 @@ Downloads the specified object to a new file on your system. See [download_file(
         Key='object-name',
         Filename='/path/to/file.ext')
 
--  **Bucket [required]:** The label of the bucket you wish to store the file within.
--  **Key [required]:** The name of the object you wish to create, including any prefix/path.
--  **Filename [required]:** The filename and path of the file to upload.
+-  **Bucket [required]:** The label of the bucket the object is stored within.
+-  **Key [required]:** The name of the object you wish to download, including any prefix/path.
+-  **Filename [required]:** The filename and path of the file to create.
 
 ### Example
 
