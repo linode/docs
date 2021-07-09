@@ -70,3 +70,5 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 - [php-linode-api](https://github.com/hnhdigital-os/php-linode-api): Unofficial Linode APIv4 PHP wrapper by [H&H|Digital](https://github.com/hnhdigital-os).
 
 - [php-linode-unofficial](https://github.com/illblew/php-linode-unofficial): Unofficial Linode APIv4 PHP wrapper by [Will Blew](https://github.com/illblew).
+
+- [LinodeKit](https://github.com/bporter95/LinodeKit): Unofficial Linode APIv4 Swift wrapper by [Ben Porter](https://github.com/bporter95).
