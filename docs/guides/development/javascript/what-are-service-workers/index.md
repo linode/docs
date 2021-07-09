@@ -109,7 +109,7 @@ The server in this example dynamically serves some cachable content — in this 
 
     Be sure to increment the `1` with each image you download. The remaining sections assume you have downloaded ten images using the above naming convention — i.e., `cat-1.jpg`, `cat-2.jpg`, etc.
 
-    To do this quickly, you can create the example script to download ten images from the Libarary of Congress source listed above. Place the shell script in your project directory, and edit the file to change `example-user` to your username on the server.
+    To do this quickly, you can create the example script to download ten images from the Library of Congress source listed above. Place the shell script in your project directory, and edit the file to change `example-user` to your username on the server.
 
     {{< file "download_cat_images.sh">}}
 #!/bin/sh
