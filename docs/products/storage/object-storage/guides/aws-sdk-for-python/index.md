@@ -26,7 +26,7 @@ See [Boto3 Docs > Quickstart](https://boto3.amazonaws.com/v1/documentation/api/l
 
 ## Initializing the Client
 
-To access Object Storage buckets and objects, you'll first need to configure your credentials and initalize the S3 client session.
+To access Object Storage buckets and objects, you'll first need to configure your credentials and initialize the S3 client session.
 
 1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) guide.
 
@@ -42,7 +42,7 @@ To access Object Storage buckets and objects, you'll first need to configure you
 
         client = boto3.client("s3", **linode_obj_config)
 
-If you intend to share this code with others, it's highly advisable to abstract out both the access key and secret key. There are a few methods to accompish this, including using AWS configuration files, environment variables through the shell, or a custom environment-specific configuration file. See [Boto3 Docs > Configuration](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html).
+If you intend to share this code with others, it's highly advisable to abstract out both the access key and secret key. There are a few methods to accomplish this, including using AWS configuration files, environment variables through the shell, or a custom environment-specific configuration file. See [Boto3 Docs > Configuration](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html).
 
 ## List Buckets
 
@@ -96,7 +96,7 @@ Delete the bucket labeled "example-bucket":
 
 ## List Objects
 
-Outputs all the objects within a bucket (and with a certain prefix, if specified). See [list_ojects()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.list_objects) for additional details, syntax, and examples.
+Outputs all the objects within a bucket (and with a certain prefix, if specified). See [list_objects()](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.list_objects) for additional details, syntax, and examples.
 
 ### Syntax
 
