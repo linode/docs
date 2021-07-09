@@ -12,7 +12,7 @@ The [AWS SDK for PHP](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide
 
 1.  Ensure PHP 5.5.0 or later is installed on the machine you intend to use.
 
-1.  Ensure Composer is installed globally. See [Installation > Globally](https://getcomposer.org/doc/00-intro.md#globally).
+1.  Ensure Composer is installed globally. See [Composer Installation > Globally](https://getcomposer.org/doc/00-intro.md#globally).
 
 1.  This guide assumes you have a basic understanding of PHP development and are comfortable integrating code samples into your application.
 
@@ -20,7 +20,7 @@ The [AWS SDK for PHP](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide
 
 ## Installing the AWS SDK for PHP
 
-The first step is to install the AWS SDK for PHP (boto3) through [composer](https://getcomposer.org/), a common dependency manager for PHP. Run the following command within your project's directory
+The first step is to install the AWS SDK for PHP through [Composer](https://getcomposer.org/), a common dependency manager for PHP. Run the following command within your project's directory
 
     composer require aws/aws-sdk-php
 
