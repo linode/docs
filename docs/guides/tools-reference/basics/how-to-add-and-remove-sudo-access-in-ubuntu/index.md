@@ -115,7 +115,7 @@ mumbly : mumbly sudo
     {{< /output >}}
     This implies that the user *mumbly* is part of the group *mumbly* and the group *sudo*.
 
-You can also remove `sudo` rights with `gpasswd`. If *mumbly* has abused the access, you can deney the access:
+You can also remove `sudo` rights with `gpasswd`. If *mumbly* has abused the access, you can deny the access:
 
 1.  Enter the command `sudo gpasswd -d mumbly sudo`.
 
