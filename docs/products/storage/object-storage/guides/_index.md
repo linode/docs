@@ -39,6 +39,7 @@ Guides for using Object Storage with various clients and command-line tools:
 Guides for using Object Storage with various AWS SDKs:
 
 - [AWS SDK for Python (boto3)](/docs/products/storage/object-storage/guides/aws-sdk-for-python/)
+- [AWS SDK for PHP](/docs/products/storage/object-storage/guides/aws-sdk-for-php/)
 
 ## Themes
 
