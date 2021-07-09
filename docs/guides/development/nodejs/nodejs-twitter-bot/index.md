@@ -3,13 +3,16 @@ slug: nodejs-twitter-bot
 author:
     name: Pj Metz
     email: metz.pj@gmail.com
-description: 'Building a new Twitter bot and hosting it on Linode. Guide is for beginners new to coding and cloud services.'
+description: 'This guide shows how to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode. The guide is intended for people new to coding.'
+og_description: 'This guide shows how to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode. The guide is intended for people new to coding.'
 keywords: ["node.js", "beginner", "javascript", "twitter bot"]
+tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
     name: Linode
 title: "Node.js Twitter Bot Beginner's Guide: Replying to Users and Scheduling Tweets"
+h1_title: "Getting Started with Node.js and Twitter Bots: Replying to Users and Scheduling Tweets"
 contributor:
     name: Pj Metz
     link: https://www.metzinaround.com
