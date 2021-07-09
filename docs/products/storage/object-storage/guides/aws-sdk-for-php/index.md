@@ -28,7 +28,7 @@ See [AWS SDK for PHP Docs > Installing the SDK](https://docs.aws.amazon.com/sdk-
 
 ## Initializing the Client
 
-To access Object Storage buckets and objects, you'll first need to configure your credentials and initalize the S3 client session.
+To access Object Storage buckets and objects, you'll first need to configure your credentials and initialize the S3 client session.
 
 1.  Generate an access key and secret key for Object Storage through the Cloud Manager by following the [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) guide.
 
@@ -52,7 +52,7 @@ To access Object Storage buckets and objects, you'll first need to configure you
 
         $client = new \Aws\S3\S3Client($config);
 
-See [AWS SDK for PHP Docs > Configuration Options](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_configuration.html) for more details on how to configure the client. If you intend to share this code with others, it's highly advisable to abstract out both the access key and secret key. There are a few methods to accompish this, including using AWS configuration files, environment variables through the shell, or a custom environment-specific configuration file.
+See [AWS SDK for PHP Docs > Configuration Options](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_configuration.html) for more details on how to configure the client. If you intend to share this code with others, it's highly advisable to abstract out both the access key and secret key. There are a few methods to accomplish this, including using AWS configuration files, environment variables through the shell, or a custom environment-specific configuration file.
 
 ## List Buckets
 
