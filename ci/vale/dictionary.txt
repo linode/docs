@@ -51,6 +51,7 @@ architecting
 aren
 argv
 arping
+arptables
 askbot
 aske
 async
@@ -153,6 +154,7 @@ c2s
 cabd
 cacert
 cacheable
+cachable
 caddy
 caddyfile
 cakey
@@ -382,6 +384,7 @@ e2fsck
 ea04
 ead
 ecommerce
+ebtables
 ecute
 edu
 efi
@@ -395,6 +398,7 @@ elpaso
 emacs
 email2email
 emojivoto
+emscripten
 ender
 enduser
 enix
@@ -632,6 +636,7 @@ http
 httpchk
 httpd
 https
+huginn
 hulu
 hvc0
 hybla
@@ -809,6 +814,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+lego
 libmodsecurity
 livigno
 lbmethod
@@ -1644,6 +1650,7 @@ ttl
 ttpd
 ttrss
 tty
+tumblr
 tun0
 tune2fs
 tunnelblick
@@ -1769,6 +1776,7 @@ vz
 vznetaddbr
 walkthrough
 wasn
+wasm
 wav
 wazuh
 webadmin

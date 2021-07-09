@@ -3,33 +3,32 @@ slug: how-to-add-and-remove-sudo-access-in-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A how-to guide explaining how to add admin users, or give users sudo privledges, in Ubuntu using Unbuntu 20.10 Groovy Gorilla as an example.'
-og_description: 'A how-to guide explaining how to add admin users, or give users sudo privledges, in Ubuntu using Unbuntu 20.10 Groovy Gorilla as an example.'
+description: 'A guide explaining how to add admin users, or give users sudo privledges, using Unbuntu 20.10 Groovy Gorilla as an example.'
 keywords: ['ubuntu','linux','sudo','sudoers','admin','admins','adding users to sudo','adding user to sudoers']
-tags: ["ubuntu","Linux","sudo","users"]
+tags: ["Ubuntu","Linux","sudo","users"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
+published: 2021-04-01
+modified: 2021-07-09
 modified_by:
   name: Linode
 title: "How to Add and Remove sudo Access in Ubuntu"
-h1_title: "Adding and Removing sudo Access in Ubuntu"
-enable_h1: true
+h1_title: "How to Add and Remove sudo Access in Ubuntu"
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'
 - '[sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html)'
 ---
 
-`sudo` ("su 'do'" or "substitute user 'do'") allows a system administrator to delegate permissions to specific users on the machine. There are multiple ways of doing so. Ubuntu 20.10 is being used for the examples below, but this should apply to almost any Linux distribution.
+`sudo` ("su 'do'" or "substitute user 'do'") allows a system administrator to delegate permissions to specific users on the machine. There are multiple ways to do so. Ubuntu 20.10 is used in this guide as an example, but this should apply to almost any Linux distribution.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide.
+1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide.
 
-2.  This guide will use `sudo` wherever possible, which the system’s administrator should already have permission to use.
+2.  This guide uses `sudo` wherever possible, which the administrator of the system should already have permission to use.
 
-3.  This guide assumes you are comfortable using the *command-line interface* (CLI) or have a graphical desktop environment to do the following in.
+3.  This guide assumes you are comfortable using the *command-line interface* (CLI) or have a graphical desktop environment to perform the tasks.
 
-3.  Update your system:
+3.  Update the system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -39,16 +38,16 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Adding User Rights Through the sudoers File
 
-More advanced users may want to restrict what can be done with `sudo`. This is done in the file at `/etc/sudoers` and should only be done by those who are familiar with what they're doing. As a general rule, editing `/etc/sudoers` should be to adjust permissions for the sudo group, not to give permissions to individual users. We suggest the methods below for granting access to users. If you want to explore options for `/etc/sudoers` further, we recommend the [sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html).
+Advanced users may want to restrict what can be done with `sudo`. These restrictions are defined in the file located at `/etc/sudoers` and should only be done by those who are familiar with the administrative tasks. As a general rule, editing `/etc/sudoers` should be to adjust permissions for the sudo group, not to give permissions to individual users. Linode suggests the following methods to grant access to users. If you want to explore options for `/etc/sudoers` further, see the [sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html).
 
-## Granting sudo Rights Through the Desktop Environment
+## Granting `sudo` Rights Through the Desktop Environment
 
 If you aren't comfortable using the CLI and have access to a graphical desktop environment, this is the easiest option.
 
-1.  Open the Settings by clicking on the downwards arrow in the upper-right and choosing **Settings**.
+1.  Open the Settings window by clicking on the downwards arrow in the upper-right and choosing **Settings**.
     ![Opening the Settings on Ubuntu](open-settings-ubuntu.png)
 
-2.  Select **Users** from the left side.
+2.  Select **Users** from the left panel.
     -   If you are creating a new user:
         1.  Click **Unlock**.
         ![Clicking the unlock button before adding a user in Ubuntu](click-unlock-adding-user-ubuntu.png)
@@ -58,12 +57,12 @@ If you aren't comfortable using the CLI and have access to a graphical desktop e
         ![The new user details window](add-user-dialogue-ubuntu.png)
 
     -   If you are modifying a user:
-        1.  Click on the user you want to modify and then click **Unlock**.
+        1.  Click the user you want to modify and then click **Unlock**.
         ![Click user and unlock to edit in Ubuntu](unlock-to-modify-existing-user.png)
-        2.  Click on the toggle next to **Administrator**.
+        2.  Click the toggle button next to **Administrator**.
         ![Toggle the administrator option on](toggling-administrator-on.png)
 
-3.  Close **Settings**.
+3.  Close the **Settings** window.
 
 The user now has administrative and `sudo` rights.
 
@@ -73,8 +72,8 @@ There are numerous ways to do this through the command line, the last being the 
 
 In all these cases, the user needs to exist already. Using the example of the user *mumbly*:
 
-1.  Enter `sudo useradd -m mumbly` (the `-m` switch creates a home directory). There will be no confirmation.
-2.  Enter `sudo passwd mumbly` and provide your password (if prompted) and a new password for the user:
+1.  Enter `sudo useradd -m mumbly` (the `-m` switch creates a home directory). A confirmation does not appear.
+2.  Enter `sudo passwd mumbly` and provide the password when prompted and a new password for the user:
     {{< output >}}
 [sudo] password for dreadbaron:
 New password:
@@ -83,7 +82,7 @@ passwd: password updated successfully
     {{< /output >}}
 3.  Make sure to give the user their password.
 
-Once the user is created, use one of the methods below to give them access to `sudo` or put them in the sudoers file.
+After the user is created, use one of the following methods to give them access to `sudo` or add them in the sudoers file.
 
 ### Using usermod
 
@@ -91,44 +90,44 @@ To grant `sudo` rights to the user *mumbly* using `usermod`:
 
 1.  Enter the command `sudo usermod -aG sudo "mumbly"`
 
-2.  Enter your password (if prompted).
+2.  Enter the password when prompted.
 
-3.  There will be no confirmation, so enter `groups mumbly` and you should get this in response:
+3.  A confirmation does not appear, so enter `groups mumbly` and the system displays an output similar to the following:
     {{< output >}}
 mumbly : mumbly sudo
     {{< /output >}}
-    This means the user "mumbly" is part of the group "mumbly" and the group "sudo," which confirms you modified the user correctly.
+    This implies that the user *mumbly* is part of the group *mumbly* and the group *sudo*.
 
 ### Using gpasswd
 
-To grant `sudo` rights to the user *mumbly* using `gpasswd`:
+To grant `sudo` rights to the user "mumbly" using `gpasswd`:
 
 1.  Enter the command `sudo gpasswd -a mumbly sudo`.
 
-2.  Enter your password (if prompted), and a confirmation follows:
+2.  Enter the password when prompted, and a confirmation appears:
     {{< output >}}
 [sudo] password for dreadbaron:
 Adding user mumbly to group sudo
     {{< /output >}}
 
-3.  To double-check, enter `groups mumbly` and you should get this in response:
+3.  To confirm, enter `groups mumbly` and the system displays the following:
     {{< output >}}
 mumbly : mumbly sudo
     {{< /output >}}
-    This means the user "mumbly" is part of the group "mumbly" and the group "sudo," which confirms you modified the user correctly.
+    This implies that the user *mumbly* is part of the group *mumbly* and the group *sudo*.
 
-You can also remove `sudo` rights with `gpasswd`. If *mumbly* has abused their access, take it away:
+You can also remove `sudo` rights with `gpasswd`. If *mumbly* has abused the access, you can deny the access:
 
 1.  Enter the command `sudo gpasswd -d mumbly sudo`.
 
-2.  Enter your password (if prompted), and a confirmation follows:
+2.  Enter the password when prompted, and a confirmation appears:
     {{< output >}}
 [sudo] password for dreadbaron:
 Removing user mumbly from group sudo
     {{< /output >}}
 
-3.  Confirm *mumbly* no longer has access with `groups mumbly` and you should get this response:
+3.  Confirm *mumbly* no longer has access with `groups mumbly` and the system displays the following:
     {{< output >}}
 mumbly : mumbly
     {{< /output >}}
-    This means the user "mumbly" is part of the group "mumbly," but no longer part of the group "sudo".
+    This implies that the user *mumbly* is part of the group *mumbly*, but no longer part of the group *sudo*.
