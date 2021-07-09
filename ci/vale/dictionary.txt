@@ -359,6 +359,7 @@ domainkey
 domainname
 donenfeld
 dotdeb
+dotenv
 dotfiles
 doveadm
 dpkg
@@ -466,6 +467,7 @@ filimonov
 findtime
 finnix
 firewalld
+firewalled
 firewalling
 firstsite
 flamegraph
