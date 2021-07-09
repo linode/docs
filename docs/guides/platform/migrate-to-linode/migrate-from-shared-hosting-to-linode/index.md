@@ -120,7 +120,7 @@ Your website may not yet function completely correctly if it is URL-dependent. A
 
 ### A Note About Email
 
-A Linode can run both your web server and an [email server](/docs/email/running-a-mail-server/) for your site. If you use a separate email host like Google Apps, you will need to make sure you preserve the correct *MX records* for email when you move your domain. If you use a mail service at your old host, you may need to consider where you're going to move your email. See [Running a Mail Server](/docs/email/running-a-mail-server/) for more details.
+A Linode can run both your web server and an [email server](/docs/email/running-a-mail-server/) for your site. If you use a separate email host like Google Workspace, you will need to make sure you preserve the correct *MX records* for email when you move your domain. If you use a mail service at your old host, you may need to consider where you're going to move your email. See [Running a Mail Server](/docs/email/running-a-mail-server/) for more details.
 
 ## Move Your Domain
 

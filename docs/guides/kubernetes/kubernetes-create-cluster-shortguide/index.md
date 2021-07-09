@@ -19,7 +19,7 @@ aliases: ['/kubernetes/kubernetes-create-cluster-shortguide/']
 
 1.  Log into your [Linode Cloud Manager](https://cloud.linode.com/) account.
 
-1.  From the Linode dashboard, click the **Create** button in the top right-hand side of the screen and select **Kubernetes** from the dropdown menu.
+1.  From the Linode dashboard, click the **Create** button at the top of the page and select **Kubernetes** from the dropdown menu.
 
     ![Create a Kubernetes Cluster Screen](create-lke-cluster.png "Create a Kubernetes Cluster Screen")
 

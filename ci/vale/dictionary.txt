@@ -44,12 +44,14 @@ apparmor
 appimage
 appletalk
 approvers
+appsec
 appserver
 apxs
 architecting
 aren
 argv
 arping
+arptables
 askbot
 aske
 async
@@ -87,6 +89,7 @@ avz
 awk
 awstats
 azc
+backdoors
 backend
 backends
 backported
@@ -151,6 +154,7 @@ c2s
 cabd
 cacert
 cacheable
+cachable
 caddy
 caddyfile
 cakey
@@ -178,6 +182,7 @@ changeset
 characterwise
 chatrooms
 cheatsheet
+checkmarx
 checksummed
 checksums
 chefspec
@@ -215,6 +220,7 @@ cmusieve
 cnf
 codebase
 codec
+colab
 colormaps
 com2sec
 comodo
@@ -236,6 +242,7 @@ copyfrom
 copyto
 coreutils
 corporateclean
+courseware
 cpanminus
 cpu
 cqlsh
@@ -311,6 +318,7 @@ deprovisioning
 descolada
 descr
 deserialize
+despawn
 dest
 dereference
 dereferencing
@@ -377,6 +385,7 @@ e2fsck
 ea04
 ead
 ecommerce
+ebtables
 ecute
 edu
 efi
@@ -390,6 +399,7 @@ elpaso
 emacs
 email2email
 emojivoto
+emscripten
 ender
 enduser
 enix
@@ -402,6 +412,7 @@ esc
 etcd
 etcd0
 eth0
+ethtool
 eugen
 evhost
 example1
@@ -501,6 +512,7 @@ gamepad
 gamepedia
 gameplay
 gandi
+gartner
 gatsby
 gbps
 gcc
@@ -561,6 +573,7 @@ greylisting
 griefing
 griesemer
 groot
+groupinfo
 grsecurity
 gsa
 gsad
@@ -625,6 +638,7 @@ http
 httpchk
 httpd
 https
+huginn
 hulu
 hvc0
 hybla
@@ -666,6 +680,7 @@ imapd
 imaps
 img
 immutant
+imperva
 impor
 incentivized
 inclusivity
@@ -704,8 +719,10 @@ ipv4
 ipv6
 ipwl
 irc
+irchelp
 ircname
 iredmail
+irqbalance
 irssi
 isn
 iso
@@ -716,6 +733,8 @@ issuewild
 istioctl
 iterable
 itk
+Janca
+jamstack
 java6
 javac
 javascript
@@ -747,7 +766,9 @@ jumpbox
 junit
 jupyter
 jx
+kaggle
 kakfa
+kamkar
 kbits
 keepalive
 keepalived
@@ -773,9 +794,11 @@ killall
 kinser
 kitchensalt
 klei
+klocwork
 kloth
 kloxo
 knowledgebase
+konsole
 konversation
 kube
 kubeadm
@@ -793,6 +816,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+lego
 libmodsecurity
 livigno
 lbmethod
@@ -819,6 +843,7 @@ libyang
 libuv
 libvirt
 lifecycle
+lightbend
 lighthttpd
 lighttpd
 lighty
@@ -840,6 +865,7 @@ loadavg
 loadout
 localdomain
 localhost
+localuser
 lockdown
 lodash
 logallrefupdates
@@ -885,6 +911,7 @@ maitis
 makefile
 managesieve
 mandriva
+manjaro
 manyof
 mapbox
 mapreduce
@@ -911,6 +938,7 @@ md5
 md5sum
 mdev
 mediawiki
+megatrends
 melilla
 memcached
 memcrashed
@@ -955,12 +983,14 @@ mnesia
 mngtmpaddr
 moby
 moddable
+moodle
 modsecurity
 mongodb
 mongoimport
 monit
 monitorix
 moolenaar
+morphisec
 motd
 mountpoint
 mouseover
@@ -1291,6 +1321,7 @@ redeployable
 redhat
 redir
 redis
+redislabs
 redmin
 redmine
 redstone
@@ -1372,6 +1403,7 @@ s3cret
 saas
 sakila
 salesforce
+samy
 sar
 sasl
 sasl2
@@ -1383,6 +1415,7 @@ savvii
 sbackup
 sbin
 sbopkg
+sbt
 scgi
 schaeffer
 scm
@@ -1560,6 +1593,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+teleporting
 tensorflow
 terrahelp
 terraria
@@ -1617,12 +1651,15 @@ tt
 ttl
 ttpd
 ttrss
+tty
+tumblr
 tun0
 tune2fs
 tunnelblick
 turtl
 tv
 tw
+twilio
 txt
 txz
 tzurbaev
@@ -1709,10 +1746,12 @@ vdevs
 ve
 venv
 ver
+veracode
 verisign
 vhost
 vhosts
 vimrc
+vinagre
 virb
 virtio
 virtualenv
@@ -1739,6 +1778,7 @@ vz
 vznetaddbr
 walkthrough
 wasn
+wasm
 wav
 wazuh
 webadmin
@@ -1805,6 +1845,7 @@ www
 wx
 xabbix
 xap
+xargs
 xcalc
 xcode
 xen
@@ -1829,6 +1870,7 @@ xtables
 xvda
 xvdb
 xvdc
+xvnc
 xxen
 xy
 xzio

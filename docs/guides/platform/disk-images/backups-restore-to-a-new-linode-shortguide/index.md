@@ -19,7 +19,7 @@ aliases: ['/platform/disk-images/backups-restore-to-a-new-linode-shortguide/']
 
 These steps cover how to restore a backup to a new Linode that does not already have any disks deployed to it. The new Linode will be located in the same data center.
 
-To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Clone](/docs/migrate-to-linode/disk-images/clone-your-linode/) tab to copy the disk(s) to a Linode in a different data center.
+To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Migrate Linode](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/) option from the Cloud Manager to migrate the new Linode to a new datacenter.
 
 Restoring a backup will create a new [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and a new set of [disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#disks) on your Linode. The restore process does not restore single files or directories automatically. Restoring particular files can be done by completing a normal restore, copying the files off of the new disks, and then removing the disks afterward.
 

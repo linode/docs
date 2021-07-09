@@ -19,7 +19,7 @@ aliases: ['/platform/stackscripts/stackscripts-new-account-shortguide/']
 You can make any of your Account StackScripts public. When an account StackScript is public it becomes available to the rest of the Linode Community in the Cloud Manager as a Community StackScript.
 
 {{< caution >}}
-Once you make an Account StackScript public, you are not be able to make it private again or to delete it. You can, however, edit your public StackScript, if needed.
+Once you make an Account StackScript public, you will not be able to make it private again or to delete it. You can, however, edit your public StackScript, if needed.
 {{</ caution >}}
 
 1. Log into the [Linode Cloud Manager](https://cloud.linode.com/).

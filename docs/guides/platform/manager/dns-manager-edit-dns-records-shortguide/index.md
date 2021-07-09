@@ -29,4 +29,4 @@ To modify a Domain's existing DNS records:
 
 1.  Edit the DNS record by modifying the existing values in the fields that appear.
 
-1.  Click **Save**. It will only take a few minutes for the record to be updated.
+1.  Click **Save**.
