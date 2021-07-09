@@ -77,7 +77,7 @@ A separate [nvm-windows](https://github.com/coreybutler/nvm-windows) project was
 
 ## Apply for Access to the Twitter Developer Portal
 
-Twitter's developer portal is where you register your new account to be able to use the Twitter API. This is an important step because it unlocks the account's ability to Tweet by using the API with code instead of manually tweeting. You know, the whole point of a bot?
+Twitter's developer portal is where you register your new account to be able to use the Twitter API. This is an important step because it unlocks the account's ability to tweet by using the API with code instead of manually tweeting. You know, the whole point of a bot?
 
 Follow these steps to register for developer access:
 
@@ -99,7 +99,7 @@ Follow these steps to register for developer access:
 
     - **Are you planning to analyze Twitter data?**: No
 
-    - **Will your app use Tweet, Retweet, Like, Follow, or Direct Message functionality?**: Yes. In the description, let Twitter know that your bot responds to users that @ mention it, and that it also periodically sends out Tweets on its own. The bot Tweets and respond to Tweets with links to video game soundtracks on YouTube.
+    - **Will your app use Tweet, Retweet, Like, Follow, or Direct Message functionality?**: Yes. In the description, let Twitter know that your bot responds to users that @ mention it, and that it also periodically sends out Tweets on its own. The bot tweets and respond to Tweets with links to video game soundtracks on YouTube.
 
     - **Do you plan to display Tweets or aggregate data about Twitter content outside Twitter?**: No
 
@@ -190,7 +190,7 @@ Review Twitter's [Developer Apps](https://developer.twitter.com/en/docs/apps/ove
 
     - **Which bests describes you?**: Choose **Making a bot**.
 
-    - **Describe your new Project**: Enter a brief description of the bot's abilities: periodically Tweeting links to video game soundtracks on YouTube, and responding to users that @ mention the bot.
+    - **Describe your new Project**: Enter a brief description of the bot's abilities: periodically tweeting links to video game soundtracks on YouTube, and responding to users that @ mention the bot.
 
     - **Add your App**: You may see a screen that looks like the following, which asks you to pick an app to add to the new project:
 
@@ -412,10 +412,10 @@ Here's what the code does:
 
     The `if` statement on lines 6-8 ensures this only happens when the Node.js environment is set to `develop`. This is handled by the `"develop": "NODE_ENV=develop node snes.js"` line in the `scripts` section of your package.json file.
 
-- On lines 11-15, we set up a few variables for the node-schedule package. These variables declare the day and time when the bot should periodically Tweet. Specifically, the scheduled time is every Monday at 10 am Eastern Daylight Savings Time. A `RecurrenceRule` is created to facilitate this.
+- On lines 11-15, we set up a few variables for the node-schedule package. These variables declare the day and time when the bot should periodically tweet. Specifically, the scheduled time is every Monday at 10 am Eastern Daylight Savings Time. A `RecurrenceRule` is created to facilitate this.
 
     {{< note >}}
-Documentation for this method of scheduling is found in the [Recurrence Rule Scheduling](https://github.com/node-schedule/node-schedule#recurrence-rule-scheduling) section of the node-schedule package's README. Creating the `RecurrenceRule` does not actually schedule the bot to Tweet. The Tweeting function is scheduled at the end of the bot's application code, in the [Scheduling Tweets](#scheduling-tweets) section.
+Documentation for this method of scheduling is found in the [Recurrence Rule Scheduling](https://github.com/node-schedule/node-schedule#recurrence-rule-scheduling) section of the node-schedule package's README. Creating the `RecurrenceRule` does not actually schedule the bot's tweeting function. This function is scheduled at the end of the bot's application code, in the [Scheduling Tweets](#scheduling-tweets) section.
 {{< /note >}}
 
 - Lines 18-30 set up an array of soundtrack links for the bot to pull from at random.
@@ -538,7 +538,7 @@ This section of code defines a `pressStart` function that's called when another 
 
 - On line 3, the `pressStart` function is defined. It takes a `tweet` object as a parameter. This represents a Tweet that another Twitter user has mentioned the bot in. The `tweet` object has tons of data attached to it, and the Twit client helps us parse through this data.
 
-- Lines 5-7 parse three variables from this object: the id of the Tweet, the text of the tweet, and the username of the person who wrote the Tweet. We need those three variables in order to respond as a comment to the original Tweet.
+- Lines 5-7 parse three variables from this object: the id of the Tweet, the text of the Tweet, and the username of the person who wrote the Tweet. We need those three variables in order to respond as a comment to the original Tweet.
 
 - Lines 9-13 define and use a [*regular expression*](https://en.wikipedia.org/wiki/Regular_expression) (abbreviated *regex*) to analyze the text of the Tweet object. This regex looks for a keyword that you want to be present in Tweet mentions. If it matches the text of the Tweet, then the bot is activated and creates a reply Tweet. The tutorial code checks for the word `please`, but you can choose another word if you prefer. As long as other Twitter users are polite and include this word, they’ll get a random soundtrack in response.
 
@@ -568,7 +568,7 @@ This section of code defines a `pressStart` function that's called when another 
 Where the `gameOver` function is passed to `T.post`, you could use an anonymous function instead, and it would do the same thing. The tutorial code defines it separately for better readability.
 {{< /note >}}
 
-    - The `else` block on lines 30-32 is invoked if the Tweet mention doesn't say `please`. It logs a quote from Jurassic Park to the console, just so we can see why the bot didn't Tweet back.
+    - The `else` block on lines 30-32 is invoked if the Tweet mention doesn't say `please`. It logs a quote from Jurassic Park to the console, just so we can see why the bot didn't tweet back.
 
 ### Scheduling Tweets
 
@@ -602,7 +602,7 @@ const job1 = schedule.scheduleJob(rule, pressSelect);
 
 This section of code defines a `pressSelect` function that's called periodically to create new Tweets:
 
-- Lines 4-10 compose a `weeklyReplyText` string, which is similar to the `replyText` variable from the `pressStart` function. The text is slightly changed to be an original Tweet, rather than a comment on a different tweet. It also pulls an element from the same soundtrack list array.
+- Lines 4-10 compose a `weeklyReplyText` string, which is similar to the `replyText` variable from the `pressStart` function. The text is slightly changed to be an original Tweet, rather than a comment on a different Tweet. It also pulls an element from the same soundtrack list array.
 
 - On line 11, The `T.post` method is invoked with the same `statuses/update` API endpoint. There is no `in_reply_to_status_id` property passed, because the function composes an original Tweet and not a reply.
 
@@ -771,7 +771,7 @@ You may also see some other error messages from the application. If this is the 
 
 ### Test the Tweet Function
 
-At this point, the bot is running, and if you wait long enough, then it should send a scheduled tweet. We can also test `pressSelect` on its own and make sure the tweeting function works, you need to modify the code slightly.
+At this point, the bot is running, and if you wait long enough, then it should send a scheduled Tweet. We can also test `pressSelect` on its own and make sure the tweeting function works, you need to modify the code slightly.
 
 1. Comment out the last line of the code in `snes.js` and call `pressSelect` directly:
 
@@ -800,7 +800,7 @@ Tweeted: https://t.co/Y2AOzzkUm0 Here's your soundtrack for Tuesday, June 1, 202
 {{< /output >}}
 
     {{< note >}}
-Note that Twitter has automatically shortened the link to the soundtrack in the tweet.
+Note that Twitter has automatically shortened the link to the soundtrack in the Tweet.
 {{< /note >}}
 
     You may instead see this error: `Read-only application cannot POST.`. If so, then your app's permissions are set to Read Only in the Twitter developer portal. Revisit the earlier [Give your Twitter App Read and Write Permissions](#give-your-twitter-app-read-and-write-permissions) section and then return to this section.
