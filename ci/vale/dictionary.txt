@@ -397,6 +397,7 @@ elpaso
 emacs
 email2email
 emojivoto
+emscripten
 ender
 enduser
 enix
@@ -1772,6 +1773,7 @@ vz
 vznetaddbr
 walkthrough
 wasn
+wasm
 wav
 wazuh
 webadmin
