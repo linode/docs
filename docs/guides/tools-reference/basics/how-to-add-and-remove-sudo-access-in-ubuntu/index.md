@@ -3,7 +3,7 @@ slug: how-to-add-and-remove-sudo-access-in-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A guide explaining how to add admin users, or give users sudo privledges, in Unbuntu 20.10 Groovy Gorilla as an example.'
+description: 'A guide explaining how to add admin users, or give users sudo privledges, using Unbuntu 20.10 Groovy Gorilla as an example.'
 keywords: ['ubuntu','linux','sudo','sudoers','admin','admins','adding users to sudo','adding user to sudoers']
 tags: ["Ubuntu","Linux","sudo","users"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -35,9 +35,9 @@ external_resources:
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Adding User Rights Through the `sudoers` File
+## Adding User Rights Through the sudoers File
 
-Advanced users may want to restrict what can be done with `sudo`. This is done in the file located at `/etc/sudoers` and should only be done by those who are familiar with the administrative tasks. As a general rule, editing `/etc/sudoers` should be to adjust permissions for the sudo group, not to give permissions to individual users. Linode suggests the following methods to grant access to users. If you want to explore options for `/etc/sudoers` further, see the [sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html).
+Advanced users may want to restrict what can be done with `sudo`. These restrictions are defined in the file located at `/etc/sudoers` and should only be done by those who are familiar with the administrative tasks. As a general rule, editing `/etc/sudoers` should be to adjust permissions for the sudo group, not to give permissions to individual users. Linode suggests the following methods to grant access to users. If you want to explore options for `/etc/sudoers` further, see the [sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html).
 
 ## Granting `sudo` Rights Through the Desktop Environment
 
@@ -65,7 +65,7 @@ If you aren't comfortable using the CLI and have access to a graphical desktop e
 
 The user now has administrative and `sudo` rights.
 
-## Granting `sudo` Rights Through the CLI
+## Granting sudo Rights Through the CLI
 
 There are numerous ways to do this through the command line, the last being the most in-depth, but also the one giving a system administrator more granular control over what permissions a user has.
 
@@ -83,7 +83,7 @@ passwd: password updated successfully
 
 After the user is created, use one of the following methods to give them access to `sudo` or add them in the sudoers file.
 
-### Using `usermod`
+### Using usermod
 
 To grant `sudo` rights to the user *mumbly* using `usermod`:
 
@@ -97,7 +97,7 @@ mumbly : mumbly sudo
     {{< /output >}}
     This implies that the user *mumbly* is part of the group *mumbly* and the group *sudo*.
 
-### Using `gpasswd`
+### Using gpasswd
 
 To grant `sudo` rights to the user "mumbly" using `gpasswd`:
 
