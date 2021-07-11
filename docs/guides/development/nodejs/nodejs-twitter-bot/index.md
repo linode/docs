@@ -45,17 +45,17 @@ To follow along with this guide, accounts with the following websites are requir
 
 The following software is needed on your workstation to complete the tutorial:
 
-- **A plain-text editor**. [Visual Studio Code](https://code.visualstudio.com/) (abbreviated *VS Code*) is a recommended desktop text editor, but any other plain-text editor can be used as well. VS Code also includes a built-in terminal.
+- **A plain-text editor**. [Visual Studio Code](https://code.visualstudio.com/) (abbreviated *VS Code*) is a recommended desktop text editor, but any other plain-text editor can be used as well. VS Code also includes a [built-in terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).
 
 - **Git**: The Git command line software, or [GitHub Desktop](https://desktop.github.com/).
 
-    These are used to download the contents of the code repository that is created in this guide. The GitHub Desktop software can be more user-friendly for beginners, but you might prefer to work out of the command line. Instructions for using both are provided in this tutorial.
+    These tools are used to download a copy of the GitHub repository that is created in this guide. The GitHub Desktop software can be more user-friendly for beginners, but you might prefer to work out of the command line. Instructions for using both are provided in this tutorial.
 
-    To download the command line software, follow our [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide. Then, follow the [Configure Git](/docs/guides/how-to-configure-git/#configure-git) section of our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide. When doing this, you don't need to set the `core.editor` option, but it is important to set your username and email for Git.
+    To install the command line software, follow our [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide. Then, follow the [Configure Git](/docs/guides/how-to-configure-git/#configure-git) section of our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide. When doing this, you don't need to set the `core.editor` option, but it is important to set your username and email for Git.
 
 - **[Node.js](https://nodejs.org/en/) and the [Node Package Manager](https://www.npmjs.com/) (*npm*)**, which are used to initialize a new npm package for the Twitter bot.
 
-    There are a number of different ways to install Node.js and npm, as described in our [How to Install Node.js](/docs/guides/how-to-install-nodejs/) guide. For this tutorial, we recommend using the Node Version Manager (*nvm*), which can manage multiple versions of Node.js and npm. Follow the next [Install Node.js and npm via the Node Version Manager](#install-nodejs-and-npm-via-the-node-version-manager) section for instructions.
+    There are a number of different ways to install Node.js and npm. Our [How to Install Node.js](/docs/guides/how-to-install-nodejs/) guide outlines some of these options. For this tutorial, we recommend using the *Node Version Manager* (*nvm*), which can manage multiple versions of Node.js and npm. Follow the next [Install Node.js and npm via the Node Version Manager](#install-nodejs-and-npm-via-the-node-version-manager) section for instructions.
 
 ### Install Node.js and npm via the Node Version Manager
 
@@ -81,13 +81,13 @@ Twitter's developer portal is where you register your new account to be able to 
 
 Follow these steps to register for developer access:
 
-1. Head to the [developer page](https://developer.twitter.com/en). Once there you’ll see a link near the profile picture on the top right that says **apply**.
+1. Head to the [developer page](https://developer.twitter.com/en). Once there you’ll see a link near the profile picture on the top right that says **Apply**.
 
-1. Click the **Apply for a developer account** button:
+1. Click the **Apply for a developer account** button on the page that appears:
 
     ![Twitter Developer Portal - Apply for access button](twitter-apply-for-access-button.png "Twitter Developer Portal - Apply for access button")
 
-1. If you are not already sign in, Twitter prompts you to sign in to your account.
+1. If you are not already signed in, Twitter prompts you to sign in to your account.
 
 1. Twitter first asks what your intended use for the developer account is. For this tutorial, we have chosen the **Hobbyist** option, followed by the **Making a bot** option.
 
@@ -111,13 +111,13 @@ A later section in this guide shows how to create an app within the Twitter deve
 
 ## Create and Clone a GitHub Repository
 
-As mentioned in the Before You Begin section, this tutorial records the code for the Twitter Bot in a Git repository. Specifically, we first create a new repository on GitHub.com and then pull it down to your workstation. By doing this, we can populate the repository with some helpful files, like a .gitignore and a README:
+As mentioned in the Before You Begin section, this tutorial records the code for the Twitter bot in a Git repository. Specifically, we first create a new repository on GitHub.com and then pull it down to your workstation. By doing this, we can populate the repository with some helpful files, like a .gitignore and a README:
 
 1. Visit GitHub.com, then follow the [Create a repository](https://docs.github.com/en/get-started/quickstart/create-a-repo#create-a-repository) section in GitHub's official [Create a repo](https://docs.github.com/en/get-started/quickstart/) document. When creating the repository, make these selections:
 
     - You can name the repository whatever you would like, but later code examples in the tutorial assume it is named `snes-soundtracks`.
 
-    - The repository can be public or private. If you make it private, *and if also want to use the Git command line tools*, then a few extra steps to authenticate with GitHub inside your terminal need to be taken. These steps are outlined in the note below. For a simpler experience, it's recommended to make the repository public.
+    - The repository can be public or private. If you make it private, *and if you also want to use the Git command line tools*, then you need to authenticate with GitHub inside your terminal. This authentication requires a few extra steps, and these steps are outlined in the note below. For a simpler experience, it's recommended to make the repository public.
 
         {{< note >}}
 To authenticate with Github inside the terminal, see the [Authenticating with the command line](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line) section of GitHub's [About authentication to GitHub](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github) document.
@@ -129,10 +129,10 @@ Specifically, [personal access tokens](https://docs.github.com/en/github/authent
 
     - Choose a license. [choosealicense.com](https://choosealicense.com/) has helpful recommendations for which license to use. This tutorial recommends the MIT License.
 
-    - Enable the .gitignore toggle and choose **Node** from the available options.
+    - Enable the `.gitignore` toggle and choose **Node** from the available options.
 
         {{< note >}}
-A Git repository's .gitignore file allows you to specify certain files or file types that should not be checked into source control. Node.js projects feature some of these files. GitHub's .gitignore template for Node sets this up for us. For more information about .gitignore file options, see [this document from git-scm.com](https://git-scm.com/docs/gitignore).
+A Git repository's `.gitignore` file allows you to specify certain files or file types that should not be checked into source control. Node.js projects feature some of these files. GitHub's `.gitignore` template for Node.js sets up some appropriate default files to exclude. For more information about `.gitignore` file options, see [this document from git-scm.com](https://git-scm.com/docs/gitignore).
 {{< /note >}}
 
 1. After you finish the create repository form, the new repository appears in your browser. From this page, download a copy of the repository to your workstation:
@@ -141,21 +141,21 @@ A Git repository's .gitignore file allows you to specify certain files or file t
 
         ![Github.com repository showing the green Code button clicked with Open in Github Desktop option highlighted](github-repo-open-in-github-desktop-highlighted.png "Github.com repository showing the green Code button clicked with Open in Github Desktop option highlighted")
 
-    - **To use the command line**, run the `git clone` command in your terminal:
+    - **To use the command line**, run the `git clone` command in your terminal as follows:
 
             git clone https://github.com/your-github-username/snes-soundtracks.git
 
         Before running the command, be sure to substitute your own GitHub username in for `your-github-username`. If you chose a different name for your repository, substitute that in for `snes-soundtracks`.
 
         {{< note >}}
-If you created a private repository, remember to set up a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for GitHub. The above `git clone` command prompts for your password. You should enter the *personal access token* (**not** your normal GitHub password) when prompted.
+If you created a private repository, remember to set up a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for GitHub. When referencing a private repository, the above `git clone` command prompts for a GitHub username and password. You should enter the *personal access token* (**not** your normal GitHub password) when prompted for the password.
 {{< /note >}}
 
 At this point, your source control is present on both your machine and on GitHub.
 
 ## Create an App in the Twitter Developer Portal
 
-After your developer account has been registered, you can create an app within the developer portal. When you create the app, Twitter creates a set of keys that your Node.js project uses to authenticate with the service.
+After your developer account has been registered, you can create an app within the developer portal. When you create the app, Twitter creates a set of keys that your Node.js project uses to authenticate with the service. This section shows how to create your Twitter app and where to store the app's keys.
 
 1. Create a file named `.env` inside your code repository on your workstation. Paste the following snippet into the file.
 
@@ -166,19 +166,19 @@ access_token=
 access_token_secret=
 {{< /file >}}
 
-    Later in this section, the keys that are provided by the Twitter developer portal are recorded in this file. Your `.env` file serves as your one source of truth for these keys. The `.gitignore` for your project excludes the `.env` file, so you won’t accidentally upload your keys to GitHub.
+    Later in this section, the keys that are provided by the Twitter developer portal are recorded in this file. Your `.env` file serves as your one source of truth for these keys. The `.gitignore` for your project excludes the `.env` file from source control, so you won’t accidentally upload your keys to GitHub.
 
     {{< note >}}
-In a later section, a `config.js` file is used to connect your application code to the values in the `.env` file.
+In a later section, a Node.js module named `dotenv` is used by your application code to read the secret keys in the `.env` file.
 {{< /note >}}
 
-1. Return to the [Twitter Developer Portal dashboard](https://developer.twitter.com/en/portal/dashboard) in your browser.
+1. Return to the [Twitter developer portal dashboard](https://developer.twitter.com/en/portal/dashboard) in your browser.
 
 1. Click the **Create Project** button.
 
     ![Twitter developer portal with Create Project button highlighted](twitter-developer-portal-create-project-button.png "Twitter developer portal with Create Project button highlighted")
 
-    Twitter's developer portal has two concepts that are used to manage your access to the Twitter API: *projects* and *apps*. A project contains an app. For earlier versions of the Twitter API, standalone apps were created, and projects were not required. A project and corresponding app are required to access the v2 Twitter API, which this tutorial uses.
+    Twitter's developer portal has two concepts that are used to manage your access to the Twitter API: *projects* and *apps*. A project contains an app. For earlier versions of the Twitter API, standalone apps were created, and projects were not required. A project and corresponding app are both required to access the v2 Twitter API, which this tutorial uses.
 
     {{< note >}}
 Review Twitter's [Developer Apps](https://developer.twitter.com/en/docs/apps/overview) documentation for more information about projects and apps.
@@ -196,7 +196,7 @@ Review Twitter's [Developer Apps](https://developer.twitter.com/en/docs/apps/ove
 
         ![Twitter developer portal: create new project form with choose app dropdown menu highlighted](twitter-create-project-form-create-new-app-option-highlighted.png "Twitter developer portal: create new project form with choose app dropdown menu highlighted")
 
-        Because you don't have any apps yet, the dropdown menu is empty. Click the **Create new App instead** button above the dropdown menu.
+        Because you don't have any apps yet, the dropdown menu on this page is empty. Click the **Create new App instead** button above the dropdown menu.
         A text field appears that allows you to enter an app name. Enter a unique name in this field.
 
         {{< note >}}
@@ -422,7 +422,7 @@ Documentation for this method of scheduling is found in the [Recurrence Rule Sch
 
 ### Authenticating with Twitter and Listening for Tweet Mentions
 
-1. Append this snippet to the bottom of `snes.js`. After copying and pasting, make sure to
+1. Append this snippet to the bottom of `snes.js`:
 
     {{< file "snes.js" javascript >}}
 // ... append to bottom of file:
@@ -447,17 +447,17 @@ stream.on('tweet', pressStart);
 
     - Line 4 includes the `twit` Twitter API client module.
 
-    - Line 7 creates a new configuration object from another `config.js` file, which is created in the next step of this section.
+    - Line 7 uses another `config.js` file to create a new configuration object. The `config.js` file is created in the next step of this section.
 
     - Line 9 uses [JavaScript's `new` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) to create an instance of the Twitter API client. The configuration object from line 7 is passed to the *constructor function* for the new instance.
 
-        This instance is stored in the variable `T`. From now on, when we want to use something from the `twit` Twitter API client, we simply reference the `T.propertyName` syntax. This syntax allows us to access any property, field, or method we need from the API client's library.
+        This instance is stored in the variable `T`. From now on, when we want to use something from the `twit` module, we simply reference the `T.propertyName` syntax. This syntax allows us to access any property, field, or method we need from the API client's library.
 
-    - Line 12 sets up a stream that monitors for Tweet mentions of `@SnesSoundtracks` from other Twitter users while the code is running.
+    - Line 12 sets up a stream that monitors for Tweet mentions of your Twitter username from other Twitter users while the code is running.
 
     - Line 16 creates an event listener with the `stream.on` method. The `stream.on` method accepts two arguments:
 
-        - A string parameter that serves as the name for the event listener.
+        - A string parameter that represents the type of [event](https://github.com/ttezel/twit#event-tweet) that should be listened for.
 
         - Another function that handles the events from the stream. The function that handles the events is called `pressStart`. The `pressStart` function is defined in the next section of this tutorial.
 
@@ -472,7 +472,7 @@ module.exports = {
 };
 {{< /file >}}
 
-    This file exports an object that matches the configuration object expected by the `twit` module. Specifically, `twit` expects a configuration object with the following form, as described in [the `twit` README on GitHub](https://github.com/ttezel/twit#var-t--new-twitconfig):
+    This file exports an object that matches the configuration object accepted by the constructor function in the `twit` module. Specifically, `twit` expects a configuration object with the following form, as described in [the `twit` README on GitHub](https://github.com/ttezel/twit#var-t--new-twitconfig):
 
     ```
     {
@@ -483,7 +483,7 @@ module.exports = {
     }
     ```
 
-    In order to generate the configuration object, this file reads from the values encoded in the `process.env` property by the dotenv module.
+    In order to generate the configuration object, this file reads the values encoded in the `process.env` property by the dotenv module.
 
 ### Replying to Tweet Mentions
 
@@ -534,7 +534,7 @@ function pressStart(tweet) {
 }
 {{< /file >}}
 
-This section of code defines a `pressStart` function that's called when another Twitter user mentions the bot. It contains a few local variables, a bit of logic, and a function that must be included in the `T.post` method:
+This section of code defines a `pressStart` function that's called when another Twitter user mentions the bot. It contains a few local variables, a bit of logic, and another callback function that must be included in the `T.post` method:
 
 - On line 3, the `pressStart` function is defined. It takes a `tweet` object as a parameter. This represents a Tweet that another Twitter user has mentioned the bot in. The `tweet` object has tons of data attached to it, and the Twit client helps us parse through this data.
 
@@ -568,7 +568,7 @@ This section of code defines a `pressStart` function that's called when another 
 Where the `gameOver` function is passed to `T.post`, you could use an anonymous function instead, and it would do the same thing. The tutorial code defines it separately for better readability.
 {{< /note >}}
 
-    - The `else` block on lines 30-32 is invoked if the Tweet mention doesn't say `please`. It logs a quote from Jurassic Park to the console, just so we can see why the bot didn't tweet back.
+    - The `else` block on lines 30-32 is invoked if the Tweet mention doesn't say `please`. It logs [a quote from Jurassic Park](https://youtu.be/RfiQYRn7fBg) to the console, just so we can see why the bot didn't tweet back.
 
 ### Scheduling Tweets
 
@@ -584,8 +584,8 @@ function pressSelect() {
   const dateString = now.toLocaleDateString("en-US", dateOptions) + " at " + now.toLocaleTimeString("en-US", timeOptions);
 
   var soundtrackArrayElement = Math.floor(Math.random() * soundtrackArrayLength);
-  var weeklyReplyText = soundtrackArray[soundtrackArrayElement] + " Here's your soundtrack for " + dateString;
-  T.post('statuses/update', { status: weeklyReplyText }, gameOver2);
+  var weeklyText = soundtrackArray[soundtrackArrayElement] + " Here's your soundtrack for " + dateString;
+  T.post('statuses/update', { status: weeklyText }, gameOver2);
 
   function gameOver2(err, reply) {
     if (err) {
@@ -600,9 +600,9 @@ function pressSelect() {
 const job1 = schedule.scheduleJob(rule, pressSelect);
 {{< /file >}}
 
-This section of code defines a `pressSelect` function that's called periodically to create new Tweets:
+This section of code defines a `pressSelect` function that sends new Tweets with a link to a soundtrack. It then schedules the function to be called periodically:
 
-- Lines 4-10 compose a `weeklyReplyText` string, which is similar to the `replyText` variable from the `pressStart` function. The text is slightly changed to be an original Tweet, rather than a comment on a different Tweet. It also pulls an element from the same soundtrack list array.
+- Lines 4-10 compose a `weeklyText` string, which is similar to the `replyText` variable from the `pressStart` function. The text is slightly changed to be an original Tweet, rather than a comment on a different Tweet. It also pulls an element from the same soundtrack list array.
 
 - On line 11, The `T.post` method is invoked with the same `statuses/update` API endpoint. There is no `in_reply_to_status_id` property passed, because the function composes an original Tweet and not a reply.
 
@@ -610,13 +610,13 @@ This section of code defines a `pressSelect` function that's called periodically
 
 - After the `pressSelect` definition, line 23 invokes [the node-schedule module's `scheduleJob` function](https://github.com/node-schedule/node-schedule#jobs-and-scheduling) and stores the result in the `job1` variable. This is the last step needed to set up periodic scheduled Tweets. This function accepts two arguments:
 
-    - The `rule` variable created earlier in the code, which describes when the scheduled job should be run.
+    - The `rule` variable created earlier in the code, which describes when the scheduled job should be run (once a week on Monday).
 
     - The `pressSelect` function.
 
 ## Commit the Code and Push to GitHub
 
-Now that the application code has been added to your local copy of the repository, we should make a new *commit*. A commit in Git records your file changes in the version control history. After making the new commit, you can then **push** it to your repository on GitHub.
+Now that the botf code has been added to your workstation's copy of the repository, we should make a new *commit*. A commit in Git records your file changes in the version control history. After making the new commit, you can then **push** it to your repository on GitHub.
 
 {{< note >}}
 A commit that you make locally is not automatically synced to GitHub. The push operation demonstrated in this tutorial needs to be done manually.
@@ -631,12 +631,12 @@ In the next two sections, this tutorial demonstrates two methods for creating a 
     ![GitHub Desktop - Commit to main](github-desktop-commit-to-main.png "GitHub Desktop - Commit to main")
 
     {{< note >}}
-Not all of the files that are in your Node.js project, like the `node_modules` folder, or the `.env` secrets file, are shown. This is because they are purposefully excluded by the `.gitignore` file.
+Not all of the files that are in your Node.js project, like the `node_modules` folder, or the `.env` secrets file, are shown. This is because they are excluded by the `.gitignore` file.
 {{< /note >}}
 
 1. Below the changed files, enter a brief summary message for the new commit. For example: `Add Twitter bot application code`.
 
-1. Press the **Commit to main** button below the summary and description fields. This creates the new commit on the *main* branch of your repository, which is the default branch name for projects created on GitHub.
+1. Press the **Commit to main** button below the summary and description fields. This creates the new commit on the *main* branch of your repository, which is the default branch name for repositories created on GitHub.
 
     {{< note >}}
 Branches in Git allow you to work on new features for your projects without altering the files in your other branches.
@@ -668,16 +668,16 @@ Your branch is up to date with 'origin/main'.
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	config.js
-	package-lock.json
-	package.json
-	snes.js
+    config.js
+    package-lock.json
+    package.json
+    snes.js
 {{< /output >}}
 
     Your new application files are listed under the `Untracked files` line, which means that they don't exist yet in Git's version history.
 
     {{< note >}}
-Not all of the files that are in your Node.js project, like the `node_modules` folder, or the `.env` secrets file, are shown. This is because they are purposefully excluded by the `.gitignore` file.
+Not all of the files that are in your Node.js project, like the `node_modules` folder, or the `.env` secrets file, are shown. This is because they are excluded by the `.gitignore` file.
 {{< /note >}}
 
 1. Before you can commit the files, you need to *stage* them. Staging tells Git that you want to include the files in the next commit that you make. To stage your files, run:
@@ -700,19 +700,19 @@ Your branch is up to date with 'origin/main'.
 
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	new file:   config.js
-	new file:   package-lock.json
-	new file:   package.json
-	new file:   snes.js
+    new file:   config.js
+    new file:   package-lock.json
+    new file:   package.json
+    new file:   snes.js
 {{< /output >}}
 
-    The output above mentions that you are on the `main` branch, which is the default branch name for projects created on GitHub.
+    The output above mentions that you are on the `main` branch, which is the default branch name for repositories created on GitHub.
 
     {{< note >}}
 Branches in Git allow you to work on new features for your projects without altering the files in your other branches.
 {{< /note >}}
 
-1. Git now knows to include the new files in your next commit. To make the new commit, run:
+1. Git now knows to include the new files in your next commit. To make the commit, run:
 
         git commit -m "Add Twitter bot application code"
 
@@ -752,8 +752,6 @@ To https://github.com/your-github-username/snes-soundtracks.git
 
 ## Run the Code
 
-### Test Twitter Authentication
-
 To test your code for the first time and ensure it works, type `npm run develop` into the terminal:
 
     npm run develop
@@ -767,11 +765,11 @@ If successful, the following output appears:
 SNES Soundtracks booting up
 {{< /output >}}
 
-You may also see some other error messages from the application. If this is the case, check out some of the solutions in the [Troubleshooting](#troubleshooting) section. For example, ..
+If any errors appear, they are likely related to an authentication failure with the Twitter API. If this happens, then your `.env` file might have syntax errors, or your secret keys may have been incorrectly pasted into it. Review the [Troubleshooting consumer_key Twit Config Error](#troubleshooting-consumer_key-twit-config-error) and [Troubleshooting Twitter Error 401 Unauthorized](#troubleshooting-twitter-error-401-unauthorized) sections for solutions.
 
 ### Test the Tweet Function
 
-At this point, the bot is running, and if you wait long enough, then it should send a scheduled Tweet. We can also test `pressSelect` on its own and make sure the tweeting function works, you need to modify the code slightly.
+At this point, the bot is running, and if you wait long enough, then it should send a scheduled Tweet. We can also test `pressSelect` on its own and make sure the tweeting function works, To do this, you need to modify the code slightly.
 
 1. Comment out the last line of the code in `snes.js` and call `pressSelect` directly:
 
@@ -783,9 +781,9 @@ At this point, the bot is running, and if you wait long enough, then it should s
 pressSelect();
 {{< /file >}}
 
-    By doing this, the tweeting function runs immediately. This way, you don’t have to wait for whatever day and hour you scheduled `node-schedule` for.
+    By doing this, the tweeting function runs immediately, and you don’t have to wait until the next scheduled Tweet.
 
-1. Type `CTRL-c` to interrupt and stop the bot, then run the code again:
+1. Type `CTRL-c` to interrupt and stop the bot. Then run the code again:
 
         npm run develop
 
@@ -803,7 +801,7 @@ Tweeted: https://t.co/Y2AOzzkUm0 Here's your soundtrack for Tuesday, June 1, 202
 Note that Twitter has automatically shortened the link to the soundtrack in the Tweet.
 {{< /note >}}
 
-    You may instead see this error: `Read-only application cannot POST.`. If so, then your app's permissions are set to Read Only in the Twitter developer portal. Revisit the earlier [Give your Twitter App Read and Write Permissions](#give-your-twitter-app-read-and-write-permissions) section and then return to this section.
+    If you don't see the above output, you might instead see this error: `Read-only application cannot POST.`. If so, then your app's permissions are set to Read Only in the Twitter developer portal. Revisit the earlier [Give your Twitter App Read and Write Permissions](#give-your-twitter-app-read-and-write-permissions) section and then return to this section.
 
 ### Test Tweet Replies
 
@@ -811,11 +809,11 @@ Lastly, you can test the way the bot responds to other users:
 
 1. Undo the code changes you made in the [Test the Tweet Function](#test-the-tweet-function) section: remove the `pressSelect();` line that was added, uncomment the last line, and save the file.
 
-1. Type `CTRL-c` to interrupt and stop the bot, then run the code again:
+1. Type `CTRL-c` to interrupt and stop the bot. Then run the code again:
 
         npm run develop
 
-1. Log in to another Twitter account and tweet at your bot. You should be able to see some action in the terminal that tells you it’s working, followed by the response on Twitter.
+1. Log in to another Twitter account and tweet at your bot, including the keyword (`please`). You should be able to see some action in the terminal that tells you it’s working, followed by the response on Twitter.
 
 ## Host the Code
 
@@ -825,7 +823,7 @@ You could certainly let this code run for a long while from your local machine, 
 
 1. Visit the [Linode Cloud Manager](https://cloud.linode.com). If you haven't created any Linodes before, the home page looks like this:
 
-![Linode home screen](https://lh3.googleusercontent.com/JFNpdFMCe9A37beAwtxazN-zqcSr88Ff457bnQhbQpkQJILfqAv7g0bR_CQ6SxMu8EfKgIcaqTGuZvPTTI2hOb6dYyi3CyLMubEKOwFEZMkCaByjpk83L2o0c4W8GTwE4VPSodE-)
+    ![Linode home screen](https://lh3.googleusercontent.com/JFNpdFMCe9A37beAwtxazN-zqcSr88Ff457bnQhbQpkQJILfqAv7g0bR_CQ6SxMu8EfKgIcaqTGuZvPTTI2hOb6dYyi3CyLMubEKOwFEZMkCaByjpk83L2o0c4W8GTwE4VPSodE-)
 
 1. Follow the [Create a Linode](/docs/guides/getting-started/#create-a-linode) section of our [Getting Started](/docs/guides/getting-started/) guide. When creating your instance, use the following options:
 
@@ -835,7 +833,9 @@ You could certainly let this code run for a long while from your local machine, 
 
     - Choose Nanode (the smallest option) as your Linode plan. It’s only $5 a month and has more than enough space and RAM for your Twitter bot and any other projects you’d want on it.
 
-    - When it asks for an Linode label, name it after your project.
+    - Pick a long, unique, and complex root user password. The root user for your server can take any administrative action on the system. Using a strong root password is important to prevent malicious attackers from accessing your system.
+
+    - When it asks for a Linode label, name it after your project.
 
 1. After you create the Linode, it takes a few moments to boot up. Once it boots up it’s time to get inside and clean up a bit.
 
@@ -843,21 +843,23 @@ You could certainly let this code run for a long while from your local machine, 
 
 1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Linode Lish console](/docs/guides/using-the-linode-shell-lish/) from the Linode Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/using-the-linode-shell-lish/#use-a-web-browser) instructions in our Lish guide.
 
+    {{< note >}}
+Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
+{{< /note >}}
+
     When logging in for the first time, you use the `root` username and the root password that you set when creating the Linode. However, it's important to create a non-root-user with limited permissions to run your programs from.
 
     {{< caution >}}
-If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could still install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
+If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
 {{< /caution >}}
 
 1. To create a non-root-user, follow the [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) section of our [How to Secure Your Server](/docs/guides/securing-your-server/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
 
     {{< note >}}
 Here's a video that also shows how to create a limited user: [Tech Republic: How to create a new user with admin privileges](https://youtu.be/fDHHKR0nVQg).
-
-As well, our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
 {{< /note >}}
 
-1. After you have create the limited user, log out of your root-user SSH (or Lish) session by executing the `exit` command. Then, log back in at the new user.
+1. After you have created the limited user, log out of your current SSH (or Lish) session by running the `exit` command. Then, log back in as the new user.
 
     {{< note >}}
 The rest of the steps in the [How to Secure Your Server](/docs/guides/securing-your-server/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
@@ -881,7 +883,7 @@ The rest of the steps in the [How to Secure Your Server](/docs/guides/securing-y
 
 The server is now ready to run the bot, but you still need to upload the bot's code to the server. We present two ways to do this:
 
-- **Filezilla**: You transfer your code to the Linux instance from your workstation, via the [Filezilla](/docs/guides/filezilla/) GUI desktop application. Because you're using a desktop application, this can be a little more user-friendly for beginners. Follow the [Upload the Bot Using Filezilla](#upload-the-bot-using-filezilla) section to do this.
+- **Filezilla**: You can transfer your code to the Linux instance from your workstation, via the [Filezilla](/docs/guides/filezilla/) GUI desktop application. Because you're using a desktop application, this can be a little more user-friendly for beginners. Follow the [Upload the Bot Using Filezilla](#upload-the-bot-using-filezilla) section to do this.
 
 - **git clone**: You can directly clone your repository on GitHub to your Linode with the Git command line tool. Follow the [Upload the Bot with Git Clone](#upload-the-bot-with-git-clone) section to do this.
 
@@ -902,13 +904,13 @@ The server is now ready to run the bot, but you still need to upload the bot's c
     | Password | The password for the limited non-root-user you created. |
     | Port | This should be set to 22. |
 
-1. Upon connecting, you’ll get a message saying the key is unknown. This is normal, but you should double-check that the IP address is correct. If it is, check the box to remember your Linode on Filezilla.
+1. Upon connecting, you’ll get a message saying the key is unknown. This is normal, but you should double-check that the IP address is correct. If it is, check the box to remember your Linode in Filezilla.
 
-1. The left half of the Filezilla window shows your local files, and the right half of the window shows your Linode's files. On the left side, go to the directory where you’re keeping the files for your Twitter bot on your workstation. You’ll need the `.env`, `config.js`, the `package.json`, `package-lock.json`, the `node_modules` folder, and the `snes.js` application code file for your bot. The files we're moving over are highlighted in the following picture.
+1. The left half of the Filezilla window shows your local files, and the right half of the window shows your Linode's files. On the left side, go to the directory where you’re keeping the files for your Twitter bot. You’ll need the `.env` file, `config.js` file, `package.json` file, `package-lock.json` file, `node_modules` folder, and `snes.js` application code file for your bot. The files we're moving over are highlighted in the following picture.
 
     ![An image of the file directory containing the files for a twitter bot. .env, config.js, snes.js, and package.json are highlighted](https://lh4.googleusercontent.com/LiCT5nHxonGW71MJ2tbk_FScrHkkhIPuyBDLq74jxtfeW5YE9yGk-dBlAvlSvQaeBC5NPpiWv-VyV4YCFbrQEZHRcHatviZSuplcSOwfHj84yRMNmZXwc96OlCXK_B9MSqtFkgp7)
 
-1. By default, the right side shows the files in the home directory of your Linode's limited user. This is also where we want to install the bot. Once you highlight the files you want to transfer on the left side, you can click and drag them to the right.
+1. By default, the right side of the FileZilla window shows the files in the home directory of your Linode's user. This is also where we want to install the bot. Once you highlight the files you want to transfer on the left side, click and drag them to the right.
 
 After finishing the file transfer, proceed to the [run the bot](#run-the-bot-on-your-linode) section.
 
@@ -916,11 +918,9 @@ After finishing the file transfer, proceed to the [run the bot](#run-the-bot-on-
 
 1. Git is preinstalled on Ubuntu 20.04, but you still need to configure it like you did on your workstation. While inside your SSH or Lish connection to your Linode, follow the [Configure Git](/docs/guides/how-to-configure-git/#configure-git) section of our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide. When doing this, you don't need to set the `core.editor` option, but it is important to set your username and email for Git.
 
-1. Then run the `git clone` command from your Linode:
+1. To clone your GitHub repository to your Linode, run the `git clone` command from your SSH or Lish connection. Be sure to substitute your own GitHub username in for `your-github-username` and the name you chose for the repository for `snes-soundtracks` before running the command:
 
         git clone https://github.com/your-github-username/snes-soundtracks.git
-
-    Be sure to substitute your own GitHub username in for `your-github-username` and the name you chose for the repository for `snes-soundtracks` before running the command.
 
     {{< note >}}
 If you previously created a private GitHub repository, then the above command prompts for your password. You should enter the *personal access token* (and not your normal GitHub password) that you created when setting up [command line authentication for GitHub](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line) earlier.
@@ -931,9 +931,9 @@ If you previously created a private GitHub repository, then the above command pr
         cd snes-soundtracks
         npm install
 
-    The `npm install` command looks at your package.json and installs every dependency that it finds into the .
+    The `npm install` command looks at your package.json and installs every dependency that it finds into the `node_modules` folder.
 
-1. The `.env` file is not a part of your repository, so it needs to be copied to your Linode separately. On your workstation, open your local `.env` and copy its contents to your clipboard. Then inside the code repository on the Linode, create a new `.env` file with the `nano` command line text editor:
+1. The `.env` file was also excluded from version control, so it needs to be copied to your Linode separately. On your workstation, open your local `.env` and copy its contents to your clipboard. Then inside the code repository on the Linode, create a new `.env` file. You can use [the `nano` command line text editor](/docs/guides/use-nano-to-edit-files-in-linux/) to do this:
 
         nano .env
 
@@ -941,13 +941,13 @@ If you previously created a private GitHub repository, then the above command pr
 
     ![nano text editor interface](nano-empty-env-file.png "nano text editor interface")
 
-1. Paste the contents of your clipboard into nano.
+1. Paste the contents of your clipboard into the editor.
 
 1. Type `CTRL-o` to save the file, and hit `Enter` when the editor prompts you to confirm the `.env` filename.
 
 1. Type `CTRL-x` to exit the editor.
 
-1. Remove file system read and write permissions for groups and other users on the Linode for the `.env` file:
+1. Remove file system read and write [file permissions](/docs/guides/modify-file-permissions-with-chmod/) for groups and other users on the Linode for the `.env` file:
 
         chmod go-rw .env
 
@@ -971,7 +971,7 @@ To keep your bot running uninterrupted, you can start a Screen session. [Screen]
 
         screen
 
-1. This creates a new Screen session. A welcome message for the new session is presented. Close this message by hitting `Return` on your keyboard.
+1. This creates a new Screen session. A welcome message for the new session is presented. Close this message by hitting `Enter` on your keyboard.
 
 1. You are now in your Screen session. Run the bot again:
 
@@ -983,7 +983,7 @@ To keep your bot running uninterrupted, you can start a Screen session. [Screen]
 [detached from 38905.pts-0.localhost]
 {{< /output >}}
 
-1. Your bot continues to run, and it runs even if you close your SSH or Lish connection. You can later return to your bot in the terminal from another SSH or Lish connection. This command *reattaches* to your screen session:
+1. Your bot continues to run, and it runs even if you close your SSH or Lish connection. You can later return to your bot from the same SSH or Lish connection, or from a new connection. This command *reattaches* to your screen session:
 
         screen -r
 
@@ -1027,7 +1027,7 @@ access_token=1399573085406306304-PkDdzGOQu6ikxbwbhpmsLoP4W87jaE
 access_token_secret=gf6ohLUT06RqcvfB4H6qQRZstcc6UgkouszIiLxHLGtGj
 {{< /file >}}
 
-If the error persists after correcting any syntax issues, you may have copied your keys incorrectly. Review the [Troubleshooting Twitter Error 401 Unauthorized Error](#troubleshooting-twitter-error-401-unauthorized-error) section for further guidance.
+If the error persists after correcting any syntax issues, you may have copied your keys incorrectly. Review the [Troubleshooting Twitter Error 401 Unauthorized](#troubleshooting-twitter-error-401-unauthorized) section for further guidance.
 
 ### Troubleshooting Twitter Error 401 Unauthorized
 
@@ -1089,4 +1089,4 @@ When your bot attempts to tweet, you may see an error like this in its logs:
 Read-only application cannot POST.
 {{< /output >}}
 
-This error indicated that your app's permissions are set to Read Only in the Twitter developer portal. Follow the instructions in the [Give your Twitter App Read and Write Permissions](#give-your-twitter-app-read-and-write-permissions). This section shows how to switch to Read and Write permissions and to regenerate your Access Token and Access Token Secret.
+This error indicates that your app's permissions are set to Read Only in the Twitter developer portal. Follow the instructions in the [Give your Twitter App Read and Write Permissions](#give-your-twitter-app-read-and-write-permissions). This section shows how to switch to Read and Write permissions and how to regenerate your Access Token and Access Token Secret.
