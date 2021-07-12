@@ -38,7 +38,7 @@ or similar, as appropriate to your own working Python environment.
 
 ## A Paramiko SSH Example
 
-You can quickly experience Paramiko for yourself: create `first_experiment.py` with the contents of the file below. Ensure that you update the file with your Linode server's deatils for host numeric address, account, and password.
+You can quickly experience Paramiko for yourself: create `first_experiment.py` with the contents of the file below. Ensure that you update the file with your Linode server's details for host numeric address, account, and password.
 
 {{< file "first_experiment.py" >}}
 import paramiko
