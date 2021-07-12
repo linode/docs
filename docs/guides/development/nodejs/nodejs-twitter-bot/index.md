@@ -319,7 +319,7 @@ Wrote to /home/username/snes-soundtracks/package.json:
 ..                .git              LICENSE           node_modules      package.json
 {{< /output >}}
 
-## Update Scripts in package.json
+### Update Scripts in package.json
 
 Before we can start adding our code, we should adjust a few parts of the `package.json` file in the new Node.js project.
 
