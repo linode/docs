@@ -25,7 +25,7 @@ In this section, you install the GPU driver using [NVIDIA's CUDA Toolkit](https:
 
 For a full list of native Linux distribution, and kernel support in CUDA, see the [CUDA toolkit documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements).
 
-For instructions about how to update the kernel, see [Updating Linode's Exisiting Kernel](/docs/guides/update-kernel/), and for instructions about how to change the kernel, see [Change Your Linode's Kernel](/docs/guides/update-kernel/).
+For instructions to update the kernel, see [Updating Linode's Existing Kernel](/docs/guides/update-kernel/), to change the kernel, see [Change Your Linode's Kernel](/docs/guides/how-to-change-your-linodes-kernel/).
 
 1. Visit the [CUDA Downloads Page](https://developer.nvidia.com/cuda-downloads) and navigate to the **Select Target Platform** section.
 
