@@ -18,12 +18,14 @@ aliases: ['/platform/linode-gpu/gpu-install-driver-with-cuda-shortguide/']
 ---
 
 {{< note >}}
-If you are using **Ubuntu 18.04, CentOS 7, or OpenSUSE**, follow the steps below. If you are using **Debian 9**, proceed to the [Install Manually](/docs/products/compute/gpu/guides/install-nvidia-drivers-manually) instructions instead.
+If you are using **Ubuntu 20.04**, **Ubuntu 18.04, CentOS 7, or OpenSUSE**, follow the steps below. If you are using **Debian 9**, proceed to the [Install Manually](/docs/products/compute/gpu/guides/install-nvidia-drivers-manually) instructions instead.
 {{< /note >}}
 
-In this section, you will install your GPU driver using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
+In this section, you install the GPU driver using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
 
-For a full list of native Linux distribution support in CUDA, see the [CUDA toolkit documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements).
+For a full list of native Linux distribution, and kernel support in CUDA, see the [CUDA toolkit documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements).
+
+For instructions about how to update the kernel, see [Updating Linode's Exisiting Kernel](/docs/guides/update-kernel/), and for instructions about how to change the kernel, see [Change Your Linode's Kernel](/docs/guides/update-kernel/).
 
 1. Visit the [CUDA Downloads Page](https://developer.nvidia.com/cuda-downloads) and navigate to the **Select Target Platform** section.
 
@@ -41,9 +43,13 @@ For a full list of native Linux distribution support in CUDA, see the [CUDA tool
 
     ![CUDA Downloads Page - Select Target Platform](cuda-downloads-select-target-platform.png "CUDA Downloads Page - Select Target Platform")
 
-1.  A **Download Installer** section will appear below the **Select Target Platform** section. The green **Download** button in this section will link to the installer file. Copy this link to your computer's clipboard:
+1.  A **Download Installer** section appears below the **Select Target Platform** section. The green **Download** button in this section links to the installer file. Copy this link to your computer's clipboard:
 
     ![Copy Download Link](copy-cuda-installer-download-link.png "Copy Download Link")
+
+1. On your Linode, update and install GNU Compiler Collection (GCC):
+
+          apt update && apt install gcc make
 
 1.  On your Linode, enter the `wget` command and paste in the download link you copied. This example shows the syntax for the command, but you should make sure to use the download link appropriate for your Linode:
 
@@ -54,22 +60,22 @@ For a full list of native Linux distribution support in CUDA, see the [CUDA tool
         sudo sh cuda_*_linux.run
 
     {{< note >}}
-The installer will take a few moments to run before generating any output.
+The installer takes a few moments to run before generating any output.
 {{< /note >}}
 
 1. Read and accept the License Agreement.
 
-1. Choose to install the CUDA Toolkit in its entirety or partially. To use your GPU, you only need to install the driver. Optionally, you can choose to install the full toolkit to gain access to a set of tools that will empower you to create GPU-accelerated applications.
+1. Choose to install the CUDA Toolkit in its entirety or partially. To use your GPU, you only need to install the driver. Optionally, you can choose to install the full toolkit to gain access to a set of tools that empowers you to create GPU-accelerated applications.
 
-    To only install the driver, uncheck all options directly below the Driver option. This will result in your screen resembling the following:
+    To only install the driver, uncheck all options directly below the Driver option. A screen similar to the following appears:
 
     ![Cuda Installer](cuda-installer.png "Cuda Installer")
 
-1. Once you have checked your desired options, select **Install** to begin the installation. A full install will take several minutes to complete.
+1. After you have checked your desired options, select **Install** to begin the installation. A full install takes several minutes to complete.
 
     {{< note >}}
 
-Installation on CentOS and Fedora will fail following this step, because the installer requires a reboot to fully remove the default Nouveau driver. If you are running either of these operating systems, reboot the Linode, run the installer again, and your installation will be successful.
+Installation on CentOS and Fedora fails following this step, because the installer requires a reboot to fully remove the default Nouveau driver. If you are running either of these operating systems, reboot the Linode, run the installer again, to install successfully.
 
 {{< /note >}}
 
