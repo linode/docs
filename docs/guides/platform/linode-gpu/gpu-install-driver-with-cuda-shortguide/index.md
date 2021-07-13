@@ -29,7 +29,7 @@ For instructions about how to update the kernel, see [Updating Linode's Exisitin
 
 1. Visit the [CUDA Downloads Page](https://developer.nvidia.com/cuda-downloads) and navigate to the **Select Target Platform** section.
 
-1. Provide information about your target platform by following the prompts and selecting the appropriate options. Once complete, you will gain access to the correct download link for the CUDA Toolkit installer. Use the table below for guidance on how to respond to each prompt:
+1. Provide information about your target platform by following the prompts and selecting the appropriate options. After it is complete, you gain access to the correct download link for the CUDA Toolkit installer. Use the table below for guidance on how to respond to each prompt:
 
     | **Prompt** | **Selection** |
     |--------|-----------|
@@ -39,7 +39,7 @@ For instructions about how to update the kernel, see [Updating Linode's Exisitin
     | Version | Your distribution's version |
     | Installer type | runfile (local) |
 
-    A completed set of selections will resemble the example:
+    A completed set of selections resemble the following example:
 
     ![CUDA Downloads Page - Select Target Platform](cuda-downloads-select-target-platform.png "CUDA Downloads Page - Select Target Platform")
 
