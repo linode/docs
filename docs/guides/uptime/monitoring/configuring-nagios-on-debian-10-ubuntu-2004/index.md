@@ -1,14 +1,13 @@
 ---
 slug: monitor-and-configure-nagios-alerts-on-debian-10-ubuntu-2004
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'In this guide, you will learn how to monitor and configure email alerts and IRC status updates for Nagios. Nagios is a popular server monitoring tool, and these instructions help you get more out of it on both Debian 10 and Ubuntu 20.04.'
-og_description: 'In this guide, you will learn how to monitor and configure email alerts and IRC status updates for Nagios. Nagios is a popular server monitoring tool, and these instructions help you get more out of it on both Debian 10 and Ubuntu 20.04.'
-keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
+  name: Nathaniel Stickman
+description: 'Nagios is a popular server monitoring tool. In this guide, you learn how to monitor and configure email alerts and IRC status updates for Nagios on Ubuntu 20.04 and Debian 10.'
+og_description: 'Nagios is a popular server monitoring tool. In this guide, you learn how to monitor and configure email alerts and IRC status updates for Nagios on Ubuntu 20.04 and Debian 10.'
+keywords: ['nagios monitoring']
 tags: ['monitoring', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-28
+published: 2021-07-16
 modified_by:
   name: Linode
 title: "Monitor and Configure Nagios Alerts on Debian 10 and Ubuntu 20.04"
@@ -18,19 +17,11 @@ contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Van Heusden: nagircbot](https://www.vanheusden.com/nagircbot/)'
 - '[Nagios](https://www.nagios.com/products/nagios-core/)'
 - '[Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html)'
-- '[NagIRCBot](https://manpages.ubuntu.com/manpages/trusty/man1/nagircbot.1.html)'
-- '[NagIRCBot Exchange directory](https://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)'
-relations:
-    platform:
-        key: configure-nagios
-        keywords:
-            - distribution: Debian 10 & Ubuntu 20.04
 ---
 
-[Nagios](https://www.nagios.com/products/nagios-core/), a popular tool for monitoring servers, comes with a robust web interface to help you effectively manage your server. Its dashboard makes it relatively easy to check in on the hosts and services running on your machine and quickly apprise yourself of any issues.
+[Nagios](https://www.nagios.com/products/nagios-core/), a popular tool for monitoring servers, comes with a robust web interface to help you effectively manage your server. Its dashboard makes it relatively easy to check in on the hosts and services running on your machine and quickly learn of any issues.
 
 However, you can get even more out of Nagios by setting it up to deliver alerts and notifications when you need them. This guide provides instructions for setting up email alerts from Nagios and configuring regular status updates via *Internet Relay Chat* (IRC).
 
@@ -40,9 +31,7 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our article on [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Install and configure Nagios. Follow the steps in the [Install Nagios 4 on Ubuntu and Debian 8](/docs/guides/install-nagios-4-on-ubuntu-debian-8/) guide, selecting the most appropriate distribution for you from the dropdown.
-
-    Alternatively, the official [Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) provides steps for installing Nagios from source code on a wide range of Linux distributions.
+1. Install and configure Nagios. Follow the steps in the [Install Nagios on Debian 10 and Ubuntu 20.04](/docs/guides/install-nagios-on-debian-10-and-ubuntu-2004/) guide. Alternatively, the official [Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) provides steps for installing Nagios from source code on a wide range of Linux distributions.
 
 1. Update your system:
 
@@ -72,7 +61,7 @@ This guide also provides instructions for configuring local emails, which are no
 
           sudo dpkg-reconfigure postfix
 
-    - Select **Internet Site**.
+    - Select **Internet Site** from the options that appear.
 
     ![Postfix configuration type](postfix-config-type.png "Postfix configuration type")
 
@@ -88,16 +77,16 @@ This guide also provides instructions for configuring local emails, which are no
 
     ![Postfix accepted destinations](postfix-accepted-destinations.png "Postfix accepted destinations")
 
-    - Use the default values on the remaining steps:
+    - Use the default values for the remaining steps:
         - Choose **No** to synchronous updates
         - Enter `127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128` for local network
         - `0` for the mailbox limit
         - `+` for the local inbox extension character
         - Select **all** for the Internet protocols
 
-    - You can, alternatively, follow the [Configure Postfix to Send Email Using External SMTP Servers](/docs/guides/postfix-smtp-debian7/) or the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via an external SMTP provider or a Gmail account, respectively.
+    - Alternatively, you can follow the [Configure Postfix to Send Email Using External SMTP Servers](/docs/guides/postfix-smtp-debian7/) or the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via an external SMTP provider or a Gmail account, respectively.
 
-1. Test the email configuration with the following command; replace `example-user` with the username of a local user that you can log in as.
+1. Test the email configuration with the following command below; replace `example-user` with the username of a local user that you can log in as.
 
         echo "Body of the test email." | mail -s "Test Email" example-user@localhost
 
@@ -126,17 +115,17 @@ define command{
         }
     {{< /file >}}
 
-1. Open the Nagios `contacts.cfg` configuration file, located at `/etc/nagios4/objects/contacts.cfg`. Identify the `nagiosadmin` contact definition, and, in the email field, enter the email address at which you would like to receive Nagios notifications.
+1. Open the Nagios `contacts.cfg` configuration file, located at `/etc/nagios4/objects/contacts.cfg`. Identify the `nagiosadmin` contact definition. In the email field, enter the email address where you would like to receive Nagios notifications.
 
     You can configure Nagios to send notifications to a local mailbox using `example-user@localhost`, where `example-user` is the local user you want to receive Nagios alerts.
 
-1. Open the Nagios `templates.cfg` configuration file, located at `/etc/nagios/objects/templates.cfg`. Identify the `generic-host` host definition, and ensure that it has the following line:
+1. Open the Nagios `templates.cfg` configuration file, located at `/etc/nagios/objects/templates.cfg`. Find the `generic-host` definition, and ensure that it has the following line:
 
     {{< file "/etc/nagios4/objects/templates.cfg" >}}
 contact_groups      admins
     {{< /file >}}
 
-    Likewise, identify the `generic-service` service definition, and ensure that the same line is present.
+    Similarly, find the `generic-service` definition, and ensure that the same line is present.
 
 1. Restart the Nagios service.
 
