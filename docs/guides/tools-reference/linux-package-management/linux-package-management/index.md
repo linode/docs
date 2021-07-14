@@ -11,38 +11,62 @@ modified: 2021-07-13
 modified_by:
   name: Linode
 published: 2009-07-16
-title: "Introduction to Linux Package Management"
+title: "An Overview of Package Management in Linux"
 tags: ["linux"]
 ---
 
-Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.
-
-![Three boxes, each with the Linux mascot (Tux the penguin) printed on the side](linux-package-management.png "Linux Package Management")
+Many guides within Linode's documentation (or elsewhere online) require the installation of new software. These guides typically provide basic commands that utilize a package manager to install that software. In some cases, you may wish to go beyond these basic commands to install a particular version, search for previously installed packages, and perform other actions. The purpose of this guide is to provide a solid understanding of package management in Linux and an overview of the most most widely used package managers.
 
 ## Package Management Concepts
 
-Contemporary distributions of Linux-based operating systems install software in pre-compiled *packages*, which are archives that contain binaries of software, configuration files, and information about dependencies. Furthermore, package management tools keep track of updates and upgrades so that the user doesn't have to hunt down information about bug and security fixes.
+### Packages
 
-### What Is The Purpose of A Package Manager?
+Most software designed for Linux or Unix systems are distributed as pre-compiled *packages*, which are archives that contain binaries of software, installation scripts, configuration files, dependency requirements, and other details about the software. These packages are typically specific to a particular distribution and formatted in that distribution's preferred package format, such as `.deb` for Debian/Ubuntu and `.rpm` for CentOS/RHEL.
 
-Without package management, users must ensure that all of the required dependencies for a piece of software are installed and up-to-date, compile the software from the source code (which takes time and introduces compiler-based variations from system to system), and manage configuration for each piece of software. Without package management, application files are located in the standard locations for the system to which the developers are accustomed, regardless of which system they're using.
+While it's relatively easy for a user to install a package file, there are other complexities to consider. These complexities include obtaining (downloading) the package, ensuring packages are upgraded with security and bug fixes, and maintaining all the dependencies for the software.
 
-Package management systems attempt to solve these problems and are the tools through which developers attempt to increase the overall quality and coherence of a Linux-based operating system. The features that most package management applications provide are:
+### Package Managers
 
--   **Package downloading**: Operating-system projects provide package repositories which allow users to download their packages from a single, trusted provider. When you download from a package manager, the software can be authenticated and will remain in the repository even if the original source becomes unreliable.
--   **Dependency resolution**: Packages contain metadata which provides information about what other files are required by each respective package. This allows applications and their dependencies to be installed with one command, and for programs to rely on common, shared libraries, reducing bulk and allowing the operating system to manage updates to the packages.
--   **A standard binary package format**: Packages are uniformly prepared across the system to make installation easier. While some distributions share formats, compatibility issues between similarly formatted packages for different operating systems can occur.
--   **Common installation and configuration locations**: Linux distribution developers often have conventions for how applications are configured and the layout of files in the `/etc/` and `/etc/init.d/` directories; by using packages, distributions are able to enforce a single standard.
--   **Additional system-related configuration and functionality**: Occasionally, operating system developers will develop patches and helper scripts for their software which get distributed within the packages. These modifications can have a significant impact on user experience.
--   **Quality control**: Operating-system developers use the packaging process to test and ensure that the software is stable and free of bugs that might affect product quality and that the software doesn't cause the system to become unstable. The subjective judgments and community standards that guide packaging and package management also guide the "feel" and "stability" of a given system.
+A *package manager* reduces the complexity for the end-user by automating the process of obtaining, installing, upgrading, and removing packages *and their dependencies* (additional software required for the original software to function). This dramatically improves the user experience and the ability to properly and efficiently manage the software on your Linux system. Today, package managers can be a defining feature for Linux distributions and many system administrators prefer to use a particular distribution based on its package management system (among other considerations).
 
-In general, we recommend that you install the versions of software available in your distribution's repository and packaged for your operating system. If packages for the application or software that you need to install aren't available, we recommend that you find packages for your operating system, when available, before installing from source code.
+### Package Repositories
 
-The remainder of this guide will cover how to use specific package management systems and how to compile and package software yourself.
+## Common Package Formats and Package Managers
 
-## How Does Linux Package Management Work?
+Each package management tool operates a bit differently and runs on different Linux distributions. Here is a list of common package file formats and package managers.
 
-Each package management tool operates a bit differently and runs on different Linux distributions. This guide goes over the following package managers, including sharing common commands on installing, updating, and removing packages.
+### Debian-based Systems (including Ubuntu)
+
+- **Package format:** `.deb`
+- **Low-level package manager:** dpkg
+- **High-level package manager:** APT (including `apt`, `apt-get`)
+
+### CentOS/RHEL and Fedora
+
+- **Package format:** `.rpm`
+- **Low-level package manager:** RPM
+- **High-level package managers:** YUM and DNF
+
+### OpenSuse (Leap and Tumbleweed)
+
+- **Package format:** `.rpm`
+- **Low-level package manager:** ZYpp (also called libzypp)
+- **High-level package managers:** Zypper
+
+### Arch
+
+- **Package format:** tar archive
+- **Package manager:** [pacman](https://wiki.archlinux.org/title/pacman)
+
+### Slackware
+
+- **Package format:** tar archive
+- **Package managerment tools:** slackpkg, pkgtool, installpkg, upgradepkg, removepkg
+
+### Gentoo
+
+- **Package format:** binary source or tar archive
+- **Package manager:** Portage (the `emerge` command)
 
 ## Debian and Ubuntu Package Management
 
@@ -50,33 +74,30 @@ The Debian package management system, based on a tool called `dpkg` with the ver
 
 As a result, these instructions apply to Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, `.debs` packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow).
 
-### Advanced Packaging Tool (APT)
+### APT
 
-You may already be familiar with `apt-get`, a command which uses the advanced packaging tool to interact with the operating system's package system. The following table outlines some of the most popular commands.
+**Guide:** [Using the APT Package Manager](/docs/guides/how-to-use-apt/)
+
+APT (Advanced Package Tool) is a package management system for Debian, Ubuntu, and other Linux distributions. There are quite a few ways to interact with APT in the command-line, including `apt`, `apt-get`, and `apt-cache`. Each tool has its own benefits, though `apt` should likely be used for most end-user cases. The following table outlines some of the most popular commands. See the dedicated guide [Using the APT Package Manager](/docs/guides/how-to-use-apt/) for more details and commands.
 
 When entering a command, replace *[package]* with the name of the package you wish to operate on. Multiple packages can be entered by separating each package name with a comma. Most of these commands will need to be prepended with `sudo` if running them while logged in as a non-root user in the sudo group. See [Linux Users and Groups](https://www.linode.com/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) for more details.
 
 | Command | Description |
 | -- | -- |
-| `apt-get install [package]` | Installs the package(s) specified, along with any dependencies. |
-| `apt-get remove [package]` | Removes the package(s) specified, but does not remove dependencies. |
-| `apt-get autoremove` | Removes any *orphaned* dependencies, meaning those that remain installed but are no longer required. |
-| `apt-get clean` | Removes downloaded package files (.deb) for software that is already installed. |
-| `apt-get purge [package]` | Combines the functions of `remove` and `clean` for a specific package, as well as configuration files. |
-| `apt-get update` | Reads the `/etc/apt/sources.list` file and updates the system's database of packages available for installation. Run this after changing `sources.list`. |
-| `apt-get upgrade` | Upgrades all packages if there are updates available. Run this after running `apt-get update`. |
-
-While `apt-get` provides the most often-used functionality, APT provides additional information in the `apt-cache` command.
-
-| Command | Description |
-| -- | -- |
-| `apt-cache search [package]` | If you know the name of a piece of software but `apt-get install` fails or points to the wrong software, this looks for other possible names. |
-| `apt-cache show [package]` | Shows dependency information, version numbers and a basic description of the package. |
+| `apt install [package]` | Installs the package(s) specified, along with any dependencies. |
+| `apt remove [package]` | Removes the package(s) specified, but does not remove dependencies. |
+| `apt autoremove` | Removes any *orphaned* dependencies, meaning those that remain installed but are no longer required. |
+| `apt clean` | Removes downloaded package files (.deb) for software that is already installed. |
+| `apt purge [package]` | Combines the functions of `remove` and `clean` for a specific package, as well as configuration files. |
+| `apt update` | Reads the `/etc/apt/sources.list` file and updates the system's database of packages available for installation. Run this after changing `sources.list`. |
+| `apt upgrade` | Upgrades all packages if there are updates available. Run this after running `apt update`. |
+| `apt search [package]` | If you know the name of a piece of software but `apt install` fails or points to the wrong software, this looks for other possible names. |
+| `apt show [package]` | Shows dependency information, version numbers and a basic description of the package. |
 | `apt-cache depends [package]` | Lists the packages that the specified packages depends upon in a tree. These are the packages that will be installed with the `apt-get install` command. |
 | `apt-cache rdepends [package]` | Outputs a list of packages that depend upon the specified package. This list can often be rather long, so it is best to pipe its output through a command, like `less`. |
 | `apt-cache pkgnames` | Generates a list of the currently installed packages on your system. This list is often rather long, so it is best to pipe its output through a program, like `less`, or direct the output to a text file. |
 
-Combining most of these commands with `apt-cache show` can provide you with a lot of useful information about your system, the software that you might want to install, and the software that you have already installed. If you're overwhelmed by `apt-cache` check out the following resources for easy-to-read lists of available packages:
+Combining most of these commands with `apt show` can provide you with a lot of useful information about your system, the software that you might want to install, and the software that you have already installed. If you're overwhelmed by `apt` check out the following resources for easy-to-read lists of available packages:
 
 -   [The Debian Package Directory](http://packages.debian.org)
 -   [The Ubuntu Package Directory](http://packages.ubuntu.com)
@@ -259,8 +280,6 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 ## Slackware Package Management
 
-*Credit: This section was kindly provided by* [JK Wood](http://slaxer.com/).
-
 Packages in Slackware Linux are distributed as compressed tarballs, generally using gzip or lzma compression. These tarballs can be recognized by their suffixes, `.tgz` or `.txz`. This format includes a complete filesystem layout, as well as additional scripts to be run upon installation or removal of the software. Slackware packages do not offer dependency resolution information; this is generally viewed as allowing more flexibility and control.
 
 Packages can also be built using SlackBuilds, shell scripts that compile source or repackage binary distribution packages for easy installation and removal on Slackware. These scripts have been adopted as a community standard by such sites as [SlackBuilds.org](https://slackbuilds.org/), which provides many common third-party packages not available in Slackware proper.
@@ -277,9 +296,11 @@ The Setup scripts options do not often apply to Linode, though there is a `netco
 
 For those seeking a command-line approach, the `*pkg` commands are fairly straightforward in their use.
 
--   `installpkg package-name(s)` - Installs a package from the current directory, or a pathname you specify. It accepts full filenames, as well as globs such as `*/*.t?z` for all tgz, tbz, tlz, or txz packages in all immediately adjacent directories.
--   `upgradepkg package-name(s)` - Upgrades a package from the current directory, or a pathname you specify. If also accepts full filenames and globs like `installpkg`. Note that the `--install-new` flag can be passed to allow `upgradepkg` to operate like `installpkg` on packages that are not currently installed on the system.
--   `removepkg package-name(s)` - Removes a package from the system. This command does not require a full filename, but can often operate with only the software name associated with the package.
+| Command | Description |
+| -- | -- |
+| `installpkg [package]` | Installs a package from the current directory, or a pathname you specify. It accepts full filenames, as well as globs such as `*/*.t?z` for all tgz, tbz, tlz, or txz packages in all immediately adjacent directories. |
+| `upgradepkg [package]` | Upgrades a package from the current directory, or a pathname you specify. If also accepts full filenames and globs like `installpkg`. Note that the `--install-new` flag can be passed to allow `upgradepkg` to operate like `installpkg` on packages that are not currently installed on the system. |
+| `removepkg [package]` | Removes a package from the system. This command does not require a full filename, but can often operate with only the software name associated with the package. |
 
 ### Working With Packages Remotely
 
@@ -287,19 +308,21 @@ The `slackpkg` program is a recent addition to Slackware that allows official Sl
 
 While `slackpkg` offers a menu-based interface, it can also be run in a console-only mode by setting `DIALOG=off` in `/etc/slackpkg/slackpkg.conf`.
 
--   `slackpkg check-updates` - Checks for new entries to the changelog on the remote mirror. This can be useful in a cron script to notify the system administrator of new patches.
--   `slackpkg update` - Downloads updates to the Slackware changelog and file lists. This check is useful for finding security updates, and must be run before attempting to download updated software.
--   `slackpkg install-new` - Looks for new packages. While rarely useful on a static release, this command should be run before others on machines running the current development release or when upgrading to a new release.
--   `slackpkg install package-name(s)` - Looks for any packages matching the name given, and presents the user with a menu allowing the choice of installation. Note that all commands accepting a package name will also work with Slackware installation series, such as ap, d, or xap.
--   `slackpkg upgrade-all` - Presents the user with a menu listing all packages on the remote mirror that do not match the versions currently installed on your system. While this will generally result in upgrades, outdated software can sometimes be listed as an upgrade, such as when changing to an outdated mirror, or using self-built packages to replace standard Slackware packages. One common area this occurs is using alienBOB's multilib glibc packages on Slackware 64-bit. Upon choosing and confirmation of upgrades, the chosen packages will be downloaded and upgraded.
--   `slackpkg upgrade package-name(s)` - Searches for any packages matching the name given, and presents a menu to allow upgrades.
--   `slackpkg clean-system` - Presents a menu listing all packages on the local system that are not present on upstream mirrors. This includes self-built packages, packages installed from a third-party source, and packages that were once included in Slackware, but have since been removed.
--   `slackpkg remove package-name(s)` - Attempts to find any installed packages matching the name given, and presents the user with a menu allowing the choice of removal.
--   `slackpkg reinstall package-name(s)` - Reinstalls the given package. This is useful if certain files in that package have been corrupted.
--   `slackpkg search package-name(s)` - Searches for the given package name, and displays matching packages as well as installation status.
--   `slackpkg file-search filename` - Searches installed and remote package descriptions for the given filename, and displays matching packages as well as installation status.
--   `slackpkg blacklist package-name(s)` - Adds the given package to the blacklist located in `/etc/slackpkg/blacklist`. Blacklisted packages will not be installed, upgraded, or removed by slackpkg.
--   `slackpkg info package-name(s)` - Displays standard information about the given package.
+| Command | Description |
+| -- | -- |
+| `slackpkg check-updates` | Checks for new entries to the changelog on the remote mirror. This can be useful in a cron script to notify the system administrator of new patches. |
+| `slackpkg update` | Downloads updates to the Slackware changelog and file lists. This check is useful for finding security updates, and must be run before attempting to download updated software. |
+| `slackpkg install-new` | Looks for new packages. While rarely useful on a static release, this command should be run before others on machines running the current development release or when upgrading to a new release. |
+| `slackpkg install [package]` | Looks for any packages matching the name given, and presents the user with a menu allowing the choice of installation. Note that all commands accepting a package name will also work with Slackware installation series, such as ap, d, or xap. |
+| `slackpkg upgrade-all` | Presents the user with a menu listing all packages on the remote mirror that do not match the versions currently installed on your system. While this will generally result in upgrades, outdated software can sometimes be listed as an upgrade, such as when changing to an outdated mirror, or using self-built packages to replace standard Slackware packages. One common area this occurs is using alienBOB's multilib glibc packages on Slackware 64-bit. Upon choosing and confirmation of upgrades, the chosen packages will be downloaded and upgraded. |
+| `slackpkg upgrade [package]` | Searches for any packages matching the name given, and presents a menu to allow upgrades. |
+| `slackpkg clean-system` | Presents a menu listing all packages on the local system that are not present on upstream mirrors. This includes self-built packages, packages installed from a third-party source, and packages that were once included in Slackware, but have since been removed. |
+| `slackpkg remove [package]` | Attempts to find any installed packages matching the name given, and presents the user with a menu allowing the choice of removal. |
+| `slackpkg reinstall [package]` | Reinstalls the given package. This is useful if certain files in that package have been corrupted. |
+| `slackpkg search [package]` | Searches for the given package name, and displays matching packages as well as installation status. |
+| `slackpkg file-search filename` | Searches installed and remote package descriptions for the given filename, and displays matching packages as well as installation status. |
+| `slackpkg blacklist [package]` | Adds the given package to the blacklist located in `/etc/slackpkg/blacklist`. Blacklisted packages will not be installed, upgraded, or removed by slackpkg. |
+| `slackpkg info [package]` | Displays standard information about the given package. |
 
 ### SlackBuilds, sbopkg, and Third-Party Packages
 

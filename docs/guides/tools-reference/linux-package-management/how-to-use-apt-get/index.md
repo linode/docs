@@ -17,20 +17,22 @@ h1_title: "Using the APT Package Manager"
 enable_h1: true
 ---
 
-*Advanced Package Tool*, more commonly known as **APT**, is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to **dpkg** for installing, updating, and managing `.deb` packages. APT includes a collection of command-line tools, including `apt-get`, `apt-cache`, and the newer `apt`.
+*Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.
 
-This guide aims to familiarize you with the APT commands you are most likely to encounter. The commands and examples used throughout this guide default to using the `apt` command. Many of the commands interchangeable with either `apt-get` or `apt-cache`, though there may be breaking differences.
+Most distributions that use APT also include a collection of command-line tools that can be used to interface with APT. These tools include `apt-get`, `apt-cache`, and the newer `apt`, which essentially combines both of the previous tools with some modified functionality. Other package managers and tools also exist for interacting with APT or dpkg. A popular one is called [Aptitude](https://en.wikipedia.org/wiki/Aptitude_(software)). Aptitude includes both a command-line interface as well as an interactive user interface. While it does offer advanced functionality, it is not commonly installed by default and is not covered in this guide.
 
-Other package managers and tools also exist for interacting with APT or dpkg. A popular one is called Aptitude, which is discussed within the guide [How to Use Aptitude]().
+This guide aims to walk you through using APT and its command-line tools to perform common functions related to package management. The commands and examples used throughout this guide default to using the `apt` command. Many of the commands interchangeable with either `apt-get` or `apt-cache`, though there may be breaking differences.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+Before running the commands within this guide, you will need:
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. **A server running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Getting Started](/docs/getting-started/) if you do not yet have a server.
+
+1. **Login credentials to the server** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the server through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## What's the difference between `apt` and `apt-get`/`apt-cache`?
@@ -38,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 While there are more similarities than differences, there are a few important points to consider when decided which command to use.
 
 - [`apt`](http://manpages.ubuntu.com/manpages/impish/en/man8/apt.8.html): An end-user tool that has much of the same functionality as `apt-get`, `apt-cache`, and other APT command-line tools. The output is specifically formatted for enhanced human readability. This is the recommended front-end for interacting with APT as a user. See [apt Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt.8.html)
-- `apt-get`: A lower-level tool (compared to `apt`) that manages packages. The commands will almost certainly remain the same and, if different functionality is developed, it will be added in through the use of options/parameters. The output is also optimized for machine readability. Using this is recommended when writing scripts. See [apt-get Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-get.8.html)
+- `apt-get`: Manages the installation, upgrades, and removal of packages and their dependencies. The existing parameters, arguments, and functionality for `apt-get` shouldn't ever change. The output is works well for machine readability. Using this is recommended when writing scripts. See [apt-get Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-get.8.html)
 - `apt-cache` A lower-level tool (compared to `apt`) for searching through packages and outputting information about packages. Using this is recommended when writing scripts. See [apt-cache Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-cache.8.html).
 
 In short, `apt` is a single tool that encompasses most of the functionality of other APT-specific tooling. It is designed primarily for interacting with APT as an end-user and its default functionality may change to include new features or best practices. If you prefer not to risk breaking compatibility and/or prefer to interact with plainer output, `apt-get` and `apt-cache` can be used instead, though the exact commands may vary.
@@ -47,7 +49,7 @@ In short, `apt` is a single tool that encompasses most of the functionality of o
 
 Installs the specified package and all required dependencies. Replace *[package]* with the name of the package you wish to install. The `apt install` command is interchangeable with `apt-get install`.
 
-    apt install [package]
+    sudo apt install [package]
 
 **Before installing packages**, it's highly recommended to obtain updated package version and dependency information and upgrade packages and dependencies to those latest version. See [Updating Package Information](#updating-package-information) and [Upgrading Packages](#upgrading-packages) for more details. These actions can be performed quickly by running the following sequence of commands:
 
@@ -57,17 +59,17 @@ Additional options, commands, and notes:
 
 -   **Install a specific version** by adding an equal sign after the package, followed by the version number you'd like to install.
 
-        apt install [package]=[version]
+        sudo apt install [package]=[version]
 
 -   **Reinstall a package** and any dependencies by running the following command. This is useful if an installation for a package becomes corrupt or dependencies were somehow removed.
 
-        apt reinstall [package]
+        sudo apt reinstall [package]
 
 ## Updating Package Information
 
 Downloads package information from all the sources/repositories configured on your system (within `/etc/apt/sources.list`). This command obtains details about the latest version for all available packages as well as their dependencies. It should be the first step before installing or upgrading packages on your system.
 
-    apt update
+    sudo apt update
 
 This command is equivalent to `apt-get update`.
 
@@ -75,7 +77,7 @@ This command is equivalent to `apt-get update`.
 
 Upgrades all packages to their latest versions, including upgrading existing dependencies and installing new ones. It's important to note that the currently installed versions are not removed and will remain on your system.
 
-    apt upgrade
+    sudo apt upgrade
 
 This command is equivalent to `apt-get upgrade --with-new-pkgs`. Without the `--with-new-pkgs` option, the `apt-get upgrade` command only upgrades existing packages/dependencies and ignores any packages that require new dependencies to be installed.
 
@@ -91,7 +93,7 @@ Additional options, commands, and notes:
 
 -   **To upgrade a specific package,** use the `install` command and append the package name. If the package is already installed, it will be upgraded to the latest version your system knows about. To *only upgrade* (not install) a package, use the `--only-upgrade` option. In the below command, replace *[package]* with the name of the package you wish to upgrade.
 
-        apt install --only-upgrade [package]
+        sudo apt install --only-upgrade [package]
 
 -   The `apt full-upgrade` command (equivalent to `apt-get dist-upgrade`) can *remove* packages as well as upgrade and install them. In most cases, it is *not* recommended to routinely run these commands. To remove unneeded packages (including kernels), use `apt autoremove` instead.
 
@@ -99,17 +101,17 @@ Additional options, commands, and notes:
 
 Removes the specified package from the system, but retains any packages that were installed to satisfy dependencies as well as some configuration files. Replace *[package]* with the name of the package you'd like to remove.
 
-    apt remove [package]
+    sudo apt remove [package]
 
 To remove the package as well as any configuration files, run the following command. This can also be used to just remove configuration files for previously removed packages.
 
-    apt purge [package]
+    sudo apt purge [package]
 
 Both of these commands are equivalent to `apt-get remove` and `apt-get purge`, respectively.
 
 -   **To remove any unused dependencies**, run `apt autoremove` (`apt-get autoremove`). This is commonly done after uninstalling a package or after upgrading packages and can sometimes help in reducing disk space (and clutter).
 
-        apt autoremove
+        sudo apt autoremove
 
 ## Common Command Options
 
@@ -189,7 +191,7 @@ A repository is a collection of packages (typically for a specific Linux distrib
 
 Information about repositories that are configured on your system are stored within `/etc/apt/sources.list` or the directory `/etc/apt/sources.list.d/`. Repositories can be added manually by editing (or adding) a sources.list configuration file, though most repositories also require adding the GPG public key to APT's keyring. To automate this process, it's recommended to use the [add-apt-repository](http://manpages.ubuntu.com/manpages/focal/man1/add-apt-repository.1.html) utility.
 
-    add-apt-repository [repository]
+    sudo add-apt-repository [repository]
 
 Replace *[repository]* with the url to the repository or, in the case of a PPA (Personal Package Archive), the reference to that PPA.
 
@@ -203,16 +205,16 @@ If you wish to replicate the currently installed packages to another system with
 
         sudo apt install apt-clone
 
-2.  Create a backup containing a list of all installed packages, replacing *[name]* with the name of the backup (such as `my-preferred-packages`)
+1.  Create a backup containing a list of all installed packages, replacing *[name]* with the name of the backup (such as `my-preferred-packages`)
 
         apt-clone clone [name]
 
     This command creates a new file using the name provided in the last step and appending `.apt-clone.tar.gz`.
 
-3.  Copy the file to your new system. See the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide or the [File Transfer](/docs/guides/tools-reference/file-transfer/) section for more information.
+1.  Copy the file to your new system. See the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide or the [File Transfer](/docs/guides/tools-reference/file-transfer/) section for more information.
 
-4.  Install apt-clone on the new system (see Step 1).
+1.  Install apt-clone on the new system (see Step 1).
 
-5.  Using apt-clone, run the following command to restore the packages. Replace *[name]* with the name used in the previous step (or whatever the file is called). If the file is located within a different directly than your current directory, adjust the command to include the path.
+1.  Using apt-clone, run the following command to restore the packages. Replace *[name]* with the name used in the previous step (or whatever the file is called). If the file is located within a different directly than your current directory, adjust the command to include the path.
 
         sudo apt-get restore [name]p.apt-clone.tar.gz

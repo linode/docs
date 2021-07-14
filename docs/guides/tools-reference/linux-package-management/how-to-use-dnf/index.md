@@ -39,12 +39,14 @@ This guide aims to familiarize you with the DNF commands you are most likely to 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+Before running the commands within this guide, you will need:
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. **A server running on CentOS/RHEL 8, AlmaLinux 8, Rocky Linux 8, Fedora 22, or later versions of these distributions.** Other Linux distributions that employ the DNF package manager can also be used. Review the [Getting Started](/docs/getting-started/) if you do not yet have a server.
+
+1. **Login credentials to the server** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the server through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## Upgrade Packages
