@@ -138,7 +138,7 @@ Uploads a file as an object stored within the specified bucket. See [upload_file
 
 ### Examples
 
--  Upload the file "file.txt", which is located in the same directory as my python script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
+-  Upload the file "file.txt", which is located in the same directory as your python script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
 
         client.upload_file(Filename='file.txt', Bucket='example-bucket', Key='file.txt')
 
