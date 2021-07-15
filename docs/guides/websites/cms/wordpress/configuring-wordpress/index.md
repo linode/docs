@@ -1,46 +1,37 @@
 ---
 slug: configuring-wordpress
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Two to three sentences describing your guide."
-og_description: "Two to three sentences describing your guide when shared on social media."
-keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms']
-tags: ['wordpress', 'cms', 'nginx', 'web server', 'apache']
+  name: Nathaniel Stickman
+description: "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
+og_description:  "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
+keywords: ['wordpress configurations']
+tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-01
+published: 2021-07-16
 modified_by:
   name: Nathaniel Stickman
 title: "Configuring WordPress"
-h1_title: "Configure WordPress"
+h1_title: "How to Configure WordPress"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[WordPress Support: First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
-- '[WordPress Support: WordPress Widgets](https://wordpress.org/support/article/wordpress-widgets/)'
-- '[XML-RPC guide](https://codex.wordpress.org/XML-RPC_Support)'
-- '[Jetpack for Wordpress](https://jetpack.com/)'
-- '[Permalinks guide](https://codex.wordpress.org/Using_Permalinks)'
-
 ---
 
-WordPress is one of the most popular Content Management Systems (CMSs) around. It is open source and is an outstanding tool for creating your own blogging or another content-centered website.
-
-This guide walks you through several ways in which you can fine-tune your WordPress configuration beyond the basic installation. The steps in this guide should work for most Linux distributions.
+WordPress is one of the most popular Content Management Systems (CMSs) around. It is open source and is an outstanding tool for creating your own blog or any content-centered website. This guide walks you through several ways that you can fine-tune your WordPress configuration beyond the basic installation. The steps in this guide should work for most Linux distributions.
 
 If you have not already installed WordPress on your server, you can follow one of our guides below to do so:
 
 - [How to Install WordPress on Debian 10](/docs/guides/how-to-install-wordpress-debian-10/)
 - [How to Install WordPress on Ubuntu 20.04](/docs/guides/how-to-install-wordpress-ubuntu-2004/)
 - [How to Install WordPress Using WP-CLI on CentOS 8](/docs/guides/how-to-install-wordpress-using-wp-cli-on-centos-8/)
-
-You can use the **Distribution** drop downs at the top of each guide to select a different release if you need.
+- [How to Install WordPress on AlmaLinux 8](/docs/guides/how-to-install-wordpress-almalinux-8/)
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
@@ -58,7 +49,7 @@ You can use the **Distribution** drop downs at the top of each guide to select a
 
 1. This guide uses PHP version **7.4**, the minimum version required by the current WordPress release. Throughout this guide, replace the numbering in `php7.4` and `php74-php` with the numbering appropriate to your PHP version.
 
-   If you are on CentOS and did not use the Remi repository to install PHP, you may have to replace `php74-php` with simply `php` throughout this guide.
+   If you are on CentOS and did not use the Remi repository to install PHP, you may have to replace `php74-php` with `php` throughout this guide.
 
 {{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -68,37 +59,37 @@ This guide is written for non-root users. Commands that require elevated privile
 
 WordPress has several features that only become available when you have certain PHP extensions installed. These are not required but can add some useful features to your WordPress site.
 
-Each step below shows a PHP extension that can enable functionality for your WordPress site. There are many more PHP extensions, however, and many WordPress plug-ins require these extensions to function. Be sure to review the documentation for any WordPress plug-ins you want to use and install the appropriate PHP extensions as needed.
+Each step below shows a PHP extension that can enable functionality for your WordPress site. There are many more PHP extensions, however, and many WordPress plugins require these extensions to function. Be sure to review the documentation for any WordPress plugins you want to use and install the appropriate PHP extensions as needed.
 
 1. Install the `php-gd` extension if you want to be able to modify images within WordPress.
 
-    - On Debian and Ubuntu, use:
+    - On Debian and Ubuntu, use the following command:
 
             sudo apt install php7.4-gd
 
-    - On CentOS, use:
+    - On CentOS, use the following command:
 
             sudo yum install php74-php-gd
 
-    Having this extension allows you to do things like crop uploaded images from within WordPress.
+    This extension allows you to do things like crop uploaded images from within WordPress.
 
 1. Install the `php-mbstring` extension to add support for languages other than English and to fix certain character-encoding issues.
 
-    - On Debian and Ubuntu, use:
+    - On Debian and Ubuntu, use the command below:
 
             sudo apt install php7.4-mbstring
 
-    - On CentOS, use:
+    - On CentOS, use the following command:
 
             sudo yum install php74-php-mbstring
 
 1. Install the `php-xmlrpc` extension to be able to use your WordPress site with the WordPress mobile application or to use Jetpack with WordPress.
 
-    - On Debian and Ubuntu, use:
+    - On Debian and Ubuntu, use the following command:
 
             sudo apt install php7.4-xmlrpc
 
-    - On CentOS, use:
+    - On CentOS, use the command below:
 
             sudo yum install php74-php-xmlrpc
 
@@ -114,9 +105,9 @@ By default, PHP restricts web uploads to two megabytes. But you can configure PH
 
     - If you are using NGINX, you should be able to find the `php.ini` file at `/etc/php/7.4/fpm/php.ini`.
 
-    - However, if you are using CentOS, the `php.ini` file should be located at `/etc/opt/remi/php74/php.ini` if you installed PHP from the Remi repository. If you did not use the Remi repository, the `php.ini` file should be located at `/etc/php.ini`.
+    - However, if you are using CentOS and installed PHP from the Remi repository, the `php.ini` file should be located at `/etc/opt/remi/php74/php.ini`. If you did not use the Remi repository, the `php.ini` file should be located at `/etc/php.ini`.
 
-1. Find the `upload_max_filesize` variable in the file, and modify its value as needed. If you cannot find the variable, you can add it.
+1. Find the `upload_max_filesize` variable in the file and modify its value as needed. If you cannot find the variable, you can add it.
 
     {{< file "php.ini" >}}
 ; Maximum allowed size for uploaded files.
@@ -136,11 +127,11 @@ post_max_size = 8M
 
 1. Restart PHP.
 
-    - If you are using Apache, use the below command:
+    - If you are using Apache, use the command below:
 
             sudo systemctl restart php7.4
 
-    - If you are using NGINX, use the below command:
+    - If you are using NGINX, use the following command:
 
             sudo systemctl restart php7.4-fpm
 
@@ -152,9 +143,7 @@ post_max_size = 8M
 
 ## Configure WordPress's Permalinks
 
-Permalinks — a combination of "permanent" and "hyperlink" — provide your pages with persistent URLs, making it easier for users to link to specific pages. By default, WordPress uses a number system for permalinks. For example, a page might have the URL `example.com/?p=42`. However, you may want your WordPress site to have "prettier" — more readable — permalinks. Thankfully, you can achieve this easily with a setting on your WordPress dashboard and some changes in your web server's configuration.
-
-You can find more information on WordPress's permalinks in the WordPress [Permalinks guide](https://codex.wordpress.org/Using_Permalinks).
+Permalinks — a combination of "permanent" and "hyperlink" — provide your pages with persistent URLs, making it easier for users to link to specific pages. By default, WordPress uses a number system for permalinks. For example, a page might have the URL `example.com/?p=42`. However, you may want your WordPress site to have "prettier" — more readable — permalinks. Thankfully, you can achieve this easily with a setting on your WordPress dashboard and some changes in your web server's configuration. You can find more information on WordPress's permalinks in the WordPress [Permalinks guide](https://codex.wordpress.org/Using_Permalinks).
 
 ### Select a Permalink Style in WordPress
 
@@ -166,7 +155,7 @@ You can find more information on WordPress's permalinks in the WordPress [Permal
 
 1. Either select a permalink style from the existing options or create your own style using the **Custom Structure** option. Click **Save Changes** once you have made your selection.
 
-1. Follow the appropriate section below, depending on your web server, to enable permalink styling change.
+1. To enable permalink styling change, follow the appropriate section for your web server, below.
 
 ### Enable Permalink Styling in Apache
 
