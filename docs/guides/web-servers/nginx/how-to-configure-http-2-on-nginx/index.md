@@ -1,14 +1,13 @@
 ---
 slug: how-to-configure-http-2-on-nginx
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide explains how to configure, use, and test HTTP/2 on an NGINX server.'
-og_description: 'This guide explains how to configure, use, and test HTTP/2 on an NGINX server.'
-keywords: ['HTTP','HTTP/2','NGINX','configuration']
-tags: ['http', 'web server', 'nginx']
+  name: Jeff Novotny
+description: 'This guide explains how to configure, use, and test HTTP/2 on an NGINX server. HTTP version 2 supersedes and replaces HTTP/1.1. HTTP/2 is best thought of as an extension rather than a wholesale overhaul of HTTP/1.1'
+og_description: 'This guide explains how to configure, use, and test HTTP/2 on an NGINX server. HTTP version 2 supersedes and replaces HTTP/1.1. HTTP/2 is best thought of as an extension rather than a wholesale overhaul of HTTP/1.1'
+keywords: ['nginx http2']
+tags: ['web server', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-04
+published: 2021-07-16
 modified_by:
   name: Linode
 title: "How to Configure HTTP/2 on NGINX"
@@ -17,26 +16,9 @@ enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
-external_resources:
-- '[HTTP/2 Wikipedia Page](https://en.wikipedia.org/wiki/HTTP/2)'
-- '[NGINX](hhttps://www.nginx.com/)'
-- "[Let's Encrypt](https://letsencrypt.org/)"
-- '[Certbot](https://certbot.eff.org/)'
 ---
 
-[*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) updates the original *Hypertext Transfer Protocol* (HTTP) specification to offer improvements in efficiency and latency. The new version includes several other new features while maintaining compatibility with older browsers. Due to the clear advantages of HTTP/2, web servers should be upgraded to use the new version. This guide explains how to configure, use, and test HTTP/2 with an [*NGINX*](https://www.nginx.com/) server.
-
-## Understanding HTTP/2
-
-The majority of the most popular websites have now adopted HTTP/2. It is supported by all major browsers and is considered to be the current standard. Due to optimizations in how data is transmitted, HTTP/2 significantly improves speed and latency. Its major changes are internal, dealing with transport and framing, so users are not required to make any adjustments. Clients and servers can negotiate whether to use HTTP/2 or fall back to the previous version. HTTP/2 continues to use the same fields, format, and status codes as before, and still works with the *Transport Control Protocol* (TCP). Most clients cannot use HTTP/2 without data encryption, so in practice, *Hypertext Transfer Protocol Secure* (HTTPS) is required for all transactions.
-
-HTTP/2 introduces the concept of streams, which are bidirectional data flows. Streams allow messages to be multiplexed, reducing the likelihood of head-of-line blocking problems. This issue arises when a delayed or missing packet blocks the receipt of subsequent packets. A single connection contains multiple streams, which collectively transport the HTTP messages. Each message is transmitted as a series of frames, while each frame maps back to its parent stream.
-
-The other new HTTP/2 features improve speed and reliability. *Data compression of headers* reduces the amount of header metadata by over 80%. The *server push* feature permits the webserver to pro-actively send client resources based on the full contents of the web page. The client does not have to request these elements and can choose to reject them. This function cuts out several intermediate steps and speeds up the rendering of web pages. *Message prioritization* permits a client to mark pending requests as urgent or indicate dependencies between streams. Devices can implement their own version of a credit-based *flow control* based on the infrastructure that HTTP/2 provides.
-
-Upgrading a web server to HTTP/2 allows clients to benefit from performance improvements, decreased latency, and data compression. Because the number of connections is reduced, web servers running HTTP/2 use less memory and allocate fewer resources. In addition, fewer resource-intensive HTTPS negotiations and handshakes are initiated.
-
-Linode's [An Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2) guide provides additional background information on the protocol.
+[*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) updates the original *Hypertext Transfer Protocol* (HTTP) specification to offer improvements in efficiency and latency. The new version includes several other new features while maintaining compatibility with older browsers. Due to the clear advantages of HTTP/2, web servers should be upgraded to use the new version. This guide explains how to configure, use, and test HTTP/2 with an [*NGINX*](https://www.nginx.com/) server. For a deep-dive into the HTTP/2 protocol see our [An Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2) guide.
 
 ## Before You Begin
 
@@ -48,13 +30,13 @@ Linode's [An Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2) gui
 
         sudo apt-get update && sudo apt-get upgrade
 
-1. Ensure you possess a Fully Qualified Domain Name for the website. The DNS records for the site must point to the Linode server.
+1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## A Summary of the HTTP/2 on NGINX Configuration Process
+## A Summary of the NGINX and HTTP/2 Configuration Process
 
 The following high-level steps are necessary to configure HTTP/2 on NGINX. These instructions are designed for Ubuntu but are generally applicable for all Linux distributions.
 
@@ -173,13 +155,3 @@ To confirm HTTP/2 is operating properly, visit the website and inspect the HTTP 
 
     [![Developer panel in Firefox](developer-panel_small.png)](developer-panel.png)
 1. Review the information listed under the **Headers** tab. If HTTP/2 is working, the `Status` indicates `OK` and the `version` is `HTTP/2`. If the version is still `HTTP 1`, review the previous instructions and ensure HTTP/2 is properly configured.
-
-## More Information on HTTP/2
-
-To learn more about the HTTP/2 protocol, consult the following resources.
-
-- [Linode's Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2)
-- [The IETF RFC 7540 on HTTP/2](https://tools.ietf.org/html/rfc7540)
-- [An HTTP/2 introduction on the google developers site](https://developers.google.com/web/fundamentals/performance/http2)
-- [A chapter on HTTP/2 from the O'Reilly guide](https://hpbn.co/http2/)
-- [The HTTP/2 Wikipedia page](https://en.wikipedia.org/wiki/HTTP/2)
