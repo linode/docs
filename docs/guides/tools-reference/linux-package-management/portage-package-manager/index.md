@@ -3,9 +3,9 @@ slug: portage-package-manager
 author:
   name: Linode
   email: docs@linode.com
-description: ""
-og_description: ""
-keywords: ['gentoo']
+description: "Portage is the default package manager on Gentoo Linux. This guide walks you through the core features of Portage and common commands for using Portage to install, upgrade, and remove packages."
+og_description: "Portage is the default package manager on Gentoo Linux. This guide walks you through the core features of Portage and common commands for using Portage to install, upgrade, and remove packages."
+keywords: ['gentoo', 'portage', 'emerge', package manager']
 tags: ['gentoo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15

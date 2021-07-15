@@ -3,8 +3,8 @@ slug: pacman-package-manager
 author:
   name: Linode
   email: docs@linode.com
-description: ""
-og_description: ""
+description: "Pacman is the default package manager on Arched-based Linux distributions. This guide walks you through the core features of Pacman and common commands for using Pacman to install, upgrade, and remove packages."
+og_description: "Pacman is the default package manager on Arched-based Linux distributions. This guide walks you through the core features of Pacman and common commands for using Pacman to install, upgrade, and remove packages."
 keywords: ['arch','manjaro','package manager']
 tags: ['arch', 'manjaro']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

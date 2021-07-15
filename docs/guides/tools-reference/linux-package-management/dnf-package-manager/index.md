@@ -3,8 +3,8 @@ slug: dnf-package-manager
 author:
   name: Linode Community
   email: docs@linode.com
-description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). DNF gives users an efficient tool for managing packages. This guide familiarizes you with DNF to get you started with its most commonly used features."
-og_description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). DNF gives users an efficient tool for managing packages. This guide familiarizes you with DNF to get you started with its most commonly used features."
+description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). This guide walks you through the core features of DNF and common commands for using DNF to install, upgrade, and remove packages."
+og_description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). This guide walks you through the core features of DNF and common commands for using DNF to install, upgrade, and remove packages."
 keywords: ['dnf','installing','updating','upgrading','uninstalling','removing','package repositories','fedora']
 tags: ['yum','dnf','centos','fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

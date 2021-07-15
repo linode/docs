@@ -3,8 +3,8 @@ slug: yum-package-manager
 author:
   name: Linode Community
   email: docs@linode.com
-description: "YUM is the default package manager on CentOS and provides an easy-to-use tool for managing your packages. This guide familiarizes you with YUM's capabilities and gets you started with its most commonly used features."
-og_description: "YUM is the default package manager on CentOS and provides an easy-to-use tool for managing your packages. This guide familiarizes you with YUM's capabilities and gets you started with its most commonly used features."
+description: "YUM is the default package manager on RHEL 7, CentOS 7, and Fedora 21 (and earlier). This guide walks you through the core features of YUM and common commands for using YUM to install, upgrade, and remove packages."
+og_description: "YUM is the default package manager on RHEL 7, CentOS 7, and Fedora 21 (and earlier). This guide walks you through the core features of YUM and common commands for using YUM to install, upgrade, and remove packages."
 keywords: ['yum','installing','updating','upgrading','uninstalling','removing','package repositories','centos']
 tags: ['yum',centos',]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
