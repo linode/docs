@@ -1,14 +1,13 @@
 ---
 slug: how-to-configure-http-2-on-apache
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test it is working.'
-og_description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test it is working.'
-keywords: ['HTTP','HTTP/2','Apache','Configuration']
-tags: ['http', 'web server', 'apache', 'linux']
+  name: Jeff Novotny
+description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test that it is working.'
+og_description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test that it is working.'
+keywords: ['apache https']
+tags: ['web server', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-30
+published: 2021-07-16
 modified_by:
   name: Linode
 title: "How to Configure HTTP/2 on Apache"
@@ -17,12 +16,6 @@ enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
-external_resources:
-- '[HTTP/2 Wikipedia Page](https://en.wikipedia.org/wiki/HTTP/2)'
-- '[Transmission Control Protocol Wikipedia Page](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)'
-- '[Apache](https://httpd.apache.org/)'
-- "[Let's Encrypt](https://letsencrypt.org/)"
-- '[Certbot](https://certbot.eff.org/)'
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) is an update to the original [*Hypertext Transfer Protocol*](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) specification offering improvements in efficiency and latency. The new version, which adds several useful features, is compatible with browsers that only support HTTP/1. HTTP/2 has many advantages and no significant drawbacks, so upgrading to the new version is recommended. This guide explains how to configure and use HTTP/2 on an Apache server and how to test it is working.
@@ -30,12 +23,6 @@ external_resources:
 ## Understanding HTTP/2
 
 HTTP/2 is supported by the majority of the most popular websites and is considered the current standard. It dramatically improves speed and latency due to optimizations in how data is transmitted. However, most of the changes are internal, and users do not have to make any adjustments. HTTP/2 still uses the same fields, format, and status codes, and serves the same function as the original HTTP service. It continues to use [*Transmission Control Protocol*](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) (TCP) for the transport layer and supports all contemporary browsers, web servers, and proxies. A negotiation mechanism helps the client and server elect whether to use HTTP/2 or fall back to HTTP/1.1. Most clients require data encryption whenever HTTP/2 is used. This means HTTPS is the de facto standard in HTTP/2.
-
-HTTP/2 supports streams, which are bidirectional data flows that allow messages to be multiplexed. Multiplexing reduces the likelihood of head-of-line blocking problems. This happens when a delayed or missing packet blocks subsequent packets. A single connection contains multiple streams, and each stream transports a series of HTTP/2 requests and responses. Each message is composed of a series of frames that map back to the parent stream.
-
-HTTP/2 adds a cluster of new features to improve speed and reliability. *Data compression of headers* reduces the request and response header metadata by over 80%. *Server push* permits the webserver to pre-emptively transmit resources before the client requests them. This speeds up the rendering of web pages because the browser no longer has to examine the web page code and make the additional requests. HTTP/2 allows a client to prioritize pending requests or mark a stream as being dependent on another stream. Finally, it provides clients and servers with the ability to implement *flow control* according to their own specifications.
-
-You should upgrade to HTTP/2 because both the client and the server benefit from the performance improvements, decreased latency, and reduced metadata overhead. Fewer connections are initiated, which significantly diminishes the demand for memory and resources on the server-side. The demands of HTTPS negotiations are lessened because fewer negotiations and handshakes are required.
 
 For more comprehensive information and a collection of resources about HTTP/2, see Linode's [An Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2) guide.
 
@@ -66,7 +53,7 @@ The following high-level steps are involved in configuring HTTP/2 on [*Apache*](
 
 ### Install Apache
 
-Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](/docs/guides/how-to-configure-http-2-on-apache/#installing-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics) guide.
+Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics) guide.
 
 {{< note >}}
 HTTP/2 support requires Apache version 2.4.17 or higher.
@@ -76,32 +63,39 @@ HTTP/2 support requires Apache version 2.4.17 or higher.
 
         sudo apt-get update
         sudo apt-get upgrade
+
 1. Install the `apache2` package.
 
         sudo apt install apache2
+
 1. Verify Apache is active using `systemctl`.
 
         systemctl status apache2
+
     {{< output >}}
 apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2021-05-04 13:01:06 UTC; 50s ago
     {{< /output >}}
+
 1. (**Optional**) To configure Apache so it does not launch automatically whenever the server reboots, disable the entry in `systemctl`. To configure it to activate on reboot again, use the `systemctl enable` command.
 
         systemctl disable apache2
+
 1. Configure the `ufw` firewall to enhance security. Allow `ufw` to accept `OpenSSH` and `Apache Full` connections. `Apache Full` allows both HTTP and HTTPS requests through.
 
         sudo ufw allow OpenSSH
         sudo ufw allow 'Apache Full'
+
 1. Enable `ufw`.
 
         sudo ufw enable
+
 1. Confirm the webserver is working. Type the address of the Linode server into the address bar of the browser. If Apache is working properly, the browser displays the default Apache landing page. The connection is still using HTTP/1.1 at this point.
 
 ### Install the Necessary PHP Components
 
-To properly configure Apache, upgrade some `php` modules so they are compatible with HTTP/2.
+To properly configure Apache, you need to upgrade some of your system's `php` modules so they are compatible with HTTP/2.
 
 1. Install the `php7.4-fpm` module. Disable the older version of this module and enable the new one.
 
@@ -161,7 +155,7 @@ Most clients only support HTTP/2 if encryption is enabled, so HTTPS must be enab
 
 [*Let's Encrypt*](https://letsencrypt.org/) allows website owners to easily generate certificates. The [*Certbot*](https://certbot.eff.org/) tool automates the entire certificate-granting operation. It identifies all of the relevant domains and manages the challenge requests and the granting process. It also makes all necessary changes to the Apache configuration.
 
-Install Certbot using the `snap` utility. Snap is already pre-installed on Ubuntu.
+Install Certbot using the `snap` utility. Snap is pre-installed on Ubuntu.
 
 1. Run the following commands to update Snap. Verify the current version.
 
@@ -216,13 +210,3 @@ To confirm Apache is using HTTP/2, visit the website using any browser, and use 
 
     [![Developer panel in Firefox](developer-panel_small.png)](developer-panel.png)
 1. If HTTP/2 is working, the `Status` reads `OK` and the version is `HTTP/2`.
-
-## More Information on HTTP/2
-
-More resources on HTTP/2 are available for those who want to learn more about the protocol.
-
-- [Linode's Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2)
-- [The IETF RFC 7540 on HTTP/2](https://tools.ietf.org/html/rfc7540)
-- [An HTTP/2 introduction on the google developers site](https://developers.google.com/web/fundamentals/performance/http2)
-- [The chapter on HTTP/2 from the O'Reilly guide](https://hpbn.co/http2/)
-- [The HTTP/2 Wikipedia page](https://en.wikipedia.org/wiki/HTTP/2)
