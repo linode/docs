@@ -7,7 +7,7 @@ og_description: 'This guide provides a brief introduction to HTTP/2, compares it
 keywords: ['http2 vs http1']
 tags: ['web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-04-27
+published: 2021-07-16
 modified_by:
   name: Linode
 title: "HTTP/2 vs. HTTP/1.1: Why You Should Use HTTP/2"
