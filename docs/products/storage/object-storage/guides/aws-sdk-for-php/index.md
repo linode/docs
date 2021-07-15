@@ -155,7 +155,7 @@ Uploads a file as an object stored within the specified bucket. See [putObject()
 
 ### Examples
 
--  Upload the file "file.txt", which is located in the same directory as my python script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
+-  Upload the file "file.txt", which is located in the same directory as your PHP script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
 
         $client->putObject(['Bucket'=>'example-bucket','Key'=>'file.txt','SourceFile'=>'file.txt']);
 
@@ -181,7 +181,7 @@ Downloads the specified object to a new file on your system. See [getObject()](h
 
 ### Example
 
-Download the object "file.txt", stored within the bucket called "example-bucket", to a new file called "file.txt" in the same folder as your python script.
+Download the object "file.txt", stored within the bucket called "example-bucket", to a new file called "file.txt" in the same folder as your PHP script.
 
     $client->getObject(['Bucket' => 'example-bucket','Key' => 'file.txt', 'SaveAs' => 'file.txt']);
 
@@ -207,4 +207,4 @@ Delete the object "file.txt", stored within the bucket called "example-bucket":
 
 ## Going Further
 
-Extensive documentation on the S3 Client for the AWS SDK for Python (including more methods, parameters, and examples) can be found within the [AWS SDK for PHP (API 3.x) > S3 Client](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html).
+Extensive documentation on the S3 Client for the AWS SDK for PHP (including more methods, parameters, and examples) can be found within the [AWS SDK for PHP (API 3.x) > S3 Client](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html).
