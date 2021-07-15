@@ -173,6 +173,7 @@ changelogs
 changeme
 changeset
 characterwise
+chatbots
 chatrooms
 cheatsheet
 checksummed
@@ -1514,6 +1515,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+telecom
 tensorflow
 terrahelp
 terraria
