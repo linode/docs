@@ -24,7 +24,7 @@ contributor:
 
 HTTP/2 is supported by the majority of the most popular websites and is considered the current standard. It dramatically improves speed and latency due to optimizations in how data is transmitted. However, most of the changes are internal, and users do not have to make any adjustments. HTTP/2 still uses the same fields, format, and status codes, and serves the same function as the original HTTP service. It continues to use [*Transmission Control Protocol*](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) (TCP) for the transport layer and supports all contemporary browsers, web servers, and proxies. A negotiation mechanism helps the client and server elect whether to use HTTP/2 or fall back to HTTP/1.1. Most clients require data encryption whenever HTTP/2 is used. This means HTTPS is the de facto standard in HTTP/2.
 
-For more comprehensive information and a collection of resources about HTTP/2, see Linode's [An Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2) guide.
+For more comprehensive information and a collection of resources about HTTP/2, see our [An Introduction to HTTP/2](/docs/guides/an-introduction-to-http-2) guide.
 
 ## Before You Begin
 
@@ -36,7 +36,7 @@ For more comprehensive information and a collection of resources about HTTP/2, s
 
         sudo apt-get update && sudo apt-get upgrade
 
-1. Ensure you possess a Fully Qualified Domain Name for the website. The DNS records for the site must point to the Linode server.
+1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
