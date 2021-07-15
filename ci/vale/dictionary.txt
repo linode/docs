@@ -383,8 +383,9 @@ dvcs
 e2fsck
 ea04
 ead
-ecommerce
 ebtables
+ebuild
+ecommerce
 ecute
 edu
 efi
