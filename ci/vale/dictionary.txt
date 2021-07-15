@@ -87,6 +87,7 @@ autovacuum
 auxprop
 avz
 awk
+aws
 awstats
 azc
 backdoors
