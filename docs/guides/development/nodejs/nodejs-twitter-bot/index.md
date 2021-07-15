@@ -384,9 +384,10 @@ if (process.env.NODE_ENV === "develop") {
 //rules for node-schedule
 var schedule = require("node-schedule");
 var rule = new schedule.RecurrenceRule();
-  rule.dayOfWeek = 1,
-  rule.hour = 10;
-  rule.tz = "Etc/GMT+4";
+rule.dayOfWeek = 1,
+rule.hour = 10;
+rule.minute = 0;
+rule.tz = "Etc/GMT+4";
 
 //array to pull soundtracks from
 var soundtrackArray = [
