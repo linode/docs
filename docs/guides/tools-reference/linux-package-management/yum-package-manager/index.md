@@ -1,5 +1,5 @@
 ---
-slug: how-to-use-yum
+slug: yum-package-manager
 author:
   name: Linode Community
   email: docs@linode.com
@@ -9,12 +9,13 @@ keywords: ['yum','installing','updating','upgrading','uninstalling','removing','
 tags: ['yum',centos',]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
-modified: 2021-06-01
+modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Use the YUM Package Manager"
-h1_title: "Using the YUM Package Manager"
+title: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
+h1_title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 enable_h1: true
+aliases: ['/guides/how-to-use-yum/']
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -30,9 +31,9 @@ This guide aims to familiarize you with the YUM commands you are most likely to 
 
 Before running the commands within this guide, you will need:
 
-1. **A server running on CentOS/RHEL 7, Fedora 21, or earlier versions of either distribution.** Other Linux distributions that employ the YUM package manager can also be used. Review the [Getting Started](/docs/getting-started/) if you do not yet have a server.
+1. **A system running on CentOS/RHEL 7, Fedora 21, or earlier versions of either distribution.** Other Linux distributions that employ the YUM package manager can also be used. Review the [Getting Started](/docs/getting-started/) if you do not yet have a compatible system.
 
-1. **Login credentials to the server** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the server through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
