@@ -7,7 +7,7 @@ description: 'Learn about DNS records and system structure.'
 keywords: ["dns", "record", "domain", "resolution"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/dns-records-an-introduction/','/networking/dns/introduction-to-dns-records/','/dns-guides/introduction-to-dns-records/','/dns-guides/introduction-to-dns/']
-modified: 2018-05-22
+modified: 2021-07-15
 modified_by:
   name: Linode
 published: 2009-07-29
