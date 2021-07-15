@@ -1,42 +1,34 @@
 ---
 slug: introducing-http-2
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'This guide provides a brief introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.'
 og_description: 'This guide provides a brief introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.'
-keywords: ['HTTP/2','HTTP','web server','comparison']
-tags: ['web server', 'http']
+keywords: ['http2 vs http1']
+tags: ['web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-27
 modified_by:
   name: Linode
-title: "Introducing HTTP/2"
+title: "HTTP/2 vs. HTTP/1.1: Why You Should Use HTTP/2"
 h1_title: "An Introduction to HTTP/2"
 enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
-external_resources:
-- '[HTTP/2 Wikipedia Entry](https://en.wikipedia.org/wiki/HTTP/2)'
-- '[Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)'
-- '[Transmission Control Protocol Wikipedia Page](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)'
-- '[SPDY Protocol Wikipedia Page](https://en.wikipedia.org/wiki/SPDY)'
-- '[HPACK Compression Format](https://tools.ietf.org/html/draft-ietf-httpbis-header-compression-12)'
-- '[QUIC Protocol Wikipedia Page](https://en.wikipedia.org/wiki/QUIC)'
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) (also known as HTTP 2) updates and expands the original Hypertext Transfer Protocol (HTTP) implementation. HTTP/2 is designed to improve throughput and latency while maintaining backward compatibility with earlier versions. Because HTTP/2 offers many advantages and no real disadvantages when compared to HTTP/1.1, web servers and clients should use the new version. This guide provides an introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.
 
 ## Understanding the HTTP/2 Protocol
 
-HTTP/2 builds on version 1.1 of the [*Hypertext Transfer Protocol*](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) in a way that is transparent to users and most developers. HTTP/2 still serves the same role, functioning as the application layer protocol that is the foundation of the internet. It continues to support all significant World Wide Web use cases, such as mobile and desktop browsers, web servers, and proxies. HTTP/2 uses the [*Transmission Control Protocol*](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) (TCP) as its transport mechanism, as the first version did.
+HTTP/2 builds on version 1.1 of the [*Hypertext Transfer Protocol*](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) in a way that is transparent to users and developers. HTTP/2 still serves the same role, functioning as the application layer protocol that is the foundation of the internet. It continues to support all significant World Wide Web use cases, such as mobile and desktop browsers, web servers, and proxies. HTTP/2 uses the [*Transmission Control Protocol*](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) (TCP) as its transport mechanism, as the first version did.
 
 HTTP/2 is derived from Google's [*SPDY protocol*](https://en.wikipedia.org/wiki/SPDY) and was fully approved in 2015. It was adopted relatively quickly by most browsers, including Firefox, Internet Explorer, Edge, Chrome, and Safari. Over 50% of the top 10 million websites currently support HTTP/2, which has already become the consensus standard.
 
 The main rationale for HTTP/2 is to increase speed and decrease latency. Many of its most significant changes involve how messages are transmitted. HTTP/2 introduces the concept of a stream, a bidirectional flow that can transmit one or more messages. This allows for the multiplexing of individual messages.
 
-The addition of multiplexed streams partially fixes some existing issues, such as the head-of-line blocking problem. This complication occurs when a delayed or missing packet blocks subsequent packets. While the new changes solve the problem at the application layer, the problem can still occur at the TCP transport level. So in some cases, multiplexing only moves the problem around. Although HTTP/2 supports both encrypted and unencrypted traffic, most clients enforce data encryption. In practical terms, this means HTTPS is the de facto standard in HTTP/2.
+The addition of multiplexed streams partially fixes some existing issues, such as the head-of-line blocking problem. This complication occurs when a delayed or missing packet blocks subsequent packets. While the new changes solve the problem at the application layer, the problem can still occur at the TCP transport level. In some cases, multiplexing only moves the problem around. Although HTTP/2 supports both encrypted and unencrypted traffic, most clients enforce data encryption. In practical terms, this means HTTPS is the de facto standard in HTTP/2.
 
 ## HTTP/1 vs HTTP/2
 
@@ -76,13 +68,8 @@ The main criticism of HTTP/2 is that it duplicates tasks TCP already handles and
 
 While HTTP/2 is widely seen as a big improvement over HTTP/1.1, the new version missed some additional opportunities for improvement. The new HTTP/3 protocol is already being rolled out to address some of these issues. As with HTTP/2, HTTP/3 maintains the same codes and fields and serves the same basic purpose. However, it replaces TCP at the transport layer with the [*QUIC protocol*](https://en.wikipedia.org/wiki/QUIC), which connects over the *User Datagram Protocol* (UDP). This enables it to implement "user-space congestion control" to work around head-of-line blocking at the lower layer. HTTP/3 implements transport multiplexing, so only the stream suffering data loss is affected when a frame is lost. Google Chrome already supports HTTP/3, which is expected to become more widely used shortly.
 
-## More Information on HTTP/2
+## Implement HTTP/2 on Apache or NGINX
 
-More in-depth resources on HTTP/2 are available for those who want to learn more about the protocol.
+More in-depth resources on HTTP/2 are available for those who want to learn more about the protocol. You can refer to our [How to Configure HTTP/2 on Apache](/docs/guides/how-to-configure-http-2-on-apache) and [NGINX](/docs/guides/how-to-configure-http-2-on-nginx) to use the protocol for your websites.
 
-- [The IETF RFC 7540 on HTTP/2](https://tools.ietf.org/html/rfc7540)
-- [An HTTP/2 introduction on the google developers site](https://developers.google.com/web/fundamentals/performance/http2)
-- [The chapter on HTTP/2 from the O'Reilly guide](https://hpbn.co/http2/)
-- [The HTTP/2 Wikipedia page](https://en.wikipedia.org/wiki/HTTP/2)
-- [The Linode guide to implementing HTTP/2 on Apache](/docs/guides/how-to-configure-http-2-on-apache)
-- [The Linode guide to implementing HTTP/2 on NGINX](/docs/guides/how-to-configure-http-2-on-nginx)
+
