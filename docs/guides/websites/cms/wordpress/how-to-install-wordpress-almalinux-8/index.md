@@ -1,12 +1,11 @@
 ---
 slug: how-to-install-wordpress-almalinux-8
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: "WordPress is an open-source content management system (CMS) widely used for blogs and similar sites. It comes with a vast library of plug-ins and community support. This guide shows you how to install WordPress on your AlmaLinux 8 server."
 og_description: "WordPress is an open-source content management system (CMS) widely used for blogs and similar sites. It comes with a vast library of plug-ins and community support. This guide shows you how to install WordPress on your AlmaLinux 8 server."
-keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms','install wordpress on almalinux 8','alma linux']
-tags: ['wordpress', 'cms', 'centos', 'ubuntu']
+keywords: ['wordpress almalinux']
+tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-05
 modified_by:
@@ -66,7 +65,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
             sudo yum config-manager --enable remi
             sudo yum update
 
-    - Install PHP **7.4**. In the following command, replace `php74-php` with `php74-php-fpm` if you are setting up a LEMP stack.
+    - Install PHP 7.4. In the following command, replace `php74-php` with `php74-php-fpm` if you are setting up a LEMP stack.
 
             sudo yum install php74-php php74-php-mysqlnd
 
@@ -124,23 +123,23 @@ location / {
 
 1. Create a MySQL database for WordPress using the following command:
 
-    {{< highlight sql >}}
-CREATE DATABASE wordpress;
-    {{< /highlight >}}
 
-1. While still logged into MySQL, create a MySQL user for WordPress, and give that user privileges for the WordPress database. In the commands below, replace `wpuser` and `password` with the username and password, respectively, that you want for your WordPress MySQL user.
+        CREATE DATABASE wordpress;
 
-    {{< highlight sql >}}
-CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
-FLUSH PRIVILEGES;
-    {{< /highlight >}}
+
+1. While still logged into MySQL, create a MySQL user for WordPress, and give that user privileges for the WordPress database. In the commands below, replace `wpuser` and `password` with the username and password that you want for your WordPress MySQL user.
+
+
+        CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'password';
+        GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
+        FLUSH PRIVILEGES;
+
 
 1. You can then use the `quit;` command to exit MySQL.
 
 ## Install WordPress
 
-1. Create a `src` directory in your website's directory, then change into that new directory. Here and following, the website directory created in the LAMP and LEMP guides linked above is used, which is `/var/www/example.com`.
+1. Create a `src` directory in your website's directory, then change into that new directory. In this section and the following sections, the website directory used is `/var/www/example.com`. This is the same website directory created in the LAMP and LEMP guides linked in the section above.
 
         sudo mkdir -p /var/www/html/example.com/src
         cd /var/www/html/example.com/src
@@ -158,7 +157,7 @@ FLUSH PRIVILEGES;
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-    Doing this, while not required, can be helpful. If, for instance, you later install a newer version but subsequently need to roll it back, you have a past version stored, and labeled here.
+    Doing this, while not required, can be helpful. For instance, if you install a newer version of WordPress but subsequently need to roll it back, you have a past version stored, and labeled here.
 
 1. Move the contents of the `src/wordpress` directory into the root directory defined in your website's configuration file. For the guides linked above, this is the `public_html` directory.
 
@@ -166,17 +165,17 @@ FLUSH PRIVILEGES;
 
 1. Give the web server user and its associated user group ownership of the website directory.
 
-    - If you are using Apache, use the below command:
+    - If you are using Apache, use the command below:
 
             sudo chown -R apache:apache /var/www/html/example.com
 
-    - If you are using NGINX, use the below command:
+    - If you are using NGINX, use the command below:
 
             sudo chown -R nginx:nginx /var/www/html/example.com
 
 ## Configure WordPress
 
-1. In a web browser, visit the domain name for your website — `example.com` above. Follow the prompts to enter information related to your WordPress website. When prompted, enter the database credentials you created when setting up the MySQL database in the steps above. Choose to **Run the installation**.
+1. In a web browser, visit the domain name for your website (i.e. `example.com`). Follow the prompts to enter information related to your WordPress website. When prompted, enter the database credentials you created when setting up the MySQL database in the steps above. Click on the **Run the installation** button to proceed.
 
     ![Page to start running the WordPress installation](wordpress-installation-page.png)
 
@@ -195,8 +194,8 @@ define('FS_METHOD', 'direct');
 
 ## Conclusion
 
-Congratulations. Your WordPress site is up and running. You can reach the site's dashboard, where you can manage its settings, by appending `/wp-admin` to the domain name. For instance, using the `example.com` domain name above—`example.com/wp-admin`.
+Your WordPress site is up and running. You can reach the site's dashboard, where you can manage its settings, by appending `/wp-admin` to the domain name. For instance, using the `example.com` domain name above, your URL looks as follows: `example.com/wp-admin`.
 
-To start learning more about getting the most out of your WordPress site, check out WordPress's [First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/). It helps you figure out how to start using and making your WordPress site your own.
+To get the most out of your WordPress site, check out WordPress's [First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)guide. It helps you figure out how to start using and customizing your WordPress site.
 
 To go beyond the basic configuration on your WordPress site, take a look at our [Configuring WordPress](/docs/guides/configuring-wordpress/) guide. It walks you through more advanced configuration options that open up new features for your WordPress installation.
