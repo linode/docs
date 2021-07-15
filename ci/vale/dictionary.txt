@@ -314,6 +314,7 @@ debconf
 declaratively
 deduplication
 defragment
+demultiplexer
 deprovisioning
 descolada
 descr
@@ -977,6 +978,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mkv
 mnesia
 mngtmpaddr
 moby
@@ -992,6 +994,7 @@ morphisec
 motd
 mountpoint
 mouseover
+mov
 mpapis
 mpm
 msg
