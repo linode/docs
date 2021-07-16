@@ -384,8 +384,9 @@ dvcs
 e2fsck
 ea04
 ead
-ecommerce
 ebtables
+ebuild
+ecommerce
 ecute
 edu
 efi
@@ -816,8 +817,6 @@ laravel
 largebiomes
 launchd
 lego
-libmodsecurity
-livigno
 lbmethod
 lda
 ldap
@@ -825,8 +824,7 @@ leiningen
 lennart
 letsencrypt
 lf
-li181
-li263
+libmodsecurity
 lib32
 libaprutil1
 libc
@@ -841,6 +839,7 @@ libsasl2
 libyang
 libuv
 libvirt
+libzypp
 lifecycle
 lightbend
 lighthttpd
@@ -857,6 +856,9 @@ lish
 listdir
 listserv
 listservs
+livigno
+li181
+li263
 lke
 lksemel
 lo0
@@ -1904,3 +1906,4 @@ zpool
 zsh
 zshrc
 zxvf
+Zypper

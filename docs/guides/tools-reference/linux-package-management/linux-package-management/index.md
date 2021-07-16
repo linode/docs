@@ -13,6 +13,8 @@ modified_by:
 published: 2009-07-16
 title: Linux Package Management
 tags: ["linux"]
+deprecated: true
+deprecated_link: 'guides/linux-package-management-overview/'
 ---
 
 Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.
