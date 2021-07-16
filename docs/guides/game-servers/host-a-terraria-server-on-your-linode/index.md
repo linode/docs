@@ -29,7 +29,7 @@ dedicated_cpu_link: true
 
 ## Does Terraria support Linux?
 
-In 2015, the Terraria developers announced [support for Linux](http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too), which means that players can host their own standalone Terraria servers.
+In 2015, the Terraria developers announced [support for Linux](https://terraria.org/#/news/terraria-1-3-0-8-now-for-mac-linux-too-), which means that players can host their own standalone Terraria servers.
 
 This guide outlines the steps required to run a Terraria server for yourself and others to play on. These steps are compatible with any Linux distribution that uses [systemd](https://www.freedesktop.org/wiki/Software/systemd/). This includes recent versions of CentOS, Debian and Ubuntu, Arch Linux and Fedora.
 
@@ -121,9 +121,9 @@ To manually configure iptables without using a controller, see our [iptables gui
 
 ## Install and Configure Terraria on Linux
 
-1.  Change your working directory to `/opt` and download the Terraria tarball. You'll need to check [Terraria's website](http://terraria.gamepedia.com/Server#How_to_.28Linux.29) for the current release version. Right-click and copy the link to use with `curl` or `wget`. We'll use 1.3.4.4 as an example in this guide:
+1.  Download the Terraria tarball. You'll need to check [Terraria's website](https://terraria.fandom.com/wiki/Server#Downloads) for the current release version. Right-click and copy the link to use with `curl` or `wget`. We'll use 1.4.2.3 as an example in this guide:
 
-        cd /opt && sudo curl -O http://terraria.org/server/terraria-server-1344.zip
+        sudo curl -O https://terraria.org/api/download/pc-dedicated-server/terraria-server-1423.zip
 
     {{< note >}}
 Before you install Terraria, be sure the version you download is the same as the clients that will be connecting to it.
@@ -139,30 +139,23 @@ Before you install Terraria, be sure the version you download is the same as the
 
         sudo yum install unzip
 
-3.  Extract the archive and set the necessary permissions:
+3.  Extract the archive:
 
-        sudo unzip terraria-server-1344.zip
-        sudo mv /opt/Dedicated\ Server/Linux /opt/terraria
-        sudo rm -rf Dedicated\ Server/
-        sudo chown -R root:root /opt/terraria
-        sudo chmod +x /opt/terraria/TerrariaServer.bin.x86_64
+        sudo unzip terraria-server-*
 
-4.  Running daemons under discrete users is a good practice. Create a `terraria` user from which to run the game server:
+4. The Terraria Server file will contain an executable that must have have execute permissions set to run the server. Enter the following command to do this:
 
-        sudo useradd -r -m -d /srv/terraria terraria
+        sudo chmod +x ~/1423/Linux/TerrariaServer.bin.x86_64
 
-5.  Terraria has a server configuration file that you can edit with options such as automatic world creation, server passwords, difficulty, [and other options](http://terraria.gamepedia.com/Server#serverconfig). Create a copy of the default file so you have something to revert back to if you run into problems:
+1.  Terraria can be set up with a server configuration file that you can edit with options such as automatic world creation, server passwords, difficulty, [and other options](http://terraria.gamepedia.com/Server#serverconfig). You can create a basic server configuration file now to configure your server before it launches.
 
-        sudo mv /opt/terraria/serverconfig.txt /opt/terraria/serverconfig.txt.bak
+The options below will automatically create and serve the world `MyWorld` when the game server starts up. Note that you should change `MyWorld` to a world name of your choice.
 
-    Create a new server configuration file for yourself. The options below will automatically create and serve `MyWorld` when the game server starts up. Note that you should change `MyWorld` to a world name of your choice.
-
-    {{< file "/opt/terraria/serverconfig.txt" ini >}}
+{{< file "/home/example_user/1423/Linux/serverconfig.txt" ini >}}
 world=/srv/terraria/Worlds/MyWorld.wld
 autocreate=1
 worldname=MyWorld
 worldpath=/srv/terraria/Worlds
-
 {{< /file >}}
 
 
@@ -186,7 +179,7 @@ Install Screen with the system's package manager:
 
 It's useful to have an automated way to start, stop, and bring up Terraria on boot. This is important if the system restarts unexpectedly.
 
-Create the following file to define the `terraria` systemd service:
+Create the following file to define the `terraria` systemd service, replacing `example_user` with your limited username:
 
 {{< file "/etc/systemd/system/terraria.service" ini >}}
 [Unit]
@@ -194,9 +187,9 @@ Description=server daemon for terraria
 
 [Service]
 Type=forking
-User=terraria
+User=root
 KillMode=none
-ExecStart=/usr/bin/screen -dmS terraria /bin/bash -c "/opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt"
+ExecStart=/usr/bin/screen -dmS terraria /bin/bash -c "/home/example_user/1423/Linux/TerrariaServer.bin.x86_64 -config /home/example_user/1423/Linux/serverconfig.txt"
 ExecStop=/usr/local/bin/terrariad exit
 
 [Install]
@@ -213,41 +206,6 @@ WantedBy=multi-user.target
 This script is intended to save your world in the event that you reboot the operating system within the Linode. It is **not** intended to save your progress if you reboot your Linode from the Linode Manager. If you must reboot your Linode, first stop the Terraria service using `sudo systemctl stop terraria`. This will save your world, and then you can reboot from the Linode Manager.
 {{< /caution >}}
 
-### Managing Terraria server with multiple instances
-
-To allow multiple instances, change the name of the file  `/etc/systemd/system/terraria.service`  to   `/etc/systemd/system/terraria@.service`.
-
-Once done, make the following edits to your file:
-
-{{< file >}}
-[Unit]
-Description="Terraria Server: %i"
-PartOf=terraria.target
-
-[Service]
-Type=forking
-User=terraria
-KillMode=none
-ExecStart=/usr/bin/screen -dmS terraria_%i -L /opt/terraria/log_%i.txt /bin/bash -c "/opt/terraria/TerrariaServer -config /opt/terraria/serverconfig_%i.txt"
-ExecStop=/usr/local/bin/terrariad %i inject exit
-
-[Install]
-WantedBy=multi-user.target
-
-Next create a file terraria.target with the path /etc/systemd/system/terraria.target.
-Edit your terraria.target file and add the following in it:
-
-[unit]
-Description="Terraria Server Instances"
-Wants=terraria@expert.service terraria2@expert.service terraria@master.service
-
-[Install]
-WantedBy=multi-user.target
-
-{{< /file >}}
-
-In the above configuration, we have two servers: expert and master.  And in the next section, we will create a single instance and multiple instance `terrariad` file to see how we can enable single/multiple instances.
-
 ### Create a Script for Basic Terraria Administration
 
 The Terraria administration script needs two primary functions:
@@ -258,20 +216,7 @@ The Terraria administration script needs two primary functions:
 1.  Create a `terrariad` file, enter the following script, then save and close:
 
     {{< file "/usr/local/bin/terrariad" >}}
-#!/usr/bin/env bash
 
-send="`printf \"$*\r\"`"
-attach='script /dev/null -qc "screen -r terraria"'
-inject="screen -S terraria -X stuff $send"
-
-if [ "$1" = "attach" ] ; then cmd="$attach" ; else cmd="$inject" ; fi
-
-if [ "`stat -c '%u' /var/run/screen/S-terraria/`" = "$UID" ]
-then
-    $cmd
-else
-    su - terraria -c "$cmd"
-fi
 
 {{< /file >}}
 
@@ -288,47 +233,6 @@ This script permits you to both:
 {{< note >}}
 Throughout the rest of this guide, you may encounter "command not found" errors when running the `terrariad` command. This may result from the directory `/usr/local/bin/` not being found in the `$PATH` when running sudo commands, which can occur with some Linux distributions. You can work around this problem by calling the script with the full path. For example, instead of running `sudo terrariad attach`, use `sudo /usr/local/bin/terrariad attach`.
 {{< /note >}}
-
-### Multiple-instance Terraria administration
-
-To set up Terraria administration to handle multiple instances, make the following changes to your `terrariad` script:
-
-        #!/usr/bin/env bash
-        instance="$1"
-        send="${*:3}"$(echo -ne '\015')
-        attach="script /dev/null -qc 'screen -r terraria_$instance'"
-        inject="screen -S terraria_$instance -X stuff $send"
-        list="script /dev/null -qc 'screen -ls |grep .terraria_'"
-
-        # if [ "$2" = "attach" ] ; then cmd="$attach" ; else cmd="$inject" ; fi
-        case "$1" in
-            list)
-                cmd="$list"
-                ;;
-            ls)
-                cmd="$list"
-                ;;
-            *)
-                case "$2" in
-                    attach)
-                        cmd="$attach"
-                        ;;
-                    inject)
-                        cmd="$inject"
-                        ;;
-                     *)
-                        cmd="echo Invalid parameter $2"
-                        ;;
-            esac
-            ;;
-        esac
-
-        if [ "`stat -c '%u' /var/run/screen/S-terraria/`" = "$UID" ]
-        then
-            "$cmd"
-        else
-            sudo su - terraria -c "$cmd"
-        fi
 
 ## Running Terraria Linux Server
 
