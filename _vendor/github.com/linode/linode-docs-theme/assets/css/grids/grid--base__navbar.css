@@ -2,7 +2,7 @@
 .grid--base #navbar {
     --num-rows: 1;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     grid-auto-rows: minmax(var(--height-navbar-row), auto);
     justify-items: end;
 }
@@ -17,23 +17,20 @@
     }
 }
 
-.grid--base #navbar__search-input {
-    grid-column-start: 2;
+.is-topbar-pinned.is-not-search-panel-open .grid--base #navbar {
+    grid-template-columns: auto 60px 1fr auto;
 }
 
-.is-topbar-pinned.is-search-input-open .grid--base #navbar__search-input {
-    @apply border-t-gray;
-    grid-row: 2;
-    grid-column: 1 / -1;
-}
-
-.no-js .grid--base #navbar__toc,
-.is-topbar-pinned.is-search-input-open .grid--base #navbar__toc {
+.is-topbar-pinned.is-not-search-panel-open .grid--base #navbar__search-input .search-input {
     display: none;
 }
 
-.no-js .grid--base #navbar__search-input,
-.is-topbar-pinned.is-not-search-input-open .grid--base #navbar__search-input {
+.is-topbar-pinned.is-search-panel-open .grid--base #navbar__breadcrumbs {
+    display: none;
+}
+
+.no-js .grid--base #navbar__toc,
+.is-topbar-pinned.is-search-input-open__TODO1 .grid--base #navbar__toc {
     display: none;
 }
 
@@ -45,10 +42,6 @@
     .is-not-topbar-pinned.is-explorer-open .grid--base #navbar__icons--left .navbar__logo {
         display: none;
     }
-}
-
-.is-topbar-pinned .grid--base #navbar__search-input {
-    @apply pl-6 m-0 bg-white;
 }
 
 @screen mobile {

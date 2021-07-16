@@ -9,10 +9,12 @@ keywords: ["prestashop", "ecommerce", "cms"]
 tags: ["cms", "lamp", "ssl", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-29
-modified: 2017-09-21
+modified: 2021-06-23
 modified_by:
   name: Linode
-title: 'How to Install PrestaShop on Ubuntu 16.04'
+title: "How to Install PrestaShop on Ubuntu 16.04"
+h1_title: "Installing PrestaShop on Ubuntu 16.04"
+enable_h1: true
 contributor:
   name: Alexandru Andrei
 aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
@@ -275,7 +277,7 @@ max_execution_time = 30
 
 Setting up mail delivery in PrestaShop is vital because so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) can be hosted on a Linode, it can be complicated to set up and maintain.
 
-It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/email/how-to-create-an-email-server-with-mail-in-a-box/), but the easiest approach is to use a dedicated solution like Google's [G Suite](https://gsuite.google.com/) or [Fastmail](https://www.fastmail.com/). This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.
+It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/email/how-to-create-an-email-server-with-mail-in-a-box/), but the easiest approach is to use a dedicated solution like [Google Workspace](/docs/guides/using-google-workspace-for-email/) or [Fastmail](https://www.fastmail.com/). This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.
 
 Once you have decided on an email provider, configure PrestaShop's email system: in the left menu, under **CONFIGURE**, hover over **Advanced Parameters** and click **E-mail** in the submenu. Once the page loads, look for **Set my own SMTP parameters (for advanced users ONLY)**.
 

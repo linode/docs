@@ -1,18 +1,18 @@
 // Configuration (search API key etc.)
 import * as params from '@params';
 // AlpineJS controllers and helpers.
-import { newSearchController, newSearchInputController, newSearchFiltersController } from './search';
+import { newSearchController, newSearchInputController, newSearchFiltersController } from './search/index';
 import {
 	newToCController,
 	newInitController,
 	newBreadcrumbsController,
 	newSearchExplorerController,
 	newNavController
-} from './navigation';
+} from './navigation/index';
 import { newHomeController } from './sections/home/home';
 import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
 import { newSectionsController } from './sections/sections/index';
-import { newOnIntersectionController } from './components/index';
+import { newOnIntersectionController, initConsentManager } from './components/index';
 import { sendEvent } from './helpers/index';
 
 // Set up the AlpineJS controllers
@@ -58,9 +58,49 @@ window.lnh = {
 		//  Alpine.listenForNewUninitializedComponentsAtRunTime()
 	};
 
-	// Hide JS-powered blocks on browsers with JavaScript disabled.
+	let turbolinksLoaded = false;
+	let pushGTag = function(eventName) {
+		let event = {
+			event: eventName
+		};
+
+		if (window._dataLayer) {
+			while (window._dataLayer.length) {
+				let obj = window._dataLayer.pop();
+				for (const [ key, value ] of Object.entries(obj)) {
+					event[key] = value;
+				}
+			}
+		}
+
+		window.dataLayer = window.dataLayer || [];
+		window.dataLayer.push(event);
+	};
+
 	document.addEventListener('turbolinks:load', function(event) {
+		// Hide JS-powered blocks on browsers with JavaScript disabled.
 		document.body.classList.remove('no-js');
+
+		// Init the TrustArc
+		initConsentManager();
+
+		if (turbolinksLoaded) {
+			// Make sure we only fire one event to GTM.
+			// The navigation events gets handled by turbolinks:render
+			return;
+		}
+		turbolinksLoaded = true;
+		setTimeout(function() {
+			pushGTag('docs_load');
+		}, 2000);
+	});
+
+	document.addEventListener('turbolinks:render', function(event) {
+		if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
+			// Turbolinks is displaying a preview
+			return;
+		}
+		pushGTag('docs_navigate');
 	});
 
 	// Prevent turbolinks from handling anchor links.
@@ -104,16 +144,17 @@ window.lnh = {
 
 function getSearchConfig(params) {
 	let cfg = params.search_config;
-	cfg.findSectionByName = function(name) {
-		return this.sections.find((s) => {
-			return s.name === name;
-		});
-	};
+
+	cfg.sectionsSorted = Object.values(cfg.sections);
+	cfg.sectionsSorted.sort((a, b) => {
+		return a.weight < b.weight ? -1 : 1;
+	});
+
 	cfg.findSectionsBySearchResults = function(results) {
 		var self = this;
 		var sections = [];
 		results.forEach((result) => {
-			let sectionConfig = self.sections.find((s) => {
+			let sectionConfig = self.sectionsSorted.find((s) => {
 				if (s.index !== result.index && s.index_by_pubdate != result.index) {
 					return false;
 				}
@@ -133,5 +174,6 @@ function getSearchConfig(params) {
 
 		return sections;
 	};
+
 	return cfg;
 }

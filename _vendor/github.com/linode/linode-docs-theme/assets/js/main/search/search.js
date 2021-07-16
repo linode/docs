@@ -106,7 +106,7 @@ export function newSearchController(searchConfig) {
 
 	const dispatcher = newDispatcher();
 	const router = newCreateHref(searchConfig);
-	const queryHandler = new QueryHandler(searchConfig.sections);
+	const queryHandler = new QueryHandler(searchConfig.sectionsSorted);
 
 	// Normalization of a search hit across the search indices.
 	const normalizeHit = function(self) {
@@ -123,6 +123,10 @@ export function newSearchController(searchConfig) {
 
 			hit.titleHighlighted =
 				hit._highlightResult && hit._highlightResult.title ? hit._highlightResult.title.value : hit.title;
+
+			hit.excerptHighlighted =
+				hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
+
 			hit.linkTitle = hit.linkTitle || hit.title;
 
 			let href;
@@ -158,13 +162,17 @@ export function newSearchController(searchConfig) {
 				}
 				return `${excerpt.substring(0, maxLen)} …`;
 			};
+
+			if (!hit.thumbnailUrl) {
+				hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
+			}
 		};
 	};
 
 	// Prepares the data structure to store the search results in.
 	const newSearchResults = function(self, blank) {
 		let sections = [];
-		for (let sectionCfg of searchConfig.sections) {
+		for (let sectionCfg of searchConfig.sectionsSorted) {
 			let searchData = {
 				name: sectionCfg.name,
 				// The main result.
@@ -180,22 +188,13 @@ export function newSearchController(searchConfig) {
 				return this.filtering_facets ? this.filtering_facets.map((facet) => facet.name) : [];
 			};
 
-			sectionCfg.titlePlural = function(count = 1) {
-				// TODO: Pull this out into the config.
-				let title = "";
-				if (this.name === 'marketplace') {
-					title = 'Marketplace App';
-				}
-				if (this.name === 'products') {
-					title = 'Product Guide';
-				} else {
-					title = this.title;
-				}
+			sectionCfg.nounPlural = function(count = 2) {
+				let noun = this.noun || this.title;
 
-				if (count === 0 || count > 1 && !title.endsWith('s')) {
-					title += 's';
+				if (count === 0 || (count > 1 && !noun.endsWith('s'))) {
+					noun += 's';
 				}
-				return title;
+				return noun;
 			};
 
 			searchData.setResult = function(result) {
@@ -288,6 +287,14 @@ export function newSearchController(searchConfig) {
 				return sections;
 			};
 
+			searchData.textHelpers = {
+				resultsIn: function() {
+					let nbHits = searchData.result.nbHits || 0;
+					let resultNoun = nbHits === 1 ? 'Result' : 'Results';
+					return `${nbHits} ${resultNoun} in ${section.config.title}`;
+				}
+			};
+
 			let section = { config: sectionCfg, searchData: searchData };
 
 			section.isEnabled = function() {
@@ -295,6 +302,12 @@ export function newSearchController(searchConfig) {
 					return false;
 				}
 				return self.query().isSectionEnabled(section.config.name);
+			};
+
+			section.hasHit = function() {
+				let nbHits =
+					this.searchData.result && this.searchData.result.nbHits ? this.searchData.result.nbHits : 0;
+				return nbHits > 0;
 			};
 
 			section.getFacet = function(name) {
@@ -319,6 +332,15 @@ export function newSearchController(searchConfig) {
 			return stats;
 		};
 
+		result.isSectionDisabled = function() {
+			for (let section of sections) {
+				if (!section.isEnabled()) {
+					return true
+				}
+			}
+			return false;
+		};
+
 		result.findSectionByName = function(name) {
 			return this.sections.find((section) => section.config.name === name);
 		};
@@ -326,7 +348,7 @@ export function newSearchController(searchConfig) {
 		result.getMatchedWords = function() {
 			var words = new Set();
 			this.sections.forEach((section) => {
-				let attributesToHighlight = [ 'title', ...section.config.facetFilterNames() ];
+				let attributesToHighlight = [ 'title', 'excerpt', ...section.config.facetFilterNames() ];
 				let hits = section.searchData.result.hits;
 
 				hits.forEach((hit) => {
@@ -617,6 +639,7 @@ export function newSearchController(searchConfig) {
 		show: false, // Toggles the main search listing on/off.
 		publish: true, // Whether to publish events on search updates.
 		standaloneSearch: false, // Standalone vs top results search.
+		view: 1, // The active search view (1: list view, 2: section view, 3: tiles view)
 
 		searchState: null,
 
@@ -814,7 +837,7 @@ export function newSearchController(searchConfig) {
 				let hitsPerPage = 0;
 				if (!isBlank) {
 					hitsPerPage = self.standaloneSearch
-						? 1000
+						? 100
 						: sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
 				}
 				let q = isBlank ? '' : encodeURIComponent(self.query().q);
@@ -826,7 +849,7 @@ export function newSearchController(searchConfig) {
 					filters: filters,
 					facetFilters: facetFilters,
 					facets: facets,
-					attributesToHighlight: [ 'title', ...filteringFacetNames ],
+					attributesToHighlight: [ 'title', 'excerpt', ...filteringFacetNames ],
 					params: `query=${q}&hitsPerPage=${hitsPerPage}`
 				};
 			};
@@ -881,7 +904,7 @@ export function newSearchController(searchConfig) {
 
 			if (needsBlankResult && this.searchState.blankSearch.shouldLoad()) {
 				let requests = [];
-				for (let section of searchConfig.sections) {
+				for (let section of searchConfig.sectionsSorted) {
 					requests.push(createSectionRequest(section, true));
 				}
 

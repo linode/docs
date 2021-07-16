@@ -63,7 +63,7 @@ There are several third-party mail services available:
 
 - [Postmark](https://postmarkapp.com/why?utm_source=linode&utm_medium=referral&utm_campaign=awareness)
 - [Fastmail](https://www.fastmail.com)
-- [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the familiar Gmail interface. Check out our guide to [using Google Apps with your Linode](/docs/email/using-google-apps-for-email/).
+- [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
 - [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
 If you decide to use an outside mail service, you will still need to set up [DNS](/docs/platform/manager/dns-manager/) for your mail and use the settings provided by the third-party mail service.

@@ -1,18 +1,14 @@
-<h1 class="leading-tight tracking-tight text-5xl text-titlecolor w-full lg:w-3/4">
-  {{ .Parent.Params.title }} - {{ .Title }}
+<h1 class="leading-tight tracking-tight text-4xl text-titlecolor w-full">
+  {{ partial "funcs/get-page-title.html" . }}
 </h1>
-<p class="pt-2 md:pt-6 text-basicgray">
+<p class="pt-2 text-basicgray">
   {{ if eq .PublishDate .Lastmod }}
     Published
   {{ else }}
     Updated
   {{ end }}
-  <time datetime="{{ .Lastmod }}">
-    {{ .Lastmod.Format site.Params.time_format_default }}
-  </time>
-  {{ with .Params.author }}
-    , by {{ .name }}
-  {{ end }}
+  {{ $authorLink := partial "funcs/get-author-link.html" . }}
+  <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format site.Params.time_format_default }}</time>{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
 </p>
 {{ with .Params.product_description }}
   <p class="mt-8">

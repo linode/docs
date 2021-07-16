@@ -7,13 +7,20 @@
 {{- $tags := .Params.tags -}}
 {{- $sections := slice -}}
 {{- $section :=  replace .SectionsPath "/" " > " }}
+{{- $excerpt := "" -}}
+{{- if .Params.description -}}
+{{- $excerpt = .Params.description -}}
+{{- else -}}
+{{- $excerpt = .Summary -}}
+{{- end -}}
 {{- $ordinal := 0 }}
 {{- with .Params.tab_group_main -}}
 {{/* This is set in products pages. */}}
 {{- $ordinal = .weight }}
 {{- end -}}
 {{- $deprecated := cond (ne .Params.deprecated nil) .Params.deprecated false -}}
-{{- $dict := (dict "objectID" .File.UniqueID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" (.Params.description | default .Summary) "title"  .Title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
+{{- $title := partial "funcs/get-page-title.html" . }}
+{{- $dict := (dict "objectID" .File.UniqueID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}
 {{- $sections = $sections | append .SectionsEntries  -}}

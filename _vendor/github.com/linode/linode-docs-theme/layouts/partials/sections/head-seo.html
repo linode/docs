@@ -1,11 +1,22 @@
-<meta name="description" content="{{ .Param "description" }}">
+{{ $description := "" }}
+{{ if eq .Section "api" }}
+  {{ if $.IsNode }}
+    {{ $description = "Linode API reference and examples." }}
+  {{ else }}
+    {{ $description = printf "Linode API reference and examples for %s endpoints." .Title }}
+  {{ end }}
+{{ else }}
+  {{ $description = .Params.og_description | default (.Param "description") }}
+{{ end }}
+<meta name="description" content="{{ $description }}">
 {{ if .Params.no_index }}
   <meta name="robots" content="noindex" />
 {{ end }}
+<meta name="google" content="notranslate" />
 <meta property="og:title" content="{{ .Params.og_title | default .Title }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:description" content="{{ .Params.og_description | default (.Param "description") }}">
+<meta property="og:description" content="{{ $description }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
 
 {{/*  If a social media image is set in the frontmatter */}}

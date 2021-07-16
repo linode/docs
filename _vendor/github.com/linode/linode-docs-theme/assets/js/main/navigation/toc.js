@@ -94,29 +94,23 @@ export function newToCController() {
 				}
 				a.innerHTML = el.innerText;
 
-				let wrapper = document.createElement('span');
-				wrapper.appendChild(a);
-				let span = document.createElement('span');
-				a.appendChild(span);
-				li.appendChild(wrapper);
+				li.appendChild(a);
 
+				let ol2 = document.createElement('ol');
+				li.appendChild(ol2);
 				if (level == 2) {
-					let ol2 = document.createElement('ol');
-					li.appendChild(ol2);
 					row.length = 0;
 					row.push(ol2);
 					ol.appendChild(li);
-				} else if (row.length > 0) {
+				} else {
 					// Attach it to the closest parent.
 					let relativeLevel = level - 2;
 					let rowIdx = Math.min(relativeLevel - 1, row.length - 1);
-					if (row.length <= relativeLevel) {
-						let ol2 = document.createElement('ol');
-						li.appendChild(ol2);
-						row.push(ol2);
-					}
 					let ol3 = row[rowIdx];
 					ol3.appendChild(li);
+					if (rowIdx > 1) {
+						row[rowIdx - 1] = ol2;
+					}
 				}
 			});
 			if (!this.enabled) {
@@ -129,14 +123,13 @@ export function newToCController() {
 				ol.querySelectorAll('.level-2').forEach((li) => {
 					if (li.querySelector('li') !== null) {
 						li.setAttribute('x-data', '{ open: false }');
-						let wrapper = li.querySelector('span');
 						let ol = li.querySelector('ol');
 						ol.setAttribute('x-show.transition', 'open');
 						let closeEl = document.importNode(
 							this.initData.headerCloseButton.content.querySelector('button'),
 							true
 						);
-						wrapper.appendChild(closeEl);
+						li.appendChild(closeEl);
 					}
 				});
 			}

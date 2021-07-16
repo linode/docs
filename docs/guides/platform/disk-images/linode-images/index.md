@@ -3,35 +3,83 @@ slug: linode-images
 author:
   name: Linode
   email: docs@linode.com
-description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
-og_description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
+description: Linode's Images product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This can be useful for bootstrapping a golden image for large scale or rapid deployments, among other use cases.
+og_description: Linode's Images product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This can be useful for bootstrapping a golden image for large scale or rapid deployments, among other use cases.
 keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
-modified: 2018-08-22
+modified: 2021-04-28
 modified_by:
   name: Linode
 published: 2014-09-25
-title: Linode Images
+title: Images Tutorial
 ---
 
-{{< youtube UNlJUzQrBBI >}}
+Linode's **Images** service allows users to store custom disk images in the Cloud preconfigured with the exact software and settings required for certain applications and workloads. These Images can be quickly deployed to new or existing Linode, saving users time from manually setting up their entire system after each deployment.
 
-*Linode Images* allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a private template that you may need in the future. There is no additional charge to store Images for Linode users. Images are limited to 6GB per Image and 3 Images per account. Additionally, images can only be created on disks with ext3 or ext4 filesystems with a single partition.
+## Pricing and Availability
 
-{{< note >}}
-When saving a Linode image, it is the aspects of the Linode that are on the **disk** that are saved, not any additional aspects such as IP addresses, fully qualified domain names, and MAC addresses.
-{{< /note >}}
+Images are currently available at no charge to Linode customers and can be deployed across [all regions](https://www.linode.com/global-infrastructure/).
 
-## Capturing Your Image
+{{< content "images-ga-pricing-update-shortguide" >}}
 
-{{< content "images-capture-image-shortguide" >}}
+## Types of Images
 
-## Managing Your Images
+{{< content "types-of-images-shortguide" >}}
 
-{{< content "images-manage-images-shortguide" >}}
+## Creating a New Image
 
-## Deploy From A Saved Image
+Two different methods can be used to manually create a Custom Image, each of which is discussed within this guide:
 
-{{< content "images-deploy-from-image-shortguide" >}}
+- **[Capturing an Image](#capturing-an-image)**
+- **[Uploading an Image](#uploading-an-image)**
+
+## Capturing an Image
+
+### Requirements and Considerations
+
+{{< content "capture-image-requirements-shortguide" >}}
+
+Additional overall limits of the Images service are outlined within the [Limits](#limits) section below.
+
+### Capturing an Image through the Cloud Manager
+
+{{< content "capture-image-shortguide" >}}
+
+## Uploading an Image
+
+### Requirements
+
+{{< content "upload-image-requirements-shortguide" >}}
+
+### Creating or Obtaining an Image File
+
+{{< content "create-an-image-file-shortguide" >}}
+
+### Uploading an Image through the Cloud Manager
+
+{{< content "upload-image-shortguide" >}}
+
+## Managing Images
+
+To take action on an Image, locate the Image within the **Images** page of the Cloud Manager and click the corresponding **ellipsis** options menu. From here, there are a few actions that can be initiated:
+
+- **Edit:** Change the *Label* and *Description* for the Image.
+- **[Deploy to a New Linode](#deploying-an-image-to-a-new-linode):** Create a new Linode using the Image.
+- **[Deploy to an Existing Linode](#rebuilding-and-deploying-an-image-to-an-existing-linode):** Rebuild the Linode using the Image.
+- **Delete:** Delete the Image (cannot be undone).
+
+## Deploying an Image to a New Linode
+
+{{< content "deploy-image-to-new-linode-shortguide" >}}
+
+## Rebuilding and Deploying an Image to an Existing Linode
+
+{{< content "deploy-image-to-existing-linode-shortguide" >}}
+
+## Limits
+
+{{< content "images-limits-shortguide" >}}
+
+Additional requirements and considerations apply when [capturing an Image](#capturing-an-image) from a Linode and [uploading an Image](#uploading-an-image) from a file.

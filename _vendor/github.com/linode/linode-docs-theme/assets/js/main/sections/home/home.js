@@ -173,7 +173,7 @@ export function newHomeController(searchConfig, developersItems) {
 
 			var searchRequests = [];
 			sectionNames.forEach((name) => {
-				let sectionConfig = searchConfig.sections.find((s) => s.name === name);
+				let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === name);
 				if (!sectionConfig) {
 					throw `no index with name ${name} found`;
 				}
@@ -257,6 +257,9 @@ export function newHomeController(searchConfig, developersItems) {
 					});
 				}
 			}
+			productsItems.sort((a, b) => {
+				return a.title < b.title ? -1 : 1;
+			});
 
 			debug('receiveCommonData: productsItems', productsItems);
 

@@ -26,7 +26,7 @@ This template includes common API logic and functions.
 
 {{ define "openapi3/print-title"}}
   {{ $anchor := "" }}
-  {{ if eq .level 2}}
+  {{ if or (eq .level 2) (eq .level 3) }}
     {{ $anchor = printf "<a class=\"\" href=\"#%s\"><svg class=\"ml-2 inline-block w-5 h-5\"><use href=\"#icon--hashtag\"></use></svg></a>" .id}}
   {{ end }}
   {{ printf "<h%d id='%s'>%s%s</h%d>" .level .id .title $anchor .level | safeHTML }}

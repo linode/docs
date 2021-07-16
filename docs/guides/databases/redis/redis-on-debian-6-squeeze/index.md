@@ -15,7 +15,7 @@ published: 2011-04-05
 title: 'Redis on Debian 6 (Squeeze)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Debian 6
 tags: ["debian","database","nosql"]

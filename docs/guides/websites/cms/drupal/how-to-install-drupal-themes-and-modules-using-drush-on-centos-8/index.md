@@ -14,7 +14,7 @@ modified_by:
 published: 2014-12-05
 title: How to Install Drupal Themes and Modules Using Drush on CentOS 8
 h1_title: Install Drupal Themes and Modules Using Drush on CentOS 8
-image: feature.png
+image: DrupalThemesMods_DrushCentOS8.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
