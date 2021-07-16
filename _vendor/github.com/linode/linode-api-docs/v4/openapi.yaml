@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.97.2
+  version: 4.98.0
 
   title: Linode API
   description: |
@@ -10374,7 +10374,7 @@ paths:
                     "description": "An example inbound rule description."
                     }
                   ],
-                  "outbound_policy": "DROP"
+                  "outbound_policy": "DROP",
                   "outbound": [
                     {
                       "protocol": "TCP",
@@ -10407,7 +10407,11 @@ paths:
       - lang: CLI
         source: >
           linode-cli firewalls create \
-            --rules '{"inbound": [{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]}' \
+            --label example-firewall \
+            --outbound_policy ACCEPT \
+            --inbound_policy DROP \
+            --rules.inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}, "action": "ACCEPT"}]' \
+            --rules.outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.0/24"],"ipv6": ["2001:DB8::/32"]}, "action": "DROP", "label": "outbound-rule123", "description": "An example outbound rule description."}]'
   /networking/firewalls/{firewallId}:
     parameters:
       - name: firewallId
@@ -10946,14 +10950,12 @@ paths:
         - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/apilinode-instances/#linode-reboot) the Linode into the new Configuration Profile.
         - [Delete](/docs/api/linode-instances/#linode-delete) the Linode.
 
-        **VLANs cannot be manually renamed.** If a VLAN's label must be changed, create a new VLAN and attach all required Linodes to it.
-
-        **VLANs cannot be manually deleted.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, detach it from all Linodes. A VLANs that are not attached to any Linodes are automatically deleted within a short timeframe.
-
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
         the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
+
+        **Note:** See our guide on [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/) to view additional [limitations](/docs/guides/getting-started-with-vlans/#limitations).
       operationId: getVLANs
       x-linode-cli-action: list
       security:
@@ -16263,7 +16265,7 @@ components:
           x-linode-cli-display: 3
         domain:
           type: string
-          pattern: ([a-zA-Z0-9-_]{1,63}\.)+([a-zA-Z]{2,3}\.)?([a-zA-Z]{2,16}|xn--[a-zA-Z0-9]+\.?)
+          pattern: \A(\*\.)?([a-zA-Z0-9-_]{1,63}\.)+([a-zA-Z]{2,3}\.)?([a-zA-Z]{2,16}|xn--[a-zA-Z0-9]+)\Z
           minLength: 1
           maxLength: 255
           description: >
@@ -16431,13 +16433,14 @@ components:
         name:
           type: string
           description: |
-            The name of this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
+            The name of this Record. For requests, this property's actual usage and whether it is required depends
+            on the type of record this represents:
 
             `A` and `AAAA`: The hostname or FQDN of the Record.
 
             `NS`: The subdomain, if any, to use with the Domain of the Record.
 
-            `MX`: The subdomain.
+            `MX`: The mail server subdomain. Must be an empty string (`""`) for a Null MX Record.
 
             `CNAME`: The hostname. Must be unique. Required.
 
@@ -16445,9 +16448,10 @@ components:
 
             `SRV`: Unused. Use the `service` property to set the service name for this record.
 
-            `CAA`: The subdomain. Omit or enter an empty string ("") to apply to the entire Domain.
+            `CAA`: The subdomain. Omit or enter an empty string (`""`) to apply to the entire Domain.
 
-            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS
+            (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
           minLength: 1
           maxLength: 100
           example: test
@@ -16455,23 +16459,32 @@ components:
         target:
           type: string
           description: |
-            The target for this Record. For requests, this property's actual usage and whether it is required depends on the type of record this represents:
+            The target for this Record. For requests, this property's actual usage and whether it is required depends
+            on the type of record this represents:
 
             `A` and `AAAA`: The IP address. Use `[remote_addr]` to submit the IPv4 address of the request. Required.
 
             `NS`: The name server. Must be a valid domain. Required.
 
-            `MX`: The mail server. Must be a valid domain. Required.
+            `MX`: The mail server. Must be a valid domain unless creating a Null MX Record. To create a
+            [Null MX Record](https://datatracker.ietf.org/doc/html/rfc7505), first
+            [remove](/docs/api/domains/#domain-record-delete) any additional MX records, then enter an empty string
+            (`""`) for this property. If a Domain has a Null MX record, new MX records cannot be created. Required.
 
             `CNAME`: The alias. Must be a valid domain. Required.
 
             `TXT`: The value. Required.
 
-            `SRV`: The target domain or subdomain. If a subdomain is entered, it is automatically used with the Domain. To configure for a different domain, enter a valid FQDN. For example, the value `www` with a Domain for `example.com` results in a target set to `www.example.com`, whereas the value `sample.com` results in a target set to `sample.com`. Required.
+            `SRV`: The target domain or subdomain. If a subdomain is entered, it is automatically used with the Domain.
+            To configure for a different domain, enter a valid FQDN. For example, the value `www` with a Domain for
+            `example.com` results in a target set to `www.example.com`, whereas the value `sample.com` results in a
+            target set to `sample.com`. Required.
 
-            `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef` tag, a contact or submission URL (http or mailto).
+            `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef`
+            tag, a contact or submission URL (http or mailto).
 
-            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
+            `PTR`: See our guide on how to [Configure Your Linode for Reverse DNS
+            (rDNS)](/docs/guides/configure-your-linode-for-reverse-dns).
 
             With the exception of A, AAAA, and CAA records, this field accepts a trailing period.
           example: 192.0.2.0
@@ -16480,14 +16493,18 @@ components:
           type: integer
           minimum: 0
           maximum: 255
-          description: >
-            The priority of the target host for this Record. Lower values are preferred. Only valid and required for SRV record requests.
+          description: |
+            The priority of the target host for this Record. Lower values are preferred. Only valid for
+            MX and SRV record requests. Required for SRV record requests.
+
+            Defaults to `0` for MX record requests. Must be `0` for Null MX records.
           example: 50
           x-linode-cli-display: 6
         weight:
           type: integer
           description: >
-            The relative weight of this Record. Higher values are preferred. Only valid and required for SRV record requests.
+            The relative weight of this Record used in the case of identical priority. Higher values are preferred.
+            Only valid and required for SRV record requests.
           example: 50
           minimum: 0
           maximum: 65535
@@ -16503,13 +16520,14 @@ components:
           type: string
           nullable: true
           description: >
-            The name of the service. An underscore (_) is prepended and a period (.) is appended automatically to the submitted value for this property. Only valid and required for SRV record requests.
+            The name of the service. An underscore (`_`) is prepended and a period (`.`) is appended automatically to the
+            submitted value for this property. Only valid and required for SRV record requests.
           example: null
         protocol:
           type: string
           nullable: true
           description: >
-            The protocol this Record's service communicates with. An underscore (_) is prepended
+            The protocol this Record's service communicates with. An underscore (`_`) is prepended
             automatically to the submitted value for this property. Only valid
             for SRV record requests.
           example: null
@@ -17058,10 +17076,16 @@ components:
           properties:
             inbound:
               type: array
+              x-linode-cli-format: json
+              description: |
+                The inbound rules for the firewall, as a JSON array.
               items:
                 $ref: '#/components/schemas/FirewallRuleConfig'
             outbound:
               type: array
+              x-linode-cli-format: json
+              description: |
+                The outbound rules for the firewall, as a JSON array.
               items:
                 $ref: '#/components/schemas/FirewallRuleConfig'
             inbound_policy:
@@ -17675,6 +17699,8 @@ components:
         If a VLAN is attached to your Linode and you attempt to migrate or clone it to a non-NGN data center,
         the migration or cloning will not initiate. If a Linode cannot be migrated because of an incompatibility,
         you will be prompted to select a different data center or contact support.
+
+        **Note:** See our guide on [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/) to view additional [limitations](/docs/guides/getting-started-with-vlans/#limitations).
     Invoice:
       type: object
       description: Account Invoice object
