@@ -27,7 +27,7 @@ This guide aims to walk you through using APT and its command-line tools to perf
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Getting Started](/docs/getting-started/) if you do not yet have a compatible system.
+1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Getting Started](/docs/getting-started/) guide if you do not yet have a compatible system.
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
 
@@ -40,7 +40,7 @@ Some commands in this guide require elevated privileges and are prefixed with th
 While there are more similarities than differences, there are a few important points to consider when decided which command to use.
 
 - [`apt`](http://manpages.ubuntu.com/manpages/impish/en/man8/apt.8.html): An end-user tool that has much of the same functionality as `apt-get`, `apt-cache`, and other APT command-line tools. The output is specifically formatted for enhanced human readability. This is the recommended front-end for interacting with APT as a user. See [apt Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt.8.html)
-- `apt-get`: Manages the installation, upgrades, and removal of packages and their dependencies. The existing parameters, arguments, and functionality for `apt-get` shouldn't ever change. The output is works well for machine readability. Using this is recommended when writing scripts. See [apt-get Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-get.8.html)
+- `apt-get`: Manages the installation, upgrades, and removal of packages and their dependencies. The existing parameters, arguments, and functionality for `apt-get` shouldn't ever change. The output works well for machine readability. Using this is recommended when writing scripts. See [apt-get Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-get.8.html)
 - `apt-cache` A lower-level tool (compared to `apt`) for searching through packages and outputting information about packages. Using this is recommended when writing scripts. See [apt-cache Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-cache.8.html).
 
 In short, `apt` is a single tool that encompasses most of the functionality of other APT-specific tooling. It is designed primarily for interacting with APT as an end-user and its default functionality may change to include new features or best practices. If you prefer not to risk breaking compatibility and/or prefer to interact with plainer output, `apt-get` and `apt-cache` can be used instead, though the exact commands may vary.

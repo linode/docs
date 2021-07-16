@@ -59,7 +59,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 - **Underlying package management tool:** [dpkg](https://linux.die.net/man/1/dpkg)
 - **Package file format:** `.deb`
 
-*Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. Most distributions that use APT also include a collection of command-line tools that can be used to interface with APT. These tools include `apt-get`, `apt-cache`, and the newer `apt`, which essentially combines both of the previous tools with some modified functionality.
+*Advanced Package Tool*, more commonly known as [APT](https://ubuntu.com/server/docs/package-management), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. Most distributions that use APT also include a collection of command-line tools that can be used to interface with APT. These tools include `apt-get`, `apt-cache`, and the newer `apt`, which essentially combines both of the previous tools with some modified functionality.
 
 ### YUM
 
@@ -70,7 +70,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 - **Underlying package management tool:** [RPM](https://linux.die.net/man/8/rpm) (*RPM Package Manager*)
 - **Package file format:** `.rpm`
 
-*Yellowdog Updater, Modified*, more commonly known as **YUM**, is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). It has largely been replaced by it successor *Dandified YUM*, also called **DNF**, on most newer RPM-based distributions.
+*Yellowdog Updater, Modified*, more commonly known as [YUM](http://yum.baseurl.org/), is a package management tool for a variety of older RHEL-based distributions (such as CentOS 7) and older versions of Fedora. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). It has largely been replaced by it successor *Dandified YUM*, also called DNF, on most newer RPM-based distributions.
 
 ### DNF
 
@@ -81,16 +81,16 @@ There are lots of package managers in Linux, each working a bit differently. Her
 - **Underlying package management tool:** [RPM](https://linux.die.net/man/8/rpm) (*RPM Package Manager*)
 - **Package file format:** `.rpm`
 
-*Dandified YUM*, or simply **DNF**, is the successor to **YUM**. Just like YUM, DNF provides a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API. Most distributions still link the `yum` command to the DNF software and, since DNF maintains compatibility with much of YUM's CLI, most commands using `yum` still function as intended.
+*Dandified YUM*, or simply [DNF](https://fedoraproject.org/wiki/DNF?rd=Dnf), is the successor to YUM. Just like YUM, DNF provides a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API. Most distributions still link the `yum` command to the DNF software and, since DNF maintains compatibility with much of YUM's CLI, most commands using `yum` still function as intended.
 
 ### Zypper
 
 - **Distributions:** openSUSE
 - **Command:** `zypper`
-- **Underlying package management tool:** ZYpp (also called libzypp)
+- **Underlying package management tool:** ZYpp (also called [libzypp](https://doc.opensuse.org/projects/libzypp/HEAD/))
 - **Package file format:** `.rpm`
 
-Zypper is the CLI tool used for managing packages on openSUSE Linux distributions. Just like DNF and YUM, packages are stored in the `.rpm` file format, though Zypper interfaces with the ZYpp (libzypp) library instead of RPM. Some users report that Zypper is faster than other package mangers and, unlike many others, has the ability to add repositories directly from its own CLI.
+[Zypper](https://en.opensuse.org/Portal:Zypper) is the CLI tool used for managing packages on openSUSE Linux distributions. Just like DNF and YUM, packages are stored in the `.rpm` file format, though Zypper interfaces with the ZYpp (libzypp) library instead of RPM. Some users report that Zypper is faster than other package mangers and, unlike many others, has the ability to add repositories directly from its own CLI. See the [Zypper manual](https://en.opensuse.org/SDB:Zypper_manual) for more usage details.
 
 ### Pacman
 
@@ -100,7 +100,7 @@ Zypper is the CLI tool used for managing packages on openSUSE Linux distribution
 - **Command:** `pacman`
 - **Package file format:** `.tar.xz` (and other compressed tar formats)
 
-Arch Linux and other similar distributions (like the popular Manjaro desktop distro) use the pacman package manager. Packages are stored as compressed tarballs and, as such, are generally smaller than other package formats. Pacman is unique in that it comes with a system to build packages, not *just* manage them. This system is called the ABS (Arch Build System).
+Arch Linux and other similar distributions (like the popular Manjaro desktop distro) use the [pacman](https://wiki.archlinux.org/title/pacman) package manager. Packages are stored as compressed tarballs and, as such, are generally smaller than other package formats. Pacman is unique in that it comes with a system to build packages, not *just* manage them. This system is called the ABS (Arch Build System).
 
 ### Portage
 
@@ -110,7 +110,7 @@ Arch Linux and other similar distributions (like the popular Manjaro desktop dis
 - **Command:** `emerge`
 - **Package file format:** ebuild shell script or `.tbz2` (compressed tar archive)
 
-Portage, the package manager for Gentoo, is quite a bit different than other solutions. Instead of using pre-compiled binary packages, Portage packages are typically shell scripts called **ebuilds**. The emerge CLI tool can run these shell scripts to install packages, and is also responsible for managing dependencies and a database of installed packages.
+[Portage](https://wiki.gentoo.org/wiki/Portage), the package manager for Gentoo, is quite a bit different than other solutions. Instead of using pre-compiled binary packages, Portage packages are typically shell scripts called **ebuilds**. The [emerge](https://dev.gentoo.org/~zmedico/portage/doc/man/emerge.1.html) CLI tool can run these shell scripts to install packages, and is also responsible for managing dependencies and a database of installed packages.
 
 ### Slackware Package Management
 

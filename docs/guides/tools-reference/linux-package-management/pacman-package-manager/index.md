@@ -23,7 +23,7 @@ Arch Linux uses binary packages in a `.tar.xz` format, and also provides a "port
 
 Before running the commands within this guide, you will need:
 
-1. **A system running Arch Linux** or an Arch-based distribution like Manjaro. Review the [Getting Started](/docs/getting-started/) if you do not yet have a compatible system.
+1. **A system running Arch Linux** or an Arch-based distribution like Manjaro. Review the [Getting Started](/docs/getting-started/) guide if you do not yet have a compatible system.
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
 
@@ -45,7 +45,9 @@ The `pacman` tool is very powerful, but it is also very simple. There are three 
 
 -   `pacman --remove [package]` or `pacman -R`
 
-    Removes the named package or packages. Note that the terse flags are all uppercase and case-sensitive. These terse flags are often combined with additional flags for additional functionality. Here are some examples with brief descriptions:
+    Removes the named package or packages.
+
+Note that the terse flags are all uppercase and case-sensitive. These terse flags are often combined with additional flags for additional functionality. Here are some examples with brief descriptions:
 
 -   `pacman -Qi [package]`
 
