@@ -33,21 +33,21 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 ## Pacman
 
-The `pacman` tool is very powerful, but it is also very simple. There are three core commands for basic package management:
+While the `pacman` tool is very powerful, it's also quite simple. There are three core commands for basic package management:
 
--   `pacman --query [package]` or `pacman -Q`
+-   `pacman --query [package]` or `pacman -Q [package]`
 
-    Searches the package database for a package name and version number.
+    Searches the package database for a package name (and optional version number).
 
--   `pacman --sync [package]` or `pacman -S`
+-   `pacman --sync [package]` or `pacman -S [package]`
 
     Installs new packages, downloads new content for the database and/or upgrades the system, depending on the options and the named package or packages.
 
--   `pacman --remove [package]` or `pacman -R`
+-   `pacman --remove [package]` or `pacman -R [package]`
 
-    Removes the named package or packages.
+    Removes the specified package or packages.
 
-Note that the terse flags are all uppercase and case-sensitive. These terse flags are often combined with additional flags for additional functionality. Here are some examples with brief descriptions:
+Each of the above single character flags (`-Q`, `-S`, and `-R`) are uppercase. They are often combined with additional flags (also case-sensitive) to alter the functionality of the command. Here are some examples with brief descriptions:
 
 -   `pacman -Qi [package]`
 
@@ -81,7 +81,7 @@ Note that the terse flags are all uppercase and case-sensitive. These terse flag
 
     Ignores upgrades to a given package or list of packages.
 
--   `pacman -Rs`
+-   `pacman -Rs [package]`
 
     Removes a package and its dependencies, as long as the dependencies are not needed and were not explicitly installed by the user. This command is the inverse of `pacman -S`.
 
