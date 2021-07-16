@@ -216,8 +216,20 @@ The Terraria administration script needs two primary functions:
 1.  Create a `terrariad` file, enter the following script, then save and close:
 
     {{< file "/usr/local/bin/terrariad" >}}
+#!/usr/bin/env bash
 
+send="`printf \"$*\r\"`"
+attach="screen -r terraria"
+inject="screen -S terraria -X stuff $send"
 
+if [ "$1" = "attach" ] ; then cmd="$attach" ; else cmd="$inject" ; fi
+
+if [ "`stat -c '%u' /var/run/screen/S-terraria/`" = "$UID" ]
+then
+    $cmd
+else
+    su - root -c "$cmd"
+fi
 {{< /file >}}
 
 
