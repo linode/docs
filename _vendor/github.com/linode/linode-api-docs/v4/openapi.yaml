@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.98.0
+  version: 4.99.0
 
   title: Linode API
   description: |
@@ -1688,7 +1688,8 @@ paths:
         - Account
       summary: Payment Method Add
       description: |
-        Adds a Payment Method to your Account with the option to set it as the default method.
+        Adds a Payment Method to your Account with the option to set it as the default method. Adding a default
+        Payment Method removes the default status from any other Payment Method.
 
         Prior to adding a Payment Method, ensure that your billing address information is up-to-date
         with a valid `zip` by using the Account Update ([PUT /account](/docs/api/account/#account-update)) endpoint.
@@ -1755,7 +1756,92 @@ paths:
                     "cvv": "111"
                   }
                 }' \
-                https://api.linode.com/v4/account/payment-method
+                https://api.linode.com/v4/account/payment-methods
+  /account/payment-methods/{paymentMethodId}:
+    x-linode-cli-command: account
+    parameters:
+    - name: paymentMethodId
+      in: path
+      description: The ID of the Payment Method to look up.
+      required: true
+      schema:
+        type: integer
+    get:
+      servers:
+        - url: https://api.linode.com/v4
+      x-linode-grant: read_only
+      tags:
+        - Account
+      summary: Payment Method View
+      description: |
+        View the details of the specified Payment Method.
+      operationId: getPaymentMethod
+      x-linode-cli-action: payment-method-view
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_only
+      responses:
+        '200':
+          description: Returns a Payment Method Object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethod'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4/account/payment-methods/123
+        - lang: CLI
+          source: >
+            linode-cli account payment-method-view 123
+  /account/payment-methods/{paymentMethodId}/make-default:
+    x-linode-cli-command: account
+    parameters:
+    - name: paymentMethodId
+      in: path
+      description: The ID of the Payment Method to make default.
+      required: true
+      schema:
+        type: integer
+    post:
+      servers:
+        - url: https://api.linode.com/v4
+      x-linode-grant: read_write
+      tags:
+        - Account
+      summary: Payment Method Make Default
+      description: |
+        Make the specified Payment Method the default method for automatically processing payments.
+
+        Removes the default status from any other Payment Method.
+      operationId: makePaymentMethodDefault
+      x-linode-cli-action: payment-method-make-default
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_write
+      responses:
+        '200':
+          description: Payment Method successfully set as the default method.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl -H "Authorization: Bearer $TOKEN" \
+                -X POST \
+                https://api.linode.com/v4/account/payment-methods/123/make-default
+        - lang: CLI
+          source: >
+            linode-cli account payment-method-make-default 123
   /account/payments:
     x-linode-cli-command: account
     get:
@@ -20730,19 +20816,24 @@ components:
       type: object
       description: Payment Method Response Object.
       properties:
+        id:
+          type: integer
+          description: The unique ID of this Payment Method.
+          example: 123
+          x-linode-cli-display: 1
         type:
           type: string
           enum:
             - credit_card
           description: The type of Payment Method.
           example: 'credit_card'
-          x-linode-cli-display: 1
+          x-linode-cli-display: 2
         is_default:
           type: boolean
           description: |
             Whether this Payment Method is the default method for automatically processing service charges.
           example: true
-          x-linode-cli-display: 2
+          x-linode-cli-display: 3
         created:
           type: string
           readOnly: true
@@ -20757,7 +20848,7 @@ components:
               type: string
               readOnly: true
               description: The type of credit card.
-              example: ""
+              example: "Discover"
               x-linode-cli-display: 8
             last_four:
               type: string
