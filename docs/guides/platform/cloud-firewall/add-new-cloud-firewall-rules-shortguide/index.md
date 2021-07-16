@@ -5,9 +5,9 @@ author:
   email: docs@linode.com
 description: 'Shortguide that describes how to add new rules to a cloud firewall'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-11-09
+modified: 2021-07-15
 modified_by:
-  name: Ryan Syracuse
+  name: Linode
 published: 2020-11-09
 title: Add New Cloud Firewall Rules
 keywords: ["cloud firewall"]
@@ -35,14 +35,15 @@ aliases: ['/platform/cloud-firewall/add-new-cloud-firewall-rules-shortguide/']
 
     | **Configuration** | **Description** |
     | --------------- | --------------- |
-    | **Preset** | &bull; Select from a list of optional predefined Firewall rules. Selecting a predefined rule fills in the remaining Rule configuration values, however, they can all be edited. *Optional*|
-    | **Label** | &bull; A label for the rule being created. This is used only as an identifier for the Linode Account holder, and does not have any impact on firewall performance. *Optional*
-    | **Description** | &bull; A Description of the rule being created. This is used only as an identifier for the Linode Account holder, and does not have any impact on firewall performance. *Optional*|
+    | **Preset** | Select from a list of optional predefined Firewall rules. Selecting a predefined rule fills in the remaining Rule configuration values, however, they can all be edited. *Optional*|
+    | **Label** | A label for the rule being created. This is used only as an identifier for the Linode Account holder, and does not have any impact on firewall performance. *Optional*
+    | **Description** | A Description of the rule being created. This is used only as an identifier for the Linode Account holder, and does not have any impact on firewall performance. *Optional*|
     | **Protocol** | Select the Transport Layer protocol to use for this Firewall rule. *Required*|
-    | **Ports** | &bull; Select from a list of common port numbers, or select **Custom** to open the **Custom Port Range** configuration option. More than one option may be selected. *Required*|
-    | **Custom Port Range**| &bull; Provide a port number or a range of ports on which to allow network traffic. To configure a **Port Range** provide the starting and ending port numbers. For example, `2000-3000`.  *Optional*|
-    | **Sources / Destinations**| &bull; When creating an **Inbound Rule**, select from a list of **Sources** that limit incoming connections to the chosen internet protocol, netmask, or specific IP address(es).<br><br> &bull; When creating an **Outbound Rule**, select from a list of **Destinations** that limit the outgoing connections to the chosen internet protocol, netmask, or specific IP address(es). *Required*|
-    | **Action** | &bull; Choose whether this rule will be to allow or drop traffic. The action defined in specific rules will take precedence over the default inbound and outbound traffic policy. *Required* |
+    | **Ports** | Select from a list of common port numbers, or select **Custom** to open the **Custom Port Range** configuration option. Up to 15 ports (and port ranges) can be added to a single Cloud Firewall rule. Port numbers must be within 1 and 65535 and they cannot contain leading zeroes. *Required for TCP and UDP protocols but not allowed for the ICMP protocol.* |
+    | **Custom Port Range** | Provide a port number or a range of ports on which to take action. Multiple ports or ranges can be added by separating each port or range with a comma (`,`). To configure a **Port Range**, enter the starting port and ending port numbers separated by a dash (`-`). For example, here is an example value that applies the rule to ports 21, 993, 995, and 2000-3000: `21,993,995,2000-3000`.  *Optional* |
+    | **Sources** | **Required for Inbound rules only.** Select from a list of **Sources** that limit incoming connections to the chosen internet protocol, netmask, or specific IP address(es). |
+    | **Destinations** | **Required for Outbound rules only.** Select from a list of **Destinations** that limit the outgoing connections to the chosen internet protocol, netmask, or specific IP address(es). |
+    | **Action** | Choose whether this rule will be to allow or drop traffic. The action defined in specific rules will take precedence over the default inbound and outbound traffic policy. *Required* |
 
 1. Click on **Add Rule** to add the new rule to this Firewall. If you would like to add any additional rules, repeat the process outlined in this section.
 
