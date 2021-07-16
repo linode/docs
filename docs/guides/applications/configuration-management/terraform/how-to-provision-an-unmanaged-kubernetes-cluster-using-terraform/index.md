@@ -20,7 +20,7 @@ external_resources:
 aliases: ['/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/']
 ---
 
-[Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes (also referred to as K8s) cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes cluster running on Ubuntu, and simplifies many of the steps involved in manually deploying a Kubernetes cluster with kubeadm. After creating master and worker nodes, the module connects over SSH to these instances and installs [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/), [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also handles initializing kubeadm, joining the worker nodes to the master, and configuring kubectl to control the cluster. Calico is installed for the cluster's container networking interface, and a kubectl admin config file is installed to the local environment (which connects to the cluster's API server).
+[Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes (also referred to as K8s) cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes cluster running on Ubuntu, and simplifies many of the steps involved in manually deploying a Kubernetes cluster with [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/). After creating master and worker nodes, the module connects over SSH to these instances and installs kubeadm, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also handles initializing kubeadm, joining the worker nodes to the master, and configuring kubectl to control the cluster. Calico is installed for the container networking interface of the cluster, and a kubectl admin config file is installed to the local environment which connects to the API server of the cluster.
 
 
 
@@ -32,11 +32,11 @@ Development work on the module is active. For the latest updates and validated T
 
 Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 
-1. You are familiar with Terraform. If not, read through [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to familiarize yourself with key concepts.
+1. You are familiar with Terraform. You can read through [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to familiarize yourself with key concepts.
 
-2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/) series. If you're unfamiliar with kubeadm, see [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/).
+2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) to get familiar with kubeadm.
 
-3. You have a personal access token for [Linode’s v4 API](https://developers.linode.com/api/v4) to use with Terraform. If you're unfamiliar with it, follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to get a token.
+3. You have a personal access token for [Linode’s v4 API](https://developers.linode.com/api/v4) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to get a token.
    {{< note >}}When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
     {{</ note >}}
 
@@ -46,12 +46,12 @@ Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 This guide was written using [Terraform version 0.12.24](https://www.hashicorp.com/blog/announcing-terraform-0-12/). The module requires at least Terraform 0.10.
     {{</ note >}}
 
-5. And, lastly, kubectl is installed on your computer (kubectl is necessary to connect to and manage the Kubernetes cluster; deployment using the Terraform module fails if kubectl is not installed locally). See [Install kubectl](#install-kubectl) for more information.
+5. And, lastly, kubectl is installed on your computer. The kubectl is necessary to connect to and manage the Kubernetes cluster; deployment using the Terraform module fails if kubectl is not installed locally. See [Install kubectl](#install-kubectl) for more information.
 
 
 ## Configure the Local Environment
 
-Deploying a Kubernetes cluster with Linode's k8s Terraform module requires a local environment with a kubectl instance, a system-wide installation of Python, SSH keys, SSH keys configured with the SSH agent, and the `sed` and `scp` command-line utilities. The module's script `preflight.sh` verifies these requirements are installed on the local environment and generates a `$var not found` error if any of the tools are missing. This section shows how to install and configure kubectl, set up the SSH agent, and create an environment variable to store the API v4 token for easy reuse.
+Deploying a Kubernetes cluster with Linode's k8s Terraform module requires a local environment with a kubectl instance, a system-wide installation of Python, SSH keys, SSH keys configured with the SSH agent, and the `sed` and `scp` command-line utilities. The module's script `preflight.sh` verifies these requirements are installed on the local environment and generates a `$var not found` error if any of the tools are missing. In this section learn how to install and configure kubectl, set up the SSH agent, and create an environment variable to store the API v4 token.
 
 If there is an error stating the system is missing Python, scp, or sed, use the operating system's [package manager](https://www.linode.com/docs/tools-reference/linux-package-management/) to install the missing utilities.
 
@@ -70,7 +70,7 @@ Then, reinitialize `~/.bashrc` file for the changes to take effect.
 
 ### SSH Agent
 
-By default, Terraform uses the operating system's SSH agent to connect to a Linode instance through SSH. This section shows how to run the SSH agent and add the necessary SSH keys to it.
+By default, Terraform uses the SSH agent of the operating syatem to connect to a Linode instance through SSH. In this section learn how to run the SSH agent and add the necessary SSH keys to it.
 
 1. Run the SSH agent with the following command:
 
@@ -106,12 +106,12 @@ This variable needs to be supplied to every Terraform `apply`, `plan`, and `dest
 
 ## Create Terraform Configuration Files
 
-1. In the directory where Terraform was installed, create a new directory to store the Kubernetes cluster's configuration files.
+1. In the directory where Terraform was installed, create a new directory to store the configuration files of the k8s cluster.
 
         cd terraform
         mkdir k8s-cluster
 
-2. Using a text editor, create the cluster's main configuration file and name it `main.tf`. Add the following contents to the file.
+2. Using a text editor, create the main configuration file of the cluster and name it `main.tf`. Add the following contents to the file.
 
       {{< file "~/terraform/k8s-cluster/main.tf">}}
 module "k8s" {
@@ -127,9 +127,9 @@ module "k8s" {
 }
       {{</ file >}}
 
-    This file contains the cluster's main configuration arguments. The only required configurations are `source` and `linode_token`. `source` calls Linode's k8s module, while the `linode_token` will give access to viewing, creating, and destroying Linode resources.
+    This file contains the main configuration arguments of the cluster. The only required configurations are `source` and `linode_token`. `source` calls Linode's k8s module, while the `linode_token` gives access to viewing, creating, and destroying Linode resources.
 
-    The rest of the configurations are [optional](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2?tab=inputs#optional-inputs) and have some default values. In this example, however, [Terraform's input variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) are made use of, so the `main.tf` configuration can be easily reused across different clusters if desired.
+    The rest of the configurations are [optional](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2?tab=inputs#optional-inputs) and have some default values. In this example, however, [Terraform's input variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) are used, so the `main.tf` configuration can be reused across different clusters.
 
 1. Create an input variables file, named `variables.tf`, with the example content.
 
@@ -169,16 +169,16 @@ variable "nodes" {
 }
       {{</ file >}}
 
-    The example file creates input variables referenced in the main configuration file created in the previous step. The values for those variables are assigned in a separate file in the next step. The k8s module's default values can be overridden, as seen in the example file. For more details about input variables, see the [Input Variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) section in our [A Beginner's Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/).
+    The example file creates input variables referenced in the main configuration file that was created. The values for those variables are assigned in a separate file in the next step. The default values of the k8s module can be overridden, as in the example file. For more details about input variables, see the [Input Variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) section in the [A Beginner's Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/).
 
-1. Create an input variables values file to provide the main configuration file with values that differ from the input variable file's defaults.
+1. Create an input variables values file to provide the main configuration file with values that differ from the defaults in input variable file.
 
       {{< file "~/terraform/k8s-cluster/terraform.tfvars">}}
 server_type_master = "g6-standard-4"
 cluster_name = "example-cluster-2"
       {{</ file >}}
 
-      In this example, the cluster's master node uses a `g6-standard-4` Linode plan, instead of the default `g6-standard-2`, and the `cluster_name` is set to `example-cluster-2`, instead of `example-cluster-1`.
+      In this example, the master node of the cluster uses a `g6-standard-4` Linode plan, instead of the default `g6-standard-2`, and the `cluster_name` is set to `example-cluster-2`, instead of `example-cluster-1`.
 
 ### Deploy the Kubernetes Cluster using Terraform
 
@@ -186,11 +186,11 @@ cluster_name = "example-cluster-2"
 
         terraform init
 
-1. Verify Terraform creates the cluster's resources as expected before making any actual changes to the infrastructure. To do this, run the `plan` command:
+1. Verify Terraform creates the resources of the cluster as expected before making any actual changes to the infrastructure. To do this, run the `plan` command:
 
         terraform plan
 
-    This command generates a report detailing what actions Terraform will take to set up the Kubernetes cluster.
+    This command generates a report detailing what actions Terraform takes to set up the Kubernetes cluster.
 
 1. If satisfied with the generated report, run the `apply` command to create the Kubernetes cluster. This command prompts confirmation to proceed.
 
@@ -202,39 +202,39 @@ cluster_name = "example-cluster-2"
 
 After Terraform finishes deploying the Kubernetes cluster, the `~/terraform/k8s-cluster/` directory should contain a file named `default.conf`. This file contains the [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. Use kubectl, along with this file, to gain access to the Kubernetes cluster.
 
-1. Save the kubeconfig file's path to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the Terraform directory created at the beginning of this guide. Ensure the command is updated with the location of the `default.conf` file:
+1. Save the path of the kubeconfig file to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the Terraform directory created at the beginning of this guide. Ensure the command is updated with the location of the `default.conf` file:
 
         export KUBECONFIG=~/terraform/k8s-cluster/default.conf
 
     {{< note >}}
-It is common practice to store kubeconfig files in `~/.kube` directory. By default, kubectl searches for a kubeconfig file named `config` that is located in the  `~/.kube` directory. Other kubeconfig files can be specified by setting the `$KUBECONFIG` environment variable, as done in the step above.
+It is common practice to store kubeconfig files in `~/.kube` directory. By default, kubectl searches for a kubeconfig file named `config` that is located in the  `~/.kube` directory. Other kubeconfig files can also be specified by setting the `$KUBECONFIG` environment variable.
 {{</ note >}}
 
-1. View the cluster's nodes using kubectl.
+1. View the nodes in the cluster using kubectl.
 
         kubectl get nodes
 
     {{< note >}}
-If the kubectl commands are not returning the resources and information you expect, then the client may be assigned to the wrong cluster context. Visit our [Troubleshooting Kubernetes](/docs/kubernetes/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
+If the kubectl commands are not returning the resources and information you expect, then the client may be assigned to the wrong cluster context. Visit the [Troubleshooting Kubernetes](/docs/kubernetes/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
 {{</ note >}}
 
 You are now ready to manage the cluster using kubectl. For more information about using kubectl, see the Kubernetes [Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
 
 ### Persist the Kubeconfig Context
 
-A new terminal window will not have access to the context specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in the shell's configuration file.
+A new terminal window does not have access to the context specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in the configuration file of the shell.
 
 {{< note >}}
-If using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) about how to persist a context.
+If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) to persist a context.
 {{< /note >}}
 
-These instructions are for the Bash shell (they are similar to other shells):
+These instructions are for the Bash shell and they are similar to other shells:
 
 1.  Navigate to the `$HOME/.kube` directory:
 
         cd $HOME/.kube
 
-1.  Create a directory called `configs` within `$HOME/.kube`. This directory can be used to store the kubeconfig files.
+1.  Create a directory named `configs` within `$HOME/.kube`. This directory can be used to store the kubeconfig files.
 
         mkdir configs
 
@@ -243,10 +243,10 @@ These instructions are for the Bash shell (they are similar to other shells):
         cp ~/terraform/k8s-cluster/default.conf $HOME/.kube/configs/default.conf
 
     {{< note >}}
-Optionally, the copied file may be given a different name to help distinguish it from other files in the `configs` directory.
+Optionally, you can provide the copied file a different name to help distinguish it from other files in the `configs` directory.
 {{< /note >}}
 
-1.  Open up the Bash profile (e.g. `~/.bashrc`) in a text editor and add the configuration file to the `$KUBECONFIG` PATH variable.
+1.  Open up the Bash profile (`~/.bashrc`) in a text editor and add the configuration file to the `$KUBECONFIG` PATH variable.
 
 If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, add this line to the end of the file:
 
@@ -265,7 +265,7 @@ CURRENT   NAME                                 CLUSTER             AUTHINFO     
 *         kubernetes-admin@example-cluster-1   example-cluster-1   kubernetes-admin
 {{</ output >}}
 
-1.  If your context is not already selected, (denoted by an asterisk in the `current` column), switch to this context using the `config use-context` command. Supply the full name of the cluster (including the authorized user and the cluster):
+1.  If your context is not already selected, which is denoted by an asterisk in the `current` column, switch to this context using the `config use-context` command. Supply the full name of the cluster including the authorized user and the cluster:
 
         kubectl config use-context kubernetes-admin@example-cluster-1
 
