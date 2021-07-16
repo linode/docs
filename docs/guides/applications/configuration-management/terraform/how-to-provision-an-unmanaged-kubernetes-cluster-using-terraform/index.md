@@ -265,7 +265,7 @@ Optionally, you can provide the copied file a different name to help distinguish
 
 1.  Open up the Bash profile (`~/.bashrc`) in a text editor and add the configuration file to the `$KUBECONFIG` PATH variable.
 
-If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, add this line to the end of the file:
+    If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, add this line to the end of the file:
 
         export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/default.conf
 
