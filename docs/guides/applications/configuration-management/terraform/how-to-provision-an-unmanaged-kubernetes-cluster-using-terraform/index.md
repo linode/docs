@@ -21,7 +21,7 @@ aliases: ['/applications/configuration-management/terraform/how-to-provision-an-
 deprecated: true
 ---
 
-[Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes (also referred to as K8s) cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes cluster running on Ubuntu, and simplifies many of the steps involved in manually deploying a Kubernetes cluster with [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/). After creating master and worker nodes, the module connects over SSH to these instances and installs kubeadm, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also handles initializing kubeadm, joining the worker nodes to the master, and configuring kubectl to control the cluster. Calico is installed for the container networking interface of the cluster, and a kubectl admin config file is installed to the local environment which connects to the API server of the cluster.
+[Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes(K8s) cluster running on Ubuntu, and simplifies many of the steps involved in deploying a Kubernetes cluster with [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/). After creating master and worker nodes, the module connects over SSH to these instances and installs kubeadm, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also initializes kubeadm, joins the worker nodes to the master, and configures kubectl to control the cluster. Calico is installed for the container networking interface of the cluster. A kubectl config file is installed to the local environment which connects to the API server of the cluster.
 
 
 
@@ -52,7 +52,15 @@ This guide was written using [Terraform version 0.12.24](https://www.hashicorp.c
 
 ## Configure the Local Environment
 
-Deploying a Kubernetes cluster with Linode's k8s Terraform module requires a local environment with a kubectl instance, a system-wide installation of Python, SSH keys, SSH keys configured with the SSH agent, and the `sed` and `scp` command-line utilities. The module's script `preflight.sh` verifies these requirements are installed on the local environment and generates a `$var not found` error if any of the tools are missing. In this section learn how to install and configure kubectl, set up the SSH agent, and create an environment variable to store the API v4 token.
+Deploying a Kubernetes cluster with Linode's K8s Terraform module requires:
+-  a local environment with a kubectl instance
+-  a system-wide installation of Python
+-  SSH keys, SSH keys configured with the SSH agent
+-  the `sed` and `scp` command-line utilities
+The module's script `preflight.sh` verifies these requirements are installed on the local environment and generates a `$var not found` error if any of the tools are missing. In this section learn how to:
+-  install and configure kubectl
+-  set up the SSH agent
+-  create an environment variable to store the API v4 token
 
 If there is an error stating the system is missing Python, scp, or sed, use the operating system's [package manager](https://www.linode.com/docs/tools-reference/linux-package-management/) to install the missing utilities.
 
@@ -71,7 +79,7 @@ Then, reinitialize `~/.bashrc` file for the changes to take effect.
 
 ### SSH Agent
 
-By default, Terraform uses the SSH agent of the operating syatem to connect to a Linode instance through SSH. In this section learn how to run the SSH agent and add the necessary SSH keys to it.
+By default, Terraform uses the SSH agent of the operating system to connect to a Linode instance through SSH. In this section learn how to run the SSH agent and add the necessary SSH keys to it.
 
 1. Run the SSH agent with the following command:
 
@@ -107,7 +115,7 @@ This variable needs to be supplied to every Terraform `apply`, `plan`, and `dest
 
 ## Create Terraform Configuration Files
 
-1. In the directory where Terraform was installed, create a new directory to store the configuration files of the k8s cluster.
+1. In the directory where Terraform was installed, create a new directory to store the configuration files of the K8s cluster.
 
         cd terraform
         mkdir k8s-cluster
@@ -205,7 +213,7 @@ cluster_name = "example-cluster-2"
 
         terraform apply -var-file="terraform.tfvars"
 
-    After a few minutes, when Terraform has finished applying the configuration, it displays a report of what actions were taken and the Kubernetes cluster is ready for you to connect to it.
+    After a few minutes, when Terraform has finished applying the configuration, it displays a report of the actions were taken. And the Kubernetes cluster is ready for you to connect to it.
 
 ### Connect to the Kubernetes cluster with kubectl
 
