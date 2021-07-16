@@ -1562,6 +1562,7 @@ superset
 supervisord
 supervisorctl
 surbma
+sury
 suse
 swappable
 svn
