@@ -52,13 +52,13 @@ Be clear on these distinctions:  GraphQL is a language defined outside Apollo.  
 
 ## What is the Apollo GraphQL Client?
 
-The initial GraphQL example above is about the name of a particular individual.  In the GraphQL model, such data is sent between a *client* and *server*:  the client issues a request to the server, and the server answers the client’s request.  The Apollo GraphQL client is open-source, freely-available software which expresses GraphQL queries, transmits them to a GraphQL server, and receives responses.  Because GraphQL is a public standard, it is possible to use an Apollo GraphQL client with any GraphQL server; the latter doesn’t have to be from Apollo.
+The initial GraphQL example above is about the name of a particular individual.  In the GraphQL model, such data is sent between a *client* and *server*:  the client issues a request to the server, and the server answers the client’s request.  The Apollo GraphQL client is open-source, freely-available software which expresses GraphQL queries, transmits them to a GraphQL server, and receives responses.  Because GraphQL is a public standard, it is possible to use an Apollo GraphQL client with any GraphQL server; the latter doesn't have to be from Apollo.
 
 ### Apollo GraphQL Client Example
 
 While Apollo provides extensive [documentation](https://www.apollographql.com/docs/), including high-quality [tutorials](https://www.apollographql.com/docs/tutorial/introduction/), this example is simpler, more direct, and more current than those in the Apollo tutorials.  Recall that GraphQL always communicates between a client and server.  Your first example client takes advantage of an open [GraphQL service](https://api.spacex.land/graphql/) that [SpaceX](https://www.spacex.com/) provides.  This allows you to focus entirely on the client’s side of communications.
 
-All the configuration which follows assumes a good installation of [npm](https://www.npmjs.com/) and [nodejs](https://nodejs.org/en/).
+All the configuration which follows assumes a good installation of [npm](https://www.npmjs.com/) and [Node.js](https://nodejs.org/en/).
 
 From a convenient command line, request
 
@@ -98,7 +98,7 @@ Launch `node client-example.mjs`.  You should immediately see a result similar t
 {"data":{"launchesPast":[{"__typename":"Launch","mission_name":"Starlink-15 (v1.0)"},{"__typename":"Launch","mission_name":"Sentinel-6 Michael Freilich"},{"__typename":"Launch","mission_name":"Crew-1"},{"__typename":"Launch","mission_name":"GPS III SV04 (Sacagawea)"},{"__typename":"Launch","mission_name":"Starlink-14 (v1.0)"},{"__typename":"Launch","mission_name":"Starlink-13 (v1.0)"},{"__typename":"Launch","mission_name":"Starlink-12 (v1.0)"},{"__typename":"Launch","mission_name":"Starlink-11 (v1.0)"},{"__typename":"Launch","mission_name":"SAOCOM 1B, GNOMES-1, Tyvak-0172"},{"__typename":"Launch","mission_name":"Starlink-10 (v1.0) & SkySat 19-21"}]},"loading":false,"networkStatus":7}
 {{< /output >}}
 
-This is only a starting point, of course.  It’s possible to configure the same query to run in the browser. The query can be expanded to provide more detail on each launch and the full power of Nodejs is available for a more complete application.  [React](https://reactjs.org/) is a natural complement to GraphQL; that means it’s natural to extend such projects as “[Create a CI/CD Pipeline](https://www.linode.com/docs/guides/install-gatsbyjs/)” with all the data available through GraphQL.
+This is only a starting point, of course.  It’s possible to configure the same query to run in the browser. The query can be expanded to provide more detail on each launch and the full power of Node.js is available for a more complete application.  [React](https://reactjs.org/) is a natural complement to GraphQL; that means it’s natural to extend such projects as “[Create a CI/CD Pipeline](https://www.linode.com/docs/guides/install-gatsbyjs/)” with all the data available through GraphQL.
 
 ## Apollo GraphQL vs REST
 
@@ -210,7 +210,7 @@ GraphQL is a big subject, and study of its best practices is a full-time underta
 
 - **Learn good GraphQL style**: The GraphQL Foundation maintains a page on [important issues](https://graphql.org/learn/best-practices/) and the best practices for dealing with them.
 
-- **Learn good Apollo GraphQL style**: Apollo has the good sense to support a [series on best practices](https://www.apollographql.com/blog/apollo-client/introducing-the-best-practices-series/).  It’s worth reading each of these, and [keeping up](https://www.apollographql.com/blog/search/?q=best+practices) as new ones emerge.  As it happens, though, obvious queries and summaries like the previous ones, don’t locate all the Apollo documentation on best practices. [This detailed page](https://www.apollographql.com/docs/react/data/operation-best-practices/) on design of queries and mutations is an example of one that doesn’t show up in Apollo’s own search results.
+- **Learn good Apollo GraphQL style**: Apollo has the good sense to support a [series on best practices](https://www.apollographql.com/blog/apollo-client/introducing-the-best-practices-series/).  It’s worth reading each of these, and [keeping up](https://www.apollographql.com/blog/search/?q=best+practices) as new ones emerge.  As it happens, though, obvious queries and summaries like the previous ones, don’t locate all the Apollo documentation on best practices. [This detailed page](https://www.apollographql.com/docs/react/data/operation-best-practices/) on design of queries and mutations is an example of one that doesn't show up in Apollo’s own search results.
 
 - **Take advantage of others**: As you progress in your GraphQL career, remember that the state of the art is rapidly advancing.  New tools for working with particular resources--Apollo GraphQL and Linode, Apollo GraphQL and GitHub, and so on--emerge almost daily.  You’ll go a lot farther when you make the most of the experience and discoveries of others who work in particular GraphQL specialties.
 
