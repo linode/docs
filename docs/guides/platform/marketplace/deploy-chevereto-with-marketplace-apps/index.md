@@ -48,5 +48,38 @@ After providing all required Linode Options, click on the **Create** button. **Y
 1. After Chevereto has finished installing,log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
          ssh root@192.0.2.0
-2. 
+2. You should see the Chevereto welcome message when logging into the Linode. This will include instructions for accessing the Chevereto installation script in your web browser along with the locatation of the credentials to the application. Replace `192.0.2.0` with your Linode’s IP address.
+
+![Chevereto Login Instruction](chevereto-login.png)
+
+3. You will then be able to proceed through the Chevereto Installer.
+
+![Chevereto Installer](chevereto-installer.png)
+
+4. In order to utilize Chevereto, you will need to obtain a license key, you can do so clicking the purchase button and entering the license key provided by Chevereto.
+
+![Chevereto License](chevereto-license.png)
+
+5. It will then prompt you with a page to connect you to a cPanel instance. This Marketplace App does not include a cPanel installation so you can simply select skip.
+
+![Chevereto cPanel](chevereto-cpanel.png)
+
+6. The database information for this application will appear and it should be prefilled with the user and password details.
+
+![Chevereto Database](chevereto-database.png)
+
+7. You will then be prompted to create the Administrator account, this will be the credentials to access your Chevereto dashboard.
+
+![Chevereto Administrator](chevereto-adminstrator.png)
+
+8. The next prompt will ask you for the email addresses that will be used for this service.
+
+![Chevereto Email](chevereto-emails.png)
+
+9. You are now ready to complete the Chevereto installation
+
+![Chevereto Final Install](chevereto-final_install.png)|
+
+Now that you’ve accessed your dashboard, checkout [the official Chevereto documentation](https://v3-docs.chevereto.com/) to learn how to further configure your instance.
+
 {{< content "marketplace-update-note">}}
