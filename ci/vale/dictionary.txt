@@ -816,11 +816,12 @@ lambdabunker
 laravel
 largebiomes
 launchd
-lego
 lbmethod
 lda
 ldap
+lego
 leiningen
+len
 lennart
 letsencrypt
 lf
