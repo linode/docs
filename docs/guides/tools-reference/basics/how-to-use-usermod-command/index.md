@@ -3,15 +3,17 @@ slug: what-is-usermod-and-how-to-use-it
 author:
   name: Linode Community
   email: docs@linode.com
-description: "How to use usermod in Linux to change a user’s home directory, login name, groups,  user shell, and more."
-og_description: "How to use usermod in Linux to change a user’s home directory, login name, groups, user shell, and more."
+description: "How to use usermod command in Linux to change a user’s home directory, login name, groups, user shell, and more."
+og_description: "How to use usermod command in Linux to change a user’s home directory, login name, groups, user shell, and more."
 keywords: ['usermod','usermod linux','usermod command']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-11
 modified_by:
   name: Nathaniel Stickman
 title: "What is usermod, and How do I Use It?"
 h1_title: "What is usermod, and How do I Use It?"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -19,16 +21,16 @@ external_resources:
 - '[usermod - Ubuntu Manpage](https://manpages.ubuntu.com/manpages/xenial/en/man8/usermod.8.html)'
 ---
 
-The `usermod` command allows you to modify a Linux user's settings. How does it work, and how does it relate to other Linux commands? Find out in this guide on what `usermod` is and how to use it.
+The `usermod` command allows you to modify a Linux user's settings. How does it work, and how does it relate to other Linux commands? Find out in this guide what `usermod` is and how to use it.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is usermod?
@@ -51,7 +53,7 @@ You can use `usermod` to change a user's primary group with the `-g` option. Her
 
     sudo usermod -g example-group example-user
 
-Take a look at the results with the `id` command:
+Take a look at the results with the `id` command.
 
     sudo id example-user
 
@@ -65,11 +67,11 @@ Note that the group — `example-group` in the command above — has to already 
 
 To assign a user to one or more supplementary groups, use the `-aG` option instead. This option can assign multiple groups at once, separating each with a comma (no space):
 
-    sudo usermod -aG groupA,groupB,groupC exapmple-user
+    sudo usermod -aG groupA,groupB,groupC example-user
 
 Here, the `-a` option is used to have these groups appended to the user's list of supplementary groups. Without it — just `-G` — the user gets removed from any supplementary groups that are not listed in the command.
 
-Here is what the user's `id` information may look like after the command above:
+Here is what the user's `id` information may look like after the command above.
 
 {{< output >}}
 uid=1001(example-user) gid=1002(example-group) groups=1002(example-group),1003(groupA),1004(groupB),1005(groupC)
@@ -77,15 +79,15 @@ uid=1001(example-user) gid=1002(example-group) groups=1002(example-group),1003(g
 
 ## How do I Use usermod to Change a User's Home Directory?
 
-Use the `-d` option to change the user's home directory:
+Use the `-d` option to change the user's home directory.
 
     sudo usermod -d /home/example-user-new-home example-user
 
-You can add the `--move-home` option to also have the contents of the user's existing home directory moved to the new directory:
+You can add the `--move-home` option to also have the contents of the user's existing home directory moved to the new directory.
 
     sudo usermod --home /home/example-user-new-home --move-home example-user
 
-You can verify the change by echoing the user's home directory:
+You can verify the change by echoing the user's home directory.
 
     echo ~example-user
 
@@ -101,7 +103,7 @@ You can verify the change by echoing the user's home directory:
 
 Changing a user's login name does not change the name of that user's home directory. Reference the previous section if you want to change the user's home directory to match.
 
-Running the `sudo id example-user` command should now output an error, since the user's login name has changed:
+Running the `sudo id example-user` command should now output an error since the user's login name has changed.
 
 {{< output >}}
 id: ‘example-user’: no such user
@@ -113,11 +115,11 @@ You can lock and unlock user accounts with `usermod`. Locking an account allows 
 
 ### Locking a User's Account with usermod
 
-To lock a user's account, use the `-L` option:
+To lock a user's account, use the `-L` option.
 
     sudo usermod -L example-user
 
-Locked users display with an exclamation point after their login names, right at the start of their encrypted passwords, in the `/etc/shadow` file. So, here is what an entry for `example-user` may look like:
+Locked users display with an exclamation point after their login names, right at the start of their encrypted passwords, in the `/etc/shadow` file. So, here is what an entry for `example-user` may look like.
 
     sudo cat /etc/shadow | grep example-user
 
@@ -127,11 +129,11 @@ example-user:![encrypted_password]:[...]
 
 ### Unlocking a User's Account with usermod
 
-To unlock a user's account, use the `-U` option:
+To unlock a user's account, use the `-U` option.
 
     sudo usermod -U example-user
 
-Now the entry for `example-user` in the `/etc/shadow` file should lose its exclamation point:
+Now the entry for `example-user` in the `/etc/shadow` file should lose its exclamation point.
 
     sudo cat /etc/shadow | grep example-user
 
@@ -150,20 +152,20 @@ In the above example, the `example-user` user account automatically deactivates 
     sudo chage -l example-user
 
 {{< output >}}
-Last password change					: Jun 30, 2021
-Password expires					: never
-Password inactive					: never
-Account expires						: Jul 30, 2021
-Minimum number of days between password change		: 0
-Maximum number of days between password change		: 99999
-Number of days of warning before password expires	: 7
+Last password change     : Jun 30, 2021
+Password expires     : never
+Password inactive     : never
+Account expires      : Jul 30, 2021
+Minimum number of days between password change  : 0
+Maximum number of days between password change  : 99999
+Number of days of warning before password expires : 7
 {{< /output >}}
 
 ## How to Change a User's Shell with usermod
 
-Use the `-s` option with `usermod` to define a user's shell. This option takes a path to the shell's binary. Leaving the option blank assigns the user the default shell for the system.
+Use the `-s` option with `usermod` to define a user's shell. This option takes a path to the shell's binary. Leaving the options blank assigns the user the default shell for the system.
 
-Here is an example that assigns the user the Bash shell:
+Here is an example that assigns the user the Bash shell.
 
     sudo usermod -s /bin/bash example-user
 
@@ -179,7 +181,7 @@ example-user:[...]:/bin/bash
 
 ### Changing a User's UID with usermod
 
-You can change a user's user ID (UID) number with the `-u` option. The UID needs to be a unique, non-negative number. Additionally, the number should not fall between 0 and 999, since that range tends to be reserved for system accounts:
+You can change a user's user ID (UID) number with the `-u` option. The UID needs to be a unique, non-negative number. Additionally, the number should not fall between 0 and 999, since that range tends to be reserved for system accounts.
 
     sudo usermod -u 1234 example-user
 
@@ -199,7 +201,7 @@ Changing a user's group ID (GID) number takes the same `usermod` option as chang
 
 Remember that the group must already exist — with the intended GID — for this option to work.
 
-Again, you can verify the change with the `id` command:
+Again, you can verify the change with the `id` command.
 
     sudo id example-user
 
