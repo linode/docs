@@ -21,6 +21,7 @@ Do you retrieve data from multiple on-line sources to such limited-bandwidth [ed
 
 A fundamental type of the GraphQL language is the query.  An example representation of a query is
 
+{{< output >}}
       {
         realtor {
             # GraphQL supports comments.
@@ -29,6 +30,7 @@ A fundamental type of the GraphQL language is the query.  An example representat
             name
         }
       }
+{{< /output >}}
 
 The result of such a query might be
 
