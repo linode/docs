@@ -48,8 +48,11 @@ You can quickly experience Paramiko for yourself: create `first_experiment.py` w
 import paramiko
 
 command = "df"
+
 # Update the next three lines with your
-# server's information.
+
+# server's information
+
 host = "YOUR_NUMERIC_IP_ADDRESS"
 username = "YOUR_ACCOUNT"
 password = "YOUR_PASSWORD"
@@ -57,7 +60,7 @@ password = "YOUR_PASSWORD"
 client = paramiko.client.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 client.connect(host, username=username, password=password)
-stdin, _stdout, _stderr = client.exec_command("df")
+stdin, _stdout,_stderr = client.exec_command("df")
 print(stdout.read().decode())
 client.close()
 {{< /file >}}
@@ -69,13 +72,13 @@ Execute the file with the following command:
 You’ll see a result such as:
 
 {{< output >}}
-Filesystem      	1K-blocks 	Used Available Use% Mounted on
-devtmpfs          	1921544    	0   1921544   0% /dev
-tmpfs             	1936296    	0   1936296   0% /dev/shm
-tmpfs             	1936296   211308   1724988  11% /run
-tmpfs             	1936296    	0   1936296   0% /sys/fs/cgroup
+Filesystem       1K-blocks  Used Available Use% Mounted on
+devtmpfs           1921544     0   1921544   0% /dev
+tmpfs              1936296     0   1936296   0% /dev/shm
+tmpfs              1936296   211308   1724988  11% /run
+tmpfs              1936296     0   1936296   0% /sys/fs/cgroup
 /dev/mapper/cl-root  46110724 20501872  25608852  45% /
-/dev/sda1          	999320   187324	743184  21% /boot
+/dev/sda1           999320   187324 743184  21% /boot
 {{< /output >}}
 
 The example above provides a high-level example you can use to incorporate Paramiko into your Python code. While everything Paramiko does can also be done, in principle, with shell commands, Paramiko gives you all the power of Python programming. Programs beyond a couple of pages of shell scripting benefit from Python’s facilities for structuring data, looping, parsing, and so on. If your programming is beyond the “Hello, world!” level, and you need to connect through SSHv2, you probably need the advantages Paramiko brings. If for instance, you’re developing “business logic” based on `Use%` of different filesystems of your servers, you’ll probably find the parsing to extract those values from `df`’s output, and the arithmetic to act on them, easier in Python.
@@ -85,45 +88,48 @@ The example above provides a high-level example you can use to incorporate Param
 Paramiko is useful for tasks across networked servers. A second, more ambitious example; one that illustrates intermediate-level use of Paramiko. One of Paramiko’s specific strengths is the correct handling of keys. The introductory example above depended on the use of a password. More professional work, though, is likely to configure servers so communications between them are hardened to avoid the use of passwords in favor of secured keys. Assume that you have such a network. A fleet of worker nodes each of which can be accessed at the command line by $AUTOMATION_ACCOUNT through a password-less login. In such a system, you can rely on the same SSHv2 keys to write and launch.
 
 {{< file "key_based_login.py">}}
+
 # This is a small tool to report on successful logins
+
 # to accounts other than those listed in the variable
+
 # expected.  Such a report might lead to an investigation
-# into how and why those other accounts were logging in.
+
+# into how and why those other accounts were logging in
+
 import paramiko
 
 def examine_last(server, connection):
      command = "sudo last"
      expected = ["user1", "reboot", "root", "sys-admin"]
-	_stdin, stdout, _stderr = connection.exec_command("sudo last")
-	lines = stdout.read().decode()
-	connection.close()
-	for line in lines.split("\n"):
+ _stdin, stdout, _stderr = connection.exec_command("sudo last")
+ lines = stdout.read().decode()
+ connection.close()
+ for line in lines.split("\n"):
            # Ignore the last line of the last report.
-        	if line.startswith("wtmp begins"):
-            	break
-    	    parts = line.split()
-    	    if parts:
-        	    account = parts[0]
-        	    if not account in EXPECTED:
-            	    print(f"Entry '{line}' is a surprise on {server}.")
+         if line.startswith("wtmp begins"):
+             break
+         parts = line.split()
+         if parts:
+             account = parts[0]
+             if not account in EXPECTED:
+                 print(f"Entry '{line}' is a surprise on {server}.")
 
 def key_based_connect(server):
      host = "192.0.2.0"
      special_account = "user1"
-	pkey = paramiko.RSAKey.from_private_key_file("./id_rsa")
-	client = paramiko.SSHClient()
+ pkey = paramiko.RSAKey.from_private_key_file("./id_rsa")
+ client = paramiko.SSHClient()
      policy = paramiko.AutoAddPolicy()
           client.set_missing_host_key_policy(policy)
-	client.connect(host, username=special_account, pkey=pkey)
-	return client
-
+ client.connect(host, username=special_account, pkey=pkey)
+ return client
 
 def main():
      server_list = ["worker1", "worker2", "worker3"]
-	for server in server_list:
-    	    connection = key_based_connect(server)
-    	    examine_last(server, connection)
-
+ for server in server_list:
+         connection = key_based_connect(server)
+         examine_last(server, connection)
 
 main()
 {{< /file >}}
@@ -131,7 +137,7 @@ main()
 The result of running the above Python code might be:
 
 {{< output >}}
-Entry 'user4   pts/0    	192.0.2.0 	Wed Sep 23 15:13 - 17:28  (02:14)' is a surprise on 192.0.2.0.
+Entry 'user4   pts/0     192.0.2.0  Wed Sep 23 15:13 - 17:28  (02:14)' is a surprise on 192.0.2.0.
 
 {{< /output >}}
 
