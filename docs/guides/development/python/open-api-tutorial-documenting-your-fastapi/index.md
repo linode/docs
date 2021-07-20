@@ -16,6 +16,9 @@ enable_h1: true
 contributor:
   name: Chelsea Troy
   link: twitter.com/HeyChelseaTroy
+external_resources:
+- '[OpenAPI Swagger Specification](https://swagger.io/specification/)'
+- '[OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.1.0)'
 ---
 
 FastAPI automatically generates an OpenAPI schema that can be accessed by your API's users to learn about your API's features. This guide introduces how FastAPI creates documentation from your code. It also shows you how to provide custom information related to your API, if necessary. For example, you may want to modify an endpoint's description or label a field if they are deprecated.
