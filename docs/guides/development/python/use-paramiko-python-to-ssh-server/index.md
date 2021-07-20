@@ -16,6 +16,10 @@ h1_title: "How to Use Paramiko and Python to SSH into a Server"
 enable_h1: true
 contributor:
   name: Cameron Laird
+external_resources:
+- '[Python Subprocess Module](https://docs.python.org/3/library/subprocess.html)'
+- '[Paramiko GitHub](https://github.com/paramiko/paramiko)'
+- '[An Introduction to SSHv2](https://searchsecurity.techtarget.com/tip/An-introduction-to-SSH2)'
 ---
 
 As a Python programmer, you’re probably familiar with the [*subprocess* module](https://docs.python.org/3/library/subprocess.html). Subprocess gives Python power over other applications: it’s the main way we execute other programs, including all the commands that a particular operating system builds. For historical and security reasons, the subprocess stumbles with password entry and other authentication methods. When your Python program needs to run an external password-dependent program, or access a different computer through a network connection, or both, you need [*Paramiko*](https://github.com/paramiko/paramiko).
