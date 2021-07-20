@@ -64,11 +64,13 @@ When an invoice is generated on the first of the month (or mid-month), Linode au
 
 ### Payment Methods
 
-- **Credit cards:** Visa, MasterCard, Discover, and American Express credit (and debit) cards are accepted. They can be used to both automatically pay your invoice and to manually add funds to the account. Review the [Updating Credit Card Information](/docs/guides/manage-billing-in-cloud-manager/#updating-credit-card-information) section to update your credit card on file.
+- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account. Review the [Updating Credit Card Information](/docs/guides/manage-billing-in-cloud-manager/#updating-credit-card-information) section to update your credit card on file.
 
-- **PayPal:** PayPal can be used to manually add funds to your account. At this time, it cannot be used as the account's default payment method to automatically pay monthly invoices. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
+- **Google Pay:** Pay using your Google Pay balance or any payment method added to your Google Pay account, including a credit/debit card, bank account, or PayPal.
 
-- **Checks, ACH, and wire transfers:** Please [contact Support](/docs/guides/support/) if you wish to pay through one of these methods.
+- **PayPal:** Pay using your PayPal balance or any payment method added to your PayPal account. At this time, PayPal can only be used to manually add funds to your account. It cannot be used as the account's default payment method to automatically pay monthly invoices. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
+
+- **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
 
 The address affiliated with a payment method should match the [Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information) on the account.
 
