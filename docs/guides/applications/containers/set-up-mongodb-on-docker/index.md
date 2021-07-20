@@ -3,11 +3,11 @@ slug: set-up-mongodb-on-docker
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A how to guide explaining how to install Mongo DB on a Docker container using CentOS 7 on a Linode for the example.'
+description: 'A guide explaining how to install Mongo DB on a Docker container utilizing a Docker image using CentOS 7 on a Linode example.'
 keywords: ["docker", "mongodb", "mongodb container", "docker mongodb container", "install mongodb docker", "configure mongodb docker"]
 tags: ["container","docker","mongodb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-28
+published: 2021-07-20
 modified_by:
   name: Linode
 title: "How to Set Up MongoDB on Docker"
@@ -16,7 +16,7 @@ contributor:
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
 ---
-MongoDB is an open-source NoSQL database utilizing JSON-like documents and schemata that support rapid iterative development. Its scale-out architecture has become popular with application developers who use agile methodologies to move quickly. As it's popular within the agile community, using it with Docker for a *continuous integration and development* (CI/CD) workflow is also very popular.
+MongoDB is an open-source NoSQL database utilizing JSON-like documents and schemata that support rapid iterative development. Its scale-out architecture has become popular with application developers who use agile methodologies to move quickly. As it's popular within the agile community, using it with Docker for a *continuous integration and development* (CI/CD) workflow.
 
 ## Before You Begin
 
@@ -28,9 +28,13 @@ MongoDB is an open-source NoSQL database utilizing JSON-like documents and schem
 
 ## How to Install a MongoDB Docker Container
 
-Docker makes creating a MongoDB image very easy, as they keep [an officaly maintained version at the Docker Hub](https://hub.docker.com/_/mongo). To install it:
+Docker makes creating a MongoDB image very easy, as they keep [an officially maintained version at the Docker Hub](https://hub.docker.com/_/mongo). To install it:
 
-1.  Open your terminal and enter `docker pull mongodb`. The output will progress as it downloads and ends up looking like this:
+1.  At the terminal, enter the following:
+
+        docker pull mongodb
+
+The output will progress as it downloads and resembles the following:
     {{< output >}}
 Using default tag: latest
 latest: Pulling from library/mongo
@@ -54,15 +58,25 @@ docker.io/library/mongo:latest
 This command pulls the latest version by default (as it says in the first line of the output). To pull a specific version, add the tag for that version to the command. If you wanted MongoDB 4.4.6, for example, you would enter `docker pull mongo:4.4.6`.
 {{< /note >}}
 
-2.  Enter `docker images` to ensure the image is there. The output should look like this:
+2.  Ensure the image has been installed.
+
+        docker images
+
+The output should look like this:
     {{< output >}}
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 mongo        latest    07630e791de3   2 weeks ago   449MB
 {{< /output >}}
 
-3.  To create the container so it's running detached and still interactive on the system, enter `docker run --name mongo_example -d mongo` will do this.
+3.  Create the container so it's running detached and still interactive on the system, enter:
 
-4.  Enter `docker ps` to make sure it's running. The output should look like this:
+        docker run --name mongo_example -d mongo
+
+4.  Ensure the container is running:
+
+        docker ps
+
+The output should look like this:
     {{< output >}}
 CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS       NAMES
 1f88d00b9e78   mongo     "docker-entrypoint.s…"   4 seconds ago   Up 4 seconds   27017/tcp   mongo_example
@@ -72,11 +86,15 @@ MongoDB is now running as a Docker Container.
 
 ## How to Log Into MongoDB on the Container
 
-1.  Enter `docker exec -it mongo_example bash`.
+1.  Enter the following to gain the bash prompt within the container:
 
-2.  Once in the container's command prompt, enter `mongo`.
+        docker exec -it mongo_example bash
 
-3.  That will bring you to the `mongo` Shell prompt and the output will look something like this:
+2.  Once at the container's command prompt, enter:
+
+        mongo
+
+That will bring you to the `mongo` shell prompt and the output will look something like this:
     {{< output >}}
 MongoDB shell version v4.4.6
 connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
@@ -111,7 +129,13 @@ The server generated these startup warnings when booting:
 
 ## How to Configure MongoDB in a Docker Container
 
-For details on configuring MongoDB, see the [MongoDB manual](https://docs.mongodb.com/manual/). However, `mongod` (MongoDB's primary daemon) flags are usually set to configure MongoDB, and the `docker run` command is designed to pass the `mongod` flags. If you wanted to turn off the scripting engine, for example, you would add the flag to the end of the command, like `docker run --name mongo_example2 -d mongo --noscripting`. If you wanted to turn off the scripting engine and turn on IPv6, the command would be like `docker run --name mongo_example2 -d mongo --noscripting-ipv6`.
+For details on configuring MongoDB, see the [MongoDB manual](https://docs.mongodb.com/manual/). However, `mongod` (MongoDB's primary daemon) flags are usually set to configure MongoDB, and the `docker run` command is designed to pass the `mongod` flags. If you wanted to turn off the scripting engine, for example, you would add the flag to the end of the command, like the following:
+
+        docker run --name mongo_example2 -d mongo --noscripting
+
+If you wanted to turn off the scripting engine and turn on IPv6, the command would be as follows:
+
+        docker run --name mongo_example2 -d mongo --noscripting-ipv6
 
 ## How to Save MongoDB data from a Docker Container
 
@@ -121,9 +145,13 @@ Since MongoDB is being run on a Docker Container, its data won't persist when it
 
 Creating and adding a volume for the container to use is straightforward if you are familiar with Docker.
 
-1.  Create a Docker Volume for the data to reside on by entering `docker volume create mongo_volume`.
+1.  Create a Docker Volume for the data to reside on by entering the following:
 
-2.  Then create a `docker run` command to attach the volume to the container and map it to the /data/db directory by entering `docker run -it -v mongo_volume:/data/db --name mongo_example3 -d mongo`.
+        docker volume create mongo_volume
+
+2.  Then create a `docker run` command to attach the volume to the container and map it to the `/data/db` directory by entering:
+
+        docker run -it -v mongo_volume:/data/db --name mongo_example3 -d mongo
 
 ### Mounting a Host System Directory in a MongoDB Docker Container
 
@@ -131,9 +159,13 @@ If you want data to persist and access the data outside of Docker, then using a 
 
 To mount a host system directory:
 
-1.  Create a directory on your system (if you don't have one you want to use) at the root level of your system by entering `sudo mkdir -p mongo_data_directory`.
+1.  Create a directory on your system (if you don't have one you want to use) at the root level of your system by entering:
 
-2.  Then create a `docker run` command to mount the directory and map it to /data/db by entering `docker run -it -v /mongo_data_directory:/data/db --name mongo_example4 -d mongo`.
+        sudo mkdir -p mongo_data_directory`
+
+2.  Then create a `docker run` command to mount the directory and map it to `/data/db` by entering:
+
+        docker run -it -v /mongo_data_directory:/data/db --name mongo_example4 -d mongo
 
 ## Further Reading
 
