@@ -103,9 +103,9 @@ MongoDB server version: 4.4.6
 Welcome to the MongoDB shell.
 For interactive help, type "help".
 For more comprehensive documentation, see
-	https://docs.mongodb.com/
+    https://docs.mongodb.com/
 Questions? Try the MongoDB Developer Community Forums
-	https://community.mongodb.com
+    https://community.mongodb.com
 ---
 The server generated these startup warnings when booting:
         2021-05-29T16:19:14.757+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
@@ -124,7 +124,6 @@ The server generated these startup warnings when booting:
         To enable free monitoring, run the following command: db.enableFreeMonitoring()
         To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
 ---
->
 {{< /output >}}
 
 ## How to Configure MongoDB in a Docker Container
