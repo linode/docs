@@ -1,0 +1,41 @@
+{{ $schemaCommonParts := partialCached "partials/sections/head-structured-data-parts" . }}
+{{ $schemaBase := dict  
+    "@context" "https://schema.org" 
+    "@type" "NewsArticle"
+    "headline" .Title
+    "datePublished" .PublishDate
+    "dateModified" .Lastmod
+    "publisher"  $schemaCommonParts.publisher
+}}
+{{ $schema := dict  }}
+{{/* We look for structured data in a file called structured-data.json in the same folder as the content file (index.md/_index.md) */}}
+{{ $schemaFile := .Resources.GetMatch "structured-data.json" }}
+{{ with $schemaFile }}
+  {{ with .Content }}
+    {{ $schema = . | transform.Unmarshal | merge $schemaBase }}
+  {{ else }}{{ end }}
+{{ else }}
+  {{/* Fall back to a generic schema. */}}
+  {{ $schema = dict  
+        "@type" "NewsArticle"
+  }}
+{{ end }}
+{{ $schema = $schema | merge $schemaBase }}
+{{ $script := printf `<script type="application/ld+json">%s%s%s</script>` "\n\t" ($schema | jsonify ) "\n" }}
+{{ $script | safeHTML }}
+
+{{ define "partials/sections/head-structured-data-parts" }}
+  {{ $logo := "media/images/linode-logo-black.png" | absURL }}
+  {{ $publisher := printf `{
+    "@type": "Organization",
+    "name": "Linode",
+    "logo": {
+      "@type": "ImageObject",
+      "url": %q
+    }
+  }` $logo | transform.Unmarshal }}
+
+
+  {{ $parts := dict "publisher" $publisher }}
+  {{ return $parts }}
+{{ end }}

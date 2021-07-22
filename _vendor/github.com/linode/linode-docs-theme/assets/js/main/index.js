@@ -58,6 +58,12 @@ window.lnh = {
 		//  Alpine.listenForNewUninitializedComponentsAtRunTime()
 	};
 
+	// Set up a global function to send events to Google Analytics.
+	window.gtag = function(event) {
+		this.dataLayer = this.dataLayer || [];
+		this.dataLayer.push(event);
+	};
+
 	let turbolinksLoaded = false;
 	let pushGTag = function(eventName) {
 		let event = {
