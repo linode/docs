@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-22
 modified_by:
   name: Linode
-title: "What is a Service Mesh"
+title: "What is a Service Mesh?"
 h1_title: "The Benefits of a Service Mesh"
 enable_h1: true
 contributor:
