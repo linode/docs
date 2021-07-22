@@ -3,10 +3,10 @@ publish = "public"
 command = "hugo version && hugo --gc --minify -d public/docs;"
 
 [context.production.environment]
-HUGO_VERSION = "0.80.0"
+HUGO_VERSION = "0.83.1"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.80.0"
+HUGO_VERSION = "0.83.1"
 NODE_VERSION = "13.4.0"
 
 [[plugins]]
