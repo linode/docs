@@ -28,7 +28,7 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 
    104.237.137.10
    65.19.178.10
-   75.127.96.10
+   74.207.225.10
    207.192.70.10
    109.74.194.10
    2600:3c00::a

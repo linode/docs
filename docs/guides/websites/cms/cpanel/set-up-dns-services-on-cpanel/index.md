@@ -67,7 +67,7 @@ The transfer of DNS records from your Master DNS server to the Linode DNS server
 allow-transfer {
      104.237.137.10;
      65.19.178.10;
-     75.127.96.10;
+     74.207.225.10;
      207.192.70.10;
      109.74.194.10;
      2600:3c00::a;
@@ -79,7 +79,7 @@ allow-transfer {
  also-notify {
      104.237.137.10;
      65.19.178.10;
-     75.127.96.10;
+     74.207.225.10;
      207.192.70.10;
      109.74.194.10;
      2600:3c00::a;
