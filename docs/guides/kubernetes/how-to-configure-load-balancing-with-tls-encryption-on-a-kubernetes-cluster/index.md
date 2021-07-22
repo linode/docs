@@ -234,7 +234,7 @@ To enable HTTPS on your example application, you will create a Transport Layer S
 In this section you will install cert-manager using Helm and the required cert-manager [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CRDs). Then, you will create a [ClusterIssuer](https://cert-manager.io/docs/concepts/issuer/) resource to assist in creating a cluster's TLS certificate.
 
 {{< note >}}
-If you would like a deeper dive into cert-manager, see our guide [’’]().
+If you would like a deeper dive into cert-manager, see our guide [What is Kubernetes cert-manager?](https://www.linode.com/docs/guides/what-is-kubernetes-cert-manager/).
 {{</ note >}}
 
 ### Install cert-manager
