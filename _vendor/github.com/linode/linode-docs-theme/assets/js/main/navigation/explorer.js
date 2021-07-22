@@ -135,9 +135,7 @@ export function newSearchExplorerController(searchConfig) {
 						// Load everything in one query.
 						let sectionName = activeNodeKey.split('>')[0].trim();
 						dispatcher.searchNodes({
-							data: [
-								{ key: activeNodeKey, section: { config: searchConfig.sections[sectionName] } }
-							]
+							data: [ { key: activeNodeKey, section: { config: searchConfig.sections[sectionName] } } ]
 						});
 					} else {
 						dispatcher.searchBlank();
@@ -362,7 +360,7 @@ export function newSearchExplorerController(searchConfig) {
 
 			n.isDisabled = function() {
 				return false;
-			}
+			};
 
 			n.isLeaf = function() {
 				return this.kind === 'page' || (this.level > 1 && (this.count === 0 || this.isGhostSection));
@@ -488,9 +486,22 @@ export function newSearchExplorerController(searchConfig) {
 
 					n.isDisabled = function() {
 						return this.disabled || this.count === 0;
-					}
+					};
 
 					n.toggleOpen = function(loadPagesOnNextTick = false) {
+						// Send tracking event to GA:
+						let wasOpen = this.open;
+						setTimeout(function() {
+							let event = {
+								event: 'gaEvent',
+								eventCategory: 'Explore Nav',
+								eventAction: wasOpen ? 'Close' : 'Open',
+								eventLabel: n.key,
+								nonInteraction: true
+							};
+							window.gtag(event);
+						}, 0);
+
 						if (!this.open) {
 							// Close open nodes on the same or lower level.
 							self.data.walk(this.parent, function(nn) {
@@ -597,7 +608,6 @@ export function newSearchExplorerController(searchConfig) {
 			return this.data.searchState.mainSearch.results;
 		},
 
-		
 		// Update hidden state and facet counts based on a updated search result.
 		filterNodes: function() {
 			debug('filterNodes', this.data);

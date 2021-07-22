@@ -185,3 +185,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 {{< /file >}}
+
+
+## Styles
+
+* This is a [**Bold Link**](https://example.com).
+* This is a [*Italic Link*](https://example.com).

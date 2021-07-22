@@ -80,7 +80,7 @@
             </template>
             <template x-if="!node.isPage()">
               <div class="z-10" x-show="!data.disabled && !node.isLeaf()">
-                <button type="button" name="open" class="btn-icon h-full flex items-center justify-center" 
+                <button type="button" name="open" aria-label="open" class="btn-icon h-full flex items-center justify-center"
                 x-bind:disabled="node.isDisabled()"
                 x-bind:class="{ 'text-gray-200': node.isDisabled(), 'text-textcolor': !node.isDisabled() }"
                 @click.stop="node.toggleOpen()" @mouseover.once.stop="node.loadPages()" :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`">
