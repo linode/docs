@@ -1,38 +1,34 @@
 ---
-slug: how-to-install-hashicorp-consul
+slug: how-to-install-hashicorp-consul-service-mesh
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "HashiCorp's Consul service mesh can centralize operational tasks around your application's services. Its tools for service discovery and monitoring help you maintain your distributed, cloud-based applications. This guide shows you how to install and start using Consul on a Kubernetes cluster."
-og_description: "HashiCorp's Consul service mesh can centralize operational tasks around your application's services. Its tools for service discovery and monitoring help you maintain your distributed, cloud-based applications. This guide shows you how to install and start using Consul on a Kubernetes cluster."
-keywords: ['hashicorp consul','consul service mesh','kubernetes services','linode kubernetes engine','lke']
-tags: ['kubernetes', 'hashicorp']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-29
-modified_by:
   name: Nathaniel Stickman
-title: "How to Install HashiCorp's Consul"
-h1_title: "How to Install HashiCorp's Consul Service Mesh"
+description: 'HashiCorp''s Consul service mesh centralizes operational tasks around your application''s services. Its tools for service discovery and monitoring help you maintain your distributed, cloud-based applications. This guide shows you how to install and start using Consul on a Kubernetes cluster.'
+og_description: 'HashiCorp''s Consul service mesh centralizes operational tasks around your application''s services. Its tools for service discovery and monitoring help you maintain your distributed, cloud-based applications. This guide shows you how to install and start using Consul on a Kubernetes cluster.'
+keywords: ['what is consul hashicorp', 'how to install hashicorp consul']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-23
+modified_by:
+  name: Linode
+title: "How to Install Hashicorp Consul Service Mesh"
+h1_title: "How to Install HashiCorp Consul"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Hashicorp Consul Overview](https://www.consul.io/)'
-- '[What Is a Service Mesh?](/docs/guides/what-is-service-mesh/)'
-- "[Helm's Installing Guide](https://helm.sh/docs/intro/install/)"
 - '[Consul and Kubernetes Deployment Guide](https://learn.hashicorp.com/tutorials/consul/kubernetes-deployment-guide?in=consul/kubernetes)'
 - '[Helm Chart Configuration](https://www.consul.io/docs/k8s/helm)'
-- "[Hashicorp's Consul Tutorials](https://learn.hashicorp.com/consul)"
 ---
 
-[Consul](https://www.consul.io/) is a service mesh offered by HashiCorp, with robust service discovery and diagnostic features for managing your application's services. You can learn more about service meshes in our guide [What Is a Service Mesh?](/docs/guides/what-is-service-mesh/). Consul in particular offers a balanced approach between flexibility and usability that makes it a compelling option for managing your service-oriented applications.
+[Consul](https://www.consul.io/) is a service mesh offered by HashiCorp, with robust service discovery and diagnostic features for managing your application's services. You can learn more about service meshes in our guide [What Is a Service Mesh?](/docs/guides/what-is-service-mesh/). Consul offers a balanced approach between flexibility and usability that makes it a compelling option for managing your service-oriented applications.
 
-In this guide, you can see how to install and get started using the Consul service mesh with a Kubernetes cluster. You can get started with Kubernetes with our [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/).
+In this guide, you can see how to install and get started using the Consul service mesh with a Kubernetes cluster. You can get started with Kubernetes with our [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/) (LKE).
 
 ## Before You Begin
 
-Follow the [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) guide to create a Kubernetes cluster using the Linode Kubernetes Engine (LKE), install `kubectl` on your local machine, and add your cluster's `kubeconfig`.
+- Follow the [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) guide to create a Kubernetes cluster using LKE.
+- Make sure you install `kubectl` on your local machine and download your cluster's `kubeconfig` file.
 
 ## Setting Up Consul
 
@@ -40,7 +36,7 @@ This section shows how to install and start using Consul with your Kubernetes cl
 
 ### Install Helm
 
-Helm is the standard method for installing Consul with Kubernetes. You can follow the steps below to install it. The details in these steps assume a local machine running Linux on an AMD64 processor. However, they also work for macOS and other processors with slight modification. For more details on the installation process, refer to Helm's [official installation instructions](https://helm.sh/docs/intro/install/).
+Helm is the standard method for installing Consul with Kubernetes. The details in the steps below assume a local machine running Linux on an AMD64 processor. However, they also work for macOS and other processors with slight modifications. For more details on the installation process, refer to Helm's [official installation instructions](https://helm.sh/docs/intro/install/).
 
 1. Change into your current user's home directory, and download the `tar.gz` containing the Helm binary.
 
@@ -84,7 +80,25 @@ Hang tight while we grab the latest from your chart repositories...
 Update Complete. ⎈Happy Helming!⎈
     {{< /output >}}
 
-1. Create a configuration file for Consul. The parameters need to be adjusted for your needs, but you can refer to our [our example configuration](example-consul-config.yaml) for a basic working set of options.
+1. Create a configuration file for Consul. The parameters need to be adjusted for your needs. You can refer to our the example configuration file below(example-consul-config.yaml) for a basic working set of options.
+
+    {{< file "example-consul-config.yaml" >}}
+global:
+  name: consul
+  datacenter: dc1
+server:
+  replicas: 3
+  securityContext:
+    runAsNonRoot: false
+    runAsUser: 0
+ui:
+  enabled: true
+connectInject:
+  enabled: true
+  default: true
+controller:
+  enabled: true
+    {{< /file >}}
 
     Take a look at HashiCorp's [Consul and Kubernetes Deployment Guide](https://learn.hashicorp.com/tutorials/consul/kubernetes-deployment-guide?in=consul/kubernetes) for another example configuration, and refer to HashiCorp's [Helm Chart Configuration](https://www.consul.io/docs/k8s/helm) guide for details on available parameters.
 
@@ -94,17 +108,17 @@ Update Complete. ⎈Happy Helming!⎈
 
 ### Access the Consul Dashboard
 
-1. Have Kubernetes forward the port for the Consul dashboard. The following command connects the Consul dashboard interface to your machine's port **18500**.
+1. Configure Kubernetes to forward the port for the Consul dashboard. The following command connects the Consul dashboard interface to your machine's port **18500**.
 
         kubectl port-forward service/consul-ui 18500:80 --address 0.0.0.0
 
 1. Navigate to `localhost:18500` in your browser to see the Consul dashboard.
 
-    [![Consul dashboard](consul-dashboard_small.png)](consul-dashboard.png)
+    [![View your Consul dashboard](consul-dashboard_small.png)](consul-dashboard.png)
 
 ## Example Usage
 
-Here, you can follow along to create a couple of simple services to see the Consul service mesh in action. In this example, we use images provided by HashiCorp for some basic web services and create Kubernetes manifests for each.
+Follow the steps in this section to create a couple of simple services to see the Consul service mesh in action. In this example, you use images provided by HashiCorp for some basic web services and create Kubernetes manifests for each.
 
 ### Create the Service Manifests
 
@@ -113,7 +127,7 @@ Here, you can follow along to create a couple of simple services to see the Cons
         mkdir example-services
         cd example-services
 
-1. Create a file — `example-service-backend.yaml` — for the first of your services. Add the contents of the below example file.
+1. Create a file named `example-service-backend.yaml` for the first of your services. Add the contents of the example file below.
 
     {{< file "example-service-backend.yaml" >}}
 apiVersion: v1
@@ -167,9 +181,9 @@ spec:
               value: 'This is a response from the back-end service.'
     {{< /file >}}
 
-    The above example file creates a service and defines its deployment parameters. Take note of the `annotations` section. Here, the `consul.hashicorp.com/connect-inject: 'true'` annotation tells Consul to inject a proxy with the service. This annotation should be included in the deployment manifest for any service you want to deploy to Kubernetes and have taken part in your Consul service mesh.
+    The above example file creates a service and defines its deployment parameters. Take note of the `annotations` section. The `consul.hashicorp.com/connect-inject: 'true'` annotation tells Consul to inject a proxy with the service. This annotation should be included in the deployment manifest for any service you want to deploy to Kubernetes and have take part in your Consul service mesh.
 
-1. Create another file — `example-service-frontend.yaml` — for the second of your services. Add the contents of the below example file.
+1. Create another file named `example-service-frontend.yaml` for the second of your services. Add the contents of the example file below.
 
     {{< file "example-service-frontend.yaml" >}}
 apiVersion: v1
@@ -226,7 +240,7 @@ spec:
               value: 'This is a message from the front-end service.'
     {{< /file >}}
 
-    This file's contents are similar to the previous. However, it adds an additional annotation. The new annotation here — `consul.hashicorp.com/connect-service-upstreams: 'back-end-service:9091'` — tells Consul that this service has the service defined in the previous file as an upstream dependency.
+    This file's contents are similar to the previous file. However, it adds an additional annotation. The new annotation here — `consul.hashicorp.com/connect-service-upstreams: 'back-end-service:9091'` — tells Consul that this service has the service defined in the previous file as an upstream dependency.
 
 ### Deploy the Services
 
@@ -235,7 +249,7 @@ spec:
         kubectl apply -f example-service-backend.yaml
         kubectl apply -f example-service-frontend.yaml
 
-1. View the pods in Kubernetes. Wait until the services' pods go into `Running` status before proceeding to the next step.
+1. View the pods using kubectl. Wait until the services' pods go into `Running` status before proceeding to the next step.
 
         kubectl get pods
 
