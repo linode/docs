@@ -13,6 +13,7 @@ modified_by:
     name: Linode
 title: "How to Make a Twitter Bot that Replies to Tweets with Node"
 h1_title: "Making a Twitter Bot with Node and Replying to Tweets with Node"
+enable_h1: true
 contributor:
     name: Pj Metz
     link: https://www.metzinaround.com
