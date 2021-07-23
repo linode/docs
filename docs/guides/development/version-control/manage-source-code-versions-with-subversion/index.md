@@ -157,7 +157,7 @@ If you have prior experience using a CVS, you may already be familiar with many 
 - `svn copy` creates a copy of a file in a new location and name in the repository. In these circumstances Subversion treats the history of both files (previous to the copy) as a single series of changes.
 - `svn move` moves the specified file or files to a new location while retaining the history, despite the change in file name. Functionally, this is equivalent to running the `svn copy` command followed by the `svn delete` command.
 - `svn diff` displays the differences between two revisions in the repository. Without any arguments it displays the differences between the current status of the working copy (i.e. checkout) and the latest version of the repository.
-- `svn log` generates and displays the revision history of an the current directory in the filesystem. You may also specify a specific file name, for instance `svn log roster.txt` produces the revision history for the `roster.txt` file. You can also use `svn log` to access the revision history of a remote repository:
+- `svn log` generates and displays the revision history of the current directory in the filesystem. You may also specify a specific file name, for instance `svn log roster.txt` produces the revision history for the `roster.txt` file. You can also use `svn log` to access the revision history of a remote repository:
 
         svn log http://example.com/repos/subversion-test/files/txt/ roster.txt data.txt
 
