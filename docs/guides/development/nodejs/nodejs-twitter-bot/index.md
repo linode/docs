@@ -3,27 +3,34 @@ slug: nodejs-twitter-bot
 author:
     name: Pj Metz
     email: metz.pj@gmail.com
-description: 'This guide shows how to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode. The guide is intended for people new to coding.'
-og_description: 'This guide shows how to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode. The guide is intended for people new to coding.'
-keywords: ["node.js", "beginner", "javascript", "twitter bot"]
+description: 'How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding.'
+og_description: 'How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding.'
+keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "node twitter api tutorial"]
 tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-09
+published: 2021-07-23
 modified_by:
     name: Linode
-title: "Node.js Twitter Bot Beginner's Guide: Replying to Users and Scheduling Tweets"
-h1_title: "Getting Started with Node.js and Twitter Bots: Replying to Users and Scheduling Tweets"
+title: "How to Make a Twitter Bot that Replies to Tweets with Node"
+h1_title: "Making a Twitter Bot with Node and Replying to Tweets with Node"
 contributor:
     name: Pj Metz
     link: https://www.metzinaround.com
 external_resources:
+    - "[Documentation Home | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs)"
+    - "[npm Docs](https://docs.npmjs.com/)"
+    - "[node - npm](https://www.npmjs.com/package/node)"
+    - "[node-schedule - npm](https://www.npmjs.com/package/node-schedule)"
+    - "[dotenv - npm](https://www.npmjs.com/package/dotenv)"
+    - "[twit - npm](https://www.npmjs.com/package/twit)"
+    - "[GitHub Desktop](https://desktop.github.com/)"
     - "[Creating a new User in Ubuntu](https://youtu.be/fDHHKR0nVQg)"
-    - "[FileZilla](https://www.linode.com/docs/guides/filezilla/)"
+    - "[FileZilla](/docs/guides/filezilla/)"
 ---
 
 ## Introduction
 
-Twitter bots are a great way to practice using an API and develop some coding skills along the way. You can usually get the bot going for under 100 lines of code, so it’s especially good for beginners. This tutorial shows how to make a bot that tweets a link to a video game soundtrack once a week (pulled randomly from an array of YouTube links). It also responds to other Twitter users who ask for a link with a random link from the same array.
+Twitter bots are a great way to practice using an API and develop some coding skills along the way. You can usually get the bot going for under 100 lines of code, so it’s especially good for beginners. This tutorial shows how to make a Twitter bot that tweets a link to a video game soundtrack once a week (pulled randomly from an array of YouTube links). It also responds to other Twitter users who ask for a link with a random link from the same array.
 
 The tutorial demonstrates how to use Node.js, a framework for JavaScript, and a few packages from *npm*, the Node Package Manager, to have your bot tweeting in no time. As well, the guide shows how to set up a GitHub repository for your bot's code. At the end of the guide, we demonstrate how to host the bot on a Linode cloud instance.
 
@@ -421,7 +428,7 @@ Documentation for this method of scheduling is found in the [Recurrence Rule Sch
 
 - Lines 18-30 set up an array of soundtrack links for the bot to pull from at random.
 
-### Authenticating with Twitter and Listening for Tweet Mentions
+### Authenticating with Twitter and Listening for Tweets
 
 1. Append this snippet to the bottom of `snes.js`:
 
@@ -486,7 +493,7 @@ module.exports = {
 
     In order to generate the configuration object, this file reads the values encoded in the `process.env` property by the dotenv module.
 
-### Replying to Tweet Mentions
+### Replying to Tweets
 
 Append this snippet to the bottom of `snes.js`:
 
