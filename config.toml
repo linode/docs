@@ -4,7 +4,7 @@ baseURL = "https://www.linode.com/docs/"
 languageCode = "en-us"
 title = "Linode Guides & Tutorials"
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+# disableKinds = ["taxonomy", "taxonomyTerm"]
 themeDir = ".."
 rssLimit = 30
 summaryLength = 15
@@ -17,6 +17,9 @@ enableGitInfo = true
 [outputs]
 # The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
 home = ["HTML", "JSON", "RSS"]
+
+[taxonomies]
+bundle = "bundles"
 
 [frontmatter]
 lastmod = [":git", "lastmod", "date", "publishDate"]
