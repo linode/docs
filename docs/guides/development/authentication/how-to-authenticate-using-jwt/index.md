@@ -1,29 +1,24 @@
 ---
 slug: how-to-authenticate-using-jwt
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own."
-og_description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own."
+  name: Nathaniel Stickman
+description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own using Express."
+og_description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own using Express."
 keywords: ['json web tokens','jwt','encoding jwt','decoding jwt','what is a jwt']
-tags: ['web applications', 'debian', 'ubuntu']
+tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-05
+published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "How to Authenticate with JSON Web Tokens (JWTs)"
-h1_title: "Authenticate with JSON Web Tokens (JWTs)"
+title: "How to Authenticate Users with JSON Web Tokens (JWTs), Express, and Node.js"
+h1_title: "User Authentication with JSON Web Tokens (JWTs) and Express"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
-- '[Auth0: Token-Based Authentication Made Easy](https://auth0.com/learn/token-based-authentication-made-easy/)'
-- '[RCF 7519 Websocket Protocol](https://tools.ietf.org/html/rfc7519)'
 - '[IANA JSON Web Token specifications](https://tools.ietf.org/html/rfc7519#section-4.1)'
-- '[IANA JSON Web Token Register](https://www.iana.org/assignments/jwt/jwt.xhtml)'
-
 ---
 
 JSON Web Token (JWT) is a compact and self-contained standard for sending information in JSON format. JWTs are designed with efficiency and security in mind, making them especially useful for managing authentication over the web. In this guide, you learn about the core concepts behind JWTs and how to begin implementing an authentication process with them.
