@@ -1,17 +1,16 @@
 ---
 slug: using-grpc-for-remote-procedural-calls
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC.'
 og_description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC.'
-keywords: ['gRPC','REST','Remote Procedural Call','Python']
+keywords: ['What is grpc', 'grpc vs rest', 'grpc tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-10
+published: 2021-07-30
 modified_by:
   name: Linode
-title: "Using gRPC for Remote Procedural Calls"
-h1_title: "How to use gRPC for Remote Procedural Calls"
+title: "gRPC Tutorial: Using gRPC for Remote Procedural Calls"
+h1_title: "How to Use gRPC and Python for Remote Procedural Calls"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -19,20 +18,15 @@ contributor:
 external_resources:
 - '[gRPC](https://grpc.io/)'
 - '[Google Developers Page for Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview)'
-- '[gRPC Supported Languages Page](https://grpc.io/docs/languages/)'
-- '[gRPC Web](https://github.com/grpc/grpc-web)'
-- '[Envoy](https://www.envoyproxy.io/)'
 - '[gRPC Web documentation](https://grpc.io/docs/platforms/web/)'
 - '[gRPC Python Documentation](https://grpc.io/docs/languages/python/)'
-- '[gRPC Authentication Documentation](https://grpc.io/docs/guides/auth/)'
-- '[gRPC Languages page](https://grpc.io/docs/languages/)'
 ---
 
-[*gRPC*](https://grpc.io/) is an open-source *Remote Procedure Call* (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. gRPC allows for the specification of a common interface or API to define shared functions, constants, and message types. The server implements the full interface, while clients use stub functions to call the methods in the API. Client and server applications can be written in one of several supported programming languages, which do not have to necessarily match up. This guide introduces and explains gRPC, and describes how to implement an application with remote function calls using gRPC and Python.
+[*gRPC*](https://grpc.io/) is an open-source *remote procedure call* (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. gRPC allows for the specification of a common interface or API to define shared functions, constants, and message types. The server implements the full interface, while clients use stub functions to call the methods in the API. Client and server applications can be written in one of several supported programming languages, which do not have to necessarily match up. This guide introduces and explains gRPC, and describes how to implement an application with remote function calls using gRPC and Python.
 
 ## What is a Remote Procedural Call?
 
-A Remote Procedure Call (RPC) is a central concept in distributed computing. It allows one system to call a function in a different address space, or even on a completely different system. If the client and server are running on the same system, they use distinct virtual addressing spaces. Client systems only require a description of the shared interface to interact with the remote system.
+A remote procedure call (RPC) is a central concept in distributed computing. It allows one system to call a function in a different address space, or even on a completely different system. If the client and server are running on the same system, they use distinct virtual addressing spaces. Client systems only require a description of the shared interface to interact with the remote system.
 
 RPCs are usually implemented in terms of requests and responses. RPC requests can be either synchronous and blocking, or asynchronous. The client sends a request message to the server and receives a response message in return. From the client's perspective, the service interface it is using is part of the same program or package.
 
@@ -50,11 +44,11 @@ Many common programming languages provide some level of RPC functionality. In ad
 
 ## What is gRPC?
 
-gRPC is a specific implementation of RPC. It allows different machines, running applications that might be written in different languages to communicate. The simplicity and efficiency of its design are useful for implementing microservices, where the server provides specific and finely-tuned services to multiple independent clients.
+gRPC is a specific implementation of RPC. It allows different machines, running applications that might be written in different languages, to communicate. The simplicity and efficiency of its design are useful for implementing microservices, where the server provides specific and finely-tuned services to multiple independent clients.
 
-gRPC accomplishes this task through the use of protocol buffers, also known as `protobufs`. Protocol buffers were originally developed by Google. They are small and efficient and can be transmitted and processed quickly. These buffers provide gRPC with an *Interface Definition Language* (IDL) and a message-exchange format. More information about protocol buffers can be found on the [Google Developers Page for Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview). The Google site also includes a [*Protocol Buffers Language Specification*](https://developers.google.com/protocol-buffers/docs/reference/proto3-spec).
+gRPC accomplishes this task through the use of protocol buffers, also known as *protobufs*. Protocol buffers were originally developed by Google. They are small, efficient, and can be transmitted and processed quickly. These buffers provide gRPC with an *Interface Definition Language* (IDL) and a message-exchange format. More information about protocol buffers can be found on the [Google Developers Page for Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview). The Google site also includes a [*Protocol Buffers Language Specification*](https://developers.google.com/protocol-buffers/docs/reference/proto3-spec).
 
-Application developers can use gRPC's protocol buffers to design a service interface. This interface consists of all the available methods, along with a definition of each message type. This interface definition allows a client application to call a method that is running remotely on the server. These components are defined in a `.proto` file, which is written in plain text. Every protocol buffer entry is structured as a *message*. Each message defines a list of *fields*, and each field consists of a name-value pair. The protocol buffer compiler `protoc` is used to translate the `.proto` file into two source files in the target programming language. These files serve as an infrastructure library containing classes and data access methods, along with handlers for the protocol buffers. The client and server designers independently use these files to develop their applications.
+Application developers can use gRPC's protocol buffers to design a service interface. This interface consists of all the available methods, along with a definition of each message type. This interface definition allows a client application to call a method that is running remotely on the server. These components are defined in a `.proto` file, which is written in plain text. Every protocol buffer entry is structured as a *message*. Each message defines a list of *fields*, and each field consists of a name-value pair. The protocol buffer compiler *protoc* is used to translate the `.proto` file into two source files in the target programming language. These files serve as an infrastructure library containing classes and data access methods, along with handlers for the protocol buffers. The client and server designers independently use these files to develop their applications.
 
 In addition to running on different hosts, the client and the server can use different languages for the implementation. Some of these supported languages include C++, Go, Java, Kotlin, Node, PHP, and Python. A full list of all languages and their documentation can be found on the [gRPC Supported Languages Page](https://grpc.io/docs/languages/).
 
@@ -83,20 +77,43 @@ gRPC has many advantages over traditional client-server architectures.
 
 ## gRPC vs REST
 
-gRPC is often compared and contrasted with *REpresentational State Transfer* (REST). REST also uses a client-server architecture. Both systems are useful for implementing microservices. However, there are major differences between the two technologies.
+gRPC is often compared and contrasted with *Representational State Transfer* (REST). REST also uses a client-server architecture. Both systems are useful for implementing microservices. However, there are major differences between the two technologies.
 
 - REST does not use RPCs. In a RESTful system, a client sends a request to a remote *Uniform Resource Identifier* (URI). It later receives a response encoded in XML, HTML, JSON, or another similar format. The request and reply typically use HTTP/HTTPS methods such as `GET` and `POST`.
 - All browsers support REST, and it is widely used throughout the internet. gRPC has more limited web capabilities. *gRPC Web* does provide some measure of web support. (gRPC Web is explained in the [next section](/docs/guides/using-grpc-for-remote-procedural-calls/#grpc-web)). In general, REST is more commonly used for web applications, while gRPC is used inside internal networks. gRPC is also frequently used in embedded systems, facilitating communication between the different components of the device.
 - gRPC uses HTTP/2 and can take advantage of its inherent client-response communication model. This allows it to transmit requests or responses via a stream. REST uses HTTP version 1.1 and has to handle one request at a time using inefficient short-lived connections.
-- gRPC features better performance than REST. It also more efficiently uses bandwidth due to its lightweight design.
-- gRPC can be quickly translated into the target programming language for the application using the `protoc` compiler. REST does not have an equivalent feature, although third-party tools can streamline the process somewhat.
-- REST can be implemented in HTTP without additional tools. gRPC programs require the `protoc` compiler, and the `.proto` files must be compiled into the final programming language before they can be used. The client and server applications cannot be fully written or tested until the interface is defined and the auto-generated files are available.
+- Performance is better with gRPC compared to REST. It also more efficiently uses bandwidth due to its lightweight design.
+- gRPC can be quickly translated into the target programming language for the application using the protoc compiler. REST does not have an equivalent feature, although third-party tools can streamline the process somewhat.
+- REST can be implemented in HTTP without additional tools. gRPC programs require the protoc compiler, and the `.proto` files must be compiled into the final programming language before they can be used. The client and server applications cannot be fully written or tested until the interface is defined and the auto-generated files are available.
 
 ## gRPC Web
 
 [gRPC Web](https://github.com/grpc/grpc-web) is an attempt to address the lack of web support for gRPC. It is a JavaScript version of gRPC that is designed for web clients. gRPC Web also requires a complex web proxy to connect to RPC services. It currently uses [*Envoy*](https://www.envoyproxy.io/) as the default proxy, but in-house work is in progress on a Java implementation. gRPC Web is currently a work in progress, and more language-specific frameworks are expected soon. For more information about how to develop gRPC Web applications, see the [gRPC Web documentation](https://grpc.io/docs/platforms/web/).
 
-## Before You Begin
+## Create a gRPC Project in Python for Remote Procedural Calls
+
+This tutorial demonstrates the steps required to build a working gRPC application using Python. Some basic knowledge of Python is required to understand and contextualize the material. The simple *Teams* application accepts an incoming request from a client that contains the name of a city. It uses the city name to retrieve the name of the fictitious sports team that is located there from its internal dictionary. Finally, it transmits a multi-field message back to the client containing the name of the city and the nickname of the team.
+
+This simple RPC application accepts a single request and returns a single response. No streams are involved in this application, but the guide explains how a stream-based method could work in each step. Both the server and client are implemented in Python, but any one of the supported languages could potentially be used on either side. Also, both the server and client here run on the same server in different code spaces. A more realistic server application would probably pull its data from an external database rather than a hard-coded dictionary.
+
+Extensive information about using gRPC with Python can be found in [gRPC's Python Documentation](https://grpc.io/docs/languages/python/). This page contains links to a series of resources, including the gRPC Python API and a basic tutorial.
+
+{{< note >}}
+The following example uses an insecure communication channel between the client and the server. To enhance the security of gRPC applications, consult the [gRPC Authentication Documentation](https://grpc.io/docs/guides/auth/).
+{{< /note >}}
+
+### A Summary of the gRPC Application Creation Process
+
+This procedure is geared towards Ubuntu users but is generally applicable to all Linux distributions. The application development process follows these steps:
+
+1. **Install Python:** If Python is already installed on the system, skip to the second step.
+1. **Install the Python gRPC Tools:** These tools install the protoc compiler and other necessary components.
+1. **Create the Proto File and Generate the Python Stubs:** All RPC projects start with a `.proto` file containing definitions for the service interface, including the message types and methods. The `protoc` compiler is used to generate two infrastructure files for the client and server.
+1. **Implement the gRPC Server:** The gRPC server code launches the server and implements the methods from the service interface. A function is required for each method specified in the interface.
+1. **Implement the gRPC Client:** The client code includes Python stub functions to initiate a connection to the server, generate requests, and receive the responses.
+1. **Run and Test the gRPC Application:** Launch the server and start the client. Ensure the application generates the expected results.
+
+### Before You Begin
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -110,46 +127,25 @@ gRPC is often compared and contrasted with *REpresentational State Transfer* (RE
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Create a gRPC Project in Python for Remote Procedural Calls
-
-This tutorial demonstrates the steps required to build a working gRPC application using Python. Some basic knowledge of Python is required to understand and contextualize the material. The simple `Teams` application accepts an incoming request from a client that contains the name of a city. It uses the city name to retrieve the name of the fictitious sports team that is located there from its internal dictionary. Finally, it transmits a multi-field message back to the client containing the name of the city and the nickname of the team.
-
-This simple RPC application accepts a single request and returns a single response. No streams are involved in this application, but the guide explains how a stream-based method could work in each step. Both the server and client are implemented in Python, but any one of the supported languages could potentially be used on either side. As well, both the server and client here run on the same server in different code spaces. A more realistic server application would probably pull its data from an external database rather than a hard-coded dictionary.
-
-Extensive information about using gRPC with Python can be found in [gRPC's Python Documentation](https://grpc.io/docs/languages/python/). This page contains links to a series of resources, including the gRPC Python API and a basic tutorial.
-
-{{< note >}}
-The following example uses an insecure communication channel between the client and the server. To enhance the security of gRPC applications, consult the [gRPC Authentication Documentation](https://grpc.io/docs/guides/auth/).
-{{< /note >}}
-
-### A Summary of the gRPC Application Creation Process
-
-This procedure is geared towards Ubuntu users but is generally applicable to all Linux distributions. The application development process follows these steps:
-
-1. **Install Python:** If Python is already installed on the system, skip to the second step.
-1. **Install the Python gRPC Tools:** These tools install the `protoc` compiler and other necessary components.
-1. **Create the Proto File and Generate the Python Stubs:** All RPC projects start with a `.proto` file containing definitions for the service interface, including the message types and methods. The `protoc` compiler is used to generate two infrastructure files for the client and server.
-1. **Implement the gRPC Server:** The gRPC server code launches the server and implements the methods from the service interface. A function is required for each method specified in the interface.
-1. **Implement the gRPC Client:** The client code includes Python stub functions to initiate a connection to the server, generate requests, and receive the responses.
-1. **Run and Test the gRPC Application:** Launch the server, and start the client. Ensure the application generates the expected results.
-
 ### Install Python
 
 In this example, Python is used to write the code for both the client and server. Instructions on how to create a gRPC application using C, C++, Go, Java, PHP, and other languages can be found on the [gRPC Languages page](https://grpc.io/docs/languages/).
 
-1. Verify whether Python is installed on the Linode using the following command. If Python version 3.7 or later is installed, skip to the next section.
+1. Verify whether Python is installed on the Linode using the command below. If Python version 3.7 or later is installed, skip to the next section.
 
         python3 ––version
 1. Refresh the Ubuntu repository.
 
         sudo apt update
-1. Install the Python application along with its `pip` component.
+1. Install the Python application along with its pip component.
 
         sudo apt install python3-dev python3-pip
-1. Confirm the version of both Python and `pip`. `Pip` version 9.0.1 or higher is required to run gRPC.
+
+1. Confirm the version of both Python and pip. Pip version 9.0.1 or higher is required to run gRPC.
 
         python3 --version
         pip3 --version
+
     {{< output >}}
 Python 3.8.5
 
@@ -158,7 +154,7 @@ pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
 
 ### Install the Python gRPC Tools
 
-To use gRPC, install the `grpc` components using `pip`. If the command is prefaced with `sudo`, these packages are installed system-wide. Otherwise, they are only installed inside your local Python instance.
+To use gRPC, install the `grpc` components using pip. If the command is prefaced with `sudo`, these packages are installed system-wide. Otherwise, they are only installed inside your local Python instance.
 
 1. Install gRPC.
 
@@ -167,7 +163,7 @@ To use gRPC, install the `grpc` components using `pip`. If the command is prefac
 Installing collected packages: grpcio
 Successfully installed grpcio-1.38.0
     {{< /output >}}
-1. Install the gRPC tools. This also installs the protocol buffer compiler `protoc`.
+1. Install the gRPC tools. This also installs the protocol buffer compiler protoc.
 
         sudo python3 -m pip install grpcio-tools
     {{< output >}}
@@ -254,9 +250,10 @@ To create a response-streaming, request-streaming, or bidirectionally-streaming 
 
 ### Implement the gRPC Server
 
-The server application is responsible for implementing every function defined inside the `.protos` file. To accomplish this, it must import the auto-generated files and the `grpc` package. The server file must also define a `serve` function. This is called upon start-up and runs for the duration of the program.
+The server application is responsible for implementing every function defined inside the `.protos` file. To accomplish this, it must import the auto-generated files and the `grpc` package. The server file must also define a `serve` function. This is called upon startup and runs for the duration of the program.
 
 1. Create a file named `teams_server.py` inside the main `teams` directory.
+
 1. At the top of the file, `import` the required packages. To import the auto-generated classes, add an `import` statement corresponding to the filename of each auto-generated file, minus the `.py` extension.
 
     {{< file "~/teams/teams_server.py" python >}}
@@ -436,7 +433,7 @@ If `GetTeam` returned a stream, the `stub.GetTeam` function call would have rece
 
 ### Run and Test the gRPC Application
 
-The server and the client are launched like any other Python program. Ensure the server program is started first. The server blocks indefinitely until it is terminated, so it does not appear to be doing anything until it receives a client request.
+The server and the client are launched like any other Python program. Ensure the server program is started first. The server blocks run indefinitely until it is terminated, so it does not appear to be doing anything until it receives a client request.
 
 1. From the `teams` directory, run the `teams_server.py` Python application. The application should start running, but it should not display any output yet.
 
