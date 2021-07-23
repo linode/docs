@@ -26,11 +26,51 @@ external_resources:
 
 ---
 
-JSON Web Token (JWT) is a compact and self-contained standard for sending information in JSON format. JWTs are designed with efficiency and security in mind, making them especially useful for managing authentication over the web.
+JSON Web Token (JWT) is a compact and self-contained standard for sending information in JSON format. JWTs are designed with efficiency and security in mind, making them especially useful for managing authentication over the web. In this guide, you learn about the core concepts behind JWTs and how to begin implementing an authentication process with them.
 
-In this guide, you can learn more about the core concepts behind JWTs and how to begin implementing an authentication process with them yourself.
+## What Are JSON Web Tokens?
 
-## Before You Begin
+JSON Web Token is an open standard ([RCF 7519](https://tools.ietf.org/html/rfc7519)) for the compact and secure transmission of information via JSON. Compared to the tokens resulting from similar standards, like Security Assertion Markup Language (SAML) tokens, encoded JWTs are small. This makes them easier to work within HTTP transmissions, where they fit well in URLs and HTTP headers. Also, since JWT uses JSON instead of XML, a token's decoded contents are more readable. Given the prevalence of JSON on the web, JWTs make sense to use for web and mobile applications.
+
+The JWT standard allows you to secure your tokens in two ways. First, JWTs are typically signed using a secure signing algorithm, like [HMAC](https://en.wikipedia.org/wiki/HMAC) or [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)). This helps to assure the integrity of information and greatly reduces the risk of your tokens being tampered with while in transit. Second, JWTs can be encrypted. Encrypting a JWT helps to prevent unintended recipients from seeing the token's contents, keeping your information private.
+
+### JWT Structure
+
+JWTs have three parts. In the resulting encoded JWT, each part is encoded using the [*Base64Url*](https://en.wikipedia.org/wiki/Base64#The_URL_applications) encoding and separated by periods, as in `{header}.{payload}.{signature}`.
+
+- The header—has two parts: an identifier for the signing algorithm (`alg`) and an identifier for the token type (`typ`), which is always `JWT`. Following is an example of an un-encoded JWT header using the HMAC SHA256 signing algorithm.
+
+        {
+            "alg": "HS256",
+            "typ": "JWT"
+        }
+
+- The payload can come in numerous forms, but is categorized as one of three types:
+
+  - **Registered**: uses a predefined claim type, listed in the [IANA JSON Web Token specifications](https://tools.ietf.org/html/rfc7519#section-4.1).
+  - **Public**: the claim typed used is defined for the situation, exists in the [IANA JSON Web Token Register](https://www.iana.org/assignments/jwt/jwt.xhtml), or uses a URI that avoids collision with registered claim types.
+  - **Private**: uses a claim type that is neither registered nor public.
+
+    Below is an example of a registered payload using the *subject* type, which is useful for most authentication situations.
+
+            {
+                "sub": "1234567890",
+                "username": "example-user",
+            }
+
+- The signature consists of the encoded header and the encoded payload, separated by a period, and signed with the given algorithm. HMAC SHA256 is used in the header above.
+
+To see this in action, you can use the [JWT.IO debugger](https://jwt.io/#debugger-io). This lets you define JWT contents and see the signed and encoded result.
+
+[![Encoding example on the JWT.IO debugger](jwtio-encoding-example_small.png)](jwtio-encoding-example.png)
+
+## Example JWT Authentication
+
+In this section, you can follow along to implement your own authentication process using JWTs. Many popular programming languages for web development have libraries to make handing JWTs easy. You use Node.js with Express JS in this section's example. Express gives you tools to get a server up and running quickly. If you want to learn more about Express JS, check out our [Express JS Tutorial: Get Started Building a Website](/docs/guides/express-js-tutorial/) guide.
+
+The JWTs encoded in this example provide a lightweight and secure means of authenticating users. However, the in this example JWTs are not encrypted, so they should not be used to transmit sensitive information like passwords.
+
+### Before You Begin
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -49,50 +89,6 @@ In this guide, you can learn more about the core concepts behind JWTs and how to
 {{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
-
-## What Are JSON Web Tokens?
-
-JSON Web Token is an open standard ([RCF 7519](https://tools.ietf.org/html/rfc7519)) for the compact and secure transmission of information via JSON.
-
-Compared to the tokens resulting from similar standards, like Security Assertion Markup Language (SAML) tokens, encoded JWTs are small. This makes them easier to work within HTTP transmissions, where they fit well in URLs and HTTP headers. Further, because JWT uses JSON instead of XML, tokens' decoded contents tend to be more easily readable. Given the prevalence of JSON on the web, JWTs can also be more approachable to use for web and mobile applications.
-
-The JWT standard allows you to secure your tokens in two ways. First, JWTs can be and typically are, signed using a secure signing algorithm, like HMAC, or RSA. This helps to assure the integrity of information, greatly reducing the risk of your tokens being tampered with while in transit. Second, JWTs can be encrypted. Encrypting a JWT helps to prevent unintended recipients from seeing the token's contents, keeping your information private.
-
-### JWT Structure
-
-JWTs have three parts. In the resulting encoded JWT, each part is encoded using the **Base64Url** encoding and separated by periods, as in `{header}.{payload}.{signature}`.
-
-- The header—has two parts: an identifier for the signing algorithm (`alg`) and an identifier for the token type (`typ`), which is always `JWT`. Following is an example of an un-encoded JWT header using the HMAC SHA256 signing algorithm.
-
-        {
-            "alg": "HS256",
-            "typ": "JWT"
-        }
-
-- The payload—can come in numerous forms, but are categorized as one of three types:
-
-  - Registered, which uses a predefined claim type, listed in the [IANA JSON Web Token specifications](https://tools.ietf.org/html/rfc7519#section-4.1).
-  - Public, which uses a claim type defined for the situation and either existing in the [IANA JSON Web Token Register](https://www.iana.org/assignments/jwt/jwt.xhtml) or using a URI that avoids collision with registered claim types.
-  - Private, which uses a claim type that is neither registered nor public.
-
-    Following is an example of a registered payload using the "subject" type, which is useful for most authentication situations.
-
-            {
-                "sub": "1234567890",
-                "username": "example-user",
-            }
-
-- The signature—consists of the encoded header and the encoded payload, separated by a period, and signed with the given algorithm — HMAC SHA256 in the header above.
-
-To see this in action, you can use the [JWT.IO debugger](https://jwt.io/#debugger-io). This lets you define JWT contents and see the signed and encoded result.
-
-[![Encoding example on the JWT.IO debugger](jwtio-encoding-example_small.png)](jwtio-encoding-example.png)
-
-## Example JWT Authentication
-
-In this section, you can follow along to implement your own authentication process using JWTs. Many popular programming languages for web development have libraries to make handing JWTs easy. Here, Node.js is used, together with Express JS, which gives us tools to get a server up, and running quickly, and easily. If you want to learn more about Express JS, check out our [Express JS Tutorial: Get Started Building a Website](/docs/guides/express-js-tutorial/) guide.
-
-The JWTs encoded in this example provide a lightweight and secure means of authenticating users. Be aware, though, that the JWTs are not encrypted here, so they should not be used to transmit sensitive information like passwords.
 
 ### Install Node.js
 
@@ -114,7 +110,7 @@ The JWTs encoded in this example provide a lightweight and secure means of authe
 
 ### Set Up the Express JS Server
 
-1. Create a directory for the project. In this example, `jwt-example` is used as the project and directory name. The example project here lives in the current user's home directory.
+1. Create a directory for the project. In this example, `jwt-example` is used as the project and directory name. The example project lives in the current user's home directory.
 
         mkdir ~/jwt-example
 
@@ -122,13 +118,13 @@ The JWTs encoded in this example provide a lightweight and secure means of authe
 
         cd ~/jwt-example
 
-1. Create the following JavaScript file called `server.js`. This contains the skeleton for your Express JS server.
+1. Create the example JavaScript file called `server.js`. This contains the skeleton for your Express JS server.
 
     {{< note >}}
-In a production scenario, you should not store credentials in application code, and ideally, passwords should be stored encrypted. Additionally, use a secret that conforms to the standards for the signing algorithm you are using. For instance, the HMAC SHA256 algorithm in this example should be given a 256-bit secret. You can achieve this with a random 64-character hex string or a random 44-character Base64 string.
+In a production scenario, you should not store credentials in application code and your passwords should be encrypted when stored. Additionally, use a secret that conforms to the standards for the signing algorithm you are using. For instance, the HMAC SHA256 algorithm in this example should be given a 256-bit secret. You can achieve this with a random 64-character hex string or a random 44-character Base64 string.
     {{< /note >}}
 
-    {{< file "server.js" >}}
+    {{< file "server.js" javascript >}}
 // Import the NPM packages to be used.
 const express = require('express');
 const jwt = require('jsonwebtoken');
@@ -141,8 +137,8 @@ const port = 3000;
 const jwtSecret = "example-secret";
 
 // Create an array with user login credentials and information.
-// Typically, you would likely store this information in a database,
-// and ideally the passwords would be stored encrypted.
+// Typically, you would store this information in a database,
+// and the passwords would be stored encrypted.
 const userCredentials = [
     {
         "username": "userA",
@@ -183,11 +179,11 @@ app.listen(port, () => {
 
 ### Encode with JWT
 
-The server needs to have an endpoint to accept user credentials and provide a JWT in response. The resulting JWT can then be passed back to the server to authenticate subsequent requests.
+The server needs to have an endpoint to accept user credentials and provide a JWT in its response. The resulting JWT can then be passed back to the server to authenticate subsequent requests.
 
 Add the following to the `server.js` file.
 
-{{< file "server.js" >}}
+{{< file "server.js" javascript >}}
 // [...]
 
 // Add an endpoint for incoming authentication requests.
@@ -223,7 +219,7 @@ The server now needs to have an endpoint to provide user information upon receiv
 
 Add the following to the `server.js` file:
 
-{{< file "server.js" >}}
+{{< file "server.js" javascript >}}
 // [...]
 
 // Add an endpoint for user information requests. The endpoint first
@@ -255,7 +251,7 @@ const fetchUserInfo = (userId) => {
 
 ### In Action
 
-Now the example application is ready. You can see the entirety of the resulting JavaScript file [here](server.js).
+Now, the example application is ready. You can view the entirety of the [resulting JavaScript file](server.js).
 
 Follow the steps below to see the JWT process in action.
 
@@ -266,11 +262,11 @@ Follow the steps below to see the JWT process in action.
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
-            ssh -L3000:localhost:3000 example-user@198.51.100.0
+            ssh -L3000:localhost:3000 example-user@192.0.2.0
 
-1. To start, fetch a JWT for "userA" by navigating to the following URL and copying the output.
+1. To start, fetch a JWT for userA by navigating to the URL listed below and copying the output.
 
         localhost:3000/auth?username=userA&password=example-password-userA
 
@@ -286,4 +282,4 @@ Follow the steps below to see the JWT process in action.
 
 You are all set to start working with JWTs and taking advantage of them for lean and secure authentication processes. Take a look at the resources below to continue the journey and learn more about JWT concepts.
 
-You may also be interested in our guide on [Authenticating Over WebSockets with JSON Web Tokens (JWTs)](/docs/guides/authenticating-over-websockets-jwt). That guide goes a bit more in-depth and low level on JWTs and shows you how to use them with WebSockets.
+You may also be interested in our guide on [Authenticating Over WebSockets with JSON Web Tokens (JWTs)](/docs/guides/authenticating-over-websockets-jwt). That guide goes more in-depth and shows you how to use them with WebSockets.
