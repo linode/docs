@@ -5,6 +5,7 @@ author:
 description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC.'
 og_description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC.'
 keywords: ['What is grpc', 'grpc vs rest', 'grpc tutorial']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
 modified_by:
