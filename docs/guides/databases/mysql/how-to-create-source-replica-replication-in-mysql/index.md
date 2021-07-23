@@ -1,34 +1,26 @@
 ---
 slug: configure-source-replica-replication-in-mysql
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'The popular MySQL database application is more reliable if replication is configured. This guide explains how to configure source-replica data replication in MySQL.'
 og_description: 'The popular MySQL database application is more reliable if replication is configured. This guide explains how to configure source-replica data replication in MySQL.'
-keywords: ['mysql','replication','source-replica','configuration guide']
+keywords: ['mysql replication']
 tags: ['mysql', 'database', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-26
+published: 2021-07-30
 modified_by:
   name: Linode
-title: "Configure Source-Replica Replication in MySQL"
+title: "MySQL Replication: Configure a Source-Replica Setup in MySQL"
 h1_title: "How to Configure Source-Replica Replication in MySQL"
 enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
 external_resources:
-- '[MySQL Engineering Blogs](https://dev.mysql.com/)'
 - '[MySQL Documentation](https://dev.mysql.com/doc/refman/8.0/en/replication.html)'
-- '[MySQL Terminology Update](https://mysqlhighavailability.com/mysql-terminology-updates/)'
-- '[MySQL Forums](https://forums.mysql.com/)'
-- '[MySQL SSL Documentation](https://dev.mysql.com/doc/refman/8.0/en/using-encrypted-connections.html)'
-- '[MySQL RSA Setup Information](https://dev.mysql.com/doc/refman/8.0/en/mysql-ssl-rsa-setup.html)'
-- '[MySQL Replication](https://dev.mysql.com/doc/refman/8.0/en/replication.html)'
-- '[MySQL NDB Cluster](https://dev.mysql.com/doc/refman/5.6/en/mysql-cluster.html)'
 ---
 
-The [*MySQL*](https://dev.mysql.com/) relational database application is one of the most popular open-source applications. Although known for its stability, MySQL is even more reliable if source-replica replication is configured. In replication, one MySQL server is typically designated the *source*. A source sends any database changes and data updates to one or more *replica* database servers. MySQL's data replication procedure is flexible, and the replica servers do not need to be permanently connected to the source. This guide explains how to configure source-replica data replication in MySQL.
+The [*MySQL*](https://dev.mysql.com/) is a relational database management system that is one of the most popular open-source projects. Although known for its stability, MySQL is even more reliable if source-replica replication is configured. In replication, one MySQL server is typically designated the *source*. A source sends any database changes and data updates to one or more *replica* database servers. MySQL's data replication procedure is flexible, and the replica servers do not need to be permanently connected to the source. This guide explains how to configure source-replica data replication in MySQL.
 
 ## How MySQL Data Replication Works
 
@@ -46,7 +38,7 @@ MySQL previously referred to Source-Replica Replication as "Master-Slave Replica
 
 ## Advantages of MySQL Data Replication
 
-Enabling source-replica replication offers many significant advantages over a non-redundant system.
+Enabling source-replica replication offers many significant advantages over a non-redundant system. The list below provides an overview of some benefits:
 
 - It is easy to create a live backup copy at any time. Because the replication process is asynchronous, replication can occur according to any schedule. The replicas do not have to be kept in sync with the source to work reliably.
 
@@ -109,18 +101,20 @@ If MySQL is not already available on both Linodes, install it using the followin
 
 To enable MySQL replication, edit some variables in the main MySQL configuration file. Make the following changes to the source database configuration.
 
-1. Locate the main MySQL configuration file on the source database server. This file is usually found at `/etc/mysql/mysql.conf.d/mysqld.cnf`. However in earlier installations, it might be located at `/etc/my.cnf` or `/etc/mysql/my.cnf`. It could also be referenced from one of these files through an `includedir` directive.
+1. Locate the main MySQL configuration file on the source database server. This file is usually found at `/etc/mysql/mysql.conf.d/mysqld.cnf`. However in earlier installations, it might be located at `/etc/my.cnf` or `/etc/mysql/my.cnf`. It could also be referenced from one of the files through an `includedir` directive.
 
-1. Open this file and change the `bind-address` to the IP address of the source server.
+1. Open the MySQL configuration file and change the `bind-address` to the IP address of the source server.
 
     {{< file "/etc/mysql/mysql.conf.d/mysqld.cnf" aconf >}}
 bind-address  = <source_ip_address>
     {{< /file >}}
 
 1. Uncomment or add the lines for `server-id` and `log-bin`. Set the `server-id` to `1`, and `log-bin` to `/var/log/mysql/mysql-bin.log`.
+
     {{< note >}}
 Ensure the `skip_networking` variable is not declared anywhere. Comment it out if it appears inside this file. To replicate a single database, add the line `binlog_do_db = <database_name>` to the file.
     {{< /note>}}
+
     {{< file "/etc/mysql/mysql.conf.d/mysqld.cnf" aconf >}}
 server-id  = 1
 log_bin  = /var/log/mysql/mysql-bin.log
@@ -133,6 +127,7 @@ log_bin  = /var/log/mysql/mysql-bin.log
 1. Verify the status of MySQL and ensure it is `active`.
 
         sudo systemctl status mysql
+
     {{< output >}}
 mysql.service - MySQL Community Server
 Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
@@ -150,6 +145,7 @@ You must create a new user on the source server to represent the replica. New us
 1. Add a user for the replica account using the MySQL `CREATE USER` syntax. The user name must consist of the name of the replica account, a `@` symbol, and the IP address of the replica server. Choose a more secure password for the account in place of `REPLICA_PASSWORD`.
 
         CREATE USER 'replica_account_name'@'replica_ip_address‘ IDENTIFIED WITH sha256_password BY 'REPLICA_PASSWORD';
+
     {{< note >}}
 To allow the replica to be able to connect from any address, specify the user as `'replica_account_name'@'%'`. The `%` symbol represents any address or domain. This provides extra flexibility at the expense of some security.
     {{< /note>}}
@@ -169,6 +165,7 @@ At this point, it is necessary to flush and lock the source database to stage th
 1. Lock the database to freeze the database at a stable point from which to export the data. Keep the MySQL client running until you export the database. Entering any write command or exiting the MySQL shell releases the lock.
 
         FLUSH TABLES WITH READ LOCK;
+
     {{< caution >}}
 This command blocks all commits to the source database. Export the data before allowing the source to process any more commits. Otherwise, the replica database could become corrupted or inconsistent with the source database. Complete the two remaining steps in this section as soon as possible.
     {{< /caution >}}
@@ -176,6 +173,7 @@ This command blocks all commits to the source database. Export the data before a
 1. Verify the status of the database using the following command. This command displays the current log file along with the position of the last record in this file. Record this information because it is required to initiate replication on the replica later.
 
         SHOW MASTER STATUS;
+
     {{< output >}}
 +------------------+----------+--------------+------------------+-------------------+
 | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
@@ -210,14 +208,17 @@ To export a single database, include the `--opt <database_name>` option rather t
 The following configuration should be applied to the replica database configuration. To install MySQL on the replica server, see the [Install MySQL](/docs/guides/how-to-create-source-replica-replication-in-mysql/#install-mysql) section.
 
 1. Open the main MySQL file, usually located at `/etc/mysql/mysql.conf.d/mysqld.cnf`, and change the `bind-address` to match the IP address of the replica server.
+
     {{< file "/etc/mysql/mysql.conf.d/mysqld.cnf" aconf >}}
 bind-address  = xx.xx.xx.xx
     {{< /file >}}
 
 1. Uncomment or add the lines for `server-id` and `log-bin`. The `server-id` must be set to `2` on the replica, while the `log-bin` variable must be set to `/var/log/mysql/mysql-bin.log`. Add a variable for `relay-log` and set it to `/var/log/mysql/mysql-relay-bin.log`.
+
     {{< note >}}
 Ensure the `skip_networking` variable is not set anywhere inside this file. To replicate a single database, add the following directive to the file `binlog_do_db = database_name`. To configure more than one replica, number the `server-id` values in a sequentially increasing manner. For instance, a second replica would have a `server-id` of `3`.
     {{< /note >}}
+
     {{< file "/etc/mysql/mysql.conf.d/mysqld.cnf" aconf >}}
 server-id        = 2
 log_bin    = /var/log/mysql/mysql-bin.log
@@ -231,6 +232,7 @@ relay-log        = /var/log/mysql/mysql-relay-bin.log
 1. Verify the status of MySQL and ensure it is `active`.
 
         sudo systemctl status mysql
+
     {{< output >}}
 mysql.service - MySQL Community Server
      Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset:>
@@ -258,6 +260,7 @@ The next step is to import the copy of the database data, set the replication so
 1. Enter the `CHANGE REPLICATION SOURCE` command, along with the following details. Substitute the IP address of the source database server in place of `source_ip_address`. For `SOURCE_USER` and `SOURCE_PASSWORD`, enter the replica's user name and password details from in the [Configure a new MySQL User for the Replica](/docs/guides/how-to-create-source-replica-replication-in-mysql/#configure-a-new-mysql-user-for-the-replica) section. For the `SOURCE_LOG_FILE` and `SOURCE_LOG_POS` values, enter the information you recorded from the `SHOW MASTER STATUS;` command.
 
         CHANGE REPLICATION SOURCE TO SOURCE_HOST='source_ip_address',SOURCE_USER='replica_account_name', SOURCE_PASSWORD='REPLICA_PASSWORD', SOURCE_LOG_FILE='log_file_name', SOURCE_LOG_POS=log_position;
+
     {{< note >}}
 To use SSL for the connection, which MySQL recommends, add the attribute `SOURCE_SSL=1` to the command. More information about using SSL in a source-replica replication context can be found in the [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-solutions-encrypted-connections.html).
     {{< /note>}}
@@ -269,6 +272,7 @@ To use SSL for the connection, which MySQL recommends, add the attribute `SOURCE
 1. Verify the status of the replica. The replica should be waiting for events, and there should not be any `Last_IO_Error` or `Last_Error` events. The `Slave_SQL_Running_State` entry should state the replica has read the relay log.
 
         SHOW REPLICA STATUS\G
+
     {{< output >}}
                Slave_IO_State: Waiting for master to send event
                   Master_Host: 178.79.153.39
