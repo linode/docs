@@ -368,6 +368,7 @@ domainkey
 domainname
 donenfeld
 dotdeb
+dotenv
 dotfiles
 doveadm
 dpkg
@@ -479,6 +480,7 @@ filimonov
 findtime
 finnix
 firewalld
+firewalled
 firewalling
 firstsite
 flamegraph
@@ -700,6 +702,7 @@ insmod
 inspec
 interdomain
 interruptible
+intra-application
 introducer
 introducers
 io
@@ -1309,6 +1312,7 @@ rdbadmin
 rdiff
 readcaps
 reauthenticate
+reauthenticating
 readme
 readonly
 readwrite
