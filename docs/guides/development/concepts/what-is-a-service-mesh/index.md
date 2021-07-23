@@ -22,7 +22,7 @@ external_resources:
 
 A service mesh can make managing a service-oriented application on the cloud much easier. It adds an infrastructure layer, keeping operational concerns out of service development, and centralizes service management. This guide covers how a service mesh works and when to use one.
 
-## What Is a Service Mesh?
+## What is a Service Mesh?
 
 A service mesh is a dedicated infrastructure layer to abstract and centralize your application's service-to-service communications. It is designed with modern service-oriented architectures, like microservices, and it is especially useful for cloud-based applications.
 
