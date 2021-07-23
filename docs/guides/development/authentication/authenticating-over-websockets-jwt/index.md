@@ -1,18 +1,17 @@
 ---
 slug: authenticating-over-websockets-with-jwt
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "WebSockets enable real-time communications between clients and server, and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication, and pair well with WebSockets to ensure connections are authorized. Learn more about both WebSockets and JSON Web Tokens in this guide, and see an example of how you can use them together in your application."
-og_description: "WebSockets enable real-time communications between clients and server, and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication, and pair well with WebSockets to ensure connections are authorized. Learn more about both WebSockets and JSON Web Tokens in this guide, and see an example of how you can use them together in your application."
-keywords: ['websockets','websocket token authentication','json web tokens','jwt','jwt authentication']
-tags: ['web applications', 'http']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-09
-modified_by:
   name: Nathaniel Stickman
-title: "Authenticating Over WebSockets with JSON Web Tokens (JWT)"
-h1_title: "Authenticating Over WebSockets with JSON Web Tokens (JWT)"
+description: "WebSockets enable real-time communications between clients and server and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication. They pair well with WebSockets to ensure connections are authorized. In this guide, you learn more about both WebSockets and JSON Web Tokens in this guide. You can also follow an example showing you how to use them together in your application."
+og_description: "WebSockets enable real-time communications between clients and server and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication. They pair well with WebSockets to ensure connections are authorized. In this guide, you learn more about both WebSockets and JSON Web Tokens in this guide. You can also follow an example showing you how to use them together in your application."
+keywords: ['websocket token authentication']
+tags: ['web applications']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-07-23
+modified_by:
+  name: Linode
+title: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
+h1_title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
@@ -20,19 +19,60 @@ contributor:
 external_resources:
 - '[Mozilla Developer Network: The WebSocket API (WebSockets)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)'
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
-- '[RFC 6455 WebSocket Protocol](https://tools.ietf.org/html/rfc6455)'
-- '[RCF 7519 WebSocket Protocol](https://tools.ietf.org/html/rfc7519)'
-- '[Express JS Documentation Page](https://expressjs.com/)'
+- '[Express.js Documentation Page](https://expressjs.com/)'
 
 ---
 
-WebSockets allow you to add real-time communications to your web application. It is the technology frequently behind instant messaging, collaboration, and multiplayer gaming over the web. Any time you want to facilitate real-time communication between clients and servers, the WebSockets API is likely one of your best options.
+WebSockets allow you to add real-time communications to your web application. It is the technology frequently behind instant messaging, collaboration, and multiplayer gaming over the web. Any time you want to facilitate real-time communication between clients and servers, the WebSockets API is one of your best options.
 
 However you use WebSockets, you likely want to limit connections to authorized users only. By default, WebSockets lack authentication, but you can effectively add your own using JSON Web Tokens (JWTs). These are lightweight and secure tokens that can provide an easy and reliable authentication solution.
 
 This guide reviews the concepts behind WebSockets and JWTs and then walks you through an example application using JWTs to authenticate WebSocket connections.
 
-## Before You Begin
+## What Are WebSockets?
+
+The WebSocket Protocol is an open standard ([RFC 6455](https://tools.ietf.org/html/rfc6455)) for real-time communications. It allows for full-duplex, bidirectional communication between clients and servers on the web.
+
+WebSockets can be useful in numerous contexts where real-time information transmission is key. A typical example is an instant messenger or chat application. WebSockets can also handle things like collaborative document editing and online multiplayer games.
+
+To learn more about WebSockets, take a look at our [Introduction to WebSockets](/docs/guides/introduction-to-websockets/) guide.
+
+## What Are JSON Web Tokens?
+
+JSON Web Token (JWT) is also an open standard ([RCF 7519](https://tools.ietf.org/html/rfc7519)). It defines a compact and secure way to transmit information via JSON. These tokens are significantly smaller than the ones generated by similar standards, such as the Security Assertion Markup Language (SAML) tokens. At the same time, JWTs are typically secured by a signing algorithm, ensuring their integrity from end to end.
+
+Decoded JWTs are formatted as JSON, as opposed to the XML format often used in similar token standards. This tends to make them more approachable for web development, and also opens up JSON's extensive web development tooling.
+
+For more on JWTs, check out our [How to Authenticate with JSON Web Tokens (JWTs)](/docs/guides/how-to-authenticate-using-jwt/) guide.
+
+## Using WebSockets and JWTs Together
+
+On their own, WebSockets do not include any authentication. WebSocket connections can be resource expensive, so it is a good idea to limit whom you allow to connect. Beyond that, most WebSocket applications benefit from implementing user authentication. This lets you limit who can see your user's communications and sensitive information.
+
+JWTs provide a good authentication option. They are lightweight, secure, and fit comfortably into a wide range of web applications. WebSocket connections are frequently authenticated via URL parameters. This makes JWTs an ideal option when implementing authentication for WebSocket connections.
+
+The list below provides an example model of how you might use WebSockets and JWTs in tandem. A host of other approaches are possible, but this provides a strong framework to start from.
+
+- Create an HTTP/HTTPS server with two endpoints:
+  - One that generates a JWT provided set of valid credentials
+  - One that establishes a WebSocket connection if a valid JWT is provided
+
+- Create a WebSocket server that:
+  - Broadcasts messages to the client pool
+  - Periodically notifies and removes clients with expired JWTs
+
+- Create a frontend that:
+  - Accepts login credentials
+  - Fetches a JWT from the server when credentials are submitted
+  - Initiates a WebSocket connection when it receives a JWT
+
+In the next section, you can follow along to build a chat application applying the above model.
+
+## Build an Example Application
+
+In this section, you learn how to implement a WebSocket server and how to use JWTs to authenticate its connections. It uses the example model shown in the previous section. The result is a simple instant messaging application with user login and authentication handling.
+
+### Before You Begin
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -52,50 +92,9 @@ This guide reviews the concepts behind WebSockets and JWTs and then walks you th
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## What Are WebSockets?
-
-The WebSocket Protocol is an open standard ([RFC 6455](https://tools.ietf.org/html/rfc6455)) for real-time communications. It allows for full-duplex, bidirectional communication between clients and servers on the web.
-
-WebSockets can be useful in numerous contexts where real-time information transmission is key. A typical example is an instant messenger or chat application, but WebSockets can also handle things like collaborative document editing and online multiplayer games.
-
-To learn more about WebSockets, take a look at our [Introduction to WebSockets](/docs/guides/introduction-to-websockets/) guide.
-
-## What Are JSON Web Tokens?
-
-JSON Web Token (JWT) is likewise an open standard ([RCF 7519](https://tools.ietf.org/html/rfc7519)). It defines a compact and secure way to transmit information via JSON. These tokens are significantly smaller than the ones generated by similar standards, such as the Security Assertion Markup Language (SAML) tokens. At the same time, JWTs are typically secured by a signing algorithm, ensuring their integrity from end to end.
-
-Decoded JWTs are formatted as JSON, as opposed to the XML format often used in similar token standards. This tends to make them more approachable for web development, and also opens up JSON's extensive web development tooling.
-
-For more on JWTs, check out our [How to Authenticate with JSON Web Tokens (JWTs)](/docs/guides/how-to-authenticate-using-jwt/) guide.
-
-## Using WebSockets and JWTs Together
-
-On their own, WebSockets do not include any authentication. However, WebSocket connections can be resource expensive, so it is typically a good idea to limit whom you allow connecting. Beyond that, most WebSocket applications can benefit from requiring a user authentication. It lets you limit who can see users' communications and potentially sensitive information.
-
-JWTs provide a good authentication option. They are lightweight and secure and fit comfortably into a wide range of web applications. WebSocket connections are frequently authenticated via URL parameters, and JWTs' small size and security make them exceptional for that purpose.
-
-Here is a model as an example of how you might use WebSockets and JWTs in tandem. A host of other approaches are possible, but this provides a strong framework to start from.
-
-- Create an HTTP/HTTPS server with two endpoints:
-  - One that generates a JWT provided a set of valid credentials
-  - One that establishes a WebSocket connection provided a valid JWT
-- Create a WebSocket server that:
-  - Broadcasts messages to the client pool
-  - Periodically notifies and removes clients with expired JWTs
-- Create a front end that:
-  - Accepts login credentials
-  - Fetches a JWT from the server when credentials are submitted
-  - Initiates a WebSocket connection when it receives a JWT
-
-In the next section, you can follow along to build a chat application applying the above model.
-
-## Build an Example Application
-
-In this section, you can see how to implement a WebSocket server and how to use JWTs to authenticate its connections. It uses the example model shown in the previous section. The result is a simple instant messaging application with user login and authentication handling.
-
 ### Install Node.js
 
-This example uses Node.js and the [Express JS](https://expressjs.com/) application framework. Express JS makes putting a server together quick and straightforward, and its tools make it easier here to focus on the WebSocket and JWT implementation.
+This example uses Node.js and the [Express.js](https://expressjs.com/) application framework. Express.js makes putting a server together quick and straightforward. For this guide's example, it makes it easier to focus on the WebSocket and JWT implementation.
 
 1. Install Node.js.
 
@@ -115,7 +114,7 @@ This example uses Node.js and the [Express JS](https://expressjs.com/) applicati
 
 ### Set Up the Project
 
-1. Create a directory for the project. In this example, `ws-jwt-example` is used as the project and directory name. The example project here lives in the current user's home directory.
+1. Create a directory for the project. In this example, `ws-jwt-example` is used as the project and directory name. The example project lives in the current user's home directory.
 
         mkdir ~/ws-jwt-example
 
@@ -141,10 +140,10 @@ This example uses Node.js and the [Express JS](https://expressjs.com/) applicati
 
 ### Create the Server
 
-1. Create a JavaScript file called `server.js`. Add the contents shown in [this example file](example-server.js). This creates an Express JS server with an endpoint for providing JWTs for authentication and an endpoint for making WebSocket connections. It also serves static files for the application's front end.
+1. Create a JavaScript file called `server.js`. Add the contents of [the `example-server.js` file](example-server.js). This file creates an Express.js server with an endpoint for providing JWTs for authentication and an endpoint for making WebSocket connections. It also serves static files for the application's front end.
 
     {{< note >}}
-This example stores credentials in the application code for the sake of convenience. However, in a production scenario, you should not store credentials in application code, and ideally, passwords should be stored encrypted.
+The example stores credentials in the application code for the sake of convenience. However, in a production scenario, you should not store credentials in application code, and ideally, passwords should be stored encrypted.
 
 Additionally, the example uses a simple secret. But in production, you should use a secret that conforms to the standards for the signing algorithm you are using. For instance, the HMAC SHA256 algorithm in this example should be given a 256-bit secret. You can create one with a random 64-character hex string or a random 44-character Base64 string.
     {{< /note >}}
@@ -153,7 +152,7 @@ Additionally, the example uses a simple secret. But in production, you should us
 
     - The Express JS server provides an endpoint for authentication. It takes in a username and password and attempts to match them to stored credentials. If it finds a match, it serves a JWT in its response.
 
-        {{< file "server.js" >}}
+        {{< file "server.js" javascript >}}
 // [...]
 
 // Create an endpoint for authentication.
@@ -234,13 +233,13 @@ wss.on('connection', (ws, req) => {
 
 ### Create the Client
 
-1. Create a JavaScript file called `main.js` in the `public` directory. Add the contents shown in [this example file](example-main.js). This file fetches the JWT whenever login credentials are provided, makes the WebSocket connection, and displays any messages received.
+1. Create a JavaScript file named `main.js` in the `public` directory. Add the contents shown in [the `example-main.js` file](example-main.js). This file fetches the JWT whenever login credentials are provided, makes the WebSocket connection, and displays any messages received.
 
-    As with the server file above, here is a breakdown of some of the key points in the client-side JavaScript.
+    As with the server file above, below is a breakdown of some of the key points in the client-side JavaScript.
 
     - This function attempts to authenticate the user whenever a username and password are provided. If it gets back a token, it calls another function to open the WebSocket connection.
 
-        {{< file "public/main.js" >}}
+        {{< file "public/main.js" javascript >}}
 // [...]
 
 // Take the entered username and password and attempt to authenticate them. If the
@@ -265,9 +264,9 @@ const getJwtAuth = () => {
 // [...]
         {{< /file >}}
 
-    - This function attempts to open a WebSocket connection using the JWT provided by the server. It first makes sure to close any existing WebSocket connection (e.g., from a previous login). Whenever it opens a new connection, it sends a message over the WebSocket. And anytime a message gets received, it displays it.
+    - This function attempts to open a WebSocket connection using the JWT provided by the server. It first makes sure to close any existing WebSocket connection (e.g., from a previous login). Whenever it opens a new connection, it sends a message over the WebSocket. Anytime a message is received, it displays it.
 
-        {{< file "public/main.js" >}}
+        {{< file "public/main.js" javascript >}}
 // [...]
 
 // Open the WebSocket connection using the JWT.
@@ -309,7 +308,7 @@ const openWsConnection = (jwtAuth) => {
 
     - This function sends a user-entered message. Before doing so, it ensures that the user is logged in and that the message is not empty.
 
-        {{< file "public/main.js" >}}
+        {{< file "public/main.js" javascript >}}
 // Send the message entered by the user. First, however, ensure that the user is logged
 // in and that the message field is not empty.
 const sendWsMessage = () => {
@@ -327,7 +326,7 @@ const sendWsMessage = () => {
 }
         {{< /file >}}
 
-1. Complete the front end by creating an `index.html` file in the `public` directory. Add the following content (which you can also find [here](example-index.html)).
+1. Complete the frontend by creating an `index.html` file in the `public` directory. Add the `index.html` file to the directory.
 
     {{< file "public/index.html" >}}
 <!doctype html>
@@ -388,18 +387,18 @@ const sendWsMessage = () => {
 
 The example application is ready for a test run. Follow the steps below to try it out.
 
-1. Start the Express JS server.
+1. Start the Express.js server.
 
         node server.js
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
     - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `198.51.100.0` with the server's IP address.
+    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
-            ssh -L3000:localhost:3000 example-user@198.51.100.0
+            ssh -L3000:localhost:3000 example-user@192.0.2.0
 
-1. Navigate to `localhost:3000` in your browser. There, enter credentials for one of the users you set up in the `server.js` file. Here, "userA" from the example above is used.
+1. Navigate to `localhost:3000` in your browser. There, enter credentials for one of the users you set up in the `server.js` file. In your browser, userA from the example above is used.
 
     ![Example application using WebSockets and JWTs](ws-jwt-example-app.png)
 
