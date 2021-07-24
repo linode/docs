@@ -2,10 +2,9 @@
 slug: using-grpc-for-remote-procedural-calls
 author:
   name: Jeff Novotny
-description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC.'
-og_description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC.'
-keywords: ['What is grpc', 'grpc vs rest', 'grpc tutorial']
-tags: ['python']
+description: "gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC."
+og_description: "gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC."
+keywords: ['what is grpc', 'grpc vs rest', 'grpc tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
 modified_by:
@@ -15,7 +14,6 @@ h1_title: "How to Use gRPC and Python for Remote Procedural Calls"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: None
 external_resources:
 - '[gRPC](https://grpc.io/)'
 - '[Google Developers Page for Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview)'
