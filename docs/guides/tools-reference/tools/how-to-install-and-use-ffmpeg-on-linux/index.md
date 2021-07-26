@@ -1,114 +1,120 @@
 ---
-slug: how-to-install-and-use-ffmpeg-on-linux
+slug: install-and-use-ffmpeg-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to install ffmpeg on Linux to transcode audio and video, cut and crop video, explore it’s further options.'
-og_description: 'Learn how to install ffmpeg on Linux to transcode audio and video, cut and crop video, explore it’s further options.'
+description: 'This guide demonstrates how to install FFmpeg on Linux to transcode audio and video, cut and crop video, integrate the FFmpeg functionality with Python, and explore further FFmpeg options.'
+og_description: 'This guide demonstrates how to install FFmpeg on Linux to transcode audio and video, cut and crop video, integrate the FFmpeg functionality with Python, and explore further FFmpeg options.'
 keywords: ['FFmpeg python','FFmpeg concat','FFmpeg trim video','FFmpeg crop','FFmpeg cut','FFmpeg mkv to mp4']
+tags: ['linux', 'python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-12
 modified_by:
   name: Linode
-title: "How to Install and Use Ffmpeg on Linux"
-h1_title: "How to Install and Use Ffmpeg on Linux."
+title: "Install and Use FFmpeg on Linux"
+h1_title: "How to Install and Use FFmpeg on Linux."
 enable_h1: true
 contributor:
   name: Jeff Novotny
   link: Github/Twitter Link
 external_resources:
 - '[FFMpeg](http://ffmpeg.org/)'
-- '[The FFmpeg compilation guide](https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu)'
-- '[FFmpeg application documentation](http://ffmpeg.org/ffmpeg.html)'
-- '[Full FFmpeg documentation](http://ffmpeg.org/documentation.html)'
+- '[The FFmpeg Compilation Guide](https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu)'
+- '[FFmpeg Application Documentation](http://ffmpeg.org/ffmpeg.html)'
+- '[Full FFmpeg Documentation](http://ffmpeg.org/documentation.html)'
 - '[File Samples Archive](https://filesamples.com/categories/video)'
 - '[FFmpeg-Python GitHub page](https://github.com/kkroening/ffmpeg-python)'
 - '[FFmpeg-Python examples page](https://github.com/kkroening/ffmpeg-python/tree/master/examples)'
 ---
 
-[*FFMpeg*](http://ffmpeg.org/) is a free, open source utility that is used for video and audio processing. It assists with the editing, reformatting, and conversion of audio, video, and multimedia files. FFmpeg contains a suite of libraries and programs that can be embedded into other media applications or function as a stand-alone command line utility. This guide provides a brief introduction to FFmpeg. It also explains how to install FFmpeg and how to use FFmpeg to edit media files.
+[*FFMpeg*](http://ffmpeg.org/) is a free, open-source utility that is used for video and audio processing. It assists with the editing, reformatting, and conversion of audio, video, and multimedia files. FFmpeg contains a suite of libraries and programs that can be embedded into other media applications or function as a stand-alone command-line utility. This guide provides a brief introduction to FFmpeg. It also explains how to install FFmpeg and how to use FFmpeg to edit media files.
 
 ## What is FFmpeg
 
-The name FFmpeg is derived from the phrase "fast forward" and the name of the *Moving Picture Experts Group* (MPEG) video standards group. FFmpeg is used for technically-demanding operations on media files such as format conversion, encoding, resizing, concatenation, and compression. The application is mainly geared towards industry professionals and software developers. The FFmpeg libraries power many common media-based applications, including YouTube, iTunes, and the video player VLC.
+The name FFmpeg is derived from the phrase "fast forward" and the name of the *Moving Picture Experts Group* (MPEG) video standards group. FFmpeg is used for technically demanding operations on media files such as format conversion, encoding, resizing, concatenation, and compression. The application is mainly geared towards industry professionals and software developers. The FFmpeg libraries power many common media-based applications, including YouTube, iTunes, and the video player VLC.
 
-The inherent complexity of FFmpeg and its extensive number of options means it is not always easy for beginners to use. FFmpeg also lacks native input and output mechanisms for audio and video. It does not include a GUI, but some third-party products integrate with it. FFmpeg can be downloaded as an official version or through Linux packages, but it can also be compiled directly from the source code. It is most typically used on the Linux or macOS platforms.
+The inherent complexity of FFmpeg and its extensive number of options means it is not always easy for beginners to use. FFmpeg also lacks native input and output mechanisms for audio and video. It does not include a GUI, but some third-party products integrate with it. FFmpeg can be downloaded as an official version or through Linux packages, but it can also be compiled directly from the source code. It is most typically used on Linux or macOS platforms.
 
-FFmpeg operates as a command line application, so it can be fully incorporated into automated processes. The FFmpeg suite of utilities includes the core `ffmpeg` tool, the media player `ffplay`, and `ffprobe`, which displays media information. `ffprobe` can also inspect files and individual frames. One of the most useful FFmpeg components is `libavcodec`, a codec, multiplexer, and demultiplexer library. This library can handle a wide variety of media formats, including relatively uncommon or older ones. It also supports all common platforms and streaming protocols.
+FFmpeg operates as a command-line application, so it can be fully incorporated into automated processes. The FFmpeg suite of utilities includes the core `ffmpeg` tool, the media player `ffplay`, and `ffprobe`, which displays media information. `ffprobe` can also inspect files and individual frames. One of the most useful FFmpeg components is `libavcodec`, a codec, multiplexer, and demultiplexer library. This library can handle a wide variety of media formats, including relatively uncommon or older ones. It also supports all common platforms and streaming protocols.
 
 Some of the most popular FFmpeg features are as follows:
-*   Format transcoding, which converts a file from one format to another, such as `.mp3`to `.wav`.
-*   File compression.
-*   Basic editing operations, such as trimming or concatenation.
-*   Video scaling.
-*   Adding visual effects or subtitles.
-*   Frame filtering.
-*   Frame extraction.
-*   Standards compliance.
+
+- Format transcoding, which converts a file from one format to another, such as `.mp3`to `.wav`.
+- File compression
+- Basic editing operations, such as trimming or concatenation
+- Video scaling
+- Adding visual effects or subtitles
+- Frame filtering
+- Frame extraction
+- Standards compliance
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of Linode's guide on [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of Linode's guide on [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-3.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install FFmpeg
 
 The following steps illustrate how to install FFmpeg version 4.2 from the default package. This version is suitable for most users. These installation instructions are geared towards Ubuntu users.
 
-1.  Update the available Linux packages.
+1. Update the available Linux packages.
 
         sudo apt update
-2.  Install the `ffmpeg` package.
+1. Install the `ffmpeg` package.
 
         sudo apt install ffmpeg
     {{< output >}}
 ffmpeg version 4.2.4-1ubuntu0.1 Copyright (c) 2000-2020 the FFmpeg developers
 built with gcc 9 (Ubuntu 9.3.0-10ubuntu2)
     {{< /output >}}
-3.  To verify the FFmpeg version, use the following command.
+1. To verify the FFmpeg version, use the following command:
 
         ffmpeg -version
 
 {{< note >}}
-FFmpeg can also be compiled from the source code. This approach is recommended for advanced users who might want to modify or tinker with FFmpeg. For instructions on how to compile FFmpeg from source, consult the [*official FFmpeg compilation guide*](https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu).
+FFmpeg can also be compiled from the source code. This approach is recommended for advanced users who might want to modify or tinker with FFmpeg. For instructions on how to compile FFmpeg from source, consult the [official FFmpeg Compilation Guide](https://trac.ffmpeg.org/wiki/CompilationGuide).
 {{< /note >}}
 
 ## FFmpeg Options
 
-Certain FFmpeg options are used in many different contexts, so it helps to be familiar with them. Some of these options are appended to the main `ffmpeg` command to display the available alternatives, for instance, all of the codec files. Others are used when editing the files. A full list of the options is available in the [*FFmpeg documentation*](http://ffmpeg.org/ffmpeg.html).
+Certain FFmpeg options are used in many different contexts, so it helps to be familiar with them. Some of these options are appended to the main `ffmpeg` command to display the available alternatives, for instance, all of the codec files. Others are used when editing the files. A full list of the options is available in the [ffmpeg Documentation](http://ffmpeg.org/ffmpeg.html).
 
 ### Generic FFmpeg Options
 
-The following FFmpeg options are used to display information. To use these options, specify the `ffmpeg` command and the option, for example, `ffmpeg -devices`. For information on the various options, see section 5.2 of the [*FFmpeg documentation*](http://ffmpeg.org/ffmpeg.html). Here is a list of the most commonly used generic options.
+The following FFmpeg options are used to display information. To use these options, specify the `ffmpeg` command and the option, for example, `ffmpeg -devices`. For information on the various options, see section 5.2 of the [ffmpeg Documentation](http://ffmpeg.org/ffmpeg.html#Generic-options).
 
-*   `-h/-help`: Displays the help information.
-*   `-demuxers`: Displays the demultiplexer options.
-*   `-muxers`: Displays all the available multiplexers.
-*   `-devices`: Displays the supported devices.
-*   `-codecs`: Lists all the codec options (media bit-stream formats) inside `libavcodec`.
-*   `-decoders`: Lists all decoders.
-*   `-encoders`: Lists the available encoders.
-*   `-filters`: Displays all the filter options contained in `libavfilter`.
+Following is a list of the most commonly used generic options.
+
+- `-h/-help`: Displays the help information.
+- `-demuxers`: Displays the demultiplexer options.
+- `-muxers`: Displays all the available multiplexers.
+- `-devices`: Displays the supported devices.
+- `-codecs`: Lists all the codec options (media bit-stream formats) inside `libavcodec`.
+- `-decoders`: Lists all decoders.
+- `-encoders`: Lists the available encoders.
+- `-filters`: Displays all the filter options contained in `libavfilter`.
 
 ### FFmpeg Command Options
 
-The following FFmpeg options are typically used with the various tools to specify parameters to the command. A full list can be found in section 5.4 of the [*FFmpeg documentation*](https://ffmpeg.org/ffmpeg.html).
+The following FFmpeg options are typically used with the various tools to specify parameters to the command. A full list of options can be found in section 5.4 of the [FFmpeg Documentation](https://ffmpeg.org/ffmpeg.html#Main-options).
 
-*   `-i `: Supplies the URL or file location of the input file.
-*   `-c`: Specifies the type of codec to use.
-*   `-ss`: Indicates the starting input position of the file. FFmpeg "seek scans" as accurately as possible to this position.
-*   `-t`: Indicates the duration to read from the input file or write to the output file.
-*   `-target`: Is used to specify the target file type.
-*   `-filter`: Specifies a filter to apply to the stream.
+Following is a list of some of the main options.
+
+- `-i`: Supplies the URL or file location of the input file.
+- `-c`: Specifies the type of codec to use.
+- `-ss`: Indicates the starting input position of the file. FFmpeg "seek scans" as accurately as possible to this position.
+- `-t`: Indicates the duration to read from the input file or write to the output file.
+- `-target`: Is used to specify the target file type.
+- `-filter`: Specifies a filter to apply to the stream.
 
 ### FFmpeg Stream Specifiers
 
@@ -116,14 +122,14 @@ Most of the FFmpeg options can be used in conjunction with stream specifiers. A 
 
 To use a stream specifier, append it to the option, separating it with a colon. For example, to apply the `ac3` codec to the second audio stream, the stream specifier would be `-codec:a:1 ac3`. However, `-codec:a ac3` applies the codec to all audio streams.
 
-For detailed information on stream specifiers, consult the [*FFmpeg documentation*](https://ffmpeg.org/ffmpeg.html).
+For detailed information on stream specifiers, consult the [FFmpeg Documentation](https://ffmpeg.org/ffmpeg.html#Stream-specifiers-1).
 
 ## How to Use FFmpeg to Display File Information
 
 To display technical details about a file, use the `ffmpeg -i` command along with the file name. The `-hide_banner` option strips out any details about the FFmpeg application and libraries, and only displays the file information.
 
 {{< note >}}
-Sample files in various formats are available from the [*File Samples Archive*](https://filesamples.com/categories/video). These short clips are very useful for trying out the various FFmpeg capabilities.
+Sample files in various formats are available from the [File Samples Archive](https://filesamples.com/categories/video). These short clips are very useful for trying out the various FFmpeg capabilities.
 {{< /note >}}
 
     ffmpeg -i filename.mov -hide_banner
@@ -146,13 +152,13 @@ Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'filename.mov':
 
 FFmpeg provides a mechanism to concatenate, or join, several media files into one file. All input files must have the same format and use the same codec. For example, all files might be of type `mp4`.
 
-1.  Create a `join.txt` file containing the full path of all the files to join. Each file must be preceded by the keyword `file` and listed on a separate line. Do not add any empty lines between the entries.
+1. Create a `join.txt` file containing the full path of all the files to join. Each file must be preceded by the keyword `file` and listed on a separate line. Do not add any empty lines between the entries.
 
     {{< file "join.txt" aconf >}}
 file dir/file1.mov
 file dir/file2.mov
     {{< /file >}}
-2.  Use the `concat` filter to join the files. Specify the `join.txt` file as the input file. The following command appends `file2.mov` to the end of `file1.mov` and saves the resulting file as `concatenate.mov`.
+1. Use the `concat` filter to join the files. Specify the `join.txt` file as the input file. The following command appends `file2.mov` to the end of `file1.mov` and saves the resulting file as `concatenate.mov`.
 
         ffmpeg -f concat -i join.txt -c copy concatenate.mov
     {{< output >}}
@@ -187,7 +193,7 @@ Press [q] to stop, [?] for help
 frame= 8116 fps=0.0 q=-1.0 Lsize=   77968kB time=00:04:30.75 bitrate=2359.0kbits/s speed=1.22e+03x
 video:73433kB audio:4180kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.458374%
     {{< /output >}}
-3.  Verify the file information for `concatenate.mov` and ensure the file is in the correct format and has the expected length.
+1. Verify the file information for `concatenate.mov` and ensure the file is in the correct format and has the expected length.
 
         ffmpeg -i concatenate.mov  -hide_banner
     {{< output >}}
@@ -225,7 +231,7 @@ video:22612kB audio:939kB subtitle:0kB other streams:0kB global headers:0kB muxi
 
 ## How to Crop a Video with FFmpeg
 
-FFmpeg provides a method of cropping a video. When using the `crop` filter, add the stream specifier `v` to indicate only the video component should be edited. The dimensions and offset of the crop must be in the format `crop=w:h:x:y`. The `w` and `h` are the width and height, in pixels, of the section to crop out. Indicate the offset of the crop using `x` and `y` co-ordinates of the upper left corner.
+FFmpeg provides a method of cropping a video. When using the `crop` filter, add the stream specifier `v` to indicate that only the video component should be edited. The dimensions and offset of the crop must be in the format `crop=w:h:x:y`. The `w` and `h` are the width and height, in pixels, of the section to crop out. Indicate the offset of the crop using `x` and `y` coordinates of the upper left corner.
 
 {{< note >}}
 The crop filter can negatively affect video quality.
@@ -250,9 +256,9 @@ As long as the input and output formats are supported, it is very easy to conver
 
 ### .mkv to .mp4 Format
 
-To convert from the `.mkv` format to the `.mp4` format, specify the original file as the input file. Then specify the name of the new file with the `.mp4` extension to allow for the correct conversion detection formula. The name of the output file does not have to match the name of the input one.
+To convert from a `.mkv` format to `.mp4`, specify the original file as the input file. Then specify the name of the new file with the `.mp4` extension to allow for the correct conversion detection formula. The name of the output file does not have to match the name of the input one.
 
-        ffmpeg -i file1.mkv convert.mp4
+    ffmpeg -i file1.mkv convert.mp4
 
    {{< output >}}
 Output #0, mp4, to 'convert.mp4':
@@ -285,19 +291,20 @@ To convert from a `.mov` format to `.mp4`, repeat the process, but use the `.mov
 
 ## How to Use FFmpeg with Python
 
-FFmpeg functionality can be integrated with the Python programming language. This allows common media processing tasks to be handled in software. The FFmpeg-Python package contains a FFmpeg wrapper that supports most common filters, devices, and codec types.
+FFmpeg functionality can be integrated with the Python programming language. This allows common media processing tasks to be handled in software. The FFmpeg-Python package contains an FFmpeg wrapper that supports the most common filters, devices, and codec types.
 
-This approach allows a finer level of control over the media translation process. For example, a developer could write a program to concatenate every other ten-second segment into a new file. For more information on FFmpeg-Python, see [*their GitHub page*](https://github.com/kkroening/ffmpeg-python).
+This approach allows a finer level of control over the media translation process. For example, a developer could write a program to concatenate every other ten-second segment into a new file. For more information on FFmpeg-Python, see the [FFmpeg-Python GitHub page](https://github.com/kkroening/ffmpeg-python).
 
-To install FFmpeg-Python, follow these instructions:
-1.  If Python is not already installed, install it using `apt`.
+To install FFmpeg-Python, follow the below instructions:
+
+1. If Python is not already installed, install it using `apt`.
 
         sudo apt install python3-dev python3-pip
-2.  Use `pip` to install the `ffmpeg-python` package.
+1. Use `pip` to install the `ffmpeg-python` package.
 
         pip install ffmpeg-python
-3.  To use FFmpeg-Python in an existing Python project, import the package using the `import ffmpeg` directive.
+1. To use FFmpeg-Python in an existing Python project, import the package using the `import ffmpeg` directive.
 
 {{< note >}}
-The FFmpeg-Python developers have some code fragments on their GitHub page to help new developers get started. The [*FFmpeg-Python examples page*](https://github.com/kkroening/ffmpeg-python/tree/master/examples) has a number of useful routines, including complete `.py` sample files.
+The FFmpeg-Python developers have some code fragments on their GitHub page to help new developers get started. The [FFmpeg-Python examples page](https://github.com/kkroening/ffmpeg-python/tree/master/examples) has several useful routines, including complete `.py` sample files.
 {{< /note >}}

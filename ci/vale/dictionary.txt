@@ -458,6 +458,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+ffmpeg
 ffff
 fi
 fiiiile
