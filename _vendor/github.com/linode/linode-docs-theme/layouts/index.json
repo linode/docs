@@ -10,6 +10,12 @@
 {{- $category := .Params.category -}}
 {{ $tags := .Params.tags -}}
 {{- $sections := slice -}}
+{{- $section := "" }}
+{{- if or (eq .Kind "taxonomy") (eq .Kind "term" ) }}
+{{- $sections = slice "taxonomies" -}}
+{{- $sections = $sections | append .SectionsEntries -}}
+{{- $section = replace (path.Join $sections) "/" " > " }}
+{{- end -}}
 {{- $owningSection := .CurrentSection }}
 {{ if .IsSection }}
 {{/*- Skip orphan/empty sections; that does not work with the left menu. -*/}}
@@ -18,7 +24,9 @@
 {{- $owningSection = . }}
 {{- end -}}
 {{- end -}}
-{{- $section := replace $owningSection.SectionsPath "/" " > " }}
+{{- if not $section -}}
+{{- $section = replace $owningSection.SectionsPath "/" " > " }}
+{{- end -}}
 {{- $excerpt := "" -}}
 {{- if .Params.description -}}
 {{- $excerpt = .Params.description -}}
@@ -35,7 +43,9 @@
 {{- $dict := (dict "objectID" .File.UniqueID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "isBranch" (not .IsPage) "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}
+{{- if not $sections -}}
 {{- $sections = $sections | append $owningSection.SectionsEntries  -}}
+{{- end -}}
 {{- range $i, $section := $sections -}}
 {{- if not $sectionPath -}}
 {{- $sectionPath = $section -}}

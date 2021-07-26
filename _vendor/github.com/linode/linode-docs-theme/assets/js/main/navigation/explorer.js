@@ -7,6 +7,7 @@ import { newCreateHref } from './create-href';
 var debug = 0 ? console.log.bind(console, '[explorer]') : function() {};
 
 const SECTION_DELIM = ' > ';
+const taxonomiesSection = 'taxonomies';
 
 export function newSearchExplorerController(searchConfig) {
 	if (!searchConfig) {
@@ -470,6 +471,11 @@ export function newSearchExplorerController(searchConfig) {
 			this.data.add = function(section, sectionResult) {
 				let kp = this.parseKey(sectionResult.key);
 
+				// We list the taxonomies in search listings, but not in the explorer.
+				if (kp.parts[0] === taxonomiesSection) {
+					return;
+				}
+
 				let n = this.nodes[kp.key];
 				let count = sectionResult.count;
 
@@ -664,6 +670,10 @@ export function newSearchExplorerController(searchConfig) {
 
 				for (let resultSection of resultSections) {
 					let kp = this.data.parseKey(resultSection.key);
+					// We list the taxonomies in search listings, but not in the explorer.
+					if (kp.parts[0] === taxonomiesSection) {
+						continue;
+					}
 					let n = this.data.nodes[kp.key];
 					if (!n) {
 						console.warn(`node with key ${kp.key} not set`);

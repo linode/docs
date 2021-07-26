@@ -42,7 +42,7 @@ download_settings = true
 name = "guides"
 index = "linode-documentation"
 index_by_pubdate = "linode-documentation-sorted"
-filters = "section.lvl0:guides"
+filters = "section.lvl0:guides OR section.lvl0:taxonomies"
 explorer_leaf_filter = "isBranch:false"
 
 # UI config.
