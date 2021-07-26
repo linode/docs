@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'A simplified secure enterprise level file sharing solution on top of your existing file storage.'
 og_description: 'A simplified secure enterprise level file sharing solution on top of your existing file storage.'
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['storage','file sharing', and 'backups']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-20
