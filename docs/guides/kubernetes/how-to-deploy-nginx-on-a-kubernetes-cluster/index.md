@@ -96,7 +96,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 ## What is Ingress?
 
-Ingress is a smart router to handle traffic for your kubernetes cluster. As opposed to the common perception, it isn’t a service but is a combination of an API object and a controller that handles and manages rules for traffic routing. Rules defined within Ingress API are passed on to an Ingress controller that is listening for them. This controller then consumes those rules for traffic routing.
+Ingress is a smart router to handle traffic for your Kubernetes cluster. As opposed to the common perception, it isn’t a service but is a combination of an API object and a controller that handles and manages rules for traffic routing. Rules defined within Ingress API are passed on to an Ingress controller that is listening for them. This controller then consumes those rules for traffic routing.
 
 ### Disable Swap Memory
 
@@ -401,9 +401,9 @@ To identify which controllers your NGINX Kubernetes cluster is using, you can go
 ### Install Helm
 To install Ingress with this guide, you can use Helm. If not already installed, you can run the following script on your terminal to install it:
 
-    $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-	$ chmod 700 get_helm.sh
-	$ ./get_helm.sh
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    chmod 700 get_helm.sh
+	  ./get_helm.sh
 
 You can also install Helm using other package managers like apt too.
 
