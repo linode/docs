@@ -403,7 +403,7 @@ To install Ingress with this guide, you can use Helm. If not already installed, 
 
     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
     chmod 700 get_helm.sh
-	  ./get_helm.sh
+    ./get_helm.sh
 
 You can also install Helm using other package managers like apt too.
 
