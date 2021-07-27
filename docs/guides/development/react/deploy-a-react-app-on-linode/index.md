@@ -18,7 +18,7 @@ contributor:
   link: https://twitter.com/philzona
 aliases: ['/development/react/deploy-a-react-app-on-linode/','/development/javascript/deploy-a-react-app-on-linode/']
 deprecated: true
-deprecated_link: 'development/react/'
+deprecated_link: '/guides/how-to-deploy-a-react-app-on-debian-10/'
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
