@@ -66,7 +66,7 @@ After your MERN One-click App has finished installing, you can:
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 
     - [Build Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)
-    - [Deploy a React Application on Linode](/docs/guides/deploy-a-react-app-on-linode/)
+    - [Deploy a React Application on Linode](/docs/guides/how-to-deploy-a-react-app-on-debian-10/)
 
 
 ### Software Included
