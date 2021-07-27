@@ -1,5 +1,5 @@
 ---
-slug: deploy-aaPanel-with-marketplace-apps
+slug: deploy-aapanel-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-19
 modified_by:
   name: Linode
-title: "Deploy Aapanel With Marketplace Apps"
-h1_title: "How to Deploy Aapanel With Marketplace Apps."
+title: "Deploy aaPanel With Marketplace Apps"
+h1_title: "How to Deploy aaPanel With Marketplace Apps."
 enable_h1: true
 external_resources:
 - '[aaPanel](https://www.aapanel.com/)'
