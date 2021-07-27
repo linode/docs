@@ -131,6 +131,10 @@ module.exports = {
 						color: colorBrand,
 						textDecoration: 'none'
 					},
+					strong: {
+						color: false,
+						fontWeight: '600'
+					},
 					h1: {
 						color: colorTitle,
 						fontWeight: '400',
