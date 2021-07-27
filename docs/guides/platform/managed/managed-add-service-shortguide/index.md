@@ -42,4 +42,4 @@ To add a new monitored service to Linode Managed:
 
 1.  Fill out the form and click the **Add** button.
 
-1.  Once added, the monitored service will initially appear as *Pending*. Linode Support will start monitoring the service in a few minutes--if the service is available, the dashboard will then indicate that the service's status is **Verified**.
+1.  Once added, the monitored service will initially appear as *Pending*. Linode Support will start monitoring the service in a few minutes--if the service is available, the dashboard will then indicate that the service's status is **Verified**. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](/docs/guides/linode-managed/#configuring-firewall-rules)).
