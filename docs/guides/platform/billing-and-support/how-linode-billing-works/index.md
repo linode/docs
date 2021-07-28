@@ -64,9 +64,9 @@ When an invoice is generated on the first of the month (or mid-month), Linode au
 
 ### Payment Methods
 
-- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account. Review the [Updating Credit Card Information](/docs/guides/manage-billing-in-cloud-manager/#updating-credit-card-information) section to update your credit card on file.
+- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account. Review the [Updating the Credit Card](/docs/guides/manage-billing-in-cloud-manager/#updating-the-credit-card) section to update your credit card on file.
 
-- **Google Pay:** Pay using your Google Pay balance or any payment method added to your Google Pay account, including a credit/debit card, bank account, or PayPal.
+- **Google Pay:** Pay using any credit or debit card through a Google Pay account. Google Pay can be used to both automatically pay your invoice and to manually add funds to the account. Using Google Pay balances as well as bank accounts and PayPal accounts linked through Google Pay are not supported at this time. See [Adding and Updating Google Pay](http://localhost:1313/docs/guides/manage-billing-in-cloud-manager/#adding-and-updating-google-pay).
 
 - **PayPal:** Pay using your PayPal balance or any payment method added to your PayPal account. At this time, PayPal can only be used to manually add funds to your account. It cannot be used as the account's default payment method to automatically pay monthly invoices. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
 
