@@ -7,7 +7,7 @@ description: 'How to resell Linode services using the Linode API, and how to get
 keywords: ['resell','linode','services','reseller','referral','code']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-31
-modified: 2019-01-31
+modified: 2021-07-02
 modified_by:
   name: Linode
 title: "How to Resell Linode Services"
@@ -33,11 +33,9 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 -   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/case-studies/cloudnet) for an in-depth look at why they chose to partner with Linode.
 
-## Referral Codes
+## Referral Program
 
-As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for another person, you can send them your [referral code (or referral URL)](/docs/platform/billing-and-support/billing-and-payments-new-manager/#referral-credits) to receive $20 per sign up.
-
-The credit for your referral will be applied to your account if the referral stays active as a Linode customer for 90 days. Specifically, the referred account will need to have at least one active, billed Linode service on their account throughout the 90 day period.
+As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/guides/how-linode-billing-works/#referral-program) section within our billing guide for more details.
 
 Advertising your referral code to others is not the same as reselling Linode services. When someone else uses your referral code, they create an entirely separate Linode account with their own billing.
 

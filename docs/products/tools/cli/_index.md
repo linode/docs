@@ -12,7 +12,7 @@ cascade:
 
 ## Availability
 
-Tokyo, Japan; Mumbai, India; Singapore, Singapore; Sydney, Australia; Frankfurt, Germany; London, United Kingdom; Toronto, Canada; Newark, NJ, USA; Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA
+The Linode CLI can be used across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Features
 

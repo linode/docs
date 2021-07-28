@@ -6,7 +6,7 @@ title: Capture an Image
 description: "How to capture an Image from a Linode."
 ---
 
-{{< content "images-beta-note-shortguide" >}}
+{{< content "images-ga-pricing-update-shortguide" >}}
 
 ## Requirements and Considerations
 

@@ -8,7 +8,7 @@ og_description: 'Rocket is a flexible and efficient web framework for the Rust p
 keywords: ['rocket','rust','functional programming','web application','app framework','handlebars templates']
 tags: ['rust', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-29
+published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
 title: "Build a Website Using Rust and the Rocket Web Framework"

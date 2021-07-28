@@ -6,7 +6,7 @@
   {{ block "head-meta-main" . }}
     {{/* The default static title and SEO meta markup. */}}
     <title>
-      {{ .Title }} | {{ $.Site.Params.page_title_suffix | default "Linode" }}
+      {{ partial "funcs/get-page-title.html" . }} | {{ $.Site.Params.page_title_suffix | default "Linode" }}
     </title>
     {{/* SEO */}}
     {{ partial "sections/head-seo.html" . }}
@@ -61,7 +61,7 @@
       <div id="navbar__search-input" class="pl-4 flex items-stretch h-full w-full">
         {{ partialCached "sections/search/input.html" . }}
       </div>
-      <div id="navbar__breadcrumbs" class="h-full w-full pl-4 border-l-gray overflow-x-scroll">
+      <div id="navbar__breadcrumbs" class="h-full w-full pl-4 border-l-gray overflow-x-auto">
         <div class="h-full w-auto flex items-center">
           {{ partial "sections/navigation/breadcrumbs.html" (dict "page" . "wrap" false) }}
         </div>
@@ -77,7 +77,7 @@
     </nav>
     
     {{/* Main content area. */}}
-    <main class="main bg-backgroundcolor h-full min-h-screen overflow-hidden">
+    <main class="main bg-backgroundcolor h-full min-h-screen overflow-hidden pb-8">
       <div class="main__inner">
         <section class="w-full">
           {{ partial "sections/search/panel.html" . }}

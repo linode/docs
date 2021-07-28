@@ -44,12 +44,14 @@ apparmor
 appimage
 appletalk
 approvers
+appsec
 appserver
 apxs
 architecting
 aren
 argv
 arping
+arptables
 askbot
 aske
 async
@@ -85,8 +87,10 @@ autovacuum
 auxprop
 avz
 awk
+aws
 awstats
 azc
+backdoors
 backend
 backends
 backported
@@ -151,6 +155,7 @@ c2s
 cabd
 cacert
 cacheable
+cachable
 caddy
 caddyfile
 cakey
@@ -178,6 +183,7 @@ changeset
 characterwise
 chatrooms
 cheatsheet
+checkmarx
 checksummed
 checksums
 chefspec
@@ -215,6 +221,8 @@ cmusieve
 cnf
 codebase
 codec
+colab
+colormaps
 com2sec
 comodo
 completekey
@@ -235,6 +243,7 @@ copyfrom
 copyto
 coreutils
 corporateclean
+courseware
 cpanminus
 cpu
 cqlsh
@@ -310,6 +319,7 @@ deprovisioning
 descolada
 descr
 deserialize
+despawn
 dest
 dereference
 dereferencing
@@ -358,6 +368,7 @@ domainkey
 domainname
 donenfeld
 dotdeb
+dotenv
 dotfiles
 doveadm
 dpkg
@@ -374,6 +385,8 @@ dvcs
 e2fsck
 ea04
 ead
+ebtables
+ebuild
 ecommerce
 ecute
 edu
@@ -388,6 +401,7 @@ elpaso
 emacs
 email2email
 emojivoto
+emscripten
 ender
 enduser
 enix
@@ -400,11 +414,13 @@ esc
 etcd
 etcd0
 eth0
+ethtool
 eugen
 evhost
 example1
 example2
 examplegroup
+examplenamespace
 examplepassword
 examplerole
 examplesitename
@@ -464,6 +480,7 @@ filimonov
 findtime
 finnix
 firewalld
+firewalled
 firewalling
 firstsite
 flamegraph
@@ -497,6 +514,7 @@ gamepad
 gamepedia
 gameplay
 gandi
+gartner
 gatsby
 gbps
 gcc
@@ -557,6 +575,7 @@ greylisting
 griefing
 griesemer
 groot
+groupinfo
 grsecurity
 gsa
 gsad
@@ -621,6 +640,7 @@ http
 httpchk
 httpd
 https
+huginn
 hulu
 hvc0
 hybla
@@ -662,6 +682,7 @@ imapd
 imaps
 img
 immutant
+imperva
 impor
 incentivized
 inclusivity
@@ -674,12 +695,14 @@ initializer
 initramfs
 initrd
 inittab
+injectable
 inode
 inotify
 insmod
 inspec
 interdomain
 interruptible
+intra-application
 introducer
 introducers
 io
@@ -699,8 +722,10 @@ ipv4
 ipv6
 ipwl
 irc
+irchelp
 ircname
 iredmail
+irqbalance
 irssi
 isn
 iso
@@ -711,6 +736,8 @@ issuewild
 istioctl
 iterable
 itk
+Janca
+jamstack
 java6
 javac
 javascript
@@ -742,7 +769,9 @@ jumpbox
 junit
 jupyter
 jx
+kaggle
 kakfa
+kamkar
 kbits
 keepalive
 keepalived
@@ -768,9 +797,11 @@ killall
 kinser
 kitchensalt
 klei
+klocwork
 kloth
 kloxo
 knowledgebase
+konsole
 konversation
 kube
 kubeadm
@@ -788,17 +819,16 @@ lambdabunker
 laravel
 largebiomes
 launchd
-libmodsecurity
-livigno
 lbmethod
 lda
 ldap
+lego
 leiningen
+len
 lennart
 letsencrypt
 lf
-li181
-li263
+libmodsecurity
 lib32
 libaprutil1
 libc
@@ -813,7 +843,9 @@ libsasl2
 libyang
 libuv
 libvirt
+libzypp
 lifecycle
+lightbend
 lighthttpd
 lighttpd
 lighty
@@ -828,6 +860,9 @@ lish
 listdir
 listserv
 listservs
+livigno
+li181
+li263
 lke
 lksemel
 lo0
@@ -835,6 +870,7 @@ loadavg
 loadout
 localdomain
 localhost
+localuser
 lockdown
 lodash
 logallrefupdates
@@ -880,6 +916,7 @@ maitis
 makefile
 managesieve
 mandriva
+manjaro
 manyof
 mapbox
 mapreduce
@@ -906,6 +943,7 @@ md5
 md5sum
 mdev
 mediawiki
+megatrends
 melilla
 memcached
 memcrashed
@@ -940,6 +978,7 @@ minitest
 misconfiguration
 misconfigurations
 misconfigured
+missingness
 mitigations
 mixin
 mixins
@@ -949,12 +988,14 @@ mnesia
 mngtmpaddr
 moby
 moddable
+moodle
 modsecurity
 mongodb
 mongoimport
 monit
 monitorix
 moolenaar
+morphisec
 motd
 mountpoint
 mouseover
@@ -1262,6 +1303,7 @@ quickconnect
 quicklisp
 quickstart
 ramdisk
+rbac
 rbenv
 rc
 rce
@@ -1270,6 +1312,7 @@ rdbadmin
 rdiff
 readcaps
 reauthenticate
+reauthenticating
 readme
 readonly
 readwrite
@@ -1284,6 +1327,7 @@ redeployable
 redhat
 redir
 redis
+redislabs
 redmin
 redmine
 redstone
@@ -1365,6 +1409,7 @@ s3cret
 saas
 sakila
 salesforce
+samy
 sar
 sasl
 sasl2
@@ -1376,6 +1421,7 @@ savvii
 sbackup
 sbin
 sbopkg
+sbt
 scgi
 schaeffer
 scm
@@ -1388,6 +1434,7 @@ sda
 sda1
 sdb
 sdc
+seaborn
 seafile
 seahub
 searchbots
@@ -1431,6 +1478,7 @@ shortguide
 shortguides
 shortname
 shoutcast
+scikit
 sidekiq
 sievers
 signup
@@ -1519,6 +1567,7 @@ superset
 supervisord
 supervisorctl
 surbma
+sury
 suse
 swappable
 svn
@@ -1551,6 +1600,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+teleporting
 tensorflow
 terrahelp
 terraria
@@ -1608,15 +1658,19 @@ tt
 ttl
 ttpd
 ttrss
+tty
+tumblr
 tun0
 tune2fs
 tunnelblick
 turtl
 tv
 tw
+twilio
 txt
 txz
 tzurbaev
+ubuntu
 ucd
 udp
 ufw
@@ -1699,10 +1753,12 @@ vdevs
 ve
 venv
 ver
+veracode
 verisign
 vhost
 vhosts
 vimrc
+vinagre
 virb
 virtio
 virtualenv
@@ -1729,6 +1785,7 @@ vz
 vznetaddbr
 walkthrough
 wasn
+wasm
 wav
 wazuh
 webadmin
@@ -1795,6 +1852,7 @@ www
 wx
 xabbix
 xap
+xargs
 xcalc
 xcode
 xen
@@ -1819,11 +1877,13 @@ xtables
 xvda
 xvdb
 xvdc
+xvnc
 xxen
 xy
 xzio
 xzip
 yaml
+yellowbrick
 yellowdog
 yesod
 yml
@@ -1852,3 +1912,4 @@ zpool
 zsh
 zshrc
 zxvf
+Zypper

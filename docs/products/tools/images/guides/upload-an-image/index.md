@@ -6,7 +6,7 @@ title: Upload an Image
 description: "How to upload an image with Linode Images."
 ---
 
-{{< content "images-beta-note-shortguide" >}}
+{{< content "images-ga-pricing-update-shortguide" >}}
 
 ## Requirements and Considerations
 
@@ -21,3 +21,7 @@ Additional overall limits of the Images service are outlined on the [Images Over
 ## Uploading an Image File through the Cloud Manager
 
 {{< content "upload-image-shortguide" >}}
+
+## Uploading an Image File through the Linode CLI
+
+{{< content "upload-image-cli-shortguide" >}}
