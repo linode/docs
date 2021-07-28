@@ -26,7 +26,7 @@ Sometimes, when working in the command line, it can be helpful to be able to wri
 
 This guide shows you key operators and commands for writing to files from the shell and walks you through how to use them. These work with Bash and Zsh as well as many other Unix shells, so they are good to know for almost any Linux environment.
 
-## Writing to a File
+## Write to a File
 
 ### The `>` Operator
 
