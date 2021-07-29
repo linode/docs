@@ -35,7 +35,7 @@ Before performing the steps within this guide, please ensure you've completed th
 
 Most information and settings pertaining to billing are located within the [Billing Info](https://cloud.linode.com/account/billing) page of the Cloud Manager. Follow the instructions below to access this page:
 
-1.  Log in to the [Cloud Manager](http://cloud.linode.com).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Account** link on the left menu, which displays the [Billing Info](https://cloud.linode.com/account/billing) page.
 
@@ -136,7 +136,7 @@ A PDF copy of either the invoice or payment can be downloaded by clicking the **
 
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
-1.  Log in to the [Cloud Manager](http://cloud.linode.com).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 1.  To remove a Linode from your account, select **Linodes** from the sidebar links. Expand the **more options ellipsis** menu to the right of the Linode you would like to remove, then select **Delete**.
 1.  To remove a NodeBalancer from your account, select **NodeBalancers** from the sidebar links. Select **Delete** for the NodeBalancer you would like to remove.
 1.  To remove the Linode Backup Service, select **Linodes** from the sidebar links. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
