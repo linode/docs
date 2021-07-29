@@ -1,5 +1,5 @@
 ---
-slug: gnu-make-tutorial
+slug: gnu-make-tutorial-automate-tasks
 author:
   name: Stephen Savitsky
 description: 'This GNU Make tutorial discusses how to use Make to automate any task that involves updating files or performing actions based on file changes. Typically, GNU Make is used to generate non-source files needed to build a program. In this tutorial, you learn how to use GNU Make and Git to update a simple website.'
