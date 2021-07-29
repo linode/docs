@@ -1,24 +1,23 @@
 ---
 slug: how-to-understand-ip-addresses
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them.'
-og_description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them.'
-keywords: ['IPv4','IPv6','IP address','Internet Protocol']
+  name: Jeffery Novotny
+description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
+og_description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
+keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
+tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-21
+published: 2021-07-29
 modified_by:
   name: Linode
-title: "Understanding IP Addresses"
+title: "Understanding and Using IP Addresses"
 h1_title: "How to Understand and Use IP Addresses"
 enable_h1: true
 contributor:
-  name: J. Novotny
-  link: None
+  name: Jeffery Novotny
 external_resources:
 - '[RFC 791 for IP](https://datatracker.ietf.org/doc/html/rfc791)'
-- '[Wikipedia IPv4 Packet Description page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
+- '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
 ---
@@ -35,14 +34,14 @@ Network communications are conceptualized in the *Internet Protocol Suite*, whic
 - **Application Layer:** The top layer that provides services to the user using data from the network.
 
 {{< note >}}
-The networking layers are sometimes modeled by the seven-layer  *Open Systems Interconnection Model* (OSI). The OSI model is very useful for network engineers but does not map as close to today's internet.
+The networking layers are sometimes modeled by the seven-layer *Open Systems Interconnection Model* (OSI). The OSI model is very useful for network engineers but does not map as closely to today's internet.
 {{< /note >}}
 
-In the OSI model, the IP protocol implements the internet layer. IP is responsible for transmitting packets to the destination, based on the destination IP address and other information in the IP packet header. Transport layer protocols, such as the Transmission Control Protocol (TCP) and User Datagram Protocol (UDP), rely on IP to transmit the actual data. The IP protocol is also used in conjunction with routing protocols such as OSPF and BGP to route packets across the network. This standardization of the networking layers into specific protocols, such as IP, TCP, and UDP, allows all internet devices to communicate.
+In the OSI model, the IP protocol implements the internet layer. IP is responsible for transmitting packets to the destination, based on the destination IP address and other information in the IP packet header. Transport layer protocols, such as the Transmission Control Protocol (TCP) and User Datagram Protocol (UDP), rely on IP to transmit the actual data. The IP protocol is also used in conjunction with routing protocols such as [OSPF](https://en.wikipedia.org/wiki/Open_Shortest_Path_First) and [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) to route packets across the network. This standardization of the networking layers into specific protocols, such as IP, TCP, and UDP, allows all internet devices to communicate.
 
 Each device must have an addressable interface to access the network. This interface can be either physical or virtual. An IP Address uniquely defines an interface on its network. Some IP addresses are public and others are private. Private addresses are used within a *Local Area Network* (LAN) and are not directly connected to the internet. An example might be the different devices in a manufacturing lab. These addresses only have to be unique within their private network. In contrast, an interface that is connected to the internet has a public address. This public address is unique across the wider internet. A private network frequently uses a public interface and address to access the internet. Traffic flowing in and out of the network uses this gateway. All other routers ignore packets transmitted to or from private addresses.
 
-To prevent duplication, the Internet Assigned Numbers Authority (IANA) allocates all addresses. Internet Service Providers (ISP) or Cloud Network Providers such as Linode are responsible for allocating IP addresses. These addresses are assigned to individual devices, such as servers and home computers. An IP address can be either static or dynamic. Static addresses remain the same until they are deliberately changed. Because a consistent address is necessary for routing purposes, web servers and other shared resources use static addresses. Dynamic addresses might change each time the device is used. They are typically drawn from a pool of addresses owned by the service provider. The same device might use a different IP address at different times, for example, a mobile phone using different wi-fi networks. Dynamic addresses are often assigned through the Dynamic Host Configuration Protocol (DHCP).
+To prevent duplication, the Internet Assigned Numbers Authority (IANA) allocates all addresses. Internet Service Providers (ISP) or Cloud Network Providers, such as Linode, are responsible for allocating IP addresses. These addresses are assigned to individual devices, such as servers and home computers. An IP address can be either static or dynamic. Static addresses remain the same until they are deliberately changed. Because a consistent address is necessary for routing purposes, web servers and other shared resources use static addresses. Dynamic addresses might change each time the device is used. They are typically drawn from a pool of addresses owned by the service provider. The same device might use a different IP address at different times, for example, a mobile phone using different wi-fi networks. Dynamic addresses are often assigned through the Dynamic Host Configuration Protocol (DHCP).
 
 An interface must use an address that is unique within the network. This applies to both public and private networks. Otherwise, a *broadcast storm* can occur, rendering both addresses unusable.
 
@@ -53,11 +52,11 @@ There are two main versions of the IP protocol. IPv4 was the first widely-used v
 The format of the IPv4 packet is defined in [RFC 791](https://datatracker.ietf.org/doc/html/rfc791). Each packet consists of a header section and a data section. An explanation and diagram of the packet structure can be found on the [Wikipedia IPv4 page](https://en.wikipedia.org/wiki/IPv4#Packet_structure). The most important fields in the header are as follows:
 
 - **Version:** For IPv4, this is always `4`.
-- **Internet Header Length**: This is the number of 32-bit words in the header. The minimum value is `5`.
-- **Total Length:** This is the size of the entire packet, including the header and data, in bytes.
-- **Time to Live:** This is the number of network connections a packet is allowed to pass through before it must be dropped. This attribute is used to prevent routing loops.
-- **Source IP Address**
-- **Destination IP Address**
+- **Internet Header Length**: The number of 32-bit words in the header. The minimum value is `5`.
+- **Total Length:** The size of the entire packet, including the header and data, in bytes.
+- **Time to Live:** The number of network connections a packet is allowed to pass through before it must be dropped. This attribute is used to prevent routing loops.
+- **Source IP Address:** The IP address that the packet originates from.
+- **Destination IP Address:** The IP address where the packet should be delivered.
 
 ## The IPv4 Address Format
 
@@ -77,7 +76,7 @@ Each IP address can be broken down into two sections, the network component, and
 
 The length of the network portion is somewhat related to a historical concept called the *class* of the address. There were originally five classes, lettered from A to E. They were distinguished by the first four bits of their address spaces. The breakdown of the classes is as follows:
 
-- **Class A:** These addresses start with a `0` as the first bit. The first octet can be between 0 and 127, leading to an address range between `0.0.0.0` and `127.255.255.255`.
+- **Class A:** These addresses start with a `0` as the first bit. The first octet can be between `0` and `127`, leading to an address range between `0.0.0.0` and `127.255.255.255`.
 - **Class B:** Addresses in this class begin with the two bits `10`, providing an address space extending from `128.0.0.0` to `191.255.255.255`.
 - **Class C:** These addresses start with `110`, leading to an even smaller range. This address space begins with `192.0.0.0` and ends with `223.255.255.255`.
 - **Class D:** These addresses start with the four bits `1110`. This class contains the addresses between `224.0.0.0` and `239.255.255.255`. Class D addresses are used for multicast addresses, which allow a sender to transmit a packet to a group of hosts at the same time.
@@ -87,7 +86,7 @@ At one time, there was a connection between the address classes and the length o
 
 IP addresses and network allocations have long since broken away from this system. Most notably, Class A addresses are usually broken down into smaller networks. By convention, many networks still use networks that map to one of the original classes. For example, the Class C address `198.51.100.25` has a network portion of `198.51.100` and a host component of `25`. IPv6 addresses have the network and host components as well.
 
-The *netmask* of an IP address is used to indicate its network component. If a bit in the netmask is set to `1`, it is part of the network. A `0` means the bit is part of the host. For the Class C `198.51.100.25` address, the netmask is, therefore,`1111 1111 1111 1111 1111 1111 0000 0000`. The network portion of an IP address can be calculated from a bit-wise `AND` operation on the netmask and the full address.
+The *netmask* of an IP address is used to indicate its network component. If a bit in the netmask is set to `1`, it is part of the network. A `0` means the bit is part of the host. For the Class C `198.51.100.25` address, the netmask is `1111 1111 1111 1111 1111 1111 0000 0000`. The network portion of an IP address can be calculated from a bit-wise `AND` operation on the netmask and the full address.
 
 A *subnet* is a portion of a larger network. For instance, all addresses on the `198.51.100` network might be part of one subnet, while addresses starting with `198.51.101` might be on another. Subnets are used to further divide and compartmentalize the network, perhaps between business units or individual offices. Sometimes a network might have only one subnet, which contains all of the addresses in the network. Subnets can have any size and do not have to follow the format of any of the traditional classes. However, they do have to represent a contiguous range.
 
@@ -101,13 +100,13 @@ At times, the term subnet is used to refer to the entire network, even if it is 
 
 *Classless Inter-Domain Routing* (CIDR) notation is used to concisely represent an IP address along with its network. CIDR can be used to either represent a specific address or a block of addresses in a network. To convert an individual IP address into CIDR format, add a `/` symbol, and then append the length of the network's netmask. To indicate the address block of an entire network, first perform a bit-wise `AND` operation on the netmask and the address. This masks out all the bits used for the host and leaves the network portion of the address. After the address, append the `/` symbol and the length of the netmask.
 
-For the `198.51.100.25` address, `198.51.100` in the network section and the netmask is 24 bits. The CIDR version of this address is, therefore, `198.51.100.25/24`. To determine the CIDR address for the network block, use the bit-wise `AND` operation to convert `198.51.100.25` into `198.51.100.0`. Because there are 24 bits in the network address, append the string `/24` to the end of the address. The CIDR address for the address block is `198.51.100.0/24`. To convert between IP addresses and subnets and between different address formats, try the [IP Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html).
+For the `198.51.100.25` address, `198.51.100` is the network section and the netmask is 24 bits. The CIDR version of this address is, therefore, `198.51.100.25/24`. To determine the CIDR address for the network block, use the bit-wise `AND` operation to convert `198.51.100.25` into `198.51.100.0`. Because there are 24 bits in the network address, append the string `/24` to the end of the address. The CIDR address for the address block is `198.51.100.0/24`. To convert between IP addresses and subnets and between different address formats, try the [IP Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html).
 
-CIDR networks do not have to follow the octet breaks of the old A to E address classes. It is possible to have a netmask that is 23 bits. The CIDR address `192.168.2.0/23` includes both the `192.128.2.0/24` and `192.168.3.0/24` networks. Therefore, CIDR can more intuitively describe the precise scope of an individual network than the older classes ever could. A network with a `/31` network in CIDR is used for no more than two hosts, typically the endpoints of a Point-to-Point Protocol (PPP) link.
+CIDR networks do not have to follow the octet breaks of the old A to E address classes. It is possible to have a netmask that is 23 bits. The CIDR address `192.168.2.0/23` includes both the `192.128.2.0/24` and `192.168.3.0/24` networks. Therefore, CIDR can more intuitively describe the precise scope of an individual network than the older classes ever could. A network with a `/31` network in CIDR notation is used for no more than two hosts. This is typically the endpoints of a Point-to-Point Protocol (PPP) link.
 
 ## Reserved IPv4 Addresses and Address Ranges
 
-Certain IPv4 addresses and address ranges have a special meaning and cannot be used for general address assignments. Following is the list of some of these addresses:
+Certain IPv4 addresses and address ranges have a special meaning and cannot be used for general address assignments. The list below includes some of these addresses:
 
 - **0.0.0.0/8:** When used as a source address, this address indicates the current network.
 - **127.0.0.1:** This address is reserved for the localhost interface, also known as the loopback address (commonly called *lo* or *lo0*). This address does not require a hardware interface and is not connected to any network. It is often used for local testing.
@@ -124,12 +123,12 @@ A full list of reserved IPv4 addresses can be found on [Wikipedia](https://en.wi
 
 IP version 6 (IPv6) is a redesign of IPv4. The details of the protocol are specified in [RFC 2460](https://datatracker.ietf.org/doc/html/rfc2460). IPv6 was developed because the world was running out of IPv4 addresses and a larger address space was required. IPv6 has 128-bit addresses instead of the 32-bit addresses of IPv4, allowing for 3.4×10^38 unique entries. Both IPv4 and IPv6 are currently used in tandem, although IPv6 is increasingly more common, and many interfaces are assigned an address from each protocol.
 
-Aside from the longer addresses, IPv6 follows most of the same design principles as IPv4. It is not interoperable with IPv4, but all modern networking gear handles both formats. The differences are mostly transparent to the majority of higher-layer applications. Here are some of the major differences between IPv4 and IPv6.
+Aside from the longer addresses, IPv6 follows most of the same design principles as IPv4. It is not interoperable with IPv4, but all modern networking gear handles both formats. The differences are mostly transparent to the majority of higher-layer applications. The list below includes some of the major differences between IPv4 and IPv6.
 
 - The IPv6 header is simpler than the IPv4 header, but it still includes a version, packet length, hop limit, traffic class, source address, and destination address.
 - IPv6 allows for more efficient aggregation of subnets and routing prefixes, which helps route protocols. It allows for updates to the routing prefix in the event the address or router policies change.
 - IPv6 multicast capabilities are expanded and simplified.
-- It features enhanced security courtesy of the Internet Protocol Security (IPSec) feature.
+- IPv6 features enhanced security courtesy of the Internet Protocol Security (IPSec) feature.
 - IPv6 does not permit packet fragmentation. Hosts use a feature named Path MTU Discovery to ensure the packets are small enough to pass through the network intact.
 
 The 128-bit IPv6 addresses are written as a series of eight four-digit hexadecimal numbers, which represent 16 bits. Each hexadecimal number can range between 0 to 16. In hexadecimal notation, the letters `a` through `f` represent the numbers 10 to 15, so the range of each digit is 0 to f. Each four-digit hexadecimal number is separated with a colon. A typical example of an IPv6 address is `2001:0db8:ffff:ffff:ffff:ffff:ffff:ffff`.
@@ -152,6 +151,7 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
 1. On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.
 
         ip addr show
+
     {{< output >}}
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -166,14 +166,19 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
     inet6 2001:db8::32/64 scope global dynamic mngtmpaddr noprefixroute
        valid_lft 2591998sec preferred_lft 604798sec
     {{< /output >}}
+
 1. Use the following command to see the addresses without any interface information.
 
         hostname -I
+
     {{< output >}}
 198.51.100.25 2001:db8::32
     {{< /output >}}
+
 1. On a Mac system, select **System Preferences** from the Apple menu, and then click on the **Network** icon. Select the active connection to see the IP address currently in use.
+
 1. On all systems with a browser, the local IP address can be found using Google Search. Type `what is my IP address` in the search bar. Google Search displays the public IP address in the results.
+
     {{< note >}}
 The actual IP address could be masked in certain circumstances, resulting in a different public IP address. With a proxy server, only the address of the proxy is shown. VPNs also hide the system address. Keeping your IP address hidden increases the security of your connection and computer.
     {{< /note >}}
