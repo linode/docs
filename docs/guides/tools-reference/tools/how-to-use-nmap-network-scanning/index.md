@@ -103,7 +103,7 @@ inet 10.0.0.90  netmask 255.255.255.0  broadcast 10.0.0.255
 
     The `-sn` option tells Nmap to conduct a ping scan only, without scanning the hosts' ports. The `/24` have Nmap scan the full range of the last number in the IP address (i.e., 0–255). See the next section for more information on scanning IP address ranges.
 
-    Nmap's output provides the hostname and IP address for each active host. If Nmap is able, it also provides a MAC address and a guess at the kind of system.
+    Nmap's output provides the hostname and IP address for each active host. Nmap also provides a MAC address and an educated guess at the operating system.
 
     {{< output >}}
 Starting Nmap 7.80 ( https://nmap.org ) at 2021-06-30 12:00 UTC
