@@ -59,7 +59,7 @@ This page contains several sections:
 
 You can manually add funds to your account at any time. Manual payments can be used to pay an outstanding balance or prepay for future services.
 
-1.  Navigate to the **Billing Info** page in the [Cloud Manager](ttps://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
 1.  Click the **Make a Payment** button on the top right of the page, which opens the **Make a Payment** panel.
 1.  Enter the amount of money you would like to add to your account in the **Payment Amount** field. For your reference, the current balance on the account is displayed above this field.
 1.  **To pay with the credit card on file for the account:** Confirm the card details under the **Pay via credit card** section, enter the card's security code, and click the **Pay via Credit Card** button.
@@ -76,7 +76,7 @@ The payment may take a few minutes to be applied to your account.
 
 A single credit or debit card can be active on your account. To update this card or replace it with a new card, follow these steps.
 
-1.  Navigate to the **Billing Info** page in the [Cloud Manager](ttps://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
 1.  The address affiliated with new card must match the account's billing contact information. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
 1.  In the **Payment Method** section, click the ellipsis menu next to the credit card and select **Edit** from the dropdown menu. This opens the **Edit Credit Card** panel.
 1.  Enter the new credit card number, expiration date, and the security code (CVV).
@@ -94,7 +94,7 @@ A $1.00 authorization hold may be placed on your credit card by your banking ins
 
 You are able to automatically pay for invoices with a credit or debit card through your Google Pay account. To add Google Pay or update the payment method associated with Google Pay, follow the instructions below.
 
-1.  Navigate to the **Billing Info** page in the [Cloud Manager](ttps://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
 1.  Click the **Add Payment Method** button within the **Payment Methods** section.
 1.  Click the **Google Pay** button in the **Add Payment Method** panel, which opens Google's own Google Pay form.
 1.  Log in to your Google account or select from accounts you've already logged in to.
@@ -109,7 +109,7 @@ This process does not immediately charge any past due balance on the account to 
 
 When an invoice is generated, the amount of that invoice (as well as any past due balance) will be charged to the *default* payment method on the account. The default payment method can be viewed and changed by following the instructions below.
 
-1.  Navigate to the **Billing Info** page in the [Cloud Manager](ttps://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
 1.  Under the **Payment Methods** section, the payment method currently used by default has a label of *default* (located to the right of the last 4 digits and expiration date).
 1.  To change the default payment method, click the ellipsis menu next to the payment method you wish to use and select **Make Default** from the dropdown menu.
 
@@ -117,7 +117,7 @@ When an invoice is generated, the amount of that invoice (as well as any past du
 
 ## Viewing Invoices and Payments
 
-All of your billing history, including previous invoices and payments, is accessible within the [Cloud Manager](ttps://cloud.linode.com/account/billing) on the **Billing & Payment History** section within the **Billing Info** page (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)). By default, all transactions (both invoices and payments) from the last *6 months* are displayed. To customize this, use the dropdown menus on the top right of this section.
+All of your billing history, including previous invoices and payments, is accessible within the [Cloud Manager](https://cloud.linode.com/account/billing) on the **Billing & Payment History** section within the **Billing Info** page (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)). By default, all transactions (both invoices and payments) from the last *6 months* are displayed. To customize this, use the dropdown menus on the top right of this section.
 
 **To view an itemized invoice,** find the invoice row on the list and click the corresponding invoice number. This opens up a new page that displays each service that was active during the billing period, along with the additional details listed below:
 
