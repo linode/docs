@@ -2,12 +2,12 @@
 slug: gnu-make-tutorial
 author:
   name: Stephen Savitsky
-description: 'The GNU make tool is used to generate non-source files needed to build a program. However, you can also use GNU make to automate any task that involves updating files or performing actions based on file changes. This guide shows you how to use GNU make and Git to update a simple website.'
-og_description: 'The GNU make tool is used to generate non-source files needed to build a program. However, you can also use GNU make to automate any task that involves updating files or performing actions based on file changes. This guide shows you how to use GNU make and Git to update a simple website.'
+description: 'This GNU Make tutorial discusses how to use Make to automate any task that involves updating files or performing actions based on file changes. Typically, GNU Make is used to generate non-source files needed to build a program. In this tutorial, you learn how to use GNU Make and Git to update a simple website.'
+og_description: 'This GNU Make tutorial discusses how to use Make to automate any task that involves updating files or performing actions based on file changes. Typically, GNU Make is used to generate non-source files needed to build a program. In this tutorial, you learn how to use GNU Make and Git to update a simple website.'
 keywords: ['gnu make tutorial']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-28
+published: 2021-07-29
 modified_by:
   name: Linode
 title: "GNU Make Tutorial: Learn to Automate Tasks"
