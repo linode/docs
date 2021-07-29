@@ -112,7 +112,7 @@ site/%.html: %.md | site/
     pandoc -s -o $@ $<
 {{< /output >}}
 
-The rule use `$@`, which evaluates to the target, and also uses the automatic variables `$<`. The automatic variable evaluates to the first prerequisite of the rule in which it appears. You can find the complete list of automatic variables in the [Automatic Variables](https://www.gnu.org/software/make/manual/make.html#Automatic-Variables) section of the manual.
+The rule use `$@`, which evaluates to the target, and also uses the automatic variables `$<`. The automatic variable evaluates to the first prerequisite of the rule in which it appears. You can find the complete list of automatic variables in the [Automatic Variables](https://www.gnu.org/software/make/manual/make.html#Automatic-Variables) section of the GNU Make manual.
 
 {{< note >}}
 The `$` is used for variable expansion in both Make and the Shell. For this reason, you pass a `$` to the shell in a Make recipe by doubling it (`$$`).
@@ -220,7 +220,7 @@ prod:
     git tag -a -m "pushed to production $$(date)"
     git push github production
     git checkout main
-{{< /file >}}}
+{{< /file >}}
 
 The recipe for `prod` automates all of the Git housekeeping around making a release. GitHub builds Jekyll pages and serves them automatically. The `staging` recipe uses the hook in the previous section to build a copy of the site on your Linode for further testing. This guide covers only a few of GNU Make's potential uses and features. Make's combination of declarative rules, filename and string-processing functions, and Shell scripting make it a versatile addition to any programmer's or system administrator's toolkit.
 
