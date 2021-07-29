@@ -21,7 +21,7 @@ The **Account** section of Cloud Manager allows you to manage your account's bil
 
 You can manage the following account and billing settings in the Account section of Cloud Manager:
 
-- [Update contact information](/docs/guides/accounts-and-passwords/#updating-contact-information)
+- [Update contact information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)
 - [Update credit card information](/docs/guides/manage-billing-in-cloud-manager/#updating-the-credit-card)
 - [Add or Update Google Pay](/docs/guides/manage-billing-in-cloud-manager/#adding-and-updating-google-pay)
 - [Make a payment with a credit card, PayPal, or Google Pay](/docs/guides/manage-billing-in-cloud-manager/#making-a-payment)
