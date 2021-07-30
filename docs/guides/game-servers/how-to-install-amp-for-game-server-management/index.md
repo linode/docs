@@ -3,8 +3,8 @@ slug: installing-amp-game-server-management-panel
 author:
   name: Ryan Syracuse
   email: docs@linode.com
-description: "AMP or Application Management Panel is a game server management panel. It provides a graphical overlay to simplify the deployment of game servers, and is additionally the next iteration of the Minecraft server control panel mcmyadmin. AMP provides support for third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on most Linux distributions."
-keywords: ["minecraft", "mcmyadmin", "debian", "centos", "ubuntu", "debian 9"]
+description: "AMP or Application Management Panel is a game server management panel. It provides a graphical overlay to simplify the deployment of game servers, and is additionally the next iteration of the Minecraft server control panel McMyAdmin. AMP provides support for third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new AMP server on most Linux distributions."
+keywords: ["minecraft", "McMyAdmin", "debian", "centos", "ubuntu", "debian 9"]
 tags: ["debian, ubuntu, centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-07-29
@@ -18,12 +18,12 @@ external_resources:
 dedicated_cpu_link: true
 ---
 
-[AMP](https://cubecoders.com/AMP) or **Application Management Panel** is a game server management panel. It provides a graphical overlay to simplify the deployment of game servers, and serves as the next iteration of the popular Minecraft server control panel [mcmyadmin](https://www.mcmyadmin.com/). AMP provides support for third party mods, heavy focus on security, and a sleek web interface for managing your server. This guide covers the installation and configuration of a new AMP server on most Linux distributions.
+[AMP](https://cubecoders.com/AMP) or **Application Management Panel** is a game server management panel. It provides a graphical overlay to simplify the deployment of game servers, and serves as the next iteration of the popular Minecraft server control panel [McMyAdmin](https://www.mcmyadmin.com/). AMP provides support for third party mods, heavy focus on security, and a sleek web interface for managing your server. This guide covers the installation and configuration of a new AMP server on most Linux distributions.
 
 While this guide will focus on installation on Debian and Ubuntu, the [same basic process](https://cubecoders.com/AMPInstall) can be applied to other distros with some minor adjustments.
 
 {{< note >}}
-AMP is dependent on the [purchase of a seperate license through CubeCoder's website]().
+AMP is dependent on the [purchase of a separate license through CubeCoder's website](https://cubecoders.com/AMP#buyAMP).
 {{< /note >}}
 
 ## Before You Begin
@@ -48,7 +48,7 @@ Below is a list of prompts along with an explanation for responses:
 
 | Prompt | Explanation | Recommended Response |
 | ----------- | ----------- | ----------- |
-| System Password [autogenerate] | This is the Password for the Linux user, not the administrator of the control panel itself. Hit `Enter` to autogenerate a password, or use a secure password of your choice. | Enter a strong password of your choice. |
+| System Password | This is the Password for the Linux user, not the administrator of the control panel itself. Hit `Enter` to automatically generate a password, or use a secure password of your choice. | Enter a strong password of your choice. |
 | Username [admin]: | A username to be used with the control panel. | Enter a username of your choice. |
 | Password: | A password for the user of the control panel. | Enter a strong password of your choice. |
 | Confirm Password: | A confirmation of the password entered previously for the control panel user. | Re-enter the password entered for the control panel user. |
@@ -93,7 +93,7 @@ When the installation script has completed, the following message will appear, p
 
     Enter the username and password you set up previously and click `Login` to proceed.
 
-1. Follow the configuration steps as prompted selecting all defaults. Until you get to the section on instlling your AMP License key. In order for AMP to work, a [license key must be purchased through CubeCoder's website](https://cubecoders.com/AMP#buyAMP) Enter the license key in the field that appears, and select `next to proceed.`
+1. Follow the configuration steps as prompted selecting all defaults. Until you get to the section on installing your AMP License key. In order for AMP to work, a [license key must be purchased through CubeCoder's website](https://cubecoders.com/AMP#buyAMP) Enter the license key in the field that appears, and select `next to proceed.`
 
     ![AMP license](amplicense.png)
 
