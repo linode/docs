@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.99.0
+  version: 4.100.1
 
   title: Linode API
   description: |
@@ -154,6 +154,7 @@ info:
     | STATUS  | DESCRIPTION |
     |---------|-------------|
     | 200 OK  | The request was successful. |
+    | 202 Accepted | The request was successful, but processing has not been completed. The response body includes a "warnings" array containing the details of incomplete processes. |
     | 204 No Content | The server successfully fulfilled the request and there is no additional content to send. |
     | 400 Bad Request | You submitted an invalid request (missing parameters, etc.). |
     | 401 Unauthorized | You failed to authenticate for this resource. |
@@ -534,9 +535,8 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
-                "comments": "I'm consolidating my accounts."
-                }
+              -X POST -d '{
+                "comments": "I am consolidating my accounts."
               }' \
               https://api.linode.com/v4/account/cancel
       - lang: CLI
@@ -1916,6 +1916,8 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/Payment'
+        '202':
+          $ref: '#/components/responses/WarningResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -2070,6 +2072,8 @@ paths:
             application/json:
              schema:
                type: object
+        '202':
+          $ref: '#/components/responses/WarningResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -2940,6 +2944,7 @@ paths:
                       "longview_subscription": true,
                       "add_images": true,
                       "add_volumes": true,
+                      "add_firewalls": true,
                       "account_access": "read_only",
                       "cancel_account": false
                     },
@@ -10494,8 +10499,8 @@ paths:
         source: >
           linode-cli firewalls create \
             --label example-firewall \
-            --outbound_policy ACCEPT \
-            --inbound_policy DROP \
+            --rules.outbound_policy ACCEPT \
+            --rules.inbound_policy DROP \
             --rules.inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}, "action": "ACCEPT"}]' \
             --rules.outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.0/24"],"ipv6": ["2001:DB8::/32"]}, "action": "DROP", "label": "outbound-rule123", "description": "An example outbound rule description."}]'
   /networking/firewalls/{firewallId}:
@@ -15141,6 +15146,8 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - label
               properties:
                 region:
                   type: string
@@ -15662,6 +15669,20 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/ErrorObject'
+    WarningResponse:
+      description: |
+        Accepted with warning.
+
+        A warning object is included with the standard 200 response.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              warnings:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WarningObject'
   parameters:
     pageOffset:
       name: page
@@ -17425,6 +17446,10 @@ components:
             add_volumes:
               type: boolean
               description: If true, this User may add Volumes.
+              example: true
+            add_firewalls:
+              type: boolean
+              description: If true, this User may add Firewalls.
               example: true
         linode:
           type: array
@@ -20825,6 +20850,7 @@ components:
           type: string
           enum:
             - credit_card
+            - google_pay
           description: The type of Payment Method.
           example: 'credit_card'
           x-linode-cli-display: 2
@@ -22230,6 +22256,21 @@ components:
           example:
           - example tag
           - another example
+    WarningObject:
+      type: object
+      description: >
+        An object for describing a single warning for incomplete processing associated with an accepted request.
+      properties:
+        title:
+          type: string
+          description: >
+            The general warning message.
+          example: Unable to reboot Linode.
+        details:
+          type: string
+          description: >
+            Specific information related to the warning.
+          example: Linode 123 could not be rebooted.
 tags:
   - name: Account
     description: Use the Account endpoints to manage user settings, billing, and payments. You can also initiate and maintain OAuth client application authentication, enable the Linode Managed service, and create new users on your account.
