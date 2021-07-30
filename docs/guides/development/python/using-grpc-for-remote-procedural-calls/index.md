@@ -7,7 +7,7 @@ og_description: 'gRPC is an open source remote procedure call (RPC) framework th
 keywords: ['what is grpc', 'grpc vs rest', 'grpc tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-29
+published: 2021-07-30
 modified_by:
   name: Linode
 title: "gRPC Tutorial: Using gRPC for Remote Procedural Calls"

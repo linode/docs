@@ -7,7 +7,7 @@ og_description: 'The Internet Protocol (IP), as described in RFC 791, is the fra
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
 tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-29
+published: 2021-07-30
 modified_by:
   name: Linode
 title: "Understanding and Using IP Addresses"
