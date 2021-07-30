@@ -1,37 +1,48 @@
-<div x-data="lnc.NewSearchController()" id="search-main" x-init="init()" x-show="show" @search:subscribe.document="subscribe($event.detail);" @search:query.document="search($event.detail)" @search:nodes.document="searchNodes($event.detail);"
-    @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="pb-64" data-turbolinks-permanent>
-  <div class="flex flex-col space-y-2 md:space-y-4">
+{{/* First view */}}
+<template x-if="view === 1">
+  <div class="flex flex-col space-y-2">
     <template x-for="(section, i) in searchState.mainSearch.results.sections" :key="section.config.name">
-      <div x-show="section && section.isEnabled() && section.searchData.result.nbHits !== undefined" :data-testid="'section-' + section.config.name">
-        <div x-show="section.searchData.result.nbHits > 0" class="flex content-start items-center justify-between mb-5 md:mb-10">
-          <h2 class="text-titlecolor" x-text="'Top Results in ' + section.config.title"></h2>
-          <template x-if="section.searchData.result.nbHits < 500">
-            <div class="text-left underline">
-              <a x-bind:href="section.searchData.href" x-text="(section.searchData.result.nbHits || 0) + ' Results in ' + section.config.title" class="text-gray-700 text-xs"></a>
-            </div>
-          </template>
-        </div>
-        <div x-show="section.searchData.result.nbHits == 0" class="flex content-start items-center text-titlecolor mb-5 md:mb-10" :data-testid="'no-search-results-in-' + section.config.name">
-          <svg class="h-5 w-5">
-            <use href="#icon--times"></use>
-          </svg>
-          <h2 class="ml-2" x-text="'No Results in ' + section.config.title"></h2>
-        </div>
-        <template x-if="section && section.searchData && section.searchData.result && section.searchData.result.hits">
-          <div class="pb-2 md:pb-6">
-            <template x-for="(item, j) in section.searchData.result.hits" :key="item.objectID">
+      <div x-show="section && section.isEnabled()" :data-testid="'section-' + section.config.name">
+        {{ template "search-list-section-heading" .}}
+        <template x-for="(item, j) in section.searchData.result.hits" :key="item.objectID">
+          <div class="mb-2">
+            <template x-if="item.href">
+              <a class="group flex items-center" x-bind:href="item.href" data-testid="link-hit">
+                <span  x-html="item.title" class="font-semibold text-md text-gray-700 no-underline"></span>
+                <span x-html="section.config.title" style="background-color: #E9EAEC;"
+                class="invisible group-hover:visible section-label border rounded border-transparen text-basicgray tracking-normal font-semibold text-xs uppercase ml-2 px-2"></span>
+              </a>
+            </template>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</template>
+
+{{/* Second view */}}
+<template x-if="view === 2">
+  <div class="flex flex-col space-y-2">
+    <template x-for="(section, i) in searchState.mainSearch.results.sections" :key="section.config.name">
+      <div x-show="section && section.isEnabled()" :data-testid="'section-' + section.config.name">
+        {{ template "search-list-section-heading" .}}
+        <template x-if="section.hasHit()">
+          <div class="mb-2 md:mb-4">
+            <template x-for="(item, j) in section.searchData.result.hits.slice(0, 4)" :key="item.objectID">
               <div class="rounded -ml-4 pl-4 mobile:-mr-4 hover:bg-selected">
-                <div class="py-3 mb-1 tablet:mb-4" x-bind:class="{ 'bg-selected rounded -ml-4 pl-4': (j === 300) }">
+                <div class="pb-3 mb-1 tablet:mb-4" x-bind:class="{ 'bg-selected rounded -ml-4 pl-4': (j === 300) }">
                   <template x-if="item.href">
-                    <a class="font-semibold text-lg text-gray-700 no-underline" x-html="item.titleHighlighted" x-bind:href="item.href" data-testid="link-hit"></a>
+                    <a class="font-semibold text-md text-gray-700 no-underline" x-html="item.titleHighlighted" x-bind:href="item.href" data-testid="link-hit"></a>
                   </template>
                   <template x-if="!item.href">
                     <p x-html="item.description"></p>
                   </template>
+                  <template x-if="item.excerpt">
+                    <div class="text-sm text-textcolor pt-2 leading-relaxed three-lines-ellipsis" x-html="item.excerptHighlighted" data-testid="excerpt"></div>
+                  </template>
                   <div class="text-sm text-textcolor pt-2">
                     <template x-for="(value, label) in item.facets" :key="label">
-                      <div class="inline-block">
+                      <div class="inline-block whitespace-no-wrap">
                         <span class="font-semibold mr-1" x-text="label + ':'"></span>
                         <span class="mr-2 capitalize" x-html="value.string"></span>
                       </div>
@@ -48,8 +59,46 @@
             </template>
           </div>
         </template>
-        <hr class="mb-2 md:mb-6" />
       </div>
     </template>
   </div>
-</div>
+</template>
+
+{{/* Tile view, grouped by section, 4 hits per section */}}
+<template x-if="view === 3">
+  <div class="flex flex-col space-y-2">
+    <template x-for="(section, i) in searchState.mainSearch.results.sections" :key="section.config.name">
+      <div x-show="section && section.isEnabled()" :data-testid="'section-' + section.config.name">
+        {{ template "search-list-section-heading" .}}
+        <template x-if="section.hasHit()">
+          <div class="pb-2 md:pb-6">
+            <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
+              <template x-for="(item, j) in section.searchData.result.hits.slice(0, 4)" :key="item.objectID">
+                <div class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
+                  <a :href="item.href" class="no-underline block">
+                    <div class="relative overflow-hidden pb-16/9 bg-gray-200">
+                      <img :src="item.thumbnailUrl"
+                      alt="Article image" class="absolute h-full w-full object-cover img-transparent" @load="$event.target.classList.remove('img-transparent')" loading="lazy">
+                    </div>
+                    <div class="px-4 p-6">
+                      <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.linkTitle"></h3>
+                    </div>
+                  </a>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</template>
+
+{{ define "search-list-section-heading" }}
+  <div  class="bg-selected p-4 rounded-lg flex content-start items-center justify-between mb-4 -ml-4">
+    <h2 :class="{ 'text-basicgray': section.searchData.result.nbHits == 0, 'text-titlecolor': section.searchData.result.nbHits > 0,  }" x-text="section.searchData.result.nbHits == 0 ? 'No Results in ' + section.config.title : section.config.title"></h2>
+    <div class="text-left underline" x-show="section.searchData.result.nbHits > 0">
+      <a x-bind:href="section.searchData.href" x-text="section.searchData.textHelpers.resultsIn()" class="text-gray-700 hover:text-gray-400 text-xs"  :data-testid="'all-hits-' + section.config.name"></a>
+    </div>
+  </div>
+{{ end }}

@@ -51,11 +51,12 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
 ## Scope of Support
 
-As declared in Linode's [Terms of Service](https://www.linode.com/tos), the Linode Support Team does not provide support regarding the installation or configuration of application software, such as mail and web server software, nor does it provide support regarding the configuration of Linux on your server. For these issues, please consult the various other [resources](#resources) Linode makes available. If you are providing a service to your customers, Linode does not offer tech support for those customers.
+As declared in Linode's [Terms of Service](https://www.linode.com/tos), the Linode Support Team does not provide support regarding the installation or configuration of application software, such as mail and web server software, nor does it provide support regarding the configuration of Linux on your server. For these issues, please consult the various other [resources](#resources) Linode makes available. If you are providing a service to your customers, Linode does not offer tech support for those customers. Linode support is additionally only provided in the English language.
 
 Linode provides support related to the physical operation of your Linode virtual servers, such as: ensuring that your network traffic is properly routed to and from your Linodes' IP addresses; helping with base system performance issues that may be related to Linode's virtualization systems; and resolving potential hardware issues within Linode's infrastructure.
 
 Linode also helps with products such as NodeBalancers and Block Storage. Additionally, Linode Support can help you use Linode software such as the Linode Cloud Manager, and can help you with understanding and paying your bill.
+
 
 ## Contacting Linode Support
 
@@ -78,8 +79,6 @@ If you are having difficulty logging in to the Linode Cloud Manager and opening 
 - **+1 (609) 380-7100** (international)
 
 - **+1 (855) 454-6633** (North America toll-free)
-
-- **+91 000-800-919-0534** (India toll-free)
 
 If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
 

@@ -57,6 +57,14 @@ Terraform defines the elements of your Linode infrastructure inside of configura
 1. Using your preferred text editor, create a Terraform configuration file named `main.tf` to hold your resource definitions:
 
       {{< file "~/terraform/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
 provider "linode" {
     token = var.token
 }

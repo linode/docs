@@ -15,7 +15,7 @@ published: 2010-07-28
 title: 'Redis on Ubuntu 10.04 (Lucid)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]

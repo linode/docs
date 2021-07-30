@@ -1,8 +1,8 @@
 {{ $searchConfigPage := $.Params.search_config | default dict }}
-<div class="h-full" x-data="lnc.NewSearchFiltersController({{ $searchConfigPage | jsonify }})" x-init="init()" id="search-filters" 
+<div class="h-full lg:h-screen" x-data="lnc.NewSearchFiltersController({{ $searchConfigPage | jsonify }})" x-init="init()" id="search-filters"
  @popstate.window="onPopState($event)"  @search:toggle.document="searchToggle($event.detail)" @turbolinks:render.document="onTurbolinksRender($event.data);" @search:results-blank.once.document="initData($event.detail)" @search:results.document="receiveData($event.detail)"  @search:filter.document="receiveSearchFilters($event.detail)"
     data-turbolinks-permanent>
-  <div x-show.transition.opacity="data.loaded" class="hidden lg:flex container items-center justify-between mb-4">
+  <div x-show.transition.opacity="data.loaded" class="hidden lg:flex container items-center justify-between mb-5">
     <h2>
       Filters
     </h2>

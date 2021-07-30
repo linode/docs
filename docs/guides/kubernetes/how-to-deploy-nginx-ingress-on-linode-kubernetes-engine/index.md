@@ -9,10 +9,12 @@ keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 
 tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
+modified: 2021-06-25
 modified_by:
   name: Linode
 title: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 h1_title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
+enable_h1: true
 image: nginx-ingress.png
 contributor:
   name: Linode
@@ -26,11 +28,11 @@ An Ingress is one of the most powerful ways to control external access to your r
 
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.
 
-{{< caution >}}
+{{< note >}}
 Following the instructions in this guide will create billable resources on your account in the form of Linodes and NodeBalancers. You will be billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
-{{</ caution >}}
+{{</ note >}}
 
-## In this Guide
+## In This Guide
 
 This guide will show you how to:
 
@@ -40,38 +42,27 @@ This guide will show you how to:
 
 ## Before You Begin
 
-- You should have a working knowledge of Kubernetes' key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series.
+1.  Review the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 
-- You will also need to prepare your workstation with some prerequisite software:
+1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/platform/manager/dns-manager/#add-a-domain) and to [add a DNS "A" record](/docs/platform/manager/dns-manager/#add-dns-records) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
 
-    - [Install kubectl](#install-kubectl) (your client's version should be at least 1.13)
-    - [Install Helm](#install-helm)
+    {{< note >}}
+Optionally, you can create a Wildcard DNS record, `*.example.com` and point your NodeBalancer's external IP address to it. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
+{{</ note >}}
 
-- Ensure that you have access to your own unique domain name. This guide requires you to create two unique subdomains. For more information on domain names, see our guide on [DNS Records](https://www.linode.com/docs/networking/dns/dns-records-an-introduction/).
+## Creating and Connecting to a Kubernetes Cluster
 
-- Finally, you will need to create a cluster on LKE if you do not already have one:
+1.  **Create a Kubernetes cluster** through the [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/) (LKE) using either the Cloud Manager, the Linode API, or Terraform:
 
-    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
+    - [Cloud Manager LKE instructions](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+    - [Linode API LKE instructions](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/)
+    - [Terraform instructions](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/)
 
-        {{< note >}}
-Specifically, follow the [Create an LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
-{{< /note >}}
+    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
 
-    - To create an LKE cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
+1.  **Setup your local environment** by installing [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) and [kubectl](/docs/products/compute/kubernetes/guides/install-kubectl) on your computer (or whichever system you intend to use to manage your Kubernetes Cluster).
 
-        {{< note >}}
-Specifically, follow the [Create an LKE Cluster](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
-{{< /note >}}
-
-### Install kubectl
-
-You should have `kubectl` installed on your local workstation. `kubectl` is the command line interface for Kubernetes, and allows you to remotely connect to your Kubernetes cluster to perform tasks.
-
-{{< content "how-to-install-kubectl" >}}
-
-### Install Helm
-
-To perform some of the commands in this guide you will need to have [Helm](https://helm.sh/) installed on your workstation. Helm assists with the installation and management of applications on Kubernetes, and in this case will be responsible for installing the Ingress Controller for NGINX. Follow the [Installing the Helm Client](https://www.linode.com/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section of our guide on using Helm 3 to complete the installation.
+1.  **Configure kubectl** to use the new Kubernetes cluster by downloading the kubeconfig YAML file and adding it to kubectl. See the instructions within the [Download Your kubeconfig](/docs/products/compute/kubernetes/guides/download-kubeconfig) guide.
 
 ## Creating a Sample Application
 
@@ -81,9 +72,9 @@ In order to be able to confirm that the NGINX Ingress you create is working as e
 
 Wherever you've installed `kubectl`, create two `yaml` manifest files using a text editor of your choice. These manifests will be responsible for creating our Deployments their associated Services. The Deployments will be called `hello-one` and `hello-two` respectively, and will be replicated three times each:
 
-    sudo vim hello-one.yaml
+1.  Using a text editor, create a new file named `hello-one.yaml` with the contents of the example file.
 
-{{< file "hello-one.yaml" yaml >}}
+    {{< file "hello-one.yaml" yaml >}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -117,9 +108,10 @@ spec:
         - containerPort: 80
 {{< /file >}}
 
-    sudo vim hello-two.yaml
 
-{{< file "hello-two.yaml" yaml >}}
+1.  Create a second Service and Deployment manifest file named `hello-two.yaml` with the contents of the example file.
+
+    {{< file "hello-two.yaml" yaml >}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -153,47 +145,94 @@ spec:
         - containerPort: 80
 {{< /file >}}
 
-Create the Deployments and Services with the `create` command:
+1.  Use kubectl to create the Services and Deployments for your example applications.
 
-    kubectl create -f hello-one.yaml
-    kubectl create -f hello-two.yaml
+        kubectl create -f hello-one.yaml
+        kubectl create -f hello-two.yaml
+
+    You should see a similar output:
+
+    {{< output >}}
+service/hello-one created
+deployment.apps/hello-one created
+service/hello-two created
+deployment.apps/hello-two created
+{{</ output >}}
+
+1.  Verify that the Services are running.
+
+        kubectl get svc
+
+    You should see a similar output:
+
+    {{< output >}}
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+hello-one    ClusterIP   10.128.94.166    <none>        80/TCP    6s
+hello-two    ClusterIP   10.128.102.187   <none>        80/TCP    6s
+kubernetes   ClusterIP   10.128.0.1       <none>        443/TCP   18m
+{{</ output >}}
 
 ## Install the NGINX Ingress Controller
 
-Next, use Helm to install an Ingress Controller. While there are a few different versions of NGINX Ingress Controllers,this guide will be installing the Kubernetes maintained [NGINX Ingress controller](https://github.com/kubernetes/ingress-nginx) for this guide.
+In this section you will use Helm to install the NGINX Ingress Controller on your Kubernetes Cluster. Installing the NGINX Ingress Controller will create Linode NodeBalancers that your cluster can make use of to load balance traffic to your example application.
 
-First, add the `stable` Helm repository if you have not yet:
+{{< note >}}
+If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
+{{</ note >}}
 
-    helm repo add stable https://charts.helm.sh/stable
+1.  Add the following Helm ingress-nginx repository to your Helm repos.
 
-Next, install the NGINX Ingress Controller:
+        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
-    helm install my-release ingress-nginx/ingress-nginx
+1.  Update your Helm repositories.
 
-Once installed, a LoadBalancer Service will be deployed, which creates a NodeBalancer, and an external IP address will be available. To find this external IP address, list your cluster's Services with following command and note the IP address for the `nginx-ingress-controller` in the output under `EXTERNAL-IP`. You will need this IP address for the next step.
+        helm repo update
 
-       kubectl get svc -A -owide
+1.  Install the NGINX Ingress Controller. This installation will result in a Linode NodeBalancer being created.
 
-{{< output >}}
-NAMESPACE     NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)                      AGE    SELECTOR
-default       hello-one                       ClusterIP      10.128.134.154   <none>         80/TCP                       18m    app=hello-ingress
-default       hello-two                       ClusterIP      10.128.164.145   <none>         80/TCP                       18m    app=hello-two
-default       kubernetes                      ClusterIP      10.128.0.1       <none>         443/TCP                      26h    <none>
-default       my-release-nginx-server-nginx-controller        LoadBalancer   10.128.15.94     45.79.61.112   80:31512/TCP,443:32562/TCP   4m3s   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
-default       my-release-ingress-nginx-controller-admission   ClusterIP      10.128.211.178   <none>         443/TCP                       4m3s   app.kubernetes.io/component=default-backend,app=nginx-ingress,release=nginx-ingress
-kube-system   kube-dns                        ClusterIP      10.128.0.10      <none>         53/UDP,53/TCP,9153/TCP       26h    k8s-app=kube-dns
+        helm install ingress-nginx ingress-nginx/ingress-nginx
+
+    You will see a similar output:
+
+    {{< output >}}
+NAME: ingress-nginx
+LAST DEPLOYED: Fri Apr  9 21:29:47 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+The ingress-nginx controller has been installed.
+It may take a few minutes for the LoadBalancer IP to be available.
+You can watch the status by running 'kubectl --namespace default get services -o wide -w ingress-nginx-controller'
+...
 {{</ output >}}
 
-#### Setup Your Domain in Cloud Manager
+## Create a Subdomain DNS Entries for your Example Applications
 
- To create a brief example of how to demonstrate how an Ingress Controller can divide traffic between two different subdomains and multiple replicated Pods, you will need to create A records for two subdomains. This guide uses `blog.example.com` and `shop.example.com`, both pointing to the IP address of the NodeBalancer you created when installing your Ingress Controller. In the following manifest examples, be sure to replace instances of `example.com` with the domain name your have chosen to use.
+Now that Linode NodeBalancers have been created by the NGINX Ingress Controller, you can point a subdomain DNS entries to the NodeBalancer's public IPv4 address. Since this guide uses two example applications, it will require two subdomain entries.
 
-### Configuring Your Ingress
+1.  Access your NodeBalancer's assigned external IP address.
 
-Once your Ingress Controller is installed and DNS records have been created pointing to your NodeBalancer, you need to create a manifest file to create a new Ingress resource. This resource will define how traffic coming from the LoadBalancer service we deployed earlier is handled. In this case, NGINX will accept these connections over port 80, diverting traffic to both of our services via their `hostname`, or domain names:
+        kubectl --namespace default get services -o wide -w ingress-nginx-controller
 
-  {{< file "my-new-ingress.yaml" yaml >}}
-apiVersion: networking.k8s.io/v1beta1
+    The command will return a similar output:
+
+    {{< output >}}
+NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                      AGE     SELECTOR
+my-ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/instance=cingress-nginx,app.kubernetes.io/name=ingress-nginx
+{{</ output >}}
+
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/platform/manager/dns-manager/#add-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
+
+## Configuring the Ingress Controller
+
+Once your Ingress Controller is installed and DNS records have been created pointing to your NodeBalancer, you need to create a manifest file to create a new Ingress resource. This resource will define how traffic coming from the LoadBalancer service we deployed earlier is handled. In this case, NGINX will accept these connections over port 80, diverting traffic to both of our services via their `hostname` or domain names:
+
+1.  Create an Ingress resource manifest file named `my-new-ingress.yaml`.
+
+    {{< file "my-new-ingress.yaml" yaml >}}
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: my-new-ingress
@@ -204,24 +243,32 @@ spec:
   - host: blog.example.com
     http:
       paths:
-      - backend:
-          serviceName: hello-one
-          servicePort: 80
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hello-one
+            port:
+              number: 80
   - host: shop.example.com
     http:
       paths:
-      - backend:
-          serviceName: hello-two
-          servicePort: 80
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hello-two
+            port:
+              number: 80
 {{< /file >}}
 
-Next, create your Ingress using the following command:
+1.  Create the Ingress resource using the following command:
 
-    kubectl create -f my-new-ingress.yaml
+        kubectl create -f my-new-ingress.yaml
 
-Once the Ingress has been created, try accessing your subdomains from a browser. As a reminder, this example uses `blog.example.com` and `shop.example.com`. Each time you navigate to the page, you'll see one of three different instances of the replicated server as the active node is rotated. While the application has been deployed to the same cluster, at no point will `blog.example.com` display the same three hostnames as `shop.example.com`, as all requests are being routed correctly.
+1.  Once the Ingress has been created, try accessing your subdomains from a browser. As a reminder, this example uses `blog.example.com` and `shop.example.com`. Each time you navigate to the page, you'll see one of three different instances of the replicated server as the active node is rotated. While the application has been deployed to the same cluster, at no point will `blog.example.com` display the same three hostnames as `shop.example.com`, as all requests are being routed correctly.
 
-![Kubernetes on Linode](ingress-complete.png)
+    ![Screenshot of the web browser displaying an NGINX website](ingress-complete.png "Successful NGINX website")
 
 ## Next Steps
 
@@ -233,11 +280,11 @@ If you would rather not continue using the cluster you just created, review the 
 
 - To remove the NodeBalancer you created, all you need to do is delete the underlying Service. From your workstation:
 
-        kubectl delete service nginx-ingress-controller
+      kubectl delete service nginx-ingress-controller
 
     Alternatively, you can use the manifest file you created to delete the Service. From your workstation:
 
-        kubectl delete -f my-new-ingress.yaml
+      kubectl delete -f my-new-ingress.yaml
 
 -   To remove the LKE Cluster and the associated nodes from your account, navigate to the [Linode Cloud Manager](https://cloud.linode.com):
 

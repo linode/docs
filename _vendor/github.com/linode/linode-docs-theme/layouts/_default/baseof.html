@@ -6,7 +6,7 @@
   {{ block "head-meta-main" . }}
     {{/* The default static title and SEO meta markup. */}}
     <title>
-      {{ .Title }} | {{ $.Site.Params.page_title_suffix | default "Linode" }}
+      {{ partial "funcs/get-page-title.html" . }} | {{ $.Site.Params.page_title_suffix | default "Linode" }}
     </title>
     {{/* SEO */}}
     {{ partial "sections/head-seo.html" . }}
@@ -14,13 +14,13 @@
   {{ block "head-meta-addons" . }}{{ end }}
   <noscript>
     <style>
-      .hide-if-no-js {
-        display: none;
-      }
+    .hide-if-no-js {
+    display: none;
+    }
     </style>
   </noscript>
 </head>
-<body class="type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
+<body class="{{ block `body-class` . }}na {{ end }}type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
      no-js
      h-auto
      overflow-x-hidden
@@ -57,21 +57,16 @@
         <div class="navbar__explorer-toggle h-full">
           {{ partial "sections/navigation/explorer-toggle.html" . }}
         </div>
-        <div class="show-if-topbar-is-pinned h-full">
-          <div class="navbar__search-input-toggle h-full flex items-center justify-center">
-            {{ partial "sections/navigation/search-input-toggle.html" . }}
-          </div>
-        </div>
       </div>
-      <div id="navbar__breadcrumbs" class="h-full w-full pl-6 overflow-x-scroll">
+      <div id="navbar__search-input" class="pl-4 flex items-stretch h-full w-full">
+        {{ partialCached "sections/search/input.html" . }}
+      </div>
+      <div id="navbar__breadcrumbs" class="h-full w-full pl-4 border-l-gray overflow-x-auto">
         <div class="h-full w-auto flex items-center">
           {{ partial "sections/navigation/breadcrumbs.html" (dict "page" . "wrap" false) }}
         </div>
       </div>
-      <div id="navbar__search-input" class="pl-4 flex items-center h-full min-w-full bg-white">
-        {{ partialCached "sections/search/input.html" . }}
-      </div>
-      <div id="navbar__toc" class="hide-if-is-not-toc hide-if-search-panel-open h-full ">
+      <div id="navbar__toc" class="hide-if-is-not-toc hide-if-search-panel-open h-full">
         {{ partial "sections/navigation/toc.html" . }}
       </div>
     </nav>
@@ -82,7 +77,7 @@
     </nav>
     
     {{/* Main content area. */}}
-    <main class="main bg-backgroundcolor h-full min-h-screen overflow-hidden">
+    <main class="main bg-backgroundcolor h-full min-h-screen overflow-hidden pb-8">
       <div class="main__inner">
         <section class="w-full">
           {{ partial "sections/search/panel.html" . }}
@@ -90,11 +85,11 @@
         <section id="main__content" class="main__content container mb-20">
           <div class="w-full h-full">
             {{ if not .IsHome }}
-              <div class="mt-6 md:mt-12 main__breadcrumbs">
+              <div class="mt-4 md:mt-6 main__breadcrumbs">
                 {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
               </div>
             {{ end }}
-            <div class="{{ if not .IsHome }}mt-8 md:mt-10{{ end }}">
+            <div class="{{ if not .IsHome }}mt-6{{ end }}">
               {{ block "main" . }}{{ end }}
             </div>
           </div>
@@ -109,5 +104,5 @@
     
     {{/* Scripts etc. added before body end. */}}
     {{ partial "sections/before-body-end.html" . }}
-</div>
+  </div>
 </body>

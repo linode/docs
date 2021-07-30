@@ -249,7 +249,7 @@ After logging out of your system and back in again, you can run restic using you
 
 ### Restore a Backup
 
-Backups are not useful if you cannot restore them. It's a good idea to test out your backups once in a while. To restore the latest useable backup from Restic, run the `restore latest` command:
+Backups are not useful if you cannot restore them. It's a good idea to test out your backups once in a while. To restore the latest usable backup from Restic, run the `restore latest` command:
 
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore latest -t /root
 

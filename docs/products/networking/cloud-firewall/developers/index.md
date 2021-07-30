@@ -5,10 +5,6 @@ tab_group_main:
     weight: 50
 ---
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
-
 ## Linode API
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
