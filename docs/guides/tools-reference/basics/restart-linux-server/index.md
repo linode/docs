@@ -1,32 +1,35 @@
 ---
-slug: restart-linux-server
+slug: restart-linux-server-from-the-command-line
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Learn how to restart a Linux server via a command line command."
-og_description: "Learn how to restart a Linux server via a command line command."
+description: "Learn how to restart a Linux server via a command-line command."
+og_description: "Learn how to restart a Linux server via a command-line command."
 keywords: ['linux restart','linux restart command','restart linux server']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-13
 modified_by:
   name: Nathaniel Stickman
-title: "How to Restart a Linux Server from the Command Line"
+title: "Restart a Linux Server from the Command Line"
 h1_title: "How to Restart a Linux Server from the Command Line"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
+
 ---
 
 Needing to restart a Linux server? Whether you are working directly over SSH, through PuTTY, or on your server's console interface, this guide shows you how.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## When Do I Need to Restart a Linux Server?
@@ -35,7 +38,7 @@ Generally, you do not need to regularly restart your Linux server. It should be 
 
 However, several factors may make you want to restart your server. Some software installations require a manual reboot after installation, and some applications benefit from the system being periodically rebooted. Moreover, plenty of administrative processes necessitate restarting the server for changes to take.
 
-For those cases and others, it can be helpful to know the couple of commands available for quickly initiating a graceful system reboot.
+For those cases and others, it can be helpful to know a couple of commands available for quickly initiating a graceful system reboot.
 
 ## How Do I Restart a Linux Server from the Command Line?
 
@@ -43,11 +46,11 @@ Here, you can see how to reboot your Linux server using the command line. These 
 
 ### How to Restart a Linux Server with the reboot Command
 
-The most straightforward way to restart your Linux server is with the `reboot` command:
+The most straightforward way to restart your Linux server is with the `reboot` command.
 
     sudo reboot
 
-This command starts a graceful shutdown, letting processes exit, temporary files be dealt with, etc.
+This command starts a graceful shutdown, letting processes exit, temporary files are dealt with, etc.
 
 If you need to force reboot, you can do so with the `--force` option. However, this should only be used when no other option is available. This option forces a reboot without allowing the usual "wrapping up," which can lead to loss and/or corruption of data.
 
@@ -57,11 +60,11 @@ The `reboot` command is, essentially, the same as the `shutdown` command with th
 
     sudo shutdown -r now
 
-You can safely use the above command and alter the time (`now`) to schedule when your Linux server restarts. For the time, the `shutdown` command takes either a number of minutes or a local time in 24-hour format. The command below, as an example, schedules the server to reboot in 15 minutes:
+You can safely use the above command and alter the time (`now`) to schedule when your Linux server restarts. For the time, the `shutdown` command takes either several minutes or a local time in 24-hour format. The command below, as an example, schedules the server to reboot in 15 minutes.
 
     sudo shutdown -r 15
 
-The server then sends out a warning message to all logged-on users:
+The server then sends out a warning message to all logged-in users.
 
 {{< output >}}
 Broadcast message from root@localhost on pts/0 (Wed 2021-06-30 12:00:00 UTC):
@@ -69,7 +72,7 @@ Broadcast message from root@localhost on pts/0 (Wed 2021-06-30 12:00:00 UTC):
 The system is going down for reboot at Wed 2021-06-30 12:15:00 UTC!
 {{< /output >}}
 
-You can even send a custom message. In the example below, the server is scheduled to restart at 3:30 PM (local time), and a custom message is provided:
+You can even send a custom message. In the example below, the server is scheduled to restart at 3:30 PM (local time), and a custom message is provided.
 
     sudo shutdown -r 15:30 "Please wrap up your current tasks and save your work."
 
@@ -81,7 +84,7 @@ The system is going down for reboot at Wed 2021-06-30 19:30:00 UTC!
 {{< /output >}}
 
 {{< note >}}
-While the time you give in the `shutdown` command is local time, it gets broadcast to users in UTC time.
+While the time you give in the `shutdown` command is local time, it gets broadcast to users in UTC.
 {{< /note >}}
 
 Finally, you may want to cancel a scheduled reboot. You can do that with the following command:
