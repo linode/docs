@@ -43,7 +43,7 @@ This guide provides instructions to set up SPF and DKIM with Postfix.
 
 ## What is DMARC (Domain MEssage Authentication, Reporting and Conformance)?
 
-[DMARC (Domain Message Authentication, Reporting & Conformance)](http://dmarc.org/) allows you to advertise to mail servers the policies of your domain regarding mail that fails SPF or DKIM validations. It also allows you to request reports on failed messages from receiving mail servers.
+[DMARC (Domain Message Authentication, Reporting & Conformance)](http://dmarc.org/) allows you to advertise to mail servers the policies of your domain. The policies are regarding mails that fail SPF or DKIM validations. It also allows you to request reports on failed messages from receiving mail servers.
 
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions to configure the SPF policy agent and OpenDKIM into Postfix work on any distribution. You only need to make respective code adjustments for the package tool, and identify the exact path to the Unix socket file.
 
@@ -102,7 +102,7 @@ If you're using Linode's DNS Manager, go to the domain zone page for the selecte
 If your DNS provider allows it and DNS Manager doesn't, you should also add a record of type SPF. Provide the details in the same way as you did for the TXT record.
 
 {{< note >}}
-The values for the DNS records and for the rest of this guide are in the style that that works for Linode's DNS Manager. If you are using another provider, that respective system may require the values in a different style. For example *freedns.afraid.org* requires the values to be written in the style found in BIND zonefiles. Thus, the above SPF record's value need to be wrapped in double-quotes similar to: `"v=spf1 mx -all"`. You need to consult your DNS provider's documentation for the exact style required.
+The values for the DNS records and for the rest of this guide are that works for Linode's DNS Manager. If you are using another provider, that respective system may require the values in a different style. For example *freedns.afraid.org* requires the values to be written in the style found in BIND zonefiles. Thus, the above SPF record's value need to be wrapped in double-quotes similar to: `"v=spf1 mx -all"`. You need to consult your DNS provider's documentation for the exact style required.
 {{< /note >}}
 
 ### Add the SPF policy agent to Postfix
@@ -157,7 +157,7 @@ The SPF policy agent also logs to `/var/log/mail.log`. In the `mail.log` file yo
     Jan  7 06:24:44 arachnae policyd-spf[21065]: None; identity=helo; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
     Jan  7 06:24:44 arachnae policyd-spf[21065]: Pass; identity=mailfrom; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
 
-The first message checks the HELO command, and there wasn't any SPF information matching the *HELO*. The second message checks against the envelope *From* address. It indicates that the address passed the check and is coming from one of the outgoing mail servers the sender's domain has marked to send mail. There may be other statuses in the first field after the colon indicating failure, temporary or permanent errors and so on.
+The first message checks the HELO command, and there wasn't any SPF information matching the *HELO*. The second message checks against the envelope *From* address. It indicates that the address passed the check and is from one of the outgoing mail servers.The sender's domain has marked these servers to send mail. There may be other statuses in the first field after the colon indicating failure, temporary or permanent errors and so on.
 
 ## Set up DKIM using OpenDKIM
 
@@ -235,7 +235,7 @@ PidFile             /var/run/opendkim/opendkim.pid
 {{< /file >}}
 
 
-   Replace `example.com` with your domain and `example` with a short name for the domain. The first field is a pattern that matches e-mail addresses. The second field is a name for the key table entry that is used to sign mail from that address. For simplicity's sake, we're going to set up one key for all addresses in a domain.
+   Replace `example.com` with your domain and `example` with a short name for the domain. The first field is a pattern that matches e-mail addresses. The second field is a name for the key table entry that is used to sign mail from that address. For simplicity's sake, set up one key for all addresses in a domain.
 
 5.  Create the key table `/etc/opendkim/key.table`. It needs to have one line per short domain name in the signing table. Each line should look like this:
 
@@ -254,7 +254,7 @@ example     example.com:YYYYMM:/etc/opendkim/keys/example.private
     - The third section names the file containing the signing key for the domain.
 
     {{< note >}}
-The flow for DKIM lookup starts with the sender's address. The signing table is scanned until an entry pattern of the firts item that matches the address is found. Then, the second item's value is used to locate the entry in the key table for the key information. For incoming mail the domain and selector are then used to find the public key TXT record in DNS and that public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.
+The flow for DKIM lookup starts with the sender's address. The signing table is scanned until an entry pattern of the first item that matches the address is found. Then, the second item's value is used to locate the entry in the key table for the key information. For incoming mail the domain and selector are used to find the public key TXT record in DNS. This public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.
 {{< /note >}}
 
 6.  Create the trusted hosts file `/etc/opendkim/trusted.hosts`. Its contents need to be:
@@ -341,9 +341,9 @@ If everything is OK you shouldn't get any output. If you want to see more inform
 
 ### Testing Postfix, DKIM on Debian 9 With A Gmail Test
 
-A big part of configuring and testing new SPF and DKIM settings with Postfix is to ensure that you send emails with right deliverability metrics and ensure that you achieve those deliverability targets. That is why, consider testing your configuration with Gmail. With Gmail you get one of the best, state of art spam tests that you can reliably use to ensure the right configuration.
+A big part of configuring and testing new SPF and DKIM settings with Postfix is to ensure that you send emails with right deliverability metrics. It ensures that you achieve those deliverability targets. That is why, consider testing your configuration with Gmail. With Gmail you get one of the best, state of art spam tests that you can reliably use to ensure the right configuration.
 
-The way this test works is, we send Gmail a mail where it checks DMARC, SPF and DKIM, and we assess the authentication results. After you send an email from your domain to a Gmail account, you can click on the original message to see what Gmail thinks about your mailing configuration.
+The way this test works is, send Gmail a mail where it checks DMARC, SPF and DKIM, and assess the authentication results. After you send an email from your domain to a Gmail account, click the original message to see the results of the mailing configuration.
 
 Here is what the output looks like:
 
@@ -578,6 +578,6 @@ You can install it by running:
 
         apt-get install spamassassin spamc
 
-In the `master.cf` file, add the `content_filter` argument to the following services submission, smtp, and smtps:
+In the `master.cf` file, add the `content_filter` argument to the following services submission `smtp`, and `smtps`:
 
         content_filter=spamassassion
