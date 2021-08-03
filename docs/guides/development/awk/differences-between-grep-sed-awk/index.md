@@ -16,9 +16,9 @@ contributor:
   name: Andy Lester
 ---
 
-Grep, Sed, and AWK are all standard Linux tools that work with text files in the filesystem. They share a number of similarities. Each of these tools operates on text files line-by-line and uses the power of regular expressions
+Grep, sed, and AWK are all standard Linux tools that work with text files in the filesystem. They share a number of similarities. Each of these tools operates on text files line-by-line and uses the power of regular expressions
 
-However, they differ in complexity and their basic use cases. Grep is used for finding data, and is the simplest of the three. Sed finds and modifies data and is a bit more complex than grep. AWK finds and calculates based on data and is the most complex of the three.
+However, they differ in complexity and their basic use cases. Grep is used for finding data, and is the simplest of the three. sed finds and modifies data and is a bit more complex than grep. AWK finds and calculates based on data and is the most complex of the three.
 
 This guide looks at each tool in turn, and provides common cases for when you would use each.
 
@@ -163,13 +163,13 @@ Then, you use the Linux shell to tell grep to search that list of files for the 
 
 This searches all the "dogs" files for "cats", giving you a list of files that contain both.
 
-## Sed
+## sed
 
-Sed is short for Stream Editor and has much of the same functionality as grep, but is much more flexible in how it can select lines of input.  It lets you modify the data it finds.
+sed is short for Stream Editor and has much of the same functionality as grep, but is much more flexible in how it can select lines of input.  It lets you modify the data it finds.
 
 It opens a file, reads it line by line, and acts on each line according to its instructions. Sed’s syntax can seem cryptic, but it's logical and well-defined. Once you're used to it you'll be able to save yourself hours of time.
 
-### Sed Search and Replace
+### sed Search and Replace
 
 The most common use of sed is a search and replace operation for strings or patterns throughout a file.  For instance, to replace every instance of "Copyright 2020" in one of your HTML files to "Copyright 2021", you  use:
 
@@ -179,12 +179,12 @@ The `-e` option gives sed the instructions it should run on each line in the fil
 
 To modify files in place, use the `-i` option.  You can tell sed to make a backup copy of the files it modifies by specifying an extension with the `-i` option, as in `-i.bak`.
 
-Sed has the power of regular expressions, so to replace all occurrences of "Copyright 20XX", where the "XX" is any two digits, with "Copyright 2021",
+sed has the power of regular expressions, so to replace all occurrences of "Copyright 20XX", where the "XX" is any two digits, with "Copyright 2021",
 in all your .html files, you would use:
 
     sed -e's/Copyright 20[0-9][0-9]/Copyright 2021/g' -i.bak *.html
 
-### Create a Sed Script
+### Create a sed Script
 
 When your sed programs become too big to fit in the `-e` option, sed can accept sets of instructions from a program file. For example, you might have many replacements you want to make, so you could put them in a file named `replacements.sed` and add the following contents:
 
@@ -199,9 +199,9 @@ Apply the changes to all your text files with the following command:
 
     sed -f replacements.sed -i.bak *.txt
 
-### Sed: Inserting, Appending, and Deleting Lines
+### sed: Inserting, Appending, and Deleting Lines
 
-Sed can insert and append lines in files. In the context of Sed, "insert" means to put a line before a given line, and "append" means after.
+sed can insert and append lines in files. In the context of sed, "insert" means to put a line before a given line, and "append" means after.
 
 For example, to put a dividing line of equals signs before and after every line with the word "TOTALS", create a file named `totals.sed` with the following contents:
 
@@ -223,7 +223,7 @@ $ a\
 Copyright 2021 Yoyodyne Industries
 {{< /file >}}
 
-To delete lines from a text file, you can add the following to a Sed script:
+To delete lines from a text file, you can add the following to a sed script:
 
 {{< file "delete-copyright.sed" >}}
 /Copyright/d
@@ -267,9 +267,9 @@ Since `print` is the default action to take on a match, in this example it’s l
 
 ### Numeric and Comparisons and Calculations Using AWK
 
-Grep and Sed are great for finding patterns in text, but they don't understand what the data represents.  You might tell Grep to match a number that has between 2 and 4 digits by matching the pattern `[0-9]{2,4}`, but Grep can't compare numbers or strings against one another.
+Grep and sed are great for finding patterns in text, but they don't understand what the data represents.  You might tell Grep to match a number that has between 2 and 4 digits by matching the pattern `[0-9]{2,4}`, but Grep can't compare numbers or strings against one another.
 
-If you want to print the last names of everyone in your list of people who were born before 1945, you couldn't do it in Grep or Sed, but for AWK it's simple:
+If you want to print the last names of everyone in your list of people who were born before 1945, you couldn't do it in Grep or sed, but for AWK it's simple:
 
     awk '($5 < 1945) {print $2}' names.txt
 
