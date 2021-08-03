@@ -2,26 +2,21 @@
 slug: differences-between-grep-sed-awk
 author:
   name: Andy Lester
-  email: docs@linode.com
 description: 'Two to three sentences describing your guide.'
 og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['difference between sed awk grep']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-02
 modified_by:
   name: Linode
-title: "Differences Between Grep Sed Awk"
-h1_title: "h1 title displayed in the guide."
+title: "The Differences Between Grep, sed, and AWK"
+h1_title: "An Introduction to the Differences Between Grep, sed, and AWK"
 enable_h1: true
 contributor:
   name: Andy Lester
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-Grep, Sed, and AWK are all standard Linux tools that work with text files in the filesystem.  They share a number of similarities.  Each of these tools operates on text files line-by-line and uses the power of regular expressions
+Grep, Sed, and AWK are all standard Linux tools that work with text files in the filesystem. They share a number of similarities. Each of these tools operates on text files line-by-line and uses the power of regular expressions
 
 However, they differ in complexity and their basic use cases. Grep is used for finding data, and is the simplest of the three. Sed finds and modifies data and is a bit more complex than grep. AWK finds and calculates based on data and is the most complex of the three.
 
@@ -189,20 +184,147 @@ in all your .html files, you would use:
 
     sed -e's/Copyright 20[0-9][0-9]/Copyright 2021/g' -i.bak *.html
 
-### Create a Sed Program in a File
+### Create a Sed Script
 
-When your sed programs become too big to fit in the `-e` option, sed can accept sets of instructions from a program file.  For example, you might have many replacements you want to make, so you could put them in a file:
+When your sed programs become too big to fit in the `-e` option, sed can accept sets of instructions from a program file. For example, you might have many replacements you want to make, so you could put them in a file named `replacements.sed` and add the following contents:
 
-    replacements.sed
+{{< file "replacements.sed" >}}
+s/I should of/I should have/;
+s/supposably/supposedly/;
+s/mute point/moot point/;
+s/one in the same/one and the same/;
+{{< /file >}}
 
-    s/I should of/I should have/;
-    s/supposably/supposedly/;
-    s/mute point/moot point/;
-    s/one in the same/one and the same/;
+Apply the changes to all your text files with the following command:
 
-Apply the changes to all your text files with:
+    sed -f replacements.sed -i.bak *.txt
 
-    sed =f replacements.sed -i.bak *.txt
+### Sed: Inserting, Appending, and Deleting Lines
+
+Sed can insert and append lines in files. In the context of Sed, "insert" means to put a line before a given line, and "append" means after.
+
+For example, to put a dividing line of equals signs before and after every line with the word "TOTALS", create a file named `totals.sed` with the following contents:
+
+{{< file "totals.sed" >}}
+/TOTALS/ i\
+==================================
+
+/TOTALS/ a\
+==================================
+{{< file >}}
+
+The example file, `notices.sed`, adds notices to the beginning and end of a file. It adds a privacy warning at the top of each file and a copyright notice at the end of the file. You can refer to the first line with the number `1`, and the last line with the symbol `$`.
+
+{{< file "notices.sed" >}}
+1 i\
+    *THIS FILE IS PRIVATE AND CONFIDENTIAL.*
+
+$ a\
+Copyright 2021 Yoyodyne Industries
+{{< /file >}}
+
+To delete lines from a text file, you can add the following to a Sed script:
+
+{{< file "delete-copyright.sed" >}}
+/Copyright/d
+{{< /file >}}
+
+In the example file, any line that matches the pattern `/Copyright/` is deleted.
+
+## AWK
+
+The AWK program is the most powerful of the three.  It lets you write full programs in the AWK language, a fully featured programming language with functions, flow control, and so on.
+
+AWK's main use cases are:
+
+- Processing field-oriented data
+- Numeric comparisons and calculations
+- Accumulating things by name
+- Modifying data based on calculations
+
+### AWK: Processing Data in Multiple Fields
+
+Say you have a list of people and it includes their first and last name, the make of car they drive, the college they attended, and their year of birth.  Your file `names.txt` might look like:
+
+{{ file "names.txt" }}
+Vince       Lombardi    Toyota      Fordham     1913
+Betty       Ford        Chevrolet   Bennington  1918
+Harrison    Ford        Toyota      Ripon       1942
+Mike        Rowe        Ford        Towson      1962
+{{< /file >}}
+
+You can use AWK to find all the people in the text file's data that drive a Ford. AWK takes care of this by automatically breaking up the fields of each line of input into fields, delimited by whitespace.  The first field is in variable `$1`, the second in `$2` and so on.  Now, you can look only for the people where the third field matches "Ford", like so:
+
+    awk '($3 == "Ford") {print}' names.txt
+
+The part between the single quotes, `($3 == "Ford") {print}` is a very simple program in the AWK language. It consists of a condition to test, and an action to take.  It's similar to how sed programs match each line against a pattern.
+
+You can use regular expressions to find anyone who attended a college that starts with the letter `T`:
+
+    awk '($4 ~ /^T/)' names.txt
+
+Since `print` is the default action to take on a match, in this example it’s left out.
+
+### Numeric and Comparisons and Calculations Using AWK
+
+Grep and Sed are great for finding patterns in text, but they don't understand what the data represents.  You might tell Grep to match a number that has between 2 and 4 digits by matching the pattern `[0-9]{2,4}`, but Grep can't compare numbers or strings against one another.
+
+If you want to print the last names of everyone in your list of people who were born before 1945, you couldn't do it in Grep or Sed, but for AWK it's simple:
+
+    awk '($5 < 1945) {print $2}' names.txt
+
+AWK can also do arithmetic on the fields it works with.  If you want to find the average of the birth years of each of the people in the file, it's simple for AWK:
+
+    awk '{total += $5} END {print total/NR}' names.txt
+    1933.75
+
+On each line, AWK adds the value of the fifth column to the variable `total`. At the end of the file, it prints `total` divided by `NR`, a special variable where AWK keeps the number of records it has read.
+
+### AWK Associative Arrays
+
+The AWK language has powerful arrays that can be indexed by strings.  This is called an associative array, or some languages call it a hash or a lookup table.
+
+If you want to get a list of all the different car makes in our name list, and count how many of each appear,  tell AWK to increment a counter array, indexed by the make of car, and then print out a summary of the totals at the end.
+
+    awk '{++count[$3]} END {for (make in count) print make, count[make]}' names.txt
+
+{{< output >}}
+Ford 1
+Chevrolet 1
+Toyota 2
+{{< /output >}}
+
+### AWK: Modifying Data Based on Calculations
+
+Using sed, you were able to make substitutions based on patterns, but not based on calculations.  With AWK, you can make calculations using the power of the AWK programming language.
+
+Say you have a list of temperatures in Fahrenheit in a file, as follows:
+
+{{< file "temperature.txt">}}
+Chicago     40
+Sandusky    36
+Miami       80
+Bemidji     46
+{{< /file >}}
+
+With AWK, you can print the file out with the Celsius equivalent:
+
+    awk '{print $0, " ", int(($2-32)*5/9)}' temps.txt
+
+{{< output >}}
+Chicago     40   4
+Sandusky    36   2
+Miami       80   26
+Bemidji     46   7
+{{< /output >}}
+
+In the command, the special variable `$0` refers to the entire input line.  As you've seen before, `$2` refers to the second field in the file.
+
+
+
+
+
+
 
 
 
