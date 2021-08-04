@@ -16,7 +16,9 @@ published: 2012-08-22
 title: Monitoring and Maintaining Your Server
 ---
 
-![Monitoring and Maintaining Your Server](monitor-and-maintain-your-server.png "Monitoring and Maintaining Your Server")
+{{< youtube "9S1XzXERz_w" >}}
+
+[comment]: <> (![Monitoring and Maintaining Your Server](monitor-and-maintain-your-server.png "Monitoring and Maintaining Your Server"))
 
 Now that your Linode is up and running, it's time to think about monitoring and maintaining your server. This guide introduces the essential tools and skills you'll need to keep your server up to date and minimize downtime. You'll learn how to monitor the availability and performance of your system, manage your logs, and update your server's software.
 

@@ -18,6 +18,8 @@ external_resources:
 - '[Valheim official website](https://www.valheimgame.com/)'
 ---
 
+{{< youtube "D44PoRWXvcg" >}}
+
 ## Valheim Marketplace App
 
 <!-- Intro paragraph describing the app and what it accomplishes. -->

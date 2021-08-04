@@ -21,7 +21,9 @@ tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/']
 ---
 
-![Deploy a Minecraft Server with Marketplace Apps](deploy-a-minecraft-server-with-oneclick-apps.png "Deploy a Minecraft Server with Marketplace Apps")
+{{< youtube "cAAPnJPQZOo" >}}
+
+[comment]: <> (![Deploy a Minecraft Server with Marketplace Apps](deploy-a-minecraft-server-with-oneclick-apps.png "Deploy a Minecraft Server with Marketplace Apps"))
 
 ## Minecraft Marketplace App
 

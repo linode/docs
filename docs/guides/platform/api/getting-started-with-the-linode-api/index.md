@@ -20,7 +20,9 @@ aliases: ['/platform/api/getting-started-with-the-linode-api-classic-manager/','
 tags: ["linode platform"]
 ---
 
-![Getting Started with the Linode API](getting-started-with-the-linode-api.png "Getting Started with the Linode API")
+{{< youtube "3s9mm1qQh0A" >}}
+
+[comment]: <> ( ![Getting Started with the Linode API](getting-started-with-the-linode-api.png "Getting Started with the Linode API") )
 
 ## Create a Linode Using the Linode API
 

@@ -23,6 +23,8 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/']
 ---
 
+{{< youtube "8JyAqC-H2D4" >}}
+
 ## Jitsi Marketplace App
 
 [Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.
