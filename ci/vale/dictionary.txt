@@ -914,6 +914,8 @@ mailuser
 mailutils
 maitis
 makefile
+makefiles
+maller
 managesieve
 mandriva
 manjaro
@@ -1014,6 +1016,7 @@ multicloud
 multicraft
 multilib
 multiline
+multilink
 multiport
 multisite
 multiuser
@@ -1264,6 +1267,7 @@ productpage
 prosodyctl
 proto
 protobuf
+protoc
 protocode
 proxied
 proxying

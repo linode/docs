@@ -58,6 +58,12 @@ window.lnh = {
 		//  Alpine.listenForNewUninitializedComponentsAtRunTime()
 	};
 
+	// Set up a global function to send events to Google Analytics.
+	window.gtag = function(event) {
+		this.dataLayer = this.dataLayer || [];
+		this.dataLayer.push(event);
+	};
+
 	let turbolinksLoaded = false;
 	let pushGTag = function(eventName) {
 		let event = {
@@ -159,8 +165,9 @@ function getSearchConfig(params) {
 					return false;
 				}
 				if (s.filters) {
+					let sectionFilter = s.filters.split('OR')[0].trim();
 					// We have some sections that share the same index.
-					return result.params.endsWith(encodeURIComponent(s.filters));
+					return result.params.includes(encodeURIComponent(sectionFilter));
 				}
 				return true;
 			});

@@ -2,7 +2,7 @@
   {{ partial "funcs/get-page-title.html" . }}
 </h1>
 <p class="pt-2 text-basicgray">
-  {{ if eq .PublishDate .Lastmod }}
+  {{ if and (eq .PublishDate.Year .Lastmod.Year) (eq .PublishDate.YearDay .Lastmod.YearDay) }}
     Published
   {{ else }}
     Updated

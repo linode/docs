@@ -6,7 +6,7 @@
   {{ end }}
 </h1>
 <p class="pt-2 text-basicgray text-sm">
-  {{ if eq .PublishDate .Lastmod }}
+  {{ if and (eq .PublishDate.Year .Lastmod.Year) (eq .PublishDate.YearDay .Lastmod.YearDay) }}
     Published
   {{ else }}
     Updated
