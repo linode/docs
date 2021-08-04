@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 image: SecretsManagementwithTerraform.png
 title: "Secrets Management with Terraform"
+h1_title" Managing Secrets with Terraform"
 contributor:
   name: Linode
 external_resources:
@@ -250,7 +251,7 @@ terraform apply
 ### Install `pass`
 
 If you don't already have `pass` installed on your machine, run the following command to install it:
-      
+
       sudo apt install pass
 
 After `pass` is installed, you can store your secrets by running `pass insert` for all of your secrets. In this illustration run `pass insert` on secrets `database_username` and `database_password`.
