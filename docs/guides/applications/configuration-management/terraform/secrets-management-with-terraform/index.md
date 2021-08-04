@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 image: SecretsManagementwithTerraform.png
 title: "Secrets Management with Terraform"
-h1_title" Managing Secrets with Terraform"
+h1_title: "Managing Secrets with Terraform"
 contributor:
   name: Linode
 external_resources:
