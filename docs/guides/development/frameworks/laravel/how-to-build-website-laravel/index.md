@@ -3,8 +3,8 @@ slug: how-to-create-website-using-laravel
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Laravel is a PHP web framework that scales to your needs, from simple to advanced design. This guide shows you how to create a website using the Laravel framework, host it on your server, and use NGINX as the web server.'
-og_description: 'Laravel is a PHP web framework that scales to your needs, from simple to advanced design. This guide shows you how to create a website using the Laravel framework, host it on your server, and use NGINX as the web server.'
+description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
+og_description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
