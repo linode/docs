@@ -1082,6 +1082,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nirvashare
 nixcraft
 nixpkgs
 nmap
