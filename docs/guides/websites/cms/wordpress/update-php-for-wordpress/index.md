@@ -23,11 +23,11 @@ external_resources:
 - '[phpMyAdmin](https://www.phpmyadmin.net/)'
 ---
 
-[WordPress](https://wordpress.org/) is one of the most popular free web publishing tools available. Although it is easy to use, some regular maintenance is required to keep it more secure and up to date. One of those tasks is to regularly update [PHP](https://www.php.net/), which WordPress uses as a server-side programming language. This guide explains how and when to upgrade PHP without adversely affecting your site.
+[WordPress](https://wordpress.org/) is one of the most popular free web publishing tools available. Authoring content on WordPress is straightforward, however,  you need to perform regular maintenance on your WordPress site to keep it secure and up to date. One of those maintenance tasks is to regularly update [PHP](https://www.php.net/), which WordPress uses as a server-side programming language. This guide explains how and when to upgrade PHP without adversely affecting your site.
 
 ## Why You Should Upgrade PHP for Applications Like WordPress
 
-At regular intervals, a new version of the open-source PHP application is released. At this time, older versions become obsolete. This means they are no longer updated and do not receive any further security patches. This allows vulnerabilities to accumulate and makes any site using an outdated version an easier target for intruders. Therefore, it is very important to use the minimum supported version of PHP and keep all PHP packages updated.
+At regular intervals, a new version of the open-source PHP application is released. Older versions of the platform then, become obsolete. This means they are no longer updated and do not receive any further security patches. This allows vulnerabilities to accumulate and makes any site using an outdated version an easier target for intruders. Therefore, it is very important to use the minimum supported version of PHP and keep all PHP packages updated.
 
 Some reasons to keep WordPress and PHP updated are listed below:
 
@@ -40,7 +40,7 @@ Updating PHP is more complex than updating themes and plug-ins. PHP cannot be di
 
 Additional best practices for WordPress upgrades are listed below:
 
-- Have a routine or schedule for upgrades, including PHP upgrades.
+- Generate a routine or schedule for upgrades, including PHP upgrades.
 - Update and upgrade the packages on the Linode regularly.
 - Use strong passwords to access the WordPress Dashboard.
 - Take regular backup copies of the site and its database.
@@ -66,7 +66,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 ## How to Update PHP
 
-PHP usually has to be upgraded in one of two situations. These might occur when WordPress is first installed, or when it is upgraded to a newer version. Currently, the minimum recommended version of PHP is 7.4, while the latest version of PHP is 8.0. This guide describes how to update PHP to version 7.4. These instructions are designed for Ubuntu users but are generally applicable to all Linux distributions.
+PHP usually has to be upgraded in one of two situations; when WordPress is first installed, or when it is upgraded to a newer version. Currently, the minimum recommended version of PHP is 7.4, while the latest version of PHP is 8.0. This guide describes how to update PHP to version 7.4. These instructions are designed for Ubuntu users but are generally applicable to all Linux distributions.
 
 {{< note >}}
 Certain plug-ins or themes might not be compatible with the latest version of PHP. In this case, temporarily use an older version.
@@ -74,7 +74,7 @@ Certain plug-ins or themes might not be compatible with the latest version of PH
 
 ### How to Determine if PHP Should Be Updated
 
-The easiest way to tell whether the current version of PHP does not need the minimum requirements is to review the *WordPress Dashboard*. Your Dashboard can be found at `yourdomain.name/wp-admin/`. If PHP is out of date, a panel on the left-hand side of the Dashboard displays a "PHP Update Recommended" warning. It cautions that "Your site is running an insecure version of PHP" and encourages you to update it. The panel also displays the minimum recommended version of PHP. This is currently version 7.4. To suppress this warning, PHP must be updated to this version or a more recent one.
+The easiest way to tell whether the current version of PHP does not meet the minimum requirements is to review the *WordPress Dashboard*. Your Dashboard can be found at `yourdomain.name/wp-admin/`. If PHP is out of date, a panel on the left-hand side of the Dashboard displays a "PHP Update Recommended" warning. It cautions that "Your site is running an insecure version of PHP" and encourages you to update it. The panel also displays the minimum recommended version of PHP. This is currently version 7.4. To suppress this warning, PHP must be updated to this version or a more recent one.
 
 ![WordPress PHP notification](update_php.png)
 
@@ -97,7 +97,7 @@ Copyright (c) 1997-2017 The PHP Group
 
 ### Prepare a Backup in WordPress
 
-Although unlikely, the site or its contents could be corrupted during the update. You should always back up your site before upgrading PHP. There are two parts involved to back up your site:
+Although unlikely, the site or its contents could be corrupted during the update. You should always back up your site before upgrading PHP. There are two parts involved when backing up your site:
 
 1. Back up the WordPress site and associated files.
 1. Back up the WordPress database.
@@ -105,7 +105,7 @@ Although unlikely, the site or its contents could be corrupted during the update
 The WordPress site can be backed up externally using FTP or SCP. It can also be backed up in a different folder on the Linode. In the long run, it is much safer to back up the files and database to external storage space. This preserves the archive in the event the server hard drive becomes corrupted or access to the server is permanently lost. However, to quickly upgrade WordPress or PHP, a temporary backup copy can be made somewhere else on the Linode.
 
 {{< note >}}
-For a nominal fee, Linode can take a snapshot of your site through its [Cloud Manager Service](https://www.linode.com/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
+For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](https://www.linode.com/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
 {{< /note >}}
 
 To back up the WordPress files on the Linode, follow the below steps:
@@ -134,40 +134,50 @@ There are several alternatives for backing up a WordPress database. The [phpMyAd
 
 ### Update PHP on Ubuntu 20.04
 
-To use a newer version of PHP, all necessary PHP modules must be upgraded to the new version. The current minimum recommended version of PHP is 7.4. To upgrade PHP, follow the below instructions:
+To use a newer version of PHP, all necessary PHP modules must be upgraded to the new version. The current minimum recommended version of PHP is 7.4. To upgrade PHP, follow the instructions below:
 
 1. Install the basic version of PHP 7.4.
 
         sudo apt install php7.4
+
     {{< note >}}
 If the `php7.4` component cannot be found on the system, version 7.4 might still be the default version. To determine the default version of the `php` package, run the command `sudo apt list php`. If this displays a reference to version 7.4, run the command `sudo apt install php`. To install a different version of PHP, follow the instructions in the [How to Install a Specific Version of PHP](/docs/guides/how-to-update-php-for-wordpress/#how-to-install-a-specific-version-of-php) section.
     {{< /note >}}
+
 1. Install the 7.4 version of the other PHP modules, along with the `libapache2-mod-php7.4` component. The following list includes the essential PHP libraries for WordPress.
 
         sudo apt install php7.4-common php7.4-mysql php7.4-cgi libapache2-mod-php7.4 php7.4-mbstring php7.4-curl php7.4-gd php7.4-xml php7.4-xmlrpc
+
     {{< note >}}
 If NGINX is used as the web server, the `php7.4-fpm` package must also be installed.
     {{< /note >}}
+
 1. The `php-pear` module is also recommended with PHP 7.4.
 
         sudo apt install php-pear
+
 1. Verify PHP has been upgraded to version 7.4.
 
         php -v
+
     {{< output >}}
 PHP 7.4.21 (cli) (built: Jul  1 2021 16:09:41) ( NTS )
 Copyright (c) The PHP Group
     {{< /output >}}
+
 1. Disable the older version of the `libapache2` module and enable the new one. The following command illustrates how to disable PHP 7.0 and enable version 7.4.
 
         sudo a2dismod php7.0
         sudo a2enmod php7.4
+
     {{< note >}}
 If NGINX is used as the web server, run the commands `sudo systemctl start php7.4-fpm` and `sudo systemctl enable php7.4-fpm`. Also, change the `fastcgi_pass` value in `/etc/nginx/conf.d/yourdomain.com.conf` to `fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;`. Consult the Linode guide on [NGINX and PHP](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/) for more details.
     {{< /note >}}
+
 1. Restart the Apache server to apply the changes.
 
         sudo systemctl restart apache2
+
 1. Reload the WordPress Control Panel. The notification about the outdated PHP application should no longer be visible.
 
 ### How to Install a Specific Version of PHP
