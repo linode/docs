@@ -8,7 +8,7 @@ og_description: 'Infrastructure as a Service (IaaS) is a cloud computing service
 keywords: ['infrastructure as a service','iaas','infrastructure','cloud networks']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-06-28
+published: 2021-08-05
 modified_by:
   name: Linode
 title: "What Is Infrastructure as a Service"
