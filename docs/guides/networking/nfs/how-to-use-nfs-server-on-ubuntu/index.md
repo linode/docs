@@ -7,7 +7,7 @@ og_description: 'Network File System (NFS) is a distributed file system that all
 keywords: ['NFS','file sharing','NFS server','mount point']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-02
+published: 2021-08-06
 modified_by:
   name: Linode
 title: "Using an NFS Server on Ubuntu 20.04"
