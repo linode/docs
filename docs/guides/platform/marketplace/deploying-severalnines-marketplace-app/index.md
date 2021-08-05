@@ -1,33 +1,33 @@
 ---
-slug: deploy-severalnines-with-marketplace-apps
+slug: deploying-severalnines-marketplace-app
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
-description: 'Manage the most popular open-source databases on-premise or in the cloud.'
-og_description: 'Manage the most popular open-source databases on-premise or in the cloud.'
+description: "Manage the most popular open-source databases on-premise or in the cloud. This tutorial walks you through deploying Severalnines using the Linode Marketplace."
+og_description: "Manage the most popular open-source databases on-premise or in the cloud. This tutorial walks you through deploying Severalnines using the Linode Marketplace."
 keywords: ['database','cluster','backups','configuration management']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-26
+published: 2021-08-05
+modified: 2021-08-05
 modified_by:
   name: Linode
-title: "How to Deploy Severalnines With Marketplace Apps"
-h1_title: "Deploy Severalnines With Marketplace Apps"
+title: "How to Deploy Severalnines through the Linode Marketplace"
+h1_title: "Deploying Severalnines through the Linode Marketplace"
 enable_h1: true
 external_resources:
 - '[Severalnines](https://severalnines.com/)'
 ---
 
-Severalnines is a database management application. It provides a unified console (“single pane of glass”) to manage the full database lifecycle of the most popular open source databases either on-premises or in the cloud.
-With Severalnines, you can provision, monitor, and manage highly available database clusters in minutes - complete with dashboards, backups, notifications, reports, and automated recovery.
+Severalnines is a database management application. It provides a unified console (“single pane of glass”) to manage the full database lifecycle of the most popular open source databases either on-premises or in the cloud. With Severalnines, you can provision, monitor, and manage highly available database clusters in minutes - complete with dashboards, backups, notifications, reports, and automated recovery.
 
 **Supported databases:** MariaDB, MariaDB Galera Cluster, Percona, Percona XtraDB Cluster, MySQL Replication, MySQL Cluster (NDB), PostgreSQL, Redis, TimescaleDB, MongoDB ReplicaSet, and MongoDB Shards
 
-## Deploy a Severalnines Marketplace App
+## Deploying the Severalnines Marketplace App
 
 {{< content "deploy-marketplace-apps">}}
 
-### Severalnines Options
+### Severalnines Configuration Options
 <!-- The following table has three parts. The UDF name, in bold and in one column, followed by
      UDF description in the second column. The description is in normal text, with an optional
      "Required." tag at the end of the description, in italics, if the field is mandatory. -->
@@ -43,7 +43,7 @@ You can configure your Severalnines App by providing values for the following fi
 | **Domain** | The domain name where you wish to host your Severalnines instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 | **SSL** | Would you like to use a free Let's Encrypt SSL certificate? (Uses the Linode's default rDNS if no domain is specified). |
 
-### Linode Options
+### Linode Configuration Options
 
 After providing the App-specific options, provide configurations for your Linode server:
 
