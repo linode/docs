@@ -1,10 +1,10 @@
 ---
-slug: deploy-moodle-with-marketplace-apps
+slug: deploying-moodle-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using Linode's App Marketplace"
-og_description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using Linode's App Marketplace"
+description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using the Linode Marketplace."
+og_description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using the Linode Marketplace."
 keywords: ['learning','educator','management', and 'school']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +12,8 @@ published: 2021-08-05
 modified: 2021-08-05
 modified_by:
   name: Linode
-title: "How to Deploy Moodle with Marketplace Apps"
-h1_title: "Deploying Moodle with Marketplace Apps"
+title: "How to Deploy Moodle through the Linode Marketplace"
+h1_title: "Deploying Moodle through the Linode Marketplace"
 enable_h1: true
 external_resources:
 - '[Moodle](https://moodle.org/)'
@@ -21,7 +21,7 @@ external_resources:
 
 Moodle is the most widely used open source learning management system. It is aimed to provide learners, educators, and administrators with a single robust, secure, and integrated solution to develop customized learning environments.
 
-## Deploy a Moodle Marketplace App
+## Deploying the Moodle Marketplace App
 
 {{< content "deploy-marketplace-apps">}}
 
