@@ -186,6 +186,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+Chevereto
 chgrp
 chmod
 chown
