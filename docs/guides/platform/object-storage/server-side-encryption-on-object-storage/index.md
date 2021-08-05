@@ -1,5 +1,5 @@
 ---
-slug: server-side-encryption
+slug: server-side-encryption-on-object-storage
 author:
   name: Ben Bigger
   email: docs@linode.com
@@ -9,16 +9,14 @@ keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
 tags: ["linode platform","python","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-14
+modified: 2021-08-05
 modified_by:
   name: Linode
 title: "How to Use Server-Side Encryption with Linode Object Storage"
 h1_title: "Using Server-Side Encryption with Linode Object Storage"
-aliases: ['/platform/object-storage/server-side-encryption/']
+enable_h1: true
+aliases: ['/platform/object-storage/server-side-encryption/', '/guides/server-side-encryption']
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
 

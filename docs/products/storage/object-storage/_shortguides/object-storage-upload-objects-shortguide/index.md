@@ -1,20 +1,8 @@
 ---
-slug: object-storage-upload-objects-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to upload objects to a Linode Object Storage bucket.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
-title: How to Upload Objects to a Linode Object Storage Bucket
-keywords: ["object storage"]
+# Shortguide: How to Upload Objects to a Linode Object Storage Bucket
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/object-storage/object-storage-upload-objects-shortguide/']
 ---
 
 Follow these steps to upload objects to a bucket using the Cloud Manager:

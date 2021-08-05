@@ -1,20 +1,8 @@
 ---
-slug: object-storage-delete-bucket-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to delete a Linode Object Storage bucket.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
-title: How to Delete a Linode Object Storage Bucket
-keywords: ["object storage"]
+# Shortguide: How to Delete a Linode Object Storage Bucket
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/object-storage/object-storage-delete-bucket-shortguide/']
 ---
 
 Follow these steps to delete an Object Storage bucket from the Cloud Manager:

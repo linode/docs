@@ -1,20 +1,8 @@
 ---
-slug: object-storage-cancel-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to cancel the Linode Object Storage service.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-22
-title: How to Cancel the Linode Object Storage Service
-keywords: ["object storage"]
+# Shortguide: How to Cancel the Linode Object Storage Service
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/object-storage/object-storage-cancel-shortguide/']
 ---
 
 Follow these steps to cancel the Object Storage service from the Cloud Manager:

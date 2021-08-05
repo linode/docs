@@ -1,20 +1,8 @@
 ---
-slug: object-storage-access-keys-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to generate an Access Key for the Linode Object Storage service.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-26
-modified_by:
-  name: Linode
-published: 2020-07-22
-title: How to Generate an Access Key for the Linode Object Storage Service
-keywords: ["object storage"]
+# Shortguide: How to Generate an Access Key for the Linode Object Storage Service
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/object-storage/object-storage-access-keys-shortguide/']
 ---
 
 To use Object Storage with any compatible client or command-line tool, you'll need to generate an Access Key. This can be done directly in the Cloud Manager.

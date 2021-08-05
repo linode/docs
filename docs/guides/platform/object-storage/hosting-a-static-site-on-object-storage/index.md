@@ -1,5 +1,5 @@
 ---
-slug: host-static-site-object-storage
+slug: hosting-a-static-site-on-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,10 +7,12 @@ description: "Host a Static Site using Linode's Object Storage."
 keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09
-modified: 2020-12-03
+modified: 2021-08-05
 modified_by:
   name: Linode
-title: "Host a Static Site using Linode Object Storage"
+title: "How to Host a Static Site using Linode Object Storage"
+h1_title: "Hosting a Static Site using Linode Object Storage"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -18,14 +20,8 @@ external_resources:
 - '[s3cmd Options and Commands](https://s3tools.org/usage)'
 - '[s3cmd Sync How-To](https://s3tools.org/s3cmd-sync)'
 tags: ["linode platform"]
-aliases: ['/platform/object-storage/host-static-site-object-storage/']
+aliases: ['/platform/object-storage/host-static-site-object-storage/','/guides/host-static-site-object-storage/']
 ---
-
-![Host a Static Site using Linode Object Storage](host-a-static-site-using-linode-object-storage.png "Host a Static Site using Linode Object Storage")
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 ## Why Host a Static Site on Object Storage?
 
@@ -63,6 +59,8 @@ This guide uses [Hugo](https://gohugo.io/) to demonstrate how to create a static
     - Installed and configure the [s3cmd tool](https://s3tools.org/download).
 
 1. [Install and configure Git](/docs/guides/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
+
+{{< content "object-storage-cancellation-shortguide" >}}
 
 ## Install the Hugo Static Site Generator
 

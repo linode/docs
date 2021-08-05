@@ -1,20 +1,8 @@
 ---
-slug: object-storage-cluster-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that displays the definition of object storage cluster.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-01-10
-modified_by:
-  name: Heather Zoppetti
-published: 2020-01-10
-title: Object Storage Cluster Definiton
-keywords: []
+# Shortguide: Object Storage Cluster Definiton
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/object-storage/object-storage-cluster-shortguide/']
 ---
 
 {{< note >}}
