@@ -1,12 +1,11 @@
 ---
 slug: using-an-nfs-server-on-ubuntu2004
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server, and mount NFS on the client.'
-og_description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server, and mount NFS on the client.'
+  name: Jeff Novotny
+description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server on Ubuntu 20.04, and mount NFS on the client.'
+og_description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server on Ubuntu 20.04, and mount NFS on the client.'
 keywords: ['NFS','file sharing','NFS server','mount point']
-tags: ['networking', 'linux', 'security']
+tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
 modified_by:
@@ -16,11 +15,10 @@ h1_title: "How to Use an NFS Server on Ubuntu 20.04"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
 external_resources:
-- '[RFC for NFS Version 4.2](https://datatracker.ietf.org/doc/html/rfc7862)'
+- '[RFC for NFS version 4.2](https://datatracker.ietf.org/doc/html/rfc7862)'
 - '[Linux NFS site](http://linux-nfs.org/wiki/index.php/Main_Page)'
-- '[Export Options for NFS](http://nfs.sourceforge.net/nfs-howto/ar01s03.html)'
+- '[Export options for NFS](http://nfs.sourceforge.net/nfs-howto/ar01s03.html)'
 ---
 
 *Network File System* (NFS) is a distributed file system that allows users to access files over a network like files on their own system. The current version of NFS, which was originally developed by Sun Microsystems, is [NFS Version 4](https://datatracker.ietf.org/doc/html/rfc7862). NFS is an open standard that builds on the *Open Network Computing Remote Procedure Call* (ONC RPC) system. This guide provides a brief introduction to NFS and explains how to configure and use NFS on both server and client systems.
@@ -33,20 +31,20 @@ The server administrator makes directories accessible to remote users through a 
 
 NFS uses a *Remote Procedure Call* (RPC) to assemble and process a request. Client system calls, such as read, write, open, and close, are translated into RPC function calls. These requests are sent to the server, where they are validated and directed to the correct handler. The appropriate file or metadata is then either updated or transmitted to the client. The entire process is transparent to the client.
 
-NFS uses file handlers, which are defined in relation to the root directory of the system, to identify each file. This file handler uses a volume identifier and an *inode number* to identify the file partition and locate the file within the partition. NFS also tracks the *file attributes*, which contain metadata about the file. This metadata includes the creation and modification dates, file size, owner, and permissions. All clients must use the same locking and caching options to avoid inconsistency in files. This allows access to the NFS server from different clients.
+NFS uses file handlers to identify each file. File handlers are defined in relation to the root directory of the system. The file handler uses a volume identifier and an *inode number* to identify the file partition and locate the file within the partition. NFS also tracks the *file attributes*, which contain metadata about the file. This metadata includes the creation and modification dates, file size, owner, and permissions. All clients must use the same locking and caching options to avoid inconsistency in files. This allows access to the NFS server from different clients.
 
-More detailed information about the operational details of NFS can be found at the [Linux NFS site](http://linux-nfs.org/wiki/index.php/Main_Page).
+More detailed information about the operational details of NFS can be found on the [Linux NFS site](http://linux-nfs.org/wiki/index.php/Main_Page).
 
 ## Advantages and Disadvantages of NFS
 
 NFS has been widely adopted due to its positive cost-benefit ratio. Some of its advantages include:
 
 - It is an open-source, low-cost solution.
-- It is easy to set up and easy for both administrators and clients to use. NFS has a low administrative overhead after the initial configuration has been completed.
-- It allows network administrators to centralize data and save on storage and network devices.
+- A low-level of effort is needed to set it up and requires minimal knowledge for both administrators and clients to use. NFS has a low administrative overhead after the initial configuration has been completed.
+- Network administrators can centralize data and save on storage and network devices when using NFS.
 - It permits easy sharing of data. Multiple users can access the same files.
 - Files are kept up to date. There are no conflicts or uncertainties between different versions of a file. The possibility of an out-of-date version being accidentally used is greatly reduced.
-- It is interoperable with different vendors and implementations.
+- NFS is interoperable with different vendors and implementations.
 - It provides for quick recovery from crashes.
 
 Due to its flexibility, openness, and simple mechanisms, there are also some drawbacks to using NFS.
@@ -77,11 +75,11 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 The steps involved in configuring the NFS server and the client are as follows:
 
-1. Install the NFS Server and Client Software
-1. Configure the Firewall on the NFS Server
-1. Create an Export Directory on the NFS Server
-1. Configure the NFS Export Settings on the Server
-1. Create an NFS Mount Point on the Client
+1. Install the NFS server and client Software
+1. Configure the firewall on the NFS server
+1. Create an export directory on the NFS server
+1. Configure the NFS export settings on the server
+1. Create an NFS mount point on the client
 
 ### Install the NFS Server and Client Software
 
@@ -90,15 +88,19 @@ The NFS package must be installed on both the server and the client. The server 
 1. On the NFS server, update all packages.
 
         sudo apt update
+
 1. Install the `nfs-kernel-server` package on the server.
 
         sudo apt install nfs-kernel-server
+
     {{< note >}}
 By default, the NFS server supports versions 3 and 4. Verify the versions that are enabled using the `sudo cat /proc/fs/nfsd/versions` command.
     {{< /note >}}
+
 1. Verify the status of the NFS server using the `systemctl` utility. It should display a status of `active`.
 
         sudo systemctl status nfs-kernel-server.service
+
     {{< output >}}
 nfs-server.service - NFS server and services
      Loaded: loaded (/lib/systemd/system/nfs-server.service; enabled; vendor preset: enabled)
@@ -108,9 +110,11 @@ nfs-server.service - NFS server and services
      Memory: 0B
      CGroup: /system.slice/nfs-server.service
     {{< /output >}}
+
 1. Update all packages on the Linode serving as the client.
 
         sudo apt update
+
 1. On the client, install the `nfs-common` package.
 
         sudo apt install nfs-common
@@ -170,7 +174,7 @@ NFS client access is granted on a case-by-case basis. A directory that is shared
 
 The NFS component maintains a configuration file containing the Access Control Lists (ACL) for each export directory. Each entry indicates the name of the export directory, the clients who are authorized to access it, and the file-sharing options. The format of each line is `export_directory_name client1(sharing_options) client2(sharing_options_2)`. Access can be provided to several clients in the same entry. A client can be identified either through a specific IP address, an entire subnet, or a domain name.
 
-A detailed explanation of all the export options can be found [here](http://nfs.sourceforge.net/nfs-howto/ar01s03.html), but some of the main sharing options include the following:
+A detailed explanation of all the export options can be found in the [Setting Up an NFS Server](http://nfs.sourceforge.net/nfs-howto/ar01s03.html) documentation. Some of the main sharing options include the following:
 
 - **rw/ro:**  The `rw` option grants read and write access to the share, but `ro` only allows read access.
 - **sync:** The `sync` option guarantees changes are committed on the server before any further requests for the file are answered. The `async` option provides better performance but data loss or corruption might occur under certain circumstances.
@@ -180,23 +184,29 @@ A detailed explanation of all the export options can be found [here](http://nfs.
 
 To add the new export directory to NFS, execute the following commands on the server.
 
-1. Edit the `etc/exports` file.
+1. Edit the `/etc/exports` file.
 
-        vi etc/exports
+        vi /etc/exports
+
 1. Add the following line and save the file. Replace `client_ip_addr` with the actual IP address or subnet of the client.
+
     {{< file "/etc/exports" >}}
 /nfs/share/project1  client_ip_addr(rw,sync,no_subtree_check)
     {{< /file >}}
+
 1. Apply the configuration changes using the `exportfs` command.
 
         sudo exportfs -a
+
 1. View all the active exports and verify the `/nfs/share/project1` directory has export status.
 
         sudo exportfs -v
+
     {{< output >}}
 /nfs/share/project1
 client_ip_addr(rw,wdelay,root_squash,no_subtree_check,sec=sys,rw,secure,root_squash,no_all_squash)
     {{< /output >}}
+
 1. Restart the NFS utility using `systemctl`.
 
         sudo systemctl restart nfs-kernel-server
