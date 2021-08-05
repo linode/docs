@@ -1,11 +1,11 @@
 ---
-slug: deploy-jetbackup-with-marketplace-apps
+slug: deploying-jetbackup-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
 description: "JetBackup is a backup solution designed for the web hosting industry. This tutorial walks you through deploying JetBackup using the Linode Marketplace."
 og_description: "JetBackup is a backup solution designed for the web hosting industry. This tutorial walks you through deploying JetBackup using the Linode Marketplace."
-keywords: ['backups','cpanel',and 'backup']
+keywords: ['backups','cpanel', 'backup']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-05
