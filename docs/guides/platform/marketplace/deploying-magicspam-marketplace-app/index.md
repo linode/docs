@@ -1,54 +1,45 @@
 ---
-slug: deploy-magicspam-with-marketplace-apps
+slug: deploying-magicspam-marketplace-app
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
-description: 'Powerful Anti-Spam and Email Security solution for Control Panels (cPanel and Plesk).'
-og_description: 'Powerful Anti-Spam and Email Security solution for Control Panels (cPanel and Plesk).'
+description: "MagicSpam is a powerful anti-spam and email security solution that integrates with popular control panels, like cPanel and Plesk. This tutorial walks you through deploying MagicSpam using the Linode Marketplace."
+og_description: "MagicSpam is a powerful anti-spam and email security solution that integrates with popular control panels, like cPanel and Plesk. This tutorial walks you through deploying MagicSpam using the Linode Marketplace."
 keywords: ['cPanel','Plesk','Email','Spam']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-19
+published: 2021-08-05
+modified: 2021-08-05
 modified_by:
   name: Linode
-title: "Deploy Magicspam With Marketplace Apps"
-h1_title: "How to Deploy Magicspam With Marketplace Apps"
+title: "How to Deploy Magicspam through the Linode Marketplace"
+h1_title: "Deploying Magicspam through the Linode Marketplace"
 enable_h1: true
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'
 ---
 
-## MagicSpam Marketplace App
+MagicSpam is a powerful anti-spam and email security solution for Linux systems. It integrates directly with popular control panels, such as cPanel and Plesk. It's primary function is to stop inbound spam from entering your server right at the SMTP layer, which lowers bandwidth and overhead. It also secure mailboxes on your server from being compromised and used to send outbound spam.
 
-Powerful Anti-Spam and Email Security solution for Control Panels (cPanel and Plesk).
+MagicSpam installs directly onto an email server without any need to change A/MX records to protect unlimited users and domains. MagicSpam also integrates natively into many control panel interfaces and comes equipped with log and statistic modules to help with the management of an email server.
 
-Stop inbound spam from entering your server right at the SMTP layer to lower bandwidth and overhead, as well as secure mailboxes on your server from being compromised and used to send outbound spam.
+{{< note >}}
+In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](https://www.linode.com/docs/email/running-a-mail-server/#sending-email-on-linode).
+{{</ note >}}
 
-Based on the same security technologies used by ISP's and Telco's, MagicSpam is more than just an anti-spam solution and also an email security solution which allows email administrators to configure rule-based and reputation-based policies, blacklists and whitelists, rate limiters, and authentication restrictions.
+## Deploying the MagicSpam Marketplace App
 
-MagicSpam installs directly onto the email server without any need to change A/MX records to protect unlimited users and domains. MagicSpam also integrates natively into the control panel interface and comes equipped with log and statistic modules to help with the management of an email server. MagicSpam is deployed in over 83 countries worldwide and protects millions of mailboxes everyday.
+{{< content "deploy-marketplace-apps">}}
 
-Get started with MagicSpam on Linode with the MagicSpam One-Click App.
+As MagicSpam is designed to integrate and run alongside with Control Panels, the MagicSpam App also deploys the selected control panel (cPanel or Plesk). Both of these control panels may require purchasing a license. Additionally, a MagicSpam license key is required to deploy MagicSpam on Linode, which you can purchase through the [MagicSpam Store](https://www.magicspam.com/store.php).
 
-### Deploy a MagicSpam Marketplace App
-
-As MagicSpam is designed to integrate and run alongside with Control Panels, the MagicSpam One-Click App will also deploy the selected Control Panel (e.g. cPanel or Plesk). Additionally, a MagicSpam license key is required to deploy MagicSpam on Linode, which you can purchase through the [MagicSpam Webstore](https://www.magicspam.com/store.php). Please make sure to purchase the appropriate license key for the selected Control Panel.
-
-If you want to deploy MagicSpam onto an existing Linode running a supported Control Panel, please install MagicSpam on your server after purchasing the license key by following these installation guides:
+If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not follow this guide. Instead, install MagicSpam by following one of the below guides:
 
 * [MagicSpam for cPanel Installation Guide](https://www.magicspam.com/download/products/MSWHMC/InstallationGuide.pdf)
 * [MagicSpam for Plesk Installation Guide](https://www.magicspam.com/download/products/MSPPRO/InstallationGuide.pdf)
 
-For more information about MagicSpam on these Control Panels, please check out the following resources:
+### MagicSpam Configuration Options
 
-* [MagicSpam for cPanel](https://www.magicspam.com/anti-spam-protection-cpanel.php)
-* [MagicSpam for Plesk](https://www.magicspam.com/anti-spam-protection-plesk.php)
-
-**Note About Email at Linode:** In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](https://www.linode.com/docs/email/running-a-mail-server/#sending-email-on-linode).
-
-{{< content "deploy-marketplace-apps">}}
-
-### MagicSpam Options
 You can configure your MagicSpam App by providing values for the following fields:
 
  **Field** | **Description**
@@ -57,7 +48,7 @@ You can configure your MagicSpam App by providing values for the following field
  **MagicSpam License Key** | Your MagicSpam license key to for the selected Control Panel. *Required*.
  **Hostname** | Your Linode’s hostname. *Required*.
 
-### Linode Options
+### Linode Configuration Options
 
 After providing the App-specific options, provide configurations for your Linode server:
 
@@ -71,8 +62,6 @@ After providing the App-specific options, provide configurations for your Linode
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-<!-- the following disclaimer lets the user know how long it will take
-     to deploy the app -->
 After providing all required Linode Options, click on the **Create** button. **Your MagicSpam App will complete installation anywhere between 10-15 minutes after your Linode has finished provisioning**.
 
 ## Getting Started after Deployment
@@ -81,27 +70,27 @@ After both the Control Panel and MagicSpam has finished installing, you will be 
 
 ### cPanel
 
-1. Log into the WHM interface according to the [cPanel Guide](https://www.linode.com/marketplace/apps/cpanel/cpanel/).
+1.  Log into the WHM interface according to the [cPanel Guide](https://www.linode.com/marketplace/apps/cpanel/cpanel/).
 
-2. Navigate to the MagicSpam Interface.
+2.  Navigate to the MagicSpam Interface.
 
-    WHM Interface >> Plugins >> MagicSpam
+        WHM Interface >> Plugins >> MagicSpam
 
-3. Register your MagicSpam license key.
+3.  Register your MagicSpam license key.
 
-4. Set the administrator email address.
+4.  Set the administrator email address.
 
 ### Plesk
 
-1. Log into the Plesk interface according to the [Plesk Guide](https://www.linode.com/marketplace/apps/plesk/plesk/).
+1.  Log into the Plesk interface according to the [Plesk Guide](https://www.linode.com/marketplace/apps/plesk/plesk/).
 
-2. Navigate to the MagicSpam Interface.
+2.  Navigate to the MagicSpam Interface.
 
-    Plesk Interface >> Tools & Settings >> Additional Services >> MagicSpam
+        Plesk Interface >> Tools & Settings >> Additional Services >> MagicSpam
 
-3. Register your MagicSpam license key.
+3.  Register your MagicSpam license key.
 
-4. Set the administrator email address.
+4.  Set the administrator email address.
 
 ## Next Steps
 
@@ -109,4 +98,7 @@ For more on MagicSpam, check out the following resources:
 
 * [Purchase MagicSpam License Key](https://www.magicspam.com/store)
 * [Visit the MagicSpam Official Forums](https://forums.magicspam.com)
+* [MagicSpam for cPanel](https://www.magicspam.com/anti-spam-protection-cpanel.php)
+* [MagicSpam for Plesk](https://www.magicspam.com/anti-spam-protection-plesk.php)
+
 {{< content "marketplace-update-note">}}
