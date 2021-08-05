@@ -1,30 +1,32 @@
 ---
-slug: deploy-aapanel-with-marketplace-apps
+slug: deploying-aapanel-marketplace-app
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
-description: 'A simple but powerful control panel that includes a one-click LAMP/LNMP web server through web-based dashboard.'
-og_description: 'A simple but powerful control panel that includes a one-click LAMP/LNMP web server through web-based dashboard.'
-keywords: ['list','of','keywords','and key phrases']
+description: "aaPanel is a simple but powerful control panel that includes a one-click LAMP/LNMP web server and a web-based dashboard. This tutorial walks you through deploying aaPanel using the Linode Marketplace."
+og_description: "aaPanel is a simple but powerful control panel that includes a one-click LAMP/LNMP web server and a web-based dashboard. This tutorial walks you through deploying aaPanel using the Linode Marketplace."
+keywords: ['control panel', 'web hosting']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-19
+published: 2021-08-05
+modified: 2021-08-05
 modified_by:
   name: Linode
-title: "Deploy aaPanel With Marketplace Apps"
-h1_title: "How to Deploy aaPanel With Marketplace Apps."
+title: "How to Deploy aaPanel through the Linode Marketplace"
+h1_title: "Deploying aaPanel through the Linode Marketplace"
 enable_h1: true
 external_resources:
 - '[aaPanel](https://www.aapanel.com/)'
 - '[aaPanel Documentation](https://doc.aapanel.com/web)'
 ---
 
-### Deploy a aaPanel Marketplace App
+aaPanel is a free and open source web hosting control panel. It allows you to manage the server's web server, websites, databases, FTP, and more through a simple web-based interface. Through aaPanel, you can quickly install a LEMP (NGINX) or LAMP (Apache) stack on your server and start hosting your websites.
 
- aaPanel is a simple but powerful control panel, can manage the web server through a web-based GUI(Graphical User Interface). aaPanel provides a one-click install LNMP/LAMP and an easy to use dashboard to help you manage the database, FTP Users, crons, security, and much more.
+## Deploying the aaPanel Marketplace App
 
 {{< content "deploy-marketplace-apps">}}
 
+### Linode Configuration Options
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
@@ -34,27 +36,25 @@ external_resources:
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-<!-- the following disclaimer lets the user know how long it will take
-     to deploy the app -->
 After providing all required Linode Options, click on the **Create** button. **Your aaPanel App will complete installation anywhere between 5-10 minutes after your Linode has finished provisioning**.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Access your aaPanel App
-1. After aaPanel has finished installing, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
-         ssh root@192.0.2.0
+1.  After aaPanel has finished installing, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
-2. Once you login to the Linode, you will need to run the following command to obtain your login information for your aaPanel dashboard: 
+        ssh root@192.0.2.0
+
+2.  Once you login to the Linode, you will need to run the following command to obtain your login information for your aaPanel dashboard:
 
         cat /root/.aapanel_info
 
-![aaPanel Login Details](aaPanel-login-info.png)
+    ![aaPanel Login Details](aaPanel-login-info.png)
 
-3. Once you visit the URL and enter the login credentials you will be prompted to choose which One-Click services (LAMP/LNMP) you would like to install:
+3.  Once you visit the URL and enter the login credentials you will be prompted to choose which One-Click services (LAMP/LNMP) you would like to install:
 
-![aaPanel One-Click](aaPanel-one-click.png)
+    ![aaPanel One-Click](aaPanel-one-click.png)
 
 Now that you’ve accessed your dashboard, checkout [the official aaPanel documentation](https://doc.aapanel.com/) to learn how to further configure your instance.
 
