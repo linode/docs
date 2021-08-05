@@ -3,33 +3,30 @@ slug: deploy-moodle-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The leading open source learning management system.'
-og_description: 'The leading open source learning management system.'
+description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using Linode's App Marketplace"
+og_description: "Moodle is the leading open source learning management system. This tutorial walks you through deploying Moodle using Linode's App Marketplace"
 keywords: ['learning','educator','management', and 'school']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-26
+published: 2021-08-05
+modified: 2021-08-05
 modified_by:
   name: Linode
-title: "Deploy Moodle With Marketplace Apps"
-h1_title: "How to Deploy Moodle With Marketplace Apps"
+title: "How to Deploy Moodle with Marketplace Apps"
+h1_title: "Deploying Moodle with Marketplace Apps"
 enable_h1: true
 external_resources:
 - '[Moodle](https://moodle.org/)'
 ---
 
-## Moodle Marketplace App
-
 Moodle is the most widely used open source learning management system. It is aimed to provide learners, educators, and administrators with a single robust, secure, and integrated solution to develop customized learning environments.
 
-### Deploy a Moodle Marketplace App
+## Deploy a Moodle Marketplace App
 
 {{< content "deploy-marketplace-apps">}}
 
-### Moodle Options
-<!-- The following table has three parts. The UDF name, in bold and in one column, followed by
-     UDF description in the second column. The description is in normal text, with an optional
-     "Required." tag at the end of the description, in italics, if the field is mandatory. -->
+### Moodle Configuration Options
+
 You can configure your Moodle App by providing values for the following fields:
 
 | **Field** | **Description** |
@@ -47,10 +44,9 @@ You can configure your Moodle App by providing values for the following fields:
 | **Domain** | The domain name where you wish to host your Moodle site. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 
 
-### Linode Options
+### Linode Configuration Options
 
 After providing the App-specific options, provide configurations for your Linode server:
-<!-- Be sure to edit the Select an Image and Linode Plan to match app's needs -->
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
@@ -60,15 +56,15 @@ After providing the App-specific options, provide configurations for your Linode
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-<!-- the following disclaimer lets the user know how long it will take
-     to deploy the app -->
 After providing all required Linode Options, click on the **Create** button. **Your Moodle App will complete installation anywhere between 5-10 minutes after your Linode has finished provisioning**.
 
-### Access your Moodle App
+## Getting Started After Deployment
+
+### Access Your Moodle App
 
 To access your Moodle instance, Open a browser and navigate to your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](docs/guides/remote-access/#resetting-reverse-dns).
 
-From there, you can login by clicking the box on the top right of the page. Once you see the login page, you can enter `moodle` as the *username* and the *password* that was entered during the creation of the Linode. 
+From there, you can login by clicking the box on the top right of the page. Once you see the login page, you can enter `moodle` as the *username* and the *password* that was entered during the creation of the Linode.
 
 Now that you’ve accessed your dashboard, checkout [the official Moodle documentation](https://docs.moodle.org/311/en/Main_page) to learn how to further configure your instance.
 
