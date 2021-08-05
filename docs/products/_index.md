@@ -6,7 +6,7 @@ description = "Get started using the Cloud Manager, CLI, and API to deploy Linod
 [[cascade]]
 layout = "tabbed-section-layout"
 [cascade._target]
-# The section rendering for individual product pages use the tabbed layout
+# The section rendering for individual product pages uses the tabbed layout
 kind = "section"
 path = "/products/*/*/**"
 +++
