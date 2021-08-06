@@ -3,15 +3,18 @@ slug: how-to-use-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Get started using Linode's Object Storage."
+description: "Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. This guide explains how to use Object Storage."
+og_description: "Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. This guide explains how to use Object Storage."
 keywords: ['object','storage','bucket']
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-12
-modified: 2019-04-12
+modified: 2021-08-06
 modified_by:
   name: Linode
-title: "How to Use Linode Object Storage"
+title: "How to Use Linode's S3-compatible Object Storage"
+h1_title: "Using Linode's S3-compatible Object Storage"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -20,10 +23,6 @@ aliases: ['/platform/object-storage/how-to-use-object-storage/']
 ---
 
 {{< youtube q88OKsr5l6c >}}
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage (as in a Linode's disk) and [Block Storage Volumes](/docs/guides/platform/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
 

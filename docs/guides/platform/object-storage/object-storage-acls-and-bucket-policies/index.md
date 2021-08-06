@@ -1,5 +1,5 @@
 ---
-slug: how-to-use-object-storage-acls-and-bucket-policies
+slug: object-storage-acls-and-bucket-policies
 author:
   name: Linode Community
   email: docs@linode.com
@@ -18,12 +18,8 @@ contributor:
   name: Linode
 external_resources:
 - '[Ceph Bucket Policy Supported Actions](https://docs.ceph.com/docs/master/radosgw/bucketpolicy/#limitations)'
-aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/']
+aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/','/guides/how-to-use-object-storage-acls-and-bucket-policies/']
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources.
 

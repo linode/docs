@@ -27,7 +27,9 @@ Cluster IDs correspond with the Object Storage Cluster located in each data cent
 
 Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabytes of storage. This flat rate is prorated, so if you use Object Storage for a fraction of the month you are charged a fraction of the cost. For example, if you have Object Storage enabled for half of the month and use up to 250 gigabytes of storage you are billed $2.50 at the end of the month. Each additional gigabyte of storage over the first 250 gigabytes costs $0.02, and this usage is also prorated based on usage time.
 
-{{< content "object-storage-cancellation-shortguide" >}}
+{{< caution >}}
+Once enabled, you will be billed a minimum of $5 per month regardless of whether or not there are active buckets on your account. You must [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop billing for this service.
+{{</ caution >}}
 
 ## Features
 

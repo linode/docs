@@ -8,19 +8,18 @@ og_description: "This guide shows you multiple ways to access your objects store
 keywords: ['object','storage','bucket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-22
-modified: 2020-01-22
+modified: 2021-08-06
 modified_by:
   name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png
 title: "How to Access Objects with Linode Object Storage"
 h1_title: "Accessing Objects with Linode Object Storage"
+enable_h1: true
 contributor:
   name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/']
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
 
 Object Storage gives each object a unique URL with which you can access your data. An object can be publicly accessible, or you can set it to be private and only visible to you. This makes Object Storage great for sharing and storing unstructured data like images, documents, archives, streaming media assets, and file backups, and the amount of data you store can range from small collections of files up to massive libraries of information.
 

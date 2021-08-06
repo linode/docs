@@ -8,12 +8,13 @@ og_description: "This guide shows you how to move your objects stored in Linode'
 keywords: ['object','storage','bucket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-04
-modified: 2020-05-04
+modified: 2021-08-06
 image: Moving_Objects_Between_Buckets_in_Linode_Object_Storage_1200x631.png
 modified_by:
   name: Linode
 title: "How to Move Objects Between Buckets in Linode's Object Storage"
 h1_title: "Moving Objects Between Buckets in Linode's Object Storage"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -21,8 +22,6 @@ external_resources:
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-move-objects-between-buckets/']
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
 
 Linode’s Object Storage is a globally-available, S3-compatible method for storing and accessing data. With Object Storage more widely available, you may have buckets in multiple locations, this guide shows you how to move objects between buckets quickly and easily.
 
