@@ -1,20 +1,8 @@
 ---
-slug: object-storage-cancellation-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that displays a notice that billing for Object Storage continues until the service is cancelled even if there are no active buckets on the account.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-05
-modified_by:
-  name: Linode
-published: 2020-01-10
-title: Object Storage Cancellation Notice
-keywords: ["object storage"]
+# Shortguide: Object Storage Cancellation Notice
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/object-storage/object-storage-cancellation-shortguide/']
 ---
 
 {{< note >}}
