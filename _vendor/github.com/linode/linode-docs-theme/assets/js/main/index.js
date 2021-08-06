@@ -34,7 +34,7 @@ window.lnc = {
 	NewDisqusController: newDisqus,
 
 	// Page controllers.
-	NewHomeController: (developerItems) => newHomeController(searchConfig, developerItems),
+	NewHomeController: (staticData) => newHomeController(searchConfig, staticData),
 	NewSectionsController: () => newSectionsController(searchConfig)
 };
 
