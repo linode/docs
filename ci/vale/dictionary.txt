@@ -1141,6 +1141,7 @@ oldfashioned
 oneof
 ons
 opcache
+openapi
 opencart
 opendkim
 openfire
@@ -1327,6 +1328,7 @@ recursing
 recv
 red5
 reddit
+redeclared
 redeployable
 redhat
 redir
