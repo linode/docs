@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I check my Postfix configuration? ",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To simply check your Postfix configuration, check your files located under /etc/postfix/. Run postfix check for potential errors. And to see configuration in details, run postconf."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I change my Postfix configuration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To change your Postfix configuration, make changes to files stored in /etc/postfix/"
+      }
+    }
+  ]
+}

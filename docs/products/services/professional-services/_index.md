@@ -24,8 +24,4 @@ Lean on our team's diverse experience and skill sets to execute pain-free softwa
 
 ## Pricing
 
-To get a quote on a Professional Services project, call our team, or [complete our quote form](https://proservices.typeform.com/to/xJiIEy).
-
-- 866-238-9435
-
-- International: +1-609-380-7562
+To get a quote on a project, [complete the contact form](https://www.linode.com/products/pro-services/#contactus) on the Professional Services page.
