@@ -5,7 +5,7 @@ author:
 description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
 og_description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
-tags: ['php', 'ubuntu', 'wordpress']
+tags: ['php', 'ubuntu', 'wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
 modified_by:
