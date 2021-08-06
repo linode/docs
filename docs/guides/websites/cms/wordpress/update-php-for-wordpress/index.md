@@ -1,8 +1,7 @@
 ---
 slug: how-to-update-php-for-wordpress
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
 og_description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
@@ -11,12 +10,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 modified_by:
   name: Linode
-title: "How to Update PHP for WordPress"
-h1_title: "Update PHP for More Performant WordPress Using Ubuntu 20.04 as an Example"
+title: "How to Update PHP for WordPress on Ubuntu 20.04"
+h1_title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
 external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[PHP](https://www.php.net/)'
@@ -171,7 +169,14 @@ Copyright (c) The PHP Group
         sudo a2enmod php7.4
 
     {{< note >}}
-If NGINX is used as the web server, run the commands `sudo systemctl start php7.4-fpm` and `sudo systemctl enable php7.4-fpm`. Also, change the `fastcgi_pass` value in `/etc/nginx/conf.d/yourdomain.com.conf` to `fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;`. Consult the Linode guide on [NGINX and PHP](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/) for more details.
+If NGINX is used as the web server, run the following commands instead:
+
+    sudo systemctl start php7.4-fpm
+    sudo systemctl enable php7.4-fpm
+
+Also, change the `fastcgi_pass` value in `/etc/nginx/conf.d/yourdomain.com.conf` to `fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;`.
+
+Consult the Linode guide on [NGINX and PHP](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/) for more details.
     {{< /note >}}
 
 1. Restart the Apache server to apply the changes.
@@ -182,9 +187,9 @@ If NGINX is used as the web server, run the commands `sudo systemctl start php7.
 
 ### How to Install a Specific Version of PHP
 
-There could be occasions when a different version of PHP is required, for example, when compatibility with a theme must be maintained. To install a specific version of PHP, follow the below instructions.
+There could be occasions when a different version of PHP is required, for example, when compatibility with a theme must be maintained. To install a specific version of PHP, follow the instructions below.
 
-Depending on the system, the necessary PHP packages might already be available. To determine whether this is the case, follow the below instructions.
+Depending on the system, the necessary PHP packages might already be available. To determine whether this is the case, follow the steps in the following section.
 
 1. To verify whether the package for PHP version x.y is already available, run the command `sudo apt list phpx.y`. If the command displays details about the package, then it can be immediately installed. Packages are available for all currently supported versions.
 
@@ -249,5 +254,5 @@ Do not add any content or make any changes to the site before restoring the orig
 1. Exit the MySQL database, and restore the old database using the `mysql` command. Do not use `mysqldump` because this does not accurately re-create the database schema. Replace the `username` field with the actual name of the WordPress account and specify the path to the location of the `sql` database archive.
 
         mysql -u username -p wordpress < /pathto/filename.sql
-1. Login back into the WordPress site and verify the content is present and the site behaves as expected. WordPress asks you for the user name, password, and database name again. This is because the original `wordpress` table no longer exists and it must re-evaluate your credentials.
+1. Login back into the WordPress site and verify the content is present and the site behaves as expected. WordPress asks you for the username, password, and database name again. This is because the original `wordpress` table no longer exists and it must re-evaluate your credentials.
 1. (**Optional**) You might want to take this opportunity to upgrade all themes and plug-ins and inspect the WordPress Dashboard for any further issues. It is also a good idea to remove any unused plug-ins.
