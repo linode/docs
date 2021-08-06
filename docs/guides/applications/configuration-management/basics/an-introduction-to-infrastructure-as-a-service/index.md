@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
 modified_by:
   name: Linode
-title: "What Is Infrastructure as a Service"
+title: "What Is Infrastructure as a Service?"
 h1_title: "An Introduction to Infrastructure as a Service"
 enable_h1: true
 contributor:
