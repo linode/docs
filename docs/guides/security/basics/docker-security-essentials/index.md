@@ -7,7 +7,7 @@ og_description: 'This guide shows how to secure your Docker containers. Learn ho
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
+modified: 2021-08-09
 modified_by:
   name: Linode
 published: 2021-03-26
@@ -26,13 +26,7 @@ Docker utilizes the host OS Kernel, which makes Docker containers more efficient
 
 ## Prerequisites and Requirements
 
-In order to secure Docker containers, you need to have a Linux server with the following services running:
-
-- Docker
-
-For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/guides/deploying-docker-with-marketplace-apps/).
-
-Otherwise, you can find instructions on how to manually install Docker in our guide on [How to Install Docker CE on Ubuntu 18.04](/docs/guides/install-docker-ce-ubuntu-1804/).
+In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/guides/deploying-docker-with-marketplace-apps/). Otherwise, you can find instructions on how to manually install Docker in our guide on [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
 {{< note >}}
 This demonstration has been performed on Ubuntu 18.04. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.
