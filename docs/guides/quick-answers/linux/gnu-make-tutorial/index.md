@@ -7,7 +7,7 @@ og_description: 'This GNU Make tutorial discusses how to use Make to automate an
 keywords: ['gnu make tutorial']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-29
+published: 2021-07-30
 modified_by:
   name: Linode
 title: "GNU Make Tutorial: Learn to Automate Tasks"
