@@ -3,9 +3,9 @@ slug: lke-continuous-deployment-part-3
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Managed Kubernetes clusters are much easier to setup and maintain than self-managed Kubernetes clusters. This portion goes over setting up a cluster using the Linode Kubernetes Engine (LKE) through the Cloud Manager and the Linode CLI.'
+description: 'Managed Kubernetes clusters are much simpler than self-managed. This guide shows how to set one up via the Linode Kubernetes Engine (LKE).'
 og_description: 'Managed Kubernetes clusters are much easier to setup and maintain than self-managed Kubernetes clusters. This portion goes over setting up a cluster using the Linode Kubernetes Engine (LKE) through the Cloud Manager and the Linode CLI.'
-title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 3: Deploying the LKE Cluster"
+title: "Deploying the Linode Kubernetes Engine Cluster"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 3: Deploying the LKE Cluster"
 enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']

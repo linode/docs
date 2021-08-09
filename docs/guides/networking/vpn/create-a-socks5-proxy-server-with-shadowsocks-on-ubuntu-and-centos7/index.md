@@ -12,7 +12,7 @@ published: 2017-12-07
 modified: 2018-07-10
 modified_by:
   name: Linode
-title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
+title: Creating a SOCKS5 Proxy Server with Shadowsocks
 h1_title: Creating a SOCKSS Proxy Server with Shadowsocks on Ubuntu and CentOS 7
 contributor:
   name: Andrew Lescher

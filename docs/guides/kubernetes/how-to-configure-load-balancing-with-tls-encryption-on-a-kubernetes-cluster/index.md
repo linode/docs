@@ -3,7 +3,7 @@ slug: how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluste
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide demonstrates how to use the NGINX Ingress Controller, cert-manager, and Linode NodeBalancers in order to expose a Kubernetes application externally via HTTPS. You will create an example application throughout this guide, but you can replace the example application with your Kubernetes Service and Deployment.'
+description: 'Learn how to use the NGINX Ingress Controller, cert-manager, and Linode NodeBalancers in order to expose a Kubernetes application externally via HTTPS.'
 og_description: 'This guide demonstrates how to use the NGINX Ingress Controller, cert-manager, and Linode NodeBalancers in order to expose a Kubernetes application externally via HTTPS. You will create an example application throughout this guide, but you can replace the example application with your Kubernetes Service and Deployment.'
 keywords: ['load balancers','kubernetes','pods','cloud controller manager']
 tags: ["kubernetes","container","nginx","networking","security"]
@@ -12,7 +12,7 @@ published: 2020-07-17
 modified: 2021-05-13
 modified_by:
   name: Linode
-title: "How to Configure Load Balancing with TLS Encryption on a Kubernetes Cluster"
+title: "Configuring Load Balancing with TLS Encryption"
 h1_title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
 contributor:
   name: Linode

@@ -11,7 +11,8 @@ published: 2016-10-25
 modified: 2019-01-31
 modified_by:
     name: Phil Zona
-title: 'Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm'
+title: 'Streaming Data Processing with Apache Storm'
+h1_title: 'Streaming Data Processing with Apache Storm'
 contributor:
     name: Karthik Shiraly
     link: https://github.com/pathbreak
