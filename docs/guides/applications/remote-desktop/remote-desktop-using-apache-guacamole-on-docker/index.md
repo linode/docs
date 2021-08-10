@@ -8,7 +8,7 @@ og_description: 'Use Apache Guacamole, a clientless HTML5 web application, to ac
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
 tags: ["docker", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-08
+modified: 2021-08-09
 modified_by:
   name: Linode
 published: 2017-11-17
@@ -25,25 +25,21 @@ Apache Guacamole is an HTML5 application useful for accessing a remote desktop t
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for upgrading your system, setting the hostname, and configuring the timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system.
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-
 ## Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ## Initialize Guacamole Authentication with MySQL
+
 MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alternatives.
 
 1.  Pull Docker images for guacamole-server, guacamole-client, and MySQL.
@@ -52,11 +48,11 @@ MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alter
         docker pull guacamole/guacd
         docker pull mysql/mysql-server
 
-2.  Create a database initialization script to create a table for authentication:
+1.  Create a database initialization script to create a table for authentication:
 
         docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql > initdb.sql
 
-3.  Generate a one-time password for MySQL root. View the generated password in the logs:
+1.  Generate a one-time password for MySQL root. View the generated password in the logs:
 
         docker run --name example-mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_ONETIME_PASSWORD=yes -d mysql/mysql-server
         docker logs example-mysql
@@ -66,15 +62,15 @@ MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alter
         [Entrypoint] Database initialized
         [Entrypoint] GENERATED ROOT PASSWORD: <password>
 
-4.  Rename and move `initdb.sql` into the MySQL container.
+1.  Rename and move `initdb.sql` into the MySQL container.
 
         docker cp initdb.sql example-mysql:/guac_db.sql
 
-5.  Open a bash shell within the MySQL Docker container.
+1.  Open a bash shell within the MySQL Docker container.
 
         docker exec -it example-mysql bash
 
-6.  Log in using the one-time password. No commands will be accepted until a new password is defined for `root`. Create a new database and user as shown below:
+1.  Log in using the one-time password. No commands will be accepted until a new password is defined for `root`. Create a new database and user as shown below:
 
         bash-4.2# mysql -u root -p
         Enter password:
@@ -108,7 +104,7 @@ MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alter
         mysql> quit
         Bye
 
-7.  While in the bash shell, create tables from the initialization script for the new database.
+1.  While in the bash shell, create tables from the initialization script for the new database.
 
         cat guac_db.sql | mysql -u root -p guacamole_db
 
@@ -155,7 +151,7 @@ Before sharing a remote desktop, a desktop environment and VNC server must be in
 
         sudo apt install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
-2.  Install VNC server. Starting VNC server will prompt the user for a password.
+1.  Install VNC server. Starting VNC server will prompt the user for a password.
 
         sudo apt install tightvncserver
         vncserver
@@ -168,7 +164,7 @@ Before sharing a remote desktop, a desktop environment and VNC server must be in
         Verify:
         Would you like to enter a view-only password (y/n)?
 
-3.  Ensure to start the desktop environment the end of `.vnc/xstartup` otherwise only a gray screen will be displayed.
+1.  Ensure to start the desktop environment the end of `.vnc/xstartup` otherwise only a gray screen will be displayed.
 
         echo 'startxfce4 &' | tee -a .vnc/xstartup
 
@@ -197,7 +193,7 @@ nautilus &
 
         docker run --name example-guacd -d guacamole/guacd
 
-2.  Link containers so Guacamole can verify credentials stored in the MySQL database:
+1.  Link containers so Guacamole can verify credentials stored in the MySQL database:
 
         docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE=guacamole_db -e MYSQL_USER=guacamole_user -e MYSQL_PASSWORD=guacamole_user_password -d -p 127.0.0.1:8080:8080 guacamole/guacamole
 
@@ -207,11 +203,11 @@ To see all running and non-running Docker containers:
     docker ps -a
 {{< / note >}}
 
-3.  Before connecting to the VNC server, create an SSH tunnel replacing `user` and `example.com` with the Linode's user and public IP.
+1.  Before connecting to the VNC server, create an SSH tunnel replacing `user` and `example.com` with the Linode's user and public IP.
 
         ssh -L 5901:localhost:5901 -N -f -l user example.com
 
-4.  Connect to the VNC server and if `example-guacamole`, `example-guacd`, and `example-mysql` are all running, navigate to `localhost:8080/guacamole/`. The default login credentials are `guacadmin` and password `guacadmin`. This should be changed as soon as possible.
+1.  Connect to the VNC server and if `example-guacamole`, `example-guacd`, and `example-mysql` are all running, navigate to `localhost:8080/guacamole/`. The default login credentials are `guacadmin` and password `guacadmin`. This should be changed as soon as possible.
 
     ![Guacamole Login](guac_login.png)
 
@@ -227,7 +223,7 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 
     ![Guacamole Settings](guac_settings.png)
 
-2.  Under **Edit Connection**, choose a name. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
+1.  Under **Edit Connection**, choose a name. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
 
     ![Guacamole VNC Configuration](guac_vnc_config.png)
 
@@ -237,15 +233,15 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 If you have multiple displays running on the same Linode, increment the port number for each display: 5902, 5903, etc. If your remote displays are hosted on different Linodes, each display should still use port 5901.
 {{< / note >}}
 
-3.  From the top right drop down menu, click *Home*. The new connection is now available.
+1.  From the top right drop down menu, click *Home*. The new connection is now available.
 
     **CTRL** + **ALT** + **SHIFT** - Opens menu for clipboard, keyboard/mouse settings, and the navigation menu.
 
     ![Guacamole Drop Down](guac_menu.png)
 
-4.  Press back on the browser to return to the *Home* menu.
+1.  Press back on the browser to return to the *Home* menu.
 
-5.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
+1.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
 
     ![Guacamole Recent Connections](guac_recent.png)
 
