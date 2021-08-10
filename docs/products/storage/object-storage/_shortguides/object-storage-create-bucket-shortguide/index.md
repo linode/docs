@@ -33,7 +33,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  Add a label for the bucket. See the [Bucket Name](/docs/platform/object-storage/how-to-use-object-storage/#bucket-names) section for rules on naming the bucket.
 
-1.  Choose a cluster location for the bucket to reside in.
+1.  Choose a region (cluster) for the bucket to reside in. See the Availability section on the [Object Storage Overview](/docs/products/storage/object-storage/) page for a list of available regions.
 
     {{< content "object-storage-cluster-shortguide" >}}
 
