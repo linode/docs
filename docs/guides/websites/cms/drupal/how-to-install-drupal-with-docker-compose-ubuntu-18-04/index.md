@@ -48,7 +48,7 @@ Using the Drupal and PostgreSQL images from Docker Hub offers the following bene
 
 ### Install Docker
 
-{{< content "install-docker-ce-ubuntu-1804" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

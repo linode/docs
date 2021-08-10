@@ -37,11 +37,9 @@ Apache Guacamole is an HTML5 application useful for accessing a remote desktop t
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-
 ## Install Docker
-The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ## Initialize Guacamole Authentication with MySQL
 MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alternatives.

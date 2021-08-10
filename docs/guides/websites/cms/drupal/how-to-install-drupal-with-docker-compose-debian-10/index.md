@@ -48,7 +48,7 @@ Using the Drupal and PostgreSQL images from Docker Hub offers the following bene
 
 ### Install Docker
 
-{{< content "how-to-install-docker-ce-on-debian-10" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

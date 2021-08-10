@@ -86,7 +86,7 @@ When Certbot is run, you generally pass a command with the [`--deploy-hook` opti
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 
