@@ -1,17 +1,19 @@
 ---
-slug: using-pyton-lists
+slug: python-lists-and-how-to-use-them
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn about Python lists, including how to add/append, remove, convert to string, and sort and reverse."
 og_description: "Learn about Python lists, including how to add/append, remove, convert to string, and sort and reverse."
 keywords: ['python list','python list append','python list sort']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "Python Lists and How to Use Them"
 h1_title: "Python Lists and How to Use Them"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -21,11 +23,11 @@ external_resources:
 - "[O'Reilly: How Do I Use the Slice Notation in Python?](https://www.oreilly.com/content/how-do-i-use-the-slice-notation-in-python/)"
 ---
 
-Python comes with numerous tools that make it easy to work with lists. In this guide, find out what the most useful of those tools are and how to use them. They include everything from methods to add and remove items, operations to convert lists to strings, ways to sort and reverse, and more.
+Python comes with numerous tools that make it easy to work with lists. In this guide, find out some of the most useful tools and how to use them. They include everything from methods to add and remove items, operations to convert lists to strings, ways to sort, and reverse, and more.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses Python 3 syntax. Although there is some overlap, some of the code may not work with Python 2. To install Python 3, follow our [How to Install Python 3](/docs/guides/how-to-install-python-on-debian-10/) guide, using the **Distribution** drop down to select your Linux distribution.
 
@@ -33,11 +35,11 @@ Python comes with numerous tools that make it easy to work with lists. In this g
 
 ## How to Create a List in Python
 
-Creating a list in Python is as easy as wrapping one or more comma-separated items in square brackets. Here is an example:
+Creating a list in Python is as easy as wrapping one or more comma-separated items in square brackets. Following is an example:
 
     example_list = ["item_1", "item_2", "item_3"]
 
-You can see the results with:
+You can see the result using the following command:
 
     print(example_list)
 
@@ -45,20 +47,20 @@ You can see the results with:
 ['item_1', 'item_2', 'item_3']
 {{< /output >}}
 
-The items in a list can be integers, strings, or any kind of other object — even other lists. You can also mix and match different types within the same list.
+The items in a list can be integers, strings, or any kind of other objects — even other lists. You can also mix and match different types within the same list.
 
 ### List Comprehensions
 
 Python has **list comprehensions** that give you a succinct but advanced way of creating new lists from existing lists. A list comprehension creates a new list by applying a set of conditions and/or operations on each item in an existing list.
 
-For example, the code below uses a list comprehension on the range of numbers between 0 and 9 (inclusive). (The `range` function returns a list.) It only selects even numbers in that range (`x % 2 == 0`) and multiplies each matching number by two (`x * 2`):
+For example, the code below uses a list comprehension on the range of numbers between zero and nine (inclusive). (The `range` function returns a list). It only selects even numbers in that range (`x % 2 == 0`) and multiplies each matching number by two (`x * 2`).
 
-    example_list_comprehension = [(x * 2) for x in range(10) if x % 2 == 0]
+    example_list = [(x * 2) for x in range(10) if x % 2 == 0]
 
-    print(example_list_comprehension)
+    print(example_list)
 
 {{< output >}}
-[0, 2, 4, 6, 8]
+[0, 4, 8, 12, 16]
 {{< /output >}}
 
 List comprehensions can be useful for their succinct syntax. They let you quickly rework a list from complicated criteria, and do so on a single line.
@@ -72,20 +74,20 @@ Lists in Python come with an `append` method that allows you to easily append an
     print(example_list)
 
 {{< output >}}
-['item_1', 'item_2', 'item_3', 'item_4']
+[0, 4, 8, 12, 16, 'item_4']
 {{< /output >}}
 
-Python lists also come with an `insert` method. This method lets you add an item to a specific index position in the list. In the following example, an item is added to the beginning of our list, shoving the rest of the items to the right:
+Python lists also come with an `insert` method. This method lets you add an item to a specific index position in the list. In the following example, an item is added to the beginning of our list, shoving the rest of the items to the right.
 
     example_list.insert(0, "item_0")
 
     print(example_list)
 
 {{< output >}}
-['item_0', 'item_1', 'item_2', 'item_3', 'item_4']
+['item_0', 0, 4, 8, 12, 16, 'item_4']
 {{< /output >}}
 
-Finally, you can also concatenate lists using the `+` operator. This operator is especially useful because it returns the resulting list, rather than modifying the list in place:
+Finally, you can also concatenate lists using the `+` operator. This operator is especially useful because it returns the resulting list, rather than modifying the list in place.
 
     new_example_list = example_list + ["item_5", "item_6", "item_7"]
 
@@ -93,36 +95,38 @@ Finally, you can also concatenate lists using the `+` operator. This operator is
     print(new_example_list)
 
 {{< output >}}
-['item_0', 'item_1', 'item_2', 'item_3', 'item_4']
-['item_0', 'item_1', 'item_2', 'item_3', 'item_4', 'item_5', 'item_6', 'item_7']
+['item_0', 0, 4, 8, 12, 16, 'item_4']
+['item_0', 0, 4, 8, 12, 16, 'item_4', 'item_5', 'item_6', 'item_7']
 {{< /output >}}
 
-You can even use this operator to add an individual item to a list so long as that item is presented as a list:
+You can even use the `+` operator to add an individual item to a list so long as that item is presented as a list.
 
-    example_list = new_example_list + ["item_8"]
+      example_list = new_example_list + ["item_8"]
 
-    print(example_list)
+      print(example_list)
 
 {{< output >}}
-['item_0', 'item_1', 'item_2', 'item_3', 'item_4', 'item_5', 'item_6', 'item_7', 'item_8']
+['item_0', 0, 4, 8, 12, 16, 'item_4', 'item_5', 'item_6', 'item_7', 'item_8']
 {{< /output >}}
 
 ## How to Remove an Item from a List in Python
 
-Like with the `append` method, Python lists include a `remove` method for removing an item from a list. The method takes the contents of the item to be deleted as an argument:
+Like with the `append` method, Python lists include a `remove` method for removing an item from a list. The method takes the contents of the item to be deleted as an argument.
 
     example_list.remove("item_0")
+    print(example_list)
 
 {{< output >}}
-['item_1', 'item_2', 'item_3', 'item_4', 'item_5', 'item_6', 'item_7', 'item_8']
+[0, 4, 8, 12, 16, 'item_4', 'item_5', 'item_6', 'item_7', 'item_8']
 {{< /output >}}
 
-Alternatively, you can use the `pop` method on a list to delete an item based on its index. Here, the item at index **3** (`item_4`) is removed:
+Alternatively, you can use the `pop` method on a list to delete an item based on its index. Here, the item at index **3** (`12`) is removed.
 
     example_list.pop(3)
+    print(example_list)
 
 {{< output >}}
-['item_1', 'item_2', 'item_3', 'item_5', 'item_6', 'item_7', 'item_8']
+[0, 4, 8, 16, 'item_4', 'item_5', 'item_6', 'item_7', 'item_8']
 {{< /output >}}
 
 One potentially useful feature of the `pop` method is that it returns the item it deletes:
@@ -133,27 +137,27 @@ One potentially useful feature of the `pop` method is that it returns the item i
     print(example_list)
 
 {{< output >}}
-'item_8'
-['item_1', 'item_2', 'item_3', 'item_5', 'item_6', 'item_7']
+'item_6'
+[0, 4, 8, 16, 'item_4', 'item_5', 'item_7', 'item_8']
 {{< /output >}}
 
-Finally, Python has one other option for removing an item from a list, `del`. This option identifies the item or items to be deleted by using Python's *slice* notation. In the example below, the items from index **3** to the end of the list are deleted:
+Finally, Python has one other option for removing an item from a list, `del`. This option identifies the item or items to be deleted by using Python's *slice* notation. In the example below, the items from index **3** to the end of the list are deleted.
 
     del example_list[3:]
 
     print(example_list)
 
 {{< output >}}
-['item_1', 'item_2', 'item_3']
+[0, 4, 8]
 {{< /output >}}
 
-You can learn more about Python's slice notation and how to use it in the [Reversing a List](/docs/guides/using-pyton-lists/#reversing-a-list) section below and in the links provided at the end of this guide.
+You can learn more about Python's slice notation and how to use it in the [Reverse a List](/docs/guides/using-pyton-lists/#reverse-a-list) section below and in the links provided at the end of this guide.
 
 ## How to Sort a List in Python
 
-### Sorting a List
+### Sort a List
 
-Python lists include a `sort` method dedicated to sorting the content of lists in place. Here, a list of fruits is sorted alphabetically, in ascending order (the default):
+Python lists include a `sort` method dedicated to sorting the content of lists in place. Here, a list of fruits is sorted alphabetically, in ascending order (default):
 
     example_fruit_list = ["strawberry", "apricot", "cranberry", "banana"]
     example_fruit_list.sort()
@@ -166,7 +170,7 @@ Python lists include a `sort` method dedicated to sorting the content of lists i
 
 The `sort` method has two optional arguments. First, a `key` argument allows you to reference a function to use in sorting the list. Second, a `reverse` option which, if set to `True`, allows you to sort the list in descending order.
 
-In this next example, a `length_sort` function is defined to return the length of an item. Referencing it in the `key` argument has `sort` order the list by the length of fruit names. Setting `reverse=True` has `sort` use descending order, from longest name to shortest name:
+In this next example, a `length_sort` function is defined to return the length of an item. Referencing it in the `key` argument has `sort` order the list by the length of fruit names. Setting `reverse=True` has `sort` use descending order, from longest name to shortest name.
 
     def length_sort(item):
         return len(item)
@@ -191,7 +195,7 @@ Python also has a `sorted` function. The function takes an iterable (like a list
 ['banana', 'apricot', 'cranberry', 'strawberry']
 {{< /output >}}
 
-Both `sort` and `sorted` can work on lists containing either numbers or strings. However, neither works on lists containing a mixture of numbers and strings:
+Both `sort` and `sorted` can work on lists containing either numbers or strings. However, neither works on lists containing a mixture of numbers and strings.
 
     sorted([198, "strawberry", 46.8, "apricot"])
 
@@ -199,9 +203,9 @@ Both `sort` and `sorted` can work on lists containing either numbers or strings.
 TypeError: '<' not supported between instances of 'int' and 'str'
 {{< /output >}}
 
-### Reversing a List
+### Reverse a List
 
-Reversing a list in Python is made easy using its *slice* notation. Here is an example, creating a list, creating a reversed version of it, and printing the two lists side by side:
+Reversing a list in Python is made easy using its *slice* notation. Here is an example, creating a list, creating a reversed version of it, and printing the two lists side by side.
 
     example_list = ["item_1", "item_2", "item_3", "item_4]
 
@@ -215,7 +219,7 @@ Reversing a list in Python is made easy using its *slice* notation. Here is an e
 ['item_4', 'item_3', 'item_2', 'item_1']
 {{< /output >}}
 
-Python's slice notation allows you to select a sub-list or a reordered version of a list. It follows the format `[start:stop:step]`.
+Python's slice notation allows you to select a sub-list or a reordered version of a list. It follows the following format—`[start:stop:step]`
 
 The `start` portion defines what index to begin with, the `stop` portion what index to end with. Leaving these portions empty defaults to the beginning and ending of the list, respectively. The optional `step` portion defines how many items to step at a time. It defaults to `1`, meaning each item is captured, whereas `2` would capture every other item.
 
@@ -223,11 +227,11 @@ Each portion can take a negative number. For `start` and `stop`, negative number
 
 So, in the example above, the slice notation — `[::-1]` — returns the whole list but steps through it in reverse. This results in a reversed version of the list.
 
-## Converting a Python List to a String
+## Convert a Python List to a String
 
 Several approaches are available in Python for converting a list to a string. However, the `join` method is probably the most versatile and convenient.
 
-The `join` method is invoked on a string and takes a list as an argument. The string becomes the separator for each item in the list as these items are concatenated into a new string:
+The `join` method is invoked on a string and takes a list as an argument. The string becomes the separator for each item in the list as these items are concatenated into a new string.
 
     example_list = ["This", "string", "was", "a", "list"]
     example_string_from_list = " ".join(example_list)
@@ -238,7 +242,7 @@ The `join` method is invoked on a string and takes a list as an argument. The st
 This string was a list
 {{< /output >}}
 
-If you list contains numbers rather than strings, you need to convert them first. You can do this in the same line using a simple list comprehension:
+If you list contains numbers rather than strings, you need to convert them first. You can do this in the same line using a simple list comprehension.
 
     example_list = [1, 2, 3, 4, 5]
     example_string_from_list = " ".join([str(x) for x in example_list])
@@ -253,7 +257,7 @@ If you list contains numbers rather than strings, you need to convert them first
 
 You have a few options at your disposal for searching a list in Python.
 
-For starters, you can use the `in` syntax if you just want Python to tell you whether a certain value — `3` in the example below — is in a list:
+For starters, you can use the `in` syntax if you just want Python to tell you whether a certain value — `3` in the example below — is in a list.
 
     example_list = [1, 2, 3, 4, 1, 2, 3, 4]
 
@@ -263,7 +267,7 @@ For starters, you can use the `in` syntax if you just want Python to tell you wh
 True
 {{< /output >}}
 
-If you want to know the index of a particular value in a list, use the list's `index` method. It takes the desired value as an argument and returns its index in the list, or an error if it cannot find the value. Note that this method only returns the first index it finds with the matching value:
+If you want to know the index of a particular value in a list, use the list's `index` method. It takes the desired value as an argument and returns its index in the list, or an error if it cannot find the value. Note that this method only returns the first index it finds with the matching value.
 
     print(example_list.index(2))
 
@@ -271,7 +275,7 @@ If you want to know the index of a particular value in a list, use the list's `i
 1
 {{< /output >}}
 
-If you want the indices for all matching items in a list, you can use a list comprehension like this:
+If you want the indices for all matching items in a list, you can use a list comprehension like in the example below:
 
     print([key for key, value in enumerate(example_list) if value == 2])
 
@@ -279,7 +283,7 @@ If you want the indices for all matching items in a list, you can use a list com
 [1, 5]
 {{< /output >}}
 
-The operations above all work no matter what type the value has — integer, string, another list, etc. However, these options only work for exact matches:
+All the above operations work no matter what type the value has — integer, string, another list, etc. However, these options only work for exact matches.
 
     example_fruit_list = ["strawberry", "apricot", "cranberry", "banana"]
 
@@ -291,7 +295,7 @@ False
 True
 {{< /output >}}
 
-To find partial string matches, you can use another list comprehension. This one iterates through the list and returns the indices of strings containing the desired substring — `straw` in this example:
+To find partial-string matches, you can use another list comprehension. This one iterates through the list and returns the indices of strings containing the desired substring — `straw` in this example.
 
     matching_items = [key for key, value in enumerate(example_fruit_list) if value.find("straw") != -1]
 
