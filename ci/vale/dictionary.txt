@@ -113,6 +113,7 @@ bashrc
 bc
 berkshelf
 bernd
+bing
 binlog
 biomes
 bitbucket
@@ -158,6 +159,7 @@ cacheable
 cachable
 caddy
 caddyfile
+caffe
 cakey
 calc
 campione
@@ -1307,6 +1309,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+radeon
 ramdisk
 rbac
 rbenv
