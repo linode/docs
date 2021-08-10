@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "Kubernetes Master, Nodes, & Control Plane Explained"
 h1_title: "A Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane"
+enable_h1: true
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]

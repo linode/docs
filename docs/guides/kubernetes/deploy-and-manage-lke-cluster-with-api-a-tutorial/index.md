@@ -14,6 +14,7 @@ modified_by:
 image: deploy-and-manage-cluster-copy.png
 title: "Deploy and Manage a Cluster with  Kubernetes Engine"
 h1_title: "Deploy and Manage a Cluster with LKE and the Linode API Tutorial"
+enable_h1: true
 contributor:
   name: Linode
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']

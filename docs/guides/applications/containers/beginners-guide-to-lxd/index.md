@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "LXD: Setting Up an Apache Webserver In a Container"
 h1_title: "A Beginner's Guide to LXD: Set Up an Apache Webserver In a Container"
+enable_h1: true
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/

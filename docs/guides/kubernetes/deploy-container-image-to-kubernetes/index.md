@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: "Build & Deploy a Docker Image to Kubernetes Cluster"
 h1_title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
+enable_h1: true
 aliases: ['/applications/containers/kubernetes/deploy-container-image-to-kubernetes/','/applications/containers/deploy-container-image-to-kubernetes/','/kubernetes/deploy-container-image-to-kubernetes/']
 contributor:
   name: Linode

@@ -3,7 +3,7 @@ slug: introduction-to-machine-learning-training-and-inference
 author:
   name: Andy Patrizio
   email: ndy@andypatrizio.com
-description: 'Training and inference in machine learning each have their own requirements. We'll walk you through the differences, along with hosting advice.'
+description: 'Training and inference in machine learning each have their own requirements. We will walk you through the differences, along with hosting advice.'
 og_description: 'Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises.'
 keywords: ['cloud machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: "Machine Learning Training and Inference"
 h1_title: "An Introduction to Machine Learning: Training and Inference"
+enable_h1: true
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio

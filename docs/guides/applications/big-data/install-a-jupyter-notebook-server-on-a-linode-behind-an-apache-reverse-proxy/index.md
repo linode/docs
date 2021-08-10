@@ -13,6 +13,7 @@ modified_by:
     name: Sam Foo
 title: 'Install a Jupyter Notebook Server on a Reverse Proxy'
 h1_title: 'Install a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
+enable_h1: true
 external_resources:
  - '[Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)'
  - '[Anaconda Documentation](https://docs.continuum.io/)'

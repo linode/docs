@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "Deploy Persistent Volume Claims With Linode"
 h1_title: "Deploy Persistent Volume Claims on the Linode Block Storage CSI Driver"
+enable_h1: true
 external_resources:
 - '[Kubernetes PersistentVolumeClaims Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)'
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'

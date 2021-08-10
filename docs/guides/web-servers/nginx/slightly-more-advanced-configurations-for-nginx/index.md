@@ -11,7 +11,9 @@ modified: 2018-02-09
 modified_by:
   name: Linode
 published: 2018-02-09
-title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurations'
+title: 'NGINX Advanced Configurations Tutorial'
+h1_title: 'Getting Started with NGINX Adanced Configurations Tutorial - pt 2'
+enable_h1: true
 tags: ["web server","nginx"]
 ---
 

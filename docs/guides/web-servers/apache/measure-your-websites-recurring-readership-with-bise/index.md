@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "Measuring a Website's Recurring Readership with Bise"
 h1_title: "Measuring your Website's Recurring Readership with Bise"
+enable_h1: true
 image: feature.png
 contributor:
   name: Jason McIntosh

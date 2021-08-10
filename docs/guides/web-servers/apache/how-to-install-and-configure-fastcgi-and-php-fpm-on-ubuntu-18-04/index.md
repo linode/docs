@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Install FastCGI & PHP-FPM on Ubuntu"
 h1_title: "Install and Configure FastCGI and PHP-FPM on Ubuntu 18.04"
+enable_h1: true
 contributor:
   name: Linode
 relations:

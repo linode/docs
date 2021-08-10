@@ -3,7 +3,7 @@ slug: getting-started-with-load-balancing-on-a-lke-cluster
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'We'll walk you through everything you need to know about the usage of Linode NodeBalancers in Kubernetes, including adding them to a Kubernetes Service.'
+description: 'We will walk you through everything you need to know about the usage of Linode NodeBalancers in Kubernetes, including adding them to a Kubernetes Service.'
 og_description: 'The Linode Kubernetes Engine (LKE) provides access to Linode''s load balancing service, NodeBalancers. NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. This guide contains details about the usage of Linode NodeBalancers, including adding NodeBalancers to a Kubernetes Service, and information on various NodeBalancer configurations.'
 keywords: ['load balancers','kubernetes','nodebalancers','services']
 tags: ["http","kubernetes","container","networking","linode platform"]
@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "Getting Started with Load Balancing on a LKE Cluster"
 h1_title: "Get Started with Load Balancing on a Linode Kubernetes Engine Cluster"
+enable_h1: true
 contributor:
   name: Linode
 ---

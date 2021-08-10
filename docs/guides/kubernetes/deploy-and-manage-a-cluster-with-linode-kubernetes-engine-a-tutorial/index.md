@@ -15,7 +15,8 @@ published: 2019-11-11
 modified_by:
   name: Linode
 title: 'Deploy and Manage a Cluster with Linode Kubernetes'
-h1_title: A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine
+h1_title: 'A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine'
+enable_h1: true
 image: deploy-and-manage-cluster.png
 external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'

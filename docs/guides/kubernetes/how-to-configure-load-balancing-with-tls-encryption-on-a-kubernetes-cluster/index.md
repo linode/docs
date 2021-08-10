@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "Configuring Load Balancing with TLS Encryption"
 h1_title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:

@@ -13,6 +13,7 @@ modified_by:
 published: 2017-09-29
 title: "Configuring a VPN Kill Switch on OpenVPN Clients"
 h1_title: "Use iptables to Configure a VPN Kill Switch on OpenVPN Clients"
+enable_h1: true
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'

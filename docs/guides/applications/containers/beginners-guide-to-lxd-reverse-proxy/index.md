@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: "Beginners Guide to LXD Reverse Proxy"
 h1_title: "Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites"
+enable_h1: true
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/

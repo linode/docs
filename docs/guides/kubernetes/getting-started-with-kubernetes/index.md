@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "Use kubeadm to Deploy a Cluster on Linode"
 h1_title: "Installing kubeadm to Deploy a Kubernetes Cluster Tutorial"
+enable_h1: true
 aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/']
 contributor:
   name: Linode
