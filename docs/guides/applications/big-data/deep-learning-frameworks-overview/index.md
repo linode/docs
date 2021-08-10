@@ -61,7 +61,7 @@ Because it is built on the popular Python language, anyone with a basic knowledg
 
 **Cons**
 
-It doesn’t have TensorFlow or Keras’s level of support, and while written in Python, it can be tough to master. Also it only officially supports Nvidia GPUs and not AMD Radeon.
+It doesn't have TensorFlow or Keras’s level of support, and while written in Python, it can be tough to master. Also it only officially supports Nvidia GPUs and not AMD Radeon.
 
 ### Keras
 
