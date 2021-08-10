@@ -1865,6 +1865,7 @@ xcode
 xen
 xenial
 xerus
+Xfce
 xkcd
 xlsx
 xlsxwriter
