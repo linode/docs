@@ -24,7 +24,7 @@ Pricing information posted publicly, such as our [Pricing](https://www.linode.co
 
 ## List of Countries and Tax Rates
 
-The following table lists each country, its tax rate, and the date which Linode started to collected taxes in that country.
+The following table lists each country that requires taxes on our services. Alongside each country is the tax rate, a link to additional tax details, and the date which Linode started to collected taxes in that country.
 
 | Country | Tax Rate | Tax Details | Date |
 | -- | -- | -- | -- |
@@ -115,3 +115,4 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | EU VAT | EU372008859 |
 | India GST | 9919JEY29001OST |
 | Singapore GST | M90373465T |
+| United Kingdom VAT | GB383720095 |
