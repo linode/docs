@@ -641,6 +641,7 @@ httpchk
 httpd
 https
 huginn
+Hugo
 hulu
 hvc0
 hybla
@@ -1865,6 +1866,7 @@ xcode
 xen
 xenial
 xerus
+Xfce
 xkcd
 xlsx
 xlsxwriter
