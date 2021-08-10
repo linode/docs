@@ -1,5 +1,5 @@
 ---
-slug: install-anaconda-on-linux-centos-8
+slug: install-anaconda-on-linux-centos-8-stream
 author:
   name: Cameron Laird
 description: 'Two to three sentences describing your guide.'
@@ -10,12 +10,17 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-10
 modified_by:
   name: Linode
-title: "Install Anaconda on Linux CentOS 8"
-h1_title: "How to Install Anaconda on Linux CentOS 8"
+title: "Install Anaconda on Linux CentOS 8 Stream"
+h1_title: "How to Install Anaconda on Linux CentOS 8 Stream"
 enable_h1: true
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit
+relations:
+    platform:
+        key: how-to-install-anaconda
+        keywords:
+            - distribution: CentOS 8 Stream
 ---
 Anaconda is a distribution of the Python and R programming languages. In other words, a curated bundle of specific base language interpreters and add-ons.  [Anaconda, Inc.](http://anaconda.com) generates it for a user base primarily focused on scientific computing, data analytics, machine learning, and allied fields.
 
