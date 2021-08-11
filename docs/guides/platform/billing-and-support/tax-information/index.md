@@ -15,18 +15,17 @@ aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/
 tags: ["linode platform"]
 ---
 
-Some countries and regions require us by law to collect taxes. As such, customers located in these countries are charged the appropriate tax rate for any taxable services. The exact tax rate varies by country. The taxes that Linode collects are listed on your invoices (see the [Viewing Invoices and Payments](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments) section of our Cloud Manager Billing guide).
+Some countries (and regions) require us by law to collect taxes. As such, customers located in these countries are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments) section of our Cloud Manager Billing guide).
 
 {{< note >}}
-Pricing information posted publicly, such as our [Pricing](https://www.linode.com/pricing/) page and listed in the Cloud Manager, does not include taxes.
+Pricing and service fees posted publicly, such as our [Pricing](https://www.linode.com/pricing/) page and listed in the Cloud Manager, do not include taxes.
 {{< /note >}}
-
 
 ## List of Countries and Tax Rates
 
-The following table lists each country that requires taxes on our services. Alongside each country is the tax rate, a link to additional tax details, and the date which Linode started to collected taxes in that country.
+The following table lists each country that requires us to collect taxes. Alongside each country is the tax rate, a link to additional tax details, and the date which Linode started to collected taxes in that country.
 
-| Country | Tax Rate | Tax Details | Date |
+| Country | Tax Rate | Tax Details | Start Date |
 | -- | -- | -- | -- |
 | Australia | 10% | [GST](https://www.ato.gov.au/Business/GST/) | October 1st, 2019 |
 | Austria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
