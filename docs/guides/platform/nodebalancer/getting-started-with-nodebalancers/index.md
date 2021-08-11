@@ -20,6 +20,16 @@ Nearly all applications that are built using Linodes can benefit from load balan
 
 This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/guides/platform/nodebalancer/).
 
+## Before You Begin
+
+- This tutorial assumes a basic understanding of load balancing and NodeBalancers. We recommend reviewing the following guides:
+
+    - [What Are NodeBalancers](/docs/guides/what-are-nodebalancers/)
+    - [Introduction to High Availability](/docs/guides/introduction-to-high-availability/)
+    - Going further: [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide/)
+
+-  To properly configure a NodeBalancer, you must have at least two Linode Compute Instances within the same data center. Both of these servers must also have private IPv4 addresses. See [Remote Access > Adding Private IP Addresses](/docs/guides/remote-access/#adding-private-ip-addresses).
+
 ## Configuring a NodeBalancer
 
 {{< content "configure-nodebalancer-shortguide" >}}
