@@ -24,7 +24,7 @@ external_resources:
 - '[Mastodon.social](https://mastodon.social/about)'
 - '[Code of conduct](https://mastodon.social/about/more)'
 - '[Mailgun](https://www.mailgun.com/)'
-- '[List of Mastodon releases](https://github.com/tootsuite/mastodon/releases)'
+- '[List of Mastodon releases](https://github.com/mastodon/mastodon/releases)'
 - '[Mastodon blog](https://blog.joinmastodon.org/)'
 - '[Mastodon discussion forum](https://discourse.joinmastodon.org/)'
 - '[Instances.social](https://instances.social/admin)'
@@ -89,7 +89,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Clone the Mastodon Git repository into the home directory, and change it into the resulting Mastodon directory.
 
         cd ~/
-        git clone https://github.com/tootsuite/mastodon.git
+        git clone https://github.com/mastodon/mastodon.git
         cd mastodon
 
     Unless otherwise stated, all the Docker Compose-related commands to be run in this directory.
@@ -100,7 +100,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v3.3.0`.
 
-    Although you can use `latest` as the release, it is recommended that you select a specific release number. The Mastodon GitHub page provides a chronological [list of Mastodon releases](https://github.com/tootsuite/mastodon/releases).
+    Although you can use `latest` as the release, it is recommended that you select a specific release number. The Mastodon GitHub page provides a chronological [list of Mastodon releases](https://github.com/mastodon/mastodon/releases).
 
 1. In the `db` section, add the following beneath the `image` line. Replace `password` with a password you would like to use for the PostgreSQL database that operates on the Mastodon backend.
 
