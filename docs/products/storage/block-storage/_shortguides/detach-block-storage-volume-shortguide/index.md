@@ -1,20 +1,8 @@
 ---
-slug: detach-block-storage-volume-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to detach a Block Storage Volume from a Linode to prepare it to move to a different Linode.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Detach a Block Storage Volume
-keywords: ["block storage"]
+# Shortguide: How to detach a Block Storage Volume from a Linode to prepare it to move to a different Linode.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/block-storage/detach-block-storage-volume-shortguide/']
 ---
 
 Follow these steps to safely detach a Block Storage Volume from a Linode. A Volume should be detached before it is reattached to a different Linode:

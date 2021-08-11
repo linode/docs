@@ -1,20 +1,8 @@
 ---
-slug: transfer-block-storage-volume-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to safely detach your Volume from a Linode and attach it to a different Linode.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Transfer Your Block Storage to Another Linode
-keywords: ["block storage"]
+# Shortguide: How to safely detach your Volume from a Linode and attach it to a different Linode.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/block-storage/transfer-block-storage-volume-shortguide/']
 ---
 
 Follow these steps to safely detach a Volume from a Linode and attach it to a different Linode in the same data center:

@@ -18,6 +18,10 @@ Dallas, TX, USA; Frankfurt, Germany; Fremont, CA, USA; London, United Kingdom; M
 To attach a Block Storage Volume to a Linode, the Volume and the Linode must be located in the same data center.
 {{< /note >}}
 
+## Plans and Pricing
+
+Block Storage Volumes cost $0.10/GiB per month and can range from 10 GiB to 10,000 GiB in size.
+
 ## Features
 
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size. Additionally, all data stored with Linode Block Storage is replicated three times, so your Volumes are highly available and fault tolerant.
@@ -35,10 +39,10 @@ Block storage volumes are configured with 3x data replication. This replication,
 
 Linode Block Storage is powered by a combination of large capacity HDDs and ultra-fast NVMe drives, offering a balance between price, performance, and capacity.
 
-## Scalable Storage
+### Scalable Storage
 
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size.
 
-## Plans and Pricing
+## Limitations and Considerations
 
-Block Storage Volumes cost $0.10/GiB per month and can range from 10 GiB to 10,000 GiB in size. When you create your Block Storage Volume you can designate its storage capacity and resize it up, if needed.
+{{< content "block-storage-limitations-shortguide" >}}

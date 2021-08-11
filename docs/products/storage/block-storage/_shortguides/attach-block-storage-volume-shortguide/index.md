@@ -1,20 +1,8 @@
 ---
-slug: attach-block-storage-volume-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to attach a Block Storage Volume that was previously created and configured to a Linode.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Attach an existing Block Storage Volume
-keywords: ["block storage"]
+# Shortguide: How to attach a Block Storage Volume that was previously created and configured to a Linode.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/block-storage/attach-block-storage-volume-shortguide/']
 ---
 
 Follow these steps to attach a Block Storage Volume that was previously created in the Cloud Manager or through the Linode API.

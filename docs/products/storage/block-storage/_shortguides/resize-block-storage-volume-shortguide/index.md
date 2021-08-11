@@ -1,20 +1,8 @@
 ---
-slug: resize-block-storage-volume-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to resize your Block Storage Volume to make it smaller.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Resize a Block Storage Volume
-keywords: ["block storage"]
+# Shortguide: How to resize your Block Storage Volume to make it smaller.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/block-storage/resize-block-storage-volume-shortguide/']
 ---
 
 Follow these steps to increase the size of a Block Storage Volume after it has been created:

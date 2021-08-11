@@ -1,20 +1,8 @@
 ---
-slug: add-block-storage-volume-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that describes how to create a new Block Storage Volume, attach it to your Linode, create a filesystem, and mount your Volume.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Add a Block Storage Volume
-keywords: ["block storage"]
+# Shortguide: Sescribes how to create a new Block Storage Volume, attach it to your Linode, create a filesystem, and mount your Volume.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/block-storage/add-block-storage-volume-shortguide/']
 ---
 
 Follow these steps to create a new Block Storage Volume, attach it to your Linode, create a filesystem, and mount your Volume:
@@ -23,23 +11,17 @@ Follow these steps to create a new Block Storage Volume, attach it to your Linod
 
 1.  Select the Linode to which you want to attach a Block Storage Volume. The detail page for the Linode will appear.
 
-    ![Select a Linode from the Manager](bs-cloud-select-linode.png "Select a Linode from the Manager")
+1.  Navigate to the **Storage** tab and then click the **Add a Volume** button (within the *Volumes* section).
 
-1.  Click on the **Volumes** tab, then click **Add a Volume**:
+1.  Complete the **Create a Volume** form.
 
-    ![Click Add a Volume](bs-cloud-add-volume-to-linode.png "Click Add a Volume")
+    - Select **Create and Attach Volume** to create a new Volume. Otherwise select **Attach Existing Volume** to attach a Volume that's already on your account and in the same data center as the Linode.
+    - **Label:** A string up to 32 characters long and consisting only of ASCII characters `a-z; 0-9.-_`.
+    - **Size:** The desired size for the new Volume. See the [Limitations and Considerations](#limitations-and-considerations) section for the minimum and maximum size.
+    - **Config:** If the Linode has multiple Configuration Profiles, select which one the Block Storage Volume should be assigned to.
+    - **Tags:** Optionally add or assign tags to help lalbel and organize your services.
 
-1.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum Volume size is 10,000 GiB. When finished, click *Submit*:
-
-    ![Create a Volume with a label](bs-cloud-create-volume.png "Create a Volume with a label")
-
-    {{< note >}}
-There is currently a soft limit of 100 TB of Block Storage Volume per account.
-{{< /note >}}
-
-1.  Once you add a Volume it will appear under Attached Volumes with the new Volume's label, size, and file system path.
-
-    ![A Volume has been created](bs-cloud-volume-created.png "A Volume has been created")
+1.  When finished, click *Create Volume*. Once created, the Volume is listed under *Volumes* table.
 
 1.  You'll need to create a filesystem in your new Volume. If your Linode is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
 
@@ -64,7 +46,6 @@ If you do not receive output, there is currently no filesystem on this volume.
 1.  If you want to mount the new Volume automatically every time your Linode boots, you'll want to add the following line to your **/etc/fstab** file:
 
         FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
-
 
     {{< note >}}
 If you plan on detaching the volume regularly or moving it between other Linodes, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry.
