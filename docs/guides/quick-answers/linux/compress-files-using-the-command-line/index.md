@@ -11,7 +11,9 @@ published: 2018-02-01
 modified: 2018-02-01
 modified_by:
   name: Linode
-title: 'Archive, Compress, and Extract Files in Linux Using the Command Line'
+h1_title: 'Archive, Compress, and Extract Files in Linux Using the Command Line'
+title: 'Using fsck to Check & Repair Disk Errors & Bad Sectors'
+enable_h1: true
 tags: ["linux"]
 aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
 ---

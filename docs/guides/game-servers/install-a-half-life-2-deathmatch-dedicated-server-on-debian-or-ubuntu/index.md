@@ -11,7 +11,9 @@ published: 2017-08-17
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: 'Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
+title: 'How to Set Up Half-Life 2 Deathmatch'
+h1_title: 'Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
+enable_h1: true
 contributor:
   name: Davide Beatrici
   link: https://github.com/davidebeatrici

@@ -11,7 +11,9 @@ published: 2019-01-31
 modified: 2019-01-02
 modified_by:
   name: Linode
-title: "Install Plex Media Server on Ubuntu 18.04 Using Salt Masterless"
+h1_title: "Install Plex Media Server on Ubuntu 18.04 Using Salt Masterless"
+title: 'Installing Plex Media Server on Ubuntu 18.04 Using Salt'
+enable_h1: true
 contributor:
   name: Linode
 external_resources:

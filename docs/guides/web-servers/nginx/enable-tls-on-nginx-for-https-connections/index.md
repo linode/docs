@@ -12,7 +12,9 @@ modified: 2018-02-09
 modified_by:
   name: Linode
 published: 2018-02-09
-title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
+h1_title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
+title: 'How to Enable TLS Certificates to NGINX'
+enable_h1: true
 ---
 
 ![Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](getting-started-with-nginx-part-3-smg.jpg)

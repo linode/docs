@@ -10,8 +10,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12
 modified_by:
   name: Linode
-title: "How to Manage Python Packages and Virtual Environments on Linux"
-h1_title: "Managing Python Packages and Virtual Environments on Linux"
+title: "How to Manage Python Packages on Linux"
+h1_title: "How to Manage Python Packages and Virtual Environments on Linux"
+enable_h1: true
 contributor:
   name: Angel Guarisma
   link: https://github.com/guaris

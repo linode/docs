@@ -11,7 +11,9 @@ modified: 2021-04-16
 modified_by:
   name: Linode
 published: 2013-05-13
-title: 'How to Set Up an Email Server With Postfix, Dovecot and MySQL'
+h1_title: 'How to Set Up an Email Server With Postfix, Dovecot and MySQL'
+title: 'Set Up an Email Server with Postfix, Dovecot & MySQL'
+enable_h1: true
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'

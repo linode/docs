@@ -11,7 +11,9 @@ aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authenticat
 modified_by:
   name: Linode
 published: 2011-04-05
-title: Use SSH Public Key Authentication on Linux, macOS, and Windows
+h1_title: Use SSH Public Key Authentication on Linux, macOS, and Windows
+title: How to Login Using SSH Public Key Authentication
+enable_h1: true
 ---
 
 ![Use Public Key Authentication with SSH](use_public_key_authentication_with_ssh.png "Use Public Key Authentication with SSH")

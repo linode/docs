@@ -3,15 +3,16 @@ slug: build-react-video-streaming-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to build a video streaming application with two components: a server-side Node.js application that will stream videos and generate video thumbnails, and a client application in React that will list and play the videos.'
+description: 'Learn how to build streaming software with two components: one for streaming videos and generating thumbnails, and the other for listing/playing them.'
 og_description:  'Learn how to build a video streaming application with two components: a server-side Node.js application that will stream videos and generate video thumbnails, and a client application in React that will list and play the videos.'
 keywords: ['React','Nodejs','Video streaming', "video captions", "video thumbnails"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-09
 modified_by:
   name: Linode
-title: "How to Build a Video Streaming Application with React and Node"
+title: "Building a Video Streaming App with React & Node"
 h1_title: "Building a Video Streaming Application with React and Node"
+enable_h1: true
 image: feature.png
 contributor:
   name: Deven Rathore
