@@ -3,8 +3,8 @@ slug: use-paramiko-python-to-ssh-into-a-server
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'The Python module, Paramiko, implements the SSHv2 protocol that helps you connect to remote servers. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
-og_description: 'The Python module, Paramiko, implements the SSHv2 protocol that helps you connect to remote servers. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
+description: 'The Python module, Paramiko, implements the SSHv2 protocol giving you the ability to connect to remote servers using password or SSH key authentication. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
+og_description: 'The Python module, Paramiko, implements the SSHv2 protocol giving you the ability to connect to remote servers using password or SSH key authentication. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
 keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,44 +17,49 @@ enable_h1: true
 contributor:
   name: Cameron Laird
 external_resources:
-- '[Python Subprocess Module](https://docs.python.org/3/library/subprocess.html)'
 - '[Paramiko GitHub](https://github.com/paramiko/paramiko)'
-- '[An Introduction to SSHv2](https://searchsecurity.techtarget.com/tip/An-introduction-to-SSH2)'
 ---
 
-As a Python programmer, you’re probably familiar with the [*subprocess* module](https://docs.python.org/3/library/subprocess.html). Subprocess gives Python power over other applications: it’s the main way we execute other programs, including all the commands that a particular operating system builds. For historical and security reasons, the subprocess stumbles with password entry and other authentication methods. When your Python program needs to run an external password-dependent program, or access a different computer through a network connection, or both, you need [*Paramiko*](https://github.com/paramiko/paramiko).
+When your Python program needs to run an external password-dependent program, or access a remote server, use [*Paramiko*](https://github.com/paramiko/paramiko). Paramiko is a Python module that implements the [SSHv2](https://datatracker.ietf.org/doc/html/rfc4253) protocol. Paramiko is not part of Python’s standard library, although it’s widely used. This guide shows you how to use Paramiko in your Python scripts to authenticate to a server using a password and SSH keys.
+
+## Before You Begin
+
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+
+1.  Update your system:
+
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Install Paramiko
 
-Paramiko is a Python module that implements [*SSHv2*](https://searchsecurity.techtarget.com/tip/An-introduction-to-SSH2). Paramiko is not part of Python’s standard library, although it’s widely used. This means that, before any of the programs here can succeed, you need to make it available to your system. Depending on the details of your environment using one of the following commands to install Paramiko.
-
-    python -m pip install paramiko
-
-or
+You must install Paramiko on your system before being able to use it in your Python programs. Use the command below to install Paramiko with Pip:
 
     pip install paramiko
 
-or
+{{< note >}}
+If you are not familiar with Pip or do not have it installed on your system, see our [How to Manage Python Packages and Virtual Environments on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#how-pip-works) guide.
+{{< /note >}}
+
+If your system is [configured to use Anaconda](/docs/guides/how-to-install-anaconda/), you can use the following command to install Paramiko:
 
     conda install -c anaconda paramiko
 
-or as appropriate to your own working Python environment.
+## A Paramiko SSH Example: Connect to Your Server Using a Password
 
-## A Paramiko SSH Example
+This section shows you how to authenticate to a remote server with a username and password. To begin, create a new file named `first_experiment.py` and add the contents of the example file. Ensure that you update the file with your own Linode's details. Replace the values for `YOUR_IP_ADDRESS`, `YOUR_LIMITED_USER_ACCOUNT`, and `YOUR_PASSWORD`. Use the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide, if needed.
 
-You can quickly experience Paramiko for yourself: create `first_experiment.py` with the contents of the file below. Ensure that you update the file with your Linode server's details for `host` numeric address, `username`, and `password`.
-
-{{< file "first_experiment.py" >}}
+{{< file "password_login.py" >}}
 import paramiko
 
 command = "df"
 
 # Update the next three lines with your
-
 # server's information
 
-host = "YOUR_NUMERIC_IP_ADDRESS"
-username = "YOUR_ACCOUNT"
+host = "YOUR_IP_ADDRESS"
+username = "YOUR_LIMITED_USER_ACCOUNT"
 password = "YOUR_PASSWORD"
 
 client = paramiko.client.SSHClient()
@@ -65,11 +70,13 @@ print(stdout.read().decode())
 client.close()
 {{< /file >}}
 
+This file connects to remote server over SSH using the IP address and credentials that you provide. It then uses the `df` command to generate a report of your server's free disk space.
+
 Execute the file with the following command:
 
-    python first_experiment.py
+    python password_login.py
 
-You’ll see a result such as:
+You see a similar output:
 
 {{< output >}}
 Filesystem       1K-blocks  Used Available Use% Mounted on
@@ -81,21 +88,17 @@ tmpfs              1936296     0   1936296   0% /sys/fs/cgroup
 /dev/sda1           999320   187324 743184  21% /boot
 {{< /output >}}
 
-The example above provides a high-level example you can use to incorporate Paramiko into your Python code. While everything Paramiko does can also be done, in principle, with shell commands, Paramiko gives you all the power of Python programming. Programs beyond a couple of pages of shell scripting benefit from Python’s facilities for structuring data, looping, parsing, and so on. If your programming is beyond the “Hello, world!” level, and you need to connect through SSHv2, you probably need the advantages Paramiko brings. If for instance, you’re developing “business logic” based on `Use%` of different filesystems of your servers, you’ll probably find the parsing to extract those values from `df`’s output, and the arithmetic to act on them, easier in Python.
+The file above provides a high-level example that you can use to incorporate Paramiko into your Python code. While everything Paramiko does can also be done  with shell commands, Paramiko gives you all the power of Python. Python gives you access to structuring data, looping, parsing, and other powerful features that go beyond what is available in shell scripting. For example, if you are writing a program to calculate system usage percentages, Python is better at extracting and calculating values from your system's output.
 
-## Second Paramiko Example: Connect to your Server with an SSH Key
+## Second Paramiko Example: Connect to your Server Using SSH Keys
 
-Paramiko is useful for tasks across networked servers. A second, more ambitious example; one that illustrates intermediate-level use of Paramiko. One of Paramiko’s specific strengths is the correct handling of keys. The introductory example above depended on the use of a password. More professional work, though, is likely to configure servers so communications between them are hardened to avoid the use of passwords in favor of secured keys. Assume that you have such a network. A fleet of worker nodes each of which can be accessed at the command line by $AUTOMATION_ACCOUNT through a password-less login. In such a system, you can rely on the same SSHv2 keys to write and launch.
+One of Paramiko’s specific strengths is the correct handling of [SSH keys](/docs/guides/use-public-key-authentication-with-ssh/). The introductory example above depended on the use of your limited user account's password. It is more secure, however, to use SSH keys for server authentication. The example file below, provides a report that alerts you of any logins by users that are not included in your list of `expected` users. The Python script relies on Paramiko (notice the `key_based_connect()` function) to use SSHv2 authentication to connect to any of the servers provided in the code's `server_list` list.
 
 {{< file "key_based_login.py">}}
-
 # This is a small tool to report on successful logins
-
 # to accounts other than those listed in the variable
-
 # expected.  Such a report might lead to an investigation
-
-# into how and why those other accounts were logging in
+# into how and why those other accounts were logging in.
 
 import paramiko
 
@@ -134,17 +137,16 @@ def main():
 main()
 {{< /file >}}
 
-The result of running the above Python code might be:
+Execute the file with the following command:
+
+    python key_based_login.py
+
+If a user outside of the Python script's `expected` list accesses one of your servers, the Python script returns the following:
 
 {{< output >}}
-Entry 'user4   pts/0     192.0.2.0  Wed Sep 23 15:13 - 17:28  (02:14)' is a surprise on 192.0.2.0.
-
+Entry user4   pts/0     192.0.2.0  Wed Sep 23 15:13 - 17:28  (02:14)' is a surprise on 192.0.2.0.
 {{< /output >}}
 
-The larger point from a Paramiko perspective is that `key_based_connect()` illustrates a connection made with no password.
+## Going Further with Paramiko
 
-## Principles of Paramiko Productivity
-
-If you can model a task “manually”--that is, login and run commands using any combination of passwords, passphrases, and keys--you can automate it with Paramiko. The [reference Paramiko documentation](http://docs.paramiko.org/en/stable/) is rich with special-purpose methods and variables. The unifying theme of all of them is that they enable the complete programmability of an SSHv2 transport. Paramiko even implements an SSHv2 server, to compliment the more commonly programmed clients as in the first and second examples above.
-
-Even more advanced Paramiko programs send and receive just a line at a time, rather than transacting all of a command such as `df` or `last` synchronously to completion. You’ll make the most of your Linode assets by automating their operations, management, and policies. Paramiko is exactly the Python module to enable such automation.
+Paramiko helps you automate repetitive system administration tasks on remote servers. More advanced Paramiko programs send the lines of a script one at a time. It does this rather than transacting all of a command, such as `df` or `last`, synchronously to completion. Paramiko is a helpful addition to your system administrator toolchain when working to automate common tasks. You can visit [Paramiko's documentation](http://docs.paramiko.org/en/stable/) to learn about its special-purpose methods and variables that go beyond the examples covered in this guide.
