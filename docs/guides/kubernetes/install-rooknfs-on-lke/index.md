@@ -15,14 +15,14 @@ h1_title: "How to Set Up Rook NFS for Persistent Storage on LKE"
 contributor:
   name: Linode
   link: https://github.com/leslitagordita/
-aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE']
+aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE/']
 ---
 
 Rook NFS allows remote hosts to mount filesystems over a network and interact with those filesystems as though they are mounted locally. When used with LKE, Rook can mount a Linode Block Storage PVC which uses `ReadWriteOnce` permissions. The volume can then be leveraged as NFS and exported as a storage class that uses `ReadWriteMany` permissions. This allows Linode's block storage to store persistent data for LKE clusters.
 
 ### Before you Begin
 
-- This guide assumes that the reader already has an LKE cluster up and running. If that is not the case, please follow the instructions in our [LKE Tutuorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
+- This guide assumes that the reader already has an LKE cluster up and running. If that is not the case, please follow the instructions in our [LKE Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
 - This guide will rely on git wherever `kubectl` is installed. While git is installed on many distributions, others may require manual installation. Git can be installed on most distributions by following our [Installation Guide](/docs/guides/how-to-install-git-on-linux-mac-and-windows/)
 
 ### Installing Rook NFS on LKE
@@ -112,9 +112,9 @@ Apply the updated nfs.yaml file, then add a Rook storage class that leverages th
 
 ## Testing the Server
 
-To test the rooknfs server, create two deployments that will leverage a singular storage class labeled as `rook-nfs-share1`.
+To test the Rook NFS server, create two deployments that will leverage a singular storage class labeled as `rook-nfs-share1`.
 
-1. Deploy the pvc, busybox, and web-rc server using the following commands:
+1. Deploy the PVC, busybox, and web-rc server using the following commands:
 
         kubectl apply -f ~/rook/cluster/examples/kubernetes/nfs/pvc.yaml
         kubectl apply -f ~/rook/cluster/examples/kubernetes/nfs/busybox-rc.yaml
