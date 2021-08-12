@@ -1076,6 +1076,7 @@ newgrp
 newtag
 nextcloud
 nexthop
+nfs
 nftables
 ng
 nginx
