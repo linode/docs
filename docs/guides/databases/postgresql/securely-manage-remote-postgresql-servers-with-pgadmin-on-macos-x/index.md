@@ -10,7 +10,9 @@ modified: 2018-11-29
 modified_by:
   name: Linode
 published: 2010-04-30
-title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X
+h1_title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X
+title: Connect to Remote PostgreSQL Servers with pgAdmin on Mac
+enable_h1: true
 aliases: ['/databases/postgresql/pgadmin-macos-x/','/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'

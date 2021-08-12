@@ -12,7 +12,9 @@ published: 2018-04-18
 modified: 2018-04-18
 modified_by:
   name: Linode
-title: Introduction to Continuous Integration/Continuous Delivery (CI/CD)
+h1_title: Introduction to Continuous Integration/Continuous Delivery (CI/CD)
+title: 'Continuous Integration/Continuous Delivery Guide'
+enable_h1: true
 external_resources:
   - '[How to Automate Builds with Jenkins on Ubuntu](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/)'
 audiences: ["foundational", "beginner"]
