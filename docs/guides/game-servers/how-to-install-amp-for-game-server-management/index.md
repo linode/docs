@@ -3,7 +3,7 @@ slug: installing-amp-game-server-management-panel
 author:
   name: Ryan Syracuse
   email: docs@linode.com
-description: "AMP or Application Management Panel is a game server management panel. It provides a graphical overlay to simplify the deployment of game servers, and is additionally the next iteration of the Minecraft server control panel McMyAdmin. AMP provides support for third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new AMP server on most Linux distributions."
+description: "AMP is a game server management panel. As the successor to McMyAdmin, it provides a web interface to install games, mods, and increases server security.""
 keywords: ["minecraft", "McMyAdmin", "debian", "centos", "ubuntu", "debian 9"]
 tags: ["debian, ubuntu, centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -57,7 +57,7 @@ Below is a list of prompts along with an explanation for responses:
 | Would you like to isolate your AMP instances by running them inside Docker containers? | Installing AMP instances inside of a Docker container will help to increase the security of your installation, but may have a small impact on performance | Select `yes` unless you have performance concerns. |
 | Would you like AMP to be configured for use with HTTPS? | If you have set up a domain to be used with AMP, then the AMP installation script will be able to detect this and automatically install an SSL/TLS certificate using Let's Encrypt. If you do not have a domain name, then the use of an SSL/TLS certificate is not possible.| Select `yes` if you configured a domain for the server. If not, select `no`, keeping in mind that not using SSL/TLS poses a security risk to data in transit. |
 
-Once all prompts have been responded to, a message similar to the following will appear, displaying the chosen configuration options:
+Once you have responded to all prompts, a message similar to the following will appear, displaying the chosen configuration options:
 
 {{< output >}}
 Installation Summary:
@@ -93,7 +93,7 @@ When the installation script has completed, the following message will appear, p
 
     Enter the username and password you set up previously and click `Login` to proceed.
 
-1. Follow the configuration steps as prompted selecting all defaults. Until you get to the section on installing your AMP License key. In order for AMP to work, a [license key must be purchased through CubeCoder's website](https://cubecoders.com/AMP#buyAMP) Enter the license key in the field that appears, and select `next to proceed.`
+1. Follow the configuration steps as prompted selecting all defaults. Until you get to the section on installing your AMP License key. In order for AMP to work, a [license key must be purchased through CubeCoder's website](https://cubecoders.com/AMP#buyAMP) Enter the license key in the field that appears, and select `next` to proceed.
 
     ![AMP license](amplicense.png)
 
