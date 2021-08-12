@@ -25,15 +25,9 @@ Your Linode is capable of running one of three kinds of kernels:
 
 -   **Upstream kernel** (or *distribution-supplied kernel*): This kernel is maintained and provided by your Linux distribution. A major benefit of this kernel is that the distribution was designed with this kernel in mind and all updates are managed through the distributions package management system. It also may support features not present in the Linode kernel (for example, [SELinux](/docs/security/getting-started-with-selinux/)).
 
-    To chose this kernel, select **GRUB2** within your Configuration Profile.
-
 -   **Linode kernel:** Linode also maintains kernels that can be used on a Linode. If selected, these kernels are provided to your Linode at boot (not directly installed on your system). The [Current Kernels](https://www.linode.com/kernels) page displays a list of all the available Linode kernels.
 
-    To chose this kernel, select **Latest 64-bit X.X.X-x86_64-linodeX** or a specific kernel version within your Configuration Profile.
-
 -   **Custom-compiled kernel:** A kernel that you compile from source. Compiling a kernel can let you use features not available in the upstream or Linode kernels, but it takes longer to compile the kernel from source than to download it from your package manager.
-
-    Like the upstream kernel, this kernel can also be selected by using **Grub2** in your Configuration Profile - though additional steps are needed to actually compile your kernel.
 
 Most of the distribution images available on Linode use the upstream distribution-supplied kernel by default.
 
@@ -45,11 +39,9 @@ Most of the distribution images available on Linode use the upstream distributio
 
 1.  Scroll to the *Boot Settings* section.
 
-1.  Review the **Kernel** dropdown menu selection. Depending on your distribution and when your Linode was created, this will likely be set to either `GRUB 2` or `Latest 64 bit (<kernel version>-x86_64-linode<linode kernel release number>)`.
+1.  Review the **Kernel** dropdown menu selection. Depending on your distribution and when your Linode was created, this will likely be set to either `GRUB 2` or `Latest 64 bit ([version]-x86_64-linode[linode-release])`.
 
-    ![GRUB2 Upstream Kernel](kernel-select-grub2.png "GRUB2 Upstream Kernel")
-
-1.  To use Linode's kernel, select `Latest 64 bit (<kernel version>-x86_64-linode)` from the Kernel menu. To change to the upstream kernel, or to use a kernel you've compiled from source, select `GRUB 2`. For more information on custom compiled kernels, review our guides for [Debian, Ubuntu,](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/) and [CentOS](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/).
+1.  To use Linode's kernel, select `Latest 64 bit ([version]-x86_64-linode[linode-release])` from the Kernel menu. To change to the upstream kernel, or to use a kernel you've compiled from source, select `GRUB 2`. For more information on custom compiled kernels, review our guides for [Debian, Ubuntu,](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/) and [CentOS](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/).
 
 1.  Click **Save Changes** and reboot your Linode for the new kernel to take affect
 
@@ -63,7 +55,45 @@ Most of the distribution images available on Linode use the upstream distributio
 
     You can switch back to your previous kernel setting at any time by repeating the steps above for the kernel of your choice.
 
-### Caveats when Booting under GRUB 2
+## Updating the Kernel
+
+The steps needed to update your kernel vary depending on the type of kernel you are running.
+
+### Updating the Linode Kernel
+
+If the Linode is already set to use the latest Linode kernel, simply reboot the Linode for the kernel to be updated. Otherwise, if the the Linode is set to use a specific Linode kernel version, follow the instructions within the [Viewing and Modifying the Kernel](#viewing-and-modifying-the-kernel) section. When selecting the kernel in the Linode's Configuration Profile, chose your desired kernel version, save the changes, and reboot your Linode.
+
+### Updating the Upstream Kernel
+
+If your Linode is configured to use the **GRUB2** or **Direct Disk** kernel setting, the kernel is likely supplied by your distribution’s maintainers, not Linode. An exception to this is if you have compiled your own custom kernel.
+
+Upgrading the upstream kernel is as simple as logging into your Linux system (via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/)) and running the commands you normally would to upgrade the packages on your system.
+
+1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
+
+1.  Run the correct command(s) for your distribution and package manger that updates and upgrades all packages. For specific commands, see the Update/Upgrade sections in the guides for your [package manager](/docs/guides/linux-package-management-overview/). See [APT](/docs/guides/apt-package-manager/#upgrading-packages) for Ubuntu and Debian, [DNF](/docs/guides/dnf-package-manager/#upgrade-packages) for CentOS Stream (and 8), AlmaLinux 8, Rocky Linux 8, and Fedora, and [YUM](/docs/guides/yum-package-manager/#upgrading-packages) for CentOS 7.
+
+    You can also run the appropriate upgrade commands that specifically target packages related to the kernel or operating system.
+
+    -   Ubuntu
+
+            sudo apt-get update && sudo apt-get upgrade linux-generic
+
+    -   Debian
+
+            sudo apt-get update && sudo apt-get upgrade linux-base
+
+    -   CentOS Stream (and 8), AlmaLinux 8, Rocky Linux 8, and Fedora:
+
+            sudo dnf upgrade kernel
+
+    -   CentOS 7
+
+            sudo yum update kernel
+
+1.  Reboot the Linode.
+
+## Caveats when Booting under GRUB 2
 
 #### SELinux
 
@@ -82,12 +112,6 @@ If your system does not boot and instead shows a GRUB command line prompt in Lis
 ![GRUB prompt](grub-prompt.png "GRUB prompt")
 
 ## Installing the Upstream Kernel
-
-{{< note >}}
-This guide is written for a non-root user. Some commands may require elevated privileges and should be prefixed with `sudo`. If you're not familiar with the `sudo` command, visit our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-
-All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
-{{< /note >}}
 
 1.  Update your package management system:
 
@@ -178,47 +202,3 @@ GRUB_GFXPAYLOAD_LINUX=text
     **Debian and Ubuntu**
 
         update-grub
-
-## Updating the Kernel
-
-The steps needed to update your kernel vary depending on the type of kernel you are running.
-
-### Updating the Linode Kernel
-
-1.  Navigate to your Linode in the [Cloud Manager](https://cloud.linode.com) and click the **Configuration** tab.
-
-1. Find your current *Configuration* and click the corresponding **Edit** link. This may be located within the **More Options Ellipses** dropdown menu.
-
-1.  Scroll to the *Boot Settings* section.
-
-1.  Select **Latest 64 bit** from the *Select a Kernel* dropdown (if you need a 32-bit kernel, select **Latest 32 bit**) and click the **Submit** button to save the changes.
-
-1.  Reboot the Linode to boot into the new kernel and verify the kernel version:
-
-        uname -r
-
-    {{< output >}}
-4.17.15-x86_64-linode115
-{{< /output >}}
-
-### Updating the Upstream Kernel
-
-If you boot your Linode using the GRUB2 or Direct Disk boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. If you’ve compiled your own kernel, download a new set of kernel sources and recompile.
-
-Update your kernel to the latest available version using the distribution’s package manager:
-
-**CentOS**
-
-    sudo yum update kernel
-
-**Debian**
-
-    sudo apt-get update
-    sudo apt-get upgrade linux-base
-
-**Ubuntu**
-
-    sudo apt-get update
-    sudo apt-get upgrade linux-generic
-
-Reboot the Linode. When it comes back up, use the command `uname -r` to verify which version you are running. It's recommend that you compare your new kernel version against the patched version given in your distribution’s security bulletin: [CentOS](https://access.redhat.com/errata/#/?q=rhsa-2018&p=1&sort=portal_publication_date%20desc&rows=10); [Debian](https://security-tracker.debian.org/tracker/); [Ubuntu](https://people.canonical.com/~ubuntu-security/cve/).
