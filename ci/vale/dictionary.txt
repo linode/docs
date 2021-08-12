@@ -148,6 +148,7 @@ bukkit
 bundler
 bungeecord
 burndown
+busybox
 byrequests
 bzip2
 bzrtools
