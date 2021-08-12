@@ -181,21 +181,7 @@ GRUB_GFXPAYLOAD_LINUX=text
 
 ## Updating the Kernel
 
-The steps needed to update your kernel vary depending on the type of kernel you are running. To find out which type you're using, [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) into your Linode and run the following command:
-
-    uname -r
-
-If your output contains `linode` in the version tag, then you are running the [Linode kernel](#updating-the-linode-kernel):
-
-{{< output >}}
-4.14.12-x86_64-linode92
-{{</ output >}}
-
-If your output contains `generic` in the version tag, then you are probably running a [distribution-supplied kernel](#updating-the-upstream-kernel):
-
-{{< output >}}
-44.15.0-29-generic
-{{</ output >}}
+The steps needed to update your kernel vary depending on the type of kernel you are running.
 
 ### Updating the Linode Kernel
 
