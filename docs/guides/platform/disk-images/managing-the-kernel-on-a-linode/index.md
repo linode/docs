@@ -115,7 +115,7 @@ Follow these steps if the Linode is using an upstream kernel (the default for mo
 
 ## Considerations When Switching From a Linode Kernel to GRUB 2
 
-If you wish to switch from a Linode kernel to GRUB 2, there are a few issues you may encounter in older systems created prior to August 2018. 
+If you wish to switch from a Linode kernel to GRUB 2, there are a few issues you may encounter in older systems created prior to August 2018.
 
 ### SELinux
 
