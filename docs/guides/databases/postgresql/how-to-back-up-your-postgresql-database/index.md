@@ -105,7 +105,7 @@ You may want to set up a cron job so that your database backs up automatically a
 
 ## How Do I Check My PostgreSQL Backup Status?
 
-You can set up error logging to check on the status of your PostgreSQL automated backups. If your If you aren’t creating a log file for your PostgreSQL, you can create one by adding the following at the end of your cron job.
+You can set up error logging to check on the status of your PostgreSQL automated backups. If you aren’t creating a log file for your PostgreSQL, you can create one by adding the following at the end of your cron job.
 
 1.  Make sure you are logged in as the `postgres` user:
 
