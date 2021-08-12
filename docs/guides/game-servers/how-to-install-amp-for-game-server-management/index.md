@@ -3,7 +3,7 @@ slug: installing-amp-game-server-management-panel
 author:
   name: Ryan Syracuse
   email: docs@linode.com
-description: "AMP is a game server management panel. As the successor to McMyAdmin, it provides a web interface to install games, mods, and increases server security.""
+description: "AMP is a game server management panel. As the successor to McMyAdmin, it provides a web interface to install games, mods, and increases server security."
 keywords: ["minecraft", "McMyAdmin", "debian", "centos", "ubuntu", "debian 9"]
 tags: ["debian, ubuntu, centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
