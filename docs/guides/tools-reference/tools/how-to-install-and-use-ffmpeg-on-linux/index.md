@@ -19,15 +19,11 @@ contributor:
   link: Github/Twitter Link
 external_resources:
 - '[FFMpeg](http://ffmpeg.org/)'
-- '[The FFmpeg Compilation Guide](https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu)'
-- '[FFmpeg Application Documentation](http://ffmpeg.org/ffmpeg.html)'
-- '[Full FFmpeg Documentation](http://ffmpeg.org/documentation.html)'
-- '[File Samples Archive](https://filesamples.com/categories/video)'
 - '[FFmpeg-Python GitHub page](https://github.com/kkroening/ffmpeg-python)'
 - '[FFmpeg-Python examples page](https://github.com/kkroening/ffmpeg-python/tree/master/examples)'
 ---
 
-[*FFMpeg*](http://ffmpeg.org/) is a free, open-source utility that is used for video and audio processing. It assists with the editing, reformatting, and conversion of audio, video, and multimedia files. FFmpeg contains a suite of libraries and programs that can be embedded into other media applications or function as a stand-alone command-line utility. This guide provides a brief introduction to FFmpeg. It also explains how to install FFmpeg and how to use FFmpeg to edit media files.
+[*FFMpeg*](http://ffmpeg.org/) is a free and open-source utility that is used for video and audio processing. It assists with the editing, reformatting, and conversion of audio, video, and multimedia files. FFmpeg contains a suite of libraries and programs that can be embedded into other media applications or function as a stand-alone command-line utility. This guide provides a brief introduction to FFmpeg. It also explains how to install FFmpeg and how to use FFmpeg to edit media files.
 
 ## What is FFmpeg
 
@@ -92,7 +88,7 @@ Certain FFmpeg options are used in many different contexts, so it helps to be fa
 
 The following FFmpeg options are used to display information. To use these options, specify the `ffmpeg` command and the option, for example, `ffmpeg -devices`. For information on the various options, see section 5.2 of the [ffmpeg Documentation](http://ffmpeg.org/ffmpeg.html#Generic-options).
 
-Following is a list of the most commonly used generic options.
+Below is a list of the most commonly used generic options.
 
 - `-h/-help`: Displays the help information.
 - `-demuxers`: Displays the demultiplexer options.
@@ -107,7 +103,7 @@ Following is a list of the most commonly used generic options.
 
 The following FFmpeg options are typically used with the various tools to specify parameters to the command. A full list of options can be found in section 5.4 of the [FFmpeg Documentation](https://ffmpeg.org/ffmpeg.html#Main-options).
 
-Following is a list of some of the main options.
+The list below contains some of the main options.
 
 - `-i`: Supplies the URL or file location of the input file.
 - `-c`: Specifies the type of codec to use.
@@ -133,6 +129,9 @@ Sample files in various formats are available from the [File Samples Archive](ht
 {{< /note >}}
 
     ffmpeg -i filename.mov -hide_banner
+
+Running the command should return a similar output:
+
 {{< output >}}
 Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'filename.mov':
   Metadata:
@@ -161,6 +160,9 @@ file dir/file2.mov
 1. Use the `concat` filter to join the files. Specify the `join.txt` file as the input file. The following command appends `file2.mov` to the end of `file1.mov` and saves the resulting file as `concatenate.mov`.
 
         ffmpeg -f concat -i join.txt -c copy concatenate.mov
+
+    Your output should resemble the following:
+
     {{< output >}}
 Input #0, concat, from 'join.txt':
   Duration: N/A, start: 0.000000, bitrate: 1428 kb/s
@@ -196,6 +198,9 @@ video:73433kB audio:4180kB subtitle:0kB other streams:0kB global headers:0kB mux
 1. Verify the file information for `concatenate.mov` and ensure the file is in the correct format and has the expected length.
 
         ffmpeg -i concatenate.mov  -hide_banner
+
+    The output provides the following information:
+
     {{< output >}}
 Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'concatenate.mov':
   Metadata:
@@ -221,6 +226,8 @@ In the following example, the part to trim out begins at `00:01:30` and has a du
 
     ffmpeg -i file1.mov -ss 00:01:30 -t 60 -c copy trim.mov
 
+Your output should resemble the following:
+
 {{< output >}}
 ...
 Output #0, mov, to 'trim.mov':
@@ -231,13 +238,16 @@ video:22612kB audio:939kB subtitle:0kB other streams:0kB global headers:0kB muxi
 
 ## How to Crop a Video with FFmpeg
 
-FFmpeg provides a method of cropping a video. When using the `crop` filter, add the stream specifier `v` to indicate that only the video component should be edited. The dimensions and offset of the crop must be in the format `crop=w:h:x:y`. The `w` and `h` are the width and height, in pixels, of the section to crop out. Indicate the offset of the crop using `x` and `y` coordinates of the upper left corner.
+FFmpeg provides a method for cropping videos. When using the `crop` filter, add the stream specifier `v` to indicate that only the video component should be edited. The dimensions and offset of the crop must be in the format `crop=w:h:x:y`. The `w` and `h` are the width and height, in pixels, of the section to crop out. Indicate the offset of the crop using `x` and `y` coordinates of the upper left corner.
 
 {{< note >}}
 The crop filter can negatively affect video quality.
 {{< /note >}}
 
     ffmpeg -i file1.mov -filter:v "crop=640:480:150:100" crop.mov
+
+After running the command, you should see a similar output:
+
 {{< output >}}
 ...
         Output #0, mov, to 'crop.mov':
@@ -252,13 +262,15 @@ The crop filter can negatively affect video quality.
 
 ## How to Convert Files with FFmpeg
 
-As long as the input and output formats are supported, it is very easy to convert between one format and another. Specify the name of the input file, the name of the output file, and the extension that corresponds to the new format. FFmpeg determines the correct format based on the extension. Here are a couple of examples to illustrate this process.
+As long as the input and output formats are supported, it is straightforward to convert between one format and another. Specify the name of the input file, the name of the output file, and the extension that corresponds to the new format. FFmpeg determines the correct format based on the extension. Here are a couple of examples to illustrate this process.
 
 ### .mkv to .mp4 Format
 
-To convert from a `.mkv` format to `.mp4`, specify the original file as the input file. Then specify the name of the new file with the `.mp4` extension to allow for the correct conversion detection formula. The name of the output file does not have to match the name of the input one.
+To convert from a `.mkv` format to `.mp4`, specify the original file as the input file. Then, specify the name of the new file with the `.mp4` extension. This allows for the correct conversion detection formula. The name of the output file does not have to match the name of the input file.
 
     ffmpeg -i file1.mkv convert.mp4
+
+After running the command, your out resembles the following:
 
    {{< output >}}
 Output #0, mp4, to 'convert.mp4':
@@ -295,7 +307,7 @@ FFmpeg functionality can be integrated with the Python programming language. Thi
 
 This approach allows a finer level of control over the media translation process. For example, a developer could write a program to concatenate every other ten-second segment into a new file. For more information on FFmpeg-Python, see the [FFmpeg-Python GitHub page](https://github.com/kkroening/ffmpeg-python).
 
-To install FFmpeg-Python, follow the below instructions:
+To install FFmpeg-Python, follow the instructions below:
 
 1. If Python is not already installed, install it using `apt`.
 
