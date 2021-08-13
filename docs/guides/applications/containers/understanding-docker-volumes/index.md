@@ -134,7 +134,7 @@ Instead of creating a new volume, you can also mount a directory from your Linod
 
 1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
 
-1.  Use the following command to run Docker, replacing *[local-directory]* with the absolute path to the directory within your Linode that you'd like to mount (use `$(pwd)` to mount the current directory). Then replace *[mount-directory]* with the absolute path on your countiner where you wish to access the local files and replace *[image]* with the Docker image you wish to use.
+1.  Use the following command to run Docker, replacing *[local-directory]* with the absolute path to the directory within your Linode that you'd like to mount (use `$(pwd)` to mount the current directory). Then replace *[mount-directory]* with the absolute path on your container where you wish to access the local files and replace *[image]* with the Docker image you wish to use.
 
         docker run --rm -it -v [local-directory]:[mount-directory] [image]
 
