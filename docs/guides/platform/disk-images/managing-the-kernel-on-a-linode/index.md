@@ -3,15 +3,15 @@ slug: managing-the-kernel-on-a-linode
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the Linode Manager to change which kernel your Linode boots.'
+description: "Information on finding your Linode's kernel version (and type) as well as changing and updating the kernel."
 keywords: ["kernel", "grub"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/platform/how-to-change-your-linodes-kernel/','/run-a-distribution-supplied-kernel-with-kvm/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/platform/update-kernel/', '/guides/how-to-change-your-linodes-kernel/']
-modified: 2021-08-12
+aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/platform/how-to-change-your-linodes-kernel/','/run-a-distribution-supplied-kernel-with-kvm/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/platform/update-kernel/', '/guides/how-to-change-your-linodes-kernel/', '/guides/update-kernel/']
+modified: 2021-08-13
 modified_by:
   name: Linode
-published: 2015-06-29
+modified: 2021-08-13
 title: "How to Manage the Kernel on a Linode"
 h1_title: "Managing the Kernel on a Linode"
 enable_h1: true
@@ -43,7 +43,7 @@ There are may ways you can determine which kernel version is installed on your L
     - `hostnamectl`: Outputs an organized list of system details, including the kernel version. Can only be used on distributions with [systemd](https://en.wikipedia.org/wiki/Systemd) (Debian, Ubuntu, CentOS, openSUSE, and more).
     - `cat /proc/version`: Outputs a string that contains the kernel version and release details.
 
-The kernel version should be a string that's similar to `5.4.0-80-generic`. In this example, the kernel ends with `generic`, which is common in Ubuntu systems to designate that this is an upstream kernel. If the kernel ends with something similar to `linode123`, a Linode kernel is being used and the string exactly which Linode kernel.
+The kernel version should be a string that's similar to `5.4.0-80-generic`. In this example, the kernel ends with `generic`, which is common in Ubuntu systems to designate that this is an upstream kernel. If the kernel ends with something similar to `linode123`, a Linode kernel is being used and the string matches the precise Linode kernel release.
 
 ## Viewing and Modifying the Kernel in the Cloud Manager
 
@@ -64,8 +64,8 @@ These instructions may not accurately reflect the actual kernel version installe
     - **Latest 64 bit**: Uses the latest 64-bit Linode kernel at the time the Linode boots/reboots. This was the default for most 64-bit distributions prior to August 2018.
     - **Latest 32 bit**: Uses the latest 32-bit Linode kernel at the time the Linode boots/reboots. This was the default for most 32-bit distributions prior to August 2018.
     - **Direct Disk**: Instead of a Linux Kernel, this uses the MBE (Master Boot Record) of the primary disk*.
-    - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. In a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Linodes created after August 2018.**
-    - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
+    - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. If a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Linodes created after August 2018.**
+    - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk*. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
     - **Specific Linode Kernel**: Allows you to specify the exact Linode kernel to use. Since this kernel is maintained regardless of reboots or system updates, it may be preferred in some use cases.
 
     *\*Primary disk: the disk assigned as the "Root Device" within the Linode's Configuration Profile.*
@@ -83,7 +83,7 @@ Provided a newer kernel is available, you should be able to either manually (or 
 Follow these steps if the Linode is using a Linode kernel:
 
 -   **Latest 64-bit or 32-bit kernel**: Rebooting the Linode automatically updates the kernel used within your system.
--   **Specific kernel version** (ex: `5.12.2-x86_64-linode144`): To update your kernel, follow the instructions within the [Viewing and Modifying the Kernel](#viewing-and-modifying-the-kernel) section. When selecting the kernel in the Linode's Configuration Profile, chose your desired kernel version (or select `Latest 64 bit`), save the changes, and reboot your Linode.
+-   **Specific kernel version** (ex: `5.12.2-x86_64-linode144`): To update your kernel, follow the instructions within the [Viewing and Modifying the Kernel in the Cloud Manager](#viewing-and-modifying-the-kernel-in-the-cloud-manager) section. When selecting the kernel in the Linode's Configuration Profile, chose your desired kernel version (or select `Latest 64 bit`), save the changes, and reboot your Linode.
 
 ### Updating the Upstream Kernel
 
