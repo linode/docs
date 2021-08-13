@@ -51,14 +51,14 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 2. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-3. Add a domain zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/guides/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
+3. Add a domain zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/guides/dns-manager/) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
 
 4. [Create an SSL Certificate](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/), if you will be using SSL encryption for your domain.
 
 5. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
       - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/guides/lemp-stack-on-centos-7-with-fastcgi/)
-      - [LAMP on CentOS 7](/docs/guides/lamp-on-centos-7/)
+      - [LAMP on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/)
 
 6. Configure your webserver for virtual domain hosting:
 

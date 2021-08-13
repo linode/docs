@@ -18,7 +18,7 @@ The Cloud Firewall endpoints:
 - [Firewall Update](/docs/api/networking/#firewall-update)
 - [Firewall Devices List](/docs/api/networking/#firewall-devices-list)
 - [Firewall Device Delete](/docs/api/networking/#firewall-device-delete)
-- [Firewall Device View](/docs/api/neworking/#firewall-device-view)
+- [Firewall Device View](/docs/api/networking/#firewall-device-view)
 - [Firewall Rules List](/docs/api/networking/#firewall-rules-list)
 - [Firewall Rules Update](/docs/api/networking/#firewall-rules-update)
 

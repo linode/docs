@@ -15,7 +15,7 @@
   <noscript>
     <style>
     .hide-if-no-js {
-    display: none;
+    display: none !important;
     }
     </style>
   </noscript>
@@ -25,7 +25,11 @@
      h-auto
      overflow-x-hidden
      is-not-topbar-pinned
+     {{ if or (.IsHome) (eq .Section `api`)}}
+     is-explorer-open
+     {{ else }}
      is-not-explorer-open
+     {{ end }}
      is-not-toc-open
      is-not-search-panel-open
      is-not-search-panel_filters-open

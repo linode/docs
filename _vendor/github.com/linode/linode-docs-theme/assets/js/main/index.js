@@ -13,7 +13,7 @@ import { newHomeController } from './sections/home/home';
 import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
 import { newSectionsController } from './sections/sections/index';
 import { newOnIntersectionController, initConsentManager } from './components/index';
-import { sendEvent } from './helpers/index';
+import { sendEvent, isMobile, toggleBooleanClass } from './helpers/index';
 
 // Set up the AlpineJS controllers
 const searchConfig = getSearchConfig(params);
@@ -48,6 +48,11 @@ window.lnh = {
 
 // Set up global event listeners etc.
 (function() {
+	if (isMobile()) {
+		// This body class is default open, toggle off if on mobile.
+		toggleBooleanClass('explorer-open', document.body, false);
+	}
+
 	window.deferLoadingAlpine = function(callback) {
 		// This does nothing, which prevents Alpine.start() from doing double work.
 		// The components gets initialized in turbolinks:load by the
