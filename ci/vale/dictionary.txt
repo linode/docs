@@ -148,6 +148,7 @@ bukkit
 bundler
 bungeecord
 burndown
+busybox
 byrequests
 bzip2
 bzrtools
@@ -1089,6 +1090,7 @@ newgrp
 newtag
 nextcloud
 nexthop
+nfs
 nftables
 ng
 nginx
@@ -1292,6 +1294,7 @@ puppetlabs
 puppetmaster
 puttygen
 pv
+pvc
 pvgrub
 pwcheck
 px
@@ -1386,6 +1389,7 @@ ro
 rochko
 rocommunity
 rollout
+rooknfs
 rossum
 roundcube
 routable
