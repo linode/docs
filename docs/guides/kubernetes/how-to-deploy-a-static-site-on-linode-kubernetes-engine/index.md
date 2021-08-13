@@ -75,7 +75,7 @@ To perform some of the commands in this guide you need to have Git installed on 
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Sign up for a Docker Hub Account
 

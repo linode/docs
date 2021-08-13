@@ -74,14 +74,13 @@ module.exports = {
 
 					'@screen tablet': {
 						paddingLeft: '1.5rem',
-						paddingRight: '1.5rem',
+						paddingRight: '1.5rem'
 					},
 
 					'@screen lg': {
 						paddingLeft: '2rem',
-						paddingRight: '2rem',
-					},
-
+						paddingRight: '2rem'
+					}
 				}
 			});
 		},
@@ -89,7 +88,10 @@ module.exports = {
 		typography
 	],
 	variants: {
-		backgroundColor: [ 'first', 'odd', 'responsive', 'hover', 'focus' ]
+		backgroundColor: [ 'first', 'odd', 'responsive', 'hover', 'focus' ],
+		textColor: [ 'responsive', 'hover', 'focus', 'group-hover' ],
+		visibility: [ 'hover', 'group-hover' ],
+		opacity: [ 'group-hover' ]
 	},
 	important: '#ln-docs',
 	theme: {
@@ -129,28 +131,32 @@ module.exports = {
 						color: colorBrand,
 						textDecoration: 'none'
 					},
+					strong: {
+						color: false,
+						fontWeight: '600'
+					},
 					h1: {
 						color: colorTitle,
 						fontWeight: '400',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h2: {
 						color: colorTitle,
 						fontWeight: '600',
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h3: {
 						color: colorTitle,
 						fontWeight: '600',
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h4: {
 						color: colorTitle,
 						fontWeight: '600',
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					blockquote: {
 						fontWeight: '400',
@@ -160,7 +166,7 @@ module.exports = {
 						borderLeftColor: theme.colors.gray[300],
 						quotes: '"\\201C""\\201D""\\2018""\\2019"',
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					'blockquote p:first-of-type::before': {
 						content: ''
@@ -192,50 +198,50 @@ module.exports = {
 						paddingTop: '1em',
 						paddingRight: '1em',
 						paddingBottom: '1em',
-						paddingLeft: '1em',
+						paddingLeft: '1em'
 					},
 
 					// new margins
 					p: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					ol: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					ul: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					li: {
 						marginTop: '.5em',
-						marginBottom: '.5em',
+						marginBottom: '.5em'
 					},
 					'> ul > li p': {
 						marginTop: '.5em',
-						marginBottom: '.5em',
+						marginBottom: '.5em'
 					},
 					'> ul > li > *:first-child': {
-						marginTop: '0px',
+						marginTop: '0px'
 					},
 					'> ul > li > *:last-child': {
-						marginBottom: '0px',
+						marginBottom: '0px'
 					},
 					'> ol > li > *:first-child': {
-						marginTop: '0px',
+						marginTop: '0px'
 					},
 					'> ol > li > *:last-child': {
-						marginBottom: '0px',
+						marginBottom: '0px'
 					},
 					'ul ul, ul ol, ol ul, ol ol': {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					hr: {
 						marginTop: '2em',
-						marginBottom: '2em',
-					},
+						marginBottom: '2em'
+					}
 				}
 			},
 			sm: {
@@ -243,21 +249,21 @@ module.exports = {
 					fontSize: rem(14),
 					lineHeight: '1.5',
 					h1: {
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h2: {
 						fontSize: em(24, 12),
 						letterSpacing: '-0.38px',
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h3: {
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h4: {
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					'tbody td:first-child': {
 						paddingLeft: rem(21)
@@ -282,11 +288,11 @@ module.exports = {
 					// new margins
 					p: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					blockquote: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					pre: {
 						marginTop: '1em',
@@ -294,45 +300,45 @@ module.exports = {
 						paddingTop: '1em',
 						paddingRight: '1em',
 						paddingBottom: '1em',
-						paddingLeft: '1em',
+						paddingLeft: '1em'
 					},
 					ol: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					ul: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					li: {
 						marginTop: '.5em',
-						marginBottom: '.5em',
+						marginBottom: '.5em'
 					},
 					'> ul > li p': {
 						marginTop: '.5em',
-						marginBottom: '.5em',
+						marginBottom: '.5em'
 					},
 					'> ul > li > *:first-child': {
-						marginTop: '0px',
+						marginTop: '0px'
 					},
 					'> ul > li > *:last-child': {
-						marginBottom: '0px',
+						marginBottom: '0px'
 					},
 					'> ol > li > *:first-child': {
-						marginTop: '0px',
+						marginTop: '0px'
 					},
 					'> ol > li > *:last-child': {
-						marginBottom: '0px',
+						marginBottom: '0px'
 					},
 					'ul ul, ul ol, ol ul, ol ol': {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					hr: {
 						marginTop: '2em',
-						marginBottom: '2em',
-					},
-				},
+						marginBottom: '2em'
+					}
+				}
 			},
 			lg: {
 				css: {
@@ -341,26 +347,26 @@ module.exports = {
 					h1: {
 						fontSize: '2em',
 						lineHeight: '1.25',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h2: {
 						fontSize: '1.5em',
 						lineHeight: '1.25',
 						letterSpacing: '-0.5px',
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h3: {
 						fontSize: '1.25em',
 						lineHeight: '1.25',
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					h4: {
 						fontSize: '1em',
 						lineHeight: '1.25',
 						marginTop: '1.5em',
-						marginBottom: '1rem',
+						marginBottom: '1rem'
 					},
 					table: {
 						fontSize: rem(14),
@@ -379,11 +385,11 @@ module.exports = {
 					// new margins
 					p: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					blockquote: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					pre: {
 						marginTop: '1em',
@@ -391,44 +397,44 @@ module.exports = {
 						paddingTop: '1em',
 						paddingRight: '1em',
 						paddingBottom: '1em',
-						paddingLeft: '1em',
+						paddingLeft: '1em'
 					},
 					ol: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					ul: {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					li: {
 						marginTop: '.5em',
-						marginBottom: '.5em',
+						marginBottom: '.5em'
 					},
 					'> ul > li p': {
 						marginTop: '.5em',
-						marginBottom: '.5em',
+						marginBottom: '.5em'
 					},
 					'> ul > li > *:first-child': {
-						marginTop: '0px',
+						marginTop: '0px'
 					},
 					'> ul > li > *:last-child': {
-						marginBottom: '0px',
+						marginBottom: '0px'
 					},
 					'> ol > li > *:first-child': {
-						marginTop: '0px',
+						marginTop: '0px'
 					},
 					'> ol > li > *:last-child': {
-						marginBottom: '0px',
+						marginBottom: '0px'
 					},
 					'ul ul, ul ol, ol ul, ol ol': {
 						marginTop: '1em',
-						marginBottom: '1em',
+						marginBottom: '1em'
 					},
 					hr: {
 						marginTop: '2em',
-						marginBottom: '2em',
-					},
+						marginBottom: '2em'
+					}
 				}
 			}
 		},

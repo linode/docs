@@ -11,16 +11,16 @@
   <div class="w-full" x-cloak x-data="lnc.NewSectionsController()" x-init="init() " @search:data-categories-filtered.document="receiveData($event.detail);">
     {{ partial "components/error.html" . }}
     <div class="mb-8" x-show="loaded">
-      <div class="flex flex-col lg:flex-row lg:items-center mb-8">
-        <h1 class="tracking-tighter pb-4 lg:pb-0 max-w-2xl" x-text="data.meta.title"></h1>
+      <div class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
+        <h1 class="tracking-tighter pb-4 lg:pb-0 pr-4" x-text="data.meta.title"></h1>
         <div x-show="!uiState.noToggleGuidesLink">
           <button @click="toggleShowGuides();"
-                    class="lg:ml-4 py-1 px-3 text-sm text-brand focus:outline-none no-underline font-semibold border border-brand rounded-full" data-testid="showGuides">
+                    class="py-1 px-3 text-sm text-brand focus:outline-none no-underline font-semibold border border-brand rounded-full" data-testid="showGuides">
             <span x-text="`${data.result.nbHits} ${data.sectionConfig.nounPlural(data.result.nbHits)} Available`" data-testid="nbHits"></span>
           </button>
         </div>
         <div x-show="uiState.noToggleGuidesLink">
-          <span x-text="`${data.result.nbHits} ${data.sectionConfig.nounPlural(data.result.nbHits)} Available`" class="lg:ml-4 py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full"></span>
+          <span x-text="`${data.result.nbHits} ${data.sectionConfig.nounPlural(data.result.nbHits)} Available`" class="py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full"></span>
         </div>
       </div>
       <div class="mb-8">

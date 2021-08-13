@@ -8,7 +8,7 @@ og_description: 'This guide shows you how to deploy a Mastodon server instance o
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','centos stream']
 tags: ['centos', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-20
+published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
 title: "Install Mastodon Server on CentOS Stream"

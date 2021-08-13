@@ -67,7 +67,7 @@ Automatic resizing is only available when moving to a larger plan, and when you 
 
 1.  Select a plan and enter the label of the Linode in the **Confirm** field to confirm the changes.
 
-1.  Click the **Resize** button. Your Linode is then powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
+1.  Click the **Resize** button. Your Linode is then powered off and moved to another host. The duration of this process will vary depending on your total disk size and the speeds expected between each data center.
 
 1.  (Optional) When the migration completes, check your disk storage allocation on the **Storage** tab of your Linode. If you resized your Linode to a larger plan and the main disk was not automatically resized, there is additional un-used storage to allocate to your disks. You may want to add some of this storage to one of your disks if the internal filesystem on it is running low on free space, or just so you can use it in the future.
 

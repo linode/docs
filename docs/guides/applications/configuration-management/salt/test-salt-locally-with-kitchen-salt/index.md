@@ -58,7 +58,7 @@ Kitchen runs on Ruby. The following commands will install the Ruby version contr
 
 ## Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ## Install KitchenSalt
 

@@ -70,7 +70,7 @@ In your deployment, the web server will run in its own container, and the Certbo
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

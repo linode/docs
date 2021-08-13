@@ -106,6 +106,9 @@ Copy your passphraseless private key into the **Private Key** field.
 
 You can [purchase an SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
+{{< note >}}
+Linode's NodeBalancer's only support encryption for SSL/TLS certificates using TLS version 1.2 and above. TLS versions 1.0 and 1.1 are not supported.
+{{< /note >}}
 ### TLS Cipher Suites
 
 If your NodeBalancer must support users accessing your application with older browsers such as Internet Explorer 6-8, you should select the **Legacy** option, which sets the following cipher suite profile:

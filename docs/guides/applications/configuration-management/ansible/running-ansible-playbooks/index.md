@@ -327,7 +327,7 @@ Now that you are familiar with Playbooks, you can continue to learn more about A
 * [Ansible Documentation](http://docs.ansible.com/ansible/index.html)
 * Important Next Topics:
   * [Users, and Switching Users](http://docs.ansible.com/ansible/playbooks_intro.html#hosts-and-users) and [Privilege Escalation](http://docs.ansible.com/ansible/become.html)
-  * [Handlers: Running Operations On Change](http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change)
-  * [Roles](http://docs.ansible.com/ansible/playbooks_roles.html)
-  * [Variables](http://docs.ansible.com/ansible/playbooks_variables.html)
+  * [Handlers: Running Operations On Change](https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html)
+  * [Roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
+  * [Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html)
   * [Playbook Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
