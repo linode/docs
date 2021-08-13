@@ -8,8 +8,8 @@ og_description: "MagicSpam is a powerful anti-spam and email security solution t
 keywords: ['cPanel','Plesk','Email','Spam']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-05
-modified: 2021-08-05
+published: 2021-08-13
+modified: 2021-08-13
 modified_by:
   name: Linode
 title: "How to Deploy Magicspam through the Linode Marketplace"
@@ -51,8 +51,6 @@ You can configure your MagicSpam App by providing values for the following field
 ### Linode Configuration Options
 
 After providing the App-specific options, provide configurations for your Linode server:
-
-<!-- Be sure to edit the Select an Image and Linode Plan to match app's needs -->
 
 | **Configuration** | **Description** |
 |:--------------|:------------|

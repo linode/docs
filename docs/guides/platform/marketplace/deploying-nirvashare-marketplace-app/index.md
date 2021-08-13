@@ -8,8 +8,8 @@ og_description: "NirvaShare is a simplified and secure enterprise file sharing s
 keywords: ['storage','file sharing', 'backups']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-05
-modified: 2021-08-05
+published: 2021-08-13
+modified: 2021-08-13
 modified_by:
   name: Linode
 title: "How to Deploy NirvaShare through the Linode Marketplace"

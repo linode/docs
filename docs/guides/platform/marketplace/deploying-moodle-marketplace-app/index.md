@@ -8,8 +8,8 @@ og_description: "Moodle is the leading open source learning management system. T
 keywords: ['learning','educator','management', and 'school']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-05
-modified: 2021-08-05
+published: 2021-08-13
+modified: 2021-08-13
 modified_by:
   name: Linode
 title: "How to Deploy Moodle through the Linode Marketplace"
