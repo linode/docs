@@ -11,7 +11,7 @@ aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-k
 modified: 2021-08-13
 modified_by:
   name: Linode
-modified: 2021-08-13
+published: 2021-08-13
 title: "How to Manage the Kernel on a Linode"
 h1_title: "Managing the Kernel on a Linode"
 enable_h1: true
