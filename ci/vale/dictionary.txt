@@ -379,6 +379,7 @@ drush
 drwxr
 dshield
 dsn
+du
 ducati
 dust2
 dvcs
