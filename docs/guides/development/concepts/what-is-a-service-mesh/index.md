@@ -87,5 +87,5 @@ There are currently three major contenders in the field of service mesh provider
 
 In addition to the resources linked below, you can also continue to learn about service meshes and how to use them in the guides listed below. Each guide shows you how to get started with a specific service mesh provider.
 
-- [How to Install HashiCorp's Consul Service Mesh](/docs/guides/how-to-install-hashicorp-consul)
+- [How to Install HashiCorp's Consul Service Mesh](/docs/guides/how-to-install-hashicorp-consul-service-mesh/)
 - [How to Deploy Linkerd 2 with Linode Kubernetes Engine](/docs/guides/how-to-deploy-linkerd-with-linode-kubernetes-engine/)

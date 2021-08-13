@@ -15,7 +15,7 @@ h1_title: "An Overview of Python API Frameworks"
 tags: ["python", "django"]
 contributor:
   name: Chelsea Troy
-  link: twitter.com/HeyChelseaTroy
+  link: https://twitter.com/HeyChelseaTroy
 ---
 
 As one of the most popular programming languages, the Python ecosystem offers a variety of frameworks to help you build a web API. You may need to build an API to serve data to a mobile application, a frontend website, or a machine learning project. Your project may only require routing functionality provided by a framework, or it may require an admin interface and a templating system, as well. Which framework you choose depends on your specific use case. To help you choose a Python framework, this guide provides an overview on some well-known Python frameworks used to build APIs and discusses their differences and strengths.
@@ -149,4 +149,4 @@ Since Bottle is fairly new, the framework has little organic documentation. Its 
 
 If you'd like to learn how to write an API using the FastAPI framework, take a look at the following guide:
 
-- [CRUD READ operations in Python Using FastAPI: View, List](/docs/guides/development/python/crud-read-operations-use-fastapi-to-write-an-api)
+- [CRUD READ operations in Python Using FastAPI: View, List](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/)
