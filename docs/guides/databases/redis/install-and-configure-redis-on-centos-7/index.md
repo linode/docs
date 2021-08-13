@@ -19,7 +19,7 @@ external_resources:
  - '[Redis Security](http://redis.io/topics/security)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: CentOS 7
 tags: ["nosql","database","centos"]

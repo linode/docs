@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile, isScreenLargerThan, sendEvent, toggleBooleanClass } from '../helpers/index';
+import { isMobile, sendEvent, toggleBooleanClass } from '../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[navbar]') : function() {};
 
@@ -116,10 +116,11 @@ export function newNavController() {
 					let open = self.toggles.searchResults;
 					toggleSearchResults(self, open);
 					if (open) {
-						// Move the main scroll positon to top.
-						if (window.scrollY > 0) {
-							// Setting it <= 1 would toggle off the pinned navbar.
-							window.scrollTo(0, 2);
+						let scrollPosNavbar = getScrollPosNavbar();
+						if (window.scrollY > scrollPosNavbar) {
+							// This means we're in sticky/poweruser mode.
+							// Scroll up to the navbar.
+							window.scrollTo(0, scrollPosNavbar);
 						}
 					}
 				});

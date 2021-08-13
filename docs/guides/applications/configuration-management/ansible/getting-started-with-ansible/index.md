@@ -71,7 +71,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
         ssh-keygen -t rsa -b 4096
 
-2.  Copy the key to `node-1`. Replace `203.0.113.0` with your managed Linode's ip address.
+2.  Copy the key to `node-1`. Replace `203.0.113.0` with your managed Linode's IP address.
 
         ssh-copy-id root@203.0.113.0
 
@@ -155,7 +155,7 @@ By default, Ansible's configuration file location is `/etc/ansible/ansible.cfg`.
     {{< output >}}
   ACTION_WARNINGS:
   default: true
-  description: [By default Ansible will issue a warning when recieved from a task
+  description: [By default Ansible will issue a warning when received from a task
       action (module or action plugin), These warnings can be silenced by adjusting
       this setting to False.]
   env:

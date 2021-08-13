@@ -34,7 +34,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 1. Configure all packages, applications, and system settings as desired.
 1. Remove any system users you don't want to appear on your duplicated systems.
 1. Shut down the Linode and either:
-    - [Duplicate the disk](/docs/guides/disk-images-and-configuration-profiles/#duplicating-a-disk).
+    - [Clone the disk](/docs/guides/linode-disks/#cloning-a-disk).
     - Alternatively, [take a snapshot](/docs/guides/linode-backup-service/#take-a-manual-snapshot) of the disk with Linode Backups.
 1. Store your golden image. This can be done in a variety of ways. A few examples are:
   - As a snapshot using [Linode Images](/docs/guides/linode-images/) or [Linode Backups](/docs/platform/linode-backup-service/#take-a-manual-snapshot).
@@ -44,7 +44,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 ### Restore a Golden Image
 
 1. Copy the duplicate disk to your other Linodes, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/guides/linode-backup-service/#restore-from-a-backup) to the desired Linodes.
-1. Create [configuration profiles](/docs/guides/disk-images-and-configuration-profiles/#creating-a-configuration-profile) on those additional Linodes to boot using the duplicated disk.
+1. Create [configuration profiles](/docs/guides/linode-configuration-profiles/) on those additional Linodes to boot using the duplicated disk.
 1. Any user credentials from the golden image will also be on the duplicated disks so you should change the new system's root password.
 1. Update the new Linode's [hostname](/docs/guides/getting-started/#setting-the-hostname).
 1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/guides/linux-static-ip-configuration/#static-network-configuration) on your duplicated disks.

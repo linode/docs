@@ -219,7 +219,7 @@ module "k8s" {
 
 1.  Initialize and apply your new Terraform configuration:
 
-        terrform workspace new mynewcluster
+        terraform workspace new mynewcluster
         terraform init
         terraform apply
 

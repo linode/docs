@@ -8,7 +8,7 @@ og_description: "This guide is a brief overview of IPv6 support on Linode, inclu
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-03-12
+modified: 2021-05-25
 modified_by:
   name: Linode
 published: 2011-05-03
@@ -86,25 +86,30 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 ## Additional IPv6 Addresses
 
-You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the range you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration) for instructions on how to do this.
+If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses can be requested by opening up a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support). Additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) for instructions.
 
-## IPv6 Prefixes and Pools
-
-{{< note >}}
-The IPv6 `/116` prefix is not available in the Toronto, Atlanta, or Mumbai data centers.
-{{</ note >}}
-
-IPv6 addresses are allocated in blocks. These are indicated with a slash `/` followed by a number in base 10, the length of the network **prefix** in bits. This translates to the number of available addresses in the **pool**. For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
+The size of each block is identified through a prefix. These are indicated with a slash `/` followed by a number in base 10: the length of the network **prefix** in bits. This translates to the number of available addresses that are available in the range (or pool). For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
 
 The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode provides are listed below.
 
-<!--You will see where the range is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.-->
+### IPv6 Routed Ranges
 
-| Prefix | Number of Addresses in Pool |
-|:------:|:-------------------------------:|
-| /56    | 4,722,366,482,869,645,213,696 |
-| /64    | 18,446,744,073,709,551,616    |
-| /116   | 4,096                         |
+An IPv6 routed range is assigned to a single Linode. Addresses from that range can only be configured on that Linode.
+
+- `/64` **routed range** *(18,446,744,073,709,551,616 addresses)*: This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
+- `/56` **routed range** *(4,722,366,482,869,645,213,696 addresses)*: These larger ranges are typically only required by specialized systems or networking applications. When requesting a `/56` range, please provided information regarding your use case.
+
+If you would like to reassign an IPv6 routed range to a different Linode within the same data center, open up a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support).
+
+### IPv6 Pools
+
+An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover.
+
+- `/116` **pool** *(4,096 addresses)*
+
+{{< note >}}
+The IPv6 `/116` prefix is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers.
+{{</ note >}}
 
 ## IPv6 Forwarding
 

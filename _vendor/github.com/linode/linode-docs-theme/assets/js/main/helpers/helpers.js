@@ -35,11 +35,10 @@ export function toggleClass(openClass, el, open) {
 	}
 }
 
-// See https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html#RULE_.237_-_Fixing_DOM_Cross-site_Scripting_Vulnerabilities
-export function sanitizeHTML(text) {
-	var element = document.createElement('div');
-	element.innerText = text;
-	return element.innerHTML;
+// normalizeSpace replaces any whitespace character (spaces, tabs, newlines and Unicode space) with a space.
+// Multiple spaces are collapsed into one.
+export function normalizeSpace(text) {
+	return text.replace(/\s\s+/g, ' ');
 }
 
 export const capitalize = (s) => {
@@ -69,6 +68,21 @@ export function sprintf(format) {
 	return format.replace(/%s/g, function() {
 		return args[i++];
 	});
+}
+
+// Borrowed from AlpineJS: https://github.com/alpinejs/alpine/blob/master/src/utils.js
+export function debounce(func, wait) {
+	var timeout;
+	return function() {
+		var context = this,
+			args = arguments;
+		var later = function() {
+			timeout = null;
+			func.apply(context, args);
+		};
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+	};
 }
 
 export function waitUntil(condition) {

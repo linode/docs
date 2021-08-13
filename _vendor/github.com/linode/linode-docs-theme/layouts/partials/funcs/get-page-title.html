@@ -1,0 +1,11 @@
+{{ $title :=  .Title }}
+{{ if eq .Section "products"}}
+  {{ $prefix := .CurrentSection.Title }}
+  {{ if and .IsSection .Parent }}
+    {{ $prefix = .Parent.Title }}
+  {{ end }}
+  {{ if ne $prefix $title }}
+    {{ $title = printf "%s - %s" $prefix .Title }}
+  {{ end }}
+{{ end }}
+{{ return $title }}

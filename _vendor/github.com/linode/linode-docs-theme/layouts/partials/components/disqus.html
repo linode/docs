@@ -1,5 +1,12 @@
+<div class="flex justify-between bg-gray-300 pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-6 mt-8">
+    <div class="font-regular tracking-normal">
+      <header class="font-bold text-lg mb-4">Join the conversation.</header>
+      <div>Read other comments or post your own below. Comments must be respectful, constructive, and relevant to the topic of the guide. Do not post external links or advertisements. Before posting, consider if your comment would be better addressed by contacting our <a href="https://www.linode.com/support/">Support team</a> or asking on our <a href="https://www.linode.com/community/questions/">Community Site</a>.</div>
+    </div>
+</div>
+
 <div class="pt-10" x-data="lnh.OnIntersection()" x-init="() => init();">
-  <template x-if="visible || (window.location.hash.startsWith('#comment-'))">
+  <template x-if="window.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
     <div>
       <div x-data="lnc.NewDisqusController('{{ .Site.DisqusShortname }}', lnPageInfo)" x-init="() => init()">
         <div id="disqus_thread"></div>

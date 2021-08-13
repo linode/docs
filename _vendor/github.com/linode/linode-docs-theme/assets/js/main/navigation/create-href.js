@@ -8,7 +8,6 @@ export function newCreateHref(searchConfig) {
 	}
 
 	const SECTIONS_BASEPATH = '/docs/';
-	const WP_CONTENT_BASEPATH = '/docs/content/';
 
 	return {
 		sectionsFromPath: function() {
@@ -18,6 +17,10 @@ export function newCreateHref(searchConfig) {
 		},
 		hrefSection: function(key) {
 			let parts = key.split(' > ');
+
+			if (parts.length > 1 && parts[0] === 'taxonomies') {
+				parts = parts.slice(1);
+			}
 			return `${SECTIONS_BASEPATH}${parts.join('/').toLowerCase()}/`;
 		}
 	};

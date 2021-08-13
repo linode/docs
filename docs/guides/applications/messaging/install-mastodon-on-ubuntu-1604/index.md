@@ -19,6 +19,11 @@ external_resources:
 - '[Docker Hub - Mastodon](https://hub.docker.com/r/gargron/mastodon/)'
 - '[Code Koalas - Setting Up Your First Mastodon Instance](https://codekoalas.com/blog/setting-your-first-mastodon-instance)'
 aliases: ['/applications/messaging/install-mastodon-on-ubuntu-1604/']
+relations:
+    platform:
+        key: install-mastodon
+        keywords:
+           - distribution: Ubuntu 16.04
 ---
 
 ## What is Mastodon?
@@ -81,7 +86,7 @@ When Certbot is run, you generally pass a command with the [`--deploy-hook` opti
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 
