@@ -3,8 +3,8 @@ slug: deploy-7-days-to-die-linux-game-server
 author:
   name: Sandro Villinger
   email: webmaster@windows-tweaks.info
-description: 'This guide shows you how to install the popular online game 7 Days to Die using LinuxGSM. LinuxGSM provides an easy installation. Once you have installed your game server, you and your friends can enjoy having full control over your gaming experience.'
-og_description: 'This guide shows you how to install the popular online game 7 Days to Die using LinuxGSM. LinuxGSM provides an easy installation. Once you have installed your game server, you and your friends can enjoy having full control over your gaming experience.'
+description: 'Looking to install 7 Days to Die using LinuxGSM? This guide shows you how.'
+og_description: 'Looking to install 7 Days to Die using LinuxGSM? This guide shows you how.'
 keywords: ['7 days to die Linux Server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-08
