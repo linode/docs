@@ -14,27 +14,16 @@ title: "How to Set Up Rook NFS for Persistent Storage on LKE"
 h1_title: "Setting Up Rook NFS for Persistent Storage on LKE"
 enable_h1: true
 contributor:
-<<<<<<< HEAD
   name: Todd Becker
 aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE']
-=======
-  name: Linode
-  link: https://github.com/leslitagordita/
-aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE/']
->>>>>>> 5e97a6afbdfcdc24a9444c39a17309015a3b6cb1
 ---
 
 Rook NFS allows remote hosts to mount filesystems over a network and interact with those filesystems as though they are mounted locally. When used with LKE, Rook can mount a Linode Block Storage PVC which uses `ReadWriteOnce` permissions. The volume can then be leveraged as NFS and exported as a storage class that uses `ReadWriteMany` permissions. This allows Linode's Block Storage to store persistent data for LKE clusters.
 
 ## Before you Begin
 
-<<<<<<< HEAD
 - This guide assumes that you already have an LKE cluster up and running. If that is not the case, please follow the instructions in our [LKE Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
 - This guide relies on git wherever `kubectl` is installed. While git is installed on many Linux distributions, others may require manual installation. Git can be installed on most distributions by following our [Git Installation Guide](/docs/guides/how-to-install-git-on-linux-mac-and-windows/)
-=======
-- This guide assumes that the reader already has an LKE cluster up and running. If that is not the case, please follow the instructions in our [LKE Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
-- This guide will rely on git wherever `kubectl` is installed. While git is installed on many distributions, others may require manual installation. Git can be installed on most distributions by following our [Installation Guide](/docs/guides/how-to-install-git-on-linux-mac-and-windows/)
->>>>>>> 5e97a6afbdfcdc24a9444c39a17309015a3b6cb1
 
 ## Installing Rook NFS on LKE
 
