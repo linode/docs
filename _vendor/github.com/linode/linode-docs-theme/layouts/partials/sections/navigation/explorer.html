@@ -5,7 +5,7 @@
   @click.away="closeIfMobile()" data-turbolinks-permanent>
   <nav class="h-full block top-0 overflow-x-hidden" x-show="isOpen()" x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700"
   x-transition:enter-start="opacity-0 transform mobile:-translate-x-8 sm:-translate-y-8" x-transition:enter-end="opacity-100 transform mobile:translate-x-0 sm:translate-y-0">
-    <div x-show.transition="isSearchFiltered" class="pl-5 md:pl-6 h-8 bg-black flex items-center text-xs font-semibold" data-testid="search-filter-status">
+    <div x-show.transition="isSearchFiltered" class="pl-5 md:pl-6 h-8 bg-black flex items-center text-xs font-semibold" data-testid="search-filter-status" x-cloak>
       <div class="bg-brand rounded-full h-1 w-1 mr-2"></div>
       <div class="text-white">
         Filtered by search term
