@@ -16,7 +16,7 @@ h1_title: "How to Install the Element Chat Application"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Element](https://element.io/)'
 - '[Matrix](https://matrix.org/)'

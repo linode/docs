@@ -242,7 +242,7 @@ public class AboutController extends Controller {
 </html>
     {{< /file >}}
 
-1. Run the application using the steps given in the [Check Out the Example Applications](/docs/guides/build-a-website-with-the-play-framework/#check-out-the-example-applications) section.
+1. Run the application using the steps given in the [Check Out the Example Applications](#play-framework-example-applications) section.
 
     You can visit the application on `localhost:9000`.
 
