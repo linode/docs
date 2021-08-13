@@ -3,49 +3,45 @@ slug: understanding-docker-volumes
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container using CentOS 7 on a Linode for the example.'
+description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container.'
+og_description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container.'
 keywords: ["docker", "volume", "docker volume", "docker volumes", "docker container", "docker containers", "docker volume", "docker volumes"]
 tags: ["volume","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-05-17
+published: 2021-08-13
 modified_by:
   name: Linode
 title: "Understanding Docker Volumes"
-h1_title: "Understanding Docker Volumes."
-contributor:
 external_resources:
 - '[Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)'
 - '[Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)'
 ---
-Docker uses Docker Volumes to create data persistence when working in Docker Containers. Think of them as an external hard drive to the basic computer system a Docker Container will provide. The Docker Volume will not increase the Docker Image size, as it's separate from the image itself. And, as the Docker Volume is stored on the host and independent of a container or image, it can be mounted in different containers as necessary.
+
+Files (and other data) stored within a Docker container does not persist if the container is deleted. To overcome this, Docker *volumes* and *bind mounts* can be used. This guide discusses using [Docker volumes](https://docs.docker.com/storage/volumes/) as a way to store persistent data. Think of volumes as an external hard drive; if the internal hard drive is erased, the external hard drive still retain its own data. Volumes are stored on the host and independent of any container or image. They can be mounted to different containers as needed and, since volumes are separate from the image, they do not increase the image size.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and have a Linode (or other systems) running Docker.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and have a Linode (or other Linux system) running Docker.
 
-2.  This guide assumes you are comfortable with the *command-line interface* (CLI) on a Unix-like system and working with programs through it.
+2.  This guide assumes you are comfortable using the Linux command-line. See [Using the terminal](/docs/guides/using-the-terminal/).
 
-3.  This guide assumes you have created Docker Images and containers to connect a volume to.
+3.  This guide assumes you have a basic understanding of Docker. In addition, you should have already installed Docker on your server and deployed a Docker image. See [An Introduction to Docker
+](/docs/guides/introduction-to-docker/).
 
-4.  Update your system with the package manager it uses.
-
-## How to Create a Docker Volume
+## Creating a Docker Volume
 
 To start understanding Docker Volumes, you'll need a volume to work on.
 
-1.  At the command prompt, create a volume by entering the following command (this example will create a Docker volume with the name “example_volume”):
+1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
 
-        docker volume create example volume
-    The output will list the name of the volume and take you back to the command prompt:
-{{< output >}}
-[mumbly@linode ~]$ docker volume create example_volume
-example_volume
-[mumbly@linode ~]$
-{{< /output >}}
+1.  Create a volume by entering the following command, replacing *example_volume* with the label for your volume.
 
-2.  Verify the volume has been created by entering the following command:
+        docker volume create example_volume
+
+2.  Verify the volume has been created.
 
         docker volume list
+
     The output should look like this:
 {{< output >}}
 [mumbly@linode ~]$ docker volume list
@@ -54,13 +50,13 @@ local     example_volume
 [mumbly@linode ~]$
 {{< /output >}}
 
-### Inspecting a Docker Volume
+## Inspecting a Docker Volume
 
 If you want to look at more details about a volume, you can use the `docker volume inspect` command:
 
-        docker volume inspect example_volume
+    docker volume inspect example_volume
 
-The output will look something like this:
+The output should be similar to the following:
 
 {{< output >}}
 [mumbly@linode ~]$ docker volume inspect example_volume
@@ -78,13 +74,14 @@ The output will look something like this:
 [mumbly@linode ~]$
 {{< /output >}}
 
-## How to Mount a Docker Volume to a Docker Container
+## Mounting a Docker Volume to a Container
 
-For a container's data to persist, you need to have a Docker Volume mounted, which happens using the `--mount flag` in the `docker run` command. Such as:
+For a container's data to persist, you need to have a Docker Volume mounted using the `--mount flag` in the `docker run` command. Replace *[volume_name]* with the name of your volume, *[path]* with the absolute path you wish to mount the volume to within the container, and *[docker_image]* with the name of your image.
 
-    docker run --mount source=[volume_name],destination=[path_in_container] [docker_image]
+    docker run --mount source=[volume_name],destination=[path] [docker_image]
 
-Using our example volume with an Ubuntu image, we could enter this example command:
+
+As an example, the following command mounts the volume named *example_volume* to the path `/example_volume` inside a container using the `ubuntu` image.
 
     docker run -it --name=example --mount source=example_volume,destination=/example_volume ubuntu
 
@@ -98,66 +95,59 @@ boot  etc  home            lib32  libx32  mnt    proc  run   srv   tmp  var
 root@b64eb2eafcdf:/#
 {{< /output >}}
 
-## How to Copy and Share Files Between Containers
+## Copying and Sharing Files Between Containers
 
 Docker Volumes also allow sharing between containers.
 
-To share a file between containers:
-
-1.  Enter the following command to mount the volume:
+1.  Mount the volume according to the instructions within [Mounting a Docker Volume to a Container](mounting-a-docker-volume-to-a-container). Here is the example used previously:
 
         docker run -it --name=example --mount source=example_volume,destination=/example_volume ubuntu
 
-2.  Change the directory to the `example_data` directory:
+2.  Change the directory to the `example_data` directory.
 
         cd example_data
 
-3.  Create a test file in the volume by entering the following `touch` command:
+3.  Create a test file in the volume by entering the following `touch` command.
 
         touch example_file.txt
 
-4.  Then exit from this container:
+4.  Then exit the container.
 
         exit
 
-5.  We need a second container, so run an image (we'll use the Debian image in the example) and attach the volume to it by entering the following:
+5.  Now run another docker image with the same volume mounted. The `debian` image is used in the example below.
 
         docker run -it --name=example_2 --mount source=example_volume,destination=/example_volume debian
 
-8.  Then, in the "example_2" container, enter:
+8. Within the new container (called "example_2" if using a command similar to the one above) container, navigate to the volume's directory.
 
-        change directoriescd example_volume
+        cd example_volume
 
-9.  Enter `ls` to see the file:
+9.  Enter `ls` to see the file.
+
+        ls
+
+## Mounting a Directory from Your Linode to a Container
+
+Instead of creating a new volume, you can also mount a directory from your Linode (or other system) to a Docker container. This is accomplished through [bind mounts](https://docs.docker.com/storage/bind-mounts/) and is helpful when you want to store and access your a container's files directly from your system. Compared to volumes, bind mounts have limited functionality.
+
+
+1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
+
+1.  Use the following command to run Docker, replacing *[local-directory]* with the absolute path to the directory within your Linode that you'd like to mount (use `$(pwd)` to mount the current directory). Then replace *[mount-directory]* with the absolute path on your countiner where you wish to access the local files and replace *[image]* with the Docker image you wish to use.
+
+        docker run --rm -it -v [local-directory]:[mount-directory] [image]
+
+3.  You are automatically logged in to the container. Navigate to your mount directory and view the files.
 
         ls
 
-## How to Mount a Directory from the Host System in a Container
-
-Say you want to mount a directory from your host system as a volume within the container. If you go to the directory you want (for this example we'll use the user's home directory), you just need to enter: `docker run -v "$(pwd)":` with the name of the volume and the name of the Docker Image following. So, to mount the user's home directory with the name "external" in an example Ubuntu container:
-
-1.  Go to your home directory in the terminal.
-
-2.  Enter the following command:
-
-        docker run --rm -it -v $(pwd):/external ubuntu
-
-3.  The CLI will switch to the container's command prompt. Enter:
-
-        ls
-    The output should look like this:
-    {{< output >}}
-root@a838e1d52c4b:/# ls
-bin  boot  dev  etc  external lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-root@a838e1d52c4b:/#
-{{< /output >}}
-
-Mounting directories within the container will then give you easy access from your host system.
+    You should see any files you have stored within the local directory.
 
 ## Further Reading
 
 There's a great deal more to Docker Volumes than we can go into here, and everyone's use case will be different. However, two great places to review more about this are at Docker's Docs site itself:
 
--   '[Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)'
+-   [Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)
 
--   '[Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)'
+-   [Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)
