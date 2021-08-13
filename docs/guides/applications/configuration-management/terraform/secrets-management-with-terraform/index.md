@@ -8,12 +8,13 @@ keywords: ['terraform','secrets','secrets management','backend','hcl']
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2021-07-07
+modified: 2021-08-13
 modified_by:
   name: Linode
 image: SecretsManagementwithTerraform.png
 title: "Secrets Management with Terraform"
 h1_title: "Managing Secrets with Terraform"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -95,7 +96,7 @@ Supplying multiple `.tfvars` files is another way to further separate secret var
 
 {{< /note >}}
 
-#### Marking variables as sensitive
+#### Marking Variables as Sensitive
 
 You have so far defined variables in the following format:
 
@@ -248,7 +249,7 @@ After the variables are properly defined, the next time you run Terraform, it au
 terraform apply
 {{< /note >}}
 
-### Install `pass`
+### Installing `pass`
 
 If you don't already have `pass` installed on your machine, run the following command to install it:
 
