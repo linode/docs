@@ -82,12 +82,12 @@ Provided a newer kernel is available, you should be able to either manually (or 
 
 Follow these steps if the Linode is using a Linode kernel:
 
--   **Latest 64-bit or 32-bit kernel**: Rebooting the Linode automatically updates the kernel used within your system.
+-   **Latest 64-bit or 32-bit kernel**: Rebooting the Linode automatically updates the kernel used within your system to the latest Linode kernel release.
 -   **Specific kernel version** (ex: `5.12.2-x86_64-linode144`): To update your kernel, follow the instructions within the [Viewing and Modifying the Kernel in the Cloud Manager](#viewing-and-modifying-the-kernel-in-the-cloud-manager) section. When selecting the kernel in the Linode's Configuration Profile, chose your desired kernel version (or select `Latest 64 bit`), save the changes, and reboot your Linode.
 
 ### Updating the Upstream Kernel
 
-Follow these steps if the Linode is using an upstream kernel (the default for most new Linodes created after August 20218):
+Follow these steps if the Linode is using an upstream kernel (the default for most new Linodes created after August 2018):
 
 1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
 
