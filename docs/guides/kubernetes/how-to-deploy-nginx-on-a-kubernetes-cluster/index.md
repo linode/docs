@@ -8,7 +8,7 @@ tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","co
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
-modified: 2021-06-22
+modified: 2021-08-13
 published: 2017-11-27
 title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
 aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/','/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
@@ -373,46 +373,46 @@ Events:
         root@kube-master:~# kubectl get deployments
         No resources found.
 
-## Does Kubernetes Need NGINX?
-
-There is a big difference in the purpose that Kubernetes and NGINX serve. Kubernetes manages your NGINX, TOMCAT, NGINX, and other containerized applications. Whereas, NGINX is a web-based server.
-
-Most cloud providers now allow you to apply certain rules and presets like secure authentication, rate limiting, etc - but to achieve more control over some of these rules with your Kubernetes cluster NGINX is incredibly helpful.
-
 ## Why Use Ingress?
 
-Using Ingress can help you with the following:
-    - Creating external URLs that are accessible from outside for your apps that are deployed in Kubernetes clusters
-    - Defining rules for load balancing and traffic routing
-    - Defining rules for SSL termination
-    - Support for URI based routing
+Ingress manages external access to services running within a Kubernetes cluster. As such, its key benefits are:
+
+- Allows external HTTP access to apps running within the cluster.
+- Enables load balancing and other traffic routes.
+- Facilitates TLS/SSL termination.
+- Supports URI based routing.
 
 ## How Does NGINX Ingress Work?
 
 NGINX Ingress controller runs in a Kubernetes Cluster as an application and leverages Ingress resources to configure a load balancer. This controller helps with TLS/SSL termination, load balancing, and also with content-based routing.
 
-Currently, NGINX Ingress controller supports both NGINX and NGINX plus features.
+Currently, NGINX Ingress controller supports both NGINX and NGINX Plus features.
 
 ## How To Identify Which Ingress Controllers Are You Using?
-To identify which controllers your NGINX Kubernetes cluster is using, you can go to the contaIner image of your Ingress controller.
+
+To identify which controllers your NGINX Kubernetes cluster is using, you can go to the container image of your Ingress controller.
 
 ## How To Install Ingress On A Kubernetes Cluster?
 
-### Install Helm
+### Installing Helm
+
 To install Ingress with this guide, you can use Helm. If not already installed, you can run the following script on your terminal to install it:
 
     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
     chmod 700 get_helm.sh
     ./get_helm.sh
 
-You can also install Helm using other package managers like apt too.
+For more details on Helm and installing Helm, see [How to Install Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/).
 
-Installing Ingress controller
+### Installing Ingress Controller
+
 1.  First, update your Helm repositories by running the following command:
-    Helm repo update
+
+        helm repo update
 
 1.  Install NGINX controller
-    helm install nginx-ingress stable/nginx-ingress
+
+        helm install nginx-ingress stable/nginx-ingress
 
 When you run the last command, you not only get an Ingress controller installed but this command also automatically creates a Linode LoadBalancer.
 
