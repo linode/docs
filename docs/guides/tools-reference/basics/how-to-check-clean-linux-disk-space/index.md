@@ -1,18 +1,17 @@
 ---
 slug: check-and-clean-linux-disk-space
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Find out how to check and free up disk space from your Linux command line."
-og_description: "Find out how to check and free up disk space from your Linux command line."
+  name: Nathaniel Stickman
+description: "This guide shows you how to check and free up disk space from the Linux command line. The two commands explored in this guide are the df and du Linux commands. You also learn how to use Linux system package managers to remove unnecessary packages."
+og_description: "This guide shows you how to check and free up disk space from the Linux command line. The two commands explored in this guide are the df and du Linux commands. You also learn how to use Linux system package managers to remove unnecessary packages."
 keywords: ['linux disk space','linux check disk space','linux free disk space']
-tags: ['linux', 'debian', 'fedora']
+tags: ['linux', 'debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-15
+published: 2021-08-13
 modified_by:
   name: Nathaniel Stickman
-title: "Check and Clean Linux Disk Space"
-h1_title: "How to Check and Clean Linux Disk Space"
+title: "Check and Clean a Linux System's Disk Space"
+h1_title: "How to Check and Clean a Linux System's Disk Space"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
@@ -21,23 +20,13 @@ contributor:
 
 Linux provides several built-in commands for analyzing and cleaning up your system's disk space. This guide shows you how to use those commands to get a closer look at your disk usage and start freeing up space.
 
-## Before You Begin
-
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-{{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 ## How Do I Check Disk Space on Linux?
 
-Linux systems have two commands readily available for checking on your disk space. These give you everything from a high-level view of your whole system's available disk space to the disk usage within particular directories.
+Linux systems have two commands readily available for checking your disk space. These commands provide a high-level view of your whole system's available disk space and the disk usage within particular directories.
 
 ### How to Check Linux Disk Space with the df Command
 
-Use the `df` command to get a look at your system's available disk space for each drive.
+Use the `df` command to view your system's available disk space for each drive.
 
     sudo df
 
@@ -52,9 +41,9 @@ tmpfs            4076368       0   4076368   0% /sys/fs/cgroup
 tmpfs             815272       0    815272   0% /run/user/1000
 {{< /output >}}
 
-The `df` command (short for "disk free") shows each drive's disk size, space used, and free space. Each "block" numbered in the above output represents one kilobyte.
+The `df` command (short for "disk free") shows each drive's disk size, space used, and free space. Each "block" in the above output represents one kilobyte.
 
-To make the output from `df` easier to read, you can add the `-h` option. With it, the command displays disk space in kilobytes (K), megabytes (M), and gigabytes (G).
+To make the output from `df` easier to read, you can add the `-h` option. This option displays disk space in kilobytes (K), megabytes (M), and gigabytes (G).
 
     sudo df -h
 
@@ -69,7 +58,7 @@ tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
 tmpfs           797M     0  797M   0% /run/user/1000
 {{< /output >}}
 
-You can also use the `df` command to target a specific drive, using either its "Filesystem" or "Mounted on" description.
+You can also use the `df` command to target a specific drive, using either its "Filesystem" or "Mounted on" description from the columns above.
 
     sudo df -h /dev/sda
 
@@ -82,7 +71,7 @@ The above command is equivalent to `sudo df -h /`.
 
 ### How to Check Linux Disk Space with the du Command
 
-Use the `du` command to analyze disk space at a more granular level. This command summarizes the space usage for a specified or the current directory if none is specified.
+Use the `du` command to analyze disk space at a more granular level. This command summarizes the space usage for a specified directory or the current directory if none is specified.
 
     sudo du /etc/systemd
 
@@ -100,7 +89,7 @@ Use the `du` command to analyze disk space at a more granular level. This comman
 
 The `du` command lists all of the files and directories in the target directory and displays their disk usage in kilobytes.
 
-The last entry in the list is always the target directory itself, giving you a summary of the directory's disk usage. You can get just that entry by using the `-s` option, which is useful for directories with many files and subdirectories.
+The last entry in the list is always the target directory itself, giving you a summary of the directory's disk usage. You can isolate disk space information for the target directory by using the `-s` option. This is a useful option for directories with many files and subdirectories.
 
     sudo du -s /
 
@@ -108,7 +97,7 @@ The last entry in the list is always the target directory itself, giving you a s
 4129183 /
 {{< /output >}}
 
-As with the `df` command, you can make the output easier to read with the `-h` option. This causes the disk space to be displayed in kilobytes (K), megabytes (M), and gigabytes (G). In the below example, the `-h` option is used in combination with the `-s` option.
+As with the `df` command, you can make the output easier to read with the `-h` option. This causes the disk space to be displayed in kilobytes (K), megabytes (M), and gigabytes (G). In the example below, the `-h` option is used in combination with the `-s` option.
 
     sudo du -sh /etc
 
@@ -118,13 +107,13 @@ As with the `df` command, you can make the output easier to read with the `-h` o
 
 ## How Do I Clean Disk Space on Linux?
 
-Maybe you need more space to install additional software, or maybe you got a warning that your system's disk space is critically low. Regardless, likely at some point you want to free up disk space on your Linux system.
+You may need to clean your disk space on Linux because you need space to install additional software. Another reason may be that you received a warning that your system's disk space is critically low. It is likely that at some point you may need to free up disk space on your Linux system.
 
 The best place to start is usually with your Linux package manager. Each package manager offers options to quickly and easily clear out space from unused or unnecessary packages and related data.
 
 ### How to Remove Unnecessary Packages
 
-Most major package managers include an `autoremove` command. This command automatically removes packages that are no longer in use — typically, packages that were originally installed as dependencies for other packages.
+Most major package managers include an `autoremove` command. This command automatically removes packages that are no longer in use. These packages are typically ones that were originally installed as dependencies for other packages.
 
 With Debian and Ubuntu distributions, you can use APT's version of the command:
 
@@ -142,11 +131,11 @@ And the same applies to Fedora's DNF package manager:
 
 Linux package managers generally also include a `clean` command. This command clears the cache used by the package manager. It can also be a helpful command if you are having package errors due to corrupted metadata.
 
-For Debian and Ubuntu, the single APT command is all you need.
+For Debian and Ubuntu, use the command below.
 
     sudo apt clean
 
-APT also has an `autoclean` command. This command clears the cache only for (usually old) packages that can no longer be downloaded from APT's repositories.
+APT also has an `autoclean` command. This command clears the cache for outdated packages that can no longer be downloaded from APT's repositories.
 
     sudo apt autoclean
 
@@ -160,7 +149,7 @@ If you still need space, you may want to look at your installed packages and sta
 
 1. List the packages you have installed.
 
-    - For Debian and Ubuntu, use the below `apt` command:
+    - For Debian and Ubuntu, use the `apt` command below:
 
             sudo apt list --installed
 
@@ -170,7 +159,7 @@ If you still need space, you may want to look at your installed packages and sta
 
     - On Fedora, the command is similar to the YUM command; simply replace `yum` with `dnf`.
 
-1. Uninstall each package that you no longer need or want on your system. Replace `nginx` in the following examples with the name of the package to be removed.
+1. Uninstall each package that you no longer need or want on your system. In the following examples, replace `nginx` with the name of the package to be removed.
 
     - Uninstall a package with the `apt` command:
 
@@ -185,9 +174,9 @@ If you still need space, you may want to look at your installed packages and sta
             sudo dnf remove nginx
 
     {{< note >}}
-Before removing packages, be sure you know that they are not required by the system. Usually, you can safely remove packages that you installed yourself at some point, but be cautious of removing packages that you do not recognize.
+Before removing packages, ensure that they are not required by the system. Usually, you can safely remove packages that you installed, but be cautious of removing packages that you do not recognize.
     {{< /note >}}
 
 ## Next Steps
 
-Still looking for more disk space? You may want to think about getting additional space for your Linux system. With Linode, you can do this relatively easily by following our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide.
+Still looking for more disk space? You may want to think about getting additional space for your Linux system. You can follow our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide to learn how to increase your Linode's plan size.
