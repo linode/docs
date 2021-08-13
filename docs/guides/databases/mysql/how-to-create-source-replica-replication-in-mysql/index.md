@@ -205,7 +205,7 @@ To export a single database, include the `--opt <database_name>` option rather t
 
 ### Configure the MySQL Replica Database
 
-The following configuration should be applied to the replica database configuration. To install MySQL on the replica server, see the [Install MySQL](/docs/guides/how-to-create-source-replica-replication-in-mysql/#install-mysql) section.
+The following configuration should be applied to the replica database configuration. To install MySQL on the replica server, see the [Install MySQL](#install-mysql) section.
 
 1. Open the main MySQL file, usually located at `/etc/mysql/mysql.conf.d/mysqld.cnf`, and change the `bind-address` to match the IP address of the replica server.
 
@@ -257,7 +257,7 @@ The next step is to import the copy of the database data, set the replication so
 
         STOP REPLICA;
 
-1. Enter the `CHANGE REPLICATION SOURCE` command, along with the following details. Substitute the IP address of the source database server in place of `source_ip_address`. For `SOURCE_USER` and `SOURCE_PASSWORD`, enter the replica's user name and password details from in the [Configure a new MySQL User for the Replica](/docs/guides/how-to-create-source-replica-replication-in-mysql/#configure-a-new-mysql-user-for-the-replica) section. For the `SOURCE_LOG_FILE` and `SOURCE_LOG_POS` values, enter the information you recorded from the `SHOW MASTER STATUS;` command.
+1. Enter the `CHANGE REPLICATION SOURCE` command, along with the following details. Substitute the IP address of the source database server in place of `source_ip_address`. For `SOURCE_USER` and `SOURCE_PASSWORD`, enter the replica's user name and password details from in the [Configure a new MySQL User for the Replica](#configure-a-new-mysql-user-for-the-replica) section. For the `SOURCE_LOG_FILE` and `SOURCE_LOG_POS` values, enter the information you recorded from the `SHOW MASTER STATUS;` command.
 
         CHANGE REPLICATION SOURCE TO SOURCE_HOST='source_ip_address',SOURCE_USER='replica_account_name', SOURCE_PASSWORD='REPLICA_PASSWORD', SOURCE_LOG_FILE='log_file_name', SOURCE_LOG_POS=log_position;
 
