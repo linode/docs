@@ -286,7 +286,7 @@ resource "linode_stackscript" "default" {
 }
 {{</ file >}}
 
-      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [Automate Deployments with StackScripts](/docs/products/tools/stackscripts/) guide and the [Linode APIv4](/docs/api/stackscripts) documentation.
+      The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars` file. For more information on StackScripts see the [StackScripts product page](/docs/products/tools/stackscripts/) and the [Linode APIv4 StackScripts reference](/docs/api/stackscripts).
 
 1. Create the `variables.tf` file to define your resource's required variables:
 
