@@ -9,10 +9,12 @@ keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce'
 tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
+modified: 2021-08-13
 modified_by:
   name: Linode
 title: "How to Deploy WooCommerce with Marketplace Apps"
 h1_title: "Deploying WooCommerce with Marketplace Apps"
+enable_h1: true
 aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/']
 contributor:
   name: Linode
@@ -37,7 +39,7 @@ external_resources:
 | **Field** | **Description** |
 |:--------------|:------------|
 | **Website Title** | Your WordPress site's title. |
-| **E-Mail Address** | E-Mail address for your WordPress admin user. This is also used as the start of authority (SOA) email address for this server. This email address is added to the SOA record for the domain. This is a required field if you want the installer to create DNS records. *Required*. |
+| **E-Mail Address** | E-Mail address for your WordPress admin user. This is also used as the SOA email address if you also enter a domain. *Required*. |
 | **Admin Username** | Username for your WordPress admin user. *Required*. |
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
 | **MySQL root Password** | The root password for your MySQL database. *Required*. |
@@ -45,10 +47,10 @@ external_resources:
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
-| **Enable passwordless sudo access for the limited user?** | If you entered an SSH Public Key above and it is for the limited user account, select `Yes`, this allows SSH to use Public Key login for the limited user. Select `No` if you want SSH to rely on using password login for the limited user account. |
-| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
+| **Enable passwordless sudo access for the limited user?** | If you entered an SSH Public Key above and it is for the limited user account, select `Yes`, this allows SSH to use Public Key login for the limited user (recommended). Select `No` if you want SSH to rely on using password login for the limited user account. |
+| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH (recommended). Select `No` to allow the root account to login via SSH. |
 | **Configure automatic security updates** | Select `Yes` to have the system automatically update WordPress with the latest security updates. Select `No` to if you wish to manage all updates manually. |
-| **Use fail2ban to prevent automated intrusion attemps?** | Select `Yes` to install fail2ban. Select `No` to not install fail2ban during installation. You [can install this at a later time](/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/). |
+| **Use fail2ban to prevent automated intrusion attemps?** | Select `Yes` to install fail2ban. Select `No` to not install fail2ban during installation. If you chose `No`, you can install fail2ban later by following the [Using Fail2ban to Secure Your Server](/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/) guide. |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name where you wish to host your WordPress site. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
