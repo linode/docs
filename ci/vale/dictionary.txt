@@ -608,6 +608,7 @@ hd0
 hdfs
 healthcheck
 heartbleed
+heredoc
 heroku
 hexo
 hiera
