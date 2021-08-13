@@ -3,8 +3,8 @@ slug: nodebalancers
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using the Linode API, it is possible to set up NodeBalancers without using the Linode Manager. This guide will demonstrate the API calls needed to add and configure a NodeBalancer with two back end nodes.'
-og_description: 'Using the Linode API, it is possible to set up NodeBalancers without using the Linode Manager. This guide will demonstrate the API calls needed to add and configure a NodeBalancer with two back end nodes.'
+description: 'We teach you all about the API calls needed to add and configure a NodeBalancer for your Linode API. '
+og_description: 'We teach you all about the API calls needed to add and configure a NodeBalancer for your Linode API. '
 keywords: ["nodebalancer", "load balancing", "high availability", "linode api"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/api/nodebalancers/','/linux-tools/common-commands/tail/']

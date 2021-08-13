@@ -3,8 +3,8 @@ slug: use-couchdb-2-0-on-ubuntu-20-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and explains how to use CouchDB 2.0 on Ubuntu.'
-og_description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and explains how to use CouchDB 2.0 on Ubuntu.'
+description: 'Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu.'
+og_description: 'Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu.'
 keywords: ['couchdb','nosql','fauxton','database','ubuntu 20.04']
 tags: ['couchdb','fauxton', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

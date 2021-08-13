@@ -3,15 +3,15 @@ slug: how-to-deploy-an-lke-cluster-using-terraform
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide you will deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform. LKE is Linode''s managed Kubernetes service and Terraform is the popular infrastructure as code (IaC) tool. After completing this guide, you will have Terraform configuration files that can be reused to reliably deploy an LKE cluster.'
-og_description: 'In this guide you will deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform. LKE is Linode''s managed Kubernetes service and Terraform is the popular infrastructure as code (IaC) tool. After completing this guide, you will have Terraform configuration files that can be reused to reliably deploy an LKE cluster.'
+description: 'In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform.'
+og_description: 'In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform.'
 keywords: ['kubernetes','terraform','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-05
 modified_by:
   name: Linode
-title: "How to Deploy a Linode Kubernetes Engine Cluster Using Terraform"
+title: "Deploy a Kubernetes Engine Cluster Using Terraform"
 h1_title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
 image: deploy-lke-cluster-with-terraform.png
 contributor:

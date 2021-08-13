@@ -3,16 +3,17 @@ slug: how-to-install-drupal-with-linode-kubernetes-engine
 author:
   name: Linode
   email: docs@linode.com
-description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
-og_description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
+description: 'Learn how to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
+og_description: 'Learn how to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
 keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
 tags: ["mysql","kubernetes","container","cms","drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:
   name: Linode
-title: "How to Install Drupal with Linode Kubernetes Engine"
-h1_title: "Installing Drupal with Linode Kubernetes Engine"
+title: "Install Drupal with Linode Kubernetes Engine"
+h1_title: "How to Install Drupal with Linode Kubernetes Engine"
+enable_h1: true
 contributor:
   name: Rajakavitha Kodhandapani
 

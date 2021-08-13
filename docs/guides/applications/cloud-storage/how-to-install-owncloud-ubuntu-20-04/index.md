@@ -3,8 +3,8 @@ slug: how-to-install-owncloud-ubuntu-20-04
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Ubuntu 20.04 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
-og_description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on Ubuntu 20.04 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
+description: 'We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration.'
+og_description: 'We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration.'
 keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12
