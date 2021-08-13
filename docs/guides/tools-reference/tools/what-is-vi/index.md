@@ -161,7 +161,7 @@ When you want to paste text that you have copied or cut, Vi provides two command
 
 ### Search and Replace
 
-Vi uses the `/` command to start a search. Once you enter the `/` command, you can begin entering your search text. Below is an example that seraches for the word `TODO`. Note that Vi's searches are case sensitive:
+Vi uses the `/` command to start a search. Once you enter the `/` command, you can begin entering your search text. Below is an example that searches for the word `TODO`. Note that Vi's searches are case sensitive:
 
     /TODO
 
