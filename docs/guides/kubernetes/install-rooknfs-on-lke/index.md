@@ -15,7 +15,7 @@ h1_title: "Setting Up Rook NFS for Persistent Storage on LKE"
 enable_h1: true
 contributor:
   name: Todd Becker
-aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE']
+aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE/']
 ---
 
 Rook NFS allows remote hosts to mount filesystems over a network and interact with those filesystems as though they are mounted locally. When used with LKE, Rook can mount a Linode Block Storage PVC which uses `ReadWriteOnce` permissions. The volume can then be leveraged as NFS and exported as a storage class that uses `ReadWriteMany` permissions. This allows Linode's Block Storage to store persistent data for LKE clusters.
