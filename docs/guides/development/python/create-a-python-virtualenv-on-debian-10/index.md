@@ -3,8 +3,8 @@ slug: create-a-python-virtualenv-on-debian-10
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an Debian 10 Linode and create a virtual environment running Python3.'
-og_description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an Debian 10 Linode and create a virtual environment running Python3.'
+description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool.'
+og_description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool.'
 keywords: ["python", "python virtual environment", "virtualenv", "debian 10"]
 tags: ["python","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

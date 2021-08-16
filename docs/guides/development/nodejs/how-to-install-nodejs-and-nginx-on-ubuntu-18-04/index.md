@@ -3,8 +3,8 @@ slug: how-to-install-nodejs-and-nginx-on-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com
-description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
-og_description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
+description: 'This guide will show you how to configure Icinga 2 to monitor both local and remote systems.'
+og_description: 'This guide will show you how to configure Icinga 2 to monitor both local and remote systems.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "ubuntu", " front-end requests", " back-end requests"]
 tags: ["ubuntu", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +14,7 @@ modified_by:
 published: 2020-04-14
 title: 'How to Install Node.js and NGINX on Ubuntu 18.04'
 h1_title: 'Installing Node.js and NGINX on Ubuntu 18.04'
+enable_h1: true
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'

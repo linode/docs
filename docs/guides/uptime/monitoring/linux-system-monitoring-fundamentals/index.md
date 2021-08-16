@@ -3,8 +3,8 @@ slug: linux-system-monitoring-fundamentals
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: 'The only way to know that your Linux-server-based applications and services are running well is to measure what''s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves.'
-og_description: 'The only way to know that your Linux-server-based applications and services are running well is to measure what''s going on in the computer and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves.'
+description: 'Monitoring is really the only way to know that your your Linux system is running as it should. We''ll walk you through what that involves.'
+og_description: 'Monitoring is really the only way to know that your your Linux system is running as it should. We''ll walk you through what that involves.'
 keywords: ['linux system monitoring']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
