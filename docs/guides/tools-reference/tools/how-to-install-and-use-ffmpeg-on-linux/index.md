@@ -15,7 +15,7 @@ h1_title: "How to Install and Use FFmpeg on Linux"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[FFMpeg](http://ffmpeg.org/)'
 - '[FFmpeg-Python GitHub page](https://github.com/kkroening/ffmpeg-python)'

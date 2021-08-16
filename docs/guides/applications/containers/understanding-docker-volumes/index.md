@@ -99,7 +99,7 @@ root@b64eb2eafcdf:/#
 
 Docker Volumes also allow sharing between containers.
 
-1.  Mount the volume according to the instructions within [Mounting a Docker Volume to a Container](mounting-a-docker-volume-to-a-container). Here is the example used previously:
+1.  Mount the volume according to the instructions within [Mounting a Docker Volume to a Container](#mounting-a-docker-volume-to-a-container). Here is the example used previously:
 
         docker run -it --name=example --mount source=example_volume,destination=/example_volume ubuntu
 
