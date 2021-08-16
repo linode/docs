@@ -6,8 +6,8 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'This guide shows how to install a variety of useful Elasticsearch plugins.'
-og_description: 'Elasticsearch supports a wide variety of plugins which enable more powerful search features. This guide will explore how to manage, install, and use these plugins to better leverage Elasticsearch for different use cases.'
+description: 'Elasticsearch supports a wide variety of plugins which enable more powerful search features. Learn how to manage, install, and use them.'
+og_description: 'Elasticsearch supports a wide variety of plugins which enable more powerful search features. Learn how to manage, install, and use them.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
  - '[Elasticsearch reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)'

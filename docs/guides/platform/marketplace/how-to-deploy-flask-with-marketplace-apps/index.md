@@ -3,8 +3,8 @@ slug: how-to-deploy-flask-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Flask is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. Deploy a Flask app on Linode with Marketplace Apps.'
-og_description: 'Flask is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. Deploy a Flask app on Linode with Marketplace Apps.'
+description: 'Flask is a quick and light-weight web framework for Python with multiple built-in libraries and utilities. Here''s how to deploy a Flask app on Linode.'
+og_description: 'Flask is a quick and light-weight web framework for Python with multiple built-in libraries and utilities. Here''s how to deploy a Flask app on Linode.'
 keywords: ['flask','python','marketplace']
 tags: ["linode platform","python","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Flask with Marketplace Apps"
 h1_title: "Deploying Flask with Marketplace Apps"
+enable_h1: true
 image: feature.png
 contributor:
   name: Linode

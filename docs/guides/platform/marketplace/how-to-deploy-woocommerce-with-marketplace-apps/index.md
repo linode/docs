@@ -3,8 +3,8 @@ slug: how-to-deploy-woocommerce-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Marketplace Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. WooCommerce allows you to build a marketplace where you can sell both digital and physical products. You can also customize WooCommerce to match your WordPress site''s theme and branding.'
-og_description:  'Use Marketplace Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. WooCommerce allows you to build a marketplace where you can sell both digital and physical products. You can also customize WooCommerce to match your WordPress site''s theme and branding.'
+description: 'Use Marketplace Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. We''ll show you how.'
+og_description:  'Use Marketplace Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. We''ll show you how.'
 keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
 tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
