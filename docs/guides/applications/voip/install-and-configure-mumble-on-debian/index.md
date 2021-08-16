@@ -3,7 +3,7 @@ slug: install-and-configure-mumble-on-debian
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Mumble is an open-source, encrypted VoIP software. This guide instructs how to install the Mumble server on Debian and gives general guidelines for configuring the Mumble client.'
+description: 'In this tutorial, we''ll walk you through how to install a Mumble server on Debian, and offer general guidelines for configuring the Mumble client.'
 keywords: ["mumble", " debian", " murmur", " gaming", " voip", " voice chat"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

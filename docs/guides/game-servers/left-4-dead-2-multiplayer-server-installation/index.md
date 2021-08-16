@@ -3,7 +3,7 @@ slug: left-4-dead-2-multiplayer-server-installation
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Left 4 Dead 2 is a single-player game developed and published by Valve Inc. Left 4 Dead 2 also offers a great multiplayer mode. This guide will explain how to prepare your Linode, install SteamCMD, and then install and configure Left 4 Dead 2.'
+description: 'In this guide, learn how to install and configure a SteamCMD Left 4 Dead 2 server on Linode.'
 keywords: ["left 4 dead", "l4d2", "game server", "steamCMD"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
