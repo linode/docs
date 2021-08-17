@@ -14,11 +14,18 @@ If you do intend on creating a custom image file to upload, here are a few metho
 - **`dd`:** Install and configure an operating system on a local, remote, or virtualized system and create a disk image using the `dd` command-line tool.
 - **QEMU disk image utility:** Use the [QEMU disk image utility](https://qemu-project.gitlab.io/qemu/tools/qemu-img.html) to create the image.
 
-After the image file has been created, it needs to be compressed using gzip. See [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/guides/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/).
+### Compressing the Image File
 
+After the image file has been created, it needs to be compressed using the gzip utility.
 
-{{< note >}}
-If the uncompressed image file is larger than 4GB, the gzip utility will not be able to accurately output the uncompressed file size. If you would like to determine the uncompressed file size, either uncompress the gzip archive or run the following command, replacing *[file.img.gz]* with the file name of your image.
+-   **Linux and macOS**: Run the following command, replacing *[file.img.gz]* with the file name of your image. See [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/guides/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/) for additional information on gzip.
+
+        gzip [file.img.gz]
+
+-   **Windows**: Use a third party tool that supports gzip compression, such as [7-Zip](https://www.7-zip.org/).
+
+### Determining the Uncompressed File Size
+
+Knowing the *uncompressed* size of an image file is helpful for planning the storage requirements of Linodes deployed using that image. This information also ensures you stay within the [limits of the Images service](/docs/products/tools/images/#limits). The best way to determine the uncompressed size of a gzip archive is to uncompress that archive and then examine its file size. Alternatively, use the zcat utility by run the following command, replacing *[file.img.gz]* with the file name of your image.
 
     zcat [file.img.gz] | wc -c
-{{< /note >}}
