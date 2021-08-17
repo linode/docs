@@ -21,7 +21,9 @@
       {{ range $key, $name := . }}
         {{ $values := index $joined $key }}
         {{ $label := $key | title }}
+        {{/* Hugo's custom sort func is currently a little limited. To pull the deprecated elements to the end, we store it in its own slice. */}}
         {{ $filteredValues := slice }}
+        {{ $deprecatedValues := slice }}
         {{ range $values }}
           {{ $shouldInclude := (ne .page $) }}
           {{ if $shouldInclude }}
@@ -33,10 +35,18 @@
           {{ end }}
           
           {{ if $shouldInclude }}
-            {{ $filteredValues = $filteredValues | append . }}
+            {{ if .page.Params.deprecated }}
+              {{ $deprecatedValues = $deprecatedValues | append . }}
+            {{ else }}
+              {{ $filteredValues = $filteredValues | append . }}
+            {{ end }}
           {{ end }}
         {{ end }}
         
+        {{ $deprecatedValues = sort $deprecatedValues "base" "asc" }}
+        {{ $filteredValues = sort $filteredValues "base" "asc" }}
+        {{ $filteredValues = $filteredValues | append $deprecatedValues }}
+
         {{ $d := (dict "page" $ "values"  $filteredValues "text" (printf "%s: %s" $label $name)  "contentPartial" "sections/content/other-versions__dropdown.html") }}
         {{ partial "components/dropdown.html" $d }}
       {{ end }}
