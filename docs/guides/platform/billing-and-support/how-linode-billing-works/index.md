@@ -56,7 +56,7 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service]((/docs/guides/manage-billing-in-cloud-manager/#removing-services)) from your account.
+**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services)) from your account.
 
 ## Payments
 

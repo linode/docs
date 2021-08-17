@@ -15,8 +15,8 @@ title: "Installing TensorFlow on Ubuntu 20.04"
 h1_title: "How to Install TensorFlow on Ubuntu 20.04"
 enable_h1: true
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Jeff Novotny
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[TensorFlow site](https://www.tensorflow.org/)'
 - '[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)'
