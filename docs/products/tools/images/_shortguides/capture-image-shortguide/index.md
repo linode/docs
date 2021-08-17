@@ -1,19 +1,8 @@
 ---
-slug: capture-image-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how capture an image with Linode Images.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-18
-modified_by:
-  name: Linode
-published: 2020-07-20
-title: How to Capture an Image from a Linode
-keywords: ["images"]
+# Shortguide: How to capture an image
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 1. Log in to the Cloud Manager and open the **[Capture Image](https://cloud.linode.com/images/create/disk)** form by navigating to the **Images** page, clicking the **Create Image** button, and staying on the **Catpure Image** tab.
