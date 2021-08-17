@@ -10,6 +10,14 @@ cascade:
     product_description: "Linode’s Block Storage service lets you increase your Linode’s storage capacity by attaching additional high-speed volumes. Volumes are managed independently of Linodes, so your data persists even if you delete your Linode."
 ---
 
+{{< note >}}
+We are currently in the process of upgrading our Block Storage service to include new hardware built entirely on NVMe SSDs. This upgrade increase the performance of Block Storage and is offered at no additional cost.
+
+As part of this announcement, we've just launched the NVMe-based Block Storage service in our Atlanta (USA) data center. We will continue to deploy these upgrades across our entire fleet. Review the Availability section in the [Block Storage Overview](/docs/products/storage/block-storage/#availability) page to learn which data centers are using the newer NVMe-based Block Storage technology.
+
+If you already use our Block Storage service, you will be notified when NVMe-based Block Storage is available in your data center and given additional details regarding upgrading your existing Volumes.
+{{</ note >}}
+
 ## Availability
 
 Dallas, TX, USA; Frankfurt, Germany; Fremont, CA, USA; London, United Kingdom; Mumbai, India; Newark, NJ, USA; Singapore, Singapore; Sydney, Australia; Tokyo, Japan; Toronto, Canada;
