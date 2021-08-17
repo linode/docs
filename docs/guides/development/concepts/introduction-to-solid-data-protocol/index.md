@@ -32,23 +32,23 @@ Dr. Berners-Lee has become increasingly disillusioned with how the Web has been 
 
 [Solid](https://solidproject.org/) is a tech stack, a group of related protocols and implementations, much like the web Berners-Lee created. All of the protocols used are W3C-approved standards, and some were even developed by Berners-Lee himself.
 
-Solid is a decentralized platform for social web applications where the user’s data is managed independently of the applications that create and consume this data. Solid uses *pods* to store your data . It is possible to have multiple pods, and they can be stored anywhere; on your PC, mobile devices, or in the cloud. You then have control over which apps and individuals may have access to a specific bit of data within your pod. You can also revoke access at any given time.
+Solid is a decentralized platform for social web applications where the user’s data is managed independently of the applications that create and consume this data. Solid uses *Pods* to store your data . It is possible to have multiple Pods, and they can be stored anywhere; on your PC, mobile devices, or in the cloud. You then have control over which apps and individuals may have access to a specific bit of data within your Pod. You can also revoke access at any given time.
 
-Solid protocols are based on existing W3C recommendations for reading, writing, and access control of the contents of users’ pods. In Solid architecture, applications can operate over data owned by the user or that the user has access to, regardless of the location of this data on the Web. The app becomes irrelevant in terms of accessing the data so long as it uses the W3C authentication and access standards. Any app can access any pod.
+Solid protocols are based on existing W3C recommendations for reading, writing, and access control of the contents of users’ Pods. In Solid architecture, applications can operate over data owned by the user or that the user has access to, regardless of the location of this data on the Web. The app becomes irrelevant in terms of accessing the data so long as it uses the W3C authentication and access standards. Any app can access any Pod.
 
 ## The Solid Protocol and Medical Records
 
-The Solid protocol has the potential to make a big impact in the security of your medical records. The portability of medical records and medical history is something the medical industry has pursued for years. Medical records are kept in silos with no connection between them for the patient. Solid allows a person to create a pod where only their medical records are stored. A user can then give access to their medical records only to their physicians and turn it off if they change doctors.
+The Solid protocol has the potential to make a big impact in the security of your medical records. The portability of medical records and medical history is something the medical industry has pursued for years. Medical records are kept in silos with no connection between them for the patient. Solid allows a person to create a Pod where only their medical records are stored. A user can then give access to their medical records only to their physicians and turn it off if they change doctors.
 
 ## How Solid Works
 
-Solid applications are implemented as client-side web or mobile applications that read and write data directly from the pods. Applications are by design decoupled from the data source. This allows applications to aggregate data from different sources on the web. The application can access both the user’s pod and other pods, and multiple applications can reuse the same data on a pod.
+Solid applications are implemented as client-side web or mobile applications that read and write data directly from the Pods. Applications are by design decoupled from the data source. This allows applications to aggregate data from different sources on the web. The application can access both the user’s Pod and other Pods, and multiple applications can reuse the same data on a Pod.
 
 Berners-Lee explained that Solid is not unlike a typical web app. You have a front-end (the app or web page) and a back-end (a server app). Bot pieces communicate using a custom server API. With Solid, all users have a universal API that handles all the backend data that controls access.
 
 Solid uses decentralized authentication, a global ID space, and global single sign-on. Solid uses the WebID identifier and protocol that Berners-Lee invented in 2000 for user access, along with a cryptographic key.
 
-Solid applications read and write data stored in users’ pods via RESTful HTTP operations using Linked Data Platform (LDP). Pods use LDP to organize data into containers that group together resources, giving each container and resource their own Uniform Resource Identifier (URI).
+Solid applications read and write data stored in users’ Pods via RESTful HTTP operations using Linked Data Platform (LDP). Pods use LDP to organize data into containers that group together resources, giving each container and resource their own Uniform Resource Identifier (URI).
 
 The Solid platform includes solid.js, a JavaScript library implementing the Solid protocols. The Solid protocols guarantee efficient performance for social applications regardless if these applications use solid.js or not. Usage of solid.js is intended to accelerate the development of Solid applications by enabling you to write less code.
 
