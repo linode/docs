@@ -1,16 +1,16 @@
 ---
-slug: how-to-self-host-the-bitwarden-rs-password-manager
+slug: how-to-self-host-the-vaultwarden-password-manager
 author:
   name: Tyler Langlois
-description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
-og_description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the bitwarden_rs project.'
+description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the vaultwarden project.'
+og_description: 'Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the vaultwarden project.'
 keywords: ["bitwarden self hosted", "free self hosted password manager", "self hosted password manager open source"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
   name: Linode
-title: "How to Self-Host the bitwarden_rs Password Manager"
-h1_title: "Self-Hosting the bitwarden_rs Password Manager"
+title: "How to Self-Host the vaultwarden Password Manager"
+h1_title: "Self-Hosting the vaultwarden Password Manager"
 enable_h1: true
 tags: ["ubuntu", "security", "web applications", "docker"]
 contributor:
@@ -19,19 +19,19 @@ contributor:
 aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/"]
 ---
 
-[Bitwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. The [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) project provides a lightweight, single-process, API-compatible service ideal for running personal instances. By running the bitwarden_rs service, you can use Bitwarden browser extensions and mobile applications backed by your server.
+[Bitwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. The [vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as bitwarden_rs) provides a lightweight, single-process, API-compatible service ideal for running personal instances. By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.
 
 {{< note >}}
-By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within bitwarden_rs. Before storing important information and credentials within the application, ensure that you are confident with the security of the server. Also, take the necessary backup measures mentioned in this tutorial.
+By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within vaultwarden. Before storing important information and credentials within the application, ensure that you are confident with the security of the server. Also, take the necessary backup measures mentioned in this tutorial.
 {{< /note >}}
 
 ## In this Guide
 
-This guide uses the official bitwarden_rs [Docker image](https://github.com/dani-garcia/bitwarden_rs/wiki/Which-container-image-to-use). A reverse proxy ([Caddy](https://caddyserver.com/)) is configured in front of the Docker container. This provides TLS termination for both the web-based vault interface and the websocket server.
+This guide uses the official vaultwarden [Docker image](https://github.com/dani-garcia/vaultwarden/wiki/Which-container-image-to-use). A reverse proxy ([Caddy](https://caddyserver.com/)) is configured in front of the Docker container. This provides TLS termination for both the web-based vault interface and the websocket server.
 
-This configuration of bitwarden_rs also uses the default SQL backend for the application (sqlite3). The SQL datastore for bitwarden_rs contains the user data of the application and is therefore the primary concern for a backup scheme. Backing up this datastore ensures that sensitive data stored within bitwarden_rs is saved in the event of a data loss scenario.
+This configuration of vaultwarden also uses the default SQL backend for the application (sqlite3). The SQL datastore for vaultwarden contains the user data of the application and is therefore the primary concern for a backup scheme. Backing up this datastore ensures that sensitive data stored within vaultwarden is saved in the event of a data loss scenario.
 
-This guide references the latest version of the bitwarden_rs Docker image that is available, which is 1.19 at the time of writing. As part of regular maintenance, follow the [upgrade instructions](https://github.com/dani-garcia/bitwarden_rs/wiki/Updating-the-bitwarden-image) provided by the project regularly. Following these instructions ensures your deployment is up to date with current upstream releases. This also ensures that any relevant security updates are applied to the application.
+This guide references the latest version of the vaultwarden Docker image that is available, which is 1.19 at the time of writing. As part of regular maintenance, follow the [upgrade instructions](https://github.com/dani-garcia/vaultwarden/wiki/Updating-the-vaultwarden-image) provided by the project regularly. Following these instructions ensures your deployment is up to date with current upstream releases. This also ensures that any relevant security updates are applied to the application.
 
 Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Linux distribution that supports running Docker containers should be equally compatible with the steps explained in this guide.
 
@@ -39,7 +39,7 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 
 1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone.
 
-1. Follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide in order to harden the Linode against malicious users. This step is important to ensure bitwarden_rs is secured.
+1. Follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide in order to harden the Linode against malicious users. This step is important to ensure vaultwarden is secured.
 
    {{< note >}}
 If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section of the guide outlines different firewall software options.
@@ -83,11 +83,11 @@ If you choose to configure a firewall, remember to open ports 80 and 443 for the
 
         sudo docker ps
 
-## Install bitwarden_rs
+## Install vaultwarden
 
-This section outlines how to download the bitwarden_rs Docker image, setup volume persistence, and manage the Docker container.
+This section outlines how to download the vaultwarden Docker image, setup volume persistence, and manage the Docker container.
 
-1. Pull the bitwarden_rs image.
+1. Pull the vaultwarden image.
 
         sudo docker pull bitwardenrs/server:latest
 
@@ -96,17 +96,17 @@ This section outlines how to download the bitwarden_rs Docker image, setup volum
         sudo mkdir /srv/bitwarden
         sudo chmod go-rwx /srv/bitwarden
 
-1. Create the Docker container for bitwarden_rs.
+1. Create the Docker container for vaultwarden.
 
         sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:latest
 
-    This command uses the following flags to establish a persistent container to serve the bitwarden_rs application:
+    This command uses the following flags to establish a persistent container to serve the vaultwarden application:
 
     - `-d` daemonizes the container to run in the background.
     - Using `--name bitwarden` gives the container a human-readable name to avoid the need to reference the running container by a temporary identifier.
     - By passing the host path `/srv/bitwarden` to the volume (`-v`) flag, data is persisted outside of the container whenever it is stopped.
-    - The environment variable `WEBSOCKET_ENABLED` enables the extra websocket server for bitwarden_rs.
-    - Each `-p` flag forwards the respective host ports to the container (port 8080 for the main bitwarden_rs web service and port 3012 for websocket traffic). Normal HTTP and HTTPS ports are served with Caddy.
+    - The environment variable `WEBSOCKET_ENABLED` enables the extra websocket server for vaultwarden.
+    - Each `-p` flag forwards the respective host ports to the container (port 8080 for the main vaultwarden web service and port 3012 for websocket traffic). Normal HTTP and HTTPS ports are served with Caddy.
     - `--restart=on-failure` ensures that the container remains up in the event of container failure or host restart.
 
    As part of these steps, note that the container listens for traffic on the local loopback interface (`127.0.0.1`) and _not_ a publicly reachable IP address. This is to ensure that any traffic originating from outside the host must connect to the Caddy server, which enforces encrypted TLS connections.
@@ -119,7 +119,7 @@ External clients communicate with Caddy, which automatically manages reverse pro
 
         sudo docker pull caddy/caddy:alpine
 
-1. Create the following Caddyfile. Be sure to replace `example.com` with the name of the domain that you set up in the [Before You Begin](#before-you-begin) section of this guide, and confirm that the domain points to the IP address of the Linode. This domain serves the web interface for bitwarden_rs hosted and secured by Caddy's automatic TLS.
+1. Create the following Caddyfile. Be sure to replace `example.com` with the name of the domain that you set up in the [Before You Begin](#before-you-begin) section of this guide, and confirm that the domain points to the IP address of the Linode. This domain serves the web interface for vaultwarden hosted and secured by Caddy's automatic TLS.
 
    {{< file "/etc/Caddyfile" caddy >}}
 example.com {
@@ -131,13 +131,13 @@ example.com {
   # Notifications redirected to the websockets server
   reverse_proxy /notifications/hub 0.0.0.0:3012
 
-  # Send all other traffic to the regular bitwarden_rs endpoint
+  # Send all other traffic to the regular vaultwarden endpoint
   reverse_proxy 0.0.0.0:8080
 }
 {{< /file >}}
 
    {{< note >}}
-The site name you choose in this file must match the desired URL that bitwarden_rs is served under. When navigating to the web interface later in this guide, ensure that you type the same hostname chosen in this configuration file (in this example, `example.com`).
+The site name you choose in this file must match the desired URL that vaultwarden is served under. When navigating to the web interface later in this guide, ensure that you type the same hostname chosen in this configuration file (in this example, `example.com`).
 {{</ note >}}
 
 
@@ -150,7 +150,7 @@ The site name you choose in this file must match the desired URL that bitwarden_
 
         sudo docker run -d --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/caddy --net host --restart on-failure caddy/caddy:alpine
 
-   Many of these flags passed to the `docker` command are similar to those used in the `bitwarden_rs` instructions, with one notable difference. The `--net host` flag runs Caddy bound to the host machine's networking interface rather than constrained to the container. This flag simplifies access to other containers and to the necessary ports for Caddy to operate over HTTP and HTTPS.
+   Many of these flags passed to the `docker` command are similar to those used in the `vaultwarden` instructions, with one notable difference. The `--net host` flag runs Caddy bound to the host machine's networking interface rather than constrained to the container. This flag simplifies access to other containers and to the necessary ports for Caddy to operate over HTTP and HTTPS.
 
 1. View the logs of the Caddy container in order to confirm that a Let's Encrypt certificate has been provisioned for the chosen domain.
 
@@ -187,9 +187,9 @@ The site name you choose in this file must match the desired URL that bitwarden_
 
 1. Navigate to the chosen domain in a local web browser (in this tutorial, `example.com`). Verify that the browser renders the Bitwarden web vault login page, and that the page is served over TLS/SSL.
 
-   ![Bitwarden Login](bitwarden_rs_login.png "Bitwarden Login")
+   ![Bitwarden Login](vaultwarden_login.png "Bitwarden Login")
 
-   If you see the login page, congratulations! bitwarden_rs is running and operational. The first step in using the password manager is to create an account. Do so by clicking on the **Create Account** button on the login page.
+   If you see the login page, congratulations! vaultwarden is running and operational. The first step in using the password manager is to create an account. Do so by clicking on the **Create Account** button on the login page.
 
    {{< note >}}
 Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide. A mismatched hostname in your browser can cause TLS errors.
@@ -197,25 +197,25 @@ Remember to navigate to the same name configured in your `Caddyfile` defined in 
 
 1. A new page appears with several fields.
 
-   ![Bitwarden Account Creation](bitwarden_rs_create_account.png "Bitwarden Account Creation")
+   ![Bitwarden Account Creation](vaultwarden_create_account.png "Bitwarden Account Creation")
 
    Fill each field with the appropriate information, choosing a strong and secure master password.
 
    {{< note >}}
-Although a user email is required at time of registration, by default, the deployment of bitwarden_rs cannot send email without additional configuration. If you would like to configure SMTP in order to enable bitwarden_rs to send email, follow [these instructions on the bitwarden_rs wiki](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration). Use SMTP information from an SMTP provider when following the instructions.
+Although a user email is required at time of registration, by default, the deployment of vaultwarden cannot send email without additional configuration. If you would like to configure SMTP in order to enable vaultwarden to send email, follow [these instructions on the vaultwarden wiki](https://github.com/dani-garcia/vaultwarden/wiki/SMTP-configuration). Use SMTP information from an SMTP provider when following the instructions.
 {{< /note >}}
 
 1. After registering, the system redirects you to the login screen. Log in with the credentials. The web vault view appears.
 
    ![Bitwarden Web Vault](bitwarden_web_vault.png "Bitwarden Web Vault")
 
-   At this point, the bitwarden_rs installation is functional.
+   At this point, the vaultwarden installation is functional.
 
 ### Disable Anonymous User Sign Up
 
 As an additional security precaution, you may elect to disable user registration. This is recommended on servers that are publicly reachable to avoid abuse of the service.
 
-1. Stop the running bitwarden_rs container and remove it.
+1. Stop the running vaultwarden container and remove it.
 
         sudo docker stop bitwarden
         sudo docker rm bitwarden
@@ -226,13 +226,13 @@ As an additional security precaution, you may elect to disable user registration
 
 1. If you attempt to create a new account after these changes, the following error appears on the account creation page.
 
-   ![Bitwarden Registration Error](bitwarden_rs_signup_error.png "Bitwarden Registration Error")
+   ![Bitwarden Registration Error](vaultwarden_signup_error.png "Bitwarden Registration Error")
 
-   This deployment of bitwarden_rs does not permit any additional user registrations. You may still want to invite users without needing to change the bitwarden_rs container environment variable flags. This is possible by following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-admin-page). The admin panel provides user invitation functionality.
+   This deployment of vaultwarden does not permit any additional user registrations. You may still want to invite users without needing to change the vaultwarden container environment variable flags. This is possible by following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page). The admin panel provides user invitation functionality.
 
-## Backup bitwarden_rs SQLite Database
+## Backup vaultwarden SQLite Database
 
-Before relying on this service for any important data, you should take additional steps to safeguard the data stored within bitwarden_rs. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should *not* simply copy the file. Instead, use the sqlite3 `.backup` command. This command ensures that the database is in a consistent state when the backup is taken.
+Before relying on this service for any important data, you should take additional steps to safeguard the data stored within vaultwarden. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should *not* simply copy the file. Instead, use the sqlite3 `.backup` command. This command ensures that the database is in a consistent state when the backup is taken.
 
 1. Review the [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used.
 
@@ -324,19 +324,20 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
 Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) as one potential solution for permanent backup storage and archival.
 {{< /caution >}}
 
-## Using bitwarden_rs
+## Using vaultwarden
 
-bitwarden_rs provides a compatible API for many [Bitwarden apps and browser extensions](https://bitwarden.com/). In order to configure these applications to use a hosted instance, you may need to configure the mobile application or browser extension. Specifically, you may need to enter a custom domain and API endpoint:
+vaultwarden provides a compatible API for many [Bitwarden apps and browser extensions](https://bitwarden.com/). In order to configure these applications to use a hosted instance, you may need to configure the mobile application or browser extension. Specifically, you may need to enter a custom domain and API endpoint:
 
 1. As an example, this is the initial login screen for the Firefox Bitwarden browser extension. In order to configure a custom server, click the gear in the upper left corner.
 
    ![Bitwarden Extension Configuration](bitwarden_browser_extension_login.png "Bitwarden Extension Configuration")
 
-1. On the next page, type your custom domain under the **Server URL** field, such as `https://example.com`. Similar steps can be taken on the iOS and Android mobile applications. Edit the settings of the application before login to use a custom Server URL, and you can log in to a custom instance of bitwarden_rs.
+1. On the next page, type your custom domain under the **Server URL** field, such as `https://example.com`. Similar steps can be taken on the iOS and Android mobile applications. Edit the settings of the application before login to use a custom Server URL, and you can log in to a custom instance of vaultwarden.
 
 ## Additional Reading
 
-With bitwarden_rs running securely over TLS and regularly backed up, you may choose to follow [additional documentation provided by the bitwarden_rs project](https://github.com/dani-garcia/bitwarden_rs/wiki). This documentation helps add more functionality to your installation. Some of these features include:
+With vaultwarden running securely over TLS and regularly backed up, you may choose to follow [additional documentation provided by the vaultwarden project](https://github.com/dani-garcia/vaultwarden/wiki). This documentation helps add more functionality to your installation. Some of these features include:
 
-- [Support for U2F authentication](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-U2F-authentication)
-- [SMTP configuration to support sending emails](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration) for features like account creation invitation.
+- [Support for U2F authentication](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-U2F-authentication)
+- [SMTP configuration to support sending emails](https://github.com/dani-garcia/vaultwarden/wiki/SMTP-configuration) for features like account creation invitation.
+  
