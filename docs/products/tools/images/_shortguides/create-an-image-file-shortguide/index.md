@@ -14,7 +14,7 @@ If you do intend on creating a custom image file to upload, here are a few metho
 - **`dd`:** Install and configure an operating system on a local, remote, or virtualized system and create a disk image using the `dd` command-line tool.
 - **QEMU disk image utility:** Use the [QEMU disk image utility](https://qemu-project.gitlab.io/qemu/tools/qemu-img.html) to create the image.
 
-### Compressing the Image File
+#### Compressing the Image File
 
 After the image file has been created, it needs to be compressed using the gzip utility.
 
@@ -24,7 +24,7 @@ After the image file has been created, it needs to be compressed using the gzip 
 
 -   **Windows**: Use a third party tool that supports gzip compression, such as [7-Zip](https://www.7-zip.org/).
 
-### Determining the Uncompressed File Size
+#### Determining the Uncompressed File Size
 
 Knowing the *uncompressed* size of an image file is helpful for planning the storage requirements of Linodes deployed using that image. This information also ensures you stay within the [limits of the Images service](/docs/products/tools/images/#limits). The best way to determine the uncompressed size of a gzip archive is to uncompress that archive and then examine its file size. Alternatively, use the zcat utility by run the following command, replacing *[file.img.gz]* with the file name of your image.
 
