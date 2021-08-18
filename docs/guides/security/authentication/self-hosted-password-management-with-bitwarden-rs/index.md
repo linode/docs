@@ -187,7 +187,7 @@ The site name you choose in this file must match the desired URL that vaultwarde
 
 1. Navigate to the chosen domain in a local web browser (in this tutorial, `example.com`). Verify that the browser renders the Bitwarden web vault login page, and that the page is served over TLS/SSL.
 
-   ![Bitwarden Login](vaultwarden_login.png "Bitwarden Login")
+   ![Bitwarden Login](bitwarden_rs_login.png "Bitwarden Login")
 
    If you see the login page, congratulations! vaultwarden is running and operational. The first step in using the password manager is to create an account. Do so by clicking on the **Create Account** button on the login page.
 
@@ -197,7 +197,7 @@ Remember to navigate to the same name configured in your `Caddyfile` defined in 
 
 1. A new page appears with several fields.
 
-   ![Bitwarden Account Creation](vaultwarden_create_account.png "Bitwarden Account Creation")
+   ![Bitwarden Account Creation](bitwarden_rs_create_account.png  "Bitwarden Account Creation")
 
    Fill each field with the appropriate information, choosing a strong and secure master password.
 
@@ -226,7 +226,7 @@ As an additional security precaution, you may elect to disable user registration
 
 1. If you attempt to create a new account after these changes, the following error appears on the account creation page.
 
-   ![Bitwarden Registration Error](vaultwarden_signup_error.png "Bitwarden Registration Error")
+   ![Bitwarden Registration Error](bitwarden_rs_signup_error.png "Bitwarden Registration Error")
 
    This deployment of vaultwarden does not permit any additional user registrations. You may still want to invite users without needing to change the vaultwarden container environment variable flags. This is possible by following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page). The admin panel provides user invitation functionality.
 
@@ -340,4 +340,3 @@ With vaultwarden running securely over TLS and regularly backed up, you may choo
 
 - [Support for U2F authentication](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-U2F-authentication)
 - [SMTP configuration to support sending emails](https://github.com/dani-garcia/vaultwarden/wiki/SMTP-configuration) for features like account creation invitation.
-  
