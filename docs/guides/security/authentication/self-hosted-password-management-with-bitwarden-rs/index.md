@@ -197,7 +197,7 @@ Remember to navigate to the same name configured in your `Caddyfile` defined in 
 
 1. A new page appears with several fields.
 
-   ![Bitwarden Account Creation](bitwarden_rs_create_account.png  "Bitwarden Account Creation")
+   ![Bitwarden Account Creation](bitwarden_rs_create_account.png "Bitwarden Account Creation")
 
    Fill each field with the appropriate information, choosing a strong and secure master password.
 
