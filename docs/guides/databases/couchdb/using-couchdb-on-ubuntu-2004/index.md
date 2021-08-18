@@ -33,7 +33,7 @@ This guide shows you how to get started with CouchDB using its web interface—*
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Install CouchDB. Follow the instructions in the guide on [How to Install CouchDB on Ubuntu 20.04](/docs/guides/how-to-install-couchdb-on-ubuntu-2004).
+1. Install CouchDB. Follow the instructions in the guide on [How to Install CouchDB on Ubuntu 20.04](/docs/guides/install-couchdb-20-on-ubuntu/).
 
 1. Update your system:
 

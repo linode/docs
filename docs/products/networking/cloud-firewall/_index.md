@@ -12,7 +12,7 @@ cascade:
 
 ## Availability
 
-Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA; London, United Kingdom; Mumbai, India; Sydney, Australia; Toronto, Canada;
+Cloud Firewalls are available across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Features
 

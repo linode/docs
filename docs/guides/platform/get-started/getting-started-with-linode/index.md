@@ -36,7 +36,7 @@ From there you'll set up a Linux distribution, boot your Linode, and perform som
 
 If you haven't already signed up for a Linode account, start here.
 
-1.  Create a new account at the [Sign Up page](https://login.linode.com/signup?promo=DOCS20AA00X1).
+1.  Create a new Linode account. {{< signup-link >}}
 
     {{< disclosure-note "Sending Email on Linode">}}
 Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`. If you'd like to send email from a Linode, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.

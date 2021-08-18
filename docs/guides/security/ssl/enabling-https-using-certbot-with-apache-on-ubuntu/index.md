@@ -17,7 +17,7 @@ h1_title: "Securing Web Traffic Using Certbot with Apache on Ubuntu 20.04 and 18
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 aliases: ['/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/']
 relations:
     platform:

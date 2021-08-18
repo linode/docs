@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.101.0
+  version: 4.101.1
 
   title: Linode API
   description: |
@@ -4153,6 +4153,10 @@ paths:
       requestBody:
         description: The requested initial state of a new Linode.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
+        - image
+        - type
         content:
           application/json:
             schema:
@@ -4870,6 +4874,9 @@ paths:
       requestBody:
         description: The requested state your Linode will be cloned into.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
+        - type
         content:
           application/json:
             schema:
@@ -7405,6 +7412,8 @@ paths:
         are ready.
       requestBody:
         description: Configuration for the Kubernetes cluster
+        x-linode-cli-allowed-defaults:
+        - region
         content:
           application/json:
             schema:
@@ -11086,7 +11095,7 @@ paths:
         There are several ways to detach a VLAN from a Linode:
 
         - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
-        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/apilinode-instances/#linode-reboot) the Linode into the new Configuration Profile.
+        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode into the new Configuration Profile.
         - [Delete](/docs/api/linode-instances/#linode-delete) the Linode.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
@@ -11192,6 +11201,8 @@ paths:
       requestBody:
         description: Information about the NodeBalancer to create.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
         content:
           application/json:
             schema:
@@ -15190,6 +15201,8 @@ paths:
       requestBody:
         description: The requested initial state of a new Volume.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
         content:
           application/json:
             schema:
