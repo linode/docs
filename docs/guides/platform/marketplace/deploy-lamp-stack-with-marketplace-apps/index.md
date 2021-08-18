@@ -8,7 +8,7 @@ keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
 tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
-modified: 2019-03-26
+modified: 2021-08-18
 modified_by:
   name: Linode
 title: "Deploy a LAMP Stack with Marketplace Apps"
@@ -34,14 +34,14 @@ The [LAMP Stack Options](#lamp-stack-options) section of this guide provides det
 | **Field** | **Description** |
 |:--------------|:------------|
 | **MySQL Root Password** | The root password for your LAMP stack's MySQL database. This is not the same as your Linode's root password. *Required*. |
-| **E-Mail Address** | E-Mail address for LetsEncrypt SSL certificate. This is also used as the SOA email address if you also enter a domain. *Required*. |
+| **E-Mail Address** | E-Mail address for Let's Encrypt SSL certificate. This is also used as the SOA email address if you also enter a domain. *Required*. |
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **Domain** | The domain name where you wish to host your Moodle site. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
+| **Domain** | The domain name where you wish to host your website. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 
 ### Linode Options
 
