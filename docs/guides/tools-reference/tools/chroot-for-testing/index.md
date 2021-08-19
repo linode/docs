@@ -1,14 +1,13 @@
 ---
 slug: use-chroot-for-testing-on-ubuntu
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to use chroot to test settings and applications in a secure environment."
-og_description: "Learn how to use chroot to test settings and applications in a secure environment."
+  name: Nathaniel Stickman
+description: "The chroot command enables you to create an environment that is isolated from the rest of your file system. This guide shows you how to create your own chroot environment to securely test settings and applications."
+og_description: "The chroot command enables you to create an environment that is isolated from the rest of your file system. This guide shows you how to create your own chroot environment to securely test settings and applications."
 keywords: ['chroot','chroot linux','chroot jail']
 tags: ['linux', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-02
+published: 2021-08-19
 modified_by:
   name: Nathaniel Stickman
 title: "Use chroot for Testing on Ubuntu"
@@ -19,10 +18,10 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Ubuntu Man Pages: schroot](https://manpages.ubuntu.com/manpages/focal/man1/schroot.1.html)'
-- '[Debian Wiki: Schroot](https://wiki.debian.org/Schroot)'
+- '[Debian Wiki: schroot](https://wiki.debian.org/Schroot)'
 ---
 
-With `chroot`, you can run applications or shells within a separate, secure environment. Because a `chroot` environment is walled off from the rest of your system, it can be an ideal space for testing. In this guide, learn more about what `chroot` is and how to get started using it.
+The Linux `chroot` command enables you to run applications or shells within a separate, secure environment. Because a `chroot` environment is walled off from the rest of your system, it can be an ideal space for testing. This guide discusses the primary use cases for chroot and shows you how to create your own chroot environment.
 
 ## Before You Begin
 
@@ -42,30 +41,30 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What is chroot?
 
-The `chroot` command allows you to create a separate environment for running processes in isolation. The command creates a distinct file system, with its own root directory, completely walled off from access to the rest of your system. For this reason, the `chroot` environment is often referred to as "chroot jail."
+The `chroot` command allows you to create a separate environment for running processes in isolation. The command creates a distinct file system with its own root directory that is completely walled off from access to the rest of your system. For this reason, the `chroot` environment is often referred to as *chroot jail*.
 
 ### What is chroot Jail?
 
-As described above, the `chroot` command creates an isolated environment, known as chroot jail. Processes running in this environment have a distinct root directory and file system and are prevented from accessing anything on the system outside of chroot jail.
+As described above, the `chroot` command creates an isolated environment, known as chroot jail. Processes running in this environment have a distinct root directory and file system. These processes are prevented from accessing anything on the system outside of the chroot jail.
 
-This works by you creating a directory to act as the root for your `chroot` environment. You then fill that directory with the programs and system components you need to run any processes you intend to test in the `chroot` environment.
+To create a chroot jail, you create a directory to act as the root for your `chroot` environment. Then, you add the programs and system components you need to run any processes you intend to test in the `chroot` environment.
 
-On running the `chroot` command against that directory, you can use the directory as its own functioning system. And, since the base of the directory you created acts as the root directory, anything operating inside of the `chroot` environment is restricted to the contents of the `chroot` directory.
+When you run `chroot` command against the directory you created, you can then use it as its own functioning system. The directory you created acts as the root directory, so anything operating inside of it is restricted to the `chroot` directory.
 
-Essentially, then, the `chroot` environment gives you a clean and separate space for running processes. It ensures that anything running in chroot jail is not affected by and does not affect the file system outside.
+The `chroot` environment gives you a clean and separate space for running processes. It ensures that anything running in chroot jail is not affected by the primary file system. Similarly, the chroot jail cannot affect the primary file system.
 
 ### What is the Purpose of a chroot Jail?
 
-The primary reason for creating a `chroot` environment is to test processes in isolation. And there are two main scenarios in which you may want to do that:
+The primary reason for creating a `chroot` environment is to test processes in isolation. There are two main scenarios in which you may want to test in isolation:
 
-- First, you want to test an untrusted application. Running it in chroot jail allows you to see the application's effects without allowing it to access the rest of your file system.
-- Second, you want to test an application, command, or series of commands in a secluded environment. With a `chroot` environment, you guarantee that the processes/commands run in a clean and easily reproducible file system.
+- The first scenario is to test an untrusted application. Running it in chroot jail allows you to run the application without allowing it to access the rest of your file system.
+- Another reason is to test an application, command, or series of commands in a secluded environment. With a `chroot` environment, you guarantee that the processes or commands run in a clean and easily reproducible file system.
 
 ## When to Use chroot
 
-Use `chroot` when you have an application or a shell process that you are uncertain of. Keeping any processes you are unsure of in chroot jail allows you to test them and see their effects before running them on your system at large.
+Use `chroot` when you have an application or a shell process that you may not trust. Keeping any processes you are unsure of in chroot jail allows you to test them out prior to running them on your system.
 
-You may be thinking `chroot` sounds like a virtual machine, and you would be right. However, `chroot` has the advantage of being much lighter and easier to set up than a virtual machine. You can quickly throw up a minimal OS in a `chroot` environment to test small processes, commands, or compile packages.
+You may be thinking `chroot` sounds like a virtual machine, and you would be right. However, `chroot` has the advantage of being much lighter and easier to set up than a virtual machine. You can quickly install a minimal OS in a `chroot` environment to test small processes, commands, or compile packages.
 
 ## How to Use chroot
 
@@ -73,13 +72,13 @@ The following sections show you how to set up and start using `chroot` environme
 
 ### Create a Test Environment
 
-To create a `chroot` environment for testing, this guide has you install a minimal Debian or Ubuntu in the `chroot` directory. Doing so gives you a full operating system in your `chroot` environment, where you can install programs and run processes in an isolated space.
+To create a `chroot` environment for testing, this guide has you install a minimal Debian or Ubuntu distribution in the `chroot` directory. Doing so gives you a full operating system in your `chroot` environment, where you can install programs and run processes in an isolated space.
 
-1. Create a directory for your `chroot` environment. In this guide, a `chroot-jail` subdirectory of the current user's home directory is used for this purpose.
+1. Create a directory for your `chroot` environment. In this guide, a `chroot-jail` directory is created in the user's home directory.
 
         mkdir ~/chroot-jail
 
-1. At this point, you need to install the system files to be used in the `chroot` environment. You can do so easily with the `debootstrap` tool, which you can install using the package manager:
+1. At this point, you need to install the system files to be used in the `chroot` environment. You can do so easily with the `debootstrap` tool, which you can install using your system's package manager:
 
         sudo apt install debootstrap
 
@@ -87,7 +86,7 @@ To create a `chroot` environment for testing, this guide has you install a minim
 
         sudo debootstrap focal ~/chroot-jail
 
-    You can, alternatively, install a different Ubuntu release, or a Debian release (Debian 10, Buster, in the example that follows):
+    Alternatively, you can install a different Ubuntu release, or a Debian release. The example below installs Debian 10 Buster:
 
         sudo debootstrap buster ~/chroot-jail
 
@@ -99,7 +98,7 @@ To create a `chroot` environment for testing, this guide has you install a minim
 root@localhost:/#
     {{< /output >}}
 
-    You can even go ahead and use the `ls` command to confirm that things in the `chroot` environment only have access to the `chroot` directory.
+    You can even use the `ls` command to confirm that things in the `chroot` environment only have access to the `chroot` directory.
 
 1. Exit the `chroot` environment's Bash shell.
 
@@ -109,25 +108,25 @@ root@localhost:/#
 
 This section shows some basics for setting up a `chroot` environment for testing. You are likely to need additional steps to set up the environment for your specific testing scenarios. However, these basics are meant to cover commonly needed configurations regardless of the testing scenario.
 
-1. Run Bash in the `chroot` environment, as shown in the section above, and create a limited user using the following command. The `example-user` username used in this example needs to match the limited user you are using to access the `chroot` environment.
+1. Run Bash in the `chroot` environment, as shown in the section above, and create a limited user using the command below. The `example-user` username used in this example needs to match the limited user you are using to access the `chroot` environment.
 
         adduser example-user
 
-    If you require your user to have `sudo` access for the `chroot` testing, use the following command to give that access to the user.
+    If you require your user to have `sudo` access for `chroot` testing, use the following command to give that access to the user.
 
         adduser example-user sudo
 
-1. Depending on the Debian or Ubuntu distribution you installed, you may have to install `sudo` from the package manager, if your user needs `sudo` access.
+1. Depending on the Debian or Ubuntu distribution you installed, you may have to install `sudo` from the package manager.
 
         apt install sudo
 
-    This may also be a good time to install any other programs you need for your testing.
+    This may also be a good time to install any other programs you need for your testing purposes.
 
 1. Exit the `chroot` environment's shell.
 
         exit
 
-1. Mount the drives shown below to their respective `chroot` directories. This later allows you to, among other things, actually use `sudo` as your limited user in the `chroot` environment:
+1. Mount the drives shown below to their respective `chroot` directories. This allows you to use `sudo` as your limited user in the `chroot` environment:
 
         sudo mount --bind /proc ~/chroot-jail/proc/
         sudo mount --bind /sys ~/chroot-jail/sys/
@@ -143,7 +142,7 @@ The `schroot` tool allows you to use a `chroot` environment as a limited user, r
 
 1. Open the `schroot` configuration file — `/etc/schroot/schroot.conf` — and add a configuration for your `chroot` environment.
 
-    The file comes with several configuration examples. What follows is a simple example used for this guide.
+    The file comes with several configuration examples. The file below is a simple example used for this guide.
 
     {{< file "/etc/schroot/schroot.conf" >}}
 [...]
@@ -159,7 +158,6 @@ aliases=focal
 [...]
     {{< /file >}}
 
-
 1. Access the `chroot` environment through `schroot`.
 
         schroot -c focal
@@ -170,7 +168,7 @@ You are now logged into the `chroot` environment as your limited user. There, yo
 
 To exit the `chroot` environment, simply use the `exit` command. This takes you out of the `chroot` shell and back to the main Linux system's shell.
 
-Once you are done with your tests, you likely are ready to remove the environment altogether, which you can do with the following steps.
+Once you are done with your tests, you may be ready to remove the environment altogether. You can achieve this with the following steps.
 
 1. Unmount each of the drives you mounted previously.
 
