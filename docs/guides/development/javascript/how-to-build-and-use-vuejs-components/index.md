@@ -3,7 +3,7 @@ slug: how-to-build-and-use-vuejs-components
 author:
   name: Linode Community
   email: docs@linode.com
-description: VueJS is a JavaScript framework for building interfaces, it is very easy to adopt and can greatly help you in structuring your applications. One of the most important features of VueJS are components. In this guide you will learn about component essentials.
+description: VueJS is a JavaScript framework for building interfaces, and components are its building blocks. In this guide, we''ll teach you about component essentials.
 keywords: ['vue js','javascript','vuejs','vuejs components', 'vuejs events', 'vuejs slots']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-14
@@ -12,6 +12,7 @@ modified_by:
 image: BuildingandUsingVueJSComponents.png
 title: Building and Using VueJS Components - A Tutorial
 h1_title: Building and Using VueJS Components
+enable_h1: true
 contributor:
   name: Pavel Petrov
   link: https://github.com/WebBamboo/

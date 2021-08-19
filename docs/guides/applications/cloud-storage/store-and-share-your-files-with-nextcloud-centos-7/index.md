@@ -3,7 +3,7 @@ slug: store-and-share-your-files-with-nextcloud-centos-7
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Nextcloud is an open source solution to hosting your own content online. In addition to the total control users gain over their own files, Nextcloud offers customizable security features that allow the user to take control of sharing and access privileges, among other features."
+description: "Nextcloud is an open content hosting tool built for customization and security. We'll walk you through installing it on CentOS 7."
 keywords: ["nextcloud", "cloud", "open source hosting"]
 tags: ["centos", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

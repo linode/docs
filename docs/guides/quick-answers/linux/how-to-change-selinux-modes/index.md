@@ -3,7 +3,7 @@ slug: how-to-change-selinux-modes
 author:
   name: Angel Guarisma
   email: docs@linode.com
-description: 'Security-Enhanced Linux works to filter system access. This Quick Answer will show you how to change the level of policy enforcement SELinux, from full enforcing mode to totally disabled.'
+description: 'Security-Enhanced Linux works to filter system access. We''ll walk you through how to switch between SELinux Modes, full enforcement to completely disabled.'
 keywords: ["selinux"]
 aliases: ['/quick-answers/linux/how-to-change-selinux-modes/','/quick-answers/linux/how-to-disable-selinux/']
 tags: ["fedora","centos","linux"]

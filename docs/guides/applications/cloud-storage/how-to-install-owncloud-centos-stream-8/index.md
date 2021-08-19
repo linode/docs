@@ -3,8 +3,8 @@ slug: how-to-install-owncloud-centos-stream-8
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on CentOS Stream 8 is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
-og_description: 'A popular open source alternative to Dropbox is ownCloud. This software provides easy and secure file storage and file sharing, and much more. Installing ownCloud on CentOS Stream 8is simple. This guide shows the steps needed to install ownCloud, including installing Apache, PHP packages, and configuring the Apache server to point to a domain name.'
+description: 'Simple,  secure, and free, ownCloud is an excellent alternative to Dropbox. Here''s how to install it on CentOS Stream 8.'
+og_description: 'Simple,  secure, and free, ownCloud is an excellent alternative to Dropbox. Here''s how to install it on CentOS Stream 8.'
 keywords: ['owncloud on Centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05

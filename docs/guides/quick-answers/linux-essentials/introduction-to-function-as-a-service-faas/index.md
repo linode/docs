@@ -3,8 +3,8 @@ slug: introduction-to-function-as-a-service-faas
 author:
   name: Tom Henderson
   email: thenderson@extremelabs.com
-description: 'FaaS gets a lot of attention as a way to save money. But the best reason to use FaaS is that your architecture is modeled after composable resource utilization. Its elements are scalable, cheap, and provide an alternative to monolithic architectures.'
-og_description: 'FaaS gets a lot of attention as a way to save money. But the best reason to use FaaS is that your architecture is modeled after composable resource utilization. Its elements are scalable, cheap, and provide an alternative to monolithic architectures.'
+description: 'FaaS gets a lot of attention as a way to save money. But what is it, exactly? And how does it work? We''ll explain.'
+og_description: 'FaaS gets a lot of attention as a way to save money. But what is it, exactly? And how does it work? We''ll explain.'
 keywords: ['function as a service']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-11

@@ -4,8 +4,8 @@ author:
   name: James Turner
   email: turner@blackbear.biz
 keywords: ["ps aux command"]
-description: 'The `ps aux` command is a tool that provides Linux system process information. You can view the process ID, user name, CPU, memory usage, and other helpful data about your system''s current state. This information can help you troubleshoot your Linux system and monitor its overall health.'
-og_description: 'The `ps aux` command is a tool that provides Linux system process information. You can view the process ID, user name, CPU, memory usage, and other helpful data about your system''s current state. This information can help you troubleshoot your Linux system and monitor its overall health.'
+description: 'The `ps aux` command is a tool that provides Linux system process information. We''ll explain why that matters, and how to use it.'
+og_description: 'The `ps aux` command is a tool that provides Linux system process information. We''ll explain why that matters, and how to use it.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-01-25
 modified_by:

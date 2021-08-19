@@ -3,8 +3,8 @@ slug: get-started-using-nethogs-for-network-usage-monitoring
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: 'Nethogs is a free, open-source program to track network usage. It extends the net top tool to track bandwidth by process. This guide shows you how to install nethogs and common commands to get you started using it to monitor your system''s network usage.'
-og_description: 'Nethogs is a free, open-source program to track network usage. It extends the net top tool to track bandwidth by process. This guide shows you how to install nethogs and common commands to get you started using it to monitor your system''s network usage.'
+description: 'Nethogs is a free, open-source program to track network usage. Here''s how to install it, and some common commands to get you started.'
+og_description: 'Nethogs is a free, open-source program to track network usage. Here''s how to install it, and some common commands to get you started.'
 keywords: ['how to use nethogs']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

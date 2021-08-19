@@ -3,8 +3,8 @@ slug: linode-images
 author:
   name: Linode
   email: docs@linode.com
-description: Linode's Images product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This can be useful for bootstrapping a golden image for large scale or rapid deployments, among other use cases.
-og_description: Linode's Images product allows you to store disk images in the Cloud and quickly deploy them to new or existing Linodes. This can be useful for bootstrapping a golden image for large scale or rapid deployments, among other use cases.
+description: Linode''s Images product allows you to store disk images in the Cloud for fast deployment. Here's how it works.
+og_description: Linode''s Images product allows you to store disk images in the Cloud for fast deployment. Here's how it works.
 keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
