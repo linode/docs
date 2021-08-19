@@ -3,8 +3,8 @@ slug: how-to-deploy-cpanel-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s Marketplace Apps.'
-og_description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s Marketplace Apps.'
+description: 'cPanel is a leading Linux-based web hosting control panel. Here''s how to deploy it alongside a WHM instance using Linode''s Marketplace Apps.'
+og_description: 'cPanel is a leading Linux-based web hosting control panel. Here''s how to deploy it alongside a WHM instance using Linode''s Marketplace Apps.'
 keywords: ['cpanel','whm','hosting','manager']
 tags: ["cpanel","linode platform","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy cPanel with Marketplace Apps"
 h1_title: "Deploying cPanel with Marketplace Apps"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:

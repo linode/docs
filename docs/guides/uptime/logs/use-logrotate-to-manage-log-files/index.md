@@ -3,8 +3,8 @@ slug: use-logrotate-to-manage-log-files
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to use logrotate to manage log files at scheduled times or when they reach a certain size.'
-og_description: 'Make system logs easier to keep track of with logrotate. Use this guide to configure logrotate to automatically compress and remove old log files at regular intervals that you control.'
+description: 'Make system logs easier to keep track of with logrotate. This guide will show you how.'
+og_description: 'Make system logs easier to keep track of with logrotate. This guide will show you how.'
 keywords: ["logrotate", "log files", "access logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/utilities/logrotate/','/uptime/logs/use-logrotate-to-manage-log-files/']

@@ -3,8 +3,8 @@ slug: how-to-deploy-grafana-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Grafana is an open source analytics and monitoring solution with a focus on accessibility for metric visualization. Deploay a Grafana instance using Linode''s Marketplace Apps.'
-og_description: 'Grafana is an open source analytics and monitoring solution with a focus on accessibility for metric visualization. Deploay a Grafana instance using Linode''s Marketplace Apps.'
+description: 'Grafana is an open source analytics and monitoring solution with a focus on metric visualization. Here''s how to deploy it through Linode''s Marketplace.'
+og_description: 'Grafana is an open source analytics and monitoring solution with a focus on metric visualization. Here''s how to deploy it through Linode''s Marketplace.'
 keywords: ['grafana','monitoring','dashboard','marketplace']
 tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Grafana with Marketplace Apps"
 h1_title: "Deploying Grafana with Marketplace Apps"
+enable_h1: true
 image: feature.png
 contributor:
   name: Linode
