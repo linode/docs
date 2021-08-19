@@ -14,7 +14,7 @@ title: "Introducing Infrastructure as Code"
 h1_title: "An Introduction to Infrastructure as Code"
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Infrastructure as Code on Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)'
 ---
