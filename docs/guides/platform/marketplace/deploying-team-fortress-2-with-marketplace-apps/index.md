@@ -25,7 +25,7 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 ### Deploy a Team Fortress 2 Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Team Fortress 2 Options](#team-fortress-2-options) section of this guide provides details on all available configuration options for this app.
 

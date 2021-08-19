@@ -26,7 +26,7 @@ Self-hosting your software development with GitLab offers total control of your 
 
 ### Deploy a GitLab Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### GitLab Options
 

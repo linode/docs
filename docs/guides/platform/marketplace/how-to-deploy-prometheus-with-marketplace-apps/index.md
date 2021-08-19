@@ -26,7 +26,7 @@ Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect m
 
 ## Deploy Prometheus with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Linode Options
 

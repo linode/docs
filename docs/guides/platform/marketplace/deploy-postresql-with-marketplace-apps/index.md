@@ -29,7 +29,7 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 ### Deploy a PostgreSQL Marketplace App
 
-{{< content deploy-marketplace-apps>}}
+{{< content deploy-marketplace-apps-shortguide>}}
 
 
 ### Linode Options

@@ -26,7 +26,7 @@ aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '
 
 ## Deploy Webmin with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Webmin Options
 

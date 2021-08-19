@@ -1,20 +1,22 @@
 ---
+# Shortguide: Instructions on accessing Marketplace from the Cloud maanger
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: marketplace-access-app-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-08-09
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that describes how to access a Marketplace App from the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
 modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Access a Marketplace App from Cloud Manager
-keywords: ["marketplace", "marketplace"]
-headless: true
-show_on_rss_feed: false
-tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/marketplace-access-app-shortguide/', '/platform/one-click/one-click-access-app-shortguide/']
+  name: Linode
 ---
 
 Depending on the type of app you created, the app will be accessible in different ways. All the ways to access your app require the IP address of your Linode. Follow the instructions below to find your IP address.

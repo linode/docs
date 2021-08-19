@@ -27,7 +27,7 @@ Hosting your own Terraria server gives you control over the world, the players, 
 
 ### Deploy a Terraria Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Terraria Options](#terraria-options) section of this guide provides details on all available configuration options for this app.
 

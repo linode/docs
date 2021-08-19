@@ -26,7 +26,7 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 ### Deploy a RabbitMQ Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### RabbitMQ Marketplace App Options
 

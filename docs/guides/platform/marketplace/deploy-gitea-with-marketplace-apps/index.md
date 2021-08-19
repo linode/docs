@@ -27,7 +27,7 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 
 ### Deploy a Gitea Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Gitea Options
 

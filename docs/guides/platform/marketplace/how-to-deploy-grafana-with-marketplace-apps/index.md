@@ -26,7 +26,7 @@ aliases: ['/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/', 
 
 ## Deploy Grafana with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Grafana Options
 

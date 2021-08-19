@@ -25,7 +25,7 @@ Run [VS Code Server](https://github.com/cdr/code-server) in the browser with the
 
 ## Deploy VS Code with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### VS Code Options
 

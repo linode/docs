@@ -33,7 +33,7 @@ You need a registered domain name to assign it the Linode server.
 
 ## Deploy OpenLiteSpeed with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Linode Options
 

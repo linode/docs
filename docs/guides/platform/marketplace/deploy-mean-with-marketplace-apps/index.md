@@ -40,7 +40,7 @@ A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web 
 
 ### Deploy a MEAN Marketplace App
 
-{{< content deploy-marketplace-apps>}}
+{{< content deploy-marketplace-apps-shortguide>}}
 
 
 ### Linode Options

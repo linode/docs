@@ -28,7 +28,7 @@ A LEMP (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/),
 
 ### Deploy a LEMP Stack with Marketplace Apps
 
-{{< content "deploy-marketplace-apps" >}}
+{{< content "deploy-marketplace-apps-shortguide" >}}
 
 The [LEMP Stack Options](#lemp-stack-options) section of this guide provides details on all available configuration options for this app.
 

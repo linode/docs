@@ -39,7 +39,7 @@ For a more detailed information on PMM's architecture see [Percona's official do
 
 ### Deploy a Percona (PMM) Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Percona (PMM) Options
 

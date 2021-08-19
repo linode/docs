@@ -29,7 +29,7 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 ### Deploy a Ruby on Rails Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Ruby on Rails Options](#ruby-on-rails-options) section of this guide provides details on all available configuration options for this app.
 

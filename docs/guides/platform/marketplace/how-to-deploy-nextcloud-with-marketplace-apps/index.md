@@ -36,7 +36,7 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 
 ### Deploy a NextCloud Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### NextCloud Options
 

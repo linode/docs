@@ -29,7 +29,7 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/', '/plat
 
 ### Deploy a Plesk Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Plesk Options](#plesk-options) section of this guide provides details on all available configuration options for this app.
 

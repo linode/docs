@@ -27,7 +27,7 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 ### Deploy a Rust Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Rust Options](#rust-options) section of this guide provides details on all available configuration options for this app.
 

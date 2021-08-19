@@ -25,7 +25,7 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 ### Deploy a LAMP Stack with Marketplace Apps
 
-{{< content "deploy-marketplace-apps" >}}
+{{< content "deploy-marketplace-apps-shortguide" >}}
 
 The [LAMP Stack Options](#lamp-stack-options) section of this guide provides details on all available configuration options for this app.
 

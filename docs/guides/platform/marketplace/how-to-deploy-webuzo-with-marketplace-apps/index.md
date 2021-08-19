@@ -25,7 +25,7 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 ## Deploy Webuzo with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Webuzo Options
 

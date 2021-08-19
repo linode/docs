@@ -28,7 +28,7 @@ aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/pl
 
 ## Deploy ServerWand with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Linode Options
 

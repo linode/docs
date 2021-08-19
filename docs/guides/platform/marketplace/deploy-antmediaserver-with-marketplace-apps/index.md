@@ -42,7 +42,7 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, p
 ### Deploy a Ant Media Server Marketplace App
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Linode Options
 

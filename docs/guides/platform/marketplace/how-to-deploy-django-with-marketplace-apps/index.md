@@ -28,7 +28,7 @@ external_resources:
 
 ### Deploy Django Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Django Options](#django-options) section of this guide provides details on all available configuration options for this app.
 

@@ -32,7 +32,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 ### Deploy a MongoDB Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [MongoDB Options](#mongodb-options) section of this guide provides details on all available configuration options for this app.
 

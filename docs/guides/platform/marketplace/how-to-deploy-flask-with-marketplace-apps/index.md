@@ -28,7 +28,7 @@ aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/
 
 ### Deploy a Flask Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Linode Options
 

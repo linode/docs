@@ -29,7 +29,7 @@ Install Valheim on Linode with the Valheim Game Server Marketplace App to maximi
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Valheim Options
 

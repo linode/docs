@@ -28,7 +28,7 @@ aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/'
 
 ## Deploy AzuraCast with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Linode Options
 

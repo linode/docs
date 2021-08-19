@@ -1,23 +1,25 @@
 ---
+# Shortguide: Instructions on deploying a Marketplace App from the Cloud maanger
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: marketplace-deploy-app-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-08-09
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that describes how to deploy a Marketplace App from the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
 modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Deploy a Marketplace App from Cloud Manager
-keywords: ["marketplace", "marketplace"]
-headless: true
-show_on_rss_feed: false
-tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/marketplace-deploy-app-shortguide/', '/platform/one-click/one-click-deploy-app-shortguide/']
+  name: Linode
 ---
 
-1.  Log into the Linode [Cloud Manager](https://cloud.linode.com).
+1.  Log into the [Cloud Manager](https://cloud.linode.com).
 
 1. From the Linode dashboard, click on the **Marketplace** option in the left-hand navigation menu:
 

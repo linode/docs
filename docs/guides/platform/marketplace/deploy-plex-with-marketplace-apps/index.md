@@ -28,7 +28,7 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ### Deploy a Plex Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Plex Marketplace App Options
 

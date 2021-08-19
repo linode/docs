@@ -31,7 +31,7 @@ Peppermint is still in Alpha and is not recommended for production use yet.
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Linode Options
 

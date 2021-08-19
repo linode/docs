@@ -32,7 +32,7 @@ Each container is deployed with its own CPU, memory, block I/O, and network reso
 
 ### Deploy a Docker Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Docker Options
 

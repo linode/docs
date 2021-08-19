@@ -26,7 +26,7 @@ CyberPanel is a next-generation hosting control panel, which provides a friendly
 
 ### Deploy a CyberPanel Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Linode Options
 

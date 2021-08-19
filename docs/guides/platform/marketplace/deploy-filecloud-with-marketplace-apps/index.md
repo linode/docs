@@ -27,7 +27,7 @@ FileCloud is a cloud-based file-sharing application, similar to tools like Dropb
 
 ## Deploy FileCloud with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### FileCloud Options
 

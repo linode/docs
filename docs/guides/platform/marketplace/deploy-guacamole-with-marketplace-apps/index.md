@@ -27,7 +27,7 @@ Apache Guacamole is an open source HTML5-based web application used as a remote 
 
 ### Deploy a Guacamole Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Guacamole Options](#guacamole-options) section of this guide provides details on all available configuration options for this app.
 

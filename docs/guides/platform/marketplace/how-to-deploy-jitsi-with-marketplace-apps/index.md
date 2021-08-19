@@ -29,7 +29,7 @@ aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/
 
 ## Deploy Jitsi with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Jitsi Options
 

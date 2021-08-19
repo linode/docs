@@ -33,7 +33,7 @@ Actively used by SMBs and large enterprises across all industries and in almost 
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Zabbix Options
 

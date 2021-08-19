@@ -29,7 +29,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
 ### Deploy a Minecraft Server Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Minecraft Options](#minecraft-options) section of this guide provides details on all available configuration options for this app.
 

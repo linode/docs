@@ -25,7 +25,7 @@ aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/pl
 
 ### Deploy a phpMyAdmin Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### phpMyAdmin Options
 

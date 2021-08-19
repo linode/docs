@@ -30,7 +30,7 @@ MySQL is an open-source database management system that uses a relational databa
 
 ### Deploy a MySQL/MariaDB Marketplace App
 
-{{< content deploy-marketplace-apps>}}
+{{< content deploy-marketplace-apps-shortguide>}}
 
 ### MySQL/MariaDB Options
 

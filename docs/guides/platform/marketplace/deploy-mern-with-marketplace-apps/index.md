@@ -38,7 +38,7 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 ### Deploy a MERN Marketplace App
 
-{{< content deploy-marketplace-apps>}}
+{{< content deploy-marketplace-apps-shortguide>}}
 
 ### MERN Options
 

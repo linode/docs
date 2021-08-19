@@ -27,7 +27,7 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 ## Deploy Mist.io with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Mist.io Options
 

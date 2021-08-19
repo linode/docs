@@ -25,7 +25,7 @@ aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/
 
 ## Deploy Virtualmin with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Virtualmin Options
 

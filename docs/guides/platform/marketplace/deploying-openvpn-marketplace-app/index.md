@@ -1,5 +1,5 @@
 ---
-slug: marketplace-openvpn
+slug: deploying-openvpn-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -8,17 +8,18 @@ keywords: ['vpn','openvpn','tunnel','marketplace app']
 tags: ["ssl","cloud-manager","linode platform","security","marketplace","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
+modified: 2021-08-18
 modified_by:
   name: Linode
-title: "Deploy OpenVPN Access Server with Marketplace Apps"
+title: "How to Deploy OpenVPN through the Linode Marketplace"
+h1_title: "Deploying OpenVPN through the Linode Marketplace"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'
-aliases: ['/platform/marketplace/marketplace-openvpn/', '/platform/one-click/one-click-openvpn/']
+aliases: ['/platform/marketplace/marketplace-openvpn/', '/platform/one-click/one-click-openvpn/','/guides/marketplace-openvpn/']
 ---
-
-## OpenVPN Marketplace App
 
 OpenVPN is a widely trusted, free, and open-source VPN (virtual private network) application that creates encrypted tunnels for secure data transfer between computers that are not on the same local network. Your traffic is encrypted by OpenVPN using [OpenSSL](https://www.openssl.org/). You can use OpenVPN to:
 
@@ -26,9 +27,23 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 - Connect your computer to services that you don't want to expose to the public Internet. Keep your sensitive applications isolated on your servers' private networking and use OpenVPN to access them remotely.
 
-## Deploy OpenVPN with Marketplace Apps
+## Software Included
 
-{{< content deploy-marketplace-apps >}}
+| Software | Version |
+| -- | -- |
+| [OpenVPN Access Server](https://openvpn.net/access-server/) | Latest at the time of deployment |
+
+## Deploying the OpenVPN Marketplace App
+
+
+
+{{< content deploy-marketplace-apps-shortguide >}}
+
+-   **Software included:**
+    -   [OpenVPN Access Server](https://openvpn.net/access-server/) (Latest version)
+
+-   **Supported Distribution Images:** Debian 10
+-   **Minimum Recommended Linode Plan:** 1GB Shared
 
 ### OpenVPN Options
 
@@ -40,7 +55,7 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 After providing the app specific options, provide configurations for your Linode server:
 
-| **Configuration** | **Description** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| **Configuration** | **Description** |
 |--------------|------------|
 | **Select an Image** | Debian 10 is currently the only image supported by the OpenVPN Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |

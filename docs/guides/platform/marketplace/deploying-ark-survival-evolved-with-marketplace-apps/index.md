@@ -27,7 +27,7 @@ Hosting an ARK server gives you control of the entire game. You can define the l
 
 ### Deploy an ARK: Survival Evolved Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [ARK Options](#ark-options) section of this guide provides details on all available configuration options for this app.
 

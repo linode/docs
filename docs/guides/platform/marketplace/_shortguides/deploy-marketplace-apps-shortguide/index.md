@@ -1,22 +1,22 @@
 ---
-slug: deploy-marketplace-apps
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Shortguide for deploying Marketplace Apps'
-keywords: ['marketplace', 'apps']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-26
-modified: 2019-03-26
-modified_by:
-  name: Linode
-title: "Index"
-contributor:
-  name: Linode
+# Shortguide: Instructions on deploying a Marketplace App from the Cloud maanger
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploy-marketplace-apps/', '/platform/one-click/deploy-one-click-apps/' ]
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
+slug: deploy-marketplace-apps-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-08-09
+author:
+  name: Linode
+  email: docs@linode.com
+modified_by:
+  name: Linode
 ---
 
 <!-- Use title convention: Deploy a X Marketplace App. -->

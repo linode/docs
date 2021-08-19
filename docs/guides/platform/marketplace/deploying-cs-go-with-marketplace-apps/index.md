@@ -29,7 +29,7 @@ A competitive match requires two teams of five players, but hosting your own ser
 
 ### Deploy a CS:GO Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [CS:GO Options](#cs-go-options) section of this guide provides details on all available configuration options for this app.
 

@@ -23,7 +23,7 @@ aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/',
 [Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.
 ## Deploy Cloudron with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Cloudron Options
 

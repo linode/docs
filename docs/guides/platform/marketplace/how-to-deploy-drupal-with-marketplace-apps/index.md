@@ -29,7 +29,7 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ### Deploy a Drupal Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 The [Drupal Options](#drupal-options) section of this guide provides details on all available configuration options for this app.
 

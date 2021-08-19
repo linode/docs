@@ -30,7 +30,7 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 ## Deploy Shadowsocks with Marketplace Apps
 
-{{< content deploy-marketplace-apps >}}
+{{< content deploy-marketplace-apps-shortguide >}}
 
 ### Shadowsocks Options
 

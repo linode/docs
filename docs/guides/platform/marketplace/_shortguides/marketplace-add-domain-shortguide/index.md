@@ -1,20 +1,22 @@
 ---
+# Shortguide: Instructions on adding a domain to a Marketplace App from the Cloud maanger
+
+headless: true
+show_on_rss_feed: false
+
+# Ignore the below front matter. It is included to comply with existing tests.
+
 slug: marketplace-add-domain-shortguide
+title: "Shortguide"
+description: "Shortguide"
+keywords: ["shortguide"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-08-09
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that describes how to add a domain name to a Marketplace App from the Cloud Manager.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
 modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: Add a Domain Name to a Marketplace App from Cloud Manager
-keywords: ["marketplace", "marketplace"]
-headless: true
-show_on_rss_feed: false
-tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/marketplace-add-domain-shortguide/', '/platform/one-click/one-click-add-domain-shortguide/']
+  name: Linode
 ---
 
 For websites like WordPress, WooCommerce, and Drupal, it may be desirable to have a domain name associated with your app. Otherwise, your app is only accessible through your Linode's IP address.

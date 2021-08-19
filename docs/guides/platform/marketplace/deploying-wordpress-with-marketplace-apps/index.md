@@ -26,7 +26,7 @@ With 60 million users around the globe, WordPress provides an industry standard 
 
 ### Deploy a WordPress Marketplace App
 
-{{< content "deploy-marketplace-apps" >}}
+{{< content "deploy-marketplace-apps-shortguide" >}}
 
 The [WordPress Options](#wordpress-options) section of this guide provides details on all available configuration options for this app.
 

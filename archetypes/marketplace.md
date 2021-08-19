@@ -30,7 +30,7 @@ external_resources:
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### ___App Name___ Options
 <!-- The following table has three parts. The UDF name, in bold and in one column, followed by

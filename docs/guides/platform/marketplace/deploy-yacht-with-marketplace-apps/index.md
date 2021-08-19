@@ -29,7 +29,7 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 
 ### Deploy a Yacht Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 ### Yacht Options
 
