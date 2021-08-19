@@ -21,6 +21,9 @@ external_resources:
 - '[Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)'
 aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/']
 ---
+
+## Flask Marketplace App
+
 [Flask](https://flask.palletsprojects.com/en/1.1.x/) is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. It is designed to make getting started quick and easy, with the ability to scale up to support more complex applications.
 
 ### Deploy a Flask Marketplace App

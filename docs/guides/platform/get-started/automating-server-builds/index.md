@@ -55,7 +55,7 @@ Golden disks are capable of handling automated server builds for most individual
 
 -   **Puppet:** An open source configuration management tool that manages systems declaratively. It can automates IT tasks like application configuration, patch management, and even infrastructure audit and compliance. See the following Puppet guides:
 
-    - [Basic Puppet Setup and Configuration](/docs/guides/basic-puppet-setup-and-configuration/)
+    - [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/)
     - [Manage and Automate Systems Configuration with Puppet](/docs/guides/manage-and-automate-systems-configuration-with-puppet/)
     - [Use Puppet Modules to Create a LAMP Stack](/docs/guides/use-puppet-modules-to-create-a-lamp-stack/)
     - [Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](/docs/guides/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/)

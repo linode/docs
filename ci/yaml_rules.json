@@ -27,6 +27,12 @@
     "type": "dict",
     "description": "First and last names of the original guide author."
   },
+  "bundles": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "A list of guide bundle taxonomies that a guide should belong to (e.g. 'gaming', 'security'). Bundles are listed at https://www.linode.com/docs/bundles/"
+  },
   "classic_manager_link": {
 	  "elements": false,
 	  "required": false,

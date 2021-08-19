@@ -18,21 +18,15 @@ enable_h1: true
 tags: ["linux"]
 ---
 
-# How to Use Nano Text Editor Commands in Linux
-
 GNU nano is a popular command-line text editor that is included in most Linux distributions. The interface is comparable to GUI-based text editors, which makes nano a popular choice for those who find `vi` or `emacs` commands non-intuitive. This guide shows you how to use Nano Text Editor Commands in Linux.
 
-### Why Edit Files in Linux Using Nano?
+## Why Edit Files in Linux Using Nano?
 
 Editing files in Linux using Nano is a popular option. Compared to other editors such as Vim, Nano’s GUI makes it very easy to edit, save and interact with the files. On other editors such as Vim, you have to change to edit mode to input text.
 
-
-## Nano Set Up and Basic Commands
+## Installing the Nano Text Editor in Linux
 
 Nano is included with many Linux distributions by default, but some users may need to install it through the [package management](https://www.linode.com/docs/using-linux/package-management/) tool of the distribution.
-
-
-### How to Install Nano Text Editor in Linux?
 
 **Debian/Ubuntu**:
 
@@ -42,16 +36,13 @@ Nano is included with many Linux distributions by default, but some users may ne
 
     yum install nano
 
-
-### Command Keys
+## Nano Command Keys
 
 When using nano, control characters (CTRL) are represented by a carat `(^)`. For example, if you wish to cut a line of text, you would use the *CTRL* key followed by the *K* key. This sequence of commands is represented as `^K` in nano. Some commands use the *Alt* key in order to function, which is represented by the letter *M*.
 
 A command represented as M-R in nano is performed by pressing the *Alt* key followed by the *R* key. Mac users may need to use the *Escape* (Esc) key instead of the *Alt* key to use these commands.
 
-
 ## Using Nano to Create And Open Files in Linux
-
 
 ### Create a New File using Nano
 
@@ -63,9 +54,7 @@ A blank new file in the terminal similar to the following appears:
 
 ![new file in the terminal](new-file.png "A new file in the terminal with nano.")
 
-
 You can make changes to the file. You may exit the file by pressing *Ctrl + X*. It prompts you to save the file and name it before you exit.
-
 
 {{< note >}}
 Nano only prompts you if actual changes were made to the file. If you didn't make any changes, you simply exit the editor and you get no prompts.
@@ -73,14 +62,11 @@ Nano only prompts you if actual changes were made to the file. If you didn't mak
 
 When prompted, select press *Y* and then write the name of the file.
 
-
 ![save the file](save-file.png "Entering a file name in nano.")
-
 
 After you enter a filename, press the *Enter* key to save the file. In this guide, the file is saved as a `tutorial.txt` with the following content:
 
 ![new content in the file](new-content-file.png "image_tooltip")
-
 
 ### Open an Existing File Using Nano
 
@@ -112,7 +98,6 @@ To open a file as read-only:
 
     nano -v myfile.txt
 
-
 ### Open Configuration Files Using Nano
 
 When editing files used to configure applications or system utilities, start nano with the `-w` flag:
@@ -121,24 +106,19 @@ When editing files used to configure applications or system utilities, start nan
 
 This flag prevents nano from wrapping lines that are too long to fit on the screen. Wrapping lines can create problems if configuration directives are saved across multiple lines.
 
-
 ## Edit Files Using Nano Text Editor in Linux
 
 Type `nano` to enter nano text editor. Use the arrow keys to move the cursor. A partial menu of available commands appears at the bottom of the terminal window.
-
 
 ### Cut and Paste Lines of Text Using Nano
 
 To cut a line of text, use `^K`. To paste, move the cursor where you want the text to be placed and use `^U`. To cut multiple lines, use a series of `^K` commands until all lines you wish to cut have been removed. When you paste them back with `^U`, the lines are pasted at once.
 
-
 ### Valid Shortcuts in Nano Text Editor
 
 To open up a list of commands in Nano, for example, in the `tutorial.txt` file, use *Ctrl+G*.
 
-
 Nano help menu appears and displays the following commands:
-
 
 ![nano help menu options](nano-help-menu.png "Nano help menu options.")
 
@@ -172,7 +152,6 @@ Below is an abbreviated list of commands:
 |^▶|^Space|Go forward one word|
 |^A|Home|Go to beginning of current line|
 |^E|End|Go to end of current line|
-
 
 ### Search Text Using Nano
 
@@ -215,21 +194,15 @@ Linode4
 Linode-end
 {{</ file >}}
 
-
-
 ![updated contents in the file](content-file.png "Opening the sample file in nano.")
-
 
 Search for any word that contains **end**. To do so, use *Ctrl+W* and the editor opens an option to search that appears at the bottom of the editor.
 
-
 ![search option in the file](search-file.png "Opening the search functionality of nano.")
-
 
 Type **end** in the search option and press enter to see the text that contains “end” in it. In this case, the editor highlights Linode-end. If there were multiple words that had **end** in them, move to other search results by using *Alt+W* to see the next match.
 
 ![search for the text](search-word.png "Finding the line that contains 'end'.")
-
 
 **Go to Line Number**
 
@@ -242,7 +215,6 @@ At the search menu, enter *Alt+R*. Type the text to be replaced and press *Enter
 Now try that with **end** in the `tutorial.txt` file. The goal is to find **end** in the `tutorial.txt` file and replace it with **launch**. To get started, press *Alt+R* and the following menu appears:
 
 ![search the text to replace](search-file.png "Open the search menu in nano.")
-
 
 Next, type the text you want to replace. In this case, it is **end**. And, then press *Enter*.
 ![search for the text "end"](search-end.png "Search for the text 'end'")
@@ -271,7 +243,6 @@ After you have installed spell, you can use the spell-checking feature by using 
 
 To save your work, use `^O `or *WriteOut*. This saves the document and leaves nano open for you to continue working.
 
-
 ### Save with Backups
 
 Nano can create backups of files when you exit. These backups can be placed in a directory of your choice. By default, they are placed in the same directory as the modified file.
@@ -281,7 +252,6 @@ Using the `-B` option when starting nano creates backups of the file for you. Us
     nano -BC ~/backups index.php
 
 The command listed above creates a backup copy of *index.php* in the backups folder in the current user’s home directory.
-
 
 ## Exit Commands for Nano Text Editor
 

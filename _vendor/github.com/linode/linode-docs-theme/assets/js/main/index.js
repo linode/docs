@@ -1,19 +1,19 @@
 // Configuration (search API key etc.)
 import * as params from '@params';
 // AlpineJS controllers and helpers.
-import { newSearchController, newSearchInputController, newSearchFiltersController } from './search';
+import { newSearchController, newSearchInputController, newSearchFiltersController } from './search/index';
 import {
 	newToCController,
 	newInitController,
 	newBreadcrumbsController,
 	newSearchExplorerController,
 	newNavController
-} from './navigation';
+} from './navigation/index';
 import { newHomeController } from './sections/home/home';
 import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
 import { newSectionsController } from './sections/sections/index';
 import { newOnIntersectionController, initConsentManager } from './components/index';
-import { sendEvent } from './helpers/index';
+import { sendEvent, isMobile, toggleBooleanClass } from './helpers/index';
 
 // Set up the AlpineJS controllers
 const searchConfig = getSearchConfig(params);
@@ -34,7 +34,7 @@ window.lnc = {
 	NewDisqusController: newDisqus,
 
 	// Page controllers.
-	NewHomeController: (developerItems) => newHomeController(searchConfig, developerItems),
+	NewHomeController: (staticData) => newHomeController(searchConfig, staticData),
 	NewSectionsController: () => newSectionsController(searchConfig)
 };
 
@@ -48,6 +48,11 @@ window.lnh = {
 
 // Set up global event listeners etc.
 (function() {
+	if (isMobile()) {
+		// This body class is default open, toggle off if on mobile.
+		toggleBooleanClass('explorer-open', document.body, false);
+	}
+
 	window.deferLoadingAlpine = function(callback) {
 		// This does nothing, which prevents Alpine.start() from doing double work.
 		// The components gets initialized in turbolinks:load by the
@@ -56,6 +61,12 @@ window.lnh = {
 		// which currently is unneeded overhead as we don't add any components dynamically.
 		// If that changes, uncommenting the line below should do the trick.
 		//  Alpine.listenForNewUninitializedComponentsAtRunTime()
+	};
+
+	// Set up a global function to send events to Google Analytics.
+	window.gtag = function(event) {
+		this.dataLayer = this.dataLayer || [];
+		this.dataLayer.push(event);
 	};
 
 	let turbolinksLoaded = false;
@@ -159,8 +170,9 @@ function getSearchConfig(params) {
 					return false;
 				}
 				if (s.filters) {
+					let sectionFilter = s.filters.split('OR')[0].trim();
 					// We have some sections that share the same index.
-					return result.params.endsWith(encodeURIComponent(s.filters));
+					return result.params.includes(encodeURIComponent(sectionFilter));
 				}
 				return true;
 			});

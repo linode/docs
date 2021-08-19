@@ -8,7 +8,7 @@ og_description: 'This guide shows you how to deploy a Mastodon instance on Debia
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','debian 10']
 tags: ['docker', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-18
+published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
 title: "Install Mastodon on Debian 10"
@@ -80,7 +80,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

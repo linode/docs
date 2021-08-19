@@ -112,12 +112,17 @@ export function newSectionsController(searchConfig) {
 				throw `no search config found for section ${indexName}`;
 			}
 			this.data.lvl = parts.length - 1;
+			let filters = `section.lvl${this.data.lvl}:'${this.key}'`;
+
+			if (sectionConfig.explorer_leaf_filter) {
+				filters += ' AND ' + sectionConfig.explorer_leaf_filter;
+			}
 
 			this.request = {
 				page: 0,
 				indexName: sectionConfig.index_by_pubdate || sectionConfig.index,
 				facets: [ 'section.*' ],
-				filters: `section.lvl${this.data.lvl}:'${this.key}'`
+				filters: filters
 			};
 
 			this.data.sectionConfig = sectionConfig;

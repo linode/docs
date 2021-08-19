@@ -96,23 +96,21 @@ export function newToCController() {
 
 				li.appendChild(a);
 
+				let ol2 = document.createElement('ol');
+				li.appendChild(ol2);
 				if (level == 2) {
-					let ol2 = document.createElement('ol');
-					li.appendChild(ol2);
 					row.length = 0;
 					row.push(ol2);
 					ol.appendChild(li);
-				} else if (row.length > 0) {
+				} else {
 					// Attach it to the closest parent.
 					let relativeLevel = level - 2;
 					let rowIdx = Math.min(relativeLevel - 1, row.length - 1);
-					if (row.length <= relativeLevel) {
-						let ol2 = document.createElement('ol');
-						li.appendChild(ol2);
-						row.push(ol2);
-					}
 					let ol3 = row[rowIdx];
 					ol3.appendChild(li);
+					if (rowIdx > 1) {
+						row[rowIdx - 1] = ol2;
+					}
 				}
 			});
 			if (!this.enabled) {

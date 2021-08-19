@@ -27,7 +27,7 @@ Throughout this guide we will offer several suggested values for specific config
 
 - When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/guides/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/guides/securing-your-server)
 
-- Generate an [SSL certificate](/docs/guides/ssl) for your domain name. This can be done through any Certificate Authority, including Let's Encrypt using the [Certbot](https://certbot.eff.org/) tool. Since Certbot cannot run directly on the NodeBalancer, run the following command on any Linode to generate the certificate (after following [Certbot's installation instructions](https://certbot.eff.org/instructions)). This allows you to manually verify ownership by updating a DNS record on your domain:
+- Generate an [SSL certificate](/docs/guides/security/ssl/) for your domain name that supports TLS version 1.2 or later. This can be done through any Certificate Authority, including Let's Encrypt using the [Certbot](https://certbot.eff.org/) tool. Since Certbot cannot run directly on the NodeBalancer, run the following command on any Linode to generate the certificate (after following [Certbot's installation instructions](https://certbot.eff.org/instructions)). This allows you to manually verify ownership by updating a DNS record on your domain:
 
         sudo certbot certonly --manual --preferred-challenges dns
 
@@ -35,8 +35,8 @@ Throughout this guide we will offer several suggested values for specific config
 
 - This guide assumes that you have already deployed two or more back-end Linodes and configured them with either a LAMP stack or a LEMP stack. If you have not, please review the following documentation for assistance with configuring your respective stack:
 
-    - [LAMP Stack](/docs/guides/lamp/)
-    - [LEMP Stack](/docs/guides/lemp/)
+    - [LAMP Stack](/docs/guides/web-servers/lamp/)
+    - [LEMP Stack](/docs/guides/web-servers/lemp/)
 
 - In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:
 

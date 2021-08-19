@@ -8,7 +8,7 @@ og_description: 'This guide shows you how to install Mastodon on Ubuntu 20.04. M
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','ubuntu 20.04']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-14
+published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
 title: "Install Mastodon on Ubuntu 20.04"
@@ -78,7 +78,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

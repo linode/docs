@@ -74,7 +74,7 @@ Development of your Hugo site and Docker image will take place locally on your p
 
             brew install hugo
 
-1. {{< content "install-docker-ce" >}}
+1. {{< content "installing-docker-shortguide" >}}
 
 ## Create a Hugo Site
 

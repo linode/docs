@@ -37,7 +37,7 @@ WordPress.com's export feature will export pages, posts, and comments from your 
 
 ### Export Your WordPress.com Content
 
-1.  Login to your WordPress.com dashboard and navigate to the `Settings` page. Choose the `Export` option from the `Settings` page:
+1.  Login to your WordPress.com dashboard and navigate to the `Export` page of the `Tools` section. Choose the `Export all` option under the `Export content` subsection:
 
     ![WordPress.com Settings Page](wordpressdotcom-settings.png "Choose the Export option from the Settings page.")
 

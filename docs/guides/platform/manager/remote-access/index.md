@@ -72,7 +72,7 @@ The reverse DNS will be reset.
 ## Configuring IP Sharing
 
 {{< note >}}
-This feature is not yet supported in the Toronto, Sydney, or Mumbai data centers.
+This feature is not yet supported in the Atlanta, Mumbai, Sydney, or Toronto data centers.
 {{</ note >}}
 
 *IP sharing*, called IP failover in the Classic Manager, is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:

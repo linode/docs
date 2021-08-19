@@ -7,7 +7,7 @@ description: 'How to set up your first web server and point a domain name to you
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-07
+modified: 2021-08-06
 modified_by:
   name: Linode
 published: 2012-03-13
@@ -31,7 +31,7 @@ The application you use to serve your website depends on the type of site. Find 
 
 ### Static Sites
 
-If your website consists entirely of static files like HTML, CSS, JavaScript, and images, then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/docs/development/javascript/deploy-a-react-app-on-linode/) apps. NGINX is a good choice for hosting this type of website.
+If your website consists entirely of static files like HTML, CSS, JavaScript, and images, then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/docs/guides/how-to-deploy-a-react-app-on-ubuntu-18-04/) apps. NGINX is a good choice for hosting this type of website.
 
 If you plan to host a simple site such as a blog or photo gallery, another option is to use a [static site generator](/docs/websites/static-sites/how-to-choose-static-site-generator/).
 
@@ -126,7 +126,7 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 
     104.237.137.10
     65.19.178.10
-    75.127.96.10
+    74.207.225.10
     207.192.70.10
     109.74.194.10
     2600:3c00::a

@@ -7,6 +7,7 @@ import { newCreateHref } from './create-href';
 var debug = 0 ? console.log.bind(console, '[explorer]') : function() {};
 
 const SECTION_DELIM = ' > ';
+const taxonomiesSection = 'taxonomies';
 
 export function newSearchExplorerController(searchConfig) {
 	if (!searchConfig) {
@@ -120,6 +121,7 @@ export function newSearchExplorerController(searchConfig) {
 		data: data,
 		initState: initStates.INITIAL,
 		open: false,
+		isSearchFiltered: false,
 		scrollTop: 0,
 
 		// onSearchReady is called when the search system is ready.
@@ -134,9 +136,7 @@ export function newSearchExplorerController(searchConfig) {
 						// Load everything in one query.
 						let sectionName = activeNodeKey.split('>')[0].trim();
 						dispatcher.searchNodes({
-							data: [
-								{ key: activeNodeKey, section: { config: searchConfig.sections[sectionName] } }
-							]
+							data: [ { key: activeNodeKey, section: { config: searchConfig.sections[sectionName] } } ]
 						});
 					} else {
 						dispatcher.searchBlank();
@@ -162,6 +162,7 @@ export function newSearchExplorerController(searchConfig) {
 				return;
 			}
 			this.data.searchState = data;
+			this.isSearchFiltered = data.query.isFiltered() || data.mainSearch.results.isSectionDisabled();
 			this.load();
 		},
 
@@ -297,9 +298,7 @@ export function newSearchExplorerController(searchConfig) {
 				};
 				self.target = self.$refs['explorer'];
 
-				// Open the explorer menu on load when not on mobile, only for the the home page and any of the pages in the /api section.
-				// Note that this applies only to the initial load.
-				let shouldOpen = !isMobile() && (designMode || page.kind === 'home' || page.type === 'api');
+				let isOpenOnLoad = document.body.classList.contains('is-explorer-open');
 
 				if (page.type === 'api') {
 					activeNodeKey = page.href.substr(1).slice(0, -1).split('/').slice(1).join(' > ');
@@ -308,7 +307,7 @@ export function newSearchExplorerController(searchConfig) {
 				// Prepare the DOM templates. The final render of the nodes is performed lazily on expansion.
 				self.render();
 
-				if (shouldOpen) {
+				if (isOpenOnLoad) {
 					setOpenStatus(self, true);
 				}
 			};
@@ -358,6 +357,10 @@ export function newSearchExplorerController(searchConfig) {
 				return nodes;
 			};
 
+			n.isDisabled = function() {
+				return false;
+			};
+
 			n.isLeaf = function() {
 				return this.kind === 'page' || (this.level > 1 && (this.count === 0 || this.isGhostSection));
 			};
@@ -371,7 +374,7 @@ export function newSearchExplorerController(searchConfig) {
 			};
 
 			n.onClick = function(e) {
-				if (!this.isLeaf() && !this.open) {
+				if (!this.isLeaf() && !this.isDisabled() && !this.open) {
 					this.toggleOpen();
 				}
 
@@ -466,6 +469,11 @@ export function newSearchExplorerController(searchConfig) {
 			this.data.add = function(section, sectionResult) {
 				let kp = this.parseKey(sectionResult.key);
 
+				// We list the taxonomies in search listings, but not in the explorer.
+				if (kp.parts[0] === taxonomiesSection) {
+					return;
+				}
+
 				let n = this.nodes[kp.key];
 				let count = sectionResult.count;
 
@@ -480,7 +488,24 @@ export function newSearchExplorerController(searchConfig) {
 						isGhostSection: sectionResult.isGhostSection
 					});
 
+					n.isDisabled = function() {
+						return this.disabled || this.count === 0;
+					};
+
 					n.toggleOpen = function(loadPagesOnNextTick = false) {
+						// Send tracking event to GA:
+						let wasOpen = this.open;
+						setTimeout(function() {
+							let event = {
+								event: 'gaEvent',
+								eventCategory: 'Explore Nav',
+								eventAction: wasOpen ? 'Close' : 'Open',
+								eventLabel: n.key,
+								nonInteraction: true
+							};
+							window.gtag(event);
+						}, 0);
+
 						if (!this.open) {
 							// Close open nodes on the same or lower level.
 							self.data.walk(this.parent, function(nn) {
@@ -587,17 +612,6 @@ export function newSearchExplorerController(searchConfig) {
 			return this.data.searchState.mainSearch.results;
 		},
 
-		isSearchFiltered: function() {
-			if (
-				this.initState == initStates.LOADING ||
-				!this.data.searchState ||
-				!this.data.searchState.mainSearch.isLoaded()
-			) {
-				return false;
-			}
-			return this.data.searchState.query.isFiltered();
-		},
-
 		// Update hidden state and facet counts based on a updated search result.
 		filterNodes: function() {
 			debug('filterNodes', this.data);
@@ -654,6 +668,10 @@ export function newSearchExplorerController(searchConfig) {
 
 				for (let resultSection of resultSections) {
 					let kp = this.data.parseKey(resultSection.key);
+					// We list the taxonomies in search listings, but not in the explorer.
+					if (kp.parts[0] === taxonomiesSection) {
+						continue;
+					}
 					let n = this.data.nodes[kp.key];
 					if (!n) {
 						console.warn(`node with key ${kp.key} not set`);

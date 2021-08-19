@@ -4,7 +4,7 @@ baseURL = "https://www.linode.com/docs/"
 languageCode = "en-us"
 title = "Linode Guides & Tutorials"
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+# disableKinds = ["taxonomy", "taxonomyTerm"]
 themeDir = ".."
 rssLimit = 30
 summaryLength = 15
@@ -18,6 +18,9 @@ enableGitInfo = true
 # The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
 home = ["HTML", "JSON", "RSS"]
 
+[taxonomies]
+bundle = "bundles"
+
 [frontmatter]
 lastmod = [":git", "lastmod", "date", "publishDate"]
 publishDate = ["published", "publishDate", "date"]
@@ -29,6 +32,7 @@ time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"
 time_format_default = "Monday, January 2, 2006"
 promo_code = "DOCS32SAFC"
 promo_code_amount = 100
+promo_code_disclaimer = "This credit will be applied to any valid services used during your first 60 days."
 page_title_suffix = "Linode"
 
 [params.search_config]
