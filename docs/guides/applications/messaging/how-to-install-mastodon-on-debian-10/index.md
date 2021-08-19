@@ -3,8 +3,8 @@ slug: install-mastodon-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to deploy a Mastodon instance on Debian 10. Mastodon is an open source and decentralized alternative to Twitter and is part of the Fediverse.'
-og_description: 'This guide shows you how to deploy a Mastodon instance on Debian 10. Mastodon is an open source and decentralized alternative to Twitter and is part of the Fediverse.'
+description: 'Learn how to install the open-source, self-hosted microblogging platform Mastodon on Debian 10 Linux.'
+og_description: 'Learn how to install the open-source, self-hosted microblogging platform Mastodon on Debian 10 Linux.'
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','debian 10']
 tags: ['docker', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

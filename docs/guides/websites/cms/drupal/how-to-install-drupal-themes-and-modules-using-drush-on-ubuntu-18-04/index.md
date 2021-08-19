@@ -12,8 +12,9 @@ modified: 2020-03-11
 modified_by:
     name: Linode
 published: 2014-12-05
-title: How to Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
+title: How to Install Drupal Themes & Modules on Ubuntu 18.04
 h1_title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
+enable_h1: true
 image: DrupalThemesMods_DrushUbuntu1804.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'

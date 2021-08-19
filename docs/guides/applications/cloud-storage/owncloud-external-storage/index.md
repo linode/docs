@@ -3,8 +3,8 @@ slug: owncloud-external-storage
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'ownCloud integrates with external storage solutions, like Linode''s S3-compatible Object Storage. Using ownCloud''s external storage feature expands the amount of storage available to your ownCloud instance. This guide shows you how to enable s3-compatible external storage using ownCloud''s Marketplace and Linode Object Storage. '
-og_description: 'ownCloud integrates with external storage solutions, like Linode''s S3-compatible Object Storage. Using ownCloud''s external storage feature expands the amount of storage available to your ownCloud instance. This guide shows you how to enable s3-compatible external storage using ownCloud''s Marketplace and Linode Object Storage.'
+description: 'This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space. '
+og_description: 'This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space. '
 keywords: ['ownCloud external storage', 'ownCloud s3']
 tags: ['marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,8 +3,8 @@ slug: install-mastodon-server-on-centos-stream
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to deploy a Mastodon server instance on CentOS Stream. Mastodon is an open-source and self-hosted alternative to Twitter and is part of the Fediverse. CentOS Stream is a rolling-release distribution and gives its users a preview of upcoming RHEL releases.'
-og_description: 'This guide shows you how to deploy a Mastodon server instance on CentOS Stream. Mastodon is an open-source and self-hosted alternative to Twitter and is part of the Fediverse. CentOS Stream is a rolling-release distribution and gives its users a preview of upcoming RHEL releases.'
+description: 'In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream, '
+og_description: 'In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream, '
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','centos stream']
 tags: ['centos', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

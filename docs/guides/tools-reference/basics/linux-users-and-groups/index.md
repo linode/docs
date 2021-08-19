@@ -3,8 +3,8 @@ slug: linux-users-and-groups
 author:
   name: Linode
   email: docs@linode.com
-description: 'In this guide, you learn about Linux users and groups. This guide includes several examples using commands to execute the most common tasks related to user and group management. You also learn about primary and secondary Linux groups.'
-og_description: 'In this guide, you learn about Linux users and groups. This guide includes several examples using commands to execute the most common tasks related to user and group management. You also learn about primary and secondary Linux groups.'
+description: 'Want to learn more about Linux users and groups? Have a look at this guide, which also gives examples of the most common user/group management tasks.'
+og_description: 'Want to learn more about Linux users and groups? Have a look at this guide, which also gives examples of the most common user/group management tasks.'
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
