@@ -6,13 +6,8 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-<<<<<<< HEAD
 description: 'This guide shows how to install all three components of Elastic Stack on CentOS to explore Apache web server logs in Kibana.'
 og_description: 'This guide shows how to install all three components of Elastic Stack on CentOS to explore Apache web server logs in Kibana.'
-=======
-description: "This guide will demonstrate how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs."
-og_description: "The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana."
->>>>>>> upstream/northcutt-seo-updates-2021-08
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache centos stream 8", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
@@ -21,13 +16,8 @@ published: 2021-03-05
 modified: 2021-03-05
 modified_by:
   name: Linode
-<<<<<<< HEAD
-title: 'Visualize Logs Using the Elastic Stack on CentOS'
-h1_title: 'How to Visualize Apache Web Server Logs with Elastic Stack on CentOS'
-=======
 title: "Visualizing Apache Logs With Elastic Stack on CentOS Stream 8"
 h1_title: "Visualizing Apache Logs Using Elastic Stack on CentOS Stream 8"
->>>>>>> upstream/northcutt-seo-updates-2021-08
 enable_h1: true
 dedicated_cpu_link: true
 tags: ["centos","analytics","database","monitoring","apache"]
