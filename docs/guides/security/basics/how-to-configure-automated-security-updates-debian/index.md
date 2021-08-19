@@ -2,8 +2,8 @@
 slug: how-to-configure-automated-security-updates-debian
 author:
   name: Hackersploit
-description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (and other package) updates with the utility Unattended Upgrades on Debian.'
-og_description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (and other package) updates with the utility Unattended Upgrades on Debian.'
+description: 'Keeping your system up-to-date with the latest security updates can be tedious. We'll show you a better way using the utility Unattended Upgrades on Debian.'
+og_description: 'Keeping your system up-to-date with the latest security updates can be tedious. We'll show you a better way using the utility Unattended Upgrades on Debian.'
 keywords: ["debian unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["debian", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +11,9 @@ modified: 2020-10-22
 modified_by:
   name: Linode
 published: 2020-10-22
-title: How to Configure Automated Security Updates on Debian
-h1_title: Configuring Automated Security Updates on Debian
+h1_title: How to Configure Automated Security Updates on Debian
+title: Configuring Automated Security Updates on Debian
+enable_h1: true
 aliases: ['/security/basics/how-to-configure-automated-security-updates-debian/']
 relations:
     platform:

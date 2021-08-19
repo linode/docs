@@ -3,8 +3,8 @@ slug: how-to-install-nginx-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Ubuntu 18.04.'
-og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Ubuntu 18.04.'
+description: 'Wondering how to install NGINX on Ubuntu 18.04? We'll walk you through what needs to be done. '
+og_description: 'Wondering how to install NGINX on Ubuntu 18.04? We'll walk you through what needs to be done. '
 keywords: ["nginx", "load balancing", "ubuntu", "ubuntu 18", "web server", "static content", "install nginx"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

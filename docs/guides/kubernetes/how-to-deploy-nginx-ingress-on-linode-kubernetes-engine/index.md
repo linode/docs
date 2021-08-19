@@ -3,8 +3,8 @@ slug: how-to-deploy-nginx-ingress-on-linode-kubernetes-engine
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to deploy the NGINX Ingress Controller on LKE. After creating a cluster on LKE, this guide will walk through how to: deploy the NGINX Ingress Controller on your Linode Kubernetes Engine.'
-og_description: 'Learn how to deploy NGINX Ingress Controller on LKE. After creating a cluster on LKE, this guide will walk through how to: deploy the NGINX Ingress Controller on your Linode Kubernetes Engine.'
+description: 'Learn how to deploy NGINX Ingress Controller on LKE after creating a cluster.'
+og_description: 'Learn how to deploy NGINX Ingress Controller on LKE after creating a cluster.'
 keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 'ingress','nginx']
 tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +12,8 @@ published: 2019-11-12
 modified: 2021-06-25
 modified_by:
   name: Linode
-title: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
-h1_title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
+h1_title: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
+title: "Deployg NGINX Ingress on Linode Kubernetes Engine"
 enable_h1: true
 image: nginx-ingress.png
 contributor:
