@@ -11,8 +11,8 @@ published: 2017-10-27
 modified: 2019-01-02
 modified_by:
   name: Linode
-h1_title: 'Configure and Use Salt Cloud and Cloud Maps to Provision Systems'
-title: 'Configure Salt Cloud & Maps to Provision Systems'
+title: "How to Use Salt Cloud and Cloud Maps to Provision Systems"
+h1_title: "Using Salt Cloud and Cloud Maps to Provision Systems"
 enable_h1: true
 contributor:
   name: Sergey Bulavintsev

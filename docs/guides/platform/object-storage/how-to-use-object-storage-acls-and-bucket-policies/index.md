@@ -3,16 +3,16 @@ slug: how-to-use-object-storage-acls-and-bucket-policies
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
-og_description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
+description: "Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects."
+og_description: "How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects."
 keywords: ['object storage','acl','access control list','bucket policy','bucket policies']
 tags: ["linode platform","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
 modified_by:
   name: Linode
-title: "How to Use Object Storage ACLs & Bucket Policies"
-h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies"
+title: "How to Use ACLs and Bucket Policies on Linode Object Storage"
+h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies on Object Storage"
 enable_h1: true
 contributor:
   name: Linode
