@@ -12,8 +12,9 @@ modified: 2021-03-10
 modified_by:
   name: Linode
 published: 2021-03-10
-title: How to Transfer Ownership of Linode Services with Service Transfers
+title: How to Transfer Ownership of Linode Services
 h1_title: Transfer Ownership of Linode Services with Service Transfers
+enable_h1: true
 aliases: ['/guides/platform/manager/service-transfers/']
 ---
 

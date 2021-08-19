@@ -6,8 +6,8 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: "This guide will demonstrate how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs."
-og_description: "The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana."
+description: 'This guide shows how to install all three components of Elastic Stack on CentOS to explore Apache web server logs in Kibana.'
+og_description: 'This guide shows how to install all three components of Elastic Stack on CentOS to explore Apache web server logs in Kibana.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache centos stream 8", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
