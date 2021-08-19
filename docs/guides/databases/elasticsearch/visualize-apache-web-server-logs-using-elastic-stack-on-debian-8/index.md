@@ -16,7 +16,9 @@ published: 2017-09-18
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
+title: "Visualizing Apache Logs With Elastic Stack on Debian 8"
+h1_title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
+enable_h1: true
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
 aliases: ['/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/']

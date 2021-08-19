@@ -1,21 +1,22 @@
 ---
+slug: how-to-manage-packages-and-virtual-environments-on-linux
 author:
   name: Angel Guarisma
   email: docs@linode.com
-description: 'Python virtual environments help developers avoid dependency conflicts. This guide covers the basic concepts of Python packages and virtual environments.'
-og_description: 'Python virtual environments help developers avoid dependency conflicts. This guide covers the basic concepts of Python packages and virtual environments.'
+description: "Python virtual environments help developers avoid dependency conflicts. This guide covers the basic concepts of Python packages and virtual environments."
+og_description: "Python virtual environments help developers avoid dependency conflicts. This guide covers the basic concepts of Python packages and virtual environments."
 keywords: ['How to install python on linux','manage python environments in linux', 'virtualenv python', 'pipenv tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12
 modified_by:
   name: Linode
-title: "How to Manage Python Packages and Virtual Environments on Linux"
-h1_title: "Managing Python Packages and Virtual Environments on Linux"
+title: "How to Manage Python Packages and Versions on Linux"
+h1_title: "Managing Python Packages and Versions on Linux"
+enable_h1: true
 contributor:
   name: Angel Guarisma
   link: https://github.com/guaris
-slug: how-to-manage-packages-and-virtual-environments-on-linux
 aliases: ['/development/python/how-to-manage-packages-and-virtual-environments-on-linux/']
 tags: ["python"]
 ---

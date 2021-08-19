@@ -16,8 +16,8 @@ published: 2021-03-26
 modified: 2021-03-26
 modified_by:
   name: Linode
-title: 'How to Visualize Apache Web Server Logs Using the Elastic Stack on Ubuntu 18.04'
-h1_title: 'Visualizing Apache Web Server Logs Using the Elastic Stack on Ubuntu 18.04'
+title: "Visualizing Apache Logs With Elastic Stack on Ubuntu 18.04"
+h1_title: "Visualizing Apache Logs Using the Elastic Stack on Ubuntu 18.04"
 enable_h1: true
 dedicated_cpu_link: true
 tags: ["ubuntu","analytics","database","monitoring","apache"]
