@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
 modified_by:
   name: Linode
-title: "How to Install FastCGI & PHP-FPM on Ubuntu"
-h1_title: "Install and Configure FastCGI and PHP-FPM on Ubuntu 18.04"
+title: "How to Install FastCGI and PHP-FPM on Ubuntu 18.04"
+h1_title: "Installing and Configuring FastCGI and PHP-FPM on Ubuntu 18.04"
 enable_h1: true
 contributor:
   name: Linode

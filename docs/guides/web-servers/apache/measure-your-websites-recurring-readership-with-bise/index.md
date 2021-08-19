@@ -3,15 +3,15 @@ slug: measure-your-websites-recurring-readership-with-bise
 author:
   name: Jason McIntosh
   email: jmac@jmac.org
-description: 'Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership.'
-og_description: 'Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership.'
+description: "Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership."
+og_description: "Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership."
 keywords: ["Bise", "Apache", "Analytics", "Blogging"]
 tags: ["web server","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-17
 modified_by:
   name: Linode
-title: "Measuring a Website's Recurring Readership with Bise"
+title: "How to Measure a Website's Recurring Readership with Bise"
 h1_title: "Measuring your Website's Recurring Readership with Bise"
 enable_h1: true
 image: feature.png

@@ -23,6 +23,7 @@ aliases: ['/applications/big-data/apache-airflow-tutorial-creating-connections-a
 ---
 
 ## What is Apache Airflow?
+
 [Airflow](https://airflow.apache.org/) is an open source platform that you can use to automate, orchestrate, and monitor workflows and data pipelines. One of Airflow’s greatest features is that you can create and execute workflows with code. When you use workflows that are powered by code, you can version control, collaborate on, and debug your workflows.
 
 Airflow refers to workflows as *Directed Acyclic Graphs (DAGs)*. A DAG includes the sequence of tasks to execute along with the relationship between tasks and their dependencies. You can execute an [ETL process](https://en.wikipedia.org/wiki/Extract,_transform,_load) (extract, load, and transform data) with Airflow and also automate emails with CSV attachments, and create Machine Learning (ML) workflows.
@@ -31,7 +32,7 @@ You can connect your Airflow data sources to a central data *warehouse* so your 
 
 Airflow provides a [Python application programming interface (API)](https://airflow.apache.org/docs/stable/_api/index.html) that you can use to code your DAGs and call any connection scripts you create.
 
-### In this Guide
+## In this Guide
 
 This tutorial provides an introduction with basic examples to two fundamental Airflow concepts, *Variables* and *Connections*. You can incorporate the ideas covered in this guide into more sophisticated Python scripts when creating your DAGs and data pipelines.
 

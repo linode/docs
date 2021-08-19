@@ -11,8 +11,8 @@ published: 2019-05-01
 modified: 2019-05-01
 modified_by:
   name: Linode
-title: "LXD: Setting Up an Apache Webserver In a Container"
-h1_title: "A Beginner's Guide to LXD: Set Up an Apache Webserver In a Container"
+title: "How to Set Up an Apache Webserver in an LXD Container"
+h1_title: "A Beginner's Guide to LXD: Setting Up an Apache Web Server"
 enable_h1: true
 contributor:
   name: Simos Xenitellis

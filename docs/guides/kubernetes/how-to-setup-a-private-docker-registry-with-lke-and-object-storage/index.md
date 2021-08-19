@@ -3,8 +3,8 @@ slug: how-to-setup-a-private-docker-registry-with-lke-and-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide, you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images.'
-og_description: 'In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry'
+description: "In this guide, you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images."
+og_description: "In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let's Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry's traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry"
 keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +12,14 @@ image: private-docker-registry.png
 published: 2020-03-26
 modified_by:
   name: Leslie Salazar
-title: "How to Set Up a Private Docker Registry"
-h1_title: "How to Set Up a Private Docker Registry with LKE and Object Storage"
+title: "How to Set Up a Docker Registry with LKE and Object Storage"
+h1_title: "Setting Up a Private Docker Registry with LKE and Object Storage"
 contributor:
   name: Leslie Salazar
   link: https://github.com/leslitagordita/
 aliases: ['/kubernetes/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/']
 ---
+
 Hosting a private Docker registry alongside your Kubernetes cluster allows you to securely manage your Docker images while also providing quick deployment of your apps. This guide will walk you through the steps needed to deploy a private Docker registry on a Linode Kubernetes Engine (LKE) cluster. At the end of this tutorial, you will be able to locally push and pull Docker images to your registry. Similarly, your LKE cluster's pods will also be able to pull Docker images from the registry to complete their deployments.
 
 ## Before you Begin

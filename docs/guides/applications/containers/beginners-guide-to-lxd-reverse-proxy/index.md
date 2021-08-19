@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
 modified_by:
   name: Linode
-title: "Beginners Guide to LXD Reverse Proxy"
-h1_title: "Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites"
+title: "How to Set Up a Reverse Proxy to Host Websites in LXD"
+h1_title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
 enable_h1: true
 contributor:
   name: Simos Xenitellis

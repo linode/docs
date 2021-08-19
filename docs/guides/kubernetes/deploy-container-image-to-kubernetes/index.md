@@ -3,7 +3,7 @@ slug: deploy-container-image-to-kubernetes
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy it on a Linode Kubernetes cluster.'
+description: "This guide shows how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy it on a Linode Kubernetes cluster."
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -392,7 +392,7 @@ spec:
     - The `spec` key defines the Hugo site service object's desired behavior. It will create a service that exposes TCP port `80` on any pod with the `app: hugo-site` label.
     - The exposed container port is defined by the `targetPort:80` key-value pair.
 
-1. Create the service for your hugo site:
+1. Create the service for your Hugo site:
 
         kubectl create -f clientx/k8s-hugo/service-hugo.yaml
 
@@ -444,7 +444,7 @@ spec:
       - `imagePullPolicy: Always` means that the container image will be pulled every time the pod is started.
       - `containerPort: 80` states the port number to expose on the pod's IP address. The system does not rely on this field to expose the container port, instead, it provides information about the network connections a container uses.
 
-1. Create the deployment for your hugo site:
+1. Create the deployment for your Hugo site:
 
         kubectl create -f clientx/k8s-hugo/deployment.yaml
 

@@ -91,7 +91,7 @@ server {
 
     If NGINX loads successfully, continue to the [Test your Website](#test-your-website) section below.
 
-This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
+This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 ### LAMP Stack
 

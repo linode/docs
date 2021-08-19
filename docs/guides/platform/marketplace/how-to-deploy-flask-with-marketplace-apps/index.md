@@ -47,7 +47,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 In addition to installing Flask, this Marketplace app installs and configures software to support running Flask in a production environment. Below is a list of the installed software:
 
-- The [NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/flask_app`, and listening on your Linode's IP address.
+- The [NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/flask_app`, and listening on your Linode's IP address.
 - An example Flask application is downloaded to your Linode's `/home/flask_app_project` directory. If you visit your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), you will see the example Flask application running and serving boiler plate blog content.
 - Your example Flask application's environment will be configured with basic settings located in the `/etc/config.json` file.
 - [Gunicorn](https://gunicorn.org/), a Python WSGI (web server gateway interface) HTTP Server for UNIX, is installed and running. It is used to forward requests from your NGINX web server to your Flask application.
