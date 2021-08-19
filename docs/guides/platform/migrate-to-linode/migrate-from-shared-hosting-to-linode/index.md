@@ -98,7 +98,7 @@ To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAM
 
 Once you've installed all the underlying software for your Linode, you can upload your website to the new server. This will replace the Apache test page shown by default when you first install Apache on your Linode.
 
-1.  Follow the steps in our [hosting a website](/docs/websites/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts) guide to configure name-based virtual hosts for Apache on your Linode.
+1.  Follow the steps in our [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server) guide to configure name-based virtual hosts for Apache on your Linode.
 
 2.  Upload your website's files from your local computer to `/var/www/html/example.com/public_html` on your Linode. The process to do this is similar to how you downloaded your site's files to your local computer when creating a backup from your shared host. The only differences are the source and destination of the transfer.
 

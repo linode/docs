@@ -16,7 +16,7 @@ h1_title: "How to Install and Use PostgreSQL on CentOS 8"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[PostgreSQL](https://www.postgresql.org/)'
 - '[PostgreSQL Downloads Page](https://www.postgresql.org/ftp/source/)'

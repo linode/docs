@@ -70,7 +70,7 @@ Commands that require elevated privileges are prefixed with `sudo`. If you're no
 
         sudo apt-get update && sudo apt-get upgrade
 
-1.  Follow the steps in our [Apache Web Server on Ubuntu 18.04](/docs/web-servers/apache/apache-web-server-ubuntu-18-04/) guide to set up and configure Apache on your server.
+1.  Follow the steps in our [Apache Web Server on Ubuntu 18.04](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) guide to set up and configure Apache on your server.
 
 1.  The Elasticsearch package is bundled with its own version of a Java runtime, but Logstash requires Java to be present on the system. Install the default version of Java available on Ubuntu 18.04:
 
@@ -240,7 +240,7 @@ output {
     {{< note >}}
 This example configuration assumes that your website logs are stored in the `/var/www/*/logs/access.log` file path.
 
-If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/web-servers/apache/apache-web-server-ubuntu-18-04/#configure-apache-for-virtual-hosting) section of the [Apache Web Server on Ubuntu 18.04](/docs/web-servers/apache/apache-web-server-ubuntu-18-04/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
+If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/#configure-virtual-hosting) section of the [Apache Web Server on Ubuntu 18.04](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
 {{< /note >}}
 
 1.  Start and enable `logstash`:

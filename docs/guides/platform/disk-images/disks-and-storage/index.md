@@ -73,14 +73,14 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
 
 1. Click the **Add** button to create the disk. The progress can be monitored from the new entry appearing for the disk within the Linode's **Storage** page.
 
-Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/) guide or the [Configuration Profiles](.docs/guides/linode-configuration-profiles) guide for additional details.
+Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/) guide or the [Configuration Profiles](/docs/guides/linode-configuration-profiles) guide for additional details.
 
 ## Resizing a Disk
 
 The size of each disk can be increased or decreased as needed, though it's important to keep the following restrictions in mind:
 
 - The **maximum size** of a disk is equal to the current size of the disk and the remaining unallocated storage space on the Linode. The maximum size is displayed underneath the **Size** field when resizing the disk.
-- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Linode's command Line (through [SSH](docs/guides/getting-started/#connect-to-your-linode-via-ssh) or [Lish](https://www.linode.com/docs/guides/using-the-linode-shell-lish/)).
+- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Linode's command Line (through [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) or [Lish](https://www.linode.com/docs/guides/using-the-linode-shell-lish/)).
 - **Raw disks** can only be resized to a larger disk.
 - Disks with **custom partitions** cannot be resized.
 
