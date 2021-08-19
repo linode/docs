@@ -3,15 +3,17 @@ slug: vpn-firewall-killswitch-for-linux-and-macos-clients
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to set up a VPN firewall on OpenVPN clients'
-og_description: 'This guide will show you how to set up a VPN kill switch with iptables on OpenVPN clients.'
+description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
+og_description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
 keywords: ["vpn", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-07-09
 modified_by:
   name: Linode
 published: 2017-09-29
-title: Use iptables to Configure a VPN Kill Switch on OpenVPN Clients
+title: "Configuring a VPN Kill Switch on OpenVPN Clients"
+h1_title: "Use iptables to Configure a VPN Kill Switch on OpenVPN Clients"
+enable_h1: true
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
@@ -51,7 +53,7 @@ default         gw-li938.linode 0.0.0.0         UG    0      0        0 eth0
 
  The output shows the network interface name under the *Iface* column (eth0), and the LAN's subnet under the *Genmask* (255.255.255.0). These values will be used throughout the remainder of this guide, so replace `wlp6s0` and `198.168.0.1/24` with the interface and IP address/subnet found by running `route` on your client.
 
-For macOS, the commands `networksetup -listallhardwareports` and `ifconfig` will show all your possible network interfaces and associated network information. From that list, you can find your ethernet and WiFi device names and their local subnet.
+For macOS, the commands `networksetup -listallhardwareports` and `ifconfig` will show all your possible network interfaces and associated network information. From that list, you can find your Ethernet and WiFi device names and their local subnet.
 
 ## Configure client.ovpn
 

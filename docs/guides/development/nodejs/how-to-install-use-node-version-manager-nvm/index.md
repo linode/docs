@@ -14,7 +14,7 @@ title: "How to Install and Use the Node Version Manager NVM"
 h1_title: "How to Install and Use the Node Version Manager NVM."
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[NVM GitHub Page(https://github.com/nvm-sh/nvm)'
 ---

@@ -16,7 +16,7 @@ h1_title: "How to Install and Use Rust"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Rust Programming Language](https://www.rust-lang.org/)'
 ---

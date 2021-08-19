@@ -10,7 +10,9 @@ published: 2019-03-28
 modified: 2019-03-28
 modified_by:
   name: Linode
-title: "Deploy Counter-Strike: Global Offensive with Marketplace Apps"
+h1_title: "Deploy Counter-Strike: Global Offensive with Marketplace Apps"
+title: 'Deploying CS:GO with Marketplace Apps'
+enable_h1: true
 contributor:
   name: Linode
 external_resources:

@@ -16,7 +16,7 @@ h1_title: "Install and Configure Apache Kafka"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Downloads](https://kafka.apache.org/downloads)'

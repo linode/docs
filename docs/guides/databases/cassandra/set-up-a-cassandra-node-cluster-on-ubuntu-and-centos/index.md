@@ -10,7 +10,9 @@ published: 2017-06-24
 modified: 2017-06-24
 modified_by:
   name: Andrew Lescher
-title: 'Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
+h1_title: 'Set Up a Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
+title: 'Set Up a Cassandra Node Cluster on Ubuntu & CentOS'
+enable_h1: true
 aliases: ['/databases/cassandra/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/','/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
 contributor:
    name: Andrew Lescher

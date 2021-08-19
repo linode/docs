@@ -59,4 +59,4 @@ If your game isn't available as a Marketplace App, you can deploy a Linode and m
 
 - [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/)
 - [Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu](/docs/guides/install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu/)
-- [How to Deploy a 7 Days to Die Linux Server](/docs/guides/game-servers/deploy-7-days-to-die-linux-game-server/)
+- [How to Deploy a 7 Days to Die Linux Server](/docs/guides/deploy-7-days-to-die-linux-game-server/)

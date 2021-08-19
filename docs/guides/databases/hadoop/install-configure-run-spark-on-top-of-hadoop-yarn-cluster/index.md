@@ -10,7 +10,9 @@ published: 2017-10-20
 modified: 2017-10-23
 modified_by:
   name: Linode
-title: 'Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster'
+h1_title: 'Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster'
+title: 'Install & Configure Spark on Hadoop YARN Cluster'
+enable_h1: true
 contributor:
   name: Florent Houbart
 external_resources:

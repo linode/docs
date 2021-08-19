@@ -11,8 +11,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
   name: Linode
-title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
-h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
+title: "Ubuntu: Using One-Time Passwords for 2FA with SSH"
+h1_title: "Use a 1 Time Password for 2 Factor Authentication with SSH on CentOS 7"
+enable_h1: true
 image: how-to-use-one-time-passwords-for-two-factor-authentication-ubuntu.png
 contributor:
   name: Linode

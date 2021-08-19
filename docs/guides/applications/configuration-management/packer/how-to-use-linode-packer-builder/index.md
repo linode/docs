@@ -271,7 +271,7 @@ A provisioner allows you to further configure your system by completing common s
 
 ### Building and Deploying the Image
 
-Follow the previous sections for [building the image](#building-the-image) and [deploying the image](deploying-a-linode-with-the-new-image). Once a new Linode is deployed using the newly created image, you should be able to log in to that Linode over ssh by running the following command. Replace *username* with the username you specified in the Ansible playbook and replace *192.0.2.0* with the IPv4 address of your new Linode.
+Follow the previous sections for [building the image](#building-the-image) and [deploying the image](#deploying-a-linode-with-the-new-image). Once a new Linode is deployed using the newly created image, you should be able to log in to that Linode over ssh by running the following command. Replace *username* with the username you specified in the Ansible playbook and replace *192.0.2.0* with the IPv4 address of your new Linode.
 
     ssh username@192.0.2.0
 

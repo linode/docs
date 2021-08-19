@@ -16,7 +16,7 @@ h1_title: "How to Install and Use Apache on AlmaLinux"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[AlmaLinux OS](https://almalinux.org/)'
 - '[Apache web server](https://www.apache.org/)'

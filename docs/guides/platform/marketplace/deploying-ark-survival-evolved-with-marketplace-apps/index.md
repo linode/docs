@@ -10,7 +10,9 @@ published: 2019-04-03
 modified: 2019-03-03
 modified_by:
   name: Linode
-title: "Deploy an ARK: Survival Evolved Server with Marketplace Apps"
+h1_title: "Deploy an ARK: Survival Evolved Server with Marketplace Apps"
+title: 'How to Deploy an ARK Server with Marketplace Apps'
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
