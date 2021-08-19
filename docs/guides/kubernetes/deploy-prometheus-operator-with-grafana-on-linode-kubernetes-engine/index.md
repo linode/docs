@@ -219,7 +219,7 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
             svc/lke-monitor-prometheus-ope-alertmanager  \
             9093
 
-    *    To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
+    *   To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
 
             kubectl -n monitoring \
             port-forward \
@@ -589,9 +589,9 @@ Your monitoring interfaces are now publicly accessible with HTTPS and basic auth
 
 | Resource     | Domain and path          |
 | ------------ | ------------------------ |
-| Prometheus   | example.com/prometheus   |
-| Alertmanager | example.com/alertmanager |
-| Grafana      | example.com/grafana      |
+| Prometheus   | `example.com/prometheus`   |
+| Alertmanager | `example.com/alertmanager` |
+| Grafana      | `example.com/grafana`      |
 
 When accessing an interface for the first time, log in as `admin` with the password you configured for [basic auth credentials](#configure-basic-auth-credentials).
 
