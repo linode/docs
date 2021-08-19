@@ -3,7 +3,7 @@ slug: automate-a-static-site-deployment-with-salt
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content.'
+description: "Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content."
 keywords: ['salt','saltstack','github','webhooks','hugo','static site','deployment']
 tags: ["web server","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +12,8 @@ modified: 2019-01-02
 modified_by:
   name: Linode
 image: Automate-Static-Site-DeploymentswithSaltGitandWebhooks.png
+title: "Automate Static Site Deployments with Salt and Git"
 h1_title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
-title: 'Automate a Static Site Deployment with Salt'
 enable_h1: true
 contributor:
     name: "Nathan Melehan"

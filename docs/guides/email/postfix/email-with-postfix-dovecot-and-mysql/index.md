@@ -11,8 +11,8 @@ modified: 2021-04-16
 modified_by:
   name: Linode
 published: 2013-05-13
-h1_title: 'How to Set Up an Email Server With Postfix, Dovecot and MySQL'
-title: 'Set Up an Email Server with Postfix, Dovecot & MySQL'
+title: "Configure Email with Postfix and Dovecot on Debian and Ubuntu"
+h1_title: "Configuring an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
 enable_h1: true
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
@@ -23,11 +23,13 @@ relations:
     platform:
         key: email-postfix-dovecot-mysql
         keywords:
-            - distribution: Debian/Ubuntu
+            - distribution: Debian and Ubuntu
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
 ---
 
-In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). This guide is specifically for Debian-based systems, including Debian 9/10 and Ubuntu 18.04/20.04 (though it may also work with other versions). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.
+In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.
+
+**Supported distributions:** Most modern Debian-based distributions, including Debian 9, Debian 10, Ubuntu 18.04, and Ubuntu 20.04.
 
 This tutorial assumes that you are familiar with the following:
 
