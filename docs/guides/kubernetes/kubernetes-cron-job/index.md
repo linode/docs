@@ -7,7 +7,7 @@ og_description:  'A Kubernetes CronJob helps you schedule and automate tasks on 
 keywords: ['kubernetes cron job']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-13
+published: 2021-08-18
 modified_by:
   name: Linode
 title: "Creating a Kubernetes CronJob"
@@ -20,9 +20,9 @@ external_resources:
 - '[CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)'
 ---
 
-Linode Kubernetes Engine (LKE) is a hosted, managed container orchestration system. Kubernetes (K8s) includes the capability to schedule jobs to run at a particular time with [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/). CronJobs use the same scheduling syntax as **cron** and **crontab**, which are standard Unix (and Linux) utilities. If you are not familiar with cron, you can refer to our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide.
+Linode Kubernetes Engine (LKE) is an open source container orchestration system that helps deploy and manage containerized applications. If you are not familiar with Kubernetes, read our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). Kubernetes (K8s) includes the capability to schedule jobs to run at a particular time with [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/). CronJobs use the same scheduling syntax as **cron** and **crontab**, which are standard Linux utilities. If you are not familiar with cron, you can refer to our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide.
 
-This guide covers the syntax for creating CronJobs and lists resources for further study. Throughout this guide, you learn how to generate automatic daily backups for a Drupal website using Kubernetes CronJobs.
+In this guide, you learn the syntax for creating Kubernetes CronJobs. You also learn how to generate automatic daily backups for a Drupal website using Kubernetes CronJobs.
 
 ## Before You Begin
 
@@ -30,11 +30,11 @@ This guide covers the syntax for creating CronJobs and lists resources for furth
 
 1. After deploying your Kubernetes cluster, make sure your local environment has [kubectl installed](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and you can access your cluster using `kubectl`.
 
-1. This guide uses a Drupal website deployed with the LKE to demonstrate how to back up a MySQL database. To follow along, ensure you use the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/) guide to deploy your own Drupal site.
+1. This guide uses a Drupal website deployed with LKE to demonstrate how to back up a MySQL database. To follow along, ensure you use the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/) guide to deploy your own Drupal site.
 
-## Create a Kubernetes CronJob: Simple Example
+## An Overview of a Kubernetes CronJob
 
-Kubernetes CronJobs are defined within a manifest file, like other resources. As an introductory example, the Kubernetes official documentation creates a CronJob that deploys a simple "Hello" script once a minute. To see it in action, create a file named `cronjob.yaml`
+Like other Kubernetes resources, CronJobs are defined in a manifest file. The example manifest file creates a CronJob that deploys a simple "Hello" script once a minute.
 
 {{< file "cronjob.yaml">}}
 apiVersion: batch/v1
@@ -56,30 +56,33 @@ spec:
             - -c
             - date; echo Hello from the Kubernetes cluster
           restartPolicy: OnFailure
-
 {{< /file >}}
 
-To launch the CronJob, execute the following command:
+{{< note >}}
+The manifest file above uses the example provided in the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#example).
+{{< /note >}}
 
-        kubectl create -f cronjob.yaml
+A Kubernetes CronJob must contain the `apiVersion`, `kind`, and `metadata` fields. It must also contain the `spec.schedule` field which defines the time interval for the CronJob. The time interval syntax for a Kubernetes is the same as Linux system Cron jobs. You can refer to the [How to Use Cron and crontab - The Basics](/docs/guides/schedule-tasks-with-cron/#how-to-use-cron-and-crontab---the-basics) section of our Cron guide for time interval syntax details. Finally, the `jobTemplate` field is required. This field defines the requirements for the Pod that executes your CronJob. It also defines the commands to execute from the Pod. To learn more about defining `jobTemplates`, see the [Kubernetes Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/) documentation.
 
-You should see the following result after creating your CronJob.
+To launch a CronJob, execute the command below. Ensure your replace `cronjob.yaml` with the name of your CronJob's manifest file.
 
-{{< output >}}
-cronjob.batch/hello created
-{{< /output >}}
+    kubectl create -f cronjob.yaml
 
 You can use the `kubectl get cronjob hello` command to view information about your CronJob. Use the `kubectl logs $pods` command to view your Pod logs, and the `kubectl delete cronjob hello` command to delete the CronJob when it's no longer needed.
 
 ## How to Backup a Mysql Database Using a Kubernetes Cronjob
 
-This section shows you how to back up a MySQL database. The example assumes a Drupal website has been deployed using LKE. You can, however, adapt the Kubernetes manifest file example for your own MySQL database. Before scheduling the CronJob to backup the database, you make sure the command works by logging into your MySQL Pod and executing the required command.
+This section shows you how to back up a MySQL database. The example assumes a Drupal website has been deployed using LKE. You can adapt the Kubernetes manifest file example for your own MySQL database. The steps you accomplish in this section are the following:
+
+- Before creating the CronJob, you test it by logging into your MySQL Pod and executing the CronJob's commands
+- Create the CronJob to backup your MySQL database
+- Schedule your CronJob
 
 {{< note >}}
 Ensure your terminal is using your desired [Kubeconfig context](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
 {{< /note >}}
 
-### Test Your Cronjob Command
+### Test Your CronJob Command
 
 To back up your MySQL database, you need to find your Kubernetes cluster's MySQL Pod name. Issue the following command to find your Pod's name:
 
@@ -97,7 +100,7 @@ The `mysqldump` command can be executed after logging into your MySQL Pod. Execu
 
     kubectl exec -it mysql-56f9846bb7-tlbv6 -- /bin/bash
 
-Viewing your MySQL Pod's terminal prompt, run the `mysqldump` command to generate a backup copy of your database. Enter your database's password when prompted for it. You can verify the `dump.sql` backup file created using the `ls` command.
+Viewing your MySQL Pod's terminal prompt, run the `mysqldump` command to generate a backup copy of your database. Enter your database's password when prompted. You can verify the `dump.sql` backup file created using the `ls` command.
 
 {{< note >}}
 If you deployed your Kubernetes cluster following the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/), your password should be the same one used in your `kustomization.yaml` file.
@@ -108,7 +111,7 @@ If you deployed your Kubernetes cluster following the [How to Install Drupal wit
 
 ### Create your CronJob
 
-Your CronJob file incorporates the `mysqldump` command that you tested out in the previous section. It is not recommended to store your database's password in your Kubernetes manifest file. Your MySQL Pod should already have the MySQL database's password stored in its context, so you can alter your `mysqldump` command in the following way:
+Your CronJob file incorporates the `mysqldump` command that you tested in the previous section. It is not recommended to store your database's password in your Kubernetes manifest file. Your MySQL Pod should already have the MySQL database's password stored in its context, so you can alter your `mysqldump` command in the following way:
 
     mysqldump drupal-db -p$MYSQL_ROOT_PASSWORD > dump.sql
 
@@ -116,7 +119,7 @@ Your CronJob file incorporates the `mysqldump` command that you tested out in th
 If your Pod does not have the password stored in its Pod environment, you can use a [Kubernetes secret to store your password as a Pod environment variable](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/).
 {{< /note >}}
 
-Create a new Kubernetes manifest file with the following contents:
+Create a new Kubernetes manifest file with the following content:
 
 {{< file "backup.yaml">}}
 apiVersion: batch/v1beta1
@@ -156,6 +159,7 @@ To get the status of the job, issue the following command:
     kubectl get cronjob backup
 
 Your output displays a similar result when the command executes successfully.
+
 {{< output >}}
 NAME     SCHEDULE   SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 backup   @daily     False     0        <none>          117s
