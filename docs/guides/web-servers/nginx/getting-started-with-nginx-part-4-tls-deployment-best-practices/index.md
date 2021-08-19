@@ -1,25 +1,27 @@
 ---
-slug: tls-deployment-best-practices-for-nginx
+slug: getting-started-with-nginx-part-4-tls-deployment-best-practices
 author:
   name: Linode
   email: docs@linode.com
-description: 'Best practices to apply when deploying HTTPS websites with NGINX.'
+description: "Best practices to apply when deploying HTTPS websites with NGINX."
 keywords: ["ssl", "tls", "nginx", "https", "certificate", "hsts", "ocsp", "http2"]
 tags: ["web server","http","nginx","security","ssl"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/nginx-ssl-and-tls-deployment-best-practices/','/web-servers/nginx/tls-deployment-best-practices-for-nginx/','/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/']
+aliases: ['/websites/nginx/nginx-ssl-and-tls-deployment-best-practices/','/web-servers/nginx/tls-deployment-best-practices-for-nginx/','/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/','/guides/tls-deployment-best-practices-for-nginx/']
 published: 2018-02-09
 modified: 2018-02-09
 modified_by:
   name: Linode
-title: 'Getting Started with NGINX - Part 4: TLS Deployment Best Practices'
+title: "Getting Started with NGINX: TLS Deployment Best Practices"
+h1_title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
+enable_h1: true
 ---
 
 ![TLS Deployment Best Practices](getting-started-nginx-part-4-tls-deployment-best-practices.jpg)
 
 ## Before you Begin
 
-- This guide is Part 4 of our *Getting Started with NGINX* series and you will need a working NGINX setup with a website accessible via HTTPS. If do not already have that, then complete at least [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) and [Part 3: Enable TLS on NGINX for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) before going further.
+- This guide is Part 4 of our *Getting Started with NGINX* series and you will need a working NGINX setup with a website accessible via HTTPS. If do not already have that, then complete at least [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) and [Part 3: Enable TLS on NGINX for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) before going further.
 
 - You will need root access to the system, or a user account with `sudo` privilege.
 
@@ -31,7 +33,7 @@ title: 'Getting Started with NGINX - Part 4: TLS Deployment Best Practices'
 - To enable any configuration changes you make, you need to run `nginx -s reload` as root.
 
 {{< caution >}}
-Most directives in this guide can be added either to NGINX's `http` block, or an individual site's `server` block. The exceptions are `add_header` directives, which are [not inherited](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields). If you're only hosting one website, or if you want all your hosted sites to have the same NGINX parameters, then adding all your `add_header` directives the `http` block is fine. If you intend to use different header options for different site configurations, [see here](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields) for a different approach.
+Most directives in this guide can be added either to NGINX's `http` block, or an individual site's `server` block. The exceptions are `add_header` directives, which are [not inherited](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#http-response-header-fields). If you're only hosting one website, or if you want all your hosted sites to have the same NGINX parameters, then adding all your `add_header` directives the `http` block is fine. If you intend to use different header options for different site configurations, [see here](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#http-response-header-fields) for a different approach.
 {{< /caution >}}
 
 ## Redirect Incoming HTTP Traffic HTTPS
@@ -75,7 +77,7 @@ server {
 
 For more information on HSTS in NGINX, [see NGINX's blog](https://www.nginx.com/blog/http-strict-transport-security-hsts-and-nginx/).
 
-1.  Add the HSTS header directive to the `http` block of `/etc/nginx/nginx.conf`. If you choose to put it elsewhere, remember that HTTP response header fields are [not inherited](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields) from parent blocks.
+1.  Add the HSTS header directive to the `http` block of `/etc/nginx/nginx.conf`. If you choose to put it elsewhere, remember that HTTP response header fields are [not inherited](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#http-response-header-fields) from parent blocks.
 
     {{< file "/etc/nginx/nginx.conf" nginx >}}
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
@@ -99,7 +101,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 A Diffie-Hellman parameter is a set of randomly generated data used when establishing [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) during initiation of an HTTPS connection. The default size is usually 1024 or 2048 bits, depending on the server's OpenSSL version, but a 4096 bit key will provide greater security.
 
-1.  Change directories to where you maintain your site's TLS certificates. [From Part 3](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/), we're maintaining the server's certificates out of `/root/certs/example.com/` so we'll continue with that here.
+1.  Change directories to where you maintain your site's TLS certificates. [From Part 3](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/), we're maintaining the server's certificates out of `/root/certs/example.com/` so we'll continue with that here.
 
         cd /root/certs/example.com
 

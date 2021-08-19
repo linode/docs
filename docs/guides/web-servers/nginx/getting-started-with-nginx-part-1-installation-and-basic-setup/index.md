@@ -1,17 +1,19 @@
 ---
-slug: nginx-installation-and-basic-setup
+slug: getting-started-with-nginx-part-1-installation-and-basic-setup
 author:
   name: Linode
   email: docs@linode.com
-description: 'An in-depth look at the NGINX web server. Includes assessment, installation, and configuration best practices.'
+description: "An in-depth look at the NGINX web server. Includes assessment, installation, and configuration best practices."
 keywords: ["nginx", "web server", "configure nginx", "optimize nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/configuration/ssl/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/']
+aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/configuration/ssl/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
 modified: 2018-02-09
 modified_by:
   name: Linode
 published: 2018-02-09
-title: 'Getting Started with NGINX - Part 1: Installation and Basic Setup'
+title: "Getting Started with NGINX: Installation and Basic Setup"
+h1_title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
+enable_h1: true
 tags: ["web server","nginx"]
 ---
 
@@ -233,4 +235,4 @@ http {
 
 ## Part 2: (Slightly More) Advanced Configurations
 
-By now you should have a basic NGINX installation and a some foundational settings to get you started. For slightly more advanced configurations, yet still applicable to anyone hosting a site on a Linode, see Part 2 of this series: [(Slightly more) Advanced Configurations for NGINX](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/)
+By now you should have a basic NGINX installation and a some foundational settings to get you started. For slightly more advanced configurations, yet still applicable to anyone hosting a site on a Linode, see Part 2 of this series: [(Slightly more) Advanced Configurations for NGINX](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/)

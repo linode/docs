@@ -1,17 +1,19 @@
 ---
-slug: slightly-more-advanced-configurations-for-nginx
+slug: getting-started-with-nginx-part-2-advanced-configuration
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure and optimize NGINX to best suit your web server needs. Host multiple sites, configure caching, disable content sniffing, and more.'
+description: "Configure and optimize NGINX to best suit your web server needs. Host multiple sites, configure caching, disable content sniffing, and more."
 keywords: ["nginx", "web server", "nginx configuration", "multiple sites", "configure caching"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/configure-nginx-for-optimized-performance/','/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/','/websites/nginx/configure-nginx-for-optimized-performance/']
+aliases: ['/web-servers/nginx/configure-nginx-for-optimized-performance/','/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/','/websites/nginx/configure-nginx-for-optimized-performance/', '/guides/slightly-more-advanced-configurations-for-nginx/']
 modified: 2018-02-09
 modified_by:
   name: Linode
 published: 2018-02-09
-title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurations'
+title: "Getting Started with NGINX: Advanced Configuration"
+h1_title: "Getting Started with NGINX (Part 2): Advanced Configuration"
+enable_h1: true
 tags: ["web server","nginx"]
 ---
 
@@ -19,7 +21,7 @@ tags: ["web server","nginx"]
 
 ## Before You Begin
 
-* This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
+* This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 * You will need root access to the system, or a user account with `sudo` privilege.
 
@@ -147,7 +149,7 @@ This header signals to a connecting browser to enable its cross-site scripting f
 
 To summarize where we are so far:
 
-* We're continuing with the configuration from [Part 1](/docs/web-servers/nginx/nginx-installation-and-basic-setup/#configuration-recap), so we have a single site being served over HTTP.
+* We're continuing with the configuration from [Part 1](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/#configuration-recap), so we have a single site being served over HTTP.
 
 * We've added the caching and HTTP header changes mentioned above.
 
@@ -217,4 +219,4 @@ http {
 
 ## Part 3: Enable TLS for HTTPS Connections
 
-If a well-running HTTP site is all you're looking for, the configurations in this guide will meet that requirement. If you plan to serve your site over HTTPS, then continue to Part 3 of this series: [Enable TLS for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/).
+If a well-running HTTP site is all you're looking for, the configurations in this guide will meet that requirement. If you plan to serve your site over HTTPS, then continue to Part 3 of this series: [Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/).

@@ -1,18 +1,20 @@
 ---
-slug: enable-tls-on-nginx-for-https-connections
+slug: getting-started-with-nginx-part-3-enable-tls-for-https
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install a TLS certificate into NGINX for HTTPS access.'
+description: "Install a TLS certificate into NGINX for HTTPS access."
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
 tags: ["ssl","web server","security","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/enable-ssl-for-https-configuration-on-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','/security/ssl/ssl-certificates-with-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','/web-servers/nginx/enable-tls-on-nginx-for-https-connections/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','/websites/ssl/ssl-certificates-with-nginx.cfm/','/web-servers/nginx/configuration/ssl/']
+aliases: ['/security/ssl/enable-ssl-for-https-configuration-on-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','/security/ssl/ssl-certificates-with-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','/web-servers/nginx/enable-tls-on-nginx-for-https-connections/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','/websites/ssl/ssl-certificates-with-nginx.cfm/','/web-servers/nginx/configuration/ssl/','/guides/enable-tls-on-nginx-for-https-connections/']
 modified: 2018-02-09
 modified_by:
   name: Linode
 published: 2018-02-09
-title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
+title: "Getting Started with NGINX: Enable TLS/SSL"
+h1_title: "Getting Started with NGINX (Part 3): Enable TLS/SSL for HTTPS"
+enable_h1: true
 ---
 
 ![Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](getting-started-with-nginx-part-3-smg.jpg)
@@ -24,7 +26,7 @@ A single NGINX installation can host multiple websites and any number of them ca
 
 ## Before You Begin
 
-* This guide is Part 3 of our *Getting Started with NGINX* series and you will need a working NGINX setup with your site accessible via HTTP. If do not already have that, complete at least [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) before going further.
+* This guide is Part 3 of our *Getting Started with NGINX* series and you will need a working NGINX setup with your site accessible via HTTP. If do not already have that, complete at least [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) before going further.
 
 * You will need root access to the system, or a user account with `sudo` privileges.
 
@@ -180,4 +182,4 @@ server {
 
 Now that you've got NGINX serving your site over HTTPS, do not simply use the above configurations as-is. It only gets HTTPS working on your server and is inherently insecure without further configuration.
 
-To harden your server's handling of TLS connections, continue to Part 4 of this series: [TLS Deployment Best Practices for NGINX](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/).
+To harden your server's handling of TLS connections, continue to Part 4 of this series: [TLS Deployment Best Practices for NGINX](/docs/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/).
