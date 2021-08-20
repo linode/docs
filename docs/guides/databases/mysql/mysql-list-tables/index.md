@@ -1,14 +1,13 @@
 ---
 slug: list-tables-in-mysql-and-mariadb
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to list tables in MySQL and MariaDB using the command line, or CLI, with examples."
-og_description: "Learn how to list tables in MySQL and MariaDB using the command line, or CLI, with examples."
+  name: Nathaniel Stickman
+description: "Learn how to list tables in MySQL and MariaDB using the command line (CLI). You also learn how to list tables using MySQL Workbench."
+og_description: "Learn how to list tables in MySQL and MariaDB using the command line (CLI). You also learn how to list tables using MySQL Workbench."
 keywords: ['mysql list tables','mysql list table names','mysql list table fields','mariadb list tables']
-tags: ['mysql', 'mariadb']
+tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-21
+published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
 title: "List Tables in MySQL and MariaDB"
@@ -19,7 +18,7 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-Wondering how to get a list of tables in your MySQL or MariaDB database? This guide gives you the commands and MySQL Workbench instructions for quickly and easily getting a list of tables.
+This guide provides the commands you can use to list tables in MySQL and MariaDB. It also includes instructions on how to list tables using MySQL Workbench.
 
 ## Before You Begin
 
@@ -35,13 +34,13 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## How to Connect to the Database Remotely
 
-Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/mysql-remote-connection/) for steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
+ - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/mysql-remote-connection/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
 
-Refer to our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for steps to install MySQL Workbench and use it to remotely connect to your database.
+- Refer to our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for the steps to install MySQL Workbench and use it to connect to your remote database.
 
 ## How to List Tables in MySQL or MariaDB
 
-To give something concrete to work with, the rest of this guide uses an example database, remote user, and three tables. You can set these up yourself by logging into your MySQL or MariaDB server and issuing the following commands. Replace `192.0.2.0` with the IP address for your local machine and `password` with an actual password for the user.
+The rest of this guide uses an example database, remote user, and three tables. To follow along, you can set these up yourself by logging into your MySQL or MariaDB server and issuing the commands below. Replace `192.0.2.0` with the IP address of your local machine and `password` with your own password.
 
     CREATE DATABASE example_db;
     CREATE user 'example_user'@'192.0.2.0' IDENTIFIED BY 'password';
@@ -53,13 +52,13 @@ To give something concrete to work with, the rest of this guide uses an example 
 
 ### List tables in MySQL or MariaDB from the Linux Shell
 
-You have two main options from the command line to get a list of tables in a particular database.
+There are two ways to get a particular database's list of tables from the command line. They are as follows:
 
-- You can use a single command like the one below if all you want to do with the particular database is get the list of tables.
+- Use the command like the one below if all you want to do with the database is get its list of tables.
 
         SHOW TABLES FROM example_db;
 
-- You may, however, intend to do more work with the database after getting the list. In that case, it is probably more useful to first set the current database and then query for the list.
+- If, instead, you want to continue to work with the database after listing its tables, use the command below. This command sets the current database and then queries it for the list.
 
         USE example_db;
         SHOW TABLES;
@@ -78,7 +77,7 @@ Both options output a list of tables:
 
 You can also use a single command to connect to the database, fetch the list of tables, and disconnect again. This can be useful if you only want a quick list of tables and do not need to connect to the database otherwise.
 
-To do this, just add the `-e` option to your usual database connection command and follow the option with the MySQL command you want to be executed.
+To do this, add the `-e` option to your usual database connection command and follow the option with the MySQL command you want to be executed.
 
 The example below connects to the database as `example_user` and uses the MySQL command from above to fetch the list of tables in the `example_db` database. Replace `198.51.100.0` with the IP address of your database server:
 
@@ -88,13 +87,13 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 1. Open the MySQL Workbench, and select the connection you set up for the database.
 
-    If you have not set up the database connection yet, follow the steps in the guide linked in the [How to Connect to the Database Remotely](/docs/guides/mysql-list-tables/#how-to-connect-to-the-database-remotely) section above.
+    If you have not set up the database connection yet, follow the steps in the [How to Connect to the Database Remotely](/docs/guides/mysql-list-tables/#how-to-connect-to-the-database-remotely) guide first.
 
 1. In the query field, enter the following MySQL command:
 
         SHOW TABLES FROM example_db;
 
-    You can, alternatively, set the current database first ,and then fetch the tables, as in:
+    Alternatively, you can set the current database first, and then fetch the tables, as in:
 
         USE example_db;
         SHOW TABLES;
@@ -107,4 +106,4 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 ## Conclusion
 
-Are you looking to learn even more about working with MySQL/MariaDB? Take a look through our extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql). You can find plenty of resources there to remedy common problems, hone your skills, and become all-around more proficient with your database.
+To learn more about working with MySQL/MariaDB, take a look through our extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql). You can find plenty of resources there to solve common database related issues, sharpen your skills, and become more proficient with managing your database.
