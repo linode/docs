@@ -126,4 +126,4 @@ For more information, take a look at the [official MySQL Workbench manual](https
 
 ## Conclusion
 
-Now that you have your remote database connection, you may want to learn more about using MySQL/MariaDB and working with more advanced database operations. You can refer to our extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql) and specific [MariaDB guides](/docs/guides/databases/mariadb/?q=mysql) to build your database mangement skills.
+Now that you have your remote database connection, you may want to learn more about using MySQL/MariaDB and working with more advanced database operations. You can refer to our extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql) and specific [MariaDB guides](/docs/guides/databases/mariadb/?q=mysql) to build your database management skills.
