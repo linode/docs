@@ -168,7 +168,7 @@ Print the remaining items in `example_list`:
 [0, 4, 8]
 {{< /output >}}
 
-You can learn more about Python's slice notation in the [Reverse a List](/docs/guides/using-pyton-lists/#reverse-a-list) section below. The links provided at the end of this guide also provide more information.
+You can learn more about Python's slice notation in the [Reverse a List](/docs/guides/python-lists-and-how-to-use-them/#reverse-a-list) section below. The links provided at the end of this guide also provide more information.
 
 ## How to Sort a List in Python
 
