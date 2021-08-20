@@ -9,12 +9,13 @@ keywords: ["linode guide", "hosting a website", "website", "linode quickstart gu
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/hosting-a-website/','/hosting-website/','/websites//','/web-servers/lamp//']
-modified: 2021-08-06
+modified: 2021-08-16
 modified_by:
   name: Linode
 published: 2012-03-13
-title: Host a Website on Ubuntu 18.04
+title: How to Host a Website on Ubuntu 18.04
 h1_title: Hosting a Website on Ubuntu 18.04
+enable_h1: true
 ---
 
 In this guide, you learn how to host a website on Ubuntu 18.04 using the LAMP stack (Linux, Apache, MySQL and PHP). First, you install the LAMP stack and then, you create or import a database. Finally, you upload files and add DNS records. By the time you reach the end of this guide, your Linode hosts one or more websites.
@@ -363,23 +364,21 @@ If you're using a content management system like WordPress or Drupal, you may ne
 
 ## Hosting Multiple Websites on Ubuntu 18.04
 
-In this guide so far, you have used `example.com.conf` to host our website `example.com`. But, what if you want to host multiple websites on Ubuntu 18.04?
+In this guide so far, you have used `example.com.conf` to host our website `example.com`. If you would like to host an additional website on this same Ubuntu server, follow the instructions below.
 
-To add another virtual host for our second website, copy the existing `example.com` virtual host file. You can use this as the basis for your second website:
+1.  Add another virtual host for your second website. To do this, copy the existing *example.com* virtual host file to use as a base for your new site.
 
-        sudo cp/etc/apache2/sites-available/example.com.conf
-        /etc/apache2/sites-available/example2.com.conf
+        sudo cp /etc/apache2/sites-available/example.com.conf /etc/apache2/sites-available/example2.com.conf
 
-After a new Apache web server configuration file has been created, open the new virtual host for example2.com. Edit it using the following command:
+1.  Open the new virtual host file for *example2.com*.
 
         sudo nano /etc/apache2/sites-available/example2.com.conf
 
-Then, make changes to the settings for `example2.com` as follows:
+1.  Replace the contents of this file with the following example or, alternatively, adjust the existing file as needed.
 
-{{< file >}}
-File: /etc/apache2/sites-available/example.com.conf
-# domain: example.com2
-# public: /var/www/html/example.com2/public_html/
+    {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
+# domain: example2.com
+# public: /var/www/html/example2.com/public_html/
 
 <VirtualHost *:80>
   # Admin email, Server Name (domain name), and any aliases
@@ -397,13 +396,13 @@ File: /etc/apache2/sites-available/example.com.conf
 </VirtualHost>
 {{< /file >}}
 
-You have placed the example2.com in `/var/www/html/example.com2/public_html/`.
+1.  Place the new website's files under the directory you've defined above. The example uses `/var/www/html/example2.com/public_html/`.
 
-Finally, enable your new virtual host by using the command:
+1.  Enable your new website by using the command below.
 
         sudo a2ensite example2.com
 
-After the second virtual host is enabled, restart your Apache web server:
+1.  After the second virtual host is enabled, restart your Apache web server.
 
         sudo systemctl reload apache2
 
