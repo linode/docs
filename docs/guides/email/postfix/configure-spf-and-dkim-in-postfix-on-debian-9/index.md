@@ -7,7 +7,7 @@ description: 'Configure SPF and DKIM in Postfix on Debian 9.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 9", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-13
+modified: 2021-08-20
 modified_by:
     name: Linode
 published: 2018-12-13
@@ -41,7 +41,7 @@ This guide provides instructions to set up SPF and DKIM with Postfix.
 
 [DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email. It identifies your domain's public key so other mail servers can verify the signature. Also DKIM helps keep your mail from being considered as spam. It also lets mail servers detect when your mail has been tampered with in transit.
 
-## What is DMARC (Domain MEssage Authentication, Reporting and Conformance)?
+## What is DMARC (Domain Message Authentication, Reporting and Conformance)?
 
 [DMARC (Domain Message Authentication, Reporting & Conformance)](http://dmarc.org/) allows you to advertise to mail servers the policies of your domain. The policies are regarding mails that fail SPF or DKIM validations. It also allows you to request reports on failed messages from receiving mail servers.
 
@@ -107,7 +107,7 @@ The values for the DNS records and for the rest of this guide are that works for
 
 ### Add the SPF policy agent to Postfix
 
-The Python SPF policy agent adds SPF policy-checking to Postfix. The SPF record for the sender's domain for incoming mail is checked and, if it exists, mail are handled accordingly. Perl has its own version, but it lacks the full capabilities of Python policy agent.
+The Python SPF policy agent adds SPF policy-checking to Postfix. The SPF record for the sender's domain for incoming mail is checked and, if it exists, mail is handled accordingly. Perl has its own version, but it lacks the full capabilities of Python policy agent.
 
 1.  If you are using *SpamAssassin* to filter spam, you may want to edit `/etc/postfix-policyd-spf-python/policyd-spf.conf` to change the `HELO_reject` and `Mail_From_reject` settings to `False`. This edit causes the SPF policy agent to run its tests and add a message header with the results in it `while _not_ rejecting` any messages. You may also want to make this change if you want to see the results of the checks but not apply them to mail processing. Otherwise, go with the standard settings.
 
@@ -498,7 +498,7 @@ You don't need to set this up, but doing so makes it harder for anyone to forge 
 
 ## Optional: Set up Domain Message Authentication, Reporting & Conformance (DMARC)
 
-The DMARC DNS record can be added to advise mail servers about what to do with emails claiming to be from your domain that fail SPF or DKIM validations. DMARC also allows you to request reports about mail that fails to pass one or more validation check. DMARC should only be set up if you have SPF and DKIM set up and operating successfully. If you add the DMARC DNS record without having both SPF and DKIM in place, messages from your domain fails validation which may cause them to be discarded or relegated to a spam folder.
+The DMARC DNS record can be added to advise mail servers what to do with emails claiming to be from your domain that fail SPF or DKIM validations. DMARC also allows you to request reports about mail that fails to pass one or more validation check. DMARC should only be set up if you have SPF and DKIM set up and operating successfully. If you add the DMARC DNS record without having both SPF and DKIM in place, messages from your domain fails validation which may cause them to be discarded or relegated to a spam folder.
 
 The DMARC record is a TXT record for host `_dmarc` in your domain containing the following recommended values:
 
@@ -508,7 +508,7 @@ This requests mail servers to quarantine (do not discard, but separate from regu
 
     v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r;fo=1;rf=afrf;rua=mailto:user@example.com
 
-Replace `user@example.com` in the `mailto:` URL with an email address you own dedicated to receiving reports an address such as `dmarc@example.com`. This requests aggregated reports in XML showing how many messages fell into each combination of pass and fail results and the mail server addresses sending them. If you're using Linode's DNS Manager, the screen for the new text record looks similar to:
+Replace `user@example.com` in the `mailto:` URL with an email address you own dedicated to receiving reports, an address such as `dmarc@example.com`. This requests aggregated reports in XML showing how many messages fell into each combination of pass and fail results and the mail server addresses sending them. If you're using Linode's DNS Manager, the screen for the new text record looks similar to:
 
 ![Linode DNS Manager add DMARC TXT record](dmarc-record.png)
 
