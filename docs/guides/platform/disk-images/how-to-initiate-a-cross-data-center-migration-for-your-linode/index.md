@@ -3,8 +3,8 @@ slug: how-to-initiate-a-cross-data-center-migration-for-your-linode
 author:
   name: Linode
   email: docs@linode.com
-description: "You can migrate your Linode across data centers using the Linode Cloud Manager. This is a self-service feature that does not require any action from Linode to initiate your migration. This guide shows you how to access this feature via the Cloud Manager and includes important details about the impact a migration may have on your Linode''s configurations."
-og_description:  "You can migrate your Linode across data centers using the Linode Cloud Manager. This is a self-service feature that does not require any action from Linode to initiate your migration. This guide shows you how to access this feature via the Cloud Manager and includes important details about the impact a migration may have on your Linode''s configurations."
+description: "You can migrate your Linode across data centers using the Linode Cloud Manager. This guide explains how to do so, and what you should know beforehand."
+og_description:  "You can migrate your Linode across data centers using the Linode Cloud Manager. This guide explains how to do so, and what you should know beforehand."
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
@@ -13,8 +13,9 @@ modified_by:
   name: Linode
 published: 2019-02-04
 aliases: ['/platform/disk-images/how-to-initiate-a-cross-data-center-migration-for-your-linode/','/platform/migrating-to-a-different-data-center/']
-title: How to Initiate a Cross Data Center Migration for your Linode
-h1_title: Initiating a Cross Data Center Migration for your Linode
+h1_title: How to Initiate a Cross Data Center Migration for your Linode
+title: Initiating a Cross Data Center Migration for your Linode
+enable_h1: true
 ---
 
 You can migrate your Linode across data centers using the Linode Cloud Manager. This is a self-service feature that does not require any action from Linode to initiate your migration.

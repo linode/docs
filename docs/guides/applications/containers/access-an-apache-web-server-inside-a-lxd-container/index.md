@@ -3,7 +3,7 @@ slug: access-an-apache-web-server-inside-a-lxd-container
 author:
   name: Linode
   email: docs@linode.com
-description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages machine containers which each work just like typical servers. This guide will show how to run Apache inside LXD and direct traffic to the container.'
+description: "Compared to other Containers, LXDmachine containers each work like typical servers. Here's show to run Apache inside LXD and direct traffic to the container."
 keywords: ["container", "lxd", "lxc", "virtual machine"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ published: 2018-02-12
 modified: 2018-02-12
 modified_by:
   name: Linode
-title: 'Access an Apache Web Server Inside a LXD Container'
+title: "Access an Apache Web Server Inside a LXD Container"
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/

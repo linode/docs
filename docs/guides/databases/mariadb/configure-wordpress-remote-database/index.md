@@ -357,4 +357,4 @@ Access the WordPress installation interface through `wp-admin`. Use a browser to
 
 ## Next Steps
 
-Now that the database is configured to communicate over a secure connection, consider using SSL/TLS for the web server itself. Our guide covering [TLS on NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) details some best practices for securing NGINX and web servers in general. Visit the [SSL Certificates](/docs/security/ssl/) section of Linode Docs for information on other servers and Linux distributions.
+Now that the database is configured to communicate over a secure connection, consider using SSL/TLS for the web server itself. Our guide covering [TLS on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) details some best practices for securing NGINX and web servers in general. Visit the [SSL Certificates](/docs/security/ssl/) section of Linode Docs for information on other servers and Linux distributions.

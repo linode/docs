@@ -3,22 +3,23 @@ slug: create-block-storage-volumes-with-the-linode-api
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: "Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. This guide demonstrates how to create, attach, clone, and resize Volumes using the Linode API."
-og_description: "Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. This guide demonstrates how to create, attach, clone, and resize Volumes using the Linode API."
+description: "This guide demonstrate how to create, attach, clone, and resize Volumes using the Linode API."
 keywords: ["linode api", "block storage", "volume"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-14
 modified_by:
   name: Linode
 published: 2018-05-14
-title: Manage Block Storage Volumes with the Linode API
+title: "How to Manage Block Storage Volumes with the Linode API"
+h1_title: "Managing Block Storage Volumes with the Linode API"
+enable_h1: true
 external_resources:
   - '[API Documentation](https://developers.linode.com/api/v4)'
 tags: ["linode platform"]
 aliases: ['/platform/api/create-block-storage-volumes-with-the-linode-api/']
 ---
+
 ![Manage Block Storage Volumes with the Linode API](manage-block-storage-volumes-with-the-linode-api.png "Manage Block Storage Volumes with the Linode API")
-<!--- ![Block Storage Volues with the Linode API](api-block-storage-smp.png) --->
 
 The Linode API allows you to create, delete, attach, detach, clone, and resize Block Storage Volumes.
 

@@ -3,15 +3,15 @@ slug: crud-write-operations-use-fastapi-to-write-an-api
 author:
   name: Chelsea Troy
   email: heychelseatroy@gmail.com
-description: 'If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API. Throughout this guide you learn how to add create, update, and delete endpoints to an existing API. You also learn about RESTful web API conventions, like idempotence.'
-og_description: 'If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API. Throughout this guide you learn how to add create, update, and delete endpoints to an existing API. You also learn about RESTful web API conventions, like idempotence.'
+description: "If you are familiar with FastAPI, you can use this guide to add CRUD write operations to your API."
 keywords: ['CRUD operations in Python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
 modified_by:
   name: Linode
-title: "CRUD Write Operations: Use FastAPI to Write an API"
 h1_title: "CRUD Write Operations: How to Use FastAPI to Write an API"
+title: "CRUD Write Operations: Using FastAPI to Write an API"
+enable_h1: true
 tags: ["python", "django"]
 contributor:
   name: Chelsea Troy

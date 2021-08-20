@@ -2,8 +2,7 @@
 slug: using-fail2ban-to-secure-your-server-a-tutorial
 author:
   name: Linode
-description: 'Learn how to use Fail2ban to secure your server. This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs, and detect automated attacks on your Linode.'
-og_description:  'Learn how to use Fail2ban to secure your server. This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs, and detect automated attacks on your Linode.'
+description: "This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs, and detect automated attacks on your Linode."
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['/tools-reference/tools/using-fail2ban-to-block-network-probes/','/security/using-fail2ban-to-secure-your-server-a-tutorial/','/security/using-fail2ban-for-security/','/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/']
 tags: ["monitoring","security"]
@@ -12,8 +11,9 @@ modified: 2021-01-08
 modified_by:
   name: Linode
 published: 2015-10-12
-title: Using Fail2ban to Secure Your Server - A Tutorial
-h1_title: A Tutorial for Using Fail2ban to Secure Your Server
+title: "How to Use Fail2ban to Secure Your Server (A Tutorial)"
+h1_title: "Using Fail2ban to Secure Your Server"
+enable_h1: true
 ---
 
 ## What is Fail2Ban

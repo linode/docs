@@ -11,7 +11,9 @@ published: 2017-08-22
 modified: 2019-02-01
 modified_by:
     name: Sam Foo
-title: 'Install a Jupyter Notebook Server on a Linode Behind an Apache Reverse Proxy'
+title: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
+h1_title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
+enable_h1: true
 external_resources:
  - '[Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)'
  - '[Anaconda Documentation](https://docs.continuum.io/)'
@@ -21,6 +23,10 @@ aliases: ['/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-
 ---
 
 Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy.
+
+{{< note >}}
+Jupyter Notebook is being replaced by [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html), the next-generation solution that includes Notebooks. Before continuing, consider if JupyterLab better suits your needs.
+{{</ note >}}
 
 ## Before You Begin
 
