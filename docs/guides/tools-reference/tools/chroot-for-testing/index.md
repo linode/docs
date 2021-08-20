@@ -7,7 +7,7 @@ og_description: "The chroot command enables you to create an environment that is
 keywords: ['chroot','chroot linux','chroot jail']
 tags: ['linux', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-19
+published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
 title: "Use chroot for Testing on Ubuntu"
