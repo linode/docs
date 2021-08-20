@@ -1440,6 +1440,7 @@ sbin
 sbopkg
 sbt
 scgi
+schroot
 schaeffer
 scm
 scp
