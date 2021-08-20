@@ -3,8 +3,8 @@ slug: install-thingsboard-iot-dashboard
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide will show how to track and visualize data from an Internet of Things device using ThingsBoard.'
-og_description: 'This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices. A Raspberry Pi is used to demonstrate sending data to the cloud dashboard.'
+description: "This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices using a Raspberry Pi."
+og_description: "This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices using a Raspberry Pi."
 keywords: ["iot", "raspberry pi", "internet of things", "dashboard"]
 tags: ["postgresql", "nginx", "python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,9 @@ published: 2018-01-30
 modified: 2018-01-30
 modified_by:
   name: Linode
-title: 'View IoT Data with ThingsBoard'
+title: "How to View IoT Data with ThingsBoard"
+h1_title: "Viewing IoT Data with ThingsBoard"
+enable_h1: true
 external_resources:
   - '[Getting Started – ThingsBoard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
   - '[ThingsBoard Github Repo](https://github.com/thingsboard/thingsboard)'

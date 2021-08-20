@@ -3,8 +3,7 @@ slug: linode-configuration-profiles
 author:
   name: Linode
   email: docs@linode.com
-description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
-og_description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
+description: "Learn how to create and manage configuration profiles for a Linode, including details on each setting and its recommended value."
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

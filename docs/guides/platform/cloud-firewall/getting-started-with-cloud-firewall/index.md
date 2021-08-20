@@ -3,8 +3,7 @@ slug: getting-started-with-cloud-firewall
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determine if the traffic is permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
-og_description: 'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determine if the traffic is permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
+description: "This guide demonstrates how to create a Cloud Firewall, edit firewall rules, and apply it to a Linode."
 keywords: ["firewall", "cloud firewall", "security", "securing"]
 tags: ["cloud manager","linode platform","security","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

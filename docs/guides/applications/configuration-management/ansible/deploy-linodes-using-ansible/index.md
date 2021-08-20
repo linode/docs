@@ -3,7 +3,7 @@ slug: deploy-linodes-using-ansible
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide you learn how to deploy and manage Linodes using Ansible and the `linode_v4` module. You will also create an Ansible inventory for your Linode infrastructure using the dynamic inventory plugin for Linode.'
+description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
 keywords: ['ansible','Linode module','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-06-04

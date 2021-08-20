@@ -3,8 +3,8 @@ slug: deploy-postresql-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. Easily deploy PostgreSQL using Marketplace Apps.'
-og_description: 'PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. Easily deploy PostgreSQL using Marketplace Apps.'
+description: 'PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps.'
+og_description: 'PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps.'
 keywords: ['database','postgresql','rdbms','relational database']
 tags: ["linode platform","postgresql","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +14,7 @@ modified_by:
   name: Rajakavitha Kodhandapani
 title: "How to Deploy PostgreSQL with Marketplace Apps"
 h1_title: "Deploying PostgreSQL with Marketplace Apps"
+enable_h1: true
 contributor:
   name: Rajakavitha Kodhandapani
 external_resources:

@@ -3,7 +3,7 @@ slug: tunnel-your-internet-traffic-through-an-openvpn-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation and protect your connection from untrusted internet service providers, WiFi hotspots, and sites and services you connect to.'
+description: 'Learn how to configure your OpenVPN server to tunnel your Internet traffic for better overall privacy and security.'
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -56,8 +56,6 @@ OpenVPN's server-side configuration file is: `/etc/openvpn/server.conf`, and req
 ## Append Networking Rules
 
 In [Part One](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server could only accept client connections, SSH, and make system updates, all over IPv4. [IPv6 was disabled](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) since OpenVPN doesn't support using both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
-
-
 
 {{< caution >}}
 The steps below will overwrite any custom IPv4 firewall rules you may have.

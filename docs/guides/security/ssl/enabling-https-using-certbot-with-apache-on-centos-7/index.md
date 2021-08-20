@@ -3,8 +3,7 @@ slug: enabling-https-using-certbot-with-apache-on-centos-7
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide will show you how to install and use Certbot with Apache on CentOS/RHEL 7. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
-og_description:  "This guide will show you how to install and use Certbot with Apache on CentOS/RHEL 7. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
+description: "Learn how to install and use Certbot with Apache on CentOS/RHEL 7, which automates the process adding TLS/SSL to your websites."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
 tags: ['ssl','apache','centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,8 +3,7 @@ slug: how-to-install-and-configure-caddy-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site''s domain over HTTPS.'
-og_description: 'In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site''s domain over HTTPS.'
+description: "In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site's domain over HTTPS."
 keywords: ['web server','caddy','https','Caddyfile']
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +12,7 @@ modified_by:
   name: Linode
 title: "How to Install and Configure the Caddy Web Server on Ubuntu 18.04"
 h1_title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
+enable_h1: true
 image: CaddyWebServ_Ubuntu1804.png
 contributor:
   name: Linode

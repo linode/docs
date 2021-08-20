@@ -3,8 +3,8 @@ slug: how-to-use-linode-packer-builder
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
-og_description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
+description: "Packer is a HashiCorp maintained open source tool for creating machine images. Here's how to use it."
+og_description: "Packer is a HashiCorp maintained open source tool for creating machine images. Here's how to use it."
 keywords: ['packer hashicorp','hashicorp packer','image','machine image','immutable infrastructure','continuous delivery','ansible','ansible playbook','hashicorp terraform','hashicorp']
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,8 @@ modified: 2021-05-21
 modified_by:
   name: Linode
 title: "How to Use the Linode Packer Builder"
-h1_title: "Use the Linode Packer Builder to Create Linode Images"
+h1_title: "Using the Linode Packer Builder to Create Custom Images"
+enable_h1: true
 contributor:
   name: Linode
 aliases: ['/applications/configuration-management/how-to-use-linode-packer-builder/','/applications/configuration-management/packer/how-to-use-linode-packer-builder/']
