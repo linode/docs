@@ -3,7 +3,7 @@ slug: left-4-dead-2-multiplayer-server-installation
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'In this guide, learn how to install and configure a SteamCMD Left 4 Dead 2 server on Linode.'
+description: "In this guide, learn how to install and configure a SteamCMD Left 4 Dead 2 server on Linode."
 keywords: ["left 4 dead", "l4d2", "game server", "steamCMD"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ published: 2016-02-25
 modified: 2019-02-01
 modified_by:
     name: Linode
-title: 'Left 4 Dead 2 Multiplayer Server Installation'
+title: "How to Install a Left 4 Dead 2 Multiplayer Server"
+h1_title: "Installing a Left 4 Dead 2 Multiplayer Server"
+enable_h1: true
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling

@@ -3,8 +3,7 @@ slug: linux-users-and-groups
 author:
   name: Linode
   email: docs@linode.com
-description: 'Want to learn more about Linux users and groups? Have a look at this guide, which also gives examples of the most common user/group management tasks.'
-og_description: 'Want to learn more about Linux users and groups? Have a look at this guide, which also gives examples of the most common user/group management tasks.'
+description: "Want to learn more about Linux users and groups? This guide covers the most common user and group management tasks."
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,7 +13,6 @@ modified_by:
   name: Linode
 published: 2009-08-31
 title: Linux Users and Groups
-h1_title: Linux Users and Groups
 external_resources:
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'

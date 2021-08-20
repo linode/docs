@@ -2,8 +2,7 @@
 slug: how-to-deploy-a-react-app-on-debian-10
 author:
   name: Linode
-description: This tutorial will explain how to deploy a React app to a Ubuntu 18.04 Linode installation that''s running a web server.
-og_description: This tutorial will explain how to deploy a React app to a Ubuntu 18.04 Linode installation that''s running a web server.
+description: This tutorial will explain how to deploy a React app to a Ubuntu 18.04 Linode installation that's running a web server.
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

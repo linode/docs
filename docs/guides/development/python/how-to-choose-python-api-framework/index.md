@@ -3,8 +3,7 @@ slug: how-to-choose-python-api-framework
 author:
   name: Chelsea Troy
   email: heychelseattoy@gmail.com
-description: 'When choosing a Python framework to build an API , it''s important to understand each framework''s strengths. We''ll help you decide.'
-og_description: 'When choosing a Python framework to build an API , it''s important to understand each framework''s strengths. We''ll help you decide.'
+description: "When choosing a Python framework to build an API , it's important to understand each framework's strengths. We'll help you decide."
 keywords: ['python api framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10

@@ -4,15 +4,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
-og_description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
 keywords: ["vpn", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-07-09
 modified_by:
   name: Linode
 published: 2017-09-29
-title: "Configuring a VPN Kill Switch on OpenVPN Clients"
-h1_title: "Use iptables to Configure a VPN Kill Switch on OpenVPN Clients"
+title: "How to Configure a VPN Kill Switch on OpenVPN Clients"
+h1_title: "Configuring a VPN Kill Switch on OpenVPN Clients Using iptables"
 enable_h1: true
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'

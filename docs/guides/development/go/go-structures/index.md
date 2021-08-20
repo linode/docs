@@ -3,16 +3,14 @@ slug: go-structures
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Learn how to use structs in Go, including how structs use value semantics, how to handle pointers to structs, and how to associate methods with structs.'
+description: "Learn how to use structs in Go, including how structs use value semantics, how to handle pointers to structs, and how to associate methods with structs."
 keywords: [" Structs", "Golang", "Go", "Pointers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
 modified_by:
   name: Linode
 image: ATutorialforLearningStructsinGo.png
-title: 'Structs in Go - A Tutorial'
-h1_title: 'A Tutorial for Learning Structs in Go'
-enable_h1: true
+title: "A Tutorial for Learning Structs in Go"
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/

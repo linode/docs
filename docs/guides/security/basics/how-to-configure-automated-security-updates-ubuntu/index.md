@@ -2,8 +2,7 @@
 slug: how-to-configure-automated-security-updates-ubuntu
 author:
   name: Hackersploit
-description: 'Learn how to use Unattended Upgrades to automate both security updates and package upgrades on Ubuntu. '
-og_description: 'Learn how to use Unattended Upgrades to automate both security updates and package upgrades on Ubuntu. '
+description: "Looking for better management of security updates on Ubuntu? Learn how to use the dnf-automatic tool or the Cockpit web application to manage these updates."
 keywords: ["ubuntu unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["ubuntu", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +10,8 @@ modified: 2020-10-22
 modified_by:
   name: Linode
 published: 2020-10-22
-h1_title: How to Configure Automated Security Updates on Ubuntu
-title: Configuring Automated Security Updates on Ubuntu
+title: "How to Configure Automated Security Updates on Ubuntu"
+h1_title: "Configuring Automated Security Updates on Ubuntu"
 enable_h1: true
 aliases: ['/security/basics/how-to-configure-automated-security-updates-ubuntu/']
 relations:

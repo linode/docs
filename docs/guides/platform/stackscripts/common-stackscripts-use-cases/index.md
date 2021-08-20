@@ -3,17 +3,14 @@ slug: common-stackscripts-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide, we''ll go over some of the common use cases for Linode StackScripts along with some common limitations.'
-og_description: 'In this guide, we''ll go over some of the common use cases for Linode StackScripts along with some common limitations.'
+description: "This guide covers some of the common use cases for Linode StackScripts along with limitations of the service."
 keywords: ['scripting','automation','bash','open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
 image: Common_Use_Cases_for_Linode_StackScripts_1200x631.png
 modified_by:
   name: Linode
-title: "Common Linode StackScripts Use Cases"
-h1_title: "Common Use Cases for Linode StackScripts"
-enable_h1: true
+title: "Common Use Cases for Linode StackScripts"
 contributor:
   name: Linode
 tags: ["linode platform","automation"]

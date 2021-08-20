@@ -3,16 +3,14 @@ slug: deploying-ark-survival-evolved-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy a ARK: Survival Evolved Server on Linode using Marketplace Apps.'
+description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace Apps."
 keywords: ['ark','survival evolved','marketplace apps', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-03
 modified: 2019-03-03
 modified_by:
   name: Linode
-h1_title: "Deploy an ARK: Survival Evolved Server with Marketplace Apps"
-title: 'How to Deploy an ARK Server with Marketplace Apps'
-enable_h1: true
+title: "Deploy an ARK: Survival Evolved Server with Marketplace Apps"
 contributor:
   name: Linode
 external_resources:

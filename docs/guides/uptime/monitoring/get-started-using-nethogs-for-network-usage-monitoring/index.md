@@ -3,16 +3,16 @@ slug: get-started-using-nethogs-for-network-usage-monitoring
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: 'Nethogs is a free, open-source program to track network usage. Here''s how to install it, and some common commands to get you started.'
-og_description: 'Nethogs is a free, open-source program to track network usage. Here''s how to install it, and some common commands to get you started.'
+description: "Learn how to install and use Nethogs, a free and open-source program designed to track network usage"
 keywords: ['how to use nethogs']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
   name: Linode
-title: "Get Started Using Nethogs for Network Usage Monitoring"
-h1_title: "Get Started Using Nethogs for Network Usage Monitoring"
+title: "How to Use Nethogs to Monitor Network Usage"
+h1_title: "Using Nethogs to Monitor Network Usage"
+enable_h1: true
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn

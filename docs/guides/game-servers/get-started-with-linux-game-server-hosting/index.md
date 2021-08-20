@@ -3,15 +3,15 @@ slug: get-started-with-linux-game-server-hosting
 author:
   name: Sandro Villinger
   email: webmaster@windows-tweaks.info
-description: 'Learn the basics of hosting a game server on Linux, including its benefits and drawbacks, along with hosting resources for titles like Valheim and CS:GO.'
-og_description: 'Learn the basics of hosting a game server on Linux, including its benefits and drawbacks, along with hosting resources for titles like Valheim and CS:GO.'
+description: "Learn the basics of hosting a game server on Linux, including its benefits and drawbacks, along with hosting resources for titles like Valheim and CS:GO."
+og_description: "Learn the basics of hosting a game server on Linux, including its benefits and drawbacks, along with hosting resources for titles like Valheim and CS:GO."
 keywords: ['linux game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-08
 modified_by:
   name: Linode
-title: "Get Started with Linux Game Server Hosting"
-h1_title: "How to Get Started with Linux Game Server Hosting"
+title: "How to Get Started with Linux Game Server Hosting"
+h1_title: "Getting Started with Linux Game Server Hosting"
 enable_h1: true
 contributor:
   name: Sandro Villinger

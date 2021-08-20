@@ -3,8 +3,7 @@ slug: how-to-deploy-django-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Out of the box, Django provides much of the core functionality most web developers require. Here''s how to deploy it on Linode using Marketplace Apps.'
-og_description: 'Out of the box, Django provides much of the core functionality most web developers require. Here''s how to deploy it on Linode using Marketplace Apps.'
+description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketpplace"
 keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,7 +13,6 @@ modified_by:
   name: Linode
 title: "How to Deploy Django with Marketplace Apps"
 h1_title: "Deploying Django with Marketplace Apps"
-enable_h1: true
 aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/']
 contributor:
   name: Linode

@@ -3,7 +3,7 @@ slug: beginners-guide-to-lxd
 author:
   name: Linode
   email: docs@linode.com
-description: 'LXD is a container hypervisor that manages Linux Containers. In this guide, we'll show you how to install, setup, and use LXD 3.'
+description: "LXD is a container hypervisor that manages Linux Containers. In this guide, we'll show you how to install, setup, and use LXD 3."
 keywords: ["container", "lxd", "lxc", "apache", "virtual machine", "virtualization"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

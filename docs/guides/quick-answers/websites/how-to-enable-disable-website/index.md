@@ -2,8 +2,8 @@
 slug: how-to-enable-disable-website
 author:
   name: Jeff Novotny
-description: 'This guide explains how to quickly disable a website running on Apache or NGINX, along with what's involved in re-enabling it.'
-og_description:  'This guide explains how to quickly disable a website running on Apache or NGINX, along with what's involved in re-enabling it.'
+description: "This guide explains how to quickly disable a website running on Apache or NGINX, along with what's involved in re-enabling it."
+og_description: "This guide explains how to quickly disable a website running on Apache or NGINX, along with what's involved in re-enabling it."
 keywords: ['enable website','disable website','apache','nginx']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ published: 2021-06-17
 modified_by:
   name: Linode
 title: "Enable and Disable a Website Running on Apache or NGINX"
-h1_title: "How to Enable and Disable a Website Running on Apache or NGINX"
+h1_title: "Enabling and Disabling a Website Running on Apache or NGINX"
 enable_h1: true
 contributor:
   name: Jeff Novotny

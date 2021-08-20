@@ -2,16 +2,15 @@
 slug: install-and-use-nginx-on-almalinux-8
 author:
   name: Nathaniel Stickman
-description: "We walk you through the basics of installing and configuring NGINX on your AlmaLinux 8 server in this quick guide."
-og_description: "We walk you through the basics of installing and configuring NGINX on your AlmaLinux 8 server in this quick guide."
+description: "Learn the basics of installing and configuring NGINX on your AlmaLinux 8 server in this quick guide."
 keywords: ['nginx','web server','reverse proxy','load balancing','install nginx on almalinux 8','alma linux']
 tags: ['nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
 modified_by:
   name: Nathaniel Stickman
-title: "Install and Use NGINX on AlmaLinux 8"
-h1_title: "How to Install and Use NGINX on AlmaLinux 8"
+title: "How to Install and Use NGINX on AlmaLinux 8"
+h1_title: "Installing and Using NGINX on AlmaLinux 8"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman

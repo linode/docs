@@ -11,9 +11,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-06
 modified_by:
   name: Linode
-title: "Using Octant with Kubernetes - A Tutorial"
 image: using-octant-with-kube.jpg
-h1_title: "A Tutorial for Using Octant with Kubernetes"
+title: "How to Use Octant with Kubernetes (A Tutorial)"
+h1_title: "A Overview of Using Octant with Kubernetes"
 enable_h1: true
 external_resources:
 - '[Octant](https://octant.dev/)'

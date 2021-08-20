@@ -3,8 +3,7 @@ slug: linux-system-monitoring-fundamentals
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: 'Monitoring is really the only way to know that your your Linux system is running as it should. We''ll walk you through what that involves.'
-og_description: 'Monitoring is really the only way to know that your your Linux system is running as it should. We''ll walk you through what that involves.'
+description: "This guide discusses the system monitoring tools you can use to reassure your server is functioning properly and help you recognize odd behavior or anomalies."
 keywords: ['linux system monitoring']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +11,6 @@ published: 2021-02-19
 modified_by:
   name: Linode
 title: "Linux System Monitoring Fundamentals"
-h1_title: "Linux System Monitoring Fundamentals"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn

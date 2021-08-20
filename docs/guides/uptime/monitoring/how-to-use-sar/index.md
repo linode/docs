@@ -3,8 +3,7 @@ slug: how-to-use-sar
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: 'This guide shows you the basics of sar, the Linux system activity reporter, including installation, configuration, and basic commands.'
-og_description: 'This guide shows you the basics of sar, the Linux system activity reporter, including installation, configuration, and basic commands.'
+description: "This guide shows you the basics of sar, the Linux system activity reporter, including installation, configuration, and basic commands."
 keywords: ['sar command in linux']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

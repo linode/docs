@@ -3,8 +3,8 @@ slug: what-is-unit-testing
 author:
   name: Martin Heller
   email: docs@linode.com
-description: 'Learn what unit testing is, why it''s important, and why you should be doing it if you aren''t already.'
-og_description:  'Learn what unit testing is, why it''s important, and why you should be doing it if you aren''t already.'
+description: "earn what unit testing is, why it's important, and why you should be doing it if you aren't already."
+og_description: "Learn what unit testing is, why it's important, and why you should be doing it if you aren't already."
 keywords: ['what is unit testing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-11

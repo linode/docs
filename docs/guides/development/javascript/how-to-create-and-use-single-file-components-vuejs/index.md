@@ -10,7 +10,7 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-05-20
 modified_by:
   name: Linode
-title: "Creating Single File Components in VueJS - A Tutorial"
+title: "How to Create Single File Components in VueJS (A Tutorial)"
 h1_title: "A Tutorial for Creating Single File Components in VueJS"
 enable_h1: true
 contributor:

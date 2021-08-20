@@ -3,8 +3,8 @@ slug: comparing-nginx-and-apache-web-servers
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible.'
-og_description: 'Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible.'
+description: "Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible."
+og_description: "Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible."
 keywords: ['apache','nginx','web server','open source','vs','comparison']
 tags: ['apache','nginx','web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

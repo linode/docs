@@ -3,8 +3,7 @@ slug: how-to-configure-nginx
 author:
   name: Linode
   email: docs@linode.com
-description: 'NGINX is a high-performance web server that quickly delivers large amounts of static content. We''ll go over the basic NGINX parameters and conventions.'
-og_description: 'NGINX is a high-performance web server that quickly delivers large amounts of static content. We''ll go over the basic NGINX parameters and conventions.'
+description: "NGINX is a high-performance web server that quickly delivers large amounts of static content. This guide covers the basic NGINX parameters and conventions."
 keywords: ["nginx", "web server", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/how-to-configure-nginx/','/websites/nginx/how-to-configure-nginx/','/web-servers/nginx/configuration/basic/','/websites/nginx/how-to-configure-nginx/index.cfm/','/websites/nginx/basic-nginx-configuration/index.cfm/','/websites/nginx/basic-nginx-configuration/']

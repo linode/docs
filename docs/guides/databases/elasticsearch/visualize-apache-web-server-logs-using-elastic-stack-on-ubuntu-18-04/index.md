@@ -6,8 +6,8 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana.'
-og_description: 'This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana.'
+description: "This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana."
+og_description: "This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache ubuntu 18.04", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]

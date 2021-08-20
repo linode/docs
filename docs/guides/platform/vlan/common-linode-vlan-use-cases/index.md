@@ -3,8 +3,7 @@ slug: common-linode-vlan-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Curious about Linode''s Virtual Local Area Network (VLAN) and how you might leverage it?  We''ll walk you through an explanation.'
-og_description: 'Curious about Linode''s Virtual Local Area Network (VLAN) and how you might leverage it?  We''ll walk you through an explanation.'
+description: "Learn abut common use cases for Linode's VLAN (Virtual Local Area Network) service and how you might leverage it for your application."
 image:
 keywords: ['vlan','virtual local area network','use case']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,7 @@ published: 2020-08-12
 modified_by:
   name: Linode
 tags: ["security", "networking", "linode platform"]
-title: "Common Linode VLAN Use Cases"
-h1_title: "Common Use Cases for Linode VLAN"
-enable_h1: true
+title: "Common Use Cases for Linode's VLAN Service"
 contributor:
   name: Linode
 ---

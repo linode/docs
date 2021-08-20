@@ -3,8 +3,7 @@ slug: how-to-deploy-percona-monitoring-management-with-marketplace-apps
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database.'
-og_description: 'This guide shows you how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database.'
+description: "Learn how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database."
 keywords: ['percona','marketplace apps','monitoring', 'database']
 tags: ["database","monitoring","cloud-manager","linode platform","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2020-06-11
 modified: 2020-06-11
 modified_by:
   name: Linode
-title: "Installing Percona Monitoring & Management PMM"
-h1_title: "How to Deploy Percona Monitoring and Management with Marketplace Apps"
-enable_h1: true
+title: "How to Deploy Percona Monitoring and Management (PMM) with Marketplace Apps"
+h1_title: "Deploying Percona Monitoring and Management (PMM) with Marketplace Apps"
 contributor:
   name: Linode
 image: 'deploy-percona-marketplace.png'

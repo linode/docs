@@ -2,16 +2,14 @@
 slug: python-packages-for-data-science-overview
 author:
   name: John Mueller
-description: 'In this guide, we review some of the top Python packages for data science, including Pandas, NumPy, and Matplotlib.'
-og_description: 'In this guide, we review some of the top Python packages for data science, including Pandas, NumPy, and Matplotlib.'
+description: This guide outlines some of the top Python packages for data science, including Pandas, NumPy, and Matplotlib.
 keywords: ['python libraries for data science']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
 modified_by:
   name: Linode
-title: "Python Packages for Data Science"
-h1_title: "An Overview of Python Packages for Data Science"
+title: "An Overview of Python Packages for Data Science"
 enable_h1: true
 contributor:
   name: John Mueller

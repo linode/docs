@@ -3,8 +3,8 @@ slug: set-up-a-streaming-rtmp-server
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch. '
-og_description: 'Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch. '
+description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
+og_description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
 keywords: ['RTMP','streaming','multi-streaming','NGINX']
 tags: ['rtmp', 'stream', 'nginx', 'vlc']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,8 +3,7 @@ slug: linode-manager-security-controls
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide describes the security features of the Linode Cloud Manager, including 2FA, IP address whitelisting, API access controls, and password expiration'
-og_description: 'This guide describes the security features of the Linode Cloud Manager, including 2FA, IP address whitelisting, API access controls, and password expiration'
+description: "This guide describes the security features of the Linode Cloud Manager, including 2FA, IP address whitelisting, API access controls, and password expiration"
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

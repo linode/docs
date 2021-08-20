@@ -3,8 +3,7 @@ slug: getting-started-with-cloud-firewall
 author:
   name: Linode
   email: docs@linode.com
-description: 'Cloud Firewalls are integral to your infrastructure''s security. Learn how to apply a Cloud Firewall to a Linode service using the Linode Cloud Manager.'
-og_description: 'Cloud Firewalls are integral to your infrastructure''s security. Learn how to apply a Cloud Firewall to a Linode service using the Linode Cloud Manager.'
+description: "This guide demonstrates how to create a Cloud Firewall, edit firewall rules, and apply it to a Linode."
 keywords: ["firewall", "cloud firewall", "security", "securing"]
 tags: ["cloud manager","linode platform","security","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

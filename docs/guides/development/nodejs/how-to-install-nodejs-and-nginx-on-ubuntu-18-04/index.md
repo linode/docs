@@ -3,8 +3,7 @@ slug: how-to-install-nodejs-and-nginx-on-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com
-description: 'This guide will show you how to configure Icinga 2 to monitor both local and remote systems.'
-og_description: 'This guide will show you how to configure Icinga 2 to monitor both local and remote systems.'
+description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on an Ubuntu 18.04 server.
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "ubuntu", " front-end requests", " back-end requests"]
 tags: ["ubuntu", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ modified: 2020-04-14
 modified_by:
     name: Linode
 published: 2020-04-14
-title: 'How to Install Node.js and NGINX on Ubuntu 18.04'
-h1_title: 'Installing Node.js and NGINX on Ubuntu 18.04'
+title: How to Install Node.js and NGINX on Ubuntu 18.04
+h1_title: Installing Node.js and NGINX on Ubuntu 18.04
 enable_h1: true
 external_resources:
  - '[Node.js](http://nodejs.org)'

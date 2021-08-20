@@ -3,8 +3,7 @@ slug: how-to-set-linux-environment-variables
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide introduces you to Linux environment variables and the difference between shell variables and environment variables.'
-og_description: 'This guide introduces you to Linux environment variables and the difference between shell variables and environment variables.'
+description: "This guide introduces you to Linux environment variables and explains the differences between shell variables and environment variables."
 keywords: ['shell','bash','environment variables','command line','terminal','shell scripting']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

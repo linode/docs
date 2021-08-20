@@ -3,7 +3,7 @@ slug: linux-system-administration-basics
 author:
   name: Linode
   email: docs@linode.com
-description: 'This end-to-end tutorial will walk you through everything you wanted to know about Linux system administration, but were afraid to ask.'
+description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
@@ -11,7 +11,7 @@ modified: 2021-05-14
 modified_by:
   name: Linode
 published: 2009-12-13
-title: Linux System Administration Basics
+title: "Linux System Administration Basics"
 tags: ["linux"]
 ---
 
