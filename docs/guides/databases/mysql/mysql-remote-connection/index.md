@@ -1,14 +1,13 @@
 ---
 slug: connect-to-a-mysql-or-mariadb-database
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to remotely connect to your MySQL or MariaDB database using the command line."
-og_description: "Learn how to remotely connect to your MySQL or MariaDB database using the command line."
+  name: Nathaniel Stickman
+description: "Learn how to remotely connect to your MySQL or MariaDB database using the command line. Included in the guide are the database configuration steps to allow remote connections from a specific user."
+og_description:  "Learn how to remotely connect to your MySQL or MariaDB database using the command line. Included in the guide are the database configuration steps to allow remote connections from a specific user."
 keywords: ['mysql connect to database','mariadb connect to database','mysql connect remote database','how to connect to mysql database']
-tags: ['mysql', 'mariadb']
+tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-21
+published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
 title: "Connect to a MySQL or MariaDB Database"
@@ -21,10 +20,9 @@ external_resources:
 - '[MySQL installation documentation](https://dev.mysql.com/doc/refman/8.0/en/installing.html)'
 - '[MySQL Workbench manual](https://dev.mysql.com/doc/workbench/en/)'
 - '[MySQL Workbench with MariaDB](https://mariadb.com/products/skysql/docs/clients/third-party/mysql-workbench/)'
-
 ---
 
-In this guide, learn how to connect to your remote MySQL or MariaDB database through the command line. You can also learn to make a remote connection via the MySQL Workbench tool through the link at the end of this guide.
+This guide shows you how to connect to a remote MySQL or MariaDB database using the command line. You can also learn how to connect to a remote database via MySQL Workbench by using the referenced links at the end of this guide.
 
 ## Before You Begin
 
@@ -40,20 +38,20 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 ## How to Connect to a Remote Database from the Command Line
 
-You may be familiar with how to operate your database from the command line over SSH. We also have a guide for making a connection using an SSH tunnel, [Create an SSH Tunnel for MySQL Remote Access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/).
+This section shows you how to connect to your database without an SSH connection. This can be useful if you want to limit SSH access but still permit database access.
 
-In contrast, though, the following shows you how to connect to your database without using SSH. This can be useful if you want to limit SSH access but still permit database access.
+Refer to our [Create an SSH Tunnel for MySQL Remote Access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) to learn how to connect to your database using an SSH tunnel.
 
 ### Configure the Database Server
 
 1. Make sure your database has a user set up to allow connections from your local machine's IP address.
 
-    As an example, here are a series of commands to create a new MySQL/MariaDB user — `example_user` — that accepts connections from `192.0.2.0` and has permissions on the `example_db` database:
+   The example below displays a series of commands to create a new MySQL/MariaDB user named `example_user`. The user accepts connections from `192.0.2.0` and has `SELECT`, `INSERT`, `UPDATE`, and `DELETE` permissions on the `example_db` database:
 
         CREATE user 'example_user'@'192.0.2.0' IDENTIFIED BY 'password';
         GRANT SELECT,INSERT,UPDATE,DELETE ON example-db.* TO 'example_user' IDENTIFIED BY 'password';
 
-1. Locate you database's configuration files. The following command lists the files' default locations. Note that the locations you get may be different than those in the example shown below:
+1. Locate you database's configuration files using the command below. The following command lists the files' default locations. The locations returned by the command may be different than those in the example shown below:
 
         sudo mysql --help
 
@@ -66,7 +64,7 @@ Default options are read from the following files in the given order:
 [...]
     {{< /output >}}
 
-1. Using your preferred text editor, start looking at these files until you find one with a `[mysqld]` section and a `bind-address` parameter.
+1. Using your preferred text editor, locate the `[mysqld]` section and a `bind-address` parameter.
 
     If you see any `!includedir` parameters in the files, you may also need to check the files in the locations those parameters designate.
 
@@ -94,12 +92,12 @@ bind-address = 0.0.0.0
 
 ### Access the Database
 
-1. You need to have the MySQL command-line, or CLI tool installed on your local machine to connect to the database. Each of the installation methods below works regardless of whether your server is running MySQL or MariaDB.
+1. You need to have the MySQL command-line, or CLI tool installed on your local machine to connect to the database. The installation methods below work for both MySQL and MariaDB.
 
     - If your local machine is running a Linux distribution, you can follow our [How to Install MySQL](/docs/guides/how-to-install-mysql-on-debian-8/) guide.
-    - Otherwise, take a look at the [official MySQL installation documentation](https://dev.mysql.com/doc/refman/8.0/en/installing.html).
+    - For other distributions, refer to the [official MySQL installation documentation](https://dev.mysql.com/doc/refman/8.0/en/installing.html).
 
-1. Use a command like the following from your local machine to connect to the database. Replace `198.51.100.0` with the IP address for your database server.
+1. Issue the command below from your local machine to connect to the database. Replace `198.51.100.0` with the IP address for your database server.
 
         mysql -u example_user -p -h 198.51.100.0
 
@@ -107,7 +105,7 @@ bind-address = 0.0.0.0
 
         mysql -u example_user -p -h 198.51.100.0 -P 3312
 
-1. You can verify your connection using the following command which fetches a list of databases that your current user has access to.
+1. You can verify your connection using the following command. This command fetches a list of databases that your current user has access to.
 
         SHOW DATABASES;
 
@@ -122,10 +120,10 @@ bind-address = 0.0.0.0
 
 ## How to Connect to a Database Remotely Using the MySQL Workbench Tool
 
-Follow our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for steps to install the MySQL Workbench tool on your local machine and connect it to your remote database server. These steps work whether your target database server is MySQL or MariaDB.
+Follow our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for steps to install the MySQL Workbench tool on your local machine. This guide also shows you how to connect to a remote database via MySQL Workbench. These steps work whether your target database server is MySQL or MariaDB.
 
 For more information, take a look at the [official MySQL Workbench manual](https://dev.mysql.com/doc/workbench/en/). You may also refer to MariaDB's documentation on [using the MySQL Workbench with MariaDB](https://mariadb.com/products/skysql/docs/clients/third-party/mysql-workbench/).
 
 ## Conclusion
 
-Now that you have your remote database connection, you may want to learn more about using MySQL/MariaDB and working with more advanced database operations. Fortunately, we have an extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql) and specific [MariaDB guides](/docs/guides/databases/mariadb/?q=mysql) for your to dive into. There, you can find plenty to help you expand your MySQL abilities.
+Now that you have your remote database connection, you may want to learn more about using MySQL/MariaDB and working with more advanced database operations. You can refer to our extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql) and specific [MariaDB guides](/docs/guides/databases/mariadb/?q=mysql) to build your database mangement skills.
