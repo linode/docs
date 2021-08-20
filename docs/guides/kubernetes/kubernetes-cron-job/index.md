@@ -7,7 +7,7 @@ og_description:  'A Kubernetes CronJob helps you schedule and automate tasks on 
 keywords: ['kubernetes cron job']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-18
+published: 2021-08-20
 modified_by:
   name: Linode
 title: "Creating a Kubernetes CronJob"
