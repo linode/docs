@@ -7,7 +7,7 @@ og_description: "Python lists offer several built-in methods that help you alter
 keywords: ['python list','python list append','python list sort']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-19
+published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
 title: "Python Lists and How to Use Them"
@@ -21,7 +21,7 @@ external_resources:
 - '[O'Reilly: How Do I Use the Slice Notation in Python?](https://www.oreilly.com/content/how-do-i-use-the-slice-notation-in-python/)'
 ---
 
-Python comes with numerous tools that make it easy to work with lists. In this guide, find out some of the most useful tools and how to use them. They include everything from methods to add and remove items, operations to convert lists to strings, ways to sort, and reverse, and more.
+Python includes many built-in methods and operations that help you manipulate lists. This guide shows you how to use the `append()`, `insert()`, and `remove()` built-in list methods. You also learn how to write a list comprehensions, and how to sort lists.
 
 ## Before You Begin
 
