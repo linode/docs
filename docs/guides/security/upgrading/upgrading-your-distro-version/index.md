@@ -12,7 +12,7 @@ modified_by:
   name: Ryan Syracuse
 published: 2021-08-09
 title: 'How to Upgrade Your Distro to the Next Version'
-aliases: ['/security/upgrading/upgrade-your-distro-version']
+aliases: ['/security/upgrading/upgrade-your-distro-version/']
 ---
 
 While there are many options available to users to upgrade a Linode to the latest distro of their choice, Linode recommends the following upgrade path for best results. This method involves creating a new Linode on the latest distro available, installing all of the packages you'll be using on the new distro, and then importing old data to the new Linode. This helps to avoid common package inconsistencies that can occur with a standard inline upgrade method, and enables users to move directly ahead to the latest version of their distro even if they're several versions behind the latest version of their Distro.
@@ -108,7 +108,7 @@ Special care is needed when downloading data from a database. Before it can be d
 
 -   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) guide.
 
-## Swap IP Addressess
+## Swap IP Addresses
 
 To ensure that any configuration that's reliant on the original Linode, you may need to swap IP addresses between the original Linode and the upgraded Linode.
 
