@@ -46,7 +46,7 @@ Much of Anaconda’s accomplishment is to curate all these elements to ensure th
 
 ### Anaconda Installation Steps
 
-Anaconda can be installed either through a GUI or at the command line (CLI). The latter works equally well both on desktops and for remote servers in data centers. This how-to guide focuses exclusively on installation through the CLI.
+Anaconda can be installed either through a GUI or at the command-line interface (CLI). The latter works equally well both on desktops and for remote servers in data centers. This how-to guide focuses exclusively on installation through the CLI.
 
 Follow the below instructions to install Anaconda. Installation takes around twenty minutes and consumes around 3.5 gigabytes of disk space within the users `$HOME` directory.
 
@@ -80,7 +80,7 @@ You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to
 
         sudo bash Anaconda3-2020.11-Linux-x86_64.sh
 
-    When prompted, press "ENTER” to continue. Agree to the license terms by typing ****yes****.
+    When prompted, press "ENTER” to continue. Agree to the license terms by typing **yes**.
 
 1. Accept the default installation location, `/root/anaconda3`.
 
@@ -129,7 +129,7 @@ active environment : None
            offline mode : False
 {{< /output >}}
 
-    You can also verfiy the conda installation by running the `list` or `version` commands:
+    You can also verify the conda installation by running the `list` or `version` commands:
 
         conda list
         conda --version
