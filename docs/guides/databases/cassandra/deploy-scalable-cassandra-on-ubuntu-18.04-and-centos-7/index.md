@@ -226,7 +226,7 @@ After editing the file restart Cassandra.
 
 ## Add An Administration Superuser
 
-1.  Open the Cassandra command terminal by typing `cqlsh`. Log in with the credentials shown below for the default user "cassandra":
+1.  Open the Cassandra command terminal by typing `cqlsh`. Log in with the credentials shown below for the default user `cassandra`:
 
     ```
     cqlsh -u cassandra -p cassandra
