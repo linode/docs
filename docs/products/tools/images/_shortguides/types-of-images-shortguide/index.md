@@ -1,19 +1,8 @@
 ---
-slug: types-of-images-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that outlines the types of Images.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-18
-modified_by:
-  name: Linode
-published: 2021-04-28
-title: Types of Images
-keywords: ["images"]
+# Shortguide: Types of Images
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 All Images stored on your Account are visible from the main **Images** page within the Cloud Manager. Images are divided between two tables: *Custom Images* and *Recovery Images*.

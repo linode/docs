@@ -1918,6 +1918,7 @@ yubico
 yubikey
 zabbix
 zapier
+zcat
 zgrep
 zile
 zimbra
