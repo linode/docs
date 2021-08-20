@@ -32,9 +32,9 @@ This guide provides the commands you can use to list tables in MySQL and MariaDB
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## How to Connect to the Database Remotely
+## How to Connect to a Remote Database
 
- - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/mysql-remote-connection/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
+ - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-mysql-or-mariadb-database/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
 
 - Refer to our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for the steps to install MySQL Workbench and use it to connect to your remote database.
 
@@ -87,7 +87,7 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 1. Open the MySQL Workbench, and select the connection you set up for the database.
 
-    If you have not set up the database connection yet, follow the steps in the [How to Connect to the Database Remotely](/docs/guides/mysql-list-tables/#how-to-connect-to-the-database-remotely) guide first.
+    If you have not set up the database connection yet, follow the steps in the [How to Connect to a Remote Database](/docs/guides/list-tables-in-mysql-and-mariadb/#how-to-connect-to-a-remote-database) guide first.
 
 1. In the query field, enter the following MySQL command:
 
