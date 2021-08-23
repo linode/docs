@@ -50,6 +50,10 @@ Anaconda can be installed either through a GUI or at the command-line interface 
 
 Follow the below instructions to install Anaconda. Installation takes around twenty minutes and consumes around 3.5 gigabytes of disk space within the users `$HOME` directory.
 
+{{< note >}}
+You can run the following installation steps on CentOS distribution too.
+{{< /note >}}
+
 1. Navigate to your working directory. This can be your home directory.
 
         cd /home/example_user
