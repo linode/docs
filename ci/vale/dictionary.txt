@@ -188,6 +188,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+Chevereto
 chgrp
 chmod
 chown
@@ -1098,6 +1099,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nirvashare
 nixcraft
 nixpkgs
 nmap
@@ -1479,6 +1481,7 @@ setguid
 setsebool
 setuid
 setuptools
+Severalnines
 sfadmin
 sfproject
 sfroot
@@ -1530,6 +1533,7 @@ sparklines
 spectre
 speedtest
 spf1
+Splunk
 spm
 spork
 sql
