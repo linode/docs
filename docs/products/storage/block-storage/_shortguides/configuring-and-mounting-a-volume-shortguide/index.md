@@ -24,11 +24,11 @@ To make configuration easier, all the necessary commands can be viewed directly 
             mkfs.ext4 FILE_SYSTEM_PATH
 
         {{< caution >}}
-    If a new filesystem is created on a Block Storage Volume that is already using a filesystem, the above command will result in data loss. You can safely check for the filesystem of an unmounted volume with the following command:
+If a new filesystem is created on a Block Storage Volume that is already using a filesystem, the above command will result in data loss. You can safely check for the filesystem of an unmounted volume with the following command:
 
-        blkid FILE_SYSTEM_PATH
+    blkid FILE_SYSTEM_PATH
 
-    If you do not receive output, there is currently no filesystem on this volume.
+If you do not receive output, there is currently no filesystem on this volume.
     {{< /caution >}}
 
     1.  Create a mount point
@@ -44,12 +44,12 @@ To make configuration easier, all the necessary commands can be viewed directly 
             FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
         {{< note >}}
-    If you plan on detaching the volume regularly or moving it between other Linodes, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry.
+If you plan on detaching the volume regularly or moving it between other Linodes, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry.
 
-    * `noatime` - This will save space and time by preventing writes made to the filesystem for data being read on the volume.
-    *  `nofail`  - If the volume is not attached, this will allow your server to boot/reboot normally without hanging at dependency failures if the volume is not attached.
+* `noatime` - This will save space and time by preventing writes made to the filesystem for data being read on the volume.
+*  `nofail`  - If the volume is not attached, this will allow your server to boot/reboot normally without hanging at dependency failures if the volume is not attached.
 
-    Example:
+Example:
 
-        FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults,noatime,nofail 0 2
-    {{</ note >}}
+    FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults,noatime,nofail 0 2
+{{</ note >}}
