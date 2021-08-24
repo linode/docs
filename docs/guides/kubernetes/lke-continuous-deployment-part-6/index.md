@@ -3,9 +3,9 @@ slug: lke-continuous-deployment-part-6
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The next steps are to access our sample application over a domain (DNS), setup an Ingress Controller as a load balancer / reverse proxy, and collect metrics on our application. This guide provides an overview of these components, though each of them will be discussed in greater detail within Module 2.'
-og_description: 'The next steps are to access our sample application over a domain (DNS), setup an Ingress Controller as a load balancer / reverse proxy, and collect metrics on our application. This guide provides an overview of these components, though each of them will be discussed in greater detail within Module 2.'
-title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 6: DNS, Ingress, and Metrics"
+description: 'In part 6 of our tutorial on continuous deployment pipelines in LKE, we''ll explore domain access, Ingress controllers, and analytics.'
+og_description: 'In part 6 of our tutorial on continuous deployment pipelines in LKE, we''ll explore domain access, Ingress controllers, and analytics.'
+title: "DNS, Ingress, and Metrics Overview Guide"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 6: DNS, Ingress, and Metrics"
 enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']

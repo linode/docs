@@ -3,9 +3,9 @@ slug: lke-continuous-deployment-part-2
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The sample application that we will be running on Kubernetes is called DockerCoins (a demo app just for this presentation). This part of the guide will take a look at DockerCoins and examine how it works and how the app can be run locally.'
-og_description: 'The sample application that we will be running on Kubernetes is called DockerCoins (a demo app just for this presentation). This part of the guide will take a look at DockerCoins and examine how it works and how the app can be run locally.'
-title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 2: Sample Application"
+description: 'In the second part of our CDI/CDL tutorial, we''ll examine DockerCoins, a demo app developed exclusively for the series.'
+og_description: 'In the second part of our CDI/CDL tutorial, we''ll examine DockerCoins, a demo app developed exclusively for the series.'
+title: "How DockerCoins Works & Run Locally"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 2: Sample Application"
 enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']

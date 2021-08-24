@@ -1,5 +1,7 @@
 ---
-title: CLI
+H1_title: CLI
+title: CLI Tool Overview & Features
+enable_h1: true
 description: "The Linode CLI allows you to accelerate common tasks with customizable output and easy scripting."
 tab_group_main:
     is_root: true

@@ -11,8 +11,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-16
 modified_by:
   name: Linode
-title: "How to Configure Nextcloud to use Linode Object Storage as an External Storage Mount"
-h1_title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
+title: "Configuring Nextcloud to use Linode Object Storage"
+h1_title: "How to Configure Nextcloud to use Linode as an External Storage Mount"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
