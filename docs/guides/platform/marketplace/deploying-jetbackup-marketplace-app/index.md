@@ -59,7 +59,7 @@ To access JetBackup 5 in cPanel/WHM after installation, navigate to WHM Home > P
 
 #### Standalone App
 
-To access your JetBackup instance, Open a browser and navigate to your Linode rDNS domain `http://li1234-555.members.linode.com:3035/`. Replace `http://li1234-555.members.linode.com` with your [Linode's RDNS domain](docs/guides/remote-access/#resetting-reverse-dns). This will bring you to a login page, where you can use the root credentials to the server to enter the JetBackup dashboard.
+To access your JetBackup instance, Open a browser and navigate to your Linode rDNS domain `http://li1234-555.members.linode.com:3035/`. Replace `http://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns). This will bring you to a login page, where you can use the root credentials to the server to enter the JetBackup dashboard.
 
 Now that you’ve accessed your dashboard, checkout [the official JetBackup documentation](https://docs.jetbackup.com/v5.1/adminpanel/gettingStarted.html#gettingstarted) to learn how to further configure your instance.
 
