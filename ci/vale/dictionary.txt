@@ -1442,6 +1442,7 @@ sbin
 sbopkg
 sbt
 scgi
+schroot
 schaeffer
 scm
 scp
@@ -1721,6 +1722,7 @@ unicast
 unicode
 uninvoiced
 uniq
+unix
 unmanaged
 unmerged
 unmount
@@ -1922,6 +1924,7 @@ yubico
 yubikey
 zabbix
 zapier
+zcat
 zgrep
 zile
 zimbra

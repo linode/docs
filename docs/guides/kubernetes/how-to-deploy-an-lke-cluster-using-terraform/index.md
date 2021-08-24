@@ -3,16 +3,17 @@ slug: how-to-deploy-an-lke-cluster-using-terraform
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide you will deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform. LKE is Linode''s managed Kubernetes service and Terraform is the popular infrastructure as code (IaC) tool. After completing this guide, you will have Terraform configuration files that can be reused to reliably deploy an LKE cluster.'
-og_description: 'In this guide you will deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform. LKE is Linode''s managed Kubernetes service and Terraform is the popular infrastructure as code (IaC) tool. After completing this guide, you will have Terraform configuration files that can be reused to reliably deploy an LKE cluster.'
+description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
+og_description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
 keywords: ['kubernetes','terraform','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-05
 modified_by:
   name: Linode
-title: "How to Deploy a Linode Kubernetes Engine Cluster Using Terraform"
+title: "How to Deploy an LKE Cluster Using Terraform"
 h1_title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
+enable_h1: true
 image: deploy-lke-cluster-with-terraform.png
 contributor:
   name: Linode
@@ -22,11 +23,12 @@ external_resources:
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
 aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/']
 ---
+
 ## What is the Linode Kubernetes Engine (LKE)?
 
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Your LKE Cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
-### In this Guide
+## In this Guide
 
 This guide will walk you through the steps needed to deploy a Kubernetes cluster using LKE and the popular *infrastructure as code (IaC)* tool, [Terraform](https://www.terraform.io/). Throughout the guide you will:
 

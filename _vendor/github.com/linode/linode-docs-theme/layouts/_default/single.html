@@ -1,9 +1,13 @@
 {{ define "main" }}
 <div class="content">
   {{ partial "sections/content/title-byline.html" . }}
-  <div class="mt-6 mb-6">
-    {{ partial "sections/content/navbar.html" (dict "page" .) }}
-  </div>
+
+  <!-- If there's any other related guides (such as other distributions), show the "alternative guide" notice -->
+  {{ if .Params.relations.platform }}
+    <div class="mt-6 mb-6">
+      {{ partial "sections/content/alternative-guides.html" . }}
+    </div>
+  {{ end }}
 
   {{/* Show a note in Spanish if that is the current language. Note that once we get more similar behavour, this should be moved to somewhere common. */}}
   <div x-data="{show: false }" x-init="() => { Weglot.on('languageChanged', function() { show =  Weglot.getCurrentLang() === 'es'} )}" x-cloak>
@@ -37,7 +41,7 @@
     </p>
   </div>
 
-  <div class="block md:hidden mt-8">
+  <div class="block mt-8">
     {{ partial "sections/content/tags.html" . }}
   </div>
 
@@ -55,12 +59,12 @@
   {{ end }}
 
   <div class="hide-if-no-js">
-    <hr class="my-14">
-    
+    <hr class="my-8">
+
     {{/* Add feedback links via Delighted. */}}
     {{ partial "components/delighted/form.html" . }}
-    <hr class="mt-14">
-    
+    <hr class="mt-8">
+
     {{ if not ("api,blog" | strings.Contains .Type) }}
       {{ partial "components/disqus.html" . }}
     {{ end }}

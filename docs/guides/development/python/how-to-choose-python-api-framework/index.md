@@ -3,8 +3,7 @@ slug: how-to-choose-python-api-framework
 author:
   name: Chelsea Troy
   email: heychelseattoy@gmail.com
-description: 'To choose a Python framework to build an API it is important to understand each framework''s strengths and differences. You may need a minimal framework, like FastAPI, or you may need a full stack framework, like Django. This guide examines Django, Flask, FastAPI, and Bottle to help you choose a framework to write your web API.'
-og_description: 'To choose a Python framework to build an API it is important to understand each framework''s strengths and differences. You may need a minimal framework, like FastAPI, or you may need a full stack framework, like Django. This guide examines Django, Flask, FastAPI, and Bottle to help you choose a framework to write your web API.'
+description: "When choosing a Python framework to build an API , it's important to understand each framework's strengths. We'll help you decide."
 keywords: ['python api framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
@@ -12,6 +11,7 @@ modified_by:
   name: Linode
 title: "How to Choose a Python API Framework"
 h1_title: "An Overview of Python API Frameworks"
+enable_h1: true
 tags: ["python", "django"]
 contributor:
   name: Chelsea Troy
