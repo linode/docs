@@ -14,18 +14,20 @@
    "tailwindcss": "github.com/bep/linodedocs"
   }
  },
- "dependencies": {},
+ "dependencies": {
+  "postcss": "^8.3.6"
+ },
  "devDependencies": {
-  "@babel/cli": "^7.10.5",
+  "@babel/cli": "^7.14.8",
   "@babel/core": "^7.11.1",
   "@babel/preset-env": "^7.11.0",
-  "@fullhuman/postcss-purgecss": "^2.3.0",
+  "@fullhuman/postcss-purgecss": "^4.0.3",
   "@tailwindcss/custom-forms": "^0.2.1",
   "@tailwindcss/typography": "^0.1.4",
-  "autoprefixer": "~9.7.6",
+  "autoprefixer": "^9.7.6",
   "core-js": "^3.6.5",
-  "postcss-cli": "^7.1.1",
-  "tailwindcss": "~1.7.3"
+  "postcss-cli": "^7.1.2",
+  "tailwindcss": "^2.2.7"
  },
  "name": "linode-docs",
  "version": "0.1.0"

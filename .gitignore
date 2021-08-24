@@ -44,3 +44,5 @@ resources/_gen/assets
 hugo_stats.json
 
 redirects.conf
+package.json
+package-lock.json
