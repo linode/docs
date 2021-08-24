@@ -23,7 +23,7 @@ If the Linode's data center has been upgraded to NVMe Block Storage and your Lin
     - **Label:** A string up to 32 characters long and consisting only of ASCII characters `a-z; 0-9.-_`.
     - **Size:** The desired size for the new Volume. See the [Limitations and Considerations](#limitations-and-considerations) section for the minimum and maximum size.
     - **Config:** If the Linode has multiple Configuration Profiles, select which one the Block Storage Volume should be assigned to.
-    - **Tags:** Optionally add or assign tags to help lalbel and organize your services.
+    - **Tags:** Optionally add or assign tags to help label and organize your services.
 
 1.  When finished, click **Create Volume**.
 
