@@ -33,7 +33,7 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 ## What is eBPF?
 
-Berkeley Packet Filter (BPF) is an execution engine subsystem in the kernel that processes a virtual instruction set. BPF has been extended recently as eBPF for providing a safe way to extend kernel functionality. BPF is now used for software defined networking, observability, security enforcement, and more. The main front-ends for BPF performance tools are BPF Compiler Collection (BCC) and bpftrace.
+Berkeley Packet Filter (BPF) is an execution engine subsystem in the kernel that processes a virtual instruction set. BPF has been extended recently as eBPF for providing a safe way to extend kernel functionality. BPF is now used for software defined networking, observability, security enforcement, and more. The main front-ends for BPF performance tools are BPF Compiler Collection (BCC) and `bpftrace`.
 
 eBPF tracing is used for:
 
