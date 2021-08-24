@@ -10,13 +10,21 @@ cascade:
     product_description: "Linode’s Block Storage service lets you increase your Linode’s storage capacity by attaching additional high-speed volumes. Volumes are managed independently of Linodes, so your data persists even if you delete your Linode."
 ---
 
+{{< content "nvme-block-storage-notice-shortguide" >}}
+
 ## Availability
 
-Dallas, TX, USA; Frankfurt, Germany; Fremont, CA, USA; London, United Kingdom; Mumbai, India; Newark, NJ, USA; Singapore, Singapore; Sydney, Australia; Tokyo, Japan; Toronto, Canada;
+Block Storage is available across [all regions](https://www.linode.com/global-infrastructure/).
+
+**NVMe Block Storage** has been deployed in the Atlanta (USA) data center. In all other data centers, Block Storage currently utilize a combination of NVMe storage and HDDs, which is not as performant as the newer NVMe-only Block Storage. Upgrades are planned for the remaining data centers.
 
 {{< note >}}
 To attach a Block Storage Volume to a Linode, the Volume and the Linode must be located in the same data center.
 {{< /note >}}
+
+## Plans and Pricing
+
+Block Storage Volumes cost $0.10/GiB per month and can range from 10 GiB to 10,000 GiB in size.
 
 ## Features
 
@@ -29,16 +37,20 @@ A Block Storage Volume augments the raw storage capacity of a cloud instance, wh
 
 ### Resilient and Fault Tolerant
 
-Block storage volumes are configured with 3x data replication. This replication, ensures that your data is highly-available.
+Block Storage Volumes are configured with 3x data replication. This built-in redundancy ensures that your data is highly-available and protected from loss.
 
-### High-Speed Storage
+### High-Speed Performance
 
-Linode Block Storage is powered by a combination of large capacity HDDs and ultra-fast NVMe drives, offering a balance between price, performance, and capacity.
+Block Storage is powered entirely by NVMe SSDs storage devices. NVMe storage offers dramatically increased performance over standard SSDs, HDDs, or hybrid storage solutions.
 
-## Scalable Storage
+{{< note >}}
+**NVMe Block Storage** has been deployed to the Atlanta (USA) data center. All other data centers currently utilize a combination of NVMe SSDs and HDDs. This hybrid storage solution is less performant.
+{{</ note >}}
+
+### Scalable
 
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size.
 
-## Plans and Pricing
+## Limitations and Considerations
 
-Block Storage Volumes cost $0.10/GiB per month and can range from 10 GiB to 10,000 GiB in size. When you create your Block Storage Volume you can designate its storage capacity and resize it up, if needed.
+{{< content "block-storage-limitations-shortguide" >}}
