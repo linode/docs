@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-24
 modified_by:
   name: Linode
-title: "Using Nodejs Typescript and ExpressJS to Build a Web Server"
-h1_title: "How to Use NodeJS, TypeScript, and ExpressJS to Build a Web Server"
+title: "Using Nodejs Typescript and Express to Build a Web Server"
+h1_title: "How to Use Node.js, TypeScript, and Express to Build a Web Server"
 enable_h1: true
 contributor:
   name: John Mueller
@@ -26,7 +26,7 @@ Organizations have used JavaScript to create web projects since 1995. During tha
 
 These benefits are important because they help solve the [top JavaScript errors](https://rollbar.com/blog/top-10-javascript-errors-from-1000-projects-and-how-to-avoid-them/) listed on many websites. Reducing or eliminating these top errors saves a huge amount of time and effort—keeping projects on track. With these benefits in mind, the following sections tell how you can create a simple web server using a combination of TypeScript, Node.js, and Express with a minimum of effort.
 
-## Set up your TypeScript and NodeJS Project
+## Set up your TypeScript and Node.js Project
 
 To make it easier to work with this example, you want to create an environment to host it. Begin by creating a new directory for your web server and initializing TypeScript using these steps:
 
@@ -181,7 +181,7 @@ There are many reasons to use JavaScript to create your next web server. Some of
 - Great community support so that help is always available.
 - A vast array of libraries to use for web development.
 - Ease of adding special effects to web pages.
-- Client side development that reduces page load time so the user doesn’t get tired of waiting.
+- Client side development that reduces page load time so the user doesn't get tired of waiting.
 - Good compatibility with other programming languages.
 - The use of the Document Object Model (DOM) to make complex development tasks simpler.
 - Native browser support so that code compilation isn’t needed.
