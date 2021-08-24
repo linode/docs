@@ -7,25 +7,14 @@ show_on_rss_feed: false
 
 Follow these steps to safely detach a Block Storage Volume from a Linode. A Volume should be detached before it is reattached to a different Linode:
 
-1.  Go to the detail page page of the Linode which the Volume is attached to. Shut down the Linode.
 
-1.  When the Linode is powered off, click on the **Volumes** tab, click the **more options ellipsis** next to the Volume you would like to detach, then click **Detach**.
+1.  Login to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Linodes** link in the sidebar.
 
-    ![Detach a Volume from a Linode from the Volume menu](bs-cloud-detach-volume.png "Detach a Volume from a Linode from the Volume menu")
+1.  Select the Linode that the Volume is currently attached to.
 
-1.  A confirmation screen appears and explains that the Volume will be detached from the Linode. Click **Detach** to confirm:
+1.  It's recommended to power off the Linode. To do this, click **Power Off** on the top right of the Linode details page.
 
-    ![Linode Cloud Manager detach Volume confirmation](bs-cloud-detach-volume-confirm.png "Linode Cloud Manager detach Volume confirmation")
-
-    The Linode's dashboard does not show the Volume present anymore:
-
-    ![The Linode's Volumes tab shows no attached Volumes](bs-cloud-add-volume-to-linode-small.png "The Linode's Volumes tab shows no attached Volumes")
-
-    The Volume still exists on your account and you can see it if you view the **Volumes** page:
-
-    ![Volume not attached, but still exists](bs-cloud-volume-detached-but-still-available.png "Volume not attached, but still exists")
-
-{{< caution >}}
+    {{< caution >}}
 If a volume is currently mounted, detaching it while the Linode is powered on could cause data loss or an unexpected reboot. You can unmount the volume for safe live-detaching using the `umount` command:
 
     umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
@@ -33,5 +22,12 @@ If a volume is currently mounted, detaching it while the Linode is powered on co
 To avoid additional issues with your Linode, remove the detached volume's line from your `/etc/fstab/` configuration:
 
 `FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2`
-
 {{< /caution >}}
+
+1.  Navigate to the **Storage** tab.
+
+1.  Locate the Volume you wish to detach within the *Volumes* list, click the **more options ellipsis** dropdown menu, and select **Detach**.
+
+1.  A confirmation screen appears and explains that the Volume will be detached from the Linode. Click **Detach** to confirm.
+
+After detaching it from a Linode, the Volume will still exist on your account. It can be viewed within the **Volumes** listing page in the Cloud Manager.

@@ -5,18 +5,18 @@ headless: true
 show_on_rss_feed: false
 ---
 
-Follow these steps to delete a Block Storage Volume from the Cloud Manager:
+Follow these steps to delete a Block Storage Volume from the Cloud Manager.
 
 {{< caution >}}
-The removal process is irreversible, and the data will be permanently deleted.
+Once a Block Storage Volume has been deleted, the data contained on that Volume will be permanently erased. This action is irreversible.
 {{< /caution >}}
 
-1.  Shut down the attached Linode.
+1.  Login to the [Cloud Manager](https://cloud.linode.com/linodes).
 
-1.  [Detach the Volume](/docs/products/storage/block-storage/guides/detach-volume/).
+1.  If the Volume is attached to a Linode, power off that Linode and detach the Volume. To do so, follow the instructions within the [Detach the Volume](/docs/products/storage/block-storage/guides/detach-volume/) guide.
 
-1.  On the **Volumes** page, click the **more options ellipsis** next to the Volume you would like to delete.
+1.  Click on the **Volumes** link in the sidebar.
 
-1.  Click **Delete**.
+1.  Locate the desired Volume within the list, click the **more options ellipsis** drop down menu, and select **Delete**.
 
-    ![Delete a Volume](bs-cloud-delete-volume-small.png "Delete a Volume")
+1.  In the configuration dialog, click **Delete** once again.

@@ -7,23 +7,23 @@ tab_group_main:
 
 ## Blog Posts
 
-- [Block Storage Now Available in Tokyo 2](/docs/blog/block-storage-now-available-in-tokyo-2/)
+- [Block Storage Now Available in Tokyo 2](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-tokyo-2/)
 
-- [Block Storage Now Available in Singapore and London](/docs/blog/block-storage-now-available-in-singapore-and-london/)
+- [Block Storage Now Available in Singapore and London](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-singapore-and-london/)
 
-- [Block Storage Now Available in Frankfurt](/docs/blog/block-storage-now-available-in-frankfurt/)
+- [Block Storage Now Available in Frankfurt](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-frankfurt/)
 
-- [Block Storage Now Available in Newark and Dallas](/docs/blog/block-storage-now-available-in-newark-and-dallas/)
+- [Block Storage Now Available in Newark and Dallas](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-newark-and-dallas/)
 
-- [Announcing Linode Block Storage Volumes](/docs/blog/announcing-linode-block-storage-volumes/)
+- [Announcing Linode Block Storage Volumes](https://www.linode.com/blog/cloud-storage/announcing-linode-block-storage-volumes/)
 
-- [Nextcloud and Percona added to Linode Marketplace](/docs/blog/nextcloud-and-percona-added-to-linode-marketplace/)
+- [Nextcloud and Percona added to Linode Marketplace](https://www.linode.com/blog/devops/nextcloud-and-percona-added-to-linode-marketplace/)
 
-- [4 Alternative Ways to Collaborate in the Cloud](/docs/blog/4-alternative-ways-to-collaborate-in-the-cloud/)
+- [4 Alternative Ways to Collaborate in the Cloud](https://www.linode.com/blog/cloud-computing/4-alternative-ways-to-collaborate-in-the-cloud/)
 
-- [2019: A Big Year of Innovation for Linode and a Big Thank You to Our Customers](/docs/blog/linode/2019-a-year-in-review/)
+- [2019: A Big Year of Innovation for Linode and a Big Thank You to Our Customers](https://www.linode.com/blog/linode/2019-a-year-in-review/)
 
-- [Now Available: Linode Terraform Provider](/docs/blog/now-available-linode-terraform-provider/)
+- [Now Available: Linode Terraform Provider](https://www.linode.com/blog/devops/now-available-linode-terraform-provider/)
 
 ## Community Posts
 
