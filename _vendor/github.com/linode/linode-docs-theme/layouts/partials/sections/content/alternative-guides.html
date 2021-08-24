@@ -1,0 +1,64 @@
+{{ $platform := .Params.relations.platform }}
+{{ if $platform }}
+  {{ $key := (printf "platform/%s" $platform.key) }}
+  {{ $joined := partialCached "funcs/join-lvl2.html" $key $key}}
+    {{ $basePath := "" }}
+    {{ $nestedPath := "" }}
+
+    {{ range $i, $e := $platform.keywords }}
+      {{ range $k, $v := . }}
+        {{ if eq $i 0 }}
+          {{ $basePath = $v }}
+        {{ else }}
+          {{ $nestedPath = path.Join $nestedPath $v }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ range $i, $e := $platform.keywords }}
+      {{ $isFirst := eq $i 0 }}
+      {{ range $key, $name := . }}
+        {{ $values := index $joined $key }}
+        {{ $label := $key | title }}
+
+        <!--Hugo's custom sort func is currently a little limited. To pull the deprecated elements to the end, we store it in its own slice.-->
+        {{ $filteredValues := slice }}
+        {{ $deprecatedValues := slice }}
+
+        {{ range $values }}
+          {{ $shouldInclude := (ne .page $) }}
+          {{ if $shouldInclude }}
+            {{ if $isFirst }}
+              {{ $shouldInclude = strings.HasSuffix .path $nestedPath}}
+            {{ else }}
+              {{ $shouldInclude = eq .base $basePath}}
+            {{ end }}
+          {{ end }}
+
+          {{ if $shouldInclude }}
+
+            {{ if .page.Params.deprecated }}
+              {{ $deprecatedValues = $deprecatedValues | append . }}
+            {{ else }}
+              {{ $filteredValues = $filteredValues | append . }}
+            {{ end }}
+
+          {{ end }}
+        {{ end }}
+        {{ $deprecatedValues = sort $deprecatedValues "base" "desc" }}
+        {{ $filteredValues = sort $filteredValues "base" "desc" }}
+
+        <div class="flex justify-between bg-gray-300 items-center rounded-md pl-4 mt-2">
+          <div class="py-3 font-regular tracking-normal w-1/2 md:w-3/4">
+            <div class="hidden md:block"><strong>This guide was written for {{ $name }}.</strong> Other {{ $label | lower }}s are available:</div>
+            <div class="md:hidden"><strong>Select {{ $label | lower }}:</strong></div>
+          </div>
+
+          <div class="w-1/2 md:w-1/4">
+            {{ $d := (dict "page" $ "values"  $filteredValues "deprecatedguides" $deprecatedValues "text" (printf  "%s" $name)  "contentPartial" "sections/content/other-versions__dropdown.html") }}
+            {{ partial "components/alternative-guides__dropdown.html" $d }}
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+{{ end }}
