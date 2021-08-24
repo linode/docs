@@ -4,14 +4,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
+og_description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
 keywords: ["eBPF", "bcc", "tracing", "tools", "monitoring", "networking", "observability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-04-30
 modified: 2015-04-30
 modified_by:
   name: Linode
-title: Installing BCC
-h1_title: Installing BCC
+title: Installing BCC to Use eBPF Tracing Tools
+h1_title: Installing BCC to Use eBPF Tracing Tools
 contributor:
     name: Linode
 tags: ["networking","security"]
@@ -20,7 +21,9 @@ external_resources:
 ---
 ## Before You Begin
 
-1. A system running on a Linux distribution and a Linux kernel version 4.1 or later. Review the Getting Started guide if you do not yet have a compatible system..Review the [Getting Started](/docs/getting-started/) guide.
+You need the following:
+
+1. A system running on a Linux distribution and a Linux kernel version 4.1 or later. Review the Getting Started guide if you do not yet have a compatible system. For more information, review the [Getting Started](/docs/getting-started/) guide.
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
 
@@ -37,8 +40,8 @@ eBPF tracing is used for:
 - any ext4 operations that take longer than 50 ms
 - run queue latency, as a histogram
 - packets and applications that are experiencing TCP retransmits.
-- the stack trace when threads block (off-CPU), and how long do they block for
-- for security modules and software defined networks.
+- the stack trace when threads block (off-CPU), and how long they block
+- security modules and software defined networks.
 
 ### Install BCC on different distributions of Linode using packages
 
@@ -47,14 +50,14 @@ The stable and the nightly packages are built for Ubuntu Bionic (18.04).
 
 **Stable and Signed Packages**
 
-Install BCC using stable packages by typing the following commands:
+Install BCC using stable packages by adding the appropriate key and repository to Advanced Package Tools (APT) by typing the following commands:
 
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4052245BD4284CDD
     echo "deb https://repo.iovisor.org/apt/$(lsb_release -cs) $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/iovisor.list
     sudo apt-get update
     sudo apt-get install bcc-tools libbcc-examples linux-headers-$(uname -r)
 
-(replace xenial with artful or bionic as appropriate). Tools will be installed under /usr/share/bcc/tools.
+Tools are installed under `/usr/share/bcc/tools`.
 
 **Nightly Packages**
 
@@ -72,7 +75,7 @@ BCC is also available from the standard Ubuntu multiverse repository, under the 
 
     sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
 
-The tools are installed in  */sbin* with a `-bpfcc` extension. Try running `sudo opensnoop-bpfcc`.
+The tools are installed in  */sbin* with a `-bpfcc` extension. To verify the installation run `sudo opensnoop-bpfcc`.
 
 
 #### Debian 10
@@ -93,7 +96,7 @@ As of Fedora 30, bcc binaries are available in the standard repository.
     sudo dnf install bcc
 
 {{< note >}}
-If you keep getting Failed to load program: Operation not permitted when trying to run the hello_world.py example as root then you might need to lift the so-called kernel lockdown, see [FAQ](https://github.com/iovisor/bcc/blob/c00d10d4552f647491395e326d2e4400f3a0b6c5/FAQ.txt#L24).
+If you keep getting Failed to load program: Operation not permitted when trying to run the hello_world.py example as root then you might need to lift the so-called kernel lockdown, see [FAQ](https://github.com/iovisor/bcc/blob/master/FAQ.txt).
 {{< /note >}}
 
 #### Gentoo - Portage
@@ -123,7 +126,7 @@ The tools are installed in `/usr/share/bcc/tools`.
 
 #### Python Compatibility
 
-The binary packages include bindings for Python 3 only. The Python-based tools assume that a python binary is available at /usr/bin/python, but that may not be true on recent versions of Alpine. If you encounter errors like <tool-name>: not found, you can try creating a symlink to the Python 3.x binary like so:
+The binary packages include bindings for Python 3 only. The Python-based tools assume that a python binary is available at `/usr/bin/python,` but that may not be true on recent versions of Alpine. If you encounter errors like &lt;tool-name&gt;: not found, you can try creating a symlink to the Python 3.x binary:
 
     sudo ln -s $(which python3) /usr/bin/python
 
@@ -173,7 +176,8 @@ For Centos 7.6 only
   sudo make install
   cd ..
 {{< /output >}}
-1. (optional)Install from *centos-release-scl*:
+1. Optional:
+   Install from *centos-release-scl*:
 
     {{< output >}}
   yum install -y centos-release-scl
