@@ -33,7 +33,7 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 ## What is eBPF?
 
-Berkeley Packet Filter (BPF) is an execution engine sunsystem in the kernel that processes a virtual instruction set. BPF has been extended recently as eBPF for providing a safe way to extend kernel functionality. BPF is now used for software defined networking, observability, security enforcement, and more. The main front-ends for BPF performance tools are BPF Compiler Collection (BCC) and bpftrace.
+Berkeley Packet Filter (BPF) is an execution engine subsystem in the kernel that processes a virtual instruction set. BPF has been extended recently as eBPF for providing a safe way to extend kernel functionality. BPF is now used for software defined networking, observability, security enforcement, and more. The main front-ends for BPF performance tools are BPF Compiler Collection (BCC) and bpftrace.
 
 eBPF tracing is used for:
 
@@ -82,7 +82,7 @@ The tools are installed in  */sbin* with a `-bpfcc` extension. To verify the ins
 
 ##### Debian Packages
 
-BCC and its tools are available in the standard Debian main repository, from the source package bpfcc under the names bpfcc-tools, python-bpfcc, libbpfcc and libbpfcc-dev, under the package name bpfcc-tools.
+BCC and its tools are available in the standard Debian main repository. From the source package `bpfcc` under the package names `bpfcc-tools`, `python-bpfcc`, `libbpfcc`, and `libbpfcc-dev`.
 
     sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
 
@@ -91,12 +91,12 @@ The tools are installed in  */sbin* with a `-bpfcc` extension. Try running `sudo
 
 #### Fedora 32 or later
 
-As of Fedora 30, bcc binaries are available in the standard repository.
+As of Fedora 30, `bcc` binaries are available in the standard repository.
 
     sudo dnf install bcc
 
 {{< note >}}
-If you keep getting Failed to load program: Operation not permitted when trying to run the hello_world.py example as root then you might need to lift the so-called kernel lockdown, see [FAQ](https://github.com/iovisor/bcc/blob/master/FAQ.txt).
+If you keep getting `Failed to load program: Operation not permitted` when you run the `hello_world.py` example as root, then you need to lift the kernel lockdown. For more information, see [FAQ](https://github.com/iovisor/bcc/blob/master/FAQ.txt).
 {{< /note >}}
 
 #### Gentoo - Portage
@@ -118,7 +118,7 @@ The appropriate dependencies are pulled automatically.
 
 
 #### Alpine 3.11 or later
-As of Alpine 3.11, bcc binaries are available in the community repository:
+As of Alpine 3.11, `bcc` binaries are available in the community repository:
 
     sudo apk add bcc-tools bcc-doc
 
@@ -140,9 +140,9 @@ Alpine Linux is often used as a base system for containers. BCC can be used in s
       -v /usr/src:/usr/src:ro \
       alpine:3.12
 
-#### Centos - Source
+#### CentOS - Source
 
-For Centos 7.6 only
+For CentOS 7.6 only
 
 1. Install build dependencies:
 {{< output >}}
@@ -177,7 +177,7 @@ For Centos 7.6 only
   cd ..
 {{< /output >}}
 1. Optional:
-   Install from *centos-release-scl*:
+   Install from `centos-release-scl`:
 
     {{< output >}}
   yum install -y centos-release-scl
@@ -195,7 +195,7 @@ For Centos 7.6 only
   make
   sudo make install
   {{< /output >}}
-### Useful commands using the bcc (eBPF) tools:
+### Useful commands using the BCC (eBPF) tools:
 
  - Trace new processes: `execsnoop`
  - Trace file opens with process and filename: `opensnoop`
