@@ -15,7 +15,7 @@ Once a Block Storage Volume has been attached to a Linode, you'll need to perfor
 
 1.  Login to your Linode using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
 
-1.  Enter each command that's shown in the **Volume Configuration** panel. modifying them if needed. These configuration steps are also listed below:
+1.  Enter each command that's shown in the **Volume Configuration** panel, modifying them if needed. These configuration steps are also listed below:
 
     1.  Create an ext4 file system by running the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
 
