@@ -19,24 +19,24 @@ external_resources:
 
 ## What Makes NoSQL Different From SQL?
 
-The term "NoSQL" (shortened from *"non-SQL"*) is used to describe a database management system with a non-relational data model, in opposition to the *Structured Query Language* (SQL). They are more flexible than relational databases. Some are used in ways a traditional database can't be, making them valuable tools for things like speeding up website caching, like Redis or helping with rapid iterative development practices, like MongoDB.
+The term "NoSQL" or *"non-SQL"* describes a database management system with a non-relational data model, in contrast to the *Structured Query Language* (SQL). They are more flexible than relational databases. These database management systems are used to speed up website caching, like Redis, or to help with rapid iterative development practices, like MongoDB.
 
-SQL was designed for managing in a relational database management system, and those systems are usually referred to as "SQL databases" (Microsoft SQL Server or MySQL, for example). It has been used to manage structured data, which incorporates relations among entities and variables. NoSQL systems use other means to manage data. They are more flexible than relational databases, though NoSQL gives up consistency to achieve these gains, with some used in ways a traditional database can't be, making them valuable tools for speeding up website caching like Redis, and helping with rapid iterative development practices (like MongoDB). NoSQL can also mean "Not only SQL," where a NoSQL system may use a SQL-like language or work alongside a SQL database.
+SQL was designed to manage a relational database management system, and are referred to as "SQL databases". For example, Microsoft SQL Server or MySQL. It has been used to manage structured data, which incorporates relations among entities and variables. NoSQL systems use other means to manage data. They are more flexible than relational databases. NoSQL can also mean "Not only SQL," where a NoSQL system may use a SQL-like language or work alongside a SQL database.
 
-Keeping up with every NoSQL database is an overwhelming task, so this article covers the basics and some of the most popular NoSQL databases and database types available. If you want to see an exhaustive and (at the time of this writing) up-to-date listing, see the [List of NoSQL Database Management Systems on Hosting Data's website](https://hostingdata.co.uk/nosql-database/).
+Keeping up with every NoSQL database is an overwhelming task. This article covers the basics and some of the most popular NoSQL databases and database types available. If you want an exhaustive listing, see the [List of NoSQL Database Management Systems on Hosting Data's website](https://hostingdata.co.uk/nosql-database/).
 
 ## What are the Types of NoSQL Databases?
 
-There are at least ten types of NoSQL systems. However, when someone mentions "NoSQL," they are usually referring to four types (which also overlap with most other types): Columnar, Document-oriented, Graph, and Key-value. Some, such as the Amazon and IBM offerings, are cloud-based and require working within their systems. Others, such as Redis and MongoDB, can be installed within a Linode or other system for you to work with as you see fit.
+There are at least ten types of NoSQL systems. However, when someone mentions "NoSQL," they are usually referring to four types: Columnar, Document-oriented, Graph, and Key-value. Some databases, such as the Amazon and IBM offerings, are cloud-based and require working within their systems. Others, such as Redis, and MongoDB can be installed within a Linode or other system to work with as you see fit.
 
 ### Columnar Databases
-Columnar databases, sometimes called wide-column stores, store their data in columns, each in its own file or region in the system storage. On the surface, this seems similar to traditional relational SQL databases, but as they have no predefined keys, column names, and are free of schemas, all of which allow for high flexibility. Notable examples include [Apache Cassandra](https://cassandra.apache.org/), and [Apache Hadoop](http://hadoop.apache.org/).
+Columnar databases, sometimes called wide-column stores, store their data in columns, each in its own file or region in the system storage. On the surface, this seems similar to traditional relational SQL databases. Because they have no predefined keys, column names, and are free of schemas, all of which allow for high flexibility. Notable examples include [Apache Cassandra](https://cassandra.apache.org/), and [Apache Hadoop](http://hadoop.apache.org/).
 
 ### Document-oriented Databases
-Document-oriented databases,or document stores, store data as documents, utilizing them as a key-value store. Each document has a key, which is a unique identifier, and the document itself is the value. These systems are designed for users who need to build fast and handle high demand, particularly on agile projects utilizing continuous integration and deployment. Notable examples include [Couchbase](https://www.couchbase.com/), [IBM Cloudant](https://www.ibm.com/cloud/cloudant), and [MongoDB](https://www.mongodb.com/).
+Document-oriented databases, or document stores, store data as documents, utilizing them as a key-value store. Each document has a key, which is a unique identifier, and the document itself is the value. These systems are designed for users who need to build fast and handle high demand, particularly on agile projects utilizing continuous integration and deployment. Notable examples include [Couchbase](https://www.couchbase.com/), [IBM Cloudant](https://www.ibm.com/cloud/cloudant), and [MongoDB](https://www.mongodb.com/).
 
 ### Graph Databases
-Graph databases utilize graph structures for their semantic queries of highly related datasets, storing data via nodes, edges, and properties, which allows the data to be linked together directly. These are used in the medium-term as you address your data store needs, or in cases where multiple data stores and applications need to be able to talk with one another. Notable examples include [Neo4j](https://neo4j.com/), and [RedisGraph](https://redislabs.com/).
+Graph databases utilize graph structures for their semantic queries of highly related datasets, store data through nodes, edges, and properties. This allows the data to be linked together directly. These are used in the medium-term as you address the data store needs, or in cases where multiple data stores, and applications need to talk with eachother. Notable examples include [Neo4j](https://neo4j.com/), and [RedisGraph](https://redislabs.com/).
 
 ### Key-value Databases
 Key-value databases, or key-value stores or tuple stores, use associative arrays, also called "dictionary" or "hash table", with key-value pairs: A key is a unique identifier that retrieves its associated value. Simple integers or strings can be values, but JSON structures and other more complex objects can be values, too. These systems are used with large datasets that need scalable, distributed computing with high availability. Notable examples include , [Redis](https://redis.io/), and [RocksDB](https://rocksdb.org/).
@@ -47,7 +47,11 @@ Blockchain is not a NoSQL database, because while it's not a SQL database, Block
 
 ## Other Types of NoSQL Databases
 
-There are innumerable examples of other NoSQL databases built for particular purposes. From using ACID (Atomicity, Consistency, Isolation, Durability) transactions in a distributed database (such as [FoundationDB](https://www.foundationdb.org/)), to storing and analyzing high-frequency time-series data (such as [Axibase](https://axibase.com/)), to solving basic data science problems for users with no statistical background (such as [BayesDB](http://probcomp.csail.mit.edu/software/bayesdb/)), it's likely a database system exists that meets your needs (however niche they may be).
+There are innumerable examples of other NoSQL databases built for particular purposes:
+- for Atomicity, Consistency, Isolation, Durability (ACID) transactions in a distributed database such as [FoundationDB](https://www.foundationdb.org/)
+- to store and analyze high-frequency time-series data such as [Axibase](https://axibase.com/)
+- to solve basic data science problems for users with no statistical background such as [BayesDB](http://probcomp.csail.mit.edu/software/bayesdb/))
+It is likely that a database system exists that meets your needs.
 
 ## Further Reading
 
