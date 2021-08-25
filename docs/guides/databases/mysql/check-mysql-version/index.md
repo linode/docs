@@ -5,7 +5,8 @@ author:
   email: docs@linode.com
 description: 'A guide on how to check which version of MySQL you are running on your Debian, Ubuntu, Fedora, Windows, or Macintosh system.'
 og_description: 'How to check the version of MySQL running.'
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['mysql']
+tags: ["mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-11
 modified_by:
