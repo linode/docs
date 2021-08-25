@@ -11,7 +11,7 @@ Follow these steps to create a new Block Storage Volume, attach it to your Linod
 If the Linode's data center has been upgraded to NVMe Block Storage and your Linode was deployed prior to August 24th, 2021, you may need to reboot your Linode for it to properly work with a NVMe Block Storage Volume.
 {{</ note >}}
 
-1.  Login to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Linodes** link in the sidebar.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Linodes** link in the sidebar.
 
 1.  Select the Linode to which you want to attach a Block Storage Volume. The detail page for the Linode will appear.
 
@@ -29,4 +29,4 @@ If the Linode's data center has been upgraded to NVMe Block Storage and your Lin
 
 1.  A **Volume Configuration** panel appears, which contains the instructions needed to start using the new Volume with your Linode. These instructions include commands for creating the file system, mounting the Volume, and configuring your Linode to automatically mount the Volume at boot. To learn more about these commands, see [Configuring and Mounting a Volume](/docs/products/storage/block-storage/guides/configure-volume/).
 
-1.  Once created, the Volume is listed under *Volumes* table.
+1.  Once created, the Volume is listed under the *Volumes* table.

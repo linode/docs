@@ -5,19 +5,17 @@ headless: true
 show_on_rss_feed: false
 ---
 
-Once a Block Storage Volume has been attached to a Linode, you'll need to perform a few steps before you can start using it. These steps include creating a file system (if you're configuring a new Volume) and mounting the Volume to your Linode's system.
+Once a Block Storage Volume has been attached to a Linode, you'll need to perform a few steps before you can start using it. These steps include creating a file system (if you're configuring a new Volume) and mounting the Volume to your Linode's system. To make configuration easier, all the necessary commands can be viewed directly in the Cloud Manager.
 
-To make configuration easier, all the necessary commands can be viewed directly in the Cloud Manager.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
 
-1.  Login to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
-
-1.  Locate the desired Volume within the list, click the **more options ellipsis** drop down menu, and select **Show Config**.
+1.  Locate the desired Volume within the list and click the **Show Config** link, which may appear within the **more options ellipsis** dropdown menu.
 
 1.  The **Volume Configuration** panel will appear containing the commands needed to fully configure the Volume with your Linode.
 
 1.  Login to your Linode using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
 
-1.  Enter each command that's shown in the **Volume Configuration** panel as needed. The configuration steps are also listed here:
+1.  Enter each command that's shown in the **Volume Configuration** panel. modifying them if needed. These configuration steps are also listed below:
 
     1.  Create an ext4 file system by running the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
 
