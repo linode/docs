@@ -456,4 +456,4 @@ spec:
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, follow the steps in the [cancel the Object Storage service on your account](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) section of our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
