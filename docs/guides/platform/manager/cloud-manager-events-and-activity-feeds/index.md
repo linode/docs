@@ -30,11 +30,11 @@ Events for all services and account functions can be viewed in the Cloud Manager
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/) and press the notification bell on the top right of the page.
 
-    ![Notification Bell](cloud-manager-notification-bell.png "Events")
+    ![The notification bell icon on the Cloud Manager](cloud-manager-notification-bell.png)
 
     This displays an Events panel containing notifications and the most recent events for all services on the account. Each item in the **Events** list includes a brief description of the action, the label of the service, the user who initiated the action, the duration, and the timestamp.
 
-    ![Events Panel](cloud-manager-events-panel.png "Events")
+    ![The Events panel](cloud-manager-events-panel.png)
 
 1. To view more events, click the **View all events** link at the top of the **Events** list. This displays the [Events](https://cloud.linode.com/events) page, which contains the same information as the previous list. All events that occurred during the last 90 days are listed on this page.
 
@@ -48,7 +48,7 @@ A Linode's Activity Feed is similar to the Account's [Events](#events) page. How
 
 1. Within the chosen Linode's page, navigate to the **Activity Feed** tab.
 
-    ![Activity Feed](linode-activity-feed.png "Tab")
+    ![A Linode's Activity Feed](linode-activity-feed.png)
 
     This displays a list of events for the selected Linode that have occurred during the last 90 days. Each item includes a brief description of the action, the label of the service, the user who initiated the action, the duration, and the timestamp.
 
@@ -62,10 +62,10 @@ Only unrestricted users can receive threshold notification emails.
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/) and click the user dropdown menu on the top right of the page.
 
-    ![Cloud Manager User Dropdown](cloud-manager-user-dropdown.png "Dropdown")
+    ![The username dropdown link on the Cloud Manager](cloud-manager-user-dropdown.png)
 
 1.  Within the dropdown, click the **My Settings** link under **My Profile**.
 
 1. In the [My Settings](https://cloud.linode.com/profile/settings) page that opens, toggle the *Email alerts for account activity are enabled* option (under **Notifications**) to the desired setting.
 
-    ![Cloud Manager Notification Settings](cloud-manager-notification-settings.png "Cloud Manager Notification Settings")
+    ![The email alerts toggle button](cloud-manager-notification-settings.png)
