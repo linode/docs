@@ -16,7 +16,7 @@ cascade:
 
 Block Storage is available across [all regions](https://www.linode.com/global-infrastructure/).
 
-**NVMe Block Storage** has been deployed in the Atlanta (USA) data center. In all other data centers, Block Storage currently utilize a combination of NVMe storage and HDDs, which is not as performant as the newer NVMe-only Block Storage. Upgrades are planned for the remaining data centers.
+**NVMe Block Storage** has been deployed in the Atlanta (USA) data center. In all other data centers, Block Storage currently utilizes a combination of NVMe storage and HDDs, which is not as performant as the newer NVMe-only solution. Upgrades are planned for the remaining data centers.
 
 {{< note >}}
 To attach a Block Storage Volume to a Linode, the Volume and the Linode must be located in the same data center.

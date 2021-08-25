@@ -5,10 +5,9 @@ headless: true
 show_on_rss_feed: false
 ---
 
-Follow these steps to safely detach a Block Storage Volume from a Linode. A Volume should be detached before it is reattached to a different Linode:
+Follow these steps to safely detach a Block Storage Volume from a Linode. A Volume should be detached before it is reattached to a different Linode.
 
-
-1.  Login to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Linodes** link in the sidebar.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Linodes** link in the sidebar.
 
 1.  Select the Linode that the Volume is currently attached to.
 
