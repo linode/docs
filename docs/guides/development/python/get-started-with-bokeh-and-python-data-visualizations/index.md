@@ -1,8 +1,7 @@
 ---
 slug: get-started-with-bokeh-and-python-data-visualizations
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: John Mueller
 description: 'Two to three sentences describing your guide.'
 og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['list','of','keywords','and key phrases']
@@ -11,21 +10,17 @@ published: 2021-08-24
 modified_by:
   name: Linode
 title: "Get Started With Bokeh and Python Data Visualizations"
-h1_title: "h1 title displayed in the guide."
+h1_title: "Use Bokeh and Python to Create Data Visualizations"
 enable_h1: true
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+  name: John Mueller
 ---
 
- [Bokeh](https://bokeh.org/) is an interactive visualization library that focuses on browser output.
+[Bokeh](https://bokeh.org/) is an interactive visualization library that focuses on browser output. This guide introduces you to Bokeh with example code that creates line and bar graphs.
 
 ## Bokeh vs. Matplotlib
 
-While Bokeh and Matpotlib both help you plot data, these two libraries are different tools for different purposes. If your focus is on interactivity on websites, then Bokeh is the better choice. Matplotlib, on the other hand, provides Python visualizations that integrate well with Jupyter Notebook. Bokeh can produce Juypyter Notebook output or send the output to a file instead. This functionality is explored later in the guide.
+While Bokeh and Matplotlib both help you plot data, these two libraries are different tools for different purposes. If your focus is on interactivity on websites, then Bokeh is the better choice. Matplotlib, on the other hand, provides Python visualizations that integrate well with Jupyter Notebook. Bokeh can produce Jupyter Notebook output or send the output to a file instead. This functionality is explored later in the guide.
 
 From a support perspective, Matplotlib enjoys far greater community support than Bokeh does. This may be because Bokeh has not been around as long as Matplotlib. However, given its age, Bokeh has a strong community.
 
