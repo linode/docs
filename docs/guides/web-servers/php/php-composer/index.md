@@ -15,7 +15,6 @@ h1_title: "How to Use PHP Composer"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
 external_resources:
 - '[Composer](https://getcomposer.org/)'
 - '[PHP](https://www.php.net/)'
