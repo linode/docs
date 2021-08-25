@@ -48,8 +48,8 @@ This guide's examples use Bokeh version 2.3.2, however, the examples should work
 
 To view which version of Bokeh you have installed on your system, open your Python interpreter and enter the following code:
 
-        import bokeh as b
-        print(b.__version__)
+    import bokeh as b
+    print(b.__version__)
 
 The example code in this section is meant to showcase a few of the capabilities you can expect from Bokeh.
 
