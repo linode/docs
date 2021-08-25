@@ -178,6 +178,6 @@ To mount a host system directory:
 
 Learning how to use MongoDB on Docker is vital for CI/CD workflows and rapid iterative development. Continuing with some of Docker's [MongoDB information at the Docker Hub](https://hub.docker.com/_/mongo) is an excellent companion to this article.
 
-To learn more about the `mongod` options to be passed in `docker run`, see the MongoDB Manual section on [mongod options](https://docs.mongodb.com/manual/reference/program/mongod/).
+To learn more about `mongod` options to be passed in `docker run`, review the `mongod` [MongoDB Package Components](https://docs.mongodb.com/manual/reference/program/mongod/) section of the MongoDB Manual.
 
-Also, if you plan on upgrading to MongoDB Enterprise, see [Install MongoDB Enterprise with Docker](https://docs.mongodb.com/manual/tutorial/install-mongodb-enterprise-with-docker/) in the MongoDB Manual for instructions.
+Also, if you plan on upgrading to MongoDB Enterprise, see [Install MongoDB Enterprise with Docker](https://docs.mongodb.com/manual/tutorial/install-mongodb-enterprise-with-docker/) in the MongoDB Manual for instructions `mongod`.
