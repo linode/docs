@@ -59,7 +59,7 @@ Each Object Storage key pair on the Linode account has complete access to all of
 
 ### Generating an Access Key
 
-{{< content "object-storage-key-pair-shortguide" >}}
+{{< content "object-storage-access-keys-shortguide" >}}
 
 ### Limiting Access through Access Keys
 
