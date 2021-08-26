@@ -2,8 +2,8 @@
 slug: differences-between-grep-sed-awk
 author:
   name: Andy Lester
-description: 'This guide explains the differences between grep, sed, and awk for different use cases'
-og_description: 'This guide explains the differences between grep, sed, and awk for different use cases'
+description: 'This guide explains the differences between grep, sed, and AWK for different use cases'
+og_description: 'This guide explains the differences between grep, sed, and AWK for different use cases'
 keywords: ['difference between sed awk grep']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,27 +17,23 @@ contributor:
   name: Andy Lester
 ---
 
-Grep, sed, and awk are all standard Linux tools that work with text files in the filesystem. They share a number of similarities. Each of these tools operates on text files line-by-line and uses the power of regular expressions.
+Grep, sed, and AWK are all standard Linux tools that are able to work with text files. Each of these tools can read text files line-by-line and use regular expressions to perform operations on specific parts of the file. However, each tool differs in complexity and their basic use cases. Grep is used for finding data and is the simplest of the three. Sed finds and modifies data and is a bit more complex than grep. AWK can process text and extract data from text files. Of the three tools, AWK is the most complex and powerful. This guide provides an overview of each tool with examples.
 
-However, they differ in complexity and their basic use cases. Grep is used for finding data and is the simplest of the three. sed finds and modifies data and is a bit more complex than grep. Awk finds and calculates based on data and is the most complex of the three.
+## The Grep Command-Line Utility
 
-This guide looks at each tool and in turn provides common cases for when you would use each.
-
-## Grep Command
-
-Grep is short for *Global Regular Expression Pattern*. Grep is used to find lines of text in files or input streams, and report on what it finds.
+Grep is a Linux utility used to to find lines of text in files or input streams using regular expressions. It's name is short for *Global Regular Expression Pattern*
 
 ### Grep: Search a Log File for Errors
 
-Grep’s most common use is to search for a text pattern in a file, such as specific text in a log file.
+Grep is a good tool to use when you need to search for a text pattern in a file. For example, you may need to search for specific text in a system log file.
 
-For searching a file using grep, you use the following syntax:
+Grep's syntax uses the following format:
 
     grep [OPTIONS] PATTERN [FILES...]
 
-For example, to find the exact Apache error log file location(s), you use the following grep command:
+For example, to find the exact location of your system's Apache error log file, use grep to search for `ErrorLog` in the Apache configuration file.
 
-    grep ErrorLog /etc/apache2/apache2.conf
+    grep "ErrorLog" /etc/apache2/apache2.conf
 
 {{< output >}}
 # ErrorLog: The location of the error log file.
@@ -45,35 +41,24 @@ For example, to find the exact Apache error log file location(s), you use the fo
 ErrorLog ${APACHE_LOG_DIR}/error.log
 {{< /output >}}
 
-In most Linux distributions, the search term is highlighted, so the "ErrorLog" that grep found shows up in red.
+Grep is able to find the configuration named `ErrorLog` in your Apache configuration file and returns the text as output. The output returned by most Linux distributions highlights the search term in red.
 
-You can specify multiple files for grep to search, and it shows the name of the file that each line is found in.
+To search multiple files using grep, separate each filename with a space character. When grep searches multiple files, its output displays the location of each file where the search term is found.
 
-    grep -E 'fatal|error|critical|failure|warning|' /var/log/apache2/error.log *.log
+    grep "rollover" /var/log/fail2ban.log /var/log/fail2ban.log.1
 
 {{< output >}}
- /var/log/apache2/error.log:[ N 2021-08-16 06:25:01.4254 27582/T1 age/Wat/WatchdogMain.cpp:1373 ]: Starting Passenger watchdog...
-/var/log/apache2/error.log:[ N 2021-08-16 06:25:01.4471 27595/T1 age/Cor/CoreMain.cpp:1340 ]: Starting Passenger core...
-/var/log/apache2/error.log:[ N 2021-08-16 06:25:01.4473 27595/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
-/var/log/apache2/error.log:[ N 2021-08-16 06:25:01.4594 27595/T1 age/Cor/CoreMain.cpp:1015 ]: Passenger core online, PID 27595
-/var/log/apache2/error.log:[Mon Aug 16 06:25:01.483697 2021] [mpm_prefork:notice] [pid 1298] AH00163: Apache/2.4.29 (Ubuntu) Phusion_Passenger/6.0.8 OpenSSL/1.1.1 configured -- resuming normal operations
-/var/log/apache2/error.log:[Mon Aug 16 06:25:01.483721 2021] [core:notice] [pid 1298] AH00094: Command line: '/usr/sbin/apache2'
-...
+/var/log/fail2ban.log:2021-08-22 00:00:17,281 fail2ban.server      [2467]: INFO    rollover performed on /var/log/fail2ban.log
+/var/log/fail2ban.log.1:2021-08-15 00:00:10,103 fail2ban.server    [2467]: INFO    rollover performed on /var/log/fail2ban.log
 {{< /output >}}
-
-When you specify the `-h` option, grep also shows the line number of each line within the file:
 
 ### Grep: Recursive Search Through Trees of Text
 
-Just as most Linux distributions have the matching search term highlighted to stand out, the filename and line numbers are usually highlighted in different colors.
-
-Grep can search through trees of files with the `-R` option. When you specify a starting directory and the `-R` option, grep searches through all the files in that directory. Following is the grep syntax to recursively search all directory trees of contents.
+Grep can search through the files in a directory tree with the `-R` option. When you specify a starting directory and the `-R` option, grep searches through all the files in that directory. The example below displays the syntax to recursively search for a particular term within a specific directory tree.
 
     grep -R "keyword" /path/to/directory/
 
-You can combine the `-R` with the `-i` option to make the grep search case insensitive.
-
-In the following example, the grep command searches for the keyword "virtualhost" and returns the files that contain the "virtualhost".
+To make a grep search case insensitive, add the `-i` option to the command. In the following example, the grep command searches for the keyword "virtualhost" and returns the files that contain the "virtualhost".
 
     grep -iR "virtualhost" /etc/apache2/
 
@@ -90,12 +75,11 @@ In the following example, the grep command searches for the keyword "virtualhost
 /etc/apache2/sites-available/canvas.conf: </VirtualHost>
 {{< /output >}}
 
-To suppress the default grep output and print only the names of files containing the matched pattern, use the `-l` option.
-The `-l` option is usually used in combination with the recursive option `-R`.
+To suppress the default grep output and print only the names of files containing the matched pattern, use the `-l` option. The `-l` option is usually used in combination with the recursive option `-R`.
 
-The command below searches through all files ending with `.conf` in the `/etc/apache2/` directory and prints only the names of the files containing the string ".com".
+The command below searches through all files ending with `.conf` in the `/etc/apache2/` directory. The output prints only the names of the files that contain the search term.
 
-    grep -Rl .com /etc/apache2/ *.conf
+    grep -Rl ".com" /etc/apache2/ *.conf
 
 {{< output >}}
 /etc/apache2/mods-enabled/mime.conf
@@ -109,29 +93,35 @@ The command below searches through all files ending with `.conf` in the `/etc/ap
 ...
 {{< /output >}}
 
-### Grep: View Context (Lines Surrounding Matches)
+### Grep: Viewing a Search Terms Context (Lines Surrounding Matches)
 
-Sometimes when searching for data in files, it's not just the line of data that matters but also the lines around it. In other words, you may need to know what is in the lines "before" and/or "after" your search results.
+Grep provides several command-line options to control the amount of text surrounding your search term results. The list below contains the available options:
 
-- To show you the lines "before" your matches, add `-B num` to your grep.
-- To show the lines that match "after" the keyword, use the `-A num` option.
-- To show the lines "before" and "after" the match, use `-C num` (default `num` is 2).
+- `-B num`: displays the lines **before** the search term match. Replace `num` with the number of lines to display.
+- `-A num`: displays the lines **after** the search term match. Replace `num` with the number of lines to display
+- `-C num`: displays the lines **before** and **after** the search term match. Replace `num` with the number of lines to display. The default value for `num` is 2.
 
-The `-B 4` in the following example tells grep to show the 4 lines "before" the match.
+For example, the grep command below  The `-B 4` in the following example tells grep to show the 4 lines "before" the match.
 
-    grep -B 4 'keyword' /path/to/file.log
+    grep -B 4 "fonts" /var/log/apache2/access.log
 
-Alternatively, to show the log lines that match 2 lines "after" the keyword, use the `-A 2` parameter.
+The output returns the 4 lines before the search term match:
 
-    grep -A 2 'keyword' /path/to/file.log
+{{< output >}}
+192.0.2.0 - - [17/May/2015:10:05:47 +0000] "GET /presentations/logstash-monitorama-2013/plugin/highlight/highlight.js HTTP/1.1" 200 26185 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.51.100.0 Safari/537.36"
+192.0.2.0 - - [17/May/2015:10:05:12 +0000] "GET /presentations/logstash-monitorama-2013/plugin/zoom-js/zoom.js HTTP/1.1" 200 7697 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.51.100.0 Safari/537.36"
+192.0.2.0 - - [17/May/2015:10:05:07 +0000] "GET /presentations/logstash-monitorama-2013/plugin/notes/notes.js HTTP/1.1" 200 2892 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.51.100.0 Safari/537.36"
+192.0.2.0 - - [17/May/2015:10:05:34 +0000] "GET /presentations/logstash-monitorama-2013/images/sad-medic.png HTTP/1.1" 200 430406 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.51.100.0 Safari/537.36"
+192.0.2.0 - - [17/May/2015:10:05:57 +0000] "GET /presentations/logstash-monitorama-2013/css/fonts/Roboto-Bold.ttf HTTP/1.1" 200 38720 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.51.100.0 Safari/537.36"
+{{< /output >}}
 
-You can also add the `--color` parameter to highlight your actual keywords.
-
-    grep -B 5 -A 2 --color 'keyword' /path/to/file.log
+{{< note >}}
+To highlight your search term, add the `--color` option to your grep command.
+{{< /note >}}
 
 ### Grep: List Files That Match a Pattern
 
-One of the best uses for grep doesn't involve showing matches. It's common to use grep to find a list of files that match a given pattern. Say you wanted to find all the HTML files in a directory that contain the string "copyright", but you don't need to see the actual text being matched. You can use the below grep command; the `-l` option lists just the name of the files, `-i` makes it case insensitive.
+To find a list of files that match a given pattern, use the `-l` option. The example below finds all HTML files in a directory that contain the string "copyright". The output only returns the list of filenames that contain the matched search term.
 
     grep -l -i copyright *.html
 
@@ -141,7 +131,7 @@ index.html
 products.html
 {{< /output >}}
 
-Grep can also find files that **do not** match a pattern. To find all the files that don't match the string "copyright", use the `-L` option.
+Grep can also find files that **do not** match a pattern. To find all the files that don't contain the string "copyright", use the `-L` option.
 
     grep -L -i copyright *.html
 
