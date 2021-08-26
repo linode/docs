@@ -17,7 +17,7 @@ h1_title: "Cloning a Linode"
 enable_h1: true
 ---
 
-The cloning feature allows you to copy a Linode's disks (and configuration profiles) to a new or existing Linode on your account.
+The cloning feature allows you to copy a Linode's disks (and configuration profiles) to a new or existing Linode on your account. This guide covers cloning to a new Linode.
 
 ## Cloning to a New Linode
 
@@ -53,7 +53,7 @@ The new Linode's IP address will be different than the original Linode. If desir
 
 ## Cloning to an Existing Linode
 
-This process allows you to select specific disks and configuration profiles and copy them to an existing Linode.
+This process allows you to select specific disks and configuration profiles and duplicate them to an existing Linode.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Linodes** link in the left sidebar menu.
 
@@ -65,7 +65,9 @@ This process allows you to select specific disks and configuration profiles and 
 
     **To clone a configuration profile:** Navigate to the **Configurations** tab, locate the profile you wish to clone within the **Config** table, click the **more options ellipsis** dropdown menu, and select **Clone**.
 
-1. A **Clone** form appears with either the **Disks** or **Configuration Profiles** tab displayed, depending on the previous step. From here, select the exact disks and configuration profiles you wish to clone.
+1. A **Clone** form appears with either the **Disks** or **Configuration Profiles** tab displayed, depending on the previous step. From here, select the exact disks and configuration profiles you wish to clone. When a configuration profile is selected, all disks assigned to it (through **Block Device Assignments**) are also selected.
+
+    ![The Clone form in the Cloud Manager](linode-disk-clone.png)
 
 1. In the **Destination** dropdown menu, select the destination Linode (the Linode you wish to clone to).
 
