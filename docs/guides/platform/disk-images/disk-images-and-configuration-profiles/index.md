@@ -16,6 +16,7 @@ title: Disks and Configuration Profiles
 deprecated: true
 _build:
   list: false
+noindex: true
 external_resources:
   - '[Types of File Systems](https://en.wikipedia.org/wiki/File_system#Types_of_file_systems)'
 ---
