@@ -1,61 +1,55 @@
 ---
 slug: install-php-8-for-apache-and-nginx-on-ubuntu
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Learn how to install PHP 8 and PHP-FPM for Apache and NGINX on Ubuntu'
-og_description: 'Learn how to install PHP 8 and PHP-FPM for Apache and NGINX on Ubuntu'
+  name: Jeff Novotny
+description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
+og_description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
 keywords: ['Nginx PHP-fpm','Apache php','Php 8','Php fpm','What is PHP?']
 tags: ['php', 'nginx', 'apache', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-25
+published: 2021-08-27
 modified_by:
   name: Linode
 title: "Install PHP 8 for Apache and NGINX on Ubuntu"
-h1_title: "How to Install PHP 8 for Apache and NGINX on Ubuntu."
+h1_title: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
 enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
 external_resources:
-- '[PHP](https://www.php.net/)'
-- '[PHP-GTK](http://gtk.php.net/)'
 - '[Introductory PHP tutorial](https://www.php.net/)'
 - '[Complete PHP Documentation](https://www.php.net/manual/en/)'
-- '[NGINX](https://www.nginx.com/)'
-- '[Apache HTTP Server Project](https://httpd.apache.org/)'
-- '[PHP GitHub site](https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20)'
 ---
 
-[*PHP*](https://www.php.net/) is one of the building blocks of the modern internet. It is a free, open-source scripting language that typically runs on a web server and can be integrated into regular HTML code. PHP is fast and flexible and can interact with databases, forms, and file systems. This guide provides a brief introduction to PHP and explains how to install, configure, upgrade, and test it.
+[*PHP*](https://www.php.net/) is one of the building blocks of the modern internet. It is a free, open-source scripting language that typically runs on a web server and can be integrated into regular HTML code. PHP is fast, flexible, and can interact with databases, forms, and file systems. This guide provides a brief introduction to PHP and explains how to install, configure, upgrade, and test it.
 
 ## What is PHP?
 
-PHP was originally developed in 1994 for web development. PHP originally stood for *Personal Home Page*, but it is now a reflexive acronym for *PHP: Hypertext Pre-processor*. It runs on all major operating systems, and all major web servers support it. The [*Zend Engine*](https://www.phpinternalsbook.com/php7/zend_engine.html) is typically used to compile PHP into source code. Taken together, the two components are known as "Zend PHP". PHP is available at no cost under the [PHP License](https://www.php.net/license/3_01.txt).
+PHP was originally developed in 1994 for web development. PHP stood for *Personal Home Page*, but it has been updated as a recursive acronym that stands for *PHP: Hypertext Pre-processor*. It runs on all major operating systems, and all major web servers support it. The [*Zend Engine*](https://www.phpinternalsbook.com/php7/zend_engine.html) is typically used to compile PHP into source code. Taken together, the two components are known as "Zend PHP". PHP is available at no cost under the [PHP License](https://www.php.net/license/3_01.txt).
 
-PHP can efficiently interact with databases and can auto-generate files, PDFs, images, and media clips. It can also interact with many protocols and other programming languages using its extensive library. PHP supports functions, arrays, and object-oriented programming, but does not allow for the use of pointers.
+PHP efficiently interacts with databases and can auto-generate files, PDFs, images, and media clips. It is compatible with many protocols and other programming languages through its extensive library. PHP supports functions, arrays, and object-oriented programming, but does not allow for the use of pointers.
 
-The newest version of PHP is version 8. It was released in November 2020, although version 7.4 is still supported and widely used. PHP 8 includes many new features, including just-in-time compilation, typing changes, and syntax additions. Many changes have also been made to the standard library.
+The newest version of PHP is version 8. It was released in November 2020, although version 7.4 is still supported and widely used. PHP 8 delivers many new features, including just-in-time compilation, typing changes, and syntax additions. Many changes have also been made to the standard library.
 
 PHP is mainly used for three different purposes:
 
 - **Server-side scripting:** This is the most common use for PHP. PHP can run as an interpreted programming language on a web server such as Apache or NGINX. The server processes the PHP code and uses it to generate a web page or HTML response for the client.
-- **Command line scripting:** PHP can run as a stand-alone application using the PHP parser. The resulting scripts can be launched as cron jobs or used for text/file processing.
+- **Command-line scripting:** PHP can run as a stand-alone application using the PHP parser. The resulting scripts can be launched as cron jobs or used for text/file processing.
 - **Application development:** PHP is less commonly used for stand-alone development. In conjunction with the [*PHP-GTK*](http://gtk.php.net/) extension, it can create desktop or cross-platform applications, complete with a GUI.
 
-PHP functions like most interpreted programming languages. It contains a rich selection of control structures and is easy to learn and use. The following code snippet demonstrates how PHP can be used to embed a "Hello World" fragment inside HTML.
+PHP functions like most interpreted programming languages. It contains a rich selection of control structures and is easy to learn and use. The following code snippet demonstrates how PHP can be used to embed a "Hello, World!" fragment inside HTML.
 
 {{< file "helloworld.html" html >}}
-    <body>
+<body>
 
-        <?php
-            echo "Hello World!";
-        ?>
+    <?php
+        echo "Hello, World!";
+    ?>
 
-    </body>
+</body>
 {{< /file >}}
 
-PHP code is introduced with `<?php`, and terminated with `?>`. PHP code can also be written as a separate file and called from an HTML page. This [basic tutorial](https://www.php.net/manual/en/tutorial.php) provides a simple introduction to PHP. More advanced users should consult the [Official PHP Documentation](https://www.php.net/manual/en/), which provides information on control structures, classes, and objects.
+PHP code is introduced with `<?php`, and terminated with `?>`. Your PHP code can also be written as a separate file and called from an HTML page. The official PHP website offers [a simple tutorial](https://www.php.net/manual/en/tutorial.php) that introduces the basics of coding with PHP. More advanced users should consult the [Official PHP Documentation](https://www.php.net/manual/en/), which provides information on control structures, classes, and objects.
 
 ### Advantages of PHP
 
@@ -69,9 +63,9 @@ PHP has become widely used in web development for the following reasons:
 - PHP is easy to learn and use. In terms of syntax, it is similar to other popular programming languages.
 - It is a mature technology with a large community of users. The PHP documentation is professional and comprehensive.
 - PHP integrates particularly well with WordPress, which is also written in PHP.
-- Because PHP scripts run on the server, they are invisible to the client, who only receives the end result of the transaction. This improves website and server security.
+- Because PHP scripts run on the server, they are invisible to the client. The client only receives the end result of the transaction. This behavior improves website and server security.
 
-PHP has only a few disadvantages. Some of these drawbacks include a lack of libraries for new specializations such as machine learning and some security vulnerabilities. PHP security has been improved in recent versions.
+PHP has only a few disadvantages. Some of these drawbacks include a lack of libraries for new specializations such as machine learning and some security vulnerabilities. However, PHP security has been improved in recent versions.
 
 ## Before You Begin
 
@@ -83,7 +77,7 @@ PHP has only a few disadvantages. Some of these drawbacks include a lack of libr
 
         sudo apt-get update && sudo apt-get upgrade
 
-1. PHP is usually used in conjunction with a web server. An Apache or NGINX web server should already be installed on the Linode. See the Linode guides for [Apache](/docs/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/) or [*NGINX*](https://www.linode.com/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) for more information. Instructions for both servers are included in this guide. If `ufw` is enabled, ensure it allows web server access.
+1. PHP is usually used in conjunction with a web server. An Apache or NGINX web server should already be installed on the Linode. See the Linode guides for [Apache](/docs/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/) or [NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) for more information. Instructions for both servers are included in this guide. If `ufw` is enabled, ensure it allows web server access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -91,11 +85,12 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## Add the PHP Repository
 
-The following instructions are geared toward Ubuntu version 20.04 but are generally applicable for most Linux distributions. Before proceeding, ensure all packages are updated with `sudo apt update`.
+The following instructions are geared toward Ubuntu version 20.04, but are generally applicable for most Linux distributions. Before proceeding, ensure all packages are updated with `sudo apt update`.
 
-Most Linux distributions include a PHP module in the default system package. In most cases, however, version 7.4 is still the default. To determine the current version of the default `php` package, run the command `sudo apt list php`. If this displays a reference to version 8.0, the correct packages are already present.
+Most Linux distributions include a PHP module in the default system package. In most cases, however, version 7.4 is still the default. To determine the current version of the default PHP package, run the command `sudo apt list php`. If this displays a reference to version 8.0, the correct packages are already present.
 
-        sudo apt list php
+    sudo apt list php
+
 {{< output >}}
 Listing... Done
 php/focal 2:7.4+75 all
@@ -103,15 +98,19 @@ php/focal 2:7.4+75 all
 
 If version 8 is not yet available, install the `ondrej` *Personal Package Archive* (PPA). This archive, which was developed by Ondřej Surý, provides access to all recent versions of PHP.
 
-1. Add the `ondrej/php` repository using `apt` and follow all the instructions.
+1. Add the `ondrej/php` repository using APT.
 
         sudo add-apt-repository ppa:ondrej/php
+
     {{< output >}}
 Co-installable PHP versions: PHP 5.6, PHP 7.x and most requested extensions are included. Only Supported Versions of PHP (<http://php.net/supported-versions.php>) for Supported Ubuntu Releases (<https://wiki.ubuntu.com/Releases>) are provided.
     {{< /output >}}
-1. Add the corresponding `ondrej` PPA for either Apache or NGINX.
+1. Add the `ondrej` PPA for Apache.
 
         sudo add-apt-repository ppa:ondrej/apache2
+
+    To add the `ondrej` PPA for NGINX, use the following command:
+
         sudo add-apt-repository ppa:ondrej/nginx
 
 1. Upgrade the new packages.
@@ -127,7 +126,7 @@ php/focal 2:8.0+84+ubuntu20.04.1+deb.sury.org+1 all
 
 ## How to Install PHP and PHP-FPM with Apache
 
-This section uses either `php` or `php8.0`, depending on the name of the default PHP package. If several different versions of PHP have been installed, a particular version can be identified by specifying the version number. Consult the [Add the PHP Repository](/docs/guides/install-php-8/#add-the-php-repository) section of this guide for more details.
+This section uses either `php` or `php8.0`, depending on the name of the default PHP package. If several different versions of PHP have been installed, a particular version can be identified by specifying the version number. Consult the [Add the PHP Repository](#add-the-php-repository) section of this guide for more details.
 
 ### Install and Configure PHP as an Apache Module
 
@@ -242,13 +241,13 @@ server {
 
 ## Test PHP
 
-To confirm PHP and Apache are working together, add a PHP file named `phpinfo.php` to the `/var/www/html` directory. The `phpinfo` function allows you to view technical details about the PHP installation.
+To confirm PHP and Apache are working together, add a PHP file named `phpinfo.php` to the `/var/www/html/` directory. The `phpinfo` function allows you to view technical details about the PHP installation.
 
 ### Add and Test the "PHP Info" Page
 
 To create and display the standard "PHP Info" page, follow the below steps:
 
-1. Create a new file in the `var/www/html` directory named `phpinfo.php`.
+1. Create a new file in the `var/www/html/` directory named `phpinfo.php`.
 
         sudo vi /var/www/html/phpinfo.php
 1. Add the following PHP code to this file.
@@ -258,7 +257,7 @@ To create and display the standard "PHP Info" page, follow the below steps:
 <?php phpinfo(); ?>
 {{< /file >}}
 
-1. Access the `phpinfo.php` file using a web browser. Use either the IP address of the server or the domain name of the site, for example `<server_ip_address>/phpinfo.php`. The "PHP Info" page should be displayed. This page contains information about the version and installation, as shown in the below screenshot. The list of `.ini` files and other details might vary depending on the nature of the installation.
+1. Access the `phpinfo.php` file using a web browser. Use either the IP address of the server or the domain name of the site, for example `<server_ip_address>/phpinfo.php`. The "PHP Info" page should be displayed. This page contains information about the version and installation, as shown in the below screenshot. The list of `.ini` files and other details might vary depending on your particular installation.
 
     ![PHP Information page](phpinfo.png)
 1. For security reasons, it is a good idea to remove this file when PHP behavior has been verified.
@@ -267,10 +266,10 @@ To create and display the standard "PHP Info" page, follow the below steps:
 
 ## How to Update an Existing PHP Installation
 
-Earlier versions of PHP can easily be upgraded to version 8. All PHP-related packages should be upgraded at the same time. Otherwise, conflicts or crashes might occur. To determine whether the PHP 8.0 packages are present on the system or not, consult the [Add the PHP Repository](/docs/guides/install-php-8/#add-the-php-repository) section of this guide. If the 8.0 package is not present, the `ondrej/php` repository must be installed first. The steps in this section explain how to upgrade PHP and PHP-FPM from version 7.4 to 8.0, using Apache as the webserver.
+Earlier versions of PHP can easily be upgraded to version 8. All PHP-related packages should be upgraded at the same time. Otherwise, conflicts or crashes might occur. To determine whether the PHP 8.0 packages are present on the system or not, consult the [Add the PHP Repository](#add-the-php-repository) section of this guide. If the 8.0 package is not present, the `ondrej/php` repository must be installed first. The steps in this section explain how to upgrade PHP and PHP-FPM from version 7.4 to 8.0, using Apache as the webserver.
 
 {{< note >}}
-Because PHP version 8 has many changes, it is possible old code might not work after an upgrade. It is a good idea to test any websites and applications in a development environment before putting them into production. A list of non-backward-compatible changes is available at the [PHP GitHub site](https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20).
+Because PHP version 8 has many changes, it is possible old code might not work after an upgrade. It is a good idea to test any websites and applications in a development environment before putting them into production. A list of non-backward-compatible changes is available on the [PHP GitHub repository](https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20).
 {{< /note >}}
 
 1. If necessary, install the `ondrej/php` module to access PHP version 8.0.
@@ -330,4 +329,4 @@ Zend Engine v4.0.8, Copyright (c) Zend Technologies
 
         sudo systemctl restart apache2
         sudo systemctl restart php8.0-fpm.service
-1. To confirm a successful upgrade, follow the instructions in the [Add and Test the 'PHP Info' Page](/docs/guides/install-php-8/#add-and-test-the-php-info-page) section. The page displays information about PHP version 8.0. There should not be any references to version 7.4.
+1. To confirm a successful upgrade, follow the instructions in the [Add and Test the 'PHP Info' Page](#add-and-test-the-php-info-page) section. The page displays information about PHP version 8.0. There should not be any references to version 7.4.
