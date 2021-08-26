@@ -4,15 +4,16 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides Linode users with steps to manually enable an Elastic IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
-og_description: 'This guide provides Linode users with steps to manually enable an Elastic IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
 keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
+modified: 2021-08-26
 noindex: true
 modified_by:
   name: Linode
 title: "How to Manually Enable Elastic IP on your Linode"
 h1_title: "Manually Enable Elastic IP on your Linode"
+enable_h1: true
 _build:
   list: false
 contributor:
