@@ -108,34 +108,6 @@ export function waitUntil(condition) {
 	});
 }
 
-// Function borrowed from https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
-export function isElementInViewport(el) {
-	var rect = el.getBoundingClientRect();
-
-	return (
-		rect.top >= 0 &&
-		rect.left >= 0 &&
-		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-	);
-}
-
-// getOffsetTop returns the distance from container down to el.
-export function getOffsetTop(container, el) {
-	var distance = 0;
-
-	if (el.offsetParent) {
-		while (true) {
-			distance += el.offsetTop;
-			el = el.offsetParent;
-			if (!el || el === container) {
-				break;
-			}
-		}
-	}
-	return distance < 0 ? 0 : distance;
-}
-
 export function isMobile() {
 	return document.documentElement.clientWidth < 768;
 }
