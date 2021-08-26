@@ -364,7 +364,7 @@ bgpd=yes
 
 ## Configure Elastic IP
 
-With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s).
+With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s). When following the instructions below, you need to have the following pieces of information:
 
 - **Elastic IP address** (`[ELASTIC_IP]`): The elastic IP address assigned to your Linode. If you do not yet have this, contact Linode support.
 - **Hostname** (`[HOSTNAME]`): The hostname defined on your Linode (ex: `atl-bgp-1.example.com`).
