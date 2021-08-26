@@ -35,6 +35,6 @@ Prevent potential abuse – and preserve resources on your backend Linodes – b
 ### Multi-Port
 NodeBalancers support balancing traffic to multiple network ports. Several services can be load balanced with a single NodeBalancer.
 
-## Limitations and Considerations
+## Limits and Considerations
 
-{{< content "nodebalancer-limitations-shortguide" >}}
+{{< content "nodebalancer-limits-shortguide" >}}
