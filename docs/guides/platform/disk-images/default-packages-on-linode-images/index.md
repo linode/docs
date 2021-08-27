@@ -11,17 +11,17 @@ modified_by:
   name: Linode
 published: 2021-08-19
 title: Default Distro Packages on Linode
-aliases: ['/guides/platform/disk-images/','/guides/platform/disk-images/default-packages-on-linode-images']
+aliases: ['/guides/platform/disk-images/','/guides/platform/disk-images/default-packages-on-linode-images/']
 tags: ["linode platform","cloud manager"]
 ---
 
-Linode installs base Linux images to all distributions. This includes all of the packages included by the base image by default,however this also includes images added by Linode to nearly all Distros which provide access to common tools and functionalities which are tailored to help with systems administration in the cloud and ensure that all Linode images work with all Linode products and services. Below is a list of the additional packages installed for all of our distributions.
+Linode installs base Linux images to all distributions. This includes all of the packages included by the base image by default. However, this also includes images added by Linode to nearly all Distros which provide access to common tools and functionalities. The packages are tailored to help with systems administration in the cloud, and ensure that all Linode images work with all Linode products and services. Below is a list of the additional packages installed for all of our distributions.
 
 {{< note >}}
-Gentoo and SlackWare do not use any packages not provided by the distribution.
+Gentoo and Slackware do not use any packages not provided by the distribution.
 {{< /note >}}
 
-## Almalinux
+## Alma Linux
 
     'authconfig'
     'authselect-compat'

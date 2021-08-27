@@ -1502,6 +1502,7 @@ signup
 sintra
 sitename
 slackpkg
+slackware
 slavedb
 sls
 smartcard
