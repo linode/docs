@@ -26,6 +26,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 ## What is Mastodon?
