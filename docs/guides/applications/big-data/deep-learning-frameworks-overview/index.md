@@ -46,7 +46,7 @@ With Google behind it, TensorFlow has the advantage of seamless performance, qui
 
 **Cons**
 
-Setting up data ingestion for TensorFlow used to be painful. It does not support Windows, only Linux, and it heavily favors Python over Java.
+Setting up data ingestion for TensorFlow used to be painful. It only supports Linux and it heavily favors Python over Java.
 
 ### PyTorch
 
@@ -102,7 +102,7 @@ MXNet was created by the Apache Software Foundation and has the backing and supp
 
 **Pros**
 
-[Apache MXNet](https://mxnet.apache.org/versions/1.8.0/) enables the user to code in a variety of programming languages, including Python, C++, R, Julia, and Scala. The back-end is written in C++ and CUDA, allowing it to scale on all GPUs. It is notable for supporting Long Short-Term Memory (LTSM) networks. This deep learning framework is known for its capabilities in imaging, handwriting/speech recognition, forecasting and NLP.
+[Apache MXNet](https://mxnet.apache.org/versions/1.8.0/) enables the user to code in a variety of programming languages, including Python, C++, R, Julia, and Scala. The back-end is written in C++ and CUDA, allowing it to scale on all GPUs. It is notable for supporting [Long Short-Term Memory (LTSM)](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21) networks. This deep learning framework is known for its capabilities in imaging, handwriting/speech recognition, forecasting and NLP.
 
 **Cons**
 
