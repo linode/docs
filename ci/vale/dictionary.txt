@@ -113,6 +113,7 @@ bashrc
 bc
 berkshelf
 bernd
+berners
 binlog
 biomes
 bitbucket
@@ -705,6 +706,7 @@ inittab
 injectable
 inode
 inotify
+inrupt
 insmod
 inspec
 interdomain
@@ -932,6 +934,7 @@ mapreduce
 mariadb
 marino
 maskname
+mastercard
 masterdb
 masterless
 mathematica
@@ -1577,6 +1580,7 @@ subnetwork
 subprocess
 subqueries
 subquery
+subreddit
 subreddits
 substring
 substrings
