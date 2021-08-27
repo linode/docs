@@ -7,7 +7,7 @@ description: 'A guide with examples explaining how to install MongoDB on a Docke
 keywords: ["docker", "mongodb", "mongodb container", "docker mongodb container", "install mongodb docker", "configure mongodb docker"]
 tags: ["container","docker","mongodb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-25
+published: 2021-08-27
 modified_by:
   name: Linode
 title: "How to Set Up MongoDB on Docker"
