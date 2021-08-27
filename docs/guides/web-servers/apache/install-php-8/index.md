@@ -189,7 +189,7 @@ For information on how to add a virtual host, see the Linode guide on [How to In
 
 ## How to Install PHP and PHP-FPM with NGINX
 
-The procedure to install PHP on NGINX is very similar to the procedure for [Apache](/docs/guides/install-php-8/#how-to-install-php-and-php-fpm-with-apache). If Apache is installed on the system, the PHP installation process might try to activate it. If this happens, stop Apache with the command `sudo systemctl disable --now apache2`.
+The procedure to install PHP on NGINX is very similar to the procedure for [Apache](/docs/guides/install-php-8-for-apache-and-nginx-on-ubuntu/#how-to-install-php-and-php-fpm-with-apache). If Apache is installed on the system, the PHP installation process might try to activate it. If this happens, stop Apache with the command `sudo systemctl disable --now apache2`.
 
 1. Install the `php-fpm` module.
 
