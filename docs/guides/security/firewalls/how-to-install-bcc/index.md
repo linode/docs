@@ -7,8 +7,8 @@ description: 'Learn to enhance the security of the server through the use of eBP
 og_description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
 keywords: ["eBPF", "bcc", "tracing", "tools", "monitoring", "networking", "observability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2015-04-30
-modified: 2015-04-30
+published: 2021-08-27
+modified: 2021-08-27
 modified_by:
   name: Linode
 title: Installing BCC to Use eBPF Tracing Tools
