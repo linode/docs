@@ -2,22 +2,24 @@
 slug: differences-between-grep-sed-awk
 author:
   name: Andy Lester
-description: 'This guide explains the differences between grep, sed, and AWK for different use cases'
-og_description: 'This guide explains the differences between grep, sed, and AWK for different use cases'
+description: 'This guide introduces you to Grep, sed, and AWK, which are Linux tools used for text processing. It explains the differences between grep, sed, and AWK and provides beginner examples for each.'
+og_description: 'This guide introduces you to Grep, sed, and AWK, which are Linux tools used for text processing. It explains the differences between grep, sed, and AWK and provides beginner examples for each.'
 keywords: ['difference between sed awk grep']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-02
+published: 2021-08-27
 modified_by:
   name: Linode
-title: "The Differences Between Grep, sed, and AWK"
-h1_title: "An Introduction to the Differences Between Grep, sed, and AWK"
+title: "Text Processing in Linux: Understanding Grep, sed, and AWK"
+h1_title: "Learn to Process Text in Linux using Grep, sed, and AWK"
 enable_h1: true
 contributor:
   name: Andy Lester
 ---
 
-Grep, sed, and AWK are all standard Linux tools that are able to work with text files. Each of these tools can read text files line-by-line and use regular expressions to perform operations on specific parts of the file. However, each tool differs in complexity and their basic use cases. Grep is used for finding data and is the simplest of the three. Sed finds and modifies data and is a bit more complex than grep. AWK can process text and extract data from text files. Of the three tools, AWK is the most complex and powerful. This guide provides an overview of each tool with examples.
+## The Differences Between Grep, sed, and AWK
+
+Grep, sed, and AWK are all standard Linux tools that are able to process text. Each of these tools can read text files line-by-line and use regular expressions to perform operations on specific parts of the file. However, each tool differs in complexity and what can be accomplished. Grep is used for finding text patterns in a file and is the simplest of the three. Sed can find and modify data, however, its syntax is a bit more complex than grep. AWK is a full-fledged programming language that can process text and perform comparison and arithmetic operations on the extracted text. This guide provides an overview of each tool with examples and includes links to guides in our library that go deeper into each tool.
 
 ## The Grep Command-Line Utility
 
@@ -43,7 +45,7 @@ ErrorLog ${APACHE_LOG_DIR}/error.log
 
 Grep is able to find the configuration named `ErrorLog` in your Apache configuration file and returns the text as output. The output returned by most Linux distributions highlights the search term in red.
 
-To search multiple files using grep, separate each filename with a space character. When grep searches multiple files, its output displays the location of each file where the search term is found.
+To search multiple files using grep, separate each filename with a whitespace character. When grep searches multiple files, its output displays the location of each file where the search term is found.
 
     grep "rollover" /var/log/fail2ban.log /var/log/fail2ban.log.1
 
@@ -52,48 +54,7 @@ To search multiple files using grep, separate each filename with a space charact
 /var/log/fail2ban.log.1:2021-08-15 00:00:10,103 fail2ban.server    [2467]: INFO    rollover performed on /var/log/fail2ban.log
 {{< /output >}}
 
-### Grep: Recursive Search Through Trees of Text
-
-Grep can search through the files in a directory tree with the `-R` option. When you specify a starting directory and the `-R` option, grep searches through all the files in that directory. The example below displays the syntax to recursively search for a particular term within a specific directory tree.
-
-    grep -R "keyword" /path/to/directory/
-
-To make a grep search case insensitive, add the `-i` option to the command. In the following example, the grep command searches for the keyword "virtualhost" and returns the files that contain the "virtualhost".
-
-    grep -iR "virtualhost" /etc/apache2/
-
-{{< output >}}
-/etc/apache2/conf-enabled/localized-error-pages.conf:# even on a per-VirtualHost basis...
-/etc/apache2/conf-enabled/other-vhosts-access-log.conf:# Define an access log for VirtualHosts...
-/etc/apache2/sites-available/000-default.conf: <VirtualHost *:80>
-/etc/apache2/sites-available/000-default.conf: </VirtualHost>
-/etc/apache2/sites-available/default-ssl.conf: <VirtualHost _default_:443>
-/etc/apache2/sites-available/default-ssl.conf: </VirtualHost>
-/etc/apache2/sites-available/canvas.conf: <VirtualHost *:80>
-/etc/apache2/sites-available/canvas.conf: </VirtualHost>
-/etc/apache2/sites-available/canvas.conf: <VirtualHost *:443>
-/etc/apache2/sites-available/canvas.conf: </VirtualHost>
-{{< /output >}}
-
-To suppress the default grep output and print only the names of files containing the matched pattern, use the `-l` option. The `-l` option is usually used in combination with the recursive option `-R`.
-
-The command below searches through all files ending with `.conf` in the `/etc/apache2/` directory. The output prints only the names of the files that contain the search term.
-
-    grep -Rl ".com" /etc/apache2/ *.conf
-
-{{< output >}}
-/etc/apache2/mods-enabled/mime.conf
-/etc/apache2/mods-enabled/status.conf
-/etc/apache2/mods-enabled/alias.conf
-/etc/apache2/mods-enabled/php7.4.conf
-/etc/apache2/mods-enabled/access_compat.load
-/etc/apache2/mods-enabled/autoindex.conf
-/etc/apache2/envvars
-...
-...
-{{< /output >}}
-
-### Grep: Viewing a Search Terms Context (Lines Surrounding Matches)
+### Grep: Viewing a Search Term's Context
 
 Grep provides several command-line options to control the amount of text surrounding your search term results. The list below contains the available options:
 
@@ -101,7 +62,7 @@ Grep provides several command-line options to control the amount of text surroun
 - `-A num`: displays the lines **after** the search term match. Replace `num` with the number of lines to display
 - `-C num`: displays the lines **before** and **after** the search term match. Replace `num` with the number of lines to display. The default value for `num` is 2.
 
-For example, the grep command below  The `-B 4` in the following example tells grep to show the 4 lines "before" the match.
+For example, the command will display the 4 lines "before" the pattern match.
 
     grep -B 4 "fonts" /var/log/apache2/access.log
 
@@ -119,9 +80,9 @@ The output returns the 4 lines before the search term match:
 To highlight your search term, add the `--color` option to your grep command.
 {{< /note >}}
 
-### Grep: List Files That Match a Pattern
+### Grep: List Files that Match a Pattern
 
-To find a list of files that match a given pattern, use the `-l` option. The example below finds all HTML files in a directory that contain the string "copyright". The output only returns the list of filenames that contain the matched search term.
+To find a list of files that match a given pattern, use the `-l` option. The example below finds all HTML files in a directory that contain the string "copyright". The output returns the list of filenames that contain the matched search term.
 
     grep -l -i copyright *.html
 
@@ -140,42 +101,29 @@ contact.html
 how-to-buy.html
 {{< /output >}}
 
-With the ability to create a list of files using `-l` you can use grep to perform complex searches. Say you want to find all the files that have both the pattern "dogs" and the pattern "cats" somewhere in the file, although not necessarily on the same line.
+You can use grep's `-l` option to perform more complex searches. For example, you can use it to find all files in a directory that contain the pattern "dogs" and "cats". To do so, get a list of the HTML files that contain the word "dogs":
 
-To get a list of HTML files with the word "dogs" you use:
+    grep -l "dogs" *.html
 
-    grep -l dogs *.html
-
-Then, you use the Linux shell to tell grep to search that list of files for the word "cats".
+Then, search for "cats" in the existing list of files containing the word "dogs":
 
     grep -l cats $(grep -l dogs *.html)
 
-This searches all the "dogs" files for "cats", giving you a list of files that contain both.
+The output displays a list of files that contain both.
+
+To learn more about grep and its command-line options, see our [How to Grep for Text in Files](/docs/tools-reference/tools/how-to-grep-for-text-in-files/) guide. The guide also shows you other useful operations, like [piping command outputs to grep](/docs/tools-reference/tools/how-to-grep-for-text-in-files/#piping-command-outputs-to-grep) and how to [recursively search through a directory tree](/docs/tools-reference/tools/how-to-grep-for-text-in-files/#the-grep-command).
 
 ## Sed Command
 
-sed is short for *Stream Editor* and has much of the same functionality as grep, but is much more flexible in how it can select lines of input. It lets you modify the data it finds.
+Sed is short for *Stream Editor* and has much of the same functionality as grep. However, sed is much more flexible in how it can select lines of input. It also lets you modify the data it finds. Sed opens a file, reads it line by line, and acts on each line according to its instructions. If you are new to sed, it's syntax can may seem difficult to understand. Once you're used to sed's syntax, you can accomplish powerful operations on your text files and data.
 
-It opens a file, reads it line by line, and acts on each line according to its instructions. Sed’s syntax can seem cryptic, but it's logical and well-defined. Once you're used to it you can save yourself hours.
+### Create a Search and Replace sed Script
 
-### sed Search and Replace
+The most common usage of sed is to search for strings or patterns throughout a file and replace them with different strings. For instance, to replace every instance of "Copyright 2020" with "Copyright 2021" in a group of HTML files, use the following command:
 
-The most common use of sed is a search and replace operation for strings or patterns throughout a file. For instance, to replace every instance of "Copyright 2020" in one of your HTML files with "Copyright 2021", you use:
+    sed -e' s/Copyright 2020/Copyright 2021/g' index.html > modified.html
 
-    sed -e's/Copyright 2020/Copyright 2021/g' index.html > modified.html
-
-The `-e` option gives sed the instructions it should run on each line in the file. In this case, the `s` is the command to substitute the first string, "Copyright 2020", with the second string "Copyright 2021". The modified output goes to the file `modified.html`.
-
-To modify files in place, use the `-i` option. You can tell sed to make a backup copy of the files it modifies by specifying an extension with the `-i` option, as in `-i.bak`.
-
-sed has the power of regular expressions, so to replace all occurrences of "Copyright 20XX", where the "XX" is any two digits, with "Copyright 2021",
-in all your .html files, you would use:
-
-    sed -e's/Copyright 20[0-9][0-9]/Copyright 2021/g' -i.bak *.html
-
-### Create a sed Script
-
-When your sed programs become too big to fit in the `-e` option, sed can accept sets of instructions from a program file. For example, you might have many replacements you want to make, so you could put them in a file named `replacements.sed` and add the following contents:
+When your sed programs become too big to easily fit on the command line, sed can accept sets of instructions from a program file. For example, you might have many replacements you want to make. Place them in a file named `replacements.sed`, as follows:
 
 {{< file "replacements.sed" >}}
 s/I should of/I should have/;
@@ -188,15 +136,13 @@ Apply the changes to all your text files with the following command:
 
     sed -f replacements.sed -i.bak *.txt
 
-### sed: Insert, Append, and Delete Lines
+### sed: Prepend and Append Lines
 
-sed can insert and append lines in files. In the context of sed, "insert" (`i`) means to add a line before a given line, and "append" (`a`) means to append to the line after a given line.
-
-For example, the below command inserts a line before the line number "4".
+The `i` option in sed inserts text *before* a given line. The `a` option places text *after* a given line. For example, the command below inserts a line before line number 4.
 
     sed '4 i #This is the extra line' sedtest.txt
 
-After running the above command, you should see a similar output:
+You should see a similar output after the command executes:
 
 {{< output >}}
 This is line #1
@@ -212,77 +158,30 @@ This is line #9
 This is line #10
 {{< /output >}}
 
-To insert a line before the last line, use the following sed command:
+To save the output to a new file named `newsedtest.txt`, use a redirection operator, as follows:
 
-    sed '$ i #Next line will be the last line' sedtest.txt
+    sed '4 i #This is the extra line' sedtest.txt > newsedtest.txt
 
-After running the above command, you should see a similar output:
-
-{{< output >}}
-This is line #1
-This is line #2
-This is line #3
-This is line #4
-This is line #5
-This is line #6
-This is line #7
-This is line #8
-This is line #9
-#Next line will be the last line
-This is line #10
-{{< /output >}}
-
-To insert the line before every line where pattern match is found, use the following command:
+To insert the line before every line where a pattern match is found, use the following command:
 
     sed '/8/ i #This line is inserted using sed' sedtest.txt
 
-After running the above command, you should see a similar output:
+To learn more about sed, see our [Manipulate Text from the Command Line with sed](/docs/guides/manipulate-text-from-the-command-line-with-sed/#finding-and-replacing-strings-within-files-using-sed) guide. The guide shows you [how to change file extensions with sed](/docs/guides/manipulate-text-from-the-command-line-with-sed/#finding-and-replacing-strings-within-files-using-sed), [delete lines from files using sed](/docs/guides/manipulate-text-from-the-command-line-with-sed/#deleting-lines-from-files-using-sed), and more.
 
-{{< output >}}
-This is line #1
-This is line #2
-This is line #3
-This is line #5
-This is line #6
-This is line #7
-#This line is inserted using sed
-This is line #8
-This is line #9
-This is line #10
-{{< /output >}}
-
-The following example file, `notices.sed`, adds notices to the beginning and end of a file. It adds a privacy warning at the top of each file and copyright notice at the end of the file. You can refer to the first line with the number `1`, and the last line with the symbol `$`.
-
-{{< file "notices.sed" >}}
-1 i\
-    *THIS FILE IS PRIVATE AND CONFIDENTIAL.*
-
-$ a\
-Copyright 2021 Yoyodyne Industries
-{{< /file >}}
-
-To delete lines from a text file, you can add the following to a sed script:
-
-{{< file "delete-copyright.sed" >}}
-/Copyright/d
-{{< /file >}}
-
-In the above example file, any line that matches the pattern `/Copyright/` is deleted.
 
 ## AWK Command
 
-The AWK command is the most powerful of the three. It lets you write full programs in the AWK language, a fully-featured programming language with functions, flow control, and so on.
+AWK is the most powerful of the three tools explored in this guide. It is a full-featured programming language with functions, variables, flow control, and support for different data types.
 
-AWK's main use cases are:
+AWK's primary use cases are the following:
 
 - Processing field-oriented data
 - Numeric comparisons and calculations
-- Accumulating things by name
 - Modifying data based on calculations
 
 ### AWK: Process Data in Multiple Fields
 
-Say you have a list of people and it includes their first and last name, the make of car they drive, the college they attended, and their year of birth. Create an example `names.txt` file with the following contents:
+The examples in this section rely on the data in the `names.txt` file below. The data contains information about cars owned by a group of different people.
 
 {{< file "names.txt" >}}
 Vince       Lombardi    Toyota      Fordham     1913
@@ -291,82 +190,47 @@ Harrison    Ford        Toyota      Ripon       1942
 Mike        Rowe        Ford        Towson      1962
 {{< /file >}}
 
-You can use AWK to find all the people in the text file's data that drive a Ford. AWK takes care of this by automatically breaking up the fields of each line of input into fields, delimited by whitespace. The first field is in variable `$1`, the second in `$2`, and so on. Now, you can look only for the people where the third field i.e., "make of car" that matches "Ford", using the below command:
+You can use AWK to find all the people that drive a Toyota. AWK automatically breaks up each line into fields and columns using whitespaces as the delimiter. The first field is stored in variable `$1`, the second in `$2`, and so on. To search for the people who own a "Toyota", use the field stored in the `$3` variable, as follows:
 
     awk '($3 == "Toyota") {print}' names.txt
 
-You should see the similar output like the following:
+You should see a similar output:
 
 {{< output >}}
 Vince       Lombardi    Toyota      Fordham     1913
 Harrison    Ford        Toyota      Ripon       1942
 {{< /output >}}
 
-The part between the single quotes, `($3 == "Toyota") {print}` is a very simple program in the AWK language. It consists of a condition to test, and an action to take. It's similar to how sed programs match each line against a pattern.
-
-You can use regular expressions to find anyone who attended a college that starts with the letter `T`:
-
-    awk '($4 ~ /^T/)' names.txt
-
-Following would be the output since `print` is the default action to take on a match, in this example, it’s left out.
-
-{{< output >}}
-Mike        Rowe        Ford        Towson      1962
-{{< /output >}}
+The part between the single quotes, `($3 == "Toyota") {print}` is a very simple program in the AWK language. It consists of a condition to test against, and an action to take. This is similar to how sed programs match each line against a pattern.
 
 ### AWK: Numeric Comparisons and Calculations Using AWK
 
-Grep and sed are great for finding patterns in text, but they don't understand what the data represents. You might tell Grep to match a number that has between 2 and 4 digits by matching the pattern `[0-9]{2,4}`, but Grep can't compare numbers or strings against one another.
-
-If you want to print the last names of everyone in your list of people who were born before 1945, you couldn't do it in Grep or sed, but for AWK it's simple:
+You can accomplish much more with AWK when searching for text patterns, because it supports comparison and arithmetic operators. For example, to print the last name of people who were born before 1945 (using the data in `names.txt`) use the following command:
 
     awk '($5 < 1945) {print $2}' names.txt
 
-AWK can also do arithmetic on the fields it works with. If you want to find the average of the birth years of each of the people in the file, you can do so with AWK using the following command:
+You should see a similar output:
+
+{{< output >}}
+Lombardi
+Ford
+Ford
+{{< /output >}}
+
+AWK can also perform arithmetic on the fields it works with. To find the birth year average for all people in the `names.txt` file, use the following AWK command:
 
     awk '{total += $5} END {print total/NR}' names.txt
-    1933.75
+
+The output returns the following average:
+
+{{< output >}}
+1933.75
+{{< /output >}}
 
 On each line, AWK adds the value of the fifth column to the variable `total`. At the end of the file, it prints `total` divided by `NR`, a special variable where AWK keeps the number of records it has read.
 
-### AWK Associative Arrays
+To take a deep dive into the AWK programming language, refer to our [Learn the AWK Programming Language](/docs/guides/introduction-to-awk/) guide.
 
-The AWK language has powerful arrays that can be indexed by strings. This is called an associative array, or some languages call it a hash or a lookup table.
+## Conclusion
 
-If you want to get a list of all the different car makes in our name list, and count how many of each appear, tell AWK to increment a counter array, indexed by the make of car, and then print out a summary of the totals at the end.
-
-    awk '{++count[$3]} END {for (make in count) print make, count[make]}' names.txt
-
-After running the command, you should see a similar output:
-
-{{< output >}}
-Ford 1
-Chevrolet 1
-Toyota 2
-{{< /output >}}
-
-### AWK: Modify Data Based on Calculations
-
-Using sed, you were able to make substitutions based on patterns, but not based on calculations. With AWK, you can make calculations using the power of the AWK programming language.
-
-Create a file `temperature.txt` with a list of temperatures in Fahrenheit as follows:
-
-{{< file "temperature.txt">}}
-Chicago     40
-Sandusky    36
-Miami       80
-Bemidji     46
-{{< /file >}}
-
-With AWK, you can print the file out with the Celsius equivalent:
-
-    awk '{print $0, " ", int(($2-32)*5/9)}' temperature.txt
-
-{{< output >}}
-Chicago     40   4
-Sandusky    36   2
-Miami       80   26
-Bemidji     46   7
-{{< /output >}}
-
-In the command, the special variable `$0` refers to the entire input line. As you've seen before, `$2` refers to the second field in the file.
+Grep, sed, and AWK can each be used to search for and process text on a Linux system. However, each tool provides its own strengths. For simple text pattern searches within a directory, grep can complete the task. It's syntax is uncomplicated and it also provides many useful command-line options to enhance its search capabilities. Sed can search for text in files and can also replace the text. This provides you with more out-of-the-box functionality than grep. Finally, AWK is a full-fledged programming language, so you can accomplish a lot more with it. However, it does require a higher learning curve.
