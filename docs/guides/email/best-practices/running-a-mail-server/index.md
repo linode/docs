@@ -31,6 +31,10 @@ If you have a need to send mail from your Linode, we ask that you first configur
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
+{{< note >}}
+If using multiple domains to send mail from a single Linode, rDNS will only need to be configured for one of the domains actively sending mail.
+{{< /note >}}
+
 ### Benefits
 
 If you want or need full control of your email, running your own mail server might be ideal solution. Doing so allows you to store your own email, access the mail server's logs, and access the raw email files in a user's mailbox.
