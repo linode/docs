@@ -1926,6 +1926,7 @@ yubikey
 zabbix
 zapier
 zcat
+zend
 zgrep
 zile
 zimbra
