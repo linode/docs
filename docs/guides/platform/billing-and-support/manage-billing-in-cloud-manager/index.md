@@ -10,13 +10,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-10-25
+modified: 2021-08-18
 title: How to Manage Billing in the Linode Cloud Manager
 h1_title: Managing Billing in the Cloud Manager
 enable_h1: true
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/']
 ---
-
-
 
 We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
 
@@ -104,6 +103,14 @@ You are able to automatically pay for invoices with a credit or debit card throu
 {{< note >}}
 This process does not immediately charge any past due balance on the account to the new card. If you have an outstanding balance, you need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
 {{< /note >}}
+
+## Removing Google Pay
+
+To delete the Google Pay payment method from your account, follow the instructions below.
+
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Under the **Payment Methods** section, locate the Google Pay payment method.
+1.  Click the corresponding ellipsis menu and select **Delete** from the dropdown menu.
 
 ## Viewing and Changing the Default Payment Method
 

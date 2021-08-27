@@ -3,8 +3,7 @@ slug: securing-your-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.'
-og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
+description: "This guide serves as a starting point for securing your Linode, including user accounts, firewall configuration, SSH, and disabling unused network services."
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +12,9 @@ modified: 2019-08-19
 modified_by:
   name: Linode
 published: 2012-02-17
-title: How to Secure Your Server
-h1_title: Securing Your Server
+title: "How to Secure Your Server"
+h1_title: "Securing Your Server"
+enable_h1: true
 ---
 
 In the [Getting Started](/docs/getting-started/) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.

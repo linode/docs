@@ -2,16 +2,15 @@
 slug: how-to-install-and-use-nginx-on-ubuntu-20-04
 author:
   name: Nathaniel Stickman
-description: "NGINX is an open-source web server focused on performance and concurrency. Its event-driven architecture sets it apart from other web servers. In this guide, you learn how to install NGINX on your Ubuntu 20.04 server. You also learn common commands to manage your NGINX web server and how to set it up to serve a simple website."
-og_description: "NGINX is an open-source web server focused on performance and concurrency. Its event-driven architecture sets it apart from other web servers. In this guide, you learn how to install NGINX on your Ubuntu 20.04 server. You also learn common commands to manage your NGINX web server and how to set it up to serve a simple website."
+description: "Learn the basics of installing and configuring NGINX on your Ubuntu 20.04 server in this quick guide."
 keywords: ['nginx','web server']
 tags: ['ubuntu', 'nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using NGINX on Ubuntu 20.04"
-h1_title: "How to Install and Use NGINX on Ubuntu 20.04"
+title: "How to Install and Use NGINX on Ubuntu 20.04"
+h1_title: "Installing and Using NGINX on Ubuntu 20.04"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman

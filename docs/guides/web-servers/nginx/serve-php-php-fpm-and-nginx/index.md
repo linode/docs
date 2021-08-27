@@ -24,7 +24,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
 
 ## Before You Begin
 
-- **You will need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
+- **You will need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 - You will need root access to the system, or a user account with `sudo` privileges.
 
@@ -83,7 +83,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
 
 ## Configure the NGINX Server Block
 
-1.  Again pulling from [Part 1 of our NGINX series](/docs/web-servers/nginx/nginx-installation-and-basic-setup/#configuration-recap), we'll start with a basic Server Block for a static HTTP page being served from `/var/www/example.com`. Replace `example.com` with your site's domain or IP address, and the `root` directive with your site's root directory.
+1.  Again pulling from [Part 1 of our NGINX series](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/#configuration-recap), we'll start with a basic Server Block for a static HTTP page being served from `/var/www/example.com`. Replace `example.com` with your site's domain or IP address, and the `root` directive with your site's root directory.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {

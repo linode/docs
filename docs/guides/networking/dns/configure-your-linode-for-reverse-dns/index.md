@@ -34,7 +34,7 @@ Specifically, you will need to create an *A record* for the domain name (or subd
 
 1. Click on the **Linodes** link in the sidebar to access a list of all your Linodes.
 
-1. Select the Linode whose reverse DNS you would like to set up and click on its **Networking** tab.
+1. Select the Linode whose reverse DNS you would like to set up and click on its **Network** tab.
 
 1. Find the IP address whose reverse DNS you would like to configure and click on the **Edit rDNS** button, which may be available within the **more options** ellipsis menu on smaller screen sizes.
 

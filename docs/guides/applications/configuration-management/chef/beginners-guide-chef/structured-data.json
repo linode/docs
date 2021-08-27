@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why use Chef?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In addition to automating deployments, Chef allows for continuous delivery utilizing an [\"Infrastructure as Code\"](https://en.wikipedia.org/wiki/Infrastructure_as_code) methodology, which can be key in any organization adopting [DevOps](https://en.wikipedia.org/wiki/DevOps) principles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the disadvantages to Chef?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Historically, Chef's documentation has been lacking (but that has changed). Chef users who aren't familiar with coding (specifically Ruby) may encounter a steep learning curve."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I learn about Chef in-depth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In-depth (and free) Chef training can be found at [learn.chef.io](https://learn.chef.io/)."
+      }
+    }
+  ]
+}
