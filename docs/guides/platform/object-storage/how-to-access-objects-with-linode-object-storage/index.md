@@ -36,7 +36,7 @@ In this guide you will learn how to access the objects you have stored in Linode
 
 To learn how to enable Object Storage, see the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
 
-Object Storage is similar to a subscription service. **Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancelling Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) will stop billing for this flat rate.
+Object Storage is similar to a subscription service. **Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop further billing.
 
 In all Object Storage URLs the cluster where your bucket is hosted is a part of the URL string.
 

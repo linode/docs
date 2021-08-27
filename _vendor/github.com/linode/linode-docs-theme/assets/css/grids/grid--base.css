@@ -64,7 +64,7 @@
 
 @screen lg {
     .grid--base {
-        --height-linode-menu-row: 107px;
+        --height-linode-menu-row: 106px;
     }
 }
 

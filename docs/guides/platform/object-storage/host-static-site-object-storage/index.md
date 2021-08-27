@@ -39,7 +39,7 @@ The second compilation step only needs to happen once for each time that you upd
 
 ### Benefits of Hosting on Object Storage
 
-Traditionally, these static HTML files would be served by a web server (like [NGINX](docs/guides/web-servers/nginx/) or [Apache](/docs/guides/web-servers/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
+Traditionally, these static HTML files would be served by a web server (like [NGINX](/docs/guides/web-servers/nginx/) or [Apache](/docs/guides/web-servers/apache/)) running on a Linode. Using Object Storage to host your static site files means you do not have to worry about maintaining your site's infrastructure. It is no longer necessary to perform typical server maintenance tasks, like software upgrades, web server configuration, and security upkeep.
 
 Object Storage provides an HTTP REST gateway to objects, which means a unique URL over HTTP is available for every object. Once your static site is built, making it available publicly over the Internet is as easy uploading files to an Object Storage bucket.
 
