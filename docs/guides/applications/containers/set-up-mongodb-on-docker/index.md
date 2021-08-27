@@ -11,7 +11,8 @@ published: 2021-08-25
 modified_by:
   name: Linode
 title: "How to Set Up MongoDB on Docker"
-h1_title: "Set Up MongoDB on Docker."
+h1_title: "Set Up MongoDB on Docker"
+enable_h1: true
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
 ---
