@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile, sendEvent, toggleBooleanClass } from '../helpers/index';
+import { getOffsetTop, isElementInViewport, isMobile, sendEvent, toggleBooleanClass } from '../helpers/index';
 import { newDispatcher } from '../search/index';
 import { newCreateHref } from './create-href';
 
@@ -39,6 +39,9 @@ export function newSearchExplorerController(searchConfig) {
 	};
 
 	const setOpenStatus = function(self, open) {
+		if (!open) {
+			self.softTransitions = false;
+		}
 		debug('setOpenStatus', open, self.initState);
 		if (open) {
 			prepare(self);
@@ -64,6 +67,119 @@ export function newSearchExplorerController(searchConfig) {
 				self.loadIf(true);
 				break;
 		}
+	};
+
+	const scrollToActive = function(self, nodeInfo) {
+		let offset = 30; // Add some space above.
+		let threshold = 200; // Avoid scrolling short distances if the item is in viewport.
+
+		var isDone = false;
+		var container = self.$el.parentNode;
+
+		const scroll = function(what, to) {
+			if (to >= 0 && container.scrollTop !== to) {
+				container.scrollTop = to;
+			}
+
+			debug('scroll', what, to);
+
+			isDone = true;
+		};
+
+		if (!nodeInfo.branchKey) {
+			scroll('home', 0);
+			return;
+		}
+
+		let li = self.$refs[nodeInfo.branchKey];
+		if (!li) {
+			scroll('li not found:' + nodeInfo.branchKey, -1);
+			return;
+		}
+
+		// Select the active branch or leaf node.
+		let selector = nodeInfo.isBranch ? 'div > div a' : '.is-active-page';
+
+		setTimeout(function() {
+			// We have no simple way of knowing when the left menu is finished rendered,
+			// but we want to at least try to scroll down to the active node,
+			// and as soon as possible.
+			let retries = [ 0, 200, 500, 1000, 2000 ];
+			for (let i = 0; i < retries.length; i++) {
+				let sleep = retries[i];
+
+				setTimeout(function() {
+					if (isDone) {
+						return;
+					}
+
+					let active = li.querySelector(selector);
+
+					if (active && active.getBoundingClientRect().top) {
+						let container = self.$el.parentNode;
+						let scrollTop = getOffsetTop(container, active);
+						if (scrollTop) {
+							// If we're near the top, we might as well go all the way.
+							if (scrollTop < 100) {
+								scroll('near the top', 0);
+								return;
+							}
+
+							scrollTop = scrollTop - offset;
+
+							let oldScrollTop = self.scrollTop;
+
+							// If the active element is in viewport and
+							// within the threshold distance, we just
+							// keep the current scrollTop.
+							if (oldScrollTop && threshold && isElementInViewport(active)) {
+								let change =
+									oldScrollTop < scrollTop ? scrollTop - oldScrollTop : oldScrollTop - scrollTop;
+
+								if (change < threshold) {
+									// Avoid minor scroll changes.
+									scroll('less than threshold', -1);
+									return;
+								}
+							}
+
+							scroll('scroll', scrollTop);
+						}
+					} else if (i + 1 === retries.length) {
+						scroll('timed out', 0);
+					}
+				}, sleep);
+			}
+		}, 0);
+	};
+
+	const getActiveNodeInfo = function() {
+		let info = window.lnPageInfo;
+		if (!info) {
+			return null;
+		}
+
+		let isBranch = info.kind !== 'page';
+
+		if (info.kind === 'home') {
+			return {
+				isBranch: isBranch,
+				branchKey: ''
+			};
+		} else if (info.type === 'sections' || info.type === 'api') {
+			// Dynamic section, fetch the node key from the location.
+			return {
+				isBranch: isBranch,
+				branchKey: router.sectionsFromPath().join(' > ')
+			};
+		} else if (info.sectionsEntries) {
+			return {
+				isBranch: isBranch,
+				branchKey: info.sectionsEntries.join(' > ')
+			};
+		}
+
+		return null;
 	};
 
 	// initStates represents the state of the loading of the initial data set.
@@ -115,7 +231,7 @@ export function newSearchExplorerController(searchConfig) {
 	};
 
 	// May be set on initial load to expand to a given node.
-	var activeNodeKey = '';
+	var onLoadNodeInfo = null;
 
 	return {
 		data: data,
@@ -127,42 +243,48 @@ export function newSearchExplorerController(searchConfig) {
 		// onSearchReady is called when the search system is ready.
 		// Note that this does not necessarily mean that a search has been performed.
 		onSearchReady: function() {
-			switch (this.initState) {
-				case initStates.INITIAL:
-					this.initState = initStates.SEARCH_READY;
-					break;
-				case initStates.OPENING:
-					if (activeNodeKey != '') {
-						// Load everything in one query.
-						let sectionName = activeNodeKey.split('>')[0].trim();
-						dispatcher.searchNodes({
-							data: [ { key: activeNodeKey, section: { config: searchConfig.sections[sectionName] } } ]
-						});
-					} else {
-						dispatcher.searchBlank();
-					}
-					break;
+			if (this.initState < initStates.SEARCH_READY) {
+				this.initState = initStates.SEARCH_READY;
+				if (onLoadNodeInfo && onLoadNodeInfo.branchKey) {
+					// Load everything in one query.
+					let sections = onLoadNodeInfo.branchKey.split(' > ');
+					let sectionName = sections[0];
+					let sectionConfig = { config: searchConfig.sections[sectionName] };
+					let currentKey = [];
+					let queries = [];
+					sections.forEach((section) => {
+						currentKey.push(section);
+						queries.push({ key: currentKey.join(' > '), section: sectionConfig });
+					});
+					dispatcher.searchNodes({
+						data: queries
+					});
+				}
 			}
 		},
 
-		// Receives the initial, blank, result set with all the initial
-		// facets and their counts.
+		// Receives the initial data set once.
 		receiveDataInit: function(data) {
-			debug('receiveDataInit', data, this.open, this.initState);
-			this.data.searchState = data;
-			this.initState = initStates.DATA_LOADED;
-			this.load();
+			this.receiveData(data, true);
 		},
 
 		// Receives an updated result set based on a query or a filter applied.
 		// Note that we cannot apply this until the initial data set is loaded.
-		receiveData: function(data) {
-			debug('receiveData', data, this.open, this.initState);
-			if (this.initState < initStates.LOADED) {
+		receiveData: function(data, isBlank = false) {
+			debug('receiveData', data, this.open, this.initState, isBlank);
+			if (this.initState === initStates.LOADING) {
 				return;
 			}
+
+			if (!isBlank && !data.blankSearch.isLoaded()) {
+				return;
+			}
+
 			this.data.searchState = data;
 			this.isSearchFiltered = data.query.isFiltered() || data.mainSearch.results.isSectionDisabled();
+			if (this.initState < initStates.DATA_LOADED) {
+				this.initState = initStates.DATA_LOADED;
+			}
 			this.load();
 		},
 
@@ -177,10 +299,10 @@ export function newSearchExplorerController(searchConfig) {
 		},
 
 		receiveToggle: function(detail) {
+			debug('receiveToggle', detail);
 			if (detail.source === component) {
 				return;
 			}
-			debug('receiveToggle', detail);
 			switch (detail.what) {
 				case 'search-input':
 					if (detail.open) {
@@ -199,16 +321,22 @@ export function newSearchExplorerController(searchConfig) {
 		},
 
 		load: function() {
+			let shouldScroll = onLoadNodeInfo && this.initState < initStates.LOADED;
 			this.loadIf(this.open);
+			if (shouldScroll) {
+				var self = this;
+				var onLoadNodeInfoCopy = onLoadNodeInfo;
+				self.$nextTick(function() {
+					scrollToActive(self, onLoadNodeInfoCopy);
+				});
+			}
+
+			// Only needed on inital page load,
+			onLoadNodeInfo = null;
 		},
 
 		loadIf: function(open) {
 			if (!open) {
-				return;
-			}
-
-			if (this.initState < initStates.DATA_LOADED) {
-				// It will eventually get here.
 				return;
 			}
 
@@ -222,24 +350,10 @@ export function newSearchExplorerController(searchConfig) {
 			}
 
 			this.initState = initStates.LOADING;
+
 			this.buildNodes();
 			this.filterNodes();
-			var self = this;
-			this.$nextTick(function() {
-				self.initState = initStates.LOADED;
-			});
-		},
-
-		// Turbolinks replaces the body that we may have changed, so restore the
-		// explorer state when navigating to a new page.
-		onTurbolinksBeforeRender: function(data) {
-			if (this.open && isMobile()) {
-				// Always close the left side tree menu when navigating away on mobile.
-				this.open = false;
-			}
-			toggleBooleanClass('explorer-open', data.newBody, this.open);
-			let nav = this.$el.parentNode;
-			this.scrollTop = nav.scrollTop;
+			this.initState = initStates.LOADED;
 		},
 
 		onHashchange: function() {
@@ -250,9 +364,74 @@ export function newSearchExplorerController(searchConfig) {
 			}
 		},
 
+		onTurbolinksBeforeVisit: function(data) {
+			this.scrollTop = this.$el.parentNode.scrollTop;
+		},
+
+		// Turbolinks replaces the body that we may have changed, so restore the
+		// explorer state when navigating to a new page.
+		onTurbolinksBeforeRender: function(data) {
+			if (this.open && isMobile()) {
+				// Always close the left side tree menu when navigating away on mobile.
+				this.open = false;
+			}
+
+			if (this.initState >= initStates.LOADED && !this.isMenuNavigation) {
+				let branchKey = data.newBody.dataset.branch;
+				if (branchKey === 'sections') {
+					branchKey = router.sectionsFromPath().join(' > ');
+				}
+
+				this.setActiveBranch(branchKey);
+			}
+
+			toggleBooleanClass('explorer-open', data.newBody, this.open);
+		},
+
 		onTurbolinksRender: function(data) {
-			let navEl = this.$el.parentNode;
-			navEl.scrollTop = this.scrollTop;
+			if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
+				return;
+			}
+
+			let isMenuNavigation = this.isMenuNavigation;
+			this.isMenuNavigation = false;
+
+			if (!isMenuNavigation) {
+				// This is a navigation by link.
+				// The node was opened in the before-render event.
+				let activeNodeInfo = getActiveNodeInfo();
+				if (activeNodeInfo) {
+					var self = this;
+					this.$nextTick(function() {
+						scrollToActive(self, activeNodeInfo);
+					});
+				}
+			} else {
+				this.$el.parentNode.scrollTop = this.scrollTop;
+			}
+		},
+
+		setActiveBranch: function(nodeKey) {
+			for (let k in this.data.nodes) {
+				let n = this.data.nodes[k];
+
+				if (n.disabled) {
+					continue;
+				}
+
+				if (nodeKey.startsWith(n.key)) {
+					if (!n.open) {
+						n.toggleOpen();
+					} else {
+						n.pages.forEach((p) => {
+							// Force a rerender of the leaf nodes to get correct active state.
+							n.dirty++;
+						});
+					}
+				} else if (n.open) {
+					n.open = false;
+				}
+			}
 		},
 
 		render: function() {
@@ -298,16 +477,16 @@ export function newSearchExplorerController(searchConfig) {
 				};
 				self.target = self.$refs['explorer'];
 
-				let isOpenOnLoad = document.body.classList.contains('is-explorer-open');
-
-				if (page.type === 'api') {
-					activeNodeKey = page.href.substr(1).slice(0, -1).split('/').slice(1).join(' > ');
-				}
+				// Open the explorer menu on load when not on mobile.
+				let shouldOpen = !isMobile();
 
 				// Prepare the DOM templates. The final render of the nodes is performed lazily on expansion.
 				self.render();
 
-				if (isOpenOnLoad) {
+				if (shouldOpen) {
+					// Do opacity transitions only on initial load.
+					self.softTransitions = true;
+					onLoadNodeInfo = getActiveNodeInfo();
 					setOpenStatus(self, true);
 				}
 			};
@@ -327,7 +506,6 @@ export function newSearchExplorerController(searchConfig) {
 			}
 
 			let n = {
-				dirty: true, // Used for lazy expansion
 				section: opts.section,
 				level: opts.level, // Starting at 1
 				ordinal: ordinal,
@@ -336,6 +514,7 @@ export function newSearchExplorerController(searchConfig) {
 				key: opts.key,
 				href: opts.href,
 				count: opts.count,
+				dirty: 0,
 				icon: opts.level === 1 ? opts.section.config.explorer_icon : '',
 				sections: [],
 				pages: [], // Leaf nodes
@@ -344,6 +523,8 @@ export function newSearchExplorerController(searchConfig) {
 				kind: opts.kind ? opts.kind : 'section',
 				isGhostSection: opts.isGhostSection
 			};
+
+			let self = this;
 
 			n.children = function() {
 				if (this.pages.length === 0) {
@@ -385,6 +566,8 @@ export function newSearchExplorerController(searchConfig) {
 				}
 
 				if (this.href) {
+					self.isMenuNavigation = true;
+
 					let href = this.href;
 
 					if (this.isLeaf()) {
@@ -605,10 +788,11 @@ export function newSearchExplorerController(searchConfig) {
 				return null;
 			}
 
-			if (this.initState == initStates.LOADING || !this.data.searchState.mainSearch.isLoaded()) {
+			if (this.initState < initStates.BLANK_LOADED || !this.data.searchState.mainSearch.isLoaded()) {
+				debug('getResults: blank');
 				return this.data.searchState.blankSearch.results;
 			}
-
+			debug('getResults: main');
 			return this.data.searchState.mainSearch.results;
 		},
 
@@ -639,16 +823,16 @@ export function newSearchExplorerController(searchConfig) {
 				n.pages = pages;
 			};
 
-			if (this.data.searchState.searchOpts.isNodeToggle) {
+			if (this.initState > initStates.BLANK_LOADED && this.data.searchState.searchOpts.isNodeToggle) {
 				for (let [ key, val ] of this.data.searchState.expandedNodes.entries()) {
-					if (val && val.searchResult && val.searchResult.hits) {
+					if (val && val.searchResult && val.searchResult.hits && val.searchResult.hits.length > 0) {
 						let hits = val.searchResult.hits;
 						let n = this.data.nodes[key];
 						addPagesToNode(n, hits);
 					}
 				}
 				// No need to update everything.
-				if (activeNodeKey === '') {
+				if (!onLoadNodeInfo) {
 					return;
 				}
 			}
@@ -693,8 +877,8 @@ export function newSearchExplorerController(searchConfig) {
 					}
 				}
 
-				if (!n.disabled && activeNodeKey && activeNodeKey.startsWith(n.key)) {
-					n.toggleOpen(true);
+				if (!n.disabled && onLoadNodeInfo && onLoadNodeInfo.branchKey.startsWith(n.key)) {
+					n.open = true;
 				}
 
 				if (!seen.has(n.key)) {
@@ -719,9 +903,25 @@ export function newSearchExplorerController(searchConfig) {
 					n.pages = [];
 				}
 			}
+		},
 
-			// Only activate this on first build.
-			activeNodeKey = '';
+		// Tailwind transition classes for opening of the explorer.
+		transitions: function() {
+			if (this.softTransitions) {
+				// The regular transform looks jittery when applied on the original load.
+				// So only apply a short opacity transition here:
+				return {
+					enter: 'transition-opacityt duration-200 sm:duration-500',
+					enterStart: 'opacity-0',
+					enterEnd: 'opacity-100'
+				};
+			}
+
+			return {
+				enter: 'transition-transform transition-opacity ease-out duration-500 sm:duration-700',
+				enterStart: 'opacity-0 transform mobile:-translate-x-8 sm:-translate-y-8',
+				enterEnd: 'opacity-100 transform mobile:translate-x-0 sm:translate-y-0'
+			};
 		}
 	};
 }
