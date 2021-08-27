@@ -113,6 +113,7 @@ bashrc
 bc
 berkshelf
 bernd
+berners
 bing
 binlog
 biomes
@@ -149,6 +150,7 @@ bukkit
 bundler
 bungeecord
 burndown
+busybox
 byrequests
 bzip2
 bzrtools
@@ -189,6 +191,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+Chevereto
 chgrp
 chmod
 chown
@@ -317,6 +320,7 @@ debconf
 declaratively
 deduplication
 defragment
+demultiplexer
 deprovisioning
 descolada
 descr
@@ -381,6 +385,7 @@ drush
 drwxr
 dshield
 dsn
+du
 ducati
 dust2
 dvcs
@@ -462,6 +467,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+ffmpeg
 ffff
 fi
 fiiiile
@@ -492,6 +498,7 @@ flowlens
 flyspray
 foodcritic
 fortran
+fordham
 fmt
 fn
 fpm
@@ -607,6 +614,7 @@ hd0
 hdfs
 healthcheck
 heartbleed
+heredoc
 heroku
 hexo
 hiera
@@ -643,6 +651,7 @@ httpchk
 httpd
 https
 huginn
+Hugo
 hulu
 hvc0
 hybla
@@ -700,6 +709,7 @@ inittab
 injectable
 inode
 inotify
+inrupt
 insmod
 inspec
 interdomain
@@ -927,6 +937,7 @@ mapreduce
 mariadb
 marino
 maskname
+mastercard
 masterdb
 masterless
 mathematica
@@ -988,6 +999,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mkv
 mnesia
 mngtmpaddr
 moby
@@ -1003,6 +1015,7 @@ morphisec
 motd
 mountpoint
 mouseover
+mov
 mpapis
 mpm
 msg
@@ -1084,6 +1097,7 @@ newgrp
 newtag
 nextcloud
 nexthop
+nfs
 nftables
 ng
 nginx
@@ -1091,6 +1105,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nirvashare
 nixcraft
 nixpkgs
 nmap
@@ -1287,6 +1302,7 @@ puppetlabs
 puppetmaster
 puttygen
 pv
+pvc
 pvgrub
 pwcheck
 px
@@ -1382,6 +1398,7 @@ ro
 rochko
 rocommunity
 rollout
+rooknfs
 rossum
 roundcube
 routable
@@ -1432,6 +1449,7 @@ sbin
 sbopkg
 sbt
 scgi
+schroot
 schaeffer
 scm
 scp
@@ -1470,6 +1488,7 @@ setguid
 setsebool
 setuid
 setuptools
+Severalnines
 sfadmin
 sfproject
 sfroot
@@ -1494,6 +1513,7 @@ signup
 sintra
 sitename
 slackpkg
+slackware
 slavedb
 sls
 smartcard
@@ -1521,6 +1541,7 @@ sparklines
 spectre
 speedtest
 spf1
+Splunk
 spm
 spork
 sql
@@ -1560,8 +1581,10 @@ submenu
 subnet
 subnets
 subnetwork
+subprocess
 subqueries
 subquery
+subreddit
 subreddits
 substring
 substrings
@@ -1655,6 +1678,7 @@ torvalds
 toolchain
 toolchains
 toolset
+towson
 traceroute
 trackbar
 traefik
@@ -1708,6 +1732,7 @@ unicast
 unicode
 uninvoiced
 uniq
+unix
 unmanaged
 unmerged
 unmount
@@ -1868,6 +1893,7 @@ xcode
 xen
 xenial
 xerus
+Xfce
 xkcd
 xlsx
 xlsxwriter
@@ -1908,6 +1934,8 @@ yubico
 yubikey
 zabbix
 zapier
+zcat
+zend
 zgrep
 zile
 zimbra

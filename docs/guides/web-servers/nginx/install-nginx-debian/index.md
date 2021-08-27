@@ -20,7 +20,7 @@ tags: ["web server","nginx"]
 aliases: ['/web-servers/nginx/install-nginx-debian/']
 ---
 
-These instructions install NGINX Mainline on Debian 9 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.
+These instructions install NGINX Mainline on Debian 9 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)* series.
 
 1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom:
 

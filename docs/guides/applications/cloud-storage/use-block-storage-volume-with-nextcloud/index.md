@@ -3,8 +3,8 @@ slug: use-block-storage-volume-with-nextcloud
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: "Nextcloud is an open source solution to hosting your own content online. In addition to the total control users gain over their own files, Nextcloud offers customizable security features that allow the user to take control of sharing and access privileges. This guide shows how to use a Block Storage Volume to store your Nextcloud data."
-og_description: "Nextcloud is an open source solution to hosting your own content online. In addition to the total control users gain over their own files, Nextcloud offers customizable security features that allow the user to take control of sharing and access privileges. This guide shows how to use a Block Storage Volume to store your Nextcloud data."
+description: "In this guide, we'll show you how to use a Block Storage Volume to store your Nextcloud data."
+og_description: "In this guide, we'll show you how to use a Block Storage Volume to store your Nextcloud data."
 keywords: ["nextcloud", "cloud", "open source hosting", "block storage"]
 tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,9 @@ published: 2018-04-17
 modified: 2018-04-17
 modified_by:
   name: Linode
-title: Use a Block Storage Volume with Nextcloud
+title: "How to Use a Block Storage Volume with Nextcloud"
+h1_title: "Use a Block Storage Volume with Nextcloud"
+enable_h1: true
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 aliases: ['/applications/cloud-storage/use-block-storage-volume-with-nextcloud/']
@@ -31,7 +33,7 @@ Nextcloud is a cloud storage platform that allows you to store and access your f
 
 ### Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Docker Compose
 

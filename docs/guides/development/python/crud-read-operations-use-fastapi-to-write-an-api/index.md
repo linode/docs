@@ -15,7 +15,7 @@ h1_title: "CRUD Read Operations: How to Use FastAPI to Write an API"
 tags: ["python", "django"]
 contributor:
   name: Chelsea Troy
-  link: twitter.com/HeyChelseaTroy
+  link: https://twitter.com/HeyChelseaTroy
 ---
 ## FastAPI Features
 

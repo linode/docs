@@ -35,7 +35,7 @@ Both Docker and Docker Compose are necessary to complete this guide.
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

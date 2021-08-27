@@ -3,8 +3,8 @@ slug: deploy-mean-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications. Easily deploy MEAN using Marketplace Apps.'
-og_description: 'A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications. Easily deploy MEAN using Marketplace Apps.'
+description: 'Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode''s Marketplace Apps.'
+og_description: 'Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode''s Marketplace Apps.'
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "How to Deploy MEAN with Marketplace Apps"
 h1_title: "Deploying MEAN with Marketplace Apps"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:

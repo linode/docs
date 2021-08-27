@@ -52,7 +52,7 @@ To install the test environment, you will need a Linode which does not have any 
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 
