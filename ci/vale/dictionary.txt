@@ -113,6 +113,8 @@ bashrc
 bc
 berkshelf
 bernd
+berners
+bing
 binlog
 biomes
 bitbucket
@@ -159,6 +161,7 @@ cacheable
 cachable
 caddy
 caddyfile
+caffe
 cakey
 calc
 campione
@@ -495,6 +498,7 @@ flowlens
 flyspray
 foodcritic
 fortran
+fordham
 fmt
 fn
 fpm
@@ -705,6 +709,7 @@ inittab
 injectable
 inode
 inotify
+inrupt
 insmod
 inspec
 interdomain
@@ -932,6 +937,7 @@ mapreduce
 mariadb
 marino
 maskname
+mastercard
 masterdb
 masterless
 mathematica
@@ -1319,6 +1325,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+radeon
 ramdisk
 rbac
 rbenv
@@ -1506,6 +1513,7 @@ signup
 sintra
 sitename
 slackpkg
+slackware
 slavedb
 sls
 smartcard
@@ -1576,6 +1584,7 @@ subnetwork
 subprocess
 subqueries
 subquery
+subreddit
 subreddits
 substring
 substrings
@@ -1669,6 +1678,7 @@ torvalds
 toolchain
 toolchains
 toolset
+towson
 traceroute
 trackbar
 traefik
@@ -1925,6 +1935,7 @@ yubikey
 zabbix
 zapier
 zcat
+zend
 zgrep
 zile
 zimbra
