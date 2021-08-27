@@ -25,6 +25,7 @@ external_resources:
 - '[Testify](https://pypi.org/project/testify/)'
 - '[Behave](https://behave.readthedocs.io/en/latest/)'
 - '[Lettuce](https://crossbrowsertesting.com/automated-testing/integrations/lettuce)'
+
 ---
 
 Writing code can be interesting, fun, and productivity-enhancing. It can also be a grind, frustrating, and inefficient. How your coding experience affects you and those who use your applications, depends on whether the code you create actually works. The only problem is that you can’t be sure how your code works until you test it.
