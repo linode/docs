@@ -23,7 +23,7 @@ To complete the examples in this guide, first set up and secure a Linode with Do
 
 This guide assumes you are comfortable with the *command-line interface* (CLI) on a Unix-like system and using it to work with programs.
 
-### Set up a Linode with the Docker
+### Set up a Linode with Docker
 
 #### Docker Marketplace App
 
