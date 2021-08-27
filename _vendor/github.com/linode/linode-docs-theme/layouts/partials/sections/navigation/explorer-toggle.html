@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center h-full w-full explorer-toggle__header" @click.stop="toggles.explorer = !toggles.explorer"
     @mouseenter.once="preloadExplorer();">
   <div class="hide-if-topbar-is-pinned md:hidden h-full">
-    <button type="button" :aria-label="toggles.explorer ? 'close' : 'open'" class="btn-icon flex items-center justify-between h-full">
+    <button type="button" :aria-label="toggles.explorer ? 'close' : 'open'" class="btn-icon flex items-center justify-between h-full" data-testid="open-explorer">
       <svg class="md:hidden text-titlecolor" style="width: 1rem;height:0.85rem;">
         <use :href="toggles.explorer ? '#icon--times' : '#icon--explore-docs'"></use>
       </svg>
