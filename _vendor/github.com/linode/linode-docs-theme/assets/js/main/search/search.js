@@ -572,13 +572,11 @@ export function newSearchController(searchConfig) {
 
 		s.publish = function() {
 			debug('publish');
-			let events = [];
-
-			if (this.staticSearchRequestsResults.length > 0) {
-				if (this.blankSearch.isLoaded()) {
-					events.push(dispatcher.events.EVENT_SEARCHRESULT_BLANK);
-				}
+			if (!this.blankSearch.isLoaded()) {
+				// Delay publishing until the blank search is loaded.
+				return;
 			}
+			let events = [];
 
 			// The staticSearchRequestsResults standalone searches that's not participating in the global
 			// filtering game, so publish it whenever it's set.
@@ -699,7 +697,6 @@ export function newSearchController(searchConfig) {
 
 			if (!this.standaloneSearch && opts.query) {
 				// A Query object, a regular user search.
-
 				regularSearch = true;
 				this.searchState.queryChanged = !this.searchState.query.eq(opts.query);
 				if (this.searchState.queryChanged) {
@@ -716,9 +713,11 @@ export function newSearchController(searchConfig) {
 			// Make sure that the Hugo hosted static data is loaded before we do any searches.
 			// TODO(bep) receive this in the constructor.
 			await this.searchState.metaSearch.hugoData.loadIfNotLoaded('search');
-
-			if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK) {
-				if (this.searchState.blankSearch.isLoading()) {
+			if (
+				event === dispatcher.events.EVENT_SEARCHRESULT ||
+				event === dispatcher.events.EVENT_SEARCHRESULT_BLANK
+			) {
+				if (event === dispatcher.events.EVENT_SEARCHRESULT_BLANK && this.searchState.blankSearch.isLoading()) {
 					// One is already in progress.
 					return;
 				}
@@ -738,14 +737,15 @@ export function newSearchController(searchConfig) {
 						return now - start > 500;
 					});
 
-					if (isDone) {
+					if (isDone && !regularSearch) {
+						// Nothing more to do.
 						return;
 					}
 				}
 			}
 
 			this.searchState.searchOpts = opts;
-			var needsBlankResult = event === dispatcher.events.EVENT_SEARCHRESULT_BLANK || !this.standaloneSearch;
+			var needsBlankResult = true; // event === dispatcher.events.EVENT_SEARCHRESULT_BLANK || !this.standaloneSearch;
 
 			if (opts.requests) {
 				this.searchState.staticSearchRequests.push({
@@ -927,6 +927,11 @@ export function newSearchController(searchConfig) {
 						node.section.config.explorer_max_leafnodes || searchConfig.explorer_max_leafnodes || 100;
 					let sectionFilter = `section:${node.key}`;
 					let filters = node.section.config.filters || '';
+					if (node.section.config.explorer_leaf_filter) {
+						filters = filters
+							? filters + ' AND ' + node.section.config.explorer_leaf_filter
+							: node.section.config.explorer_leaf_filter;
+					}
 					let facetFilters = filtersPerSection.get(node.section.config.name) || [];
 					let request = {
 						indexName: node.section.config.indexName(),
@@ -970,9 +975,14 @@ export function newSearchController(searchConfig) {
 				this.searchState.expandedNodes.set(n.key, n);
 			});
 
-			for (let k of this.searchState.expandedNodes.keys()) {
-				if (!keys.has(k)) {
-					this.searchState.expandedNodes.delete(k);
+			// The number 10 is arbitrary set. We want to preserve some history for the data
+			// in the open explorer nodes (as the user may navigate to the same sections),
+			// but we also need to limit the query size to Algolia.
+			if (this.searchState.expandedNodes.size > 10) {
+				for (let k of this.searchState.expandedNodes.keys()) {
+					if (!keys.has(k)) {
+						this.searchState.expandedNodes.delete(k);
+					}
 				}
 			}
 

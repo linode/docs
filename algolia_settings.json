@@ -1,11 +1,13 @@
 {
  "linode-documentation": {
+  "advancedSyntax": true,
   "alternativesAsExact": [
    "ignorePlurals",
    "singleWordSynonym"
   ],
   "attributesForFaceting": [
    "category",
+   "isBranch",
    "languages",
    "section",
    "section.lvl0",
@@ -19,13 +21,13 @@
    "title"
   ],
   "attributesToRetrieve": [
-   "deprecated",
    "excerpt",
    "firstPublishedTime",
-   "firstPublishedYear",
    "href",
+   "isBranch",
    "languages",
    "lastUpdatedTime",
+   "linkTitle",
    "ordinal",
    "section",
    "skillLevel",
@@ -39,6 +41,9 @@
   "highlightPostTag": "\u003c/em\u003e",
   "highlightPreTag": "\u003cem\u003e",
   "hitsPerPage": 20,
+  "ignorePlurals": [
+   "en"
+  ],
   "maxValuesPerFacet": 200,
   "minWordSizefor1Typo": 4,
   "minWordSizefor2Typos": 8,
@@ -55,9 +60,13 @@
    "exact",
    "custom"
   ],
-  "removeWordsIfNoResults": "none",
+  "removeStopWords": [
+   "en"
+  ],
+  "removeWordsIfNoResults": "allOptional",
   "replicas": [
-   "linode-documentation-sorted"
+   "linode-documentation-sorted",
+   "linode-documentation-configtest"
   ],
   "searchableAttributes": [
    "unordered(title)",
@@ -71,6 +80,7 @@
   "version": 2
  },
  "linode-documentation-api": {
+  "advancedSyntax": true,
   "alternativesAsExact": [
    "ignorePlurals",
    "singleWordSynonym"
@@ -84,6 +94,9 @@
   "highlightPostTag": "\u003c/em\u003e",
   "highlightPreTag": "\u003cem\u003e",
   "hitsPerPage": 20,
+  "ignorePlurals": [
+   "en"
+  ],
   "maxValuesPerFacet": 100,
   "minWordSizefor1Typo": 4,
   "minWordSizefor2Typos": 8,
@@ -99,8 +112,10 @@
    "exact",
    "custom"
   ],
-  "removeWordsIfNoResults": "none",
-  "replicas": [],
+  "removeStopWords": [
+   "en"
+  ],
+  "removeWordsIfNoResults": "allOptional",
   "searchableAttributes": [
    "unordered(title)",
    "unordered(exerpt)",
@@ -151,6 +166,7 @@
   ],
   "attributesForFaceting": [
    "category",
+   "isBranch",
    "languages",
    "section",
    "section.lvl0",
@@ -167,8 +183,10 @@
    "excerpt",
    "firstPublishedTime",
    "href",
+   "isBranch",
    "languages",
    "lastUpdatedTime",
+   "linkTitle",
    "ordinal",
    "section",
    "skillLevel",
@@ -179,6 +197,9 @@
   "highlightPostTag": "\u003c/em\u003e",
   "highlightPreTag": "\u003cem\u003e",
   "hitsPerPage": 20,
+  "ignorePlurals": [
+   "en"
+  ],
   "maxValuesPerFacet": 200,
   "minWordSizefor1Typo": 4,
   "minWordSizefor2Typos": 8,
@@ -197,7 +218,10 @@
    "exact",
    "custom"
   ],
-  "removeWordsIfNoResults": "none",
+  "removeStopWords": [
+   "en"
+  ],
+  "removeWordsIfNoResults": "allOptional",
   "searchableAttributes": [
    "title",
    "keywords",

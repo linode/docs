@@ -10,90 +10,153 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-10-25
-title: Manage Billing in Cloud Manager
+modified: 2021-08-25
+title: How to Manage Billing in the Linode Cloud Manager
+h1_title: Managing Billing in the Cloud Manager
+enable_h1: true
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/']
 ---
 
 We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
 
-## Viewing Current Balance
+## Before You Begin
 
-To view your current balance, follow the steps below. This shows you the sum of all Linode services used so far in the month, down to the hour.
+Before performing the steps within this guide, please ensure you've completed the following:
 
-1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
-1.  Select **Account** from the sidebar links.
-1.  The Billing Info page shows you a billing summary at the top of the screen.
+1.  **Read through the [Billing and Payments](/docs/guides/how-linode-billing-works/) guide** for detailed information about our billing and payment policies.
 
-    [![This customer has a $9.00 uninvoiced balance and $24.00 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $31.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
+1.  **Log in to the [Cloud Manager](https://cloud.linode.com)** on a user account with one of the following permissions. See [Setting User Permissions](/docs/guides/accounts-and-passwords/#setting-user-permissions) for more details.
 
-    Here, you can keep track of your outstanding balance.
+    - **Full account access** (unrestricted).
+    - Restricted user with *Read-Write* permissions under **Billing Access**. Users with *Read Only* permissions are able to see most billing information but they are not able to make changes.
 
-    -  **Account Balance** is the current invoiced balance. This is how much you currently owe. If you have credit on your account, you instead see that credit. In the example above, the customer owes $24.00.
-    -  **Accrued Charges** is the accrued balance that has not yet been invoiced for the month. In the example above, the customer has accrued a $9.00 balance for Linode services this month so far, but has not been invoiced yet for those services. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
+## Accessing Billing Information
 
-### Promotional Credit
+Most information and settings pertaining to billing are located within the [Billing Info](https://cloud.linode.com/account/billing) page of the Cloud Manager. Follow the instructions below to access this page:
 
-If you have a promotional credit active on your account, the credit appears on the Billing Info page. In the below example, the user has a $100 credit applied to their account. If the promo code has an expiration date, the expiration date is also displayed.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-![This customer has a $100 promotional credit applied to their account.](promo-code-applied-to-new-account.png)
+1.  Click on the **Account** link on the left menu, which displays the [Billing Info](https://cloud.linode.com/account/billing) page.
+
+![The Billing Info page showing an example customer with a $24 negative balance and $9 of accrued charges.](account-billing.png)
+
+This page contains several sections:
+
+- **Account Balance:** The current balance on the account. This includes any past due amounts from unpaid invoices as well as any positive balance remaining from credits or promo codes. In the screenshot above, the account has a positive balance of $10.
+
+- **Promotions:** If there is an active promo/coupon applied to the account, it will be displayed here along with the remaining balance and any expiration date. If there are no active promotions, this section is hidden.
+
+- **Accrued Charges:** The charges that have accrued since your last invoice. This updates frequently to include the hourly charges (up to the monthly cap) for all paid services on the account, as well as any other charges. In the screenshot above, the account has accrued $8.51 of charges since the last invoice. See the [Billing and Payments > Understanding Billing](/docs/guides/how-linode-billing-works/#understanding-billing) guide for help understanding these charges.
+
+- **Billing Contact:** The name, address, phone number, and email address for the primary billing contact on the account. See [Accounts and Passwords > Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information).
+
+- **Payment Methods:** The payment methods that have been added to the account.
+
+- **Billing & Payment History:** Displays a list of previous invoices and payments, along with links to view or download each entry.
 
 ## Making a Payment
 
-You can use the Cloud Manager to pay an outstanding balance or prepay for Linode services. Here's how:
+You can manually add funds to your account at any time. Manual payments can be used to pay an outstanding balance or prepay for future services.
 
-1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
-1.  Select **Account** from the sidebar links.
-1.  In the billing summary at the top, click the **Make a Payment** link.
-1.  The **Make a Payment** panel opens.
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Click the **Make a Payment** button on the top right of the page, which opens the **Make a Payment** panel.
+1.  Enter the amount of money you would like to add to your account in the **Payment Amount** field. For your reference, the current balance on the account is displayed above this field.
+1.  **To pay with a saved payment method:** Select the saved payment method you wish to use in the  **Payment methods** section and click the **Pay now** button.
 
-    [![The Make a Payment Panel](billing-make-a-payment-panel.png "The Make a Payment Panel.")](billing-make-a-payment-panel.png)
+    **To pay with PayPal:** Click the **PayPal** button towards the bottom of the panel. This will open up PayPal's own payment form, where you can log in to your PayPal account and select your payment method. Once finished, you will be returned to the Cloud Manager.
 
-1.  Enter the amount of money you would like to pay in the **Payment Amount** field.
-1.  Enter the CVV number on the back of your credit card in the **CVV** field.
-1.  Click **Pay Now**.
+    **To pay with an new Google Pay account or method:** Click the **Google Pay** button towards the bottom of the panel. This will open up Google's own payment form where you can log in to your Google account and select your payment method. Once finished, you will be returned to the Cloud Manager.
 
 The payment may take a few minutes to be applied to your account.
 
-## Updating Credit Card Information
+## Adding a New Payment Method
 
-Keep your credit card information up to date to prevent service interruptions. Here's how:
+New payment methods can be added to an account through the Cloud Manager. Up to **8 payment methods** can be active on an account at any given time, including multiple credit cards or Google Pay methods.
 
-1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
-1.  Select **Account** from the sidebar links.
-1.  In the Payment Method pane, click the **Edit** link.
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  If adding a credit card directly (not through Google Pay), it must match the account's billing contact information and address. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
+1.  In the **Payment Method** section, click the *Add Payment Method* link. This opens the **Add Payment Method** panel.
+1.  Complete the form according to the payment method you wish to add.
 
-    ![Click the Edit link in the Payment Method Pane](billing-edit-payment-method.png "Click the Edit link in the Payment Method Pane")
+    -  **Credit card:**
+        1.  Enter the credit card number, expiration date, and the security code (CVV).
+        1.  Click **Add Credit Card** to save the new card.
 
-1.  The **Edit Credit Card** panel opens. Enter your credit card number, the card's expiration date, and the CVV. The address affiliated with the card must match the [Contact Information](/docs/guides/accounts-and-passwords/#updating-contact-information) active on your account.
-1.  Click **Save**. Your credit card information is updated.
+        {{< note >}}
+  A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
+  {{< /note >}}
 
-    [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)
+    -  **Google Pay:**
+        1.  Click the **Google Pay** icon/button to open Google's own Google Pay form.
+        1.  Log in to your Google account or select from accounts you've already logged into.
+        1.  Select the credit card or PayPal account you wish to use for paying invoices on the account.
+        1.  Press **continue** (or otherwise complete the form) to be taken back to the Cloud Manager.
 
-    {{< note >}}
-If you have an outstanding balance, you need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
+{{< note >}}
+This process does not immediately charge any past due balance on the account to the new card. If you have an outstanding balance, you need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
 {{< /note >}}
-    {{< note >}}
-A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
-{{< /note >}}
 
-## Accessing Billing History
+## Removing a Payment Method
 
-All of your billing history is stored in the Cloud Manager. Here's how to access it:
+To delete a payment method from your account, follow the instructions below.
 
-1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
-1.  Select **Account** from the sidebar links.
-1.  A link to the last invoice is available at the top of the screen in the Billing Summary by clicking the **View Last Invoice** link.
-1.  You can view your Billing & Payment History at the bottom of the Billing Info page. This list is filterable by transaction type and time.
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Under the **Payment Methods** section, locate the payment method you wish to remove.
+1.  Click the corresponding ellipsis menu and select **Delete** from the dropdown menu. If the payment method is the default payment method on the account, the **Delete** button will be disabled and you will first need to change the default method.
 
-    ![Billing and Payment History Table](billing-and-payment-history-table.png "Billing and Payment History Table")
+![The Delete button within a payment method's dropdown menu](delete-payment-method.png)
 
-1.  Click on any invoice to view the charges for a particular month. You can also click the **Download PDF** link next to any invoice to download a PDF of the invoice to your computer. <!-- You can also download invoices in PDF format. -->
+## Viewing and Changing the Default Payment Method
+
+When an invoice is generated, the amount of that invoice (as well as any past due balance) will be charged to the *default* payment method on the account. The default payment method can be viewed and changed by following the instructions below.
+
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+1.  Under the **Payment Methods** section, the payment method currently used by default has a label of *default* (located to the right of the last 4 digits and expiration date).
+1.  To change the default payment method, click the ellipsis menu next to the payment method you wish to use and select **Make Default** from the dropdown menu.
+
+![The Make Default button within a payment method's dropdown menu](set-default-payment-method.png)
+
+## Viewing Invoices and Payments
+
+All of your billing history, including previous invoices and payments, is accessible within the [Cloud Manager](https://cloud.linode.com/account/billing) on the **Billing & Payment History** section within the **Billing Info** page (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)). By default, all transactions (both invoices and payments) from the last *6 months* are displayed. To customize this, use the dropdown menus on the top right of this section.
+
+**To view an itemized invoice,** find the invoice row on the list and click the corresponding invoice number. This opens up a new page that displays each service that was active during the billing period, along with the additional details listed below:
+
+-  **Description:** The type of service and the unique label you've given it.
+-  **From:** The date the service started billing during this billing cycle. This could either be the date and time this billing cycle started *or* the date and time the service was added to the account.
+-  **To:** The date the service ended billing during this billing cycle. This could either be the date and time this billing cycle ended *or* the date and time the service was removed from the account.
+-  **Quantity:** The number of hours the service is being billed.
+-  **Unit Price:** The hourly rate for this service.
+-  **Amount:** The cost for this service excluding taxes.
+-  **Taxes:** The taxes that are charged for this service.
+-  **Total:** The cost for this service including taxes.
+
+A PDF copy of either the invoice or payment can be downloaded by clicking the **Download PDF** link corresponding to the entry row or on the Invoice page.
+
+## Adding a Promo Code
+
+A *promo code* adds a positive credit to an account, allowing you to pay for services using that credit. You're able to add a promo code when signing up for an account. If you already signed up but haven't entered a promo code, you may be able to do so from the Cloud Manager. To add a promo code to an existing account, certain conditions must be met:
+
+- The account must be less than 90 days old.
+- There must not be a negative balance on the account.
+- No other promo codes can already be applied to the account.
+- The user that's logged in must have unrestricted permissions.
+
+If those conditions are met, you can add a promo code by following these instructions:
+
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+
+1.  Under the **Account Balance** section, click the *Add a promo code* link.
+
+    ![Account balance section of the Billing Info page](account-balance-add-promo.png)
+
+1.  In the **Add promo code** dialog box that is displayed, enter the promo code and click the **Apply Promo Code** button. You should now see the promotional credit amount reflected in your account balance.
 
 ## Removing Services
 
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
-1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 1.  To remove a Linode from your account, select **Linodes** from the sidebar links. Expand the **more options ellipsis** menu to the right of the Linode you would like to remove, then select **Delete**.
 1.  To remove a NodeBalancer from your account, select **NodeBalancers** from the sidebar links. Select **Delete** for the NodeBalancer you would like to remove.
 1.  To remove the Linode Backup Service, select **Linodes** from the sidebar links. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.

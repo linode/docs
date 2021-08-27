@@ -1,0 +1,46 @@
+{
+  "@context": "http://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What Is Shadowsocks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Shadowsocks is an open source, free encryption protocol client designed to securely transmit information between clients and servers. It uses asynchronous input-output and is event-driven to deliver speed. Shadowsocks isn’t a proxy, but it enables connecting to 3rd party SOCKS5 proxy connections. It also supports UDP traffic.   </p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do I Run ShadowSocks On Ubuntu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>To run and install Shadowsocks on Ubuntu Server follow these steps</p><p>\t1 Download and update your packages to the newest versions on your Ubuntu</p><p>apt update &amp;&amp; apt upgrade -yuf</p><p>\t2 Install dependencies on your Ubuntu server by running the following command:</p><p>apt install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev \\</p><p>asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev \\</p><p>libsodium-dev git python-m2crypto libc-ares-dev</p><p>\t3 Navigate to the /opt directory on Ubuntu and download the Shadowsocks Git module:</p><p>cd /opt</p><p>git clone https://github.com/shadowsocks/shadowsocks-libev.git</p><p>cd shadowsocks-libev</p><p>git submodule update --init --recursive</p><p>\t4 Install Shadowsocks-libev:</p><p>./autogen.sh</p><p>./configure</p><p>make &amp;&amp; make install</p><p><br></p><p><br></p><p><br></p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do I Run ShadowSocks On CentOS 7?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>To run and install Shadowsocks on CentOS7 follow these steps</p><p>1 Download and update your packages to the newest versions</p><p>yum update &amp;&amp; yum upgrade -y</p><p>yum install epel-release -y</p><p>2 Install dependencies on CentOS7</p><p>yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel \\</p><p>               libev-devel libsodium-devel mbedtls-devel git m2crypto c-ares-devel</p><p>3 Navigate to the /opt directory on CentOS7 and download the Shadowsocks Git module:</p><p>cd /opt</p><p>git clone https://github.com/shadowsocks/shadowsocks-libev.git</p><p>cd shadowsocks-libev</p><p>git submodule update --init --recursive</p><p>4 Install Shadowsocks-libev:</p><p>./autogen.sh</p><p>./configure</p><p>make &amp;&amp; make install</p><p><br></p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do You Use Shadowsocks Libev?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Shadowsocks libev is a lightweight, purely C-based proxy implementation for embedded devices. To use Shadowsocks libev after its installation, simply add a system user to Shadowsocks, create a directory with its configuration file. </p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do I  Know If My SOCKS5 Proxy Is Working?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>To check if your SOCKS5 proxy is working, you can open your terminal and run the netstat command to see if there is an open port: </p><p>netstat -tlnp</p><p>If your SOCKS5 proxy is working, you should see an output similar to below on your terminal: </p><p>tcp        0      0 232.222.333.414:8888          0.0.0.0:*               LISTEN</p><p>Another way to test whether SOCKS5 proxy is working is by using the curl command on the right port of the proxy. For a SOCKS5 proxy hosted at 232.222.333.414 listening at port 8080, run the following command on your terminal:</p><p>timeout 5 curl -x socks5://232.222.333.414:8080 https://linode.com/</p><p>If our SOCKS5  proxy isn’t working properly on a proxy hosted at 232.222.333.414, it returns a timeout on our terminal. </p><p><br></p>"
+      }
+    }
+  ]
+}

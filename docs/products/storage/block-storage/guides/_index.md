@@ -15,6 +15,8 @@ These guides teach you what you need to know to get started:
 
 - [Attach an Existing Block Storage Volume to a Linode](/docs/products/storage/block-storage/guides/attach-volume/): Attach a Block Storage Volume that was previously created in the Cloud Manager or through the Linode API.
 
+- [Configure and Mount a Block Storage Volume to a Linode](/docs/products/storage/block-storage/guides/configure-volume/): Configure a Block Storage Volume on a Linode by creating a file system and mounting the Volume.
+
 - [Detach a Block Storage Volume from a Linode](/docs/products/storage/block-storage/guides/detach-volume/): Safely detach a Block Storage Volume from a Linode. A Volume should be detached before it is reattached to a different Linode.
 
 - [Delete a Block Storage Volume](/docs/products/storage/block-storage/guides/delete-volume/): Delete a Block Storage Volume when you no longer need any of the data it stores.

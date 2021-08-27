@@ -5,12 +5,22 @@
     {{ .Title }}
   {{ end }}
 </h1>
-<p class="pt-2 text-basicgray text-sm">
-  {{ if eq .PublishDate .Lastmod }}
-    Published
-  {{ else }}
-    Updated
-  {{ end }}
-  {{ $authorLink := partial "funcs/get-author-link.html" . }}
-  <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format site.Params.time_format_default }}</time>{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
-</p>
+<div class="mt-2">
+  <span class="pt-2 text-basicgray">
+    {{ if and (eq .PublishDate.Year .Lastmod.Year) (eq .PublishDate.YearDay .Lastmod.YearDay) }}
+      Published
+    {{ else }}
+      Updated
+    {{ end }}
+    {{ $authorLink := partial "funcs/get-author-link.html" . }}
+    <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format site.Params.time_format_default }}</time>{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
+  </span>
+
+
+  <div class="hidden md:flex flex-initial float-right">
+    {{ $dropdowns := slice }}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--github" "open" false "contentPartial" "sections/content/navbar__dropdown-github.html")}}
+    {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html")}}
+    {{ partial "components/dropdowns.html" (dict "page" . "dropdowns" $dropdowns) }}
+  </div>
+</div>

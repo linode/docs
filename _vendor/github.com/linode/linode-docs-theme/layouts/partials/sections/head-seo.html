@@ -19,6 +19,9 @@
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
 
+{{/* Structured data. */}}
+{{ partial "sections/head-structured-data.html" . }}
+
 {{/*  If a social media image is set in the frontmatter */}}
 {{ with .Params.image }}
   {{ if eq (printf "%T" .) "string"}}

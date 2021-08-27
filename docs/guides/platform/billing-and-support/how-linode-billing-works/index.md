@@ -8,7 +8,7 @@ og_description: Linode uses an hourly billing system. Use this guide to learn ab
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-02
+modified: 2021-08-25
 modified_by:
   name: Linode
 published: 2019-10-25
@@ -56,7 +56,7 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service]((/docs/guides/manage-billing-in-cloud-manager/#removing-services)) from your account.
+**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services)) from your account.
 
 ## Payments
 
@@ -64,17 +64,23 @@ When an invoice is generated on the first of the month (or mid-month), Linode au
 
 ### Payment Methods
 
-- **Credit cards:** Visa, MasterCard, Discover, and American Express credit (and debit) cards are accepted. They can be used to both automatically pay your invoice and to manually add funds to the account. Review the [Updating Credit Card Information](/docs/guides/manage-billing-in-cloud-manager/#updating-credit-card-information) section to update your credit card on file.
+- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account.
 
-- **PayPal:** PayPal can be used to manually add funds to your account. At this time, it cannot be used as the account's default payment method to automatically pay monthly invoices. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
-
-- **Checks, ACH, and wire transfers:** Please [contact Support](/docs/guides/support/) if you wish to pay through one of these methods.
-
-The address affiliated with a payment method should match the [Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information) on the account.
-
-{{< note >}}
+    {{< note >}}
 Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
 {{< /note >}}
+
+- **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Google Pay can be used to both automatically pay your invoice and to manually add funds to the account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
+
+    {{< note >}}
+To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
+{{</ note >}}
+
+- **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account. At this time, our PayPal integration can only be used to manually add funds to your account. To pay your invoices automatically through PayPal, consider using PayPal through Google Pay.
+
+- **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
+
+See [Adding a New Payment Method](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method) for instructions on adding a new payment method to your account.
 
 ### Manual Payments
 
@@ -102,7 +108,7 @@ To learn more about this program, visit the [Referral Program](https://www.linod
 
 To activate the referral program and obtain a referral link, you must spend at least $25 with Linode, not including any promotional credits added to your account. Once activated, your referral link (including your unique referral code) can be viewed within the Cloud Manager.
 
-1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page.
 1.  Select the **Referrals** tab.
 1.  The referral code and URL are listed within this section.

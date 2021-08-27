@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.99.0
+  version: 4.102.0
 
   title: Linode API
   description: |
@@ -154,6 +154,7 @@ info:
     | STATUS  | DESCRIPTION |
     |---------|-------------|
     | 200 OK  | The request was successful. |
+    | 202 Accepted | The request was successful, but processing has not been completed. The response body includes a "warnings" array containing the details of incomplete processes. |
     | 204 No Content | The server successfully fulfilled the request and there is no additional content to send. |
     | 400 Bad Request | You submitted an invalid request (missing parameters, etc.). |
     | 401 Unauthorized | You failed to authenticate for this resource. |
@@ -534,9 +535,8 @@ paths:
         source: >
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
-              -X PUT -d '{
-                "comments": "I'm consolidating my accounts."
-                }
+              -X POST -d '{
+                "comments": "I am consolidating my accounts."
               }' \
               https://api.linode.com/v4/account/cancel
       - lang: CLI
@@ -1691,6 +1691,8 @@ paths:
         Adds a Payment Method to your Account with the option to set it as the default method. Adding a default
         Payment Method removes the default status from any other Payment Method.
 
+        An Account can have up to 6 active Payment Methods.
+
         Prior to adding a Payment Method, ensure that your billing address information is up-to-date
         with a valid `zip` by using the Account Update ([PUT /account](/docs/api/account/#account-update)) endpoint.
       operationId: createPaymentMethod
@@ -1798,6 +1800,43 @@ paths:
         - lang: CLI
           source: >
             linode-cli account payment-method-view 123
+    delete:
+      x-linode-grant: read_write
+      tags:
+        - Account
+      summary: Payment Method Delete
+      description: |
+        Deactivate the specified Payment Method.
+
+        The default Payment Method can not be deleted. To add a new default Payment Method, access the Payment Method
+        Add ([POST /account/payment-methods](/docs/api/account/#payment-method-add)) endpoint. To designate an existing
+        Payment Method as the default method, access the Payment Method Make Default
+        ([POST /account/payment-methods/{paymentMethodId}/make-default](/docs/api/account/#payment-method-make-default))
+        endpoint.
+      operationId: deletePaymentMethod
+      x-linode-cli-action: payment-method-delete
+      security:
+        - personalAccessToken: []
+        - oauth:
+          - account:read_only
+      responses:
+        '200':
+          description: Payment Method deactivated.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+        - lang: Shell
+          source: >
+            curl -H "Authorization: Bearer $TOKEN" \
+                -X DELETE \
+                https://api.linode.com/v4/account/payment-methods/123
+        - lang: CLI
+          source: >
+            linode-cli account payment-method-delete 123
   /account/payment-methods/{paymentMethodId}/make-default:
     x-linode-cli-command: account
     parameters:
@@ -1916,6 +1955,8 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/Payment'
+        '202':
+          $ref: '#/components/responses/WarningResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -2070,6 +2111,8 @@ paths:
             application/json:
              schema:
                type: object
+        '202':
+          $ref: '#/components/responses/WarningResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -2940,6 +2983,7 @@ paths:
                       "longview_subscription": true,
                       "add_images": true,
                       "add_volumes": true,
+                      "add_firewalls": true,
                       "account_access": "read_only",
                       "cancel_account": false
                     },
@@ -4111,6 +4155,10 @@ paths:
       requestBody:
         description: The requested initial state of a new Linode.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
+        - image
+        - type
         content:
           application/json:
             schema:
@@ -4129,7 +4177,7 @@ paths:
                         A Backup ID from another Linode's available backups. Your User must have
                         `read_write` access to that Linode, the Backup must have a `status` of
                         `successful`, and the Linode must be deployed to the same `region` as the Backup.
-                        See [/linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
+                        See [GET /linode/instances/{linodeId}/backups](/docs/api/linode-instances/#backups-list)
                         for a Linode's available backups.
 
                         This field and the `image` field are mutually exclusive.
@@ -4828,6 +4876,9 @@ paths:
       requestBody:
         description: The requested state your Linode will be cloned into.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
+        - type
         content:
           application/json:
             schema:
@@ -6307,6 +6358,57 @@ paths:
       - lang: CLI
         source: >
           linode-cli linodes upgrade 123
+  /linode/instances/{linodeId}/nodebalancers:
+    parameters:
+    - name: linodeId
+      in: path
+      description: ID of the Linode to look up
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: linodes
+    get:
+      x-linode-grant: read_only
+      tags:
+      - Linode Instances
+      summary: Linode NodeBalancers View
+      description: |
+        Returns a list of NodeBalancers that are assigned to this Linode and readable by the requesting User.
+
+        Read permission to a NodeBalancer can be given to a User by accessing the User's Grants Update
+        ([PUT /account/users/{username}/grants](https://www.linode.com/docs/api/account/#users-grants-update)) endpoint.
+      operationId: getLinodeNodeBalancers
+      x-linode-cli-action: nodebalancers
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - linodes:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of NodeBalancers.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NodeBalancer'
+                  page:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
+                  pages:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
+                  results:
+                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/linode/instances/123/nodebalancers
+      - lang: CLI
+        source: >
+          linode-cli linodes nodebalancers 123
   /linode/instances/{linodeId}/password:
     parameters:
     - name: linodeId
@@ -7363,6 +7465,8 @@ paths:
         are ready.
       requestBody:
         description: Configuration for the Kubernetes cluster
+        x-linode-cli-allowed-defaults:
+        - region
         content:
           application/json:
             schema:
@@ -7410,7 +7514,13 @@ paths:
                   "node_pools": [
                     {
                       "type": "g6-standard-4",
-                      "count": 6
+                      "count": 6,
+                      "autoscaler": {
+                        "enabled": true,
+                        "max": 12,
+                        "min": 3
+                      }
+                  }
                     },
                     {
                       "type": "g6-standard-8",
@@ -7704,7 +7814,12 @@ paths:
                 -X POST -d '{
                   "type": "g6-standard-4",
                   "count": 6,
-                  "tags": ["example-tag"]
+                  "tags": ["example-tag"],
+                  "autoscaler": {
+                    "enabled": true,
+                    "max": 12,
+                    "min": 3
+                  }
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345/pools
       - lang: CLI
@@ -8191,6 +8306,36 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke kubeconfig-view 12345
+    delete:
+      operationId: deleteLKEClusterKubeconfig
+      x-linode-cli-action: kubeconfig-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Kubeconfig Delete
+      description: |
+        Delete and regenerate the Kubeconfig file for a Cluster.
+      responses:
+        '200':
+          description: Kubeconfig file deleted and regenerated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+                -X DELETE \
+                https://api.linode.com/v4/lke/clusters/12345/kubeconfig
+      - lang: CLI
+        source: >
+          linode-cli lke kubeconfig-delete 12345
   /lke/versions:
     x-linode-cli-command: lke
     get:
@@ -10328,9 +10473,7 @@ paths:
       - Networking
       summary: Firewalls List
       description: |
-        Returns a paginated list of your Firewalls.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
+        Returns a paginated list of accessible Firewalls.
       operationId: getFirewalls
       x-linode-cli-action: list
       security:
@@ -10384,11 +10527,6 @@ paths:
         Additional disabled Firewalls can still be added to a Linode instance.
 
         A `firewall_create` Event is generated when this endpoint returns successfully.
-
-        Cloud Firewall is not fully available in every data center region. For the current list
-        of locations with full availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list))
-        endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        Certain Regions have partial Firewall availability
       operationId: createFirewalls
       x-linode-cli-action: create
       security:
@@ -10494,8 +10632,8 @@ paths:
         source: >
           linode-cli firewalls create \
             --label example-firewall \
-            --outbound_policy ACCEPT \
-            --inbound_policy DROP \
+            --rules.outbound_policy ACCEPT \
+            --rules.inbound_policy DROP \
             --rules.inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}, "action": "ACCEPT"}]' \
             --rules.outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.0/24"],"ipv6": ["2001:DB8::/32"]}, "action": "DROP", "label": "outbound-rule123", "description": "An example outbound rule description."}]'
   /networking/firewalls/{firewallId}:
@@ -10526,8 +10664,6 @@ paths:
         returned in the response. Instead, use the
         [List Firewall Devices](/docs/api/networking/#firewall-devices-list)
         endpoint to review them.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Returns information about this Firewall.
@@ -10573,8 +10709,6 @@ paths:
 
         If a Firewall's status is changed with this endpoint, a corresponding `firewall_enable` or
         `firewall_disable` Event will be generated.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: updateFirewall
       x-linode-cli-action: update
       security:
@@ -10634,8 +10768,6 @@ paths:
         from any Linode services that the Firewall was assigned to.
 
         A `firewall_delete` Event is generated when this endpoint returns successfully.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Delete Successful.
@@ -10679,8 +10811,6 @@ paths:
         Returns a paginated list of a Firewall's Devices. A Firewall Device assigns a
         Firewall to a Linode service (referred to as the Device's `entity`). Currently,
         only Devices with an entity of type `linode` are accepted.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewallDevices
       x-linode-cli-action: devices-list
       security:
@@ -10735,8 +10865,6 @@ paths:
         **Note:** When a Firewall is assigned to a Linode and you attempt
         to [migrate the Linode to a data center](/docs/api/linode-instances/#dc-migrationpending-host-migration-initiate) that does not support Cloud Firewalls, the migration will fail.
         Use the [List Regions](/docs/api/regions/#regions-list) endpoint to view a list of a data center's capabilities.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: createFirewallDevice
       x-linode-cli-action: device-create
       security:
@@ -10805,8 +10933,6 @@ paths:
         Returns information for a Firewall Device, which assigns a Firewall
         to a Linode service (referred to as the Device's `entity`). Currently,
         only Devices with an entity of type `linode` are accepted.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: getFirewallDevice
       x-linode-cli-action: device-view
       security:
@@ -10851,8 +10977,6 @@ paths:
         will remain in effect.
 
         A `firewall_device_remove` Event is generated when the Firewall Device is removed successfully.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       responses:
         '200':
           description: Delete Successful.
@@ -10891,16 +11015,6 @@ paths:
       summary: Firewall Rules List
       description: |
         Returns the inbound and outbound Rules for a Firewall.
-
-        This endpoint is in **beta**.
-
-
-        * Gain access to [Linode Cloud Firewall](https://www.linode.com/products/firewall/) by signing up for our [Greenlight Beta program](https://www.linode.com/green-light/#sign-up-form).
-        * During the beta, Cloud Firewall is not available in every [data center region](/docs/api/regions). For the current list of availability, see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
-        * Please make sure to prepend all requests with
-        `/v4beta` instead of `/v4`, and be aware that this endpoint may receive breaking
-        updates in the future.  This notice will be removed when this endpoint is out of
-        beta.
       operationId: getFirewallRules
       x-linode-cli-action: rules-list
       security:
@@ -10934,8 +11048,6 @@ paths:
       description: |
         Updates the inbound and outbound Rules for a Firewall. Using this endpoint will
         replace all of a Firewall's ruleset with the Rules specified in your request.
-
-        Cloud Firewall is not available in every data center region. For the current list of availability, access the Regions List ([GET /regions](/docs/api/regions/#regions-list)) endpoint or see the [Cloud Firewall Product Documentation](https://www.linode.com/docs/products/networking/cloud-firewall/).
       operationId: updateFirewallRules
       x-linode-cli-action: rules-update
       security:
@@ -11033,7 +11145,7 @@ paths:
         There are several ways to detach a VLAN from a Linode:
 
         - [Update](/docs/api/linode-instances/#configuration-profile-update) the active Configuration Profile to remove the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode.
-        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/apilinode-instances/#linode-reboot) the Linode into the new Configuration Profile.
+        - [Create](/docs/api/linode-instances/#configuration-profile-create) a new Configuration Profile without the VLAN interface, then [reboot](/docs/api/linode-instances/#linode-reboot) the Linode into the new Configuration Profile.
         - [Delete](/docs/api/linode-instances/#linode-delete) the Linode.
 
         **Note:** Only Next Generation Network (NGN) data centers support VLANs. Use the Regions ([/regions](/docs/api/regions/)) endpoint to view the capabilities of data center regions.
@@ -11139,6 +11251,8 @@ paths:
       requestBody:
         description: Information about the NodeBalancer to create.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
         content:
           application/json:
             schema:
@@ -15137,10 +15251,14 @@ paths:
       requestBody:
         description: The requested initial state of a new Volume.
         required: true
+        x-linode-cli-allowed-defaults:
+        - region
         content:
           application/json:
             schema:
               type: object
+              required:
+                - label
               properties:
                 region:
                   type: string
@@ -15662,6 +15780,20 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/ErrorObject'
+    WarningResponse:
+      description: |
+        Accepted with warning.
+
+        A warning object is included with the standard 200 response.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              warnings:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WarningObject'
   parameters:
     pageOffset:
       name: page
@@ -17426,6 +17558,10 @@ components:
               type: boolean
               description: If true, this User may add Volumes.
               example: true
+            add_firewalls:
+              type: boolean
+              description: If true, this User may add Firewalls.
+              example: true
         linode:
           type: array
           items:
@@ -19106,6 +19242,30 @@ components:
         Specifies a collection of Linodes which will be members of a Kubernetes
         cluster.
       properties:
+        autoscaler:
+          type: object
+          description: |
+            When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+
+            When making a request, `max` and `min` require each other.
+          properties:
+            enabled:
+              type: boolean
+              description: Whether autoscaling is enabled for this Node Pool. Defaults to `false`.
+              example: true
+            max:
+              type: integer
+              minimum: 1
+              maximum: 100
+              description: |
+                The maximum number of nodes to autoscale to. Defaults to the Node Pool's `count`. Defaults to the value provided by the `count` field.
+              example: 12
+            min:
+              type: integer
+              minimum: 1
+              maximum: 100
+              description: The minimum number of nodes to autoscale to. Defaults to the Node Pool's `count`.
+              example: 3
         type:
           $ref: '#/components/schemas/LKENodePool/properties/type'
         count:
@@ -19136,6 +19296,27 @@ components:
         Node Pools consist of a Linode type, the number of Linodes to
         deploy of that type, and additional status information.
       properties:
+        autoscaler:
+          type: object
+          description: |
+            When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+          properties:
+            enabled:
+              type: boolean
+              description: Whether autoscaling is enabled for this Node Pool. Defaults to `false`.
+              example: true
+            max:
+              type: integer
+              minimum: 1
+              maximum: 100
+              description: The maximum number of nodes to autoscale to. Defaults to the Node Pool's `count`.
+              example: 12
+            min:
+              type: integer
+              minimum: 1
+              maximum: 100
+              description: The minimum number of nodes to autoscale to. Defaults to the Node Pool's `count`.
+              example: 3
         type:
           type: string
           description: The Linode Type for all of the nodes in the Node Pool.
@@ -20825,6 +21006,7 @@ components:
           type: string
           enum:
             - credit_card
+            - google_pay
           description: The type of Payment Method.
           example: 'credit_card'
           x-linode-cli-display: 2
@@ -22230,6 +22412,21 @@ components:
           example:
           - example tag
           - another example
+    WarningObject:
+      type: object
+      description: >
+        An object for describing a single warning for incomplete processing associated with an accepted request.
+      properties:
+        title:
+          type: string
+          description: >
+            The general warning message.
+          example: Unable to reboot Linode.
+        details:
+          type: string
+          description: >
+            Specific information related to the warning.
+          example: Linode 123 could not be rebooted.
 tags:
   - name: Account
     description: Use the Account endpoints to manage user settings, billing, and payments. You can also initiate and maintain OAuth client application authentication, enable the Linode Managed service, and create new users on your account.

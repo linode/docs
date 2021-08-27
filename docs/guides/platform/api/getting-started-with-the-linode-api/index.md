@@ -3,15 +3,14 @@ slug: getting-started-with-the-linode-api
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide introduces the Linode API and demonstrates several basic queries. It also covers authentication and the process of creating a new Linode through the API.'
-og_description: 'This guide introduces the Linode API and demonstrates several basic queries. It also covers authentication and the process of creating a new Linode through the API.'
+description: "This guide introduces the Linode API and demonstrates basic queries, authentication, and creating a new Linode through the API."
 keywords: ["linode api", "api v4", "access token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-20
 modified_by:
   name: Linode
 published: 2018-04-03
-title: Getting Started with the Linode API
+title: "Getting Started with the Linode API"
 external_resources:
   - '[API Documentation](https://developers.linode.com/api/v4/)'
   - '[Linode CLI](https://github.com/linode/linode-cli)'

@@ -3,7 +3,7 @@ slug: install-lets-encrypt-to-create-ssl-certificates
 author:
   name: 'Linode Community'
   email: 'docs@linode.com'
-description: "Let's Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free."
+description: "This guide will show you how to install automation tool Certbot on the Ubuntu 18.04 distribution."
 keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25

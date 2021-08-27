@@ -9,24 +9,7 @@ This guide describes the basics of installing and working with the CLI. It also 
 
 ## Install the CLI
 
-1.  List your Support Tickets:
-
-        linode-cli tickets list
-
-1.  Open a new Ticket:
-
-        linode-cli tickets create --description "Detailed description of the issue" --summary "Summary or quick title for the Ticket"
-
-    If your issue concerns a particular Linode, Volume, Domain, or NodeBalancer, pass the ID with `--domain_id`, `--linode-id`, `--volume_id`, etc.
-
-1.  List replies for a Ticket:
-
-        linode-cli tickets replies $ticket_id
-
-1.  Reply to a Ticket:
-
-        linode-cli tickets reply $ticket_id --description "The content of your reply"
-
+{{< content "linode-cli-install-shortguide" >}}
 
 ## Options
 

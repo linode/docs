@@ -17,8 +17,9 @@ Object Storage is available within the follow data centers.
 
 | Data Center | Cluster ID |
 | ------------| --------------------- |
-| Newark | us-east-1 |
-| Frankfurt | eu-central-1 |
+| Atlanta, GA, USA | us-southeast-1 |
+| Frankfurt, Germany | eu-central-1 |
+| Newark, NJ, USA | us-east-1 |
 | Singapore | ap-south-1 |
 
 Cluster IDs correspond with the Object Storage Cluster located in each data center. They are used when [formatting URLs](#object-storage-urls) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck).

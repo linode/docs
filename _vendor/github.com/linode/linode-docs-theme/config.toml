@@ -26,6 +26,7 @@ weight = 10 # Used to order the sections in the UI. Higher comes first.
 title = "Products"
 noun = "Product Guide"
 filters = "section.lvl0:products"
+explorer_leaf_filter = "isBranch:false"
 # The icons are fetched from layouts/sections/navigation/explorer-icons.html
 explorer_icon = "#icon-explorer--products"
 explorer_map_title = true
@@ -41,7 +42,8 @@ download_settings = true
 name = "guides"
 index = "linode-documentation"
 index_by_pubdate = "linode-documentation-sorted"
-filters = "section.lvl0:guides"
+filters = "section.lvl0:guides OR section.lvl0:taxonomies"
+explorer_leaf_filter = "isBranch:false"
 
 # UI config.
 weight = 20
@@ -128,6 +130,10 @@ hits_per_page = 10
 [[module.mounts]]
 source = "content"
 target = "content"
+
+[[module.mounts]]
+source = "i18n"
+target = "i18n"
 
 [[module.mounts]]
 source = "layouts"

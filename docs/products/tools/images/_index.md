@@ -30,8 +30,16 @@ Store disk images preconfigured with the software you need. These Custom Images 
 
 Store a disk image of an existing Linode, enabling you to restore that image if needed and delete the existing Linode while still saving your data.
 
-## Limits
+## Limits and Considerations
+
+### Overall
 
 {{< content "images-limits-shortguide" >}}
 
-Additional requirements and considerations apply when [capturing an Image](/docs/products/tools/images/guides/capture-an-image/) from a Linode and [uploading an Image](/docs/products/tools/images/guides/upload-an-image/) from a file.
+### Images Created from a Linode
+
+{{< content "capture-image-requirements-shortguide" >}}
+
+### Images Created from a File
+
+{{< content "upload-image-requirements-shortguide" >}}

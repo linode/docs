@@ -14,6 +14,7 @@ modified_by:
 published: 2020-02-10
 title: How to Install Ghost CMS on Ubuntu 18.04 LTS
 h1_title: Installing Ghost CMS on Ubuntu 18.04 LTS
+enable_h1: true
 image: GhostCMSonUbuntu1804.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'
