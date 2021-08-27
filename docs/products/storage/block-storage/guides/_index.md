@@ -9,8 +9,6 @@ tab_group_main:
 
 These guides teach you what you need to know to get started:
 
-### Block Storage Basics
-
 - [Add a Block Storage Volume to a Linode](/docs/products/storage/block-storage/guides/add-volume/): Create a new Block Storage Volume, attach it to your Linode, create a filesystem, and mount your Volume.
 
 - [Attach an Existing Block Storage Volume to a Linode](/docs/products/storage/block-storage/guides/attach-volume/): Attach a Block Storage Volume that was previously created in the Cloud Manager or through the Linode API.
@@ -21,11 +19,7 @@ These guides teach you what you need to know to get started:
 
 - [Delete a Block Storage Volume](/docs/products/storage/block-storage/guides/delete-volume/): Delete a Block Storage Volume when you no longer need any of the data it stores.
 
-### Block Storage Volume Management
-
 - [Resize a Block Storage Volume](/docs/products/storage/block-storage/guides/resize-volume/): Increase the size of a Block Storage Volume after it has been created.
-
-- [Transfer a Volume to a New Linode](/docs/products/storage/block-storage/guides/transfer-volume/): Safely detach your Volume from a Linode and attach it to a different Linode.
 
 - [Transfer Block Storage Data between Data Centers](/docs/products/storage/block-storage/guides/transfer-volume-data-between-data-centers/): Transfer a Block Storage Volume’s data to a Linode in a different data center.
 
