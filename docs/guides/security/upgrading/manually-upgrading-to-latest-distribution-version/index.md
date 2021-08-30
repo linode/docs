@@ -17,25 +17,41 @@ enable_h1: true
 aliases: ['/security/upgrading/upgrade-your-distro-version/']
 ---
 
-Regular updates are important to maintaining your Linux system. On a daily or weekly basis, this may involve performing a quick command to upgrade your existing packages (and their dependencies) as well as obtain any minor distribution releases (such as upgrading from Ubuntu 18.04.4 to 18.04.5). Every few years, however, Linux distributions reach their EOL (end of life) and the developers stop releasing regular security patches and software updates. When this happens, its highly recommended to upgrade to the newest major release for your distribution.
+Software updates play a pivotally role in maintaining a Linux system. On a daily or weekly basis, this may involve performing a quick command to upgrade your existing packages (and their dependencies) as well as obtain any minor distribution releases (such as upgrading from Ubuntu 18.04.4 to 18.04.5). Every few years, however, Linux distributions reach their EOL (end of life) and the developers stop releasing regular security patches and software updates. When this happens, its highly recommended to upgrade to the newest major release for your distribution.
 
 This guide covers upgrading your existing system through performing a *clean installation* of your preferred distribution. In many cases, this is the upgrade path that's recommended by Linode, as it avoids many issues that arise during *inline* upgrades and allows you to skip directly to the newest distribution release (even if your system is several releases behind).
+
+{{< note >}}
+Regardless of your chosen upgrade path ([inline upgrade](#inline-upgrade) or [clean install](#clean-install)), knowledge of your application, your application stack, and general systems administration is important and will help contribute to a seamless and successful upgrade.
+{{</ note >}}
 
 ## Reasons to Upgrade to a Newer Major Distribution Version
 
 - **Updated Kernel:** Many Linux distributions withhold major kernel updates until the next major distribution release.
-- **New features:** Each new major release of a Linux distribution is an opportunity for the developers to include new features and enhancements. These may enable new workflows or make the system more efficient. To learn more about what might be included, review the release notes for the distribution you're interested in upgrading to.
 - **Security patches:** Most distributions (aside from rolling-release distributions like Arch) have a defined EOL (end of life) date in which no additional security patches are released. If you are running a distribution beyond this date, you will become more vulnerable to security threats over time.
+- **New features:** Each new major release of a Linux distribution is an opportunity for the developers to include new features and enhancements. These may enable new workflows or make the system more efficient. To learn more about what might be included, review the release notes for the distribution you're interested in upgrading to.
 - **Application support:** Most Linux applications are distributed through repositories that are specific to each distribution version. Repositories for EOL distributions are typically not updated to include the latest software. In addition, some applications require features or components only found on newer operating systems.
 
 ## Consider the Available Upgrade Paths
 
--   **Inline Upgrade:** An inline (or in-place) upgrade involves upgrading your existing Linux system (or a copy of that existing system). All of your data remains and the operating system upgrades itself to the latest version. The viability of this process depends on several factors, including if your Linux distribution supports it, how reliable the process is for your distribution, and how complex your system configuration is. When this process works smoothly, it may be quicker and easier compared to other options as it typically just involves running a few commands. This guide does not cover in-place upgrades, though the following guides do:
+### Inline Upgrade
 
-    - [How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)](/docs/guides/upgrade-to-ubuntu-18-04/)
-    - [Upgrade Debian to the Newest Release](/docs/guides/upgrade-debian-to-the-newest-release/)
+An inline (or in-place) upgrade involves upgrading your existing Linux system (or a copy of that existing system). All of your data remains and the operating system upgrades itself to the latest version. The viability of this process depends on several factors, including if your Linux distribution supports it, how reliable the process is for your distribution, and how complex your system configuration is. When this process works smoothly, its quicker and easier compared to other options as it typically just involves running a few commands. This guide does not cover inline upgrades, though the following guides do:
 
--   **Clean Install:** This entails deploying the desired distribution version to a new server, manually installing any required packages, and then copying over your application data. Upgrading through a clean installation can appear to be a bit more involved, but it's typically easier to troubleshoot any issues that arise. Another main benefit is that the new system will not have any extra packages or "digital residue" that may have accumulated over years of operating the original system. It also allows you to skip ahead to the newest distribution release, even if you are several releases behind. If you wish to upgrade through a clean installation, continue following this guide.
+- [How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)](/docs/guides/upgrade-to-ubuntu-18-04/)
+- [Upgrade Debian to the Newest Release](/docs/guides/upgrade-debian-to-the-newest-release/)
+
+*Consider an inline upgrade when your system is just one release behind your distribution's latest version and the built-in method for inline upgrades for your distribution is reliable.*
+
+### Clean Install
+
+This entails deploying the desired distribution version to a new server, potentially manually installing any required packages, and then copying over your application data. Although upgrading through a clean installation is much more involved, it can be easier to troubleshoot any issues that arise. Another main benefit is that the new system will not have any extra packages or "digital residue" that may have accumulated over years of operating the original system. It also allows you to skip ahead to the newest distribution release, even if you are several releases behind. If you wish to upgrade through a clean installation, continue following this guide.
+
+*Consider a clean install when your system is several releases behind your distribution's latest version, when switching to a different distribution altogether, or when making major changes to your software stack.*
+
+{{< note >}}
+DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-terraform/) and [Ansible](/docs/guides/getting-started-with-ansible/)), container platforms ([Docker](/docs/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to lean more about targeting a newer Linux distribution.
+{{</ note >}}
 
 ## Before you Begin
 
