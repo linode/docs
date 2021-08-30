@@ -3,14 +3,14 @@ slug: manually-upgrading-to-latest-distribution-version
 author:
   name: Linode
   email: docs@linode.com
-description: "Our guide to upgrading a Linux distribution to the next latest version."
+description: "Outlines options when upgrading a Linux distribution to the next latest version and provides instructions for performing a clean installation."
 keywords: ["upgrading", "ubuntu", "centos","debian"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-27
+modified: 2021-08-30
 modified_by:
-  name: Ryan Syracuse
-published: 2021-08-09
+  name: Linode
+published: 2021-08-30
 title: "How to Upgrade a Linux System to the Latest Distribution"
 h1_title: "Upgrading to the Latest Distribution (Clean Install)"
 enable_h1: true
