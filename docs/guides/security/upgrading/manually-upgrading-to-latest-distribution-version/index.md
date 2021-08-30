@@ -14,7 +14,7 @@ published: 2021-08-30
 title: "How to Upgrade a Linux System to the Latest Distribution"
 h1_title: "Upgrading to the Latest Distribution (Clean Install)"
 enable_h1: true
-aliases: ['/security/upgrading/upgrade-your-distro-version/']
+aliases: ['/security/upgrading/manually-upgrading-to-latest-distribution-version/']
 ---
 
 Software updates play a pivotally role in maintaining a Linux system. On a daily or weekly basis, this may involve performing a quick command to upgrade your existing packages (and their dependencies) as well as obtain any minor distribution releases (such as upgrading from Ubuntu 18.04.4 to 18.04.5). Every few years, however, Linux distributions reach their EOL (end of life) and the developers stop releasing regular security patches and software updates. When this happens, its highly recommended to upgrade to the newest major release for your distribution.
@@ -50,7 +50,7 @@ This entails deploying the desired distribution version to a new server, potenti
 *Consider a clean install when your system is several releases behind your distribution's latest version, when switching to a different distribution altogether, or when making major changes to your software stack.*
 
 {{< note >}}
-DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-terraform/) and [Ansible](/docs/guides/getting-started-with-ansible/)), container platforms ([Docker](/docs/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to lean more about targeting a newer Linux distribution.
+DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-terraform/) and [Ansible](/docs/guides/getting-started-with-ansible/)), container platforms ([Docker](/docs/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to learn more about targeting a newer Linux distribution.
 {{</ note >}}
 
 ## Before you Begin
@@ -66,7 +66,7 @@ Some commands in this guide require elevated privileges and are prefixed with th
 ## Steps for Performing an Upgrade through a Clean Install
 
 1. [Create a new Linode](#create-a-new-linode) in the same data center as the original Linode, making sure to select the distribution image you wish to use for the base of the upgraded system.
-1. [Install any required package](#install-required-packages-on-the-new-linode) on to the new Linode.
+1. [Install the required packages](#install-required-packages-on-the-new-linode) on the new Linode.
 1. [Copy over your data](#copy-data-and-configuration-files) and configuration files to the new Linode.
 1. [Transfer the IPv4 addresses](#transfer-ipv4-addresses) of the original Linode to the new Linode.
 1. [Start using the new system](#start-using-the-new-linode) by rebooting the new Linode and verifying that all of your applications work as expected.
