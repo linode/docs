@@ -154,11 +154,11 @@ The first step in securing the “root” user is to change the username from `r
 
 1. Change the “root” account username by running the following query:
 
-        rename user ‘root’@’localhost' to ‘<new-username’@’localhost’;
+        rename user 'root'@'localhost' to '<new-username'@'localhost';
 
 1. Change the `root` account password to something strong and hard to guess, it is recommended to use a password generator. If you enabled the verify password plugin during the secure installation process, you need to provide a password that meets the policy requirements in terms of strength.
 
-        ALTER USER ‘example_username’@’localhost’ IDENTIFIED BY ‘<new-password>’;
+        ALTER USER 'example_username'@'localhost' IDENTIFIED BY '<new-password>';
 
 1. Reload the privilege table to ensure that all changes are saved and activated by running the following command:
 
@@ -205,7 +205,7 @@ A good security practice is the concept of segregation by duties or role. This m
 
 1. If you decide to delete a particular user, run the following query:
 
-        drop user ’<username>’@'localhost';
+        drop user '<username>'@'localhost';
 
 
 1. Reload the privilege table to ensure the changes made are applied and activated by running the following query:
