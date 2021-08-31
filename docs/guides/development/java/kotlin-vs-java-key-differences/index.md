@@ -1,8 +1,8 @@
 ---
 slug: kotlin-vs-java-key-differences
 author:
-  name: https://kotlinlang.org/
-  email: docs@linode.com
+  name: Jack Wallen
+  email: jlwallen@monkeypantz.net
 description: 'Two to three sentences describing your guide.'
 og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['list','of','keywords','and key phrases']
