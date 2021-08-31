@@ -17,6 +17,8 @@ contributor:
   name: Sandro Villinger
   link: https://twitter.com/sandrovillinger
 external_resources:
+- "[Streamlink's Plugins documentation](https://streamlink.github.io/plugin_matrix.html)"
+- "[Streamlink's Player Options](https://streamlink.github.io/cli.html#positional-arguments)"
 ---
 
 Streamlink lets you watch any stream inside your favorite media players such as VLC or Media Player. You can watch [YouTube](https://www.youtube.com), [Twitch](https://www.twitch.tv), or [DailyMotion](https://www.dailymotion.com/us) video streams on your desktop instead of in your browser. Aside from a cleaner experience, streaming via any desktop player has far less impact on your PC's resources leading to smoother playback.
