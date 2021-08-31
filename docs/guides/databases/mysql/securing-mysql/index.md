@@ -154,7 +154,7 @@ The first step in securing the “root” user is to change the username from `r
 
 1. Change the “root” account username by running the following query:
 
-        rename user 'root'@'localhost' to '<new-username'@'localhost';
+        rename user 'root'@'localhost' to '<new-username>'@'localhost';
 
 1. Change the `root` account password to something strong and hard to guess, it is recommended to use a password generator. If you enabled the verify password plugin during the secure installation process, you need to provide a password that meets the policy requirements in terms of strength.
 
