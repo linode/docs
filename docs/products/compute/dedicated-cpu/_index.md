@@ -17,6 +17,27 @@ Dedicated CPU Compute Instances are virtual machines that provide you with dedic
 
 **Dedicated CPU plans are ideal for nearly all production applications and CPU-intensive workloads, including high traffic websites, video encoding, machine learning, and data processing.** If your application would benefit from dedicated CPU cores as well as a larger amounts of memory, see [High Memory Compute Instances](/docs/products/compute/high-memory/).
 
+
+## Dedicated Competition-Free Resources
+
+A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at top performance.
+
+## Recommended Workloads
+
+- Production websites and applications
+- Applications that required 100% sustained CPU usage.
+- Applications that might be impacted by resource contention.
+- [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
+- [Game servers](/docs/game-servers/) (like Minecraft or Team Fortress)
+- [Audio and video transcoding](/docs/applications/media-servers/)
+- [Big data](/docs/applications/big-data/) (and data analysis)
+- Scientific computing
+- [Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/) and AI
+- High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
+- Replicated or Distributed Filesystems (GlusterFS, DRBD)
+
+For more details and use cases, see the [Use Cases for Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guide.
+
 ## Availability
 
 Dedicated CPU instances are available across [all regions](https://www.linode.com/global-infrastructure/).
@@ -25,37 +46,48 @@ Dedicated CPU instances are available across [all regions](https://www.linode.co
 
 | Resource | Available Plans |
 | -- | -- |
-| *Dedicated* vCPU cores | 2-64 cores |
-| Memory | 4GB - 512GB |
-| Storage | 80GB - 7200 GB |
+| vCPU cores | 2-64 cores |
+| Memory | 4 GB - 512 GB |
+| Storage | 80 GB - 7200 GB |
+| Outbound Network Transfer | 4 TB - 12 TB |
+| Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
 
 Pricing starts at $30 for a Dedicated CPU Compute Instance with 2 vCPU cores, 4GB memory, and 80GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-dedicated) for additional plans and their associated costs.
 
-## Dedicated Competition-Free Resources
+## Additional Technical Specifications
 
-A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at top performance.
+In addition to the resources allocated to each available plan (outlined above), Dedicate CPU Compute Instances have the follow specifications:
 
-## Recommended Workloads
+- Dedicated vCPU cores
+- 100% SSD (Solid State Disk) storage
+- 40 Gbps inbound network bandwidth
+- Free inbound network transfer
+- Dedicated IPv4 and IPv6 addresses (additional addresses available on request)
+- Deploy using the many available [Linux Distributions](https://www.linode.com/distributions/), [Marketplace Apps](https://www.linode.com/marketplace/), or Community [StackScripts](https://www.linode.com/products/stackscripts/)
+- Direct console access through [Lish](/docs/guides/using-the-linode-shell-lish/)
+- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- [Multi-queue NIC](/docs/guides/multiqueue-nic/) support
 
-- Production websites and applications, especially those that might be negatively impacted by resource contention.
-- Applications that required 100% sustained CPU usage.
-- [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
-- CPU-intensive [game servers](/docs/game-servers/), like Minecraft or Team Fortress
-- [Audio and video transcoding and streaming](/docs/applications/media-servers/)
-- [Big data](/docs/applications/big-data/) and data analysis
-- Scientific computing
-- [Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/)
+## Free Bundled Services
 
-    {{< note >}}
-For more information on Dedicated CPU use cases, see our [Use Cases for Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/).
-{{< /note >}}
+Linode bundles the following services with all Compute Instances:
 
-## Features Common to All Compute Instances
-
-- Predictable hourly and monthly pricing (see [Billing and Payments](/docs/guides/how-linode-billing-works/)).
-- Blazing fast **SSD storage**.
-- Free inbound network transfer and ample outbound transfer (see [Network Transfer Quota](/docs/guides/network-transfer-quota/)).
 - Always-on [DDoS Protection](https://www.linode.com/products/ddos/)
-- Can be provisioned and managed through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/).
-- Access to our [DNS Manager](https://www.linode.com/products/dns-manager/) at no additional charge.
-- Compatible with other Linode services, including Backups, Block Storage, Cloud Firewalls, Custom Images, NodeBalancers, VLAN private networks, and more.
+- Domain management through our [DNS Manager](https://www.linode.com/products/dns-manager/)
+- Seamless firewall management with [Cloud Firewalls](https://www.linode.com/products/cloud-firewall/)
+- Private Layer 2 networks with [VLANs](https://www.linode.com/products/vlan/)
+- Metrics and monitoring through the [Cloud Manager](https://www.linode.com/products/monitoring/) and [Longview](/docs/guides/linode-longview-pricing-and-plans/) (free plan)
+- Reusable deployment scripts through [StackScripts](https://www.linode.com/products/stackscripts/)
+
+## Complementary Paid Services
+
+To help build and manage your applications, consider complementing your Compute Instance with the following compatible services:
+
+- Automated daily and weekly backups with our [Backups service](https://www.linode.com/products/backups/)
+- Add additional storage drives with [Block Storage](https://www.linode.com/products/block-storage/)
+- Create and store reusable images with [Custom Images](https://www.linode.com/products/images/)
+- Advanced metrics and monitoring through [Longview Pro](/docs/guides/what-is-longview/)
+- Automated service deployments with [LKE (Linode Kubernetes Engine)](https://www.linode.com/products/kubernetes/)
+- Incident response (and more) with [Managed Services](https://www.linode.com/products/managed/)
+- Enable load balancing and horizontal scaling with [NodeBalancers](https://www.linode.com/products/nodebalancers/)
+- Add scalable storage to your application with [Object Storage](https://www.linode.com/products/object-storage/)
