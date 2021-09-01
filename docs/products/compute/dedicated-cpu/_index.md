@@ -2,14 +2,13 @@
 title: Dedicated CPU Instances
 linkTitle: Dedicated CPU
 toc: true
-description: "Dedicated CPU Linodes offer a complement to CPU intensive tasks and offer competition-free resources."
+description: "Dedicated CPU Compute Instances are virtual machines that provide gauranteed CPU resources. They are ideal for a variety of production applications and CPU-intensive workloads."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Dedicated CPU Compute Instances are virtual machines that provide gauranteed CPU resources. They are ideal for a variety of production applications and CPU-intensive workloads."
     product_description: "Virtual machines that provide dedicated CPU resources. Ideal for production and CPU-intensive workloads."
 ---
 
@@ -20,6 +19,10 @@ Dedicated CPU Compute Instances are virtual machines that provide you with dedic
 ## Dedicated Competition-Free Resources
 
 A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
+
+## Upgrading from a Shared CPU Instance
+
+Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Upgrading to Dedicated CPU Instances](/docs/guides/when-to-upgrade-to-dedicated-cpu/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
 
 ## Recommended Workloads
 
