@@ -17,14 +17,15 @@ Dedicated CPU Compute Instances are virtual machines that provide you with dedic
 
 **Dedicated CPU plans are ideal for nearly all production applications and CPU-intensive workloads, including high traffic websites, video encoding, machine learning, and data processing.** If your application would benefit from dedicated CPU cores as well as a larger amounts of memory, see [High Memory Compute Instances](/docs/products/compute/high-memory/).
 
-
 ## Dedicated Competition-Free Resources
 
-A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at top performance.
+A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to you. Because the vCPU cores are not shared, no other Compute Instances can utilize them. Your instance never has to wait for another process, enabling your software to run at peak speed and efficiency. This allows you to run workloads that require full-duty work (100% CPU all day, every day) at peak performance.
 
 ## Recommended Workloads
 
-- Production websites and applications
+Dedicated CPU Compute Instances are suitable for almost any workload that requires consistently high performant CPU resources. This includes:
+
+- Production websites and e-commerce sites
 - Applications that required 100% sustained CPU usage.
 - Applications that might be impacted by resource contention.
 - [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
