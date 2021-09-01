@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2021-08-27
 title: When to Upgrade From Shared to Dedicated CPU Instances
-h1_title: Upgrading to Dedicated CPU Instances
+h1_title: Upgrading from Shared to Dedicated CPU Instances
 enable_h1: true
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/']
@@ -20,7 +20,7 @@ aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/']
 
 In this guide, you learn how to evaluate your current Shared CPU workloads through manual diagnosis, Linode Cloud Manager analytics, and attributes of your use case, to determine if upgrading to a Dedicated CPU instance would be of benefit.
 
-### Understanding Shared Hosting
+## Understanding Shared Hosting
 
 To best understand the performance differences between Dedicated instances and Shared instances, it's important to understand what Shared Hosting really means as a term for general use and how it applies to performance.
 
@@ -39,7 +39,7 @@ Shared hosting helps to make Cloud services more affordable, especially for use 
 
 That being said, shared CPU isn't the recommended choice for many professional workloads which rely on steady service. While many users can still expect to see results if they require a more affordable solution for other use cases, most professional workloads will benefit from a dedicated CPU.
 
-### Understanding Dedicated CPUs
+## Understanding Dedicated CPUs
 
 In comparison to Shared instances, Dedicated CPU instances run on their own CPU cores as part of the Linode Cloud infrastructure. Hypervisor resources for Dedicated CPU instances are not shared with other instances in any capacity. This allows for a higher level of constant predictable performance for full-duty work, and opens up the ability to use your instance's CPU at its absolute maximum capacity (100% CPU all day, every day).
 
@@ -125,3 +125,7 @@ If you find that a Dedicated CPU alone is not enough for your workload and you m
 Additionally, [GPU instances](/docs/products/compute/gpu/) provide access to NVIDIA Quadro RTX 6000 GPU cards with Tensor, ray tracing (RT), and CUDA cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU alone, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 
 As of June 16, 2020, all High Memory and GPU plans utilize dedicated CPU cores by default, as part of the package including the specialized resources they provide.
+
+## How to Upgrade Your Shared Instance
+
+For more information on how to upgrade or resize your shared instance, consult our [/docs/guides/resizing-a-linode/](Resizing a Linode) guide.
