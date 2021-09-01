@@ -8,7 +8,7 @@ keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
-modified: 2021-08-17
+modified: 2021-09-01
 modified_by:
   name: Linode
 published: 2014-09-25
@@ -19,9 +19,9 @@ Linode's **Images** service allows users to store custom disk images in the Clou
 
 ## Pricing and Availability
 
-Images are currently available at no charge to Linode customers and can be deployed across [all regions](https://www.linode.com/global-infrastructure/).
-
 {{< content "images-ga-pricing-update-shortguide" >}}
+
+Custom Images cost $0.10/GB per month and are available across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Types of Images
 
