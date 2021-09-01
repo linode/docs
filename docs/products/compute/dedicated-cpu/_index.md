@@ -22,7 +22,7 @@ A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to y
 
 ## Upgrading from a Shared CPU Instance
 
-Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Upgrading to Dedicated CPU Instances](/docs/guides/when-to-upgrade-to-dedicated-cpu/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
+Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Upgrading from Shared to Dedicated CPU Instances](/docs/guides/when-to-upgrade-to-dedicated-cpu/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
 
 ## Recommended Workloads
 
