@@ -43,10 +43,10 @@ That being said, shared CPU isn't the recommended choice for many professional w
 
 In comparison to Shared instances, Dedicated CPU instances run on their own CPU cores as part of the Linode Cloud infrastructure. Hypervisor resources for Dedicated CPU instances are not shared with other instances in any capacity. This allows for a higher level of constant predictable performance for full-duty work, and opens up the ability to use your instance's CPU at its absolute maximum capacity (100% CPU all day, every day).
 
-While dedicated CPU is recommended for most professional use cases where peak performance at all times is key, there are some more notable cases which will see the highest level of benefit. Any time you notice a high and steady level of CPU usage for example, or otherwise are in a position which applies more strain on your CPU frequently, Dedicated CPUs may be less of a recommendation and more of a need. The following use cases specifically tend to see more dramatic performance benefits from a dedicated CPU.
+While Dedicated CPU is recommended for most professional use cases where peak performance at all times is key, there are some more notable cases which will see the highest level of benefit. Any time you notice a high and steady level of CPU usage for example, or otherwise are in a position which applies more strain on your CPU frequently, Dedicated CPUs may be less of a recommendation and more of a need. The following use cases specifically tend to see more dramatic performance benefits from a dedicated CPU.
 
 - Production Websites for eCommerce, Businesses, and Apps
-- CI/CD Toolchains and Build Servers-
+- CI/CD Toolchains and Build Servers
 - Game Servers
 - Audio and Video Transcoding
 - Big Data and Data analysis
@@ -55,7 +55,7 @@ While dedicated CPU is recommended for most professional use cases where peak pe
 - High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
 - Replicated or Distributed Filesystems (GlusterFS, DRBD)
 
-For more information on these use cases and whether or not your use case may be a good fit for dedicated CPU, see our guide on [Use Cases for Dedicated CPU](/docs/guides/dedicated-cpu-use-cases/).
+For more information on these use cases and whether or not your use case may be a good fit for Dedicated CPU, see our guide on [Use Cases for Dedicated CPU](/docs/guides/dedicated-cpu-use-cases/).
 
 Additionally, you may ask yourself some of the following questions:
 - Is my server performance critical to the success of my business, app, or other use case?
@@ -114,7 +114,7 @@ By default, the Cloud Manager will log a history of resource usage and plot CPU 
 
 1. By default, the `analytics` tab for the instance will be automatically selected, and directly underneath the CPU usage graph will be observable.
 
-Generally, when observing the CPU graph, good candidates for an upgrade to a dedicated CPU will have high and often relatively steady CPU usage. That being said, this does not necessarily need to be constant and may have high peaks that reflect a possibility for improvement with a dedicated CPU.
+Generally, when observing the CPU graph, good candidates for an upgrade to a Dedicated CPU will have high and often relatively steady CPU usage. That being said, this does not necessarily need to be constant and may have high peaks that reflect a possibility for improvement with a Dedicated CPU.
 
 ![Dedicated CPU Candidate Graph](cpuusagethrottle.png "Create a Dedicated CPU instance in the Cloud Manager")
 
