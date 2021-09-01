@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2021-08-27
-title: When to Upgrade to frame a Shared to Dedicated CPU Instances
+title: When to Upgrade From Shared to Dedicated CPU Instances
 h1_title: Upgrading to Dedicated CPU Instances
 enable_h1: true
 tags: ["linode platform"]
@@ -18,7 +18,7 @@ aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/']
 
 ## In This Guide
 
-In this guide, you learn how to evaluate your current Shared CPU workloads through manual diagnosis, Linode Cloud Manager analytics, and attributes of your use case, if upgrading to a Dedicated CPU instance would be of benefit.
+In this guide, you learn how to evaluate your current Shared CPU workloads through manual diagnosis, Linode Cloud Manager analytics, and attributes of your use case, to determine if upgrading to a Dedicated CPU instance would be of benefit.
 
 ### Understanding Shared Hosting
 
@@ -28,7 +28,7 @@ Shared Hosting, as the name implies, describes a hosting service in which custom
 
 With Shared instances, some level of contention can almost always be expected, as all customers on a host are entitled to the maximum amount of CPU resources their plan includes. While at Linode we do our best to keep contention down to an absolute minimum, the reality is that it is an inevitability when working in a shared hosting environment.
 
-Shared hosting helps to make Cloud services more affordable, especially for use cases when the maximum number of CPU resources aren't needed with any urgency and some liberty can be taken with overall performance. Some of these use cases can include:
+Shared hosting helps to make Cloud services more affordable, especially for use cases where the maximum number of CPU resources aren't needed with any urgency and some liberty can be taken with overall performance. Some of these use cases can include:
 
 - Personal Blogs
 - Personal Projects
@@ -60,7 +60,7 @@ For more information on these use cases and whether or not your use case may be 
 Additionally, you may ask yourself some of the following questions:
 - Is my server performance critical to the success of my business, app, or other use case?
 - Will visitors to my server leave if performance degrades?
-- How willing am I to deal with the uncertainty of my neighbors on the host server?
+- Is my workload unable to accept the uncertainty of my neighbors on the host server?
 
 If you answered yes to any of the above, you should start with, or move to, a Dedicated CPU instance.
 
@@ -87,7 +87,7 @@ avg-cpu:  %user   %nice %system %iowait  %steal   %idle
            0.00    0.00    0.00    0.00    0.00  100.00
 {{< /output >}}
 
-However, an instance that is experiencing contention will CPU steal that can be as high as several percentage points. The following for example, reflects a instance that is encountering a low level of steal:
+However, an instance that is experiencing contention will see CPU steal that can be as high as several percentage points. The following for example, reflects a instance that is encountering a low level of steal:
 
 {{< output >}}
 avg-cpu:  %user   %nice %system %iowait  %steal   %idle
@@ -120,7 +120,7 @@ Generally, when observing the CPU graph, good candidates for an upgrade to a ded
 
 ## What If I Need More Specialized Resources Than a Dedicated CPU?
 
-If you find that a Dedicated CPU alone is not enough for your workload and you may benefit from something more specialized, then you may benefit from service offerings that come with more or different resources than a CPU alone can provide. [High Memory](/docs/products/compute/high-memory/) plans feature higher RAM allocations than a standard plan with relatively fewer vCPUs and less storage. This can help to keep your costs down and provide power to memory-intensive applications.
+If you find that a Dedicated CPU alone is not enough for your workload and you may benefit from something more specialized, then you be interested service offerings that come with more or different resources than a Dedicated CPU alone can provide. [High Memory](/docs/products/compute/high-memory/) plans feature higher RAM allocations than a standard plan with relatively fewer vCPUs and less storage. This can help to keep your costs down and provide power to memory-intensive applications.
 
 Additionally, [GPU instances](/docs/products/compute/gpu/) provide access to NVIDIA Quadro RTX 6000 GPU cards with Tensor, ray tracing (RT), and CUDA cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU alone, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 
