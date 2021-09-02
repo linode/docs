@@ -104,23 +104,7 @@ To resize a disk, the Linode needs to be powered off.
 
 ## Cloning a Disk
 
-A disk can be duplicated onto the same Linode or any other Linode on the account.
-
-1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
-
-1. Click the **Power Off** button in the upper right of the page or within the **ellipsis** menu. Before proceeding, wait until the Linode has been fully powered off.
-
-1. On the Linode's dashboard page, navigate to the **Storage** tab.
-
-1. Within the **Disks** table, locate the disk you wish to clone and click the corresponding **Clone** button, which may also appear within the **ellipsis** menu. This displays the **Clone** form.
-
-    ![Cloning a Disk](linode-disk-clone.png "Cloning a Disk")
-
-1. Check any other disks that you wish to clone and select the **Destination** Linode, which can be the same Linode or a different Linode. The destination Linode will need to have enough remaining unallocated storage space to accommodate the full size of the cloned disk(s).
-
-1. Click **Clone**. The progress can be monitored as part of the Linode's status, which is visible above the Linode's **Summary**.
-
-1. Once the disk has been successfully cloned, click the **Power On** button to boot up the Linode.
+A disk can be duplicated onto the same Linode or any other Linode on the account. See [Cloning a Linode > Cloning to an Existing Linode](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) for instructions.
 
 ## Deleting a Disk
 

@@ -189,8 +189,9 @@ export function newSearchExplorerController(searchConfig) {
 		INITIAL: 0,
 		OPENING: 1,
 		SEARCH_READY: 2,
-		LOADING: 3,
-		LOADED: 4
+		DATA_LOADED: 3,
+		LOADING: 4,
+		LOADED: 5
 	};
 
 	var templates = {};
@@ -281,6 +282,9 @@ export function newSearchExplorerController(searchConfig) {
 
 			this.data.searchState = data;
 			this.isSearchFiltered = data.query.isFiltered() || data.mainSearch.results.isSectionDisabled();
+			if (this.initState < initStates.DATA_LOADED) {
+				this.initState = initStates.DATA_LOADED;
+			}
 			this.load();
 		},
 
@@ -295,10 +299,10 @@ export function newSearchExplorerController(searchConfig) {
 		},
 
 		receiveToggle: function(detail) {
+			debug('receiveToggle', detail);
 			if (detail.source === component) {
 				return;
 			}
-			debug('receiveToggle', detail);
 			switch (detail.what) {
 				case 'search-input':
 					if (detail.open) {
