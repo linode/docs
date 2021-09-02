@@ -54,11 +54,11 @@ The NPM CLI itself is more than a way to install packages. Its `package.json` ma
 
 ### NPM vs Yarn
 
-You may already have heard of the Yarn package manager which has become a popular alternative to NPM itself. (You can learn more about Yarn in our [How to Install and Use the Yarn Package Manager](/docs/guides/how-to-use-yarn/) guide).
+You may already have heard of the Yarn package manager which has become a popular alternative to NPM itself. (You can learn more about Yarn in our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager) guide).
 
 Both NPM and Yarn use the NPM registry to get packages and package information, and the commands in each tool are pretty similar. So what sets NPM apart?
 
-One of the most immediate advantages of NPM is that it is the default. If you have Node.js, you have NPM. (And, if you do not have Node.js yet, see the [How to Install NPM](/docs/guides/how-to-use-npm/#how-to-install-npm) section below to see how to get it). This means that you can easily and immediately start working with NPM for your Node.js projects.
+One of the most immediate advantages of NPM is that it is the default. If you have Node.js, you have NPM. (And, if you do not have Node.js yet, see the [How to Install NPM](/docs/guides/install-and-use-npm-on-linux/#how-to-install-npm) section below to see how to get it). This means that you can easily and immediately start working with NPM for your Node.js projects.
 
 NPM is also the most popular Node.js package manager. With that popularity comes a wide range of coverage. You are more likely to find Node.js projects and examples that use NPM than you are to find ones using Yarn.
 
