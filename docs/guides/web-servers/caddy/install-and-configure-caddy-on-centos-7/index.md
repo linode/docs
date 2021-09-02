@@ -53,7 +53,7 @@ aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
 
         sudo yum install caddy
 
-1. To verfiy the installation of caddy type:
+1. To verify the installation of caddy type:
        caddy version
     An output similar to the following appears:
 

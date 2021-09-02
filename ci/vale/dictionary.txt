@@ -1878,6 +1878,7 @@ wx
 xabbix
 xap
 xargs
+xcaddy
 xcalc
 xcode
 xen

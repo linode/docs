@@ -50,7 +50,7 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-debian-10/']
         sudo apt update
         sudo apt install caddy
 
-1. To verfiy the installation of caddy type:
+1. To verify the installation of caddy type:
        caddy version
     An output similar to the following appears:
 
@@ -72,7 +72,7 @@ Rule added
 Rule added (v6)
 {{< /output >}}
 
-1. Verifdy the changes:
+1. Verify the changes:
        sudo ufw status
 
 An output similar to the following appears:

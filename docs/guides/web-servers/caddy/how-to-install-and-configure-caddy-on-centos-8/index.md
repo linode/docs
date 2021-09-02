@@ -36,7 +36,7 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-centos-8/']
 
         sudo yum update
 
-1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
+1. Install the SELinux core policy Python utilities. This gives you the ability to manage SELinux settings in a fine-grained way.
 
         sudo yum install -y policycoreutils-python-utils
 
@@ -51,7 +51,7 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-centos-8/']
 
         sudo dnf install caddy
 
-1. To verfiy the installation of caddy type:
+1. To verify the installation of caddy type:
        caddy version
     An output similar to the following appears:
 

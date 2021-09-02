@@ -57,7 +57,7 @@ Install the latest version of `xcaddy`, a command line tool that downloads and b
 
         sudo mv caddy /usr/bin
 
-1. To verfiy the installation of caddy type:
+1. To verify the installation of caddy type:
        caddy version
     An output similar to the following appears:
 
