@@ -8,6 +8,8 @@ og_description: 'How to install an Ark server on Ubuntu.'
 keywords: ["ark survival evolved", "ubuntu", "server"]
 tags: ["ubuntu","game servers"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+modified_by:
+  name: Linode
 title: 'Ark Dedicated Server on Ubuntu'
 h1_title: "How to create a dedicated Ark server on Ubuntu"
 enable_h1: true
