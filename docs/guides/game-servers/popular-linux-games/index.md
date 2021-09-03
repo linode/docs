@@ -85,6 +85,6 @@ There are a plethora of big games that are not natively available on Linux. In s
 
 ### How Do I Find Linux Games on Steam?
 
-The biggest gaming client, Steam, lets you find, buy, and run Linux games easily. Open Steam, go to the [Store page](https://store.steampowered.com/), click on **Categories**, and then click **SteamOS + Linux**.
+The biggest gaming client, [Steam](/docs/guides/install-steamcmd-for-a-steam-game-server/), lets you find, buy, and run Linux games easily. Open Steam, go to the [Store Page](https://store.steampowered.com/), click on **Categories**, and then click **SteamOS + Linux**.
 
-This gets you to the storefront for Linux games. Scroll down and go to the **New and Trending**, **Top Sellers**, and **Upcoming** tabs to find the available games.
+This brings you to the storefront for Linux games. Scroll down to the **New and Trending**, **Top Sellers**, and **Upcoming** tabs to find the available games.
