@@ -1,14 +1,13 @@
 ---
 slug: install-and-use-the-yarn-package-manager
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to install and use the Yarn package manager to install packages for JavaScript projects."
-og_description: "Learn how to install and use the Yarn package manager to install packages for JavaScript projects."
+  name: Nathaniel Stickman
+description: "Learn how to install and use the Yarn package manager. Yarn is an alternative to NPM that you can use to install and manage packages for your JavaScript projects."
+og_description: "Learn how to install and use the Yarn package manager. Yarn is an alternative to NPM that you can use to install and manage packages for your JavaScript projects."
 keywords: ['yarn package manager','yarn install','yarn vs npm']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-05
+published: 2021-09-03
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Use the Yarn Package Manager"
@@ -18,42 +17,22 @@ contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Yarn Classic: Documentation](https://classic.yarnpkg.com/en/docs)'
+- '[Yarn Classic Documentation](https://classic.yarnpkg.com/en/docs)'
 ---
 
-Yarn is a package manager designed to be a more performant alternative to NPM for managing your Node.js project's dependencies. Learn more about Yarn, how it stacks up against NPM, and how to get started using it in this guide.
-
-## Before You Begin
-
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, run the following command:
-
-            sudo apt update && sudo apt upgrade
-
-    - On AlmaLinux and CentOS, use:
-
-            sudo yum update
-
-{{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+Yarn is a Node.js package manager used to handle JavaScript project dependencies. It was originally developed to be a more performant alternative to the Node Package Manager (NPM). This guide discusses the differences between Yarn and NPM and shows you how to get started using it.
 
 ## Yarn vs NPM
 
-The Yarn package manager uses the NPM registry, so it maintains access to all of the packages available through NPM. And Yarn's commands are generally similar to NPM's. So what sets Yarn apart?
+The Yarn package manager uses the NPM registry, so it has access to all of the packages available through NPM. Yarn's commands are also generally similar to NPM's.
 
-Yarn's chief advantage over NPM is its speed. Originally, Yarn was created to address performance and security concerns in NPM. Since then, NPM has made significant changes to address security concerns and even improved its performance. But, nonetheless, Yarn remains far, and away faster than NPM.
+Yarn's chief advantage over NPM is its speed. Originally, Yarn was created to address performance and security concerns in NPM. Since then, NPM has made significant changes to address security concerns and even improved its performance. However, Yarn remains faster than NPM.
 
-Yarn's performance advantage makes it especially useful for projects where installation speed is a factor. Large projects, for instance, can be more quickly set up on new machines, with dependencies installing in a fraction of the time needed by NPM. Projects that require automated installation, too, can make good use of Yarn's performance.
+Yarn's performance advantage makes it especially useful for projects where installation speed is a factor. Large projects can be more quickly set up on new machines, with dependencies installing in a fraction of the time needed by NPM. Projects that require automated installation can make good use of Yarn's performance.
 
 Yarn has also prioritized user-friendliness. Its output tends to be clear and straightforward, in contrast to the often verbose and difficult-to-decipher output from NPM.
 
-Yarn previously had an advantage with its `yarn.lock` file. Yarn creates this file by default when adding packages to a project. The file tracks exact package versions installed and their installation order to ensure consistent versioning and file structure when installing project dependencies. But NPM, taking inspiration from Yarn, has recently added its own lock file, `package-lock.json`. It works similarly to Yarn's and brings the two package managers essentially to an even playing field when it comes to lock files.
+Yarn previously had an advantage with its `yarn.lock` file. Yarn creates this file by default when packages are added to a project. The file tracks exact package versions installed and their installation order. This ensures consistent versioning and file structure when installing project dependencies. NPM, however, has recently added its own lock file, `package-lock.json`. It works similarly to Yarn's and brings the two package managers essentially to an even playing field when it comes to lock files.
 
 ## How to Install Yarn
 
@@ -71,13 +50,18 @@ Yarn previously had an advantage with its `yarn.lock` file. Yarn creates this fi
 
 This section shows you how to work with packages using Yarn.
 
-Most of the time, you want Yarn to help you work with packages for a specific project. You can use the commands below to create a project directory and initialize a Yarn project as an example to follow along within this guide.
+Most of the time, Yarn is used to work with packages for a specific project. You can use the commands below to create a project directory and initialize a Yarn project as an example to follow along within this guide.
+
+Create a new project directory and move into it.
 
     mkdir ~/example-app
     cd ~/example-app
+
+Initialize the new project using Yarn.
+
     yarn init
 
-Yarn prompts you for information about the project. You can use the defaults for this example. The result is an initial `package.json` file representing the project. For more on the `package.json`, take a look at the section for it in our [How to Install and Use Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#packagejson) guide.
+Yarn prompts you for information about the project. You can use the defaults for this example. The result is an initial `package.json` file representing the project. For more on the `package.json`, take a look our [How to Install and Use Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#packagejson) guide.
 
 ### How to Install a Package with Yarn
 
@@ -89,7 +73,7 @@ You can, alternatively, specify the exact version of the package you want Yarn t
 
     yarn add tailwindcss@2.2.7
 
-This method even lets you specify a version range. Just wrap the version part of the expression in quotations, and precede the version with the relevant comparison operators. You can separate multiple versions constraints with spaces.
+This method also lets you specify a version range. Wrap the version part of the expression in quotations, and precede the version with the relevant comparison operators. You can separate multiple version constraints with spaces.
 
     yarn add tailwindcss@">2.2.0 <=2.2.7"
 
@@ -109,17 +93,17 @@ For any of the above commands, Yarn updates the `package.json` file with the pac
 }
 {{< /output >}}
 
-Finally, if you are trying to install dependencies for an existing project, with its own `package.json`, just run the following command in the base directory:
+Finally, if you are trying to install dependencies for an existing project, with its own `package.json`, run the following command in the base directory:
 
     yarn install
 
 ### How to Remove a Package with Yarn
 
-You can uninstall a Yarn package with the `remove` command.
+You can uninstall a Yarn package with the `remove` command. Replace the example package with your own package's name.
 
     yarn remove tailwindcss
 
-As with the `add` command, Yarn here also updates the `package.json` to reflect the removed package.
+As with the `add` command, Yarn updates the `package.json` to reflect the removed package.
 
 {{< output >}}
 {
@@ -137,13 +121,13 @@ You can use the command below to update all of a project's packages to their lat
 
     yarn upgrade
 
-The update utilizes the version numbers or ranges given in the `package.json` file for the project so that the updates do not conflict with your specified package versions for the project.
+The update utilizes the version numbers or ranges listed in your project's `package.json` file. This ensures that the updates do not conflict with your specified package versions for the project.
 
 ### Yarn Global
 
 Packages can also be managed at a global level. These packages are not associated with a particular project, so they can be accessed across your system and outside of a project context.
 
-You can install a package globally using the `global` command followed by the `add` command you would use to install the package otherwise.
+You can install a package globally using the `global` command followed by the `add` command and the name of your package.
 
     yarn global add tailwindcss@2.2.7
 
@@ -151,6 +135,6 @@ To uninstall a package that you installed globally, likewise use the `global` co
 
     yarn global remove tailwindcss
 
-Finally, you can also use the `upgrade` command globally, as in:
+Finally, you can also use the `upgrade` command globally to upgrade all packages to their latest version.
 
     yarn global upgrade
