@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-03
 modified_by:
   name: Linode
-title: "Python Testing Frameworks for Use With Jupyter Notebook"
-h1_title: "An Overview of Python Testing Frameworks for Use With Jupyter Notebook"
+title: "Python Testing Frameworks for Use with Jupyter Notebook"
+h1_title: "An Overview of Python Testing Frameworks for Use with Jupyter Notebook"
 enable_h1: true
 contributor:
   name: John Mueller
@@ -28,25 +28,23 @@ external_resources:
 
 ---
 
-Writing code can be interesting, fun, and productivity-enhancing. It can also be a grind, frustrating, and inefficient. How your coding experience affects you and those who use your applications, depends on whether the code you create actually works. The only problem is that you can’t be sure how your code works until you test it.
-
-Most Python unit testers work at the command line without problem within their capabilities. However, many developers today rely on environments such as *Jupyter Notebook* (which currently [supports over 40 languages](https://jupyter.org/)) to code their applications because it provides them with a friendly environment. In addition, a number of sites report that there are over [3 million publicly available notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks) today. This overview showcases popular Python testing frameworks. It also focuses on whether a particular unit tester works in Jupyter Notebook in addition to the command line because of Jupyter Notebooks used in the Science and Mathematics communities.
+This guide provides an introduction to popular Python testing frameworks that you can use with Jupyter Notebook. Jupyter Notebook provides a friendly interface for Python programming. This tool is increasingly popular in the Science and Mathematics communities.
 
 ## Popular Python Testing Frameworks
 
-There are many Python unit test frameworks out there and each of them has something to offer. This guide focuses on the most popular products. The following are some of the frameworks that provide a brief overview of what you can expect from them.
+The list below includes some of the most popular Python testing frameworks and what you can expect from each one.
 
-- **DocTest**: Provides an interactive shell for the command prompt. Can also be used in environments, such as Jupyter Notebook with greater ease than just about any other package.
+- [**DocTest**](https://docs.python.org/3/library/doctest.html): Provides an interactive command-line shell and can be integrated with Jupyter Notebook with greater ease than other testing packages.
 
     Poor documentation makes using this particular unit tester more difficult to use than it should be. It’s also limited to simpler testing scenarios.
 
-- **PyTest**: Includes a simple class fixture that makes testing easier. This is possibly the most widely used framework, so there are a lot of available resources.
+- [**PyTest**](https://docs.pytest.org/en/6.2.x/): Includes a simple class fixture that makes testing easier. Due to PyTests wide adoption, there are a lot of available resources to help you learn how to use it.
 
-    Because of all the really useful features this package provides, it’s also completely incompatible with other packages. You also need to understand Python relatively well to use it effectively. In addition, Jupyter Notebook support requires an extra package.
+    PyTest is feature-rich, but due to its complexity requires a strong familiarity with Python. In order to use PyTest with Jupyter Notebook, you need to install an additional package.
 
-- **UnitTest**: Integrates easily with the Python environment and provides speedy testing. You don’t have to install anything special to use it. It’s also quite flexible and allows for detailed testing.
+- [**UnitTest**](https://docs.python.org/3/library/unittest.html): Integrates easily with the Python environment and provides speedy testing. You don’t have to install anything special to use it. It’s also quite flexible and allows for detailed testing.
 
-    Based on JUnit, so it doesn't use the Python typographical conventions. Some developers also find it abstract and they need a lot of boilerplate code to use.
+    This framework is based on JUnit, so it doesn't use Python's typographical conventions. This framework also requires a lot of boilerplate code to use.
 
 ## Examples Using Python Testing Frameworks
 
@@ -75,11 +73,11 @@ def factorial(n):
     return result
 {{< /file >}}
 
-The code consists of a single function using the well-known factorial calculation. The function performs three tests of the input variables: negative numbers, non-integer values, and values that are too high. Consequently, the unit testers must not only check correct input values but incorrect values as well.
+The code consists of a single function using the well-known factorial calculation. The function performs three tests on the input variables: negative numbers, non-integer values, and values that are too high. Consequently, the unit testers must not only check correct input values but incorrect values as well.
 
 ## DocTest Python Example
 
-Even though this particular unit tester is part of the standard library, you seldom see it mentioned because of the documentation supplied at [doctest — Test interactive Python examples — Python 3.9.5 documentation](https://docs.python.org/3/library/doctest.html) makes it appear that you can only use it at the command line. As part of the test for this guide, DocTest is used within Jupyter Notebook within a cell separate from the `factorial()` function. In addition, the methodology for performing tests is poorly documented. However, this is actually a wonderful example of a unit tester because configuring it is easy and it provides a variety of methods to perform testing. Given the above test `factorial()` function, the following is a unit test setup:
+As part of the test for this guide, DocTest is used using Jupyter Notebook within a cell separate from the `factorial()` function. Given the above test `factorial()` function, the following is a unit test setup:
 
 {{< file "main.py" >}}
 
