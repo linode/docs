@@ -110,9 +110,6 @@ Before following along, you need to give each script executable permission, whic
     sudo chmod +x binary-tree.pl
     sudo chmod +x binary-tree.py
 
-HTTPie and curlie
-curl and wget
-
 ### Benchmarking a Command
 
 `hyperfine` can execute basic benchmarks with a command as simple as this, which benchmarks our Perl script. Notice that `hyperfine` can easily include command-line arguments in its commands, like the `10` below:
