@@ -329,6 +329,7 @@ despawn
 dest
 dereference
 dereferencing
+desperados
 destructured
 dev
 devel
@@ -974,6 +975,7 @@ metapackage
 metaparameters
 metorik
 metricbeat
+metroid
 microblogging
 microblogs
 microservice
@@ -1238,6 +1240,7 @@ pipenv
 piwik
 pki
 plaintext
+platformer
 plesk
 plex
 plone
@@ -1635,6 +1638,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+techland
 teleporting
 tensorflow
 terrahelp
