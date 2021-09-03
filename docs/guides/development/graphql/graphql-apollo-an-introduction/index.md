@@ -3,15 +3,15 @@ slug: graphql-apollo-an-introduction
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. In this guide, you learn what a GraphQL is, and how to use an Apollo GraphQL client with any Apollo GraphQL server.'
-og_description: 'Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. In this guide, you learn what a GraphQL is, and how to use an Apollo GraphQL client with any Apollo GraphQL server.'
+description: 'Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. In this guide, you learn what GraphQL is, and how to use the Apollo GraphQL client with any GraphQL server.'
+og_description: 'Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. In this guide, you learn what GraphQL is, and how to use the Apollo GraphQL client with any GraphQL server.'
 keywords: ['what is apollo graphql', 'apollo graphql client', 'apollo graphql server']
-tags: ['graphql']
+tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-19
+published: 2021-09-03
 modified_by:
   name: Linode
-title: "GraphQL Apollo: An Introduction"
+title: "An Introduction to GraphQL Apollo"
 h1_title: "GraphQL Apollo: An Introduction with Examples"
 enable_h1: true
 contributor:
@@ -24,7 +24,7 @@ external_resources:
 
 GraphQL is a server-side runtime and query language for APIs. Known for its speed, GraphQL is ideal for limited-bandwidth edge devices, and applications that benefit from GraphQL's bandwidth-saving query format. Compared to representational state transfer (REST), GraphQL lets you retrieve all the data you need in a single query. GraphQL began as an internal project at Facebook in 2012. After a public release in 2015, the [GraphQL Foundation](https://graphql.org/foundation/) was created in 2018 to provide a permanent home for GraphQL.
 
-The example below displays a basic GraphQL query. The query retrieves data from specific fields on the `realtor` object:
+The example below displays a basic GraphQL query. The query retrieves data from specific fields on the example `realtor` object:
 
 {{< output >}}
 {
@@ -34,7 +34,7 @@ The example below displays a basic GraphQL query. The query retrieves data from 
 }
 {{< /output >}}
 
-The result of such a query returns the following JSON output:
+The result of the query returns the following JSON output:
 
 {{< output >}}
 {
@@ -48,15 +48,33 @@ The result of such a query returns the following JSON output:
 
 ## What is Apollo GraphQL?
 
-As a public specification, there are several GraphQL implementations. [Apollo](https://www.apollographql.com/) maintains the most prominent of these implementations. Apollo GraphQL is the collection of implementations the Apollo company bases on the GraphQL standard. Apollo’s implementation is largely [open-source](https://www.apollographql.com/docs/apollo-server/): anyone can use it freely. Apollo offers specialized paid services that bring value to large-scale applications of GraphQL.
+As a public specification, there are several GraphQL implementations. [Apollo](https://www.apollographql.com/) maintains the most prominent of these implementations. Apollo GraphQL is the collection of implementations the Apollo company bases on the GraphQL standard. Apollo’s implementation is largely [open-source](https://www.apollographql.com/docs/apollo-server/). In addition to its open-source products, Apollo offers specialized paid services that bring value to large-scale applications of GraphQL.
 
 ## What is the Apollo GraphQL Client?
 
 In the GraphQL model, data is sent between a *client* and *server*. The client issues a request to the server, and the server answers the client’s request. The Apollo client is a JavaScript state management library that helps you fetch data and manipulate the data using concise syntax and development best practices. It is possible to use the Apollo GraphQL client with any GraphQL server; the latter doesn't have to be from Apollo.
 
+## Apollo GraphQL vs REST
+
+[Representational state transfer](https://searchapparchitecture.techtarget.com/definition/REST-REpresentational-State-Transfer) (REST) is still widely used and has [advantages over GraphQL](https://blog.logrocket.com/why-you-shouldnt-use-graphql/#whyandwhentousegraphql).
+
+Some of the advantages of REST include:
+
+- Community maturity. REST has been around since 2000. There are many resources supporting its usage and many experienced developers who are able to work with REST.
+- Data format support. REST supports many types of data formats including CSV, HTML, JSON, and XML.
+- Decoupled client and server implementations. When using REST, a client does not require any specialized libraries to query the server data.
+
+Some of the advantages of GraphQL include:
+
+- Prevents over fetching of data. You can retrieve all the data you need in a single query.
+- Schema versioning is not required. Instead of versioning, GraphQL utilizes a schema registry to track an API's evolution.
+- An extensive ecosystem of libraries. There are many libraries available to extend GraphQL's behavior.
+
+To become more familiar with GraphQL's capabilities refer to the [Apollo blog's post on the benefits of GraphQL](https://www.apollographql.com/blog/graphql/basics/why-use-graphql/).
+
 ### Apollo GraphQL Client Example
 
-The example in this section queries an open [GraphQL service](https://api.spacex.land/graphql/) that [SpaceX](https://www.spacex.com/) provides. Before beginning the steps in this section ensure you have [installed Node.js using the Node Version Manager](/docs/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs).
+The example in this section queries an open [GraphQL service](https://api.spacex.land/graphql/) that [SpaceX](https://www.spacex.com/) provides. Before beginning the steps in this section, ensure you have [installed Node.js using the Node Version Manager](/docs/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs).
 
 From your system's command line, install the GraphQL client:
 
@@ -111,31 +129,13 @@ You should see a similar JSON output returned:
 
 Using your preferred JavaScript framework, you can update the code to request more data from the API and to render the data in a browser.
 
-## Apollo GraphQL vs REST
-
-[Representational state transfer](https://searchapparchitecture.techtarget.com/definition/REST-REpresentational-State-Transfer) (REST) is still widely used and has [advantages over GraphQL](https://blog.logrocket.com/why-you-shouldnt-use-graphql/#whyandwhentousegraphql).
-
-Some of the advantages of REST include:
-
-- Community maturity. REST has been around since 2000. There are many resources supporting its usage and many experienced developers who are able to work with REST.
-- Data format support. REST supports many types of data formats including csv, HTML, JSON, and XML.
-- Decoupled client and server implementations. When using REST, a client does not require any specialized libraries to query the data.
-
-Some of the advantages of GraphQL include:
-
-- Prevents over fetching of data. You can retrieve all the data you need in a single query.
-- Schema versioning is not required. Instead of versioning, GraphQL utilizes a schema registry to track an API's evolution.
-- An extensive ecosystem of libraries. There are many libraries available to extend GraphQL's behavior.
-
-To become more familiar with GraphQL's capabilities refer to the [Apollo blog's post on the benefits of GraphQL](https://www.apollographql.com/blog/graphql/basics/why-use-graphql/).
-
 ## Apollo GraphQL Server
 
 Several implementations of a [GraphQL server](https://blog.graphqleditor.com/graphql-servers) are available to use. Apollo is a good choice given its robust documentation and potential for longevity. Several well-known companies use Apollo for their projects, including Airbnb, the New York Times, and CircleCI.
 
 ### Server Installation Steps
 
-Before beginning the steps in this section ensure you have [installed Node.js using the Node Version Manager](/docs/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs) on your server.
+Before beginning the steps in this section, ensure you have [installed Node.js using the Node Version Manager](/docs/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs) on your server.
 
 To install the Apollo GraphQL server use the following command:
 
@@ -160,13 +160,17 @@ graphql(schema, '{ hello }', root)
 });
 {{< /file >}}
 
-Run the above example file using the command `node hello-server.js`, and you should see an output similar to the following:
+Run the above example file using the following command
+
+    node hello-server.js
+
+You should see a similar output:
 
 {{< output >}}
 { data: { hello: 'Hello, world!' } }
 {{< /output >}}
 
-This exhibits on the command line, Apollo’s ability to interpret a GraphQL request and respond. The next step in server behavior is to embed this responsiveness in a Web API. To do this, update the `server-example.js` with the following content:
+The example demonstrates a GraphQL server response. The next step in server behavior is to embed this responsiveness into a web API. To do this, update the `server-example.js` with the following content:
 
 {{< file "server-example.js" >}}
 const express = require('express');
@@ -216,13 +220,11 @@ Please browse to <http://localhost:4000/graphql>
 {{< note >}}
 To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `5001`.
+- On macOS or Linux, use the command below to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
-    - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
+      ssh -L 4000:localhost:4000 example-user@192.0.2.0
 
-            ssh -L 4000:localhost:4000 example-user@192.0.2.0
-
-Now you can visit the application in your browser by navigating to `https://localhost:5001`.
+Now you can visit the application in your browser by navigating to `https://localhost:4000`.
 {{< /note >}}
 
 If you visit `http://localhost:4000/graphql` in a browser, you see an empty instance of a playground Integrated Development Environment (IDE). Enter the following query in the left window of the playground IDE.
@@ -243,7 +245,7 @@ This section's example provides a simple model for creating a GraphQL service.
 
 ## Conclusion
 
-Apollo GraphQL is a powerful platform that can take some time investment to learn how to use. You can leverage free web tools to experiment and to model your GraohQL data. For example, use the  [GraphQL IDE](https://github.com/graphql/graphiql) and the [Sandbox Explorer](https://studio.apollographql.com/sandbox/explorer) to test your ideas. The GraphQL Foundation maintains a page on [best practices](https://graphql.org/learn/best-practices/) that you can visit to learn more about the specification.
+Apollo GraphQL is a powerful platform that can take some time investment to learn to use. You can leverage free web tools to experiment and to model your GraphQL data. For example, use the  [GraphQL IDE](https://github.com/graphql/graphiql) and the [Sandbox Explorer](https://studio.apollographql.com/sandbox/explorer) to test your ideas. The GraphQL Foundation maintains a page on [best practices](https://graphql.org/learn/best-practices/) that you can visit to learn more about the specification.
 
 
 
