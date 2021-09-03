@@ -329,6 +329,7 @@ despawn
 dest
 dereference
 dereferencing
+desperados
 destructured
 dev
 devel
@@ -418,6 +419,7 @@ epel
 erb
 erlang
 esc
+esm
 etcd
 etcd0
 eth0
@@ -576,6 +578,7 @@ gpc
 gpg
 gradle
 grafana
+graphql
 graylog
 graylog2
 greenbone
@@ -972,6 +975,7 @@ metapackage
 metaparameters
 metorik
 metricbeat
+metroid
 microblogging
 microblogs
 microservice
@@ -1236,6 +1240,7 @@ pipenv
 piwik
 pki
 plaintext
+platformer
 plesk
 plex
 plone
@@ -1569,6 +1574,7 @@ stopwait
 stopword
 stopwords
 storages
+streamlink
 su
 subcommand
 subcommands
@@ -1632,6 +1638,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+techland
 teleporting
 tensorflow
 terrahelp
@@ -1805,6 +1812,7 @@ virtualized
 virtualmin
 vlan
 vlans
+vlc
 vlogger
 vmail
 vmem
