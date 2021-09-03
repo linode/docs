@@ -418,6 +418,7 @@ epel
 erb
 erlang
 esc
+esm
 etcd
 etcd0
 eth0
@@ -576,6 +577,7 @@ gpc
 gpg
 gradle
 grafana
+graphql
 graylog
 graylog2
 greenbone
