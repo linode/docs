@@ -7,7 +7,7 @@ og_description: 'In this guide, you learn how to install and configure Streamlin
 keywords: ['streamlink']
 tags: ['ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-20
+published: 2021-09-03
 modified_by:
   name: Linode
 title: "How to Install Streamlink CLI on Ubuntu and macOS"
@@ -21,7 +21,7 @@ external_resources:
 - "[Streamlink's Player Options](https://streamlink.github.io/cli.html#positional-arguments)"
 ---
 
-Streamlink lets you watch any stream inside your favorite media players such as VLC or Media Player. You can watch [YouTube](https://www.youtube.com), [Twitch](https://www.twitch.tv), or [DailyMotion](https://www.dailymotion.com/us) video streams on your desktop instead of in your browser. Aside from a cleaner experience, streaming via any desktop player has far less impact on your PC's resources leading to smoother playback.
+Streamlink lets you watch any stream inside your favorite media players such as [VLC](https://www.videolan.org/vlc/), [MPlayer](https://mplayerhq.hu/design7/news.html), and [QuickTime](https://support.apple.com/downloads/quicktime). You can watch [YouTube](https://www.youtube.com), [Twitch](https://www.twitch.tv), or [DailyMotion](https://www.dailymotion.com/us) video streams on your desktop instead of in your browser. Aside from a cleaner experience, streaming via any desktop player has far less impact on your PC's resources leading to smoother playback.
 
 In this guide, you learn how to install and configure Streamlink on the macOS, Ubuntu, and Debian distributions. For a list of all available streaming resources, see [Streamlink's Plugins documentation](https://streamlink.github.io/plugin_matrix.html).
 
@@ -50,9 +50,9 @@ Start with the basic requirements to get Streamlink installed.
 1. Confirm the installation with  **Y** and wait for the download and package installation to complete. You’re now ready to start streaming on your Ubuntu or Debian desktop computer. The steps in the following section covers those details.
 
     {{< note >}}
-If you receive a `No playable streams found on this URL` error, install Streamlink using the Python package manager (pip):
+If you receive a `No playable streams found on this URL` error, install Streamlink using the [Python Package Installer (pip)](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#what-is-pip):
 
-Check the version of your `pip` by running the below command:
+Check the version of your system's `pip` installation by running the command below:
 
     pip --version
 
@@ -80,7 +80,7 @@ You’re now ready to start streaming on your macOS desktop computer.
 
 ## Start a Stream Using the Command Line
 
-1. To watch a stream using the Streamlink CLI, issue the following command. Replace the URL with your own URL.
+1. To watch a stream using the Streamlink CLI, issue the command below. Replace the URL with your own stream's URL.
 
         streamlink https://www.twitch.tv/linode
 
