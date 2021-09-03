@@ -21,7 +21,7 @@ external_resources:
 - '[NPM dependencies](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies)'
 ---
 
-The [Node Package Manager (npm)](https://www.npmjs.com/) is the most widely-used package manager for JavaScript projects and includes Node.js by default. This guide walks you through installing NPM and getting started using it on your Linux system.
+The [Node Package Manager (NPM)](https://www.npmjs.com/) is the most widely-used package manager for JavaScript projects and includes Node.js by default. This guide walks you through installing NPM and getting started using it on your Linux system.
 
 ## What is NPM?
 
