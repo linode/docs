@@ -59,10 +59,6 @@ aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
 
         v2.4.3 h1:Y1FaV2N4WO3rBqxSYA8UZsZTQdN+PwcoOcAiZTM8C0I=
 
-{{< caution >}}
-Caddy has recently changed their [license](https://caddyserver.com/products/licenses). Please read over the license agreement to ensure that you are not violating the license with your project. To use Caddy without a commercial license, you may need to [compile from source](/docs/web-servers/caddy/compile-caddy-from-source).
-{{</ caution >}}
-
 ## Allow HTTP and HTTPS Connections
 
 Caddy serves websites using HTTP and HTTPS protocols, so you need to allow access to the ports 80, and 443.
@@ -87,7 +83,8 @@ Add your hostname and web root to the Caddy configuration. Use an editor of your
 
 {{< file "/etc/caddy/Caddyfile" caddy >}}
 example.com {
-root /var/www/html/example.com
+    root * /var/www/html/example.com
+    file_server
 }
 {{< /file >}}
 

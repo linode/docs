@@ -19,8 +19,6 @@ aliases: ['/web-servers/caddy/compile-caddy-from-source/']
 
 [Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
 
-Caddy has recently updated their license, clearly defining what is considered personal or enterprise use. A commercial license is now required for commercial or enterprise use, including any installation that uses precompiled Caddy binaries. However, because the project is Apache licensed, by building it from source you have access to the original, [Apache-licensed web server](https://twitter.com/mholt6/status/908041929438371840).
-
 ## Before you Begin
 
 ### Install Go
@@ -50,8 +48,8 @@ Install the latest version of `xcaddy`, a command line tool that downloads and b
 * To install Caddy with plugins use the `--with` option. For example:
 
         xcaddy build \
-        --with github.com/caddyserver/nginx-adapter
-        --with github.com/caddyserver/ntlm-transport@v0.1.1```
+          --with github.com/caddyserver/nginx-adapter
+          --with github.com/caddyserver/ntlm-transport@v0.1.1```
 
 1. Move the `caddy` executable from the `caddy` folder to `/usr/bin` to install:
 
