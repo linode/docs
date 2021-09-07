@@ -1038,6 +1038,7 @@ multiuser
 munin
 musl
 mutliverse
+mv
 myapp
 myblog
 mydestination
@@ -1394,6 +1395,7 @@ ritchie
 rkhunter
 rkt
 rmem
+rmdir
 ro
 rochko
 rocommunity
