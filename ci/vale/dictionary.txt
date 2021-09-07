@@ -1008,8 +1008,9 @@ mnesia
 mngtmpaddr
 moby
 moddable
-moodle
 modsecurity
+Mojang
+moodle
 mongodb
 mongoimport
 monit
