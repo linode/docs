@@ -129,6 +129,8 @@ Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1326299..."}
 Hint: Some lines were ellipsized, use -l to show in full.
     {{</ output >}}
 
+ To check the latest logs without truncation use `sudo journalctl -u caddy --no-pager | less +G`.
+
 1. Set SELinux back to enforcing mode once you have successfully started the Caddy service.
 
         sudo setenforce 1

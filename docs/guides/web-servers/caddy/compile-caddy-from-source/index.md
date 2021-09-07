@@ -32,7 +32,7 @@ Install the latest version of `xcaddy`, a command line tool that downloads and b
 1. Download and install `xcaddy`:
 
         sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
-        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/xcaddy/gpg.key' | sudo apt-key add -
+        curl -1sLf 'https://dl.cloudsmith.io/public/caddy/xcaddy/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-xcaddy.asc
         curl -1sLf 'https://dl.cloudsmith.io/public/caddy/xcaddy/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-xcaddy.list
         sudo apt update
         sudo apt install xcaddy
@@ -48,7 +48,7 @@ Install the latest version of `xcaddy`, a command line tool that downloads and b
 * To install Caddy with plugins use the `--with` option. For example:
 
         xcaddy build \
-          --with github.com/caddyserver/nginx-adapter
+          --with github.com/caddyserver/nginx-adapter \
           --with github.com/caddyserver/ntlm-transport@v0.1.1```
 
 1. Move the `caddy` executable from the `caddy` folder to `/usr/bin` to install:
