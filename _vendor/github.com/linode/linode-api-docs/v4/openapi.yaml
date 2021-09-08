@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.102.0
+  version: 4.104.0
 
   title: Linode API
   description: |
@@ -1632,7 +1632,7 @@ paths:
               --data-binary "/path/to/image"
               https://api.linode.com/v4/account/oauth-clients/edc6790ea9db4d224c5c/thumbnail
   /account/payment-methods:
-    x-linode-cli-command: account
+    x-linode-cli-command: payment-methods
     get:
       servers:
         - url: https://api.linode.com/v4
@@ -1647,7 +1647,7 @@ paths:
       description: |
         Returns a paginated list of Payment Methods for this Account.
       operationId: getPaymentMethods
-      x-linode-cli-action: payment-methods-list
+      x-linode-cli-action: list
       security:
         - personalAccessToken: []
         - oauth:
@@ -1679,7 +1679,7 @@ paths:
                 https://api.linode.com/v4/account/payment-methods
         - lang: CLI
           source: >
-            linode-cli account payment-methods-list
+            linode-cli payment-methods list
     post:
       servers:
         - url: https://api.linode.com/v4
@@ -1688,16 +1688,18 @@ paths:
         - Account
       summary: Payment Method Add
       description: |
-        Adds a Payment Method to your Account with the option to set it as the default method. Adding a default
-        Payment Method removes the default status from any other Payment Method.
+        Adds a Payment Method to your Account with the option to set it as the default method.
 
-        An Account can have up to 6 active Payment Methods.
+        * Adding a default Payment Method removes the default status from any other Payment Method.
 
-        Prior to adding a Payment Method, ensure that your billing address information is up-to-date
+        * An Account can have up to 6 active Payment Methods.
+
+        * Prior to adding a Payment Method, ensure that your billing address information is up-to-date
         with a valid `zip` by using the Account Update ([PUT /account](/docs/api/account/#account-update)) endpoint.
+
+        * A `payment_method_add` event is generated when a payment is successfully submitted.
       operationId: createPaymentMethod
-      x-linode-cli-action: payment-method-add
-      x-linode-cli-skip: true
+      x-linode-cli-action: add
       security:
         - personalAccessToken: []
         - oauth:
@@ -1720,7 +1722,16 @@ paths:
                 - cvv
               properties:
                 type:
-                  $ref: '#/components/schemas/PaymentMethod/properties/type'
+                  type: string
+                  enum:
+                    - credit_card
+                  description: |
+                    The type of Payment Method.
+
+                    Alternative Payment Methods including Google Pay can be added using Linode Cloud Manager. See our
+                    guide on [Managing Billing in the Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
+                    for details and instructions.
+                  example: 'credit_card'
                 is_default:
                   $ref: '#/components/schemas/PaymentMethod/properties/is_default'
                 data:
@@ -1759,8 +1770,17 @@ paths:
                   }
                 }' \
                 https://api.linode.com/v4/account/payment-methods
+        - lang: CLI
+          source: >
+            linode-cli payment-methods add \
+              --type credit_card \
+              --is_default true \
+              --data.card_number 4111111111111111 \
+              --data.expiry_month 11 \
+              --data.expiry_year 2020 \
+              --data.cvv 111
   /account/payment-methods/{paymentMethodId}:
-    x-linode-cli-command: account
+    x-linode-cli-command: payment-methods
     parameters:
     - name: paymentMethodId
       in: path
@@ -1778,7 +1798,7 @@ paths:
       description: |
         View the details of the specified Payment Method.
       operationId: getPaymentMethod
-      x-linode-cli-action: payment-method-view
+      x-linode-cli-action: view
       security:
         - personalAccessToken: []
         - oauth:
@@ -1799,7 +1819,7 @@ paths:
                 https://api.linode.com/v4/account/payment-methods/123
         - lang: CLI
           source: >
-            linode-cli account payment-method-view 123
+            linode-cli payment-methods view 123
     delete:
       x-linode-grant: read_write
       tags:
@@ -1814,7 +1834,7 @@ paths:
         ([POST /account/payment-methods/{paymentMethodId}/make-default](/docs/api/account/#payment-method-make-default))
         endpoint.
       operationId: deletePaymentMethod
-      x-linode-cli-action: payment-method-delete
+      x-linode-cli-action: delete
       security:
         - personalAccessToken: []
         - oauth:
@@ -1836,9 +1856,9 @@ paths:
                 https://api.linode.com/v4/account/payment-methods/123
         - lang: CLI
           source: >
-            linode-cli account payment-method-delete 123
+            linode-cli payment-methods delete 123
   /account/payment-methods/{paymentMethodId}/make-default:
-    x-linode-cli-command: account
+    x-linode-cli-command: payment-methods
     parameters:
     - name: paymentMethodId
       in: path
@@ -1858,7 +1878,7 @@ paths:
 
         Removes the default status from any other Payment Method.
       operationId: makePaymentMethodDefault
-      x-linode-cli-action: payment-method-make-default
+      x-linode-cli-action: default
       security:
         - personalAccessToken: []
         - oauth:
@@ -1880,7 +1900,7 @@ paths:
                 https://api.linode.com/v4/account/payment-methods/123/make-default
         - lang: CLI
           source: >
-            linode-cli account payment-method-make-default 123
+            linode-cli payment-methods default 123
   /account/payments:
     x-linode-cli-command: account
     get:
@@ -1932,9 +1952,12 @@ paths:
       tags:
       - Account
       summary: Payment Make
-      description: >
-        Makes a Payment to your Account via credit card. This will charge your
-        credit card the requested amount.
+      description: |
+        Makes a Payment to your Account.
+
+        * The requested amount is charged to the default Payment Method if no `payment_method_id` is specified.
+
+        * A `payment_submitted` event is generated when a payment is successfully submitted.
       operationId: createPayment
       x-linode-cli-action: payment-create
       security:
@@ -1950,11 +1973,11 @@ paths:
               $ref: '#/components/schemas/PaymentRequest'
       responses:
         '200':
-          description: Payment made.
+          description: Payment submitted successfully.
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/Payment'
+                $ref: '#/components/schemas/Payment'
         '202':
           $ref: '#/components/responses/WarningResponse'
         default:
@@ -1966,14 +1989,16 @@ paths:
                 -H "Authorization: Bearer $TOKEN" \
                 -X POST -d '{
                     "cvv": "123",
-                    "usd": "120.50"
+                    "usd": "120.50",
+                    "payment_method_id": 123
                 }' \
                 https://api.linode.com/v4/account/payments
         - lang: CLI
           source: >
             linode-cli account payment-create \
               --cvv 123 \
-              --usd 120.50
+              --usd 120.50 \
+              --payment_method_id 123
   /account/payments/{paymentId}:
     x-linode-cli-command: account
     parameters:
@@ -9925,8 +9950,6 @@ paths:
         source: >
           linode-cli managed service-enable 9994
   /managed/stats:
-    description: |
-      A collection of managed stats.
     x-linode-cli-command: managed
     get:
       x-linode-grant: unrestricted only
@@ -9979,8 +10002,6 @@ paths:
         source: >
           linode-cli managed stats-list
   /networking/ips:
-    description: >
-      A collection of IP Addresses on your Account. Excludes private addresses.
     x-linode-cli-command: networking
     get:
       x-linode-grant: read_only
@@ -10184,11 +10205,6 @@ paths:
             97.107.143.141 \
             --rdns "test.example.org"
   /networking/ipv4/assign:
-    description: >
-      Allows redistribution of IPv4 Addresses within a Region. Any number
-      of IPs may be assigned in one request, as long as all Linodes end up
-      with at least one public and no more than one private IP Address at the
-      end of the assignment.
     x-linode-cli-command: networking
     post:
       x-linode-grant: read_write
@@ -10286,10 +10302,6 @@ paths:
             --assignments \
               '{"23.45.67.200", "linode_id": 234}'
   /networking/ipv4/share:
-    description: >
-      Configure shared IPs.  A shared IP may be brought up on a Linode other
-      than the one it lists in its response.  This can be used to allow one
-      Linode to begin serving requests should another become unresponsive.
     x-linode-cli-command: networking
     post:
       x-linode-grant: read_write
@@ -10546,6 +10558,8 @@ paths:
               - inbound_policy
               - outbound_policy
               - action
+              - protocol
+              - addresses
               properties:
                 devices:
                   type: object
@@ -11059,7 +11073,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Firewall/properties/rules'
+              required:
+                - action
+                - addresses
+                - protocol
+              allOf:
+                - $ref: '#/components/schemas/Firewall/properties/rules'
       responses:
         '200':
           description: Firewall Rules updated successfully.
@@ -13479,8 +13498,6 @@ paths:
             --two_factor_auth true \
             --restricted false
   /profile/apps:
-    description: >
-      Returns information about OAuth Apps you have authorized to access your Account.
     x-linode-cli-command: profile
     get:
       parameters:
@@ -13787,8 +13804,6 @@ paths:
             --tfa_code 213456
   /profile/tokens:
     x-linode-cli-command: profile
-    description: >
-      A collection of Personal Access Tokens you've created.
     get:
       tags:
       - Profile
@@ -13898,7 +13913,6 @@ paths:
             --expiry '2018-01-01T13:46:32' \
             --label linode-cli
   /profile/tokens/{tokenId}:
-    description: View or revoke a single token.
     parameters:
     - name: tokenId
       in: path
@@ -14012,9 +14026,6 @@ paths:
         source: >
           linode-cli profile token-delete 123
   /profile/logins:
-    description: >
-      Returns a collection of successful account logins for this user during the last
-      90 days.
     x-linode-cli-command: profile
     get:
       tags:
@@ -14060,9 +14071,6 @@ paths:
         source: >
           linode-cli profile logins-list
   /profile/logins/{loginId}:
-    description: >
-      A login object that displays information about a successful
-      account login from this user.
     parameters:
     - name: loginId
       in: path
@@ -14103,8 +14111,6 @@ paths:
           linode-cli profile login-view 1234
   /profile/devices:
     x-linode-cli-command: profile
-    description: >
-      A collection of active TrustedDevices for your user.
     get:
       tags:
       - Profile
@@ -14150,8 +14156,6 @@ paths:
           linode-cli profile devices-list
   /profile/devices/{deviceId}:
     x-linode-cli-command: profile
-    description: >
-      View or revoke individual TrustedDevices for your User.
     parameters:
     - name: deviceId
       in: path
@@ -14223,8 +14227,6 @@ paths:
           linode-cli profile device-revoke 123
   /profile/sshkeys:
     x-linode-cli-command: sshkeys
-    description: >
-      A collection of SSH Keys added by you.
     get:
       x-linode-grant: read_only
       parameters:
@@ -16996,6 +16998,7 @@ components:
           - oauth_client_secret_reset
           - oauth_client_update
           - password_reset
+          - payment_method_add
           - payment_submitted
           - profile_update
           - stackscript_create
@@ -18800,7 +18803,7 @@ components:
             * `paravirt` is suitable for most cases. Linodes running in paravirt mode
               share some qualities with the host, ultimately making it run faster since
               there is less transition between it and the host.
-            * `full_virt` affords more customization, but is slower because 100% of the VM
+            * `fullvirt` affords more customization, but is slower because 100% of the VM
               is virtualized.
           enum:
           - paravirt
@@ -21063,6 +21066,11 @@ components:
             The amount in US Dollars of the Payment. The maximum credit card
             payment that can be made is $50,000 dollars.
           example: '120.50'
+        payment_method_id:
+          type: integer
+          description: >
+            The ID of the Payment Method to apply to the Payment.
+          example: 123
     PayPal:
       type: object
       required:
