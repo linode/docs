@@ -2,9 +2,9 @@
 slug: using-nodejs-typescript-and-express-to-build-a-web-server
 author:
   name: John Mueller
-description: 'This guide shows how to install Express, develop a Node.js and Express webserver with examples'
-og_description: 'This guide shows how to install Express, develop a Node.js and Express webserver with examples'
-keywords: ['list','of','keywords','and key phrases']
+description: 'This guide shows how to install node Express server, create a tsconfig json file, and develop a Node.js Express webserver with examples'
+og_description: 'This guide shows how to install node Express server, create a tsconfig json file, and develop a Node.js Express webserver with examples'
+keywords: ['nodejs typescript','node express server','tsconfig json']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-24
 modified_by:
@@ -28,19 +28,19 @@ Organizations have used JavaScript to create web projects since 1995. During tha
 - Ensures that you use the right number of arguments to functions
 - Provides smarter autocomplete suggestions
 
-These benefits are important because they help solve the [top JavaScript errors](https://rollbar.com/blog/top-10-javascript-errors-from-1000-projects-and-how-to-avoid-them/) listed on many websites. Reducing or eliminating these top errors saves a huge amount of time and effort—keeping projects on track. With these benefits in mind, the following sections tell how you can create a simple web server using a combination of TypeScript, Node.js, and Express with a minimum effort.
+These benefits are important because they help solve the [top JavaScript errors](https://rollbar.com/blog/top-10-javascript-errors-from-1000-projects-and-how-to-avoid-them/) listed on many websites. Reducing or eliminating these top JavaScript errors saves a huge amount of time and effort—keeping projects on track. With these benefits in mind, the following sections tell how you can create a simple web server using a combination of TypeScript, Node.js, and Express with a minimum effort.
 
 ## Set up your TypeScript and Node.js Project
 
 To make it easier to work with this example, create an environment to host it.
 
-The steps in this section show you how to set up your development environment by creating a new directory to store your web server and initialize TypeScript.
+The steps in this section show you how to set up your development environment by creating a new directory to store your web server and initialize a `package.json` file.
 
 1. In your home directory, create a new directory named `typescript-nodejs` and navigate into the new directory.
 
         mkdir typescript-nodejs && cd typescript-nodejs
 
-1. Create a `package.json` file for your project using the following command. The `-y` option generates the `package.json` file.
+1. Create a `package.json` file for your project using the `npm init` command. The `-y` option generates the `package.json` file.
 
         npm init -y
 
@@ -61,7 +61,7 @@ The steps in this section show you how to set up your development environment by
 }
     {{< /file >}}
 
-   This file provides information about the webserver that you can update later. The most important entry is `"main": "index.js"`. This defines the name of the main JavaScript file used to create the webserver
+   This file provides information about the webserver that you can update later. The most important entry is `"main": "index.js"`. This defines the name of the main JavaScript file used to create the webserver.
 
    The `"license": "ISC"` entry specifies that the license used for this web server is from the Internet Systems Consortium (ISC). To learn more about each key and value, refer to [NPM's documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json).
 
@@ -74,14 +74,14 @@ The steps in this section show you how to set up your development environment by
     {{< /file >}}
 
     {{< note >}}
-You do not need to provide a value for the `repository` field if you don’t have one available to store your code. This guide doesn't use one to create a simple server, but the [NPM documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json) provides many acceptable formats for this field.
+There is also a field defined in the `package.json` file called the `repository` field, which you don't have to provide if you don’t have one available to store your code. This guide doesn't use one to create a simple server, but the [NPM documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository) provides many acceptable formats for this field.
     {{< /note >}}
 
 ### Install Express and Add Dependencies
 
 To run the example web server, you need to install Express and TypeScript. You use TypeScript to define the required dependencies.
 
-1. Use NPM to install Express with the following command. Ensure you are still in the `typescript-nodejs` directory when running the command.
+1. Use NPM to install Express with the following command. Ensure you are still in the `typescript-nodejs` directory when running the below command.
 
         npm install express
 
@@ -101,11 +101,11 @@ found 0 vulnerabilities
 
     If you inspect the `package-lock.json` file, you see a detailed description of the `node_modules` tree and `package.json`. This file is automatically generated for you whenever NPM modifies these two elements. You don’t need to worry about it for this guide, but there is a good [discussion](https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json) of it available in NPM's documentation. The remaining Express installation output lines tell you about the version of Express that was installed and its details.
 
-1. Install TypeScript using the below command. Even if you currently have TypeScript installed on your system, you need to install it again with the dependencies required to create the webserver project.
+1. Install TypeScript using the below command. Even if you currently have TypeScript installed on your system, you need to install it again with the dependencies required to create this sample webserver project.
 
         npm install typescript ts-node @types/node @types/express --save-dev
 
-    The `ts-node` part of the installation command installs TS-Node, which is an execution engine for TypeScript and a Read–Eval–Print Loop (REPL) for Node. The `@types/node` and `@types/express` additions provide type definitions for TypeScript when interacting with Node and Express.
+    The `ts-node` part of the installation command installs TS-Node, which is an execution engine for TypeScript and a [Read–Eval–Print Loop (REPL)](https://nodejs.org/api/repl.html#repl_repl) for Node. The `@types/node` and `@types/express` additions provide type definitions for TypeScript when interacting with Node and Express.
 
     Finally, the `--save-dev` command line switch indicates that TypeScript is only used for development purposes. Because you compile the TypeScript code to JavaScript, there is no dependency on TypeScript at runtime.
 
@@ -166,17 +166,17 @@ At this point, you should have all requirements and dependencies installed in yo
 
 - A few of the settings that are listed below are currently commented out and you may, or may not want to change them. For this example, you don’t have to change them, but you’d likely need to do so for a large project.
 
+  - `rootDir`: Specifies the location of the TypeScript files.
+
   - `outFile`: Concatenate and emit the webserver code to a single file. This is useful for small web servers and does provide a performance boost in some cases.
 
   - `outDir`: Specifies where you want the JavaScript generated during the compilation process to go.
-
-  - `rootDir`: Specifies the location of the TypeScript files.
 
 ## Develop a Node.js and Express Web Server Example
 
 Now you’re finally ready to create some code and run it.
 
-1. Create a new file named `index.mjs` and add the following code to the file:
+1. Ensure you are still in the `typescript-nodejs` directory. Create a new file named `index.mjs` and add the following code to the file.
 
     {{< file "index.mjs" >}}
 import express from 'express';
