@@ -15,7 +15,7 @@
   <noscript>
     <style>
     .hide-if-no-js {
-    display: none;
+    display: none !important;
     }
     </style>
   </noscript>
@@ -25,12 +25,11 @@
      h-auto
      overflow-x-hidden
      is-not-topbar-pinned
-     is-not-explorer-open
+     is-explorer-open
      is-not-toc-open
      is-not-search-panel-open
      is-not-search-panel_filters-open
-     is-not-search-input-open">
-  
+     is-not-search-input-open" data-branch="{{ delimit .SectionsEntries ` > ` }}">
   {{ partial "sections/after-body-start.html" . }}
   
   {{/* Base grid */}}

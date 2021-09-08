@@ -13,7 +13,7 @@ import { newHomeController } from './sections/home/home';
 import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
 import { newSectionsController } from './sections/sections/index';
 import { newOnIntersectionController, initConsentManager } from './components/index';
-import { sendEvent } from './helpers/index';
+import { sendEvent, isMobile, toggleBooleanClass } from './helpers/index';
 
 // Set up the AlpineJS controllers
 const searchConfig = getSearchConfig(params);

@@ -113,6 +113,8 @@ bashrc
 bc
 berkshelf
 bernd
+berners
+bing
 binlog
 biomes
 bitbucket
@@ -148,6 +150,7 @@ bukkit
 bundler
 bungeecord
 burndown
+busybox
 byrequests
 bzip2
 bzrtools
@@ -158,6 +161,7 @@ cacheable
 cachable
 caddy
 caddyfile
+caffe
 cakey
 calc
 campione
@@ -187,6 +191,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+Chevereto
 chgrp
 chmod
 chown
@@ -315,6 +320,7 @@ debconf
 declaratively
 deduplication
 defragment
+demultiplexer
 deprovisioning
 descolada
 descr
@@ -323,6 +329,7 @@ despawn
 dest
 dereference
 dereferencing
+desperados
 destructured
 dev
 devel
@@ -379,6 +386,7 @@ drush
 drwxr
 dshield
 dsn
+du
 ducati
 dust2
 dvcs
@@ -411,6 +419,7 @@ epel
 erb
 erlang
 esc
+esm
 etcd
 etcd0
 eth0
@@ -460,6 +469,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+ffmpeg
 ffff
 fi
 fiiiile
@@ -490,6 +500,7 @@ flowlens
 flyspray
 foodcritic
 fortran
+fordham
 fmt
 fn
 fpm
@@ -567,6 +578,7 @@ gpc
 gpg
 gradle
 grafana
+graphql
 graylog
 graylog2
 greenbone
@@ -605,6 +617,7 @@ hd0
 hdfs
 healthcheck
 heartbleed
+heredoc
 heroku
 hexo
 hiera
@@ -641,6 +654,7 @@ httpchk
 httpd
 https
 huginn
+Hugo
 hulu
 hvc0
 hybla
@@ -698,6 +712,7 @@ inittab
 injectable
 inode
 inotify
+inrupt
 insmod
 inspec
 interdomain
@@ -925,6 +940,7 @@ mapreduce
 mariadb
 marino
 maskname
+mastercard
 masterdb
 masterless
 mathematica
@@ -959,6 +975,7 @@ metapackage
 metaparameters
 metorik
 metricbeat
+metroid
 microblogging
 microblogs
 microservice
@@ -986,6 +1003,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mkv
 mnesia
 mngtmpaddr
 moby
@@ -1001,6 +1019,7 @@ morphisec
 motd
 mountpoint
 mouseover
+mov
 mpapis
 mpm
 msg
@@ -1082,6 +1101,7 @@ newgrp
 newtag
 nextcloud
 nexthop
+nfs
 nftables
 ng
 nginx
@@ -1089,6 +1109,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nirvashare
 nixcraft
 nixpkgs
 nmap
@@ -1219,6 +1240,7 @@ pipenv
 piwik
 pki
 plaintext
+platformer
 plesk
 plex
 plone
@@ -1285,6 +1307,7 @@ puppetlabs
 puppetmaster
 puttygen
 pv
+pvc
 pvgrub
 pwcheck
 px
@@ -1307,6 +1330,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+radeon
 ramdisk
 rbac
 rbenv
@@ -1379,6 +1403,7 @@ ro
 rochko
 rocommunity
 rollout
+rooknfs
 rossum
 roundcube
 routable
@@ -1429,6 +1454,7 @@ sbin
 sbopkg
 sbt
 scgi
+schroot
 schaeffer
 scm
 scp
@@ -1467,6 +1493,7 @@ setguid
 setsebool
 setuid
 setuptools
+Severalnines
 sfadmin
 sfproject
 sfroot
@@ -1491,6 +1518,7 @@ signup
 sintra
 sitename
 slackpkg
+slackware
 slavedb
 sls
 smartcard
@@ -1518,6 +1546,7 @@ sparklines
 spectre
 speedtest
 spf1
+Splunk
 spm
 spork
 sql
@@ -1545,6 +1574,7 @@ stopwait
 stopword
 stopwords
 storages
+streamlink
 su
 subcommand
 subcommands
@@ -1557,8 +1587,10 @@ submenu
 subnet
 subnets
 subnetwork
+subprocess
 subqueries
 subquery
+subreddit
 subreddits
 substring
 substrings
@@ -1606,6 +1638,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+techland
 teleporting
 tensorflow
 terrahelp
@@ -1652,6 +1685,7 @@ torvalds
 toolchain
 toolchains
 toolset
+towson
 traceroute
 trackbar
 traefik
@@ -1705,6 +1739,7 @@ unicast
 unicode
 uninvoiced
 uniq
+unix
 unmanaged
 unmerged
 unmount
@@ -1777,6 +1812,7 @@ virtualized
 virtualmin
 vlan
 vlans
+vlc
 vlogger
 vmail
 vmem
@@ -1906,6 +1942,8 @@ yubico
 yubikey
 zabbix
 zapier
+zcat
+zend
 zgrep
 zile
 zimbra

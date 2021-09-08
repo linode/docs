@@ -16,7 +16,7 @@ published: 2010-03-24
 title: 'Using Apache for Proxy and Clustering Services on Debian 5 (Lenny)'
 relations:
     platform:
-        key: how-to-install-phpbb
+        key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Debian 5
 ---

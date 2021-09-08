@@ -3,8 +3,7 @@ slug: enabling-https-using-certbot-with-apache-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide shows you how to install and use Certbot with Apache on Ubuntu 20.04 LTS. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
-og_description: "This guide shows you how to install and use Certbot with Apache on Ubuntu 20.04 LTS. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
+description: "Learn how to install and use Certbot with Apache on Ubuntu 20.04, which automates the process adding TLS/SSL to your websites."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
 tags: ['ssl','apache','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,7 +16,7 @@ h1_title: "Securing Web Traffic Using Certbot with Apache on Ubuntu 20.04 and 18
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 aliases: ['/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/']
 relations:
     platform:

@@ -3,8 +3,8 @@ slug: remote-desktop-using-apache-guacamole-on-docker
 author:
   name: Sam Foo
   email: sfoo@linode.com
-description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
-og_description: 'Use Apache Guacamole, a clientless HTML5 web application, to access your virtual cloud desktop right from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode.'
+description: "Use Apache Guacamole to access your virtual desktop from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode."
+og_description: "Use Apache Guacamole to access your virtual desktop from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode."
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
 tags: ["docker", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,7 @@ modified: 2021-08-09
 modified_by:
   name: Linode
 published: 2017-11-17
-title: 'Virtual Cloud Desktop Using Apache Guacamole'
+title: "Virtual Cloud Desktop Using Apache Guacamole"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
  - '[Apache Tomcat](https://tomcat.apache.org/)'
@@ -34,7 +34,6 @@ This guide is written for a non-root user. Commands that require elevated privil
 {{< /note >}}
 
 ## Install Docker
-The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
 {{< content "installing-docker-shortguide" >}}
 

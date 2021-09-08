@@ -15,7 +15,7 @@ h1_title: "How to Document a FastAPI App with OpenAPI"
 enable_h1: true
 contributor:
   name: Chelsea Troy
-  link: twitter.com/HeyChelseaTroy
+  link: https://twitter.com/HeyChelseaTroy
 external_resources:
 - '[OpenAPI Swagger Specification](https://swagger.io/specification/)'
 - '[OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.1.0)'

@@ -27,8 +27,9 @@ Riot has been renamed to *Element*. You can read more about this name change on 
 1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide and complete the steps for setting Linode's hostname and timezone.
 
 1.  This guide uses `sudo` wherever possible. Reference the [Securing Your Server](/docs/security/securing-your-server/) guide and complete the sections to create a standard user account, harden SSH access, and remove unnecessary network services.
+
     {{< note >}}
-If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach [configure the firewall](/docs/security/securing-your-server/section) of the guide.
+If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/guides/securing-your-server/#configure-a-firewall) section of the guide.
 {{</ note >}}
 
 1.  Update the system:
