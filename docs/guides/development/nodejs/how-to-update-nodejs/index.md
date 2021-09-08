@@ -16,40 +16,40 @@ external_resources:
 - '[The Node.js homepage](https://nodejs.org/)'
 ---
 
-Node.js is a cross-platform runtime environment for server-side JavaScript applications. As Node.js uses the V8 JavaScript engine and is very popular, it is regularly updated (often multiple times per month) and, for security and improvements, should be kept updated on your systems.
+Node.js is a cross-platform runtime environment for server-side JavaScript applications. As Node.js uses the V8 JavaScript engine and is very popular. It is regularly updated for security and improvements, and should be kept updated on your systems.
 
 ## Before You Begin
 
-1.  This guide assumes you are already running Node.js on your Linode and/or your local workstation and are updating the version. If you don't have it installed, see our guide [How to Install Node.js](/guides/how-to-install-nodejs/).
+1.  This guide assumes you are already running Node.js on your Linode or local workstation and are updating the version. If you don't have it installed, see the [How to Install Node.js](/guides/how-to-install-nodejs/) guide.
 
-2.  This guide assumes you have installed NPM (which installs by default with Node.js).
+2.  Install NPM, which installs by default with Node.js.
 
-3.  This guide assumes you are only updating your version of Node.js and aren't looking to run multiple versions. If you do, see our guide [How to Install and Use the Node Version Manager](/guides/how-to-install-use-node-version-manager-nvm/).
+3.  This guide assumes you are only updating your version of Node.js and aren't looking to run multiple versions. If you do, see the guide [How to Install and Use the Node Version Manager](/guides/how-to-install-use-node-version-manager-nvm/).
 
 4.  Update your Linode's system:
     sudo apt-get update && sudo apt-get upgrade
 
-3.  Update your local workstation's system using the tools and/or package managers for your operating system.
+3.  Update your local workstation's system using the tools and package managers for the operating system.
 
-5.  If you're using the installer to update, go to the Node.js downloads page to get the appropriate version. You will be met with the most recent version of *long-term support* (LTS) (and have the option of choosing a version from the *Current* section).
+5.  If you're using the installer to update, go to the Node.js downloads page to get the appropriate version. The most recent version of *long-term support* (LTS) is listed and you also have the option to choose a version in the *Current* section.
 ![The Node.js downloads page](nodejs-downloads-page.png)
 
 {{< note >}}
-**Current** is aimed at developers and development/testing environments that don't require their systems to either be as stable or up and accessible. LTS is aimed at production environments that require stability and continued uptime. If you are unsure which you need, choose LTS.
+**Current** is for developers and development or testing environments that don't require the systems to be as stable or up and accessible. LTS is aimed at production environments that require stability and continued uptime. If you are unsure which you need, choose LTS.
 {{< /note >}}
 
 ## Updating the Node.js version using NPM
 
-NPM is installed by default with Node.js and is the easiest way to update to any new version on Linux, macOS, or Windows (assuming you do not need to use multiple versions).
+NPM is installed by default with Node.js and is the easiest way to update to any new version on Linux, macOS, or Windows when you do not need to use multiple versions.
 
-1.  Open the Terminal on Linux or macOS. On Windows, launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click )or click on the arrow to the right) and choose "Run as Administrator."
+1.  Open the Terminal on Linux or macOS. On Windows, launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click or click on the arrow to the right and choose **Run as Administrator**.
 
 2.  Enter the command `npm install -g n` to install the [`n`](https://www.npmjs.com/package/n?activeTab=readme) module, a Node.js version manager.
 
 3.  Now that `n` is installed, enter `n stable` in the Terminal or PowerShell to install the stable version of Node.js
     -   You can also use `n latest` for the most recent version, or `n [version number]` if you have a specific version you need to install.
 
-4.  Agree to any prompts you're presented with.
+4.  Agree to any prompts that appears.
 
 5.  When the installation is complete, check the version installed with `node -v`.
 
@@ -59,15 +59,15 @@ NPM is installed by default with Node.js and is the easiest way to update to any
 
 If you need to install NVM, see our guide [How to Install and Use the Node Version Manager](/guides/how-to-install-use-node-version-manager-nvm/). It's a useful tool to have, especially in a development environment or if you have to use multiple versions of Node.js.
 
-1.  Open the Terminal on Linux or macOS. On Windows, launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click (or click on the arrow to the right) and choose "Run as Administrator."
+1.  Open the Terminal on Linux or macOS. On Windows, launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click or click on the arrow to the right and choose **Run as Administrator**.
 
 2.  If you only need the most recent stable version, enter the command `nvm ls stable`.
     -   If you need something other than the stable version:
-        1.  Enter the command `nvm ls` to check what version you have.
-        2.  Enter the command `nvm ls -remote` to see what versions are available. Note the one you need.
-        3.  Enter the command `nvm install [version number]`
+        a. Enter the command `nvm ls` to check what version you have.
+        d. Enter the command `nvm ls -remote` to see what versions are available. Note the one you need.
+        c. Enter the command `nvm install [version number]`
 
-3.  Agree to any prompts you're presented with.
+3.  Agree to any prompts that appears.
 
 5.  When the installation is complete, check the version installed with `nvm ls`.
 
@@ -77,7 +77,7 @@ If you need to install NVM, see our guide [How to Install and Use the Node Versi
 
 ### Using Homebrew
 
-If you installed Node.js using Homebrew, then updating will be easy.
+If you installed Node.js using Homebrew, then updating is easy.
 
 1.  Open the Terminal.
 
@@ -89,36 +89,36 @@ If you installed Node.js using Homebrew, then updating will be easy.
 
 ### Using the Node.js Installer
 
-1.  Open the installer from your Downloads folder and click "Continue."
+1.  Open the installer from your Downloads folder and click **Continue**.
 
-3.  If you agree with it, accept the license by clicking "Continue" and "Agree."
+3.  If you agree with it, accept the license by clicking **Continue** and **Agree**.
 
-4.  If you need to change the installation location, do so. Also, if you want to customize the installation, choose "Customize" (we suggest using the Standard Installation). Click "Continue.”
+4.  If you need to change the installation location, do so. Also, if you want to customize the installation, choose **Customize**. Linode recommends using the Standard Installation. Click **Continue**.
 
-5.  The installation is finished. Click "Close" and let macOS move the installer to the Trash.
+5.  The installation is finished. Click **Close** and macOS moves the installer to the Trash.
 
 ## Updating the Node.js version on Windows
 
 ### Using Chocolatey
 
-Assuming you installed Chocolatey when originally installing Node.js, updating should move quickly (otherwise, update using the installer instructions below).
+Assuming you installed Chocolatey when originally installing Node.js, updating should move quickly. Otherwise, update using the following installer instructions.
 
-1.  Launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click )or click on the arrow to the right) and choose "Run as Administrator."
+1.  Launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click or click on the arrow to the right and choose **Run as Administrator**.
 
 2.  When the command prompt loads, enter `choco upgrade nodejs.install`.
 
-3.  Accept any prompts asking for permission.
+3.  Accept any prompts that requires permission.
 
 4.  Close PowerShell when finished.
 
 ### Using the Node.js Installer
 
-1.  Open the installer from your Downloads folder and click "Next."
+1.  Open the installer from your Downloads folder and click **Next**.
 
-3.  If you agree with it, accept the license by checking the box next to "I accept the terms in the License Agreement" and click "Next."
+3.  If you agree with it, accept the license by checking the box next to *I accept the terms in the License Agreement* and click **Next**.
 
-4.  If you need to change the installation location, do so now and click "Next."
+4.  If you need to change the installation location, do so now and click **Next**.
 
-5.  Choose the packages to install (we suggest all of them, which is the default). You will also be prompted to check a box to "Automatically install the necessary tools." Do so and click "Next."
+5.  Choose the packages to install Linode recommends all of them, which is the default. You are prompted to check a box to **Automatically install the necessary tools.** Do so and click **Next**.
 
-6.  The installation is finished and you can move the installer to the Recycle Bin.
+6.  After installation is complete move the installer to the Recycle Bin.
