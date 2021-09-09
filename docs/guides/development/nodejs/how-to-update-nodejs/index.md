@@ -16,7 +16,7 @@ external_resources:
 - '[The Node.js homepage](https://nodejs.org/)'
 ---
 
-Node.js is a cross-platform runtime environment for server-side JavaScript applications. As Node.js uses the V8 JavaScript engine and is very popular. It is regularly updated for security and improvements, and should be kept updated on your systems.
+Node.js is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses the V8 JavaScript engine and is very popular. It is regularly updated for security and improvements, and should be kept updated on your systems.
 
 ## Before You Begin
 
@@ -105,7 +105,9 @@ Assuming you installed Chocolatey when originally installing Node.js, updating s
 
 1.  Launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click or click on the arrow to the right and choose **Run as Administrator**.
 
-2.  When the command prompt loads, enter `choco upgrade nodejs.install`.
+2.  When the command prompt loads, enter the following command:
+
+        choco upgrade nodejs.install
 
 3.  Accept any prompts that requires permission.
 
