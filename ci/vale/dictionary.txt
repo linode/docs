@@ -373,6 +373,8 @@ dockerfile
 dockerfiles
 dockerize
 dockerized
+docstring
+docstrings
 doctest
 dokku
 domain1
