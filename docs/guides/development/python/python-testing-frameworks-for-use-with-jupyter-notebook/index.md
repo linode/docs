@@ -7,7 +7,7 @@ og_description: 'This guide provides an overview of popular Python testing frame
 keywords: ['python testing frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-08
+published: 2021-09-09
 modified_by:
   name: Linode
 title: "Python Testing Frameworks for Software Unit Testing"
