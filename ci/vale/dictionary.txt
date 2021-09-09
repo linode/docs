@@ -89,6 +89,7 @@ avz
 awk
 aws
 awstats
+axibase
 azc
 backdoors
 backend
@@ -122,6 +123,7 @@ bitnami
 bitrate
 bitwarden
 blkid
+blockchain
 blocklists
 blockwise
 bluehost
@@ -211,6 +213,8 @@ clickjacking
 client1
 client2
 clojure
+couchbase
+cloudant
 cloudflare
 cloudnet
 cloudron
