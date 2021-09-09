@@ -112,6 +112,7 @@ basearch
 bashdoor
 bashrc
 bc
+bdd
 berkshelf
 bernd
 berners
@@ -253,6 +254,7 @@ copyto
 coreutils
 corporateclean
 courseware
+cov
 cpanminus
 cpu
 cqlsh
@@ -371,6 +373,7 @@ dockerfile
 dockerfiles
 dockerize
 dockerized
+doctest
 dokku
 domain1
 domain2
@@ -740,6 +743,7 @@ iptables
 ipv4
 ipv6
 ipwl
+ipytest
 irc
 irchelp
 ircname
@@ -1592,6 +1596,7 @@ subnet
 subnets
 subnetwork
 subprocess
+subprocesses
 subqueries
 subquery
 subreddit
@@ -1743,6 +1748,7 @@ unicast
 unicode
 uninvoiced
 uniq
+unittest
 unix
 unmanaged
 unmerged
@@ -1902,6 +1908,7 @@ xap
 xargs
 xcalc
 xcode
+xdist
 xen
 xenial
 xerus
