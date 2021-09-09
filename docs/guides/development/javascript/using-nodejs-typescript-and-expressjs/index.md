@@ -14,7 +14,6 @@ h1_title: "How to Use Node.js, TypeScript, and Express to Build a Web Server"
 enable_h1: true
 contributor:
   name: John Mueller
-  link: Github/Twitter Link
 external_resources:
 - '[NPM documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json)'
 - '[Express documentation](https://expressjs.com/en/guide/routing.html)'
