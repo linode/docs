@@ -7,11 +7,12 @@ description: 'This guide describes how to download a new version of Node.js and 
 keywords: ['nodejs','version','upgrade','update','installation','n','npm','nvm']
 tags: ["node.js"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-03-31
+published: 2021-09-09
 modified_by:
   name: Linode
 title: "How to Update Node.js on Linux, macOS, and Windows"
-h1_title: "How to Update Node.js on Linux, macOS, and Windows."
+h1_title: "Updating Node.js on Linux, macOS, and Windows."
+enable_h1: true
 external_resources:
 - '[The Node.js homepage](https://nodejs.org/)'
 ---
