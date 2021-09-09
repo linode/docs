@@ -2,12 +2,12 @@
 slug: install-anaconda-on-linux-centos-8-stream
 author:
   name: Cameron Laird
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'Learn how to install Anaconda on CentOS 8 Stream.'
+og_description: 'Learn how to install Anaconda on CentOS 8 Stream.'
 keywords: ['anaconda linux']
 tags: ['python', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-10
+published: 2021-09-10
 modified_by:
   name: Linode
 title: "Install Anaconda on Linux CentOS 8 Stream"
@@ -24,45 +24,57 @@ relations:
 ---
 Anaconda is a distribution of the Python and R programming languages. In other words, a curated bundle of specific base language interpreters and add-ons.  [Anaconda, Inc.](http://anaconda.com) generates it for a user base primarily focused on scientific computing, data analytics, machine learning, and allied fields.
 
-## Getting Started with Anaconda
+## Get Started with Anaconda
 
-Anaconda is available for Windows, MacOS, and Linux. Multiple [licenses](https://www.anaconda.com/pricing) govern Anaconda use; for the purpose of this How-to, it’s appropriate to assume that you can install Anaconda [without charge](https://www.anaconda.com/products/individual) as you learn about its use.
+Anaconda is available for Windows, macOS, and Linux. Multiple [licenses](https://www.anaconda.com/pricing) govern Anaconda's use; this guide installs [Anaconda's Individual Edition](https://www.anaconda.com/products/individual) which is free and open source.
 
 An Anaconda installation gives you:
 
 - A recent and certified Python interpreter
 - A recent and certified R interpreter
 - A large collection of open-source scientific computing libraries for these languages
-- The conda package and environment manager for the libraries above
-- The Anaconda Navigator graphical user interface (GUI) alternative to conda
+- The conda package and environment manager
+- The Anaconda Navigator graphical user interface (GUI) that is an alternative to conda
 
-Much of Anaconda’s accomplishment is to curate all these elements to ensure they’re compatible. It’s easy to install Python along with hundreds of the packages available for Python, and similarly for R. These are routine operations for many professional developers. Anaconda brings all this power within the practical grasp of scientists and other data workers with a focus outside the languages, though. Researchers can install Anaconda, let Anaconda handle compatibility issues, and keep their own attention on computing useful results.
+Anaconda's main benefit is that it ensure the compatibility of all the elements listed above. Anaconda is popular amongst data scientists, researchers, and statisticians. It handles dependency and compatibility issues when working with Python and R so that users in specialized fields can focus on their research.
 
 ### Anaconda Installation Steps
 
-Anaconda can be installed either through a GUI or at the command line (CLI). The latter works equally well both on desktops and for remote servers in data centers. This How-to focuses exclusively on installation through the CLI.
+Anaconda can be installed either through a GUI or at on the command line. The latter works equally well both on desktops and for remote servers in data centers. This guide focuses exclusively on installation through the command line.
 
-Installation takes around twenty minutes and fills something under 3.5 gigabytes within the `$HOME` directory of the user who follows the instructions below.
+Follow the instructions below to install Anaconda. Installation takes around twenty minutes and consumes around 3.5 gigabytes of disk space within the users `$HOME` directory.
 
 1. Navigate to your working directory. This can be your home directory.
 
         cd /home/example_user
 
+1. Update your CentOS system packages.
+
+        dnf upgrade
+
+1. Install the `bzip2` package.
+
+        sudo dnf install bzip2
+
+1. If your CentOS 8 system does not have Wget installed, install it now.
+
+        sudo yum install -y wget
+
 1. Download the Anaconda installer.
 
         sudo wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh
 
-    This installs Anaconda 3 from with Python 3.8.
+    This installs Anaconda 3 and Python 3.8.
 
     {{< note >}}
-You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to access all Anaconda installers. The system requirements for different installations differ slightly. You may need to install the bzip2 Linux package along with Wget.
+You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to access all Anaconda installers.
     {{< /note >}}
 
 1. Confirm the installer’s authenticity by running the command below. Replace `Anaconda3-2020.11-Linux-x86_64.sh` with the version of Anaconda you installed in the previous step.
 
         md5sum Anaconda3-2020.11-Linux-x86_64.sh
 
-    You should see `4cd48ef23a075e8555a8b6d0a8c4bae2`, the signature of this particular release. The Anaconda archive mentioned in the previous section lists integrity hashes for all the available downloads.
+    You should see the signature of the particular release returned in the output. As of writing this guide, the output returned should resemble the following, `4cd48ef23a075e8555a8b6d0a8c4bae2 Anaconda3-2020.11-Linux-x86_64.sh`. The Anaconda archive mentioned in the previous section lists integrity hashes for all the available downloads.
 
 1. Launch the installer with the command below. Replace `Anaconda3-2020.11-Linux-x86_64.sh` with the version of Anaconda you installed.
 
@@ -72,14 +84,63 @@ You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to
 
 1. Accept the default installation location, `/root/anaconda3`.
 
+1. When prompted, initialize Anaconda3 by running `conda init`, it is recommended to type **yes**. The installation finishes with a "Thank you for installing Anaconda3!" message. Run the following commands to ensure you can access Anaconda and that it is in your system's path:
+
+        sudo -s source /root/anaconda3/bin/activate
+        export PATH="/root/anaconda3/bin:$PATH"
+
+    {{< note >}}
+During the `conda init` prompt, if you type **no**, then conda cannot modify your shell scripts. In order to initialize conda manually, run the commands below after the installation is completed.
+
+    sudo -s source /root/anaconda3/bin/activate
+    export PATH="/root/anaconda3/bin:$PATH"
+    conda init
+{{< /note >}}
+
+1. Verify the Anaconda installation by running the following command:
+
+        conda info
+
+    Depending upon your installation location, you should see an output similar to the following:
+
+    {{< output >}}
+active environment : None
+       user config file : /home/example_user/.condarc
+ populated config files :
+          conda version : 4.9.2
+    conda-build version : 3.20.5
+         python version : 3.8.5.final.0
+       virtual packages : __glibc=2.28=0
+                          __unix=0=0
+                          __archspec=1=x86_64
+       base environment : /root/anaconda3  (read only)
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /root/anaconda3/pkgs
+                          /home/example_user/.conda/pkgs
+       envs directories : /home/example_user/.conda/envs
+                          /root/anaconda3/envs
+               platform : linux-64
+             user-agent : conda/4.9.2 requests/2.24.0 CPython/3.8.5 Linux/4.18.0-305.3.1.el8_4.x86_64 almalinux/8.4 glibc/2.28
+                UID:GID : 1000:1000
+             netrc file : None
+           offline mode : False
+{{</ output >}}
+
+    You can also verify the conda installation by running the `list` or `version` commands:
+
+        conda list
+        conda --version
+
 1. Agree to the initialization of `conda init` by typing **yes**.
 
-1. The next time you log in, all of Anaconda will be available to you. You can see this for yourself immediately, while still at the same CLI, by running
+1. Load the Python programming shell using the `python` command.
 
-        source ~/.bashrc
         python
 
-At this point, Anaconda launches the 3.8.5 release of Python, or perhaps a different version, if you installed a different Anaconda than version 3-2020.11-Linux. The Anaconda company offers a wealth of [documentation](https://docs.anaconda.com/anaconda/) and other [training materials](https://www.anaconda.com/help) to help get you started.
+At this point, Anaconda launches the 3.8.5 release of Python, or perhaps a different version, if you installed a different Anaconda version than `3-2020.11-Linux`. The Anaconda company offers a wealth of [documentation](https://docs.anaconda.com/anaconda/) and other [training materials](https://www.anaconda.com/help) to help get you started.
 
 
 
