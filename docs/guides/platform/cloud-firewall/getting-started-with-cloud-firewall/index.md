@@ -32,7 +32,7 @@ A Cloud Firewall analyzes traffic against a set of predefined rules at the netwo
 - You can apply one Cloud Firewall per Linode service.
 
 {{< note >}}
-Users that do not have [Network Helper](https://www.linode.com/docs/guides/network-helper/) enabled and are instead relying on a configuration that uses DHCP will need to manually allow DHCP traffic through port 67 and 68 of their cloud firewall. A full list of addresses for our DHCP servers can be found in our [DHCP Reference Guide](docs/guides/dhcp-ip-address-reference/).
+Users that do not have [Network Helper](/docs/guides/network-helper/) enabled and are instead relying on a configuration that uses DHCP will need to manually allow DHCP traffic through port 67 and 68 of their cloud firewall. A full list of addresses for our DHCP servers can be found in our [DHCP Reference Guide](/docs/guides/dhcp-ip-address-reference/).
 {{< /note >}}
 
 ### Inbound and Outbound Rules
