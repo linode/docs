@@ -10,8 +10,8 @@ published: 2019-04-01
 modified: 2021-09-07
 modified_by:
   name: Linode
-title: "How to Deploy a Minecraft Server through the Linode Marketplace"
-h1_title: "Deploying a Minecraft Server through the Linode Marketplace"
+title: "Deploying a Minecraft Server through the Linode Marketplace"
+h1_title: "How to Deploy a Minecraft Server through the Linode Marketplace"
 enable_h1: true
 contributor:
   name: Linode

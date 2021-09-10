@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-09
 modified_by:
   name: Linode
-title: "What Is NoSQL?"
+title: "What is NoSQL?"
 h1_title: "What is NoSQL?"
 external_resources:
 - '[LIST OF NOSQL DATABASE MANAGEMENT SYSTEMS](https://hostingdata.co.uk/nosql-database/)'
