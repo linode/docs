@@ -17,10 +17,10 @@ contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit
 relations:
-    platform:
-        key: how-to-install-anaconda
-        keywords:
-            - distribution: CentOS 8 Stream
+  platform:
+    key: how-to-install-anaconda
+    keywords:
+      - distribution: CentOS 8 Stream
 ---
 [Anaconda](http://anaconda.com) is a distribution of the Python and R programming languages. It is a curated bundle of specific language interpreters and add-ons. Anaconda's user base is primarily from the scientific computing, data analytics, and machine learning communities.
 
@@ -138,15 +138,3 @@ active environment : None
         python
 
 At this point, Anaconda launches the 3.8.5 release of Python, or perhaps a different version, if you installed a different Anaconda version. The Anaconda company offers a wealth of [documentation](https://docs.anaconda.com/anaconda/) and other [training materials](https://www.anaconda.com/help) to help dive deeper into using Anaconda.
-
-
-
-
-
-
-
-
-
-
-
-
