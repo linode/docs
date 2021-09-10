@@ -89,6 +89,7 @@ avz
 awk
 aws
 awstats
+axibase
 azc
 backdoors
 backend
@@ -111,6 +112,7 @@ basearch
 bashdoor
 bashrc
 bc
+bdd
 berkshelf
 bernd
 berners
@@ -122,6 +124,7 @@ bitnami
 bitrate
 bitwarden
 blkid
+blockchain
 blocklists
 blockwise
 bluehost
@@ -211,6 +214,8 @@ clickjacking
 client1
 client2
 clojure
+couchbase
+cloudant
 cloudflare
 cloudnet
 cloudron
@@ -249,6 +254,7 @@ copyto
 coreutils
 corporateclean
 courseware
+cov
 cpanminus
 cpu
 cqlsh
@@ -367,6 +373,9 @@ dockerfile
 dockerfiles
 dockerize
 dockerized
+docstring
+docstrings
+doctest
 dokku
 domain1
 domain2
@@ -425,6 +434,7 @@ etcd0
 eth0
 ethtool
 eugen
+eval
 evhost
 example1
 example2
@@ -736,6 +746,7 @@ iptables
 ipv4
 ipv6
 ipwl
+ipytest
 irc
 irchelp
 ircname
@@ -1008,8 +1019,9 @@ mnesia
 mngtmpaddr
 moby
 moddable
-moodle
 modsecurity
+Mojang
+moodle
 mongodb
 mongoimport
 monit
@@ -1588,6 +1600,7 @@ subnet
 subnets
 subnetwork
 subprocess
+subprocesses
 subqueries
 subquery
 subreddit
@@ -1739,6 +1752,7 @@ unicast
 unicode
 uninvoiced
 uniq
+unittest
 unix
 unmanaged
 unmerged
@@ -1896,8 +1910,10 @@ wx
 xabbix
 xap
 xargs
+xcaddy
 xcalc
 xcode
+xdist
 xen
 xenial
 xerus
