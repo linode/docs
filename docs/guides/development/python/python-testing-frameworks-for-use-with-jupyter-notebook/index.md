@@ -7,18 +7,18 @@ og_description: 'This guide provides an overview of popular Python testing frame
 keywords: ['python testing frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-09
+published: 2021-09-10
 modified_by:
   name: Linode
-title: "Python Testing Frameworks for Software Unit Testing"
-h1_title: "An Overview of Python Testing Frameworks for Software Unit Testing"
+title: "Python Testing Frameworks for Unit Testing"
+h1_title: "An Overview of Python Testing Frameworks for Unit Testing"
 enable_h1: true
 contributor:
   name: John Mueller
   link: https://github.com/JohnPaulMueller
 ---
 
-This guide provides an introduction to popular Python testing frameworks for unit testing your software. Unit tests are automated tests that target and test specific areas of your code, like specific functions or methods. A unit test compares your code against the criteria defined within the test. Using unit testing while developing your code catches bugs, gaps, and regressions. This guide provides an overview of three popular Python testing frameworks; doctest, pytest, and unittest. The guide demonstrates how to implement unit tests for an example function using each testing framework.
+This guide provides an introduction to popular Python testing frameworks used to unit test software. Unit tests are automated tests that target and test specific areas of your code, like specific functions or methods. A unit test compares your code against the criteria defined within the test. Using unit testing while developing your code catches bugs, gaps, and regressions. This guide provides an overview of three popular Python testing frameworks; doctest, pytest, and unittest. The guide demonstrates how to implement unit tests for an example function using each testing framework.
 
 ## Python Testing Frameworks: doctest, pytest, and unittest
 
@@ -26,9 +26,9 @@ The list below includes some of the most popular Python testing frameworks and w
 
 - [**doctest**](https://docs.python.org/3/library/doctest.html): Provides an interactive command-line shell and can be integrated with tools like [Jupyter Notebook](https://www.linode.com/docs/guides/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) with greater ease than other testing packages.
 
-    Poor documentation makes using this particular unit tester more difficult to use than it should be. It’s also limited to simpler testing scenarios.
+    Doctest is not as feature-rich as other frameworks, which limits it to simpler testing scenarios.
 
-- [**pytest**](https://docs.pytest.org/en/6.2.x/): Includes a simple class fixture that makes testing easier. Due to PyTests wide adoption, there are a lot of available resources to help you learn how to use it.
+- [**pytest**](https://docs.pytest.org/en/6.2.x/): Includes a simple class fixture that makes testing easier. Due to pytest's wide adoption, there are a lot of available resources to help you learn how to use it.
 
     PyTest is feature-rich, but due to its complexity requires a strong familiarity with Python.
 
@@ -38,7 +38,7 @@ The list below includes some of the most popular Python testing frameworks and w
 
 ## Examples Using Python Testing Frameworks
 
-The examples in this section use a common piece of code to demonstrate how you can implement each framework to test your Python code. The code below consists of a single function using the well-known factorial calculation. The function performs three tests to determine if an value is a negative number, a non-integer values, and values that is too high. The testing frameworks must not only check correct input values but incorrect values as well.
+The examples in this section use a common piece of code to demonstrate how you can implement each framework to test your Python code. The code below consists of a single function using the well-known factorial calculation. The testing frameworks must determine if a value passed to the function is a negative number, a non-integer value, or a value that is too high. The unit tests must not only check correct input values but incorrect values, as well.
 
 {{< file "main.py" >}}
 
@@ -63,13 +63,13 @@ def factorial(n):
     return result
 {{< /file >}}
 
-### Doctest Unit Testing Example
+### Doctest Unit Test Example
 
-Doctest uses docstrings (`'''`) to know which tests to execute and verify. To find your test cases, Doctest searches for `>>>` within a docstring and executes the test. Then, it compares its result with the expected result included in your test case. For example, the first test case in the `main.py` file below, tests for a negative number passed as the input to the `factorial(n)` function. The expected result should be the following error, `ValueError: n must be >= 0`. There are six tests in all, each of them following the same pattern.
+Doctest uses docstrings (`'''`) to know which tests to execute and verify. To find your test cases, Doctest searches for `>>>` within a docstring and executes the test. Then, it compares its result with the expected result included in your test case. For example, the first test case in the `test_example.py` file below, tests for a negative number passed as the input to the `factorial(n)` function. The expected result should be the following error, `ValueError: n must be >= 0`. There are six tests in all, each of them following the same pattern.
 
-The following is a complete `main.py` Doctest Python example module.
+The following is a an example Doctest Python module.
 
-{{< file "main.py" >}}
+{{< file "test_example.py" >}}
 # !/usr/bin/python
 
 def factorial(n):
@@ -121,14 +121,14 @@ if __name__ == '__main__':
 
 {{< /file >}}
 
-To run the above example locally, create a file named `main.py` and execute it with the following command:
+To run the above example locally, create a file named `test_example.py` and execute it with the following command:
 
-    python -m doctest -v main.py
+    python -m doctest -v test_example.py
 
 You should see a standard output returned as shown below. A simple report is displayed that outlines the number of tests that passed and failed.
 
 {{< note >}}
-To force verbose mode when running your tests, update the `main.py` file by adding `verbose=True` to  `doctest.testmod()`. The updated line should look as follows: `doctest.testmod(verbose=True)`.
+To force verbose mode when running your tests, update the `test_example.py` file by adding `verbose=True` to  `doctest.testmod()`. The updated line should look as follows: `doctest.testmod(verbose=True)`.
 {{</ note >}}
 
 {{< output >}}
@@ -194,11 +194,11 @@ File "<doctest__main__.factorial[5]>", line 1, in <module>
 ***Test Failed*** 1 failures.
 {{< /output >}}
 
-One of the biggest advantages of Doctest is that you can use it from the command line. This means that you can create scripts to test larger projects. Since tests can be included as docstrings within your code, it can become unruly to manage your tests. For this reason, you may consider a more robust unit testing tool, like UnitTest.
+One of the biggest advantages of Doctest is that you can use it from the command line. This means that you can create scripts to test larger projects. Since tests can be included as docstrings within your code, it can become unruly to manage your tests. For this reason, you may consider a more robust unit testing tool, like unittest.
 
-### Pytest Unit Testing Example
+### Pytest Unit Test Example
 
-If you’re looking for a more feature-rich test tool, then Pytest is a good choice. You can use Pytest for unit, functional, and API testing, which makes it an extremely versatile tool. Pytest also lets you extend its functionality with plugins. Below is a list of some of pytest's most popular plugins:
+If you’re looking for a more feature-rich test tool, then Pytest is a good choice. You can use Pytest for unit, functional, and API testing, which makes it an extremely versatile. Pytest also lets you extend its functionality with plugins. Below is a list of some of pytest's most popular plugins:
 
 - **[Pytest-BDD](https://pytest-bdd.readthedocs.io/en/latest/)**: Provides support for Behavior Driven Development (BDD) using a subset of the [Gherkin language](https://cucumber.io/docs/gherkin/).
 
@@ -224,7 +224,7 @@ To install Pytest using conda, issue the following command:
 
 The example code imports the pytest module and includes 6 different test methods for the `factorial(n)` function. All the test functions are grouped in the `TestFactorial_1` class. The `assert` statement defines the expected result for a specific test function.
 
-{{< file "test_example.py" >}}
+{{< file "test_example_2.py" >}}
 import pytest
 import math
 
@@ -274,9 +274,9 @@ def factorial(n):
     return result
 {{< /file >}}
 
-To run the tests in the `test_example.py` file, use the following command:
+To run the unit tests, use the following command:
 
-    pytest test_example.py
+    pytest test_example_2.py
 
 Running the tests, results in the following output:
 
@@ -286,14 +286,14 @@ platform linux -- Python 3.8.10, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /home/example_user
 collected 6 items
 
-test_example.py ......                                                                                                       [100%]
+test_example_2.py ......                                                                                                       [100%]
 
 ======================================================== 6 passed in 0.01s =========================================================
 {{</ output >}}
 
 You can use the `-v` option to view a more verbose output.
 
-If you modify the `test_example.py` file to call the `factorial(n)` function using a value that is out of range, Pytest should return an error. For example, add `factorial(-20)` to the bottom of the file and rerun Pytest. You should see a similar error that has been caught by one of your test functions:
+If you modify the `test_example_2.py` file to call the `factorial(n)` function using a value that is out of range, Pytest should return an error. For example, add `factorial(-20)` to the bottom of the file and rerun Pytest. You should see a similar error that has been caught by one of your test functions:
 
 {{< output >}}
 ======================================================= test session starts ========================================================
@@ -303,25 +303,25 @@ rootdir: /home/example_user
 collected 0 items / 1 error
 
 ============================================================== ERRORS ==============================================================
-_________________________________________________ ERROR collecting test_example.py _________________________________________________
+_________________________________________________ ERROR collecting test_example_2.py _________________________________________________
 test_example.py:49: in <module>
     factorial(-20)
 test_example.py:35: in factorial
     raise ValueError("n must be >= 0")
 E   ValueError: n must be >= 0
 ===================================================== short test summary info ======================================================
-ERROR test_example.py - ValueError: n must be >= 0
+ERROR test_example_2.py - ValueError: n must be >= 0
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ========================================================= 1 error in 0.06s =========================================================
 {{</ output >}}
 
-### Unittest Python Framework Unit Testing Example
+### Unittest Python Testing Framework Example
 
-Like Doctest, unittest is part of the Python standard library. However, unittest uses an entirely different paradigm compared to Doctest. It provides functionality that is similar the [JUnit](https://junit.org/junit4/) testing framework. Typically, you run unittest on the command line, but it also integrates well with most IDEs.
+Like Doctest, unittest is part of the Python standard library. However, unittest uses an entirely different testing paradigm. It provides functionality that is similar the [JUnit](https://junit.org/junit4/) testing framework. Typically, you run unittest on the command line, but it also integrates well with most IDEs.
 
-The example file `test_example2.py` imports unittest, creates a class named `TestFactorial_2()` that includes all the test methods for the `factorial(n)` function. The test methods ensure that any value passed to the `factorial(n)` function is within the acceptable ranges defined at the beginning of this guide.
+The example file `test_example_3.py` imports unittest, creates a class named `TestFactorial_2()` that includes all the test methods for the `factorial(n)` function. The test methods ensure that any value passed to the `factorial(n)` function is within the acceptable ranges defined at the beginning of this guide.
 
-{{< file "test_example_2.py" >}}
+{{< file "test_example_3.py" >}}
 import unittest
 import math
 
@@ -375,11 +375,11 @@ def factorial(n):
     return result
 {{< /file >}}
 
-To run the test methods defined in the `test_example2.py` file, issue the following command:
+To run the test methods defined in the `test_example_3.py` file, issue the following command:
 
-    python -m unittest test_example2.py
+    python -m unittest test_example_3.py
 
-Unittest returns the following output
+Unittest returns the following output:
 
 {{< output >}}
 Float Value Test
@@ -396,10 +396,10 @@ Ran 6 tests in 0.001s
 OK
 {{< /output >}}
 
-As with Doctest, the output message tells you how many tests were run and how many failed. You can get more information using the `-v` command line option or by adding `unittest.main(argv=[' '], exit=False, verbosity=2)` in the `test_example2.py` file.
+As with Doctest, the output message tells you how many tests were run and how many failed. You can get more information using the `-v` command line option or by adding `unittest.main(argv=[' '], exit=False, verbosity=2)` in the `test_example_3.py` file.
 
 ## Conclusion
 
-There are other unit testers available, however, many of them build on the unit testers covered in this guide. One example is [nose2](https://github.com/nose-devs/nose2) which builds on unittest.
+There are other Python unit testers available, however, many of them build on the unit testers covered in this guide. One example is [nose2](https://github.com/nose-devs/nose2) which builds on unittest.
 
 This guide covered unit testing frameworks, but there are different areas of software testing to explore, like [system](https://en.wikipedia.org/wiki/System_testing) and [acceptance testing](https://en.wikipedia.org/wiki/Acceptance_testing). While there are many specialized software testing frameworks, you can use extensions and plug-ins with unit testers to achieve more testing coverage.
