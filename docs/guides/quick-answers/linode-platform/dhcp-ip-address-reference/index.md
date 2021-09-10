@@ -27,6 +27,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 66.175.223.241
 
 ## Dallas
+
 50.116.29.9
 72.14.182.149
 50.116.18.11
@@ -35,6 +36,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 173.255.199.165
 
 ## Atlanta
+
 198.74.55.159
 50.116.46.210
 173.230.139.221
@@ -43,6 +45,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 74.207.234.190
 
 ## Newark
+
 97.107.131.49
 69.164.219.39
 66.228.42.172
@@ -51,6 +54,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 96.126.108.78
 
 ## London
+
 176.58.106.63
 151.236.222.62
 151.236.218.42
@@ -59,6 +63,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 178.79.187.246
 
 ## Singapore
+
 103.3.60.28
 103.3.60.29
 103.3.60.30
@@ -67,6 +72,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 103.3.60.33
 
 ## Frankfurt
+
 139.162.128.28
 139.162.128.29
 139.162.128.30
@@ -75,6 +81,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 139.162.128.33
 
 ## Tokyo
+
 139.162.65.28
 139.162.65.29
 139.162.65.30
@@ -83,6 +90,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 139.162.65.33
 
 ## Toronto
+
 172.105.0.50
 172.105.0.53
 172.105.0.52
@@ -91,6 +99,7 @@ In some cases, such as when configuring a firewall, you may need to know the IP 
 172.105.0.55
 
 ## Mumbai
+
 172.105.33.16
 172.105.33.17
 172.105.33.12
