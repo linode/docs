@@ -2,11 +2,12 @@
 slug: using-nodejs-typescript-and-express-to-build-a-web-server
 author:
   name: John Mueller
-description: 'This guide shows how to install node Express server, create a tsconfig json file, and develop a Node.js Express webserver with examples'
-og_description: 'This guide shows how to install node Express server, create a tsconfig json file, and develop a Node.js Express webserver with examples'
+description: 'This guide shows you how to configure a Node.js, TypeScript, and Express development environment. Once your environment is set up, you build a simple web server using TypeScript.'
+og_description:  'This guide shows you how to configure a Node.js, TypeScript, and Express development environment. Once your environment is set up, you build a simple web server using TypeScript.'
 keywords: ['nodejs typescript','node express server','tsconfig json']
+tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-24
+published: 2021-09-10
 modified_by:
   name: Linode
 title: "Using Nodejs Typescript and Express to Build a Web Server"
@@ -15,27 +16,29 @@ enable_h1: true
 contributor:
   name: John Mueller
 external_resources:
-- '[NPM documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json)'
+- '[npm documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json)'
 - '[Express documentation](https://expressjs.com/en/guide/routing.html)'
 - "[TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig)"
 ---
 
-Organizations have used JavaScript to create web projects since 1995. During that time, usage and complexity have both grown so that you often see huge websites built with JavaScript today. [Node.js](https://nodejs.org/en/) provides a dependable JavaScript runtime to use with your web applications and [Express](https://expressjs.com/) adds a web framework so you write applications using less code and don’t have to reinvent the wheel. The main reason to use TypeScript in a web project is to reduce errors. Because TypeScript provides a more formal approach to writing code, developers can create websites faster and with fewer errors. Some of the other benefits that TypeScript provides to build your web project are:
+[TypeScript](https://www.typescriptlang.org/) is a [strongly typed programming language](https://en.wikipedia.org/wiki/Strong_and_weak_typing) that enhances JavaScript. JavaScript is increasingly used for complex web applications with large codebases. Since you can use TypeScript anywhere that JavaScript is supported, you can replace JavaScript for TypeScript to reap the benefits of a strongly typed language. TypeScript enables developers to build applications quickly and with less errors. Some benefits of TypeScript are:
 
 - Reduction of misspelled functions and properties
-- Passing the right types of arguments to functions
-- Ensures that you use the right number of arguments to functions
+- Passes the right types of arguments to functions
+- Ensures that you use the right number of arguments with functions
 - Provides smarter autocomplete suggestions
 
-These benefits are important because they help solve the [top JavaScript errors](https://rollbar.com/blog/top-10-javascript-errors-from-1000-projects-and-how-to-avoid-them/) listed on many websites. Reducing or eliminating these top JavaScript errors saves a huge amount of time and effort—keeping projects on track. With these benefits in mind, the following sections tell how you can create a simple web server using a combination of TypeScript, Node.js, and Express with a minimum effort.
+This guide shows you how to use TypeScript with a two tools that are commonly used to build JavaScript web applications —[Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/). Node.js provides a JavaScript runtime to use with web applications. Express offers a minimalist web framework to simplify building the various components of a web application. In this guide, you learn how to create a simple web server using TypeScript, Node.js, and Express.
 
-## Set up your TypeScript and Node.js Project
+## How to Set Up the TypeScript, Node.js, and Express Development Environment
 
-To make it easier to work with this example, create an environment to host it.
+The majority of the steps in this guide are performed on your computer's local development environment. The following sections show you how to install TypeScript, Node.js, Express, and package dependencies on your computer. Any additional configuration steps required by each tool are also covered.
 
-The steps in this section show you how to set up your development environment by creating a new directory to store your web server and initialize a `package.json` file.
+{{< note >}}
+If you do not have Node.js and the node version manager (nvm) installed on your computer, follow our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide. The steps in this guide require a minimum Node.js version of 13.0.0.
+{{</ note >}}
 
-1. In your home directory, create a new directory named `typescript-nodejs` and navigate into the new directory.
+1. In your home directory, create a new directory named `typescript-nodejs` and move into the new directory.
 
         mkdir typescript-nodejs && cd typescript-nodejs
 
@@ -60,11 +63,11 @@ The steps in this section show you how to set up your development environment by
 }
     {{< /file >}}
 
-   This file provides information about the webserver that you can update later. The most important entry is `"main": "index.js"`. This defines the name of the main JavaScript file used to create the webserver.
+   This file provides information about the web server that you can update later. The most important entry is `"main": "index.js"`. This defines the name of the main JavaScript file used to create the web server.
 
    The `"license": "ISC"` entry specifies that the license used for this web server is from the Internet Systems Consortium (ISC). To learn more about each key and value, refer to [NPM's documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json).
 
-1. To avoid error messages in the next section of this guide, update the `package.json` file's `description` key as:
+1. To avoid error messages in the next section of this guide, update the `package.json` file's `description` key as follows:
 
     {{< file "package.json" >}}
    ...
@@ -73,14 +76,10 @@ The steps in this section show you how to set up your development environment by
     {{< /file >}}
 
     {{< note >}}
-There is also a field defined in the `package.json` file called the `repository` field, which you don't have to provide if you don’t have one available to store your code. This guide doesn't use one to create a simple server, but the [NPM documentation](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository) provides many acceptable formats for this field.
-    {{< /note >}}
+There is also a field defined in the `package.json` file called the `repository` field. You don't have to provide a value for this field if you don’t have a repository configured to store your code.
+{{< /note >}}
 
-### Install Express and Add Dependencies
-
-To run the example web server, you need to install Express and TypeScript. You use TypeScript to define the required dependencies.
-
-1. Use NPM to install Express with the following command. Ensure you are still in the `typescript-nodejs` directory when running the below command.
+1. Use [npm](https://www.linode.com/docs/guides/install-and-use-npm-on-linux/) to install Express with the command below. Ensure you are still in the `typescript-nodejs` directory when running the command.
 
         npm install express
 
@@ -93,14 +92,13 @@ npm WARN typescript-nodejs@1.0.0 No repository field.
 - express@4.17.1
 added 50 packages from 37 contributors and audited 50 packages in 2.539s
 found 0 vulnerabilities
-
     {{< /output >}}
 
     The first line of the output means that you should copy your `package-lock.json` file to your code repository. Typically, this is the repository you would point to in the `package.json` file's `repository` field.
 
-    If you inspect the `package-lock.json` file, you see a detailed description of the `node_modules` tree and `package.json`. This file is automatically generated for you whenever NPM modifies these two elements. You don’t need to worry about it for this guide, but there is a good [discussion](https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json) of it available in NPM's documentation. The remaining Express installation output lines tell you about the version of Express that was installed and its details.
+    If you inspect the `package-lock.json` file, you see a detailed description of the `node_modules` tree and `package.json` file. This file is automatically generated whenever npm modifies these two elements. You don’t need to worry about it for this guide, but there is a good [discussion](https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json) of it available in npm's documentation. The remaining lines tell you about the version of Express that was installed and its details.
 
-1. Install TypeScript using the below command. Even if you currently have TypeScript installed on your system, you need to install it again with the dependencies required to create this sample webserver project.
+1. Install TypeScript using the command below. Even if you currently have TypeScript installed on your system, you need to install it again with the dependencies required to create this sample webserver project.
 
         npm install typescript ts-node @types/node @types/express --save-dev
 
@@ -108,7 +106,7 @@ found 0 vulnerabilities
 
     Finally, the `--save-dev` command line switch indicates that TypeScript is only used for development purposes. Because you compile the TypeScript code to JavaScript, there is no dependency on TypeScript at runtime.
 
-    When you execute the above command, you see an output similar to the following:
+    When you execute the command, you see an output similar to the following:
 
     {{< output >}}
 npm WARN typescript-nodejs@1.0.0 No repository field.
@@ -126,13 +124,13 @@ found 0 vulnerabilities
 
 ## How to Create your tsconfig.json File
 
-At this point, you should have all requirements and dependencies installed in your development environment. In this section, you create the `tsconfig.json` file.
+At this point, you should have all requirements and dependencies installed in your development environment. In this section, you create the `tsconfig.json` file. This file is required at the root of a TypeScript project. It specifies directory information about the project and compiler options needed during compilation.
 
 - Use the following command to create the `tsconfig.json` file.
 
         npx tsc --init
 
-    The `tsconfig.json` file is created with the following content (few settings that are commented out are removed for readability purpose).
+    The `tsconfig.json` file is created with the following content:
 
     {{< file "tsconfig.json" >}}
 {
@@ -161,23 +159,27 @@ At this point, you should have all requirements and dependencies installed in yo
 }
     {{< /file >}}
 
+    {{< note >}}
+When the `tsconfig.json` file is created, several options are commented out. You can uncomment the settings that you want to provide values for.
+    {{</ note >}}
+
     The generated `tsconfig.json` file contains various default settings. You can learn more about each setting in [TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig). Unless you have reasons to change the `target` and `module` settings, you should leave those as they are defined. Likewise, keep `strict` set to `true` to ensure that your application uses strict type checking. Also, keep `esModuleInterop` set to `true` to ensure that you obtain full interoperability.
 
-- A few of the settings that are listed below are currently commented out and you may, or may not want to change them. For this example, you don’t have to change them, but you’d likely need to do so for a large project.
+- For this example, you don’t have to change the settings listed below, but you’d likely need to do so for a large project.
 
   - `rootDir`: Specifies the location of the TypeScript files.
 
   - `outFile`: Concatenate and emit the webserver code to a single file. This is useful for small web servers and does provide a performance boost in some cases.
 
-  - `outDir`: Specifies where you want the JavaScript generated during the compilation process to go.
+  - `outDir`: Specifies where you want the generated JavaScript to be stored after compilation.
 
-## Develop a Node.js and Express Web Server Example
+## Create a Node.js and Express Web Server Example
 
-Now you’re finally ready to create some code and run it.
+Now that your development environment is completely configured, you’re ready to write some code and run it. In this section, you create a simple web server.
 
-1. Ensure you are still in the `typescript-nodejs` directory. Create a new file named `index.mjs` and add the following code to the file.
+1. Ensure you are still in the `typescript-nodejs` directory. Create a new file named `index.ts` and add the following code to the file.
 
-    {{< file "index.mjs" >}}
+    {{< file "index.ts" >}}
 import express from 'express';
 
 const app = express();
@@ -195,11 +197,11 @@ app.listen(3000, () => {
 
     The call to `app.get()` specifies that the web server will respond to a root directory (`'/'`) request  with a message that reads `This is a test web page!`. Refer to the [Express documentation](https://expressjs.com/en/guide/routing.html) to learn more about its routing features.
 
-    The call to `app.listen()` describes what port to use for listening for requests. Whenever the application starts, you see the message, `The application is listening on port 3000!` at the command line.
+    The call to `app.listen()` describes what port to use when listening for requests. Whenever you start the application on the command line, you see the message, `The application is listening on port 3000!`.
 
 1. Run your code to create the webserver.
 
-        node index.mjs
+        npx ts-node index.ts
 
 1. Navigate to a browser to view the site running on the localhost. Enter `localhost:3000` as the URL. You should see the message `This is a test web page!` returned in your web browser's session.
 
@@ -207,15 +209,4 @@ app.listen(3000, () => {
 
 ## Conclusion
 
-There are many reasons to use JavaScript to create your next web server. Some of the most commonly cited reasons are:
-
-- A shorter learning curve than many other web development languages.
-- Great community support so that help is always available.
-- A vast array of libraries to use for web development.
-- Ease of adding special effects to web pages.
-- Client-side development that reduces page load time so the user doesn't get tired of waiting.
-- Good compatibility with other programming languages.
-- The use of the Document Object Model (DOM) to make complex development tasks simpler.
-- Native browser support so that code compilation isn’t needed.
-
-JavaScript does come with a few issues that TypeScript helps to correct. When you use TypeScript to create your JavaScript code, what you get is the best of stricter programming languages with all of the benefits of JavaScript. Using Express and Node.js with TypeScript you do less work and spend more time actually creating your website, rather than overcoming development hurdles.
+ When you use TypeScript to create your JavaScript code, what you get is the best of stricter programming languages with all of the benefits of JavaScript. When using Express and Node.js with TypeScript you do less work and spend more time actually creating your web application. If you are a JavaScript programmer, refer to the [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial to learn more about their differences.
