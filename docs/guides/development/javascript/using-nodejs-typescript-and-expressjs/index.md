@@ -21,14 +21,13 @@ external_resources:
 - "[TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig)"
 ---
 
-[TypeScript](https://www.typescriptlang.org/) is a [strongly typed programming language](https://en.wikipedia.org/wiki/Strong_and_weak_typing) that enhances JavaScript. JavaScript is increasingly used for complex web applications with large codebases. Since you can use TypeScript anywhere that JavaScript is supported, you can replace JavaScript for TypeScript to reap the benefits of a strongly typed language. TypeScript enables developers to build applications quickly and with less errors. Some benefits of TypeScript are:
+[TypeScript](https://www.typescriptlang.org/) is a [strongly typed programming language](https://en.wikipedia.org/wiki/Strong_and_weak_typing) that is built on top off JavaScript. JavaScript is increasingly used in complex web applications with large codebases. Since you can use TypeScript anywhere that JavaScript is supported, you can replace JavaScript for TypeScript to reap the benefits of a strongly typed language. TypeScript enables developers to build applications quickly and with less errors. Some benefits of TypeScript are:
 
 - Reduction of misspelled functions and properties
-- Passes the right types of arguments to functions
-- Ensures that you use the right number of arguments with functions
-- Provides smarter autocomplete suggestions
+- Ensures that you use the correct argument types and number of arguments with functions
+- Provides smarter autocomplete suggestions when working in your IDE
 
-This guide shows you how to use TypeScript with a two tools that are commonly used to build JavaScript web applications —[Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/). Node.js provides a JavaScript runtime to use with web applications. Express offers a minimalist web framework to simplify building the various components of a web application. In this guide, you learn how to create a simple web server using TypeScript, Node.js, and Express.
+This guide shows you how to use TypeScript with two tools that are commonly used to build JavaScript web applications —[Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/). Node.js provides a JavaScript runtime to use with web applications. Express offers a minimalist web framework to simplify building the various components of a web application. In this guide, you learn how to create a simple web server using TypeScript, Node.js, and Express.
 
 ## How to Set Up the TypeScript, Node.js, and Express Development Environment
 
@@ -102,7 +101,7 @@ found 0 vulnerabilities
 
         npm install typescript ts-node @types/node @types/express --save-dev
 
-    The `ts-node` part of the installation command installs TS-Node, which is an execution engine for TypeScript and a [Read–Eval–Print Loop (REPL)](https://nodejs.org/api/repl.html#repl_repl) for Node. The `@types/node` and `@types/express` additions provide type definitions for TypeScript when interacting with Node and Express.
+    The `ts-node` part of the installation command installs [ts-node](https://typestrong.org/ts-node/), which is an execution engine for TypeScript and a [Read–Eval–Print Loop (REPL)](https://nodejs.org/api/repl.html#repl_repl) for Node.js. The `@types/node` and `@types/express` additions provide type definitions for TypeScript when interacting with Node.js and Express.
 
     Finally, the `--save-dev` command line switch indicates that TypeScript is only used for development purposes. Because you compile the TypeScript code to JavaScript, there is no dependency on TypeScript at runtime.
 
@@ -160,7 +159,7 @@ At this point, you should have all requirements and dependencies installed in yo
     {{< /file >}}
 
     {{< note >}}
-When the `tsconfig.json` file is created, several options are commented out. You can uncomment the settings that you want to provide values for.
+When the `tsconfig.json` file is created, several options are commented out. You can leave the settings as they are, but for more complex project, you can uncomment the necessary settings.
     {{</ note >}}
 
     The generated `tsconfig.json` file contains various default settings. You can learn more about each setting in [TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig). Unless you have reasons to change the `target` and `module` settings, you should leave those as they are defined. Likewise, keep `strict` set to `true` to ensure that your application uses strict type checking. Also, keep `esModuleInterop` set to `true` to ensure that you obtain full interoperability.
@@ -169,11 +168,11 @@ When the `tsconfig.json` file is created, several options are commented out. You
 
   - `rootDir`: Specifies the location of the TypeScript files.
 
-  - `outFile`: Concatenate and emit the webserver code to a single file. This is useful for small web servers and does provide a performance boost in some cases.
+  - `outFile`: Concatenates and emits the webserver code to a single file. This is useful for small web servers and does provide a performance boost in some cases.
 
   - `outDir`: Specifies where you want the generated JavaScript to be stored after compilation.
 
-## Create a Node.js and Express Web Server Example
+## Create a TypeScript, Node.js and Express Web Server Example
 
 Now that your development environment is completely configured, you’re ready to write some code and run it. In this section, you create a simple web server.
 
@@ -197,7 +196,7 @@ app.listen(3000, () => {
 
     The call to `app.get()` specifies that the web server will respond to a root directory (`'/'`) request  with a message that reads `This is a test web page!`. Refer to the [Express documentation](https://expressjs.com/en/guide/routing.html) to learn more about its routing features.
 
-    The call to `app.listen()` describes what port to use when listening for requests. Whenever you start the application on the command line, you see the message, `The application is listening on port 3000!`.
+    The call to `app.listen()` describes what port to use when listening for requests. Whenever you start the application on the command line, you see the message `The application is listening on port 3000!`.
 
 1. Run your code to create the webserver.
 
@@ -205,8 +204,8 @@ app.listen(3000, () => {
 
 1. Navigate to a browser to view the site running on the localhost. Enter `localhost:3000` as the URL. You should see the message `This is a test web page!` returned in your web browser's session.
 
-    To stop the webserver, press Ctrl+C at the command line.
+    To stop the webserver, press **Ctrl+C** at the command line.
 
 ## Conclusion
 
- When you use TypeScript to create your JavaScript code, what you get is the best of stricter programming languages with all of the benefits of JavaScript. When using Express and Node.js with TypeScript you do less work and spend more time actually creating your web application. If you are a JavaScript programmer, refer to the [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial to learn more about their differences.
+ When you use TypeScript to build a web application, you get the benefits of stricter programming language that is interchangeable with JavaScript. When using Express and Node.js with TypeScript your code is mush less error prone and verbose. Their benefits allow you to spend more time creating your web application's features. If you are a JavaScript programmer, refer to the [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial to learn more about the differences between the two languages.
