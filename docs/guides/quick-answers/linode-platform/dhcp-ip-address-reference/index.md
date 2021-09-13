@@ -5,11 +5,11 @@ author:
   email: docs@linode.com
 description: 'Shortguide that displays a list of all IP addresses used for configurations that rely on DHCP by their datacenter.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-01-20
+modified: 2021-09-10
 modified_by:
   name: Ryan Syracuse
-published: 2020-01-20
-title: DHCP Address Reference
+published: 2021-09-10
+title: DHCP IP Address Reference
 keywords: [dhcp", "cloud firewall", "firewall", "networking"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/dhcp-ip-address-reference/']
