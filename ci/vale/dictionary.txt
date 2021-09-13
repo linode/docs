@@ -1657,6 +1657,8 @@ thawte
 theano
 theming
 thingsboard
+tigervnc
+tightvncserver
 tika
 timedatectl
 timeframe

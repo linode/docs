@@ -1,167 +1,60 @@
 ---
-slug: remote-desktop-using-apache-guacamole-on-docker
+slug: remote-cloud-desktop-using-apache-guacamole
 author:
-  name: Sam Foo
-  email: sfoo@linode.com
-description: "Use Apache Guacamole to access your virtual desktop from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode."
-og_description: "Use Apache Guacamole to access your virtual desktop from a browser. This guide will show how to install Apache Guacamole through Docker on your Linode."
+  name: Linode Community
+  email: docs@linode.com
+description: "Instruction on using Apache Guacamole to access a remote server's virtual desktop from a browser."
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
 tags: ["docker", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-09
+modified: 2021-09-08
 modified_by:
   name: Linode
 published: 2017-11-17
-title: "Virtual Cloud Desktop Using Apache Guacamole"
+title: "Using a Cloud Desktop on a Browser with Apache Guacamole"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
  - '[Apache Tomcat](https://tomcat.apache.org/)'
-aliases: ['/applications/remote-desktop/remote-desktop-using-apache-guacamole-on-docker/']
+aliases: ['/applications/remote-desktop/remote-desktop-using-apache-guacamole-on-docker/','/guides/remote-desktop-using-apache-guacamole-on-docker/']
 ---
 
 ![Virtual Cloud Desktop Using Apache Guacamole](Apache_Guacamole.jpg)
 
 Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover the installation of Apache Guacamole through Docker, then access a remote desktop environment hosted on a Linode.
 
-## Before You Begin
+## Install Apache Guacamole
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for upgrading your system, setting the hostname, and configuring the timezone.
+Apache Guacamole can be installed and configured on a Linode Compute Instance using one of the following methods:
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  **Linode Marketplace:** Deploy the [Apache Guacamole App](https://www.linode.com/marketplace/apps/linode/apache-guacamole/) through the Linode Marketplace to automatically install Guacamole, VNC software, and a desktop environment. This is the easiest method and enables you to quickly get up and running without needing to install and configure everything manually. Just note, when choosing this method you are limited to the Distribution Images supported by the Marketplace App.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+1.  **Docker:** Alternatively, you can deploy Apache Guacamole's Docker images and manually configure the software yourself. This method strikes a balance between ease of installation and custom configuration. It may be more advanced, but provides you with greater control over your environment and configuration. See [Installing Apache Guacamole through Docker](/docs/guides/installing-apache-guacamole-through-docker/) for instructions.
 
-## Install Docker
+1.  **Natively:** For maximum control over every step of the installation process, Apache Guacamole can be manually installed on your system from source. This is the most advanced method. If choosing this method, review [Installing Apache Guacamole on Ubuntu and Debian](/docs/guides/installing-apache-guacamole-on-ubuntu-and-debian/) and then return to this guide. You can also see [Installing Guacamole natively](https://guacamole.apache.org/doc/gug/installing-guacamole.html) on the official documentation for additional instructions.
 
-{{< content "installing-docker-shortguide" >}}
+## Setting Up VNC and a Desktop Environment
 
-## Initialize Guacamole Authentication with MySQL
+Before you're able to remotely connect to your server's desktop, a desktop environment and VNC server must be installed.
 
-MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alternatives.
+1.  **Install your preferred desktop environment**, such as Xfce, Gnome, KDE, or Unity. A desktop environment is the GUI used to interact with the system, typically through cascading windows (such as Windows and macOS). Most Linux server-based distributions (like those for deployment on Linode) do not come with one pre-installed. The installation and configuration for a desktop environment depends on the environment you chose and the distribution you are running. The following instructions should work on modern Ubuntu distributions:
 
-1.  Pull Docker images for guacamole-server, guacamole-client, and MySQL.
-
-        docker pull guacamole/guacamole
-        docker pull guacamole/guacd
-        docker pull mysql/mysql-server
-
-1.  Create a database initialization script to create a table for authentication:
-
-        docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql > initdb.sql
-
-1.  Generate a one-time password for MySQL root. View the generated password in the logs:
-
-        docker run --name example-mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_ONETIME_PASSWORD=yes -d mysql/mysql-server
-        docker logs example-mysql
-
-    Docker logs should print the password in the terminal.
-
-        [Entrypoint] Database initialized
-        [Entrypoint] GENERATED ROOT PASSWORD: <password>
-
-1.  Rename and move `initdb.sql` into the MySQL container.
-
-        docker cp initdb.sql example-mysql:/guac_db.sql
-
-1.  Open a bash shell within the MySQL Docker container.
-
-        docker exec -it example-mysql bash
-
-1.  Log in using the one-time password. No commands will be accepted until a new password is defined for `root`. Create a new database and user as shown below:
-
-        bash-4.2# mysql -u root -p
-        Enter password:
-        Welcome to the MySQL monitor.  Commands end with ; or \g.
-        Your MySQL connection id is 11
-        Server version: 5.7.20
-
-        Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
-
-        Oracle is a registered trademark of Oracle Corporation and/or its
-        affiliates. Other names may be trademarks of their respective
-        owners.
-
-        Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-        mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_root_password';
-        Query OK, 0 rows affected (0.00 sec)
-
-        mysql> CREATE DATABASE guacamole_db;
-        Query OK, 1 row affected (0.00 sec)
-
-        mysql> CREATE USER 'guacamole_user'@'%' IDENTIFIED BY 'guacamole_user_password';
-        Query OK, 0 rows affected (0.00 sec)
-
-        mysql> GRANT SELECT,INSERT,UPDATE,DELETE ON guacamole_db.* TO 'guacamole_user'@'%';
-        Query OK, 0 rows affected (0.00 sec)
-
-        mysql> FLUSH PRIVILEGES;
-        Query OK, 0 rows affected (0.00 sec)
-
-        mysql> quit
-        Bye
-
-1.  While in the bash shell, create tables from the initialization script for the new database.
-
-        cat guac_db.sql | mysql -u root -p guacamole_db
-
-    Verify successful addition of tables. If there are no tables in `guacamole_db`, ensure the previous steps are completed properly.
-
-        mysql> USE guacamole_db;
-        Reading table information for completion of table and column names
-        You can turn off this feature to get a quicker startup with -A
-
-        Database changed
-        mysql> SHOW TABLES;
-        +---------------------------------------+
-        | Tables_in_guacamole_db                |
-        +---------------------------------------+
-        | guacamole_connection                  |
-        | guacamole_connection_group            |
-        | guacamole_connection_group_permission |
-        | guacamole_connection_history          |
-        | guacamole_connection_parameter        |
-        | guacamole_connection_permission       |
-        | guacamole_sharing_profile             |
-        | guacamole_sharing_profile_parameter   |
-        | guacamole_sharing_profile_permission  |
-        | guacamole_system_permission           |
-        | guacamole_user                        |
-        | guacamole_user_password_history       |
-        | guacamole_user_permission             |
-        +---------------------------------------+
-        13 rows in set (0.00 sec)
-
-    Leave the bash shell.
-
-        exit
-
-## VNC Server on a Linode
-
-Before sharing a remote desktop, a desktop environment and VNC server must be installed on a Linode. This guide will use Xfce because it is lightweight and doesn't excessively consume system resources.
-
-1.  Install Xfce on the Linode.
+    **Xfce:** This is a lightweight desktop environment that's a good choice for users of 1GB or 2GB Compute Instances.
 
         sudo apt install xfce4 xfce4-goodies
 
-    Alternately Unity if there are less constraints on system resources:
+    **Unity:** The default feature-rich desktop environment for modern Ubuntu distributions. Unity is more resource intensive and requires a Compute Instance with 4GB of memory or more.
 
         sudo apt install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
-1.  Install VNC server. Starting VNC server will prompt the user for a password.
+1.  **Install a VNC server.** This guide uses tightvncserver but other options (such as tigervnc, x11vnc, and vino) should also work. See the "Which VNC Server?" section on the [Configuring Guacamole](https://guacamole.apache.org/doc/0.9.1/gug/configuring-guacamole.html) guide if you'd like to explore other software.
 
         sudo apt install tightvncserver
+
+1.  Start the VNC server. This prompts you for a secure password that's no longer than 8 characters.
+
         vncserver
 
-    This will prompt for a password in addition to a view-only option. The maximum password length is 8 characters. For setups requiring more security, deploying Guacamole as a [reverse proxy with SSL encryption is highly recommended](https://guacamole.incubator.apache.org/doc/gug/proxying-guacamole.html).
-
-        You will require a password to access your desktops.
-
-        Password:
-        Verify:
-        Would you like to enter a view-only password (y/n)?
+    For setups requiring more security, deploying Guacamole as a [reverse proxy with SSL encryption is highly recommended](https://guacamole.incubator.apache.org/doc/gug/proxying-guacamole.html).
 
 1.  Ensure to start the desktop environment the end of `.vnc/xstartup` otherwise only a gray screen will be displayed.
 
@@ -186,21 +79,7 @@ metacity &
 nautilus &
 {{< / file >}}
 
-## Guacamole in Browser
-
-1.  Start guacd in Docker:
-
-        docker run --name example-guacd -d guacamole/guacd
-
-1.  Link containers so Guacamole can verify credentials stored in the MySQL database:
-
-        docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE=guacamole_db -e MYSQL_USER=guacamole_user -e MYSQL_PASSWORD=guacamole_user_password -d -p 127.0.0.1:8080:8080 guacamole/guacamole
-
-    {{< note >}}
-To see all running and non-running Docker containers:
-
-    docker ps -a
-{{< / note >}}
+## Opening Guacamole in a Browser
 
 1.  Before connecting to the VNC server, create an SSH tunnel replacing `user` and `example.com` with the Linode's user and public IP.
 
@@ -245,3 +124,14 @@ If you have multiple displays running on the same Linode, increment the port num
     ![Guacamole Recent Connections](guac_recent.png)
 
 This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are many features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
+
+## Is Apache Guacamole Secure?
+
+There have been certain well-known security vulnerabilities associated with Apache Guacamole, though (at the time of this writing) they have been patched and updates have been released. Most notable is the one identified commonly by security researchers around Reverse RDP vulnerabilities. Any Guacamole version released before January 2020 is vulnerable to reverse RDP and multiple other vulnerabilities in FreeRDP.
+
+**If you are using an old version of Apache Guacamole released before January 2020, consider upgrading your Apache Guacamole to a newer, stable, and secure version.**
+
+With the newer versions, the following vulnerabilities have recently surfaced and patched by FreeRDP and Apache Foundation:
+
+1. **Reverse attack to take control of gateway:** With this, any compromised system or machine inside of the network can exploit an incoming connection and compromise the gateway. This enables the compromised system or machine to take over the gateway.
+2. **An internal attack to compromise the gateway:** When an attacker is an internal member of the organization(commonly an employee or a contractor with access to the network), they can use these exploits to gain full access to the gateway.
