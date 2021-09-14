@@ -12,6 +12,7 @@ modified: 2020-02-21
 modified_by:
     name: Linode
 published: 2020-02-21
+image: Drupal8onCentOS8.png
 title: How to Update Drupal 8 on CentOS 8
 h1_title: Update Drupal 8 on Centos 8
 relations:

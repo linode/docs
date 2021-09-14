@@ -9,6 +9,7 @@ keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
 tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-30
+image: DeployK3s_Linode.png
 modified_by:
   name: Linode
 title: How to Deploy K3s on Linode

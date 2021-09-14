@@ -9,7 +9,7 @@ keywords: ["stackscripts", "automation", "script", "custom instance", "deploymen
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-22
-image: Deploying-a-New-Linode_Using_a_StackScript_1200x631.png
+image: DeployNewLinode_StackScripts.png
 modified_by:
   name: Linode
 published: 2020-04-22

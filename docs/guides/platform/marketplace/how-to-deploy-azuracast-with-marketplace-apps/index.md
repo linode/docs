@@ -9,6 +9,7 @@ keywords: ['azuracast','marketplace', 'server']
 tags: ["debian","ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
+image: DeployAzuraCast_OneCliclApps.png
 modified_by:
   name: Linode
 title: "How to Deploy AzuraCast with Marketplace Apps"

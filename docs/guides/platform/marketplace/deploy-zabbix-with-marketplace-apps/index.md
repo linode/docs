@@ -9,6 +9,7 @@ keywords: ['monitoring','networking','incident response']
 tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
+image: DeployZabbix_marketplaceapps.png
 modified_by:
   name: Linode
 title: "How to Deploy Zabbix With Marketplace Apps"

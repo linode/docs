@@ -8,6 +8,7 @@ og_description: 'Code coverage analysis helps expose untested code and provides 
 keywords: ['code coverage analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-15
+image: CodeCoverageAnalysis.png
 modified_by:
   name: Linode
 title: "What is Code Coverage Analysis?"

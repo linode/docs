@@ -8,6 +8,7 @@ keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 
 tags: ["nginx","networking","linode platform","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
+image: DeployNGINX_Linode.png
 modified: 2021-06-25
 modified_by:
   name: Linode

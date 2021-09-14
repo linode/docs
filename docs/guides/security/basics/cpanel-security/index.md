@@ -11,6 +11,7 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
+image: cPanelSecurity.png
 title: cPanel Security
 h1_title: cPanel Security
 enable_h1: true

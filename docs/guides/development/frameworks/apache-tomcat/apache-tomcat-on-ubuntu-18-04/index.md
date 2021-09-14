@@ -13,6 +13,7 @@ modified: 2020-03-25
 modified_by:
   name: Linode
 published: 2020-03-25
+image: ApacheTomcat_Ubuntu1804.png
 title: 'How to Install Apache Tomcat on Ubuntu 18.04'
 h1_title: 'Installing Apache Tomcat on Ubuntu 18.04'
 external_resources:

@@ -9,6 +9,7 @@ keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
 tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
+image: Deploy_phpMyAdmin_oneclickapps.png
 modified_by:
   name: Linode
 title: "How to Deploy phpMyAdmin with Marketplace Apps"

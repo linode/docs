@@ -8,6 +8,7 @@ og_description: "Learn how to build a video streaming application with two compo
 keywords: ['React','Nodejs','Video streaming', "video captions", "video thumbnails"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-09
+image: BuildVidStreamApp_React_Node.png
 modified_by:
   name: Linode
 title: "How to Build a Video Streaming App with React and Node"

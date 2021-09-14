@@ -11,6 +11,7 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
+image: DockerSecurityEssentials.png
 title: How to Secure Apache 2 With ModSecurity
 h1_title: Securing Apache 2 With ModSecurity
 enable_h1: true

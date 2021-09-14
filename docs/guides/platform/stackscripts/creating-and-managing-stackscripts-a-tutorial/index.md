@@ -9,7 +9,7 @@ keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-22
-image: Creating_and_Managing_StackScripts_1200x631.png
+image: CreateManage_StackScripts.png
 modified_by:
   name: Linode
 published: 2020-04-22

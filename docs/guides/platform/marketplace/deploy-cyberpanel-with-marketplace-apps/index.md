@@ -9,6 +9,7 @@ keywords: ['cyberpanel','marketplace','server']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
+image: DeployCyberPanel_marketplaceapps.png
 modified_by:
   name: Linode
 title: "How to Deploy CyberPanel With Marketplace Apps"

@@ -9,6 +9,7 @@ keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
 tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
+image: deployLEMP_oneclickapps.png
 modified: 2020-03-11
 modified_by:
   name: Linode

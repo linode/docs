@@ -8,6 +8,7 @@ keywords: ['asp net core tutorial']
 tags: ['web applications', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
+image: ASPNET.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "An ASP.NET Core on Linux Tutorial"
