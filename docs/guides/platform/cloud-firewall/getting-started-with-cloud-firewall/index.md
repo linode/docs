@@ -31,6 +31,10 @@ A Cloud Firewall analyzes traffic against a set of predefined rules at the netwo
 - Currently, a Cloud Firewall can only be applied to Linodes.
 - You can apply one Cloud Firewall per Linode service.
 
+{{< note >}}
+Users that do not have [Network Helper](/docs/guides/network-helper/) enabled and are instead relying on a configuration that uses DHCP will need to manually allow DHCP traffic through port 67 and 68 of their Cloud Firewall. A full list of IP addresses for our DHCP servers can be found in our [DHCP IP Address Reference Guide](/docs/guides/dhcp-ip-address-reference/).
+{{< /note >}}
+
 ### Inbound and Outbound Rules
 
 A Cloud Firewall can be configured with *Inbound* and *Outbound* rules. Inbound rules limit incoming network connections to a Linode service based on the port(s) and sources you configure. Outbound rules limit the outgoing network connections coming from a Linode service based on the port(s) and destinations you configure.

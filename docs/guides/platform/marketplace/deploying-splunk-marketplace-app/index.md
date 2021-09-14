@@ -8,8 +8,8 @@ og_description: "Splunk is a powerful data solution that collects, monitors, ana
 keywords: ['monitoring','splunk', 'data solution']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-25
-modified: 2021-08-25
+published: 2021-09-03
+modified: 2021-09-03
 modified_by:
   name: Linode
 title: "How to Deploy Splunk through the Linode Marketplace"
