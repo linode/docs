@@ -22,7 +22,6 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["java"]
-image: ApacheTomcat_CentOS8.png
 relations:
     platform:
         key:  apache-tomcat
