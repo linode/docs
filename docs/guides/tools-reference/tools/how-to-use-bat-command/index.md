@@ -66,7 +66,7 @@ For many Linux distributions, you can get `bat` from the package manager. This i
 
         sudo apt install bat
 
-  On Debian and Ubuntu, `bat` uses the `batcat` command by default because of a conflict with an existing package, `bacula-console-qt`. You can, however, use the following commands to link the `bat` command.
+    On Debian and Ubuntu, `bat` uses the `batcat` command by default because of a conflict with an existing package, `bacula-console-qt`. You can, however, use the following commands to link the `bat` command:
 
         mkdir -p ~/.local/bin
         ln -s /usr/bin/batcat ~/.local/bin/bat
@@ -75,7 +75,7 @@ For many Linux distributions, you can get `bat` from the package manager. This i
 Be sure to remove the `bacula-console-qt` package, if you have it installed, before executing the above commands. Otherwise, if you choose to keep `bacula-console-qt`, you must stick with using the `batcat` command for `bat`.
     {{< /note >}}
 
-- For Fedora, install `bat` using the following command:
+- For Fedora:
 
         sudo dnf install bat
 
