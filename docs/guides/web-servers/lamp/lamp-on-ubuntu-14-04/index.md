@@ -22,7 +22,7 @@ relations:
     platform:
         key: install-lamp-stack
         keywords:
-            - distribution: Debian 14.04
+            - distribution: Ubuntu 14.04
 ---
 
 ![Lamp on Ubuntu 14.04](lamp-on-ubuntu-1404-title-graphic.jpg "Lamp on Ubuntu 14.04")

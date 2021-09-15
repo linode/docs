@@ -3,8 +3,7 @@ slug: linode-configuration-profiles
 author:
   name: Linode
   email: docs@linode.com
-description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
-og_description: A Linode configuration profile functions as a boot loader for a Linode. Learn how to create and manage configuration profiles, including details on each setting and its recommended value.
+description: "Learn how to create and manage configuration profiles for a Linode, including details on each setting and its recommended value."
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -122,23 +121,7 @@ When a Linode is powered on or rebooted, it will use the settings stored within 
 
 ## Cloning a Configuration Profile and the Attached Disks
 
-A configuration profile, along with any attached disks, can be duplicated to any *other* Linode on the account. To clone an entire Linode, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/).
-
-1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
-
-1. Click the **Power Off** button in the upper right of the page or within the **ellipsis** menu. Before proceeding, wait until the Linode has been fully powered off.
-
-1. On the Linode's dashboard page, navigate to the **Configurations** tab.
-
-1. Within the **Configurations** table, locate the configuration profile you wish to clone and click the corresponding **Clone** button, which may also appear within the **ellipsis** menu. This displays the **Clone** form.
-
-    ![Cloning a configuration profile](linode-config-clone.png "Cloning a configuration profile")
-
-1. The configuration profile will be preselected along with any disks that were assigned to it (through **Block Device Assignments**). Select the **Destination** Linode, which needs to be a different Linode on the same account. The destination Linode will need to have enough remaining unallocated storage space to accommodate the full size of the cloned disk(s).
-
-1. Click **Clone**. The progress can be monitored as part of the Linode's status, which is visible above the Linode's **Summary**.
-
-1. Once the configuration profile and disks have been successfully cloned, click the **Power On** button to boot up the Linode.
+A configuration profile, along with any attached disks, can be duplicated to any *other* Linode on the account. See [Cloning a Linode > Cloning to an Existing Linode](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) for instructions.
 
 ## Deleting a Configuration Profile
 

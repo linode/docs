@@ -3,7 +3,7 @@ slug: a-beginners-guide-to-github
 author:
     name: Linode
     email: docs@linode.com
-description: "Learn how to submit new articles to the Linode Guides and Tutorials website, via the Linode Docs repository on GitHub. Instructions include how to: clone the GitHub repository, create a new Git branch, create and edit your guide's Markdown text file, and open a new pull request for your new guide. Instructions for opening issues for existing guides are also included."
+description: "Learn how to submit new articles to the Linode Guides and Tutorials website, via the Linode Docs repository on GitHub."
 keywords: ["GitHub", "Git", "pull request", "Write For Linode", "article submissions", "linode guides and tutorials"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:

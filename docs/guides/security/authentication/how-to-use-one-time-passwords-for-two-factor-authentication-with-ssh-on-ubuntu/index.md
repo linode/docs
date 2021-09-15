@@ -3,7 +3,7 @@ slug: how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ub
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
+description: "Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS"
 og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
 keywords: ["two factor authentication", "ssh", "google authenticator", "ubuntu"]
 tags: ["ssh","security","ubuntu"]
@@ -11,8 +11,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
   name: Linode
-title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
-h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
+title: "How to Use Two-Factor Authentication with SSH on Ubuntu 18.04"
+h1_title: "Using 2FA (Two-Factor Authentication) with SSH on Ubuntu 18.04"
+enable_h1: true
 image: how-to-use-one-time-passwords-for-two-factor-authentication-ubuntu.png
 contributor:
   name: Linode

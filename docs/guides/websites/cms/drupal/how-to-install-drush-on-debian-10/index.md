@@ -62,7 +62,7 @@ The developers of Drush recommend installing Drush using [Composer](https://getc
 
 1. Composer has a few PHP dependencies it needs in order to run. Install them on your Debian system:
 
-        sudo apt install php-dom, php-zip, unzip, php-gd, php-mbstring
+        sudo apt install php-dom php-zip unzip php-gd php-mbstring
 
 ## Install Drush Globally
 

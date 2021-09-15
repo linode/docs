@@ -48,11 +48,6 @@ window.lnh = {
 
 // Set up global event listeners etc.
 (function() {
-	if (isMobile()) {
-		// This body class is default open, toggle off if on mobile.
-		toggleBooleanClass('explorer-open', document.body, false);
-	}
-
 	window.deferLoadingAlpine = function(callback) {
 		// This does nothing, which prevents Alpine.start() from doing double work.
 		// The components gets initialized in turbolinks:load by the

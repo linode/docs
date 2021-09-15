@@ -220,7 +220,7 @@ You can use NGINX's binary to control the process directly without making a star
 
 2.  In NGINX terminology, a *Server Block* equates to a website (similar to the *Virtual Host* in Apache terminology). Each NGINX site's configuration should be in its own file with the name formatted as `example.com.conf`, located at `/etc/nginx/conf.d/`.
 
-    If you followed this guide or our [Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) series, then your site's configuration will be in a `server` block in a file stored in `/etc/nginx/conf.d/`. If you do not have this setup, then you likely have the `server` block directly in `/etc/nginx/nginx.conf`. See *[Server Block Examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/)* in the NGINX docs for more info.
+    If you followed this guide or our [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) series, then your site's configuration will be in a `server` block in a file stored in `/etc/nginx/conf.d/`. If you do not have this setup, then you likely have the `server` block directly in `/etc/nginx/nginx.conf`. See *[Server Block Examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/)* in the NGINX docs for more info.
 
     Create a configuration file for your site with a basic server block inside:
 

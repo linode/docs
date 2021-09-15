@@ -13,6 +13,8 @@ modified_by:
   name: Steven Jacobs
 title: "Search Linode Docs"
 show_on_rss_feed: false
+_build:
+  list: false
 ---
 
 <!--

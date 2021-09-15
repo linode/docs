@@ -89,6 +89,7 @@ avz
 awk
 aws
 awstats
+axibase
 azc
 backdoors
 backend
@@ -111,8 +112,11 @@ basearch
 bashdoor
 bashrc
 bc
+bdd
 berkshelf
 bernd
+berners
+bing
 binlog
 biomes
 bitbucket
@@ -120,6 +124,7 @@ bitnami
 bitrate
 bitwarden
 blkid
+blockchain
 blocklists
 blockwise
 bluehost
@@ -159,6 +164,7 @@ cacheable
 cachable
 caddy
 caddyfile
+caffe
 cakey
 calc
 campione
@@ -188,6 +194,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+Chevereto
 chgrp
 chmod
 chown
@@ -207,6 +214,8 @@ clickjacking
 client1
 client2
 clojure
+couchbase
+cloudant
 cloudflare
 cloudnet
 cloudron
@@ -245,6 +254,7 @@ copyto
 coreutils
 corporateclean
 courseware
+cov
 cpanminus
 cpu
 cqlsh
@@ -325,6 +335,7 @@ despawn
 dest
 dereference
 dereferencing
+desperados
 destructured
 dev
 devel
@@ -362,6 +373,9 @@ dockerfile
 dockerfiles
 dockerize
 dockerized
+docstring
+docstrings
+doctest
 dokku
 domain1
 domain2
@@ -414,11 +428,13 @@ epel
 erb
 erlang
 esc
+esm
 etcd
 etcd0
 eth0
 ethtool
 eugen
+eval
 evhost
 example1
 example2
@@ -494,6 +510,7 @@ flowlens
 flyspray
 foodcritic
 fortran
+fordham
 fmt
 fn
 fpm
@@ -571,6 +588,7 @@ gpc
 gpg
 gradle
 grafana
+graphql
 graylog
 graylog2
 greenbone
@@ -704,6 +722,7 @@ inittab
 injectable
 inode
 inotify
+inrupt
 insmod
 inspec
 interdomain
@@ -727,6 +746,7 @@ iptables
 ipv4
 ipv6
 ipwl
+ipytest
 irc
 irchelp
 ircname
@@ -931,6 +951,7 @@ mapreduce
 mariadb
 marino
 maskname
+mastercard
 masterdb
 masterless
 mathematica
@@ -965,6 +986,7 @@ metapackage
 metaparameters
 metorik
 metricbeat
+metroid
 microblogging
 microblogs
 microservice
@@ -997,8 +1019,9 @@ mnesia
 mngtmpaddr
 moby
 moddable
-moodle
 modsecurity
+Mojang
+moodle
 mongodb
 mongoimport
 monit
@@ -1098,6 +1121,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nirvashare
 nixcraft
 nixpkgs
 nmap
@@ -1228,6 +1252,7 @@ pipenv
 piwik
 pki
 plaintext
+platformer
 plesk
 plex
 plone
@@ -1317,6 +1342,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+radeon
 ramdisk
 rbac
 rbenv
@@ -1440,6 +1466,7 @@ sbin
 sbopkg
 sbt
 scgi
+schroot
 schaeffer
 scm
 scp
@@ -1478,6 +1505,7 @@ setguid
 setsebool
 setuid
 setuptools
+Severalnines
 sfadmin
 sfproject
 sfroot
@@ -1502,6 +1530,7 @@ signup
 sintra
 sitename
 slackpkg
+slackware
 slavedb
 sls
 smartcard
@@ -1529,6 +1558,7 @@ sparklines
 spectre
 speedtest
 spf1
+Splunk
 spm
 spork
 sql
@@ -1556,6 +1586,7 @@ stopwait
 stopword
 stopwords
 storages
+streamlink
 su
 subcommand
 subcommands
@@ -1569,8 +1600,10 @@ subnet
 subnets
 subnetwork
 subprocess
+subprocesses
 subqueries
 subquery
+subreddit
 subreddits
 substring
 substrings
@@ -1618,6 +1651,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+techland
 teleporting
 tensorflow
 terrahelp
@@ -1664,6 +1698,7 @@ torvalds
 toolchain
 toolchains
 toolset
+towson
 traceroute
 trackbar
 traefik
@@ -1717,6 +1752,8 @@ unicast
 unicode
 uninvoiced
 uniq
+unittest
+unix
 unmanaged
 unmerged
 unmount
@@ -1789,6 +1826,7 @@ virtualized
 virtualmin
 vlan
 vlans
+vlc
 vlogger
 vmail
 vmem
@@ -1872,8 +1910,10 @@ wx
 xabbix
 xap
 xargs
+xcaddy
 xcalc
 xcode
+xdist
 xen
 xenial
 xerus
@@ -1918,6 +1958,8 @@ yubico
 yubikey
 zabbix
 zapier
+zcat
+zend
 zgrep
 zile
 zimbra

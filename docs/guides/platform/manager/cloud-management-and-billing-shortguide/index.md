@@ -29,5 +29,5 @@ You can manage the following account and billing settings in the Account section
 - [Add new users and manage exiting user's profiles and permissions](/docs/guides/accounts-and-passwords/#users-and-permissions)
 - [Enable Backup auto enrollment for all new Linodes on your account](/docs/guides/linode-backup-service/#auto-enroll-new-linodes-in-the-backup-service)
 - [Enable Network Helper](/docs/guides/network-helper/#global)
-- [Cancel Object Storage](/docs/guides/how-to-use-object-storage/#cancel-object-storage)
+- [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/)
 - [Add the Linode Managed service to your account](/docs/guides/linode-managed/#getting-started)

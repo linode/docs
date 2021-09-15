@@ -8,7 +8,7 @@ og_description: Linode uses an hourly billing system. Use this guide to learn ab
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-02
+modified: 2021-08-25
 modified_by:
   name: Linode
 published: 2019-10-25
@@ -64,19 +64,23 @@ When an invoice is generated on the first of the month (or mid-month), Linode au
 
 ### Payment Methods
 
-- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account. Review the [Updating the Credit Card](/docs/guides/manage-billing-in-cloud-manager/#updating-the-credit-card) section to update your credit card on file.
+- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account.
 
-- **Google Pay:** Pay using any credit or debit card through a Google Pay account. Google Pay can be used to both automatically pay your invoice and to manually add funds to the account. Using Google Pay balances as well as bank accounts and PayPal accounts linked through Google Pay are not supported at this time. See [Adding and Updating Google Pay](/docs/guides/manage-billing-in-cloud-manager/#adding-and-updating-google-pay).
+    {{< note >}}
+Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
+{{< /note >}}
 
-- **PayPal:** Pay using your PayPal balance or any payment method added to your PayPal account. At this time, PayPal can only be used to manually add funds to your account. It cannot be used as the account's default payment method to automatically pay monthly invoices. If you wish to pay your balance with PayPal, you'll need to log into the [Cloud Manager](https://cloud.linode.com) and submit a manual payment.
+- **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Google Pay can be used to both automatically pay your invoice and to manually add funds to the account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
+
+    {{< note >}}
+To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
+{{</ note >}}
+
+- **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account. At this time, our PayPal integration can only be used to manually add funds to your account. To pay your invoices automatically through PayPal, consider using PayPal through Google Pay.
 
 - **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
 
-The address affiliated with a payment method should match the [Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information) on the account.
-
-{{< note >}}
-Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
-{{< /note >}}
+See [Adding a New Payment Method](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method) for instructions on adding a new payment method to your account.
 
 ### Manual Payments
 

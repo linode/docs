@@ -14,6 +14,7 @@ modified_by:
 published: 2013-11-06
 title: What is the Linode Longview App for MySQL
 h1_title: Using the Linode Longview App for MySQL
+enable_h1: true
 classic_manager_link: platform/longview/longview-app-for-mysql-classic
 relations:
     platform:
@@ -25,6 +26,7 @@ relations:
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Cloud Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
 
 ## In this Guide
+
 This guide discusses Linode Longview for NGINX. The guide covers the following topics:
 
 - [Configuring Linode Longview for MySQL](#debian-and-ubuntu-automatic-configuration).
@@ -32,6 +34,7 @@ This guide discusses Linode Longview for NGINX. The guide covers the following t
 - [Troubleshooting Linode Longview for MySQL](#troubleshooting).
 
 ## Before you Begin
+
 In order to use the Longview App for Apache, ensure you have completed the following things:
 
 - A Linode with [MySQL installed and running](/docs/databases/mysql/).
@@ -46,13 +49,13 @@ If you already have Longview installed, you may find that MySQL is not automatic
 
 To run the automatic Longview configuration:
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1.  [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
 
-1. Ensure that MySQL is running:
+1.  Ensure that MySQL is running:
 
         sudo systemctl status mysql
 
-1. Run the automatic Longview configuration command on your Linode:
+1.  Run the automatic Longview configuration command on your Linode:
 
         dpkg-reconfigure -phigh linode-longview
 
@@ -85,16 +88,16 @@ To enable the MySQL Longview app manually, follow these steps on your Linode:
 
 1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
 
-1. Log into MySQL. For example, to log in as the root user:
+1.  Log into MySQL. For example, to log in as the root user:
 
-        mysql -u root -p
+        sudo mysql -u root -p
 
 1.  Create a new MySQL user with minimal privileges for Longview. Run the following queries on your database as the root MySQL user to create the new user. Ensure your replace `*****************` with your desired password.
 
         CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '***************';
         flush privileges;
 
-1. Exit the MySQL:
+1.  Exit the MySQL:
 
         exit
 
@@ -180,13 +183,13 @@ If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automa
 
 This indicates that Longview can't locate any valid MySQL user credentials, so it will create some for itself (in the `/etc/linode/longview.d/MySQL.conf` file) and ask you to add them to MySQL. To finish getting Longview set up:
 
-1. Copy the command shown in the popup message. You will need it for the next steps.
+1.  Copy the command shown in the popup message. You will need it for the next steps.
 
-1. Log in to your database as the root MySQL user:
+1.  Log in to your database as the root MySQL user:
 
-        mysql -u root -p
+        sudo mysql -u root -p
 
-1. Run the query that was shown in the popup message to create the Longview user. Ensure you replace `*****************` with the password provided to you by the popup.
+1.  Run the query that was shown in the popup message to create the Longview user. Ensure you replace `*****************` with the password provided to you by the popup.
 
         CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '***************';
         flush privileges;
