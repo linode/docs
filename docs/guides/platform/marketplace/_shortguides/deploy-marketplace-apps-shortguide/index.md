@@ -19,18 +19,16 @@ modified_by:
   name: Linode
 ---
 
-<!-- Use title convention: Deploy a X Marketplace App. -->
+The Linode Marketplace allows you to easily deploy software on a Linode using the Linode Cloud Manager.
 
-Linode's App Marketplace allows you to easily deploy software on a Linode using the Linode Cloud Manager. To access Linode's App Marketplace:
+1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode Compute **Create** page with the **Marketplace** tab pre-selected.
 
-1. Log in to your [Linode Cloud Manager](https://cloud.linode.com) account.
+1. Under the **Select App** section, select the app you would like to deploy.
 
-1. From the Linode dashboard, click on the **Marketplace** button in the left-hand navigation menu.
+1. Fill out all required **Options** for the selected app as well as any desired **Advanced Options** (which are optional). See the [Configuration Options](#configuration-options) section for details.
 
-1. The Linode creation page appears, with the **Marketplace** tab pre-selected.
+1. Complete the rest of the form as discussed within the [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode).
 
-1. Under the **Select App** section, select the app you would like to deploy:
+1. Click the **Create Linode** button. Once the Linode has provisioned and has fully powered on, **wait for the software installation to complete**. If the Linode is powered off or restarted before this time, the software installation will likely fail. To determine if the installation has completed, open the Linode's [Lish console](/docs/guides/using-the-linode-shell-lish/) and wait for the system login prompt to appear.
 
-    ![Select a Marketplace App to deploy](marketplace-create-marketplace.png "Select a Marketplace App to deploy")
-
-1. Once you have selected the app, proceed to the app's **Options** section and provide values for the required fields.
+1. Follow the instructions within the [Getting Started After Deployment](#getting-started-after-deployment) section.

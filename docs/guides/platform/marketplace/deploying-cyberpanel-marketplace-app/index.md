@@ -1,46 +1,38 @@
 ---
-slug: deploy-cyberpanel-with-marketplace-apps
+slug: deploying-cyberpanel-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps.'
-og_description: 'CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps.'
+description: "CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps."
 keywords: ['cyberpanel','marketplace','server']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
+modified: 2021-09-15
 modified_by:
   name: Linode
-title: "How to Deploy CyberPanel With Marketplace Apps"
-h1_title: "Deploying CyberPanael with Marketplace Apps"
+title: "Deploying CyberPanel through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
-
+aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/']
 ---
-
-## CyberPanel Marketplace App
 
 CyberPanel is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like Mail service and DNS, to reduce the time it takes to get set up for hosting.
 
-### Deploy a CyberPanel Marketplace App
+## Deploying the CyberPanel Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-### Linode Options
+**Your CyberPanel App will complete installation anywhere between 10-20 minutes after your Linode has finished provisioning**.
 
-Provide configurations for your Linode server:
+### Configuration Options
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | The image or Distro you would like the Marketplace App to be built on. The Cyberpanel Marketplace App is currently supported by CentOS 8, CentOS 7, Ubuntu 18.04, and Ubuntu 20.04. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). CyberPanel can be supported on any size Linode, but we suggest you deploy your CyberPanel App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-After providing all required Linode options, click on the **Create** button. **Your CyberPanel App will complete installation anywhere between 10-20 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** CentOS 8, CentOS 7, Ubuntu 18.04, and Ubuntu 20.04
+- **Recommended plan:** All plan types and sizes can be used with CyberPanel.
 
 ## Getting Started after Deployment
 
