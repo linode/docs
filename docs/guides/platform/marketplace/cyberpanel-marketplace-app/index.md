@@ -1,5 +1,5 @@
 ---
-slug: deploying-cyberpanel-marketplace-app
+slug: cyberpanel-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com

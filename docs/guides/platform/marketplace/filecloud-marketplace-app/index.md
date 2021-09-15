@@ -1,5 +1,5 @@
 ---
-slug: deploying-filecloud-marketplace-app
+slug: filecloud-marketplace-app
 author:
   name: Linode
   email: docs@linode.com

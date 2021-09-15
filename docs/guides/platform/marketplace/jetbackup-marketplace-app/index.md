@@ -1,5 +1,5 @@
 ---
-slug: deploying-jetbackup-marketplace-app
+slug: jetbackup-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -14,6 +14,7 @@ modified_by:
 title: "Deploying JetBackup through the Linode Marketplace"
 external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
+aliases: ['/guides/deploying-jetbackup-marketplace-app/']
 ---
 
 JetBackup is a backup solution that can integrate with cPanel or be used as a standalone software within supported Linux distributions. It offers flexible backup management options, including the ability to perform off-site backups through S3-compatible storage (like Linode's [Object Storage](https://www.linode.com/products/object-storage/)). See the [JetBackup 5 product page](https://www.jetbackup.com/jetbackup-5/) for more details.

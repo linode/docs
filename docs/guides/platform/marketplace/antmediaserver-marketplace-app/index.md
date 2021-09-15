@@ -1,5 +1,5 @@
 ---
-slug: deploying-antmediaserver-marketplace-app
+slug: antmediaserver-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com

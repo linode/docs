@@ -1,5 +1,5 @@
 ---
-slug: deploying-gitea-marketplace-app
+slug: gitea-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
