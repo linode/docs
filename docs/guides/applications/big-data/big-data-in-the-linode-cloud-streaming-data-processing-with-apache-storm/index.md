@@ -3,7 +3,7 @@ slug: big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm
 author:
     name: Karthik Shiraly
     email: docs@linode.com
-description: 'Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets.'
+description: "Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets."
 keywords: ["storm", "analytics", "big data", "zookeeper"]
 tags: ["analytics"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
@@ -11,7 +11,9 @@ published: 2016-10-25
 modified: 2019-01-31
 modified_by:
     name: Phil Zona
-title: 'Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm'
+title: "Streaming Data Processing with Apache Storm"
+h1_title: "Streaming Data Processing with Apache Storm"
+enable_h1: true
 contributor:
     name: Karthik Shiraly
     link: https://github.com/pathbreak

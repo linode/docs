@@ -3,16 +3,17 @@ slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
-og_description: 'This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
+description: "This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10 with a basic configuration that uses socket connections instead of TCP."
+og_description: "This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP."
 keywords: ['list','of','keywords','and key phrases']
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
 modified_by:
   name: Linode
-title: "How to Install and Configure FastCGI and PHP-FPM on Debian 10"
-h1_title: "Install and Configure FastCGI and PHP-FPM on Debian 10"
+title: "How to Install FastCGI and PHP-FPM on Debian 10"
+h1_title: "Installing and Configuring FastCGI and PHP-FPM on Debian 10"
+enable_h1: true
 contributor:
   name: Linode
 relations:

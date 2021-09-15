@@ -3,8 +3,8 @@ slug: deploy-and-manage-lke-cluster-with-api-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster.'
-og_description: 'The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster.'
+description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
+og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
@@ -12,22 +12,25 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 image: deploy-and-manage-cluster-copy.png
-title: "Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API - A Tutorial"
-h1_title: "A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine and the Linode API"
+title: "Deploy and Manage a Cluster with  Kubernetes Engine"
+h1_title: "Deploying and Managing a Cluster with LKE and the Linode API Tutorial"
+enable_h1: true
+
+title: "Deploy and Manage a Kubernetes Cluster with the Linode API"
+h1_title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+
 contributor:
   name: Linode
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
 ---
 
-## What is the Linode Kubernetes Engine (LKE)?
-
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/guides/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
-{{< disclosure-note "Additional LKE features">}}
-* **etcd Backups** : A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
-* **High Availability** : All of your control plane components are monitored and automatically recover if they fail.
-{{</ disclosure-note>}}
+**Additional LKE features:**
+
+- **etcd Backups**: A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
+- **High Availability**: All of your control plane components are monitored and automatically recover if they fail.
 
 You can easily deploy an LKE cluster in several ways:
 
@@ -48,7 +51,7 @@ These Linode-provided interfaces can be used to create, delete, and update the s
 
 The [Kubernetes API](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
 
-### In this Guide
+## In this Guide
 
 This guide covers how to use the Linode API to:
 

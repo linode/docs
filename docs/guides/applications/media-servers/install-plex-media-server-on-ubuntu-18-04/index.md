@@ -139,7 +139,7 @@ Now that your server is set up, you’re ready to connect to it from a Plex clie
 
 ## Configuring Plex Media Server Firewall on Ubuntu 18.04
 
-In this section you set up a firewall on your Plex Media Server using the [Uncomplicated Firewall (UFW)](docs/guides/configure-firewall-with-ufw/).
+In this section you set up a firewall on your Plex Media Server using the [Uncomplicated Firewall (UFW)](/docs/guides/configure-firewall-with-ufw/).
 
 1. UFW is usually pre-installed on Ubuntu. If UFW isn’t installed, run the following command to install it on your Ubuntu system:
 

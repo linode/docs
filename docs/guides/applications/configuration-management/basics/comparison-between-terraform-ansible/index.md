@@ -15,7 +15,7 @@ h1_title: "Terraform vs Ansible"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Ansible](https://www.ansible.com/)'
