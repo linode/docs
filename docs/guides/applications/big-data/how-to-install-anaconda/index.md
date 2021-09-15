@@ -17,6 +17,11 @@ contributor:
   name: Linode Community
 external_resources:
 - '[Anaconda Documentation](https://docs.anaconda.com/anaconda/)'
+relations:
+    platform:
+        key: how-to-install-anaconda
+        keywords:
+            - distribution: Ubuntu
 ---
 
 ## Install Anaconda on Ubuntu

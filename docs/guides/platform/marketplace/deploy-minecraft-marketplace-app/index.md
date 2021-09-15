@@ -1,5 +1,5 @@
 ---
-slug: deploying-minecraft-with-marketplace-apps
+slug: deploy-minecraft-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,38 +7,36 @@ description: 'Deploy a Minecraft server on Linode using Marketplace Apps.'
 keywords: ['minecraft','marketplace', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-01
-modified: 2019-04-01
+modified: 2021-09-07
 modified_by:
   name: Linode
-title: "How to Deploy a Minecraft Server with Marketplace Apps"
-h1_title: "Deploying a Minecraft Server with Marketplace Apps"
+title: "Deploying a Minecraft Server through the Linode Marketplace"
+h1_title: "How to Deploy a Minecraft Server through the Linode Marketplace"
 enable_h1: true
 contributor:
   name: Linode
 external_resources:
-- '[Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki)'
+- '[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/']
+aliases: ['/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-marketplace-apps/']
 ---
 
 ![Deploy a Minecraft Server with Marketplace Apps](deploy-a-minecraft-server-with-oneclick-apps.png "Deploy a Minecraft Server with Marketplace Apps")
 
-## Minecraft Marketplace App
-
 With over 100 million users around the world, [Minecraft](https://www.minecraft.net/en-us/) is the most popular online game of all time. You and other players are free to build and explore in a 3D generated world made up of millions of mineable blocks. Collect resources by leveling mountains, taming forests, and venturing out to sea. Choose a home from the varied list of biomes like ice worlds, flower plains, and jungles. Build ancient castles or modern mega cities, and fill them with redstone circuit contraptions and villagers. Fight off nightly invasions of Skeletons, Zombies, and explosive Creepers, or adventure to the End and the Nether to summon the fabled End Dragon and the chaotic Wither. If that is not enough, Minecraft is also highly moddable and customizable. You decide the rules when hosting your own Minecraft server for you and your friends to play together in this highly addictive game.
 
-### Deploy a Minecraft Server Marketplace App
+## Deploying the Minecraft Server Marketplace App
 
 {{< content "deploy-marketplace-apps">}}
 
-The [Minecraft Options](#minecraft-options) section of this guide provides details on all available configuration options for this app.
-
-### Minecraft Options
+### Minecraft Configuration Options
 
 You can configure your Minecraft Server App by providing values for the following fields:
 
-| **Field**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
+| **Field** | **Description** |
 |:--------------|:------------|
+| **The username for the Linode's admin/SSH user** | This is the limited user account to be created for the Linode. This account has sudo user privileges. Only use lowercase characters. This username does not (and, for security reasons, likely should not) be the same as your Mojang or Microsoft account. |
+| **The password for the Linode's admin/SSH user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
 | **World Name** | The world name and it's corresponding file name. *Advanced Configuration*. |
 | **Message of the Day** | Text that is displayed whenever a player logs on to the server. *Advanced Configuration*. |
 | **Flight Enabled** | Allows flight if there is a mod installed that supports flying. This configuration has no effect on creative mode flight. *Advanced Configuration*. |
@@ -73,13 +71,13 @@ You can configure your Minecraft Server App by providing values for the followin
 | **Use Native Transport Enabled** | Improve server performance by optimizing sent and received packets. *Advanced Configuration*. |
 
 
-### Linode Options
+### Linode Configuration Options
 
 After providing the app specific options, provide configurations for your Linode server:
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
-| **Select an Image** | Debian 10 is currently the only image supported by Minecraft Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
+| **Select an Image** | Ubuntu 20.04 LTS is currently the only image supported by Minecraft Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your MineCraft App should be sized based on the amount of traffic you expect to see on your server. We recommend 2GB of RAM for every 15 players maximum on your server. For example, If you are expecting a small group of players (between 1-15), you should be okay with a 2GB Linode. Up to 30 players, a 4GB Linode, and so on. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
@@ -119,21 +117,21 @@ After Minecraft has finished installing on your Linode, you are able to access y
 
 After installation you can change your Minecraft options by customizing the system configuration files.
 
-### Customize the Minecraft Service
+- **Customize the Minecraft Service**
 
-The system service file is located at `/etc/systemd/system/mcserver.service`. You can update this file to optimize your server's performance.
+    The system service file is located in your home directory: `~/etc/systemd/system/mcserver.service`. You can update this file to optimize your server's performance.
 
-### Customize the Minecraft World Options
+- **Customize the Minecraft World Options**
 
-The files to configure the world options are located at `/home/mcserver/server`. Here you find `server.properties`, `banned-ips.json`, and more. The name of the world you created during installation has a folder here as well. Inside this folder are other configuration files for that specific world.
+    The files to configure the world options are also located in your home directory: `~/serverfiles`. Here you find `server.properties`, `banned-ips.json`, and more. The name of the world you created during installation has a folder here as well. Inside this folder are other configuration files for that specific world.
 
-### Software Included
+## Software Included
 
-The Minecraft Marketplace App will install the following required software on your Linode:
+The Minecraft Marketplace App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| [**Minecraft 1.16**](https://www.minecraft.net/en-us/) | Game server. |
+| [**Minecraft 1.17**](https://www.minecraft.net/en-us/) | Game server. |
 | [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 25575 allows outgoing and incoming traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
