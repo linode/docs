@@ -9,7 +9,7 @@ keywords: ['infrastructure as a service','iaas','infrastructure','cloud networks
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
-image: An_introduction_to_ Infrastructure _as _a_ Service.jpg
+image: An_introduction_to_Infrastructure_as_a_Service.jpg
 modified_by:
   name: Linode
 title: "What Is Infrastructure as a Service?"
