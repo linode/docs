@@ -8,7 +8,7 @@ keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-30
-modified: 20201-09-15
+modified: 2021-09-15
 modified_by:
   name: Linode
 title: "Deploying Ant Media Server through the Linode Marketplace"
