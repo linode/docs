@@ -21,20 +21,18 @@ aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '
 
 The [cPanel & WHM](https://cpanel.net/products/) Marketplace App streamlines publishing and managing a website on your Linode. cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.
 
-## Linode Options
+## Deploying the cPanel Marketplace App
 
-Provide configurations for your Linode server. The table below includes details about each configuration option.
+{{< content "deploy-marketplace-apps-shortguide">}}
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | CentOS 7 is currently the only image supported by the cPanel Marketplace App, and it is pre-selected on the Linode creation page. *Required* |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). cPanel recommends, at minimum, 2 GB of RAM and 40 GB of disk space. This means you should select a 2 GB Linode plan to meet the minimum requirements. See [cPanel's system requirements documentation](https://docs.cpanel.net/installation-guide/system-requirements/) for in-depth details. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease your system resources. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Add Tags** | A tag to help organize and group your Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
+**Software installation should complete within 15 minutes after the Linode has finished provisioning.**
 
-When you've provided all required Linode Options, click on the **Create** button. **Your cPanel app will complete installation approximately 15 minutes after your Linode has finished provisioning**.
+## Configuration Options
+
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+
+- **Supported distributions:** CentOS 7
+- **Recommended minimum plan:** 2GB Shared Compute Instance
 
 ## Getting Started after Deployment
 

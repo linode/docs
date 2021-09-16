@@ -19,17 +19,19 @@ external_resources:
 - '[Getting Started](https://yacht.sh/Installation/gettingstarted/)'
 ---
 
-## Yacht Marketplace App
-
 Yacht is a web interface for managing Docker containers, with an emphasis on templating to provide easy deployments. The ultimate goal of Yacht is to make Docker easy for anyone to use and manage with templates, template variables, and an intuitive UI.
 
 {{< caution >}}
 Keep in mind, Yacht is still in alpha and is not recommended for production use.
 {{</ caution >}}
 
-### Deploy a Yacht Marketplace App
+## Deploying the Yacht Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Yacht Options
 
@@ -42,19 +44,12 @@ You can configure your Yacht App by providing values for the following fields:
 | **Yacht Compose Support** | Support for using Yacht with [Docker Compose](https://yacht.sh/Advanced/docker-compose/). |
 | **Yacht Theme** | Yacht theme options: Default, RED, and OMV. |
 
-### Linode Options
+### General Options
 
-After providing the App-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the Yacht Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Yacht can be supported on any size Linode, but we suggest you deploy your Yacht App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-After providing all required Linode Options, click on the **Create** button. **Your Yacht App will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 

@@ -33,9 +33,13 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 
 1. Set the domain name to [use Linode’s name servers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain). You need to do this on the domain registrar’s website and then wait up to 24 hours for the change to take effect.
 
-### Deploy a NextCloud Marketplace App
+## Deploying the NextCloud Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 5-7 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### NextCloud Options
 
@@ -61,26 +65,15 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 | **Admin email for the NextCLoud server** | The email address to use for the Nextcloud instance's admin user. |
 | **Would you like to use a free Let's Encrypt SSL certificate? (Requires domain)** |  Enable a free [HTTPS CertBot SSL certificate](https://certbot.eff.org/) on the Nextcloud domain. If you do not provide a value, `no` is set by default. |
 
-### Linode Options
+### General Options
 
-After providing the app specific options, provide configurations for the Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the Nextcloud Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like the Linode to reside. In general, it's best to choose a location that is closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between the Linode server and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You should select a Linode plan type based on the amount of data you would like to store on the Nextcloud instance. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease the system resources. *Required*. |
-| **Linode Label** | The name for the Linode server, which must be unique between all of the Linodes on your account. This name helps you identify the server in the Cloud Manager’s Dashboard. *Required*. |
-| **Add Tags** | A tag to help organize and group the Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
-| **Root Password** | The primary administrative password for the Linode instance. This password must be provided when you log in to the Linode using SSH. The password must meet the complexity strength validation requirements for a strong password. The root password can be used to perform any action on the server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click the **Create** button.
-
-{{< note >}}
-Your Nextcloud app completes installation anywhere **between 5-7 minutes** after your Linode has finished provisioning. It is recommended that you wait the full 5-7 minutes prior to beginning the steps in the [Getting Started after Deployment](#getting-started-after-deployment) section of this guide. You may experience unexpected behavior if you begin those steps while your Nextcloud instance is still being deployed and setup by the Marketplace App on the Linode instance.
-{{</ note >}}
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
+
 ### Log Into Your Nextcloud Instance
 
 1. Open a browser window and navigate to the NextCloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, the domain is the public IP address of the Linode appended with a forward slash and "nextcloud. For example, `192.168.17.43/nextcloud/`.
@@ -93,7 +86,7 @@ Your Nextcloud app completes installation anywhere **between 5-7 minutes** after
 
       ![Nextcloud Hub](welcome-nextcloud.png)
 
-### Next Steps
+## Next Steps
 
 {{< content "marketplace-update-note-shortguide">}}
 

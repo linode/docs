@@ -38,7 +38,7 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 {{< content deploy-marketplace-apps-shortguide>}}
 
-**Your MEAN Stack server will complete installation anywhere between 2-3 minutes after your Linode has finished provisioning.**
+**Software installation should complete within 2-3 minutes after the Linode has finished provisioning.**
 
 ## Configuration Options
 

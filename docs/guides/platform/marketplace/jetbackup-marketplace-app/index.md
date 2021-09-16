@@ -8,7 +8,7 @@ keywords: ['backups','cpanel', 'backup']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified: 2021-09-15
+modified: 2021-09-16
 modified_by:
   name: Linode
 title: "Deploying JetBackup through the Linode Marketplace"
@@ -29,7 +29,7 @@ JetBackup is a backup solution that can integrate with cPanel or be used as a st
 
 ### JetBackup Options
 
-You can configure your JetBackup App by providing values for the following fields:
+Here are the additional options available for this Marketplace App:
 
 - **Control Panel** *(Required)*: Choose a Control Panel to use with JetBackup 5. Select either cPanel/WHM or Linux (No Control Panel).
 - **Release Tier** *(Required)*: Choose a JetBackup Release Tier. Select either stable (recommended), beta, or edge.
@@ -39,7 +39,7 @@ You can configure your JetBackup App by providing values for the following field
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** CentOS 7, CentOS 8, and AlmaLinux 8
-- **Recommended plan:** All plan types and sizes can be used with JetBackup.
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 

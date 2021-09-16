@@ -19,17 +19,17 @@ external_resources:
  - '[Drupal 9 Official Documentation](https://www.drupal.org/docs/understanding-drupal)'
 ---
 
-## Drupal Marketplace App
-
 Drupal is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
 
 In addition to the core infrastructure, there are a number of freely available Drupal modules that allow administrators of Drupal sites to provide additional functionality, and a robust API makes it easy to enable these features. Furthermore, Drupal has an advanced theming engine that allows for a great amount of flexibility for displaying content.
 
-### Deploy a Drupal Marketplace App
+## Deploying the Drupal Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-The [Drupal Options](#drupal-options) section of this guide provides details on all available configuration options for this app.
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Drupal Options
 
@@ -40,19 +40,12 @@ You can configure your Drupal App by providing values for the following fields:
 | **Database Root Password** | Password for your Drupal site's MariaDB database `root` user. *Required*. |
 | **Database User Password** | Password for your Drupal site's MariaDB database `drupal` user. *Required*. |
 
-### Linode Options
+### General Options
 
-After providing the app specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 10 is currently the only image supported by Drupal Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Drupal is an extremely flexible CMS that can be supported on any size Linode, but we suggest you deploy your Drupal app on a Linode plan that reflects how much content you plan on featuring as well as how much traffic you expect for your site. For small websites, a 1GB Linode (Nanode) is sufficient. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your Drupal app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 
@@ -84,9 +77,9 @@ After Drupal has finished installing, you will be able to access your Drupal sit
 
     ![You will be brought to your Drupal site's admin panel where you can begin building your Drupal site.](drupal-admin-panel.png)
 
-### Software Included
+## Software Included
 
-The Drupal Marketplace App will install the following required software on your Linode:
+The Drupal Marketplace App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

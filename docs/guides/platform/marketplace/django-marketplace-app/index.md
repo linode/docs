@@ -20,15 +20,15 @@ external_resources:
  - '[Django Documentation](https://docs.djangoproject.com/en/2.2/releases/)'
 ---
 
-## Django Marketplace App
-
 [Django](https://www.djangoproject.com/) is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
 
-### Deploy Django Marketplace App
+## Deploying the Django Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-The [Django Options](#django-options) section of this guide provides details on all available configuration options for this app.
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Django Options
 
@@ -40,19 +40,12 @@ You can configure your Django App by providing values for the following fields:
 | **Django Password** | Password for the Django USER. *Required*. |
 | **Django USER email** | Email address for the Django USER. The format for the email must be in the form user@email.tld. *Required*. |
 
-### Linode Options
+### General Options
 
-After providing the app specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 10 is currently the only image supported by Django Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Django can be supported on any size Linode, but we suggest you choose a Linode plan that reflects how many resources you plan on using. For small applications, a 1GB Linode (Nanode) is sufficient. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your Django app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 

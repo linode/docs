@@ -19,17 +19,17 @@ tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-rust-with-marketplace-apps/', '/platform/one-click/deploying-rust-with-one-click-apps/', '/guides/deploying-rust-with-marketplace-apps/']
 ---
 
-## Rust Marketplace App
-
-[Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons and armor, and much more.
+[Rust](https://rust.facepunch.com/) is a multiplayer game where you play as a survivor that must work with or against other players to ensure your own survival. Players are able to steal, lie, cheat, or trick each other. You can build a shelter, hunt animals for food, craft weapons, craft armor, and much more.
 
 Hosting your own Rust server allows you to customize settings and curate the number of players in the world.
 
-### Deploy a Rust Marketplace App
+## Deploying the Rust Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-The [Rust Options](#rust-options) section of this guide provides details on all available configuration options for this app.
+**Software installation should complete within 5-15 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Rust Options
 
@@ -47,19 +47,12 @@ You can configure your Rust App by providing values for the following fields:
 | **Global Chat Enabled** | Enables global chat. Chat messages will be broadcast to all players. *Advanced Options* |
 | **PvE Enabled** | Allow player vs. environment combat. *Advanced Options* |
 
-### Linode Options
+### General Options
 
-After providing the app specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by Rust Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your Rust server should be sized based on the amount of traffic you are expecting on your server as well as the game play performance you are looking for. We recommend using a 8GB Linode as the smallest plan to ensure good performance of your game server. A 8GB Dedicated plan will provide better game performance. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **Rust should install between 5-15 minutes after your Linode has successfully provisioned**.
+- **Supported distributions:** Debian 9
+- **Recommended minimum plan:** 8GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started after Deployment
 
@@ -83,7 +76,7 @@ After the Rust Marketplace App has finished deploying to your Linode, you will b
 
     You will be logged into the server, and the game will load.
 
-### Software Included
+## Software Included
 
 The Rust Marketplace App will install the following required software on your Linode:
 

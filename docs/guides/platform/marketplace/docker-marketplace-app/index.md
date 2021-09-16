@@ -22,15 +22,17 @@ external_resources:
 aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/platform/one-click/deploying-docker-with-one-click-apps/', '/guides/deploying-docker-with-marketplace-apps/']
 ---
 
-## Docker Marketplace App
-
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages that contain that contain code, libraries, runtime, system settings, and dependencies that are required to run an application. These packages are called containers.
 
 Each container is deployed with its own CPU, memory, block I/O, and network resources, without having to depend upon an individual kernel and operating system. While it may be easiest to compare Docker and virtual machines, they differ in the way they share or dedicate resources.
 
-### Deploy a Docker Marketplace App
+## Deploying the Docker Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Docker Options
 
@@ -48,19 +50,12 @@ Each container is deployed with its own CPU, memory, block I/O, and network reso
 | **Do you need an MX record for this domain?** | Select `Yes` to create a basic [MX record](/docs/networking/dns/dns-records-an-introduction/#mx) for the domain. Select `No` to create no MX records.|
 | **Do you need an SPF record for this domain?** | Select `Yes` to create a basic [SPF record](/docs/networking/dns/dns-records-an-introduction/#spf) for the domain. Select `No` to create no SPF records. |
 
-### Linode Options
+### General Options
 
-After providing any app specific options, provide configurations for the Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by Docker Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you want the Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | The Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Docker can be supported on any size Linode, but it is recommended that you choose a Linode plan that reflects how many resources you plan on using. For small applications, a 1GB Linode (Nanode) is sufficient. If you decide that you need more or fewer hardware resources after you deploy the app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for the Linode, which must be unique between all of the Linodes on your account. This name helps you identify the server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for the Linode instance. This password must be provided when you log in to the Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. The root password can be used to perform any action on the server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click the **Create** button. **The Docker app completes the installation anywhere between 2-5 minutes after the Linode has finished provisioning**.
+- **Supported distributions:** Debian 9
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 

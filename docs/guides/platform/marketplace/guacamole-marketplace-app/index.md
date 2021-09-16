@@ -25,24 +25,26 @@ Apache Guacamole is an open source HTML5-based web application used as a remote 
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Your Guacamole App will complete installation anywhere between 5-20 minutes after your Linode has finished provisioning**.
+**Software installation should complete within 5-20 minutes after the Linode has finished provisioning.**
 
-### Configuration Options
+## Configuration Options
 
-#### Guacamole Options
+### Guacamole Options
 
 You can configure your Guacamole App by providing values for the following fields:
 
-- **The limited sudo/VNC user to be created for the Linode** *(required)*: The VNC username created for this Linode with sudo permissions. This is used for your VNC session.
-**The password for the limited sudo/VNC user** *(required)*:  Password for your sudo/VNC user. This is used for your VNC session.
-- **The username to be used with Guacamole** *(required)*:  Your Guacamole Username. This is used to log in to Guacamole.
-- **The password to be used with Guacamole** *(required)*:  Your Guacamole Password. This is used to log in to Guacamole.
-- **Your Linode API Token** *(optional)*:  Your Linode `API Token` is needed to create DNS records. If this is provided along with the `Subdomain` and `Domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create a token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) to use in this field before continuing.
-- **Subdomain** *(optional)*: The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain can only be created if you also provide a `Domain` and `API Token`.
-- **Domain** *(optional)*: The domain name where you wish to host your Guacamole server. The installer creates a DNS record for this domain during setup if you provide this field along with the required `API Token`.
-- **Admin Email** *(optional)*: The email address to register with [Certbot](https://certbot.eff.org/) when generating an SSL certificate for your absolute domain. This field is required along with your `API Token` and `Domain` for HTTPS access to your Guacamole remote desktop.
+| **Field** | **Description** |
+|:--------------|:------------|
+| **The limited sudo/VNC user to be created for the Linode** | The VNC username created for this Linode with sudo permissions. This is used for your VNC session. *Required*. |
+| **The password for the limited sudo/VNC user** | Password for your sudo/VNC user. This is used for your VNC session. *Required*. |
+| **The username to be used with Guacamole** | Your Guacamole Username. This is used to log in to Guacamole. *Required*. |
+| **The password to be used with Guacamole** | Your Guacamole Password. This is used to log in to Guacamole. *Required* |
+| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `Subdomain` and `Domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create a token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) to use in this field before continuing. |
+| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain can only be created if you also provide a `Domain` and `API Token`. |
+| **Domain** | The domain name where you wish to host your Guacamole server. The installer creates a DNS record for this domain during setup if you provide this field along with the required `API Token`. |
+| **Admin Email** | The email address to register with [Certbot](https://certbot.eff.org/) when generating an SSL certificate for your absolute domain. This field is required along with your `API Token` and `Domain` for HTTPS access to your Guacamole remote desktop. |
 
-#### General Options
+### General Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 

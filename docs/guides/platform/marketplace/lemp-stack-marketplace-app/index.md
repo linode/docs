@@ -26,7 +26,7 @@ A LEMP (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/),
 
 {{< content "deploy-marketplace-apps-shortguide" >}}
 
-**Your LEMP Stack app will complete installation anywhere between 2-3 minutes after your Linode has finished provisioning.**
+**Software installation should complete within 2-3 minutes after the Linode has finished provisioning.**
 
 ## Configuration Options
 

@@ -24,7 +24,7 @@ Peppermint Ticket Management is a ticket management system that allows teams and
 Peppermint is still in Alpha and is not recommended for production use yet.
 {{</ caution >}}
 
-### Deploying the Peppermint Marketplace App
+## Deploying the Peppermint Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -40,6 +40,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 ## Getting Started after Deployment
 
 ### Access your Peppermint App
+
 After Peppermint has finished installing, you can access your Peppermint server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server in your browser using your Linode's IPv4 address and port `5000`(for example `192.0.2.0:5000`).
 
 ![Peppermint login screen](peppermint.png)

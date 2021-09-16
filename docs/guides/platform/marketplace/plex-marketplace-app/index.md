@@ -17,19 +17,21 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/']
 ---
 
-## Plex Marketplace App
-
 [Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode) service with this app.
 
-### Why Use Plex Media Server
+## Why Use Plex Media Server
 
 Owning a Plex Media Server enables you to maintain a personal media library in addition to accessing [Plex's own content](https://mediaverse.plex.tv/), all available to stream to nearly [any device](https://www.plex.tv/apps-devices/). The ability to stream your own media is a unique advantage over other streaming services like [Netflix](https://www.netflix.com/), and comes only at the cost of your Linode services. Additional features, including local downloading, bandwidth limiting, and hardware transcoding are also available through the paid [Plex Pass](https://www.plex.tv/plex-pass/) service.
 
-### Deploy a Plex Marketplace App
+## Deploying the Plex Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-### Plex Marketplace App Options
+**Software installation should complete within 1-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
+
+### Plex Options
 
 The following configuration options create a secure [Limited User](/docs/security/basics/securing-your-server/#add-a-limited-user-account) to run your Plex Media Server.
 
@@ -44,30 +46,12 @@ The following configuration options create a secure [Limited User](/docs/securit
 | **Limited User Password** | The user password for SSH access to your Linode. *Required*. |
 | **Limited User SSH Key** | The user public SSH key for SSH access to your Linode. *Optional*. <br><br> You can find instructions on generating an SSH key pair in our guide on [Using Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/). For an additional layer of security, you can require SSH key access by [disabling password authentication](/docs/security/basics/securing-your-server/#ssh-daemon-options). |
 
-### Linode Options
+### General Options
 
-The following configuration options are possible for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|--------------|------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the Plex Marketplace App. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a data center, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Plex recommends 2GB of RAM to run Plex Media Server on its own, and more if you plan to run additional applications. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you access the root user. The password must meet complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you have provided all required Linode Options, select on the **Create** button. **Your Plex app will complete installation anywhere between 1-5 minutes after your Linode has finished provisioning**.
-
-### Software Included
-
-The Plex Marketplace App installs the following required software on your Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**Docker Engine**](https://docs.docker.com/engine/) | Docker Engine is an open source containerization technology for building and containerizing your applications. This Marketplace App deploys Plex Media Server as a Docker container. |
-| [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). |
-
-{{< content "marketplace-update-note-shortguide">}}
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** 2GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started After Deployment
 
@@ -237,3 +221,14 @@ There are other ways to upload files to your Plex Server Linode. See our section
 1.  Repeat the steps in this section to add additional media folders.
 
 You now have all the tools you need to create an online media library and stream it to [any device](https://www.plex.tv/apps-devices/) with Plex.
+
+## Software Included
+
+The Plex Marketplace App installs the following required software on your Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**Docker Engine**](https://docs.docker.com/engine/) | Docker Engine is an open source containerization technology for building and containerizing your applications. This Marketplace App deploys Plex Media Server as a Docker container. |
+| [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) | The Plex Media Server transmits locally-stored media files, enabling you to stream your personal media collection to any device that can support a [Plex Client](https://www.plex.tv/apps-devices/). |
+
+{{< content "marketplace-update-note-shortguide">}}

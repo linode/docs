@@ -20,11 +20,15 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-vscode-with-marketplace-apps/', '/platform/one-click/how-to-deploy-vscode-with-one-click-apps/','/guides/deploy-vscode-with-marketplace-apps/']
 ---
 
-Run [VS Code Server](https://github.com/cdr/code-server) in the browser with the VS Code Marketplace App. Code Server uses the open source code from Microsoft's VS Code to provide a web interface for VS Code.
+Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the browser with the Visual Studio (VS) Code Marketplace App. Code Server uses the open source code to provide a web interface for VS Code.
 
-## Deploy VS Code with Marketplace Apps
+## Deploying the VS Code Marketplace App
 
-{{< content deploy-marketplace-apps-shortguide >}}
+{{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### VS Code Options
 
@@ -51,20 +55,12 @@ The VS Code Marketplace form includes advanced fields to setup the limited user 
 | **Subdomain** | The subdomain you want the installer to create a DNS record for during setup. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you want the install to create an SSL certificate for you, or `No` if you do not. If `No` is selected, the VS Code app triggers security warnings in most web browsers. If you create a certificate and do not create a domain, the installer uses the Linode rDNS assigned name for the certificate. |
 
-### Linode Options
+### General Options
 
-After providing the app-specific options, provide configurations for the Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the VS Code Marketplace App, and it is pre-selected in the Linode creation page. *Required* |
-| **Region** | The region where you want the Linode to reside. In general, it is best to choose a location that is closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of the data centers. *Required*. |
-| **Linode Plan** | The Linode's [hardware resources](/docs/guides/how-to-choose-a-linode-plan/#hardware-resource-definitions). The minimum memory recommendation is 1 GB with 2 cores. You can always [resize your Linode](/docs/guides/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease the system resources. *Required* |
-| **Linode Label** | The name for the Linode, which must be unique between all of the Linodes on your account. This name is how you identify the server in the Cloud Manager’s Dashboard. *Required*. |
-| **Add Tags** | A tag to help organize and group the Linode resources. [Tags](/docs/guides/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
-| **Root Password** | The primary administrative password for the Linode instance. This password must be provided when you log in to the Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. The root password can be used to perform any action on the server, so make it long, complex, and unique. *Required* |
-
-When you've provided all required Linode Options, click on the **Create** button. **The VS Code app completes the installation anywhere between 2-5 minutes after the Linode has finished provisioning**.
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 
@@ -85,7 +81,7 @@ VS Code is now installed and ready to use.
 
     ![VS Code Welcome Screen](vscode-welcome-screen.png "VS Code Welcome Screen")
 
-### Software Included
+## Software Included
 
 The VS Code Marketplace App installs the following software on the Linode:
 

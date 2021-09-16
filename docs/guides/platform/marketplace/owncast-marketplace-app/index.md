@@ -24,18 +24,18 @@ Owncast is a self-hosted, "Twitch in a box" live streaming and chat server for u
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Your Owncast App will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
 
-### Configuration Options
+## Configuration Options
 
-#### Owncast Options
+### Owncast Options
 
 Here are the additional options available for this Marketplace App:
 
 - **Hostname** *(optional)*: Your public hostname for your Owncast server. Required for SSL.
 - **Email** *(optional)*: Your email address for configuring SSL. *Advanced Configuration*.
 
-#### General Options
+### General Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 

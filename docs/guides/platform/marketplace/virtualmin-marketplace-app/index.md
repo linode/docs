@@ -22,9 +22,13 @@ aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/
 
 [Virtualmin](https://www.virtualmin.com) is an open source control panel for web hosting management. It offers an easy to use graphical interface for managing websites, email, and databases. It's built on top of and integrated with the popular Webmin.
 
-## Deploy Virtualmin with Marketplace Apps
+## Deploying the Virtualmin Marketplace App
 
-{{< content deploy-marketplace-apps-shortguide >}}
+{{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Virtualmin Options
 
@@ -44,20 +48,12 @@ The Virtualmin Marketplace form includes advanced fields to setup your Virtualmi
 | **Do you need an MX record for this domain?** | Check `yes` if you plan on using Virtualmin to setup email. The installer, along with your `API Token` (required) will setup the necessary MX records in the DNS Manager. Select `no` if you do not plan on using Virtualmin to manage email. You can [add an MX record manually](/docs/networking/dns/dns-records-an-introduction/#mx) at a later time if you change your decision. |
 | **Do you need an SPF record for this domain?** | Check `yes` if you plan on using Virtualmin to setup email. The installer, along with your `API Token` (required) will setup the necessary SPF records in the DNS Manager. Select `no` if you do not plan on using Virtualmin to manage email. You can [add an SPF record manually](/docs/networking/dns/dns-records-an-introduction/#spf) at a later time if you change your decision. |
 
-### Linode Options
+### General Options
 
-After providing the app-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the Virtualmin Marketplace App, and it is pre-selected on the Linode creation page. *Required* |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You can use any size Linode for your Virtualmin App as it uses minimal system resources. The minimum recommended memory is 1 GB and the minimum recommended free disk space is 1 GB. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease your system resources. *Required* |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Add Tags** | A tag to help organize and group your Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your Virtualmin app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 

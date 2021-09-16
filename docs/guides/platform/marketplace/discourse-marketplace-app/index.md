@@ -21,13 +21,11 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/']
 ---
 
-## Discourse Marketplace App
-
 [Discourse](https://www.discourse.org/) is an open source discussion platform that provides a forum, mailing list, chat room, and more.
 
 ## Before You Begin
 
-Discourse requires that you have a domain name and access to a personal SMTP email server before installation.  This requires either having access to a pre-existing SMTP server, or setting up an [SMTP Relay](https://www.linode.com/community/questions/387/does-linode-offer-an-smtp-relay-service) through a third party. The Discourse Marketplace App will **require** an SMTP username and password for a server under your control in order to successfully complete the installation.
+Discourse requires that you have a domain name and access to a personal SMTP email server before installation. This requires either having access to a pre-existing SMTP server, or setting up an [SMTP Relay](https://www.linode.com/community/questions/387/does-linode-offer-an-smtp-relay-service) through a third party. The Discourse Marketplace App **requires** an SMTP username and password for a server under your control in order to successfully complete the installation.
 
   - If you don't already have your domain hosted at Linode, the install creates A and AAAA domain records for you.
 
@@ -41,10 +39,13 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
     - You are not required to use a subdomain. Therefore, if you only setup `example.com` with no subdomain, the email used for verification would be `noreply@example.com`.
 
+## Deploying the Discourse Marketplace App
 
-## Deploy Discourse with Marketplace Apps
+{{< content "deploy-marketplace-apps-shortguide">}}
 
-{{< content deploy-one-click-apps >}}
+**Software installation should complete within 15-20 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Discourse Options
 
@@ -68,19 +69,12 @@ Discourse requires that you have a domain name and SMTP email. These fields are 
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
 
-### Linode Options
+### General Options
 
-After providing the app-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Ubuntu 20.04 LTS is currently the only image supported by the Discourse Marketplace App, and it is pre-selected on the Linode creation page. *Required* |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required* |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). The Linode plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your server. Discourse recommends a minimum of 1GB of RAM, 2GB of swap, and 10GB of storage space. However, 4GB of RAM is recommended. *Required* |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager’s Dashboard. *Required* |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your Discourse app will complete installation anywhere between 15-20 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended minimum plan:** 4GB Shared Compute Instance
 
 ## Getting Started After Deployment
 
@@ -111,7 +105,7 @@ Discourse is now installed and ready to use.
 
     ![Discourse Main Discussion Page](discourse-main-discussion-page.png "Discourse Main Discussion Page")
 
-### Software Included
+## Software Included
 
 The Discourse Marketplace App installs the following software on your Linode:
 

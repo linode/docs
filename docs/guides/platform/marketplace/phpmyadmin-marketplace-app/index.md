@@ -18,13 +18,15 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-marketplace-apps/']
 ---
 
-## phpMyAdmin Marketplace App
-
 [phpMyAdmin](https://www.phpmyadmin.net/) is an open source web application that provides a GUI for MySQL database administration, giving you a convenient and powerful alternative to using the MySQL command line client. The phpMyAdmin Marketplace App deploys a Linode with phpMyAdmin installed and ready for you to begin managing a MySQL database.
 
-### Deploy a phpMyAdmin Marketplace App
+## Deploying the phpMyAdmin Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 1-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### phpMyAdmin Options
 
@@ -38,30 +40,12 @@ aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/pl
 phpMyAdmin doesn't handle user management itself, but passes all user information onto MySQL. The Admin User you create here is created in MySQL.
 {{< /note >}}
 
-### Linode Options
+### General Options
 
-The following configuration options are possible for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|--------------|------------|
-| **Select an Image** | Debian 9 is currently the only image supported by the phpMyAdmin Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your phpMyAdmin app will complete installation anywhere between 1-5 minutes after your Linode has finished provisioning**.
-
-### Software Included
-
-The phpMyAdmin Marketplace App will install the following required software on your Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**phpMyAdmin**](https://docs.phpmyadmin.net/en/latest/) | phpMyAdmin is a free software tool written in PHP that is intended to handle the administration of a MySQL or MariaDB database server.  |
-| [**MariaDB**](https://mariadb.org/documentation/) | MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb-vs-mysql-features/) for MySQL. |
-
-{{< content "marketplace-update-note-shortguide">}}
+- **Supported distributions:** Debian 9
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment
 
@@ -106,3 +90,14 @@ The following sections require that you own a domain that has been configured fo
 1.  You can now access the phpMyAdmin dashboard and begin managing your MySQL database.
 
     ![phpMyAdmin Dashboard](phpmyadmin-dashboard.png "The phpMyAdmin Dashboard.")
+
+## Software Included
+
+The phpMyAdmin Marketplace App will install the following required software on your Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**phpMyAdmin**](https://docs.phpmyadmin.net/en/latest/) | phpMyAdmin is a free software tool written in PHP that is intended to handle the administration of a MySQL or MariaDB database server.  |
+| [**MariaDB**](https://mariadb.org/documentation/) | MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb-vs-mysql-features/) for MySQL. |
+
+{{< content "marketplace-update-note-shortguide">}}

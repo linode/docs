@@ -8,7 +8,7 @@ keywords: ['gitlab','marketplace apps','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-27
-modified: 2021-09-15
+modified: 2021-09-16
 modified_by:
   name: Linode
 title: "Deploying GitLab through the Linode Marketplace"
@@ -27,22 +27,22 @@ Self-hosting your software development with GitLab offers total control of your 
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Your GitLab app will complete installation anywhere between 3-7 minutes after your Linode has finished provisioning**.
+**Software installation should complete within 3-7 minutes after the Linode has finished provisioning.**
 
-### Configuration Options
+## Configuration Options
 
-#### GitLab Options
+### GitLab Options
 
 Here are the additional options available for this Marketplace App:
 
 - **Domain** *(optional)*: Your GitLab site's domain name. This domain will also be used by Postfix to send mail. Setting a value for this field will not automatically set up DNS for your app, so be sure to follow the DNS instructions in the [Access your GitLab Site](#access-your-gitlab-site) section. If you do not have a domain name, you can leave this field blank and Postfix will use your Linode's default Reverse DNS to send email instead (i.e. `gitlab@li926-227.members.linode.com`).
 
-#### General Options
+### General Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 9
-- **Recommended plan:** 8GB Dedicated CPU Compute Instance
+- **Recommended minimum plan:** 8GB Dedicated CPU Compute Instance
 
 ## Getting Started after Deployment
 
@@ -110,9 +110,9 @@ external_url 'http://example.com'
 
 1.  Navigate to the domain in a browser window and verify that you are directed to your GitLab instance.
 
-### Software Included
+## Software Included
 
-The GitLab Marketplace App will install the following required software on your Linode:
+The GitLab Marketplace App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

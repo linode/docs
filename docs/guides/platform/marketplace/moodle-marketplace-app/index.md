@@ -21,9 +21,13 @@ Moodle is the most widely used open source learning management system. It is aim
 
 ## Deploying the Moodle Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
-### Moodle Configuration Options
+**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
+
+### Moodle Options
 
 You can configure your Moodle App by providing values for the following fields:
 
@@ -41,20 +45,12 @@ You can configure your Moodle App by providing values for the following fields:
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name where you wish to host your Moodle site. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 
+### General Options
 
-### Linode Configuration Options
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-After providing the App-specific options, provide configurations for your Linode server:
-
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Ubuntu 20.04 LTS is currently the only image supported by the Moodle Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Moodle can be supported on any size Linode, but we suggest you deploy your Moodle App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-After providing all required Linode Options, click on the **Create** button. **Your Moodle App will complete installation anywhere between 5-10 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment
 

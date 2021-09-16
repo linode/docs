@@ -25,7 +25,7 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 {{< content "deploy-marketplace-apps-shortguide" >}}
 
-**Your LAMP Stack app will complete installation anywhere between 2-3 minutes after your Linode has finished provisioning.**
+**Software installation should complete within 2-3 minutes after the Linode has finished provisioning.**
 
 ## Configuration Options
 

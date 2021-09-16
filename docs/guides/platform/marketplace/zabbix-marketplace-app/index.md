@@ -19,53 +19,36 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/']
 ---
 
-## Zabbix Marketplace App
-
-<!-- Intro paragraph describing the app and what it accomplishes. -->
 Zabbix is an enterprise-class, open source, distributed monitoring solution. Designed as an all-in-one monitoring solution, Zabbix can track performance and availability of network servers, devices, services, and other IT resources.
 
 Zabbix empowers administrators to quickly respond to incidents with on-screen display capabilities and alerts by e-mail, SMS, or Jabber. Users can also collect, store, manage, and analyze information received from IT infrastructure.
 
 Actively used by SMBs and large enterprises across all industries and in almost every country, Zabbix has a robust community driving its continued development.
 
-### Deploy a Zabbix Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
+## Deploying the Zabbix Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
+**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
+
 ### Zabbix Options
 
-<!-- The following table has three parts. The UDF name, in bold and in one column, followed by
-     UDF description in the second column. The description is in normal text, with an optional
-     "Required." tag at the end of the description, in italics, if the field is mandatory. -->
 You can configure your Zabbix App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
 | **Hostname** | Your Zabbix Linode's hostname. *Required*. |
 
-### Linode Options
+### General Options
 
-After providing the App-specific options, provide configurations for your Linode server:
-<!-- Be sure to edit the Select an Image and Linode Plan to match app's needs -->
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | CentOS 7 is currently the only image supported by the Zabbix Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/guides/how-to-choose-a-linode-plan/#hardware-resource-definitions). Zabbix can be supported on any size Linode, but we suggest you deploy your Zabbix App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/guides/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-<!-- the following disclaimer lets the user know how long it will take
-     to deploy the app -->
-After providing all required Linode Options, click on the **Create** button. **Your Zabbix App will complete installation anywhere between 5-10 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** CentOS 7
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
-
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
 
 ### Access your Zabbix App
 
@@ -100,7 +83,7 @@ Zabbix uses a self-signed certificate. Because it is not signed by a common Cert
 
     ![zabbix-panel.png](zabbix-panel.png)
 
-### Next Steps
+## Next Steps
 
 For more on Zabbix, check out the following resources:
 

@@ -20,9 +20,14 @@ aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/',
 ---
 
 [Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.
-## Deploy Cloudron with Marketplace Apps
+
+## Deploying the Cloudron Marketplace App
 
 {{< content deploy-marketplace-apps-shortguide >}}
+
+**Software installation should complete within 10-12 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Cloudron Options
 
@@ -35,21 +40,14 @@ The Cloudron Marketplace form includes advanced fields to setup your Cloudron se
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](https://www.linode.com/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
 
-### Linode Options
+### General Options
 
-After providing the app-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Ubuntu 18.04 is currently the only image supported by the Cloudron Marketplace App, and it is pre-selected on the Linode creation page. *Required* |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You can use any size Linode for your Cloudron App as it uses minimal system resources. The minimum required memory is 1 GB (2GB recommended) and the minimum required free disk space is 5 GB (10 GB recommended). You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease your system resources. *Required* |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Add Tags** | A tag to help organize and group your Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
+- **Supported distributions:** Ubuntu 18.04 LTS
+- **Recommended plan:** All plan types and sizes can be used.
 
-When you've provided all required Linode Options, click the **Create** button. **The Cloudron app completes the installation anywhere between 10-12 minutes after the Linode has finished provisioning**.
-
+## Getting Started after Deployment
 
 The Cloudron application is served on the Linode, however it still requires a few additional steps to fully complete the installation process.
 

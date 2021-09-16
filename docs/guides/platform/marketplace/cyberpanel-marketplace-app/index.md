@@ -25,18 +25,19 @@ CyberPanel is a next-generation hosting control panel, which provides a friendly
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Your CyberPanel App will complete installation anywhere between 10-20 minutes after your Linode has finished provisioning**.
+**Software installation should complete within 10-20 minutes after the Linode has finished provisioning.**
 
-### Configuration Options
+## Configuration Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** CentOS 8, CentOS 7, Ubuntu 18.04, and Ubuntu 20.04
-- **Recommended plan:** All plan types and sizes can be used with CyberPanel.
+- **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
 
 ## Getting Started after Deployment
 
 ### Access your CyberPanel App
+
 1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
          ssh root@192.0.2.0

@@ -25,10 +25,6 @@ MagicSpam installs directly onto an email server without any need to change A/MX
 In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](https://www.linode.com/docs/email/running-a-mail-server/#sending-email-on-linode).
 {{</ note >}}
 
-## Deploying the MagicSpam Marketplace App
-
-{{< content "deploy-marketplace-apps">}}
-
 As MagicSpam is designed to integrate and run alongside with Control Panels, the MagicSpam App also deploys the selected control panel (cPanel or Plesk). Both of these control panels may require purchasing a license. Additionally, a MagicSpam license key is required to deploy MagicSpam on Linode, which you can purchase through the [MagicSpam Store](https://www.magicspam.com/store.php).
 
 If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not follow this guide. Instead, install MagicSpam by following one of the below guides:
@@ -36,7 +32,15 @@ If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not
 * [MagicSpam for cPanel Installation Guide](https://www.magicspam.com/download/products/MSWHMC/InstallationGuide.pdf)
 * [MagicSpam for Plesk Installation Guide](https://www.magicspam.com/download/products/MSPPRO/InstallationGuide.pdf)
 
-### MagicSpam Configuration Options
+## Deploying the MagicSpam Marketplace App
+
+{{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 10-15 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
+
+### MagicSpam Options
 
 You can configure your MagicSpam App by providing values for the following fields:
 
@@ -46,19 +50,12 @@ You can configure your MagicSpam App by providing values for the following field
  **MagicSpam License Key** | Your MagicSpam license key to for the selected Control Panel. *Required*.
  **Hostname** | Your Linode’s hostname. *Required*.
 
-### Linode Configuration Options
+### General Options
 
-After providing the App-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | CentOS 7 is currently the only image supported by the MagicSpam Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). MagicSpam can be supported on any size Linode, but we suggest you deploy your MagicSpam App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-After providing all required Linode Options, click on the **Create** button. **Your MagicSpam App will complete installation anywhere between 10-15 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** CentOS 7
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 

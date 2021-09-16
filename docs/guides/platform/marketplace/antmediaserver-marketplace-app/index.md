@@ -39,7 +39,7 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, p
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Your Ant Media Server App will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning.**
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
 
 ### Configuration Options
 

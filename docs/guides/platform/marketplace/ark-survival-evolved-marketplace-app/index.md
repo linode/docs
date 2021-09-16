@@ -19,21 +19,21 @@ tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/', '/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-marketplace-apps/']
 ---
 
-## Ark: Survival Evolved Marketplace App
-
 ARK: Survival Evolved is a multiplayer action-survival game released in 2017. The game places you on a series of fictional islands inhabited by dinosaurs and other prehistoric animals. In ARK, the main objective is to survive. ARK is an ongoing battle where animals and other players have the ability to destroy you. To survive, you must build structures, farm resources, breed dinosaurs, and even set up trading hubs with neighboring tribes.
 
 Hosting an ARK server gives you control of the entire game. You can define the leveling speed, the amount of players, and the types of weapons that are available.
 
-### Deploy an ARK: Survival Evolved Marketplace App
+## Deploying the ARK: Survival Evolved Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-The [ARK Options](#ark-options) section of this guide provides details on all available configuration options for this app.
+**Software installation should complete within 5-15 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### ARK Options
 
-You can configure your ARK Marketplace App by providing values for the following fields:
+Here are the additional options available for this Marketplace App:
 
 | **Field**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
 |-----------|-----------------|
@@ -45,19 +45,12 @@ You can configure your ARK Marketplace App by providing values for the following
 | **XP Multiplier** | Increases or decreases the amount of experience awarded for various actions. *Advanced Configuration*. |
 | **Server PvE** | Disables player vs player combat and enables player vs environment combat. *Advanced Configuration*. |
 
-### Linode Options
+### General Options
 
-After providing the app specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Debian 9 is currently the only image supported by ARK: Survival Evolved Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your ARK server should be sized based on the amount of traffic you are expecting on your server as well as the game play performance you are looking for. We recommend using a 8GB Linode as the smallest plan to ensure good performance of your game server. A 8GB Dedicated plan will provide better game performance as well. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **ARK should install between 5-15 minutes after your Linode has successfully provisioned**.
+- **Supported distributions:** Debian 9
+- **Recommended plan:** Depends on the amount of traffic and players you expect. An 8GB Dedicated CPU or Shared Compute Instance is a good starting point.
 
 ## Getting Started After Deployment
 
@@ -87,7 +80,7 @@ After the Ark: Survival Evolved Server Marketplace App has finished installing, 
 
     Click on the server and then select **Join** at the bottom of the screen. You will be loaded into your server.
 
-### Software Included
+## Software Included
 
 The ARK: Survival Evolved Marketplace App will install the following required software on your Linode:
 

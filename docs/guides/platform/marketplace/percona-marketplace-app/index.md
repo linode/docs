@@ -18,11 +18,9 @@ image: 'deploy-percona-marketplace.png'
 aliases: ['/platform/marketplace/how-to-deploy-percona-monitoring-management-with-marketplace-apps/', '/platform/one-click/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-marketplace-apps/']
 ---
 
-## Percona (PMM) Marketplace App
-
 Percona Monitoring and Management (PMM) is an open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB databases. You can use PMM to easily observe important metrics, logging, and statistics related to your databases and the hosts they run on. Additionally, it includes a number of tools which can help to optimize your database's performance, manage all database instances, and track and identify potential security threats. Linode's Percona (PMM) Marketplace App deploys a Linode with PMM installed and ready for you to begin monitoring your databases.
 
-### PMM Architecture Overview
+## PMM Architecture Overview
 
 The PMM tool uses a client-server model which makes it easy to scale monitoring across several databases hosted on various remote hosts. See the table below to better understand how each PMM component fits into the context of Linode's Percona (PMM) Marketplace App.
 
@@ -35,9 +33,13 @@ The PMM tool uses a client-server model which makes it easy to scale monitoring 
 For a more detailed information on PMM's architecture see [Percona's official documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html).
 {{</ note >}}
 
-### Deploy a Percona (PMM) Marketplace App
+## Deploying the Percona (PMM) Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
+
+**Software installation should complete within 1-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Percona (PMM) Options
 
@@ -45,32 +47,12 @@ For a more detailed information on PMM's architecture see [Percona's official do
 |--------------|------------|
 | **Admin Password** | The password you will use to log in to the monitoring dashboard. *Required*. |
 
+### General Options
 
-### Linode Options
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-The following configuration options are possible for your Linode server:
-
-| **Configuration** | **Description** |
-|--------------|------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the Percona (PMM) Marketplace App. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Percona recommends roughly 1 GB of storage on your PMM Server for each database node you would like to monitor. For more information on Percona's system requirements see their [official documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#what-are-the-minimum-system-requirements-for-pmm). If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your PMM app will complete installation anywhere between 1-5 minutes after your Linode has finished provisioning**.
-
-### Software Included
-
-The Percona (PMM) Marketplace App will install the following required software on your Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**Docker**](https://www.docker.com/) | Docker is used to containerize PMM. |
-| [**PMM Server**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/docker.html) | PMM Server is the central part of PMM that aggregates collected data and presents it in the form of tables, dashboards, and graphs in a web interface.  |
-| [**Grafana**](https://grafana.com/) | Grafana is the visualization tool used by PMM to provides charts, graphs, and alerts for the databases that are being monitored. |
-
-{{< content "marketplace-update-note-shortguide">}}
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used. Percona recommends roughly 1 GB of storage on your PMM Server for each database node you would like to monitor. For more information on Percona's system requirements see their [official documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#what-are-the-minimum-system-requirements-for-pmm).
 
 ## Getting Started after Deployment
 
@@ -78,28 +60,28 @@ The Percona (PMM) Marketplace App will install the following required software o
 
 After the [PMM Server](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html#pmm-server) has finished installing, you will be able to access its Grafana dashboard over `http://` and your Linode's IPv4 address. To find your Linode's IPv4 address:
 
-  1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
+1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
-  1. Find the Linode you just created when deploying your app and select it.
+1. Find the Linode you just created when deploying your app and select it.
 
-  1. Navigate to the **Networking** tab.
+1. Navigate to the **Networking** tab.
 
-  1. Your IPv4 address will be listed under the **Address** column in the **IPv4** table.
+1. Your IPv4 address will be listed under the **Address** column in the **IPv4** table.
 
-  1. Copy and paste the IPv4 address into a browser window. Ensure you are using `http://`.
+1. Copy and paste the IPv4 address into a browser window. Ensure you are using `http://`.
 
-  1. You will see the Grafana login screen:
+1. You will see the Grafana login screen:
 
     ![Grafana Login Screen](grafana-login-screen.png "Grafana Login Screen.")
 
-  1. Enter the following default values for username and password, then click the **Log In** button:
+1. Enter the following default values for username and password, then click the **Log In** button:
 
     | **Entry** | **Default Value** |
     |:---:|:---:|
     | Username | admin |
     | Password | The admin password you selected when you create the app. |
 
-  1. You will then see the PMM Home Dashboard actively monitoring your server:
+1. You will then see the PMM Home Dashboard actively monitoring your server:
 
     ![Percona Home Page](perconahome.png "Percona Home Page.")
 
@@ -113,36 +95,29 @@ To begin monitoring a database node, you will need to install the [PMM Client](h
 
 {{< note >}}
 The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
-
-
 {{</ note >}}
 
-1. [Connect to your database Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) via SSH.
+1.  [Connect to your database Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) via SSH.
 
+1.  Update your system's software.
 
-1. Update your system's software.
+    **Debian or Ubuntu**:
 
-      > **Debian or Ubuntu**:
-      >
-      >
         sudo apt-get update && apt-get upgrade
 
-      > **CentOS**:
-      >
-      >
+    **CentOS**:
+
         sudo yum update
 
-1. Configure Percona repositories using the [percona-release](https://www.percona.com/doc/percona-repo-config/percona-release.html) tool. First you’ll need to download and install the official `percona-release` package from Percona::
+1.  Configure Percona repositories using the [percona-release](https://www.percona.com/doc/percona-repo-config/percona-release.html) tool. First you’ll need to download and install the official `percona-release` package from Percona::
 
-      > **Debian or Ubuntu**:
-      >
-      >
+    **Debian or Ubuntu**:
+
         wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
         sudo dpkg -i percona-release_latest.generic_all.deb
 
-      > **CentOS**:
-      >
-      >
+    **CentOS**:
+
         sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
     {{< note >}}
@@ -152,20 +127,18 @@ If you have previously enabled the experimental or testing Percona repository, d
     sudo percona-release enable original release
     {{</ note >}}
 
-1. Install the PMM Client (version 2):
+1.  Install the PMM Client (version 2):
 
-      > **Debian or Ubuntu**:
-      >
-      >
+    **Debian or Ubuntu**:
+
         sudo apt-get update
         sudo apt-get install pmm2-client
 
-      > **CentOS**:
-      >
-      >
+    **CentOS**:
+
         sudo yum install pmm2-client
 
-1. Connect your database node to the PMM Server. Replace `admin_password` with your PMM Server's [Grafana password](#access-your-PMM-server-s-grafana-dashboard), and `192.0.2.0` with your PMM Server's IPv4 address.
+1.  Connect your database node to the PMM Server. Replace `admin_password` with your PMM Server's [Grafana password](#access-your-PMM-server-s-grafana-dashboard), and `192.0.2.0` with your PMM Server's IPv4 address.
 
       {{< note >}}
 Follow the steps in [Find Your Linode's IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) to retrieve your PMM Server's IPv4 address.
@@ -210,6 +183,18 @@ Once your database node and your PMM Server are communicating, the final step is
     {{< note >}}
 You can also [add a database remote instance node using the Grafana interface](https://www.percona.com/doc/percona-monitoring-and-management/remote-instance.html). In order to do this, your node must be configured with a public DNS name. This method of adding a remote database instance will not provide host-level metrics.
     {{</ note >}}
+
+## Software Included
+
+The Percona (PMM) Marketplace App installs the following required software on your Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**Docker**](https://www.docker.com/) | Docker is used to containerize PMM. |
+| [**PMM Server**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/install/docker.html) | PMM Server is the central part of PMM that aggregates collected data and presents it in the form of tables, dashboards, and graphs in a web interface.  |
+| [**Grafana**](https://grafana.com/) | Grafana is the visualization tool used by PMM to provides charts, graphs, and alerts for the databases that are being monitored. |
+
+{{< content "marketplace-update-note-shortguide">}}
 
 ## Next Steps
 

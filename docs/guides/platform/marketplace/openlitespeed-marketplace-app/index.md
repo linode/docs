@@ -21,31 +21,20 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-openlitespeed-with-marketplace-apps/', '/platform/one-click/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-marketplace-apps/']
 ---
 
-## OpenLiteSpeed Marketplace App
+[OpenLiteSpeed](https://openlitespeed.org/) is the Open Source edition of LiteSpeed cache for WordPress plugin that provides accelerated hosting platform for WordPress. OpenLiteSpeed combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
 
-[OpenLiteSpeed](https://openlitespeed.org/) is the Open Source edition of LiteSpeed cache for WordPress plugin that provides accelerated hosting platform for WordPress. OpenLiteSpeed combines speed, security, scalability, optimization and simplicity in one friendly open-source package.
+## Deploying the OpenLiteSpeed Marketplace App
 
-## Before you begin
+{{< content "deploy-marketplace-apps-shortguide">}}
 
-You need a registered domain name to assign it the Linode server.
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
 
-## Deploy OpenLiteSpeed with Marketplace Apps
+## Configuration Options
 
-{{< content deploy-marketplace-apps-shortguide >}}
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-### Linode Options
-
-After providing the app-specific options, provide configurations for your Linode server:
-
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | CentOS 7, Debian 10, and Ubuntu 18.04 and 20.04 are currently the only images supported by the OpenLiteSpeed Marketplace App. *Required* |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You can use any size Linode for your OpenLiteSpeed plugin. The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.  *Required* |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your OpenLiteSpeed plugin will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** CentOS 7, Debian 10, Ubuntu 18.04 LTS, and Ubuntu 20.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment
 

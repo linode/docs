@@ -21,17 +21,15 @@ aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/plat
 
 {{< youtube aSivuBZxUgw >}}
 
-## Counter-Strike: Global Offensive Marketplace App
-
 Counter-Strike: Global Offensive (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team.
 
 A competitive match requires two teams of five players, but hosting your own server offers you control over team size and server location, so you and your friends can play with low latency. Up to 64 players can be hosted on a single server.
 
-### Deploy a CS:GO Marketplace App
+### Deploying the CS:GO Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-The [CS:GO Options](#cs-go-options) section of this guide provides details on all available configuration options for this app.
+**Software installation should complete within 5-15 minutes after the Linode has finished provisioning.**
 
 ### CS:GO Options
 
@@ -50,20 +48,12 @@ You can configure your CS:GO App by providing values for the following fields:
 | **Buy Anywhere** | When enabled, allows teams to buy equipment from outside buy zones. *Advanced Configuration*. |
 | **Friendly Fire Enabled** | Friendly fire allows teammates to damage and kill each other. *Advanced Configuration*. |
 
+### General Options
 
-### Linode Options
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-After providing the app specific options, provide configurations for your Linode server:
-
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Debian 9 is currently the only image supported by the CS:GO Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your CS:GO server should be sized based on the amount of traffic you are expecting on your server. Higher-tier plans may also provide better network game performance than lower-tier plans. We recommend using a 4GB Linode as the minimum plan for CS:GO servers. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | Create a root password for your Linode in the Root Password field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **CS:GO should complete its installation between 5-15 minutes after your Linode has successfully provisioned**.
+- **Supported distributions:** Debian 9
+- **Recommended minimum plan:** 4GB Dedicated CPU Compute Instance
 
 ## Getting Started after Deployment
 
@@ -93,9 +83,9 @@ If you included a **CS:GO Server Password** in your [CS:GO Options](#cs-go-optio
 
     ![The CS:GO developer's console.](cs-go-developers-console.png)
 
-### Software Included
+## Software Included
 
-The CS:GO Marketplace App will install the following required software on your Linode:
+The CS:GO Marketplace App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |--------------|-----------------|

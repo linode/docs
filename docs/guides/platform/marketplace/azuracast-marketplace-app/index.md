@@ -21,27 +21,20 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/', '/platform/one-click/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-marketplace-apps/']
 ---
 
-## AzuraCast Marketplace App
-
 [AzuraCast](https://www.azuracast.com) is a self-hosted web radio station and management suite. Installation is simple with Marketplace Apps, and the intuitive web interface makes running a web station easy. After installation, you can be broadcasting within in minutes.
 
-## Deploy AzuraCast with Marketplace Apps
+## Deploying the AzuraCast Marketplace App
 
-{{< content deploy-marketplace-apps-shortguide >}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
-### Linode Options
+**Software installation should complete within 1-3 minutes after the Linode has finished provisioning.**
 
-After providing the app-specific options, provide configurations for your Linode server:
+## Configuration Options
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Select either Debian 10 or Ubuntu 20.04 LTS for your image. These are the only two images supported by the AzuraCast Marketplace App. *Required* |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You can use any size Linode for your AzuraCast App. The Linode plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your station. You can create your station on a 1GB Linode (Nanode) or a Linode 2GB with low risk for performance hits. *Required* |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-When you've provided all required Linode Options, click on the **Create** button. **Your AzuraCast app will complete installation anywhere between 1-3 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Debian 10 or Ubuntu 20.04 LTS
+- **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment
 
@@ -67,9 +60,9 @@ AzuraCast is now installed and ready to use.
 
 1.  Here you can control your station, add songs, add DJs, take requests, and more.
 
-### Software Included
+## Software Included
 
-The AzuraCast Marketplace App will install the following software on your Linode:
+The AzuraCast Marketplace App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

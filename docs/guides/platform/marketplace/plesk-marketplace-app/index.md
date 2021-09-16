@@ -21,15 +21,15 @@ external_resources:
 aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/', '/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guides/deploying-plesk-with-marketplace-apps/']
 ---
 
-## Plesk Marketplace App
-
 [Plesk](https://www.plesk.com) is a leading WordPress and website management platform and control panel. Plesk lets you build and manage multiple websites from a single dashboard to configure web services, email, and other applications. Plesk features hundreds of extensions, plus a complete WordPress toolkit. Use the Plesk Marketplace App to manage websites hosted on your Linode.
 
-### Deploy a Plesk Marketplace App
+## Deploying the Plesk Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-The [Plesk Options](#plesk-options) section of this guide provides details on all available configuration options for this app.
+**Software installation should complete within 15 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Plesk Options
 
@@ -39,19 +39,12 @@ You can configure your Plesk App by providing values for the following fields:
 |:----------------|:------------|
 | **Server Name** | Domain name for your server in the format servername.domain.com. Setting a value in this field will not also enable DNS for your app, which you should do as well. Read our [DNS Manager](/docs/platform/manager/dns-manager/) guide for instructions on creating DNS records in the Linode Cloud Manager. *Required*. |
 
-### Linode Options
+### General Options
 
-After providing the app specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | CentOS 7, Ubuntu 18.04 LTS, and Ubuntu 16.04 LTS are the images supported by Plesk Marketplace Apps. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Plesk runs on WordPress which is an extremely flexible CMS that can be supported on any size Linode, but we suggest you deploy your Plesk app on a Linode plan that reflects how much content you plan on featuring as well as how much traffic you expect for your site. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. You will also use this password to log into Plesk as well as when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your Plesk app will complete installation in about  15 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** CentOS 7, Ubuntu 18.04 LTS, and Ubuntu 16.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 

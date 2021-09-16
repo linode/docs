@@ -21,9 +21,13 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 
 ## Deploying the Splunk Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
-### Splunk Configuration Options
+**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
+
+### Splunk Options
 
 You can configure your Splunk App by providing values for the following fields:
 
@@ -40,21 +44,17 @@ You can configure your Splunk App by providing values for the following fields:
 | **The subdomain for the Linode's DNS record (Requires API token)** | The domain name to use when creating a DNS record for the Linode.
 | **Admin email for the Splunk server** | The email address to use for the Splunk instance's admin user. |
 
-### Linode Configuration Options
+### General Options
 
-After providing the App-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 10 and Ubuntu 20.04 LTS are currently the only images supported by the Splunk Marketplace App. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Splunk can be supported on any size Linode, but we suggest you deploy your Splunk App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
+- **Supported distributions:** Debian 10 and Ubuntu 20.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
-After providing all required Linode Options, click on the **Create** button. **Your Splunk App will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+## Getting Started after Deployment
 
 ### Access your Splunk App
+
 Open a browser and navigate to your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) and port `8000`, for example, `http://192.0.2.0:8000/`. You will be presented a login field where you can enter the credentials you previously specified in the *Splunk Username* and *Splunk Password* fields when you deployed the app.
 
 Now that you’ve accessed your dashboard, checkout [the official Splunk documentation](https://docs.splunk.com/Documentation/Splunk) to learn how to further configure your instance.

@@ -17,17 +17,17 @@ tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/', '/platform/one-click/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-marketplace-apps/']
 ---
 
-## Team Fortress 2 Marketplace App
-
 Team Fortress 2 (TF2) is a team-based multiplayer first-person shooter game. In TF2, you and your team choose from 9 unique classes and play against an enemy team in a variety of game modes. These modes include capture the flag, king of the hill, and even a battle pitting your team against a robotic horde.
 
 Setting up a personal game server puts you in control of the game modes and maps you use, as well as a variety of other settings to customize your experience.
 
-### Deploy a Team Fortress 2 Marketplace App
+## Deploying the Team Fortress 2 Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-The [Team Fortress 2 Options](#team-fortress-2-options) section of this guide provides details on all available configuration options for this app.
+**Software installation should complete within 5-15 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Team Fortress 2 Options
 
@@ -44,20 +44,12 @@ You can configure your Team Fortress 2 App by providing values for the following
 | **Maximum Rounds** | The maximum amount of rounds before the map changes. *Advanced Options* |
 | **Round Time Limit** | The time per round, in minutes. *Advanced Options* |
 
+### General Options
 
-### Linode Options
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-After providing the app specific options, provide configurations for your Linode server:
-
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by Team Fortress 2 Marketplace Apps, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your TF2 server should be sized based on the amount of traffic you are expecting on your server as well as the game play performance you are looking for. We recommend using a 2GB Linode as the smallest plan to ensure good performance of your game server, though 4GB as a minimum size would ensure better performance of your game server. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your Team Fortress 2 app should install between 5-15 minutes after your Linode has successfully provisioned**.
+- **Supported distributions:** Debian 9
+- **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started after Deployment
 
@@ -81,9 +73,9 @@ After the Team Fortress 2 Server Marketplace App has finished deploying to your 
 
     ![The Team Fortress 2 developer's console.](marketplace-tf2-developers-console.png)
 
-    You will connect to the server.
+    This connects you to the server.
 
-### Software Included
+## Software Included
 
 The Team Fortress 2 Marketplace App will install the following required software on your Linode:
 

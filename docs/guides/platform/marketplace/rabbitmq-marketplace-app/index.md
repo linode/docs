@@ -17,50 +17,33 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-rabbitmq-with-marketplace-apps/', '/platform/marketplace/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-server-with-marketplace-apps/']
 ---
 
-## RabbitMQ Marketplace App
-
 RabbitMQ is a popular open source **message broker**, or a tool that enables and empowers components of a system to communicate from a centralized source or application. By "translating" data from a number of different sources into a unified language, RabbitMQ allows component services to interact with each other through a centralized method.
 
 The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default configuration to assist with messaging tasks. By accessing The RabbitMQ Management console, you can further configure RabbitMQ and view important analytics at any time.
 
-### Deploy a RabbitMQ Marketplace App
+## Deploying the RabbitMQ Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-### RabbitMQ Marketplace App Options
+**Software installation should complete within 1-3 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
+
+### RabbitMQ Options
 
 The following configuration options create a secure [Limited User](/docs/security/basics/securing-your-server/#add-a-limited-user-account) to run the RabbitMQ Media Server.
-
 
 | **Configuration** | **Description** |
 |--------------|------------|
 | **RabbitMQ Username** | The [username](/docs/security/basics/securing-your-server/#add-a-limited-user-account) for accessing the rabbitMQ management console. *Required*. |
 | **RabbitMQ Password** | The user password for SSH access to the Linode. *Required*. |
 
+### General Options
 
-### Linode Options
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-The following configuration options are possible for the Linode server:
-
-| **Configuration** | **Description** |
-|--------------|------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the RabbitMQ Marketplace App. *Required*. |
-| **Region** | The region where you would like the Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a data center, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of the data centers. *Required*. |
-| **Linode Plan** | The Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). RabbitMQ can be supported by any Linode plan, though larger plans are recommended if you want to run additional applications. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for the Linode, which must be unique between all of the Linodes on your account. This name helps you identify the server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for the Linode instance. This password must be provided when you access the root user. The password must meet complexity strength validation requirements for a strong password. The root password can be used to perform any action on the server, so make it long, complex, and unique. *Required*. |
-
-When you have provided all required Linode Options, select on the **Create** button. **The Rabbit app completes installation anywhere between 1-3 minutes after the Linode has finished provisioning**.
-
-### Software Included
-
-The RabbitMQ Marketplace App installs the following required software on the Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**RabbitMQ Server**](https://www.rabbitmq.com/download.html) | The RabbitMQ server software is an Open Source Message broker, used to assist component services to communicate. |
-
-{{< content "marketplace-update-note-shortguide">}}
+- **Supported distributions:** Debian 10
+- **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment
 
@@ -76,6 +59,15 @@ To log in, enter the `RabbitMQ username` and `RabbitMQ Password` set as a [confi
 
 ![RabbitMQ Management Console](rabbitmq-management.png "RabbitMQ Management Console.")
 
+## Software Included
+
+The RabbitMQ Marketplace App installs the following required software on the Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**RabbitMQ Server**](https://www.rabbitmq.com/download.html) | The RabbitMQ server software is an Open Source Message broker, used to assist component services to communicate. |
+
+{{< content "marketplace-update-note-shortguide">}}
 
 
 

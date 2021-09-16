@@ -21,13 +21,15 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/','/platform/one-click/deploy-jitsi-with-one-click-apps/','/guides/how-to-deploy-jitsi-with-marketplace-apps/']
 ---
 
-## Jitsi Marketplace App
-
 [Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.
 
-## Deploy Jitsi with Marketplace Apps
+## Deploying the Jitsi Marketplace App
 
 {{< content deploy-marketplace-apps-shortguide >}}
+
+**Software installation should complete within 3-5 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Jitsi Options
 
@@ -51,19 +53,12 @@ If Jitsi is not created with the SSL option enabled, it uses a self-signed certi
 If you enter a domain name, the address to access Jitsi is `hostname`.`domain name`. For example, if you kept the default hostname, `meet`, and your domain name is `example.com`, to access Jitsi, the address is: `https://meet.example.com`.
 {{</ note >}}
 
-### Linode Options
+### General Options
 
-After providing the app-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Select an Image** | Ubuntu 20.04 LTS is currently the only image supported by Jitsi Marketplace Apps, and it is pre-selected on the Linode creation page. *Required* |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/guides/how-to-choose-a-linode-plan/#hardware-resource-definitions). The Linode plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your server. We recommend you create at least a Linode 8GB. If you want to host large meetings, or many simultaneous meetings, consider a larger and/or dedicated plan. *Required* |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
-
-When you've provided all required Linode Options, click on the **Create** button. **Your Jitsi app will complete installation anywhere between 3-5 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used, though we recommend a 8GB Dedicated CPU or Shared Compute Instance for hosting large meetings or multiple simultaneous meetings.
 
 ## Getting Started After Deployment
 
@@ -80,7 +75,7 @@ Jitsi is now installed and ready to use.
 
 !["Jitsi Start a Meeting"](jitsi-start-a-meeting.png "Jitsi Start a Meeting")
 
-### Software Included
+## Software Included
 
 The Jitsi Marketplace App installs the following software on your Linode:
 
