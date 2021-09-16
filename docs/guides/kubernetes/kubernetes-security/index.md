@@ -36,33 +36,29 @@ Kubernetes is an ever-moving and evolving target. The manifests used today might
 
 ## Use Security Policies and Role-Based Access Control
 
-Because Kubernetes has a lot of moving parts, interconnected services and users can have access to an entire stack. If the wrong user or service has the wrong access, they could use it to their advantage.
-
-That's where Role-Based Access Control (RBAC) comes into play. This Kubernetes feature ensures that no user has any more permission than they need to function properly. Administrators should use Kubernetes Roles to attach rules to a group and add users to the group. Each role allows users to do certain things. First, create a security policy and then, using RBAC, assign the role.
+A Kubernetes cluster consists of many pieces –services, networking, namespaces, pods, nodes, containers, and more. Limiting which users and services have access to different parts of your stack is an important step in keeping your cluster secure. Role-Based Access Control (RBAC) authorization is a Kubernetes feature that limits access to a cluster's resources. With this method, no user or service has any more permissions than they need to function properly in the cluster. Administrators should use Kubernetes *Roles* or *ClusterRoles* to attach rules to a group and add users to the group. First, create a security policy and then, using RBAC, assign the role.
 
 The example below defines a security policy that specifies the operations a user can execute and on which namespace.
 
-Create a YAML file, named `role.yaml`, with the following contents:
-
 {{< file "role.yaml" yaml >}}
-kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
 metadata:
   namespace: office
   name: deployment-manager
 rules:
-- apiGroups: ["", "extensions", "apps"]
+- apiGroups: ["core", "extensions", "apps"]
   resources: ["deployments", "replicasets", "pods"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
 {{< /file >}}
 
-The above role allows users to execute operations on `deployments`, `replicasets`, and `pods`, but only within the `core`, `apps`, and `extensions` API groups, and within the `office` namespace. That limits what a user can do if they have been assigned to this role.
+The above Role allows users to execute operations on `deployments`, `replicasets`, and `pods`, but only within the `core`, `apps`, and `extensions` [API groups](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups-and-versioning), and within the `office` namespace. The example Role limits what a user can do if they are assigned to it.
 
-A separate manifest binds that role to a specific user. To continue the example, and bind that role to a user named `admin1`, the manifest would look in shown in the below example:
+A separate manifest binds that Role to a specific user. To continue the example, and bind the Role to a user named `admin1`, the corresponding manifest resembles the example below:
 
 {{< file "role.yaml" yaml >}}
-kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
 metadata:
   name: deployment-manager-binding
   namespace: office
@@ -76,15 +72,13 @@ roleRef:
   apiGroup: ""
 {{< /file >}}
 
-That binds the `admin1` user, within the `office` namespace, such that they can execute operations on `deployments`, `replicasets`, and `pods`, within the `core`, `apps`, and `extensions` API Groups.
+The manifest binds the `admin1` user, within the `office` namespace. The user can execute operations on `deployments`, `replicasets`, and `pods`, within the `core`, `apps`, and `extensions` API Groups.
 
-It is crucial to understand how to employ RBAC in your Kubernetes manifests. To find out more about how RBAC functions within Kubernetes, read the Kubernetes official documentation on [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+RBAC authorization is one of the primary ways to keep your Kubernetes cluster secure. To learn more about the implementation details of RBAC, view the [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) Kubernetes documentation page.
 
-## Keep Your Secrets to Yourself
+## Use Kubernetes Secrets for Sensitive Data
 
-This security practice is not only important; it's often overlooked.
-
-First of all, what is a `secret`? A `secret` is an object that contains a key-value pair and metadata. Here's a basic example of a secret in a Kubernetes YAML file.
+A Kubernetes Secret is used to keep sensitive information —like passwords, tokens, and keys— out of your application code. Secrets prevent your sensitive data from being exposed during your development workflow. At its simplest, a Secret is an object that contains a key-value pair and metadata. The example below creates a Kubernetes secret that stores a user's plain-text password:
 
 {{< file "role.yaml" yaml >}}
 apiVersion: v1
@@ -97,39 +91,47 @@ data:
   password: BU2Byyz2112
 {{< /file >}}
 
-Clearly, this isn't an ideal path for any security behavior.
-
-To improve the situation, there are several routes from which to choose, such as encrypting data that is stored, or communicated with other systems. For example, use a section like in the example below in an encryption configuration file (which is not a pod/container manifest).
+It is not a good security practice to store a plain-text password in a manifest file. Anyone with access to the Secret's namespace can read the Secret. Similarly, anyone with access to the cluster's API can read and modify the Secret. For this reason, you should encrypted any sensitive data that is stored in a Secret. Kubernetes supports encryption at rest which means your sensitive will be stored encrypted in etc. To do this create an [encryption at rest configuration](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration) similar to the example below:
 
 {{< file "role.yaml" yaml >}}
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources:
-- resources:
+  - resources:
   - secrets
-    providers:
+  providers:
   - aescbc:
-        keys:
-    - name: secretkey1
-          secret: <ENCODED SECRET>
+      keys:
+      - name: secretkey1
+      secret: <ENCODED SECRET>
   - identity: {}
 {{< /file >}}
 
-You would then have to generate a random key and use `base64` to encode it.
+Then, you have to generate a random key and use `base64` to encode it.
 
 `head -c 32 /dev/urandom | base64`
 
-This outputs a string that is copied as the value for secret, as in:
+You can then copy the returned output and store it in the `secret` field of your encryption at rest configuration.
 
-`secret: piE9qJYzcavzUz5q+gH70uRjnPWsvMMsoTndPi7KzqA=`
+{{< file "role.yaml" yaml >}}
+apiVersion: apiserver.config.k8s.io/v1
+kind: EncryptionConfiguration
+resources:
+  - resources:
+  - secrets
+  providers:
+  - aescbc:
+      keys:
+      - name: secretkey1
+      secret: piE9qJYzcavzUz5q+gH70uRjnPWsvMMsoTndPi7KzqA=
+  - identity: {}
+{{< /file >}}
 
-Then, set `--encryption-provider-config` in the `kube-apiserver` such that it points to the encryption configuration file. Doing this avoids leaving secrets in your Kubernetes manifests.
+Finally, set `--encryption-provider-config` in the `kube-apiserver` so that it points to the encryption configuration file. To learn more about the different encryption providers that Kubernetes supports, see the [Encrypting Secret Data at Rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) documentation.
 
 ## Restrict Traffic Between Pods With a Kubernetes Network Policy
 
-By default, Pods running on a Kubernetes cluster accept traffic from any source. That's a bad idea in security terms.
-
-To limit the communication between Pods, use the Kubernetes Network Policy API. This is important because you might have certain Pods that should only be able to communicate to specific Pods. Accepting all traffic from all Pods could lead to trouble.
+By default, Pods running on a Kubernetes cluster accept traffic from any source. To limit the communication between Pods, use the [Kubernetes Network Policy](https://kubernetes.io/docs/concepts/services-networking/network-policies/) API. This is important because you might have certain Pods that should only be able to communicate to specific Pods. Accepting all traffic from all Pods could lead to trouble.
 
 A network policy spec consists of three main sections:
 
