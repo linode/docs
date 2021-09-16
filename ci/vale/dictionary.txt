@@ -1029,6 +1029,7 @@ multicraft
 multilib
 multiline
 multilink
+multiplatform
 multiport
 multisite
 multiuser
