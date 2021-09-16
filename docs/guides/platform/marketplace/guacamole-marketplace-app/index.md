@@ -27,34 +27,27 @@ Apache Guacamole is an open source HTML5-based web application used as a remote 
 
 **Your Guacamole App will complete installation anywhere between 5-20 minutes after your Linode has finished provisioning**.
 
-### Guacamole Options
+### Configuration Options
+
+#### Guacamole Options
 
 You can configure your Guacamole App by providing values for the following fields:
 
-| **Field** | **Description** |
-|:--------------|:------------|
-| **The limited sudo/VNC user to be created for the Linode** | The VNC username created for this Linode with sudo permissions. This is used for your VNC session. *Required*. |
-| **The password for the limited sudo/VNC user** | Password for your sudo/VNC user. This is used for your VNC session. *Required*. |
-| **The username to be used with Guacamole** | Your Guacamole Username. This is used to log in to Guacamole. *Required*. |
-| **The password to be used with Guacamole** | Your Guacamole Password. This is used to log in to Guacamole. *Required* |
-| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `Subdomain` and `Domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create a token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) to use in this field before continuing. |
-| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain can only be created if you also provide a `Domain` and `API Token`. |
-| **Domain** | The domain name where you wish to host your Guacamole server. The installer creates a DNS record for this domain during setup if you provide this field along with the required `API Token`. |
-| **Admin Email** | The email address to register with [Certbot](https://certbot.eff.org/) when generating an SSL certificate for your absolute domain. This field is required along with your `API Token` and `Domain` for HTTPS access to your Guacamole remote desktop. |
+- **The limited sudo/VNC user to be created for the Linode** *(required)*: The VNC username created for this Linode with sudo permissions. This is used for your VNC session.
+**The password for the limited sudo/VNC user** *(required)*:  Password for your sudo/VNC user. This is used for your VNC session.
+- **The username to be used with Guacamole** *(required)*:  Your Guacamole Username. This is used to log in to Guacamole.
+- **The password to be used with Guacamole** *(required)*:  Your Guacamole Password. This is used to log in to Guacamole.
+- **Your Linode API Token** *(optional)*:  Your Linode `API Token` is needed to create DNS records. If this is provided along with the `Subdomain` and `Domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create a token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) to use in this field before continuing.
+- **Subdomain** *(optional)*: The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain can only be created if you also provide a `Domain` and `API Token`.
+- **Domain** *(optional)*: The domain name where you wish to host your Guacamole server. The installer creates a DNS record for this domain during setup if you provide this field along with the required `API Token`.
+- **Admin Email** *(optional)*: The email address to register with [Certbot](https://certbot.eff.org/) when generating an SSL certificate for your absolute domain. This field is required along with your `API Token` and `Domain` for HTTPS access to your Guacamole remote desktop.
 
-### Linode Options
+#### General Options
 
-After providing the App-specific options, provide configurations for your Linode server:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 10 is currently the only image supported by the Guacamole Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Guacamole can be supported on any size Linode, but we suggest you deploy your Guacamole App on a Linode plan that reflects how you plan on using it. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
-| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name is how you identify your server in the Cloud Manager Dashboard. *Required*. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
-
-After providing all required Linode Options, click on the **Create** button. **Your Guacamole App will complete installation anywhere between 5-20 minutes after your Linode has finished provisioning**.
+- **Supported distributions:** Debian 10
+- **Recommended plan:** All plan types and sizes can be used with Guacamole.
 
 ## Getting Started after Deployment
 
@@ -70,7 +63,7 @@ After Guacamole has finished installing, access the dashboard over `http://` or 
 
     ![View the Guacamole login page.](guacamole-login-page.png)
 
-{{< note >}}
+    {{< note >}}
 The Guacamole login page may take several minutes to become available while the Application completes the creation process.
 {{< /note >}}
 
@@ -84,4 +77,4 @@ The Guacamole login page may take several minutes to become available while the 
 
     When prompted, enter the password you chose for the [limited sudo/VNC user](#guacamole-options). You can now browse the web on your Guacamole browser from within your local browser.
 
-{{< content "marketplace-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}

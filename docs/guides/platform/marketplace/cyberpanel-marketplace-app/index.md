@@ -100,4 +100,4 @@ CyberPanel uses a self-signed certificate issued by LiteSpeedCommunity. Because 
 
      Now that you've accessed your dashboard, checkout the [official CyberPanel documentation](https://docs.litespeedtech.com/cloud/images/cyberpanel/) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}

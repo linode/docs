@@ -93,4 +93,4 @@ New Licenses can also be added at any time by selecting the `Settings` sidebar o
 
     ![FileCloud License](filecloud-license.png)
 
-{{< content "marketplace-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}

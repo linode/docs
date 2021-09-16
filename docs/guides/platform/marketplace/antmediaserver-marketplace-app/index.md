@@ -62,4 +62,4 @@ For more on Ant Media Server, check out the following resources:
 
 
 <!-- the following shortcode informs the user that Linode does not provide automatic updates to the Marketplace app, and that the user is responsible for the security and longevity of the installation. -->
-{{< content "marketplace-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}

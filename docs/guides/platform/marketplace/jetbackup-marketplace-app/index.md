@@ -12,9 +12,9 @@ modified: 2021-09-15
 modified_by:
   name: Linode
 title: "Deploying JetBackup through the Linode Marketplace"
+aliases: ['/guides/deploying-jetbackup-marketplace-app/']
 external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
-aliases: ['/guides/deploying-jetbackup-marketplace-app/']
 ---
 
 JetBackup is a backup solution that can integrate with cPanel or be used as a standalone software within supported Linux distributions. It offers flexible backup management options, including the ability to perform off-site backups through S3-compatible storage (like Linode's [Object Storage](https://www.linode.com/products/object-storage/)). See the [JetBackup 5 product page](https://www.jetbackup.com/jetbackup-5/) for more details.
@@ -23,22 +23,22 @@ JetBackup is a backup solution that can integrate with cPanel or be used as a st
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Your JetBackup server will complete installation anywhere between 5-10 minutes after your Linode has finished provisioning.**
+**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
 
-### Configuration Options
+## Configuration Options
 
-#### JetBackup Options
+### JetBackup Options
 
 You can configure your JetBackup App by providing values for the following fields:
 
 - **Control Panel** *(Required)*: Choose a Control Panel to use with JetBackup 5. Select either cPanel/WHM or Linux (No Control Panel).
 - **Release Tier** *(Required)*: Choose a JetBackup Release Tier. Select either stable (recommended), beta, or edge.
 
-#### General Options
+### General Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** CentOS 7, CentOS 8, and AlmaLinux 8.
+- **Supported distributions:** CentOS 7, CentOS 8, and AlmaLinux 8
 - **Recommended plan:** All plan types and sizes can be used with JetBackup.
 
 ## Getting Started after Deployment
@@ -55,4 +55,4 @@ To access your JetBackup instance, Open a browser and navigate to your Linode rD
 
 Now that you’ve accessed your dashboard, checkout [the official JetBackup documentation](https://docs.jetbackup.com/v5.1/adminpanel/gettingStarted.html#gettingstarted) to learn how to further configure your instance.
 
-{{< content "marketplace-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}

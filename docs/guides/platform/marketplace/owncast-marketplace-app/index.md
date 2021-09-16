@@ -54,4 +54,4 @@ With Owncast running, you can begin to configure your new server. Visit the Admi
 
 On the server, Owncast is installed in the  `/opt/owncast` directory. You'll find all your data files there. This is also where you can upgrade your Owncast server in the future.
 
-{{< content "marketplace-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}
