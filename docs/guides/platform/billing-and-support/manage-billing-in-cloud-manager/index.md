@@ -71,7 +71,7 @@ The payment may take a few minutes to be applied to your account.
 
 ## Adding a New Payment Method
 
-New payment methods can be added to an account through the Cloud Manager. Up to **8 payment methods** can be active on an account at any given time, including multiple credit cards or Google Pay methods.
+New payment methods can be added to an account through the Cloud Manager. Up to **6 payment methods** can be active on an account at any given time, including multiple credit cards or Google Pay methods.
 
 1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
 1.  If adding a credit card directly (not through Google Pay), it must match the account's billing contact information and address. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
