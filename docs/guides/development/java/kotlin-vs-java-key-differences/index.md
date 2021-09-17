@@ -3,8 +3,7 @@ slug: kotlin-vs-java-understanding-their-differences
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'In this guide you learn about the Kotlin programming language and how it''s different from Java.'
-og_description: 'In this guide you learn about the Kotlin programming language and how it''s different from Java.'
+description: "In this guide you learn about the Kotlin programming language and how it's different from Java."
 keywords: ['kotlin vs java', 'what is kotlin', 'what is kotlin used for']
 tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +16,7 @@ enable_h1: true
 contributor:
   name: Jack Wallen
 ---
+
 ## What is Kotlin?
 
 [Kotlin](https://kotlinlang.org/) is a statically-typed, open source programming language. It is designed to be interoperable with Java and provide a cleaner, simpler, and a faster mixture of object-oriented, and functional programming. Kotlin is the brainchild of [JetBrains](https://www.jetbrains.com/) and in 2011 they unveiled Project Kotlin, which served as a new language for the Java Virtual Machine. JetBrains set out to create a new language, with all of the features they needed, and the compile speed of Java. In 2012, JetBrains open-sourced the Kotlin project, under the Apache 2 license. It wasn't until February 15, 2016, that Kotlin 1.0 was released.
