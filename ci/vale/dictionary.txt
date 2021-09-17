@@ -253,6 +253,8 @@ coose
 copyfrom
 copyto
 coreutils
+coroutine
+coroutines
 corporateclean
 courseware
 cov
@@ -767,6 +769,7 @@ Janca
 jamstack
 java6
 javac
+javalin
 javascript
 jdbc
 jdk
@@ -830,6 +833,7 @@ kloxo
 knowledgebase
 konsole
 konversation
+ktor
 kube
 kubeadm
 kubeconfig
@@ -1049,6 +1053,7 @@ multicraft
 multilib
 multiline
 multilink
+multiplatform
 multiport
 multisite
 multiuser
