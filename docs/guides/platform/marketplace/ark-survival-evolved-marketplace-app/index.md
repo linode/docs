@@ -7,7 +7,7 @@ description: "Deploy a ARK: Survival Evolved Server on Linode using Marketplace 
 keywords: ['ark','survival evolved','marketplace apps', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-03
-modified: 2019-09-16
+modified: 2021-09-17
 modified_by:
   name: Linode
 title: "Deploying an ARK Survival Evolved Server through the Linode Marketplace"
