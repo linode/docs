@@ -8,13 +8,12 @@ og_description: "This Apache Airflow tutorial introduces you to Airflow Variable
 keywords: ['apache airflow tutorial', 'apache airflow features']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-30
-image: ApacheAirflowTut_CreateConn_Var.png
+image: 'ApacheAirflowTut_CreateConn_Var.png'
 modified_by:
   name: Angel D'az
 title: "How to Create Connections and Variables in Apache Airflow"
 h1_title: "Creating Connections and Variables in Apache Airflow"
 enable_h1: true
-image: feature.png
 contributor:
   name: Angel D'az
   link: https://github.com/angelddaz/

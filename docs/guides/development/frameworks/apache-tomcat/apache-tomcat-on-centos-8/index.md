@@ -22,7 +22,6 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["java"]
-image: 'Installing_Apache_Tomcat_on_CentOS_8_1200x631.png'
 relations:
     platform:
         key:  apache-tomcat
