@@ -3,26 +3,25 @@ slug: how-to-install-and-use-the-bat-command-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Learn how to use bat, a clone of the default cat command that adds syntax highlighting and Git integration."
-og_description: "Learn how to use bat, a clone of the default cat command that adds syntax highlighting and Git integration."
+description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
+og_description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
 keywords: ['linux bat','linux bat command','linux cat vs bat']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-09
+published: 2021-09-17
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use the bat Command on Linux"
-h1_title: "How to Install and Use the bat Command on Linux"
+title: "Installing and Using the Linux bat Command"
+h1_title: "How to Install and Use the Linux bat Command"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[GitHub: sharpdp/bat](https://github.com/sharkdp/bat)'
-- '[Git: Specifying Revisions](https://git-scm.com/docs/gitrevisions#_specifying_revisions)'
 ---
 
-`bat` is a clone of the ubiquitous `cat` command. It modernizes `cat` with a more readable design and features like syntax highlighting and Git integration. This guide details how `bat` compares with its predecessor and shows you how to install and start using it on your Linux system.
+The `bat` command is a clone of the ubiquitous `cat` command. It modernizes `cat` with a more readable design and features like syntax highlighting and a Git integration. This guide details how `bat` compares with its predecessor and shows you how to install and start using it on your Linux system.
 
 ## Before You Begin
 
@@ -50,19 +49,19 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 ## bat vs. cat
 
-You may be familiar with the `cat` command on Linux. It is included on most distributions by default and gets referenced frequently as a quick way of viewing file contents on the command line.
+You may be familiar with the Linux `cat` command. It is included in most distributions by default and gets referenced frequently as a quick way of viewing the contents of a file contents while on the command line.
 
 Like `cat`, `bat` also gives you a simple command-line method for displaying file contents. But `bat` comes with a more modern display and several added features that set it apart.
 
-For one, `bat` adds syntax highlighting. This, combined with other display enhancements — easier-to-follow formatting, pagination, graphical non-printing characters — makes `bat` exceptional for reading files with code in them.
+For one, `bat` adds syntax highlighting. This, combined with other display enhancements — easier-to-follow formatting, pagination, graphical non-printing characters — makes `bat` exceptional for reading files that contain code.
 
-`bat` also comes ready to integrate with several other command-line tools, chief among them Git. Automatically, `bat` provides annotations to indicate modified lines for files in Git repositories. You can even use `bat` to view past versions of files in Git repositories.
+`bat` also comes ready to integrate with several other command-line tools, chief among them is Git. By default, `bat` provides annotations to indicate modified lines for files tracked by Git. You can even use `bat` to view past versions of files under version control.
 
 ## How to Install bat
 
 For many Linux distributions, you can get `bat` from the package manager. This is the case for Debian, Ubuntu, and Fedora distributions.
 
-- For Debian and Ubuntu, install `bat` using the following command:
+- For **Debian** and **Ubuntu**, install `bat` using the following command:
 
         sudo apt install bat
 
@@ -72,14 +71,14 @@ For many Linux distributions, you can get `bat` from the package manager. This i
         ln -s /usr/bin/batcat ~/.local/bin/bat
 
     {{< note >}}
-Be sure to remove the `bacula-console-qt` package, if you have it installed, before executing the above commands. Otherwise, if you choose to keep `bacula-console-qt`, you must stick with using the `batcat` command for `bat`.
+If you have installed the `bacula-console-qt` package, be sure to remove it before executing the commands listed above. Otherwise, if you choose to keep `bacula-console-qt` installed, you must stick with using the `batcat` command instead of `bat`.
     {{< /note >}}
 
-- For Fedora:
+- For **Fedora**:
 
         sudo dnf install bat
 
-However, this is not the case for AlmaLinux and CentOS. For those distributions, follow the steps below to download the appropriate `bat` release and install it.
+For **AlmaLinux** and **CentOS**, a few more steps are required. For those distributions, follow the steps below to download the appropriate `bat` release and install it.
 
 1. If you do not already have it, install `tar`, which you use to extract the `bat` package in a later step.
 
@@ -97,7 +96,7 @@ Linux hostname 4.18.0-305.7.1.el8_4.x86_64 #1 SMP Thu Jul 1 02:00:00 EDT 2021 x8
 
     In this example — and in the commands that follow — the CPU architecture is **x86_64**.
 
-1. Identify the latest `bat` from the [release page](https://github.com/sharkdp/bat/releases), and find the corresponding `.tar.gz` package with your CPU architecture followed by `unknown-linux-musl` in the name. Copy the URL for that release package, and use it in the command in the next step.
+1. Identify the latest version of `bat` from the [release page](https://github.com/sharkdp/bat/releases). Find the corresponding `.tar.gz` package with your system's CPU architecture, followed by `unknown-linux-musl` in the name. Copy the URL for that release package. The URL is needed in the next step.
 
 1. Copy the package's URL, and use the following command to download the package as `bat.zip`.
 
@@ -129,9 +128,9 @@ bat 0.18.2
 
 ## How to Use bat
 
-Getting started with `bat` is about the same as with `cat`. You just need to give the command followed by the path to a file you want to see.
+Getting started with `bat` is similar to the basic usage of the `cat` command. You issue the `bat` command, followed by the path to a file you want to view.
 
-To really show off the capabilities of `bat`, this guide use some example code provided in the [Flask-RESTful GitHub project](https://github.com/flask-restful/flask-restful). You can get the code by installing Git (if you do not already have it) and cloning the repository. Replace `apt` with `dnf` if you are on Fedora or with `yum` if you are on AlmaLinux or CentOS.
+To really show off the capabilities of `bat`, this guide uses some example code provided in the [Flask-RESTful GitHub project](https://github.com/flask-restful/flask-restful). You can get the code by installing Git (if you do not already have it) and cloning the repository. Replace `apt` with `dnf` if you are on Fedora, and `yum` if you are on AlmaLinux or CentOS.
 
     sudo apt install git
     git clone https://github.com/flask-restful/flask-restful.git
@@ -154,11 +153,11 @@ Like `cat`, `bat` gives the option to show non-printing characters, making it ea
 
 ### Git Integration
 
-`bat` also provides Git integration. To see it at work, open the `todo.py` file with your preferred text editor, and make some changes to it. Then, open the file again with `bat`. You can see that `bat` includes Git annotations on the modified lines.
+`bat` also integrates with Git. To see it at work, open the `todo.py` file with your preferred text editor, and make some changes to it. Then, open the file again with `bat`. You can see that `bat` includes Git annotations on the modified lines.
 
 ![Python code with Git annotations in bat](bat-python-code-git.png)
 
-Using a command combination between Git and `bat`, you can even use `bat` to view past versions of files in a Git repository.
+Using a command combination between Git and `bat`, you can even `bat` to view past versions of files in a Git repository.
 
 The method uses Git's `show` command, which requires you to specify a file version. Refer to the [Specifying Revisions](https://git-scm.com/docs/gitrevisions#_specifying_revisions) section of Git's revisions documentation for the various ways of doing that.
 
@@ -208,17 +207,17 @@ Date:   Tue Oct 16 21:07:16 2012 -0700
 
 ## How to Customize Syntax Highlighting in bat
 
-You can customize the syntax highlighting in `bat`. Whether you want a different color palette for the highlighting or you have a language you need highlighting on, `bat` gives you options.
+You can customize the syntax highlighting in `bat`. Whether you want a different color palette or you need to add highlighting support for a specific language, `bat` gives you customization options.
 
 ### Set the Highlighting Theme for bat
 
-`bat` comes with a host of themes for syntax highlighting. You can get a list of them, along with samples, using the below command:
+`bat` comes with a host of themes for syntax highlighting. You can get a list of them, along with samples, using the command below:
 
     bat --list-themes
 
 ![Excerpt from the list of bat themes](bat-themes-excerpt.png)
 
-You can use the theme you like by using the following commands:
+To select the theme you want to use, follow one of the options listed below:
 
 - Use the `--theme` flag when running `bat`. With this method, you have to use the `--theme` flag each time you run the `bat` command.
 
@@ -238,11 +237,11 @@ export BAT_THEME="Solarized (dark)"
 
 ### Add Languages for Syntax Highlighting in bat
 
-You can get a list of languages that your `bat` installation currently has syntax highlighting with the `--list-languages` option.
+You can get a list of languages that your `bat` installation supports for syntax highlighting with the `--list-languages` option.
 
     bat --list-languages
 
-If `bat` lacks highlighting for a language you want, you can add it yourself. `bat` supports Sublime Text syntax files — `.sublime-syntax`. There is also a package manager for Sublime Text called the [Package Control](https://packagecontrol.io/), to install packages and keep them up-to-date.
+If `bat` lacks highlighting for a language you want, you can add it yourself. `bat` supports Sublime Text syntax files — `.sublime-syntax`. There is also a package manager for Sublime Text called [Package Control](https://packagecontrol.io/) that is used to install packages and keep them up-to-date.
 
 The following steps show you how to add a language once you find a `.sublime-syntax` file you want to use. This example uses a package found on Package Control for the [Fennel](https://fennel-lang.org/) programming language.
 
