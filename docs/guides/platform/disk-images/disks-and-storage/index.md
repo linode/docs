@@ -3,7 +3,7 @@ slug: linode-disks
 author:
   name: Linode
   email: docs@linode.com
-description: A guide to Linode disks.
+description: "A guide for understanding how local storage works on a Linode and for help performing common tasks on a Linode's disks."
 keywords: ["disks", "storage", "disk space"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,10 @@ modified: 2021-04-30
 modified_by:
   name: Linode
 published: 2021-04-30
-title: Linode Disks and Storage
+title: "Understanding Linode Storage and Disks"
+h1_title: "Linode Disks and Storage"
+enable_h1: true
+aliases: ['/guides/disk-images-and-configuration-profiles/']
 ---
 
 ## Understanding Storage
