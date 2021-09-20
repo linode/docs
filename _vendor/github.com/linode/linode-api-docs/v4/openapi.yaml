@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.105.0
+  version: 4.105.1
 
   title: Linode API
   description: |
@@ -3750,7 +3750,7 @@ paths:
         all users.
 
         * **Private** Images have IDs that begin with "private/". These Images are Account-specific and only
-        accessible to Users with appropriate [Grants](https://www.linode.com/docs/api/account/#users-grants-view).
+        accessible to Users with appropriate [Grants](/docs/api/account/#users-grants-view).
 
         * To view only public Images, call this endpoint with or without authentication. To view private Images as well, call this endpoint with authentication.
       x-linode-redoc-load-ids: true
@@ -3972,7 +3972,7 @@ paths:
         all users.
 
         * **Private** Images have IDs that begin with "private/". These Images are Account-specific and only
-        accessible to Users with appropriate [Grants](https://www.linode.com/docs/api/account/#users-grants-view).
+        accessible to Users with appropriate [Grants](/docs/api/account/#users-grants-view).
 
         * To view a public Image, call this endpoint with or without authentication. To view a private Image, call this endpoint with authentication.
       operationId: getImage
@@ -6418,7 +6418,7 @@ paths:
         Returns a list of NodeBalancers that are assigned to this Linode and readable by the requesting User.
 
         Read permission to a NodeBalancer can be given to a User by accessing the User's Grants Update
-        ([PUT /account/users/{username}/grants](https://www.linode.com/docs/api/account/#users-grants-update)) endpoint.
+        ([PUT /account/users/{username}/grants](/docs/api/account/#users-grants-update)) endpoint.
       operationId: getLinodeNodeBalancers
       x-linode-cli-action: nodebalancers
       security:
@@ -10549,7 +10549,7 @@ paths:
 
         * Use the `rules` property to create inbound and outbound access rules.
 
-        * Use the `devices` property to assign the Firewall to a service and apply its Rules to the device. Requires `read_write` [User's Grants](docs/api/account/#users-grants-view) to the device.
+        * Use the `devices` property to assign the Firewall to a service and apply its Rules to the device. Requires `read_write` [User's Grants](/docs/api/account/#users-grants-view) to the device.
         Currently, Firewalls can only be assigned to Linode instances.
 
         * A Firewall can be assigned to multiple Linode instances at a time.
