@@ -26,5 +26,5 @@ The Linodes section of Cloud Manager allows you to create and manage your Linode
 - Access to Linode's [Backup service](/docs/platform/disk-images/linode-backup-service/#enable-the-backup-service)
 - An [Activity Feed](/docs/guides/cloud-manager-events-and-activity-feeds/#viewing-a-linodes-activity-feed) that displays any relevant events related to this Linode
 - Settings that allow you to update your Linode's label, [reset your Linode's root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/), [manage system usage email notifications](/docs/uptime/monitoring-and-maintaining-your-server/#configure-linode-cloud-manager-email-alerts), [manage Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) (Linode's automatic reboot feature), and delete your Linode
-- An area to [manage and create disks and configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/)
+- Areas to [manage disks](/docs/guides/linode-disks/) and [manage configuration profiles](/docs/guides/linode-configuration-profiles/)
 - [Cross data center migrations](/docs/platform/migrating-to-a-different-data-center/)

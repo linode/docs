@@ -87,7 +87,7 @@ Never run a filesystem check on a disk that is mounted.
 
 1.  If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
-1.  If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
+1.  If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/guides/linode-configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
 
 1.  If the filesystem check does not report any errors, there may be another reason for your booting issues. Continue to [inspecting your system and kernel logs](#inspect-system-and-kernel-logs).
 

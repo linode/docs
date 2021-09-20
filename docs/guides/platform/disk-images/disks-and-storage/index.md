@@ -14,7 +14,7 @@ published: 2021-04-30
 title: "How to Manage Disks and Storage on a Linode"
 h1_title: "Managing Disks and Storage on a Linode"
 enable_h1: true
-aliases: ['/guides/disk-images-and-configuration-profiles/']
+aliases: ['/guides/disk-images-and-configuration-profiles/','/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
 ---
 
 ## Understanding Storage

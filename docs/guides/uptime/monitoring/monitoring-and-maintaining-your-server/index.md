@@ -101,7 +101,7 @@ There are ways to automate the installation of software updates, but this is not
 
 ### Apply Kernel Updates
 
-When you first sign up for Linode and create a virtual server, the Linode Cloud Manager automatically creates a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles/) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Cloud Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Cloud Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
+When you first sign up for Linode and create a virtual server, the Linode Cloud Manager automatically creates a [configuration profile](/docs/guides/linode-configuration-profiles//) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Cloud Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Cloud Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
 
 To check for a new kernel and start using it on your Linode:
 

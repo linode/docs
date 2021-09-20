@@ -480,9 +480,9 @@ As stated above, to take advantage of features like resizing your disks in Cloud
 When you're done:
 
 - [Test your new Linode environment](#test-the-new-environment) as outlined in the Migration Strategy 1 section of this guide.
-- [Delete the original disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
+- [Delete the original disk](/docs/guides/linode-disks/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
 - [Resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
-- [Delete the Configurations for the original Linode](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
+- [Delete the Configurations for the original Linode](/docs/guides/linode-configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
 - [Enable Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
 
 ## Additional Migration Considerations

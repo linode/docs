@@ -67,7 +67,7 @@ title CentOS 6
 {{< /file >}}
 
 
-5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#editing-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
+5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/guides/linode-configuration-profiles#editing-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
 
 6.  Make sure the root device is specified as **/dev/sda**, and click **Save Profile** at the bottom of the page to confirm your changes.
 
