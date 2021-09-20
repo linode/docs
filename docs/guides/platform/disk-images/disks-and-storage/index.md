@@ -11,8 +11,8 @@ modified: 2021-04-30
 modified_by:
   name: Linode
 published: 2021-04-30
-title: "Understanding Linode Storage and Disks"
-h1_title: "Linode Disks and Storage"
+title: "How to Manage Disks and Storage on a Linode"
+h1_title: "Managing Disks and Storage on a Linode"
 enable_h1: true
 aliases: ['/guides/disk-images-and-configuration-profiles/']
 ---
