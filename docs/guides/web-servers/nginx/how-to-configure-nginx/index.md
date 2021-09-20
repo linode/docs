@@ -67,7 +67,7 @@ Let’s take a look at these blocks and their NGINX configurations.
 
 ## NGINX Configuration - http Block
 
-http blocks contain directives for handling web traffic. These directives are often universal as they are passed on to all website configurations NGINX serves. A list of available directives for http blocks are available on official NGINX http  block documentation.
+http blocks contain directives for handling web traffic. These directives are often universal as they are passed on to all website configurations NGINX serves. A list of available directives for http blocks are available on official NGINX http block documentation.
 
 {{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
@@ -98,7 +98,7 @@ In the http block there’s an include directive that tells NGINX where website 
 
 ## NGINX Configuration - Server Blocks
 
-Regardless of the installation source, server configuration files contain a server block for a  website. Here’s an example server block:
+Regardless of the installation source, server configuration files contain a server block for a website. Here’s an example server block:
 
 {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
@@ -141,7 +141,7 @@ server_name example.*;
 
 ## NGINX Configuration of Location Blocks
 
-`Location` directives cover requests for specific files and folders. It also allows NGINX to respond to requests for resources within the server.  Here’s an NGINX location blocks configuration:
+`Location` directives cover requests for specific files and folders. It also allows NGINX to respond to requests for resources within the server. Here’s an NGINX location blocks configuration:
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / { }
@@ -170,7 +170,7 @@ location ~* \.(pl|cgi|perl|prl)$ { }
 location ~* \.(md|mdwn|txt|mkdn)$ { }
 {{< /file >}}
 
-Adding a caret and tilde(^!) to location directives tells NGINX if it matches a particular string, to stop searching for more specific matches and use the directives here instead.
+Adding a caret and tilde(^!) to location directives tells NGINX if it matches a particular string stop searching for more specific matches. And to use the directives here instead.
 
 {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ^~ /images/IndexPage/ { }
@@ -218,14 +218,14 @@ location ~ \.pl$ {
 In this NGINX configuration, all requests that end in a `.pl` extension are handled by the second location block, which specifies a `fastcgi` handler for these requests. Otherwise, NGINX configuration uses the first location directive.
 
 Let’s analyze how NGINX handles some requests based on this configuration:
-  1. `http://example.com/` is requested  - if it exists NGINX returns `/srv/www/example.com/public_html/index.html`. If the file doesn’t exist, it serves `/srv/www/example.com/public_html/index.htm`. A 404 is returned if neither exist.
+  1. `http://example.com/` is requested - if it exists NGINX returns `/srv/www/example.com/public_html/index.html`. If the file doesn’t exist, it serves `/srv/www/example.com/public_html/index.htm`. A 404 is returned if neither exist.
   2. `http://example.com/blog/` is requested - if the file exists, `/srv/www/example.com/public_html/blog/index.html` is returned. If not, `/srv/www/example.com/public_html/blog/index.htm` is served instead. If neither exist, a 404 error is returned.
   3. `http://example.com/tasks.pl` is requested -  NGINX uses FastCGI handler to execute the file at `/srv/www/example.com/public_html/tasks.pl`  and return the result.
-  4. `http://example.com/username/roster.pl` is requested - NGINX uses FastCGI handler to execute the file at `/srv/www/example.com/public_html/username/roster.pl`  and return the result.
+  4. `http://example.com/username/roster.pl` is requested - NGINX uses FastCGI handler to execute the file at `/srv/www/example.com/public_html/username/roster.pl` and return the result.
 
 ## NGINX Configuration of Reverse Proxy
 
-NGINX reverse proxy acts as an intermediate proxy that takes a client request and passes it to the servers. From load balancing, increased security to higher performance  - it is used for a range of use cases.
+NGINX reverse proxy acts as an intermediate proxy that takes a client request and passes it to the servers. From load balancing, increased security to higher performance - it is used for a range of use cases.
 
 To get started with configuring a reverse proxy, follow these steps.
 
@@ -258,7 +258,7 @@ To get started with configuring a reverse proxy, follow these steps.
   5. Use the symbolic link and copy configuration from `/etc/nginx/sites-available` to `/etc/nginx/sites-enabled`:
     `ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf`
 
-  6. Verfy if NGINX is working:
+  6. Verify if NGINX is working:
     `nginx -t`
 
 If you see a successful test message, NGINX reverse proxy is properly configured on your system.
@@ -301,7 +301,7 @@ server {
 }
 {{< /file >}}
 
-Everytime a request is made to port 80 to SUBDOMAIN.DOMAIN.LTD, request is routed to upstream servers.
+Every time a request is made to port 80 to SUBDOMAIN.DOMAIN.LTD, request is routed to upstream servers.
 
 After done, execute this new configuration by reloading NGINX using
 
@@ -313,4 +313,4 @@ systemctl reload nginx
 {{< /file >}}
 
 
-You can further configure and optimize your load balancer by load balancing methods like Round Robin, Least connected, IP hash and Weighted.
+You can further configure and optimize your load balancer by load balancing methods like Round Robin, Least connected, IP hash, and Weighted.
