@@ -22,7 +22,7 @@ aaPanel is a free and open source web hosting control panel. It allows you to ma
 
 ## Deploying the aaPanel Marketplace App
 
-{{< content "deploy-marketplace-apps">}}
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 **Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
 

@@ -116,7 +116,7 @@ The Discourse Marketplace App installs the following software on your Linode:
 
 {{< content "email-warning-shortguide" >}}
 
-{{< content "one-click-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}
 
 ## Troubleshooting Email
 
