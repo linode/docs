@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.104.0
+  version: 4.105.0
 
   title: Linode API
   description: |
@@ -621,18 +621,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/EntityTransfer'
-                  page:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
-                  pages:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
-                  results:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EntityTransfer'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -1693,6 +1688,8 @@ paths:
         * Adding a default Payment Method removes the default status from any other Payment Method.
 
         * An Account can have up to 6 active Payment Methods.
+
+        * Up to 60 Payment Methods can be added each day.
 
         * Prior to adding a Payment Method, ensure that your billing address information is up-to-date
         with a valid `zip` by using the Account Update ([PUT /account](/docs/api/account/#account-update)) endpoint.
@@ -3750,14 +3747,19 @@ paths:
         Returns a paginated list of Images.
 
         * **Public** Images have IDs that begin with "linode/". These distribution images are generally available to
-        all users. To view only public Images, call this endpoint without authentication.
+        all users.
 
-        * **Private** Images have IDs that begin with "private/". These images are account-specific and only
-        accessible to users with `images:read_only` authorization. To view private Images you have access to in
-        addition to public images, call this endpoint with authentication.
+        * **Private** Images have IDs that begin with "private/". These Images are Account-specific and only
+        accessible to Users with appropriate [Grants](https://www.linode.com/docs/api/account/#users-grants-view).
+
+        * To view only public Images, call this endpoint with or without authentication. To view private Images as well, call this endpoint with authentication.
       x-linode-redoc-load-ids: true
       operationId: getImages
       x-linode-cli-action: list
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - images:read_only
       responses:
         '200':
           description: A paginated list of Images.
@@ -3769,7 +3771,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/ImagePublic'
+                      $ref: '#/components/schemas/Image'
                   page:
                     $ref: '#/components/schemas/PaginationEnvelope/properties/page'
                   pages:
@@ -3791,19 +3793,12 @@ paths:
         source: >
           linode-cli images list
     post:
-      x-linode-grant: read_write
+      x-linode-grant: add_images
       tags:
       - Images
       summary: Image Create
       description: |
         Captures a private gold-master Image from a Linode Disk.
-
-        **Pricing change:** Images will transition to a paid service with a
-        cost of $0.10/GB per month for each manual Custom Image stored on an
-        account. This change will be communicated to customers in advance.
-        Recovery Images, which are generated automatically after a Linode is
-        deleted and available for a finite period of time, are provided at no
-        cost.
       operationId: createImage
       x-linode-cli-action: create
       security:
@@ -3840,7 +3835,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ImagePrivate'
+                $ref: '#/components/schemas/Image'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -3864,6 +3859,7 @@ paths:
   /images/upload:
     x-linode-cli-command: images
     post:
+      x-linode-grant: add_images
       servers:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
@@ -3892,7 +3888,10 @@ paths:
 
         - Uploaded image data should be compressed in gzip (`.gz`) format. The uncompressed disk should be in raw
         disk image (`.img`) format. A maximum compressed file size of 5GB is supported for upload at this time.
+
+        - To initiate and complete and upload in a single step, see our guide on how to [Upload an Image](/docs/products/tools/images/guides/upload-an-image/) using Cloud Manager or the Linode CLI.
       x-linode-cli-action: upload
+      x-linode-cli-skip: true
       security:
       - personalAccessToken: []
       - oauth:
@@ -3932,7 +3931,7 @@ paths:
                     type: string
                     description: The URL to upload the Image to.
                   image:
-                    $ref: '#/components/schemas/ImagePrivate'
+                    $ref: '#/components/schemas/Image'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -3948,10 +3947,11 @@ paths:
               https://api.linode.com/v4/images/upload
       - lang: CLI
         source: >
-          linode-cli images upload \
-            --label example-machine-image-label \
-            --description "This is an example Machine Image." \
-            --region us-east
+          linode-cli image-upload \
+            --label "Example Image" \
+            --description "Some details about the image" \
+            --region us-east \
+            ~/Downloads/image-file.img.gz
   /images/{imageId}:
     x-linode-cli-command: images
     parameters:
@@ -3965,23 +3965,40 @@ paths:
       tags:
       - Images
       summary: Image View
-      description: >
+      description: |
         Get information about a single Image.
+
+        * **Public** Images have IDs that begin with "linode/". These distribution images are generally available to
+        all users.
+
+        * **Private** Images have IDs that begin with "private/". These Images are Account-specific and only
+        accessible to Users with appropriate [Grants](https://www.linode.com/docs/api/account/#users-grants-view).
+
+        * To view a public Image, call this endpoint with or without authentication. To view a private Image, call this endpoint with authentication.
       operationId: getImage
       x-linode-cli-action: view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - images:read_only
       responses:
         '200':
           description: A single Image object.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ImagePrivate'
+                $ref: '#/components/schemas/Image'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
-        source: >
-          curl https://api.linode.com/v4/images/linode/debian9
+        source: |
+          # Public Image
+          curl https://api.linode.com/v4/images/linode/debian11
+
+          # Private Image
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/images/private/12345
       - lang: CLI
         source: >
           linode-cli images view linode/debian9
@@ -4006,14 +4023,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ImagePrivate'
+              $ref: '#/components/schemas/Image'
       responses:
         '200':
           description: The updated image.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ImagePrivate'
+                $ref: '#/components/schemas/Image'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -4025,10 +4042,10 @@ paths:
                 "label": "My gold-master image",
                 "description": "The detailed description of my Image."
               }' \
-              https://api.linode.com/v4/images/private/67848373
+              https://api.linode.com/v4/images/private/12345
       - lang: CLI
         source: >
-          linode-cli images update private/67848373 \
+          linode-cli images update private/12345 \
             --label "My gold-master image" \
             --description "The detailed description \
               of my Image."
@@ -4062,10 +4079,10 @@ paths:
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
               -X DELETE \
-              https://api.linode.com/v4/images/private/67848373
+              https://api.linode.com/v4/images/private/12345
       - lang: CLI
         source: >
-          linode-cli images delete 67848373
+          linode-cli images delete 12345
   /linode/instances:
     x-linode-cli-command: linodes
     get:
@@ -7534,7 +7551,7 @@ paths:
                 -X POST -d '{
                   "label": "cluster12345",
                   "region": "us-central",
-                  "k8s_version": "1.16",
+                  "k8s_version": "1.21",
                   "tags": ["ecomm", "blogs"],
                   "node_pools": [
                     {
@@ -7559,7 +7576,7 @@ paths:
           linode-cli lke cluster-create \
             --label cluster12345 \
             --region us-central \
-            --k8s_version 1.16 \
+            --k8s_version 1.21 \
             --node_pools.type g6-standard-4 --node_pools.count 6 \
             --node_pools.type g6-standard-8 --node_pools.count 3 \
             --tags ecomm
@@ -7642,8 +7659,8 @@ paths:
 
 
                       When upgrading the Kubernetes version, only the next latest minor version following the current
-                      version can be deployed. For example, a cluster with Kubernetes version 1.16 can be upgraded to
-                      version 1.17, but not directly to 1.18.
+                      version can be deployed. For example, a cluster with Kubernetes version 1.19 can be upgraded to
+                      version 1.20, but not directly to 1.21.
 
 
                       The Kubernetes version of a cluster can not be downgraded.
@@ -8445,10 +8462,10 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-                https://api.linode.com/v4/lke/versions/1.16
+                https://api.linode.com/v4/lke/versions/1.21
       - lang: CLI
         source: >
-          linode-cli lke version-view 1.16
+          linode-cli lke version-view 1.21
   /longview/clients:
     x-linode-cli-command: longview
     get:
@@ -10528,17 +10545,19 @@ paths:
       - Networking
       summary: Firewall Create
       description: |
-        Creates a Firewall to filter network traffic. Use the `rules` property to
-        create inbound and outbound access rules. Use the `devices` property to assign the
-        Firewall to a service. Currently, Firewalls can only be assigned to Linode
-        instances.
+        Creates a Firewall to filter network traffic.
 
-        A Firewall can be assigned to multiple Linode instances at a time.
+        * Use the `rules` property to create inbound and outbound access rules.
 
-        A Linode instance can have one active, assigned Firewall at a time.
-        Additional disabled Firewalls can still be added to a Linode instance.
+        * Use the `devices` property to assign the Firewall to a service and apply its Rules to the device. Requires `read_write` [User's Grants](docs/api/account/#users-grants-view) to the device.
+        Currently, Firewalls can only be assigned to Linode instances.
 
-        A `firewall_create` Event is generated when this endpoint returns successfully.
+        * A Firewall can be assigned to multiple Linode instances at a time.
+
+        * A Linode instance can have one active, assigned Firewall at a time.
+        Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
+
+        * A `firewall_create` Event is generated when this endpoint returns successfully.
       operationId: createFirewalls
       x-linode-cli-action: create
       security:
@@ -10867,18 +10886,17 @@ paths:
       - Networking
       summary: Firewall Device Create
       description: |
-        Creates a Firewall Device, which assigns a Firewall to a Linode service (referred to
-        as the Device's `entity`). Currently, only Devices with an entity of type `linode` are accepted.
-        A Firewall can be assigned a single Linode service at a time. Additional disabled Firewalls can be
-        assigned to a service, but they cannot be enabled if another active Firewall
-        is already assigned to the same service.
+        Creates a Firewall Device, which assigns a Firewall to a service (referred to
+        as the Device's `entity`) and applies the Firewall's Rules to the device.
 
-        Creating a Firewall Device will apply the Rules from a Firewall to a Linode service.
-        A `firewall_device_add` Event is generated when the Firewall Device is added successfully.
+        * Currently, only Devices with an entity of type `linode` are accepted.
 
-        **Note:** When a Firewall is assigned to a Linode and you attempt
-        to [migrate the Linode to a data center](/docs/api/linode-instances/#dc-migrationpending-host-migration-initiate) that does not support Cloud Firewalls, the migration will fail.
-        Use the [List Regions](/docs/api/regions/#regions-list) endpoint to view a list of a data center's capabilities.
+        * A Firewall can be assigned to multiple Linode instances at a time.
+
+        * A Linode instance can have one active, assigned Firewall at a time.
+        Additional disabled Firewalls can be assigned to a service, but they cannot be enabled if another active Firewall is already assigned to the same service.
+
+        * A `firewall_device_add` Event is generated when the Firewall Device is added successfully.
       operationId: createFirewallDevice
       x-linode-cli-action: device-create
       security:
@@ -15455,10 +15473,12 @@ paths:
       description: |
         Deletes a Volume you have permission to `read_write`.
 
-        **Deleting a Volume is a destructive action and cannot be undone.**
+        * **Deleting a Volume is a destructive action and cannot be undone.**
 
-        Deleting stops billing for the Volume. You will be billed for time used within
+        * Deleting stops billing for the Volume. You will be billed for time used within
         the billing period the Volume was active.
+
+        * Volumes that are migrating cannot be deleted until the migration is finished.
       operationId: deleteVolume
       x-linode-cli-action: delete
       security:
@@ -15585,6 +15605,8 @@ paths:
         `add_volumes` grant. The new Volume will have the same size and data as
         the source Volume. Creating a new Volume will incur a charge on your
         Account.
+
+        * Only Volumes with a `status` of "active" can be cloned.
       tags:
       - Volumes
       operationId: cloneVolume
@@ -15689,6 +15711,8 @@ paths:
         `read_write` permissions to the Volume.
 
         * Volumes can only be resized up.
+
+        * Only Volumes with a `status` of "active" can be resized.
       tags:
       - Volumes
       operationId: resizeVolume
@@ -17615,133 +17639,14 @@ components:
           description: >
             The grants this User has pertaining to Volumes on this Account.
             There will be one entry per Volume on the Account.
-    ImagePrivate:
+    Image:
       type: object
-      description: Private Image object
+      description: Image object
       properties:
         id:
           type: string
           description: The unique ID of this Image.
-          example: private/67848373
-          readOnly: true
-          x-linode-cli-display: 1
-        label:
-          x-linode-filterable: true
-          type: string
-          description: >
-            A short description of the Image. Labels cannot contain
-            special characters.
-          example: My gold-master image
-          x-linode-cli-display: 2
-        created:
-          type: string
-          format: date-time
-          description: When this Image was created.
-          example: '2018-01-01T00:01:01'
-          readOnly: true
-        updated:
-          type: string
-          format: date-time
-          description: When this Image was last updated.
-          example: '2019-01-02T00:01:01'
-          readOnly: true
-        created_by:
-          type: string
-          description: >
-            The name of the User who created this Image.
-          example: somename
-          readOnly: true
-        deprecated:
-          x-linode-filterable: true
-          type: boolean
-          description: >
-            Whether or not this Image is deprecated. Will only be True for
-            deprecated public Images.
-          example: false
-          readOnly: true
-        description:
-          type: string
-          description: A detailed description of this Image.
-          example: The detailed description of my Image.
-          x-linode-cli-display: 4
-          x-linode-cli-color:
-            None: black
-            default_: white
-        is_public:
-          x-linode-filterable: true
-          description: True if the Image is public.
-          type: boolean
-          example: false
-          readOnly: true
-          x-linode-cli-display: 5
-        size:
-          x-linode-filterable: true
-          type: integer
-          description: >
-            The minimum size this Image needs to deploy. Size is in MB.
-          example: 2500
-          readOnly: true
-          x-linode-cli-display: 6
-        type:
-          type: string
-          x-linode-filterable: true
-          description: >
-            How the Image was created. "Manual" Images can be created at any time.
-            "Automatic" images are created automatically from a deleted Linode.
-          enum:
-          - manual
-          - automatic
-          example: manual
-          readOnly: true
-        expiry:
-          type: string
-          format: date-time
-          description: >
-            Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-          example: '2018-08-01T00:01:01'
-          readOnly: true
-        eol:
-          type: string
-          format: date-time
-          description: >
-            The date of the image's planned end of life. Some images, like custom private images,
-            will not have an end of life date. In that case this field will be `None`.
-          example: '2200-10-23T00:00:00'
-          readOnly: true
-        vendor:
-          x-linode-filterable: true
-          type: string
-          nullable: true
-          description: >
-            The upstream distribution vendor. `None` for private Images.
-          example: null
-          readOnly: true
-          x-linode-cli-display: 3
-          x-linode-cli-color:
-            None: black
-            default_: white
-        status:
-          x-linode-cli-display: 7
-          type: string
-          enum:
-          - creating
-          - pending_upload
-          - available
-          description: |
-            The current status of this Image.  Only images in an "available" status
-            can be deployed.  Images in a "creating" status are being created from
-            a Linode Disk, and will become "available" shortly.  Images in a
-            "pending_upload" status are waiting for data to be uploaded for the
-            image, and will become "available" after the upload is complete and
-            processing occurs.
-    ImagePublic:
-      type: object
-      description: Public Image object
-      properties:
-        id:
-          type: string
-          description: The unique ID of this Image.
-          example: linode/ubuntu17.10
+          example: linode/debian11
           readOnly: true
           x-linode-cli-display: 1
         label:
@@ -17749,25 +17654,25 @@ components:
           type: string
           description: >
             A short description of the Image.
-          example: Ubuntu 17.10
+          example: Debian 11
           x-linode-cli-display: 2
         created:
           type: string
           format: date-time
           description: When this Image was created.
-          example: '2018-01-01T00:01:01'
+          example: '2021-08-14T22:44:02'
           readOnly: true
         updated:
           type: string
           format: date-time
           description: When this Image was last updated.
-          example: '2019-01-02T00:01:01'
+          example: '2021-08-14T22:44:02'
           readOnly: true
         created_by:
           type: string
           description: >
             The name of the User who created this Image, or "linode" for
-            official Images.
+            public Images.
           example: linode
           readOnly: true
         deprecated:
@@ -17781,14 +17686,17 @@ components:
         description:
           type: string
           description: A detailed description of this Image.
-          example: null
+          example: Example Image description.
+          nullable: true
+          minLength: 1
+          maxLength: 65000
           x-linode-cli-display: 4
           x-linode-cli-color:
             None: black
             default_: white
         is_public:
           x-linode-filterable: true
-          description: True if the Image is public.
+          description: True if the Image is a public distribution image. False if Image is private Account-specific Image.
           type: boolean
           example: true
           readOnly: true
@@ -17804,8 +17712,11 @@ components:
         type:
           type: string
           x-linode-filterable: true
-          description: >
-            How the Image was created. "Manual" Images can be created at any time.
+          description: |
+            How the Image was created.
+
+            "Manual" Images can be created at any time.
+
             "Automatic" Images are created automatically from a deleted Linode.
           enum:
           - manual
@@ -17815,24 +17726,24 @@ components:
         expiry:
           type: string
           format: date-time
+          nullable: true
           description: >
-            Only Images created automatically (from a deleted Linode; type=automatic) will expire.
+            Only Images created automatically from a deleted Linode (type=automatic) will expire.
           example: null
           readOnly: true
         eol:
           type: string
           format: date-time
           description: >
-            The date of the image's planned end of life. Some images, like custom private images,
-            will not have an end of life date. In that case this field will be `None`.
-          example: '2200-10-23T00:00:00'
+            The date of the public Image's planned end of life. `None` for private Images.
+          example: '2026-07-01T04:00:00'
           readOnly: true
         vendor:
           x-linode-filterable: true
           type: string
           description: >
             The upstream distribution vendor. `None` for private Images.
-          example: Ubuntu
+          example: Debian
           readOnly: true
           x-linode-cli-display: 3
           x-linode-cli-color:
@@ -17846,8 +17757,11 @@ components:
           - pending_upload
           - available
           description: |
-            The current status of this Image.  Only images in an "available" status
-            can be deployed.
+            The current status of this Image.  Only Images in an "available" status
+            can be deployed.  Images in a "creating" status are being created from
+            a Linode Disk, and will become "available" shortly.  Images in a
+            "pending_upload" status are waiting for data to be [uploaded](/docs/api/images/#image-upload),
+            and become "available" after the upload and processing are complete.
     LinodeConfigInterface:
       type: object
       description: >
@@ -18432,6 +18346,12 @@ components:
           description: If this Kernel is marked as deprecated, this field has a value of true;
             otherwise, this field is false.
           example: false
+          readOnly: true
+        built:
+          type: string
+          format: date-time
+          description: The date on which this Kernel was built.
+          example: '2018-01-01T00:01:01'
           readOnly: true
     Linode:
       type: object
@@ -19227,7 +19147,7 @@ components:
           description: >
             The desired Kubernetes version for this Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version will be deployed.
-          example: "1.16"
+          example: "1.21"
         tags:
           x-linode-filterable: true
           type: array
@@ -19418,7 +19338,7 @@ components:
             A Kubernetes version number available for deployment
             to a Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version.
-          example: "1.16"
+          example: "1.21"
     LongviewClient:
       type: object
       description: >
@@ -20366,6 +20286,8 @@ components:
           description: |
             The PEM-formatted private key for the SSL certificate set in the `ssl_cert` field.
 
+            Line breaks must be represented as "\n" in the string.
+
             The contents of this field will not be shown in any responses that display
             the NodeBalancerConfig. Instead, `<REDACTED>` will be printed where the field
             appears.
@@ -20949,29 +20871,23 @@ components:
       type: object
       description: >
         An envelope for paginated response. When accessing a collection through a GET endpoint, the
-        results are wrapped in this envelope which includes metadata about those results.
-      required:
-      - pages
-      - page
-      - results
-      - data
+        results are wrapped in this envelope which includes metadata about those results. Results
+        are presented within a `data` array. See [Pagination](/docs/api/#pagination) for more information.
       properties:
-        data:
-          type: array
-          readOnly: true
-          items:
-            type: object
         pages:
           type: integer
           readOnly: true
+          description: The total number of [pages](/docs/api/#pagination).
           example: 1
         page:
           type: integer
           readOnly: true
+          description: The current [page](/docs/api/#pagination).
           example: 1
         results:
           type: integer
           readOnly: true
+          description: The total number of results.
           example: 1
     Payment:
       type: object
@@ -22318,8 +22234,6 @@ components:
           readOnly: true
     Volume:
       type: object
-      required:
-      - label
       description: >
         A Block Storage Volume associated with your Account.
       properties:
@@ -22420,6 +22334,14 @@ components:
           example:
           - example tag
           - another example
+        hardware_type:
+          type: string
+          enum:
+          - hdd
+          - nvme
+          description: The storage type of this Volume.
+          example: nvme
+          readOnly: true
     WarningObject:
       type: object
       description: >
