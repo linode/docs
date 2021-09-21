@@ -47,10 +47,6 @@ A Linode can have multiple Block Storage Volumes attached to it. However, a Bloc
 
 {{< content "resize-block-storage-volume-shortguide" >}}
 
-## How to Transfer a Volume to a New Linode
-
-{{< content "transfer-block-storage-volume-shortguide" >}}
-
 ## How to Transfer Block Storage Data Between Data Centers
 
 {{< content "transfer-block-storage-datacenter-shortguide" >}}

@@ -5,42 +5,44 @@ headless: true
 show_on_rss_feed: false
 ---
 
-Follow these steps to increase the size of a Block Storage Volume after it has been created:
+At any time after the Block Storage Volume has been created, it can be increased to a larger size.
 
 {{< note >}}
-Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing your Volumes.
+At this time, the size of Volumes are only able to be increased (not decreased). To decrease the size of your Volume, you will need to create a new Volume at your preferred size, attach it to your Linode, copy over your data, and remove the original Volume.
 {{< /note >}}
 
-1.  Shut down your Linode.
+![Animation depicting the resize volume workflow](resize-volume-animation.gif)
 
-1.  Click the **more options ellipsis** next to the Volume you would like to resize to bring up the Volume's menu.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes).
 
-1.  Click **Resize**.
+1.  If the Volume is attached to a Linode, power off that Linode.
 
-    ![Select Resize from the Volume menu](bs-cloud-resize-volume.png "Select Resize from the Volume menu")
+1.  Click on the **Volumes** link in the sidebar.
 
-1.  Enter the new Volume size. The minimum size is 10 GiB and maximum is 10,000 GiB. Then click **Submit**.
+1.  Locate the desired Volume within the list, click the **more options ellipsis** dropdown menu, and select **Resize**.
 
-    ![Resize Volume menu](bs-cloud-resize-volume-menu.png "Resize Volume menu")
+1.  Enter the new Volume size. The minimum size is the current size of the Volume and maximum is 10,000 GiB. Then click **Submit**.
 
-1.  You'll be returned to the Volume list and the notification bell in the top right of the page will notify you when the resizing is complete.
+1.  Click **Resize Volume** to start the resize. Once clicked, the **Resizing Instructions** panel appears with the instructions and commands needed to resize the Volume's filesystem. Either save these commands or leave this panel open. The notification bell in the top right of the page will notify you when the resizing is complete.
 
-    ![Notification bell shows the Volume has been resized](bs-cloud-volume-resized.png "Notification bell shows the Volume has been resized")
+1.  Reboot your Linode after the Volume is resized.
 
-1.  Reboot your Linode.
+1.  Once your Linode has fully restarted, you need to run the previously mentioned commands to resize your Linode's Block Storage Volume
 
-1.  Once your Linode has restarted, make sure the Volume is unmounted for safety:
+    1. Login to your Linode using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
 
-        umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
+    1.  Unmount the Volume:
 
-1.  Assuming you have an ext2, ext3, or ext4 partition,first run a file system check:
+            umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-        e2fsck -f /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
+    1.  Assuming you have an ext2, ext3, or ext4 partition, run a file system check:
 
-1.  Then resize it to fill the new Volume size:
+            e2fsck -f /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-        resize2fs /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
+    1.  Then resize it to fill the new Volume size:
 
-1.  Mount your volume back onto the filesystem:
+            resize2fs /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-        mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
+    1.  Mount your Volume back onto the filesystem:
+
+            mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1

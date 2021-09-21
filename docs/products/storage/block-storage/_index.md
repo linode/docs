@@ -1,6 +1,7 @@
 ---
 title: Block Storage
 description: "Linode Block Storage is a scalable, high-speed, resilient and fault tolerant storage service."
+toc: true
 tab_group_main:
     is_root: true
     title: Overview
@@ -51,6 +52,6 @@ Block Storage is powered entirely by NVMe SSDs storage devices. NVMe storage off
 
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size.
 
-## Limitations and Considerations
+## Limits and Considerations
 
 {{< content "block-storage-limitations-shortguide" >}}
