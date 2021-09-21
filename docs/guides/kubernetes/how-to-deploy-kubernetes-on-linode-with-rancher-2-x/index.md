@@ -462,7 +462,7 @@ Avoid using symbols in the password you enter, as some symbols can cause syntax 
     These settings will result in your database deployment keeping its data in a Linode Block Storage Volume.
 
     {{< note >}}
-The default value for the **MariaDB Volume Size** field is 8GiB, but the minimum size for a Block Storage Volume is 10Gib. The Linode CSI will automatically upgrade any persistent volume claims that are smaller than 10GiB to 10GiB.
+The default value for the **MariaDB Volume Size** field is 8GB, but the minimum size for a Block Storage Volume is 10GB. The Linode CSI will automatically upgrade any persistent volume claims that are smaller than 10GB to 10GB.
 {{< /note >}}
 
 1.  In the **Services and Load Balancing** section, set **Expose app using Layer 7 Load Balancer** to **False**, then choose the **L4 Balancer** option from the **WordPress Service Type** dropdown menu:
