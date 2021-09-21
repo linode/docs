@@ -1344,6 +1344,7 @@ quicklisp
 quickstart
 radeon
 ramdisk
+rauth
 rbac
 rbenv
 rc
