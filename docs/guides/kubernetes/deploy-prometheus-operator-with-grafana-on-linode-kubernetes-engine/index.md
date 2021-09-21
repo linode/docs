@@ -88,7 +88,7 @@ In this section, you will create a Helm chart values file and use it to deploy P
 1.  Using the text editor of your choice, create a file named `values.yaml` in the `~/lke-monitor` directory and save it with the configurations below. Since the control plane is Linode-managed, as part of this step we will also disable metrics collection for the control plane component:
 
     {{< caution >}}
-The below configuration will establish persistent data storage with three separate 10GiB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
+The below configuration will establish persistent data storage with three separate 10GB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
     {{< /caution >}}
 
     {{< file "~/lke-monitor/values.yaml" yaml >}}
@@ -431,7 +431,7 @@ Replace all instances of `example.com` below with the [domain you have configure
     {{< /note >}}
 
     {{< caution >}}
-The below configuration will establish persistent data storage with three separate 10GiB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
+The below configuration will establish persistent data storage with three separate 10GB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
     {{< /caution >}}
 
     {{< file "~/lke-monitor/values-https-basic-auth.yaml" yaml >}}

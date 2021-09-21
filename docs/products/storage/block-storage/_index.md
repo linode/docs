@@ -25,7 +25,7 @@ To attach a Block Storage Volume to a Linode, the Volume and the Linode must be 
 
 ## Plans and Pricing
 
-Block Storage Volumes cost $0.10/GiB per month and can range from 10 GiB to 10,000 GiB in size.
+Block Storage Volumes cost $0.10/GB per month and can range from 10 GB to 10,000 GB in size.
 
 ## Features
 
