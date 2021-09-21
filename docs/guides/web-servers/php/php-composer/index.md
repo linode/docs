@@ -1,5 +1,5 @@
 ---
-slug: how-to-install-and-use-php-composer
+slug: installing-and-using-php-composer
 author:
   name: Linode Community
   email: docs@linode.com
@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-09
 modified_by:
   name: Linode
-title: "How to Install and Use PHP Composer"
-h1_title: "How to Use PHP Composer"
+title: "Installing and Using PHP Composer"
+h1_title: "How to Install and Use PHP Composer"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -35,11 +35,11 @@ Composer is inspired by programs such as `npm`, which is used to manage differen
 
 Composer manages packages and libraries on a per-project basis, so it is more accurately termed a dependency manager. All libraries are installed in a designated directory inside the project directory. Composer does not install any packages globally. However, it does support a "global" project for individuals or small groups who are only working on a single project.
 
-Users declare the libraries they want using the `require` command, which adds a corresponding entry to the `composer.json` file. The Composer determines the package version that should be installed. It then installs the relevant version of the package into the project directory. Some of these packages might in turn require other packages. The composer manages all of these secondary dependencies so all packages and libraries are upgraded at once. This helps avoid instability and compatibility issues.
+Users declare the libraries they want using the `require` command, which adds a corresponding entry to the `composer.json` file. The Composer determines the package version that should be installed. It then installs the relevant version of the package into the project directory. Some of these packages might be dependent on other packages. The composer manages all of these secondary dependencies so all packages and libraries are upgraded at once. This helps avoid instability and compatibility issues.
 
-Composer works in conjunction with [*Packagist*](https://packagist.org/). Packagist offers a large number of free, ready-to-use PHP packages. Users typically extend these packages or join multiple packages together to form the backbone of their PHP project. However, it is also possible to build packages from scratch from original PHP files and functions. Packagist provides a mechanism for users to publish their packages for others to use.
+Composer works in conjunction with [Packagist](https://packagist.org/). Packagist offers a large number of free, ready-to-use PHP packages. Users typically extend these packages or join multiple packages together to form the backbone of their PHP project. However, it is also possible to build packages from scratch from original PHP files and functions. Packagist provides a mechanism for users to publish their packages for others to use.
 
-The composer only works on PHP version 5.3.2 or above, although PHP 5.3.4 or higher is recommended. As on writing this guide, the latest version of Composer is 2.1.6.
+The composer only works on PHP version 5.3.2 or above, although PHP 5.3.4 or higher is recommended. As for writing this guide, the latest version of Composer is 2.1.6.
 
 ## Before You Begin
 
@@ -59,7 +59,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 ## How to Install and Update PHP Composer
 
-The most common way of installing Composer is by using the installation program. However, it can also be installed from the source using Git or a similar system. The steps in this section explains how to download and install the latest version of Composer. The following instructions are geared towards Ubuntu users but are generally applicable towards most Linux distributions.
+The most common way of installing Composer is by using the installation program. However, it can also be installed from the source using Git or a similar system. The steps in this section explain how to download and install the latest version of Composer. The following instructions are geared towards Ubuntu users but are generally applicable towards most Linux distributions.
 
 {{< note >}}
 For information on the various installation options and how to install an earlier version of Composer, see the [Composer Download page](https://getcomposer.org/download/).
@@ -67,7 +67,7 @@ For information on the various installation options and how to install an earlie
 
 ### How to Install PHP Composer
 
-To download and install the latest version of Composer, follow these steps:
+To download and install the latest version of Composer, follow the below steps:
 
 1. If the `php-cli` component is not already installed, install it using `apt`.
 
@@ -139,7 +139,7 @@ You are already using the latest available Composer version 2.1.6 (stable channe
 
 To use Composer with PHP, it is first necessary to define the required packages using the `require` command. This command also installs the package. The composer relies on the `composer.json` files to orchestrate the dependencies. This file describes the required version for each package and lists all of the dependencies. The `require` command automatically creates and updates `composer.json`, although it is possible to manually create and edit it.
 
-The steps in this following section illustrates how to create a small PHP project that generates a random number using a package chosen from Packagist. It also explains how to search Packagist for an appropriate package and how to add it to the project using Composer.
+The steps in the following section illustrate how to create a small PHP project that generates a random number using a package chosen from Packagist. It also explains how to search Packagist for an appropriate package and how to add it to the project using Composer.
 
 {{< note >}}
 These instructions are designed to explain how to keep track of PHP dependencies for use in your own project. If you intend to publish a package to Packagist, you must manually edit the `composer.json` file and add some information. For information on how to publish a PHP package through Packagist, see the "Publishing Packages" section of the [Packagist official documentation](https://packagist.org/).
@@ -147,11 +147,11 @@ These instructions are designed to explain how to keep track of PHP dependencies
 
 ### How to Install Packages
 
-1. Create a new directory for the project and change to this directory.
+1. Create a new directory for the project and change to that directory.
 
         mkdir random_num
         cd random_num
-1. Using a web browser, visit the Packagist site to identify a suitable package for inclusion in the project. In the address bar of the browser, enter the following address.
+1. Using a web browser, visit the Packagist site to identify a suitable package for inclusion in the project. In the address bar of the browser, enter the following address:
 
         https://packagist.org/
 1. Enter an appropriate search term for the utility in the search bar on the top of the page and review the results. Each package is identified by the name of the vendor, with the package name taking the format `vendor/package`. Clicking on the package name provides additional information about the package along with API documentation. It is best to select a package that has a high star rating and is well documented. Take note of the full name of the package.
@@ -198,7 +198,7 @@ The `^` symbol in front of the version number for the package tells Composer wha
     }
 }
     {{< /output >}}
-1. To integrate the new classes into a project, use the `autoload.php` script that Composer automatically generated. It can be included in any PHP file using the instruction `require __DIR__ . '/vendor/autoload.php';`. Here is a sample PHP file that uses the auto-loader and the new package.
+1. To integrate the new classes into a project, use the `autoload.php` script that Composer automatically generated. It can be included in any PHP file using the instruction `require __DIR__ . '/vendor/autoload.php';`. Below is a sample `random.php` file that uses the auto-loader and the new package.
 
     {{< file "random_num/random.php" php >}}
 
@@ -213,7 +213,7 @@ print $generator->generateString(32);
 print "\n ";
     {{< /file >}}
 
-1.  To verify the new PHP program is working correctly, run it from the command line. This program uses the `getLowStrengthGenerator` function to generate a 32-character string. This is suitable for a one-time token, but is not strong enough for a cryptographic key.
+1.  To verify the new `random.php` program is working correctly, run it from the command line. This program uses the `getLowStrengthGenerator` function to generate a 32-character string. This is suitable for a one-time token but is not strong enough for a cryptographic key.
 
         php random.php
 
