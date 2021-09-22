@@ -100,5 +100,5 @@ The Drupal Marketplace App will install the following required software on your 
 
 ## Next Steps
 
-- Register a domain name and [create a DNS record](/docs/platform/manager/dns-manager/) for it using the Linode Cloud Manager.
+- Register a domain name and [create a DNS record](/docs/guides/dns-manager/) for it using the Linode Cloud Manager.
 - [Configure your Apache HTTP Server](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts) to point to your domain name.

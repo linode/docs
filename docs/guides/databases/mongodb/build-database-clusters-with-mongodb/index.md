@@ -77,7 +77,7 @@ On each Linode in your cluster, add the following to the `/etc/hosts` file:
 Replace the IP addresses above with the IP addresses for each Linode. Also substitute the hostnames of the Linodes in your cluster for the hostnames above.
 
 {{< note >}}
-You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/platform/manager/dns-manager/), only support public IP addresses.
+You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/guides/dns-manager/), only support public IP addresses.
 {{< /note >}}
 
 ## Set Up MongoDB Authentication

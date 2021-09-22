@@ -35,7 +35,7 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 1. This guide will use sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-1. If you have not already, [assign Linode's name servers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) to your domain at your domain name's registrar.
+1. If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
 
 1. Update your system:
 

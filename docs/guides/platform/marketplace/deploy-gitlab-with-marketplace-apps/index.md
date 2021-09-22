@@ -76,9 +76,9 @@ After GitLab has finished installing, you will be able to access your GitLab sit
 
     **With a Domain Name**
 
-    If you deployed your GitLab Marketplace App with a value set for the **Domain** field, you will need to separately set up DNS for your app. Specifically, you'll need to create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) associated with the IPv4 address for your Linode. Review the [DNS Manager](/docs/platform/manager/dns-manager/) guide for instructions on setting up DNS records.
+    If you deployed your GitLab Marketplace App with a value set for the **Domain** field, you will need to separately set up DNS for your app. Specifically, you'll need to create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) associated with the IPv4 address for your Linode. Review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up DNS records.
 
-    Once your DNS records are created (and the changes have [propagated to your internet service provider](/docs/platform/manager/dns-manager/#wait-for-propagation)), you can then enter the domain name in a browser window to access your GitLab site. Ensure you are using `http://` when visiting your site.
+    Once your DNS records are created (and the changes have propagated to your internet service provider), you can then enter the domain name in a browser window to access your GitLab site. Ensure you are using `http://` when visiting your site.
 
     {{< note >}}
 For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
@@ -94,9 +94,9 @@ For more general information about how DNS works, review the [DNS Records: An In
 
 If you configured your GitLab Marketplace App without providing a domain, you can configure one after the app has been deployed. Begin by setting up DNS for your domain:
 
-1.  Create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) associated with the IPv4 address for your Linode. Review the [DNS Manager](/docs/platform/manager/dns-manager/) guide for instructions on setting up DNS records.
+1.  Create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) associated with the IPv4 address for your Linode. Review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up DNS records.
 
-1.  Wait for your new DNS records to [propagate to your internet service provider](/docs/platform/manager/dns-manager/#wait-for-propagation).
+1.  Wait for your new DNS records to propagate to your internet service provider.
 
 After setting up DNS, you will need to update your GitLab instance's `/etc/gitlab/gitlab.rb` file with your domain name. This will ensure that any emails sent to users by the GitLab instance will use your site's domain.
 

@@ -27,7 +27,7 @@ Certification Authority Authorization (CAA) is a type of DNS record that allows 
 
 1.  Select the **Domains** link in the sidebar.
 
-1.  Select the domain you want to add the record to, or [add a domain](/docs/platform/manager/dns-manager/#add-a-domain) if you don't already have one listed.
+1.  Select the domain you want to add the record to, or [add a domain](/docs/guides/dns-manager/#add-a-domain) if you don't already have one listed.
 
 1.  Under the **CAA Record** section, select **Add a CAA record**. A form with the following fields will appear:
 

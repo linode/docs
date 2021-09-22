@@ -38,7 +38,7 @@ For Docker installation instructions on other operating systems, see [Docker's o
 
 1. Ensure [Object Storage is enabled](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage) on your Linode account, [generate an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and ensure you save it in a secure location. You will need the key pair for a later section in this guide. Finally [create an Object Storage bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) to store your registry's images. Throughout this guide, the example bucket name will be `registry`.
 
-1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/platform/manager/dns-manager/#add-a-domain) and [add an DNS "A" record](/docs/platform/manager/dns-manager/#add-dns-records) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
+1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and [add an DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
 
     {{< note >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com`. In a later section, you will point your DNS A record to a Linode NodeBalancer's external IP address. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
@@ -105,7 +105,7 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT
 my-nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=my-nginx-ingress
     {{</ output >}}
 
-1. Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS manager and [update your domain's' `registry` A record](/docs/platform/manager/dns-manager/#add-dns-records) with the external IP address. Ensure that the entry's **TTL** field is set to **5 minutes**.
+1. Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS manager and [update your domain's' `registry` A record](/docs/guides/dns-manager/#add-dns-records) with the external IP address. Ensure that the entry's **TTL** field is set to **5 minutes**.
 
 Now that your NGINX Ingress Controller has been deployed and your subdomain's A record has been updated, you are ready to enable HTTPS on your Docker registry.
 
@@ -379,7 +379,7 @@ v10: digest: sha256:3db7ab6bc5a893375af6f7cf505bac2f4957d8a03701d7fd56853712b090
 
 In this section, you will create a test deployment using the image that you pushed to your registry in the previous section. This will ensure that your cluster can authenticate to your Docker registry and pull images from it.
 
-1. Using Linode's DNS manager to [create a new subdomain A record](/docs/platform/manager/dns-manager/#add-dns-records) to host your static site. The example will use `static.example.com`. When creating your record, assign your cluster's NodeBalancer external IP address as the IP address. You can find the external IP address with the following command:
+1. Using Linode's DNS manager to [create a new subdomain A record](/docs/guides/dns-manager/#add-dns-records) to host your static site. The example will use `static.example.com`. When creating your record, assign your cluster's NodeBalancer external IP address as the IP address. You can find the external IP address with the following command:
 
         kubectl --namespace default get services -o wide -w nginx-ingress-controller
 
