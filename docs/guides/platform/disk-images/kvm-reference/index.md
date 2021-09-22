@@ -13,6 +13,7 @@ modified_by:
 published: 2015-06-15
 title: 'KVM Migration Reference'
 tags: ["linode platform"]
+deprecated: true
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
@@ -28,7 +29,6 @@ Device assignments for Xen Linodes were labeled as:
  * */dev/xvda*
  * */dev/xvdb*
  * */dev/xvdc*
-
 
 KVM Linodes use the "*sd*" naming convention:
 
