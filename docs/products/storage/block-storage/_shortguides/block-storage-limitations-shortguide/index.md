@@ -5,7 +5,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-- The minimum size for a Volume is 10GB and the maximum size is 10,000 GB (10 TB)
+- **Volume size:** The minimum size for a Volume is 10GB and the maximum size is 10,000 GB (10 TB).
 
 - A combined total of 8 storage devices, including a Linode's local disks and Block Storage Volumes, can be attached to a Linode at the same time.
 

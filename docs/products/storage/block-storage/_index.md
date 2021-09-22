@@ -42,7 +42,12 @@ Block Storage Volumes are configured with 3x data replication. This built-in red
 
 ### High-Speed Performance
 
-Block Storage is powered entirely by NVMe SSDs storage devices. NVMe storage offers dramatically increased performance over standard SSDs, HDDs, or hybrid storage solutions.
+Newer Block Storage deployments are powered entirely by NVMe SSD storage devices (see [Availability](#availability)). NVMe storage offers dramatically increased performance over standard SATA SSDs, HDDs, or hybrid storage solutions. Furthermore, performance is automatically increased in 60 second bursts for even faster real-world speeds. See the table below for both standard and burst performance limits on the new NVMe-only Block Storage:
+
+| | IOPS | Throughput |
+| -- | -- | -- |
+| **Standard** | 8,000 | 350 MB/s |
+| **Burst** | 12,000 | 525 MB/s |
 
 {{< note >}}
 **NVMe Block Storage** has been deployed to the Atlanta (USA) data center. All other data centers currently utilize a combination of NVMe SSDs and HDDs. This hybrid storage solution is less performant.
