@@ -1,17 +1,19 @@
 ---
-slug: how-to-use-curlie-command
+slug: installing-and-using-the-curlie-command-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to use curlie, a frontend to curl that adopts the modernity and user-friendliness of HTTPie."
 og_description: "Learn how to use curlie, a frontend to curl that adopts the modernity and user-friendliness of HTTPie."
-keywords: ['linux curlie','httpie','curl vs curlie']
+keywords: ['linux curlie','httpie curlie','curl vs curlie']
+tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-23
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use the curlie Command on Linux"
+title: "Installing and Using the curlie Command on Linux"
 h1_title: "How to Install and Use the curlie Command on Linux"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -23,31 +25,33 @@ In this guide, learn more about `curlie` and how to install and start using it o
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On CentOS, use:
+    - On **CentOS**, use the following command:
 
             sudo yum update
 
-    - On Fedora, use:
+    - On **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is curlie?
 
-`curlie` is a command-line front end for `curl` that takes inspiration from HTTPie. You can learn more about HTTPie, an HTTP client designed with readability and modern web APIs in mind, from our guide [How to Install and Use HTTPie on Linux](/docs/guides/how-to-use-httpie/).
+`curlie` is a command-line front end for `curl` that takes inspiration from HTTPie. You can learn more about HTTPie, an HTTP client designed with readability and modern web APIs in mind, from our [How to Install and Use HTTPie on Linux](/docs/guides/installing-and-using-httpie-on-linux/) guide.
+
+### How Is Curlie Different From HTTPie
 
 Like HTTPie, `curlie` gives you an HTTP client ready to work with modern web APIs and focused on readable, human-friendly output. Unlike HTTPie, though, `curlie` keeps the performance and rich array of features you find in `curl`, making `curlie` more versatile and capable for general use.
 
@@ -55,9 +59,11 @@ Like HTTPie, `curlie` gives you an HTTP client ready to work with modern web API
 
 ## How to Install curlie
 
-1. Identify whether your system's CPU is 32-bit or 64-bit. You can use the command below to do so. The sample output indicates a 64-bit CPU:
+1. Identify whether your system's CPU architecture is 32-bit or 64-bit using the following command:
 
         getconf LONG_BIT
+
+   The following sample output indicates a 64-bit CPU architecture.
 
     {{< output >}}
 64
@@ -71,24 +77,24 @@ Like HTTPie, `curlie` gives you an HTTP client ready to work with modern web API
 
     Then, copy the URL for that matching `.tar.gz` file.
 
-1. Download the `.tar.gz` using a command like the following, replacing the URL with the one you copied in the step above:
+1. Download the `.tar.gz` using a command like the following, replacing the URL with the one you copied in the above step.
 
         curl -o curlie.tar.gz -L https://github.com/rs/curlie/releases/download/v1.6.0/curlie_1.6.0_linux_amd64.tar.gz
 
-1. Install `tar` if you do not already have it. Replace `apt` in the following command with `yum` if you are on AlmaLinux or CentOS; replace it with `dnf` if you are on Fedora:
+1. Install `tar` if you do not already have it. Replace `apt` in the following command with `yum` if you are on **AlmaLinux** or **CentOS**; replace it with `dnf` if you are on **Fedora**.
 
         sudo apt install tar
 
-1. Make a directory for the `curlie` files, then extract the files to that directory. This command creates the new directory in the current user's home directory:
+1. Make a directory for the `curlie` files, then extract the files to that directory. The following command creates the new directory in the current user's home directory.
 
         mkdir ~/curlie
         tar -xvf curlie.tar.gz -C ~/curlie
 
-1. Move the `curlie` binary file into the path for your current user's shell:
+1. Move the `curlie` binary file into the path for your current user's shell.
 
         sudo mv ~/curlie/curlie /usr/local/bin
 
-1. Verify your installation. The output should show your system's current version of `curl`, which indicates that `curlie` is successfully acting as its front end:
+1. Verify your installation. The output should show your system's current version of `curl`, which indicates that `curlie` is successfully acting as its front end.
 
         curlie --version
 
@@ -98,7 +104,7 @@ curl 7.61.1 [...]
 
 ## How to Use curlie
 
-You can use `curlie` much how you would use `curl`. In fact, as you can see further on, any `curl` options you provide on a `curlie` command get passed on for execution by `curl`. This means that you can use any `curl` command options in your `curlie` commands.
+You can use `curlie` much like how you would use `curl`. Any `curl` options you provide on a `curlie` command get passed on for execution by `curl`. This means that you can use any `curl` command options in your `curlie` commands.
 
 On the other hand, `curlie` also simplifies many `curl` operations, especially when it comes to handling headers and JSON data. This sets `curlie` up to be much better for working with web APIs than default `curl`.
 
@@ -106,7 +112,7 @@ On the other hand, `curlie` also simplifies many `curl` operations, especially w
 
 The most basic usage is for `GET` requests. Like `curl`, `curlie` just requires the request's endpoint — you do not need to specify the request method with `GET`.
 
-The example below fetches random dog facts from a web service. It also includes a URL parameter specifying the number of facts being requested:
+The example below fetches random dog facts from a web service. It also includes a URL parameter specifying the number of facts being requested.
 
     curlie dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1
 
@@ -125,11 +131,11 @@ Date: Thu, 19 Aug 2021 17:29:35 GMT
 Via: 1.1 vegur
 {{< /output >}}
 
-As you can see above, `curlie` automatically includes the response header information in the output. `curlie` also applies syntax highlighting to its output. You can see output from `curlie` contrasted with output from `curl` in the screenshot here:
+As you can see above, `curlie` automatically includes the response header information in the output. `curlie` also applies syntax highlighting to its output. You can see output from `curlie` contrasted with output from `curl` in the screenshot below:
 
 [![Syntax highlighting in curlie, vs curl](curlie-syntax-highlighting_small.png)](curlie-syntax-highlighting.png)
 
-The command interface for `curlie` starts to set itself apart from `curl` as requests get more complicated. The example below fetches a random "dad joke" using a `GET` request with required header data. While `curl` requires that you specify when you are providing header data, `curlie` can automatically parse header data included after the URL:
+The command interface for `curlie` starts to set itself apart from `curl` as requests get more complicated. The example below fetches a random "dad joke" using a `GET` request with required header data. While `curl` requires that you specify when you are providing header data, `curlie` can automatically parse header data included after the URL.
 
     curlie -L icanhazdadjoke.com/ 'Accept: application/json'
 
@@ -178,7 +184,7 @@ You can also see, in the example above, that `curlie` automatically formats the 
 
 ### Request Methods
 
-With `curlie`, you can specify request methods just by including the method designation — `GET`, `POST`, `PUT`, `DELETE`, etc. — before the URL and after any options on the command. You can see this in the next example, which uses the `httpbin.org` web service to test the request:
+With `curlie`, you can specify request methods just by including the method designation — `GET`, `POST`, `PUT`, `DELETE`, etc — before the URL and after any options on the command. You can see this in the next example, which uses the `httpbin.org` web service to test the request.
 
     curlie DELETE httpbin.org/delete
 
@@ -219,7 +225,7 @@ Access-Control-Allow-Credentials: true
 
 Submitting JSON data is made much simpler with `curlie`. It even shortcuts your having to put together a JSON object in the command line. Instead, `curlie` lets you enter the individual parameters, automatically compiling them into the necessary JSON format.
 
-Take this example with the "Shout Cloud" web service. The service takes a JSON object with a string and returns a JSON object with a capitalized version of that string:
+Take this example with the "Shout Cloud" web service. The service takes a JSON object with a string and returns a JSON object with a capitalized version of that string.
 
     curlie POST api.shoutcloud.io/V1/SHOUT INPUT="hello, world!"
 
@@ -240,6 +246,6 @@ Via: 1.1 vegur
 
 ## Conclusion
 
-The above should have you ready to get started working with `curlie` and prepared to take on most web service testing need you run across. For more help getting started, you can also check out the [GitHub page for `curlie`](https://github.com/rs/curlie), which provides additional usage examples.
+From the above examples you must be ready to get started working with `curlie` and prepared to take on most of the web service testing. For more help getting started, you can also check out the [GitHub page for `curlie`](https://github.com/rs/curlie), which provides additional usage examples.
 
-`curlie` also has many more features for fine tuning HTTP requests for your needs. In addition to all `curl` options, `curlie` also has a suite of its own options. You can find them all using the `curlie --help` command, which provides a great resource to continue your journey deeper into the many features `curlie` has to offer.
+`curlie` also has many more features for fine-tuning HTTP requests for your needs. In addition to all `curl` options, `curlie` also has a suite of its own options. You can find them all using the `curlie --help` command, which provides a great resource to continue your journey deeper into the many features `curlie` has to offer.
