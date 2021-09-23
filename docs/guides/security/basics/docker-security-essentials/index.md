@@ -12,7 +12,7 @@ modified_by:
 published: 2021-03-26
 title: "An Overview of Docker Security Essentials"
 aliases: ['/security/basics/docker-security-essentials/']
-image: Docker_Security_Essentials.png
+image: DockerSecurityEssentials.png
 ---
 
 ## What is Docker?
