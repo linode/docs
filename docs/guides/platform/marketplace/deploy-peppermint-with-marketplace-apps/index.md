@@ -9,6 +9,7 @@ keywords: ["ticket management", "marketplace"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-31
+image: Deploy_phpMyAdmin_oneclickapps.png
 modified_by:
   name: Linode
 title: "Deploy Peppermint With Marketplace Apps"

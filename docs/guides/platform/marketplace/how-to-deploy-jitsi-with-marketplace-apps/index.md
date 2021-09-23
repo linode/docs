@@ -9,6 +9,7 @@ keywords: ['jitsi','marketplace', 'server']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
+image: Deploy_Jitsi_oneclickapps.png
 modified: 2020-12-04
 modified_by:
   name: Linode
