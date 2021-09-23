@@ -97,7 +97,7 @@ Direct your browser to your Linode's IP address or FQDN (fully qualified domain 
 
 [![Language selection in Openfire setup on Ubuntu 10.04 (Lucid).](397-openfire-ubuntu-10.04-01-language-selection.png)](397-openfire-ubuntu-10.04-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/platform/manager/dns-manager/)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/guides/dns-manager/)).
 
 [![Domain and admin ports selection in Openfire setup on Ubuntu 10.04 (Lucid).](398-openfire-ubuntu-10.04-02-domain-ports-selection.png)](398-openfire-ubuntu-10.04-02-domain-ports-selection.png)
 

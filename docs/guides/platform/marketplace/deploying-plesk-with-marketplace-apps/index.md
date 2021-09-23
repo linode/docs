@@ -39,7 +39,7 @@ You can configure your Plesk App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:----------------|:------------|
-| **Server Name** | Domain name for your server in the format servername.domain.com. Setting a value in this field will not also enable DNS for your app, which you should do as well. Read our [DNS Manager](/docs/platform/manager/dns-manager/) guide for instructions on creating DNS records in the Linode Cloud Manager. *Required*. |
+| **Server Name** | Domain name for your server in the format servername.domain.com. Setting a value in this field will not also enable DNS for your app, which you should do as well. Read our [DNS Manager](/docs/guides/dns-manager/) guide for instructions on creating DNS records in the Linode Cloud Manager. *Required*. |
 
 ### Linode Options
 
@@ -88,7 +88,7 @@ Plesk is installed with a self-signed certificate which may result in an warning
 
     If you deployed your Plesk Marketplace App with a domain name and it is pointing to the Linode's IP address that is hosting your Plesk instance, then you can enter the domain name in a browser window to access your Plesk site. Ensure you are using `http://`.
 
-    For more details on registering your domain, see the [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+    For more details on registering your domain, see the [DNS Manager](/docs/guides/dns-manager/) guide.
 
 1.  Once you have accessed your Plesk app via the browser, you can log in using the admin credentials you created when deploying your app. This will be `root` for the username and the root password for the server. Then, begin configuring your site.
 

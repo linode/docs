@@ -46,7 +46,7 @@ external_resources:
 
         sudo apt-get update && sudo apt-get upgrade
 
-1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for assistance when configuring your domain.
+1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for assistance when configuring your domain.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -90,7 +90,7 @@ The following sections describe each step in more detail.
   - `element.example.com` (Element web client)
 
     {{< note >}}
-Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/platform/manager/dns-manager/) for more information on adding domains and DNS records.
+Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/guides/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
 ## Download and Install the Matrix-Synapse Communication Layer

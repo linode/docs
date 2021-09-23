@@ -38,7 +38,7 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
         hostname
         hostname -f
 
-    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 
@@ -178,14 +178,14 @@ In addition, if you plan to use any HTTPD scripts on the server, update the corr
 
 FirewallD is enabled for CentOS 8 Linodes, but HTTP and HTTPS is not included in the default set of services.
 
-1. View the default set of services:
+1.  View the default set of services:
 
         sudo firewall-cmd --zone=public --list-services
 {{< output >}}
 ssh dhcpv6-client
 {{< /output >}}
 
-1. To allow connections to Apache, add HTTP and HTTPS as a service:
+1.  To allow connections to Apache, add HTTP and HTTPS as a service:
 
         sudo firewall-cmd --zone=public --add-service=http --permanent
         sudo firewall-cmd --zone=public --add-service=https --permanent
@@ -194,11 +194,11 @@ ssh dhcpv6-client
 
     Visit your domain or public IP to test the Apache server and view the default Apache page.
 
-    {{< note >}}
+{{< note >}}
 Rename Apache's default welcome page. When this file is present it will take precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
-    {{</ note >}}
+{{</ note >}}
 
 ## MariaDB
 

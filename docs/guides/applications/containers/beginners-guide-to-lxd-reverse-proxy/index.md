@@ -71,7 +71,7 @@ If the version is not 3.3 or later, update to the latest version by installing t
     sudo lxd.migrate
 {{</ note >}}
 
-2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
+2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/guides/dns-manager/).
 
 ## Creating the Containers
 

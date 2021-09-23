@@ -58,7 +58,7 @@ AzuraCast is now installed and ready to use.
 
     !["AzuraCast Create Station"](azuracast-create-station.png "AzuraCast Create Station")
 
-1.  On the next page you can set other settings including using a custom URL if you have one set up. Learn more about using a custom URL with Linode DNS in our [DNS Manager](/docs/platform/manager/dns-manager/) guide. When you are finished, click the **Save Changes** button at the bottom of the screen to continue.
+1.  On the next page you can set other settings including using a custom URL if you have one set up. Learn more about using a custom URL with Linode DNS in our [DNS Manager](/docs/guides/dns-manager/) guide. When you are finished, click the **Save Changes** button at the bottom of the screen to continue.
 
 1.  Your station is now ready. On the following page, you are taken to the control panel, and you are ready to start broadcasting your station.
 
