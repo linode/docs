@@ -13,7 +13,7 @@ modified_by:
 title: "How to Build a Video Streaming App with React and Node"
 h1_title: "Building a Video Streaming Application with React and Node"
 enable_h1: true
-image: feature.png
+image: BuildVidStreamApp_React_Node.png
 contributor:
   name: Deven Rathore
   link: https://codesource.io/
