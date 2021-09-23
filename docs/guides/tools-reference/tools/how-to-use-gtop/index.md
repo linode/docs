@@ -31,7 +31,7 @@ external_resources:
 
 1. Update your system.
 
-    - On **Debian** and **Ubuntu**, you can do this with the following command:
+    - On **Debian** and **Ubuntu**, you can do this with the following commands:
 
             sudo apt update && sudo apt upgrade
 
