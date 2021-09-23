@@ -31,7 +31,7 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 
 1. Register (purchase) a domain name.
 
-1. Set the domain name to [use Linode’s name servers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain). You need to do this on the domain registrar’s website and then wait up to 24 hours for the change to take effect.
+1. Set the domain name to [use Linode’s name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain). You need to do this on the domain registrar’s website and then wait up to 24 hours for the change to take effect.
 
 ## Deploying the NextCloud Marketplace App
 

@@ -21,7 +21,7 @@ aliases: ['/platform/api/linode-cli-block-storage-shortguide/']
 
         linode-cli volumes list
 
-1.  Create a new Volume, with the size specified in GiB:
+1.  Create a new Volume, with the size specified in GB:
 
         linode-cli volumes create --label my-volume --size 100 --region us-east
 

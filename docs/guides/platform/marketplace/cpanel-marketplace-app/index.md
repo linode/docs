@@ -50,7 +50,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 1. You will be prompted to enter in an email address to receive status and error notifications. Enter in your preferred email address.
 
-    You will also be prompted to provide nameserver's for your cPanel instance to use. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](/docs/platform/manager/dns-manager/), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
+    You will also be prompted to provide nameserver's for your cPanel instance to use. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](/docs/guides/dns-manager/), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
 
     {{< note >}}
 Linode's nameservers are the following:

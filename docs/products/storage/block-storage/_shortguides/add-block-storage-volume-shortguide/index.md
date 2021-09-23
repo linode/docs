@@ -21,7 +21,7 @@ If the Linode's data center has been upgraded to NVMe Block Storage and your Lin
 
     - Select **Create and Attach Volume** to create a new Volume. Otherwise select **Attach Existing Volume** to attach a Volume that's already on your account and in the same data center as the Linode.
     - **Label:** A string up to 32 characters long and consisting only of ASCII characters `a-z; 0-9.-_`.
-    - **Size:** The desired size for the new Volume. See the [Limitations and Considerations](#limitations-and-considerations) section for the minimum and maximum size.
+    - **Size:** The desired size for the new Volume. See the [Limits and Considerations](/docs/products/storage/block-storage/#limits-and-considerations) section for the minimum and maximum size.
     - **Config:** If the Linode has multiple Configuration Profiles, select which one the Block Storage Volume should be assigned to.
     - **Tags:** Optionally add or assign tags to help label and organize your services.
 

@@ -43,7 +43,7 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-- If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/platform/manager/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
+- If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
 - Complete the steps in the [Getting Started with Linode](/docs/getting-started/) guide. Specifically, ensure you have completed the [Install software updates](/docs/getting-started/#debian-ubuntu), [Set your Linode's hostname](/docs/getting-started/#arch-centos-7-debian-8-fedora-ubuntu-16-04-and-above), and [Update your system's hosts file](/docs/getting-started/#update-your-system-s-hosts-file) sections.
 - Follow the steps in the [How to Secure Your Server](/docs/security/securing-your-server/) guide. Ensure you complete the steps in the following [Add a limited user account](/docs/security/securing-your-server/#ubuntu) section. All steps executed in this guide will be from this account.
     {{< note >}}

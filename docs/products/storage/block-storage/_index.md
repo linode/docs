@@ -1,6 +1,7 @@
 ---
 title: Block Storage
 description: "Linode Block Storage is a scalable, high-speed, resilient and fault tolerant storage service."
+toc: true
 tab_group_main:
     is_root: true
     title: Overview
@@ -24,7 +25,7 @@ To attach a Block Storage Volume to a Linode, the Volume and the Linode must be 
 
 ## Plans and Pricing
 
-Block Storage Volumes cost $0.10/GiB per month and can range from 10 GiB to 10,000 GiB in size.
+Block Storage Volumes cost $0.10/GB per month and can range from 10 GB to 10,000 GB in size.
 
 ## Features
 
@@ -41,7 +42,14 @@ Block Storage Volumes are configured with 3x data replication. This built-in red
 
 ### High-Speed Performance
 
-Block Storage is powered entirely by NVMe SSDs storage devices. NVMe storage offers dramatically increased performance over standard SSDs, HDDs, or hybrid storage solutions.
+Newer Block Storage deployments are powered entirely by NVMe SSD storage devices (see [Availability](#availability)). NVMe storage offers dramatically increased performance over standard SATA SSDs, HDDs, or hybrid storage solutions. Performance is also automatically increased in 60 second bursts for even faster real-world speeds. See the table below for both standard and burst performance limits on the new NVMe-only Block Storage:
+
+| | IOPS | Throughput |
+| -- | -- | -- |
+| **Standard** | 8,000 | 350 MB/s |
+| **Burst** | 12,000 | 525 MB/s |
+
+Performance may vary based on the workload and Compute Instance type. Plans with dedicated CPU resources (such as Dedicated CPU or High Memory Compute Instances) will not be impacted by resource contention, though a Shared Compute Instance may be impacted.
 
 {{< note >}}
 **NVMe Block Storage** has been deployed to the Atlanta (USA) data center. All other data centers currently utilize a combination of NVMe SSDs and HDDs. This hybrid storage solution is less performant.
@@ -51,6 +59,6 @@ Block Storage is powered entirely by NVMe SSDs storage devices. NVMe storage off
 
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size.
 
-## Limitations and Considerations
+## Limits and Considerations
 
 {{< content "block-storage-limitations-shortguide" >}}

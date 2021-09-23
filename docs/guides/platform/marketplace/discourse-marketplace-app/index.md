@@ -31,7 +31,7 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
     - This means you need a Linode API token. If you don't have a token, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing.
 
-    - Ensure that your domain registrar is [using Linode's name servers](/docs/platform/manager/dns-manager/#use-linodes-name-servers-with-your-domain).
+    - Ensure that your domain registrar is [using Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain).
 
   - Additionally, the SMTP user must be able to send email from `noreply@your-domain.com` for administrator account verification.
 

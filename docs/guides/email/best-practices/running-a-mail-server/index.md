@@ -27,7 +27,7 @@ If you do, you'll have control over your domain's email, but you'll also have to
 
 In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
 
-If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/platform/manager/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
+If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/guides/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
@@ -70,7 +70,7 @@ There are several third-party mail services available:
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
 - [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/platform/manager/dns-manager/) for your mail and use the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/guides/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -189,7 +189,7 @@ example.com         86400   MX      10      203.0.113.0
 mail.example.com    86400   MX      10      203.0.113.0
 {{< /output >}}
 
-If you use Linode's [DNS Manager](/docs/platform/manager/dns-manager/), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
+If you use Linode's [DNS Manager](/docs/guides/dns-manager/), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
 
 #### SPF Records
 
