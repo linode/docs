@@ -1,15 +1,18 @@
 ---
-slug: how-to-use-broot-command
+slug: installing-and-using-the-broot-command
 author:
-  name: Nathaniel Stickman
-description: "Learn how to use broot, a tool for navigating directories with an easy-to-follow and modern file tree."
+  name: Linode Community
+  email: docs@linode.com
+description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
+og_description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
 keywords: ['linux broot','linux directory tree','unix broot']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Nathaniel Stickman
-title: "Install and Use the broot Command"
+title: "Installing and Using the broot Command"
 h1_title: "How to Install and Use the broot Command"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -19,31 +22,31 @@ The `broot` command provides a modern approach to generating directory trees on 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux and CentOS, use:
+    - On **AlmaLinux** and **CentOS**, use the following command:
 
             sudo yum update
 
-    - On Fedora, use:
+    - On **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is broot?
 
-The `broot` utility specializes in making directories easy to navigate and obtain an overview of an entire directory tree. This is the case even when the directory is massive and complex. `broot` accomplishes this with features like abbreviated subdirectory contents and an advanced file search that does not lose your place in the tree.
+The `broot` tool gives you a convenient and capable directory tree. It specializes in making directories easy to navigate and to get its overview — even when the directory is massive and complex. `broot` accomplishes this with features like abbreviated subdirectory contents and an advanced file search that does not lose your place in the tree.
 
 The `broot` command-line tool also brings a lineup of file management features you can use right from the displayed directory tree. In this way, `broot` is much more than a tool for reviewing directory contents. For instance, `broot` lets you copy and move files between side-by-side panels and preview file contents.
 
@@ -74,7 +77,7 @@ The `broot` command-line tool also brings a lineup of file management features y
 
         source ~/.bashrc
 
-1. Verify your installation:
+1. Verify the `broot` installation.
 
         br --version
 
@@ -86,7 +89,7 @@ broot 1.6.3
 
 You can start `broot` with the `br` command. You can also provide a path to a directory you want to start `broot` in.
 
-The examples in this section run `broot` in a cloned Git repository. This makes it easier to demonstrate how `broot` integrates with Git. You can get clone the repository used in this guide by running the following commands in your user's home directory. Replace `apt` with `yum` on AlmaLinux and CentOS or with `dnf` on Fedora:
+The examples in this section runs `broot` in a cloned Git repository. This makes it easier to demonstrate how `broot` integrates with Git. You can get clone the repository used in this guide by running the following commands in your user's home directory. Replace `apt` with `yum` on AlmaLinux and CentOS or with `dnf` on Fedora:
 
     sudo apt install git
     git clone https://github.com/google/docsy-example.git
@@ -158,20 +161,20 @@ The file management capabilities of `broot` set it apart from other Linux utilit
 - Press **Enter** on a file to have `broot` attempt to call a program to open the file. You can also use the `:e` command to have `broot` attempt to open the file with the default editor program.
 
     {{< note >}}
-`broot` uses the `$EDITOR` environmental variable to determine what editor to use. If you do not have this variable set, you can set it with a shell command like the one below. This example sets the default editor to Vim:
+`broot` uses the `$EDITOR` environmental variable to determine what editor to use. If you do not have this variable set, you can set it with a shell command like the one below. The below example command sets the default editor to Vim.
 
     export EDITOR=$(which vim)
 
-You can add this command to your `~/.bashrc` file to make the setting persistent.
+You can add the above command to your `~/.bashrc` file to make the setting persistent.
     {{< /note >}}
 
 - Copy a file or directory using the `:cp` command followed by the location to copy to (relative to the location of the file/directory being copied).
 
-    Likewise, with moving files and directories. Use the `:mv` command and the location to move to.
+    Move files and directories using the `:mv` command followed by the location to move to.
 
 - `broot` has a more convenient method for copying and moving files if you are using panels.
 
-    Open a panel for the directory you either want to copy/move an item into or out of. Select the file or directory you want to copy/move. Then, use the `:cpp` command to copy the item to the root of the other panel's directory tree. Use the `:mvp` command to move the item to the other panel.
+    Open a panel for the directory you either want to copy/move an item into or out of the directory. Select the file or directory you want to copy/move. Then, use the `:cpp` command to copy the item to the root of the other panel's directory tree. Use the `:mvp` command to move the item to the other panel.
 
     [![Copying from one panel to another in broot](broot-tree-copy-panels_small.png)](broot-tree-copy-panels.png)
 
