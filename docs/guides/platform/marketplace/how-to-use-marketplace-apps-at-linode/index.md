@@ -42,4 +42,4 @@ Every Marketplace App is deployed to its own Linode instance, and you can access
 
 When logging in over SSH, use `root` as the username, and supply the root password that you specified when you deployed your app. Follow our [Getting Started guide](/docs/getting-started/#connect-to-your-linode-via-ssh) to learn more about connecting to your Linode via SSH. If you use Windows at home, our [Using SSH on Windows](/docs/networking/ssh/using-ssh-on-windows/) guide has special instructions for Windows SSH clients. If you're new to Linux, some of the guides in our [Linux](/docs/quick-answers/linux/) and [Linux Essentials](/docs/quick-answers/linux-essentials/) sections may be useful.
 
-{{< content "marketplace-update-note">}}
+{{< content "marketplace-update-note-shortguide">}}
