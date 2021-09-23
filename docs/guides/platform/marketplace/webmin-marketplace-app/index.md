@@ -8,7 +8,11 @@ keywords: ['webmin','system administration','marketplace']
 tags: ["debian","marketplace", "web applications","linode platform", "cloud manager", "cms", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
+<<<<<<< HEAD:docs/guides/platform/marketplace/webmin-marketplace-app/index.md
 modified: 2021-09-16
+=======
+image: Deploy_Webmin_oneclickapps.png
+>>>>>>> 180885b26... sixth set of guides:docs/guides/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/index.md
 modified_by:
   name: Linode
 title: "Deploying Webmin through the Linode Marketplace"
