@@ -7,7 +7,7 @@ description: "This guide covers some of the common use cases for Linode StackScr
 keywords: ['scripting','automation','bash','open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
-image: Common_Use_Cases_for_Linode_StackScripts_1200x631.png
+image: CommonUse_LinodeStackScripts.png
 modified_by:
   name: Linode
 title: "Common Use Cases for Linode StackScripts"

@@ -8,6 +8,7 @@ og_description: This guide show how to clear cache and cookies in your browser.
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28
+image: ClearCacheAndCookies.png
 modified: 2018-06-28
 modified_by:
   name: Rajakavitha Kodhandapani
