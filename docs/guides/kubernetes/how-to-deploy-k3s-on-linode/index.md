@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: How to Deploy K3s on Linode
 h1_title: Deploying K3s on Linode
-image: how_to_deploy_k3s_on_linode.png
+image: DeployK3s_Linode.png
 external_resources:
   - '[Rancher Official Docs](https://rancher.com/docs/k3s/latest/en/)'
   - '[Kubernetes Official Docs] (https://kubernetes.io/docs/)'

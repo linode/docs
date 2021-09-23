@@ -8,6 +8,7 @@ keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
+image: Django_oneclickapps.png
 modified: 2020-03-11
 modified_by:
   name: Linode

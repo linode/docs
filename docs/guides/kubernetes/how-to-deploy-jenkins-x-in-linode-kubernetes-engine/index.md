@@ -9,6 +9,7 @@ keywords: ['kubernetes','pipelines','ci/cd','kubernetes','jenkins x','jenkins']
 tags: ["docker","kubernetes","container","automation","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
+image: DeployJenkinsX_LinodeKubEng.png
 modified_by:
   name: Linode
 title: "How to Deploy Jenkins X in Linode Kubernetes Engine"

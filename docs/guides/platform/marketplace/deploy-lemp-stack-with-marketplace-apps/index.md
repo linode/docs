@@ -14,7 +14,7 @@ modified_by:
   name: Linode
 title: "Deploy a LEMP Stack With Marketplace Apps"
 h1_title: "Deploying a LEMP Stack with Marketplace Apps"
-image: feature.png
+image: deployLEMP_oneclickapps.png
 contributor:
   name: Linode
 external_resources:

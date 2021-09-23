@@ -9,6 +9,7 @@ keywords: [ 'serverwand','marketplace','control panel','hosting']
 tags: ["cloud manager","linode platform", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
+image: DeployServerWand_marketplaceapps.png
 modified_by:
   name: Linode
 title: "How to Deploy ServerWand with Marketplace Apps"
