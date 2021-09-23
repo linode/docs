@@ -87,7 +87,7 @@ One advantage of `gtop` is that, despite its graphical displays, it is a simple,
 
     gtop
 
-What follows is a breakdown of the parts, or widgets, of the `gtop` display. You can refer to the screenshots in the [What is gtop?](/docs/ginstalling-and-using-gtop-on-linux/#what-is-gtop) section above to follow along.
+What follows is a breakdown of the parts, or widgets, of the `gtop` display. You can refer to the screenshots in the [What is gtop?](/docs/installing-and-using-gtop-on-linux/#what-is-gtop) section above to follow along.
 
 - **CPU History** gives a graph of CPU usage over the last minute. Each line on the graph represents one of your system's CPUs. In addition, the right side of the widget includes the current percentage usage for each CPU.
 - **Memory and Swap History** provides the same graphical information but for your system's memory, both physical and swap.
