@@ -13,7 +13,7 @@ modified_by:
 title: "How to Create Connections and Variables in Apache Airflow"
 h1_title: "Creating Connections and Variables in Apache Airflow"
 enable_h1: true
-image: feature.png
+image: ApacheAirflowTut_CreateConn_Var.png
 contributor:
   name: Angel D'az
   link: https://github.com/angelddaz/
