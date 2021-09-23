@@ -17,7 +17,7 @@ external_resources:
 published: 2021-03-26
 modified_by:
   name: Linode
-image: Setting_Up_FreeIPA.png
+image: FreeIPA_IDandAuth.png
 ---
 
 ## What is FreeIPA

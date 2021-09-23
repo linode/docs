@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 title: "How to Deploy Flask with Marketplace Apps"
 h1_title: "Deploying Flask with Marketplace Apps"
-image: feature.png
+image: Flask_oneclickapps.png
 contributor:
   name: Linode
 external_resources:
