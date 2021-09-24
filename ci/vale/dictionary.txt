@@ -285,6 +285,7 @@ ctools
 ctrl
 ctx
 cuda
+curlie
 cutover
 cyberduck
 cyberpanel
@@ -663,6 +664,7 @@ htmldir
 htop
 htpasswd
 http
+httpie
 httpchk
 httpd
 https
