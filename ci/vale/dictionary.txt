@@ -1811,6 +1811,7 @@ valheim
 validator
 variadic
 varnishlog
+vaultwarden
 vcs
 vdev
 vdevs
