@@ -8,6 +8,7 @@ og_description: "Simple, secure, and free, ownCloud is an excellent alternative 
 keywords: ['owncloud on Centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
+image: Install_ownCloud_CentOS_stream.png
 modified_by:
   name: Linode
 title: "How to Install and Configure ownCloud on CentOS Stream 8"

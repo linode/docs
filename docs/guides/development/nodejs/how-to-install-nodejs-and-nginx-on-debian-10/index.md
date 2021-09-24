@@ -23,7 +23,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
-image: 'Installing_Nodejs_and_NGINX_on_Debian_10_1200x631.png'
+image: Install_Nodejs_NGINX_Deb10.png
 relations:
     platform:
         key: install-nodejs-nginx
