@@ -93,7 +93,7 @@ http {
 
 In the http block there’s an include directive that tells NGINX where website configuration files are located. It changes depending upon your source of NGINX installation:
 
-  1. Installation from official NGINX repository: include directive is `include /etc/nginx/conf.d/*.conf;`. Every website you host with NGINX gets it’s own configuration file in `/etc/nginx/conf.d/`, with names formatted as `/etc/nginx/conf.d `.
+  1. Installation from official NGINX repository: include directive is `include /etc/nginx/conf.d/*.conf;`. Every website you host with NGINX gets it’s own configuration file in `/etc/nginx/conf.d/`, with names formatted as `example.com.conf`.
   2. Installation from Debian or Ubuntu repositories: the include directive here would now be `include /etc/nginx/sites-enabled/*;` With site configuration file stored in `/etc/nginx/sites-available/`
 
 ## NGINX Configuration - Server Blocks
@@ -229,20 +229,23 @@ NGINX reverse proxy acts as an intermediate proxy that takes a client request an
 
 To get started with configuring a reverse proxy, follow these steps.
 
-  1. If not already installed, install NGINX by
-    `apt update`
-    `apt  install nginx`
+1. If not already installed, install NGINX by
+
+        apt update
+        apt  install nginx
 
     This installs NGINX web server.
 
-  2. Deactivate your virtual host
-  To deactivate your virtual host run `unlink /etc/nginx/sites-enabled/default`
+2. Deactivate your virtual host. To deactivate your virtual host run 
 
-  3. Change your directory to /sites-available and create a reverse proxy there:
-    `cd /etc/nginx/sites-available`
-    `nano reverse-proxy.conf`
+        unlink /etc/nginx/sites-enabled/default
 
-  4. Configure proxy server to redirect all requests on port 80 to a lightweight http server that listens to port 8000. To do that, write the following Nginx configuration:
+3. Change your directory to /sites-available and create a reverse proxy there:
+
+        cd /etc/nginx/sites-available`
+        nano reverse-proxy.conf`
+
+4. Configure proxy server to redirect all requests on port 80 to a lightweight http server that listens to port 8000. To do that, write the following Nginx configuration:
     {{< file >}}
     server {
       listen 80;
@@ -255,19 +258,21 @@ To get started with configuring a reverse proxy, follow these steps.
     }
     {{< /file >}}
 
-  5. Use the symbolic link and copy configuration from `/etc/nginx/sites-available` to `/etc/nginx/sites-enabled`:
-    `ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf`
+5. Use the symbolic link and copy configuration from `/etc/nginx/sites-available` to `/etc/nginx/sites-enabled`:
 
-  6. Verify if NGINX is working:
-    `nginx -t`
+        ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
+
+6. Verify if NGINX is working:
+        
+        nginx -t
 
 If you see a successful test message, NGINX reverse proxy is properly configured on your system.
 
 ## Configuring Load Balance with NGINX
 
-We assume that you already have NGINX installed. If not, follow the steps from the previous section. To configure your NGINX and use it as a load balancer, add your backend servers to your configuration file first. Collect your server IPs that acts as load balancers and run the following:
+We assume that you already have NGINX installed. If not, follow the steps from the previous section. To configure your NGINX and use it as a load balancer, add your backend servers to your configuration file first. Collect your server IPs that acts as load balancers:
 
-{{< file >}}
+{{< file "load_balancer.conf" >}}
 upstream backend {
   server 72.229.28.185;
   server 72.229.28.186;
@@ -280,7 +285,7 @@ upstream backend {
 
 After upstream servers are defined, go to the location `/etc/nginx/sites-available/` and edit `load_balancer.conf`.
 
-{{< file >}}
+{{< file "/etc/nginx/sites-available/load_balancer.conf" >}}
 upstream backend {
   server 72.229.28.185;
   server 72.229.28.186;
@@ -305,12 +310,10 @@ Every time a request is made to port 80 to SUBDOMAIN.DOMAIN.LTD, request is rout
 
 After done, execute this new configuration by reloading NGINX using
 
-{{< file >}}
-nginx -t
-cd /etc/nginx/site-enabled/
-ln -s ../sites-available/load_balancer.conf
-systemctl reload nginx
-{{< /file >}}
+    nginx -t
+    cd /etc/nginx/site-enabled/
+    ln -s ../sites-available/load_balancer.conf
+    systemctl reload nginx
 
 
 You can further configure and optimize your load balancer by load balancing methods like Round Robin, Least connected, IP hash, and Weighted.
