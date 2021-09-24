@@ -133,7 +133,7 @@ simple-vhost.default-host = "example.com"
     -   If a request is made for the URL `exampleA.com`, content is served from `/var/www/html/exampleA.com/htdocs`.
     -   If a request is made for a URL which resolves to the server, but does not have a directory, content is served from `/var/www/html/example.com/htdocs`, because `example.com` is the default host.
 
-    For subdomains, create host directories for each subdomain in the same way. For instance, to use `exampleSub` as a subdomain of `exampleA.com`, create a directory called `exampleSub.exampleA.com` with a `htdocs` directory for content. Be sure to add [DNS records](/docs/platform/manager/dns-manager/) for any subdomains you plan to use.
+    For subdomains, create host directories for each subdomain in the same way. For instance, to use `exampleSub` as a subdomain of `exampleA.com`, create a directory called `exampleSub.exampleA.com` with a `htdocs` directory for content. Be sure to add [DNS records](/docs/guides/dns-manager/) for any subdomains you plan to use.
 
 1.  Restart the web server again to reload changes:
 
