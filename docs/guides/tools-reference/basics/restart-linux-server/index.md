@@ -8,6 +8,7 @@ keywords: ['linux restart','linux restart command','restart linux server']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
+image: HowtoRestartaLinuxServerfromtheCommandLine.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "Restart a Linux Server from the Command Line"

@@ -8,6 +8,7 @@ keywords: ['openapi tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
+image: HowtoDocumentaFastAPIAppwithOpenAPI.jpg
 modified_by:
   name: Linode
 title: "Documenting a FastAPI App with OpenAPI"

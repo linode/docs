@@ -8,6 +8,7 @@ keywords: ['nginx http2']
 tags: ['web server', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
+image: HowtoConfigureHTTP-2onNGINX.jpg
 modified_by:
   name: Linode
 title: "How to Configure HTTP/2 on NGINX"

@@ -13,7 +13,7 @@ modified_by:
 title: "How to Deploy Grafana with Marketplace Apps"
 h1_title: "Deploying Grafana with Marketplace Apps"
 enable_h1: true
-image: feature.png
+image: grafana-login.png
 contributor:
   name: Linode
 external_resources:
