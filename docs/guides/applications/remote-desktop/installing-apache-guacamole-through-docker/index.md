@@ -33,9 +33,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 After installation, you can pull the following Docker images for use in later steps:
 
-        docker pull guacamole/guacamole
-        docker pull guacamole/guacd
-        docker pull mysql/mysql-server
+    docker pull guacamole/guacamole
+    docker pull guacamole/guacd
+    docker pull mysql/mysql-server
 
 ## Setting up MySQL for Database Authentication
 
