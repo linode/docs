@@ -56,7 +56,7 @@ Before you're able to remotely connect to your server's desktop, a desktop envir
 
     For setups requiring more security, deploying Guacamole as a [reverse proxy with SSL encryption is highly recommended](https://guacamole.incubator.apache.org/doc/gug/proxying-guacamole.html).
 
-1.  Ensure to start the desktop environment the end of `.vnc/xstartup` otherwise only a gray screen will be displayed.
+1.  Ensure to start the desktop environment with `.vnc/xstartup` otherwise only a gray screen will be displayed.
 
         echo 'startxfce4 &' | tee -a .vnc/xstartup
 
@@ -123,7 +123,7 @@ If you have multiple displays running on the same Linode, increment the port num
 
     ![Guacamole Recent Connections](guac_recent.png)
 
-This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are many features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
+This guide aimed to streamline the installation process and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are many features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
 
 ## Is Apache Guacamole Secure?
 
