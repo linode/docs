@@ -1,16 +1,14 @@
 ---
 slug: installing-and-using-the-curlie-command-on-linux
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to use curlie, a frontend to curl that adopts the modernity and user-friendliness of HTTPie."
-og_description: "Learn how to use curlie, a frontend to curl that adopts the modernity and user-friendliness of HTTPie."
+  name: Nathaniel Stickman
+description: "Learn how to install and use curlie, a frontend to curl that provides the modernity and user-friendliness of HTTPie."
 keywords: ['linux curlie','httpie curlie','curl vs curlie']
 tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-23
+published: 2021-09-24
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 title: "Installing and Using the curlie Command on Linux"
 h1_title: "How to Install and Use the curlie Command on Linux"
 enable_h1: true
@@ -19,9 +17,7 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-[`curlie`](https://github.com/rs/curlie) is a front end to the ubiquitous command-line HTTP client `curl`. With `curlie`, you get all of the features and versatility of `curl` with the modernity and human-friendly interface of an HTTP client like HTTPie.
-
-In this guide, learn more about `curlie` and how to install and start using it on your Linux system.
+[Curlie](https://github.com/rs/curlie) is a frontend to the ubiquitous command-line HTTP client cURL. With curlie, you get all of the features and versatility of cURL with a modern and user-friendly interface similar to the HTTP client, [HTTPie](/docs/guides/installing-and-using-httpie-on-linux/). In this guide, you learn about the benefits of curlie and how to install and start using it on a Linux system.
 
 ## Before You Begin
 
@@ -49,13 +45,13 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 ## What is curlie?
 
-`curlie` is a command-line front end for `curl` that takes inspiration from HTTPie. You can learn more about HTTPie, an HTTP client designed with readability and modern web APIs in mind, from our [How to Install and Use HTTPie on Linux](/docs/guides/installing-and-using-httpie-on-linux/) guide.
+curlie is a command-line frontend for cURL that takes inspiration from HTTPie. HTTPie is a an HTTP client designed with readability and modern web APIs in mind. You can learn more about HTTPie from our [How to Install and Use HTTPie on Linux](/docs/guides/installing-and-using-httpie-on-linux/) guide.
 
 ### How Is Curlie Different From HTTPie
 
-Like HTTPie, `curlie` gives you an HTTP client ready to work with modern web APIs and focused on readable, human-friendly output. Unlike HTTPie, though, `curlie` keeps the performance and rich array of features you find in `curl`, making `curlie` more versatile and capable for general use.
+Like HTTPie, curlie provides an HTTP client that works with modern web APIs and is focused on displaying readable and user-friendly output. Unlike HTTPie, curlie keeps the performance and rich array of features you find in cURL. This makes curlie more versatile and appropriate for general use when compared to HTTPie.
 
-`curlie`, additionally, processes output on the fly. This makes it easier to debug streamed data with `curlie` compared to HTTPie, which processes output only when the request is completed.
+Additionally, curlie processes output on the fly. This makes it easier to debug streamed data with curlie. In contrast, HTTPie processes output when the request is completed.
 
 ## How to Install curlie
 
@@ -69,7 +65,7 @@ Like HTTPie, `curlie` gives you an HTTP client ready to work with modern web API
 64
     {{< /output >}}
 
-1. Take a look at the `curlie` [releases page](https://github.com/rs/curlie/releases/). Find the latest release, and locate the `.tar.gz` file matching your system based on the following:
+1. Take a look at the [curlie releases page](https://github.com/rs/curlie/releases/). Find the latest release, and locate the `.tar.gz` file matching your system based on the following:
 
     - If your system is 64-bit, copy the URL for the file ending in `linux_amd64.tar.gz`.
 
@@ -77,24 +73,24 @@ Like HTTPie, `curlie` gives you an HTTP client ready to work with modern web API
 
     Then, copy the URL for that matching `.tar.gz` file.
 
-1. Download the `.tar.gz` using a command like the following, replacing the URL with the one you copied in the above step.
+1. Download the `.tar.gz` using the command below. Replace the URL below with the one you copied in the previous step.
 
         curl -o curlie.tar.gz -L https://github.com/rs/curlie/releases/download/v1.6.0/curlie_1.6.0_linux_amd64.tar.gz
 
-1. Install `tar` if you do not already have it. Replace `apt` in the following command with `yum` if you are on **AlmaLinux** or **CentOS**; replace it with `dnf` if you are on **Fedora**.
+1. Install `tar` if you do not already have it. Replace `apt` in the command below with `yum` if you are using **AlmaLinux** or **CentOS**; replace it with `dnf` if you are using **Fedora**.
 
         sudo apt install tar
 
-1. Make a directory for the `curlie` files, then extract the files to that directory. The following command creates the new directory in the current user's home directory.
+1. Make a directory for the curlie files, then extract the files to that directory. The following command creates the new directory in the current user's home directory.
 
         mkdir ~/curlie
         tar -xvf curlie.tar.gz -C ~/curlie
 
-1. Move the `curlie` binary file into the path for your current user's shell.
+1. Move the curlie binary file into the path for your current user's shell.
 
         sudo mv ~/curlie/curlie /usr/local/bin
 
-1. Verify your installation. The output should show your system's current version of `curl`, which indicates that `curlie` is successfully acting as its front end.
+1. Verify your installation. The output should show your system's current version of cURL, which indicates that curlie is successfully acting as its frontend.
 
         curlie --version
 
@@ -104,13 +100,13 @@ curl 7.61.1 [...]
 
 ## How to Use curlie
 
-You can use `curlie` much like how you would use `curl`. Any `curl` options you provide on a `curlie` command get passed on for execution by `curl`. This means that you can use any `curl` command options in your `curlie` commands.
+You can use curlie much like how you use cURL. Any cURL options you provide on a `curlie` command get passed on for execution by cURL. This means that you can use any `curl` command options in your `curlie` commands.
 
-On the other hand, `curlie` also simplifies many `curl` operations, especially when it comes to handling headers and JSON data. This sets `curlie` up to be much better for working with web APIs than default `curl`.
+Curlie also simplifies many cURL operations, especially when it comes to handling headers and JSON data. This makes curlie much better for working with web APIs than the default `curl` command.
 
 ### Basic Usage
 
-The most basic usage is for `GET` requests. Like `curl`, `curlie` just requires the request's endpoint — you do not need to specify the request method with `GET`.
+The most basic usage of curlie is for GET requests. Like cURL, curlie just requires the request's endpoint — you do not need to specify the request method with `GET`.
 
 The example below fetches random dog facts from a web service. It also includes a URL parameter specifying the number of facts being requested.
 
@@ -131,11 +127,11 @@ Date: Thu, 19 Aug 2021 17:29:35 GMT
 Via: 1.1 vegur
 {{< /output >}}
 
-As you can see above, `curlie` automatically includes the response header information in the output. `curlie` also applies syntax highlighting to its output. You can see output from `curlie` contrasted with output from `curl` in the screenshot below:
+As you can see from the output, curlie automatically includes the response header information in the output. Curlie also applies syntax highlighting to its output. You can see output from curlie contrasted with output from cURL in the screenshot below:
 
 [![Syntax highlighting in curlie, vs curl](curlie-syntax-highlighting_small.png)](curlie-syntax-highlighting.png)
 
-The command interface for `curlie` starts to set itself apart from `curl` as requests get more complicated. The example below fetches a random "dad joke" using a `GET` request with required header data. While `curl` requires that you specify when you are providing header data, `curlie` can automatically parse header data included after the URL.
+The command interface for curlie sets itself apart from cURL as requests get more complicated. The example below fetches a random "dad joke" using a GET request with required header data. While cURL requires that you specify when you are providing header data, curlie can automatically parse header data included after the URL.
 
     curlie -L icanhazdadjoke.com/ 'Accept: application/json'
 
@@ -178,13 +174,13 @@ alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400,
 }
 {{< /output >}}
 
-Notice that the command above includes the `-L` option. This is a `curl` option to follow URL redirects. Also notice that `curlie` includes header information from the redirect response in its output, an example of how `curlie` processes output on the fly.
+Notice that the command above includes the `-L` option. This is a cURL option to follow URL redirects. Also notice that curlie includes header information from the redirect response in its output. This is an example of how curlie processes output on the fly.
 
-You can also see, in the example above, that `curlie` automatically formats the JSON portion of the response. `curl` only includes the formatting provided by the web service, but `curlie` can recognize JSON information and print it in an easy-to-read format.
+You can also see, in the example above, that curlie automatically formats the JSON portion of the response. cURL only includes the formatting provided by the web service, but curlie can recognize JSON information and print it in an easy-to-read format.
 
 ### Request Methods
 
-With `curlie`, you can specify request methods just by including the method designation — `GET`, `POST`, `PUT`, `DELETE`, etc — before the URL and after any options on the command. You can see this in the next example, which uses the `httpbin.org` web service to test the request.
+With curlie, you can specify request methods just by including the method designation — `GET`, `POST`, `PUT`, `DELETE`, etc — before the URL and after any options in the command. You can see this in the next example, which uses the `httpbin.org` web service to test the request.
 
     curlie DELETE httpbin.org/delete
 
@@ -223,9 +219,9 @@ Access-Control-Allow-Credentials: true
 
 ### Submitting JSON Data
 
-Submitting JSON data is made much simpler with `curlie`. It even shortcuts your having to put together a JSON object in the command line. Instead, `curlie` lets you enter the individual parameters, automatically compiling them into the necessary JSON format.
+Submitting JSON data is made much simpler with curlie. It even helps you format a JSON object on the command line. Curlie lets you enter the object's individual parameters, automatically compiling them into the necessary JSON format.
 
-Take this example with the "Shout Cloud" web service. The service takes a JSON object with a string and returns a JSON object with a capitalized version of that string.
+The example below queries the "Shout Cloud" web service. The service accepts a JSON object with a string and returns a JSON object with a capitalized version of that string.
 
     curlie POST api.shoutcloud.io/V1/SHOUT INPUT="hello, world!"
 
@@ -246,6 +242,6 @@ Via: 1.1 vegur
 
 ## Conclusion
 
-From the above examples you must be ready to get started working with `curlie` and prepared to take on most of the web service testing. For more help getting started, you can also check out the [GitHub page for `curlie`](https://github.com/rs/curlie), which provides additional usage examples.
+The examples in this guide should help you get started working with curlie and interacting with web services. For more help getting started, you can also check out the [GitHub page for curlie](https://github.com/rs/curlie), which provides additional usage examples.
 
-`curlie` also has many more features for fine-tuning HTTP requests for your needs. In addition to all `curl` options, `curlie` also has a suite of its own options. You can find them all using the `curlie --help` command, which provides a great resource to continue your journey deeper into the many features `curlie` has to offer.
+Curlie also has many more features for fine-tuning HTTP requests for your needs. In addition to all cURL options, curlie also has a suite of its own options. You can find them all using the `curlie --help` command. Browsing the available curlie options is a good place to start to dive deeper into the features it offers.
