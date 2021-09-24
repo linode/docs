@@ -45,7 +45,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 ## What is HTTPie?
 
-HTTPie is a command-line HTTP client similar to cURL. But unlike cURL, HTTPie is designed to make working with modern web APIs easier. HTTPie's syntax is geard towards working with web services. Its interface is built to be more readable and user-friendly than cURL. These features make HTTPie a great tool for testing, debugging, or otherwise working with web services from the command line.
+HTTPie is a command-line HTTP client similar to cURL. But unlike cURL, HTTPie is designed to make working with modern web APIs easier. HTTPie's syntax is geared towards working with web services. Its interface is built to be more readable and user-friendly than cURL. These features make HTTPie a great tool for testing, debugging, or otherwise working with web services from the command line.
 
 ### HTTPie vs curl
 
