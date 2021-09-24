@@ -109,7 +109,7 @@ You can enable this widget by adding the `--battery` flag when running the `btm`
 
 The following is not an exhaustive list, but here you can find some useful keys to keep in mind for navigating `bottom`. Note that you can use the **?** key in `bottom` to get a help menu, which shows you all keyboard shortcuts.
 
-- Navigate among the widgets using the **Shift** and arrow keys together. If the widget has a list, you should see an item in its list selected when the widget gets selected. Otherwise, you may not be able to tell that a widget is selected until you use one of the widget-related key combinations explained in the subsequent steps.
+- Navigate among the widgets using the **Shift** and arrow keys (or **w**, **a**, **s**, or **d** keys) together. If the widget has a list, you should see an item in its list selected when the widget gets selected. Otherwise, you may not be able to tell that a widget is selected until you use one of the widget-related key combinations explained in the subsequent steps.
 - Use the arrow keys to navigate the list in a widget, if the widget has one. This includes the **Disk**, **Temperatures**, and **Processes** widgets.
 - You can more quickly navigate to the beginning of a list using the **g** + **g** key combination and to its ending using **G**.
 - The **e** key allows you to expand a widget's contents to fill the display. You can see an example below with the **Network** widget. Pressing **e** again reduces the widget.
