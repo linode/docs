@@ -236,7 +236,7 @@ To get started with configuring a reverse proxy, follow these steps.
 
     This installs NGINX web server.
 
-2. Deactivate your virtual host. To deactivate your virtual host run 
+2. Deactivate your virtual host. To deactivate your virtual host run
 
         unlink /etc/nginx/sites-enabled/default
 
@@ -263,7 +263,7 @@ To get started with configuring a reverse proxy, follow these steps.
         ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
 
 6. Verify if NGINX is working:
-        
+
         nginx -t
 
 If you see a successful test message, NGINX reverse proxy is properly configured on your system.
