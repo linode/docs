@@ -14,10 +14,10 @@ modified_by:
 image: ConfigureApachewithSaltStack.png
 title: "Configure Apache with Salt Stack"
 external_resources:
-- '[Salt Apache State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache.html)'
-- '[Salt Apache_Conf State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html)'
-- '[Salt Apache_Site State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_site.html)'
-- '[Using Grains in SLS Modules](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt3.html#using-grains-in-sls-modules)'
+- '[Salt Apache State Module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.apache.html)'
+- '[Salt Apache_Conf State Module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.apache_conf.html)'
+- '[Salt Apache_Site State Module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.apache_site.html)'
+- '[Using Grains in SLS Modules](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt3.html#using-grains-in-sls-modules)'
 aliases: ['/applications/configuration-management/salt/configure-apache-with-salt-stack/','/applications/configuration-management/configure-apache-with-salt-stack/']
 ---
 
@@ -54,7 +54,7 @@ base:
     - apache-centos
 {{< /file >}}
 
-    This top file uses [compound matching](https://docs.saltstack.com/en/latest/topics/targeting/compound.html) to target your minions by operating system using Salt Grains. This will allow Salt to choose the appropriate Apache configuration depending on the Linux distribution. These matchers could be extended to be even more specific. For instance, if you wanted to only target minions with the ID of `web-server` that are running on Ubuntu, you can type `web* and G@os:Ubuntu`.
+    This top file uses [compound matching](https://docs.saltproject.io/en/latest/topics/targeting/compound.html) to target your minions by operating system using Salt Grains. This will allow Salt to choose the appropriate Apache configuration depending on the Linux distribution. These matchers could be extended to be even more specific. For instance, if you wanted to only target minions with the ID of `web-server` that are running on Ubuntu, you can type `web* and G@os:Ubuntu`.
 
 ### Pillar Files
 
@@ -188,7 +188,7 @@ Enable tune_apache:
 ...
 {{< /file >}}
 
-    This step takes the `tune_apache.conf` file you created in the [Configuration Files](/docs/applications/configuration-management/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html).
+    This step takes the `tune_apache.conf` file you created in the [Configuration Files](/docs/applications/configuration-management/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.apache_conf.html).
 
 1.  Create the necessary directories:
 
@@ -223,7 +223,7 @@ Enable tune_apache:
 ...
 {{< /file >}}
 
-    This step uses Salt's [apache_site module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_site.html) to disable the default Apache virtual host configuration file, and is the same as running `a2dissite` on a Debian-based machine.
+    This step uses Salt's [apache_site module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.apache_site.html) to disable the default Apache virtual host configuration file, and is the same as running `a2dissite` on a Debian-based machine.
 
 1.  Create your site's virtual host configuration file:
 
@@ -246,7 +246,7 @@ Enable tune_apache:
 ...
 {{< /file >}}
 
-    This step uses Salt's [apache module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache.html), (not to be confused with the `apache_site` module used in the previous step), to create your site's virtual host configuration file. The `this` variable signifies what would traditionally be include with `VirtualHost` within angle brackets in an Apache configuration file: `<VirtualHost *:80>`.
+    This step uses Salt's [apache module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.apache.html), (not to be confused with the `apache_site` module used in the previous step), to create your site's virtual host configuration file. The `this` variable signifies what would traditionally be include with `VirtualHost` within angle brackets in an Apache configuration file: `<VirtualHost *:80>`.
 
 1.  Enable your new virtual host configuration file:
 
@@ -485,7 +485,7 @@ Change DocumentRoot:
 ...
 {{< /file >}}
 
-    This step uses Salt's [apache module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache.html) to create your site's virtual host configuration file. The `this` variable signifies what would traditionally be include with `VirtualHost` within angle brackets in an Apache configuration file: `<VirtualHost *:80>`.
+    This step uses Salt's [apache module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.apache.html) to create your site's virtual host configuration file. The `this` variable signifies what would traditionally be include with `VirtualHost` within angle brackets in an Apache configuration file: `<VirtualHost *:80>`.
 
 1.  Transfer your `index.html` website file to your minion:
 

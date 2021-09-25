@@ -17,8 +17,8 @@ enable_h1: true
 contributor:
   name: Linode
 external_resources:
-  - '[Salt Masterless Walkthough](https://docs.saltstack.com/en/latest/topics/tutorials/quickstart.html)'
-  - '[Salt Fileserver Backend Walthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
+  - '[Salt Masterless Walkthough](https://docs.saltproject.io/en/latest/topics/tutorials/quickstart.html)'
+  - '[Salt Fileserver Backend Walthrough](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html)'
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
 dedicated_cpu_link: true
 aliases: ['/applications/media-servers/install-plex-media-server-with-salt/']
@@ -52,7 +52,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 1.  Install `salt-minion` via the Salt bootstrap script:
 
-        curl -L https://bootstrap.saltstack.com -o bootstrap_salt.sh
+        curl -L https://bootstrap.saltproject.io -o bootstrap_salt.sh
         sudo sh bootstrap_salt.sh
 
 1. The Salt minion will use the official [Plex Salt Formula](https://github.com/saltstack-formulas/plex-formula), which is hosted on the SaltStack GitHub repository. In order to use a Salt formula hosted on an external repository, you will need GitPython installed. Install GitPython:
