@@ -1233,6 +1233,7 @@ pid
 pidfile
 pipfile
 pipenv
+pipelined
 piwik
 pki
 plaintext
