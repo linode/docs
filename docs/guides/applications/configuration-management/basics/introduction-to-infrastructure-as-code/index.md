@@ -8,6 +8,7 @@ og_description: 'This guide discusses the history, concepts, rationale behind In
 keywords: ['IaC','infrastructure','configuration','automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-03
+image: IntroInfastructureAsCode.png
 modified_by:
   name: Linode
 title: "Introducing Infrastructure as Code"
