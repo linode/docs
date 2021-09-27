@@ -20,7 +20,7 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-JavaScript supports functional programming, including closures, recursion, and lambdas (anonymous functions). Given JavaScript’s weak, dynamic typing, JavaScript functions are prone to several kinds of errors. For example, you can call a JavaScript function with arguments it doesn’t know how to handle, and it blithely tries to process them. The result might be that the function returns a nonsense result, or that it throws an error. Unfortunately, the error won’t usually be found until the program runs.
+JavaScript supports functional programming, including closures, recursion, and lambdas (anonymous functions). Given JavaScript’s weak, dynamic typing, JavaScript functions are prone to several kinds of errors. For example, you can call a JavaScript function with arguments it doesn't know how to handle, and it blithely tries to process them. The result might be that the function returns a nonsense result, or that it throws an error. Unfortunately, the error won’t usually be found until the program runs.
 
 ## Declaring Functions
 
@@ -78,7 +78,7 @@ The transpiled **FtoC.js** can run even though the compiler generated an error, 
 
 ## Using Generics
 
-If you want to write a function with no type attributes, then (as we mentioned earlier) the types default to any. This can be convenient when the function doesn’t care about its variables, but it may make things harder for code that consumes the function’s return value.
+If you want to write a function with no type attributes, then (as we mentioned earlier) the types default to any. This can be convenient when the function doesn't care about its variables, but it may make things harder for code that consumes the function’s return value.
 
 There’s a way around this: [generics](https://www.typescriptlang.org/docs/handbook/2/functions.html#generic-functions), expressed with angle brackets. You can use generics to tie the type of one value to another, as in this example from the TypeScript documentation.
 
@@ -97,7 +97,7 @@ In the example above, TypeScript infers the type of <Type> from the input array 
 
 You can also constrain generics using an [extends](https://www.typescriptlang.org/docs/handbook/2/functions.html#constraints) clause.
 
-## Optional Paremeters
+## Optional Parameters
 
 JavaScript lets you give function parameters default values, which makes them optional. TypeScript supports that, but also lets you declare optional parameters without setting their default values. This is done by adding a ? after the variable name.
 

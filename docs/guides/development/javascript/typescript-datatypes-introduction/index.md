@@ -50,7 +50,7 @@ const b2 = true;            //inferred
 let b3: boolean = !true;    //both (!true == false)
 {{</ file >}}
 
-Note that when this block of code is compiled to JavaScript, all the type annotations are stripped out. If you’re targeting the lowest levels of JavaScript, both const and let are changed to var; if you’re targeting ES6(2015) or greater, they are left as written. In TypeScript and ES6+, let is a block-scoped version of var, and const creates a block-scoped variable that can’t be changed once it is bound.
+Note that when this block of code is compiled to JavaScript, all the type annotations are stripped out. If you’re targeting the lowest levels of JavaScript, both `const` and `let` are changed to var; if you’re targeting ES6(2015) or greater, they are left as written. In TypeScript and ES6+, let is a block-scoped version of `var`, and `const` creates a block-scoped variable that can’t be changed once it is bound.
 
 **JavaScript**
 
@@ -73,7 +73,7 @@ var b2 = true; //inferred
 var b3 = !true; //both
 {{</ file >}}
 
-You don’t actually get an immutable variable when you use const. To do that, declare an object member readonly.
+You don’t actually get an immutable variable when you use `const`. To do that, declare an object member readonly.
 
 ## Any
 
@@ -83,11 +83,11 @@ A variable of type **any** can hold any type. The principal reason to use it is 
 var a1: any;
 {{</ file >}}
 
-There’s a secondary reason to use any, which is to write a function that doesn’t care about its input type. It’s much better to use a Generic function for that, but should you wish you wish you can:
+There’s a secondary reason to use any, which is to write a function that doesn't care about its input type. It’s much better to use a Generic function for that, but should you wish you wish you can:
 
 {{< file >}}
 function wideOpen(x: any) {
-//do something to x that doesn’t depend on its type
+//do something to x that doesn't depend on its type
 return x;
 }
 {{</ file >}}

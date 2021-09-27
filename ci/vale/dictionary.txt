@@ -3,6 +3,7 @@ abell
 absecon
 abspath
 aconf
+accessors
 adc
 addon
 addons
@@ -555,6 +556,7 @@ geolocating
 geolocation
 getmail
 getpwent
+getters
 gfx
 gfxmode
 gibibytes
@@ -721,6 +723,7 @@ infographic
 ingressgateway
 ini
 initializer
+initializers
 initramfs
 initrd
 inittab
@@ -1256,6 +1259,7 @@ phpmyadmin
 phusion
 pid
 pidfile
+pingable
 pipfile
 pipenv
 piwik
@@ -1512,6 +1516,7 @@ setattr
 setenvif
 setguid
 setsebool
+setters
 setuid
 setuptools
 Severalnines
@@ -1716,6 +1721,7 @@ traefik
 transcode
 transcoder
 transcoding
+transpiled
 trello
 triaging
 truststore

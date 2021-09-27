@@ -224,7 +224,7 @@ Class 'Ball' incorrectly implements interface 'Pingable'.
 - `public`: This is the default visibility. Public members can be accessed from anywhere.
 - `protected`: Protected members can only be accessed from subclasses of the class where they are declared.
 - `private`: Private members can only be accessed from the class where they are declared.
-- `static`: Static members are common to all instances of a class, instead of being unique to each instance. TypeScript doesn’t have or need static classes: simply use a free (non-class) variable or function. The static attribute can be combined with any of the other visibility attributes.
+- `static`: Static members are common to all instances of a class, instead of being unique to each instance. TypeScript doesn't have or need static classes: simply use a free (non-class) variable or function. The static attribute can be combined with any of the other visibility attributes.
 - Generic Classes: Like functions and interfaces, classes may use generics, denoted by using a marker inside angle brackets after the class name:
 
     {{< file >}}
