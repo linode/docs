@@ -52,6 +52,7 @@ High Memory instances are available across [all regions](https://www.linode.com/
 
 Pricing starts at $60 for a High Memory Compute Instance with 2 vCPU cores, 24GB memory, and 20GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-high-memory) for additional plans and their associated costs.
 
+{{< content "instance-comparison-shortguide" >}}
 
 ## Additional Technical Specifications
 
