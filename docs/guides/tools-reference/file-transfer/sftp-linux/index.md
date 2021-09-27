@@ -30,7 +30,7 @@ SFTP, sometimes referred to as the *Secure File Transfer Protocol* was developed
 
 SFTP is a file management protocol rather than a pure file transfer utility. It also provides the ability to delete, rename, and move files, and create, list, and delete directories. SFTP requires the use of a secure channel, which it uses to carry out all operations. A number of protocols can provide this channel, but in practice, SSH is almost always used. When the secure channel has authenticated the client, SFTP can be used.
 
-An enhancement over earlier protocols is that files are uploaded along with their basic attributes, such as timestamps. SFTP shares its default port 22 with SSH. This single-port architecture means it is easier to use and secure than other similar protocols. SFTP allows pipelined requests and asynchronous responses and uses binary communications. This is advantageous for security, but makes it difficult to log. Unfortunately, there are occasional compatibility issues between implementations from different vendors.
+An enhancement over earlier protocols is that files are uploaded along with their basic attributes, such as timestamps. SFTP shares its default port `22` with SSH. This single-port architecture means it is easier to use and secure than other similar protocols. SFTP allows pipelined requests and asynchronous responses and uses binary communications. This is advantageous for security, but makes it difficult to log. Unfortunately, there are occasional compatibility issues between implementations from different vendors.
 
 SFTP should not be confused with the original *Simple File Transfer Protocol*, which was also abbreviated as SFTP. This older protocol was never widely used and has fallen out of favor.
 
@@ -78,7 +78,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 Linux implements the SFTP protocol using the `sftp` utility. Other SFTP clients are also available, but this guide only covers `sftp`. This utility is installed as part of the `ssh` package.
 
-Before performing any file operations, first, use `sftp` to establish a connection to the remote computer. To connect successfully, you must have the appropriate privileges to access the remote system. While logged in to the local system, follow the steps below to establish a connection.
+Before performing any file operations, first, use `sftp` to establish a connection to the remote computer. To connect successfully, you must have the appropriate privileges to access the remote system. While logged in to the local system, follow the steps below to establish a connection:
 
 1. Enter the `sftp` command along with the username of the target account and the IP address of the remote system. Separate the username and address using a `@` symbol.
 
@@ -167,7 +167,7 @@ Remote working directory: /home/userid
 
         cd wpbackup
         cd ..
-1. The `cd` command can also be used with an absolute pathname, as shown in the example below.
+1. The `cd` command can also be used with an absolute pathname, as shown in the example below:
 
         cd /usr/bin
 1. Return to the remote home directory at any time by entering `cd` without any arguments.
@@ -176,7 +176,7 @@ Remote working directory: /home/userid
 1. To list the contents of the remote working directory, use the `ls` command.
 
         ls
-1. These commands can all be preceded with a `l` to execute the command locally. To change the local working directory, use the `lcd` command. The command `lpwd` displays the local working directory. `lls` lists the contents of the local working directory.
+1. These commands can all be preceded with an `l` to execute the command locally. To change the local working directory, use the `lcd` command. The command `lpwd` displays the local working directory. `lls` lists the contents of the local working directory.
 
         lcd accounts
         lpwd
