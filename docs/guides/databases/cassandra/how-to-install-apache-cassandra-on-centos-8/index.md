@@ -7,6 +7,7 @@ description: 'This guide presents instructions to deploy a scalable and developm
 keywords: ["cassandra", " apache cassandra", " centos 7", "CentOS8", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-30
+image: L_Cass_on_CentOS8.png
 modified: 2020-01-30
 modified_by:
   name: Linode
