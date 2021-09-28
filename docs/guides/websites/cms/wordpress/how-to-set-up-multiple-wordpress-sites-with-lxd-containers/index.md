@@ -9,6 +9,7 @@ keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtu
 tags: ["ubuntu", "php", "wordpress", "cms", "container", "nginx", "apache", "database", "mysql", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-16
+image: MultipleWPsites_LXDcont.png
 modified_by:
   name: Linode
 title: "How to Set Up Multiple WordPress Sites with LXD Containers"
