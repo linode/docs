@@ -3,8 +3,8 @@ slug: running-a-mail-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to run an email server on a Linode. It shows how to install the mail service, configure components, create DNS records and SSL certificates, and manage users.'
-og_description: 'Take control of your email with your own mail server. This guide explains how to install a mail server on your Linode, configure the necessary components and users, and send and receive your first emails.'
+description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
+og_description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
@@ -30,6 +30,10 @@ In an effort to fight spam, Linode restricts outbound connections on ports 25, 4
 If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/platform/manager/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
+
+{{< note >}}
+If using multiple domains to send mail from a single Linode, rDNS will only need to be configured for one of the domains actively sending mail.
+{{< /note >}}
 
 ### Benefits
 

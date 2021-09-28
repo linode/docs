@@ -3,7 +3,7 @@ slug: install-mastodon-on-ubuntu-1604
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installation and basic usage guide of Mastodon, an open source alternative to Twitter.'
+description: "Installation and basic usage guide of Mastodon, an open source alternative to Twitter."
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ modified: 2018-08-16
 modified_by:
   name: Linode
 published: 2018-08-16
-title: 'How to Install Mastodon on Ubuntu 16.04'
+title: "How to Install a Mastodon Server on Ubuntu 16.04"
+h1_title: "Installing a Mastodon Server on Ubuntu 16.04"
+enable_h1: true
 external_resources:
 - '[Mastodon GitHub - Docker Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Docker-Guide.md)'
 - '[Mastodon GitHub - Production Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Production-guide.md)'
@@ -24,6 +26,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 16.04
+deprecated: true
 ---
 
 ## What is Mastodon?
@@ -86,7 +89,7 @@ When Certbot is run, you generally pass a command with the [`--deploy-hook` opti
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

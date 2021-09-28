@@ -53,6 +53,11 @@
 
 .kind-home .carousel--square {
     --carousel-slide-height: var(--carousel-slide-width);
+    min-height: var(--carousel-slide-height);
+}
+
+.kind-home .carousel {
+    min-height: var(--carousel-slide-height);
 }
 
 /* The Q&A slider. */

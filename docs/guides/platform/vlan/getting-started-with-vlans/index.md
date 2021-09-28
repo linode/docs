@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-28
 modified_by:
   name: Linode
-title: Getting Started with VLANs
-description: ""
+title: "Getting Started with VLANs"
+description: "An overview of Linode's VLAN service. Learn what VLANs are, how they work, how they're configured, and why you'd use one."
 ---
 
 Linode VLANs (Virtual Local Area Network) are a completely free solution available to Linode Services used for enabling private networking in the cloud. Here are a few key features of VLANs:

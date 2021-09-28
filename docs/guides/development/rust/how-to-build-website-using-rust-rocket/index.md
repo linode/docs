@@ -3,8 +3,8 @@ slug: build-a-website-using-rust-and-the-rocket-web-framework
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Rocket is a flexible and efficient web framework for the Rust programming language. It aims to capitalize on the speed and memory safety of Rust while providing a clean and straightforward approach to web application development. This guide shows you how to install the Rocket web framework and get started using it.'
-og_description: 'Rocket is a flexible and efficient web framework for the Rust programming language. It aims to capitalize on the speed and memory safety of Rust while providing a clean and straightforward approach to web application development. This guide shows you how to install the Rocket web framework and get started using it.'
+description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
+og_description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
 keywords: ['rocket','rust','functional programming','web application','app framework','handlebars templates']
 tags: ['rust', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

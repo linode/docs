@@ -5,9 +5,9 @@ author:
   email: docs@linode.com
 description: 'Shortguide that describes how to add a service to Linode Managed.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
+modified: 2021-07-28
 modified_by:
-  name: Heather Zoppetti
+  name: Linode
 published: 2020-07-20
 title: Add a Service to Linode Managed
 keywords: ["linode managed"]
@@ -42,4 +42,4 @@ To add a new monitored service to Linode Managed:
 
 1.  Fill out the form and click the **Add** button.
 
-1.  Once added, the monitored service will initially appear as *Pending*. Linode Support will start monitoring the service in a few minutes--if the service is available, the dashboard will then indicate that the service's status is **Verified**.
+1.  Once added, the monitored service will initially appear as *Pending*. Linode Support will start monitoring the service in a few minutes--if the service is available, the dashboard will then indicate that the service's status is **Verified**. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](/docs/guides/linode-managed/#configuring-firewall-rules)).

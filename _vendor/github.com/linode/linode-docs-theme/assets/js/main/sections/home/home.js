@@ -7,7 +7,7 @@ var debug = 0 ? console.log.bind(console, '[home]') : function() {};
 
 const searchName = 'search:data-home';
 
-export function newHomeController(searchConfig, developersItems) {
+export function newHomeController(searchConfig, staticData) {
 	debug('newHomeController');
 
 	const dispatcher = newDispatcher();
@@ -28,33 +28,64 @@ export function newHomeController(searchConfig, developersItems) {
 	// No filters are currently applied, and the order will be the order from Algolia.
 	const sectionNames = [ 'guides', 'blog', 'resources', 'marketplace', 'qa' ];
 
+	const withSectionConfigs = function(callback) {
+		sectionNames.forEach((name) => {
+			let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === name);
+			if (!sectionConfig) {
+				throw `no index with name ${name} found`;
+			}
+			callback(sectionConfig);
+		});
+	};
+
 	// Create a new pager for the given el and items.
 	// pageSize is the number of items per page.
 	// mobileOverlap is how much of the third tile we show (to indicate swipe).
-	const newPager = function(pageSize, el, items, alwaysShowNavigation = false) {
+	const newPager = function(pageSize, el, items = null) {
 		if (!el) {
 			throw 'pager element must be provided';
 		}
 
-		if (!items) {
-			throw 'items must be provided';
-		}
+		debug('newPager', el);
 
-		debug('newPager', el, items);
+		if (!items) {
+			// Set up some temporary placeholders. The real data will arrive later.
+			items = [];
+
+			for (let i = 0; i < tilesAlgoliaPreloadItems; i++) {
+				// The real data arrives later.
+				let href = `#dummy${i}`;
+				let item = { linkTitle: '', href: href, objectID: href };
+				item.excerptTruncated = function() {};
+
+				items.push(item);
+			}
+		}
 
 		let pager = {
 			index: 0, // current slide, zero based.
 			numPages: 0, // The total number of pages.
 			pageSize: pageSize, // The number of slides per page.
-			showNavigation: alwaysShowNavigation, // Whether to show the prev/next and the progress bar.
+			showNavigation: false, // Whether to show the prev/next and the progress bar.
 			el: el, // The carousel DOM element.
 			items: items // The items; an item must have a linkTitle and an href set.
 		};
 
 		pager.toggleShowNavigation = function(show) {
-			if (!alwaysShowNavigation) {
-				this.showNavigation = show;
-			}
+			this.showNavigation = show;
+		};
+
+		// We set up some dummy initial on component init and receive the real items a little bit later.
+		pager.setItems = function(items) {
+			this.items = items;
+			this.initItems();
+		};
+
+		pager.initItems = function() {
+			this.el.style.setProperty('--carousel-slide-count', this.items.length);
+
+			this.refreshPageSize();
+			this.adjustIndex(0);
 		};
 
 		// adjustIndex by incr number of slides in either direction.
@@ -128,10 +159,7 @@ export function newHomeController(searchConfig, developersItems) {
 		pager.el.style.setProperty('--carousel-page-size--lg', pageSizeLg);
 		pager.el.style.setProperty('--carousel-page-size--md', pageSizeMd);
 
-		pager.el.style.setProperty('--carousel-slide-count', pager.items.length);
-
-		pager.refreshPageSize();
-		pager.adjustIndex(0);
+		pager.initItems();
 
 		if (isTouchDevice()) {
 			newSwiper(el, function(direction) {
@@ -164,7 +192,6 @@ export function newHomeController(searchConfig, developersItems) {
 			sectionMeta: {},
 
 			// Loading state
-			commonDataLoaded: false,
 			loaded: false
 		},
 
@@ -172,12 +199,7 @@ export function newHomeController(searchConfig, developersItems) {
 			debug('init');
 
 			var searchRequests = [];
-			sectionNames.forEach((name) => {
-				let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === name);
-				if (!sectionConfig) {
-					throw `no index with name ${name} found`;
-				}
-
+			withSectionConfigs((sectionConfig) => {
 				let filters = sectionConfig.filters || '';
 				searchRequests.push({
 					page: 0,
@@ -196,6 +218,29 @@ export function newHomeController(searchConfig, developersItems) {
 					searchName
 				);
 			});
+
+			var self = this;
+
+			return function() {
+				withSectionConfigs((sectionConfig) => {
+					let name = sectionConfig.name;
+					let el = self.$refs[`carousel-${name}`];
+					let pager = newPager(tilesPageSize, el);
+					self.data.sectionTiles[name] = pager;
+				});
+
+				self.data.productsTiles = newPager(
+					productsStripPageSize,
+					self.$refs[`carousel-products`],
+					staticData.productItems
+				);
+				// Make the developers pager the same size as the products pager.
+				self.data.developersTiles = newPager(
+					productsStripPageSize,
+					self.$refs[`carousel-developers`],
+					staticData.developerItems
+				);
+			};
 		},
 
 		// onNavChange triggers on screen resize or e.g. if the explorer opens/closes.
@@ -220,68 +265,6 @@ export function newHomeController(searchConfig, developersItems) {
 			}
 		},
 
-		// receiveCommonData receives the common search data also used in other components,
-		// such as section metadata and facets.
-		receiveCommonData: function(results) {
-			debug('receiveCommonData', results);
-
-			if (this.commonDataLoaded) {
-				return;
-			}
-
-			this.commonDataLoaded = true;
-
-			if (!results.blankSearch.isLoaded()) {
-				throw 'missing data';
-			}
-
-			let meta = results.metaSearch;
-			let sectionsResults = results.blankSearch.results;
-
-			debug('receiveCommonData: meta', meta);
-
-			let productsSection = sectionsResults.findSectionByName('products');
-			let productsFacets = productsSection.getFacet('section.lvl2');
-			let productsItems = [];
-
-			for (var k in productsFacets) {
-				let count = productsFacets[k];
-				let m = meta.getSectionMeta(k);
-				if (m) {
-					productsItems.push({
-						title: m.title,
-						linkTitle: m.linkTitle || m.title,
-						href: m.href,
-						count: count,
-						icon: m.thumbnail
-					});
-				}
-			}
-			productsItems.sort((a, b) => {
-				return a.title < b.title ? -1 : 1;
-			});
-
-			debug('receiveCommonData: productsItems', productsItems);
-
-			this.data.sectionMeta['products'] = meta.getSectionMeta('products');
-			sectionNames.forEach((name) => {
-				this.data.sectionMeta[name] = meta.getSectionMeta(name);
-			});
-			this.data.productsTiles = newPager(
-				productsStripPageSize,
-				this.$refs[`carousel-products`],
-				productsItems,
-				false
-			);
-			// Make the developers pager the same size as the products pager.
-			this.data.developersTiles = newPager(
-				productsStripPageSize,
-				this.$refs[`carousel-developers`],
-				developersItems,
-				false
-			);
-		},
-
 		receiveData: function(results) {
 			debug('receiveData', results);
 			var self = this;
@@ -292,9 +275,7 @@ export function newHomeController(searchConfig, developersItems) {
 				let sectionConfig = sectionConfigs[i];
 				let result = results[i];
 				let name = sectionConfig.name;
-				let el = self.$refs[`carousel-${name}`];
-				let pager = newPager(tilesPageSize, el, result.hits);
-				self.data.sectionTiles[name] = pager;
+				self.data.sectionTiles[name].setItems(result.hits);
 			}
 
 			this.data.loaded = true;

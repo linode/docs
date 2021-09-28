@@ -8,7 +8,7 @@ keywords: ["linode managed", "service monitoring"]
 tags: ["linode platform","cloud manager","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-managed/','/uptime/linode-managed/','/platform/linode-managed-classic-manager/','/platform/linode-managed/']
-modified: 2021-06-25
+modified: 2021-07-28
 modified_by:
   name: Linode
 published: 2019-09-04
@@ -116,7 +116,7 @@ The `/root/.ssh/` directory may not exist yet. If this is the case, you must cre
 
 1.  Save the changes to the `authorized_keys` file and exit your text editor. In the `nano` editor, enter **Control-X**, and then **Y** to confirm.
 
-1. You have successfully added Linode's public key for the `root` user. If you'd like, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
+1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
 
 #### Installing as Another User
 
@@ -168,7 +168,7 @@ The `/home/example_user/.ssh/` directory may not exist yet. If so, create it wit
 
 1.  Save the changes to the `authorized_keys` file and exit your text editor. In the `nano` editor, enter **Control-X**, and then **Y** to confirm.
 
-1. You have successfully added Linode's public key for the `root` user. If you'd like, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
+1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
 
 ### Specifying Linode SSH Settings
 
@@ -273,6 +273,80 @@ Linode Managed monitors the *services* running on your Linodes. Setting up servi
 ### Removing Monitors
 
 {{< content "managed-remove-service-shortguide" >}}
+
+## Configuring Firewall Rules
+
+If a firewall is configured on your Linode Compute Instance, you may need to add or modify your firewall rules to allow access from our infrastructure. The exact procedure will vary based on the firewall software in use. See the following guides for help configuring firewalls:
+
+- [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
+- [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+- [Controlling Network Traffic with iptables - A Tutorial](/docs/guides/control-network-traffic-with-iptables/)
+
+### Incident Response Infrastructure IPs
+
+Allow the following hostnames and IPs so that our incident response team can access your server.
+
+    blackbox1-dallas.linode.com 50.116.31.27
+    blackbox1-newark.linode.com 66.175.214.213
+
+### Monitor Infrastructure IPs
+
+Allow the following hostnames and IPs so that our infrastructure can perform the checks configured on your monitors.
+
+-   **Atlanta:**
+
+        monitor1-atlanta.linode.com 2600:3c02::f03c:91ff:feae:8540 66.228.57.137
+        monitor2-atlanta.linode.com 2600:3c02::f03c:91ff:feae:69d5 50.116.38.168
+
+-   **Dallas:**
+
+        monitor1-dallas.linode.com 2600:3c00::f03c:91ff:feae:8351 50.116.25.212
+        monitor2-dallas.linode.com 2600:3c00::f03c:91ff:feae:47d9 198.58.98.236
+
+-   **Frankfurt:**
+
+        monitor1-frankfurt.linode.com 2a01:7e01::f03c:91ff:fe26:e120 139.162.128.25
+        monitor2-frankfurt.linode.com 2a01:7e01::f03c:91ff:fe26:8a6a 139.162.128.26
+
+-   **Fremont:**
+
+        monitor1-fremont.linode.com 2600:3c01::f03c:91ff:feae:85e2 50.116.11.198
+        monitor2-fremont.linode.com 2600:3c01::f03c:91ff:feae:47d3 66.175.221.50
+
+-   **London:**
+
+        monitor1-london.linode.com 2a01:7e00::f03c:91ff:feae:6965 176.58.113.114
+        monitor2-london.linode.com 2a01:7e00::f03c:91ff:feae:6924 178.79.189.96
+
+-   **Mumbai:**
+
+        monitor1-mum1.linode.com 2400:8904::f03c:91ff:fe5d:25b5 172.105.41.4
+        monitor2-mum1.linode.com 2400:8904::f03c:91ff:fe5d:2595 172.105.42.4
+
+-   **Newark:**
+
+        monitor1-newark.linode.com 2600:3c03::f03c:91ff:feae:832c 198.74.56.5
+        monitor2-newark.linode.com 2600:3c03::f03c:91ff:feae:4766 198.74.59.104
+
+-   **Singapore:**
+
+        monitor1-singapore.linode.com 2400:8901::f03c:91ff:fe33:54f2 103.3.60.25
+        monitor2-singapore.linode.com 2400:8901::f03c:91ff:fe33:5401 103.3.60.26
+
+-   **Sydney:**
+
+        monitor1-syd1.linode.com 2400:8907::f03c:92ff:fe67:b794 172.105.176.9
+        monitor2-syd1.linode.com 2400:8907::f03c:92ff:fe67:b74f 172.105.162.10
+
+-   **Tokyo:**
+
+        monitor1-shg1.linode.com 2400:8902::f03c:91ff:fe2c:ff57 139.162.65.25
+        monitor2-shg1.linode.com 2400:8902::f03c:91ff:fe2c:6eda 139.162.65.26
+
+-   **Toronto:**
+
+        monitor1-tor1.linode.com 2600:3c04::f03c:91ff:fe82:1151 172.105.0.13
+        monitor2-tor1.linode.com 2600:3c04::f03c:91ff:fe82:de74 172.105.14.4
 
 ## Optional: Installing cPanel
 

@@ -3,8 +3,7 @@ slug: enabling-https-using-certbot-with-nginx-on-fedora
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide will show you how to install and use Certbot with NGINX on Fedora. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
-og_description:  "This guide will show you how to install and use Certbot with NGINX on Fedora. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
+description: "Learn how to install and use Certbot with NGINX on Fedora, which automates the process adding TLS/SSL to your websites."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
 tags: ['ssl','nginx', 'fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

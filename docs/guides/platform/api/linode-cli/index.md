@@ -3,16 +3,15 @@ slug: linode-cli
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: The Linode CLI provides a simplified interface to the Linode API. This guide shows how to install the CLI and describes how to perform basic tasks from the command line.
-og_description: The Linode CLI provides a simplified interface to the Linode API. This guide shows how to install the CLI and describes how to perform basic tasks from the command line.
+description: "Learn how to install the Linode CLI and perform basic tasks from the command line in this step-by-step walkthrough."
 keywords: ["linode api", "linode cli", "python cli"]
-aliases: ['/platform/api/linode-cli/','/cli/','/platform/linode-cli/','/platform/api/using-the-linode-cli/']
+aliases: ['/platform/api/linode-cli/','/cli/','/platform/linode-cli/','/platform/api/using-the-linode-cli/', '/guides/using-the-linode-cli/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-03-05
 modified_by:
   name: Linode
 published: 2018-06-29
-title: Using the Linode CLI
+title: An Overview of the Linode CLI
 external_resources:
   - '[Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/)'
   - '[Linode API Documentation](https://developers.linode.com/)'

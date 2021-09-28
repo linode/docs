@@ -3,8 +3,8 @@ slug: how-to-create-website-using-laravel
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Laravel is a PHP web framework that scales to your needs, from simple to advanced design. This guide shows you how to create a website using the Laravel framework, host it on your server, and use NGINX as the web server.'
-og_description: 'Laravel is a PHP web framework that scales to your needs, from simple to advanced design. This guide shows you how to create a website using the Laravel framework, host it on your server, and use NGINX as the web server.'
+description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
+og_description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -126,7 +126,7 @@ Unless noted otherwise, all subsequent commands in this guide assume you are sti
 
 This section shows you how to start working with Laravel's *controllers* and *views* to make your own website.
 
-1. Follow the steps in the [Create a Laravel Project](/docs/guides/how-to-build-website-laravel/#create-a-laravel-project) section above to get started with a base project.
+1. Follow the steps in the [Create a Laravel Project](#create-a-laravel-project) section above to get started with a base project.
 
 1. This example builds a website with a **Home** page and an **About** page. Create the routes for each by opening the routes file — `~/example-app/routes/web.php` — and add the following contents:
 
@@ -234,7 +234,7 @@ Before creating your layout template, you need to create the `layouts` subdirect
 
     Each of these view templates first declares that it extends the `master` layout template. This lets each work within the layout, reducing the amount of code you have to rewrite and making sure the pages are consistent. Each view defines its main contents as being part of the `content` section, which was defined in the `master` layout.
 
-1. Run the application using the steps given at the end of the [Create a Laravel Project](/docs/guides/how-to-build-website-laravel/#create-a-laravel-project) section above.
+1. Run the application using the steps given at the end of the [Create a Laravel Project](#create-a-laravel-project) section above.
 
     You can now visit the website on `localhost:8000`.
 

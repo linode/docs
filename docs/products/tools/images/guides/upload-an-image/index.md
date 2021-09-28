@@ -8,11 +8,15 @@ description: "How to upload an image with Linode Images."
 
 {{< content "images-ga-pricing-update-shortguide" >}}
 
-## Requirements and Considerations
+## Limits and Considerations
+
+### Overall
+
+{{< content "images-limits-shortguide" >}}
+
+### Specific to Uploading an Image from a File
 
 {{< content "upload-image-requirements-shortguide" >}}
-
-Additional overall limits of the Images service are outlined on the [Images Overview](/docs/products/tools/images/#limits) page.
 
 ## Creating or Obtaining an Image File
 

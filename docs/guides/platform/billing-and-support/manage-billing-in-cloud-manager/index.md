@@ -10,13 +10,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-10-25
+modified: 2021-08-25
 title: How to Manage Billing in the Linode Cloud Manager
 h1_title: Managing Billing in the Cloud Manager
 enable_h1: true
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/']
 ---
-
-
 
 We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
 
@@ -39,7 +38,7 @@ Most information and settings pertaining to billing are located within the [Bill
 
 1.  Click on the **Account** link on the left menu, which displays the [Billing Info](https://cloud.linode.com/account/billing) page.
 
-![Screenshot of the Billing Info page showing an example customer with a $24 negative balance and $9 of accrued charges.](account-billing.png "Billing Info")
+![The Billing Info page showing an example customer with a $24 negative balance and $9 of accrued charges.](account-billing.png)
 
 This page contains several sections:
 
@@ -62,48 +61,50 @@ You can manually add funds to your account at any time. Manual payments can be u
 1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
 1.  Click the **Make a Payment** button on the top right of the page, which opens the **Make a Payment** panel.
 1.  Enter the amount of money you would like to add to your account in the **Payment Amount** field. For your reference, the current balance on the account is displayed above this field.
-1.  **To pay with the credit card on file for the account:** Confirm the card details under the **Pay via credit card** section, enter the card's security code, and click the **Pay via Credit Card** button.
+1.  **To pay with a saved payment method:** Select the saved payment method you wish to use in the  **Payment methods** section and click the **Pay now** button.
 
     **To pay with PayPal:** Click the **PayPal** button towards the bottom of the panel. This will open up PayPal's own payment form, where you can log in to your PayPal account and select your payment method. Once finished, you will be returned to the Cloud Manager.
 
-    **To pay with Google Pay:** Click the **Google Pay** button towards the bottom of the panel. This will open up Google's own payment form where you can log in to your Google account and select your payment method. Once finished, you will be returned to the Cloud Manager.
+    **To pay with an new Google Pay account or method:** Click the **Google Pay** button towards the bottom of the panel. This will open up Google's own payment form where you can log in to your Google account and select your payment method. Once finished, you will be returned to the Cloud Manager.
 
-{{< note >}}
 The payment may take a few minutes to be applied to your account.
-{{</ note >}}
 
-## Updating the Credit Card
+## Adding a New Payment Method
 
-A single credit or debit card can be active on your account. To update this card or replace it with a new card, follow these steps.
+New payment methods can be added to an account through the Cloud Manager. Up to **8 payment methods** can be active on an account at any given time, including multiple credit cards or Google Pay methods.
 
 1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
-1.  The address affiliated with new card must match the account's billing contact information. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
-1.  In the **Payment Method** section, click the ellipsis menu next to the credit card and select **Edit** from the dropdown menu. This opens the **Edit Credit Card** panel.
-1.  Enter the new credit card number, expiration date, and the security code (CVV).
-1.  Click **Save Credit Card** to keep these changes.
+1.  If adding a credit card directly (not through Google Pay), it must match the account's billing contact information and address. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
+1.  In the **Payment Method** section, click the *Add Payment Method* link. This opens the **Add Payment Method** panel.
+1.  Complete the form according to the payment method you wish to add.
+
+    -  **Credit card:**
+        1.  Enter the credit card number, expiration date, and the security code (CVV).
+        1.  Click **Add Credit Card** to save the new card.
+
+        {{< note >}}
+  A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
+  {{< /note >}}
+
+    -  **Google Pay:**
+        1.  Click the **Google Pay** icon/button to open Google's own Google Pay form.
+        1.  Log in to your Google account or select from accounts you've already logged into.
+        1.  Select the credit card or PayPal account you wish to use for paying invoices on the account.
+        1.  Press **continue** (or otherwise complete the form) to be taken back to the Cloud Manager.
 
 {{< note >}}
 This process does not immediately charge any past due balance on the account to the new card. If you have an outstanding balance, you need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
 {{< /note >}}
 
-{{< note >}}
-A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
-{{< /note >}}
+## Removing a Payment Method
 
-## Adding and Updating Google Pay
-
-You are able to automatically pay for invoices with a credit or debit card through your Google Pay account. To add Google Pay or update the payment method associated with Google Pay, follow the instructions below.
+To delete a payment method from your account, follow the instructions below.
 
 1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
-1.  Click the **Add Payment Method** button within the **Payment Methods** section.
-1.  Click the **Google Pay** button in the **Add Payment Method** panel, which opens Google's own Google Pay form.
-1.  Log in to your Google account or select from accounts you've already logged in to.
-1.  Select the credit or debit card you wish to use for paying invoices on the account.
-1.  Once the form has been completed, you will be taken back to the Cloud Manager.
+1.  Under the **Payment Methods** section, locate the payment method you wish to remove.
+1.  Click the corresponding ellipsis menu and select **Delete** from the dropdown menu. If the payment method is the default payment method on the account, the **Delete** button will be disabled and you will first need to change the default method.
 
-{{< note >}}
-This process does not immediately charge any past due balance on the account to the new card. If you have an outstanding balance, you need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
-{{< /note >}}
+![The Delete button within a payment method's dropdown menu](delete-payment-method.png)
 
 ## Viewing and Changing the Default Payment Method
 
@@ -113,7 +114,7 @@ When an invoice is generated, the amount of that invoice (as well as any past du
 1.  Under the **Payment Methods** section, the payment method currently used by default has a label of *default* (located to the right of the last 4 digits and expiration date).
 1.  To change the default payment method, click the ellipsis menu next to the payment method you wish to use and select **Make Default** from the dropdown menu.
 
-    ![Change default](payment-method-change-default.png "Update default")
+![The Make Default button within a payment method's dropdown menu](set-default-payment-method.png)
 
 ## Viewing Invoices and Payments
 
@@ -131,6 +132,25 @@ All of your billing history, including previous invoices and payments, is access
 -  **Total:** The cost for this service including taxes.
 
 A PDF copy of either the invoice or payment can be downloaded by clicking the **Download PDF** link corresponding to the entry row or on the Invoice page.
+
+## Adding a Promo Code
+
+A *promo code* adds a positive credit to an account, allowing you to pay for services using that credit. You're able to add a promo code when signing up for an account. If you already signed up but haven't entered a promo code, you may be able to do so from the Cloud Manager. To add a promo code to an existing account, certain conditions must be met:
+
+- The account must be less than 90 days old.
+- There must not be a negative balance on the account.
+- No other promo codes can already be applied to the account.
+- The user that's logged in must have unrestricted permissions.
+
+If those conditions are met, you can add a promo code by following these instructions:
+
+1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
+
+1.  Under the **Account Balance** section, click the *Add a promo code* link.
+
+    ![Account balance section of the Billing Info page](account-balance-add-promo.png)
+
+1.  In the **Add promo code** dialog box that is displayed, enter the promo code and click the **Apply Promo Code** button. You should now see the promotional credit amount reflected in your account balance.
 
 ## Removing Services
 

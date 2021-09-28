@@ -3,8 +3,7 @@ slug: writing-scripts-for-use-with-linode-stackscripts-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide provides you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
-og_description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide provides you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
+description: "This guide details the StackScript system including script requirements, how to import an existing StackScript into a new StackScript, and more."
 keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,9 @@ published: 2020-05-21
 image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
 modified_by:
   name: Linode
-title: "Writing Scripts for Use with Linode StackScripts - A Tutorial"
-h1_title: "Writing Scripts for Use with Linode StackScripts"
+title: "How to Write Scripts for Linode StackScripts (A Tutorial)"
+h1_title: "Writing Scripts for Linode StackScripts"
+enable_h1: true
 contributor:
   name: Linode
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']

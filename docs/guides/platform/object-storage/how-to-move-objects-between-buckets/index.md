@@ -36,7 +36,7 @@ In this guide you learn how to move objects between buckets using:
 
 To learn how to enable Object Storage, see the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
 
-Object Storage is similar to a subscription service. **After it is enabled, you are billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancel Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) to stop billing for this flat rate.
+Object Storage is similar to a subscription service. **After it is enabled, you are billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop billing for this flat rate.
 
 In all Object Storage URLs the cluster where your bucket is hosted is a part of the URL string.
 

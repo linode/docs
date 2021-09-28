@@ -36,14 +36,23 @@ MySQL is an open-source database management system that uses a relational databa
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **MySQL User** | The user for your MySQLDB database. *Required*. |
+| **MySQL or MariaDB** | Select which database service you'd like to use. *Required*. |
 | **MySQL Root Password** | The root password for your MySQL database. *Required*. |
+| **MySQL User** | The user for your MySQLDB database. *Required*. |
+| **MySQL User Password** | The user password for your MySQL database. *Required*. |
 | **Create Database** | The database on your MySQL. *Required*. |
+| **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
+| **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
+| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
+| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
+| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
+| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
+| **Domain** | The domain name where you wish to host your Moodle site. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 ### Linode Options
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by the MySQL Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
+| **Select an Image** | Ubuntu 20.04 LTS is currently the only image supported by the MySQL Marketplace App, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). The Linode plan you deploy your MySQL/MariaDB on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you will deploy a more robust web app, then consider a plan with higher RAM and CPU allocations. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |

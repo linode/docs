@@ -14,7 +14,7 @@ tab_group_main:
 1. The **Add a Firewall** drawer appears with the Firewall configurations needed to add a Firewall. Configure your Firewall with at minimum the required fields:
 
     | **Configuration** | **Description** |
-    | :---------------: | :---------------: |
+    | -- | -- |
     | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
     | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all eligible Linodes on your account is visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
@@ -34,10 +34,6 @@ tab_group_main:
 
     {{< note >}}
 You can assign the Firewall to more than one Linode service at a time. Continue the previous step to assign the Firewall to another Linode service.
-    {{</ note >}}
+{{</ note >}}
 
 1. Click on the **Create** button to assign the Firewall to your Linode(s).
-
-{{< note >}}
-If you have a Cloud Firewall attached to a Linode and you attempt to [migrate the Linode to a data center](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/) that does not support Cloud Firewalls, the migration fails.
-{{</ note >}}

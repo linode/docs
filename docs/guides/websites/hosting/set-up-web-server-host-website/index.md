@@ -7,7 +7,7 @@ description: 'How to set up your first web server and point a domain name to you
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-07
+modified: 2021-08-06
 modified_by:
   name: Linode
 published: 2012-03-13
@@ -91,7 +91,7 @@ server {
 
     If NGINX loads successfully, continue to the [Test your Website](#test-your-website) section below.
 
-This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
+This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 ### LAMP Stack
 
@@ -126,7 +126,7 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 
     104.237.137.10
     65.19.178.10
-    75.127.96.10
+    74.207.225.10
     207.192.70.10
     109.74.194.10
     2600:3c00::a

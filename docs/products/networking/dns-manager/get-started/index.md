@@ -26,16 +26,16 @@ Creating a domain also creates its corresponding domain zone.
    {{< note >}}
 In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
 
-   104.237.137.10
-   65.19.178.10
-   75.127.96.10
-   207.192.70.10
-   109.74.194.10
-   2600:3c00::a
-   2600:3c01::a
-   2600:3c02::a
-   2600:3c03::a
-   2a01:7e00::a
+    104.237.137.10
+    65.19.178.10
+    74.207.225.10
+    207.192.70.10
+    109.74.194.10
+    2600:3c00::a
+    2600:3c01::a
+    2600:3c02::a
+    2600:3c03::a
+    2a01:7e00::a
 {{< /note >}}
 
 1.  Enter your domain name in the **Domain** field.

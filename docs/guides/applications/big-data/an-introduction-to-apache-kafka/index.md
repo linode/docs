@@ -141,7 +141,7 @@ Producers and consumers can both use the [Kafka Administration API](https://kafk
 
 The Kafka cluster keeps track of each consumer's location within a given partition so it knows which updates it still has to send. *Kafka Connect* and *Kafka Streams* help manage the flows of information to or from Kafka.
 
-Our guide for [installing Kafka](/docs/guides/how-to-install-apache-kafka-in-ubuntu) includes an example of how to use the producer and consumer APIs.
+Our guide for [installing Kafka](/docs/guides/how-to-install-apache-kafka-on-ubuntu/) includes an example of how to use the producer and consumer APIs.
 
 ### Security, Troubleshooting, and Compatibility
 
@@ -185,7 +185,7 @@ You must install Java first before installing Apache Kafka. Kafka itself is stra
 
 - [The Kafka site](https://kafka.apache.org/) contains a basic tutorial.
 
-- We also have a guide on how to [Install Apache Kafka](/docs/guides/how-to-install-apache-kafka) which demonstrates how to construct a simple producer and consumer and process data with Kafka Streams.
+- We also have a guide on how to [Install Apache Kafka](/docs/guides/how-to-install-apache-kafka-on-ubuntu/) which demonstrates how to construct a simple producer and consumer and process data with Kafka Streams.
 
 ## Further Reference
 

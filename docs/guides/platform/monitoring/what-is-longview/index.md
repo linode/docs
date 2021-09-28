@@ -3,19 +3,21 @@ slug: what-is-longview
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows how to install and use Linode Longview. Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems.'
+description: "This guide demonstrates how to install and use Linode's Longview service, providing real-time performance graphs and metrics for your Linode."
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/longview/longview/','/platform/longview/what-is-longview/','/uptime/longview/','/longview/']
 published: 2019-12-09
 modified_by:
   name: Linode
-title: "What is Linode Longview"
-h1_title: "Understanding Linode Longview"
+title: "How to Use Longview to Obtain System Metrics"
+h1_title: "Using Longview to Obtain System Metrics"
+enable_h1: true
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
 ---
+
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
 
 Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems.

@@ -3,8 +3,8 @@ slug: how-to-setup-a-private-docker-registry-with-lke-and-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry.'
-og_description: 'In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry'
+description: "In this guide, you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images."
+og_description: "In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let's Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry's traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry"
 keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +12,14 @@ image: private-docker-registry.png
 published: 2020-03-26
 modified_by:
   name: Leslie Salazar
-title: "How to Set Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage"
-h1_title: "Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage"
+title: "How to Set Up a Docker Registry with LKE and Object Storage"
+h1_title: "Setting Up a Private Docker Registry with LKE and Object Storage"
 contributor:
   name: Leslie Salazar
   link: https://github.com/leslitagordita/
 aliases: ['/kubernetes/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/']
 ---
+
 Hosting a private Docker registry alongside your Kubernetes cluster allows you to securely manage your Docker images while also providing quick deployment of your apps. This guide will walk you through the steps needed to deploy a private Docker registry on a Linode Kubernetes Engine (LKE) cluster. At the end of this tutorial, you will be able to locally push and pull Docker images to your registry. Similarly, your LKE cluster's pods will also be able to pull Docker images from the registry to complete their deployments.
 
 ## Before you Begin
@@ -29,7 +30,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1. [Deploy a LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
 
-1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/applications/containers/install-docker-ce-ubuntu-1804/) to your local environment.
+1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
 
     {{< note >}}
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
@@ -455,4 +456,4 @@ spec:
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, follow the steps in the [cancel the Object Storage service on your account](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) section of our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).

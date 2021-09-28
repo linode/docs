@@ -3,8 +3,7 @@ slug: common-linode-vlan-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Virtual Local Area Network (VLAN) is a private Layer 2 network. This means that two or more Linodes connected via the VLAN can see each other as if they were directly connected to the same physical Ethernet network.'
-og_description: 'Virtual Local Area Network (VLAN) is a private Layer 2 network. This means that two or more Linodes connected via the VLAN can see each other as if they were directly connected to the same physical Ethernet network. This guide explains some common use cases for using Linode''s VLAN.'
+description: "Learn abut common use cases for Linode's VLAN (Virtual Local Area Network) service and how you might leverage it for your application."
 image:
 keywords: ['vlan','virtual local area network','use case']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,7 @@ published: 2020-08-12
 modified_by:
   name: Linode
 tags: ["security", "networking", "linode platform"]
-title: "Common Linode VLAN Use Cases"
-h1_title: "Common Use Cases for Linode VLAN"
+title: "Common Use Cases for Linode's VLAN Service"
 contributor:
   name: Linode
 ---

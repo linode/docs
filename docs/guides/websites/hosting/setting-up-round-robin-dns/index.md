@@ -3,7 +3,7 @@ slug: setting-up-round-robin-dns
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to set up round-robin DNS on a set of Linodes for redundancy should there ever be a failure, as well as how to employ a NodeBalancer for loadbalancing support for those Linodes.'
+description: 'Learn how to set up round-robin DNS on a set of Linodes as well as how to employ a NodeBalancer for loadbalancing support for those Linodes.'
 keywords: ["hosting a website", "website", "linode quickstart guide", "high availability", "failover"]
 tags: ["web server","nginx","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

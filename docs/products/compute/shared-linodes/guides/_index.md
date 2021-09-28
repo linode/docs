@@ -21,7 +21,7 @@ These guides explore targeted topics like how to host a website, setting up a we
 
 ### Hosting a Website
 
-- [Host a Website on Ubuntu 18.04](/docs/websites/hosting-a-website-ubuntu-18-04/)
+- [Host a Website on Ubuntu 18.04](/docs/guides/hosting-a-website-ubuntu-18-04/)
 
 - [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/)
 

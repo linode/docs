@@ -3,10 +3,10 @@ slug: lke-continuous-deployment-part-9
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Traefik is a popular Ingress Controller for Kubernetes, which manages external access to the cluster and provides load balancing functionality. This section discusses installing Traefik, configuring an Ingress within our YAML file, and testing things out.'
-og_description: 'Traefik is a popular Ingress Controller for Kubernetes, which manages external access to the cluster and provides load balancing functionality. This section discusses installing Traefik, configuring an Ingress within our YAML file, and testing things out.'
-title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 9: Installing Traefik"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 9: Installing Traefik"
+description: "Traefik is a popular Ingress Controller for Kubernetes, which manages external access to the cluster and provides load balancing functionality. This section discusses installing Traefik, configuring an Ingress within our YAML file, and testing things out."
+og_description: "Traefik is a popular Ingress Controller for Kubernetes, which manages external access to the cluster and provides load balancing functionality. This section discusses installing Traefik, configuring an Ingress within our YAML file, and testing things out."
+title: "Continuous Deployment Using LKE: Installing Traefik"
+h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 9): Installing Traefik"
 enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

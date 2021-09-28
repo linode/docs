@@ -9,16 +9,28 @@ keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "
 tags: ["cloud manager","linode platform","networking","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/', '/guides/nodebalancer/getting-started-with-nodebalancers/']
-modified: 2018-08-21
+modified: 2021-08-11
 modified_by:
   name: Linode
 published: 2015-02-12
-title: Getting Started with NodeBalancers
+title: Getting Started with Linode's NodeBalancers (Load Balancers)
+h1_title: Getting Started with NodeBalancers
+enable_h1: true
 ---
 
 Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode provides NodeBalancers, which can ease the deployment and administration of a load balancer.
 
 This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/guides/platform/nodebalancer/).
+
+## Before You Begin
+
+- This tutorial assumes a basic understanding of load balancing and NodeBalancers. We recommend reviewing the following guides:
+
+    - [What Are NodeBalancers](/docs/guides/what-are-nodebalancers/)
+    - [Introduction to High Availability](/docs/guides/introduction-to-high-availability/)
+    - Going further: [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide/)
+
+-  To properly configure a NodeBalancer, you must have at least two Linode Compute Instances within the same data center. Both of these servers must also have private IPv4 addresses. See [Remote Access > Adding Private IP Addresses](/docs/guides/remote-access/#adding-private-ip-addresses).
 
 ## Configuring a NodeBalancer
 

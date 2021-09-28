@@ -2,12 +2,13 @@
 slug: how-to-deploy-nginx-on-a-kubernetes-cluster
 author:
   name: Kiran Singh
-description: 'This guide shows how to install Kubernetes on a Linode with CentOS or Ubuntu. Includes a section on how to deploy nginx to the example cluster.'
+description: 'This guide will show you how to install, configure and deploy NGINX on Kubernetes Cluster.'
 keywords: ["kubernetes","docker","container","deployment","nginx"]
 tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
+modified: 2021-08-13
 published: 2017-11-27
 title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
 aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/','/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
@@ -93,6 +94,10 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 1. To obtain persistent storage capabilities, you can use the [Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode Block Storage.
 
+## What is Ingress?
+
+Ingress is a smart router to handle traffic for your Kubernetes cluster. As opposed to the common perception, it isn’t a service but is a combination of an API object and a controller that handles and manages rules for traffic routing. Rules defined within Ingress API are passed on to an Ingress controller that is listening for them. This controller then consumes those rules for traffic routing.
+
 ### Disable Swap Memory
 
 Linodes come with swap memory enabled by default. [kubelets](https://kubernetes.io/docs/admin/kubelet/) do not support swap memory and will not work if swap is active or even present in your `/etc/fstab` file.
@@ -173,7 +178,7 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install kubeadm, kubectl, and kubelet
 
@@ -367,3 +372,67 @@ Events:
         deployment "nginx" deleted
         root@kube-master:~# kubectl get deployments
         No resources found.
+
+## Why Use Ingress?
+
+Ingress manages external access to services running within a Kubernetes cluster. As such, its key benefits are:
+
+- Allows external HTTP access to apps running within the cluster.
+- Enables load balancing and other traffic routes.
+- Facilitates TLS/SSL termination.
+- Supports URI based routing.
+
+## How Does NGINX Ingress Work?
+
+NGINX Ingress controller runs in a Kubernetes Cluster as an application and leverages Ingress resources to configure a load balancer. This controller helps with TLS/SSL termination, load balancing, and also with content-based routing.
+
+Currently, NGINX Ingress controller supports both NGINX and NGINX Plus features.
+
+## How To Identify Which Ingress Controllers Are You Using?
+
+To identify which controllers your NGINX Kubernetes cluster is using, you can go to the container image of your Ingress controller.
+
+## How To Install Ingress On A Kubernetes Cluster?
+
+### Installing Helm
+
+To install Ingress with this guide, you can use Helm. If not already installed, you can run the following script on your terminal to install it:
+
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    chmod 700 get_helm.sh
+    ./get_helm.sh
+
+For more details on Helm and installing Helm, see [How to Install Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/).
+
+### Installing Ingress Controller
+
+1.  First, update your Helm repositories by running the following command:
+
+        helm repo update
+
+1.  Install NGINX controller
+
+        helm install nginx-ingress stable/nginx-ingress
+
+When you run the last command, you not only get an Ingress controller installed but this command also automatically creates a Linode LoadBalancer.
+
+Once, the installation is successful you can see a success message like below:
+{{< output >}}
+NAME: nginx-ingress
+LAST DEPLOYED: Wed Jan 15 00:15:11 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+The nginx-ingress controller is now installed.
+It may take a few minutes for the LoadBalancer IP to be available.
+You can view the status by running 'kubectl --namespace default get services -o wide -w nginx-ingress-controller'
+{{< /output >}}
+
+It is worth understanding that there are popular controllers that use NGINX:
+    - Kubernetes Ingress NGINX which is maintained by the Kubernetes open-source community
+    - NGINX Kubernetes Ingress which is maintained by NGINX
+
+You should know that there are huge differences between those two Ingress controllers, but that is beyond the scope of this guide.
+

@@ -1,19 +1,8 @@
 ---
-slug: deploy-image-to-existing-linode-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to deploy an Image to an existing Linode'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-18
-modified_by:
-  name: Linode
-published: 2021-04-28
-title: How to Deploy an Image to an Existing Linode
-keywords: ["images"]
+# Shortguide: How to deploy an image to an existing Linode
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 1. Log in to the Cloud Manager and navigate to the **Images** page.

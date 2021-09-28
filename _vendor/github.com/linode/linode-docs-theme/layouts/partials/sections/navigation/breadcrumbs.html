@@ -8,7 +8,7 @@
     </ol>
   </nav>
 {{ else }}
-  <nav class="breadcrumbs text-sm " aria-label="breadcrumbs" x-data="lnc.NewBreadcrumbsController()" id="breadcrumbs-{{ $wrap }}"
+  <nav class="breadcrumbs needs-js text-sm " aria-label="breadcrumbs" x-data="lnc.NewBreadcrumbsController()" id="breadcrumbs-{{ $wrap }}"
     @search:results-blank.document="receiveData($event.detail);" @search:results-initial.document="receiveData($event.detail);"  
     @ln:page-info.document="receivePageInfo($event.detail);" @turbolinks:before-render.document="onTurbolinksBeforeRender();" >
     <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}} -mt-1">
@@ -49,17 +49,11 @@
       {{ template "breadcrumbs-home" . }}
     {{ else }}
       {{ if ne .p1 .p2 }}
+        {{ template "breadcrumbs-arrow" . }}
         <a  href="{{ .p1.Permalink }}" class="truncate">
           {{ .p1.LinkTitle }}
         </a>
-      {{ else }}
-        <span class="truncate">
-          {{ .p1.LinkTitle }}
-        </span>
       {{ end }}
-    {{ end }}
-    {{ if ne .p1 .p2 }}
-      {{ template "breadcrumbs-arrow" . }}
     {{ end }}
   </li>
 {{ end }}

@@ -3,8 +3,7 @@ slug: how-to-deploy-django-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Django on Linode using Marketplace Apps. Django is a Python based web development framework that allows for quick development with less code. Out of the box, Django provides much of the core functionality most web developers require so they can focus on developing application code.'
-og_description: 'Deploy Django on Linode using Marketplace Apps. Django is a Python based web development framework that allows for quick development with less code. Out of the box, Django provides much of the core functionality most web developers require so they can focus on developing application code.'
+description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketpplace"
 keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

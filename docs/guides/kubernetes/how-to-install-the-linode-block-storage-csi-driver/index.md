@@ -30,11 +30,11 @@ This guide assumes you have a working Kubernetes cluster running on Linode. If y
 
 If you are not using LKE or the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2), the Kubernetes cluster will require the Block Storage CSI driver in order to use Linode's Block Storage. If you need to set up an unmanaged Kubernetes cluster, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide to do this.
 
-    {{< note >}}
+{{< note >}}
 The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
 
     kubectl version
-    {{</ note >}}
+{{</ note >}}
 
 ## Installing the CSI Driver
 ### Create a Kubernetes Secret

@@ -66,7 +66,8 @@ The Rancher web application will run on a Linode in your Cloud Manager account. 
 You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.
 {{< /note >}}
 
-1.  The Rancher web application is run inside a Docker container, so you will also need to install Docker CE on your Linode. Follow the instructions for [installing Docker CE on Ubuntu 18.04](/docs/applications/containers/install-docker-ce-ubuntu-1804) and then return to this guide.
+1.  The Rancher web application is run inside a Docker container, so you will also need to install Docker CE on your Linode. Follow the instructions for [Installing and Using Docker on Ubuntu and Debian
+](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) and then return to this guide.
 
 You will also need to generate an API token and prepare a domain zone:
 

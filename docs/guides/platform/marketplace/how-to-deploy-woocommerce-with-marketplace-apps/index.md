@@ -3,16 +3,17 @@ slug: how-to-deploy-woocommerce-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Marketplace Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. WooCommerce allows you to build a marketplace where you can sell both digital and physical products. You can also customize WooCommerce to match your WordPress site''s theme and branding.'
-og_description:  'Use Marketplace Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce. WooCommerce allows you to build a marketplace where you can sell both digital and physical products. You can also customize WooCommerce to match your WordPress site''s theme and branding.'
+description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
 keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
 tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
+modified: 2021-08-13
 modified_by:
   name: Linode
 title: "How to Deploy WooCommerce with Marketplace Apps"
 h1_title: "Deploying WooCommerce with Marketplace Apps"
+enable_h1: true
 aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/']
 contributor:
   name: Linode
@@ -35,11 +36,26 @@ external_resources:
 ### WooCommerce Options
 
 | **Field** | **Description** |
-|--------------|------------|
-| **Admin Username** | Username for your WordPress admin user. WooCommerce is managed through the [WordPress administrative interface](https://codex.wordpress.org/Administration_Screens). *Required*. |
+|:--------------|:------------|
+| **Website Title** | Your WordPress site's title. |
+| **E-Mail Address** | E-Mail address for your WordPress admin user. This is also used as the SOA email address if you also enter a domain. *Required*. |
+| **Admin Username** | Username for your WordPress admin user. *Required*. |
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
-| **Email Address** | Email address for your WordPress admin user. *Required*. |
-| **Website Title** | The title that will appear at the top of your WooCommerce site. *Advanced Options*. |
+| **MySQL root Password** | The root password for your MySQL database. *Required*. |
+| **WordPress Database Password** | The root password for your WordPress database. *Required*. |
+| **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
+| **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
+| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
+| **Enable passwordless sudo access for the limited user?** | If you entered an SSH Public Key above and it is for the limited user account, select `Yes`, this allows SSH to use Public Key login for the limited user (recommended). Select `No` if you want SSH to rely on using password login for the limited user account. |
+| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH (recommended). Select `No` to allow the root account to login via SSH. |
+| **Configure automatic security updates** | Select `Yes` to have the system automatically update WordPress with the latest security updates. Select `No` to if you wish to manage all updates manually. |
+| **Use fail2ban to prevent automated intrusion attemps?** | Select `Yes` to install fail2ban. Select `No` to not install fail2ban during installation. If you chose `No`, you can install fail2ban later by following the [Using Fail2ban to Secure Your Server](/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/) guide. |
+| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
+| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
+| **Domain** | The domain name where you wish to host your WordPress site. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
+| **Do you need an MX record for this domain?** | Check `Yes` if you plan on using WordPress to send email. The installer, along with your `API Token` (required) sets up the necessary MX records in the DNS Manager. Select `No` if you do not plan on using WordPress to send email. You can [add an MX record manually](/docs/networking/dns/dns-records-an-introduction/#mx) at a later time if you change your decision. |
+| **Do you need an SPF record for this domain?** | Check `yes` if you plan on using WordPress to send email. The installer, along with your `API Token` (required) sets up the necessary SPF records in the DNS Manager. Select `No` if you do not plan on using WordPress to send email. You can [add an SPF record manually](/docs/networking/dns/dns-records-an-introduction/#spf) at a later time if you change your decision. |
+| **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. Validation of your SSL certificate can take up to two hours to complete.|
 
 ### Linode Options
 
@@ -76,22 +92,6 @@ After WooCommerce and WordPress have finished installing, you will be able to ac
     The address of the WordPress login page is `http://< your IP address >/wp-login.php`. Or, you can click on the log in link that's visible on your site's home page, as highlighted below. Enter the credentials you previously specified in the **Admin Username** and **Admin Password** fields when you deployed the app.
 
     ![Log in to your WordPress site.](wordpress-login.png)
-
-### Set up a Domain for your Site
-
-If you own a domain name, you can assign it (or a subdomain) to your WooCommerce site. Specifically, you will need to set up an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that's associated with your Linode's IP address. To learn how to set up DNS records in the Cloud Manager, review the [DNS Manager](/docs/platform/manager/dns-manager/) guide. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
-
-Once you have set up DNS for your site, you will be able to visit it by entering your domain or subdomain in your browser. At this point, you should also update the [WordPress Address and Site URL settings](https://codex.wordpress.org/Changing_The_Site_URL) for your site:
-
-1.  Log in to your WordPress admin interface as described in the previous section.
-
-1.  Click on the **Settings** link in the sidebar, then click on the **General** option from the dropdown menu that appears.
-
-    ![WordPress general settings menu option highlighted](wordpress_general_settings_menu_option_highlighted.png "WordPress general settings menu option highlighted")
-
-1.  The **General Settings** form will appear. Update the **WordPress Address** and **Site URL** fields with the domain or subdomain you assigned to your site. Specifically, the value for both fields should be `http://example.com`, where `example.com` is replaced by your domain or subdomain.
-
-1.  Click the **Save Changes** button at the bottom of the form.
 
 ### Complete the WooCommerce Setup Wizard
 

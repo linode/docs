@@ -138,9 +138,9 @@
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   line-height: 1.33333;
+  letter-spacing: -0.25px;
   font-weight: 600;
   color: var(--h6-color, var(--heading-color));
-  letter-spacing: -0.25px;
   color: #32363b;
   margin: 32px 0 6px;
 }

@@ -53,6 +53,6 @@ Regardless of access, all keys can create new buckets and list all buckets. Howe
 
     You now have the credentials needed to connect to Linode Object Storage.
 
-1.  Check the permissions you gave this key by clicking on the **more options elipsis** link to the right of the key in the Access Keys list. Then, select **View Permissions** from the menu.
+1.  Check the permissions you gave this key by clicking on the **more options ellipsis** link to the right of the key in the Access Keys list. Then, select **View Permissions** from the menu.
 
     An access key with limited permissions displays all the buckets and their selected permissions. An access key that has full permissions displays a statement about unlimited access.

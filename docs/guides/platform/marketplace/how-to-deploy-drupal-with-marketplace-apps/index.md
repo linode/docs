@@ -3,8 +3,7 @@ slug: how-to-deploy-drupal-with-marketplace-apps
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use the Drupal Marketplace App to easily install the popular open source content management system. You can use Drupal to build websites for a variety of applications. The Drupal community is very active and provides many contributed modules to help you expand on Drupal''s core functionality.'
-og_description: 'Use the Drupal Marketplace App to easily install the popular open source content management system. You can use Drupal to build websites for a variety of applications. The Drupal community is very active and provides many contributed modules to help you expand on Drupal''s core functionality.'
+description: "Learn how to use the Drupal Marketplace App to easily install the popular open source content management system."
 keywords: ['drupal','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

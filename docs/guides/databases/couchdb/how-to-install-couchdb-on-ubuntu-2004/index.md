@@ -95,4 +95,4 @@ See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.
 
 ## Get Started with CouchDB
 
-You have now successfully installed CouchDB! To get started, head over to the guide for [Using CouchDB on Ubuntu 20.04](/docs/guides/use-couchdb-20-on-ubuntu/).
+You have now successfully installed CouchDB! To get started, head over to the guide for [Using CouchDB on Ubuntu 20.04](/docs/guides/use-couchdb-2-0-on-ubuntu-20-04/).

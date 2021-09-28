@@ -4,15 +4,16 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides Linode users with steps to manually enable an Elastic IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
-og_description: 'This guide provides Linode users with steps to manually enable an Elastic IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
 keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
+modified: 2021-08-26
 noindex: true
 modified_by:
   name: Linode
 title: "How to Manually Enable Elastic IP on your Linode"
 h1_title: "Manually Enable Elastic IP on your Linode"
+enable_h1: true
 _build:
   list: false
 contributor:
@@ -363,43 +364,44 @@ bgpd=yes
 
 ## Configure Elastic IP
 
-With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s).
+With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s). When following the instructions below, you need to have the following pieces of information:
 
-{{< note >}}
-Prior to starting this section, ensure that **you have received a `DC_ID` and an `ELASTIC_IP` from Linode Support**. You need these values to configure Elastic IP on a Linode. Refer to the table below for details on each configuration value.
+- **Elastic IP address** (`[ELASTIC_IP]`): The elastic IP address assigned to your Linode. If you do not yet have this, contact Linode support.
+- **Hostname** (`[HOSTNAME]`): The hostname defined on your Linode (ex: `atl-bgp-1.example.com`).
+- **Role** (`[ROLE]`): The role of the Linode's elastic IP address.
+  - `primary`: All requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
+  - `secondary`: If the `primary` Linode fails, all requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
+- **Data center ID** (`[DC_ID]`): The ID of this data center as defined by the list below:
+    - Atlanta (USA): `4`
+    - Dallas (USA): `2`
+    - Frankfurt (Germany): `10`
+    - Fremont (USA): `3`
+    - London (UK): `7`
+    - Mumbai (India): `14`
+    - Newark (USA): `6`
+    - Singapore: `9`
+    - Sydney (Australia): `16`
+    - Tokyo (Japan): `11`
+    - Toronto (Canada): `15`
 
-| Value to replace in the configuration template | Description |
-| :-------: | :-------: |
-| `DC_ID` | The ID number of this data center. |
-| `ELASTIC_IP` | The Elastic IP address to assign to this Linode. |
-| `NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
-
-When you configure Elastic IP you need to define the Linode's _ROLE_ within the configuration as `primary` or `secondary`.
-
-- `primary`: All requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
-- `secondary`: If the `primary` Linode fails, all requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
-
-| Information | Value to replace in the configuration template |
-| :-------: | :-------: |
-| This Linode's role (`primary` or `secondary`) | `ROLE` |
-
-{{</ note >}}
-
-1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `[NEIGHBOR_IP]`, `[DC_ID]`, and `[ROLE]` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
+1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `[ELASTIC_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DC_ID]` as outlined above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
 
       {{< file "~/elastic.conf">}}
-hostname atl-bgp-1.example.com
+hostname [HOSTNAME]
 
-router bgp 65[DC_ID]5
+router bgp 65000
 no bgp ebgp-requires-policy
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
-neighbor HOST peer-group
-neighbor HOST remote-as external
-neighbor HOST capability extended-nexthop
-neighbor [NEIGHBOR_IP] peer-group HOST
+neighbor RS peer-group
+neighbor RS remote-as external
+neighbor RS capability extended-nexthop
+neighbor 2600:3c0f:[DC_ID]:34::1 peer-group RS
+neighbor 2600:3c0f:[DC_ID]:34::2 peer-group RS
+neighbor 2600:3c0f:[DC_ID]:34::3 peer-group RS
+neighbor 2600:3c0f:[DC_ID]:34::4 peer-group RS
 address-family ipv4 unicast
-  network [ELASTIC_IP]/32 route-map $ROLE
+  network [ELASTIC_IP]/32 route-map [ROLE]
   redistribute static
 exit-address-family
 route-map primary permit 10

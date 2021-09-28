@@ -3,8 +3,7 @@ slug: how-to-install-nginx-debian-10
 author:
   name: Linode
   email: docs@linode.com
-description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Debian 10.'
-og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Debian 10.'
+description: "Learn the basics of installing and configuring NGINX on your Debian 10 server in this quick guide."
 keywords: ["nginx", "load balancing", "debian", "debian 10", "web server", "static content", "install nginx"]
 tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,9 @@ modified: 2020-02-14
 modified_by:
   name: Linode
 published: 2018-04-16
-title: How to Install NGINX on Debian 10
-h1_title: Installing NGINX on Debian 10
+title: "How to Install NGINX on Debian 10"
+h1_title: "Installing NGINX on Debian 10"
+enable_h1: true
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 relations:
@@ -112,7 +112,7 @@ server {
 
 For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part series on NGINX:
 
-- [Part 1: Installation and Basic Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
-- [Part 2: (Slightly More) Advanced Configurations](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/)
-- [Part 3: Enable TLS for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/)
-- [Part 4: TLS Deployment Best Practices](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/)
+- [Part 1: Installation and Basic Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)
+- [Part 2: (Slightly More) Advanced Configurations](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/)
+- [Part 3: Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
+- [Part 4: TLS Deployment Best Practices](/docs/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/)

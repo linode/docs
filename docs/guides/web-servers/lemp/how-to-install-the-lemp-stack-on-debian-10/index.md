@@ -246,6 +246,6 @@ If you configured UFW on your server, enable the firewall to allow web traffic.
 
 For more on the software in this stack see the following guides:
 
-- [Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
+- [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)
 - [Set Up MariaDB Clusters with Galera](/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
 - [Serve PHP with PHP-FPM and NGINX](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/)

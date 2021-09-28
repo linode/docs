@@ -1,4 +1,4 @@
-<div class="flex flex-wrap content-center" x-data="{}">
+<div class="flex flex-wrap content-center hide-if-no-js" x-data="{}">
   {{ with .Params.Tags }}
     {{ range . }}
       <a href="#" @click="lnh.SendEvent('search:filter', 'tags={{ . | lower | htmlEscape }}' ); $event.preventDefault()"

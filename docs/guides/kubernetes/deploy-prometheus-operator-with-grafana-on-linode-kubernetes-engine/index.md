@@ -12,8 +12,8 @@ published: 2020-07-29
 image: feature.png
 modified_by:
   name: Linode
-title: "How to Deploy Prometheus Operator and Grafana on Linode Kubernetes Engine"
-h1_title: "Deploying Prometheus Operator with Grafana on Linode Kubernetes Engine"
+title: "How to Deploy Prometheus Operator and Grafana on LKE"
+h1_title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
 external_resources:
 - '[Prometheus Operator Helm Chart on Github](https://github.com/helm/charts/tree/master/stable/prometheus-operator): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
@@ -219,7 +219,7 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
             svc/lke-monitor-prometheus-ope-alertmanager  \
             9093
 
-    *    To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
+    *   To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
 
             kubectl -n monitoring \
             port-forward \
@@ -589,9 +589,9 @@ Your monitoring interfaces are now publicly accessible with HTTPS and basic auth
 
 | Resource     | Domain and path          |
 | ------------ | ------------------------ |
-| Prometheus   | example.com/prometheus   |
-| Alertmanager | example.com/alertmanager |
-| Grafana      | example.com/grafana      |
+| Prometheus   | `example.com/prometheus`   |
+| Alertmanager | `example.com/alertmanager` |
+| Grafana      | `example.com/grafana`      |
 
 When accessing an interface for the first time, log in as `admin` with the password you configured for [basic auth credentials](#configure-basic-auth-credentials).
 

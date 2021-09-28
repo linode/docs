@@ -2,15 +2,15 @@
 slug: ssh-key-authentication-how-to-troubleshoot-permission-issues
 author:
   name: Jeff Novotny
-description: 'SSH key authentication helps you access a server without a password and increases the security of any remote network service. This guide helps you understand the secure shell protocol, public and private keys, and helps you troubleshoot common SSH permission issues. A common issueThis guide explains how to debug and troubleshoot SSH public key permission issues that prevent remote node access.'
-og_description: 'SSH key authentication helps you access a server without a password and increases the security of any remote network service. This guide helps you understand the secure shell protocol, public and private keys, and helps you troubleshoot common SSH permission issues. A common issueThis guide explains how to debug and troubleshoot SSH public key permission issues that prevent remote node access.'
+description: 'Learn the basics of SSH keys and how to troubleshoot the most common SSH permission issues in this short guide.'
+og_description: 'Learn the basics of SSH keys and how to troubleshoot the most common SSH permission issues in this short guide.'
 keywords: ['ssh key authentication', 'what is ssh', 'ssh keys']
 tags: ['ssh', 'web server', 'cloud manager', 'linode platform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
 modified_by:
   name: Linode
-title: "SSH Key Authentication: How to Troubleshoot Permission Issues"
+title: "Troubleshooting SSH Key Authentication"
 h1_title: "How to Troubleshoot SSH Permission Issues"
 enable_h1: true
 contributor:

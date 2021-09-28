@@ -86,7 +86,7 @@ Once your changes have propagated, you can move forward with the installation.
 ### Install Docker
 You must have Docker installed on your Linode to continue.
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ## Install the GitLab EE Image
 

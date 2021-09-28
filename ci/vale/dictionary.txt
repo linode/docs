@@ -89,6 +89,7 @@ avz
 awk
 aws
 awstats
+axibase
 azc
 backdoors
 backend
@@ -114,6 +115,8 @@ bc
 bdd
 berkshelf
 bernd
+berners
+bing
 binlog
 biomes
 bitbucket
@@ -121,6 +124,7 @@ bitnami
 bitrate
 bitwarden
 blkid
+blockchain
 blocklists
 blockwise
 bluehost
@@ -149,6 +153,7 @@ bukkit
 bundler
 bungeecord
 burndown
+busybox
 byrequests
 bzip2
 bzrtools
@@ -159,6 +164,7 @@ cacheable
 cachable
 caddy
 caddyfile
+caffe
 cakey
 calc
 campione
@@ -188,6 +194,7 @@ checkmarx
 checksummed
 checksums
 chefspec
+Chevereto
 chgrp
 chmod
 chown
@@ -207,6 +214,8 @@ clickjacking
 client1
 client2
 clojure
+couchbase
+cloudant
 cloudflare
 cloudnet
 cloudron
@@ -317,6 +326,7 @@ debconf
 declaratively
 deduplication
 defragment
+demultiplexer
 deprovisioning
 descolada
 descr
@@ -325,6 +335,7 @@ despawn
 dest
 dereference
 dereferencing
+desperados
 destructured
 dev
 devel
@@ -362,6 +373,11 @@ dockerfile
 dockerfiles
 dockerize
 dockerized
+<<<<<<< HEAD
+=======
+docstring
+docstrings
+>>>>>>> 28c6c8ae6a046ccbc4bc98c5bf5f26ecca4f79ef
 doctest
 dokku
 domain1
@@ -382,6 +398,7 @@ drush
 drwxr
 dshield
 dsn
+du
 ducati
 dust2
 dvcs
@@ -414,6 +431,7 @@ epel
 erb
 erlang
 esc
+esm
 etcd
 etcd0
 eth0
@@ -463,6 +481,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+ffmpeg
 ffff
 fi
 fiiiile
@@ -493,6 +512,7 @@ flowlens
 flyspray
 foodcritic
 fortran
+fordham
 fmt
 fn
 fpm
@@ -570,6 +590,7 @@ gpc
 gpg
 gradle
 grafana
+graphql
 graylog
 graylog2
 greenbone
@@ -608,6 +629,7 @@ hd0
 hdfs
 healthcheck
 heartbleed
+heredoc
 heroku
 hexo
 hiera
@@ -644,6 +666,7 @@ httpchk
 httpd
 https
 huginn
+Hugo
 hulu
 hvc0
 hybla
@@ -701,6 +724,7 @@ inittab
 injectable
 inode
 inotify
+inrupt
 insmod
 inspec
 interdomain
@@ -929,6 +953,7 @@ mapreduce
 mariadb
 marino
 maskname
+mastercard
 masterdb
 masterless
 mathematica
@@ -963,6 +988,7 @@ metapackage
 metaparameters
 metorik
 metricbeat
+metroid
 microblogging
 microblogs
 microservice
@@ -990,6 +1016,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mkv
 mnesia
 mngtmpaddr
 moby
@@ -1005,6 +1032,7 @@ morphisec
 motd
 mountpoint
 mouseover
+mov
 mpapis
 mpm
 msg
@@ -1086,6 +1114,7 @@ newgrp
 newtag
 nextcloud
 nexthop
+nfs
 nftables
 ng
 nginx
@@ -1093,6 +1122,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nirvashare
 nixcraft
 nixpkgs
 nmap
@@ -1145,6 +1175,7 @@ oldfashioned
 oneof
 ons
 opcache
+openapi
 opencart
 opendkim
 openfire
@@ -1222,6 +1253,7 @@ pipenv
 piwik
 pki
 plaintext
+platformer
 plesk
 plex
 plone
@@ -1288,6 +1320,7 @@ puppetlabs
 puppetmaster
 puttygen
 pv
+pvc
 pvgrub
 pwcheck
 px
@@ -1310,6 +1343,7 @@ qualys
 quickconnect
 quicklisp
 quickstart
+radeon
 ramdisk
 rbac
 rbenv
@@ -1331,6 +1365,7 @@ recursing
 recv
 red5
 reddit
+redeclared
 redeployable
 redhat
 redir
@@ -1381,6 +1416,7 @@ ro
 rochko
 rocommunity
 rollout
+rooknfs
 rossum
 roundcube
 routable
@@ -1431,6 +1467,7 @@ sbin
 sbopkg
 sbt
 scgi
+schroot
 schaeffer
 scm
 scp
@@ -1469,6 +1506,7 @@ setguid
 setsebool
 setuid
 setuptools
+Severalnines
 sfadmin
 sfproject
 sfroot
@@ -1493,6 +1531,7 @@ signup
 sintra
 sitename
 slackpkg
+slackware
 slavedb
 sls
 smartcard
@@ -1520,6 +1559,7 @@ sparklines
 spectre
 speedtest
 spf1
+Splunk
 spm
 spork
 sql
@@ -1547,6 +1587,7 @@ stopwait
 stopword
 stopwords
 storages
+streamlink
 su
 subcommand
 subcommands
@@ -1559,9 +1600,14 @@ submenu
 subnet
 subnets
 subnetwork
+<<<<<<< HEAD
+=======
+subprocess
+>>>>>>> 28c6c8ae6a046ccbc4bc98c5bf5f26ecca4f79ef
 subprocesses
 subqueries
 subquery
+subreddit
 subreddits
 substring
 substrings
@@ -1609,6 +1655,7 @@ tcp
 tcpwrappers
 teamspeak
 teardown
+techland
 teleporting
 tensorflow
 terrahelp
@@ -1637,6 +1684,7 @@ tinc
 tincd
 tinydb
 titlebar
+tl
 tld
 tls
 tlz
@@ -1654,6 +1702,7 @@ torvalds
 toolchain
 toolchains
 toolset
+towson
 traceroute
 trackbar
 traefik
@@ -1708,6 +1757,10 @@ unicode
 uninvoiced
 uniq
 unittest
+<<<<<<< HEAD
+=======
+unix
+>>>>>>> 28c6c8ae6a046ccbc4bc98c5bf5f26ecca4f79ef
 unmanaged
 unmerged
 unmount
@@ -1780,6 +1833,7 @@ virtualized
 virtualmin
 vlan
 vlans
+vlc
 vlogger
 vmail
 vmem
@@ -1869,6 +1923,7 @@ xdist
 xen
 xenial
 xerus
+Xfce
 xkcd
 xlsx
 xlsxwriter
@@ -1909,6 +1964,8 @@ yubico
 yubikey
 zabbix
 zapier
+zcat
+zend
 zgrep
 zile
 zimbra

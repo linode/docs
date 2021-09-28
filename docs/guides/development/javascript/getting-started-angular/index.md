@@ -2,8 +2,8 @@
 slug: angular-tutorial-for-beginners
 author:
   name: Nathaniel Stickman
-description: 'Angular provides a platform and framework for creating dynamic and sophisticated single-page web applications. This guide shows you how to get your first Angular application running and covers the fundamental concepts behind Angular applications.'
-og_description: 'Angular provides a platform and framework for creating dynamic and sophisticated single-page web applications. This guide shows you how to get your first Angular application running and covers the fundamental concepts behind Angular applications.'
+description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
+og_description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
 keywords: ['angular','node.js','typescript','web applications','app framework','open source']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

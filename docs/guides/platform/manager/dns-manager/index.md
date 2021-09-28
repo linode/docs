@@ -3,8 +3,7 @@ slug: dns-manager
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Domains section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain setup.'
-og_description: 'The Domains section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain setup.'
+description: "Learn how to use Linode's Domain service, a comprehensive DNS management service for controlling DNS records on your domain names."
 keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 tags: ["linode platform","networking","cloud manager","dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
