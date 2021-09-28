@@ -198,7 +198,7 @@ One of the biggest advantages of Doctest is that you can use it from the command
 
 ### Pytest Unit Test Example
 
-If you’re looking for a more feature-rich test tool, then Pytest is a good choice. You can use Pytest for unit, functional, and API testing, which makes it an extremely versatile. Pytest also lets you extend its functionality with plugins. Below is a list of some of pytest's most popular plugins:
+If you’re looking for a more feature-rich test tool, then Pytest is a good choice. You can use Pytest for unit, functional, and API testing, which makes it extremely versatile. Pytest also lets you extend its functionality with plugins. Below is a list of some of pytest's most popular plugins:
 
 - **[Pytest-BDD](https://pytest-bdd.readthedocs.io/en/latest/)**: Provides support for Behavior Driven Development (BDD) using a subset of the [Gherkin language](https://cucumber.io/docs/gherkin/).
 
@@ -317,7 +317,7 @@ ERROR test_example_2.py - ValueError: n must be >= 0
 
 ### Unittest Python Testing Framework Example
 
-Like Doctest, unittest is part of the Python standard library. However, unittest uses an entirely different testing paradigm. It provides functionality that is similar the [JUnit](https://junit.org/junit4/) testing framework. Typically, you run unittest on the command line, but it also integrates well with most IDEs.
+Like Doctest, unittest is part of the Python standard library. However, unittest uses an entirely different testing paradigm. It provides functionality that is similar to the [JUnit](https://junit.org/junit4/) testing framework. Typically, you run unittest on the command line, but it also integrates well with most IDEs.
 
 The example file `test_example_3.py` imports unittest, creates a class named `TestFactorial_2()` that includes all the test methods for the `factorial(n)` function. The test methods ensure that any value passed to the `factorial(n)` function is within the acceptable ranges defined at the beginning of this guide.
 
@@ -396,7 +396,7 @@ Ran 6 tests in 0.001s
 OK
 {{< /output >}}
 
-As with Doctest, the output message tells you how many tests were run and how many failed. You can get more information using the `-v` command line option or by adding `unittest.main(argv=[' '], exit=False, verbosity=2)` in the `test_example_3.py` file.
+As with Doctest, the output message tells you how many tests were run and how many failed. You can get more information using the `-v` command-line option or by adding `unittest.main(argv=[' '], exit=False, verbosity=2)` in the `test_example_3.py` file.
 
 ## Conclusion
 
