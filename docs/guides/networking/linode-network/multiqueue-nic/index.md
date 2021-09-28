@@ -8,6 +8,7 @@ og_description: "Configuring multiqueue NICs (Network Interface Controllers) on 
 keywords: ['networking','multi-queue']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
+image: NICS.jpg
 modified_by:
   name: Linode
 title: "How To Configure Multi-Queue NICs"
