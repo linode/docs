@@ -1600,10 +1600,7 @@ submenu
 subnet
 subnets
 subnetwork
-<<<<<<< HEAD
-=======
 subprocess
->>>>>>> 28c6c8ae6a046ccbc4bc98c5bf5f26ecca4f79ef
 subprocesses
 subqueries
 subquery
@@ -1757,10 +1754,7 @@ unicode
 uninvoiced
 uniq
 unittest
-<<<<<<< HEAD
-=======
 unix
->>>>>>> 28c6c8ae6a046ccbc4bc98c5bf5f26ecca4f79ef
 unmanaged
 unmerged
 unmount
