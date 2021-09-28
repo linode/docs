@@ -3,6 +3,7 @@ abell
 absecon
 abspath
 aconf
+accessor
 accessors
 adc
 addon
@@ -1919,6 +1920,7 @@ worker1
 worker2
 wp
 wpuser
+writability
 writecaps
 ws
 wsgi
