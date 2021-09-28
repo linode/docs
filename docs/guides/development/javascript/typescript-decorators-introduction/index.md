@@ -2,22 +2,18 @@
 slug: typescript-decorators-introduction
 author:
   name: Martin Heller
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'This guide discusses Decorators, an experimental TypeScript feature. You learn how to enable Decorators in TypeScript, and the syntax for creating Decorators. '
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Linode
-title: "Typescript Decorators Introduction"
+title: "Typescript Decorators: Getting Started"
 h1_title: "TypeScript Decorators: An Introduction"
 enable_h1: true
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 [Decorators in TypeScript](https://www.typescriptlang.org/docs/handbook/decorators.html) provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can annotate or modify classes or class members. Decorators can be chained or composed; that is, multiple decorators can be applied to a single declaration. Decorators are used heavily in the Angular framework, among others.
@@ -45,7 +41,7 @@ You can also [enable decorators in your tsconfig.json file](https://www.typescri
 }
 {{</ file >}}
 
-## Where Can I Use Decorators in TypeScript
+## Where Can I Use Decorators in TypeScript?
 
 Decorators can be attached to a class declaration, method, accessor, property, or parameter. The example of a [class decorator](https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators) given in the TypeScript documentation is:
 
@@ -67,7 +63,7 @@ function sealed(constructor: Function) {
 
 To understand this, you need to know that the JavaScript `Object.seal()` method changes the `configurable` property descriptor of its parameter to `false`. That means you can’t delete any members of the object or extend the object with new members. The `Object.seal()` method doesn't affect the writability of the object; for that, you can instead use `Object.freeze()`.
 
-Examples for method, accessor, property, and parameter decorators follow in the [documentation](https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators). These examples quickly become fairly advanced and use the experimental `reflect-metadata` package.
+You can find more examples for method, accessor, property, and parameter decorators in the [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators). The usage of decorators in TypeScript is fairly advanced and uses the experimental `reflect-metadata` package.
 
 ## What is a Decorator Factory?
 
@@ -81,7 +77,7 @@ function enumerable(value: boolean) {
 }
 {{</ file >}}
 
-Note that the function `enumerable` has a parameter and returns another function that uses the parameter. In this example, it modifies the `enumerable` property descriptor of the method or member to which the `@enumerable` decorator applies. For example:
+The function `enumerable` has a parameter and returns another function that uses the parameter. In this example, it modifies the `enumerable` property descriptor of the method or member to which the `@enumerable` decorator applies. For example:
 
 {{< file >}}
 class Greeter {
@@ -97,7 +93,11 @@ class Greeter {
 }
 {{</ file >}}
 
-Of course, enumerating the `greet()` method in a for loop would make no sense, so this usage prevents users of the Greeter class from a harmless error.
+Enumerating the `greet()` method in a for loop is not a good option, so this usage prevents users of the `Greeter` class from a harmless error.
+
+## More Information
+
+Decorators provide a way to annotate or modify a class or class member in TypeScript. However, Decorators are still an experimental feature of the language. To learn more about Decorators in TypeScript, visit the [Decorators proposal](https://github.com/tc39/proposal-decorators) page.
 
 
 
