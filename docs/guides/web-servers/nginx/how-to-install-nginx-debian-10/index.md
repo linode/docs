@@ -11,6 +11,7 @@ modified: 2020-02-14
 modified_by:
   name: Linode
 published: 2018-04-16
+image: L_NGINX_on_Debian10.png
 title: "How to Install NGINX on Debian 10"
 h1_title: "Installing NGINX on Debian 10"
 enable_h1: true
