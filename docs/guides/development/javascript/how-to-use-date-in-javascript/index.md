@@ -9,6 +9,7 @@ keywords: ['javascript','js','date','get date in javascript','set date in javasc
 tags: ["web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-23
+image: UsingDateinJavaScript.png
 modified_by:
   name: Linode
 title: "How to Use the Date Object in JavaScript"

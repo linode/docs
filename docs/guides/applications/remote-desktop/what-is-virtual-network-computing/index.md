@@ -7,6 +7,7 @@ og_description: "This guide discusses how a VNC system works to share screen gra
 keywords: ['vnc', 'virtual network computing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-11
+image: VNC.jpg
 modified_by:
   name: Linode
 title: "An Overview of VNC (Virtual Network Computing)"
