@@ -8,7 +8,7 @@ og_description: "In this guide you will create a private Docker registry on Lino
 keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-image: private-docker-registry.png
+image: PrivateDockerReg.png
 published: 2020-03-26
 modified_by:
   name: Leslie Salazar

@@ -9,6 +9,7 @@ keywords: ['ruby on rails','marketplace', 'marketplace apps']
 tags: ["ruby","linode platform","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
+image: RubyonRails_oneclickapps.png
 modified: 2020-03-11
 modified_by:
   name: Linode

@@ -11,6 +11,7 @@ modified: 2020-04-07
 modified_by:
   name: Linode
 published: 2020-04-07
+image: Python_virtualenv_Ubuntu1804.png
 title: How to Create a Python Virtual Environment on Ubuntu 18.04
 h1_title: Creating a Python Virtual Environment on Ubuntu 18.04
 enable_h1: true
@@ -18,7 +19,6 @@ external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
-image: 'Creating_a_Python_Virtual_Environment_on_Ubuntu_1804_1200x631.png'
 relations:
     platform:
         key: python-virtual-env

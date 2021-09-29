@@ -12,6 +12,7 @@ modified: 2018-08-21
 modified_by:
   name: Linode
 published: 2015-02-12
+image: ProxyProtocol_NodeBalancers.png
 title: Using Proxy Protocol with NodeBalancers
 aliases: ['/platform/nodebalancer/nodebalancer-proxypass-configuration/']
 ---
