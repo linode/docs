@@ -9,6 +9,7 @@ keywords: ['kubernetes','cloud controller manager','load balancing','nodebalance
 tags: ["docker","networking","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-16
+image: TutInstall_LinCCM_UnmanagedKubCluster.png
 modified_by:
   name: Linode
 title: "Install the Linode CCM on an Unmanaged Kubernetes Cluster"
