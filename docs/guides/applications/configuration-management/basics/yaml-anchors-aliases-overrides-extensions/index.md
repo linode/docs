@@ -9,6 +9,7 @@ keywords: ['YAML anchors']
 tags: ['docker', 'kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
+image: YAML.jpg
 modified_by:
   name: Linode
 title: "YAML Examples for Anchors, Aliases, and Overrides"

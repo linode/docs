@@ -9,6 +9,7 @@ keywords: ['arch','manjaro','package manager']
 tags: ['arch', 'manjaro']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15
+image: UsingPacmantoManagePackagesinArchLinux.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode
