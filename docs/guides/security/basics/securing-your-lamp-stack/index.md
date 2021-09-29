@@ -15,7 +15,7 @@ title: How to Secure Your LAMP Stack
 h1_title: Securing Your LAMP Stack
 enable_h1: true
 aliases: ['security/basics/securing-your-lamp-stack/']
-image: Securing_LAMP_Stack.png
+image: SecureLAMPstack.png
 ---
 
 ## What is a LAMP Stack?

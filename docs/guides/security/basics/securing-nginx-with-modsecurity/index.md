@@ -15,7 +15,7 @@ title: How to Secure Nginx With ModSecurity
 h1_title: Securing Nginx With ModSecurity
 enable_h1: true
 aliases: ['security/basics/securing-nginx-with-modsecurity/']
-image: Securing_Nginx_With_ModSecurity.png
+image: SecureNginx_ModSecurity.png
 relations:
     platform:
         key: securing-web-servers-with-modsecurity

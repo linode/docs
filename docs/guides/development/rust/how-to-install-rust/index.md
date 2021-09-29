@@ -7,6 +7,7 @@ description: "This guide explains how to install Rust on Ubuntu 20.04. We'll als
 keywords: ['Rust','programming language','installation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-07
+image: RUST1.jpg
 modified_by:
   name: Linode
 tags: ["rust", "development", "ubuntu"]
