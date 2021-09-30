@@ -40,6 +40,7 @@ Here are the additional options available for this Marketplace App:
 |:--------------|:------------|
 | **Admin Password** | The Harbor Admin password. *Required*. |
 | **Database Password** | The Harbor Database password. *Required*. |
+| **Email Address** | This email is require to generate the SSL certificates. *Required* |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name where you wish to host your Harbor instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
