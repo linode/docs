@@ -2,12 +2,11 @@
 slug: get-started-with-bokeh-and-python-data-visualizations
 author:
   name: John Mueller
-description: 'This guide introduces some of the Bokeh Python features and also examples on how to create line and bar graphs.'
-og_description: 'This guide introduces some of the Bokeh Python features and also examples on how to create line and bar graphs.'
+description: 'Bokeh is a Python interactive visualization library. This guide provides an overview of Bokeh''s main features with example code you can run on your computer.'
 keywords: ['bokeh python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-24
+published: 2021-10-01
 modified_by:
   name: Linode
 title: "Get Started With Bokeh and Python Data Visualizations"
@@ -21,11 +20,11 @@ contributor:
 
 ## Bokeh vs. Matplotlib
 
-While Bokeh and Matplotlib both help you plot data, these two libraries are different tools for different purposes. If your focus is on interactivity on websites, then Bokeh is the better choice. Matplotlib, on the other hand, provides Python visualizations that integrate well with Jupyter Notebook. Bokeh can produce Jupyter Notebook output or send the output to a file instead. This functionality is explored later in the guide.
+While Bokeh and Matplotlib both help you plot data, these two libraries are different tools for different purposes. If your focus is on website interactivity, then Bokeh is the better choice. Matplotlib, on the other hand, provides Python visualizations that integrate well with Jupyter Notebook. Bokeh can produce Jupyter Notebook output or send its output to a file. This functionality is explored later in the guide.
 
 From a support perspective, Matplotlib enjoys far greater community support than Bokeh does. This may be because Bokeh has not been around as long as Matplotlib. However, given its age, Bokeh has a strong community.
 
-When you use Bokeh, you find that it produces beautiful interactive graphics with less code than Matplotlib requires. Bokeh is a product that a novice can use to produce great-looking output in a minimum of time and with little effort. In addition, Bokeh's use of glyphs allows additions to your output that Matplotlib is hard-pressed to provide. Matplotlib provides additional drawing flexibility that allows you to make modifications directly to various axes. This reduces the effort needed to apply special effects and eases the addition of labels to pie charts. Bokeh is a very low-level product where you specify precisely how you want things drawn.
+When you use Bokeh, you find that it produces beautiful interactive graphics with less code than Matplotlib requires. In addition, Bokeh has an extensive library of glyphs that can be added to your visualizations. Matplotlib lacks such an extensive glyph library. Matplotlib provides additional drawing flexibility that allows you to make modifications directly to various axes. This reduces the effort needed to apply special effects and eases the addition of labels to pie charts. Bokeh is a very low-level product where you specify precisely how you want things drawn.
 
 ## Install Bokeh
 
@@ -45,14 +44,12 @@ If you are not familiar with Pip, see our [Managing Python Packages and Versions
 
 ## Create Graph Visualizations with Bokeh
 
-This guide's examples use Bokeh version 2.3.2, however, the examples should work with other versions of Bokeh.
+This guide's examples use Bokeh version 2.3.2, however, the examples should work with other versions of Bokeh. The example code in this section is meant to showcase a few of the capabilities you can expect from Bokeh.
 
-To view which version of Bokeh you have installed on your system, open your Python interpreter and enter the following code:
+1. To view which version of Bokeh you have installed on your system, open your Python interpreter and enter the following code:
 
     import bokeh as b
     print(b.__version__)
-
-The example code in this section is meant to showcase a few of the capabilities you can expect from Bokeh.
 
 1. Create a new file named `main.py` and insert the following code:
 
@@ -82,7 +79,7 @@ plot.legend.click_policy="hide"
 show(plot)
     {{< /file >}}
 
-The code generates a series of random numbers to use. To experiment with the same numbers in the code, call `np.random.seed(1)`.
+The code generates a series of random numbers to be used for the visualizations. To experiment with the same numbers in the code, call `np.random.seed(1)`.
 
 The plotting process begins with a call to the `figure()` function. This function defines the characteristics of the plot as a whole, which includes the `x` and `y` axis labels, and the range of values for each axis.
 
@@ -98,17 +95,17 @@ Like other plotting applications, you get some interesting controls by default. 
 
 The right-hand column of the graph includes all of Bokeh's default tools. The list below outlines each one in order from top to bottom:
 
-- Link to the Bokeh site
-- Panning tool allows you to move the entire plot around as needed.
-- Box Zoom expands the area you select for better viewing.
-- Wheel Zoom uses the scroll wheel on the mouse to zoom into the area selected by the mouse cursor. This button stays on even if you select another tool, so you can pan and zoom, for example.
-- Save the current plot to disk.
-- Reset the plot to a default condition.
-- View more information about configuring the plot tools.
+- A link to the Bokeh site.
+- A panning tool that allows you to move the entire plot around as needed.
+- The box zoom expands the area you select for better viewing.
+- The wheel zoom uses the scroll wheel on the mouse to zoom into the area selected by the mouse cursor. This button stays on even if you select another tool, so you can pan and zoom, for example.
+- A tool to save the current plot to disk.
+- A button that resets the plot to a default condition.
+- A link to view more information about configuring the plot tools.
 
 ### Add Controls to Your Bokeh Graph
 
-The steps in this section shows you how to add controls to a Bokeh graph. Before adding the controls, you should determine what these controls should do in your web browser environment. The example below shows one of many ways to create and use a control in Bokeh.
+The steps in this section show you how to add controls to a Bokeh graph. Before adding the controls, you should determine what these controls should do in your web browser environment. The example below shows one of many ways to create and use a control in Bokeh.
 
 1. Create a new file named `main.py` and insert the following code:
 
@@ -189,16 +186,16 @@ plot.legend.location = "top_center"
 show(plot)
     {{< /file >}}
 
-The code above introduces a few features not yet explored in this guide. The code creates labels for the `x-axis` instead of using numbers. The `ColumnDataSource()` function contains a dictionary with the x-axis, y-axis, and the colors to use for them. Creating the `figure()` is the same as before, except you use the list of `x-axis` label names in place of numeric labels this time.
+    The code above introduces a few features not yet explored in this guide. The code creates labels for the `x-axis` instead of using numbers. The `ColumnDataSource()` function contains a dictionary with the x-axis, y-axis, and the colors to use for them. Creating the `figure()` is the same as before, except you use the list of `x-axis` label names in place of numeric labels this time.
 
-The `vbar()` function call uses the dictionary keys for the `x-axis`, `y-axis`, `colors`, and `legend` values. You do this by specifying the source argument with the source of the information.
+    The `vbar()` function call uses the dictionary keys for the `x-axis`, `y-axis`, `colors`, and `legend` values. You do this by specifying the source argument with the source of the information.
 
-The rendered example below displays the legend in a horizontal format at the top of the display. The graph colors so that it's easy to distinguish between years.
+    The rendered example below displays the legend in a horizontal format at the top of the display. The bar graph colors make it easier to distinguish between years.
 
-![A Bokeh bar graph displaying sales date for a range of years.](bokeh-bar-graph.png)
+    ![A Bokeh bar graph displaying sales date for a range of years.](bokeh-bar-graph.png)
 
 ## Conclusion
 
 This guide highlights a few of Bokeh's features. However, there are many more visualization tools provided by Bokeh that you can discover by viewing the [Bokeh gallery](https://docs.bokeh.org/en/latest/docs/gallery.html). If you use Jupyter Notebook to create your Python code, explore the [Binder live tutorials](https://mybinder.org/v2/gh/bokeh/bokeh-notebooks/master?filepath=tutorial%2F00%20-%20Introduction%20and%20Setup.ipynb) to learn more.
 
-Bokeh is a unique plotting tool that definitely deserves a place in your toolbox. It's also not a replacement for Matplotlib, which is more of a general-purpose tool. It also does not replace [seaborn](https://seaborn.pydata.org/), which is often used for machine learning output. This is the tool to use when you need to create graphical output to explain the abstractions of your latest code. With Bokeh, the output looks great and provide interesting user interactivity tools.
+Bokeh is a unique plotting tool that deserves a place in your toolbox. It's also not a replacement for Matplotlib, which is more of a general-purpose tool. It also does not replace [seaborn](https://seaborn.pydata.org/), which is often used for machine learning output. This is the tool to use when you need to create graphical output to explain the abstractions of your latest code. With Bokeh, the output looks great and provides interesting user interactivity tools.
