@@ -241,6 +241,7 @@ containerised
 convolutional
 cookstyle
 coose
+copr
 copyfrom
 copyto
 coreutils
