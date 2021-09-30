@@ -43,7 +43,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What is gtop?
 
-[Gtop](https://github.com/aksakalli/gtop) is a graphical system monitoring dashboard for your terminal. Gtop displays your system's memory, CPU, and disk usage at a glance in an easy-to-read visual layout. Alongside tha information, you get a list of running processes with statistics about their CPU, and memory consumption.
+[Gtop](https://github.com/aksakalli/gtop) is a graphical system monitoring dashboard for your terminal. Gtop displays your system's memory, CPU, and disk usage at a glance in an easy-to-read visual layout. Alongside that information, you get a list of running processes with statistics about their CPU, and memory consumption.
 
 ### gtop vs. htop
 
