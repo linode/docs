@@ -62,7 +62,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
      to access and interact with the Marketplace app. -->
 ### Accessing the Harbor App
 
-To access your Harbor instance, Open a browser and navigate to the domain you created during in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
+To access your Harbor instance, Open a browser and navigate to the domain you created in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
 
 From there you will see the Harbor login screen where you can enter 'admin' as the username and the password you created in the beginning of your deployment
 
