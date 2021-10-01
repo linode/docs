@@ -285,6 +285,7 @@ ctools
 ctrl
 ctx
 cuda
+curlie
 cutover
 cyberduck
 cyberpanel
@@ -663,6 +664,7 @@ htmldir
 htop
 htpasswd
 http
+httpie
 httpchk
 httpd
 https
@@ -1209,6 +1211,7 @@ owncast
 owncloud
 pacman
 paas
+packagist
 pagent
 pagespeed
 pandoc
@@ -1676,6 +1679,8 @@ thawte
 theano
 theming
 thingsboard
+tigervnc
+tightvncserver
 tika
 timedatectl
 timeframe
@@ -1809,6 +1814,7 @@ valheim
 validator
 variadic
 varnishlog
+vaultwarden
 vcs
 vdev
 vdevs
@@ -1864,6 +1870,7 @@ webmin
 webpack
 webpages
 webpy
+broot
 webroot
 webroots
 webserver

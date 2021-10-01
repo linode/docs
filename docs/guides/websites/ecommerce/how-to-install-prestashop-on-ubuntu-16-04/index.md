@@ -42,7 +42,7 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/platform/manager/dns-manager/) guide for more information.
+4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/guides/dns-manager/) guide for more information.
 
       {{< note >}}
 Throughout this guide, replace `example.com` with the public IP address or Fully Qualified Domain Name (FQDN) of your Linode.

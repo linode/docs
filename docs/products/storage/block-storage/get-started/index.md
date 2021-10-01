@@ -24,7 +24,7 @@ You can increase the storage capacity of any Block Storage Volume.
 1. Shut down your Linode.
 1. Navigate to the “Volumes” section of the Cloud Manager and click on the more options ellipsis next to the Volume you would like to resize.
 1. Select “Resize” from the dropdown menu.
-1. Enter in the new size for your Volume. The maximum size is 10240 GiB. Then click “Submit”.
+1. Enter in the new size for your Volume. The maximum size is 10240 GB. Then click “Submit”.
 1. When the resize is complete, reboot your Linode.
 1. Unmount your Volume and resize its partition to fill the new Volume size.
 1. Mount the Volume back to the filesystem.

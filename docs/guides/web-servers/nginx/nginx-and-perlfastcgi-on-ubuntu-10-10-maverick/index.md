@@ -46,7 +46,7 @@ Issue the following commands to update your system and install the nginx web ser
 
 ## Configure DNS
 
-Create an "A" record pointing your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/platform/manager/dns-manager/) for instructions.
+Create an "A" record pointing your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/guides/dns-manager/) for instructions.
 
 ## Configure Virtual Hosting
 

@@ -112,7 +112,7 @@ Test your website(s) before you add DNS records and make the site available publ
 If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
 
 {{< note >}}
-Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/guides/dns-manager/) guide.
 {{</ note >}}
 
 1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel will appear where you can fill out the form fields with your domain's information.

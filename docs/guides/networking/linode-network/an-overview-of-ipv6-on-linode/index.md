@@ -7,7 +7,7 @@ description: "This guide is a brief overview of IPv6 support on Linode, includin
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-16
+modified: 2021-09-21
 modified_by:
   name: Linode
 published: 2011-05-03
@@ -45,16 +45,15 @@ You can find your Linode's IPv6 address using the Linode Cloud Manager or the `i
 
 1. To see a more detailed view, select the Linode which uses the IPv6 address you would like to find.
 
-1. In the following page, you can find the Linode's IPv6 address in the **IP Address** column.
+1. In the following page, you can find the Linode's IPv6 address in the **IP Addresses** column.
 
-    ![List of Linodes to view your IPv6 address.](ip-address-quick-view.png)
-
+    ![The IPv6 address highlighted within the Linode's detail section of the Cloud Manager](ipv6-linode.png)
 
 1. For more detailed information related to the Linode's IPv6 address, click on the **Network** tab.
 
 1. Under the *IP Addresses* table, you can view the Linode's SLAAC and Link Local IPv6 addresses.
 
-    ![A Linode Networking Tab detail view.](ip-address-detail-view.png)
+    ![The list of IP addresses under the IP Addresses table within the Linode's Network Tab](ipv6-linode-network-tab.png)
 
 ### Linux Terminal
 

@@ -54,6 +54,6 @@ Adding a VLAN to an existing Linode is done by editing the Linode's existing Con
 
 1. If using [Network Helper](https://www.linode.com/docs/guides/network-helper/) to manage the Linode's internal network configuration (the default for most new Linodes), enter an *IPAM Address*. Doing so will allow the newly created Linode to automatically communicate with other Linodes attached to the same VLAN. The IPAM address should be unique to avoid conflicts in the case other machines share the same address. An example of a valid IPAM address is `10.0.0.1/24`.
 
-1. If editing an existing configuration, click on the **Edit Configuration** button to save the changes and attach the VLAN. If creating a new configuration, change any other settings as needed and click **Add Configuration** to create the new configuration profile.
+1. If editing an existing configuration, click on the **Save Changes** button to save the changes and attach the VLAN. If creating a new configuration, change any other settings as needed and click **Add Configuration** to create the new configuration profile.
 
 1. Once saved, the list of configuration profiles will be updated. Select the **Boot** button next to the desired configuration profile. This will reboot using the specified configuration and will attach the VLAN to the Linode.

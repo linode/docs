@@ -27,7 +27,7 @@ These additional guides will help you with targeted topics like DNS basics and m
 
 - [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/)
 
-- [DNS Manager](/docs/platform/manager/dns-manager/)
+- [DNS Manager](/docs/guides/dns-manager/)
 
 - [Diagnose & Resolve DNS Records in DNS Manager](/docs/platform/manager/troubleshooting-dns/)
 
