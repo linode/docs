@@ -75,7 +75,7 @@ The Cloud Manager includes support for standard logical operators `OR`, `AND`, a
 
 ### AND
 
-`AND` will allow you to narrow your search more precisely for additional qualifiers. The following search finds all of th Linodes which also match the `production` tag:
+`AND` will allow you to narrow your search more precisely for additional qualifiers. The following search finds all of the Linodes which also match the `production` tag:
 
     type:linode AND tag:production
 
