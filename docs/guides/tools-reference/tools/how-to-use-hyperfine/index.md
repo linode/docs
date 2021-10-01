@@ -86,16 +86,43 @@ On the other hand, `bench` prioritizes simple usability and more visually engagi
 
 ## How to Install hyperfine
 
-You can use the DNF package manager to install `hyperfine` on AlmaLinux, CentOS, or Fedora:
+You can simply use the DNF package manager to install `hyperfine` on Fedora:
 
     sudo dnf install hyperfine
 
-For Debian and Ubuntu distributions, use the following commands to download and install the `hyperfine` package:
+On Debian, Ubuntu, AlmaLinux, and CentOS, use the steps below to install `hyperfine`.
 
-    wget https://github.com/sharkdp/hyperfine/releases/download/v1.11.0/hyperfine_1.11.0_amd64.deb
-    sudo dpkg -i hyperfine_1.11.0_amd64.deb
+1. Install `gcc`.
 
-You may want to check the [releases page](https://github.com/sharkdp/hyperfine/releases) for `hyperfine` and replace `1.11.0` in the commands above with the latest version number you find there.
+    - On Debian and Ubuntu, you can do so with:
+
+            sudo apt install build-essential
+
+    - On AlmaLinux and CentOS (8 or later), use:
+
+            sudo dnf install gcc
+
+1. Install [Rust](https://www.rust-lang.org/). This method uses the Rust package manager, Cargo, which is included when you install Rust:
+
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+    When prompted, select `1` for the default installation path.
+
+1. Either restart your shell session (exiting and logging back in) or run the following command:
+
+        source $HOME/.cargo/env
+
+1. Install `hyperfine` via the Cargo package manager:
+
+        cargo install hyperfine
+
+Now you can verify your installation by checking the installed version:
+
+    hyperfine --version
+
+{{< output >}}
+hyperfine 1.11.0
+{{< /output >}}
 
 ## How to Use hyperfine
 
