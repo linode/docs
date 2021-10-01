@@ -248,7 +248,7 @@ We can run the following command on our logs to check the last five lines to see
 
     tail -5 /var/log/syslog
 
-    {{< output >}}
+{{< output >}}
 Sep 28 15:11:10 li248-37 systemd[1]: apache2.service: Succeeded.
 Sep 28 15:11:10 li248-37 systemd[1]: Stopped The Apache HTTP Server.
 Sep 28 15:11:10 li248-37 systemd[1]: Starting The Apache HTTP Server...
