@@ -128,6 +128,7 @@ blockchain
 blocklists
 blockwise
 bluehost
+bokeh
 bookinfo
 boolean
 booleans
@@ -250,6 +251,7 @@ containerised
 convolutional
 cookstyle
 coose
+copr
 copyfrom
 copyto
 coreutils
@@ -605,6 +607,7 @@ groupinfo
 grsecurity
 gsa
 gsad
+gtop
 guacd
 gui
 gunicorn
@@ -1258,6 +1261,7 @@ pid
 pidfile
 pipfile
 pipenv
+pipelined
 piwik
 pki
 plaintext
