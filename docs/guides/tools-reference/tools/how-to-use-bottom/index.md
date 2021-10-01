@@ -101,7 +101,7 @@ By default, bottom displays the following widgets:
 
 You can customize bottom's display with a **Battery** widget, which provides information on your machine's battery life, if relevant. The widget's information includes current charge and usage percentage, time until empty, and health percentage.
 
-You can enable this widget by adding the `--battery` option when running the `btm` command. You can learn more about bottom's command-line options in the [Command-line Flags](/docs/guides/installing-and-using-bottom-on-linux/#command-line-options) section below.
+You can enable this widget by adding the `--battery` option when running the `btm` command. You can learn more about bottom's command-line options in the [Command-line Options](#command-line-options) section below.
 
 ### Navigating bottom
 
