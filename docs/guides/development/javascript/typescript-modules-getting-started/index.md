@@ -4,7 +4,8 @@ author:
   name: John Mueller
 description: 'Two to three sentences describing your guide.'
 og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['typescript moduel', 'typescript import', 'typescript module exports', 'typescript module vs namespace' ]
+keywords: ['typescript module', 'typescript import', 'typescript module exports', 'typescript module vs namespace']
+tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-20
 modified_by:
@@ -17,7 +18,7 @@ contributor:
   link: https://github.com/JohnPaulMueller
 ---
 
-TypeScript supports modules and namespaces that can be used to organize your code base. Modules are currently the favored method for organizing your code when working with TypeScript. This guide shows you how to create TypeScript modules and provides a comparison between modules and namespaces.
+TypeScript supports modules and namespaces that can be used to organize your codebase. Modules are currently the favored method for organizing your code when working with TypeScript. This guide shows you how to create TypeScript modules and provides a comparison between modules and namespaces.
 
 The list below provides an overview of TypeScript module features:
 
@@ -25,7 +26,7 @@ The list below provides an overview of TypeScript module features:
 
 - Variables, functions, classes, and other module entities aren’t visible outside of the module. This aids in data and code hiding.
 
-- To make module entities visible to the outside world, you must export them. This helps you keep track of the areas of a module that are visible.
+- To make module entities visible to the outside world, you must export them. This helps you keep track of the visible areas of a module.
 
 - To consume visible module entities, another module or code element must specifically import the entities. This helps promote better code design.
 
@@ -37,9 +38,9 @@ In TypeScript, any file that contains a top-level `import` or `export` statement
 
 ## Create a TypeScript Module
 
-This section provides a basic example that shows you how to create a TypeScript module. The module you create in this contains several methods used to provide starting and ending prompts to a user.
+The steps in this section provide a basic example that shows you how to create a TypeScript module. The module you create contains several methods that provide starting and ending prompts to a user.
 
-1. In your TypeScript directory, create a new file named `Greetings.ts` and add the following code:
+1. Create a new directory named `TestTypescript` and move into that directory. Then, create a new file named `Greetings.ts` and add the following code:
 
     {{< file "Greetings.ts">}}
 export function SayHello(name : string) : void {
@@ -61,30 +62,30 @@ function ShowGreeting(text : string, name : string) : void {
 error TS2339: Property 'ShowGreeting' does not exist on type 'typeof import("/TSC/Greetings")'.
 {{< /output >}}
 
-1. In your TypeScript directory, create another new file named `TestGreetings.ts`. This new file uses the code you created for `Greetings.ts`. Add the following code to the `TestGreetings.ts` file:
+1. In your `TestTypescript` directory, create a new file named `TestGreetings.ts`. This new file uses the code you created for `Greetings.ts`. Add the following code to the `TestGreetings.ts` file:
 
     {{< file "TestGreetings.ts" >}}
-/** Import the required code **/
-import greet = require("/TSC/Greetings");
+/* Import the required code */
+import greet = require("/TestTypescript/Greetings");
 
-/** Start the session **/
+/* Start the session */
 greet.SayHello("Sam");
 
-/** Perform some work **/
+/* Perform some work */
 console.log("Let's do some work!");
 console.log("Work is all done <whew>!");
 
-/** End the session **/
+/* End the session */
 greet.SayGoodbye("Sam");
     {{</ file >}}
 
-    The `TestGreetings.ts` file demonstrates one of the most common methods used to import a module. You assign it to a variable by calling `require()` with the required path. All of the exported entities become available for use now. You might think that you can provide the name of the module if it appears in the same directory as the second module, but this isn’t the case. If you use `import greet = require("Greetings");`, you see the following error message:
+    The `TestGreetings.ts` file demonstrates one of the most common methods used to import a module. You assign it to a variable by calling `require()` with the required path. All of the exported entities become available for use now. You might think that you can provide the name of the module if it appears in the same directory (i.e., `TestTypescript` directory in this example) as the second module, but this isn’t the case. If you use `import greet = require("Greetings");`, and run the `TestGreetings.ts` module, you see the following error message:
 
     {{< output >}}
 error TS2307: Cannot find module 'Greetings' or its corresponding type declarations.
     {{</ output >}}
 
-    The greet variable provides access to the two exported functions. You use dot syntax to access them and they work as you might expect. The example also provides some additional processing, much as you would for any other application.
+    The `greet` variable provides access to the two exported functions. You use dot syntax to access them and they work as you might expect. The example also provides some additional processing, much as you would for any other application.
 
 1. To compile the `Greetings.ts` module, issue the following command in your terminal:
 
@@ -96,42 +97,39 @@ error TS2307: Cannot find module 'Greetings' or its corresponding type declarati
 
 1. To run the application, execute the following command:
 
-        node testgreetings
+        node TestGreetings.js
 
     You should see a similar output:
 
     {{< output >}}
 Hello Sam!
-
 Let's do some work!
-
 Work is all done <whew>!
-
 Sorry to see you go Sam!
     {{</ output >}}
 
 ## TypeScript Module Import
 
-The [module import process](https://www.typescriptlang.org/docs/handbook/modules.html#import) is quite flexible and allows you to define specifically what to use from an external module. The following section include some things to consider when importing external modules into your application.
+The [module import process](https://www.typescriptlang.org/docs/handbook/modules.html#import) is quite flexible and allows you to define specifically what to use from an external module. The following section includes some things to consider when importing external modules into your application.
 
 ### Using Specific Features
 
 It’s possible to specify which features to use from an external module by using another form of the `import` statement like the example below:
 
 {{< file >}}
-import { SayHello } from "/TSC/Greetings";
+import { SayHello } from "/TestTypescript/Greetings";
 {{</ file >}}
 
-In this case, you only gain access to the `SayHello()` function, not the `SayGoodbye()` function, even though both functions are exported. If you try to use the SayGoodbye function, you see the following error message:
+In this case, from the `Greetings.ts` module, you only gain access to the `SayHello()` function, not the `SayGoodbye()` function, even though both functions are exported. If you try to use the `SayGoodbye()` function, you see the following error message:
 
 {{< output >}}
 error TS2304: Cannot find name 'SayGoodbye'.
 {{</ output >}}
 
-To fix the error, amend your `import` statement in the following way:
+To fix the error, amend your `import` statement to use `SayGoodbye` as shown below:
 
 {{< file >}}
-import { SayHello, SayGoodbye } from "/TSC/Greetings";
+import { SayHello, SayGoodbye } from "/TestTypescript/Greetings";
 {{</ file >}}
 
 However, using this form of the `import` statement doesn't allow you to import any methods that aren’t already exported, such as `ShowGreeting()`.
@@ -141,7 +139,7 @@ However, using this form of the `import` statement doesn't allow you to import a
 You might find that an imported method causes naming conflicts or that the method name is overly long. Whatever the reason, you can assign a different name to a method as part of the `import` statement as follows:
 
 {{< file >}}
-import { SayHello as SH } from "/TSC/Greetings";
+import { SayHello as SH } from "/TestTypescript/Greetings";
 {{</ file >}}
 
 In this case, you don’t type `SayHello()` when you want to use the function, you type `SH` instead, for example:
@@ -152,10 +150,10 @@ SH("Tammy");
 
 ### Using Wildcard Imports
 
-It’s possible to import all of the features of a module using a wildcard import like this:
+It’s possible to import all of the features of a module using a wildcard import as shown below:
 
 {{< file >}}
-import * as greets from "/TSC/Greetings";
+import * as greets from "/TestTypescript/Greetings";
 {{</ file >}}
 
 The difference in behavior between `import * as` and `import ... = require()` depends on how the [module you import is configured](https://www.typescriptlang.org/docs/handbook/modules.html#wildcard-module-declarations).
@@ -166,11 +164,11 @@ When using wildcard imports an issue can arise when a module uses a single expor
 
 Earlier in this guide, you saw how to export functions as part of a module. However, you can export any other TypeScript feature as well. The following sections include some considerations when performing an export.
 
-### Exporting a Class
+### Export a Class
 
 A potential problem in TypeScript is that there is no specific integer or float type —everything is a number. The following steps demonstrate this issue in TypeScript.
 
-1. In your TypeScript directory, create a file named `MathStuff.ts` and include the following code in it.
+1. In your `TestTypescript` directory, create a file named `MathStuff.ts` and include the following code in it.
 
     {{< file "MathStuff.ts">}}
 export class MyMath {
@@ -192,12 +190,12 @@ export class MyMath {
 }
     {{</ file >}}
 
-    The code relies on the `Math.floor()` function to convert any floating point number to an integer number before performing the calculation using certain rules. You might choose to implement this class using the `Math.round()` function instead, so that larger decimal values are rounded up. The point is that even if you input floating point values, an integer is returned.
+    The code relies on the `Math.floor()` function to convert any floating-point number to an integer number before performing the calculation using certain rules. You might choose to implement this class using the `Math.round()` function instead, so that larger decimal values are rounded up. The point is that even if you input floating-point values, an integer is returned.
 
-1. Create a file named `TestMathStuff.ts` and add the following code to it.
+1. Create another file named `TestMathStuff.ts` and add the following code to it.
 
     {{< file "TestMathStuff.ts" >}}
-import { MyMath } from "/TSC/MathStuff";
+import { MyMath } from "/TestTypescript/MathStuff";
 
 console.log("5 + 2 = ", MyMath.DoIntAdd(5.1, 2.4));
 console.log("5 - 2 = ", MyMath.DoIntSub(5.1, 2.4));
@@ -217,7 +215,7 @@ console.log("5 / 2 = ", MyMath.DoIntDiv(5.1, 2.4));
 
 1. To run the compiled files, use the following command:
 
-        node TestMathStuff
+        node TestMathStuff.js
 
     You should see the following output from the application:
 
@@ -228,7 +226,7 @@ console.log("5 / 2 = ", MyMath.DoIntDiv(5.1, 2.4));
 5 / 2 =  2
     {{</ output >}}
 
-### Modifying the Export Name
+### Modify the Export Name
 
 There are times when you need to export a module feature using a different name. For example, when there are potential naming conflicts. The way around this problem is to place the export statement on a separate line with the renamed feature like the example below:
 
@@ -239,7 +237,7 @@ export { MyMath as IntMath };
 In this case, TypeScript now refers to `MyMath` as `IntMath`. So, the `import` statement would look as follows:
 
 {{< file >}}
-import { IntMath } from "/TSC/MathStuff";
+import { IntMath } from "/TestTypescript/MathStuff";
 {{</ file >}}
 
 ### Re-exporting Modules
@@ -247,24 +245,24 @@ import { IntMath } from "/TSC/MathStuff";
 You might create a super-module that depends on the content of many modules that you want to work together. However, you might not actually need to do anything with those other modules —they’re part of the package you’re putting together. In this case, you can re-export a module using the following code:
 
 {{< file >}}
-export { MyMath as IntMath } from "/TSC/MathStuff";
+export { MyMath as IntMath } from "/TestTypescript/MathStuff";
 {{</ file >}}
 
-When you import the super-module into your application, `MyMath` is a part of the super-module, but appears under the name `IntMath`. A separate class in the super-module might support floating point math. Use a single import statement to import both classes in the following way:
+When you import the super-module into your application, `MyMath` is a part of the super-module, but appears under the name `IntMath`. A separate class in the super-module might support floating-point math. Use a single import statement to import both classes in the following way:
 
 {{< file >}}
-import { IntMath, FloatMath } from "/TSC/SuperMath";
+import { IntMath, FloatMath } from "/TestTypescript/SuperMath";
 {{</ file >}}
 
 ## TypeScript Modules vs. Namespaces
 
-Namespaces provide another way to organize your code in TypeScript. Modules make it possible to import any code into your application, allowing for code reuse. However, all of the code you import becomes part of the global scope. The global scope is the common area of the application set aside for all your application’s resources. Namespaces make it possible to create a hierarchy of code storage, so that every piece of code appears in its own scope. The main advantage to namespaces is that they keep the global scope from getting bloated. They also reduce the risk of naming conflicts when you use third-party modules.
+Namespaces provide another way to organize your code in TypeScript. Modules make it possible to import any code into your application, allowing for code reuse. However, all of the code you import becomes part of the global scope. The global scope is the common area of the application set aside for all your application’s resources. Namespaces make it possible to create a hierarchy of code storage, so that every piece of code appears in its own scope. The main advantage of namespaces is that they keep the global scope from getting bloated. They also reduce the risk of naming conflicts when you use third-party modules.
 
-### Creating a TypeScript Namespace
+### Create a TypeScript Namespace
 
-You create a namespace by using the `namespace` keyword, followed by the namespace's name. Everything between the opening and closing curly brace is part of that namespace. Consequently, one of the advantages of using a namespace is that the code required to create it is relatively simple. Another advantage of namespaces is that they can appear over multiple files, so you can combine files and namespaces together as an organizational aid. The following steps show how to work with namespaces in TypeScript.
+You create a namespace by using the `namespace` keyword, followed by the name of the namespace. Everything between the opening and the closing curly brace is part of that namespace. Consequently, one of the advantages of using a namespace is that the code required to create it is relatively simple. Another advantage of namespaces is that they can appear over multiple files, so you can combine files and namespaces together as an organizational aid. The following steps show how to work with namespaces in TypeScript.
 
-1. Create a new file named `NSFullMath.ts` and add the code in the file below. The `export` statement makes the function to accessible outside of the namespace.
+1. In the `TestTypescript` directory, create a new file named `NSFullMath.ts` and add the following code. The `export` statement makes the function accessible outside of the namespace.
 
     {{< file "NSFullMath.ts" >}}
 namespace IntMath {
@@ -281,7 +279,7 @@ namespace IntMath {
 1. Create a new file named `TestNamespace.ts` and add the following code:
 
     {{< file "TestNamespace.ts" >}}
-/// <reference path="/TSC/NSFullMath.ts" />
+/// <reference path="/TestTypescript/NSFullMath.ts" />
 
 console.log("5 + 2 = ", IntMath.DoIntAdd(5.1, 2.4));
     {{</ file >}}
@@ -290,13 +288,13 @@ console.log("5 + 2 = ", IntMath.DoIntAdd(5.1, 2.4));
 
 1. To compile the file above, use the following command:
 
-        type tsc --outfile TestNamespace.js
+        tsc --outfile TestNamespace.js TestNamespace.ts
 
      This new method of compiling the code makes it possible for the compiler to find your files.
 
 1. Verify that the code actually works, with the following command:
 
-        node TestNamespace
+        node TestNamespace.js
 
     You should see the following output:
 
@@ -318,7 +316,7 @@ var IntMath;
 console.log("5 + 2 = ", IntMath.DoIntAdd(5.1, 2.4));
     {{</ file >}}
 
-    The code from the namespace file is compiled directly as part of the `TestNamespace.js` file. Even though the code is in separate files, the result isn’t. Compare this output to a module version of the same code:
+    The code from the namespace file is compiled directly as part of the `TestNamespace.js` file. Even though the code is in separate files, the result isn’t. Compare this output to a module version of the same code.
 
     {{< file >}}
 "use strict";
@@ -327,17 +325,8 @@ var MathStuff_1 = require("/TSC/MathStuff");
 console.log("5 + 2 = ", MathStuff_1.MyMath.DoIntAdd(5.1, 2.4));
     {{</ file >}}
 
-    The code is shorter, and appears in multiple files this time (one for each module and one for the testing code). The point is that for larger projects, the module approach executes faster, presents fewer security issues, and provides a truly modular approach to writing an application.
+    The code is shorter and appears in multiple files this time (one for each module and one for the testing code). The point is that for larger projects, the module approach executes faster, presents fewer security issues, and provides a truly modular approach to writing an application.
 
 ## Conclusion
 
-Namespaces and modules provide the same functionality to an extent —you use both of them to provide the means to modularize your code. Of the two, the module approach works best for large applications. This is because each of the modules appear in a separate file so you only load the code you need. The namespace approach comes in handy for smaller, simpler applications because everything appears in a single file that is easier to manage. As you have noted in this guide, the module approach is also more flexible in terms of what you can do with it. For example, the ability to use modules from multiple sources in a straightforward manner is a plus until naming conflicts appear. Some developers find the namespace approach attractive because it is so simple and you can use the same namespace across multiple files.
-
-
-
-
-
-
-
--------
-Do file names have to be capitalized?
+Namespaces and modules provide the same functionality to an extent —you use both of them to provide the means to modularize your code. Of the two, the module approach works best for large applications. This is because each of the modules appears in a separate file so you only load the code you need. The namespace approach comes in handy for smaller, simpler applications because everything appears in a single file that is easier to manage. As you have noted in this guide, the module approach is also more flexible in terms of what you can do with it. For example, the ability to use modules from multiple sources in a straightforward manner is a plus until naming conflicts appear. Some developers find the namespace approach attractive because it is so simple and you can use the same namespace across multiple files.
