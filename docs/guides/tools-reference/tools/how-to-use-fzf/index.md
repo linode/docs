@@ -61,7 +61,7 @@ But `fzf` also stands out for its adaptability. It's able to integrate with nume
 
 ## How to Install fzf
 
-You have two options when it comes to installing `fzf`. The main option provides you with the `fzf` command-line tool, which is generally the most useful. However, you can also install `fzf` just as a Vim plugin, if you only intend to use it in Vim. The preferred approach, however, is to install the command-line tool and additionally install the Vim plugin if you're going to be using `fzf` in Vim.
+You have two options when it comes to installing `fzf`. The main option provides you with the `fzf` command-line tool, which is generally the most useful. However, you can also install `fzf` just as a Vim plugin, if you only intend to use it in Vim. The preferred approach, however, is to install the command-line tool and additionally install the Vim plugin if you plan to use `fzf` in Vim.
 
 ### Command-line Tool
 
