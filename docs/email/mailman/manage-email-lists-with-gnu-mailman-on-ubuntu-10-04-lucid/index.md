@@ -16,7 +16,7 @@ title: 'Manage Email Lists with GNU Mailman on Ubuntu 10.04 (Lucid)'
 
 
 
-GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.
+GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programming language and has been a popular choice for managing email lists for more than a decade.
 
 Be sure to review this guide in its entirety before beginning the procedure outline below. If you have an existing mail system configured before you begin this, take special care to ensure that installing Mailman will not conflict with delivery of existing mail.
 
