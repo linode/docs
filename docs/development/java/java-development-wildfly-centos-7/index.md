@@ -457,7 +457,7 @@ LoadModule    jk_module modules/mod_jk.so
 JkWorkersFile /etc/httpd/conf.d/workers.properties
 JkLogFile     /var/log/httpd/mod_jk_log
 
-# To be changed to warn in production, the mount point should match your application sample pathes
+# To be changed to warn in production, the mount point should match your application sample paths
 JkLogLevel    info
 JKMount       /sample jboss1
 JkMount       /sample/* jboss1
