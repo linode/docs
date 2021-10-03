@@ -479,7 +479,7 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  Click on the **Kubernetes** link in the sidebar. A new page with a table which lists your clusters will appear.
 
-    1.  Click on the **more options elipsis** next to the cluster you would like to delete, and select **Delete**.
+    1.  Click on the **more options ellipsis** next to the cluster you would like to delete, and select **Delete**.
 
     1.  You will be prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
