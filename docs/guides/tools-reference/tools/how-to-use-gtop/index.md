@@ -6,7 +6,7 @@ description: "Learn how to use gtop, a system monitoring dashboard for your Linu
 keywords: ['gtop linux','gtop linux install','system monitor linux terminal']
 tags: ['linux', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-08-31
+published: 2021-10-01
 modified_by:
   name: Linode
 title: "Installing and Using gtop on Linux"

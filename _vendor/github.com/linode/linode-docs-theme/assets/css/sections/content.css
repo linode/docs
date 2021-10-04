@@ -115,7 +115,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content table {
-    @apply w-full border-collapse mobile:-mx-4;
+    @apply border-collapse mobile:-mx-4;
     border-style: hidden;
 }
 
@@ -201,4 +201,11 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
     display: block;
     height: 80px;
     margin: -80px 0 0;
+}
+
+/*
+Styles for use with API documentation
+*/
+.api-documentation table {
+  width: 100%;
 }
