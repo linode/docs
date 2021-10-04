@@ -50,7 +50,7 @@ module.exports = {
 		preserveHtmlElements: false,
 		content: [ './hugo_stats.json' ],
 		options: {
-			whitelist: [ 'pl-1', 'pl-3', 'x-cloak' ], // Re. x-cloak: hugo_stats.json does not contain attribute name/values (coming in upcoming Hugo).
+			whitelist: [ 'pl-1', 'pl-3', 'x-cloak', 'th' ], // Re. x-cloak: hugo_stats.json does not contain attribute name/values (coming in upcoming Hugo).
 			whitelistPatterns: [ /^level-|^is-/ ], // is-explorer-open etc. Toggled on off in JS.
 			defaultExtractor: (content) => {
 				let els = JSON.parse(content).htmlElements;
@@ -241,27 +241,40 @@ module.exports = {
 					hr: {
 						marginTop: '2em',
 						marginBottom: '2em'
-					}
+					},
+          table: {
+            width: 'auto'
+          },
+					'thead th': {
+						color: colorBodyText
+					},
 				}
 			},
 			sm: {
 				css: {
-					fontSize: rem(14),
+					fontSize: rem(16),
 					lineHeight: '1.5',
 					h1: {
+						fontSize: '2em',
+						lineHeight: '1.25',
 						marginBottom: '1rem'
 					},
 					h2: {
-						fontSize: em(24, 12),
+						fontSize: '1.5em',
+						lineHeight: '1.25',
 						letterSpacing: '-0.38px',
 						marginTop: '1.5em',
 						marginBottom: '1rem'
 					},
 					h3: {
+						fontSize: '1.25em',
+						lineHeight: '1.25',
 						marginTop: '1.5em',
 						marginBottom: '1rem'
 					},
 					h4: {
+						fontSize: '1em',
+						lineHeight: '1.25',
 						marginTop: '1.5em',
 						marginBottom: '1rem'
 					},
@@ -278,10 +291,10 @@ module.exports = {
 						paddingRight: rem(21)
 					},
 					'thead th': {
-						fontSize: rem(14)
+						fontSize: rem(16)
 					},
 					table: {
-						fontSize: rem(14),
+						fontSize: rem(16),
 						lineHeight: round(24 / 16)
 					},
 
@@ -369,7 +382,7 @@ module.exports = {
 						marginBottom: '1rem'
 					},
 					table: {
-						fontSize: rem(14),
+						fontSize: rem(16),
 						lineHeight: round(24 / 16)
 					},
 					'tbody td:first-child': {
@@ -379,7 +392,7 @@ module.exports = {
 						paddingRight: rem(21)
 					},
 					'thead th': {
-						fontSize: rem(18)
+						fontSize: rem(16)
 					},
 
 					// new margins
