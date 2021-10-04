@@ -204,7 +204,7 @@ LKE Autoscaling is configured for individual Node Pools directly through the Lin
 1. Select the `Save Changes` button to complete the process, and officially activate the autoscaling feature.
 
 {{< note >}}
-The LKE Autoscaler will not automatically increase or descrease the size of the node pool if the current node pool is either below the minimum of the autoscaler, or above the maximum. This behavior can be further described by following examples:
+The LKE Autoscaler will not automatically increase or decrease the size of the node pool if the current node pool is either below the minimum of the autoscaler, or above the maximum. This behavior can be further described by following examples:
 
 - If the Node pool has 3 nodes in the current node pool and a minimum of 5, the autoscaler will not automatically scale the current node pool up to meet the minimum. It will only scale up if pods are unscheduable otherwise.
 
