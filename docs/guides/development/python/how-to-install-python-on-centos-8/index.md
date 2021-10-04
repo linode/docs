@@ -9,6 +9,7 @@ keywords: ['How to Install Python on CentOS 8','Python','Python 3','Python 2 end
 tags: ['python', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12
+image: InstallPython3_CentOS8.png
 modified_by:
   name: Linode
 title: "How to Install Python 3 on CentOS 8"

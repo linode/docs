@@ -8,7 +8,8 @@ keywords: ['streaming','plex','video','media server']
 tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2021-09-16
+image: Deploy_Plex_oneclickapps.png
+modified: 2021-10-01
 modified_by:
   name: Linode
 title: "Deploying Plex Media Server through the Linode Marketplace"

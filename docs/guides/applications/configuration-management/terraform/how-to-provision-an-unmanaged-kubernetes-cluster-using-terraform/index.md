@@ -8,6 +8,7 @@ keywords: ['terraform','kubernetes','orchestration','containers','k8s','kubectl'
 tags: ["kubernetes", "terraform", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-03
+image: UnmanagedKubernetesCluster_Terraform.png
 modified: 2021-03-11
 modified_by:
   name: Linode

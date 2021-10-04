@@ -13,6 +13,7 @@ external_resources:
 keywords: ["apache ubuntu 18.04", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-26
+image: VisApacheWSL_ES_Ubuntu1804.png
 modified: 2021-03-26
 modified_by:
   name: Linode

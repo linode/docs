@@ -8,7 +8,8 @@ keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
 tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
-modified: 2021-09-16
+image: DeployYacht_marketplaceapps.png
+modified: 2021-10-01
 modified_by:
   name: Linode
 contributor:

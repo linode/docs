@@ -8,7 +8,8 @@ keywords: ['shadowsocks','marketplace', 'server']
 tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
-modified: 2021-09-16
+image: DeployShadowsocksServer_oneclickapps.png
+modified: 2020-10-01
 modified_by:
   name: Linode
 title: "Deploying Shadowsocks through the Linode Marketplace"

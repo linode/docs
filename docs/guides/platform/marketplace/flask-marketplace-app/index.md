@@ -11,8 +11,9 @@ published: 2020-03-11
 modified: 2021-09-16
 modified_by:
   name: Linode
-title: "Deploying Flask through the Linode Marketplace"
-image: feature.png
+title: "How to Deploy Flask with Marketplace Apps"
+h1_title: "Deploying Flask with Marketplace Apps"
+image: Flask_oneclickapps.png
 contributor:
   name: Linode
 external_resources:

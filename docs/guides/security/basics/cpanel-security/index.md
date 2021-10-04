@@ -15,7 +15,7 @@ title: cPanel Security
 h1_title: cPanel Security
 enable_h1: true
 aliases: ['security/basics/securing-cpanel/']
-image: cPanel_Security.png
+image: cPanelSecurity.png
 ---
 
 ## What is cPanel?

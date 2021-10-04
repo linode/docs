@@ -8,7 +8,8 @@ keywords: ['prometheus','monitoring','time series','metrics']
 tags: ["linode platform","monitoring","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
-modified: 2021-09-16
+image: Prometheus_oneclickapps.png
+modified: 2021-10-01
 modified_by:
   name: Linode
 title: "Deploying Prometheus through the Linode Marketplace"

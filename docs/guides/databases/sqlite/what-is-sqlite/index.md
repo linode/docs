@@ -8,6 +8,7 @@ og_description: 'SQLite is the most popular of the serverless SQL databases. The
 keywords: ['what is sqlite']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
+image: SQLiteOverview.png
 modified_by:
   name: Linode
 title: "A SQLite Overview"

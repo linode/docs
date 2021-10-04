@@ -8,6 +8,7 @@ keywords: ['linux system monitoring']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
+image: LinuxSysMonFundamentals.png
 modified_by:
   name: Linode
 title: "Linux System Monitoring Fundamentals"

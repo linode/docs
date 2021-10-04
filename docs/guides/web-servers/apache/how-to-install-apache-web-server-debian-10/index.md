@@ -17,7 +17,7 @@ h1_title: 'Installing Apache Web Server on Debian 10'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
-image: 'How_to_Install_Apache_Web_Server_on_Debian_10_1200x631.png'
+image: InstallApache_Deb10.png
 relations:
     platform:
         key: install-apache-server

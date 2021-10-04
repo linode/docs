@@ -8,7 +8,8 @@ keywords: ['docker','marketplace', 'container']
 tags: ["container","cloud-manager","linode platform","docker","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
-modified: 2021-09-16
+image: Docker_oneclickapps.png
+modified: 2021-10-01
 modified_by:
   name: Linode
 title: "Deploying Docker through the Linode Marketplace"
