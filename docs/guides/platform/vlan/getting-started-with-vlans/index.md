@@ -107,7 +107,7 @@ By default, the public IP address (and, if added, the private IP address) of the
 
     See the [Assigning an IPAM Address](#assigning-an-ipam-address) section on this page for more information about IPAM and examples of valid IPAM addresses.
 
-1. Click on the **Edit Configuration** button towards the bottom of this form to save the changes.
+1. Click on the **Save Changes** button towards the bottom of this form to save the changes.
 
 1. Once the configuration profile has been updated, select the **Boot** or **Reboot** button next to the edited configuration profile on the following page. This will reboot using the edited configuration profile and apply the new VLAN configuration to the Linode.
 

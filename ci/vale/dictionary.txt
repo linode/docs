@@ -135,6 +135,7 @@ boolstyle
 boonex
 bootable
 bootloader
+bottlerocket
 bootup
 bootups
 boto
@@ -252,6 +253,8 @@ coose
 copyfrom
 copyto
 coreutils
+coroutine
+coroutines
 corporateclean
 courseware
 cov
@@ -282,6 +285,7 @@ ctools
 ctrl
 ctx
 cuda
+curlie
 cutover
 cyberduck
 cyberpanel
@@ -660,6 +664,7 @@ htmldir
 htop
 htpasswd
 http
+httpie
 httpchk
 httpd
 https
@@ -766,6 +771,7 @@ Janca
 jamstack
 java6
 javac
+javalin
 javascript
 jdbc
 jdk
@@ -829,6 +835,7 @@ kloxo
 knowledgebase
 konsole
 konversation
+ktor
 kube
 kubeadm
 kubeconfig
@@ -1048,6 +1055,7 @@ multicraft
 multilib
 multiline
 multilink
+multiplatform
 multiport
 multisite
 multiuser
@@ -1203,6 +1211,7 @@ owncast
 owncloud
 pacman
 paas
+packagist
 pagent
 pagespeed
 pandoc
@@ -1670,6 +1679,8 @@ thawte
 theano
 theming
 thingsboard
+tigervnc
+tightvncserver
 tika
 timedatectl
 timeframe
@@ -1803,6 +1814,7 @@ valheim
 validator
 variadic
 varnishlog
+vaultwarden
 vcs
 vdev
 vdevs
@@ -1858,6 +1870,7 @@ webmin
 webpack
 webpages
 webpy
+broot
 webroot
 webroots
 webserver

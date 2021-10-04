@@ -740,7 +740,7 @@ You've successfully configured a highly available WordPress site, and you're rea
 
 The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the *IP Address* section.
 
-For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/platform/manager/dns-manager/).
+For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/guides/dns-manager/).
 
 ## Configuration Management
 

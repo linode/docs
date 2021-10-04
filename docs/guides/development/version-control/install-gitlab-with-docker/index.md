@@ -67,7 +67,7 @@ Assign a domain or subdomain to your GitLab server. This step is optional, as yo
 
 It takes some time for DNS changes to propagate through the internet, so it's suggested that you do this before you set up GitLab. There are several options for updating your DNS records:
 
--   If you already use Linode's name servers, or if you would like to use them for your domain, review the [DNS Manager](/docs/platform/manager/dns-manager/) guide. You will need to set up an *A record* which is assigned your Linode's IP address.
+-   If you already use Linode's name servers, or if you would like to use them for your domain, review the [DNS Manager](/docs/guides/dns-manager/) guide. You will need to set up an *A record* which is assigned your Linode's IP address.
 
 -   If you use a different DNS provider, review that provider's documentation for setting up a new A record.
 
