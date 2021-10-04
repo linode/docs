@@ -1371,6 +1371,10 @@ readme
 readonly
 readwrite
 realtime
+rebase
+rebased
+rebases
+rebasing
 reconnections
 recordset
 recursing
@@ -1389,6 +1393,8 @@ redstone
 reenable
 reenabling
 referer
+reflog
+reflogs
 refspec
 regexes
 reimported
