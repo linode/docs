@@ -79,6 +79,7 @@ automattic
 automount
 autorelabel
 autorun
+autoscale
 autoscaler
 autoscaling
 autossh

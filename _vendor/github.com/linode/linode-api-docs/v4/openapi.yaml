@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.106.0
+  version: 4.106.1
 
   title: Linode API
   description: |
@@ -3858,15 +3858,16 @@ paths:
         - Uploaded image data should be compressed in gzip (`.gz`) format. The uncompressed disk should be in raw
         disk image (`.img`) format. A maximum compressed file size of 5GB is supported for upload at this time.
 
-        - To initiate and complete and upload in a single step, see our guide on how to [Upload an Image](/docs/products/tools/images/guides/upload-an-image/) using Cloud Manager or the Linode CLI.
+        **Note:** To initiate and complete an Image upload in a single step, see our guide on how to [Upload an Image](/docs/products/tools/images/guides/upload-an-image/) using Cloud Manager or the Linode CLI `image-upload` plugin.
       x-linode-cli-action: upload
-      x-linode-cli-skip: true
       security:
       - personalAccessToken: []
       - oauth:
         - images:read_write
       requestBody:
         description: The uploaded Image details.
+        x-linode-cli-allowed-defaults:
+        - region
         content:
           application/json:
             schema:
@@ -3890,7 +3891,7 @@ paths:
                   example: This is an example image in the docs.
       responses:
         '200':
-          description: The new Image upload URL.
+          description: Image Upload object including the upload URL and Image object.
           content:
             application/json:
               schema:
@@ -3899,6 +3900,7 @@ paths:
                   upload_to:
                     type: string
                     description: The URL to upload the Image to.
+                    x-linode-cli-display: 1
                   image:
                     $ref: '#/components/schemas/Image'
         default:
@@ -3909,18 +3911,25 @@ paths:
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
               -X POST -d '{
-                "description": "This is an example Machine Image.",
-                "label": "example-machine-image-label",
+                "description": "Optional details about the Image",
+                "label": "Example Image",
                 "region": "us-east"
               }' \
               https://api.linode.com/v4/images/upload
       - lang: CLI
-        source: >
+        source: |
+          # Upload the Image file in a single step
           linode-cli image-upload \
+            --description "Optional details about the Image" \
             --label "Example Image" \
-            --description "Some details about the image" \
             --region us-east \
-            ~/Downloads/image-file.img.gz
+            /path/to/image-file.img.gz
+
+          # Returns the upload_to URL
+          linode-cli images upload \
+            --description "Optional details about the Image" \
+            --label "Example Image" \
+            --region us-east
   /images/{imageId}:
     x-linode-cli-command: images
     parameters:
