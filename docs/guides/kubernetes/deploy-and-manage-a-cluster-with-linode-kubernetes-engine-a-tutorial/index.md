@@ -189,7 +189,7 @@ The LKE autoscaler will only apply changes when the following conditions are met
 
 LKE Autoscaling is configured for individual Node Pools directly through the Linode Cloud Manager.
 
-1. To Enable cluster autoscaling, access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page).
+1. To Enable cluster autoscaling, access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. Click the **Autoscale Pool** option at the top-left of each entry in the **Node Pools** section. The Autoscaling menu will appear.
 
@@ -199,7 +199,7 @@ LKE Autoscaling is configured for individual Node Pools directly through the Lin
 
     ![Autoscaler Switch Toggle](autoscaler-switch-toggle.png "LKE autoscaler toggle switch.")
 
-1. Once the Autoscaler is enabled, the **Minimum** `Min` and **Maximum** `Max` fields can be set. Both the Minimum and Maximum field can be any number between 1 and 99. Each number represents a single Node in the node pool.
+1. Once the Autoscaler is enabled, the **Minimum** `Min` and **Maximum** `Max` fields can be set. Both the Minimum and Maximum field can be any number between `1` and `99`. Each number represents a set of Nodes in the node pool. A minimum of `10` for example, will allow for no less than ten nodes in the node pool, while a maximum of `10` will allow for no more than ten nodes in the node pool.
 
 1. Select the `Save Changes` button to complete the process, and officially activate the autoscaling feature.
 
@@ -214,7 +214,7 @@ The LKE Autoscaler will not automatically increase or decrease the size of the n
 
 ### Upgrade a Cluster
 
-1. To Upgrade a cluster access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page).
+1. To Upgrade a cluster access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. If an upgrade is available, a banner will appear that will display the next available Kubernetes version. Select the **Upgrade Version** button at the end of the banner to upgrade to the next available Kubernetes version.
 
@@ -236,13 +236,13 @@ If step one of the upgrade process is completed without the completion of step t
 
 ### Recycle Nodes
 
-Nodes can be recycled by selected the recycle option for an individual node, in a node pool or, or for all nodes in the cluster. All recycle options are found in the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page)
+Nodes can be recycled by selected the recycle option for an individual node, in a node pool or, or for all nodes in the cluster. All recycle options are found in the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page)
 
 - To recycle all Nodes on all Node Pools in a cluster, select the **Recycle All Nodes** option to the right of the **Node Pools** section.
 
-- To recycle a node pool from the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page), click the **Recycle Nodes** option at the top-right of each entry in the **Node Pools** section.
+- To recycle a node pool from the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page), click the **Recycle Nodes** option at the top-right of each entry in the **Node Pools** section.
 
-- To recycle an individual Node, find the **Node Pools** section on the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page), find the individual node that will be recycled, and click on the **Recycle** button to the right of the respective entry.
+- To recycle an individual Node, find the **Node Pools** section on the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page), find the individual node that will be recycled, and click on the **Recycle** button to the right of the respective entry.
 
 ![Cluster Node Recycle](cluster-node-recycle.png "Cluster Node Recycle.")
 

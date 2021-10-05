@@ -8,13 +8,13 @@ description: "How to Use Cluster Autoscaling for Linode Kubernetes Engine (LKE)"
 
 ### Configure Cluster Autoscaling
 
-1. To Enable cluster autoscaling, access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page).
+1. To Enable cluster autoscaling, access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. Click the **Autoscale Pool** option at the top-left of each entry in the **Node Pools** section. The Autoscaling menu will appear.
 
 1. If the Autoscaler is currently disabled, select the autoscaler switch to turn the feature on.
 
-1. Once the Autoscaler is enabled, the **Minimum** `Min` and **Maximum** `Max` fields can be set. Both the Minimum and Maximum field can be any number between 1 and 99. Each number represents a single Node in the node pool.
+1. Once the Autoscaler is enabled, the **Minimum** `Min` and **Maximum** `Max` fields can be set. Both the Minimum and Maximum field can be any number between `1` and `99`. Each number represents a set of Nodes in the node pool. A minimum of `10` for example, will allow for no less than ten nodes in the node pool, while a maximum of `10` will allow for no more than ten nodes in the node pool.
 
 1. Select the `Save Changes` button to complete the process, and officially activate the autoscaling feature.
 
