@@ -2,6 +2,7 @@ abc
 abell
 absecon
 abspath
+ack
 aconf
 adc
 addon
@@ -1416,6 +1417,7 @@ reusability
 reutilize
 richlanguage
 rimap
+ripgrep
 ritchie
 rkhunter
 rkt
