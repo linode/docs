@@ -3,8 +3,7 @@ slug: members-linode-com-migration
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The members.linode.com and nodebalancer.linode.com are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS.'
-og_description: 'The members.linode.com and nodebalancer.linode.com domains are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS.'
+description: "The members.linode.com and nodebalancer.linode.com are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS."
 keywords: ['dns','members.linode.com','reverse dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-07
@@ -17,27 +16,39 @@ enable_h1: true
 
 ## What are members.linode.com and nodebalancer.linode.com?
 
-All Linodes and NodeBalancers are created with a *forward* DNS address and a *reverse* DNS entry. For all Linode Instances, the address follows the `[signifier].members.linode.com` pattern. For NodeBalancers, the pattern is `nb-[ip-address].[region].nodebalancer.linode.com`. For example, below is a typical Linode Instance's forward DNS on the `members.linode.com` domain:
+All Linode Compute Instances and NodeBalancers are created with a default domain (*forward* DNS address) and a preconfigured rDNS (*reverse* DNS) entry for that domain. These default domains use the following patterns:
 
-    li999-999.members.linode.com
+-   **Compute Instance:**
 
-The forward DNS for a NodeBalancer looks like the following:
+        li[signifier].members.linode.com
 
-    nb-192-0-2-1.dallas.nodebalancer.linode.com
+    (*Example:* `li999-999.members.linode.com`)
 
-Linode Instances and NodeBalancers are accessible at these addresses. Typically, these addresses are not used publicly in production. It's much more favorable to provide access to these services with a personal or company domain name. But, some users may use these addresses in scripts, applications, or DNS configurations.
+-   **NodeBalancer:**
 
-## What's Changing, and What Action Should I Take?
+        nb-[ip-address].[region].nodebalancer.linode.com
 
-Linode is changing the forward and reverse DNS associated with every Linode Instance, and the forward DNS and reverse DNS associated with every NodeBalancer. This new domain name follows a new pattern. Both Linode Instances and NodeBalancers are available at `[ip-address].ip.linodeusercontent.com`. For instance, if your Linode Instance or NodeBalancer has an IP address of `192.0.2.1`, the corresponding forward DNS address is:
+    (*Example:* `nb-192-0-2-1.dallas.nodebalancer.linode.com`)
 
-    192-0-2-1.ip.linodeusercontent.com
+Linode Instances and NodeBalancers are accessible at these addresses for testing and other non-production purposes. **While the default domain should not used publicly in production,** it's possible that some users have referenced it within their own workflows, scripts, and applications. It's much more favorable to provide access to these services with a personal or company domain name.
 
-Note that dashes separate the values of the IP address, and not periods.
+## What's Changing?
+
+Linode is changing the default domain and rDNS entry associated with every Linode Instance and NodeBalancer. This new domain name follows a new pattern, where *[ip-address]* is replaced with the primary public IPv4 address for your server:
+
+-   **Compute Instances and NodeBalancers:**
+
+        [ip-address].ip.linodeusercontent.com
+
+    (*Example:* `192-0-2-1.ip.linodeusercontent.com`)
+
+Note that dashes (**not periods**) separate the values of the IP address.
+
+## What Action Should I Take?
 
 If you *don't* actively use the `members.linode.com` or `nodebalancer.linode.com` forward or reverse DNS in any of your scripts, applications, or domain settings, then this migration does not impact your properties.
 
-If you *do* use your Linode Instance's `members.linode.com` or `nodebalancer.linode.com` forward or reverse DNS, you have until December 31st, 2021 to change your scripts, applications, or domain settings to the new address. After this date, Linode will end support for `members.linode.com` and `nodebalancer.linode.com`.
+If you *do* use your Linode Instance's `members.linode.com` or `nodebalancer.linode.com` forward or reverse DNS, you have until December 31st, 2021 to change your scripts, applications, or domain settings to either the new default domain, the IP address of your service, or your own FQDN (fully qualified domain name) if you've configured one for the service. After this date, Linode will end support for `members.linode.com` and `nodebalancer.linode.com`.
 
 ### How to Adopt the New Domain Addresses
 
@@ -51,7 +62,7 @@ While Linode provides forward and reverse DNS for Linodes and NodeBalancers as a
 
 1. In [Cloud Manager](https://cloud.linode.com), select **Linodes** from the navigation menu, then select the Linode for which you'd like to find the IP Address.
 
-1. Under IP Addresses, select the top IPv4 address. This is the IP address that you can use with the new forward DNS.
+1. Under *IP Addresses*, select the top IPv4 address. This is the IP address that you can use with the new forward DNS.
 
 #### Finding a NodeBalancer's IP Address
 
