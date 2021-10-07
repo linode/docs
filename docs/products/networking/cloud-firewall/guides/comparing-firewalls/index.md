@@ -17,7 +17,7 @@ Linode's free Cloud Firewall service is a powerful firewall solution that operat
 - **Ease of use:** Relatively easy to configure using tools Linode customers may already be familiar with.
 - **Advanced configurability:** Supports many common firewall rules, but does not support all configuration options available on sofware-based solutions like nftables.
 - **Ideal use cases:**
-    - Users wanting to conviently configure firewalls using familiar Linode tooling.
+    - Users wanting to conveniently configure firewalls using familiar Linode tooling.
     - Cascading rules over multiple servers simultaneously.
     - Automatically generating rules through software compatible with the Linode API (such as integrating directly with your existing custom software)
 
@@ -29,7 +29,7 @@ The standard firewall software available on most modern Linux distributions is *
 
 - **Cost:** Free
 - **Interface:** Command-line interface tools
-- **Ease of use:** More diffcult since a command-line is required and rule syntax can be quite complex, especailly when working directly with *nftables* or *iptables*.
+- **Ease of use:** More difficult since a command-line is required and rule syntax can be quite complex, especially when working directly with *nftables* or *iptables*.
 - **Advanced configurability:** Offers more comprehensive configuration for complex rules.
 - **Ideal use cases:**
     - Users comfortable with both the command-line and the software's syntax.
@@ -45,7 +45,7 @@ When deciding on which firewall solution to use, consider your unique needs and 
 
 - **Configuration options:** While each solution is quite robust, using nftables allows for the creation of the most complex rules and provides absolute control of the firewall. That said, Cloud Firewalls are generally easier to configure and can be applied to multiple Linode services. This allows you to quickly add or modify firewall rules across multiple Compute Instances simultaneously.
 
-- **Automation possibilities:** Some Linux software products already integrate directly with nftables and can automatically create firewall rules. Perhaps the most commonly used example of this is [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), which can automatically create firewall rules to permanently or temprarily ban suspicious traffic. If you are configuring your own software, you may find it easier to integrate with the Linode API and use Cloud Firewalls instead of integrating directly with software-based firewalls.
+- **Automation possibilities:** Some Linux software products already integrate directly with nftables and can automatically create firewall rules. Perhaps the most commonly used example of this is [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), which can automatically create firewall rules to permanently or temporarily ban suspicious traffic. If you are configuring your own software, you may find it easier to integrate with the Linode API and use Cloud Firewalls instead of integrating directly with software-based firewalls.
 
 ## Combining Both Solutions
 
@@ -54,5 +54,5 @@ While Cloud Firewalls and local firewall software are separate tools, they can o
 Consider using Cloud Firewalls provide a line of defense *before* traffic even reaches your server. It's very user friendly and can quickly cascade rules over multiple different Linode Compute Instances. Consider using Firewall software like nftables when you need to create complex rules and want to integrate your firewall with existing software like fail2ban.
 
 {{< note >}}
-When using both soltuions together, consider when each rule will be processed on incoming and outgoing traffic. **For inbound traffic, Cloud Firewall rules are processed first. For outbound traffic, local firewall rules are processed first.**
+When using both solutions together, consider when each rule will be processed on incoming and outgoing traffic. **For inbound traffic, Cloud Firewall rules are processed first. For outbound traffic, local firewall rules are processed first.**
 {{</ note >}}
