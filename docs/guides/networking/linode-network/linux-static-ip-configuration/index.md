@@ -3,7 +3,7 @@ slug: linux-static-ip-configuration
 author:
   name: Linode
   email: docs@linode.com
-description: 'Set static IP, routes and DNS in Linux.'
+description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS."
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/']
@@ -12,7 +12,6 @@ modified_by:
   name: Linode
 published: 2014-07-20
 title: Linux Static IP Configuration
-h1_title: Linux Static IP Configuration
 tags: ["networking","linode platform"]
 ---
 
