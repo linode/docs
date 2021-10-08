@@ -29,7 +29,7 @@ MySQL is a relational database management system. Like many such systems, it use
 MySQL uses [several network ports](https://dev.mysql.com/doc/mysql-port-reference/en/mysql-ports-reference-tables.html), which serve different purposes:
 
 * The MySQL Client-Server Port is used by clients to access and manage databases. Its default port number is 3306
-* The MySQL Administrative Connection Port is an alternative to the Client-Server port for administrative connections. Its default port number is 33062.
+* The MySQL Administrative Connection Port is an alternative to the Client-Server port for administrative connections. Its default port number is 33060.
 
 In addition to these, MySQL uses a number of other ports, which you can read about in the [MySQL Port Reference Tables](https://dev.mysql.com/doc/mysql-port-reference/en/mysql-ports-reference-tables.html).
 
