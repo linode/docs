@@ -72,6 +72,10 @@ The `purpose` of a network interface is required and used to determine whether a
 
 - `vlan`: Configures a network interface for the labeled VLAN and enables the Linode to communicate over the `ipam_address` if one is specified.
 
+{{< caution >}}
+The Public Internet must always be set to use the network interface `eth0`.
+{{< /caution >}}
+
 ### Configuring the Label of an Interface
 
 When configuring a `vlan` purpose network interface, a VLAN can be selected by specifying its `label`. Linodes that are attached to the same VLAN can privately communicate with each other over their respective `vlan` purpose interfaces.
