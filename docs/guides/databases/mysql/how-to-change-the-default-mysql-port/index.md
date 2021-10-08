@@ -33,10 +33,10 @@ MySQL uses [several network ports](https://dev.mysql.com/doc/mysql-port-referenc
 
 In addition to these, MySQL uses a number of other ports, which you can read about in the [MySQL Port Reference Tables](https://dev.mysql.com/doc/mysql-port-reference/en/mysql-ports-reference-tables.html).
 
-When people talk about changing the default MySQL port, they are generally referring to the the Client-Server Port. Configuring MySQL to use a different port can improve security. Malicious scripts and bots target this port, and changing it to a different port number may reduce the attack frequency.
+When people talk about changing the default MySQL port, they are generally referring to the Client-Server Port. Configuring MySQL to use a different port can improve security. Malicious scripts and bots often target this port. Changing it to a different port number may reduce the attack frequency.
 
 {{< caution >}}
-Changing the default MySQL port is not a substitute for a firewall and correctly configured [MySQL authentication](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-configure-authentication.html). While it may confuse unsophisticated bots, a dedicated attacker is likely to find the new port.
+Changing the default MySQL port is not a substitute for a firewall and correctly configured [MySQL authentication](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-configure-authentication.html). While changing the port may confuse unsophisticated bots, a dedicated attacker is likely to find the new port.
 {{< /caution >}}
 
 ## Before You Begin
@@ -51,7 +51,7 @@ Changing the default MySQL port is not a substitute for a firewall and correctly
 
     sudo apt-get update && sudo apt-get upgrade
 
-On Fedora, CentOS, or other Red Hat-derived distributions, enter :
+On Fedora, CentOS, or other Red Hat-derived distributions, enter:
 
     sudo yum update
 
@@ -64,7 +64,7 @@ Before attempting to bind a new port, you should make sure it is not already in 
 
     netstat -tanp | grep PORT
 
-There is no output if the port is available. If the port is not available, you will see a listing of the services using it. For example, if you tried to use the default SSH port (22).
+There is no output if the port is available. If the port is not available, `netstat` prints the services currently using it. For example, if you tried to use the default SSH port (22).
 
     netstat -tanp | grep 22
 
@@ -88,9 +88,9 @@ On Ubuntu, the file is:
 
     /etc/mysql/mysql.conf.d/mysqld.cnf
 
-To change the port, we add the relevant configuration variables in the file's `mysqld` section. The file may contain preconfigured variables and its contents may differ depending on the Linux distribution and how the MySQL server is configured.
+The file's contents may differ depending on the Linux distribution and how the MySQL server is configured. It is safe to add your configuration below any already present. 
 
-The MySQL Client-Server Port is controlled with the `port` variable. For example, add `port=36785` to change the MySQL Client-Server port to Port 36785.
+To change the port, add or edit the relevant configuration variable in the file's `mysqld` section. The MySQL Client-Server Port is controlled with the `port` variable. For example, add `port=36785` to change the MySQL Client-Server port to Port 36785.
 
     {{< output >}}
     [mysqld]
@@ -102,14 +102,14 @@ The MySQL Client-Server Port is controlled with the `port` variable. For example
     sudo systemctl restart mysqld
 
 
-The MySQL server will now restart and bind to the new port.
+The MySQL server restarts and binds to the new port.
 
 
 ## How To Change The MySQL Administrative Connection Port
 
-Most connections to a MySQL server can use the MySQL Client-Server Port. However, MySQL also provides an Administrative Connection Port for the exclusive use of database administrators and their tools. The process for changing the admin port is similar, but you will need to add or edit two configuration variables: `admin_port` and `admin_address`. Both must be set or MySQL will not bind an administrative port.
+Most connections to a MySQL server can use the MySQL Client-Server Port. However, MySQL also provides an Administrative Connection Port for the exclusive use of database administrators and their tools. The Administrative Connection Port is controlled by two configuration variables: `admin_port` and `admin_address`. Both must be set or MySQL will not bind an administrative port.
 
-The `admin_port` variable indicates the new port number. The `admin_address` variable indicates the host or IP address MySQL clients connect to. In many cases, this will be the server's local address `127.0.0.1`, although it may be different, depending on how your network and MySQL server are configured. [The MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_admin_address) has more details about the appropriate format for this value.
+The `admin_port` variable indicates the new port number. The `admin_address` variable indicates the host or IP address MySQL clients connect to. In many cases, this is the server's local address `127.0.0.1`. However, it may be different, depending on how your network and MySQL server are configured. [The MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_admin_address) has more details about the appropriate format for this value.
 
 
 1.  Edit the `admin_port` and `admin_address` configuration variables in the MySQL server's configuration file.
