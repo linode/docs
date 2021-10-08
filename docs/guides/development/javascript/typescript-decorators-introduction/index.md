@@ -1,9 +1,11 @@
 ---
-slug: typescript-decorators-introduction
+slug: typescript-decorators-getting-started
 author:
   name: Martin Heller
-description: 'This guide discusses Decorators, an experimental TypeScript feature. You learn how to enable Decorators in TypeScript, and the syntax for creating Decorators. '
-keywords: ['list','of','keywords','and key phrases']
+description: 'This guide discusses Decorators, an experimental TypeScript feature. You learn how to enable Decorators in TypeScript, and the syntax for creating Decorators.'
+og_description: 'This guide discusses Decorators, an experimental TypeScript feature. You learn how to enable Decorators in TypeScript, and the syntax for creating Decorators.'
+keywords: ['typescript decorators']
+tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
@@ -16,21 +18,34 @@ contributor:
   link: https://twitter.com/meheller
 ---
 
-[Decorators in TypeScript](https://www.typescriptlang.org/docs/handbook/decorators.html) provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can annotate or modify classes or class members. Decorators can be chained or composed; that is, multiple decorators can be applied to a single declaration. Decorators are used heavily in the Angular framework, among others.
+[Decorators in TypeScript](https://www.typescriptlang.org/docs/handbook/decorators.html) provide a way to add both annotations and a meta-programming syntax for class declarations and members. They can annotate or modify classes or class members. Decorators can be chained or composed; that is, multiple decorators can be applied to a single declaration. Decorators are widely used in the Angular frameworks.
 
 ## What are Decorators?
 
 Decorators are a [design pattern](https://en.wikipedia.org/wiki/Design_Patterns) implemented in several object-oriented and functional programming languages as a language feature, including Python, JavaScript ES6, and TypeScript. Decorators are a lightweight alternative to subclasses. In other languages, such as C++, C#, and Java, the Decorator design pattern is implemented with wrapper classes.
 
-In TypeScript, decorators are declared using an at sign (`@)` before the decorator name, and have a matching function that implements the behavior. For example:
+In TypeScript, decorators are declared using an at sign (`@)` before the decorator name and have a matching function that implements the behavior. Following is an example of a Class Decorator (`@classDecorator`) applied to the class `Person`.
+
+{{< file "class_decorator_example.ts" typescript>}}
+const classDecorator = (target: Function) => {
+  this.title = t;
+}
+
+@classDecorator  //class decorator
+class Person {
+  title: string;
+}
+{{</ file >}}
 
 ## How Do I Enable Decorators in TypeScript
 
-Decorators are still an experimental feature in TypeScript, so you need to use a compiler flag to enable them:
+Decorators are still an experimental feature in TypeScript. So, to enable this feature, you need to set the `experimentalDecorators` compiler flag either on the command line or in your `tsconfig.json` file.
+
+To enable the decorators feature from the command line, use the following syntax:
 
     tsc --target ES5 --experimentalDecorators
 
-You can also [enable decorators in your tsconfig.json file](https://www.typescriptlang.org/docs/handbook/decorators.html).
+Decorators can be enabled by setting `experimentalDecorators` option to `true` in your `tsconfig.json` file as follows:
 
 {{< file "tsconfig.json" >}}
 {
@@ -43,9 +58,9 @@ You can also [enable decorators in your tsconfig.json file](https://www.typescri
 
 ## Where Can I Use Decorators in TypeScript?
 
-Decorators can be attached to a class declaration, method, accessor, property, or parameter. The example of a [class decorator](https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators) given in the TypeScript documentation is:
+Decorators can be attached to a class declaration, method, accessor, property, or parameter. The example of a [Class Decorator](https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators) given in the TypeScript documentation is shown below:
 
-{{< file >}}
+{{< file "class_decorator_example.ts" typescript>}}
 @sealed
 class BugReport {
   type = "report";
@@ -61,25 +76,23 @@ function sealed(constructor: Function) {
 }
 {{</ file >}}
 
-To understand this, you need to know that the JavaScript `Object.seal()` method changes the `configurable` property descriptor of its parameter to `false`. That means you can’t delete any members of the object or extend the object with new members. The `Object.seal()` method doesn't affect the writability of the object; for that, you can instead use `Object.freeze()`.
+To understand this, you need to know that the JavaScript's [`Object.seal()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) method changes the `configurable` property descriptor of its parameter to `false`. That means you can’t delete any members of the object or extend the object with new members. The `Object.seal()` method doesn't affect the writability of the object; for that, you can instead use `Object.freeze()`.
 
-You can find more examples for method, accessor, property, and parameter decorators in the [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators). The usage of decorators in TypeScript is fairly advanced and uses the experimental `reflect-metadata` package.
+You can find more examples for method, accessor, property, and parameter decorators in the [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/decorators.html#method-decorators). The usage of decorators in TypeScript is fairly advanced and uses the experimental `reflect-metadata` package. See [Metadata](https://www.typescriptlang.org/docs/handbook/decorators.html#metadata) for more information about the `reflect-metadata` library.
 
 ## What is a Decorator Factory?
 
-A decorator factory is a function that returns a function that in turn implements a decorator. For example:
+A decorator factory is a function that returns a function/expression that is called by the decorator at runtime. A decorator factory can be written as shown below:
 
-{{< file >}}
-function enumerable(value: boolean) {
-  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    descriptor.enumerable = value;
-  };
-}
-{{</ file >}}
+    function enumerable(value: boolean) {
+      return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        descriptor.enumerable = value;
+      };
+    }
 
-The function `enumerable` has a parameter and returns another function that uses the parameter. In this example, it modifies the `enumerable` property descriptor of the method or member to which the `@enumerable` decorator applies. For example:
+The function `enumerable` has a parameter and returns another function that uses the parameter. In the above example, it modifies the `enumerable` property descriptor of the method or member to which the `@enumerable` decorator applies as in the below example.
 
-{{< file >}}
+{{< file decorator_factory_example.ts typescript>}}
 class Greeter {
   greeting: string;
   constructor(message: string) {
@@ -98,7 +111,3 @@ Enumerating the `greet()` method in a for loop is not a good option, so this usa
 ## More Information
 
 Decorators provide a way to annotate or modify a class or class member in TypeScript. However, Decorators are still an experimental feature of the language. To learn more about Decorators in TypeScript, visit the [Decorators proposal](https://github.com/tc39/proposal-decorators) page.
-
-
-
-

@@ -1,9 +1,11 @@
 ---
-slug: typescript-types-introduction
+slug: typescript-types-get-started
 author:
   name: Martin Heller
 description: 'TypeScript supports several types, including primitive types, arrays, and objects. This guide provides a brief introduction to TypeScript types with information on how to learn more.'
-keywords: ['list','of','keywords','and key phrases']
+og_description: 'TypeScript supports several types, including primitive types, arrays, and objects. This guide provides a brief introduction to TypeScript types with information on how to learn more.'
+keywords: ['typescript types']
+tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-27
 modified_by:
@@ -20,15 +22,15 @@ Data types are essential to TypeScript, even though the underlying types are imp
 
 ## Primitive Types
 
-The three essential primitive data types in JavaScript and TypeScript are *string*, *number*, and *boolean*. The example TypeScript code below displays how to assign values of all three data types to variables.
+The three essential primitive data types in JavaScript and TypeScript are *string*, *number*, and *boolean*.
 
 {{< note >}}
 All three primitive types are spelled in lower-case. There are capitalized variants of these words that compile successfully in TypeScript. These are referred to as *boxed types*. When a primitive type is boxed it is "wrapped" in an object and can then behave like an object.
 {{</ note >}}
 
-**TypeScript**
+The example TypeScript code below demonstrates how to assign values of all three primitive data types to variables.
 
-{{< file >}}
+{{< file "example.ts" typescript>}}
 //strings
 var s1: string;             //declared
 const s2 = "Hello, world!"; //inferred
@@ -52,9 +54,7 @@ let b3: boolean = !true;    //both (!true == false)
 
 When the TypeScript code is compiled to JavaScript, all the type annotations are stripped out, as shown in the JavaScript example below. If you’re targeting the lowest levels of JavaScript, both `const` and `let` are changed to `var`. If you’re targeting ES6(2015) or greater, they are left as written. In TypeScript and ES6+, `let` is a block-scoped version of `var`, and `const` creates a block-scoped variable that can’t be changed once it is bound.
 
-**JavaScript**
-
-{{< file >}}
+{{< file "example.js" typescript>}}
 //strings
 var s1; //declared
 var s2 = "Hello, world!"; //inferred
@@ -65,7 +65,7 @@ var n2 = 42; //inferred
 var pi = 3.14159; //inferred
 var n3 = n2 * pi; //both
 function FtoC(f) {
-    return (f - 32.) * 5. / 9.;
+  return (f - 32.)* 5. / 9.;
 }
 //booleans
 var b1; //declared
@@ -79,49 +79,53 @@ You don’t actually get an immutable variable when you use `const`. To do that,
 
 ## TypeScript Any Type
 
-A variable of type **any** can hold any data type. The principal reason to use it is to tell TypeScript not to throw type-checking errors for that variable. *Think carefully before you do this* and consider the alternatives of explicit [unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html) and [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html). Leaving out the type annotation is enough to make the variable type `any` by default, or you could specifically declare it as follows:
+A variable of type `any` can hold any data type. The principal reason to use it is to tell TypeScript not to throw type-checking errors for that variable.
 
-{{< file >}}
-var a1: any;
-{{</ file >}}
+{{< caution >}}
+Before using `any`, consider the alternatives of explicit [unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html) and [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html).
+{{< /caution >}}
+
+Leaving out the type annotation is enough to make the variable type `any` by default, or you could specifically declare it as follows:
+
+    var a1: any;
 
 There’s a secondary reason to use the `any` type; to write a function that accepts multiple types. It’s much better to use a [Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html) to create a function that accepts different types instead of a single type, however, you can also use `any`, as shown in the following example:
 
-{{< file >}}
+{{< file "example.ts" typescript >}}
 function wideOpen(x: any) {
-//do something to x that doesn't depend on its type
-return x;
+  //do something to x that doesn't depend on its type
+  return x;
 }
 {{</ file >}}
 
-By default, TypeScript infers an `any` type for any variable that has neither a declared type nor enough context to infer a type. To disable that, use the `noImplicitAny` TypeScript compiler flag:
+By default, TypeScript infers an `any` type for any variable that has neither a declared type nor enough context to infer a type. To disable that, use the `noImplicitAny` or `--strict` TypeScript compiler flag. You can refer to the full list of [TypeScript compiler options](https://www.typescriptlang.org/docs/handbook/compiler-options.html).
 
     tsc --noImplicitAny my_file.ts
 
 ## TypeScript Arrays
 
-Arrays in TypeScript are denoted by square brackets. For example:
+There are two ways you can declare an array in TypeScript.
 
-{{< file >}}
-//arrays
-let arr1: number[];         //declared
-let arr2 = [1,2,3];         //inferred
-let arr3 = ["one","two","three"];
-{{</ file >}}
+1. Using square brackets.
 
-{{< note >}}
-You can also declare arrays as a [Generic](https://www.typescriptlang.org/docs/handbook/2/generics.html), (i.e. `Array<Type>`).
-{{</ note >}}
+        //arrays
+        let arr1: number[];         //declared
+        let arr2 = [1,2,3];         //inferred
+        let arr3 = ["one","two","three"];
+
+1. Using [Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html), i.e., `Array<Type>` as shown below:
+
+        let arr1: Array<string> = ['one', 'two', 'three'];
 
 ## Object Types
 
-In TypeScript you can create types from other types. The most common way to do this is with objects. Objects can be [*anonymous*](https://www.typescriptlang.org/docs/handbook/2/objects.html), [type *aliases*](https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases), or [*interfaces*](https://www.typescriptlang.org/docs/handbook/interfaces.html).
+In TypeScript, you can create types from other types. The most common way to do this is with objects. Objects can be [*anonymous*](https://www.typescriptlang.org/docs/handbook/2/objects.html), [type *aliases*](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases), or [*interfaces*](https://www.typescriptlang.org/docs/handbook/2/objects.html#interfaces-vs-intersections).
 
 {{< note >}}
-The syntax for interfaces lacks an equals sign, but the syntax for types requires an equals sign.
+The syntax for interfaces lacks an equals sign, but the syntax for "type aliases" requires an equals sign.
 {{</ note >}}
 
-{{< file >}}
+{{< file "object_types_example.ts" typescript >}}
 //objects
 
 //interface
@@ -139,15 +143,15 @@ type IP4t = {
 }
 {{</ file >}}
 
-Optional properties are denoted with a question mark after the member name, as shown for the protocol members.
+Optional properties are denoted with a question mark, `?` after the member name, as shown for the `protocol` members in the above example.
 
 ## Unions and Narrowing
 
-Unions are denoted by a vertical bar and allow for more than one type, often as an input parameter to a function. You can’t apply type-dependent code to a union until your code narrows down which of the allowed types have been input. Take a look at the following example:
+Unions are denoted by a vertical bar ('`|`') and allow for more than one type, often as an input parameter to a function. You can’t apply type-dependent code to a union until your code narrows down to which the allowed types have been input. Take a look at the following example:
 
-{{< file >}}
+{{< file "unions_example.ts" typescript >}}
 function welcomePeople(x: string[] | string) { //x is a union
-	//Narrowing logic
+ //Narrowing logic
   if (Array.isArray(x)) {
     // Here: 'x' is 'string[]'
     console.log("Hello, " + x.join(" and "));
@@ -161,7 +165,7 @@ welcomePeople("Moe");
 welcomePeople(["Moe","Larry”,"Curly"]);
 {{</ file >}}
 
-When you run the code, the log output you get is:
+When you run the code, you get the following log output:
 
 {{< output >}}
 [LOG]: "Welcome lone traveler Moe"
