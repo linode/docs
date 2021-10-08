@@ -11,6 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2021-03-05
+image: UseEchoCommand.png
 title: How to Use Echo
 h1_title: Using the echo Command
 tags: ["linux"]

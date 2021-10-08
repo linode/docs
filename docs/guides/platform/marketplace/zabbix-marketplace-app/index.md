@@ -9,6 +9,7 @@ tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitor
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified: 2021-09-16
+image: DeployZabbix_marketplaceapps.png
 modified_by:
   name: Linode
 title: "Deploying Zabbix through the Linode Marketplace"

@@ -8,7 +8,7 @@ keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
-image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
+image: WritingScripts_LinodeStackScripts.png
 modified_by:
   name: Linode
 title: "How to Write Scripts for Linode StackScripts (A Tutorial)"

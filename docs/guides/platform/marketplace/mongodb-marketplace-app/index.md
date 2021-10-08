@@ -11,8 +11,9 @@ published: 2020-03-11
 modified: 2021-09-16
 modified_by:
   name: Linode
-title: "Deploying MongoDB through the Linode Marketplace"
-image: feature.png
+title: "How to Deploy MongoDB with Marketplace Apps"
+h1_title: "Deploying MongoDB with Marketplace Apps"
+image: MongoDB_oneclickapps.png
 contributor:
   name: Linode
 external_resources:

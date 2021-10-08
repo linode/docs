@@ -26,6 +26,8 @@ Delete individual rules that are no longer needed using the Cloud Manager.
 
 ### Cloud Firewall Basics
 
-- [Adding and Configuring Cloud Firewall](/docs/guides/getting-started-with-cloud-firewall/)
+- [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/): Learn which firewall solution may work best for your use case.
+
+- [Getting Started with Cloud Firewalls](/docs/guides/getting-started-with-cloud-firewall/)
 
 - [Troubleshooting Firewalls](/docs/guides/troubleshooting-firewalls/)

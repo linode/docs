@@ -11,6 +11,7 @@ modified: 2021-06-17
 modified_by:
   name: Linode
 published: 2021-04-29
+image: DOCKERS.jpg
 title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
 h1_title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
 external_resources:

@@ -9,6 +9,7 @@ tags: ["debian","marketplace", "web applications","linode platform", "cloud mana
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2021-09-16
+image: Deploy_Webmin_oneclickapps.png
 modified_by:
   name: Linode
 title: "Deploying Webmin through the Linode Marketplace"
