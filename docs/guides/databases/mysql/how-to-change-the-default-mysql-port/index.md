@@ -56,15 +56,15 @@ On Fedora, CentOS, or other Red Hat-derived distributions, enter :
     sudo yum update
 
 
-## How to Verify Your Chosen Port is Available
+## How to Verify a Port is Available
 
-Before attempting to bind a new port, you should make sure it is not already in use by another service. 
+Before attempting to bind a new port, you should make sure it is not already in use. 
 
-1.  Use `netstat` to check the port is not already bound to another service.  
+1.  Use `netstat` to check that another service is not bound to your preferred port.  
 
     netstat -tanp | grep PORT
 
-There is no output if the port is available. If the port is not available, you will see a listing of the services using the port. For example, if you tried to use the default SSH port (22). 
+There is no output if the port is available. If the port is not available, you will see a listing of the services using it. For example, if you tried to use the default SSH port (22). 
 
     netstat -tanp | grep 22
 
