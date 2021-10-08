@@ -9,6 +9,7 @@ keywords: ['ssh','linux','windows','connect to server over ssh','connect to lino
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
+image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
 title: "How to Connect to a Remote Server Over SSH on Windows"

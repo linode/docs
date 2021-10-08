@@ -15,7 +15,7 @@ title: How to Secure Apache 2 With ModSecurity
 h1_title: Securing Apache 2 With ModSecurity
 enable_h1: true
 aliases: ['security/basics/securing-apache2-with-modsecurity/']
-image: Securing_Apache2_With_ModSecurity.png
+image: SecureApache2_ModSecurity.png
 relations:
     platform:
         key: securing-web-servers-with-modsecurity

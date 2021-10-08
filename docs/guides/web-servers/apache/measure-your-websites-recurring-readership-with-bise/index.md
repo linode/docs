@@ -14,7 +14,7 @@ modified_by:
 title: "How to Measure a Website's Recurring Readership with Bise"
 h1_title: "Measuring your Website's Recurring Readership with Bise"
 enable_h1: true
-image: feature.png
+image: MeasureWebsiteRecReader_Bise.png
 contributor:
   name: Jason McIntosh
   link: https://jmac.org/

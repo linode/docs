@@ -13,6 +13,7 @@ modified: 2020-03-25
 modified_by:
   name: Linode
 published: 2020-03-25
+image: ApacheTomcat_Deb10.png
 title: 'How to Install Apache Tomcat on Debian 10'
 h1_title: 'Installing Apache Tomcat on Debian 10'
 external_resources:
