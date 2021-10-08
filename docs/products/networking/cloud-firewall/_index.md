@@ -22,7 +22,7 @@ Control inbound and outbound traffic using the [Linode API](/docs/api/networking
 
 ## Scalable Security in Seconds
 
-Stay protected as your network grows. Effortlessly apply the same ruleset across multiple Linode Compute Instances. This saves time as you no longer need to manually configuring internal firewall software on each server.
+Stay protected as your network grows. Effortlessly apply the same ruleset across multiple Linode Compute Instances. This saves time as you no longer need to manually configure internal firewall software on each server.
 
 ## Availability
 
