@@ -1307,6 +1307,7 @@ protocode
 proxied
 proxying
 pscp
+pseudocode
 psql
 psudo
 psycop2
