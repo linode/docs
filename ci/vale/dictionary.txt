@@ -111,6 +111,7 @@ basearch
 bashdoor
 bashrc
 bc
+benchmarked
 berkshelf
 bernd
 berners

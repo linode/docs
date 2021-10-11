@@ -1,17 +1,19 @@
 ---
-slug: how-to-use-hyperfine
+slug: install-and-use-hyperfine-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to use hyperfine for benchmarking command-line tools on your Linux system."
 og_description: "Learn how to use hyperfine for benchmarking command-line tools on your Linux system."
 keywords: ['hyperfine linux','install hyperfine','benchmarking linux']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use hyperfine on Linux"
+title: "Install and Use hyperfine on Linux"
 h1_title: "How to Install and Use hyperfine on Linux"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -19,42 +21,42 @@ contributor:
 
 `hyperfine` allows you to benchmark command-line commands with features to thoroughly test various commands' performance side by side. `hyperfine` stands out from similar tools by giving you fine control over the benchmarking process and advanced features for more effective testing.
 
-This guide gets you informed about what `hyperfine` is and how it compares to other tools. Then, learn how to install `hyperfine` and how to start using it to benchmark command-line commands on your Linux system.
+In this guide you learn what `hyperfine` is and how it compares to other tools. Then, you learn how to install `hyperfine` and how to start using it to benchmark command-line commands on your Linux system.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is hyperfine?
 
 `hyperfine` is a benchmarking tool for the command line, allowing you to compare the performance of commands. With `hyperfine`, it becomes easy to see how different command-line tools, scripts, and command arguments affect performance.
 
-Frequently, the default `time` command gets used to compare commands' run times. For instance, you could compare `curl` and `wget` with `time` commands like these:
+The default `time` command is used to compare commands' run times. For instance, you could compare `curl` and `wget` with `time` command as shown below:
 
     time curl https://github.com/
 
 {{< output >}}
 [...]
 
-real	0m0.078s
-user	0m0.022s
-sys	0m0.000s
+real 0m0.078s
+user 0m0.022s
+sys 0m0.000s
 {{< /output >}}
 
     time wget https://github.com/
@@ -62,17 +64,17 @@ sys	0m0.000s
 {{< output >}}
 [...]
 
-real	0m0.093s
-user	0m0.009s
-sys	0m0.001s
+real 0m0.093s
+user 0m0.009s
+sys 0m0.001s
 {{< /output >}}
 
-But with `time`, it is difficult to compare results over multiple runs, especially when you are working with multiple commands as well.
+But with `time` command, it is difficult to compare results over multiple runs, especially when you are working with multiple commands as well.
 
-Here, `hyperfine` helps with features designed specifically for benchmarking. Its results tend not only to be more readable, but it also gives you fine control of how the benchmarking is performed. Here are a few of those features that make it exceptional for benchmarking:
+In this case, `hyperfine` help with features designed specifically for benchmarking. Its results tend not only to be more readable, but it also gives you fine control of how the benchmarking is performed. Following are a few of those features that make it exceptional for benchmarking:
 
-- By default, `hyperfine` performs multiple runs with each command, and it gives you options to control the number of runs.
-- `hyperfine` intelligently detects statistical outliers, making it easy to catch when other processes are affecting your benchmarking runs.
+- By default, `hyperfine` perform multiple runs with each command, and it gives you options to control the number of runs.
+- `hyperfine` intelligently detect statistical outliers, making it easy to catch when other processes are affecting your benchmarking runs.
 - `hyperfine` can provide warm-up runs and other controls for when system caching is a factor.
 - You can have `hyperfine` export its benchmarking result in a variety of formats for external use.
 
@@ -80,29 +82,29 @@ Here, `hyperfine` helps with features designed specifically for benchmarking. It
 
 `hyperfine` was inspired by [`bench`](https://github.com/Gabriel439/bench), a similar tool for benchmarking command-line commands. Both tools allow you to easily benchmark commands and provide readable and exportable results.
 
-However, `hyperfine` focuses more on rigorous benchmarking features and on a higher degree of control of the benchmarking process. Several of the performance features described for `hyperfine` above — such as detection of outliers and provision of warm-up runs — are absent in `bench`.
+However, `hyperfine` focuses more on rigorous benchmarking features and a higher degree of control of the benchmarking process. Several of the performance features described for `hyperfine` above — such as detection of outliers and provision of warm-up runs — are absent in `bench`.
 
 On the other hand, `bench` prioritizes simple usability and more visually engaging output. `bench` can, for instance, create HTML output complete with graphs of commands' performances during benchmarking runs.
 
 ## How to Install hyperfine
 
-You can simply use the DNF package manager to install `hyperfine` on Fedora:
+You can simply use the DNF package manager to install `hyperfine` on **Fedora**:
 
     sudo dnf install hyperfine
 
-On Debian, Ubuntu, AlmaLinux, and CentOS, use the steps below to install `hyperfine`.
+On **Debian**, **Ubuntu**, **AlmaLinux**, and **CentOS**, use the steps below to install `hyperfine`.
 
 1. Install `gcc`.
 
-    - On Debian and Ubuntu, you can do so with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
-            sudo apt install build-essential
+          sudo apt install build-essential
 
-    - On AlmaLinux and CentOS (8 or later), use:
+    - On **AlmaLinux** and **CentOS** (8 or later), use the following command:
 
-            sudo dnf install gcc
+          sudo dnf install gcc
 
-1. Install [Rust](https://www.rust-lang.org/). This method uses the Rust package manager, Cargo, which is included when you install Rust:
+1. Install [Rust](https://www.rust-lang.org/). This method uses the Rust package manager, Cargo, which is included when you install Rust.
 
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -128,18 +130,18 @@ hyperfine 1.11.0
 
 The sections below show you how to begin working with `hyperfine` to benchmark commands. They range from the most basic benchmark runs to useful advanced options for rigorously testing commands.
 
-For the examples shown in each of these section, this guide uses code for binary tree algorithms as provided by [The Computer Language Benchmarks Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html). The examples use two scripting languages that come with most Linux distributions by default: Perl and Python 3. To each script, a hash-bang line has been added to make it easier to execute the scripts.
+The examples demonstrated in each of the below sections uses code for binary tree algorithms as provided by [The Computer Language Benchmarks Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html). These examples use two scripting languages that come with most Linux distributions by default: **Perl** and **Python 3**. To each script, a hash-bang line has been added to make it easier to execute the scripts.
 
-You can get our version of the [Perl script](https://benchmarksgame-team.pages.debian.net/benchmarksgame/program/binarytrees-perl-1.html) by following [this link](binary-tree.pl). And you can pick up our version of the [Python 3 script](https://benchmarksgame-team.pages.debian.net/benchmarksgame/program/binarytrees-python3-1.html) by following [this link](binary-tree.py).
+You can get our version of the [Perl script](https://benchmarksgame-team.pages.debian.net/benchmarksgame/program/binarytrees-perl-1.html) by following [this link](binary-tree.pl) and the [Python 3 script](https://benchmarksgame-team.pages.debian.net/benchmarksgame/program/binarytrees-python3-1.html) by following [this link](binary-tree.py).
 
-Before following along, you need to give each script executable permission, which you can do with commands like these:
+Before following along, you need to give each script executable permission by using the below commands:
 
     sudo chmod +x binary-tree.pl
     sudo chmod +x binary-tree.py
 
 ### Benchmarking a Command
 
-`hyperfine` can execute basic benchmarks with a command as simple as this, which benchmarks our Perl script. Notice that `hyperfine` can easily include command-line arguments in its commands, like the `10` below:
+`hyperfine` can execute basic benchmarks commands. The following simple command benchmarks our [Perl script](/docs/guides/how-to-install-and-use-hyperfine-on-linux/binary-tree.pl). Notice that `hyperfine` can easily include command-line arguments in its commands, like the argument '`10`' in the below example:
 
     hyperfine './binary-tree.pl 10'
 
@@ -149,7 +151,7 @@ Benchmark #1: ./binary-tree.pl 10
   Range (min … max):    54.4 ms …  66.4 ms    54 runs
 {{< /output >}}
 
-`hyperfine` notifies you if it detects any statistical outliers during the benchmarking. One of the best ways to reduce such outliers is with the `--warmup`. This flag runs the benchmark after a given number of warm-up cycles. The command below runs the Perl script again, but, this time, with 20 warm-up cycles first:
+`hyperfine` notifies you if it detects any statistical outliers during the benchmarking. One of the best ways to reduce such outliers is with the `--warmup` flag. This flag runs the benchmark after a given number of warm-up cycles. The command below runs the [Perl script](/docs/guides/how-to-install-and-use-hyperfine-on-linux/binary-tree.pl) again, but, this time, with '`20`' warm-up cycles first.
 
     hyperfine --warmup 20 './binary-tree.pl 10'
 
@@ -159,7 +161,7 @@ Benchmark #1: ./binary-tree.pl 10
   Range (min … max):    54.6 ms …  58.5 ms    52 runs
 {{< /output >}}
 
-`hyperfine` also has a `--prepare` flag which can similarly help to reduce outliers. It works conversely to the `--warmup` flag by allowing you to provide a command to clear the cache before each run. The next example uses `--prepare` to execute a command to clear the disk cache before each execution of the Perl script:
+`hyperfine` also has a `--prepare` flag which can similarly help to reduce outliers. It works conversely to the `--warmup` flag by allowing you to provide a command to clear the cache before each run. The below example uses `--prepare` to execute a command to clear the disk cache before each execution of the Perl script.
 
     hyperfine --prepare 'sync; echo 3 | sudo tee /proc/sys/vm/drop_caches' './binary-tree.pl 10'
 
@@ -173,7 +175,7 @@ Benchmark #1: ./binary-tree.pl 10
 
 `hyperfine` shines when it comes to providing benchmarks in comparison. It makes the process simple, too. Just provide the two commands back to back.
 
-Here is an example that uses the `--warmup` flag from the section above to benchmark the Perl and Python 3 scripts side by side:
+Below is an example that uses the `--warmup` flag from the example in the section above to benchmark the Perl (`binary-tree.pl`) and Python 3 (`binary-tree.py`) scripts side by side.
 
     hyperfine --warmup 20 './binary-tree.pl 10' './binary-tree.py 10'
 
@@ -191,9 +193,9 @@ Summary
     1.02 ± 0.10 times faster than './binary-tree.py 10'
 {{< /output >}}
 
-You can see above that each script was benchmarked for a different number of runs. Using the `--min-runs` option, you can have `hyperfine` guarantee at least a given number of runs for each command.
+You can see from the output that each script was benchmarked for a different number of runs. Using the `--min-runs` flag, you can have `hyperfine` guarantee at least a given number of runs for each command.
 
-Here is another example that does just that, and also uses the `--prepare` option instead of the `--warmup` option to give a different perspective:
+Below is another example that does just that, and also uses the `--prepare` flag instead of the `--warmup` flag to give a different perspective.
 
     hyperfine --min-runs 60 --prepare 'sync; echo 3 | sudo tee /proc/sys/vm/drop_caches' './binary-tree.pl 10' './binary-tree.py 10'
 
@@ -213,13 +215,13 @@ Summary
 
 ### Benchmark Reports
 
-`hyperfine` comes with several options for exporting your benchmark results. You can use the `--help` flag to see the full list of supported formats, but the following three are commonly useful:
+`hyperfine` comes with several options for exporting your benchmark results. You can use the `--help` flag to see the full list of supported formats, but the following three options are commonly useful.
 
 - `--export-csv`
 - `--export-json`
 - `export-markdown`
 
-Both the CSV and Markdown exports provide similar data. Essentially, you get a table with a summary of the results for each command. The example below gives you Markdown for a comparison between the Perl and Python 3 scripts with a warm-up:
+Both the CSV and Markdown exports provide similar data. Essentially, you get a table with a summary of the results for each command. The example below gives you Markdown for a comparison between the Perl and Python 3 scripts with a `--warmup` flag.
 
     hyperfine --warmup 20 './binary-tree.pl 10' './binary-tree.py 10' --export-markdown benchmarks.md
 
@@ -284,4 +286,4 @@ Here is an example that generates a JSON report for the same benchmark procedure
 
 ## Conclusion
 
-Check out the GitHub [page for `hyperfine`](https://github.com/sharkdp/hyperfine) to learn a few more useful features the tool offers, including its integration with other tools. If you want to dive deeper into `hyperfine`, use the `--help` flag to get a comprehensive list of options each with a clear and helpful description.
+Check out the [GitHub page for `hyperfine`](https://github.com/sharkdp/hyperfine) to learn a few more useful features the tool offers, including its integration with other tools. If you want to dive deeper into `hyperfine`, use the `--help` flag to get a comprehensive list of options, each with a clear and helpful description.
