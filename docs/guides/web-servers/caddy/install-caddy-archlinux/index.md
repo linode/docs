@@ -43,9 +43,10 @@ Caddy is an open source HTTP/2 capable web server with automatic HTTPS written i
 
 ## Install Caddy
 
-You can install Caddy on Arch Linux by using the package that comes with both of Caddy's systemd service unit files, but does not enable them by default.
+You can install Caddy on Arch Linux by using the package. It comes with both of Caddy's systemd service unit files, but does not enable them by default.
 
 1. Install caddy using:
+
         sudo pacman -Syu caddy
 
 ## Allow HTTP and HTTPS Connections
