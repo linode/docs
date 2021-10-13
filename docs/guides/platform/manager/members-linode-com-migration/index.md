@@ -102,6 +102,4 @@ If you're following these instructions and do not find a `nodebalancer.linode.co
 
 ### Updating Reverse DNS
 
-To change a Linode's reverse DNS, review the [Configure Your Linode for Reverse DNS](https://www.linode.com/docs/guides/configure-your-linode-for-reverse-dns/) guide. If a user does not take action to change their reverse DNS to either the new `ip.linodeusercontent.com` domain or another domain of their choosing, Linode will change the corresponding reverse DNS entry.
-
-There is no way for a customer to change a NodeBalancer's reverse DNS, and as such the change will be made by Linode.
+To change a Linode's reverse DNS records, review the [Configure Your Linode for Reverse DNS](https://www.linode.com/docs/guides/configure-your-linode-for-reverse-dns/) guide. The new forward DNS records already exist for your Linode's IP, so you can set your Linode's reverse DNS records to match the new name by following the linked guide.
