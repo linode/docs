@@ -128,4 +128,4 @@ As of June 16, 2020, all High Memory and GPU plans utilize dedicated CPU cores b
 
 ## How to Upgrade Your Shared Instance
 
-For more information on how to upgrade or resize your shared instance, consult our [/docs/guides/resizing-a-linode/](Resizing a Linode) guide.
+For more information on how to upgrade or resize your shared instance, consult our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide.
