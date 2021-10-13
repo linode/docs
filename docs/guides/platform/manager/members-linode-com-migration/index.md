@@ -80,6 +80,10 @@ To find an existing `members.linode.com` address:
 
     The value under reverse DNS is the Linode Instance's current `members.linode.com` address.
 
+{{< note >}}
+If you're following these instructions and do not find a `members.linode.com` address, and instead find an `ip.linodeusercontent.com` address, then your Linode Instance has already been configured to use the new domain.
+{{< /note >}}
+
 #### Finding an Existing nodebalancer.linode.com Address
 
 To find an existing `nodebalancer.linode.com` address:
@@ -91,6 +95,10 @@ To find an existing `nodebalancer.linode.com` address:
     !["A NodeBalancer's forward DNS is available on a NodeBalancer's summary page"](locate-domain-nodebalancer.png)
 
     This is your NodeBalancer's existing forward DNS.
+
+{{< note >}}
+If you're following these instructions and do not find a `nodebalancer.linode.com` address, and instead find an `ip.linodeusercontent.com` address, then your NodeBalancer has already been configured to use the new domain.
+{{< /note >}}
 
 ### Updating Reverse DNS
 
