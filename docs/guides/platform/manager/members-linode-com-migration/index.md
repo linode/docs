@@ -6,7 +6,7 @@ author:
 description: "The members.linode.com and nodebalancer.linode.com are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS."
 keywords: ['dns','members.linode.com','reverse dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-07
+published: 2021-10-13
 modified_by:
   name: Linode
 title: "members.linode.com and nodebalancer.linode.com Migration"
