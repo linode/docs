@@ -19,7 +19,7 @@ contributor:
 aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/", "security/authentication/how-to-self-host-the-bitwarden-rs-password-manager/"]
 ---
 
-The [Vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as bitwarden_rs) provides a lightweight, single-process, API-compatible service alternative to [Bitwarden](https://bitwarden.com/)  . [Vaultwarden](https://bitwarden.com/)is an open source password management application that can be self-hosted and run on your infrastructure.  By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.
+The [Vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as bitwarden_rs) provides a lightweight, single-process, API-compatible service alternative to [Bitwarden](https://bitwarden.com/)  . [Vaultwarden](https://bitwarden.com/)is an open source password management application that can be self-hosted and run on your infrastructure. By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.
 
 {{< note >}}
 By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within Vaultwarden. Before storing important information and credentials within the application, ensure that you are confident with the security of the server. Also, take the necessary backup measures mentioned in this tutorial.
@@ -103,7 +103,7 @@ This section outlines how to download the Vaultwarden Docker image, setup volume
     This command uses the following flags to establish a persistent container to serve the Vaultwarden application:
 
     - `-d` daemonizes the container to run in the background.
-    - Using `--name vaultwarden` gives the container a human-readable name to avoid the need to reference the running container by a temporary identifier.
+    - Using `--name vaultwarden` gives the container a human-readable name. To avoid the need to reference the running container by a temporary identifier.
     - By passing the host path `/srv/vaultwarden` to the volume (`-v`) flag, data is persisted outside of the container whenever it is stopped.
     - The environment variable `WEBSOCKET_ENABLED` enables the extra websocket server for Vaultwarden.
     - Each `-p` flag forwards the respective host ports to the container (port 8080 for the main Vaultwarden web service and port 3012 for websocket traffic). Normal HTTP and HTTPS ports are served with Caddy.
@@ -113,11 +113,11 @@ This section outlines how to download the Vaultwarden Docker image, setup volume
 
 ## Configure Caddy as a Reverse Proxy
 
-External clients communicate with Caddy, which automatically manages reverse proxying websocket traffic. Caddy also provisions and renews TLS certificates via Let's Encrypt automatically.The caddy images come in many flavors, each designed for a specific use case.
+External clients communicate with Caddy, which manages reverse proxying websocket traffic. Caddy also provisions and renews TLS certificates through Let's Encrypt automatically. The caddy images come in many flavors, each designed for a specific use case.
 
 caddy:<version>
 
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
+This is the de facto image. If you are unsure about your needs, you probably want to use this one. It is designed to be used both as a throw away container. To mount source code and start the container to start the app. Also, as the base to build other images using this.
 
 
 
@@ -236,7 +236,7 @@ As an additional security precaution, you may elect to disable user registration
 
    ![Bitwarden Registration Error](bitwarden_rs_signup_error.png "Bitwarden Registration Error")
 
-   This deployment of Vaultwarden does not permit any additional user registrations. You may still want to invite users without needing to change the Vaultwarden container environment variable flags. This is possible by following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page). The admin panel provides user invitation functionality.
+   This deployment of Vaultwarden does not permit any additional user registrations. You may still want to invite users without needing to change the Vaultwarden container environment variable flags. This is possible by following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page). The administrator panel provides user invitation functionality.
 
 ## Backup Vaultwarden SQLite Database
 
