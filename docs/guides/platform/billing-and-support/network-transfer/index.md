@@ -49,7 +49,7 @@ Costs associated with network transfer can often be unexpected or confusing in a
 
 **Metered network transfer:**
 
-- Outbound transfer sent from a Compute Instance or NodeBalancer occurring over the public internet (or a public IPv4 address).
+- Outbound transfer sent from a Compute Instance or NodeBalancer over the public internet (or a public IPv4 address).
 
 - All outbound transfer from Object Storage, even to other Linode services within the same data center.
 
