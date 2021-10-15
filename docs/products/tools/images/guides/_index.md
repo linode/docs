@@ -21,7 +21,7 @@ The following guides can assist with topics like deploying custom distributions,
 
 ### Images
 
-- [Images Tutorial](/docs/guides/linode-images/)
+- [An Overview of Linode's Images Service](/docs/guides/linode-images/)
 
 - [Deploying an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/)
 
