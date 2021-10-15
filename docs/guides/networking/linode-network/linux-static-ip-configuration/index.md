@@ -41,6 +41,8 @@ Although your Linode may have multiple IP addresses assigned, and additionally m
 
 For example, if the address `198.51.100.5` is assigned to the interface `eth0:3`, you should use `198.51.100.1` as the gateway. A gateway should not be specified for private IP addresses.
 
+The gateway in this instance works similarly to a router, and provides access to the wider internet and other Linode services. This must always be configured on your Linode in order to have network access.
+
 **DNS Resolution**
 
 Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/remote-access/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
