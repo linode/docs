@@ -9,6 +9,7 @@ keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternat
 tags: ['docker', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
+image: MASTODON3.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install a Mastodon Server on Debian 10"

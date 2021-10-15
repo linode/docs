@@ -9,6 +9,7 @@ keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
+image: HowtoUseParamikoandPythontoSSHintoaServer.jpg
 modified_by:
   name: Linode
 title: "Use Paramiko and Python to SSH into a Server"

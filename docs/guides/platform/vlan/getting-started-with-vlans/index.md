@@ -39,6 +39,10 @@ VLANs are managed within the network interfaces on a Linode. Each Linode has 3 c
 
 - **None:** Selecting **None** will deactivate that network interface.
 
+{{< caution >}}
+The Public Internet must always be set to use the network interface `eth0`.
+{{< /caution >}}
+
 ### Selecting a VLAN
 
 When configuring a network interface, a VLAN can be selected by entering its **Label**. VLANs that already exist on an account can be quickly selected through a drop down list. If the label doesn't correspond with an existing VLAN, a new VLAN is created.

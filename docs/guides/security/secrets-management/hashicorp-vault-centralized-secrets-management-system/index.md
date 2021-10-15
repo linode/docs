@@ -14,7 +14,7 @@ h1_title: "Setting Up and Using a Vault Server"
 enable_h1: true
 aliases: ['/security/secrets-management/how-to-set-up-and-use-a-vault-server/']
 tags: ["ubuntu", "security"]
-image: Hashicorp_Vault_Fundamentals.png
+image: SetUpVaultserver.png
 external_resources:
   - '[Vault Documentation](https://www.vaultproject.io/docs)'
 ---

@@ -14,7 +14,7 @@ modified_by:
   name: Linode
 title: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 h1_title: Installing an Odoo 13 Stack on Ubuntu 18.04
-image: install-an-odoo-13-stack-on-ubuntu-18-04-using-linode.png
+image: InstallOdoo13Stack_Ubuntu1804.png
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja

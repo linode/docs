@@ -9,6 +9,7 @@ keywords: ['yum','installing','updating','upgrading','uninstalling','removing','
 tags: ['yum',centos',]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
+image: YUM1.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode

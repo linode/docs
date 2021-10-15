@@ -9,6 +9,7 @@ keywords: ['canvas','education','training','learning management system','lms','d
 tags: ['canvas', 'debian','apache','ssl','redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
+image: Canvas.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Canvas on Debian 10"

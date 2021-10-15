@@ -79,6 +79,7 @@ automattic
 automount
 autorelabel
 autorun
+autoscale
 autoscaler
 autoscaling
 autossh
@@ -128,6 +129,7 @@ blockchain
 blocklists
 blockwise
 bluehost
+bokeh
 bookinfo
 boolean
 booleans
@@ -250,6 +252,7 @@ containerised
 convolutional
 cookstyle
 coose
+copr
 copyfrom
 copyto
 coreutils
@@ -605,6 +608,7 @@ groupinfo
 grsecurity
 gsa
 gsad
+gtop
 guacd
 gui
 gunicorn
@@ -1062,6 +1066,7 @@ multiuser
 munin
 musl
 mutliverse
+mv
 myapp
 myblog
 mydestination
@@ -1258,6 +1263,7 @@ pid
 pidfile
 pipfile
 pipenv
+pipelined
 piwik
 pki
 plaintext
@@ -1419,6 +1425,7 @@ rimap
 ritchie
 rkhunter
 rkt
+rmdir
 rmem
 ro
 rochko
