@@ -219,7 +219,7 @@ Address = 10.0.0.2/24, fd86:ea04:1115::5/64
 
 1.  Edit the `wg0.conf` file on the client to add the server's public key, public IP address, port, and allowed IPs.
 
-    {{< file "/etc/wireguard/wg0.conf" ßconf >}}
+    {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
