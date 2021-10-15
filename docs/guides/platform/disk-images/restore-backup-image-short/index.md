@@ -20,7 +20,7 @@ aliases: ['/platform/disk-images/restore-backup-image-short/']
 
 This section shows how to restore a backup to a [new](#restore-to-a-new-linode) Linode, or to an [existing](#restore-to-an-existing-linode) Linode.
 
-Restoring a backup will create a new [configuration profile](/docs/guides/linode-configuration-profiles/) and a new set of [disks](/docs/guides/linode-disks/) on your Linode. The restore process does not restore single files or directories automatically. Restoring particular files can be done by completing a normal restore, copying the files off of the new disks, and then removing the disks afterward.
+Restoring a backup will create a new [configuration profile](/docs/guides/linode-configuration-profiles/) and a new set of [disks](/docs/guides/disks-and-storage/) on your Linode. The restore process does not restore single files or directories automatically. Restoring particular files can be done by completing a normal restore, copying the files off of the new disks, and then removing the disks afterward.
 
 {{< note >}}
 The size of the disk(s) created by the restore process will only be slightly larger than the total size of the files restored. This means that the disk(s) created will be 'full'.
@@ -54,13 +54,13 @@ If you are attempting to restore a disk to the same Linode the backup was create
 
 1.  Next, you'll confirm the total space assigned to disk images on your Linode, via the **Storage** indicator on your Linode's Dashboard.
 
-1.  If the amount of space available is greater than the size of the backup, you can proceed with restoring. If the amount of unallocated space is less than the size of the backup, you can [shrink your existing disks](/docs/guides/linode-disks/#resizing-a-disk) to make room for it.
+1.  If the amount of space available is greater than the size of the backup, you can proceed with restoring. If the amount of unallocated space is less than the size of the backup, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to make room for it.
 
     {{< note >}}
 In some cases, you will not be able to shrink your disks enough to fit the restored backup. Other alternatives for restoring to your existing Linode include:
 
 -   [Changing your Linode's plan](/docs/platform/disk-images/resizing-a-linode/) to a higher tier that offers more disk space.
--   [Removing other disks](/docs/guides/linode-disks/#deleting-a-disk) from your Linode.
+-   [Removing other disks](/docs/guides/disks-and-storage/#deleting-a-disk) from your Linode.
 {{< /note >}}
 
 1.  Once the disk resize has completed, check the storage indicator on your Linode's Dashboard to confirm that you've freed up enough space for your backup.

@@ -33,7 +33,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 2.  Disable the [Lassie Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-3.  [Create two disks](/docs/guides/linode-disks/#creating-a-disk):
+3.  [Create two disks](/docs/guides/disks-and-storage/#creating-a-disk):
 
     1.  **Label:** Installer
         * **Type:** unformatted / raw

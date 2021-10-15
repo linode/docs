@@ -105,7 +105,7 @@ You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/guid
 -   **Where**: The disk is stored on your Linode.
 -   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disks.
 
-See [Managing Disks and Storage on a Linode](/docs/guides/linode-disks/) to learn more about disks.
+See [Managing Disks and Storage on a Linode](/docs/guides/disks-and-storage/) to learn more about disks.
 
 ### Rsync
 

@@ -40,7 +40,7 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
 
 ## Prepare Your Linode for Encrypted Debian Installation
 
-1.  [Create two raw disk images](/docs/guides/linode-disks/#creating-a-disk) from the Linode's Dashboard:
+1.  [Create two raw disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 300MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. This will take up the rest of the free space available on your Linode.
