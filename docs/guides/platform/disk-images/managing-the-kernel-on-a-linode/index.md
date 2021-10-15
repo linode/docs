@@ -194,7 +194,7 @@ GRUB_GFXPAYLOAD_LINUX=text
 
     -   **Debian and Ubuntu**
 
-            update-grub
+            sudo update-grub
 
     -   **CentOS**
 

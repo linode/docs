@@ -11,6 +11,7 @@ modified: 2021-07-15
 modified_by:
   name: Linode
 published: 2021-07-15
+image: OverviewofPackageManagementinLinux.jpg
 title: "An Overview of Package Management in Linux"
 tags: ["linux"]
 ---

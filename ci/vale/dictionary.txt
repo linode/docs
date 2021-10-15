@@ -79,6 +79,7 @@ automattic
 automount
 autorelabel
 autorun
+autoscale
 autoscaler
 autoscaling
 autossh
@@ -128,6 +129,7 @@ blockchain
 blocklists
 blockwise
 bluehost
+bokeh
 bookinfo
 boolean
 booleans
@@ -250,6 +252,7 @@ containerised
 convolutional
 cookstyle
 coose
+copr
 copyfrom
 copyto
 coreutils
@@ -285,6 +288,7 @@ ctools
 ctrl
 ctx
 cuda
+curlie
 cutover
 cyberduck
 cyberpanel
@@ -604,6 +608,7 @@ groupinfo
 grsecurity
 gsa
 gsad
+gtop
 guacd
 gui
 gunicorn
@@ -663,6 +668,7 @@ htmldir
 htop
 htpasswd
 http
+httpie
 httpchk
 httpd
 https
@@ -1060,6 +1066,7 @@ multiuser
 munin
 musl
 mutliverse
+mv
 myapp
 myblog
 mydestination
@@ -1209,6 +1216,7 @@ owncast
 owncloud
 pacman
 paas
+packagist
 pagent
 pagespeed
 pandoc
@@ -1255,6 +1263,7 @@ pid
 pidfile
 pipfile
 pipenv
+pipelined
 piwik
 pki
 plaintext
@@ -1364,6 +1373,10 @@ readme
 readonly
 readwrite
 realtime
+rebase
+rebased
+rebases
+rebasing
 reconnections
 recordset
 recursing
@@ -1382,6 +1395,8 @@ redstone
 reenable
 reenabling
 referer
+reflog
+reflogs
 refspec
 regexes
 reimported
@@ -1416,6 +1431,7 @@ rimap
 ritchie
 rkhunter
 rkt
+rmdir
 rmem
 ro
 rochko
@@ -1676,6 +1692,8 @@ thawte
 theano
 theming
 thingsboard
+tigervnc
+tightvncserver
 tika
 timedatectl
 timeframe
@@ -1809,6 +1827,7 @@ valheim
 validator
 variadic
 varnishlog
+vaultwarden
 vcs
 vdev
 vdevs
@@ -1864,6 +1883,7 @@ webmin
 webpack
 webpages
 webpy
+broot
 webroot
 webroots
 webserver

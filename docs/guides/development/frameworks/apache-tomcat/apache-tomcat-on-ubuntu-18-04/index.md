@@ -21,7 +21,7 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["java"]
-image: 'Installing_Apache_Tomcat_on_Ubuntu_18041200x631.png'
+image: ApacheTomcat_Ubuntu1804.png
 relations:
     platform:
         key:  apache-tomcat

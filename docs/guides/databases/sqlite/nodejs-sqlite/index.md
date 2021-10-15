@@ -9,6 +9,7 @@ keywords: ['nodejs sqlite']
 tags: ['nodejs', 'sqlite', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
+image: NodeSQLite.jpg
 modified_by:
   name: Linode
 title: "A Beginner's Guide to NodeJS and SQLite"

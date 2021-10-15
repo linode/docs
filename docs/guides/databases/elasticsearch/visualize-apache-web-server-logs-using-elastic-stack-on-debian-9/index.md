@@ -13,6 +13,7 @@ external_resources:
 keywords: ["apache debian 9", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
+image: VizApacheWSL_ElasticStack_Debian9.png
 modified: 2021-03-05
 modified_by:
   name: Linode

@@ -11,13 +11,13 @@ modified: 2020-04-07
 modified_by:
   name: Linode
 published: 2017-08-13
+image: Python_virtualenv_Deb10.png
 title: How to Create a Python Virtual Environment on Debian 10
 h1_title: Creating a Python Virtual Environment on Debian 10
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
-image: 'Creating_a_Python_Virtual_Environment_on_Debian_10_1200x631.png'
 relations:
     platform:
         key: python-virtual-env

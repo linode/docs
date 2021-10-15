@@ -11,6 +11,7 @@ modified: 2021-05-17
 modified_by:
   name: Linode
 published: 2021-04-30
+image: Linode-Configuration-Profiles.jpg
 title: "How to Manage Configuration Profiles on a Linode"
 h1_title: "Managing Configuration Profiles on a Linode"
 enable_h1: true

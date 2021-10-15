@@ -9,6 +9,7 @@ keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtu
 tags: ["ubuntu", "php", "wordpress", "cms", "container", "nginx", "apache", "database", "mysql", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-16
+image: MultipleWPsites_LXDcont.png
 modified_by:
   name: Linode
 title: "How to Set Up Multiple WordPress Sites with LXD Containers"
@@ -86,7 +87,7 @@ If the version is not 3.3 or later, or if your preferred distribution does not h
 
 1. This guide requires you to own a domain name. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example WordPress websites. Throughout this guide, replace these names with subdomains under the domain that you own. Be sure to set up their DNS entries to point them to the IP address of your server. Specifically, create [A records](/docs/guides/dns-records-an-introduction/#a-and-aaaa) for your subdomains.
 
-    If you're not familiar with DNS, review our [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide. After you have registered a domain name, you can choose to use Linode's [DNS Manager](https://www.linode.com/products/dns-manager/) to manage your DNS records. For help with this service, see our [DNS Manager guide](/docs/platform/manager/dns-manager/). Your server's IP address can be found in the Cloud Manager; see our [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide for help. If you prefer to use a different DNS management service, follow their instructions for creating A records.
+    If you're not familiar with DNS, review our [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide. After you have registered a domain name, you can choose to use Linode's [DNS Manager](https://www.linode.com/products/dns-manager/) to manage your DNS records. For help with this service, see our [DNS Manager guide](/docs/guides/dns-manager/). Your server's IP address can be found in the Cloud Manager; see our [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide for help. If you prefer to use a different DNS management service, follow their instructions for creating A records.
 
 1. Complete the [Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/) guide. The guide instructs you to create a reverse proxy in a `proxy` container, and two web server containers, `apache1` and `nginx1`. These containers run the Apache 2 and NGINX web servers respectively. Then, the guide sets up Let's Encrypt TLS certificates for both websites.
 

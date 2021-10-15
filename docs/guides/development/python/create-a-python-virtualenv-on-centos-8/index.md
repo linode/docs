@@ -18,7 +18,7 @@ external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
-image: 'Creating_a_Python_Virtual_Environment_on_Centos_8_1200x631.png'
+image: Python_virtualenv_CentOS8.png
 relations:
     platform:
         key: python-virtual-env

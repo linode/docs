@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 title: "Working with Triggers in a MySQL Database - A Tutorial"
 h1_title: "Working with Triggers in a MySQL Database"
-image: how-to-work-with-triggers-in-mysql-database.png
+image: L_TriggersMySQL_db.png
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83
