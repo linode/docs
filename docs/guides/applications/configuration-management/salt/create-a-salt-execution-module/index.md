@@ -13,8 +13,8 @@ modified_by:
 image: CreateaSaltExecutionModule.png
 title: "Create a Salt Execution Module"
 external_resources:
-- '[Writing Execution Modules](https://docs.saltstack.com/en/latest/ref/modules/)'
-- '[Execution of Salt Modules From Within States](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.module.html#execution-of-salt-modules-from-within-states)'
+- '[Writing Execution Modules](https://docs.saltproject.io/en/latest/ref/modules/)'
+- '[Execution of Salt Modules From Within States](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.module.html#execution-of-salt-modules-from-within-states)'
 aliases: ['/applications/configuration-management/create-a-salt-execution-module/','/applications/configuration-management/salt/create-a-salt-execution-module/']
 tags: ["automation","salt"]
 ---
@@ -31,7 +31,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Prepare Salt
 
-The files created in the following steps will be located in the `/srv/salt` directory. If you have changed Salt's default [`file_roots`](https://docs.saltstack.com/en/latest/ref/configuration/master.html#std:conf_master-file_roots) configuration, use that directory location instead.
+The files created in the following steps will be located in the `/srv/salt` directory. If you have changed Salt's default [`file_roots`](https://docs.saltproject.io/en/latest/ref/configuration/master.html#std:conf_master-file_roots) configuration, use that directory location instead.
 
 1.  Begin by creating the `/srv/salt` directory if it does not already exist. This is where you will place your top file and your Salt state file:
 
