@@ -8,7 +8,7 @@ description: "Information about the new NVMe Block Storage product and how to up
 
 ## Overview of NVMe Block Storage
 
-We’re rolling out an ultra-fast, better-performing, and more reliable NVMe-backed Block Storage service across all 11 of our global data centers. NVMe is the hardware interface for next-generation SSDs (solid-state devices). The technology is a significant improvement over traditional spinning hard disk drives, with a 10-20x increase in throughput and up to 2000x improvement in IOPS. With NVMe-backed block storage, you can experience a significant performance upgrade for database storage and other tasks where high storage speeds and consistency are critical.
+We’re rolling out an ultra-fast, better-performing, and more reliable NVMe-backed Block Storage service across all 11 of our global data centers. NVMe is the hardware interface for next-generation SSDs (solid-state devices). The technology is a significant improvement over traditional spinning hard disk drives, with a 10-20x increase in throughput and up to 2000x improvement in IOPS. With NVMe-backed Block Storage, you can experience a significant performance upgrade for database storage and other tasks where high storage speeds and consistency are critical.
 
 The table below displays the performance you can expect from NVMe-backed Block Storage. Performance is automatically increased in 60 second bursts for even faster real-world speeds.
 
