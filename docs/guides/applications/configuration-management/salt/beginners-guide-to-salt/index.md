@@ -121,7 +121,7 @@ nginx_service:
       - pkg: nginx_pkg
 {{< /file >}}
 
-State files end with the extension `.sls` (**S**a**L**t **S**tate). State files can have one or more *state declarations*, which are the top-level sections of the file (`network_utilities`, `nginx_pkg`, and `nginx_service` in the above example). State declarations IDs are arbitrary, so you can name them however you prefer.
+State files end with the extension `.sls` (SaLt State). State files can have one or more *state declarations*, which are the top-level sections of the file (`network_utilities`, `nginx_pkg`, and `nginx_service` in the above example). State declarations IDs are arbitrary, so you can name them however you prefer.
 
 {{< note >}}
 If you were to name the ID to be the same as the relevant installed package, then you do not need to specify the `- name` option, as it will be inferred from the ID. For example, this snippet also installs NGINX:
