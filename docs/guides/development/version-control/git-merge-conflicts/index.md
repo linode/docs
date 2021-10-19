@@ -2,9 +2,10 @@
 slug: resolving-git-merge-conflicts
 author:
   name: Stephen Savitzky
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'This guide discusses Git merge conflicts, the reasons why they occur, and how to resolve merge conflicts.'
+og_description: 'This guide discusses Git merge conflicts, the reasons why they occur, and how to resolve merge conflicts.'
 keywords: ['how to resolve merge conflicts in git', 'git fix merge conflict', 'git continue merge after resolving conflicts']
+tags: ['version control system']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-06
 modified_by:
@@ -42,33 +43,11 @@ There are several best practices you can adopt to help you avoid merge conflicts
 
 There are several methods you can use to resolve a merge conflict. Depending on the nature of your merge conflict, you may choose one of the options in the sections below to fix a merge conflict.
 
-### Git: Abort a Merge
-
-Sometimes when resolving a merge conflict, you might inadvertently create new and more complicated issues. When this is the case, you can start over by aborting the merge with the following command:
-
-    git merge --abort
-
-This command brings your branch back to where it was before you started the merge. After aborting your merge, you can prevent conflicts by making additional changes to your files before you restart the merge. For example, rename a file in your branch to match its counterpart in the upstream branch. This prevents a delete/modify conflict.
-
-{{< note >}}
-Remember to commit or [stash](https://git-scm.com/docs/git-stash) any uncommitted changes in your working branch prior to starting a merge. Otherwise, `git merge --abort` may have trouble reconstructing the pre-merge state.
-{{</ note >}}
-
-## Git Reset Hard Head: Resetting After Making a Mistake
-
-When resolving a merge conflict, you might accidentally merge an unwanted change. For example, you might discover a mistake after committing a merge with your upstream branch and running your tests. To fix this, you can get back to the state before the merge with the following command:
-
-    git reset --hard HEAD^
-
-{{< note >}}
-Remember to commit or stash any uncommitted changes in your working directory, since `git reset --hard` wipes away any local changes that have not been committed.
-{{</ note >}}
-
-## Helpful Commands When Resolving a Merge Conflict
+### Viewing Details About a Merge Conflict
 
 When encountering a merge conflict, the first step is to find out where the the merge conflict occurred. There are several handy commands that can help you view more information related to your merge conflict.
 
-After merging with an upstream branch using the `git merge main` command, the output for a typical merge conflict resembles the following:
+After merging with an upstream branch using the `git merge <branch-name>` command, the output for a typical merge conflict resembles the following:
 
 {{< output >}}
 $ git merge main
@@ -135,7 +114,29 @@ index 9c2d62c,09e43a4..0000000
 ++>>>>>>> main
 {{</ output >}}
 
-## Completing a Merge
+### Git: Abort a Merge
+
+Sometimes when resolving a merge conflict, you might inadvertently create new and more complicated issues. When this is the case, you can start over by aborting the merge with the following command:
+
+    git merge --abort
+
+This command brings your branch back to where it was before you started the merge. After aborting your merge, you can prevent conflicts by making additional changes to your files before you restart the merge. For example, rename a file in your branch to match its counterpart in the upstream branch. This prevents a delete/modify conflict.
+
+{{< note >}}
+Remember to commit or [stash](https://git-scm.com/docs/git-stash) any uncommitted changes in your working branch prior to starting a merge. Otherwise, `git merge --abort` may have trouble reconstructing the pre-merge state.
+{{</ note >}}
+
+## Git Reset Hard Head: Resetting After Making a Mistake
+
+When resolving a merge conflict, you might accidentally merge an unwanted change. To fix this, you can get back to the state before the merge with the following command:
+
+    git reset --hard HEAD^
+
+{{< note >}}
+Remember to commit or stash any uncommitted changes in your working directory, since `git reset --hard` wipes away any local changes that have not been committed.
+{{</ note >}}
+
+## Completing a Merge After Fixing a Merge Conflict
 
 - When you’re done resolving your conflicts, use `git add` to mark the files you’ve resolved.
 
@@ -145,46 +146,38 @@ index 9c2d62c,09e43a4..0000000
 You can also use `git commit`. This method doesn't check for unresolved conflicts, so it’s not as safe as `git merge --continue`.
     {{</ note >}}
 
-- If you resolve conflicts on the command line, instead of using a merge tool, it’s a good idea to use [the `grep` command](/docs/guides/how-to-use-grep/) to search for conflict markers that you may have missed.
+- If you resolve conflicts on the command line, instead of using a merge tool, it’s a good idea to use the [Grep command](/docs/guides/how-to-use-grep/) to search for conflict markers that you may have missed.
 
-    {{< note >}}
-Some code editors check for unresolved conflicts for you and provide a command that moves to the next conflict.
-    {{</ note >}}
-
-- Git enters your system's default editor so that you can edit the commit message (unless you specify `--no-edit`). After a conflicted merge, add some information about what caused the conflict and how you resolved it.
+- Git enters your system's default editor so that you can edit the commit message (unless you use the `--no-edit` option). In your commit message, add some information about what caused the conflict and how you resolved it.
 
 ## Resolving delete/modify Conflicts
 
-The way you go about resolving a delete/modify merge conflict depends on the branch in which the file was modified. If the file was modified in your current working branch there is one strategy to follow. However, if the file was modified on the branch you’re merging with, then a different approach should be followed.
+The way you go about resolving a delete/modify merge conflict depends on the branch in which the file was modified. If the file was modified in your current working branch, there is one strategy to follow. However, if the file was modified on the branch you’re merging with, then a different approach should be followed.
 
 This section uses the following scenario as an example:
 
-You’re working on a development branch, and you want to merge with the main branch. Since the main branch is an upstream collaboration branch,you should not use it to complete the merge.
+You’re working on a development branch, and you want to merge with the main branch. The main branch is an upstream collaboration branch.
 
 ### Add or Remove the Modified File or Directory
 
 If a file or directory was *deleted* rather than moved, you can choose to keep the modified version of the file or discard it. If you keep the file, ensure you provide any necessary edits to it.
 
-The result of the merge is:
-
-    git merge main
+When running into a delete/modify merge conflict, your output displays the following:
 
 {{< output >}}
 CONFLICT (modify/delete): oldfile deleted in main and modified in HEAD. Version HEAD of oldfile left in tree.
 Automatic merge failed; fix conflicts and then commit the result.
 {{</ output >}}
 
-To add the `oldfile` use the `git add oldfile` command.
+To keep the `oldfile` use the `git add oldfile` command.
 
-To keep the `oldfile` deleted, use the `git rm oldfile` command.
+To remove the `oldfile`, use the `git rm oldfile` command.
 
 Follow either command with `git merge --continue` or `git commit` to finish up.
 
-### File or Directory Renamed and Modified in Working Branch
+### Renamed File or Directory in Working Branch
 
-If a file or directory was renamed in your working branch and modified in the upstream branch, Git generates a merge conflict. For example, your working branch is named `new` and you rename a file named `oldfile` to `newfile`. The main branch also contains the file `oldfile` and its been modified in the main branch. When attempting to merge the main branch into the `new` branch, the following message appears:
-
-    git merge main
+If a file or directory was renamed in your working branch and modified in the upstream branch, Git generates a merge conflict. For example, your working branch is named `new` and you rename a file from `oldfile` to `newfile`. The main branch also contains the file `oldfile` and its been modified in the main branch. When attempting to merge the main branch into the `new` branch, the following message appears:
 
 {{< output >}}
 CONFLICT (modify/delete): oldfile deleted in HEAD and modified in main. Version main of oldfile left in tree.
@@ -197,7 +190,7 @@ If you use the `ls` command to view the contents of the directory that contains 
 newfile  oldfile  sample.txt
 {{</ output >}}
 
-This conflict can be resolved by replacing `oldfile` with `newfile`. However, this approach should only be used if `newfile` in your working branch has not been modified. To replace `oldfile` with `newfile` use the following commands:
+This conflict can be resolved by replacing `oldfile` with `newfile`. However, this approach should only be used if `newfile`, in your working branch, has not been modified. To replace `oldfile` with `newfile` use the following commands:
 
 Copy `oldfile` to `newfile`:
 
@@ -216,10 +209,10 @@ Commit the new changes and complete the merge using the following command:
 {{</ output >}}
 
 {{< note >}}
-The `-a --no-edit` option allows you to preserve the commit message used in the commit prior to the merge conflict, while incorporating the changes you just made to the previous commit.
+The `-a --no-edit` option allows you to preserve the commit message used in the commit prior to the merge conflict, while incorporating the changes you just made.
 {{</ note >}}
 
-### File or Directory Renamed and Modified in Upstream Branch
+### Renamed File or Directory in Upstream Branch
 
 If a file or directory was renamed and modified in the upstream branch, and modified in your working branch, Git generates a merge conflict. For example, your working branch is named `old` and you modified a file named `oldfile`. The main branch (upstream branch), has renamed the `oldfile` to `newfile` and also modified `newfile`. When attempting to merge the main branch into the `old` branch, the following message appears:
 
@@ -230,7 +223,7 @@ CONFLICT (modify/delete): oldfile deleted in main and modified in HEAD. Version 
 Automatic merge failed; fix conflicts and then commit the result.
 {{</ output >}}
 
-The simplest approach do this scenario is to back out of the merge in order to rename the file in the working branch, and then reattempting the merge:
+The simplest way to fix this issue is to back out of the merge. Once you've backed out of the merge, you rename the file in the working branch to the upstream branch, and then reattempt the merge:
 
 Abort the attempted merge:
 
@@ -254,13 +247,13 @@ Reattempt the merge of the main branch into your working branch:
 
     git merge main
 
-The chapter on [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging) in the [Pro Git](https://git-scm.com/book/en/v2) book describes other conflict-resolution techniques; the whole book is well worth reading.
+The chapter on [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging) in the [Pro Git](https://git-scm.com/book/en/v2) book describes other conflict-resolution techniques.
 
 ## Use a Git GUI to Fix a Merge Conflict
 
 ### Visual Studio Code (VS Code)
 
-[Visual Studio Code (VS Code)](/docs/guides/vscode-marketplace-app/) is a full-featured programmer's text editor. VS Code provides a good set of conflict-resolution tools that can be invoked from the command line by configuring Git to use VS Code as a merge tool. Use the following Git commands to set this up:
+[Visual Studio Code (VS Code)](/docs/guides/vscode-marketplace-app/) is a full-featured code editor. VS Code provides a good set of conflict-resolution tools that can be invoked from the command line. You must configure Git to use VS Code as a merge tool. Use the following Git commands to set this up:
 
     git config --global merge.tool code
     git config --global mergetool.code.cmd 'code --wait $MERGED'
