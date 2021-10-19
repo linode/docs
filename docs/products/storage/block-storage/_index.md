@@ -40,27 +40,7 @@ These performance details are only applicable to newer NVMe-only Block Storage d
 
 ## Availability
 
-Block Storage is available across [all regions](https://www.linode.com/global-infrastructure/).
-
-| Data Center | Block Storage Solution | Upgraded to NVMe-only |
-| -- | -- | -- |
-| **Atlanta (Georgia, USA)** | **NVMe** | **Yes** |
-| Dallas (Texas, USA) | Hybrid NVMe and HDD | *No (coming soon)* |
-| Frankfurt (Germany) | Hybrid NVMe and HDD | *No (coming soon)* |
-| Fremont (California, USA) | Hybrid NVMe and HDD | *No (coming soon)* |
-| London (United Kingdom) | Hybrid NVMe and HDD | *No (coming soon)* |
-| Mumbai (India) | Hybrid NVMe and HDD | *No (coming soon)* |
-| **Newark (New Jersey, USA)** | **NVMe** | **Yes** |
-| Singapore | Hybrid NVMe and HDD | *No (coming soon)* |
-| Sydney (Australia) | Hybrid NVMe and HDD | *No (coming soon)* |
-| Tokyo (Japan) | Hybrid NVMe and HDD | *No (coming soon)* |
-| Toronto (Canada) | Hybrid NVMe and HDD | *No (coming soon)* |
-
-**NVMe Block Storage** has been deployed in the Atlanta (USA) and Newark (USA) data centers. This new hardware dramatically increases the performance of Block Storage and is offered at no additional cost. In all other data centers, Block Storage currently utilizes a combination of NVMe storage and HDDs, which is not as performant as the newer NVMe-only solution. Upgrades are planned for the remaining data centers.
-
-### Upgrading a Volume to NVMe-only Block Storage
-
-Existing Block Storage Volumes will soon be eligible for a free upgrade to the newer NVMe-only Block Storage solution. If you have a Block Storage Volume attached to a Linode, you will be notified with instructions to initiate the upgrade soon after NVMe Block Storage becomes available in your data center. This page will also be updated to reflect those instructions. Unattached Volumes will automatically be upgraded at a later date.
+Block Storage is available across [all regions](https://www.linode.com/global-infrastructure/). The newer NVMe-backed Block Storage has been deployed in the Atlanta (USA) and Newark (USA) data centers. See the [NVMe Block Storage Upgrade](/docs/products/storage/block-storage/guides/nvme-upgrade/) guide for additional details regarding this roll out, as well as information on upgrading existing Volumes.
 
 ## Plans and Pricing
 
