@@ -48,7 +48,7 @@ The first step towards using Object Storage is to create a pair of keys for the 
 -   The access key allows you to access any objects that you set to have private read permissions.
 
     {{< note >}}
-To use the access key when viewing a private object, you first need to generate a *signed* URL for the object. The signed URL is much like the standard URL for the object, but some extra URL parameters are appended to it, including the access key. Instructions for generating a signed URL can be found for [s3cmd](#create-a-signed-url-with-s3cmd) and the [Linode CLI](#create-a-signed-url-with-the-cli), outlined in this guide.
+To use the access key when viewing a private object, you first need to generate a *signed* URL for the object. The signed URL is much like the standard URL for the object, but some extra URL parameters are appended to it, including the access key. Instructions for generating a signed URL can be found for [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd) and the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli), outlined in this guide.
 {{< /note >}}
 
 -   The secret key is used together with the access key to authenticate the various Object Storage tools with the Linode account. You should not share the secret key.

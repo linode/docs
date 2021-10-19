@@ -38,7 +38,7 @@ In this guide you learn about:
 
 - This guide describes two ways to use ACLs to control access to buckets and bucket objects.
   - ACLs in the [Linode Cloud Manager](https://cloud.linode.com).
-  - ACLs using the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
+  - ACLs using the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [Using s3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) guide.
 
 - For the s3cmd method, you also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
 
