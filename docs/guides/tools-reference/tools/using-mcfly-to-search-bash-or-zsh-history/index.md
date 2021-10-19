@@ -246,21 +246,21 @@ Once a command is selected from the McFly interface, it is prioritized in future
 
     mcfly search apt
 
-[![Mcfly list change with previous search](mcfly-ai-previous_small.png)](mcfly-ai-previous.png)
+[![McFly list change with previous search](mcfly-ai-previous_small.png)](mcfly-ai-previous.png)
 
 McFly gives lower priority to commands that result in an error. For example, the command `sudo apt instrall nginx` results in an error due to the `instrall` typo. McFly records the exit status of the command and downgrades it in the results. When `mcfly search apt` is run again, the command is not near the top of the list, even though it occurred recently.
 
-[![Mcfly list change with error context](mcfly-ai-error_small.png)](mcfly-ai-error.png)
+[![McFly list change with error context](mcfly-ai-error_small.png)](mcfly-ai-error.png)
 
 McFly displays different results depending on the directory. In this example, `vi countries.txt` is always run from the `accounts` directory. If a user runs `mcfly search vi` from the same directory, `vi countries.txt` appears as one of the top choices.
 
     mcfly search vi
 
-[![Mcfly list change in subdirectory](mcfly-context-one_small.png)](mcfly-context-one.png)
+[![McFly list change in subdirectory](mcfly-context-one_small.png)](mcfly-context-one.png)
 
 When the user returns to their home directory and runs the same command, `vi countries.txt` command is no longer at the top of the list. Other commands rank higher even though they were not run recently. This is because the `vi countries.txt` command is not typically run from the home directory. These results continue to improve as you use McFly because it learns more and more about when and where different commands are run.
 
-[![Mcfly list changes in main directory](mcfly-context-two_small.png)](mcfly-context-two.png)
+[![McFly list changes in main directory](mcfly-context-two_small.png)](mcfly-context-two.png)
 
 ## Summarizing McFly
 
