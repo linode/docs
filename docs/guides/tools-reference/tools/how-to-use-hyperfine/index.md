@@ -1,5 +1,5 @@
 ---
-slug: install-and-use-hyperfine-on-linux
+slug: installing-and-using-hyperfine-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Nathaniel Stickman
-title: "Install and Use hyperfine on Linux"
+title: "Installing and Using hyperfine on Linux"
 h1_title: "How to Install and Use hyperfine on Linux"
 enable_h1: true
 contributor:
@@ -21,7 +21,7 @@ contributor:
 
 `hyperfine` allows you to benchmark command-line commands with features to thoroughly test various commands' performance side by side. `hyperfine` stands out from similar tools by giving you fine control over the benchmarking process and advanced features for more effective testing.
 
-In this guide you learn what `hyperfine` is and how it compares to other tools. Then, you learn how to install `hyperfine` and how to start using it to benchmark command-line commands on your Linux system.
+In this guide, you learn what `hyperfine` is and how it compares to other tools. Then, you learn how to install `hyperfine` and how to start using it to benchmark command-line commands on your Linux system.
 
 ## Before You Begin
 
@@ -47,7 +47,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 `hyperfine` is a benchmarking tool for the command line, allowing you to compare the performance of commands. With `hyperfine`, it becomes easy to see how different command-line tools, scripts, and command arguments affect performance.
 
-The default `time` command is used to compare commands' run times. For instance, you could compare `curl` and `wget` with `time` command as shown below:
+The default `time` command is used to compare commands' run times. For instance, you could compare `curl` and `wget` with the `time` command as shown below:
 
     time curl https://github.com/
 
@@ -130,7 +130,7 @@ hyperfine 1.11.0
 
 The sections below show you how to begin working with `hyperfine` to benchmark commands. They range from the most basic benchmark runs to useful advanced options for rigorously testing commands.
 
-The examples demonstrated in each of the below sections uses code for binary tree algorithms as provided by [The Computer Language Benchmarks Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html). These examples use two scripting languages that come with most Linux distributions by default: **Perl** and **Python 3**. To each script, a hash-bang line has been added to make it easier to execute the scripts.
+The examples demonstrated in each of the below sections use code for binary tree algorithms as provided by [The Computer Language Benchmarks Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html). These examples use two scripting languages that come with most Linux distributions by default: **Perl** and **Python 3**. To each script, a hash-bang line has been added to make it easier to execute the scripts.
 
 You can get our version of the [Perl script](https://benchmarksgame-team.pages.debian.net/benchmarksgame/program/binarytrees-perl-1.html) by following [this link](binary-tree.pl) and the [Python 3 script](https://benchmarksgame-team.pages.debian.net/benchmarksgame/program/binarytrees-python3-1.html) by following [this link](binary-tree.py).
 
@@ -141,7 +141,7 @@ Before following along, you need to give each script executable permission by us
 
 ### Benchmarking a Command
 
-`hyperfine` can execute basic benchmarks commands. The following simple command benchmarks our [Perl script](/docs/guides/how-to-install-and-use-hyperfine-on-linux/binary-tree.pl). Notice that `hyperfine` can easily include command-line arguments in its commands, like the argument '`10`' in the below example:
+`hyperfine` can execute basic benchmarks commands. The following simple command benchmarks our [Perl script](/docs/guides/installing-and-using-hyperfine-on-linux/binary-tree.pl). Notice that `hyperfine` can easily include command-line arguments in its commands, like the argument '`10`' in the below example:
 
     hyperfine './binary-tree.pl 10'
 
@@ -151,7 +151,7 @@ Benchmark #1: ./binary-tree.pl 10
   Range (min … max):    54.4 ms …  66.4 ms    54 runs
 {{< /output >}}
 
-`hyperfine` notifies you if it detects any statistical outliers during the benchmarking. One of the best ways to reduce such outliers is with the `--warmup` flag. This flag runs the benchmark after a given number of warm-up cycles. The command below runs the [Perl script](/docs/guides/how-to-install-and-use-hyperfine-on-linux/binary-tree.pl) again, but, this time, with '`20`' warm-up cycles first.
+`hyperfine` notify you if it detects any statistical outliers during the benchmarking. One of the best ways to reduce such outliers is with the `--warmup` flag. This flag runs the benchmark after a given number of warm-up cycles. The command below runs the [Perl script](/docs/guides/installing-and-using-hyperfine-on-linux/binary-tree.pl) again, but, this time, with '`20`' warm-up cycles first.
 
     hyperfine --warmup 20 './binary-tree.pl 10'
 
