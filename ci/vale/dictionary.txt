@@ -123,7 +123,9 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitshift
 bitwarden
+bitwise
 blkid
 blockchain
 blocklists
@@ -1170,6 +1172,7 @@ ntop
 ntopng
 ntp
 ntpd
+nullable
 nullval
 num
 numpy
@@ -1759,6 +1762,7 @@ umount
 un
 unaliased
 unarchive
+unary
 unban
 unbans
 unbilled
