@@ -17,7 +17,7 @@ contributor:
 
 ## What Does Git Rebase Do?
 
-Rebasing takes a series of commits and reapplies them on top off another base commit. This method is a form of *rewriting* a branch's commit history. Rebasing does not change the content of your commits, but it does change the commit hash that is used to track your changes. This is an important detail to remember, especially when working with collaboration branches or branches that have already been accessed by other team members.
+Rebasing takes a series of commits and reapplies them on top of another base commit. This method is a form of *rewriting* a branch's commit history. Rebasing does not change the content of your commits, but it does change the commit hash that is used to track your changes. This is an important detail to remember, especially when working with collaboration branches or branches that have already been accessed by other team members.
 
 ### Rebase vs. Merge
 
