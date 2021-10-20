@@ -45,7 +45,7 @@ The [is keyword](https://kotlinlang.org/docs/keyword-reference.html) helps you d
     var MyFloat: Float = 3
     var MyFloat: Float = 3.0
 
-The first case tries to assign what Kotlin views as an `Int` to a `Float`. The second case tries to assign what Kolin views as a `Double` to a `Float`. To make this declaration work, you must type:
+The first case tries to assign what Kotlin views as an `Int` to a `Float`. The second case tries to assign what Kotlin views as a `Double` to a `Float`. To make this declaration work, you must type:
 
     var MyFloat: Float = 3.0f
 
@@ -389,7 +389,7 @@ In order to use `Howdy()` now, provide a string containing a name, such as `Howd
 
 #### Default Parameters
 
-In some cases, you may need to ensure that a parameter has a value even if the user doesn’t supply one. To accomplish this task, use default parameters that have default values assigned to them as shown below:
+In some cases, you may need to ensure that a parameter has a value even if the user doesn't supply one. To accomplish this task, use default parameters that have default values assigned to them as shown below:
 
     fun Howdy(name: String, timeOfDay: String = "Morning") {
       println("Good $timeOfDay $name!")
@@ -439,7 +439,7 @@ Of course, this class wouldn't do much, but you could still create an object fro
 
 ### Provide a Default Constructor
 
-A class always has a primary constructor. If you don’t provide one, then Kotlin provides one that doesn’t accept any parameters. However, you can also specify a constructor in the following way:
+A class always has a primary constructor. If you don’t provide one, then Kotlin provides one that doesn't accept any parameters. However, you can also specify a constructor in the following way:
 
     class Rectangle(height: Int, width: Int) {
       var Height: Int = height
