@@ -237,7 +237,7 @@ In this section you create a Docker container for your static site, which you th
 1.  Add the following contents to the `Dockerfile`. Each command has accompanying comments that describe their function:
 
     {{< file "lke-example/Dockerfile" >}}
-# Install the latest Debain operating system.
+# Install the latest Debian operating system.
 FROM alpine:3.12.0 as HUGO
 
 # Install Hugo.
