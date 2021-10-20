@@ -19,7 +19,7 @@ A Block Storage Volume augments the raw storage capacity of a cloud instance, wh
 
 ## Resilient and Fault Tolerant
 
-Block Storage Volumes are configured with 3x data replication. This built-in redundancy ensures that your data is highly-available and protected from loss. Since Volumes are managed independently of Compute Instances, your data persists even if you delete your the attached instance.
+Block Storage Volumes are configured with 3x data replication. This built-in redundancy ensures that your data is highly-available and protected from loss. Since Volumes are managed independently of Compute Instances, your data persists even if you delete your attached instance.
 
 ## Ultra-Fast Performance
 

@@ -8,7 +8,7 @@ description: "Information about the new NVMe Block Storage product and how to up
 
 ## What is NVMe-backed Block Storage?
 
-We’re rolling out an ultra-fast, better-performing, and more reliable NVMe-backed Block Storage service across all 11 of our global data centers. NVMe is the hardware interface for next-generation SSDs (solid-state devices). The technology is a significant improvement over traditional spinning hard disk drives, with a 10-20x increase in throughput and up to 2000x improvement in IOPS. With NVMe-backed Block Storage, you can experience a significant performance upgrade for database storage and other tasks where high storage speeds and consistency are critical.
+We’re rolling out an ultra-fast, better-performing, and more reliable NVMe-backed Block Storage service across all 11 of our global data centers. NVMe (nonvolatile memory express) is the hardware interface for next-generation SSDs (solid-state drives). The technology is a significant improvement over traditional spinning hard disk drives, with a 10-20x increase in throughput and up to 2000x improvement in IOPS. With NVMe-backed Block Storage, you can experience a significant performance upgrade for database storage and other tasks where high storage speeds and consistency are critical.
 
 To learn more about Block Storage, visit the [Block Storage Overview](/docs/products/storage/block-storage/) page.
 
@@ -51,4 +51,4 @@ We were able to provide a tremendous performance boost with NVMe Block Storage a
 
 ### When will my Volume receive an upgrade to NVMe?
 
-Soon after NVMe-backed Block Storage becomes available in your Volume's data center, you will be notified how to upgrade your existing Volumes. We do not yet have a definitely timeline.
+Soon after NVMe-backed Block Storage becomes available in your Volume's data center, you will be notified how to upgrade your existing Volumes. We do not yet have a definitive timeline.
