@@ -35,7 +35,7 @@ NVMe storage offers dramatically increased performance over standard SATA SSDs, 
 Performance may vary based on the workload and Compute Instance type. Plans with dedicated CPU resources (such as Dedicated CPU or High Memory Compute Instances) will not be impacted by resource contention, though a Shared Compute Instance may be impacted.
 
 {{< note >}}
-These performance details are only applicable to newer NVMe-only Block Storage deployments. Volumes that are still using our hybrid NVMe and HDD solution are less performant.
+These performance details are only applicable to newer NVMe-backed Block Storage deployments. Volumes that are still using our older Block Storage solution are less performant.
 {{</ note >}}
 
 ## Availability
