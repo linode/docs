@@ -45,7 +45,7 @@ Just make sure you use Linode's IP address. You can add more than two nameserver
 
 ## Using Linode's DNS Manager as a Secondary
 
-When using BIND install on cPanel as primary nameserver and the Linode DNS Servers as a secondary, you want to set all of the nameservers at your registrar. You should have a list like this:
+When using BIND installed on cPanel as primary nameserver and the Linode DNS Servers as a secondary, set all of the nameservers at your registrar. You should have a list like this:
 
 -   `ns1.example.com`
 -   `ns2.example.com`
@@ -108,7 +108,7 @@ Complete the following steps while you are logged in a `root` user in the WHM in
 
 You then want to begin adding your domains to the Linode DNS Manager as secondary zones.
 
-Complet the following steps Using the Linode Cloud Manager:
+Complete the following steps Using the Linode Cloud Manager:
 
 {{< note >}}
 Creating a domain also creates its corresponding domain zone.
