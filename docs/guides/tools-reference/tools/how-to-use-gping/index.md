@@ -4,11 +4,12 @@ author:
   name: Nathaniel Stickman
 description: "Learn how to use gping, a Linux tool with the functionality of ping and a modern graphical command-line display."
 keywords: ['gping linux','ping linux','ping linux alternatives']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-15
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using gping on Linux"
+title: "Install and Use gping on Linux"
 h1_title: "How to Install and Use gping on Linux"
 contributor:
   name: Nathaniel Stickman
@@ -39,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What is gping?
 
-[gping](https://github.com/orf/gping) is a Linux tool that provides the same functionality as ping with information displayed on a graph. If you need to measure the response time of a host over time, gpings is a tool for the task. With gping, you can ping multiple hosts simultaneously, making it easy to compare response times. You can customize how your gping graph displays information and it is able to graph the execution time of Linux commands.
+[gping](https://github.com/orf/gping) is a Linux tool that provides the same functionality as ping with information displayed on a graph. If you need to measure the response time of a host over time, gping is a tool for the task. With gping, you can ping multiple hosts simultaneously, making it easy to compare response times. You can customize how your gping graph displays information and it is able to graph the execution time of Linux commands.
 
 ## How to Install gping
 
@@ -64,7 +65,7 @@ On Debian and Ubuntu distributions, use the following steps to install gping.
     For example, if you are on a Debian 10 system, the above command returns the following output:
 
     {{< output >}}
-Codename:	buster
+Codename: buster
     {{< /output >}}
 
     On Ubuntu, you can find the Debian codename with the command below:
