@@ -18,21 +18,22 @@ contributor:
   link: https://twitter.com/meheller
 ---
 
-TypeScript classes support the class keyword introduced in ES2015 (ES6). To explore classes we’ll start with an example of a `Rectangle` class.
+TypeScript support for classes was introduced in [ECMAScript 6 (ES6)](https://github.com/lukehoban/es6features#readme). Classes allow programmers to write their code following object-oriented programming (OOP) principles. Class-driven OOP reduces code repetition due to class inheritance and the usage of objects.
 
 ## Class Declarations
 
-Following is a basic class which is not very useful unless we add some class members.
+To declare a class in TypeScript you must use the `class` keyword, provide a class name, and wrap the body of your class in curly braces. The body of the class includes any fields, class constructors, and functions. The example below displays the skeleton of a `Rectangle` class declaration in TypeScript:
+
 
 {{< file "example.ts" typescript>}}
-class Rectangle {}
+class Rectangle {
+    //class fields, constructor, and functions
+}
 {{< /file >}}
-
-You can add the following class members to the `Rectangle` class.
 
 ### Fields
 
-Fields (also called properties) are class members. They are public and writeable by default. The type declaration is optional, but if you omit it, the default class is `any`.
+Fields (also called properties) are class members. They are public and writeable by default. The type declaration is optional, but if you omit it, the default class is `any`. The example below contains four fields, `x`, `y`, `width`, and `height`. Each field's is of type `number`.
 
 {{< file "example.ts" typescript>}}
 class Rectangle {
@@ -45,7 +46,8 @@ class Rectangle {
 
 ### Initializers
 
-Fields can also have initializers that run automatically whenever the class is instantiated. You can initialize fields to values. The types are inferred from the initial values, so you may omit them.
+Class fields can be *initialized* to a specific value in a class declaration. Whenever the class is instantiated, the field is initialized to the specified value.
+The field's type is inferred from the value of the initializer, so you can omit the type declaration. The example below initializes each field to `0`.
 
 {{< file "example.ts" typescript>}}
 class Rectangle {
@@ -58,17 +60,21 @@ class Rectangle {
 
 ## Readonly
 
-If you prefix a field with the `readonly` modifier, it makes a field read-only. The read-only members can only be assigned in an initializer (an assignment within the declaration, as in the above example), or the class constructor (as in the next section).
+If you prefix a field with the `readonly` modifier, you cannot assign a value to the field outside of the class constructor. The read-only members can only be assigned in an initializer or in a class constructor. The example below displays the `Rectangle` class with a readonly field named `pi`.
 
-    readonly pi: number = 3.14159;
+{{< file "example.ts" typescript>}}
+class Rectangle {
+  x = 0;
+  y = 0;
+  width = 0;
+  height = 0;
+  readonly pi: number = 3.14159;
+}
+{{< /file >}}
 
 ## Constructors
 
-A constructor is a function (method) that runs when the class is instantiated. Constructors don’t have type parameters and always return the class instance type.
-
-{{< note >}}
-The below `Rectangle` class has a constructor with default values for the type parameters.
-{{< /note >}}
+A constructor is a type of function that runs when a class is instantiated and initializes the new instance's variables. Constructors cannot have type parameters and always return the class instance type. The example `Rectangle` class contains parameters with default values
 
 {{< file "example.ts" typescript>}}
 class Rectangle {
@@ -85,8 +91,8 @@ class Rectangle {
    }
 }
 
-const rect1 = new Rectangle(); //uses defaults, so 0, 0, 100, 100
-const rect2 = new Rectangle(100, 200, 300, 400);
+const rect1 = new Rectangle(); //uses default constructor parameter values
+const rect2 = new Rectangle(100, 200, 300, 400); //assigns new parameter values
 {{</ file >}}
 
 You can also create multiple constructors for a class with the same name and different function signatures (parameter type and return types). This concept is called [Overloaded Functions](https://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html#overloaded-functions).
