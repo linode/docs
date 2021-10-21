@@ -1,23 +1,21 @@
 ---
-slug: how-to-use-gping
+slug: how-to-use-gping-on-linux
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to use gping, a tool with the functionality of ping and a modern graphical command-line display."
-og_description: "Learn how to use gping, a tool with the functionality of ping and a modern graphical command-line display."
+  name: Nathaniel Stickman
+description: "Learn how to use gping, a Linux tool with the functionality of ping and a modern graphical command-line display."
 keywords: ['gping linux','ping linux','ping linux alternatives']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-15
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use gping on Linux"
+title: "Installing and Using gping on Linux"
 h1_title: "How to Install and Use gping on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 ---
 
-`gping` takes the functionality of `ping` and puts it on a graph, letting you track the response time for hosts, and even compare them side by side. This guide shows you how to install `gping` and get started using it on your Linux system.
+The gping tool takes the functionality of the ping tool and displays its data on a graph. With gping you can track the response time for hosts, and compare the data side by side. This guide shows you how to install gping and get started using it on your Linux system.
 
 ## Before You Begin
 
@@ -41,17 +39,15 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What is gping?
 
-[`gping`](https://github.com/orf/gping) is a tool that gives the functionality of `ping` on a graph. If ever you have wanted to measure the response time of a host over time, `gping` is a tool for the task. `gping` even allows you to ping multiple hosts simultaneously, making it easy to compare response times.
-
-Beyond that, `gping` gives you control over how the graph displays, and even comes with a feature for graphing the execution time of command-line commands.
+[gping](https://github.com/orf/gping) is a Linux tool that provides the same functionality as ping with information displayed on a graph. If you need to measure the response time of a host over time, gpings is a tool for the task. With gping, you can ping multiple hosts simultaneously, making it easy to compare response times. You can customize how your gping graph displays information and it is able to graph the execution time of Linux commands.
 
 ## How to Install gping
 
-This guide breaks down the installation into two paths for different Linux distributions. Check out the section below that names your distribution to learn how to install `gping` on your system.
+This guide provides installation steps for Debian, Ubuntu, AlamaLinux, CentOS, and Fedora. Find the section below that corresponds to your system's distribution to learn how to install gping.
 
 ### Debian and Ubuntu
 
-On Debian and Ubuntu distributions, use the following steps to install `gping`.
+On Debian and Ubuntu distributions, use the following steps to install gping.
 
 1. Install the `gnupg` package, which is used for adding a repository key to APT:
 
@@ -61,21 +57,21 @@ On Debian and Ubuntu distributions, use the following steps to install `gping`.
 
         echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 
-    On Debian, you can find your release's codename with:
+    On Debian, you can find your release's codename with the following command:
 
         lsb_release -a | grep Codename
 
-    For example, the output should look like the following if you are on Debian 10:
+    For example, if you are on a Debian 10 system, the above command returns the following output:
 
     {{< output >}}
 Codename:	buster
     {{< /output >}}
 
-    On Ubuntu, you can find the Debian codename with:
+    On Ubuntu, you can find the Debian codename with the command below:
 
         cat /etc/debian_version
 
-    As an example, your output should resemble this on Ubuntu 20.04, indicating a codename of `bullseye`:
+    If you are on an Ubuntu 20.04 system, the above command returns the following output:
 
     {{< output >}}
 bullseye/sid
@@ -92,69 +88,70 @@ bullseye/sid
 
 ### AlmaLinux, CentOS, and Fedora
 
-On AlmaLinux, CentOS (8 and later), and Fedora, use the following steps to install `gping`.
+On AlmaLinux, CentOS (8 and later), and Fedora, use the following steps to install gping.
 
-1. Use the COPR plugin to enable the repository for `gping` on DNF:
+1. Use the COPR plugin to enable the repository for `gping`:
 
         sudo dnf copr enable atim/gping
 
-1. Install `gping`:
+1. Install gping:
 
         sudo dnf install gping
 
 ## How to Use gping
 
-Getting started with `gping` is as simple as providing the command with a hostname or IP address. Here is an example that pings `github.com`:
+To use the gping, issue the `gping` command followed by a hostname or IP address. The example below pings `github.com`:
 
     gping github.com
 
 [![gping graph for github.com](gping-host_small.png)](gping-host.png)
 
-You can also use `gping` to graph multiple hosts' ping times simultaneously. This next example pings `github.com` and `gitlab.com`, each graphed in a distinct color for readability:
+You can also use gping to graph multiple hosts' ping times simultaneously. The next example pings `github.com` and `gitlab.com`, each graphed in a distinct color for readability:
 
     gping github.com gitlab.com
 
 [![gping graphs for github.com and gitlab.com](gping-multiple-hosts_small.png)](gping-multiple-hosts.png)
 
-Should you need a specific kind of IP address resolution, `gping` supports `-4` and `-6` options for resolving addresses to IPv4 and IPv6, respectively.
+Should you need a specific kind of IP address resolution, gping supports `-4` and `-6` options for resolving addresses to IPv4 and IPv6, respectively.
 
-`gping` comes with a few other options you can use to fine-tune the graphing — and even an option to graph commands' execution times. Take a look at the following sections to learn about these options and see examples of them in action.
+gping provides options you can use to fine-tune its graph and also has an option to graph execution time of system commands. The next sections dive deeper into these command options and provide examples that show you how to use them.
 
 ### Adjusting Display Options
 
-`gping` gives you control over two aspects of the graph.
+gping gives you control over the following two aspects of its graph:
 
 - The buffer time, using the `--buffer` option followed by a number of seconds. This determines how much time is shown on the graph screen. You can see in the screenshots above, from the times given below the graphs, that the default buffer time is **30** seconds.
+
 - The watch interval, using the `--watch-interval` option followed by a number of seconds, including fractions of a second. This controls how frequently `gping` measures ping time. The default is **0.5** seconds.
 
-Here, you can see an example employing both of these options to alter the display. The command below has `gping` display 60 seconds at a time and has it graph the ping time of `github.com` once every second:
+The example employs both of these options to alter the display. The command below has `gping` display 60 seconds at a time and has it graph the ping time of `github.com` once every second:
 
     gping github.com --buffer 60 --watch-interval 1
 
 [![gping with display timing adjustments](gping-timing_small.png)](gping-timing.png)
 
-Should you need to simplify how `gping` renders the graph line, you can use the option `--simple-graphics`. With this option, `gping` uses dot characters instead of braille to render its graph lines. This can be useful on terminals that do not support the braille rendering:
+If you need to simplify how gping renders the graph line, you can use the option `--simple-graphics`. With this option, gping uses dot characters instead of braille to render its graph lines. This can be useful on terminals that do not support braille rendering:
 
 [![gping with a simplified graph line](gping-simplified_small.png)](gping-simplified.png)
 
 ### Graphing Command Execution Time
 
-As a bonus feature, `gping` allows you to graph execution time for command-line commands. Using the `--cmd` option, `gping` lets you provide commands much as you would normally provide hostnames or IP addresses. For example:
+As a bonus feature, gping allows you to graph execution time for command-line commands. Using the `--cmd` option, gping lets you provide commands much as you would normally provide hostnames or IP addresses. For example:
 
     gping --cmd 'ls /'
 
 [![gping graphing execution time for the 'ls /' command](gping-command_small.png)](gping-command.png)
 
-As with hosts, you can give `gping` multiple commands when using this option to see the commands' execution times graphed side by side:
+As with hosts, you can pass gping multiple commands when using this option to see the commands' execution times graphed side by side:
 
     gping --cmd 'ls' 'ls /'
 
 [![gping graphing execution times for the 'ls' 'ls /' commands](gping-multiple-commands_small.png)](gping-multiple-commands.png)
 
-Be aware that, with this feature being more of a bonus in `gping`, it may not perform reliably on all kinds of commands. This seems especially to be the case as commands become more complicated.
+Since graphing command execution times is a bonus gping feature, it may not perform reliably for all kinds of commands. This is especially the case for commands that are more complicated.
 
-If you are looking to measure commands' performances in earnest, we recommend that you take a look at `hyperfine`. It is a tool for benchmarking command-line commands, with an emphasis on clearly rendering side-by-side comparisons. Check out our guide on getting started with `hyperfine` if you are interested.
+If you are looking to measure a command's performances, consider using the hyperfine tool. Hyperfine is a tool for benchmarking command-line commands, with an emphasis on clearly rendering side-by-side comparisons. If you are interested, check out our guide on getting started with hyperfine.
 
 ## Conclusion
 
-With that, you are ready to start using `gping` to measure response times. For everyday use, `gping` may not replace `ping` for simplicity, but it fills a highly useful niche. If ever you find yourself wanting to measure hosts response times over some duration, it is useful to have `gping` on the ready.
+You are now ready to start using gping to measure response times. Due to the ping tool's simplicity, gping might not fully replace it, however, gping fills a highly useful niche. If you need to measure a host's response times over some duration, it is useful to have gping installed and ready on your system.
