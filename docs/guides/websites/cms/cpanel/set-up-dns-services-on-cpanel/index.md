@@ -43,7 +43,7 @@ Click the domain you used when you set up your nameservers at your registrar and
 
 Just make sure you use Linode's IP address. You can add more than two nameservers if you like.
 
-## Using Linode's DNS Manager as a Secondary
+## Using Linode's DNS Manager as a Secondary Server
 
 When using BIND installed on cPanel as primary nameserver and the Linode DNS Servers as a secondary, set all of the nameservers at your registrar. You should have a list like this:
 
@@ -92,7 +92,7 @@ allow-transfer {
 
 After your updates are complete, save and close the `named.conf` file.
 
-Check that the configuration file is usable by issuing the command :
+Check that the configuration file is usable by issuing the command:
 
     named-checkconf /etc/named.conf
 
@@ -108,7 +108,7 @@ Complete the following steps while you are logged in a `root` user in the WHM in
 
 You then want to begin adding your domains to the Linode DNS Manager as secondary zones.
 
-Complete the following steps Using the Linode Cloud Manager:
+Complete the following steps using Linode Cloud Manager:
 
 {{< note >}}
 Creating a domain also creates its corresponding domain zone.
