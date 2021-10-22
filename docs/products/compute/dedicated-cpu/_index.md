@@ -60,7 +60,7 @@ Pricing starts at $30 for a Dedicated CPU Compute Instance with 2 vCPU cores, 4G
 
 ## Additional Technical Specifications
 
-In addition to the resources allocated to each available plan (outlined above), Dedicate CPU Compute Instances have the follow specifications:
+In addition to the resources allocated to each available plan (outlined above), Dedicate CPU Compute Instances have the following specifications:
 
 - Dedicated vCPU cores
 - 100% SSD (Solid State Disk) storage
