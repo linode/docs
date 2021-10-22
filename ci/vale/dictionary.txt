@@ -92,6 +92,7 @@ aws
 awstats
 axibase
 azc
+azlux
 backdoors
 backend
 backends
@@ -593,6 +594,7 @@ goto
 gpasswd
 gpc
 gpg
+gping
 gradle
 grafana
 graphql
