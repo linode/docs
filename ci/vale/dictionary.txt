@@ -719,6 +719,7 @@ imperva
 impor
 incentivized
 inclusivity
+Indri
 inet
 inet6
 infographic
@@ -1915,9 +1916,9 @@ winscp
 windowlist
 wireguard
 wkhtmltopdf
+wkhtmltox
 wll
 wlp6s0
-wmem
 wordcloud
 wordcount
 wordfence

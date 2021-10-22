@@ -3,17 +3,18 @@ slug: use-buildbot-for-software-testing-on-ubuntu
 author:
   name: Tyler Langlois
   email: ty@tjll.net
-description: 'This tutorial will explain how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds.'
-og_description: 'Deploy self-hosted continuous integration using Buildbot.'
+description: "This tutorial will explain how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
+og_description: "Deploy self-hosted continuous integration using Buildbot."
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
 tags: ["automation","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-02-01
+modified: 2021-10-18
 modified_by:
   name: Linode
 published: 2018-09-06
-title: Use Buildbot for Software Testing on Ubuntu 18.04
-h1_title: 'Using Buildbot to Test Software on Ubuntu 18.04'
+title: "Use Buildbot for Software Testing on Ubuntu 18.04"
+h1_title: "Using Buildbot to Test Software on Ubuntu 18.04"
+enable_h1: true
 external_resources:
 - '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'
@@ -260,9 +261,9 @@ server {
 
 In order for Buildbot to execute test builds, the Buildbot master will require a worker. The following steps will setup a worker on the same host as the master.
 
-1.  Install the `buildbot-slave` Ubuntu package:
+1.  Install the `buildbot-worker` using pip:
 
-        sudo apt-get install -y buildbot-slave
+        pip install buildbot-worker
 
 1.  Navigate to the directory which will store the Buildbot worker configurations:
 

@@ -14,9 +14,9 @@ modified_by:
 image: MonitoringSaltMinionswithBeacons.png
 title: "Monitoring Salt Minions with Beacons"
 external_resources:
-- '[Salt Beacons Documentation](https://docs.saltstack.com/en/latest/topics/beacons/)'
-- '[Salt Beacon Modules](https://docs.saltstack.com/en/latest/ref/beacons/all/index.html)'
-- '[Salt Reactors Documentation](https://docs.saltstack.com/en/latest/topics/reactor/)'
+- '[Salt Beacons Documentation](https://docs.saltproject.io/en/latest/topics/beacons/)'
+- '[Salt Beacon Modules](https://docs.saltproject.io/en/latest/ref/beacons/all/index.html)'
+- '[Salt Reactors Documentation](https://docs.saltproject.io/en/latest/topics/reactor/)'
 aliases: ['/applications/configuration-management/monitoring-salt-minions-with-beacons/','/applications/configuration-management/salt/monitoring-salt-minions-with-beacons/']
 ---
 

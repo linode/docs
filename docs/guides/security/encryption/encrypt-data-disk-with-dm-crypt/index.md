@@ -43,7 +43,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     ![Data Disk](data_disk.png)
 
-2.  Open your [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
+2.  Open your [configuration profile](/docs/guides/linode-configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
 
     ![Configuration Profile](configuration_profile.png)
 

@@ -21,10 +21,10 @@ These steps cover how to restore a backup to a new Linode that does not already 
 
 To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Migrate Linode](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/) option from the Cloud Manager to migrate the new Linode to a new datacenter.
 
-Restoring a backup will create a new [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and a new set of [disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#disks) on your Linode. The restore process does not restore single files or directories automatically. Restoring particular files can be done by completing a normal restore, copying the files off of the new disks, and then removing the disks afterward.
+Restoring a backup will create a new [configuration profile](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and a new set of [disks](/docs/guides/disks-and-storage/#creating-a-disk) on your Linode. The restore process does not restore single files or directories automatically. Restoring particular files can be done by completing a normal restore, copying the files off of the new disks, and then removing the disks afterward.
 
 {{< note >}}
-The size of the disk(s) created by the restore process will be equal to the amount of space allocated to the disk when the backup was created. In some cases, this means you may want to to reallocate disk space once the restore is complete. For more information regarding this process, see our [Disk Images and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) guide.
+The size of the disk(s) created by the restore process will be equal to the amount of space allocated to the disk when the backup was created. In some cases, this means you may want to to reallocate disk space once the restore is complete. For more information regarding this process, see our [Disk Images and Configuration Profiles](/docs/guides/disks-and-storage/#resizing-a-disk) guide.
 {{< /note >}}
 
 1.  From the **Linodes** page, select the Linode whose backups you intend to restore, and then click on the **Backups** tab. Select the **more options ellipsis** next to the backup you would like to restore, and click **Deploy New Linode**.
