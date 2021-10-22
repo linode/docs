@@ -115,6 +115,7 @@ bashdoor
 bashrc
 bc
 bdd
+benchmarked
 berkshelf
 bernd
 berners
