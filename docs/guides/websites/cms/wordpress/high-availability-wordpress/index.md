@@ -11,7 +11,8 @@ modified: 2015-01-21
 modified_by:
   name: James Stewart
 published: 2015-01-09
-title: High Availability WordPress Hosting
+title: "High Availability WordPress Hosting for Debian 7 and Ubuntu 14.04"
+deprecated: true
 aliases: ['/websites/cms/high-availability-wordpress/','/websites/cms/wordpress/high-availability-wordpress/']
 ---
 
