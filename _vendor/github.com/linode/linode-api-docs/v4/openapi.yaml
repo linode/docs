@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.106.1
+  version: 4.107.0
 
   title: Linode API
   description: |
@@ -4156,12 +4156,15 @@ paths:
           * The Disks and Config will match that of the Linode that was backed up.
           * The `root_pass` will match that of the Linode that was backed up.
 
+        * Attached to a private VLAN.
+          * Review the `interfaces` property of the [Request Body Schema](/docs/api/linode-instances/#linode-create__request-body-schema) for details.
+          * For more information, see our guide on [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/).
+
         * Create an empty Linode.
           * The Linode will remain `offline` and must be manually started.
             * See Linode Boot ([POST /linode/instances/{linodeId}/boot](/docs/api/linode-instances/#linode-boot)).
           * Disks and Configs must be created manually.
           * This is only recommended for advanced use cases.
-
 
         **Important**: You must be an unrestricted User in order to add or modify
         tags on Linodes.
@@ -7496,7 +7499,6 @@ paths:
                         "max": 12,
                         "min": 3
                       }
-                  }
                     },
                     {
                       "type": "g6-standard-8",
@@ -10117,7 +10119,7 @@ paths:
       description: >
         Sets RDNS on an IP Address. Forward DNS must already be set up for
         reverse DNS to be applied. If you set the RDNS to `null` for public
-        IPv4 addresses, it will be reset to the default _members.linode.com_
+        IPv4 addresses, it will be reset to the default _ip.linodeusercontent.com_
         RDNS value.
       operationId: updateIP
       x-linode-cli-action: ip-update
@@ -11022,8 +11024,9 @@ paths:
       - Networking
       summary: Firewall Rules Update
       description: |
-        Updates the inbound and outbound Rules for a Firewall. Using this endpoint will
-        replace all of a Firewall's ruleset with the Rules specified in your request.
+        Updates the inbound and outbound Rules for a Firewall.
+
+        **Note:** This command replaces all of a Firewall's `inbound` and/or `outbound` rulesets with the values specified in your request.
       operationId: updateFirewallRules
       x-linode-cli-action: rules-update
       security:
@@ -11035,7 +11038,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Firewall/properties/rules'
+              allOf:
+              - $ref: '#/components/schemas/Firewall/properties/rules'
+              properties:
+                inbound:
+                  required:
+                  - action
+                  - addresses
+                  - protocol
+                outbound:
+                  required:
+                  - action
+                  - addresses
+                  - protocol
       responses:
         '200':
           description: Firewall Rules updated successfully.
@@ -11069,7 +11084,7 @@ paths:
                     "description": "An example inbound rule description."
                     }
                   ],
-                  "outbound_policy": "DROP"
+                  "outbound_policy": "DROP",
                   "outbound": [
                     {
                       "protocol": "TCP",
@@ -11092,14 +11107,13 @@ paths:
       - lang: CLI
         source: >
           linode-cli firewalls rules-update 123 \
-            --inbound '[{"protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
-            --outbound '[{"protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
+            --inbound '[{"action":"ACCEPT", "protocol": "TCP", "ports": "22, 80, 8080, 443", "addresses": {"ipv4": ["192.0.2.1/32", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]' \
+            --outbound '[{"action":"DROP","protocol": "TCP", "ports": "49152-65535", "addresses": {"ipv4": ["192.0.2.1/32", "192.0.2.0/24"], "ipv6": ["2001:DB8::/32"]}}]'
   /networking/vlans:
     x-linode-cli-command: vlans
     get:
       x-linode-grant: read_only
       servers:
-      - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       parameters:
       - $ref: '#/components/parameters/pageOffset'
@@ -18683,7 +18697,7 @@ components:
             * `public`
               * Only one `public` interface per Linode can be defined.
               * The Linode's default public IPv4 address is assigned to the `public` interface.
-              * If no `public` interface is defined, the Linode is not reachable via the public internet; access can only be established via LISH or other Linodes connected to the same VLAN.
+              * A Linode must have a public interface in the first/eth0 position to be reachable via the public internet upon boot without additional system configuration. If no `public` interface is configured, the Linode is not directly reachable via the public internet. In this case, access can only be established via LISH or other Linodes connected to the same VLAN.
 
             * `vlan`
               * Configuring a `vlan` purpose interface attaches this Linode to the VLAN with the specified `label`.
