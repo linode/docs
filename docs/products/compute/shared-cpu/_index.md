@@ -7,51 +7,41 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Affordable Shared instance plans are ideal for general workloads and include generous amounts of free bundled transfer."
+    product_description: "Balanced and affordable virtual machines equipped with shared CPU resources. Ideal for general workloads."
+aliases: ['/products/compute/shared-linodes/']
 ---
 
-Shared CPU Compute Instances are virtual machines that offer a significant price-to-performance ratio for a wide range of applications. While most of our other Compute Instance types are equipped with dedicated CPUs, Shared Instances do not. This means that CPU resources are shared with other Compute Instances and a small amount of resource contention is possible.
+Shared CPU Compute Instances are our most affordable virtual machines that offer a significant price-to-performance ratio. They provide a well balanced set of resources that are ideal for a wide range of applications. While most of our other Compute Instance types are equipped with dedicated CPUs, Shared Instances are not. This means that CPU resources are shared with other Compute Instances and a small amount of resource contention is possible.
 
 **Shared plans are ideal for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention.**
 
-## Features
-
-### Content Delivery Network (CDN)
-
-Deliver content to your users faster by placing Shared Instances at regional data centers around the globe.
-
-### Container Clusters
-
-Deploy container clusters to Shared Instances using popular container orchestration tools.
-
-### Price and Performance
-
-No other plan offers more choice. With 10 different configurations, you’re sure to find the right performance at the right price.
-
 ## Recommended Workloads
 
-High Memory Compute Instances are suitable for workloads that value much larger amounts of memory than other plans of a similar price. This includes:
+Shared CPU Compute Instances are suitable for general workloads that value cost over maximum performance:
 
-- Any production application that requires large amounts of memory
-- In-memory database caching systems, such as [Redis](https://redis.io/) and [Memcached](https://memcached.org/)
-- In-memory databases, such as possible with [NoSQL](/docs/guides/what-is-nosql/) and [other solutions](https://en.wikipedia.org/wiki/List_of_in-memory_databases)
-- [Big data processing](/docs/applications/big-data/) (and data analysis)
+- Production applications with low to medium CPU requirements and are not affected by resource contention
+- Applications that require a balanced set of resources
+- Medium to low traffic websites, such as for marketing content and blogs
+- Forums
+- Development and staging servers
+- Low traffic databases
+- Worker nodes within a container orchestration cluster
 
 ## Availability
 
-High Memory instances are available across [all regions](https://www.linode.com/global-infrastructure/).
+Shared CPU instances are available across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Plans and Pricing
 
 | Resource | Available Plans |
 | -- | -- |
-| vCPU cores | 2-16 cores |
-| Memory | 24 GB - 300 GB |
-| Storage | 20 GB - 340 GB |
-| Outbound Network Transfer | 5 TB - 9 TB |
-| Outbound Network Bandwidth | 5 Gbps - 9 Gbps |
+| vCPU cores | 1-32 cores |
+| Memory | 1 GB - 192 GB |
+| Storage | 25 GB - 3840 GB |
+| Outbound Network Transfer | 1 TB - 20 TB |
+| Outbound Network Bandwidth | 1 Gbps - 12 Gbps |
 
-Pricing starts at $60 for a High Memory Compute Instance with 2 vCPU cores, 24GB memory, and 20GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. See the [Comparison of Compute Instances](#comparison-of-compute-instances) section below to learn more about other Instance types.
+Pricing starts at $5 for a Shared CPU Compute Instance with 1 vCPU core, 1 GB of memory, and 25 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. See the [Comparison of Compute Instances](#comparison-of-compute-instances) section below to learn more about other Instance types.
 
 ## Additional Technical Specifications
 
@@ -65,7 +55,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Deploy using the many available [Linux Distributions](https://www.linode.com/distributions/), [Marketplace Apps](https://www.linode.com/marketplace/), or Community [StackScripts](https://www.linode.com/products/stackscripts/)
 - Direct console access through [Lish](/docs/guides/using-the-linode-shell-lish/)
 - Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
-- [Multi-queue NIC](/docs/guides/multiqueue-nic/) support
+- [Multi-queue NIC](/docs/guides/multiqueue-nic/) support on plans with 2 or more vCPU cores.
 
 ## Services Included at No Extra Cost
 
