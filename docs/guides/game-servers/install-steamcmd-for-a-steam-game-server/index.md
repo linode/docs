@@ -344,7 +344,7 @@ You may encounter an error when installing or using SteamCMD. Some of these erro
         LinuxGSM Total:  68M
         Serverfiles:     40K
 
-    If you are trying to install a game that's larger than the `Available` disk space, you are going to see this error. Review your disk usage by running `df -h` and examine your [Linode's disk and storage](/docs/guides/linode-disks/) through the Cloud Manager. To overcome this error, you'll need to either remove files on your disk, [resize your disk](/docs/guides/resize-a-linode-disk/), or [resize your Linode](/docs/guides/resizing-a-linode/) to a larger plan.
+    If you are trying to install a game that's larger than the `Available` disk space, you are going to see this error. Review your disk usage by running `df -h` and examine your [Linode's disk and storage](/docs/guides/disks-and-storage/) through the Cloud Manager. To overcome this error, you'll need to either remove files on your disk, [resize your disk](/docs/guides/resize-a-linode-disk/), or [resize your Linode](/docs/guides/resizing-a-linode/) to a larger plan.
 - `ERROR! Failed to install app X (No subscription)` - This error code means that no authorized accounts on your SteamCMD owns the game. Verify the account on which you purchased the game and make sure that you are logged in using that account.
 - `Error! State is 0x402 after update job`  - Error code `0x402` could mean that either the update servers are down or you have an internet connectivity issue. Verify that your Linode has network connectivity by following the [Troubleshooting Basic Connection Issues
 ](/docs/guides/troubleshooting-basic-connection-issues/) guide.

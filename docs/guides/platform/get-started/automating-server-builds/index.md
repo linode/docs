@@ -34,7 +34,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 1. Configure all packages, applications, and system settings as desired.
 1. Remove any system users you don't want to appear on your duplicated systems.
 1. Shut down the Linode and either:
-    - [Clone the disk](/docs/guides/linode-disks/#cloning-a-disk).
+    - [Clone the disk](/docs/guides/disks-and-storage/#cloning-a-disk).
     - Alternatively, [take a snapshot](/docs/guides/linode-backup-service/#take-a-manual-snapshot) of the disk with Linode Backups.
 1. Store your golden image. This can be done in a variety of ways. A few examples are:
   - As a snapshot using [Linode Images](/docs/guides/linode-images/) or [Linode Backups](/docs/platform/linode-backup-service/#take-a-manual-snapshot).

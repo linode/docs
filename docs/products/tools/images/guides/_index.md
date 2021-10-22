@@ -29,7 +29,7 @@ The following guides can assist with topics like deploying custom distributions,
 
 - [Cloning a Linode](/docs/platform/disk-images/clone-your-linode/)
 
-- [Linode Disks and Storage](/docs/guides/linode-disks/)
+- [Linode Disks and Storage](/docs/guides/disks-and-storage/)
 
 - [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/)
 

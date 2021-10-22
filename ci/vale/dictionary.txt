@@ -92,6 +92,7 @@ aws
 awstats
 axibase
 azc
+azlux
 backdoors
 backend
 backends
@@ -114,6 +115,7 @@ bashdoor
 bashrc
 bc
 bdd
+benchmarked
 berkshelf
 bernd
 berners
@@ -593,6 +595,7 @@ goto
 gpasswd
 gpc
 gpg
+gping
 gradle
 grafana
 graphql
@@ -719,6 +722,7 @@ imperva
 impor
 incentivized
 inclusivity
+Indri
 inet
 inet6
 infographic
@@ -1322,6 +1326,7 @@ protocode
 proxied
 proxying
 pscp
+pseudocode
 psql
 psudo
 psycop2
@@ -1359,6 +1364,7 @@ quicklisp
 quickstart
 radeon
 ramdisk
+rauth
 rbac
 rbenv
 rc
@@ -1915,9 +1921,9 @@ winscp
 windowlist
 wireguard
 wkhtmltopdf
+wkhtmltox
 wll
 wlp6s0
-wmem
 wordcloud
 wordcount
 wordfence
@@ -1936,6 +1942,7 @@ wx
 xabbix
 xap
 xargs
+Xbox
 xcaddy
 xcalc
 xcode

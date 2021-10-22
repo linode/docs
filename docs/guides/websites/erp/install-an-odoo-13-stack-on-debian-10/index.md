@@ -49,7 +49,7 @@ The setup in this guide requires the following *minimal* Linode specifications:
 Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](/docs/guides/resizing-a-linode/) to a higher plan later on.
 
 {{< note >}}
-If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [network transfer quota](/docs/guides/network-transfer-quota/).
+If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [monthly network transfer usage](/docs/guides/network-transfer/).
 {{< /note >}}
 
 All examples in this guide are for Debian 10. If you plan to use a different operating system, adapt the commands as necessary.

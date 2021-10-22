@@ -62,7 +62,7 @@ Creating a **signed URL** will allow you to create a link to objects with limite
 
     http://my-example-bucket.us-east-1.linodeobjects.com/example.txt?AWSAccessKeyId=YOUROBJECTSTORAGEACCESSKEY&Expires=1579725476&Signature=rAnDomKeySigNAtuRe
 
-- This is returned when you use a tool like the [Linode CLI](/docs/platform/object-storage/how-to-use-object-storage/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#create-a-signed-url-with-s3cmd) to generate a signed URL.
+- This is returned when you use a tool like the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd) to generate a signed URL.
 
 - Replace the following fields with your information:
 
