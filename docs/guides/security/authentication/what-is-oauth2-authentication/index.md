@@ -1,14 +1,12 @@
 ---
-slug: introduction-to-oauth2-authentication
+slug: oauth2-authentication-an-introduction
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'An introduction to Oauth2 Authentication, flows, scopes, and libraries'
-og_description: 'An introduction to Oauth2 Authentication, flows, scopes, and libraries'
+  name: Jeff Novotny
+description: 'This guide provides an introduction to Oauth2 authentication, flows, scopes, and libraries.'
 keywords: ['What is Oauth2','How does Oauth2 work','Oauth2 flow','Oauth vs oauth2']
-tags: ['python']
+tags: ['python', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-15
+published: 2021-10-22
 modified_by:
   name: Linode
 title: "Introduction to OAuth2 Authentication?"
@@ -17,40 +15,23 @@ enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:
-- '[OAuth2 web site](https://oauth.net/2/)'
+- '[OAuth2 website](https://oauth.net/2/)'
 - '[OAuth2 libraries](https://oauth.net/code/)'
-- '[Rauth library](https://github.com/litl/rauth)'
-- '[OpenID](https://openid.net/)'
-- '[OpenID Connect](https://openid.net/connect/)'
 ---
 
-[*OAuth 2.0*](https://oauth.net/2/) is an authorization protocol that helps users securely share access to their accounts. For example, they could share their email contacts with a social media company. Providing account details directly to the application is highly problematic from the perspective of web security and privacy. OAuth2 allows users to grant limited access to their accounts with third-party applications without sharing any passwords. This guide discusses how OAuth2 works and compares it to other authorization frameworks.
-
-## Before You Begin
-
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+[*OAuth 2.0*](https://oauth.net/2/) is an authorization protocol that helps application users securely share access to their accounts. For example, with the help of OAuth 2.0, a social media app user can securely share their email contacts with the app. Providing account details directly to the application is highly problematic from the perspective of web security and privacy. OAuth2 allows users to grant limited access to their accounts with third-party applications without sharing any passwords. This guide discusses how OAuth2 works and compares it to other authorization frameworks.
 
 ## What is OAuth2?
 
 OAuth release 2.0 has become the tech industry's open standard for authorization and access delegation. It allows for some degree of flexibility and leaves many decisions up to the individual implementations. Security flaws have been discovered in some of these libraries, but OAuth2 best practices can reduce the risk of these problems.
 
-The OAuth process allows users to authorize web applications to access their accounts without sharing login or password details. Authorization details are handled by the site hosting the account, not the site requesting the access. This is why OAuth is known as an authorization protocol, not an authentication one. This process is also known as *secure delegated access*. OAuth is application-centric. This means permissions are granted to a specific client application rather than being attached to a particular user.
+The OAuth process allows users to authorize web applications to access their accounts without sharing login or password details. Authorization details are handled by the site hosting the account, not the site requesting the access. This is why OAuth is known as an authorization protocol, not an authentication protocol. This process is also known as *secure delegated access*. OAuth is application-centric. This means permissions are granted to a specific client application rather than being attached to a particular user.
 
 The service uses OAuth to dispense *access tokens* containing account permissions to third-party applications. This token can then be used to directly access the actual account information. OAuth is specifically designed to work with the *Hypertext Transfer Protocol Secure* (HTTPS) protocol. It uses the *Secure Sockets Layer* (SSL) to ensure data and tokens remain safe during transmission.
 
 ## Benefits of OAuth2 Authentication
 
-OAuth2 features some advantages over other more complex protocols. The current release has evolved and matured in comparison to the original OAuth protocol.
+OAuth2 features some advantages over other more complex protocols. The current release has evolved and matured in comparison to the original OAuth protocol. Some advantages include the following:
 
 - OAuth's token-based method is more secure than sharing password details directly with third-party applications.
 - It gives the user more control over what information they are sharing.
@@ -131,43 +112,53 @@ You must register the application with the service before accessing any account 
 ### How to Use a Python OAuth2 Library
 
 1. Review the supported languages on the [*OAuth2 libraries page*](https://oauth.net/code) and select the category corresponding to the language you are using. Alternatively, select a link to a commercial or open-source provider.
+
 1. Select a library from the available choices. Evaluate the alternatives by comparing how many downloads and stars each package has received on GitHub. Review the documentation, as some packages are easier to install and use than others. This tutorial uses the [*Rauth*](https://github.com/litl/rauth) package from GitHub for an example. The exact installation instructions depend on the package.
+
 1. Download and install the library. In many cases, the library can be installed using `apt` or `pip`. In other cases, the library must be added to the source list first.
+
     {{< note >}}
 The following command assumes Python and `pip` are already installed on the Linode.
     {{< /note >}}
 
         sudo pip3 install rauth
+
     {{< output >}}
 Installing collected packages: rauth
 Successfully installed rauth-0.7.3
     {{< /output >}}
+
 1. Inside the python file, import `OAuth2Service` from the `rauth` package.
 
     {{< file "oauth2.py" python >}}
 from rauth import OAuth2Service
     {{< /file >}}
+
 1. Instantiate an `OAuth2Service` container object for use throughout the authorization process. Use the `client_id` and `client_secret` that were assigned to the application when it was registered. The other values are unique to the service being accessed. Verify all URLs using the service documentation.
 
     {{< file "oauth2.py" >}}
 service = OAuth2Service(params)
     {{< /file >}}
+
 1. Use this object to access the redirect URL for the service. When the client finishes authorizing access to the service, this link contains an authorization code. Consult the [service documentation](https://rauth.readthedocs.io/en/latest/api/#oauth-2-0-services) for details about how the code is embedded in the `url` variable.
 
     {{< file "oauth2.py" python >}}
 url = service.get_authorize_url(**params)
     {{< /file >}}
+
 1. Extract the authorization code from the `url` and use it to request an access token for the user account. Submit the authorization code as part of the `data` object.
 
     {{< file "oauth2.py" python >}}
 token = service.get_auth_session(data=data)
     {{< /file >}}
+
 1. The session can now be used to access account information.
 
     {{< file "oauth2.py" python >}}
 r = token.get(params)
 "do something with r"
     {{< /file >}}
+
 1. An actual implementation of this scenario, using methods and parameters from the `rauth` library, would be similar to the following prototype. Substitute the appropriate URLs for the service being accessed in place of the `example.com` URLs.
 
     {{< file "oauth2.py" python >}}
@@ -214,7 +205,7 @@ OAuth2 can be used for authentication without an assisting protocol. This proces
 
 ### OAuth2 vs OpenID/OIDC
 
-OpenID is complementary to OAth2. It is intended for authentication rather than authorization.
+OpenID is complementary to OAuth2. It is intended for authentication rather than authorization.
 
 Some of the similarities and differences between OAuth2 and OpenID are as follows:
 
