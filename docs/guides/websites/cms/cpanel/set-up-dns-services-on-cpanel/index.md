@@ -35,7 +35,7 @@ You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for eac
 
 ## Nameserver Records
 
-To use your own nameservers for example `ns1.example.com`, `ns2.example.com` create those entries at your registrar first. The process for adding those can vary based on which registrar you are using. If you are unsure how to get these entries set up, you should contact your registrar's support and ask them how to do so. You also need to add A records for your nameservers on your Linode through WHM. To do that, you need to log into your WHM as root, then navigate to the **DNS Functions** section, click ** Nameserver Record Report**, click **Edit Zones**.
+To use your own nameservers, for example `ns1.example.com`, `ns2.example.com`, create those entries at your registrar first. The process for adding nameservers can vary based on which registrar you are using. If you are unsure how to set up these entries, you should contact your registrar's support and ask them how to do so. You also need to add A records for your nameservers on your Linode through WHM. To do that, you need to log into your WHM as root, then navigate to the **DNS Functions** section, click **Nameserver Record Report**, click **Edit Zones**.
 
 Click the domain you used when you set up your nameservers at your registrar and click the **+ A Record** button to add A records for your nameservers. Add the name and IP address:
 
