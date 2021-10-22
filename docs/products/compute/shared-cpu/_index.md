@@ -45,7 +45,7 @@ Pricing starts at $5 for a Shared CPU Compute Instance with 1 vCPU core, 1 GB of
 
 ## Additional Technical Specifications
 
-In addition to the resources allocated to each available plan (outlined above), Shared CPU Compute Instances have the follow specifications:
+In addition to the resources allocated to each available plan (outlined above), Shared CPU Compute Instances have the following specifications:
 
 - Shared vCPU cores
 - 100% SSD (Solid State Disk) storage
