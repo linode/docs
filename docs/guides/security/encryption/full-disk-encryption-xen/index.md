@@ -53,7 +53,7 @@ You've successfully created the disks for your Linode.
 
 Next, you'll need to create a configuration profile for the new Linode. Here's how to do it:
 
-1.  [Create a new configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-configuration-profile) in the Linode Manager.
+1.  [Create a new configuration profile](/docs/guides/linode-configuration-profiles#creating-a-configuration-profile) in the Linode Manager.
 2.  Select the `pv-grub-x86_64` kernel from the **Kernel** menu.
 3.  In the **Block Device Assignment** section, select the disks you created in the previous section of this guide.
 4.  Disable the **Automount devtmpfs** and **Distro Helper** settings.

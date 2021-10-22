@@ -123,7 +123,7 @@ vm.overcommit_memory = 1
 
 ### Additional Swap
 
-Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) in the Linode Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
+Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/guides/disks-and-storage/#resizing-a-disk) in the Cloud Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
 
 ## Distributed Redis
 
@@ -145,7 +145,7 @@ To communicate over the private network, your master and slave Linodes must resi
 
 ###  Prepare Your Linodes
 
-1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/platform/disk-images/disk-images-and-configuration-profiles/#cloning-disks-and-configuration-profiles) option in the Linode Manager.
+1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/guides/disks-and-storage/#resizing-a-disk) option in the Cloud Manager.
 
 2.  Configure [Private IP Addresses](/docs/networking/remote-access/#adding-private-ip-addresses) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
 
