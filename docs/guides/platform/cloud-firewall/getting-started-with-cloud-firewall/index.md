@@ -26,10 +26,9 @@ Linode's free Cloud Firewall service can be used to create, configure, and add s
 
 A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determines if the traffic is permitted to communicate to or from the Linode Service it secures. Cloud Firewalls can be configured with an implicit deny or allow rule-- they can block or allow all traffic by default and only pass through or deny network traffic that meets the parameters of the configured rules.
 
-### Limitations
-
-- Currently, a Cloud Firewall can only be applied to Linodes.
-- You can apply one Cloud Firewall per Linode service.
+{{< note >}}
+Users that do not have [Network Helper](/docs/guides/network-helper/) enabled and are instead relying on a configuration that uses DHCP will need to manually allow DHCP traffic through port 67 and 68 of their Cloud Firewall. A full list of IP addresses for our DHCP servers can be found in our [DHCP IP Address Reference Guide](/docs/guides/dhcp-ip-address-reference/).
+{{< /note >}}
 
 ### Inbound and Outbound Rules
 
@@ -70,3 +69,7 @@ Upon initial creation of a Cloud Firewall, you are required to select Firewall r
 ## Delete a Cloud Firewall
 
 {{< content "delete-cloud-firewall-shortguide" >}}
+
+## Limits and Considerations
+
+{{< content "cloud-firewall-limits-shortguide" >}}

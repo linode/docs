@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: "Using the AWS SDK for Python (boto3) with Object Storage"
+image: UsingAWSSDKforPythonboto3withObjectStorage.jpg
 description: "Learn how to use the Python AWS SDK with Linode's S3-compatible Object Storage."
 ---
 

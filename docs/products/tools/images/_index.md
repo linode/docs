@@ -16,9 +16,9 @@ Images can be created and deployed across [all regions](https://www.linode.com/g
 
 ## Pricing
 
-Images are currently available at no charge to Linode customers.
+Custom Images has transitioned to a paid service beginning September 1st, 2021. Custom Images now cost $0.10/GB per month. Keep in mind that Custom Images generated from an uploaded image file are billed based on the _uncompressed_ size of that image.
 
-{{< content "images-ga-pricing-update-shortguide" >}}
+Recovery Images, generated automatically after a Linode is deleted, are provided as a free courtesy service.
 
 ## Features
 

@@ -28,3 +28,5 @@ show_on_rss_feed: false
 - **VLANs cannot be manually deleted by the user.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, simply detach it from all Linodes. After this, it will automatically be deleted within a short timeframe.
 
 - **Network Helper is required for automatic configuration.** If [Network Helper](/docs/guides/network-helper/) has been disabled, the Linode will not *automatically* be able to communicate over the VLAN’s private network. In this case, advanced users can manually adjust their Linode’s internal network configuration files with the appropriate settings for their VLAN. See [Manually configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/) for instructions.
+
+- **The Public Internet must always use the eth0 network interface.** While VLANs themselves can function without issue on the `eth0` interface, the public internet on Linode will not be networked correctly on other interfaces.

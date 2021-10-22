@@ -8,6 +8,7 @@ og_description: "Learn what unit testing is, why it's important, and why you sho
 keywords: ['what is unit testing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-11
+image: UnderstandingUnitTesting.png
 modified_by:
   name: Linode
 title: "What is Unit Testing?"

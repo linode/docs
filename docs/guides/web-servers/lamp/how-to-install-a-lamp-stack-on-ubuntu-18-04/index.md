@@ -41,7 +41,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
 
-    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 
@@ -199,7 +199,7 @@ To disable your website, run `a2dissite example.com`.
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/platform/manager/dns-manager/) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/guides/dns-manager/) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 

@@ -49,17 +49,11 @@
       {{ template "breadcrumbs-home" . }}
     {{ else }}
       {{ if ne .p1 .p2 }}
+        {{ template "breadcrumbs-arrow" . }}
         <a  href="{{ .p1.Permalink }}" class="truncate">
           {{ .p1.LinkTitle }}
         </a>
-      {{ else }}
-        <span class="truncate">
-          {{ .p1.LinkTitle }}
-        </span>
       {{ end }}
-    {{ end }}
-    {{ if ne .p1 .p2 }}
-      {{ template "breadcrumbs-arrow" . }}
     {{ end }}
   </li>
 {{ end }}

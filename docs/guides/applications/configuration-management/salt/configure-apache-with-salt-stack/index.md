@@ -146,7 +146,7 @@ apache2 Service:
 ...
 {{< /file >}}
 
-    Here Salt makes sure the `apache2` package is installed with `pkg.installed`. Likewise, it ensures the `apache2` service is running and enabled under `service.running`. Also under `service.running`, `apache-debian.sls` uses `require` to ensure that this command does not run before the `apache2` package is installed. This `require` step will be repeated throughout `apache-debain.sls`.
+    Here Salt makes sure the `apache2` package is installed with `pkg.installed`. Likewise, it ensures the `apache2` service is running and enabled under `service.running`. Also under `service.running`, `apache-debian.sls` uses `require` to ensure that this command does not run before the `apache2` package is installed. This `require` step will be repeated throughout `apache-debian.sls`.
 
     Lastly, a `watch` statement is employed to restart the `apache2` service if your site's configuration file changes. You will define that configuration file in a later step. Note that this configuration file is named using the domain you supplied when creating your Salt Pillar file in the first section. This Pillar data will be used throughout `apache-debian.sls`.
 

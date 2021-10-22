@@ -46,7 +46,7 @@ This guide assumes you have a working [Linode Kubernetes Engine (LKE)](https://w
 ## Copy the application data to a Persistent Volume
 
 {{< caution >}}
-The instructions in this section creates a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month or $0.00015/GiB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
+The instructions in this section creates a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GB to 10,000 GB in size and costs $0.10/GB per month or $0.00015/GB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
 
 If you remove the resources afterward, you are only billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}

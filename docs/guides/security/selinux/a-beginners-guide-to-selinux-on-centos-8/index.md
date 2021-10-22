@@ -19,7 +19,7 @@ external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
  - '[CentOS SELinux Wiki](https://wiki.centos.org/HowTos/SELinux)'
-image: 'Getting_Started_with_SELinux_on_CentOS_8_1200x631.png'
+image: Start_SELinux_CentOS8.png
 relations:
     platform:
         key: get-started-selinux

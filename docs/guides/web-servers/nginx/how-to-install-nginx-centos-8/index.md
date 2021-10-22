@@ -11,6 +11,7 @@ modified: 2020-02-14
 modified_by:
   name: Linode
 published: 2018-04-16
+image: L_NGINX_on_CentOS8.png
 title: "How to Install NGINX on CentOS 8"
 h1_title: "Installing NGINX on CentOS 8"
 enable_h1: true
@@ -32,7 +33,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
 
     - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/getting-started/) guide.
 

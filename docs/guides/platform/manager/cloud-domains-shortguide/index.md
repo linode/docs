@@ -23,6 +23,6 @@ The DNS Manager allows you to control and manage your domains. You can access th
 
 For more information on Cloud Manager's DNS Manager, see the following guides:
 
-- [DNS Manager](/docs/platform/manager/dns-manager/).
+- [DNS Manager](/docs/guides/dns-manager/).
 - [Common DNS Configurations](/docs/networking/dns/common-dns-configurations/)
 - [Configure Your Linode for Reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/)

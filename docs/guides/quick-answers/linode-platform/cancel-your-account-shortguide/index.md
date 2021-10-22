@@ -9,6 +9,7 @@ modified: 2021-06-25
 modified_by:
   name: Matthew Wildman
 published: 2020-01-20
+image: L_CancelYourAccount.png
 title: Cancel Your Account Shortguide
 keywords: []
 headless: true
