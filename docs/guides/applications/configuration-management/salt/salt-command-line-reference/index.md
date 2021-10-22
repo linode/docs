@@ -15,8 +15,8 @@ contributor:
     name: "Andy Stevens"
     link: "https://github.com/andystevensname"
 external_resources:
-- '[SaltStack Command Line Documentation](https://docs.saltstack.com/en/latest/ref/cli/index.html)'
-- '[Linode Cloud Module](https://docs.saltstack.com/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
+- '[SaltStack Command Line Documentation](https://docs.saltproject.io/en/latest/ref/cli/index.html)'
+- '[Linode Cloud Module](https://docs.saltproject.io/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
 aliases: ['/applications/configuration-management/salt-command-line-reference/','/applications/configuration-management/salt/salt-command-line-reference/']
 tags: ["automation","salt"]
 ---

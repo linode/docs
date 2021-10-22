@@ -57,7 +57,7 @@ In this section you install your custom distro onto a raw disk, with the *direct
 Depending on the distribution you install first, you may need to resize your disk to a size slightly larger than 2100 MB. You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
 {{< /note >}}
 
-1.  [Create two raw, unformatted disk images](/docs/guides/linode-disks/#creating-a-disk) from the Linode's Dashboard:
+1.  [Create two raw, unformatted disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk depends upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk is 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
@@ -166,7 +166,7 @@ These features are not available even if you formatted the disk to *ext4* during
 
 1.  Create some room for two new disks. One formatted *ext4* to move the file system to and one for *swap*. To make more room, consider deleting the initial distribution that was created during Linode creation.
 
-1.  [Create a new ext4 disk](/docs/guides/linode-disks/#creating-a-disk). The new disk should be large enough to accommodate the root file system that was created on your raw disk (2000 MB). You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For this example, name this disk *Boot-New*.
+1.  [Create a new ext4 disk](/docs/guides/disks-and-storage/#creating-a-disk). The new disk should be large enough to accommodate the root file system that was created on your raw disk (2000 MB). You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For this example, name this disk *Boot-New*.
 
 1.  Create the second new disk and choose *swap* for the disk type. The size of this disk depends upon your needs, but it's recommended that you make it between 256-512MB to start. Label this disk *Swap*.
 

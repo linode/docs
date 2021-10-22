@@ -22,7 +22,7 @@ external_resources:
 ---
 
 {{< note >}}
-This guide has been split into two new guides:[Linode Disks and Storage](/docs/guides/linode-disks/) and [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/).
+This guide has been split into two new guides:[Linode Disks and Storage](/docs/guides/disks-and-storage/) and [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/).
 {{</ note >}}
 
 The Linode Cloud Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.

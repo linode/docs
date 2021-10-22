@@ -63,7 +63,7 @@ There is a chance that a lifecycle policy will not delete all of the files in a 
 [s3cmd](https://s3tools.org/s3cmd) allows users to set and manage lifecycle policies from the command line. In this section, you will find instructions on how to create and manage lifecycle policies to delete objects, previous versions of objects, and failed multipart uploads using s3cmd.
 
 {{< note >}}
-If you don't have s3cmd set up on your computer, visit the [Install and Configure s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) section of the How to Use Linode Object Storage guide.
+If you don't have s3cmd set up on your computer, visit the [Using s3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) guide.
 {{< /note >}}
 
 #### Creating a Lifecycle Policy File
@@ -227,7 +227,7 @@ You'll see a confirmation that the lifecycle policy was deleted:
 [Cyberduck](https://cyberduck.io/) allows less control over lifecycle polices than the s3cmd CLI. In particular, Cyberduck does not allow you to set a lifecycle policy that removes outdated versions of objects stored in buckets where [versioning](/docs/platform/object-storage/bucket-versioning/) is enabled, nor does it allow you to delete multipart uploads. Cyberduck also limits the length of a lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
 
 {{< note >}}
-If you don't have Cyberduck set up on your computer, visit the [Install and Configure Cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-cyberduck) section of the How to Use Linode Object Storage guide.
+If you don't have Cyberduck set up on your computer, visit the [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/) guide.
 {{< /note >}}
 
 #### Enable a Lifecycle Policy
@@ -236,11 +236,11 @@ If you don't have Cyberduck set up on your computer, visit the [Install and Conf
 
 1.  Click on the **S3** tab to open the S3 bucket settings.
 
-    [![Open the Cyberduck bucket settings menu.](lifecycle-policies-cyberduck-settings.png)](lifecycle-policies-cyberduck-settings.png)
+    ![Open the Cyberduck bucket settings menu.](lifecycle-policies-cyberduck-settings.png)
 
 1.  Click on the checkbox labeled **Delete files** and select a time interval from the drop-down menu below it.
 
-    [![Click on the "S3" tab and then check the box labeled "Delete files."](lifecycle-policies-cyberduck-lifecycle-settings.png)](lifecycle-policies-cyberduck-lifecycle-settings.png)
+    ![Click on the "S3" tab and then check the box labeled "Delete files."](lifecycle-policies-cyberduck-lifecycle-settings.png)
 
 This will enable the lifecycle policy and the objects within the bucket will be deleted after the designated time.
 

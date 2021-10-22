@@ -48,7 +48,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 [Docker Engine](https://docs.docker.com/engine/) is the underlying containerization software used when deploying Docker containers. The following instructions will install Docker Engine on one of these supported Ubuntu and Debian releases:
 
-**Supported distributions:** Ubuntu 20.04, Ubuntu 18.04, Ubuntu 16.04, Debian 10, Debian 9. Recent non-LTS releases like Ubuntu 21.04 and 20.10 should also be supported.
+**Supported distributions:** Ubuntu 20.04, Ubuntu 18.04, Ubuntu 16.04, Debian 10, Debian 9. Recent non-LTS releases like Ubuntu 21.04, 20.10, and 21.10 should also be supported.
 
 1.  Ensure Docker is not currently installed. Output indicating that any of the packages aren't found can be safely ignored.
 
