@@ -6,11 +6,12 @@ description: "Learn how to use gping, a Linux tool with the functionality of pin
 keywords: ['gping linux','ping linux','ping linux alternatives']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-15
+published: 2021-10-22
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Use gping on Linux"
 h1_title: "How to Install and Use gping on Linux"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -26,11 +27,11 @@ The gping tool takes the functionality of the ping tool and displays its data on
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    -   On Debian and Ubuntu, you can do this with:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    -   On AlmaLinux, CentOS (8 or later), or Fedora, use:
 
             sudo dnf upgrade
 
@@ -50,11 +51,11 @@ This guide provides installation steps for Debian, Ubuntu, AlamaLinux, CentOS, a
 
 On Debian and Ubuntu distributions, use the following steps to install gping.
 
-1. Install the `gnupg` package, which is used for adding a repository key to APT:
+1.  Install the `gnupg` package, which is used for adding a repository key to APT:
 
         sudo apt install gnupg
 
-1. Add the Azlux repository to APT. Replace `buster` in the command below with the codename for your Debian release:
+1.  Add the Azlux repository to APT. Replace `buster` in the command below with the codename for your Debian release:
 
         echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
 
@@ -78,11 +79,11 @@ Codename: buster
 bullseye/sid
     {{< /output >}}
 
-1. Add the Azlux repository key to APT:
+1.  Add the Azlux repository key to APT:
 
         wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 
-1. Update the APT registry, and install `gping`:
+1.  Update the APT registry, and install `gping`:
 
         sudo apt update
         sudo apt install gping
@@ -91,11 +92,11 @@ bullseye/sid
 
 On AlmaLinux, CentOS (8 and later), and Fedora, use the following steps to install gping.
 
-1. Use the COPR plugin to enable the repository for `gping`:
+1.  Use the COPR plugin to enable the repository for `gping`:
 
         sudo dnf copr enable atim/gping
 
-1. Install gping:
+1.  Install gping:
 
         sudo dnf install gping
 
