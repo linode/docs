@@ -1909,9 +1909,9 @@ winscp
 windowlist
 wireguard
 wkhtmltopdf
+wkhtmltox
 wll
 wlp6s0
-wmem
 wordcloud
 wordcount
 wordfence
