@@ -119,7 +119,7 @@ mysql-run-at-boot-restart:
 {{< /file >}}
 
 
-    The above file uses the [file](http://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html) and [service](http://docs.saltstack.com/en/latest/ref/states/all/salt.states.service.html) Salt State modules.
+    The above file uses the [file](http://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html) and [service](http://docs.saltproject.io/en/latest/ref/states/all/salt.states.service.html) Salt State modules.
 
 
 3.  Transfer the State settings to the Minions:
@@ -183,6 +183,6 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
         salt '<hostname or Minion ID>' cmd.run "a2ensite example.com.conf"
         salt '<hostname or Minion ID>' cmd.run "service apache2 reload"
 
-The above section used the [cmdmod](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html), [file](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html), and [cp](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html) Salt Execution modules.
+The above section used the [cmdmod](http://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.cmdmod.html), [file](http://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.file.html), and [cp](http://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.cp.html) Salt Execution modules.
 
-You should now have a configured LAMP stack across as many Minions as you wanted. Optionally, use [grains](http://docs.saltstack.com/en/latest/topics/targeting/grains.html) for further customization and to apply specific variables to each host.
+You should now have a configured LAMP stack across as many Minions as you wanted. Optionally, use [grains](http://docs.saltproject.io/en/latest/topics/targeting/grains.html) for further customization and to apply specific variables to each host.

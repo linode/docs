@@ -15,8 +15,8 @@ title: "Use and Modify Official SaltStack Formulas"
 contributor:
   name: Linode
 external_resources:
-- '[Salt Formulas](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
-- '[Git Fileserver Backend Walkthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
+- '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
+- '[Git Fileserver Backend Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html)'
 aliases: ['/applications/configuration-management/salt/use-and-modify-official-saltstack-formulas/','/applications/configuration-management/use-and-modify-official-saltstack-formulas/']
 tags: ["automation","salt"]
 ---
@@ -94,7 +94,7 @@ timezone_symlink:
 
     This state file contains three state declarations, `timezone_setting`, `timezone_packages` and `timezone_symlink`. Below is a description of the configuration each declaration will accomplish on a Salt minion.
 
-  - `timezone.system`: This state uses Salt's [timezone state module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.timezone.html) to manage the timezone for the minion. The values for `name` and `utc` are derived from the corresponding Salt master's Pillar file. This is accomplished in the two variable assignment at the top of the file: `{%- set timezone = salt['pillar.get']('timezone:name', 'Europe/Berlin') %}` and `{%- set utc = salt['pillar.get']('timezone:utc', True) %}`.
+  - `timezone.system`: This state uses Salt's [timezone state module](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.timezone.html) to manage the timezone for the minion. The values for `name` and `utc` are derived from the corresponding Salt master's Pillar file. This is accomplished in the two variable assignment at the top of the file: `{%- set timezone = salt['pillar.get']('timezone:name', 'Europe/Berlin') %}` and `{%- set utc = salt['pillar.get']('timezone:utc', True) %}`.
 
   - `timezone_packages:` This state ensures that the package needed to configure time zones is installed on the minion. This value is derived from the `confmap` variable that is imported from the `map.jinja` file. The import is declared at the top of the file with the `{% from "timezone/map.jinja" import confmap with context %}` import statement. Later in this section, you will inspect the `map.jinja` file.
 
