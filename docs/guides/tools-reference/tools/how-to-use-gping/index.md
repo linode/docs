@@ -152,7 +152,7 @@ As with hosts, you can pass gping multiple commands when using this option to se
 
 Since graphing command execution times is a bonus gping feature, it may not perform reliably for all kinds of commands. This is especially the case for commands that are more complicated.
 
-If you are looking to measure a command's performances, consider using the hyperfine tool. Hyperfine is a tool for benchmarking command-line commands, with an emphasis on clearly rendering side-by-side comparisons. If you are interested, check out our guide on getting started with hyperfine.
+If you are looking to measure a command's performances, consider using the hyperfine tool. Hyperfine is a tool for benchmarking command-line commands, with an emphasis on clearly rendering side-by-side comparisons. If you are interested, check out our guide on [getting started with hyperfine](/docs/guides/installing-and-using-hyperfine-on-linux/).
 
 ## Conclusion
 
