@@ -5,8 +5,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-## Overview of Instance Types
-
 | Instance Type | CPU | Overview |
 | -- | -- | -- |
 | [**Shared CPU Instance**](https://www.linode.com/products/shared/) | Shared | **1 GB - 192 GB Memory, 1 - 32 vCPUs, 25 GB - 2840 GB Storage**<br>[Starting at $5/mo ($0.0075/hour)](https://www.linode.com/pricing/#compute-shared)<br><br>Offers a balanced array of resources coupled with shared CPUs, which keeps costs down while still supporting a wide variety of cloud applications.<br><br>*Best for development servers, staging servers, low traffic web applications, and almost any modern web application.* |

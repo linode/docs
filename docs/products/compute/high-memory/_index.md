@@ -50,9 +50,7 @@ High Memory instances are available across [all regions](https://www.linode.com/
 | Outbound Network Transfer | 5 TB - 9 TB |
 | Outbound Network Bandwidth | 5 Gbps - 9 Gbps |
 
-Pricing starts at $60 for a High Memory Compute Instance with 2 vCPU cores, 24GB memory, and 20GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-high-memory) for additional plans and their associated costs.
-
-{{< content "instance-comparison-shortguide" >}}
+Pricing starts at $60 for a High Memory Compute Instance with 2 vCPU cores, 24GB memory, and 20GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-high-memory) for additional plans and their associated costs. See the [Comparison of Compute Instances](#comparison-of-compute-instances) section below to learn more about other Instance types.
 
 ## Additional Technical Specifications
 
@@ -68,7 +66,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 - [Multi-queue NIC](/docs/guides/multiqueue-nic/) support
 
-## Free Bundled Services
+## Services Included at No Extra Cost
 
 Linode bundles the following services with all Compute Instances:
 
@@ -91,3 +89,7 @@ To help build and manage your applications, consider complementing your Compute 
 - Incident response (and more) with [Managed Services](https://www.linode.com/products/managed/)
 - Enable load balancing and horizontal scaling with [NodeBalancers](https://www.linode.com/products/nodebalancers/)
 - Add scalable storage to your application with [Object Storage](https://www.linode.com/products/object-storage/)
+
+## Comparison of Compute Instances
+
+{{< content "instance-comparison-shortguide" >}}
