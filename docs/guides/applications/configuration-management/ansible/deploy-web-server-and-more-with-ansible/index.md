@@ -194,33 +194,46 @@ Confirm we can ping all the hosts
         ansible all -m ping
 
 ## Set up Ansible playbook to configure worker nodes
-The playbook is already written out for you. All that is needed is to add two parameters; a hashed password and an IP address.
+The playbook is already written out for you. All that is needed is to add two parameters; a hashed password and the IP address of the log server.
+
 ### 1. Create hashed, plaintext password
-Run this command from your Ansible control plane.
+Run this command from your Ansible control plane. The command will prompt you for a password. Enter a password that will be used to access the webserver.
 
          `python3 -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.hash(getpass.getpass()))"
-  * enter the password that you will use to access the webserver.
-  * copy from the dollar sign to the period;
-  * paste the resulting hashed password into `myplaybook.yml`
+
+Be sure to copy the output from the dollar sign to the period. Paste the resulting hashed password into `myplaybook.yml`, in the place holder, **{{ HASHED_PASSWORD }}**.
+
 ### 2. Configure logserver
-  * grab ip address of logging sever and paste into `configure rsyslog` section
+Grab the ip address of logging sever (vm5) and paste into `configure rsyslog` section of `myplaybook.yml`. Paste the ip address into the place holder, **{{ LOG_IP_ADDRESS }}**.
 
-## Send script to each managed node.
-### 1. Configure Ansible worker nodes from control node
-Upload script to each worker node
-  * `echo 'freshjive234' > ~/.ssh/file` # this is needed to create a password file so you do not have to enter the password each time in the below loop.
-  * `for i in {2..5}; do sshpass -f ~/.ssh/file scp ansibleWK_setup.sh root@vm$i:/root/; done`
-Check to make sure each worker node has the script
-  * `for i in {2..5}; do sshpass -f ~/.ssh/file ssh root@vm$i 'ls'; done`
+## Configure Ansible managed nodes.
 
+### 1. Send setup script, `ansibleWK_setup.sh` to each managed node.
+Create a password file to use in the next step. Use the same root password you used when creating these Linodes. This step is done so you will not have to enter the root password 4 times, while the loop runs in the next step.
+
+         echo 'yourrootpassword' > ~/.ssh/file
+
+Send the script to each managed node.
+
+         for i in {2..5}; do sshpass -f ~/.ssh/file scp ansibleWK_setup.sh root@vm$i:/root/; done
+
+You can check to make sure each worker node has the script by listing what is in each home folder of the managed nodes.
+
+         for i in {2..5}; do sshpass -f ~/.ssh/file ssh root@vm$i 'ls'; done
+
+### 2. Log into each worker node and run the `ansibleWK_setup.sh` script.
+Next, either open 4 terminal sessions or use **tmux** and split your single session into 4 sessions.  From each session ssh into the managed node
 From local computer, log into each node and run the ansibleWK\_setup.sh script
+
 
   * `sshpass -p $pass ssh -o StrictHostKeyChecking=no root@IPADDRESS`
 reboot each worker node
-    * `for i in $(cat tmp.txt); do linode-cli linodes reboot $i; done`
 
-Upload ssh key for `bennettnw2` to worker nodes from the control node
-  * `for i in {2..5}; do sshpass -f ~/.ssh/file ssh-copy-id bennettnw2@vm$i; done`
+         for i in $(cat tmp.txt); do linode-cli linodes reboot $i; done
+
+### 3. Upload ssh key for the username you created on the control node, to worker nodes.
+
+         for i in {2..5}; do sshpass -f ~/.ssh/file ssh-copy-id $USER@vm$i; done
 
 ## Run the Ansible playbook to configure managed nodes.
 ### Run the playbook with: `ansible-playbook myplaybook.yml`

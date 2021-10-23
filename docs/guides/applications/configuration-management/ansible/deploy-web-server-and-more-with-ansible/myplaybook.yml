@@ -40,7 +40,7 @@
       user:
         name: webadm
         comment: "Web Admin"
-        password: $6$rounds=656000$m/QWzf0EokE7T6S.$c12E4d5vNCw7r7mRtTAQmX5vWqlePvrj1GOMnaF7QUbKdcbLlMVjavIyraukF321fCgwB7YdUAVTts2COOG0u1
+        password: {{ HASHED_PASSWORD }}
         groups: web
         append: yes
 
@@ -118,7 +118,7 @@
     - name: configure rsyslog
       lineinfile:
         path: /etc/rsyslog.conf
-        line: '*.* @97.107.137.56'
+        line: '*.* @{{ LOG_IP_ADDRESS }}'
         state: present
       notify:
         - restart rsyslogd

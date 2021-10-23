@@ -8,7 +8,6 @@ apt update
 apt upgrade -y
 
 hostnamectl set-hostname CtlPlane
-timedatectl set-timezone US/Eastern
 
 # Secure ssh a bit with no root login and no x11 forwarding
 sed -in 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
