@@ -1,0 +1,130 @@
+---
+- hosts: webservers
+  become: yes
+  tasks:
+    - name: "Install Apache Server"
+      apt:
+        name: apache2
+        state: present
+
+    - name: "Enable and Start Apache Server"
+      service:
+        name: apache2
+        enabled: yes
+        state: started
+
+    - name: "Install Firewalld"
+      apt:
+        name: firewalld
+        state: present
+
+    - name: "Enable and start firewalld server"
+      service:
+        name: firewalld
+        enabled: yes
+        state: started
+
+    - name: "Open Firewall Port"
+      firewalld:
+        service: http
+        immediate: true
+        permanent: true
+        state: enabled
+
+    - name: "Create web admin group"
+      group:
+        name: web
+        state: present
+
+    - name: "Create web admin user"
+      user:
+        name: webadm
+        comment: "Web Admin"
+        password: $6$rounds=656000$m/QWzf0EokE7T6S.$c12E4d5vNCw7r7mRtTAQmX5vWqlePvrj1GOMnaF7QUbKdcbLlMVjavIyraukF321fCgwB7YdUAVTts2COOG0u1
+        groups: web
+        append: yes
+
+    - name: "Set contenct directory group/permisions"
+      file:
+        path: /var/www/html
+        owner: root
+        group: web
+        state: directory
+        mode: u=rwx,g=rwx,o=rx,g+s
+
+    - name: "Create default page content"
+      copy:
+        content: "Welcome to {{ ansible_fqdn }} on {{ ansible_default_ipv4.address }}"
+        dest: /var/www/html/index.html
+        owner: webadm
+        group: web
+        mode: u=rw,g=rw,o=r
+
+- hosts: dbservers
+  become: yes
+  tasks:
+    - name: "Install MariaDB Server"
+      apt:
+        name: mariadb-server
+        state: present
+
+    - name: "Enable and start MariaDB server"
+      service:
+        name: mariadb
+        enabled: yes
+        state: started
+
+- hosts: logservers
+  become: yes
+  tasks:
+    - name: "Configure rsyslog remote log reception over udp"
+      lineinfile:
+        path: /etc/rsyslog.conf
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - '$ModLoad imudp'
+        - '$UDPServerRun 514'
+      notify:
+        - restart rsyslogd
+
+    - name: "Install Firewalld"
+      apt:
+        name: firewalld
+        state: present
+
+    - name: "Enable and start firewalld server"
+      service:
+        name: firewalld
+        enabled: yes
+        state: started
+
+    - name: "Open firewall port"
+      firewalld:
+        port: 514/udp
+        immediate: true
+        permanent: true
+        state: enabled
+
+  handlers:
+    - name: "restart rsyslogd"
+      service:
+        name: rsyslog
+        state: restarted
+
+- hosts: lamp
+  become: yes
+  tasks:
+    - name: configure rsyslog
+      lineinfile:
+        path: /etc/rsyslog.conf
+        line: '*.* @97.107.137.56'
+        state: present
+      notify:
+        - restart rsyslogd
+
+  handlers:
+    - name: "restart rsyslogd"
+      service:
+        name: rsyslog
+        state: restarted

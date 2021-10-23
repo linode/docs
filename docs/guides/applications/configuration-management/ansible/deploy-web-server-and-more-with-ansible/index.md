@@ -194,8 +194,11 @@ Confirm we can ping all the hosts
         ansible all -m ping
 
 ## Set up Ansible playbook to configure worker nodes
+The playbook is already written out for you. All that is needed is to add two parameters; a hashed password and an IP address.
 ### 1. Create hashed, plaintext password
-  * `python3 -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.hash(getpass.getpass()))"`
+Run this command from your Ansible control plane.
+
+         `python3 -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.hash(getpass.getpass()))"
   * enter the password that you will use to access the webserver.
   * copy from the dollar sign to the period;
   * paste the resulting hashed password into `myplaybook.yml`
