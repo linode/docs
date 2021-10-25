@@ -39,6 +39,10 @@ VLANs are managed within the network interfaces on a Linode. Each Linode has 3 c
 
 - **None:** Selecting **None** will deactivate that network interface.
 
+{{< caution >}}
+The Public Internet must always be set to use the network interface `eth0`.
+{{< /caution >}}
+
 ### Selecting a VLAN
 
 When configuring a network interface, a VLAN can be selected by entering its **Label**. VLANs that already exist on an account can be quickly selected through a drop down list. If the label doesn't correspond with an existing VLAN, a new VLAN is created.
@@ -107,7 +111,7 @@ By default, the public IP address (and, if added, the private IP address) of the
 
     See the [Assigning an IPAM Address](#assigning-an-ipam-address) section on this page for more information about IPAM and examples of valid IPAM addresses.
 
-1. Click on the **Edit Configuration** button towards the bottom of this form to save the changes.
+1. Click on the **Save Changes** button towards the bottom of this form to save the changes.
 
 1. Once the configuration profile has been updated, select the **Boot** or **Reboot** button next to the edited configuration profile on the following page. This will reboot using the edited configuration profile and apply the new VLAN configuration to the Linode.
 

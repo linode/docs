@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-21
 modified_by:
   name: Linode
-image: MigratingaGoogleCloudPlatformVMInstancetoLinode.png
+image: L_MigrateFromGCPtoLin.png
 title: 'How to Migrate from Google Cloud Platform to Linode'
 h1_title: 'Migrating a Google Cloud Platform VM Instance to Linode'
 contributor:
@@ -480,9 +480,9 @@ As stated above, to take advantage of features like resizing your disks in Cloud
 When you're done:
 
 - [Test your new Linode environment](#test-the-new-environment) as outlined in the Migration Strategy 1 section of this guide.
-- [Delete the original disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
+- [Delete the original disk](/docs/guides/disks-and-storage/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
 - [Resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
-- [Delete the Configurations for the original Linode](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
+- [Delete the Configurations for the original Linode](/docs/guides/linode-configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
 - [Enable Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
 
 ## Additional Migration Considerations

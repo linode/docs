@@ -3,16 +3,15 @@ slug: linux-static-ip-configuration
 author:
   name: Linode
   email: docs@linode.com
-description: 'Set static IP, routes and DNS in Linux.'
+description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS."
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/']
-modified: 2018-01-02
+modified: 2021-10-07
 modified_by:
   name: Linode
 published: 2014-07-20
 title: Linux Static IP Configuration
-h1_title: Linux Static IP Configuration
 tags: ["networking","linode platform"]
 ---
 
@@ -21,7 +20,6 @@ All Linodes are created with one IPv4 address and one for IPv6. An IPv4 address 
 ![Linux Static IP Configuration](linux-static-ip-configuration.png)
 
 If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/using-the-linode-shell-lish/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
-
 
 ## General Information
 
@@ -43,12 +41,13 @@ Although your Linode may have multiple IP addresses assigned, and additionally m
 
 For example, if the address `198.51.100.5` is assigned to the interface `eth0:3`, you should use `198.51.100.1` as the gateway. A gateway should not be specified for private IP addresses.
 
+The gateway in this instance works similarly to a router, and provides access to the wider internet and other Linode services. This must always be configured on your Linode in order to have network access.
+
 **DNS Resolution**
 
 Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/remote-access/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
 
 However, unless you have a specific reason for doing so, you should *not* change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten by a networking service such as NetworkManager or systemd-resolved. Resolver options are usually set in the network interface's configuration file.
-
 
 ## Disable Network Helper
 
@@ -72,9 +71,8 @@ You'll see the following information for your Linode. Use this information to co
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
 {{< note >}}
- All IPv6 pools are routed through the original IPv6 SLAAC address for a Linode. For this reason, the original IPv6 SLAAC address **must always** be the first IPv6 address included in a network configuration.
+ All IPv6 pools are routed through the original IPv6 SLAAC address for a Linode. For this reason, the original IPv6 SLAAC address **must always** be the first IPv6 address included in a network configuration. If you would like to include a secondary IPv6 address from an IPv6 range that's already been assigned to your Linode Compute Instance, include it under any configuration fields or variables for secondary IPv6 addresses.
 {{< /note >}}
-
 
 ### Arch, CoreOS Container Linux
 
@@ -92,7 +90,7 @@ IPv6PrivacyExtensions=false
 # DNS resolvers (safe to mix IPv4 and IPv6)
 DNS=203.0.113.1 2001:db8:0:123::1 203.0.113.2
 
-# IPv4 gateway and primary address.
+# IPv4 gateway and primary public IPv4 address.
 Gateway=198.51.100.1
 Address=198.51.100.2/24
 
@@ -102,7 +100,7 @@ Address=198.51.100.3/24
 # Add a private address:
 Address=192.168.133.234/17
 
-# IPv6 gateway and primary address.
+# IPv6 gateway and primary IPv6 SLAAC address.
 Gateway=fe80::1
 Address=2001:db8:2000:aff0::2/64
 
@@ -155,7 +153,7 @@ PREFIX1=24
 IPADDR2=192.0.2.6
 PREFIX2=17
 
-# IPv6 gateway and primary address.
+# IPv6 gateway and primary IPv6 SLAAC address.
 IPV6_DEFAULTGW=fe80::1%eth0
 IPV6ADDR=2001:db8:2000:aff0::2/128
 
@@ -204,7 +202,7 @@ PREFIX1=24
 IPADDR2=192.0.2.6
 PREFIX2=17
 
-# Your primary IPv6 address (specifying gateway not necessary).
+# Your primary IPv6 SLAAC address (specifying gateway not necessary).
 IPV6ADDR=2001:db8:2000:aff0::2/64
 
 # Add additional IPv6 addresses, separated by a space.
@@ -234,7 +232,7 @@ iface eth0 inet static
 iface eth0 inet static
   address 198.51.100.10/24
 
-# IPv6 gateway and primary address.
+# IPv6 gateway and primary IPv6 SLAAC address.
 iface eth0 inet6 static
   address 2001:db8:2000:aff0::1/64
   gateway fe80::1
@@ -301,7 +299,7 @@ GATEWAY=198.51.100.1
 # Add a second IPv4 address:
 IPADDR1=198.51.100.10/24
 
-# Primary IPv6 address and gateway.
+# Primary IPv6 SLAAC address and gateway.
 IPV6ADDR=2001:db8:2000:aff0::2/128
 IPV6_DEFAULTGW=fe80::1
 
@@ -327,7 +325,7 @@ NETCONFIG_DNS_STATIC_SEARCHLIST="members.linode.com"
 NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
 {{< /file >}}
 
-### Ubuntu 18.04
+### Ubuntu 18.04 and 20.04
 
 [Netplan](https://netplan.io/) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server is packaged with `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, while NetworkManager is used as the Netplan backend in Ubuntu Desktop. The `ifupdown` package has been deprecated, and `/etc/network/interfaces` is no longer used, but it's still possible to configure static networking with `/etc/systemd/network/*.network` files.
 
@@ -357,7 +355,7 @@ network:
       addresses:
         - 198.51.100.5/24                         # Your Linode's public IPv4 address.
         - 192.168.1.2/17                          # Private IPv4 address.
-        - "2001:db8:2000:aff0::2/64"              # Primary IPv6 address.
+        - "2001:db8:2000:aff0::2/64"              # Primary IPv6 SLAAC address.
       gateway4: 198.51.100.1                      # Primary IPv4 gateway.
       gateway6: "fe80::1"                         # Primary IPv6 gateway.
       nameservers:
@@ -369,8 +367,7 @@ network:
 
         sudo netplan apply
 
-
-### Ubuntu 14.04, 16.04
+### Ubuntu 14.04 and 16.04
 
 Ubuntu 14.04 and 16.04 include [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in their base installation. This is an application which manages the contents of `/etc/resolv.conf`, so do not edit `resolv.conf` directly. Instead, add DNS resolver addresses and options to the network interface file as shown.
 
@@ -395,7 +392,7 @@ iface eth0 inet static
 iface eth0 inet static
   address 198.51.100.10/24
 
-# IPv6 gateway and primary address.
+# IPv6 gateway and primary IPv6 SLAAC address.
 iface eth0 inet6 static
   address 2001:db8:2000:aff0::1/64
   gateway fe80::1
@@ -404,7 +401,6 @@ iface eth0 inet6 static
 iface eth0 inet6 static
   address 2001:db8:2000:aff0::2/64
 {{< /file >}}
-
 
 ## Apply Your Changes
 

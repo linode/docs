@@ -8,6 +8,7 @@ og_description: "Training and inference are interconnected pieces of machine lea
 keywords: ['cloud machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
+image: IntroMachineLearning_trainandinterference.png
 modified_by:
   name: Linode
 title: "Machine Learning Training and Inference"

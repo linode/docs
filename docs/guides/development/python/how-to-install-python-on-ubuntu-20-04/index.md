@@ -9,6 +9,7 @@ keywords: ['How to Install Python on Ubuntu','Python','Python3','Python 2 end of
 tags: ['python', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-12
+image: InstallPython3_Ubuntu2004.png
 modified_by:
   name: Linode
 title: "How to Install Python 3 on Ubuntu 20.04"
@@ -30,7 +31,7 @@ As of January 1, 2020, the official version of Python is Python 3. Python 2 is n
 
 ## Before You Begin
 
-1.  This guide assumes that you have access to a server or workstation running CentOS 8. To provision a Linode running CentOS 8, follow our [Getting Started](/docs/guides/getting-started/) guide.
+1.  This guide assumes that you have access to a server or workstation running Ubuntu 20.04 LTS. To provision a Linode running Ubuntu 20.04 LTS, follow our [Getting Started](/docs/guides/getting-started/) guide.
 
 1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 

@@ -26,9 +26,9 @@ Linode Object Storage allows for bucket versioning so that you can retain differ
 
 In this guide, you will learn about:
 
-- [Bucket versioning](/docs/platform/object-storage/bucket-versioning/#bucket-versioning) concepts.
-- How to use the [graphical user interface (GUI) Cyberduck](/docs/platform/object-storage/bucket-versioning/#cyberduck) client to version buckets.
-- How to version buckets from the [AWS command line interface (CLI)](/docs/platform/object-storage/bucket-versioning/#aws-cli), which is compatible with Linode Object Storage.
+- [Bucket versioning](#bucket-versioning) concepts.
+- How to use the [graphical user interface (GUI) Cyberduck](#cyberduck) client to version buckets.
+- How to version buckets from the [AWS command line interface (CLI)](#aws-cli), which is compatible with Linode Object Storage.
 
 ## Before You Begin
 
@@ -48,25 +48,25 @@ Every version of an object counts towards the monthly billable storage quota. Wh
 
 ### Cyberduck
 
-Cyberduck is a GUI application that supports a wide variety of file transfer protocols, including S3-compatible Object Storage. For basic Cyberduck functionality, such as creating buckets and uploading objects, consult our [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) guide.
+Cyberduck is a GUI application that supports a wide variety of file transfer protocols, including S3-compatible Object Storage. For basic Cyberduck functionality, such as creating buckets and uploading objects, consult our [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/) guide.
 
 {{< note >}}
-If you don't have Cyberduck set up on your computer, visit the [Install and Configure Cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-cyberduck) of the How to Use Linode Object Storage guide.
+If you don't have Cyberduck set up on your computer, visit the [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/) guide.
 {{< /note >}}
 
 To use bucket versioning with Cyberduck:
 
 1.  Enable bucket versioning for your bucket. Right-click or control-click on the bucket and select **Info** from the bucket's context menu, or select **File > Info** from the menu bar.
 
-    [![Select "Info" from the bucket's context menu.](bucket-versioning-cyberduck-bucket-info1.png)](bucket-versioning-cyberduck-bucket-info1.png)
+    ![Select "Info" from the bucket's context menu.](bucket-versioning-cyberduck-bucket-info1.png)
 
 1.  A settings menu will appear. Select the **S3** menu heading.
 
-    [![The "Info" settings menu.](bucket-versioning-cyberduck-bucket-info2.png)](bucket-versioning-cyberduck-bucket-info2.png)
+    ![The "Info" settings menu.](bucket-versioning-cyberduck-bucket-info2.png)
 
 1.  In the **Versioning** section, check the checkbox labeled **Bucket Versioning**.
 
-    [![Select the S3 menu heading to view the S3 specific bucket settings.](bucket-versioning-cyberduck-bucket-info3.png)](bucket-versioning-cyberduck-bucket-info3.png)
+    ![Select the S3 menu heading to view the S3 specific bucket settings.](bucket-versioning-cyberduck-bucket-info3.png)
 
 1.  Your bucket will now retain previous versions of the objects within it. To test this functionality, create an example text document on your computer and add some text to it:
 
@@ -84,7 +84,7 @@ This is version 2 of the object.
 
     Save the change and upload the file to your bucket just as you did in the previous step. Cyberduck will prompt you this time to confirm that you'd like to upload the file. Though the dropdown menu says **Overwrite**, the file will not be overwritten.
 
-    [![Confirm that you'd like to upload the file to your bucket.](bucket-versioning-cyberduck-upload-prompt.png)](bucket-versioning-cyberduck-upload-prompt.png)
+    ![Confirm that you'd like to upload the file to your bucket.](bucket-versioning-cyberduck-upload-prompt.png)
 
 1.  You now have two objects in your bucket, though initially you may only see one. To view the different saved versions of your object, select **View** from the menu bar and click on **Show Hidden Files**.
 
@@ -94,14 +94,14 @@ This is version 2 of the object.
 You may have to click the **Refresh** button in Cyberduck's toolbar to see the hidden files.
 {{< /note >}}
 
-    [![Viewing the hidden files, there are now two files in the bucket.](bucket-versioning-cyberduck-view-files.png)](bucket-versioning-cyberduck-view-files.png)
+    ![Viewing the hidden files, there are now two files in the bucket.](bucket-versioning-cyberduck-view-files.png)
 
 1.  Double click the grayed-out version of the file (the one with the earlier modified date) to download the file. Once opened, you'll see that the file contains the contents of the first revision.
 
 1.  To revert to a previous file revision, right-click or control-click on an object and select **Revert**. This will create a new object in the bucket, preserving the state of the previous two objects. At this point the current object will contain the contents of revision one, the second object will contain the contents of revision two, and the third object will contain to the contents of revision one. You can see, then, how bucket versioning works to maintain a stateful history.
 
     {{< note >}}
-Each file has its own permissions. If you'd like to view objects via HTTP, then you'll need to manually set the permissions for each object to *Everyone* each time you upload or revert to a different version of the object, as described in the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#upload-download-and-delete-an-object-with-cyberduck) guide.
+Each file has its own permissions. If you'd like to view objects via HTTP, then you'll need to manually set the permissions for each object to *Everyone* each time you upload or revert to a different version of the object, as described in the [Using Cyberduck with Object Storage > Upload, Download, and Delete an Object with Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/#upload-download-and-delete-an-object-with-cyberduck) guide.
 {{</ note >}}
 
 #### Delete Versioned Objects in Cyberduck

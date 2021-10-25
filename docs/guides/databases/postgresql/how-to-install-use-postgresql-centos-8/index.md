@@ -9,6 +9,7 @@ keywords: ['database','postgresql','centos', 'yum']
 tags: ["database","postgresql","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-02
+image: postgreSQL.jpg
 modified_by:
   name: Linode
 title: "CentOS 8: Install and Use PostgreSQL"

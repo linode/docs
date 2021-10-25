@@ -10,6 +10,7 @@ modified: 2020-04-23
 modified_by:
   name: Linode
 published: 2020-06-22
+image: UseTheCDCommand.png
 title: "How to Use the cd Command to Navigate the Terminal"
 h1_title: "Using the cd Command to Navigate the Terminal"
 enable_h1: true

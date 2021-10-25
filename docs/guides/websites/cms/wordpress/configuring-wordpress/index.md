@@ -8,6 +8,7 @@ keywords: ['wordpress configurations']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
+image: HowtoConfigureWordpress.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "Configuring WordPress"

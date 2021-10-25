@@ -9,6 +9,7 @@ keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
 tags: ["linode platform","python","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-14
+image: UseServerSideEnc_LinObjStorage.png
 modified_by:
   name: Linode
 title: "How to Use Server-Side Encryption with Linode Object Storage"

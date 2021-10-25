@@ -142,7 +142,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     service nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/platform/manager/dns-manager/) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/guides/dns-manager/) pointing your domain name to your Linode's IP address.
 
 ## Configure spawn-fcgi
 

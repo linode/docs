@@ -3,8 +3,7 @@ slug: choosing-a-distribution
 author:
   name: Ryan Syracuse
   email: docs@linode.com
-description: 'A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project.'
-og_description: 'A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project.'
+description: "A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project."
 keywords: ["distro", "distribution", "operating system", "Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-15
@@ -37,7 +36,7 @@ Below is a full list of distributions, along with the release versions that we o
 | [Gentoo](https://www.gentoo.org/) | Rolling release\* | **Recommended for advanced Linux users only.** Advanced distribution designed for power users who want more control over their configuration and are comfortable compiling everything from source. |
 | [Rocky Linux](https://rockylinux.org/) | **8** | A binary compatible derivative of RHEL intended to provide a long-term stable replacement for CentOS. Built by a community team led by the founder of the CentOS project. |
 | [Slackware](http://www.slackware.com/) | **14.2**, 14.1** | **Recommended for advanced Linux users only.** The oldest actively maintained distribution. One of the most UNIX-like Linux distributions available. |
-| [Ubuntu](https://ubuntu.com/) | 21.04, 20.10, **20.04 LTS**, 18.04 LTS, 16.04 LTS | Arguably the most popular Linux distribution, widely regarded for it's ease of use. The LTS versions of Ubuntu are featured heavily in Linode's guides and across the community. |
+| [Ubuntu](https://ubuntu.com/) | 21.10, 21.04, 20.10, **20.04 LTS**, 18.04 LTS, 16.04 LTS | Arguably the most popular Linux distribution, widely regarded for it's ease of use. The LTS versions of Ubuntu are featured heavily in Linode's guides and across the community. |
 | [OpenSUSE Leap](https://www.opensuse.org/) | **15.3**, 15.2, 15.1** | Provides powerful tools specific to system administration tasks. Starting with version 15.3, this distribution maintains parity with SLE (SUSE Linux Enterprise), making it a great choice for users of SLE or those looking to benefit from enterprise-grade stability. |
 
 \* *Rolling release: Continuously updated release, typically with small but frequent updates.*<br>
