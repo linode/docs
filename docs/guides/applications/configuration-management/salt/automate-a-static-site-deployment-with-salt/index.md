@@ -82,7 +82,7 @@ Development of your Hugo site and your Salt formula will take place on your pers
 
 1.  In the settings tab of your Linodes' dashboards, label one of the Linodes as `salt-master` and the other as `salt-minion`. This is not required, but it will help keep track of which Linode serves which purpose.
 
-1.  Complete the [Securing Your Server](/docs/security/securing-your-server/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Securing Your Server](/docs/guides/securing-your-server/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< content "limited-user-note-shortguide" >}}
 

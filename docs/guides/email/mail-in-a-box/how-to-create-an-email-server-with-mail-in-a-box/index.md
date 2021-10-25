@@ -48,7 +48,7 @@ The preconfigured box of software is also fairly security-conscious and you can 
 
 2.  If you're unfamiliar with the basic concepts of Linode administration, read the [Getting Started](/docs/getting-started/) guide.
 
-3. It's highly recommended that you follow the instructions on [Hardening SSH access](/docs/security/securing-your-server/#harden-ssh-access) but **only** the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
+3. It's highly recommended that you follow the instructions on [Hardening SSH access](/docs/guides/securing-your-server/#harden-ssh-access) but **only** the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
 
 If you insist on using a password for root instead of a private key, at least use a **very good password**. Bots constantly scan the Internet for SSH servers and try random passwords. Some are more aggressive than others, and while `fail2ban` helps block IPs, there's always the next bot (with a different IP) that will visit and have another try. Keep in mind that strings such as *h4x0r123*, while they may look strong because they mix letters and numbers, are actually very weak.
 

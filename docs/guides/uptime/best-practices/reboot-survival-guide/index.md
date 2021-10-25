@@ -179,7 +179,7 @@ If you use full-disk encryption, enter your password in the LISH console after a
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](/docs/guides/securing-your-server/#configure-a-firewall) section of our [Securing your Server](/docs/guides/securing-your-server/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 

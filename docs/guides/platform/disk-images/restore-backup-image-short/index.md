@@ -59,7 +59,7 @@ If you are attempting to restore a disk to the same Linode the backup was create
     {{< note >}}
 In some cases, you will not be able to shrink your disks enough to fit the restored backup. Other alternatives for restoring to your existing Linode include:
 
--   [Changing your Linode's plan](/docs/platform/disk-images/resizing-a-linode/) to a higher tier that offers more disk space.
+-   [Changing your Linode's plan](/docs/guides/resizing-a-linode/) to a higher tier that offers more disk space.
 -   [Removing other disks](/docs/guides/disks-and-storage/#deleting-a-disk) from your Linode.
 {{< /note >}}
 

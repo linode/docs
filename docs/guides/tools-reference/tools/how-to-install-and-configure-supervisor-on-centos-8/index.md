@@ -44,7 +44,7 @@ This guide shows how to:
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide. [Create a New Linode](/docs/getting-started/#create-a-linode) using our CentOS 8 image. Then, complete the steps for setting your [Linode's Hostname](/docs/getting-started/#set-the-hostname) and [Timezone](/docs/getting-started/#set-the-timezone).
 
-1.  This guide uses `sudo` wherever possible. Follow the [Add a Limited User Account](/docs/guides/securing-your-server/#centos--fedora) section of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account. The commands in this guide should be run from this user. When creating your user, make sure that you give it `sudo` privileges.
+1.  This guide uses `sudo` wherever possible. Follow the [Add a Limited User Account](/docs/guides/securing-your-server/#centos--fedora) section of our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account. The commands in this guide should be run from this user. When creating your user, make sure that you give it `sudo` privileges.
 
     {{< note >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -52,7 +52,7 @@ Commands that require elevated privileges are prefixed with `sudo`. If you’re 
 
 1.  Follow the [Add a Limited User Account](/docs/guides/securing-your-server/#centos--fedora) section again to create another standard user named `myappuser`. The Supervisor configuration that appears later in this guide runs the example app under this user. This user does *not* need `sudo` privileges.
 
-1.  Follow the other sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to harden SSH access and remove unnecessary network services.
+1.  Follow the other sections of the [Securing Your Server](/docs/guides/securing-your-server/) guide to harden SSH access and remove unnecessary network services.
 
 1.  Update your system's packages:
 

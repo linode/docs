@@ -39,7 +39,7 @@ The traffic passed from your client to your Squid HTTP proxy will not be encrypt
 
 ## Install Squid
 
-1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/), including adding a limited user account and configuring a firewall.
+1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](https://www.linode.com/docs/guides/securing-your-server/), including adding a limited user account and configuring a firewall.
 
     {{< note >}}
 This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -219,7 +219,7 @@ Next, you will enable clients to connect to your Squid HTTP proxy.
 
         sudo ufw allow 3128/tcp
 
-    You can find more information on configuring firewall rules for Ubuntu in our guide on [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+    You can find more information on configuring firewall rules for Ubuntu in our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 ## Connect to your Squid HTTP Proxy
 

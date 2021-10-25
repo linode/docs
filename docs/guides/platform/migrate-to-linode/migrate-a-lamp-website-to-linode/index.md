@@ -25,7 +25,7 @@ This guide includes commands that need to be run at the command line of your cur
 
 1.  Follow Linode's [Getting Started](/docs/getting-started/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
+1.  Follow the [How to Secure Your Server](/docs/guides/securing-your-server/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
 
 ### Install LAMP
 

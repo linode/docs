@@ -43,7 +43,7 @@ This will delete your current images and deploy fresh disks. All data that was s
 
 ## Copy Data Offsite
 
-If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) explains how to copy your entire disk offsite.
+If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/guides/copying-a-disk-image-over-ssh/) explains how to copy your entire disk offsite.
 
 ## Use a Second Linode
 

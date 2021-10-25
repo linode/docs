@@ -137,7 +137,7 @@ Apr 06 01:03:17 xlauncher ifup[6359]: run-parts: failed to exec /etc/network/if-
 
 Use the full output of the `sudo systemctl status networking.service -l` to determine if the failure is happening when executing the `etc/network/if-up.d/iptables` file or within the rules of the iptables. The exec codes provided in the output will help you determine which of the two is the source of failure.
 
-See the [Control Network Traffic with Iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for more information.
+See the [Control Network Traffic with Iptables](/docs/guides/control-network-traffic-with-iptables/) guide for more information.
 
 ### SendMail
 
@@ -251,7 +251,7 @@ If you are unable to determine a specific rule that is causing issues with your 
 
         sudo iptables -X
 
-    You can now begin rebuilding your firewall rules. See [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for more instructions.
+    You can now begin rebuilding your firewall rules. See [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for more instructions.
 
 - Consult the [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) for steps to prepare a Linode for any future maintenance.
 

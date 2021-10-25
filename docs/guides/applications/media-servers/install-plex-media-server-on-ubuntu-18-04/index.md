@@ -37,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account with `sudo` privileges.
+1.  Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account with `sudo` privileges.
 
 1.  Ensure that your system is up to date:
 

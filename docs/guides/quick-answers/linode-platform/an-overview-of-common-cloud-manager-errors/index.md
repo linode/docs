@@ -33,7 +33,7 @@ The above error means that there is an issue retrieving your Linodes from our ba
 
 If the status page shows that everything is all clear, then the next step is to attempt to clear your web browser cache, as this can sometimes cause an issue in loading resources. The method for completing this process varies between browsers, however it usually involves opening your browsers full history and finding an option to clear it.
 
-If all else fails, you should reach out to our 24/7 [Support Team](https://www.linode.com/docs/platform/billing-and-support/support/) for more direct assistance. Additionally, we can also recommend attempting to access your resources through alternative means such as our [API](https://developers.linode.com/api/v4/) or [CLI](https://www.linode.com/docs/platform/api/linode-cli/) if our Manager is inaccessible for any reason.
+If all else fails, you should reach out to our 24/7 [Support Team](https://www.linode.com/support/) for more direct assistance. Additionally, we can also recommend attempting to access your resources through alternative means such as our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/platform/api/linode-cli/) if our Manager is inaccessible for any reason.
 
 ## Error Retrieving Network Information
 
@@ -57,7 +57,7 @@ Generally the above message will occur when you've recently signed up for new se
 
 **Account Limit Reached. Please open a support ticket.**
 
-If you see the following message, then you'll be unable to create a resource due to a limit currently set on your account.  Our [Support Team](https://www.linode.com/docs/platform/billing-and-support/support/) will be able to help to either increase this limit, or provide insight into why the limit may be in place.
+If you see the following message, then you'll be unable to create a resource due to a limit currently set on your account.  Our [Support Team](https://www.linode.com/support/) will be able to help to either increase this limit, or provide insight into why the limit may be in place.
 
 The reasons behind these limits can vary, though in most cases are related to default resource limits set on your account.
 

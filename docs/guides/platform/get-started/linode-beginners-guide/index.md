@@ -62,7 +62,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 -   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
 -   [Cloning a Disk](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) - Creating an exact copy of a disk in the Cloud Manager.
--   [Copying a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) - How to download an exact binary image of your Linode's disk over SSH.
+-   [Copying a Disk Over SSH](/docs/guides/copying-a-disk-image-over-ssh/) - How to download an exact binary image of your Linode's disk over SSH.
 
 ## How can I install software on my Linode?
 
@@ -90,11 +90,11 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Linode slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and [submit them](/docs/platform/billing-and-support/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and submit them via the [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
 
 ## How can I upgrade or downgrade my Linode?
 
-Resizing your Linode is automated via the **Resize** tab for your Linode in the Cloud Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/platform/disk-images/resizing-a-linode/)
+Resizing your Linode is automated via the **Resize** tab for your Linode in the Cloud Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/guides/resizing-a-linode/)
 
 ## How can I test downloads speeds from different data centers?
 
@@ -114,7 +114,7 @@ For those just getting started with Linux systems, we've created a series of gui
 -   [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) - An introduction to the principal concepts and use of the users and groups system.
 -   [Using the Terminal](/docs/networking/ssh/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
 -   [Linux Package Management](/docs/tools-reference/linux-package-management/) - How to install software on your Linode.
--   [Securing your Server](/docs/security/securing-your-server/) - Keeping your Linode safe from unauthorized access or abuse.
+-   [Securing your Server](/docs/guides/securing-your-server/) - Keeping your Linode safe from unauthorized access or abuse.
 
 ## Where can I get help with something not covered here?
 

@@ -24,7 +24,7 @@ This guide explains how to use different troubleshooting commands on your Linode
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /disclosure-note >}}
 
 ## Before You Begin
@@ -166,10 +166,10 @@ Your deployment may be running FirewallD or UFW, which are frontends used to mor
     sudo ufw status
     sudo firewall-cmd --state
 
-Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+Review [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
 
 {{< output >}}
 -A INPUT -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
@@ -180,7 +180,7 @@ In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a 
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables rules:
 
@@ -232,7 +232,7 @@ SSH can be configured to not accept passwords and instead accept public key auth
 
     grep PasswordAuthentication /etc/ssh/sshd_config
 
-If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
+If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/guides/securing-your-server/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
 
 ### Is your Public Key Stored on the Server?
 

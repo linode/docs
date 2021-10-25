@@ -43,7 +43,7 @@ To run the commands in this tutorial, you'll need:
 
     - You can use Ansible to create the user, which is outlined in the [Add a Limited User Account](/docs/applications/configuration-management/running-ansible-playbooks/#add-a-limited-user-account) section of the [Automate Server Configuration with Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/) guide.
 
-    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of the [Securing your Server](/docs/security/securing-your-server/) guide.
+    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) section of the [Securing your Server](/docs/guides/securing-your-server/) guide.
 
 {{< note >}}
 Follow the [Getting Started with Linode](/docs/getting-started/#create-a-linode) guide for help with creating Linodes.

@@ -30,7 +30,7 @@ You will need at least two Linodes for this guide. Complete the following steps 
 
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Follow the [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
     This guide will use `sudo` wherever possible. Please ensure you have access to privileged user rights.
 

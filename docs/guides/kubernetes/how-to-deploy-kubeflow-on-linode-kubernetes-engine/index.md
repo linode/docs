@@ -43,7 +43,7 @@ _Are you ready to train your model at scale?_
 3.  Most Kubeflow pipelines require [Kubernetes Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) that can be attached to several nodes at once (ReadWriteMany). Currently, the only mode supported by the Linode Block Storage CSI driver is ReadWriteOnce, meaning that it can only be connected to one Kubernetes node at a time.
 
 {{< caution >}}
-This guide's example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster created with this guide, be sure to delete it when you have finished. If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. For more information see our [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide. For a full list of plan prices, visit our [Pricing page](https://www.linode.com/pricing/).
+This guide's example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster created with this guide, be sure to delete it when you have finished. If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. For more information see our [How Linode Billing Works](/docs/guides/how-linode-billing-works/) guide. For a full list of plan prices, visit our [Pricing page](https://www.linode.com/pricing/).
 {{</ caution >}}
 
 ## Create an LKE Cluster

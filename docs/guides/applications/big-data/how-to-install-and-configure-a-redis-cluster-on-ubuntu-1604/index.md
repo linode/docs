@@ -27,7 +27,7 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 
 Prior to starting, we recommend familiarizing yourself with the following:
 
-* [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw/)
+* [Firewall settings using iptables or ufw](/docs/guides/configure-firewall-with-ufw/)
 * [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/)
 * [Master-Replicas Replication](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 

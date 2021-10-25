@@ -36,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
+1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/guides/securing-your-server/) guides.
 
 1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
 
@@ -317,7 +317,7 @@ You can control the server in the following ways.
 
 ### Optional: Firewall
 
-Depending on your firewall configuration, you may need to modify your settings to allow access to web ports. A popular firewall for Debian is [UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+Depending on your firewall configuration, you may need to modify your settings to allow access to web ports. A popular firewall for Debian is [UFW](/docs/guides/configure-firewall-with-ufw/).
 
 If you had UFW installed before you installed Apache, Apache will have registered with UFW during installation and provides some simple to use configurations.
 

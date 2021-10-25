@@ -31,7 +31,7 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 1.  Familiarize yourself with our [Getting Started guide](/docs/getting-started/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server guide](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server guide](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 

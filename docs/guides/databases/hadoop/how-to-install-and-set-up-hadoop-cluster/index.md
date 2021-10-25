@@ -39,7 +39,7 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
 1.  [Add a Private IP Address](/docs/platform/manager/remote-access/#adding-private-ip-addresses) to each Linode so that your Cluster can communicate with an additional layer of security.
 
-1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden each of the three servers. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
+1.  Follow the [Securing Your Server](/docs/guides/securing-your-server/) guide to harden each of the three servers. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 
 1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or install the latest JDK from Oracle.
 

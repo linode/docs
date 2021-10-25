@@ -22,7 +22,7 @@ image: Hosting-a-Website-smg.jpg
 
 Hosting a website is one of the most common uses for a Linode. A website can be anything from a single HTML file to an interactive application with multiple components, and the hosting process varies greatly depending on the type of website being served. This guide walks you through the process of setting up some of the most common simple website types.
 
-Complete the steps in our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
+Complete the steps in our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
 
 This guide is written for Debian 9 and Ubuntu 18.04. If you are using a different distribution, adapt the commands (e.g. using `yum` instead of `apt`).
 

@@ -610,7 +610,7 @@ while read -d ':' dir; do
 done <<< "$DIRECTORIES:"
 {{< /file >}}
 
-The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/).
+The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/guides/find-files-in-linux-using-the-command-line/).
 
 Run the `countFiles` script:
 

@@ -31,7 +31,7 @@ If you are using a Linode, make sure you run the steps in this section to config
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1.  Update your system:
 

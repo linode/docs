@@ -44,7 +44,7 @@ Here's how to set a user's access permissions:
 
     ![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions.png "Configure User permissions in the Linode Cloud Manager")
 
-1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/), frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
+1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/), frozen [Images](/docs/guides/linode-images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) allows the user to perform actions that incur billing costs, such as adding or resizing a Linode.
@@ -53,8 +53,8 @@ Granting access to settings denoted with a dollar sign ($) allows the user to pe
 1. Select an option for **Billing Access** permissions. These options are as follows:
 
     - **None**: The user is unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous step.
-    - **Read Only**: The user can [View Billing Info](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), receive copies of all invoices, and receive emails related to payments.
-    - **Read-Write**: The user has full access to [Billing Information](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), can make payments, edit billing information, view billing information, receive copies of all invoices, and receive email related to payments.
+    - **Read Only**: The user can [View Billing Info](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments), receive copies of all invoices, and receive emails related to payments.
+    - **Read-Write**: The user has full access to [Billing Information](/docs/guides/manage-billing-in-cloud-manager/), can make payments, edit billing information, view billing information, receive copies of all invoices, and receive email related to payments.
 
 1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Permissions** section to allow the user to access individual Linodes, StackSripts, Block Storage Volumes, Images, NodeBalancers, and Domains. Unlike Global Permissions, Specific Permissions can apply to individual resources and not the service as a whole. Specific Permission options are as follows:
 

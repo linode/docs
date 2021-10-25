@@ -32,7 +32,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 1.  Click **Create** at the top of the page and select **Linode**.
-1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/quick-answers/linux/choosing-a-distribution/) tab.
+1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/guides/choosing-a-distribution/) tab.
 
     ![Creating a receiving Linode](image-selection.png)
 

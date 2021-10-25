@@ -42,7 +42,7 @@ The size of the disk(s) created by the restore process will be equal to the amou
 1.  If the amount of unallocated space available is greater than the size of the backup, you can proceed with restoring. If the amount of unallocated space is less than the size of the backup, you can stop the restoration workflow, [resize your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) on the target Linode to make room for it, and then come back to the restore page after the disk resize operation has finished.
 
     {{< note >}}
-In some cases, you will not be able to shrink your disks enough to fit the restored backup. As an alternative, you can [change your Linode's plan](/docs/platform/disk-images/resizing-a-linode/) to a higher tier that offers more disk space.
+In some cases, you will not be able to shrink your disks enough to fit the restored backup. As an alternative, you can [change your Linode's plan](/docs/guides/resizing-a-linode/) to a higher tier that offers more disk space.
 {{< /note >}}
 
 1.  From the **Restore to Existing Linode** menu, click **Restore**.

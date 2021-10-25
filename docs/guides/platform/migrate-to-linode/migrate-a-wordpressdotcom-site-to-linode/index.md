@@ -31,7 +31,7 @@ WordPress.com's export feature will export pages, posts, and comments from your 
 
 1.  Follow Linode's [Getting Started](/docs/getting-started/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide and create a limited Linux user with `sudo` privileges.
+1.  Follow the [How to Secure Your Server](/docs/guides/securing-your-server/) guide and create a limited Linux user with `sudo` privileges.
 
 1.  Follow the [Install WordPress on Ubuntu 18.04](/docs/websites/cms/install-wordpress-ubuntu-18-04) guide to stand up a new web server and WordPress installation. Later in this guide you will use the WordPress credentials you create during the installation, so be sure to record them.
 

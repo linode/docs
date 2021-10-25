@@ -41,7 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  Follow the steps in our [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/) guide to set up a web server stack with NGINX on your CentOS host.
 
-3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 4.  Update your system:
 

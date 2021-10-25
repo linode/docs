@@ -35,7 +35,7 @@ Puppet deployments can range from small groups of servers up to enterprise-level
 After installation, the next section will show you how to secure these servers via Puppet. This section will demonstrate core features of the Puppet language.
 
 {{< note >}}
-Most guides will instruct you to follow the [How to Secure your Server](/docs/security/securing-your-server/) guide before proceeding. Because Puppet will be used to perform this task, you should begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
+Most guides will instruct you to follow the [How to Secure your Server](/docs/guides/securing-your-server/) guide before proceeding. Because Puppet will be used to perform this task, you should begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
 {{< /note >}}
 
 ## Before You Begin
@@ -284,7 +284,7 @@ Notice: Applied catalog in 0.02 seconds
 
 ## Add Modules to Configure Agent Nodes
 
-The Puppet master and agent nodes are now functional, but they are not secure. Based on concepts from the [How to Secure your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+The Puppet master and agent nodes are now functional, but they are not secure. Based on concepts from the [How to Secure your Server](/docs/guides/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.

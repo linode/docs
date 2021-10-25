@@ -36,7 +36,7 @@ If you do not see output, try running it with `sudo`:
 
     sudo journalctl
 
-If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/security/securing-your-server/#add-a-limited-user-account).
+If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/guides/securing-your-server/#add-a-limited-user-account).
 
 ### Default Log Format and Ordering
 

@@ -31,7 +31,7 @@ If you use Linode for your website's DNS, you can use acme.sh to obtain both sin
 
 ## Before You Begin
 
-1. Deploy a Linode by following the [Getting Started](/docs/getting-started/) and the [Securing Your Server](/docs/security/securing-your-server/) guides.
+1. Deploy a Linode by following the [Getting Started](/docs/getting-started/) and the [Securing Your Server](/docs/guides/securing-your-server/) guides.
 
 1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](/docs/guides/getting-started#connect-to-your-linode-via-ssh). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
 

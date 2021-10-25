@@ -78,7 +78,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
      {{< note >}}
 
-If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot), or [Resize Your Linode](/docs/platform/disk-images/resizing-a-linode/)
+If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot), or [Resize Your Linode](/docs/guides/resizing-a-linode/)
 
 {{< /note >}}
 
@@ -106,7 +106,7 @@ If your Linode's disks have been using the entirety of allocatable space availab
 
     ![Boot This Configuration Drop Down Menu](upgrade-centos8-boot-this-config.png "Boot This Configuration Drop Down Menu")
 
-1.  Now you can SSH into your server. Don't forget to [secure your new installation](/docs/security/securing-your-server/).
+1.  Now you can SSH into your server. Don't forget to [secure your new installation](/docs/guides/securing-your-server/).
 
 ### Mount the Disk
 

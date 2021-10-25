@@ -39,7 +39,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/security/securing-your-server/#add-a-limited-user-account).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/guides/securing-your-server/#add-a-limited-user-account).
 
 ## Install Apache 2
 

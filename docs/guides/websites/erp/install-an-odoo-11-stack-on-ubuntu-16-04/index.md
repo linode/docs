@@ -71,7 +71,7 @@ Ports `22`, `80`, and `5432` are the defaults for SSH, HTTP and PostgreSQL commu
 
     sudo ufw allow 22/tcp
 
-For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 ## Hostname Assignment
 

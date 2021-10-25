@@ -31,7 +31,7 @@ This guide shows how to host a highly available website with WordPress. However,
 
 1.  This guide uses a total of nine nodes, all Linodes running CentOS 7 with SELinux enabled, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting the hostname and timezone for each Linode you create.
 
-1.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server/) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
+1.  You should also be familiar with our [Securing Your Server](/docs/guides/securing-your-server/) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
 1.  The Linodes we create in this guide will use the following hostname conventions:
 
@@ -182,7 +182,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 {{< /file >}}
 
 {{< note >}}
-You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/platform/billing-and-support/support/).
+You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](https://www.linode.com/support/).
 {{< /note >}}
 
 ### Install Galera and XtraDB
@@ -518,7 +518,7 @@ So far, we've successfully configured a redundant web stack with three layers of
 Alternatively, some users prefer to configure HAProxy instead of or in addition to Keepalived. For more information, visit our guide on [how to use HAProxy for load balancing](/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/).
 {{< /note >}}
 
-Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/platform/billing-and-support/support/) and do so before continuing.
+Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](https://www.linode.com/support/) and do so before continuing.
 
 We've added the floating IP address to `galera1`, but in practice, it can be configured to any of your database nodes.
 

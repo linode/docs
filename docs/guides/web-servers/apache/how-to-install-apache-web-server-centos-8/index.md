@@ -32,7 +32,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
+1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/guides/securing-your-server/) guides.
 
 1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
 

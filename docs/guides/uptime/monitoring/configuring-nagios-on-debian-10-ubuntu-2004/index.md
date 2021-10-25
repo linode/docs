@@ -30,7 +30,7 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our article on [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our article on [How to Secure Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Install and configure Nagios. Follow the steps in the [Install Nagios on Debian 10 and Ubuntu 20.04](/docs/guides/install-nagios-on-debian-10-and-ubuntu-2004/) guide. Alternatively, the official [Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) provides steps for installing Nagios from source code on a wide range of Linux distributions.
 

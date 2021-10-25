@@ -26,7 +26,7 @@ This guide provides an overview of both credential-based and rule-based access c
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode’s hostname is set.
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides, and the Linode’s hostname is set.
 
 2.  Have a working installation of Apache. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/web-servers/lamp/).
 

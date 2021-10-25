@@ -34,7 +34,7 @@ aliases: ['/development/ci/use-buildbot-for-software-testing-on-ubuntu/']
 
 1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running Ubuntu 18.04, including setting the hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Ensure your system is up to date:
 

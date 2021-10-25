@@ -59,7 +59,7 @@ This guide assumes you are familiar with the following concepts and skills:
 
 1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide and complete the steps for [updating the system's software](/docs/getting-started/#install-software-updates), setting the Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of [Securing the Server](/docs/security/securing-your-server/) to create a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  This guide uses `sudo` wherever possible. Complete the sections of [Securing the Server](/docs/guides/securing-your-server/) to create a [limited user account](/docs/guides/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/guides/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/guides/securing-your-server/#remove-unused-network-facing-services).
 
 ## Copy the Flask App to Linode
 

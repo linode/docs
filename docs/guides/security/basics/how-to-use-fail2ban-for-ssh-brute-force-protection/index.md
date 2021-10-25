@@ -29,7 +29,7 @@ This guide uses Ubuntu, but the commands are similar for other systems.
 
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
+1.  Follow the [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
 
 1.  Log into your Linode via SSH and update and upgrade.
 

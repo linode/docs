@@ -69,7 +69,7 @@ Cloud Firewall rules are applied on the network level and are not detectable int
 
 ## Checking Firewall Rules with UFW
 
-*Uncomplicated Firewall (UFW)* is an [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) for a deeper dive into UFW.
+*Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
 
 {{< note >}}
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) or using [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
@@ -143,4 +143,4 @@ or
 
     iptables -D INPUT -j DROP -p tcp --destination-port 110 -i eth0 -d 198.51.100.0
 
-For more information on reading and interpreting iptables rules see our guide on iptables, [A Tutorial for Controlling Network Traffic with iptables](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/#basic-iptables-rulesets-for-ipv4-and-ipv6)
+For more information on reading and interpreting iptables rules see our guide on iptables, [A Tutorial for Controlling Network Traffic with iptables](https://www.linode.com/docs/guides/control-network-traffic-with-iptables/#basic-iptables-rulesets-for-ipv4-and-ipv6)

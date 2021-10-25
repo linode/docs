@@ -120,7 +120,7 @@ The second entry tells the system to look to `192.168.1.1` for the domain `stick
 
 ## Network Diagnostics
 
-In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/docs/platform/billing-and-support/support/) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](https://www.linode.com/support/) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
 ### The ping Command
 
@@ -173,7 +173,7 @@ Here is an example of output from a `traceroute` command:
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by lines with three asterisks (`* * *`).
 
-Adding `traceroute` output to [Linode support](/docs/platform/billing-and-support/support/) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
+Adding `traceroute` output to [Linode support](https://www.linode.com/support/) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
 
 ### The mtr Command
 
@@ -258,7 +258,7 @@ The memory and swap columns provide the same kind of information provided by the
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
-If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help [support](/docs/platform/billing-and-support/support/) diagnose problems.
+If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help support diagnose problems.
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
@@ -286,7 +286,7 @@ Web developers and editors often use the FTP protocol to transfer and manage fil
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/tools-reference/tools/introduction-to-rsync/) and [using SSH and the terminal](/docs/networking/ssh/using-the-terminal/).
 
 {{< caution >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/securing-your-server/) of all additional access that you grant to third parties.
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/guides/securing-your-server/) of all additional access that you grant to third parties.
 {{< /caution >}}
 
 ### Upload Files to a Remote Server

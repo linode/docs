@@ -35,7 +35,7 @@ This document provides both instructions for deploying the Redis server, and an 
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -205,7 +205,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 
-- Set up a firewall using [your tool of choice](/docs/security/securing-your-server/#configure-a-firewall).
+- Set up a firewall using [your tool of choice](/docs/guides/securing-your-server/#configure-a-firewall).
 
 - Encrypt Redis traffic using an SSH tunnel, or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

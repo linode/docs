@@ -58,13 +58,13 @@ There are two considerations when creating a new Linode: which data center the L
 
     -  To determine which plan to choose, review the [Linode Pricing page](/pricing#all). At a minimum, choose a plan which offers enough storage capacity for the data you store on your current GCP VM instance.
 
-        CPU and RAM allocations are also important since a service with a higher workload/higher traffic will require more of each. If you're not sure what your workload will require, start with a smaller Linode and then [resize your plan](/docs/platform/disk-images/resizing-a-linode/) up or down as needed.
+        CPU and RAM allocations are also important since a service with a higher workload/higher traffic will require more of each. If you're not sure what your workload will require, start with a smaller Linode and then [resize your plan](/docs/guides/resizing-a-linode/) up or down as needed.
 
 ### Deploy a Linux Distribution to your Linode
 
 Determine the Linux distribution your current GCP instance uses and deploy that to your new Linode. If your current deployment uses an older version of a Linux distribution, deploy the newest version available for your new Linode to ensure the latest security enhancements and software availability.
 
-For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/getting-started/) guide. It is also recommended that you follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide once you have deployed your new image.
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/getting-started/) guide. It is also recommended that you follow the [How to Secure Your Server](/docs/guides/securing-your-server/) guide once you have deployed your new image.
 
 ### Install Software on your Linode
 
@@ -104,7 +104,7 @@ If your data is stored in a database, you will likely need to perform a *databas
 
 When you have finished setting up your software and restoring your data, test the installation to make sure it works normally. At this point, you have not yet updated DNS records to point to your Linode deployment, but there are still methods for [previewing your services without DNS](/docs/networking/dns/previewing-websites-without-dns/).
 
-Take this time to perform load testing on your new service. [ApacheBench](https://en.wikipedia.org/wiki/ApacheBench) is a popular benchmarking tool for web services. If you discover that the hardware resource plan you chose originally is not enough when completing these load tests, then [resize your plan](/docs/platform/disk-images/resizing-a-linode/) and continue testing.
+Take this time to perform load testing on your new service. [ApacheBench](https://en.wikipedia.org/wiki/ApacheBench) is a popular benchmarking tool for web services. If you discover that the hardware resource plan you chose originally is not enough when completing these load tests, then [resize your plan](/docs/guides/resizing-a-linode/) and continue testing.
 
 When you have finished testing, move on to the last step in migrating: updating your DNS records.
 
@@ -356,11 +356,11 @@ You may need to respond to some command-line prompts before the image is exporte
 In this section you will create a new Linode, add a new disk and configuration profile in order to boot the Linode from your GCP instance's image, import the GCP image to your Linode, and finally, boot your Linode using your GCP instance's image.
 
 {{< note >}}
-You will be importing your GCP image onto a *raw* disk with the *direct disk* boot option. This will result in a working custom installation; however, it will not support advanced Linode features such as [disk resizing](/docs/platform/disk-images/resizing-a-linode/) or the [Backup Service](/docs/platform/disk-images/linode-backup-service/) by default. These features require an `ext4` formatted disk.
+You will be importing your GCP image onto a *raw* disk with the *direct disk* boot option. This will result in a working custom installation; however, it will not support advanced Linode features such as [disk resizing](/docs/guides/resizing-a-linode/) or the [Backup Service](/docs/platform/disk-images/linode-backup-service/) by default. These features require an `ext4` formatted disk.
 
 If you would like access to these features after completing your migration, ensure you complete the following steps:
 
-- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/#how-hourly-billing-works) guide for details on how hourly billing works.
+- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [How Linode Billing Works](/docs/guides/how-linode-billing-works/) guide for details on how hourly billing works.
 
 - Follow the steps in the optional section [Transfer Disk to ext4](#optional-transfer-disk-to-ext4).
 {{</ note >}}
@@ -376,7 +376,7 @@ You will first create a new Linode to import your GCP image to and then, boot th
 1. Create a Linode by making the desired selections on the Linode create page. For more detailed steps, see the [Create a Linode](/docs/getting-started/#create-a-linode) section in our [Getting Started](/docs/getting-started/) guide.
 
     {{< note >}}
-When selecting your Linode's plan, if you want to have access to advanced features like resizing your Linode and our [Backup Service](/docs/platform/disk-images/linode-backup-service/), choose one that will be large enough to hold twice the size of the entire expanded [disk image](#inspect-your-gcp-instances-disks) that you created from your GCP instance (not just the size of the compressed tar file). This is needed so that later you can  move your installation over to an ext4 formatted disk. Once the move to an ext4 formatted disk is complete, you can delete the raw disk and [resize to a smaller plan](/docs/platform/disk-images/resizing-a-linode/).
+When selecting your Linode's plan, if you want to have access to advanced features like resizing your Linode and our [Backup Service](/docs/platform/disk-images/linode-backup-service/), choose one that will be large enough to hold twice the size of the entire expanded [disk image](#inspect-your-gcp-instances-disks) that you created from your GCP instance (not just the size of the compressed tar file). This is needed so that later you can  move your installation over to an ext4 formatted disk. Once the move to an ext4 formatted disk is complete, you can delete the raw disk and [resize to a smaller plan](/docs/guides/resizing-a-linode/).
   {{</ note >}}
 
 1.  Once the Linode is finished provisioning, power it down. Click on the **Running** status at the top of the Cloud Manager and select **Power Off** from the drop down menu.
@@ -481,7 +481,7 @@ When you're done:
 
 - [Test your new Linode environment](#test-the-new-environment) as outlined in the Migration Strategy 1 section of this guide.
 - [Delete the original disk](/docs/guides/disks-and-storage/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
-- [Resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
+- [Resize your Linode](/docs/guides/resizing-a-linode/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
 - [Delete the Configurations for the original Linode](/docs/guides/linode-configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
 - [Enable Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
 

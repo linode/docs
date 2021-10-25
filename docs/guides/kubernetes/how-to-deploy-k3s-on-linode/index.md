@@ -35,7 +35,7 @@ aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/']
 
 1.  Complete the steps for [setting the hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone) for both Linodes. When setting hostnames, it may be helpful to identify one Linode as a server and the other as an agent.
 
-1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services), and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
+1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/guides/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/guides/securing-your-server/#remove-unused-network-facing-services), and [create firewall rules](/docs/guides/securing-your-server/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
 
     {{< content "limited-user-note-shortguide" >}}
 

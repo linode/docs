@@ -53,7 +53,7 @@ This guide will create a Mastodon server on a Linode running Ubuntu 16.04. Docke
 Consult Mastodon's [resource usage examples](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Resources-needed.md) when considering which Linode plan to deploy on.
 {{< /note >}}
 
-1. This guide uses sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1. This guide uses sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
 

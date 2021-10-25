@@ -262,7 +262,7 @@ Here are some of the typical mail ports:
 * `587`: SMTP (The preferred non-encrypted port for outgoing connections from mail clients. Use STARTTLS for encryption.)
 * `465`: SMTP (should only be used for legacy support)
 
-If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/security/securing-your-server/#configure-a-firewall) for more information.
+If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/guides/securing-your-server/#configure-a-firewall) for more information.
 
 ### Webmail
 

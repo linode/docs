@@ -58,7 +58,7 @@ Do not use WireGuard for critical applications. The project is still undergoing 
 ## Before You Begin
 
 - [Deploy a Linode](/docs/getting-started/#create-a-linode) running Debian 9.
-- [Add a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privileges to your Linode.
+- [Add a limited user account](/docs/guides/securing-your-server/#add-a-limited-user-account) with `sudo` privileges to your Linode.
 - Set your system's [hostname](/docs/getting-started/#set-the-hostname).
 
 {{< note >}}

@@ -156,7 +156,7 @@ provider: linode-provider
     master: mymaster.example.com
 {{< /file >}}
 
-3.  Set up [SSH key authentication](/docs/security/use-public-key-authentication-with-ssh/) for your instance. To do this during provisioning, set up the profile as follows, replacing the `ssh_pubkey` and `ssh_key_file` with key information for an SSH key on your master server:
+3.  Set up [SSH key authentication](/docs/guides/use-public-key-authentication-with-ssh/) for your instance. To do this during provisioning, set up the profile as follows, replacing the `ssh_pubkey` and `ssh_key_file` with key information for an SSH key on your master server:
 
     {{< file "/etc/salt/cloud.profiles.d/linode-london-1gb.conf" conf >}}
 linode_1gb_with_ssh_key:

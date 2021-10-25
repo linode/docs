@@ -62,10 +62,10 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
 
         sudo adduser minecraft
 
-    Assign a secure password, and configure any additional [SSH hardening](/docs/security/authentication/use-public-key-authentication-with-ssh/) options at this time.
+    Assign a secure password, and configure any additional [SSH hardening](/docs/guides/use-public-key-authentication-with-ssh/) options at this time.
 
 {{< note >}}
-If you have a firewall configured according to the [Securing Your Server](/docs/security/securing-your-server/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
+If you have a firewall configured according to the [Securing Your Server](/docs/guides/securing-your-server/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 `-A INPUT -p tcp --dport 25565 -j ACCEPT`
 

@@ -153,5 +153,5 @@ You may wish to consult the following resources for additional information on th
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/docs/security/securing-your-server/)
+- [Linux Security Basics](/docs/guides/securing-your-server/)
 

@@ -68,7 +68,7 @@ These additional guides help you with targeted topics like how to manage your ac
 
 - [Understanding the Cloud Manager Events and Activity Feeds](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
 
-- [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+- [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
 
 - [Cancelling Your Account](/docs/quick-answers/linode-platform/how-to-cancel-your-account/)
 

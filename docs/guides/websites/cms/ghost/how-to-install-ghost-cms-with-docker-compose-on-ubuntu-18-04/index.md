@@ -39,7 +39,7 @@ In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is
 
 1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running Ubuntu 18.04, including setting the hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
     {{< note >}}
 Replace each instance of example.com in this guide with your Ghost site’s domain name.

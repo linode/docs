@@ -42,7 +42,7 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Prepare an SMTP server that Canvas can use to send email notifications to users. You can use a third-party SMTP service for this purpose. This guide's example configurations use [Mailgun](https://www.mailgun.com/) as the third-party SMTP provider.
 

@@ -39,7 +39,7 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for a Terraria server in the next section.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for a Terraria server in the next section.
 
 3.  Update your operating system's packages.
 
@@ -86,7 +86,7 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
 
 ### UFW
 
-[UFW (Uncomplicated Firewall)](/docs/security/firewalls/configure-firewall-with-ufw/) is an iptables controller packaged with Ubuntu, but it's not installed in Debian by default.
+[UFW (Uncomplicated Firewall)](/docs/guides/configure-firewall-with-ufw/) is an iptables controller packaged with Ubuntu, but it's not installed in Debian by default.
 
 1.  If needed, install UFW:
 
@@ -108,7 +108,7 @@ The second command in this step, `sudo ufw delete 4` references the fourth rule 
 
 ### iptables
 
-To manually configure iptables without using a controller, see our [iptables guide](/docs/security/firewalls/control-network-traffic-with-iptables/) for a general ruleset.
+To manually configure iptables without using a controller, see our [iptables guide](/docs/guides/control-network-traffic-with-iptables/) for a general ruleset.
 
 1.  You'll also want to add the rule below for Terraria:
 

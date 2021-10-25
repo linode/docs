@@ -274,7 +274,7 @@ You can set users and permissions for each file directory on your Linode.
 
 Three categories comprise the file access system in Linux:
 
--   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/security/securing-your-server/#add-a-limited-user-account) section of the **Securing Your Server** guide.
+-   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/guides/securing-your-server/#add-a-limited-user-account) section of the **Securing Your Server** guide.
 -   **Groups**: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
 -   **Everyone**: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world.
 

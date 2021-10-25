@@ -28,7 +28,7 @@ aliases: ['/applications/cloud-storage/store-and-share-your-files-with-nextcloud
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+2.  The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
 3.  Update your system:
 

@@ -73,10 +73,10 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 1.  You will need to have a personal access token for Linode's API. If you don't have one already, follow the [Get an Access Token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of our API guide and create a token with read/write permissions.
 
-1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/security/authentication/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/security/authentication/use-public-key-authentication-with-ssh/) guide for instructions.
+1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
 
     {{< note >}}
-If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/security/authentication/use-public-key-authentication-with-ssh/) guide explains what they are.
+If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide explains what they are.
 {{< /note >}}
 
 ## Install the k8s-alpha CLI
@@ -169,7 +169,7 @@ You may see an error like the following:
 Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
 {{< /output >}}
 
-If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/platform/billing-and-support/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
+If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](https://www.linode.com/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
 {{< /note >}}
 
 1.  When the operation finishes, you will see options like the following:

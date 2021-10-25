@@ -36,9 +36,9 @@ This guide will cover an alternative method of changing an Image: deploying an I
     | Field | Description |
     |-------|-------------|
     | Label | The name for the new disk. |
-    | Image | The Distribution Image, [Custom Image](/docs/platform/disk-images/linode-images/), or Recovery Image you wish to deploy. |
+    | Image | The Distribution Image, [Custom Image](/docs/guides/linode-images/), or Recovery Image you wish to deploy. |
     | Root Password | A strong, complex, and unique password for the root user on your new disk. |
-    | SSH Keys | Any [SSH keys](/docs/security/authentication/use-public-key-authentication-with-ssh/) that you would like to assign to the root user. |
+    | SSH Keys | Any [SSH keys](/docs/guides/use-public-key-authentication-with-ssh/) that you would like to assign to the root user. |
     | Size | The size of the disk that will be deployed. If you also want to create a new swap disk, make sure to enter a value that's less than the **Maximum Size** value displayed below this field (equal to the Linode's unallocated storage space). |
 
 1. Once the form is complete, click the **Add** button to create the disk.
@@ -75,4 +75,4 @@ To reboot the Linode using the new Image, navigate to the Linode's **Configurati
 
 [![Boot the configuration profile](config-profile-boot.png)](config-profile-boot.png "Boot the configuration profile")
 
-For help with configuring the software on your new disk, review the [Getting Started](/docs/getting-started/) and [How to Secure Your Server](/docs/security/securing-your-server/) guides.
+For help with configuring the software on your new disk, review the [Getting Started](/docs/getting-started/) and [How to Secure Your Server](/docs/guides/securing-your-server/) guides.

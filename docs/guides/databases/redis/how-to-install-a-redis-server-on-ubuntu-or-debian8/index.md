@@ -40,7 +40,7 @@ Since Redis serves all data from memory, we recommend using a [High Memory Linod
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -221,7 +221,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should take care of controlling access to the Redis instance. Security methods include:
 
-- Setting up a firewall using [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/).
+- Setting up a firewall using [iptables](/docs/guides/control-network-traffic-with-iptables/).
 
 - Encrypting Redis traffic, using an SSH tunnel or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

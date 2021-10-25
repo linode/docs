@@ -39,7 +39,7 @@ This guide was written for and tested with Ubuntu 18.04. You may be able to adap
 
 ### Secure your Server
 
-Review and implement the measures in the [How to Secure your Server](/docs/security/securing-your-server/) guide, including creating a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account).
+Review and implement the measures in the [How to Secure your Server](/docs/guides/securing-your-server/) guide, including creating a [limited user account](/docs/guides/securing-your-server/#add-a-limited-user-account).
 
 ### Change your Linode's Default SSH Port
 

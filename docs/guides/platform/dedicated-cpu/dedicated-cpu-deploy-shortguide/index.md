@@ -23,7 +23,7 @@ aliases: ['/platform/dedicated-cpu/dedicated-cpu-deploy-shortguide/']
 
 1. Click on the **Create** dropdown menu at the top left of the page, and select the **Linode** option.
 
-1. Select a [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) to deploy from.
+1. Select a [Distribution](/docs/guides/choosing-a-distribution/), [Marketplace App](/docs/guides/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/guides/linode-images/) to deploy from.
 
     {{< note >}}
 Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide](/docs/platform/stackscripts/).
@@ -41,6 +41,6 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 You are not prompted to enter a root password if you are cloning another Linode or restoring from the Linode Backups service.
 {{< /note >}}
 
-1. Optionally, add an [SSH key](/docs/security/authentication/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager), [Backups](/docs/platform/disk-images/linode-backup-service/), or a [Private IP address](/docs/platform/manager/remote-access/#adding-private-ip-addresses).
+1. Optionally, add an [SSH key](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-public-key), [Backups](/docs/platform/disk-images/linode-backup-service/), or a [Private IP address](/docs/platform/manager/remote-access/#adding-private-ip-addresses).
 
 1. Click the **Create** button when you have finished completing this form. You are redirected to the overview page for your new Linode. This page shows a progress bar which indicates when the Linode has been provisioned and is ready for use.

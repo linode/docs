@@ -53,7 +53,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 After Ruby on Rails has finished installing, you will be able to access Ruby on Rails from the console via ssh with your Linode's IPv4 address:
 
-1.  [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) and [create a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account).
+1.  [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) and [create a limited user account](/docs/guides/securing-your-server/#add-a-limited-user-account).
 
 1.  Log out and log back in as your limited user account.
 

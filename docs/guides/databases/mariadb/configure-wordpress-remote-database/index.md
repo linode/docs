@@ -27,7 +27,7 @@ aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
 
 - Ensure that all packages are up to date.
 
-- Follow the [Getting Started](/docs/getting-started/) and [Secure your Server](/docs/security/securing-your-server/) guides to create a non-root sudo user.
+- Follow the [Getting Started](/docs/getting-started/) and [Secure your Server](/docs/guides/securing-your-server/) guides to create a non-root sudo user.
 
 - While the steps to configure an existing database may be similar, this guide is written for a fresh database and WordPress installation. Visit our guide on how to [backup an existing database](/docs/databases/mysql/back-up-your-mysql-databases/#creating-backups-of-a-single-database).
 

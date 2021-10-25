@@ -33,7 +33,7 @@ If your web server is nginx and you plan to use Varnish cache to serve WordPress
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Install and configure a [web server](/docs/websites/) like Apache or nginx.
 
@@ -291,4 +291,4 @@ If Varnish is running on the same Linode as your web server, be sure to allow in
 
 If Varnish and your web server are running on separate Linodes, you'll need to accept incoming traffic on port 80 on the Varnish Linode, and port 8080 on the web server.
 
-These two are simply the minimum rule modifications. It is strongly recommended you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+These two are simply the minimum rule modifications. It is strongly recommended you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/guides/control-network-traffic-with-iptables/) and [UFW](/docs/guides/configure-firewall-with-ufw/).

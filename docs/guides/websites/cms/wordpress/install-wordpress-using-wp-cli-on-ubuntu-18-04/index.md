@@ -38,7 +38,7 @@ This is where WP-CLI, a powerful command line tool with which you can manage Wor
 This guide is written for Ubuntu 18.04. Before moving ahead, make sure you have completed the following guides:
 
 * [Getting Started with Linode](/docs/getting-started/)
-* [Securing your Server](/docs/security/securing-your-server/)
+* [Securing your Server](/docs/guides/securing-your-server/)
 * [How to Install a LAMP Stack on Ubuntu 18.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/)
 
 {{< note >}}

@@ -57,7 +57,7 @@ The steps in this guide require root privileges unless otherwise noted. Be sure 
 
         adduser ark
 
-1.  Configure a firewall, ensuring the following ports are open. See the [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide for instructions.
+1.  Configure a firewall, ensuring the following ports are open. See the [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for instructions.
 
     | Port | Use |
     | --- | --- |

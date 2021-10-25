@@ -30,7 +30,7 @@ relations:
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
@@ -57,7 +57,7 @@ This guide is written for non-root users. Commands that require elevated privile
         sudo ufw allow http
         sudo ufw reload
 
-    Refer to our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide for more on how to use UFW for managing your firewall.
+    Refer to our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more on how to use UFW for managing your firewall.
 
 1. Visit the default NGINX page to see your installation in action. You can find it by navigating to your server's domain name or its IP address.
 

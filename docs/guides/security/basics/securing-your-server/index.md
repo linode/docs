@@ -119,7 +119,7 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
     **Earlier Windows Versions**
 
-    This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/#windows-operating-system).
+    This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/#public-key-authentication-on-windows).
 
 2.  Upload the public key to your Linode. Replace `example_user` with the name of the user you plan to administer the server as, and `203.0.113.10` with your Linode's IP address.
 
@@ -169,7 +169,7 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
         sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
-    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/tools-reference/tools/modify-file-permissions-with-chmod/).
+    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/guides/find-files-in-linux-using-the-command-line/).
 
 3.  Now exit and log back into your Linode. If you specified a passphrase for your private key, you'll need to enter it.
 
@@ -262,7 +262,7 @@ UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*,
 
 A basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled would show SSH and possibly other services listening for incoming connections. By [configuring a firewall](#configure-a-firewall) you can filter those ports to your requirements. Ideally, the unused services should be disabled.
 
-You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH. System services like `chronyd`, `systemd-resolved`, and `dnsmasq` are usually listening on localhost and only occasionally contacting the outside world. Services like this are part of your operating system and will cause problems if removed and not properly substituted.
+You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/guides/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/guides/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH. System services like `chronyd`, `systemd-resolved`, and `dnsmasq` are usually listening on localhost and only occasionally contacting the outside world. Services like this are part of your operating system and will cause problems if removed and not properly substituted.
 
 However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be [Exim](https://www.exim.org/), [Apache](https://httpd.apache.org/) and [RPC](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call).
 
@@ -294,11 +294,11 @@ Run `ss -atup` again to verify that the unwanted services are no longer running.
 
 Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
-*   [Iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
+*   [Iptables](/docs/guides/control-network-traffic-with-iptables/) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
 
 *   [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos/) is the iptables controller available for the CentOS / Fedora family of distributions.
 
-*   [UFW](/docs/security/firewalls/configure-firewall-with-ufw/) provides an iptables frontend for Debian and Ubuntu.
+*   [UFW](/docs/guides/configure-firewall-with-ufw/) provides an iptables frontend for Debian and Ubuntu.
 
 ## Common Lockout Recovery Steps
 
@@ -330,7 +330,7 @@ PasswordAuthentication yes
 
         rm ~/.ssh/authorized_keys
 
-    You can then replace your key by re-following the [Create an Authentication Key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) section of this guide.
+    You can then replace your key by re-following the [Create an Authentication Key-pair](/docs/guides/securing-your-server/#create-an-authentication-key-pair) section of this guide.
 
 ## Next Steps
 

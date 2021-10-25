@@ -78,7 +78,7 @@ Use `getent` to display the list of users. Keep in mind that some applications c
 
 ### Add an SSH User
 
-[Create a limited Linux user account](/docs/security/securing-your-server/#add-a-limited-user-account) on your Linode. Set a unique and secure password for this user.
+[Create a limited Linux user account](/docs/guides/securing-your-server/#add-a-limited-user-account) on your Linode. Set a unique and secure password for this user.
 
 ### Create a User Group with Specific Permissions
 
@@ -143,7 +143,7 @@ To revoke access to an SSH user, change the password for that user:
 
     passwd exampleUser
 
-In addition to password authentication, a user may rely on [public key authentication](/docs/security/securing-your-server/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
+In addition to password authentication, a user may rely on [public key authentication](/docs/guides/securing-your-server/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
 
 These public keys are listed as line in a text file in the user's home directory named `/home/exampleUser/.ssh/authorized_keys`. To see which keys are present, run:
 

@@ -50,7 +50,7 @@ modified_by:
     {{< note >}}
 You can always upgrade your Linode later if you need more memory, CPU cores, or any of the other hardware resources. Also, you can downgrade your plan if you think you don't need as much as you're currently using. Furthermore, you can change plan types entirely, like going from a Shared Linode to a Dedicated CPU Linode.
 
-Review the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide for upgrading and downgrading instructions. When downgrading your plan, the size of your Linode's disk must fit within the new plan's disk space allocation.
+Review the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for upgrading and downgrading instructions. When downgrading your plan, the size of your Linode's disk must fit within the new plan's disk space allocation.
 {{</ note >}}
 
 1.  For this example, a 1GB Linode (Nanode) is selected.
@@ -64,7 +64,7 @@ Review the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) gu
     It is strongly recommended that you create a long, complex, and unique password and store it somewhere secure for future reference. If you forget your root password, check out our [Reset the Root Password on Your Linode](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/) guide to create a new one.
 
     {{< note >}}
-A strong password is the first step in securing your server and avoiding potential vulnerabilities for anyone trying to exploit your server. For more information on securing your server, check out our [How to Secure Your Server](/docs/security/securing-your-server/) guide.
+A strong password is the first step in securing your server and avoiding potential vulnerabilities for anyone trying to exploit your server. For more information on securing your server, check out our [How to Secure Your Server](/docs/guides/securing-your-server/) guide.
 {{< /note >}}
 
 1.  Click **Create**. You will be taken to the Linode's Dashboard where you can monitor the status of your Linode's creation.

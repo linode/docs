@@ -25,7 +25,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 
 ![Use Advanced OpenSSH Features to Harden Access to Your Linode](advanced-ssh-server-security.png "Use Advanced OpenSSH Features to Harden Access to Your Linode")
 
-[OpenSSH](http://www.openssh.com/) is a suite of connectivity tools that sysadmins use daily to access remote servers. From a security point of view, it's the 'front door' for remote logins so it is extremely important to harden SSH as much as possible. The aim of this guide is to build upon our [Securing Your Server](/docs/security/securing-your-server/) guide with easy steps that can be implemented in just a few minutes.
+[OpenSSH](http://www.openssh.com/) is a suite of connectivity tools that sysadmins use daily to access remote servers. From a security point of view, it's the 'front door' for remote logins so it is extremely important to harden SSH as much as possible. The aim of this guide is to build upon our [Securing Your Server](/docs/guides/securing-your-server/) guide with easy steps that can be implemented in just a few minutes.
 
 **Assumptions:**
 
@@ -36,7 +36,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, create a basic firewall rule set and remove unnecessary network services.
+2.  Follow the [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, harden SSH access, create a basic firewall rule set and remove unnecessary network services.
 
 3.  Log in to your Linode via SSH and check for updates using the corresponding package manager: `apt` (Ubuntu/Debian) or `yum` (RHEL/CentOS) .
 
@@ -120,7 +120,7 @@ Remember to restart your SSH service after changes have been made:
 
 ## Use a Strong Password for your Key-pair
 
-In the [Securing Your Server](/docs/security/securing-your-server/) guide, you're encouraged to use SSH Key Pair Authentication. This is not optional if you are serious about security. But what about remote users that connect to the server with their laptops, which are susceptible to be stolen or lost? Here is where protecting your private key with a strong password or passphrase comes in, at least to gain time before changing the server keys. A strong password shouldn't be dictionary based. If security is your main concern, the convenience of an easy to remember password isn't adequate. [OpenSSL](https://www.openssl.org/) offers an easy way to generate pseudo-random passwords:
+In the [Securing Your Server](/docs/guides/securing-your-server/) guide, you're encouraged to use SSH Key Pair Authentication. This is not optional if you are serious about security. But what about remote users that connect to the server with their laptops, which are susceptible to be stolen or lost? Here is where protecting your private key with a strong password or passphrase comes in, at least to gain time before changing the server keys. A strong password shouldn't be dictionary based. If security is your main concern, the convenience of an easy to remember password isn't adequate. [OpenSSL](https://www.openssl.org/) offers an easy way to generate pseudo-random passwords:
 
     openssl rand -base64 32
 

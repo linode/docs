@@ -11,7 +11,7 @@ tab_group_main:
 
 1. At the top of the page, click **Create** and select **Linode**.
 
-1. Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
+1. Select the [Distribution](/docs/guides/choosing-a-distribution/), [Marketplace App](/docs/guides/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/guides/linode-images/) you would like to use.
 
     {{< note >}}
 Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts](/docs/platform/stackscripts/) guide.
@@ -31,10 +31,10 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 
     - Access monitoring statistics
 
-    - Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords/) information
+    - Update your [billing](/docs/guides/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords/) information
 
     - Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/)
 
-    - Open a [support ticket](/docs/platform/billing-and-support/support/) and perform other administrative tasks
+    - Open a [support ticket](https://www.linode.com/support/) and perform other administrative tasks
 
 1. Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email.

@@ -46,7 +46,7 @@ A user is often represented as `nickname!username@host`.
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Also follow the section to create a firewall, but omit the lines for ports 80 and 443 as these are not needed for a WeeChat server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Also follow the section to create a firewall, but omit the lines for ports 80 and 443 as these are not needed for a WeeChat server.
 
 3.  Update your system:
 

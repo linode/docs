@@ -118,7 +118,7 @@ You may want to only accept connections from certain hosts/IP addresses. The [Ad
         sudo ufw status
 
 {{< note >}}
-For more detailed information about firewall setup please read our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide.
+For more detailed information about firewall setup please read our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
 {{< /note >}}
 
 

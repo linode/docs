@@ -56,7 +56,7 @@ In addition to installing Flask, this Marketplace app installs and configures so
 
 Now that you are familiar with all the software installed on your Linode with the Flask Marketplace app, you can explore the following steps:
 
-- [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed. You can explore the installed programs and update any configurations as needed. Consider following the steps in the [Securing Your Server](/docs/security/securing-your-server/) guide to continue hardening your Linode's security.
+- [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed. You can explore the installed programs and update any configurations as needed. Consider following the steps in the [Securing Your Server](/docs/guides/securing-your-server/) guide to continue hardening your Linode's security.
 - Read through our [Deploy a Flask Application on Ubuntu](/docs/development/python/flask-and-gunicorn-on-ubuntu/) guide, which takes a deeper dive into the example Flask app that is deployed by the Marketplace app.
 - Visit our [Create a GIS Application using Flask, Stadia Maps, and MongoDB](/docs/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/) guide to learn how to create your own GIS application.
 - Consult our [How To Create an OAuth App with the Linode Python API Library](/docs/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/) to learn how to develop a Flask app using Linode's API to automate creating Linode resources.

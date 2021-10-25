@@ -41,7 +41,7 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Before You Begin
 
-1. Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+1. Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides.
 
 1. Install MariaDB on your Linode by following the [How to Install MariaDB](/docs/databases/mariadb/) guide that is appropriate for your Linode's distribution.
 

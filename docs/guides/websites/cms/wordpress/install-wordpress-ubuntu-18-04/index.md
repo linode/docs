@@ -36,7 +36,7 @@ Replace each instance of `example.com` in this guide with the domain name or IP 
 
 ## Before You Begin Installing WordPress
 
--   Follow the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and ensure that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+-   Follow the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides, and ensure that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
 
     To check the hostname run:
 

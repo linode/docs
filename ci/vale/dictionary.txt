@@ -1312,7 +1312,7 @@ prerouting
 prestashop
 prettifier
 prettifiers
-Printf
+printf
 pritunl
 procfile
 procmail

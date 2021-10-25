@@ -185,7 +185,7 @@ When you restart the slave Redis instance, it will attempt to synchronize its da
 
 The traffic between slave instances and the master instance is not encrypted and does not require authentication in the default configuration. Authentication is available, and can be configured according to the documentation in the `/opt/redis/redis.conf.default` file; however, this is not the default method for securing Redis instances.
 
-The preferred method for controlling access to Redis instances involves using [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) and possibly some sort of encryption such as an SSH tunnel to ensure that traffic is secure. Slaves will automatically attempt to reestablish a connection to the master node if the link fails in a number of situations. However, clusters cannot automatically promote members from slave status to master status; cluster management of this order must occur within your application.
+The preferred method for controlling access to Redis instances involves using [iptables](/docs/guides/control-network-traffic-with-iptables/) and possibly some sort of encryption such as an SSH tunnel to ensure that traffic is secure. Slaves will automatically attempt to reestablish a connection to the master node if the link fails in a number of situations. However, clusters cannot automatically promote members from slave status to master status; cluster management of this order must occur within your application.
 
 ## More Information
 

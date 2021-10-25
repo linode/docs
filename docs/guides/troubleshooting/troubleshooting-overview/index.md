@@ -30,7 +30,7 @@ This guide explains how to use different troubleshooting commands on your Linode
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of the issues with which Linode Support can help.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of the issues with which Linode Support can help.
 {{< /disclosure-note >}}
 
 ## Linode is Unresponsive
@@ -100,7 +100,7 @@ The applications on your Linode require a certain amount of physical memory to f
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar to view a list of all your Linodes.
 1.  Select a Linode to view its dashboard.
-1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/platform/disk-images/resizing-a-linode/).
+1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/guides/resizing-a-linode/).
 1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
 1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
 
@@ -123,7 +123,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 You must run `iotop` as `root` or with `sudo`.
     {{< /note >}}
 
-1.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/platform/billing-and-support/support/) for assistance.
+1.  If you cannot determine the source of the IO bottleneck, contact [Linode support](https://www.linode.com/support/) for assistance.
 
 Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 

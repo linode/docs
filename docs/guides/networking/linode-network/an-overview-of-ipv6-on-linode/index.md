@@ -24,7 +24,7 @@ tags: ["networking","linode platform"]
 
 All Linodes are created with one IPv6 address, which is acquired by [*Stateless Address Autoconfiguration*](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_(SLAAC)) (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
-Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your [network transfer quota](/docs/platform/billing-and-support/network-transfer-quota/), so you can use your default IPv6 address as if it were a private IP address.
+Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your [network transfer quota](/docs/guides/network-transfer/), so you can use your default IPv6 address as if it were a private IP address.
 
 {{< note >}}
 In order for your Linode to receive its SLAAC address, it must respond to IPv6's ping protocol.
@@ -83,7 +83,7 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 ## Additional IPv6 Addresses
 
-If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses can be requested by opening up a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support). Additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) for instructions.
+If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses can be requested by opening up a [support ticket](https://www.linode.com/support/). Additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) for instructions.
 
 The size of each block is identified through a prefix. These are indicated with a slash `/` followed by a number in base 10: the length of the network **prefix** in bits. This translates to the number of available addresses that are available in the range (or pool). For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
 
@@ -96,7 +96,7 @@ An IPv6 routed range is assigned to a single Linode. Addresses from that range c
 - `/64` **routed range** *(18,446,744,073,709,551,616 addresses)*: This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
 - `/56` **routed range** *(4,722,366,482,869,645,213,696 addresses)*: These larger ranges are typically only required by specialized systems or networking applications. When requesting a `/56` range, please provided information regarding your use case.
 
-If you would like to reassign an IPv6 routed range to a different Linode within the same data center, open up a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support).
+If you would like to reassign an IPv6 routed range to a different Linode within the same data center, open up a [support ticket](https://www.linode.com/support/).
 
 ### IPv6 Pools
 

@@ -32,7 +32,7 @@ This guide demonstrates how to set up **Plex Media Server** on a Linode running 
 
 ## Before you Begin
 
-- You will need root access to your Linode, or a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privilege.
+- You will need root access to your Linode, or a [limited user account](/docs/guides/securing-your-server/#add-a-limited-user-account) with `sudo` privilege.
 
 - Set your system's [hostname](/docs/getting-started/#set-the-hostname) and [time zone](/docs/getting-started/#set-the-timezone).
 

@@ -9,11 +9,11 @@ tab_group_main:
 
 These introductory guides to billing help get you up and running with your Linode account.
 
-- [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/)
+- [How Linode Billing Works](/docs/guides/how-linode-billing-works/)
 
-- [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+- [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
 
-- [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota/)
+- [Network Transfer Usage and Costs](/docs/guides/network-transfer/)
 
 - [Tax Information](/docs/platform/billing-and-support/tax-information/)
 

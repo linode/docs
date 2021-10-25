@@ -48,7 +48,7 @@ Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`.
 
     ![Getting Started Add Linode](getting-started-add-linode.png "Getting Started with Linode")
 
-1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
+1.  Select the [Distribution](/docs/guides/choosing-a-distribution/), [Marketplace App](/docs/guides/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/guides/linode-images/) you would like to use.
 
     {{< note >}}
 Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide.](/docs/platform/stackscripts/)
@@ -70,7 +70,7 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
     * Boot and shut down your Linode
     * Access monitoring statistics
-    * Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
+    * Update your [billing](/docs/guides/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
     * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
     * Open a [support](/docs/platform/billing-and-support/support-new-manager/) ticket and perform other administrative tasks
 
@@ -351,5 +351,5 @@ Thu Feb 16 12:17:52 EST 2018
 
 Now that you've learned the basics of using the Cloud Manager and working with your Linode, secure it and your Linode account from unauthorized access. See the following guides to begin:
 
-* [Securing Your Server](/docs/security/securing-your-server/)
+* [Securing Your Server](/docs/guides/securing-your-server/)
 * [Linode Manager Security Controls](/docs/security/linode-manager-security-controls-new-manager/)

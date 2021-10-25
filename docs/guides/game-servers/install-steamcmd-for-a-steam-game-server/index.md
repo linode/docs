@@ -46,15 +46,15 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Secure Your Game Server
 
-Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/security/securing-your-server/) guide to:
+Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/guides/securing-your-server/) guide to:
 
-1.  [Add a limited Linux user](/docs/security/securing-your-server/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
+1.  [Add a limited Linux user](/docs/guides/securing-your-server/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
 
-1.  [Harden SSH access](/docs/security/securing-your-server/#harden-ssh-access).
+1.  [Harden SSH access](/docs/guides/securing-your-server/#harden-ssh-access).
 
-1.  [Remove unused network-facing services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  [Remove unused network-facing services](/docs/guides/securing-your-server/#remove-unused-network-facing-services).
 
-1.  If you are using [**iptables**](/docs/security/firewalls/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
+1.  If you are using [**iptables**](/docs/guides/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
 
 1.  If instead you are using [**firewalld**](/docs/security/firewalls/introduction-to-firewalld-on-centos/) (as in Linode's CentOS 7 and Fedora images), follow the [Configure your Firewall Using FirewallD](#configure-your-firewall-using-firewalld) section.
 
@@ -127,7 +127,7 @@ Steam currently supports multiplayer play over IPv4 only, so a Steam server only
         sudo iptables-restore < ~/v4
         sudo ip6tables-restore < ~/v6
 
-1.  [Install iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables/#install-iptables-persistent). If you don't install this software, your firewall rules will not persist through reboots of your Linode.
+1.  [Install iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#install-iptables-persistent). If you don't install this software, your firewall rules will not persist through reboots of your Linode.
 
 1.  If iptables-persistent was already installed, reconfigure the package so that it recognizes your new rulesets:
 

@@ -22,7 +22,7 @@ This guide explains how to use different troubleshooting commands on your Linode
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /disclosure-note >}}
 
 ## General Troubleshooting Strategies
@@ -95,10 +95,10 @@ Your deployment may be running FirewallD or UFW, which are frontends used to mor
     sudo ufw status
     sudo firewall-cmd --state
 
-Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+Review [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. For example, a rule which allows incoming HTTP traffic could look like this:
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. For example, a rule which allows incoming HTTP traffic could look like this:
 
 {{< output >}}
 -A INPUT -p tcp -m tcp --dport 80 -m conntrack --ctstate NEW -j ACCEPT
@@ -106,7 +106,7 @@ Firewall rulesets can vary widely. Review the [Control Network Traffic with ipta
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables:
 
@@ -197,7 +197,7 @@ You have several options for resolving disk space issues:
 
 -   If you have any unallocated space on your Linode (storage that you pay for already but which isn't assigned to your disk), [resize your disk](/docs/quick-answers/linode-platform/resize-a-linode-disk/) to take advantage of the space.
 
--   [Upgrade your Linode](/docs/platform/disk-images/resizing-a-linode/) to a higher-tier resource plan and then resize your disk to use the newly available space. If your Linode has a pending free upgrade for your storage space, you can choose to take this free upgrade to solve the issue.
+-   [Upgrade your Linode](/docs/guides/resizing-a-linode/) to a higher-tier resource plan and then resize your disk to use the newly available space. If your Linode has a pending free upgrade for your storage space, you can choose to take this free upgrade to solve the issue.
 
 <!-- >
 Would be nice to eventually have these instructions in a new "How to Free Up Space on Your Linode" guide and then link to it.

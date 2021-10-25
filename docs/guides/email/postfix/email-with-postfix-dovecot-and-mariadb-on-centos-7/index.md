@@ -30,9 +30,9 @@ For a different Linux distribution or different mail server, review our [email t
 
 ## Before You Begin
 
-1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides.
 
-1.  Verify that the iptables [firewall](/docs/security/securing-your-server/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](/docs/guides/securing-your-server/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 1. Review the concepts in the [Running a Mail Server](/docs/email/running-a-mail-server/) guide.
 

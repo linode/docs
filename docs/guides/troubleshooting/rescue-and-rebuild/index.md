@@ -135,7 +135,7 @@ You can now connect to the server as root with the SSH client on a local compute
 
 - For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/).
 
-- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/).
+- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/guides/copying-a-disk-image-over-ssh/).
 
 ### Performing a File System Check
 
@@ -321,14 +321,14 @@ The Linode Cloud Manager provides a *Rebuild* feature performs the following two
 
 1.  The current disks are removed.
 
-1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/platform/disk-images/linode-images/).
+1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/guides/linode-images/).
 
     {{< caution >}}
 If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/security/backups/backing-up-your-data) or [create a snapshot through Linode's Backup Service](/docs/platform/disk-images/linode-backup-service#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
 
 If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a higher resource tier.
+The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/guides/resizing-a-linode/) to a higher resource tier.
     {{< /caution >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.

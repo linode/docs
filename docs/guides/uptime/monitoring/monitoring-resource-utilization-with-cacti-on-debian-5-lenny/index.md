@@ -128,7 +128,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/docs/security/securing-your-server/)
+- [Linux Security Basics](/docs/guides/securing-your-server/)
 - [Configure a Basic Firewall in Debian 5 (Lenny)](/docs/security/firewalls/configure-a-firewall-with-arno-iptables-in-debian-5-lenny/)
 
 

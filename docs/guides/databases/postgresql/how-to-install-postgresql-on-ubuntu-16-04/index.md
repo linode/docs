@@ -30,7 +30,7 @@ The [PostgreSQL](https://www.postgresql.org/) (also known as "Postgres") relatio
 ## Before You Begin
 
 1. Familiarize yourself with the [Getting Started guide](https://www.linode.com/docs/getting-started/) and complete the steps for setting the Linode’s hostname and timezone.
-1. Complete the sections of [Securing Your Server guide](https://www.linode.com/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. Complete the sections of [Securing Your Server guide](https://www.linode.com/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 1. Update the system: `sudo apt-get update && sudo apt-get upgrade`
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, visit the [Users and Groups guide](https://www.linode.com/docs/tools-reference/linux-users-and-groups/) for more information.

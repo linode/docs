@@ -26,7 +26,7 @@ This guide explains how to use different troubleshooting commands on your Linode
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /disclosure-note >}}
 
 ## Before You Begin
@@ -71,7 +71,7 @@ If your Linode isn't booting normally, you will not be able to rely on the Lish 
 
 When you boot into Rescue Mode, you are booting your Linode into the [Finnix recovery Linux distribution](https://www.finnix.org). This Finnix image includes a working network configuration, and you will be able to mount your Linode's disks from this environment, which means that you will be able to access your files.
 
-1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). If your Linode does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/platform/billing-and-support/support/#contacting-linode-support).
+1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). If your Linode does not reboot into Rescue Mode successfully, please [contact Linode Support](https://www.linode.com/support/).
 
 1.  Connect to Rescue Mode via the Lish console as you would normally. You will not be required to enter a username or password to start using the Lish console while in Rescue Mode.
 
@@ -214,7 +214,7 @@ If your MTR indicates a configuration issue within your Linode, you can confirm 
 
 Before opening a support ticket, you should also generate a *reverse MTR* report. The MTR tool is run from your Linode and targets your machine's IP address on your local network, whether you're on your home LAN, for example, or public WiFi. To run an MTR from your Linode, log in to your Lish console. To find your local IP, visit a website like https://www.whatismyip.com/.
 
-Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
+Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](https://www.linode.com/support/), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
 
 ## Troubleshoot Network Configuration Issues
 
@@ -332,7 +332,7 @@ Run the following command and restart your Linode to resolve this issue:
 
     sudo mv /etc/network/if-up.d/iptables ~
 
-Please note that your firewall will be down at this point, so you will need to re-enable it manually. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for help with managing iptables.
+Please note that your firewall will be down at this point, so you will need to re-enable it manually. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide for help with managing iptables.
 
 ### Was your Interface Renamed?
 
@@ -358,14 +358,14 @@ Your deployment may be running FirewallD or UFW, which are frontend software pac
     sudo ufw status
     sudo firewall-cmd --state
 
-Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+Review [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review our [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
+Firewall rulesets can vary widely. Review our [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterwards with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterwards with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables:
 

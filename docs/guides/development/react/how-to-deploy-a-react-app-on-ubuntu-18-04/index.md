@@ -40,7 +40,7 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your [Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on Ubuntu 18.04 LTS](/docs/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/) guide or the [Installing NGINX on Ubuntu 18.04 LTS](/docs/web-servers/nginx/how-to-install-nginx-ubuntu-18-04/) guide.
 

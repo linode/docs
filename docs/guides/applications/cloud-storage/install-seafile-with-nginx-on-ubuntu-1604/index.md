@@ -45,9 +45,9 @@ This guide is written for a non-root user. Commands that require elevated privil
         ssh sfadmin@<your_linode's_ip>
 
 
-4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/docs/security/securing-your-server/#harden-ssh-access) guide to harden SSH access.
+4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/docs/guides/securing-your-server/#harden-ssh-access) guide to harden SSH access.
 
-5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
+5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
 
         sudo ufw allow ssh
         sudo ufw allow http

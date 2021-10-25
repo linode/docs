@@ -133,7 +133,7 @@ Apache (v6)                	ALLOW       	Anywhere (v6)
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you use *name-based virtual hosts* to host websites in your home directory.
 
 {{< note >}}
-You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account).
+You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account).
 {{< /note >}}
 
 1.  Disable the default Apache virtual host:
@@ -413,7 +413,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://192.0.2.0` in the address bar, replacing the example IP address with your own). Your website should load in the web browser.
 
     {{< note >}}
-  If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+  If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
     {{</ note >}}
 
 1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns/) guide for more information.
