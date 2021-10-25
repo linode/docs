@@ -41,7 +41,7 @@ See the [Use Cases for Linode GPU Instances](/docs/guides/why-linode-gpu/) guide
 
 ## Availability
 
-Frankfurt, Germany; Newark, NJ, United States; Mumbai, India; Singapore, Singapore
+Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumbai, India; Singapore, Singapore
 
 ## Plans and Pricing
 
