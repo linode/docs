@@ -1,16 +1,16 @@
 ---
-slug: check-disk-usage-on-linux-with-dust-command
+slug: installing-and-using-dust-command-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'Dust is an intuitive replacement for du on Linux for those looking to see their Linux system disk usage'
 og_description: 'Dust is an intuitive replacement for du on Linux for those looking to see their Linux system disk usage'
-keywords: ['Dust linux','Dust command','Check disk usage linux','Du replacement']
+keywords: ['Dust linux', 'linux check disk space','Check disk usage Linux','Du replacement']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-22
 modified_by:
   name: Linode
-title: "Check Disk Usage on Linux With the dust Command"
+title: "Installing and using dust Command on Linux"
 h1_title: "Check Disk Usage on Linux With the dust Command."
 enable_h1: true
 contributor:
@@ -25,15 +25,15 @@ external_resources:
 - '[ncdu](https://dev.yorhel.nl/ncdu)'
 ---
 
-Hard drive space on a system can fill up quickly, especially when new software is installed. System administrators frequently have to review disk space utilization and see what files or directories are using up the most storage. This can be accomplished using the Linux `du` command, but many users find it cumbersome and awkward to use. The open source [*dust*](https://github.com/bootandy/dust) program offers a new way of looking at disk space usage in a more intuitive and straightforward manner. This guide explains how to install and use the `dust` command on Linux and how it functions as a `du` replacement.
+Hard drive space on a system can fill up quickly, especially when new software is installed. System administrators frequently have to review disk space utilization and see what files or directories are using up the most storage. This can be accomplished using the Linux `du` command, but many users find it cumbersome and awkward to use. The open-source [*dust*](https://github.com/bootandy/dust) program offers a new way of looking at disk space usage more intuitively and straightforwardly. This guide explains how to install and use the `dust` command on Linux and how it functions as a `du` replacement.
 
 ## An Introduction to dust
 
 Dust was developed as an alternative to the `du` command to allow users to quickly check disk usage on Linux systems. The name of the application is a portmanteau of "du" and Rust, the program it is written in. The name of the program is intentionally left uncapitalized. Dust can be installed by using the Homebrew or Cargo package managers.
 
-Dust reports on the disk utilisation and presents the results in a graphical manner. It provides an instant overview of the file system with no further sorting or piping of commands. Dust emphasises the largest directories and intelligently parses the directory tree to find large subdirectories. This allows users to quickly determine which directories are using the most space and where these directories are located within the file hierarchy. Dust operates on specific directories and handles both directories and files.
+Dust reports on the disk utilization and graphically presents the results. It provides an instant overview of the file system with no further sorting or piping of commands. Dust emphasizes the largest directories and intelligently parses the directory tree to find large subdirectories. This allows users to quickly determine which directories are using the most space and where these directories are located within the file hierarchy. Dust operates on specific directories and handles both directories and files.
 
-Dust's interface uses a monochromatic scale to illustrate how deep in the hierarchy a directory is and location of its parent directories. Darker tints correspond to base level directories near the root of the file system. Lighter shades of grey indicate subdirectories several levels deep in the hierarchy.
+Dust's interface uses a monochromatic scale to illustrate how deep in the hierarchy a directory is and the location of its parent directories. Darker tints correspond to base-level directories near the root of the file system. Lighter shades of grey indicate subdirectories several levels deep in the hierarchy.
 
 Dust has several flags and command options to organize the output and determine what entries to display. It examines the size of the terminal window to decide how many items to display.
 
@@ -46,7 +46,7 @@ The `du` command provides a highly detailed view of the disk space consumed by e
     du
 
 {{< output >}}
-12	./.cargo/registry/index/github.com-1ecc6299db9ec823/.git/logs/refs/remotes/origin
+12 ./.cargo/registry/index/github.com-1ecc6299db9ec823/.git/logs/refs/remotes/origin
 ...
 {{< /output >}}
 
@@ -71,77 +71,77 @@ A good strategy is to use dust to get a quick overview of the system's disk spac
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-3.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Installing Dust
+## Install Dust
 
-There are three main ways of installing Dust. Either use the Cargo or Homebrew package managers, or download a release and unzip it. The following commands are geared towards Ubuntu users, but are generally applicable for all Linux distributions.
+There are three main ways of installing Dust. Either use the Cargo or Homebrew package managers or download a release and unzip it. The following commands are geared towards Ubuntu users but are generally applicable for all Linux distributions.
 
-### Installing dust Using Cargo
+### Install dust Using Cargo
 
 The easiest way to install Dust is by using the Cargo utility. Cargo is the package manager for [*Rust*](https://www.rust-lang.org/), a popular high-performance programming language. If Rust is already installed on the system, then Cargo is installed too. If not, Cargo can be installed as a stand-alone application by using `apt`.
 
-1.  Ensure the system is fully updated using the instructions in the "Before You Begin" section. Install Cargo using `apt`.
+1. Ensure the system is fully updated using the instructions in the [Before You Begin](/docs/guides/check-disk-usage-on-linux-with-dust-command/#before-you-begin) section. Install Cargo using `apt`.
 
         sudo apt install cargo
-2.  Use the `--version` option to verify the release and confirm Cargo has been installed correctly.
+1. Use the `--version` option to verify the release and confirm Cargo has been installed correctly.
 
         cargo --version
     {{< output >}}
 cargo 1.51.0
     {{< /output >}}
-3.  Use Cargo to install dust. Cargo confirms the application has been installed and also provides a warning about the path variable.
+1. Use Cargo to install dust. Cargo confirms the application has been installed and also provides a warning about the path variable.
 
         cargo install du-dust
     {{< output >}}
    Installed package `du-dust v0.7.0` (executable `dust`)
     {{< /output >}}
-4.  To run Dust from anywhere without specifying the full path name to the binary, add it to your `.bashrc` file. Open this file in any text editor.
+1. To run Dust from anywhere without specifying the full pathname to the binary, add it to your `.bashrc` file. Open this file in any text editor.
 
         vi ~/.bashrc
-5.  Add the following line to the end of the file.
+1. Add the following line to the end of the file.
 
-    {{< file "~/.bashrc" conf >}}
+    {{< file "~/.bashrc" >}}
 export PATH=$PATH:$HOME/.cargo/bin
     {{< /file >}}
-6.  Source the `.bashrc` file to apply the changes.
+1. Source the `.bashrc` file to apply the changes.
 
         source ~/.bashrc
-7.  To verify the installation, use the `-V` flag to see what release of Dust is installed. If there is an error, ensure you have updated the `~/.bashrc` file correctly.
+1. To verify the installation, use the `-V` flag to see what release of Dust is installed. If there is an error, ensure you have updated the `~/.bashrc` file correctly.
 
         dust -V
     {{< output >}}
 Dust 0.7.0
     {{< /output >}}
 
-### Installing dust Using Brew
+### Install dust Using Brew
 
-Dust can also be installed using [*Homebrew*](https://brew.sh/). Homebrew is a package manager that installs new programs into their own directory and adds the appropriate link to the `/usr/local` directory. This eliminates the requirement to edit the `.bashrc` file. To install dust using Homebrew, follow these instructions.
+Dust can also be installed using [*Homebrew*](https://brew.sh/). Homebrew is a package manager that installs new programs into their own directory and adds the appropriate link to the `/usr/local` directory. This eliminates the requirement to edit the `.bashrc` file. To install dust using Homebrew, follow the instructions below.
 
-1.  If Homebrew is not already installed, download and install it using the following command. The installation program allows you to install the program either in its own directory or in your user directory.
+1. If Homebrew is not already installed, download and install it using the following command. The installation program allows you to install the program either in its own directory or in your user directory.
 
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-2.  Add the Homebrew executable to your profile. Substitute your username for `userid` in the first command.
+1. Add the Homebrew executable to your profile. Substitute your username for `userid` in the first command below.
 
         echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/userid/.profile
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-3.  **Optional** Homebrew recommends installing the `build-essential` package to enhance functionality.
+1. (**Optional**) Homebrew recommends installing the `build-essential` package to enhance functionality.
 
         sudo apt-get install build-essential
-4.  Install `gcc` to avoid warnings and errors.
+1. Install `gcc` to avoid warnings and errors.
 
         brew install gcc
-5.  To verify Homebrew is installed and working properly, use the `brew doctor` command.
+1. To verify Homebrew is installed and working properly, use the `brew doctor` command.
     {{< note >}}
 To see all of the Homebrew commands, use the `brew help` command.
     {{< /note >}}
@@ -150,36 +150,33 @@ To see all of the Homebrew commands, use the `brew help` command.
     {{< output >}}
 Your system is ready to brew.
     {{< /output >}}
-6.  Install dust using Homebrew.
+1. Install dust using Homebrew.
 
         brew tap tgotwig/linux-dust && brew install dust
-7.  To verify the installation, use the `-V` flag to see what release of Dust is installed.
+1. To verify the installation, use the `-V` flag to see what release of Dust is installed.
 
         dust -V
     {{< output >}}
 Dust 0.7.0
     {{< /output >}}
     {{< note >}}
-Homebrew can also be used on the MacOS. To install Homebrew on a Mac, see the [*Homebrew page*](https://brew.sh/) for instructions. To install dust on a Mac using Homebrew, use `brew install dust`. The `tap` command is not necessary for MacOS.
+Homebrew can also be used on the macOS. To install Homebrew on a Mac, see the [Homebrew page](https://brew.sh/) for instructions. To install dust on a Mac using Homebrew, use `brew install dust`. The `tap` command is not necessary for macOS.
     {{< /note >}}
 
-### Installing dust from a Download.
+### Install dust from a Download
 
 Those who are not interested in downloading a new package installation program can download the executable directly and unzip it.
 
-1.  Download the executable to install from the [*dust GitHub downloads page*](https://github.com/bootandy/dust/releases).
+1. Download the executable to install from the [dust GitHub downloads page](https://github.com/bootandy/dust/releases).
 
         sudo wget https://github.com/bootandy/dust/archive/refs/tags/v0.7.0.tar.gz
-2.  Use the `tar` utility to unzip the file. Substitute the name of the actual `.gz` file in the following command.
+1. Use the `tar` utility to unzip the file. Substitute the name of the actual `.gz` file in the following command.
 
-        tar -xvf tar -xvf v0.7.0.tar.gz
-3.  Change to the new directory that was created when the `.gz` file was unzipped.
+        tar -xvf v0.7.0.tar.gz
+1. Move the executable to the correct location.
 
-        cd v0.7.0.tar.gz
-4.  Move the executable to the correct location.
-
-        sudo mv dust /usr/local/bin/
-5.  To verify the installation, use the `-V` flag to see what release of Dust is installed.
+        sudo mv dust-0.7.0 /usr/local/bin/
+1. To verify the installation, use the `-V` flag to see what release of Dust is installed.
 
         dust -V
 
@@ -262,7 +259,7 @@ Two or more directories can be specified in the same command. In this case, the 
  389M ┌─┴ (total)
 {{< /output >}}
 
-### Ignoring Files and Directories in dust Output
+### Ignore Files and Directories in dust Output
 
 To ignore files or directories with a certain name, use the `-X` flag followed by the name to ignore. The full path of the item to ignore must be provided. The following command skips over any directory with the name `lib` as well as any files and directories contained in the directory.
 
@@ -273,7 +270,7 @@ To exclude all hidden files and directories from the output, use the `-i` option
 
     dust -i
 
-### Showing More Than the Default Number of Directories in dust
+### Show More Than the Default Number of Directories in dust
 
 By default, Dust takes into account the terminal height when determining how many entries to display. To adjust the number of rows in the display, use the `-n` option. For example, `dust -n 30` displays 30 directories instead of the default number.
 
@@ -360,12 +357,12 @@ To order the directories by the number of files they contain rather than their d
 
 ## Alternatives to dust
 
-For those looking for more choices, there are a few other open source utilities that can be used to graphically illustrate disk space usage.
+For those looking for more choices, there are a few other open-source utilities that can be used to graphically illustrate disk space usage.
 
 The [*du-tree*](https://github.com/nachoparker/dutree) program is very similar to dust. It even has a similar interface. It can be installed using the command `cargo install dutree`. [*ncdu*](https://dev.yorhel.nl/ncdu) is a simpler utility designed for speed and efficiency. Unfortunately, it is not available through any common package manager and must be downloaded.
 
-## In Conclusion
+## Conclusion
 
-Dust is a simple and easy-to-use program that provides a nice alternative to the Linux `du` command. The `dust` command allows users to quickly check disk space usage on any Linux system and see the results in an intuitive graph-based format. Dust can be installed using the Cargo and Homebrew utilities. It can also be downloaded as an `gz` file.
+Dust is a simple and easy-to-use program that provides a nice alternative to the Linux `du` command. The `dust` command allows users to quickly check disk space usage on any Linux system and see the results in an intuitive graph-based format. Dust can be installed using the **Cargo** and **Homebrew** utilities. It can also be downloaded as an `gz` file.
 
 Dust provides several options to allow users to see the most relevant results in the appropriate format. The number of results can be adjusted, multiple directories can be combined, and specific entries can be ignored. As alternatives to dust, several similar free open source programs are also available.
