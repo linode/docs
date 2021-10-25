@@ -18,7 +18,7 @@ external_resources:
 - '[Django OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/django/)'
 ---
 
-The Django OpenDjango OpenLiteSpeed One-Click app automatically installs Linux, performance web server OpenDjango OpenLiteSpeed, Python LSAPI and CertBot. OpenDjango OpenLiteSpeed features HTTP/3 support, and easy setup for SSL and RewriteRules. It’s flexible enough to host multiple Django apps, and supports many other apps including NodeJS, Ruby, and CMSs like WordPress.
+The Django OpenDjango OpenLiteSpeed app automatically installs Linux, performance web server OpenDjango OpenLiteSpeed, Python LSAPI and CertBot. OpenDjango OpenLiteSpeed features HTTP/3 support, and easy setup for SSL and RewriteRules. It’s flexible enough to host multiple Django apps, and supports many other apps including NodeJS, Ruby, and CMSs like WordPress.
 
 ### Deploying the Django OpenLiteSpeed Marketplace App
 
