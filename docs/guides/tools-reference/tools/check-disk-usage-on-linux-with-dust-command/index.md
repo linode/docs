@@ -91,7 +91,7 @@ There are three main ways of installing Dust. Either use the Cargo or Homebrew p
 
 The easiest way to install Dust is by using the Cargo utility. Cargo is the package manager for [*Rust*](https://www.rust-lang.org/), a popular high-performance programming language. If Rust is already installed on the system, then Cargo is installed too. If not, Cargo can be installed as a stand-alone application by using `apt`.
 
-1. Ensure the system is fully updated using the instructions in the [Before You Begin](/docs/guides/check-disk-usage-on-linux-with-dust-command/#before-you-begin) section. Install Cargo using `apt`.
+1. Ensure the system is fully updated using the instructions in the [Before You Begin](/docs/guides/installing-and-using-dust-command-on-linux/#before-you-begin) section. Install Cargo using `apt`.
 
         sudo apt install cargo
 1. Use the `--version` option to verify the release and confirm Cargo has been installed correctly.
