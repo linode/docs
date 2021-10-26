@@ -1,0 +1,98 @@
+YourUsername@CtlPlane:~$ ansible-playbook myplaybook.yml
+
+PLAY [webservers] *************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************
+ok: [vm3]
+ok: [vm2]
+
+TASK [Install Apache Server] **************************************************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [Enable and Start Apache Server] *****************************************************************************
+ok: [vm3]
+ok: [vm2]
+
+TASK [Install Firewalld] ******************************************************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [Enable and start firewalld server] **************************************************************************
+ok: [vm2]
+ok: [vm3]
+
+TASK [Open Firewall Port] *****************************************************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [Create web admin group] *************************************************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [Create web admin user] **************************************************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [Set contenct directory group/permisions] ********************************************************************
+changed: [vm3]
+changed: [vm2]
+
+TASK [Create default page content] ********************************************************************************
+changed: [vm3]
+changed: [vm2]
+
+PLAY [dbservers] **************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************
+ok: [vm4]
+
+TASK [Install MariaDB Server] *************************************************************************************
+changed: [vm4]
+
+TASK [Enable and start MariaDB server] ****************************************************************************
+ok: [vm4]
+
+PLAY [logservers] *************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************
+ok: [vm5]
+
+TASK [Configure rsyslog remote log reception over udp] ************************************************************
+changed: [vm5] => (item=$ModLoad imudp)
+changed: [vm5] => (item=$UDPServerRun 514)
+
+TASK [Install Firewalld] ******************************************************************************************
+changed: [vm5]
+
+TASK [Enable and start firewalld server] **************************************************************************
+ok: [vm5]
+
+TASK [Open firewall port] *****************************************************************************************
+changed: [vm5]
+
+RUNNING HANDLER [restart rsyslogd] ********************************************************************************
+changed: [vm5]
+
+PLAY [lamp] *******************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************
+ok: [vm4]
+ok: [vm2]
+ok: [vm3]
+
+TASK [configure rsyslog] ******************************************************************************************
+changed: [vm2]
+changed: [vm4]
+changed: [vm3]
+
+RUNNING HANDLER [restart rsyslogd] ********************************************************************************
+changed: [vm4]
+changed: [vm3]
+changed: [vm2]
+
+PLAY RECAP ********************************************************************************************************
+vm2                        : ok=13   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+vm3                        : ok=13   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+vm4                        : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+vm5                        : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
