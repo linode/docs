@@ -3,15 +3,17 @@ slug: upgrade-to-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to upgrading to Ubuntu 18.04 LTS (Bionic Beaver)'
+description: "A how-to guide for performing an inline upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
 keywords: ["upgrading", "ubuntu", "18.04","bionic beaver"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-04-27
+modified: 2021-10-26
 modified_by:
-  name: Edward Angert
+  name: Linode
 published: 2018-04-27
-title: 'How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)'
+title: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
+h1_title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
+enable_h1: true
 relations:
     platform:
         key: how-to-upgrade-ubuntu
@@ -24,12 +26,7 @@ image: upgrade-ubuntu-18-title.jpg
 Ubuntu 18.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2023. This guide shows how to upgrade your Linode from Ubuntu 16.04 (Xenial Xerus) or Ubuntu 17.10 (Artful Aardvark) to Ubuntu 18.04 (Bionic Beaver).
 
 {{< caution >}}
-Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
-
- - Create a new Linode with the latest disk template
- - Rebuild your stack
- - Transfer your data
- - Swap IP addresses
+Inline distribution upgrades can yield unpredictable results. Before continuing, read through our [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options, including performing a clean install of the latest distribution version.
 
 The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/using-the-linode-shell-lish) or [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
@@ -193,6 +190,14 @@ Codename:	bionic
 {{< /output >}}
 
 Your Linode is now running Ubuntu 18.04 LTS.
+
+## Networking
+
+[Netplan](https://netplan.io/) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server is packaged with `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, while NetworkManager is used as the Netplan backend in Ubuntu Desktop. The `ifupdown` package has been deprecated, and `/etc/network/interfaces` is no longer used, but it's still possible to configure static networking with `/etc/systemd/network/*.network` files.
+
+Once you have upgraded to Ubuntu 18.04 or later from an earlier version, you should run the following command to enable `systemd-networkd`:
+
+    systemctl enable systemd-networkd
 
 ## Upgrading from Previous Ubuntu Releases
 
