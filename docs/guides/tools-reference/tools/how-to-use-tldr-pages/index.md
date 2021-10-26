@@ -17,28 +17,28 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-The tldr-pages project, similar to man pages, offers pages describing wide range of commands and options you can use with them. But, compared to man pages, each tldr page aims to be more intuitive and readable, making tldr-pages a great place to start when learning new commands.
+The tldr-pages project, similar to man pages, offers pages describing wide range of commands, and options you can use with them. But, compared to man pages, each tldr page aims to be more intuitive, and readable, making tldr-pages a great place to start when learning new commands.
 
 In this guide, learn more about tldr-pages and how its pages compare to man pages. Additionally, learn how to start using tldr-pages via the `tldr` command-line tool, which this guide shows you how to install and use `tldr`.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is tldr-pages?
@@ -51,11 +51,11 @@ The result is a resource that can make it much easier to learn and start using a
 
 ## How to Install tldr
 
-To interact with tldr-pages, you can use one of the `tldr` clients. These give you access to tldr-pages from the command line or other, in some cases, other platforms.
+To interact with tldr-pages, you can use one of the `tldr` clients. These give you access to tldr-pages from the command line or, in some cases, other platforms.
 
-Several `tldr` clients are available, and you can see the full listing on the check out the `tldr` [GitHub page](https://github.com/tldr-pages/tldr#how-do-i-use-it).
+Several `tldr` clients are available, and you can see the full listing on the `tldr` [GitHub page](https://github.com/tldr-pages/tldr#how-do-i-use-it).
 
-This guide gives you installation steps for two of the more popular clients, one using Node.js and the other using Python 3. Take a look at the each client's section below to see how you can install the clients on your Linux system.
+This guide gives you installation steps for two of the most popular `tldr` clients, one using **Node.js** and the other using **Python 3**. Take a look at each of the `tldr` client's in the below sections to see how you can install the `tldr` clients on your Linux system.
 
 ### Using Node.js
 
@@ -63,13 +63,13 @@ This guide gives you installation steps for two of the more popular clients, one
 
     You can use the series of commands shown below to first install NVM and then use it to install the current version of Node.js. The Node.js installation includes the current NPM release.
 
-    Before proceeding, check the NVM [releases page](https://github.com/nvm-sh/nvm/releases), and replace `v0.38.0` below with the version number of the latest release you find there:
+    Before proceeding, check the NVM [releases page](https://github.com/nvm-sh/nvm/releases), and replace `v0.38.0` from the command below with the version number of the latest release you find in the releases page.
 
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
         source ~/.bashrc
         nvm install node
 
-    You can then verify your NPM installation with:
+    You can then verify your NPM installation using the following command:
 
         npm --version
 
@@ -77,7 +77,7 @@ This guide gives you installation steps for two of the more popular clients, one
 7.21.0
     {{< /output >}}
 
-1. Install `tldr` via NPM. Use the `-g` option to install `tldr` as a global NPM package:
+1. Install `tldr` via NPM. Use the `-g` option to install `tldr` as a global NPM package.
 
         npm install tldr -g
 
@@ -85,7 +85,7 @@ This guide gives you installation steps for two of the more popular clients, one
 
 1. Make sure you have Python 3 installed.
 
-    On Debian and Ubuntu, recent releases include Python 3 by default, which you can verify:
+    On **Debian** and **Ubuntu**, recent releases include Python 3 by default, which you can verify using the `--version` flag.
 
         python3 --version
 
@@ -93,17 +93,17 @@ This guide gives you installation steps for two of the more popular clients, one
 Python 3.8.10
     {{< /output >}}
 
-    On AlmaLinux, CentOS (8 or later), and Fedora, use the command below to install Python 3:
+    On **AlmaLinux**, **CentOS** (8 or later), and **Fedora**, use the command below to install Python 3.
 
         sudo dnf install python3
 
-1. Install `tldr` via Pip 3, the default package installer for Python 3:
+1. Install `tldr` via Pip 3, the default package installer for Python 3.
 
         sudo pip3 install tldr
 
 ## How to Use tldr
 
-You can start using `tldr` simply by entering it in the command line followed by the name of a command you want to know more about. For example, you can get the tldr page for the `ls` command with:
+You can start using `tldr` simply by entering it in the command line followed by the name of a command you want to know more about. For example, you can get the tldr page for the `ls` command as shown below:
 
     tldr ls
 
@@ -138,7 +138,7 @@ You can start using `tldr` simply by entering it in the command line followed by
     ls -d */
 {{< /output >}}
 
-By way of contrast, here is an excerpt from the extensive man page for `ls`:
+By way of contrast, here is an excerpt from the extensive man page for `ls`.
 
     man ls
 
@@ -178,7 +178,7 @@ DESCRIPTION
 
 As you can see, the tldr page focuses on giving you clear descriptions and examples of some of the most relevant options for the command. The man page, on the other hand, focuses on a comprehensive listing of options. Thus, man pages' descriptions of options are not always clear and can fall short in helping you find the most useful options.
 
-Here is another example that goes even further in illustrating the contrast:
+Below is another example that goes even further in illustrating the contrast.
 
     tldr vim
 
@@ -214,7 +214,7 @@ Here is another example that goes even further in illustrating the contrast:
     :set nu<Enter>
 {{< /output >}}
 
-And here again is an excerpt from the man page for comparison:
+And here again is an excerpt from the man page for comparison.
 
     man vim
 
@@ -282,13 +282,12 @@ But the tldr-pages format necessary leaves some information out for many command
 
     ls -Alh
 
-The tldr page informs you that the `-l` and `-h` options give you a long-listing format and human-readable file sizes, respectively. But, then, what does the `-A` option do? That is where the man page can be useful.
+The tldr page informs you that the `-l` and `-h` options give you a long-listing format and human-readable file sizes, respectively. But then, what does the `-A` option do? That is where the man page can be useful.
 
 Typically, this is a good method to keep in mind when using tldr-pages. A command's tldr page frequently contains all you need to get started; sometimes, you need nothing more than what the tldr page offers. But then, if you find yourself needing to dig deeper into a command, you can build off of what you learn on the tldr page with the wealth of details you can find on the man page.
 
 ## Conclusion
 
-You now have the knowledge you need to get started using tldr-pages in your daily life! It might be helpful to go ahead and start checking out the tldr pages for some commands you are already using. That way, you get to know tldr-pages better and maybe learn something toward getting more out of those commands.
+You now have the knowledge you need to get started using tldr-pages. It might be helpful to go ahead and start checking out the tldr-pages for some commands you are already using. That way, you get to know tldr-pages better and maybe learn something towards getting more out of those commands.
 
-Do you see something missing while looking over a tldr page? Is there a command you notice does not have a tldr page yet? Or do you just like what tldr-pages is doing and want to be a part of it? The tldr-pages project maintainers keep an open invitation for contributors. All of the tldr pages are stored on the project's [GitHub repository](https://github.com/tldr-pages/tldr), and the tldr team provides a [guide for contributing](https://github.com/tldr-pages/tldr/blob/main/CONTRIBUTING.md).
-
+Do you see something missing while looking over a tldr page? Is there a command you notice does not have a tldr page yet? Or do you just like what tldr-pages is doing and want to be a part of it? The tldr-pages project maintainers keep an open invitation for contributors. All of the tldr-pages are stored on the project's [GitHub repository](https://github.com/tldr-pages/tldr), and the tldr team provides a [guide for contributing](https://github.com/tldr-pages/tldr/blob/main/CONTRIBUTING.md).
