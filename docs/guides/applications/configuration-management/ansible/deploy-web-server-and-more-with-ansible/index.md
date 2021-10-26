@@ -1,5 +1,5 @@
 ---
-slug: test-guide-delete-me
+slug: pdce-deploy-webserver-and-more-with-ansible
 author:
   name: Nygel Bennett
   email: nygel.bennett@gmail.com
