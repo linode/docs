@@ -5,6 +5,8 @@ tab_group_main:
     weight: 30
 ---
 
+{{< content "nvme-block-storage-notice-shortguide" >}}
+
 ## Building Blocks
 
 These guides teach you what you need to know to get started:

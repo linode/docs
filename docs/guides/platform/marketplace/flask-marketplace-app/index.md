@@ -34,7 +34,7 @@ aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 10
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
