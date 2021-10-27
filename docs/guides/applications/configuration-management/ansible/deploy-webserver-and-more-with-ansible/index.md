@@ -60,18 +60,18 @@ On your local machine, Set up an environment variable which is used in the for l
 
 Check that it works by running `echo $pass` and you should see `yourrootpassword` as the output.
 
-{{< output >}} 
+{{< output >}}
 $ pass=madeuppassword
 $ echo $pass
 madeuppassword
-{{</ output >}} 
+{{</ output >}}
 
 Run the below command to create 5 Linodes.
 
     for i in {1..5}; do linode-cli linodes create --root_pass $pass; done
 
 Example output:
-{{< output >}} 
+{{< output >}}
 $ for i in {1..5}; do linode-cli linodes create --root_pass $pass; done
 ┌──────────┬────────────────┬─────────┬─────────────┬────────────────────┬──────────────┬────────────────┐
 │ id       │ label          │ region  │ type        │ image              │ status       │ ipv4           │
@@ -98,7 +98,7 @@ $ for i in {1..5}; do linode-cli linodes create --root_pass $pass; done
 ├──────────┼────────────────┼─────────┼─────────────┼────────────────────┼──────────────┼─────────────────┤
 │ 31202576 │ linode31202576 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 172.104.211.160 │
 └──────────┴────────────────┴─────────┴─────────────┴────────────────────┴──────────────┴─────────────────┘
-{{</ output >}} 
+{{</ output >}}
 
 ### 2. Grab the Linode ids and put them into a temp file. We use these ids to tag and label the Linodes.
 
@@ -152,7 +152,7 @@ If using the below command, replace **LINODE_ID** with the Linode ID of **vm1** 
 ### 4. SSH into vm1.
 Be sure to use the new user you created because the setup script disabled root logins.
 
-    ssh YOUR_USERNAME@VM1_IPADDRESS 
+    ssh YOUR_USERNAME@VM1_IPADDRESS
 
 You should see the hostname, **CtlPlane**, configured on the command prompt along with your username.
 
@@ -160,7 +160,7 @@ You should see the hostname, **CtlPlane**, configured on the command prompt alon
 nygelb@CtlPlane:~$
 {{</output>}}
 
-## Configure control node a bit more. 
+## Configure control node a bit more.
 
 ### 1. Set up `/etc/hosts` file on control node with IPs for Ansible workers
 This enables us to use hostnames when referring to different instances. Run the below command from your local machine.
@@ -435,8 +435,8 @@ vm5                        : ok=6    changed=4    unreachable=0    failed=0    s
 ## Check to see if the playbook run was successful.
 Curl the IP addresses of the webservers. (vm2 and vm3)
 
-    curl vm2_IPADDRESS 
-    curl vm3_IPADDRESS 
+    curl vm2_IPADDRESS
+    curl vm3_IPADDRESS
 
 {{<output>}}
 nygelb@CtlPlane:~$ curl 172.104.214.155
