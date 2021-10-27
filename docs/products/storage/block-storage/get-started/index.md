@@ -5,6 +5,8 @@ tab_group_main:
     weight: 20
 ---
 
+{{< content "nvme-block-storage-notice-shortguide" >}}
+
 ## Add a New Block Storage Volume to a Linode
 
 You can attach a Block Storage Volume to an existing Linode. Storage Volumes cannot be sized down, only up. Keep this in mind when sizing your Volume.
