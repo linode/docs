@@ -14,21 +14,21 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 
 ## Availability
 
-Currently, **NVMe Block Storage** has been deployed in the Atlanta (USA) and Newark (USA) data centers. NVMe Block Storage infrastructure upgrades will soon be deployed across the remaining data centers in our fleet.
+**NVMe Block Storage** has already been deployed to a few of our data centers, as indicated in the table below. NVMe Block Storage infrastructure upgrades will soon be deployed across the remaining data centers in our fleet.
 
-| Data Center | Upgraded to NVMe Block Storage |
+| Data Center | NVMe Block Storage |
 | -- | -- |
-| **Atlanta (Georgia, USA)** | **Yes** |
+| **Atlanta (Georgia, USA)** | **Deployed** |
 | Dallas (Texas, USA) | *Coming soon* |
 | Frankfurt (Germany) | *Coming soon* |
 | Fremont (California, USA) | *Coming soon* |
 | London (United Kingdom) | *Coming soon* |
 | Mumbai (India) | *Coming soon* |
-| **Newark (New Jersey, USA)** | **Yes** |
+| **Newark (New Jersey, USA)** | **Deployed** |
 | Singapore | *Coming soon* |
 | Sydney (Australia) | *Coming soon* |
 | Tokyo (Japan) | *Coming soon* |
-| Toronto (Canada) | *Coming soon* |
+| **Toronto (Canada)** | **Deployed** |
 
 ## Upgrading a Volume to NVMe Block Storage
 
