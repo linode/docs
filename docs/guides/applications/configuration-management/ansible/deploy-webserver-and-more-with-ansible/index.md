@@ -3,14 +3,14 @@ slug: deploy-webserver-and-more-with-ansible
 author:
   name: Nygel Bennett
   email: nygel.bennett@gmail.com
-description: 'Learn how to deploy two webservers along with a logserver and a database server using Ansible.'
+description: 'Learn how to deploy two web servers along with a log server and a database server using Ansible.'
 keywords: ["ansible", "playbook", "bash script", "linode cli", "apache", "mariadb", "rsyslog", "lamp", "python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-18
 modified_by:
   name: Nygel Bennett
-title: "Automate deployment of webserver infrastructure using Ansible."
-h1_title: "How to Deploy a Webserver, Logserver, and Database server with Ansbile."
+title: "Automate deployment of web server infrastructure using Ansible."
+h1_title: "How to Deploy a Web Server, Log Server, and Database Server with Ansbile."
 enable_h1: true
 contributor:
   name: Nygel Bennett
@@ -25,7 +25,7 @@ Ansible is an open-source, software provisioning tool that automates application
 In this guide you:
 * Deploy and configure 5 Linodes. One is the Ansible control node and the others are worker nodes.
 * Configure and run an Ansible playbook that configures the worker nodes.
-* Test and confirm your running webservers and logserver.
+* Test and confirm your running web servers and log server.
 
 {{< caution >}}
 This guide's example instructions creates 5, [1GB Linodes](https://www.linode.com/pricing) (also known as Nanodes). These are billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to [delete the resources](https://www.linode.com/docs/guides/billing-and-payments/#removing-services) once you have finished this how-to.
@@ -181,7 +181,7 @@ Using the text editor of your choice, copy and paste this output to the end of t
 {{<note>}}
 Be sure to use `sudo` to edit `/etc/hosts`.
 
-eg: `sudo vim /etc/hosts`
+For example: `sudo vim /etc/hosts`
 {{</note>}}
 
 Check to make sure you can ping all the hostnames.
@@ -231,13 +231,13 @@ nygelb@CtlPlane:~$ ansible all --list-hosts
 The playbook is already written out for you. All that is needed is to add two parameters; a hashed password and the IP address of the log server.
 
 ### 1. Create hashed, plain-text password
-Run this command from your Ansible control plane. The command prompts you for a password. This password is used to access the webservers.
+Run this command from your Ansible control plane. The command prompts you for a password. This password is used to access the web servers.
 
      python3 -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.hash(getpass.getpass()))"
 
 Be sure to copy the output from the dollar sign to the period. Paste the resulting hashed password into `myplaybook.yml`, in the place holder, **{{ HASHED_PASSWORD }}**.
 
-### 2. Configure Logserver
+### 2. Configure Log server
 Grab the IP address of logging sever (vm5) and paste into `configure rsyslog` section of `myplaybook.yml`. Paste the IP address into the place holder, **{{ LOG_IP_ADDRESS }}**.
 
 ## Configure Ansible managed nodes.
@@ -366,7 +366,7 @@ TASK [Create web admin user] ***************************************************
 changed: [vm3]
 changed: [vm2]
 
-TASK [Set contenct directory group/permisions] ********************************************************************
+TASK [Set content directory group/permissions] ********************************************************************
 changed: [vm3]
 changed: [vm2]
 
@@ -433,7 +433,7 @@ vm5                        : ok=6    changed=4    unreachable=0    failed=0    s
 
 
 ## Check to see if the playbook run was successful.
-Curl the IP addresses of the webservers. (vm2 and vm3)
+Curl the IP addresses of the web servers. (vm2 and vm3)
 
     curl vm2_IPADDRESS
     curl vm3_IPADDRESS
