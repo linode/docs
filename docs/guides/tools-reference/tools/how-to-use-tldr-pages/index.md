@@ -1,25 +1,27 @@
 ---
-slug: how-to-use-tldr-pages
+slug: using-tldr-pages-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to use tldr-pages through the tldr command-line tool. With tldr-pages, you get a more approachable version of traditional man pages, making it easier to get started with new command-line tools."
 og_description: "Learn how to use tldr-pages through the tldr command-line tool. With tldr-pages, you get a more approachable version of traditional man pages, making it easier to get started with new command-line tools."
-keywords: ['tldr pages linux','tldr man pages','tldr linux command']
+keywords: ['install tldr','tldr pages linux','tldr man pages','tldr linux command']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-18
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use tldr-pages on Linux"
+title: "Using tldr-pages on Linux"
 h1_title: "How to Use tldr-pages on Linux"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 ---
 
-The tldr-pages project, similar to man pages, offers pages describing wide range of commands, and options you can use with them. But, compared to man pages, each tldr page aims to be more intuitive, and readable, making tldr-pages a great place to start when learning new commands.
+The tldr-pages project, similar to man pages, offers pages describing a wide range of commands, and options you can use with them. But, compared to man pages, each tldr page aims to be more intuitive, and readable, making tldr-pages a great place to start when learning new commands.
 
-In this guide, learn more about tldr-pages and how its pages compare to man pages. Additionally, learn how to start using tldr-pages via the `tldr` command-line tool, which this guide shows you how to install and use `tldr`.
+In this guide, learn more about tldr-pages, how to install & use `tldr`, and how its pages compare to man pages. Additionally, learn how to start using tldr-pages via the `tldr` command-line tool.
 
 ## Before You Begin
 
@@ -41,13 +43,13 @@ In this guide, learn more about tldr-pages and how its pages compare to man page
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## What is tldr-pages?
+## What are tldr-pages?
 
 The [tldr-pages project](https://github.com/tldr-pages/tldr) aims to provide a simple alternative to man pages, one that emphasizes readability and practical examples.
 
-As with man pages, you can use tldr-pages to find a description of a command and its available options. But, unlike man pages, tldr-pages does not try to provide a comprehensive list of options for each command. Instead, it focuses on each command's most useful options and giving clear and practical examples for each.
+As with man pages, you can use tldr-pages to find a description of a command and its available options. But, unlike man pages, tldr-pages does not try to provide a comprehensive list of options for each command. Instead, it focuses on each command's most useful options and gives clear and practical examples for each.
 
-The result is a resource that can make it much easier to learn and start using a new command. A command's man page can be useful if you know the command and want to work out specific actions, but can be difficult to engage with if you are new. A command's tldr page, on the other hand, introduces you to a command, and often gives you everything you need short of advanced usage.
+The result is a resource that can make it much easier to learn and start using a new command. A command's man page can be useful if you know the command and want to work out specific actions, but can be difficult to engage with if you are new. A command's tldr page, on the other hand, introduces you to command and often gives you everything you need short of advanced usage.
 
 ## How to Install tldr
 
@@ -55,7 +57,7 @@ To interact with tldr-pages, you can use one of the `tldr` clients. These give y
 
 Several `tldr` clients are available, and you can see the full listing on the `tldr` [GitHub page](https://github.com/tldr-pages/tldr#how-do-i-use-it).
 
-This guide gives you installation steps for two of the most popular `tldr` clients, one using **Node.js** and the other using **Python 3**. Take a look at each of the `tldr` client's in the below sections to see how you can install the `tldr` clients on your Linux system.
+This guide gives you installation steps for two of the most popular `tldr` clients, one using **Node.js** and the other using **Python 3**. Take a look at each of the `tldr` clients in the below sections to see how you can install them on your Linux system.
 
 ### Using Node.js
 
@@ -63,7 +65,7 @@ This guide gives you installation steps for two of the most popular `tldr` clien
 
     You can use the series of commands shown below to first install NVM and then use it to install the current version of Node.js. The Node.js installation includes the current NPM release.
 
-    Before proceeding, check the NVM [releases page](https://github.com/nvm-sh/nvm/releases), and replace `v0.38.0` from the command below with the version number of the latest release you find in the releases page.
+    Before proceeding, check the NVM [releases page](https://github.com/nvm-sh/nvm/releases), and replace `v0.38.0` from the command below with the version number of the latest release you find on the releases page.
 
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
         source ~/.bashrc
@@ -214,7 +216,7 @@ Below is another example that goes even further in illustrating the contrast.
     :set nu<Enter>
 {{< /output >}}
 
-And here again is an excerpt from the man page for comparison.
+And here again, is an excerpt from the man page for comparison.
 
     man vim
 
@@ -276,7 +278,7 @@ By contrast, the man page does not provide anything on commands you can use once
 
 ### How to Use tldr-pages and man Pages Together
 
-tldr-pages works best when used in conjunction with man pages. With a command's tldr page, you get a clear and succinct introduction to the command. The inclusion of examples and focus on generally useful commands makes the tldr page a valuable place to start.
+tldr-pages work best when used in conjunction with man pages. With a command's tldr page, you get a clear and succinct introduction to the command. The inclusion of examples and focus on generally useful commands makes the tldr page a valuable place to start.
 
 But the tldr-pages format necessary leaves some information out for many commands. For instance, say you see the following `ls` command:
 
@@ -284,7 +286,7 @@ But the tldr-pages format necessary leaves some information out for many command
 
 The tldr page informs you that the `-l` and `-h` options give you a long-listing format and human-readable file sizes, respectively. But then, what does the `-A` option do? That is where the man page can be useful.
 
-Typically, this is a good method to keep in mind when using tldr-pages. A command's tldr page frequently contains all you need to get started; sometimes, you need nothing more than what the tldr page offers. But then, if you find yourself needing to dig deeper into a command, you can build off of what you learn on the tldr page with the wealth of details you can find on the man page.
+Typically, this is a good method to keep in mind when using tldr-pages. A command's tldr page frequently contains all you need to get started; sometimes, you need nothing more than what the tldr page offers. But then, if you find yourself needing to dig deeper into a command, you can build off of what you learn on the tldr page with the [wealth of details](https://man7.org/linux/man-pages/man1/man.1.html) you can find on the man page.
 
 ## Conclusion
 
