@@ -50,7 +50,7 @@ If you remove these resources afterward, you are only [billed for the time](http
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+{{</ note >}}
 
 ## Create, label, and tag 5 Linodes.
 ### 1. Create 5 Linodes using the Linode-CLI utility.
@@ -156,9 +156,9 @@ Be sure to use the new user you created because the setup script disabled root l
 
 You should see the hostname, **CtlPlane**, configured on the command prompt along with your username.
 
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$
-{{</output>}}
+{{</ output >}}
 
 ## Configure control node a bit more.
 
@@ -168,13 +168,13 @@ This enables us to use hostnames when referring to different instances. Run the 
     linode-cli linodes list --text | grep vm | awk '{print $7,$2,$2".ansi.com"}' | column -t
 
 Example Output:
-{{<output>}}
+{{< output >}}
 172.104.26.209  vm1  vm1.ansi.com
 172.104.26.246  vm2  vm2.ansi.com
 172.104.26.229  vm3  vm3.ansi.com
 172.104.26.48   vm4  vm4.ansi.com
 172.104.26.108  vm5  vm5.ansi.com
-{{</output>}}
+{{</ output >}}
 
 Using the text editor of your choice, copy and paste this output to the end of the `/etc/hosts/` file on **vm1**.
 
@@ -219,14 +219,14 @@ Confirm all hosts are accessible.
     ansible all --list-hosts
 
 Example output:
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$ ansible all --list-hosts
   hosts (4):
     vm5
     vm2
     vm3
     vm4
-{{</output>}}
+{{</ output >}}
 ## Set up Ansible playbook to configure worker nodes
 The playbook is already written out for you. All that is needed is to add two parameters; a hashed password and the IP address of the log server.
 
@@ -256,13 +256,13 @@ Check to make sure each managed node contains the script by sending the 'ls' com
     for i in {2..5}; do sshpass -f ~/.ssh/file ssh root@vm$i 'ls'; done
 
 Resulting output:
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$ for i in {2..5}; do sshpass -f ~/.ssh/file ssh root@vm$i 'ls'; done
 ansibleMN_setup.sh
 ansibleMN_setup.sh
 ansibleMN_setup.sh
 ansibleMN_setup.sh
-{{</output>}}
+{{</ output >}}
 
 ### 2. Log into each worker node and run the `ansibleMN_setup.sh` script.
 From the local computer, open 4 terminal sessions and within each session, ssh into each managed node (vm2 - vm5). Once logged in, execute the managed node setup script.
@@ -290,7 +290,7 @@ Confirm all hosts can be pinged using Ansible. A successful run of this command 
 
     ansible all -m ping
 
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$ ansible all -m ping
 vm4 | SUCCESS => {
     "ansible_facts": {
@@ -320,7 +320,7 @@ vm5 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-{{</output>}}
+{{</ output >}}
 ## Run the Ansible playbook to configure managed nodes.
 
 ### Run the playbook with the below command:
@@ -329,7 +329,7 @@ vm5 | SUCCESS => {
 
 If all is successful, you should see the below output.
 
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$ ansible-playbook myplaybook.yml
 
 PLAY [webservers] *************************************************************************************************
@@ -428,7 +428,7 @@ vm2                        : ok=13   changed=9    unreachable=0    failed=0    s
 vm3                        : ok=13   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vm4                        : ok=6    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vm5                        : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-{{</output>}}
+{{</ output >}}
 
 
 
@@ -438,34 +438,34 @@ Curl the IP addresses of the web servers. (vm2 and vm3)
     curl vm2_IPADDRESS
     curl vm3_IPADDRESS
 
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$ curl 172.104.214.155
 Welcome to li1924-155 on 172.104.214.155
 nygelb@CtlPlane:~$ curl 172.104.214.165
 Welcome to li1924-165 on 172.104.214.165
-{{</output>}}
+{{</ output >}}
 
 Send a `logger` command to the lamp stack defined in the `hosts` file.
 
     ansible lamp -m command -a 'logger hurray it works'
 
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$ ansible lamp -m command -a 'logger hurray it works'
 vm4 | CHANGED | rc=0 >>
 
 vm3 | CHANGED | rc=0 >>
 
 vm2 | CHANGED | rc=0 >>
-{{</output>}}
+{{</ output >}}
 
 Search the log server for the entry just sent.
 
     ansible logservers -m command -a "grep 'hurray it works$' /var/log/syslog" -b
 
-{{<output>}}
+{{< output >}}
 nygelb@CtlPlane:~$ ansible logservers -m command -a "grep 'hurray it works$' /var/log/syslog" -b
 vm5 | CHANGED | rc=0 >>
 Oct 25 21:22:00 li1924-200 nygelb: hurray it works
 Oct 25 21:22:00 li1924-165 nygelb: hurray it works
 Oct 25 21:22:00 li1924-155 nygelb: hurray it works
-{{</output>}}
+{{</ output >}}
