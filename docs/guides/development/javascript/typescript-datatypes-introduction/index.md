@@ -3,31 +3,30 @@ slug: typescript-types-get-started
 author:
   name: Martin Heller
 description: 'TypeScript supports several types, including primitive types, arrays, and objects. This guide provides a brief introduction to TypeScript types with information on how to learn more.'
-og_description: 'TypeScript supports several types, including primitive types, arrays, and objects. This guide provides a brief introduction to TypeScript types with information on how to learn more.'
 keywords: ['typescript types']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-27
+published: 2021-10-29
 modified_by:
   name: Linode
-title: "Typescript Types: Get Started"
-h1_title: "Typescript Types: An Introduction"
+title: "TypeScript Types: Get Started"
+h1_title: "Getting Started with TypeScript Types"
 enable_h1: true
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
 ---
-TypeScript various data types including `string`, `number`, `boolean`, `enum`, `Array`, `tuple`, `void`, `null`, and `undefined`. TypeScript supports the same data types as JavaScript, however, TypeScript also supports type checking. This guide provides an introduction to common TypeScript types with examples on how to create each type.
+TypeScript supports various types including `string`, `number`, `boolean`, `enum`, `Array`, `tuple`, `void`, `null`, and `undefined`. These are the same types supported by JavaScript, however, TypeScript can also perform type checking. This guide provides an introduction to common TypeScript types with examples on how to create each type.
 
 ## Primitive Types
 
-The three essential primitive data types in JavaScript and TypeScript are *string*, *number*, and *boolean*.
+The three essential primitive types in JavaScript and TypeScript are *string*, *number*, and *boolean*.
 
 {{< note >}}
 All three primitive types are spelled in lower-case. There are capitalized variants of these words that compile successfully in TypeScript. These are referred to as *boxed types*. When a primitive type is boxed it is "wrapped" in an object and can then behave like an object.
 {{</ note >}}
 
-The example TypeScript code below demonstrates how to assign values of all three primitive data types to variables.
+The example TypeScript code below demonstrates how to assign values of all three primitive types to variables.
 
 {{< file "example.ts" typescript>}}
 //strings
@@ -76,9 +75,9 @@ var b3 = !true; //both
 You don’t actually get an immutable variable when you use `const`. To do that, declare an object member `readonly`.
 {{</ note >}}
 
-## The TypeScript Any Type
+## The Any Type
 
-A variable of type `any` can hold any data type. The main reason to use the `any` type is to prevent TypeScript from throwing type-checking errors for that variable.
+A variable of type `any` can store any type. The main reason to use the `any` type is to prevent TypeScript from throwing type-checking errors for that variable.
 
 {{< caution >}}
 Before using `any`, consider the alternatives of explicit [unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html) and [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html).

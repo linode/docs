@@ -3,15 +3,14 @@ slug: typescript-decorators-getting-started
 author:
   name: Martin Heller
 description: 'This guide discusses Decorators, an experimental TypeScript feature. You learn how to enable Decorators in TypeScript, and the syntax for creating Decorators.'
-og_description: 'This guide discusses Decorators, an experimental TypeScript feature. You learn how to enable Decorators in TypeScript, and the syntax for creating Decorators.'
 keywords: ['typescript decorators']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
+published: 2021-10-28
 modified_by:
   name: Linode
-title: "Typescript Decorators: Getting Started"
-h1_title: "TypeScript Decorators: An Introduction"
+title: "TypeScript Decorators: Getting Started"
+h1_title: "Getting Started with TypeScript Decorators"
 enable_h1: true
 contributor:
   name: Martin Heller

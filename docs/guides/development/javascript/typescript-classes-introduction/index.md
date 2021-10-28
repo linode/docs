@@ -3,15 +3,14 @@ slug: typescript-classes-get-started
 author:
   name: Martin Heller
 description: 'This guide discusses TypeScript classes with information on initializers, constructors, member visibility, and more.'
-og_description: 'This guide discusses TypeScript classes with information on initializers, constructors, member visibility, and more.'
 keywords: ['typescript classes']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-27
+published: 2021-10-29
 modified_by:
   name: Linode
-title: "Typescript Classes: Get Started"
-h1_title: "Typescript Classes: An Introduction"
+title: "TypeScript Classes: Get Started"
+h1_title: "Getting Started with Typescript Classes"
 enable_h1: true
 contributor:
   name: Martin Heller
@@ -58,7 +57,7 @@ class Rectangle {
 }
 {{< /file >}}
 
-## Readonly
+## Readonly Fields
 
 If you prefix a field with the `readonly` modifier, you cannot assign a value to the field outside of the class constructor. The read-only members can only be assigned in an initializer or in a class constructor. The example below displays the `Rectangle` class with a readonly field named `pi`.
 

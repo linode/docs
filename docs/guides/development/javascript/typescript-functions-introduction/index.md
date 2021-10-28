@@ -2,16 +2,15 @@
 slug: typescript-functions-getting-started
 author:
   name: Martin Heller
-description: 'This guide provides an introduction to creating TypeScript functions. It discusses some of the differences between functions in JavaScript and TypeScript'
-og_description: 'This guide provides an introduction to creating TypeScript functions. It discusses some of the differences between functions in JavaScript and TypeScript'
+description: 'This guide provides an introduction to creating functions in TypeScript. It discusses some of the differences between functions in JavaScript and TypeScript'
 keywords: ['typescript functions']
 tags: ['typescript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
+published: 2021-10-29
 modified_by:
   name: Linode
-title: "Typescript Functions: Getting Started"
-h1_title: "TypeScript Functions: An Introduction"
+title: "TypeScript Functions: Getting Started"
+h1_title: "Getting Started with TypeScript Functions"
 enable_h1: true
 contributor:
   name: Martin Heller
@@ -137,12 +136,6 @@ function len(x: any[] | string) {
  return x.length;
 }
 {{</ file >}}
-
-## Definitely Typed
-
-Most JavaScript libraries can be used in TypeScript. The site [DefinitelyTyped](http://definitelytyped.org/) provides TypeScript type [declaration files](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html) for many of JavaScript libraries. Declaration files use the suffix `.d.ts`. The `.d.ts` files contain function prototypes with the `export` keyword and TypeScript type annotations as shown below:
-
-    export function getArrayLength(arr: any[]): number;
 
 ## Further Information
 
