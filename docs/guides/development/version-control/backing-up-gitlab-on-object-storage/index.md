@@ -7,7 +7,6 @@ description: "Use gitlab tooling and Linode Object Storage to seemlessly back up
 keywords: ["git", "object-storage", "gitlab"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/version-control/backing-up-gitlab-on-linode-object-storage']
 modified: 2021-10-27
 modified_by:
   name: Linode
@@ -29,7 +28,7 @@ All modern GitLab installations additionally include tooling to create backups o
 
 ## Configuring Gitlab For Object Storage Backups
 
-In order to configure gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
+In order to configure Gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). To do this, enter the following command, replacing your the username and IP address with the username and IP address of your unique Linode:
 
     ssh username@198.51.100.4
 
@@ -53,7 +52,7 @@ The following chart will explain each configuration settings in additional detai
 | Descriptor | Setting|
 | ------------| --------------------- |
 | provider | AWS (The provider must be set to AWS because it is dependent on [s3cmd](/docs/products/storage/object-storage/guides/s3cmd)) |
-| region | The region the bucket was created in. A full list of regions can be found in the [Product Documentation].(https://www.linode.com/docs/products/storage/object-storage/) |
+| region | The region the bucket was created in. A full list of regions can be found in the [Product Documentation](https://www.linode.com/docs/products/storage/object-storage/). |
 | endpoint | The endpoint url for the datacenter. Uses the syntax of **region.linodeobjects.com** |
 | aws_access_key-id | The Object Storage [Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) created in a previous step. |
 | aws_secret_access_key | The Object Storage [Secret Key](/docs/products/storage/object-storage/guides/generate-access-keys/) created in a previous step. |
@@ -69,7 +68,7 @@ Once configured, backups can now be created for your gitlab instance at any time
 
     gitlab-backup create
 
-Once complete, the backup will be freely available in a compressed `.tar` file within the object storage bucket, and can be observed directly in the Linode Cloud Manager.
+Once complete, the backup will be freely available in a compressed `.tar` file within the Object Storage bucket, and can be observed directly in the Linode Cloud Manager.
 
 ![View your backup.tar file.](backuptar.png)
 
