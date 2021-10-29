@@ -2,7 +2,6 @@
 slug: mock-testing-python-unittest-library
 author:
   name: John Mueller
-  email: docs@linode.com
 description: 'The Python unittest mock object library helps you perform testing on your Python applications. This guide shows you how to create a mock object and use the patch decorator to test your code.'
 keywords: ['python unittest','unittest mock','python unittest assert','mock object', 'python mock patch']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -25,7 +24,7 @@ Application and unit testing both require detailed examination of how the code w
 
 - **Mocking**: This method is useful when the *system under test* (SUT) provides enough functionality where you can set values and track methods that are called in your code. With Mocking, a result is generated using the shortest means possible in a flexible manner that can be tightly or loosely coupled with the data. It’s possible to perform assertions against mocks. Mocks are generally used to understand the behavior of an application as it takes shape. It also provides a level of monitoring that stubbing and fakes can’t provide. The main cost of mocking is added complexity.
 
-- **Stubbing**: Use stubbing when the SUT can provide a response to queries to show that specific features work. The data is hard coded as part of the stub, so the data is tightly coupled. The result mimics what the application is expected to do within limits, and it’s possible to provide some control through input values. Stubs are generally used to test overall unit or application usability to ensure that issues like connectivity are addressed. Many developers use stubbing to test paths through an application or unit.
+- **Stubbing**: Use stubbing when the SUT can provide a response to queries to show that specific features work. The data is hard coded as part of the stub, so the data is tightly coupled. The result mimics what the application is expected to do within limits, and it’s possible to provide some control through input values. Stubs are generally used to test overall unit or application usability to ensure that issues like connectivity are addressed. Many developers use stubbing to test method-call paths through an application or unit.
 
 - **Fakes**: When the SUT provides a canned response to queries that may or may not match what the application eventually outputs, fakes are a good option to test your application. The output is fixed, so that it’s not possible to test any sort of logic or unit behavior. Fakes allow testing of overall unit functionality. Fakes also provide a method to abstract out any functionality that isn’t under development yet, or may not be accessible from the test environment. For example, instead of connecting to a database on a server, the fake may depend on an in-memory database instead.
 
@@ -57,7 +56,7 @@ The [Python unittest mock object library](https://docs.python.org/3/library/unit
 
 ### Instantiate a New Mock Object
 
-Working with a mock is different from working with standard objects. A mock can perform assertions, create a consistent result, or look for side effects. However, a mock isn’t real code. When you work with a mock, what you always get is a mock object that can be accepted in a variety of ways. The following steps go through some mock basics so you can visualize what a mock does. The following steps go through some mock basics so you can visualize what a mock does.
+Working with a mock is different from working with standard objects. A mock can perform assertions, create a consistent result by setting object methods to a particular value, or look for side effects that result from making particular calls. However, a mock isn’t real code. A mock object behaves like a "real" object, but doesn't alter your code. The following steps go through some mock basics so you can visualize what a mock does. The following steps go through some mock basics so you can visualize what a mock does.
 
 {{< note >}}
 The steps in these sections are all performed in your computer's Python interpreter. To access the Python interpreter, issue the following command:
@@ -90,11 +89,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
     The result of the call to `print()` show that you’re still working with a mock:` <Mock name='mock.getResult()' id='2544405026224'>`. This output contains the text of the call. The mock tracks how you work with the various method calls even though there is no method call code. You can use this behavior to your advantage by making assertions.
 
-1. To make an assertion against the `getResult()` method use this code:
+1. To make an assertion against the `getResult()` method use the following code:
 
         myMock.getResult.assert_called()
 
-    In this case, there is no output because `getResult()` has been called. If the code hadn't called `getResult()`, then you’d see an `AssertionError`.
+    In this case, there is no output because `getResult()` has been called using `print(myMock.getResult())` in the previous step. If the code hadn't called `getResult()`, then you’d see an `AssertionError`.
 
 1. Create an `AssertionError` condition using the following code:
 
@@ -131,12 +130,12 @@ Actual: setResult(1, 2)
 
     You can test inputs very specifically to ensure your code is doing precisely what it should do. There is also a call to verify that `setResult()` has only been called once with the specific values you provide using `myMock.setResult.assert_called_once_with(1, 2)`. The `unittest.mock` object comes with many assertion tests you can perform.
 
-1. To configure a mock to return a specific value using use the following code:
+1. You may need to configure a mock to return a specific value. In this case, you expect that `setResult(1,1)` will provide a `getResult()` return value of `3`, but it currently doesn't do so. Use the following code to provide the required output value:
 
         myMock.getResult.return_value = 3
         print(myMock.getResult())
 
-    When you run the code, there is an output value of `3`. If you change the input values using `setResult()`, the `getResult()` output does not change. This sort of consistency is useless in a production application. However, it’s quite helpful during testing because you can be certain that `getResult()` always returns `3` until you choose to change it.
+    When you run the code, there is an output value of `3`. If you change the input values using `setResult()`, the `getResult()` output does not change. This sort of consistency is not helpful in a production application. However, it’s quite helpful during testing because you can be certain that `getResult()` always returns `3` until you choose to change it.
 
 ### Obtaining Mock Statistics
 
@@ -150,7 +149,7 @@ When an application is too complex to perform a step-by-step analysis of every m
         print(myMock.setResult.call_count)
         print(myMock.getResult.call_count)
 
-    The outputs show the actual number of times that the code called each of the entries. Because you haven’t likely called `myMock` by itself, `myMock.call_count` returns `0`. You see values for `myMock.setResult` and `myMock.getResult`.
+    The outputs show the actual number of times that the code called each of the entries. Because you haven’t likely called `myMock` by itself, `myMock.call_count` returns `0`. You see values for `myMock.setResult` and `myMock.getResult`. Don’t add parenthesis after each of the `call_count` entries.
 
 1.  Sometimes you need to know how a method is called. For example, with `myMock.setResult()`, you need to know not only how often it is called, but with what arguments. You have two options: request just the latest call information using `call_args` or request all of the call information using `call_args_list`. You can use both as shown here:
 
@@ -179,7 +178,7 @@ When an application is too complex to perform a step-by-step analysis of every m
 
 ### Understanding the MagicMock Object
 
-The `MagicMock` object is a subset of the `Mock` object. It provides reasonable values for common method calls that frequently appear in Python. Here are the method calls and their default values:
+The `MagicMock` object is a subset of the `Mock` object. It provides reasonable values, such as the return value for common method calls that frequently appear in Python. Here are the method calls and their default results:
 
 - `__lt__`: NotImplemented
 - `__gt__`: NotImplemented
@@ -300,7 +299,10 @@ def SayHello():
 
     {{</ file >}}
 
-    The call to `SayHello()` in the last line is commented out. To uncomment this line of code, type python `UseMyClass.py`, and press `Enter` at the command line. The reason this line is commented out is to ensure you get a clear understanding of what’s happening when you perform the test.
+    The call to `SayHello()` in the last line is commented out, so you can see that the `SayHello()` method actually does access `MyClass.Hello()`. To run the code in the file, from the command line issue use the following command:
+
+        python UseMyClass.py
+
 
 1. Create a third file named `TestUseMyClass.py` with the test code in it like this:
 
@@ -325,13 +327,13 @@ if __name__ == '__main__':
 
     {{</ file >}}
 
-You need to import the `unittest` functionality to perform the test, the ability to use the `patch()` decorator, MagicMock as an object replacement (see the previous section for details), and the file under test (not the class file, but the file that is actually using the object).
+You need to import the `unittest` functionality to perform the test. The `mock` package provides the ability to use the `patch()` decorator, and MagicMock as an object replacement. You also need access to the file under test (not the class file, but the file that is actually using the object). To use `@patch()` you need to specify:
 
-You need to specify the name of the file, `UseMyClass`, the name of the class,`MyClass`, and the name of the method, `Hello`, that you want to patch in the file that you are testing. It’s important to pass this information as a string so that your error message contains information that can help you identify the source of the error.
+You need to specify the name of the file, `UseMyClass`, the name of the class,`MyClass`, and the name of the method, `Hello`. It’s important to pass this information as a string so that your error message contains information that can help you identify the source of the error.
 
-In order to use a mock (`mockHello` in this case), provide an entry for it as part of the call to the test method. This example actually demonstrates that you’re using a `MagicMock` as a replacement for `MyClass.Hello()` by making various assertions. So, until you actually call `SayHello()`, `mockHello` hasn’t been called to replace it. Once you do call `SayHello()` in the code, you can begin using the various `MagicMock` features to determine how the mocking functionality performed.
+In order to use a mock (`mockHello` in this case), provide a parameter for it as part of the call to the test method. This example actually demonstrates that you’re using a `MagicMock` as a replacement for `MyClass.Hello()` by making various assertions. So, until you actually call `SayHello()`, `mockHello` hasn’t been called to replace it. Once you do call `SayHello()` in the code, you can begin using the various `MagicMock` features to determine how the mocking functionality performed.
 
-The code provides two print statements to ensure that the code has run as expected. A successful run doesn't output any information except a the eventual success message, which may not always be as helpful as you’d like it to be. The last two lines of code in the file start the testing process. There are several methods to start a test.
+The code provides two print statements to ensure that the code has run as expected. A successful run doesn't output any information except a success message. The success message may not contain as much information as you may need for debugging. The last two lines of code in the file start the testing process. There are several methods to start a test.
 
 1. At the command line type `python TestUseMyClass.py` and press **Enter**. The test output is shown below:
 
