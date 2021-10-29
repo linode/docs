@@ -20,7 +20,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | -- | -- |
 | **Atlanta (Georgia, USA)** | **Deployed** |
 | Dallas (Texas, USA) | *Coming soon* |
-| Frankfurt (Germany) | *Coming soon* |
+| **Frankfurt (Germany)** | **Deployed** |
 | Fremont (California, USA) | *Coming soon* |
 | London (United Kingdom) | *Coming soon* |
 | Mumbai (India) | *Coming soon* |
