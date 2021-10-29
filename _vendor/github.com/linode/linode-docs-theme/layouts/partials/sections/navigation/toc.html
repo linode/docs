@@ -1,5 +1,5 @@
-<div id="toc-component" class="bg-white z-10 w-full h-full border-l-gray--md" x-data="lnc.NewTocController()" x-init="init({ headerCloseButton: $refs.headerCloseButton })" @nav:toggle.document="receiveToggle($event.detail)"
-    @scroll.window.debounce.10ms="onScroll()" @hashchange.window="onHashchange();" @turbolinks:render.document="onTurbolinksRender($event.data);" data-turbolinks-permanent>
+<div id="toc-component" class="bg-white z-10 w-full h-full border-l-gray--md" x-data="lncToc()"
+    @scroll.window.debounce.10ms="onScroll()" @hashchange.window="onHashchange();" >
   <div x-show="enabled" class="h-full relative" @click.away="closeIfMobile()" data-testid="toc">
     <div class="flex flex-col">
       <ul @click="toggleOpen()">
@@ -7,7 +7,7 @@
           <div class="hide-if-topbar-is-pinned md:hidden h-full pr-container">
             <div class="flex items-center h-full justify-end md:hidden">
               <button aria-label="open" type="button" class="btn-icon">
-                <svg class="fill-current w-5 h-5" :class="{'text-brand': open, 'text-titlecolor': !open}">
+                <svg class="fill-current w-5 h-5" :class="{'text-brand': $store.nav.open.toc, 'text-titlecolor': !$store.nav.open.toc}">
                   <use href="#icon--book"></use>
                 </svg>
               </button>
@@ -24,14 +24,14 @@
                 <div class="font-semibold text-titlecolor text-xs tracking-wide md:tracking-widest md:text-sm truncate w-48" x-html="activeHeading.title"></div>
               </template>
               <button :aria-label="open ? 'close' : 'open'" type="button" class="btn-icon" data-testid="toc-open">
-                <template x-if="!open">
+                <template x-if="!$store.nav.open.toc">
                   <div class="pl-2 pr-7">
                     <svg class="text-titlecolor h-4 w-4">
                       <use href="#icon--arrow-down"></use>
                     </svg>
                   </div>
                 </template>
-                <template x-if="open">
+                <template x-if="$store.nav.open.toc">
                   <div class="pl-2 pr-7">
                     <svg class="text-titlecolor h-4 w-4">
                       <use href="#icon--arrow-up"></use>
@@ -47,7 +47,7 @@
         </li>
       </ul>
     </div>
-    <nav class="toc bg-white border-l-gray overflow-y-scroll absolute pt-2 pb-4 z-50" class="{ 'hidden w-0': !open }" x-show="open"
+    <nav class="toc bg-white border-l-gray overflow-y-scroll absolute pt-2 pb-4 z-50" class="{ 'hidden w-0': !$store.nav.open.toc }" x-show="$store.nav.open.toc"
             x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700" x-transition:enter-start="opacity-0 transform mobile:translate-x-8 sm:-translate-y-4"
             x-transition:enter-end="opacity-100 transform mobile:translate-x-0 sm:translate-y-0">
       <div class="flex justify-between items-center md:hidden px-container mt-4 mb-2">
@@ -64,7 +64,7 @@
     </nav>
   </div>
   <template x-ref="headerCloseButton">
-    <button type="button" class="btn-icon text-basicgray" @click="open = !open">
+    <button type="button" class="btn-icon text-basicgray" @click="open = !open; $event.stopPropagation();">
       <template x-if="open">
         <svg class="fill-current h-4 w-4">
           <use href="#icon--arrow-up"></use>

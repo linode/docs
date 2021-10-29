@@ -1,4 +1,4 @@
-/* Main colors, these are also referenced in tailwind.config.js. */
+/* Main beps colors, these are also referenced in tailwind.config.js.. */
 :root {
   --color-brand: #02b159;
   --color-brand--decimal: 2, 177, 89;
@@ -27,11 +27,6 @@ html {
   }
 }
 
-/* Hide pre-initialized DOM elements. */
-[x-cloak] {
-  display: none !important;
-}
-
 body,
 html {
   width: 100vw;
@@ -52,7 +47,7 @@ body {
   @apply lg:mx-auto;
 }
 
-.turbolinks-progress-bar {
+.turbo-progress-bar {
   @apply bg-brand;
   opacity: 0.35;
   height: 3px;
@@ -132,4 +127,10 @@ for the smaller screens.
 .px-container,
 .mx-container {
   @apply pl-container pr-container;
+}
+
+/* Adjust Tailwind preflight defaults applied in tailwind base. */
+pre {
+  /* Tailwind 2.* is prepending ui-monospace in its preflight pre element, which looks like a bug. This makes sure we use the config settings. */
+  @apply font-mono;
 }

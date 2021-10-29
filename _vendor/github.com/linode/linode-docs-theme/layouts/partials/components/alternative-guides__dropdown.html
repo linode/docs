@@ -20,7 +20,7 @@
           </div>
         </button>
     </div>
-    <ul x-show.transition="open" class="origin-top-right absolute right-0 w-full z-10 overflow-y-auto border border-gray-300 border-t-0 bg-white my-0 flex flex-col items-stretch" style="max-height: 20rem;" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
+    <ul x-transition x-show="open" class="origin-top-right absolute right-0 w-full z-10 overflow-y-auto border border-gray-300 border-t-0 bg-white my-0 flex flex-col items-stretch" style="max-height: 20rem;" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
       {{ range .values }}
         <li class="">
           <a href="{{ .page.RelPermalink }}"

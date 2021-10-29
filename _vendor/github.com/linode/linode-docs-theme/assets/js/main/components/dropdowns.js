@@ -5,15 +5,6 @@ var debug = 0 ? console.log.bind(console, '[dropdowns]') : function() {};
 export function newDropdownsController(dropdowns) {
 	return {
 		dropdowns: dropdowns,
-		init: function() {
-			if (document.body.classList.contains('is-topbar-pinned')) {
-				this.dropdowns.forEach((e) => {
-					if (e.hideWhenPinned) {
-						e.hidden = true;
-					}
-				});
-			}
-		},
 		toggleOpen: function(idx) {
 			let wasOpen = this.dropdowns[idx].open;
 			this.dropdowns[idx].open = !wasOpen;
@@ -39,20 +30,6 @@ export function newDropdownsController(dropdowns) {
 		},
 		isHidden: function(idx) {
 			return this.dropdowns[idx].hidden;
-		},
-		receiveToggle: function(detail) {
-			debug('receiveToggle', detail);
-			switch (detail.what) {
-				case 'topbar-pinned':
-					this.dropdowns.forEach((e) => {
-						if (e.hideWhenPinned) {
-							e.hidden = detail.open;
-						}
-					});
-					break;
-				default:
-				// Ignore
-			}
 		}
 	};
 }
