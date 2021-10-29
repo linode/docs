@@ -485,7 +485,7 @@ nygelb@CtlNode:~$ ansible all --list-hosts
 
 ## Set up Ansible Playbook to Configure Worker Nodes
 
-Using the playbook created earlier, add two parameters; a hashed password and the IP address of the log server. 
+Using the playbook created earlier, add two parameters; a hashed password and the IP address of the log server.
 
 ### Create and add hashed, plain-text password to playbook.
 Run this command from your Ansible control node. The command prompts you for a password. This password is used to access the web servers.
