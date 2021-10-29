@@ -20,7 +20,7 @@ TypeScript supports various types including `string`, `number`, `boolean`, `enum
 
 ## Primitive Types
 
-The three essential primitive types in JavaScript and TypeScript are *string*, *number*, and *boolean*.
+The three essential primitive types in JavaScript and TypeScript are `string`, `number`, and `boolean`.
 
 {{< note >}}
 All three primitive types are spelled in lower-case. There are capitalized variants of these words that compile successfully in TypeScript. These are referred to as *boxed types*. When a primitive type is boxed it is "wrapped" in an object and can then behave like an object.

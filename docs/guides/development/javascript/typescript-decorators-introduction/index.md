@@ -21,7 +21,7 @@ contributor:
 
 ## What are Decorators?
 
-Decorators are available in several object-oriented and functional programming languages, including Python, JavaScript ES6, and TypeScript. Decorators are a lightweight alternative to subclasses. In other languages, such as C++, C#, and Java, the Decorator design pattern is implemented with wrapper classes.
+Decorators are available in several object-oriented and functional programming languages, including Python, JavaScript ES6, and TypeScript. Decorators are a lightweight alternative to subclasses. In other languages, such as C++, C#, and Java, the decorator design pattern is implemented with wrapper classes.
 
 In TypeScript, decorators are declared using an at sign (`@`) before the decorator name and have a matching function that implements the behavior. The file below contains an example of a class decorator (`@classDecorator`) applied to the class `Person`.
 
@@ -38,7 +38,7 @@ class Person {
 
 ## How Do I Enable Decorators in TypeScript?
 
-As of writing this guide, Decorators are still an experimental feature in TypeScript. To enable this feature, set the `experimentalDecorators` compiler flag either on the command line or in your `tsconfig.json` file.
+As of writing this guide, decorators are still an experimental feature in TypeScript. To enable this feature, set the `experimentalDecorators` compiler flag either on the command line or in your `tsconfig.json` file.
 
 To enable the decorators feature from the command line, use the following command:
 
