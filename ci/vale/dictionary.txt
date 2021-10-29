@@ -1586,7 +1586,7 @@ sparklines
 spectre
 speedtest
 spf1
-Splunk
+splunk
 spm
 spork
 sql
@@ -1712,6 +1712,7 @@ tinydb
 titlebar
 tl
 tld
+tldr
 tls
 tlz
 tmp
