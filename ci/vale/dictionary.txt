@@ -3,6 +3,8 @@ abell
 absecon
 abspath
 aconf
+accessor
+accessors
 adc
 addon
 addons
@@ -560,6 +562,7 @@ geolocating
 geolocation
 getmail
 getpwent
+getters
 gfx
 gfxmode
 gibibytes
@@ -729,6 +732,7 @@ infographic
 ingressgateway
 ini
 initializer
+initializers
 initramfs
 initrd
 inittab
@@ -1067,6 +1071,7 @@ multiplatform
 multiport
 multisite
 multiuser
+mutator
 munin
 musl
 mutliverse
@@ -1265,6 +1270,7 @@ phpmyadmin
 phusion
 pid
 pidfile
+pingable
 pipfile
 pipenv
 pipelined
@@ -1531,6 +1537,7 @@ setattr
 setenvif
 setguid
 setsebool
+setters
 setuid
 setuptools
 Severalnines
@@ -1736,6 +1743,7 @@ traefik
 transcode
 transcoder
 transcoding
+transpiled
 trello
 triaging
 truststore
@@ -1933,6 +1941,7 @@ worker1
 worker2
 wp
 wpuser
+writability
 writecaps
 ws
 wsgi
