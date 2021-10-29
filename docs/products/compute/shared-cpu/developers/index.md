@@ -3,6 +3,7 @@ title: Developers
 description: "Shared Linodes are managed easily with developer tools like the Linode API or CLI as well as third party tools and integrations."
 tab_group_main:
     weight: 50
+aliases: ['/products/compute/shared-linodes/developers/']
 ---
 
 ## Linode API
