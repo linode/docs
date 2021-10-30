@@ -1,17 +1,19 @@
 ---
-slug: how-to-use-silver-searcher
+slug: installing-and-using-silver-searcher-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Learn how to get started with the code-searching tool Silver Searcher. It is a tool like ack but emphasizing speed and efficiency."
-og_description: "Learn how to get started with the code-searching tool Silver Searcher. It is a tool like ack but emphasizing speed and efficiency."
+description: "Learn how to get started with the code-searching tool Silver Searcher. It is a tool like an ack but emphasizing speed and efficiency."
+og_description: "Learn how to get started with the code-searching tool Silver Searcher. It is a tool like an ack but emphasizing speed and efficiency."
 keywords: ['silver searcher ag','ag command linux','ack alternative']
+tags: ['ubuntu', 'debian', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-22
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use Silver Searcher on Linux"
+title: "Installing and Using Silver Searcher on Linux"
 h1_title: "How to Install and Use Silver Searcher on Linux"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -19,39 +21,39 @@ contributor:
 
 The Silver Searcher is a command-line tool for searching code. It is similar to the well-known `ack` command, but tremendously improves on performance and adds support for `.*ignore` files.
 
-In this guide, learn more about The Silver Searcher and how to install and get started using it on your Linux system.
+In this guide, learn more about Silver Searcher and how to install and get started using it on your Linux system.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
-    - On CentOS 7 or earlier, use:
+    - On **CentOS 7** or earlier, use the following command:
 
             sudo yum update
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is The Silver Searcher?
 
 [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) — also known by its command name, `ag` — is a code-searching tool similar to `ack`. But The Silver Searcher is designed to be much faster than `ack`, and it takes your `.gitignore`, `.hgignore`, and other `.*ignore` files into account.
 
-By default, The Silver Searcher excludes files and directories listed in `.gitignore` and `.hgignore` files, as well as hidden files and directories, from your searches. This keeps your searches focused on relevant files, and, moreover, further speeds up search time.
+By default, The Silver Searcher excludes files and directories listed in `.gitignore` and `.hgignore` files, as well as hidden files and directories, from your searches. This keeps your searches focused on relevant files, and further speeds up search time.
 
-The Silver Searcher can also have its own ignore file, `.ignore`. You can use this file to tightly control what files and directories you search and further keep out irrelevant results.
+The Silver Searcher can also have it's own ignore file, `.ignore`. You can use this file to tightly control what files and directories you search and further keep out irrelevant results.
 
 ### The Silver Searcher vs ripgrep
 
@@ -59,30 +61,30 @@ The Silver Searcher can also have its own ignore file, `.ignore`. You can use th
 
 Both The Silver Searcher and `ripgrep` have their merits, many of which overlap. So, the choice of which one to use may come down to your personal preference between the tools' interfaces.
 
-`ripgrep` uses regular expression (regex) search patterns almost exclusively; The Silver Searcher, though fully capable of regex searches, uses command patterns primarily resembling `ack` commands. (You can learn more about using regex searches in The Silver Searcher via the [Advanced Searches](/docs/guides/how-to-use-silver-searcher/#advanced-searches) section below.) Thus, The Silver Searcher may be easier to pick up if you are already familiar with `ack`.
+`ripgrep` uses regular expression (regex) search patterns almost exclusively; The Silver Searcher, though fully capable of regex searches, uses command patterns primarily resembling `ack` commands. (You can learn more about using regex searches in The Silver Searcher via the [Advanced Searches](/docs/guides/installing-and-using-silver-searcher-on-linux/#advanced-searches) section below). Thus, The Silver Searcher may be easier to pick up if you are already familiar with `ack`.
 
-The Silver Searcher is fast, but `ripgrep` purports to be even faster in most scenarios. Likely, The Silver Searcher's still-remarkable performance should be sufficient for most use cases. If, however, you find yourself still facing slowdowns while using The Silver Searcher, you should look into `ripgrep`.
+The Silver Searcher is fast, but `ripgrep` purports to be even faster in most scenarios. Likely, The Silver Searcher's still-remarkable performance should be sufficient for most use cases. However, if you find yourself still facing slowdowns while using The Silver Searcher, you should look into `ripgrep`.
 
-You can learn more about `ripgrep` through our guide on how to install and start using it, which you can find via the search field above.
+You can learn more about `ripgrep` through our guide on how to install and start using it, which you can find via the search field on the top of this page.
 
 ## How to Install The Silver Searcher
 
 Depending on your Linux distribution, use one of the following methods to install The Silver Searcher.
 
-- On Debian and Ubuntu, use:
+- On **Debian** and **Ubuntu**, use the following command:
 
         sudo apt install silversearcher-ag
 
-- On AlmaLinux, CentOS 8 or later, and Fedora, use:
+- On **AlmaLinux**, **CentOS 8** or later, and **Fedora**, use the following command:
 
         sudo dnf install the_silver_searcher
 
-- On CentOS 7 or earlier, use:
+- On **CentOS 7** or earlier, use the following command:
 
         sudo yum install epel-release
         sudo yum install the_silver_searcher
 
-You can then verify your installation with:
+You can then verify your installation with the `--version` flag:
 
     ag --version
 
@@ -104,22 +106,22 @@ let g:ackprg = 'ag --vimgrep'
 " [...]
 {{< /file >}}
 
-You can then use The Silver Surfer in Vim via the `:Ack` command. Simply provide your search options, pattern, and directory like you would when using the `ag` command from the command-line.
+You can then use The Silver Surfer in Vim via the `:Ack` command. Simply provide your search options, pattern, and directory like you would when using the `ag` command from the command line.
 
-For instance, the first example command from the [How to Use The Silver Searcher](/docs/guides/how-to-use-silver-searcher/#how-to-use-the-silver-searcher) section below would translate to the following in Vim:
+For instance, the first example command from the [How to Use The Silver Searcher](/docs/guides/installing-and-using-silver-searcher-on-linux/#how-to-use-the-silver-searcher) section below would translate to the following in Vim:
 
     :Ack restful ~/express
 
 ## How to Use The Silver Searcher
 
-This section walks you through some of the most useful features of The Silver Searcher using the [Express JS](https://github.com/expressjs/express) project for its examples. You can clone the project's GitHub repository to your current user's home directory using the commands below. Note that you need to have `git` installed for this to work:
+This section walks you through some of the most useful features of The Silver Searcher using the [Express JS](https://github.com/expressjs/express) project for its examples. You can clone the project's GitHub repository to your current user's home directory using the commands below. Note that you need to have `git` installed for this to work.
 
     cd ~/
     git clone https://github.com/expressjs/express.git
 
 ### Basic Searches
 
-At its simplest, The Silver Searcher just needs a search pattern and a path to search in:
+At its simplest, The Silver Searcher just needs a search pattern and a path to search.
 
     ag restful ~/express
 
@@ -141,7 +143,7 @@ You can get a count of matches by piping the results to the `wc` command, as in:
 4
 {{< /output >}}
 
-If you just want to list the names of files with matching results, use the `-l` option with The Silver Searcher:
+If you just want to list the names of files with matching results, use the `-l` option with The Silver Searcher.
 
     ag -l restful ~/express
 
@@ -150,7 +152,7 @@ If you just want to list the names of files with matching results, use the `-l` 
 /home/example-user/express/History.md
 {{< /output >}}
 
-A useful variant of this kind of search uses the `--count` option. With it, The Silver Searcher lists each matching file along with its number of matching lines:
+A useful variant of this kind of search uses the `--count` option. With it, The Silver Searcher lists each matching file along with its number of matching lines.
 
     ag --count restful ~/express
 
@@ -159,7 +161,7 @@ A useful variant of this kind of search uses the `--count` option. With it, The 
 /home/example-user/express/History.md:3
 {{< /output >}}
 
-Notice in the first of the examples above that The Silver Searcher ignores case. You can, alternatively, make you search case sensitive with the `-s` option:
+Notice in the previous examples above that The Silver Searcher ignores cases. You can alternatively make your search case sensitive with the `-s` option.
 
     ag -s restful ~/express
 
@@ -171,13 +173,13 @@ Notice in the first of the examples above that The Silver Searcher ignores case.
 3400:  * Added high level restful http client module (express/http)
 {{< /output >}}
 
-### Excluding Files and Directories
+### Exclude Files and Directories
 
 By default, The Silver Searcher automatically excludes from its results files and directories listed in `.*ignore` files — for example, `.gitignore`, `.hgignore`, or just `.ignore`.
 
 The Express JS directory searched in the examples above has its own such file. Mostly, its `.gitignore` file covers files and directories generated by the operating system, Node.js, or otherwise while working on the project.
 
-But, for this example, let us say we want to search for `proxy` and want to ignore matches in the `test` subdirectory. First, you can see below just what results show up for the `proxy` search pattern without excluding anything beyond the default:
+But, for this example, let us say we want to search for `proxy` and want to ignore matches in the `test` subdirectory. First, from the example below, you can see what results show up for the `proxy` search pattern without excluding anything beyond the default.
 
     ag --count proxy ~/express
 
@@ -200,11 +202,11 @@ But, for this example, let us say we want to search for `proxy` and want to igno
 /home/example-user/express/Readme-Guide.md:1
 {{< /output >}}
 
-Now, create a `.ignore` file in the Express JS directory and have that file list the directory you want excluded:
+Now, create a `.ignore` file in the Express JS directory and have that file list the directory you want it to be excluded.
 
     echo "test" > ~/express/.ignore
 
-Conduct the search again, and notice that files in the `test` subdirectory are excluded from the results:
+Run the search command again and notice that files in the `test` subdirectory are excluded from the results.
 
     ag --count proxy ~/express
 
@@ -218,7 +220,7 @@ Conduct the search again, and notice that files in the `test` subdirectory are e
 /home/example-user/express/Readme-Guide.md:1
 {{< /output >}}
 
-The Silver Searcher also has an option — `--ignore` — to exclude files and directories based on a given pattern. For instance, you can further tune the search above by excluding all `*.md` files:
+The Silver Searcher also has an option — `--ignore` — to exclude files and directories based on a given pattern. For instance, you can further tune the search from the above example by excluding all `*.md` files.
 
     ag --count --ignore *.md proxy ~/express
 
@@ -234,7 +236,7 @@ The Silver Searcher also has an option — `--ignore` — to exclude files and d
 
 The Silver Searcher accepts regular expression (regex) search patterns, giving you access to powerful advanced search patterns. Just wrap the search pattern portion of your command in quotes, then use a regex pattern there.
 
-In the example below, regex is used to get a count of (most) JavaScript `function` declarations in the Express JS project:
+In the example below, regex is used to get a count of (most) JavaScript `function` declarations in the Express JS project.
 
     ag --js 'function.*\(.*\).*\{' ~/express | wc -l
 
@@ -242,12 +244,11 @@ In the example below, regex is used to get a count of (most) JavaScript `functio
 2911
 {{< /output >}}
 
-As you can see from the example above, The Silver Searcher also lets you limit your search to specific file types. You can use the command below to see a listing of all file types recognized by Silver Searcher:
+As you can see from the example above, The Silver Searcher also lets you limit your search to specific file types. You can use the command below to see a listing of all file types recognized by Silver Searcher.
 
     ag --list-file-types
 
-
-Wanting to broaden your search? The Silver Searcher excludes hidden files and directories from its results by default. Using the `--hidden` option, however, you can have it include those files and directories, broadening your search:
+Wanting to broaden your search? The Silver Searcher excludes hidden files and directories from its results by default. Using the `--hidden` option, however, you can have it include those files, and directories, broadening your search.
 
     ag --hidden package-lock.json ~/express
 
@@ -258,8 +259,8 @@ Wanting to broaden your search? The Silver Searcher excludes hidden files and di
 
 You can further broaden your search using the `--skip-vcs-ignores` option, which has The Silver Searcher ignore the contents of `.gitignore` and `.hgignore` files.
 
-Using the `--unrestricted` option gives you the broadest search. With it, The Silver Searcher searches hidden files and directories and ignores the contents of `.*ignore` files, including the `.ignore` file.
+Using the `--unrestricted` option gives you the broadest search. With this option, The Silver Searcher searches hidden files and directories and ignores the contents of `.*ignore` files, including the `.ignore` file.
 
 ## Conclusion
 
-You should be ready now to start using Silver Searcher for your projects! But Silver Searcher is a highly-capable search tool with even more to offer than covered in this guide. Be sure, as you put what you have learned here to action, to also check out Silver Searcher's additional command options. You can find them with the `ag --help` command, and they are likely to give you plenty more to fine-tune your searches.
+You should now be ready to start using Silver Searcher for your projects. But Silver Searcher is a highly-capable search tool with even more to offer than covered in this guide. Be sure, as you put what you have learned here to action, to also check out Silver Searcher's additional command options. You can find them with the `ag --help` command, and they are likely to give you plenty more to fine-tune your searches.

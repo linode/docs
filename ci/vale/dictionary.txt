@@ -1413,6 +1413,7 @@ reusability
 reutilize
 richlanguage
 rimap
+ripgrep
 ritchie
 rkhunter
 rkt
