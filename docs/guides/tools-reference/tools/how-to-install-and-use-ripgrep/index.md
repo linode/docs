@@ -1,16 +1,17 @@
 ---
-slug: how-to-install-and-use-ripgrep
+slug: installing-and-using-ripgrep
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides background on ripgrep, including installation instructions, comparisons to other regex tools, and examples.'
 og_description: 'This guide provides background on ripgrep, including installation instructions, comparisons to other regex tools, and examples.'
 keywords: ['ripgrep','Ripgrep ubuntu','Ripgrep examples']
+tags: ['ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-30
 modified_by:
   name: Linode
-title: "How to Install and Use Ripgrep"
+title: "Installing and Using Ripgrep"
 h1_title: "How to Install and Use Ripgrep"
 enable_h1: true
 contributor:
@@ -23,8 +24,8 @@ external_resources:
 - '[ripgrep user guide](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md)'
 - '[Linux man page for the grep command](https://pubs.opengroup.org/onlinepubs/7908799/xcu/grep.html)'
 - '[ack](https://github.com/beyondgrep/ack3/)'
-- '[Silver Surfer](https://github.com/ggreer/the_silver_searcher)'
-- '[Beyond Grep site](https://beyondgrep.com/feature-comparison/)'
+- '[Silver Searcher](https://github.com/ggreer/the_silver_searcher)'
+- '[Beyond grep site](https://beyondgrep.com/feature-comparison/)'
 - '[Homebrew homepage](https://brew.sh/)'
 - '[Rust Regex Guide](https://docs.rs/regex/1.5.4/regex/#syntax)'
 ---
@@ -33,75 +34,75 @@ The [*ripgrep utility*](https://github.com/BurntSushi/ripgrep) is a useful alter
 
 ## An Introduction to ripgrep
 
-Ripgrep is an open source line-oriented tool that is optimized to recursively search for text within a file or directory. It skips hidden files and directories and takes into account the contents of any `ignore` files. Ripgrep is available for Ubuntu and other Linux distributions, as well as for macOS and Windows. The name of the tool is intentionally not capitalized.
+Ripgrep is an open-source line-oriented tool that is optimized to recursively search for text within a file or directory. It skips hidden files and directories and takes into account the contents of any `ignore` files. Ripgrep is available for Ubuntu and other Linux distributions, as well as for macOS and Windows. The name of the tool is intentionally not capitalized.
 
-Benchmarking tests demonstrate that ripgrep is on average much faster than other text search tools. Ripgrep is more efficient because it uses the Rust `regex` engine, which uses finite automatons to speed up searches. It also quickly iterates through directories using a parallel recursive technique. Ripgrep automatically chooses whether to use memory maps or an intermediate buffer. Memory maps are best for single files, while buffers are better for larger directories. Ripgrep includes most features found in other search tools, but does not necessarily have complete feature parity with any of them. Some of the most important ripgrep features and highlights include the following:
+Benchmarking tests demonstrate that ripgrep is on average much faster than other text search tools. Ripgrep is more efficient because it uses the Rust `regex` engine, which uses finite automation to speed up searches. It also quickly iterates through directories using a parallel recursive technique. Ripgrep automatically chooses whether to use memory maps or an intermediate buffer. Memory maps are best for single files, while buffers are better for larger directories. Ripgrep includes most features found in other search tools but does not necessarily have complete feature parity with any of them. Some of the most important ripgrep features and highlights include the following:
 
-*   It provides full Unicode support, with built-in UTF-8 support to maintain performance. Support for Unicode is always enabled.
-*   Ripgrep can provide extra context for search results, allowing a user to specify the number of lines before or after the match to display. It also highlights matches in color.
-*   Ripgrep searches in a case sensitive manner, but it also supports case insensitive or smart case searches. In a smart case search, the search is case sensitive if and only if a capital letter is included in the search term.
-*   It allows users to search for multiple patterns or a search pattern spanning multiple lines.
-*   It reviews the contents of any `.gitignore`, `ignore`, or `rgignore` files and excludes these entries from the search. It uses a *regexSet* to match a file path against several patterns simultaneously.
-*   It ignores hidden and binary files by default.
-*   It can limit its search to particular types of files.
-*   It provides optional support for the *Perl Compatible Regular Expression 2* (PCRE2) search engine. This enables the use of look-arounds, a technique for retrieving text that precedes or follows the match, as well as back references.
-*   It supports a variety of text encodings such as UTF-8, UTF-16, latin-1, GBK, EUC-JP, and Shift_JIS. It can also search files compressed with most common utilities.
-*   Ripgrep can interact with input preprocessing filters for the purpose of text extraction, decryption, and automatic encoding detection.
+- Ripgrep provides full Unicode support, with built-in UTF-8 support to maintain performance. Support for Unicode is always enabled.
+- Ripgrep can provide extra context for search results, allowing a user to specify the number of lines before or after the match to display. It also highlights matches in color.
+- Ripgrep searches in a case-sensitive manner, but it also supports case insensitive or smart case searches. In a smart case search, the search is case sensitive if and only if a capital letter is included in the search term.
+- It allows users to search for multiple patterns or a search pattern spanning multiple lines.
+- It reviews the contents of any `.gitignore`, `ignore`, or `rgignore` files and excludes these entries from the search. It uses a *regexSet* to match a file path against several patterns simultaneously.
+- It ignores hidden and binary files by default.
+- It can limit its search to particular types of files.
+- It provides optional support for the *Perl Compatible Regular Expression 2* (PCRE2) search engine. This enables the use of look-around, a technique for retrieving text that precedes or follows the match, as well as back-references.
+- It supports a variety of text encodings such as UTF-8, UTF-16, latin-1, GBK, EUC-JP, and Shift_JIS. It can also search files compressed with the most common utilities.
+- Ripgrep can interact with input preprocessing filters for text extraction, decryption, and automatic encoding detection.
 
 However, ripgrep is not POSIX-compliant and it is not installed on most systems. Therefore, it is not a good choice if portability is required.
 
 ## Comparing ripgrep to grep, ack, and Silver Searcher
 
-Some alternatives to ripgrep include the familiar `grep` tool, [*ack*](https://github.com/beyondgrep/ack3/), and `ag`, also known as the [*Silver Surfer*](https://github.com/ggreer/the_silver_searcher). The biggest advantage of ripgrep is its speed. On average, it is noticeably faster than other tools as measured across multiple benchmarks. Although it is not always the fastest tool in every case, it handles complicated queries much more efficiently. Its parallel search technique is more efficient when searching through a large number of files. It also avoids worst-case scenarios where performance badly degrades with certain search parameters. Ripgrep uses Rust and its collection of highly-optimized libraries, while the other search tools use C or Perl. A full set of benchmarks is available in the "Code Search Benchmarks" section of the [*ripgrep blog*](https://blog.burntsushi.net/ripgrep/).
+Some alternatives to ripgrep include the familiar `grep` tool, [*ack*](https://github.com/beyondgrep/ack3/), and `ag`, also known as the [*Silver Searcher*](https://github.com/ggreer/the_silver_searcher). The biggest advantage of ripgrep is its speed. On average, it is noticeably faster than other tools as measured across multiple benchmarks. Although it is not always the fastest tool in every case, it handles complicated queries much more efficiently. Its parallel search technique is more efficient when searching through a large number of files. It also avoids worst-case scenarios where performance badly degrades with certain search parameters. Ripgrep uses Rust and its collection of highly-optimized libraries, while the other search tools use C or Perl. A full set of benchmarks is available in the "Code Search Benchmarks" section of the [*ripgrep blog*](https://blog.burntsushi.net/ripgrep/#code-search-benchmarks).
 
-Ripgrep is generally competitive with the other tools in terms of feature parity. On occasion, it lacks a feature that one of the other tools provides, and vice versa. Here is a more detailed comparison between ripgrep and the other tools.
+Ripgrep is generally competitive with the other tools in terms of feature parity. On occasion, it lacks a feature that one of the other tools provides and vice versa. Here is a more detailed comparison between ripgrep and the other tools.
 
-*   **ripgrep vs `grep`:** The `grep` tool is available as part of the standard Linux specification and has been around for a very long time. This means it is available on almost every system. It is reasonably efficient, but it is not as fast as ripgrep, especially when handling Unicode searches. It also does not have as many features. For example, it is not possible to restrict a search to a particular file type and it does not ignore file names listed in `.gitignore`. It does not provide user-friendly options such as smart case searching, nor does it use optimized search techniques like parallel iteration. However, it does support searches based on extended regular expressions, a feature ripgrep lacks.
-*   **ripgrep vs `ack`:** `ack` release 3 uses Perl and is designed for developers searching repositories of source code. It has the advantage of being highly portable, because it can run on any platform that supports Perl. It is relatively similar to `ripgrep` in the number of features it supports, but it is not as fast.
-*   **ripgrep vs Silver Surfer/`ag`:** The Silver Surfer program is probably the best comparison for ripgrep. Both programs provide a similar set of optimization and user-friendly features. Silver Surfer is considered quite fast, although ripgrep performs better on most benchmarks, and significantly better on Unicode searches. Silver Surfer uses some different search techniques than ripgrep does, including look-arounds.
+- **ripgrep vs `grep`:** The `grep` tool is available as part of the standard Linux specification and has been around for a very long time. This means it is available on almost every system. It is reasonably efficient, but it is not as fast as ripgrep, especially when handling Unicode searches. It also does not have as many features. For example, it is not possible to restrict a search to a particular file type and it does not ignore file names listed in `.gitignore`. It does not provide user-friendly options such as smart case searching, nor does it use optimized search techniques like parallel iteration. However, it does support searches based on extended regular expressions, a feature ripgrep lacks.
+- **ripgrep vs `ack`:** `ack` release 3 uses Perl and is designed for developers searching repositories of source code. It has the advantage of being highly portable because it can run on any platform that supports Perl. It is relatively similar to `ripgrep` in the number of features it supports, but it is not as fast.
+- **ripgrep vs Silver Searcher/`ag`:** The Silver Searcher program is probably the best comparison for ripgrep. Both programs provide a similar set of optimization and user-friendly features. Silver Searcher is considered quite fast, although ripgrep performs better on most benchmarks, and significantly better on Unicode searches. Silver Searcher uses some different search techniques than ripgrep does, including look-around.
 
-Both ripgrep and Silver Surfer are considered major improvements over the standard `grep` command. `ack` should be considered if maximum portability is absolutely necessary. A useful chart-based comparison of the different tools can be found at the [*Beyond Grep site*](https://beyondgrep.com/feature-comparison/).
+Both ripgrep and Silver Searcher are considered major improvements over the standard `grep` command. `ack` should be considered if maximum portability is absolutely necessary. A useful chart-based comparison of the different tools can be found at the [*Beyond Grep site*](https://beyondgrep.com/feature-comparison/).
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-3.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install ripgrep
 
 Ripgrep is usually available as part of the standard package for most Linux distributions and is easy to install. It can also be installed using either the `cargo` or Homebrew package managers.
 
-### Installing ripgrep on Ubuntu and Debian
+### Install ripgrep on Ubuntu and Debian
 
 Ripgrep is available through `apt` for Ubuntu release 18.10 or higher as well as the newest release of Debian. To install ripgrep, use the following command.
 
 {{< note >}}
-To install ripgrep on earlier releases, see the [*ripgrep installation instructions*](https://github.com/BurntSushi/ripgrep#installation) for information on how to add the binary `.deb` file.
+To install ripgrep on earlier releases, see the [ripgrep installation instructions](https://github.com/BurntSushi/ripgrep#installation) for information on how to add the binary `.deb` file.
 {{< /note >}}
 
     sudo apt-get install ripgrep
 
-### Installing ripgrep on RHEL Derivatives
+### Install ripgrep on RHEL Derivatives
 
-To install ripgrep on RHEL or CentOS distributions, follow these instructions. On CentOS, the package is available for release 7 and higher.
+To install ripgrep on RHEL or CentOS distributions, follow the instructions below. On CentOS, the package is available for release 7 and higher.
 
-1.  Add the ripgrep repository using `yum`.
+1. Add the ripgrep repository using `yum`.
     {{< note >}}
 To use the `yum-config-manager` utility, the `yum-utils` package must be installed first. This can be installed using the command `sudo yum install yum-utils`.
     {{< /note >}}
 
         sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
 
-2.  Install the ripgrep package using `yum`.
+1. Install the ripgrep package using `yum`.
 
         sudo yum install ripgrep
 
@@ -109,13 +110,13 @@ Install ripgrep on Fedora systems using the `dnf install` command.
 
     sudo dnf install ripgrep
 
-### Installing ripgrep Using Homebrew
+### Install ripgrep Using Homebrew
 
 Ripgrep can also be installed using the popular [*Homebrew*](https://brew.sh/) package manager. For instructions on installing Homebrew, see their website. Use the following command to install ripgrep using Homebrew.
 
     brew install ripgrep
 
-### Installing ripgrep Using Cargo
+### Install ripgrep Using Cargo
 
 Because ripgrep is written in Rust, it can be installed using Cargo, Rust's package manager. If Rust is already installed on the system, then Cargo is already available. Otherwise, Cargo can be installed as a stand-alone utility using the command `sudo apt install cargo`. To install ripgrep using Cargo, run the following command.
 
@@ -125,20 +126,20 @@ To be able to run Cargo executables, add the line `export PATH=$PATH:$HOME/.carg
 
     cargo install ripgrep
 
-### Installing ripgrep on macOS and Windows
+### Install ripgrep on macOS and Windows
 
-Ripgrep is also available for macOS and Windows as a static executable. Download the correct `zip` file for your system from the [*ripgrep releases webpage*](https://github.com/BurntSushi/ripgrep/releases) and unzip the archive. For a macOS system with Homebrew installed, ripgrep can also be installed using the `brew install ripgrep` command.
+Ripgrep is also available for macOS and Windows as a static executable. Download the correct `zip` file for your system from the [ripgrep releases webpage](https://github.com/BurntSushi/ripgrep/releases) and unzip the archive. For a macOS system with Homebrew installed, ripgrep can also be installed using the `brew install ripgrep` command.
 
 ## How to Use ripgrep
 
-The ripgrep executable is known as `rg`. Most commands take the form of `rg <search_pattern>  <filename>`. To see all of the search options, see the [*ripgrep user guide*](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md).
+The ripgrep executable is known as `rg`. Most commands take the form of `rg <search_pattern>  <filename>`. To see all of the search options, see the [ripgrep user guide](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md).
 
 To see usage notes for `rg` and a list of all the options, use the `-help` option.
 
     rg -help
 
 {{< note >}}
-The examples in the following section search the codebase of the open source PHPComposer application.
+The examples in the following section search the codebase of the open-source PHPComposer application.
 {{< /note >}}
 
 ### Basic Searching with ripgrep
@@ -154,7 +155,7 @@ To search a specific file, Use the `rg` command followed by the search term and 
 226:        throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
 {{< /output >}}
 
-More than one file can be specified. In this case, ripgrep groups the results by file.
+You can also specify multiple files. In this case, ripgrep groups the results by file.
 
     rg Exception InstalledVersions.php ClassLoader.php
 {{< output >}}
@@ -166,15 +167,16 @@ InstalledVersions.php
 226:        throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
 
 ClassLoader.php
-163:     * @throws \InvalidArgumentException
+163:     *@throws \InvalidArgumentException
 184:                throw new \InvalidArgumentException("A non-empty PSR-4 prefix must end with a namespace separator.");
-226:     * @throws \InvalidArgumentException
+226:* @throws \InvalidArgumentException
 235:                throw new \InvalidArgumentException("A non-empty PSR-4 prefix must end with a namespace separator.");
 {{< /output >}}
 
 To see each match with more context, use the `-C` option along with the number of lines to display. Adding `-C 2` tells ripgrep to include the two lines preceding and following the match in the output.
 
     rg Vendor  InstalledVersions.php -C 2
+
 {{< output >}}
 26-{
 27-    private static $installed;
@@ -183,18 +185,21 @@ To see each match with more context, use the `-C` option along with the number o
 30-
 31-    /**
 --
+
 294-    {
 295-        self::$installed = $data;
 296:        self::$installedByVendor = array();
 297-    }
 298-
 --
+
 ...
 {{< /output >}}
 
 For more granularity, the `-B` and `-A` options allow users to specify the number of lines both before and after the matching line. To display two lines before and one after, use `rg <search_string> <directory> -B 2 -A 1`.
 
     rg Vendor  InstalledVersions.php -B 2 -A 1
+
 {{< output >}}
 26-{
 27-    private static $installed;
@@ -202,29 +207,31 @@ For more granularity, the `-B` and `-A` options allow users to specify the numbe
 29:    private static $installedByVendor = array();
 30-
 --
+
 294-    {
 295-        self::$installed = $data;
 296:        self::$installedByVendor = array();
 297-    }
 --
+
 ...
 {{< /output >}}
 
-By default, ripgrep searches are case sensitive. Use the `-i` option for case-insensitive searches. If the `-S` option is appended, ripgrep performs a smart case search. In smart case mode, a search becomes case sensitive when the search term includes a capital letter.
+By default, ripgrep searches are case-sensitive. Use the `-i` option for case-insensitive searches. If the `-S` option is appended, ripgrep performs a smart case search. In smart case mode, a search becomes case-sensitive when the search term includes a capital letter.
 
     rg ssl OpenSSL.php -i
 {{< output >}}
-13: * The OpenSSL Random Number Source
-34: * The OpenSSL Random Number Source
+13: *The OpenSSL Random Number Source
+34:* The OpenSSL Random Number Source
 45:class OpenSSL extends \RandomLib\AbstractSource
-56:         * Prior to PHP 5.6.12 (see https://bugs.php.net/bug.php?id=70014) the "openssl_random_pseudo_bytes"
-65:         * Prior to PHP 5.5.28 (see https://bugs.php.net/bug.php?id=70014) the "openssl_random_pseudo_bytes"
-74:         * Prior to PHP 5.4.44 (see https://bugs.php.net/bug.php?id=70014) the "openssl_random_pseudo_bytes"
+56:         *Prior to PHP 5.6.12 (see <https://bugs.php.net/bug.php?id=70014>) the "openssl_random_pseudo_bytes"
+65:* Prior to PHP 5.5.28 (see <https://bugs.php.net/bug.php?id=70014>) the "openssl_random_pseudo_bytes"
+74:         * Prior to PHP 5.4.44 (see <https://bugs.php.net/bug.php?id=70014>) the "openssl_random_pseudo_bytes"
 93:        return function_exists('openssl_random_pseudo_bytes');
 114:        return openssl_random_pseudo_bytes($size);
 {{< /output >}}
 
-Ripgrep treats every search pattern as a regular expression. So it is easy to search for any one of a set of strings, insert wild cards, or look for repeating patterns. Enclose the regular expression in quotes to ensure the Linux parser passes the expression to ripgrep in an unaltered form. The first example searches the file for either `Error` or `Exception`. The second example looks for a `t` and a `p` with any single character in between.
+Ripgrep treats every search pattern as a regular expression. So it is easy to search for any one set of string, insert wild cards, or look for repeating patterns. Enclose the regular expression in quotes to ensure the Linux parser passes the expression to ripgrep in an unaltered form. The first example searches the file for either `Error` or `Exception`. The second example looks for a `t` and a `p` with any single character in between.
 
     rg 'Error|Exception' phpunit.xml.dist
 {{< output >}}
@@ -242,7 +249,7 @@ Ripgrep treats every search pattern as a regular expression. So it is easy to se
 15:         stopOnSkipped="false"
 {{< /output >}}
 
-At times, you might not want ripgrep to treat a search pattern like a regular expression. In this case, use the `-F` option to treat the search string as a string literal. For an explanation of the `regex` rules and how to apply them, see the [*Rust Regex Guide*](https://docs.rs/regex/1.5.4/regex/#syntax).
+At times, you might not want ripgrep to treat a search pattern like a regular expression. In this case, use the `-F` option to treat the search string as a string literal. For an explanation of the `regex` rules and how to apply them, see the [Rust Regex Guide](https://docs.rs/regex/1.5.4/regex/#syntax).
 
 ### Recursive Search with ripgrep
 
@@ -267,8 +274,8 @@ vendor/composer/InstalledVersions.php
 312:            foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 
 vendor/composer/ClassLoader.php
-16: * ClassLoader implements a PSR-0, PSR-4 and classmap class loader.
-18: *     $loader = new \Composer\Autoload\ClassLoader();
+16: *ClassLoader implements a PSR-0, PSR-4 and classmap class loader.
+18:*     $loader = new \Composer\Autoload\ClassLoader();
 36: * This class is loosely based on the Symfony UniversalClassLoader.
 43:class ClassLoader
 
@@ -297,8 +304,8 @@ It is also possible to search recursively in a specific directory using either a
 312:            foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 
 /home/userid/phpcomposer/vendor/composer/ClassLoader.php
-16: * ClassLoader implements a PSR-0, PSR-4 and classmap class loader.
-18: *     $loader = new \Composer\Autoload\ClassLoader();
+16: *ClassLoader implements a PSR-0, PSR-4 and classmap class loader.
+18:*     $loader = new \Composer\Autoload\ClassLoader();
 36: * This class is loosely based on the Symfony UniversalClassLoader.
 43:class ClassLoader
 {{< /output >}}
@@ -320,17 +327,17 @@ vendor/ircmaxell/random-lib/lib/RandomLib/AbstractMcryptMixer.php
 vendor/ircmaxell/random-lib/lib/RandomLib/Factory.php
 {{< /output >}}
 
-### Filtering with ripgrep
+### Filter with ripgrep
 
 Ripgrep has several options to limit the search space or filter out results. The `-t` option allows users to only search inside files of a particular type. Ripgrep understands most common file types. For instance `-t md` only searches Markdown files. Other commonly-used types include `txt`, `sh`, `py`, `php`, `js`, `java`, `config`, and `c`. To see a list of the available file types, use the `rg --type-list` command.
 
     rg --type-list
 {{< output >}}
-agda: *.agda, *.lagda
+agda: *.agda,*.lagda
 aidl: *.aidl
 ...
-zsh: *.zsh, .zlogin, .zlogout, .zprofile, .zshenv, .zshrc, zlogin, zlogout, zprofile, zshenv, zshrc
-zstd: *.zst, *.zstd
+zsh:*.zsh, .zlogin, .zlogout, .zprofile, .zshenv, .zshrc, zlogin, zlogout, zprofile, zshenv, zshrc
+zstd: *.zst,*.zstd
 {{< /output >}}
 
 The following command restricts the search for the pattern `key` to `json` files only.
@@ -392,23 +399,23 @@ vendor/ircmaxell/security-lib/lib/SecurityLib/composer.json
 
 Ripgrep has other options to filter or format the results. Use the `rg --help` command to see a list of all options.
 
-*   `-T` to exclude files of a certain type.
-*   `-w` to only display matches surrounded by word boundaries.
-*   `-x` to only display matches surrounded by line boundaries.
-*   `--trim` to trim whitespace from the results.
-*   `--sort` to sort results in ascending order.
-*   `-o` to only print the section of each line matching the search pattern.
-*   `-N` to suppress the display of the line number of each matching line.
-*   `-U` to search for matches across multiple lines.
-*   `-m <num>` to limit the number of matches to `num` results.
-*   `--max-depth <num>` to limit the number of levels of subdirectories to search to `num` levels.
-*   `--hidden` to include hidden files and directories in the search.
-*   `-E` to specify the encoding.
+- `-T` to exclude files of a certain type.
+- `-w` to only display matches surrounded by word boundaries.
+- `-x` to only display matches surrounded by line boundaries.
+- `--trim` to trim whitespace from the results.
+- `--sort` to sort results in ascending order.
+- `-o` to only print the section of each line matching the search pattern.
+- `-N` to suppress the display of the line number of each matching line.
+- `-U` to search for matches across multiple lines.
+- `-m <num>` to limit the number of matches to `num` results.
+- `--max-depth <num>` to limit the number of levels of subdirectories to search to `num` levels.
+- `--hidden` to include hidden files and directories in the search.
+- `-E` to specify the encoding.
 
 ## Some Concluding Thoughts on ripgrep
 
-The ripgrep utility for Ubuntu and other Linux distributions is a fast and user-friendly alternative to the traditional, but often inscrutable, `grep` command. It uses intelligent defaults, and skips hidden files and entries matching patterns in the `.gitignore` file. Ripgrep is available for most Linux distributions, typically as part of the default packages.
+The ripgrep utility for Ubuntu and other Linux distributions is a fast and user-friendly alternative to the traditional, but often inscrutable, `grep` command. It uses intelligent defaults and skips hidden files and entries matching patterns in the `.gitignore` file. Ripgrep is available for most Linux distributions, typically as part of the default packages.
 
-Ripgrep is very intuitive to use, as shown through a series of examples. The typical ripgrep command has a format similar to `rg <search_pattern> <directory_of_file>`. Users can search one file, or recursively in a specific directory. Using options, ripgrep can display more lines around a search for better context, or display only the file names without the matching text.
+Ripgrep is very intuitive to use, as shown through a series of examples. The typical ripgrep command has a format similar to `rg <search_pattern> <directory_of_file>`. Users can search one file, or recursively in a specific directory. With several user-friendly options, ripgrep can display more lines around a search for better context, or display only the file names without the matching text.
 
-Ripgrep uses regular expressions by default, so complex searches based on certain patterns of characters are easy to construct. Results can also be filtered based on file type, or against global filename patterns. The `rg --help` command displays a complete list of options. The [*ripgrep usage guide*](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md) contains even more details for those who want to master the tool.
+Ripgrep uses regular expressions by default, so complex searches based on certain patterns of characters are easy to construct. Results can also be filtered based on file type, or against global filename patterns. The `rg --help` command displays a complete list of options. The [ripgrep user guide](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md) contains even more details for those who want to master the tool.
