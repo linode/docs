@@ -1,20 +1,22 @@
 ---
-slug: how-to-use-jq-to-process-json
+slug: using-jq-to-process-json-on-the-command-line
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'How to Use the JQ command, including installation instructions and examples.'
 og_description: 'How to Use the JQ command, including installation instructions and examples.'
-keywords: ['jq command','Linux jq','jq examples','jq filter']
+keywords: ['jq command','linux jq','jq examples','jq filter']
+tags: ['linux', 'debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-06
 modified_by:
   name: Linode
-title: "How to Use JQ to Process JSON on the Command Line"
+title: "Using JQ to Process JSON on the Command Line"
 h1_title: "How to Use JQ to Process JSON on the Command Line"
 enable_h1: true
 contributor:
   name: Jeff Novotny
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
 - '[Full jq Language Description](https://github.com/stedolan/jq/wiki/jq-Language-Description)'
@@ -28,19 +30,20 @@ external_resources:
 - '[Zero Install](https://0install.net/)'
 ---
 
-[*jq*](https://github.com/stedolan/jq) is a free open source [*JSON*](https://www.json.org/json-en.html) processor that is flexible and easy to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. This guide introduces the jq application and explains how to install and use it.
+[*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and easy to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. This guide introduces the jq application and explains how to install and use it.
 
 ## An Introduction to JSON and jq
 
-jq is used to process *JavaScript Object Notation* (JSON) data. JSON has become one of the most widely used standards for exchanging data due to its flexibility and intuitive, human-readable structure. JSON is derived from JavaScript, and is designed as an open standard to be both language-independent and self-describing. This makes it a useful mechanism for data exchange, especially between web applications and servers. The data in a JSON file can usually be understood even without an API. All JSON files have the extension `.json`.
+jq is used to process *JavaScript Object Notation* (JSON) data. JSON has become one of the most widely used standards for exchanging data due to its flexibility and intuitive, human-readable structure. JSON is derived from JavaScript and is designed as an open standard to be both language-independent and self-describing. This makes it a useful mechanism for data exchange, especially between web applications and servers. The data in a JSON file can usually be understood even without an API. All JSON files have the extension `.json`.
 
 JSON files share a common format. Here are some highlights of the JSON specification.
-*   Lists are enclosed in square brackets `[]`, and curly brackets `{}` delimit objects.
-*   Objects are associative arrays, in which each key must be unique.
-*   JSON files typically consist of an open-ended number of attribute-value pairs and arrays.
-*   The key and value are separated with a `:` character, while each key-value pair is separated by a comma.
-*   JSON supports most basic data types, including number, string, boolean, array, and object.
-*   All strings must be enclosed in quotes.
+
+- Lists are enclosed in square brackets `[]`, and curly brackets `{}` delimit objects.
+- Objects are associative arrays, in which each key must be unique.
+- JSON files typically consist of an open-ended number of attribute-value pairs and arrays.
+- The key and value are separated with a `:` character, while each key-value pair is separated by a comma.
+- JSON supports most basic data types, including number, string, boolean, array, and object.
+- All strings must be enclosed in quotes.
 
 JSON is fast and easy to use, but it lacks error handling and is not completely secure from hostile services or users. Due to its origins as an open standard, it has limited official support. Here is an example of a sample JSON file, which is taken from the official JSON site.
 
@@ -60,80 +63,80 @@ JSON is fast and easy to use, but it lacks error handling and is not completely 
 
 jq was developed specifically to address the need for a JSON processor. Traditionally, there were few good tools for working with JSON data. Users had to rely on `grep`, `sed`, and other Linux commands, or write their own functions. jq is available for most systems and can be installed using a variety of package managers or directly as a binary. It is written in the C programming language and is completely portable to other systems, with no runtime dependencies.
 
-jq is a command-line utility that can slice, filter, and transform the components of a JSON file. Many users rely on jq to properly format JSON files, because it always displays JSON information in "pretty" format. jq aligns brackets, applies proper spacing and indentation rules, and displays each property on its own line.
+jq is a command-line utility that can slice, filter, and transform the components of a JSON file. Many users rely on jq to properly format JSON files because it always displays JSON information in a "pretty" format. jq aligns brackets, applies proper spacing and indentation rules, and displays each property on its own line.
 
 A large number of built-in functions are used to extract certain values or array entries. jq greatly simplifies array processing because it can iterate through an entire array and display a particular entry. Standard mathematical and logical operators allow users to parse a file for entries satisfying a boolean expression.
 
-jq uses a piping mechanism to chain filters together and construct complex data transformations. It can be integrated with other programs or processes. For example, it can receive input from the terminal and send its output to another Linux utility, such as `find`.
+jq uses a piping mechanism to chain filters together and constructs complex data transformations. It can be integrated with other programs or processes. For example, it can receive input from the terminal and send its output to another Linux utility, such as `find`.
 
 jq is well documented. Here are some of the available resources.
 
-*   There is a [*full language description*](https://github.com/stedolan/jq/wiki/jq-Language-Description) on the jq GitHub page.
-*   Additional resources include a [*jq user manual*](https://stedolan.github.io/jq/manual/) and a [*tutorial*](https://stedolan.github.io/jq/tutorial/).
-*   The jq site features a [*cookbook*](https://github.com/stedolan/jq/wiki/Cookbook) showing how jq can be used for complex tasks, such as recursively deleting elements from objects.
+- There is a [full language description](https://github.com/stedolan/jq/wiki/jq-Language-Description) on the jq GitHub page.
+- Additional resources include a [jq user manual](https://stedolan.github.io/jq/manual/) and a [tutorial](https://stedolan.github.io/jq/tutorial/).
+- The jq site features a [cookbook](https://github.com/stedolan/jq/wiki/Cookbook) showing how jq can be used for complex tasks, such as recursively deleting elements from objects.
 
 ## A Comparison Between jq and sed
 
 jq is often compared to the standard Linux `sed` command. Both commands can parse text and filter and transform it. However, there are significant differences between the two applications. Here is an analysis of the similarities and differences between the applications and their relative strengths.
 
-*   jq expects JSON data and is not used with other types of data. `sed` can process a variety of text-based file formats.
-*   `sed` expects to receive lines of data separated by newlines. It reads text line by line and re-evaluates the script each time. It is not designed for structured data and does not interpret nested braces properly. jq is specifically designed for JSON files and can understand all JSON formatting conventions.
-*   `sed` is most commonly used for search-and-replace tasks and reformatting plain text. It is somewhat simple and limited in what it can do. jq can be used for a wider range of tasks, such as evaluating data against boolean expressions.
-*   It is easier to perform simple text substitution tasks using `sed` because it is purpose built for this task. If complex substitutions are required, `sed` is a better choice.
-*   Both `sed` and jq use regular expressions. However, `sed` always treats text as a regular expression. Options are used to control this behavior in jq.
-*   `sed` allows simple programming options, such as `q` to quit, and it is sometimes used for scripting. jq has a larger number of built-in functions, but is not typically used to write general-purpose scripts.
-*   `sed` is available on most operating systems. jq is a more specialized program. It is user-installed and is not widely available on most systems.
-*   `grep` or `head` are often better choices than either application for very simple tasks such as searching for a specific term.
+- jq expects JSON data and is not used with other types of data. `sed` can process a variety of text-based file formats.
+- `sed` expects to receive lines of data separated by new lines. It reads text line by line and re-evaluates the script each time. It is not designed for structured data and does not interpret nested braces properly. jq is specifically designed for JSON files and can understand all JSON formatting conventions.
+- `sed` is most commonly used for search-and-replace tasks and reformatting plain text. It is somewhat simple and limited in what it can do. jq can be used for a wider range of tasks, such as evaluating data against boolean expressions.
+- It is easier to perform simple text substitution tasks using `sed` because its purpose is built for this task. If complex substitutions are required, `sed` is a better choice.
+- Both `sed` and jq use regular expressions. However, `sed` always treats text as a regular expression. Options are used to control this behavior in jq.
+- `sed` allows simple programming options, such as `q` to quit, and it is sometimes used for scripting. jq has a larger number of built-in functions but is not typically used to write general-purpose scripts.
+- `sed` is available on most operating systems. jq is a more specialized program. It is user-installed and is not widely available on most systems.
+- `grep` or `head` are often better choices than either application for very simple tasks such as searching for a specific term.
 
-To summarize, jq is used to process JSON files. The `sed` utility is a better choice for other text files or for straightforward text substitutions.
+To summarize, jq is used to process JSON files. The `sed` utility is a better choice for other text files or straightforward text substitutions.
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Linode Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-3.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install jq
 
-jq can be installed through a variety of methods. On many Linux systems, it can be installed using the default package manager. It can also be installed using third-party package managers including Homebrew and Zero Install, or downloaded as a binary. The [*jq installation page on GitHub*](https://github.com/stedolan/jq/wiki/Installation) contains instructions on how to build jq from source. It also explains how to use Docker to install jq, along with instructions for Windows and macOS.
+jq can be installed through a variety of methods. On many Linux systems, it can be installed using the default package manager. It can also be installed using third-party package managers including Homebrew and Zero Install or downloaded as a binary. The [*jq installation page on GitHub*](https://github.com/stedolan/jq/wiki/Installation) contains instructions on how to build jq from the source. It also explains how to use Docker to install jq, along with instructions for Windows and macOS.
 
 ### Install jq with Package Managers
 
 jq is available as part of the default repositories in Debian, Ubuntu, Fedora, and several other distributions.
 
-On Ubuntu and Debian, install jq using the following command.
+On **Ubuntu** and **Debian**, install jq using the following command:
 
-        sudo apt-get install jq
+    sudo apt-get install jq
 
-On Fedora systems, use the following command to install jq.
+On **Fedora** systems, use the following command to install jq:
 
-        sudo dnf install jq
+    sudo dnf install jq
 
-For other Linux distributions, see the [*jq Downloads page*](https://stedolan.github.io/jq/download/).
+For other Linux distributions, see the [jq Downloads page](https://stedolan.github.io/jq/download/).
 
-The [*Homebrew package manager*](https://brew.sh/) can also be used to install Homebrew. If Homebrew is not installed on your system, install it using the command `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` and follow all instructions. See the Homebrew home page for more information. Once Homebrew is downloaded, install jq using the command `brew install jq`.
+The [Homebrew package manager](https://brew.sh/) can also be used to install Homebrew. If Homebrew is not installed on your system, install it using the command `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` and follow all instructions. See the Homebrew home page for more information. Once Homebrew is downloaded, install jq using the command `brew install jq`.
 
-The [*Zero Install*](https://0install.net/) package manager also supports jq. To install jq using Zero Install, follow these steps.
+The [Zero Install](https://0install.net/) package manager also supports jq. To install jq using Zero Install, follow the steps below:
 
-1.  Download the Zero Install script.
+1. Download the Zero Install script.
 
-     curl -O https://get.0install.net/0install.sh && chmod +x 0install.sh
+        curl -O <https://get.0install.net/0install.sh> && chmod +x 0install.sh
 
-2.  Install Zero Install using the shell script.
+1. Install Zero Install using the shell script.
 
-    sudo ./0install.sh install local
+        sudo ./0install.sh install local
 
-3.  Install jq using Zero Install.
+1. Install jq using Zero Install.
 
-    0install add jq https://apps.0install.net/utils/jq.xml
+        0install add jq <https://apps.0install.net/utils/jq.xml>
 
 To verify jq is correctly installed, use the command `jq --version`. This displays release information for the installation.
 
@@ -146,14 +149,14 @@ jq-1.6
 
 To install jq manually, follow these instructions.
 
-1.  Download the binary from the [*jq Downloads page*](https://stedolan.github.io/jq/download/).
-2.  Transfer the file to the Linode using `scp` or another method.
-3.  Copy the application to a folder that is included in the `$PATH` variable, such as `/usr/local/bin`, or append the install directory to the `$PATH` variable. The application is ready to run, and no further installation is required.
-4.  If the system displays a permissions error when running `jq` commands, change the permissions using `chmod +x jq`.
+1. Download the binary from the [jq Downloads page](https://stedolan.github.io/jq/download/).
+1. Transfer the file to the Linode using `scp` or another method.
+1. Copy the application to a folder that is included in the `$PATH` variable, such as `/usr/local/bin`, or append the install directory to the `$PATH` variable. The application is ready to run, and no further installation is required.
+1. If the system displays a permissions error when running `jq` commands, change the permissions using `chmod +x jq`.
 
 ## How to Use jq
 
-It is fairly easy to use jq to perform basic operations on JSON files. However, some of the techniques for transforming and reformatting data can be complex. It is often easiest to try jq out on a sample JSON file first. There are plenty of examples on the [*JSON website*](https://json.org/example.html) that are guaranteed to be correctly formatted.
+It is fairly easy to use jq to perform basic operations on JSON files. However, some of the techniques for transforming and reformatting data can be complex. It is often easiest to try jq out on a sample JSON file first. There are plenty of examples on the [JSON website](https://json.org/example.html) that are guaranteed to be correctly formatted.
 
 ### How to ‘Pretty Print’ JSON Files
 
@@ -255,7 +258,7 @@ The jq application provides a way of filtering out certain properties or array i
 To access a particular property within a JSON record, use the `.field` operator. Type the `.` character followed by the name of a field or object to access its value. The following command displays the values inside the `menu` object. All values, including nested fields and arrays, are displayed.
 
 {{< note >}}
-From this point on, all examples use a local JSON file. However, output can be piped to `jq` from `curl` or any other process in any of these examples.
+From this point on, all examples use a local JSON file. However, the output can be piped to `jq` from `curl` or any other process in any of these examples.
 {{< /note >}}
 
     jq '.menu' menu.json
@@ -317,10 +320,10 @@ To simplify certain array-processing instructions, the file `submenu.json` is so
 
 {{< file "submenu.json" json >}}
 [
-      {"value": "New", "onclick": "CreateNewDoc()", "priority": 20},
-      {"value": "Open", "onclick": "OpenDoc()", "priority": 17},
-      {"value": "Close", "onclick": "CloseDoc()"}
-    ]
+  {"value": "New", "onclick": "CreateNewDoc()", "priority": 20},
+  {"value": "Open", "onclick": "OpenDoc()", "priority": 17},
+  {"value": "Close", "onclick": "CloseDoc()"}
+]
 {{< /file >}}
 
 The output of the `[]` operator is similar to the basic `jq '.'` output because the `.` operator automatically iterates through any arrays it encounters. However, the `[]` operator can be extended to display the value of a specific field for each item in the array. Follow the `[]` operator with the `.` operator and the name of the property inside the array item. To display only the `value` field from each entry in the array, use `jq '.[].value'`. The `|` operator can also be used to pipe the contents of the array to the `field` operator, for example, `jq '.[] | .value'`.
@@ -431,7 +434,7 @@ The `map` function is also used to determine how many unique values there are fo
 
 ### How to Use Logic with jq (Conditionals and Comparisons)
 
-jq's `select` operator is used to filter out items within an array. Only items where the value satisfies a given conditional or matches a comparison are displayed. The `[]` operator is first used to iterate over all items in the array. Each item is then tested against the conditional. All standard logical and mathematical operators, such as `>`, `<`, and `==`, standing for equivalence, are available.
+jq's `select` operator is used to filter out items within an array. Only items where the value satisfies a given condition or matches a comparison are displayed. The `[]` operator is first used to iterate over all items in the array. Each item is then tested against the condition. All standard logical and mathematical operators, such as `>`, `<`, and `==`, standing for equivalence, are available.
 
 The following example demonstrates how to perform a mathematical comparison. The `select` filter returns all entries where the value of `priority` is greater than `18`.
 
@@ -444,7 +447,7 @@ The following example demonstrates how to perform a mathematical comparison. The
 }
 {{< /output >}}
 
-Conditionals can be combined. The next example demonstrates how the `or` keyword is used to match a key against one of two values. The `value` property matches the conditional if it is either `Open` or `Close`. If both conditions must be true, the `and` keyword must be used instead.
+Conditions can be combined. The next example demonstrates how the `or` keyword is used to match a key against one of two values. The `value` property matches the condition if it is either `Open` or `Close`. If both conditions must be true, the `and` keyword must be used instead.
 
     jq '.[] | select(.value=="Close" or .value=="Open")' submenu.json
 {{< output >}}
@@ -518,6 +521,6 @@ The `map` function can output the same information as an array.
 
 ## Some Concluding Thoughts About jq
 
-jq is a handy and lightweight open source utility designed to display, filter, process, and transform the contents of JSON files. It is particularly useful for iterating through JSON array objects. jq is easy to install and is often part of the default package on many systems. It can also be installed using a package manager.
+jq is a handy and lightweight open-source utility designed to display, filter, process, and transform the contents of JSON files. It is particularly useful for iterating through JSON array objects. jq is easy to install and is often part of the default package on many systems. It can also be installed using a package manager.
 
-jq is frequently used to display the contents of JSON files in a nicely-formatted manner. However, it can also filter the file contents to display only certain values and iterate through all items in an array. It features support for comparisons, conditional, and regular expressions, along with some functions for transforming data. jq is thoroughly documented. See the [*jq GitHub page*](https://github.com/stedolan/jq) for more information, including a language description and installation instructions for all systems.
+jq is frequently used to display the contents of JSON files in a nicely-formatted manner. However, it can also filter the file contents to display only certain values and iterate through all items in an array. It features support for comparisons, conditional, and regular expressions, along with some functions for transforming data. jq is thoroughly documented. See the [jq GitHub page](https://github.com/stedolan/jq) for more information, including a language description and installation instructions for all systems.
