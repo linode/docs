@@ -1,5 +1,5 @@
 ---
-slug: {{ path.Base .File.Dir }}
+slug: rocketchat-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,7 +7,7 @@ description: "A self-hosted open source chat application that can be used as an 
 keywords: ['rocketchat','chat','slack','communication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ now.Format "2006-01-02" }}
+published: 2021-11-01
 modified_by:
   name: Linode
 title: "Deploying Rocket.Chat through the Linode Marketplace"
@@ -18,12 +18,9 @@ external_resources:
 - '[Rocket.Chat](https://rocket.chat/)'
 ---
 
-Rocket.Chat is a self-hosted open source chat application that can be used as an alternative to Slack.
-Rocket.Chat has many key features that you or your business can utilize to improve productivity in the workplace such as video conferencing, group chats, and platform integrations with some of the most popular applications. 
+Rocket.Chat is a self-hosted open source chat application that can be used as an alternative to Slack. Rocket.Chat has many key features that you or your business can utilize to improve productivity in the workplace such as video conferencing, group chats, and platform integrations with some of the most popular applications.
 
-### Deploying the Rocket.Chat Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
+## Deploying the Rocket.Chat Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -32,9 +29,7 @@ Rocket.Chat has many key features that you or your business can utilize to impro
 ## Configuration Options
 
 ### Rocket.Chat Options
-<!-- The following table has three parts. The UDF name, in bold and in one column, followed by
-     UDF description in the second column. The description is in normal text, with an optional
-     "Required." tag at the end of the description, in italics, if the field is mandatory. -->
+
 Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
@@ -48,7 +43,6 @@ Here are the additional options available for this Marketplace App:
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
 
-
 ### General Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
@@ -57,8 +51,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Accessing the Rocket.Chat App
 
 To access your Rocket.Chat instance, Open a browser and navigate to the domain you created in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
@@ -70,10 +63,6 @@ From there Rocket.Chat will ask you to fill out multiple forms to get your insta
 ![Rocket.Chat Step 3](rocketchat-setup3.png)
 ![Rocket.Chat Step 4](rocketchat-setup4.png)
 
-
 Now that you’ve gone through the setup and accessed your Rocket.Chat instance, checkout [the official Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides) to learn how to further utilize your Rocket.Chat instance.
 
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}

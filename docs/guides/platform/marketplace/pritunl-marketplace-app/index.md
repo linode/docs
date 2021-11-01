@@ -1,5 +1,5 @@
 ---
-slug: {{ path.Base .File.Dir }}
+slug: pritunl-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,7 +7,7 @@ description: "An open source VPN server and management panel."
 keywords: ['pritunl','vpn','security','openvpn']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ now.Format "2006-01-02" }}
+published: 2021-11-01
 modified_by:
   name: Linode
 title: "Deploying Pritunl through the Linode Marketplace"
@@ -20,9 +20,7 @@ external_resources:
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
 
-### Deploying the Pritunl Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
+## Deploying the Pritunl Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -31,9 +29,7 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 ## Configuration Options
 
 ### Pritunl Options
-<!-- The following table has three parts. The UDF name, in bold and in one column, followed by
-     UDF description in the second column. The description is in normal text, with an optional
-     "Required." tag at the end of the description, in italics, if the field is mandatory. -->
+
 Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
@@ -55,8 +51,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Accessing the Pritunl App
 
 To access your Pritunl instance, Open a browser and navigate to the domain you created in the beginning of your deployment or the IP address of the Linode server. For example, `https://203.0.113.0 `, replacing the IP address with values for the Linode server and accept the self-signed certificate.
@@ -71,8 +66,8 @@ From there you will see the Pritunl Database Setup screen where you can run the 
 ![Pritunl Database Setup](pritunl-config.png)
 
 Once the setup key has been entered, you can run the command below to obtain the default login information:
- 
-     sudo pritunl default-password
+
+    sudo pritunl default-password
 
 ![Pritunl Username Setup](pritunl-config2.png)
 
@@ -82,7 +77,4 @@ Now that you're logged in, you can change the default password and enter the dom
 
 Now that you’ve accessed your dashboard, checkout [the official Pritunl documentation](https://docs.pritunl.com/docs/connecting) to learn how to add users and further utilize your Pritunl instance.
 
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}

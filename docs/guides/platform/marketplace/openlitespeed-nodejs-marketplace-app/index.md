@@ -1,16 +1,16 @@
 ---
-slug: {{ path.Base .File.Dir }}
+slug: openlitespeed-nodejs-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "A high performance web server to manage your NodeJS application."
+description: "A high performance web server to manage your Node.js application."
 keywords: ['web server','nodejs','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ now.Format "2006-01-02" }}
+published: 2021-11-01
 modified_by:
   name: Linode
-title: "Deploying NodeJS OpenLiteSpeed through the Linode Marketplace"
+title: "Deploying Node.js OpenLiteSpeed through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293
@@ -20,15 +20,13 @@ external_resources:
 
 The OpenLiteSpeed Node.js One-Click app automatically installs performance web server OpenLiteSpeed, and Node.js. This image tends to be more than 4 times faster than Node.js with Nginx! OpenLiteSpeed features easy setup for SSL and RewriteRules. OLS is flexible and also supports Python and Ruby apps, as well as CMSs like WordPress.
 
-### Deploying the NodeJS OpenLiteSpeed Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
+## Deploying the Node.js OpenLiteSpeed Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
 **Software installation should complete within 10-15 minutes after the Linode has finished provisioning.**
 
-### General Options
+## Configuration Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
@@ -36,8 +34,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Accessing the NodeJS OpenLiteSpeed App
 
 1. Once your OpenLiteSpeed NodeJS app has finished its installation, open a terminal and you will see a prompt as shown in the image below:
@@ -49,9 +46,6 @@ For advice on filling out the remaining options on the **Create a Linode** form,
     For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) for general information about how DNS works.
        {{</ note >}}
 
-Now that you’ve accessed your NodeJS OpenLiteSpeed instance, checkout [the official NodeJS OpenLiteSpeed documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your NodeJS OpenLiteSpeed instance.
+Now that you’ve accessed your Node.js OpenLiteSpeed instance, checkout [the official Node.js OpenLiteSpeed documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your Node.js OpenLiteSpeed instance.
 
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}

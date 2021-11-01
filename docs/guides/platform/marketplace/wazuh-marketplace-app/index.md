@@ -1,5 +1,5 @@
 ---
-slug: {{ path.Base .File.Dir }}
+slug: wazuh-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,7 +7,7 @@ description: "An open source a security monitoring solution for threat detection
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ now.Format "2006-01-02" }}
+published: 2021-11-01
 modified_by:
   name: Linode
 title: "Deploying Wazuh through the Linode Marketplace"
@@ -20,9 +20,7 @@ external_resources:
 
 Wazuh provides a security solution for monitoring your infrastructure, detecting threats, intrusion attempts, system anomalies, poorly configured applications and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.
 
-### Deploying the Wazuh Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
+## Deploying the Wazuh Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -31,9 +29,6 @@ Wazuh provides a security solution for monitoring your infrastructure, detecting
 ## Configuration Options
 
 ### Wazuh Options
-<!-- The following table has three parts. The UDF name, in bold and in one column, followed by
-     UDF description in the second column. The description is in normal text, with an optional
-     "Required." tag at the end of the description, in italics, if the field is mandatory. -->
 Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
@@ -56,8 +51,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 - **Recommended plan:** All plan types and sizes can be used, though a minimum of a 8GB Instance is recommended for production.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Accessing the Wazuh App
 
 To access your Wazuh instance, Open a browser and navigate to the domain you created in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
@@ -70,7 +64,4 @@ Now that you’ve accessed your Wazuh instance, you will need to configure a [Wa
 
 For more documentation on Wazuh,checkout [the official Wazuh documentation](https://documentation.wazuh.com/current/installation-guide/index.html) to learn how to further utilize your instance.
 
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}

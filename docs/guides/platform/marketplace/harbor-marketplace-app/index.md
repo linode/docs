@@ -1,5 +1,5 @@
 ---
-slug: {{ path.Base .File.Dir }}
+slug: harbor-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,7 +7,7 @@ description: "An open source container registry that secures artifacts with poli
 keywords: ['harbor','container','container registry','docker']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ now.Format "2006-01-02" }}
+published: 2021-11-01
 modified_by:
   name: Linode
 title: "Deploying Harbor through the Linode Marketplace"
@@ -20,9 +20,7 @@ external_resources:
 
 Harbor is an open source, cloud-native content storage, signing, and scanning tool. Harbor enhances the open source Docker Distribution by providing features like security, identification, and management. The image transfer efficiency can be improved by having a registry closer to the build and run environment. Harbor includes comprehensive security features like user administration, access control, and activity auditing, as well as image replication between registries. 
 
-### Deploying the Harbor Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
+## Deploying the Harbor Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -31,9 +29,7 @@ Harbor is an open source, cloud-native content storage, signing, and scanning to
 ## Configuration Options
 
 ### Harbor Options
-<!-- The following table has three parts. The UDF name, in bold and in one column, followed by
-     UDF description in the second column. The description is in normal text, with an optional
-     "Required." tag at the end of the description, in italics, if the field is mandatory. -->
+
 Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
@@ -58,8 +54,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Accessing the Harbor App
 
 To access your Harbor instance, Open a browser and navigate to the domain you created in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
@@ -70,7 +65,4 @@ From there you will see the Harbor login screen where you can enter 'admin' as t
 
 Now that you’ve accessed your dashboard, checkout [the official Harbor documentation](https://goharbor.io/docs/2.3.0/administration/) to learn how to further utilize your Harbor instance.
 
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}

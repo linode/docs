@@ -1,5 +1,5 @@
 ---
-slug: {{ path.Base .File.Dir }}
+slug: litespeed-cpanel-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,7 +7,7 @@ description: "An lightning fast web server that conserves resources without sacr
 keywords: ['web server','cpanel','litespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ now.Format "2006-01-02" }}
+published: 2021-11-01
 modified_by:
   name: Linode
 title: "Deploying LiteSpeed through the Linode Marketplace"
@@ -18,7 +18,7 @@ external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
 ---
 
-The LiteSpeed cPanel app automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin. 
+The LiteSpeed cPanel app automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin.
 
 LiteSpeed Web Server Features:
  - HTTP/2, QUIC, HTTP/3
@@ -43,15 +43,13 @@ Auto configuration:
   - Disable Apache mod_ruid2
   - Apache port offset 0
 
-### Deploying the LiteSpeed Marketplace App
-
-<!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
+## Deploying the LiteSpeed Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
 **Software installation should complete within 10-15 minutes after the Linode has finished provisioning.**
 
-### General Options
+## Configuration Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
@@ -59,8 +57,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
-<!-- the following headings and paragraphs outline the steps necessary
-     to access and interact with the Marketplace app. -->
+
 ### Accessing the LiteSpeed App
 
 1. Once your cPanel app has finished its installation, open a browser and navigate to `http://192.0.2.0:2087/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).

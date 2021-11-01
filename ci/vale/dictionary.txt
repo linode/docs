@@ -459,6 +459,7 @@ exe
 executables
 exim
 expirations
+exploitability
 ext2
 ext3
 ext4
