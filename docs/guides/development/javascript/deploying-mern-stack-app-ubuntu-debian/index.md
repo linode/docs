@@ -7,7 +7,7 @@ description: "Learn how to deploy a locally developed MERN stack app to Linode t
 og_description: "Learn how to deploy a locally developed MERN stack app to Linode two different ways."
 keywords: ['deploy react app','mern stack','how to deploy react app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-27
+published: 2021-11-01
 modified_by:
   name: Nathaniel Stickman
 title: "How to Deploy a MERN Stack App to Linode on Ubuntu 20.04 or Debian 10"
@@ -17,20 +17,19 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[MongoDB: MERN Stack Explained](https://www.mongodb.com/mern-stack)'
-- '[Mozilla Developer Network Web Docs: Express Tutorial Part 3: Using a Database (with Mongoose)](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)'
 - '[GitHub: rfdickerson/mern-example: MERN Stack Starter](https://github.com/rfdickerson/mern-example)'
 ---
 
-MERN is a stack for modern web applications. It is built around MongoDB and Node.js technologies and gives you a well-established foundation of open-source software.
+MERN is a stack for modern web applications. It consists of MongoDB, Express JS, React, and Node.js — all well-established open-source technologies that make a solid foundation for new web applications.
 
-Other variants exist, like the MEAN stack (which uses Angular) and the MEVN stack (which uses Vue). But MERN uses React, so you get the advantages of its server-side rendering and improved availability for web crawlers.
-
-This guide helps you get started using MERN stack. It walks you through two ways of deploying one:
+This guide helps you get started using your MERN stack project. It walks you through two methods for deploying your MERN project to an Ubuntu 20.04 or Debian 10 server:
 
 - Using the Linode Marketplace one-click app
 - Using a standard server instance, without any pre-configuring
 
-Along the way, see how to copy an existing MERN project to your server instance, and how to create a basic MERN application from scratch.
+Along the way, see how to copy your existing MERN app project to your server instance so you are ready to start running it.
+
+Looking to create a new MERN application? Take a look at our guide [How to Create a MERN Stack App on Ubuntu 20.04 or Debian 10](/docs/guides/creating-mern-stack-app-ubuntu-debian).
 
 ## Before You Begin
 
@@ -48,16 +47,18 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is MERN Stack?
 
-A MERN stack is a full-stack framework for developing modern web applications. It is a variation of the MEAN stack, but replaces Angular (the **A**) with React.
+A MERN architecture is a full-stack framework for developing modern web applications. It is a variation of the MEAN stack, but replaces Angular (the **A**) with React.
 
 A MERN stack is made up of the following components:
 
-- **M**ongoDB document database
-- **E**xpressJS server-side framework
-- **R**eact client-side framework
-- **N**ode web server
+- [MongoDB](https://www.mongodb.com/) document database
+- [Express JS](https://expressjs.com/) server-side framework
+- [React](https://reactjs.org/) client-side framework
+- [Node](https://nodejs.org/en/about/) web server
 
 Each of these technologies are well-supported and offer robust features. This makes a MERN stack a good choice for developing new web applications.
+
+As noted above, other variants exist, like the MEAN stack (which uses Angular) and the MEVN stack (which uses Vue). But MERN uses React, so you get the advantages of its server-side rendering and improved availability for web crawlers.
 
 ## How to Deploy a MERN App to Using the One-Click App
 
@@ -199,7 +200,7 @@ These next steps then need to be taken on the server instance to pull down the p
 
 You can refer to the [Starting MERN Stack Services](/docs/guides/deploying-mern-stack-app-ubuntu-debian/#starting-mern-stack-services) section below for more on getting your MERN stack up and running.
 
-## How to Deploy a MERN App to An Non-Preconfigured Instance
+## How to Deploy a MERN App to a Non-Preconfigured Instance
 
 To install the components for a MERN stack yourself, you can follow the steps below. These walk you through installing MongoDB and Node.js and adding Express JS and React to your project if they are not already added.
 
@@ -273,7 +274,7 @@ If you are working on a Yarn project, use this instead:
 
     yarn add express mongoose
 
-Learn more about getting started with Express JS in our guide [Express JS Tutorial: Get Started Building a Website](/docs/guides/express-js-tutorial/#install-express-js).
+Learn more about getting started with Express JS in our guide [Express JS Tutorial: Get Started Building a Website](/docs/guides/express-js-tutorial/).
 
 #### Installing React (if necessary for server-side rendering)
 
@@ -287,7 +288,7 @@ Alternatively, use a command like the next one if your project uses Yarn instead
 
     yarn add react react-dom axios
 
-Find out more about building applications with React in our guide [Deploying a React Application on Debian 10](/docs/guides/how-to-deploy-a-react-app-on-debian-10/#create-an-example-react-app).
+Find out more about building applications with React from the [official documentation](https://reactjs.org/docs/getting-started.html) and in our guide [Deploying a React Application on Debian 10](/docs/guides/how-to-deploy-a-react-app-on-debian-10/#create-an-example-react-app).
 
 ### Starting MERN Stack Services
 
@@ -311,7 +312,7 @@ Find out more about building applications with React in our guide [Deploying a R
 
 You can then visit your application in a browser. By default, React runs on `localhost:3000`, and that is the case for the example application referenced above. To access it remotely, you can use an SSH tunnel:
 
-- On Windows, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
+- On Windows, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/#windows) guide, replacing the example port number there with **3000**.
 
 - On macOS or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address:
 
