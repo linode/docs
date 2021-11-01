@@ -23,10 +23,10 @@ class Messages extends Component {
       .then((res) => {
         if (res.data) {
           this.setState({ list: res.data, toSend: "" });
-  	  let inputField = document.getElementById("textInputField");
-  	  inputField.value = "";
+          let inputField = document.getElementById("textInputField");
+          inputField.value = "";
         } else {
-  	  this.setState({ list: ["No messages!"] });
+          this.setState({ list: ["No messages!"] });
         }
       })
       .catch((err) => console.log(err));
@@ -42,8 +42,8 @@ class Messages extends Component {
         .post('/messages', { messageText: this.state.toSend })
         .then((res) => {
           if (res.data) {
-  	    this.fetchMessages();
-  	  }
+            this.fetchMessages();
+          }
         })
         .catch((err) => console.log(err));
     }
