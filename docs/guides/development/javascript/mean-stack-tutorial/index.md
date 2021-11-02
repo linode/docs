@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-01
 modified_by:
   name: Linode
-title: "MEAN Stack Tutorial: Create an Example Applications"
+title: "MEAN Stack Tutorial: Create an Example Application"
 h1_title: "How to Create a MEAN Stack Application"
 enable_h1: true
 contributor:
