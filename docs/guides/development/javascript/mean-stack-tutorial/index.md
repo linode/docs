@@ -66,7 +66,7 @@ You have now installed Node.js and confirmed that it is working on your Ubuntu s
         {{< file "package.json" >}}
     ...
   "dependencies": {
-	"express": "^4.17.1"
+    "express": "^4.17.1"
   }
     ...
         {{</ file >}}
@@ -186,11 +186,11 @@ const table = 'artifact'
 MongoClient.connect(url, (err, client) => {
   const db = client.db(dbName);
   db.collection(table).find().toArray((err, artifact) => {
-    	if (err) throw err
-    	artifact.forEach((value) => {
-  	  console.log(value.scriptname)
-	})
-	client.close()
+        if (err) throw err
+        artifact.forEach((value) => {
+        console.log(value.scriptname)
+    })
+    client.close()
   })
 })
         {{</ file >}}
@@ -263,8 +263,8 @@ app.route('/artifacts/:scriptname').get((req, res) => {
   if (err) throw err
     res.send({
       scriptname: artifact.scriptname,
-  	version: artifact.version,
-  	cdn: artifact.cdn
+      version: artifact.version,
+      cdn: artifact.cdn
     })
   })
 })
@@ -366,17 +366,17 @@ import { TopComponent } from './top/top.component'
 
 @NgModule({
   declarations: [
-	AppComponent,
-	ArtifactListComponent,
-	TopComponent
+    AppComponent,
+    ArtifactListComponent,
+    TopComponent
   ],
   imports: [
-	BrowserModule,
-	HttpClientModule,
-	RouterModule.forRoot([
-  	{path: 'artifact-list', component: ArtifactListComponent},
-  	{path: '', component: TopComponent}
-	]),
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path: 'artifact-list', component: ArtifactListComponent},
+      {path: '', component: TopComponent}
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent, TopComponent]
@@ -415,33 +415,33 @@ export class ArtifactService {
   artifactsURL = "http://localhost:3600/artifacts"
 
   constructor(
-	private http: HttpClient,
-	private messageService: MessageService) { }
+    private http: HttpClient,
+    private messageService: MessageService) { }
   getArtifacts(): Observable<Artifact[]> {
-	return this.http.get<Artifact[]>(this.artifactsURL)
-  	.pipe(
-    	catchError(this.handleError<Artifact[]>('getArtifacts', []))
-  	)
+    return this.http.get<Artifact[]>(this.artifactsURL)
+      .pipe(
+        catchError(this.handleError<Artifact[]>('getArtifacts', []))
+      )
   }
   getArtifact(scriptname: string): Observable<Artifact> {
-	const url = `${this.artifactsURL}/${scriptname}`
-	var this_result = this.http.get<Artifact>(url)
-	return this_result
-  	.pipe(
-    	catchError(this.handleError<Artifact>(`getArtifact scriptname=${scriptname}`))
-  	)
+    const url = `${this.artifactsURL}/${scriptname}`
+    var this_result = this.http.get<Artifact>(url)
+    return this_result
+      .pipe(
+        catchError(this.handleError<Artifact>(`getArtifact scriptname=${scriptname}`))
+      )
   }
   private handleError<T>(operation = 'operation', result?: T) {
-	return (error: any): Observable<T> => {
-  	console.error(error); // log to console instead
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
 
-  	this.log(`${operation} failed: ${error.message}`)
+      this.log(`${operation} failed: ${error.message}`)
 
-  	return of(result as T)
-	}
+      return of(result as T)
+    }
   }
   private log(message: string) {
-	this.messageService.add(`ArtifactsService: ${message}`)
+    this.messageService.add(`ArtifactsService: ${message}`)
   }
 }
         {{</ file >}}
@@ -471,22 +471,22 @@ export class ArtifactListComponent implements OnInit {
 
   constructor(private artifactService: ArtifactService) {}
   ngOnInit() {
-	this.getArtifact("sortable.min.js")
-	this.getArtifacts()
+    this.getArtifact("sortable.min.js")
+    this.getArtifacts()
   }
   detail(artifact: Artifact): void {
-	this.artifact = artifact
-	this.details = "Details regarding " + artifact.scriptname +
-               	": Version " + artifact.version + "; cdn: " +
-               	artifact.cdn + "."
+    this.artifact = artifact
+    this.details = "Details regarding " + artifact.scriptname +
+                   ": Version " + artifact.version + "; cdn: " +
+                   artifact.cdn + "."
   }
   getArtifacts(): void {
-	this.artifactService.getArtifacts()
-	.subscribe(artifacts => this.artifacts = artifacts)
+    this.artifactService.getArtifacts()
+    .subscribe(artifacts => this.artifacts = artifacts)
   }
   public getArtifact(scriptname: string): void {
-	this.artifactService.getArtifact(scriptname)
-	.subscribe(artifact => this.detail(artifact))
+    this.artifactService.getArtifact(scriptname)
+    .subscribe(artifact => this.detail(artifact))
   }
 }
         {{</ file >}}
@@ -523,7 +523,7 @@ export class TopComponent implements OnInit {
 <p>Currently known artifacts include:</p>
 <ul>
   <li *ngFor="let an_artifact of artifacts">
-	<button (click) = "getArtifact(an_artifact.scriptname)">{{an_artifact.scriptname}}</button>
+    <button (click) = "getArtifact(an_artifact.scriptname)">{{an_artifact.scriptname}}</button>
   </li>
 </ul>
 Select a button for more information about the selected artifact.
