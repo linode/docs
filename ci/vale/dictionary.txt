@@ -1154,6 +1154,7 @@ nodebalancer
 nodebalancers
 nodejs
 nodemanager
+nodemon
 nodename
 nodeport
 nodesdirect
@@ -1487,6 +1488,7 @@ saas
 sakila
 salesforce
 samy
+sanitization
 sar
 sasl
 sasl2
