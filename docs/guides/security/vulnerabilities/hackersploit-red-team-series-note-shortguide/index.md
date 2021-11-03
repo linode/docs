@@ -1,4 +1,5 @@
 ---
+slug: hackersploit-red-team-series-note-shortguide
 author:
   name: Linode
   email: docs@linode.com
