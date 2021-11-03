@@ -1,29 +1,63 @@
 ---
 title: Backups
-description: "Linode Backup Service is fully managed, easy, and configurable."
+description: "Linode Backup service is fully managed, easy, and configurable."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "The Linode Backup Service is a subscription service add-on that automatically performs daily, weekly, and biweekly backups of your Linode. It’s affordable, easy to use, and provides peace of mind."
+    product_description: "Fully managed automatic daily, weekly, and biweekly backups of your Linode Compute Instances."
 ---
+
+Safeguard your data with Linode's Backups service, enabling automatic backups of the disks on your Compute Instances.
+
+Backups are stored on a separate system in the same data center as your Linode. The space required to store the backups is *not* subtracted from your storage space.
+
+## Fully Managed
+
+Linode Backups is a managed service that automatically backs up your Linode disks at regular intervals. Use full-system backups to guard against accidental deletions or misconfigurations.
+
+## Easy & Configurable
+
+Enable the Backup Service with a single click. It activates instantly, and your first backups are automatically scheduled. No software to install or configure. You can choose when your Linode backups are generated. Select a two-hour window that suits you.
+
+## Part of a Multi-Tiered Backup Strategy
+
+Linode's Backup service is one part of a well rounded backup strategy. On-site backups provide a quick and convenient recovery option, though it's also recommended to regularly backup your data off-site, such as on a local machine or using a third-party cloud-based service.
 
 ## Availability
 
 Backups are available across [all regions](https://www.linode.com/global-infrastructure/).
 
-## Features
+## Plans and Pricing
 
-### Fully Managed
+The Backup service is available as a paid add-on for Compute Instances. Pricing starts at $2/month for a 1 GB Shared CPU Compute Instance. Review the [Pricing page](https://www.linode.com/pricing/#row--storage) for additional rates based on other Compute Instance plans.
 
-Linode Backups is a managed service that automatically backs up your Linode disks at regular intervals. Use full-system backups to guard against accidental deletions or misconfigurations.
+## Backup Schedule
 
-### Easy & Configurable
+The Backups service can store up to four backups, three of which are automatically generated on the date and time range you specify:
 
-Enable the Backup Service with a single click. It activates instantly, and your first backups are automatically scheduled. No software to install or configure. You can choose when your Linode backups are generated. Select a two-hour window that suits you.
+- **Daily backup:** Automatically initiated daily within the backup window you select. Less than 24 hours old.
+- **Current week's backup:** Automatically initiated weekly within the backup window, on the day you select. Less than 7 days old.
+- **Last week's backup:** Automatically initiated weekly within the backup window, on the day you select. Between 8 and 14 days old.
+- **Manual Snapshot:** A user-initiated snapshot that stays the same until another snapshot is initiated.
 
-## Pricing
+The daily and weekly backups are automatically erased when a new backup is performed. The Backup service does not keep automated backups older than 14 days.
 
-Backup pricing may be viewed on the [Linode Pricing](https://www.linode.com/pricing/#row--storage) page.
+## Limits and Considerations
+
+- **Disks are backed up, but not Linode-specific settings such as those stored within Configuration Profiles.**
+
+- **Disks must be unencrypted and able to be mounted.** The Backup service is not compatible with full disk encryption or changes that prevent us from mounting the disk as a file system, such as creating partitions. This is because our service operates at the file level, not at the block level.
+- All disks will be restored as an ext4 file system and their UUIDs will be different than the original disks.
+
+- **A large number of files will prolong the backup process and may cause failures.** Because the Backup Service is file-based, the number of files stored on disk impacts both the time it takes for backups and restores to complete, and your ability to successfully take and restore backups. Customers who need to permanently store a large number of files may want to archive bundles of smaller files into a single file, or consider other backup services.
+
+    {{< note >}}
+The percentage of customers who may run into this limitation is low. If you are not sure if this limitation applies to you, please [contact Linode Support](/docs/guides/support/#contacting-linode-support).
+{{< /note >}}
+
+- Files that have been modified but have the same size and modify time are not be considered "changed" during a subsequent backup. ACLs and extended attributes are *not* tracked.
+
+- The Backup Service uses a snapshot of your disks to take consistent backups while your Linode is running. This method is very reliable, but can fail to properly back up the data files for database services like MySQL. If the snapshot occurs during a transaction, the database's files may be backed up in an unclean state. We recommend scheduling routine dumps of your database to a file on the filesystem. The resulting file is then be backed up, allowing you to restore the contents of the database if you need to restore from a backup.

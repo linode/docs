@@ -1,20 +1,8 @@
 ---
-slug: backups-boot-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to boot from a backup with the Linode Backup Service.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-20
-modified_by:
-  name: Heather Zoppetti
-published: 2020-07-20
-title: How to Boot From a Backup with the Linode Backup Service
-keywords: ["backups"]
+# Shortguide: How to boot from a backup with the Linode Backup Service.
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
-aliases: ['/platform/disk-images/backups-boot-shortguide/']
 ---
 
 After the backup has been restored, the disks and configuration profiles will be available to the destination Linode you selected. Select the restored configuration profile and reboot your Linode to start up from the restored disks:

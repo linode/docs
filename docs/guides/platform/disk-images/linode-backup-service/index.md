@@ -7,14 +7,13 @@ keywords: ["backup service", "linode platform", "linode backup service", "enable
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/backups/linode-backup-service/','/platform/disk-images/linode-backup-service-classic-manager/','/platform/backup-service/','/platform/linode-backup-service/','/platform/disk-images/linode-backup-service/','/platform/disk-images/linode-backup-service-new-manager/','/backup-service/']
-modified: 2018-12-20
+modified: 2021-11-03
 modified_by:
   name: Linode
 published: 2018-12-20
-title: 'The Linode Backup Service'
+title: "An Overview of Linode's Backup Service"
+image: The_Linode_Backup_Service_smg.jpg
 ---
-
-![The Linode Backup Service](The_Linode_Backup_Service_smg.jpg)
 
 The *Linode Backup Service* is a subscription service add-on that automatically performs daily, weekly, and biweekly backups of your Linode. It's affordable, easy to use, and provides peace of mind. This guide explains how to enable and schedule your backups, make a manual backup snapshot, restore from a backup, and disable the Backup Service.
 
