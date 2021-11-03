@@ -1,9 +1,11 @@
 ---
 slug: windows-red-team-persistence-techniques
 author:
-  name: Hackersploit
+  name: HackerSploit
   email: hackersploit@gmail.com
-description: 'Maintaining persistent access on Windows targets.'
+description: 'This guide covers the process of setting up and maintaining persistent access on Windows targets.'
+keywords: ['security']
+tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
 modified_by:
@@ -12,8 +14,10 @@ title: "Windows Red Team Persistence Techniques"
 h1_title: "Windows Red Team Persistence Techniques"
 enable_h1: true
 contributor:
-  name: Hackersploit
+  name: HackerSploit
 ---
+
+{{< content "hackersploit-red-team-series-note-shortguide" >}}
 
 {{< content "hackersploit-caution-shortguide" >}}
 

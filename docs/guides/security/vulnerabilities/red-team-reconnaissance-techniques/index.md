@@ -1,9 +1,11 @@
 ---
 slug: red-team-reconnaissance-techniques
 author:
-  name: Hackersploit
+  name: HackerSploit
   email: hackersploit@gmail.com
-description: 'Learn how to perform active and passive reconnaissance on targets'
+description: 'This guide covers the process of how to perform both passive and active reconnaissance for Red Team operations.'
+keywords: ['security']
+tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
 modified_by:
@@ -12,8 +14,10 @@ title: "Red Team Reconnaissance Techniques"
 h1_title: "Red Team Reconnaissance Techniques"
 enable_h1: true
 contributor:
-  name: Hackersploit
+  name: HackerSploit
 ---
+
+{{< content "hackersploit-red-team-series-note-shortguide" >}}
 
 {{< content "hackersploit-caution-shortguide" >}}
 
@@ -452,7 +456,7 @@ You can list out all available Nmap scripts by running the following command:
 
     ls -alps /usr/share/nmap/scripts
 
-To learn more about Nmap and how it can be used for penetration tests and red team operations, check out [Hackersploit's Nmap series on YouTube](https://www.youtube.com/playlist?list=PLBf0hzazHTGM8V_3OEKhvCM9Xah3qDdIx)
+To learn more about Nmap and how it can be used for penetration tests and red team operations, check out [HackerSploit's Nmap series on YouTube](https://www.youtube.com/playlist?list=PLBf0hzazHTGM8V_3OEKhvCM9Xah3qDdIx)
 
 ### Directory Brute-Force
 

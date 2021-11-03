@@ -753,6 +753,7 @@ inet
 inet6
 infector
 infographic
+infosec
 ingressgateway
 ini
 initializer

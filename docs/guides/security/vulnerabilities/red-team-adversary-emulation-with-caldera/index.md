@@ -1,9 +1,11 @@
 ---
 slug: red-team-adversary-emulation-with-caldera
 author:
-  name: Hackersploit
+  name: HackerSploit
   email: hackersploit@gmail.com
-description: 'Automate Red Team operations and adversary emulation.'
+description: 'This guide introduces you to Red Team operations takes you through the process of setting up and utilizing Caldera for adversary emulation.'
+keywords: ['security']
+tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
 modified_by:
@@ -12,10 +14,12 @@ title: "Red Team Adversary Emulation with Caldera"
 h1_title: "Red Team Adversary Emulation with Caldera"
 enable_h1: true
 contributor:
-  name: Hackersploit
+  name: HackerSploit
 external_resources:
 - '[Official Caldera documentation](https://caldera.readthedocs.io/en/latest/index.html)'
 ---
+
+{{< content "hackersploit-red-team-series-note-shortguide" >}}
 
 {{< content "hackersploit-caution-shortguide" >}}
 
@@ -176,7 +180,7 @@ In order to get Caldera up and running, follow the procedures outlined below:
 
         conf/default.yml
 
-	Your configuration file should look similar to the code snippet below.
+    Your configuration file should look similar to the code snippet below.
 
     {{< file "conf/default.yml" >}}
 ability_refresh: 60

@@ -1,9 +1,11 @@
 ---
 slug: windows-red-team-credential-access-with-mimikatz
 author:
-  name: Hackersploit
+  name: HackerSploit
   email: hackersploit@gmail.com
-description: 'Extracting cleartext passwords and hashes from memory with Mimikatz'
+description: 'This guide covers the process of extracting cleartext passwords and hashes from Windows system by leveraging tools like Mimikatz.'
+keywords: ['security']
+tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
 modified_by:
@@ -12,8 +14,10 @@ title: "Windows Red Team Credential Access With Mimikatz"
 h1_title: "Windows Red Team Credential Access With Mimikatz"
 enable_h1: true
 contributor:
-  name: Hackersploit
+  name: HackerSploit
 ---
+
+{{< content "hackersploit-red-team-series-note-shortguide" >}}
 
 {{< content "hackersploit-caution-shortguide" >}}
 

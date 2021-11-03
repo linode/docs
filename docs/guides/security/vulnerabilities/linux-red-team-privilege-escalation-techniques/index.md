@@ -1,9 +1,11 @@
 ---
 slug: linux-red-team-privilege-escalation-techniques
 author:
-  name: Hackersploit
+  name: HackerSploit
   email: hackersploit@gmail.com
-description: 'How to elevate your privileges on a Linux target'
+description: 'This video covers various techniques that can be used to elevate your privileges on Linux systems.'
+keywords: ['security']
+tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-03
 modified_by:
@@ -12,8 +14,10 @@ title: "Linux Red Team Privilege Escalation Techniques"
 h1_title: "Linux Red Team Privilege Escalation Techniques"
 enable_h1: true
 contributor:
-  name: Hackersploit
+  name: HackerSploit
 ---
+
+{{< content "hackersploit-red-team-series-note-shortguide" >}}
 
 {{< content "hackersploit-caution-shortguide" >}}
 
