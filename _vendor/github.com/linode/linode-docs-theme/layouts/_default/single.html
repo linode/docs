@@ -10,8 +10,8 @@
   {{ end }}
 
   {{/* Show a note in Spanish if that is the current language. Note that once we get more similar behavour, this should be moved to somewhere common. */}}
-  <div x-data="{show: false }" x-init="() => { Weglot.on('languageChanged', function() { show =  Weglot.getCurrentLang() === 'es'} )}" x-cloak>
-    <div class="mt-2 sm:mt-4 mb-2 sm:mb-4" x-show="show" data-testid="languageNote">
+  <div x-data x-cloak>
+    <div class="mt-2 sm:mt-4 mb-2 sm:mb-4" x-show="$store.nav.lang == 'es'" data-testid="languageNote">
       <blockquote class="callout border-brand" style="background-color: rgba(2,177,89,0.1);">
         <strong class="callout-title">
           Traducciones al Español
@@ -27,7 +27,7 @@
     {{ partial "sections/content/deprecated" . }}
   {{ end }}
 
-  <div class="prose prose-sm md:prose-lg max-w-none mt-8">
+  <div x-ignore class="prose prose-sm md:prose-lg max-w-none mt-8">
     {{ .Content }}
     {{ partial "sections/content/more.html" . }}
   </div>
