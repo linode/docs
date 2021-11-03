@@ -589,9 +589,12 @@ gmail
 gmod
 gnulinux
 gnutls
+gocheck
 gogs
 golang
 goldmark
+gomega
+gopwt
 goroutine
 goroutines
 goto
@@ -1389,6 +1392,7 @@ rebase
 rebased
 rebases
 rebasing
+recompiles
 reconnections
 recordset
 recursing
@@ -1692,6 +1696,7 @@ tensorflow
 terrahelp
 terraria
 testdb
+testdeep
 testfile
 testkeys
 testparam
