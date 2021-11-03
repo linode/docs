@@ -152,7 +152,7 @@ Now that we have compiled and loaded the apache-rootkit module, we can test the 
 
 ## Exploiting Command Injection with Commix
 
-Commix (short for [comm]and [i]njection e[x]ploiter) is a security testing tool that can be used by web developers, penetration testers, or even security researchers to test web applications with the view to find bugs, errors or vulnerabilities related to command injection attacks. By using this tool, it is very easy to find and exploit a command injection vulnerability in a certain vulnerable parameter or string. Commix is written in the Python programming language.
+Commix (short for `[comm]and` `[i]njection` `e[x]ploiter`) is a security testing tool that can be used by web developers, penetration testers, or even security researchers to test web applications with the view to find bugs, errors or vulnerabilities related to command injection attacks. By using this tool, it is very easy to find and exploit a command injection vulnerability in a certain vulnerable parameter or string. Commix is written in the Python programming language.
 
 GitHub Repository: https://github.com/commixproject/commix
 

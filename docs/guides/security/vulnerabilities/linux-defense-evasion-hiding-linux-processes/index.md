@@ -65,11 +65,11 @@ For this reason, we will be utilizing an open-source Linux utility called Libpro
 
 GitHub Repository: https://github.com/gianlucaborello/libprocesshider
 
-1. The first step in the process will involve cloning the Librpocesshider GitHub repository onto the target system. This can be done by running the following command:
+1. The first step in the process will involve cloning the Libprocesshider GitHub repository onto the target system. This can be done by running the following command:
 
         git clone https://github.com/gianlucaborello/libprocesshider.git
 
-1. After cloning the repository you will need to determine the name of the process you would like to hide with Librpocesshider, this can be done by listing out the running processes on the system:
+1. After cloning the repository you will need to determine the name of the process you would like to hide with Libprocesshider, this can be done by listing out the running processes on the system:
 
         ps aux
 
@@ -77,7 +77,7 @@ GitHub Repository: https://github.com/gianlucaborello/libprocesshider
 
     ![ps aux output with shell.py visible](ps-aux-output-with-shell-py-visible.png "ps aux output with shell.py visible")
 
-1. In order to hide the “shell.py” process from the process tree, we will need to navigate to the Librpocesshider directory we just cloned and modify the “processhider.c” file. This can be done by running the following command:
+1. In order to hide the “shell.py” process from the process tree, we will need to navigate to the Libprocesshider directory we just cloned and modify the “processhider.c” file. This can be done by running the following command:
 
         vim processhider.c
 

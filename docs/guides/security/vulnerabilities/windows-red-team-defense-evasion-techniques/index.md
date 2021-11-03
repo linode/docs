@@ -94,13 +94,11 @@ AV software will typically utilize signature, heuristic, and behaviour based det
 
 ## Defense Evasion With Invoke-Obfuscation
 
-Invoke-Obfuscation is a PowerShell v2.0+ compatible PowerShell command and script obfuscator.
-
-GitHub Repository: https://github.com/danielbohannon/Invoke-Obfuscation
+Invoke-Obfuscation is a PowerShell v2.0+ compatible PowerShell command and script obfuscator ([GitHub repository](https://github.com/danielbohannon/Invoke-Obfuscation)).
 
 We can use Invoke-Obfuscation to obfuscate/encode our malicious PowerShell scripts. PowerShell scripts are more likely to evade AV detection as the code is being executed in an interpreter and it is difficult to detect whether the code is malicious in nature.
 
-Note: The target used should be able to execute PowerShell scripts, otherwise, we will not be able to execute the obfuscated/enoded PowerShell scripts.
+Note: The target used should be able to execute PowerShell scripts, otherwise, we will not be able to execute the obfuscated/encoded PowerShell scripts.
 
 ### Setting Up Invoke-Obfuscation On Kali
 
@@ -122,7 +120,7 @@ Invoke-Obfuscation is a PowerShell tool, as a result, we will require a Windows 
 
         git clone https://github.com/danielbohannon/Invoke-Obfuscation.git
 
-1. In order to launch the Invoke-Obfuscation script, we will need to launch a PowerShell prompt and navigate to the cloned directory, after chich, you can execute the Invoke-Obfuscate PowerShell script by running the following command:
+1. In order to launch the Invoke-Obfuscation script, we will need to launch a PowerShell prompt and navigate to the cloned directory, after which, you can execute the Invoke-Obfuscate PowerShell script by running the following command:
 
         .\Invoke-Obfuscation.ps1
 

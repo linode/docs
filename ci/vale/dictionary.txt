@@ -59,6 +59,7 @@ aske
 async
 asynchrony
 authdaemonrc
+authg
 authlib
 authmodulelist
 authmysql
@@ -95,6 +96,7 @@ awstats
 axibase
 azc
 azlux
+backdooring
 backdoors
 backend
 backends
@@ -114,6 +116,7 @@ barebones
 base64
 basearch
 bashdoor
+basename
 bashrc
 bc
 bdd
@@ -121,6 +124,7 @@ benchmarked
 berkshelf
 bernd
 berners
+bialek
 bing
 binlog
 biomes
@@ -161,6 +165,7 @@ bundler
 bungeecord
 burndown
 busybox
+bypassuac
 byrequests
 bzip2
 bzrtools
@@ -185,6 +190,7 @@ ceph
 cer
 certbot
 certcheck
+certutil
 cfg
 cgi
 cgroup
@@ -215,6 +221,7 @@ cjones
 clamav
 clearsign
 clearspace
+cleartext
 cli
 clickboard
 clickjacking
@@ -282,8 +289,11 @@ cronjob
 cronjobs
 crontab
 crt
+crypters
 crypto
 csi
+csharp
+csharpserver
 csr
 css
 csum
@@ -296,6 +306,7 @@ curlie
 cutover
 cyberduck
 cyberpanel
+cybersecurity
 cyg
 cygwin
 cyclomatic
@@ -331,12 +342,14 @@ dbfiles
 dbname
 dbserver
 dcs
+deadman
 deallocation
 deathmatch
 debconf
 declaratively
 deduplication
 defragment
+delpy
 demultiplexer
 deprovisioning
 descolada
@@ -360,10 +373,13 @@ dialogs
 diavel
 diffie
 digium
+dirb
+dirbuster
 dircaps
 directadmin
 dired
 direnv
+dirtycow
 discoverability
 disqus
 distro
@@ -433,6 +449,7 @@ emscripten
 ender
 enduser
 enix
+enum
 env
 envs
 epel
@@ -457,6 +474,7 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrating
 exim
 expirations
 ext2
@@ -510,6 +528,7 @@ filezilla
 filimonov
 findtime
 finnix
+firefart
 firewalld
 firewalled
 firewalling
@@ -561,10 +580,13 @@ geoip
 geolocating
 geolocation
 getmail
+getprivs
 getpwent
 getters
+getuid
 gfx
 gfxmode
+gianlucaborello
 gibibytes
 girocco
 gist
@@ -589,6 +611,7 @@ gmail
 gmod
 gnulinux
 gnutls
+gobuster
 gogs
 golang
 goldmark
@@ -728,6 +751,7 @@ inclusivity
 Indri
 inet
 inet6
+infector
 infographic
 ingressgateway
 ini
@@ -742,6 +766,7 @@ inotify
 inrupt
 insmod
 inspec
+intel
 interdomain
 interruptible
 intra-application
@@ -757,6 +782,7 @@ ip6table
 ipa
 ipaserver
 ipchains
+ipconfig
 ipset
 ipsets
 iptables
@@ -827,6 +853,8 @@ keychain
 keyfiles
 keygen
 keyid
+keyloggers
+keylogging
 keymap
 keypair
 keypairs
@@ -844,6 +872,7 @@ klei
 klocwork
 kloth
 kloxo
+knockpy
 knowledgebase
 konsole
 konversation
@@ -872,6 +901,7 @@ leiningen
 len
 lennart
 letsencrypt
+ld
 lf
 libmodsecurity
 lib32
@@ -883,6 +913,7 @@ libev
 libgcc1
 libphp
 libpri
+libprocesshider
 libracy
 libsasl2
 libyang
@@ -896,6 +927,7 @@ lighttpd
 lighty
 ligttpd
 linewise
+Linkedin
 linkerd
 linode
 linodego
@@ -923,6 +955,7 @@ logdir
 logfile
 logfiles
 loglevel
+logonpasswords
 logpath
 logrotate
 logstash
@@ -930,6 +963,7 @@ logwatch
 longview
 lookups
 loopback
+lsadump
 lspci
 lsb
 lsd
@@ -939,6 +973,7 @@ lsyncd
 lua
 lubuntu
 lucene
+luckystrike
 lugano
 luminus
 lxd
@@ -970,6 +1005,7 @@ mapreduce
 mariadb
 marino
 maskname
+masscan
 mastercard
 masterdb
 masterless
@@ -1003,9 +1039,12 @@ metacharacters
 metacity
 metapackage
 metaparameters
+metasploit
+meterpreter
 metorik
 metricbeat
 metroid
+michael
 microblogging
 microblogs
 microservice
@@ -1013,6 +1052,7 @@ microservices
 microsystems
 microweb
 middleware
+mimikatz
 minecraft
 mineshafts
 miniconda
@@ -1053,6 +1093,7 @@ mouseover
 mov
 mpapis
 mpm
+msfvenom
 msg
 msgid
 msgpack
@@ -1094,6 +1135,7 @@ mysqldefault
 mysqldump
 mytestdb
 myuser
+mzet
 nagios
 nagiosadmin
 namecheap
@@ -1116,6 +1158,7 @@ neovim
 netblocks
 netboot
 netcat
+Netcraft
 netconfig
 netdata
 netdev
@@ -1130,6 +1173,7 @@ netloc
 netmask
 netplan
 netstat
+netuser
 networkd
 newgrp
 newtag
@@ -1143,6 +1187,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nikto
 Nirvashare
 nixcraft
 nixpkgs
@@ -1175,6 +1220,7 @@ nrcpt
 ns1
 ns2
 nsd4
+nslookup
 ntop
 ntopng
 ntp
@@ -1186,6 +1232,7 @@ nvidia
 nvim
 nvm
 oauth
+obfuscator
 octopress
 odoo
 oftc
@@ -1252,6 +1299,7 @@ patroni
 pbr
 pem
 pentest
+pentesting
 pepi
 percona
 performant
@@ -1285,6 +1333,7 @@ pluggable
 png
 pocketmine
 poettering
+pokemon
 pop3
 pop3d
 pop3s
@@ -1296,6 +1345,7 @@ postgresql0
 postmap
 postrotate
 postrouting
+powershell
 ppa
 pparadis
 ppc64el
@@ -1306,6 +1356,7 @@ preconfigured
 prefork
 preinstall
 preinstalled
+preloader
 premade
 prepend
 prepended
@@ -1320,6 +1371,8 @@ prettifier
 prettifiers
 Printf
 pritunl
+privesc
+processhider
 procfile
 procmail
 procs
@@ -1333,6 +1386,7 @@ proxied
 proxying
 pscp
 pseudocode
+psexec
 psql
 psudo
 psycop2
@@ -1348,6 +1402,7 @@ pv
 pvc
 pvgrub
 pwcheck
+pwsh
 px
 py
 pyamqp
@@ -1389,6 +1444,7 @@ rebase
 rebased
 rebases
 rebasing
+rebootuser
 reconnections
 recordset
 recursing
@@ -1416,6 +1472,7 @@ reindexing
 reinstalls
 releasever
 reloadcmd
+remediations
 remi
 remmina
 remotehost
@@ -1447,6 +1504,7 @@ rmdir
 rmem
 ro
 rochko
+rockyou
 rocommunity
 rollout
 rooknfs
@@ -1486,7 +1544,9 @@ s3cret
 saas
 sakila
 salesforce
+sam
 samy
+sandcat
 sar
 sasl
 sasl2
@@ -1502,6 +1562,7 @@ sbt
 scgi
 schroot
 schaeffer
+schtasks
 scm
 scp
 scrapy
@@ -1520,6 +1581,7 @@ searchterm
 secondsite
 secretpassword
 sed
+sekurlsa
 selinux
 sendable
 sendmail
@@ -1550,7 +1612,9 @@ shader
 shadowsocks
 sharded
 sharding
+shellcode
 shellshock
+shellter
 shinagawa1
 shortcode
 shortcodes
@@ -1609,14 +1673,18 @@ ssl
 stackscript
 stackscripts
 stadia
+stager
+stagers
 stalkyard
 stallman
+starkiller
 starttls
 statusbar
 stdin
 stderr
 stdout
 steamlab
+steven
 stopwait
 stopword
 stopwords
@@ -1674,6 +1742,7 @@ syslog
 sysstat
 systemctl
 systemd
+systeminfo
 systemname
 sysv
 sysvinit
@@ -1773,6 +1842,7 @@ uidl
 umount
 un
 unaliased
+uname
 unarchive
 unban
 unbans
@@ -1820,6 +1890,7 @@ urllib3
 urlopen
 urlparse
 urls
+usemodule
 useradd
 usercolumn
 userdb
@@ -1864,6 +1935,7 @@ virtualhost
 virtualizations
 virtualized
 virtualmin
+Virustotal
 vlan
 vlans
 vlc
@@ -1881,6 +1953,7 @@ vvv
 vz
 vznetaddbr
 walkthrough
+Wappalyzer
 wasn
 wasm
 wav
@@ -1916,10 +1989,12 @@ werkzug
 wg
 wget
 whatsmyip
+whatweb
 whitelisted
 whitelisting
 whitespace
 whitespaces
+whoami
 whois
 whowatch
 wi
@@ -1927,6 +2002,7 @@ widgits
 wildfly
 wimey
 winscp
+winsxs
 windowlist
 wireguard
 wkhtmltopdf
@@ -1936,6 +2012,8 @@ wlp6s0
 wordcloud
 wordcount
 wordfence
+wordlist
+wordlists
 wordpress
 worker1
 worker2

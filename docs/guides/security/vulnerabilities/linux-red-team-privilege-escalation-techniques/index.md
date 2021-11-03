@@ -187,9 +187,9 @@ The final privilege escalation technique we will be exploring is the process of 
 
 This can be achieved performed automatically through the use of exploitation frameworks like Metasploit, however, in this case, we will be exploring the process of identifying, compiling and executing kernel exploits on the target manually.
 
-It is to be noted that Kernel exploits are not a recommended or preferred escalation vector, primarily because the exploits interfere and interact with the Linux kernel, which can consequently lead to kernel panics or data loss. Furthermore, Kernel exploits are not a silver bullet and do not guarantee succesfully privilege escalation.
+It is to be noted that Kernel exploits are not a recommended or preferred escalation vector, primarily because the exploits interfere and interact with the Linux kernel, which can consequently lead to kernel panics or data loss. Furthermore, Kernel exploits are not a silver bullet and do not guarantee successfully privilege escalation.
 
-1. The first step in this process will involve identifying kernel vulnerabilities on our target server, this process can be automated through the use of the Linux-Exploit-Suggester script. Linux-Exploit-Suggester is a linux privilege escalation auditing tool that scans the target for potential vulnerabilities. More information regarding this script can be found here: https://github.com/mzet-/linux-exploit-suggester
+1. The first step in this process will involve identifying kernel vulnerabilities on our target server, this process can be automated through the use of the Linux-Exploit-Suggester script. Linux-Exploit-Suggester is a Linux privilege escalation auditing tool that scans the target for potential vulnerabilities. More information regarding this script can be found here: https://github.com/mzet-/linux-exploit-suggester
 
     In order to use the script, we will need to transfer it over to the target system, this can be done by running the following command on the target system:
 

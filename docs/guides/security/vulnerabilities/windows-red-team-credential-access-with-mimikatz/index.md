@@ -92,7 +92,7 @@ We can invoke the Mimikatz prompt on the target agent by following the procedure
 
     This will invoke Mimikatz on the target system and you should be able to interact with the Mimikatz prompt.
 
-1. Before we take a look at how to dump cleartext credentials from memory with Mimikatz, you should confirm that you have the required privileges to take advantage of the various Mimikaz features, this can be done by running the following command in the Mimikatz prompt:
+1. Before we take a look at how to dump cleartext credentials from memory with Mimikatz, you should confirm that you have the required privileges to take advantage of the various Mimikatz features, this can be done by running the following command in the Mimikatz prompt:
 
 
         privilege::debug

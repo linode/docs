@@ -43,7 +43,7 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
 
 Reconnaissance is split up into 2 categories based on the type of interaction with the target:
 
-1. Active reconnaissance – Actively engaging/interacting with the target network, hosts, employees etc. (Port scanning, vuln scans, web app scanning)
+1. Active reconnaissance – Actively engaging/interacting with the target network, hosts, employees etc. (Port scanning, vulnerability scans, web app scanning)
 
 1. Passive reconnaissance – Utilizing publicly available information. (whois, OSINT, DNS, search engine dorks)
 
@@ -59,7 +59,7 @@ We will be taking a look at the various tools and techniques that can be utilize
 
 The techniques outlined under the Reconnaissance tactic provide us with a clear and methodical way of approaching reconnaissance, however, as you may have noticed, some techniques will involve physical reconnaissance of employees and physical addresses. In this case, given the nature of our engagement, we will only be focusing on digital reconnaissance.
 
-The following is a list of key techniques and subtechniques that we will be exploring:
+The following is a list of key techniques and sub-techniques that we will be exploring:
 
 1. Active Scanning
 
@@ -133,7 +133,7 @@ The first step in this process is to identify the IP address and DNS records of 
 
 #### Host utility
 
-We can use the host utility on Linux/Unix systems to determine the IP address of our target domain, this can be done  by running the following command on your Kali linux VM:
+We can use the host utility on Linux/Unix systems to determine the IP address of our target domain, this can be done  by running the following command on your Kali Linux VM:
 
     host DOMAIN.COM
 
@@ -284,7 +284,7 @@ theHarvester comes pre-packaged with Kali Linux and can be used to identify a co
 
     theHarvester -d https://domain.com -b google,linkedin,bing,yahoo
 
-The following command will search for any information pertinent to the domain you have specified on the data sources provided. In this case, we have specified google, bing, linkedin and Yahoo as the data sources.
+The following command will search for any information pertinent to the domain you have specified on the data sources provided. In this case, we have specified Google, Bing, Linkedin, and Yahoo as the data sources.
 
 ![theHarvester utility output](theharvester-utility-output.png "theHarvester utility output")
 
@@ -362,7 +362,7 @@ This information can now be used during the initial exploitation and internal re
 
 #### DNS Zone Transfer With Fierce
 
-We can also perform a DNS zone transfer with the built-in fierce utility. First what Fierce is not. Fierce is not an IP scanner, it is not a DDoS tool, it is not designed to scan the whole Internet or perform any un-targeted attacks. It is meant specifically to locate likely targets both inside and outside a corporate network. Only those targets are listed (unless the -nopattern switch is used). No exploitation is performed (unless you do something intentionally malicious with the -connect switch). Fierce is a reconnaissance tool. Fierce is a PERL script that quickly scans domains (usually in just a few minutes, assuming no network lag) using several tactics.
+We can also perform a DNS zone transfer with the built-in fierce utility. First what Fierce is not. Fierce is not an IP scanner, it is not a DDoS tool, it is not designed to scan the whole Internet or perform any un-targeted attacks. It is meant specifically to locate likely targets both inside and outside a corporate network. Only those targets are listed (unless the `-nopattern` switch is used). No exploitation is performed (unless you do something intentionally malicious with the -connect switch). Fierce is a reconnaissance tool. Fierce is a PERL script that quickly scans domains (usually in just a few minutes, assuming no network lag) using several tactics.
 
 We can perform a DNS zone transfer with fierce by running the following command:
 
@@ -607,7 +607,7 @@ We can perform active recon with Sn1per by running the following command:
 
     sniper -t <TARGET>
 
-This will automate all activerecon techniques and will output the results in to a report saved under: /usr/share/sniper/loot/workspace/DOMAIN
+This will automate all active recon techniques and will output the results in to a report saved under: /usr/share/sniper/loot/workspace/DOMAIN
 
 #### Sn1per Reports
 
@@ -625,7 +625,7 @@ Amass User Guide: https://github.com/OWASP/Amass/blob/master/doc/user_guide.md
 
 #### Installing Amass
 
-Amass can be installed on Kali linux by running the following command:
+Amass can be installed on Kali Linux by running the following command:
 
     sudo apt-get install amass
 
@@ -669,7 +669,7 @@ We can also automate active recon with Amass, this can be done by running the in
 
 Amass reports can be generated through the use of the viz subcommand. The viz subcommand allows you to create enlightening network graph visualizations that add structure to the information gathered. This subcommand only leverages the 'output_directory' and remote graph database settings from the configuration file.
 
-You can generate reports by specifying the viz subdommand and your preferred output format as highlighted in the following command:
+You can generate reports by specifying the viz subcommand and your preferred output format as highlighted in the following command:
 
     amass viz -dir DOMAIN -d3
 

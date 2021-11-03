@@ -19,7 +19,7 @@ external_resources:
 
 {{< content "hackersploit-caution-shortguide" >}}
 
-CALDERA™ is a cyber security framework designed to easily automate adversary emulation, assist manual red-teams, and automate incident response.
+CALDERA™ is a cybersecurity framework designed to easily automate adversary emulation, assist manual red-teams, and automate incident response.
 
 It is built on the MITRE ATT&CK™ framework and is an active research project at MITRE.
 
@@ -122,7 +122,7 @@ The MITRE ATT&CK framework provides us with a structured kill chain that we can 
 
 ## MITRE Caldera
 
-Caldera is a cyber security framework designed to easily automate adversary emulation, assist manual red teams, and automate incident response.
+Caldera is a cybersecurity framework designed to easily automate adversary emulation, assist manual red teams, and automate incident response.
 
 It is built on the MITRE ATT&CK framework and utilizes a client-server system, where the server is used to set up agents(clients) and initiate operations.
 
@@ -334,7 +334,7 @@ Note: Sandcat, also referred to as 54ndc47 is a remote access agent written in G
 
     ![Caldera agent options form](caldera-agent-options-form.png "Caldera agent options form")
 
-    The `agents.implant_name` field is used to specify the base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: splunkd will become splunkd.exe when spawning an agent on a Windows machine).
+    The `agents.implant_name` field is used to specify the base name of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
 
 1. Choose a command to execute on the target machine as highlighted in the following screenshot.
 
@@ -369,7 +369,7 @@ You can customize the default agent options by navigating to the agents tab on t
 
 - **Untrusted Timer**: Set the number of seconds to wait before marking a missing agent as untrusted. Operations will not generate new links for untrusted agents. This is a global timer and will affect all running and newly-created agents.
 
-- **Implant Name**: The basename of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: splunkd will become splunkd.exe when spawning an agent on a Windows machine).
+- **Implant Name**: The basename of newly-spawned agents. If necessary, an extension will be added when an agent is created (ex: `splunkd` will become `splunkd.exe` when spawning an agent on a Windows machine).
 
 - **Bootstrap Abilities**: A comma-separated list of ability IDs to be run on a new agent beacon. By default, this is set to run a command which clears command history.
 

@@ -133,7 +133,7 @@ In this case, we will take a look at how to use the “powershell/persistence/us
 
     ![Empire client usemodule options](empire-client-usemodule-options.png "Empire client usemodule options")
 
-    The registry path we will be adding our persistence stager to will be the Run registry key, Run and RunOnce registry keys cause programs to run each time a user logs on. The data value for a key is a command line no longer than 260 characters. Register programs to run by adding entries of the form description-string=commandline. You can write multiple entries under a key. If more than one program is registered under any particular key, the order in which those programs run is indeterminate.
+    The registry path we will be adding our persistence stager to will be the Run registry key, Run and RunOnce registry keys cause programs to run each time a user logs on. The data value for a key is a command line no longer than 260 characters. Register programs to run by adding entries of the form `description-string=command line`. You can write multiple entries under a key. If more than one program is registered under any particular key, the order in which those programs run is indeterminate.
 
 1. After configuring the module options, we can execute the module by running the following command in the Empire client:
 
