@@ -49,7 +49,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Create 1 Ansible Control Node and 4 Managed Nodes
 
-### Create 5 Linodes using the Linode-CLI utility.
+### Create 5 Linodes Using the Linode-CLI Utility.
 On your local machine, Set up an environment variable which is used in the for loop to create the 5 Linodes. Please substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
 
     pass=yourrootpassword
@@ -96,16 +96,16 @@ $ for i in {1..5}; do linode-cli linodes create --root_pass $pass; done
 └──────────┴────────────────┴─────────┴─────────────┴────────────────────┴──────────────┴─────────────────┘
 {{</ output >}}
 
-### Grab the Linode ids and put them into a temp file.
+### Grab the Linode IDs and Put Them into a Temp File.
 We use these ids to tag and label the Linodes.  Tagging and labeling your Linodes helps to keep your Linode Cloud Manager organized.
 
     linode-cli linodes list --text | tail -5 | awk '{print $1}' > tmp.txt
 
-### Tag the Linodes with "Ansible", which groups them together in the Cloud Manager.
+### Tag the Linodes with "Ansible", Which Groups Them Together in the Cloud Manager.
 
     for i in $(cat tmp.txt); do linode-cli linodes update --tags Ansible $i; done
 
-### Label the 5 Linodes as vm1 to vm5.
+### Label the 5 Linodes From "vm1" to "vm5".
 Loop through the Linode's ids from the temp file and assign each Linode a numbered label.
 
     i=1; for j in $(cat tmp.txt); do linode-cli linodes update --label vm$i $j; let "i++"; done
@@ -382,7 +382,7 @@ Replace `VM1_IPADDRESS` with the IP address obtained from either the Linode-CLI 
 
     scp ansibleCN_setup.sh ansibleMN_setup.sh myplaybook.yml root@VM1_IPADDRESS:
 
-### Log into vm1 and run `ansibleCN_setup.sh` to update, secure, and install needed apps on the Linode.
+### Log into "vm1" and Run `ansibleCN_setup.sh` to Update, Secure, and Install Needed Apps on the Linode.
 SSH into vm1.
 
     ssh root@VM1_IPADDRESS
@@ -399,12 +399,12 @@ Execute `ansibleCN_setup.sh` script. It takes approximately 7 minutes for the sc
 The script asks you to enter a username and password for the new user being created.
 {{</note>}}
 
-### Log out and reboot the Linode using either the Linode-CLI or cloud manager GUI.
+### Log Out and Reboot the Linode Using Either the Linode-CLI or Cloud Manager GUI.
 If using the below command, replace **LINODE_ID** with the Linode ID of **vm1** obtained either from the Linode-CLI or Cloud Manager GUI.
 
     linode-cli linodes reboot LINODE_ID
 
-### SSH into vm1.
+### SSH into "vm1".
 Be sure to use the new user you created because the setup script disabled root logins.
 
     ssh YOUR_USERNAME@VM1_IPADDRESS
@@ -415,9 +415,9 @@ You should see the hostname, **CtlNode**, configured on the command prompt along
 nygelb@CtlNode:~$
 {{</ output >}}
 
-## Configure Control Node with IP Addresses of Instances
+## Configure Control Node with IP Addresses of Instances.
 
-### Set up `/etc/hosts` file on control node with IPs for managed nodes.
+### Set Up `/etc/hosts` File on Control Node with IPs for Managed Nodes.
 This enables us to use hostnames when referring to different instances. Run the below command from your local machine.
 
     linode-cli linodes list --text | grep vm | awk '{print $7,$2,$2".ansi.com"}' | column -t
@@ -483,23 +483,23 @@ nygelb@CtlNode:~$ ansible all --list-hosts
     vm4
 {{</ output >}}
 
-## Set up Ansible Playbook to Configure Worker Nodes
+## Set Up Ansible Playbook to Configure Worker Nodes.
 
 Using the playbook created earlier, add two parameters; a hashed password and the IP address of the log server.
 
-### Create and add hashed, plain-text password to playbook.
+### Create and Add Hashed, Plain-Text Password to Playbook.
 Run this command from your Ansible control node. The command prompts you for a password. This password is used to access the web servers.
 
      python3 -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.hash(getpass.getpass()))"
 
 Be sure to copy the output from the dollar sign to the period. Paste the resulting hashed password into `myplaybook.yml`, in the place holder, **{{ HASHED_PASSWORD }}**.
 
-### Add log server IP address to playbook.
+### Add Log Server IP Address to Playbook.
 Grab the IP address of logging sever (vm5) and paste into `configure rsyslog` section of `myplaybook.yml`. Paste the IP address into the place holder, **{{ LOG_IP_ADDRESS }}**.
 
 ## Configure Ansible Managed Nodes.
 
-### Send setup script, `ansibleMN_setup.sh` to each managed node.
+### Send Setup Script, `ansibleMN_setup.sh` to Each Managed Node.
 Create a password file to use in the next step. Use the same root password you used when creating these Linodes.
 
     echo 'yourrootpassword' > ~/.ssh/file
@@ -521,7 +521,7 @@ ansibleMN_setup.sh
 ansibleMN_setup.sh
 {{</ output >}}
 
-### Log into each worker node and run the `ansibleMN_setup.sh` script.
+### Log into Each Worker Node and Run the `ansibleMN_setup.sh` Script.
 From the local computer, open 4 terminal sessions and within each session, ssh into each managed node (vm2 - vm5). Once logged in, execute the managed node setup script.
 
     ./ansibleMN_setup.sh
@@ -534,7 +534,7 @@ Once the setup script has completed for each managed node, reboot all your Ansib
 
     for i in $(cat tmp.txt); do linode-cli linodes reboot $i; done
 
-### Upload ssh key from control node to the managed nodes.
+### Upload SSH Key from the Control Node to the Managed Nodes.
 Log back into the control node and run the below command. This sends the control node's limited user's ssh key to each managed node. This allows easy, secure ssh communication from the control node to the managed nodes.
 
     for i in {2..5}; do sshpass -f ~/.ssh/file ssh-copy-id $USER@vm$i; done
