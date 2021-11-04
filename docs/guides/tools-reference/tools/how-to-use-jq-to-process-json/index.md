@@ -1,10 +1,8 @@
 ---
 slug: using-jq-to-process-json-on-the-command-line
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'How to Use the JQ command, including installation instructions and examples.'
-og_description: 'How to Use the JQ command, including installation instructions and examples.'
 keywords: ['jq command','linux jq','jq examples','jq filter']
 tags: ['linux', 'debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,18 +17,9 @@ contributor:
   link: https://github.com/JeffreyNovotny
 external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
-- '[Full jq Language Description](https://github.com/stedolan/jq/wiki/jq-Language-Description)'
-- '[jq User Manual](https://stedolan.github.io/jq/manual/)'
-- '[jq Tutorial](https://stedolan.github.io/jq/tutorial/)'
-- '[jq Cookbook](https://github.com/stedolan/jq/wiki/Cookbook)'
-- '[jq Installation Guidelines](https://github.com/stedolan/jq/wiki/Installation)'
-- '[jq Downloads](https://stedolan.github.io/jq/download/)'
-- '[The JSON organization](https://www.json.org/json-en.html)'
-- '[Homebrew package manager](https://brew.sh/)'
-- '[Zero Install](https://0install.net/)'
 ---
 
-[*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and easy to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. This guide introduces the jq application and explains how to install and use it.
+[*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. This guide introduces the jq application and explains how to install and use it.
 
 ## An Introduction to JSON and jq
 
@@ -39,13 +28,13 @@ jq is used to process *JavaScript Object Notation* (JSON) data. JSON has become 
 JSON files share a common format. Here are some highlights of the JSON specification.
 
 - Lists are enclosed in square brackets `[]`, and curly brackets `{}` delimit objects.
-- Objects are associative arrays, in which each key must be unique.
+- Objects are associative arrays in which each key must be unique.
 - JSON files typically consist of an open-ended number of attribute-value pairs and arrays.
 - The key and value are separated with a `:` character, while each key-value pair is separated by a comma.
 - JSON supports most basic data types, including number, string, boolean, array, and object.
 - All strings must be enclosed in quotes.
 
-JSON is fast and easy to use, but it lacks error handling and is not completely secure from hostile services or users. Due to its origins as an open standard, it has limited official support. Here is an example of a sample JSON file, which is taken from the official JSON site.
+JSON lacks error handling and is not completely secure from hostile services or users. Due to its origins as an open standard, it has limited official support. Below is an example of a sample JSON file, which is taken from the official JSON site.
 
 {{< file "menu.json" json >}}
 {"menu": {
@@ -90,20 +79,6 @@ jq is often compared to the standard Linux `sed` command. Both commands can pars
 
 To summarize, jq is used to process JSON files. The `sed` utility is a better choice for other text files or straightforward text substitutions.
 
-## Before You Begin
-
-1. Familiarize yourself with our [Linode Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 ## How to Install jq
 
 jq can be installed through a variety of methods. On many Linux systems, it can be installed using the default package manager. It can also be installed using third-party package managers including Homebrew and Zero Install or downloaded as a binary. The [*jq installation page on GitHub*](https://github.com/stedolan/jq/wiki/Installation) contains instructions on how to build jq from the source. It also explains how to use Docker to install jq, along with instructions for Windows and macOS.
@@ -122,7 +97,7 @@ On **Fedora** systems, use the following command to install jq:
 
 For other Linux distributions, see the [jq Downloads page](https://stedolan.github.io/jq/download/).
 
-The [Homebrew package manager](https://brew.sh/) can also be used to install Homebrew. If Homebrew is not installed on your system, install it using the command `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` and follow all instructions. See the Homebrew home page for more information. Once Homebrew is downloaded, install jq using the command `brew install jq`.
+The [Homebrew package manager](https://brew.sh/) can also be used to install jq. If Homebrew is not installed on your system, install it using the command `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` and follow all instructions. See the Homebrew home page for more information. Once Homebrew is downloaded, install jq using the command `brew install jq`.
 
 The [Zero Install](https://0install.net/) package manager also supports jq. To install jq using Zero Install, follow the steps below:
 
@@ -141,6 +116,7 @@ The [Zero Install](https://0install.net/) package manager also supports jq. To i
 To verify jq is correctly installed, use the command `jq --version`. This displays release information for the installation.
 
     jq --version
+
 {{< output >}}
 jq-1.6
 {{< /output >}}
@@ -160,11 +136,12 @@ It is fairly easy to use jq to perform basic operations on JSON files. However, 
 
 ### How to ‘Pretty Print’ JSON Files
 
-A commonly-used jq feature is the "prettify" function. This operation takes a JSON file and formats it into easy-to-read output, with proper line spacing, standard indentation, and perfectly aligned braces. To prettify a JSON file, use the `jq '.'` command. The "." symbol is known as the "identity" command. It takes any input and reproduces it in standard JSON formatting. You can pipe JSON-formatted input to this command, or specify an input file as an argument.
+A commonly-used jq feature is the "prettify" function. This operation takes a JSON file and formats it into easy-to-read output, with proper line spacing, standard indentation, and perfectly aligned braces. To prettify a JSON file, use the `jq '.'` command. The `.` symbol is known as the *identity* command. It takes any input and reproduces it in standard JSON formatting. You can pipe JSON-formatted input to this command, or specify an input file as an argument.
 
-The following command pipes a JSON message to the "prettify" command using the `echo` command. The output of the `echo` command serves as input for the `jq` command.
+The following command pipes a JSON message to the `prettify` command using the `echo` command. The output of the `echo` command serves as input for the `jq` command.
 
     echo '{"menu": { "id": "file", "value": "File", "popup": { "menuitem": [ {"value": "New", "onclick": "CreateNewDoc()"}, {"value": "Open", "onclick": "OpenDoc()"} ] } } }' | jq '.'
+
 {{< output >}}
 {
   "menu": {
@@ -189,6 +166,7 @@ The following command pipes a JSON message to the "prettify" command using the `
 jq input can be retrieved using `curl` from any website with a JSON API. The following command retrieves the page views for the "Talking Heads Discography" Wikipedia page over a period of three days. Once again, the output is displayed in "pretty" format because the `.` operator automatically formats the data as required.
 
     curl 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Talking_Heads_discography/daily/20210928/20210930' | jq '.'
+
 {{< output >}}
 {
   "items": [
@@ -295,6 +273,7 @@ To access a nested property, use the full name of the property. Chain together t
 Multiple items can be displayed using the same `jq` command. Separate the items with a comma, and enclose the whole list in quotes.
 
     jq '.menu.id, .menu.value' menu.json
+
 {{< output >}}
 "file"
 "File"
@@ -338,6 +317,7 @@ The output of the `[]` operator is similar to the basic `jq '.'` output because 
 To view a specific entry within an array, specify the index of the item within the `[]` operator. The notation is zero-based, so `[0]` refers to the first item of the array. The following command displays the second item of the array, which is item `[1]`.
 
     jq '.[1]' submenu.json
+
 {{< output >}}
 {
   "value": "Open",
@@ -349,6 +329,7 @@ To view a specific entry within an array, specify the index of the item within t
 To access an array nested deeper within a JSON file, first use the `field` operator to extract the array object. Pipe the result to the `[]` operator.
 
     jq '.menu.popup.menuitem | .[1]' menu.json
+
 {{< output >}}
 {
   "value": "Open",
@@ -359,6 +340,7 @@ To access an array nested deeper within a JSON file, first use the `field` opera
 An array can also be "sliced" to show only a portion of it. Within the `[]` operator, specify the first and last entry to display, separated by a `:`. The first number is inclusive, while the second is exclusive. To display the first two items of an array, use the notation `[0:2]`.
 
     jq '.[0:2]' submenu.json
+
 {{< output >}}
 [
   {
@@ -381,6 +363,7 @@ jq has an extensive collection of functions that can be applied to either an arr
 The `length` function displays the length of an array. It is also used to determine the length of a string. The following example determines the number of items in the `menu.popup.menuitem` array. The object is extracted and piped through to the `length` function.
 
     jq '.menu.popup.menuitem | length' menu.json
+
 {{< output >}}
 3
 {{< /output >}}
@@ -388,6 +371,7 @@ The `length` function displays the length of an array. It is also used to determ
 The following example determines the string length of the value of `menu.id`.
 
     jq '.menu.id | length' menu.json
+
 {{< output >}}
 4
 {{< /output >}}
@@ -395,6 +379,7 @@ The following example determines the string length of the value of `menu.id`.
 The `max` and `min` values are used to determine the maximum and minimum values of a field in an array. To use this function, the list of values must be presented as an array. In the following example, the inner `[]` operator refers to the pre-existing array object. The value of the `priority` field is extracted from each item of the array. The outer `[]` operator converts this output back into another array. The new array can now serve as input for the `max` function.
 
     jq '[.[].priority] | max' submenu.json
+
 {{< output >}}
 20
 {{< /output >}}
@@ -402,6 +387,7 @@ The `max` and `min` values are used to determine the maximum and minimum values 
 To see the keys for each value in an array, use the `keys` function. The following function displays the name of each property inside the `menu` object, packaged as an array.
 
     jq '.menu | keys' menu.json
+
 {{< output >}}
 [
   "id",
@@ -413,6 +399,7 @@ To see the keys for each value in an array, use the `keys` function. The followi
 The `has` function determines whether an array item has a value defined for a given key. The output of `has` is fed into the `map` command. This transforms the list of values into a new array. In this example, the first two entries in the array have a key named `priority`, while the third does not. Therefore, the `has` function returns `true` for the first two iterations and `false` on the third.
 
     jq 'map(has("priority"))' submenu.json
+
 {{< output >}}
 [
   true,
@@ -424,6 +411,7 @@ The `has` function determines whether an array item has a value defined for a gi
 The `map` function is also used to determine how many unique values there are for a given key in an array. Use `map` to create a new array based on all values for the key in the array and pass this to the `unique` filter. The `unique` filter removes all duplicate values.
 
     jq 'map(.onclick) | unique' submenu.json
+
 {{< output >}}
 [
   "CloseDoc()",
@@ -439,6 +427,7 @@ jq's `select` operator is used to filter out items within an array. Only items w
 The following example demonstrates how to perform a mathematical comparison. The `select` filter returns all entries where the value of `priority` is greater than `18`.
 
     jq '.[] | select(.priority>18)' submenu.json
+
 {{< output >}}
 {
   "value": "New",
@@ -450,6 +439,7 @@ The following example demonstrates how to perform a mathematical comparison. The
 Conditions can be combined. The next example demonstrates how the `or` keyword is used to match a key against one of two values. The `value` property matches the condition if it is either `Open` or `Close`. If both conditions must be true, the `and` keyword must be used instead.
 
     jq '.[] | select(.value=="Close" or .value=="Open")' submenu.json
+
 {{< output >}}
 {
   "value": "Open",
@@ -467,6 +457,7 @@ Conditions can be combined. The next example demonstrates how the `or` keyword i
 The `select` function is used in conjunction with the `test` function to harness the power of regular expressions. The `test` function evaluates each value for a given key against the regular expression and returns a boolean value. The `select` function displays only the matching values. In this example, `select(.onclick|test("^O."))` shows the array entries where the value of `onclick` begins with a `O`.
 
     jq '.[] | select(.onclick|test("^O."))' submenu.json
+
 {{< output >}}
 {
   "value": "Open",
@@ -502,6 +493,7 @@ The following example removes the `priority` field from the output for each reco
 This example adds `2` to each value of `priority` in the array and displays the new values as a list. The third value was previously `NULL`, but it is incremented to `2` after the transformation.
 
      jq  .'[] | .priority+ 2' submenu.json
+
 {{< output >}}
 22
 19
@@ -511,6 +503,7 @@ This example adds `2` to each value of `priority` in the array and displays the 
 The `map` function can output the same information as an array.
 
     jq  'map(.priority+ 2)' submenu.json
+
 {{< output >}}
 [
   22,
