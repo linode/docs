@@ -13,8 +13,9 @@ modified_by:
   name: Linode
 title: "How to Enable High Availability for LKE Clusters"
 h1_title: "Enabling High Availability for LKE Clusters"
-headless: true
-show_on_rss_feed: false
+_build:
+  list: false
+noindex: true
 ---
 
 
