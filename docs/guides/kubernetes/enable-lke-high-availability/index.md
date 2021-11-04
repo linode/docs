@@ -21,7 +21,7 @@ noindex: true
 
 ## Enable High Availability
 
-In LKE, enabling HA (High Availability) will create additional hardware nodes and replicate [control plane components](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/), adding additional points of failure for your Kubernetes Cluster and decreasing the chance of any potential downtime. HA is an optional feature recommended for production workloads that must be enabled manually either when creating a new cluster, or by editing a pre-existing cluster.
+In LKE, enabling HA ([High Availability](/docs/guides/introduction-to-high-availability/)) will create additional hardware nodes and replicate [control plane components](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/), adding additional points of failure for your Kubernetes Cluster and decreasing the chance of any potential downtime. HA is an optional feature recommended for production workloads that must be enabled manually either when creating a new cluster, or by editing a pre-existing cluster.
 
 Unlike other LKE configuration options, High Availability is an **optional billable service** that will increase the overall operating cost of your cluster. For more information see our [pricing page](https://www.linode.com/pricing/).
 
@@ -45,9 +45,9 @@ High Availability can be enabled during [cluster creation](/docs/guides/deploy-a
 
 ### Enabling HA on Existing Clusters
 
-High Availability can be added to pre-existing clusters at any given time through any individual cluster's **Summary Page**.
+High Availability can be added to pre-existing clusters at any given time through the cluster's **Summary Page**.
 
-1. To reach the summary page for the , navigate first to the [Kubernetes section of the cloud manager](https://cloud.linode.com/kubernetes/clusters).
+1. To reach the summary page for the cluster, navigate first to the [Kubernetes section of the cloud manager](https://cloud.linode.com/kubernetes/clusters).
 
 1. Select the Cluster by label that you would like to enable HA for. The summary page for the cluster will appear.
 
@@ -55,7 +55,7 @@ High Availability can be added to pre-existing clusters at any given time throug
 
    ![LKE HA cluster upgrade](upgrade-to-ha.png "Kubernetes HA upgrade.")
 
-1. A new window will appear, asking you to confirm all of the changes that come with High Availability. Read through the message that appears, and select the **Enable HA Control Plane** checkbox to confirm that you agree to the changes, followed the **Upgrade to HA** button.
+1. A new window will appear, asking you to confirm all of the changes that come with High Availability. Read through the message that appears, and select the **Enable HA Control Plane** checkbox to confirm that you agree to the changes, followed by the **Upgrade to HA** button.
 
    ![LKE HA cluster enable](cluster-ha-enable.png "Kubernetes HA Cluster Enable.")
 
