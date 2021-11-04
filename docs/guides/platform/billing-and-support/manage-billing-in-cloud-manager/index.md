@@ -162,7 +162,7 @@ Our services are provided without a contract, so you're free to remove services 
 1.  To remove the Linode Backup Service, select **Linodes** from the sidebar links. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
 
 {{< caution >}}
-Removing a Linode from your account makes its data irretrievable. This includes the backups of it that you have created through [our Backup Service](/docs/guides/linode-backup-service/), including Manual Snapshots.
+Removing a Linode from your account makes its data irretrievable. This includes the backups of it that you have created through [our Backup Service](/docs/products/storage/backups/), including Manual Snapshots.
 
 If you would like to preserve your Linode's data before removing it from your account, you need to create an external backup. You may use the suggestions in our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide for some examples of how to do this.
 

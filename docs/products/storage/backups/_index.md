@@ -9,6 +9,7 @@ cascade:
     date: 2020-06-02
     product_description: "Fully managed automatic daily, weekly, and biweekly backups of your Linode Compute Instances."
 toc: true
+aliases: ['/security/backups/linode-backup-service/','/platform/disk-images/linode-backup-service-classic-manager/','/platform/backup-service/','/platform/linode-backup-service/','/platform/disk-images/linode-backup-service/','/platform/disk-images/linode-backup-service-new-manager/','/backup-service/','/guides/linode-backup-service/']
 ---
 
 Safeguard your data with Linode's Backups service, enabling automatic backups of the disks on your Compute Instances. Up to four backups are stored as part of this service, including automated daily, weekly, and biweekly backups in addition to a manual backup snapshot. Each backup is a full file-based snapshot of your disks taken during your preferred scheduled time slot while the Linode Compute Instance is still running. This means that the Backups service is not disruptive and provides you with several complete recovery options.

@@ -38,7 +38,7 @@ You are able to move your servers to Tokyo 2 before the scheduled migration date
 
 ### Will my Linode Backups be Migrated?
 
-If your Tokyo 1 Linode is enrolled in the [Linode Backup Service](https://www.linode.com/backups), it will remain enrolled in the service after the migration. However, the saved backups and snapshots that have been created for your Linode prior to the migration **will not move** to the new Tokyo 2 facility. Instead, your Linode will start creating new scheduled backups after it is migrated to the Tokyo 2 date center (according to its [backup schedule](/docs/guides/linode-backup-service/#schedule-backups)).
+If your Tokyo 1 Linode is enrolled in the [Linode Backup Service](https://www.linode.com/backups), it will remain enrolled in the service after the migration. However, the saved backups and snapshots that have been created for your Linode prior to the migration **will not move** to the new Tokyo 2 facility. Instead, your Linode will start creating new scheduled backups after it is migrated to the Tokyo 2 date center (according to its [backup schedule](/docs/products/storage/backups/guides/schedule/)).
 
 {{< note >}}
 Before migrating, we recommend that you create at least one backup **separate from the Linode Backup Service** for each of your Tokyo 1 Linodes. The [Backing Up your Data](/docs/guides/backing-up-your-data/) guide has suggestions for alternative ways to back up your Linode.
