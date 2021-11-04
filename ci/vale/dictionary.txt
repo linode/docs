@@ -1114,8 +1114,10 @@ moddable
 modsecurity
 Mojang
 moodle
+mongocryptd
 mongodb
 mongoimport
+mongosh
 monit
 monitorix
 moolenaar
