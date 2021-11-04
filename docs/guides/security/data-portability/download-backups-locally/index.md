@@ -13,9 +13,8 @@ published: 2018-08-08
 title: Download a Local Copy of your Linode Backup
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/']
+image: download-a-local-copy-of-your-linode-backup.png
 ---
-
-![Download a Local Copy of your Linode Backup](download-a-local-copy-of-your-linode-backup.png "Download a Local Copy of your Linode Backup")
 
 The [Linode Backups](/docs/platform/disk-images/linode-backup-service/) service can create automatic and manual snapshots of your Linode. A completed backup can be directly restored to the origin Linode or to a new Linode in the same data center. These workflows make it easy to revert to a working configuration if you run into any unexpected issues with your software.
 

@@ -8,23 +8,18 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Fully managed automatic daily, weekly, and biweekly backups of your Linode Compute Instances."
+toc: true
 ---
 
-Safeguard your data with Linode's Backups service, enabling automatic backups of the disks on your Compute Instances.
-
-Backups are stored on a separate system in the same data center as your Linode. The space required to store the backups is *not* subtracted from your storage space.
+Safeguard your data with Linode's Backups service, enabling automatic backups of the disks on your Compute Instances. Up to four backups are stored as part of this service, including automated daily, weekly, and biweekly backups in addition to a manual backup snapshot. Each backup is a full file-based snapshot of your disks taken during your preferred scheduled time slot while the Linode Compute Instance is still running. This means that the Backups service is not disruptive and provides you with several complete recovery options.
 
 ## Fully Managed
 
 Linode Backups is a managed service that automatically backs up your Linode disks at regular intervals. Use full-system backups to guard against accidental deletions or misconfigurations.
 
-## Easy & Configurable
+## Convenient & Configurable
 
-Enable the Backup Service with a single click. It activates instantly, and your first backups are automatically scheduled. No software to install or configure. You can choose when your Linode backups are generated. Select a two-hour window that suits you.
-
-## Part of a Multi-Tiered Backup Strategy
-
-Linode's Backup service is one part of a well rounded backup strategy. On-site backups provide a quick and convenient recovery option, though it's also recommended to regularly backup your data off-site, such as on a local machine or using a third-party cloud-based service.
+Enable the Backup Service with a single click. It activates instantly, and your first backups are automatically scheduled. There is no software to install or configure. You can choose when your Linode backups are generated. Select a two-hour window that suits you.
 
 ## Availability
 
@@ -34,16 +29,18 @@ Backups are available across [all regions](https://www.linode.com/global-infrast
 
 The Backup service is available as a paid add-on for Compute Instances. Pricing starts at $2/month for a 1 GB Shared CPU Compute Instance. Review the [Pricing page](https://www.linode.com/pricing/#row--storage) for additional rates based on other Compute Instance plans.
 
-## Backup Schedule
+On all plans, the Backups service can store up to four backups, three of which are automatically generated on the date and time range you specify:
 
-The Backups service can store up to four backups, three of which are automatically generated on the date and time range you specify:
-
-- **Daily backup:** Automatically initiated daily within the backup window you select. Less than 24 hours old.
-- **Current week's backup:** Automatically initiated weekly within the backup window, on the day you select. Less than 7 days old.
-- **Last week's backup:** Automatically initiated weekly within the backup window, on the day you select. Between 8 and 14 days old.
-- **Manual Snapshot:** A user-initiated snapshot that stays the same until another snapshot is initiated.
+- **Daily** *(Less than 24 hours old)*
+- **Weekly** *(Less than 7 days old)*
+- **Biweekly** *(Between 8 and 14 days old)*
+- **Manual Snapshot** *(A user-initiated snapshot that stays the same until another snapshot is initiated)*
 
 The daily and weekly backups are automatically erased when a new backup is performed. The Backup service does not keep automated backups older than 14 days.
+
+## Part of a Multi-Tiered Backup Strategy
+
+Linode's Backup service is one part of a well rounded backup strategy. On-site backups provide a quick and convenient recovery option. While the backups are stored on different hardware, they are stored within the same data center as the Compute Instance. It's also recommended to regularly backup your data off-site, such as on a local machine or using a third-party cloud-based service.
 
 ## Limits and Considerations
 
