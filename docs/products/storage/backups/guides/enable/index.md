@@ -16,19 +16,25 @@ The Backups service can be individually enabled on an existing Compute Instances
 
 1.  Click the **Backups** tab.
 
-    ![Enable Linode Backups by navigating to to the individual Linode's backup menu](backups-enable-backups.png "Enable Linode Backups by navigating to to the individual Linode's backup menu")
-
 1.  Click **Enable Backups**.
+
+    ![Enable Linode Backups by navigating to to the individual Linode's backup menu](enable-backups.png)
+
+1.  A pop-up box is displayed confirming that you intend to enable backups for the specified monthly cost. Click **Enable Backups** to confirm.
 
 The Linode Backup Service is now enabled for the selected Linode.
 
 ## Auto Enroll New Compute Instances in the Backup Service
 
-You can automatically enroll all new Linodes in the Backup Service. To do so, click the **Account** link in the sidebar, then select the **Global Settings** tab.
+You can automatically enroll all new Linodes in the Backup Service.
 
-In the **Backup Auto Enrollment** panel, click on the switch to enable backups on all new Linodes.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-![Auto enroll all new Linodes in the Backup Service by navigating to the Global Settings tab in the Account settings and enabling Backups.](backups-auto-enroll.png)
+1.  Click the **Account** link in the sidebar, then select the **Settings** tab.
+
+1.  In the **Backup Auto Enrollment** panel, click on the switch to enable backups on all new Linodes.
+
+    ![Auto enroll all new Linodes in the Backup Service by navigating to the Global Settings tab in the Account settings and enabling Backups.](auto-enroll-in-backups.png)
 
 {{< note >}}
 Enabling this setting does not retroactively enroll any previously created Linodes in the Backup Service.
