@@ -16,10 +16,10 @@
 
 1. In your terminal, navigate into the cloned docs repository.
 
-1. Use the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to install and use version 13.14.0 of Node:
+1. Use the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to install and use version 14.18.1 of Node:
 
-        nvm install 13.14.0
-        nvm use 13.14.0
+        nvm install 14.18.1
+        nvm use 14.18.1
 
 1. Install the Node dependencies:
 
