@@ -21,469 +21,219 @@ external_resources:
 aliases: ['/platform/manager/manually-enable-elastic-ip-on-your-linode/','/guides/manually-enable-elastic-ip-on-your-linode/']
 ---
 
-The Atlanta data center was upgraded in April of 2021 to improve performance and expand product availability (see the [Linode Atlanta Data Center Upgrades Completed](https://www.linode.com/blog/linode/linode-atlanta-data-center-upgrades-completed/) blog post). As part of this upgrade, the [IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing) feature was impacted and no longer functions as it did before. Customers that currently use this feature can follow this guide to manually enable IP Sharing (also called *Elastic IPs*) through the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool. This allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the elastic ip will seamlessly failover to the secondary Compute Instance.
+The Atlanta data center was upgraded in April of 2021 to improve performance and expand product availability (see the [Linode Atlanta Data Center Upgrades Completed](https://www.linode.com/blog/linode/linode-atlanta-data-center-upgrades-completed/) blog post). As part of this upgrade, the [IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing) feature was impacted and no longer functions as it did before. Customers that currently use this feature can follow this guide to manually enable IP Sharing (also called *Elastic IPs*) through the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool. This allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the elastic IP will seamlessly failover to the secondary Compute Instance.
 
-### Before You Begin
+{{< note >}}
+This guide discusses a temporary workaround specific to the Atlanta data center. Future planned network upgrades may impact this feature again and may require additional configuration.
+{{</ note >}}
+
+## Before You Begin
 
 1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s).
 
 1. Ensure you have set the [hostname](/docs/getting-started/#set-the-hostname) and have updated the [hosts file](/docs/getting-started/#update-your-system-s-hosts-file) on your Compute Instance.
 
-1. [Install Git](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/) if it is not already installed on your Compute Instance. Git to install FRR from source, which is required by some Linux distributions that don't offer an FRR package.
-
-    {{< note >}}
-This guide will use Git as the installation method for the FRR tool. For other installation methods see [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html).
-    {{</ note >}}
-
 1. Ensure Python 3 is installed on your system. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
 1. [Disable Network Helper](/docs/platform/network-helper/#single-per-linode) on the Elastic IP Linodes and reboot them.
 
-## Install FRR on your Linode
+## Install FRR
 
-This section provides FRR installation methods for Debian 10, Ubuntu 20.04, Ubuntu 18.04, and CentOS 8. If you are using a different Linux distribution, see FRR's official documentation on [installing](http://docs.frrouting.org/en/latest/installation.html) and [building](http://docs.frrouting.org/projects/dev-guide/en/latest/building.html) FRR.
+This section provides instructions for installing FRR on Debian, Ubuntu, and CentOS systems through their native package managers. If you're using a different distribution or prefer to install FRR from source, follow [FRR's official installation instructions](http://docs.frrouting.org/en/latest/installation.html) to install FRR using git.
 
-Once you have installed FRR on your Linode, proceed to the [Configure Elastic IP](#configure-floating-ip) section of this guide.
+### Ubuntu and Debian
 
-### Debian 10 / Ubuntu 18.04
+**Supported distributions:** *Ubuntu 20.04, 18.04, and 16.04 | Debian 11, 10, and 9*
 
-1. Install the package dependencies needed to securely install FRR on your Debian system:
+1.  Install the package dependencies needed to securely install FRR on your system:
 
         sudo apt-get install apt-transport-https gnupg
 
-1. Add FRR's GPG key:
+1.  Add FRR's GPG key:
 
         curl -s https://deb.frrouting.org/frr/keys.asc | sudo apt-key add -
 
-1. Set the FRR environment variable to the version you would like to install. The possible values are `frr-6`, `frr-7`, and `frr-stable`:
+1.  Set the FRR environment variable as `frr-stable` to install the latest FRR release. Specific releases can also be targeted by setting the variable to `frr-8`, `frr-7`, `frr-6` (see [FRR Debian Repository](https://deb.frrouting.org/) for more details).
 
         FRRVER="frr-stable"
 
-    {{< note >}}
-For more information on Debian FRR versions, see the [FRR Debian Repository](https://deb.frrouting.org/) and [FRR's Github Releases](https://github.com/FRRouting/frr/releases).
-  {{< /note >}}
-
-1. Add FRR's Debian repository to your system's source's list:
+1.  Add FRR's Debian repository to your system's source's list:
 
         echo deb https://deb.frrouting.org/frr $(lsb_release -s -c) $FRRVER | sudo tee -a /etc/apt/sources.list.d/frr.list
 
-1. Install FRR:
+1.  Install the FRR package:
 
         sudo apt update && sudo apt install frr frr-pythontools
 
+### CentOS/RHEL
+
+**Supported distributions:** *CentOS Stream (and 8), CentOS 7, other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
+
+1.  Set the FRR environment variable as `frr-stable` to install the latest FRR release. Specific releases can also be targeted by setting the variable to `frr-8`, `frr-7`, `frr-6` (see [FRR RPM Repository](https://rpm.frrouting.org/) for more details).
+
+        FRRVER="frr-stable"
+
+1.  Download the FRR's RPM repository.
+
+    **CentOS/RHEL 8**
+
+        curl -O https://rpm.frrouting.org/repo/$FRRVER-repo-1-0.el8.noarch.rpm
+
+    **CentOS/RHEL 7**
+
+        curl -O https://rpm.frrouting.org/repo/$FRRVER-repo-1-0.el7.noarch.rpm
+
+1.  Install the repository.
+
+        sudo yum install ./$FRRVER*
+
+1.  Install the FRR package.
+
+        sudo yum install frr frr-pythontools
+
+## Enable bgpd
+
+Enable the Border Gateway Protocol (BGP) daemon on your system.
+
 1. Using a text editor of your choice, enable the `bgpd` daemon, by updating its value to `yes` in the FRR daemons configuration file:
 
       {{< file "/etc/frr/daemons" >}}
 # The watchfrr and zebra daemons are always started.
 #
 bgpd=yes
-        {{</ file >}}
+{{</ file >}}
 
 1. Restart the FRR service:
 
         sudo systemctl restart frr.service
 
-### Ubuntu 20.04
+## Configure FRR
 
-1. Install all FRR dependencies:
+With FRR installed, you can now apply the required configurations to enable Elastic IP(s). When following the steps within this section, you need to have the following pieces of information:
 
-        sudo apt-get install \
-          git autoconf automake libtool make libreadline-dev texinfo \
-          pkg-config libpam0g-dev libjson-c-dev bison flex python3-pytest \
-          libc-ares-dev python3-dev libsystemd-dev python-ipaddress python3-sphinx \
-          install-info build-essential libsystemd-dev libsnmp-dev perl \
-          libcap-dev python2 cmake libpcre3-dev libpcre3
+- **Elastic IP address** (`[ELASTIC_IP]`): The elastic IP address assigned to your Linode. If you do not yet have this, contact Linode support.
+- **Hostname** (`[HOSTNAME]`): The hostname defined on your Linode (ex: `atl-bgp-1.example.com`).
+- **Gateway IP** (`[DEFAULT_GW_IPV4]`: This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.
+- **Role** (`[ROLE]`): The role of the Linode's elastic IP address.
+  - `primary`: All requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
+  - `secondary`: If the `primary` Linode fails, all requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
 
-1. Clone the libyang GitHub repository and move into its directory. FRR depends on libyang, a data modeling language parser and toolkit. libyang is not yet available as a package so it must be built from source.
-
-        git clone https://github.com/CESNET/libyang.git
-        cd libyang
-
-1. Create a a new directory named `build` and move into it:
-
-        mkdir build
-        cd build
-
-1. Build libyang:
-
-        cmake -DENABLE_LYD_PRIV=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-              -D CMAKE_BUILD_TYPE:String="Release" ..
-        make
-        sudo make install
-
-1. Install Protobuf and ZeroMQ:
-
-        sudo apt-get install protobuf-c-compiler libprotobuf-c-dev libzmq5 libzmq3-dev
-
-1. Add the necessary FRR user and groups:
-
-        sudo groupadd -r -g 92 frr
-        sudo groupadd -r -g 85 frrvty
-        sudo adduser --system --ingroup frr --home /var/run/frr/ \
-          --gecos "FRR suite" --shell /sbin/nologin frr
-        sudo usermod -a -G frrvty frr
-
-1. Ensure you are no longer in the libyang directory. For example, you can move into your home directory:
-
-        cd ~
-
-1. Clone the FRR GitHub repository and move into the cloned repository:
-
-        git clone https://github.com/frrouting/frr.git frr
-        cd frr
-
-1. Run the `bootstrap.sh` script:
-
-        ./bootstrap.sh
-
-1. Run the `configure` script with the following default configurations:
-
-        ./configure \
-            --prefix=/usr \
-            --includedir=\${prefix}/include \
-            --enable-exampledir=\${prefix}/share/doc/frr/examples \
-            --bindir=\${prefix}/bin \
-            --sbindir=\${prefix}/lib/frr \
-            --libdir=\${prefix}/lib/frr \
-            --libexecdir=\${prefix}/lib/frr \
-            --localstatedir=/var/run/frr \
-            --sysconfdir=/etc/frr \
-            --with-moduledir=\${prefix}/lib/frr/modules \
-            --with-libyang-pluginsdir=\${prefix}/lib/frr/libyang_plugins \
-            --enable-configfile-mask=0640 \
-            --enable-logfile-mask=0640 \
-            --enable-snmp=agentx \
-            --enable-multipath=64 \
-            --enable-user=frr \
-            --enable-group=frr \
-            --enable-vty-group=frrvty \
-            --with-pkg-git-version \
-            --with-pkg-extra-version=-MyOwnFRRVersion
-
-1. Build FRR:
-
-        make
-        sudo make install
-
-1. Install the FRR repository's configuration files to your Linux system:
-
-        sudo install -m 775 -o frr -g frr -d /var/log/frr
-        sudo install -m 775 -o frr -g frrvty -d /etc/frr
-        sudo install -m 640 -o frr -g frrvty tools/etc/frr/vtysh.conf /etc/frr/vtysh.conf
-        sudo install -m 640 -o frr -g frr tools/etc/frr/frr.conf /etc/frr/frr.conf
-        sudo install -m 640 -o frr -g frr tools/etc/frr/daemons.conf /etc/frr/daemons.conf
-        sudo install -m 640 -o frr -g frr tools/etc/frr/daemons /etc/frr/daemons
-
-1. Using a text editor, edit your `/etc/systctl.conf` file to uncomment the following values. This will enable IPv4 and IPv6 forward and MPLS:
-
-      {{< file "/etc/sysctl.conf">}}
-net.ipv4.ip_forward=1
-
-# Uncomment the next line to enable packet forwarding for IPv6
-#  Enabling this option disables Stateless Address Autoconfiguration
-#  based on Router Advertisements for this host
-net.ipv6.conf.all.forwarding=1
-      {{</ file >}}
-
-1. Apply these configurations to your running system:
-
-        sudo sysctl -p
-
-1. Install the FRR service files to your system:
-
-        sudo install -m 644 tools/frr.service /etc/systemd/system/frr.service
-        sudo systemctl enable frr
-
-1. Start FRR using systemctl:
-
-        sudo systemctl start frr
-
-1. Using a text editor of your choice, enable the `bgpd` daemon, by updating its value to `yes` in the FRR daemons configuration file:
-
-      {{< file "/etc/frr/daemons" >}}
-# The watchfrr and zebra daemons are always started.
-#
-bgpd=yes
-        {{</ file >}}
-
-1. Restart the FRR service:
-
-        sudo systemctl restart frr
-
-### CentOS 8
-
-1. Install all FRR dependencies:
-
-        sudo dnf install --enablerepo=PowerTools git autoconf pcre-devel \
-          automake libtool make readline-devel texinfo net-snmp-devel pkgconfig \
-          groff pkgconfig json-c-devel pam-devel bison flex python3-pytest \
-          c-ares-devel python3-devel systemd-devel libcap-devel cmake
-
-1. Clone the libyang GitHub repository and move into its directory. FRR depends on libyang, a data modeling language parser and toolkit. libyang is not yet available as a package so it must be built from source:
-
-        git clone https://github.com/CESNET/libyang.git
-        cd libyang
-
-1. Create a a new directory named `build` and move into it:
-
-        mkdir build
-        cd build
-
-1. Build libyang:
-
-        cmake -DENABLE_LYD_PRIV=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-              -D CMAKE_BUILD_TYPE:String="Release" ..
-        make
-        sudo make install
-
-1. Add the necessary FRR user and groups:
-
-        sudo groupadd -g 92 frr
-        sudo groupadd -r -g 85 frrvty
-        sudo useradd -u 92 -g 92 -M -r -G frrvty -s /sbin/nologin \
-          -c "FRR FRRouting suite" -d /var/run/frr frr
-
-1. Ensure you are no longer in the libyang directory. For example, you can move into your home directory:
-
-        cd ~
-
-1. Clone the FRR GitHub repository and move into the cloned repository:
-
-        git clone https://github.com/frrouting/frr.git frr
-        cd frr
-
-1. Run the `bootstrap.sh` script:
-
-        ./bootstrap.sh
-
-1. Run the `configure` script with the following default configurations:
-
-        ./configure \
-            --bindir=/usr/bin \
-            --sbindir=/usr/lib/frr \
-            --sysconfdir=/etc/frr \
-            --libdir=/usr/lib/frr \
-            --libexecdir=/usr/lib/frr \
-            --localstatedir=/var/run/frr \
-            --with-moduledir=/usr/lib/frr/modules \
-            --enable-snmp=agentx \
-            --enable-multipath=64 \
-            --enable-user=frr \
-            --enable-group=frr \
-            --enable-vty-group=frrvty \
-            --enable-systemd=yes \
-            --disable-exampledir \
-            --disable-ldpd \
-            --enable-fpm \
-            --with-pkg-git-version \
-            --with-pkg-extra-version=-MyOwnFRRVersion \
-            SPHINXBUILD=/usr/bin/sphinx-build
-
-1. Build FRR:
-
-        make
-        make check
-        sudo make install
-
-1. Create FRR configuration files:
-
-        sudo mkdir /var/log/frr
-        sudo mkdir /etc/frr
-        sudo touch /etc/frr/zebra.conf
-        sudo touch /etc/frr/bgpd.conf
-        sudo touch /etc/frr/ospfd.conf
-        sudo touch /etc/frr/ospf6d.conf
-        sudo touch /etc/frr/isisd.conf
-        sudo touch /etc/frr/ripd.conf
-        sudo touch /etc/frr/ripngd.conf
-        sudo touch /etc/frr/pimd.conf
-        sudo touch /etc/frr/nhrpd.conf
-        sudo touch /etc/frr/eigrpd.conf
-        sudo touch /etc/frr/babeld.conf
-        sudo chown -R frr:frr /etc/frr/
-        sudo touch /etc/frr/vtysh.conf
-        sudo chown frr:frrvty /etc/frr/vtysh.conf
-        sudo chmod 640 /etc/frr/*.conf
-
-1. Install the FRR repository's daemon config file to your system and change its ownership to the `frr` user and group:
-
-        sudo install -p -m 644 tools/etc/frr/daemons /etc/frr/
-        sudo chown frr:frr /etc/frr/daemons
-
-1. Using a text editor, create a new file named `/etc/sysctl.d/90-routing-sysctl.conf` and add the content in the example file. This will enable IPv4 and IPv6 forward and MPLS:
-
-      {{< file "/etc/sysctl.d/90-routing-sysctl.conf" >}}
-# Sysctl for routing
-#
-# Routing: We need to forward packets
-net.ipv4.conf.all.forwarding=1
-net.ipv6.conf.all.forwarding=1
-      {{</ file >}}
-
-1. Apply these configurations to your running system:
-
-        sudo sysctl -p /etc/sysctl.d/90-routing-sysctl.conf
-
-1. Install the FRR service files to your system:
-
-        sudo install -p -m 644 tools/frr.service /usr/lib/systemd/system/frr.service
-
-1. Register the FRR service:
-
-        sudo systemctl preset frr.service
-
-1. Enable FRR to automatically start on boot:
-
-        sudo systemctl enable frr
-
-1. Start the FRR service:
-
-        sudo systemctl start frr
-
-1. Using a text editor of your choice, enable the `bgpd` daemon, by updating its value to `yes` in the FRR daemons configuration file:
-
-      {{< file "/etc/frr/daemons" >}}
-# The watchfrr and zebra daemons are always started.
-#
-bgpd=yes
-        {{</ file >}}
-
-1. Restart the FRR service:
-
-        sudo systemctl restart frr.service
-
-## Configure Elastic IP
-
-With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s).
-
-{{< note >}}
-Prior to starting this section, ensure that **you have received a `DC_ID` and an `ELASTIC_IP` from Linode Support**. You need these values to configure Elastic IP on a Linode. Refer to the table below for details on each configuration value.
-
-| Value to replace in the configuration template | Description |
-| :-------: | :-------: |
-| `DC_ID` | The ID number of this data center. |
-| `ELASTIC_IP` | The Elastic IP address to assign to this Linode. |
-| `NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
-
-When you configure Elastic IP you need to define the Linode's _ROLE_ within the configuration as `primary` or `secondary`.
-
-- `primary`: All requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
-- `secondary`: If the `primary` Linode fails, all requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
-
-| Information | Value to replace in the configuration template |
-| :-------: | :-------: |
-| This Linode's role (`primary` or `secondary`) | `ROLE` |
-
-{{</ note >}}
-
-1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `[NEIGHBOR_IP]`, `[DC_ID]`, and `[ROLE]` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
+1.  The template below includes the FRR configuration. Ensure you replace any instances of `[ELASTIC_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DEFAULT_GW_IPV4]` as outlined above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
 
       {{< file "~/elastic.conf">}}
-hostname atl-bgp-1.example.com
+hostname [HOSTNAME]
 
-router bgp 65[DC_ID]5
+router bgp 65000
 no bgp ebgp-requires-policy
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
 neighbor HOST peer-group
 neighbor HOST remote-as external
 neighbor HOST capability extended-nexthop
-neighbor [NEIGHBOR_IP] peer-group HOST
+neighbor [DEFAULT_GW_IPV4] peer-group HOST
 address-family ipv4 unicast
-  network [ELASTIC_IP]/32 route-map $ROLE
+  network [ELASTIC_IP]/32 route-map [ROLE]
   redistribute static
 exit-address-family
 route-map primary permit 10
 set large-community 63949:1:1
 route-map secondary permit 10
 set large-community 63949:1:2
-      {{</ file >}}
+{{</ file >}}
 
-1. Run the VTY shell:
+1.  Run the VTY shell:
 
         sudo vtysh
 
-1. Enter configuration mode:
+1.  Enter configuration mode:
 
         conf t
 
-1. Copy the contents of your template configuration file and paste them into the VTY shell:
+1.  Copy the contents of your template configuration file and paste them into the VTY shell:
 
-1. Tell the VTY shell that you are done entering your configurations:
+1.  Tell the VTY shell that you are done entering your configurations:
 
         end
 
-1. Write your configurations to VTY:
+1.  Write your configurations to VTY:
 
         write
 
-1. Verify that the configurations you entered were correctly written by showing VTY's running configuration:
+1.  Verify that the configurations you entered were correctly written by showing VTY's running configuration:
 
         show running-config
 
-1. Exit out of the VTY shell:
+1.  Exit out of the VTY shell:
 
         q
 
-1. Configure the Linode's interface(s) with the Elastic IP:
+1.  Configure the Linode's interface(s) with the Elastic IP:
 
-    > **Debian 10 & Ubuntu 18.04**
-    >
-    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
-    > {{< file >}}
+    **Debian 10 & Ubuntu 18.04**
+
+    Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
+
+    {{< file >}}
 up   ip addr add [ELASTIC_IP]/32 dev eth0 label eth0
 down ip addr del [ELASTIC_IP]/32 dev eth0 label eth0
-        {{</ file >}}
-    >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+{{</ file >}}
 
-    >{{< file >}}
+    If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+
+    {{< file >}}
 up   ip addr add [ELASTIC_IP]/32 dev eth0 label eth0
 down ip addr del [ELASTIC_IP]/32 dev eth0 label eth0
 up   ip addr add [ELASTIC_IP]_2/32 dev eth0 label eth0
 down ip addr del [ELASTIC_IP]_2/32 dev eth0 label eth0
-        {{</ file >}}
-    > **Ubuntu 20.04**
-    >
-    > Edit your Linode's `/etc/systemd/network/05-eth0.network` file by adding an `Address` entry for the Elastic IP. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
-    > {{< file >}}
+{{</ file >}}
+
+    **Ubuntu 20.04**
+
+    Edit your Linode's `/etc/systemd/network/05-eth0.network` file by adding an `Address` entry for the Elastic IP. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
+
+    {{< file >}}
 [Match]
 Name=eth0
 ...
 Address=[ELASTIC_IP]/32
-        {{</ file >}}
-    >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+{{</ file >}}
 
-    >{{< file >}}
+    If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+
+    {{< file >}}
 Address=[ELASTIC_IP]/32
 Address=[ELASTIC_IP]_2/32
-    {{</ file >}}
-    > **CentOS 8**
-    >
-    > Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
-    > {{< file >}}
+{{</ file >}}
+
+    **CentOS 8**
+
+    Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
+
+    {{< file >}}
 IPADDR1=[ELASTIC_IP]
 PREFIX1="32"
-        {{</ file >}}
-    >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+{{</ file >}}
 
-    >{{< file >}}
+    If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+
+    {{< file >}}
 IPADDR1=[ELASTIC_IP]
 PREFIX1="32"
 
 IPADDR2=[ELASTIC_IP]_2
 PREFIX2="32"
-    {{</ file >}}
+{{</ file >}}
 
-1. Apply the `eth0` network interface configuration:
+1.  Apply the `eth0` network interface configuration:
 
-    > **Debian 10, Ubuntu 18.04 & CentOS 8**
-    >
+    **Debian 10, Ubuntu 18.04 & CentOS 8**
+
         sudo ifdown eth0 && sudo ifup eth0
-    > **Ubuntu 20.04**
-    >
+    **Ubuntu 20.04**
+
         systemctl restart systemd-networkd
 
-1. Ensure that your network interface configurations have been applied as expected:
+1.  Ensure that your network interface configurations have been applied as expected:
 
         ip a | grep inet
 
@@ -498,7 +248,7 @@ inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
 inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
     {{</ output >}}
 
-1. Restart the FRR service:
+1.  Restart the FRR service:
 
         sudo systemctl restart frr.service
 

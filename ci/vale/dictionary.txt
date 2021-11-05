@@ -124,6 +124,7 @@ benchmarked
 berkshelf
 bernd
 berners
+bgpd
 bialek
 bing
 binlog
