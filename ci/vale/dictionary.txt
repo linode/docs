@@ -16,6 +16,7 @@ adminpack
 adnanh
 adodb
 aes
+ag
 ahci0
 Aho
 ahvz
@@ -80,6 +81,7 @@ autologin
 autologout
 automagically
 automattic
+automations
 automount
 autorelabel
 autorun
