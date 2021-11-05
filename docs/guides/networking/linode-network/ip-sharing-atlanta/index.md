@@ -21,23 +21,15 @@ external_resources:
 aliases: ['/platform/manager/manually-enable-elastic-ip-on-your-linode/','/guides/manually-enable-elastic-ip-on-your-linode/']
 ---
 
-The Atlanta data center was upgraded in April of 2021 to improve performance and expand product availability (see the [Linode Atlanta Data Center Upgrades Completed](https://www.linode.com/blog/linode/linode-atlanta-data-center-upgrades-completed/) blog post). As part of this upgrade, the [IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing) feature was impacted and no longer functions as it did before. Customers that used the IP Sharing can follow this guide to manually enable IP Sharing (also called *Elastic IPs*) through the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool. This allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the elastic ip will seamlessly failover to the secondary Compute Instance.
-
-## In this Guide
-
-This guide will cover the following:
-
-- Installing FRRouting (FRR) on your Linode.
-- Configuring FRR to enable Elastic IP on a Linode.
-- Suggested next steps when moving from IP sharing to Elastic IP.
+The Atlanta data center was upgraded in April of 2021 to improve performance and expand product availability (see the [Linode Atlanta Data Center Upgrades Completed](https://www.linode.com/blog/linode/linode-atlanta-data-center-upgrades-completed/) blog post). As part of this upgrade, the [IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing) feature was impacted and no longer functions as it did before. Customers that currently use this feature can follow this guide to manually enable IP Sharing (also called *Elastic IPs*) through the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool. This allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the elastic ip will seamlessly failover to the secondary Compute Instance.
 
 ### Before You Begin
 
 1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s).
 
-1. Ensure you have set your [Linode's hostname](/docs/getting-started/#set-the-hostname) and you have [updated your Linode's hosts file](/docs/getting-started/#update-your-system-s-hosts-file).
+1. Ensure you have set the [hostname](/docs/getting-started/#set-the-hostname) and have updated the [hosts file](/docs/getting-started/#update-your-system-s-hosts-file) on your Compute Instance.
 
-1. [Install Git](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/) on your Linode if it is not already installed. You will need Git to install FRR from source, which is required by some Linux distributions that don't offer an FRR package.
+1. [Install Git](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/) if it is not already installed on your Compute Instance. Git to install FRR from source, which is required by some Linux distributions that don't offer an FRR package.
 
     {{< note >}}
 This guide will use Git as the installation method for the FRR tool. For other installation methods see [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html).
