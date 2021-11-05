@@ -832,6 +832,7 @@ journaled
 journaling
 jpg
 jpetazzo
+jq
 jre
 js
 json
