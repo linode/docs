@@ -19,7 +19,7 @@ external_resources:
 - '[ripgrep blog](https://blog.burntsushi.net/ripgrep/)'
 ---
 
-The [*ripgrep utility*](https://github.com/BurntSushi/ripgrep) is a useful alternative to the traditional [*`grep` command*](/docs/guides/differences-between-grep-sed-awk/) on Linux. Both ripgrep and grep are used to search files for specific patterns of text. However, ripgrep is much faster and uses intelligent defaults which are optimal for most users. This guide provides some background on ripgrep, including a comparison with other search tools. It also explains how to install and use ripgrep, and provides some examples of typical searches.
+The [*ripgrep* utility](https://github.com/BurntSushi/ripgrep) is a useful alternative to the traditional [`grep` command](/docs/guides/differences-between-grep-sed-awk/) on Linux. Both ripgrep and grep are used to search files for specific patterns of text. However, ripgrep is much faster and uses intelligent defaults which are optimal for most users. This guide provides some background on ripgrep, including a comparison with other search tools. It also explains how to install and use ripgrep, and provides some examples of typical searches.
 
 ## An Introduction to ripgrep
 
@@ -42,7 +42,7 @@ However, ripgrep is not POSIX-compliant and it is not installed on most systems.
 
 ## Comparing ripgrep to grep, ack, and Silver Searcher
 
-Some alternatives to ripgrep include the familiar grep tool, [*ack*](https://github.com/beyondgrep/ack3/), and ag, also known as the [*Silver Searcher*](https://github.com/ggreer/the_silver_searcher). The biggest advantage of ripgrep is its speed. On average, it is noticeably faster than other tools as measured across multiple benchmarks. Although it is not always the fastest tool in every case, it handles complicated queries much more efficiently. Its parallel search technique is more efficient when searching through a large number of files. It also avoids worst-case scenarios where performance badly degrades with certain search parameters. Ripgrep uses Rust and its collection of highly-optimized libraries, while the other search tools use C or Perl. A full set of benchmarks is available in the "Code Search Benchmarks" section of the [*ripgrep blog*](https://blog.burntsushi.net/ripgrep/#code-search-benchmarks).
+Some alternatives to ripgrep include the familiar grep tool, [ack](https://github.com/beyondgrep/ack3/), and ag, also known as the [Silver Searcher](https://github.com/ggreer/the_silver_searcher). The biggest advantage of ripgrep is its speed. On average, it is noticeably faster than other tools as measured across multiple benchmarks. Although it is not always the fastest tool in every case, it handles complicated queries much more efficiently. Its parallel search technique is more efficient when searching through a large number of files. It also avoids worst-case scenarios where performance badly degrades with certain search parameters. Ripgrep uses Rust and its collection of highly-optimized libraries, while the other search tools use C or Perl. A full set of benchmarks is available in the "Code Search Benchmarks" section of the [ripgrep blog](https://blog.burntsushi.net/ripgrep/#code-search-benchmarks).
 
 ripgrep is generally competitive with the other tools in terms of feature parity. On occasion, it lacks a feature that one of the other tools provides and vice versa. Here is a more detailed comparison between ripgrep and the other tools.
 
@@ -50,7 +50,7 @@ ripgrep is generally competitive with the other tools in terms of feature parity
 - **ripgrep vs ack:** ack release 3 uses Perl and is designed for developers searching repositories of source code. It has the advantage of being highly portable because it can run on any platform that supports Perl. It is relatively similar to ripgrep in the number of features it supports, but it is not as fast.
 - **ripgrep vs Silver Searcher/ag:** The Silver Searcher program is probably the best comparison for ripgrep. Both programs provide a similar set of optimization and user-friendly features. Silver Searcher is considered quite fast, although ripgrep performs better on most benchmarks, and significantly better on Unicode searches. Silver Searcher uses some different search techniques than ripgrep does, including look around.
 
-Both ripgrep and Silver Searcher are considered major improvements over the standard `grep` command. ack should be considered if maximum portability is absolutely necessary. A useful chart-based comparison of the different tools can be found at the [*Beyond Grep site*](https://beyondgrep.com/feature-comparison/).
+Both ripgrep and Silver Searcher are considered major improvements over the standard `grep` command. ack should be considered if maximum portability is absolutely necessary. A useful chart-based comparison of the different tools can be found at the [Beyond Grep site](https://beyondgrep.com/feature-comparison/).
 
 ## How to Install ripgrep
 
@@ -88,7 +88,7 @@ Install ripgrep on Fedora systems using the `dnf install` command.
 
 ### Install ripgrep Using Homebrew
 
-Ripgrep can also be installed using the popular [*Homebrew*](https://brew.sh/) package manager. For instructions on installing Homebrew, see their website. Use the following command to install ripgrep using Homebrew.
+Ripgrep can also be installed using the popular [Homebrew](https://brew.sh/) package manager. For instructions on installing Homebrew, see their website. Use the following command to install ripgrep using Homebrew.
 
     brew install ripgrep
 
@@ -120,7 +120,7 @@ The examples in the following section search the codebase of the open-source [PH
 
 ### Basic Searching with ripgrep
 
-To search a specific file, Use the `rg` command followed by the search term and the name of the file. Ripgrep orders the results by line number. The matching section of each line is highlighted in color.
+To search a specific file, Use the `rg` command followed by the search term and the name of the file. ripgrep orders the results by line number. The matching section of each line is highlighted in color.
 
     rg Exception InstalledVersions.php
 
