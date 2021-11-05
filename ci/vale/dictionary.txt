@@ -44,6 +44,7 @@ ap
 apache2
 api
 apiserver
+apk
 apparmor
 appimage
 appletalk
@@ -562,6 +563,7 @@ fsck
 fstab
 fullchain
 func
+fzf
 galera
 gamemode
 gamepad
@@ -1512,6 +1514,7 @@ ro
 rochko
 rockyou
 rocommunity
+rofi
 rollout
 rooknfs
 rossum
