@@ -2,11 +2,11 @@
 slug: using-jq-to-process-json-on-the-command-line
 author:
   name: Jeff Novotny
-description: 'How to Use the JQ command, including installation instructions and examples.'
+description: 'This guide shows you how to use the JQ command and includes installation instructions and examples.'
 keywords: ['jq command','linux jq','jq examples','jq filter']
 tags: ['linux', 'debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-06
+published: 2021-11-05
 modified_by:
   name: Linode
 title: "Using JQ to Process JSON on the Command Line"
@@ -512,7 +512,7 @@ The `map` function can output the same information as an array.
 ]
 {{< /output >}}
 
-## Some Concluding Thoughts About jq
+## Conclusion
 
 jq is a handy and lightweight open-source utility designed to display, filter, process, and transform the contents of JSON files. It is particularly useful for iterating through JSON array objects. jq is easy to install and is often part of the default package on many systems. It can also be installed using a package manager.
 
