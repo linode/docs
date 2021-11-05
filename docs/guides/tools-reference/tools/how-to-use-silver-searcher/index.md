@@ -55,7 +55,7 @@ The Silver Searcher can also have it's own ignore file, `.ignore`. You can use t
 
 ripgrep is a tool similar to The Silver Searcher, likewise boasting vast performance improvements over ack. Both the Silver Searcher and ripgrep have their merits, many of which overlap. So, the choice of which one to use may come down to your personal preference between their interfaces.
 
-ripgrep uses regular expression (regex) search patterns almost exclusively; the Silver Searcher, though fully capable of regex searches, uses command patterns primarily resembling ack commands. (You can learn more about using regex searches in the Silver Searcher via the [Advanced Searches](/docs/guides/installing-and-using-silver-searcher-on-linux/#advanced-searches) section below). The Silver Searcher may be easier to pick up if you are already familiar with ack.
+ripgrep uses regular expression (regex) search patterns almost exclusively; the Silver Searcher, though fully capable of regex searches, uses command patterns primarily resembling ack commands. (You can learn more about using regex searches in the Silver Searcher via the [Advanced Searches](#advanced-searches) section below). The Silver Searcher may be easier to pick up if you are already familiar with ack.
 
 The Silver Searcher is fast, but ripgrep claims to be even faster in most scenarios. However, the Silver Searcher's still-remarkable performance should be sufficient for most use cases. If you find yourself still facing slowdowns while using he Silver Searcher, you should look into ripgrep. You can learn more about ripgrep through our guide on how to install and start using it.
 
