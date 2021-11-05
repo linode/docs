@@ -1,14 +1,12 @@
 ---
-slug: installing-and-using-silver-searcher-on-linux
+slug: silver-searcher-on-linux
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to get started with the code-searching tool Silver Searcher. It is a tool like an ack but emphasizing speed and efficiency."
-og_description: "Learn how to get started with the code-searching tool Silver Searcher. It is a tool like an ack but emphasizing speed and efficiency."
+  name: Nathaniel Stickman
+description: "This guide shows you how to install and use the code-searching tool Silver Searcher. The Silver Searcher is a tool like ack that emphasizes speed and efficiency."
 keywords: ['silver searcher ag','ag command linux','ack alternative']
 tags: ['ubuntu', 'debian', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-22
+published: 2021-11-05
 modified_by:
   name: Nathaniel Stickman
 title: "Installing and Using Silver Searcher on Linux"
@@ -19,9 +17,7 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-The Silver Searcher is a command-line tool for searching code. It is similar to the well-known `ack` command, but tremendously improves on performance and adds support for `.*ignore` files.
-
-In this guide, learn more about Silver Searcher and how to install and get started using it on your Linux system.
+The Silver Searcher is a command-line tool for searching code. It is similar to the well-known `ack` command, but improves on performance and adds support for `.*ignore` files. In this guide, you learn more about Silver Searcher and how to install and get started using it on your Linux system.
 
 ## Before You Begin
 
@@ -47,9 +43,9 @@ In this guide, learn more about Silver Searcher and how to install and get start
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## What is The Silver Searcher?
+## What is the Silver Searcher?
 
-[The Silver Searcher](https://github.com/ggreer/the_silver_searcher) — also known by its command name, `ag` — is a code-searching tool similar to `ack`. But The Silver Searcher is designed to be much faster than `ack`, and it takes your `.gitignore`, `.hgignore`, and other `.*ignore` files into account.
+[The Silver Searcher](https://github.com/ggreer/the_silver_searcher) — also known by its command name, `ag` — is a code-searching tool similar to ack. But The Silver Searcher is designed to be much faster than ack, and it takes your `.gitignore`, `.hgignore`, and other `.*ignore` files into account.
 
 By default, The Silver Searcher excludes files and directories listed in `.gitignore` and `.hgignore` files, as well as hidden files and directories, from your searches. This keeps your searches focused on relevant files, and further speeds up search time.
 
@@ -57,17 +53,13 @@ The Silver Searcher can also have it's own ignore file, `.ignore`. You can use t
 
 ### The Silver Searcher vs ripgrep
 
-`ripgrep` is a tool similar to The Silver Searcher, likewise boasting vast performance improvements over `ack`.
+ripgrep is a tool similar to The Silver Searcher, likewise boasting vast performance improvements over ack. Both the Silver Searcher and ripgrep have their merits, many of which overlap. So, the choice of which one to use may come down to your personal preference between their interfaces.
 
-Both The Silver Searcher and `ripgrep` have their merits, many of which overlap. So, the choice of which one to use may come down to your personal preference between the tools' interfaces.
+ripgrep uses regular expression (regex) search patterns almost exclusively; the Silver Searcher, though fully capable of regex searches, uses command patterns primarily resembling ack commands. (You can learn more about using regex searches in the Silver Searcher via the [Advanced Searches](/docs/guides/installing-and-using-silver-searcher-on-linux/#advanced-searches) section below). The Silver Searcher may be easier to pick up if you are already familiar with ack.
 
-`ripgrep` uses regular expression (regex) search patterns almost exclusively; The Silver Searcher, though fully capable of regex searches, uses command patterns primarily resembling `ack` commands. (You can learn more about using regex searches in The Silver Searcher via the [Advanced Searches](/docs/guides/installing-and-using-silver-searcher-on-linux/#advanced-searches) section below). Thus, The Silver Searcher may be easier to pick up if you are already familiar with `ack`.
+The Silver Searcher is fast, but ripgrep claims to be even faster in most scenarios. However, the Silver Searcher's still-remarkable performance should be sufficient for most use cases. If you find yourself still facing slowdowns while using he Silver Searcher, you should look into ripgrep. You can learn more about ripgrep through our guide on how to install and start using it.
 
-The Silver Searcher is fast, but `ripgrep` purports to be even faster in most scenarios. Likely, The Silver Searcher's still-remarkable performance should be sufficient for most use cases. However, if you find yourself still facing slowdowns while using The Silver Searcher, you should look into `ripgrep`.
-
-You can learn more about `ripgrep` through our guide on how to install and start using it, which you can find via the search field on the top of this page.
-
-## How to Install The Silver Searcher
+## How to Install the Silver Searcher
 
 Depending on your Linux distribution, use one of the following methods to install The Silver Searcher.
 
@@ -106,22 +98,22 @@ let g:ackprg = 'ag --vimgrep'
 " [...]
 {{< /file >}}
 
-You can then use The Silver Surfer in Vim via the `:Ack` command. Simply provide your search options, pattern, and directory like you would when using the `ag` command from the command line.
+You can then use the Silver Searcher in Vim via the `:Ack` command. Simply provide your search options, pattern, and directory like you would when using the `ag` command from the command line.
 
-For instance, the first example command from the [How to Use The Silver Searcher](/docs/guides/installing-and-using-silver-searcher-on-linux/#how-to-use-the-silver-searcher) section below would translate to the following in Vim:
+For instance, the first example command from the [How to Use The Silver Searcher](/docs/guides/installing-and-using-silver-searcher-on-linux/#how-to-use-the-silver-searcher) section below translates to the following in Vim:
 
     :Ack restful ~/express
 
-## How to Use The Silver Searcher
+## How to Use the Silver Searcher
 
-This section walks you through some of the most useful features of The Silver Searcher using the [Express JS](https://github.com/expressjs/express) project for its examples. You can clone the project's GitHub repository to your current user's home directory using the commands below. Note that you need to have `git` installed for this to work.
+This section walks you through some of the most useful features of the Silver Searcher using the [Express JS](https://github.com/expressjs/express) project for its examples. You can clone the project's GitHub repository to your current user's home directory using the commands below. You need [Git installed](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your system to use the examples in this section.
 
     cd ~/
     git clone https://github.com/expressjs/express.git
 
 ### Basic Searches
 
-At its simplest, The Silver Searcher just needs a search pattern and a path to search.
+In its most basic usage, the Silver Searcher only needs a search pattern and a path to search, as show below.
 
     ag restful ~/express
 
@@ -135,7 +127,7 @@ At its simplest, The Silver Searcher just needs a search pattern and a path to s
 3401:  * Changed; RESTful route functions double as HTTP clients. Closes #69
 {{< /output >}}
 
-You can get a count of matches by piping the results to the `wc` command, as in:
+You can get a count of matches by piping the results to the `wc` command, for example:
 
     ag restful ~/express | wc -l
 
@@ -143,7 +135,7 @@ You can get a count of matches by piping the results to the `wc` command, as in:
 4
 {{< /output >}}
 
-If you just want to list the names of files with matching results, use the `-l` option with The Silver Searcher.
+If you just want to list the names of files with matching results, use the `-l` option with the Silver Searcher.
 
     ag -l restful ~/express
 
@@ -152,7 +144,7 @@ If you just want to list the names of files with matching results, use the `-l` 
 /home/example-user/express/History.md
 {{< /output >}}
 
-A useful variant of this kind of search uses the `--count` option. With it, The Silver Searcher lists each matching file along with its number of matching lines.
+A useful variant of this kind of search uses the `--count` option. With it, the Silver Searcher lists each matching file along with its number of matching lines.
 
     ag --count restful ~/express
 
@@ -161,7 +153,7 @@ A useful variant of this kind of search uses the `--count` option. With it, The 
 /home/example-user/express/History.md:3
 {{< /output >}}
 
-Notice in the previous examples above that The Silver Searcher ignores cases. You can alternatively make your search case sensitive with the `-s` option.
+Notice in the previous examples above that the Silver Searcher ignores cases. You can alternatively make your search case sensitive with the `-s` option.
 
     ag -s restful ~/express
 
@@ -175,11 +167,11 @@ Notice in the previous examples above that The Silver Searcher ignores cases. Yo
 
 ### Exclude Files and Directories
 
-By default, The Silver Searcher automatically excludes from its results files and directories listed in `.*ignore` files — for example, `.gitignore`, `.hgignore`, or just `.ignore`.
+By default, the Silver Searcher automatically excludes from its results files and directories listed in `.*ignore` files — for example, `.gitignore`, `.hgignore`, or just `.ignore`.
 
-The Express JS directory searched in the examples above has its own such file. Mostly, its `.gitignore` file covers files and directories generated by the operating system, Node.js, or otherwise while working on the project.
+The Express JS directory searched in the examples above has its own ignore file. Mostly, its `.gitignore` file covers files and directories generated by the operating system, Node.js, or otherwise while working on the project.
 
-But, for this example, let us say we want to search for `proxy` and want to ignore matches in the `test` subdirectory. First, from the example below, you can see what results show up for the `proxy` search pattern without excluding anything beyond the default.
+For this example, you search for `proxy` and ignore matches in the `test` subdirectory. To achieve this, first, you can see the results that show up for the `proxy` search pattern without excluding anything beyond the default.
 
     ag --count proxy ~/express
 
@@ -202,7 +194,7 @@ But, for this example, let us say we want to search for `proxy` and want to igno
 /home/example-user/express/Readme-Guide.md:1
 {{< /output >}}
 
-Now, create a `.ignore` file in the Express JS directory and have that file list the directory you want it to be excluded.
+Now, create a `.ignore` file in the Express JS directory and have that file list the directory you want it to exclude.
 
     echo "test" > ~/express/.ignore
 
@@ -234,7 +226,7 @@ The Silver Searcher also has an option — `--ignore` — to exclude files and d
 
 ### Advanced Searches
 
-The Silver Searcher accepts regular expression (regex) search patterns, giving you access to powerful advanced search patterns. Just wrap the search pattern portion of your command in quotes, then use a regex pattern there.
+The Silver Searcher accepts regular expression (regex) search patterns, giving you access to powerful advanced search patterns. Wrap the search pattern portion of your command in quotes, then use a regex pattern there.
 
 In the example below, regex is used to get a count of (most) JavaScript `function` declarations in the Express JS project.
 
@@ -244,11 +236,11 @@ In the example below, regex is used to get a count of (most) JavaScript `functio
 2911
 {{< /output >}}
 
-As you can see from the example above, The Silver Searcher also lets you limit your search to specific file types. You can use the command below to see a listing of all file types recognized by Silver Searcher.
+As you can see from the example above, the Silver Searcher also lets you limit your search to specific file types. You can use the command below to see a listing of all file types recognized by Silver Searcher.
 
     ag --list-file-types
 
-Wanting to broaden your search? The Silver Searcher excludes hidden files and directories from its results by default. Using the `--hidden` option, however, you can have it include those files, and directories, broadening your search.
+You can also broaden your searched. The Silver Searcher excludes hidden files and directories from its results by default. Using the `--hidden` option, however, you can have it include those files, and directories, broadening your search.
 
     ag --hidden package-lock.json ~/express
 
@@ -257,9 +249,9 @@ Wanting to broaden your search? The Silver Searcher excludes hidden files and di
 18:package-lock.json
 {{< /output >}}
 
-You can further broaden your search using the `--skip-vcs-ignores` option, which has The Silver Searcher ignore the contents of `.gitignore` and `.hgignore` files.
+You can further broaden your search using the `--skip-vcs-ignores` option, which has the Silver Searcher ignore the contents of `.gitignore` and `.hgignore` files.
 
-Using the `--unrestricted` option gives you the broadest search. With this option, The Silver Searcher searches hidden files and directories and ignores the contents of `.*ignore` files, including the `.ignore` file.
+Using the `--unrestricted` option gives you the broadest search. With this option, the Silver Searcher searches hidden files and directories and ignores the contents of `.*ignore` files, including the `.ignore` file.
 
 ## Conclusion
 
