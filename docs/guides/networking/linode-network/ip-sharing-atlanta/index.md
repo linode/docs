@@ -21,7 +21,7 @@ external_resources:
 aliases: ['/platform/manager/manually-enable-elastic-ip-on-your-linode/','/guides/manually-enable-elastic-ip-on-your-linode/']
 ---
 
-The Atlanta data center was upgraded in April of 2021 to improve performance and expand product availability (see the [Linode Atlanta Data Center Upgrades Completed](https://www.linode.com/blog/linode/linode-atlanta-data-center-upgrades-completed/) blog post). As part of this upgrade, the [IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing) feature was impacted and no longer functions as it did before. Customers that currently use this feature can follow this guide to manually enable IP Sharing (also called *Elastic IPs*) through the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool. This allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the elastic IP will seamlessly failover to the secondary Compute Instance.
+The Atlanta data center was upgraded in April of 2021 to improve performance and expand product availability (see the [Linode Atlanta Data Center Upgrades Completed](https://www.linode.com/blog/linode/linode-atlanta-data-center-upgrades-completed/) blog post). As part of this upgrade, the [IP Sharing](/docs/guides/remote-access/#configuring-ip-sharing) feature was impacted and no longer functions as it did before. Customers that currently use this feature can follow this guide to manually enable IP Sharing (also called *Elastic IPs*) through the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool. This allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the elastic IP will seamlessly failover to the secondary Compute Instance.
 
 {{< note >}}
 This guide discusses a temporary workaround specific to the Atlanta data center. Future planned network upgrades may impact this feature again and may require additional configuration.
@@ -29,9 +29,9 @@ This guide discusses a temporary workaround specific to the Atlanta data center.
 
 ## Before You Begin
 
-1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s).
+1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s). To request an additional IPv4 address, [open a new support ticket from the Cloud Manager](/docs/guides/support/#contacting-linode-support).
 
-1. Ensure you have set the [hostname](/docs/getting-started/#set-the-hostname) and have updated the [hosts file](/docs/getting-started/#update-your-system-s-hosts-file) on your Compute Instance.
+1. Ensure you have set the [hostname](/docs/getting-started/#set-the-hostname) and have updated the [hosts file](/docs/getting-started/#update-your-system-s-hosts-file) on your Compute Instances.
 
 1. Ensure Python 3 is installed on your system. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
@@ -95,7 +95,7 @@ This section provides instructions for installing FRR on Debian, Ubuntu, and Cen
 
 Enable the Border Gateway Protocol (BGP) daemon on your system.
 
-1. Using a text editor of your choice, enable the `bgpd` daemon, by updating its value to `yes` in the FRR daemons configuration file:
+1. Using a text editor of your choice, enable the `bgpd` daemon by updating its value to `yes` in `/etc/frr/daemons` (the FRR daemons configuration file):
 
       {{< file "/etc/frr/daemons" >}}
 # The watchfrr and zebra daemons are always started.
@@ -118,7 +118,7 @@ With FRR installed, you can now apply the required configurations to enable Elas
   - `primary`: All requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
   - `secondary`: If the `primary` Linode fails, all requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
 
-1.  The template below includes the FRR configuration. Ensure you replace any instances of `[ELASTIC_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DEFAULT_GW_IPV4]` as outlined above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
+1.  The template below includes the FRR configuration. Ensure you replace any instances of `[ELASTIC_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DEFAULT_GW_IPV4]` as outlined above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the [VTY interactive shell](https://docs.frrouting.org/en/latest/vtysh.html).
 
       {{< file "~/elastic.conf">}}
 hostname [HOSTNAME]
@@ -149,7 +149,7 @@ set large-community 63949:1:2
 
         conf t
 
-1.  Copy the contents of your template configuration file and paste them into the VTY shell:
+1.  Copy the contents of your template configuration file and paste them into the VTY shell.
 
 1.  Tell the VTY shell that you are done entering your configurations:
 
@@ -254,10 +254,12 @@ inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
 
 ### Test Elastic IPs
 
-Depending on how you configured your Linode(s) and Elastic IP(s), testing steps may vary. In general, you can use the `ping` command to test sending packets to your configured Elastic IP(s):
+Depending on how you configured your Linode(s) and Elastic IP(s), testing steps may vary. In general, you can use the `ping` command to test sending packets to your configured Elastic IP(s) from a separate Linode, your workstation, or any other computer/server:
 
-    ping 203.0.113.0
+    ping [ELASTIC_IP]
 
-- For example, if you have two Linodes configured with the same Elastic IP:
-    - ping the Elastic IP when both Linodes are up. The packets should be received by the primary Linode.
-    - shut down the primary Linode and ping the Elastic IP. The packets should be received by the secondary Linode.
+For example, if you have two Linodes configured with the same Elastic IP:
+
+- Ping the Elastic IP when both Linodes are up. The packets should be received by the primary Linode. You can monitor ping traffic on the Linode by [inspecting icmp packets with the tcpdump command](https://danielmiessler.com/study/tcpdump/#protocol).
+
+- Shut down the primary Linode and ping the Elastic IP. The packets should be received by the secondary Linode. You can monitor ping traffic on the Linode by [inspecting icmp packets with the tcpdump command](https://danielmiessler.com/study/tcpdump/#protocol).
