@@ -1,5 +1,5 @@
 ---
-slug: installing-and-using-ripgrep
+slug: ripgrep-linux-installation
 author:
   name: Jeff Novotny
 description: 'This guide provides background information on ripgrep, including installation instructions, comparisons to other regex tools, and examples.'
