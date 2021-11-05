@@ -8,7 +8,6 @@ description: "How to take a manual snapshot backup."
 
 You can make a manual backup of your Linode Compute Instance by taking a *manual snapshot*. This can be useful to save a restore point before a major system upgrade or prior to significant changes to software or configuration within your Compute Instance.
 
-
 {{< note >}}
 The Backup service can store a single manual snapshot. Taking a new snapshot overwrites any previously saved snapshot.
 {{< /note >}}
