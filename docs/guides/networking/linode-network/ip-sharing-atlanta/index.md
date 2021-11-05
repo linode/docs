@@ -123,7 +123,7 @@ With FRR installed, you can now apply the required configurations to enable Elas
       {{< file "~/elastic.conf">}}
 hostname [HOSTNAME]
 
-router bgp 65000
+router bgp 65045
 no bgp ebgp-requires-policy
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
@@ -149,7 +149,7 @@ set large-community 63949:1:2
 
         conf t
 
-1.  Copy the contents of your template configuration file and paste them into the VTY shell:
+1.  Copy the contents of your template configuration file and paste them into the VTY shell.
 
 1.  Tell the VTY shell that you are done entering your configurations:
 
@@ -169,7 +169,7 @@ set large-community 63949:1:2
 
 1.  Configure the Linode's interface(s) with the Elastic IP:
 
-    **Debian 10 & Ubuntu 18.04**
+    **Debian and Ubuntu (18.04 and 16.04)**
 
     Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
 
@@ -205,7 +205,7 @@ Address=[ELASTIC_IP]/32
 Address=[ELASTIC_IP]_2/32
 {{</ file >}}
 
-    **CentOS 8**
+    **CentOS/RHEL**
 
     Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry. Replace `[ELASTIC_IP]` with the Elastic IPv4 address:
 
@@ -226,9 +226,10 @@ PREFIX2="32"
 
 1.  Apply the `eth0` network interface configuration:
 
-    **Debian 10, Ubuntu 18.04 & CentOS 8**
+    **Debian, Ubuntu (18.04 and 16.04), and CentOS/RHEL**
 
         sudo ifdown eth0 && sudo ifup eth0
+
     **Ubuntu 20.04**
 
         systemctl restart systemd-networkd
