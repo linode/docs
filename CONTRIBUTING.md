@@ -37,7 +37,7 @@ You can ensure that go has been installed by checking the version currently in u
 
 ### Install Node and NPM
 
-To support the JavaScript runtime environment used by the Linode documentation site, Node v13.14.0 must be installed on your system.
+To support the JavaScript runtime environment used by the Linode documentation site, Node v14.18.1 must be installed on your system.
 
 #### Install Node on macOS and Linux
 
@@ -53,12 +53,12 @@ You may need to exit and create a new command line session before NVM will work:
 
 Next, use NVM to both install NVM and set it as the version of Node that you're actively using:
 
-    nvm install 13.14.0
-    nvm use 13.14.0
+    nvm install 14.18.1
+    nvm use 14.18.1
 
 #### Install Node on Windows
 
-To Install Node 13.14.0 on Windows, navigate to the [downloads page for this release](https://nodejs.org/download/release/v13.14.0/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
+To Install Node 14.18.1 on Windows, navigate to the [downloads page for this release](https://nodejs.org/download/release/v14.18.1/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
 
     node -v
     npm -v

@@ -491,6 +491,9 @@ export function newSearchExplorerController(searchConfig) {
 			};
 
 			n.onClick = function(e) {
+				if (e.metaKey) {
+					return;
+				}
 				if (!this.isLeaf() && !this.isDisabled() && !this.open) {
 					this.toggleOpen();
 				}

@@ -2,6 +2,7 @@ abc
 abell
 absecon
 abspath
+ack
 aconf
 accessor
 accessors
@@ -15,6 +16,7 @@ adminpack
 adnanh
 adodb
 aes
+ag
 ahci0
 Aho
 ahvz
@@ -42,6 +44,7 @@ ap
 apache2
 api
 apiserver
+apk
 apparmor
 appimage
 appletalk
@@ -79,6 +82,7 @@ autologin
 autologout
 automagically
 automattic
+automations
 automount
 autorelabel
 autorun
@@ -124,6 +128,7 @@ benchmarked
 berkshelf
 bernd
 berners
+bgpd
 bialek
 bing
 binlog
@@ -559,6 +564,7 @@ fsck
 fstab
 fullchain
 func
+fzf
 galera
 gamemode
 gamepad
@@ -831,6 +837,7 @@ journaled
 journaling
 jpg
 jpetazzo
+jq
 jre
 js
 json
@@ -1498,6 +1505,7 @@ reusability
 reutilize
 richlanguage
 rimap
+ripgrep
 ritchie
 rkhunter
 rkt
@@ -1507,6 +1515,7 @@ ro
 rochko
 rockyou
 rocommunity
+rofi
 rollout
 rooknfs
 rossum
@@ -1753,6 +1762,7 @@ taskserver
 taskwarrior
 tbz
 tcp
+tcpdump
 tcpwrappers
 teamspeak
 teardown

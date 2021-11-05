@@ -38,7 +38,7 @@
               </svg>
             </div>
             <template x-if="!node.isPage()">
-              <a @click="node.onClick($event)" x-bind:class="{
+              <a :href="node.href" @click="node.onClick($event)" x-bind:class="{
                 'text-brand': node.level === 1 && node.open,
                 'text-titlecolor': !node.isDisabled() && node.level === 1 && !node.open,
                 'pl-4': node.level === 1,
