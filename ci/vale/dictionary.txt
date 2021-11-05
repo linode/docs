@@ -128,6 +128,7 @@ benchmarked
 berkshelf
 bernd
 berners
+bgpd
 bialek
 bing
 binlog
@@ -1761,6 +1762,7 @@ taskserver
 taskwarrior
 tbz
 tcp
+tcpdump
 tcpwrappers
 teamspeak
 teardown
