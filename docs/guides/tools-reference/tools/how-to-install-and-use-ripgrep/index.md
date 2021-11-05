@@ -50,7 +50,7 @@ ripgrep is generally competitive with the other tools in terms of feature parity
 - **ripgrep vs ack:** ack release 3 uses Perl and is designed for developers searching repositories of source code. It has the advantage of being highly portable because it can run on any platform that supports Perl. It is relatively similar to ripgrep in the number of features it supports, but it is not as fast.
 - **ripgrep vs Silver Searcher/ag:** The Silver Searcher program is probably the best comparison for ripgrep. Both programs provide a similar set of optimization and user-friendly features. Silver Searcher is considered quite fast, although ripgrep performs better on most benchmarks, and significantly better on Unicode searches. Silver Searcher uses some different search techniques than ripgrep does, including look around.
 
-Both ripgrep and Silver Searcher are considered major improvements over the standard `grep` command. ack should be considered if maximum portability is absolutely necessary. A useful chart-based comparison of the different tools can be found at the [Beyond Grep site](https://beyondgrep.com/feature-comparison/).
+Both ripgrep and Silver Searcher are considered major improvements over the standard `grep` command. ack should be considered if maximum portability is absolutely necessary. A useful chart-based comparison of the different tools can be found at the [Beyond Grep site](https://beyondgrep.com/feature-comparison/). You can learn more about Silver Searcher in our [How to Install and Use Silver Searcher on Linux](/docs/guides/silver-searcher-on-linux/) guide.
 
 ## How to Install ripgrep
 
