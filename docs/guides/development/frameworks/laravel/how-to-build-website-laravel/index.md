@@ -82,7 +82,7 @@ This guide is written for non-root user. Commands that require elevated privileg
 
     - **openSUSE**
 
-        sudo zypper install php7 php7-bcmath php7-curl php7-json php7-mbstring php7-mysql php7-openssl php7-zip php-composer2
+        sudo zypper install php7 php7-bcmath php7-curl php7-fileinfo php7-json php7-mbstring php7-mysql php7-openssl php7-zip php-composer
 
 1. Change into the directory where you intend to keep your Laravel project's directory. In this example, you use the current user's home directory.
 
