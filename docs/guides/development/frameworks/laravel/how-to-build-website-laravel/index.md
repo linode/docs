@@ -42,6 +42,10 @@ This guide walks you through the setup process for Laravel, then shows you how t
 
             sudo yum update
 
+    - **openSUSE**
+
+            sudo zuppder update
+
 {{< note >}}
 This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -75,6 +79,10 @@ This guide is written for non-root user. Commands that require elevated privileg
         - Finally, install the required PHP packages.
 
               sudo dnf install php php-bcmath php-common php-json php-mbstring php-mysql php-xml php-zip curl openssl
+
+    - **openSUSE**
+
+        sudo zypper install php7 php7-bcmath php7-curl php7-json php7-mbstring php7-mysql php7-openssl php7-zip php-composer2
 
 1. Change into the directory where you intend to keep your Laravel project's directory. In this example, you use the current user's home directory.
 
