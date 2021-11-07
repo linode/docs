@@ -254,15 +254,19 @@ While the Artisan server works well for development, it is recommended that you 
 
 These steps assume your application has the same location and name as given in the previous sections.
 
-1. Install NGINX.
+1. Install NGINX and php-fpm.
 
     - On Debian and Ubuntu, use:
 
-            sudo apt install nginx
+            sudo apt install nginx php7.4-fpm
 
     - On CentOS, use:
 
-            sudo yum install nginx
+            sudo yum install nginx php-fpm
+
+    - On openSUSE, use:
+
+            sudo zypper install nginx php-fpm
 
 1. Copy your Laravel project directory to `/var/www`.
 
