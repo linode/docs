@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-01
 modified_by:
   name: Linode
-title: "Deploying LiteSpeed through the Linode Marketplace"
+title: "Deploying LiteSpeed cPanel through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293
@@ -18,7 +18,7 @@ external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
 ---
 
-The LiteSpeed cPanel app automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin.
+The LiteSpeed cPanel App automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin.
 
 LiteSpeed Web Server Features:
  - HTTP/2, QUIC, HTTP/3
@@ -43,7 +43,7 @@ Auto configuration:
   - Disable Apache mod_ruid2
   - Apache port offset 0
 
-## Deploying the LiteSpeed Marketplace App
+## Deploying the LiteSpeed cPanel Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -58,7 +58,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started after Deployment
 
-### Accessing the LiteSpeed App
+### Accessing the LiteSpeed cPanel App
 
 1. Once your cPanel app has finished its installation, open a browser and navigate to `http://192.0.2.0:2087/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).
 
@@ -94,11 +94,8 @@ See our [How do I set up DNS on cPanel?](https://www.linode.com/community/questi
 
 Now that you’ve accessed your LiteSpeed instance, checkout [the official LiteSpeed documentation](https://www.litespeedtech.com/support/wiki/doku.php/litespeed_wiki) to learn how to further utilize your LiteSpeed instance.
 
-  {{< note >}}
+{{< note >}}
 Your LiteSpeed cPanel App installation will automatically receive a free 15-day trial license on both [LiteSpeed](https://docs.litespeedtech.com/licenses/trial/) and [cPanel](https://cpanel.net/products/trial/). You must purchase a new LiteSpeed and cPanel/WHM license before the end of this trial period. At the end of your trial period your license will expire.
-  {{</ note >}}
+{{</ note >}}
 
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}
