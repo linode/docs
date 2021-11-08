@@ -100,7 +100,7 @@ let g:ackprg = 'ag --vimgrep'
 
 You can then use the Silver Searcher in Vim via the `:Ack` command. Simply provide your search options, pattern, and directory like you would when using the `ag` command from the command line.
 
-For instance, the first example command from the [How to Use The Silver Searcher](/docs/guides/installing-and-using-silver-searcher-on-linux/#how-to-use-the-silver-searcher) section below translates to the following in Vim:
+For instance, the first example command from the [How to Use The Silver Searcher](#how-to-use-the-silver-searcher) section below translates to the following in Vim:
 
     :Ack restful ~/express
 
