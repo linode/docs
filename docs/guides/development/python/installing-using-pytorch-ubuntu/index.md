@@ -9,7 +9,7 @@ published: 2021-11-05
 modified_by:
   name: Linode
 title: "Installing PyTorch on Ubuntu 20.04"
-h1_title: "How to Install PyTorchon Ubuntu 20.04"
+h1_title: "How to Install PyTorch on Ubuntu 20.04"
 enable_h1: true
 contributor:
   name: Tom Henderson

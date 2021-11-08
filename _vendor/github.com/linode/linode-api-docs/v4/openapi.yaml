@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.108.0
+  version: 4.108.1
 
   title: Linode API
   description: |
@@ -7471,6 +7471,16 @@ paths:
                   - count
                   items:
                     $ref: '#/components/schemas/LKENodePoolRequestBody'
+                control_plane:
+                  type: object
+                  description: >
+                    Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Availability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+                  properties:
+                    high_availability:
+                      type: boolean
+                      description: >
+                        Defines whether High Availability is enabled for the Control Plane Components of the cluster. Defaults to `false`.
+                      example: true
       responses:
         '200':
           description: Kubernetes cluster creation has started.
@@ -7490,6 +7500,9 @@ paths:
                   "region": "us-central",
                   "k8s_version": "1.21",
                   "tags": ["ecomm", "blogs"],
+                  "control_plane": {
+                      "high_availability": true
+                    },
                   "node_pools": [
                     {
                       "type": "g6-standard-4",
@@ -7600,6 +7613,18 @@ paths:
 
 
                       The Kubernetes version of a cluster can not be downgraded.
+                control_plane:
+                    type: object
+                    description: >
+                      Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components.
+
+                      Enabling High Availability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+                    properties:
+                      high_availability:
+                        type: boolean
+                        description: >
+                          Defines whether High Availability is enabled for the Control Plane Components of the cluster. Defaults to `false`.
+                        example: true
       responses:
         '200':
           description: Returns a single Kubernetes cluster.
@@ -7637,6 +7662,9 @@ paths:
                 -X PUT -d '{
                   "label": "lkecluster54321"
                   "tags" : ["ecomm", "blog", "prod", "monitoring"]
+                  "control_plane": {
+                      "high_availability": true
+                    },
                   "k8s_version": "1.17"
                 }' \
                 https://api.linode.com/v4/lke/clusters/12345
@@ -19099,6 +19127,16 @@ components:
             The desired Kubernetes version for this Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version will be deployed.
           example: "1.21"
+        control_plane:
+          type: object
+          description: >
+            Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Avaialability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+          properties:
+            high_availability:
+              type: boolean
+              description: >
+                Defines whether High Availability is enabled for the Control Plane Components of the cluster. Defaults to `false`.
+              example: true
         tags:
           x-linode-filterable: true
           type: array
