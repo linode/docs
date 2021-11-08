@@ -1,26 +1,26 @@
 ---
-slug: wirespeed-marketplace-app
+slug: warpspeed-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "the fastest, easiest to use, and most secure VPN gateway software."
+description: "Powered by the WireGuard® protocol, Warpsped is one of the fastest, easiest to use, and most secure VPN gateway software."
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-01
 modified_by:
   name: Linode
-title: "Deploying WireSpeed VPN through the Linode Marketplace"
+title: "Deploying WarpSpeed VPN through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293
 external_resources:
-- '[WireSpeed VPN](https://bunker.services/)'
+- '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
 ---
 
-WireSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.
+WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.
 
-## Deploying the WireSpeed VPN Marketplace App
+## Deploying the WarpSpeed VPN Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -28,16 +28,16 @@ WireSpeed makes it easy for developers to access cloud infrastructure via the po
 
 ## Configuration Options
 
-### WireSpeed VPN Options
+### WarpSpeed VPN Options
 
 Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Admin Email** | This is the admin user email to login to your WireSpeed instance. |
-| **Admin Password** | This is the admin user password to login to your WireSpeed instance. |
-| **DNS name** | This is the domain you will be using for your WireSpeed instance. |
-| **Data Directory** | This is the directory that your WireSpeed data will be stored in, default will be `/wirespeed`. |
+| **Admin Email** | This is the admin user email to login to your WarpSpeed instance. |
+| **Admin Password** | This is the admin user password to login to your WarpSpeed instance. |
+| **DNS name** | This is the domain you will be using for your WarpSpeed instance. |
+| **Data Directory** | This is the directory that your WarpSpeed data will be stored in, default will be `/wirespeed`. |
 
 ### General Options
 
@@ -48,9 +48,9 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started after Deployment
 
-### Accessing the WireSpeed VPN App
+### Accessing the WarpSpeed VPN App
 
-Once your WireSpeed app has finished its installation, you will want to ensure that you have assigned the domain to your Linode. Once your domain has been assigned and has finished progating, you will be able to visit the login dashboard by entering the domain in your browser. Example: `https://vpn.example.com`
+Once your WarpSpeed app has finished its installation, you will want to ensure that you have assigned the domain to your Linode. Once your domain has been assigned and has finished progating, you will be able to visit the login dashboard by entering the domain in your browser. Example: `https://vpn.example.com`
 
        {{< note >}}
     For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) for general information about how DNS works.
@@ -58,6 +58,6 @@ Once your WireSpeed app has finished its installation, you will want to ensure t
 
 From here, you will be able to login with the Admin Email & Admin Password you entered during the initial deployment of the Linode.
 
-Now that you’ve accessed your WireSpeed VPN instance, checkout [the official WireSpeed VPN documentation](https://bunker.services/products/warpspeed/install-linode) to learn how to further configure your WireSpeed VPN instance.
+Now that you’ve accessed your WarpSpeed VPN instance, checkout [the official WarpSpeed VPN documentation](https://bunker.services/products/warpspeed/install-linode) to learn how to further configure your WarpSpeed VPN instance.
 
 {{< content "marketplace-update-note-shortguide">}}
