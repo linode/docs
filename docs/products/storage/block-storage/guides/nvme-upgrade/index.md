@@ -34,6 +34,8 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 
 Existing Block Storage Volumes will soon be eligible for a free upgrade to the newer NVMe-only Block Storage solution. If you have a Block Storage Volume attached to a Linode, you will be notified with instructions to initiate the upgrade soon after NVMe Block Storage becomes available in your data center. This page will also be updated to reflect those instructions. Unattached Volumes will automatically be upgraded at a later date.
 
+All newly created Volumes are built on NVMe within data centers where NVMe Block Storage has been deployed. If you would like to take advantage of NVMe block storage in these data centers, you can currently create a new Volume and manually transfer your existing data to it.
+
 ## Frequently Asked Questions
 
 ### What are the performance benefits of NVMe Block Storage?
@@ -51,4 +53,4 @@ We were able to provide a tremendous performance boost with NVMe Block Storage a
 
 ### When will my Volume receive an upgrade to NVMe?
 
-Soon after NVMe-backed Block Storage becomes available in your Volume's data center, you will be notified how to upgrade your existing Volumes. We do not yet have a definitive timeline.
+Soon after NVMe-backed Block Storage becomes available in your Volume's data center, you will be notified how to upgrade your existing Volumes. Currently this upgrade feature is not available.
