@@ -27,11 +27,11 @@
   {{ $mt =  "mt-2" }}
 {{ end }}
 <div class="relative">
-  <div :class="{ 'is-scroll-x' : isScrollX() }" class="code {{ $mt }} {{ $class }} flex items-start justify-between overflow-x-auto" x-data="lnh.CopyToClipBoard()">
+  <div :class="{ 'is-scroll-x' : $isScrollX() }" class="code {{ $mt }} {{ $class }} flex items-start justify-between overflow-x-auto" x-data>
     <div class="" x-ref="code">
       {{- highlight (trim $.Inner "\n" ) $style "linenos=false"  -}}
     </div>
-    <div class="absolute right-0 top-0 overflow-x-none pt-4 sm:pt-5" @click="copy($refs.code)">
+    <div class="absolute right-0 top-0 overflow-x-none pt-4 sm:pt-5" @click="$copy($refs.code)">
       {{ $copyIcon }}
     </div>
   </div>

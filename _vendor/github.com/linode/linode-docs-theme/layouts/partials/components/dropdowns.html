@@ -1,11 +1,11 @@
 {{ $dropdowns := slice }}
 {{ range .dropdowns }}
-  {{ $dropdowns =  $dropdowns | append (dict "open" (.open | default false ) "hideWhenPinned" (.hideWhenPinned | default false) )}}
+  {{ $dropdowns =  $dropdowns | append (dict "open" (.open | default false ) )}}
 {{ end }}
 
-<div class="flex justify-start space-x-2" x-data="lnc.NewDropdownsController({{ $dropdowns | jsonify }})" x-init="init()" @nav:toggle.document="receiveToggle($event.detail)" @click.away="closeAll()">
+<div class="flex justify-start space-x-2" x-data="lncDropdowns({{ $dropdowns | jsonify }})" @click.away="closeAll()">
   {{ range $i, $e := .dropdowns }}
-    <div x-show.transition.opacity="!isHidden({{ $i }})" x-cloak>
+    <div x-transition.opacity x-show="!isHidden({{ $i }})" x-cloak>
       <div class="relative inline-block text-left">
         <div>
           <span class="rounded-sm">
@@ -29,10 +29,10 @@
             </button>
           </span>
         </div>
-        <ul iv x-show.transition="isOpen({{ $i }})" class="border border-gray-300 origin-top-right absolute right-0 m-0 mt-2 py-2 z-10 rounded-sm bg-white list-none" x-cloak>
-            {{ if .contentPartial }}
-              {{ partial .contentPartial . }}
-            {{ end }}
+        <ul iv x-transition x-show="isOpen({{ $i }})" class="border border-gray-300 origin-top-right absolute right-0 m-0 mt-2 py-2 z-10 rounded-sm bg-white list-none" x-cloak>
+          {{ if .contentPartial }}
+            {{ partial .contentPartial . }}
+          {{ end }}
         </ul>
       </div>
     </div>

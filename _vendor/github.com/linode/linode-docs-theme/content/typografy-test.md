@@ -189,5 +189,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 
 ## Styles
 
+Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Nunc sollicitudin id metus vel _malesuada_. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+
+### Unordered list
+
 * This is a [**Bold Link**](https://example.com).
 * This is a [*Italic Link*](https://example.com).
+
+### Ordered list
+
+1. This is a [**Bold Link**](https://example.com).
+2. This is a [*Italic Link*](https://example.com).
+
+> This is a block quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. 

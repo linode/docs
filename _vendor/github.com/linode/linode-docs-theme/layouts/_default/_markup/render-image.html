@@ -16,15 +16,15 @@
     {{ if not $alt }}
       {{ $alt = $title }}
     {{ end }}
-    {{ $imgTag := partial "components/image-srcset.html" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x "lazy" true "alt" $alt "title" $title "class" "w-full" )}}
     {{ if gt $img.Width $width1x }}
-      {{ partial "components/image-modal.html" (dict "imgTag" $imgTag "img" $img ) }}
+      {{ $scaled := (partial "funcs/scale-image" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x ) )}}
+      {{ partial "components/image-modal.html" (dict "scaled"  $scaled "img" $img "alt" $alt "title" $title "class" "w-full" ) }}
     {{ else }}
       <figure>
-        {{ $imgTag }}
+        {{ partial "components/image-srcset.html" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x "loading" "eager" "alt" $alt "title" $title "class" "w-full" )}}
       </figure>
     {{ end }}
   {{ end }}
 {{- else -}}
-  <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" loading="lazy"/>
+  <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}"/>
 {{- end -}}

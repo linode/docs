@@ -36,8 +36,6 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 .content pre,
 .content .code {
     @apply bg-selected rounded-md overflow-x-auto mb-4;
-    letter-spacing: 1px;
-    line-height: 15px;
 }
 
 .content .is-scroll-x::-webkit-scrollbar {
@@ -146,7 +144,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content tbody tr td {
-    @apply p-4 bg-selected border-b;
+    @apply bg-selected border-b;
 }
 
 .content tbody td code {
@@ -207,5 +205,5 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 Styles for use with API documentation
 */
 .api-documentation table {
-  width: 100%;
+    width: 100%;
 }

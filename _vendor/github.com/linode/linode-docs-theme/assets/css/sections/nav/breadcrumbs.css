@@ -1,4 +1,4 @@
-.no-js .main__breadcrumbs {
+.no-js .breadcrumbs.needs-js {
     visibility: hidden;
 }
 
