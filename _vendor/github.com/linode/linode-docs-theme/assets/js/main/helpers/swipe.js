@@ -59,7 +59,7 @@ export function newSwiper(el, callback) {
 		}
 	};
 
-	el.addEventListener('touchstart', handleTouch, true);
-	el.addEventListener('touchmove', handleTouch, true);
-	el.addEventListener('touchend', handleTouch, false);
+	el.addEventListener('touchstart', handleTouch, { passive: true });
+	el.addEventListener('touchmove', handleTouch, { passive: true });
+	el.addEventListener('touchend', handleTouch, { passive: true });
 }

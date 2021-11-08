@@ -1,16 +1,8 @@
 'use strict';
 
-import { isMobile, isScreenLargerThan, sendEvent, toggleBooleanClass } from '../helpers/index';
+import { isMobile, isScreenLargerThan } from '../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[toc]') : function() {};
-
-const setOpenStatus = function(self, open) {
-	debug('setOpenStatus', open);
-	self.open = open;
-	self.$nextTick(() => {
-		sendEvent('nav:toggle', { what: 'toc', open: self.open });
-	});
-};
 
 const headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
 
@@ -29,29 +21,25 @@ export function newToCController() {
 			title: '',
 			progress: 0
 		},
-		open: false,
 		enabled: false,
 		showHeading: true,
-		initData: {},
-		init: function(initData) {
-			this.initData = initData;
+		init: function() {
 			this.createTOC();
 			if (isScreenLargerThan(1711)) {
-				this.open = true;
+				this.$store.nav.open.toc = true;
 			}
 
-			var self = this;
-			return function() {
-				self.createTOC();
-			};
+			this.$nextTick(() => {
+				this.createTOC();
+			});
 		},
 		createTOC: function() {
-			var self = this;
+			let self = this;
 			self.activeHeading.title = '';
-			var nav = this.$el.querySelector('.toc__inner');
+			let nav = this.$el.querySelector('.toc__inner');
 			nav.innerHTML = '';
-			var ol = document.createElement('ol');
-			var row = [];
+			let ol = document.createElement('ol');
+			let row = [];
 
 			headerEls().forEach((el) => {
 				// Skip hidden elements and headers without ID.
@@ -62,12 +50,12 @@ export function newToCController() {
 				let id = el.id;
 				let level = parseInt(el.nodeName.substring(1), 10);
 
-				var li = document.createElement('li');
+				let li = document.createElement('li');
 
 				li.classList.add(`level-${level}`);
 				li.classList.add('truncate');
 
-				var a = document.createElement('a');
+				let a = document.createElement('a');
 
 				a.setAttribute('href', `#${id}`);
 				a.addEventListener('click', (e) => {
@@ -114,7 +102,7 @@ export function newToCController() {
 				}
 			});
 			if (!this.enabled) {
-				toggleBooleanClass('toc', document.body, false);
+				this.$store.nav.open.toc = false;
 				return;
 			}
 
@@ -124,9 +112,10 @@ export function newToCController() {
 					if (li.querySelector('li') !== null) {
 						li.setAttribute('x-data', '{ open: false }');
 						let ol = li.querySelector('ol');
-						ol.setAttribute('x-show.transition', 'open');
+						ol.setAttribute('x-show', 'open');
+						ol.setAttribute('x-transition', '');
 						let closeEl = document.importNode(
-							this.initData.headerCloseButton.content.querySelector('button'),
+							this.$refs.headerCloseButton.content.querySelector('button'),
 							true
 						);
 						li.appendChild(closeEl);
@@ -136,37 +125,17 @@ export function newToCController() {
 			nav.appendChild(ol);
 		},
 		toggleOpen: function() {
-			setOpenStatus(this, !this.open);
+			this.$store.nav.open.toc = !this.$store.nav.open.toc;
 		},
 		close: function() {
-			if (this.open) {
-				setOpenStatus(this, false);
+			if (this.$store.nav.open.toc) {
+				this.$store.nav.open.toc = false;
 			}
 		},
 		closeIfMobile: function() {
 			if (isMobile()) {
 				this.close();
 			}
-		},
-		receiveToggle: function(detail) {
-			debug('receiveToggle', detail);
-			switch (detail.what) {
-				case 'search-input':
-					this.showHeading = !detail.open;
-					if (detail.open) {
-						setOpenStatus(this, false);
-					}
-					break;
-				case 'toc':
-					this.open = detail.open;
-					break;
-				default:
-				// Ignore
-			}
-		},
-		onTurbolinksRender: function(data) {
-			// Rebuild ToC if needed.
-			this.createTOC();
 		},
 		onHashchange: function() {
 			let id = document.location.hash.slice(1);
@@ -182,13 +151,13 @@ export function newToCController() {
 				return;
 			}
 			let scrollpos = window.scrollY;
-			var self = this;
+			let self = this;
 
 			headerEls().forEach((el) => {
 				let offset = el.offsetTop;
 
 				if (offset > scrollpos && offset < scrollpos + 200) {
-					var toc = self.$el.querySelector('.toc__inner');
+					let toc = self.$el.querySelector('.toc__inner');
 					toc.querySelectorAll('li').forEach((liEl) => {
 						let a = liEl.querySelector('a');
 						if (!a.attributes || !a.attributes.href) {
