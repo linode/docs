@@ -12,7 +12,7 @@ published: 2021-10-13
 modified_by:
   name: Linode
 title: "Using McFly to Search Bash or ZSH History with AI"
-h1_title: "Install McFly and Use McFly to Search Bash or ZSH History with AI"
+h1_title: "Install McFly and Search Bash or ZSH History with AI"
 enable_h1: true
 contributor:
   name: Jeff Novotny
