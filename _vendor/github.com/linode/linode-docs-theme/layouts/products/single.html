@@ -15,4 +15,23 @@
       </time>
     </p>
   </div>
+
+  <div class="block mt-8">
+    {{ partial "sections/content/tags.html" . }}
+  </div>
+
+  {{ if ne .Params.promo_default false }}
+    <div class="mt-8">
+      {{ partial "sections/content/promo_code.html" . }}
+    </div>
+  {{ end }}
+
+  <div class="hide-if-no-js">
+    <hr class="my-8">
+
+    {{/* Add feedback links via Delighted. */}}
+    {{ partial "components/delighted/form.html" . }}
+    <hr class="mt-8">
+  </div>
+
 {{ end }}
