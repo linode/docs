@@ -43,7 +43,7 @@ export function newSearchStore(searchConfig, Alpine) {
 		results: results,
 
 		updateLocationWithQuery(state = null) {
-			let href = window.location.pathname + window.location.hash;
+			let href = window.location.pathname;
 			if (this.query.isFiltered() || this.query.p > 0) {
 				href += '?' + queryHandler.queryToQueryString(this.query);
 			}
