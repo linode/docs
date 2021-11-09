@@ -18,7 +18,7 @@ external_resources:
 - '[Harbor](https://goharbor.io/)'
 ---
 
-Harbor is an open source, cloud-native content storage, signing, and scanning tool. Harbor enhances the open source Docker Distribution by providing features like security, identification, and management. The image transfer efficiency can be improved by having a registry closer to the build and run environment. Harbor includes comprehensive security features like user administration, access control, and activity auditing, as well as image replication between registries. 
+Harbor is an open source, cloud-native content storage, signing, and scanning tool. Harbor enhances the open source Docker Distribution by providing features like security, identification, and management. The image transfer efficiency can be improved by having a registry closer to the build and run environment. Harbor includes comprehensive security features like user administration, access control, and activity auditing, as well as image replication between registries.
 
 ## Deploying the Harbor Marketplace App
 
