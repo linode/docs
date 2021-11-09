@@ -367,4 +367,6 @@ github.com/linode/linode-website-partials v0.0.0-20210401153018-18e92e73e6cc/go.
 github.com/linode/linode-website-partials v0.0.0-20210604181106-f933b4b6b412/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20210802175028-9d88cb1b72bd/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20211020185321-5c98d80c9b8a/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
+github.com/linode/linode-website-partials v0.0.0-20211108192240-e7da4cf1e95c h1:lW90dAzfvLUJnPpjtcYHad+q0YpV76tHfTaOCc41EzA=
+github.com/linode/linode-website-partials v0.0.0-20211108192240-e7da4cf1e95c/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible/go.mod h1:Cl0Br9tUXkQvxumVNGTvyaa7dqpFC2kPMrsS0Ttc94U=

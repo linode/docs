@@ -9,4 +9,5 @@ require (
 	github.com/bep/linodedocs v0.0.0-20210212231859-10aa00d2e096
 	github.com/linode/linode-api-docs/v4 v4.108.1 // indirect
 	github.com/linode/linode-docs-theme v0.0.0-20211109155234-59077eb37b8f // indirect
+	github.com/linode/linode-website-partials v0.0.0-20211108192240-e7da4cf1e95c // indirect
 )
