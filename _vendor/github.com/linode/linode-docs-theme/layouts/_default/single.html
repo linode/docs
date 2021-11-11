@@ -27,6 +27,12 @@
     {{ partial "sections/content/deprecated" . }}
   {{ end }}
 
+  {{ if ne .Params.promo_default false }}
+  <div class="mt-8">
+    {{ partial "sections/content/promo_code.html" . }}
+  </div>
+{{ end }}
+
   <div x-ignore class="prose prose-sm md:prose-lg max-w-none mt-8">
     {{ .Content }}
     {{ partial "sections/content/more.html" . }}
@@ -51,12 +57,6 @@
     {{ $dropdowns = $dropdowns | append (dict "page" . "icon" "#icon--share"  "open" false "contentPartial" "sections/content/navbar__dropdown-share.html")}}
     {{ partial "components/dropdowns.html" (dict "page" . "dropdowns" $dropdowns) }}
   </div>
-
-  {{ if ne .Params.promo_default false }}
-    <div class="mt-8">
-      {{ partial "sections/content/promo_code.html" . }}
-    </div>
-  {{ end }}
 
   <div class="hide-if-no-js">
     <hr class="my-8">

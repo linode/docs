@@ -1,5 +1,5 @@
 <div class="flex flex-col items-start rounded-md border border-gray-500 w-full" 
-     :class="{ 'bg-white shadow-md border-basicgray': filters.data.tags.open, 'bg-backgroundcolor': !filters.data.tags.open }">
+     :class="{ 'shadow-md border-basicgray': filters.data.tags.open }">
   <div class="px-4 h-10 flex justify-between items-center content-start w-full" :class="{ 'mb-2':  filters.data.tags.open   }">
     <input x-show="filters.data.tags.open"  class="form-input pl-0 border-none w-11/12" type="search" placeholder="Search by tag name…" x-model="filters.data.tags.searchString">
     <div x-show="!filters.data.tags.open" >
