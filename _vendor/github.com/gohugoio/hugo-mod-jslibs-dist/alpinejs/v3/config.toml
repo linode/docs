@@ -1,4 +1,0 @@
-[module]
-[[module.mounts]]
-source = "packages"
-target = "assets/jslibs/alpinejs/v3"

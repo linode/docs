@@ -1,0 +1,58 @@
+{
+  "name": "alpine-turbo-drive-adapter",
+  "version": "1.1.0",
+  "description": "Bridge library to enable full support for Alpine components in pages using Turbolinks/Turbo Drive",
+  "main": "dist/alpine-turbo-drive-adapter.js",
+  "module": "dist/alpine-turbo-drive-adapter.esm.js",
+  "directories": {
+    "example": "examples"
+  },
+  "keywords": [
+    "alpinejs",
+    "turbolinks",
+    "turbo",
+    "hotwired"
+  ],
+  "scripts": {
+    "watch": "rollup -c -w",
+    "build": "rollup -c && rollup -c rollup.es.config.js",
+    "lint": "eslint src",
+    "lint-fix": "eslint src --fix",
+    "pretest": "http-server &",
+    "test": "cypress run || :",
+    "posttest": "pkill -f http-server",
+    "ci": "start-server-and-test 'http-server -c-1 --silent' 8080 'npx cypress run'"
+  },
+  "author": "simo.todaro@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "cypress": "^6.9.1",
+    "eslint": "^7.25.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "http-server": "^0.12.3",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "rollup": "^2.46.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "start-server-and-test": "^1.12.1"
+  },
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ]
+  }
+}
