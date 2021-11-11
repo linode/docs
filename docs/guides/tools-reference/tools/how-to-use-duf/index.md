@@ -1,14 +1,12 @@
 ---
-slug: installing-and-using-the-duf-command-on-linux
+slug: duf-command-on-linux-installation
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: "Learn how to use the duf utility for checking disk usage and free space on your Linux system. With duf, you get a modern and more user-friendly alternative to both du and df."
-og_description: "Learn how to use the duf utility for checking disk usage and free space on your Linux system. With duf, you get a modern and more user-friendly alternative to both du and df."
 keywords: ['duf linux','du linux','df linux', 'linux disk usage']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-14
+published: 2021-11-11
 modified_by:
   name: Nathaniel Stickman
 title: "Installing and Using the duf Command on Linux"
@@ -19,7 +17,7 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-`duf` is a command-line tool for easily reviewing your system's disk usage and free space. It combines into one place the information you might otherwise get from the `du` and `df` commands and presents that information in a clean modern interface. With this guide, learn more about `duf`, how it compares to `du` and `df`, and how to install it on your Linux system.
+Duf is a command-line tool for viewing your system's disk usage and free space. It combines into one place the information you might otherwise get from the `du` and `df` commands and presents that information in a clean and modern interface. In this guide, you learn more about duf, how it compares to the `du` and `df` commands, and how to install it on your Linux system.
 
 ## Before You Begin
 
@@ -43,24 +41,22 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What is duf?
 
-[`duf`](https://github.com/muesli/duf) gives you a single tool for checking disk usage and free space. By default, Linux systems have the `du` and `df` tools for viewing disk usage and space, respectively, from the command line. But `duf` combines those tools' information and renders it in a modern and easy-to-read command-line display.
+[duf](https://github.com/muesli/duf) gives you a single tool for checking disk usage and free space. By default, Linux systems provide the du and df tools for viewing disk usage and space, respectively, from the command line. Duf presents the same information as du and df and renders it in a modern and easy-to-read command-line display.
 
-And, where `du` and `df` give you limited control over how information is shown, `duf` gives you options for sorting, filtering, and otherwise altering the display.
+Where `du` and `df` give you limited control over how information is shown, duf gives you options for sorting, filtering, and otherwise altering the display. You can learn more about `du` and `df` in our [How to Check and Clean a Linux System's Disk Space](/docs/guides/check-and-clean-linux-disk-space/) guide.
 
-You can learn more about `du` and `df` in our [How to Check and Clean a Linux System's Disk Space](/docs/guides/check-and-clean-linux-disk-space/) guide.
-
-In the following sections, you can see some examples of how `duf` compares to `du` and `df`. Specifically, take a look at the [How to Use duf](/docs/guides/installing-and-using-the-duf-command-on-linux/#how-to-use-duf) section below to see side-by-side comparisons.
+In the following sections, you can see some examples of how duf compares to du and df. Specifically, take a look at the [How to Use duf](/docs/guides/installing-and-using-the-duf-command-on-linux/#how-to-use-duf) section below to see side-by-side comparisons.
 
 ## How to Install duf
 
-1. Visit the `duf` [releases page](https://github.com/muesli/duf/releases), find the latest release, and identify the package file appropriate for your machine. Then, copy the URL for the file you identify.
+1. Visit the duf [releases page](https://github.com/muesli/duf/releases), find the latest release, and identify the package file appropriate for your machine. Then, copy the URL for the file you identify.
 
     To do this, you need to know your system's CPU architecture, which you can get via the command below:
 
         lscpu | grep Architecture
 
-    - For `x86_64` (like in the example output below), use a package ending in `linux_amd64` from the `duf` releases page.
-    - For `i386` or `i686`, use a package ending in `linux_386` from the `duf` releases page.
+    - For `x86_64` (like in the example output below), use a package ending in `linux_amd64` from the duf releases page.
+    - For `i386` or `i686`, use a package ending in `linux_386` from the duf releases page.
     - Otherwise, you should generally be able to find a package ending in `linux_` followed by your system's listed architecture.
 
     {{< output >}}
@@ -71,11 +67,11 @@ Architecture:        x86_64
 
     So, for example, on a Debian system with an **x86_64** (AMD64) architecture, use the `duf_0.6.2_linux_amd64.deb` file (assuming **0.6.2** is the latest release).
 
-1. Download the package file using a command like the following, replacing the URL with the one you copied in the step above.
+1. Download the package file using the command below. Replace the URL with the one you copied in the step above.
 
         curl -LO https://github.com/muesli/duf/releases/download/v0.6.2/duf_0.6.2_linux_amd64.deb
 
-1. Install `duf` from the downloaded package. You can use one of the following methods, depending on your Linux distribution. Be sure to replace the example filename with the actual filename of the package file you downloaded.
+1. Install duf from the downloaded package. You can use one of the following methods, depending on your Linux distribution. Be sure to replace the example filename with the actual filename of the package file you downloaded.
 
     - On **Debian** and **Ubuntu** distributions, use the following command:
 
@@ -85,7 +81,7 @@ Architecture:        x86_64
 
             sudo rpm -i duf_0.6.2_linux_amd64.rpm
 
-1. Verify your installation by checking the installed version of `duf`.
+1. Verify your installation by checking the installed version of duf.
 
         duf --version
 
@@ -118,19 +114,19 @@ You can use a command like `sudo du / -sh` to get local drive usage alone.
 1.1G	/
 {{< /output >}}
 
-Notice that, compared to the `du` and `df` commands, `duf` makes the information much easier to read, separating information by device type clearly demarcating fields.
+Notice that, compared to the `du` and `df` commands, `duf` makes the information much easier to read, separating information by device type and clearly demarcating fields.
 
-And you can go even deeper with `duf`, listing information for pseudo, duplicate, and inaccessible devices as well.
+You can go even deeper with duf, listing information for pseudo, duplicate, and inaccessible devices as well.
 
     duf --all
 
 [![Listing all devices in duf](duf-all-devices_small.png)](duf-all-devices.png)
 
-`duf` gives an array of additional options to let you control what information you see. You can see the examples of these options presented in the following sections.
+Duf gives an array of additional options to let you control what information you see. You can see the examples of these options presented in the following sections.
 
 ### Limit Results by Path
 
-You can limit your results by passing one or more paths to `duf`, separated by spaces. For each path, `duf` includes an entry for the relevant device, and all non-matching devices are excluded from the output.
+You can limit your results by passing one or more paths to the `duf` command, separated by spaces. For each path, `duf` includes an entry for the relevant device, and all non-matching devices are excluded from the output.
 
 The example below gives `duf` three paths. Notice that the output has three entries, each corresponding to a device for one of the input paths.
 
@@ -140,7 +136,7 @@ The example below gives `duf` three paths. Notice that the output has three entr
 
 ### Sorting and Arranging
 
-`duf` allows you to define how its displayed tables should be sorted, via the `--sort` option. You can sort by `avail`, `filesystem`, `inodes`, `inodes_avail`, `inodes_usage`, `inodes_used`, `mountpoint`, `size`, `type`, `usage`, or `used`.
+Duf allows you to define how its displayed tables should be sorted, via the `--sort` option. You can sort by `avail`, `filesystem`, `inodes`, `inodes_avail`, `inodes_usage`, `inodes_used`, `mountpoint`, `size`, `type`, `usage`, or `used`.
 
 Below is an example sorting the tables by `used`:
 
@@ -148,7 +144,7 @@ Below is an example sorting the tables by `used`:
 
 [![Sorting def by used](duf-sort-used_small.png)](duf-sort-used.png)
 
-Similarly, `duf` allows you to define what columns you want to show in each table, by way of the `--output` option. This option accepts the same set of columns used for sorting (above), and you can list multiple columns as a comma-separated list (no spaces).
+Similarly, duf allows you to define what columns you want to show in each table, by way of the `--output` option. This option accepts the same set of columns used for sorting (above), and you can list multiple columns as a comma-separated list (no spaces).
 
 Below is an example that produces tables with device size, available space, used space, and usage percentage.
 
@@ -158,9 +154,9 @@ Below is an example that produces tables with device size, available space, used
 
 ### Filtering
 
-`duf` gives you two options for filtering out devices.
+Duf gives you two options for filtering out devices.
 
-- You can filter by display table using the `--only` and `--hide` options. `duf` displays devices in one of six tables, based on the kinds of devices: `local`, `network`, `fuse`, `special`, `loops`, and `binds`.
+- You can filter by display table using the `--only` and `--hide` options. Duf displays devices in one of six tables, based on the kinds of devices: `local`, `network`, `fuse`, `special`, `loops`, and `binds`.
 
     So, to show only devices included in the `local` and `network` tables, use the following command:
 
@@ -178,7 +174,7 @@ Below is an example that produces tables with device size, available space, used
 
 ### Export to JSON
 
-`duf` additionally supports exporting your results in a JSON format. This export option allows the output to be easily used in custom applications.
+Duf also supports exporting your results in a JSON format. This export option allows the output to be easily used in custom applications.
 
     duf --json
 
@@ -205,4 +201,4 @@ Below is an example that produces tables with device size, available space, used
 
 ## Conclusion
 
-`duf` makes an easy and capable everyday replacement for `du` and `df`, with its quick and clear presentation and much wider range of features. You can learn more about `duf`, and a few more options it offers, on its official [GitHub page](https://github.com/muesli/duf).
+Duf makes an easy and capable everyday replacement for du and df, with its quick and clear presentation and much wider range of features. You can learn more about duf, and a few more options it offers, on its official [GitHub page](https://github.com/muesli/duf).
