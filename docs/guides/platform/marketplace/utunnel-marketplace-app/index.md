@@ -3,7 +3,7 @@ slug: utunnel-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "A cloud-based subscription service that allows users to create VPN servers quickly and easily."
+description: "Deploy UTunnel on a Linode Compute Instance. This provides you with a cloud-based subscription service that allows users to create VPN servers."
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

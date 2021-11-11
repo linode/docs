@@ -3,7 +3,7 @@ slug: rocketchat-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "A self-hosted open source chat application that can be used as an alternative to Slack."
+description: "Deploy Rocket.Chat on a Linode Compute Instance. This provides you with a self-hosted open source chat application (Slack alternative)."
 keywords: ['rocketchat','chat','slack','communication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -54,15 +54,15 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Rocket.Chat App
 
-To access your Rocket.Chat instance, Open a browser and navigate to the domain you created in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
+1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `li*.members.linode.com`. See the [Remote Access](/docs/guides/remote-access/) guide for information on viewing and setting the rDNS value.
 
-From there Rocket.Chat will ask you to fill out multiple forms to get your instance created and ready to use:
+1.  From there, Rocket.Chat prompts you to fill out multiple forms to get your instance created and ready to use:
 
-![Rocket.Chat Step 1](rocketchat-setup.png)
-![Rocket.Chat Step 2](rocketchat-setup2.png)
-![Rocket.Chat Step 3](rocketchat-setup3.png)
-![Rocket.Chat Step 4](rocketchat-setup4.png)
+    ![Rocket.Chat Step 1](rocketchat-setup.png)
+    ![Rocket.Chat Step 2](rocketchat-setup2.png)
+    ![Rocket.Chat Step 3](rocketchat-setup3.png)
+    ![Rocket.Chat Step 4](rocketchat-setup4.png)
 
-Now that you’ve gone through the setup and accessed your Rocket.Chat instance, checkout [the official Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides) to learn how to further utilize your Rocket.Chat instance.
+Now that you’ve gone through the setup and accessed your Rocket.Chat instance, check out [the official Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides) to learn how to further utilize your Rocket.Chat instance.
 
 {{< content "marketplace-update-note-shortguide">}}

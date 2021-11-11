@@ -3,24 +3,24 @@ slug: openlitespeed-nodejs-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "A high performance web server to manage your Node.js application."
+description: "Deploy OpenLiteSpeed Node.js on a Linode Compute Instance. This provides you with a high performance web server to manage your Node.js application."
 keywords: ['web server','nodejs','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-01
 modified_by:
   name: Linode
-title: "Deploying Node.js OpenLiteSpeed through the Linode Marketplace"
+title: "Deploying OpenLiteSpeed Node.js through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293
 external_resources:
-- '[NodeJS OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
+- '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
 ---
 
-The OpenLiteSpeed Node.js One-Click app automatically installs performance web server OpenLiteSpeed, and Node.js. This image tends to be more than 4 times faster than Node.js with Nginx! OpenLiteSpeed features easy setup for SSL and RewriteRules. OLS is flexible and also supports Python and Ruby apps, as well as CMSs like WordPress.
+The OpenLiteSpeed Node.js One-Click app automatically installs the performance web server OpenLiteSpeed and Node.js. This tends to be more than 4 times faster than Node.js with Nginx. OpenLiteSpeed features easy setup for SSL and RewriteRules. It is flexible and also supports Python and Ruby apps, as well as CMS software like WordPress.
 
-## Deploying the Node.js OpenLiteSpeed Marketplace App
+## Deploying the OpenLiteSpeed Node.js Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -35,17 +35,19 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started after Deployment
 
-### Accessing the NodeJS OpenLiteSpeed App
+### Accessing the OpenLiteSpeed Node.js App
 
-1. Once your OpenLiteSpeed NodeJS app has finished its installation, open a terminal and you will see a prompt as shown in the image below:
+1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH
+](/docs/guides/connect-to-server-over-ssh/) for assistance. You should see output similar to the following:
 
-    ![OpenLiteSpeed NodeJS setup information](setupinfo-nodejs.png)
+    ![OpenLiteSpeed Nose.js setup information](setupinfo-nodejs.png)
 
-2. You will be prompted to enter the domain you'd like to use for this instance. You will want to ensure that you have assigned the domain to your Linode. If you would like to utilize the IP address or default RDNS of the Linode, you can skip this by pressing *CTRL+C* in the terminal.
-       {{< note >}}
+1.  You are then prompted to enter the domain you'd like to use for this instance. You can optionally use a custom domain provided you've already configured the *A Records* to point to this server's IPv4 and IPv6 addresses. Otherwise, you can skip this by pressing *CTRL+C* which will use the IP address or default RDNS of the Compute Instance.
+
+    {{< note >}}
     For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) for general information about how DNS works.
-       {{</ note >}}
+    {{</ note >}}
 
-Now that you’ve accessed your Node.js OpenLiteSpeed instance, checkout [the official Node.js OpenLiteSpeed documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your Node.js OpenLiteSpeed instance.
+Now that you’ve accessed your OpenLiteSpeed Node.js instance, check out [the official OpenLiteSpeed Node.js documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your OpenLiteSpeed Node.js instance.
 
 {{< content "marketplace-update-note-shortguide">}}

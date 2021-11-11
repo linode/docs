@@ -3,7 +3,7 @@ slug: wazuh-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "An open source a security monitoring solution for threat detection, integrity monitoring, incident response and compliance."
+description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,7 +18,7 @@ external_resources:
 - '[Wazuh](https://wazuh.com/)'
 ---
 
-Wazuh provides a security solution for monitoring your infrastructure, detecting threats, intrusion attempts, system anomalies, poorly configured applications and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.
+Wazuh provides a security solution for monitoring your infrastructure and detecting threats, intrusion attempts, system anomalies, poorly configured applications, and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.
 
 ## Deploying the Wazuh Marketplace App
 
@@ -29,11 +29,12 @@ Wazuh provides a security solution for monitoring your infrastructure, detecting
 ## Configuration Options
 
 ### Wazuh Options
+
 Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Admin Email for the server** | This Email is require to generate the SSL certificates. *Required* |
+| **Admin Email for the server** | This email is require to generate the SSL certificates. *Required* |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name where you wish to host your Wazuh instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
@@ -41,7 +42,6 @@ Here are the additional options available for this Marketplace App:
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
-
 
 ### General Options
 
@@ -54,14 +54,16 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Wazuh App
 
-To access your Wazuh instance, Open a browser and navigate to the domain you created in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
+1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `li*.members.linode.com`. See the [Remote Access](/docs/guides/remote-access/) guide for information on viewing and setting the rDNS value.
 
-From there, you'll be presented with a login screen, the username will be 'admin' and the default password will be 'admin'. Once you login to your Wazuh instance, you will want to reset the admin password by click the icon on the top right of the dashboard as shown in the image below:
+1.  In the login screen that appears, enter `admin` as the username and `admin` as the password.
 
-![Wazuh Password Reset](wazuh-password.png)
+1.  Reset the admin password by click the icon on the top right of the dashboard as shown in the image below:
 
-Now that you’ve accessed your Wazuh instance, you will need to configure a [Wazuh Agent](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html) on the server you'd like to monitor with Wazuh.
+    ![Wazuh Password Reset](wazuh-password.png)
 
-For more documentation on Wazuh,checkout [the official Wazuh documentation](https://documentation.wazuh.com/current/installation-guide/index.html) to learn how to further utilize your instance.
+Now that you’ve accessed your Wazuh instance, you need to configure a [Wazuh Agent](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html) on the server you'd like to monitor with Wazuh.
+
+For more documentation on Wazuh, check out [the official Wazuh documentation](https://documentation.wazuh.com/current/installation-guide/index.html) to learn how to further utilize your instance.
 
 {{< content "marketplace-update-note-shortguide">}}

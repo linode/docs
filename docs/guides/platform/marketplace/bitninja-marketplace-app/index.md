@@ -3,7 +3,7 @@ slug: bitninja-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "A general purpose security-as-a-service server defense tool powered by a social defense system and many active defense modules."
+description: "Deploy BitNinja on a Linode Compute Instance. This provides you with a general purpose security-as-a-service server defense tool powered by a social defense system."
 keywords: ['spam','security','waf']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,7 +18,7 @@ external_resources:
 - '[BitNinja](https://bitninja.io/)'
 ---
 
-BitNinja is a general purpose security-as-a-service server defense tool powered by a social defense system and many active defense modules. Its main purpose is to protect your server with less effort and maintenance from you. BitNinja does its job silently in the dark and using powerful tools - just like a ninja :-) BitNinja fights against hackers, botnets, attackers, and malicious activities. All of the Ninja servers form a huge honey farm to collect and analyze attacks from different botnets and then use this knowledge to form an even harder shield for all the Ninja servers.
+BitNinja is a general purpose security-as-a-service server defense tool powered by a social defense system and many active defense modules. Its main purpose is to protect your server against hackers, botnets, attackers, and malicious activities, all with less effort and maintenance on your part. All BitNinja servers form a huge honey farm to collect and analyze attacks from different botnets and then use this knowledge to intelligently adapt to new threats.
 
 ## Deploying the BitNinja Marketplace App
 
@@ -47,6 +47,6 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the BitNinja App
 
-Now that you’ve deployed your BitNinja instance, checkout [the official BitNinja documentation](https://doc.bitninja.io/command_line_interface.html#usage) to learn how to further utilize your BitNinja instance.
+Now that you’ve deployed your BitNinja instance, check out [the official BitNinja documentation](https://doc.bitninja.io/command_line_interface.html#usage) to learn how to further utilize your BitNinja instance.
 
 {{< content "marketplace-update-note-shortguide">}}

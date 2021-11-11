@@ -3,7 +3,7 @@ slug: pritunl-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "An open source VPN server and management panel."
+description: "Deploy Pritunl on a Linode Compute Instance. This provides you with an open source VPN server and management panel."
 keywords: ['pritunl','vpn','security','openvpn']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,7 +18,7 @@ external_resources:
 - '[Pritunl](https://pritunl.com/)'
 ---
 
-Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
+Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface.
 
 ## Deploying the Pritunl Marketplace App
 
@@ -54,27 +54,35 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Pritunl App
 
-To access your Pritunl instance, Open a browser and navigate to the domain you created in the beginning of your deployment or the IP address of the Linode server. For example, `https://203.0.113.0 `, replacing the IP address with values for the Linode server and accept the self-signed certificate.
+1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH
+](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-{{< note >}}
-In Chrome, you can accept the self-signed certificate by clicking on Advanced and then click Proceed to <ip> (unsafe). In Firefox, click on Advanced, then Add Exception and then Confirm Security Exception. {{< /note >}}
+1.  Run the command below to obtain your setup key. This key is used in a later step.
 
-From there you will see the Pritunl Database Setup screen where you can run the command below to obtain your setup key:
+        sudo pritunl setup-key
 
-     sudo pritunl setup-key
+1.  Run the command below to generate the password:
 
-![Pritunl Database Setup](pritunl-config.png)
+        sudo pritunl default-password
 
-Once the setup key has been entered, you can run the command below to obtain the default login information:
+1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. If you did not enter a custom domain, use the IP address of the server. You may need to access the self-signed certificate before continuing.
 
-    sudo pritunl default-password
+    {{< note >}}
+    In Chrome, you can accept the self-signed certificate by clicking on Advanced and then click Proceed to <ip> (unsafe). In Firefox, click on Advanced, then Add Exception, and then Confirm Security Exception.
+    {{< /note >}}
 
-![Pritunl Username Setup](pritunl-config2.png)
+1.  The Pritunl Database Setup screen appears. Enter the setup key that was generated in a previous step.
 
-Now that you're logged in, you can change the default password and enter the domain information so Pritunl can setup the SSL certificates automatically:
+    ![Pritunl Database Setup](pritunl-config.png)
 
-![Pritunl Domain Setup](pritunl-config3.png)
+1.  The login prompt appears. Enter `pritunl` as the username and then use the password generated in a previous step.
 
-Now that you’ve accessed your dashboard, checkout [the official Pritunl documentation](https://docs.pritunl.com/docs/connecting) to learn how to add users and further utilize your Pritunl instance.
+    ![Pritunl Username Setup](pritunl-config2.png)
+
+1.  Once you're logged in, you can change the default password and enter the domain information so Pritunl can setup the SSL certificates automatically:
+
+    ![Pritunl Domain Setup](pritunl-config3.png)
+
+Now that you’ve accessed your dashboard, check out [the official Pritunl documentation](https://docs.pritunl.com/docs/connecting) to learn how to add users and further utilize your Pritunl instance.
 
 {{< content "marketplace-update-note-shortguide">}}

@@ -3,7 +3,7 @@ slug: beef-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "A penetration testing tool that focuses on web-borne attacks against clients."
+description: "Deploy BeEF on a Linode Compute Instance. This provides you with a penetration testing tool that focuses on web-borne attacks against clients."
 keywords: ['security','vulnerability','penetration testing']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,7 +18,7 @@ external_resources:
 - '[BeEF](https://beefproject.com/)'
 ---
 
-BeEF (The Browser Exploitation Framework) is a penetration testing tool that focuses on the web browser. BeEF offers an efficient and affective penetration test tool to assess the actual security posture of a target environment by using client-side attack vectors. BeEF looks beyond just the network perimeter and client system, it allows you to examine exploitability within the context of the web browser.
+BeEF (The Browser Exploitation Framework) is a penetration testing tool that focuses on the web browser. BeEF offers an efficient and affective penetration test tool to assess the actual security posture of a target environment by using client-side attack vectors. BeEF looks beyond just the network perimeter and client system. It allows you to examine exploitability within the context of the web browser.
 
 ## Deploying the BeEF Marketplace App
 
@@ -34,7 +34,7 @@ Here are the additional options available for this Marketplace App:
 | **Field** | **Description** |
 |:--------------|:------------|
 | **BeEF Password** | The BeEF Admin Password. *Required*. |
-| **Admin Email for the server** | This Email is require to generate the SSL certificates. *Required* |
+| **Admin Email for the server** | This email is require to generate the SSL certificates. *Required* |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name where you wish to host your BeEF instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
@@ -54,12 +54,17 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the BeEF App
 
-To access your BeEF instance, You can ssh into the Linode and run the following command to get the URL needed to visit the BeEF interface:
+1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH
+](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-    cat /root/beef.info
+1.  Run the following command, which outputs the URL needed to visit the BeEF interface:
 
-From there, you can grab the URL to access your BeEF instance. Once you put the URL in your browser, you'll be presented with a login screen, the username will be 'beef' and the password will be the password you entered when you created the Linode in the beginning of your deployment.
+        cat /root/beef.info
 
-Now that you’ve accessed your BeEF instance, checkout [the official BeEF documentation](https://github.com/beefproject/beef/wiki) to learn how to further utilize your BeEF instance.
+1.  Navigate to that URL in a web browser. A login screen appears.
+
+1.  Enter `beef` as the username and use the password you entered into the *BeEF Password* field when you created the Instance.
+
+Now that you’ve accessed your BeEF instance, check out [the official BeEF documentation](https://github.com/beefproject/beef/wiki) to learn how to further utilize your BeEF instance.
 
 {{< content "marketplace-update-note-shortguide">}}
