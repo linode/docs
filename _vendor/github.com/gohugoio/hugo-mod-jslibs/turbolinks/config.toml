@@ -1,0 +1,12 @@
+[module]
+[[module.mounts]]
+source = "layouts"
+target = "layouts"
+[[module.mounts]]
+source = "assets"
+target = "assets"
+[[module.imports]]
+path = "github.com/turbolinks/turbolinks-source-gem"
+[[module.imports.mounts]]
+source = "lib/assets/javascripts"
+target = "assets/jslibs/turbolinks"
