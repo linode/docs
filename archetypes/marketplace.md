@@ -22,7 +22,7 @@ external_resources:
 
 <!-- Intro paragraph describing the app and what it accomplishes. -->
 
-### Deploying the ___App_Name___ Marketplace App
+## Deploying the ___App_Name___ Marketplace App
 
 <!-- shortguide used by every Marketplace app to describe how to deploy from the Cloud Manger -->
 
@@ -50,10 +50,13 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
+
 <!-- the following headings and paragraphs outline the steps necessary
      to access and interact with the Marketplace app. -->
+
 ### Accessing the ___App_Name___ App
-You're app is accessible at your Linode's IP address...etc.
+
+Your app is accessible at your Linode's IP address...etc.
 
 <!-- the following shortcode informs the user that Linode does not provide automatic updates
      to the Marketplace app, and that the user is responsible for the security and longevity

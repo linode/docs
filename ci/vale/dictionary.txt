@@ -483,6 +483,7 @@ executables
 exfiltrating
 exim
 expirations
+exploitability
 ext2
 ext3
 ext4
