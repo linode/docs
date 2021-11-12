@@ -1,18 +1,16 @@
 ---
 slug: using-mcfly-to-search-bash-or-zsh-history
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'McFly is an alternative to ctrl-r bash search that uses a context-aware neural network to surface the most important search history.'
-og_description: 'McFly is an alternative to ctrl-r bash search that uses a context-aware neural network to surface the most important search history.'
+  name: Jeff Novotny
+description: 'McFly is an alternative to ctrl-r bash search that uses a context-aware neural network to surface your most important search history. This guide shows you how to install and use the McFly Linux tool.'
 keywords: ['mcfly command','bash search history','terminal history','shell history']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-13
+published: 2021-11-12
 modified_by:
   name: Linode
-title: "Using McFly to Search Bash or ZSH History with AI"
-h1_title: "Install McFly and Search Bash or ZSH History with AI"
+title: "Installing and Using McFly to Search Bash or ZSH History"
+h1_title: "Install and Use McFly to Search Bash or ZSH History"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -22,7 +20,7 @@ external_resources:
 - '[Homebrew](https://brew.sh/)'
 ---
 
-Many Linux users run certain commands regularly. Newcomers might resort to retyping the command or using the **up** and **down** keys to scroll through previous commands. More experienced users typically search their terminal history using the built-in `Control-r` command. The free open-source [*McFly*](https://github.com/cantino/mcfly) application is designed as an alternative to these traditional methods. McFly is a bash search history utility that uses AI techniques to display the most relevant commands. This guide provides a brief introduction to the McFly application and its methodology. It also explains how to install McFly and how to use the `mcfly` command to search through the terminal history.
+Many Linux users run certain commands regularly. Newcomers might resort to retyping the command or using the **up** and **down** keys to scroll through previous commands. More experienced users typically search their terminal history using the built-in `Control-r` command. The free and open-source [*McFly*](https://github.com/cantino/mcfly) application is designed as an alternative to these traditional methods. McFly is a bash search history utility that uses AI techniques to display the most relevant commands. This guide provides a brief introduction to the McFly application and its methodology. It also explains how to install McFly and how to use the `mcfly` command to search through the terminal history.
 
 ## An Introduction to McFly
 
@@ -41,7 +39,7 @@ Unlike `Control-r`, McFly displays its results using a full-screen display, with
 
 The easiest but least efficient method of searching the terminal command history is with the **up** arrow. This cycles through the most recent commands one by one. This is fairly efficient for running a command that was recently executed but is tedious otherwise. It is also possible to run the `history` command. This displays all the commands from the terminal's history, subject to buffer capacity.
 
-A quicker and better way of searching through the terminal history is by using `Control-r`. This allows users to specify a search term. Commands matching the search are displayed one at a time, starting with the most recent selection. In the example below, when you select `Control-r` and type `vi`, the most recent command matching the `vi` string is displayed. In this example, it is `vi submenu.json`.
+A quicker and better way of searching through the terminal history is by using `Control-r`. This allows users to specify a search term. Commands matching the search are displayed one at a time, starting with the most recent selection. In the example below, when you type **Control-r** and `vi`, the most recent command matching the `vi` string is displayed. In this example, it is `vi submenu.json`.
 
     <ctrl-r>
     vi
@@ -50,7 +48,7 @@ A quicker and better way of searching through the terminal history is by using `
 (reverse-i-search)`vi': vi submenu.json
 {{< /output >}}
 
-If you again enter `Control-r`, the second-most recent match is displayed. When the user finds the command they are looking for, they have two choices. They can hit the **return** key to re-run it, or use the **left** and **right** arrow keys to edit it before execution.
+If you again enter **Control-r**, the second-most recent match is displayed. When the user finds the command they are looking for, they have two choices. They can hit the **return** key to re-run it, or use the **left** and **right** arrow keys to edit it before execution.
 
 This works well enough in many cases, but it often forces the user to cycle through multiple iterations before they find the command they want. There is no context or nuance to the search. `Control-r` begins with the most recent match and works back through the commands in a linear manner, displaying one match at a time. It lacks any of the functionality of McFly. It does not take into account the exit status of the commands, how often the commands were run, or the execution directory of the command. It is also much easier to inadvertently select an unwanted command because `Control-r` does not use a full-screen interface. McFly is an obvious upgrade over any type of built-in terminal history search on Linux.
 
@@ -58,7 +56,7 @@ This works well enough in many cases, but it often forces the user to cycle thro
 
 1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1. Update your system:
 
@@ -70,7 +68,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## How to Install McFly
 
-You can install McFly using the [*Homebrew*](https://brew.sh/) package manager or via the McFly's install script.
+You can install McFly using the [*Homebrew*](https://brew.sh/) package manager or via McFly's install script.
 
 {{< note >}}
 McFly can also be installed from GitHub or manually from the source. In this case, Rust must also be installed. See the [McFly GitHub page](https://github.com/cantino/mcfly#installing-manually-from-github) for more information.
@@ -83,39 +81,50 @@ The Homebrew package manager installs programs into their own directory and adds
 1. Download and install Homebrew using the following command. Enter the `sudo` password to install Homebrew into its own directory in the `/home` directory. To install it in your user directory, enter `Control-D`.
 
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 1. Add Homebrew to the `$PATH` variable using the following commands. In the first command, substitute your user name for `userid`.
 
         echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/userid/.profile
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 1. (**Optional**) For added functionality, install the `build-essential` package.
 
         sudo apt-get install build-essential
+
 1. Use the `brew` command to install the `gcc` package.
 
         brew install gcc
+
 1. To verify Homebrew is installed and working properly, run the `brew doctor` command.
+
     {{< note >}}
 Use the `brew help` command to see a full list of the Homebrew commands.
     {{< /note >}}
 
         brew doctor
+
     {{< output >}}
 Your system is ready to brew.
     {{< /output >}}
+
 1. Install the Homebrew "tap" for McFly.
 
         brew tap cantino/mcfly
+
 1. Install McFly.
 
         brew install mcfly
+
 1. Add one of the following lines to the shell configuration file, depending on the shell you are using.
 
     For a **Bash** shell, add the following line to `~/.bashrc`.
 
         eval "$(mcfly init bash)"
+
     For the **Zsh** shell, add the following line to `~/.zshrc`.
 
         eval "$(mcfly init zsh)"
+
 1. Source the `.bashrc` or `.zshrc` file, depending on the shell you are using.
 
     For a **Bash** shell, source the configuration file using the command below:
@@ -125,6 +134,7 @@ Your system is ready to brew.
     For a **Zsh** shell, source the configuration file using the command below:
 
         source ~/.zshrc
+
 1. McFly confirms it has imported the history. If the terminal history is very long, you might experience a one-time delay.
 
     {{< output >}}
@@ -136,17 +146,21 @@ McFly: Importing shell history for the first time. This may take a minute or two
 To download McFly using the installation script, follow the instructions below:
 
 1. Log in to the system as the `root` user to avoid problems with permissions.
+
 1. Use `curl` to run the install script.
 
         curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
+
 1. Add one of the following lines to the shell configuration file, depending on the shell you are using.
 
     For a **Bash** shell, add the following line to `~/.bashrc`.
 
         eval "$(mcfly init bash)"
+
     For the **Zsh** shell, add the following line to the `.zshrc` file.
 
         eval "$(mcfly init zsh)"
+
 1. Source the `.bashrc` or `.zshrc` file, depending on the shell you are using.
 
     For a **Bash** shell, source the configuration file using the command below:
@@ -156,6 +170,7 @@ To download McFly using the installation script, follow the instructions below:
     For a **Zsh** shell, source the configuration file using the command below:
 
         source ~/.zshrc
+
 1. McFly confirms it has imported the shell history. If you have a lengthy shell history, you might experience a moderately-long one-time delay.
 
     {{< output >}}
@@ -220,6 +235,7 @@ To use the `mcfly` command to search the terminal history, follow the steps belo
 1. To run the search, use the command `mcfly search <search_term>`. The following command searches the McFly database for the term `apt`.
 
         mcfly search apt
+
 1. McFly enters full-screen mode. It displays the possible actions at the top along with a list of all items sorted from most to least relevant. Scroll through the items using the **up** and **down** keys.
 
     [![Example McFly interface displaying file list](mcfly-search-start_small.png)](mcfly-search-start.png)
@@ -241,9 +257,11 @@ To use the `mcfly` command to search the terminal history, follow the steps belo
 1. To launch McFly without any search terms, use the `mcfly search` command without any parameters. You can also use `mcfly search ""`.
 
         mcfly search
+
     [![McFly interface with no starting search term](mcfly-empty-search_small.png)](mcfly-empty-search.png)
 
     You can select an item from the list or start typing to begin a search. McFly updates the results as you type. The display below illustrates how the list is updated after you enter `vi`.
+
     [![Adding text to refine a McFly search](mcfly-empty-search-updated_small.png)](mcfly-empty-search-updated.png)
 
 ### A Demonstration of McFly's AI Capabilities
@@ -270,7 +288,7 @@ When the user returns to their home directory and runs the same command, `vi cou
 
 [![McFly list changes in main directory](mcfly-context-two_small.png)](mcfly-context-two.png)
 
-## Summarizing McFly
+## Conclusion
 
 McFly is a lightweight open-source utility offering an improved terminal history search compared to typical methods, such as `Control-r`. It can be installed using a package manager or by using McFly's own install script. McFly uses a neural network to keep track of when and where each command is run along with its exit status. It prioritizes commands that have been run frequently or have been run from the current working directory before and penalize failed commands.
 
