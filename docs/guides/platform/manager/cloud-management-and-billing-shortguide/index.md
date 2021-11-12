@@ -27,7 +27,7 @@ You can manage the following account and billing settings in the Account section
 - [Make a payment with a credit card, PayPal, or Google Pay](/docs/guides/manage-billing-in-cloud-manager/#making-a-payment)
 - [View recent invoices and payments](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-history)
 - [Add new users and manage exiting user's profiles and permissions](/docs/guides/accounts-and-passwords/#users-and-permissions)
-- [Enable Backup auto enrollment for all new Linodes on your account](/docs/guides/linode-backup-service/#auto-enroll-new-linodes-in-the-backup-service)
+- [Enable Backup auto enrollment for all new Linodes on your account](/docs/products/storage/backups/guides/enable/#auto-enroll-new-compute-instances-in-the-backup-service)
 - [Enable Network Helper](/docs/guides/network-helper/#global)
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/)
 - [Add the Linode Managed service to your account](/docs/guides/linode-managed/#getting-started)
