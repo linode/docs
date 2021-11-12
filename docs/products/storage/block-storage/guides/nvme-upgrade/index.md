@@ -38,7 +38,7 @@ Existing Volumes can be upgraded to NVMe soon after NVMe Block Storage has been 
 
 1.  Log in to the Cloud Manager and navigate to the [Volumes](https://cloud.linode.com/volumes) page.
 
-1.  Click the **Upgrade to NVMe** button next to the Volume you wish to upgrade. If this button does not appear next to your desired *non-NVMe* Volume, the Volume is not yet elible for an upgrade.
+1.  Click the **Upgrade to NVMe** button next to the Volume you wish to upgrade. If this button does not appear next to your desired *non-NVMe* Volume, the Volume is not yet eligible for an upgrade.
 
     ![A list of Volumes with a red box highlighting the NVMe upgrade button](nvme-volume-upgrade.png)
 
