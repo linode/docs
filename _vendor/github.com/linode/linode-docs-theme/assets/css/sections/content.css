@@ -91,6 +91,10 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
     overflow: inherit;
 }
 
+.content .file tbody tr:first-child {
+    border: none;
+}
+
 .content .file dd {
     @apply mt-0;
 }

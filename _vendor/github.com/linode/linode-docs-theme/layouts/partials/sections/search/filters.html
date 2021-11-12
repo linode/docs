@@ -39,7 +39,7 @@
       <div class="small:mt-8 block--lg container max-w-screen-md" x-show="filters.open" x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700"
         x-transition:enter-start="opacity-0 transform -translate-y-8" x-transition:enter-end="opacity-100 transform translate-y-0">
         <template x-for="filter in filters.data.filtersarr()" :key="filter.name">
-          <div class="mb-8" x-show="!filter.hidden" :data-testid="'search-filter-' + filter.name">
+          <div class="mb-8" :data-testid="'search-filter-' + filter.name">
             <h4 x-text="filter.title" class="uppercase font-semibold text-xs pb-4"></h4>
             <div>
               <div x-bind:class="{ 'bg-brand':  filter.allChecked }" class="inline-block mr-1 mb-2 rounded bg-gray-300 px-2 pb-2 pt-1">
@@ -63,7 +63,7 @@
           </div>
         </template>
         <template x-if="filters.data.filters.get('tags')">
-          <div class="mb-8">
+          <div class="mb-8" data-testid="search-filter-tags">
             <h4 class="uppercase font-semibold text-xs pb-4" x-html="filters.data.filters.get('tags').title"></h4>
             {{ partial "sections/search/filters__tags.html" . }}
           </div>
