@@ -27,4 +27,4 @@ These introductory guides help get you up and running with Linode's Backup Servi
 
 - [Troubleshooting Backups](/docs/products/storage/backups/guides/troubleshooting/): Get solutions for issues you may encounter when using our Backup service.
 
-- [Download a Local Copy of your Linode Backup](/docs/security/data-portability/download-backups-locally/)
+- [Download a Local Copy of your Linode Backup](/docs/guides/download-backups-locally/)
