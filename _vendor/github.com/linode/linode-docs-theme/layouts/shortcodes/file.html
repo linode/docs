@@ -3,16 +3,17 @@
 See https://github.com/yuin/goldmark/issues/125 for more context.
 
 */}}
+{{ $title := (.Get 0) }}
 {{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon"><svg class="fill-current text-brand mr-3" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
-<dl class="file font-mono text-xs pull-out" x-data>
- <dt class="relative px-8 py-3 bg-titlecolor  sm:rounded-t-md text-white">
-  {{ with (.Get 0) }}
+<dl class="relative file font-mono text-xs pull-out" x-data>
+    <div class="absolute right-0 top-0 pt-3 pr-2" @click="$copy($refs.code)">
+        {{ $copyIcon }}
+    </div>
+ {{ with $title }}
+ <dt class="px-8 py-3 bg-titlecolor  sm:rounded-t-md text-white">
    File: {{ . }}
-  {{ end}}
-  <div class="absolute right-0 top-0 pt-3 pr-2" @click="$copy($refs.code)">
-   {{ $copyIcon }}
-  </div>
  </dt>
+ {{ end}}
  <dd class="overflow-x-auto" :class="{ 'is-scroll-x' : $isScrollX($refs.container) }" x-ref="container">
   {{ $style := .Get 1 | default "bash" }}
   <div x-ref="code">

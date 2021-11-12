@@ -428,6 +428,7 @@ drwxr
 dshield
 dsn
 du
+duf
 ducati
 dust2
 dvcs
@@ -482,6 +483,7 @@ executables
 exfiltrating
 exim
 expirations
+exploitability
 ext2
 ext3
 ext4
