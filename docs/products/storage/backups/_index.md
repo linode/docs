@@ -30,7 +30,7 @@ Backups are available across [all regions](https://www.linode.com/global-infrast
 
 The Backup service is available as a paid add-on for Compute Instances. Pricing starts at $2/month for a 1 GB Shared CPU Compute Instance. Review the [Pricing page](https://www.linode.com/pricing/#row--storage) for additional rates based on other Compute Instance plans.
 
-On all plans, the Backups service can store up to four backups, three of which are automatically generated on the date and time range you specify:
+On all plans, the Backup service can store up to four backups, three of which are automatically generated on the date and time range you specify:
 
 - **Daily** *(Less than 24 hours old)*
 - **Weekly** *(Less than 7 days old)*
@@ -41,14 +41,14 @@ The Backup service does not keep automated backups older than 14 days, though th
 
 ## Additional Technical Specifications
 
-- Compatible with all Linode Compute Instances, provided their disk contain unencrypted ext3 or ext4 file systems
+- Compatible with all Linode Compute Instances, provided their disks contain unencrypted ext3 or ext4 file systems
 - File-based backup solution, meaning it operates at the file level and not the block level
 - Backups are stored on separate dedicated hardware within the same data center
 - Can be managed through the [Cloud Manager](https://cloud.linode.com/), the [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Part of a Multi-Tiered Backup Strategy
 
-Linode's Backup service is one part of a well rounded backup strategy. On-site backups provide a quick and convenient recovery option. While the backups are stored on different hardware, they are stored within the same data center as the Compute Instance. It's also recommended to regularly backup your data off-site, such as on a local machine or using a third-party cloud-based service.
+Linode's Backup service is one part of a well rounded backup strategy. On-site backups provide a quick and convenient recovery option. While the backups are stored on different hardware, that hardware is located within the same data center as the Compute Instance. It's also recommended to regularly backup your data off-site, such as on a local machine or using a third-party cloud-based service.
 
 ## Limits and Considerations
 

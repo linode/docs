@@ -11,8 +11,6 @@ These introductory guides help get you up and running with Linode's Backup Servi
 
 - [Enable the Backup Service](/docs/products/storage/backups/guides/enable/): Use the Cloud Manager to enable the Backup Service.
 
-- [Manage Backups](/docs/products/storage/backups/guides/manage/): Use the Cloud Manager to manage your backups.
-
 - [Schedule Backups](/docs/products/storage/backups/guides/schedule/): Configure when automatic backups are initiated.
 
 - [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/): You can make manual backups, or snapshots of your Linode.
@@ -23,7 +21,7 @@ These introductory guides help get you up and running with Linode's Backup Servi
 
 - [Boot from a Backup](/docs/products/storage/backups/guides/boot-from-a-backup/): After restoring from a backup, boot into the backup restoration disk/configuration.
 
-- [Cancel the Backups Service](/docs/products/storage/backups/guides/cancel/): Cancel the Backups Service through the Cloud Manager.
+- [Cancel the Backup Service](/docs/products/storage/backups/guides/cancel/): Cancel the Backups Service through the Cloud Manager.
 
 ## Going Further
 
