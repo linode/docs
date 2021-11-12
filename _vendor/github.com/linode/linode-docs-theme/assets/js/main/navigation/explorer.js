@@ -433,6 +433,7 @@ export function newSearchExplorerController(searchConfig) {
 				parent: opts.parent,
 				level: opts.level, // Starting at 1
 				ordinal: ordinal,
+				firstPublishedTime: opts.firstPublishedTime ? opts.firstPublishedTime : 0,
 				name: opts.name,
 				title: title,
 				key: opts.key,
@@ -583,6 +584,7 @@ export function newSearchExplorerController(searchConfig) {
 							href: href,
 							active: active,
 							ordinal: item.ordinal,
+							firstPublishedTime: item.firstPublishedTime,
 							name: item.linkTitle,
 							level: n.level + 1,
 							kind: 'page',

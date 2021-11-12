@@ -18,15 +18,15 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		}
 	};
 
-	let filters = new Map();
-
 	// The UI state.
 	ctrl.filters.data = {
 		// Maps a facet name to a filter. The filter maps to the owning section.
-		filters: filters,
+		filters: new Map(),
 
 		filtersarr: function() {
-			return Array.from(this.filters).map(([ name, value ]) => value);
+			return Array.from(this.filters).map(([ name, value ]) => value).filter((value) => {
+				return !value.hidden;
+			});
 		},
 
 		countActive: function() {
@@ -43,11 +43,9 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		tags: {
 			open: false,
 			searchString: '', // to filter the tags by.
-			getFilter: function() {
-				return filters.get('tags');
-			},
+			filter: [],
 			filterBySearchString: function() {
-				let tags = this.getFilter();
+				let tags = this.filter;
 				if (!tags) {
 					return [];
 				}
@@ -98,6 +96,20 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 				debug('main result');
 				this.updateData(value);
 				this.populateFilters();
+			});
+
+			this.$watch('$store.nav.searchResults', (value) => {
+				if (value.open || !value.userChange) {
+					return;
+				}
+
+				// User has closed the search input, clear all filters.
+				this.filters.data.filters.forEach((filter, key) => {
+					filter.allChecked = true;
+					filter.checkboxes.forEach((e) => {
+						e.checked = false;
+					});
+				});
 			});
 		});
 	};
@@ -205,6 +217,8 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 			}
 			filter.wasAllChecked = filter.allChecked;
 		});
+
+		this.filters.data.tags.filter = this.filters.data.filters.get('tags');
 	};
 
 	// apply applies the current UI filters. This is invoked on any change.
