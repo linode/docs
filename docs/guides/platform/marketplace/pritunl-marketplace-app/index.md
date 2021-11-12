@@ -7,7 +7,7 @@ description: "Deploy Pritunl on a Linode Compute Instance. This provides you wit
 keywords: ['pritunl','vpn','security','openvpn']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-01
+published: 2021-11-12
 modified_by:
   name: Linode
 title: "Deploying Pritunl through the Linode Marketplace"
@@ -16,6 +16,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Pritunl](https://pritunl.com/)'
+noindex: true
+_build:
+  list: false
 ---
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface.

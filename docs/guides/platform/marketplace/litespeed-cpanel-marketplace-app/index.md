@@ -8,7 +8,7 @@ description: "Deploy LiteSpeed cPanel on a Linode Compute Instance. This provide
 keywords: ['web server','cpanel','litespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-01
+published: 2021-11-12
 modified_by:
   name: Linode
 title: "Deploying LiteSpeed cPanel through the Linode Marketplace"
@@ -17,6 +17,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
+noindex: true
+_build:
+  list: false
 ---
 
 The LiteSpeed cPanel App automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin.

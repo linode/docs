@@ -7,7 +7,7 @@ description: "Deploy OpenLiteSpeed Rails on a Linode Compute Instance. This prov
 keywords: ['web server','Rails','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-01
+published: 2021-11-12
 modified_by:
   name: Linode
 title: "Deploying OpenLiteSpeed Rails through the Linode Marketplace"
@@ -16,6 +16,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[OpenLiteSpeed Rails](https://docs.litespeedtech.com/cloud/images/rails/)'
+noindex: true
+_build:
+  list: false
 ---
 
 The OpenLiteSpeed Rails app automatically installs the performance web server OpenLiteSpeed, Ruby, and Rails. OpenLiteSpeed features easy setup for SSL and RewriteRules. It is flexible and also supports Python and Node.js apps, as well as CMS software like WordPress.

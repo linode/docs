@@ -7,7 +7,7 @@ description: "Deploy BitNinja on a Linode Compute Instance. This provides you wi
 keywords: ['spam','security','waf']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-01
+published: 2021-11-12
 modified_by:
   name: Linode
 title: "Deploying BitNinja through the Linode Marketplace"
@@ -16,6 +16,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[BitNinja](https://bitninja.io/)'
+noindex: true
+_build:
+  list: false
 ---
 
 BitNinja is a general purpose security-as-a-service server defense tool powered by a social defense system and many active defense modules. Its main purpose is to protect your server against hackers, botnets, attackers, and malicious activities, all with less effort and maintenance on your part. All BitNinja servers form a huge honey farm to collect and analyze attacks from different botnets and then use this knowledge to intelligently adapt to new threats.

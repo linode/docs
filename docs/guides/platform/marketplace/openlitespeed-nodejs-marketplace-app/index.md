@@ -7,7 +7,7 @@ description: "Deploy OpenLiteSpeed Node.js on a Linode Compute Instance. This pr
 keywords: ['web server','nodejs','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-01
+published: 2021-11-12
 modified_by:
   name: Linode
 title: "Deploying OpenLiteSpeed Node.js through the Linode Marketplace"
@@ -16,6 +16,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
+noindex: true
+_build:
+  list: false
 ---
 
 The OpenLiteSpeed Node.js One-Click app automatically installs the performance web server OpenLiteSpeed and Node.js. This tends to be more than 4 times faster than Node.js with Nginx. OpenLiteSpeed features easy setup for SSL and RewriteRules. It is flexible and also supports Python and Ruby apps, as well as CMS software like WordPress.
