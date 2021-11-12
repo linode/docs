@@ -45,7 +45,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 Where `du` and `df` give you limited control over how information is shown, duf gives you options for sorting, filtering, and otherwise altering the display. You can learn more about `du` and `df` in our [How to Check and Clean a Linux System's Disk Space](/docs/guides/check-and-clean-linux-disk-space/) guide.
 
-In the following sections, you can see some examples of how duf compares to du and df. Specifically, take a look at the [How to Use duf](/docs/guides/installing-and-using-the-duf-command-on-linux/#how-to-use-duf) section below to see side-by-side comparisons.
+In the following sections, you can see some examples of how duf compares to du and df. Specifically, take a look at the [How to Use duf](/docs/guides/duf-command-on-linux-installation/#how-to-use-duf) section below to see side-by-side comparisons.
 
 ## How to Install duf
 
