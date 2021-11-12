@@ -1,8 +1,9 @@
 ---
-title: Get Started
+title: "Get Started"
 description: "Get Started with the Linode Backup Service. Learn how to enable the Backup Service and manage your backups."
 tab_group_main:
     weight: 20
+aliases: ['/products/storage/backups/guides/manage/']
 ---
 
 ## Enabling the Backup Service
