@@ -7,7 +7,7 @@ description: "Learn about JavaScript objects, with examples showing their parts 
 og_description: "Learn about JavaScript objects, with examples showing their parts and how to start working with them."
 keywords: ['javascript objects','javascript objects properties','javascript objects prototype']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-11
+published: 2021-11-14
 modified_by:
   name: Nathaniel Stickman
 title: "Javascript Objects Tutorial"
@@ -258,7 +258,7 @@ The output is an empty object literal, representing the `Object` type:
 
 So, for the `socrates` object above, the prototype chain would be: `socrates` -> `Person` -> `Object`.
 
-As you saw further above, objects can access properties from their prototype chains. When you try to access the `fingers` property on the `socrates` object, JavaScript starts by looking on the object itself. But then, not finding it there, JavaScript moves backward through each prototype in the chain until it finds one with the property or reaches the end of the chain.
+As you saw further above, objects can access properties from their prototype chains. When you try to access the `fingers` property on the `socrates` object, JavaScript starts by looking on the object itself. But then, not finding it there, JavaScript moves backward through each prototype in the chain. It does so until it finds a prototype with the property or reaches the end of the chain.
 
 For example, below shows how the `socrates` object only has two properties directly associated with it. These are called its *own properties*:
 
