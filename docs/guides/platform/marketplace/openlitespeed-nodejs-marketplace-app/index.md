@@ -16,9 +16,6 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
-noindex: true
-_build:
-  list: false
 ---
 
 The OpenLiteSpeed Node.js One-Click app automatically installs the performance web server OpenLiteSpeed and Node.js. This tends to be more than 4 times faster than Node.js with Nginx. OpenLiteSpeed features easy setup for SSL and RewriteRules. It is flexible and also supports Python and Ruby apps, as well as CMS software like WordPress.
