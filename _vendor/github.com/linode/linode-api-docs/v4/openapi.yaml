@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.108.1
+  version: 4.109.0
 
   title: Linode API
   description: |
@@ -9190,8 +9190,8 @@ paths:
       description: >
         Updates the label of a Managed Credential. This endpoint
         does not update the username and password for a Managed Credential.
-        To do this, use the Update Managed Credential Username and Password
-        ([POST /managed/credentials/{credentialId}/update](https://developers.linode.com/api/docs/v4#operation/updateManagedCredentialUsernamePassword))
+        To do this, use the Managed Credential Username and Password Update
+        ([POST /managed/credentials/{credentialId}/update](/docs/api/managed/#managed-credential-username-and-password-update))
         endpoint instead.
       operationId: updateManagedCredential
       x-linode-cli-action: credential-update
@@ -10185,20 +10185,126 @@ paths:
           linode-cli networking ip-update \
             97.107.143.141 \
             --rdns "test.example.org"
-  /networking/ipv4/assign:
+  /networking/ips/assign:
     x-linode-cli-command: networking
     post:
       x-linode-grant: read_write
       tags:
       - Networking
       summary: Linodes Assign IPs
+      description: |
+        Assign multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in one Region. This allows
+        swapping, shuffling, or otherwise reorganizing IPs to your Linodes.
+
+        The following restrictions apply:
+        * All Linodes involved must have at least one public IPv4 address after assignment.
+        * Linodes may have no more than one assigned private IPv4 address.
+        * Linodes may have no more than one assigned IPv6 range.
+        * [Open a Support Ticket](/docs/api/support/#support-ticket-open) to request additional IPv4 addresses or IPv6 ranges.
+      operationId: assignIPs
+      x-linode-cli-action: ip-assign
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_write
+        - linodes:read_write
+      requestBody:
+        description: >
+          Information about what IPv4 address or IPv6 range to assign, and to which Linode.
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - region
+              - assignments
+              properties:
+                region:
+                  type: string
+                  description: >
+                    The ID of the Region in which these assignments are to take
+                    place. All IPs and Linodes must exist in this Region.
+                  example: us-east
+                assignments:
+                  type: array
+                  description: >
+                    The list of assignments to make. You must have read_write
+                    access to all IPs being assigned and all Linodes being
+                    assigned to in order for the assignments to succeed.
+                  required:
+                    - address
+                    - linode_id
+                  items:
+                    type: object
+                    properties:
+                      address:
+                        type: string
+                        format: ipv4|ipv6/prefix_length
+                        description: |
+                          The IPv4 address or IPv6 range for this assignment.
+                          * Must be an IPv4 address or an IPv6 range you can access in the Region specified.
+                          * IPv6 ranges must include a prefix length of `/56` or `/64`, for example: `2001:db8:3c4d:15::/64`.
+                          * Assignment of an IPv6 range to a Linode updates the route target of the range to the assigned Linode's SLAAC address.
+                          * May be a public or private address.
+                        example: 12.34.56.78
+                      linode_id:
+                        type: integer
+                        description: >
+                          The ID of the Linode to assign this address to. The IP's
+                          previous Linode will lose this address, and must end up
+                          with at least one public address and no more than one
+                          private address once all assignments have been made.
+                        example: 123
+      responses:
+        '200':
+          description: All assignments completed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "region": "us-east",
+                "assignments": [
+                  {
+                    "address": "12.34.56.100",
+                    "linode_id": 123
+                  },
+                  {
+                    "address": "2001:db8:3c4d:15::/64",
+                    "linode_id": 234
+                  }
+                ]
+              }' \
+              https://api.linode.com/v4/networking/ipvs/assign
+      - lang: CLI
+        source: >
+          linode-cli networking ip-assign \
+            --region us-east \
+            --assignments.address 2001:db8:3c4d:15::/64 \
+            --assignments.linode_id 123
+  /networking/ipv4/assign:
+    x-linode-cli-command: networking
+    post:
+      x-linode-grant: read_write
+      tags:
+      - Networking
+      summary: Linodes Assign IPv4s
       description: >
-        Assign multiple IPs to multiple Linodes in one Region. This allows
+        Assign multiple IPv4s to multiple Linodes in one Region. This allows
         swapping, shuffling, or otherwise reorganizing IPv4 Addresses to your
         Linodes.  When the assignment is finished, all Linodes must end up with
         at least one public IPv4 and no more than one private IPv4.
-      operationId: assignIPs
-      x-linode-cli-action: ip-assign
+
+        To assign IPv6 ranges or to use the CLI, see the Linodes Assign IPs ([POST /networking/ips/assign](/docs/api/networking/#linodes-assign-ips)) command.
+      operationId: assignIPv4s
+      x-linode-cli-skip: true
       security:
       - personalAccessToken: []
       - oauth:
@@ -10227,6 +10333,9 @@ paths:
                     The list of assignments to make.  You must have read_write
                     access to all IPs being assigned and all Linodes being
                     assigned to in order for the assignments to succeed.
+                  required:
+                  - address
+                  - linode_id
                   items:
                     type: object
                     properties:
@@ -10274,14 +10383,6 @@ paths:
                 ]
               }' \
               https://api.linode.com/v4/networking/ipv4/assign
-      - lang: CLI
-        source: >
-          linode-cli networking ip-assign \
-            --region us-east \
-            --assignments \
-              '{"address": "12.34.56.100", "linode_id": 123}' \
-            --assignments \
-              '{"23.45.67.200", "linode_id": 234}'
   /networking/ipv4/share:
     x-linode-cli-command: networking
     post:
@@ -10414,11 +10515,11 @@ paths:
         Displays the IPv6 ranges on your Account.
 
 
-          * An IPv6 range is a `/64` block of IPv6 addresses routed to a single Linode in a given [Region](/docs/api/regions/#regions-list).
+          * An IPv6 range is a `/64` or `/54` block of IPv6 addresses routed to a single Linode in a given [Region](/docs/api/regions/#regions-list).
 
           * Your Linode is responsible for routing individual addresses in the range, or handling traffic for all the addresses in the range.
 
-          * You must [open a support ticket](/docs/api/support/#support-ticket-open) to request a `/64` block of IPv6 addresses to be added to your account.
+          * Access the IPv6 Range Create ([POST /networking/ipv6/ranges](/docs/api/networking/#ipv6-range-create)) endpoint to add a `/64` or `/56` block of IPv6 addresses to your account.
       operationId: getIPv6Ranges
       x-linode-cli-action: v6-ranges
       security:
@@ -10453,6 +10554,146 @@ paths:
       - lang: CLI
         source: >
           linode-cli networking v6-ranges
+    post:
+      tags:
+      - Networking
+      summary: IPv6 Range Create
+      description: |
+        Creates an IPv6 Range and assigns it based on the provided Linode or route target IPv6 SLAAC address. See the `ipv6` property when accessing the Linode View ([GET /linode/instances/{linodeId}](/docs/api/linode-instances/#linode-view)) endpoint to view a Linode's IPv6 SLAAC address.
+          * Either `linode_id` or `route_target` is required in a request.
+          * `linode_id` and `route_target` are mutually exclusive. Submitting values for both properties in a request results in an error.
+          * Upon a successful request, an IPv6 range is created in the [Region](/docs/api/regions/#regions-list) that corresponds to the provided `linode_id` or `route_target`.
+          * Your Linode is responsible for routing individual addresses in the range, or handling traffic for all the addresses in the range.
+          * Access the Linodes Assign IPs ([POST /networking/ips/assign](/docs/api/networking/#linodes-assign-ips)) endpoint to re-assign IPv6 Ranges to your Linodes.
+
+        **Note**: The following restrictions apply:
+          * A Linode can only have one IPv6 range targeting its SLAAC address.
+          * An account can only have one IPv6 range in each [Region](/docs/api/regions/#regions-list).
+          * [Open a Support Ticket](/docs/api/support/#support-ticket-open) to request expansion of these restrictions.
+      operationId: postIPv6Range
+      x-linode-cli-action: v6-range-create
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_write
+        - linodes:read_write
+      requestBody:
+        description: >
+          Information about the IPv6 range to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - prefix_length
+              properties:
+                linode_id:
+                  type: integer
+                  description: |
+                    The ID of the Linode to assign this range to. The SLAAC address for the provided Linode is used as the range's `route_target`.
+
+                    * **Required** if `route_target` is omitted from the request.
+
+                    * Mutually exclusive with `route_target`. Submitting values for both properties in a request results in an error.
+                  example: 123
+                prefix_length:
+                  type: integer
+                  enum:
+                  - 56
+                  - 64
+                  description: >
+                    The prefix length of the IPv6 range.
+                route_target:
+                  type: string
+                  format: ipv6
+                  description: |
+                    The IPv6 SLAAC address to assign this range to.
+
+                    * **Required** if `linode_id` is omitted from the request.
+
+                    * Mutually exclusive with `linode_id`. Submitting values for both properties in a request results in an error.
+
+                    * **Note**: Omit the `/128` prefix length of the SLAAC address when using this property.
+                  example: 2001:0db8::1
+      responses:
+        '200':
+          description: IPv6 range created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  range:
+                    type: string
+                    format: ipv6/prefix_length
+                    description: >
+                      The IPv6 network range, including subnet and prefix length.
+                    example: 2001:0db8::/64
+                  route_target:
+                    type: string
+                    format: ipv6
+                    description: >
+                      The route target IPV6 SLAAC address for this range. Does not include the prefix length.
+                    example: 2001:0db8::1
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                  "linode_id": 123,
+                  "prefix_length": 64
+              }' \
+              https://api.linode.com/v4/networking/ipv6/ranges
+      - lang: CLI
+        source: >
+          linode-cli networking v6-range-create \
+            --linode_id 123 \
+            --prefix_length 64
+  /networking/ipv6/ranges/{range}:
+    parameters:
+      - name: range
+        in: path
+        description: |
+          The IPv6 range to access. Corresponds to the `range` property of objects returned from the IPv6 Ranges List ([GET /networking/ipv6/ranges](/docs/api/networking/#ipv6-ranges-list)) command.
+
+          **Note**: Omit the prefix length of the IPv6 range.
+        required: true
+        schema:
+          type: string
+          format: ipv6
+    x-linode-cli-command: networking
+    delete:
+      tags:
+      - Networking
+      summary: IPv6 Range Delete
+      description: |
+        Removes this IPv6 range from your account and disconnects the range from any assigned Linodes.
+      operationId: deleteIPv6Range
+      x-linode-cli-action: v6-range-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_write
+      responses:
+        '200':
+          description: IPv6 Range deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/networking/ipv6/ranges/2001:0db8::
+      - lang: CLI
+        source: >
+          linode-cli networking v6-range-delete 2001:0db8::
   /networking/firewalls:
     x-linode-cli-command: firewalls
     get:
@@ -16446,6 +16687,8 @@ components:
           maxLength: 128
           description: |
             This sets the root user's password on a newly-created Linode Disk when deploying from an Image.
+
+            * **Required** when creating a Linode Disk from an Image, including when using a StackScript.
 
             * Must meet a password strength score requirement that is calculated internally by the API.
             If the strength requirement is not met, you will receive a `Password does not meet strength requirement` error.
