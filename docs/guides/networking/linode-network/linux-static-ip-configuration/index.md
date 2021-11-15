@@ -45,7 +45,7 @@ The gateway in this instance works similarly to a router, and provides access to
 
 **DNS Resolution**
 
-Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/remote-access/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
+Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/managing-ip-addresses/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
 
 However, unless you have a specific reason for doing so, you should *not* change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten by a networking service such as NetworkManager or systemd-resolved. Resolver options are usually set in the network interface's configuration file.
 

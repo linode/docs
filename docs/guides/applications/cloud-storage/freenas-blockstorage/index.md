@@ -106,7 +106,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 2.  Use a web browser to navigate to the Linode's IP address. Log in with the user `root` and the password set in Step 4 of the previous section. Close any popup menu that appears when you first log in.
 
-3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the [Networking](/docs/platform/manager/remote-access/) tab of the Linode Cloud Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
+3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the Networking tab of the Linode Cloud Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
 
 4.  Select the **Interfaces** section of the Network tab, and click **Add Interface**. Name the interface and enable DHCP, then click **OK**.
 

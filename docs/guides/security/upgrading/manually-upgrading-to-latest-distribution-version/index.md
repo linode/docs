@@ -165,7 +165,7 @@ Databases can be copied in much the same way as files. The major difference is t
 
 ## Transfer IPv4 Addresses
 
-After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within [Remote Access > Transferring IP Addresses](/docs/guides/remote-access/#transferring-ip-addresses)
+After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses)
 
 {{< note >}}
 The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/docs/guides/dns-records-an-introduction/#a-and-aaaa) on your domain(s).

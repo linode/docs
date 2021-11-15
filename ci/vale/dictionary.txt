@@ -825,6 +825,7 @@ jdk
 Jellyfin
 jenkinsfile
 jenkinsx
+jessie
 jetpack
 jez
 jitsi

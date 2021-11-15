@@ -27,11 +27,13 @@ Each Linode Compute Instance is equipped with several IP addresses. You're able 
 
     ![](compute-ip-addresses-quick.png)
 
-1.  To view all of your IP address for this Instance, click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
+1.  To view all of your IP address for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
 
     ![](compute-ip-addresses-full.png)
 
 ## Types of IP Addresses
+
+### IPv4
 
 - **Public IPv4 Address:** All Compute Instances are created with at least one public IPv4 address, which enables your applications to be accessible over the Internet. Additional addresses can be provided with technical justification.
 
@@ -43,13 +45,13 @@ All private IPs in the same data center can communicate with each other over the
 
 ### IPv6 Addresses
 
-- **IPv6 SLAAC Address:** This is the main IPv6 address used to communicate over the public Internet and within other services in the same data center.
+- **IPv6 SLAAC Address:** This is the main IPv6 address used to communicate over the public Internet and within other services in the same data center. All Compute Instances are assigned a single SLAAC address, which cannot be removed or transferred. Additional SLAAC addresses cannot be provided. If you need an additional IPv6 address, consider using a /64 range (see below).
 
 - **IPv6 Link Local:** This IPv6 address is assigned to each Compute Instance and used for internal routing.
 
-- **/64 Routed Range:** (18,446,744,073,709,551,616 addresses) This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
+- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range.
 
-- **/56 Routed Range:** (4,722,366,482,869,645,213,696 addresses) These larger ranges are typically only required by specialized systems or networking applications.
+- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range.
 
 - **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover.
 

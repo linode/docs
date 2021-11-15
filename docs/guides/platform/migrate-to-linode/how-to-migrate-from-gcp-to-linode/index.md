@@ -489,7 +489,7 @@ When you're done:
 
 ### Migrating DNS Records
 
-To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/networking/remote-access/#network-access). There are two options for moving your DNS records:
+To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/guides/managing-ip-addresses/). There are two options for moving your DNS records:
 
 -  Use Linode's fast, stable [DNS hosting](/dns-manager/) which is free as long as you have one active Linode on your account.
 
