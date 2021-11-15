@@ -41,6 +41,6 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 You are not prompted to enter a root password if you are cloning another Linode or restoring from the Linode Backups service.
 {{< /note >}}
 
-1. Optionally, add an [SSH key](/docs/security/authentication/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager), [Backups](/docs/platform/disk-images/linode-backup-service/), or a [Private IP address](/docs/platform/manager/remote-access/#adding-private-ip-addresses).
+1. Optionally, add an [SSH key](/docs/security/authentication/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager), [Backups](/docs/platform/disk-images/linode-backup-service/), or a [Private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
 
 1. Click the **Create** button when you have finished completing this form. You are redirected to the overview page for your new Linode. This page shows a progress bar which indicates when the Linode has been provisioned and is ready for use.
