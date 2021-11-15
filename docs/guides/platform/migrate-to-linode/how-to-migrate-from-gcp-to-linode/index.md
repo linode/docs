@@ -441,7 +441,7 @@ If, for example, your GCP disk image's size is 10GB, ensure that you resize the 
 
     ![Cloud Manager Reboot Into New Configuration](migrate-gcp-to-linode-reboot-custom-config.png "Cloud Manager Reboot Into New Configuration")
 
-1.  Once booting is complete, click **Launch Console** at the top of the screen. Again, this opens the `Weblish` and `Glish` console window. This time, you should have a regular [Lish shell](/docs/platform/manager/using-the-linode-shell-lish/). You should also be able to SSH to your Linode at this time.
+1.  Once booting is complete, click **Launch Console** at the top of the screen. Again, this opens the `Weblish` and `Glish` console window. This time, you should have a regular [Lish shell](/docs/guides/using-the-lish-console/). You should also be able to SSH to your Linode at this time.
 
     {{< note >}}
 If you are having trouble with ssh starting, you may have to run the following command to start the service from Lish:

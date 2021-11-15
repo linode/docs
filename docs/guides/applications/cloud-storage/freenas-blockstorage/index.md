@@ -60,7 +60,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Create an Installer Disk
 
-1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/platform/manager/using-the-linode-shell-lish/) from the dashboard of your Linode from the Linode Cloud Manager.
+1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/guides/using-the-lish-console/) from the dashboard of your Linode from the Linode Cloud Manager.
 
 2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) (11.1 at the time of this writing) as a variable:
 

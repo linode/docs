@@ -125,7 +125,7 @@ Once a VLAN has been attached to more than one Linode, verify that you can commu
 
         ssh username@192.0.2.0
 
-    If the Linode does not have a public network configured, connect to your Linode via Lish following the steps in the [Using the Linode Shell](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application) guide.
+    If the Linode does not have a public network configured, connect to your Linode via Lish following the steps in the [Using the Lish Console](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal) guide.
 
 1. Ping another Linode within the VLAN's private network using the IPAM address assigned to it.
 

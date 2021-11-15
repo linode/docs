@@ -26,4 +26,4 @@ This Quick Answer will show you how to reset the root password for the Linux dis
 1.  Click **Save**. The Linode's dashboard appears.
 1.  Click **Power On** to turn on your Linode.
 
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/guides/using-the-linode-shell-lish/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/guides/using-the-lish-console/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.

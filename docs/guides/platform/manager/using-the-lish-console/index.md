@@ -1,25 +1,24 @@
 ---
-slug: using-the-linode-shell-lish
+slug: using-the-lish-console
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to use Lish as a shell for managing or rescuing your Linode.'
+description: "Learn how to use Lish as a shell for managing or rescuing your Linode."
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/manager/using-the-linode-shell-lish-classic-manager/','/platform/using-the-linode-shell-lish/','/networking/using-the-linode-shell-lish/','/using-lish-the-linode-shell/','/troubleshooting/using-lish-the-linode-shell/','/platform/manager/using-the-linode-shell-lish/']
-modified: 2019-06-20
+aliases: ['/platform/manager/using-the-linode-shell-lish-classic-manager/','/platform/using-the-linode-shell-lish/','/networking/using-the-linode-shell-lish/','/using-lish-the-linode-shell/','/troubleshooting/using-lish-the-linode-shell/','/platform/manager/using-the-linode-shell-lish/','/guides/using-the-linode-shell-lish/']
+modified: 2021-11-15
 modified_by:
   name: Linode
 published: 2009-08-04
-title: 'Using the Linode Shell (Lish)'
+title: "Using the Lish Console"
 tags: ["linode platform","cloud manager"]
+image: using-the-linode-shell-lish.jpg
 ---
 
-![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)
+The **Lish Console**, also called the *Linode Shell*, provides direct console access to all of your Compute Instances. Through Lish, you can easily access your Compute Instance's internal Linux system and run commands, install software, or configure applications. Lish is especially useful when you are not able to connect to your server through other means, such as SSH.
 
-The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH. Lish can also be useful if you need to access your secure server on a local computer whose public key has not been added to the allowed list.
-
-## Connect to Lish
+## Accessing Lish
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
@@ -27,15 +26,33 @@ There are two ways to access Lish. You can use a terminal application to connect
 Lish used to be accessible via a direct SSH connection to your Linode's host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see [this blog post](https://blog.linode.com/2013/04/30/lish-ssh-gateway/).
 {{< /note >}}
 
-### Use a Terminal Application
+### Through the Cloud Manager (Weblish)
+
+You can connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Cloud Manager.
+
+1. Log in to the [Cloud Manager](https://cloud.linode.com).
+1. Click on the **Linodes** link in the sidebar and select the desired Compute Instance.
+1. Click on the **Launch LISH Console** link in the top right-hand corner of the Cloud Manager.
+
+    ![Launch the Lish Console](launch-console.png)
+
+1. The Lish Web Console window appears, as shown below.
+
+    ![An example of the Lish Web Console](lish-console.png)
+
+1. From here, you can log in to your Compute Instance with any other username and password available on that system (such as `root`)
+
+You can exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
+
+### Through SSH (Using a Terminal)
 
 You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal emulator.
 
 {{< note >}}
-If you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you will not be able to log in to your Linode through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
+If you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
 {{</ note >}}
 
-1.  Select a Lish SSH gateway. There's one in every data center. You can use any gateway to access your Linodes, but we recommend using one close to your Linode's data center. The gateway boxes are available over IPv4 and IPv6.
+1.  Select a Lish SSH gateway. There's one in every data center. You can use any gateway to access your Compute Instances, but we recommend using one close to the data center it's located within. The gateway boxes are available over IPv4 and IPv6.
 
     | **Lish SSH gateway** | **Data Center** |
     | ---------------- | -----------|
@@ -51,9 +68,7 @@ If you have [Third Party Authentication](/docs/platform/manager/third-party-auth
     | `lish-frankfurt.linode.com` | Europe, Frankfurt, DE |
     | `lish-london.linode.com` | Europe, London, UK |
 
-
-
-1.  Open a terminal window and enter the following command, replacing `username` with your Linode Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
+1.  Open a terminal window and enter the following command, replacing `username` with your Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
 
         ssh username@location
 
@@ -62,7 +77,7 @@ If you have [Third Party Authentication](/docs/platform/manager/third-party-auth
         ssh user@lish-newark.linode.com
 
     {{< note >}}
-Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/platform/manager/accounts-and-passwords-new-manager/).
+Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in the Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/platform/manager/accounts-and-passwords-new-manager/).
 {{< /note >}}
 
 1.  Verify that the Lish SSH gateway's fingerprint is valid by verifying the Terminal's output against the list of our [Lish Gateway Fingerprints](#lish-gateway-fingerprints). Once verified, enter *yes* to proceed.
@@ -82,7 +97,7 @@ Once you have removed the cached IP address, you can again attempt to SSH into t
 
     {{</ disclosure-note >}}
 
-1.  Enter the password you use to log in to the Linode Manager. You are now at the Lish shell. A list of your Linodes appears, as shown below:
+1.  Enter the password you use to log in to the Cloud Manager. You are now at the Lish shell. A list of your Compute Instances appears, as shown below:
 
         Linodes located in this data center:
         linode241706         Newark, NJ
@@ -92,38 +107,20 @@ Once you have removed the cached IP address, you can again attempt to SSH into t
         linode287497         Dallas, TX
 
     {{< note >}}
-You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
+You can add a public SSH key for Lish in the Cloud Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
 {{< /note >}}
 
-1.  At the Lish command prompt, type a Linode's name from the list. For example, typing `linode241706` will connect you to the screen console session for that Linode.
+1.  At the Lish command prompt, type a Compute Instance's name from the list. For example, typing `linode241706` will connect you to the screen console session for that Instance.
 
-1.  Log in to the Linode with your username and password.
+1.  Log in to the system with your username and password.
 
-After you log in, you'll have console access to your Linode. You'll be able to restart services like `sshd`, edit firewall settings, and make other changes to your Linode. To exit your Linode's console, press **CTRL+A** then **D** to return to the host machine, and then press **CTRL+D** to return to the Lish menu. If you'd like to see the list of your Linodes again, type `list` from the gateway.
+After you log in, you'll have console access to your Compute Instance. You'll be able to restart services like `sshd`, edit firewall settings, and make other changes. To exit the console, press **CTRL+A** then **D** to return to the host machine, and then press **CTRL+D** to return to the Lish menu. If you'd like to see the list of your Compute Instances again, type `list` from the gateway.
 
-### Use a Web Browser
-
-You can also connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Linode Manager.
-
-1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1. Click on the Linodes link in the sidebar and select the desired Linode.
-1. Click on the **Launch Console** link in the top right-hand corner of the Manager.
-
-    ![Launch the Lish Console](launch-console.png)
-
-1. The Lish Web Console window appears with your Linode's console, as shown below.
-
-    ![An example of the Lish Web Console](lish-console.png)
-
-1. From here, you can log in to your Linode with your root username and password, or any other username and password.
-
-Now you can use the console, or exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
-
-### Add Your Public Key
+## Add Your Public Key
 
 If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
 
-1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1. Log in to the [Cloud Manager](https://cloud.linode.com).
 
 1. Click on the profile icon in the top right hand corner of the Manager and select **LISH Console Settings**.
 
@@ -131,7 +128,7 @@ If you don't want to enter your password every time you connect to Lish, or if y
 
     ![Add your public ssh key](lish-add-public-key.png)
 
-1. Click the **Save** button. Your Lish key will be saved in the Linode Cloud Manager.
+1. Click the **Save** button. Your Lish key will be saved in the Cloud Manager.
 
 Now you can log in to any of the Lish gateway boxes without having to type your password.
 
@@ -140,7 +137,7 @@ If you wish to disable Lish access for users without keys, use the **Authenticat
 
 ## Understanding Lish Commands
 
-The Lish shell provides access to many functions which are otherwise only accessible via the Linode Cloud Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
+The Lish shell provides access to many functions which are otherwise only accessible via the Cloud Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
 
     kill            - kill stuck screen sessions
     exit            - exit from lish
@@ -162,11 +159,11 @@ The Lish shell provides access to many functions which are otherwise only access
     status          - view the status of your Linode
     logview         - view contents of console log
 
-There are two ways to run these commands for a specific Linode. If you are at the main Lish gateway, you can prefix the command with a Linode ID, like this:
+There are two ways to run these commands for a specific Compute Instance. If you are at the main Lish gateway, you can prefix the command with a ID, like this:
 
     linode123456 logview
 
-You can also bring up the Linode's console, then type **CTRL+A** then **D** to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type `exit`.
+You can also bring up the Compute Instance's console, then type **CTRL+A** then **D** to drop back to the host for that Instance. Now all of the commands above will be run for that Instance specifically. To exit back to the main Lish menu, type `exit`.
 
 {{< note >}}
 You can activate the ability to scroll back through the Lish console by pressing **CTRL-A + ESC**
@@ -174,13 +171,13 @@ You can activate the ability to scroll back through the Lish console by pressing
 
 ## Advanced Lish Tricks
 
-While the Lish interface as described above is useful as a basic command-line interface, you may find that you want to issue commands to your Linode without going through the Lish login process.
+While the Lish interface as described above is useful as a basic command-line interface, you may find that you want to issue commands to your Compute Instance without going through the Lish login process.
 
-You can directly connect to a Linode's console:
+You can directly connect to a Compute Instance's console:
 
     ssh -t [manager-username]@lish-[location].linode.com [linode-name]
 
-You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Linode Cloud Manager username, location, and the host-id for your Linode:
+You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Cloud Manager username, location, and the host-id for your Compute Instance:
 
     ssh -t [manager-username]@lish-[location].linode.com [linode-name] reboot
 
