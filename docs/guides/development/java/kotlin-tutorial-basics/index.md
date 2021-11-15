@@ -5,6 +5,7 @@ author:
 description: 'This Kotlin tutorial covers variables, functions, string templates, and classes. It uses code examples to cover the basics of the Kotlin programming language syntax.'
 og_description: 'This Kotlin tutorial covers variables, functions, string templates, and classes. It uses code examples to cover the basics of the Kotlin programming language syntax.'
 keywords: ['kotlin tutorial','kotlin function','kotlin class']
+tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-19
 modified_by:
@@ -408,7 +409,7 @@ A function provides the means to package code so you can reuse, edit, and debug.
 
 ### Kotlin Built-in Functions
 
-Kotlin provides myriad functions as part of the language. For example, you use a function when calling `println()` to output data to the display. Kotlin functions appear as part of the standard library. Kotlin functions differ from class methods in that you can use a function directly without instantiating a class and the code is part of the underlying language support. Most Kotlin functions are extensions of Java. For example, the `Kotlin.io.path` package is an extension of the `java.nio.file.Path` package.
+Kotlin provides myriad functions as part of the language. For example, you use a function when calling `println()` to output data to the display. Kotlin functions appear as part of the standard library. Kotlin functions differ from class methods where you can use a function directly without instantiating a class. The code is part of the underlying language support. Most Kotlin functions are extensions of Java. For example, the `Kotlin.io.path` package is an extension of the `java.nio.file.Path` package.
 
 ### Build User-Defined Functions
 
@@ -477,7 +478,7 @@ All Kotlin functions provide a return value, but those that don’t specify a re
 
 ## Declare a Kotlin Class
 
-A Kotlin class goes beyond the code packaging provided by Kotlin functions by embracing the [Object Oriented Programming (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) paradigm. This provides the means to package code and data together in a form that reduces errors and makes it possible to update code with fewer consequences. OOP is found in most programming languages today because it provides a useful framework that developers find convenient. The following sections provide a brief overview of the creation and use of Kotlin classes.
+A Kotlin class goes beyond the code packaging provided by Kotlin functions by embracing the [Object Oriented Programming (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) paradigm. This provides the means to package code and data together in a form. It also reduces errors and makes it possible to update code with fewer consequences. OOP is found in most programming languages today because it provides a useful framework that developers find convenient. The following sections provide a brief overview of the creation and use of Kotlin classes.
 
 ### Create a Class Body
 
