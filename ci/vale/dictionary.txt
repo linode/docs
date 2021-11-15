@@ -840,6 +840,7 @@ kloth
 kloxo
 knowledgebase
 konsole
+kotin
 konversation
 ktor
 kube

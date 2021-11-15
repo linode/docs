@@ -17,10 +17,10 @@ contributor:
   link: http://www.johnmuellerbooks.com/
 ---
 
-Kotlin is a new cross-platform, statically typed, general-purpose programming language that was originally created in 2011 by [JetBrains](https://www.jetbrains.com/) and was initially released in 2016. It relies on the Java Virtual Machine (JVM), just like Java, but there are significant differences that you can learn about in the [Kotlin vs Java guide](/docs/guides/kotlin-vs-java-understanding-their-differences/). One of the most interesting differences is that you can compile Kotlin to output JavaScript, Android, and native (which runs on iOS). In 2019, Google announced that Kotlin is now the preferred language for all Android development. This Kotlin tutorial provides you basics to help you no matter what type of output you need. You also learn how to work with Kotlin variables, Kotlin strings, Kotlin arrays, Kotlin lists, Kotlin collections, Kotlin functions, and finally, you develop a simple Kotlin class.
+Kotlin is a new cross-platform, statically typed, general-purpose programming language. It was originally created in 2011 by [JetBrains](https://www.jetbrains.com/) and was initially released in 2016. It relies on the Java Virtual Machine (JVM), just like Java, but there are significant differences that you can learn about in the [Kotlin vs Java guide](/docs/guides/kotlin-vs-java-understanding-their-differences/). One of the most interesting differences is that you can compile Kotlin to output JavaScript, Android, and native (which runs on iOS). In 2019, Google announced that Kotlin is now the preferred language for all Android development. This Kotlin tutorial provides you basics to help you no matter what type of output you need. You also learn how to work with Kotlin variables, Kotlin strings, Kotlin arrays, Kotlin lists, Kotlin collections, Kotlin functions. And finally, you develop a simple Kotlin class.
 
 {{< note >}}
-To execute the Kotlin code snippets demonstrated in this guide, you can use the [Kotlin online playground](https://try.kotlinlang.org/) or if you are using an IDE like Android Studio or IntelliJ, you can install the [Kotlin plugin](https://kotlinlang.org/docs/install-eap-plugin.html).
+To execute the Kotlin code snippets demonstrated in this guide, you can use the [Kotlin online playground](https://try.kotlinlang.org/). Or, if you are using an IDE like Android Studio or IntelliJ, you can install the [Kotlin plugin](https://kotlinlang.org/docs/install-eap-plugin.html).
 {{</ note >}}
 
 ## Declaring Kotlin Variables
@@ -236,13 +236,13 @@ Refer to [Kotlin's documentation](https://kotlinlang.org/api/latest/jvm/stdlib/k
 
 ### Using Raw String Templates
 
-As with string literals, you can use raw string templates. This approach is most useful when the string contains characters that you normally escape. The following code, based on the example in the previous section, works well and avoids the use of escaped characters.
+As with string literals, you can use raw string templates. This approach is most useful when the string contains characters that you normally escape. The following code, based on the example in the previous section, works well, and avoids the use of escaped characters.
 
     println("""Str contains the word "hello": ${Str.contains("hello")}.""")
 
 ## Create a Kotlin Array
 
-A Kotlin array is a method of boxing up a set of values and providing an easy method of accessing them as needed. It relies on the underlying Java JVM, so if you know how to use an array in Java, you also know how to use it in Kotlin. Using an array makes it possible to pass the group of values in a single variable, rather than individually, which makes code easier to read and less error-prone. The following sections discuss the use of arrays in Kotlin.
+A Kotlin array is a method of boxing up a set of values and providing an easy method of accessing them as needed. It relies on the underlying Java JVM, so if you know how to use an array in Java, you also know how to use it in Kotlin. Using an array makes it possible to pass the group of values in a single variable, rather than individually, which makes code easier to read, and less error-prone. The following sections discuss the use of arrays in Kotlin.
 
 ### Declaring a Kotlin Array
 
@@ -481,7 +481,7 @@ A Kotlin class goes beyond the code packaging provided by Kotlin functions by em
 
 ### Create a Class Body
 
-The shortest Kotlin class includes the `class` keyword, followed by a class name, and opening and closing braces. For example:
+The shortest Kotlin class includes the `class` keyword, followed by a class name, and opening, and closing braces. For example:
 
     class Rectangle {
     }
