@@ -7,7 +7,7 @@ description: "Learn what the document object model, or DOM, is and how it is rep
 og_description: "Learn what the document object model, or DOM, is and how it is represented in JavaScript."
 keywords: ['what is the dom','javascript dom tutorial','what is document object model']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-14
+published: 2021-11-15
 modified_by:
   name: Nathaniel Stickman
 title: "Introduction to the DOM"
@@ -26,31 +26,18 @@ This tutorial aims to give you an overview to what the Document Object Model is 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+The examples in this guide use a web browser's developer tools to view the DOM and interact with a JavaScript console. You can follow along using your browser:
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, you can do this with:
-
-            sudo apt update && sudo apt upgrade
-
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
-
-            sudo dnf upgrade
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+- On Chrome, refer to Google's [Open Chrome DevTools](https://developer.chrome.com/docs/devtools/open/#elements) documentation.
+- On Firefox, refer to Mozilla's [Open the Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Open_the_Inspector) documentation.
 
 ## What Is the Document Object Model?
 
 The Document Object Model, or DOM, provides a representation of web documents, like web pages. That representation can then be accessed and modified by JavaScript and other programs.
 
-Essentially, the DOM is what allows web pages to become dynamic. Languages like JavaScript work with the nodes and objects in the DOM to dynamically and interactively change a web page's presentation.
+Essentially, the DOM is what allows web pages to become dynamic. Languages like JavaScript work with the nodes that make up the DOM to dynamically and interactively change a web page's presentation.
 
-There are many ways of displaying the DOM, but perhaps the most intuitive is the HTML format. This is how browsers like Chrome and Firefox render the DOM when you open their *Inspect* dashboards on a web page:
+There are many ways of displaying the DOM, but for many the most intuitive is the HTML format. This is how browsers like Chrome and Firefox render the DOM when you open their *Inspect* dashboards on a web page:
 
     <!DOCTYPE html>
     <html>
@@ -64,11 +51,11 @@ There are many ways of displaying the DOM, but perhaps the most intuitive is the
 
 ### How the DOM Differs from HTML Source
 
-In the example above, the DOM could be a literal HTML source file. However, the DOM is not equivalent to the HTML source of a web page.
+In the example above, the DOM representation could as easily be a literal HTML source file. However, the DOM itself is not equivalent to a web page's HTML source.
 
 Instead, the DOM is a representation of how the web page is displayed, and particularly how it is displayed right now.
 
-To illustrate how the DOM and HTML source can differ, here is an HTML file with some JavaScript to create an additional element. Later on in this guide, you can learn more about how exactly this kind of JavaScript code is operating:
+To illustrate how the DOM and HTML source can differ, here is [an HTML file](example-page.html). The page includes JavaScript which adds more elements once the page loads. Later on in this guide, you can learn more about how exactly this kind of JavaScript code is operating:
 
 {{< file "example-page.html" html >}}
 <!DOCTYPE html>
@@ -100,7 +87,7 @@ To illustrate how the DOM and HTML source can differ, here is an HTML file with 
 </html>
 {{< /file >}}
 
-The DOM representation of this source may resemble the below, though here we left out the script code for readability's sake:
+The DOM representation of this source should resemble the below (though the script has been left out here to make the result easier to read):
 
     <!DOCTYPE html>
     <html>
@@ -117,26 +104,33 @@ The DOM representation of this source may resemble the below, though here we lef
         </body>
     </html>
 
-The DOM is concerned with the current display of the page, meaning that it reflects any additions, subtractions, or other modifications. This is part of what makes it effective for adding a dynamic component to web pages.
+The DOM is concerned with the current display of the page, meaning that it reflects any additions, subtractions, or other modifications. This is part of what makes it effective for making web pages dynamic.
 
 ## The Document Object Model and JavaScript
 
-Most often, JavaScript is the way in which web developers interact with the DOM. In JavaScript, the main way of accessing the DOM is through the `document` object and the nodes and elements nested under it.
+Most often, JavaScript is the way in which web developers interact with the DOM. And JavaScript's means of accessing the DOM is the `document` object and the nodes nested under it.
 
 The next sections explain what the `document` object is and the parts that make it up.
 
-Not familiar with JavaScript objects? Take a look at our [JavaScript Objects Tutorial](/doc/guides/javascript-objects-tutorial/) on what they are and how to work with them.
+Not familiar with JavaScript objects? You can take a look at our [JavaScript Objects Tutorial](/doc/guides/javascript-objects-tutorial/) to learn about them or get a refresher before going forward.
 
 ### Document Object
 
-To work with the DOM, client-side JavaScript provides the `document` object. This object provides properties and methods to access and modify the DOM.
+To work with the DOM, client-side JavaScript provides the `document` object. This object comes with properties and methods to access and modify the DOM.
 
-You can see several examples of the `document` object in action above. But also below you can see two commands giving additional ways you could use the `document` object on that DOM representation:
+You can see some examples of the `document` object in action above. But below are two additional commands showing more of the object's features.
 
-    document.body.style.backgroundColor = "blue";
-    for (item of document.getElementsByTagName("li")) { console.log(item.textContent); }
+- The `document` object's properties tend to provide information or access to nodes (more on those below). But they also allow you to modify characteristics of the DOM, like this:
 
-After this, the web page has a DOM representation like the following — again, with the script skipped for readability:
+        document.body.style.backgroundColor = "blue";
+
+- The `document` object has a host of methods, doing everything from providing access to specific sets of nodes to adding new nodes to the DOM. Here, the `getElementsByTagName` grabs every element using an `<li>` tag. The command loops through those elements, outputting their `textContent` attributes:
+
+        for (item of document.getElementsByTagName("li")) {
+            console.log(item.textContent);
+        }
+
+After the first command above, the web page should have a blue background, with a DOM representation like the following:
 
     <!DOCTYPE html>
     <html>
@@ -153,20 +147,29 @@ After this, the web page has a DOM representation like the following — again, 
         </body>
     </html>
 
-And the JavaScript console logs:
+And after the second, the JavaScript console should display the following output:
 
-    First item
-    Second item
+{{< output >}}
+First item
+Second item
+{{< /output >}}
 
 ### Nodes and Elements
 
-The `document` object contains numerous other objects, all making up the DOM. These objects are called *nodes*. Nodes includes everything from HTML elements to attributes and text.
+The `document` object contains numerous other objects, all making up the DOM. These objects are called *nodes*. Nodes includes everything from HTML elements to attributes to text.
 
-Most often, the main kind of nodes you work with are *elements*. These correspond to HTML elements, allowing you to access and manipulate the building blocks of a web page.
+The kind of node you are likely to work with most extensively are *elements*. These are the parts of the DOM corresponding essentially to HTML elements. They allow you to access and manipulate the building blocks of a web page's display.
 
-In the script above, two kinds of nodes were used. First, an element node was created, using the `document.createElement` method. Then, a text node was created with `document.createTextNode`, with the text then being added to the element.
+In the script used to create the `ul` content above, two kinds of nodes were added to the page.
 
-Here is another script you can use on the web page above. Just visit [that page](example-page.html), open your browser's JavaScript console, and enter these commands:
+- Element nodes, which were created using the `document.createElement` method.
+- Text nodes, created with the `document.createTextNode` method.
+
+Each part of the `document` object is actually a node of some kind or other. Additionally, each node inherits common properties, like the `appendChild` method, which above let elements add text nodes and the DOM's body add those elements.
+
+The `document` object does more than just let you extend the DOM. For instance, you can also use it to navigate the DOM and make precise modifications in it.
+
+Below is another script to demonstrate that. You can use this script on the web page created above. Just visit [the page](example-page.html) again, open your browser's JavaScript console, and enter these commands:
 
     const listItems = document.getElementsByTagName("li");
 
@@ -177,7 +180,7 @@ Here is another script you can use on the web page above. Just visit [that page]
         item.appendChild(newTextNode);
     }
 
-As a result, your DOM should update to resemble this, with the script hidden here again for easier reading:
+As a result, your DOM should update to resemble this:
 
     <!DOCTYPE html>
     <html>
@@ -196,4 +199,4 @@ As a result, your DOM should update to resemble this, with the script hidden her
 
 ## Conclusion
 
-With that, you should have a good foundation to start working with the DOM. When you are ready to do that, be sure to look out for our other upcoming guides on the subject. These provide in-depth coverage of how to navigate and work with the DOM.
+With that, you should have a good foundation to start working with the DOM. Be sure to look out for more guides from us on the subject. These take your knowledge of the DOM further with in-depth looks at how to navigate the DOM and more advanced coverage of DOM modification.
