@@ -8,6 +8,7 @@ keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
+modified: 2021-11-16
 modified_by:
   name: Linode
 title: "Deploying Wazuh through the Linode Marketplace"
@@ -56,11 +57,17 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `li*.members.linode.com`. See the [Remote Access](/docs/guides/remote-access/) guide for information on viewing and setting the rDNS value.
 
-1.  In the login screen that appears, enter `admin` as the username and `admin` as the password.
+1.  In the login screen that appears, enter `admin` as the username and `admin` as the password. Since the default admin user is set to read-only, you need to follow the steps below to reset the admin password.
 
-1.  Reset the admin password by click the icon on the top right of the dashboard as shown in the image below:
+    1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-    ![Wazuh Password Reset](wazuh-password.png)
+    1.  Run the Wazuh Password reset tool that has been preloaded onto your instance in the root directory:
+
+            bash /root/wazuh-passwords-tool.sh -a
+
+    1. After the tool finishes running, it outputs all of the new passwords for each system. Record these credentials.
+
+    1. You are now able to log in to your Wazuh instance with your new admin credentials.
 
 Now that you’ve accessed your Wazuh instance, you need to configure a [Wazuh Agent](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html) on the server you'd like to monitor with Wazuh.
 

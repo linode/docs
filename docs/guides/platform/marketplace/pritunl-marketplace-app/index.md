@@ -54,8 +54,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Pritunl App
 
-1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH
-](/docs/guides/connect-to-server-over-ssh/) for assistance.
+1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
 1.  Run the command below to obtain your setup key. This key is used in a later step.
 

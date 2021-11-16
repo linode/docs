@@ -8,7 +8,7 @@ keywords: ['database','cluster','backups','configuration management']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified: 2021-09-16
+modified: 2021-11-16
 modified_by:
   name: Linode
 title: "Deploying ClusterControl through the Linode Marketplace"
@@ -19,7 +19,7 @@ external_resources:
 
 ClusterControl is a unified console to manage the full database lifecycle of the most popular open-source databases (on-premise or in the cloud). Provision, monitor and manage highly available database clusters in minutes with dashboards, backups, notifications, reports and automated recovery.
 
-**Supported databases: MariaDB, MariaDB Galera Cluster, Percona, Percona XtraDB Cluster, MySQL Replication, MySQL Cluster (NDB), PostgreSQL, Redis, TimescaleDB and MongoDB ReplicaSet and Shards**
+**Supported databases: MySQL, MariaDB Server, MariaDB Galera, Percona Server, Percona XtraDB, PostgreSQL, Redis, MS SQL Server 2019, TimescaleDB, and MongoDB
 
 ## Deploying the ClusterControl Marketplace App
 
