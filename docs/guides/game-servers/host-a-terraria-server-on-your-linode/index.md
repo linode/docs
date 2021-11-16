@@ -92,7 +92,7 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
 
         sudo apt install ufw
 
-2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/platform/manager/using-the-linode-shell-lish/):
+2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/guides/using-the-lish-console/):
 
         sudo ufw allow ssh
         sudo ufw allow 7777/tcp

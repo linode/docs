@@ -59,7 +59,7 @@ The problem in this configuration is that if one of the shard servers experience
 
 ## Configure Hosts File
 
-If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/networking/remote-access#adding-private-ip-addresses) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
+If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
 
 On each Linode in your cluster, add the following to the `/etc/hosts` file:
 

@@ -30,7 +30,7 @@ This guide provides a high-level overview setting up a NodeBalancer, but it's ou
     - [Introduction to High Availability](/docs/guides/introduction-to-high-availability/)
     - Going further: [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide/)
 
--  To properly configure a NodeBalancer, you must have at least two Linode Compute Instances within the same data center. Both of these servers must also have private IPv4 addresses. See [Remote Access > Adding Private IP Addresses](/docs/guides/remote-access/#adding-private-ip-addresses).
+-  To properly configure a NodeBalancer, you must have at least two Linode Compute Instances within the same data center. Both of these servers must also have private IPv4 addresses. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
 
 ## Configuring a NodeBalancer
 

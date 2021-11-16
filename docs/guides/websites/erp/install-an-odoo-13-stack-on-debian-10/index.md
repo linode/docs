@@ -134,7 +134,7 @@ In order to simplify communication between Linodes, set hostnames for each serve
 On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) guide to locate your addresses.
 
 {{< note >}}
-A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Remote Access](/docs/guides/remote-access/#adding-private-ip-addresses) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
+A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
 
 Linode can configure your new private address for you through the [Network Helper](/docs/platform/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with the rest of this guide.
 {{< /note >}}

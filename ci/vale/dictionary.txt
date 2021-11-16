@@ -825,6 +825,7 @@ jdk
 Jellyfin
 jenkinsfile
 jenkinsx
+jessie
 jetpack
 jez
 jitsi
@@ -1366,6 +1367,7 @@ preconfigured
 prefork
 preinstall
 preinstalled
+preloaded
 preloader
 premade
 prepend

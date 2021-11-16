@@ -13,7 +13,7 @@ Once a Block Storage Volume has been attached to a Linode, you'll need to perfor
 
 1.  The **Volume Configuration** panel will appear containing the commands needed to fully configure the Volume with your Linode.
 
-1.  Login to your Linode using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
+1.  Login to your Linode using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Enter each command that's shown in the **Volume Configuration** panel, modifying them if needed. These configuration steps are also listed below:
 
