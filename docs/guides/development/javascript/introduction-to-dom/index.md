@@ -112,7 +112,7 @@ Most often, JavaScript is the way in which web developers interact with the DOM.
 
 The next sections explain what the `document` object is and the parts that make it up.
 
-Not familiar with JavaScript objects? You can take a look at our [JavaScript Objects Tutorial](/doc/guides/javascript-objects-tutorial/) to learn about them or get a refresher before going forward.
+Not familiar with JavaScript objects? You can take a look at our [JavaScript Objects Tutorial](/docs/guides/javascript-objects-tutorial/) to learn about them or get a refresher before going forward.
 
 ### Document Object
 

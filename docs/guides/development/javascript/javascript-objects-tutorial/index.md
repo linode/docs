@@ -35,7 +35,7 @@ Alternatively, you can generally issue these same commands in your web browser's
 
 The object is the fundamental data type in JavaScript outside of primitive data types like numbers, strings, booleans, etc.
 
-Essentially, each object is a type and a collection of properties. And as you can see in the next section, nearly anything can be a property. This includes not just primitive data types, but also functions and even other objects.
+An object is primarily a collection of properties. And, as you can see in the next section, nearly anything can be a property. This includes not just primitive data types, but also functions and even other objects.
 
 The next couple of sections break down JavaScript objects, explaining properties and methods and giving you examples of how to use them.
 
@@ -85,18 +85,16 @@ The fact that the method returns an array makes it useful if you want to iterate
 
     for (const key of Object.keys(house)) {
         if (typeof house[key] != 'function') {
-            console.log("\t==\t" + key.padEnd(16) + "\t=>\t\t" + String(house[key]).padEnd(16) + "\t==\t")
+            console.log("==\t" + key.padEnd(16) + "\t=>\t\t" + String(house[key]).padEnd(16) + "\t==\t")
         }
     }
 
 {{< output >}}
-
-    ==  address             =>      123 Street St       ==
-    ==  bedrooms            =>      2                   ==
-    ==  baths               =>      1.5                 ==
-    ==  vacant              =>      true                ==
-    ==  phoneNumber         =>      123-456-7890        ==
-
+==  address             =>      123 Street St       ==
+==  bedrooms            =>      2                   ==
+==  baths               =>      1.5                 ==
+==  vacant              =>      true                ==
+==  phoneNumber         =>      123-456-7890        ==
 {{< /output >}}
 
 ### JavaScript Object Methods
