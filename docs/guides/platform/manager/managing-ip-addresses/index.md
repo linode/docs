@@ -45,7 +45,7 @@ All private IPs in the same data center can communicate with each other over the
 
 ### IPv6 Addresses
 
-- **IPv6 SLAAC Address:** This is the main IPv6 address used to communicate over the public Internet and within other services in the same data center. All Compute Instances are assigned a single SLAAC address, which cannot be removed or transferred. Additional SLAAC addresses cannot be provided. If you need an additional IPv6 address, consider using a /64 range (see below).
+- **IPv6 SLAAC Address:** This is the main IPv6 address used to communicate over the public Internet and with other services in the same data center. All Compute Instances are assigned a single SLAAC address, which cannot be removed or transferred. Additional SLAAC addresses cannot be provided. If you need an additional IPv6 address, consider using a /64 range (see below).
 
 - **IPv6 Link Local:** This IPv6 address is assigned to each Compute Instance and used for internal routing.
 
@@ -75,7 +75,11 @@ The IPv6 `/116` prefix has been deprecated and is not available in the Toronto, 
 
     > Additional IPv4 addresses require technical justification. Please open a Support Ticket describing your requirement
 
-Once the IP address or range has been added, it should be visible in the *IP Address* section.
+    Once the IP address or range has been added, it should be visible in the *IP Address* section.
+
+1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the Compute Instance.
+
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
 {{< note >}}
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
@@ -83,7 +87,7 @@ Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.
 
 ## Configuring rDNS
 
-The ability to associate an IP address with a domain name is referred to as *forward* DNS resolution. *Reverse* DNS lookup is the inverse process, where an IP address resolves to its designated domain name. Official Internet documents state that "every Internet-reachable host should have a name," and that the name should match a reverse pointer record. (See [RFC 1033](http://tools.ietf.org/html/rfc1033) and [RFC 1912](http://tools.ietf.org/html/rfc1912).)
+The ability to point a domain name to an IP address is referred to as *forward* DNS resolution. *Reverse* DNS (rDNS) lookup is the inverse process, where an IP address resolves to a domain name. Official Internet documents state that "every Internet-reachable host should have a name," and that the name should match a reverse pointer record. (See [RFC 1033](http://tools.ietf.org/html/rfc1033) and [RFC 1912](http://tools.ietf.org/html/rfc1912).)
 
 You are able to configure rDNS (or reset it) through the Cloud Manager using the instructions below:
 
@@ -109,33 +113,19 @@ If you receive the message that **no match was found**, this indicates that you 
 
 You can verify the reverse DNS entry was properly submitted within the *IP addresses* table under the Reverse DNS column.
 
-## Configuring IP Sharing
+## Deleting an IP Address
 
-{{< note >}}
-This feature is not yet supported in the Atlanta, Mumbai, Sydney, or Toronto data centers.
-{{</ note >}}
+1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
+1.  Select the **Delete** menu option for the IP address you'd like to remove
 
-*IP sharing*, called IP failover in the Classic Manager, is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
+    ![Select 'Delete' option from the IP address menu.](delete-ip-address-button.png)
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
-1.  Click the **Linodes** link in the sidebar. A list of your available Linodes will appear.
-1.  Select the Linode on which you wish to configure IP sharing. The Linode's detail page appears.
-1.  Click the **Network** tab.
-1.  Select the **IP Sharing** button.
+1.  A pop-up confirmation dialog appears. Click the **Delete Range** button to confirm the request.
 
-    ![Configuring IP sharing](ip-sharing-button.png)
+1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the Compute Instance.
 
-1.  A pop up menu will appear. Select the Linode you would like to share an IP address with.
-
-    ![Select a Linode to share an IP address with.](remote_access_ip_sharing_add_an_ip.png)
-
-1.  Click **Save**.
-
-You have successfully configured IP sharing. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability/).
-
-{{< note >}}
-IP sharing does not change ownership of the origin IP address, and the IP address will continue to belong to the same origin Linode. By default, IP sharing alone does not change the behavior of how traffic reaches your Linode and the capability must be further configured with tools like [keepalived](https://keepalived.org/) which affect routing, or a similar services.
-{{< /note >}}
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
 
 ## Transferring IP Addresses
 
@@ -149,36 +139,67 @@ Here's how to use the IP Transfer tool to transfer IPv4 addresses:
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
-1.  Select a Linode and navigate to the **Network** tab.
+1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
 
-1.  Select the **IP Transfer** button in the IP Addresses table.
+1.  Press the **IP Transfer** button in the *IP Addresses* table.
 
     ![IP Transfer button](ip-transfer-button.png)
 
-1.  Select an action from the dropdown menu. You can choose **move to** and **swap with**. "Swap with" switches the IP addresses of two Linodes. "Move to" moves an IP address from one Linode to another. To choose the "move to" option the Linode you are moving an IP address from needs to have more than one public IP address.
+1.  Locate the IP address or range you would like to transfer and select an action from the dropdown menu:
+
+    - **Move To:** moves the IP address to another Compute Instance. When choosing this option, select the destination Compute Instance in the next dropdown menu that appears. If you are moving a public IPv4 address, there needs to be at least one remaining public IPv4 address on the source Compute Instance.
+    - **Swap With:** swaps the IP addresses of two Compute Instances. When choosing this option, select the destination Compute Instance in the next dropdown menu that appears. Then select the IP address (belonging to the destination Compute Instance) you would like to swap with the originally selected IP address.
 
     ![The IP Transfer menu in the Cloud Manger](remote_access_ip_transfer.png)
 
     {{< note >}}
-The menu only displays Linodes hosted in the same data center as the current Linode.
+The *IP Transfer* form only displays Compute Instances hosted in the same data center as the current Instance.
 {{< /note >}}
 
 1.  Click **Save** to transfer the requested IPs.
 
-1.  To make sure the new IP addresses take affect within the internal configuration of each Linode, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the Linode(s).
+1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the affected Instance(s).
 
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
 
     {{< note >}}
-If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Linode:
+If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Compute Instance:
 
     arping -c5 -I eth0 -s 198.51.100.10 198.51.100.1
     ping -c5 198.51.100.10 198.51.100.1
 
-Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Networking tab under "Default Gateways".
+Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Networking tab under the **Default Gateways** column of the *IP Addresses* table.
 {{< /note >}}
 
 ### Transferring an IPv6 SLAAC Address
 
 IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the
 applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
+
+## Configuring IP Sharing
+
+{{< note >}}
+This feature is not yet supported in the Atlanta, Mumbai, Sydney, or Toronto data centers.
+{{</ note >}}
+
+*IP sharing*, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. If you're using two Instances to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Cloud Manager to configure IP failover. Here's how:
+
+1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
+1.  Click the **IP Sharing** button under the *IP Addresses* section.
+
+    ![Configuring IP sharing](ip-sharing-button.png)
+
+1.  The *IP Sharing* form appears. Select the Compute Instance you would like to share an IP address with.
+
+    ![Select a Linode to share an IP address with.](remote_access_ip_sharing_add_an_ip.png)
+
+1.  Click **Save** to enable IP Sharing.
+
+1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as Keepalived) within the internal system on each affected Compute Instance. For more information on a practical use case and configuring Keepalived, see our guide on [hosting a website with high availability](/docs/guides/host-a-website-with-high-availability/#keepalived).
+
+Now, when a failover service such as Keepalived detects failure of your chosen Compute Instance, its IP address will be assigned to the new Instance to avoid an interruption in service.
+
+{{< note >}}
+IP sharing does not change ownership of the origin IP address, and the IP address will continue to belong to the same origin Compute Instance. By default, IP sharing alone does not change the behavior of how traffic reaches your Compute Instances and the capability must be further configured with tools like [Keepalived](https://keepalived.org/).
+{{< /note >}}
