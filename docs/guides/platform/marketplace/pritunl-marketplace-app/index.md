@@ -16,9 +16,6 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Pritunl](https://pritunl.com/)'
-noindex: true
-_build:
-  list: false
 ---
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface.
@@ -57,8 +54,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Pritunl App
 
-1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH
-](/docs/guides/connect-to-server-over-ssh/) for assistance.
+1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
 1.  Run the command below to obtain your setup key. This key is used in a later step.
 

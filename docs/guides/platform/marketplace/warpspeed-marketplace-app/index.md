@@ -16,9 +16,6 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
-noindex: true
-_build:
-  list: false
 ---
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.
