@@ -22,10 +22,9 @@ The **Account** section of Cloud Manager allows you to manage your account's bil
 You can manage the following account and billing settings in the Account section of Cloud Manager:
 
 - [Update contact information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)
-- [Update credit card information](/docs/guides/manage-billing-in-cloud-manager/#updating-the-credit-card)
-- [Add or Update Google Pay](/docs/guides/manage-billing-in-cloud-manager/#adding-and-updating-google-pay)
-- [Make a payment with a credit card, PayPal, or Google Pay](/docs/guides/manage-billing-in-cloud-manager/#making-a-payment)
-- [View recent invoices and payments](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-history)
+- [Adding a New Payment Method](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method)
+- [Making a One-Time Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-one-time-payment)
+- [View recent invoices and payments](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments)
 - [Add new users and manage exiting user's profiles and permissions](/docs/guides/accounts-and-passwords/#users-and-permissions)
 - [Enable Backup auto enrollment for all new Linodes on your account](/docs/products/storage/backups/guides/enable/#auto-enroll-new-compute-instances-in-the-backup-service)
 - [Enable Network Helper](/docs/guides/network-helper/#global)

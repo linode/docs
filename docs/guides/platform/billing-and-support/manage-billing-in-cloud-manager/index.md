@@ -54,7 +54,7 @@ This page contains several sections:
 
 - **Billing & Payment History:** Displays a list of previous invoices and payments, along with links to view or download each entry.
 
-## Making a Payment
+## Making a One-Time Payment
 
 You can manually add funds to your account at any time. Manual payments can be used to pay an outstanding balance or prepay for future services.
 
@@ -71,29 +71,36 @@ The payment may take a few minutes to be applied to your account.
 
 ## Adding a New Payment Method
 
-New payment methods can be added to an account through the Cloud Manager. Up to **6 payment methods** can be active on an account at any given time, including multiple credit cards or Google Pay methods.
+New payment methods can be added to an account through the Cloud Manager. Up to **6 payment methods** can be active on an account at any given time, including multiple credit cards, Google Pay methods, and PayPal methods.
 
 1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)).
-1.  If adding a credit card directly (not through Google Pay), it must match the account's billing contact information and address. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
+
+1.  If adding a credit card directly (not through Google Pay or PayPal), it must match the account's billing contact information and address. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
+
 1.  In the **Payment Method** section, click the *Add Payment Method* link. This opens the **Add Payment Method** panel.
+
 1.  Complete the form according to the payment method you wish to add.
 
-    -  **Credit card:**
-        1.  Enter the credit card number, expiration date, and the security code (CVV).
-        1.  Click **Add Credit Card** to save the new card.
+    **To pay with a credit card:** Enter the credit card number, expiration date, and the security code (CVV) of the new card. Then click **Add Credit Card**.
 
-        {{< note >}}
-  A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
-  {{< /note >}}
+    ![Form to add a credit card](add-method-credit-card.png)
 
-    -  **Google Pay:**
-        1.  Click the **Google Pay** icon/button to open Google's own Google Pay form.
-        1.  Log in to your Google account or select from accounts you've already logged into.
-        1.  Select the credit card or PayPal account you wish to use for paying invoices on the account.
-        1.  Press **continue** (or otherwise complete the form) to be taken back to the Cloud Manager.
+    {{< note >}}
+A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
+{{< /note >}}
+
+    **To pay with Google Pay:** Click the **Google Pay** icon/button to open Google's own Google Pay form. Log in to your Google account and select the payment method you wish to use. Press **continue** (or otherwise complete the form) to be taken back to the Cloud Manager.
+
+    ![Button to add Google Pay](add-method-google-pay.png)
+
+    **To pay with PayPal:** Click the **PayPal** icon/button to open PayPal's own form. Log in to your PayPal account and select the credit card or bank account you wish to use. Optionally check or uncheck the **Use balance first** option to use any PayPal balance before the selected credit card or bank account. Press **Save and Continue** (or otherwise complete the form) to be taken back to the Cloud Manager.
+
+    ![Button to add PayPal](add-method-paypal.png)
+
+1.  After the payment method is added, it will be assigned as the *default* payment method and will be used for future recurring payments. This can be changed by following the instructions within the [Viewing and Changing the Default Payment Method](#viewing-and-changing-the-default-payment-method) section.
 
 {{< note >}}
-This process does not immediately charge any past due balance on the account to the new card. If you have an outstanding balance, you need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
+This process does not immediately charge any past due balance on the account to the new card. If you have an outstanding balance, you need to make a manual payment to bring your account up to date. See the [Making a One-Time Payment](#making-a-one-time-payment) section for more information.
 {{< /note >}}
 
 ## Removing a Payment Method

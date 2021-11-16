@@ -3,17 +3,16 @@ slug: how-linode-billing-works
 author:
   name: Linode
   email: docs@linode.com
-description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
-og_description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
+description: "Learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-25
+modified: 2021-11-16
 modified_by:
   name: Linode
 published: 2019-10-25
-title: How Linode Billing Works
-h1_title: Billing and Payments
+title: "How Linode Billing Works"
+h1_title: "Billing and Payments"
 enable_h1: true
 tags: ["linode platform"]
 ---
@@ -60,23 +59,23 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ## Payments
 
-When an invoice is generated on the first of the month (or mid-month), Linode automatically attempts to charge the account's default credit card on file. In addition to these automatic payment attempts, you can make manual payments to add funds to your account, which will then be used to pay future invoices.
+When an invoice is generated on the first of the month (or mid-month), Linode automatically attempts to charge the account's default credit card on file. In addition to these automatic recurring payments, you can make one-time payments to add funds to your account, which will then be used to pay future invoices.
 
 ### Payment Methods
 
-- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account.
+- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express.
 
     {{< note >}}
 Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
 {{< /note >}}
 
-- **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Google Pay can be used to both automatically pay your invoice and to manually add funds to the account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
+- **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
 
     {{< note >}}
 To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
 {{</ note >}}
 
-- **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account. At this time, our PayPal integration can only be used to manually add funds to your account. To pay your invoices automatically through PayPal, consider using PayPal through Google Pay.
+- **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account.
 
 - **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
 
@@ -84,7 +83,7 @@ See [Adding a New Payment Method](/docs/guides/manage-billing-in-cloud-manager/#
 
 ### Manual Payments
 
-At any time, you can make a manual payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-payment) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
+At any time, you can make a manual one-time payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a One-Time Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-one-time-payment) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
 
 ### Refunds
 
