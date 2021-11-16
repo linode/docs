@@ -57,7 +57,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Rocket.Chat App
 
-1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `li*.members.linode.com`. See the [Remote Access](/docs/guides/remote-access/) guide for information on viewing and setting the rDNS value.
+1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `li*.members.linode.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
 1.  From there, Rocket.Chat prompts you to fill out multiple forms to get your instance created and ready to use:
 
