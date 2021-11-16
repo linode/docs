@@ -3,19 +3,20 @@ slug: managing-ip-addresses
 author:
   name: Linode
   email: docs@linode.com
-description: "Our guide to the remote access area of the Linode Manager."
+description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
+og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
 keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access", "add additional ipv4 address", "add ip address", "add additional ip address"]
 tags: ["linode platform","resolving","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/']
-modified: 2021-11-15
+modified: 2021-11-16
 modified_by:
   name: Linode
 published: 2016-08-23
 title: "Managing IP Addresses"
 ---
 
-Each Linode Compute Instance is equipped with several IP addresses. You're able to view these IP addresses, as well as add, remove, transfer, or share them, through the Cloud Manager.
+Each Linode Compute Instance is equipped with several IP addresses, which enable it to be accessible over the public Internet and to other Linode services. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
 
 ## Viewing IP Addresses
 
@@ -25,11 +26,11 @@ Each Linode Compute Instance is equipped with several IP addresses. You're able 
 
 1.  Within the top *Summary* section, you can view the primary IPv4 and IPv6 addresses.
 
-    ![](compute-ip-addresses-quick.png)
+    ![Summary section with the IP addresses highlighted](compute-ip-addresses-quick.png)
 
 1.  To view all of your IP address for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
 
-    ![](compute-ip-addresses-full.png)
+    ![The IP Addresses table on the Network tab](compute-ip-addresses-full.png)
 
 ## Types of IP Addresses
 
@@ -65,11 +66,11 @@ The IPv6 `/116` prefix has been deprecated and is not available in the Toronto, 
 1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
 1.  Click the **Add an IP Address** button under the *IP Address* section. This displays the *Add an IP Address* panel.
 
-    ![](add-ip-address-button.png)
+    ![The Add IP Address button](add-ip-address-button.png)
 
 1.  Within the form, select the type of IP address (or range) you wish to add. If you aren't sure, review the [Types of IP Addresses](#types-of-ip-addresses) section and consider your own use case.
 
-    ![](add-ip-address-form.png)
+    ![The Add IP Address form](add-ip-address-form.png)
 
 1.  Click the **Allocate** button to add the additional address. If you receive a message similar to the following, you need to [contact our Support team](https://www.linode.com/support/) to request the IP address. Make sure to include any additional information or technical reasoning for the request.
 
