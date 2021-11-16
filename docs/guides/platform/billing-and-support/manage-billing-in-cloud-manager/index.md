@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-10-25
-modified: 2021-08-25
+modified: 2021-11-16
 title: How to Manage Billing in the Linode Cloud Manager
 h1_title: Managing Billing in the Cloud Manager
 enable_h1: true
