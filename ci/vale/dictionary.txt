@@ -137,6 +137,7 @@ bitbucket
 bitnami
 bitrate
 bitwarden
+bitwise
 blkid
 blockchain
 blocklists
@@ -144,6 +145,7 @@ blockwise
 bluehost
 bokeh
 bookinfo
+bool
 boolean
 booleans
 boolstyle
