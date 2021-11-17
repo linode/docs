@@ -17,6 +17,7 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
+aliases: ['/guides/deploying-litespeed-cpanel-marketplace-app/']
 ---
 
 The LiteSpeed cPanel App automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin.
