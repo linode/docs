@@ -20,6 +20,7 @@ ag
 ahci0
 Aho
 ahvz
+aircrack
 ajp
 aker
 alef
@@ -309,6 +310,7 @@ ctx
 cuda
 curlie
 cutover
+cyber
 cyberduck
 cyberpanel
 cybersecurity
@@ -459,6 +461,7 @@ enum
 env
 envs
 epel
+equifax
 erb
 erlang
 esc
@@ -470,6 +473,7 @@ ethtool
 eugen
 eval
 evhost
+exabeam
 example1
 example2
 examplegroup
@@ -546,6 +550,7 @@ flatpress
 flowlens
 flyspray
 foodcritic
+fortinet
 fortran
 fordham
 fmt
@@ -1183,6 +1188,7 @@ netloc
 netmask
 netplan
 netstat
+netstumbler
 netuser
 networkd
 newgrp
@@ -1285,6 +1291,7 @@ paas
 packagist
 pagent
 pagespeed
+palo
 pandoc
 param
 parameterizing
@@ -1555,6 +1562,7 @@ s3cr37
 s3cret
 saas
 sakila
+safend
 salesforce
 sam
 samy
@@ -1661,6 +1669,8 @@ solaris
 solr
 somaxconn
 someuser
+sonicwall
+sophos
 spamassassin
 spamd
 spamhaus
@@ -1733,6 +1743,7 @@ superset
 supervisord
 supervisorctl
 surbma
+suricata
 sury
 suse
 swappable
@@ -1758,6 +1769,7 @@ systeminfo
 systemname
 sysv
 sysvinit
+tanium
 targ
 tasksel
 taskserver
@@ -1787,6 +1799,7 @@ thawte
 theano
 theming
 thingsboard
+thycotic
 tigervnc
 tightvncserver
 tika
@@ -1931,6 +1944,7 @@ vcs
 vdev
 vdevs
 ve
+veeam
 venv
 ver
 veracode
@@ -2018,6 +2032,7 @@ winscp
 winsxs
 windowlist
 wireguard
+wireshark
 wkhtmltopdf
 wkhtmltox
 wll
@@ -2099,6 +2114,7 @@ zile
 zimbra
 zipkin
 zipkinhost
+zix
 zkcluster1root
 zlib
 znc
