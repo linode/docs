@@ -1,12 +1,12 @@
 ---
-slug: open-source-software-definition-and-examples
+slug: what-is-open-source-software
 author:
   name: Jack Wallen
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'What is open source software and how does it work? We answer these questions, note the advantages and disadvantages of open source software, plus examples.'
+keywords: ['what is open source software','open source software','keywords','open source software definition']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-16
+published: 2021-11-19
 modified_by:
   name: Linode
 title: "Open Source Software Definition and Examples"
@@ -27,14 +27,12 @@ Whether a user knows which of the applications are open-source and which are clo
 The differences between open-source and closed source software are significant. Fundamentally, the definition of open-source software is that the code used to create a piece of software is available to download along with the app itself, although it's much more than that.
 With open-source software, you can download the source code, you can alter it, and redistribute it as long as you credit the original creator. Here’s a good example of an open source path:
 
-- You find an application you like, and install it.
-- You find there are ways to improve the tool.
-- You download the source, make your additions/changes and recompile it.
-- You use the new tool and decide everyone should be able to use it.
-- You upload the software and the code to a public repository and distribute it with an open-source license.
-- Other people use your app.
-- Other people improve your app.
-- Other people distribute your app.
+- Find an application you like, and install it.
+- Find there are ways to improve the tool.
+- Download the source, make your additions/changes and recompile it.
+- Use the new tool and decide everyone should be able to use it.
+- Upload the software and the code to a public repository and distribute it with an open-source license.
+- Other people use, improve, and distribute your app.
 
 You cannot do that with closed source software. The licenses do not allow it, and you do not have access to the source code. With closed source software, the code is protected and never released to the public. The only time a company might release code for a closed source project is if another company buys into their effort, or a portion of their code is made available so third-party companies can create software that interacts or connects to the original project.
 Part of the beauty of open-source software is that it's not just about making code available: it's building a community of developers and users who understand that software greatly benefits when new projects can spring from those already in existence.
@@ -45,22 +43,22 @@ Open-source software was invented in 1983, when Richard Stallman, a programmer a
 
 ## How Does Open Source Software Work?
 
-Open-source and closed-source applications are created the same way. They start out as an idea. Once the project moves from the idea phase to the programming phase, the developer, or team of developers, stores the source code in a repository. A repository, also called a "repo", is a storage location that houses the code for an application. Along with the code, a repository also contains items like a table of contents, a README file, and a license.  These repositories make it efficient for teams to collaborate on an open-source project.
+Open-source and closed-source applications are created the same way. They start out as an idea. Once the project moves from the idea phase to the programming phase, the developer, or team of developers, stores the source code in a repository. A repository, also called a *repo*, is a storage location that houses the code for an application. Along with the code, a repository also contains items like a table of contents, a README file, and a license. These repositories make it efficient for teams to collaborate on an open-source project.
 
 One of the most popular source code repositories is [GitHub](https://github.com/), where developers create private (only accessible by the development team) and public repositories (accessible by the general public). In some instances, a project begins as a private repository, until the team has a working application, at which point it changes to a public repository, so people can view and download the source. Other times, a project exists in a public repository from day one. This way the public can watch the project as it evolves and jump in to help, if the option is available.
 
-With open-source code repositories, developers usually include instructions on how to build and use the software. During the early stages of development the software might not be ready for the masses. When this is the case, the software is typically only installable via source code. Generally speaking, there are numerous ways to install a piece of software. The most widespread method of installing software is via an installable binary. You download a file, double-click on it, and the software install wizard opens. Another method is installing software from the source. This is more challenging and requires you to have certain dependencies installed on your computer. Installing software from the source is typically done via the command line. Some open-source projects start with the only installation option being via source code. Eventually, if a project is to be used by the masses, an installable binary is made available. Closed-source applications are only installed with the installable binary.
+With open-source code repositories, developers usually include instructions on how to build and use the software. During the early stages of development the software might not be ready for the masses. When this is the case, the software is typically only installable via source code. Generally speaking, there are numerous ways to install a piece of software. The most widespread method of installing software is via an installable binary. You download a file, double-click on it, and the software install wizard opens. Another method is installing software from the source. This is more challenging and requires you to have certain dependencies installed on your computer. Installing software from the source is typically done via the command line. Some open-source projects start with the only installation option being via source code. Eventually, if a project is to be used by the masses, an installable binary is made available. Closed-source applications are only made available with the installable binary.
 
-Like closed-source software, open-source software is available for every platform on the market (Android, iOS, Linux, macOS, and Windows). Even though you might use a piece of closed-source software, it’s likely that software either includes some open-source code, or it depends on other open-source code or projects to function. A good example of this is Microsoft's Office365 which is a proprietary office suite. One tool used in Office365 is the open-source Fluid Framework, a platform for real-time collaboration.  Another example is the Android mobile operating system, which uses an open-source kernel and several other open-source applications, but adds on the closed-source Google Play Services, which allows users to install Android apps from the Google Play Store.
+Like closed-source software, open-source software is available for every platform on the market (Linux, macOS, Windows, Android, and iOS). Even though you might use a piece of closed-source software, it’s likely that software either includes some open-source code, or it depends on other open-source code or projects to function. A good example of this is Microsoft's Office365 which is a proprietary office suite. One tool used in Office365 is the open-source Fluid Framework, a platform for real-time collaboration.  Another example is the Android mobile operating system, which uses an open-source kernel and several other open-source applications, but adds on the closed-source Google Play Services, which allows users to install Android apps from the Google Play Store.
 
-The Android example is very telling. There are a few companies that have set out to create fully open-source Android alternatives (such as [/e/](https://doc.e.foundation/)). These alternatives make use of all the Android open-source code, but cannot use the closed-source bits such as the aforementioned Google Play Services. Because of this, anyone that wants to use such a phone has to do so without the Google integration, because you can't install the likes of Google Drive or Google Docs from anywhere but the Google Play Store. Most smartphone users prefer simplicity and seamless integration, versus a purely open-source platform. Even though you might be using a proprietary tool, it probably depends on open-source software.
+The Android example is very telling. There are a few companies that have set out to create fully open-source Android alternatives (such as [/e/](https://doc.e.foundation/)). These alternatives make use of all the Android open-source code, but cannot use the closed-source bits such as the aforementioned Google Play Services. Because of this, anyone that wants to use such a phone has to do so without the Google integration, since you can't install the likes of Google Drive or Google Docs from anywhere but the Google Play Store. Most smartphone users prefer simplicity and seamless integration, versus a purely open-source platform. Even though you might be using a proprietary tool, it probably depends on open-source software.
 
 Finally, open-source software is protected by a license. There are over 200 different open-source licenses, but the most popular are:
 
-- MIT License
-- Apache License
-- GNU General Public License (GPL)
-- Common Development and Distribution License
+- [MIT License](https://en.wikipedia.org/wiki/MIT_License)
+- [Apache License](https://www.apache.org/licenses/LICENSE-2.0)
+- [GNU General Public License (GPL)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+- [Common Development and Distribution License](https://en.wikipedia.org/wiki/Common_Development_and_Distribution_License)
 
 The majority of open-source software you run into is probably distributed under the GPL.
 
@@ -106,14 +104,11 @@ Linux is the largest open-source project in existence. Linux is an open-source k
 | [Python](https://www.python.org/) | programming language | Linux, macOS, Windows |
 | [PHP](https://www.php.net/) | programming language | Linux, macOS, Windows |
 
-
-
-
 ## Conclusion
 
-Open-source software is an integral piece of the foundation of almost everything you do electronically—from refrigerators, cars, phones, televisions, smart speakers, home hubs, lighting, digital display boards, kiosks, banks, and the cloud, open-source is probably powering it. Although you might not be using open-source software directly on your computer, you are using it via the accounts and services you depend on daily.
+Open-source software is an integral piece of almost everything you do electronically—from refrigerators, cars, phones, televisions, smart speakers, home hubs, lighting, digital display boards, kiosks, banks, and the cloud, open-source is probably powering it. Although you might not be using open-source software directly on your computer, you are using it via the accounts and services you depend on daily.
 
-For more information on open-source solutions, start with the [vast collection of documentation](https://www.linode.com/docs) on Linode, where there is plenty of information on open-source software.
+For more information on open-source solutions, start with [our documentation library](https://www.linode.com/docs), where there is plenty of information on open-source software.
 
 
 

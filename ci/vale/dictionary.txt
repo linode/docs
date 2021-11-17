@@ -353,6 +353,7 @@ deathmatch
 debconf
 declaratively
 deduplication
+deepin
 defragment
 delpy
 demultiplexer
@@ -374,6 +375,7 @@ dex
 df
 dhclient
 dhparams
+dia
 dialogs
 diavel
 diffie
@@ -770,6 +772,7 @@ initramfs
 initrd
 inittab
 injectable
+inkscape
 inode
 inotify
 inrupt
@@ -886,6 +889,7 @@ knockpy
 knowledgebase
 konsole
 konversation
+krita
 ktor
 kube
 kubeadm
@@ -1321,6 +1325,7 @@ pgpass
 pharmer
 pharo
 phonebook
+photoshop
 php
 php5
 php7
@@ -1633,8 +1638,10 @@ shortcodes
 shortguide
 shortguides
 shortname
+shotcut
 shoutcast
 scikit
+scribus
 sidekiq
 sievers
 signup
@@ -2104,6 +2111,7 @@ zlib
 znc
 zonefiles
 zope
+zorin
 zpool
 zsh
 zshrc
