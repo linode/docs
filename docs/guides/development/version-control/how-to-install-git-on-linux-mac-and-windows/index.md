@@ -3,7 +3,7 @@ slug: how-to-install-git-on-linux-mac-and-windows
 author:
   name: Linode
   email: docs@linode.com
-description: "Git is the most popular distributed version control and source code management system. Here's how to install it on GNU/Linux, MacOSX, and Windows."
+description: "Git is a popular distributed version control & source code management system. ✓ Here's how to install it on GNU/Linux, MacOSX, & Windows today!"
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/git-source-control-management/','/development/version-control/how-to-install-git-on-mac-and-windows/','/development/version-control/how-to-install-git-on-linux-mac-and-windows/','/linux-tools/version-control/git/','/applications/development/git-source-control-management/']
@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2009-09-04
 os: ["mac", "linux", "windows"]
-title: "How to Install Git on Linux, Mac or Windows"
+title: "Install Git on Linux, Mac or Windows: A How To | Linode"
 h1_title: "Installing Git on Linux, Mac or Windows"
 enable_h1: true
 external_resources:
@@ -55,7 +55,7 @@ This guide uses `sudo` wherever possible. Complete the [Add a Limited User Accou
 
 ### Is Git pre-installed on Mac?
 
-No, Git does not come pre-installed on Mac. You have to install it.
+No, Git for Mac does not come pre-installed. You have to install it.
 
 ### How do I know if Git is installed?
 

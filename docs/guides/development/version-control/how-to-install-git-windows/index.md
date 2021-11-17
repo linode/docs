@@ -24,7 +24,7 @@ aliases: ['/development/version-control/how-to-install-git-windows/']
 2.  Double click on a recent version of Git to download it.
 
 
-3.  When you see an installation prompt, click on **Yes**:
+3.  When you see an install git Windows prompt, click on **Yes**:
 
     ![Click Yes to install Git on Windows.](installing-git-on-windows.png)
 
