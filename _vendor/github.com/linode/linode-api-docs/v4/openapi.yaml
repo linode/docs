@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.109.0
+  version: 4.109.1
 
   title: Linode API
   description: |
@@ -327,7 +327,7 @@ info:
     ## Rate Limiting
 
     With the Linode API, you can make up to 1,600 general API requests every two minutes per user as
-    determined by IP adddress or by OAuth token. Additionally, there are endpoint specfic limits defined below.
+    determined by IP address or by OAuth token. Additionally, there are endpoint specific limits defined below.
 
     **Note:** There may be rate limiting applied at other levels outside of the API, for example, at the load balancer.
 
@@ -1715,7 +1715,7 @@ paths:
                   description: |
                     The type of Payment Method.
 
-                    Alternative Payment Methods including Google Pay can be added using Linode Cloud Manager. See our
+                    Alternative Payment Methods including Google Pay and PayPal can be added using Linode Cloud Manager. See our
                     guide on [Managing Billing in the Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
                     for details and instructions.
                   example: 'credit_card'
@@ -21158,6 +21158,7 @@ components:
           enum:
             - credit_card
             - google_pay
+            - paypal
           description: The type of Payment Method.
           example: 'credit_card'
           x-linode-cli-display: 2
@@ -21174,28 +21175,71 @@ components:
           description: When the Payment Method was added to the Account.
           example: '2018-01-15T00:01:01'
         data:
-          type: object
-          description: Credit card information.
-          properties:
-            card_type:
-              type: string
-              readOnly: true
-              description: The type of credit card.
-              example: "Discover"
-              x-linode-cli-display: 8
-            last_four:
-              type: string
-              readOnly: true
-              description: The last four digits of the credit card number.
-              example: "1234"
-              x-linode-cli-display: 9
-            expiry:
-              type: string
-              readOnly: true
-              format: MM/YYYY
-              description: The expiration month and year of the credit card.
-              example: 06/2022
-              x-linode-cli-display: 10
+          x-linode-cli-format: json
+          x-linode-cli-display: 4
+          oneOf:
+            - x-linode-ref-name: "Credit Card"
+              $ref: '#/components/schemas/CreditCardData'
+            - x-linode-ref-name: "Google Pay"
+              $ref: '#/components/schemas/GooglePayData'
+            - x-linode-ref-name: "Paypal"
+              $ref: '#/components/schemas/PayPalData'
+          discriminator:
+            propertyName: type
+    CreditCardData:
+      type: object
+      description: Credit card information.
+      properties:
+        card_type:
+          type: string
+          readOnly: true
+          description: The type of credit card.
+          example: "Discover"
+        last_four:
+          type: string
+          readOnly: true
+          description: The last four digits of the credit card number.
+          example: "1234"
+        expiry:
+          type: string
+          readOnly: true
+          format: MM/YYYY
+          description: The expiration month and year of the credit card.
+          example: 06/2022
+    GooglePayData:
+      type: object
+      description: Google Pay information.
+      properties:
+        card_type:
+          type: string
+          readOnly: true
+          description: The type of credit card.
+          example: "Discover"
+        last_four:
+          type: string
+          readOnly: true
+          description: The last four digits of the credit card number.
+          example: "1234"
+        expiry:
+          type: string
+          readOnly: true
+          format: MM/YYYY
+          description: The expiration month and year of the credit card.
+          example: 06/2022
+    PayPalData:
+      type: object
+      description: PayPal information.
+      properties:
+        email:
+          type: string
+          readOnly: true
+          description: The email address associated with your PayPal account.
+          example: "example@linode.com"
+        paypal_id:
+          type: string
+          readOnly: true
+          description: PayPal Merchant ID associated with your PayPal account.
+          example: "ABC1234567890"
     PaymentRequest:
       type: object
       required:
