@@ -1,59 +1,54 @@
 ---
-slug: view-active-processes-with-procs
+slug: view-active-linux-processes-with-procs
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'Learn how to view active processes on Linux via the command line with procs, a human-friendly command line utility.'
-og_description: 'Learn how to view active processes on Linux via the command line with procs, a human-friendly command line utility.'
-keywords: ['Ps command in linux','Procs command in linux','ps command alternative linux','Linux view process']
+keywords: ['ps command in linux','procs command in linux','ps command alternative linux','Linux view process']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-19
+published: 2021-11-19
 modified_by:
   name: Linode
-title: "View Active Processes on Linux with procs, a ps Alternative"
-h1_title: "View Active Processes on Linux with procs, a ps Alternative"
+title: "View Active Processes in Linux with the procs Command"
+h1_title: "View Active Linux Processes Using procs"
 enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:
-- '[procs GitHub page](https://github.com/dalance/procs)'
-- '[procs releases](https://github.com/dalance/procs/releases/tag/v0.11.10)'
+- '[Procs GitHub page](https://github.com/dalance/procs)'
+- '[Procs releases](https://github.com/dalance/procs/releases/tag/v0.11.10)'
 - '[Sample procs config files](https://github.com/dalance/procs/tree/master/config)'
-- '[Linux man page for the ps command](https://pubs.opengroup.org/onlinepubs/009604599/utilities/man.html)'
-- '[Homebrew](https://brew.sh/)'
-- '[snap](https://snapcraft.io/)'
 ---
 
-The [*procs*](https://github.com/dalance/procs) utility is a useful and informative alternative to the original Linux [*ps (process status) command*](https://pubs.opengroup.org/onlinepubs/009604599/utilities/man.html). Like `ps`, procs displays information about the active processes running on the system, including their cpu and memory usage. However, procs enhances its output with additional columns, an intuitive color scheme, and other helpful features. This guide provides some background on procs, and explains how to install and use it.
+The [*procs*](https://github.com/dalance/procs) utility is a useful and informative alternative to the original Linux [*`ps` (process status) command*](/docs/guides/use-the-ps-aux-command-in-linux/). Like ps, procs displays information about the active processes running on the system, including their CPU and memory usage. However, procs enhances its output with additional columns, an intuitive color scheme, and other helpful features. This guide provides some background on procs, and explains how to install and use it.
 
 ## An Introduction to procs
 
 Procs is an open source replacement for the `ps` command. It is written in the Rust programming language, which is known for its performance and maintainability. Procs is fully supported on Linux, and experimentally supported on macOS and Windows systems with some limitations. Here are some of its highlights and advantages:
 
-*   By default, procs displays the Process Id, User, CPU Usage, Memory Usage, CPU Time, and the command name.
-*   It can additionally display information that is not available in `ps`. Some of these columns include the TCP or UDP port, the read/write throughput, and information about virtual memory usage.
-*   It contains support for Docker containerization.
-*   Output is presented in a color-coded and human-readable format. A configuration file allows users to customize the display and the information that is shown. Tree view is supported.
-*   It adds pagination support, where users can inspect the output one page at a time.
-*   It allows users to search for multi-column keywords.
-*   It supports "watch mode", which is similar to the `top` command in Linux.
-*   It has additional keyboard shortcuts not found in `ps`.
+- By default, procs displays the Process Id, User, CPU Usage, Memory Usage, CPU Time, and the command name.
+- It can additionally display information that is not available in `ps`. Some of these columns include the TCP or UDP port, the read/write throughput, and information about virtual memory usage.
+- It contains support for Docker containerization.
+- Output is presented in a color-coded and human-readable format. A configuration file allows users to customize the display and the information that is shown. Tree view is supported.
+- It adds pagination support, where users can inspect the output one page at a time.
+- It allows users to search for multi-column keywords.
+- It supports "watch mode", which is similar to the `top` command in Linux.
+- It has additional keyboard shortcuts not found in `ps`.
 
 The [*procs GitHub page*](https://github.com/dalance/procs#kind-list) has a complete list of all the attributes it can display.
 
 ## Comparing ps to procs
 
-The procs utility is very similar to the `ps` command which it seeks to replace. Procs can do everything `ps` does, but it can display additional fields and has more options. So for most cases, it is the better choice. However, most significant information is available in both commands. `ps` is often supplemented with the `top` command. `top` displays a real-time view of the most resource-intensive processes. In procs, the `--watch` and `--watch-interval` options provide the same information. Procs supports tree format and customization, while `ps` does not.
+The procs utility is very similar to the `ps` command which it seeks to replace. Procs can do everything ps does, but it can also display additional fields and has more options. For this reason it is the better choice in most cases. However, both commands have the most significant information available. The `ps` command is often supplemented with the `top` command. top displays a real-time view of the most resource-intensive processes. In procs, the `--watch` and `--watch-interval` options provide the same information. Procs supports tree format and customization, while ps does not.
 
-Because the `ps` output is relatively sparse, users often append the `-ef` option for more meaningful results. `ps` is often used in conjunction with other commands, such as `grep`, to extract and summarize information. For more information about the `ps` command, see the [*Linode ps guide*](https://www.linode.com/docs/guides/use-the-ps-aux-command-in-linux/).
+Because the `ps` command's output is relatively sparse, users often append the `-ef` option for more meaningful results. `ps` is often used in conjunction with other commands, such as `grep`, to extract and summarize information. For more information about the `ps` command, see the [*Linode ps guide*](/docs/guides/use-the-ps-aux-command-in-linux/).
 
 ## Before You Begin
 
 1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  This guide uses `sudo` wherever possible. Complete the sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Update your system:
+1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -61,7 +56,7 @@ Because the `ps` output is relatively sparse, users often append the `-ef` optio
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## How to install procs
+## How to Install procs
 
 Procs can be installed using one of several package installers or by downloading the binary. Some Linux distributions include procs as part of the default package. However, a package is not available in the standard Ubuntu distribution.
 
@@ -69,27 +64,32 @@ Procs can be installed using one of several package installers or by downloading
 
 Both the [*Homebrew*](https://brew.sh/) and [*snap*](https://snapcraft.io/) package managers can be used to install procs.
 
-Follow these steps to install procs using Homebrew:
+Follow thes steps below to install procs using Homebrew:
 
-1.  If Homebrew is not already installed, install it using the Homebrew script.
+1. If Homebrew is not already installed, install it using the Homebrew script.
 
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-2.  Follow the instructions in the script and run the following commands. These instructions add Homebrew to the `$PATH` variable and install some additional components.
+
+1. Follow the instructions in the script and run the following commands. These instructions add Homebrew to the `$PATH` variable and install some additional components.
 
         echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/userid/.profile
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
         sudo apt-get install build-essential
         brew install gcc
-3.  Verify Homebrew is working properly using the `brew doctor` command.
+
+1. Verify Homebrew is working properly using the `brew doctor` command.
+
     {{< note >}}
 Use the `brew help` command to see a full list of the Homebrew commands.
     {{< /note >}}
 
         brew doctor
+
     {{< output >}}
 Your system is ready to brew.
     {{< /output >}}
-4.  Install procs using the `brew` command.
+
+1. Install procs using the `brew` command.
 
         brew install procs
 
@@ -98,43 +98,54 @@ The snap package manager can also install procs. Snap should already be installe
 Use the following command to install procs using snap.
 
     sudo snap install procs
+
 {{< output >}}
 procs v0.11.8 from dalance installed
 {{< /output >}}
 
 {{< note >}}
-On certain Linux distributions, the default system package manager can be used to install procs. For Fedora systems, use the command `sudo dnf install procs`. Use `sudo apk add procs` on Alpine Linux, and `sudo pacman -S procs` on Arch Linux. If Rust and its package manager Cargo are already installed, install procs using the `cargo install procs` command.
+On certain Linux distributions, the default system package manager can be used to install procs:
+
+- For Fedora systems, use the command `sudo dnf install procs`.
+- Use `sudo apk add procs` on Alpine Linux.
+- On an Arch Linux system use `sudo pacman -S procs`.
+- If Rust and its package manager Cargo are already installed, install procs using the `cargo install procs` command.
 {{< /note >}}
 
-### Installing procs from the Binary Files
+### Installing procs from Binary Files
 
 You can also install procs using the binary file. To download and install procs using this method, follow these steps.
 
-1.  Select the correct file for the system from the [*procs GitHub releases page*](https://github.com/dalance/procs/releases/tag/v0.11.10). Download the file directly to the system using `curl` or `wget`, or transfer it from another system using a utility such as `scp`.
+1. Select the correct file for the system from the [*procs GitHub releases page*](https://github.com/dalance/procs/releases/tag/v0.11.10). Download the file directly to the system using `curl` or `wget`, or transfer it from another system using a utility such as `scp`.
 
         wget https://github.com/dalance/procs/releases/download/v0.11.10/procs-v0.11.10-x86_64-lnx.zip
-2.  Unzip the file with the `unzip` program. If necessary, use `sudo apt install unzip` to install `unzip` first.
+
+1. Unzip the file with the `unzip` program. If necessary, use `sudo apt install unzip` to install `unzip` first.
 
         unzip procs-v0.11.10-x86_64-lnx.zip
-3.  Copy the file to a directory referenced within `$PATH`, such as `/usr/local/bin/`.
+
+1. Copy the file to a directory referenced within `$PATH`, such as `/usr/local/bin/`.
 
         sudo mv procs /usr/local/bin/
-4.  Change the file permissions.
+
+1. Change the file permissions.
 
         sudo chmod +x /usr/local/bin/procs
 
-## How to Use procs to View System Processes
+## How to Use procs to View Linux System Processes
 
-The procs application is very simple to use. To ensure it is installed correctly and to confirm the release number, use the `-V` option.
+The procs application is very simple to use. To ensure it is installed correctly and to confirm the version number, use the `-V` option.
 
     procs -V
+
 {{< output >}}
 procs 0.11.10
 {{< /output >}}
 
-To see a list of all the flags and options, use the `procs -h` command.
+To view a list of all the flags and options, use the `procs -h` command.
 
     procs -h
+
 {{< output >}}
 procs 0.11.10
 A modern replacement for ps
@@ -177,25 +188,28 @@ ARGS:
 
 ### Basic procs Usage
 
-On some systems, special characters can scramble the procs display. To avoid this problem, add the following line to your `.bashrc` file and then run the command `source ~/.bashrc`.
+On some systems, special characters can scramble the procs display. To avoid this problem, add the following line to your `.bashrc` file.
 
 {{< file "~/.bashrc" aconf >}}
 export LESSCHARSET=utf-8
 {{< /file >}}
 
+Then, run the command `source ~/.bashrc` to initialize the changes.
+
 By default, `procs` displays the following fields:
 
-*   The process ID (PID).
-*   The name of the user who owns the resource (User).
-*   The filename of the terminal connected to standard input (TTY).
-*   The percentage of CPU the process is using (CPU %).
-*   The percentage of memory the process is using (MEM %).
-*   The CPU time.
-*   The command associated with the process (Command). Additional arguments or parameters are not displayed.
+- The process ID (PID).
+- The name of the user who owns the resource (User).
+- The filename of the terminal connected to standard input (TTY).
+- The percentage of CPU the process is using (CPU %).
+- The percentage of memory the process is using (MEM %).
+- The CPU time.
+- The command associated with the process (Command). Additional arguments or parameters are not displayed.
 
 To display basic information about all processes, use `procs` without any other commands.
 
     procs
+
 ![Basic procs output](procs-basic.png)
 
 To see the rest of the processes, use the `ENTER` key or scroll through the list using the `up` and `down` arrows.
@@ -207,6 +221,7 @@ Type `q` to exit the procs application. On some systems, the `CONTROL-c` key als
 To search for a process, enter a search term in either string or numeric format. If a non-numeric string is used, procs displays any processes where either the user name or command name match the keyword. The following command lists all the processes that match the term `dev`.
 
     procs dev
+
 ![procs search by keyword](procs-search.png)
 
 If a numeric search term is used, procs matches it against the process ID. For example, `procs 11` searches for a process with a process ID of `11`.
@@ -223,7 +238,7 @@ Procs can display results in "tree" format. Subprocesses are shown as leafs of t
 
 ![procs display in tree format](procs-tree.png)
 
-For real-time information about the top processes, use the `--watch` keyword. The resulting behavior is very similar to the Linux `top` command. The watch function automatically updates the results every second. Results are ordered based on the currently active column, which is highlighted. The active column can be sorted in ascending order using the `a` key, or in descending rank with a `d`. Use the `q` key to quit. The `n` key is used to select the next column.
+For real-time information about the top processes, use the `--watch` keyword. The resulting behavior is very similar to the Linux `top` command. The watch function automatically updates the results every second. Results are ordered based on the currently active column, which is highlighted. The active column can be sorted in ascending order using the **a** key, or in descending rank with a **d**. Use the **q** key to quit. The **n** key is used to select the next column.
 
     procs --watch
 
@@ -249,18 +264,22 @@ The output can be sorted based on any column using the `--sorta` and `--sortd` o
 
 ![processes sorted by memory use](procs-sort-desc-mem.png)
 
-Users can personalize the default procs behavior using the `config.toml` file. When procs is first installed, there is no configuration file and the program uses the default settings. To modify the behavior on an ongoing basis, create a default `.toml` file and paste in the default configuration. Add or modify the columns or change the display or color scheme as required. For more information, see the [*procs GitHub site*](https://github.com/dalance/procs#configuration). To modify the procs settings, follow these steps.
+Users can personalize the default procs behavior using a `config.toml` file. When procs is first installed, there is no configuration file and the program uses the default settings. To modify the behavior on an ongoing basis, create a default `.toml` file and paste in the default configuration. Add or modify the columns or change the display or color scheme as required. For more information, see the [*procs GitHub site*](https://github.com/dalance/procs#configuration). To modify the procs settings, follow these steps.
 
-1.  Create a configuration file for procs at `~/.config/procs/config.toml`.
+1. Create a configuration file for procs at `~/.config/procs/config.toml`.
 
         mkdir ~/.config/procs
         touch ~/.config/procs/config.toml
-2.  Display the default configuration using the `--config` option.
+
+1. Display the default configuration using the `--config` option.
 
         procs --config
-3.  Copy the output from the beginning of the `[[columns]]` section to the bottom of the file.
-4.  Paste the entirety of the copied text into the new `config.toml` file.
-5.  Change or add any formatting as required. Sample configuration files can be found on the [*procs GitHub site*](https://github.com/dalance/procs/tree/master/config). For example, the following configuration snippet adds the `VmData` field to the configuration. Paste this text into the file right before the final separator in the `[[columns]]` section.
+
+1. Copy the output from the beginning of the `[[columns]]` section to the bottom of the file.
+
+1. Paste the entirety of the copied text into the new `config.toml` file.
+
+1. Change or add any formatting as required. Sample configuration files can be found on the [*procs GitHub site*](https://github.com/dalance/procs/tree/master/config). For example, the following configuration snippet adds the `VmData` field to the configuration. Paste this text into the file right before the final separator in the `[[columns]]` section.
 
     {{< file "~/.config/procs/config.toml" aconf >}}
 [[columns]]
@@ -270,13 +289,15 @@ numeric_search = false
 nonnumeric_search = false
 align = "Right"
     {{< /file >}}
-6.  Save the file.
-7.  Launch the procs application again. The new column should now appear as part of the display.
 
-![procs with a new custom field](procs-custom-config.png)
+1. Save the file.
+
+1. Launch the procs application again. The new column should now appear as part of the display.
+
+    ![procs with a new custom field](procs-custom-config.png)
 
 {{< note >}}
-It can be somewhat difficult to change the configuration using this method. New columns must be added in a certain order and in the proper format. Procs silently ignores non-compliant or improperly formatted configuration. For a ready-made configuration file that displays most of the useful columns, use the standardized [*large.toml template file*](https://github.com/dalance/procs/blob/master/config/large.toml). It might be easier and less error-prone to start with this file and remove any unwanted columns or configuration.
+It can be somewhat difficult to change the configuration using the method outlined in this section. New columns must be added in a certain order and in the proper format. Procs silently ignores non-compliant or improperly formatted configuration. For a ready-made configuration file that displays most of the useful columns, use the standardized [*large.toml template file*](https://github.com/dalance/procs/blob/master/config/large.toml). It might be easier and less error-prone to start with this file and remove any unwanted columns or configuration.
 {{< /note >}}
 
 ## A Summary of the procs Application
