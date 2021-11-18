@@ -3,11 +3,10 @@ slug: kotlin-tutorial-learn-the-basics
 author:
   name: John Mueller
 description: 'This Kotlin tutorial covers variables, functions, string templates, and classes. It uses code examples to cover the basics of the Kotlin programming language syntax.'
-og_description: 'This Kotlin tutorial covers variables, functions, string templates, and classes. It uses code examples to cover the basics of the Kotlin programming language syntax.'
 keywords: ['kotlin tutorial','kotlin function','kotlin class']
 tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-19
+published: 2021-11-19
 modified_by:
   name: Linode
 title: "Kotlin Tutorial: Learn the Basics"
@@ -18,7 +17,7 @@ contributor:
   link: http://www.johnmuellerbooks.com/
 ---
 
-Kotlin is a new cross-platform, statically typed, general-purpose programming language. It was originally created in 2011 by [JetBrains](https://www.jetbrains.com/) and was initially released in 2016. It relies on the Java Virtual Machine (JVM), just like Java, but there are significant differences that you can learn about in the [Kotlin vs Java guide](/docs/guides/kotlin-vs-java-understanding-their-differences/). One of the most interesting differences is that you can compile Kotlin to output JavaScript, Android, and native (which runs on iOS). In 2019, Google announced that Kotlin is now the preferred language for all Android development. This Kotlin tutorial provides you basics to help you no matter what type of output you need. You also learn how to work with Kotlin variables, Kotlin strings, Kotlin arrays, Kotlin lists, Kotlin collections, Kotlin functions. And finally, you develop a simple Kotlin class.
+Kotlin is a new cross-platform, statically typed, general-purpose programming language. It was originally created in 2011 by [JetBrains](https://www.jetbrains.com/) and was initially released in 2016. It relies on the Java Virtual Machine (JVM), just like Java, but there are significant differences that you can learn about in our [Kotlin vs Java guide](/docs/guides/kotlin-vs-java-understanding-their-differences/). One of the most interesting differences is that you can compile Kotlin to output JavaScript, Android, and Native (which runs on iOS). In 2019, Google announced that Kotlin is now the preferred language for all Android development. This Kotlin tutorial provides you basics to help you no matter what type of output you need. You also learn how to work with Kotlin variables, Kotlin strings, Kotlin arrays, Kotlin lists, Kotlin collections, Kotlin functions. And finally, you develop a simple Kotlin class.
 
 {{< note >}}
 To execute the Kotlin code snippets demonstrated in this guide, you can use the [Kotlin online playground](https://try.kotlinlang.org/). Or, if you are using an IDE like Android Studio or IntelliJ, you can install the [Kotlin plugin](https://kotlinlang.org/docs/install-eap-plugin.html).
@@ -31,16 +30,15 @@ Variables store data. A variable provides a name to a specific piece of memory t
 - `val`: Used for a variable whose value never changes and cannot be reassigned to a variable that was declared.
 - `var`: Used for a variable whose value changes frequently.
 
-
 The following sections describe variables and their uses in more detail.
 
 ### Understanding Variables
 
-Kotlin variables vary by type and the actions you can perform with them. In many cases, the compiler needs only a variable declaration and data to put into the variable to determine its type. The actions you can perform on variables are determined by a combination of the **variable types** and the **operators** you choose to use. The following sections discuss Kotlin variable types and operators.
+Kotlin variables vary by type and by the actions you can perform with them. In many cases, the compiler only needs a variable declaration and the data its value to determine its type. The actions you can perform on variables are determined by a combination of the **variable types** and the **operators** you choose to use. The following sections discuss Kotlin variable types and operators.
 
-####  Kotlin Variable Types
+#### Kotlin Variable Types
 
-Even if you don’t specifically assign a type to a variable, Kotlin variables always have a type. In many cases, that type is assigned for you by the compiler. For example, the line of code below produces a Kotlin variable of the `Int` type even though you don’t declare it as `Int`.
+Even if you don’t specifically assign a type to a variable, Kotlin variables always receive a type. In many cases, that type is assigned for you by the compiler. For example, the line of code below produces a Kotlin variable of the `Int` type even though you don’t declare it as `Int`.
 
     var MyInt = 3
 
@@ -48,7 +46,7 @@ The variable with the name `MyInt` now contains an `Int` value of `3`. Sometimes
 
     var MyInt: Long = 3
 
-To verify that `MyInt` is actually type `Long` and not type `Int`, you can use the `is` keyword in the below `println()`:
+To verify that `MyInt` is actually type `Long` and not type `Int`, you can use the `is` keyword with `println()`, as show below:
 
     fun main() {
       var MyInt: Long = 3
@@ -66,7 +64,7 @@ Using either of the above lines of code results in the following error:
 The integer literal does not conform to the expected type Float
 {{</ output >}}
 
-The first case tries to assign what Kotlin views as an `Int` to a `Float`. The second case tries to assign what Kotlin views as a `Double` to a `Float`. To make this declaration work, you must update the line of code as:
+The first case tries to assign what Kotlin views as an `Int` to a `Float`. The second case tries to assign what Kotlin views as a `Double` to a `Float`. To make this declaration work, you must update the line of code as follows:
 
     var MyFloat: Float = 3.0f
 
@@ -93,13 +91,20 @@ Kotlin also supports the common math operators: `+`, `-`, `*`, `/`, and `%`. The
 
 The special modulus operator, `%`, returns the remainder in integer division. For example, `println(5 / 3)` returns a value of `1`, while `println(5 % 3)` returns a value of `2`.
 
-Not all Kotlin operators are binary. For example, `println(A++)` returns a value of `2` when `A `contains a value of `1`. The value of `A` is incremented as a result of using the increment (`++`) operator, so this change is permanent.
+You can increase a variable's value using the increment (`++`) operator. For example, `println(A++)` returns a value of `2` when `A `contains a value of `1`.
 
 Unary operators appear in a number of ways, such as the unary not (`!`) operator where `println(!true)` results in an output of `false`.
 
-There is no ternary operator in Kotlin as you might find in other languages. For example, the condition `? then : else` construction isn’t available. Because `if` is an expression in Kotlin, you use the following instead:
+There is no ternary operator in Kotlin as you might find in other languages. For example, the condition `? then : else` construction isn’t available. You can use the `if..else` expression to achieve the same result:
 
-    println(if (A > B) "A is Greater" else "B is Greater")
+    var max: Int
+    if (a > b) {
+        max = a
+        print ("A is Greater")
+    } else {
+        max = b
+        print ("B is Greater")
+    }
 
 Assuming `A` is equal to `1` and `B` is equal to `2`, the output is `B is Greater`. Note the use of the comparison "greater than" operator (`>`).
 
@@ -109,9 +114,9 @@ Kotlin supports the usual logical operators: `&&`, `||`, `!`, comparison operato
 Something not mentioned in the standard reference (at least with the operators) is the use of the bitwise and bitshift operators. The bitwise operators perform operations on variables at the bit level and include `or`, `and`, `xor`, and the `inv()` function.
 {{</ note >}}
 
-The `inv()` function looks a bit odd until you think about what task it performs. For example, you can type `println(1.inv()`) and see a legitimate output of `-2`. The input value of `0001` is inverted to appear as `1110`, or `-2`.
+The `inv()` function looks a bit odd until you think about what task it performs. For example, you can type `println(1.inv())` and see a legitimate output of `-2`. The input value of `0001` is inverted to appear as `1110`, or `-2`.
 
-The bitshift operators shift bits left (`shl`), right (`shr`), or unsigned right (`ushr`). For example, `println(1 shl 2)` means to shift the bit value `0001` left two places resulting in `0100` or a value of `4`.
+The bitshift operators shifts bits left (`shl`), right (`shr`), or unsigned right (`ushr`). For example, `println(1 shl 2)` means to shift the bit value `0001` left two places resulting in `0100` or a value of `4`.
 
 ### Using Mutable Variables
 
@@ -121,18 +126,18 @@ All of the variables used in this guide so far are mutable, which means the appl
 
 Kotlin read-only variables can receive a value at the time of creation, but an application can’t change the value directly later. The following sections describe read-only variables in more detail.
 
-####  Declaring and Using a Read-only Variable
+#### Declaring and Using a Read-only Variable
 
-To declare a read-only variable, an application uses the `val` keyword, instead of the `var` keyword. In the following example, the application defines `A` as having a value of `4` at the time of creation. The attempt to change the value to `5` results in an error:
+To declare a read-only variable, use the `val` keyword, instead of the `var` keyword. In the following example, the application defines `A` as having a value of `4` at the time of creation. The attempt to change the value to `5` results in an error:
 
     val A = 4  // A is assigned a value of 4.
-    A = 5      //Produces an error message - Val cannot be reassigned
+    A = 5      //Produces an error message - val cannot be reassigned
 
 #### Differentiating Between Read-only and Immutable
 
 There is some confusion between read-only and immutable. A Kotlin read-only variable isn’t immutable, which means that its value could never change. The computed value of a read-only variable can change. To understand what this means, consider the following example of the `Square` class.
 
-{{< file "variables_example.kt" kotlin>}}
+{{< file "variables_example.kt" kotlin >}}
 fun main() {
   var MySquare = Square()
   println("The value of Area is: ${MySquare.area}")
@@ -161,8 +166,9 @@ The value of Area is: 8
 The value of Area is: 20
 {{</ output >}}
 
-The reason that it’s possible to change `area`, but not `A`, is that `area` is a computed value within a class. Classes appear in more detail later in this guide.
-The same thing holds true but in a different way for read-only variables that contain a [lambda function](https://kotlinlang.org/docs/lambdas.html) like in the following example:
+The value of `area` is computed within the `Square` class for this reason the value of `area` changes. However, a direct assignment of `area` is not possible.[Classes](/docs/guides/kotlin-tutorial-learn-the-basics/#declare-a-kotlin-class) are discussed in more detail later in this guide.
+
+The same thing holds true, but in a different way, for read-only variables that contain a [lambda function](https://kotlinlang.org/docs/lambdas.html) like in the following example:
 
     val DoAdd: (Int, Int) -> Int = {A, B -> A + B}
 
@@ -187,7 +193,7 @@ fun main() {
 }
 {{</ file >}}
 
-In the above example, the first form of string literal (i.e., the variable, `MyEscapedString`) is an escaped string, where special codes, such as `\n`, perform formatting. The second form of string literal (i.e., the variable, `MyRawString`) is a raw string. In a raw string, the actual appearance of the string performs the formatting and no escape characters are used. Following would be the output for the example above; `Hello` appears on the first line, `World!` appears on the second line. Raw string literals are always contained within triple quotes as shown in the example above.
+In the above example, the first form of string literal (i.e., the variable, `MyEscapedString`) is an escaped string, where special codes, such as `\n`, perform formatting. The second form of string literal (i.e., the variable, `MyRawString`) is a raw string. In a raw string, the actual appearance of the string performs the formatting and no escape characters are used. The output for `MyRawString` has `Hello` appear on the first line, and `World!` appears on the second line. Raw string literals are always contained within triple quotes as shown in the example above.
 
 {{< output >}}
 Example of Escaped String: Hello
@@ -216,7 +222,7 @@ String templates are string literals that store a specific expression. A string 
     var Total = A + B
     println("The sum of $A plus $B is $Total.")
 
-When this code is executed, it displays the following string: `The sum of 1 plus 2 is 3.`. The `$` that appears before each of the variable names tells Kotlin to evaluate the variable and provide its value as output. If the application attempts to provide a variable that doesn't exist, Kotlin outputs an error message. The message can be a little confusing in this case because it mentions initializing the variable. It’s not possible to initialize any variable within a string template; the variable must exist before you use it in the string template.
+When this code is executed, it displays the following string: `The sum of 1 plus 2 is 3.`. The `$` that appears before each of the variable names tells Kotlin to evaluate the variable and provide its value as output. If the application attempts to provide a variable that doesn't exist, Kotlin outputs an error message. The error message can be a little confusing, because it mentions initializing the variable. It’s not possible to initialize any variable within a string template; the variable must exist before you use it in the string template.
 
 ### Working with Expressions in String Templates
 
@@ -243,7 +249,7 @@ As with string literals, you can use raw string templates. This approach is most
 
 ## Create a Kotlin Array
 
-A Kotlin array is a method of boxing up a set of values and providing an easy method of accessing them as needed. It relies on the underlying Java JVM, so if you know how to use an array in Java, you also know how to use it in Kotlin. Using an array makes it possible to pass the group of values in a single variable, rather than individually, which makes code easier to read, and less error-prone. The following sections discuss the use of arrays in Kotlin.
+A Kotlin array stores a set of values and provides a method to access each value as needed. Kotlin arrays rely on the underlying Java JVM. For this reason creating and using arrays in Kotlin is the same as it is in Java. Arrays make it possible to store a group of values in a single variable, rather than individually. This makes code easier to read and less error-prone. The following sections discuss the use of arrays in Kotlin.
 
 ### Declaring a Kotlin Array
 
@@ -255,7 +261,7 @@ A Kotlin array is a fixed size, so you normally declare it using `val`. The `arr
 
 ### Making the Array a Specific Type
 
-It’s important to ensure an array contains data of a specific type. There are several options to make this happen. The first is to declare the data type as shown below:
+You can also ensure an array contains data of a specific type. There are several options to make this happen. The first is to declare the data type as shown below:
 
     val Places = arrayOf<String>("Mountain", "Ocean", "Farm", "City")
 
@@ -275,23 +281,23 @@ For example, you can declare an array of integers in the following way:
 
 ### Iterate Through a Kotlin Array
 
-An array provides a zero-based index to each member of the array. Consequently, the first member of the array is at index `0`, while the last member of the array is the size of the array minus `1`. An array of size 4 would have the last index of `3`. Using the `Places` array created in the previous section, the following code outputs a value of `Ocean`.
+An array provides a zero-based index to each member of the array. Consequently, the first member of the array is at index `0`, while the last member of the array is the size of the array minus `1`. The last value in an array of size 4 would have an index of `3`. Using the `Places` array created in the previous section, the following code outputs a value of `Ocean`.
 
     println(Places[1])
 
 Notice that the index appears in square brackets behind the variable name. An attempt to access `Places[4]` would result in an error message because the `Places` array contains only four entries.
 
-The more common way to iterate a Kotlin array is with a `for` loop. The following code displays each of the array members in turn:
+The more common way to iterate a Kotlin array is with a `for` loop. The following code outputs each of the `Places` array members:
 
     for (Place in Places) {
       println(Place)
     }
 
-Each of the values in `Places` appears on a separate line in the output. The values appear one at a time in `Place` where you can perform any task desired with the value.
+The values appear one at a time where you can perform any operation with the value.
 
 ### Using Indexing with Kotlin Arrays
 
-Other languages often provide `for` loops that allow accessing individual values within an array based on an indexing variable. You can mimic this behavior using a number of methods in Kotlin. One way to perform this task is to rely on the `indices` property as shown here (printing only the even index items in `Places`).
+Other languages often provide `for` loops that allow accessing individual values within an array based on an indexing variable. You can mimic this behavior using a number of methods in Kotlin. One way to perform this task is to rely on the `indices` property as shown below (printing only the even index items in `Places`).
 
     for (i in Places.indices) {
       if (i % 2 == 0) {
@@ -307,7 +313,7 @@ Another alternative is to rely on the `withIndex()` function as shown below:
 
 Kotlin provides a rich mixture of [properties and functions](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/) to use with arrays to achieve specific effects.
 
-###  Adding to an Array
+### Adding to an Array
 
 Kotlin arrays have a fixed size. Using the various techniques available, you can add a new element to an array using the code shown below:
 
@@ -317,11 +323,11 @@ Kotlin arrays have a fixed size. Using the various techniques available, you can
     temp[Places.size] = "Valley"
     Places = temp
 
-`Places` is declared as a `var` and it’s also of a nullable `String` type (the `<String?>` part of the declaration means that either a `String` or a `null` value is acceptable). If you declare `Places` as `val`, then you can’t make the assignment of the new array to it. The result of this code is that `Places` now contains `Valley` as the last entry and has five elements instead of four. It’s not possible to add directly to a Kotlin array, you must create a temporary array instead.
+`Places` is declared as a `var` and it’s also of a nullable `String` type (the `<String?>` part of the declaration means that either a `String` or a `null` value is acceptable). If you declare `Places` as `val`, then you can’t assign a new array to `Places`. The result of this code is that `Places` now contains `Valley` as the last entry and has five elements instead of four. It’s not possible to add directly to a Kotlin array, you must create a temporary array instead.
 
 ## Kotlin Collections
 
-In many respects, working with a Kotlin collection is much the same as working with a Kotlin array. You use many of the same techniques with them. Unlike arrays, a Kotlin collection isn’t a direct use of the underlying Java JVM. Instead, it relies on Kotlin interfaces. In addition, the Kotlin collection interfaces [act as the parents for three more distinct methods of organizing data](https://kotlinlang.org/docs/collections-overview.html) (you don’t use collections directly in your code).
+In many respects, working with a Kotlin collection is much the same as working with a Kotlin array. You use many of the same techniques with them. Unlike arrays, a Kotlin collection isn’t a direct use of the underlying Java JVM. Instead, it relies on Kotlin interfaces. In addition, the [Kotlin collection](https://kotlinlang.org/docs/collections-overview.html) interfaces act as the parents for three more distinct methods of organizing data (you don’t use collections directly in your code).
 
 - [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/): An ordered collection that allows access to members using indices, much the same as an array. A Kotlin list can contain duplicate values and mixed data types (unless you specify a particular data type).
 
@@ -329,11 +335,11 @@ In many respects, working with a Kotlin collection is much the same as working w
 
 - [Map](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/): A key/value pair ordering of data. The key is unique, while the values can be duplicates. Theoretically, you can create both keys and values of mixed data types, but in practice, it’s unlikely to happen due to the problems of attempting to interact with the resulting data structure. The index for a Kotlin map is the key provided when adding the item to the map, so the indices are not guaranteed to be contiguous or in any particular order.
 
-Collections can also be read-only using the [`Collection` interface](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/) or mutable using the [`MutableCollection` interface](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/). The `MutableCollection` interface extends the Collection interface and provides additional functions to add, remove, and perform other mutable interactions with the collection.
+Collections can also be read-only using the [`Collection` interface](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/) or mutable using the [`MutableCollection` interface](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/). The `MutableCollection` interface extends the `Collection` interface and provides additional functions to add, remove, and perform other mutable interactions with the collection.
 
 ## Create a Kotlin List
 
-A Kotlin list ensures the order of the data within the list remains the same. Consequently, if you look for the value at index `2`, a list always returns the same value. This is the case unless you’re working with a mutable list and either remove the value from the list or place another value in front of it. The list is ordered so you can use indices when working with it. Lists also come in read-only and mutable forms. The read-only list doesn't allow modification of the list after you create it. The mutable list allows modifications including additions, removals, and value changes. The following sections discuss Kotlin lists in more detail.
+A Kotlin list ensures the order of the data within the list remains the same. Consequently, if you look for the value at index `2`, a list always returns the same value. This is the case unless you’re working with a mutable list and add or remove a value from the list. The list is ordered so you can use indices when working with it. Lists also come in read-only and mutable forms. The read-only list doesn't allow modification of the list after you create it. The mutable list allows modifications including additions, removals, and value changes. The following sections discuss Kotlin lists in more detail.
 
 ### Declaring Read-Only Lists
 
@@ -341,7 +347,7 @@ A Kotlin read-only `List` is a specialized form of a `Collection`. Once you decl
 
     val Places = listOf<String>("Mountain", "Ocean", "Farm", "City")
 
-If you compare this declaration to the array declaration earlier in this guide, you see that the declarations are almost the same. The only major difference is that you use `listOf()`, rather than `arrayOf()`. All of the same coding examples, like the one shown below, work well.
+If you compare this declaration to the array declaration earlier in the guide, you see that the declarations are almost the same. The only major difference is that you use `listOf()`, rather than `arrayOf()`. All of the same coding examples, like the one shown below, work well.
 
     for (i in Places.indices) {
       if (i % 2 == 0) {
@@ -356,13 +362,13 @@ There are differences between lists and arrays. Even though you can’t resize a
     val MyList = listOf(1, 2, 3, 4)
     MyList[2] = 60
 
-This immutable difference means that a list is more secure than an array because you can depend on list values remaining constant. You can still read the list values using an index.
+This immutable difference means that a list is more secure than an array because you can depend on list values remaining constant. You can also read list values using an index.
 
-The Kotlin list is also more convenient in many cases. For example, a Kotlin list provides the `containsAll()` method. This method allows checking a list for a list of items (rather than one at a time), while an array doesn't. You also find the `subList()` method that allows creating a new list based on part of the content of an existing list. An advantage to arrays is that it provides more low-level functionality that is hidden when working with a list. Both data structures are important and which you use depends on what you need to achieve in your code.
+In many cases, a Kotlin list is more convenient. For example, a Kotlin list provides the `containsAll()` method. This method allows checking a list for a list of items (rather than one at a time), while an array doesn't. You also find the `subList()` method that allows creating a new list based on part of the content of an existing list. An advantage to arrays is that it provides more low-level functionality that is hidden when working with a list. Both data structures are important and which you use depends on what you need to achieve in your code.
 
 ### Declare Mutable Lists
 
-Kotlin [`MutableList` objects](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) extend the `List` interface features by providing additional functionality. It’s now possible to do things like add additional values to the list or to remove unnecessary values without recreating the list. The following code shows how to declare a mutable list:
+Kotlin [`MutableList` objects](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) extend the `List` interface's features by providing additional functionality. It’s now possible to do things like add additional values to the list or to remove unnecessary values without recreating the list. The following code shows how to declare a mutable list:
 
     var Places = mutableListOf<String>("Mountain", "Ocean", "Farm", "City")
 
@@ -391,39 +397,39 @@ The first two methods return `true` or `false` depending on whether Kotlin found
 
 #### Sorting Lists
 
-Not all of the methods you can use with lists appear on the interface pages. For example, you find a number of methods to sort a list, but they all require a [comparator](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/). The code below works well even though the `sorted()` method doesn't appear on the interface pages.
+Not all of the methods you can use with lists appear in the interface section of Kotlin's documentation. For example, you find a number of methods to sort a list, but they all require a [comparator](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparator/). The code below works well even though the `sorted()` method doesn't appear in the interfaces documentation.
 
     for (item in Places.sorted())
       println(item)
 
-In this case, the [Ordering article](https://kotlinlang.org/docs/collection-ordering.html) provides the details you need. The Kotlin documentation is a little less than clear in some cases regarding the use of comparators. For example, to store `Places` the length of each item in the list, you use the following code:
+In this case, the [Collection Ordering documentation](https://kotlinlang.org/docs/collection-ordering.html) provides the details you need. The Kotlin documentation is a little less than clear in some cases regarding the use of comparators. For example, to sort by the length of each item in the `Places` list, you use the following code:
 
     for (item in Places.sortedBy({it.length}))
       println(item)
 
-Notice that the comparator is enclosed in curly brackets, indicating that it’s a lambda expression. The [`it` keyword](https://kotlinlang.org/docs/lambdas.html#it-implicit-name-of-a-single-parameter) refers to a single variable passed to the lambda expression, which is a single list value in this case. The code views each of the items and uses their `length` property as a means of ordering the entries in the output.
+Notice that the comparator is enclosed in curly brackets, indicating that it’s a lambda expression. The [`it` keyword](https://kotlinlang.org/docs/lambdas.html#it-implicit-name-of-a-single-parameter) refers to a single variable passed to the lambda expression, which is a single list value in this case. The code uses the `length` property of each item in the list as a means of ordering the entries and outputs them in the sorted order.
 
 ## Kotlin Functions
 
-A function provides the means to package code so you can reuse, edit, and debug. You use functions every time you work with Kotlin because that’s the most convenient way to allow code access. The following sections detail the use of Kotlin functions.
+A function provides the means to package code for reuse. The following sections detail the use of Kotlin functions.
 
 ### Kotlin Built-in Functions
 
-Kotlin provides myriad functions as part of the language. For example, you use a function when calling `println()` to output data to the display. Kotlin functions appear as part of the standard library. Kotlin functions differ from class methods where you can use a function directly without instantiating a class. The code is part of the underlying language support. Most Kotlin functions are extensions of Java. For example, the `Kotlin.io.path` package is an extension of the `java.nio.file.Path` package.
+Kotlin provides many functions as part of the language. For example, you use a function when calling `println()` to output data to the display. Kotlin functions appear as part of the standard library. Kotlin functions differ from class methods because you can use these built-in functions directly without instantiating a class. The code is part of the underlying language support. Most Kotlin functions are extensions of Java. For example, the `Kotlin.io.path` package is an extension of the `java.nio.file.Path` package.
 
-### Build User-Defined Functions
+### User-Defined Functions
 
-User-defined functions provide the means for a developer to package code for later use. A user-defined function differs from a class method in that the user-defined function tends to be free-standing. They perform utility tasks, such as a calculation or interacting with the user in some manner. When creating code to interact with data objects, using methods is the preferred approach. The function `Howdy()` is declared using the `fun` keyword as shown below:
+User-defined functions provide the means for a developer to package code for later use. A user-defined function differs from a class method in that the user-defined function is "free-standing". They perform utility tasks, such as a calculation or interacting with the user in some manner. When creating code to interact with data objects, using methods is the preferred approach. The function `Howdy()` is declared using the `fun` keyword as shown below:
 
     fun Howdy() {
       println("Hello There!")
     }
 
-Even though this is a limited function, it does provide the basic structure of what functions do. `Howdy()` provides a utility-type packaging of code that interacts with the user. Every time you want to greet the user, you can simply add `Howdy()` to your code.
+Even though this is a limited function, it does demonstrate the basic structure of what functions do. `Howdy()` provides a utility-type packaging of code that interacts with the user. Every time you want to greet the user, you can simply add `Howdy()` to your code.
 
 ### Create Functions that Accept Parameters
 
-Functions that work as a black box without any input can be powerful, but after a while they demonstrate the limits of not allowing input. The input provided to a function is called parameters. Functions can have as many parameters as needed and they can be of any type. The following sections discuss function parameters in more detail.
+Functions that work as a black box without any input can be powerful, but after a while they demonstrate the limits of not allowing input. The input provided to a function is a *parameter*. Functions can have as many parameters as needed and they can be of any type. The following sections discuss function parameters in more detail.
 
 #### Standard Parameters
 
@@ -437,7 +443,7 @@ In order to use `Howdy()`, provide a string containing a name, such as `Howdy("S
 
 #### Default Parameters
 
-In some cases, you may need to ensure that a parameter has a value even if the user doesn't supply one. To accomplish this task, use default parameters that have default values assigned to them as shown below:
+In some cases, you may need to ensure that a parameter has a value even if the user doesn't supply one. To accomplish this task, use parameters that have default values assigned to them as shown below:
 
     fun Howdy(name: String, timeOfDay: String = "Morning") {
       println("Good $timeOfDay $name!")
@@ -447,7 +453,7 @@ The example has one standard parameter, `name`, and one default parameter, `time
 
 #### Named Parameters
 
-Functions that contain default parameters don’t require that you provide input to any parameter that has a value assigned. Typing the inputs in order means that you are using positional arguments. Each input appears in its place as part of the function call. When a function contains a number of parameters, it may prove inconvenient to type the inputs you don’t need to change. This is where positional arguments come into place. Consider the example function below:
+Functions that contain default parameters don’t require that you provide when calling the function. Typing the inputs in order means that you are using positional arguments. Each input appears in its place as part of the function call. When a function contains a number of parameters, it may prove inconvenient to type the inputs you don’t need to change. This is where positional arguments come into place. Consider the example function below:
 
     fun Howdy(name: String, timeOfDay: String = "Morning", manager: Boolean = true) {
       if (manager)
@@ -478,16 +484,16 @@ All Kotlin functions provide a return value, but those that don’t specify a re
 
 ## Declare a Kotlin Class
 
-A Kotlin class goes beyond the code packaging provided by Kotlin functions by embracing the [Object Oriented Programming (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) paradigm. This provides the means to package code and data together in a form. It also reduces errors and makes it possible to update code with fewer consequences. OOP is found in most programming languages today because it provides a useful framework that developers find convenient. The following sections provide a brief overview of the creation and use of Kotlin classes.
+A Kotlin class goes beyond the code packaging provided by Kotlin functions by embracing the [Object Oriented Programming (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming) paradigm. This provides the means to package code and data together. It also reduces errors and makes it possible to update code with fewer consequences. OOP is found in most programming languages today because it provides a framework that developers find convenient. The following sections provide a brief overview on how to create and use Kotlin classes.
 
 ### Create a Class Body
 
-The shortest Kotlin class includes the `class` keyword, followed by a class name, and opening, and closing braces. For example:
+In its most basic form, a Kotlin class includes the `class` keyword, followed by a class name, and opening, and closing braces, as follows:
 
     class Rectangle {
     }
 
-Of course, this class wouldn't do much, but you could still create an object from it, such as `var Test = Rectangle()`. Kotlin classes can be quite simple and making them more complicated than needed is the path to disappointment.
+Of course, this class wouldn't do much, but you could still create an object from it, such as `var Test = Rectangle()`.
 
 ### Provide a Default Constructor
 
@@ -502,7 +508,7 @@ A class always has a primary constructor. If you don’t provide one, then Kotli
       }
     }
 
-To instantiate an object based on `Rectangle`, provide the `height` and `width` values, such as `var Test = Rectangle(2, 4)`. If you provide default values for the two parameters, you could call it using the same strategy as when working with [default parameters and named parameters for functions](/docs/guides/kotlin-tutorial-learn-the-basics/#default-parameters). For example, the class declaration below would allow instantiating `Rectangle` without any arguments.
+To instantiate an object based on `Rectangle`, provide the `height` and `width` values, such as `var Test = Rectangle(2, 4)`. If you provide default values for the two parameters, you could call it using the same strategy as when working with [default parameters and named parameters for functions](/docs/guides/kotlin-tutorial-learn-the-basics/#default-parameters). For example, the class declaration below allows instantiating `Rectangle` without any arguments.
 
     class Rectangle(height: Int = 2, width: Int = 2) {
       ...
@@ -512,9 +518,9 @@ The `height` and `width` parameters are internal to the class. In order to make 
 
 ### Add Properties
 
-When working with Kotlin, properties are variables with a little added pizzazz. The previous section shows the `Height`, `Width`, and `RectStr` properties as simple variables. To create a read-only property, declare the variable using the `val` keyword, rather than the `var` keyword.
+When working with Kotlin, properties are variables with extra functionality. The previous section shows the `Height`, `Width`, and `RectStr` properties as simple variables. To create a read-only property, declare the variable using the `val` keyword, rather than the `var` keyword.
 
-Kotlin properties allow modification of the getter and setter for a property so that it becomes possible to perform validation and other tasks. The following version of `Rectangle` class shows range checks for `Height` and `Width` so that the input values don’t become too great or too small. In addition, it automatically updates `RectStr` as needed for height and width changes.
+Kotlin properties allow modification of the *getter* and *setter* for a property so that it becomes possible to perform validation and other tasks. The following version of `Rectangle` class shows range checks for `Height` and `Width` so that the input values don’t become too great or too small. In addition, it automatically updates `RectStr` as needed for height and width changes.
 
     class Rectangle(height: Int, width: Int) {
       var Height: Int = height
@@ -552,4 +558,4 @@ To use the `SayHowdy()` method, call it from `TestStatic` class using `TestStati
 
 ## Conclusion
 
-This guide provides the briefest of overviews of the Kotlin language. Kotlin is a robust language used for a wide variety of needs. It simplifies much of the functionality that Java provides, reduces errors, and speeds development. Kotlin also provides a significant level of flexibility in developing code for a variety of needs and environments.
+This guide provides the basics of the Kotlin language. Kotlin is a robust language used for a wide variety of needs. It simplifies much of the functionality that Java provides, reduces errors, and speeds development. Kotlin also provides a significant level of flexibility in developing code for a variety of needs and environments. If you are not as familiar with Java, read our [Kotlin vs. Java: Key Differences](/docs/guides/kotlin-vs-java-understanding-their-differences/) to understand how the two languages compare.
