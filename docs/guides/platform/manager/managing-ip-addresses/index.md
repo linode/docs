@@ -5,11 +5,11 @@ author:
   email: docs@linode.com
 description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
-keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access", "add additional ipv4 address", "add ip address", "add additional ip address"]
-tags: ["linode platform","resolving","cloud manager","networking"]
+keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
+tags: ["linode platform","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/']
-modified: 2021-11-16
+modified: 2021-11-19
 modified_by:
   name: Linode
 published: 2016-08-23
