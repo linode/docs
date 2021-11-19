@@ -42,11 +42,11 @@ This guide supports the Dallas (USA), Frankfurt (Germany), Fremont (USA), London
 
 ## Configuring IP Sharing
 
-Before using keepalived to configure IP failover for a public IP address, you first need to use Linode's IP Sharing feature to share your IP address with other Compute Instances. To do so, follow the instructions within the **Configuring IP Sharing** section of the [Managing IP Addresses](https://www.linode.com/docs/guides/managing-ip-addresses/#configuring-ip-sharing) guide for *each secondary* Compute Instance.
+Before using keepalived to configure IP failover for a public or private IPv4 address (not VLANs), you first need to use Linode's IP Sharing feature to share your IP address with other Compute Instances. To do so, follow the instructions within the **Configuring IP Sharing** section of the [Managing IP Addresses](https://www.linode.com/docs/guides/managing-ip-addresses/#configuring-ip-sharing) guide for *each secondary* Compute Instance.
 
-## Installing keepalived
+## Installing and Configuring keepalived
 
-This section covers installing the keepalived software from your distribution's repository. See [Installing Keepalived](https://keepalived.readthedocs.io/en/latest/installing_keepalived.html) on the official documentation if you prefer to install it from source.
+This section covers installing the keepalived software from your distribution's repository. See [Installing Keepalived](https://keepalived.readthedocs.io/en/latest/installing_keepalived.html) on the official documentation if you prefer to install it from source. After installing keepalived, the next step is to configure it for your particular IP failover scenario.
 
 1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
@@ -67,22 +67,18 @@ This section covers installing the keepalived software from your distribution's 
         sudo yum update
         sudo yum install keepalived
 
-## Configuring keepalived
-
-After installing keepalived, the next step is to configure it for your particular IP failover scenario. Use the example below as a starting point. For more configuration options, see [Configuration Options](#configuration-options).
-
 1.  Start editing a new keepalived configuration file.
 
-        vim /etc/keepalived/keepalived.conf
+        sudo nano /etc/keepalived/keepalived.conf
 
-1.  Enter the proper settings for your configuration into this file. You can copy the example below, replacing the following items:
+1.  Enter the proper settings for your configuration into this file. Use the example below as a starting point, replacing the following items. For more configuration options, see [Configuration Options](#configuration-options).
 
     - Replace *$password* with a secure password to use for this configuration instance. You should use the same password for each Compute Instance you configure.
 
     - Replace *192.0.2.0* with the IP address for which you'd like to enable failover.
 
     {{< note >}}
-If configuring IP failover on a VLAN IP, you likely need to change the *interface* value from `eth0` to `eth1`. See the **interface** item under [Configuration Options](#configuration-options) for help finding the Ethernet Interface your VLAN may be using.
+If configuring IP failover on a VLAN IP, you likely need to change the *interface* value from `eth0` to `eth1`. See the **interface** item under [Configuration Options](#configuration-options) for help finding the Network Interface your VLAN may be using.
 {{</ note >}}
 
     {{< file "/etc/keepalived/keepalived.conf" >}}
@@ -107,7 +103,7 @@ vrrp_instance Instance1 {
         sudo systemctl enable keepalived
         sudo systemctl start keepalived
 
-1.  Perform these steps again for each secondary Compute Instance you would like to configure. You can use the same configuration file as provided above, but make the following adjustments:
+1.  Perform these steps again on *each* secondary Compute Instance you would like to configure. You can use the same configuration file as provided above, but make the following adjustments:
 
     - Set the *state* value to `BACKUP`
     - Set the *priority* value to `99` or less, depending on the failover order you prefer for the secondary Compute Instances.
@@ -118,9 +114,9 @@ When configuration keepalived, there are quite a few options that can be modifie
 
 - **vrrp_instance:** The VRRP instance definition block. Set this to whatever you'd like to call this block. To help with identification, this should be the same value across all Compute Instances that will share the specified IP address.
 - **state:** Set this to `MASTER` if the IP address is natively assigned to this Compute Instance. When configuring it as a secondary failover server, use `BACKUP`.
-- **interface:** Set this to whichever Ethernet interface the IP address is using or should use. To find the interface, log in to the [Cloud Manager](https://cloud.linode.com/), click on the **Linodes** link on the left menu, select your Compute Instance, navigate to the **Configurations** tab and review the **Network Interfaces** column for your active configuration profile. For public IP addresses, the interface is typically `eth0` and for vlan addresses, the interface is likely `eth1`.
+- **interface:** Set this to whichever Network Interface the IP address is using or should use. To find the interface, log in to the [Cloud Manager](https://cloud.linode.com/), click on the **Linodes** link on the left menu, select your Compute Instance, navigate to the **Configurations** tab and review the **Network Interfaces** column for your active configuration profile. For public IP addresses the interface is typically `eth0` and for vlan addresses the interface is likely `eth1`.
 
-    ![](ip-failover-keepalived-ethernet-configuration.png)
+    ![The Configuration tab in the Cloud Manager](ip-failover-keepalived-ethernet-configuration.png)
 
 - **priority:** When multiple secondary Compute Instances are configured for IP failover, this sets the order in which they will be used.
 - **auth_pass:** Set the password used by keepalived for failover synchronization. This should be used across all Compute Instances that will share the specified IP address.
