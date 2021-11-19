@@ -64,7 +64,7 @@ Procs can be installed using one of several package installers or by downloading
 
 Both the [*Homebrew*](https://brew.sh/) and [*snap*](https://snapcraft.io/) package managers can be used to install procs.
 
-Follow thes steps below to install procs using Homebrew:
+Follow the steps below to install procs using Homebrew:
 
 1. If Homebrew is not already installed, install it using the Homebrew script.
 
