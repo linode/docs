@@ -48,6 +48,26 @@ Existing Volumes can be upgraded to NVMe soon after NVMe Block Storage has been 
 If the Volume is attached to a Linode Compute Instance during the upgrade process, the Compute Instance may be rebooted to complete the upgrade. If this occurs, it will return to its last known power state.
 {{</ note >}}
 
+## Manually Upgrading a Volume to NVMe Block Storage
+
+If a scheduled upgrade is available for your Volume, follow the steps above in the [Upgrading a Volume to NVMe Block Storage](#upgrading-a-volume-to-nvme-block-storage) section. Otherwise, if this automated upgrade is not yet available for your Volume, you can manually upgrade to NVMe by following the procedure below.
+
+1.  Create a new Volume within the same data center as your existing Volume. Provided that NVMe Block Storage has already launched in your data center, all new Volumes use the new NVMe architecture. Make sure the new Volume is large enough to accommodate your data and that you attach it to the same Compute Instance and configuration profile. See [Add a Block Storage Volume](/docs/products/storage/block-storage/guides/add-volume/).
+
+1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+
+1.  Perform any configuration steps necessary to create a file system on the new Volume and mount it to your system. See [Configure and Mount a Block Storage Volume](/docs/products/storage/block-storage/guides/configure-volume/).
+
+1.  Run the following command to copy your data, replacing `[path-to-original-volume]` with the file system path to your original Volume and `[path-to-nvme-volume]` with the path to the new Volume you just created. These paths are likely under the `/mnt/` directory.
+
+        sudo rsync -rah --progress [path-to-original-volume]/* [path-to-nvme-volume]/
+
+1.  After the transfer has completed, you can modify any applications using your original Volume to point to the mount directory of the new NVMe Volume. Then, follow the [Detach a Block Storage Volume](/docs/products/storage/block-storage/guides/detach-volume/) guide to unmount and detach your original Volume.
+
+    If you prefer not to modify any applications to use a new directory, you can rename your NVMe Volume to the use the same name as your original Volume (first renaming or deleting your original Volume). Then reboot your Compute Instance. Provided you original Volume was configured to automatically mount upon boot, the new Volume will be mounted instead.
+
+1.  Once your verify that your new Volume is working as expected, you can delete the original Volume by following the [Delete a Block Storage Volume](/docs/products/storage/block-storage/guides/delete-volume/) guide. If you decide not to delete it, you will be billed for both Volumes going forward.
+
 ## Frequently Asked Questions
 
 ### What are the performance benefits of NVMe Block Storage?
