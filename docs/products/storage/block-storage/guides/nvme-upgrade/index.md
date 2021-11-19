@@ -50,7 +50,7 @@ If the Volume is attached to a Linode Compute Instance during the upgrade proces
 
 ## Manually Upgrading a Volume to NVMe Block Storage
 
-If a scheduled upgrade is availabe for your Volume, follow the steps above in the [Upgrading a Volume to NVMe Block Storage](#upgrading-a-volume-to-nvme-block-storage) section. Otherwise, if this automated upgrade is not yet available for your Volume, you can manually upgrade to NVMe by following the procedure below.
+If a scheduled upgrade is available for your Volume, follow the steps above in the [Upgrading a Volume to NVMe Block Storage](#upgrading-a-volume-to-nvme-block-storage) section. Otherwise, if this automated upgrade is not yet available for your Volume, you can manually upgrade to NVMe by following the procedure below.
 
 1.  Create a new Volume within the same data center as your existing Volume. Provided that NVMe Block Storage has already launched in your data center, all new Volumes use the new NVMe architecture. Make sure the new Volume is large enough to accommodate your data and that you attach it to the same Compute Instance and configuration profile. See [Add a Block Storage Volume](/docs/products/storage/block-storage/guides/add-volume/).
 
