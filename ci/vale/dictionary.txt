@@ -20,6 +20,7 @@ ag
 ahci0
 Aho
 ahvz
+aircrack
 ajp
 aker
 alef
@@ -136,7 +137,9 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitshift
 bitwarden
+bitwise
 blkid
 blockchain
 blocklists
@@ -309,6 +312,7 @@ ctx
 cuda
 curlie
 cutover
+cyber
 cyberduck
 cyberpanel
 cybersecurity
@@ -353,6 +357,7 @@ deathmatch
 debconf
 declaratively
 deduplication
+deepin
 defragment
 delpy
 demultiplexer
@@ -374,6 +379,7 @@ dex
 df
 dhclient
 dhparams
+dia
 dialogs
 diavel
 diffie
@@ -459,6 +465,7 @@ enum
 env
 envs
 epel
+equifax
 erb
 erlang
 esc
@@ -470,6 +477,7 @@ ethtool
 eugen
 eval
 evhost
+exabeam
 example1
 example2
 examplegroup
@@ -546,6 +554,7 @@ flatpress
 flowlens
 flyspray
 foodcritic
+fortinet
 fortran
 fordham
 fmt
@@ -770,6 +779,7 @@ initramfs
 initrd
 inittab
 injectable
+inkscape
 inode
 inotify
 inrupt
@@ -886,7 +896,9 @@ kloxo
 knockpy
 knowledgebase
 konsole
+kotin
 konversation
+krita
 ktor
 kube
 kubeadm
@@ -1184,6 +1196,7 @@ netloc
 netmask
 netplan
 netstat
+netstumbler
 netuser
 networkd
 newgrp
@@ -1236,6 +1249,7 @@ ntop
 ntopng
 ntp
 ntpd
+nullable
 nullval
 num
 numpy
@@ -1286,6 +1300,7 @@ paas
 packagist
 pagent
 pagespeed
+palo
 pandoc
 param
 parameterizing
@@ -1322,6 +1337,7 @@ pgpass
 pharmer
 pharo
 phonebook
+photoshop
 php
 php5
 php7
@@ -1557,6 +1573,7 @@ s3cr37
 s3cret
 saas
 sakila
+safend
 salesforce
 sam
 samy
@@ -1635,8 +1652,10 @@ shortcodes
 shortguide
 shortguides
 shortname
+shotcut
 shoutcast
 scikit
+scribus
 sidekiq
 sievers
 signup
@@ -1663,6 +1682,8 @@ solaris
 solr
 somaxconn
 someuser
+sonicwall
+sophos
 spamassassin
 spamd
 spamhaus
@@ -1735,6 +1756,7 @@ superset
 supervisord
 supervisorctl
 surbma
+suricata
 sury
 suse
 swappable
@@ -1760,6 +1782,7 @@ systeminfo
 systemname
 sysv
 sysvinit
+tanium
 targ
 tasksel
 taskserver
@@ -1789,6 +1812,7 @@ thawte
 theano
 theming
 thingsboard
+thycotic
 tigervnc
 tightvncserver
 tika
@@ -1859,6 +1883,7 @@ un
 unaliased
 uname
 unarchive
+unary
 unban
 unbans
 unbilled
@@ -1933,6 +1958,7 @@ vcs
 vdev
 vdevs
 ve
+veeam
 venv
 ver
 veracode
@@ -2020,6 +2046,7 @@ winscp
 winsxs
 windowlist
 wireguard
+wireshark
 wkhtmltopdf
 wkhtmltox
 wll
@@ -2101,11 +2128,13 @@ zile
 zimbra
 zipkin
 zipkinhost
+zix
 zkcluster1root
 zlib
 znc
 zonefiles
 zope
+zorin
 zpool
 zsh
 zshrc
