@@ -200,23 +200,23 @@ By convention, SVN uses a root directory for each project, with the `trunk/tags/
 {{< output >}}
 /
   project1/
-	/trunk
-	/tags
-	/branches
+    /trunk
+    /tags
+    /branches
   project2/
-	/trunk
-	/tags
-	/branches
+    /trunk
+    /tags
+    /branches
   project3/
-	/trunk
-	/tags
-	/branches
+    /trunk
+    /tags
+    /branches
 
 * * *
   projectn/
-	/trunk
-	/tags
-	/branches
+    /trunk
+    /tags
+    /branches
 
 {{</ output >}}
 
