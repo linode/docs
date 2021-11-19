@@ -10,7 +10,7 @@ published: 2021-11-19
 modified_by:
   name: Linode
 title: "Network Security Software Tools and Devices"
-h1_title: "Network Security Tools and How to Use Them"
+h1_title: "Network Security Tools and How They Help You"
 enable_h1: true
 contributor:
   name: David Strom
