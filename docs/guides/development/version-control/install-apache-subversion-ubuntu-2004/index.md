@@ -28,7 +28,7 @@ Apache Subversion is a [version control system](/docs/guides/introduction-to-ver
 
 There are two primary components of Apache Subversion: A server that holds and is the repository, and a client application for organizing updates to and from the server. Both components, client and server, can be combined in the same Ubuntu 20.04 instance. The server instance must allow a client to access it, and more than one client can access the server at the same time. The server instance must remain available and accessible for clients to reach and use it.
 
-The server is a web server-based repository/database (“repo”) consisting of a trunk, much like a tree trunk, and branches. Only rarely is the trunk changed. Usually clients work on branches of the trunk, until ready to be made a part of the trunk repository. A trunk and its branches are a base folder/directory and subfolders/directories are branches.
+The server is a web server-based repository/database (“repo”) consisting of a trunk, much like a tree trunk, and branches. Only rarely is the trunk changed. Usually clients work on branches of the trunk, until ready to be made a part of the trunk repository. A trunk and its branches are a base directory and directories are branches.
 
 Although Apache Subversion can be installed on most Unix-like systems including Linux, macOS, and Windows, this tutorial only covers the steps for Ubuntu Server 20.04 LTS. This version of Ubuntu requires the installation of libraries used by Apache Subversion not found in the standard distribution of Ubuntu 20.04. Subversion cannot be installed correctly without these specific libraries. Pre-built binaries of Apache Subversion are available from several online sources, but this tutorial builds only from Ubuntu repositories and added library sources.
 
@@ -118,7 +118,7 @@ This section shows you how to install the Apache Subversion client from Ubuntu�
 
 ## Create A Subversion Administrator User
 
-No user can link the SVN app with the repo until an administrative account is made. Thise section shows you how to create a Subversion admin user.
+No user can link the SVN app with the repo until an administrative account is made. This section shows you how to create a Subversion admin user.
 
 1. Create a Subversion admin user. Replace `<<admin_name>>` with the desired admin name.
 
