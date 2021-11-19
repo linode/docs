@@ -56,7 +56,7 @@ If a scheduled upgrade is availabe for your Volume, follow the steps above in th
 
 1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-1.  Perform any configuration steps neccessary to create a file system on the new Volume and mount it to your system. See [Configure and Mount a Block Storage Volume](/docs/products/storage/block-storage/guides/configure-volume/).
+1.  Perform any configuration steps necessary to create a file system on the new Volume and mount it to your system. See [Configure and Mount a Block Storage Volume](/docs/products/storage/block-storage/guides/configure-volume/).
 
 1.  Run the following command to copy your data, replacing `[path-to-original-volume]` with the file system path to your original Volume and `[path-to-nvme-volume]` with the path to the new Volume you just created. These paths are likely under the `/mnt/` directory.
 
