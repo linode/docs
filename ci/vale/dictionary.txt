@@ -136,7 +136,9 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitshift
 bitwarden
+bitwise
 blkid
 blockchain
 blocklists
@@ -886,6 +888,7 @@ kloxo
 knockpy
 knowledgebase
 konsole
+kotin
 konversation
 ktor
 kube
@@ -1236,6 +1239,7 @@ ntop
 ntopng
 ntp
 ntpd
+nullable
 nullval
 num
 numpy
@@ -1859,6 +1863,7 @@ un
 unaliased
 uname
 unarchive
+unary
 unban
 unbans
 unbilled
