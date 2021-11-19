@@ -28,11 +28,7 @@ This guide covers using keepalived to configure IP failover with Linode Compute 
 
 ## IP Failover Compatibility
 
-{{< note >}}
-This guide supports the Dallas (USA), Frankfurt (Germany), Fremont (USA), London (UK), Newark (USA), Singapore, and Tokyo (Japan) data centers. IP Sharing is not yet generally available in Atlanta (USA), Mumbai (India), Sydney (Australia), and Toronto (Canada).
-{{</ note >}}
-
-**Supported IP address types:**
+Linode's IP failover feature using keepalived is compatible with various IP address types in certain data centers. Review the list below to learn what types are available in your data center.
 
 - **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. Supported data centers include Dallas (USA), Frankfurt (Germany), Fremont (USA), London (UK), Newark (USA), Singapore, and Tokyo (Japan).
 
@@ -109,7 +105,7 @@ vrrp_instance Instance1 {
 
 ## Configuration Options
 
-When configuration keepalived, there are quite a few options that can be modified to accomplish various tasks and behaviors. This section covers some of them, though you can review the [Keepalived configuration synopsis](https://keepalived.readthedocs.io/en/latest/configuration_synopsis.html) page on the official documentation to learn more.
+When configuring keepalived, there are quite a few options that can be modified to accomplish various tasks and behaviors. This section covers some of them, though you can review the [Keepalived configuration synopsis](https://keepalived.readthedocs.io/en/latest/configuration_synopsis.html) page on the official documentation to learn more.
 
 - **vrrp_instance:** The VRRP instance definition block. Set this to whatever you'd like to call this block. To help with identification, this should be the same value across all Compute Instances that will share the specified IP address.
 - **state:** Set this to `MASTER` if the IP address is natively assigned to this Compute Instance. When configuring it as a secondary failover server, use `BACKUP`.
