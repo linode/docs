@@ -50,17 +50,19 @@ All private IPs in the same data center can communicate with each other over the
 
 - **IPv6 Link Local:** This IPv6 address is assigned to each Compute Instance and used for internal routing.
 
-- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range.
+- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /64 range can be added per customer per data center.
 
-- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range.
+- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /56 range can be added per customer per data center.
 
-- **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover.
+- **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover. By default, up to one /116 pool can be added per customer per data center.
 
     {{< caution >}}
-The IPv6 `/116` prefix has been deprecated and is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers.
+The IPv6 /116 prefix has been deprecated and is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers. To add a /116 pool in a supported data center, [contact our Support team](https://www.linode.com/support/) with your request.
 {{</ caution >}}
 
 ## Adding an IP Address
+
+Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range to your Compute Instance. By default, up to one /64 and /56 range can be added per customer per data center.
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
@@ -136,8 +138,6 @@ If you have two Compute Instances in the same data center, you can use the *IP t
 This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addresses. See [Transferring an IPv6 SLAAC Address](#transferring-an-ipv6-slaac-address) below for a workaround.
 {{< /note >}}
 
-Here's how to use the IP Transfer tool to transfer IPv4 addresses:
-
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
 1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
@@ -159,7 +159,7 @@ The *IP Transfer* form only displays Compute Instances hosted in the same data c
 
 1.  Click **Save** to transfer the requested IPs.
 
-1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the affected Instance(s).
+1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
 
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
 
@@ -174,8 +174,7 @@ Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the ga
 
 ### Transferring an IPv6 SLAAC Address
 
-IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the
-applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
+IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
 
 ## Configuring IP Sharing
 
@@ -197,7 +196,7 @@ This feature is not yet supported in the Atlanta, Mumbai, Sydney, or Toronto dat
 
 1.  Click **Save** to enable IP Sharing.
 
-1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as Keepalived) within the internal system on each affected Compute Instance. For more information on a practical use case and configuring Keepalived, see our guide on [hosting a website with high availability](/docs/guides/host-a-website-with-high-availability/#keepalived).
+1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as Keepalived) within the internal system on each affected Compute Instance. For more information on a practical use case and configuring Keepalived, see our guide on [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived).
 
 Now, when a failover service such as Keepalived detects failure of your chosen Compute Instance, its IP address will be assigned to the new Instance to avoid an interruption in service.
 
