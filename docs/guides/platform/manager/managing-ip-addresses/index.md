@@ -130,10 +130,10 @@ You can verify the reverse DNS entry was properly submitted within the *IP addre
 
 ## Transferring IP Addresses
 
-If you have two Linodes in the same data center, you can use the *IP transfer* feature to transfer or swap their IPv4 addresses. This could be useful in several situations. For example, if you've built a new server to replace an old one, you could swap IP addresses instead of updating the DNS records.
+If you have two Compute Instances in the same data center, you can use the *IP transfer* feature to move or swap their IP addresses. This feature is especially useful when replacing one Compute Instance with another. It allows you to quickly move the IP addresses to the new Instance without needing to manually adjust DNS records with the new addresses.
 
 {{< note >}}
-This process only transfers **IPv4** addresses, not IPv6. See [IPv6](#ipv6) below for additional information.
+This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addresses. See [Transferring an IPv6 SLAAC Address](#transferring-an-ipv6-slaac-address) below for a workaround.
 {{< /note >}}
 
 Here's how to use the IP Transfer tool to transfer IPv4 addresses:
