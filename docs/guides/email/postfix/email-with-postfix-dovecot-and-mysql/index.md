@@ -34,7 +34,7 @@ In this guide, you'll learn how to set up a secure email server with Postfix, Do
 This tutorial assumes that you are familiar with the following:
 
 1. You are familiar with GNU/Command line.
-2. You can edit files using the Nano text editor. Refer to this [Nano Command line](https://www.linode.com/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
+2. You can edit files using the Nano text editor. Refer to [Nano Commands](/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
 3. You understand the basics of MySQL data.
 4. You have a basic understanding of email configurations. If not, you may wish to review the concepts in the [Running a Mail Server](/docs/email/running-a-mail-server/) guide.
 
