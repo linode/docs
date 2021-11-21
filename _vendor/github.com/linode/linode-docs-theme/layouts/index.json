@@ -16,8 +16,8 @@
 {{- $sections = $sections | append .SectionsEntries -}}
 {{- $section = replace (path.Join $sections) "/" " > " }}
 {{- end -}}
-{{- $owningSection := .CurrentSection }}
-{{ if .IsSection }}
+{{- $owningSection := .CurrentSection -}}
+{{- if .IsSection -}}
 {{/*- Skip orphan/empty sections; that does not work with the left menu. -*/}}
 {{ $shouldAdd = .RegularPagesRecursive }}
 {{- with .Parent.CurrentSection -}}
@@ -25,7 +25,14 @@
 {{- end -}}
 {{- end -}}
 {{- if not $section -}}
-{{- $section = replace $owningSection.SectionsPath "/" " > " }}
+{{- $entries := $owningSection.SectionsEntries -}}
+{{- $first := index $entries 0 -}}
+{{- $rest := $entries | after 1 -}}
+{{- if .IsSection -}}
+{{- $first = printf "%s-branches" $first -}}
+{{- end -}}
+{{- $entries = slice $first | append $rest -}}
+{{- $section = delimit $entries " > " }}
 {{- end -}}
 {{- $excerpt := "" -}}
 {{- if .Params.description -}}
@@ -40,17 +47,22 @@
 {{- end -}}
 {{- $deprecated := cond (ne .Params.deprecated nil) .Params.deprecated false -}}
 {{- $title := partial "funcs/get-page-title.html" . }}
-{{- $dict := (dict "objectID" .File.UniqueID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "isBranch" (not .IsPage) "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
+{{- $objectID := printf "%s-%s" .Lang .Path | md5 -}}
+{{- $dict := (dict "objectID" $objectID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) }}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}
 {{- if not $sections -}}
 {{- $sections = $sections | append $owningSection.SectionsEntries  -}}
 {{- end -}}
+{{- $isSection := .IsSection -}}
 {{- range $i, $section := $sections -}}
 {{- if not $sectionPath -}}
 {{- $sectionPath = $section -}}
 {{- else -}}
 {{- $sectionPath = (printf "%s > %s" $sectionPath $section) -}}
+{{- end -}}
+{{- if and $isSection (eq $i 0) -}}
+{{- $sectionPath = printf "%s-branches" $sectionPath -}}
 {{- end -}}
 {{-  $dict = $dict | merge (dict (printf "section.lvl%d" $i) $sectionPath) -}}
 {{- end -}}

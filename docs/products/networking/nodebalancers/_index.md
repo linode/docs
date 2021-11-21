@@ -14,6 +14,10 @@ cascade:
 
 NodeBalancers are available across [all regions](https://www.linode.com/global-infrastructure/).
 
+## Pricing
+
+NodeBalancers cost a flat rate of $10/month.
+
 ## Features
 
 ### SSL Termination
@@ -31,6 +35,6 @@ Prevent potential abuse – and preserve resources on your backend Linodes – b
 ### Multi-Port
 NodeBalancers support balancing traffic to multiple network ports. Several services can be load balanced with a single NodeBalancer.
 
-## Pricing
+## Limits and Considerations
 
-NodeBalancers cost a flat rate of $10/month.
+{{< content "nodebalancer-limits-shortguide" >}}

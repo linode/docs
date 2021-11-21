@@ -8,9 +8,7 @@
     </ol>
   </nav>
 {{ else }}
-  <nav class="breadcrumbs text-sm " aria-label="breadcrumbs" x-data="lnc.NewBreadcrumbsController()" id="breadcrumbs-{{ $wrap }}"
-    @search:results-blank.document="receiveData($event.detail);" @search:results-initial.document="receiveData($event.detail);"  
-    @ln:page-info.document="receivePageInfo($event.detail);" @turbolinks:before-render.document="onTurbolinksBeforeRender();" >
+  <nav class="breadcrumbs needs-js text-sm " aria-label="breadcrumbs" x-data="lncBreadcrumbs" id="breadcrumbs-{{ $wrap }}">
     <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}} -mt-1">
       <li class="flex items-center mt-1">
         {{ template "breadcrumbs-home" . }}
@@ -18,7 +16,7 @@
           {{ template "breadcrumbs-arrow" . }}
         </template>
       </li>
-      <template x-for="(b, i) in data.breadcrumbs.sections" :key="b">
+      <template x-for="(b, i) in data.breadcrumbs.sections" :key="b.href">
         <li class="flex items-center mt-1">
           <a x-text="b.linkTitle" :href="b.href" class="truncate"></a>
           <template x-if="i < (data.breadcrumbs.sections.length - 1)">
@@ -26,10 +24,6 @@
           </template>
         </li>
       </template>
-      <li class="flex items-center mt-1" x-show="data.breadcrumbs.page.kind === 'page'">
-        {{ template "breadcrumbs-arrow" . }}
-        <a x-text="data.breadcrumbs.page.linkTitle" :href="data.breadcrumbs.page.href" class="truncate"></a>
-      </li>
     </ol>
   </nav>
 {{ end }}
@@ -49,17 +43,11 @@
       {{ template "breadcrumbs-home" . }}
     {{ else }}
       {{ if ne .p1 .p2 }}
+        {{ template "breadcrumbs-arrow" . }}
         <a  href="{{ .p1.Permalink }}" class="truncate">
           {{ .p1.LinkTitle }}
         </a>
-      {{ else }}
-        <span class="truncate">
-          {{ .p1.LinkTitle }}
-        </span>
       {{ end }}
-    {{ end }}
-    {{ if ne .p1 .p2 }}
-      {{ template "breadcrumbs-arrow" . }}
     {{ end }}
   </li>
 {{ end }}

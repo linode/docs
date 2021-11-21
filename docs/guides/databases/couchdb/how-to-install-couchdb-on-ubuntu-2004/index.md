@@ -9,6 +9,7 @@ keywords: ['couchdb','nosql','database','deploy on ubuntu 20.04']
 tags: ['couchdb','ubuntu','nosql','apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
+image: CouchDB.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install CouchDB 2.0 on Ubuntu 20.04"
@@ -95,4 +96,4 @@ See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.
 
 ## Get Started with CouchDB
 
-You have now successfully installed CouchDB! To get started, head over to the guide for [Using CouchDB on Ubuntu 20.04](/docs/guides/use-couchdb-20-on-ubuntu/).
+You have now successfully installed CouchDB! To get started, head over to the guide for [Using CouchDB on Ubuntu 20.04](/docs/guides/use-couchdb-2-0-on-ubuntu-20-04/).

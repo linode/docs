@@ -3,7 +3,7 @@ slug: deploy-volumes-with-the-linode-block-storage-csi-driver
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver.'
+description: "Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver."
 keywords: ['container','kubernetes','block','storage','volume','csi','interface','driver']
 tags: ["linode platform","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +11,9 @@ published: 2019-04-18
 modified: 2020-07-29
 modified_by:
   name: Linode
-title: "Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver"
+title: "How to Deploy Persistent Volume Claims With Linode"
 h1_title: "Deploying Persistent Volume Claims with the Linode Block Storage CSI Driver"
+enable_h1: true
 external_resources:
 - '[Kubernetes PersistentVolumeClaims Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)'
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'
@@ -52,7 +53,7 @@ Using either the Linode Kubernetes Engine or Terraform methods above will instal
 ## Create a Persistent Volume Claim
 
 {{< caution >}}
-The instructions in this section will create a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month or $0.00015/GiB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
+The instructions in this section will create a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GB to 10,000 GB in size and costs $0.10/GB per month or $0.00015/GB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}

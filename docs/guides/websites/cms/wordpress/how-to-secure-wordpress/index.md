@@ -20,7 +20,7 @@ external_resources:
 - '[WordPress Support](http://wordpress.org/support)'
 - '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
 aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
-image: How_to_Secure_WordPress.png
+image: SecureWordpress.png
 ---
 
 WordPress is a popular content management and website creation software system used by millions of users today. It's easy to use and offers thousands of plugins making it simple for non-developers to create beautiful websites without having to write a single line of code. This guide helps you keep your WordPress site secure with suggestions like installing SSL certificates, installing a firewall, enabling two-factor authentication, and more.
@@ -48,7 +48,7 @@ Next, you'll want to verify that your web server is properly configured to handl
 
 - **Nginx**
   - **Nginx documentation:** [Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
-  - **Linode guide:** [Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](/docs/guides/enable-tls-on-nginx-for-https-connections/)
+  - **Linode guide:** [Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
 - **Apache**
   - **Apache documentation:** [SSL/TLS Strong Encryption: How-To
 ](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)

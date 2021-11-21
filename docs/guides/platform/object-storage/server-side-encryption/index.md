@@ -9,6 +9,7 @@ keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
 tags: ["linode platform","python","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-14
+image: UseServerSideEnc_LinObjStorage.png
 modified_by:
   name: Linode
 title: "How to Use Server-Side Encryption with Linode Object Storage"
@@ -31,9 +32,9 @@ In this guide, you will [write an example Python script](#python-example-script)
 
 ## Python Example Script
 
-1.  This section requires that Python 2.7, 3.4 or above is installed on your machine. Check your version of Python with the following command:
+1.  This section requires that Python 3.4 or above is installed on your machine. Check your version of Python with the following command:
 
-        python --version
+        python3 --version
 
 1.  Install [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), the AWS SDK for Python:
 

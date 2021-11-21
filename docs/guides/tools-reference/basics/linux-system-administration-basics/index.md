@@ -3,7 +3,7 @@ slug: linux-system-administration-basics
 author:
   name: Linode
   email: docs@linode.com
-description: 'This end to end Linux system administration basics tutorial will walk you through basic Linux configuration,  basic commands, and answer all of your Linux administration questions.'
+description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
@@ -11,7 +11,7 @@ modified: 2021-05-14
 modified_by:
   name: Linode
 published: 2009-12-13
-title: Linux System Administration Basics
+title: "Linux System Administration Basics"
 tags: ["linux"]
 ---
 
@@ -670,7 +670,7 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/platform/manager/dns-manager/).
+The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/guides/dns-manager/).
 
 ### Redirect DNS Queries with CNAMEs
 
@@ -678,7 +678,7 @@ The *Domain Name System*, or DNS, is the service that the internet uses to assoc
 
 CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/guides/dns-manager/).
 
 ### Set Up Subdomains
 
@@ -686,7 +686,7 @@ When [reading domain names](/docs/networking/dns/dns-records-an-introduction/#do
 
 Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations/#configuring-subdomains):
 
-1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/platform/manager/dns-manager/). You may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/guides/dns-manager/). You may host the DNS for your domain with any provider you choose.
 
 2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/web-servers/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 

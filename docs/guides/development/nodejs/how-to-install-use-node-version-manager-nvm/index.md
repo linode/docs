@@ -8,13 +8,14 @@ og_description: 'This guide describes how to install NVM and how to use it to in
 keywords: ['NVM','NodeJS','installation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-12
+image: InstallandUseNVM.png
 modified_by:
   name: Linode
 title: "How to Install and Use the Node Version Manager NVM"
 h1_title: "How to Install and Use the Node Version Manager NVM."
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[NVM GitHub Page(https://github.com/nvm-sh/nvm)'
 ---

@@ -3,7 +3,7 @@ slug: setting-up-round-robin-dns
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to set up round-robin DNS on a set of Linodes for redundancy should there ever be a failure, as well as how to employ a NodeBalancer for loadbalancing support for those Linodes.'
+description: 'Learn how to set up round-robin DNS on a set of Linodes as well as how to employ a NodeBalancer for loadbalancing support for those Linodes.'
 keywords: ["hosting a website", "website", "linode quickstart guide", "high availability", "failover"]
 tags: ["web server","nginx","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -99,7 +99,7 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
 If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
 {{< /note >}}
 
-1. [Add a Private IP Address](/docs/guides/remote-access/#adding-private-ip-addresses) for each Linode that has been pre-configured for round-robin DNS.
+1. [Add a Private IP Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each Linode that has been pre-configured for round-robin DNS.
 
 1. Boot or Reboot all Linodes once they have been given a private IP address to ensure that the network configuration will be applied.
 

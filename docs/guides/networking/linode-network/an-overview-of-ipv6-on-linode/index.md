@@ -3,21 +3,20 @@ slug: an-overview-of-ipv6-on-linode
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide is a brief overview of IPv6 resources and support afforded by and available with Linode.'
-og_description: "This guide is a brief overview of IPv6 support on Linode, including how to find your Linode's IPv6 address, how to request additional addresses, and information about address ranges and forwarding."
+description: "This guide is a brief overview of IPv6 support on Linode, including finding your IPv6 address, requesting additional addresses, address ranges, and forwarding."
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-25
+modified: 2021-11-15
 modified_by:
   name: Linode
 published: 2011-05-03
-title: An Overview of IPv6 on Linode
-h1_title: A Guide for Understanding IPv6 on Linode
+title: "An Overview of IPv6 on Linode"
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
- - '[IPv6 Chart](https://www.ripe.net/support/training/material/lir-training-course/LIR-Training-Handbook-Appendices/IPv6Chart_2015.pdf)'
+ - '[IPv6 and IPv4 CIDR Chart (PDF)](https://www.ripe.net/about-us/press-centre/ipv6-chart_2015.pdf)'
 tags: ["networking","linode platform"]
+image: an-overview-of-ipv6-on-linode-title-graphic.jpg
 ---
 
 ![An Overview of IPv6 on Linode](an-overview-of-ipv6-on-linode-title-graphic.jpg "An Overview of IPv6 on Linode")
@@ -39,24 +38,11 @@ Please be sure to allow ICMPv6 in your [firewall](/docs/security/securing-your-s
 
 ## How to Find Your IPv6 Address
 
-You can find your Linode's IPv6 address using the Linode Cloud Manager or the `ip` tool with the Linux Terminal.
+You can find your Linode's IPv6 address using the Cloud Manager or the `ip` tool with the Linux Terminal.
 
-### Linode Cloud Manager
+### Using the Cloud Manager
 
-1. Log in to your [Linode Cloud Manager](https://cloud.linode.com/) account and select the Linodes link in the sidebar to view a list of all your Linodes.
-
-1. To see a more detailed view, select the Linode which uses the IPv6 address you would like to find.
-
-1. In the following page, you can find the Linode's IPv6 address in the **IP Address** column.
-
-    ![List of Linodes to view your IPv6 address.](ip-address-quick-view.png)
-
-
-1. For more detailed information related to the Linode's IPv6 address, click on the **Network** tab.
-
-1. Under the *IP Addresses* table, you can view the Linode's SLAAC and Link Local IPv6 addresses.
-
-    ![A Linode Networking Tab detail view.](ip-address-detail-view.png)
+See the [Viewing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) section of the Managing IP Addresses guide.
 
 ### Linux Terminal
 
@@ -86,7 +72,7 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 ## Additional IPv6 Addresses
 
-If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses can be requested by opening up a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support). Additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) for instructions.
+If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guides for instructions on adding an IPv6 range and to learn how to configure it within your system.
 
 The size of each block is identified through a prefix. These are indicated with a slash `/` followed by a number in base 10: the length of the network **prefix** in bits. This translates to the number of available addresses that are available in the range (or pool). For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
 
@@ -98,8 +84,6 @@ An IPv6 routed range is assigned to a single Linode. Addresses from that range c
 
 - `/64` **routed range** *(18,446,744,073,709,551,616 addresses)*: This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
 - `/56` **routed range** *(4,722,366,482,869,645,213,696 addresses)*: These larger ranges are typically only required by specialized systems or networking applications. When requesting a `/56` range, please provided information regarding your use case.
-
-If you would like to reassign an IPv6 routed range to a different Linode within the same data center, open up a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support).
 
 ### IPv6 Pools
 

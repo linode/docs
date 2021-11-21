@@ -37,7 +37,7 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
     Run the steps in this guide from the **node-master** unless otherwise specified.
 
-1.  [Add a Private IP Address](/docs/platform/manager/remote-access/#adding-private-ip-addresses) to each Linode so that your Cluster can communicate with an additional layer of security.
+1.  [Add a Private IP Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) to each Linode so that your Cluster can communicate with an additional layer of security.
 
 1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden each of the three servers. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 

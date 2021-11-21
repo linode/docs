@@ -3,10 +3,10 @@ slug: lke-continuous-deployment-part-1
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The goal of this series is to set up a continuous deployment pipeline for a Kubernetes app on a Kubernetes cluster. This introduction will cover what to expect, the prerequisite knowledge, and the software/components that are required.'
-og_description: 'The goal of this series is to set up a continuous deployment pipeline for a Kubernetes app on a Kubernetes cluster. This introduction will cover what to expect, the prerequisite knowledge, and the software/components that are required.'
-title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 1: Get Ready"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 1: Get Ready"
+description: "The goal of this series is to set up a continuous deployment pipeline for a Kubernetes app on a Kubernetes cluster. This introduction will cover what to expect, the prerequisite knowledge, and the software/components that are required."
+og_description: "The goal of this series is to set up a continuous deployment pipeline for a Kubernetes app on a Kubernetes cluster. This introduction will cover what to expect, the prerequisite knowledge, and the software/components that are required."
+title: "Continuous Deployment Using LKE: Get Ready"
+h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 1): Get Ready"
 enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

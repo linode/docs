@@ -12,7 +12,7 @@ modified_by:
 published: 2020-02-18
 title: How to Install and Configure Drupal on Debian 10
 h1_title: Install and Configure Drupal on Debian 10 (Buster)
-image: Drupal8onDebian10.png
+image: L_Drupal_on_Debian10.png
 relations:
     platform:
         key: how-to-install-drupal

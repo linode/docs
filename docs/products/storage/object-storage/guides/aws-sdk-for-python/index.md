@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: "Using the AWS SDK for Python (boto3) with Object Storage"
+image: UsingAWSSDKforPythonboto3withObjectStorage.jpg
 description: "Learn how to use the Python AWS SDK with Linode's S3-compatible Object Storage."
 ---
 
@@ -10,7 +11,7 @@ Amazon's Python AWS SDK, called [boto3](https://github.com/boto/boto3), includes
 
 ## Before You Begin
 
-1.  Ensure Python 3.6 or later is installed on the machine you intend to use. For Linux-based systems, see the [How to Install Python 3](docs/guides/how-to-install-python-on-ubuntu-20-04/) guide for installation instructions.
+1.  Ensure Python 3.6 or later is installed on the machine you intend to use. For Linux-based systems, see the [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/) guide for installation instructions.
 
 1.  This guide assumes you have a basic understanding of Python development and are comfortable integrating code samples into your application.
 

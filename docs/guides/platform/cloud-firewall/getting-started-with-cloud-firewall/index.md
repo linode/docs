@@ -3,8 +3,7 @@ slug: getting-started-with-cloud-firewall
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determine if the traffic is permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
-og_description: 'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determine if the traffic is permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
+description: "This guide demonstrates how to create a Cloud Firewall, edit firewall rules, and apply it to a Linode."
 keywords: ["firewall", "cloud firewall", "security", "securing"]
 tags: ["cloud manager","linode platform","security","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,24 +11,24 @@ modified: 2020-11-09
 modified_by:
   name: Linode
 published: 2020-07-24
-title: Adding and Configuring Linode Cloud Firewall - A Tutorial
-h1_title: A Tutorial for Adding and Configuring Linode Cloud Firewall
+title: Getting Started with Linode's Free Cloud Firewall Service
+h1_title: Getting Started with Cloud Firewalls
+enable_h1: true
 image: feature.png
 aliases: ['/platform/cloud-firewall/getting-started-with-cloud-firewall/']
 ---
 
 ## What is Linode Cloud Firewall?
 
-Linode Cloud Firewall is a free service used to create, configure, and add stateful network-based firewalls to Linode services using the Linode Cloud Manager and the [Linode APIv4](/docs/api/). A Cloud Firewall is independent of the service it is attached to, so you can apply a single Firewall to multiple Linode services.
+Linode's free Cloud Firewall service can be used to create, configure, and add stateful network-based firewalls to Linode services. A Cloud Firewall is independent of the service it is attached to and, therefore, you can apply a single Cloud Firewall to multiple Linode services.
 
 ### Features
 
 A Cloud Firewall analyzes traffic against a set of predefined rules at the network layer and determines if the traffic is permitted to communicate to or from the Linode Service it secures. Cloud Firewalls can be configured with an implicit deny or allow rule-- they can block or allow all traffic by default and only pass through or deny network traffic that meets the parameters of the configured rules.
 
-### Limitations
-
-- Currently, a Cloud Firewall can only be applied to Linodes.
-- You can apply one Cloud Firewall per Linode service.
+{{< note >}}
+Users that do not have [Network Helper](/docs/guides/network-helper/) enabled and are instead relying on a configuration that uses DHCP will need to manually allow DHCP traffic through port 67 and 68 of their Cloud Firewall. A full list of IP addresses for our DHCP servers can be found in our [DHCP IP Address Reference Guide](/docs/guides/dhcp-ip-address-reference/).
+{{< /note >}}
 
 ### Inbound and Outbound Rules
 
@@ -70,3 +69,7 @@ Upon initial creation of a Cloud Firewall, you are required to select Firewall r
 ## Delete a Cloud Firewall
 
 {{< content "delete-cloud-firewall-shortguide" >}}
+
+## Limits and Considerations
+
+{{< content "cloud-firewall-limits-shortguide" >}}

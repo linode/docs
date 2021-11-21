@@ -8,6 +8,7 @@ og_description: 'This guide compares Ansible and Terraform, with an explanation 
 keywords: ['IaC','Terraform','Ansible','configuration management', 'service orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-11
+image: ComparingTerraform_Ansible.png
 modified_by:
   name: Linode
 title: "Comparing Terraform and Ansible"
@@ -15,7 +16,7 @@ h1_title: "Terraform vs Ansible"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Ansible](https://www.ansible.com/)'

@@ -88,7 +88,7 @@ If you're not comfortable copying from the compromised system prior to auditing 
 
 ### Swap IP Addresses
 
-Swap IP addresses so the new Linode uses the IP address assigned to the old Linode. If you have configured any network services to use the new Linode's IP address, you should modify their configurations to use the old Linode's IP instead. For instructions, see [Swapping IP Addresses](/docs/networking/remote-access/#swapping-ip-addresses).
+Swap IP addresses so the new Linode uses the IP address assigned to the old Linode. If you have configured any network services to use the new Linode's IP address, you should modify their configurations to use the old Linode's IP instead. For instructions, see [Managing IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses).
 
  {{< note >}}
 To swap IP addresses, both Linodes must be located in the same data center.

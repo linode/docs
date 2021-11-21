@@ -1,60 +1,88 @@
 'use strict';
 
+import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from '../../search/request';
 import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
-import { newDispatcher } from '../../search/index';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function() {};
 
-const searchName = 'search:data-home';
-
-export function newHomeController(searchConfig, developersItems) {
+export function newHomeController(searchConfig, staticData) {
 	debug('newHomeController');
 
-	const dispatcher = newDispatcher();
+	// The section we paginate on the home page.
+	// This maps to section.lvl0 in linode-merged.
+	const sectionLevel0s = [ 'guides', 'blog', 'resources', 'marketplace', 'community' ];
+
+	// Avoid loading too much data when on mobile.
+	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
+
+	const requestFromSection = function(name) {
+		return {
+			page: 0,
+			params: `query=&hitsPerPage=${tilesAlgoliaPreloadItems}`,
+			indexName: searchConfig.sections_merged.index_by_pubdate,
+			facets: [ 'section.*' ],
+			filters: `section.lvl0:${name}`
+		};
+	};
 
 	// Number of tiles per paginated page.
 	// It will scale down with page size.
 	const tilesPageSize = 6;
 	const tilesPageSizeMobile = 2;
 	const productsStripPageSize = 6;
-	// Avoid loading too much data when on mobile.
-	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
-
-	// Set and removed when left menu opens.
-	const cssClassMenyStateChanging = 'kind-home--menu-state-is-changing';
-
-	// The section names we paginate on the home page.
-	// This maps to the name attribute in the search configuration.
-	// No filters are currently applied, and the order will be the order from Algolia.
-	const sectionNames = [ 'guides', 'blog', 'resources', 'marketplace', 'qa' ];
 
 	// Create a new pager for the given el and items.
 	// pageSize is the number of items per page.
 	// mobileOverlap is how much of the third tile we show (to indicate swipe).
-	const newPager = function(pageSize, el, items, alwaysShowNavigation = false) {
+	const newPager = function(pageSize, el, items = null) {
 		if (!el) {
 			throw 'pager element must be provided';
 		}
 
-		if (!items) {
-			throw 'items must be provided';
-		}
+		debug('newPager');
 
-		debug('newPager', el, items);
+		if (!items) {
+			// Set up some temporary placeholders. The real data will arrive later.
+			items = [];
+
+			for (let i = 0; i < tilesAlgoliaPreloadItems; i++) {
+				// The real data arrives later.
+				let href = `#dummy${i}`;
+				let item = { linkTitle: '', href: href, objectID: href };
+				item.excerptTruncated = function() {};
+
+				items.push(item);
+			}
+		}
 
 		let pager = {
 			index: 0, // current slide, zero based.
 			numPages: 0, // The total number of pages.
 			pageSize: pageSize, // The number of slides per page.
-			showNavigation: alwaysShowNavigation, // Whether to show the prev/next and the progress bar.
+			showNavigation: false, // Whether to show the prev/next and the progress bar.
 			el: el, // The carousel DOM element.
 			items: items // The items; an item must have a linkTitle and an href set.
 		};
 
 		pager.toggleShowNavigation = function(show) {
-			if (!alwaysShowNavigation) {
-				this.showNavigation = show;
+			this.showNavigation = show;
+		};
+
+		// We set up some dummy initial on component init and receive the real items a little bit later.
+		pager.setItems = function(items) {
+			if (!this.el) {
+				// User has navigated away.
+				return;
 			}
+			this.items = items;
+			this.initItems();
+		};
+
+		pager.initItems = function() {
+			this.el.style.setProperty('--carousel-slide-count', this.items.length);
+
+			this.refreshPageSize();
+			this.adjustIndex(0);
 		};
 
 		// adjustIndex by incr number of slides in either direction.
@@ -128,10 +156,7 @@ export function newHomeController(searchConfig, developersItems) {
 		pager.el.style.setProperty('--carousel-page-size--lg', pageSizeLg);
 		pager.el.style.setProperty('--carousel-page-size--md', pageSizeMd);
 
-		pager.el.style.setProperty('--carousel-slide-count', pager.items.length);
-
-		pager.refreshPageSize();
-		pager.adjustIndex(0);
+		pager.initItems();
 
 		if (isTouchDevice()) {
 			newSwiper(el, function(direction) {
@@ -149,155 +174,98 @@ export function newHomeController(searchConfig, developersItems) {
 		return pager;
 	};
 
+	// Maps the values in sectionLevel0s to their tiles data.
+	let sectionTiles = {};
+
 	return {
 		data: {
-			// Data for the top level products strip.
-			productsTiles: null,
-
-			// Data for the developers strip.
-			developersTiles: null,
-
-			// Maps the values in sectionNames to their tiles data.
-			sectionTiles: {},
-
-			// Metadata about sections.
-			sectionMeta: {},
-
-			// Loading state
-			commonDataLoaded: false,
-			loaded: false
+			sectionTiles: sectionTiles
 		},
+		loaded: false,
+		menuStateChanging: false,
 
 		init: function() {
 			debug('init');
 
-			var searchRequests = [];
-			sectionNames.forEach((name) => {
-				let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === name);
-				if (!sectionConfig) {
-					throw `no index with name ${name} found`;
-				}
+			this.$nextTick(() => {
+				debug('init: nextTick');
+				// Set up placeholders for the dynamic carousels.
+				// The data will arrive on intersect.
+				sectionLevel0s.forEach((name) => {
+					let el = this.$refs[`carousel-${name}`];
+					let pager = newPager(tilesPageSize, el);
+					this.data.sectionTiles[name] = pager;
+				});
 
-				let filters = sectionConfig.filters || '';
-				searchRequests.push({
-					page: 0,
-					params: `query=&hitsPerPage=${tilesAlgoliaPreloadItems}`,
-					indexName: sectionConfig.index_by_pubdate || sectionConfig.index,
-					filters: filters
+				// Initialize the static carousels.
+				this.data.sectionTiles['products'] = newPager(
+					productsStripPageSize,
+					this.$refs[`carousel-products`],
+					staticData.productItems
+				);
+				// Make the developers pager the same size as the products pager.
+				this.data.sectionTiles['developers'] = newPager(
+					productsStripPageSize,
+					this.$refs[`carousel-developers`],
+					staticData.developerItems
+				);
+
+				this.loaded = true;
+			});
+		},
+
+		destroy: function() {
+			// Prevents memory leak.
+			Object.values(sectionTiles).forEach((tile) => {
+				tile.el = null;
+			});
+		},
+
+		initCarousels: function() {
+			debug('initCarousels');
+			this.$nextTick(() => {
+				sectionLevel0s.forEach((name) => {
+					let factory = {
+						status: function() {
+							return RequestCallBackStatus.Once;
+						},
+						create: () => {
+							return {
+								request: requestFromSection(name),
+								callback: (result) => {
+									this.data.sectionTiles[name].setItems(result.hits);
+								}
+							};
+						}
+					};
+
+					this.$store.search.addSearches(
+						newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.AdHoc)
+					);
 				});
 			});
+		},
 
-			this.$nextTick(function() {
-				dispatcher.searchStandalone(
-					{
-						key: `home:section-tiles`,
-						requests: searchRequests
-					},
-					searchName
-				);
-			});
+		onEffect: function() {
+			// This construct may look odd, but this method is called from an x-effect,
+			// so this will trigger on any change to the open state.
+			let el = this.$store.nav.open.explorer;
+			this.onNavChange(true);
 		},
 
 		// onNavChange triggers on screen resize or e.g. if the explorer opens/closes.
 		// The slide width may have changed so the pager number of pages may have changed.
-		onNavChange: function(data) {
-			let menuStateChange = data && data.what === 'explorer' && data.source === 'explorer';
+		onNavChange: function(menuStateChange = false) {
 			if (menuStateChange) {
 				// Avoid the scroll transition when the left menu changes state.
-				this.$el.classList.add(cssClassMenyStateChanging);
-			}
-			if (this.data.productsTiles) {
-				this.data.productsTiles.refreshPageSize();
-			}
-			if (this.data.developersTiles) {
-				this.data.developersTiles.refreshPageSize();
+				this.menuStateChanging = true;
 			}
 			for (let i in this.data.sectionTiles) {
 				this.data.sectionTiles[i].refreshPageSize();
 			}
 			if (menuStateChange) {
-				this.$el.classList.remove(cssClassMenyStateChanging);
+				this.menuStateChanging = false;
 			}
-		},
-
-		// receiveCommonData receives the common search data also used in other components,
-		// such as section metadata and facets.
-		receiveCommonData: function(results) {
-			debug('receiveCommonData', results);
-
-			if (this.commonDataLoaded) {
-				return;
-			}
-
-			this.commonDataLoaded = true;
-
-			if (!results.blankSearch.isLoaded()) {
-				throw 'missing data';
-			}
-
-			let meta = results.metaSearch;
-			let sectionsResults = results.blankSearch.results;
-
-			debug('receiveCommonData: meta', meta);
-
-			let productsSection = sectionsResults.findSectionByName('products');
-			let productsFacets = productsSection.getFacet('section.lvl2');
-			let productsItems = [];
-
-			for (var k in productsFacets) {
-				let count = productsFacets[k];
-				let m = meta.getSectionMeta(k);
-				if (m) {
-					productsItems.push({
-						title: m.title,
-						linkTitle: m.linkTitle || m.title,
-						href: m.href,
-						count: count,
-						icon: m.thumbnail
-					});
-				}
-			}
-			productsItems.sort((a, b) => {
-				return a.title < b.title ? -1 : 1;
-			});
-
-			debug('receiveCommonData: productsItems', productsItems);
-
-			this.data.sectionMeta['products'] = meta.getSectionMeta('products');
-			sectionNames.forEach((name) => {
-				this.data.sectionMeta[name] = meta.getSectionMeta(name);
-			});
-			this.data.productsTiles = newPager(
-				productsStripPageSize,
-				this.$refs[`carousel-products`],
-				productsItems,
-				false
-			);
-			// Make the developers pager the same size as the products pager.
-			this.data.developersTiles = newPager(
-				productsStripPageSize,
-				this.$refs[`carousel-developers`],
-				developersItems,
-				false
-			);
-		},
-
-		receiveData: function(results) {
-			debug('receiveData', results);
-			var self = this;
-			// Match results by index name.
-			let sectionConfigs = searchConfig.findSectionsBySearchResults(results);
-
-			for (let i in sectionConfigs) {
-				let sectionConfig = sectionConfigs[i];
-				let result = results[i];
-				let name = sectionConfig.name;
-				let el = self.$refs[`carousel-${name}`];
-				let pager = newPager(tilesPageSize, el, result.hits);
-				self.data.sectionTiles[name] = pager;
-			}
-
-			this.data.loaded = true;
 		}
 	};
 }

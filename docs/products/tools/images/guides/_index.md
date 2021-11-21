@@ -27,28 +27,20 @@ The following guides can assist with topics like deploying custom distributions,
 
 ### Cloning and Disks
 
-- [Clone Your Linode](https://www.linode.com/docs/platform/disk-images/clone-your-linode/)
+- [Cloning a Linode](/docs/platform/disk-images/clone-your-linode/)
 
-- [Disks and Configuration Profiles](https://www.linode.com/docs/platform/disk-images/disk-images-and-configuration-profiles/)
+- [Linode Disks and Storage](/docs/guides/disks-and-storage/)
+
+- [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/)
 
 ### Custom Distributions
 
-- [Install a Custom Distribution on a Linode](https://www.linode.com/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/)
+- [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution-on-a-linode/)
 
 ### Migration
 
-- [Migrating a Google Cloud Platform VM Instance to Linode](https://www.linode.com/docs/platform/migrate-to-linode/how-to-migrate-from-gcp-to-linode/)
+- [Migrating a Google Cloud Platform VM Instance to Linode](/docs/guides/how-to-migrate-from-gcp-to-linode/)
 
 ### Packer
 
-- [Use the Linode Packer Builder to Create Linode Images](https://www.linode.com/docs/applications/configuration-management/how-to-use-linode-packer-builder/)
-
-### Backups
-
-- [The Linode Backup Service](https://www.linode.com/docs/platform/disk-images/linode-backup-service/)
-
-- [Download a Local Copy of your Linode Backup](https://www.linode.com/docs/security/data-portability/download-backups-locally/)
-
-- [Copy a Disk Over SSH](https://www.linode.com/docs/platform/disk-images/copying-a-disk-image-over-ssh/)
-
-- [Download Files from Your Linode](https://www.linode.com/docs/security/data-portability/download-files-from-your-linode/)
+- [Using the Linode Packer Builder to Create Custom Images](/docs/guides/how-to-use-linode-packer-builder/)

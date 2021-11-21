@@ -7,10 +7,10 @@ tab_group_main:
 
 ## Enable Object Storage
 
-Object Storage is not enabled for a Linode account by default. All that is required to enable Object Storage is to create a bucket or an Object Storage access key. To cancel Object Storage, see the [Cancel Object Storage](#cancel-object-storage) section.
+Object Storage is not enabled for a Linode account by default. All that is required to enable Object Storage is to create a bucket or an Object Storage access key. To cancel Object Storage, see the [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) guide.
 
 {{< note >}}
-Billing for Object Storage starts when it is enabled on your account, **regardless of how it is enabled**. For example, if you enable the service by creating an access key, but you have not yet created a bucket, the $5 monthly flat rate (prorated) for Object Storage is charged for your account. [Cancelling Object Storage](#cancel-object-storage) stops billing for it.
+Billing for Object Storage starts when it is enabled on your account, **regardless of how it is enabled**. For example, if you enable the service by creating an access key, but you have not yet created a bucket, the $5 monthly flat rate (prorated) for Object Storage is charged for your account. [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop further billing.
 {{< /note >}}
 
 ## Generate an Access Key

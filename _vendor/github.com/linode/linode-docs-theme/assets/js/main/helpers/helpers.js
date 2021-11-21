@@ -1,11 +1,3 @@
-export function sendEvent(name, data, el = document) {
-	var event = new CustomEvent(name, {
-		bubbles: true,
-		detail: data
-	});
-	el.dispatchEvent(event);
-}
-
 export function setDocumentMeta(meta) {
 	document.title = meta.title;
 }
@@ -33,6 +25,13 @@ export function toggleClass(openClass, el, open) {
 	} else {
 		el.classList.remove(openClass);
 	}
+}
+
+export function isObjectEmpty(object) {
+	for (key in object) {
+		return false;
+	}
+	return true;
 }
 
 // normalizeSpace replaces any whitespace character (spaces, tabs, newlines and Unicode space) with a space.
@@ -70,42 +69,32 @@ export function sprintf(format) {
 	});
 }
 
-// Borrowed from AlpineJS: https://github.com/alpinejs/alpine/blob/master/src/utils.js
-export function debounce(func, wait) {
-	var timeout;
-	return function() {
-		var context = this,
-			args = arguments;
-		var later = function() {
-			timeout = null;
-			func.apply(context, args);
-		};
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-	};
+// Function borrowed from https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
+export function isElementInViewport(el) {
+	var rect = el.getBoundingClientRect();
+
+	return (
+		rect.top >= 0 &&
+		rect.left >= 0 &&
+		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
 }
 
-export function waitUntil(condition) {
-	const checkResolved = function(resolve, condition, callCounter = 0) {
-		if (callCounter > 100) {
-			console.error('waitUntil timed out');
-			resolve();
-			return;
-		}
-		if (condition()) {
-			resolve();
-			return;
-		}
+// getOffsetTop returns the distance from container down to el.
+export function getOffsetTop(container, el) {
+	var distance = 0;
 
-		callCounter++;
-		setTimeout(function() {
-			checkResolved(resolve, condition, callCounter);
-		}, 200);
-	};
-
-	return new Promise((resolve) => {
-		checkResolved(resolve, condition);
-	});
+	if (el.offsetParent) {
+		while (true) {
+			distance += el.offsetTop;
+			el = el.offsetParent;
+			if (!el || el === container) {
+				break;
+			}
+		}
+	}
+	return distance < 0 ? 0 : distance;
 }
 
 export function isMobile() {
@@ -127,4 +116,19 @@ export function isTouchDevice() {
 
 export function isTopBarPinned() {
 	return document.body.classList.contains('is-topbar-pinned');
+}
+
+export function walk(el, callback) {
+	if (typeof ShadowRoot === 'function' && el instanceof ShadowRoot) {
+		Array.from(el.childNodes).forEach((el2) => walk(el2, callback));
+		return;
+	}
+	let skip = false;
+	callback(el, () => (skip = true));
+	if (skip) return;
+	let node = el.firstElementChild;
+	while (node) {
+		walk(node, callback, false);
+		node = node.nextElementSibling;
+	}
 }

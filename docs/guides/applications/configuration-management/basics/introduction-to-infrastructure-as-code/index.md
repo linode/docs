@@ -8,13 +8,14 @@ og_description: 'This guide discusses the history, concepts, rationale behind In
 keywords: ['IaC','infrastructure','configuration','automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-03
+image: IntroInfastructureAsCode.png
 modified_by:
   name: Linode
 title: "Introducing Infrastructure as Code"
 h1_title: "An Introduction to Infrastructure as Code"
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Infrastructure as Code on Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)'
 ---
@@ -100,7 +101,7 @@ Several *Continuous Configuration Automation* (CCA) software tools are available
 *   [*Otter*](https://inedo.com/otter) is a tool for modelling infrastructure and configuration on Windows platforms.
 *   [*Pulumi*](https://www.pulumi.com/) permits the use of a variety of programming languages to deploy and manage infrastructure within a cloud environment. This free open source IaC tool uses familiar IDEs and tools and facilitates sharing and collaboration. Linode has a [good introduction](/docs/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/) to this application.
 *   [*Puppet*](https://puppet.com/) provides its own declarative language to describe configuration outcomes. Its model-driven solution allows for easy management of the entire IT-lifecycle, including deployment, configuration, and updates. Puppet uses high-level modelling, requires little programming knowledge, and works with most Linux distributions as well as Windows. A free open source version of this popular tool is available, along with a more powerful and advanced commercial version. Linode offers many [guides and resources for Puppet](/docs/applications/configuration-management/puppet).
-*   [*Salt*](https://www.saltstack.com/), also known as SaltStack, is an open source solution for most platforms. Salt handles IT automation, configuration management, and remote-task execution. Its compartmentalized Python modules can be modified for specific use cases. In addition to the usual IaC tasks, SaltStack also supports security management and vulnerability mitigation. Linode offers a number of [Salt resources](/docs/applications/configuration-management/salt), including a useful [introduction](/docs/applications/configuration-management/salt/beginners-guide-to-salt).
+*   [*Salt*](https://www.saltproject.io/), also known as SaltStack, is an open source solution for most platforms. Salt handles IT automation, configuration management, and remote-task execution. Its compartmentalized Python modules can be modified for specific use cases. In addition to the usual IaC tasks, SaltStack also supports security management and vulnerability mitigation. Linode offers a number of [Salt resources](/docs/applications/configuration-management/salt), including a useful [introduction](/docs/applications/configuration-management/salt/beginners-guide-to-salt).
 *   [*Terraform*](https://www.terraform.io/) allows users to provision data center infrastructure using either JSON or Terraform's own declarative language. Rather than offer its own configuration management services, Terraform manages resources through the use of providers, which are similar to APIs. Providers declare resources and requisition data sources, and are available for most major vendors. Providers are usually accessed through the [*Terraform Registry*](https://registry.terraform.io/browse/providers). The open source Terraform is available in free and commercial versions, and uses a modular approach to encourage reuse and maintainability. Consult Linode's extensive collection of [Terraform guides](/docs/applications/configuration-management/terraform) for more information.
 
 Wikipedia has summarized the main Infrastructure as Code CCA tools into [*a handy chart*](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software). It includes comparisons of basic properties and supported platforms, as well as a brief description of each tool. Linode also offers a guide that [compares Terraform and Ansible](/docs/guides/terraform-vs-ansible), two of the most common IaC solutions.

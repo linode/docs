@@ -11,7 +11,7 @@ published: 2020-01-22
 modified: 2020-01-22
 modified_by:
   name: Linode
-image: AccessingObjectswithLinodeObjectStorage.png
+image: L_AccObjectswLinodeObjStorage.png
 title: "How to Access Objects with Linode Object Storage"
 h1_title: "Accessing Objects with Linode Object Storage"
 contributor:
@@ -36,7 +36,7 @@ In this guide you will learn how to access the objects you have stored in Linode
 
 To learn how to enable Object Storage, see the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
 
-Object Storage is similar to a subscription service. **Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancelling Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) will stop billing for this flat rate.
+Object Storage is similar to a subscription service. **Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop further billing.
 
 In all Object Storage URLs the cluster where your bucket is hosted is a part of the URL string.
 
@@ -62,7 +62,7 @@ Creating a **signed URL** will allow you to create a link to objects with limite
 
     http://my-example-bucket.us-east-1.linodeobjects.com/example.txt?AWSAccessKeyId=YOUROBJECTSTORAGEACCESSKEY&Expires=1579725476&Signature=rAnDomKeySigNAtuRe
 
-- This is returned when you use a tool like the [Linode CLI](/docs/platform/object-storage/how-to-use-object-storage/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#create-a-signed-url-with-s3cmd) to generate a signed URL.
+- This is returned when you use a tool like the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd) to generate a signed URL.
 
 - Replace the following fields with your information:
 

@@ -17,8 +17,9 @@ Object Storage is available within the follow data centers.
 
 | Data Center | Cluster ID |
 | ------------| --------------------- |
-| Newark | us-east-1 |
-| Frankfurt | eu-central-1 |
+| Atlanta, GA, USA | us-southeast-1 |
+| Frankfurt, Germany | eu-central-1 |
+| Newark, NJ, USA | us-east-1 |
 | Singapore | ap-south-1 |
 
 Cluster IDs correspond with the Object Storage Cluster located in each data center. They are used when [formatting URLs](#object-storage-urls) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck).
@@ -62,7 +63,7 @@ If you need to increase the storage limit, the object limit, or the bucket limit
 
 Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool. This 1 terabyte of transfer data is prorated. If you use Object Storage for half of a month, only 500 gigabytes of transfer data will be added to your monthly transfer pool. At this time, all outbound data, including data transfer from Object Storage to a Linode in the same data center, is billable.
 
-You are not charged for uploading objects (inbound traffic) to Object Storage, with a few exceptions. Uploading an object to Object Storage from a Linode is almost always billable, as that is considered outbound traffic from the origin Linode. However, uploading an object from a Linode to Object Storage over IPv6 will be free, provided both the Linode and the bucket are hosted in the same data center.  Any further outbound data past your transfer quota is charged at a rate of $0.01 a gigabyte. For more information on network transfer pools, review our [Network Transfer Quota](/docs/guides/network-transfer-quota/) guide.
+You are not charged for uploading objects (inbound traffic) to Object Storage, with a few exceptions. Uploading an object to Object Storage from a Linode is almost always billable, as that is considered outbound traffic from the origin Linode. However, uploading an object from a Linode to Object Storage over IPv6 will be free, provided both the Linode and the bucket are hosted in the same data center.  Any further outbound data past your transfer quota is charged at a rate of $0.01 a gigabyte. For more information on network transfer pools, review our [Network Transfer](/docs/guides/network-transfer/) guide.
 
 ## Object Storage URLs
 

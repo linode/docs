@@ -19,23 +19,23 @@ If you don't know what DNS records to add to your new domain, the DNS Manager ca
 Creating a domain also creates its corresponding domain zone.
 {{</ note >}}
 
-1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel appears, and this panel displays a form for your domain's information.
+1.  From the **Domains** section, click on **Create Domain**. The **Create Domain** panel appears, and this panel displays a form for your domain's information.
 
-1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
+1. If you want to add a *secondary zone* instead of a primary zone, click the **Secondary** radio button.
 
    {{< note >}}
-In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
+In order for Linode's DNS servers to function as secondaries, your DNS primary server must notify and allow AXFR requests from the following IP addresses:
 
-   104.237.137.10
-   65.19.178.10
-   75.127.96.10
-   207.192.70.10
-   109.74.194.10
-   2600:3c00::a
-   2600:3c01::a
-   2600:3c02::a
-   2600:3c03::a
-   2a01:7e00::a
+    104.237.137.10
+    65.19.178.10
+    74.207.225.10
+    207.192.70.10
+    109.74.194.10
+    2600:3c00::a
+    2600:3c01::a
+    2600:3c02::a
+    2600:3c03::a
+    2a01:7e00::a
 {{< /note >}}
 
 1.  Enter your domain name in the **Domain** field.

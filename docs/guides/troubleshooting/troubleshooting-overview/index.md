@@ -184,4 +184,4 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 
     [![Disk storage allocation](disk-storage-allocation.png)](disk-storage-allocation.png)
 
-    Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.
+    Follow our steps for [resizing a disk](/docs/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.

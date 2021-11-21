@@ -27,7 +27,7 @@ relations:
 
 ## What is a Self-Signed TLS Certificate?
 
-Self-signed TLS certificates are suitable for personal use or for applications that are used internally within an organization. If you intend to use your SSL certificate on a website, see our guide on enabling TLS for [NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) once you’ve completed the process outlined in this guide.
+Self-signed TLS certificates are suitable for personal use or for applications that are used internally within an organization. If you intend to use your SSL certificate on a website, see our guide on enabling TLS for [NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) once you’ve completed the process outlined in this guide.
 
 ## Create the Certificate
 

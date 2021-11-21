@@ -3,8 +3,7 @@ slug: securing-your-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.'
-og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
+description: "This guide serves as a starting point for securing your Linode, including user accounts, firewall configuration, SSH, and disabling unused network services."
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +12,9 @@ modified: 2019-08-19
 modified_by:
   name: Linode
 published: 2012-02-17
-title: How to Secure Your Server
-h1_title: Securing Your Server
+title: "How to Secure Your Server"
+h1_title: "Securing Your Server"
+enable_h1: true
 ---
 
 In the [Getting Started](/docs/getting-started/) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
@@ -304,7 +304,7 @@ Using a *firewall* to block unwanted inbound traffic to your Linode provides a h
 
 If for whatever reason you find yourself locked out of your Linode after putting your security controls into place, there are still a number of ways that you can regain access to your Linode.
 
-* Access your Linode through our out-of-band [Lish console](https://www.linode.com/docs/platform/manager/using-the-linode-shell-lish/) to regain access to the internals of your Linode without relying on SSH.
+* Access your Linode through our out-of-band [Lish console](/docs/guides/using-the-lish-console/) to regain access to the internals of your Linode without relying on SSH.
 
 * If you need to re-enable password authentication and/or root login over ssh to your Linode, you can do this by reversing the following sections of this file to reflect these changes
 

@@ -1,19 +1,8 @@
 ---
-slug: deploy-image-to-new-linode-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that shows you how to deploy a new Linode using an Image.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-18
-modified_by:
-  name: Linode
-published: 2020-07-20
-title: How to Deploy an Image to a New Linode
-keywords: ["images"]
+# Shortguide: How to deploy an image to a new Linode
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 1. Log in to the Cloud Manager and navigate to the **Images** page.

@@ -4,11 +4,11 @@ author:
   name: Linode
   email: docs@linode.com
 keywords: ["getting started", "intro", "basics", "first steps"]
-description: 'This guide will help you set up your first Linode.'
+description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/']
-modified: 2019-03-08
+modified: 2021-08-11
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -28,15 +28,11 @@ Thank you for choosing Linode as your cloud hosting provider! This guide will he
 
 From there you'll set up a Linux distribution, boot your Linode, and perform some basic system administration tasks. If you've already created an account and booted your Linode, skip ahead to [connecting to your Linode](#connect-to-your-linode-via-ssh) using SSH.
 
-<!-- removing the video for now to test if gifs are more helpful
-<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/35724r19mr?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div><script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
--->
-
 ## Sign Up
 
-If you haven't already signed up for a Linode account, start here.
+First, you need to create a Linode account to start using our services. If you already have a Linode account, you can skip to the next section.
 
-1.  Create a new account at the [Sign Up page](https://login.linode.com/signup?promo=DOCS20AA00X1).
+1.  Create a new Linode account. {{< signup-link >}}
 
     {{< disclosure-note "Sending Email on Linode">}}
 Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`. If you'd like to send email from a Linode, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
@@ -52,7 +48,7 @@ Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`.
 
     ![Getting Started Add Linode](getting-started-add-linode.png "Getting Started with Linode")
 
-1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
+1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
     {{< note >}}
 Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide.](/docs/platform/stackscripts/)
@@ -93,11 +89,11 @@ If Network Helper is unable to determine the operating system during boot, or if
 
 ## Connect to Your Linode via SSH
 
-Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
+Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every desktop operating system.
 
-* **Linux:** You can use a terminal window, regardless of desktop environment or window manager.
-* **macOS:** *Terminal.app* comes pre-installed and can be launched from Spotlight or Launchpad.
-* **Windows:** There is no native SSH client but you can use a free and open source application called [PuTTY](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
+* **Windows:** Windows 10 users can connect to their Linode using the [PowerShell](/docs/guides/connect-to-server-over-ssh-on-windows/#powershell---windows-10) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
+* **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
+* **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](https://www.linode.com/docs/guides/connect-to-server-over-ssh-on-linux/)
 
 ### Find your Linode's IP Address
 
@@ -168,27 +164,35 @@ For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's
 
 The first thing you should do after connecting to your Linode is update the Linux distribution's packages. This applies the latest security patches and bug fixes to help protect your Linode against unauthorized access. Installing software updates should be performed regularly.
 
-### Arch Linux
+### CentOS/RHEL Stream and Fedora
 
-    pacman -Syu
+*This includes CentOS Stream (and 8), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
 
-### CentOS
+    dnf upgrade
 
-    yum update
+### Ubuntu and Debian
 
-### Debian / Ubuntu
-
-    apt-get update && apt-get upgrade
+    apt update && apt upgrade
 
 {{< note >}}
 You may be prompted to make a menu selection when the Grub package is updated on Ubuntu. If prompted, select `keep the local version currently installed`.
 {{< /note >}}
 
-### Fedora
+### Other Distributions
 
-    dnf upgrade
+#### Alpine
 
-### Gentoo
+    apk update && apk upgrade
+
+#### Arch Linux
+
+    pacman -Syu
+
+#### CentOS 7
+
+    yum update
+
+#### Gentoo
 
     emaint sync -a
 
@@ -196,11 +200,11 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
     emerge -uDU --keep-going --with-bdeps=y @world
 
-### OpenSUSE
+#### OpenSUSE
 
     zypper update
 
-### Slackware
+#### Slackware
 
     slackpkg update
     slackpkg upgrade-all
@@ -209,61 +213,44 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
 A hostname is used to identify your Linode using an easy-to-remember name. Your Linode's hostname doesn't necessarily associate with websites or email services hosted on the system, but see our guide on using the [hosts file](/docs/networking/dns/using-your-systems-hosts-file/) if you want to assign your Linode a fully qualified domain name.
 
- Your hostname should be something unique, and should not be *www* or anything too generic. Some people name their servers after planets, philosophers, or animals. After you've made the change below, you'll need to log out and back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly.
+ Your hostname should be something unique, and should not be *www* or anything too generic. Some people name their servers after planets, philosophers, or animals. After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly.
 
-### Arch / CentOS 7 / Debian 8 / Fedora / Ubuntu 16.04 and above
+### Most Distributions
+
+*This includes Ubuntu 16.04 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, OpenSuse, and Arch.*
 
 Replace `example-hostname` with one of your choice.
 
     hostnamectl set-hostname example-hostname
 
-### CentOS 6
+### Other Distributions
 
-Replace `example-hostname` with one of your choice.
+#### Alpine
 
-    echo "HOSTNAME=example-hostname" >> /etc/sysconfig/network
-    hostname "example-hostname"
+See [Update Your Systems hosts File](#update-your-systems-hosts-file).
 
-### Debian 7 / Ubuntu 14.04
-
-Replace `example-hostname` with one of your choice.
-
-    echo "example-hostname" > /etc/hostname
-    hostname -F /etc/hostname
-
-### Slackware
-
-Replace `example-hostname` with one of your choice.
-
-    echo "example-hostname" > /etc/HOSTNAME
-    hostname -F /etc/HOSTNAME
-
-### Gentoo
-
-Enter the following commands to set the hostname, replacing `example-hostname` with the hostname of your choice:
+#### Gentoo
 
     echo "HOSTNAME=\"example-hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
-### OpenSUSE
+#### Slackware
 
-Replace `example-hostname` with one of your choice.
+    echo "example-hostname" > /etc/HOSTNAME
+    hostname -F /etc/HOSTNAME
 
-    hostname example-hostname
-
-
-### Update Your System's hosts File
+### Update Your System's `hosts` File
 
 The `hosts` file creates static associations between IP addresses and hostnames or domains which the system prioritizes before DNS for name resolution. Open this file in a text editor and add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is the public IP address, `example-hostname` is the local hostname, and `example-hostname.example.com` is the FQDN.
 
-  {{< file "/etc/hosts"  conf >}}
+{{< file "/etc/hosts" >}}
 127.0.0.1 localhost.localdomain localhost
 203.0.113.10 example-hostname.example.com example-hostname
 {{< /file >}}
 
 Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
-  {{< file "/etc/hosts" conf >}}
+{{< file "/etc/hosts" >}}
 127.0.0.1 localhost.localdomain localhost
 203.0.113.10 example-hostname.example.com example-hostname
 2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
@@ -271,63 +258,80 @@ Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will no
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/platform/manager/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/guides/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
 
 ## Set the Timezone
 
-All new Linodes will be set to UTC time by default. However, you may prefer your Linode use the time zone which you live in so log file timestamps are relative to your local time.
+All new Linodes are set to UTC time by default. However, you may prefer your Linode use the time zone which you live in so log file timestamps are relative to your local time.
 
-### Arch Linux / CentOS 7 / Fedora
+### Most Distributions
 
-1.  View all available time zones:
+*This includes CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and OpenSuse distributions, though other methods may be preferred in those cases.*
+
+1.  Use `timedatectl` to output a list of available timezones.
 
         timedatectl list-timezones
 
-1.  Use the `Up`, `Down`, `Page Up` and `Page Down` keys to navigate. Copy the time zone you want as a mouse selection. Then press **q** to exit the list.
+1.  Use the arrow keys, `Page Up`, and `Page Down` to navigate. Copy the time zone you want as a mouse selection. Then press **q** to exit the list.
 
-1.  Set the time zone (for example, `America/New_York`):
+1.  Set the time zone (for example, `America/New_York`).
 
         timedatectl set-timezone 'America/New_York'
 
-### Debian / Ubuntu
+### Ubuntu and Debian
 
-1.  Though newer versions of Debian and Ubuntu use systemd with `timedatectl`, the recommended method to change timezones for these distributions is to use `tzdata`. It can be called using `dpkg`:
+The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. That said, both Ubuntu and Debian come with a more friendly tool called `tzdata`, outlined below.
+
+1.  Open the `tzdata` tool.
 
         dpkg-reconfigure tzdata
 
-1.  Arrow up or down to the continent of your choice and press **Enter**. Then do the same for the region.
+1.  Select the continent of your choice using the arrow keys and press **Enter**.
+1.  Select your region using the arrow keys and press **Enter**.
 
-### Gentoo
+### Other Distributions
 
-1.  View a list of available time zones:
+#### Alpine
+
+1.  Use the [setup-timezone](https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts#setup-timezone) command to initiate the timezone selection process:
+
+        setup-timezone
+
+1.  Enter the timezone you are located within. If you aren't sure of the timezone string to use, enter `?` to display a list of available timezones
+
+1.  If you selected a region with sub-timezones, enter `?` again to see a list of available sub-timezones and then enter the sub-timezone you are located within.
+
+#### Gentoo
+
+1.  View a list of available time zones.
 
         ls /usr/share/zoneinfo
 
-1.  Write the selected time zone to `/etc/timezone` (for example, EST for Eastern Standard Time):
+1.  Write the selected time zone to `/etc/timezone` (for example, EST for Eastern Standard Time).
 
         echo "EST" > /etc/timezone
 
-1.  Configure the `sys-libs/timezone-data` package, which will set `/etc/localtime` appropriately:
+1.  Configure the `sys-libs/timezone-data` package, which sets `/etc/localtime`.
 
         emerge --config sys-libs/timezone-data
 
-### OpenSUSE
+#### OpenSUSE
 
-1. View a list of available time zones:
+The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. OpenSuse also has a more friendly way to select a timezone, discussed below.
+
+1. Open the YaST2 timezone selector tool.
 
         yast2 timezone
 
-1.  Arrow up or down to the *Region* of your choice and press **Enter**.
+1.  Use the arrow keys to select your region within the *Region* pane.
 
-1. Press **Option+Z** (on a macOS) or **ALT+Z** (on Windows/Linux) to select the *Time Zone*.
+1.  Press **tab** to switch to the *Time Zone* pane and then use the arrow keys to select your time zone or sub-region.
 
-1. Use arrow up or down to move through the list of time zones. Press **Enter** to make your selection.
+1. Press **F10** to save the changes. Alternatively, press **tab** until the `[OK]` text button is highlighted. Then press **enter**.
 
-1. Press **F10** when done.
+#### Slackware
 
-### Slackware
-
-1.  Call the `timeconfig` tool in a terminal:
+1.  Run the `timeconfig` tool.
 
         timeconfig
 

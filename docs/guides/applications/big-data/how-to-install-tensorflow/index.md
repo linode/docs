@@ -3,20 +3,20 @@ slug: how-to-install-tensorflow
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to install TensorFlow, an open-source software library used for machine learning, on an Ubuntu 20.04 system. You can use a virtual environment and pip to install TensorFlow on your system. Once your installation is complete, this guide provides several resources to get you started using this open-source machine learning library.'
-og_description: 'This guide shows you how to install TensorFlow, an open-source software library used for machine learning, on an Ubuntu 20.04 system. You can use a virtual environment and pip to install TensorFlow on your system. Once your installation is complete, this guide provides several resources to get you started using this open-source machine learning library.'
+description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
+og_description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
 keywords: ['TensorFlow','installation','machine learning','and key phrases']
 tags: ['python', 'ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-08
 modified_by:
   name: Linode
-title: "Installing TensorFlow on Ubuntu 20.04"
-h1_title: "How to Install TensorFlow on Ubuntu 20.04"
+title: "How to Install TensorFlow on Ubuntu 20.04"
+h1_title: "Installing TensorFlow on Ubuntu 20.04"
 enable_h1: true
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Jeff Novotny
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[TensorFlow site](https://www.tensorflow.org/)'
 - '[deep neural networks](https://en.wikipedia.org/wiki/Deep_learning)'

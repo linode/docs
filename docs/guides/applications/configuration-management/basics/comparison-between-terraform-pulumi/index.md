@@ -8,6 +8,7 @@ og_description: 'TThis guide compares Terraform and Pulumi, with an explanation 
 keywords: ['IaC','Terraform','Pulumi','comparison', 'service orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-22
+image: ComparingTerraform_Pulumi.png
 modified_by:
   name: Linode
 title: "Comparing Pulumi and Terraform"
@@ -15,7 +16,7 @@ h1_title: "Pulumi vs Terraform"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Pulumi](https://www.pulumi.com/)'

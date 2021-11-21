@@ -3,8 +3,7 @@ slug: how-to-install-git-on-linux-mac-and-windows
 author:
   name: Linode
   email: docs@linode.com
-description: 'Git is the most popular distributed version control and source code management system. This guide shows you how to install Git on GNU/Linux, MacOSX, and Windows. You can also find some common questions and answers related to using Git.'
-og_description: 'Git is the most popular distributed version control and source code management system. This guide shows you how to install Git on GNU/Linux, MacOSX, and Windows. You can also find some common questions and answers related to using Git.'
+description: "Git is the most popular distributed version control and source code management system. Here's how to install it on GNU/Linux, MacOSX, and Windows."
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/git-source-control-management/','/development/version-control/how-to-install-git-on-mac-and-windows/','/development/version-control/how-to-install-git-on-linux-mac-and-windows/','/linux-tools/version-control/git/','/applications/development/git-source-control-management/']
@@ -13,7 +12,9 @@ modified_by:
   name: Linode
 published: 2009-09-04
 os: ["mac", "linux", "windows"]
-title: How to Install Git on Linux, Mac or Windows
+title: "How to Install Git on Linux, Mac or Windows"
+h1_title: "Installing Git on Linux, Mac or Windows"
+enable_h1: true
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'

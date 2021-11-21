@@ -2,20 +2,17 @@
 slug: docker-security-essentials
 author:
   name: Hackersploit
-description: 'This guide shows how to secure your Docker containers. Learn how to manage user access, prevent privilege escalation attacks, limit kernel capabilities, and more.'
-og_description: 'This guide shows how to secure your Docker containers. Learn how to manage user access, prevent privilege escalation attacks, limit kernel capabilities, and more.'
+description: "Learn about the basics of securing Docker containers, including managing user acess, preventing privilege escalation attacks, and limiting kernel capabilities."
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-03-26
+modified: 2021-08-09
 modified_by:
   name: Linode
 published: 2021-03-26
-title: Docker Security Essentials
-h1_title: Docker Security Essentials
-enable_h1: true
+title: "An Overview of Docker Security Essentials"
 aliases: ['/security/basics/docker-security-essentials/']
-image: Docker_Security_Essentials.png
+image: DockerSecurityEssentials.png
 ---
 
 ## What is Docker?
@@ -26,13 +23,7 @@ Docker utilizes the host OS Kernel, which makes Docker containers more efficient
 
 ## Prerequisites and Requirements
 
-In order to secure Docker containers, you need to have a Linux server with the following services running:
-
-- Docker
-
-For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/guides/deploying-docker-with-marketplace-apps/).
-
-Otherwise, you can find instructions on how to manually install Docker in our guide on [How to Install Docker CE on Ubuntu 18.04](/docs/guides/install-docker-ce-ubuntu-1804/).
+In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/guides/deploying-docker-with-marketplace-apps/). Otherwise, you can find instructions on how to manually install Docker in our guide on [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
 {{< note >}}
 This demonstration has been performed on Ubuntu 18.04. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.

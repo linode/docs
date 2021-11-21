@@ -30,7 +30,7 @@
 }
 
 .no-js .grid--base #navbar__toc,
-.is-topbar-pinned.is-search-input-open__TODO1 .grid--base #navbar__toc {
+.no-js .grid--base #navbar__search-input {
     display: none;
 }
 

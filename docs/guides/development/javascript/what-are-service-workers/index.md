@@ -41,7 +41,7 @@ A typical scenario has service workers intercepting fetch requests when the brow
 
 Theoretically, an API for caching web content already exists in AppCache. So why would you want to use service workers instead? While AppCache's API can make the caching process easy, it makes an array of assumptions about how the cache may be used. AppCache's ease of use made it difficult for developers to deviate from the assumed path without possibly breaking their applications. With service workers, by contrast, you can decide precisely how to manage requests, and caching.
 
-To get started using service workers for crafting offline experiences, take a look at the section below, [Example Service Worker](/docs/guides/what-are-service-workers/#example-service-worker), for more details. You may also want to explore the [Caching Strategies](https://serviceworke.rs/caching-strategies.html) section of Mozilla's Service Worker Cookbook.
+To get started using service workers for crafting offline experiences, take a look at the section below, [Example Service Worker](/docs/guides/what-are-javascript-service-workers/#example-service-worker), for more details. You may also want to explore the [Caching Strategies](https://serviceworke.rs/caching-strategies.html) section of Mozilla's Service Worker Cookbook.
 
 ### Push Notifications
 

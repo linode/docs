@@ -3,20 +3,21 @@ slug: how-to-install-the-element-chat-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to download and install the Element App and the Matrix-Synapse communication layer. It also illustrates how to set up encryption and use these applications with a NGINX web server.'
-og_description: 'This guide explains how to download and install the Element App and the Matrix-Synapse communication layer. It also illustrates how to set up encryption and use these applications with a NGINX web server.'
+description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
+og_description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
 keywords: ['Element','Matrix-Synapse','installation','chat','messaging']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-07
+image: ElementChat.jpg
 modified_by:
   name: Linode
-title: "Install the Element Chat App"
-h1_title: "How to Install the Element Chat Application"
+title: "How to Install and Configure the Element Chat App"
+h1_title: "Installing and Configuring the Element Chat Application"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Element](https://element.io/)'
 - '[Matrix](https://matrix.org/)'
@@ -46,7 +47,7 @@ external_resources:
 
         sudo apt-get update && sudo apt-get upgrade
 
-1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for assistance when configuring your domain.
+1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for assistance when configuring your domain.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -90,7 +91,7 @@ The following sections describe each step in more detail.
   - `element.example.com` (Element web client)
 
     {{< note >}}
-Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/platform/manager/dns-manager/) for more information on adding domains and DNS records.
+Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/guides/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
 ## Download and Install the Matrix-Synapse Communication Layer

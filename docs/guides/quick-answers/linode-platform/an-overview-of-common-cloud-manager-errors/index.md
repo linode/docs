@@ -11,7 +11,7 @@ published: 2019-02-22
 modified_by:
   name: Linode
 aliases: ['/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/','/quick-answers/linode-platform/understanding-cloud-manager-errors/']
-image: UnderstandingCommonCloudManagerErrors.png
+image: L_UnderstandCommonClManErrors.png
 title: "An Overview of Common Cloud Manager Errors"
 h1_title: "Understanding Common Cloud Manager Errors"
 contributor:
@@ -34,6 +34,18 @@ The above error means that there is an issue retrieving your Linodes from our ba
 If the status page shows that everything is all clear, then the next step is to attempt to clear your web browser cache, as this can sometimes cause an issue in loading resources. The method for completing this process varies between browsers, however it usually involves opening your browsers full history and finding an option to clear it.
 
 If all else fails, you should reach out to our 24/7 [Support Team](https://www.linode.com/docs/platform/billing-and-support/support/) for more direct assistance. Additionally, we can also recommend attempting to access your resources through alternative means such as our [API](https://developers.linode.com/api/v4/) or [CLI](https://www.linode.com/docs/platform/api/linode-cli/) if our Manager is inaccessible for any reason.
+
+## Error Retrieving Network Information
+
+**There was an error retrieving network information for this Linode.**
+
+When you create a new Linode, it can take some time to gather enough data about your Linode's networking traffic to create an output for the Cloud Manager. During the time that information is being gathered, the Network Tab will output the message **There was an error retrieving network information for this Linode** in place of the Network Transfer History graph. To confirm that there hasn't been enough analytical data gathered from the Linode, check the Analytics tab, which should state Graphs for this Linode are not yet available - check back later in place of its usual graphs.
+
+The amount of time it takes the Network Transfer History graph to populate can vary depending on multiple factors including which distribution you've chosen for your Linode, which data center the Linode is in, and any scripts which were used to deploy the Linode.
+
+If you are still seeing this message after a considerable amount of time, it is recommended that you attempt to clear your web browser cache, as this can sometimes cause an issue in loading resources. The method for completing this process varies between browsers, however it usually involves opening your browser's full history and finding an option to clear it.
+
+If clearing the browser cache doesn't clear the message or you are noticing networking issues on your Linode beyond this message please see the [Troubleshooting Basic Connection Issues guide](/docs/guides/troubleshooting-basic-connection-issues/).
 
 ## Your Account Must Be Activated
 

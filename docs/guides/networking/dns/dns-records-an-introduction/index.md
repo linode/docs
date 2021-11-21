@@ -66,7 +66,7 @@ You can also use trailing dots in domain names (for example, `example.com.`), wh
     mail        A   12.34.56.78
     www         A   12.34.56.78
 
-Every domain's zone file contains the domain administrator's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read the Linode [DNS Manager Overview article](/docs/platform/manager/dns-manager/) guide.
+Every domain's zone file contains the domain administrator's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read the Linode [DNS Manager Overview article](/docs/guides/dns-manager/) guide.
 
 ### DNS Resolution
 
@@ -226,6 +226,10 @@ An SPF record for your domain tells other receiving mail servers which outgoing 
 
     example.com   TXT     "v=spf1 a ~all"
 
+{{< note >}}
+When applying TXT records using the [Linode DNS Manager](https://www.linode.com/docs/guides/dns-manager/), quotation marks `"` should not be applied in the example above.
+{{< /note >}}
+
 In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, type (which is TXT, or SPF if your name server supports it), and text (which starts with "v=spf1" and contains the SPF record settings).
 
 If your Linode is the only mail server you use, you should be able to use the example record above. With this SPF record, the receiving server will check the IP addresses of both the sending server and the IP address of example.com. If the IPs match, the check passes. If not, the check will soft fail (i.e., the message will be marked but will not automatically be rejected for failing the SPF check).
@@ -255,3 +259,7 @@ An example use of SRV records would be to set up [Federated VoIP](http://en.wiki
 ### TXT
 
 A *TXT record* or *text record* provides information about the domain in question to other resources on the internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing.
+
+{{< note >}}
+In common DNS Configurations using TXT records, quotation marks `"` are applied. When applying TXT records using the [Linode DNS Manager](https://www.linode.com/docs/guides/dns-manager/), quotation marks `"` should not be applied in most scenarios, as they are added automatically in cases where they are needed.
+{{< /note >}}

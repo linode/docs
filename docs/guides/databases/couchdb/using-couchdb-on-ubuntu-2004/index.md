@@ -3,8 +3,8 @@ slug: use-couchdb-2-0-on-ubuntu-20-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and explains how to use CouchDB 2.0 on Ubuntu.'
-og_description: 'CouchDB is a NoSQL database that uses HTTP APIs and JSON documents to be more intuitive and integrate more simply with web and mobile applications. This guide explores the basic concepts and explains how to use CouchDB 2.0 on Ubuntu.'
+description: "Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu."
+og_description: "Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu."
 keywords: ['couchdb','nosql','fauxton','database','ubuntu 20.04']
 tags: ['couchdb','fauxton', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +13,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "How to Use CouchDB 2.0 on Ubuntu 20.04"
 h1_title: "Using CouchDB 2.0 on Ubuntu 20.04"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -20,7 +21,6 @@ external_resources:
 - '[API guide](https://docs.couchdb.org/en/latest/api/index.html)'
 - '[documentation for the _find API](https://docs.couchdb.org/en/latest/api/database/find.html)'
 - '[Apache CouchDB Documentation](https://docs.couchdb.org/en/stable/)'
-
 ---
 
 *CouchDB*, a non-relational or "NoSQL" database, uses HTTP APIs and JSON documents, making its concepts more intuitive to those familiar with web technologies. These also make CouchDB simple to integrate with web and mobile applications.
@@ -33,7 +33,7 @@ This guide shows you how to get started with CouchDB using its web interface—*
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Install CouchDB. Follow the instructions in the guide on [How to Install CouchDB on Ubuntu 20.04](/docs/guides/how-to-install-couchdb-on-ubuntu-2004).
+1. Install CouchDB. Follow the instructions in the guide on [How to Install CouchDB on Ubuntu 20.04](/docs/guides/install-couchdb-20-on-ubuntu/).
 
 1. Update your system:
 

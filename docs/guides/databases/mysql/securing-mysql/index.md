@@ -16,7 +16,7 @@ contributor:
 modified_by:
   name: linode
 published: 2021-03-26
-image: Securing_MySQL.png
+image: SecureMySQLserver.png
 ---
 
 ## MySQL
@@ -32,7 +32,7 @@ MySQL is an open-source relational database management system. This guide will s
         hostname
         hostname -f
 
-    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 

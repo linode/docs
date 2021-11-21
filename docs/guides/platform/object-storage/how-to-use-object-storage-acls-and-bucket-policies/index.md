@@ -3,16 +3,16 @@ slug: how-to-use-object-storage-acls-and-bucket-policies
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
-og_description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
+description: "Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects."
+og_description: "How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects."
 keywords: ['object storage','acl','access control list','bucket policy','bucket policies']
 tags: ["linode platform","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
 modified_by:
   name: Linode
-title: "How to Enact Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
-h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
+title: "How to Use ACLs and Bucket Policies on Linode Object Storage"
+h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies on Object Storage"
 enable_h1: true
 contributor:
   name: Linode
@@ -38,7 +38,7 @@ In this guide you learn about:
 
 - This guide describes two ways to use ACLs to control access to buckets and bucket objects.
   - ACLs in the [Linode Cloud Manager](https://cloud.linode.com).
-  - ACLs using the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
+  - ACLs using the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [Using s3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) guide.
 
 - For the s3cmd method, you also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
 

@@ -12,6 +12,12 @@
     padding-left: 2rem;
 }
 
+@mobile {
+    .is-not-loaded.is-explorer-open .kind-home__hero {
+        padding-left: 0;
+    }
+}
+
 .kind-home .container {
     max-width: 100%;
     padding-left: 1.5rem;
@@ -53,6 +59,11 @@
 
 .kind-home .carousel--square {
     --carousel-slide-height: var(--carousel-slide-width);
+    min-height: var(--carousel-slide-height);
+}
+
+.kind-home .carousel {
+    min-height: var(--carousel-slide-height);
 }
 
 /* The Q&A slider. */

@@ -1,10 +1,16 @@
 This template includes common API logic and functions.
 
 {{ define "partials/openapi3/get" }}
-  {{ $apiPath := "api/openapi.yaml"}}
-  {{ $api := resources.Get $apiPath }}
+  {{ $api := "" }}
+  {{ $spec := .Params.spec }}
+  {{ if $spec }}
+    {{ $api = .Resources.GetMatch $spec }}
+  {{ else }}
+    {{ $apiPath := "api/openapi.yaml"}}
+    {{ $api = resources.Get $apiPath }}
+  {{ end }}
   {{ if not $api }}
-    {{ errorf "%q not found" $apiPath }}
+    {{ errorf "spec not found" }}
   {{ else }}
     {{ $api = $api | openapi3.Unmarshal }}
   {{ end }}
@@ -194,8 +200,13 @@ This template includes common API logic and functions.
   {{ $ctx := .Values }}
   {{ $s := $ctx.dot }}
   {{ $p := $ctx.page }}
+
   {{ $.Set "oneOfPickFirst" false }}
-  {{ $m := (partial "openapi3/schema-to-map" $)}}
+  {{ $required := newScratch }}
+  {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $required "dot" $s.Value ) }}
+  {{/* warnf "%v" (debug.Dump $required.Values ) */}}
+  {{ $.Set "requiredMap" $required.Values }}
+  {{ $m := (partial "openapi3/schema-to-map" (dict "dollar" $ )) }}
   
   {{ if not $m.Properties }}
     <p>
@@ -232,9 +243,6 @@ This template includes common API logic and functions.
   {{ with $s.Type }}
     {{ $m.Set "Type" . }}
   {{ end }}
-  {{ with $s.Required }}
-    {{ $m.Set "Required" . }}
-  {{ end }}
   {{ with $s.Min }}
     {{ $m.Set "Min" . }}
   {{ end }}
@@ -258,39 +266,93 @@ This template includes common API logic and functions.
   {{ end }}
 {{ end }}
 
+{{ define "partials/openapi3/schema-to-map-collect-required" }}
+  {{ $dollar := .dollar }}
+  {{ $ctx := $dollar.Values }}
+  {{ $s := .dot }}
+  {{ $path := .path | default "" }}
+  
+  {{ range $s.AllOf }}
+    {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $dollar "path" $path "dot" .Value  )}}
+  {{ end }}
+  {{ range $i, $e := $s.OneOf }}
+    {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $dollar "path" $path "ordinal" (add $i 1) "dot" .Value )}}
+  {{ end }}
+  
+  {{ $props := $s.Properties }}
+  {{ if eq $s.Type "array" }}
+    {{ $props = $s.Items.Value.Properties }}
+  {{ end }}
+  
+  {{ range $k, $v := $props }}
+    {{ $ppath := path.Join $path $k }}
+    {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $dollar "path" $ppath "dot" $v.Value)}}
+  {{ end }}
+  
+  {{ $requiredKey := path.Join "required" $path}}
+  {{ if $.ordinal }}
+    {{ $requiredKey = printf "%s-%d" $requiredKey $.ordinal}}
+  {{ end }}
+  {{ $required := $dollar.Get $requiredKey | default slice }}
+  {{ $required = $required | union $s.Required }}
+  {{ with $required }}
+    {{ $dollar.Set $requiredKey . }}
+  {{ end }}
+  
+  {{ return ""}}
+{{ end }}
+
 {{ define "partials/openapi3/schema-to-map" }}
-  {{ $ctx := .Values }}
+  {{ $dollar := .dollar }}
+  {{ $path := .path | default "" }}
+  {{ $parent := .parent }}
+  {{ $ctx := $dollar.Values }}
+  {{ $requiredMap := $ctx.requiredMap }}
   {{ $p := $ctx.page }}
   {{ $s := $ctx.dot.Value }}
 
   {{ $m :=  newScratch }}
   {{ $m.Set "Ref" $ctx.dot.Ref }}
+  
+  {{ if and .isProperty $requiredMap }}
+    {{ $name := (path.Base $path) }}
+    {{ $base := (path.Dir $path) }}
+    {{ $requiredKey := (path.Join "required" $base)}}
+    {{ if $.ordinal }}
+      {{ $requiredKey = printf "%s-%d" $requiredKey $.ordinal}}
+    {{ end }}
+    
+    {{ $required := index $requiredMap $requiredKey }}
+    {{ $m.Set "IsRequired" (in $required $name) }}
+  {{ end }}
+  
   {{ template "openapi3/schema-set-values-in-map" (dict "m" $m "s" $s )}}
   {{ $props := $s.Properties }}
   {{ if eq $s.Type "array" }}
     {{ $props = $s.Items.Value.Properties }}
     {{ $m.Set "ValueType" $s.Items.Value.Type }}
   {{ end }}
+  
   {{ range $k, $v := $props }}
-    {{ $.Set "dot" $v }}
-    {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" $) }}
+    {{ $dollar.Set "dot" $v }}
+    {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" (path.Join $path $k) "isProperty" true "ordinal" $.ordinal)) }}
   {{ end }}
   {{ $values := $m.Values }}
   {{ range $s.AllOf }}
-    {{ $.Set "dot" . }}
-    {{ $nested := (partial "openapi3/schema-to-map" $) }}
+    {{ $dollar.Set "dot" . }}
+    {{ $nested := (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" $path)) }}
     {{ $values = merge $nested $values }}
   {{ end }}
   {{ if $s.OneOf }}
     {{ if $ctx.oneOfPickFirst }}
-      {{ $.Set "dot" (index $s.OneOf 0) }}
-      {{ $values =  partial "openapi3/schema-to-map" $  }}
+      {{ $dollar.Set "dot" (index $s.OneOf 0) }}
+      {{ $values =  partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" $path)  }}
     {{ else }}
       {{/* Make this schema into a slice that can be toggled by the user. */}}
       {{ $slice := slice }}
-      {{ range $s.OneOf }}
-        {{ $.Set "dot" . }}
-        {{ $slice =  $slice | append (partial "openapi3/schema-to-map" $)  }}
+      {{ range $i, $e := $s.OneOf }}
+        {{ $dollar.Set "dot" . }}
+        {{ $slice =  $slice | append (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" $path "ordinal" (add $i 1)))  }}
       {{ end }}
       {{ $values = $slice }}
     {{ end }}
@@ -379,7 +441,6 @@ This template includes common API logic and functions.
 {{ define "openapi3/print-schema-property" }}
   {{ $ctx := .Values }}
   {{ $s := $ctx.dot }}
-  {{ $.Set "owner" $s }}
   
   {{ with $s.Properties }}
     {{ $.Set "dot" .}}
@@ -444,7 +505,7 @@ This template includes common API logic and functions.
             Nullable
           </div>
         {{ end }}
-        {{ if in $ctx.owner.Required $k }}
+        {{ if $s.IsRequired }}
           <div class="text-red-500">
             Required
           </div>
@@ -502,7 +563,7 @@ This template includes common API logic and functions.
   {{ if $content }}
     {{ $.Set "dot" $content.Schema }}
     {{ $.Set "oneOfPickFirst" true }}
-    {{ $schema := partial "openapi3/schema-to-map" $ }}
+    {{ $schema := partial "openapi3/schema-to-map" (dict "dollar" $) }}
     {{ $body := "{}" }}
     {{ with $schema.Example }}
       {{ $body = . | jsonify (dict "indent" "  ") }}
@@ -571,11 +632,11 @@ This template includes common API logic and functions.
               <div class="font-semibold py-4">
                 {{ $e.title2 }}
               </div>
-              <div class="code my-4 dark flex items-start justify-between" x-data="lnh.CopyToClipBoard()">
+              <div class="code my-4 dark flex items-start justify-between">
                 <div x-ref="code">
                   {{- highlight $e.body $lang "linenos=false" -}}
                 </div>
-                <div class="w-10 pt-5" @click="copy($refs.code)">
+                <div class="w-10 pt-5 cursor-pointer" @click="$copy($refs.code)">
                   {{ $copyIcon }}
                 </div>
               </div>
@@ -585,11 +646,11 @@ This template includes common API logic and functions.
           {{ if $e.dump }}
             <template x-if="active === {{ $i }}">
               <div>
-                <div class="code my-4 dark flex items-start justify-between " x-data="lnh.CopyToClipBoard()">
+                <div class="code my-4 dark flex items-start justify-between ">
                   <div x-ref="code">
                     {{- highlight $e.body $lang "linenos=false" -}}
                   </div>
-                  <div class="w-10 pt-5" @click="copy($refs.code)">
+                  <div class="w-10 pt-5 cursor-pointer" @click="$copy($refs.code)">
                     {{ $copyIcon }}
                   </div>
                 </div>

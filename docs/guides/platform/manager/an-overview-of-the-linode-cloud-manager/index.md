@@ -123,7 +123,7 @@ Linode’s Cloud Manager and [API v4](/docs/api) allow you to create tags to hel
 
 Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/guides/linode-cli/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
 
-For more details, see the [Understanding the Cloud Manager Events and Activity Feeds](/docs/guides/what-are-the-cloud-manager-events-and-activity-feeds/) guide.
+For more details, see the [Understanding Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/) guide.
 
 ## My Profile
 
@@ -135,7 +135,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
 - Managing trusted devices
 - [Adding and managing public SSH keys](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
-- [Managing LISH authentication methods](/docs/guides/using-the-linode-shell-lish/#add-your-public-key)
+- [Managing LISH authentication methods](/docs/guides/using-the-lish-console/#add-your-public-key)
 - [Add and manage personal and third party API v4 access tokens](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/#obtaining-a-client-id-and-a-client-secret)
 - [Access Linode referral codes](/docs/guides/how-linode-billing-works/#referral-credits)

@@ -6,18 +6,20 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'This guide will demonstrate how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs.'
-og_description: 'The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana.'
+description: "This guide will demonstrate how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs."
+og_description: "The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache debian 9", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
+image: VizApacheWSL_ElasticStack_Debian9.png
 modified: 2021-03-05
 modified_by:
   name: Linode
-title: 'How to Visualize Apache Web Server Logs Using the Elastic Stack on Debian 9'
-h1_title: 'Visualizing Apache Web Server Logs Using the Elastic Stack on Debian 9'
+title: "Visualizing Apache Logs With Elastic Stack on Debian 9"
+h1_title: "Visualizing Apache Logs Using the Elastic Stack on Debian 9"
+enable_h1: true
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring","apache"]
 relations:

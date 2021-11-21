@@ -5,10 +5,11 @@
     </div>
 </div>
 
-<div class="pt-10" x-data="lnh.OnIntersection()" x-init="() => init();">
-  <template x-if="window.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
+
+<div class="pt-10" x-data="{ visible: false }" x-intersect.once="visible = true">
+  <template x-if="window.trustecm && window.trustecm.functional && (visible || (window.location.hash.startsWith('#comment-')))">
     <div>
-      <div x-data="lnc.NewDisqusController('{{ .Site.DisqusShortname }}', lnPageInfo)" x-init="() => init()">
+      <div x-data="lncDisqus('{{ .Site.DisqusShortname }}', lnPageInfo)" x-init="$nextTick(() => init())">
         <div id="disqus_thread"></div>
         <noscript>
           Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>

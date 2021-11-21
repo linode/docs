@@ -3,8 +3,7 @@ slug: enabling-https-using-certbot-with-nginx-on-debian
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide will show you how to install and use Certbot with NGINX on Debian 10 and 9. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
-og_description:  "This guide will show you how to install and use Certbot with NGINX on Debian 10 and 9. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
+description: "Learn how to install and use Certbot with NGINX on Debian 10 and 9, which automates the process adding TLS/SSL to your websites."
 keywords: ["Debian", "Certbot", "TLS", "SSL", "HTTPS", "Encryption", "NGINX"]
 tags: ["debian", "ssl", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,9 +30,9 @@ This guide provides instructions on using the open source [Certbot](https://cert
 
 Before continuing with this guide, you need a website accessible over HTTP using your desired domain name. Breaking this down further, the following components are required:
 
-1.  **A server running on Debian 10 or 9** with credentials to a standard user account (belonging to the `sudo` group) and the ability to access the server through[SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides for information on deploying and configuring a Linode Compute Instance.
+1.  **A server running on Debian 10 or 9** with credentials to a standard user account (belonging to the `sudo` group) and the ability to access the server through[SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides for information on deploying and configuring a Linode Compute Instance.
 
-2.  **A registered domain name with DNS records pointing to the IPv4 (and optionally IPv6) address of your server.** A domain can be obtained through any registrar and can utilize any DNS service, such as Linode's [DNS Manager](/docs/platform/manager/dns-manager/). Review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide for more information on configuring DNS.
+2.  **A registered domain name with DNS records pointing to the IPv4 (and optionally IPv6) address of your server.** A domain can be obtained through any registrar and can utilize any DNS service, such as Linode's [DNS Manager](/docs/guides/dns-manager/). Review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide for more information on configuring DNS.
 
 3.  **The NGINX web server software installed on your server and configured for your domain.** You can review the [How to Install NGINX on Debian 10](/docs/guides/how-to-install-nginx-debian-10/) guide for information on installing and configuring NGINX.
 

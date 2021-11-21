@@ -3,7 +3,7 @@ slug: create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS7.'
+description: "Learn how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS 7."
 keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " strong vpn"]
 tags: ["networking","vpn","ubuntu","security","proxy","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +12,9 @@ published: 2017-12-07
 modified: 2018-07-10
 modified_by:
   name: Linode
-title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
-h1_title: Creating a SOCKSS Proxy Server with Shadowsocks on Ubuntu and CentOS 7
+title: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
+h1_title: "Creating a SOCKSS Proxy Server with Shadowsocks"
+enable_h1: true
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940

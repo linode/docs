@@ -48,7 +48,7 @@ The first step towards using Object Storage is to create a pair of keys for the 
 -   The access key allows you to access any objects that you set to have private read permissions.
 
     {{< note >}}
-To use the access key when viewing a private object, you first need to generate a *signed* URL for the object. The signed URL is much like the standard URL for the object, but some extra URL parameters are appended to it, including the access key. Instructions for generating a signed URL can be found for [s3cmd](#create-a-signed-url-with-s3cmd) and the [Linode CLI](#create-a-signed-url-with-the-cli), outlined in this guide.
+To use the access key when viewing a private object, you first need to generate a *signed* URL for the object. The signed URL is much like the standard URL for the object, but some extra URL parameters are appended to it, including the access key. Instructions for generating a signed URL can be found for [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd) and the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli), outlined in this guide.
 {{< /note >}}
 
 -   The secret key is used together with the access key to authenticate the various Object Storage tools with the Linode account. You should not share the secret key.
@@ -59,7 +59,7 @@ Each Object Storage key pair on the Linode account has complete access to all of
 
 ### Generating an Access Key
 
-{{< content "object-storage-key-pair-shortguide" >}}
+{{< content "object-storage-access-keys-shortguide" >}}
 
 ### Limiting Access through Access Keys
 
@@ -115,7 +115,7 @@ There are a number of tools that are available to help manage Linode Object Stor
 
 - [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) is a powerful command line utility that can be used with any S3-compatible object storage service, including Linode's. s3cmd can be used to create and remove buckets, add and remove objects, convert a bucket into a static site from the command line, plus other functions like syncing entire directories up to a bucket.
 
-- [Cyberduck](docs/products/storage/object-storage/guides/cyberduck) is a graphical utility available for Windows and macOS and is a great option if you prefer a GUI tool.
+- [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck) is a graphical utility available for Windows and macOS and is a great option if you prefer a GUI tool.
 
 ## Cloud Manager
 

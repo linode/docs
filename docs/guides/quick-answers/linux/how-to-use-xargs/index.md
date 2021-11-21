@@ -2,8 +2,8 @@
 slug: using-xargs-with-examples
 author:
   name: Jeff Novotny
-description: 'The xargs command converts input data into a string of arguments. This guide includes xarg examples like, using xargs for command substitution, spawning multiple processes, and invoking xargs to a shell script. The xargs command in Linux is a powerful utility that can help you workaround the limitation of other Linux utilities.'
-og_description: 'The xargs command converts input data into a string of arguments. This guide includes xarg examples like, using xargs for command substitution, spawning multiple processes, and invoking xargs to a shell script. The xargs command in Linux is a powerful utility that can help you workaround the limitation of other Linux utilities.'
+description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
+og_description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
 keywords: ['xarg examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17

@@ -9,12 +9,14 @@ keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15
+image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode
 title: "How to Use APT to Manage Packages in Debian and Ubuntu"
 h1_title: "Using APT to Manage Packages in Debian and Ubuntu"
 enable_h1: true
+aliases: ['/guides/using-apt-package-manager/']
 ---
 
 *Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.
@@ -29,7 +31,7 @@ Before running the commands within this guide, you will need:
 
 1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Getting Started](/docs/getting-started/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
@@ -39,9 +41,8 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 While there are more similarities than differences, there are a few important points to consider when decided which command to use.
 
-- [`apt`](http://manpages.ubuntu.com/manpages/impish/en/man8/apt.8.html): An end-user tool that has much of the same functionality as `apt-get`, `apt-cache`, and other APT command-line tools. The output is specifically formatted for enhanced human readability. This is the recommended front-end for interacting with APT as a user. See [apt Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt.8.html)
-- `apt-get`: Manages the installation, upgrades, and removal of packages and their dependencies. The existing parameters, arguments, and functionality for `apt-get` shouldn't ever change. The output works well for machine readability. Using this is recommended when writing scripts. See [apt-get Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-get.8.html)
-- `apt-cache` A lower-level tool (compared to `apt`) for searching through packages and outputting information about packages. Using this is recommended when writing scripts. See [apt-cache Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-cache.8.html).
+- [`apt`](http://manpages.ubuntu.com/manpages/impish/en/man8/apt.8.html): A newer end-user tool that consolidates the functionality of both `apt-get` and `apt-cache`. Compared to the others, the `apt` tool is more straightforward and user-friendly. It also has some extra features, such as a status bar and the ability to list packages. Both Ubuntu and Debian recommend the `apt` command over `apt-get` and `apt-cache`. See [apt Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt.8.html)
+- `apt-get` and `apt-cache`: The `apt-get` command manages the installation, upgrades, and removal of packages (and their dependencies). The `apt-cache` command is used to search for packages and retrieve details about a package. Updates to these commands are designed to never introduce breaking changes, even at the expense of the user experience. The output works well for machine readability and these commands are best limited to use within scripts. See [apt-get Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-get.8.html) and [apt-cache Ubuntu man pages](http://manpages.ubuntu.com/manpages/focal/en/man8/apt-cache.8.html).
 
 In short, `apt` is a single tool that encompasses most of the functionality of other APT-specific tooling. It is designed primarily for interacting with APT as an end-user and its default functionality may change to include new features or best practices. If you prefer not to risk breaking compatibility and/or prefer to interact with plainer output, `apt-get` and `apt-cache` can be used instead, though the exact commands may vary.
 
@@ -121,7 +122,7 @@ The following options are available for most of the commands discussed on this g
 
         sudo apt install [package1] [package2]
 
--   **Automatically accept prompts** by adding the `-y` option. This is useful when writing scripts to prevent any user interaction when its implicit that they wish to perform the action on the specified packages.
+-   **Automatically accept prompts** by adding the `-y` or `--yes` option. This is useful when writing scripts to prevent any user interaction when its implicit that they wish to perform the action on the specified packages.
 
         sudo apt install [package] -y
 

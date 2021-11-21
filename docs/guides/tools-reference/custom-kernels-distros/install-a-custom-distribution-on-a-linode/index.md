@@ -23,7 +23,7 @@ For the sake of organization, it has been split into two main sections:
 
 *  [Install a Custom Distribution](#install-a-custom-distribution): shows you how to use the advantages of **Direct Disk Boot** to easily install the custom distribution.
 
-*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/guides/linode-backup-service/).
+*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/products/storage/backups/).
 
 This guide uses Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
@@ -57,7 +57,7 @@ In this section you install your custom distro onto a raw disk, with the *direct
 Depending on the distribution you install first, you may need to resize your disk to a size slightly larger than 2100 MB. You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
 {{< /note >}}
 
-1.  [Create two raw, unformatted disk images](/docs/guides/linode-disks/#creating-a-disk) from the Linode's Dashboard:
+1.  [Create two raw, unformatted disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk depends upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk is 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
@@ -85,7 +85,7 @@ If you intend to continue to the next section on [Linode Manager Compatibility](
 
 ### Download and Install Image
 
-1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/using-the-linode-shell-lish/).
+1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/using-the-lish-console/).
 
 1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the following command with the location of the image you want to install:
 
@@ -166,7 +166,7 @@ These features are not available even if you formatted the disk to *ext4* during
 
 1.  Create some room for two new disks. One formatted *ext4* to move the file system to and one for *swap*. To make more room, consider deleting the initial distribution that was created during Linode creation.
 
-1.  [Create a new ext4 disk](/docs/guides/linode-disks/#creating-a-disk). The new disk should be large enough to accommodate the root file system that was created on your raw disk (2000 MB). You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For this example, name this disk *Boot-New*.
+1.  [Create a new ext4 disk](/docs/guides/disks-and-storage/#creating-a-disk). The new disk should be large enough to accommodate the root file system that was created on your raw disk (2000 MB). You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For this example, name this disk *Boot-New*.
 
 1.  Create the second new disk and choose *swap* for the disk type. The size of this disk depends upon your needs, but it's recommended that you make it between 256-512MB to start. Label this disk *Swap*.
 

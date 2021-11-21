@@ -3,17 +3,16 @@ slug: how-linode-billing-works
 author:
   name: Linode
   email: docs@linode.com
-description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
-og_description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
+description: "Learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-02
+modified: 2021-11-16
 modified_by:
   name: Linode
 published: 2019-10-25
-title: How Linode Billing Works
-h1_title: Billing and Payments
+title: "How Linode Billing Works"
+h1_title: "Billing and Payments"
 enable_h1: true
 tags: ["linode platform"]
 ---
@@ -30,7 +29,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
-If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer-quota/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is active on the account.
+If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is active on the account.
 
 \*Review the [Viewing Current Balance](/docs/guides/manage-billing-in-cloud-manager/#viewing-current-balance) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
 
@@ -56,31 +55,35 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service]((/docs/guides/manage-billing-in-cloud-manager/#removing-services)) from your account.
+**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services)) from your account.
 
 ## Payments
 
-When an invoice is generated on the first of the month (or mid-month), Linode automatically attempts to charge the account's default credit card on file. In addition to these automatic payment attempts, you can make manual payments to add funds to your account, which will then be used to pay future invoices.
+When an invoice is generated on the first of the month (or mid-month), Linode automatically attempts to charge the account's default credit card on file. In addition to these automatic recurring payments, you can make one-time payments to add funds to your account, which will then be used to pay future invoices.
 
 ### Payment Methods
 
-- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express. They can be used to both automatically pay your invoice and to manually add funds to the account. Review the [Updating the Credit Card](/docs/guides/manage-billing-in-cloud-manager/#updating-the-credit-card) section to update your credit card on file.
+- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, and American Express.
 
-- **Google Pay:** Pay using any credit or debit card through a Google Pay account. Google Pay can be used to both automatically pay your invoice and to manually add funds to the account. Using Google Pay balances as well as bank accounts and PayPal accounts linked through Google Pay are not supported at this time. See [Adding and Updating Google Pay](/docs/guides/manage-billing-in-cloud-manager/#adding-and-updating-google-pay).
-
-- **PayPal:** Pay using your PayPal balance or any payment method added to your PayPal account. At this time, PayPal can only be used to manually add funds to your account. It cannot be used as the account's default payment method to automatically pay monthly invoices. If you wish to pay your balance with PayPal, you'll need to log into the [Cloud Manager](https://cloud.linode.com) and submit a manual payment.
-
-- **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
-
-The address affiliated with a payment method should match the [Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information) on the account.
-
-{{< note >}}
+    {{< note >}}
 Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
 {{< /note >}}
 
+- **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
+
+    {{< note >}}
+To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
+{{</ note >}}
+
+- **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account.
+
+- **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
+
+See [Adding a New Payment Method](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method) for instructions on adding a new payment method to your account.
+
 ### Manual Payments
 
-At any time, you can make a manual payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-payment) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
+At any time, you can make a manual one-time payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a One-Time Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-one-time-payment) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
 
 ### Refunds
 

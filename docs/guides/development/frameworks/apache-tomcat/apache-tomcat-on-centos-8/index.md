@@ -13,6 +13,7 @@ modified: 2020-03-25
 modified_by:
   name: Linode
 published: 2020-03-25
+image: ApacheTomcat_CentOS8.png
 title: 'How to Install Apache Tomcat on CentOS 8'
 h1_title: 'Installing Apache Tomcat on CentOS 8'
 external_resources:

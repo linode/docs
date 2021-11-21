@@ -1,4 +1,4 @@
-.no-js .main__breadcrumbs {
+.no-js .breadcrumbs.needs-js {
     visibility: hidden;
 }
 
@@ -10,10 +10,10 @@
 /* Allow breadcrumbs to use the available whitespace to avoid wrapping on large screens */
 @screen lg {
     .main__content .main__breadcrumbs {
-        margin-right: calc( -.5 * ( 100vw - 100% ) + 24px );
-    }    
-    .is-explorer-open .main__content  .main__breadcrumbs {
-        margin-right: calc( -1 * ( 100vw - 100% - var(--width-left-column) - 4rem ) )
+        margin-right: calc(-0.5 * (100vw - 100%) + 24px);
+    }
+    .is-explorer-open .main__content .main__breadcrumbs {
+        margin-right: calc(-1 * (100vw - 100% - var(--width-left-column) - 4rem));
     }
 }
 

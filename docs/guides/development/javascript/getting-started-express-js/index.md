@@ -2,12 +2,13 @@
 slug: express-js-tutorial
 author:
   name: Nathaniel Stickman
-description: 'This Express JS tutorial shows you how to install Express JS and get started using it. You learn about Express JS template engines and its middleware capabilities. Express JS is a lightweight and flexible web application framework using Node.js. You can get started quickly, and also scale up to more complex application architecture.'
-og_description: 'This Express JS tutorial shows you how to install Express JS and get started using it. You learn about Express JS template engines and its middleware capabilities. Express JS is a lightweight and flexible web application framework using Node.js. You can get started quickly, and also scale up to more complex application architecture.'
+description: 'This tutorial gives a complete overview of how Express JS works, including installation, configuration, templates engines and middleware capabilities.'
+og_description: 'This tutorial gives a complete overview of how Express JS works, including installation, configuration, templates engines and middleware capabilities.'
 keywords: ['express js','node.js','app framework','web application','install express','middleware','template engines']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
+image: EXPRESSJS.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "Express JS Tutorial"

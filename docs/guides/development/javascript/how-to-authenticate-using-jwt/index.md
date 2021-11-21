@@ -277,4 +277,4 @@ Follow the steps below to see the JWT process in action.
 
 You are all set to start working with JWTs and taking advantage of them for lean and secure authentication processes. Take a look at the resources below to continue the journey and learn more about JWT concepts.
 
-You may also be interested in our guide on [Authenticating Over WebSockets with JSON Web Tokens (JWTs)](/docs/guides/authenticating-over-websockets-jwt). That guide goes more in-depth and shows you how to use them with WebSockets.
+You may also be interested in our guide on [Authenticating Over WebSockets with JSON Web Tokens (JWTs)](/docs/guides/authenticating-over-websockets-with-jwt/). That guide goes more in-depth and shows you how to use them with WebSockets.

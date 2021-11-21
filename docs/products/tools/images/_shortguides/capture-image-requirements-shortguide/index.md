@@ -1,19 +1,8 @@
 ---
-slug: capture-image-requirements-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Shortguide that lists all requirements for capturing an image.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-28
-modified_by:
-  name: Linode
-published: 2021-04-28
-title: Requirements for Capturing an Image
-keywords: ["images"]
+# Shortguide: Lists all requirements for capturing an image
+
 headless: true
 show_on_rss_feed: false
-tags: ["linode platform"]
 ---
 
 - **Disk must be formatted using ext3/ext4 filesystems.** Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems. CoreOS disk images are in RAW format. Images made from CoreOS disks can't be used to deploy new Linodes.

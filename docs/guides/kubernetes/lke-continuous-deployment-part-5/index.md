@@ -3,10 +3,10 @@ slug: lke-continuous-deployment-part-5
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'It is often necessary to access internal services within the Kubernetes cluster without exposing them to the public internet. This part covers accomplishing that through using both kubectl proxy and kubectl port-forward.'
-og_description: 'It is often necessary to access internal services within the Kubernetes cluster without exposing them to the public internet. This part covers accomplishing that through using both kubectl proxy and kubectl port-forward.'
-title: "How to Build a Continuous Deployment Pipeline Using LKE, Part 5: Accessing Internal Services"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE, Part 5: Accessing Internal Services"
+description: "It is often necessary to access internal services within the Kubernetes cluster without exposing them to the public internet. This part covers accomplishing that through using both kubectl proxy and kubectl port-forward."
+og_description: "It is often necessary to access internal services within the Kubernetes cluster without exposing them to the public internet. This part covers accomplishing that through using both kubectl proxy and kubectl port-forward.'"
+title: "Continuous Deployment Using LKE: Accessing Internal Services"
+h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 5): Accessing Internal Services"
 enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

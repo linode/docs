@@ -67,7 +67,7 @@ To boot the Linode with the new disk, the disk needs to be properly assigned wit
     | /dev/sda | Choose the disk for the new Image that was just deployed. |
     | /dev/sdb | Choose the swap disk, if one is available. |
 
-    For all of Linode's standard distribution images, the other fields can retain their default values. For Custom Images, you may need to update other parts of the configuration profile. Review the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and [Install a Custom Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) articles for further guidance.
+    For all of Linode's standard distribution images, the other fields can retain their default values. For Custom Images, you may need to update other parts of the configuration profile. Review the [Managing Configuration Profiles on a Linode](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile) and [Install a Custom Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) guides for further guidance.
 
 ## Reboot the Linode
 

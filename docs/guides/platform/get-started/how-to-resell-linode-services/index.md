@@ -19,7 +19,7 @@ aliases: ['/platform/how-to-resell-linode-services/']
 
 ![How to Resell Linode Services](how-to-resell-linode-services.png "How to Resell Linode Services")
 
-Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. We offer discounted pricing for resellers. If you are interested in discounted pricing, please contact `partnership@linode.com`. This guide will walk you through the process of becoming a reseller.
+Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. We offer discounted pricing for resellers. If you are interested in discounted pricing, please contact `partnerships@linode.com`. This guide will walk you through the process of becoming a reseller.
 
 ## What is a Reseller
 

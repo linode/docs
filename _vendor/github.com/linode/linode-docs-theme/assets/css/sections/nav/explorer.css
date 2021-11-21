@@ -13,5 +13,5 @@
 .explorer__row--first {
     width: var(--width-left-column);
     box-sizing: border-box;
-    height: calc(var(--height-navbar-row) + 2px);
+    height: calc(var(--height-navbar-row) + 1px);
 }

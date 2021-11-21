@@ -3,8 +3,8 @@ slug: how-to-initiate-a-cross-data-center-migration-for-your-linode
 author:
   name: Linode
   email: docs@linode.com
-description: "You can migrate your Linode across data centers using the Linode Cloud Manager. This is a self-service feature that does not require any action from Linode to initiate your migration. This guide shows you how to access this feature via the Cloud Manager and includes important details about the impact a migration may have on your Linode''s configurations."
-og_description:  "You can migrate your Linode across data centers using the Linode Cloud Manager. This is a self-service feature that does not require any action from Linode to initiate your migration. This guide shows you how to access this feature via the Cloud Manager and includes important details about the impact a migration may have on your Linode''s configurations."
+description: "You can migrate your Linode across data centers using the Linode Cloud Manager. This guide explains how to do so, and what you should know beforehand."
+og_description:  "You can migrate your Linode across data centers using the Linode Cloud Manager. This guide explains how to do so, and what you should know beforehand."
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
@@ -13,8 +13,9 @@ modified_by:
   name: Linode
 published: 2019-02-04
 aliases: ['/platform/disk-images/how-to-initiate-a-cross-data-center-migration-for-your-linode/','/platform/migrating-to-a-different-data-center/']
-title: How to Initiate a Cross Data Center Migration for your Linode
-h1_title: Initiating a Cross Data Center Migration for your Linode
+h1_title: How to Initiate a Cross Data Center Migration for your Linode
+title: Initiating a Cross Data Center Migration for your Linode
+enable_h1: true
 ---
 
 You can migrate your Linode across data centers using the Linode Cloud Manager. This is a self-service feature that does not require any action from Linode to initiate your migration.
@@ -36,7 +37,7 @@ Migrating your Linode to a new data center will result in a number of changes th
 
 - IP addresses are not transferrable across data centers and they will not be migrated with your Linode. Your Linode will be issued a new IPv4 and IPv6 address, which will be accessible once the migration completes. When your Linode enters the migration queue, new IP address are reserved and can be viewed on your Linode's **Networking** detail page. See the [Find Your Linode's IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) guide to learn how to access Networking information in the Cloud Manager.
 
-- You will need to update all your Linode's DNS records to use your new IP address or addresses. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/platform/manager/dns-manager/), while [rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) can be configured directly on each Linode's Networking detail page.
+- You will need to update all your Linode's DNS records to use your new IP address or addresses. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/guides/dns-manager/), while [rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) can be configured directly on each Linode's Networking detail page.
 
 - Any existing Backups created through our [Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) will not be migrated. Once the Linode's migration has completed, your backup service will restart on its normal schedule.
 

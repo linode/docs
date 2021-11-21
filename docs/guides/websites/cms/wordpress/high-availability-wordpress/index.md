@@ -11,7 +11,8 @@ modified: 2015-01-21
 modified_by:
   name: James Stewart
 published: 2015-01-09
-title: High Availability WordPress Hosting
+title: "High Availability WordPress Hosting for Debian 7 and Ubuntu 14.04"
+deprecated: true
 aliases: ['/websites/cms/high-availability-wordpress/','/websites/cms/wordpress/high-availability-wordpress/']
 ---
 
@@ -19,7 +20,7 @@ This guide configures a high availability WordPress site with a two-Linode clust
 
 ## Prerequisites
 
-This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/networking/remote-access/#adding-private-ip-addresses). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
+This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 
 {{< note >}}
