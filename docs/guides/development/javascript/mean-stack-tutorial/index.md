@@ -1,10 +1,11 @@
 ---
-slug: mean-stack-tutorial
+slug: mean-stack-tutorial-create-an-example-application
 author:
   name: Cameron Laird
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'This MEAN stack tutorial shows you how to build a basic model application that connects MongoDB with Angular on an Ubuntu 20.04 system.'
+og_description: 'This MEAN stack tutorial shows you how to build a basic model application that connects MongoDB with Angular on an Ubuntu 20.04 system.'
+keywords: ['angular mongodb', 'connect mongodb with angular', 'mean stack tutorial']
+tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-01
 modified_by:
@@ -17,33 +18,31 @@ contributor:
   link: https://twitter.com/Phaseit
 ---
 
-In web development, the term *full stack* refers to all the programmed parts of a web application. This includes the front end, which is seen by end-users, and  the back end, where data. The *MEAN* stack is one particular combination of technologies that cover the front end and the back end of an application. MEAN is widely regarded as particularly capable for large-scale, complex applications. This tutorial shows you how to build a basic model application that illustrates communication between Angular, on the front end, and MongoDB, on the back end.
+In web development, the term *full stack* refers to all the programmed parts of a web application. This includes the front end, which is seen by end-users, and the back end, where data is stored. The *MEAN* stack is one particular combination of technologies that covers the front end and the back end of an application. MEAN is widely regarded as particularly capable for large-scale, complex applications. This tutorial shows you how to build a basic model application that illustrates communication between Angular, on the front end, and MongoDB, on the back end.
 
 ## What is the MEAN Stack?
 
-MEAN is an acronym for the combination of [MongoDB](/docs/guides/databases/mongodb/), [Express.js](/docs/guides/express-js-tutorial/), Angular, and Node.js. MongoDB is a persistent datastore, Node.js scripts back-end actions, Express.js is a web application framework based on Node, and Angular is a web framework for the front end.
+MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**xpress.js, **A**ngular, and **N**ode.js. MongoDB is a persistent data store, Node.js scripts back-end actions, Express.js is a web application framework based on Node, and Angular is a web framework for the front end.
 
 {{< note >}}
-You can learn about each piece of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](https://www.linode.com/docs/topresults/?q=mongodb), and [Express.js](/docs/guides/express-js-tutorial/).
+You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](https://www.linode.com/docs/topresults/?q=mongodb), and [Express.js](/docs/guides/express-js-tutorial/).
 {{</ note >}}
 
-## Installing the MEAN Stack
+## Install the MEAN Stack
 
-This section shows you how to install the Node.js, Express, Angular, and MongoDB on an Ubuntu 20.04 system.
+The steps in this section show you how to install Node.js, Express, Angular, and MongoDB on an Ubuntu 20.04 system.
 
 ### Node.js Installation
 
-1. Choose the appropriate operating system for your own situation; Use the following command to install Node.js on an Ubuntu system:
+1. Use the following command to install Node.js on an Ubuntu system.
 
         sudo apt install nodejs -y
 
-Validate your installation by creating and running your first Node application:
+1. Validate your installation by creating your first Node application. Use a text editor of your choice to create a file named `my-app.js` and add the following content to it.
 
-1. Use a text editor of your choice to create a file named `my-app.js` and add the following content to it:
+        console.log("Hello, world.");
 
-        console.log(“Hello, world.”); then
-
-1. Run the file using Node.js with the following command:
+1. Run the `my-app.js` file using the following command:
 
         node my-app.js
 
@@ -57,13 +56,13 @@ You have now installed Node.js and confirmed that it is working on your Ubuntu s
 
 ### Express Installation
 
-1. Install Express.js using the Node Package Manager:
+Install Express.js using the Node Package Manager.
 
-        sudo npm init -y; sudo npm install express --save
+    sudo npm init -y; sudo npm install express --save
 
-    Your local directory should now also have a file named `package.json` with the following content:
+Your local directory should now have a file named `package.json` with the following content:
 
-        {{< file "package.json" >}}
+{{< file "package.json" >}}
     ...
   "dependencies": {
     "express": "^4.17.1"
@@ -73,38 +72,47 @@ You have now installed Node.js and confirmed that it is working on your Ubuntu s
 
 ### Angular Installation
 
-1. Install Angular using the Node Package Manager:
+1. Install Angular using the Node Package Manager.
 
         sudo npm install @angular/cli --save
 
-1. Verify that the Angular installation is working by initializing a new project:
+1. Verify that the Angular installation is working by initializing a new project.
 
         ng new my-angular-app --defaults  # Initialize Angular project.
         cd my-angular-app                 # Move into the project folder.
-        ng serve                          # Start the project server.
+        ng serve                          # Start the Angular server.
 
 1. Open a browser and navigate to `http://localhost:4200/ `. You should see the following output:
 
-        {{< output >}}
+    {{< output >}}
 my-angular-app is running!
-        {{</ output >}}
+    {{</ output >}}
 
 ### MongoDB Installation
 
-1. Install MongoDB on your Ubuntu system:
+1. Install the dependencies necessary to add a new repository over HTTPS using the following commands:
 
-        sudo apt-get update
-        sudo apt-get install -y mongodb
+        sudo apt update
+        sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common
 
-1. Verify your MongoDB installation by displaying its version number:
+1. Import the repository’s GPG key and add the MongoDB repository using the following command:
+
+        wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+        sudo add-apt-repository 'deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse'
+
+1. Once the repository is enabled, install the `mongodb-org` meta-package.
+
+        sudo apt install mongodb-org
+
+1. Verify your MongoDB installation using the `--version` flag.
 
         mongo --version
 
-    The output should display a version of `3.6.3` or greater.
+    The output should display a version of `4.4.10` or depending on the version you installed.
 
 ## Use the MEAN Stack to Create an Example Application
 
-With all four of these components installed, this section shows you how to create a simple application that utilizes each piece of the   MEAN stack and demonstrates communication between each component. The example application illustrates how all the programmable pieces of a web application can be written in JavaScript, and how the different components hand off data between each other.
+With all four of these components installed, this section shows you how to create a simple application that utilizes each component of the MEAN stack and demonstrates communication between each component. The example application illustrates how all the programmable pieces of a web application can be written in JavaScript, and how the different components handoff data between each other.
 
 {{< note >}}
 Some functionality you might incorporate into a production application is user authentication, reading and writing data from/to your MongoDB records, data backups, and load balancing.
@@ -112,13 +120,18 @@ Some functionality you might incorporate into a production application is user a
 
 ### Create and Populate the MongoDB Database
 
-Applications often implement CRUD operations, that is, the ability to create, read, update, and delete records in a persistent data store. The example below defines the read operation for a rudimentary [software bill-of-materials](https://www.linuxfoundation.org/blog/generating-a-software-bill-of-materials-sbom-with-open-source-standards-and-tooling/). It keeps the focus on communication between the four MEAN components.
+Applications often implement CRUD operations, that is, the ability to create, read, update, and delete records in a persistent data store. The example below defines the read operation for a rudimentary [software bill-of-materials](https://www.linuxfoundation.org/blog/generating-a-software-bill-of-materials-sbom-with-open-source-standards-and-tooling/), a hot topic in DevSecOps circles. It keeps the focus on communication between the four MEAN components.
 
-1. Launch MongoDB with the following command:
+1. Launch MongoDB with the following command.
 
         mongod
 
-1. From a new Linux terminal session, enter the MongoDB shell:
+    If you get the following error: `NonExistentPath: Data directory /data/db not found`, then create a `data` directory to store data and set the ownership of the folder to the user that’s starting the mongod service.
+
+        sudo mkdir -p /data/db/
+        sudo chown `id -u` /data/db
+
+1. From a new Linux terminal session, enter the MongoDB shell.
 
         mongo
 
@@ -129,7 +142,7 @@ Applications often implement CRUD operations, that is, the ability to create, re
 
     The `use my-test` command tells MongoDB that you want to work in a database called `my-test`. The `db.users.insert(...)` tells MongoDB to add a record to the `users` table within the current `my-test` database.
 
-1. View the record you created in the previous step:
+1. View the record you created in the previous step.
 
         db.users.find()
 
@@ -139,22 +152,23 @@ Applications often implement CRUD operations, that is, the ability to create, re
 { "_id" : ObjectId("610f1adfc54de6f1d94bc403"), "username" : "myname", "password" : "mypassword" }
     {{</ output >}}
 
-1. Add new records to your database:
+1. Add new records to your database.
 
         use my-test
         db.artifact.save({scriptname: "dygraph.min.js", version: "2.1.0", cdn: "cdnjs.cloudflare.com"})
         db.artifact.save({scriptname: "sortable.min.js", version: "0.8.0", cdn: "cdnjs.cloudflare.com"})
         db.artifact.save({scriptname: "swagger-ui-bundle.js", version: "3.50.0", cdn: "cdn.jsdeliver.net"})
 
-    You have added three records to the artifact table, each one with data specified by the three attributes `cdn`, `scriptname`, and `version`.
+    You have added three records to the `artifact` table, each one with data specified by the three attributes `cdn`, `scriptname`, and `version`.
 You should see a similar result:
 
     {{< output >}}
 WriteResult({ "nInserted" : 1 })
     {{</ output >}}
 
-1. View all the tables stored in your MongoDB database:
+1. To view all the tables stored in your MongoDB database, run the following commands:
 
+        use my-test
         show collection
 
     You should see a similar output:
@@ -166,17 +180,17 @@ users
 
 ### Connect to the Back End Runtime
 
-At this point, Node and Mongo are both installed and running successfully.  We’ve created a Node project, and a Mongo database with a couple of tables.  Now it’s time for these two components to connect to each other.
+At this point, Node and Mongo are both installed and MongoDB is running successfully. We’ve created a Node project and a Mongo database with a couple of tables. Now it’s time for these two components to connect.
 
-1. Navigate to the `my-angular-app` directory you created in the Angular Installation section.
+1. Navigate to the `my-angular-app` directory you created in the [Angular Installation](/docs/guides/mean-stack-tutorial-create-an-example-application/#angular-installation) section.
 
-1. Install the Node.js MongoDB drive:
+1. Install the Node.js MongoDB driver:
 
-        sudo npm install mongodb
+        sudo npm install mongodb -g
 
 1. In your preferred text editor, create a new file named `sbom-backend1.js` and add the following contents to it:
 
-        {{< file "sbom-backend1.js" >}}
+    {{< file "sbom-backend1.js" >}}
 var MongoClient = require('mongodb').MongoClient
 
 const url = "mongodb://localhost:27017/"
@@ -195,7 +209,7 @@ MongoClient.connect(url, (err, client) => {
 })
         {{</ file >}}
 
-    The `sbom` name is a common initialism for *software bill of materials*, a hot topic in DevSecOps circles.  The `sbom` table contains some of the information that commonly appears in a production software bill of materials.  The source `sbom-backend1.js` specifies a small program that retrieves the contents of a MongoDB table.
+    The `sbom` name is a common initialism for *software bill of materials*.  The `sbom` table contains some of the information that commonly appears in a production software bill of materials.  The source `sbom-backend1.js` specifies a small program that retrieves the contents of a MongoDB table.
 
 1. Use Node.js to run the `sbom-backend1.js` file.
 
@@ -229,6 +243,7 @@ In this section, you activate Express.js, so that information in MongoDB can be 
 // * ‘/’ returns a human-readable message;
 // * ‘/artifacts’ returns a list of artifact names; and
 // * `/artifacts/NAME’ returns details about NAME.
+const express = require('express')
 const app = express()
 var db
 const dbName = 'my-test'
@@ -239,10 +254,8 @@ const url = "mongodb://localhost:27017/"
 app.listen(port, function() {
   console.log('Listening on ' + port + '.')
 })
-const express = require('express')
+
 const MongoClient = require('mongodb').MongoClient
-
-
 
 app.route('/').get((req, res) => {
   res.send("Recognized endpoints on this server include '/artifacts' and '/artifacts/NAME'.")
@@ -270,10 +283,17 @@ app.route('/artifacts/:scriptname').get((req, res) => {
 })
 
 MongoClient.connect(url, (err, client) => {
-
+  const db = client.db(dbName);
+  db.collection(table).find().toArray((err, artifact) => {
+        if (err) throw err
+        artifact.forEach((value) => {
+    })
+    client.close()
+  })
+})
     {{</ file >}}
 
-1. Run the API routes you created in the previous step:
+1. Run the API routes you created in the previous step.
 
         node sbom-dataserver.js
 
@@ -287,11 +307,11 @@ Listening on 3600.
 
     -   `/` gives a little diagnostic for a human to read;
     - `/artifacts` lists the scriptnames of known artifacts; and
-    - `/artifacts/SCRIPTNAME` provides details about the `SCRIPTNAME` artifact.
+    - `/artifacts/scriptname` provides details about the `scriptname` artifact.
 
 1. In a web browser, navigate to `http://localhost:3600/artifacts`. You should see the following output:
 
-        {{< output >}}
+    {{< output >}}
 0
 scriptname: “dygraph.min.js”
 1
@@ -308,7 +328,7 @@ version:    “0.8.0”
 cdn:        “cdnjs.cloudflare.com”
     {{</ output >}}
 
-    In just a few lines of Express.js powered JavaScript, you have created a back-end server that responds to requests with structured data.  Results are delivered as JSON, which browsers can render as formatted rows. Your browser might give you the option to *pretty print* your JSON; if you choose this when navigation to  `http://localhost:3600/artifacts`, for instance, instead of the table above, you see “raw” JSON:
+    In just a few lines of Express.js-powered JavaScript, you have created a back-end server that responds to requests with structured data.  Results are delivered as JSON, which browsers can render as formatted rows. Your browser might give you the option to *pretty print* your JSON; if you choose this when you navigate to  `http://localhost:3600/artifacts`, for instance, instead of the table above, you see “raw” JSON.
 
     {{< output >}}
 [
@@ -330,7 +350,7 @@ cdn:        “cdnjs.cloudflare.com”
 
 With data in the database, and a data server to make them available, you are now ready to build the front end.
 
-1. Create a new Angular project named `sbom`:
+1. Create a new Angular project named `sbom`.
 
         ng new sbom --defaults
 
@@ -340,7 +360,7 @@ With data in the database, and a data server to make them available, you are now
 
     All the steps in this section should be issued from the `sbom` directory.
 
-1. Create a pair of additional components and a service:
+1. Create a pair of additional components and services.
 
         ng generate component artifact-list
         ng generate component top
@@ -348,7 +368,7 @@ With data in the database, and a data server to make them available, you are now
 
 1. Issuing the previous commands should create several files and directories. Open the `~/sbom/src/app/app.module.ts` file and add the following content:
 
-        {{< file "~/sbom/src/app/app.module.ts" >}}
+    {{< file "~/sbom/src/app/app.module.ts" >}}
 /* app.module.ts specifies the modules this Angular
    application requires.  It retrieves results from
    the dataserver, for example; therefore it must
@@ -384,9 +404,9 @@ import { TopComponent } from './top/top.component'
 export class AppModule { }
         {{</ file >}}
 
-1. Similarly to the previous step, open the `~/sbom/src/app/artifacts.ts` file and add the following contents:
+1. Similar to the previous step, open the `~/sbom/src/app/artifacts.ts` file and add the following contents:
 
-        {{< file "~/sbom/src/app/artifacts.ts" >}}
+    {{< file "~/sbom/src/app/artifacts.ts" >}}
 /* MVC architecture is the foundation of Angular.  The
    definition of Artifact here defines the crucial data
    Model of this application. */
@@ -397,11 +417,11 @@ export interface Artifact {
 }
         {{</ file >}}
 
-1. Next, navigate to `~/src/app/app.component.ts` and provide your component definitions:
+1. Next, navigate to `~/src/app/app.component.ts` and provide your component definitions.
 
-        {{< file "~/src/app/app.component.ts" >}}
+    {{< file "~/src/app/app.component.ts" >}}
 /* This Component definition includes, most importantly, the
-   procedural code which retrieves data from the dataserver.
+   procedural code which retrieves data from the data server.
 */
 import { Artifact } from "./artifact"
 import { catchError, tap } from 'rxjs/operators'
@@ -446,11 +466,11 @@ export class ArtifactService {
 }
         {{</ file >}}
 
-1. Open the `~/src/app/artifact-list/artifact-list.component.ts` file and add the following:
+1. Open the `~/src/app/artifact-list/artifact-list.component.ts` file and add the following content:
 
-        {{< file "~/src/app/artifact-list/artifact-list.component.ts" >}}
-/* To illustrate the operation of the dataserver’s routes, the
-   application defines a couple of components which correspond
+    {{< file "~/src/app/artifact-list/artifact-list.component.ts" >}}
+/* To illustrate the operation of the data server's routes, the
+   the application defines a couple of components that correspond
    to the two displayed routes.  This component defines the
    procedures for handling data from the ‘/artifacts/NAME’ route.
 */
@@ -493,7 +513,7 @@ export class ArtifactListComponent implements OnInit {
 
 1. Add the next component to the `~/src/app/top/top/component.ts` file:
 
-        {{< file "~/src/app/top/top/component.ts" >}}
+    {{< file "~/src/app/top/top/component.ts" >}}
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -511,15 +531,15 @@ export class TopComponent implements OnInit {
 
     This update should allow the `sbom` application to compile cleanly at all times.
 
-1. Now, open the first Angular template. `~/src/app/top/top.component.html` and add the following content:
+1. Now, open the first Angular template, `~/src/app/top/top.component.html`, and add the following content:
 
-        {{< file "~/src/app/top/top.component.html" >}}
+    {{< file "~/src/app/top/top.component.html" >}}
 <p>You can see the current artifact list <a href = '/artifact-list'>here</a>.</p>
         {{</ file >}}
 
-1. Open, the next template and add the following content:
+1. Open, the second Angular template, `artifact-list.component.html`, and add the following content:
 
-        {{< file "~/src/app/artifact-list/artifact-list.component.html">}}
+    {{< file "~/src/app/artifact-list/artifact-list.component.html">}}
 <p>Currently known artifacts include:</p>
 <ul>
   <li *ngFor="let an_artifact of artifacts">
@@ -531,9 +551,9 @@ Select a button for more information about the selected artifact.
 <p><a href = '/'>Return to main menu</a>.</p>
         {{</ file >}}
 
-1. Open the third Angular template, `~/src/app/app.component.html`:
+1. Open the third Angular template, `~/src/app/app.component.html`, and add the following content:
 
-        {{< file "~/src/app/app.component.html" >}}
+    {{< file "~/src/app/app.component.html" >}}
 <!doctype html>
 <html>
 <body>
@@ -544,13 +564,13 @@ Select a button for more information about the selected artifact.
 </html>
         {{</ file >}}
 
-1. With all these pieces in place, open a web browser and navigate to `URL: http://localhost:4200/`. You should see the following output:
+1. With all these pieces in place, open a web browser and navigate to the URL, `http://localhost:4200/`. You should see the following output:
 
-        {{< output >}}
+    {{< output >}}
 You can see the current artifact list [here](http://localhost:55051/artifact-list).
-        {{</ output >}}
+    {{</ output >}}
 
-    Clicking on the link above, brings you to new page that displays the list of artificats:
+    Clicking on the link above brings you to a new page that displays the list of artifacts:
 
     {{< output >}}
 dygraph.min.js
@@ -558,31 +578,31 @@ sortable.mis.js
 swagger-ui-bundle.js
     {{</ output >}}
 
-    Each of these names decorates a button, and selection of any of the buttons brings up more details about that specific artifact.
+    Each of these names decorates a button, and the selection of any of the buttons brings up more details about that specific artifact.
 
 After completing the steps in this section, data is flowing back and forth between the application in your web browser, to the Angular application, between Angular, and Express.js, from Express.js to MongoDB, and back again.
 
 ## Application Context
 
-This is only a part of a truly useful application. A typical starting point for functional design, as already mentioned, is all four aspects of CRUD. The example above implements the read operation. A read is a dialogue:  the frontend sends a request to the backend, which retrieves data, and then delivers it back to the frontend. A more complete application also creates, updates, and deletes records.
+This is only a part of a truly useful application. A typical starting point for functional design, as already mentioned, is all four aspects of CRUD. The example above implements the read operation. A read is a dialogue: the frontend sends a request to the backend, which retrieves data, and then delivers it back to the frontend. A more complete application also creates, updates, and deletes records.
 
 Typical considerations for building out a robust application include:
 
-- Tooling with an integrated development environment (IDE) that might include [nodemon](https://www.npmjs.com/package/nodemon);
-- A testing framework;
-- A more sophisticated architecture that likely hosts MongoDB, the data server, and Angular on three different servers;
-- Far more care with error-handling;
-- Visual design and implementation through CSS;
+- Tooling with an integrated development environment (IDE) that might include [nodemon](https://www.npmjs.com/package/nodemon).
+- A testing framework.
+- A more sophisticated architecture that likely hosts MongoDB, the data server, and Angular on three different servers.
+- Far more care with error-handling.
+- Visual design and implementation through CSS.
 - Security considerations, including:
 
-    - Validation and sanitization of user input
-    - Validation and encoding of database content
-    - CORS (cross-origin resource sharing) configuration once the Angular and data service servers migrate to separate hosts; and
-    - Aggressive enforcement of least-privilege on all communications
+    - Validation and sanitization of user input.
+    - Validation and encoding of database content.
+    - CORS (cross-origin resource sharing) configuration once the Angular and data service servers migrate to separate hosts.
+    - Aggressive enforcement of least privilege on all communications.
 
-- Best practices in API definition, including versioning
-- Best practices in leveraging Angular, with heavy reliance on Angular components
-- Removal of explicit function calls from templates in favor of data bindings; and
-- Possible use of template engines and value-added database connectors or object-relational mappers (ORMs)
+- Best practices in API definition, including versioning.
+- Best practices in leveraging Angular, with heavy reliance on Angular components.
+- Removal of explicit function calls from templates in favor of data bindings.
+- Possible use of template engines and value-added database connectors or object-relational mappers (ORMs).
 
 

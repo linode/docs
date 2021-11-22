@@ -1042,6 +1042,7 @@ modsecurity
 Mojang
 moodle
 mongodb
+mongod
 mongoimport
 monit
 monitorix
@@ -1139,6 +1140,7 @@ nfs
 nftables
 ng
 nginx
+ngular
 nginxdemos
 ngrok
 ngx
