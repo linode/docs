@@ -79,7 +79,7 @@ Debian 10 only includes MariaDB version 10.3. The official MariaDB packages are 
 
 The first step is to add the Linode Object Storage (S3) credentials to your MariaDB configuration. The location of the configuration file varies on each distribution, and whether you are using the official MariaDB packages or those included in your distribution.
 
-Offical MariaDB packages allow for individual configuration files to be added to `/etc/mysql/conf.d`.
+Official MariaDB packages allow for individual configuration files to be added to `/etc/mysql/conf.d`.
 
 {{< note >}}
 In this section's commands, replace the following placeholders:
