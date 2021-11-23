@@ -164,7 +164,27 @@ While you’re working inside the `mongosh`, you can use the **tab** key to comp
     The example below displays the output for a freshly installed MongoDB instance:
 
     {{< output >}}
-To be filled in
+Current Mongosh Log ID: 6176fbfecf18bc0a0556370f
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000
+Using MongoDB:          4.4.10
+Using Mongosh:          1.0.6
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting:
+   2021-10-25T18:38:23.243+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2021-10-25T18:38:24.211+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin     41 kB
+config  12.3 kB
+local     41 kB
     {{</ output >}}
 
 ### Change Database with MongoDB Shell
