@@ -4,6 +4,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
+keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-24
 modified_by:
