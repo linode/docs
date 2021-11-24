@@ -6,7 +6,7 @@ description: 'This guide to web programming languages will help you understand h
 keywords: ['web development languages','web design coding','website programming language','website design languages']
 tags: ['web applications', 'python', 'java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-22
+published: 2021-11-24
 modified_by:
   name: Linode
 title: "Programming Languages for Web Development"
@@ -29,7 +29,7 @@ No matter which programming languages for web development are chosen, they all g
 
 ### Striving for Dynamic Content
 
-Website design languages, such as JavaScript, are popular as a means to provide action with a web page. Mouse over a particular area and that area does something interesting providing visual cues to the viewer. Likewise, website development languages, such as Java, allow the creation of content based on conditions, so that the content is no longer static and reflects a specific need. Webpage languages provide a compelling experience that keeps viewers focused on the content you’re providing on the web site.
+Website design languages, such as JavaScript, are popular as a means to provide action within a web page. Mouse over a particular area and that area does something interesting providing visual cues to the viewer. Likewise, website development languages, such as Java, allow the creation of content based on conditions, so that the content is no longer static and reflects a specific need. Webpage languages provide a compelling experience that keeps viewers focused on the content you’re providing on the web site.
 
 ### Dynamic Content
 
@@ -39,13 +39,13 @@ Website design languages, such as JavaScript, are popular as a means to provide 
 
 A mistake that is often made by people seeking a language to learn is not understanding the need to base the choice on the career they want to pursue. Someone who is actually an artist at heart may choose a backend web development language, which they find boring in a short time. What they really want is a frontend web development language so they can interact with the user directly and dazzle them with special effects. The list below groups programming languages based on development areas you can focus a career on.
 
-- Frontend web development language (these create the user interface):
+- **Frontend web development** languages used to create the user interface:
 
     - JavaScript
     - Python
     - Angular
 
-- Backend web development language (these create dynamic content):
+- **Backend web development** languages that create dynamic content:
 
     - JavaScript
     - Java
@@ -53,7 +53,7 @@ A mistake that is often made by people seeking a language to learn is not unders
     - Ruby
     - C#
 
-- Mobile development (these are used specifically with mobile devices):
+- **Mobile development** languages used specifically with mobile devices:
 
     - JavaScript
     - Java
@@ -61,12 +61,12 @@ A mistake that is often made by people seeking a language to learn is not unders
     - Swift
     - Kotlin
 
-- Game development (these lend themselves to creating game apps):
+- **Game development** languages that lend themselves to creating game apps:
 
     - Java
     - Python
 
-- Desktop development (these are used to create business apps)
+- **Desktop development** these languages are used to create business apps:
 
     - Java
     - Python
@@ -74,7 +74,7 @@ A mistake that is often made by people seeking a language to learn is not unders
     - C#
     - Angular
 
-- System programming (these are used to create low level features that the user doesn't normally interact with):
+- **System programming** these are used to create low level features that the user doesn't normally interact with:
 
     - Java
     - C#
@@ -85,15 +85,15 @@ Understanding what you want to do and why you want to do it is a good first step
 
 ### JavaScript
 
-JavaScript is often seen as part of the HTML page. Other languages in this guide often generate JavaScript based on your application code. So, even when using another language, expect to see JavaScript. One of the most important considerations for choosing JavaScript is that the language is incredibly flexible and it’s also quite forgiving of mistakes. In addition, [JavaScript is standardized across all browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript) so your code works no matter where you use it. You can also use JavaScript for server-side development, but you need a third party product like Node.js to do it. Consequently, you need to learn another product in order to use JavaScript as a complete solution when you want to generate dynamic content.
+[JavaScript](/docs/guides/development/javascript/) is often seen as part of the HTML page. Other languages in this guide often generate JavaScript based on your application code. So, even when using another language, expect to see JavaScript. One of the most important considerations for choosing JavaScript is that the language is incredibly flexible and it’s also quite forgiving of mistakes. In addition, [JavaScript is standardized across all browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript) so your code works no matter where you use it. You can also use JavaScript for server-side development, but you need a third-party product like Node.js to do it. Consequently, you need to learn another product in order to use JavaScript as a complete solution when you want to generate dynamic content.
 
 ### Java
 
-Java is seen in all sorts of applications. Once you learn Java, you can create everything from desktop applications to backend code to produce dynamic content for your website. Java is also used for Android development and you see it in Internet of Things (IoT) devices. One of the reasons Java is incredibly popular is that it enjoys vast support in the form of well-maintained libraries. It’s also possible to create multi-threaded applications with Java. If you’re building a large scale website designed to handle millions of users, this is probably the best choice. However, Java comes with a significant learning curve so it’s probably not a good choice as a first language.
+[Java](/docs/guides/how-to-install-openjdk-on-ubuntu-20-04/) is seen in all sorts of applications. Once you learn Java, you can create everything from desktop applications to backend code to produce dynamic content for your website. Java is also used for Android development and you see it in Internet of Things (IoT) devices. One of the reasons Java is incredibly popular is that it enjoys vast support in the form of well-maintained libraries. It’s also possible to create multi-threaded applications with Java. If you’re building a large scale website designed to handle millions of users, this is probably the best choice. However, Java comes with a significant learning curve so it’s probably not a good choice as a first language.
 
 ### Python
 
-Python is not a difficult language to learn and it enjoys strong community support in the form of libraries. In fact, Python is now used by many school systems as an aid to learning how to program. You can use Python for a wide variety of tasks that includes machine learning, statistical analysis, image processing, and computer vision. To use Python for backend web development, you must rely on add-on products such as the Django framework. If you’re creating a website that focuses on statistics, such as a weather forecast generation site, then Python is likely the best choice because so many of the required features are built right in.
+[Python](/docs/guides/create-a-python-virtualenv-on-ubuntu-18-04/) is not a difficult language to learn and it enjoys strong community support in the form of libraries. In fact, Python is now used by many school systems as an aid to learning how to program. You can use Python for a wide variety of tasks that includes machine learning, statistical analysis, image processing, and computer vision. To use Python for backend web development, you must rely on add-on products such as the Django framework. If you’re creating a website that focuses on statistics, such as a weather forecast generation site, then Python is likely the best choice because so many of the required features are built right in.
 
 ### Ruby
 
@@ -109,7 +109,7 @@ Scala is an offshoot of Java that supports [functional programming techniques](h
 
 ### Angular
 
-Angular is based on TypeScript and provides a flexible, component-based development environment. One of the advantages of using Angular is that you can turn static HTML documents into dynamic content. In addition, Angular tracks dependencies between components so you don’t find yourself with a dead application due to a seemingly small change in one component.  [This language is a work in progress](https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-angular-development/); Google continually updates its functionality to provide more of the features that developers need to create great looking websites. The downside of using Angular is that it can produce sluggish webpages and it also has a steep learning curve.
+[Angular](/docs/guides/angular-tutorial-for-beginners/) is based on TypeScript and provides a flexible, component-based development environment. One of the advantages of using Angular is that you can turn static HTML documents into dynamic content. In addition, Angular tracks dependencies between components so you don’t find yourself with a dead application due to a seemingly small change in one component.  [This language is a work in progress](https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-angular-development/); Google continually updates its functionality to provide more of the features that developers need to create great looking websites. The downside of using Angular is that it can produce sluggish webpages and it also has a steep learning curve.
 
 ### Swift
 
@@ -117,7 +117,7 @@ Swift is a very specific programming language because you use it exclusively for
 
 ### Kotlin
 
-Kotlin is a general purpose language, meaning it can perform a wide variety of tasks. Its claim to fame is Android development. You can use it for either client-side or server-side web development. In addition, it works well for mobile development. Many developers prefer Kotlin to Java because it provides type safety and you can create an application with fewer lines of code. In addition, Kotlin’s learning curve is smaller than Java. Kotlin is one hundred percent compatible with Java, so you can use all of the Java libraries. This is the language to use if you need the potential of Java, but don’t want to delve into all of the Java coding details.
+[Kotlin](/docs/guides/kotlin-tutorial-learn-the-basics/) is a general purpose language, meaning it can perform a wide variety of tasks. Its claim to fame is Android development. You can use it for either client-side or server-side web development. In addition, it works well for mobile development. Many developers prefer Kotlin to Java because it provides type safety and you can create an application with fewer lines of code. In addition, Kotlin’s learning curve is smaller than Java. Kotlin is one hundred percent compatible with Java, so you can use all of the Java libraries. This is the language to use if you need the potential of Java, but don’t want to delve into all of the Java coding details.
 
 ## Conclusion
 
