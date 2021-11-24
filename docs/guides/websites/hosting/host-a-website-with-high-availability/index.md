@@ -41,7 +41,7 @@ This guide shows how to host a highly available website with WordPress. However,
 
     You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.
 
-1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/networking/remote-access/#adding-private-ip-addresses) for each.
+1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each.
 
 1.  Remember to update each Linode's package repositories before attempting to install software:
 

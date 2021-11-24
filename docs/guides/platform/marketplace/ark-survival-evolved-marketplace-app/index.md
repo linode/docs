@@ -16,7 +16,7 @@ contributor:
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
-aliases: ['/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/', '/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-marketplace-apps/']
+aliases: ['/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/', '/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-marketplace-apps/']
 ---
 
 ARK: Survival Evolved is a multiplayer action-survival game released in 2017. The game places you on a series of fictional islands inhabited by dinosaurs and other prehistoric animals. In ARK, the main objective is to survive. ARK is an ongoing battle where animals and other players have the ability to destroy you. To survive, you must build structures, farm resources, breed dinosaurs, and even set up trading hubs with neighboring tribes.

@@ -99,7 +99,7 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
 If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
 {{< /note >}}
 
-1. [Add a Private IP Address](/docs/guides/remote-access/#adding-private-ip-addresses) for each Linode that has been pre-configured for round-robin DNS.
+1. [Add a Private IP Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each Linode that has been pre-configured for round-robin DNS.
 
 1. Boot or Reboot all Linodes once they have been given a private IP address to ensure that the network configuration will be applied.
 

@@ -321,4 +321,6 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
 
 To learn about managing DNS records on Linode, see the [DNS Manager](/docs/guides/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guides.
 
+For instructions on how to set up `https` access for your domain, see our guide on how to [Upload a Custom SSL/TLS Certificate on Object Storage](/docs/guides/enable-ssl-for-object-storage/).
+
 As noted before, it's possible to trigger automatic deployments to the Object Storage service when you push new content updates to GitHub or GitLab. This is done by leveraging a CI/CD (continuous integration/continuous delivery) tool like [Travis CI](https://travis-ci.org). Essentially, you would build your Hugo site within the Travis environment and then run the `s3cmd sync` command from it to your bucket.

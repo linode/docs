@@ -2,6 +2,7 @@ abc
 abell
 absecon
 abspath
+ack
 aconf
 accessor
 accessors
@@ -15,9 +16,11 @@ adminpack
 adnanh
 adodb
 aes
+ag
 ahci0
 Aho
 ahvz
+aircrack
 ajp
 aker
 alef
@@ -42,6 +45,7 @@ ap
 apache2
 api
 apiserver
+apk
 apparmor
 appimage
 appletalk
@@ -59,6 +63,7 @@ aske
 async
 asynchrony
 authdaemonrc
+authg
 authlib
 authmodulelist
 authmysql
@@ -78,6 +83,7 @@ autologin
 autologout
 automagically
 automattic
+automations
 automount
 autorelabel
 autorun
@@ -95,6 +101,7 @@ awstats
 axibase
 azc
 azlux
+backdooring
 backdoors
 backend
 backends
@@ -114,6 +121,7 @@ barebones
 base64
 basearch
 bashdoor
+basename
 bashrc
 bc
 bdd
@@ -121,13 +129,17 @@ benchmarked
 berkshelf
 bernd
 berners
+bgpd
+bialek
 bing
 binlog
 biomes
 bitbucket
 bitnami
 bitrate
+bitshift
 bitwarden
+bitwise
 blkid
 blockchain
 blocklists
@@ -161,6 +173,7 @@ bundler
 bungeecord
 burndown
 busybox
+bypassuac
 byrequests
 bzip2
 bzrtools
@@ -185,6 +198,7 @@ ceph
 cer
 certbot
 certcheck
+certutil
 cfg
 cgi
 cgroup
@@ -215,6 +229,7 @@ cjones
 clamav
 clearsign
 clearspace
+cleartext
 cli
 clickboard
 clickjacking
@@ -282,8 +297,11 @@ cronjob
 cronjobs
 crontab
 crt
+crypters
 crypto
 csi
+csharp
+csharpserver
 csr
 css
 csum
@@ -294,8 +312,10 @@ ctx
 cuda
 curlie
 cutover
+cyber
 cyberduck
 cyberpanel
+cybersecurity
 cyg
 cygwin
 cyclomatic
@@ -331,12 +351,15 @@ dbfiles
 dbname
 dbserver
 dcs
+deadman
 deallocation
 deathmatch
 debconf
 declaratively
 deduplication
+deepin
 defragment
+delpy
 demultiplexer
 deprovisioning
 descolada
@@ -356,14 +379,18 @@ dex
 df
 dhclient
 dhparams
+dia
 dialogs
 diavel
 diffie
 digium
+dirb
+dirbuster
 dircaps
 directadmin
 dired
 direnv
+dirtycow
 discoverability
 disqus
 distro
@@ -407,6 +434,7 @@ drwxr
 dshield
 dsn
 du
+duf
 ducati
 dust2
 dvcs
@@ -433,9 +461,11 @@ emscripten
 ender
 enduser
 enix
+enum
 env
 envs
 epel
+equifax
 erb
 erlang
 esc
@@ -447,6 +477,7 @@ ethtool
 eugen
 eval
 evhost
+exabeam
 example1
 example2
 examplegroup
@@ -457,8 +488,10 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrating
 exim
 expirations
+exploitability
 ext2
 ext3
 ext4
@@ -510,6 +543,7 @@ filezilla
 filimonov
 findtime
 finnix
+firefart
 firewalld
 firewalled
 firewalling
@@ -520,6 +554,7 @@ flatpress
 flowlens
 flyspray
 foodcritic
+fortinet
 fortran
 fordham
 fmt
@@ -540,6 +575,7 @@ fsck
 fstab
 fullchain
 func
+fzf
 galera
 gamemode
 gamepad
@@ -561,10 +597,13 @@ geoip
 geolocating
 geolocation
 getmail
+getprivs
 getpwent
 getters
+getuid
 gfx
 gfxmode
+gianlucaborello
 gibibytes
 girocco
 gist
@@ -589,7 +628,11 @@ gmail
 gmod
 gnulinux
 gnutls
+<<<<<<< HEAD
 gocheck
+=======
+gobuster
+>>>>>>> 60cce98be607232bc39f1596612276503207f1a0
 gogs
 golang
 goldmark
@@ -731,7 +774,9 @@ inclusivity
 Indri
 inet
 inet6
+infector
 infographic
+infosec
 ingressgateway
 ini
 initializer
@@ -740,11 +785,13 @@ initramfs
 initrd
 inittab
 injectable
+inkscape
 inode
 inotify
 inrupt
 insmod
 inspec
+intel
 interdomain
 interruptible
 intra-application
@@ -760,6 +807,7 @@ ip6table
 ipa
 ipaserver
 ipchains
+ipconfig
 ipset
 ipsets
 iptables
@@ -793,6 +841,7 @@ jdk
 Jellyfin
 jenkinsfile
 jenkinsx
+jessie
 jetpack
 jez
 jitsi
@@ -807,6 +856,7 @@ journaled
 journaling
 jpg
 jpetazzo
+jq
 jre
 js
 json
@@ -830,6 +880,8 @@ keychain
 keyfiles
 keygen
 keyid
+keyloggers
+keylogging
 keymap
 keypair
 keypairs
@@ -847,9 +899,12 @@ klei
 klocwork
 kloth
 kloxo
+knockpy
 knowledgebase
 konsole
+kotin
 konversation
+krita
 ktor
 kube
 kubeadm
@@ -875,6 +930,7 @@ leiningen
 len
 lennart
 letsencrypt
+ld
 lf
 libmodsecurity
 lib32
@@ -886,6 +942,7 @@ libev
 libgcc1
 libphp
 libpri
+libprocesshider
 libracy
 libsasl2
 libyang
@@ -899,6 +956,7 @@ lighttpd
 lighty
 ligttpd
 linewise
+Linkedin
 linkerd
 linode
 linodego
@@ -926,6 +984,7 @@ logdir
 logfile
 logfiles
 loglevel
+logonpasswords
 logpath
 logrotate
 logstash
@@ -933,6 +992,7 @@ logwatch
 longview
 lookups
 loopback
+lsadump
 lspci
 lsb
 lsd
@@ -942,6 +1002,7 @@ lsyncd
 lua
 lubuntu
 lucene
+luckystrike
 lugano
 luminus
 lxd
@@ -973,6 +1034,7 @@ mapreduce
 mariadb
 marino
 maskname
+masscan
 mastercard
 masterdb
 masterless
@@ -1006,9 +1068,12 @@ metacharacters
 metacity
 metapackage
 metaparameters
+metasploit
+meterpreter
 metorik
 metricbeat
 metroid
+michael
 microblogging
 microblogs
 microservice
@@ -1016,6 +1081,7 @@ microservices
 microsystems
 microweb
 middleware
+mimikatz
 minecraft
 mineshafts
 miniconda
@@ -1056,6 +1122,7 @@ mouseover
 mov
 mpapis
 mpm
+msfvenom
 msg
 msgid
 msgpack
@@ -1097,6 +1164,7 @@ mysqldefault
 mysqldump
 mytestdb
 myuser
+mzet
 nagios
 nagiosadmin
 namecheap
@@ -1119,6 +1187,7 @@ neovim
 netblocks
 netboot
 netcat
+Netcraft
 netconfig
 netdata
 netdev
@@ -1133,6 +1202,8 @@ netloc
 netmask
 netplan
 netstat
+netstumbler
+netuser
 networkd
 newgrp
 newtag
@@ -1146,6 +1217,7 @@ nginxdemos
 ngrok
 ngx
 nickcolor
+Nikto
 Nirvashare
 nixcraft
 nixpkgs
@@ -1178,10 +1250,12 @@ nrcpt
 ns1
 ns2
 nsd4
+nslookup
 ntop
 ntopng
 ntp
 ntpd
+nullable
 nullval
 num
 numpy
@@ -1189,6 +1263,7 @@ nvidia
 nvim
 nvm
 oauth
+obfuscator
 octopress
 odoo
 oftc
@@ -1231,6 +1306,7 @@ paas
 packagist
 pagent
 pagespeed
+palo
 pandoc
 param
 parameterizing
@@ -1255,6 +1331,7 @@ patroni
 pbr
 pem
 pentest
+pentesting
 pepi
 percona
 performant
@@ -1266,6 +1343,7 @@ pgpass
 pharmer
 pharo
 phonebook
+photoshop
 php
 php5
 php7
@@ -1288,6 +1366,7 @@ pluggable
 png
 pocketmine
 poettering
+pokemon
 pop3
 pop3d
 pop3s
@@ -1299,6 +1378,7 @@ postgresql0
 postmap
 postrotate
 postrouting
+powershell
 ppa
 pparadis
 ppc64el
@@ -1309,6 +1389,8 @@ preconfigured
 prefork
 preinstall
 preinstalled
+preloaded
+preloader
 premade
 prepend
 prepended
@@ -1323,6 +1405,8 @@ prettifier
 prettifiers
 Printf
 pritunl
+privesc
+processhider
 procfile
 procmail
 procs
@@ -1336,6 +1420,7 @@ proxied
 proxying
 pscp
 pseudocode
+psexec
 psql
 psudo
 psycop2
@@ -1351,6 +1436,7 @@ pv
 pvc
 pvgrub
 pwcheck
+pwsh
 px
 py
 pyamqp
@@ -1392,7 +1478,11 @@ rebase
 rebased
 rebases
 rebasing
+<<<<<<< HEAD
 recompiles
+=======
+rebootuser
+>>>>>>> 60cce98be607232bc39f1596612276503207f1a0
 reconnections
 recordset
 recursing
@@ -1420,6 +1510,7 @@ reindexing
 reinstalls
 releasever
 reloadcmd
+remediations
 remi
 remmina
 remotehost
@@ -1444,6 +1535,7 @@ reusability
 reutilize
 richlanguage
 rimap
+ripgrep
 ritchie
 rkhunter
 rkt
@@ -1451,7 +1543,9 @@ rmdir
 rmem
 ro
 rochko
+rockyou
 rocommunity
+rofi
 rollout
 rooknfs
 rossum
@@ -1489,8 +1583,11 @@ s3cr37
 s3cret
 saas
 sakila
+safend
 salesforce
+sam
 samy
+sandcat
 sar
 sasl
 sasl2
@@ -1506,6 +1603,7 @@ sbt
 scgi
 schroot
 schaeffer
+schtasks
 scm
 scp
 scrapy
@@ -1524,6 +1622,7 @@ searchterm
 secondsite
 secretpassword
 sed
+sekurlsa
 selinux
 sendable
 sendmail
@@ -1554,15 +1653,19 @@ shader
 shadowsocks
 sharded
 sharding
+shellcode
 shellshock
+shellter
 shinagawa1
 shortcode
 shortcodes
 shortguide
 shortguides
 shortname
+shotcut
 shoutcast
 scikit
+scribus
 sidekiq
 sievers
 signup
@@ -1589,6 +1692,8 @@ solaris
 solr
 somaxconn
 someuser
+sonicwall
+sophos
 spamassassin
 spamd
 spamhaus
@@ -1613,14 +1718,18 @@ ssl
 stackscript
 stackscripts
 stadia
+stager
+stagers
 stalkyard
 stallman
+starkiller
 starttls
 statusbar
 stdin
 stderr
 stdout
 steamlab
+steven
 stopwait
 stopword
 stopwords
@@ -1657,6 +1766,7 @@ superset
 supervisord
 supervisorctl
 surbma
+suricata
 sury
 suse
 swappable
@@ -1678,15 +1788,18 @@ syslog
 sysstat
 systemctl
 systemd
+systeminfo
 systemname
 sysv
 sysvinit
+tanium
 targ
 tasksel
 taskserver
 taskwarrior
 tbz
 tcp
+tcpdump
 tcpwrappers
 teamspeak
 teardown
@@ -1710,6 +1823,7 @@ thawte
 theano
 theming
 thingsboard
+thycotic
 tigervnc
 tightvncserver
 tika
@@ -1778,7 +1892,9 @@ uidl
 umount
 un
 unaliased
+uname
 unarchive
+unary
 unban
 unbans
 unbilled
@@ -1825,6 +1941,7 @@ urllib3
 urlopen
 urlparse
 urls
+usemodule
 useradd
 usercolumn
 userdb
@@ -1852,6 +1969,7 @@ vcs
 vdev
 vdevs
 ve
+veeam
 venv
 ver
 veracode
@@ -1869,6 +1987,7 @@ virtualhost
 virtualizations
 virtualized
 virtualmin
+Virustotal
 vlan
 vlans
 vlc
@@ -1886,6 +2005,7 @@ vvv
 vz
 vznetaddbr
 walkthrough
+Wappalyzer
 wasn
 wasm
 wav
@@ -1921,10 +2041,12 @@ werkzug
 wg
 wget
 whatsmyip
+whatweb
 whitelisted
 whitelisting
 whitespace
 whitespaces
+whoami
 whois
 whowatch
 wi
@@ -1932,8 +2054,10 @@ widgits
 wildfly
 wimey
 winscp
+winsxs
 windowlist
 wireguard
+wireshark
 wkhtmltopdf
 wkhtmltox
 wll
@@ -1941,6 +2065,8 @@ wlp6s0
 wordcloud
 wordcount
 wordfence
+wordlist
+wordlists
 wordpress
 worker1
 worker2
@@ -2013,11 +2139,13 @@ zile
 zimbra
 zipkin
 zipkinhost
+zix
 zkcluster1root
 zlib
 znc
 zonefiles
 zope
+zorin
 zpool
 zsh
 zshrc

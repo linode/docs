@@ -18,7 +18,7 @@
 </span>
 
 {{ define "search-select-view-button" }}
-  <button @click="view = {{ .view }}" type="button" :class="{ 'text-brand' : view === {{ .view }}, 'text-basicgray' : view !== {{ .view }} }" class="-ml-px relative inline-flex items-center px-2 py-2 {{ .borders }} border-t-2 border-b-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+  <button @click="view = {{ .view }}" type="button" :class="{ 'text-brand' : view === {{ .view }}, 'text-basicgray' : view !== {{ .view }} }" class="-ml-px relative inline-flex items-center px-2 py-2 {{ .borders }} border-t-2 border-b-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none" data-testid="select-view-{{ .view }}">
     <span class="sr-only">
       {{ .sr_text }}
     </span>

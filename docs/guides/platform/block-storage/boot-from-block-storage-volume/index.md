@@ -34,7 +34,7 @@ Create a Block Storage Volume and attach it to the target Linode. Verify that th
 
     ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](rescue-mode-sdc.png "Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode")
 
-1.  Connect to the Linode via [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
+1.  Connect to the Linode via [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Run `fdisk -l` to confirm the Linode's primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc`, respectively.
 

@@ -8,7 +8,7 @@ keywords: ['database','cluster','backups','configuration management']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified: 2021-09-16
+modified: 2021-11-16
 modified_by:
   name: Linode
 title: "Deploying ClusterControl through the Linode Marketplace"
@@ -19,7 +19,7 @@ external_resources:
 
 ClusterControl is a unified console to manage the full database lifecycle of the most popular open-source databases (on-premise or in the cloud). Provision, monitor and manage highly available database clusters in minutes with dashboards, backups, notifications, reports and automated recovery.
 
-**Supported databases: MariaDB, MariaDB Galera Cluster, Percona, Percona XtraDB Cluster, MySQL Replication, MySQL Cluster (NDB), PostgreSQL, Redis, TimescaleDB and MongoDB ReplicaSet and Shards**
+**Supported databases: MySQL, MariaDB Server, MariaDB Galera, Percona Server, Percona XtraDB, PostgreSQL, Redis, MS SQL Server 2019, TimescaleDB, and MongoDB
 
 ## Deploying the ClusterControl Marketplace App
 
@@ -53,7 +53,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Access your ClusterControl App
 
-To access your ClusterControl instance, Open a browser and navigate to the domain you created during in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/remote-access/#resetting-reverse-dns).
+To access your ClusterControl instance, Open a browser and navigate to the domain you created during in the beginning of your deployment or your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
 
 From there you will see the welcome screen where you can enter the requested information to setup your ClusterControl instance:
 

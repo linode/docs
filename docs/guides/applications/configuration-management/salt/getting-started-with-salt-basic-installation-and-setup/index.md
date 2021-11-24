@@ -25,7 +25,7 @@ tags: ["automation","salt"]
 
 -  Set each Linode's [hostname](/docs/getting-started/#setting-the-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
 
--  We recommend that you configure [private IP addresses](/docs/networking/remote-access/#adding-private-ip-addresses) for each system if your Linodes are located in the same data center.
+-  We recommend that you configure [private IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each system if your Linodes are located in the same data center.
 
 
 ## Install Using Salt Bootstrap
