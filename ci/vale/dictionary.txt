@@ -632,10 +632,12 @@ gmail
 gmod
 gnulinux
 gnutls
-gobuster
+gocheck
 gogs
 golang
 goldmark
+gomega
+gopwt
 goroutine
 goroutines
 goto
@@ -1476,11 +1478,8 @@ rebase
 rebased
 rebases
 rebasing
-rebootuser
-reconnections
-recordset
+recompiles
 recursing
-recv
 red5
 reddit
 redeclared
@@ -1804,6 +1803,7 @@ tensorflow
 terrahelp
 terraria
 testdb
+testdeep
 testfile
 testkeys
 testparam
