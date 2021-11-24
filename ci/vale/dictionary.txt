@@ -21,6 +21,7 @@ ahci0
 Aho
 ahvz
 aircrack
+ajenti
 ajp
 aker
 alef
@@ -296,6 +297,8 @@ cronie
 cronjob
 cronjobs
 crontab
+crowdsourced
+crowdsourcing
 crt
 crypters
 crypto
@@ -570,6 +573,7 @@ freshclam
 friendster
 frontend
 frontmatter
+froxlor
 fs
 fsck
 fstab
@@ -1617,6 +1621,7 @@ selinux
 sendable
 sendmail
 sentdex
+sentora
 seo
 serv
 server1

@@ -44,7 +44,7 @@ Block Storage is available across [all regions](https://www.linode.com/global-in
 
 ## Plans and Pricing
 
-Block Storage Volumes cost $0.10/GB per month and can range from 10 GB to 10,000 GB in size.
+Block Storage Volumes cost $0.10/GB per month ($0.00015/GB per hour) and can range from 10 GB to 10,000 GB in size.
 
 ## Limits and Considerations
 
