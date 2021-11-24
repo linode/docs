@@ -6,7 +6,7 @@ description: 'What is open source software and how does it work? We answer these
 keywords: ['benefits of open source','benefits of open source software','advantages of open source software']
 tags: ['linux', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-23
+published: 2021-11-24
 modified_by:
   name: Linode
 title: "Open Source Software: Benefits Explained"
@@ -86,7 +86,7 @@ The advantage of open-source software support is that it's everywhere. Most Linu
 
 ## Containers
 
-Nearly every business now depends on containers. Containerized applications make it possible for businesses to be more agile, more highly scalable, save money, deploy more reliable applications and services, and better lean into cloud-native development.
+Nearly every business now depends on [containers](/docs/guides/applications/containers/). Containerized applications make it possible for businesses to be more agile, more highly scalable, save money, deploy more reliable applications and services, and better lean into cloud-native development.
 
 Containers and open-source go hand-in-hand. They are built with open-source software and deployed on open-source platforms. In fact, without open-source, containers would either not exist or be as readily available. According to the "[Application Container Market - Growth, Trends, COVID-19 Impact, and Forecast (2021-2026)](https://www.researchandmarkets.com/reports/4845968/application-container-market-growth-trends)" the container market is expected to register a compound annual growth rate of 29% between 2021-2026. That's significant and means more businesses will come to depend on containerized technology. This wouldn't be possible without open-source.
 
