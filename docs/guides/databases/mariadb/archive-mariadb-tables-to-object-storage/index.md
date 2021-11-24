@@ -47,7 +47,7 @@ The S3 storage engine is based off the Aria storage engine and therefore does no
    It's recommended to install the latest version of MariaDB from the official repositories by selecting your distribution and following the instructions on the [MariaDB.org Downloads page](https://mariadb.org/download/?t=repo-config).
    {{</note>}}
 
-   This guide uses Debian 10 and MariaDB 10.6 installed from the official MariaDB packages.
+   This guide uses Debian 10 and MariaDB 10.6 installed from the official MariaDB repositories.
 
 4. Create an Object Storage bucket to hold your database tables. Follow the [Create a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) section of the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide if you do not already have one.
 
@@ -65,40 +65,72 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Install the MariaDB S3 plugin
 
-The MariaDB plugin is not installed by default. The name of the package containing the plugin will vary based on distribution and whether you are using the official MariaDB packages or those included in your distribution.
+The MariaDB S3 plugin is not installed by default. The name of the package containing the plugin will vary based on distribution and whether you are using the official MariaDB packages or those included in your distribution.
 
-### Debian 10
+### Debian 10, 11
 
 {{< note >}}
-Debian 10 only includes MariaDB version 10.3. The official MariaDB packages are required to run version 10.5.
+Debian 10 includes MariaDB version 10.3. The official MariaDB packages are required to run version 10.5.
+
+Debian 11 includes MariaDB 10.5. No additional repositories are required.
 {{< /note >}}
 
     apt-get install mariadb-plugin-s3
+
+### Ubuntu
+
+{{< note >}}
+Ubuntu 20.04, 18.04 and 16.04 ship with MariaDB releases older than 10.5, therefore the official MariaDB packages are required to run version 10.5.
+
+Ubuntu 21.10 includes MariaDB 10.5. No additional repositories are required.
+{{< /note >}}
+
+    apt-get install mariadb-plugin-s3
+
+### CentOS 8
+
+{{< note >}}
+CentOS 8 includes MariaDB version 10.3. The official MariaDB packages are required to run version 10.5.
+{{< /note >}}
+
+    dnf install MariaDB-s3-engine
+
+### Fedora 35
+
+{{< note >}}
+Fedora 35 includes MariaDB version 10.5. No additional repositories are required.
+{{< /note >}}
+
+    dnf install mariadb-s3-engine
 
 ## Add Object Storage keys to MariaDB
 
 The first step is to add the Linode Object Storage (S3) credentials to your MariaDB configuration. The location of the configuration file varies on each distribution, and whether you are using the official MariaDB packages or those included in your distribution.
 
-Official MariaDB packages allow for individual configuration files to be added to `/etc/mysql/conf.d`.
+Official MariaDB packages allow for individual configuration files to be added to `/etc/mysql/conf.d` or `/etc/my.cnf.d`, depending on your distribution.
+
+It is recommended this configuration is added to an `s3.cnf` file. On some distributions, `s3.cnf` is created with default values when the S3 plugin package is installed, and the values can be modified to your needs.
+
+| Distribution | File location | Default file exists? |
+| - | - | - |
+| Debian 10, 11 | /etc/mysql/conf.d/s3.cnf | No |
+| Ubuntu | /etc/mysql/conf.d/s3.cnf | No |
+| CentOS 8 | /etc/my.cnf.d/s3.cnf | Yes |
+| Fedora 35 | /etc/my.cnf.d/s3.cnf | Yes |
 
 {{< note >}}
-In this section's commands, replace the following placeholders:
+In this file, replace the following placeholders:
 
 * `your-bucket-name` with the name of your bucket to hold your data files.
 * `eu-central-1` with the region name of your bucket's assigned Object Storage cluster.
 * `eu-central-1.linodeobjects.com` with your bucket's assigned Object Storage cluster hostname.
 * `your-key` with the Object Storage access key you created in step 5.
 * `your-secret` with the Object Storage secret key you created in step 5.
-{{< /note >}}
+  {{< /note >}}
 
-### Debian 10
-
-{{< note >}}
-Debian 10 only includes MariaDB version 10.3. The official MariaDB packages are required to run version 10.5. 
-{{< /note >}}
-
-{{< file "/etc/mysql/conf.d/s3.conf" ini >}}
+{{< file "s3.cnf" ini >}}
 [mariadb]
+plugin-load-add = ha_s3
 s3=ON
 s3-bucket=your-bucket-name
 s3-access-key=your-key
@@ -112,43 +144,6 @@ s3-host-name=eu-central-1.linodeobjects.com
 After adding the Object Storage configuration, restart MariaDB.
 
     systemctl restart mariadb
-
-## Load the S3 plugin
-
-Even with the S3 plugin's package installed, MariaDB won't automatically use it. You need to instruct MariaDB to load the plugin.
-
-1. Connect to MariaDB.
-
-        mariadb
-
-    You should see similar output:
-
-    {{< output >}}
-Welcome to the MariaDB monitor.  Commands end with ; or \g.
-Your MariaDB connection id is 32
-Server version: 10.6.5-MariaDB-1:10.6.5+maria~buster mariadb.org binary distribution
-
-Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-MariaDB [(none)]>
-{{< /output >}}
-
-1. Instruct MariaDB to load the S3 plugin.
-
-        INSTALL SONAME 'ha_s3';
-
-   You should see similar output:
-
-   {{< output >}}
-MariaDB [sampledb]> INSTALL SONAME 'ha_s3';
-Query OK, 0 rows affected (0.016 sec)
-{{< /output >}}
-
-{{< note >}}
-You only need to run this command once. MariaDB will remember the plugin is active and reload it on each subsequent startup.
-{{< /note >}}
 
 ## Archive your tables to Object Storage
 
