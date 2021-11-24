@@ -628,11 +628,7 @@ gmail
 gmod
 gnulinux
 gnutls
-<<<<<<< HEAD
 gocheck
-=======
-gobuster
->>>>>>> 60cce98be607232bc39f1596612276503207f1a0
 gogs
 golang
 goldmark
@@ -1478,15 +1474,7 @@ rebase
 rebased
 rebases
 rebasing
-<<<<<<< HEAD
-recompiles
-=======
-rebootuser
->>>>>>> 60cce98be607232bc39f1596612276503207f1a0
-reconnections
-recordset
 recursing
-recv
 red5
 reddit
 redeclared
