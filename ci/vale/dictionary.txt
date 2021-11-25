@@ -451,6 +451,7 @@ ejabberd
 el6
 el7
 elasticsearch
+elif
 elisp
 elgg
 elpaso
