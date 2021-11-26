@@ -3,7 +3,7 @@ slug: connect-to-server-over-ssh-on-windows
 author:
   name: Linode
   email: docs@linode.com
-description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
+description: 'Read our guide on how to connect to a remote server over SSH via Windows, including opening the terminal & structuring the command. ✓ Click to read!'
 og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
 keywords: ['ssh','linux','windows','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
@@ -12,7 +12,7 @@ published: 2021-06-25
 image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on Windows"
+title: "SSH Windows: Connecting to a Remote Server via CMD | Linode"
 h1_title: "Connecting to a Remote Server Over SSH on Windows"
 enable_h1: true
 aliases: ['/networking/ssh/using-ssh-on-windows/','/guides/using-ssh-on-windows/']
@@ -31,11 +31,11 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 1.  Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
 
-1.  If using Windows 10, install any pending updates to ensure you are running the latest version of Windows.
+1.  If using Windows 10, install any pending updates to ensure you are running the latest version of Windows before you enable an ssh.
 
 ## Open the Terminal
 
-On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run programs through the command line.
+On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run the ssh command on Windows. 
 
 - [PowerShell - Windows 10](#powershell---windows-10): This is the easiest method for most people using a Windows 10 computer.
 - [Windows Subsystem for Linux - Windows 10](#windows-subsystem-for-linux-wsl---windows-10): This requires quite a few more installation and configuration steps, but may be a better option for those who prefer working within a Linux command-line.
@@ -43,7 +43,7 @@ On your local Windows computer, open the terminal application you wish to use. T
 
 ### PowerShell - Windows 10
 
-The default terminal for Windows 10 is PowerShell. To connect to a server using SSH within PowerShell, the OpenSSH client needs to be installed. OpenSSH is available on newer versions of Windows 10 (April 2018 update and later), though it may need to be manually enabled.
+The default terminal for Windows 10 is PowerShell. To connect to a server using SSH on Windows 10 within PowerShell, the OpenSSH client needs to be installed. OpenSSH is available on newer versions of Windows 10 (April 2018 update and later), though it may need to be manually enabled.
 
 #### Install the OpenSSH Client
 
@@ -57,7 +57,7 @@ The default terminal for Windows 10 is PowerShell. To connect to a server using 
 
     ![OpenSSH](openssh-installed-feature.png)
 
-1.  If the *OpenSSH Client* feature is not installed, click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button.
+1.  If the *OpenSSH Client* feature is not installed, you will need to enable the Windows ssh client. Click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button to install the ssh on Windows. 
 
 #### Open PowerShell
 
@@ -82,21 +82,21 @@ There is no native SSH client in Windows 8 and earlier. Instead, you'll need to 
 - [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)
 - [Connecting to a Remote Server Over SSH on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/)
 
-## Connecting to the Remote Server Over SSH
+## How to Connect to the Remote Server Over SSH from Windows
 
-1. Within the terminal, enter the following command, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server.
+1. In CMD, the ssh command prompts the connection to a remote server. Within the terminal, enter the following command, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server. 
 
        ssh [username]@[ip-address]
 
-    The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
+     The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
     {{< note >}}
-If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
+If the server's SSH port is something other than 22, it needs to be specified in the Windows SSH command line. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
 
     ssh [username]@[ip-address] -p [port-number]
 {{< /note >}}
 
-1.  When you connect with a server for the first time, the SSH client prompts you to check and verify the host key's fingerprint. This is normal, and results in output similar to:
+1.  When you connect with a server for the first time, the SSH client on Windows 10 prompts you to check and verify the host key's fingerprint. This is normal, and results in output similar to:
 
     {{< output >}}
 The authenticity of host ‘example.com (93.184.216.34)’ can't be established.
