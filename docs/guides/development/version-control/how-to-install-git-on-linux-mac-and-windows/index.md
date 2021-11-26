@@ -55,11 +55,11 @@ This guide uses `sudo` wherever possible. Complete the [Add a Limited User Accou
 
 ### Is Git pre-installed on Mac?
 
-No, Git for Mac does not come pre-installed. You have to install it.
+No, Git for Mac does not come pre-installed. You have to install Git for Mac using the above instructions.
 
 ### How do I know if Git is installed?
 
-To see if Git is installed on your system, open your terminal and type `git --version`. If your terminal returns a Git version as an output, that confirms you have Git installed on your system.
+To see if Git is installed on your system, open your terminal and type `git --version`. If your terminal returns a Git version as an output, that confirms you have Git installed on your system. If not, you will have to download Git for Mac or Windows.
 
 ### Are Git and GitHub the same?
 
@@ -67,11 +67,15 @@ Git and GitHub are different. GitHub hosts Git repositories in a central locatio
 
 ### How do I download Git for Windows?
 
-To download Git for Windows, visit the [Downloads page](https://git-scm.com/download/win) on the Git documentation site and select the most recent version. Once you click on the version your download starts shortly.
+To download Git for Windows, visit the [Downloads page](https://git-scm.com/download/win) on the Git documentation site and select the most recent version. Once you click on the version your download starts shortly and you can install Git for Windows. 
 
 ### How to check the Git version?
 
 To check your Git version type `git --version` and press enter in your terminal. This shows you your Git version as an output.
+
+### Do I need to download Git Bash?
+
+ Git Bash is included in the Git for Windows package. It is unnecessary to install Git Bash on a Mac, as Git can be run natively on MacOS. 
 
 ### How to clone a repository in Git?
 

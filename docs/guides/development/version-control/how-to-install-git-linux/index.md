@@ -31,7 +31,7 @@ If the output shows a Git version (see example below), you already have Git inst
 git version 2.17.1
 {{</ output >}}
 
-If you need to install Git bash, your terminal shows the following error:
+If you need to install Git, your terminal shows the following error:
 
 {{< output >}}
 -bash: git: command not found
@@ -45,7 +45,7 @@ To install Git run the following command:
 
         sudo apt-get install git
 
-If you see an error, consider running the following command before you install Git Ubuntu:
+If you see an error, consider running the following command before you install Git for Ubuntu:
 
         sudo apt update
 
