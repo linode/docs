@@ -3,7 +3,7 @@ slug: installing-and-using-docker-on-ubuntu-and-debian
 author:
   name: Linode
   email: docs@linode.com
-description: 'A guide on installing Docker Engine on Ubuntu and Debian Linux distributions'
+description: 'Check out our guide on how to install Docker Engine on Ubuntu and Debian Linux distribution's latest version. ✓ Click here to read our guide today!'
 og_description: 'A guide on installing Docker Engine on Ubuntu and Debian Linux distributions'
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","debian","ubuntu"]
@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-16
 modified_by:
   name: Linode
-title: "How to Install and Use Docker on Ubuntu and Debian"
+title: "Install Docker Ubuntu or Debian: How to Set Up and Use | Linode"
 h1_title: "Installing and Using Docker on Ubuntu and Debian"
 enable_h1: true
 external_resources:

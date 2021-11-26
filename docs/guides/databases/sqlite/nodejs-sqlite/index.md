@@ -3,7 +3,7 @@ slug: getting-started-with-nodejs-sqlite
 author:
   name: James Turner
   email: docs@linode.com
-description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
+description: 'With npm & sqlite3, you can make your applications shine. This guide explains how you can install NodeJS SQLite, create & insert data. ✓ Learn here!'
 og_description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
 keywords: ['nodejs sqlite']
 tags: ['nodejs', 'sqlite', 'database']
@@ -12,7 +12,7 @@ published: 2021-05-21
 image: NodeSQLite.jpg
 modified_by:
   name: Linode
-title: "A Beginner's Guide to NodeJS and SQLite"
+title: "NodeJS SQLite3: A Beginner's Guide to Installation & Usage"
 h1_title: "Getting Started with NodeJS SQLite"
 contributor:
   name: James Turner

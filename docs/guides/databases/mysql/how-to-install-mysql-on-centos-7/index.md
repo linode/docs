@@ -3,14 +3,14 @@ slug: how-to-install-mysql-on-centos-7
 author:
   name: Linode
   email: docs@linode.com
-description: 'Getting started with MySQL on CentOS 7'
+description: 'Prefer MySQL over MariaDB? Our guide will introduce how to install, configure & manage it on a Linode running CentOS 7. ✓ Get started here today!'
 keywords: ["MySQL on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-05
 modified_by:
   name: Linode
 published: 2015-08-27
-title: 'How to Install MySQL on CentOS 7'
+title: "Install MySQL CentOS 7: A How To | Linode"
 external_resources:
  - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'

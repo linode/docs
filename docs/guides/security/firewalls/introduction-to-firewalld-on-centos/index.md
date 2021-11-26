@@ -3,7 +3,7 @@ slug: introduction-to-firewalld-on-centos
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'This guide will introduce you to FirewallD, its notions of zones and services, and show you some basic configuration steps.'
+description: 'This guide will introduce you to FirewallD, its notions of zones and services, & show you some basic configuration steps. ✓ Click here to learn more today!'
 keywords: ["centos firewall", "centos firewall config", "centos firewall gui", "centos configure firewall", "Linux", "Linode", "cloud", "firewall", "firewalld", "Fedora", "CentOS", "iptables", "security"]
 tags: ["centos","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ published: 2015-09-28
 modified: 2015-10-12
 modified_by:
     name: Linode
-title: Introduction to FirewallD on CentOS
+title: "FirewallD CMD List on CentOS: An Introduction | Linode"
 contributor:
     name: Florent Houbart
 external_resources:
