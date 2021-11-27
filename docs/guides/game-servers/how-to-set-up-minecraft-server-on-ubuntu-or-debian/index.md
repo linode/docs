@@ -12,7 +12,7 @@ modified: 2021-07-02
 modified_by:
   name: Linode
 published: 2015-01-28
-title: 'How to Set Up a Minecraft Server on Ubuntu or Debian'
+title: "How to Set Up a Minecraft Server on Ubuntu or Debian"
 h1_title: 'Setting up Minecraft Server on Ubuntu or Debian'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
@@ -73,6 +73,8 @@ For more information, see [Controlling Network Traffic with iptables](/docs/guid
 {{< /note >}}
 
 ## Install Minecraft
+
+To install Minecraft on your server in Ubuntu use the following steps:
 
 1.  Exit your current SSH session and log back in to your Linode as the `minecraft` user.
 
@@ -197,7 +199,9 @@ To disconnect from the screen session without stopping the game server, press **
 
 1.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is executed, a world is created with the default variables. If you would like to create a new world with updated variables (like [world seeds](http://minecraft.gamepedia.com/Seed_(level_generation))), change the `level-name` directive in the `server.properties` file and modify other settings accordingly.
 
-    After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. For more information on available settings and how to modify them, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
+    After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. 
+
+For more information on available settings and how to modify them or how to run a Minecraft server upon startup of Ubuntu, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
 
 ## Connect to your Minecraft Server
 
@@ -215,7 +219,7 @@ To disconnect from the screen session without stopping the game server, press **
 
     [![Minecraft Players.](minecraft-gameplay_small.png)](minecraft-gameplay.png)
 
-Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
+Congratulations! Now that you have setup a Minecraft server on Linux, you can play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
 
 ## Configure Your Minecraft Server Firewall
 
@@ -233,7 +237,7 @@ Here are some of the most common port numbers and network services that use them
 *   `Minecraft Server`: 25565
 *   `FTP or File Transfer Protocol`: 21
 
-When you install the Minecraft servers, the default settings currently only allow SSH traffic to be able to access this server and block every other request. Minecraft uses the port 25565 to allow connections to a server which means you need to enable traffic to pass through this port. For more information, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+When you install the Linux Minecraft servers, the default settings currently only allow SSH traffic to be able to access this server and block every other request. Minecraft uses the port 25565 to allow connections to a server which means you need to enable traffic to pass through this port. For more information, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 You can also add a firewall rule using the ufw by running the following command:
 
