@@ -3,7 +3,7 @@ slug: how-to-install-a-lamp-stack-on-centos-7
 author:
     name: Joel Kruger
     email: docs@linode.com
-description: 'Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
+description: 'Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP. ✓ Click here to read our installation guide today!'
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ modified: 2020-02-20
 modified_by:
     name: Linode
 published: 2015-12-01
-title: LAMP on CentOS 7
+title: "CentOS Install PHP MySQL, Apache, and MariaDB: A Guide"
 h1_title: How to Install a LAMP Stack on CentOS 7
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
@@ -28,7 +28,7 @@ relations:
 
 ![LAMP on CentOS 7](lamp-on-centos-7-title-graphic.jpg "LAMP on CentOS 7")
 
-A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 7 Linode.
+A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP (LAMP). This guide shows you how to install a LAMP stack on a CentOS 7 Linode.
 
 ## Before You Begin
 
@@ -50,6 +50,8 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Apache
 
 ### Install and Configure
+
+Install Apache using CentOS’s package manager.
 
 1.  Install Apache 2.4:
 
@@ -193,11 +195,13 @@ Rename Apache's default welcome page. When this file is present it will take pre
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
 {{</ note >}}
 
+Once Apache has been installed and configured on your server, it is time to install PHP and the MySQL database on your CentOS 7 Linode.
+
 ## MariaDB
 
 ### Install and Configure
 
- MariaDB is a *relational database management system* (RDBMS) and is a popular component of many applications.
+ MariaDB is a *relational database management system* (RDBMS), and is a popular component of many applications. 
 
 1.  Install the MariaDB-server package:
 
@@ -231,7 +235,7 @@ Rename Apache's default welcome page. When this file is present it will take pre
 
         quit
 
-With Apache and MariaDB installed, you are now ready to move on to installing PHP to provide scripting support for your web pages.
+With Apache and MariaDB installed, you are now ready to install PHP on your CentOS 7 Linode to provide scripting support for your web pages. CentOS needs PHP to connect to the MySQL to get information.
 
 
 ## PHP
@@ -298,7 +302,7 @@ In this section, you'll create a test page that shows whether Apache can render 
 
     {{< /file >}}
 
-1.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
+1.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP on CentOS 7 are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
 
 1.  Remove the test file:
 
