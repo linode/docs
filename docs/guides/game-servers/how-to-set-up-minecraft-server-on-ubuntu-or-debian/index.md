@@ -74,7 +74,7 @@ For more information, see [Controlling Network Traffic with iptables](/docs/guid
 
 ## Install Minecraft
 
-To install Minecraft on your server in Ubuntu use the following steps:
+To install Minecraft on your server use the following steps:
 
 1.  Exit your current SSH session and log back in to your Linode as the `minecraft` user.
 
@@ -144,7 +144,7 @@ Running this command updates the Minecraft server versions from 1.13 to 1.17.
 
                 java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.5.jar nogui
 
-And you have an updated Minecraft server running on your Ubuntu or Debian.
+And you are now running an updated Minecraft server on Ubuntu or Debian.
 
 ## Run Minecraft
 
@@ -201,7 +201,7 @@ To disconnect from the screen session without stopping the game server, press **
 
     After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. 
 
-For more information on available settings and how to modify them or how to run a Minecraft server upon startup of Ubuntu, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
+For more information on available settings and how to modify them, or how to run a Minecraft server upon startup of Ubuntu, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
 
 ## Connect to your Minecraft Server
 
@@ -223,7 +223,7 @@ Congratulations! Now that you have setup a Minecraft server on Linux, you can pl
 
 ## Configure Your Minecraft Server Firewall
 
-To understand the firewall a bit more, you need to look into how Minecraft servers are typically set up. Any external network is separated from your Minecraft’s internal network by a firewall. In absence of a firewall rule, your router acts as your firewall - preventing anyone on the internet from being able to access your Minecraft server.
+To understand the firewall a bit more, you need to look into how Linux Minecraft servers are typically set up. Any external network is separated from your Minecraft’s internal network by a firewall. In absence of a firewall rule, your router acts as your firewall - preventing anyone on the internet from being able to access your Minecraft server.
 
 Earlier in this guide under the prerequisites section, there is a note around allowing a firewall rule:
 
@@ -237,7 +237,7 @@ Here are some of the most common port numbers and network services that use them
 *   `Minecraft Server`: 25565
 *   `FTP or File Transfer Protocol`: 21
 
-When you install the Linux Minecraft servers, the default settings currently only allow SSH traffic to be able to access this server and block every other request. Minecraft uses the port 25565 to allow connections to a server which means you need to enable traffic to pass through this port. For more information, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+When you install the Minecraft servers on Ubuntu or Debian, the default settings currently only allow SSH traffic to be able to access this server and block every other request. Minecraft uses the port 25565 to allow connections to a server which means you need to enable traffic to pass through this port. For more information, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 You can also add a firewall rule using the ufw by running the following command:
 
