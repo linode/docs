@@ -3,6 +3,7 @@ slug: modifying-text-sed-regex
 author:
   name: Lars Kotthoff
   email: lars@larsko.org
+modified_by: Lars Kotthoff
 description: 'This guide will give you a basic understanding of how to use sed and regular expressions to modify text from the command line and in scripts.'
 og_description: 'This guide will give you a basic understanding of how to use sed and regular expressions to modify text from the command line and in scripts.'
 keywords: ['linux','pipes','command line']
@@ -20,7 +21,7 @@ You have probably used `grep` to search for text in files and maybe complex regu
 
 ## Working with Complex Text
 
-Changing small amounts of text is often so straightforward that it is easiest to quickly do it with an editor of your choice, but there are cases when this is not easily possible. For example, consider the ASCII art/markdown table below:
+Changing small amounts of text is often so straightforward that it is easiest to quickly do it with an editor of your choice, but there are cases when this is not easily possible. For example, consider the ASCII art/Markdown table below:
 
     | city           | state      | area code |
     |----------------|------------|-----------|
@@ -32,7 +33,7 @@ Changing small amounts of text is often so straightforward that it is easiest to
 
 This table has a very specific structure that makes changing it difficult in a text editor, e.g. swapping two columns is a tedious task. This is true for many other text formats, e.g. CSV and TSV files. Ideally, a table like this would be automatically generated from a database and swapping columns a simple matter of swapping two values in the process that generates it, but sometimes all we have is the output.
 
-First, let's have a look at what this table renders as in markdown:
+First, let's have a look at what this table renders as in Markdown:
 
 | city           | state      | area code |
 |----------------|------------|-----------|
@@ -44,9 +45,9 @@ First, let's have a look at what this table renders as in markdown:
 
 ## Replacing Words
 
-As a warm-up, let's replace "Hawaii" with "Hawai'i", assuming that our markdown table is in a file called "table.md":
+As a warm-up, let's replace "Hawaii" with "Hawai'i", assuming that our Markdown table is in a file called "table.md":
 
-    sed -e "s/Hawaii /Hawai'i/" table.md 
+    sed -e "s/Hawaii /Hawai'i/" table.md
 
 We're telling `sed` to evaluate the expression given after `-e` for the file `table.md`, where the expression instructs `sed` to search (`s`) for `Hawaii ` (note the space at the end, which we want to delete in the replaced text to keep the formatting of the table) and replace it with `Hawai'i`. This will output the changed file. To change the file in place (without producing any output), we can give `sed` the `-i` flag.
 
