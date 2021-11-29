@@ -1,5 +1,5 @@
 ---
-slug: deploy-webserver-and-more-with-ansible
+slug: automate-deployment-of-web-server-infrastructure-using-ansible
 author:
   name: Nygel Bennett
   email: nygel.bennett@gmail.com
@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-18
 modified_by:
   name: Nygel Bennett
-title: "Automate Deployment of Web Server Infrastructure Using Ansible."
-h1_title: "How to Deploy a Web Server, Log Server, and Database Server with Ansbile."
+title: "Automate Deployment of Web Server Infrastructure Using Ansible"
+h1_title: "How to Deploy a Web Server, Log Server, and Database Server with Ansible"
 enable_h1: true
 contributor:
   name: Nygel Bennett
@@ -22,36 +22,36 @@ external_resources:
 ---
 
 ## What is Ansible?
-Ansible is an open-source, software provisioning tool that automates application and IT infrastructure deployment. It is lightweight and agent-less, meaning there is no client or server software to install. Ansible uses SSH and Python to accomplish these amazing automation tasks.
+Ansible is an open-source, software provisioning tool that automates the application and IT infrastructure deployment. It is lightweight and agent-less, meaning there is no client or server software to install. Ansible uses SSH and Python to accomplish these amazing automation tasks.
 
 In this guide you:
-* Deploy and configure five Linodes. One is the Ansible control node and the others are worker nodes.
-* Configure and run an Ansible playbook that configures the worker nodes.
-* Test and confirm your running web servers and log server.
+- Deploy and configure five Linodes. One is the Ansible control node and the others are worker nodes.
+- Configure and run an Ansible playbook that configures the worker nodes.
+- Test and confirm your running web servers and log server.
 
 {{< caution >}}
-The example instructions in this guide creates five, [1GB Linodes](https://www.linode.com/pricing) (also known as Nanodes). These are billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to [delete the resources](https://www.linode.com/docs/guides/billing-and-payments/#removing-services) once you have finished this how-to guide.
+The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing) (also known as Nanodes). These are billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to [delete the resources](https://www.linode.com/docs/guides/billing-and-payments/#removing-services) once you have finished this how-to guide.
 
 If you remove these resources afterward, you are only [billed for the time](https://www.linode.com/docs/guides/how-linode-billing-works/) the resources were present on your account.
 {{</ caution >}}
 
 ## Prerequisites
-* Intermediate understanding of the Bash shell and its utilities.
-* Install the [Linode CLI](https://www.linode.com/docs/products/tools/cli/get-started/#install-the-cli) or you can use the [Cloud Manager GUI](https://cloud.linode.com/linodes).
-  * Using the CLI allows you to save time creating, labeling, and tagging your Linodes.
-* Create a folder to work from. For example, you can name it, **"Ansible_Infra"**.
+- Intermediate understanding of the Bash shell and its utilities.
+- Install the [Linode CLI](https://www.linode.com/docs/products/tools/cli/get-started/#install-the-cli) or you can use the [Cloud Manager GUI](https://cloud.linode.com/linodes).
+  - Using the CLI allows you to save time creating, labeling, and tagging your Linodes.
+- Create a folder to work from. For example, you can name it, **"Ansible_Infra"**.
 
 
 <!-- Include one of the following notes if appropriate. --->
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{</ note >}}
 
 ## Create Five Linodes Using the Linode-CLI Utility
 
 ### Create One Ansible Control Node and Four Managed Nodes
-On your local machine, set up an environment variable which is used in the `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
+On your local machine, set up an environment variable that is used in the `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
 
     pass=yourrootpassword
 
@@ -127,7 +127,7 @@ If you check the Cloud Manager GUI, you can see these five Linodes grouped under
 
 Create three files named `ansibleCN_setup.sh`, `ansibleMN_setup.sh`, and `myplaybook.yml`. Using a text editor, copy and paste the below codes into each respective file. The setup files help to secure your Linode, install needed software, and create a limited user on your instance. The playbook file, `myplaybook.yml` is what Ansible uses to configure the managed nodes.
 
-As a shortcut, you can also `wget` these three configuration [files from GitHub](https://github.com/bennettnw2/Ansible_webserver_infra_files) and save them into the local, working, folder, `Ansible_Infra` which you had created earlier.
+As a shortcut, you can also `wget` this three configuration [files from GitHub](https://github.com/bennettnw2/Ansible_webserver_infra_files) and save them into the local, working, folder, `Ansible_Infra` which you had created earlier.
 
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleCN_setup.sh
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleMN_setup.sh
@@ -246,7 +246,7 @@ echo "# Dunzo. Poke around if you like.  I recommend a reboot. #"
 echo "##########################################################"
 {{</ file >}}
 
-Ansible playbooks is what makes Ansible powerful software. The syntax of the tasks are very similar to plain language and therefore, makes the playbook file human readable. For best practice, have the task names be descriptive and precise. By reviewing the names of the tasks in `myplaybook.yml`, you can see what each task is supposed to do and each task shows how it is done.
+Ansible playbooks are what makes Ansible powerful software. The syntax of the tasks is very similar to plain language and therefore, makes the playbook file human readable. For best practice, have the task names be descriptive and precise. By reviewing the names of the tasks in `myplaybook.yml`, you can see what each task is supposed to do and each task shows how it is done.
 
 {{< file "myplaybook.yml" yaml >}}
 ---
@@ -404,7 +404,7 @@ Do not forget the colon "**:**" at the end of the command below.
 
         chmod 744 ansibleCN_setup.sh ansibleMN_setup.sh
 
-1. Execute `ansibleCN_setup.sh` script. It takes few minutes for the script to complete.
+1. Execute `ansibleCN_setup.sh` script. It takes a few minutes for the script to complete.
 
         ./ansibleCN_setup.sh
 
@@ -516,7 +516,7 @@ Be sure to copy the output from the dollar sign to the period. Paste the resulti
 
 ### Add Log Server IP Address to Playbook
 
-Grab the IP address of logging sever (vm5) and paste into `configure rsyslog` section of `myplaybook.yml`. Paste the IP address into the place holder, **{{ LOG_IP_ADDRESS }}**.
+Grab the IP address of logging sever (vm5) and paste it into `configure rsyslog` section of `myplaybook.yml`. Paste the IP address into the place holder, **{{ LOG_IP_ADDRESS }}**.
 
 ## Configure Ansible Managed Nodes
 
@@ -543,7 +543,7 @@ ansibleMN_setup.sh
 {{</ output >}}
 
 ### Log into Each Worker Node and Run the `ansibleMN_setup.sh` Script.
-From the local computer, open 4 terminal sessions and within each session, ssh into each managed node (vm2 - vm5). Once logged in, execute the managed node setup script.
+From the local computer, open four terminal sessions, and within each session, ssh into each managed node (vm2 - vm5). Once logged in, execute the managed node setup script.
 
     ./ansibleMN_setup.sh
 
@@ -551,7 +551,7 @@ From the local computer, open 4 terminal sessions and within each session, ssh i
 The script asks you to enter a username and password for the new user being created.
 {{</note>}}
 
-Once the setup script has completed for each managed node, reboot all your Ansible infrastructure Linodes with the below command.
+Once the setup script has been completed for each managed node, reboot all your Ansible infrastructure Linodes with the below command.
 
     for i in $(cat tmp.txt); do linode-cli linodes reboot $i; done
 
