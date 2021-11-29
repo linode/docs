@@ -572,6 +572,7 @@ freeipa
 freshclam
 friendster
 frontend
+frontify
 frontmatter
 froxlor
 fs
