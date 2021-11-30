@@ -34,28 +34,37 @@ The YUM (or DNF) package manager can be used to install s3cmd on RHEL/CentOS 7 o
 
 The APT package manager can be used to install s3cmd on Debian or Ubuntu Linux distributions.
 
-    sudo apt-get install s3cmd
+    sudo apt install s3cmd
 
 ## Configuring s3cmd
 
-After s3cmd has been installed, you need to configure it:
+After s3cmd has been installed, it needs to be configured to work with the buckets and objects on your Linode account.
 
-    s3cmd --configure
+1.  Run the following command to start the configuration process.
 
-This command will prompt you with a series of questions. Answer them based on the recommendations below:
+        s3cmd --configure
 
-- **Access Key:** Enter the access key you wish to use. See [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/).
-- **Secret Key:** Enter the secret key that corresponds with the access key. This was displayed once when generating the access key.
-- **Default Region:** `US` (do not change, even if you use Object Storage in a different region)
-- **S3 Endpoint:** `[cluster-id].linodeobjects.com`, replacing [cluster-id] with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
-- **DNS-style bucket+hostname:port template for accessing a bucket:** `%(bucket)s.[cluster-id].linodeobjects.com`, replacing [cluster-id] with the same id used previously.
-- **Encryption password:** Enter your GPG key if you intend to store and retrieve encrypted files (optional).
-- **Path to GPG program:** Enter the path to your GPG encryption program (optional).
-- **Use HTTPS protocol:** `Yes`
-- **HTTP Proxy server name:** (Leave blank)
-- **HTTP Proxy server port:** (Leave blank)
+1.  This command will prompt you with a series of questions. Answer them based on the recommendations below:
 
-When you are done, enter `Y` to save the configuration.
+        - **Access Key:** Enter the access key you wish to use. See [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/).
+        - **Secret Key:** Enter the secret key that corresponds with the access key. This was displayed once when generating the access key.
+        - **Default Region:** `US` (do not change, even if you use Object Storage in a different region)
+        - **S3 Endpoint:** `[cluster-id].linodeobjects.com`, replacing [cluster-id] with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
+        - **DNS-style bucket+hostname:port template for accessing a bucket:** `%(bucket)s.[cluster-id].linodeobjects.com`, replacing [cluster-id] with the same id used previously.
+        - **Encryption password:** Enter your GPG key if you intend to store and retrieve encrypted files (optional).
+        - **Path to GPG program:** Enter the path to your GPG encryption program (optional).
+        - **Use HTTPS protocol:** `Yes`
+        - **HTTP Proxy server name:** (Leave blank)
+        - **HTTP Proxy server port:** (Leave blank)
+
+1.  When the prompt appears to test access with the supplied credentials, enter `n` to skip. Currently, this process results in the following error - even when the settings are correct.
+
+    {{<output>}}
+Please wait, attempting to list all buckets...
+ERROR: Test failed: 403 (SignatureDoesNotMatch)
+{{</output>}}
+
+1.  When the prompt appears to save your settings, enter `Y`. A `.s3cfg` configuration file is created under your home directory.
 
 ### Additional Configuration Options
 
