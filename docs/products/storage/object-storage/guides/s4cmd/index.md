@@ -22,7 +22,7 @@ To install s4cmd on a Mac, python's package manager (`pip` or `pip3`) can be use
 
 The APT package manager can be used to install s4cmd on Debian or Ubuntu Linux distributions.
 
-    sudo apt-get install s4cmd
+    sudo apt install s4cmd
 
 ## Configuring Credentials
 
