@@ -6,7 +6,7 @@ author:
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-24
+published: 2021-11-30
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -37,7 +37,7 @@ The following is a list of breaking changes and any action that may be required 
 
     *Action:* If you have configured IP failover for a public IPv4 address, review the [] guide to learn more about configuring IP failover using bgp. You can configure bgp ahead of time, but will not be able to test or use the configuration until after the network upgrades.
 
-## What data centers have been upgraded?
+## What Data Centers have been Upgraded?
 
 Review the table below to learn which data centers have been upgraded with the latest network enhancements.
 
@@ -54,3 +54,9 @@ Review the table below to learn which data centers have been upgraded with the l
 | Sydney (Australia) | *Coming soon* |
 | Tokyo (Japan) | *Coming soon* |
 | Toronto (Canada) | *Coming soon* |
+
+## What Action is Required?
+
+- **Migtration of Compute Instances:** Once a data center has started the network infrastructure upgrades, live migrations will be scheduled for all Compute Instances that do not reside on upgraded hardware. This live migration will occur while your Compute Instance is powered on and operating normally. After the migration has been successfully completed, there may be a brief period of downtime while the Compute Instance is rebooted.
+
+- **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [] guide to learn more about configuring IP failover using bgp. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure bgp ahead of time, but will not be able to test or use the configuration until after the network upgrades.
