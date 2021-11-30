@@ -37,7 +37,7 @@ The following is a list of breaking changes and any action that may be required 
 
     *Action:* If you have configured IP failover for a public IPv4 address, review the [] guide to learn more about configuring IP failover using bgp. You can configure bgp ahead of time, but will not be able to test or use the configuration until after the network upgrades.
 
-## What Data Centers have been Upgraded?
+## Which Data Centers Have Been Upgraded?
 
 Review the table below to learn which data centers have been upgraded with the latest network enhancements.
 
