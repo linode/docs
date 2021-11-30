@@ -17,13 +17,13 @@ _build:
 
 Over the next year, we’ll be rolling our networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
 
-For most customers, these upgrades are performed seamlessly behind the scenes. For customers that use certain features, such as IP Sharing and /116 IPv6 pools, there may be some changes that impact your current configuration. This document will outline what is changing, what data centers are impacted, and what, if anything, you may need to do in order to prepare for these upcoming changes.
+For most customers, these upgrades are performed seamlessly behind the scenes. For customers that use certain features, such as IP Sharing and /116 IPv6 pools, there may be some changes that impact your current configuration. This document outlines what is changing, what data centers are impacted, and what, if anything, you may need to do in order to prepare for these upcoming changes.
 
 ## What's New?
 
-- **IP failover for IPv6 routed ranges:** IPv6 routed ranges can be configured for IP failover (IP Sharing) immediately after your data center has been upgraded. See our [] guide to learn more about configuring IP failover.
+- **IP Sharing (IP failover) availability:** The IP Sharing feature, as it exists prior to these upgrades, enables IP failover for public IPv4 addresses in select data centers. After the upgrades have been completed, this feature will be expanded to all data centers and will also support IPv6 routed ranges (/64 and /56). See our [] guide to learn more about configuring IP failover.
 
-- **VLAN and Cloud Firewall availability:** These upgrades allow data centers that do not yet have these products to launch them soon after the network upgrades have occurred.
+- **VLAN availability:** [VLANs](/docs/products/networking/vlans/), which enable private layer 2 networking, will be launched across all data centers soon after the network upgrades have occurred.
 
 ## What's Changing?
 
@@ -33,9 +33,9 @@ The following is a list of breaking changes and any action that may be required 
 
     *Action:* If you were using /116 for IPv6 failover, consider using an IPv6 /64 instead.
 
-- **IP failover through bgp:** IP failover (IP Sharing) for public IPv4 addresses will be facilitated through bgp instead of [keepalived](/docs/guides/ip-failover-keepalived/) immediately after the upgrades have occurred.
+- **IP failover through bgp:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through bgp instead of [keepalived](/docs/guides/ip-failover-keepalived/) immediately after the upgrades have occurred.
 
-    *Action:* If you have configured IP failover for a public IPv4 address, review the [] guide to learn more about configuring IP failover using bgp. You can configure bgp ahead of time, but will not be able to test or use the configuration until after the network upgrades.
+    *Action:* If you have previously configured IP failover for a public IPv4 address, review the [] guide to learn more about configuring IP failover using bgp. You can configure bgp ahead of time, but will not be able to test or use the configuration until after the network upgrades.
 
 ## Which Data Centers Have Been Upgraded?
 
@@ -45,7 +45,7 @@ Review the table below to learn which data centers have been upgraded with the l
 | -- | -- |
 | Atlanta (Georgia, USA) | *Coming soon* |
 | Dallas (Texas, USA) | *Coming soon* |
-| Frankfurt (Germany) | *Coming soon* |
+| Frankfurt (Germany) | *Upgrade started* |
 | Fremont (California, USA) | *Coming soon* |
 | London (United Kingdom) | *Coming soon* |
 | Mumbai (India) | *Coming soon* |
