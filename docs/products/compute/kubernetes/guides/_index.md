@@ -21,6 +21,8 @@ tab_group_main:
 
 - [Configure Cluster Autoscaling](/docs/products/compute/kubernetes/guides/enable-cluster-autoscaling): Enable, edit, or disable the LKE autoscaling feature to automatically scale nodes as the needs of Kubernetes pods change.
 
+- [Enable High Availability](/docs/products/compute/kubernetes/guides/enable-high-availability): Enable High availability for your LKE cluster, creating additional replicas of your control plane components directly through the Cloud Manager.
+
 ## Themes
 
 These guides explore topics such as using Docker, networking, deploying websites, and using LKE with third-party tools.
