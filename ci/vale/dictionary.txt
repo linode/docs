@@ -1666,6 +1666,7 @@ sievers
 signup
 sintra
 sitename
+sklearn
 slackpkg
 slackware
 slavedb
@@ -1829,6 +1830,7 @@ timey
 tinc
 tincd
 tinydb
+tiobe
 titlebar
 tl
 tld
