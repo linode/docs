@@ -98,32 +98,32 @@ Multicraft for Linux depends on several software packages in order to run.
     After the script finishes, you can begin configuring the Multicraft install.
 
 1. Make a copy the file configuration file and access to the `www-data` user.
-        cp /var/www/html/multicraft/protected/config/config.php.dist /var/www/html/multicraft/protected/config/config.php then
-        chown www-data:www-data /var/www/html/multicraft/protected/config/config.php
+          cp /var/www/html/multicraft/protected/config/config.php.dist /var/www/html/multicraft/protected/config/config.php then
+          chown www-data:www-data /var/www/html/multicraft/protected/config/config.php
 
 1. Enable the ports to access the server:
-        apt-get install ufw
-        ufw allow 80
-        ufw allow 443
-        ufw allow 22
-        ufw enable
+          apt-get install ufw
+          ufw allow 80
+          ufw allow 443
+          ufw allow 22
+          ufw enable
   After the ports are enabled restart the server.
 
 ## Configuring the Control Panel
 
-1.  In your local web browser, navigate to `http://192.0.2.0/multicraft`, replacing `192.0.2.0` with your Linode's IP address or domain name. Click on `Start Installation`:
+1.  In your local web browser, navigate to `http://192.0.2.0/multicraft`, replacing `192.0.2.0` with your Linode's IP address or domain name. Click `Start Installation`:
 
     [![Multicraft Installer.](multicraft-init_small-1804.png)](multicraft-init-1804.png)
 
 2.  Multicraft checks the requirements. If you completed the steps above without issue, the following page appears:
 
-    [![Multicraft Requirements Check.](multicraft-reqs_small-1804.png)](multicraft-reqs-2004.png)
+    [![Multicraft Requirements Check.](multicraft-reqs-2004.png)](multicraft-reqs-2004.png)
 
     Click `Continue`.
 
 3.  Multicraft checks for the `config.php` file and if it is writeable. If successful, click `Continue`:
 
-    [![Multicraft Configuration File Transfer.](multicraft-config_small-2004.png)](multicraft-config-1804.png)
+    [![Multicraft Configuration File Transfer.](multicraft-config-2004.png)](multicraft-config-2004.png)
 
 4.  On the next page, click `Initialize Database`.
 
