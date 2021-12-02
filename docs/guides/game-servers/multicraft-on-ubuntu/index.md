@@ -98,15 +98,18 @@ Multicraft for Linux depends on several software packages in order to run.
     After the script finishes, you can begin configuring the Multicraft install.
 
 1. Make a copy the file configuration file and access to the `www-data` user.
+
           cp /var/www/html/multicraft/protected/config/config.php.dist /var/www/html/multicraft/protected/config/config.php then
           chown www-data:www-data /var/www/html/multicraft/protected/config/config.php
 
 1. Enable the ports to access the server:
+
           apt-get install ufw
           ufw allow 80
           ufw allow 443
           ufw allow 22
           ufw enable
+
   After the ports are enabled restart the server.
 
 ## Configuring the Control Panel
@@ -178,4 +181,4 @@ Version 1.17 (minecraft_server.1.17.jar) is downloaded.
 
     [![Multicraft Server Settings.](multicraft-server-settings_small-1804.png)](multicraft-server-settings-1804.png)
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, see [Connect to your Minecraft Server](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server).
+    You can now successfully start and manage your Minecraft server through Multicraft! For more information, see [Connect to your Minecraft Server](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server).
